@@ -3,6 +3,19 @@
 Saved: 11 November 2026, Singapore time. This task preserves the completed implementation and audit; it does not begin a new development phase.
 
 
+
+## Latest critical visual overhaul
+
+The user's rejection of the programmer-art presentation prompted a substantive rebuild. Pre-overhaul checkpoint `19201bb503ecce78fa09780c1448eb77c864872b`; tested source/art checkpoint `e7a7ab12c6e53290e5ae9501fef9d83bfb9b0b86`. That source checkpoint was pushed to private `work`. Final report/evidence are committed/pushed afterward, and the remote SHA is verified in the completion response.
+
+Original illustrated assets now replace primitive actors, beds, doors and letter machines. Rooms have textured timber/tile, raised walls, furnishings, windows and warm glow/contact shadows. The permanent sidebar is replaced by a top resource/hunter HUD, compact room-upgrade dock, contextual illustrated bottom trays, pause menu and outcome reveal. Sprite-state movement/attack/recoil/death animation is active. Furniture collision was added without changing economy, AI or combat values.
+
+Latest final tests: 125 gameplay, 31 scene/input, 46 overhaul interaction, 30 furniture/reachability, 3,209 availability, 71 audit, 20,000 transaction / 175,941 property checks and six combat-rate scenarios PASS. Twelve representative headless matches completed (9 wins/3 losses); the final graphical capture session additionally completed natural active victory and passive defeat and saved 17 actual viewport images. See VISUAL_OVERHAUL_REPORT.md, VISUAL_OVERHAUL_REVIEW.md and screenshots/visual_overhaul/README.md.
+
+Updated Windows build: `/workspace/NightfallDorm-VisualOverhaul-Windows-x64.zip`. It contains the new art/UI/icon and embedded game data; native Windows execution remains UNVERIFIED. Older ZIPs/screenshots describe earlier builds.
+
+**Status: substantive visual overhaul delivered, commercial finishing PARTIAL.** Next review the new screenshots/build, then prioritize directional animation, character variation, wall/decoration refinement and actual laptop readability/audio. Preserve the model and passing contextual-input/collision tests. Do not restart the project, resurrect the debug sidebar, or call historical functional quality scores final-art approval.
+
 ## Latest gameplay/visual follow-up (supersedes older export/UX limitations)
 
 Started from verified GitHub `ea9438e`. Implemented availability-aware actions and specific hover reasons, selected-building catalog names and upgrade costs, coherent button states, and a cleared hunter/door caption overlap. No model/AI/economy/combat rules changed. Only one bounded visual specialist review was used.

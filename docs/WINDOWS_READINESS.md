@@ -1,5 +1,8 @@
 # Windows readiness
 
+Latest visual-overhaul artifact: `/workspace/NightfallDorm-VisualOverhaul-Windows-x64.zip`, from source `e7a7ab12c6e53290e5ae9501fef9d83bfb9b0b86`. It was rebuilt with illustrated assets, new UI, custom icon and font notices. See `evidence/visual_overhaul/windows-export.log`, `windows-artifact.json` and `pack-smoke.log` in that evidence directory. Native Windows runtime remains unverified. The earlier ZIP/checksum described below is historical.
+
+
 **Release export CREATED; native Windows runtime UNVERIFIED.** The produced file is `builds/windows/NightfallDorm.exe`, with an embedded game pack, x86-64 PE format. A ZIP playtest artifact is available in the task workspace at `/workspace/NightfallDorm-Windows-x64.zip`. No public deployment/release was made. Generated executables are ignored by Git; source, preset, checksums and evidence are backed up on the authorized private branch.
 
 ## Verified build process
