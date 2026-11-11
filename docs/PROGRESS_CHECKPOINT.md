@@ -1,3 +1,40 @@
+# Latest checkpoint — Phase 2 functional delivery (11 November 2026, Singapore)
+
+**Read this first. Do not restart or redesign the game.** Continued `work` from `ad0e95e2d6c9b435074939f73e7e60fc579a680a`; all loved baseline gameplay/art/economy features were preserved. The pause/continue interruption left completed Phase2 files and test logs in the working tree; those were reviewed and finished, not regenerated. Older headers below are historical.
+
+## Implemented and validated
+
+- **Audio:**37 original local PCM assets, separate menu/calm/danger music, proximity/room/generator ambience, distinct combat/build/economy/UI/rank cues, saved Music/Effects/Ambient/mute controls, smooth non-restarting loops, bounded voices/cooldowns and reliable critical-cue priority/retry. Actual mixed-engine WAV is non-silent/unclipped; no listening verdict is claimed.
+- **Progression:**Bronze→Master ranks and six original badges, menu XP/next goal, progression/reward collection, configurable one-slot loadout, six small functional boosts, immutable match snapshot, transparent performance XP/promotion summary and local persistent settings/progress.
+- **Save safety:**validated temporary generation, valid backup, corrupt input preservation/recovery, future-schema read-only protection, strict nested types/IDs/loadout chronology, duplicate settlement prevention, write-failure warning/retry and lifetime-XP cap handling. Separate-process write/read proves persistence beyond one process.
+- **Hunter:**normal opening preserved for45 active seconds, later stats smoothly ramp over8s per level; capped movement/rate changes, opt-in hard mode, bounded defense-aware scoring, siege-stalemate escape, near-breach commitment and non-teleporting recovery. Door protection and corridor geometry retained.
+
+## Genuine verification
+
+Godot4.6.3 stable, Linux. `tools/check.sh --extended` passed all suites and **231 complete headless matches**:12 representative,27 timestep,144 ordinary matrix,48 new rank/difficulty matrix. New matrix:24 active wins/24 passive defeats, zero unresolved. A final regular rerun after integration/cleanup also passed; repetitions are not additional unique scenarios.
+
+New audio139, ranked348, actual-input Phase2UI52, hunter39 assertions pass. Existing model126, projectile22, edge12, camera/UI173, scene24, contextual UI53, furniture30, availability3209, audit72,20k transactions/175941 checks and6 rate scenarios pass. The later focused UI rerun verifies the final configurable-slot display. Separate-process profile write/read passes. Fresh import and graceful main startup pass. Logs: `docs/evidence/phase2/regular-final.log`, `extended-final.log`, `ui-final-focused.log`.
+
+Actual graphical checks:seven new menu/settings/rewards/loadout/threat/promotion screenshots; prepared rank/promotion/hunter fixtures are explicitly labeled. Corrected Last light text was visually checked after a width-only fix proved insufficient. Two additional normal-fund rendered automated matches completed: active victory~128.2s earned161XP; passive defeat~41.7s earned4XP. Both awards reloaded from disk successfully. The natural matches did not gift resources or force a terminal result. Output: `natural-render.log`; screenshots08–10.
+
+Bugs fixed include malformed save snapshots/replay IDs, max-XP save rejection, critical sound drops, repairing-door hunter stalemate, wrong quit-handler property ownership and reward-description overlap. Initial failing evidence remains labeled in the evidence folder. Normal quit and tests drain audio to release playback resources; forced abrupt engine termination is not equivalent to a normal quit test.
+
+## Status and remaining work
+
+**Functional Phase2 systems implemented and tested. Windows Phase2 playback, subjective audio polish and long-term human balance remain UNVERIFIED.** The user reported baseline Windows gameplay success; cloud has not run this new revision natively on Windows or listened through speakers. Local offline ranks are not an online leaderboard/anti-cheat service. Existing bot/hunter directional limits, one map/hunter, distance-only targeting, small art fragments and other-aspect-ratio/accessibility work remain.
+
+No new Windows executable export, paid service, public release or deployment was performed. Previous ZIP/EXE artifacts predate Phase2; test latest source in Godot.
+
+## Exact next steps
+
+1. Inspect Git status/log and compare local HEAD with `git ls-remote origin refs/heads/work`. This feature checkpoint plus a documentation-only backup record are committed/pushed; final task response identifies the verified tip. Do not reset, force-push or rebuild from scratch.
+2. At home pull/download private **work**, import `project.godot` into Godot4.6.3 standard, F5, **Start Game → loadout → Start Night**. Test Night watch first with no perk; optionally equip Pocket change. Ranks & rewards shows every unlock/threshold.
+3. Listen to menu/calm/danger/proximity/combat/breach/outcome cues; adjust independent volumes/mute. Verify rank/XP/equipped/settings after closing/reopening. Windows normally saves `%APPDATA%\Godot\app_userdata\Nightfall Dorm\profile.json`; back it up before deliberate recovery tests.
+4. Try normal/hard and report actual human difficulty/rank pacing. Avoid further balance retuning without evidence; current bonuses are modest and do not guarantee victory in passive simulations.
+5. Read `PHASE2_REPORT.md`, `AUDIO_SOURCES.md`, `PHASE2_QA_REPORT.md`, `PHASE2_EXPERIENCE_REVIEW.md` and updated `HOME_TESTING_WINDOWS.md`. Preserve tested code. Use one routine developer and bounded specialists when new evidence justifies them.
+
+---
+
 # Final home-testing checkpoint — 11 November 2026
 
 **Current task complete: source secured, clean-source validation passed, home instructions prepared.** Overall game status remains **PARTIAL — playable core verified, Windows/audio and final polish unverified**. This was a checkpoint/documentation session, not another development phase. No new executable was exported; nothing was publicly released or deployed.

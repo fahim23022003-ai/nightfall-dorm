@@ -9,7 +9,7 @@ An original single-player Godot 4 dormitory survival defense game. Choose a room
 1. Sign in to the private [GitHub repository](https://github.com/fahim23022003-ai/nightfall-dorm), select **work**, and choose **Code → Download ZIP**.
 2. Extract the complete ZIP. Install/open **Godot 4.6.3 stable, standard build**; no .NET or export templates needed.
 3. Choose **Import**, select the extracted `project.godot`, then **Import & Edit**. Wait for asset import.
-4. Press **F5 / Run Project**, then **Start Game**.
+4. Press **F5 / Run Project**, then **Start Game**. Choose an optional unlocked boost and difficulty in the loadout, then **Start Night**.
 5. Move with **WASD/arrows**, enter a vacant room and press **E** to claim it. Approach its bed and press **E** to sleep/lock the door.
 6. Click an owned floor pad, choose a card, then **Confirm placement**. Start with a Needle turret and build a Dynamo for electricity. Click existing buildings or the bottom bed/door summaries for upgrades.
 
@@ -21,9 +21,17 @@ Full controls, ZIP/Git instructions and a practical test checklist: [Windows hom
 
 **Playable core tested; overall polish PARTIAL.** Six original cartoon room themes, room-focused camera, explicit placement confirmation, five bot identities, hunter finite-state AI, six functional building types, upgrades, repairs, real travelling projectiles/impact damage, victory/defeat and clean restart are implemented. Latest checkpoint/evidence: [PROGRESS_CHECKPOINT.md](docs/PROGRESS_CHECKPOINT.md).
 
-Godot Linux import/startup, automated scene/input/gameplay tests, transactions and seeded matches pass. Prior actual software-rendered screenshots and two complete rendered matches are in [VISUAL_REDESIGN_REPORT.md](docs/VISUAL_REDESIGN_REPORT.md). Native Windows execution, audible output and display scaling remain unverified. Bot/hunter directional animation, settings persistence, small art cleanup and human balancing remain unfinished. One map/hunter, simplified bot arrival and distance-only targeting are documented in [KNOWN_LIMITATIONS.md](docs/KNOWN_LIMITATIONS.md).
+Godot Linux import/startup, automated scene/input/gameplay tests, transactions and seeded matches pass. Prior actual software-rendered screenshots and two complete rendered matches are in [VISUAL_REDESIGN_REPORT.md](docs/VISUAL_REDESIGN_REPORT.md). Native Windows execution, audible output and display scaling remain unverified. Bot/hunter directional animation, small art cleanup and human balancing remain unfinished. Phase2 settings/rank/XP/equipped boosts now persist under `user://profile.json`. One map/hunter, simplified bot arrival and distance-only targeting are documented in [KNOWN_LIMITATIONS.md](docs/KNOWN_LIMITATIONS.md).
 
 This home checkpoint does not create another executable or publish/deploy anything. Earlier export records in the documentation are historical; use source branch `work` for home editor testing.
+
+## Phase 2: sound, ranks and hunter intelligence
+
+Original menu/calm/danger music and ambience crossfade with actual hunter proximity and door health. Thirty-seven local original WAV assets provide combat, construction, economy, UI and promotion cues; Settings saves separate Music/Effects/Ambient volumes and mute. No external audio downloads are needed.
+
+Bronze→Silver→Gold→Platinum→Diamond→Master ranks unlock six modest optional boosts. **Ranks & rewards** shows XP, thresholds, unlocked/next rewards; Start Game opens loadout, with one equipped boost per match. Results display performance XP and promotion. `profile.json` uses validated temporary writes, a backup and corrupt-file recovery. Hard/Long night is optional; normal/Night watch preserves the opening threat and ramps later levels smoothly. The hunter now accounts for defenses and escapes repairing-door stalemates without teleporting.
+
+See [Phase2 report](docs/PHASE2_REPORT.md), [audio sources](docs/AUDIO_SOURCES.md), [independent QA](docs/PHASE2_QA_REPORT.md) and [experience review](docs/PHASE2_EXPERIENCE_REVIEW.md). New code is tested in cloud Godot; subjective audio quality and native Windows Phase2 execution remain unverified. No new Windows executable was exported.
 
 ## Cloud development
 

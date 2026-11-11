@@ -32,3 +32,6 @@ const AI_PROFILES = {
 
 # Real homing shots; original economy and turret attack intervals remain unchanged.
 const PROJECTILES = {"turret":480.0,"heavy":360.0,"max_age":5.0,"max_active":256,"max_events":96,"event_lifetime":0.45}
+
+# Preserve the first active phase; each later level ramps its stats over eight seconds.
+const HUNTER_ESCALATION={"ramp_seconds":8.0,"speed_growth":1.5,"speed_bonus_cap":8.0,"dps_weight":2.0,"dps_penalty_cap":90.0,"repair_penalty_cap":35.0,"retarget_improvement":0.12,"minimum_commitment":8.0,"stuck_seconds":4.0}

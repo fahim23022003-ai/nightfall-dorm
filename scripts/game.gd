@@ -4,8 +4,19 @@ var model: MatchModel
 var ui: GameInterface
 var mode = "menu"
 var selected_tile = 0
-var sound_volume = 0.25
-var audio: AudioStreamPlayer
+var profile: PlayerProfile
+var audio_system
+var match_id=0
+var last_progression: Dictionary={}
+var selected_difficulty="standard"
+var last_hunter_level=1
+var level_warning_time=0.0
+var sound_volume: float:
+ get: return float(profile.settings.effects) if profile!=null else 0.65
+ set(value):
+  if profile!=null:
+   profile.settings.effects=clampf(value,0,1)
+   if is_instance_valid(audio_system): audio_system.set_mix(profile.settings)
 var income_clock = 0.0
 var floating: Array = []
 var last_attacks = 0
@@ -22,6 +33,7 @@ var tutorial_enabled=true
 var danger_time=0.0
 var last_income: Dictionary={}
 var camera_target=Vector2.ZERO
+var closing=false
 
 func _ready():
  var window = get_window()
@@ -29,20 +41,36 @@ func _ready():
  window.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
  window.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
  window.min_size = Vector2i(960,540)
+ get_tree().auto_accept_quit=false
+ var save_path=OS.get_environment("NIGHTFALL_PROFILE_PATH")
+ profile=PlayerProfile.new(save_path if save_path!="" else "user://profile.json")
+ profile.load_profile()
+ tutorial_enabled=profile.settings.tutorial
+ if profile.settings.fullscreen: window.mode=Window.MODE_FULLSCREEN
+ audio_system=preload("res://scripts/audio_director.gd").new()
+ add_child(audio_system)
+ audio_system.set_mix(profile.settings)
  model = MatchModel.new()
  model.feedback.connect(func(text):
   if is_instance_valid(ui.message): ui.message.text = text)
  ui = GameInterface.new(self)
  add_child(ui)
- audio = AudioStreamPlayer.new()
- add_child(audio)
  camera = Camera2D.new()
  camera.position = Vector2(640,360)
  camera.position_smoothing_enabled = false
  add_child(camera)
 
-func start_match():
+func start_match(difficulty: String=""):
+ if difficulty!="": selected_difficulty=difficulty
+ var entry=profile.begin_match(selected_difficulty)
+ match_id=int(entry.get("id",0))
  model.reset(int(Time.get_ticks_msec()))
+ model.configure_match(selected_difficulty,RankCatalog.bonuses(entry.get("equipped",[])))
+ audio_system.reset_match(model)
+ audio_event("match_start")
+ last_progression={}
+ last_hunter_level=1
+ level_warning_time=0
  selected_tile = 0
  full_map=false
  zoom_factor=1
@@ -74,6 +102,7 @@ func toggle_pause():
  ui.show_pause(not model.running)
 
 func _process(delta: float):
+ level_warning_time=maxf(0,level_warning_time-delta)
  danger_time=maxf(0,danger_time-delta)
  if mode == "match":
   var direction = Vector2(float(Input.is_physical_key_pressed(KEY_D) or Input.is_physical_key_pressed(KEY_RIGHT))-float(Input.is_physical_key_pressed(KEY_A) or Input.is_physical_key_pressed(KEY_LEFT)),float(Input.is_physical_key_pressed(KEY_S) or Input.is_physical_key_pressed(KEY_DOWN))-float(Input.is_physical_key_pressed(KEY_W) or Input.is_physical_key_pressed(KEY_UP)))
@@ -100,17 +129,21 @@ func _process(delta: float):
    f.life -= delta
   floating = floating.filter(func(f): return f.life>0)
   if model.hunter.attacks > last_attacks:
-   play_tone(85)
    last_attacks = model.hunter.attacks
    if model.hunter.target==model.player_room: danger_time=0.65
-  if model.shots > last_shots:
-   play_tone(440)
-   last_shots = model.shots
+  if model.hunter.level>last_hunter_level:
+   last_hunter_level=model.hunter.level
+   level_warning_time=3.0
   focus_camera(false,delta)
   ui.update_match()
   if model.result != "":
+   last_progression=profile.settle_match(match_id,model)
    mode = "result"
+   if not last_progression.is_empty() and last_progression.promoted:
+    audio_event("rank")
+    audio_event("reward")
    ui.show_result()
+ audio_system.update_state(delta,model,mode)
  presentation.update(delta,model)
  queue_redraw()
 
@@ -119,7 +152,7 @@ func _unhandled_input(event):
  if event is InputEventKey and event.pressed and not event.echo:
   if event.keycode==KEY_E and model.running: model.interact()
   elif event.keycode==KEY_M: toggle_map()
-  elif event.keycode==KEY_G: tutorial_enabled=not tutorial_enabled
+  elif event.keycode==KEY_G: toggle_guide()
   elif event.keycode==KEY_R and model.running: ui.purchase(model.repair_door())
   elif event.keycode==KEY_ESCAPE:
    if pending_build!="": cancel_placement()
@@ -210,17 +243,26 @@ func world_to_screen(point: Vector2) -> Vector2:
 func _draw():
  presentation.render(self)
 
-func play_tone(frequency: float):
- if sound_volume <= 0:
-  return
- var stream = AudioStreamWAV.new()
- stream.format = AudioStreamWAV.FORMAT_16_BITS
- stream.mix_rate = 22050
- var bytes = PackedByteArray()
- bytes.resize(2205*2)
- for i in range(2205):
-  var sample = int(sin(float(i)*frequency*TAU/22050.0)*(1.0-float(i)/2205.0)*3500*sound_volume)
-  bytes.encode_s16(i*2,sample)
- stream.data = bytes
- audio.stream = stream
- audio.play()
+func audio_event(name: String):
+ if is_instance_valid(audio_system): audio_system.event(name)
+
+func change_setting(key: String,value):
+ profile.update_setting(key,value)
+ audio_system.set_mix(profile.settings)
+ if key=="fullscreen": get_window().mode=Window.MODE_FULLSCREEN if value else Window.MODE_WINDOWED
+ if key=="tutorial": tutorial_enabled=value
+
+func toggle_guide():
+ change_setting("tutorial",not tutorial_enabled)
+
+func request_quit():
+ if closing: return
+ closing=true
+ profile.save_profile()
+ audio_system.shutdown()
+ # Let the audio thread release looping playback before normal window/menu exit.
+ await get_tree().create_timer(0.5).timeout
+ get_tree().quit()
+
+func _notification(what):
+ if what==NOTIFICATION_WM_CLOSE_REQUEST and is_instance_valid(audio_system): request_quit()

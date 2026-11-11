@@ -4,6 +4,7 @@ cd "$(dirname "$0")/.."
 export XDG_DATA_HOME="${XDG_DATA_HOME:-/workspace/runtime-data}"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-/workspace/runtime-config}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-/workspace/runtime-cache}"
+export NIGHTFALL_PROFILE_PATH="user://automated-test-profile.json"
 mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_CACHE_HOME" artifacts
 godot --headless --editor --import --quit > artifacts/import.log 2>&1
 cat artifacts/import.log
@@ -11,18 +12,23 @@ if rg -n 'SCRIPT ERROR|Parse Error|ERROR:' artifacts/import.log; then exit 1; fi
 godot --headless --path . --script tests/run_tests.gd > artifacts/tests.log 2>&1
 cat artifacts/tests.log
 if rg -n 'SCRIPT ERROR|Parse Error|ERROR:' artifacts/tests.log; then exit 1; fi
-for suite in projectiles redesign_projectile_edges redesign_ui scene_smoke overhaul_ui furniture_collision ui_availability simulate_matches audit_regressions audit_properties audit_rates; do
+for suite in audio_system ranked_progression phase2_ui phase2_hunter projectiles redesign_projectile_edges redesign_ui scene_smoke overhaul_ui furniture_collision ui_availability simulate_matches audit_regressions audit_properties audit_rates; do
   godot --headless --path . --script "tests/$suite.gd" > "artifacts/$suite.log" 2>&1
   cat "artifacts/$suite.log"
   if rg -n 'SCRIPT ERROR|Parse Error|ERROR:' "artifacts/$suite.log"; then exit 1; fi
 done
 if [[ "${1:-}" == "--extended" ]]; then
-  for suite in audit_timesteps audit_matrix; do
+  for suite in audit_timesteps audit_matrix phase2_matrix; do
     godot --headless --path . --script "tests/$suite.gd" > "artifacts/$suite.log" 2>&1
     cat "artifacts/$suite.log"
     if rg -n 'SCRIPT ERROR|Parse Error|ERROR:' "artifacts/$suite.log"; then exit 1; fi
   done
 fi
-godot --headless --path . --quit-after 120 > artifacts/startup.log 2>&1
+for stage in cleanup write read cleanup; do
+  godot --headless --path . --script tests/profile_process_roundtrip.gd -- "$stage" > "artifacts/profile_process_$stage.log" 2>&1
+  cat "artifacts/profile_process_$stage.log"
+  if rg -n 'SCRIPT ERROR|Parse Error|ERROR:' "artifacts/profile_process_$stage.log"; then exit 1; fi
+done
+godot --headless --path . --script tests/startup_smoke.gd > artifacts/startup.log 2>&1
 cat artifacts/startup.log
 if rg -n 'SCRIPT ERROR|Parse Error|ERROR:' artifacts/startup.log; then exit 1; fi

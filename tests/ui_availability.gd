@@ -85,6 +85,8 @@ func run():
  game.ui.update_match()
  check(game.ui.actions["build:turret"].disabled,"invalid floor selection cannot advertise a valid purchase")
  print("UI_AVAILABILITY_CHECKS=",checks," FAILURES=",failures)
+ game.audio_system.shutdown()
+ await create_timer(0.5).timeout
  game.queue_free()
  await process_frame
  quit(1 if failures else 0)

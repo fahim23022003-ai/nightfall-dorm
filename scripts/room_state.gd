@@ -21,6 +21,30 @@ var last_error = ""
 var bot_timer = 0.0
 var damage_flash = 0.0
 var resident_position = Vector2.ZERO
+var occupied_seconds=0.0
+var door_damage_taken=0.0
+var income_multiplier=1.0
+var power_multiplier=1.0
+var door_multiplier=1.0
+var turret_multiplier=1.0
+var rescue_fraction=0.0
+var rescue_used=false
+
+func apply_boosts(boosts: Dictionary):
+ gold+=boosts.get("gold",0.0)
+ var old_max=max_hp()
+ door_multiplier=boosts.get("door",1.0)
+ door_hp+=max_hp()-old_max
+ income_multiplier=boosts.get("income",1.0)
+ power_multiplier=boosts.get("power",1.0)
+ turret_multiplier=boosts.get("damage",1.0)
+ rescue_fraction=boosts.get("rescue",0.0)
+
+func try_rescue() -> bool:
+ if rescue_used or rescue_fraction<=0 or not alive or door_hp<=0 or door_hp>max_hp()*0.25: return false
+ rescue_used=true
+ door_hp=minf(max_hp(),door_hp+max_hp()*rescue_fraction)
+ return true
 
 func _init(number: int = 0):
  index = number
@@ -51,14 +75,14 @@ func tile_position(tile: int) -> Vector2:
  return center() + Vector2(-20 + (tile % 3) * 55, -20 + (tile / 3) * 65)
 
 func max_hp() -> float:
- return Catalog.DOOR_HP[door_level]
+ return Catalog.DOOR_HP[door_level]*door_multiplier
 
 func income_rate() -> float:
  var factor = 1.0
  for building in buildings.values():
   if building.kind == "economy":
    factor += Catalog.BUILDINGS.economy.rate * building.level
- return Catalog.BED_INCOME[bed_level] * factor if sleeping and alive else 0.0
+ return Catalog.BED_INCOME[bed_level] * factor * income_multiplier if sleeping and alive else 0.0
 
 func pay(g: float, e: float = 0.0) -> bool:
  if not is_finite(g) or not is_finite(e) or g < 0 or e < 0:
@@ -162,6 +186,7 @@ func upgrade_building(tile: int) -> bool:
  return true
 
 func tick_economy(delta: float):
+ if sleeping and alive: occupied_seconds+=delta
  var income = income_rate()*delta
  gold += income
  income_total += income
@@ -171,6 +196,6 @@ func tick_economy(delta: float):
  for b in buildings.values():
   b.flash = maxf(0,b.flash-delta)
   if b.kind == "generator":
-   electricity += Catalog.BUILDINGS.generator.rate*b.level*delta
+   electricity += Catalog.BUILDINGS.generator.rate*b.level*delta*power_multiplier
   elif b.kind == "repair" and door_hp > 0:
    door_hp = minf(max_hp(),door_hp+Catalog.BUILDINGS.repair.rate*b.level*delta)

@@ -20,6 +20,16 @@ var projectiles: Array = []
 var combat_events: Array = []
 var next_projectile_id = 1
 var next_combat_event_id = 1
+var difficulty="standard"
+var match_boosts: Dictionary={}
+
+func configure_match(mode: String="standard", boosts: Dictionary={}):
+ # Called once on a fresh match; loadout changes never alter an active room.
+ if time>0 or player_room>=0: return false
+ difficulty=mode if RankCatalog.DIFFICULTIES.has(mode) else "standard"
+ match_boosts=boosts.duplicate(true)
+ hunter.configure(difficulty)
+ return true
 
 func _init():
  reset()
@@ -30,6 +40,8 @@ func reset(seed_value: int = 1):
  for i in range(6):
   rooms.append(RoomState.new(i))
  hunter = HunterState.new()
+ difficulty="standard"
+ match_boosts={}
  player_room = -1
  player_position = Vector2(500,410)
  time = 0
@@ -48,6 +60,7 @@ func claim_room(index: int) -> bool:
  if not running or result != "" or index < 0 or index >= rooms.size() or player_room >= 0 or rooms[index].owner >= 0:
   return false
  rooms[index].owner = 0
+ rooms[index].apply_boosts(match_boosts)
  player_room = index
  feedback.emit("Room claimed. Approach the bed and press E to sleep.")
  return true
@@ -217,7 +230,7 @@ func _turrets(delta: float):
    b.cooldown = maxf(-delta,b.cooldown-delta)
    var data = Catalog.BUILDINGS[b.kind]
    if hunter.hp > 0 and hunter.state != HunterState.State.DORMANT and hunter.state != HunterState.State.DEAD and room.tile_position(tile).distance_to(hunter.position)<=data.range and b.cooldown <= 0:
-    var amount = data.damage*b.level*multiplier
+    var amount = data.damage*b.level*multiplier*room.turret_multiplier
     if projectiles.size() >= Catalog.PROJECTILES.max_active:
      continue
     var origin = room.tile_position(tile)

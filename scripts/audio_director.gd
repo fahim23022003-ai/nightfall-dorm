@@ -1,0 +1,326 @@
+class_name AudioDirector
+extends Node
+
+const ROOT = "res://assets/audio/"
+const LOOP_NAMES = ["music_menu","music_calm","music_danger","ambient_dorm","proximity_loop","generator_loop"]
+const EFFECT_NAMES = ["button","menu","match_start","purchase","failure","rank","reward","victory","defeat","shot_needle","shot_arc","impact","ghost_hurt","ghost_defeat","door_hit","door_crack","door_break","build","turret_upgrade","bed_upgrade","door_upgrade","repair","upgrade","income","electricity","footstep","danger","breach","hunter_spawn","hunter_level","elimination"]
+const CRITICAL_EVENTS = ["victory","defeat","ghost_defeat","rank","reward","hunter_level","breach","door_break","match_start"]
+const VOICE_LIMIT = 16
+const FRAME_VOICE_LIMIT = 6
+const EFFECT_COOLDOWNS = {"shot_needle":0.07,"shot_arc":0.11,"impact":0.09,"ghost_hurt":0.22,"door_hit":0.12,"door_crack":0.8,"door_break":1.0,"income":1.1,"electricity":1.0,"repair":1.0,"footstep":0.38,"danger":3.0,"build":0.15,"upgrade":0.18,"hunter_level":0.5,"hunter_spawn":1.0,"match_start":0.8,"victory":2.0,"defeat":2.0,"rank":0.8,"reward":0.4,"menu":0.2}
+var event_counts: Dictionary = {}
+var music_start_count = 0
+var intensity = 0.0
+var proximity = 0.0
+var loop_weights: Dictionary = {}
+var mix = {"music":0.65,"effects":0.75,"ambient":0.65,"muted":false}
+var missing_assets: Array = []
+var dropped_events = 0
+var voices: Array = []
+var loops: Dictionary = {}
+var streams: Dictionary = {}
+var listener_position = Vector2(500,410)
+var _initialized = false
+var _clock = 0.0
+var _frame_voices = 0
+var _cooldowns: Dictionary = {}
+var _observed_model
+var _previous: Dictionary = {}
+var _last_combat_event = 0
+var _last_mode = ""
+var _previous_time = 0.0
+var _previous_hunter_position = Vector2.ZERO
+var _mode = "menu"
+var _pending_critical: Array = []
+var _voice_names: Dictionary = {}
+
+func _ready():
+ setup()
+
+func setup():
+ if _initialized:
+  return
+ _initialized = true
+ for bus_name in ["Music","Effects","Ambient"]:
+  if AudioServer.get_bus_index(bus_name) < 0:
+   AudioServer.add_bus()
+   AudioServer.set_bus_name(AudioServer.bus_count-1,bus_name)
+  # Keep substantial headroom across up to sixteen simultaneous sound voices.
+ for name in LOOP_NAMES+EFFECT_NAMES:
+  var path = ROOT+name+".wav"
+  if not ResourceLoader.exists(path) and not FileAccess.file_exists(path):
+   missing_assets.append(path)
+   push_error("Nightfall audio missing: "+path)
+   continue
+  var stream: AudioStreamWAV
+  if ResourceLoader.exists(path):
+   var imported = load(path) as AudioStreamWAV
+   if imported != null:
+    stream = imported.duplicate() as AudioStreamWAV
+  elif FileAccess.file_exists(path):
+   stream = AudioStreamWAV.load_from_file(ProjectSettings.globalize_path(path))
+  if stream == null:
+   missing_assets.append(path)
+   push_error("Nightfall audio could not decode: "+path)
+   continue
+  if name in LOOP_NAMES:
+   stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
+   stream.loop_begin = 0
+   stream.loop_end = roundi(stream.get_length()*stream.mix_rate)
+  streams[name] = stream
+ for name in LOOP_NAMES:
+  if not streams.has(name):
+   continue
+  var player = AudioStreamPlayer.new()
+  player.name = name
+  player.stream = streams[name]
+  player.bus = "Music" if name.begins_with("music") else "Ambient"
+  player.volume_db = -80
+  add_child(player)
+  loops[name] = player
+  loop_weights[name] = 0.0
+  player.play()
+  if name.begins_with("music"):
+   music_start_count += 1
+ for i in range(VOICE_LIMIT):
+  var voice = AudioStreamPlayer.new()
+  voice.name = "EffectVoice%d" % i
+  voice.bus = "Effects"
+  add_child(voice)
+  voices.append(voice)
+ set_mix(mix)
+
+func set_mix(settings: Dictionary):
+ for key in ["music","effects","ambient"]:
+  if settings.has(key):
+   var value = float(settings[key])
+   mix[key] = clampf(value,0,1) if is_finite(value) else 0.0
+ if settings.has("muted"):
+  mix.muted = bool(settings.muted)
+ if not _initialized:
+  return
+ for key in ["music","effects","ambient"]:
+  var bus_name = {"music":"Music","effects":"Effects","ambient":"Ambient"}[key]
+  var index = AudioServer.get_bus_index(bus_name)
+  AudioServer.set_bus_volume_db(index,linear_to_db(maxf(0.0001,mix[key]))-5.0)
+  AudioServer.set_bus_mute(index,mix.muted or mix[key]<=0)
+
+func event(name: String, position: Vector2 = Vector2.INF) -> bool:
+ setup()
+ var aliases = {"menu_open":"menu","menu_navigation":"menu","button_click":"button","rank_promotion":"rank","reward_unlock":"reward","insufficient":"failure","outcome":"victory","generator":"electricity"}
+ name = aliases.get(name,name)
+ if not streams.has(name) or name in LOOP_NAMES:
+  if not EFFECT_NAMES.has(name):
+   push_warning("Unknown Nightfall audio event: "+name)
+  return false
+ var critical = name in CRITICAL_EVENTS
+ if _clock < float(_cooldowns.get(name,-1.0)):
+  return false
+ if _frame_voices >= (FRAME_VOICE_LIMIT if critical else FRAME_VOICE_LIMIT-2):
+  if critical:
+   _queue_critical(name,position)
+  else:
+   dropped_events += 1
+  return false
+ var distance_gain = 1.0
+ if position.is_finite():
+  var distance = listener_position.distance_to(position)
+  if distance > 850:
+   return false
+  distance_gain = clampf(1.0-distance/1000.0,0.15,1.0)
+ var free_voice = null
+ for voice in voices:
+  if not voice.playing:
+   free_voice = voice
+   break
+ if free_voice == null and critical:
+  for voice in voices:
+   if not _voice_names.get(voice.get_instance_id(),"") in CRITICAL_EVENTS:
+    voice.stop()
+    free_voice = voice
+    break
+ if free_voice == null:
+  if critical:
+   _queue_critical(name,position)
+  else:
+   dropped_events += 1
+  return false
+ _voice_names[free_voice.get_instance_id()] = name
+ free_voice.stream = streams[name]
+ free_voice.volume_db = linear_to_db(distance_gain)-20.0
+ free_voice.pitch_scale = 1.0
+ free_voice.play()
+ _cooldowns[name] = _clock+float(EFFECT_COOLDOWNS.get(name,0.08))
+ event_counts[name] = int(event_counts.get(name,0))+1
+ _frame_voices += 1
+ return true
+
+func reset_match(model):
+ setup()
+ _observed_model = model
+ _last_combat_event = 0
+ _previous_time = model.time
+ _previous_hunter_position = model.hunter.position
+ _previous = _snapshot(model)
+ # Match-specific throttles must not suppress cues after a restart.
+ _cooldowns.clear()
+ _pending_critical.clear()
+ _frame_voices = 0
+ for voice in voices:
+  voice.stop()
+
+func update_state(delta: float, model, mode: String):
+ setup()
+ if not is_finite(delta) or delta < 0:
+  return
+ _clock += delta
+ _frame_voices = 0
+ _mode = mode
+ var pending = _pending_critical.duplicate()
+ _pending_critical.clear()
+ for cue in pending:
+  event(cue.name,cue.position)
+ if model != null and (model != _observed_model or model.time < _previous_time):
+  reset_match(model)
+ if mode != _last_mode:
+  if mode == "menu":
+   event("menu")
+  elif mode == "match":
+   event("match_start")
+  _last_mode = mode
+ var target_intensity = 0.0
+ var target_proximity = 0.0
+ var generator_weight = 0.0
+ var active = model != null and mode == "match" and model.result == ""
+ if model != null:
+  if not _previous.is_empty() and _previous.state!=HunterState.State.DEAD and model.hunter.state==HunterState.State.DEAD and _previous.hp>0:
+   event("ghost_defeat")
+   _previous.state = HunterState.State.DEAD
+   _previous.hp = model.hunter.hp
+  var room = model.player()
+  listener_position = room.bed_position() if room != null else model.player_position
+  if active:
+   _observe(model)
+   if model.hunter.state not in [HunterState.State.DORMANT,HunterState.State.DEAD] and model.hunter.hp > 0:
+    var distance = model.hunter.position.distance_to(room.door_position() if room != null else listener_position)
+    target_proximity = clampf(1-distance/480.0,0,1)
+    var vulnerability = 1.0-room.door_hp/room.max_hp() if room != null else 0.8
+    var attacking_player = room != null and model.hunter.target==room.index and model.hunter.state in [HunterState.State.ATTACK,HunterState.State.BREACH]
+    target_intensity = clampf(target_proximity*0.6+vulnerability*target_proximity*0.3+minf(0.15,(model.hunter.level-1)*0.03)+(0.25*target_proximity if attacking_player else 0),0,1)
+    if target_proximity>0.45 and model.hunter.position.distance_to(_previous_hunter_position)>0.25:
+     event("footstep",model.hunter.position)
+    if target_intensity>0.75 and intensity<=0.75:
+     event("danger",listener_position)
+   if room != null and room.alive:
+    for building in room.buildings.values():
+     if building.kind=="generator":
+      generator_weight = minf(0.45,0.15+building.level*0.05)
+  _previous_hunter_position = model.hunter.position
+  _previous_time = model.time
+ intensity = move_toward(intensity,target_intensity,delta*1.6)
+ proximity = move_toward(proximity,target_proximity,delta*1.8)
+ var music_active = mode=="match" and (model==null or model.result=="")
+ var targets = {"music_menu":1.0 if mode=="menu" else 0.0,"music_calm":(1.0-intensity)*0.85 if music_active else 0.0,"music_danger":intensity*0.85 if music_active else 0.0,"ambient_dorm":0.35+proximity*0.30 if active else 0.15 if mode=="menu" else 0.0,"proximity_loop":proximity*intensity*0.65 if active else 0.0,"generator_loop":generator_weight if active else 0.0}
+ for name in loops:
+  loop_weights[name] = move_toward(float(loop_weights[name]),float(targets[name]),delta*1.1)
+  loops[name].volume_db = linear_to_db(maxf(0.0001,loop_weights[name]))-12.0
+ # Outcomes may be supplied explicitly by the host, too; cooldown prevents repeats.
+ if model != null and model.result != "" and _previous.get("result","") != model.result:
+  event("victory" if model.result=="victory" else "defeat")
+  _previous.result = model.result
+
+func _snapshot(model) -> Dictionary:
+ var rooms: Dictionary = {}
+ for room in model.rooms:
+  var buildings: Dictionary = {}
+  for tile in room.buildings:
+   var building = room.buildings[tile]
+   buildings[tile] = {"kind":building.kind,"level":building.level}
+  rooms[room.index] = {"alive":room.alive,"bed":room.bed_level,"door":room.door_level,"hp":room.door_hp,"max_hp":room.max_hp(),"income":room.income_total,"power":room.electricity,"buildings":buildings}
+ return {"rooms":rooms,"level":model.hunter.level,"hp":model.hunter.hp,"state":model.hunter.state,"attacks":model.hunter.attacks,"result":model.result}
+
+func _observe(model):
+ if _previous.is_empty():
+  _previous = _snapshot(model)
+  return
+ if _previous.state==HunterState.State.DORMANT and model.hunter.state!=HunterState.State.DORMANT:
+  event("hunter_spawn")
+ if model.hunter.level>_previous.level:
+  event("hunter_level")
+ if model.hunter.attacks>_previous.attacks and model.hunter.target>=0 and model.hunter.target<model.rooms.size():
+  event("door_hit",model.rooms[model.hunter.target].door_position())
+ var order: Array = []
+ if model.player_room>=0:
+  order.append(model.player_room)
+ for i in range(model.rooms.size()):
+  if i != model.player_room:
+   order.append(i)
+ for index in order:
+  var room = model.rooms[index]
+  var old = _previous.rooms[index]
+  var position = room.center()
+  if old.alive and not room.alive:
+   event("elimination",position)
+  if room.bed_level>old.bed:
+   event("bed_upgrade",room.bed_position())
+   event("upgrade",position)
+  if room.door_level>old.door:
+   event("door_upgrade",room.door_position())
+  if room.door_hp<old.hp:
+   event("door_hit",room.door_position())
+   for fraction in [0.66,0.33]:
+    if old.hp/old.max_hp>fraction and room.door_hp/room.max_hp()<=fraction:
+     event("door_crack",room.door_position())
+  elif room.door_hp>old.hp and room.door_level==old.door:
+   event("repair",room.door_position())
+  if old.hp>0 and room.door_hp<=0:
+   event("door_break",room.door_position())
+   event("breach",room.door_position())
+  for tile in room.buildings:
+   var b = room.buildings[tile]
+   if not old.buildings.has(tile):
+    event("build",room.tile_position(tile))
+   elif b.level>old.buildings[tile].level:
+    event("turret_upgrade" if b.kind in ["turret","heavy"] else "upgrade",room.tile_position(tile))
+  if room.owner==0:
+   if int(room.income_total/5)>int(old.income/5):
+    event("income",room.bed_position())
+   if int(room.electricity/5)>int(old.power/5) or room.electricity<old.power:
+    event("electricity",position)
+ for combat in model.combat_events:
+  if combat.id<=_last_combat_event:
+   continue
+  _last_combat_event = combat.id
+  if combat.type=="launch":
+   event("shot_arc" if combat.kind=="heavy" else "shot_needle",combat.position)
+  elif combat.type=="impact":
+   event("impact",combat.position)
+   if combat.damage>0:
+    event("ghost_hurt",combat.position)
+ _previous = _snapshot(model)
+
+func get_diagnostics() -> Dictionary:
+ var count = 0
+ for voice in voices:
+  if voice.playing:
+   count += 1
+ return {"event_counts":event_counts.duplicate(),"music_start_count":music_start_count,"intensity":intensity,"proximity":proximity,"loop_weights":loop_weights.duplicate(),"voices":count,"voice_limit":VOICE_LIMIT,"frame_voice_limit":FRAME_VOICE_LIMIT,"dropped_events":dropped_events,"mix":mix.duplicate(),"missing_assets":missing_assets.duplicate(),"stream_count":streams.size(),"pending_critical":_pending_critical.size()}
+
+func shutdown():
+ for player in loops.values()+voices:
+  if is_instance_valid(player):
+   player.stop()
+   player.stream = null
+ streams.clear()
+ _observed_model = null
+ _previous.clear()
+
+func _exit_tree():
+ shutdown()
+
+func _queue_critical(name: String, position: Vector2):
+ for cue in _pending_critical:
+  if cue.name==name:
+   return
+ if _pending_critical.size()<CRITICAL_EVENTS.size():
+  _pending_critical.append({"name":name,"position":position})

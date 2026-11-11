@@ -134,8 +134,8 @@ func run():
  check(game.pending_build=="" and not game.full_map and game.model.player_room==-1,"restart clears camera/placement ownership state")
  game.return_menu()
  check(game.mode=="menu" and game.camera.zoom==Vector2.ONE and game.pending_build=="","menu restores neutral camera and clears preview")
- game.audio.stop()
- game.audio.stream=null
+ game.audio_system.shutdown()
+ await create_timer(0.5).timeout
  game.queue_free()
  await create_timer(0.2).timeout
  print("REDESIGN_UI_ASSERTIONS=",assertions," FAILURES=",failures)

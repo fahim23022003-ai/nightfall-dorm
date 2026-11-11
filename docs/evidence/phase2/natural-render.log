@@ -1,0 +1,11 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+PHASE2_NATURAL_CAPTURE 08-natural-escalated-defense code=0
+PHASE2_NATURAL_CAPTURE 09-natural-victory-xp code=0
+PHASE2_NATURAL_MATCH active=true result=victory time=128.203853898985 initial_gold=25 xp_before=0 xp_after=161 breakdown={"breakdown":{"ceiling_adjustment":0,"damage":5,"defense":0,"difficulty":"standard","difficulty_bonus":0,"eligible":true,"loss_adjustment":0,"survival":36,"total":161,"victory":120},"match_id":1,"new_rank":0,"old_rank":0,"promoted":false,"result":"victory"} disk_reload=true
+PHASE2_NATURAL_CAPTURE 10-natural-defeat-xp code=0
+PHASE2_NATURAL_MATCH active=false result=defeat time=41.745557185185 initial_gold=25 xp_before=161 xp_after=165 breakdown={"breakdown":{"ceiling_adjustment":0,"damage":0,"defense":0,"difficulty":"standard","difficulty_bonus":0,"eligible":true,"loss_adjustment":-8,"survival":12,"total":4,"victory":0},"match_id":2,"new_rank":0,"old_rank":0,"promoted":false,"result":"defeat"} disk_reload=true
+PHASE2_NATURAL_MATCHES=2 PASS=true

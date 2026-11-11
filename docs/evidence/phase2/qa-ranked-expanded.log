@@ -1,0 +1,14 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+RANKED_QA persistence: isolated missing/save/backup/corrupt/future
+RANKED_QA schema: reject invalid nested records and bounds
+RANKED_QA bounded typed-schema mutation table
+ERROR: RANKED_QA_FAIL: active match cannot precede or replay an already settled sequence
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/ranked_progression.gd:11)
+       [1] run (res://tests/ranked_progression.gd:156)
+RANKED_QA rank boundaries and single unlocked loadout
+RANKED_QA all six perks alter actual game calculations
+RANKED_QA bounded transparent awards and exactly-once reload
+RANKED_PROGRESSION_ASSERTIONS=137 FAILURES=1

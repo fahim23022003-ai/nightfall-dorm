@@ -45,6 +45,7 @@ var warning_box: Panel
 var warning_label: Label
 var default_font=preload("res://assets/fonts/Interface.ttf")
 var display_font=preload("res://assets/fonts/CartoonDisplay.ttf")
+var progression: ProgressionInterface
 var feedback_text=""
 var feedback_until=0.0
 
@@ -59,6 +60,7 @@ func _ready():
  theme.default_font=default_font
  theme.default_font_size=18
  panel.theme=theme
+ progression=ProgressionInterface.new(self)
  show_menu()
 
 func clear():
@@ -126,6 +128,7 @@ func button(text: String,pos: Vector2,callback: Callable,width: float=240,height
  b.text=text
  b.position=pos
  b.size=Vector2(width,height)
+ b.pressed.connect(func(): game.audio_event("button"))
  b.pressed.connect(callback)
  for state in ["normal","hover","pressed","disabled","focus"]:
   var fill="3F6675" if state=="hover" else "304D61"
@@ -141,10 +144,11 @@ func show_menu():
  label_at("SMALL ROOMS. BIG NIGHTMARES.",Vector2(72,108),18,580).modulate=Color("7BE3A1")
  label_at("NIGHTFALL\nDORM",Vector2(66,157),58,600,true)
  label_at("Claim a bed. Build your defenses.\nMake it through the night.",Vector2(72,315),20,590)
- button("Start Game",Vector2(72,405),game.start_match,330,54)
+ button("Start Game",Vector2(72,405),progression.show_loadout,330,54)
  button("How to Play",Vector2(72,477),show_help,160,46)
  button("Settings",Vector2(242,477),show_settings,160,46)
- button("Exit Game",Vector2(72,539),func(): game.get_tree().quit(),330,44)
+ button("Exit Game",Vector2(72,539),game.request_quit,330,44)
+ progression.menu_summary()
  label_at("Original cartoon dormitory survival defense",Vector2(72,662),16,620).modulate=Color("9DB6C2")
 
 func show_help():
@@ -156,31 +160,40 @@ func show_help():
 
 func show_settings():
  clear()
- box(Rect2(360,100,560,500))
- label_at("SETTINGS",Vector2(400,135),30,470,true)
- label_at("Sound volume",Vector2(400,215),20,460)
- var slider=HSlider.new()
- slider.position=Vector2(400,258)
- slider.size=Vector2(450,34)
- slider.step=0.01
- slider.min_value=0
- slider.max_value=1
- slider.value=game.sound_volume
- slider.value_changed.connect(func(value): game.sound_volume=value)
- panel.add_child(slider)
- var toggle=CheckButton.new()
- toggle.text="Fullscreen"
- toggle.position=Vector2(400,330)
- toggle.button_pressed=get_window().mode==Window.MODE_FULLSCREEN
- toggle.toggled.connect(func(value): get_window().mode=Window.MODE_FULLSCREEN if value else Window.MODE_WINDOWED)
- panel.add_child(toggle)
- var guide=CheckButton.new()
- guide.text="First-night tutorial"
- guide.position=Vector2(400,390)
- guide.button_pressed=game.tutorial_enabled
- guide.toggled.connect(func(value): game.tutorial_enabled=value)
- panel.add_child(guide)
- button("Back",Vector2(400,500),show_menu,200,46)
+ game.audio_event("menu")
+ box(Rect2(330,40,620,640))
+ label_at("SETTINGS",Vector2(370,70),30,540,true)
+ for i in range(3):
+  var key=["music","effects","ambient"][i]
+  label_at(key.capitalize()+" volume",Vector2(370,125+i*84),20,520)
+  var slider=HSlider.new()
+  slider.name=key+"_volume"
+  slider.position=Vector2(370,164+i*84)
+  slider.size=Vector2(530,28)
+  slider.step=0.01
+  slider.min_value=0
+  slider.max_value=1
+  slider.value=game.profile.settings[key]
+  var id=key
+  slider.value_changed.connect(func(value): game.change_setting(id,value))
+  panel.add_child(slider)
+ var options=["muted","fullscreen","tutorial"]
+ var names=["Mute all audio","Fullscreen","First-night tutorial"]
+ for i in range(3):
+  var toggle=CheckButton.new()
+  toggle.name=options[i]
+  toggle.text=names[i]
+  toggle.position=Vector2(370,395+i*54)
+  toggle.button_pressed=game.profile.settings[options[i]]
+  var id=options[i]
+  toggle.toggled.connect(func(value): game.change_setting(id,value))
+  panel.add_child(toggle)
+ button("Back",Vector2(370,590),show_menu,200,46)
+ if game.profile.warning!="":
+  var text=label_at(game.profile.warning,Vector2(590,585),16,310)
+  text.clip_text=true
+  text.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+  text.size=Vector2(310,70)
 
 func show_match():
  clear()
@@ -203,7 +216,7 @@ func show_match():
  panel.add_child(hunter_bar)
  map_button=button("Map",Vector2(1010,24),game.toggle_map,78,36)
  map_button.tooltip_text="Strategic map / focused room [M]"
- button("Help",Vector2(1098,24),func(): game.tutorial_enabled=not game.tutorial_enabled,62,36)
+ button("Help",Vector2(1098,24),game.toggle_guide,62,36)
  pause_button=button("Ⅱ",Vector2(1174,24),game.toggle_pause,62,36)
  pause_button.tooltip_text="Pause / resume [Esc]"
  guide_box=box(Rect2(20,92,334,112),"294957","7BE3A1")
@@ -330,7 +343,7 @@ func refresh_context():
   bed_details.text="Income %.1f gold/s\nNext: %s\n%s" % [room.income_rate(),"MAX" if room.bed_level>=4 else str(Catalog.BED_INCOME[room.bed_level+1])+" gold/s",action_reason("bed")]
  elif context_mode=="door":
   context_title.text="DOOR LEVEL %d / 5" % (room.door_level+1)
-  door_details.text="%d / %d HP\nNext: %s\n%s" % [room.door_hp,room.max_hp(),"MAX" if room.door_level>=4 else str(Catalog.DOOR_HP[room.door_level+1])+" HP",action_reason("door")]
+  door_details.text="%d / %d HP\nNext: %s\n%s" % [room.door_hp,room.max_hp(),"MAX" if room.door_level>=4 else str(Catalog.DOOR_HP[room.door_level+1]*room.door_multiplier)+" HP",action_reason("door")]
  elif context_mode=="confirm" and game.pending_build!="":
   var data=Catalog.BUILDINGS[game.pending_build]
   context_title.text="PLACE "+data.name.to_upper()
@@ -342,8 +355,8 @@ func refresh_context():
 func selected_stats(b) -> String:
  var d=Catalog.BUILDINGS[b.kind]
  if b.kind in ["turret","heavy"]:
-  return "Level %d / 4\nDamage %.0f\nRange %.0f\nEvery %.2fs" % [b.level,d.damage*b.level,d.range,d.interval/(1+(b.level-1)*0.12)]
- if b.kind=="generator": return "Level %d / 4\n%.1f electricity/s" % [b.level,d.rate*b.level]
+  return "Level %d / 4\nDamage %.0f\nRange %.0f\nEvery %.2fs" % [b.level,d.damage*b.level*(game.model.player().turret_multiplier if game.model.player()!=null else 1),d.range,d.interval/(1+(b.level-1)*0.12)]
+ if b.kind=="generator": return "Level %d / 4\n%.1f electricity/s" % [b.level,d.rate*b.level*(game.model.player().power_multiplier if game.model.player()!=null else 1)]
  if b.kind=="repair": return "Level %d / 4\n%.1f door HP/s" % [b.level,d.rate*b.level]
  return "Level %d / 4\n+%d%% %s" % [b.level,d.rate*b.level*100,"income" if b.kind=="economy" else "turret damage"]
 
@@ -366,7 +379,7 @@ func show_pause(open: bool):
  pause_items=[veil,bg,title,subtitle,resume,menu]
 
 func purchase(success: bool):
- game.play_tone(650 if success else 160)
+ game.audio_event("purchase" if success else "failure")
  feedback_text="Defense improved!" if success else game.model.purchase_error()
  feedback_until=game.presentation.clock+2
  update_match()
@@ -397,8 +410,9 @@ func update_match():
  guide_label.visible=guide_box.visible
  if guide_label.visible: guide_label.text=feedback_text if game.presentation.clock<feedback_until else tutorial_text()
  var threat=room!=null and m.hunter.target==room.index and m.hunter.state==HunterState.State.ATTACK
- warning_box.visible=threat
- warning_label.visible=threat
+ warning_box.visible=threat or game.level_warning_time>0
+ warning_label.visible=warning_box.visible
+ if not threat and game.level_warning_time>0: warning_label.text="THE HUNTER GROWS STRONGER · LEVEL %d" % m.hunter.level
  if threat:
   warning_label.text="YOUR DOOR IS UNDER ATTACK  ·  %d/%d" % [room.door_hp,room.max_hp()]
   warning_box.modulate.a=0.75+game.danger_time*0.35
@@ -442,8 +456,10 @@ func show_result():
  title.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  var m=game.model
  var r=m.player()
- var l=label_at("%ds survived  ·  Hunter level %d\n\n%d shots  ·  %d damage\n\n%d gold earned  ·  %d residents lost" % [m.time,m.hunter.level,r.shots if r!=null else 0,r.damage_dealt if r!=null else 0,r.income_total if r!=null else 0,m.eliminations],Vector2(390,312),20,500)
+ var l=label_at("%ds survived  ·  Hunter level %d\n%d shots  ·  %d damage\n%d gold earned  ·  %d residents lost" % [m.time,m.hunter.level,r.shots if r!=null else 0,r.damage_dealt if r!=null else 0,r.income_total if r!=null else 0,m.eliminations],Vector2(390,312),20,500)
  l.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+ progression.result_summary()
+ button("Loadout",Vector2(390,580),progression.show_loadout,235,32)
  button("Restart",Vector2(390,530),game.start_match,235,48)
  button("Main menu",Vector2(650,530),game.return_menu,235,48)
  for item in panel.get_children():

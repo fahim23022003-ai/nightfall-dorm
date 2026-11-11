@@ -72,6 +72,9 @@ func run():
  await process_frame
  press("Start Game")
  await process_frame
+ check(game.mode=="menu","Start Game opens pre-match loadout")
+ press("Start Night")
+ await process_frame
  check(game.mode == "match" and game.model.time > 0,"Start Game starts active simulation")
  game.ui.pause_button.pressed.emit()
  var time_before = game.model.time
@@ -110,8 +113,8 @@ func run():
  await process_frame
  check(game.mode == "menu", "result menu button returns menu")
  print("SCENE_CHECKS=",checks," FAILURES=",failures)
- game.audio.stop()
- game.audio.stream = null
+ game.audio_system.shutdown()
+ await create_timer(0.5).timeout
  game.queue_free()
  await create_timer(0.2).timeout
  quit(1 if failures else 0)

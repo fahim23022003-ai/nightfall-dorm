@@ -1,0 +1,60 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+RANKED_QA persistence: isolated missing/save/backup/corrupt/future
+ERROR: Parse JSON failed. Error at line 0: Expected key
+   at: parse_string (core/io/json.cpp:624)
+   GDScript backtrace (most recent call first):
+       [0] _decode (res://scripts/player_profile.gd:26)
+       [1] load_profile (res://scripts/player_profile.gd:50)
+       [2] run (res://tests/ranked_progression.gd:73)
+ERROR: Parse JSON failed. Error at line 0: Expected key
+   at: parse_string (core/io/json.cpp:624)
+   GDScript backtrace (most recent call first):
+       [0] load_profile (res://scripts/player_profile.gd:56)
+       [1] run (res://tests/ranked_progression.gd:73)
+ERROR: Parse JSON failed. Error at line 0: Expected 'true', 'false', or 'null', got 'not'
+   at: parse_string (core/io/json.cpp:624)
+   GDScript backtrace (most recent call first):
+       [0] _decode (res://scripts/player_profile.gd:26)
+       [1] load_profile (res://scripts/player_profile.gd:52)
+       [2] run (res://tests/ranked_progression.gd:100)
+RANKED_QA schema: reject invalid nested records and bounds
+ERROR: RANKED_QA_FAIL: reject overflowing match sequence
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/ranked_progression.gd:11)
+       [1] run (res://tests/ranked_progression.gd:131)
+ERROR: RANKED_QA_FAIL: reject fractional active match ID
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/ranked_progression.gd:11)
+       [1] run (res://tests/ranked_progression.gd:131)
+ERROR: RANKED_QA_FAIL: reject locked active loadout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/ranked_progression.gd:11)
+       [1] run (res://tests/ranked_progression.gd:131)
+ERROR: RANKED_QA_FAIL: reject over-cap active loadout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/ranked_progression.gd:11)
+       [1] run (res://tests/ranked_progression.gd:131)
+ERROR: RANKED_QA_FAIL: reject unknown active perk
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/ranked_progression.gd:11)
+       [1] run (res://tests/ranked_progression.gd:131)
+ERROR: RANKED_QA_FAIL: reject fractional last award ID
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/ranked_progression.gd:11)
+       [1] run (res://tests/ranked_progression.gd:131)
+RANKED_QA rank boundaries and single unlocked loadout
+RANKED_QA all six perks alter actual game calculations
+RANKED_QA bounded transparent awards and exactly-once reload
+ERROR: RANKED_QA_FAIL: wrong perk bonuses cannot settle active snapshot
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/ranked_progression.gd:11)
+       [1] run (res://tests/ranked_progression.gd:240)
+RANKED_PROGRESSION_ASSERTIONS=96 FAILURES=7

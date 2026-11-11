@@ -174,7 +174,7 @@ func run():
  print("AUDIT regression: hunter growth and active retargeting")
  g = fresh()
  room = occupy(g)
- g.time = g.preparation+Catalog.HUNTER.growth_seconds+0.01
+ g.time = g.preparation+Catalog.HUNTER.growth_seconds+Catalog.HUNTER_ESCALATION.ramp_seconds+0.01
  g.hunter.hp -= 50
  var old_max = g.hunter.max_hp
  g.hunter.tick(0.01,g)

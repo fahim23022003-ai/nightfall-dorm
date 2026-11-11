@@ -89,6 +89,8 @@ func run():
  await click_at(restart.get_global_rect().get_center())
  check(game.mode=="match" and game.model.player_room==-1 and not game.ui.context_open,"actual result click restarts clean presentation and model")
  print("OVERHAUL_UI_CHECKS=",checks," FAILURES=",failures)
+ game.audio_system.shutdown()
+ await create_timer(0.5).timeout
  game.queue_free()
  await process_frame
  quit(1 if failures else 0)
