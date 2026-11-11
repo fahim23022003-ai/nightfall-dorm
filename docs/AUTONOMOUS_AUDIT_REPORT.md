@@ -21,7 +21,7 @@ Bugs found/fixed: awake-contact/impact terminal race; clipped Dream amplifier ca
 
 Completed representative tests:12matches9W/3L. Independent pacing:12matches9W/3L. Final rendered normal-fund automation:2matches,1W/1L. These repetitions are distinct executions, not additional unique strategy coverage. Fresh final release extended suite also passed27 timestep matches and144 matrix matches (72 active wins/72 passive losses, no unresolved cases), for183 headless match executions within that final suite. Release extended results are in `docs/evidence/redesign/final-tests.log`; earlier audit history below must not be relabeled as a new run.
 
-Files and exact continuation instructions: [PROGRESS_CHECKPOINT.md](PROGRESS_CHECKPOINT.md), [ART_DIRECTION.md](ART_DIRECTION.md), [VISUAL_REDESIGN_REPORT.md](VISUAL_REDESIGN_REPORT.md). Windows/manual instructions in README; no public publishing/deployment was performed. Git checkpoint and verified private push are reported with the final task result.
+Files and exact continuation instructions: [PROGRESS_CHECKPOINT.md](PROGRESS_CHECKPOINT.md), [ART_DIRECTION.md](ART_DIRECTION.md), [VISUAL_REDESIGN_REPORT.md](VISUAL_REDESIGN_REPORT.md). Windows/manual instructions in README; no public publishing/deployment was performed. Feature commit `f497ca105debe69934fe9fc6c0ed3c8a125d9b44` was pushed and remote SHA verified; see `evidence/redesign/BACKUP_AND_BUILD.md`. The final task result identifies the documentation follow-up tip.
 
 ---
 

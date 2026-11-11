@@ -35,7 +35,7 @@ Windows export rebuilt successfully: `/workspace/NightfallDorm-CartoonRedesign-W
 
 ## Git record for this milestone
 
-The content commit is identified by `git log -1 --format=%H`; it includes this checkpoint, tests, local art and evidence. A final verified remote SHA is recorded in the task response and backup evidence. Build ZIPs/EXEs remain local ignored artifacts; source, tests and capture tools are committed. A successful source push is not a GitHub release or hosted binary backup.
+Verified feature/content commit: `f497ca105debe69934fe9fc6c0ed3c8a125d9b44`, pushed to private `origin/work`; `git ls-remote` exactly matched it. See `docs/evidence/redesign/BACKUP_AND_BUILD.md` for actual push output and demo hashes. A documentation-only follow-up records this result; identify the latest tip using `git log -1 --format=%H`. A final verified remote SHA is recorded in the task response and backup evidence. Build ZIPs/EXEs remain local ignored artifacts; source, tests and capture tools are committed. A successful source push is not a GitHub release or hosted binary backup.
 
 ---
 
