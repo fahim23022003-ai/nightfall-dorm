@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export XDG_DATA_HOME="${XDG_DATA_HOME:-/workspace/runtime-data}"
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-/workspace/runtime-config}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-/workspace/runtime-cache}"
+mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_CACHE_HOME" artifacts
+godot --headless --editor --import --quit > artifacts/import.log 2>&1
+cat artifacts/import.log
+if rg -n 'SCRIPT ERROR|Parse Error|ERROR:' artifacts/import.log; then exit 1; fi
+godot --headless --path . --script tests/run_tests.gd > artifacts/tests.log 2>&1
+cat artifacts/tests.log
+if rg -n 'SCRIPT ERROR|Parse Error|ERROR:' artifacts/tests.log; then exit 1; fi
+for suite in scene_smoke simulate_matches; do
+  godot --headless --path . --script "tests/$suite.gd" > "artifacts/$suite.log" 2>&1
+  cat "artifacts/$suite.log"
+  if rg -n 'SCRIPT ERROR|Parse Error|ERROR:' "artifacts/$suite.log"; then exit 1; fi
+done
+godot --headless --path . --quit-after 120 > artifacts/startup.log 2>&1
+cat artifacts/startup.log
+if rg -n 'SCRIPT ERROR|Parse Error|ERROR:' artifacts/startup.log; then exit 1; fi

@@ -1,0 +1,103 @@
+Command: bash tools/check.sh
+Exit status: 0
+Godot: 4.6.3.stable.official.7d41c59c4
+
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] first_scan_filesystem | Started Project initialization (5 steps)
+[   0% ] first_scan_filesystem | Scanning file structure...
+[  16% ] first_scan_filesystem | Loading global class names...
+[  33% ] first_scan_filesystem | Verifying GDExtensions...
+[  50% ] first_scan_filesystem | Creating autoload scripts...
+[  66% ] first_scan_filesystem | Initializing plugins...
+[  83% ] first_scan_filesystem | Starting file scan...
+[ DONE ] first_scan_filesystem
+
+[   0% ] update_scripts_classes | Started Registering global classes... (3 steps)
+[   0% ] update_scripts_classes | GameInterface
+[  25% ] update_scripts_classes | MatchModel
+[  50% ] update_scripts_classes | 
+[ DONE ] update_scripts_classes
+
+[   0% ] reimport | Started (Re)Importing Assets (1 steps)
+[   0% ] reimport | Preparing files to reimport...
+[   0% ] reimport | Executing pre-reimport operations...
+[   0% ] reimport | menu.png
+[  50% ] reimport | Finalizing Asset Import...
+[ DONE ] reimport
+
+[   0% ] reimport | Started (Re)Importing Assets (1 steps)
+[   0% ] reimport | Executing post-reimport operations...
+[ DONE ] reimport
+
+[   0% ] loading_editor_layout | Started Loading editor (5 steps)
+[   0% ] loading_editor_layout | Loading editor layout...
+[  16% ] loading_editor_layout | Loading docks...
+[ DONE ] loading_editor_layout
+
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+TEST 03 movement collision room interaction and delayed selection
+TEST 03 valid room selection
+TEST 08 build grid separates beds from usable tiles
+TEST 04 income only while sleeping
+TEST 05 bed upgrade and prerequisites
+TEST 06 door durability upgrade
+TEST 07 rejected transactions
+TEST 08 valid build tiles and upgrades
+TEST 12 repair bounds and destroyed doors
+TEST 14 electricity generation and spending; all six building effects
+TEST 09 turret range cooldown damage and enhancement
+TEST 10 hunter target selection and corridor navigation
+TEST 11 intact door protects resident and hunter attacks
+TEST 10 hunter exits breached room through its doorway
+TEST 13 autonomous bots
+TEST 15 hunter death triggers victory
+TEST 16 breach eliminates player and triggers defeat
+TEST 18 exposed awake player cannot softlock match
+TEST 17 reset clears match
+ASSERTIONS=125 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+SCENE_CHECKS=11 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+SIM seed=7 strategy=passive result=victory time=81.7 hunter_level=2 hunter_hp=0.0 player_gold=188.4 door_level=0 buildings=0 shots=60 eliminated=0
+SIM seed=8 strategy=passive result=defeat time=46.1 hunter_level=1 hunter_hp=873.0 player_gold=117.2 door_level=0 buildings=0 shots=3 eliminated=1
+SIM seed=99 strategy=passive result=victory time=78.5 hunter_level=2 hunter_hp=0.0 player_gold=182.0 door_level=0 buildings=0 shots=57 eliminated=0
+SIM seed=7 strategy=balanced result=victory time=81.7 hunter_level=2 hunter_hp=0.0 player_gold=42.0 door_level=1 buildings=4 shots=60 eliminated=0
+SIM seed=8 strategy=balanced result=victory time=67.7 hunter_level=1 hunter_hp=0.0 player_gold=24.8 door_level=1 buildings=3 shots=46 eliminated=0
+SIM seed=99 strategy=balanced result=victory time=78.5 hunter_level=2 hunter_hp=0.0 player_gold=24.7 door_level=1 buildings=4 shots=57 eliminated=0
+SIM seed=7 strategy=guard result=victory time=81.7 hunter_level=2 hunter_hp=0.0 player_gold=42.0 door_level=1 buildings=4 shots=60 eliminated=0
+SIM seed=8 strategy=guard result=victory time=67.7 hunter_level=1 hunter_hp=0.0 player_gold=24.8 door_level=1 buildings=3 shots=46 eliminated=0
+SIM seed=99 strategy=guard result=victory time=78.5 hunter_level=2 hunter_hp=0.0 player_gold=24.7 door_level=1 buildings=4 shots=57 eliminated=0
+SIM seed=7 strategy=economist result=victory time=81.7 hunter_level=2 hunter_hp=0.0 player_gold=42.0 door_level=1 buildings=4 shots=60 eliminated=0
+SIM seed=8 strategy=economist result=victory time=67.7 hunter_level=1 hunter_hp=0.0 player_gold=24.8 door_level=1 buildings=3 shots=46 eliminated=0
+SIM seed=99 strategy=economist result=victory time=78.5 hunter_level=2 hunter_hp=0.0 player_gold=24.7 door_level=1 buildings=4 shots=57 eliminated=0
+SIMULATIONS=12 WINS=11 LOSSES=1 UNRESOLVED=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+
+Post-final-doorway-correction repeat: tests/run_tests.gd exit 0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+TEST 03 movement collision room interaction and delayed selection
+TEST 03 valid room selection
+TEST 08 build grid separates beds from usable tiles
+TEST 04 income only while sleeping
+TEST 05 bed upgrade and prerequisites
+TEST 06 door durability upgrade
+TEST 07 rejected transactions
+TEST 08 valid build tiles and upgrades
+TEST 12 repair bounds and destroyed doors
+TEST 14 electricity generation and spending; all six building effects
+TEST 09 turret range cooldown damage and enhancement
+TEST 10 hunter target selection and corridor navigation
+TEST 11 intact door protects resident and hunter attacks
+TEST 10 hunter exits breached room through its doorway
+TEST 13 autonomous bots
+TEST 15 hunter death triggers victory
+TEST 16 breach eliminates player and triggers defeat
+TEST 18 exposed awake player cannot softlock match
+TEST 17 reset clears match
+ASSERTIONS=125 FAILURES=0
