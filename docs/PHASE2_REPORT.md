@@ -83,3 +83,7 @@ The separate `tools/capture_phase2_match.gd` completed two normal-fund rendered 
 Pull `work`, import `project.godot` into Godot4.6.3 standard and F5. Start Game now opens loadout; choose a boost/difficulty then Start Night. Listen to menu/calm/danger, turret/door/impact and result sounds; adjust independent sliders/mute, close/reopen and check rank/equipped/settings persist. Back up `profile.json` before deliberate corruption tests. Full instructions: `HOME_TESTING_WINDOWS.md`.
 
 Remaining: native Windows Phase2 runtime/audio hardware; subjective music loudness/loop comfort, longer human progression/difficulty tuning, other resolutions/accessibility, fuller bot/hunter directions and prior small art cleanup. Original offline synthesized audio is intentionally modest; this is no claim of studio-composed commercial quality. Exact Haunted Dorm fidelity remains unverified. No new executable export or publication was made.
+
+## Source backup
+
+Feature/content commit `22de43d156710f6a0b07bd02010c3181e5715e62` was pushed to private `origin/work` and remote SHA matched. A fresh Git-only archive imported and started successfully, confirming tracked source/assets suffice without the workspace cache. See `evidence/phase2/BACKUP.md` and clean-source logs. A documentation-only follow-up records this verification; final response identifies its verified pushed tip.

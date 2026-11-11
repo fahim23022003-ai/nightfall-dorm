@@ -27,7 +27,7 @@ No new Windows executable export, paid service, public release or deployment was
 
 ## Exact next steps
 
-1. Inspect Git status/log and compare local HEAD with `git ls-remote origin refs/heads/work`. This feature checkpoint plus a documentation-only backup record are committed/pushed; final task response identifies the verified tip. Do not reset, force-push or rebuild from scratch.
+1. Inspect Git status/log and compare local HEAD with `git ls-remote origin refs/heads/work`. Feature commit `22de43d156710f6a0b07bd02010c3181e5715e62` was pushed and GitHub SHA verified. A clean Git-only archive then imported and started successfully. See `docs/evidence/phase2/BACKUP.md`; final task response identifies the verified documentation follow-up tip. Do not reset, force-push or rebuild from scratch.
 2. At home pull/download private **work**, import `project.godot` into Godot4.6.3 standard, F5, **Start Game → loadout → Start Night**. Test Night watch first with no perk; optionally equip Pocket change. Ranks & rewards shows every unlock/threshold.
 3. Listen to menu/calm/danger/proximity/combat/breach/outcome cues; adjust independent volumes/mute. Verify rank/XP/equipped/settings after closing/reopening. Windows normally saves `%APPDATA%\Godot\app_userdata\Nightfall Dorm\profile.json`; back it up before deliberate recovery tests.
 4. Try normal/hard and report actual human difficulty/rank pacing. Avoid further balance retuning without evidence; current bonuses are modest and do not guarantee victory in passive simulations.
