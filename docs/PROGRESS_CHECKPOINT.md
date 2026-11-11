@@ -56,7 +56,8 @@ The fresh suite executed 183 complete headless match runs. Repeated verification
 - `35eb8854d3defde4c7d14c2be09468778f365ad5`: final gameplay/timing/AI/state fixes.
 - `6bec4f42b04edbfa15f1658f23e8a9443fd306df`: complete audit, graphical tools and evidence.
 - GitHub read access was checked successfully; the remote advertised no refs before this checkpoint.
-- Push verification: pending the checkpoint commit and actual push. A local commit alone is not a GitHub backup. This entry will be updated from the observed push result.
+- **GitHub backup verified:** `git push --set-upstream origin work` succeeded. A subsequent `git ls-remote origin refs/heads/work` returned `0e90d22f80c8566468126e7d0c42e30f461ba2ef`, exactly matching the local checkpoint commit containing this roadmap, workflow instructions and fresh test log. The branch now tracks `origin/work`. No force push was used.
+- This backup-status entry is a documentation-only follow-up to that verified content checkpoint. Its final commit is also pushed and its remote SHA checked before task completion; use `git log -1 --format=%H` and `git ls-remote origin refs/heads/work` to identify and recheck the latest saved revision. A local commit by itself is never considered a GitHub backup.
 
 ## Remaining issues and ordered roadmap
 
