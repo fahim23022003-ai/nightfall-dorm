@@ -1,5 +1,7 @@
 # Visual and interaction audit
 
+The later [extended audit](AUDIT_VISUAL_REVIEW.md) supersedes the initial pass below. It includes actual final result-veil rendering, real nondefault-tile selection, generator purchases and electricity, specific rejection messages, effect tooltips, and physical 960×600/fullscreen validation. Historical first-pass limitations below describe that earlier revision, not the final audited state.
+
 Agent D independently inspected the actual game through a Godot 4.6.3 OpenGL window on Xorg `:99`, rendered by Mesa llvmpipe at 1280×800. Inputs were real XTest keyboard/mouse events; screenshots were captured with ImageMagick. See GRAPHICAL_TESTING.md for reproducible display setup. These results are separate from headless QA.
 
 ## Executed interactions

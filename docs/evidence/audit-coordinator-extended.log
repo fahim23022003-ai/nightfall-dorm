@@ -1,0 +1,157 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (6 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | audit-fullscreen-final.png[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | audit-max-level-final.png[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | audit-physical-960-final.png[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | audit-rejection-final.png[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | audit-result-final.png[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | audit-settings-fullscreen-final.png[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (3 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  25% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  50% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing pre-reimport operations...[39m[0m
+[   0% ] [90m[1mreimport[22m | audit-fullscreen-final.png[39m[0m
+[  25% ] [90m[1mreimport[22m | audit-max-level-final.png[39m[0m
+[  50% ] [90m[1mreimport[22m | audit-settings-fullscreen-final.png[39m[0m
+[  75% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (3 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+TEST 03 movement collision room interaction and delayed selection
+TEST 03 valid room selection
+TEST 08 build grid separates beds from usable tiles
+TEST 04 income only while sleeping
+TEST 05 bed upgrade and prerequisites
+TEST 06 door durability upgrade
+TEST 07 rejected transactions
+TEST 08 valid build tiles and upgrades
+TEST 12 repair bounds and destroyed doors
+TEST 14 electricity generation and spending; all six building effects
+TEST 09 turret range cooldown damage and enhancement
+TEST 10 hunter target selection and corridor navigation
+TEST 11 intact door protects resident and hunter attacks
+TEST 10 hunter exits breached room through its doorway
+TEST 13 autonomous bots
+TEST 15 hunter death triggers victory
+TEST 16 breach eliminates player and triggers defeat
+TEST 18 exposed awake player cannot softlock match
+TEST 17 reset clears match
+ASSERTIONS=125 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+SCENE_CHECKS=19 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+SIM seed=7 strategy=passive result=defeat time=68.8 hunter_level=1 hunter_hp=4649.0 player_gold=162.6 door_level=0 buildings=0 shots=39 eliminated=1
+SIM seed=8 strategy=passive result=defeat time=41.9 hunter_level=1 hunter_hp=4973.0 player_gold=108.8 door_level=0 buildings=0 shots=3 eliminated=1
+SIM seed=99 strategy=passive result=defeat time=94.4 hunter_level=2 hunter_hp=4029.3 player_gold=213.8 door_level=0 buildings=0 shots=85 eliminated=1
+SIM seed=7 strategy=balanced result=victory time=125.5 hunter_level=3 hunter_hp=0.0 player_gold=58.2 door_level=4 buildings=6 shots=182 eliminated=0
+SIM seed=8 strategy=balanced result=victory time=134.7 hunter_level=3 hunter_hp=0.0 player_gold=27.2 door_level=4 buildings=6 shots=228 eliminated=0
+SIM seed=99 strategy=balanced result=victory time=149.7 hunter_level=3 hunter_hp=0.0 player_gold=205.6 door_level=4 buildings=6 shots=237 eliminated=0
+SIM seed=7 strategy=guard result=victory time=127.8 hunter_level=3 hunter_hp=0.0 player_gold=299.2 door_level=3 buildings=6 shots=182 eliminated=0
+SIM seed=8 strategy=guard result=victory time=146.4 hunter_level=3 hunter_hp=0.0 player_gold=400.8 door_level=3 buildings=6 shots=233 eliminated=0
+SIM seed=99 strategy=guard result=victory time=149.7 hunter_level=3 hunter_hp=0.0 player_gold=61.8 door_level=4 buildings=6 shots=237 eliminated=0
+SIM seed=7 strategy=economist result=victory time=125.7 hunter_level=3 hunter_hp=0.0 player_gold=65.6 door_level=4 buildings=6 shots=182 eliminated=0
+SIM seed=8 strategy=economist result=victory time=142.4 hunter_level=3 hunter_hp=0.0 player_gold=108.4 door_level=4 buildings=6 shots=233 eliminated=0
+SIM seed=99 strategy=economist result=victory time=149.7 hunter_level=3 hunter_hp=0.0 player_gold=249.7 door_level=4 buildings=6 shots=237 eliminated=0
+SIMULATIONS=12 WINS=9 LOSSES=3 UNRESOLVED=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+AUDIT regression: eliminated-room transactions
+AUDIT regression: invalid costs cannot create currency
+AUDIT regression: paused and terminal purchase guards
+AUDIT regression: stalled frames do not tunnel walls
+AUDIT regression: fifth bot uses last nonreserved room
+AUDIT regression: cannot sleep after hunter entered room
+AUDIT regression: going to sleep reroutes hunter out of a different room
+AUDIT regression: eliminated resident dominates simultaneous terminal events
+AUDIT regression: six building upgrade ceilings and effects
+AUDIT regression: capped-level utility effects apply to actual resources and HP
+AUDIT regression: heavy turret and level4 relay combat effects
+AUDIT regression: hunter growth and active retargeting
+AUDIT regression: idle turret cooldown cannot bank a burst
+AUDIT regression: idle hunter cannot bank door attacks
+AUDIT regression: exposed-player capture commits elimination exactly once
+AUDIT regression: overkill statistics use actual applied damage
+AUDIT_ASSERTIONS=71 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PROPERTY_TRANSACTIONS=20000 REJECTED=18007 CHECKS=175941 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+RATE dt=0.02 turret_shots_30s=34 hunter_attacks_30s=28
+RATE dt=0.05 turret_shots_30s=34 hunter_attacks_30s=28
+RATE dt=0.1 turret_shots_30s=34 hunter_attacks_30s=28
+RATE_SCENARIOS=6 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+TIMESTEP room=1 strategy=passive dt=0.02 result=defeat time=94.0 bed_index=0 door_index=0 buildings=0 hunter_hp=4266.0
+TIMESTEP room=1 strategy=passive dt=0.05 result=defeat time=94.1 bed_index=0 door_index=0 buildings=0 hunter_hp=4266.0
+TIMESTEP room=1 strategy=passive dt=0.1 result=defeat time=94.4 bed_index=0 door_index=0 buildings=0 hunter_hp=4266.0
+TIMESTEP room=1 strategy=balanced dt=0.02 result=victory time=126.2 bed_index=4 door_index=4 buildings=6 hunter_hp=0.0
+TIMESTEP room=1 strategy=balanced dt=0.05 result=victory time=126.2 bed_index=4 door_index=4 buildings=6 hunter_hp=0.0
+TIMESTEP room=1 strategy=balanced dt=0.1 result=victory time=126.3 bed_index=4 door_index=4 buildings=6 hunter_hp=0.0
+TIMESTEP room=1 strategy=turret_focus dt=0.02 result=victory time=126.2 bed_index=2 door_index=2 buildings=6 hunter_hp=0.0
+TIMESTEP room=1 strategy=turret_focus dt=0.05 result=victory time=126.2 bed_index=2 door_index=2 buildings=6 hunter_hp=0.0
+TIMESTEP room=1 strategy=turret_focus dt=0.1 result=victory time=126.3 bed_index=2 door_index=2 buildings=6 hunter_hp=0.0
+TIMESTEP room=3 strategy=passive dt=0.02 result=defeat time=41.7 bed_index=0 door_index=0 buildings=0 hunter_hp=4973.0
+TIMESTEP room=3 strategy=passive dt=0.05 result=defeat time=41.7 bed_index=0 door_index=0 buildings=0 hunter_hp=4973.0
+TIMESTEP room=3 strategy=passive dt=0.1 result=defeat time=41.9 bed_index=0 door_index=0 buildings=0 hunter_hp=4973.0
+TIMESTEP room=3 strategy=balanced dt=0.02 result=victory time=122.0 bed_index=4 door_index=3 buildings=6 hunter_hp=0.0
+TIMESTEP room=3 strategy=balanced dt=0.05 result=victory time=121.9 bed_index=4 door_index=3 buildings=6 hunter_hp=0.0
+TIMESTEP room=3 strategy=balanced dt=0.1 result=victory time=121.7 bed_index=4 door_index=3 buildings=6 hunter_hp=0.0
+TIMESTEP room=3 strategy=turret_focus dt=0.02 result=victory time=110.3 bed_index=2 door_index=2 buildings=6 hunter_hp=0.0
+TIMESTEP room=3 strategy=turret_focus dt=0.05 result=victory time=112.6 bed_index=2 door_index=2 buildings=6 hunter_hp=0.0
+TIMESTEP room=3 strategy=turret_focus dt=0.1 result=victory time=112.4 bed_index=2 door_index=2 buildings=6 hunter_hp=0.0
+TIMESTEP room=6 strategy=passive dt=0.02 result=defeat time=41.7 bed_index=0 door_index=0 buildings=0 hunter_hp=4982.0
+TIMESTEP room=6 strategy=passive dt=0.05 result=defeat time=41.7 bed_index=0 door_index=0 buildings=0 hunter_hp=4982.0
+TIMESTEP room=6 strategy=passive dt=0.1 result=defeat time=41.9 bed_index=0 door_index=0 buildings=0 hunter_hp=4982.0
+TIMESTEP room=6 strategy=balanced dt=0.02 result=victory time=140.2 bed_index=4 door_index=4 buildings=6 hunter_hp=0.0
+TIMESTEP room=6 strategy=balanced dt=0.05 result=victory time=140.1 bed_index=4 door_index=4 buildings=6 hunter_hp=0.0
+TIMESTEP room=6 strategy=balanced dt=0.1 result=victory time=140.1 bed_index=4 door_index=4 buildings=6 hunter_hp=0.0
+TIMESTEP room=6 strategy=turret_focus dt=0.02 result=victory time=135.2 bed_index=2 door_index=2 buildings=6 hunter_hp=0.0
+TIMESTEP room=6 strategy=turret_focus dt=0.05 result=victory time=135.1 bed_index=2 door_index=2 buildings=6 hunter_hp=0.0
+TIMESTEP room=6 strategy=turret_focus dt=0.1 result=victory time=135.1 bed_index=2 door_index=2 buildings=6 hunter_hp=0.0
+TIMESTEP_MATCHES=27 UNRESOLVED=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+MATRIX strategy=passive room=1 wins=0 losses=12 median_seconds=94.4
+MATRIX strategy=passive room=2 wins=0 losses=12 median_seconds=68.8
+MATRIX strategy=passive room=3 wins=0 losses=12 median_seconds=41.9
+MATRIX strategy=passive room=4 wins=0 losses=12 median_seconds=94.4
+MATRIX strategy=passive room=5 wins=0 losses=12 median_seconds=68.8
+MATRIX strategy=passive room=6 wins=0 losses=12 median_seconds=41.9
+SUMMARY strategy=passive wins=0 losses=72 unresolved=0 median_seconds=68.8 advanced_matches=0 max_bed_index=0 max_door_index=0 peak_power=0.0 max_hunter=2 heavy_matches=0 enhancer_matches=0 upgraded_building_matches=0 electricity_spent=0.0
+MATRIX strategy=balanced room=1 wins=12 losses=0 median_seconds=145.7
+MATRIX strategy=balanced room=2 wins=12 losses=0 median_seconds=145.0
+MATRIX strategy=balanced room=3 wins=12 losses=0 median_seconds=135.7
+MATRIX strategy=balanced room=4 wins=12 losses=0 median_seconds=143.3
+MATRIX strategy=balanced room=5 wins=12 losses=0 median_seconds=141.4
+MATRIX strategy=balanced room=6 wins=12 losses=0 median_seconds=138.9
+SUMMARY strategy=balanced wins=72 losses=0 unresolved=0 median_seconds=141.0 advanced_matches=72 max_bed_index=4 max_door_index=4 peak_power=97.6 max_hunter=3 heavy_matches=72 enhancer_matches=72 upgraded_building_matches=71 electricity_spent=14109.0
+AUDIT_MATRIX_MATCHES=144 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+

@@ -1,0 +1,121 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registering global classes... (7 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | BotAI[39m[0m
+[  12% ] [90m[1mupdate_scripts_classes[22m | HunterState[39m[0m
+[  25% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  37% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  50% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  62% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  75% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (9 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | audit-fullscreen-final.png[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | audit-input-generator.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | audit-input-menu.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | audit-input-selection.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | audit-input-sleep-build.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | audit-max-level-final.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | audit-physical-960-final.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | audit-rejection-final.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | audit-result-final.png[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (8 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  11% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  22% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  33% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  44% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  55% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  66% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  77% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing pre-reimport operations...[39m[0m
+[   0% ] [90m[1mreimport[22m | audit-fullscreen-final.png[39m[0m
+[  11% ] [90m[1mreimport[22m | audit-input-generator.png[39m[0m
+[  22% ] [90m[1mreimport[22m | audit-input-menu.png[39m[0m
+[  33% ] [90m[1mreimport[22m | audit-input-selection.png[39m[0m
+[  44% ] [90m[1mreimport[22m | audit-input-sleep-build.png[39m[0m
+[  55% ] [90m[1mreimport[22m | audit-physical-960-final.png[39m[0m
+[  66% ] [90m[1mreimport[22m | audit-rejection-final.png[39m[0m
+[  77% ] [90m[1mreimport[22m | audit-result-final.png[39m[0m
+[  88% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (8 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+TEST 03 movement collision room interaction and delayed selection
+TEST 03 valid room selection
+TEST 08 build grid separates beds from usable tiles
+TEST 04 income only while sleeping
+TEST 05 bed upgrade and prerequisites
+TEST 06 door durability upgrade
+TEST 07 rejected transactions
+TEST 08 valid build tiles and upgrades
+TEST 12 repair bounds and destroyed doors
+TEST 14 electricity generation and spending; all six building effects
+TEST 09 turret range cooldown damage and enhancement
+TEST 10 hunter target selection and corridor navigation
+TEST 11 intact door protects resident and hunter attacks
+TEST 10 hunter exits breached room through its doorway
+TEST 13 autonomous bots
+TEST 15 hunter death triggers victory
+TEST 16 breach eliminates player and triggers defeat
+TEST 18 exposed awake player cannot softlock match
+TEST 17 reset clears match
+ASSERTIONS=125 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+SCENE_CHECKS=19 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+SIM seed=7 strategy=passive result=defeat time=69.4 hunter_level=1 hunter_hp=4685.0 player_gold=163.8 door_level=0 buildings=0 shots=35 eliminated=1
+SIM seed=8 strategy=passive result=defeat time=42.5 hunter_level=1 hunter_hp=4973.0 player_gold=110.0 door_level=0 buildings=0 shots=3 eliminated=1
+SIM seed=99 strategy=passive result=defeat time=94.6 hunter_level=2 hunter_hp=4190.1 player_gold=214.2 door_level=0 buildings=0 shots=76 eliminated=1
+SIM seed=7 strategy=balanced result=victory time=126.6 hunter_level=3 hunter_hp=0.0 player_gold=45.6 door_level=4 buildings=6 shots=176 eliminated=0
+SIM seed=8 strategy=balanced result=victory time=141.9 hunter_level=3 hunter_hp=0.0 player_gold=61.9 door_level=4 buildings=6 shots=222 eliminated=0
+SIM seed=99 strategy=balanced result=victory time=151.6 hunter_level=3 hunter_hp=0.0 player_gold=128.3 door_level=4 buildings=6 shots=235 eliminated=0
+SIM seed=7 strategy=guard result=victory time=129.0 hunter_level=3 hunter_hp=0.0 player_gold=316.2 door_level=3 buildings=6 shots=176 eliminated=0
+SIM seed=8 strategy=guard result=victory time=149.6 hunter_level=3 hunter_hp=0.0 player_gold=35.6 door_level=4 buildings=6 shots=220 eliminated=0
+SIM seed=99 strategy=guard result=victory time=151.6 hunter_level=3 hunter_hp=0.0 player_gold=32.7 door_level=4 buildings=6 shots=235 eliminated=0
+SIM seed=7 strategy=economist result=victory time=126.6 hunter_level=3 hunter_hp=0.0 player_gold=56.4 door_level=4 buildings=6 shots=175 eliminated=0
+SIM seed=8 strategy=economist result=victory time=145.4 hunter_level=3 hunter_hp=0.0 player_gold=83.6 door_level=4 buildings=6 shots=220 eliminated=0
+SIM seed=99 strategy=economist result=victory time=151.6 hunter_level=3 hunter_hp=0.0 player_gold=390.1 door_level=4 buildings=6 shots=235 eliminated=0
+SIMULATIONS=12 WINS=9 LOSSES=3 UNRESOLVED=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+AUDIT regression: eliminated-room transactions
+AUDIT regression: paused and terminal purchase guards
+AUDIT regression: stalled frames do not tunnel walls
+AUDIT regression: fifth bot uses last nonreserved room
+AUDIT regression: cannot sleep after hunter entered room
+AUDIT regression: eliminated resident dominates simultaneous terminal events
+AUDIT regression: six building upgrade ceilings and effects
+AUDIT regression: capped-level utility effects apply to actual resources and HP
+AUDIT regression: heavy turret and level4 relay combat effects
+AUDIT regression: hunter growth and active retargeting
+AUDIT_ASSERTIONS=54 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PROPERTY_TRANSACTIONS=20000 REJECTED=18007 CHECKS=175941 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+

@@ -1,0 +1,132 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (3 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | audit-input-menu.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | audit-input-selection.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | audit-input-sleep-build.png[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (2 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  33% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing pre-reimport operations...[39m[0m
+[   0% ] [90m[1mreimport[22m | audit-input-selection.png[39m[0m
+[  33% ] [90m[1mreimport[22m | audit-input-sleep-build.png[39m[0m
+[  66% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (2 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+TEST 03 movement collision room interaction and delayed selection
+TEST 03 valid room selection
+TEST 08 build grid separates beds from usable tiles
+TEST 04 income only while sleeping
+TEST 05 bed upgrade and prerequisites
+TEST 06 door durability upgrade
+TEST 07 rejected transactions
+TEST 08 valid build tiles and upgrades
+TEST 12 repair bounds and destroyed doors
+TEST 14 electricity generation and spending; all six building effects
+TEST 09 turret range cooldown damage and enhancement
+TEST 10 hunter target selection and corridor navigation
+TEST 11 intact door protects resident and hunter attacks
+TEST 10 hunter exits breached room through its doorway
+TEST 13 autonomous bots
+TEST 15 hunter death triggers victory
+TEST 16 breach eliminates player and triggers defeat
+TEST 18 exposed awake player cannot softlock match
+TEST 17 reset clears match
+ASSERTIONS=125 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: String formatting error: unsupported format character.
+   at: validated_evaluate (core/variant/variant_op.h:770)
+   GDScript backtrace (most recent call first):
+       [0] building_effect (res://scripts/interface.gd:154)
+       [1] show_match (res://scripts/interface.gd:94)
+       [2] start_match (res://scripts/game.gd:40)
+       [3] press (res://tests/scene_smoke.gd:16)
+       [4] run (res://tests/scene_smoke.gd:50)
+ERROR: String formatting error: unsupported format character.
+   at: validated_evaluate (core/variant/variant_op.h:770)
+   GDScript backtrace (most recent call first):
+       [0] building_effect (res://scripts/interface.gd:154)
+       [1] show_match (res://scripts/interface.gd:94)
+       [2] start_match (res://scripts/game.gd:40)
+       [3] press (res://tests/scene_smoke.gd:16)
+       [4] run (res://tests/scene_smoke.gd:50)
+SCRIPT ERROR: unsupported format character in operator '%'.
+          at: GameInterface.building_effect (res://scripts/interface.gd:156)
+          GDScript backtrace (most recent call first):
+              [0] building_effect (res://scripts/interface.gd:156)
+              [1] show_match (res://scripts/interface.gd:94)
+              [2] start_match (res://scripts/game.gd:40)
+              [3] press (res://tests/scene_smoke.gd:16)
+              [4] run (res://tests/scene_smoke.gd:50)
+SCRIPT ERROR: unsupported format character in operator '%'.
+          at: GameInterface.building_effect (res://scripts/interface.gd:158)
+          GDScript backtrace (most recent call first):
+              [0] building_effect (res://scripts/interface.gd:158)
+              [1] show_match (res://scripts/interface.gd:94)
+              [2] start_match (res://scripts/game.gd:40)
+              [3] press (res://tests/scene_smoke.gd:16)
+              [4] run (res://tests/scene_smoke.gd:50)
+ERROR: String formatting error: unsupported format character.
+   at: validated_evaluate (core/variant/variant_op.h:770)
+   GDScript backtrace (most recent call first):
+       [0] building_effect (res://scripts/interface.gd:154)
+       [1] show_match (res://scripts/interface.gd:94)
+       [2] start_match (res://scripts/game.gd:40)
+       [3] press (res://tests/scene_smoke.gd:16)
+       [4] run (res://tests/scene_smoke.gd:68)
+ERROR: String formatting error: unsupported format character.
+   at: validated_evaluate (core/variant/variant_op.h:770)
+   GDScript backtrace (most recent call first):
+       [0] building_effect (res://scripts/interface.gd:154)
+       [1] show_match (res://scripts/interface.gd:94)
+       [2] start_match (res://scripts/game.gd:40)
+       [3] press (res://tests/scene_smoke.gd:16)
+       [4] run (res://tests/scene_smoke.gd:68)
+SCRIPT ERROR: unsupported format character in operator '%'.
+          at: GameInterface.building_effect (res://scripts/interface.gd:156)
+          GDScript backtrace (most recent call first):
+              [0] building_effect (res://scripts/interface.gd:156)
+              [1] show_match (res://scripts/interface.gd:94)
+              [2] start_match (res://scripts/game.gd:40)
+              [3] press (res://tests/scene_smoke.gd:16)
+              [4] run (res://tests/scene_smoke.gd:68)
+SCRIPT ERROR: unsupported format character in operator '%'.
+          at: GameInterface.building_effect (res://scripts/interface.gd:158)
+          GDScript backtrace (most recent call first):
+              [0] building_effect (res://scripts/interface.gd:158)
+              [1] show_match (res://scripts/interface.gd:94)
+              [2] start_match (res://scripts/game.gd:40)
+              [3] press (res://tests/scene_smoke.gd:16)
+              [4] run (res://tests/scene_smoke.gd:68)
+SCENE_CHECKS=11 FAILURES=0
+3:ERROR: String formatting error: unsupported format character.
+11:ERROR: String formatting error: unsupported format character.
+19:SCRIPT ERROR: unsupported format character in operator '%'.
+27:SCRIPT ERROR: unsupported format character in operator '%'.
+35:ERROR: String formatting error: unsupported format character.
+43:ERROR: String formatting error: unsupported format character.
+51:SCRIPT ERROR: unsupported format character in operator '%'.
+59:SCRIPT ERROR: unsupported format character in operator '%'.

@@ -49,8 +49,14 @@ Original balance values approximate the requested strategic loop; this project d
 
 ## Deliverable status
 
-The playable desktop core passed Godot import/startup, 125 gameplay assertions, 11 scene checks and 12 fixed-seed full matches (11 wins, one loss). Actual Linux graphical interactions and screenshots are documented in `docs/VISUAL_REVIEW.md`. See `docs/QA_REPORT.md` for bugs fixed and exact test scope.
+The playable desktop core passed Godot import/startup, 125 gameplay assertions, 19 scene/input checks, 71 focused audit assertions, 20,000 property-test transactions, and the extended deterministic match suites. Actual Linux graphical interactions and screenshots are documented in `docs/VISUAL_REVIEW.md`. See `docs/QA_REPORT.md` for bugs fixed and exact test scope.
 
 No standalone Windows executable was produced: export templates are not installed. The source project runs through the Godot editor; Windows execution itself remains unverified. No public deployment was made. For a future Windows export install matching official export templates in Godot, add a Windows Desktop preset, and export to a local `builds/` directory.
 
 Run all checks with `bash tools/check.sh`. Cloud setup instructions are retained in `docs/CLOUD_SETUP.md`; the environment draft API failed to confirm persistence, so no published environment configuration is claimed.
+
+## Autonomous audit
+
+The resumed audit is recorded in [AUTONOMOUS_AUDIT_REPORT.md](docs/AUTONOMOUS_AUDIT_REPORT.md): **PASS for the tested playable core**, implementation quality **91.5/100**, exact Haunted Dorm fidelity **UNVERIFIED**. It fixed map clicks, lifecycle transactions, wall tunneling, bot upgrade starvation, hunter retargeting, timestep drift, player statistics and awake-player elimination accounting.
+
+Run `bash tools/check.sh` for regular regression checks or `bash tools/check.sh --extended` to add the 144-run room/seed/strategy matrix and 27 timestep matches. The final matrix produced 72 active victories and 72 passive defeats, with no unresolved runs. A separate rendered automated-player match reached natural victory using ordinary starting resources. See the audit for scope, raw logs, screenshots and limitations.

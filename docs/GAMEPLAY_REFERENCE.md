@@ -14,6 +14,8 @@ Access attempted from the cloud machine on 2026-11-11 using curl with the inheri
 
 The Google Play probe used a candidate package URL; that package identity has not been established and must not be cited as an authenticated official listing. No web search or browsing connector was available to this reviewer. These failures are network policy evidence, not evidence that the sources or the game are unavailable generally. Network access must be restored before a source-backed parity claim is possible.
 
+The autonomous audit retried both supplied URLs and a Google Play search on the same date; all again returned proxy CONNECT 403. No new source evidence became available.
+
 ## Confirmed specification versus reference assumptions
 
 The following are confirmed **user requirements**, not independently verified original-game mechanics:
