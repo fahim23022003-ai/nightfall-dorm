@@ -21,7 +21,9 @@ Independent Agent C exercised real ScreenTouch/ScreenDrag, joystick/multitouch, 
 
 Nineteen actual Linux/Mesa mobile-preview captures include all aspect ratios, synthetic asymmetric safe area, menu/loadout/build/confirm/pause/settings/scrolled rewards/resumed pause and no-XP result. They are prepared fixtures, not Android hardware or natural-match proof. Logs show3/3 music starts and10 mobile voices after resume. Headless host profiling completed12 more normal/hard balanced matches, mean89.68μs model step, peak6 projectiles; this is not device FPS. PNG capture/software preview rates were10–17FPS under capture overhead, not a phone performance result.
 
-Evidence: `docs/ANDROID_PORT_REPORT.md`, `ANDROID_QA_REPORT.md`, `ANDROID_EXPERIENCE_REVIEW.md`, `ANDROID_EXPORT.md`, and `docs/evidence/android/`. Final source commit/push verification is reported in the task response and backup record after GitHub SHA confirmation. APK remains a local downloadable artifact; source/tools/evidence are backed up privately.
+Evidence: `docs/ANDROID_PORT_REPORT.md`, `ANDROID_QA_REPORT.md`, `ANDROID_EXPERIENCE_REVIEW.md`, `ANDROID_EXPORT.md`, and `docs/evidence/android/`. Feature/content commit `b80e75e1ccc75bb451dae0158a262b32804a7ad5` and the pre-port recovery tag were pushed and remote SHAs verified. See `docs/evidence/android/BACKUP.md`; final response reports the verified documentation follow-up tip. APK remains a local downloadable artifact; source/tools/evidence are backed up privately.
+
+Final packaged-project check: extracted Godot assets from the actual delivered APK and ran Linux Godot against those exported resources/bytecode. Main startup,52 touch/lifecycle checks and196 layout checks passed without workspace resource dependencies. This is not native Android ABI/OS execution. See `packed-project-*.log`.
 
 ## Exact next steps
 

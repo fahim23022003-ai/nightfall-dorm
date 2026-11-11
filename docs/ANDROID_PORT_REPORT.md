@@ -76,3 +76,9 @@ Software preview sampling during PNG readback/capture ran roughly10–17FPS; tho
 Download the actual APK and install on an ARM Android7+ GLES3 phone for private testing; see `ANDROID_EXPORT.md`. Test movement→room→bed→economy→defense→result, both outcomes, upgrade/cancel and scrolling. Background/lock/unlock during combat, verify explicit Resume, listen for music continuity and check saved rank/rewards/settings after relaunch. Record phone model/Android version/FPS/thermal behavior instead of inferring from Linux.
 
 For Windows, pull `work`, import the same `project.godot` in Godot4.6.3 and F5; original controls remain. Local Android SDK/JDK/export instructions and debug-key update caveats are in `ANDROID_EXPORT.md`. Source/tools/reports are committed to private Git; large APK output remains a local downloadable build artifact rather than a public release.
+
+## Final packaged-project and backup verification
+
+Feature commit `b80e75e1ccc75bb451dae0158a262b32804a7ad5` and the pre-port recovery tag were pushed and remote SHAs verified. The actual delivered APK's Godot assets were extracted to a temporary directory; Linux Godot loaded that exported project, started the actual main scene and passed52 touch/lifecycle plus196 layout checks using external test harnesses. This is exported-resource/bytecode validation, **not Android native ABI/OS execution**. Logs: `packed-project-startup.log`, `packed-project-touch.log`, `packed-project-layout.log`. Final source/backup details: `evidence/android/BACKUP.md`.
+
+Background/resume preserves an in-progress match while its process remains alive. Full world-state save/resume after Android kills the process is not implemented; a relaunch returns to the menu, with completed XP/rewards/settings preserved and an unfinished match abandoned.
