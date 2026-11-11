@@ -4,7 +4,7 @@ extends RefCounted
 var path="user://profile.json"
 var xp=0
 var equipped: Array=[]
-var settings={"music":0.5,"effects":0.65,"ambient":0.5,"muted":false,"fullscreen":false,"tutorial":true}
+var settings={"music":0.5,"effects":0.65,"ambient":0.5,"muted":false,"fullscreen":false,"tutorial":true,"battery_saver":false}
 var next_match_id=1
 var active_match: Dictionary={}
 var last_award: Dictionary={}
@@ -89,7 +89,7 @@ func load_profile() -> bool:
  for key in ["music","effects","ambient"]:
   var value=data.settings.get(key,settings[key])
   if (value is float or value is int) and is_finite(float(value)): settings[key]=clampf(float(value),0,1)
- for key in ["muted","fullscreen","tutorial"]:
+ for key in ["muted","fullscreen","tutorial","battery_saver"]:
   if data.settings.get(key) is bool: settings[key]=data.settings[key]
  active_match=data.get("active_match",{}).duplicate(true)
  last_award=data.get("last_award",{}).duplicate(true)

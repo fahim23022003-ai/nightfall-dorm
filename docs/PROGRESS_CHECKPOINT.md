@@ -1,3 +1,40 @@
+# Latest checkpoint — Android shared-source port (11 November2026, Singapore)
+
+**Continue here; do not rebuild or remove the Windows game.** Started from private `work` at `0de14345e6f4f66f027fd1038a82a6278947eca3`, with recoverable tag `pre-android-2026-11-11`. The old Phase2 checkpoint below is history. Windows preset0 is byte-identical, and core economy/AI/door/turret/rank rule files are unchanged.
+
+**Status: PARTIAL — mobile implementation and real signed debug APK ready for private phone testing; native Android execution/performance unverified.**
+
+## Completed
+
+- Android-specific touch input, visible movement stick and Interact/Bed controls; tap-room corridor navigation and claim, tap-bed approach/sleep, real floor preview/confirm/cancel, building/bed/door upgrade/repair and on-screen map/help/pause.
+- Larger mobile menus/inspectors/result/pause, scrollable reward/help lists with drag cancellation, visible blocked-card reasons, aspect-preserving safe-area layouts for16:9/19.5:9/20:9. Windows keeps its keyboard/mouse interface.
+- Mobile background/focus handling saves, clears movement, freezes simulation and pauses audio. Resume restores streams without restarting music and waits for explicit Resume. Settings/ranks/equipped rewards retain existing user:// persistence; Windows/Android saves are separate, no sync.
+- Mobile20Hz HUD updates,10 effect voices versus16 desktop, requested60FPS or battery-saver30FPS; no device achievement claim.
+- Android SDK/template setup, original launcher icons, GLES3/Compatibility override and required texture import flag. Android Test preset retains the Windows preset. No keys/passwords or generated APKs enter Git.
+- Real `/workspace/NightfallDorm_Android_Test.apk` created (also ignored builds/android), packageorg.nightfalldorm.game, AndroidAPI24–target36, ARMv7/ARM64, landscape, debug signed, offline permissions. Static signature/resource/ABI/16KB alignment/manifest verification passed. Exact SHA/bytes: `docs/evidence/android/APK_MANIFEST.json`. No Windows EXE or store deployment was made.
+
+## Actual verification
+
+Unmodified baseline regular suite passed first. Final regular suite also passed:52 mobile touch/lifecycle and196 layout checks; model126, audio139, rank/save348, Phase2UI52, hunter39, projectile22, edges12, camera/UI173, scene24, contextual UI53, furniture30, availability3209, audit72;20k transactions/175941 property checks;6 rate scenarios;12 matches9W/3L; separate-process persistence and actual-main startup. No final script-error signatures. Old extended matrix results remain historical, not new Android runs.
+
+Independent Agent C exercised real ScreenTouch/ScreenDrag, joystick/multitouch, movement/claim/sleep, single-charge purchases, cancel/Back, upgrade/repair, swipe scrolling from buttons, paused/resumed audio and saved frame caps. Independent D reproduced and verified fixes for close-card overlap and bed-radius interception of a pad edge; reviewed real layouts. SDK specialist B built/verified actual APK probes; main integrated and generated the final named APK.
+
+Nineteen actual Linux/Mesa mobile-preview captures include all aspect ratios, synthetic asymmetric safe area, menu/loadout/build/confirm/pause/settings/scrolled rewards/resumed pause and no-XP result. They are prepared fixtures, not Android hardware or natural-match proof. Logs show3/3 music starts and10 mobile voices after resume. Headless host profiling completed12 more normal/hard balanced matches, mean89.68μs model step, peak6 projectiles; this is not device FPS. PNG capture/software preview rates were10–17FPS under capture overhead, not a phone performance result.
+
+Evidence: `docs/ANDROID_PORT_REPORT.md`, `ANDROID_QA_REPORT.md`, `ANDROID_EXPERIENCE_REVIEW.md`, `ANDROID_EXPORT.md`, and `docs/evidence/android/`. Final source commit/push verification is reported in the task response and backup record after GitHub SHA confirmation. APK remains a local downloadable artifact; source/tools/evidence are backed up privately.
+
+## Exact next steps
+
+1. Inspect Git status/log and remote `refs/heads/work`; preserve completed code. Recoverable pre-port commit/tag above retain the previous Windows version. Do not reset or force-push.
+2. Download the final named APK, verify its SHA and install on a private ARM Android7+ GLES3 phone. The SDK/manifest/signature pass is **not** an Android launch pass. There was no emulator/KVM/phone here; adb also could not create its default read-only home config.
+3. Test movement→room→bed→economy→build/upgrade/repair→hunter→both results/restart, rank/rewards/settings, long-menu swipe and accidental double-charge prevention. Test lock/background/resume and audio continuity; match should remain paused until Resume.
+4. Record model/Android version, safe-area/cutout behavior, actual FPS/memory/thermal results and physical target comfort. Adjust performance only from real measurements;30/60 are cap requests so far.
+5. Pull the same work branch into Windows Godot4.6.3 and F5 to retest native desktop behavior. Automated Windows-path checks pass, but this port has not been executed natively on Windows in cloud.
+6. For local Android exports follow ANDROID_EXPORT.md. Keep SDK/JDK paths and signing keys outside Git, retain the same key/package for updates, and do not uninstall casually (private saves are removed). No cross-platform save sync exists.
+7. Stop this milestone here pending device feedback. Preserve rules/art/audio/progression. Future changes should use one developer with bounded independent QA/UI reviews, not another whole-project rebuild.
+
+---
+
 # Latest checkpoint — Phase 2 functional delivery (11 November 2026, Singapore)
 
 **Read this first. Do not restart or redesign the game.** Continued `work` from `ad0e95e2d6c9b435074939f73e7e60fc579a680a`; all loved baseline gameplay/art/economy features were preserved. The pause/continue interruption left completed Phase2 files and test logs in the working tree; those were reviewed and finished, not regenerated. Older headers below are historical.

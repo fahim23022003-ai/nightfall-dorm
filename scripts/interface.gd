@@ -46,6 +46,7 @@ var warning_label: Label
 var default_font=preload("res://assets/fonts/Interface.ttf")
 var display_font=preload("res://assets/fonts/CartoonDisplay.ttf")
 var progression: ProgressionInterface
+var current_screen="menu"
 var feedback_text=""
 var feedback_until=0.0
 
@@ -141,6 +142,10 @@ func button(text: String,pos: Vector2,callback: Callable,width: float=240,height
 
 func show_menu():
  clear()
+ current_screen="menu"
+ if game.mobile_mode:
+  game.mobile_ui.show_menu(self)
+  return
  label_at("SMALL ROOMS. BIG NIGHTMARES.",Vector2(72,108),18,580).modulate=Color("7BE3A1")
  label_at("NIGHTFALL\nDORM",Vector2(66,157),58,600,true)
  label_at("Claim a bed. Build your defenses.\nMake it through the night.",Vector2(72,315),20,590)
@@ -153,6 +158,10 @@ func show_menu():
 
 func show_help():
  clear()
+ current_screen="help"
+ if game.mobile_mode:
+  game.mobile_ui.show_help(self)
+  return
  box(Rect2(90,65,1100,590))
  label_at("SURVIVAL HANDBOOK",Vector2(125,92),30,950,true)
  label_at("WASD / arrows: move     E: room / bed     M: map     Wheel: zoom     R: repair\n\nFind a vacant bedroom, press E inside, then E near its bed to sleep.\nGold starts while sleeping. You cannot leave the bed afterward.\n\nClick a floor pad, choose a building card, then confirm its green preview.\nRed previews cannot be purchased. Escape cancels without spending.\nClick a machine for its upgrade panel. Click the bottom bed/door summaries\nfor upgrades and repair. A Dynamo produces electricity for advanced purchases.\n\nThe hunter arrives after 30 seconds. Your turrets fire real projectiles.\nDefeat the hunter to win; your elimination loses. Doors need bed progression.\nM switches between focused play and the strategic overview.\nEscape closes cards first, then pauses. Help/G toggles the short guide.",Vector2(125,156),19,1020)
@@ -160,6 +169,10 @@ func show_help():
 
 func show_settings():
  clear()
+ current_screen="settings"
+ if game.mobile_mode:
+  game.mobile_ui.show_settings(self)
+  return
  game.audio_event("menu")
  box(Rect2(330,40,620,640))
  label_at("SETTINGS",Vector2(370,70),30,540,true)
@@ -197,6 +210,7 @@ func show_settings():
 
 func show_match():
  clear()
+ current_screen="match"
  box(Rect2(18,12,1244,64),"203747","607D8B")
  label_at("NIGHTFALL DORM",Vector2(34,27),23,260,true)
  icon("coin",Vector2(280,25),Vector2(32,32))
@@ -293,6 +307,7 @@ func show_match():
  message=guide_label
  status=phase_label
  close_context()
+ if game.mobile_mode: game.mobile_ui.match_layout(self)
  update_match()
 
 func open_context():
@@ -326,8 +341,9 @@ func refresh_context():
  if not context_open or game.model.player()==null: close_context(); return
  var room=game.model.player()
  var heights={"build":382,"upgrade":250,"bed":250,"door":300,"confirm":272}
- context_box.position=Vector2(900,628-heights[context_mode])
- context_box.size=Vector2(364,heights[context_mode])
+ if not game.mobile_mode:
+  context_box.position=Vector2(900,628-heights[context_mode])
+  context_box.size=Vector2(364,heights[context_mode])
  context_box.visible=true
  for group in {"build":build_items,"upgrade":upgrade_items,"bed":bed_items,"door":door_items,"confirm":confirmation_items}:
   var list={"build":build_items,"upgrade":upgrade_items,"bed":bed_items,"door":door_items,"confirm":confirmation_items}[group]
@@ -351,6 +367,7 @@ func refresh_context():
   var reason=game.placement_reason()
   confirmation_details.text="%d G / %d E\n%s" % [data.gold,data.power,reason if reason!="" else "Green pad ready. Confirm to purchase."]
   confirm_button.disabled=reason!=""
+ if game.mobile_mode: game.mobile_ui.context(self)
 
 func selected_stats(b) -> String:
  var d=Catalog.BUILDINGS[b.kind]
@@ -367,6 +384,9 @@ func show_pause(open: bool):
   if is_instance_valid(node): node.queue_free()
  pause_items.clear()
  if not open: return
+ if game.mobile_mode:
+  game.mobile_ui.show_pause(self)
+  return
  var veil=ColorRect.new()
  veil.size=Vector2(1280,720)
  veil.color=Color(0.05,0.1,0.16,0.75)
@@ -385,6 +405,7 @@ func purchase(success: bool):
  update_match()
 
 func tutorial_text() -> String:
+ if game.mobile_mode: return game.mobile_ui.tutorial_text()
  var m=game.model
  var room=m.player()
  if room==null: return "1 / 5  FIND A ROOM\nMove with WASD. Press E inside a vacant bedroom."
@@ -440,8 +461,10 @@ func update_match():
   b.disabled=reason!=""
   if card_visuals.has(action):
    for node in card_visuals[action]: node.modulate.a=0.55 if b.disabled else 1.0
+  if game.mobile_mode and action.begins_with("build:"): b.disabled=false
   b.tooltip_text=(building_effect(action.trim_prefix("build:"))+"\n" if action.begins_with("build:") else "")+(reason if reason!="" else "Ready")
  refresh_context()
+ if game.mobile_mode: game.mobile_ui.update_match(self)
 
 func show_result():
  clear()
@@ -462,6 +485,7 @@ func show_result():
  button("Loadout",Vector2(390,580),progression.show_loadout,235,32)
  button("Restart",Vector2(390,530),game.start_match,235,48)
  button("Main menu",Vector2(650,530),game.return_menu,235,48)
+ if game.mobile_mode: game.mobile_ui.result_layout(self)
  for item in panel.get_children():
   if item==veil: continue
   item.modulate.a=0
@@ -542,3 +566,8 @@ func building_effect(kind: String) -> String:
   "enhancer":
    return "+%d%% room turret damage per level." % (data.rate*100)
  return ""
+
+func touch_notice(text: String):
+ feedback_text=text
+ feedback_until=game.presentation.clock+3
+ update_match()

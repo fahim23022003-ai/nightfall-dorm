@@ -2,3 +2,12 @@
 *.tmp
 builds/
 artifacts/
+*.apk
+*.aab
+*.idsig
+*.keystore
+*.jks
+export_credentials.cfg
+.gradle/
+android/build/
+local.properties

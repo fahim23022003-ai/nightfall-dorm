@@ -35,6 +35,9 @@ func menu_summary():
 
 func show_ranks():
  if game.mode=="result": game.return_menu()
+ if game.mobile_mode:
+  game.mobile_ui.show_rewards(ui,false)
+  return
  ui.clear()
  game.audio_event("menu")
  ui.box(Rect2(60,40,1160,638))
@@ -73,6 +76,9 @@ func show_ranks():
 
 func show_loadout():
  if game.mode=="result": game.return_menu()
+ if game.mobile_mode:
+  game.mobile_ui.show_rewards(ui,true)
+  return
  ui.clear()
  game.audio_event("menu")
  ui.box(Rect2(90,40,1100,640))

@@ -1,0 +1,30 @@
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): true
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: CN=Nightfall Dorm Private Debug, O=Nightfall Dorm, C=SG
+Signer #1 certificate SHA-256 digest: ded4596770af3a0d9d50f12d4d9e824dc8a32e8f6724ba729cc7a4c52d0b694a
+Signer #1 certificate SHA-1 digest: ca280daed1f3f67f5da57ad2e61b4e0655baa5ff
+Signer #1 certificate MD5 digest: a05ef7ff4df0d28d5c49b82b881038d1
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 2048
+Signer #1 public key SHA-256 digest: 23a2e296b8430255b2003df9e2fa405a90a0d88a0ad810a9f0a5d94cc7322f0c
+Signer #1 public key SHA-1 digest: 101b1acd7b0a9a65743db85cdc665c9ee2a0d9f0
+Signer #1 public key MD5 digest: 9950d72ef1032d6cfdd07d25ee780855
+APK_ZIP_RESOURCES=PASS
+APK_ABIS=arm64-v8a,armeabi-v7a
+APK_BYTES=67632749
+APK_SHA256=01e8225e87e2919a9dd15c1b82fd30fcc4054051591870fce5214b6f2d9315b7
+APK_SIGNATURE_ALIGNMENT=PASS
+package: name='org.nightfalldorm.game' versionCode='1' versionName='0.3.0-test' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+minSdkVersion:'24'
+targetSdkVersion:'36'
+application-label:'Nightfall Dorm'
+native-code: 'arm64-v8a' 'armeabi-v7a'
+APK_ORIENTATION=["A: http://schemas.android.com/apk/res/android:screenOrientation(0x0101001e)=0"]
+APK_GLES_OFFLINE_LAUNCHER=PASS
+APK_VERIFICATION=PASS (native Android execution remains separate)

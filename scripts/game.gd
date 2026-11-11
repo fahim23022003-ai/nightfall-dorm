@@ -34,31 +34,47 @@ var danger_time=0.0
 var last_income: Dictionary={}
 var camera_target=Vector2.ZERO
 var closing=false
+var mobile_mode=OS.get_name()=="Android" or "--mobile-test" in OS.get_cmdline_user_args()
+var mobile_layout
+var mobile_ui
+var touch
+var in_background=false
+var ui_clock=0.0
 
 func _ready():
  var window = get_window()
  window.content_scale_size = Vector2i(1280,720)
  window.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
- window.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
- window.min_size = Vector2i(960,540)
+ window.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_EXPAND if mobile_mode else Window.CONTENT_SCALE_ASPECT_KEEP
+ if not mobile_mode: window.min_size = Vector2i(960,540)
  get_tree().auto_accept_quit=false
  var save_path=OS.get_environment("NIGHTFALL_PROFILE_PATH")
  profile=PlayerProfile.new(save_path if save_path!="" else "user://profile.json")
  profile.load_profile()
  tutorial_enabled=profile.settings.tutorial
- if profile.settings.fullscreen: window.mode=Window.MODE_FULLSCREEN
+ if not mobile_mode and profile.settings.fullscreen: window.mode=Window.MODE_FULLSCREEN
+ if mobile_mode:
+  Engine.max_fps=30 if profile.settings.get("battery_saver",false) else 60
+  get_tree().quit_on_go_back=false
  audio_system=preload("res://scripts/audio_director.gd").new()
+ audio_system.mobile_profile=mobile_mode
  add_child(audio_system)
  audio_system.set_mix(profile.settings)
  model = MatchModel.new()
  model.feedback.connect(func(text):
   if is_instance_valid(ui.message): ui.message.text = text)
+ mobile_layout=preload("res://scripts/mobile_layout.gd").new(self)
+ mobile_ui=preload("res://scripts/mobile_interface.gd").new(self)
+ touch=preload("res://scripts/touch_controls.gd").new(self)
+ add_child(touch)
  ui = GameInterface.new(self)
  add_child(ui)
  camera = Camera2D.new()
  camera.position = Vector2(640,360)
  camera.position_smoothing_enabled = false
  add_child(camera)
+ get_viewport().size_changed.connect(func(): mobile_layout.apply())
+ mobile_layout.apply()
 
 func start_match(difficulty: String=""):
  if difficulty!="": selected_difficulty=difficulty
@@ -71,6 +87,7 @@ func start_match(difficulty: String=""):
  last_progression={}
  last_hunter_level=1
  level_warning_time=0
+ if is_instance_valid(touch): touch.reset()
  selected_tile = 0
  full_map=false
  zoom_factor=1
@@ -90,22 +107,27 @@ func start_match(difficulty: String=""):
 func return_menu():
  mode = "menu"
  pending_build=""
- camera.position=Vector2(640,360)
+ if is_instance_valid(touch): touch.reset()
+ camera.position=get_viewport_rect().size/2 if mobile_mode else Vector2(640,360)
  camera.zoom=Vector2.ONE
  camera.force_update_scroll()
  ui.show_menu()
  queue_redraw()
 
 func toggle_pause():
+ if in_background: return
+ if is_instance_valid(touch): touch.reset()
  model.running = not model.running
  if not model.running: pending_build=""
  ui.show_pause(not model.running)
 
 func _process(delta: float):
+ if in_background: return
  level_warning_time=maxf(0,level_warning_time-delta)
  danger_time=maxf(0,danger_time-delta)
  if mode == "match":
   var direction = Vector2(float(Input.is_physical_key_pressed(KEY_D) or Input.is_physical_key_pressed(KEY_RIGHT))-float(Input.is_physical_key_pressed(KEY_A) or Input.is_physical_key_pressed(KEY_LEFT)),float(Input.is_physical_key_pressed(KEY_S) or Input.is_physical_key_pressed(KEY_DOWN))-float(Input.is_physical_key_pressed(KEY_W) or Input.is_physical_key_pressed(KEY_UP)))
+  if mobile_mode: direction=touch.movement(delta)
   if model.running:
    model.move_player(direction,delta)
   # Fixed simulation substeps avoid attack tunneling during slow rendered frames.
@@ -135,7 +157,10 @@ func _process(delta: float):
    last_hunter_level=model.hunter.level
    level_warning_time=3.0
   focus_camera(false,delta)
-  ui.update_match()
+  ui_clock+=delta
+  if not mobile_mode or ui_clock>=0.05:
+   ui_clock=0
+   ui.update_match()
   if model.result != "":
    last_progression=profile.settle_match(match_id,model)
    mode = "result"
@@ -148,7 +173,8 @@ func _process(delta: float):
  queue_redraw()
 
 func _unhandled_input(event):
- if mode!="match": return
+ if mode!="match" or in_background: return
+ if mobile_mode and event is InputEventMouse: return
  if event is InputEventKey and event.pressed and not event.echo:
   if event.keycode==KEY_E and model.running: model.interact()
   elif event.keycode==KEY_M: toggle_map()
@@ -230,6 +256,9 @@ func focus_camera(snap: bool=false,delta: float=0.016):
   if model.hunter.target==room.index and model.hunter.state==HunterState.State.ATTACK:
    goal=(room.center().lerp(model.hunter.position,0.38))+MAP_OFFSET
    zoom=1.65*zoom_factor
+ if mobile_mode and not full_map:
+  var desired=Vector2(470 if ui.context_open and model.player()!=null and model.player().sleeping else 640,340)
+  goal+=(get_viewport_rect().size/2-mobile_layout.screen_point(desired))/zoom
  camera_target=goal
  var weight=1.0 if snap else 1.0-exp(-delta*7)
  camera.position=camera.position.lerp(goal,weight)
@@ -249,7 +278,8 @@ func audio_event(name: String):
 func change_setting(key: String,value):
  profile.update_setting(key,value)
  audio_system.set_mix(profile.settings)
- if key=="fullscreen": get_window().mode=Window.MODE_FULLSCREEN if value else Window.MODE_WINDOWED
+ if key=="battery_saver" and mobile_mode: Engine.max_fps=30 if value else 60
+ if key=="fullscreen" and not mobile_mode: get_window().mode=Window.MODE_FULLSCREEN if value else Window.MODE_WINDOWED
  if key=="tutorial": tutorial_enabled=value
 
 func toggle_guide():
@@ -265,4 +295,65 @@ func request_quit():
  get_tree().quit()
 
 func _notification(what):
+ if mobile_mode and is_instance_valid(audio_system):
+  if what in [NOTIFICATION_APPLICATION_PAUSED,NOTIFICATION_APPLICATION_FOCUS_OUT]: suspend_mobile()
+  elif what in [NOTIFICATION_APPLICATION_RESUMED,NOTIFICATION_APPLICATION_FOCUS_IN]: resume_mobile()
+  elif what==NOTIFICATION_WM_GO_BACK_REQUEST: mobile_back()
  if what==NOTIFICATION_WM_CLOSE_REQUEST and is_instance_valid(audio_system): request_quit()
+
+func suspend_mobile():
+ if in_background: return
+ in_background=true
+ profile.save_profile()
+ if is_instance_valid(touch): touch.reset()
+ pending_build=""
+ if mode=="match":
+  model.running=false
+  ui.show_pause(true)
+ audio_system.set_suspended(true)
+
+func resume_mobile():
+ if not in_background: return
+ in_background=false
+ audio_system.set_suspended(false)
+ # Keep an interrupted match paused until the user explicitly presses Resume.
+
+func mobile_back():
+ if mode=="match":
+  if pending_build!="": cancel_placement()
+  elif ui.context_open: ui.close_context()
+  else: toggle_pause()
+ else: return_menu()
+
+func handle_touch_tap(screen: Vector2):
+ if mode!="match" or not model.running or in_background: return
+ var point=get_viewport().get_canvas_transform().affine_inverse()*screen-MAP_OFFSET
+ var room=model.player()
+ if room!=null and room.sleeping:
+  var found=false
+  for tile in range(6):
+   if Rect2(room.tile_position(tile)-Vector2(27,27),Vector2(54,54)).has_point(point):
+    selected_tile=tile
+    preview_position=room.tile_position(tile)
+    placement_on_tile=true
+    found=true
+    if pending_build!="": ui.open_confirmation()
+    else: ui.open_context()
+    break
+  if found: return
+  if pending_build!="":
+   placement_on_tile=false
+   preview_position=point
+   ui.open_confirmation()
+  elif point.distance_to(room.door_position())<45: ui.open_room_panel("door")
+  elif point.distance_to(room.bed_position())<45: ui.open_room_panel("bed")
+ elif room!=null and point.distance_to(room.bed_position())<65:
+  touch.navigate_bed()
+ elif room!=null and point.distance_to(room.door_position())<40:
+  ui.open_room_panel("door")
+ else:
+  for candidate in model.rooms:
+   if candidate.owner<0 and (candidate.bounds().has_point(point) or point.distance_to(candidate.door_position())<40):
+    touch.navigate_room(candidate)
+    ui.touch_notice("Walking to the room. Then tap its bed to sleep.")
+    return

@@ -23,7 +23,7 @@ Full controls, ZIP/Git instructions and a practical test checklist: [Windows hom
 
 Godot Linux import/startup, automated scene/input/gameplay tests, transactions and seeded matches pass. Prior actual software-rendered screenshots and two complete rendered matches are in [VISUAL_REDESIGN_REPORT.md](docs/VISUAL_REDESIGN_REPORT.md). Native Windows execution, audible output and display scaling remain unverified. Bot/hunter directional animation, small art cleanup and human balancing remain unfinished. Phase2 settings/rank/XP/equipped boosts now persist under `user://profile.json`. One map/hunter, simplified bot arrival and distance-only targeting are documented in [KNOWN_LIMITATIONS.md](docs/KNOWN_LIMITATIONS.md).
 
-This home checkpoint does not create another executable or publish/deploy anything. Earlier export records in the documentation are historical; use source branch `work` for home editor testing.
+Earlier Windows export records are historical; use source branch `work` for current home editor testing. The Android milestone creates a private-test APK as described below; nothing was publicly published/deployed.
 
 ## Phase 2: sound, ranks and hunter intelligence
 
@@ -32,6 +32,14 @@ Original menu/calm/danger music and ambience crossfade with actual hunter proxim
 Bronze→Silver→Gold→Platinum→Diamond→Master ranks unlock six modest optional boosts. **Ranks & rewards** shows XP, thresholds, unlocked/next rewards; Start Game opens loadout, with one equipped boost per match. Results display performance XP and promotion. `profile.json` uses validated temporary writes, a backup and corrupt-file recovery. Hard/Long night is optional; normal/Night watch preserves the opening threat and ramps later levels smoothly. The hunter now accounts for defenses and escapes repairing-door stalemates without teleporting.
 
 See [Phase2 report](docs/PHASE2_REPORT.md), [audio sources](docs/AUDIO_SOURCES.md), [independent QA](docs/PHASE2_QA_REPORT.md) and [experience review](docs/PHASE2_EXPERIENCE_REVIEW.md). New code is tested in cloud Godot; subjective audio quality and native Windows Phase2 execution remain unverified. No new Windows executable was exported.
+
+## Android private-test build
+
+The same project now includes landscape touch controls, a movement stick, tap-to-room/bed navigation, touch building confirmation/upgrade/repair, scrollable rewards/help, safe-area layouts and background pause/audio handling. Windows keeps its previous keyboard/mouse controls and UI.
+
+A real debug-signed **NightfallDorm_Android_Test.apk** was created at `/workspace/NightfallDorm_Android_Test.apk` (also ignored `builds/android/`). Android7+ ARMv7/ARM64 with GLES3 is the configured target. Signature, manifest, native alignment and packaged resources were verified; **native phone/emulator execution and30/60FPS remain UNVERIFIED**. No Play Store publication or new Windows EXE was made.
+
+[Android report](docs/ANDROID_PORT_REPORT.md) · [Windows SDK/export/install instructions](docs/ANDROID_EXPORT.md) · [independent touch QA](docs/ANDROID_QA_REPORT.md). The APK is a local artifact, not a GitHub-hosted release. Windows and Android saves are separate; no sync exists. Keep the same debug signing key for Android updates, and do not uninstall without considering saved-data loss.
 
 ## Cloud development
 
@@ -48,7 +56,7 @@ godot --headless --editor --import --quit
 bash tools/check.sh
 ```
 
-`tools/check.sh` runs regular import, gameplay, projectile, UI/input, furniture, availability, transaction, combat-rate and 12 representative-match checks. Add `--extended` for 27 timestep and 144 matrix matches at a balance/release milestone. A display permits `godot --path .`; headless tests alone do not verify graphics.
+`tools/check.sh` runs mobile touch/layout checks plus regular import, gameplay, projectile, UI/input, furniture, availability, transaction, combat-rate and 12 representative-match checks. Add `--extended` for 27 timestep and 144 matrix matches at a balance/release milestone. A display permits `godot --path .`; headless tests alone do not verify graphics.
 
 ## Source layout
 

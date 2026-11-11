@@ -8,6 +8,8 @@ const CRITICAL_EVENTS = ["victory","defeat","ghost_defeat","rank","reward","hunt
 const VOICE_LIMIT = 16
 const FRAME_VOICE_LIMIT = 6
 const EFFECT_COOLDOWNS = {"shot_needle":0.07,"shot_arc":0.11,"impact":0.09,"ghost_hurt":0.22,"door_hit":0.12,"door_crack":0.8,"door_break":1.0,"income":1.1,"electricity":1.0,"repair":1.0,"footstep":0.38,"danger":3.0,"build":0.15,"upgrade":0.18,"hunter_level":0.5,"hunter_spawn":1.0,"match_start":0.8,"victory":2.0,"defeat":2.0,"rank":0.8,"reward":0.4,"menu":0.2}
+var mobile_profile=false
+var suspended=false
 var event_counts: Dictionary = {}
 var music_start_count = 0
 var intensity = 0.0
@@ -82,7 +84,7 @@ func setup():
   player.play()
   if name.begins_with("music"):
    music_start_count += 1
- for i in range(VOICE_LIMIT):
+ for i in range(10 if mobile_profile else VOICE_LIMIT):
   var voice = AudioStreamPlayer.new()
   voice.name = "EffectVoice%d" % i
   voice.bus = "Effects"
@@ -170,6 +172,7 @@ func reset_match(model):
   voice.stop()
 
 func update_state(delta: float, model, mode: String):
+ if suspended: return
  setup()
  if not is_finite(delta) or delta < 0:
   return
@@ -304,7 +307,7 @@ func get_diagnostics() -> Dictionary:
  for voice in voices:
   if voice.playing:
    count += 1
- return {"event_counts":event_counts.duplicate(),"music_start_count":music_start_count,"intensity":intensity,"proximity":proximity,"loop_weights":loop_weights.duplicate(),"voices":count,"voice_limit":VOICE_LIMIT,"frame_voice_limit":FRAME_VOICE_LIMIT,"dropped_events":dropped_events,"mix":mix.duplicate(),"missing_assets":missing_assets.duplicate(),"stream_count":streams.size(),"pending_critical":_pending_critical.size()}
+ return {"event_counts":event_counts.duplicate(),"music_start_count":music_start_count,"intensity":intensity,"proximity":proximity,"loop_weights":loop_weights.duplicate(),"voices":count,"voice_limit":voices.size(),"frame_voice_limit":FRAME_VOICE_LIMIT,"dropped_events":dropped_events,"mix":mix.duplicate(),"missing_assets":missing_assets.duplicate(),"stream_count":streams.size(),"pending_critical":_pending_critical.size()}
 
 func shutdown():
  for player in loops.values()+voices:
@@ -324,3 +327,8 @@ func _queue_critical(name: String, position: Vector2):
    return
  if _pending_critical.size()<CRITICAL_EVENTS.size():
   _pending_critical.append({"name":name,"position":position})
+
+func set_suspended(value: bool):
+ suspended=value
+ for player in loops.values()+voices:
+  if is_instance_valid(player): player.stream_paused=value

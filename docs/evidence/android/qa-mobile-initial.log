@@ -1,0 +1,21 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: MOBILE QA: real movement route enters and claims tapped room
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/mobile_controls.gd:11)
+       [1] run (res://tests/mobile_controls.gd:97)
+       [2] tap (res://tests/mobile_controls.gd:32)
+ERROR: MOBILE QA: mobile repair restores real door HP
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/mobile_controls.gd:11)
+       [1] run (res://tests/mobile_controls.gd:146)
+       [2] tap (res://tests/mobile_controls.gd:32)
+ERROR: MOBILE QA: raw touch drag scrolls reward list
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/mobile_controls.gd:11)
+       [1] run (res://tests/mobile_controls.gd:178)
+       [2] finger (res://tests/mobile_controls.gd:27)
+MOBILE_CONTROLS_CHECKS=45 FAILURES=3

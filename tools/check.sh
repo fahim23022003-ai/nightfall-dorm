@@ -12,7 +12,7 @@ if rg -n 'SCRIPT ERROR|Parse Error|ERROR:' artifacts/import.log; then exit 1; fi
 godot --headless --path . --script tests/run_tests.gd > artifacts/tests.log 2>&1
 cat artifacts/tests.log
 if rg -n 'SCRIPT ERROR|Parse Error|ERROR:' artifacts/tests.log; then exit 1; fi
-for suite in audio_system ranked_progression phase2_ui phase2_hunter projectiles redesign_projectile_edges redesign_ui scene_smoke overhaul_ui furniture_collision ui_availability simulate_matches audit_regressions audit_properties audit_rates; do
+for suite in mobile_controls mobile_layout audio_system ranked_progression phase2_ui phase2_hunter projectiles redesign_projectile_edges redesign_ui scene_smoke overhaul_ui furniture_collision ui_availability simulate_matches audit_regressions audit_properties audit_rates; do
   godot --headless --path . --script "tests/$suite.gd" > "artifacts/$suite.log" 2>&1
   cat "artifacts/$suite.log"
   if rg -n 'SCRIPT ERROR|Parse Error|ERROR:' "artifacts/$suite.log"; then exit 1; fi
