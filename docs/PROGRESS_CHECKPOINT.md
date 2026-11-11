@@ -2,6 +2,19 @@
 
 Saved: 11 November 2026, Singapore time. This task preserves the completed implementation and audit; it does not begin a new development phase.
 
+
+## Latest gameplay/visual follow-up (supersedes older export/UX limitations)
+
+Started from verified GitHub `ea9438e`. Implemented availability-aware actions and specific hover reasons, selected-building catalog names and upgrade costs, coherent button states, and a cleared hunter/door caption overlap. No model/AI/economy/combat rules changed. Only one bounded visual specialist review was used.
+
+Fresh regular regressions passed: 125 gameplay, 19 scene, 71 audit assertions, 20,000 transactions / 175,941 property checks, six rate scenarios and 12 completed simulations (9 wins/3 losses). Final focused availability checks passed 3,209; scene checks passed 19 again. Two actual rendered complete matches produced natural victory and defeat using ordinary funds (14 fresh complete match runs total). Logs and 12 labeled screenshots are linked from GAMEPLAY_FIDELITY_AUDIT.md and VISUAL_AUDIT_REPORT.md. Older 144/27-run results below remain historical, not new reruns.
+
+A real Windows x64 executable now exists at `builds/windows/NightfallDorm.exe`, packaged as `/workspace/NightfallDorm-Windows-x64.zip`. Full official template SHA-512, PE architecture, embedded pack, SHA-256, export exit and empty-directory Linux pack startup were checked. Native Windows execution/audio remain UNVERIFIED. The source/preset/evidence are tracked; the generated binary ZIP is a local downloadable artifact. Exact Haunted Dorm mechanics and authentic visual comparison remain UNVERIFIED (fresh source requests still proxy-403).
+
+**Next task:** manually test the provided Windows build rather than creating another export from scratch. Prioritize actual target-device failures and newly accessible reference evidence before another mechanics or art rewrite. This follow-up is READY FOR MANUAL PLAYTEST, not a Windows runtime certification.
+
+The follow-up commit is pushed to the authorized `work` branch and its remote SHA checked before the completion message. Use `git log -1 --format=%H` and `git ls-remote origin refs/heads/work` for its exact latest revision; the older backup record below describes the prior checkpoint.
+
 ## Completion status
 
 **PASS — the desktop core gameplay is implemented and tested on Linux.** It is not a finished commercial release or a verified Haunted Dorm replica. The independent audit score is 91.5/100 for implementation quality; reference fidelity remains UNVERIFIED.
@@ -63,7 +76,7 @@ The fresh suite executed 183 complete headless match runs. Repeated verification
 
 There is no known unresolved critical core-system defect in the tested paths. Remaining work must be driven by new evidence, not another automatic whole-project rewrite.
 
-1. **Core systems / target validation:** highest-priority unfinished task is validating one complete match on Windows, the primary target. Install matching official Godot export templates, create a local Windows export, and verify menu, movement, sleeping, multiple build tiles, economy, combat, both outcomes and restart. No executable export exists yet. Obtain accessible reference evidence before asserting or changing exact Haunted Dorm mechanics; previous source requests were blocked by proxy 403.
+1. **Core systems / target validation:** highest-priority unfinished task is validating one complete match on Windows, the primary target. Use the now-created local Windows playtest build (or reproduce it with the tracked preset and official templates), and verify menu, movement, sleeping, multiple build tiles, economy, combat, both outcomes and restart. An executable export now exists; its native runtime remains unverified. Obtain accessible reference evidence before asserting or changing exact Haunted Dorm mechanics; previous source requests were blocked by proxy 403.
 2. **Ghost and survivor AI:** test more human strategies and adversarial room/late-entry situations. Preserve the passing navigation, saving and terminal regressions. Generalize map-specific routing only when a concrete map requirement or failure justifies it.
 3. **Economy and upgrades:** collect human difficulty and progression observations. The balanced automated policy wins all sampled rooms, which is not proof of broad human balance. Change prices/rates incrementally and rerun the comparable extended matrix at balance milestones.
 4. **Combat and defense:** verify target-platform attack feedback, repair behavior and input responsiveness under sustained combat; add a regression for each discovered defect. Instantaneous visible attack traces are currently functional; projectile travel or wall occlusion are not mandatory missing systems.

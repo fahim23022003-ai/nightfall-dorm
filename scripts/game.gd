@@ -122,7 +122,7 @@ func _draw():
   draw_colored_polygon(PackedVector2Array([p+Vector2(0,-23),p+Vector2(18,17),p+Vector2(4,10),p+Vector2(-5,20),p+Vector2(-18,14)]),color)
   draw_circle(p+Vector2(-5,-3),3,Color("10151f"))
   draw_circle(p+Vector2(5,-3),3,Color("10151f"))
-  text_at(HunterState.State.keys()[model.hunter.state],p+Vector2(-25,-30),Color("f2a1ae"),12)
+  text_at(HunterState.State.keys()[model.hunter.state],Vector2(clampf(p.x+26,35,880),p.y-8),Color("f2a1ae"),12)
  for f in floating:
   text_at(f.text,f.position,Color(0.95,0.8,0.3,f.life),17)
  draw_line(Vector2(950,95),Vector2(950,780),Color("61718c"),2)

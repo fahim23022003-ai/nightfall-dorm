@@ -9,6 +9,7 @@ var details: Label
 var buttons: Array = []
 var bed_button: Button
 var door_button: Button
+var actions: Dictionary = {}
 
 func _init(owner_game = null):
  game = owner_game
@@ -24,6 +25,7 @@ func clear():
  for child in panel.get_children():
   child.queue_free()
  buttons.clear()
+ actions.clear()
 
 func label_at(text: String, pos: Vector2, size: int = 20, width: float = 900) -> Label:
  var label = Label.new()
@@ -41,6 +43,16 @@ func button(text: String, pos: Vector2, callback: Callable, width: float = 240) 
  b.position = pos
  b.size = Vector2(width,38)
  b.pressed.connect(callback)
+ for state in ["normal","hover","pressed","disabled","focus"]:
+  var style = StyleBoxFlat.new()
+  style.bg_color = Color("243b49") if state == "hover" else Color("192b38")
+  if state == "disabled":
+   style.bg_color = Color("17212c")
+  style.border_color = Color("79d6d2") if state in ["hover","focus"] else Color("3d5567")
+  style.set_border_width_all(2 if state == "focus" else 1)
+  style.set_corner_radius_all(5)
+  b.add_theme_stylebox_override(state,style)
+ b.add_theme_color_override("font_disabled_color",Color("80909e"))
  panel.add_child(b)
  return b
 
@@ -87,15 +99,18 @@ func show_match():
  details = label_at("",Vector2(965,107),15,300)
  bed_button = button("Upgrade bed",Vector2(970,240),func(): purchase(game.model.upgrade_bed()),280)
  door_button = button("Upgrade door",Vector2(970,284),func(): purchase(game.model.upgrade_door()),280)
- button("Repair door · 12 gold",Vector2(970,328),func(): purchase(game.model.repair_door()),280)
+ actions.bed = bed_button
+ actions.door = door_button
+ actions.repair = button("Repair door · %d gold" % Catalog.REPAIR_COST,Vector2(970,328),func(): purchase(game.model.repair_door()),280)
  var y = 385
  for kind in Catalog.BUILDINGS:
   var data = Catalog.BUILDINGS[kind]
   var id = kind
   var build_button = button("%s · %d G / %d E" % [data.name,data.gold,data.power],Vector2(970,y),func(): purchase(game.model.buy(id,game.selected_tile)),280)
   build_button.tooltip_text = building_effect(kind)
+  actions["build:"+kind] = build_button
   y += 43
- button("Upgrade selected tile",Vector2(970,655),func(): purchase(game.model.upgrade_building(game.selected_tile)),280)
+ actions.upgrade = button("Upgrade selected tile",Vector2(970,655),func(): purchase(game.model.upgrade_building(game.selected_tile)),280)
  button("Pause / resume [Esc]",Vector2(970,710),game.toggle_pause,280)
  button("Return to main menu",Vector2(970,755),game.return_menu,280)
 
@@ -127,6 +142,73 @@ func update_match():
   bed_button.tooltip_text = "Next income: %s gold/s. Requires door level %d." % ["MAX" if room.bed_level>=4 else str(Catalog.BED_INCOME[room.bed_level+1]),maxi(1,room.bed_level)]
   door_button.tooltip_text = "Next durability: %s HP. Requires bed level %d. Preserves current damage." % ["MAX" if room.door_level>=4 else str(Catalog.DOOR_HP[room.door_level+1]),maxi(1,room.door_level)]
   details.tooltip_text = tile_description(room)
+ for action in actions:
+  var control = actions[action]
+  var reason = action_reason(action)
+  control.disabled = not reason.is_empty()
+  var effect = ""
+  if action.begins_with("build:"):
+   effect = building_effect(action.trim_prefix("build:"))
+  elif action == "bed" and room != null:
+   effect = bed_button.tooltip_text.get_slice("\n",0)
+  elif action == "door" and room != null:
+   effect = door_button.tooltip_text.get_slice("\n",0)
+  elif action == "upgrade" and room != null:
+   effect = tile_description(room)
+  control.tooltip_text = effect + ("\n" if not effect.is_empty() else "") + (reason if not reason.is_empty() else "Ready to purchase.")
+ if room != null and room.buildings.has(game.selected_tile):
+  var selected = room.buildings[game.selected_tile]
+  var data = Catalog.BUILDINGS[selected.kind]
+  actions.upgrade.text = "Building L%d · MAX" % selected.level if selected.level >= Catalog.BUILDING_MAX_LEVEL else "Upgrade L%d · %dG / %dE" % [selected.level,data.gold*selected.level,(data.power+3)*selected.level]
+ else:
+  actions.upgrade.text = "Select a building to upgrade"
+
+func action_reason(action: String) -> String:
+ # Read-only presentation query: never spend resources or change last_error.
+ var m = game.model
+ if not m.running:
+  return "Paused. Resume to purchase."
+ if m.result != "":
+  return "The match has ended."
+ var room = m.player()
+ if room == null:
+  return "Claim a room first."
+ if not room.alive:
+  return "Resident eliminated."
+ var gold = 0.0
+ var power = 0.0
+ if action == "bed":
+  if room.bed_level >= Catalog.BED_COST.size(): return "Maximum bed level."
+  if room.door_level < maxi(0,room.bed_level-1): return "Requires door level %d." % room.bed_level
+  gold = Catalog.BED_COST[room.bed_level]
+  power = Catalog.BED_POWER[room.bed_level]
+ elif action == "door":
+  if room.door_hp <= 0: return "Door destroyed."
+  if room.door_level >= Catalog.DOOR_COST.size(): return "Maximum door level."
+  if room.bed_level < maxi(0,room.door_level-1): return "Requires bed level %d." % room.door_level
+  gold = Catalog.DOOR_COST[room.door_level]
+  power = Catalog.DOOR_POWER[room.door_level]
+ elif action == "repair":
+  if room.door_hp <= 0: return "Destroyed doors cannot be repaired."
+  if room.door_hp >= room.max_hp(): return "Door already at full health."
+  gold = Catalog.REPAIR_COST
+ elif action.begins_with("build:"):
+  if not room.sleeping: return "Sleep in your bed before building."
+  if game.selected_tile < 0 or game.selected_tile > 5: return "Select a numbered floor tile in your room."
+  if room.buildings.has(game.selected_tile): return "Tile occupied. Select an empty numbered tile."
+  var kind = action.trim_prefix("build:")
+  if kind == "heavy" and room.bed_level < 1: return "Requires bed level 2."
+  gold = Catalog.BUILDINGS[kind].gold
+  power = Catalog.BUILDINGS[kind].power
+ elif action == "upgrade":
+  if not room.buildings.has(game.selected_tile): return "Select an existing building."
+  var b = room.buildings[game.selected_tile]
+  if b.level >= Catalog.BUILDING_MAX_LEVEL: return "Maximum building level."
+  gold = Catalog.BUILDINGS[b.kind].gold*b.level
+  power = (Catalog.BUILDINGS[b.kind].power+3)*b.level
+ if room.gold+0.00001 < gold: return "Need %d more gold." % ceili(gold-room.gold)
+ if room.electricity+0.00001 < power: return "Need %d more electricity. Build a Dynamo." % ceili(power-room.electricity)
+ return ""
 
 func tile_description(room: RoomState) -> String:
  if not room.buildings.has(game.selected_tile):
@@ -134,8 +216,8 @@ func tile_description(room: RoomState) -> String:
  var b = room.buildings[game.selected_tile]
  var d = Catalog.BUILDINGS[b.kind]
  if b.level >= Catalog.BUILDING_MAX_LEVEL:
-  return "%s L%d · MAX" % [b.kind.capitalize(),b.level]
- return "%s L%d · up %dG/%dE" % [b.kind.capitalize(),b.level,d.gold*b.level,(d.power+3)*b.level]
+  return "%s L%d · MAX" % [d.name,b.level]
+ return "%s L%d" % [d.name,b.level]
 
 func show_result():
  clear()

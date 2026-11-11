@@ -1,0 +1,11 @@
+Observed during this audit, 11 November 2026 Singapore time.
+Requests used inherited proxy and TLS verification; no policy bypass.
+https://www.taptap.io/post/1176667
+curl -L --max-time 15 -sS: exit 56, HTTP 000
+curl: (56) CONNECT tunnel failed, response 403
+https://gamingonphone.com/guides/haunted-dorm-beginners-guide-and-tips/
+curl -L --max-time 15 -sS: exit 56, HTTP 000
+curl: (56) CONNECT tunnel failed, response 403
+https://play.google.com/store/search?q=Haunted%20Dorm&c=apps
+curl -L --max-time 15 -sS: exit 56, HTTP 000
+curl: (56) CONNECT tunnel failed, response 403
