@@ -15,6 +15,7 @@ func _init(owner_game = null):
 
 func _ready():
  panel = Control.new()
+ panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
  add_child(panel)
  panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
  show_menu()
@@ -26,6 +27,7 @@ func clear():
 
 func label_at(text: String, pos: Vector2, size: int = 20, width: float = 900) -> Label:
  var label = Label.new()
+ label.mouse_filter = Control.MOUSE_FILTER_IGNORE
  label.text = text
  label.position = pos
  label.size = Vector2(width,50)
@@ -90,17 +92,19 @@ func show_match():
  for kind in Catalog.BUILDINGS:
   var data = Catalog.BUILDINGS[kind]
   var id = kind
-  button("%s · %d G / %d E" % [data.name,data.gold,data.power],Vector2(970,y),func(): purchase(game.model.buy(id,game.selected_tile)),280)
+  var build_button = button("%s · %d G / %d E" % [data.name,data.gold,data.power],Vector2(970,y),func(): purchase(game.model.buy(id,game.selected_tile)),280)
+  build_button.tooltip_text = building_effect(kind)
   y += 43
  button("Upgrade selected tile",Vector2(970,655),func(): purchase(game.model.upgrade_building(game.selected_tile)),280)
  button("Pause / resume [Esc]",Vector2(970,710),game.toggle_pause,280)
+ button("Return to main menu",Vector2(970,755),game.return_menu,280)
 
 func purchase(success: bool):
  if success:
   message.text = "Purchase complete."
   game.play_tone(650)
  else:
-  message.text = "Cannot purchase: select an empty tile, check resources, level cap and prerequisites."
+  message.text = game.model.purchase_error()
   game.play_tone(160)
 
 func update_match():
@@ -120,14 +124,18 @@ func update_match():
   bed_button.text = "Bed L%d → %s" % [room.bed_level+1,bed_cost]
   door_button.text = "Door L%d → %s" % [room.door_level+1,door_cost]
   # Progression requirements are explained in the help screen and tooltips.
-  details.tooltip_text = "Next bed: %s; next door: %s. Bed/door level must remain within two levels." % [bed_cost,door_cost]
+  bed_button.tooltip_text = "Next income: %s gold/s. Requires door level %d." % ["MAX" if room.bed_level>=4 else str(Catalog.BED_INCOME[room.bed_level+1]),maxi(1,room.bed_level)]
+  door_button.tooltip_text = "Next durability: %s HP. Requires bed level %d. Preserves current damage." % ["MAX" if room.door_level>=4 else str(Catalog.DOOR_HP[room.door_level+1]),maxi(1,room.door_level)]
+  details.tooltip_text = tile_description(room)
 
 func tile_description(room: RoomState) -> String:
  if not room.buildings.has(game.selected_tile):
   return "Empty floor: choose a building"
  var b = room.buildings[game.selected_tile]
  var d = Catalog.BUILDINGS[b.kind]
- return "%s L%d · up %dG/%dE" % [d.name,b.level,d.gold*b.level,(d.power+3)*b.level]
+ if b.level >= Catalog.BUILDING_MAX_LEVEL:
+  return "%s L%d · MAX" % [b.kind.capitalize(),b.level]
+ return "%s L%d · up %dG/%dE" % [b.kind.capitalize(),b.level,d.gold*b.level,(d.power+3)*b.level]
 
 func show_result():
  clear()
@@ -137,6 +145,21 @@ func show_result():
  panel.add_child(veil)
  var m = game.model
  label_at("DAWN SURVIVED" if m.result=="victory" else "YOUR LIGHT WENT OUT",Vector2(300,210),42)
- label_at("Time survived: %ds     Hunter level: %d\nShots fired: %d     Damage dealt: %d\nGold earned: %d     Residents lost: %d" % [m.time,m.hunter.level,m.shots,m.damage_dealt,m.player().income_total if m.player()!=null else 0,m.eliminations],Vector2(380,300),23)
+ label_at("Time survived: %ds     Hunter level: %d\nShots fired: %d     Damage dealt: %d\nGold earned: %d     Residents lost: %d" % [m.time,m.hunter.level,m.player().shots if m.player()!=null else 0,m.player().damage_dealt if m.player()!=null else 0,m.player().income_total if m.player()!=null else 0,m.eliminations],Vector2(380,300),23)
  button("Restart",Vector2(480,470),game.start_match)
  button("Main menu",Vector2(480,520),game.return_menu)
+
+func building_effect(kind: String) -> String:
+ var data = Catalog.BUILDINGS[kind]
+ match kind:
+  "turret", "heavy":
+   return "%.1f damage / %.1fs; range %.1fpx. Upgrades increase damage and attack speed. %s" % [data.damage,data.interval,data.range,"Requires bed level 2." if kind=="heavy" else ""]
+  "generator":
+   return "%.1f electricity per second per level." % data.rate
+  "repair":
+   return "%.1f door HP per second per level. Cannot restore a destroyed door." % data.rate
+  "economy":
+   return "+%d%% bed gold income per level." % (data.rate*100)
+  "enhancer":
+   return "+%d%% room turret damage per level." % (data.rate*100)
+ return ""

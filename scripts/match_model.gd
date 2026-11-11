@@ -36,7 +36,7 @@ func reset(seed_value: int = 1):
  bot_claimed = 0
 
 func claim_room(index: int) -> bool:
- if index < 0 or index >= rooms.size() or player_room >= 0 or rooms[index].owner >= 0:
+ if not running or result != "" or index < 0 or index >= rooms.size() or player_room >= 0 or rooms[index].owner >= 0:
   return false
  rooms[index].owner = 0
  player_room = index
@@ -44,11 +44,19 @@ func claim_room(index: int) -> bool:
  return true
 
 func sleep_player() -> bool:
- if player_room < 0:
+ if not running or result != "" or player_room < 0:
   return false
  var room = rooms[player_room]
+ if hunter.state != HunterState.State.DORMANT and room.bounds().has_point(hunter.position):
+  feedback.emit("The hunter is already inside. You cannot lock it out now.")
+  return false
  if not room.alive or player_position.distance_to(room.bed_position()) > 60:
   return false
+ for occupied in rooms:
+  if hunter.state != HunterState.State.DORMANT and occupied.bounds().has_point(hunter.position):
+   hunter.target = occupied.index
+   hunter.state = HunterState.State.EXIT
+   hunter.exit_corridor = false
  room.closed = true
  room.sleeping = true
  player_position = room.bed_position()
@@ -59,28 +67,46 @@ func player() -> RoomState:
  return rooms[player_room] if player_room >= 0 else null
 
 func buy(kind: String, tile: int) -> bool:
- return player().build(kind,tile) if player() != null else false
+ return player().build(kind,tile) if _can_purchase() else false
 
 func upgrade_bed() -> bool:
- return player().upgrade_bed() if player() != null else false
+ return player().upgrade_bed() if _can_purchase() else false
 
 func upgrade_door() -> bool:
- return player().upgrade_door() if player() != null else false
+ return player().upgrade_door() if _can_purchase() else false
 
 func repair_door() -> bool:
- return player().repair_door() if player() != null else false
+ return player().repair_door() if _can_purchase() else false
 
 func upgrade_building(tile: int) -> bool:
- return player().upgrade_building(tile) if player() != null else false
+ return player().upgrade_building(tile) if _can_purchase() else false
+
+func _can_purchase() -> bool:
+ return running and result == "" and player() != null and player().alive
+
+func purchase_error() -> String:
+ if result != "":
+  return "The match has ended. Restart to play again."
+ if not running:
+  return "Match paused. Resume before purchasing."
+ if player() == null:
+  return "Enter a free room and press E to claim it first."
+ return player().last_error
 
 func move_player(direction: Vector2, delta: float):
- if player() != null and player().sleeping:
+ if not running or result != "" or (player() != null and player().sleeping):
   return
- var destination = player_position + direction.limit_length()*180.0*delta
- if can_walk(Vector2(destination.x,player_position.y)):
-  player_position.x = destination.x
- if can_walk(Vector2(player_position.x,destination.y)):
-  player_position.y = destination.y
+ if not is_finite(delta):
+  return
+ var remaining = clampf(delta,0,0.25)
+ while remaining > 0:
+  var step = minf(remaining,0.02)
+  var destination = player_position + direction.limit_length()*180.0*step
+  if can_walk(Vector2(destination.x,player_position.y)):
+   player_position.x = destination.x
+  if can_walk(Vector2(player_position.x,destination.y)):
+   player_position.y = destination.y
+  remaining -= step
 
 func can_walk(point: Vector2) -> bool:
  if Rect2(35,335,900,150).has_point(point):
@@ -112,7 +138,11 @@ func tick(delta: float):
   for room in rooms:
    if room.owner < 0 and not room.bounds().has_point(player_position):
     options.append(room)
-  if options.size()>1 or player_room>=0:
+  var physically_reserved = false
+  for candidate in rooms:
+   if candidate.owner < 0 and candidate.bounds().has_point(player_position):
+    physically_reserved = true
+  if not options.is_empty() and (options.size()>1 or player_room>=0 or physically_reserved):
    var room = options[random.randi_range(0,options.size()-1)]
    room.owner = bot_claimed+1
    room.profile = Catalog.BOT_PROFILES[bot_claimed]
@@ -135,10 +165,10 @@ func tick(delta: float):
  else:
   hunter.tick(delta,self)
  _turrets(delta)
- if hunter.hp <= 0:
-  result = "victory"
- elif player_room >= 0 and not rooms[player_room].alive:
+ if player_room >= 0 and not rooms[player_room].alive:
   result = "defeat"
+ elif hunter.hp <= 0:
+  result = "victory"
  # A player who never selects a bed is hunted directly after the grace period.
  elif time > preparation+25 and (player() == null or not player().sleeping):
   if hunter.position.distance_to(player_position)<15:
@@ -163,6 +193,8 @@ func _turrets(delta: float):
     hunter.hurt(amount)
     damage_dealt += amount
     shots += 1
+    room.shots += 1
+    room.damage_dealt += amount
     b.flash = 0.15
     b.cooldown = data.interval/(1.0+(b.level-1)*0.12)
 

@@ -8,6 +8,7 @@ var hp = Catalog.HUNTER.hp
 var max_hp = Catalog.HUNTER.hp
 var level = 1
 var target = -1
+var avoid_target = -1
 var cooldown = 0.0
 var target_time = 0.0
 var hit_flash = 0.0
@@ -44,7 +45,8 @@ func tick(delta: float, match_state):
  if state == State.DORMANT:
   state = State.SEEK
  if state == State.SEEK:
-  target = choose_target(match_state.rooms)
+  target = choose_target(match_state.rooms,avoid_target)
+  avoid_target = -1
   target_time = 0
   if target < 0:
    return
@@ -68,7 +70,8 @@ func tick(delta: float, match_state):
    room.damage_flash = 0.25
    attacks += 1
    cooldown = interval
-  if target_time > 32 and room.door_hp > room.max_hp()*0.8:
+  if target_time > Catalog.HUNTER.retarget_seconds and room.door_hp > room.max_hp()*0.8:
+   avoid_target = target
    state = State.SEEK
  elif state == State.BREACH:
   position = position.move_toward(room.bed_position(),speed*delta)
@@ -79,15 +82,17 @@ func tick(delta: float, match_state):
    exit_corridor = false
    state = State.EXIT
 
-func choose_target(rooms: Array) -> int:
+func choose_target(rooms: Array, excluded: int = -1) -> int:
  var best = -1
  var score = INF
  for room in rooms:
-  if room.owner >= 0 and room.alive and room.sleeping:
-   var value = position.distance_to(room.door_position()) + room.door_hp*0.12
+  if room.owner >= 0 and room.alive and room.sleeping and room.index != excluded:
+   var value = position.distance_to(room.door_position()) + room.door_hp*Catalog.HUNTER.door_weight
    if value < score:
     best = room.index
     score = value
+ if best < 0 and excluded >= 0:
+  return choose_target(rooms)
  return best
 
 func hurt(amount: float):

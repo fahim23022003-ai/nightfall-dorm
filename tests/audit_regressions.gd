@@ -1,0 +1,161 @@
+extends SceneTree
+var failures = 0
+var assertions = 0
+
+func check(condition: bool, label: String):
+ assertions += 1
+ if not condition:
+  failures += 1
+  push_error("AUDIT FAIL: " + label)
+
+func fresh(seed_value = 1):
+ var game = MatchModel.new()
+ game.reset(seed_value)
+ return game
+
+func occupy(game, index = 0):
+ game.claim_room(index)
+ game.player_position = game.rooms[index].bed_position()
+ game.sleep_player()
+ return game.rooms[index]
+
+func advance(game, seconds):
+ for i in range(int(seconds*10)):
+  game.tick(0.1)
+
+func _initialize():
+ call_deferred("run")
+
+func run():
+ print("AUDIT regression: eliminated-room transactions")
+ var room = RoomState.new()
+ room.sleeping = true
+ room.gold = 10000
+ room.electricity = 1000
+ room.door_hp = 50
+ room.alive = false
+ check(not room.upgrade_bed(), "eliminated room cannot upgrade bed")
+ check(not room.upgrade_door(), "eliminated room cannot upgrade door")
+ check(not room.repair_door(), "eliminated room cannot repair")
+ check(room.gold == 10000 and room.electricity == 1000, "eliminated-room resources unchanged")
+ print("AUDIT regression: paused and terminal purchase guards")
+ var g = fresh()
+ room = occupy(g)
+ room.gold = 10000
+ room.electricity = 1000
+ g.running = false
+ check(not g.buy("turret",0) and not g.upgrade_bed() and not g.upgrade_door(), "paused purchases rejected")
+ check(room.gold == 10000 and room.buildings.is_empty(), "paused resources unchanged")
+ g.running = true
+ g.result = "victory"
+ check(not g.buy("turret",0) and not g.upgrade_bed() and not g.upgrade_door(), "terminal purchases rejected")
+ check(room.gold == 10000 and room.buildings.is_empty(), "terminal resources unchanged")
+ print("AUDIT regression: stalled frames do not tunnel walls")
+ g = fresh()
+ g.player_position = g.rooms[0].center()
+ g.move_player(Vector2.RIGHT,310.0/180.0)
+ check(g.player_position.x < 320, "large movement delta cannot teleport between adjacent rooms through wall")
+ print("AUDIT regression: fifth bot uses last nonreserved room")
+ g = fresh(11)
+ g.player_position = g.rooms[0].center()
+ advance(g,25)
+ var bots = 0
+ for r in g.rooms:
+  if r.owner > 0:
+   bots += 1
+ check(bots == 5 and g.rooms[0].owner == -1, "all five bots claim while player occupies reserved vacant room")
+ print("AUDIT regression: cannot sleep after hunter entered room")
+ g = fresh()
+ g.claim_room(0)
+ room = g.player()
+ g.player_position = room.bed_position()
+ g.time = g.preparation+26
+ g.hunter.position = room.center()
+ g.hunter.state = HunterState.State.MOVE
+ check(not g.sleep_player() and not room.closed and not room.sleeping, "sleep rejected with active intruder inside room")
+ print("AUDIT regression: eliminated resident dominates simultaneous terminal events")
+ g = fresh()
+ room = occupy(g,1)
+ g.preparation = 0
+ room.door_hp = 0
+ g.hunter.target = 1
+ g.hunter.state = HunterState.State.BREACH
+ g.hunter.position = room.bed_position()
+ g.hunter.hp = 1
+ var ally = g.rooms[0]
+ ally.owner = 1
+ ally.sleeping = true
+ ally.gold = 1000
+ ally.build("turret",2)
+ room.gold = 1000
+ room.build("turret",0)
+ # Real BREACH code kills the player before the living ally's turret kills hunter.
+ g.tick(0.1)
+ check(not room.alive and g.hunter.hp == 0 and g.result == "defeat", "player elimination has defeat priority over simultaneous hunter death")
+ check(g.shots == 1, "only living ally turret fires after player elimination")
+ print("AUDIT regression: six building upgrade ceilings and effects")
+ room = RoomState.new()
+ room.sleeping = true
+ room.bed_level = 1
+ room.gold = 100000
+ room.electricity = 100000
+ for kind in Catalog.BUILDINGS.keys():
+  var tile = room.buildings.size()
+  check(room.build(kind,tile), "construct " + kind)
+  for level in range(1,Catalog.BUILDING_MAX_LEVEL):
+   check(room.upgrade_building(tile), "upgrade " + kind + " to " + str(level+1))
+  var before_gold = room.gold
+  var before_power = room.electricity
+  check(not room.upgrade_building(tile) and room.gold == before_gold and room.electricity == before_power, "cap is atomic for " + kind)
+ print("AUDIT regression: capped-level utility effects apply to actual resources and HP")
+ room.door_hp = 20
+ var income_before = room.gold
+ var power_before = room.electricity
+ room.tick_economy(1.0)
+ check(is_equal_approx(room.gold-income_before,Catalog.BED_INCOME[room.bed_level]*(1+Catalog.BUILDINGS.economy.rate*Catalog.BUILDING_MAX_LEVEL)), "level4 amplifier increases real gold")
+ check(is_equal_approx(room.electricity-power_before,Catalog.BUILDINGS.generator.rate*Catalog.BUILDING_MAX_LEVEL), "level4 generator produces real electricity")
+ check(is_equal_approx(room.door_hp,20+Catalog.BUILDINGS.repair.rate*Catalog.BUILDING_MAX_LEVEL), "level4 repair facility restores real HP")
+ print("AUDIT regression: heavy turret and level4 relay combat effects")
+ g = fresh()
+ room = occupy(g)
+ room.gold = 100000
+ room.electricity = 100000
+ room.bed_level = 1
+ room.build("heavy",5)
+ room.build("enhancer",4)
+ for level in range(1,Catalog.BUILDING_MAX_LEVEL):
+  room.upgrade_building(5)
+  room.upgrade_building(4)
+ g.hunter.state = HunterState.State.MOVE
+ g.hunter.position = room.tile_position(5)+Vector2(Catalog.BUILDINGS.heavy.range-1,0)
+ var hunter_hp = g.hunter.hp
+ g._turrets(0.1)
+ var expected_damage = Catalog.BUILDINGS.heavy.damage*Catalog.BUILDING_MAX_LEVEL*(1+Catalog.BUILDINGS.enhancer.rate*Catalog.BUILDING_MAX_LEVEL)
+ check(is_equal_approx(hunter_hp-g.hunter.hp,expected_damage), "level4 heavy damage and relay multiplier affect real hunter HP")
+ check(room.buildings[5].cooldown < Catalog.BUILDINGS.heavy.interval, "level4 heavy fires faster than base")
+ check(room.shots == 1 and room.damage_dealt > 0, "player combat statistics recorded separately")
+ print("AUDIT regression: hunter growth and active retargeting")
+ g = fresh()
+ room = occupy(g)
+ g.time = g.preparation+Catalog.HUNTER.growth_seconds+0.01
+ g.hunter.hp -= 50
+ var old_max = g.hunter.max_hp
+ g.hunter.tick(0.01,g)
+ check(g.hunter.level == 2 and is_equal_approx(g.hunter.max_hp,old_max+Catalog.HUNTER.hp_growth), "hunter growth expands maximum HP")
+ check(is_equal_approx(g.hunter.hp,g.hunter.max_hp-50), "hunter growth preserves damage taken")
+ check(is_equal_approx(g.hunter.damage,Catalog.HUNTER.damage+Catalog.HUNTER.damage_growth), "hunter growth increases actual damage")
+ check(g.hunter.interval < Catalog.HUNTER.interval, "hunter growth accelerates attacks")
+ var other = g.rooms[1]
+ other.owner = 1
+ other.sleeping = true
+ other.closed = true
+ room.door_level = 4
+ room.door_hp = room.max_hp()
+ g.hunter.target = 0
+ g.hunter.state = HunterState.State.ATTACK
+ g.hunter.target_time = Catalog.HUNTER.retarget_seconds+1
+ g.hunter.tick(0.01,g)
+ g.hunter.tick(0.01,g)
+ check(g.hunter.target == 1, "stalled hunter switches to another valid room")
+ print("AUDIT_ASSERTIONS=",assertions," FAILURES=",failures)
+ quit(1 if failures else 0)

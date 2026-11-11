@@ -18,6 +18,29 @@ func press(text: String) -> bool:
  check(false,"button exists: " + text)
  return false
 
+func click_position(position: Vector2):
+ # Input.parse_input_event consumes physical window coordinates, including stretch.
+ position = root.get_final_transform() * position
+ var motion = InputEventMouseMotion.new()
+ motion.position = position
+ motion.global_position = position
+ Input.parse_input_event(motion)
+ await process_frame
+ var down = InputEventMouseButton.new()
+ down.position = position
+ down.global_position = position
+ down.button_index = MOUSE_BUTTON_LEFT
+ down.pressed = true
+ Input.parse_input_event(down)
+ await process_frame
+ var up = InputEventMouseButton.new()
+ up.position = position
+ up.global_position = position
+ up.button_index = MOUSE_BUTTON_LEFT
+ up.pressed = false
+ Input.parse_input_event(up)
+ await process_frame
+
 func _initialize():
  call_deferred("run")
 
@@ -62,6 +85,12 @@ func run():
  game.model.player().electricity = 100
  press("Upgrade bed")
  check(game.model.player().bed_level == 1,"UI bed button invokes production upgrade")
+ await click_position(game.model.player().tile_position(1))
+ check(game.selected_tile == 1,"actual mouse input passes UI overlay and selects second floor tile")
+ await click_position(Vector2(1100,490))
+ check(game.model.player().buildings.has(1) and game.model.player().buildings[1].kind == "generator","actual UI mouse click builds generator on selected floor")
+ for kind in Catalog.BUILDINGS:
+  check(not game.ui.building_effect(kind).is_empty(),"building effect tooltip formats for " + kind)
  game.model.result = "victory"
  await process_frame
  check(game.mode == "result", "model terminal result reaches end screen")

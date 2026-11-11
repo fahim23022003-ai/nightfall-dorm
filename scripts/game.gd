@@ -13,6 +13,11 @@ var last_shots = 0
 var camera: Camera2D
 
 func _ready():
+ var window = get_window()
+ window.content_scale_size = Vector2i(1280,800)
+ window.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
+ window.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
+ window.min_size = Vector2i(960,600)
  model = MatchModel.new()
  model.feedback.connect(func(text):
   if is_instance_valid(ui.message): ui.message.text = text)

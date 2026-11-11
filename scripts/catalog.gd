@@ -18,7 +18,14 @@ const BUILDINGS = {
 }
 const BOT_PROFILES = ["guard", "engineer", "economist", "gunner", "balanced"]
 
-const HUNTER = {"hp":900.0,"growth_seconds":45.0,"hp_growth":100.0,"damage":16.0,"damage_growth":7.0,"interval":1.1,"interval_growth":0.04,"min_interval":0.45,"speed":80.0}
+const HUNTER = {"hp":5000.0,"retarget_seconds":24.0,"door_weight":1.8,"growth_seconds":45.0,"hp_growth":100.0,"damage":22.0,"damage_growth":10.0,"interval":1.1,"interval_growth":0.04,"min_interval":0.45,"speed":80.0}
 const REPAIR_COST = 12
 const REPAIR_HEAL = 70.0
 const BUILDING_MAX_LEVEL = 4
+const AI_PROFILES = {
+ "guard":{"priorities":["turret","generator","repair","economy","heavy","enhancer"],"bed_goal":2,"door_goal":3,"interval":1.1},
+ "engineer":{"priorities":["generator","turret","repair","economy","enhancer","heavy"],"bed_goal":2,"door_goal":1,"interval":1.0},
+ "economist":{"priorities":["economy","generator","turret","repair","heavy","enhancer"],"bed_goal":3,"door_goal":1,"interval":1.2},
+ "gunner":{"priorities":["turret","generator","heavy","enhancer","economy","repair"],"bed_goal":1,"door_goal":1,"interval":0.9},
+ "balanced":{"priorities":["turret","generator","economy","repair","heavy","enhancer"],"bed_goal":2,"door_goal":2,"interval":1.1}
+}
