@@ -1,3 +1,48 @@
+# Final home-testing checkpoint — 11 November 2026
+
+**Current task complete: source secured, clean-source validation passed, home instructions prepared.** Overall game status remains **PARTIAL — playable core verified, Windows/audio and final polish unverified**. This was a checkpoint/documentation session, not another development phase. No new executable was exported; nothing was publicly released or deployed.
+
+## Source and Git state
+
+- Private repository: `https://github.com/fahim23022003-ai/nightfall-dorm`.
+- Correct branch for home testing: **`work`**, not `main`.
+- Starting HEAD: `2e6a38aa6a8a2945008f247efe2d802b533cc917`; initial working tree clean. Remote `refs/heads/work` matched that SHA.
+- Preserved feature implementation: `f497ca105debe69934fe9fc6c0ed3c8a125d9b44` (cartoon rooms, camera, confirmed placement and impact-time projectiles).
+- This final checkpoint commits only instructions/evidence; gameplay was unchanged because validation found no critical failure. The final response identifies the pushed checkpoint SHA. Verify anytime with `git rev-parse HEAD` and `git ls-remote origin refs/heads/work`; a local commit alone is not proof of backup.
+
+## Fresh validation actually executed
+
+Godot **4.6.3.stable.official.7d41c59c4**, Linux headless. A new temporary directory was populated using `git archive HEAD`, then its own `tools/check.sh` ran with writable XDG directories. This tested tracked source without this workspace's `.godot` import cache, ignored builds or untracked files. Import/startup and the whole regular suite exited **0**, with no `SCRIPT ERROR`, `Parse Error` or `ERROR:` signatures. Fresh output: [essential-tests.log](evidence/home-testing/essential-tests.log).
+
+| Check | Actual result |
+| --- | --- |
+| Project import and configured main scene startup | PASS |
+| Gameplay | 126 assertions, 0 failures |
+| Projectile flight / independent edge regressions | 22 / 12 assertions, 0 failures |
+| Independent actual-input scene UI | 173 assertions, 0 failures |
+| Main scene/menu + contextual interface | 23 + 53 checks, 0 failures |
+| Furniture/collision and purchase availability | 30 + 3,209 checks, 0 failures |
+| Focused gameplay audit | 72 assertions, 0 failures |
+| Transaction properties | 20,000 transactions / 175,941 checks, 0 failures |
+| Combat rates | 6 scenarios passed |
+| Complete seeded matches | 12 completed: 9 victories, 3 defeats; 0 unresolved |
+
+This checkpoint did not repeat the prior extended 183-match or graphical sessions; those results remain explicitly historical below. Prior screenshots/rendered matches are retained in `docs/screenshots/redesign/` and `VISUAL_REDESIGN_REPORT.md`.
+
+## Package completeness
+
+`project.godot` exists and configures `res://scenes/main.tscn`; that scene attaches `res://scripts/game.gd`. All existing scenes, scripts, assets and tests are tracked (1 scene file,16 script/UID files,314 asset/import files,31 test/UID/readme files). Literal production resource references exist and are tracked; no required reference is excluded by `.gitignore`. Fresh-archive import/scene tests also exercise dynamically loaded textures. `.godot/`, `artifacts/`, `builds/` and temporary files are intentionally ignored generated output, not missing game source. See [source-package.log](evidence/home-testing/source-package.log).
+
+## Exact home-testing steps and remaining work
+
+1. Open [HOME_TESTING_WINDOWS.md](HOME_TESTING_WINDOWS.md). Sign in to GitHub, select **work**, download/extract its ZIP (or clone `--branch work`), import `project.godot` into **Godot4.6.3 standard**, wait for import and press **F5**.
+2. Test room movement/E claim/E sleep, gold, preview/cancel/confirm, six building functions, electricity, bed/door/machine upgrades, repairs, hunter/projectile combat, bots, both outcomes and restart. Full controls and suggested checks are in the home guide and README.
+3. Record actual Windows GPU/display scaling, input feel and audible sound. These remain unverified; prior Linux screenshots do not certify them or human enjoyment.
+4. Known scope/polish limits: incomplete bot/hunter directions, small art fragments, session-local settings, one map/hunter, doorway bot starts and distance-only turret targeting. No unresolved critical error was found in the tested paths; tests are finite. Exact Haunted Dorm parity remains unverified because reference access was blocked.
+5. Resume development only after home-test evidence or another explicit task. Preserve this branch; use one developer and specialists only for bounded useful reviews. Do not restart the project.
+
+---
+
 # Current checkpoint — cartoon room-camera redesign (11 November 2026)
 
 **Start here.** This continues the existing project on branch `work`, preserving base `57beb7a` and earlier pushed `ac317686f66855e216a03e1cd586506c91b5c995`. The older checkpoint below is retained as history; its fixed overview, instant attacks and old art descriptions are superseded.

@@ -11,7 +11,7 @@
 - An earlier balance revision allowed passive-player wins. The final 144-match matrix recorded 0/72 passive wins and 72/72 balanced automated-player wins (median 141 seconds), with advanced-building construction in all 72 active matches. This is evidence for those deterministic strategies/seeds, not broad human balance or difficulty validation; further playtesting and tuning remain useful.
 - A Windows x86-64 release executable was created using checksum-verified official templates. Its embedded resources passed a Linux Godot smoke test, but native Windows execution, hardware and audio remain UNVERIFIED. See WINDOWS_READINESS.md.
 
-- Actual Linux graphical layout was checked at 1280×800 and the 960×600 minimum, plus 1280×800 fullscreen with a window manager. Other aspect ratios, Windows display scaling, and mobile screens remain unverified.
+- Historical illustrated-build graphics used1280×800/960×600 tests. The current cartoon build uses a1280×720 design canvas (minimum960×540) and actual1280×720 viewport captures. Windows display scaling, other aspect ratios and mobile screens remain unverified.
 
 - Current visual status and evidence are in VISUAL_OVERHAUL_REPORT.md. The independent review found the programmer-art impression largely removed but still judged the build an illustrated indie prototype rather than commercial-finished artwork. Historical functional audit scores are not visual-completion approval.
 

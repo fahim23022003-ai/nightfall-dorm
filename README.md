@@ -1,76 +1,57 @@
 # Nightfall Dorm
 
-An original single-player Godot 4 dormitory defense game: claim a room, sleep to earn gold, build a defense, and survive the dream hunter. The visual overhaul uses original illustrated sprites, generated local environment textures, and locally synthesized sound. No third-party game code or artwork is included.
+An original single-player Godot 4 dormitory survival defense game. Choose a room, sleep to earn gold, upgrade your bed and door, build defenses and electricity production, and defeat the hunter. Five autonomous survivors defend the other rooms. Artwork, characters and locally synthesized sounds are original; exact Haunted Dorm fidelity remains unverified.
 
-## Run on Windows
+**For home testing, download branch [`work`](https://github.com/fahim23022003-ai/nightfall-dorm/tree/work), not `main`.**
 
-1. Install Godot 4.6 stable (standard build, not .NET; tested cloud version 4.6.3).
-2. Download/clone this repository and import `project.godot` in Godot.
-3. Press F5 or click Run Project. Start Game from the menu.
-4. WASD or arrow keys move. Walk through an open door, press **E** inside to claim the room, move near its bed, and press **E** to sleep and lock the door.
-5. Click a marked floor pad to open illustrated building cards in the side inspector. Choose a card, check the green preview, then Confirm placement. Click an existing building tile and Upgrade selected to improve it. Click the bottom bed/door summaries to open their upgrades; R repairs. M toggles the map, wheel zooms, G toggles the guide. Escape cancels a preview, closes the inspector, then pauses.
+## Play in Godot on Windows
 
-You stay in bed for the remainder of the match. Gold starts only when sleeping; dynamos generate electricity. Beds and doors have progression prerequisites; later levels need electricity. Arc turrets require bed level 2. Repair stations cannot restore a destroyed door. Both resources are deducted atomically only on valid purchases.
+1. Sign in to the private [GitHub repository](https://github.com/fahim23022003-ai/nightfall-dorm), select **work**, and choose **Code → Download ZIP**.
+2. Extract the complete ZIP. Install/open **Godot 4.6.3 stable, standard build**; no .NET or export templates needed.
+3. Choose **Import**, select the extracted `project.godot`, then **Import & Edit**. Wait for asset import.
+4. Press **F5 / Run Project**, then **Start Game**.
+5. Move with **WASD/arrows**, enter a vacant room and press **E** to claim it. Approach its bed and press **E** to sleep/lock the door.
+6. Click an owned floor pad, choose a card, then **Confirm placement**. Start with a Needle turret and build a Dynamo for electricity. Click existing buildings or the bottom bed/door summaries for upgrades.
 
-A hunter arrives after 30 seconds; five bots defend the other rooms. Kill the hunter to win. A breached room exposes its resident; your elimination loses. Sleeping late is dangerous: the hunter pursues an exposed player after an additional 25-second grace period. Restart creates a clean match.
+**R** repairs, **M** toggles map/focus, **wheel** zooms, **G** toggles the guide. **Escape** cancels a preview, closes the inspector, then pauses/resumes. Gold starts only while sleeping; later purchases need electricity/prerequisites. Hunter death wins; your elimination loses. Restart/Main menu are on the result screen.
+
+Full controls, ZIP/Git instructions and a practical test checklist: [Windows home testing](docs/HOME_TESTING_WINDOWS.md).
+
+## Current status
+
+**Playable core tested; overall polish PARTIAL.** Six original cartoon room themes, room-focused camera, explicit placement confirmation, five bot identities, hunter finite-state AI, six functional building types, upgrades, repairs, real travelling projectiles/impact damage, victory/defeat and clean restart are implemented. Latest checkpoint/evidence: [PROGRESS_CHECKPOINT.md](docs/PROGRESS_CHECKPOINT.md).
+
+Godot Linux import/startup, automated scene/input/gameplay tests, transactions and seeded matches pass. Prior actual software-rendered screenshots and two complete rendered matches are in [VISUAL_REDESIGN_REPORT.md](docs/VISUAL_REDESIGN_REPORT.md). Native Windows execution, audible output and display scaling remain unverified. Bot/hunter directional animation, settings persistence, small art cleanup and human balancing remain unfinished. One map/hunter, simplified bot arrival and distance-only targeting are documented in [KNOWN_LIMITATIONS.md](docs/KNOWN_LIMITATIONS.md).
+
+This home checkpoint does not create another executable or publish/deploy anything. Earlier export records in the documentation are historical; use source branch `work` for home editor testing.
 
 ## Cloud development
 
-Use this existing checkout; each cloud task is isolated, so no extra Git worktree is needed. Godot 4.6.3 is installed in the current environment. Home directories may be read-only; give Godot writable XDG directories:
+Continue this existing project; do not rebuild or reset it. Read [AGENTS.md](AGENTS.md) and the checkpoint, inspect Git status, then choose a bounded issue. Use one routine developer with specialist audits on demand.
+
+The cloud requires writable XDG directories:
 
 ```sh
 export XDG_DATA_HOME=/tmp/nightfall-data
 export XDG_CONFIG_HOME=/tmp/nightfall-config
 export XDG_CACHE_HOME=/tmp/nightfall-cache
 mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_CACHE_HOME"
-cd /workspace/nightfall-dorm
 godot --headless --editor --import --quit
-godot --headless --path . --script tests/run_tests.gd
-godot --headless --path . --script tests/simulate_matches.gd
-godot --headless --path . --script tests/scene_smoke.gd
+bash tools/check.sh
 ```
 
-Run a graphical desktop with `godot --path .` when a display is available. Headless model checks do not establish graphical quality; see the QA and visual reports for actual execution evidence. No package manager or external runtime assets are required.
+`tools/check.sh` runs regular import, gameplay, projectile, UI/input, furniture, availability, transaction, combat-rate and 12 representative-match checks. Add `--extended` for 27 timestep and 144 matrix matches at a balance/release milestone. A display permits `godot --path .`; headless tests alone do not verify graphics.
 
-## Structure
+## Source layout
 
-- `project.godot`, `scenes/main.tscn`: application and main scene.
-- `scripts/catalog.gd`: original configurable economy, building, and hunter values.
-- `scripts/room_state.gd`: atomic purchases, beds, doors, buildings and income.
-- `scripts/hunter_state.gd`: explicit finite-state hunter navigation/combat.
-- `scripts/bot_ai.gd`: survivor resource and defense strategies.
-- `scripts/match_model.gd`: deterministic simulation, room claims, collision, turrets and outcomes.
-- `scripts/game.gd`: camera, input, floating income and sound. `dorm_presentation.gd` draws the illustrated environment and actor animations.
-- `scripts/interface.gd`: menu, settings, HUD, purchases and results.
-- `tests/`: executable gameplay and scene regression checks.
-- `docs/`: design, reference evidence, parity, QA and known limitations.
+- `project.godot`, `scenes/main.tscn`: valid application/main scene.
+- `scripts/catalog.gd`, `room_state.gd`: configurable balance, resources, beds, doors, building purchases/upgrades.
+- `scripts/match_model.gd`, `hunter_state.gd`, `bot_ai.gd`: deterministic rules, projectiles, hunter states and autonomous survivor strategies.
+- `scripts/game.gd`, `interface.gd`, `dorm_presentation.gd`: input, camera, menu/HUD, effects and original cartoon rendering.
+- `assets/`: local PNGs/fonts and source atlases; no paid/runtime downloads. Font license included.
+- `tests/`, `tools/`: executable checks, art preparation and graphical capture tools.
+- `docs/`: checkpoint, home instructions, design, QA logs, screenshots and reference limitations.
 
-Original balance values approximate the requested strategic loop; this project does not claim exact Haunted Dorm mechanics or statistics. See `docs/FEATURE_PARITY.md` for the feature review.
+`.godot/`, `artifacts/` and `builds/` are generated outputs and intentionally ignored. Required scenes/scripts/assets and their resource originals are tracked; Godot regenerates its import cache. Python/Pillow are optional offline art tooling, not game runtime dependencies.
 
-## Deliverable status
-
-The playable desktop core passed Godot import/startup, 125 gameplay assertions, 19 scene/input checks, 71 focused audit assertions, 20,000 property-test transactions, and the extended deterministic match suites. Actual Linux graphical interactions and screenshots are documented in `docs/VISUAL_REVIEW.md`. See `docs/QA_REPORT.md` for bugs fixed and exact test scope.
-
-A Windows x86-64 playtest executable is now exported at `builds/windows/NightfallDorm.exe` using matching official checksum-verified templates. Its embedded game pack passed a Linux startup check; native Windows execution remains unverified. See [Windows readiness](docs/WINDOWS_READINESS.md). The tracked Windows Desktop preset excludes documentation, tests and capture tools. Generated binaries are local artifacts, not committed to Git or publicly deployed.
-
-Run all checks with `bash tools/check.sh`. Cloud setup instructions are retained in `docs/CLOUD_SETUP.md`; the environment draft API failed to confirm persistence, so no published environment configuration is claimed.
-
-## Autonomous audit
-
-The resumed audit is recorded in [AUTONOMOUS_AUDIT_REPORT.md](docs/AUTONOMOUS_AUDIT_REPORT.md): **PASS for the tested playable core**, historical implementation-only score **91.5/100** (not an artwork approval), exact Haunted Dorm fidelity **UNVERIFIED**. It fixed map clicks, lifecycle transactions, wall tunneling, bot upgrade starvation, hunter retargeting, timestep drift, player statistics and awake-player elimination accounting.
-
-Run `bash tools/check.sh` for regular regression checks or `bash tools/check.sh --extended` to add the 144-run room/seed/strategy matrix and 27 timestep matches. The final matrix produced 72 active victories and 72 passive defeats, with no unresolved runs. A separate rendered automated-player match reached natural victory using ordinary starting resources. See the audit for scope, raw logs, screenshots and limitations.
-
-## Gameplay and visual audit update
-
-See [GAMEPLAY_FIDELITY_AUDIT.md](docs/GAMEPLAY_FIDELITY_AUDIT.md), [VISUAL_AUDIT_REPORT.md](docs/VISUAL_AUDIT_REPORT.md) and the [12 actual screenshots](docs/screenshots/README.md). Availability-aware purchase controls, visible selected upgrade costs and catalog names improve usability. New UI consistency checks run with `bash tools/check.sh`. No AI/economy/combat rules were changed; exact Haunted Dorm comparison remains blocked by inaccessible references. Decision: READY FOR MANUAL PLAYTEST, with Windows runtime/audio still unverified.
-
-## Current visual-overhaul build
-
-[VISUAL_OVERHAUL_REPORT.md](docs/VISUAL_OVERHAUL_REPORT.md) and [17 actual new captures](docs/screenshots/visual_overhaul/README.md) supersede the older programmer-art presentation. The game now has original illustrated actors/furniture/machines, timber and tile interiors, detailed doors, contextual build/upgrade trays, a top HUD, compact room dock, pause overlay and animated outcome reveal. Major presentation changes are implemented; final commercial art/animation polish remains partial.
-
-The latest local Windows artifact is `/workspace/NightfallDorm-VisualOverhaul-Windows-x64.zip`, rebuilt from the tested overhaul source. Native Windows runtime is still unverified. The older `/workspace/NightfallDorm-Windows-x64.zip` is a historical pre-overhaul artifact. Generated ZIPs are downloadable workspace files, not Git source or public releases.
-
-New tests cover contextual input, card bounds, pause/restart and furniture collision with reachable beds in all rooms. Run `bash tools/check.sh`. The illustrated map retains the tested six-room corridor graph; no economy or combat values were retuned.
-
-Current cartoon camera/placement milestone: [art direction](docs/ART_DIRECTION.md), [render evidence](docs/VISUAL_REDESIGN_REPORT.md), [independent QA](docs/REDESIGN_QA_REPORT.md). Start the next session from [the checkpoint](docs/PROGRESS_CHECKPOINT.md).
+See [art direction](docs/ART_DIRECTION.md), [independent redesign QA](docs/REDESIGN_QA_REPORT.md), [feature parity](docs/FEATURE_PARITY.md), [autonomous audit history](docs/AUTONOMOUS_AUDIT_REPORT.md) and [cloud setup](docs/CLOUD_SETUP.md) for detailed evidence and scope.
