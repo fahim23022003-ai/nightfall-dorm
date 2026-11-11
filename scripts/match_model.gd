@@ -50,7 +50,11 @@ func sleep_player() -> bool:
  if hunter.state != HunterState.State.DORMANT and room.bounds().has_point(hunter.position):
   feedback.emit("The hunter is already inside. You cannot lock it out now.")
   return false
- if not room.alive or player_position.distance_to(room.bed_position()) > 60:
+ if not room.alive:
+  feedback.emit("Your resident has been eliminated.")
+  return false
+ if player_position.distance_to(room.bed_position()) > 60:
+  feedback.emit("Move closer to your bed, then press E.")
   return false
  for occupied in rooms:
   if hunter.state != HunterState.State.DORMANT and occupied.bounds().has_point(hunter.position):
@@ -126,8 +130,7 @@ func interact():
     return
   feedback.emit("Enter an unclaimed room, then press E.")
  else:
-  if not sleep_player():
-   feedback.emit("Move closer to your bed, then press E.")
+  sleep_player()
 
 func tick(delta: float):
  if not running or result != "":
@@ -172,6 +175,10 @@ func tick(delta: float):
  # A player who never selects a bed is hunted directly after the grace period.
  elif time > preparation+25 and (player() == null or not player().sleeping):
   if hunter.position.distance_to(player_position)<15:
+   if player() != null:
+    player().alive = false
+    player().sleeping = false
+   eliminations += 1
    result = "defeat"
 
 func _turrets(delta: float):
@@ -186,17 +193,19 @@ func _turrets(delta: float):
    var b = room.buildings[tile]
    if b.kind != "turret" and b.kind != "heavy":
     continue
-   b.cooldown -= delta
+   b.cooldown = maxf(-delta,b.cooldown-delta)
    var data = Catalog.BUILDINGS[b.kind]
    if hunter.state != HunterState.State.DORMANT and hunter.state != HunterState.State.DEAD and room.tile_position(tile).distance_to(hunter.position)<=data.range and b.cooldown <= 0:
     var amount = data.damage*b.level*multiplier
+    var previous_hp = hunter.hp
     hunter.hurt(amount)
-    damage_dealt += amount
+    var applied_damage = previous_hp-hunter.hp
+    damage_dealt += applied_damage
     shots += 1
     room.shots += 1
-    room.damage_dealt += amount
+    room.damage_dealt += applied_damage
     b.flash = 0.15
-    b.cooldown = data.interval/(1.0+(b.level-1)*0.12)
+    b.cooldown += data.interval/(1.0+(b.level-1)*0.12)
 
 func _pursue_exposed_player(delta: float):
  var current_room = null

@@ -29,7 +29,7 @@ func tick(delta: float, match_state):
   level = next_level
  damage = Catalog.HUNTER.damage + (level-1)*Catalog.HUNTER.damage_growth
  interval = maxf(Catalog.HUNTER.min_interval,Catalog.HUNTER.interval-(level-1)*Catalog.HUNTER.interval_growth)
- cooldown -= delta
+ cooldown = maxf(-delta,cooldown-delta)
  target_time += delta
  if state == State.EXIT:
   var exit_door = match_state.rooms[target].door_position()
@@ -69,8 +69,8 @@ func tick(delta: float, match_state):
    room.door_hp = maxf(0,room.door_hp-damage)
    room.damage_flash = 0.25
    attacks += 1
-   cooldown = interval
-  if target_time > Catalog.HUNTER.retarget_seconds and room.door_hp > room.max_hp()*0.8:
+   cooldown += interval
+  if target_time > Catalog.HUNTER.retarget_seconds and room.door_hp > damage*2:
    avoid_target = target
    state = State.SEEK
  elif state == State.BREACH:

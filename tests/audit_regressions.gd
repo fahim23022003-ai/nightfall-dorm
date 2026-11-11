@@ -38,6 +38,10 @@ func run():
  check(not room.upgrade_door(), "eliminated room cannot upgrade door")
  check(not room.repair_door(), "eliminated room cannot repair")
  check(room.gold == 10000 and room.electricity == 1000, "eliminated-room resources unchanged")
+ print("AUDIT regression: invalid costs cannot create currency")
+ var ledger = RoomState.new()
+ for invalid_cost in [Vector2(-1,0),Vector2(0,-1),Vector2(INF,0),Vector2(NAN,0)]:
+  check(not ledger.pay(invalid_cost.x,invalid_cost.y) and ledger.gold == 25 and ledger.electricity == 0, "invalid cost rejected without currency mutation")
  print("AUDIT regression: paused and terminal purchase guards")
  var g = fresh()
  room = occupy(g)
@@ -73,6 +77,28 @@ func run():
  g.hunter.position = room.center()
  g.hunter.state = HunterState.State.MOVE
  check(not g.sleep_player() and not room.closed and not room.sleeping, "sleep rejected with active intruder inside room")
+ var messages = []
+ g.feedback.connect(func(message): messages.append(message))
+ g.interact()
+ check(not messages.is_empty() and "already inside" in messages.back(), "specific intruder feedback survives interaction wrapper")
+ print("AUDIT regression: going to sleep reroutes hunter out of a different room")
+ g = fresh()
+ g.claim_room(0)
+ room = g.player()
+ g.player_position = room.bed_position()
+ g.time = g.preparation+26
+ g.hunter.position = g.rooms[1].bed_position()
+ g.hunter.target = 1
+ g.hunter.state = HunterState.State.MOVE
+ check(g.sleep_player() and g.hunter.state == HunterState.State.EXIT and g.hunter.target == 1, "sleep transition preserves hunter exit-room routing")
+ var passed_exit_door = false
+ for i in range(100):
+  g.hunter.tick(0.05,g)
+  if g.hunter.position.distance_to(g.rooms[1].door_position()) < 5:
+   passed_exit_door = true
+  if g.hunter.state == HunterState.State.SEEK:
+   break
+ check(passed_exit_door and absf(g.hunter.position.y-410)<3, "exposed pursuit resumes via original room doorway before retargeting")
  print("AUDIT regression: eliminated resident dominates simultaneous terminal events")
  g = fresh()
  room = occupy(g,1)
@@ -157,5 +183,57 @@ func run():
  g.hunter.tick(0.01,g)
  g.hunter.tick(0.01,g)
  check(g.hunter.target == 1, "stalled hunter switches to another valid room")
+ print("AUDIT regression: idle turret cooldown cannot bank a burst")
+ g = fresh()
+ room = occupy(g)
+ room.gold = 1000
+ room.build("turret",0)
+ g.hunter.state = HunterState.State.MOVE
+ g.hunter.position = Vector2(2000,2000)
+ for i in range(1000):
+  g._turrets(0.1)
+ g.hunter.position = room.tile_position(0)
+ for i in range(5):
+  g._turrets(0.02)
+ check(g.shots == 1, "out-of-range time does not bank repeated turret shots")
+ print("AUDIT regression: idle hunter cannot bank door attacks")
+ g = fresh()
+ g.time = g.preparation+1
+ for i in range(1000):
+  g.hunter.tick(0.1,g)
+ room = occupy(g)
+ g.hunter.target = 0
+ g.hunter.state = HunterState.State.ATTACK
+ g.hunter.position = room.door_position()
+ for i in range(5):
+  g.hunter.tick(0.02,g)
+ check(g.hunter.attacks == 1, "idle time does not bank repeated hunter attacks")
+ print("AUDIT regression: exposed-player capture commits elimination exactly once")
+ for assigned in [true,false]:
+  g = fresh()
+  if assigned:
+   g.claim_room(0)
+   g.player_position = g.player().bed_position()
+  g.time = g.preparation+26
+  g.hunter.position = g.player_position
+  g.hunter.state = HunterState.State.MOVE
+  g.tick(0.01)
+  check(g.result == "defeat" and g.eliminations == 1, "awake capture records one elimination with assigned="+str(assigned))
+  if assigned:
+   check(not g.player().alive and not g.player().sleeping, "awake capture marks claimed survivor dead")
+  check(not g.claim_room(1) and not g.sleep_player(), "terminal capture cannot be reversed by claiming or sleeping")
+  var terminal_time = g.time
+  g.tick(5)
+  check(g.eliminations == 1 and g.time == terminal_time and g.result == "defeat", "terminal tick cannot double-count capture")
+ print("AUDIT regression: overkill statistics use actual applied damage")
+ g = fresh()
+ room = occupy(g)
+ room.gold = 1000
+ room.build("turret",0)
+ g.hunter.state = HunterState.State.MOVE
+ g.hunter.position = room.tile_position(0)
+ g.hunter.hp = 1
+ g._turrets(0.1)
+ check(g.hunter.hp == 0 and is_equal_approx(g.damage_dealt,1.0) and is_equal_approx(room.damage_dealt,1.0), "HP1 target records1 damage rather than full configured9")
  print("AUDIT_ASSERTIONS=",assertions," FAILURES=",failures)
  quit(1 if failures else 0)

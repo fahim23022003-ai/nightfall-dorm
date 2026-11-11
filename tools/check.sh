@@ -11,11 +11,18 @@ if rg -n 'SCRIPT ERROR|Parse Error|ERROR:' artifacts/import.log; then exit 1; fi
 godot --headless --path . --script tests/run_tests.gd > artifacts/tests.log 2>&1
 cat artifacts/tests.log
 if rg -n 'SCRIPT ERROR|Parse Error|ERROR:' artifacts/tests.log; then exit 1; fi
-for suite in scene_smoke simulate_matches audit_regressions audit_properties; do
+for suite in scene_smoke simulate_matches audit_regressions audit_properties audit_rates; do
   godot --headless --path . --script "tests/$suite.gd" > "artifacts/$suite.log" 2>&1
   cat "artifacts/$suite.log"
   if rg -n 'SCRIPT ERROR|Parse Error|ERROR:' "artifacts/$suite.log"; then exit 1; fi
 done
+if [[ "${1:-}" == "--extended" ]]; then
+  for suite in audit_timesteps audit_matrix; do
+    godot --headless --path . --script "tests/$suite.gd" > "artifacts/$suite.log" 2>&1
+    cat "artifacts/$suite.log"
+    if rg -n 'SCRIPT ERROR|Parse Error|ERROR:' "artifacts/$suite.log"; then exit 1; fi
+  done
+fi
 godot --headless --path . --quit-after 120 > artifacts/startup.log 2>&1
 cat artifacts/startup.log
 if rg -n 'SCRIPT ERROR|Parse Error|ERROR:' artifacts/startup.log; then exit 1; fi
