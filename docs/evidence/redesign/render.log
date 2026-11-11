@@ -1,0 +1,35 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+RENDER 01-menu size=(1280, 720) exit=0 t=0.0 result= shots=0
+RENDER 02-overview size=(1280, 720) exit=0 t=0.1 result= shots=0
+RENDER room-1-theme size=(1280, 720) exit=0 t=0.1 result= shots=0
+RENDER room-2-theme size=(1280, 720) exit=0 t=0.1 result= shots=0
+RENDER room-3-theme size=(1280, 720) exit=0 t=0.2 result= shots=0
+RENDER room-4-theme size=(1280, 720) exit=0 t=0.1 result= shots=0
+RENDER room-5-theme size=(1280, 720) exit=0 t=0.1 result= shots=0
+RENDER room-6-theme size=(1280, 720) exit=0 t=0.1 result= shots=0
+RENDER 03-build-cards size=(1280, 720) exit=0 t=0.1 result= shots=0
+RENDER 04-valid-preview size=(1280, 720) exit=0 t=0.3 result= shots=0
+RENDER 05-invalid-preview size=(1280, 720) exit=0 t=0.4 result= shots=0
+RENDER 06-upgrade-panel size=(1280, 720) exit=0 t=0.5 result= shots=0
+RENDER stage-1-fixture size=(1280, 720) exit=0 t=0.7 result= shots=0
+RENDER stage-2-fixture size=(1280, 720) exit=0 t=0.8 result= shots=0
+RENDER stage-3-fixture size=(1280, 720) exit=0 t=0.9 result= shots=0
+RENDER stage-4-fixture size=(1280, 720) exit=0 t=1.1 result= shots=0
+RENDER stage-5-bed-fixture size=(1280, 720) exit=0 t=1.2 result= shots=0
+RENDER 10-own-door-attack-fixture size=(1280, 720) exit=0 t=31.3 result= shots=0
+RENDER 07-natural-sleep-income size=(1280, 720) exit=0 t=3.5 result= shots=0
+RENDER 08-natural-bed-door-upgrade size=(1280, 720) exit=0 t=8.5 result= shots=0
+RENDER 09-hunter-moving size=(1280, 720) exit=0 t=30.6 result= shots=1
+RENDER 11-travelling-projectiles size=(1280, 720) exit=0 t=30.9 result= shots=1
+RENDER 12-actual-impact size=(1280, 720) exit=0 t=31.1 result= shots=3
+RENDER 13-natural-support-economy size=(1280, 720) exit=0 t=74.2 result= shots=53
+RENDER 14-hunter-death size=(1280, 720) exit=0 t=150.0 result=victory shots=238
+RENDER 15-victory size=(1280, 720) exit=0 t=150.0 result=victory shots=238
+NATURAL_ACTIVE result=victory time=150.049911068783 gold=74.1548557365054 buildings=6
+RENDER 16-defeat size=(1280, 720) exit=0 t=41.8 result=defeat shots=3
+NATURAL_PASSIVE result=defeat time=41.7519869494947
+RENDER_SUMMARY files=27 won=true lost=true

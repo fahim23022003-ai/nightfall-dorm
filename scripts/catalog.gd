@@ -29,3 +29,6 @@ const AI_PROFILES = {
  "gunner":{"priorities":["turret","generator","heavy","enhancer","economy","repair"],"bed_goal":1,"door_goal":1,"interval":0.9},
  "balanced":{"priorities":["turret","generator","economy","repair","heavy","enhancer"],"bed_goal":2,"door_goal":2,"interval":1.1}
 }
+
+# Real homing shots; original economy and turret attack intervals remain unchanged.
+const PROJECTILES = {"turret":480.0,"heavy":360.0,"max_age":5.0,"max_active":256,"max_events":96,"event_lifetime":0.45}

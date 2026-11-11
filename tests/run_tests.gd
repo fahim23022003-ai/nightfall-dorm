@@ -28,6 +28,13 @@ func advance(game, seconds: float, step = 0.1):
  for i in range(int(ceil(seconds / step))):
   game.tick(step)
 
+func wait_for_impacts(game):
+ # Advance real projectile travel without moving the stationary test target.
+ for i in range(600):
+  if game.projectiles.is_empty():
+   break
+  game._advance_projectiles(0.01)
+
 func _initialize():
  call_deferred("run")
 
@@ -167,6 +174,8 @@ func run():
  check(g.hunter.hp == hp, "out-of-range enemy unharmed")
  g.hunter.position = r.tile_position(0)
  g._turrets(0.1)
+ check(g.hunter.hp == hp, "launch does not apply instantaneous damage")
+ wait_for_impacts(g)
  check(is_equal_approx(g.hunter.hp,hp-Catalog.BUILDINGS.turret.damage), "turret deals configured damage")
  hp = g.hunter.hp
  g._turrets(0.1)
@@ -174,12 +183,14 @@ func run():
  check(r.build("enhancer",1), "enhancer builds")
  r.buildings[0].cooldown = 0
  g._turrets(0.1)
+ wait_for_impacts(g)
  check(is_equal_approx(hp-g.hunter.hp,Catalog.BUILDINGS.turret.damage*(1+Catalog.BUILDINGS.enhancer.rate)), "enhancer increases actual turret damage")
  var boosted_damage = hp-g.hunter.hp
  check(r.upgrade_building(0), "turret upgrade purchase")
  r.buildings[0].cooldown = 0
  hp = g.hunter.hp
  g._turrets(0.1)
+ wait_for_impacts(g)
  check(hp-g.hunter.hp > boosted_damage, "turret upgrade increases actual damage")
  check(r.buildings[0].cooldown < Catalog.BUILDINGS.turret.interval, "turret upgrade reduces attack cooldown")
  g.hunter.state = HunterState.State.DEAD

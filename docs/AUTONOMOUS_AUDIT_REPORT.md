@@ -1,3 +1,30 @@
+# Current autonomous continuation — 11 November 2026
+
+**PARTIAL — functional core and cartoon redesign tested; important target-platform/art validation remains.** Earlier scores and screenshots below are historical. This continuation preserved the project at `57beb7a`; it did not restart it.
+
+Coordinator assessment: **89/100**, a bounded engineering judgment rather than reference fidelity certification.
+
+| Category | Score | Current evidence/improvements | Remaining limits |
+| --- | ---: | --- | --- |
+| Core mechanics | 29/30 | Actual room, sleep, income, placement confirmation, upgrades, match and restart checks | One map; native Windows unverified |
+| Hunter/survivor AI | 17/20 | Real finite states, independent bots and resolved seeded matches; exposed-contact priority fixed | Doorway bot starts; map-specific routing; limited human strategies |
+| Economy/upgrades | 14/15 | Atomic separate-resource transactions,3209 availability checks,20k transaction properties,12 pacing runs | Approximate original balance; human enjoyment unverified |
+| Combat/building | 14/15 | Six functional buildings; actual travelling shots,22 flight assertions,12 edge checks; impact-time damage | One enemy identity; distance-only targeting |
+| Visual/UX | 7/10 | Actual six-room cartoon captures, focused camera, readable card grid, green/red previews; bounded Agent D inspection | Bot/hunter directional coverage, high-DPI, audible mix, human polish |
+| Stability/coverage | 8/10 | Import/startup,173 independent actual-input checks, scene/furniture/audit/property/rate regressions | Finite scenarios; no native Windows or exhaustive performance test |
+
+Reference fidelity: **UNVERIFIED**. Previously requested listing/TapTap/GamingOnPhone sources were proxy403; no new accessible evidence established exact Haunted Dorm statistics. Existing original gameplay specification remains the implementation contract.
+
+Agent B owned bounded projectile rules and the race fix; Agent C independently reproduced the race, verified the fix and tested new UI/pacing; Agent D reviewed actual Phase-A and final renders. Agent A was not reactivated for redundant blocked research. Main owned art, camera, UI integration, regressions, captures, docs and backup.
+
+Bugs found/fixed: awake-contact/impact terminal race; clipped Dream amplifier card; hunter bar overflow; door-sill microtiles; hunter sprite background haze. No failing test was deleted to hide a failure. See `REDESIGN_QA_REPORT.md` for initial12/1→final12/0 regression evidence.
+
+Completed representative tests:12matches9W/3L. Independent pacing:12matches9W/3L. Final rendered normal-fund automation:2matches,1W/1L. These repetitions are distinct executions, not additional unique strategy coverage. Fresh final release extended suite also passed27 timestep matches and144 matrix matches (72 active wins/72 passive losses, no unresolved cases), for183 headless match executions within that final suite. Release extended results are in `docs/evidence/redesign/final-tests.log`; earlier audit history below must not be relabeled as a new run.
+
+Files and exact continuation instructions: [PROGRESS_CHECKPOINT.md](PROGRESS_CHECKPOINT.md), [ART_DIRECTION.md](ART_DIRECTION.md), [VISUAL_REDESIGN_REPORT.md](VISUAL_REDESIGN_REPORT.md). Windows/manual instructions in README; no public publishing/deployment was performed. Git checkpoint and verified private push are reported with the final task result.
+
+---
+
 # Autonomous audit and improvement report
 
 Date: 11 November 2026 (Singapore). Engine: Godot 4.6.3 stable. Platform actually executed: Linux headless and Xorg/Mesa software-rendered desktop.

@@ -1,3 +1,44 @@
+# Current checkpoint — cartoon room-camera redesign (11 November 2026)
+
+**Start here.** This continues the existing project on branch `work`, preserving base `57beb7a` and earlier pushed `ac317686f66855e216a03e1cd586506c91b5c995`. The older checkpoint below is retained as history; its fixed overview, instant attacks and old art descriptions are superseded.
+
+**Status: PARTIAL.** Core single-player gameplay and the new camera/placement/projectile paths pass automated checks. Native Windows play, audible audio, final animation polish and independently verified Haunted Dorm fidelity remain outstanding.
+
+## Completed and fixed in this milestone
+
+- Three original cartoon atlases, six room themes, five beds/doors, four-direction player walk, five bot identities/sleep poses, shadow hunter states, turret/support upgrade visuals and matching icon.
+- Smooth room-focused camera, strategic M overview, wheel zoom, actual own-door attack attention and optional tutorial.
+- Three-by-two illustrated contextual cards, valid/invalid ghost placement, explicit confirmation, free cancellation and separate machine/bed/door inspectors.
+- Real simulation-owned travelling projectiles, impact-time damage/statistics, bounded flight/event queues and invalid/expired/terminal cancellation. No decorative fake combat.
+- Event-driven build/upgrade/repair/door/impact/income feedback; previous economy and autonomous AI preserved.
+- Found/fixed awake-contact victory race, clipped card title, HUD bar overflow, door-sill microtile artifact and sprite backdrop haze. The initial failing regression is recorded, not removed.
+
+## Verification and evidence
+
+`bash tools/check.sh` passed: model126, projectile22, independent projectile edges12, independent actual-input UI173, scene23, contextual UI53, furniture30, availability3209, audit72; 20,000 transactions/175,941 property checks; six rate scenarios; 12 complete representative matches (9 wins/3 defeats), zero unresolved. Final release `bash tools/check.sh --extended` exited0: all checks above passed again, plus27 timestep matches (0 unresolved) and144 matrix matches (72 active victories/72 passive defeats,0 failures). Raw output: `docs/evidence/redesign/final-tests.log`. Final suite executed183 complete headless match runs; the separate pacing12 and rendered2 are documented separately.
+
+Independent pacing: 12 completed matches, 9 active wins/3 passive defeats. Active median purchase interval3.6–7.7s; forced no-affordable-purchase stretch at most4.9s. Long policy-selected saving is not conflated with inability to act or proof of enjoyment.
+
+Actual Xorg/Mesa captures include menu, six room themes, cards, green/red previews, levels, attack warning, flight/impact and both results. Prepared funds/levels/attack setup are explicitly named fixtures. Two normal-fund rendered automated matches completed: active victory, passive defeat. See `VISUAL_REDESIGN_REPORT.md`, `ART_DIRECTION.md`, `REDESIGN_QA_REPORT.md` and `docs/evidence/redesign/`. Headless success does not certify graphics; graphics do not certify human fun or Windows performance.
+
+Windows export rebuilt successfully: `/workspace/NightfallDorm-CartoonRedesign-Windows-x64.zip` (local ignored artifact). Linux loaded its embedded pack from an empty directory and exited0; native Windows remains unverified. Export/pack-smoke logs are committed under `docs/evidence/redesign/`.
+
+## Exact next steps
+
+1. Preserve this checkout. Read this header; inspect `git status --short`, `git log -3 --oneline`, and compare `git ls-remote origin refs/heads/work` with local HEAD. Never reset or rebuild from scratch.
+2. Highest priority: run the latest Windows cartoon demo on actual Windows hardware; verify movement into a room, E claim/sleep, confirm/cancel placement, machine/bed/door upgrades, repairs, M/wheel/G, combat, victory/defeat, restart, fullscreen/display scaling and sound.
+3. Complete bot directional locomotion and hunter angle coverage; current bot gait is cutout animation. Check room labels, door warnings and build cards at different display sizes. Settings persistence is still absent.
+4. Gather human balance/readability observations. Preserve current prices/profiles until evidence justifies a change. Distance-only turret targeting, one map/hunter and bots starting at assigned doorways remain scope limits.
+5. Revisit Haunted Dorm comparison only when verified official/reference evidence becomes accessible; earlier proxy403 means exact parity remains UNVERIFIED. Do not invent reference numbers.
+6. Use one main developer; bounded Agent C for major mechanics, D for actual rendering, A for newly accessible reference evidence. Do not activate four redundant whole-project reviews.
+7. After relevant fixes run focused tests, then `bash tools/check.sh`; use `--extended` at balance/release milestones. Update this checkpoint, commit, push the authorized private branch and verify remote SHA. No public deployment.
+
+## Git record for this milestone
+
+The content commit is identified by `git log -1 --format=%H`; it includes this checkpoint, tests, local art and evidence. A final verified remote SHA is recorded in the task response and backup evidence. Build ZIPs/EXEs remain local ignored artifacts; source, tests and capture tools are committed. A successful source push is not a GitHub release or hosted binary backup.
+
+---
+
 # Progress checkpoint
 
 Saved: 11 November 2026, Singapore time. This task preserves the completed implementation and audit; it does not begin a new development phase.

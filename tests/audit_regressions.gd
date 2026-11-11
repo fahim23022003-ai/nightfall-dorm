@@ -23,6 +23,13 @@ func advance(game, seconds):
  for i in range(int(seconds*10)):
   game.tick(0.1)
 
+func wait_for_impacts(game):
+ # Advance real projectile travel without moving the stationary test target.
+ for i in range(600):
+  if game.projectiles.is_empty():
+   break
+  game._advance_projectiles(0.01)
+
 func _initialize():
  call_deferred("run")
 
@@ -115,10 +122,13 @@ func run():
  ally.build("turret",2)
  room.gold = 1000
  room.build("turret",0)
- # Real BREACH code kills the player before the living ally's turret kills hunter.
+ # Both residents have real shots in flight; BREACH resolves before impact.
+ g._turrets(0.1)
+ var launched = g.shots
+ check(launched == 2 and g.projectiles.size() == 2, "player and ally shots are pending before breach")
  g.tick(0.1)
- check(not room.alive and g.hunter.hp == 0 and g.result == "defeat", "player elimination has defeat priority over simultaneous hunter death")
- check(g.shots == 1, "only living ally turret fires after player elimination")
+ check(not room.alive and g.hunter.hp == 1 and g.result == "defeat", "player elimination has defeat priority over pending lethal teammate impact")
+ check(g.shots == launched and g.projectiles.is_empty(), "terminal breach cancels pending shots and prevents further firing")
  print("AUDIT regression: six building upgrade ceilings and effects")
  room = RoomState.new()
  room.sleeping = true
@@ -156,6 +166,7 @@ func run():
  g.hunter.position = room.tile_position(5)+Vector2(Catalog.BUILDINGS.heavy.range-1,0)
  var hunter_hp = g.hunter.hp
  g._turrets(0.1)
+ wait_for_impacts(g)
  var expected_damage = Catalog.BUILDINGS.heavy.damage*Catalog.BUILDING_MAX_LEVEL*(1+Catalog.BUILDINGS.enhancer.rate*Catalog.BUILDING_MAX_LEVEL)
  check(is_equal_approx(hunter_hp-g.hunter.hp,expected_damage), "level4 heavy damage and relay multiplier affect real hunter HP")
  check(room.buildings[5].cooldown < Catalog.BUILDINGS.heavy.interval, "level4 heavy fires faster than base")
@@ -234,6 +245,7 @@ func run():
  g.hunter.position = room.tile_position(0)
  g.hunter.hp = 1
  g._turrets(0.1)
+ wait_for_impacts(g)
  check(g.hunter.hp == 0 and is_equal_approx(g.damage_dealt,1.0) and is_equal_approx(room.damage_dealt,1.0), "HP1 target records1 damage rather than full configured9")
  print("AUDIT_ASSERTIONS=",assertions," FAILURES=",failures)
  quit(1 if failures else 0)

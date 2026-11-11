@@ -3,348 +3,458 @@ extends CanvasLayer
 
 var game
 var panel: Control
-var status: Label
 var message: Label
 var details: Label
-var buttons: Array = []
+var status: Label
+var actions: Dictionary={}
 var bed_button: Button
 var door_button: Button
 var pause_button: Button
-var actions: Dictionary = {}
-var context_open = false
-var context_items: Array = []
-var build_items: Array = []
-var upgrade_items: Array = []
-var pause_items: Array = []
-var card_visuals: Dictionary = {}
+var map_button: Button
+var context_open=false
+var context_mode="build"
 var context_box: Panel
 var context_title: Label
+var build_items: Array=[]
+var upgrade_items: Array=[]
+var bed_items: Array=[]
+var door_items: Array=[]
+var confirmation_items: Array=[]
+var pause_items: Array=[]
+var card_visuals: Dictionary={}
 var selected_icon: TextureRect
 var selected_details: Label
+var bed_details: Label
+var door_details: Label
+var confirmation_details: Label
+var confirmation_icon: TextureRect
+var confirm_button: Button
 var gold_label: Label
 var power_label: Label
 var phase_label: Label
 var hunter_label: Label
 var hunter_bar: ProgressBar
-var default_font = preload("res://assets/fonts/Interface.ttf")
-var display_font = preload("res://assets/fonts/Display.ttf")
+var room_dock: Panel
+var room_bed_summary: Button
+var room_door_summary: Button
+var room_selected_summary: Button
+var quick_repair: Button
+var guide_box: Panel
+var guide_label: Label
+var warning_box: Panel
+var warning_label: Label
+var default_font=preload("res://assets/fonts/Interface.ttf")
+var display_font=preload("res://assets/fonts/CartoonDisplay.ttf")
+var feedback_text=""
+var feedback_until=0.0
 
-func _init(owner_game = null):
- game = owner_game
+func _init(owner_game=null): game=owner_game
 
 func _ready():
- panel = Control.new()
- panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+ panel=Control.new()
+ panel.mouse_filter=Control.MOUSE_FILTER_IGNORE
  add_child(panel)
  panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
- var theme = Theme.new()
- theme.default_font = default_font
- theme.default_font_size = 15
- panel.theme = theme
+ var theme=Theme.new()
+ theme.default_font=default_font
+ theme.default_font_size=18
+ panel.theme=theme
  show_menu()
 
 func clear():
  for child in panel.get_children(): child.queue_free()
- buttons.clear()
  actions.clear()
- context_items.clear()
  build_items.clear()
  upgrade_items.clear()
+ bed_items.clear()
+ door_items.clear()
+ confirmation_items.clear()
  pause_items.clear()
  card_visuals.clear()
- context_open = false
+ context_open=false
+ feedback_text=""
+ feedback_until=0
 
-func style(fill: String = "1c2b3c",edge: String = "796c62",radius: int = 10) -> StyleBoxFlat:
- var s = StyleBoxFlat.new()
- s.bg_color = Color(fill)
- s.border_color = Color(edge)
- s.set_border_width_all(1)
+func style(fill: String="263E50",edge: String="607D8B",radius: int=10) -> StyleBoxFlat:
+ var s=StyleBoxFlat.new()
+ s.bg_color=Color(fill)
+ s.border_color=Color(edge)
+ s.set_border_width_all(2)
  s.set_corner_radius_all(radius)
- s.shadow_color = Color(0.02,0.04,0.09,0.5)
- s.shadow_size = 8
- s.shadow_offset = Vector2(0,4)
+ s.shadow_color=Color(0.04,0.09,0.14,0.4)
+ s.shadow_size=4
+ s.shadow_offset=Vector2(0,3)
  return s
 
-func box(rect: Rect2, fill: String = "1c2b3c", edge: String = "796c62") -> Panel:
- var p = Panel.new()
- p.position = rect.position
- p.size = rect.size
- p.mouse_filter = Control.MOUSE_FILTER_IGNORE
+func attach(node: Control,parent: Control=null):
+ (panel if parent==null else parent).add_child(node)
+
+func box(rect: Rect2,fill: String="263E50",edge: String="607D8B",parent: Control=null) -> Panel:
+ var p=Panel.new()
+ p.position=rect.position
+ p.size=rect.size
+ p.mouse_filter=Control.MOUSE_FILTER_IGNORE
  p.add_theme_stylebox_override("panel",style(fill,edge))
- panel.add_child(p)
+ attach(p,parent)
  return p
 
-func label_at(text: String, pos: Vector2, size: int = 20, width: float = 900, heading: bool = false) -> Label:
- var l = Label.new()
- l.mouse_filter = Control.MOUSE_FILTER_IGNORE
- l.text = text
- l.position = pos
- l.size = Vector2(width,40)
+func label_at(text: String,pos: Vector2,size: int=18,width: float=900,heading: bool=false,parent: Control=null) -> Label:
+ var l=Label.new()
+ l.position=pos
+ l.size=Vector2(width,30)
+ l.text=text
+ l.mouse_filter=Control.MOUSE_FILTER_IGNORE
  l.add_theme_font_size_override("font_size",size)
- l.add_theme_color_override("font_color",Color("f0e6d3"))
+ l.add_theme_color_override("font_color",Color("EDF5F7"))
  if heading: l.add_theme_font_override("font",display_font)
- panel.add_child(l)
+ attach(l,parent)
  return l
 
-func icon(name: String,pos: Vector2,size: Vector2) -> TextureRect:
- var t = TextureRect.new()
- t.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
- t.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
- t.texture = game.presentation.textures[name]
- t.position = pos
- t.size = size
- t.mouse_filter = Control.MOUSE_FILTER_IGNORE
- panel.add_child(t)
+func icon(name: String,pos: Vector2,size: Vector2,parent: Control=null) -> TextureRect:
+ var t=TextureRect.new()
+ t.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
+ t.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+ t.texture=game.presentation.textures[name]
+ t.position=pos
+ t.size=size
+ t.mouse_filter=Control.MOUSE_FILTER_IGNORE
+ attach(t,parent)
  return t
 
-func button(text: String,pos: Vector2,callback: Callable,width: float = 240,height: float = 42) -> Button:
- var b = Button.new()
- b.text = text
- b.position = pos
- b.size = Vector2(width,height)
+func button(text: String,pos: Vector2,callback: Callable,width: float=240,height: float=44,parent: Control=null) -> Button:
+ var b=Button.new()
+ b.text=text
+ b.position=pos
+ b.size=Vector2(width,height)
  b.pressed.connect(callback)
  for state in ["normal","hover","pressed","disabled","focus"]:
-  var fill = "304b54" if state == "hover" else "263b49"
-  if state == "disabled": fill = "202b39"
-  var s = style(fill,"dfbd83" if state in ["hover","focus"] else "8e806a",7)
-  s.shadow_size = 2
-  b.add_theme_stylebox_override(state,s)
- b.add_theme_color_override("font_color",Color("f2e7d3"))
- b.add_theme_color_override("font_disabled_color",Color("8e9298"))
- panel.add_child(b)
+  var fill="3F6675" if state=="hover" else "304D61"
+  if state=="disabled": fill="263746"
+  b.add_theme_stylebox_override(state,style(fill,"7BE3A1" if state in ["hover","focus"] else "607D8B",8))
+ b.add_theme_color_override("font_color",Color("EDF5F7"))
+ b.add_theme_color_override("font_disabled_color",Color("889CA8"))
+ attach(b,parent)
  return b
-
-func action_icon(b: Button,name: String):
- b.icon = game.presentation.textures[name]
- b.expand_icon = true
- b.add_theme_constant_override("icon_max_width",38)
 
 func show_menu():
  clear()
- label_at("A MIDNIGHT SURVIVAL TALE",Vector2(100,182),12,500).modulate = Color("d7b783")
- label_at("NIGHTFALL\nDORM",Vector2(92,223),65,570,true)
- label_at("The halls are quiet. The doors won't hold forever.\nChoose a room. Keep one last light alive.",Vector2(100,404),16,540)
- var start = button("Start Game",Vector2(100,495),game.start_match,310,58)
- start.add_theme_font_size_override("font_size",23)
- button("How to Play",Vector2(100,569),show_help,150,44)
- button("Settings",Vector2(260,569),show_settings,150,44)
- button("Exit Game",Vector2(100,628),func(): game.get_tree().quit(),310,42)
- label_at("An original dormitory defense game",Vector2(100,813),12,500).modulate=Color("9aaeb5")
+ label_at("SMALL ROOMS. BIG NIGHTMARES.",Vector2(72,108),18,580).modulate=Color("7BE3A1")
+ label_at("NIGHTFALL\nDORM",Vector2(66,157),58,600,true)
+ label_at("Claim a bed. Build your defenses.\nMake it through the night.",Vector2(72,315),20,590)
+ button("Start Game",Vector2(72,405),game.start_match,330,54)
+ button("How to Play",Vector2(72,477),show_help,160,46)
+ button("Settings",Vector2(242,477),show_settings,160,46)
+ button("Exit Game",Vector2(72,539),func(): game.get_tree().quit(),330,44)
+ label_at("Original cartoon dormitory survival defense",Vector2(72,662),16,620).modulate=Color("9DB6C2")
 
 func show_help():
  clear()
- box(Rect2(100,100,1080,696))
- label_at("SURVIVAL HANDBOOK",Vector2(140,135),32,900,true)
- label_at("WASD / arrows: move     E: claim a room / sleep     Esc: close cards / pause\n\nEnter a vacant room. Press E to claim it, then approach the bed and press E.\nYour door closes and gold begins to grow. Sleeping commits you to that room.\n\nClick the brass floor sigils to open illustrated building cards.\nA Dynamo makes electricity; a Dream amplifier boosts bed income.\nRepair stations mend intact doors. Relays strengthen room turrets.\nSelect a built machine to upgrade it. Hover cards for effects and requirements.\n\nUse the bed and door cards below the map for upgrades. Repair costs 12 gold.\nAdvanced levels require electricity and matching bed/door progression.\n\nThe hunter arrives after 30 seconds. Your turrets fire automatically.\nDefeat the hunter to survive. A breached room leaves its sleeper exposed.\nFive other residents build their own defenses. Your elimination ends the match.",Vector2(140,203),18,1000)
- button("Back",Vector2(140,724),show_menu,180)
+ box(Rect2(90,65,1100,590))
+ label_at("SURVIVAL HANDBOOK",Vector2(125,92),30,950,true)
+ label_at("WASD / arrows: move     E: room / bed     M: map     Wheel: zoom     R: repair\n\nFind a vacant bedroom, press E inside, then E near its bed to sleep.\nGold starts while sleeping. You cannot leave the bed afterward.\n\nClick a floor pad, choose a building card, then confirm its green preview.\nRed previews cannot be purchased. Escape cancels without spending.\nClick a machine for its upgrade panel. Click the bottom bed/door summaries\nfor upgrades and repair. A Dynamo produces electricity for advanced purchases.\n\nThe hunter arrives after 30 seconds. Your turrets fire real projectiles.\nDefeat the hunter to win; your elimination loses. Doors need bed progression.\nM switches between focused play and the strategic overview.\nEscape closes cards first, then pauses. Help/G toggles the short guide.",Vector2(125,156),19,1020)
+ button("Back",Vector2(125,585),show_menu,180,46)
 
 func show_settings():
  clear()
- box(Rect2(350,180,580,460))
- label_at("SETTINGS",Vector2(420,215),34,460,true)
- label_at("Sound volume",Vector2(420,310),18,400)
- var slider = HSlider.new()
- slider.position = Vector2(420,354)
- slider.size = Vector2(400,36)
- slider.step = 0.01
- slider.min_value = 0
- slider.max_value = 1
- slider.value = game.sound_volume
+ box(Rect2(360,100,560,500))
+ label_at("SETTINGS",Vector2(400,135),30,470,true)
+ label_at("Sound volume",Vector2(400,215),20,460)
+ var slider=HSlider.new()
+ slider.position=Vector2(400,258)
+ slider.size=Vector2(450,34)
+ slider.step=0.01
+ slider.min_value=0
+ slider.max_value=1
+ slider.value=game.sound_volume
  slider.value_changed.connect(func(value): game.sound_volume=value)
  panel.add_child(slider)
- var toggle = CheckButton.new()
- toggle.text = "Fullscreen"
- toggle.position = Vector2(420,417)
- toggle.button_pressed = DisplayServer.window_get_mode()==DisplayServer.WINDOW_MODE_FULLSCREEN
- toggle.toggled.connect(func(value): DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if value else DisplayServer.WINDOW_MODE_WINDOWED))
+ var toggle=CheckButton.new()
+ toggle.text="Fullscreen"
+ toggle.position=Vector2(400,330)
+ toggle.button_pressed=get_window().mode==Window.MODE_FULLSCREEN
+ toggle.toggled.connect(func(value): get_window().mode=Window.MODE_FULLSCREEN if value else Window.MODE_WINDOWED)
  panel.add_child(toggle)
- button("Back",Vector2(420,537),show_menu,180)
+ var guide=CheckButton.new()
+ guide.text="First-night tutorial"
+ guide.position=Vector2(400,390)
+ guide.button_pressed=game.tutorial_enabled
+ guide.toggled.connect(func(value): game.tutorial_enabled=value)
+ panel.add_child(guide)
+ button("Back",Vector2(400,500),show_menu,200,46)
 
 func show_match():
  clear()
- box(Rect2(28,18,1224,73),"162737","8b826c")
- icon("economy",Vector2(42,28),Vector2(45,46))
- label_at("NIGHTFALL",Vector2(96,30),21,250,true)
- label_at("DORMITORY  /  NIGHT WATCH",Vector2(97,59),10,260).modulate=Color("b4b4a6")
- icon("coin",Vector2(359,32),Vector2(37,36))
- gold_label=label_at("0",Vector2(402,32),24,110)
- icon("power",Vector2(506,31),Vector2(34,39))
- power_label=label_at("0",Vector2(548,32),24,105)
- phase_label=label_at("",Vector2(680,29),16,185)
- hunter_label=label_at("",Vector2(876,27),12,280)
+ box(Rect2(18,12,1244,64),"203747","607D8B")
+ label_at("NIGHTFALL DORM",Vector2(34,27),23,260,true)
+ icon("coin",Vector2(280,25),Vector2(32,32))
+ gold_label=label_at("—",Vector2(320,24),25,98)
+ icon("power",Vector2(429,23),Vector2(30,36))
+ power_label=label_at("—",Vector2(468,24),25,98)
+ phase_label=label_at("",Vector2(576,22),18,120)
+ hunter_label=label_at("",Vector2(704,21),18,290)
  hunter_bar=ProgressBar.new()
- hunter_bar.position=Vector2(876,57)
- hunter_bar.size=Vector2(280,11)
+ hunter_bar.position=Vector2(704,46)
+ hunter_bar.size=Vector2(286,11)
  hunter_bar.show_percentage=false
- hunter_bar.add_theme_stylebox_override("background",style("101c2d","574c63",4))
- hunter_bar.add_theme_stylebox_override("fill",style("b57b9e","d2b8be",4))
  hunter_bar.mouse_filter=Control.MOUSE_FILTER_IGNORE
+ hunter_bar.add_theme_stylebox_override("background",style("182B3A","607D8B",4))
+ hunter_bar.add_theme_stylebox_override("fill",style("F05467","F05467",4))
+ hunter_bar.size=Vector2(286,12)
  panel.add_child(hunter_bar)
- pause_button=button("Ⅱ",Vector2(1189,35),game.toggle_pause,42,35)
+ map_button=button("Map",Vector2(1010,24),game.toggle_map,78,36)
+ map_button.tooltip_text="Strategic map / focused room [M]"
+ button("Help",Vector2(1098,24),func(): game.tutorial_enabled=not game.tutorial_enabled,62,36)
+ pause_button=button("Ⅱ",Vector2(1174,24),game.toggle_pause,62,36)
  pause_button.tooltip_text="Pause / resume [Esc]"
- box(Rect2(280,96,720,30),"1b2b39","465767")
- message=label_at("Enter a room, claim it with E, then sleep in its bed.",Vector2(292,101),13,696)
- message.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
- # Compact room dock replaces the debugging sidebar.
- box(Rect2(145,782,990,88),"182a39","a18d6f")
- label_at("YOUR NIGHTWATCH",Vector2(168,798),10,210).modulate=Color("c9b58c")
- details=label_at("Choose a room",Vector2(168,820),18,220,true)
- bed_button=button("Upgrade bed",Vector2(390,797),func(): purchase(game.model.upgrade_bed()),200,61)
- door_button=button("Upgrade door",Vector2(604,797),func(): purchase(game.model.upgrade_door()),200,61)
- actions.bed=bed_button
- actions.door=door_button
- action_icon(bed_button,"bed")
- action_icon(door_button,"door")
- actions.repair=button("Repair\n12 gold",Vector2(818,797),func(): purchase(game.model.repair_door()),151,61)
- action_icon(actions.repair,"repair")
- icon("foundation",Vector2(991,800),Vector2(33,33))
- label_at("Click a floor sigil\nto build or upgrade",Vector2(987,836),10,150)
- label_at("WASD / arrows  Move     E  Interact     Click  Build     Esc  Close / pause",Vector2(145,878),11,1000).modulate=Color("9ab0b8")
- # Context card nodes are retained but hidden until a real floor selection.
- context_box=box(Rect2(170,772,940,118),"1a2a3b","c3a67a")
+ guide_box=box(Rect2(20,92,334,112),"294957","7BE3A1")
+ guide_label=label_at("",Vector2(34,105),18,306)
+ guide_label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+ guide_label.size.y=90
+ warning_box=box(Rect2(390,88,500,48),"583344","F05467")
+ warning_label=label_at("",Vector2(402,98),18,476,true)
+ warning_label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+ warning_box.visible=false
+ warning_label.visible=false
+ room_dock=box(Rect2(20,638,1240,66),"203747","607D8B")
+ details=label_at("Choose a room",Vector2(35,653),18,205,true)
+ room_bed_summary=button("Bed",Vector2(250,649),func(): open_room_panel("bed"),226,44)
+ room_door_summary=button("Door",Vector2(490,649),func(): open_room_panel("door"),266,44)
+ room_selected_summary=button("Build pads",Vector2(770,649),open_context,263,44)
+ quick_repair=button("Repair",Vector2(1047,649),func(): purchase(game.model.repair_door()),196,44)
+ quick_repair.tooltip_text="Repair your door quickly [R]"
+ # Side inspector lies beyond the focused bedroom's playable bounds.
+ context_box=box(Rect2(900,246,364,382),"263E50","7F9DAA")
  context_box.mouse_filter=Control.MOUSE_FILTER_STOP
- context_title=label_at("CHOOSE A DEFENSE",Vector2(190,779),13,800,true)
- var close=button("×",Vector2(1067,778),close_context,27,24)
- context_items=[context_box,context_title,close]
+ context_title=label_at("BUILD A DEFENSE",Vector2(14,12),18,304,true,context_box)
+ button("×",Vector2(326,8),game.cancel_placement,28,28,context_box)
+ var descs={"turret":"Auto fire","heavy":"Arc damage","generator":"Makes power","repair":"Mends door","economy":"More income","enhancer":"Boost guns"}
  var n=0
  for kind in Catalog.BUILDINGS:
   var id=kind
   var data=Catalog.BUILDINGS[kind]
-  var b=button("",Vector2(184+n*154,804),func(): purchase(game.model.buy(id,game.selected_tile)),142,78)
-  b.add_theme_font_size_override("font_size",12)
-  var art=icon(kind,b.position+Vector2(46,0),Vector2(50,48))
-  var title=label_at(data.name,b.position+Vector2(3,46),11,136)
-  title.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
-  var price=label_at("%d G  ·  %d E" % [data.gold,data.power],b.position+Vector2(3,62),10,136)
-  price.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+  var at=Vector2(12+(n%3)*114,42+(n/3)*152)
+  var b=button("",at,func(): game.begin_placement(id),108,142,context_box)
+  var art=icon(kind,at+Vector2(29,5),Vector2(50,48),context_box)
+  var display_names={"turret":"Needle\nturret","heavy":"Arc\nturret","generator":"Dynamo","repair":"Repair\nstation","economy":"Dream\namplifier","enhancer":"Target\nrelay"}
+  var name=label_at(display_names[kind],at+Vector2(3,53),16,102,false,context_box)
+  name.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+  name.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+  name.size=Vector2(102,38)
+  var cost=label_at("%d G" % data.gold+("+%d E" % data.power if data.power>0 else ""),at+Vector2(3,94),16,102,false,context_box)
+  cost.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+  cost.modulate=Color("FFD27A")
+  var effect=label_at(descs[kind],at+Vector2(3,118),16,102,false,context_box)
+  effect.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
   actions["build:"+kind]=b
-  card_visuals["build:"+kind]=[art,title,price]
-  build_items.append_array([b,art,title,price])
+  build_items.append_array([b,art,name,cost,effect])
+  card_visuals["build:"+kind]=[art,name,cost,effect]
   n+=1
- selected_icon=icon("turret",Vector2(195,805),Vector2(72,72))
- selected_details=label_at("",Vector2(292,808),13,510)
+ selected_icon=icon("turret",Vector2(14,52),Vector2(80,86),context_box)
+ selected_details=label_at("",Vector2(104,50),16,244,false,context_box)
  selected_details.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
- selected_details.size.y=66
- actions.upgrade=button("Upgrade selected tile",Vector2(840,813),func(): purchase(game.model.upgrade_building(game.selected_tile)),235,51)
+ selected_details.size.y=126
+ actions.upgrade=button("Upgrade",Vector2(14,190),func(): purchase(game.model.upgrade_building(game.selected_tile)),336,44,context_box)
  upgrade_items=[selected_icon,selected_details,actions.upgrade]
+ var bed_art=icon("bed",Vector2(14,52),Vector2(80,108),context_box)
+ bed_details=label_at("",Vector2(104,50),18,244,false,context_box)
+ bed_details.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+ bed_details.size.y=128
+ bed_button=button("Upgrade bed",Vector2(14,190),func(): purchase(game.model.upgrade_bed()),336,44,context_box)
+ actions.bed=bed_button
+ bed_items=[bed_art,bed_details,bed_button]
+ var door_art=icon("door",Vector2(14,52),Vector2(80,108),context_box)
+ door_details=label_at("",Vector2(104,50),18,244,false,context_box)
+ door_details.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+ door_details.size.y=138
+ door_button=button("Upgrade door",Vector2(14,198),func(): purchase(game.model.upgrade_door()),336,40,context_box)
+ actions.door=door_button
+ actions.repair=button("Repair",Vector2(14,246),func(): purchase(game.model.repair_door()),336,40,context_box)
+ door_items=[door_art,door_details,door_button,actions.repair]
+ confirmation_icon=icon("turret",Vector2(14,54),Vector2(80,86),context_box)
+ confirmation_details=label_at("",Vector2(104,52),18,244,false,context_box)
+ confirmation_details.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+ confirmation_details.size.y=120
+ confirm_button=button("Confirm placement",Vector2(14,180),func(): game.confirm_placement(),336,40,context_box)
+ var cancel=button("Cancel · no charge",Vector2(14,228),game.cancel_placement,336,30,context_box)
+ confirmation_items=[confirmation_icon,confirmation_details,confirm_button,cancel]
+ message=guide_label
+ status=phase_label
  close_context()
+ update_match()
 
 func open_context():
+ game.full_map=false
+ game.focus_camera(true)
  context_open=true
+ var room=game.model.player()
+ context_mode="upgrade" if room!=null and room.buildings.has(game.selected_tile) else "build"
+ refresh_context()
+
+func open_room_panel(kind: String):
+ if game.model.player()==null: return
+ game.cancel_placement()
+ game.full_map=false
+ game.focus_camera(true)
+ context_open=true
+ context_mode=kind
+ refresh_context()
+
+func open_confirmation():
+ context_open=true
+ context_mode="confirm"
  refresh_context()
 
 func close_context():
  context_open=false
- for node in context_items+build_items+upgrade_items:
-  if is_instance_valid(node): node.visible=false
+ if is_instance_valid(context_box): context_box.visible=false
+ for node in build_items+upgrade_items+bed_items+door_items+confirmation_items: node.visible=false
 
 func refresh_context():
- if not context_open: return
+ if not context_open or game.model.player()==null: close_context(); return
  var room=game.model.player()
- if room==null: close_context(); return
- var y=772.0
- var shift=y-context_box.position.y
- for node in context_items+build_items+upgrade_items: node.position.y+=shift
- var built=room.buildings.has(game.selected_tile)
- for node in context_items: node.visible=true
- for node in build_items: node.visible=not built
- for node in upgrade_items: node.visible=built
- if built:
+ var heights={"build":382,"upgrade":250,"bed":250,"door":300,"confirm":272}
+ context_box.position=Vector2(900,628-heights[context_mode])
+ context_box.size=Vector2(364,heights[context_mode])
+ context_box.visible=true
+ for group in {"build":build_items,"upgrade":upgrade_items,"bed":bed_items,"door":door_items,"confirm":confirmation_items}:
+  var list={"build":build_items,"upgrade":upgrade_items,"bed":bed_items,"door":door_items,"confirm":confirmation_items}[group]
+  for node in list: node.visible=group==context_mode
+ if context_mode=="build": context_title.text="BUILD A DEFENSE"
+ elif context_mode=="upgrade" and room.buildings.has(game.selected_tile):
   var b=room.buildings[game.selected_tile]
-  selected_icon.texture=game.presentation.textures[b.kind]
-  context_title.text=Catalog.BUILDINGS[b.kind].name.to_upper()+"  /  LEVEL %d" % b.level
-  selected_details.text=building_effect(b.kind)+"\n"+action_reason("upgrade")
- else:
-  context_title.text="CHOOSE A DEFENSE  /  EMPTY FOUNDATION"
+  selected_icon.texture=game.presentation.cartoon[game.presentation.building_key(b.kind,b.level)]
+  context_title.text=Catalog.BUILDINGS[b.kind].name.to_upper()
+  selected_details.text=selected_stats(b)+"\n"+action_reason("upgrade")
+ elif context_mode=="bed":
+  context_title.text="BED LEVEL %d / 5" % (room.bed_level+1)
+  bed_details.text="Income %.1f gold/s\nNext: %s\n%s" % [room.income_rate(),"MAX" if room.bed_level>=4 else str(Catalog.BED_INCOME[room.bed_level+1])+" gold/s",action_reason("bed")]
+ elif context_mode=="door":
+  context_title.text="DOOR LEVEL %d / 5" % (room.door_level+1)
+  door_details.text="%d / %d HP\nNext: %s\n%s" % [room.door_hp,room.max_hp(),"MAX" if room.door_level>=4 else str(Catalog.DOOR_HP[room.door_level+1])+" HP",action_reason("door")]
+ elif context_mode=="confirm" and game.pending_build!="":
+  var data=Catalog.BUILDINGS[game.pending_build]
+  context_title.text="PLACE "+data.name.to_upper()
+  confirmation_icon.texture=game.presentation.textures[game.pending_build]
+  var reason=game.placement_reason()
+  confirmation_details.text="%d G / %d E\n%s" % [data.gold,data.power,reason if reason!="" else "Green pad ready. Confirm to purchase."]
+  confirm_button.disabled=reason!=""
+
+func selected_stats(b) -> String:
+ var d=Catalog.BUILDINGS[b.kind]
+ if b.kind in ["turret","heavy"]:
+  return "Level %d / 4\nDamage %.0f\nRange %.0f\nEvery %.2fs" % [b.level,d.damage*b.level,d.range,d.interval/(1+(b.level-1)*0.12)]
+ if b.kind=="generator": return "Level %d / 4\n%.1f electricity/s" % [b.level,d.rate*b.level]
+ if b.kind=="repair": return "Level %d / 4\n%.1f door HP/s" % [b.level,d.rate*b.level]
+ return "Level %d / 4\n+%d%% %s" % [b.level,d.rate*b.level*100,"income" if b.kind=="economy" else "turret damage"]
 
 func show_pause(open: bool):
+ game.pending_build=""
  close_context()
  for node in pause_items:
   if is_instance_valid(node): node.queue_free()
  pause_items.clear()
  if not open: return
  var veil=ColorRect.new()
- veil.color=Color(0.03,0.06,0.12,0.72)
- veil.size=Vector2(1280,900)
+ veil.size=Vector2(1280,720)
+ veil.color=Color(0.05,0.1,0.16,0.75)
  panel.add_child(veil)
- var bg=box(Rect2(420,260,440,350))
- var title=label_at("NIGHTWATCH PAUSED",Vector2(455,300),24,380,true)
- var help=label_at("Take a breath. Your room can wait.",Vector2(455,350),15,370)
- var resume=button("Resume",Vector2(455,419),game.toggle_pause,370,48)
- var menu=button("Return to main menu",Vector2(455,485),game.return_menu,370,48)
- pause_items=[veil,bg,title,help,resume,menu]
+ var bg=box(Rect2(420,180,440,350))
+ var title=label_at("NIGHTWATCH PAUSED",Vector2(450,218),24,390,true)
+ var subtitle=label_at("Your room can wait a moment.",Vector2(450,266),18,390)
+ var resume=button("Resume",Vector2(450,329),game.toggle_pause,380,48)
+ var menu=button("Return to main menu",Vector2(450,397),game.return_menu,380,48)
+ pause_items=[veil,bg,title,subtitle,resume,menu]
 
 func purchase(success: bool):
- message.text="Your nightwatch grows stronger." if success else game.model.purchase_error()
  game.play_tone(650 if success else 160)
- if success:
-  message.modulate=Color("f5d48f")
-  create_tween().tween_property(message,"modulate",Color.WHITE,0.7)
+ feedback_text="Defense improved!" if success else game.model.purchase_error()
+ feedback_until=game.presentation.clock+2
  update_match()
 
+func tutorial_text() -> String:
+ var m=game.model
+ var room=m.player()
+ if room==null: return "1 / 5  FIND A ROOM\nMove with WASD. Press E inside a vacant bedroom."
+ if not room.sleeping: return "2 / 5  OCCUPY THE BED\nApproach your bed and press E. Gold starts while sleeping."
+ if room.income_total<8: return "3 / 5  EARN GOLD\nYour bed earns gold automatically while you sleep."
+ if room.bed_level==0 and room.door_level==0: return "4 / 5  UPGRADE\nClick the bed or door summary below."
+ for b in room.buildings.values():
+  if b.kind in ["turret","heavy"]: return "NIGHTWATCH READY\nSave for power and stronger defenses. Help/G hides this guide."
+ return "5 / 5  FIRST DEFENSE\nClick a green floor pad, choose a turret and confirm."
+
 func update_match():
- if not is_instance_valid(message) or game.mode!="match": return
+ if not is_instance_valid(gold_label) or game.mode!="match": return
  var m=game.model
  var room=m.player()
  gold_label.text=str(int(room.gold)) if room!=null else "—"
  power_label.text=str(int(room.electricity)) if room!=null else "—"
- phase_label.text="PREPARATION\n%02ds to midnight" % maxi(0,ceili(m.preparation-m.time)) if m.time<m.preparation else "NIGHT %02d:%02d\nHOLD THE DOOR" % [int(m.time)/60,int(m.time)%60]
- hunter_label.text="THE NIGHT MOTH  ·  LV %d      %d / %d" % [m.hunter.level,m.hunter.hp,m.hunter.max_hp]
+ phase_label.text="%02d:%02d\n%s" % [int(m.time)/60,int(m.time)%60,"PREP %ds" % maxi(0,ceili(m.preparation-m.time)) if m.time<m.preparation else "SURVIVE"]
+ hunter_label.text="HUNTER L%d  ·  %d/%d" % [m.hunter.level,m.hunter.hp,m.hunter.max_hp]
  hunter_bar.max_value=m.hunter.max_hp
  hunter_bar.value=m.hunter.hp
- hunter_bar.modulate=Color(1,1,1,0.4 if m.time<m.preparation else 1.0)
+ map_button.text="Focus" if game.full_map else "Map"
+ guide_box.visible=(game.tutorial_enabled and not game.full_map) or game.presentation.clock<feedback_until
+ guide_label.visible=guide_box.visible
+ if guide_label.visible: guide_label.text=feedback_text if game.presentation.clock<feedback_until else tutorial_text()
+ var threat=room!=null and m.hunter.target==room.index and m.hunter.state==HunterState.State.ATTACK
+ warning_box.visible=threat
+ warning_label.visible=threat
+ if threat:
+  warning_label.text="YOUR DOOR IS UNDER ATTACK  ·  %d/%d" % [room.door_hp,room.max_hp()]
+  warning_box.modulate.a=0.75+game.danger_time*0.35
+ details.text="Choose a room" if room==null else "%s · %s" % [game.presentation.ROOM_NAMES[room.index].capitalize(),"sleeping" if room.sleeping else "awake"]
+ for control in [room_bed_summary,room_door_summary,room_selected_summary]: control.disabled=room==null
  if room!=null:
-  details.text="%s  /  %s" % [game.presentation.ROOM_NAMES[room.index].capitalize(),"Sleeping" if room.sleeping else "Awake"]
-  var bed_cost="MAX" if room.bed_level>=Catalog.BED_COST.size() else "%dG / %dE" % [Catalog.BED_COST[room.bed_level],Catalog.BED_POWER[room.bed_level]]
-  var door_cost="MAX" if room.door_level>=Catalog.DOOR_COST.size() else "%dG / %dE" % [Catalog.DOOR_COST[room.door_level],Catalog.DOOR_POWER[room.door_level]]
-  bed_button.text="Bed L%d  ·  %.1f/s\n%s" % [room.bed_level+1,room.income_rate(),bed_cost]
-  door_button.text="Door %d  ·  %d/%d\n%s" % [room.door_level+1,room.door_hp,room.max_hp(),door_cost]
+  room_bed_summary.text="Bed L%d  ·  %.1f G/s" % [room.bed_level+1,room.income_rate()]
+  room_door_summary.text="Door L%d  ·  %d/%d" % [room.door_level+1,room.door_hp,room.max_hp()]
+  room_selected_summary.text=Catalog.BUILDINGS[room.buildings[game.selected_tile].kind].name if room.buildings.has(game.selected_tile) else "Build on a floor pad"
+  var bed_cost="MAX" if room.bed_level>=4 else "%dG / %dE" % [Catalog.BED_COST[room.bed_level],Catalog.BED_POWER[room.bed_level]]
+  var door_cost="MAX" if room.door_level>=4 else "%dG / %dE" % [Catalog.DOOR_COST[room.door_level],Catalog.DOOR_POWER[room.door_level]]
+  bed_button.text="Upgrade bed  ·  "+bed_cost
+  door_button.text="Upgrade door  ·  "+door_cost
   if room.buildings.has(game.selected_tile):
    var b=room.buildings[game.selected_tile]
-   var data=Catalog.BUILDINGS[b.kind]
-   actions.upgrade.text="MAX LEVEL" if b.level>=Catalog.BUILDING_MAX_LEVEL else "Upgrade  ·  %dG / %dE" % [data.gold*b.level,(data.power+3)*b.level]
+   var d=Catalog.BUILDINGS[b.kind]
+   actions.upgrade.text="MAX LEVEL" if b.level>=4 else "Upgrade  ·  %dG / %dE" % [d.gold*b.level,(d.power+3)*b.level]
   else: actions.upgrade.text="Select a building to upgrade"
+ actions.repair.text="Repair  ·  %d gold" % Catalog.REPAIR_COST
+ quick_repair.text="Repair %d G  [R]" % Catalog.REPAIR_COST
+ quick_repair.disabled=action_reason("repair")!=""
  for action in actions:
   var b=actions[action]
   var reason=action_reason(action)
-  b.disabled=not reason.is_empty()
+  b.disabled=reason!=""
   if card_visuals.has(action):
-   for visual in card_visuals[action]: visual.modulate=Color(1,1,1,0.65 if b.disabled else 1.0)
-  var effect=building_effect(action.trim_prefix("build:")) if action.begins_with("build:") else ""
-  if action=="bed": effect="Upgrade bed income. Later levels require door progression and electricity."
-  if action=="door": effect="Increase maximum HP, preserving existing damage. Later levels require bed progression."
-  b.tooltip_text=effect+("\n" if effect!="" else "")+(reason if reason!="" else "Ready to purchase.")
+   for node in card_visuals[action]: node.modulate.a=0.55 if b.disabled else 1.0
+  b.tooltip_text=(building_effect(action.trim_prefix("build:"))+"\n" if action.begins_with("build:") else "")+(reason if reason!="" else "Ready")
  refresh_context()
 
 func show_result():
  clear()
  var veil=ColorRect.new()
- veil.color=Color(0.03,0.05,0.10,0.08)
- veil.size=Vector2(1280,900)
+ veil.size=Vector2(1280,720)
+ veil.color=Color(0.04,0.08,0.13,0.1)
  panel.add_child(veil)
- veil.create_tween().tween_property(veil,"color",Color(0.03,0.05,0.10,0.94),1.2)
- box(Rect2(330,160,620,606),"1b2b3d","c7aa7c")
- icon("economy" if game.model.result=="victory" else "hunter_idle",Vector2(563,180),Vector2(154,154))
- var title=label_at("DAWN SURVIVED" if game.model.result=="victory" else "THE LIGHT WENT OUT",Vector2(365,349),32,550,true)
+ veil.create_tween().tween_property(veil,"color",Color(0.04,0.08,0.13,0.93),1.2)
+ box(Rect2(340,100,600,520),"263E50","7BE3A1" if game.model.result=="victory" else "F05467")
+ icon("economy" if game.model.result=="victory" else "hunter_idle",Vector2(585,118),Vector2(110,110))
+ var title=label_at("YOU SURVIVED!" if game.model.result=="victory" else "LIGHTS OUT",Vector2(375,243),34,530,true)
  title.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  var m=game.model
  var r=m.player()
- var stats=label_at("%ds SURVIVED    ·    HUNTER LEVEL %d\n\n%d shots fired     /     %d damage dealt\n\n%d gold earned     ·     %d residents lost" % [m.time,m.hunter.level,r.shots if r!=null else 0,r.damage_dealt if r!=null else 0,r.income_total if r!=null else 0,m.eliminations],Vector2(385,425),18,510)
- stats.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
- button("Restart",Vector2(390,655),game.start_match,235,49)
- button("Main menu",Vector2(650,655),game.return_menu,235,49)
- # Let the real hunter dissolve / resident loss read before the report arrives.
+ var l=label_at("%ds survived  ·  Hunter level %d\n\n%d shots  ·  %d damage\n\n%d gold earned  ·  %d residents lost" % [m.time,m.hunter.level,r.shots if r!=null else 0,r.damage_dealt if r!=null else 0,r.income_total if r!=null else 0,m.eliminations],Vector2(390,312),20,500)
+ l.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+ button("Restart",Vector2(390,530),game.start_match,235,48)
+ button("Main menu",Vector2(650,530),game.return_menu,235,48)
  for item in panel.get_children():
   if item==veil: continue
-  item.modulate=Color(1,1,1,0)
+  item.modulate.a=0
   if item is BaseButton: item.disabled=true
-  var reveal=item.create_tween()
-  reveal.tween_interval(0.65)
-  reveal.tween_property(item,"modulate",Color.WHITE,0.3)
-  if item is BaseButton:
-   reveal.tween_callback(func():
-    if is_instance_valid(item): item.disabled=false)
-
+  var t=item.create_tween()
+  t.tween_interval(0.65)
+  t.tween_property(item,"modulate",Color.WHITE,0.3)
+  if item is BaseButton: t.tween_callback(func():
+   if is_instance_valid(item): item.disabled=false)
 func action_reason(action: String) -> String:
  # Read-only presentation query: never spend resources or change last_error.
  var m = game.model

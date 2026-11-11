@@ -7,8 +7,8 @@ An original single-player Godot 4 dormitory defense game: claim a room, sleep to
 1. Install Godot 4.6 stable (standard build, not .NET; tested cloud version 4.6.3).
 2. Download/clone this repository and import `project.godot` in Godot.
 3. Press F5 or click Run Project. Start Game from the menu.
-4. WASD or arrow keys move. Walk through an open door, press **E** inside to claim the room, move near its cyan bed, and press **E** to sleep and lock the door.
-5. Click a brass floor sigil to open illustrated building cards in the bottom tray. Click an existing building tile and Upgrade selected to improve it. Bed/door upgrades and manual repairs have dedicated buttons. Escape closes the tray first, then pauses.
+4. WASD or arrow keys move. Walk through an open door, press **E** inside to claim the room, move near its bed, and press **E** to sleep and lock the door.
+5. Click a marked floor pad to open illustrated building cards in the side inspector. Choose a card, check the green preview, then Confirm placement. Click an existing building tile and Upgrade selected to improve it. Click the bottom bed/door summaries to open their upgrades; R repairs. M toggles the map, wheel zooms, G toggles the guide. Escape cancels a preview, closes the inspector, then pauses.
 
 You stay in bed for the remainder of the match. Gold starts only when sleeping; dynamos generate electricity. Beds and doors have progression prerequisites; later levels need electricity. Arc turrets require bed level 2. Repair stations cannot restore a destroyed door. Both resources are deducted atomically only on valid purchases.
 
@@ -72,3 +72,5 @@ See [GAMEPLAY_FIDELITY_AUDIT.md](docs/GAMEPLAY_FIDELITY_AUDIT.md), [VISUAL_AUDIT
 The latest local Windows artifact is `/workspace/NightfallDorm-VisualOverhaul-Windows-x64.zip`, rebuilt from the tested overhaul source. Native Windows runtime is still unverified. The older `/workspace/NightfallDorm-Windows-x64.zip` is a historical pre-overhaul artifact. Generated ZIPs are downloadable workspace files, not Git source or public releases.
 
 New tests cover contextual input, card bounds, pause/restart and furniture collision with reachable beds in all rooms. Run `bash tools/check.sh`. The illustrated map retains the tested six-room corridor graph; no economy or combat values were retuned.
+
+Current cartoon camera/placement milestone: [art direction](docs/ART_DIRECTION.md), [render evidence](docs/VISUAL_REDESIGN_REPORT.md), [independent QA](docs/REDESIGN_QA_REPORT.md). Start the next session from [the checkpoint](docs/PROGRESS_CHECKPOINT.md).

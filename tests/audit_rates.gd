@@ -18,6 +18,7 @@ func run():
   g.hunter.state = HunterState.State.MOVE
   g.hunter.position = room.tile_position(0)
   for i in range(int(30/delta)):
+   g._advance_projectiles(delta)
    g._turrets(delta)
   turret_counts.append(g.shots)
   g = MatchModel.new()

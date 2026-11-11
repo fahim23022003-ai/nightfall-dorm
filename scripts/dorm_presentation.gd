@@ -3,6 +3,19 @@ extends RefCounted
 const OFFSET = Vector2(145,40)
 const ROOM_NAMES = ["WILLOW","WREN","ASTER","MOSS","CEDAR","FERN"]
 var textures: Dictionary = {}
+var cartoon: Dictionary = {}
+var all_rooms=true
+var previous_sleep: Dictionary={}
+var sleep_age: Dictionary={}
+var directions: Dictionary={}
+var visual_events: Array=[]
+var seen_event=0
+var previous_doors: Dictionary={}
+var previous_life: Dictionary={}
+var death_ages: Dictionary={}
+var enter_from: Dictionary={}
+var last_model_time=0.0
+var levels: Dictionary={}
 var clock = 0.0
 var previous: Dictionary = {}
 var moving: Dictionary = {}
@@ -13,15 +26,99 @@ func _init():
  for name in ["bed","bed_upgraded","cabinet","plant","lantern","door","door_reinforced","survivor_idle","survivor_walk_a","survivor_walk_b","survivor_sleep","bot_idle","bot_walk","hunter_idle","hunter_move","hunter_attack","hunter_hurt","hunter_death","turret","heavy","generator","repair","economy","enhancer","floor_wood","corridor","coin","power","foundation","window","shadow","warm_glow"]:
   textures[name] = load("res://assets/art/"+name+".png")
 
+ # New cartoon assets are staged in one room until its actual capture is reviewed.
+ var names=["desk","cabinet","bookshelf","plant","lamp","window","utility","generator","repair","economy","enhancer","player_sleep","player_enter","player_eliminated","hunter_idle","hunter_move","hunter_target","hunter_attack","hunter_hurt","hunter_death","construction","projectile","poster","old_poster","clothes","books","rug","pipes"]
+ for i in range(1,6): names.append("bed_%d" % i); names.append("door_%d" % i)
+ for i in range(1,5): names.append("turret_%d" % i); names.append("heavy_%d" % i)
+ for kind in ["generator","repair","economy","enhancer"]:
+  for i in range(1,5): names.append("%s_%d" % [kind,i])
+ for i in range(6): names.append("floor_%d" % i)
+ for i in range(5): names.append("bot_sleep_%d" % i)
+ names.append("corridor")
+ for dir in ["up","down","left","right"]:
+  for i in range(4): names.append("player_%s_%d" % [dir,i])
+ for bot in range(5):
+  names.append("bot_%d" % bot)
+  for i in range(4): names.append("bot_%d_walk_%d" % [bot,i])
+ for name in names: cartoon[name]=load("res://assets/cartoon/"+name+".png")
+ textures.merge(cartoon,true)
+ for alias in {"bed":"bed_1","bed_upgraded":"bed_5","turret":"turret_1","heavy":"heavy_1","cabinet":"cabinet","plant":"plant","lantern":"lamp","window":"window","generator":"generator","repair":"repair","economy":"economy","enhancer":"enhancer","survivor_idle":"player_down_0","survivor_walk_a":"player_down_1","survivor_walk_b":"player_down_3","survivor_sleep":"player_sleep","bot_idle":"bot_0","bot_walk":"bot_0_walk_1"}:
+  var mapping={"bed":"bed_1","bed_upgraded":"bed_5","turret":"turret_1","heavy":"heavy_1","cabinet":"cabinet","plant":"plant","lantern":"lamp","window":"window","generator":"generator","repair":"repair","economy":"economy","enhancer":"enhancer","survivor_idle":"player_down_0","survivor_walk_a":"player_down_1","survivor_walk_b":"player_down_3","survivor_sleep":"player_sleep","bot_idle":"bot_0","bot_walk":"bot_0_walk_1"}
+  textures[alias]=cartoon[mapping[alias]]
+ textures.door=cartoon.door_1
+ textures.door_reinforced=cartoon.door_4
+ textures.corridor=cartoon.corridor
+ textures.floor_wood=cartoon.floor_0
+ for name in ["hunter_idle","hunter_move","hunter_attack","hunter_hurt","hunter_death"]: textures[name]=cartoon[name]
+
+func reset():
+ previous.clear()
+ moving.clear()
+ directions.clear()
+ previous_sleep.clear()
+ previous_life.clear()
+ sleep_age.clear()
+ death_ages.clear()
+ enter_from.clear()
+ previous_doors.clear()
+ levels.clear()
+ visual_events.clear()
+ seen_event=0
+ death_age=0
+ last_model_time=0
+
 func update(delta: float, model):
- clock += delta
- moving.player = previous.has("player") and previous.player.distance_to(model.player_position)>0.05
- previous.player = model.player_position
+ if model.time<last_model_time: reset()
+ last_model_time=model.time
+ clock+=delta
+ var old=previous.duplicate()
+ var motion=model.player_position-old.get("player",model.player_position)
+ moving.player=motion.length()>0.05
+ if motion.length()>0.05:
+  directions.player=("right" if motion.x>0 else "left") if absf(motion.x)>absf(motion.y) else ("down" if motion.y>0 else "up")
+ previous.player=model.player_position
  for room in model.rooms:
-  moving[room.index] = previous.has(room.index) and previous[room.index].distance_to(room.resident_position)>0.05
-  previous[room.index] = room.resident_position
- if model.hunter.state == HunterState.State.DEAD: death_age += delta
- else: death_age = 0
+  moving[room.index]=old.has(room.index) and old[room.index].distance_to(room.resident_position)>0.05
+  previous[room.index]=room.resident_position
+  if room.sleeping and not previous_sleep.get(room.index,false):
+   sleep_age[room.index]=0.0
+   enter_from[room.index]=old.get("player",room.bed_position()) if room.owner==0 else old.get(room.index,room.resident_position)
+  sleep_age[room.index]=sleep_age.get(room.index,0.0)+delta
+  previous_sleep[room.index]=room.sleeping
+  if not room.alive and previous_life.get(room.index,true): death_ages[room.index]=0.0
+  death_ages[room.index]=death_ages.get(room.index,0.0)+delta
+  previous_life[room.index]=room.alive
+  var old_hp=previous_doors.get(room.index,room.door_hp)
+  if old_hp>0 and room.door_hp<=0: effect("break",room.door_position(),0.7)
+  elif room.door_hp>old_hp+0.1 and room.door_hp<room.max_hp(): effect("repair",room.door_position(),0.35)
+  previous_doors[room.index]=room.door_hp
+  for key in ["bed","door"]:
+   var value=room.bed_level if key=="bed" else room.door_level
+   var id="%d:%s" % [room.index,key]
+   if levels.has(id) and value>levels[id]: effect("level",room.bed_position() if key=="bed" else room.door_position(),0.8)
+   levels[id]=value
+  for tile in room.buildings:
+   var b=room.buildings[tile]
+   var id="%d:tile%d" % [room.index,tile]
+   if not levels.has(id): effect("build",room.tile_position(tile),0.45)
+   elif b.level>levels[id]: effect("level",room.tile_position(tile),0.8)
+   levels[id]=b.level
+ for e in model.combat_events:
+  if e.id>seen_event:
+   seen_event=e.id
+   if e.type=="impact": effect("impact",e.position,0.3)
+ for e in visual_events: e.life-=delta
+ visual_events=visual_events.filter(func(e): return e.life>0)
+ if model.hunter.state==HunterState.State.DEAD: death_age+=delta
+ else: death_age=0
+
+func effect(kind: String,point: Vector2,life: float):
+ visual_events.append({"kind":kind,"position":point,"life":life,"total":life})
+ if visual_events.size()>80: visual_events.pop_front()
+
+func building_key(kind: String,level: int) -> String:
+ var key="%s_%d" % [kind,level]
+ return key if cartoon.has(key) else kind
 
 func sprite(c: Node2D, name: String, center: Vector2, size: Vector2, tint: Color = Color.WHITE, rotation: float = 0.0):
  c.draw_set_transform(center,rotation)
@@ -46,7 +143,7 @@ func frame(fill: Color, edge: Color, radius: int = 5) -> StyleBoxFlat:
  return style
 
 func render(c):
- c.draw_rect(Rect2(0,0,1280,900),Color("101c2b"))
+ c.draw_rect(Rect2(-3000,-3000,6000,6000),Color("182B3A"))
  # Architectural surround, soft night haze and deliberate negative space.
  for i in range(8):
   c.draw_circle(Vector2(1050,170),420-i*30,Color(0.22,0.29,0.39,0.025))
@@ -60,7 +157,8 @@ func render(c):
  # Coordinates are translated only here; model geometry is unchanged.
  var m = c.model
  for room in m.rooms:
-  room_scene(c,room,room.index==m.player_room)
+  if all_rooms or room.index==1: cartoon_room(c,room,room.index==m.player_room)
+  else: room_scene(c,room,room.index==m.player_room)
  c.draw_texture_rect(textures.corridor,Rect2(OFFSET+Vector2(35,330),Vector2(900,160)),false)
  # Hall edges, brass runner and wall sconces join the rooms into one building.
  c.draw_line(OFFSET+Vector2(30,329),OFFSET+Vector2(940,329),Color("a48b6e"),3)
@@ -75,28 +173,49 @@ func render(c):
  for room in m.rooms:
   door_scene(c,room)
   if room.sleeping:
-   var tint = Color.WHITE if room.owner==0 else Color("f5dfb5")
-   sprite(c,"survivor_sleep",OFFSET+room.bed_position()+Vector2(0,-8+sin(clock*1.6+room.index)*0.5),Vector2(33,48),tint)
-  elif room.owner>0 and room.alive:
-   resident(c,room.resident_position,room.index,false)
-  elif not room.alive:
-   sprite(c,"warm_glow",OFFSET+room.bed_position(),Vector2(70,65),Color(0.6,0.3,0.6,0.3))
+   var age=sleep_age.get(room.index,1.0)
+   if age<0.35:
+    var point=enter_from.get(room.index,room.bed_position()).lerp(room.bed_position(),age/0.35)
+    c.draw_texture_rect(cartoon.player_enter,Rect2(OFFSET+point-Vector2(23,37),Vector2(46,48)),false)
+   else:
+    var key="player_sleep" if room.owner==0 else "bot_sleep_%d" % posmod(room.owner-1,5)
+    c.draw_texture_rect(cartoon[key],Rect2(OFFSET+room.bed_position()+Vector2(-22,-30+sin(clock*1.7+room.index)*0.6),Vector2(44,46)),false)
+  elif room.owner>0 and room.alive: resident(c,room.resident_position,room.index,false)
+  elif not room.alive and death_ages.get(room.index,2.0)<0.9:
+   var age=death_ages[room.index]
+   var key="player_eliminated" if room.owner==0 else "bot_%d" % posmod(room.owner-1,5)
+   c.draw_texture_rect(cartoon[key],Rect2(OFFSET+room.bed_position()+Vector2(-18,-35-age*12),Vector2(36,51)),false,Color(0.8,0.7,1,1-age/0.9))
  if (m.player()==null or not m.player().sleeping) and (m.player()==null or m.player().alive):
   resident(c,m.player_position,-1,true)
  if m.hunter.state != HunterState.State.DORMANT:
   hunter(c,m.hunter)
- for room in m.rooms:
-  for tile in room.buildings:
-   var b = room.buildings[tile]
-   if b.kind in ["turret","heavy"] and b.flash>0:
-    var from = OFFSET+room.tile_position(tile)+Vector2(0,-12)
-    var to = OFFSET+m.hunter.position+Vector2(0,-12)
-    var color = Color("b2f6d6") if b.kind=="turret" else Color("d5b4ff")
-    c.draw_line(from,to,Color(color,0.18),8)
-    c.draw_line(from,to,color,2)
-    sprite(c,"warm_glow",from,Vector2(35,35),color)
+ for shot in m.projectiles:
+  var p=OFFSET+shot.position
+  var direction=(m.hunter.position-shot.position).normalized()
+  if shot.kind=="heavy":
+   sprite(c,"projectile",p,Vector2(20+shot.level*2,12+shot.level),Color.WHITE,direction.angle())
+  else:
+   var side=Vector2(-direction.y,direction.x)*2
+   for n in range(2 if shot.level>=3 else 1):
+    var start=p+side*(n*2-1 if shot.level>=3 else 0)
+    c.draw_line(start-direction*10,start+direction*5,Color("4DDDF3"),3)
+    c.draw_line(start-direction*4,start+direction*5,Color("DDF9FF"),1)
+ for e in visual_events:
+  var p=OFFSET+e.position
+  var fraction=e.life/e.total
+  if e.kind in ["build","break"]:
+   c.draw_texture_rect(cartoon.construction,Rect2(p-Vector2(31,31),Vector2(62,62)),false,Color(1,1,1,fraction))
+  elif e.kind=="level":
+   c.draw_arc(p,20+(1-fraction)*18,0,TAU,32,Color(0.48,0.89,0.63,fraction),2)
+   text(c,"LEVEL UP",p+Vector2(-25,-20-(1-fraction)*15),11,Color(0.7,1,0.75,fraction))
+  else:
+   var color=Color("7BE3A1") if e.kind=="repair" else Color("A88CEB")
+   for i in range(6):
+    var v=Vector2.from_angle(i*TAU/6)*(8+(1-fraction)*15)
+    c.draw_line(p+v,p+v*1.3,Color(color,fraction),2)
  for f in c.floating:
-  text(c,f.text,OFFSET+f.position,14,Color(0.98,0.84,0.51,f.life))
+  sprite(c,"coin",OFFSET+f.position+Vector2(-12,-5),Vector2(13,13),Color(1,1,1,f.life))
+  text(c,f.text,OFFSET+f.position,14,Color(0.96,0.77,0.26,f.life))
 
 func room_scene(c, room: RoomState, owned: bool):
  var r = Rect2(OFFSET+room.bounds().position,room.bounds().size)
@@ -144,14 +263,15 @@ func room_scene(c, room: RoomState, owned: bool):
 
 func door_scene(c, room):
  var p = OFFSET+room.door_position()
- c.draw_texture_rect(textures.floor_wood,Rect2(p-Vector2(30,10),Vector2(60,56)),false)
+ if room.damage_flash>0: p+=Vector2(sin(clock*90),cos(clock*73))*room.damage_flash*6
+ c.draw_style_box(frame(Color("607D8B"),Color("263746"),4),Rect2(p-Vector2(32,10),Vector2(64,36)))
  sprite(c,"shadow",p+Vector2(0,13),Vector2(83,39))
  if room.door_hp>0:
   var tint = Color(1.6,1.25,1.2) if room.damage_flash>0 else Color.WHITE
   if room.closed:
-   sprite(c,"door_reinforced" if room.door_level>=2 else "door",p+Vector2(0,-10),Vector2(73,61),tint)
+   c.draw_texture_rect(cartoon["door_%d" % (room.door_level+1)],Rect2(p+Vector2(-36,-41),Vector2(73,61)),false,tint)
   else:
-   sprite(c,"door",p+Vector2(-31,-10),Vector2(40,50),Color("a1aa9b"),-0.95)
+   sprite(c,"door",p+Vector2(-31,-10),Vector2(40,50),Color("A3B8C0"),-0.95)
   if room.door_hp < room.max_hp()*0.55:
    c.draw_polyline(PackedVector2Array([p+Vector2(-8,-29),p+Vector2(1,-16),p+Vector2(-4,-5),p+Vector2(10,5)]),Color("382432"),2)
  else:
@@ -161,7 +281,7 @@ func door_scene(c, room):
   var targeted=c.model.hunter.target==room.index and c.model.hunter.state in [HunterState.State.ATTACK,HunterState.State.BREACH]
   if room.index==c.model.player_room or targeted:
    var hp_box=Rect2(p+Vector2(43,-21),Vector2(79,17))
-   c.draw_style_box(frame(Color("211e30"),Color("de8b79") if targeted else Color("d8bc89"),4),hp_box)
+   c.draw_style_box(frame(Color("263746"),Color("de8b79") if targeted else Color("7BE3A1"),4),hp_box)
    text(c,"%d/%d" % [room.door_hp,room.max_hp()],hp_box.position+Vector2(6,12),10)
    bar(c,p+Vector2(46,0),73,room.door_hp/room.max_hp())
    if targeted:
@@ -170,35 +290,32 @@ func door_scene(c, room):
    bar(c,p+Vector2(-31,28 if room.index<3 else -42),62,room.door_hp/room.max_hp())
 
 func resident(c, pos: Vector2, index: int, player: bool):
- var walk = moving.get("player" if player else index,false)
- var name = "survivor_idle" if player or index%2==0 else "bot_idle"
- if walk:
-  name = ("survivor_walk_a" if int(clock*8)%2==0 else "survivor_walk_b") if player or index%2==0 else ("bot_walk" if int(clock*8)%2==0 else "bot_idle")
- var tint = [Color("c7e0da"),Color("ffdfaa"),Color("d8ccf2"),Color("cfdda8"),Color("e9bec9"),Color.WHITE][posmod(index,6)] if not player else Color.WHITE
- var bob = sin(clock*(9 if walk else 2)+index)*(1.5 if walk else 0.6)
- sprite(c,"shadow",OFFSET+pos+Vector2(0,14),Vector2(36,21))
- sprite(c,name,OFFSET+pos+Vector2(0,-13+bob),Vector2(34,51),tint)
+ var walk=moving.get("player" if player else index,false)
+ var phase=int(clock*8)%4 if walk else 0
+ var texture=cartoon["player_%s_%d" % [directions.get("player","down"),phase]] if player else cartoon["bot_%d_walk_%d" % [posmod(c.model.rooms[index].owner-1,5),phase]]
+ var bob=sin(clock*2)*0.4 if not walk else 0.0
+ sprite(c,"shadow",OFFSET+pos+Vector2(0,12),Vector2(35,18))
+ c.draw_texture_rect(texture,Rect2(OFFSET+pos+Vector2(-18,-40+bob),Vector2(36,52)),false)
 
-func hunter(c, h):
- var name = "hunter_move" if int(clock*4)%2 else "hunter_idle"
- if h.state == HunterState.State.ATTACK and h.cooldown>h.interval-0.32: name = "hunter_attack"
- if h.hit_flash>0: name = "hunter_hurt"
- var alpha = 1.0
- if h.state == HunterState.State.DEAD:
-  name = "hunter_death"
-  alpha = maxf(0,1-death_age/1.2)
- var p = OFFSET+h.position+Vector2(0,-19+sin(clock*3)*3)
- sprite(c,"shadow",OFFSET+h.position+Vector2(0,15),Vector2(75,35),Color(1,1,1,alpha))
- sprite(c,name,p,Vector2(82,86),Color(1,1,1,alpha))
- if h.hit_flash>0:
-  for i in range(5):
-   var v = Vector2.from_angle(i*TAU/5+clock)*26
-   c.draw_line(p+v,p+v*1.2,Color("c2f9df"),2)
+func hunter(c,h):
+ var name="hunter_move" if int(clock*4)%2 else "hunter_idle"
+ if h.target_time<0.4 and h.target>=0: name="hunter_target"
+ if h.state==HunterState.State.ATTACK and h.cooldown>h.interval-0.32:
+  name="hunter_target" if h.target<3 else "hunter_attack"
+ if h.hit_flash>0: name="hunter_hurt"
+ var alpha=1.0
+ if h.state==HunterState.State.DEAD:
+  name="hunter_death"
+  alpha=maxf(0,1-death_age/1.2)
+ var p=OFFSET+h.position+Vector2(0,-18+sin(clock*3)*2)
+ c.draw_circle(p+Vector2(0,13),25+min(h.level,6)*2,Color(0.65,0.55,0.92,0.035*alpha))
+ sprite(c,"shadow",OFFSET+h.position+Vector2(0,14),Vector2(59,27),Color(1,1,1,alpha))
+ c.draw_texture_rect(cartoon[name],Rect2(p-Vector2(33,42),Vector2(66,84)),false,Color(1,1,1,alpha))
 
 func menu_scene(c):
  # A furnished moonlit vignette, not the old abstract grid backdrop.
  var r = Rect2(680,170,440,515)
- c.draw_style_box(frame(Color("263b49"),Color("b49772"),22),r.grow(17))
+ c.draw_style_box(frame(Color("263b49"),Color("607D8B"),22),r.grow(17))
  c.draw_texture_rect(textures.floor_wood,r,false,Color("d6c8b5"))
  sprite(c,"window",Vector2(905,186),Vector2(174,112))
  sprite(c,"cabinet",Vector2(1060,345),Vector2(119,153))
@@ -208,3 +325,80 @@ func menu_scene(c):
  sprite(c,"warm_glow",Vector2(702,341),Vector2(330,380))
  sprite(c,"lantern",Vector2(710,360),Vector2(74,138))
  sprite(c,"hunter_idle",Vector2(1132,170+sin(clock)*8),Vector2(135,151),Color(0.8,0.9,1,0.42))
+
+func cartoon_room(c,room: RoomState,owned: bool):
+ var r=Rect2(OFFSET+room.bounds().position,room.bounds().size)
+ c.draw_style_box(frame(Color("152635"),Color("172B3A"),8),r.grow(7))
+ c.draw_texture_rect(cartoon["floor_%d" % room.index],r,false)
+ var wall=frame(Color("607D8B"),Color("263746"),5)
+ wall.set_border_width_all(3)
+ c.draw_style_box(wall,Rect2(r.position-Vector2(7,10),Vector2(284,45)))
+ for x in [r.position.x-7,r.end.x]: c.draw_style_box(wall,Rect2(Vector2(x,r.position.y+10),Vector2(7,210)))
+ c.draw_line(Vector2(r.position.x,r.end.y),r.end,Color("263746"),5)
+ c.draw_line(r.position-Vector2(5,9),r.position+Vector2(275,-9),Color("A6B9C1"),3)
+ if room.index==3: c.draw_texture_rect(cartoon.rug,Rect2(OFFSET+room.bed_position()-Vector2(44,63),Vector2(88,126)),false)
+ c.draw_texture_rect(cartoon["bed_%d" % (room.bed_level+1)],Rect2(OFFSET+room.bed_position()-Vector2(33,46),Vector2(66,92)),false)
+ var decor=["desk","desk","cabinet","cabinet","bookshelf","utility"][room.index]
+ c.draw_texture_rect(cartoon[decor],Rect2(OFFSET+room.cabinet_position()-Vector2(23,27),Vector2(46,54)),false)
+ c.draw_texture_rect(cartoon.plant,Rect2(OFFSET+room.plant_position()-Vector2(15,19),Vector2(30,38)),false)
+ if room.index!=5: c.draw_texture_rect(cartoon.window,Rect2(Vector2(r.position.x+120,r.position.y-5),Vector2(47,40)),false)
+ if room.index in [0,1]:
+  c.draw_texture_rect(cartoon.cabinet if room.index==0 else cartoon.bookshelf,Rect2(r.position+Vector2(175,3),Vector2(28,34)),false)
+  c.draw_texture_rect(cartoon.poster,Rect2(r.position+Vector2(5,115),Vector2(26,35)),false)
+ elif room.index==2:
+  c.draw_texture_rect(cartoon.old_poster,Rect2(r.position+Vector2(5,114),Vector2(26,35)),false)
+  c.draw_texture_rect(cartoon.books,Rect2(r.position+Vector2(45,123),Vector2(35,28)),false)
+  c.draw_texture_rect(cartoon.clothes,Rect2(r.position+Vector2(46,170),Vector2(37,33)),false)
+ elif room.index==3:
+  c.draw_texture_rect(cartoon.lamp,Rect2(r.position+Vector2(3,126),Vector2(18,28)),false)
+ elif room.index==4:
+  c.draw_texture_rect(cartoon.old_poster,Rect2(r.position+Vector2(5,66),Vector2(28,38)),false,Color("A7A1B8"))
+  c.draw_polyline(PackedVector2Array([r.position+Vector2(240,2),r.position+Vector2(231,13),r.position+Vector2(236,23)]),Color("435A68"),1)
+ elif room.index==5:
+  c.draw_texture_rect(cartoon.pipes,Rect2(r.position+Vector2(143,-1),Vector2(53,37)),false)
+ sprite(c,"warm_glow",r.position+Vector2(30,40),Vector2(160,180),Color(1,1,1,0.45))
+ c.draw_texture_rect(cartoon.lamp,Rect2(r.position+Vector2(8,15),Vector2(23,33)),false)
+ var themes=["STANDARD","STUDENT","MESSY","COZY","OLD DORM","MAINTENANCE"]
+ text(c,"%02d  %s" % [room.index+1,themes[room.index]],r.position+Vector2(15,14),9 if room.index==5 else 11,Color("E6EDF1"))
+ if owned:
+  c.draw_style_box(frame(Color.TRANSPARENT,Color("7BE3A1"),6),r.grow(9))
+  text(c,"YOUR ROOM",r.position+Vector2(10,210 if room.index<3 else 71),11,Color("D4FFE1"))
+ for tile in range(6):
+  var p=OFFSET+room.tile_position(tile)
+  if not room.buildings.has(tile):
+   var pad=frame(Color("6F8991"),Color("425C6D"),7)
+   pad.set_border_width_all(2)
+   c.draw_style_box(pad,Rect2(p-Vector2(22,21),Vector2(44,42)))
+   c.draw_line(p-Vector2(6,0),p+Vector2(6,0),Color("ACC6CD"),2)
+   c.draw_line(p-Vector2(0,6),p+Vector2(0,6),Color("ACC6CD"),2)
+  else:
+   var building=room.buildings[tile]
+   var name=building_key(building.kind,building.level)
+   var size=Vector2(53,56)*(1+0.04*(building.level-1))
+   if building.kind=="turret" and c.model.time>=c.model.preparation:
+    var target=c.model.hunter.position-room.tile_position(tile)
+    c.draw_set_transform(p-Vector2(0,6),clampf(atan2(target.y,absf(target.x)),-0.4,0.4),Vector2(-1,1) if target.x>0 else Vector2.ONE)
+    c.draw_texture_rect(cartoon[name],Rect2(-size/2,size),false)
+    c.draw_set_transform(Vector2.ZERO)
+   else: c.draw_texture_rect(cartoon[name],Rect2(p-size/2-Vector2(0,6),size),false)
+   if room.sleeping and room.alive:
+    if building.kind=="generator":
+     var hub=p+Vector2(12,-4)
+     for spoke in range(3):
+      var v=Vector2.from_angle(clock*5+spoke*TAU/3)*6
+      c.draw_line(hub-v,hub+v,Color("4DDDF3"),1.5)
+    elif building.kind=="enhancer":
+     c.draw_arc(p+Vector2(0,-23),6+sin(clock*4)*2,PI,TAU,12,Color(0.3,0.87,0.95,0.5),1)
+    elif building.kind=="heavy" and building.level>=3:
+     var x=sin(clock*11)*2
+     c.draw_polyline(PackedVector2Array([p+Vector2(-12,-21),p+Vector2(-4+x,-26),p+Vector2(3,-19),p+Vector2(13,-24)]),Color("4DDDF3"),1.5)
+   for pip in range(building.level): c.draw_circle(p+Vector2(-7+pip*5,24),1.6,Color("7BE3A1"))
+  if owned and c.selected_tile==tile and c.ui.context_open:
+   c.draw_style_box(frame(Color.TRANSPARENT,Color("7BE3A1"),7),Rect2(p-Vector2(26,25),Vector2(52,50)))
+ if c.pending_build!="" and owned:
+  var valid=c.placement_reason()==""
+  var p=OFFSET+c.preview_position
+  var color=Color("7BE3A1") if valid else Color("F05467")
+  c.draw_style_box(frame(Color(color,0.12),color,7),Rect2(p-Vector2(27,26),Vector2(54,52)))
+  var name=c.pending_build+"_1" if c.pending_build in ["turret","heavy"] else c.pending_build
+  c.draw_texture_rect(cartoon[name],Rect2(p-Vector2(27,34),Vector2(54,58)),false,Color(1,1,1,0.6))

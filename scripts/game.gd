@@ -13,13 +13,22 @@ var last_shots = 0
 var camera: Camera2D
 var presentation = preload("res://scripts/dorm_presentation.gd").new()
 const MAP_OFFSET = Vector2(145,40)
+var full_map=false
+var zoom_factor=1.0
+var pending_build=""
+var preview_position=Vector2.ZERO
+var placement_on_tile=true
+var tutorial_enabled=true
+var danger_time=0.0
+var last_income: Dictionary={}
+var camera_target=Vector2.ZERO
 
 func _ready():
  var window = get_window()
- window.content_scale_size = Vector2i(1280,900)
+ window.content_scale_size = Vector2i(1280,720)
  window.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
  window.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
- window.min_size = Vector2i(960,675)
+ window.min_size = Vector2i(960,540)
  model = MatchModel.new()
  model.feedback.connect(func(text):
   if is_instance_valid(ui.message): ui.message.text = text)
@@ -28,34 +37,44 @@ func _ready():
  audio = AudioStreamPlayer.new()
  add_child(audio)
  camera = Camera2D.new()
- camera.position = Vector2(640,450)
- camera.position_smoothing_enabled = true
+ camera.position = Vector2(640,360)
+ camera.position_smoothing_enabled = false
  add_child(camera)
 
 func start_match():
  model.reset(int(Time.get_ticks_msec()))
  selected_tile = 0
+ full_map=false
+ zoom_factor=1
+ pending_build=""
+ danger_time=0
+ last_income.clear()
  floating.clear()
  income_clock = 0
- presentation.previous.clear()
- presentation.death_age = 0
+ presentation.reset()
  last_attacks = 0
  last_shots = 0
  mode = "match"
  ui.show_match()
+ focus_camera(true)
  queue_redraw()
 
 func return_menu():
  mode = "menu"
+ pending_build=""
+ camera.position=Vector2(640,360)
+ camera.zoom=Vector2.ONE
+ camera.force_update_scroll()
  ui.show_menu()
  queue_redraw()
 
 func toggle_pause():
  model.running = not model.running
+ if not model.running: pending_build=""
  ui.show_pause(not model.running)
 
 func _process(delta: float):
- presentation.update(delta,model)
+ danger_time=maxf(0,danger_time-delta)
  if mode == "match":
   var direction = Vector2(float(Input.is_physical_key_pressed(KEY_D) or Input.is_physical_key_pressed(KEY_RIGHT))-float(Input.is_physical_key_pressed(KEY_A) or Input.is_physical_key_pressed(KEY_LEFT)),float(Input.is_physical_key_pressed(KEY_S) or Input.is_physical_key_pressed(KEY_DOWN))-float(Input.is_physical_key_pressed(KEY_W) or Input.is_physical_key_pressed(KEY_UP)))
   if model.running:
@@ -72,7 +91,10 @@ func _process(delta: float):
    income_clock = 0
    for room in model.rooms:
     if room.income_rate()>0:
-     floating.append({"position":room.bed_position(),"life":1.0,"text":"+%.0f" % room.income_rate()})
+     var earned=room.income_total-last_income.get(room.index,0.0)
+     if earned>0:
+      floating.append({"position":room.bed_position(),"life":1.0,"text":"+%.0f" % earned,"kind":"coin"})
+     last_income[room.index]=room.income_total
   for f in floating:
    f.position.y -= delta*24
    f.life -= delta
@@ -80,33 +102,110 @@ func _process(delta: float):
   if model.hunter.attacks > last_attacks:
    play_tone(85)
    last_attacks = model.hunter.attacks
+   if model.hunter.target==model.player_room: danger_time=0.65
   if model.shots > last_shots:
    play_tone(440)
    last_shots = model.shots
+  focus_camera(false,delta)
   ui.update_match()
   if model.result != "":
    mode = "result"
    ui.show_result()
+ presentation.update(delta,model)
  queue_redraw()
 
 func _unhandled_input(event):
- if mode != "match":
-  return
+ if mode!="match": return
  if event is InputEventKey and event.pressed and not event.echo:
-  if event.keycode == KEY_E and model.running:
-   model.interact()
-  elif event.keycode == KEY_ESCAPE:
-   if ui.context_open: ui.close_context()
+  if event.keycode==KEY_E and model.running: model.interact()
+  elif event.keycode==KEY_M: toggle_map()
+  elif event.keycode==KEY_G: tutorial_enabled=not tutorial_enabled
+  elif event.keycode==KEY_R and model.running: ui.purchase(model.repair_door())
+  elif event.keycode==KEY_ESCAPE:
+   if pending_build!="": cancel_placement()
+   elif ui.context_open: ui.close_context()
    else: toggle_pause()
- if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and model.player()!=null:
-  var pos = get_global_mouse_position()-MAP_OFFSET
+ if event is InputEventMouseButton and event.pressed:
+  if event.button_index in [MOUSE_BUTTON_WHEEL_UP,MOUSE_BUTTON_WHEEL_DOWN]:
+   zoom_factor=clampf(zoom_factor+(0.1 if event.button_index==MOUSE_BUTTON_WHEEL_UP else -0.1),0.75,1.2)
+  elif event.button_index==MOUSE_BUTTON_LEFT and model.player()!=null:
+   var point=get_global_mouse_position()-MAP_OFFSET
+   var found=false
+   for tile in range(6):
+    if Rect2(model.player().tile_position(tile)-Vector2(27,27),Vector2(54,54)).has_point(point):
+     selected_tile=tile
+     placement_on_tile=true
+     preview_position=model.player().tile_position(tile)
+     found=true
+     if pending_build!="": ui.open_confirmation()
+     else: ui.open_context()
+     break
+   if not found and pending_build!="":
+    placement_on_tile=false
+    preview_position=point
+    ui.open_confirmation()
+ if event is InputEventMouseMotion and pending_build!="" and model.player()!=null:
+  var point=get_global_mouse_position()-MAP_OFFSET
+  placement_on_tile=false
+  preview_position=point
   for tile in range(6):
-   if Rect2(model.player().tile_position(tile)-Vector2(27,27),Vector2(54,54)).has_point(pos):
-    selected_tile = tile
-    ui.open_context()
+   if Rect2(model.player().tile_position(tile)-Vector2(27,27),Vector2(54,54)).has_point(point):
+    selected_tile=tile
+    placement_on_tile=true
+    preview_position=model.player().tile_position(tile)
+    break
+
+func begin_placement(kind: String):
+ if model.player()==null: return
+ pending_build=kind
+ placement_on_tile=true
+ preview_position=model.player().tile_position(selected_tile)
+ ui.open_confirmation()
+
+func placement_reason() -> String:
+ if not placement_on_tile: return "Choose a floor pad inside your room."
+ return ui.action_reason("build:"+pending_build) if pending_build!="" else "Choose a building."
+
+func confirm_placement():
+ if pending_build=="" or placement_reason()!="": return false
+ var success=model.buy(pending_build,selected_tile)
+ if success:
+  pending_build=""
+  ui.close_context()
+ ui.purchase(success)
+ return success
+
+func cancel_placement():
+ pending_build=""
+ ui.close_context()
+
+func toggle_map():
+ cancel_placement()
+ full_map=not full_map
+
+func focus_camera(snap: bool=false,delta: float=0.016):
+ if mode!="match": return
+ var goal=model.player_position+MAP_OFFSET
+ var zoom=1.45
+ if full_map:
+  goal=Vector2(640,450)
+  zoom=0.8
+ elif model.player()!=null:
+  var room=model.player()
+  goal=room.center()+MAP_OFFSET+Vector2(0,45 if room.index<3 else -45)
+  zoom=1.8*zoom_factor
+  if model.hunter.target==room.index and model.hunter.state==HunterState.State.ATTACK:
+   goal=(room.center().lerp(model.hunter.position,0.38))+MAP_OFFSET
+   zoom=1.65*zoom_factor
+ camera_target=goal
+ var weight=1.0 if snap else 1.0-exp(-delta*7)
+ camera.position=camera.position.lerp(goal,weight)
+ camera.zoom=camera.zoom.lerp(Vector2(zoom,zoom),weight)
+ camera.offset=Vector2(sin(presentation.clock*63),cos(presentation.clock*51))*danger_time*1.5
+ camera.force_update_scroll()
 
 func world_to_screen(point: Vector2) -> Vector2:
- return point+MAP_OFFSET
+ return get_viewport().get_canvas_transform()*(point+MAP_OFFSET)
 
 func _draw():
  presentation.render(self)

@@ -2,9 +2,9 @@
 
 - This is an original small-scale game with configurable approximate balance. Exact Haunted Dorm numerical parity and overall parity are **unverified** because reference access was blocked; see GAMEPLAY_REFERENCE.md and FEATURE_PARITY.md.
 - Desktop keyboard/mouse is the supported interaction model. Mobile export, touch controls, controller input, phone-sized screens, and accessibility options are future work.
-- The visual overhaul replaces programmer placeholders with original illustrated sprites and textured rooms. Final production polish remains partial: sparse/direction-limited animations, two survivor bases/shared sleep art, one fixed map, layered glow/contact shadows rather than dynamic occlusion, and limited decoration variety. The camera is a fixed overview.
+- The visual overhaul replaces programmer placeholders with original illustrated sprites and textured rooms. Final production polish remains partial: direction-limited bot/hunter animation, five bot identities and individual sleeping poses, one fixed map, layered glow/contact shadows rather than dynamic occlusion, and limited decoration variety. The camera now focuses the player’s room with an optional strategic overview.
 - Sound effects are synthesized locally. Cloud audio output was unavailable, so audible quality/mixing is unverified. Settings are session-local rather than saved preferences.
-- Navigation retains the rectangular six-room corridor graph and one hunter archetype. Beds, cabinets and plant pots now have player foot-point collision, with all door-to-bed approaches tested. The graphical design canvas is 1280×900 with a 960×675 minimum; native high-DPI/Windows display validation remains outstanding.
+- Navigation retains the rectangular six-room corridor graph and one hunter archetype. Beds, cabinets and plant pots now have player foot-point collision, with all door-to-bed approaches tested. The graphical design canvas is 1280×720 with a 960×540 minimum; native high-DPI/Windows display validation remains outstanding.
 - Action buttons now disable when unavailable and expose specific reasons/effects through tooltips; controller/touch alternatives to hover are not implemented.
 - Automated tests and Linux software-rendered screenshots do not establish Windows hardware compatibility, mobile compatibility, real-time performance on target devices, or long-term balance quality.
 - Export availability and automated QA outcomes are recorded separately in README.md and QA_REPORT.md. Do not infer an export or a passing test from this limitations document.
@@ -14,3 +14,5 @@
 - Actual Linux graphical layout was checked at 1280×800 and the 960×600 minimum, plus 1280×800 fullscreen with a window manager. Other aspect ratios, Windows display scaling, and mobile screens remain unverified.
 
 - Current visual status and evidence are in VISUAL_OVERHAUL_REPORT.md. The independent review found the programmer-art impression largely removed but still judged the build an illustrated indie prototype rather than commercial-finished artwork. Historical functional audit scores are not visual-completion approval.
+
+Current cartoon milestone adds real travelling projectiles and impact-time damage, explicit placement confirmation and six room themes. See VISUAL_REDESIGN_REPORT.md for current evidence; older visual audit descriptions are historical. Full directional bot animation, wall occlusion and native Windows/audio testing remain outstanding.

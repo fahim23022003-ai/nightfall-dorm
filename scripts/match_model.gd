@@ -15,6 +15,11 @@ var shots = 0
 var damage_dealt = 0.0
 var bot_claimed = 0
 var random = RandomNumberGenerator.new()
+# Presentation reads these model-owned records; damage occurs only on impact.
+var projectiles: Array = []
+var combat_events: Array = []
+var next_projectile_id = 1
+var next_combat_event_id = 1
 
 func _init():
  reset()
@@ -34,6 +39,10 @@ func reset(seed_value: int = 1):
  shots = 0
  damage_dealt = 0
  bot_claimed = 0
+ projectiles.clear()
+ combat_events.clear()
+ next_projectile_id = 1
+ next_combat_event_id = 1
 
 func claim_room(index: int) -> bool:
  if not running or result != "" or index < 0 or index >= rooms.size() or player_room >= 0 or rooms[index].owner >= 0:
@@ -64,7 +73,7 @@ func sleep_player() -> bool:
  room.closed = true
  room.sleeping = true
  player_position = room.bed_position()
- feedback.emit("Door locked. Build defenses on the numbered floor tiles.")
+ feedback.emit("Door locked. Build defenses on the marked floor pads.")
  return true
 
 func player() -> RoomState:
@@ -133,8 +142,9 @@ func interact():
   sleep_player()
 
 func tick(delta: float):
- if not running or result != "":
+ if not running or result != "" or not is_finite(delta) or delta <= 0:
   return
+ _age_combat_events(delta)
  time += delta
  if bot_claimed < 5 and time > 6+bot_claimed*1.7:
   var options: Array = []
@@ -167,21 +177,32 @@ func tick(delta: float):
   _pursue_exposed_player(delta)
  else:
   hunter.tick(delta,self)
+ # A breach resolves before pending teammate shots can revive a lost match.
+ if player_room >= 0 and not rooms[player_room].alive:
+  result = "defeat"
+  _cancel_projectiles("terminal")
+  return
+ # Contact with an exposed survivor has the same priority as a room breach.
+ if exposed and hunter.hp > 0 and hunter.position.distance_to(player_position)<15:
+  if player() != null:
+   player().alive = false
+   player().sleeping = false
+  eliminations += 1
+  result = "defeat"
+  _cancel_projectiles("terminal")
+  return
+ _advance_projectiles(delta)
  _turrets(delta)
  if player_room >= 0 and not rooms[player_room].alive:
   result = "defeat"
  elif hunter.hp <= 0:
   result = "victory"
- # A player who never selects a bed is hunted directly after the grace period.
- elif time > preparation+25 and (player() == null or not player().sleeping):
-  if hunter.position.distance_to(player_position)<15:
-   if player() != null:
-    player().alive = false
-    player().sleeping = false
-   eliminations += 1
-   result = "defeat"
+ if result != "":
+  _cancel_projectiles("terminal")
 
 func _turrets(delta: float):
+ if not running or result != "":
+  return
  for room in rooms:
   if not room.alive:
    continue
@@ -195,17 +216,61 @@ func _turrets(delta: float):
     continue
    b.cooldown = maxf(-delta,b.cooldown-delta)
    var data = Catalog.BUILDINGS[b.kind]
-   if hunter.state != HunterState.State.DORMANT and hunter.state != HunterState.State.DEAD and room.tile_position(tile).distance_to(hunter.position)<=data.range and b.cooldown <= 0:
+   if hunter.hp > 0 and hunter.state != HunterState.State.DORMANT and hunter.state != HunterState.State.DEAD and room.tile_position(tile).distance_to(hunter.position)<=data.range and b.cooldown <= 0:
     var amount = data.damage*b.level*multiplier
-    var previous_hp = hunter.hp
-    hunter.hurt(amount)
-    var applied_damage = previous_hp-hunter.hp
-    damage_dealt += applied_damage
+    if projectiles.size() >= Catalog.PROJECTILES.max_active:
+     continue
+    var origin = room.tile_position(tile)
+    var shot = {"id":next_projectile_id,"from":origin,"position":origin,"target_id":1,"damage":amount,"speed":Catalog.PROJECTILES[b.kind],"kind":b.kind,"room":room.index,"level":b.level,"age":0.0}
+    next_projectile_id += 1
+    projectiles.append(shot)
+    _combat_event("launch",shot,origin,0.0)
     shots += 1
     room.shots += 1
-    room.damage_dealt += applied_damage
     b.flash = 0.15
     b.cooldown += data.interval/(1.0+(b.level-1)*0.12)
+
+func _advance_projectiles(delta: float):
+ if not running or result != "" or not is_finite(delta) or delta <= 0:
+  return
+ var survivors: Array = []
+ for shot in projectiles:
+  if hunter.hp <= 0 or hunter.state in [HunterState.State.DORMANT,HunterState.State.DEAD] or shot.target_id != 1:
+   _combat_event("cancel",shot,shot.position,0.0,"invalid_target")
+   continue
+  shot.age += delta
+  if shot.age > Catalog.PROJECTILES.max_age:
+   _combat_event("cancel",shot,shot.position,0.0,"expired")
+   continue
+  var travel = shot.speed*delta
+  if shot.position.distance_to(hunter.position) <= travel:
+   shot.position = hunter.position
+   var previous_hp = hunter.hp
+   hunter.hurt(shot.damage)
+   var applied_damage = previous_hp-hunter.hp
+   damage_dealt += applied_damage
+   rooms[shot.room].damage_dealt += applied_damage
+   _combat_event("impact",shot,shot.position,applied_damage)
+  else:
+   shot.position = shot.position.move_toward(hunter.position,travel)
+   survivors.append(shot)
+ projectiles = survivors
+
+func _combat_event(type: String, shot: Dictionary, position: Vector2, damage: float, reason: String = ""):
+ combat_events.append({"id":next_combat_event_id,"type":type,"projectile_id":shot.id,"position":position,"room":shot.room,"kind":shot.kind,"level":shot.level,"damage":damage,"time":time,"remaining":Catalog.PROJECTILES.event_lifetime,"reason":reason})
+ next_combat_event_id += 1
+ if combat_events.size() > Catalog.PROJECTILES.max_events:
+  combat_events.pop_front()
+
+func _age_combat_events(delta: float):
+ for event in combat_events:
+  event.remaining -= delta
+ combat_events = combat_events.filter(func(event): return event.remaining > 0)
+
+func _cancel_projectiles(reason: String):
+ for shot in projectiles:
+  _combat_event("cancel",shot,shot.position,0.0,reason)
+ projectiles.clear()
 
 func _pursue_exposed_player(delta: float):
  var current_room = null

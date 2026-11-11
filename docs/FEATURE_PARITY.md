@@ -1,3 +1,9 @@
+# Current parity update — cartoon/projectile milestone
+
+All Haunted Dorm equivalence remains UNVERIFIED; previous source access was blocked. Existing contract features below remain implemented. Combat now uses model-owned travelling projectiles and impact-time damage (22 flight +12 edge checks), replacing instant attack traces. UI now uses room focus, optional map, illustrated cards and explicit placement confirmation (173 independent input assertions). Current seeded balance is9 active victories/3 passive defeats across12 representative runs; historical11/1 and passive-win comments below are superseded. See REDESIGN_QA_REPORT.md and VISUAL_REDESIGN_REPORT.md for current scope.
+
+---
+
 # Feature-by-feature parity checklist
 
 Reference confidence for all original-game comparisons is **UNVERIFIED**. The requested reference pages were blocked by the cloud proxy. See [GAMEPLAY_REFERENCE.md](GAMEPLAY_REFERENCE.md) for access evidence. Implementation review below concerns the user's requested Nightfall Dorm contract, not proof of exact Haunted Dorm equivalence.

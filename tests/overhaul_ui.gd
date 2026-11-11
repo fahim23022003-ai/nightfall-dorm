@@ -49,21 +49,25 @@ func run():
  var room=game.model.player()
  game.model.player_position=room.bed_position()
  game.model.sleep_player()
+ game.focus_camera(true)
  room.gold=1000
  room.electricity=100
  await click_at(game.world_to_screen(room.tile_position(1)))
  check(game.selected_tile==1 and game.ui.context_open,"bottom-wing floor input selects correct model tile")
- var own_rect=Rect2(game.world_to_screen(room.bounds().position),room.bounds().size)
+ var own_rect=Rect2(game.world_to_screen(room.bounds().position),room.bounds().size*game.camera.zoom)
  check(not game.ui.context_box.get_rect().intersects(own_rect),"context menu leaves own bedroom visible")
- check(game.ui.context_box.position.y>=game.world_to_screen(Vector2(0,720)).y,"build tray leaves both wings and live combat visible")
+ check(not game.ui.context_box.get_global_rect().has_point(game.world_to_screen(room.bed_position())),"focused side inspector leaves sleeping character visible")
  for node in game.ui.build_items:
   check(node.visible,"all illustrated card components visible together")
   if node is TextureRect: check(node.size.x<=100 and node.size.y<=100,"card illustration size bounded")
  await click_at(game.ui.actions["build:generator"].get_global_rect().get_center())
- check(room.buildings.has(1) and room.buildings[1].kind=="generator","context card purchases in actual selected bottom-wing room")
+ check(game.pending_build=="generator" and not room.buildings.has(1),"context card previews without spending")
+ await click_at(game.ui.confirm_button.get_global_rect().get_center())
+ check(room.buildings.has(1) and room.buildings[1].kind=="generator","confirmed card purchases in actual selected bottom-wing room")
+ await click_at(game.world_to_screen(room.tile_position(1)))
  check(game.ui.actions.upgrade.visible and not game.ui.actions["build:turret"].visible,"built tile switches to focused upgrade panel")
  var bed_level=room.bed_level
- await click_at(Vector2(485,830))
+ await click_at(game.ui.context_box.global_position+Vector2(5,5))
  check(room.bed_level==bed_level,"context background prevents clicks reaching covered dock actions")
  await escape()
  check(not game.ui.context_open and game.model.running,"first Escape closes context without pausing")
@@ -71,8 +75,8 @@ func run():
  check(not game.model.running and game.ui.pause_items.size()>0,"second Escape opens functional pause overlay")
  await escape()
  check(game.model.running and game.ui.pause_items.is_empty(),"Escape resumes and clears pause overlay")
- var dock=Rect2(145,782,990,88)
- check(dock.encloses(game.ui.bed_button.get_rect()) and dock.encloses(game.ui.door_button.get_rect()),"bed/door cards stay in compact dock")
+ var dock=game.ui.room_dock.get_rect()
+ check(dock.encloses(game.ui.room_bed_summary.get_rect()) and dock.encloses(game.ui.room_door_summary.get_rect()),"bed/door summary controls stay in compact dock")
  check(game.presentation.textures.size()>=32,"original environment and actor textures loaded")
  game.model.result="victory"
  await process_frame
