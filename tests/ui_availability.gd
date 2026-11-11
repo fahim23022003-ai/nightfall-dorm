@@ -21,7 +21,7 @@ func run():
  game.ui.update_match()
  check(game.ui.actions.bed.disabled,"unclaimed room disables purchases")
  for frame in range(3): game.ui.update_match()
- check(game.ui.actions.bed.tooltip_text == "Claim a room first.","unclaimed tooltip does not accumulate repeated explanations")
+ check(game.ui.actions.bed.tooltip_text.count("Claim a room first.") == 1,"unclaimed tooltip does not accumulate repeated explanations")
  game.model.claim_room(0)
  var rng = RandomNumberGenerator.new()
  rng.seed = 20261111

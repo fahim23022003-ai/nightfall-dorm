@@ -37,6 +37,16 @@ func door_position() -> Vector2:
 func bed_position() -> Vector2:
  return center() + Vector2(-80,-45 if index < 3 else 45)
 
+func cabinet_position() -> Vector2:
+ return bounds().position+Vector2(224,39)
+
+func plant_position() -> Vector2:
+ return bounds().position+Vector2(23,179 if index<3 else 37)
+
+func furniture_blocks(point: Vector2) -> bool:
+ # Foot-point collision: illustrated furniture must not be walk-through scenery.
+ return Rect2(bed_position()-Vector2(27,45),Vector2(54,89)).has_point(point) or Rect2(cabinet_position()+Vector2(-18,5),Vector2(36,20)).has_point(point) or Rect2(plant_position()+Vector2(-10,7),Vector2(20,14)).has_point(point)
+
 func tile_position(tile: int) -> Vector2:
  return center() + Vector2(-20 + (tile % 3) * 55, -20 + (tile / 3) * 65)
 

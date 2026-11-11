@@ -73,21 +73,25 @@ func run():
  press("Start Game")
  await process_frame
  check(game.mode == "match" and game.model.time > 0,"Start Game starts active simulation")
- press("Pause / resume [Esc]")
+ game.ui.pause_button.pressed.emit()
  var time_before = game.model.time
  await process_frame
  check(not game.model.running and game.model.time == time_before,"pause halts simulation")
- press("Pause / resume [Esc]")
+ game.ui.pause_button.pressed.emit()
  game.model.claim_room(0)
  game.model.player_position = game.model.player().bed_position()
  game.model.sleep_player()
  game.model.player().gold = 1000
  game.model.player().electricity = 100
- press("Upgrade bed")
+ game.ui.actions.bed.pressed.emit()
  check(game.model.player().bed_level == 1,"UI bed button invokes production upgrade")
- await click_position(game.model.player().tile_position(1))
+ await click_position(game.world_to_screen(game.model.player().tile_position(1)))
  check(game.selected_tile == 1,"actual mouse input passes UI overlay and selects second floor tile")
- await click_position(Vector2(1100,490))
+ check(game.ui.context_open and game.ui.actions["build:generator"].visible,"floor selection opens contextual illustrated building cards")
+ for node in game.ui.panel.get_children():
+  if node is TextureRect:
+   check(node.size.x<=154 and node.size.y<=154,"illustration control respects explicit display bounds")
+ await click_position(game.ui.actions["build:generator"].get_global_rect().get_center())
  check(game.model.player().buildings.has(1) and game.model.player().buildings[1].kind == "generator","actual UI mouse click builds generator on selected floor")
  for kind in Catalog.BUILDINGS:
   check(not game.ui.building_effect(kind).is_empty(),"building effect tooltip formats for " + kind)

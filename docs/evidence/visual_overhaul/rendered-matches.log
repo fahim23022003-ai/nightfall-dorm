@@ -1,0 +1,25 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+CAPTURE {"electricity":0,"exit":0,"file":"01-main-menu.png","gold":0,"hunter_hp":5000.0,"hunter_state":"DORMANT","paused_for_frame":false,"player_walking":false,"result":"","shots":0,"time":0}
+CAPTURE {"electricity":0,"exit":0,"file":"02-full-dormitory.png","gold":0,"hunter_hp":5000.0,"hunter_state":"DORMANT","paused_for_frame":false,"player_walking":false,"result":"","shots":0,"time":0.228571428571429}
+CAPTURE {"electricity":0,"exit":0,"file":"15-survivor-walking.png","gold":0,"hunter_hp":5000.0,"hunter_state":"DORMANT","paused_for_frame":false,"player_walking":true,"result":"","shots":0,"time":0.563147095238095}
+CAPTURE {"electricity":0,"exit":0,"file":"16-survivor-idle.png","gold":0,"hunter_hp":5000.0,"hunter_state":"DORMANT","paused_for_frame":false,"player_walking":false,"result":"","shots":0,"time":0.821267761904762}
+CAPTURE {"electricity":0.0,"exit":0,"file":"03-room-claimed-fixture.png","gold":25.0,"hunter_hp":5000.0,"hunter_state":"DORMANT","paused_for_frame":false,"player_walking":false,"result":"","shots":0,"time":0.157303666666667}
+CAPTURE {"electricity":0.0,"exit":0,"file":"04-sleeping-income.png","gold":9.20608,"hunter_hp":5000.0,"hunter_state":"DORMANT","paused_for_frame":false,"player_walking":false,"result":"","shots":0,"time":2.45882366666667}
+CAPTURE {"electricity":0.0,"exit":0,"file":"14-pause-menu.png","gold":11.3770293333333,"hunter_hp":5000.0,"hunter_state":"DORMANT","paused_for_frame":false,"player_walking":false,"result":"","shots":0,"time":3.001561}
+CAPTURE {"electricity":0.0,"exit":0,"file":"05-bed-door-upgraded.png","gold":4.52494399999994,"hunter_hp":5000.0,"hunter_state":"DORMANT","paused_for_frame":false,"player_walking":false,"result":"","shots":0,"time":8.78853966666666}
+CAPTURE {"electricity":0.0,"exit":0,"file":"06-turret-built.png","gold":2.64019733333324,"hunter_hp":5000.0,"hunter_state":"DORMANT","paused_for_frame":false,"player_walking":false,"result":"","shots":0,"time":13.317353}
+CAPTURE {"electricity":14.740034,"exit":0,"file":"08-hunter-approaching.png","gold":41.4262666666665,"hunter_hp":4991.0,"hunter_state":"MOVE","paused_for_frame":false,"player_walking":false,"result":"","shots":1,"time":30.5138703333336}
+CAPTURE {"electricity":15.6150339999999,"exit":0,"file":"10-turrets-firing.png","gold":43.7595999999999,"hunter_hp":4973.0,"hunter_state":"MOVE","paused_for_frame":true,"player_walking":false,"result":"","shots":3,"time":31.0972036666669}
+CAPTURE {"electricity":18.0979559999999,"exit":0,"file":"09-hunter-attacking.png","gold":50.3807253333333,"hunter_hp":4955.0,"hunter_state":"ATTACK","paused_for_frame":true,"player_walking":false,"result":"","shots":5,"time":32.7524850000003}
+CAPTURE {"electricity":52.6706040000013,"exit":0,"file":"07-electricity-support-buildings.png","gold":10.4016370424248,"hunter_hp":4614.0,"hunter_state":"ATTACK","paused_for_frame":false,"player_walking":false,"result":"","shots":54,"time":75.1342503333318}
+CAPTURE {"electricity":53.3130240000014,"exit":0,"file":"13-selected-building-upgrade.png","gold":15.0270610424248,"hunter_hp":4614.0,"hunter_state":"ATTACK","paused_for_frame":false,"player_walking":false,"result":"","shots":54,"time":75.5625303333318}
+CAPTURE {"electricity":28.2017824761941,"exit":0,"file":"17-hunter-death-animation.png","gold":190.671400405385,"hunter_hp":0.0,"hunter_state":"DEAD","paused_for_frame":false,"player_walking":false,"result":"victory","shots":238,"time":149.555731222223}
+CAPTURE {"electricity":28.2017824761941,"exit":0,"file":"11-victory.png","gold":190.671400405385,"hunter_hp":0.0,"hunter_state":"DEAD","paused_for_frame":false,"player_walking":false,"result":"victory","shots":238,"time":149.555731222223}
+ACTIVE_MATCH result=victory time=149.555731222223
+CAPTURE {"electricity":0.0,"exit":0,"file":"12-defeat.png","gold":108.477498666665,"hunter_hp":4973.0,"hunter_state":"EXIT","paused_for_frame":false,"player_walking":false,"result":"defeat","shots":3,"time":41.7387493333332}
+PASSIVE_MATCH result=defeat time=41.7387493333332
+SCREENSHOTS=17 VICTORY=true DEFEAT=true

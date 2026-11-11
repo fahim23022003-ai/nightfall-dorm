@@ -117,7 +117,7 @@ func can_walk(point: Vector2) -> bool:
   return true
  for room in rooms:
   if room.bounds().grow(-12).has_point(point) and (room.owner < 0 or room.owner == 0) and not room.closed:
-   return true
+   return not room.furniture_blocks(point)
   if absf(point.x-room.center().x)<26 and point.y>300 and point.y<520 and not room.closed and (room.owner < 0 or room.owner == 0):
    return true
  return false
