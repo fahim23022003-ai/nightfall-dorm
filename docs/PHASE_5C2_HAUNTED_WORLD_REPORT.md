@@ -195,6 +195,9 @@ Hunter targeting, then test prestige prerequisites/coupon/upgrade10/rejected11/
 half actual-paid sale/free pad. Check door HP, warnings and numbers during storms.
 
 Recovery tag `pre-phase5c2-48ecdae`; mechanics checkpoint `327b27a`.
-Final implementation/evidence commit and verified private `work` push are
-recorded after committing. `main` unchanged. No Phase6, Android, multiplayer,
+Latest verified implementation/evidence commit: `5f09ef6933ab302e172c21304bb92e0a4862e042`.
+GitHub push SUCCEEDED: `48ecdae..5f09ef6 work -> work`; `git ls-remote origin
+refs/heads/work` returned exactly that full SHA, matching local HEAD. The following
+documentation-only commit records this result; its final HEAD and matching remote
+SHA are confirmed in the completion response. `main` unchanged. No Phase6, Android, multiplayer,
 unrelated maps or bosses. Stop after Phase5C-2.
