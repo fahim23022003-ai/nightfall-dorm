@@ -1,0 +1,3197 @@
+{
+  "track": "music_crimson",
+  "seconds": 48,
+  "bpm": 120,
+  "score": "Eight 3-bar sections: chromatic piano motif, moving dissonant strings, punctuated glockenspiel, bass drum/timpani; climax ostinati and brief contrasting high motif",
+  "sources": [
+    {
+      "instrument": "piano",
+      "file": "tools/audio/source/vsco/Keys/Upright Piano/Player_dyn1_rr1_020.wav",
+      "sha256": "08242e8d1c865c8cdc794cc7921d3d9663bedb5a12bfefe0de13aaa86fd23133"
+    },
+    {
+      "instrument": "bell",
+      "file": "tools/audio/source/vsco/Percussion/Glock/glock_medium_C5.wav",
+      "sha256": "635f898e0bcb6975b96b18efd9c896f6f1b97ff12174a339ada4814e49675660"
+    },
+    {
+      "instrument": "trem",
+      "file": "tools/audio/source/vsco/Strings/Violin Section/Trem/VlnEns_Trem_C4_v1.wav",
+      "sha256": "5131207ccce04e0e0869efdac89bf2caa33a19aa75c40f51e4a91a67849afaa5"
+    },
+    {
+      "instrument": "strings",
+      "file": "tools/audio/source/vsco/Strings/Violin Section/susVib/VlnEns_susVib_C4_v1.wav",
+      "sha256": "c07edd5b2119fa1da2207aba996961b50dd616f69bbcf2300ab271bc6c16239f"
+    },
+    {
+      "instrument": "drum",
+      "file": "tools/audio/source/vsco/Percussion/BDrumNewhit_v3_rr1_Sum.wav",
+      "sha256": "a2d8829e8b2b59e8afb12fa396b01758827059339c2a84ad066d17b36c82d1ff"
+    },
+    {
+      "instrument": "timp",
+      "file": "tools/audio/source/vsco/Percussion/Timpani/Timpani1_Hit_v3_rr1_Sum.wav",
+      "sha256": "8b39a785901d08dee14dd89914bdf2201e16ee418965e4d903fdb8e280a14d24"
+    }
+  ],
+  "events": [
+    {
+      "instrument": "strings",
+      "pitch": 38,
+      "start": 0.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 41,
+      "start": 0.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 45,
+      "start": 0.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 50,
+      "start": 0.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 0.0,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 0.0,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 0.5,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 0.5,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "start": 1.0,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 1.0,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 68,
+      "start": 1.5,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 1.5,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "timp",
+      "pitch": 48,
+      "start": 0.0,
+      "duration": 1.8,
+      "gain": 0.272,
+      "pan": 0
+    },
+    {
+      "instrument": "bell",
+      "pitch": 74,
+      "start": 0.5,
+      "duration": 1.4,
+      "gain": 0.23,
+      "pan": 0.65
+    },
+    {
+      "instrument": "strings",
+      "pitch": 38,
+      "start": 2.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 41,
+      "start": 2.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 45,
+      "start": 2.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 50,
+      "start": 2.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "start": 2.0,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 2.0,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "start": 2.25,
+      "duration": 0.21,
+      "gain": 0.12,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 68,
+      "start": 2.5,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 2.5,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "start": 2.75,
+      "duration": 0.21,
+      "gain": 0.12,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "start": 3.0,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 3.0,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "start": 3.25,
+      "duration": 0.21,
+      "gain": 0.12,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 3.5,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 3.5,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 3.75,
+      "duration": 0.21,
+      "gain": 0.12,
+      "pan": -0.2
+    },
+    {
+      "instrument": "strings",
+      "pitch": 38,
+      "start": 4.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 41,
+      "start": 4.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 45,
+      "start": 4.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 50,
+      "start": 4.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "start": 4.0,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 4.0,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 4.5,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 4.5,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 61,
+      "start": 5.0,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 5.0,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 5.5,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 5.5,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "timp",
+      "pitch": 48,
+      "start": 4.0,
+      "duration": 1.8,
+      "gain": 0.272,
+      "pan": 0
+    },
+    {
+      "instrument": "trem",
+      "pitch": 39,
+      "start": 6.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 42,
+      "start": 6.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 46,
+      "start": 6.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 51,
+      "start": 6.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 61,
+      "start": 6.0,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 6.0,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 51,
+      "start": 6.25,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 6.5,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 6.5,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 54,
+      "start": 6.75,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 7.0,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 7.0,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 58,
+      "start": 7.25,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 7.5,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 7.5,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 7.75,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 39,
+      "start": 8.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 42,
+      "start": 8.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 46,
+      "start": 8.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 51,
+      "start": 8.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 8.0,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 8.0,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 51,
+      "start": 8.25,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 8.5,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 8.5,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 54,
+      "start": 8.75,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "start": 9.0,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 9.0,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 58,
+      "start": 9.25,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 68,
+      "start": 9.5,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 9.5,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 9.75,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "timp",
+      "pitch": 48,
+      "start": 8.0,
+      "duration": 1.8,
+      "gain": 0.34,
+      "pan": 0
+    },
+    {
+      "instrument": "bell",
+      "pitch": 75,
+      "start": 8.5,
+      "duration": 1.4,
+      "gain": 0.23,
+      "pan": 0.65
+    },
+    {
+      "instrument": "trem",
+      "pitch": 39,
+      "start": 10.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 42,
+      "start": 10.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 46,
+      "start": 10.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 51,
+      "start": 10.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "start": 10.0,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 10.0,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 51,
+      "start": 10.25,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 68,
+      "start": 10.5,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 10.5,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 54,
+      "start": 10.75,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "start": 11.0,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 11.0,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 58,
+      "start": 11.25,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 11.5,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 11.5,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 11.75,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "strings",
+      "pitch": 37,
+      "start": 12.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 40,
+      "start": 12.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 44,
+      "start": 12.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 49,
+      "start": 12.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 77,
+      "start": 12.0,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 12.0,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 75,
+      "start": 12.5,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 12.5,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 73,
+      "start": 13.0,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 13.0,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 74,
+      "start": 13.5,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 13.5,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "timp",
+      "pitch": 48,
+      "start": 12.0,
+      "duration": 1.8,
+      "gain": 0.255,
+      "pan": 0
+    },
+    {
+      "instrument": "strings",
+      "pitch": 37,
+      "start": 14.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 40,
+      "start": 14.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 44,
+      "start": 14.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 49,
+      "start": 14.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 73,
+      "start": 14.0,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 14.0,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 49,
+      "start": 14.25,
+      "duration": 0.21,
+      "gain": 0.11249999999999999,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 74,
+      "start": 14.5,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 14.5,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "start": 14.75,
+      "duration": 0.21,
+      "gain": 0.11249999999999999,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 74,
+      "start": 15.0,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 15.0,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 56,
+      "start": 15.25,
+      "duration": 0.21,
+      "gain": 0.11249999999999999,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 75,
+      "start": 15.5,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 15.5,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 61,
+      "start": 15.75,
+      "duration": 0.21,
+      "gain": 0.11249999999999999,
+      "pan": -0.2
+    },
+    {
+      "instrument": "strings",
+      "pitch": 37,
+      "start": 16.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 40,
+      "start": 16.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 44,
+      "start": 16.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 49,
+      "start": 16.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 74,
+      "start": 16.0,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 16.0,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 75,
+      "start": 16.5,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 16.5,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 81,
+      "start": 17.0,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 17.0,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 80,
+      "start": 17.5,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 17.5,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "timp",
+      "pitch": 48,
+      "start": 16.0,
+      "duration": 1.8,
+      "gain": 0.255,
+      "pan": 0
+    },
+    {
+      "instrument": "bell",
+      "pitch": 74,
+      "start": 16.5,
+      "duration": 1.4,
+      "gain": 0.23,
+      "pan": 0.65
+    },
+    {
+      "instrument": "trem",
+      "pitch": 38,
+      "start": 18.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 44,
+      "start": 18.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 45,
+      "start": 18.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 50,
+      "start": 18.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "start": 18.0,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 18.0,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "start": 18.25,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 50,
+      "start": 18.0,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "piano",
+      "pitch": 68,
+      "start": 18.5,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 18.5,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 56,
+      "start": 18.75,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 56,
+      "start": 18.5,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "start": 19.0,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 19.0,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "start": 19.25,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 57,
+      "start": 19.0,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 19.5,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 19.5,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 19.75,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 62,
+      "start": 19.5,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "trem",
+      "pitch": 38,
+      "start": 20.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 44,
+      "start": 20.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 45,
+      "start": 20.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 50,
+      "start": 20.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "start": 20.0,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 20.0,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "start": 20.25,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 50,
+      "start": 20.0,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 20.5,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 20.5,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 56,
+      "start": 20.75,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 56,
+      "start": 20.5,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "piano",
+      "pitch": 61,
+      "start": 21.0,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 21.0,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "start": 21.25,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 57,
+      "start": 21.0,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 21.5,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 21.5,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 21.75,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 62,
+      "start": 21.5,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "timp",
+      "pitch": 48,
+      "start": 20.0,
+      "duration": 1.8,
+      "gain": 0.35700000000000004,
+      "pan": 0
+    },
+    {
+      "instrument": "trem",
+      "pitch": 38,
+      "start": 22.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 44,
+      "start": 22.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 45,
+      "start": 22.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 50,
+      "start": 22.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 61,
+      "start": 22.0,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 22.0,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "start": 22.25,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 50,
+      "start": 22.0,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 22.5,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 22.5,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 56,
+      "start": 22.75,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 56,
+      "start": 22.5,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 23.0,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 23.0,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "start": 23.25,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 57,
+      "start": 23.0,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 23.5,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 23.5,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 23.75,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 62,
+      "start": 23.5,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "strings",
+      "pitch": 39,
+      "start": 24.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 42,
+      "start": 24.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 46,
+      "start": 24.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 51,
+      "start": 24.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 24.0,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 24.0,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 24.5,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 24.5,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "start": 25.0,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 25.0,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 68,
+      "start": 25.5,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 25.5,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "timp",
+      "pitch": 48,
+      "start": 24.0,
+      "duration": 1.8,
+      "gain": 0.272,
+      "pan": 0
+    },
+    {
+      "instrument": "bell",
+      "pitch": 74,
+      "start": 24.5,
+      "duration": 1.4,
+      "gain": 0.23,
+      "pan": 0.65
+    },
+    {
+      "instrument": "strings",
+      "pitch": 39,
+      "start": 26.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 42,
+      "start": 26.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 46,
+      "start": 26.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 51,
+      "start": 26.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "start": 26.0,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 26.0,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 51,
+      "start": 26.25,
+      "duration": 0.21,
+      "gain": 0.12,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 68,
+      "start": 26.5,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 26.5,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 54,
+      "start": 26.75,
+      "duration": 0.21,
+      "gain": 0.12,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "start": 27.0,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 27.0,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 58,
+      "start": 27.25,
+      "duration": 0.21,
+      "gain": 0.12,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 27.5,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 27.5,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 27.75,
+      "duration": 0.21,
+      "gain": 0.12,
+      "pan": -0.2
+    },
+    {
+      "instrument": "strings",
+      "pitch": 39,
+      "start": 28.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 42,
+      "start": 28.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 46,
+      "start": 28.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 51,
+      "start": 28.0,
+      "duration": 2.08,
+      "gain": 0.10400000000000001,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "start": 28.0,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 28.0,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 28.5,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 28.5,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 61,
+      "start": 29.0,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 29.0,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 29.5,
+      "duration": 0.6,
+      "gain": 0.24,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 29.5,
+      "duration": 0.55,
+      "gain": 0.2,
+      "pan": 0
+    },
+    {
+      "instrument": "timp",
+      "pitch": 48,
+      "start": 28.0,
+      "duration": 1.8,
+      "gain": 0.272,
+      "pan": 0
+    },
+    {
+      "instrument": "trem",
+      "pitch": 37,
+      "start": 30.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 40,
+      "start": 30.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 44,
+      "start": 30.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 49,
+      "start": 30.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 61,
+      "start": 30.0,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 30.0,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 49,
+      "start": 30.25,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 30.5,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 30.5,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "start": 30.75,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 31.0,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 31.0,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 56,
+      "start": 31.25,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 31.5,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 31.5,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 61,
+      "start": 31.75,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 37,
+      "start": 32.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 40,
+      "start": 32.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 44,
+      "start": 32.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 49,
+      "start": 32.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 32.0,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 32.0,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 49,
+      "start": 32.25,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 32.5,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 32.5,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "start": 32.75,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "start": 33.0,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 33.0,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 56,
+      "start": 33.25,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 68,
+      "start": 33.5,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 33.5,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 61,
+      "start": 33.75,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "timp",
+      "pitch": 48,
+      "start": 32.0,
+      "duration": 1.8,
+      "gain": 0.34,
+      "pan": 0
+    },
+    {
+      "instrument": "bell",
+      "pitch": 75,
+      "start": 32.5,
+      "duration": 1.4,
+      "gain": 0.23,
+      "pan": 0.65
+    },
+    {
+      "instrument": "trem",
+      "pitch": 37,
+      "start": 34.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 40,
+      "start": 34.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 44,
+      "start": 34.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 49,
+      "start": 34.0,
+      "duration": 2.08,
+      "gain": 0.13,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "start": 34.0,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 34.0,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 49,
+      "start": 34.25,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 68,
+      "start": 34.5,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 34.5,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 52,
+      "start": 34.75,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "start": 35.0,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 35.0,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 56,
+      "start": 35.25,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 35.5,
+      "duration": 0.6,
+      "gain": 0.3,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 35.5,
+      "duration": 0.55,
+      "gain": 0.25,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 61,
+      "start": 35.75,
+      "duration": 0.21,
+      "gain": 0.15,
+      "pan": -0.2
+    },
+    {
+      "instrument": "strings",
+      "pitch": 38,
+      "start": 36.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 44,
+      "start": 36.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 45,
+      "start": 36.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 50,
+      "start": 36.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 77,
+      "start": 36.0,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 36.0,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 75,
+      "start": 36.5,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 36.5,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 73,
+      "start": 37.0,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 37.0,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 74,
+      "start": 37.5,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 37.5,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "timp",
+      "pitch": 48,
+      "start": 36.0,
+      "duration": 1.8,
+      "gain": 0.255,
+      "pan": 0
+    },
+    {
+      "instrument": "strings",
+      "pitch": 38,
+      "start": 38.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 44,
+      "start": 38.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 45,
+      "start": 38.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 50,
+      "start": 38.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 73,
+      "start": 38.0,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 38.0,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "start": 38.25,
+      "duration": 0.21,
+      "gain": 0.11249999999999999,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 74,
+      "start": 38.5,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 38.5,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 56,
+      "start": 38.75,
+      "duration": 0.21,
+      "gain": 0.11249999999999999,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 74,
+      "start": 39.0,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 39.0,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "start": 39.25,
+      "duration": 0.21,
+      "gain": 0.11249999999999999,
+      "pan": -0.2
+    },
+    {
+      "instrument": "piano",
+      "pitch": 75,
+      "start": 39.5,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 39.5,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 39.75,
+      "duration": 0.21,
+      "gain": 0.11249999999999999,
+      "pan": -0.2
+    },
+    {
+      "instrument": "strings",
+      "pitch": 38,
+      "start": 40.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 44,
+      "start": 40.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 45,
+      "start": 40.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "strings",
+      "pitch": 50,
+      "start": 40.0,
+      "duration": 2.08,
+      "gain": 0.0975,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 74,
+      "start": 40.0,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 40.0,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 75,
+      "start": 40.5,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 40.5,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 81,
+      "start": 41.0,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 41.0,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 80,
+      "start": 41.5,
+      "duration": 0.6,
+      "gain": 0.22499999999999998,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 41.5,
+      "duration": 0.55,
+      "gain": 0.1875,
+      "pan": 0
+    },
+    {
+      "instrument": "timp",
+      "pitch": 48,
+      "start": 40.0,
+      "duration": 1.8,
+      "gain": 0.255,
+      "pan": 0
+    },
+    {
+      "instrument": "bell",
+      "pitch": 74,
+      "start": 40.5,
+      "duration": 1.4,
+      "gain": 0.23,
+      "pan": 0.65
+    },
+    {
+      "instrument": "trem",
+      "pitch": 38,
+      "start": 42.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 41,
+      "start": 42.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 45,
+      "start": 42.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 50,
+      "start": 42.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 69,
+      "start": 42.0,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 42.0,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "start": 42.25,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 50,
+      "start": 42.0,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "piano",
+      "pitch": 68,
+      "start": 42.5,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 42.5,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "start": 42.75,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 53,
+      "start": 42.5,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "start": 43.0,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 43.0,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "start": 43.25,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 57,
+      "start": 43.0,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 43.5,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 43.5,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 43.75,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 62,
+      "start": 43.5,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "trem",
+      "pitch": 38,
+      "start": 44.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 41,
+      "start": 44.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 45,
+      "start": 44.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 50,
+      "start": 44.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 65,
+      "start": 44.0,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 44.0,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "start": 44.25,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 50,
+      "start": 44.0,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 44.5,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 44.5,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "start": 44.75,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 53,
+      "start": 44.5,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "piano",
+      "pitch": 61,
+      "start": 45.0,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 45.0,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "start": 45.25,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 57,
+      "start": 45.0,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 45.5,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 45.5,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 45.75,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 62,
+      "start": 45.5,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "timp",
+      "pitch": 48,
+      "start": 44.0,
+      "duration": 1.8,
+      "gain": 0.35700000000000004,
+      "pan": 0
+    },
+    {
+      "instrument": "trem",
+      "pitch": 38,
+      "start": 46.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 41,
+      "start": 46.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 45,
+      "start": 46.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "trem",
+      "pitch": 50,
+      "start": 46.0,
+      "duration": 2.08,
+      "gain": 0.1365,
+      "pan": -0.5
+    },
+    {
+      "instrument": "piano",
+      "pitch": 61,
+      "start": 46.0,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 46.0,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 50,
+      "start": 46.25,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 50,
+      "start": 46.0,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 46.5,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 46.5,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 53,
+      "start": 46.75,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 53,
+      "start": 46.5,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 47.0,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 47.0,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 57,
+      "start": 47.25,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 57,
+      "start": 47.0,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    },
+    {
+      "instrument": "piano",
+      "pitch": 63,
+      "start": 47.5,
+      "duration": 0.6,
+      "gain": 0.315,
+      "pan": 0.3
+    },
+    {
+      "instrument": "drum",
+      "pitch": 36,
+      "start": 47.5,
+      "duration": 0.55,
+      "gain": 0.2625,
+      "pan": 0
+    },
+    {
+      "instrument": "piano",
+      "pitch": 62,
+      "start": 47.75,
+      "duration": 0.21,
+      "gain": 0.1575,
+      "pan": -0.2
+    },
+    {
+      "instrument": "trem",
+      "pitch": 62,
+      "start": 47.5,
+      "duration": 0.5,
+      "gain": 0.12,
+      "pan": -0.1
+    }
+  ],
+  "peak": 0.68,
+  "rms": 0.10554447168107489,
+  "sha256": "aac3c346e14e4ba0e02c456eb2b19216697192ae29a5a23d74b68140828f1424",
+  "license": "Original arrangement using CC0-1.0 recorded VSCO2 CE samples; see preserved source/vsco LICENSE and attribution",
+  "subjective_scariness": "UNVERIFIED"
+}

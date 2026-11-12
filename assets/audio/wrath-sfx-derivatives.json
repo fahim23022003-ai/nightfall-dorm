@@ -1,0 +1,3771 @@
+[
+  {
+    "event": "shot_needle",
+    "seconds": 0.37,
+    "peak": 0.58,
+    "rms": 0.1531268226761717,
+    "layers": [
+      {
+        "source": "gun_shot_1",
+        "start": 0,
+        "seconds": 0.3,
+        "gain": 0.8,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.12,
+        "gain": 0.18,
+        "playback_rate": 1.2,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "a0126f28763bb628ecc1721d7a3dc7c731912c6eb9e43d2d18311a088d8eff72"
+  },
+  {
+    "event": "shot_needle_precision",
+    "seconds": 0.6477777777777778,
+    "peak": 0.58,
+    "rms": 0.039018951124555126,
+    "layers": [
+      {
+        "source": "gun_shot_2",
+        "start": 0.06,
+        "seconds": 0.52,
+        "gain": 0.75,
+        "playback_rate": 0.9,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.03,
+        "seconds": 0.25,
+        "gain": 0.3,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "0c76b4ff0a26e99f81ec1352bdd794d20071ad7f16c01a42b4bda9b624ecbac8"
+  },
+  {
+    "event": "shot_needle_suppression",
+    "seconds": 0.2446485260770975,
+    "peak": 0.58,
+    "rms": 0.17413774575137048,
+    "layers": [
+      {
+        "source": "gun_shot_1",
+        "start": 0,
+        "seconds": 0.18,
+        "gain": 0.6,
+        "playback_rate": 1.12,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "gun_shot_1",
+        "start": 0,
+        "seconds": 0.14,
+        "gain": 0.23,
+        "playback_rate": 1.17,
+        "at": 0.055,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "e025eb0788cae29615b52b118c2bb977d0d9bd317dbbfaf61f9440e6c28cfd22"
+  },
+  {
+    "event": "shot_needle_high",
+    "seconds": 0.44360544217687076,
+    "peak": 0.58,
+    "rms": 0.14867170228354185,
+    "layers": [
+      {
+        "source": "gun_shot_1",
+        "start": 0,
+        "seconds": 0.34,
+        "gain": 0.8,
+        "playback_rate": 0.91,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.17,
+        "gain": 0.24,
+        "playback_rate": 1.1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "a53387119dc27cbd8bb0c18a1628d172df5d959dcd71dd9a6e4b0e547f825b6c"
+  },
+  {
+    "event": "shot_arc",
+    "seconds": 0.4449886621315193,
+    "peak": 0.58,
+    "rms": 0.10796068527365109,
+    "layers": [
+      {
+        "source": "laser_1",
+        "start": 0.21,
+        "seconds": 0.3,
+        "gain": 0.6,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "static_2",
+        "start": 0.2,
+        "seconds": 0.23,
+        "gain": 0.3,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.1,
+        "gain": 0.2,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "27ddcbf1f4ed6cb23d582170bd498abee8e0503a0adf6cfe8fc8bd0c14595192"
+  },
+  {
+    "event": "shot_arc_focus",
+    "seconds": 0.7366439909297052,
+    "peak": 0.58,
+    "rms": 0.09442058576911727,
+    "layers": [
+      {
+        "source": "laser_1",
+        "start": 0.2,
+        "seconds": 0.48,
+        "gain": 0.75,
+        "playback_rate": 0.72,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "static_2",
+        "start": 0.2,
+        "seconds": 0.23,
+        "gain": 0.35,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.16,
+        "gain": 0.3,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "67005cf2aa4a0182a1a1e35f809160886a10e20dd5a7806f588d77c9b5d7f0a4"
+  },
+  {
+    "event": "shot_arc_storm",
+    "seconds": 0.3159863945578231,
+    "peak": 0.58,
+    "rms": 0.12068537437840718,
+    "layers": [
+      {
+        "source": "laser_1",
+        "start": 0.21,
+        "seconds": 0.22,
+        "gain": 0.55,
+        "playback_rate": 1.13,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "laser_1",
+        "start": 0.21,
+        "seconds": 0.22,
+        "gain": 0.3,
+        "playback_rate": 1.25,
+        "at": 0.07,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "static_2",
+        "start": 0.2,
+        "seconds": 0.2,
+        "gain": 0.3,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "3c845867a74406c17cd95d0d251b1fc027bea5121685c6ee0ff74e0928bbf222"
+  },
+  {
+    "event": "shot_arc_high",
+    "seconds": 0.5405668934240363,
+    "peak": 0.58,
+    "rms": 0.0738321826420953,
+    "layers": [
+      {
+        "source": "laser_1",
+        "start": 0.21,
+        "seconds": 0.4,
+        "gain": 0.7,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "static_2",
+        "start": 0.3,
+        "seconds": 0.3,
+        "gain": 0.45,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.12,
+        "gain": 0.2,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "6ca65da966ba30956cb448197590befcfff03ae2db80b371d86d061d5604f52c"
+  },
+  {
+    "event": "shot_flame",
+    "seconds": 0.62,
+    "peak": 0.58,
+    "rms": 0.13438778257604364,
+    "layers": [
+      {
+        "source": "fire_3",
+        "start": 0.13,
+        "seconds": 0.55,
+        "gain": 0.8,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "fire_2",
+        "start": 2,
+        "seconds": 0.4,
+        "gain": 0.32,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "856d8ca5f7d846eb6a0a2109d25be2a0fbb0dbc3597dcdb78f27e896571f14de"
+  },
+  {
+    "event": "shot_flame_high",
+    "seconds": 0.8346938775510204,
+    "peak": 0.58,
+    "rms": 0.11109235440872617,
+    "layers": [
+      {
+        "source": "fire_3",
+        "start": 0.13,
+        "seconds": 0.65,
+        "gain": 0.8,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "fire_2",
+        "start": 2,
+        "seconds": 0.5,
+        "gain": 0.4,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "3db3a5797dd3a5cf567c8f534a66d96c5e4fbfd9e8a5497e40c387ff3bec23ff"
+  },
+  {
+    "event": "shot_frost",
+    "seconds": 0.38249433106575964,
+    "peak": 0.58,
+    "rms": 0.07239205132794159,
+    "layers": [
+      {
+        "source": "glass_break",
+        "start": 0.3,
+        "seconds": 0.32,
+        "gain": 0.6,
+        "playback_rate": 1.18,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "whoosh_fast",
+        "start": 0,
+        "seconds": 0.25,
+        "gain": 0.3,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "2ec1449aac312805186346542e115d1ac3c3d3e84fe6f947ec6ff8f5e5a37c2e"
+  },
+  {
+    "event": "shot_frost_high",
+    "seconds": 0.5994104308390023,
+    "peak": 0.58,
+    "rms": 0.06093004717692973,
+    "layers": [
+      {
+        "source": "glass_break",
+        "start": 0.3,
+        "seconds": 0.45,
+        "gain": 0.7,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.3,
+        "gain": 0.25,
+        "playback_rate": 1.3,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "06dc2bcff4c79bdfba6caad7717cb5188616e0fab017fe1b8bafff68dbebce6f"
+  },
+  {
+    "event": "shot_shock",
+    "seconds": 0.32,
+    "peak": 0.58,
+    "rms": 0.054268030754784945,
+    "layers": [
+      {
+        "source": "static_2",
+        "start": 0.2,
+        "seconds": 0.25,
+        "gain": 0.7,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "laser_1",
+        "start": 0.22,
+        "seconds": 0.16,
+        "gain": 0.5,
+        "playback_rate": 1.4,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "dad201d7eaee5d912515d4fcd5c4d60472c85d324788fb9d90f326b1b40e1488"
+  },
+  {
+    "event": "shot_shock_high",
+    "seconds": 0.47,
+    "peak": 0.58,
+    "rms": 0.06333174687439472,
+    "layers": [
+      {
+        "source": "static_2",
+        "start": 0.2,
+        "seconds": 0.32,
+        "gain": 0.7,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "laser_1",
+        "start": 0.22,
+        "seconds": 0.2,
+        "gain": 0.5,
+        "playback_rate": 0.9,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.12,
+        "gain": 0.2,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "8f810e280031d8e26e1ab293ece990bae4622977f4d138b7baf2e0f9dea06fb6"
+  },
+  {
+    "event": "impact",
+    "seconds": 0.32,
+    "peak": 0.58,
+    "rms": 0.06049786217219333,
+    "layers": [
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.2,
+        "gain": 0.7,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_break",
+        "start": 0.32,
+        "seconds": 0.2,
+        "gain": 0.2,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "92708a6c69bd0f23883ecce1ecd9bf6cd76b4fc827706f0ca187e10e4eb3755e"
+  },
+  {
+    "event": "impact_flame",
+    "seconds": 0.49,
+    "peak": 0.58,
+    "rms": 0.049922442093108386,
+    "layers": [
+      {
+        "source": "fire_2",
+        "start": 2,
+        "seconds": 0.42,
+        "gain": 0.7,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "fire_3",
+        "start": 0.3,
+        "seconds": 0.22,
+        "gain": 0.3,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "e4b4a66751f5d24bfc2b18c0be27b3d099901f8bd0078de3a06094743b43fb0b"
+  },
+  {
+    "event": "impact_frost",
+    "seconds": 0.3271428571428571,
+    "peak": 0.58,
+    "rms": 0.056865000430525704,
+    "layers": [
+      {
+        "source": "glass_break",
+        "start": 0.3,
+        "seconds": 0.36,
+        "gain": 0.65,
+        "playback_rate": 1.4,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.25,
+        "gain": 0.25,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "e8c77d77775bb445ceea9ce33dd1db9bd1469a5a50818d18caca0651e42e91d2"
+  },
+  {
+    "event": "impact_shock",
+    "seconds": 0.3,
+    "peak": 0.58,
+    "rms": 0.043530397074854565,
+    "layers": [
+      {
+        "source": "static_2",
+        "start": 0.3,
+        "seconds": 0.23,
+        "gain": 0.75,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.15,
+        "gain": 0.25,
+        "playback_rate": 1.4,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "a50050c46cea0271983c1d344fd746d2bcb869cf5dcf456c011e58fd06114aae"
+  },
+  {
+    "event": "door_hit",
+    "seconds": 0.5449886621315193,
+    "peak": 0.58,
+    "rms": 0.08291074427574079,
+    "layers": [
+      {
+        "source": "door_knock_3",
+        "start": 0.03,
+        "seconds": 0.38,
+        "gain": 0.7,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.25,
+        "gain": 0.18,
+        "playback_rate": 0.7,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "f9dca31658ceabe50b815b8382e2d24de36a3a3ed7b3a58eef3a3ee2b4b22d34"
+  },
+  {
+    "event": "door_crack",
+    "seconds": 0.6699773242630386,
+    "peak": 0.58,
+    "rms": 0.040088745650626555,
+    "layers": [
+      {
+        "source": "floorboard-creaks",
+        "start": 0.1,
+        "seconds": 0.6,
+        "gain": 0.55,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_break",
+        "start": 0.3,
+        "seconds": 0.35,
+        "gain": 0.3,
+        "playback_rate": 0.75,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "20b07fbccdc00fb97b6c723c836f64057c1169185d150903255598a259abdee4"
+  },
+  {
+    "event": "door_break",
+    "seconds": 0.8935147392290249,
+    "peak": 0.58,
+    "rms": 0.0610166072688517,
+    "layers": [
+      {
+        "source": "door_slam_2",
+        "start": 0.74,
+        "seconds": 0.65,
+        "gain": 0.8,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_break",
+        "start": 0.3,
+        "seconds": 0.7,
+        "gain": 0.4,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "coffin-lid",
+        "start": 0.1,
+        "seconds": 0.6,
+        "gain": 0.25,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "87e9c0331dc0c9aa0687e7769124eb87cd7762b393e1b7b21fe2c07b8eb4341d"
+  },
+  {
+    "event": "build",
+    "seconds": 0.47,
+    "peak": 0.58,
+    "rms": 0.06084323079257075,
+    "layers": [
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.25,
+        "gain": 0.5,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.4,
+        "gain": 0.35,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "b7bf4ad4514908476145ca8a95957332394cc46bca752d3ffa3d30fc1802e491"
+  },
+  {
+    "event": "upgrade",
+    "seconds": 0.40272108843537413,
+    "peak": 0.58,
+    "rms": 0.08038716286068279,
+    "layers": [
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.32,
+        "gain": 0.55,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.3,
+        "gain": 0.35,
+        "playback_rate": 1.1,
+        "at": 0.06,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "75c1bc09e3c439f769f2fa187ee0bbc0886af62d11b96701014d8e01ee343875"
+  },
+  {
+    "event": "branch_select",
+    "seconds": 0.6149886621315193,
+    "peak": 0.58,
+    "rms": 0.08083534495789162,
+    "layers": [
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.45,
+        "gain": 0.55,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.3,
+        "gain": 0.3,
+        "playback_rate": 0.8,
+        "at": 0.17,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "e91abb2a9dbdb6f5bad379c3f66d1d663e5636807b1033ddaa9abd5187b5443f"
+  },
+  {
+    "event": "repair",
+    "seconds": 0.32,
+    "peak": 0.58,
+    "rms": 0.03278608421387225,
+    "layers": [
+      {
+        "source": "chains-rattling-2",
+        "start": 0.12,
+        "seconds": 0.22,
+        "gain": 0.5,
+        "playback_rate": 1.3,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "mouse_click_3",
+        "start": 0,
+        "seconds": 0.15,
+        "gain": 0.3,
+        "playback_rate": 1,
+        "at": 0.1,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "540cd66458a5e176bf9236b2fc2c96aa4b2f213d356e7a2c79946206f2f063c9"
+  },
+  {
+    "event": "sale",
+    "seconds": 0.24598639455782312,
+    "peak": 0.58,
+    "rms": 0.05526002042655517,
+    "layers": [
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.22,
+        "gain": 0.45,
+        "playback_rate": 1.25,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "mouse_click_3",
+        "start": 0.02,
+        "seconds": 0.12,
+        "gain": 0.25,
+        "playback_rate": 0.9,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "125b2964cbb0450839f0fb46b07443114bea3c7855d53214932f581ba2ae412b"
+  },
+  {
+    "event": "refund",
+    "seconds": 0.31285714285714283,
+    "peak": 0.58,
+    "rms": 0.051915242521204844,
+    "layers": [
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.2,
+        "gain": 0.5,
+        "playback_rate": 1.2,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.2,
+        "gain": 0.2,
+        "playback_rate": 1.4,
+        "at": 0.1,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "4fe3b193010b0562fff75a1ea35a88ed79ae7f1c59a7320399966d40388c5d6d"
+  },
+  {
+    "event": "ui_hover",
+    "seconds": 0.11798185941043084,
+    "peak": 0.28,
+    "rms": 0.014837943354105342,
+    "layers": [
+      {
+        "source": "mouse_click_3",
+        "start": 0.025,
+        "seconds": 0.06,
+        "gain": 0.5,
+        "playback_rate": 1.25,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "b1054298fadaa685f09de786e294a4b3bf1e2d14facc3e56ec7d64e53b3f402e"
+  },
+  {
+    "event": "ui_confirm",
+    "seconds": 0.2,
+    "peak": 0.28,
+    "rms": 0.011705824486905722,
+    "layers": [
+      {
+        "source": "mouse_click_3",
+        "start": 0.02,
+        "seconds": 0.13,
+        "gain": 0.7,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.12,
+        "gain": 0.1,
+        "playback_rate": 1.2,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "2207c5d780a92fb6ca4a95a796ec37653d48ba5aa0ed570326bcea274a8092d7"
+  },
+  {
+    "event": "ui_fail",
+    "seconds": 0.2985714285714286,
+    "peak": 0.28,
+    "rms": 0.013229928598661633,
+    "layers": [
+      {
+        "source": "mouse_click_3",
+        "start": 0.02,
+        "seconds": 0.09,
+        "gain": 0.5,
+        "playback_rate": 0.7,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "mouse_click_3",
+        "start": 0.02,
+        "seconds": 0.09,
+        "gain": 0.35,
+        "playback_rate": 0.7,
+        "at": 0.1,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "fb689f502577d90f40c3964038d90967622d5c0bb2b94ba43f809a8290f73367"
+  },
+  {
+    "event": "shield_activate",
+    "seconds": 0.9033333333333333,
+    "peak": 0.58,
+    "rms": 0.08702539233103383,
+    "layers": [
+      {
+        "source": "laser_1",
+        "start": 0.21,
+        "seconds": 0.5,
+        "gain": 0.5,
+        "playback_rate": 0.6,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.5,
+        "gain": 0.5,
+        "playback_rate": 0.7,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "b7975d46c4ce3b9cf8dd904cdc1f57d568f269e1b21a2fc4ceced3e405f3ac89"
+  },
+  {
+    "event": "shield_absorb",
+    "seconds": 0.49857142857142855,
+    "peak": 0.58,
+    "rms": 0.033504717538224614,
+    "layers": [
+      {
+        "source": "static_2",
+        "start": 0.2,
+        "seconds": 0.22,
+        "gain": 0.5,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.3,
+        "gain": 0.45,
+        "playback_rate": 0.7,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "e560f6c395142aa6278ae5ce23bb8a4e3e8cb3601e22a89c8426f50db09e3e33"
+  },
+  {
+    "event": "auto_repair_activate",
+    "seconds": 0.39,
+    "peak": 0.58,
+    "rms": 0.061435105319810064,
+    "layers": [
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.32,
+        "gain": 0.7,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "mouse_click_3",
+        "start": 0.02,
+        "seconds": 0.1,
+        "gain": 0.3,
+        "playback_rate": 1,
+        "at": 0.1,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "2d1e7d311adabbde3a2eadedc56e3a4963cffbc530387936289ca10a7cbe100c"
+  },
+  {
+    "event": "decoy_activate",
+    "seconds": 0.6949886621315192,
+    "peak": 0.58,
+    "rms": 0.12058952423811274,
+    "layers": [
+      {
+        "source": "monster_3",
+        "start": 0.05,
+        "seconds": 0.55,
+        "gain": 0.4,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.5,
+        "gain": 0.35,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "fbe192faa1e5cd3e341d3c407642c3deb330d8061278b906531f20aee56ad2e4"
+  },
+  {
+    "event": "hunter_crusher_warning",
+    "seconds": 0.8346938775510204,
+    "peak": 0.58,
+    "rms": 0.11919644660953557,
+    "layers": [
+      {
+        "source": "monster_3",
+        "start": 0,
+        "seconds": 0.65,
+        "gain": 0.4,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.6,
+        "gain": 0.3,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "9bd73300ab8c553e9b1e5718498c4b9f00d510f4669b829d9955ba12a7642746"
+  },
+  {
+    "event": "hunter_crusher_pressure",
+    "seconds": 1.1366666666666667,
+    "peak": 0.58,
+    "rms": 0.11401002165243798,
+    "layers": [
+      {
+        "source": "monster_3",
+        "start": 0,
+        "seconds": 0.8,
+        "gain": 0.5,
+        "playback_rate": 0.75,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "door_knock_3",
+        "start": 0.03,
+        "seconds": 0.3,
+        "gain": 0.3,
+        "playback_rate": 0.7,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "6d07ea75aa83c20c9847b15ccef454d41366899846b0cd8424afa0c51c47ee2d"
+  },
+  {
+    "event": "hunter_stalker_warning",
+    "seconds": 0.72,
+    "peak": 0.58,
+    "rms": 0.06211507966135442,
+    "layers": [
+      {
+        "source": "ghost_1",
+        "start": 0.8,
+        "seconds": 0.65,
+        "gain": 0.35,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "whoosh_fast",
+        "start": 0.02,
+        "seconds": 0.25,
+        "gain": 0.2,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "e1a8e844aa1ef95a1b8f20f8a5278ba15edad7db01cb185f605e7eb15c96856c"
+  },
+  {
+    "event": "hunter_stalker_conceal",
+    "seconds": 0.72,
+    "peak": 0.58,
+    "rms": 0.13000230573226385,
+    "layers": [
+      {
+        "source": "whoosh_deep",
+        "start": 0.2,
+        "seconds": 0.65,
+        "gain": 0.5,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "ghost_1",
+        "start": 1,
+        "seconds": 0.6,
+        "gain": 0.15,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "e2b92dab12c2851606beb1e709505bff999957faad33dab6cd76787678393ef9"
+  },
+  {
+    "event": "hunter_stalker_feint",
+    "seconds": 0.42,
+    "peak": 0.58,
+    "rms": 0.05985814051681092,
+    "layers": [
+      {
+        "source": "whoosh_fast",
+        "start": 0.02,
+        "seconds": 0.35,
+        "gain": 0.6,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "floorboard-creaks",
+        "start": 0.1,
+        "seconds": 0.3,
+        "gain": 0.2,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "3524d22740d9f792328f2b94f99e985d3fee31831e45696f11465bd18db6afd1"
+  },
+  {
+    "event": "hunter_ravager_warning",
+    "seconds": 0.4336281179138322,
+    "peak": 0.58,
+    "rms": 0.16453193760956525,
+    "layers": [
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.35,
+        "gain": 0.35,
+        "playback_rate": 1.3,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "monster_3",
+        "start": 0.1,
+        "seconds": 0.4,
+        "gain": 0.4,
+        "playback_rate": 1.1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "50a92a6008422d1f446c353c82b362119c8af1d8c97d6dd7ac91f1c78eedd039"
+  },
+  {
+    "event": "hunter_ravager_dash",
+    "seconds": 0.52,
+    "peak": 0.58,
+    "rms": 0.051607490304279885,
+    "layers": [
+      {
+        "source": "whoosh_fast",
+        "start": 0,
+        "seconds": 0.45,
+        "gain": 0.6,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "sword_3",
+        "start": 0.02,
+        "seconds": 0.3,
+        "gain": 0.25,
+        "playback_rate": 1.2,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "5ee7cea69b21f4895469595a4a8996dddd086ac277323d179f2e16327adc2078"
+  },
+  {
+    "event": "hunter_evolve",
+    "seconds": 1.8346938775510204,
+    "peak": 0.58,
+    "rms": 0.13123896286602682,
+    "layers": [
+      {
+        "source": "horror_stinger_1",
+        "start": 0.7,
+        "seconds": 1.5,
+        "gain": 0.45,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "monster_3",
+        "start": 0,
+        "seconds": 0.9,
+        "gain": 0.3,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "76a33c27ea2d5b7f8dbe185ece3a727edaac59c77827db9c8326e66e57ff3041"
+  },
+  {
+    "event": "buff_offense",
+    "seconds": 0.7842857142857143,
+    "peak": 0.58,
+    "rms": 0.06491868791920921,
+    "layers": [
+      {
+        "source": "impact_3",
+        "start": 0.03,
+        "seconds": 0.5,
+        "gain": 0.4,
+        "playback_rate": 0.7,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "sword_1",
+        "start": 0.2,
+        "seconds": 0.5,
+        "gain": 0.3,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "d39e7bec67787873e7a9a9a2596d561618b68a5ac22d651241e7a47cdc93f50c"
+  },
+  {
+    "event": "buff_armor",
+    "seconds": 0.8199773242630386,
+    "peak": 0.58,
+    "rms": 0.09028223162624342,
+    "layers": [
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.6,
+        "gain": 0.6,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.35,
+        "gain": 0.3,
+        "playback_rate": 0.6,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "744d809b536bcd89b4d7215014d2327c7febd78ad62b2edf18acfaa32afd1255"
+  },
+  {
+    "event": "buff_speed",
+    "seconds": 0.57,
+    "peak": 0.58,
+    "rms": 0.13537630648520477,
+    "layers": [
+      {
+        "source": "whoosh_deep",
+        "start": 0.25,
+        "seconds": 0.6,
+        "gain": 0.6,
+        "playback_rate": 1.2,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "8cd291934718c9016e71355aac2d6c017ac42db6293c1b9b38a210830e2dcb2f"
+  },
+  {
+    "event": "buff_resource",
+    "seconds": 0.7366666666666667,
+    "peak": 0.58,
+    "rms": 0.041961553009812566,
+    "layers": [
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.4,
+        "gain": 0.5,
+        "playback_rate": 0.6,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "static_2",
+        "start": 0.3,
+        "seconds": 0.3,
+        "gain": 0.2,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "2f74cdda77ce2e597cd44bac7b498c6f980d97e7b1e19cd3e44d13ffc799eadf"
+  },
+  {
+    "event": "buff_command",
+    "seconds": 1.1949886621315193,
+    "peak": 0.58,
+    "rms": 0.11029084091655035,
+    "layers": [
+      {
+        "source": "zombie_1",
+        "start": 0.1,
+        "seconds": 0.9,
+        "gain": 0.6,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "0f66c42aae23f3a0685573bcad9b70d509fb1df532bc7661dc0e30b269799318"
+  },
+  {
+    "event": "undead_spawn",
+    "seconds": 0.77,
+    "peak": 0.58,
+    "rms": 0.13300786567657338,
+    "layers": [
+      {
+        "source": "zombie_1",
+        "start": 0.05,
+        "seconds": 0.7,
+        "gain": 0.5,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "coffin-lid",
+        "start": 0.1,
+        "seconds": 0.7,
+        "gain": 0.3,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "78fc1afd5238b9067853f6ac8ddd7399c213c1611258d87b7ba119c69a8265ab"
+  },
+  {
+    "event": "undead_attack",
+    "seconds": 0.52,
+    "peak": 0.58,
+    "rms": 0.10306412481611829,
+    "layers": [
+      {
+        "source": "zombie_attack",
+        "start": 0.6,
+        "seconds": 0.45,
+        "gain": 0.5,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "sword_3",
+        "start": 0.04,
+        "seconds": 0.25,
+        "gain": 0.2,
+        "playback_rate": 0.7,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "ab77981555597d5e5d56f37916347ab568ada491f53beb032f36b32b7ce7f672"
+  },
+  {
+    "event": "undead_hurt",
+    "seconds": 0.47,
+    "peak": 0.58,
+    "rms": 0.091205653619797,
+    "layers": [
+      {
+        "source": "zombie_2",
+        "start": 0.15,
+        "seconds": 0.4,
+        "gain": 0.6,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "02d8d703990e143cc672ef1570ba4aa7b570304a775348c378235077e7536b8f"
+  },
+  {
+    "event": "undead_death",
+    "seconds": 1.1949886621315193,
+    "peak": 0.58,
+    "rms": 0.07470798984986204,
+    "layers": [
+      {
+        "source": "zombie_2",
+        "start": 0.2,
+        "seconds": 0.9,
+        "gain": 0.55,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "door_knock_3",
+        "start": 0.05,
+        "seconds": 0.25,
+        "gain": 0.2,
+        "playback_rate": 0.7,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "518c067a8a6322398fc2beb638088b4b0b36ad9eb053ceab08e2669de7fa1f2f"
+  },
+  {
+    "event": "reaper_phase_2",
+    "seconds": 2.32,
+    "peak": 0.58,
+    "rms": 0.11069989638984797,
+    "layers": [
+      {
+        "source": "horror_stinger_1",
+        "start": 0.7,
+        "seconds": 1.8,
+        "gain": 0.55,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "ghost_1",
+        "start": 1,
+        "seconds": 1.5,
+        "gain": 0.3,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "cb7e384938e86608fe788c23c1950306460d04da0b74dfe0d45364fc1cee140e"
+  },
+  {
+    "event": "scythe_throw",
+    "seconds": 0.77,
+    "peak": 0.58,
+    "rms": 0.12410500618264737,
+    "layers": [
+      {
+        "source": "whoosh_deep",
+        "start": 0.23,
+        "seconds": 0.7,
+        "gain": 0.6,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "sword_1",
+        "start": 0.2,
+        "seconds": 0.4,
+        "gain": 0.4,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "efdbfe737c40df794bcc20049691e6498d2075f5e438a0437188174c1d5b5260"
+  },
+  {
+    "event": "scythe_embed",
+    "seconds": 0.8824943310657596,
+    "peak": 0.58,
+    "rms": 0.060053171988210655,
+    "layers": [
+      {
+        "source": "impact_3",
+        "start": 0.03,
+        "seconds": 0.65,
+        "gain": 0.6,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "door_slam_2",
+        "start": 0.75,
+        "seconds": 0.4,
+        "gain": 0.3,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "c6481de3448e4a08f32da169a8aa451e1e7245c7f2330d6267b4f68b24108d82"
+  },
+  {
+    "event": "scythe_tick",
+    "seconds": 0.5405668934240363,
+    "peak": 0.58,
+    "rms": 0.0564144757805043,
+    "layers": [
+      {
+        "source": "sword_3",
+        "start": 0.03,
+        "seconds": 0.4,
+        "gain": 0.6,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "7aea022c054e2ebed3413d65b4be4a6489c56ae8b1d0d875e0d000cc5817b24d"
+  },
+  {
+    "event": "scythe_end",
+    "seconds": 0.57,
+    "peak": 0.58,
+    "rms": 0.09120589321143474,
+    "layers": [
+      {
+        "source": "chains-rattling-2",
+        "start": 0.2,
+        "seconds": 0.5,
+        "gain": 0.5,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "whoosh_fast",
+        "start": 0.02,
+        "seconds": 0.3,
+        "gain": 0.3,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "d603831087de830eaa0c40f6f3e9c8c372596731361106ce534a92ce3b94b0d4"
+  },
+  {
+    "event": "shot_flame_searing",
+    "seconds": 0.7758730158730158,
+    "peak": 0.58,
+    "rms": 0.13494105671365447,
+    "layers": [
+      {
+        "source": "fire_3",
+        "start": 0.13,
+        "seconds": 0.6,
+        "gain": 0.85,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "static_2",
+        "start": 0.2,
+        "seconds": 0.2,
+        "gain": 0.15,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "ab8645798ec33e49a4f4842b67771479634058fe98daa1dbf4b84bfefe8c034c"
+  },
+  {
+    "event": "shot_flame_wildfire",
+    "seconds": 0.57,
+    "peak": 0.58,
+    "rms": 0.049490754324606964,
+    "layers": [
+      {
+        "source": "fire_2",
+        "start": 2,
+        "seconds": 0.5,
+        "gain": 0.6,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "fire_3",
+        "start": 0.3,
+        "seconds": 0.3,
+        "gain": 0.4,
+        "playback_rate": 1.2,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "8af2945c0ab1698b367252e8b8268357e00ac073ac8255eadc6418e6d36606a1"
+  },
+  {
+    "event": "shot_frost_deep_chill",
+    "seconds": 0.57,
+    "peak": 0.58,
+    "rms": 0.0572832078993358,
+    "layers": [
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.4,
+        "gain": 0.55,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_break",
+        "start": 0.3,
+        "seconds": 0.25,
+        "gain": 0.35,
+        "playback_rate": 1.1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "121ecd36d1c3fe7beefa9dbf737091056c2e37cb2b63243b4909423398c109d8"
+  },
+  {
+    "event": "shot_frost_rime_field",
+    "seconds": 0.30664399092970523,
+    "peak": 0.58,
+    "rms": 0.05571802751748861,
+    "layers": [
+      {
+        "source": "glass_break",
+        "start": 0.3,
+        "seconds": 0.3,
+        "gain": 0.4,
+        "playback_rate": 1.4,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_break",
+        "start": 0.45,
+        "seconds": 0.25,
+        "gain": 0.2,
+        "playback_rate": 1.5,
+        "at": 0.07,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "d6b32d30d841e9f7ff53c1a63c15379b6fa0f8734e1fb00238bd5da2d178bf65"
+  },
+  {
+    "event": "shot_shock_capacitor_burst",
+    "seconds": 0.5366439909297052,
+    "peak": 0.58,
+    "rms": 0.058323606604306875,
+    "layers": [
+      {
+        "source": "static_2",
+        "start": 0.25,
+        "seconds": 0.35,
+        "gain": 0.7,
+        "playback_rate": 0.75,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "laser_1",
+        "start": 0.21,
+        "seconds": 0.25,
+        "gain": 0.4,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "51d474e0fd009ab956cd23f78c43cf7b40da0ad9685850bf0b3000d9e0a1f308"
+  },
+  {
+    "event": "shot_shock_rapid_discharge",
+    "seconds": 0.18537414965986396,
+    "peak": 0.58,
+    "rms": 0.08011878481770109,
+    "layers": [
+      {
+        "source": "static_2",
+        "start": 0.25,
+        "seconds": 0.15,
+        "gain": 0.5,
+        "playback_rate": 1.3,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "laser_1",
+        "start": 0.21,
+        "seconds": 0.12,
+        "gain": 0.4,
+        "playback_rate": 1.4,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "908611b55cbbad9a07c7717315d7dbe28226cde8eeb84e05dc65224a07afd5a4"
+  },
+  {
+    "event": "shot_needle_precision_high",
+    "seconds": 0.6477777777777778,
+    "peak": 0.58,
+    "rms": 0.04044756621611933,
+    "layers": [
+      {
+        "source": "gun_shot_2",
+        "start": 0.06,
+        "seconds": 0.52,
+        "gain": 0.75,
+        "playback_rate": 0.9,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.03,
+        "seconds": 0.25,
+        "gain": 0.3,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.12,
+        "gain": 0.2,
+        "playback_rate": 0.78,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "f1788ca529cecd414bf800e15e6312de0e7026c41553f7f8f59e377ff391615c"
+  },
+  {
+    "event": "shot_needle_suppression_high",
+    "seconds": 0.2446485260770975,
+    "peak": 0.58,
+    "rms": 0.1762005867753445,
+    "layers": [
+      {
+        "source": "gun_shot_1",
+        "start": 0,
+        "seconds": 0.18,
+        "gain": 0.6,
+        "playback_rate": 1.12,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "gun_shot_1",
+        "start": 0,
+        "seconds": 0.14,
+        "gain": 0.23,
+        "playback_rate": 1.17,
+        "at": 0.055,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.12,
+        "gain": 0.2,
+        "playback_rate": 0.78,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "94684fde3836367eaa8c882f9ce520ae5b9c1e023d1364ba3c79140e555db2f6"
+  },
+  {
+    "event": "shot_arc_focus_high",
+    "seconds": 0.7366439909297052,
+    "peak": 0.58,
+    "rms": 0.09781080528124626,
+    "layers": [
+      {
+        "source": "laser_1",
+        "start": 0.2,
+        "seconds": 0.48,
+        "gain": 0.75,
+        "playback_rate": 0.72,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "static_2",
+        "start": 0.2,
+        "seconds": 0.23,
+        "gain": 0.35,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.16,
+        "gain": 0.3,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.12,
+        "gain": 0.2,
+        "playback_rate": 0.78,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "09348dd39e4d338a9c9cba023ba8063d2310d5e035bf1397752c05e46fd5ae7c"
+  },
+  {
+    "event": "shot_arc_storm_high",
+    "seconds": 0.3159863945578231,
+    "peak": 0.58,
+    "rms": 0.11358142657262442,
+    "layers": [
+      {
+        "source": "laser_1",
+        "start": 0.21,
+        "seconds": 0.22,
+        "gain": 0.55,
+        "playback_rate": 1.13,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "laser_1",
+        "start": 0.21,
+        "seconds": 0.22,
+        "gain": 0.3,
+        "playback_rate": 1.25,
+        "at": 0.07,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "static_2",
+        "start": 0.2,
+        "seconds": 0.2,
+        "gain": 0.3,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.12,
+        "gain": 0.2,
+        "playback_rate": 0.78,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "50eb9b882cf143c1d9101831959968311b76a6c0a3527b38df55a16fb6af3850"
+  },
+  {
+    "event": "shot_flame_searing_high",
+    "seconds": 0.7758730158730158,
+    "peak": 0.58,
+    "rms": 0.13566833804673328,
+    "layers": [
+      {
+        "source": "fire_3",
+        "start": 0.13,
+        "seconds": 0.6,
+        "gain": 0.85,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "static_2",
+        "start": 0.2,
+        "seconds": 0.2,
+        "gain": 0.15,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.12,
+        "gain": 0.2,
+        "playback_rate": 0.78,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "c7a1fed06a6d99d880f4cb512a3371e196508c4623f8f3ac3b54ced4c7d6c17a"
+  },
+  {
+    "event": "shot_flame_wildfire_high",
+    "seconds": 0.57,
+    "peak": 0.58,
+    "rms": 0.05032503204796086,
+    "layers": [
+      {
+        "source": "fire_2",
+        "start": 2,
+        "seconds": 0.5,
+        "gain": 0.6,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "fire_3",
+        "start": 0.3,
+        "seconds": 0.3,
+        "gain": 0.4,
+        "playback_rate": 1.2,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.12,
+        "gain": 0.2,
+        "playback_rate": 0.78,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "9fc9bd3298aca8a6bbf5d53e29bedc3511f85323060d1211d07243e10ea3bb54"
+  },
+  {
+    "event": "shot_frost_deep_chill_high",
+    "seconds": 0.57,
+    "peak": 0.58,
+    "rms": 0.056778273712821466,
+    "layers": [
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.4,
+        "gain": 0.55,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_break",
+        "start": 0.3,
+        "seconds": 0.25,
+        "gain": 0.35,
+        "playback_rate": 1.1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.12,
+        "gain": 0.2,
+        "playback_rate": 0.78,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "1ce5d2b3f7863d4335521245cb75503467cd7f111b1f1b94d45036bfb2111964"
+  },
+  {
+    "event": "shot_frost_rime_field_high",
+    "seconds": 0.30664399092970523,
+    "peak": 0.58,
+    "rms": 0.058951257302675523,
+    "layers": [
+      {
+        "source": "glass_break",
+        "start": 0.3,
+        "seconds": 0.3,
+        "gain": 0.4,
+        "playback_rate": 1.4,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_break",
+        "start": 0.45,
+        "seconds": 0.25,
+        "gain": 0.2,
+        "playback_rate": 1.5,
+        "at": 0.07,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.12,
+        "gain": 0.2,
+        "playback_rate": 0.78,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "605d059108d354ff49354f33a7abed59ab0de06438bdfff3683c10cc354e66ae"
+  },
+  {
+    "event": "shot_shock_capacitor_burst_high",
+    "seconds": 0.5366439909297052,
+    "peak": 0.58,
+    "rms": 0.05912789868035175,
+    "layers": [
+      {
+        "source": "static_2",
+        "start": 0.25,
+        "seconds": 0.35,
+        "gain": 0.7,
+        "playback_rate": 0.75,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "laser_1",
+        "start": 0.21,
+        "seconds": 0.25,
+        "gain": 0.4,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.12,
+        "gain": 0.2,
+        "playback_rate": 0.78,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "c9134ae5010077fd5b2e4baf8f15c4746b2e8e86d5ba2224047407a5de2c53f4"
+  },
+  {
+    "event": "shot_shock_rapid_discharge_high",
+    "seconds": 0.22383219954648526,
+    "peak": 0.58,
+    "rms": 0.07645037441508916,
+    "layers": [
+      {
+        "source": "static_2",
+        "start": 0.25,
+        "seconds": 0.15,
+        "gain": 0.5,
+        "playback_rate": 1.3,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "laser_1",
+        "start": 0.21,
+        "seconds": 0.12,
+        "gain": 0.4,
+        "playback_rate": 1.4,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.12,
+        "gain": 0.2,
+        "playback_rate": 0.78,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "7846ad327b3cdaca77f2e3d19e9a230d138aa19ac42495106a9e5e992686db88"
+  },
+  {
+    "event": "turret_upgrade",
+    "seconds": 0.40272108843537413,
+    "peak": 0.58,
+    "rms": 0.08038716286068279,
+    "layers": [
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.32,
+        "gain": 0.55,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.3,
+        "gain": 0.35,
+        "playback_rate": 1.1,
+        "at": 0.06,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "75c1bc09e3c439f769f2fa187ee0bbc0886af62d11b96701014d8e01ee343875"
+  },
+  {
+    "event": "bed_upgrade",
+    "seconds": 0.40272108843537413,
+    "peak": 0.58,
+    "rms": 0.08038716286068279,
+    "layers": [
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.32,
+        "gain": 0.55,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.3,
+        "gain": 0.35,
+        "playback_rate": 1.1,
+        "at": 0.06,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "75c1bc09e3c439f769f2fa187ee0bbc0886af62d11b96701014d8e01ee343875"
+  },
+  {
+    "event": "door_upgrade",
+    "seconds": 0.40272108843537413,
+    "peak": 0.58,
+    "rms": 0.08038716286068279,
+    "layers": [
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.32,
+        "gain": 0.55,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.3,
+        "gain": 0.35,
+        "playback_rate": 1.1,
+        "at": 0.06,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "75c1bc09e3c439f769f2fa187ee0bbc0886af62d11b96701014d8e01ee343875"
+  },
+  {
+    "event": "prestige_upgrade",
+    "seconds": 1.25,
+    "peak": 0.58,
+    "rms": 0.06004706170520812,
+    "layers": [
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.45,
+        "gain": 0.55,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.3,
+        "gain": 0.3,
+        "playback_rate": 0.8,
+        "at": 0.17,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.6,
+        "gain": 0.3,
+        "playback_rate": 0.6,
+        "at": 0.18,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "ed385889794aa480388af9c116edfcf3d31ae9ce319ed95b24dc640329a5614d"
+  },
+  {
+    "event": "button",
+    "seconds": 0.2,
+    "peak": 0.28,
+    "rms": 0.011705824486905722,
+    "layers": [
+      {
+        "source": "mouse_click_3",
+        "start": 0.02,
+        "seconds": 0.13,
+        "gain": 0.7,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.12,
+        "gain": 0.1,
+        "playback_rate": 1.2,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "2207c5d780a92fb6ca4a95a796ec37653d48ba5aa0ed570326bcea274a8092d7"
+  },
+  {
+    "event": "menu",
+    "seconds": 0.11798185941043084,
+    "peak": 0.28,
+    "rms": 0.014837943354105342,
+    "layers": [
+      {
+        "source": "mouse_click_3",
+        "start": 0.025,
+        "seconds": 0.06,
+        "gain": 0.5,
+        "playback_rate": 1.25,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "b1054298fadaa685f09de786e294a4b3bf1e2d14facc3e56ec7d64e53b3f402e"
+  },
+  {
+    "event": "purchase",
+    "seconds": 0.2,
+    "peak": 0.28,
+    "rms": 0.011705824486905722,
+    "layers": [
+      {
+        "source": "mouse_click_3",
+        "start": 0.02,
+        "seconds": 0.13,
+        "gain": 0.7,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.12,
+        "gain": 0.1,
+        "playback_rate": 1.2,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "2207c5d780a92fb6ca4a95a796ec37653d48ba5aa0ed570326bcea274a8092d7"
+  },
+  {
+    "event": "failure",
+    "seconds": 0.2985714285714286,
+    "peak": 0.28,
+    "rms": 0.013229928598661633,
+    "layers": [
+      {
+        "source": "mouse_click_3",
+        "start": 0.02,
+        "seconds": 0.09,
+        "gain": 0.5,
+        "playback_rate": 0.7,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "mouse_click_3",
+        "start": 0.02,
+        "seconds": 0.09,
+        "gain": 0.35,
+        "playback_rate": 0.7,
+        "at": 0.1,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "fb689f502577d90f40c3964038d90967622d5c0bb2b94ba43f809a8290f73367"
+  },
+  {
+    "event": "shop_purchase",
+    "seconds": 0.31285714285714283,
+    "peak": 0.58,
+    "rms": 0.051915242521204844,
+    "layers": [
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.2,
+        "gain": 0.5,
+        "playback_rate": 1.2,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.2,
+        "gain": 0.2,
+        "playback_rate": 1.4,
+        "at": 0.1,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "4fe3b193010b0562fff75a1ea35a88ed79ae7f1c59a7320399966d40388c5d6d"
+  },
+  {
+    "event": "footstep",
+    "seconds": 0.4464625850340136,
+    "peak": 0.58,
+    "rms": 0.12351337041394529,
+    "layers": [
+      {
+        "source": "creepy-footsteps",
+        "start": 0.25,
+        "seconds": 0.32,
+        "gain": 0.7,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "e3192e438c48a02625585e2f960740423307ce952fbdfd3ba209aec54594a6b0"
+  },
+  {
+    "event": "danger",
+    "seconds": 0.7972562358276644,
+    "peak": 0.58,
+    "rms": 0.10431479093983226,
+    "layers": [
+      {
+        "source": "horror_stinger_1",
+        "start": 0.8,
+        "seconds": 0.8,
+        "gain": 0.35,
+        "playback_rate": 1.1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "fa9897b7854408563c33d7b6154326c44406f2b5f95b30d2c1d4515ebb9215cf"
+  },
+  {
+    "event": "generator_activate",
+    "seconds": 0.6699773242630386,
+    "peak": 0.58,
+    "rms": 0.03296066111621416,
+    "layers": [
+      {
+        "source": "static_2",
+        "start": 0.2,
+        "seconds": 0.45,
+        "gain": 0.55,
+        "playback_rate": 0.75,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.3,
+        "gain": 0.4,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "0d3e09c07009f08ea6733bddc0ed1f32735773f2e6dc1c761d129b1d86f64e4d"
+  },
+  {
+    "event": "resource_gold",
+    "seconds": 0.17,
+    "peak": 0.32,
+    "rms": 0.0377832001740838,
+    "layers": [
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.14,
+        "gain": 0.5,
+        "playback_rate": 1.4,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "436a50a896588421f9d1f517ba3378633d288b554cfa4e5b51c160ab9a19873d"
+  },
+  {
+    "event": "resource_power",
+    "seconds": 0.1790702947845805,
+    "peak": 0.21517031084113075,
+    "rms": 0.031944101122773315,
+    "layers": [
+      {
+        "source": "static_2",
+        "start": 0.2,
+        "seconds": 0.12,
+        "gain": 0.5,
+        "playback_rate": 1.1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "9a555cf48dd8577faeed677783a5b4636bc4d14cbfd35903e1f877be0c5ba398"
+  },
+  {
+    "event": "reaper_impact",
+    "seconds": 0.7842857142857143,
+    "peak": 0.58,
+    "rms": 0.06650296764877914,
+    "layers": [
+      {
+        "source": "sword_3",
+        "start": 0.03,
+        "seconds": 0.5,
+        "gain": 0.5,
+        "playback_rate": 0.7,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "door_slam_2",
+        "start": 0.75,
+        "seconds": 0.5,
+        "gain": 0.6,
+        "playback_rate": 0.75,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "774e86e2a559df0c53cc2613321cb993c5fd8681b236d32a71946819f8ec7f78"
+  },
+  {
+    "event": "hunter_charged_warning",
+    "seconds": 1.07,
+    "peak": 0.58,
+    "rms": 0.11631783923124991,
+    "layers": [
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.7,
+        "gain": 0.4,
+        "playback_rate": 0.7,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "monster_3",
+        "start": 0,
+        "seconds": 0.7,
+        "gain": 0.4,
+        "playback_rate": 0.75,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "7d50d3e7c1a61898476dbadbb922d5f5e96f41d0fe678cdee3cc277fe6fc87d0"
+  },
+  {
+    "event": "undead_spawn_enhanced",
+    "seconds": 1.07,
+    "peak": 0.58,
+    "rms": 0.07894024011193534,
+    "layers": [
+      {
+        "source": "zombie_2",
+        "start": 0.15,
+        "seconds": 0.8,
+        "gain": 0.5,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.6,
+        "gain": 0.25,
+        "playback_rate": 0.75,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "f6b312ec14f89d7db535697eddc2030036022cbc2cc0594ad7249b1412e768c9"
+  },
+  {
+    "event": "lock_release",
+    "seconds": 0.34997732426303857,
+    "peak": 0.58,
+    "rms": 0.09641351711953894,
+    "layers": [
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.35,
+        "gain": 0.5,
+        "playback_rate": 1.25,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.22,
+        "gain": 0.3,
+        "playback_rate": 1.3,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "2fb0e434e466deb616788fcf90693cc0f24616c15b384ceddf36b459519d5d62"
+  },
+  {
+    "event": "build_flame",
+    "seconds": 0.47,
+    "peak": 0.58,
+    "rms": 0.06868822548097948,
+    "layers": [
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.25,
+        "gain": 0.5,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.4,
+        "gain": 0.35,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "fire_3",
+        "start": 0.13,
+        "seconds": 0.28,
+        "gain": 0.25,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "3a3c2c716d1b0c627b0c51fcdf654b638ec5579eee39c2a33708e231627c2eb4"
+  },
+  {
+    "event": "build_frost",
+    "seconds": 0.47,
+    "peak": 0.58,
+    "rms": 0.07042135649384355,
+    "layers": [
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.25,
+        "gain": 0.5,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.4,
+        "gain": 0.35,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_break",
+        "start": 0.3,
+        "seconds": 0.28,
+        "gain": 0.25,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "4a512e9d815d1918610986c4535802b14c44f4ba73ec2557fc7d9e1cf4ef0438"
+  },
+  {
+    "event": "build_shock",
+    "seconds": 0.47,
+    "peak": 0.58,
+    "rms": 0.06314010688488861,
+    "layers": [
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.25,
+        "gain": 0.5,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.4,
+        "gain": 0.35,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "static_2",
+        "start": 0.2,
+        "seconds": 0.28,
+        "gain": 0.25,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "2a23fcfcdb8cf05f0361521de6e12dc41db6ab688d5dd95dc45c025ce51f2ad3"
+  },
+  {
+    "event": "build_auto_repair",
+    "seconds": 0.47,
+    "peak": 0.58,
+    "rms": 0.06610694288123246,
+    "layers": [
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.25,
+        "gain": 0.5,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.4,
+        "gain": 0.35,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.28,
+        "gain": 0.25,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "6523681db7bba930765c1f389e34dd2918aad815a071eb960b608041e1d9db78"
+  },
+  {
+    "event": "build_shield",
+    "seconds": 0.47,
+    "peak": 0.58,
+    "rms": 0.061654718120039566,
+    "layers": [
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.25,
+        "gain": 0.5,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.4,
+        "gain": 0.35,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.28,
+        "gain": 0.25,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "eeeef0ae02b31ecb53d8cb44be9f1372744759ac299c15e411be2651053d13e9"
+  },
+  {
+    "event": "build_decoy",
+    "seconds": 0.47,
+    "peak": 0.58,
+    "rms": 0.07489901682801248,
+    "layers": [
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.25,
+        "gain": 0.5,
+        "playback_rate": 0.85,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.4,
+        "gain": 0.35,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "door_knock_3",
+        "start": 0.03,
+        "seconds": 0.28,
+        "gain": 0.25,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "1852043817081ba09974766f889591c60d617893426ad426a3d487bb8ffd2e41"
+  },
+  {
+    "event": "income",
+    "seconds": 0.17,
+    "peak": 0.58,
+    "rms": 0.06848205031552689,
+    "layers": [
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.14,
+        "gain": 0.5,
+        "playback_rate": 1.4,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "cbd9fbd21d82ff267227ff7b8c5abf61361a25627a70d8e27293a34dc392ea83"
+  },
+  {
+    "event": "electricity",
+    "seconds": 0.1790702947845805,
+    "peak": 0.3899961883995495,
+    "rms": 0.05789868328502664,
+    "layers": [
+      {
+        "source": "static_2",
+        "start": 0.2,
+        "seconds": 0.12,
+        "gain": 0.5,
+        "playback_rate": 1.1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "4998dd31815c9b88ccf373e87b930a14da17254c1a1a16a5cf99e67491d09248"
+  },
+  {
+    "event": "reward",
+    "seconds": 0.47,
+    "peak": 0.58,
+    "rms": 0.048678446132900066,
+    "layers": [
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.35,
+        "gain": 0.5,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.35,
+        "gain": 0.3,
+        "playback_rate": 1.25,
+        "at": 0.12,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "e8399d93e0c1299d93a6344351e8afded460acafc551d98a2fc7747e4c42a582"
+  },
+  {
+    "event": "wrath_warning_summon",
+    "seconds": 1.0482539682539682,
+    "peak": 0.58,
+    "rms": 0.13288471225752352,
+    "layers": [
+      {
+        "source": "zombie_1",
+        "start": 0.05,
+        "seconds": 0.9,
+        "gain": 0.6,
+        "playback_rate": 0.92,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.5,
+        "gain": 0.18,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "coffin-lid",
+        "start": 0.1,
+        "seconds": 0.7,
+        "gain": 0.3,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "d38cac50c7742f57151c8023b4259495e38f743dcedcef4699b2cecbdc98a222"
+  },
+  {
+    "event": "wrath_activate_summon",
+    "seconds": 1.395283446712018,
+    "peak": 0.58,
+    "rms": 0.09838938554348235,
+    "layers": [
+      {
+        "source": "zombie_1",
+        "start": 0.05,
+        "seconds": 1.1,
+        "gain": 0.55,
+        "playback_rate": 0.83,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.45,
+        "gain": 0.25,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "2296fbfb6fc19bb471854c085520b46d084541ea1ce4c7015afff9367bc2c9b8"
+  },
+  {
+    "event": "wrath_warning_assault",
+    "seconds": 1.215827664399093,
+    "peak": 0.58,
+    "rms": 0.07699260770321542,
+    "layers": [
+      {
+        "source": "zombie_attack",
+        "start": 0.6,
+        "seconds": 1.1,
+        "gain": 0.6,
+        "playback_rate": 0.9600000000000001,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.5,
+        "gain": 0.18,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "zombie_2",
+        "start": 0.2,
+        "seconds": 0.4,
+        "gain": 0.4,
+        "playback_rate": 1,
+        "at": 0.18,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "zombie_1",
+        "start": 0.2,
+        "seconds": 0.4,
+        "gain": 0.35,
+        "playback_rate": 0.9,
+        "at": 0.38,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "bace54bfff0515e8bdc55721b8a28bbccadb9268f2178729e58786b97b55c3a5"
+  },
+  {
+    "event": "wrath_activate_assault",
+    "seconds": 1.5642403628117914,
+    "peak": 0.58,
+    "rms": 0.06720194559525666,
+    "layers": [
+      {
+        "source": "zombie_attack",
+        "start": 0.6,
+        "seconds": 1.3,
+        "gain": 0.55,
+        "playback_rate": 0.87,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.45,
+        "gain": 0.25,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "204d819bd8cd5255ed9669796a98f53821664972a8d1efd67c2718ea872dd06e"
+  },
+  {
+    "event": "wrath_warning_soul_steal",
+    "seconds": 1.27,
+    "peak": 0.58,
+    "rms": 0.09311346954082812,
+    "layers": [
+      {
+        "source": "ghost_1",
+        "start": 0.8,
+        "seconds": 1.2,
+        "gain": 0.6,
+        "playback_rate": 1.0,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.5,
+        "gain": 0.18,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.22,
+        "gain": 0.3,
+        "playback_rate": 0.8,
+        "at": 0.05,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "glass_clink_1",
+        "start": 0,
+        "seconds": 0.22,
+        "gain": 0.2,
+        "playback_rate": 0.7,
+        "at": 0.25,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "919c48a8e448b43e74fa19cc85d3b519c04f234ef4d6d6da039856df8e911c3c"
+  },
+  {
+    "event": "wrath_activate_soul_steal",
+    "seconds": 1.6084580498866212,
+    "peak": 0.58,
+    "rms": 0.10196501713388594,
+    "layers": [
+      {
+        "source": "ghost_1",
+        "start": 0.8,
+        "seconds": 1.4,
+        "gain": 0.55,
+        "playback_rate": 0.9099999999999999,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.45,
+        "gain": 0.25,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "e0efa1161aed2da839bfa6eb7b5f885b9642326433d4773e3366cab024a11193"
+  },
+  {
+    "event": "wrath_warning_scythe_slash",
+    "seconds": 1.0482539682539682,
+    "peak": 0.58,
+    "rms": 0.06872673856566577,
+    "layers": [
+      {
+        "source": "sword_1",
+        "start": 0.2,
+        "seconds": 0.9,
+        "gain": 0.6,
+        "playback_rate": 0.92,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.5,
+        "gain": 0.18,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "6982a1b7811352320440e4eb7627316320e6108dea66f41abdadf5a6b422b464"
+  },
+  {
+    "event": "wrath_activate_scythe_slash",
+    "seconds": 1.395283446712018,
+    "peak": 0.58,
+    "rms": 0.06310380131510072,
+    "layers": [
+      {
+        "source": "sword_1",
+        "start": 0.2,
+        "seconds": 1.1,
+        "gain": 0.55,
+        "playback_rate": 0.83,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.45,
+        "gain": 0.25,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "b72fb45f0a9befc0f34bbfade807d64c9cdbe0e7cc3026bcd2b6c1b1dff2c1b4"
+  },
+  {
+    "event": "wrath_warning_rules_judgement",
+    "seconds": 1.1116553287981858,
+    "peak": 0.58,
+    "rms": 0.0859213018827421,
+    "layers": [
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 1.0,
+        "gain": 0.6,
+        "playback_rate": 0.9600000000000001,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.5,
+        "gain": 0.18,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "mouse_click_3",
+        "start": 0.02,
+        "seconds": 0.09,
+        "gain": 0.4,
+        "playback_rate": 0.8,
+        "at": 0.15,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "mouse_click_3",
+        "start": 0.02,
+        "seconds": 0.09,
+        "gain": 0.4,
+        "playback_rate": 0.8,
+        "at": 0.3,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "f6b64f689a0017003e0aa5b2118f0ada5a40e5c7cf96550f7ce73d3aaa26d013"
+  },
+  {
+    "event": "wrath_activate_rules_judgement",
+    "seconds": 1.449297052154195,
+    "peak": 0.58,
+    "rms": 0.08210175222880574,
+    "layers": [
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 1.2,
+        "gain": 0.55,
+        "playback_rate": 0.87,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.45,
+        "gain": 0.25,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "cec79cd19f21b397cbe8d8e72dadfa74eb8d5ec38cf562e0c761830da7c82979"
+  },
+  {
+    "event": "wrath_warning_eternal_sacrifices",
+    "seconds": 1.17,
+    "peak": 0.58,
+    "rms": 0.11135429654404913,
+    "layers": [
+      {
+        "source": "whoosh_deep",
+        "start": 0.2,
+        "seconds": 1.1,
+        "gain": 0.6,
+        "playback_rate": 1.0,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.5,
+        "gain": 0.18,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "5d4e159679867f9de80b8ab8f467ab4f065e9ae764bf6cb2438bbbc24ab35d5f"
+  },
+  {
+    "event": "wrath_activate_eternal_sacrifices",
+    "seconds": 1.4985714285714287,
+    "peak": 0.58,
+    "rms": 0.1057938586897297,
+    "layers": [
+      {
+        "source": "whoosh_deep",
+        "start": 0.2,
+        "seconds": 1.3,
+        "gain": 0.55,
+        "playback_rate": 0.9099999999999999,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.45,
+        "gain": 0.25,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "f7b290754a1c4d1279ad9d76fee2643d04f3cbdf74f60b01f9a378b127d54098"
+  },
+  {
+    "event": "wrath_warning_enhanced_undead",
+    "seconds": 1.3743310657596373,
+    "peak": 0.58,
+    "rms": 0.07317425721246439,
+    "layers": [
+      {
+        "source": "zombie_2",
+        "start": 0.15,
+        "seconds": 1.2,
+        "gain": 0.6,
+        "playback_rate": 0.92,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.5,
+        "gain": 0.18,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "zombie_1",
+        "start": 0.2,
+        "seconds": 0.5,
+        "gain": 0.35,
+        "playback_rate": 0.7,
+        "at": 0.22,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "4211034c9e15f8cb72b9402f486b9f0dd89b0e24ec8c78135e5529de0aa5308a"
+  },
+  {
+    "event": "wrath_activate_enhanced_undead",
+    "seconds": 1.756734693877551,
+    "peak": 0.58,
+    "rms": 0.07567200268609653,
+    "layers": [
+      {
+        "source": "zombie_2",
+        "start": 0.15,
+        "seconds": 1.4,
+        "gain": 0.55,
+        "playback_rate": 0.83,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.45,
+        "gain": 0.25,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "abbf0b9ca5ba6dc8b97b6acbd0cf0239b935ddd5bd0450cb5cb5713dfe49b6bb"
+  },
+  {
+    "event": "wrath_warning_soul_reaper",
+    "seconds": 1.7366666666666666,
+    "peak": 0.58,
+    "rms": 0.0968241739698088,
+    "layers": [
+      {
+        "source": "ghost_1",
+        "start": 1,
+        "seconds": 1.6,
+        "gain": 0.6,
+        "playback_rate": 0.9600000000000001,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.5,
+        "gain": 0.18,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "door_slam_2",
+        "start": 0.75,
+        "seconds": 0.4,
+        "gain": 0.35,
+        "playback_rate": 0.65,
+        "at": 0.05,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "door_slam_2",
+        "start": 0.75,
+        "seconds": 0.4,
+        "gain": 0.25,
+        "playback_rate": 0.65,
+        "at": 0.45,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "a45f95a4acca0dcfaf66c8a24aea86a4d3f7d8b276c9f66739c8014701100240"
+  },
+  {
+    "event": "wrath_activate_soul_reaper",
+    "seconds": 2.1389569160997732,
+    "peak": 0.58,
+    "rms": 0.09600995419734526,
+    "layers": [
+      {
+        "source": "ghost_1",
+        "start": 1,
+        "seconds": 1.8,
+        "gain": 0.55,
+        "playback_rate": 0.87,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.45,
+        "gain": 0.25,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "static_2",
+        "start": 0.2,
+        "seconds": 0.7,
+        "gain": 0.3,
+        "playback_rate": 0.6,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "aff9d9d889014369655c21e9e92cfa28368a18333b80c01286600470338657b6"
+  },
+  {
+    "event": "wrath_warning_phantom_scream",
+    "seconds": 1.310907029478458,
+    "peak": 0.58,
+    "rms": 0.06975688279854479,
+    "layers": [
+      {
+        "source": "whoosh_fast",
+        "start": 0,
+        "seconds": 0.35,
+        "gain": 0.4,
+        "playback_rate": 1.2,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "ghost_1",
+        "start": 1.8,
+        "seconds": 1.2,
+        "gain": 0.5,
+        "playback_rate": 1.1,
+        "at": 0.15,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "ghost_1",
+        "start": 1.8,
+        "seconds": 0.6,
+        "gain": 0.2,
+        "playback_rate": 1.3,
+        "at": 0.3,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "8d19a04f93aeda8e7d1a5802184acfa9306ec1a95e82386a7fe0d283bca330db"
+  },
+  {
+    "event": "wrath_activate_phantom_scream",
+    "seconds": 1.9381179138321996,
+    "peak": 0.58,
+    "rms": 0.07108129756384193,
+    "layers": [
+      {
+        "source": "ghost_1",
+        "start": 1,
+        "seconds": 1.7,
+        "gain": 0.55,
+        "playback_rate": 0.9099999999999999,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.45,
+        "gain": 0.25,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "whoosh_fast",
+        "start": 0,
+        "seconds": 0.4,
+        "gain": 0.4,
+        "playback_rate": 1.4,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "131c8483fc1bd1871378d679d6f98232a6d5989b1c4af8f5efccde978591220e"
+  },
+  {
+    "event": "wrath_warning_final_judgement",
+    "seconds": 1.4830385487528344,
+    "peak": 0.58,
+    "rms": 0.06482622334465402,
+    "layers": [
+      {
+        "source": "coffin-lid",
+        "start": 0.1,
+        "seconds": 1.3,
+        "gain": 0.6,
+        "playback_rate": 0.92,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.5,
+        "gain": 0.18,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "e82dd2f67dc73e8f3804db0f0030242d56dcdeab4b3c6e19646c67f66c8f9ebd"
+  },
+  {
+    "event": "wrath_activate_final_judgement",
+    "seconds": 1.8772108843537414,
+    "peak": 0.58,
+    "rms": 0.06401893265157049,
+    "layers": [
+      {
+        "source": "coffin-lid",
+        "start": 0.1,
+        "seconds": 1.5,
+        "gain": 0.55,
+        "playback_rate": 0.83,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.45,
+        "gain": 0.25,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "0f4a497f05114be73d76902bcb55cdf0013b40078f59d6112c9f0e33b0e6f7e0"
+  },
+  {
+    "event": "wrath_warning_crimson_execution",
+    "seconds": 2.049160997732426,
+    "peak": 0.58,
+    "rms": 0.10902428545351751,
+    "layers": [
+      {
+        "source": "horror_stinger_1",
+        "start": 0.7,
+        "seconds": 1.9,
+        "gain": 0.6,
+        "playback_rate": 0.9600000000000001,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "chains-rattling-2",
+        "start": 0.1,
+        "seconds": 0.5,
+        "gain": 0.18,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "66a6151b4f810d4013f73c885f3248c4fa4d9584296e026a0613b15af6f3d47b"
+  },
+  {
+    "event": "wrath_activate_crimson_execution",
+    "seconds": 2.2539002267573696,
+    "peak": 0.58,
+    "rms": 0.10974909984369272,
+    "layers": [
+      {
+        "source": "horror_stinger_1",
+        "start": 0.7,
+        "seconds": 1.9,
+        "gain": 0.55,
+        "playback_rate": 0.87,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.45,
+        "gain": 0.25,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "aa1dfc5d8f53b2727a3a0a05543618c19dd2e13c81b6d38f3117fb4108b884fd"
+  }
+]
