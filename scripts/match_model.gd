@@ -31,6 +31,7 @@ var _navigation_routes: Dictionary={}
 var stage_id=""
 var difficulty="standard"
 var match_boosts: Dictionary={}
+var stage_bonus: Dictionary={}
 
 func configure_match(mode: String="standard", boosts: Dictionary={}):
  # Called once on a fresh match; loadout changes never alter an active room.
@@ -78,6 +79,7 @@ func reset(seed_value: int = 1):
  stage_id=""
  preparation=Catalog.PREPARATION
  match_boosts={}
+ stage_bonus={}
  player_room = -1
  player_position = Vector2(500,410)
  time = 0
@@ -243,6 +245,11 @@ func claim_room(index: int) -> bool:
   return false
  rooms[index].owner = 0
  rooms[index].apply_boosts(match_boosts)
+ if not stage_bonus.is_empty():
+  rooms[index].gold+=stage_bonus.get("gold",0.0)
+  var old_max=rooms[index].max_hp()
+  rooms[index].door_multiplier*=stage_bonus.get("door",1.0)
+  rooms[index].door_hp+=rooms[index].max_hp()-old_max
  player_room = index
  feedback.emit("Room claimed. Approach the bed and press E to sleep.")
  return true
@@ -466,7 +473,11 @@ func _advance_projectiles(delta: float):
   if shot.position.distance_to(hunter.position) <= travel:
    shot.position = hunter.position
    var previous_hp = hunter.hp
-   hunter.hurt(shot.damage)
+   var hit=shot.damage
+   if shot.room==player_room:
+    if hunter.transformed:hit*=match_boosts.get("reaper",1.0)
+    if time<preparation+stage_bonus.get("seconds",0.0):hit*=stage_bonus.get("damage",1.0)
+   hunter.hurt(hit)
    items.ignite(self,shot.room)
    var applied_damage = previous_hp-hunter.hp
    damage_dealt += applied_damage

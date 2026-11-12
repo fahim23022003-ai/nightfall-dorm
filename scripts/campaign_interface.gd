@@ -39,6 +39,8 @@ func show_stages():
  ui.button("Ranks & rewards",Vector2(360,628),ui.progression.show_ranks,260,42)
 
 func prepare(id: String):
+ if not game.profile.pending_stage_bonus.is_empty() and game.profile.pending_stage_bonus.target==id and game.profile.pending_stage_bonus.choice=="":
+  ui.progression.show_stage_bonus();return false
  if not game.profile.stage_unlocked(id): return false
  if game.mode=="result": game.return_menu()
  if not game.profile.select_stage(id): return false

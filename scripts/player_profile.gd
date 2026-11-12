@@ -21,6 +21,50 @@ var item_loadout: Array=[]
 var pending_spins: Array=[]
 var reward_rng=RandomNumberGenerator.new()
 var item_error=""
+var achievements: Dictionary={}
+var reward_counters={"door_damage":0.0,"income":0.0,"construction":0,"legendary":0,"perfect_team":0}
+var seen_items: Array=[]
+var pending_stage_bonus: Dictionary={}
+var stage_bonus_queue: Array=[]
+func perk_slots() -> int: return 2 if rank_index()>=5 else 1
+func _reward_snapshot() -> Dictionary:
+ var out={}
+ for key in ["xp","equipped","highest_rank","statistics","campaign_records","inventory","item_loadout","pending_spins","active_match","last_award","achievements","reward_counters","seen_items","pending_stage_bonus","stage_bonus_queue","next_match_id"]:
+  var v=get(key)
+  out[key]=v.duplicate(true) if v is Dictionary or v is Array else v
+ return out
+func _restore_rewards(before: Dictionary):
+ for key in before:set(key,before[key])
+func refresh_achievements() -> Array:
+ for id in inventory:
+  if int(inventory[id])>0 and id not in seen_items:seen_items.append(id)
+ var evidence={"first_victory":statistics.victories>=1,"first_blood":statistics.victories>=1,"night_survivor":statistics.hard>=1,"hell_survivor":statistics.hell>=1,"reaper_hunter":statistics.reaper_defeats>=1,"reaper_slayer":statistics.reaper_defeats>=3,"perfect_team":reward_counters.perfect_team>=1,"iron_fortress":reward_counters.door_damage>=RewardCatalog.CONDITIONS.door_damage,"economy_master":reward_counters.income>=RewardCatalog.CONDITIONS.income,"master_builder":reward_counters.construction>=RewardCatalog.CONDITIONS.construction,"item_collector":seen_items.size()>=RewardCatalog.CONDITIONS.distinct_items,"legendary_survivor":reward_counters.legendary>=1}
+ var earned=[]
+ for id in evidence:
+  if evidence[id] and not achievements.has(id):achievements[id]={"claimed":false};earned.append(id)
+ return earned
+func claim_achievement(id: String) -> bool:
+ var definition=RewardCatalog.achievement(id)
+ if read_only or definition.is_empty() or not achievements.has(id) or achievements[id].claimed:return false
+ if int(inventory.get(definition.item,0))>=ItemCatalog.MAX_STOCK:return false
+ var before=_reward_snapshot()
+ achievements[id].claimed=true
+ xp=mini(RankCatalog.MAX_XP,xp+definition.xp)
+ inventory[definition.item]=int(inventory.get(definition.item,0))+1
+ refresh_achievements()
+ highest_rank=maxi(highest_rank,rank_index())
+ if not save_profile():_restore_rewards(before);return false
+ return true
+func choose_stage_bonus(choice: String) -> bool:
+ if read_only or not RewardCatalog.STAGE_BONUSES.has(choice) or pending_stage_bonus.is_empty() or pending_stage_bonus.get("choice","")!="":return false
+ var old=pending_stage_bonus.duplicate(true)
+ pending_stage_bonus.choice=choice
+ if not save_profile():pending_stage_bonus=old;return false
+ return true
+func apply_stage_bonus(model,entry: Dictionary):
+ if model.time>0 or model.player_room>=0:return false
+ if entry.get("stage_id","")==model.stage_id and RewardCatalog.STAGE_BONUSES.has(entry.get("stage_bonus","")):
+  model.stage_bonus=RewardCatalog.STAGE_BONUSES[entry.stage_bonus].duplicate(true)
 func _item_failure(model,reason: String) -> bool:
  item_error=reason
  model.feedback.emit(reason)
@@ -108,16 +152,18 @@ func promotion_requirement() -> String:
  if rank_index()<5: return "%d XP to %s" % [RankCatalog.THRESHOLDS[rank_index()+1]-xp,RankCatalog.NAMES[rank_index()+1]]
  return "Mythic: %d/8000 XP · Stage 5 %s · Advanced wins %d/3 · Reapers %d/3" % [xp,"cleared" if campaign_records.has("stage_5") else "needed",statistics.hard+statistics.hell,statistics.reaper_defeats]
 func rank_name() -> String: return RankCatalog.NAMES[rank_index()]
-func unlocked() -> Array: return RankCatalog.unlocked(xp)
+func unlocked() -> Array:
+ return RankCatalog.PERKS.filter(func(p):return p.rank<=rank_index()).map(func(p):return p.id)
 
 func _whole(value, minimum: int, maximum: int=1000000000000) -> bool:
  return (value is int or value is float) and is_finite(float(value)) and float(value)==floor(float(value)) and value>=minimum and value<=maximum
 
-func _valid_loadout(value, points: int) -> bool:
- if not value is Array or value.size()>RankCatalog.MAX_EQUIPPED: return false
+func _valid_loadout(value, points: int, effective: int=-1) -> bool:
+ var rank=RankCatalog.rank_for(points) if effective<0 else effective
+ if not value is Array or value.size()>(2 if rank>=5 else 1): return false
  var unique=[]
  for id in value:
-  if not id is String or id not in RankCatalog.unlocked(points) or id in unique: return false
+  if not id is String or RankCatalog.perk(id).is_empty() or RankCatalog.perk(id).rank>rank or id in unique: return false
   unique.append(id)
  return true
 
@@ -196,7 +242,9 @@ func _decode(file_path: String) -> Dictionary:
  if not _whole(active.get("legendary_used",0),0,int(ItemCatalog.TUNING.legendary_limit)): return {}
  if not active.is_empty():
   if not _whole(active.get("id"),1,int(value.next_match_id)-1): return {}
-  if not _valid_loadout(active.get("equipped"),int(value.xp)): return {}
+  var effective=RankCatalog.rank_for(int(value.xp))
+  if effective==6 and not RankCatalog.mythic_ready(value.get("progression",{}).get("statistics",{}),value.get("campaign",{}).get("records",{})):effective=5
+  if not _valid_loadout(active.get("equipped"),int(value.xp),effective): return {}
   if not active.get("difficulty") in RankCatalog.DIFFICULTIES or not active.get("equipped") is Array: return {}
   if active.has("stage_id"):
    if not active.stage_id is String or StageCatalog.stage(active.stage_id).is_empty() or not value.has("campaign"): return {}
@@ -288,7 +336,7 @@ func load_profile() -> bool:
  next_match_id=int(data.next_match_id)
  equipped=[]
  for id in data.equipped:
-  if id is String and id in unlocked() and id not in equipped and equipped.size()<RankCatalog.MAX_EQUIPPED: equipped.append(id)
+  if id is String and id in unlocked() and id not in equipped and equipped.size()<perk_slots(): equipped.append(id)
  for key in ["music","effects","ambient"]:
   var value=data.settings.get(key,settings[key])
   if (value is float or value is int) and is_finite(float(value)): settings[key]=clampf(float(value),0,1)
@@ -300,13 +348,29 @@ func load_profile() -> bool:
   active_match["items"]=[]
   warning="Active item snapshot was damaged; saving disabled to preserve your original profile."
  last_award=data.get("last_award",{}).duplicate(true)
+ var rewards=data.get("rewards",{})
+ if not rewards is Dictionary:
+  read_only=true;warning="Reward records invalid; existing progress preserved read-only."
+ elif not rewards.is_empty():
+  if not _valid_rewards(rewards):
+   read_only=true;warning="Reward records are damaged or newer; progress preserved read-only."
+  else:
+   achievements=rewards.achievements.duplicate(true)
+   reward_counters=rewards.counters.duplicate(true)
+   seen_items=rewards.seen_items.duplicate()
+   pending_stage_bonus=rewards.stage_bonus.duplicate(true)
+   stage_bonus_queue=rewards.get("stage_queue",[]).duplicate(true)
+ if not read_only:
+  var before=_reward_snapshot()
+  var earned=refresh_achievements()
+  if not earned.is_empty() and not save_profile():_restore_rewards(before)
  return true
 
 func save_profile() -> bool:
  if read_only:
   save_ok=false
   return false
- var data={"consumables":{"version":1,"inventory":inventory,"loadout":item_loadout,"pending":pending_spins},"version":RankCatalog.VERSION,"progression":{"version":1,"statistics":statistics,"highest_rank":maxi(highest_rank,rank_index())},"xp":xp,"equipped":equipped,"settings":settings,"next_match_id":next_match_id,"active_match":active_match,"last_award":last_award,"campaign":{"selected_stage":selected_stage,"difficulty":selected_difficulty,"records":campaign_records}}
+ var data={"rewards":{"version":1,"achievements":achievements,"counters":reward_counters,"seen_items":seen_items,"stage_bonus":pending_stage_bonus,"stage_queue":stage_bonus_queue},"consumables":{"version":1,"inventory":inventory,"loadout":item_loadout,"pending":pending_spins},"version":RankCatalog.VERSION,"progression":{"version":1,"statistics":statistics,"highest_rank":maxi(highest_rank,rank_index())},"xp":xp,"equipped":equipped,"settings":settings,"next_match_id":next_match_id,"active_match":active_match,"last_award":last_award,"campaign":{"selected_stage":selected_stage,"difficulty":selected_difficulty,"records":campaign_records}}
  var f=FileAccess.open(path+".tmp",FileAccess.WRITE)
  if f==null: return _write_failed()
  f.store_string(JSON.stringify(data," "))
@@ -331,8 +395,8 @@ func equip(id: String) -> bool:
  if id not in unlocked(): return false
  var before=equipped.duplicate()
  if id in equipped: equipped.erase(id)
- elif RankCatalog.MAX_EQUIPPED==1: equipped=[id]
- elif equipped.size()<RankCatalog.MAX_EQUIPPED: equipped.append(id)
+ elif perk_slots()==1: equipped=[id]
+ elif equipped.size()<perk_slots(): equipped.append(id)
  else: return false
  if not save_profile():
   equipped=before
@@ -355,12 +419,20 @@ func begin_match(difficulty: String="standard",stage_id: String="") -> Dictionar
   read_only=true
   return {}
  if not RankCatalog.DIFFICULTIES.has(difficulty): difficulty="standard"
+ var old_bonus=pending_stage_bonus.duplicate(true)
+ var old_queue=stage_bonus_queue.duplicate(true)
+ if not pending_stage_bonus.is_empty() and pending_stage_bonus.target==stage_id and pending_stage_bonus.choice=="":return {}
  var before=active_match.duplicate(true)
  active_match={"id":next_match_id,"difficulty":difficulty,"equipped":equipped.duplicate(),"items":item_loadout.duplicate()}
  if stage_id!="": active_match.stage_id=stage_id
+ if not pending_stage_bonus.is_empty() and pending_stage_bonus.target==stage_id:
+  active_match.stage_bonus=pending_stage_bonus.choice
+  pending_stage_bonus=stage_bonus_queue.pop_front() if not stage_bonus_queue.is_empty() else {}
  next_match_id+=1
  if not save_profile():
   next_match_id-=1
+  pending_stage_bonus=old_bonus
+  stage_bonus_queue=old_queue
   active_match=before
   return {}
  return active_match.duplicate(true)
@@ -370,13 +442,15 @@ func settle_match(id: int,model) -> Dictionary:
  if not last_award.is_empty() and id<=int(last_award.match_id): return {}
  if model.difficulty!=active_match.difficulty: return {}
  if model.result=="victory" and (model.hunter.hp>0 or model.player()==null or not model.player().alive): return {}
- if not _valid_loadout(active_match.equipped,xp): return {}
+ if not _valid_loadout(active_match.equipped,xp,rank_index()): return {}
  var expected=RankCatalog.bonuses(active_match.equipped)
  var neutral=RankCatalog.bonuses([])
  for key in expected:
   if model.match_boosts.get(key,neutral[key])!=expected[key]: return {}
  var campaign_id=str(active_match.get("stage_id",""))
  if campaign_id!="" and (not stage_unlocked(campaign_id) or not "stage_id" in model or model.stage_id!=campaign_id): return {}
+ var transaction_before=_reward_snapshot()
+ var rng_before=reward_rng.state
  var points=RankCatalog.performance(model)
  var old_xp=xp
  var old_rank=rank_index()
@@ -395,6 +469,10 @@ func settle_match(id: int,model) -> Dictionary:
     "best_damage":maxf(float(old.get("best_damage",0)),model.player().damage_dealt),
     "best_xp":maxi(int(old.get("best_xp",0)),mini(int(points.total),RankCatalog.MAX_XP-xp)),
     "difficulty":active_match.difficulty,"first_match_id":old.get("first_match_id",id)}
+  if first and StageCatalog.next_stage(campaign_id)!="":
+   var offer={"source":campaign_id,"target":StageCatalog.next_stage(campaign_id),"choice":"","match_id":id}
+   if pending_stage_bonus.is_empty():pending_stage_bonus=offer
+   else:stage_bonus_queue.append(offer)
   campaign_report={"stage_id":campaign_id,"cleared":cleared,"first_clear":first,"reward_xp":reward,
    "next_stage":StageCatalog.next_stage(campaign_id) if cleared else ""}
 
@@ -422,6 +500,44 @@ func settle_match(id: int,model) -> Dictionary:
   var granted=mini(quantity,ItemCatalog.MAX_STOCK-int(inventory.get(item,0)))
   inventory[item]=int(inventory.get(item,0))+granted
   pending_spins.append({"match_id":id,"item":item,"result":model.result,"quantity":granted})
+ if points.eligible and legitimate and model.player()!=null:
+  var room=model.player()
+  if room.alive:reward_counters.door_damage=minf(1e12,reward_counters.door_damage+room.door_damage_taken)
+  reward_counters.income=minf(1e12,reward_counters.income+room.income_total)
+  reward_counters.construction=mini(1000000000000,int(reward_counters.construction)+room.construction_actions)
+  reward_counters.legendary=mini(1000000000000,int(reward_counters.legendary)+int(active_match.get("legendary_used",0)))
+  if victorious and model.rooms.all(func(r):return r.alive and r.sleeping and r.owner>=0):reward_counters.perfect_team+=1
+ last_award.achievements=refresh_achievements()
  active_match={}
- save_profile()
+ if not save_profile():
+  _restore_rewards(transaction_before)
+  reward_rng.state=rng_before
+  return {}
  return last_award.duplicate(true)
+
+func _valid_rewards(value) -> bool:
+ if not value is Dictionary or value.get("version")!=1 or not value.get("achievements") is Dictionary or not value.get("counters") is Dictionary or not value.get("seen_items") is Array or not value.get("stage_bonus") is Dictionary:return false
+ for id in value.achievements:
+  if RewardCatalog.achievement(id).is_empty() or not value.achievements[id] is Dictionary or not value.achievements[id].get("claimed") is bool:return false
+ for key in reward_counters:
+  var n=value.counters.get(key)
+  if not (n is int or n is float) or not is_finite(float(n)) or n<0 or n>1e12:return false
+  if key in ["construction","legendary","perfect_team"] and not _whole(n,0):return false
+ var seen=[]
+ for id in value.seen_items:
+  if not id is String or not ItemCatalog.ITEMS.has(id) or id in seen:return false
+  seen.append(id)
+ if not value.get("stage_queue",[]) is Array or value.get("stage_queue",[]).size()>4:return false
+ var offers=value.get("stage_queue",[]).duplicate(true)
+ if not value.stage_bonus.is_empty():offers.append(value.stage_bonus)
+ var sources=[]
+ for bonus in offers:
+  if not bonus is Dictionary or bonus.is_empty() or bonus.get("source","") in sources:return false
+  sources.append(bonus.get("source",""))
+  if not bonus.get("source","") in campaign_records or bonus.get("target","")!=StageCatalog.next_stage(bonus.source) or not _whole(bonus.get("match_id"),1) or (bonus.get("choice","")!="" and not RewardCatalog.STAGE_BONUSES.has(bonus.choice)):return false
+ return true
+
+func achievement_progress(id: String) -> String:
+ var numbers={"first_victory":[statistics.victories,1],"first_blood":[statistics.victories,1],"night_survivor":[statistics.hard,1],"hell_survivor":[statistics.hell,1],"reaper_hunter":[statistics.reaper_defeats,1],"reaper_slayer":[statistics.reaper_defeats,3],"perfect_team":[reward_counters.perfect_team,1],"iron_fortress":[reward_counters.door_damage,RewardCatalog.CONDITIONS.door_damage],"economy_master":[reward_counters.income,RewardCatalog.CONDITIONS.income],"master_builder":[reward_counters.construction,RewardCatalog.CONDITIONS.construction],"item_collector":[seen_items.size(),RewardCatalog.CONDITIONS.distinct_items],"legendary_survivor":[reward_counters.legendary,1]}
+ var n=numbers.get(id,[0,1])
+ return "%d / %d" % [mini(int(n[0]),int(n[1])),int(n[1])]

@@ -46,7 +46,7 @@ func cleanup():
    if file.begins_with(prefix.trim_prefix("user://")): DirAccess.remove_absolute("user://"+file)
 func run():
  check(RankCatalog.NAMES==["Bronze","Silver","Gold","Platinum","Diamond","Master","Mythic"],"seven ordered rank names")
- check(RankCatalog.PERKS.size()==6 and RankCatalog.MAX_EQUIPPED==1,"no new gameplay perks or slots")
+ check(RankCatalog.PERKS.size()==7 and RankCatalog.MAX_EQUIPPED==2,"seven perks and Master secondslot")
  for i in range(RankCatalog.THRESHOLDS.size()):
   if i>0: check(RankCatalog.THRESHOLDS[i]>RankCatalog.THRESHOLDS[i-1],"strict threshold order")
   check(ResourceLoader.exists("res://assets/ranks/"+RankCatalog.NAMES[i].to_lower()+".svg"),"original badge exists")
@@ -137,12 +137,13 @@ func run():
  gate.statistics.reaper_defeats=3
  gate.campaign_records={}
  check(gate.rank_index()==5,"missing finalstage blocks Mythic")
- check(RankCatalog.unlocked(8000)==RankCatalog.unlocked(3800),"Mythic introduces noexclusive gameplayperk")
+ check(RankCatalog.unlocked(8000).size()==RankCatalog.unlocked(3800).size()+1 and RankCatalog.unlocked(8000).has("reaper_slayer"),"Mythic catalog adds gated Reaper perk")
  # XP threshold alone cannot bypass accomplishment gates.
  p=fresh()
  p.xp=8000
  check(p.rank_index()==5,"XPalone remains Master")
  for stage in StageCatalog.STAGES:
+  if not p.pending_stage_bonus.is_empty() and p.pending_stage_bonus.choice=="":check(p.choose_stage_bonus("battle"),"choose next-stage reward before transition")
   var start=p.begin_match("hard",stage.id)
   var m=model("hard","victory",stage.id)
   m.hunter.transformed=true
@@ -156,18 +157,20 @@ func run():
  var id=reloaded.begin_match("hard","stage_5").id
  var again=reloaded.settle_match(id,model("hard","victory","stage_5"))
  check(not again.promoted and again.old_rank==6 and again.new_rank==6,"Mythic promotion not repeatedly issued")
- # Failure leaves one in-memory pending generation; retry commits it once.
+ # Failed settlement rolls back completely; explicit settlement retry commits once.
  p=fresh()
  var actual_path=p.path
  id=p.begin_match("hell").id
  p.path="user://nonexistent-mythic-qa-directory/blocked.json"
  var report=p.settle_match(id,model("hell"))
- check(not p.save_ok and not report.is_empty(),"settlement writefailure visible")
+ check(not p.save_ok and report.is_empty(),"settlement writefailure confirms no award")
  var saved_xp=p.xp
  var saved_stats=p.statistics.duplicate(true)
  check(p.settle_match(id,model("hell")).is_empty() and p.xp==saved_xp and p.statistics==saved_stats,"retry settlement cannot duplicate pendinggeneration")
  p.path=actual_path
- check(p.save_profile(),"explicit write retry succeeds")
+ check(not p.settle_match(id,model("hell")).is_empty(),"explicit settlement retry succeeds")
+ saved_xp=p.xp
+ saved_stats=p.statistics.duplicate(true)
  reloaded=PlayerProfile.new(actual_path)
  check(reloaded.load_profile() and reloaded.xp==saved_xp and reloaded.statistics==saved_stats,"retried generation reloads exactlyonce")
  check(reloaded.settle_match(id,model("hell")).is_empty(),"reload rejects repeatedsettlement")

@@ -34,6 +34,7 @@ func run():
  check(p.equip("pocket"),"existing perk equips")
  for definition in StageCatalog.STAGES:
   var id=definition.id
+  if not p.pending_stage_bonus.is_empty() and p.pending_stage_bonus.choice=="":check(p.choose_stage_bonus("battle"),"choose earned next-stage reward")
   check(p.stage_unlocked(id),"previous win unlocks current")
   check(p.select_stage(id),"select unlocked stage")
   check(p.select_difficulty("hard"),"difficulty persists separately")

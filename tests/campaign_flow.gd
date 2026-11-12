@@ -31,6 +31,15 @@ func reveal_reward():
  await press("Save reveal & continue")
  check(game.profile.pending_spins.is_empty() and game.profile.inventory==stock,"acknowledgment clears receipt without duplicate grant")
  check(game.profile.claim_spin(int(receipt.match_id)).is_empty(),"repeated reveal acknowledgment rejected")
+ if not game.profile.pending_stage_bonus.is_empty() and game.profile.pending_stage_bonus.choice=="":
+  await press("Choose stage bonus")
+  check(game.ui.current_screen=="stage_bonus","saved stage offer follows spin")
+  await press("Select")
+  check(game.profile.pending_stage_bonus.choice=="reinforced","one actual stage choice saved")
+  check(not game.profile.choose_stage_bonus("economic"),"repeated choice rejected")
+  game.ui.show_result()
+  await process_frame
+
 func finish(result:String):
  var room=game.model.player()
  if room==null:

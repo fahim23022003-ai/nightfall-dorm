@@ -1,3 +1,17 @@
+# Phase 5B-3 — progression rewards (12 November 2026)
+
+IN PROGRESS. Started clean on `work` at
+`88a6821aaa3df885f2fcf954eb817b2961ffc6e6`, verified against GitHub.
+Recovery tag `pre-phase5b3-88a6821`. B owns production; C independently tests
+transactions/migration/balance; A performs a bounded review; D will inspect UI.
+Preserve existing perk IDs, all 20 items and Legendary limits. Extend achievements,
+one-time rewards and next-stage choices. Next: complete implementation, run
+focused QA and full regular/extended regressions, inspect actual UI/audio, finish
+`docs/PHASE_5B3_REWARDS_REPORT.md`, commit and verify private `work` push.
+Native Windows/subjective quality UNVERIFIED. Stop after 5B-3.
+
+---
+
 # Phase 5B-2B — Legendary items complete (12 November 2026)
 
 Continued clean `work` at `b4d1798d82a458636eebb1b62419f7e0bbd66b7d`, verified

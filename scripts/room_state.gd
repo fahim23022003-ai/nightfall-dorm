@@ -32,6 +32,7 @@ var door_multiplier=1.0
 var turret_multiplier=1.0
 var rescue_fraction=0.0
 var rescue_used=false
+var construction_actions=0
 var repair_factor=1.0
 var temporary_income=1.0
 var item_bonus_income=0.0
@@ -209,6 +210,7 @@ func build(kind: String, tile: int) -> bool:
  if not pay(price.x,price.y): return reject("Purchase could not be paid.")
  buildings[tile] = {"kind":kind,"level":1,"cooldown":0.0,"flash":0.0,
   "invested_gold":price.x,"invested_power":price.y}
+ construction_actions+=1
  presentation_action.emit("build",{"kind":kind,"tile":tile})
  return true
 
@@ -231,6 +233,7 @@ func upgrade_building(tile: int) -> bool:
  b.invested_gold=b.get("invested_gold",0.0)+paid_gold
  b.invested_power=b.get("invested_power",0.0)+paid_power
  b.level += 1
+ construction_actions+=1
  presentation_action.emit("building_upgrade",{"kind":b.kind,"tile":tile})
  return true
 

@@ -100,6 +100,7 @@ func start_match(difficulty: String="") -> bool:
  model.reset(int(Time.get_ticks_msec()))
  model.configure_match(selected_difficulty,RankCatalog.bonuses(entry.get("equipped",[])))
  if requested!="": model.configure_stage(requested)
+ profile.apply_stage_bonus(model,entry)
  audio_system.reset_match(model)
  audio_event("match_start")
  last_progression={}
@@ -203,8 +204,12 @@ func _process(delta: float):
    last_progression=profile.settle_match(match_id,model)
    mode = "result"
    cancel_placement()
+   if not last_progression.is_empty():
+    if not last_progression.get("achievements",[]).is_empty():audio_event("achievement_unlocked")
+    if last_progression.get("campaign",{}).get("cleared",false) and selected_difficulty in ["hard","hell"]:audio_event("difficult_stage")
    if not last_progression.is_empty() and last_progression.promoted:
     audio_event("mythic_promotion" if last_progression.new_rank==6 else "rank")
+    if last_progression.new_rank==6:audio_event("mythic_perk")
     audio_event("reward")
    ui.show_result()
  audio_system.update_state(delta,model,mode)
@@ -420,3 +425,7 @@ func handle_touch_tap(screen: Vector2):
     touch.navigate_room(candidate)
     ui.touch_notice("Walking to the room. Then tap its bed to sleep.")
     return
+
+func retry_settlement():
+ last_progression=profile.settle_match(match_id,model)
+ ui.show_result()

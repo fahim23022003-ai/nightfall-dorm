@@ -201,8 +201,8 @@ func run():
  check(not profile.equip("reinforced") and not profile.equip("unknown"),"locked and unknown perk cannot equip")
  check(profile.equip("pocket") and profile.equipped==["pocket"],"Bronze can equip unlocked starting perk")
  profile.xp=3800
- check(profile.equip("first_aid") and profile.equipped==["first_aid"],"equipping another perk replaces prior slot")
- check(profile.equip("first_aid") and profile.equipped.is_empty(),"equipped perk toggles off")
+ check(profile.equip("first_aid") and profile.equipped==["pocket","first_aid"],"Master appends second permanent perk")
+ check(profile.equip("first_aid") and profile.equipped==["pocket"],"equipped perk toggles off independently")
  data=base_data()
  data.xp=250
  data.equipped=["first_aid","pocket","pocket","reinforced","unknown"]

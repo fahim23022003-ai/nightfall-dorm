@@ -110,7 +110,11 @@ func reveal(receipt,wheel,target):
   if game.mode=="result": ui.show_result()
   else: inventory(),440,40)
 func result_gate() -> bool:
- if game.profile.pending_spins.is_empty(): return false
+ if game.profile.pending_spins.is_empty():
+  if not game.profile.pending_stage_bonus.is_empty() and game.profile.pending_stage_bonus.choice=="" and game.mode=="result":
+   ui.button("Choose stage bonus",Vector2(390,530),ui.progression.show_stage_bonus,495,44)
+   return true
+  return false
  ui.button("Lucky Spin · reveal earned item",Vector2(390,530),spin,495,44)
  ui.label_at("Reward saved · reveal it before continuing" if game.profile.save_ok else "Reward pending save · retry before closing",Vector2(390,580),15,495)
  return true

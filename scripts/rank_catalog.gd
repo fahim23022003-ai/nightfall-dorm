@@ -3,7 +3,7 @@ extends RefCounted
 
 # Original offline progression: small optional boosts, never a paid advantage.
 const VERSION=1
-const MAX_EQUIPPED=1
+const MAX_EQUIPPED=2
 const MAX_XP=100000000
 const NAMES=["Bronze","Silver","Gold","Platinum","Diamond","Master","Mythic"]
 const THRESHOLDS=[0,250,700,1400,2400,3800,8000]
@@ -14,7 +14,8 @@ const PERKS=[
  {"id":"dreamer","name":"Deep sleeper","description":"Your occupied bed earns 3% more gold.","rank":2,"income":1.03},
  {"id":"capacitor","name":"Clean current","description":"Your Dynamos produce 4% more power.","rank":3,"power":1.04},
  {"id":"marksman","name":"Steady aim","description":"Your turrets deal 3% more damage.","rank":4,"damage":1.03},
- {"id":"first_aid","name":"Last light","description":"Once below 25% HP: heal 10%.\nCannot revive a broken door.","rank":5,"rescue":0.1}
+ {"id":"first_aid","name":"Last light","description":"Once below 25% HP: heal 10%.\nCannot revive a broken door.","rank":5,"rescue":0.1},
+ {"id":"reaper_slayer","name":"Reaper Slayer","description":"Your turret impacts deal 6% more damage to transformed Reaper.","rank":6,"reaper":1.06}
 ]
 const DIFFICULTIES={
  "standard":{"name":"Normal","hp":1.0,"damage":1.0,"speed":1.0,"xp":1.0},
@@ -57,7 +58,7 @@ static func unlocked(xp: int) -> Array:
  return out
 
 static func bonuses(equipped: Array) -> Dictionary:
- var out={"gold":0.0,"door":1.0,"income":1.0,"power":1.0,"damage":1.0,"rescue":0.0}
+ var out={"gold":0.0,"door":1.0,"income":1.0,"power":1.0,"damage":1.0,"rescue":0.0,"reaper":1.0}
  for id in equipped:
   var item=perk(id)
   for key in out:
