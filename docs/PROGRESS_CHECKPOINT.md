@@ -1,3 +1,25 @@
+# Phase 5D-2 — Endless and replayability (12 November 2026)
+
+IN PROGRESS. Started clean on `work` at
+`d16a82da5baccdf5bcbe566635ee949c086c7a32`, matching GitHub.
+Recovery tag: `pre-phase5d2-d16a82d`. Existing reports and model/profile/UI/item
+architecture inspected before implementation. B owns production; C independent
+save/reward/mechanics QA; D baseline rendering then actual new-feature review;
+A activates for earned-economy and long-run balance after functional mechanics.
+Root owns documentation, regular/extended regression integration and Git delivery.
+
+Scope: actual Endless waves/intermissions/checkpoints; normalized shareable
+Challenge Codes; persistent transparent pity; visual-only earnable cosmetics;
+factual post-defeat analysis; isolated real-combat Practice Room. Preserve all
+previous content. Baseline complete: six actual menu/spin/HUD PNGs,14renderchecks and11baseline
+import/core/economy/profile/items/rewards/scene/startup commands pass without
+engine errors. A frozen progressed20item/strategy profile is preserved for
+migration tests. B now implementing approved mode APIs, wave checkpoints and
+reward isolation; no new feature is claimed complete yet. Stop after5D-2, no Phase6/multiplayer/server/payments/Android.
+Native Windows, physical controls/speakers and subjective quality UNVERIFIED.
+
+---
+
 # Phase 5D-1 — premium UI and strategy complete (12 November 2026)
 
 IMPLEMENTED and TESTED on Godot 4.6.3 Linux. Started clean on `work` at
