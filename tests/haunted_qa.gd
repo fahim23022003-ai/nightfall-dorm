@@ -206,10 +206,16 @@ func audio_events():
   if voice.playing and audio._voice_names.get(voice.get_instance_id(),"").begins_with("death_scream"):voices+=1
  check(voices<=1,"no overlapping scream voices")
  var duration=maxf(audio.streams.death_scream_1.get_length(),audio.streams.death_scream_2.get_length())
- var audio_deadline=Time.get_ticks_usec()+int((duration+1)*1000000)
+ # The first real death is followed by its evolution/category before the second.
+ var evolution_duration=audio.streams.hunter_evolve.get_length()
+ for name in audio.streams:
+  if str(name).begins_with("buff_"):evolution_duration=maxf(evolution_duration,audio.streams[name].get_length())
+ var audio_deadline=Time.get_ticks_usec()+int((duration+evolution_duration+.05+1)*1000000)
+ var previous_usec=Time.get_ticks_usec()
  while Time.get_ticks_usec()<audio_deadline and int(audio.event_counts.get("death_scream_1",0))+int(audio.event_counts.get("death_scream_2",0))<2:
   await process_frame
-  audio.update_state(.01,m,"match")
+  var now_usec=Time.get_ticks_usec()
+  audio.update_state(float(now_usec-previous_usec)/1000000.0,m,"match");previous_usec=now_usec
  check(int(audio.event_counts.get("death_scream_1",0))+int(audio.event_counts.get("death_scream_2",0))==2,"each genuine death eventually sounds exactly once")
  var hf=load("res://scripts/horror_feedback.gd").new();hf.update(.1,m)
  var messages=""
@@ -219,7 +225,7 @@ func audio_events():
  check(hf.observed_counts.get("elimination",0)==old_count,"notification observer stable on unchanged events")
  var boss=fixture("stage_5");audio.reset_match(boss);audio.update_state(.01,boss,"match")
  var r=boss.rooms[1];r.owner=1;r.sleeping=true;r.closed=true;r.door_hp=1
- boss.hunter.target=1;boss.hunter.transformed=true;boss.hunter._damage_door(r,boss,100)
+ boss.hunter.target=1;boss.hunter.transformed=true;boss.hunter.state=HunterState.State.ATTACK;boss.hunter.position=r.door_approach();boss.hunter.cooldown=0;boss.hunter._damage_door(r,boss,100)
  audio.update_state(.1,boss,"match");audio.update_state(.3,boss,"match")
  check(int(audio.event_counts.get("reaper_laugh",0))==1,"actual Reaper breach distinct laugh")
  audio.update_state(.1,boss,"menu")

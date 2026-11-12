@@ -10,6 +10,7 @@ func reset():
  seen_event=0;evolution_queue.clear();banner_remaining=0;last_model=null
 func draw(c,clock: float):
  var m=c.model;var w=m.wrath;var reduced=c.profile.settings.get("reduced_effects",false)
+ draw_defense_feedback(c,clock,reduced)
  for u in m.minions:
   if u.hp<=0:continue
   var p=O+u.position;var stride=sin(clock*9+u.id)*3
@@ -89,3 +90,42 @@ func overlay(c,m):
    if font.get_string_size(lines[-1]+word,HORIZONTAL_ALIGNMENT_LEFT,-1,13).x>675:lines.append("")
    lines[-1]+=word+" "
   for i in range(mini(lines.size(),2)):c.draw_string(font,Vector2(474,250+i*17),lines[i],HORIZONTAL_ALIGNMENT_LEFT,-1,13,Color("F4DADD"))
+
+func draw_defense_feedback(c,clock: float,reduced: bool):
+ # Read-only, fixed-size status marks. No particles/nodes or gameplay RNG.
+ var m=c.model
+ for key in m.defenses.burns:
+  var burn=m.defenses.burns[key];var actor=m.target_by_id(int(key))
+  if actor==null or burn.remaining<=0:continue
+  var p=O+actor.position
+  if reduced:c.draw_arc(p+Vector2(0,-10),22,0,PI,16,Color("EF9958"),2)
+  else:
+   for i in range(3):
+    var q=p+Vector2(-17+i*17,-10+sin(clock*7+i)*3)
+    c.draw_colored_polygon(PackedVector2Array([q+Vector2(-4,6),q+Vector2(-6,-3),q+Vector2(-1,-14),q+Vector2(2,-5),q+Vector2(6,-8),q+Vector2(5,6)]),Color(1,.43,.15,.68))
+  var label="BURN %.0f/s" % burn.dps
+  c.draw_rect(Rect2(p+Vector2(-39,17),Vector2(82,17)),Color(.08,.035,.025,.86))
+  c.draw_string(font,p+Vector2(-35,30),label,HORIZONTAL_ALIGNMENT_LEFT,-1,12,Color("FFC17D"))
+ var fx=m.defenses
+ if fx.lure_remaining>0 and fx.lure_room>=0 and fx.lure_room<m.rooms.size():
+  var room=m.rooms[fx.lure_room]
+  if room.alive and room.buildings.has(fx.lure_tile):
+   var p=O+room.tile_position(fx.lure_tile)
+   c.draw_arc(p-Vector2(0,7),25,0,TAU,24,Color(.78,.57,.94,.8),2)
+   if not reduced:
+    for i in range(3):
+     var q=p+Vector2.from_angle(clock*2+i*TAU/3)*20-Vector2(0,8)
+     c.draw_circle(q,3,Color(.83,.63,1,.7))
+   c.draw_string_outline(font,p+Vector2(-35,-40),"LURE %.1fs" % fx.lure_remaining,HORIZONTAL_ALIGNMENT_LEFT,-1,12,3,Color("20172B"))
+   c.draw_string(font,p+Vector2(-35,-40),"LURE %.1fs" % fx.lure_remaining,HORIZONTAL_ALIGNMENT_LEFT,-1,12,Color("E5C2FA"))
+ var heals={}
+ for e in m.presentation_events:
+  if e.type=="defense_heal" and m.time-e.time>=0 and m.time-e.time<.8 and e.get("damage",0)>0:heals[e.room]=e
+ for e in heals.values():
+  var age=m.time-e.time;var alpha=clampf((.8-age)/.3,0,1);var p=O+e.position
+  c.draw_arc(p,28+age*12,0,TAU,24,Color(.52,.95,.68,.65*alpha),2)
+  c.draw_line(p+Vector2(-30,-4),p+Vector2(-20,-4),Color(.6,1,.72,alpha),3)
+  c.draw_line(p+Vector2(-25,-9),p+Vector2(-25,1),Color(.6,1,.72,alpha),3)
+  var label="+%.0f HP" % e.damage;var at=p+Vector2(-92,-40-age*8)
+  c.draw_string_outline(font,at,label,HORIZONTAL_ALIGNMENT_LEFT,-1,14,3,Color(.03,.08,.05,alpha))
+  c.draw_string(font,at,label,HORIZONTAL_ALIGNMENT_LEFT,-1,14,Color(.65,1,.75,alpha))

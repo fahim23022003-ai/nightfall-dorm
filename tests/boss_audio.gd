@@ -73,8 +73,16 @@ func run():
  m._combat_event("impact",{"id":1,"room":0,"kind":"turret","level":1},h.position,5)
  await update(m,.3)
  check(audio.event_counts.get("reaper_hurt",0)==1,"actual combat observer uses boss hurt")
- h.hurt(1000000)
+ # Finish both finite phase guards before observing the actual terminal cue.
+ for strike in range(3):
+  var prior_hp=h.hp
+  h.hurt(1000000)
+  check(h.hp<=prior_hp,"phase guard never refills HP before death audio")
+  if h.hp<=0:break
+  check(h.phase_guard_remaining>0 and h.phase_guard_remaining<=3.3,"death audio fixture respects finite phase protection")
+  h.tick(3.31,m)
  m.tick(.01)
+ check(h.hp==0 and m.result=="victory","death cue follows a genuine finite boss defeat")
  await update(m,2,"result")
  check(audio.event_counts.get("reaper_death",0)==1,"death event plus snapshot play only once")
  check(audio.loop_weights.music_reaper==0 and audio.loop_weights.reaper_ambience==0,"terminal clears boss score and danger ambience")

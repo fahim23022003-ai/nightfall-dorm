@@ -1,0 +1,28 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: String formatting error: unsupported format character.
+   at: validated_evaluate (core/variant/variant_op.h:770)
+   GDScript backtrace (most recent call first):
+       [0] code_preview (res://scripts/replay_interface.gd:142)
+       [1] show_codes (res://scripts/replay_interface.gd:131)
+       [2] <anonymous lambda> (res://scripts/replay_interface.gd:123)
+       [3] <anonymous lambda> (res://scripts/interface.gd:168)
+REPLAY_RESULT_METADATA=Long night / The Stalker / Underground Laboratory / ruleset 3
+ERROR: String formatting error: unsupported format character.
+   at: validated_evaluate (core/variant/variant_op.h:770)
+   GDScript backtrace (most recent call first):
+       [0] code_preview (res://scripts/replay_interface.gd:142)
+       [1] show_codes (res://scripts/replay_interface.gd:131)
+       [2] challenge_flow (res://tests/replay_ui.gd:113)
+       [3] run (res://tests/replay_ui.gd:181)
+       [4] practice_flow (res://tests/replay_ui.gd:106)
+       [5] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: String formatting error: unsupported format character.
+   at: validated_evaluate (core/variant/variant_op.h:770)
+   GDScript backtrace (most recent call first):
+       [0] code_preview (res://scripts/replay_interface.gd:142)
+       [1] show_codes (res://scripts/replay_interface.gd:131)
+       [2] <anonymous lambda> (res://scripts/replay_interface.gd:123)
+       [3] <anonymous lambda> (res://scripts/interface.gd:168)
+REPLAY_RESULT_METADATA=HELL MODE / The Ravager / Underground Laboratory / ruleset 3
+REPLAY_UI_CHECKS=1537 FAILURES=0

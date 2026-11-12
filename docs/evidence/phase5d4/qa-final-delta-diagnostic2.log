@@ -1,0 +1,108 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+QA_DELTA_RELOAD abandoned_dormstandard loaded=true readonly=false warning= before=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0,0,{"epic_dry":0,"legendary_dry":0},{"badge":"","bed":"","door":"","turret":""}] after=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{"item_collector":{"claimed":false}},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0.0,0.0,{"epic_dry":0.0,"legendary_dry":0.0},{"badge":"","bed":"","door":"","turret":""}]
+ERROR: PREMIUM UI: settled unclaimed defeat reloads durably with no payout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] unclaimed (res://tests/phase5d4_qa_final_delta.gd:31)
+       [2] run (res://tests/phase5d4_qa_final_delta.gd:50)
+QA_DELTA_RELOAD abandoned_dormhard loaded=true readonly=false warning= before=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0,0,{"epic_dry":0,"legendary_dry":0},{"badge":"","bed":"","door":"","turret":""}] after=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{"item_collector":{"claimed":false}},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0.0,0.0,{"epic_dry":0.0,"legendary_dry":0.0},{"badge":"","bed":"","door":"","turret":""}]
+ERROR: PREMIUM UI: settled unclaimed defeat reloads durably with no payout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] unclaimed (res://tests/phase5d4_qa_final_delta.gd:31)
+       [2] run (res://tests/phase5d4_qa_final_delta.gd:50)
+QA_DELTA_RELOAD abandoned_dormhell loaded=true readonly=false warning= before=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0,0,{"epic_dry":0,"legendary_dry":0},{"badge":"","bed":"","door":"","turret":""}] after=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{"item_collector":{"claimed":false}},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0.0,0.0,{"epic_dry":0.0,"legendary_dry":0.0},{"badge":"","bed":"","door":"","turret":""}]
+ERROR: PREMIUM UI: settled unclaimed defeat reloads durably with no payout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] unclaimed (res://tests/phase5d4_qa_final_delta.gd:31)
+       [2] run (res://tests/phase5d4_qa_final_delta.gd:50)
+QA_DELTA_RELOAD haunted_hospitalstandard loaded=true readonly=false warning= before=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0,0,{"epic_dry":0,"legendary_dry":0},{"badge":"","bed":"","door":"","turret":""}] after=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{"item_collector":{"claimed":false}},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0.0,0.0,{"epic_dry":0.0,"legendary_dry":0.0},{"badge":"","bed":"","door":"","turret":""}]
+ERROR: PREMIUM UI: settled unclaimed defeat reloads durably with no payout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] unclaimed (res://tests/phase5d4_qa_final_delta.gd:31)
+       [2] run (res://tests/phase5d4_qa_final_delta.gd:50)
+QA_DELTA_RELOAD haunted_hospitalhard loaded=true readonly=false warning= before=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0,0,{"epic_dry":0,"legendary_dry":0},{"badge":"","bed":"","door":"","turret":""}] after=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{"item_collector":{"claimed":false}},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0.0,0.0,{"epic_dry":0.0,"legendary_dry":0.0},{"badge":"","bed":"","door":"","turret":""}]
+ERROR: PREMIUM UI: settled unclaimed defeat reloads durably with no payout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] unclaimed (res://tests/phase5d4_qa_final_delta.gd:31)
+       [2] run (res://tests/phase5d4_qa_final_delta.gd:50)
+QA_DELTA_RELOAD haunted_hospitalhell loaded=true readonly=false warning= before=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0,0,{"epic_dry":0,"legendary_dry":0},{"badge":"","bed":"","door":"","turret":""}] after=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{"item_collector":{"claimed":false}},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0.0,0.0,{"epic_dry":0.0,"legendary_dry":0.0},{"badge":"","bed":"","door":"","turret":""}]
+ERROR: PREMIUM UI: settled unclaimed defeat reloads durably with no payout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] unclaimed (res://tests/phase5d4_qa_final_delta.gd:31)
+       [2] run (res://tests/phase5d4_qa_final_delta.gd:50)
+QA_DELTA_RELOAD forgotten_hotelstandard loaded=true readonly=false warning= before=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0,0,{"epic_dry":0,"legendary_dry":0},{"badge":"","bed":"","door":"","turret":""}] after=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{"item_collector":{"claimed":false}},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0.0,0.0,{"epic_dry":0.0,"legendary_dry":0.0},{"badge":"","bed":"","door":"","turret":""}]
+ERROR: PREMIUM UI: settled unclaimed defeat reloads durably with no payout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] unclaimed (res://tests/phase5d4_qa_final_delta.gd:31)
+       [2] run (res://tests/phase5d4_qa_final_delta.gd:50)
+QA_DELTA_RELOAD forgotten_hotelhard loaded=true readonly=false warning= before=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0,0,{"epic_dry":0,"legendary_dry":0},{"badge":"","bed":"","door":"","turret":""}] after=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{"item_collector":{"claimed":false}},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0.0,0.0,{"epic_dry":0.0,"legendary_dry":0.0},{"badge":"","bed":"","door":"","turret":""}]
+ERROR: PREMIUM UI: settled unclaimed defeat reloads durably with no payout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] unclaimed (res://tests/phase5d4_qa_final_delta.gd:31)
+       [2] run (res://tests/phase5d4_qa_final_delta.gd:50)
+QA_DELTA_RELOAD forgotten_hotelhell loaded=true readonly=false warning= before=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0,0,{"epic_dry":0,"legendary_dry":0},{"badge":"","bed":"","door":"","turret":""}] after=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{"item_collector":{"claimed":false}},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0.0,0.0,{"epic_dry":0.0,"legendary_dry":0.0},{"badge":"","bed":"","door":"","turret":""}]
+ERROR: PREMIUM UI: settled unclaimed defeat reloads durably with no payout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] unclaimed (res://tests/phase5d4_qa_final_delta.gd:31)
+       [2] run (res://tests/phase5d4_qa_final_delta.gd:50)
+QA_DELTA_RELOAD underground_labstandard loaded=true readonly=false warning= before=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0,0,{"epic_dry":0,"legendary_dry":0},{"badge":"","bed":"","door":"","turret":""}] after=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{"item_collector":{"claimed":false}},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0.0,0.0,{"epic_dry":0.0,"legendary_dry":0.0},{"badge":"","bed":"","door":"","turret":""}]
+ERROR: PREMIUM UI: settled unclaimed defeat reloads durably with no payout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] unclaimed (res://tests/phase5d4_qa_final_delta.gd:31)
+       [2] run (res://tests/phase5d4_qa_final_delta.gd:50)
+QA_DELTA_RELOAD underground_labhard loaded=true readonly=false warning= before=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0,0,{"epic_dry":0,"legendary_dry":0},{"badge":"","bed":"","door":"","turret":""}] after=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{"item_collector":{"claimed":false}},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0.0,0.0,{"epic_dry":0.0,"legendary_dry":0.0},{"badge":"","bed":"","door":"","turret":""}]
+ERROR: PREMIUM UI: settled unclaimed defeat reloads durably with no payout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] unclaimed (res://tests/phase5d4_qa_final_delta.gd:31)
+       [2] run (res://tests/phase5d4_qa_final_delta.gd:50)
+QA_DELTA_RELOAD underground_labhell loaded=true readonly=false warning= before=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0,0,{"epic_dry":0,"legendary_dry":0},{"badge":"","bed":"","door":"","turret":""}] after=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{"item_collector":{"claimed":false}},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0.0,0.0,{"epic_dry":0.0,"legendary_dry":0.0},{"badge":"","bed":"","door":"","turret":""}]
+ERROR: PREMIUM UI: settled unclaimed defeat reloads durably with no payout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] unclaimed (res://tests/phase5d4_qa_final_delta.gd:31)
+       [2] run (res://tests/phase5d4_qa_final_delta.gd:50)
+QA_DELTA_RELOAD cursed_mansionstandard loaded=true readonly=false warning= before=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0,0,{"epic_dry":0,"legendary_dry":0},{"badge":"","bed":"","door":"","turret":""}] after=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{"item_collector":{"claimed":false}},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0.0,0.0,{"epic_dry":0.0,"legendary_dry":0.0},{"badge":"","bed":"","door":"","turret":""}]
+ERROR: PREMIUM UI: settled unclaimed defeat reloads durably with no payout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] unclaimed (res://tests/phase5d4_qa_final_delta.gd:31)
+       [2] run (res://tests/phase5d4_qa_final_delta.gd:50)
+QA_DELTA_RELOAD cursed_mansionhard loaded=true readonly=false warning= before=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0,0,{"epic_dry":0,"legendary_dry":0},{"badge":"","bed":"","door":"","turret":""}] after=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{"item_collector":{"claimed":false}},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0.0,0.0,{"epic_dry":0.0,"legendary_dry":0.0},{"badge":"","bed":"","door":"","turret":""}]
+ERROR: PREMIUM UI: settled unclaimed defeat reloads durably with no payout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] unclaimed (res://tests/phase5d4_qa_final_delta.gd:31)
+       [2] run (res://tests/phase5d4_qa_final_delta.gd:50)
+QA_DELTA_RELOAD cursed_mansionhell loaded=true readonly=false warning= before=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0,0,{"epic_dry":0,"legendary_dry":0},{"badge":"","bed":"","door":"","turret":""}] after=[777,321,{"barricade":9,"battery":9,"coupon":9,"cursed_fortune":9,"decoy":9,"feather":9,"frost":9,"gold":9,"guardian_heart":9,"inferno":9,"overdrive":9,"pillow":9,"radar":9,"reaper_seal":9,"repair":9,"rescue":9,"shield":9,"smoke":9,"time_freeze":9,"trap":9},[],{"item_collector":{"claimed":false}},{},{"defeats":0,"hard":0,"hell":0,"matches":0,"reaper_defeats":0,"standard":0,"victories":0},0.0,0.0,{"epic_dry":0.0,"legendary_dry":0.0},{"badge":"","bed":"","door":"","turret":""}]
+ERROR: PREMIUM UI: settled unclaimed defeat reloads durably with no payout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] unclaimed (res://tests/phase5d4_qa_final_delta.gd:31)
+       [2] run (res://tests/phase5d4_qa_final_delta.gd:50)
+PHASE5D4_QA_FINAL_DELTA_CHECKS=287 CONTACT_SCENARIOS=15 PREVIEW_CONFIGS=45 FAILURES=15

@@ -1,0 +1,33 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: VISUAL QA: actual damage leaves a door history
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/visual_identity_qa.gd:10)
+       [1] presence (res://tests/visual_identity_qa.gd:87)
+       [2] run (res://tests/visual_identity_qa.gd:126)
+ERROR: VISUAL QA: actual damage leaves a door history
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/visual_identity_qa.gd:10)
+       [1] presence (res://tests/visual_identity_qa.gd:87)
+       [2] run (res://tests/visual_identity_qa.gd:126)
+ERROR: VISUAL QA: actual damage leaves a door history
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/visual_identity_qa.gd:10)
+       [1] presence (res://tests/visual_identity_qa.gd:87)
+       [2] run (res://tests/visual_identity_qa.gd:126)
+ERROR: VISUAL QA: actual damage leaves a door history
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/visual_identity_qa.gd:10)
+       [1] presence (res://tests/visual_identity_qa.gd:87)
+       [2] run (res://tests/visual_identity_qa.gd:126)
+ERROR: VISUAL QA: actual damage leaves a door history
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/visual_identity_qa.gd:10)
+       [1] presence (res://tests/visual_identity_qa.gd:87)
+       [2] run (res://tests/visual_identity_qa.gd:126)
+VISUAL_IDENTITY_CHECKS=186 FAILURES=5

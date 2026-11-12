@@ -60,9 +60,22 @@ func install():
  idle_hint=ui.label_at("Select a numbered floor pad to build. Select a machine, Bed or Door to inspect actual upgrades.\nGold and Electricity are separate. Purchases and exclusive choices spend only when confirmed.",Vector2(30,40),19,1160,false,ui.context_box)
  idle_hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;idle_hint.size.y=116
  refresh()
+func fit_action(button: Button):
+ if not is_instance_valid(button):return
+ var signature=button.text+"|"+str(button.size.x)
+ if button.get_meta("price_fit","")==signature:return
+ button.set_meta("price_fit",signature)
+ var available=button.size.x-button.get_theme_stylebox("normal").get_minimum_size().x-4
+ if button.icon!=null:available-=button.get_theme_constant("icon_max_width")+button.get_theme_constant("h_separation")
+ var font=button.get_theme_font("font")
+ var selected=14
+ for size in [16,15,14]:
+  if font.get_string_size(button.text,HORIZONTAL_ALIGNMENT_LEFT,-1,size).x<=available:selected=size;break
+ button.add_theme_font_size_override("font_size",selected)
 func refresh():
  if not is_instance_valid(ui.context_box):return
  place(ui.context_box,BODY.position,BODY.size)
+ for button in [ui.actions.upgrade,ui.bed_button,ui.door_button]:fit_action(button)
  ui.context_box.visible=ui.context_open
  if is_instance_valid(idle_hint):idle_hint.visible=not ui.context_open
  if ui.context_mode=="specialize":ui.specialization_items[0].visible=false

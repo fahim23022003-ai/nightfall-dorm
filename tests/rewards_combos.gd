@@ -44,7 +44,7 @@ func run():
   var entry=p.begin_match(mode)
   var m=fixture(mode,"stage_5",p.equipped);p.bind_items(m,entry.id)
   m.stage_bonus=RewardCatalog.STAGE_BONUSES.reinforced.duplicate(true)
-  var r=m.player();r.door_level=4;r.door_hp=r.max_hp();m.hunter.target=0;m.hunter.state=HunterState.State.ATTACK
+  var r=m.player();r.door_level=4;r.door_hp=r.max_hp();m.hunter.target=0;m.hunter.state=HunterState.State.ATTACK;m.hunter.position=r.door_approach()
   check(p.activate_item(1,m,entry.id),"Barricade withtwo rankperks "+mode)
   r.door_hp=10
   var aid_before=r.rescue_used

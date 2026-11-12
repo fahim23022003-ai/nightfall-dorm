@@ -1,0 +1,46 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: REPLAY ENDLESS: real critical crossing consumes Feather and durably marks it once
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] automatic_caps (res://tests/replay_transactions.gd:44)
+       [2] run (res://tests/replay_transactions.gd:113)
+ERROR: REPLAY ENDLESS: later real crossing durably uses rank rescue without another Feather
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] automatic_caps (res://tests/replay_transactions.gd:46)
+       [2] run (res://tests/replay_transactions.gd:113)
+ERROR: REPLAY ENDLESS: older checkpoint cannot reset either automatic once-per-run use
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] automatic_caps (res://tests/replay_transactions.gd:49)
+       [2] run (res://tests/replay_transactions.gd:113)
+ERROR: REPLAY ENDLESS: checkpoint rewind cannot create infinite rank healing
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] automatic_caps (res://tests/replay_transactions.gd:52)
+       [2] run (res://tests/replay_transactions.gd:113)
+ERROR: REPLAY ENDLESS: empty-loadout rank rescue durably marks once without any manual item activation
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] automatic_caps (res://tests/replay_transactions.gd:60)
+       [2] run (res://tests/replay_transactions.gd:113)
+REPLAY_STRESS_WAVES=25 MAX_SAVE_BYTES=13014
+ERROR: REPLAY ENDLESS: actual exposed contact can defeat before room claim
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] exposed_defeat (res://tests/replay_transactions.gd:107)
+       [2] run (res://tests/replay_transactions.gd:113)
+ERROR: REPLAY ENDLESS: unclaimed terminal closes run without stuck active/resume state
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] exposed_defeat (res://tests/replay_transactions.gd:110)
+       [2] run (res://tests/replay_transactions.gd:113)
+REPLAY_TRANSACTION_CHECKS=284 FAILURES=7

@@ -343,7 +343,7 @@ func show_match():
   var id=kind
   var data=Catalog.BUILDINGS[kind]
   var at=Vector2(12+(n%3)*114,42+(n/3)*152)
-  var b=button("",at,func(): game.build_selected(id),108,142,context_box)
+  var b=button("",at,func(): game.begin_placement(id) if game.mobile_mode else game.build_selected(id),108,142,context_box)
   var art=icon(kind,at+Vector2(29,5),Vector2(50,48),context_box)
   var display_names={"turret":"Needle\nturret","heavy":"Arc\nturret","generator":"Dynamo","repair":"Repair\nstation","economy":"Dream\namplifier","enhancer":"Target\nrelay"}
   var name=label_at(display_names.get(kind,data.name),at+Vector2(3,53),16,102,false,context_box)
@@ -433,6 +433,8 @@ func open_context():
  context_open=true
  var room=game.model.player()
  context_mode="upgrade" if room!=null and room.buildings.has(game.selected_tile) else "build"
+ if game.full_map and room!=null:
+  game.full_map=false;game.focus_camera(true)
  refresh_context()
 
 func open_room_panel(kind: String):
@@ -442,6 +444,8 @@ func open_room_panel(kind: String):
  game.cancel_placement()
  context_open=true
  context_mode=kind
+ if game.full_map:
+  game.full_map=false;game.focus_camera(true)
  refresh_context()
 
 func open_confirmation():
@@ -610,7 +614,7 @@ func update_match():
  power_label.text=resource_text(room.electricity) if room!=null else "—"
  power_label.tooltip_text="Electricity: %s" % str(snappedf(room.electricity,.01)) if room!=null else "Electricity"
  phase_label.text="%02d:%02d\n%s" % [int(m.time)/60,int(m.time)%60,"PREP %ds" % maxi(0,ceili(m.preparation-m.time)) if m.time<m.preparation else "SURVIVE"]
- hunter_label.text=("REAPER · %d/%d" % [m.hunter.hp,m.hunter.max_hp]) if m.hunter.transformed else "HUNTER L%d  ·  %d/%d" % [m.hunter.level,m.hunter.hp,m.hunter.max_hp]
+ hunter_label.text=("REAPER · %d/%d" % [roundi(m.hunter.hp),roundi(m.hunter.max_hp)]) if m.hunter.transformed else "HUNTER L%d  ·  %d/%d" % [m.hunter.level,roundi(m.hunter.hp),roundi(m.hunter.max_hp)]
  hunter_detail.text="%d ATK · %.2fs%s · TEAM %d" % [m.hunter.damage,m.hunter.interval," · WINDUP!" if m.hunter.charged_ready else "",m.rooms.filter(func(r):return r.owner>=0 and r.alive).size()]
  if m.hunter.state==HunterState.State.TRANSFORM: hunter_detail.text="AWAKENING · %.1fs · TRANSITION GUARD" % m.hunter.transform_remaining
  elif m.hunter.tactical_action!="":hunter_detail.text="%s · %.1fs · WATCH THE DOOR" % [m.hunter.tactical_action.to_upper(),m.hunter.tactical_windup]
@@ -639,7 +643,7 @@ func update_match():
    hunter_detail.text="Learn at your own pace"
    hunter_bar.value=0
   else:
-   hunter_label.text="PRACTICE HUNTER · %d / %d" % [m.hunter.hp,m.hunter.max_hp]
+   hunter_label.text="PRACTICE HUNTER · %d / %d" % [roundi(m.hunter.hp),roundi(m.hunter.max_hp)]
    hunter_detail.text="Very weak attack · practice only"
  map_button.text="Focus" if game.full_map else "Map"
  guide_box.visible=((help_open and not game.full_map) or game.presentation.clock<feedback_until) and not (game.model.map_id!="legacy" and context_open)
@@ -650,11 +654,11 @@ func update_match():
  warning_label.visible=warning_box.visible
  if not threat and game.level_warning_time>0: warning_label.text="THE HUNTER GROWS STRONGER · LEVEL %d" % m.hunter.level
  if threat:
-  warning_label.text="DOOR %d/%d · UNDER ATTACK" % [room.door_hp,room.max_hp()]
+  warning_label.text="DOOR %d/%d · UNDER ATTACK" % [roundi(room.door_hp),roundi(room.max_hp())]
   if m.hunter.tactical_action!="":warning_label.text="%s %.1fs · PREPARE DEFENSES" % [m.hunter.tactical_action.to_upper(),m.hunter.tactical_windup]
   elif m.hunter.charged_ready: warning_label.text="HEAVY STRIKE %.1fs · REPAIR / UPGRADE" % m.hunter.windup_remaining
   elif m.hunter.archetype_primed:warning_label.text="%s · STRIKE WARNING · REPAIR NOW" % StrategyCatalog.ARCHETYPES[m.hunter.archetype].name.to_upper()
-  elif room.repair_factor<0.99: warning_label.text="DOOR %d/%d · REPAIRS %d%%" % [room.door_hp,room.max_hp(),roundi(room.repair_factor*100)]
+  elif room.repair_factor<0.99: warning_label.text="DOOR %d/%d · REPAIRS %d%%" % [roundi(room.door_hp),roundi(room.max_hp()),roundi(room.repair_factor*100)]
   if m.hunter.boss_attack!="":
    warning_label.text="%s %.1fs · REPAIR NOW" % [BossCatalog.ATTACKS[m.hunter.boss_attack].name,m.hunter.windup_remaining]
   elif m.hunter.shadow_active(room.index): warning_label.text="TURRETS SILENCED %.1fs · KEEP REPAIRING" % m.hunter.surge_remaining
@@ -664,7 +668,7 @@ func update_match():
  for control in [room_bed_summary,room_door_summary,room_selected_summary]: control.disabled=room==null
  if room!=null:
   room_bed_summary.text="Bed L%d  ·  %.1f G/s" % [room.bed_level+1,room.income_rate()]
-  room_door_summary.text="Door L%d  ·  %d/%d" % [room.door_level+1,room.door_hp,room.max_hp()]
+  room_door_summary.text="Door L%d  ·  %d/%d" % [room.door_level+1,roundi(room.door_hp),roundi(room.max_hp())]
   room_selected_summary.text=Catalog.BUILDINGS[room.buildings[game.selected_tile].kind].name if room.buildings.has(game.selected_tile) else "Build on a floor pad"
   var bed_cost="MAX" if room.bed_level>=9 else "%d Gold / %d Electricity" % [Catalog.BED_COST[room.bed_level],Catalog.BED_POWER[room.bed_level]]
   var door_cost="MAX" if room.door_level>=9 else "%d Gold / %d Electricity" % [Catalog.DOOR_COST[room.door_level],Catalog.DOOR_POWER[room.door_level]]

@@ -39,7 +39,7 @@ func automatic_caps():
  clear_wave(a);check(p.checkpoint_endless(m),"automatic-use fixture checkpoints before rescue")
  check(m.continue_wave("power"),"automatic-use fixture continues")
  var stock=p.inventory.feather
- r.door_hp=r.max_hp()*.25+1;m.hunter.target=0
+ r.door_hp=r.max_hp()*.25+1;m.hunter.target=0;m.hunter.state=HunterState.State.ATTACK;m.hunter.position=r.door_approach()
  m.hunter._damage_door(r,m,2)
  check(m.items.feather_used and p.active_match.feather_used and p.inventory.feather==stock-1,"real critical crossing consumes Feather and durably marks it once")
  r.door_hp=r.max_hp()*.25+1;m.hunter._damage_door(r,m,2)
@@ -56,7 +56,7 @@ func automatic_caps():
  check(r.rescue_payment.is_valid(),"claim after pre-room Game bind installs durable rank-rescue callback")
  clear_wave(a);check(p.checkpoint_endless(m),"actual pre-claim binding flow checkpoints")
  check(m.continue_wave("power"),"actual pre-claim binding flow continues")
- r.door_hp=r.max_hp()*.25+1;m.hunter.target=0;m.hunter._damage_door(r,m,2)
+ r.door_hp=r.max_hp()*.25+1;m.hunter.target=0;m.hunter.state=HunterState.State.ATTACK;m.hunter.position=r.door_approach();m.hunter._damage_door(r,m,2)
  check(r.rescue_used and p.active_match.rescue_used,"empty-loadout rank rescue durably marks once without any manual item activation")
 func milestone_transactions():
  var a=fixture();var p=a.p;var m=a.m

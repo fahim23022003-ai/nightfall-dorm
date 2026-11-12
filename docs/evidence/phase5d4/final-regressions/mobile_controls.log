@@ -1,0 +1,33 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: MOBILE QA: card tap previews without charging
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/mobile_controls.gd:11)
+       [1] run (res://tests/mobile_controls.gd:123)
+       [2] tap (res://tests/mobile_controls.gd:32)
+ERROR: MOBILE QA: second card preview works
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/mobile_controls.gd:11)
+       [1] run (res://tests/mobile_controls.gd:134)
+       [2] tap (res://tests/mobile_controls.gd:32)
+ERROR: MOBILE QA: Android Back cancels preview without spending
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/mobile_controls.gd:11)
+       [1] run (res://tests/mobile_controls.gd:137)
+       [2] tap (res://tests/mobile_controls.gd:32)
+ERROR: MOBILE QA: unavailable card exposes blocked preview instead of relying on hover
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/mobile_controls.gd:11)
+       [1] run (res://tests/mobile_controls.gd:158)
+       [2] tap (res://tests/mobile_controls.gd:32)
+ERROR: MOBILE QA: blocked touch preview gives visible reason without charging
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/mobile_controls.gd:11)
+       [1] run (res://tests/mobile_controls.gd:159)
+       [2] tap (res://tests/mobile_controls.gd:32)
+MOBILE_CONTROLS_CHECKS=58 FAILURES=5

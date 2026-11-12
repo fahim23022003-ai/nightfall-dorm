@@ -1,0 +1,61 @@
+{
+  "kind": "Additive independent QA C final delta acceptance",
+  "utc": "2026-11-12T17:23:57.770578+00:00",
+  "base_acceptance": "docs/evidence/phase5d4/qa-source-acceptance.json",
+  "base_acceptance_sha256": "4ff293c5c674cd8476c30c8d1f5f762db2c53e16c909b4cb3a4a96af9babb810",
+  "git_head": "1d16069d44db22d038db562bbec22570e362b5c4",
+  "test": "tests/phase5d4_qa_final_delta.gd",
+  "test_sha256": "00f0796920b0cdbed70762cb988c806b68578b438d315eb8cadf43f105c36e29",
+  "log": "docs/evidence/phase5d4/qa-final-delta-accepted.log",
+  "log_sha256": "e34cf6b1159ecf0d2e476f0c5a7941b56e686e5a3c4e7d801ebf3536b1fc7e0d",
+  "checks": 302,
+  "failures": 0,
+  "exit_code": 0,
+  "engine": "Godot4.6.3 official7d41c59c4 Linux headless",
+  "contact_scenarios": 15,
+  "preview_configurations": 45,
+  "source_deltas_since_original_acceptance": [
+    {
+      "path": "scripts/audio_director.gd",
+      "previous_accepted_sha256": "e7f90f9ca12130a812079d7479db6def83e2aedb6b0761d33ee6215f81a445d3",
+      "current_sha256": "9e2e7b0f1665a339aaed0a0dc2e968c2233b4235dfc0799b0e6a2b15dcd2f638"
+    },
+    {
+      "path": "scripts/game.gd",
+      "previous_accepted_sha256": "144725baddb73356f20821d6e58e3cf610f9b101e36088553c5dfe86bf3b69e7",
+      "current_sha256": "af5356767d606fd351d76708e10e0b4b3632855ac57072968058be88760d5fd7"
+    },
+    {
+      "path": "scripts/match_model.gd",
+      "previous_accepted_sha256": "b0c7087e83b4c6035859b03dc276b673e3350f86da6cb6a81f5797758dbe3f11",
+      "current_sha256": "dd774e8198cce31fda47b86319b5363bdaab3c476215abb236b0cc2c8a9fd54c"
+    },
+    {
+      "path": "scripts/replay_interface.gd",
+      "previous_accepted_sha256": "87eb84d503b99fe9310e9b9c7e2a4dc0e2334b445d3f691459ebc94c34bb3143",
+      "current_sha256": "659735bb079871c4523bdf5fbc64b66f5c9b20d2181b89dc614d92217cc43d7c"
+    },
+    {
+      "path": "scripts/wrath_presentation.gd",
+      "previous_accepted_sha256": "8bd14fe8d4fef4cbbb07482a30a54959eb7840f1900277183175fb4d5d6a1434",
+      "current_sha256": "b254b95b0b4cdc6d0648cb38394b0429c05908a322ab10a98adc1d1291c4bf9e"
+    }
+  ],
+  "independent_findings": [
+    "All5maps\u00d7Normal/LongNight/Hell unclaimed actual lethalcontact records exactly one terminal elimination with no fake owner/deadroom/evolution or room-death notification.",
+    "Forged terminal strings cannot settle; repeated ticks/settlement/reload cannot claim twice; failed finalsave rolls back and permits exactly one valid retry; oldterminal cannot close a new run.",
+    "Existing XP/RM/20itemstocks/spins/achievements/campaign/statistics/Endlessrecords/pity/cosmetics remain unchanged from a normalized preexisting profile.",
+    "45 actual Challenge preview combinations safely format literal55%HP, and an actual visible Challenge screen label contains55%HP/ruleset3 without formatting errors; savefile byte-identical.",
+    "Read-only WrathPresentation delta reviewed: bounded burns against at most11liveactors, one lure, latest heal record per room; local dictionary only, drawcalls only, no scene nodes, gameplay RNG or model writes. Actual render reviewed by D, not claimed as C audition."
+  ],
+  "fixture_correction": "Initial synthetic inventory collection was not normalized before baseline; actual reload legitimately discovered existing ItemCollector. Final fixture saves+loads before baseline and keeps all achievement assertions; failed initial logs retained. JSON numeric values compared semantically after reload.",
+  "coverage_context": [
+    "Parent reports original10C suites passed again in full112-command sweep. Prior7357 receipt remains unchanged.",
+    "Game framing/input and AudioDirector terminal-cue deltas were already committed1d16069 and covered by parent full regression plus specialist render/audio evidence; this narrowtest does not claim fresh subjective audio validation.",
+    "Only new unclaimedcontact and previewformat mechanics independently rerun here; no fullsuite repetition."
+  ],
+  "limitations": [
+    "Native Windows hardware/input and subjectivevisual/audio quality remain unverified.",
+    "Final push/clean-tree/remote SHA verification belongs to root."
+  ]
+}

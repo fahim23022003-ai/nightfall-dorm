@@ -1,0 +1,13 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: HAUNTED QA: each genuine death eventually sounds exactly once
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/haunted_qa.gd:10)
+       [1] audio_events (res://tests/haunted_qa.gd:213)
+ERROR: HAUNTED QA: actual Reaper breach distinct laugh
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/haunted_qa.gd:10)
+       [1] audio_events (res://tests/haunted_qa.gd:224)
+HAUNTED_QA_CHECKS=78627 FAILURES=2

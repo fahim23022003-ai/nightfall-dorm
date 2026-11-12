@@ -1,0 +1,37 @@
+[
+  {
+    "name": "scene_smoke",
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 5.077,
+    "log": "docs/evidence/phase5d4/final-affected/scene_smoke.log"
+  },
+  {
+    "name": "overhaul_ui",
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 4.219,
+    "log": "docs/evidence/phase5d4/final-affected/overhaul_ui.log"
+  },
+  {
+    "name": "ui_availability",
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 2.499,
+    "log": "docs/evidence/phase5d4/final-affected/ui_availability.log"
+  },
+  {
+    "name": "audit_regressions",
+    "exit_code": 0,
+    "passed": true,
+    "seconds": 0.442,
+    "log": "docs/evidence/phase5d4/final-affected/audit_regressions.log"
+  },
+  {
+    "name": "redesign_ui",
+    "exit_code": 1,
+    "passed": false,
+    "seconds": 5.712,
+    "log": "docs/evidence/phase5d4/final-affected/redesign_ui.log"
+  }
+]

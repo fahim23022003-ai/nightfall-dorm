@@ -100,8 +100,7 @@ func run():
   if node is TextureRect:
    check(node.size.x<=154 and node.size.y<=154,"illustration control respects explicit display bounds")
  await click_position(game.ui.actions["build:generator"].get_global_rect().get_center())
- check(game.pending_build=="generator" and not game.model.player().buildings.has(1),"card enters preview without spending or building")
- await click_position(game.ui.confirm_button.get_global_rect().get_center())
+ check(game.pending_build=="" and game.model.player().buildings.has(1),"direct BUILD completes purchase without a stuck preview")
  check(game.model.player().buildings.has(1) and game.model.player().buildings[1].kind == "generator","actual UI mouse click builds generator on selected floor")
  for kind in Catalog.BUILDINGS:
   check(not game.ui.building_effect(kind).is_empty(),"building effect tooltip formats for " + kind)

@@ -467,6 +467,10 @@ func _tick_sim(delta: float):
  if exposed and hunter.state!=HunterState.State.TRANSFORM and hunter.hp > 0 and hunter.position.distance_to(player_position)<15:
   if player() != null:
    eliminate_resident(player_room,1,true)
+  else:
+   # Actual contact with the unclaimed player still closes the terminal run.
+   # No room owner exists, so there is no room mutation or evolution award.
+   eliminations+=1
   result = "defeat"
   _finish_terminal()
   return

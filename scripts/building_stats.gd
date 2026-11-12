@@ -49,13 +49,19 @@ static func machine_stats(model,room,b: Dictionary) -> Dictionary:
  if b.kind=="generator":rate*=(0.0 if room.production_paused else room.threat_power_factor)*room.power_multiplier*room.trait_modifiers.power*room.special_factor("power",.55,1.5)*StrategyCatalog.BRANCHES.get(room.bed_branch,{}).get("power",1.0)
  if b.kind=="repair":rate*=room.repair_factor
  return {"rate":rate,"operating_power":branch.get("power_cost",0.0)*b.level,"income":room.income_rate(),"repair_gold":room.manual_repair_cost()}
+static func frost_status(strength: float) -> Dictionary:
+ # Match the existing actor-specific status application; preview does not alter it.
+ var move=minf(.15,strength)
+ return {"hunter_move":move,"hunter_interval":strength,"reaper_move":move*.5,"reaper_interval":strength*.5,"undead_move":minf(.35,strength)}
 static func format_machine(model,room,b: Dictionary) -> String:
  var stats=machine_stats(model,room,b)
  if b.kind=="auto_repair":return "Repair %.1f HP / %.1fs below %.0f%% HP\nUpkeep %.2f Gold + %.2f Electricity per burst" % [stats.heal,stats.interval,stats.threshold*100,stats.gold,stats.power]
  if b.kind=="shield":return "Barrier %.1f HP for %.1fs · room cooldown %.1fs\nUpkeep %.2f Electricity per activation" % [stats.capacity,stats.duration,stats.interval,stats.power]
  if b.kind=="decoy":return "Lure %.1fs · range %.0f · cooldown %.1fs\nUpkeep %.2f Electricity; Reaper duration halved" % [stats.duration,stats.range,stats.interval,stats.power]
  if b.kind=="flame":return "Hit %.1f · %.2fs / shot · range %.0f\nBurn %.1f HP/s for3s (strongest only) · targets %d" % [stats.hit,stats.interval,stats.range,stats.burn,stats.targets]
- if b.kind=="frost":return "Hit %.1f · %.2fs / shot · range %.0f\nMovement/attack slow %.0f%% (Reaper half) · targets %d" % [stats.hit,stats.interval,stats.range,stats.slow*100,stats.targets]
+ if b.kind=="frost":
+  var slow=frost_status(stats.slow)
+  return "Hit %.1f · %.2fs / shot · range %.0f · targets %d · Undead move -%.0f%%\nHunter move -%.0f%% / attack interval +%.0f%%; Reaper move -%.1f%% / interval +%.0f%%" % [stats.hit,stats.interval,stats.range,stats.targets,slow.undead_move*100,slow.hunter_move*100,slow.hunter_interval*100,slow.reaper_move*100,slow.reaper_interval*100]
  if b.kind in DefenseEffects.WEAPONS:return "Hit %.1f · %.2fs / shot · %.1f DPS\nRange %.0f · projectile %.0f /s" % [stats.hit,stats.interval,stats.dps,stats.range,stats.projectile_speed]
  if b.kind=="generator":return "Output %.2f Electricity/s\nRoom income %.2f Gold/s" % [stats.rate,stats.income]
  if b.kind=="repair":return "Healing %.2f HP/s · upkeep %.2f E/s\nManual repair %.2f Gold" % [stats.rate,stats.operating_power,stats.repair_gold]
@@ -85,7 +91,9 @@ static func branch_preview(model,room,b: Dictionary,id: String,structure: String
  if b.kind=="shield":return "Barrier %.0f → %.0f HP · %.1f → %.1fs\nElectricity %.1f → %.1f / activation · 12s room cooldown\n%s" % [before.capacity,after.capacity,before.duration,after.duration,before.power,after.power,StrategyCatalog.BRANCHES[id].description]
  if b.kind=="decoy":return "Lure %.1f → %.1fs · range %.0f → %.0f\nElectricity %.1f → %.1f · cooldown %.1f → %.1fs\n%s" % [before.duration,after.duration,before.range,after.range,before.power,after.power,before.interval,after.interval,StrategyCatalog.BRANCHES[id].description]
  if b.kind=="flame":return "Hit %.1f → %.1f · burn %.1f → %.1f HP/s\nTargets %d → %d · interval %.2f → %.2fs\n%s" % [before.hit,after.hit,before.burn,after.burn,before.targets,after.targets,before.interval,after.interval,StrategyCatalog.BRANCHES[id].description]
- if b.kind=="frost":return "Hit %.1f → %.1f · slow %.0f%% → %.0f%%\nTargets %d → %d · interval %.2f → %.2fs\n%s" % [before.hit,after.hit,before.slow*100,after.slow*100,before.targets,after.targets,before.interval,after.interval,StrategyCatalog.BRANCHES[id].description]
+ if b.kind=="frost":
+  var prior=frost_status(before.slow);var next=frost_status(after.slow)
+  return "Hit %.1f → %.1f · targets %d → %d · undead move -%.0f%% → -%.0f%%\nHunter move -%.0f%% → -%.0f%% / interval +%.0f%% → +%.0f%% (Reaper half)\n%s" % [before.hit,after.hit,before.targets,after.targets,prior.undead_move*100,next.undead_move*100,prior.hunter_move*100,next.hunter_move*100,prior.hunter_interval*100,next.hunter_interval*100,StrategyCatalog.BRANCHES[id].description]
  if b.kind in DefenseEffects.WEAPONS:
   return "Hit %.1f → %.1f · DPS %.1f → %.1f\nRate %.2fs → %.2fs · range %.0f → %.0f\n%s" % [before.hit,after.hit,before.dps,after.dps,before.interval,after.interval,before.range,after.range,StrategyCatalog.BRANCHES[id].description]
  if b.kind=="generator":return "Electricity %.2f → %.2f /s · Gold %.2f → %.2f /s\n%s" % [before.rate,after.rate,before.income,after.income,StrategyCatalog.BRANCHES[id].description]

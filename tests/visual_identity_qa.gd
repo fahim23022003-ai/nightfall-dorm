@@ -82,9 +82,11 @@ func presence():
   m.record_event("door_break",1);m.record_event("elimination",1)
   p.update(.1,m)
   check(p.scars.is_empty(),"false intact-door/living-survivor callbacks cannot scar room")
-  h.target=0;m.hunter._damage_door(m.player(),m,10)
+  h.target=0;h.state=HunterState.State.ATTACK;h.position=m.player().door_approach();m.hunter._damage_door(m.player(),m,10)
   p.update(.1,m)
   check(p.scars.any(func(s):return s.kind=="door_damage" and s.room==0),"actual damage leaves a door history")
+  # Observe the remote elimination after the contact-damage fixture leaves the player room.
+  h.target=1;h.state=HunterState.State.MOVE;h.position=m.rooms[1].corridor_anchor()
   m.rooms[1].door_hp=0;m.rooms[1].alive=false;m.rooms[1].sleeping=false
   m.record_event("door_break",1);m.record_event("elimination",1)
   before=signature(m);p.update(.1,m)

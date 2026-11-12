@@ -101,12 +101,12 @@ func run():
  var card=game.ui.actions["build:turret"].get_global_rect().get_center()
  await mouse(card)
  await mouse(card,true)
- check(game.pending_build=="turret" and money(room)==before,"card double-click only previews without charge")
- await mouse(game.ui.confirm_button.get_global_rect().get_center())
- check(room.buildings.has(0) and game.pending_build=="" and not game.ui.context_open,"confirm exits placement")
+ check(room.buildings.has(0) and room.buildings[0].level==1 and money(room)==before-Vector2(Catalog.BUILDINGS.turret.gold,Catalog.BUILDINGS.turret.power),"direct BUILD double-click purchases exactly once without an accidental upgrade")
+ check(game.pending_build=="" and game.ui.context_open and game.ui.context_mode=="upgrade","direct purchase leaves the predictable building inspector, with no placement state")
  var built=money(room)
- await mouse(game.ui.confirm_button.get_global_rect().get_center(),true)
- check(money(room)==built and room.buildings.size()==1,"trailing confirmation click cannot charge twice")
+ game.confirm_placement()
+ await process_frame
+ check(money(room)==built and room.buildings.size()==1,"stale confirmation without a pending placement cannot charge twice")
  game.selected_tile=1
  game.begin_placement("repair")
  await process_frame

@@ -17,8 +17,8 @@ found and repaired; affected acceptance and remaining verification are explicit.
 beginner usability, subjective horror, speaker/headphone balance and human
 approval. Linux renders and PCM measurements do not establish these.
 
-**INCOMPLETE:** final full regular/extended regression, final rendered/audio
-refresh, long-run report, Windows export and final clean-tree/push receipt.
+**INCOMPLETE:** final rendered stress refresh on the last presentation changes,
+Windows re-export from final sources and final clean-tree/push receipt.
 This document is not yet a completion claim.
 
 ## Repository and recovery
@@ -27,8 +27,9 @@ Started clean on private `work` at
 `d507600f64c3c55ff858a9d5bc5d3c938b6e5f6d`, equal to remote. Recovery tag:
 `pre-phase5d4-d507600`. Baseline54ef155, sampled sources53eb50a, sound assets2de0ea2,
 contextual UI73c7698, rendered evidence8a392f3, audio evidence9db04a0.
-Core `0bc84216ed18c805a98c70bb0a296c473473215d` is VERIFIED PUSHED: remote `work`
-matched local HEAD. Later fixes are still being validated. Main was not modified;
+Latest accepted integration checkpoint `1d16069d44db22d038db562bbec22570e362b5c4`
+is VERIFIED PUSHED: remote `work` matched local HEAD. Final regression fixes and
+rendered receipts are still being validated. Main was not modified;
 no public release, multiplayer, Android work or new Phase6 audit was started.
 
 B owns gameplay production; dedicated Audio specialist owns sound design/runtime;
@@ -83,7 +84,14 @@ evidence, not a human win-rate estimate or arbitrary balance target.
 Existing Crusher charge/pressure, Stalker concealment/feint and Ravager dash/
 combo remain real telegraphed behaviors. Target scoring retains path cost,
 weakness, defense pressure, commitment and bounded history variation. Reaper
-casts do not stack normal archetype wind-ups on top of boss attacks.
+casts do not stack normal archetype wind-ups on top of boss attacks. Baseline
+telemetry already recorded target changes, so this was not treated as a proven
+universal stale-target bug. Threat evaluation now recognizes every new offensive
+machine, existing commitment/history logic remains, and reassessment cannot
+abandon a pending boss cast or the committed domain room. Ability names, actual
+wind-up countdowns and target rooms are visible, backed by distinct warning SFX.
+The main new strategic variation comes from bounded evolution, legitimate decoy
+influence and the actual Reaper phase/ability progression.
 
 A genuine living Hunter or undead must reach the correct exposed player/bed
 through valid combat state. One canonical victim-owner ledger gates each award;
@@ -201,7 +209,11 @@ inflate refundable investment. No Level11, dual branch or duplicate refund.
 
 Flame’s strongest per-target burn and Inferno do not add unlimited overlapping
 DoT. Frost/Shock slow movement/attacks without freezing or stunning permanently;
-Reaper resistance applies. Auto Repair pays real Gold/Electricity per burst;
+Hunter movement reduction caps at15%, separately from attack-interval increases.
+Deep Chill adds30% attack interval (Reaper15%), while movement reduction is15%
+(Reaper7.5%); undead movement reduction is30%. Rime uses16% interval/undead
+movement (Reaper8% interval), with the same15%/7.5% movement cap. The inspector
+and branches expose these differences. Auto Repair pays real Gold/Electricity per burst;
 its minimum65% siege effectiveness gives a late-pressure niche. Shield has finite
 capacity/duration and a shared12s room refractory. Decoy gains bounded duration/
 range through10, with shorter but finite cooldown and reduced boss duration.
@@ -233,8 +245,10 @@ Music/Voices/Action SFX tabs expose actual listening previews. New imports use
 PCM16 consistently, avoiding ambiguous raw compressed-data inspection.
 
 The early actual Needle/Arc/action gate76/0 records18PCM files with nonzero
-Music-muted Master output and no full-scale samples. Final new-building/boss/
-evolution/dense-mix captures are pending; asset existence is not playback proof.
+Music-muted Master output and no full-scale samples. Final actual weapon capture
+passes38 checks, three genuine kill/evolution playback10, boss playback37 and
+legal door-breach→resident death→evolution→laughter9. These cover actual dispatched
+streams and recorded engine output; final consolidated receipts are pending.
 Thirty recorded/designed CC0-declared sources produce122 recipes (27 replacements
 and95 new effects),116 distinct output hashes. The recorded debris explosion
 passes an actual Practice trap→legal Hunter approach→detonation capture:9/0,
@@ -274,7 +288,7 @@ human timing across operating systems or a verified online leaderboard.
 | Challenge | C13/0 with six fresh process traces. |
 | Audio | Specialist782/0, pooled-reaction5/0, target-routing209/0, lifecycle13/0, real explosion9/0; legacy491/0, listening256/0, visual/audio103/0. |
 | Actual strategy | Final A49 cases/0 integrity errors,7 fresh checkpoint comparisons (intermediate69 cases retained as diagnostics); earned new-building and long-Endless evidence below. |
-| Full final regression | IN PROGRESS; baseline success is not reused as final success. |
+| Full final regression | PASS: all115 registered regular/extended command gates covered. Initial112-command sweep2131.205s,15 failing gates corrected and rerun,0 warnings. Original first-pass failures retained. Independent delta302/0, Frost30/0 and HP display6/0 are included. |
 | Final rendered/audio/stress | IN PROGRESS; initial boss visibility issues require fresh affected frames. |
 | Windows x64 export | Pending final committed sources; native Windows remains UNVERIFIED. |
 
@@ -293,7 +307,20 @@ wave engine objects stay1520; sampled static memory26.15–26.57MB (fortress) an
 profiles2698/2666bytes. These are accelerated Linux model measurements, not Windows
 FPS. Earlier74/75 and52/53 outcomes are retained only under pre-cutover diagnostics.
 See [final balance evidence](evidence/phase5d4/balance-final-summary.md).
-Final rendered stress and real mixed PCM evidence remain pending.
+The final dense rendered fixture passes764 checks over600.4 simulated seconds
+(117.727s accelerated wall time). It deliberately prepares72 paid Level10 machines,
+30 weapons and very large temporary budgets/HP, and suppresses random new boss
+casts to isolate rendering/object/audio endurance. It is not earned progression
+or a full unconstrained boss difficulty test. Real assault spawning reaches the
+10-minion cap. Eight-second real-time max-volume captures before/after show
+Master RMS0.030877/0.033036, peak0.168610/0.177826, zero clipped samples.
+All five weapon families actually dispatch. Nodes165/resources249 stay constant;
+static memory100.216→100.825MB. Projectile/event/visual/route buffers remain bounded.
+Mean frame intervals56.49/55.65ms and p95 65.06/66.31ms describe Linux software-Mesa
+synthetic stress only; they do not predict native Windows hardware performance.
+An initial endurance fixture legitimately died from percentage-based Scythe Slash;
+a second reached its wall-time limit before600s. Both diagnostics are retained,
+with fixture controls and the final successful run disclosed.
 
 ## Failures and fixes retained in evidence
 
@@ -303,13 +330,40 @@ Final rendered stress and real mixed PCM evidence remain pending.
 - Pooled voice cutting death screams and overlapping encounter cues; serialized
   reactions and stream-identity guards added, with frozen-old-code reproduction.
 - Bed/door upgrade waveform alias; differentiated recorded designs.
+- Frost text overstated main-Hunter movement control. Actual actor-specific
+  movement and attack-interval values now appear separately;30 focused engine
+  checks verify real paid Frost projectiles/status application without changing
+  the balanced physics. Active burn, Decoy duration and actual automatic repairs
+  also receive bounded read-only visual feedback, including Reduced Effects.
 - New compressed imports mismatched old PCM inspection; consistent PCM16 import.
 - Boss warning/awakening occlusion and domain camera headroom; affected rendering
   is being refreshed. Evolution reset and held-press/Escape fixes now pass their affected checks;
   final camera headroom is receiving an additional rendered check.
+- Challenge preview used a literal unescaped percent sign in a formatted string,
+  producing an engine error despite a zero suite exit code. Escaped it and added
+  assertions for the actual generated and rendered preview; affected1541/0.
+- Actual exposed contact before claiming a room omitted the elimination count,
+  preventing legitimate Endless settlement. Count that actual death once without
+  fabricating a room owner or evolution credit; affected transaction suite284/0.
+- The old map UI fixture ignored a rejected late map configuration and therefore
+  silently exercised Legacy instead of its named maps. It now enters actual stages,
+  asserts map identity and covers all30 authored rooms plus6 explicit Legacy rooms.
+  This exposed a real desktop Legacy framing regression: lower pads overlapped the
+  new bottom panel. Legacy focused desktop framing now uses the same safe area;
+  full-map and mobile behavior are preserved. Existing touch cards again use
+  their retained confirmation/Back flow; desktop cards keep direct BUILD.
+  Opening an owned room from overview refocuses once, while ordinary focused
+  menu changes leave the camera fixed. The original mobile58/0, desktop818/0,
+  overview269/0 and actual map1108/0 checks pass.
 - Old regression fixtures assumed six legacy slots, obsolete future-ruleset3,
   instant unguarded boss death and illegal remote damage. Fixtures are ported to
   current rules while retaining transaction, final-death and no-refill assertions.
+  The controlled high-wave legacy damage test now explicitly holds new Wrath
+  auto-casts for30s to isolate its original damage formula: Charged1539 and Soul
+  Siege1155.6 remain below the1620HP fixture door. Mixed real gameplay remains
+  tested separately:60 boss-matrix games recorded36 Scythe impacts,17 Soul Siege
+  impacts and7 Shadow Surges alongside62 new ability activations. No combat
+  parameter was changed to satisfy the old isolated test.
   Root’s invalid map-ID and duplicate local-variable test-edit errors were caught,
   corrected and retained as fixture failures, not product defects.
 

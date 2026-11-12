@@ -1,43 +1,34 @@
-# Phase 5D-4 — The Reaper’s Wrath — IN PROGRESS
+# Phase 5D-4 — The Reaper’s Wrath — final delivery checks
 
-Owner and Adie’s Windows playtest feedback supersedes earlier automated balance
-and usability assumptions. Starting clean on `work` at
-`d507600f64c3c55ff858a9d5bc5d3c938b6e5f6d`, verified equal to remote `work`.
-Recovery tag: `pre-phase5d4-d507600`. Baseline checkpoint
-`54ef155f12a6ea9b0258c1b1b8ea59c91c3498a3` is verified pushed to private `work`;
-remote SHA matched local HEAD. Main is outside scope; no release publication
-or new Phase 6 audit. Baseline complete before production edits: all 97 regular/extended commands
-pass (24.3 minutes); actual rendered baseline passes 53 checks/22 screenshots;
-independent balance baseline passes 51 cases. Original runtime and historical
-evidence are hash-verified unchanged.
+All requested workstreams are implemented: unified building HUD, meaningful
+specialization previews, measured Hell/NPC pressure, fifteen bounded kill buffs,
+two Reaper phases with ten controlled undead and the integrated final domain,
+six Level1–10 buildings, and dedicated sampled interactive sound design.
 
-B owns gameplay/UI/AI/buildings; dedicated Audio specialist owns AudioDirector
-and SFX assets; C independently tests integration; A audits balance; D inspects
-rendered UI and engine audio. Root owns documentation, regression integration,
-recoverable commits, Windows export and verified private Git delivery.
+Started clean on private `work` at `d507600f64c3c55ff858a9d5bc5d3c938b6e5f6d`;
+recovery tag `pre-phase5d4-d507600`. Checkpoints through
+`1d16069d44db22d038db562bbec22570e362b5c4` are verified pushed. Main is unchanged;
+no public release or new Phase6 work. Original user saves are untouched.
 
-See [current report](PHASE_5D4_REAPERS_WRATH_REPORT.md). First contextual HUD milestone accepted: independent input QA 698/0; rendered
-UI 301/0 plus final clarity 209/0, with fixed camera across all five maps.
-Legacy affected suites: purchasing 908/0, premium UI 3483/0, branch UI 518/0,
-onboarding 92/0. Direct BUILD uses the selected pad; branch preview is free
-until explicit confirmation; current/next values use actual calculations.
-UI, source/assets and early evidence through 9db04a0 are VERIFIED PUSHED;
-remote work matched local HEAD. Core implementation checkpoint now contains
-15 unique bounded kill buffs, two Reaper phases and combined final domain,
-ten capped navigated minions, six paid Level1–10 machines/branches, ruleset3
-and migration, audio routing/mixing and sampled cues. Independent early gates:
-evolution648/0, defenses972/0, save264/0, boss111/0; developer728/0 and UI40/0.
-Audio774/0, voice regression5/0, target routing209/0; legacy audio491/0 and
-listening room256/0. Final integration, balance, screenshots, all regressions
-and Windows export remain IN PROGRESS. Old test fixtures are ported to finite boss phase guards and ruleset3 without
-dropping transaction checks. Final focused QA now7357/0 across10 suites;
-final-cutover balance49/0 with7 fresh checkpoint comparisons. Audio1018/0 across
-five suites. Confirmed post-core fixes: held-click/Escape cancellation, Decoy
-instance identity, same-frame multishot transformation, immediate death/domain
-cleanup, reused-model evolution banners, HUD warnings and camera safe region.
-D final dense fixture completed600 simulated seconds,764/0; final mixed-audio
-review continues. Full112-command regression starts next. Native Windows and
-human judgment remain UNVERIFIED.
+Baseline97/97 commands passed before changes. Final regular/extended coverage now
+passes all115 registered command gates, including corrected affected reruns.
+The initial112-command sweep took2131.205s and found15 failing gates; raw failures
+remain recorded alongside fixes. No warnings. Independent core QA7357/0,
+final transaction/preview delta302/0, Frost30/0, HP display6/0, audio1018/0.
+Final balance49 cases/0 integrity failures plus7 fresh checkpoint comparisons.
+All-six new buildings reach10 with earned Endless resources bywave12; tested
+Hell builds eventually lose at44 and74, rather than surviving indefinitely.
+
+Final authored rendering accepts new defense feedback99/0, actual NPC Crimson
+arrival19/0, own-room PhaseII9/0, earned Level10 frames141/0 and five-map teammate
+flows293/0. Final600-second rendered stress refresh, final Windows re-export and
+clean-tree/remote-equality receipt remain pending. Native Windows hardware,
+human usability, subjective sound/horror and owner/Adie approval are UNVERIFIED.
+
+B owns production; dedicated Audio specialist owns SFX; C independent QA;
+A balance; D real rendering/PCM; root integration, documentation and Git delivery.
+See [full report](PHASE_5D4_REAPERS_WRATH_REPORT.md) and
+[owner/Adie playtest guide](PHASE_5D4_HUMAN_PLAYTEST_GUIDE.md).
 
 ---
 

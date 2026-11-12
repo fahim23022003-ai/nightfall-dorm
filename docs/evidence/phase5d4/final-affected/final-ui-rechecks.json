@@ -1,0 +1,80 @@
+{
+  "before": {
+    "scripts/game.gd": "a03009cd322bb1b8a01b232e0c812f2d926b03b6bf54e680b61c8223f62f6854",
+    "scripts/bottom_context_panel.gd": "c043e2c7250a44f5376ddc47b9d5e7cf43835c2b30fde510ceda173ae138d6e8",
+    "scripts/building_stats.gd": "5e257be5d211f51a4162c7a27ade0da0ff1367d1c8e46cb6b76411dce3ebe391",
+    "scripts/wrath_presentation.gd": "b254b95b0b4cdc6d0648cb38394b0429c05908a322ab10a98adc1d1291c4bf9e",
+    "scripts/replay_interface.gd": "32b8c21a9ba62187aece33772e86518c09c3fe5237cc0d22045cd8d6196c6759",
+    "scripts/match_model.gd": "dd774e8198cce31fda47b86319b5363bdaab3c476215abb236b0cc2c8a9fd54c",
+    "scripts/strategy_catalog.gd": "0d68d899b9076a22e030ae76a11becc23c36e56c30ccdf8a6621451b46ad269a"
+  },
+  "after": {
+    "scripts/game.gd": "a03009cd322bb1b8a01b232e0c812f2d926b03b6bf54e680b61c8223f62f6854",
+    "scripts/bottom_context_panel.gd": "c043e2c7250a44f5376ddc47b9d5e7cf43835c2b30fde510ceda173ae138d6e8",
+    "scripts/building_stats.gd": "5e257be5d211f51a4162c7a27ade0da0ff1367d1c8e46cb6b76411dce3ebe391",
+    "scripts/wrath_presentation.gd": "b254b95b0b4cdc6d0648cb38394b0429c05908a322ab10a98adc1d1291c4bf9e",
+    "scripts/replay_interface.gd": "32b8c21a9ba62187aece33772e86518c09c3fe5237cc0d22045cd8d6196c6759",
+    "scripts/match_model.gd": "dd774e8198cce31fda47b86319b5363bdaab3c476215abb236b0cc2c8a9fd54c",
+    "scripts/strategy_catalog.gd": "0d68d899b9076a22e030ae76a11becc23c36e56c30ccdf8a6621451b46ad269a"
+  },
+  "source_unchanged": true,
+  "rows": [
+    {
+      "name": "phase5d4_qa_ui",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 16.393,
+      "log": "docs/evidence/phase5d4/final-affected/phase5d4_qa_ui-final.log"
+    },
+    {
+      "name": "phase5d4_qa_ui_branches",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 38.53,
+      "log": "docs/evidence/phase5d4/final-affected/phase5d4_qa_ui_branches-final.log"
+    },
+    {
+      "name": "phase5d4_qa_ui_threat",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 6.547,
+      "log": "docs/evidence/phase5d4/final-affected/phase5d4_qa_ui_threat-final.log"
+    },
+    {
+      "name": "phase5d3_qa_spectator",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 11.35,
+      "log": "docs/evidence/phase5d4/final-affected/phase5d3_qa_spectator-final.log"
+    },
+    {
+      "name": "premium_strategy_ui",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 10.642,
+      "log": "docs/evidence/phase5d4/final-affected/premium_strategy_ui-final.log"
+    },
+    {
+      "name": "visual_identity_culling",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 2.869,
+      "log": "docs/evidence/phase5d4/final-affected/visual_identity_culling-final.log"
+    },
+    {
+      "name": "phase5d4_qa_final_delta",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 9.586,
+      "log": "docs/evidence/phase5d4/final-affected/phase5d4_qa_final_delta-final.log"
+    },
+    {
+      "name": "phase5d4_dev_frost_preview",
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0.338,
+      "log": "docs/evidence/phase5d4/final-affected/phase5d4_dev_frost_preview-final.log"
+    }
+  ],
+  "passed": true
+}

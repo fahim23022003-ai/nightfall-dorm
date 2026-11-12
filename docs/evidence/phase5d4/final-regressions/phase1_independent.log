@@ -1,0 +1,15 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: PHASE1 INDEPENDENT: card double-click only previews without charge
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase1_independent.gd:11)
+       [1] run (res://tests/phase1_independent.gd:104)
+       [2] mouse (res://tests/phase1_independent.gd:30)
+ERROR: PHASE1 INDEPENDENT: confirm exits placement
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase1_independent.gd:11)
+       [1] run (res://tests/phase1_independent.gd:106)
+       [2] mouse (res://tests/phase1_independent.gd:30)
+PHASE1_INDEPENDENT_CHECKS=823 FAILURES=2

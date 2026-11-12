@@ -1,0 +1,19 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+AUDIT regression: eliminated-room transactions
+AUDIT regression: invalid costs cannot create currency
+AUDIT regression: paused and terminal purchase guards
+AUDIT regression: stalled frames do not tunnel walls
+AUDIT regression: fifth bot uses last nonreserved room
+AUDIT regression: cannot sleep after hunter entered room
+AUDIT regression: going to sleep reroutes hunter out of a different room
+AUDIT regression: eliminated resident dominates simultaneous terminal events
+AUDIT regression: all registered building upgrade ceilings and effects
+AUDIT regression: capped-level utility effects apply to actual resources and HP
+AUDIT regression: heavy turret and maximum-tier relay combat effects
+AUDIT regression: hunter growth and active retargeting
+AUDIT regression: idle turret cooldown cannot bank a burst
+AUDIT regression: idle hunter cannot bank door attacks
+AUDIT regression: exposed-player capture commits elimination exactly once
+AUDIT regression: overkill statistics use actual applied damage
+AUDIT_ASSERTIONS=194 FAILURES=0

@@ -119,7 +119,7 @@ func show_codes():
  paragraph("Preset: 25G / 0E, no perks, room traits enabled. Loaned Shield + Repair Kit, two each. All 20 owned item stacks remain untouched.",Vector2(477,258),698,65,17)
  ui.button("Generate code",Vector2(107,339),func():
   code_text=ChallengeCode.encode({"map":selected_map,"archetype":practice_archetype,"difficulty":difficulty,"seed":seed_number(),"preset":0,"gear":0})
-  notice="Generated normalized ruleset 1." if code_text!="" else "Seed must be 1–999999."
+  notice="Generated normalized ruleset %d." % ChallengeCode.RULESET if code_text!="" else "Seed must be 1–999999."
   show_codes(),340,44)
  var entry=input(code_text,Vector2(107,416),1068,func(text):
   code_text=text
@@ -139,7 +139,7 @@ func code_preview() -> String:
  var parsed=ChallengeCode.decode(code_text)
  if not parsed.ok:return "Paste a complete valid code, or generate one above."
  var c=parsed.config
- return "CODE RULES: %s · %s · %s · %dG /0E · no perks\nLoaned: %s, two each · room traits 1 · ruleset 3 / Godot 4.6 · Reaper after8s +55%HP /120s" % [MapCatalog.map(c.map).title,StrategyCatalog.ARCHETYPES[c.archetype].name,RankCatalog.DIFFICULTIES[c.difficulty].name,25 if int(c.preset)==0 else 15,"Shield + Repair" if int(c.gear)==0 else "Overdrive + Frost"]
+ return "CODE RULES: %s · %s · %s · %dG /0E · no perks\nLoaned: %s, two each · room traits 1 · ruleset 3 / Godot 4.6 · Reaper after8s +55%%HP /120s" % [MapCatalog.map(c.map).title,StrategyCatalog.ARCHETYPES[c.archetype].name,RankCatalog.DIFFICULTIES[c.difficulty].name,25 if int(c.preset)==0 else 15,"Shield + Repair" if int(c.gear)==0 else "Overdrive + Frost"]
 func show_practice():
  page("PRACTICE ROOM","Real combat values, temporary 20,000 Gold / 5,000 Electricity and temporary item stock. No XP, RM, spins, achievements, records, pity or permanent inventory changes.","practice_setup")
  ui.premium_icon("practice",Vector2(107,185),Vector2(100,100))

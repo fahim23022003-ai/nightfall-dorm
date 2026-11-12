@@ -129,8 +129,10 @@ func run():
  g.tick(0.1)
  check(not room.alive and g.hunter.hp == 1 and g.result == "defeat", "player elimination has defeat priority over pending lethal teammate impact")
  check(g.shots == launched and g.projectiles.is_empty(), "terminal breach cancels pending shots and prevents further firing")
- print("AUDIT regression: six building upgrade ceilings and effects")
+ print("AUDIT regression: all registered building upgrade ceilings and effects")
  room = RoomState.new()
+ room.layout=MapCatalog.map(MapCatalog.IDS[0]).rooms[0]
+ check(room.tile_count()>=Catalog.BUILDINGS.size(),"all-machine cap fixture has enough real map pads")
  room.sleeping = true
  room.bed_level = 4
  room.door_level = 4

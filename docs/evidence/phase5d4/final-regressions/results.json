@@ -1,0 +1,931 @@
+{
+  "baseline": "1d16069d44db22d038db562bbec22570e362b5c4",
+  "commands": 112,
+  "completed": 112,
+  "passed": false,
+  "seconds": 2131.205,
+  "historical_restored": [
+    "docs/evidence/advanced-items/balance-results.json",
+    "docs/evidence/boss/matrix-matched.json",
+    "docs/evidence/haunted/balance-results.json",
+    "docs/evidence/items/balance-results.json",
+    "docs/evidence/legendary/balance-results.json",
+    "docs/evidence/phase5d3/qa-ai-cases.json",
+    "docs/evidence/phase5d3/qa-code2-process-0-0.json",
+    "docs/evidence/phase5d3/qa-code2-process-0-10000.json",
+    "docs/evidence/phase5d3/qa-code2-process-2-0.json",
+    "docs/evidence/phase5d3/qa-code2-process-2-10000.json",
+    "docs/evidence/phase5d3/qa-code2-process-4-0.json",
+    "docs/evidence/phase5d3/qa-code2-process-4-10000.json",
+    "docs/evidence/phase5d4/audio-explosion-real-practice.json",
+    "docs/evidence/phase5d4/audio-unit-metrics.json",
+    "docs/evidence/replay/balance-damage-bound-results.json",
+    "docs/evidence/replay/qa-code-process-0-advanced.json",
+    "docs/evidence/replay/qa-code-process-0-beginner.json",
+    "docs/evidence/replay/qa-code-process-1-advanced.json",
+    "docs/evidence/replay/qa-code-process-1-beginner.json",
+    "docs/evidence/replay/qa-code-process-2-advanced.json",
+    "docs/evidence/replay/qa-code-process-2-beginner.json",
+    "docs/evidence/rewards/balance-results.json"
+  ],
+  "source_end": "1d16069d44db22d038db562bbec22570e362b5c4",
+  "rows": [
+    {
+      "name": "import",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 6.003
+    },
+    {
+      "name": "core",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.001
+    },
+    {
+      "name": "phase5d4_qa_evolution",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 85.203
+    },
+    {
+      "name": "phase5d4_qa_boss",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 21.018
+    },
+    {
+      "name": "phase5d4_qa_combat",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 5.008
+    },
+    {
+      "name": "phase5d4_qa_save",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 6.01
+    },
+    {
+      "name": "phase5d4_qa_defenses",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 33.077
+    },
+    {
+      "name": "phase5d4_qa_challenge",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 29.034
+    },
+    {
+      "name": "phase5d4_qa_items",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 27.04
+    },
+    {
+      "name": "phase5d4_qa_ui",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 16.015
+    },
+    {
+      "name": "phase5d4_qa_ui_branches",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 39.037
+    },
+    {
+      "name": "phase5d4_qa_ui_threat",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 7.019
+    },
+    {
+      "name": "phase5d4_audio",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 22.047
+    },
+    {
+      "name": "phase5d4_audio_reactions",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.003
+    },
+    {
+      "name": "phase5d4_audio_targets",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.002
+    },
+    {
+      "name": "phase5d4_audio_lifecycle",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.001
+    },
+    {
+      "name": "phase5d4_audio_explosion",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 18.011
+    },
+    {
+      "name": "phase5d3_qa_support_roles",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.006
+    },
+    {
+      "name": "phase5d3_qa_contact_guards",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 39.084
+    },
+    {
+      "name": "phase5d3_qa_audio",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 6.038
+    },
+    {
+      "name": "phase5d3_qa_economy",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 33.08
+    },
+    {
+      "name": "phase5d3_qa_structures",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.001
+    },
+    {
+      "name": "phase5d3_qa_migration",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.002
+    },
+    {
+      "name": "phase5d3_qa_ai",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 45.068
+    },
+    {
+      "name": "phase5d3_qa_spectator",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 12.059
+    },
+    {
+      "name": "phase5d3_qa_branch_ui",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 5.021
+    },
+    {
+      "name": "phase6_journey",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 10.031
+    },
+    {
+      "name": "phase6_inputs",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.006
+    },
+    {
+      "name": "replay_endless",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 23.068
+    },
+    {
+      "name": "replay_transactions",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 5.016
+    },
+    {
+      "name": "replay_codes",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 17.028
+    },
+    {
+      "name": "replay_pity",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.004
+    },
+    {
+      "name": "replay_migration",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.03
+    },
+    {
+      "name": "replay_practice",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 19.041
+    },
+    {
+      "name": "replay_facts_cosmetics",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.006
+    },
+    {
+      "name": "replay_retirement",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.001
+    },
+    {
+      "name": "replay_ui",
+      "exit_code": 0,
+      "engine_errors": true,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 18.014
+    },
+    {
+      "name": "premium_strategy_mechanics",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 149.313
+    },
+    {
+      "name": "premium_strategy_economy",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 6.007
+    },
+    {
+      "name": "premium_strategy_contracts",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 18.023
+    },
+    {
+      "name": "premium_strategy_migration",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.012
+    },
+    {
+      "name": "premium_strategy_ui",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 10.005
+    },
+    {
+      "name": "visual_identity_qa",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 6.032
+    },
+    {
+      "name": "visual_identity_ui",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 6.013
+    },
+    {
+      "name": "visual_identity_audio",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.005
+    },
+    {
+      "name": "visual_identity_culling",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 3.001
+    },
+    {
+      "name": "visual_identity_navigation",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 37.111
+    },
+    {
+      "name": "haunted_qa",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 33.079
+    },
+    {
+      "name": "haunted_economy",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.006
+    },
+    {
+      "name": "haunted_balance",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 63.067
+    },
+    {
+      "name": "onboarding_qa",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.006
+    },
+    {
+      "name": "onboarding_flow",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 16.01
+    },
+    {
+      "name": "onboarding_economy",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.006
+    },
+    {
+      "name": "rewards_qa",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 8.018
+    },
+    {
+      "name": "rewards_combos",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 4.014
+    },
+    {
+      "name": "rewards_balance",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 132.202
+    },
+    {
+      "name": "legendary_qa",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 37.054
+    },
+    {
+      "name": "legendary_combos",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 13.021
+    },
+    {
+      "name": "legendary_balance",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 144.211
+    },
+    {
+      "name": "advanced_items_qa",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 29.034
+    },
+    {
+      "name": "advanced_item_combos",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 3.014
+    },
+    {
+      "name": "advanced_items_balance",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 77.169
+    },
+    {
+      "name": "items_qa",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 55.029
+    },
+    {
+      "name": "items_activation_feedback",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 3.003
+    },
+    {
+      "name": "items_balance",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 78.107
+    },
+    {
+      "name": "mythic_progression",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 4.02
+    },
+    {
+      "name": "mythic_edges",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.003
+    },
+    {
+      "name": "boss_architecture",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 3.002
+    },
+    {
+      "name": "boss_qa",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 42.037
+    },
+    {
+      "name": "boss_audio",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 3.002
+    },
+    {
+      "name": "boss_matrix",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 67.108
+    },
+    {
+      "name": "difficulty_behavior",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 15.014
+    },
+    {
+      "name": "difficulty_matrix",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 105.176
+    },
+    {
+      "name": "maps_core",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 5.02
+    },
+    {
+      "name": "maps_integration",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 40.036
+    },
+    {
+      "name": "maps_ui",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 7.006
+    },
+    {
+      "name": "maps_simulations",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 157.231
+    },
+    {
+      "name": "campaign_profile",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 7.011
+    },
+    {
+      "name": "campaign_flow",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 11.011
+    },
+    {
+      "name": "campaign_simulations",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 17.074
+    },
+    {
+      "name": "horror_events",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.008
+    },
+    {
+      "name": "horror_feedback",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.001
+    },
+    {
+      "name": "horror_ui",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 3.002
+    },
+    {
+      "name": "phase1_building",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 3.002
+    },
+    {
+      "name": "phase1_independent",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 4.003
+    },
+    {
+      "name": "mobile_controls",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 4.003
+    },
+    {
+      "name": "mobile_layout",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 3.002
+    },
+    {
+      "name": "audio_system",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 3.002
+    },
+    {
+      "name": "ranked_progression",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.007
+    },
+    {
+      "name": "phase2_ui",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 7.011
+    },
+    {
+      "name": "phase2_hunter",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.013
+    },
+    {
+      "name": "projectiles",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.006
+    },
+    {
+      "name": "redesign_projectile_edges",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.021
+    },
+    {
+      "name": "redesign_ui",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 7.015
+    },
+    {
+      "name": "scene_smoke",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 5.008
+    },
+    {
+      "name": "overhaul_ui",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 4.003
+    },
+    {
+      "name": "furniture_collision",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.002
+    },
+    {
+      "name": "ui_availability",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 3.002
+    },
+    {
+      "name": "simulate_matches",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 4.004
+    },
+    {
+      "name": "audit_regressions",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 1.01
+    },
+    {
+      "name": "audit_properties",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.002
+    },
+    {
+      "name": "audit_rates",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.016
+    },
+    {
+      "name": "audit_timesteps",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 19.072
+    },
+    {
+      "name": "audit_matrix",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 36.064
+    },
+    {
+      "name": "phase2_matrix",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 12.013
+    },
+    {
+      "name": "strategy_balance_check",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 4.006
+    },
+    {
+      "name": "endless_balance_check",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 2.005
+    },
+    {
+      "name": "profile_0_cleanup",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.001
+    },
+    {
+      "name": "profile_1_write",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.009
+    },
+    {
+      "name": "profile_2_read",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.002
+    },
+    {
+      "name": "profile_3_cleanup",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.001
+    },
+    {
+      "name": "startup",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 4.009
+    }
+  ],
+  "runtime_unchanged": false
+}

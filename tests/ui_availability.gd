@@ -78,7 +78,7 @@ func run():
  room.build("turret",0)
  game.ui.update_match()
  check(game.ui.actions["build:generator"].disabled and not game.ui.actions.upgrade.disabled,"occupied tile changes available actions")
- check("20G / 3E" in game.ui.actions.upgrade.text,"selected upgrade price visible")
+ check("20 Gold / 3 Electricity" in game.ui.actions.upgrade.text,"selected upgrade price visible")
  game.model.running = false
  game.ui.update_match()
  check(game.ui.actions.upgrade.disabled and "Paused" in game.ui.actions.upgrade.tooltip_text,"pause availability explained")

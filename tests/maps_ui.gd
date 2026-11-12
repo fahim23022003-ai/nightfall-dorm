@@ -32,10 +32,16 @@ func run():
  preload("res://tests/onboarding_test_support.gd").skip(game)
  await process_frame
  game.set_process(false)
- for stage in StageCatalog.STAGES:
+ # Grant stage access only; no gameplay/economy claim is made by this input fixture.
+ for known in StageCatalog.STAGES:
+  game.profile.campaign_records[known.id]={"clears":1,"best_time":100.0,"best_damage":1000.0,"best_xp":100,"difficulty":"standard","first_match_id":1}
+ game.profile.next_match_id=maxi(2,game.profile.next_match_id)
+ var cases=StageCatalog.STAGES.duplicate()
+ cases.append({"id":"legacy","map":"legacy"})
+ for stage in cases:
   for index in range(6):
-   game.start_match()
-   game.model.configure_stage(stage.id)
+   check(game.start_match() if stage.id=="legacy" else game.start_stage(stage.id),"actual game start succeeds "+stage.id)
+   check(game.model.map_id==stage.map,"input test uses the intended map, never silently falls back to legacy")
    game.model.claim_room(index)
    var room=game.model.player()
    game.model.player_position=room.bed_position()
@@ -52,14 +58,13 @@ func run():
    game.ui.update_match()
    for tile in range(room.tile_count()):
     var screen=game.world_to_screen(room.tile_position(tile))
-    check(Rect2(20,80,860,540).has_point(screen),"all pads visible in focused build area")
-    check(not game.ui.context_box.get_global_rect().has_point(screen),"inspector clears every pad")
+    check(Rect2(60,135,1160,320).has_point(screen),"all pads visible in focused build area")
+    check(not game.ui.context_box.get_global_rect().has_point(screen),"inspector clears every pad: %s room%d tile%d at%s panel%s" % [stage.id,index,tile,screen,game.ui.context_box.get_global_rect()])
    var before=Vector2(room.gold,room.electricity)
    var card=game.ui.actions["build:repair"].get_global_rect().get_center()
    await click(card)
    await click(card,true)
-   await click(game.ui.confirm_button.get_global_rect().get_center())
-   check(room.buildings.has(last) and room.buildings.size()==1,"double card click then confirm buys highest pad once")
+   check(room.buildings.has(last) and room.buildings.size()==1,"direct BUILD plus duplicate click buys highest pad once")
    check(Vector2(room.gold,room.electricity)==before-Vector2(40,5),"highest pad charge exact")
    await click(game.world_to_screen(room.tile_position(last)))
    game.ui.update_match()

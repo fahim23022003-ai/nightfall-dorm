@@ -312,6 +312,10 @@ func damage_bounds():
   var r=m.player();r.gold=100000;r.electricity=100000
   for i in range(4):m.upgrade_bed();m.upgrade_door()
   m.bot_claimed=5;m.endless.wave=125 if boss else 124;m.endless._prepare_hunter(m,false)
+  # Isolate the pre-existing charged/Soul Siege damage composition. New Wrath
+  # casts may legitimately preempt its warning; mixed execution is exercised
+  # separately in boss_matrix and the Phase5D4 actual-model suites.
+  m.wrath.recovery=30.0
   m.time=m.preparation+120;m.hunter.position=r.door_approach();m.hunter.target=0;m.hunter.state=HunterState.State.ATTACK;m.hunter.cooldown=0
   if not boss:m.hunter.encounter_attacks=2
   var full_hp=r.door_hp
@@ -327,7 +331,7 @@ func damage_bounds():
    if raw>0:break
   var expected=(22.0+18.0)*1.5*9.0*(1.07 if boss else 1.2)*1.25*(1.6 if boss else 1.9)
   if not is_equal_approx(raw,expected) or raw>=full_hp or m.items.legendary_used!=1:failures+=1;push_error("Controlled actual damage composition/bound changed")
-  var row={"scope":"CONTROLLED wave/time/position/wallet fixture; actual Hell+Crusher+Curse+growth1 charged/SoulSiege path; not natural reachability","wave":m.endless.wave,"reaper":m.hunter.transformed,"attack":"Soul Siege" if boss else "Charged Crusher","base_damage":m.hunter.damage,"observed_hit":raw,"expected_from_registered_factors":expected,"full_power_door_hp":full_hp,"door_remaining":r.door_hp,"warnings":warnings,"stock_remaining":p.inventory,"legendary_used":m.items.legendary_used,"growth":m.hunter.applied_growth,"level":m.hunter.level,"scaling":m.endless.scaling()}
+  var row={"scope":"CONTROLLED wave/time/position/wallet fixture; Wrath auto-casts held30s to isolate actual Hell+Crusher+Curse+growth1 charged/SoulSiege composition; mixed casts tested separately; not natural reachability","wave":m.endless.wave,"reaper":m.hunter.transformed,"attack":"Soul Siege" if boss else "Charged Crusher","base_damage":m.hunter.damage,"observed_hit":raw,"expected_from_registered_factors":expected,"full_power_door_hp":full_hp,"door_remaining":r.door_hp,"warnings":warnings,"stock_remaining":p.inventory,"legendary_used":m.items.legendary_used,"growth":m.hunter.applied_growth,"level":m.hunter.level,"scaling":m.endless.scaling()}
   rows.append(row);print("ENDLESS_BALANCE_DAMAGE_BOUND ",JSON.stringify(row))
   for suffix in ["",".bak",".tmp"]:
    if FileAccess.file_exists(p.path+suffix):DirAccess.remove_absolute(p.path+suffix)

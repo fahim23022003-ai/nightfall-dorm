@@ -450,7 +450,8 @@ func focus_camera(snap: bool=false,delta: float=0.016):
   if model.hunter.target==room.index and model.hunter.state==HunterState.State.ATTACK:
    goal=(room.center().lerp(model.hunter.position,0.38))+MAP_OFFSET
    zoom=1.65*zoom_factor
- if model.map_id!="legacy":
+ # Legacy desktop rooms share the same panel-independent safe framing.
+ if model.map_id!="legacy" or (not mobile_mode and not full_map):
   if full_map:
    var extent=model.map_bounds().grow(35)
    zoom=minf(1220.0/extent.size.x,500.0/extent.size.y)
@@ -460,6 +461,7 @@ func focus_camera(snap: bool=false,delta: float=0.016):
    var extent=observed.bounds().grow(35)
    # Fixed room framing includes heads/scythe above upward-facing doors.
    extent=extent.expand(observed.door_approach()+Vector2(0,-100))
+   extent=extent.expand(observed.door_approach()+Vector2(0,40))
    var available=Vector2(1160,320)
    zoom=minf(available.x/extent.size.x,available.y/extent.size.y)*zoom_factor
    var desired=Vector2(640,295)

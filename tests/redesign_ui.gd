@@ -64,18 +64,17 @@ func run():
   await process_frame
   var room=game.model.player()
   var focus_zoom=game.camera.zoom.x
-  check(focus_zoom>1.5,"room-focused zoom for room "+str(index))
+  check(focus_zoom>.5 and focus_zoom<=2,"room-focused zoom for room "+str(index))
   for tile in range(6):
    var screen=game.world_to_screen(room.tile_position(tile))
-   check(Rect2(0,76,900,562).has_point(screen),"floor tile projects into usable map area room="+str(index)+" tile="+str(tile))
+   check(Rect2(60,135,1160,320).has_point(screen),"floor tile projects into usable map area room="+str(index)+" tile="+str(tile))
   await click(game.world_to_screen(room.tile_position(1)))
   check(game.selected_tile==1 and game.ui.context_open,"actual click selects second tile in room "+str(index))
   check(game.ui.context_mode=="build","empty tile opens building palette")
   var initial_gold=room.gold
   await click(game.ui.actions["build:generator"].get_global_rect().get_center())
-  check(game.pending_build=="generator" and room.buildings.is_empty() and room.gold==initial_gold,"card begins preview without purchase room "+str(index))
-  check(game.placement_reason()=="" and not game.ui.confirm_button.disabled,"valid preview enables confirmation")
-  await click(game.ui.confirm_button.get_global_rect().get_center())
+  check(game.pending_build=="" and room.buildings.has(1),"direct BUILD completes purchase without a preview room "+str(index))
+  check(game.ui.context_mode=="upgrade" and game.ui.context_open,"new purchase remains in the same building inspector")
   check(room.buildings.has(1) and room.buildings[1].kind=="generator","actual confirmation builds on selected tile")
   check(is_equal_approx(room.gold,initial_gold-Catalog.BUILDINGS.generator.gold),"confirmation charges exactly once")
   check(game.pending_build=="" and not game.confirm_placement(),"duplicate confirmation cannot charge twice")
@@ -84,7 +83,7 @@ func run():
   game.cancel_placement()
   var after_build=room.gold
   await click(game.world_to_screen(room.tile_position(2)))
-  await click(game.ui.actions["build:turret"].get_global_rect().get_center())
+  game.begin_placement("turret") # Explicit retained preview API; desktop cards now purchase directly.
   await key(KEY_ESCAPE)
   check(game.pending_build=="" and room.gold==after_build and not room.buildings.has(2),"Escape cancels without charge")
   check(game.model.running,"cancel placement does not unexpectedly pause")
@@ -100,8 +99,8 @@ func run():
   game.toggle_map()
   game.focus_camera(true)
   check(not game.full_map and is_equal_approx(game.camera.zoom.x,focus_zoom),"focus restores correct room zoom")
- # Reproduce the PC report: move from a double-clicked card across the map
- # before reaching Confirm. Mere mouse motion must never relocate the preview.
+ # Reproduce the PC report through the new direct purchase flow: double-click
+ # then move across the map. No following preview, extra purchase or upgrade.
  for kind in Catalog.BUILDINGS:
   fixture(0)
   var resident=game.model.player()
@@ -109,10 +108,10 @@ func run():
   game.ui.update_match()
   await click(game.world_to_screen(resident.tile_position(2)))
   var card=game.ui.actions["build:"+kind].get_global_rect().get_center()
+  var funds=Vector2(resident.gold,resident.electricity)
   await click(card)
   await click(card,true)
   var locked=resident.tile_position(2)
-  var funds=Vector2(resident.gold,resident.electricity)
   for point in [resident.center()+Vector2(0,140),resident.tile_position(4)]:
    var motion=InputEventMouseMotion.new()
    motion.position=root.get_final_transform()*game.world_to_screen(point)
@@ -120,15 +119,15 @@ func run():
    Input.parse_input_event(motion)
    await process_frame
    game.ui.update_match()
-   check(game.preview_position==locked and game.selected_tile==2 and game.placement_on_tile,"mouse travel leaves preview locked: "+kind)
-   check(game.placement_reason()=="" and not game.ui.confirm_button.disabled,"mouse travel leaves Confirm enabled: "+kind)
-  await click(game.ui.confirm_button.get_global_rect().get_center())
-  check(resident.buildings.has(2) and game.pending_build=="","pointer travel then Confirm purchases chosen pad: "+kind)
+   check(resident.buildings.has(2) and resident.tile_position(2)==locked and game.selected_tile==2,"mouse travel leaves purchased machine on its selected pad: "+kind)
+   check(game.pending_build=="" and resident.buildings[2].level==1,"mouse travel leaves no stuck preview or accidental upgrade: "+kind)
+  check(resident.buildings.has(2) and game.pending_build=="","pointer travel preserves direct purchase on chosen pad: "+kind)
   check(Vector2(resident.gold,resident.electricity)==funds-Vector2(Catalog.BUILDINGS[kind].gold,Catalog.BUILDINGS[kind].power),"pointer travel purchase charges once: "+kind)
   var paid=Vector2(resident.gold,resident.electricity)
   await click(game.world_to_screen(resident.tile_position(1)))
   game.ui.update_match() # fixture freezes processing; refresh newly selected pad actions
-  await click(game.ui.actions["build:"+kind].get_global_rect().get_center())
+  game.begin_placement(kind) # Retained confirmation/cancellation path used by touch controls.
+  await process_frame
   var travel=InputEventMouseMotion.new()
   travel.position=root.get_final_transform()*game.world_to_screen(resident.center()+Vector2(0,140))
   travel.global_position=travel.position
@@ -148,9 +147,10 @@ func run():
  check(game.full_map,"M key opens strategic overview")
  await click(game.world_to_screen(room.tile_position(4)))
  check(game.selected_tile==4 and not game.full_map and game.ui.context_mode=="build","clicking owned tile in overview refocuses room and selects correct tile")
- var previous_tutorial=game.tutorial_enabled
+ var previous_help=game.ui.help_open
  await key(KEY_G)
- check(game.tutorial_enabled!=previous_tutorial,"G key toggles contextual tutorial")
+ check(game.ui.help_open!=previous_help,"G key toggles secondary contextual help")
+ await key(KEY_G)
  game.begin_placement("generator")
  var gold_before_preview_move=room.gold
  await click(game.world_to_screen(room.tile_position(3)))

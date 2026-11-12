@@ -48,7 +48,7 @@ func update():
   threat=threat or m.minions.any(func(u):return u.hp>0 and u.target==r.index and u.position.distance_to(r.door_approach())<=3)
   var approaching=m.hunter.target==r.index and m.hunter.state==HunterState.State.MOVE
   var state="DEAD" if not r.alive else "BREACHED" if r.door_hp<=0 else "UNDER ATTACK" if threat else "APPROACHING" if approaching else "Alive"
-  rows[i].text="%s · Room %02d · %s\nDoor %d/%d · Click to spectate" % [r.survivor_name(),r.index+1,state,r.door_hp,r.max_hp()]
+  rows[i].text="%s · Room %02d · %s\nDoor %d/%d · Click to spectate" % [r.survivor_name(),r.index+1,state,roundi(r.door_hp),roundi(r.max_hp())]
   rows[i].tooltip_text="Observe only; your character and ownership stay in your room."
   rows[i].modulate=Color("F4B5B5") if threat or not r.alive else Color.WHITE
  var active=game.watched_room>=0 and game.watched_room<m.rooms.size()

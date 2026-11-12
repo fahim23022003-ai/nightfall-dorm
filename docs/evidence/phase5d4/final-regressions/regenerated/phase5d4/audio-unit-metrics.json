@@ -1,0 +1,51 @@
+{
+ "0.65": {
+  "effects": 0.65,
+  "fixture": "direct event unit playback; not gameplay",
+  "fullscale_samples": 0,
+  "music": 0,
+  "peak": 0.054718017578125,
+  "rms": 0.00812303142432416,
+  "seconds": 4.45823129251701
+ },
+ "1.0": {
+  "effects": 1.0,
+  "fixture": "direct event unit playback; not gameplay",
+  "fullscale_samples": 0,
+  "music": 0,
+  "peak": 0.084197998046875,
+  "rms": 0.0122383474193974,
+  "seconds": 4.64399092970522
+ },
+ "checks": 782,
+ "children": 28,
+ "failures": 0,
+ "note": "Actual AudioDirector cue-unit playback, not a full gameplay/10-minion stress claim. Human audition unverified.",
+ "reactions": {
+  "fixture": "two synthetic routing records with actual recorded voice players, not gameplay kill proof",
+  "overlap": false,
+  "played_deaths": 2,
+  "played_evolutions": 2,
+  "seconds": 10.4954195011338,
+  "sequence": [
+   {
+    "time": 0.0499999999999972,
+    "type": "death"
+   },
+   {
+    "time": 3.24999999999982,
+    "type": "evolution"
+   },
+   {
+    "time": 5.14999999999971,
+    "type": "death"
+   },
+   {
+    "time": 7.84999999999955,
+    "type": "evolution"
+   }
+  ],
+  "sequence_time_basis": "unit-fed AudioDirector delta, not wall-clock; raw PCM duration is measured"
+ },
+ "streams": 204
+}

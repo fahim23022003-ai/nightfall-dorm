@@ -114,6 +114,9 @@ func challenge_flow():
  await click(find("Generate code"));await settle()
  var code=game.ui.replay_ui.code_text
  check(ChallengeCode.decode(code).ok,"actual Generate creates valid complete shareable code")
+ var preview=game.ui.replay_ui.code_preview()
+ check(preview.contains("ruleset %d" % ChallengeCode.RULESET) and preview.contains("55%HP") and preview.contains(RankCatalog.DIFFICULTIES[game.ui.replay_ui.difficulty].name),"generated-code preview visibly formats actual rules, HP threshold and selected difficulty")
+ check(controls(game.ui.panel,Label).any(func(l):return l.is_visible_in_tree() and l.text==preview),"generated-code conditions are rendered in the actual challenge screen")
  await click(find("Copy code"));await settle()
  check(game.ui.replay_ui.notice.contains("Clipboard") or game.ui.replay_ui.notice.contains("Copied"),"actual Copy handles available/unavailable clipboard explicitly")
  await click(find("Start coded challenge"));await settle()

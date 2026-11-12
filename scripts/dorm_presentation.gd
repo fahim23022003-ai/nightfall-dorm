@@ -386,7 +386,7 @@ func door_scene(c, room):
   if room.index==c.model.player_room or targeted:
    var hp_box=Rect2(p+Vector2(43,-21),Vector2(79,17))
    c.draw_style_box(frame(Color("263746"),Color("de8b79") if targeted else Color("7BE3A1"),4),hp_box)
-   text(c,"%d/%d" % [room.door_hp,room.max_hp()],hp_box.position+Vector2(6,12),10)
+   text(c,"%d/%d" % [roundi(room.door_hp),roundi(room.max_hp())],hp_box.position+Vector2(6,12),10)
    bar(c,p+Vector2(46,0),73,room.door_hp/room.max_hp())
    if targeted:
     c.draw_arc(p+Vector2(0,-9),39,0,TAU,40,Color(0.95,0.61,0.48,0.4+sin(clock*6)*0.2),2)

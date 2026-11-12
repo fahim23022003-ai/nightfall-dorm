@@ -221,4 +221,4 @@ func render_door(c,p,room):
   if label_screen.y>75 and label_screen.y<150:
    where+=c.get_canvas_transform().basis_xform_inv(Vector2(0,155-label_screen.y))
   p.bar(c,where,70,room.door_hp/room.max_hp())
-  if room.owner==0 or targeted: p.text(c,"%d/%d" % [room.door_hp,room.max_hp()],where+Vector2(0,-5),10,Color("F1D5C7"))
+  if room.owner==0 or targeted: p.text(c,"%d/%d" % [roundi(room.door_hp),roundi(room.max_hp())],where+Vector2(0,-5),10,Color("F1D5C7"))
