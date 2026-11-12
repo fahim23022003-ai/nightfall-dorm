@@ -2,6 +2,7 @@ class_name Catalog
 extends RefCounted
 
 const BUILDING_REFUND_FRACTION = 0.5
+const SURVIVOR_NAMES = ["You","Alex","Mia","Rowan","Kai","Nora"]
 const PREPARATION = 30.0
 const BED_INCOME = [2.0, 4.0, 8.0, 15.0, 26.0]
 const BED_COST = [25, 70, 160, 350]

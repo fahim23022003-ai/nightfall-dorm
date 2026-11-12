@@ -91,3 +91,40 @@ for index,(name,(seconds,start,end,noise,harmonic,pulses)) in enumerate(SFX.item
         out.append(.45*env*((1-noise)*tone+noise*filtered))
     write(name,out)
 print(f'Generated {len(SFX)+6} original WAV files at {ROOT}')
+
+# Horror/immersion expansion: these are synthetic vocal-like formants, not
+# recordings or a real person's voice. Deterministic jitter/noise creates breath.
+for variant in range(4):
+    name='door_reaction' if variant==3 else f'scream_{variant+1}'
+    seconds=0.82+variant*.08
+    rng=random.Random(28000+variant)
+    out=[]; phase=0.; breath=0.
+    for i in range(int(seconds*RATE)):
+        t=i/RATE; p=t/seconds
+        hz=(330+variant*47)*(1+.28*math.sin(math.pi*p))*(1-.32*p)
+        hz*=1+.018*math.sin(TAU*(7+variant)*t)+rng.uniform(-.006,.006)
+        phase+=TAU*hz/RATE
+        breath=.4*breath+.6*rng.uniform(-1,1)
+        voiced=sum(math.sin(phase*n)*math.exp(-((n*hz-1100)/900)**2)/n for n in range(1,8))
+        env=math.sin(math.pi*p)**.75*min(1,t/.05,(seconds-t)/.1)
+        out.append(.43*env*(voiced+.22*breath))
+    write(name,out)
+NEW_SFX={
+ 'sale':(.24,600,260,.12,1.7,3),
+ 'refund':(.34,520,1040,.03,2.1,4),
+ 'insufficient_gold':(.26,180,110,.05,1.5,2),
+ 'insufficient_power':(.29,145,75,.4,3.2,3),
+ 'eerie':(1.7,290,85,.3,1.414,2),
+}
+for index,(name,(seconds,start,end,noise,harmonic,pulses)) in enumerate(NEW_SFX.items()):
+    rng=random.Random(31000+index); out=[]; phase=0.; filtered=0.
+    for i in range(int(seconds*RATE)):
+        t=i/RATE; p=t/seconds
+        phase+=TAU*(start+(end-start)*p)/RATE
+        pulse=(t/(seconds/pulses))%1
+        env=math.sin(math.pi*min(1,pulse*1.8))**2*math.exp(-pulse*2)
+        env*=min(1,(seconds-t)/.018)
+        filtered=.45*filtered+.55*rng.uniform(-1,1)
+        out.append(.4*env*((1-noise)*(math.sin(phase)+.23*math.sin(phase*harmonic))+noise*filtered))
+    write(name,out)
+print('Generated 9 additional original horror/action WAVs')

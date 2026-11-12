@@ -108,6 +108,7 @@ func tick(delta: float, match_state):
   if target < 0:
    return
   state = State.MOVE
+  if delta>0: match_state.record_event("approach",target)
  var room = match_state.rooms[target]
  var approach = room.door_position()+Vector2(0,22 if target < 3 else -22)
  if state == State.MOVE:
@@ -119,6 +120,7 @@ func tick(delta: float, match_state):
   navigate(waypoint,delta)
   if position.distance_to(approach)<3:
    state = State.ATTACK if room.closed and room.door_hp > 0 else State.BREACH
+   if delta>0: match_state.record_event("encounter",target)
  elif state == State.ATTACK:
   if room.door_hp <= 0 or not room.closed:
    state = State.BREACH
@@ -126,6 +128,8 @@ func tick(delta: float, match_state):
    var old_hp=room.door_hp
    room.door_hp = maxf(0,room.door_hp-damage)
    room.door_damage_taken+=old_hp-room.door_hp
+   match_state.record_event("door_damage",target,{"damage":old_hp-room.door_hp,"hp":room.door_hp,"max_hp":room.max_hp()})
+   if old_hp>0 and room.door_hp<=0: match_state.record_event("door_break",target)
    room.try_rescue()
    room.damage_flash = 0.25
    attacks += 1
@@ -147,6 +151,7 @@ func tick(delta: float, match_state):
    room.alive = false
    room.sleeping = false
    match_state.eliminations += 1
+   match_state.record_event("elimination",target)
    exit_corridor = false
    state = State.EXIT
 

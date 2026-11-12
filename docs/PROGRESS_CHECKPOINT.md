@@ -1,3 +1,39 @@
+# Nightfall Dorm 3.0 — Phase 2 horror/immersion (12 November 2026, Singapore)
+
+Continued clean `work` at `f66c0265440b9ce46f27e13ec039070bd696ffea`.
+Recovery: local tag `pre-horror-phase2-f66c026` and preserved Git history.
+Phase1 anchored placement and exact50% paid-investment refunds remain intact.
+
+Implemented exact event-driven door damage numbers/shake/red flash/cracks and
+destruction; genuine prioritized/animated teammate danger alerts with stable
+survivor names; bounded map indicators; three original scream variations with
+encounter cooldowns/no overlap; destruction reaction, sale/refund, separate
+resource-failure and eerie cues. Existing music/proximity crossfades,37 original
+sounds, saved volume preferences, AI/economy/rank rules and save schema preserved.
+All46 audio resources import. Notifications ignore input and avoid build controls.
+
+Verification: full regular `tools/check.sh` exited0 (new319 independent events,
+5UI failures,17feedback; existing157audio,314/421Phase1,221camera/UI; all other
+suites,20ktransactions/175941invariants,6rate scenarios,12matches9W/3L,
+separate-process saves and main startup passed). Final alert-escalation polish
+and rapid-hit label merging then passed21feedback checks. No unresolved tested failures. Fixed event-relay
+reference cycle, terminal audio omission and stale lower-priority notifications and rapid-hit label overlap.
+
+Agent B primary development; specialist audio/visual implementation, independent
+Agent C QA and actual Agent D render/mix inspection used at bounded milestones.
+Real Linux render fixtures and non-silent/unclipped engine mix are retained in
+`docs/evidence/horror/`. Native Windows, subjective listening and target-device
+performance remain UNVERIFIED. Windows export/project settings unchanged.
+No Android SDK/APK or future phases. Full scope/evidence:
+[HORROR_IMMERSION_REPORT.md](HORROR_IMMERSION_REPORT.md).
+
+Next: download latest `work` and playtest on Windows Godot4.6.3: far teammate
+encounters, player low-health door, construction/sale/repair, volume controls and
+both outcomes. Preserve progression/saves; do not start later features.
+Final response records the actual committed/pushed SHA after remote verification.
+
+---
+
 # Phase 1 PC placement correction — anchored preview (12 November 2026, Singapore)
 
 Continued `work` at `4f336c60086c8aee8be1b125fe442d432e2ceaed`.

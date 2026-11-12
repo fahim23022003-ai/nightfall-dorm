@@ -180,6 +180,7 @@ func render(c):
    else:
     var key="player_sleep" if room.owner==0 else "bot_sleep_%d" % posmod(room.owner-1,5)
     c.draw_texture_rect(cartoon[key],Rect2(OFFSET+room.bed_position()+Vector2(-22,-30+sin(clock*1.7+room.index)*0.6),Vector2(44,46)),false)
+    if room.owner>0: text(c,room.survivor_name(),OFFSET+room.bed_position()+Vector2(-17,-34),10,Color("E2D9C8"))
   elif room.owner>0 and room.alive: resident(c,room.resident_position,room.index,false)
   elif not room.alive and death_ages.get(room.index,2.0)<0.9:
    var age=death_ages[room.index]
@@ -213,6 +214,7 @@ func render(c):
    for i in range(6):
     var v=Vector2.from_angle(i*TAU/6)*(8+(1-fraction)*15)
     c.draw_line(p+v,p+v*1.3,Color(color,fraction),2)
+ if c.get("horror")!=null: c.horror.render_world(c)
  for f in c.floating:
   sprite(c,"coin",OFFSET+f.position+Vector2(-12,-5),Vector2(13,13),Color(1,1,1,f.life))
   text(c,f.text,OFFSET+f.position,14,Color(0.96,0.77,0.26,f.life))
@@ -263,11 +265,12 @@ func room_scene(c, room: RoomState, owned: bool):
 
 func door_scene(c, room):
  var p = OFFSET+room.door_position()
- if room.damage_flash>0: p+=Vector2(sin(clock*90),cos(clock*73))*room.damage_flash*6
+ if c.get("horror")!=null: p+=c.horror.door_shake(room.index)
+ elif room.damage_flash>0: p+=Vector2(sin(clock*90),cos(clock*73))*room.damage_flash*6
  c.draw_style_box(frame(Color("607D8B"),Color("263746"),4),Rect2(p-Vector2(32,10),Vector2(64,36)))
  sprite(c,"shadow",p+Vector2(0,13),Vector2(83,39))
  if room.door_hp>0:
-  var tint = Color(1.6,1.25,1.2) if room.damage_flash>0 else Color.WHITE
+  var tint = Color(1.65,0.65,0.65) if room.damage_flash>0 else Color.WHITE
   if room.closed:
    c.draw_texture_rect(cartoon["door_%d" % (room.door_level+1)],Rect2(p+Vector2(-36,-41),Vector2(73,61)),false,tint)
   else:
@@ -296,6 +299,7 @@ func resident(c, pos: Vector2, index: int, player: bool):
  var bob=sin(clock*2)*0.4 if not walk else 0.0
  sprite(c,"shadow",OFFSET+pos+Vector2(0,12),Vector2(35,18))
  c.draw_texture_rect(texture,Rect2(OFFSET+pos+Vector2(-18,-40+bob),Vector2(36,52)),false)
+ if not player: text(c,c.model.rooms[index].survivor_name(),OFFSET+pos+Vector2(-17,-44),10,Color("E2D9C8"))
 
 func hunter(c,h):
  var name="hunter_move" if int(clock*4)%2 else "hunter_idle"

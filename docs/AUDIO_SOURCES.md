@@ -1,6 +1,6 @@
 # Original audio sources and implementation
 
-All 37 files under `assets/audio/` are original, locally generated PCM WAV assets. They contain no recordings, samples, commercial-game material, external music, paid assets, or downloaded sound libraries. Their complete reproducible source is `tools/audio/generate_audio.py`, written for Nightfall Dorm using Python's standard library (`math`, `random`, `struct`, `wave`). No third-party audio license or attribution applies. These are original project assets; distribution follows the project owner's license.
+All 46 files under `assets/audio/` are original, locally generated PCM WAV assets. They contain no recordings, samples, commercial-game material, external music, paid assets, or downloaded sound libraries. Their complete reproducible source is `tools/audio/generate_audio.py`, written for Nightfall Dorm using Python's standard library (`math`, `random`, `struct`, `wave`). No third-party audio license or attribution applies. These are original project assets; distribution follows the project owner's license.
 
 Run `python tools/audio/generate_audio.py` from the checkout to reproduce them. Noise is deterministically seeded. Files are mono, signed 16-bit PCM at 22,050 Hz. Tracked Godot import settings disable compression, preserving these samples. Runtime loads through ResourceLoader (including packed-resource remaps) and falls back to a raw WAV only when an import is unavailable; no export was created during this task. Generation limits peaks to 0.62 full scale. The soundtrack uses an original eight-part minor/dissonant phrase over beating low drones; the danger arrangement adds a heartbeat-like pulse and unstable upper partials. Continuous drone frequencies fit integer cycles within each loop; transient phrases fade at the boundaries.
 
@@ -38,3 +38,41 @@ Hunter proximity uses actual distance to the player's door (or awake player), ac
 `tests/audio_system.gd` loads real AudioDirector and MatchModel instances. It checks PCM presence/content/peak bounds, permanent loops and boundary continuity, buses, separate volumes/mute, transition weights without restarts, actual upgrade/build/repair/resource/impact/escalation/breach/outcome triggers, event deduplication, distance response, bounded polyphony, safe unavailable-stream handling, distinct waveforms and clean restart/shutdown. The current standalone test output is recorded by the coordinator after final integration.
 
 Headless tests establish asset decoding, playback requests and control logic. They do not establish perceived musical quality, loudness on Windows speakers, or listening comfort. No human listening session is claimed. Graphical audio monitoring or acoustic capture, if performed independently, must be reported separately from these checks. Settings save/load is verified in the host profile/integration suite, not by this stateless director's standalone test.
+
+## Horror and immersion extension (12 November 2026)
+
+Nine additional original files extend the existing 37 without replacing their
+waveforms: 'scream_1', 'scream_2', 'scream_3', 'door_reaction', 'sale',
+'refund', 'insufficient_gold', 'insufficient_power', and 'eerie'. Screams
+are locally synthesized vocal-like harmonic formants with deterministic breath,
+pitch jitter and an amplitude envelope. They are not recordings or imitations
+of any person. The source generator remains fully offline and standard-library
+only. All new WAV import files retain uncompressed PCM, matching existing assets.
+
+Effect voices now use pooled AudioStreamPlayer2D nodes with subtle spatial
+panning and explicit listener-distance volume attenuation; menu/music/ambient
+loops remain AudioStreamPlayer. Their shared frame/voice limits and conservative
+gains remain in place. Sources beyond 850 world pixels are culled; closer remote
+reactions are quieter than player-room reactions. Camera zoom does not determine
+threat intensity. Model-owned, monotonic presentation event records trigger real
+encounters, door damage, destruction, elimination and transactions. Snapshot
+fallback remains for directly mutated diagnostic fixtures, with per-update event
+keys suppressing duplicate playback when the authoritative record exists.
+
+A first threatening arrival emits one of three scream variations. Per-room ten
+second throttles, a two second global interval and an actively playing scream
+check prevent a multi-room overlap. A destruction reaction interrupts a prior
+scream and uses its own prioritized cue. Event IDs prevent every-frame repeats;
+records from the terminal tick are consumed once even when the host switches to
+the result screen. Match restart clears encounter throttles and event cursors.
+Sale/refund cues are prioritized with bounded retry; resource failure cues have
+separate tones and cooldowns. Occasional eerie environmental stings occur only
+in a running match at deterministic intervals, not on every frame. Existing
+music stems, smooth threat crossfades and persistent bus preferences are retained.
+
+Verification uses actual Godot decoding/playback and checks every decoded PCM
+sample for nonzero signal and peak headroom (maximum allowed 20,317 on signed
+16-bit PCM), all 46 resource files, spatial effect voice playback, action/impact
+triggers and preserved smooth transitions. Synthetic screams are functional
+assets, but their subjective scariness, Windows speaker output and listening
+comfort require human target-device review; no personal listening claim is made.

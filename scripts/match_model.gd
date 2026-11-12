@@ -18,6 +18,8 @@ var random = RandomNumberGenerator.new()
 # Presentation reads these model-owned records; damage occurs only on impact.
 var projectiles: Array = []
 var combat_events: Array = []
+var presentation_events: Array = []
+var next_presentation_event_id=1
 var next_projectile_id = 1
 var next_combat_event_id = 1
 var difficulty="standard"
@@ -38,7 +40,13 @@ func reset(seed_value: int = 1):
  random.seed = seed_value
  rooms.clear()
  for i in range(6):
-  rooms.append(RoomState.new(i))
+  var room=RoomState.new(i)
+  var receiver=weakref(self)
+  var room_index=i
+  room.presentation_action.connect(func(type, data):
+   var model=receiver.get_ref()
+   if model!=null: model.record_event(type,room_index,data))
+  rooms.append(room)
  hunter = HunterState.new()
  difficulty="standard"
  match_boosts={}
@@ -53,8 +61,19 @@ func reset(seed_value: int = 1):
  bot_claimed = 0
  projectiles.clear()
  combat_events.clear()
+ presentation_events.clear()
+ next_presentation_event_id=1
  next_projectile_id = 1
  next_combat_event_id = 1
+
+func record_event(type: String, room_index: int, data: Dictionary={}):
+ if room_index<0 or room_index>=rooms.size(): return
+ var entry=data.duplicate(true)
+ entry.merge({"id":next_presentation_event_id,"type":type,"room":room_index,
+  "position":rooms[room_index].door_position(),"time":time,"damage":data.get("damage",0.0)},true)
+ next_presentation_event_id+=1
+ presentation_events.append(entry)
+ if presentation_events.size()>128: presentation_events.pop_front()
 
 func claim_room(index: int) -> bool:
  if not running or result != "" or index < 0 or index >= rooms.size() or player_room >= 0 or rooms[index].owner >= 0:
@@ -203,6 +222,7 @@ func tick(delta: float):
   if player() != null:
    player().alive = false
    player().sleeping = false
+   record_event("elimination",player_room)
   eliminations += 1
   result = "defeat"
   _cancel_projectiles("terminal")

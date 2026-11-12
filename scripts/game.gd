@@ -22,6 +22,7 @@ var floating: Array = []
 var last_attacks = 0
 var last_shots = 0
 var camera: Camera2D
+var horror = preload("res://scripts/horror_feedback.gd").new()
 var presentation = preload("res://scripts/dorm_presentation.gd").new()
 const MAP_OFFSET = Vector2(145,40)
 var full_map=false
@@ -97,6 +98,7 @@ func start_match(difficulty: String=""):
  floating.clear()
  income_clock = 0
  presentation.reset()
+ horror.reset()
  last_attacks = 0
  last_shots = 0
  mode = "match"
@@ -161,6 +163,7 @@ func _process(delta: float):
   if not mobile_mode or ui_clock>=0.05:
    ui_clock=0
    ui.update_match()
+  horror.update(delta,model)
   if model.result != "":
    last_progression=profile.settle_match(match_id,model)
    mode = "result"
@@ -171,6 +174,7 @@ func _process(delta: float):
    ui.show_result()
  audio_system.update_state(delta,model,mode)
  presentation.update(delta,model)
+ if is_instance_valid(ui.horror_layer): ui.horror_layer.queue_redraw()
  queue_redraw()
 
 # A double-click is one intent. Consume its second press AND release before

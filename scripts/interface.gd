@@ -47,6 +47,7 @@ var default_font=preload("res://assets/fonts/Interface.ttf")
 var display_font=preload("res://assets/fonts/CartoonDisplay.ttf")
 var progression: ProgressionInterface
 var current_screen="menu"
+var horror_layer: Control
 var feedback_text=""
 var feedback_until=0.0
 
@@ -131,6 +132,16 @@ func button(text: String,pos: Vector2,callback: Callable,width: float=240,height
  b.size=Vector2(width,height)
  b.pressed.connect(func(): game.audio_event("button"))
  b.pressed.connect(callback)
+ # Disabled economic actions still explain an unaffordable attempt audibly.
+ b.gui_input.connect(func(event):
+  if not b.disabled or not event is InputEventMouseButton or not event.pressed or event.button_index!=MOUSE_BUTTON_LEFT: return
+  var reason=""
+  if b==confirm_button: reason=game.placement_reason()
+  else:
+   for action in actions:
+    if actions[action]==b: reason=action_reason(action); break
+  if reason.contains("more gold"): game.audio_event("insufficient_gold")
+  elif reason.contains("more electricity"): game.audio_event("insufficient_power"))
  for state in ["normal","hover","pressed","disabled","focus"]:
   var fill="3F6675" if state=="hover" else "304D61"
   if state=="disabled": fill="263746"
@@ -311,6 +322,12 @@ func show_match():
  if game.mobile_mode: game.mobile_ui.match_layout(self)
  update_match()
 
+ horror_layer=Control.new()
+ horror_layer.mouse_filter=Control.MOUSE_FILTER_IGNORE
+ horror_layer.size=Vector2(1280,720)
+ panel.add_child(horror_layer)
+ horror_layer.draw.connect(func(): game.horror.render_notifications(horror_layer))
+
 func open_context():
  game.cancel_placement()
  game.full_map=false
@@ -409,7 +426,9 @@ func sell_selected():
  if success: feedback_text="Building sold · 50% gold and electricity refunded."
 
 func purchase(success: bool):
- game.audio_event("purchase" if success else "failure")
+ var reason=game.model.purchase_error() if not success else ""
+ var cue="purchase" if success else "insufficient_gold" if reason.contains("more gold") else "insufficient_power" if reason.contains("more electricity") else "failure"
+ game.audio_event(cue)
  feedback_text="Defense improved!" if success else game.model.purchase_error()
  feedback_until=game.presentation.clock+2
  update_match()

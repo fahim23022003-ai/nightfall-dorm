@@ -33,7 +33,7 @@ func run():
  check(AudioServer.bus_count==bus_count,"setup is idempotent and does not duplicate buses")
  for name in ["Music","Effects","Ambient"]:
   check(AudioServer.get_bus_index(name)>=0,"dedicated bus exists: "+name)
- check(audio.missing_assets.is_empty() and audio.streams.size()==37,"all37 original audio assets decode")
+ check(audio.missing_assets.is_empty() and audio.streams.size()==AudioDirector.LOOP_NAMES.size()+AudioDirector.EFFECT_NAMES.size(),"all declared original audio assets decode")
  for name in audio.streams:
   var stream = audio.streams[name]
   check(stream.get_length()>0.04 and stream.data.size()>100,"nonempty playable PCM: "+name)

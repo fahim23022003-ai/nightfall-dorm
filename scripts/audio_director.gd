@@ -3,11 +3,11 @@ extends Node
 
 const ROOT = "res://assets/audio/"
 const LOOP_NAMES = ["music_menu","music_calm","music_danger","ambient_dorm","proximity_loop","generator_loop"]
-const EFFECT_NAMES = ["button","menu","match_start","purchase","failure","rank","reward","victory","defeat","shot_needle","shot_arc","impact","ghost_hurt","ghost_defeat","door_hit","door_crack","door_break","build","turret_upgrade","bed_upgrade","door_upgrade","repair","upgrade","income","electricity","footstep","danger","breach","hunter_spawn","hunter_level","elimination"]
-const CRITICAL_EVENTS = ["victory","defeat","ghost_defeat","rank","reward","hunter_level","breach","door_break","match_start"]
+const EFFECT_NAMES = ["button","menu","match_start","purchase","failure","rank","reward","victory","defeat","shot_needle","shot_arc","impact","ghost_hurt","ghost_defeat","door_hit","door_crack","door_break","build","turret_upgrade","bed_upgrade","door_upgrade","repair","upgrade","income","electricity","footstep","danger","breach","hunter_spawn","hunter_level","elimination","scream_1","scream_2","scream_3","door_reaction","sale","refund","insufficient_gold","insufficient_power","eerie"]
+const CRITICAL_EVENTS = ["victory","defeat","ghost_defeat","rank","reward","hunter_level","breach","door_break","match_start","door_reaction","sale","refund"]
 const VOICE_LIMIT = 16
 const FRAME_VOICE_LIMIT = 6
-const EFFECT_COOLDOWNS = {"shot_needle":0.07,"shot_arc":0.11,"impact":0.09,"ghost_hurt":0.22,"door_hit":0.12,"door_crack":0.8,"door_break":1.0,"income":1.1,"electricity":1.0,"repair":1.0,"footstep":0.38,"danger":3.0,"build":0.15,"upgrade":0.18,"hunter_level":0.5,"hunter_spawn":1.0,"match_start":0.8,"victory":2.0,"defeat":2.0,"rank":0.8,"reward":0.4,"menu":0.2}
+const EFFECT_COOLDOWNS = {"scream_1":2.0,"scream_2":2.0,"scream_3":2.0,"door_reaction":2.0,"sale":0.15,"refund":0.15,"insufficient_gold":0.4,"insufficient_power":0.4,"eerie":12.0,"shot_needle":0.07,"shot_arc":0.11,"impact":0.09,"ghost_hurt":0.22,"door_hit":0.12,"door_crack":0.8,"door_break":1.0,"income":1.1,"electricity":1.0,"repair":1.0,"footstep":0.38,"danger":3.0,"build":0.15,"upgrade":0.18,"hunter_level":0.5,"hunter_spawn":1.0,"match_start":0.8,"victory":2.0,"defeat":2.0,"rank":0.8,"reward":0.4,"menu":0.2}
 var mobile_profile=false
 var suspended=false
 var event_counts: Dictionary = {}
@@ -35,6 +35,14 @@ var _previous_hunter_position = Vector2.ZERO
 var _mode = "menu"
 var _pending_critical: Array = []
 var _voice_names: Dictionary = {}
+var _last_presentation_event=0
+var _encounter_cooldowns: Dictionary={}
+var _scream_voice
+var _scream_next=0.0
+var _scream_variation=0
+var _next_eerie=12.0
+var _seen_presentation: Dictionary={}
+
 
 func _ready():
  setup()
@@ -85,7 +93,10 @@ func setup():
   if name.begins_with("music"):
    music_start_count += 1
  for i in range(10 if mobile_profile else VOICE_LIMIT):
-  var voice = AudioStreamPlayer.new()
+  var voice = AudioStreamPlayer2D.new()
+  voice.max_distance=2000
+  voice.attenuation=0.0
+  voice.panning_strength=0.35
   voice.name = "EffectVoice%d" % i
   voice.bus = "Effects"
   add_child(voice)
@@ -148,6 +159,7 @@ func event(name: String, position: Vector2 = Vector2.INF) -> bool:
    dropped_events += 1
   return false
  _voice_names[free_voice.get_instance_id()] = name
+ free_voice.global_position=(position if position.is_finite() else listener_position)+Vector2(145,40)
  free_voice.stream = streams[name]
  free_voice.volume_db = linear_to_db(distance_gain)-20.0
  free_voice.pitch_scale = 1.0
@@ -161,6 +173,11 @@ func reset_match(model):
  setup()
  _observed_model = model
  _last_combat_event = 0
+ _last_presentation_event=0
+ _encounter_cooldowns.clear()
+ _scream_next=0
+ _scream_voice=null
+ _next_eerie=_clock+12
  _previous_time = model.time
  _previous_hunter_position = model.hunter.position
  _previous = _snapshot(model)
@@ -202,8 +219,13 @@ func update_state(delta: float, model, mode: String):
    _previous.hp = model.hunter.hp
   var room = model.player()
   listener_position = room.bed_position() if room != null else model.player_position
+  if mode in ["match","result"]:
+   _observe_presentation(model)
   if active:
    _observe(model)
+   if model.running and _clock>=_next_eerie:
+    event("eerie",listener_position)
+    _next_eerie=_clock+17+int(model.time)%9
    if model.hunter.state not in [HunterState.State.DORMANT,HunterState.State.DEAD] and model.hunter.hp > 0:
     var distance = model.hunter.position.distance_to(room.door_position() if room != null else listener_position)
     target_proximity = clampf(1-distance/480.0,0,1)
@@ -250,7 +272,7 @@ func _observe(model):
   event("hunter_spawn")
  if model.hunter.level>_previous.level:
   event("hunter_level")
- if model.hunter.attacks>_previous.attacks and model.hunter.target>=0 and model.hunter.target<model.rooms.size():
+ if model.hunter.attacks>_previous.attacks and model.hunter.target>=0 and model.hunter.target<model.rooms.size() and not _seen(model.hunter.target,"door_damage"):
   event("door_hit",model.rooms[model.hunter.target].door_position())
  var order: Array = []
  if model.player_room>=0:
@@ -262,28 +284,28 @@ func _observe(model):
   var room = model.rooms[index]
   var old = _previous.rooms[index]
   var position = room.center()
-  if old.alive and not room.alive:
+  if old.alive and not room.alive and not _seen(index,"elimination"):
    event("elimination",position)
-  if room.bed_level>old.bed:
+  if room.bed_level>old.bed and not _seen(index,"bed_upgrade"):
    event("bed_upgrade",room.bed_position())
    event("upgrade",position)
-  if room.door_level>old.door:
+  if room.door_level>old.door and not _seen(index,"door_upgrade"):
    event("door_upgrade",room.door_position())
-  if room.door_hp<old.hp:
+  if room.door_hp<old.hp and not _seen(index,"door_damage"):
    event("door_hit",room.door_position())
    for fraction in [0.66,0.33]:
     if old.hp/old.max_hp>fraction and room.door_hp/room.max_hp()<=fraction:
      event("door_crack",room.door_position())
-  elif room.door_hp>old.hp and room.door_level==old.door:
+  elif room.door_hp>old.hp and room.door_level==old.door and not _seen(index,"repair"):
    event("repair",room.door_position())
-  if old.hp>0 and room.door_hp<=0:
+  if old.hp>0 and room.door_hp<=0 and not _seen(index,"door_break"):
    event("door_break",room.door_position())
    event("breach",room.door_position())
   for tile in room.buildings:
    var b = room.buildings[tile]
-   if not old.buildings.has(tile):
+   if not old.buildings.has(tile) and not _seen(index,"build"):
     event("build",room.tile_position(tile))
-   elif b.level>old.buildings[tile].level:
+   elif old.buildings.has(tile) and b.level>old.buildings[tile].level and not _seen(index,"building_upgrade"):
     event("turret_upgrade" if b.kind in ["turret","heavy"] else "upgrade",room.tile_position(tile))
   if room.owner==0:
    if int(room.income_total/5)>int(old.income/5):
@@ -332,3 +354,49 @@ func set_suspended(value: bool):
  suspended=value
  for player in loops.values()+voices:
   if is_instance_valid(player): player.stream_paused=value
+
+func _seen(room: int,type: String) -> bool:
+ return _seen_presentation.has(str(room)+":"+type)
+
+func _observe_presentation(model):
+ _seen_presentation.clear()
+ if not "presentation_events" in model: return
+ for record in model.presentation_events:
+  if int(record.id)<=_last_presentation_event: continue
+  _last_presentation_event=int(record.id)
+  var room=int(record.room)
+  var type=str(record.type)
+  var position: Vector2=record.position
+  _seen_presentation[str(room)+":"+type]=true
+  match type:
+   "encounter":
+    if _clock>=float(_encounter_cooldowns.get(room,-1)) and _clock>=_scream_next and (not is_instance_valid(_scream_voice) or not _scream_voice.playing):
+     if event("scream_"+str(1+_scream_variation%3),position):
+      _scream_variation+=1
+      _encounter_cooldowns[room]=_clock+10
+      _scream_next=_clock+2.0
+      for voice in voices:
+       if voice.playing and voice.stream==streams["scream_"+str(1+(_scream_variation-1)%3)]: _scream_voice=voice
+   "door_damage":
+    event("door_hit",position)
+    var hp=float(record.get("hp",0))
+    var max_hp=maxf(1,float(record.get("max_hp",1)))
+    var before=hp+float(record.get("damage",0))
+    for fraction in [0.66,0.33]:
+     if before/max_hp>fraction and hp/max_hp<=fraction: event("door_crack",position)
+   "door_break":
+    event("door_break",position)
+    event("breach",position)
+    # Door destruction gets its own reaction, but never stacks survivor screams.
+    if is_instance_valid(_scream_voice): _scream_voice.stop()
+    event("door_reaction",position)
+    _scream_next=_clock+2
+   "elimination": event("elimination",position)
+   "repair": event("repair",position)
+   "build": event("build",position)
+   "building_upgrade": event("turret_upgrade" if record.get("kind","") in ["turret","heavy"] else "upgrade",position)
+   "bed_upgrade": event("bed_upgrade",position)
+   "door_upgrade": event("door_upgrade",position)
+   "sale":
+    event("sale",position)
+    event("refund",position)

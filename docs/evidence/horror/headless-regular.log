@@ -1,0 +1,201 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registering global classes... (5 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | HunterState[39m[0m
+[  16% ] [90m[1mupdate_scripts_classes[22m | GameInterface[39m[0m
+[  33% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  50% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  66% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (6 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | 01-remote-alert-build-inspector.png[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | 02-map-danger.png[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | 03-player-impact-cracks.png[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | 04-door-destruction.png[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | 05-remote-alert-960x540.png[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | engine-mix.wav[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (6 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  14% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  28% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  42% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  57% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  71% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing pre-reimport operations...[39m[0m
+[   0% ] [90m[1mreimport[22m | 01-remote-alert-build-inspector.png[39m[0m
+[  14% ] [90m[1mreimport[22m | 02-map-danger.png[39m[0m
+[  28% ] [90m[1mreimport[22m | 03-player-impact-cracks.png[39m[0m
+[  42% ] [90m[1mreimport[22m | 04-door-destruction.png[39m[0m
+[  57% ] [90m[1mreimport[22m | 05-remote-alert-960x540.png[39m[0m
+[  71% ] [90m[1mreimport[22m | engine-mix.wav[39m[0m
+[  85% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (6 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+TEST 03 movement collision room interaction and delayed selection
+TEST 03 valid room selection
+TEST 08 build grid separates beds from usable tiles
+TEST 04 income only while sleeping
+TEST 05 bed upgrade and prerequisites
+TEST 06 door durability upgrade
+TEST 07 rejected transactions
+TEST 08 valid build tiles and upgrades
+TEST 12 repair bounds and destroyed doors
+TEST 14 electricity generation and spending; all six building effects
+TEST 09 turret range cooldown damage and enhancement
+TEST 10 hunter target selection and corridor navigation
+TEST 11 intact door protects resident and hunter attacks
+TEST 10 hunter exits breached room through its doorway
+TEST 13 autonomous bots
+TEST 15 hunter death triggers victory
+TEST 16 breach eliminates player and triggers defeat
+TEST 18 exposed awake player cannot softlock match
+TEST 17 reset clears match
+ASSERTIONS=126 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+HORROR_EVENT_CHECKS=319 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+HORROR_FEEDBACK_CHECKS=17 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+HORROR_UI_CHECKS=5 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PHASE1_BUILDING_CHECKS=314 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PHASE1_INDEPENDENT_CHECKS=421 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+MOBILE_CONTROLS_CHECKS=52 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+MOBILE_LAYOUT_CHECKS=196 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+AUDIO_ASSERTIONS=157 FAILURES=0 STREAMS=46 MUSIC_STARTS=3
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+RANKED_QA persistence: isolated missing/save/backup/corrupt/future
+RANKED_QA schema: reject invalid nested records and bounds
+RANKED_QA bounded typed-schema mutation table
+RANKED_QA seeded valid-profile roundtrip properties
+RANKED_QA rank boundaries and single unlocked loadout
+RANKED_QA all six perks alter actual game calculations
+RANKED_QA bounded transparent awards and exactly-once reload
+RANKED_QA finite XP ceiling remains persistable and transparent
+RANKED_PROGRESSION_ASSERTIONS=348 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PHASE2_UI_ASSERTIONS=52 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PHASE2_HUNTER difficulty and continuous escalation
+PHASE2_HUNTER real strike counters and automatic single-use rescue
+PHASE2_HUNTER target intelligence and fair retarget constraints
+PHASE2_HUNTER progress-based siege escape refreshes every retained assessment
+PHASE2_HUNTER corridor route and no-teleport recovery
+PHASE2_HUNTER_ASSERTIONS=39 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PROJECTILE_ASSERTIONS=22 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+REDESIGN_PROJECTILE_EDGE_ASSERTIONS=12 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+REDESIGN_UI_ASSERTIONS=221 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+SCENE_CHECKS=24 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+OVERHAUL_UI_CHECKS=53 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+FURNITURE_CHECKS=30 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+UI_AVAILABILITY_CHECKS=3209 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+SIM seed=7 strategy=passive result=defeat time=90.2 hunter_level=2 hunter_hp=4291.0 player_gold=205.4 door_level=0 buildings=0 shots=74 eliminated=1
+SIM seed=8 strategy=passive result=defeat time=41.9 hunter_level=1 hunter_hp=4973.0 player_gold=108.8 door_level=0 buildings=0 shots=3 eliminated=1
+SIM seed=99 strategy=passive result=defeat time=118.0 hunter_level=2 hunter_hp=2676.6 player_gold=261.0 door_level=0 buildings=0 shots=134 eliminated=1
+SIM seed=7 strategy=balanced result=victory time=128.1 hunter_level=3 hunter_hp=0.0 player_gold=49.5 door_level=4 buildings=6 shots=187 eliminated=0
+SIM seed=8 strategy=balanced result=victory time=135.4 hunter_level=3 hunter_hp=0.0 player_gold=18.8 door_level=4 buildings=6 shots=228 eliminated=0
+SIM seed=99 strategy=balanced result=victory time=152.6 hunter_level=3 hunter_hp=0.0 player_gold=196.5 door_level=4 buildings=6 shots=235 eliminated=0
+SIM seed=7 strategy=guard result=victory time=131.0 hunter_level=3 hunter_hp=0.0 player_gold=15.5 door_level=3 buildings=6 shots=186 eliminated=0
+SIM seed=8 strategy=guard result=victory time=146.6 hunter_level=3 hunter_hp=0.0 player_gold=407.8 door_level=3 buildings=6 shots=232 eliminated=0
+SIM seed=99 strategy=guard result=victory time=152.6 hunter_level=3 hunter_hp=0.0 player_gold=33.6 door_level=4 buildings=6 shots=235 eliminated=0
+SIM seed=7 strategy=economist result=victory time=131.0 hunter_level=3 hunter_hp=0.0 player_gold=61.7 door_level=4 buildings=6 shots=186 eliminated=0
+SIM seed=8 strategy=economist result=victory time=142.6 hunter_level=3 hunter_hp=0.0 player_gold=115.4 door_level=4 buildings=6 shots=232 eliminated=0
+SIM seed=99 strategy=economist result=victory time=152.6 hunter_level=3 hunter_hp=0.0 player_gold=430.7 door_level=4 buildings=6 shots=235 eliminated=0
+SIMULATIONS=12 WINS=9 LOSSES=3 UNRESOLVED=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+AUDIT regression: eliminated-room transactions
+AUDIT regression: invalid costs cannot create currency
+AUDIT regression: paused and terminal purchase guards
+AUDIT regression: stalled frames do not tunnel walls
+AUDIT regression: fifth bot uses last nonreserved room
+AUDIT regression: cannot sleep after hunter entered room
+AUDIT regression: going to sleep reroutes hunter out of a different room
+AUDIT regression: eliminated resident dominates simultaneous terminal events
+AUDIT regression: six building upgrade ceilings and effects
+AUDIT regression: capped-level utility effects apply to actual resources and HP
+AUDIT regression: heavy turret and level4 relay combat effects
+AUDIT regression: hunter growth and active retargeting
+AUDIT regression: idle turret cooldown cannot bank a burst
+AUDIT regression: idle hunter cannot bank door attacks
+AUDIT regression: exposed-player capture commits elimination exactly once
+AUDIT regression: overkill statistics use actual applied damage
+AUDIT_ASSERTIONS=72 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PROPERTY_TRANSACTIONS=20000 REJECTED=18007 CHECKS=175941 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+RATE dt=0.02 turret_shots_30s=34 hunter_attacks_30s=28
+RATE dt=0.05 turret_shots_30s=34 hunter_attacks_30s=28
+RATE dt=0.1 turret_shots_30s=34 hunter_attacks_30s=28
+RATE_SCENARIOS=6 FAILURES=0
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PROFILE_PROCESS_CLEANUP=PASS
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PROFILE_PROCESS_WRITE=PASS
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PROFILE_PROCESS_READ=PASS
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PROFILE_PROCESS_CLEANUP=PASS
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+MAIN_STARTUP=PASS MODE=menu

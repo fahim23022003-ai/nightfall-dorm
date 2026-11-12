@@ -25,6 +25,15 @@ Godot Linux import/startup, automated scene/input/gameplay tests, transactions a
 
 Earlier Windows export records are historical; use source branch `work` for current home editor testing. The Android milestone creates a private-test APK as described below; nothing was publicly published/deployed.
 
+## Horror and immersion
+
+Real encounters now show named teammate warnings, rising actual door-damage
+numbers, stronger impact/break effects and map danger indicators. Three original
+scream variations, destruction reactions, sale/refund cues and eerie ambience
+extend the existing sound system to46 local WAVs. Alerts are throttled and ignore
+mouse input; Music/Effects/Ambient preferences remain saved.
+[Implementation and validation](docs/HORROR_IMMERSION_REPORT.md).
+
 ## Phase 2: sound, ranks and hunter intelligence
 
 Original menu/calm/danger music and ambience crossfade with actual hunter proximity and door health. Thirty-seven local original WAV assets provide combat, construction, economy, UI and promotion cues; Settings saves separate Music/Effects/Ambient volumes and mute. No external audio downloads are needed.

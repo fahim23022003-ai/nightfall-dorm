@@ -1,6 +1,8 @@
 class_name RoomState
 extends RefCounted
 
+signal presentation_action(type: String, data: Dictionary)
+
 var index: int
 var owner = -1
 var alive = true
@@ -48,6 +50,9 @@ func try_rescue() -> bool:
 
 func _init(number: int = 0):
  index = number
+
+func survivor_name() -> String:
+ return Catalog.SURVIVOR_NAMES[clampi(owner,0,Catalog.SURVIVOR_NAMES.size()-1)]
 
 func center() -> Vector2:
  return Vector2(185 + (index % 3) * 310, 210 if index < 3 else 610)
@@ -109,6 +114,7 @@ func upgrade_bed() -> bool:
   return false
  pay(Catalog.BED_COST[bed_level],Catalog.BED_POWER[bed_level])
  bed_level += 1
+ presentation_action.emit("bed_upgrade",{})
  return true
 
 func upgrade_door() -> bool:
@@ -126,6 +132,7 @@ func upgrade_door() -> bool:
  var old_max = max_hp()
  door_level += 1
  door_hp += max_hp()-old_max
+ presentation_action.emit("door_upgrade",{})
  return true
 
 func repair_door() -> bool:
@@ -139,6 +146,7 @@ func repair_door() -> bool:
   return false
  pay(Catalog.REPAIR_COST)
  door_hp = minf(max_hp(),door_hp+Catalog.REPAIR_HEAL)
+ presentation_action.emit("repair",{})
  return true
 
 func afford(g: float, e: float = 0) -> bool:
@@ -169,6 +177,7 @@ func build(kind: String, tile: int) -> bool:
  if not pay(data.gold,data.power): return reject("Purchase could not be paid.")
  buildings[tile] = {"kind":kind,"level":1,"cooldown":0.0,"flash":0.0,
   "invested_gold":float(data.gold),"invested_power":float(data.power)}
+ presentation_action.emit("build",{"kind":kind,"tile":tile})
  return true
 
 func upgrade_building(tile: int) -> bool:
@@ -188,6 +197,7 @@ func upgrade_building(tile: int) -> bool:
  b.invested_gold=b.get("invested_gold",0.0)+paid_gold
  b.invested_power=b.get("invested_power",0.0)+paid_power
  b.level += 1
+ presentation_action.emit("building_upgrade",{"kind":b.kind,"tile":tile})
  return true
 
 # Record actual successful payments, never infer investment from level or prices.
@@ -209,6 +219,7 @@ func sell_building(tile: int) -> bool:
  buildings.erase(tile)
  gold+=refund.x
  electricity+=refund.y
+ presentation_action.emit("sale",{"gold":refund.x,"power":refund.y,"tile":tile})
  last_error=""
  return true
 
