@@ -208,5 +208,11 @@ multiplayer or unrelated feature was started. Stop after Phase 5B-2B.
 
 Recovery baseline: `b4d1798d82a458636eebb1b62419f7e0bbd66b7d`, with local tag
 `pre-phase5b2b-b4d1798`. Verified mechanics milestone: `e920274`.
-Final implementation/evidence commit and private `work` push verification are
-recorded after the completed tests. `main` is unchanged.
+Latest verified implementation/evidence commit:
+`6343af0eedb2e25bfb204b7fe97f2b544463c35b`. GitHub push **SUCCEEDED**: `git push origin work`
+reported `b4d1798..6343af0 work -> work`, and `git ls-remote origin refs/heads/work`
+returned exactly that full SHA, matching local HEAD. `main` is unchanged.
+
+The subsequent documentation-only delivery commit records this verified result;
+its final HEAD and matching remote SHA are confirmed in the completion message.
+All gameplay, assets and test evidence are in the implementation commit above.

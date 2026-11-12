@@ -36,6 +36,9 @@ No Phase 5B-3, Android or unrelated feature work. Stop after Phase 5B-2B.
 See [PHASE_5B2B_LEGENDARY_REPORT.md](PHASE_5B2B_LEGENDARY_REPORT.md) and
 `docs/evidence/legendary/` for rules, tests and limitations. Final delivery SHA
 and actual GitHub `work` push are verified in the completion response.
+Implementation/evidence commit `6343af0eedb2e25bfb204b7fe97f2b544463c35b` was pushed
+successfully and its remote SHA exactly matched local HEAD. The following
+documentation-only commit records this verification.
 
 ---
 
