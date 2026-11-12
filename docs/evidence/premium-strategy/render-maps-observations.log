@@ -1,0 +1,19 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+VISUAL_CAPTURE after/extra-map-abandoned_dorm-focus
+VISUAL_CAPTURE after/extra-map-abandoned_dorm-overview
+VISUAL_CAPTURE after/extra-map-haunted_hospital-focus
+VISUAL_CAPTURE after/extra-map-haunted_hospital-overview
+VISUAL_CAPTURE after/extra-map-forgotten_hotel-focus
+VISUAL_CAPTURE after/extra-map-forgotten_hotel-overview
+VISUAL_CAPTURE after/extra-map-underground_lab-focus
+VISUAL_CAPTURE after/extra-map-underground_lab-overview
+VISUAL_CAPTURE after/extra-map-cursed_mansion-focus
+VISUAL_CAPTURE after/extra-map-cursed_mansion-overview
+VISUAL_PERF {"approx_process_fps":30.6018955688455,"frames":77,"label":"720-normal","material_cache_after":18,"material_cache_before":18,"mean_frame_ms":32.6777142857143,"p95_frame_ms":39.972,"reduced":false,"renderer":"Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture","resolution":"(1280, 720)","root_children_after":1,"root_children_before":1,"sample_window_seconds":2.5,"source_phase":"after"}
+VISUAL_PERF {"approx_process_fps":21.537627032115,"frames":54,"label":"1080-normal","material_cache_after":18,"material_cache_before":18,"mean_frame_ms":46.4303703703704,"p95_frame_ms":52.225,"reduced":false,"renderer":"Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture","resolution":"(1920, 1080)","root_children_after":1,"root_children_before":1,"sample_window_seconds":2.5,"source_phase":"after"}
+VISUAL_PERF {"approx_process_fps":32.2547375639072,"frames":81,"label":"720-reduced","material_cache_after":18,"material_cache_before":18,"mean_frame_ms":31.0031975308642,"p95_frame_ms":37.0,"reduced":true,"renderer":"Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture","resolution":"(1280, 720)","root_children_after":1,"root_children_before":1,"sample_window_seconds":2.5,"source_phase":"after"}
+PREMIUM_RENDER_CHECKS=21 FAILURES=0 BASELINE_SOURCE=496b9b9df9efbe95f99f2efc0e7a5de3c6597815

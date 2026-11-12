@@ -17,6 +17,25 @@ An original single-player Godot 4 dormitory survival defense game. Choose a room
 
 Full controls, ZIP/Git instructions and a practical test checklist: [Windows home testing](docs/HOME_TESTING_WINDOWS.md).
 
+## Hunter strategy and premium UI (Phase 5D-1)
+
+New matches show a stable Hunter archetype in preparation: the heavy Crusher,
+isolation-seeking Stalker or fast, fragile Ravager. Room plaques explain real
+tradeoffs in door durability, bed income and Dynamo output. Optional contracts
+add a one-time RM Cash bonus per stage/difficulty/objective; standard rewards
+continue. The first-time tutorial stays unchanged.
+
+At Needle/Arc Level4, choose one specialization to buy Level5, then upgrade to10.
+Precision trades range/rate for strong hits; Suppression retains coverage and a
+bounded slow. Arc Focus trades rate for damage; Storm trades hit strength for
+range and fast projectiles. Fees/discounts use actual paid ledgers and50% sales.
+
+Action emblems, locally licensed Gothic headings, dimensional button states,
+illustrated Common supplies and distinct difficulty cards extend the existing
+haunted interface. See the [premium UI and strategy report](docs/PHASE_5D1_PREMIUM_UI_STRATEGY_REPORT.md)
+for controls, costs, tests, before/after images, diagnostic balance and Windows
+verification limits.
+
 ## Gothic industrial presentation (Phase 5C-3)
 
 Menus and HUD now share layered weathered metal and glass materials, with a

@@ -1,0 +1,54 @@
+{
+ "fresh_pre_phase_baseline_recorded": false,
+ "observations": [
+  {
+   "approx_process_fps": 30.6018955688455,
+   "frames": 77,
+   "label": "720-normal",
+   "material_cache_after": 18,
+   "material_cache_before": 18,
+   "mean_frame_ms": 32.6777142857143,
+   "p95_frame_ms": 39.972,
+   "reduced": false,
+   "renderer": "Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture",
+   "resolution": "(1280, 720)",
+   "root_children_after": 1,
+   "root_children_before": 1,
+   "sample_window_seconds": 2.5,
+   "source_phase": "after"
+  },
+  {
+   "approx_process_fps": 21.537627032115,
+   "frames": 54,
+   "label": "1080-normal",
+   "material_cache_after": 18,
+   "material_cache_before": 18,
+   "mean_frame_ms": 46.4303703703704,
+   "p95_frame_ms": 52.225,
+   "reduced": false,
+   "renderer": "Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture",
+   "resolution": "(1920, 1080)",
+   "root_children_after": 1,
+   "root_children_before": 1,
+   "sample_window_seconds": 2.5,
+   "source_phase": "after"
+  },
+  {
+   "approx_process_fps": 32.2547375639072,
+   "frames": 81,
+   "label": "720-reduced",
+   "material_cache_after": 18,
+   "material_cache_before": 18,
+   "mean_frame_ms": 31.0031975308642,
+   "p95_frame_ms": 37.0,
+   "reduced": true,
+   "renderer": "Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture",
+   "resolution": "(1280, 720)",
+   "root_children_after": 1,
+   "root_children_before": 1,
+   "sample_window_seconds": 2.5,
+   "source_phase": "after"
+  }
+ ],
+ "scope": "Bounded warmed Linux llvmpipe observations of final prepared stage1 scene; not Windows FPS, not matched prephase comparison"
+}

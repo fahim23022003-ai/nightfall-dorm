@@ -50,9 +50,14 @@ func finish(result:String):
  game.model.time=80
  room.occupied_seconds=60
  room.damage_dealt=1000
- game.model.result=result
- game.model.hunter.hp=0 if result=="victory" else 100
- if result=="defeat": room.alive=false; room.sleeping=false
+ # Prepared reward/UI fixture: let the production tick establish and seal its
+ # terminal result; assigning result directly is intentionally ineligible now.
+ if result=="victory":
+  game.model.hunter.state=HunterState.State.SEEK
+  game.model.hunter.hurt(game.model.hunter.hp)
+ else:
+  game.model.hunter.hp=100
+  room.alive=false; room.sleeping=false
  game._process(0.01)
  await process_frame
  await reveal_reward()
@@ -127,13 +132,16 @@ func run():
  await press("Retry Stage")
  check(game.model.stage_id=="stage_2" and game.mode=="match","retry correct stage")
  for difficulty in ["standard","hard"]:
+  var expected_identity=game.profile.next_archetype("stage_2",difficulty)
   check(game.start_stage("stage_2",difficulty),"difficulty stage starts "+difficulty)
   var data=StageCatalog.stage("stage_2")
   var tuning=RankCatalog.DIFFICULTIES[difficulty]
-  check(is_equal_approx(game.model.hunter.max_hp,Catalog.HUNTER.hp*data.hunter_hp*tuning.hp),"HP scaling composes "+difficulty)
+  var archetype=StrategyCatalog.ARCHETYPES[expected_identity]
+  check(game.model.strategy.enabled and game.model.hunter.archetype==expected_identity,"real stage binds its deterministic archetype "+difficulty)
+  check(is_equal_approx(game.model.hunter.max_hp,Catalog.HUNTER.hp*data.hunter_hp*tuning.hp*archetype.hp),"HP scaling composes "+difficulty)
   game.model.time=game.model.preparation+0.01
   game.model.hunter.tick(0.01,game.model)
-  check(is_equal_approx(game.model.hunter.damage,Catalog.HUNTER.damage*data.hunter_damage*tuning.damage),"damage scaling survives tick "+difficulty)
+  check(is_equal_approx(game.model.hunter.damage,Catalog.HUNTER.damage*data.hunter_damage*tuning.damage*archetype.damage),"damage scaling survives tick "+difficulty)
  check(game.ui.campaign.prepare("stage_1"),"completed replay remains preparable")
  await press("Start Match")
  await finish("victory")

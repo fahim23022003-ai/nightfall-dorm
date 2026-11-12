@@ -1,0 +1,9 @@
+TRANSCRIBED from initial tool output; original shell log was overwritten by pilot rerun.
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+SCRIPT ERROR: Parse Error: Expected parameter name.
+          at: GDScript::reload (res://tests/strategy_balance_audit.gd:68)
+ERROR: Failed to load script "res://tests/strategy_balance_audit.gd" with error "Parse error".
+   at: load (modules/gdscript/gdscript.cpp:2907)
+
+Initial harness used reserved keyword trait as a parameter; renamed trait_choice before live pilots.

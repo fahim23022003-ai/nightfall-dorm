@@ -1,42 +1,52 @@
-# Phase 5D-1 — premium UI and strategy (12 November 2026)
+# Phase 5D-1 — premium UI and strategy complete (12 November 2026)
 
-IMPLEMENTATION COMPLETE; final regression/delivery IN PROGRESS. Clean baseline
-`work` at496b9b9df9efbe95f99f2efc0e7a5de3c6597815 matched GitHub.
-Recovery tag pre-phase5d1-496b9b9; baseline83f915c; core d5c35a4 (local).
-B sole production/C independent QA/D actual renders/A bounded balance complete
-or finishing evidence. Root owns remaining regression integration/docs/Git.
+IMPLEMENTED / TESTED on Godot4.6.3 Linux. Clean `work` baseline
+496b9b9df9efbe95f99f2efc0e7a5de3c6597815 matched GitHub.
+Recovery tag pre-phase5d1-496b9b9; baseline83f915c; core d5c35a4;
+reviewed premium UI/save fixes45a3f3f. B production, C independent QA,
+D actual visual/audio and bounded A balance audit finished. Main unchanged.
 
-3 genuine archetypes, stable legitimate-result ordinal/active snapshot, bounded
-Reaper composition; four paid exclusive L5→10 branches;3benefit/drawback traits
-across6rooms/5maps;3optional contracts,45once-onlystage/difficulty keys/390RMmax,
-sealed realterminal conditions and existing failed-save rollback. Real Game
-starts enable strategy; legacy standalone fixtures opt in. No midmatch save.
+3genuine stable-ordinal Hunterarchetypes, fairwindups/recovery/targetpreferences,
+boundedonce-onlyReaper composition;4exclusivepaidL5→10Needle/Arcbranches;
+3roombenefit/drawbacktraits/6rooms/all5maps;3optionalcontracts with45once-only
+stage/difficulty keys/390RMmaximum, genuine sealedterminal facts and existing
+transaction/save/RNG rollback. Actualinvestment/coupons/50%separateGold/Power
+refunds retained. RealGamestartsenable strategy; standalonelegacyfixtures optin.
+No midmatchsaving existed orwasadded; oldprofiledata preserved.
 
-30originalaction/currency/mode/archetype/branch SVGs,4improvedCommonillustrations,
-local OFLGrenzeGotisch headings/bodyInterface.ttf, raised buttons/hover/press/
-focus, distinctmodecards/reorganizedperks/contracts, framedshop and actual
-purchase feedback, room/archetype/HUD/branch readouts. Confirmed main title/
-menu/Sell clipping, traitplaque/pad overlap, occupiedroomguide, missingteamcount,
-staleReplayTutorialwarning and partialactivesave exception fixed and retested.
+30originalSVGaction/currency/mode/archetype/branch emblems,4Commonillustrations,
+localOFLGrenzeGotisch headings/readablebodyfont, dimensionalbuttonhover/press/
+focus,3modecards, reorganizedperks/contracts, shop and exactprice/refundreadouts.
+Fixedmalformedactive-save exception, branchsuccesscontext, repeatedpurchaseglow,
+title/menu/Sell clipping, traitplaque/pad overlap, occupiedroomguide/lostTEAMcount,
+stalepracticecombatwarning. Allconfirmedfixes retested; no knownfunctionalfailure.
 
-C fullmechanics172324checks/270approaches; finalweaponfocused983, economy556,
-contracts425, migration159 andUI3190, all0failures/cleanengine. A150live cases
-140wins10losses,0integrity/settlement failures;8controlledL10checks. Precision
-204px vsSuppression240 tuning gives13/5/8faster/ties in26pairedNeedle cases.
-Arcbranchfirst12/12reachL5; no naturalArc10 reached inA's boundedpolicies.
-Not humanrates/universalbalance. Baseline45PNGs73checks; Dfinalpaired85/detail264/
-map21 checks pass; screenshot/metadata finalization ongoing.
+C mechanics172324checks/270actualapproaches; finalweaponfocused983,economy556,
+contracts425,migration159,UI3190, all0failures/cleanengine. A150livecases
+140victories10defeats/0integrity orsettlementfailures;8controlledL10checks.
+Precision204px vsSuppression240 tuningchanges26pairedL5finishcomparisons from
+19/0/7 to13/5/8faster/ties. Arcfirst12/12reachL5; naturalArc10notreached inA's
+boundedpolicies. Budgetedautomated outcomes, not humanrates/universalbalance.
 
-Existing fullregular+extended initial run passed throughbossmatrix then stopped
-on outdated HellButton.text selector. Root adapted actualmodecard/perk routes,
-archetype/trait composition and genuine model-terminal testfixtures, retaining
-all assertions. Hell269checks nowpasses; remaining suites running sequentially
-with all output/errors retained inregression-resume.log. Earlierpassed suites
-not repeated unnecessarily. FiveC suites registered regular; A--check extended.
-Next: finish legacy regressions/affected retests/finalimport; finalize report/
-evidence/checkpoint; commit, push privatework andverifyexactremoteSHA.
-NativeWindows/hardwareFPS/physicalcontrols/speakers/humanquality UNVERIFIED.
-No5D2/6, newmodes/practiceroom/Android/multiplayer. No push claimed yet.
+D45BEFORE/113AFTER PNGs; baseline73/finalpaired85/strategy264/map21checks,
+all0failures/cleanengine. Actual43.096s stereomix/105streams/nomissing/0fullscale,
+peak.0230103/RMS.00386990. WarmLinuxsoftwaremeans32.678/46.430/31.003ms
+720/1080/Reduced; cache18stable. No freshmatchedprephaseFPS comparison.
+
+Allregular+extendedsuitespass via initialrun/correcteddifficulty269/resumedrun
+(exit0/noerrors), including27timesteps/144audit/48phase2matches,20items,
+105audio281checks,20ktransactions175889invariants, profileprocessroundtrip and
+startupintro. Legacyselectors/perknavigation/statcomposition/terminalfixtures
+adapted withoutdisablingassertions/bypassingstrategy. Cnew5suitesregistered
+regular andA--checkextended. Finalimportclean; finallegacyvisualUI1267checks0.
+
+Full implementation/evidence/limits: [PHASE_5D1_PREMIUM_UI_STRATEGY_REPORT.md](PHASE_5D1_PREMIUM_UI_STRATEGY_REPORT.md),
+`docs/evidence/premium-strategy/`. NativeWindows/physicalcontrols/speakers,
+hardware/longsessionFPS and subjectiveart/horror/audio/humanbalanceUNVERIFIED.
+Retainedsimple sprites/pads remainartlimits. No required5D1codefeatureincomplete.
+No5D2/6, EndlessSiege/newmodes/practiceroom/cosmeticeconomy/Android/multiplayer.
+Final code/evidence commits and exactprivateGitHubworkpushverification pending;
+only delivery remains. Stop after5D1.
 
 ---
 

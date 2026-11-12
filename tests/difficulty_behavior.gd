@@ -172,8 +172,9 @@ func run():
  await process_frame
  var hell_button: Button
  for node in game.ui.panel.get_children():
-  if node is Button and not node.is_queued_for_deletion() and node.text.to_upper().contains("HELL"): hell_button=node
- check(hell_button!=null,"Hell choice exists in actual preparation UI")
+  if node is Button and not node.is_queued_for_deletion() and node.get_meta("mode","")=="hell": hell_button=node
+ check(hell_button!=null,"Hell choice exists as an actual interactive mode card")
+ check(game.ui.panel.get_children().any(func(node):return node is Label and not node.is_queued_for_deletion() and node.text=="HELL MODE"),"Hell card retains a visible mode name")
  if hell_button!=null:
   await click_button(hell_button)
   check(game.profile.selected_difficulty=="hell" and game.profile.selected_stage=="stage_1" and game.profile.equipped==["pocket"],"actual Hell click preserves stage/perk and persists mode")

@@ -80,6 +80,8 @@ func run():
  check(rescue_description,"rank screen retains complete rescue description in perk tooltip")
  await click_button("Choose loadout")
  check(game.ui.current_screen=="loadout" and game.campaign_mode,"rank loadout opens current stage preparation")
+ await click_button("Permanent perk loadout")
+ check(game.ui.current_screen=="perk_loadout","preparation opens dedicated permanent perk controls")
  for node in game.ui.panel.get_children():
   if node is Label and not node.is_queued_for_deletion() and "Cannot revive" in node.text:
    check(node.size.x<=370,"loadout description does not overlap equipped/locked buttons")
@@ -92,6 +94,7 @@ func run():
  check(game.profile.equipped==["pocket"],"actual equip click persists unlocked Bronze perk")
  var loaded=PlayerProfile.new(save_path)
  check(loaded.load_profile() and loaded.equipped==["pocket"],"loadout survives fresh profile instance")
+ await click_button("Back to preparation")
  await click_button("Back")
  await click_button("Main menu")
  await click_button("Settings")
@@ -118,28 +121,34 @@ func run():
  check(has_label("Silver"),"menu shows promoted profile rank")
  await click_button("Start Game")
  await click_button("Prepare")
+ await click_button("Permanent perk loadout")
  await click_button("Equip",1000)
  check(game.profile.equipped==["reinforced"],"second unlocked perk replaces one equipped slot")
  game.profile.xp=690
  game.profile.save_profile()
- await click_button("Long night")
+ await click_button("Back to preparation")
+ var long_night=game.ui.panel.get_node_or_null("mode_hard")
+ check(long_night is Button and has_label("LONG NIGHT"),"visible Long Night card remains interactive")
+ if long_night is Button:await click(long_night.get_global_rect().get_center())
  check(game.ui.progression.difficulty=="hard","actual difficulty choice records hard mode")
  await click_button("Start Match")
  check(game.mode=="match" and game.model.difficulty=="hard" and game.match_id>0,"actual Start Night launches persisted match snapshot")
  check(game.profile.active_match.equipped==["reinforced"],"active match freezes selected loadout")
  game.model.claim_room(0)
- check(is_equal_approx(game.model.player().max_hp(),Catalog.DOOR_HP[0]*1.05),"UI-selected perk changes actual door HP")
+ var room_trait=StrategyCatalog.TRAITS[game.model.player().trait_id]
+ var expected_hp=Catalog.DOOR_HP[0]*1.05*float(room_trait.door)
+ check(is_equal_approx(game.model.player().door_multiplier,1.05),"UI-selected perk reaches actual room modifier")
+ check(is_equal_approx(game.model.player().max_hp(),expected_hp),"UI-selected perk composes with actual room durability trait")
  game.profile.equip("pocket")
- check(is_equal_approx(game.model.player().max_hp(),Catalog.DOOR_HP[0]*1.05),"future loadout changes do not alter active room")
+ check(is_equal_approx(game.model.player().max_hp(),expected_hp),"future loadout changes do not alter active room")
  game.model.player_position=game.model.player().bed_position()
  game.model.sleep_player()
  game.model.time=game.model.preparation+30
  game.model.player().occupied_seconds=30
  game.model.player().damage_dealt=100
  game.model.player().door_damage_taken=100
- game.model.hunter.hp=0
- game.model.hunter.state=HunterState.State.DEAD
- game.model.result="victory"
+ game.model.hunter.state=HunterState.State.SEEK
+ game.model.hunter.hurt(game.model.hunter.hp)
  # Exercise real controller terminal handling once; menu/fixtures remain otherwise frozen.
  game._process(0.01)
  await process_frame
