@@ -1,0 +1,30 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+VISUAL_CAPTURE current/rank-0-720
+VISUAL_CAPTURE current/rank-5-720
+VISUAL_CAPTURE current/rank-6-720
+VISUAL_CAPTURE current/reaper-transform-720
+VISUAL_CAPTURE current/reaper-windup-720
+VISUAL_CAPTURE current/reaper-impact-720
+VISUAL_CAPTURE current/survivor-collapse-720
+VISUAL_CAPTURE current/survivor-remains-720
+VISUAL_CAPTURE current/opening-720
+VISUAL_CAPTURE current/creator-title-720
+VISUAL_CAPTURE current/rank-0-1080
+VISUAL_CAPTURE current/rank-5-1080
+VISUAL_CAPTURE current/rank-6-1080
+VISUAL_CAPTURE current/reaper-transform-1080
+VISUAL_CAPTURE current/reaper-windup-1080
+VISUAL_CAPTURE current/reaper-impact-1080
+VISUAL_CAPTURE current/survivor-collapse-1080
+VISUAL_CAPTURE current/survivor-remains-1080
+VISUAL_CAPTURE current/opening-1080
+VISUAL_CAPTURE current/creator-title-1080
+VISUAL_PERF {"approx_process_fps":27.6703574970659,"frames":70,"label":"720-normal","material_cache_after":30,"material_cache_before":30,"mean_frame_ms":36.1397571428572,"p95_frame_ms":49.221,"reduced":false,"renderer":"Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture","resolution":"(1280, 720)","root_children_after":1,"root_children_before":1,"sample_window_seconds":2.5,"source_phase":"current"}
+VISUAL_PERF {"approx_process_fps":17.4998518478452,"frames":44,"label":"1080-normal","material_cache_after":30,"material_cache_before":30,"mean_frame_ms":57.1433409090909,"p95_frame_ms":64.709,"reduced":false,"renderer":"Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture","resolution":"(1920, 1080)","root_children_after":1,"root_children_before":1,"sample_window_seconds":2.5,"source_phase":"current"}
+VISUAL_PERF {"approx_process_fps":29.8380984776602,"frames":75,"label":"720-reduced","material_cache_after":30,"material_cache_before":30,"mean_frame_ms":33.5142,"p95_frame_ms":40.883,"reduced":true,"renderer":"Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture","resolution":"(1280, 720)","root_children_after":1,"root_children_before":1,"sample_window_seconds":2.5,"source_phase":"current"}
+VISUAL_CAPTURE current/rendered-soak-final
+PHASE6_DETAIL_CHECKS=45 FAILURES=0

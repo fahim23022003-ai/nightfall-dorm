@@ -1,0 +1,882 @@
+{
+  "baseline_source": "dfe4bc8f3cf4e4082d07d39bc190f8c09ae4458d",
+  "current_git_head": "32f74572940f51f9b9e486f49f04a5f7e9874305",
+  "current_production_script_sha256": {
+    "scripts/audio_director.gd": "e9492e1fe894ce01f75981dd627d528cc4a85934e95360dbf1afa6dc844e9958",
+    "scripts/boss_catalog.gd": "bc4a8a9a412fbfbb3fc64e93e532ae1191b48fd2a862e0339dcc98c5d955aea7",
+    "scripts/boss_presentation.gd": "2e63c6d181c5b15f06d2868c1ad54a32e69271687582a60f86a31b524d1e6c7b",
+    "scripts/bot_ai.gd": "75001982a4ba9fb4f840fcb882ac6cdbd13701a96a2e0c9b0627b9847f471766",
+    "scripts/campaign_interface.gd": "2f93c3081a83f53eef7969d2171d7308562aa4275d1b89c26b15ba1c6ac5def4",
+    "scripts/cash_shop.gd": "a5fae363255cd6871e9a0fec573dfa85519ab03270559a0ac18f520a1aa259a7",
+    "scripts/catalog.gd": "b7fc643ad42b3cd2240c752d83d836c1d055cfb8d9916e0031805d61c7796c14",
+    "scripts/challenge_code.gd": "ff657a0773d6a5ac2b8698a5e23d92873100d166e4a13e3a811863a83763c2d5",
+    "scripts/cosmetic_catalog.gd": "3205af563eb524ccd45be51ba1e8daa9aced53cdbb290ca43573d40ca276812f",
+    "scripts/cosmetic_presentation.gd": "1f09129ecedd0b6412da7f2640fd40b6453908386a3e3a216d3dd0c357d0468c",
+    "scripts/defeat_facts.gd": "dad3a294122d76cb700bb5f34da5e76347e9d33993b3f524638ef886c02fde60",
+    "scripts/dorm_presentation.gd": "e2cd81f1780f132c82c7805956020055353fa0a1999eacb7713ef93471b5ef03",
+    "scripts/endless_run.gd": "ecc915bad4f329ebace6dfeb77f4d06e24ad0b7e4ce91b57da93b114745d91f3",
+    "scripts/game.gd": "6e8cbc96519edecce4c2b5818f1633de6e9e9955813bd951d5727d19c0e431ab",
+    "scripts/gothic_theme.gd": "776694c60399df9976e9594aa69060a6f4eda7057c11397bcc1faaddf808b096",
+    "scripts/haunted_environment.gd": "f144e50d08cd3e5777976d88aea63ed0a912fdb1230e1c4bd5d7a4c511c2437b",
+    "scripts/horror_feedback.gd": "64f5e1fca17e7e8859e336098919513ca80eea63b6f4d95d341412bae54ce0d8",
+    "scripts/hunter_state.gd": "8b092c860518f4416357b962e9dbf8ed179e5fa1a4a29d4b935599ed5a3560c5",
+    "scripts/interface.gd": "3e6654ca1fb5b1e6a33a35bbb1e31ed17fbc247e5f0303b426515273699c94b3",
+    "scripts/item_catalog.gd": "e0687d5a93205a1e90b40f74f2708b5ec49af0c298ab85aae023c7d88b19f3b4",
+    "scripts/item_effects.gd": "3d536e29661e7b504fb8992a75f13127269caf016c70cf650f6e73cf3200eeea",
+    "scripts/item_interface.gd": "89b4849eb6aa1a3f415139a6577a3df3fce0c4fcfb238d0aec72306b35e093e6",
+    "scripts/item_presentation.gd": "3065413e9ae40b3d72c79c97f882e219b6ac4db7f55db6b1f1c19d2650a01ade",
+    "scripts/item_wheel.gd": "160400b1dc908021c4e0d1ccc376498a80581b433352741ab2f810bad580df46",
+    "scripts/map_catalog.gd": "81deff2f1ff5ac6f00fac8dd34d501ff0654c263aaecd24d8fb0720badc745b5",
+    "scripts/map_presentation.gd": "1a0dfff1ab061e74a1f4bc6a3cf57789fa02b0439af91f9653ad800d13175da4",
+    "scripts/match_model.gd": "b066efd8d343e7f59e8592238ff0ae853bf7c6d9807ef3bd22c40e2086380a13",
+    "scripts/match_strategy.gd": "6bc96f1553cf9b75334d519089ae15da4d0e71fd18e0e111f732de467c91620f",
+    "scripts/mobile_interface.gd": "f51ed3b811e7fa8142674923038b1d6ba725971a47f39f91d39025941c5e165a",
+    "scripts/mobile_layout.gd": "99e98d519525265afffc6a703f36a216633ebcc4601daf05aa712cdace4b67d2",
+    "scripts/onboarding.gd": "6592a87a16d6182674b12b861d861eaa4bd469cd506573f2104f878d41462140",
+    "scripts/onboarding_catalog.gd": "7089ca586736ca3eac299e95f4c6d5742aa179fc4d2f7cba796ca1be6ae46f35",
+    "scripts/player_profile.gd": "48e4ecc32f8eb4267f1a68f826404d98a69720b512c380f032996805bd6ed22a",
+    "scripts/practice_room.gd": "8b097b6225686386323a9b3ae9db8874e343bef3a0b84c49d614fc46c37b3f77",
+    "scripts/premium_button.gd": "031a972671442669d102daceefaac5f21965f5759a99192db5415672b2c5cecd",
+    "scripts/progression_interface.gd": "badeebe643d9243344b27a78d90ebf3222ae18133d23a492662d28c2bca2218e",
+    "scripts/rank_catalog.gd": "b03b428faf61f11ba8530d4973cd7baa65b408dca7aa907882b28a04f369e2c3",
+    "scripts/replay_interface.gd": "842129fba6918a1e632d84d10ef9bd366d22522c06cb7784b7bf317a7b596ea7",
+    "scripts/replay_progress.gd": "d24609a576ada3aacfa74910f30f94464444cade6ce8e065f1d60574d4ca611a",
+    "scripts/replay_snapshot.gd": "4ffeb69b078d0a112fccf7892d39b5296f9cdeac8ec5c89ae4d4a24065aa8b3b",
+    "scripts/reward_catalog.gd": "52f44e7f08b10db0c8472764cc83326505fb150137df3f84903c4882cbba9602",
+    "scripts/room_state.gd": "296bed93aa040273fa7ee281b4d7eec7e8ef3f319e7e95597432644c81925816",
+    "scripts/spin_pity.gd": "285f668d50b2e525da8279403472c25dbc324a5622b70031b2545358ee3b1cc1",
+    "scripts/stage_catalog.gd": "b723720aa63607dc4c52433c8134741010efbf9eb45eddf194586c394bc3d108",
+    "scripts/strategy_catalog.gd": "fa0230a767699853114381116660afaf377ae5eaa21509ae641546029469eb0c",
+    "scripts/temporary_loadout.gd": "16be4d780dc4215ea766fe668dede89d5e8fde0402032c6e3d66c1facee4a6db",
+    "scripts/touch_controls.gd": "52cd25b8c25b7545e5e0004d19ffabd14452810481299df458363b9d07c53407",
+    "scripts/visual_presence.gd": "7567fe3ca1798fcfd1b3ebf6153e9c4e2221fb7286be5cb5434ede8b683b4d26"
+  },
+  "capture_script_sha256": "44359087912672fc6f8bb3d5f1e43ee15ff67bc28fe4c4ae86d300654ed04ecf",
+  "source_note": "Root presentation/export fixes may be uncommitted; exact current source hashes are authoritative. Final report records committed checkpoint. Baseline captured before rank/warning repairs.",
+  "png_count": 88,
+  "pngs": [
+    {
+      "path": "render-screens/baseline/achievements-0-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "bab31bd692cff68dc5fe4d82daeeb3f28fe319e0aca126d3872d3988a9555d3a",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/achievements-0-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "28909904a46ac86836f34138b4626c670a82c72b011829f96e84ad7c244f9dfe",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/achievements-1-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "3b97e02c496d410768e085b070bd96be018224297bb31cbc789a42dcbefb800d",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/achievements-1-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "e4f5f4354d1e73de74fbde012d82c157685b3dd490e7a89f9913776386d2c855",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/codes-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "46c39426e51e9ae30fe0659bfec1dbca8f3c8c22dc0b703a03718b6f75265272",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/codes-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "07f4a7c01d4f92c7bbe2657946b741ea6d2748db3e2eb31de9f26f67f26fdabe",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/cosmetics-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "c19ff9d249822d8762dd782f834909a0b28f8c43ee441142e122f8d141a1326c",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/cosmetics-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "def02fd3bda0e51745f655a6a219584c4a35f54a04a1522c9871adf81c88f8c0",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/dense-normal-start-first-fix-error.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "7f1f1acfff6b366b132bf792e5b5f8fb845b51fb1c7b7a3988c41aa43898fac8",
+      "status": "preserved rejected fix attempt"
+    },
+    {
+      "path": "render-screens/baseline/dense-reduced-final-first-fix-error.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "7affe0ed424178f7a5f196fd4588bded63fee7993273d45de57bfe6702bb8f46",
+      "status": "preserved rejected fix attempt"
+    },
+    {
+      "path": "render-screens/baseline/endless-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "428fabd6fea5a9a9c0dbce740e038d34ad3c85a674291c78386d1c61af8367cf",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/endless-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "f1f189dedde57c0934f21c6d298809b77591200da461ce7e4586dc3f1cf7d646",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/inventory-0-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "15d848d5f0ee301ba2ed86d5cdc1b9528efabbd911ce92a3d6a259e885b0c6bd",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/inventory-0-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "e68149ccde23fe28e9c8d94c45eba03a7c02555a2a04ad2b9e6d0a761e93571b",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/inventory-1-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "d75617144fa46750829e48d68cbe34f9b32f1da8fd61d709f14786414c597fef",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/inventory-1-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "9046d74256214c739ba1922beaf550b78d1df5ea6338f97a9852a767a98f4725",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/inventory-2-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "9db6113fd40b381d3a9f0c675aad6c23a83652919710af04566082559e64ed4e",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/inventory-2-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "587654b11ca8f25c3a6ed37f8010b495eeb45656501cef5263c8c857294e65fa",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/loadout-hard-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "c77023ebbe96047fbd2cf30ac8f40db1fd912f75ccbfbb41db0ff32f833f770a",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/loadout-hard-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "60ebd9d7e9bbe467a3f613d09f1720696f0d6ba6852a6e9682dcd3d28d84838b",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/loadout-hell-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "7be7f6658e428c3c9defb012d2f6a9b276e24c656be3bfa1246ee23244017d88",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/loadout-hell-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "361a1408513b8b6ab412d9da15ac90592da64167706d2b032f47c4b1f231f993",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/loadout-standard-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "c3dc1c4001fb95a0c222babaa072f63cfa59306206647ab4ce1e8c99dca5b121",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/loadout-standard-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "4593792e06d94aaa0b598da929ed2a307146b6402c9a56790d34f78817e90b8c",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/map-abandoned_dorm-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "72f9c3e06d54d7e55f122c17e6c7171fb1ff408accb73352c4eddd814eaa8ec9",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/map-abandoned_dorm-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "c632b07f8f7c55f98d63193fac0701c6c88b9618fdfcbc0f4345bde69dfa9e41",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/map-cursed_mansion-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "69255067cea22918062e7a92808ce0ecfcc11595b3eea94d4e25afb0d70c1d55",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/map-cursed_mansion-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "89e72cb6d21363f9404effa9f86b2d8247dbbe7369a6bea1d4f8b0b60b8b2a05",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/map-forgotten_hotel-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "093188e31634836d70910ca9ab823a84db369baf090b6344ff3cf96c08033577",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/map-forgotten_hotel-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "77793a060c4391635b19998337160ca8806a7aac373b8d808a98ce963b109bea",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/map-haunted_hospital-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "2f9b6c523ff6d811a090941844556df93cbbab1f1e12a67b0df3754f3cda5b21",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/map-haunted_hospital-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "ef9343c8f92b49d46beab2bcfd483a4117e59cbdd2a44d43dcb655251d3d239e",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/map-underground_lab-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "00d3f0f89d84ab9663c19ec6f95d6f769b6391bc69c02436447f5d2d326ed3f3",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/map-underground_lab-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "2c42a5f3a138ee55301b64d1c743a3084e6ea3b5c0a0dd4ea0f60574ecd07c63",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/menu-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "d18857194658e50904e4607446e799ef5129d37d3c0033820d12d9e32344daaa",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/menu-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "1d0980002897ae23e638c34cec79d3cec2b059165c13b0fe31fd688bc9b94fa4",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/practice-setup-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "476528d9319df433a8254e89be060481446825724b3a7b27209c4ad450ad22cd",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/practice-setup-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "4d2b9516fb63752d29c253c8987221b3fe00b20befbae5f3db46883e163615c2",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/ranks-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "5d620818a824903fb1a7f02d6ccac4a9ba2b4bb99f73ff9b9f3b9a176509556c",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/ranks-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "47e799f86fb1430069e5f80a854501ad89ebc51aa91b9b0cecc320b75e1fac36",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/real-practice-reaper-audio.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "51aeae59ff998ab98cb3135167e27f1f84d04fc6d9ad93d3006d3eb20f060259",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/reaper-overlap-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "373805f4fed40a16d9cc675fbfcb3e005a60b55ed81d228cb10b3db7a506ed26",
+      "status": "preserved confirmed overlap"
+    },
+    {
+      "path": "render-screens/baseline/reaper-overlap-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "d3a8a802d0d46a41e92b973431ddac8d5b2874a03e7c24741ff3903c8a82c4a7",
+      "status": "preserved confirmed overlap"
+    },
+    {
+      "path": "render-screens/baseline/result-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "b47ab68fee3d327b08dface24eb04cc23a85384683f117dc581952755f29e0d4",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/result-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "da4a68d9bbe7e477375e10f377c670c8f4a8a2298f450bb17148941643544597",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/shop-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "1dc04e270de20a9db9e99424a95f52e738041b2a44afd78a50dd2bd7f8d620bf",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/shop-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "c113f17379fc6630b3487ca7745782dfe13f2e1d6eabb8009abe731aa6097064",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/siege-abandoned_dorm-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "8a6b5aefec686b3c8eaede89ea4a8b2d833942bcfcdb1fc85f50b7d1d0211a5c",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/siege-abandoned_dorm-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "dc1737b6c9f6bf42b51d3e1f766cfacbda8bddbe03a4b6d6fd7c948bc6a5be4c",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/siege-cursed_mansion-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "c697fff4fff0722182f0b9797d0a4997af9291d25310e6b58bd3087e9b81e265",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/siege-cursed_mansion-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "dd0e8ce943eae995a57d117d52a41e02002916052def29596be6a44a28226e92",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/siege-forgotten_hotel-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "e6584cfb0f8ed4e9ca1b077b9b6d9a7af596019515cc909d4d2f1db0ae777943",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/siege-forgotten_hotel-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "a56f1eb25eea216a4f11d368b91e8dec5937dc8735a801702cdd55f6ab758e61",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/siege-haunted_hospital-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "2177fd14902c47121865a5a9468f94769e24e8d9a654d7d87bce58419b53e5ff",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/siege-haunted_hospital-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "e69fc56437ea915f29fb0a83db9d3a2a4fffe837cc475564fd8bc7c49d62b0fe",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/siege-underground_lab-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "5dff1004e91e113befdde9c1a619fa8caa4ac77d1fc6268c174d1a7c23281831",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/siege-underground_lab-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "7593062bf3bb2202f79ffbe5e29cc891c10d9526d3c722b5d379b9d20b66dc77",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/spin-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "76c8f18478fa5aac14b74bb147dad8ed65b39f4c121e192d383f941b2bca72cf",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/spin-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "a352cde9488c98be20a6c6e4bed60f9b73a941bf8125de662b0543064946acad",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/stages-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "d2cd060ccb4bc484dbf5440087811d0a3339ce9c150b21e22d8266efeaecc1f7",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/baseline/stages-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "d7c709fdd8f4ef15d593f3b32cbdddd04af1bae6d15af66fc96fb8b4a4813eb7",
+      "status": "baseline"
+    },
+    {
+      "path": "render-screens/current/awakening-retained-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "ad942811ff80ca0debdf57be0b747e89d07608e592fd38e60aebc11f78ffa88a",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/awakening-retained-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "2fc07851096bb49c7440a534f284ddfc27ddc73f9a031e59c19b783a422ca58c",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/creator-title-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "e8a8d91a3390fa39b756e72991496ecf2f9795bb65e9b05bd29ce0235d7aad32",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/creator-title-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "54a4abf0aef79589b529ca3e4a9df89950d96d1c9bbf1f1ac3056a005f43c385",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/dense-normal-start.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "0d8d996829c0056412fa7423f4f26925082db473bf5a8ea9e06e744f64e5e02c",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/dense-reduced-final.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "1582a1f2c20372a77eb54ce92289d1f3407bce08557825d45eee55d444f4234f",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/opening-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "173b54a93a9f004a67448f1a0a72504889f0ec3dbc37a512be7b6a7c77eeb2da",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/opening-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "a835adaa735fa5dc7d7ee3e945f9b210724311c22457e20d2b87be796395b7df",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/rank-0-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "8fcb53624cfc14e15697c80321a396d8728992f1dcc82030d29da4aae446ac52",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/rank-0-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "ad36c5e84bbb7ba0a012a9d207e609770ef2d15520501965faff3d0bf52d1b15",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/rank-5-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "720bf591f58442b558db0f37f213ae184522b35c5b2c2473c76e030daad43bcd",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/rank-5-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "d1ed39c67378456cd2158253f5b4a6bf6ccb29b57f19214f4bd1d24482013527",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/rank-6-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "7ce12502f2ef96573d0c6fae0daf393052c99ea715f43851dc7d81e609f48d45",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/rank-6-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "3cc7a6872cc88675e6693fea861dc885a5f30b663bd542f2ad42e0ed64a68102",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/reaper-impact-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "18ede308ed8044eb0bd05de18b69cfa4d5a2469c51dc07478b8b02724d3f350f",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/reaper-impact-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "5003f41617b31bb4aaa1b3362088f3261ed4d9182a0b66330880e81ae04b1283",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/reaper-transform-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "e86ef0873af057030b14b5170901aea5696750ba02d69a6d4825d4354bea541f",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/reaper-transform-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "4447ab3ba959945055a75a08c960322f1056a9d657945e2bdf9388eeb36d73df",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/reaper-windup-1080-reduced.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "1270daebb9f9ebd126168f2f7e5f170b8d78535f67920b297d24c5878b4680ee",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/reaper-windup-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "4a6d7ddc9c097b2c8ea2b2f6535b9d3e1075003aaf3b6d9b5d720ac15ead06d9",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/reaper-windup-720-reduced.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "756591e1fcb6a53e55047afe67c650d18c18e7f752cde4d3eae1a7441888b15e",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/reaper-windup-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "07f7787ad04bbac0a92d168402da1478c91269a4eb5a5db41418671dd4e4b99b",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/rendered-soak-final.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "64840be48e9470cf0f11e5ae1122ba9309c26518e2afbd0a0606e29f6e21c05d",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/survivor-collapse-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "73bf8ef4e3b77c289b34d0f9f2e17af7b18c9f38f4610e0d0d0c77b6bba63486",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/survivor-collapse-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "a0d9a11e04c7e180cd47d9cf54fb5057c15d87cea141086460c6c6eebf21b49a",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/survivor-remains-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "547423790b0ebb5ac27c3082b8d7a21aae0616345f91d544e4e2f7181f2df32e",
+      "status": "current inspected"
+    },
+    {
+      "path": "render-screens/current/survivor-remains-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "9df3737fd7b9b04673bb72c2c0c38bd174f23b6e22a7784b62a5d512b7f928fc",
+      "status": "current inspected"
+    }
+  ],
+  "accepted_assertion_runs": [
+    {
+      "log": "render-baseline.log",
+      "checks": 85,
+      "failures": 0,
+      "engine_errors": false
+    },
+    {
+      "log": "render-detail-initial.log",
+      "checks": 45,
+      "failures": 0,
+      "engine_errors": false
+    },
+    {
+      "log": "render-dense-final.log",
+      "checks": 162,
+      "failures": 0,
+      "engine_errors": false
+    },
+    {
+      "log": "render-warning-final.log",
+      "checks": 22,
+      "failures": 0,
+      "engine_errors": false
+    }
+  ],
+  "accepted_assertions": 314,
+  "visual_findings": "Initial45 assertions pass did not detect manual Reaper banner overlap; final22-check affected render verifies priority repair. First-fix dense162/0 with engine errors is rejected/not summed.",
+  "platform": "Godot4.6.3 Linux Mesa llvmpipe, Dummy hardware audio; Windows/human quality unverified",
+  "verified_committed_production": "f5e6970",
+  "verification_note": "Exact recorded production script bytes match the committed presentation fixes; capture-time HEAD retained above."
+}

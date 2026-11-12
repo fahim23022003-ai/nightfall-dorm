@@ -1,0 +1,139 @@
+{
+ "audio_after": {
+  "ambience_gain": 0.9684368,
+  "dropped_events": 4,
+  "event_counts": {
+   "bed_upgrade": 18,
+   "breach": 4,
+   "build": 13,
+   "danger": 5,
+   "death_scream_1": 2,
+   "door_break": 4,
+   "door_crack": 2,
+   "door_hit": 8,
+   "door_reaction": 4,
+   "door_upgrade": 13,
+   "footstep": 19,
+   "hunter_laugh": 2,
+   "hunter_level": 4,
+   "impact": 31,
+   "income": 31,
+   "intro_whisper": 2,
+   "match_start": 21,
+   "menu": 2,
+   "reaper_charge": 1,
+   "reaper_hurt": 31,
+   "reaper_impact": 4,
+   "reaper_laugh": 2,
+   "reaper_scythe": 6,
+   "reaper_transform": 9,
+   "scream_1": 1,
+   "scream_2": 1,
+   "scream_3": 1,
+   "shot_needle": 31,
+   "survivor_notice": 2,
+   "turret_upgrade": 13,
+   "weather_rain": 2,
+   "weather_thunder": 1,
+   "weather_wind": 2
+  },
+  "frame_voice_limit": 6,
+  "intensity": 0.0,
+  "loop_weights": {
+   "ambient_dorm": 0.35,
+   "generator_loop": 0.0,
+   "music_calm": 0.1808818,
+   "music_danger": 0.0,
+   "music_menu": 0.0,
+   "music_reaper": 0.6691182,
+   "proximity_loop": 0.0,
+   "reaper_ambience": 0.0
+  },
+  "missing_assets": [],
+  "mix": {
+   "ambient": 0.5,
+   "effects": 0.65,
+   "music": 0.5,
+   "muted": false
+  },
+  "music_duck": 0.48,
+  "music_start_count": 4,
+  "pacing_gain": 0.9723822,
+  "pending_critical": 0,
+  "proximity": 0.0,
+  "stream_count": 105,
+  "tension_state": "approach",
+  "tension_weight": 0.1064456,
+  "voice_limit": 16,
+  "voices": 5
+ },
+ "conditions": "30 seconds real wall-time Linux llvmpipe Practice Reaper plus12 mode resets, not long-session Windows performance",
+ "initial": {
+  "audio_children": 24,
+  "nodes": 198.0,
+  "objects": 2536.0,
+  "static_bytes": 56741364.0
+ },
+ "samples": [
+  {
+   "audio_children": 24,
+   "damage_records": 0,
+   "nodes": 116.0,
+   "objects": 2319.0,
+   "presentation_records": 15,
+   "projectiles": 0,
+   "seconds": 5.021097,
+   "static_bytes": 55736236.0
+  },
+  {
+   "audio_children": 24,
+   "damage_records": 1,
+   "nodes": 116.0,
+   "objects": 2317.0,
+   "presentation_records": 15,
+   "projectiles": 1,
+   "seconds": 10.019207,
+   "static_bytes": 55735080.0
+  },
+  {
+   "audio_children": 24,
+   "damage_records": 2,
+   "nodes": 116.0,
+   "objects": 2319.0,
+   "presentation_records": 17,
+   "projectiles": 1,
+   "seconds": 15.034976,
+   "static_bytes": 55765432.0
+  },
+  {
+   "audio_children": 24,
+   "damage_records": 2,
+   "nodes": 116.0,
+   "objects": 2319.0,
+   "presentation_records": 22,
+   "projectiles": 0,
+   "seconds": 20.004202,
+   "static_bytes": 55781450.0
+  },
+  {
+   "audio_children": 24,
+   "damage_records": 2,
+   "nodes": 116.0,
+   "objects": 2317.0,
+   "presentation_records": 25,
+   "projectiles": 1,
+   "seconds": 25.026703,
+   "static_bytes": 55781160.0
+  },
+  {
+   "audio_children": 24,
+   "damage_records": 2,
+   "nodes": 116.0,
+   "objects": 2320.0,
+   "presentation_records": 29,
+   "projectiles": 0,
+   "seconds": 30.015492,
+   "static_bytes": 55794020.0
+  }
+ ]
+}

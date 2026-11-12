@@ -1,0 +1,67 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+VISUAL_CAPTURE baseline/menu-720
+VISUAL_CAPTURE baseline/stages-720
+VISUAL_CAPTURE baseline/loadout-standard-720
+VISUAL_CAPTURE baseline/loadout-hard-720
+VISUAL_CAPTURE baseline/loadout-hell-720
+VISUAL_CAPTURE baseline/shop-720
+VISUAL_CAPTURE baseline/inventory-0-720
+VISUAL_CAPTURE baseline/inventory-1-720
+VISUAL_CAPTURE baseline/inventory-2-720
+VISUAL_CAPTURE baseline/ranks-720
+VISUAL_CAPTURE baseline/achievements-0-720
+VISUAL_CAPTURE baseline/achievements-1-720
+VISUAL_CAPTURE baseline/endless-720
+VISUAL_CAPTURE baseline/codes-720
+VISUAL_CAPTURE baseline/practice-setup-720
+VISUAL_CAPTURE baseline/cosmetics-720
+VISUAL_CAPTURE baseline/siege-abandoned_dorm-720
+VISUAL_CAPTURE baseline/map-abandoned_dorm-720
+VISUAL_CAPTURE baseline/siege-haunted_hospital-720
+VISUAL_CAPTURE baseline/map-haunted_hospital-720
+VISUAL_CAPTURE baseline/siege-forgotten_hotel-720
+VISUAL_CAPTURE baseline/map-forgotten_hotel-720
+VISUAL_CAPTURE baseline/siege-underground_lab-720
+VISUAL_CAPTURE baseline/map-underground_lab-720
+VISUAL_CAPTURE baseline/siege-cursed_mansion-720
+VISUAL_CAPTURE baseline/map-cursed_mansion-720
+VISUAL_CAPTURE baseline/result-720
+VISUAL_CAPTURE baseline/spin-720
+VISUAL_CAPTURE baseline/menu-1080
+VISUAL_CAPTURE baseline/stages-1080
+VISUAL_CAPTURE baseline/loadout-standard-1080
+VISUAL_CAPTURE baseline/loadout-hard-1080
+VISUAL_CAPTURE baseline/loadout-hell-1080
+VISUAL_CAPTURE baseline/shop-1080
+VISUAL_CAPTURE baseline/inventory-0-1080
+VISUAL_CAPTURE baseline/inventory-1-1080
+VISUAL_CAPTURE baseline/inventory-2-1080
+VISUAL_CAPTURE baseline/ranks-1080
+VISUAL_CAPTURE baseline/achievements-0-1080
+VISUAL_CAPTURE baseline/achievements-1-1080
+VISUAL_CAPTURE baseline/endless-1080
+VISUAL_CAPTURE baseline/codes-1080
+VISUAL_CAPTURE baseline/practice-setup-1080
+VISUAL_CAPTURE baseline/cosmetics-1080
+VISUAL_CAPTURE baseline/siege-abandoned_dorm-1080
+VISUAL_CAPTURE baseline/map-abandoned_dorm-1080
+VISUAL_CAPTURE baseline/siege-haunted_hospital-1080
+VISUAL_CAPTURE baseline/map-haunted_hospital-1080
+VISUAL_CAPTURE baseline/siege-forgotten_hotel-1080
+VISUAL_CAPTURE baseline/map-forgotten_hotel-1080
+VISUAL_CAPTURE baseline/siege-underground_lab-1080
+VISUAL_CAPTURE baseline/map-underground_lab-1080
+VISUAL_CAPTURE baseline/siege-cursed_mansion-1080
+VISUAL_CAPTURE baseline/map-cursed_mansion-1080
+VISUAL_CAPTURE baseline/result-1080
+VISUAL_CAPTURE baseline/spin-1080
+VISUAL_PERF {"approx_process_fps":28.1280467923924,"frames":71,"label":"720-normal","material_cache_after":45,"material_cache_before":45,"mean_frame_ms":35.5517042253521,"p95_frame_ms":47.523,"reduced":false,"renderer":"Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture","resolution":"(1280, 720)","root_children_after":1,"root_children_before":1,"sample_window_seconds":2.5,"source_phase":"baseline"}
+VISUAL_PERF {"approx_process_fps":17.3141094251716,"frames":44,"label":"1080-normal","material_cache_after":45,"material_cache_before":45,"mean_frame_ms":57.7563636363636,"p95_frame_ms":71.658,"reduced":false,"renderer":"Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture","resolution":"(1920, 1080)","root_children_after":1,"root_children_before":1,"sample_window_seconds":2.5,"source_phase":"baseline"}
+VISUAL_PERF {"approx_process_fps":26.6314971909733,"frames":67,"label":"720-reduced","material_cache_after":45,"material_cache_before":45,"mean_frame_ms":37.5495223880597,"p95_frame_ms":53.636,"reduced":true,"renderer":"Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture","resolution":"(1280, 720)","root_children_after":1,"root_children_before":1,"sample_window_seconds":2.5,"source_phase":"baseline"}
+VISUAL_CAPTURE baseline/real-practice-reaper-audio
+PHASE6_AUDIO {"ambience_gain":0.848,"dropped_events":2,"event_counts":{"achievement_unlocked":1,"bed_upgrade":6,"build":1,"button":2,"danger":4,"difficult_stage":2,"door_crack":10,"door_hit":10,"door_upgrade":1,"footstep":17,"impact":5,"income":13,"item_inferno":1,"item_overdrive":1,"match_start":19,"menu":2,"reaper_hurt":5,"reaper_transform":1,"shot_needle":6,"turret_upgrade":1,"victory":2,"weather_rain":9,"weather_wind":9},"frame_voice_limit":6,"intensity":0.472883625030518,"loop_weights":{"ambient_dorm":0.586441812515259,"generator_loop":0.0,"music_calm":0.0,"music_danger":0.0,"music_menu":0.0,"music_reaper":0.85,"proximity_loop":0.24225383305717,"reaper_ambience":0.433476656277974},"missing_assets":[],"mix":{"ambient":0.5,"effects":0.65,"music":0.5,"muted":false},"music_duck":1.0,"music_start_count":4,"pacing_gain":0.867,"pending_critical":0,"proximity":0.788139375050863,"stream_count":105,"tension_state":"approach","tension_weight":0.38,"voice_limit":16,"voices":0}
+PHASE6_RENDER_CHECKS=85 FAILURES=0
