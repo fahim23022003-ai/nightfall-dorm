@@ -39,8 +39,11 @@ FPS/physical controls/speakers and human visual/horror/audio quality UNVERIFIED.
 Retained pad repetition/simple exterior silhouettes/colorful survivor sprites
 remain art limitations. Full changes, paired screenshots, tests and limits:
 [PHASE_5C3_VISUAL_OVERHAUL_REPORT.md](PHASE_5C3_VISUAL_OVERHAUL_REPORT.md),
-`docs/evidence/visual-overhaul/`. Final commit/push verification pending below;
-continue only final import, commit, push and exact remote SHA verification.
+`docs/evidence/visual-overhaul/`. Final clean import and24-check scene smoke pass. Implementation/evidence commit
+`724d998ab8d30b68f07e03f68ca66753f319b361` was pushed successfully to private GitHub
+`work`; fresh remote SHA exactly matched local HEAD, tree clean. This following
+documentation-only commit records that verification; final delivery response
+records its own latest SHA and actual push verification. Stop after5C-3.
 
 ---
 
