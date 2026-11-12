@@ -1,7 +1,7 @@
 class_name HunterState
 extends RefCounted
 
-enum State {DORMANT, SEEK, MOVE, ATTACK, BREACH, EXIT, DEAD}
+enum State {DORMANT, SEEK, MOVE, ATTACK, BREACH, EXIT, DEAD, TRANSFORM}
 var state = State.DORMANT
 var position = Vector2(960,410)
 var hp = Catalog.HUNTER.hp
@@ -33,6 +33,114 @@ var _previous_siege_room=-1
 var _model_ref: WeakRef
 var decision_count=0
 var _route_costs: Dictionary={}
+# One entity, one identity, and one irreversible transformation per match.
+var boss_policy: Dictionary={"enabled":false}
+var transformed=false
+var transform_remaining=0.0
+var boss_attack=""
+var boss_attack_target=-1
+var boss_cooldowns={"scythe":0.0,"siege":0.0,"surge":0.0}
+var surge_remaining=0.0
+var surge_room=-1
+var boss_action_age=0.0
+var last_boss_attack=""
+
+func configure_encounter(stage_id: String):
+ boss_policy=BossCatalog.encounter(stage_id,difficulty)
+
+func cancel_boss_attack():
+ boss_attack=""
+ boss_attack_target=-1
+ windup_remaining=0.0
+ charged_ready=false
+ cooldown=maxf(cooldown,0.5)
+
+func shadow_active(room_index: int) -> bool:
+ return state==State.ATTACK and hp>0 and target==surge_room and room_index==surge_room and surge_remaining>0
+
+func _begin_transformation(model):
+ transformed=true
+ transform_remaining=BossCatalog.TRANSFORM_SECONDS
+ state=State.TRANSFORM
+ cancel_boss_attack()
+ siege_seconds=0
+ reassess_seconds=0
+ if target>=0 and target<model.rooms.size(): model.rooms[target].repair_factor=1.0
+ model.record_event("boss_transform",target,{"position":position,"duration":transform_remaining})
+
+func _boss_tick(delta: float, model) -> bool:
+ boss_action_age+=delta
+ surge_remaining=maxf(0,surge_remaining-delta)
+ for key in boss_cooldowns: boss_cooldowns[key]=maxf(0,boss_cooldowns[key]-delta)
+ if state!=State.ATTACK or target!=surge_room: surge_remaining=0
+ if boss_attack!="" and (state!=State.ATTACK or target!=boss_attack_target): cancel_boss_attack()
+ if state==State.TRANSFORM:
+  transform_remaining=maxf(0,transform_remaining-delta)
+  if transform_remaining<=0:
+   state=State.SEEK # Revalidate living/sleeping targets and physical route.
+   cooldown=1.0
+   model.record_event("boss_awakened",target,{"position":position})
+  return true
+ if hp>0 and not transformed and boss_policy.get("enabled",false) and state not in [State.DORMANT,State.DEAD,State.BREACH,State.EXIT]:
+  var active=model.time-model.preparation
+  if active>=boss_policy.opening and (hp/maxf(1,max_hp)<=boss_policy.hp_fraction or active>=boss_policy.deadline):
+   _begin_transformation(model)
+   return true
+ return false
+
+func _choose_boss_attack(room) -> String:
+ var defenses=0
+ for b in room.buildings.values():
+  if b.kind in ["turret","heavy"] and room.tile_position(room.buildings.find_key(b)).distance_to(position)<=Catalog.BUILDINGS[b.kind].range: defenses+=1
+ if defenses>=2 and room.door_hp>damage*2 and boss_cooldowns.surge<=0: return "surge"
+ if room.door_hp>damage*2 and boss_cooldowns.siege<=0: return "siege"
+ return "scythe" if boss_cooldowns.scythe<=0 else ""
+
+func _boss_strike(room, model):
+ if boss_attack=="":
+  var selected=_choose_boss_attack(room)
+  if selected=="": return
+  boss_attack=selected
+  boss_attack_target=target
+  var data=BossCatalog.ATTACKS[selected]
+  boss_cooldowns[selected]=data.cooldown
+  cooldown=data.windup
+  windup_remaining=cooldown
+  boss_action_age=0
+  model.record_event("boss_warning",target,{"attack":selected,"delay":cooldown})
+  return
+ var attack=boss_attack
+ var data=BossCatalog.ATTACKS[attack]
+ cancel_boss_attack()
+ last_boss_attack=attack
+ boss_action_age=0
+ boss_cooldowns[attack]=data.cooldown
+ if attack=="surge":
+  surge_room=target
+  surge_remaining=BossCatalog.SURGE_SECONDS
+  model.record_event("boss_surge",target,{"duration":surge_remaining})
+ else:
+  _damage_door(room,model,damage*data.damage)
+  model.record_event("boss_impact",target,{"attack":attack})
+ cooldown=interval*data.recovery*float(boss_policy.get("recovery",1.0))
+
+func _damage_door(room, model, amount: float):
+ var old_hp=room.door_hp
+ room.door_hp=maxf(0,room.door_hp-amount)
+ room.door_damage_taken+=old_hp-room.door_hp
+ model.record_event("door_damage",target,{"damage":old_hp-room.door_hp,"hp":room.door_hp,"max_hp":room.max_hp()})
+ if old_hp>0 and room.door_hp<=0: model.record_event("door_break",target)
+ room.try_rescue()
+ room.damage_flash=0.25
+ attacks+=1
+
+
+func stop_combat(model):
+ cancel_boss_attack()
+ surge_remaining=0
+ transform_remaining=0
+ if state==State.TRANSFORM: state=State.SEEK
+ for room in model.rooms: room.repair_factor=1.0
 
 func configure(mode: String):
  difficulty=mode if RankCatalog.DIFFICULTIES.has(mode) else "standard"
@@ -67,7 +175,7 @@ func target_score(room: RoomState) -> float:
    if room.tile_position(tile).distance_to(approach)<=data.range:
     dps+=data.damage*b.level*relay*room.turret_multiplier/(data.interval/(1+(b.level-1)*0.12))
   elif b.kind=="repair": repair+=Catalog.BUILDINGS.repair.rate*b.level
- if difficulty!="standard" and _model_ref!=null and _model_ref.get_ref()!=null:
+ if (difficulty!="standard" or transformed) and _model_ref!=null and _model_ref.get_ref()!=null:
   for other in _model_ref.get_ref().rooms:
    if other==room or not other.alive: continue
    for tile in other.buildings:
@@ -77,7 +185,7 @@ func target_score(room: RoomState) -> float:
      if other.tile_position(tile).distance_to(approach)<=data.range:
       dps+=data.damage*b.level*other.turret_multiplier/data.interval
  var caution=1.0+clampf(1.0-hp/maxf(1,max_hp),0,1)*0.5
- return position.distance_to(room.door_position())+room.door_hp*RankCatalog.pressure(difficulty).door_weight+minf(Catalog.HUNTER_ESCALATION.dps_penalty_cap,dps*Catalog.HUNTER_ESCALATION.dps_weight*caution)+minf(Catalog.HUNTER_ESCALATION.repair_penalty_cap,repair)
+ return position.distance_to(room.door_position())+room.door_hp*(0.35 if transformed else RankCatalog.pressure(difficulty).door_weight)+minf(Catalog.HUNTER_ESCALATION.dps_penalty_cap,dps*Catalog.HUNTER_ESCALATION.dps_weight*caution)+minf(Catalog.HUNTER_ESCALATION.repair_penalty_cap,repair)
 
 func navigate(goal: Vector2,delta: float):
  var previous=position
@@ -109,6 +217,10 @@ func _advance_custom(goal: Vector2,delta: float,model,key: String):
   stalled_seconds=0
 
 func tick(delta: float, match_state):
+ if not is_finite(delta) or delta<0: return
+ if match_state.result!="":
+  stop_combat(match_state)
+  return
  hit_flash = maxf(0,hit_flash-delta)
  _model_ref=weakref(match_state)
  var profile=RankCatalog.pressure(difficulty)
@@ -119,9 +231,10 @@ func tick(delta: float, match_state):
   reassess_seconds+=delta
   match_state.rooms[target].repair_factor=lerpf(1.0,profile.repair_floor,clampf(minf(siege_seconds,maxf(0,match_state.time-match_state.preparation-profile.opening))/profile.siege_ramp,0,1))
   _previous_siege_room=target
- windup_remaining=maxf(0,cooldown-delta) if charged_ready else 0.0
+ windup_remaining=maxf(0,cooldown-delta) if charged_ready or boss_attack!="" else 0.0
  if state == State.DEAD or match_state.time < match_state.preparation:
   return
+ if _boss_tick(delta,match_state): return
  var active_seconds=maxf(0,match_state.time-match_state.preparation)
  var next_level=1 if active_seconds<profile.opening else 2+int((active_seconds-profile.opening)/profile.growth_seconds)
  level=maxi(level,next_level)
@@ -150,7 +263,8 @@ func tick(delta: float, match_state):
   if absf(position.y-410)<3:
    state = State.SEEK
   return
- if target < 0 or not match_state.rooms[target].alive or not match_state.rooms[target].sleeping:
+ if target < 0 or target>=match_state.rooms.size() or not match_state.rooms[target].alive or not match_state.rooms[target].sleeping:
+  cancel_boss_attack()
   state = State.SEEK
  if state == State.DORMANT:
   state = State.SEEK
@@ -183,36 +297,37 @@ func tick(delta: float, match_state):
  elif state == State.ATTACK:
   if position.distance_to(approach)>3:
    state=State.MOVE
+   cancel_boss_attack()
    charged_ready=false
    windup_remaining=0
    room.repair_factor=1.0
    return
   if room.door_hp <= 0 or not room.closed:
+   cancel_boss_attack()
+   surge_remaining=0
    state = State.BREACH
   elif cooldown <= 0:
-   if active_seconds>=profile.opening and profile.charged_every>0 and (encounter_attacks+1)%int(profile.charged_every)==0 and not charged_ready:
-    charged_ready=true
-    cooldown=profile.windup
-    windup_remaining=cooldown
-    match_state.record_event("charged_attack",target,{"delay":cooldown,"multiplier":profile.charged_scale})
-    return
-   var strike_scale=profile.charged_scale if charged_ready else 1.0
-   charged_ready=false
-   windup_remaining=0
-   encounter_attacks+=1
-   var old_hp=room.door_hp
-   room.door_hp = maxf(0,room.door_hp-damage*strike_scale)
-   room.door_damage_taken+=old_hp-room.door_hp
-   match_state.record_event("door_damage",target,{"damage":old_hp-room.door_hp,"hp":room.door_hp,"max_hp":room.max_hp()})
-   if old_hp>0 and room.door_hp<=0: match_state.record_event("door_break",target)
-   room.try_rescue()
-   room.damage_flash = 0.25
-   attacks += 1
-   cooldown += interval
-  if (target_time if difficulty=="standard" else reassess_seconds)>maxf(profile.commit,Catalog.HUNTER_ESCALATION.minimum_commitment) and room.door_hp>damage*2:
+   if transformed:
+    _boss_strike(room,match_state)
+   else:
+    if active_seconds>=profile.opening and profile.charged_every>0 and (encounter_attacks+1)%int(profile.charged_every)==0 and not charged_ready:
+     charged_ready=true
+     cooldown=profile.windup
+     windup_remaining=cooldown
+     match_state.record_event("charged_attack",target,{"delay":cooldown,"multiplier":profile.charged_scale})
+     return
+    var strike_scale=profile.charged_scale if charged_ready else 1.0
+    charged_ready=false
+    windup_remaining=0
+    encounter_attacks+=1
+    _damage_door(room,match_state,damage*strike_scale)
+    cooldown += interval
+  if boss_attack=="" and (target_time if difficulty=="standard" and not transformed else reassess_seconds)>maxf(profile.commit,Catalog.HUNTER_ESCALATION.minimum_commitment) and room.door_hp>damage*2:
    var alternative=choose_target(match_state.rooms,target)
    var stalled=room.door_hp>=siege_start_hp-damage*2
    if alternative>=0 and alternative!=target and (stalled or target_score(match_state.rooms[alternative])<target_score(room)*(1-Catalog.HUNTER_ESCALATION.retarget_improvement)):
+    cancel_boss_attack()
+    surge_remaining=0
     avoid_target=target
     retargets+=1
     charged_ready=false
@@ -238,7 +353,7 @@ func tick(delta: float, match_state):
 func choose_target(rooms: Array, excluded: int = -1) -> int:
  decision_count+=1
  _route_costs.clear()
- if difficulty!="standard" and _model_ref!=null and _model_ref.get_ref()!=null:
+ if (difficulty!="standard" or transformed) and _model_ref!=null and _model_ref.get_ref()!=null:
   var model=_model_ref.get_ref()
   if model.map_id!="legacy": _route_costs=model.hunter_route_costs(position)
  var best = -1
@@ -258,9 +373,16 @@ func choose_target(rooms: Array, excluded: int = -1) -> int:
  return best
 
 func hurt(amount: float):
- if state == State.DORMANT or state == State.DEAD:
+ if not is_finite(amount) or amount<=0 or state == State.DORMANT or state == State.DEAD:
   return
- hp = maxf(0,hp-amount)
+ hp = maxf(0,hp-amount*(BossCatalog.SURGE_VULNERABILITY if surge_remaining>0 else 1.0))
  hit_flash = 0.15
  if hp <= 0:
   state = State.DEAD
+  transform_remaining=0
+  surge_remaining=0
+  cancel_boss_attack()
+  if _model_ref!=null and _model_ref.get_ref()!=null:
+   var model=_model_ref.get_ref()
+   if _previous_siege_room>=0: model.rooms[_previous_siege_room].repair_factor=1.0
+   if transformed: model.record_event("boss_death",target,{"position":position})

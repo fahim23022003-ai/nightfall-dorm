@@ -37,6 +37,7 @@ func configure_match(mode: String="standard", boosts: Dictionary={}):
  difficulty=mode if RankCatalog.DIFFICULTIES.has(mode) else "standard"
  match_boosts=boosts.duplicate(true)
  hunter.configure(difficulty)
+ hunter.configure_encounter(stage_id)
  return true
 
 func configure_stage(id: String) -> bool:
@@ -48,6 +49,7 @@ func configure_stage(id: String) -> bool:
  preparation=float(stage.preparation)
  hunter.stage_scaling={"hunter_hp":stage.hunter_hp,"hunter_damage":stage.hunter_damage,"hunter_speed":stage.hunter_speed}
  hunter.configure(difficulty)
+ hunter.configure_encounter(stage_id)
  return true
 
 func _init():
@@ -224,10 +226,12 @@ func step_navigation(from: Vector2,to: Vector2,distance: float,key: String="") -
  return point
 
 func record_event(type: String, room_index: int, data: Dictionary={}):
- if room_index<0 or room_index>=rooms.size(): return
+ var global_event=type in ["boss_transform","boss_awakened","boss_death"]
+ if (room_index<0 or room_index>=rooms.size()) and not global_event: return
+ var event_position=hunter.position if global_event else rooms[room_index].door_position()
  var entry=data.duplicate(true)
  entry.merge({"id":next_presentation_event_id,"type":type,"room":room_index,
-  "position":rooms[room_index].door_position(),"time":time,"damage":data.get("damage",0.0)},true)
+  "position":event_position,"time":time,"damage":data.get("damage",0.0)},true)
  next_presentation_event_id+=1
  presentation_events.append(entry)
  if presentation_events.size()>128: presentation_events.pop_front()
@@ -376,24 +380,28 @@ func tick(delta: float):
    BotAI.tick(room,delta)
  var exposed = time > preparation+25 and (player() == null or not player().sleeping)
  if exposed:
-  hunter.tick(0,self)
-  hunter.state = HunterState.State.MOVE
-  _pursue_exposed_player(delta)
+  hunter.tick(delta if hunter.state==HunterState.State.TRANSFORM else 0.0,self)
+  if hunter.state not in [HunterState.State.TRANSFORM,HunterState.State.DEAD]:
+   hunter.cancel_boss_attack()
+   hunter.state = HunterState.State.MOVE
+   _pursue_exposed_player(delta)
  else:
   hunter.tick(delta,self)
  # A breach resolves before pending teammate shots can revive a lost match.
  if player_room >= 0 and not rooms[player_room].alive:
   result = "defeat"
+  hunter.stop_combat(self)
   _cancel_projectiles("terminal")
   return
  # Contact with an exposed survivor has the same priority as a room breach.
- if exposed and hunter.hp > 0 and hunter.position.distance_to(player_position)<15:
+ if exposed and hunter.state!=HunterState.State.TRANSFORM and hunter.hp > 0 and hunter.position.distance_to(player_position)<15:
   if player() != null:
    player().alive = false
    player().sleeping = false
    record_event("elimination",player_room)
   eliminations += 1
   result = "defeat"
+  hunter.stop_combat(self)
   _cancel_projectiles("terminal")
   return
  _advance_projectiles(delta)
@@ -403,6 +411,7 @@ func tick(delta: float):
  elif hunter.hp <= 0:
   result = "victory"
  if result != "":
+  hunter.stop_combat(self)
   _cancel_projectiles("terminal")
 
 func _turrets(delta: float):
@@ -421,7 +430,7 @@ func _turrets(delta: float):
     continue
    b.cooldown = maxf(-delta,b.cooldown-delta)
    var data = Catalog.BUILDINGS[b.kind]
-   if hunter.hp > 0 and hunter.state != HunterState.State.DORMANT and hunter.state != HunterState.State.DEAD and room.tile_position(tile).distance_to(hunter.position)<=data.range and b.cooldown <= 0:
+   if not hunter.shadow_active(room.index) and hunter.hp > 0 and hunter.state != HunterState.State.DORMANT and hunter.state != HunterState.State.DEAD and room.tile_position(tile).distance_to(hunter.position)<=data.range and b.cooldown <= 0:
     var amount = data.damage*b.level*multiplier*room.turret_multiplier
     if projectiles.size() >= Catalog.PROJECTILES.max_active:
      continue
