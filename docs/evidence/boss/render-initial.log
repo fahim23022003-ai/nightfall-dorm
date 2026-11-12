@@ -1,0 +1,56 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+BOSS_CAPTURE render-01-preparation size=(1280, 720) code=0
+BOSS_CAPTURE render-02-normal-hunter size=(1280, 720) code=0
+BOSS_CAPTURE render-03-transformation size=(1280, 720) code=0
+BOSS_CAPTURE render-04-transformation-960x540 size=(960, 540) code=0
+BOSS_CAPTURE render-05-reaper-awakened size=(1280, 720) code=0
+BOSS_WARNING_WIDTH text=SCYTHE STRIKE 0.6s · REPAIR NOW width=355.0 available=476.0
+BOSS_NOTICE_WIDTH text=Scythe Strike · Room 1 · repair now width=283.0
+BOSS_CAPTURE render-06-scythe-warning size=(1280, 720) code=0
+BOSS_CAPTURE render-07-scythe-impact size=(1280, 720) code=0
+BOSS_WARNING_WIDTH text=SOUL SIEGE 1.1s · REPAIR NOW width=317.0 available=476.0
+BOSS_NOTICE_WIDTH text=Scythe Strike · Room 1 · repair now width=283.0
+BOSS_NOTICE_WIDTH text=Soul Siege · Room 1 · repair now width=261.0
+BOSS_CAPTURE render-06-siege-warning size=(1280, 720) code=0
+BOSS_CAPTURE render-07-siege-impact size=(1280, 720) code=0
+BOSS_WARNING_WIDTH text=SHADOW SURGE 0.9s · REPAIR NOW width=364.0 available=476.0
+BOSS_NOTICE_WIDTH text=Scythe Strike · Room 1 · repair now width=283.0
+BOSS_NOTICE_WIDTH text=Soul Siege · Room 1 · repair now width=261.0
+BOSS_NOTICE_WIDTH text=Shadow Surge · Room 1 · repair through turret silence width=433.0
+ERROR: BOSS RENDER: notification fits
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_boss.gd:12)
+       [1] check_text (res://tools/capture_boss.gd:100)
+       [2] run (res://tools/capture_boss.gd:157)
+       [3] advance (res://tools/capture_boss.gd:27)
+BOSS_CAPTURE render-06-surge-warning size=(1280, 720) code=0
+BOSS_CAPTURE render-07-surge-impact size=(1280, 720) code=0
+BOSS_WARNING_WIDTH text=TURRETS SILENCED 2.5s · KEEP REPAIRING width=433.0 available=476.0
+BOSS_NOTICE_WIDTH text=Soul Siege · Room 1 · repair now width=261.0
+BOSS_NOTICE_WIDTH text=Shadow Surge · Room 1 · repair through turret silence width=433.0
+ERROR: BOSS RENDER: notification fits
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_boss.gd:12)
+       [1] check_text (res://tools/capture_boss.gd:100)
+       [2] run (res://tools/capture_boss.gd:166)
+BOSS_NOTICE_WIDTH text=Room 1 turrets silenced · repairs still work width=339.0
+BOSS_CAPTURE render-08-silence-960x540 size=(960, 540) code=0
+BOSS_CAPTURE render-09-hurt size=(1280, 720) code=0
+BOSS_CAPTURE render-10-death size=(1280, 720) code=0
+BOSS_CAPTURE render-11-victory size=(1280, 720) code=0
+BOSS_CAPTURE render-12-abandoned_dorm size=(1280, 720) code=0
+BOSS_CAPTURE render-12-haunted_hospital size=(1280, 720) code=0
+BOSS_CAPTURE render-12-forgotten_hotel size=(1280, 720) code=0
+BOSS_CAPTURE render-12-underground_lab size=(1280, 720) code=0
+BOSS_CAPTURE render-12-cursed_mansion size=(1280, 720) code=0
+BOSS_CAPTURE render-13-defeat-retry size=(1280, 720) code=0
+BOSS_CAPTURE render-14-retry-normal size=(1280, 720) code=0
+BOSS_ENGINE_MIX_BYTES=2686976
+BOSS_RENDER_AUDIO={"dropped_events":15,"event_counts":{"build":6,"button":1,"danger":3,"defeat":1,"door_hit":2,"door_upgrade":6,"ghost_defeat":5,"hunter_level":6,"hunter_spawn":6,"match_start":12,"menu":1,"rank":2,"reaper_charge":1,"reaper_death":1,"reaper_impact":1,"reaper_scythe":1,"reaper_surge":1,"reaper_transform":6,"reward":2,"scream_1":2,"scream_2":2,"scream_3":2,"victory":6},"frame_voice_limit":6,"intensity":0.0,"loop_weights":{"ambient_dorm":0.35,"generator_loop":0.0,"music_calm":0.85,"music_danger":0.0,"music_menu":0.0,"music_reaper":0.0,"proximity_loop":0.0,"reaper_ambience":0.0},"missing_assets":[],"mix":{"ambient":0.5,"effects":0.65,"music":0.5,"muted":false},"music_start_count":4,"pending_critical":0,"proximity":0.0,"stream_count":55,"voice_limit":16,"voices":0}
+BOSS_RENDER_CHECKS=63 FAILURES=2

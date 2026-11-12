@@ -44,16 +44,29 @@ var surge_remaining=0.0
 var surge_room=-1
 var boss_action_age=0.0
 var last_boss_attack=""
+var _transform_exit_room=-1
 
 func configure_encounter(stage_id: String):
  boss_policy=BossCatalog.encounter(stage_id,difficulty)
 
 func cancel_boss_attack():
+ var interrupted=boss_attack!=""
  boss_attack=""
  boss_attack_target=-1
  windup_remaining=0.0
  charged_ready=false
- cooldown=maxf(cooldown,0.5)
+ if interrupted: cooldown=maxf(cooldown,0.5)
+
+func request_exit(room_index: int):
+ if state==State.DEAD: return
+ if state==State.TRANSFORM:
+  _transform_exit_room=room_index
+  return
+ target=room_index
+ state=State.EXIT
+ exit_corridor=false
+ cancel_boss_attack()
+ surge_remaining=0
 
 func shadow_active(room_index: int) -> bool:
  return state==State.ATTACK and hp>0 and target==surge_room and room_index==surge_room and surge_remaining>0
@@ -78,6 +91,9 @@ func _boss_tick(delta: float, model) -> bool:
   transform_remaining=maxf(0,transform_remaining-delta)
   if transform_remaining<=0:
    state=State.SEEK # Revalidate living/sleeping targets and physical route.
+   if _transform_exit_room>=0 and _transform_exit_room<model.rooms.size():
+    request_exit(_transform_exit_room)
+   _transform_exit_room=-1
    cooldown=1.0
    model.record_event("boss_awakened",target,{"position":position})
   return true
@@ -137,6 +153,7 @@ func _damage_door(room, model, amount: float):
 
 
 func stop_combat(model):
+ _transform_exit_room=-1
  cancel_boss_attack()
  surge_remaining=0
  transform_remaining=0
@@ -298,6 +315,7 @@ func tick(delta: float, match_state):
  elif state == State.ATTACK:
   if position.distance_to(approach)>3:
    state=State.MOVE
+   surge_remaining=0
    cancel_boss_attack()
    charged_ready=false
    windup_remaining=0
@@ -376,11 +394,12 @@ func choose_target(rooms: Array, excluded: int = -1) -> int:
 func hurt(amount: float):
  if not is_finite(amount) or amount<=0 or state == State.DORMANT or state == State.DEAD:
   return
- hp = maxf(0,hp-amount*(BossCatalog.SURGE_VULNERABILITY if surge_remaining>0 else 1.0))
+ hp = maxf(0,hp-amount*(BossCatalog.SURGE_VULNERABILITY if shadow_active(surge_room) else 1.0))
  hit_flash = 0.15
  if hp <= 0:
   state = State.DEAD
   transform_remaining=0
+  _transform_exit_room=-1
   surge_remaining=0
   cancel_boss_attack()
   if _model_ref!=null and _model_ref.get_ref()!=null:

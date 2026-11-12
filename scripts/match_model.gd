@@ -260,9 +260,7 @@ func sleep_player() -> bool:
   return false
  for occupied in rooms:
   if hunter.state != HunterState.State.DORMANT and occupied.bounds().has_point(hunter.position):
-   hunter.target = occupied.index
-   hunter.state = HunterState.State.EXIT
-   hunter.exit_corridor = false
+   hunter.request_exit(occupied.index)
  room.closed = true
  room.sleeping = true
  player_position = room.bed_position()

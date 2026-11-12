@@ -1,3 +1,55 @@
+# Phase 4B — Grim Reaper boss (12 November 2026)
+
+Continued clean `work` at `efb81cdb62c58bf11e612e112a5be34da74f4669`.
+Recovery tag `pre-phase4b-efb81cd`; architecture checkpoint `517d67e`, original
+presentation/audio checkpoint `341c5dd`. Main agent B owns production; bounded
+real A gameplay review, C independent QA and D actual render/audio audit complete.
+
+Implemented one vulnerable2.4-second transformation on the same Hunter object,
+with no HP grant/refill. Data-driven Normal stages3–5 after90active seconds,
+LongNight/Hell stages2–5 after80, at≤55%HP or210active-second deadline.
+Introductory stages/legacy standalone retain the original Hunter. All five maps
+support encounter configuration; map1 was explicitly enabled in compatibility
+fixtures. Stage preparation communicates the rule.
+
+Original animated black hood/skull/cloak, glowing eyes, articulated scythe,
+shadow particles, transformation banner, boss HP bar and damage/death effects.
+Telegraphed Scythe Strike, Soul Siege and2.5-second Shadow Surge replace old
+charged attacks. Surge suppresses only targeted-room turret launches; existing
+shots, neighbors, income, repair and building actions remain available. The
+Reaper takes20%extra damage while Surge is active. Nine original synthesized
+WAVs bring total55; boss score crossfades, bounded effects and proximity ambience
+reuse saved audio settings. Existing economy/refunds/maps/ranks/perks/saves and
+Windows controls preserved. No Mythic/Android/new maps or Phase5 work.
+
+Final independent boss QA6,699checks/0failures; architecture25; general audio181;
+boss audio42. Actual Linux Godot/Mesa63checks/22inspected captures and31.67s
+engine mix,0clipped samples. All regular+extended regressions completed in resumed
+batches:90strategy matches Normal29W/1L,Hard18W/12L,Hell3W/27L;144mapmatches79W/65L;
+20campaign9W/11L;12legacy9W/3L;27timestep,144roommatrix,48rank/perk22W/26L;
+20ktransactions/175,941invariants; input/purchase/refund/audio/save/profile/startup
+checks pass. Final source/branch verification and private push are reported in
+the final response; the commit containing this checkpoint is the release record.
+
+Matched60baseline/boss simulations:Normal10/0→10/0,Hard6/4→8/2,Hell1/9→2/8.
+Final30Hell room probes14W/16L include12transformed-boss victories across all4
+eligible boss maps. Telegraphs/recovery and no extra HP reduce some late pressure;
+these policies are not human win rates. No blanket numerical buff was added.
+
+Confirmed and fixed: identical-building range lookup; new WAV compression import;
+Surge notification overflow; sleeping overriding transformation; displaced Surge
+vulnerability; ordinary idle Hunter receiving boss-only recovery. Relevant tests
+rerun; no assertions removed. No known failures remain in tested paths.
+
+Full [PHASE_4B_BOSS_REPORT.md](PHASE_4B_BOSS_REPORT.md) includes mechanics, exact
+balance/evidence/provenance, limitations and Windows manual checklist.
+Evidence: `docs/evidence/boss/`. Native Windows import/launch/input/FPS, human fear,
+subjective audio quality and broad player balance remain UNVERIFIED. Original art
+is lightweight animated vector work, not a full directional cinematic rig.
+Stop after Phase4B; next action is the user's Windows playtest, not Phase5.
+
+---
+
 # Phase 4A — Long Night, Hell and advanced hunter (12 November 2026, Singapore)
 
 Continued clean work at 4c2f6b330a95df5fb1578483f627323fac011867.

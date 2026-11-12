@@ -9,3 +9,7 @@ Art direction: cozy-eerie overhead cartoon illustration, dark plum outlines, war
 `assets/fonts/Display.ttf` and `Interface.ttf` are DejaVu Serif Bold and DejaVu Sans from the environment, distributed under the notices in `assets/fonts/LICENSE.txt`. Font authorship is not claimed as original game art.
 
 Animation is deliberately lightweight: sprite pose swaps, breathing/walk bob, ghost attack/recoil/dissolve states, turret aim motion/traces, impact sparks and upgrade/income feedback. It is not a fully rigged or four-direction animation set. Two survivor base designs and palette variants are used; every bot does not yet have a unique illustrated body/sleep sheet.
+
+## Phase 4B Grim Reaper
+
+`boss/` contains four original authored SVG robe animation frames and a separate scythe. `tools/art/generate_reaper.py` is the complete reproducible source, with no downloaded or traced assets. Layered hood, skull, red eyes, mantle folds, chain/clasp, skeletal hands and ragged hems are distinct from the original Hunter. `scripts/boss_presentation.gd` animates frame swaps, cloth breathing, hover, articulated scythe wind-up/sweep, deterministic smoke curls, charge rings, silence marks and hurt/death reactions. These are lightweight original 2D vector illustrations; no claim of fully rigged/high-frame hand-painted animation is made.

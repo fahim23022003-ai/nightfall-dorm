@@ -1,0 +1,13 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: BOSS QA: one in-range plus identical distant turret does not trigger Surge
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/boss_qa.gd:10)
+       [1] run (res://tests/boss_qa.gd:195)
+ERROR: BOSS QA: two in-range turrets count despite identical distant first entry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/boss_qa.gd:10)
+       [1] run (res://tests/boss_qa.gd:200)
+BOSS_QA_CHECKS=6655 FAILURES=2

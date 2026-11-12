@@ -94,7 +94,7 @@ func observe(event: Dictionary,model):
  elif kind=="boss_warning":
   danger_rooms[index]=float(event.delay)+0.5
   var attack=str(event.attack)
-  var hint="repair now" if attack!="surge" else "repair through turret silence"
+  var hint="repair now" if attack!="surge" else "keep repairing"
   alert("boss:%s:%d" % [attack,index],"!!","%s · %s · %s" % [BossCatalog.ATTACKS[attack].name.capitalize(),room_name,hint],2,0.5)
  elif kind=="boss_surge":
   danger_rooms[index]=float(event.duration)
