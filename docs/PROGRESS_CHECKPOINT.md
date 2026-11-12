@@ -1,3 +1,17 @@
+# Phase 6 — final quality audit (12 November 2026, Singapore)
+
+IN PROGRESS. Clean `work` baseline and GitHub both match
+`dfe4bc8f3cf4e4082d07d39bc190f8c09ae4458d` (the supplied reference omitted its
+last `d`). Recovery tag: `pre-phase6-dfe4bc8`. Current engine: Godot 4.6.3.
+Root owns production fixes/export/docs. C runs independent full regular/extended
+QA and journey/save review; A a bounded fresh strategy/Endless audit; D actual
+baseline rendering/audio/Linux performance. No new gameplay systems or Android
+work; main remains unchanged. Windows native execution/hardware and human
+quality remain UNVERIFIED. Final findings, status and push will be recorded
+only after actual checks complete.
+
+---
+
 # Phase 5D-2 — Endless and replayability (12 November 2026)
 
 IMPLEMENTED and TESTED on Godot 4.6.3 Linux. Clean `work` baseline
