@@ -1,0 +1,70 @@
+{
+  "verified_utc": "2026-11-12T13:43:32.808420+00:00",
+  "repository": "fahim23022003-ai/nightfall-dorm",
+  "branch": "work",
+  "baseline": "3e6224e649ae7d30de0742e2dc58688a078f43a2",
+  "runtime_source": "e60a114e14bb2515cdfb381023902a32770c98dd",
+  "complete_content_local_sha": "ea8c0eea777e8870eeff050c7646c3a907e2bd19",
+  "complete_content_remote_sha": "ea8c0eea777e8870eeff050c7646c3a907e2bd19",
+  "push": "VERIFIED_SUCCEEDED",
+  "working_tree_before_receipt": "CLEAN",
+  "main_modified": false,
+  "public_release": false,
+  "phase6_started": false,
+  "version": "0.6.1-5d3",
+  "archive_sha256": "33ae95cdfa14d86e70b6b5b900e61c33f097f8d6ccaf46f591d6e9c984e504c3",
+  "native_windows": "UNVERIFIED",
+  "subjective_audio_scariness": "UNVERIFIED",
+  "evidence_batches": [
+    {
+      "batch": 1,
+      "files": 22,
+      "local_sha": "30675758905c69eac1e8dfc5e554faa10efbafaf",
+      "remote_sha": "30675758905c69eac1e8dfc5e554faa10efbafaf",
+      "push": "SUCCEEDED"
+    },
+    {
+      "batch": 2,
+      "files": 39,
+      "local_sha": "9725ee5c52094df6d4316df8433ad5b57b1332d7",
+      "remote_sha": "9725ee5c52094df6d4316df8433ad5b57b1332d7",
+      "push": "SUCCEEDED"
+    },
+    {
+      "batch": 3,
+      "files": 33,
+      "local_sha": "d59ca7ffe30c4762c78551331399eff5181f9f69",
+      "remote_sha": "d59ca7ffe30c4762c78551331399eff5181f9f69",
+      "push": "SUCCEEDED"
+    },
+    {
+      "batch": 4,
+      "files": 26,
+      "local_sha": "a4799a9e4ba2a8850bb637a418ed6ec2d59dc536",
+      "remote_sha": "a4799a9e4ba2a8850bb637a418ed6ec2d59dc536",
+      "push": "SUCCEEDED"
+    },
+    {
+      "batch": 5,
+      "files": 28,
+      "local_sha": "6c477aefb4a489c62a3245959ef05900bbbf4612",
+      "remote_sha": "6c477aefb4a489c62a3245959ef05900bbbf4612",
+      "push": "SUCCEEDED"
+    },
+    {
+      "batch": 6,
+      "files": 36,
+      "local_sha": "ed0abf0d9d0076da6998355f97eebf2a78e2c421",
+      "remote_sha": "ed0abf0d9d0076da6998355f97eebf2a78e2c421",
+      "push": "SUCCEEDED"
+    },
+    {
+      "batch": 7,
+      "files": 13,
+      "local_sha": "ea8c0eea777e8870eeff050c7646c3a907e2bd19",
+      "remote_sha": "ea8c0eea777e8870eeff050c7646c3a907e2bd19",
+      "push": "SUCCEEDED"
+    }
+  ],
+  "receipt_note": "This subsequent documentation-only receipt commit has its own SHA in Git history and the final response."
+}
