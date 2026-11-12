@@ -640,6 +640,8 @@ func update_match():
  hunter_detail.modulate=Color("FF7777") if m.difficulty=="hell" else Color("FFD27A")
  hunter_bar.max_value=m.hunter.max_hp
  hunter_bar.value=m.hunter.hp
+ hunter_label.tooltip_text="Hunter damage, affinity and acquired evolution effects."
+ hunter_detail.tooltip_text=""
  if m.strategy.enabled:
   hunter_label.tooltip_text=StrategyCatalog.ARCHETYPES[m.strategy.archetype].name+"\n"+StrategyCatalog.ARCHETYPES[m.strategy.archetype].hint
   if m.hunter.state!=HunterState.State.TRANSFORM and m.hunter.boss_attack=="" and m.hunter.surge_remaining<=0 and m.hunter.tactical_action=="":
