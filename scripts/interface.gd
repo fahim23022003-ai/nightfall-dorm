@@ -33,6 +33,7 @@ var gold_label: Label
 var power_label: Label
 var phase_label: Label
 var hunter_label: Label
+var hunter_detail: Label
 var hunter_bar: ProgressBar
 var room_dock: Panel
 var room_bed_summary: Button
@@ -234,13 +235,16 @@ func show_match():
  hunter_label=label_at("",Vector2(704,21),18,290)
  hunter_bar=ProgressBar.new()
  hunter_bar.position=Vector2(704,46)
- hunter_bar.size=Vector2(286,11)
+ hunter_bar.size=Vector2(286,8)
  hunter_bar.show_percentage=false
+ hunter_bar.add_theme_font_size_override("font_size",1)
  hunter_bar.mouse_filter=Control.MOUSE_FILTER_IGNORE
  hunter_bar.add_theme_stylebox_override("background",style("182B3A","607D8B",4))
  hunter_bar.add_theme_stylebox_override("fill",style("F05467","F05467",4))
- hunter_bar.size=Vector2(286,12)
+ hunter_bar.size=Vector2(286,8)
  panel.add_child(hunter_bar)
+ hunter_bar.set_deferred("size",Vector2(286,8))
+ hunter_detail=label_at("",Vector2(704,58),11,290)
  map_button=button("Map",Vector2(1010,24),game.toggle_map,78,36)
  map_button.tooltip_text="Strategic map / focused room [M]"
  button("Help",Vector2(1098,24),game.toggle_guide,62,36)
@@ -455,6 +459,8 @@ func update_match():
  power_label.text=str(int(room.electricity)) if room!=null else "—"
  phase_label.text="%02d:%02d\n%s" % [int(m.time)/60,int(m.time)%60,"PREP %ds" % maxi(0,ceili(m.preparation-m.time)) if m.time<m.preparation else "SURVIVE"]
  hunter_label.text="HUNTER L%d  ·  %d/%d" % [m.hunter.level,m.hunter.hp,m.hunter.max_hp]
+ hunter_detail.text="%d ATK · %.2fs%s" % [m.hunter.damage,m.hunter.interval," · WINDUP!" if m.hunter.charged_ready else ""]
+ hunter_detail.modulate=Color("FF7777") if m.difficulty=="hell" else Color("FFD27A")
  hunter_bar.max_value=m.hunter.max_hp
  hunter_bar.value=m.hunter.hp
  map_button.text="Focus" if game.full_map else "Map"
@@ -466,7 +472,9 @@ func update_match():
  warning_label.visible=warning_box.visible
  if not threat and game.level_warning_time>0: warning_label.text="THE HUNTER GROWS STRONGER · LEVEL %d" % m.hunter.level
  if threat:
-  warning_label.text="YOUR DOOR IS UNDER ATTACK  ·  %d/%d" % [room.door_hp,room.max_hp()]
+  warning_label.text="DOOR %d/%d · UNDER ATTACK" % [room.door_hp,room.max_hp()]
+  if m.hunter.charged_ready: warning_label.text="HEAVY STRIKE %.1fs · REPAIR / UPGRADE" % m.hunter.windup_remaining
+  elif room.repair_factor<0.99: warning_label.text="DOOR %d/%d · REPAIRS %d%%" % [room.door_hp,room.max_hp(),roundi(room.repair_factor*100)]
   warning_box.modulate.a=0.75+game.danger_time*0.35
  details.text="Choose a room" if room==null else "%s · %s" % [game.presentation.ROOM_NAMES[room.index].capitalize(),"sleeping" if room.sleeping else "awake"]
  for control in [room_bed_summary,room_door_summary,room_selected_summary]: control.disabled=room==null

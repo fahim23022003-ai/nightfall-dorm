@@ -1,3 +1,47 @@
+# Phase 4A — Long Night, Hell and advanced hunter (12 November 2026, Singapore)
+
+Continued clean work at 4c2f6b330a95df5fb1578483f627323fac011867.
+Recovery tag pre-phase4a-4c2f6b3; prior playable source remains in history.
+
+Pre-change Agent A baseline60 matches:50/50active wins,0/10minimal defense wins;
+balanced Long Night193.1s vsNormal191.8s. Target door weighting avoided defended
+players, travel consumed siege commitment, cross-room threats were omitted,
+and repairs/income outgrew old pressure. Normal retained original balance.
+
+Implemented configurable Long Night32s/Hell25s tier cadence after45active seconds;
+charged fourth/third strikes with0.75/0.9s visible/audio windup; continuous siege
+repairs weaken to65%/40% then recover afterhunterleaves. HP stays modest1.15/1.25.
+Advanced targets consider actual route costs and cross-room turrets; attack
+commitment uses actual siege time. No player bias, teleports or blanket economy/
+turret/price nerf. Displaced attacks reacquire position; stuck paths reseek.
+Hell selection/risk/feedback persists with stage/perks and Retry. Saves compatible.
+
+Final targeted tests: 268 checks passed. The 90-strategy matrix: Normal 29W/1L,
+Long Night 14W/16L, Hell 1W/29L; no resource/navigation/timeout failures. Additional Hell room probes
+5W/25L demonstrate maps1–4; proactive75%-health repair Mansion probes2W/4L
+demonstrate map5. These are diagnostic policies, not human win-rate predictions.
+Earlier impossible-sample Hell opening was corrected beforefinalvalidation.
+
+All regular+extended checks passed in resumed batches after old remote-attack
+fixtures were corrected: all-map 144 matches 70W/74L, campaign 20 matches 8W/12L, legacy 12 matches 9W/3L;
+27 timestep, 144 room-matrix, 48 rank/perk matches 22W/26L; 20k transactions/175941 invariants;
+all earlier phase input/refund/building/audio/campaign/profile tests and startup.
+Actual Linux render23checks/8captures:Hellselect/retry,realwindup/noearlydamage,
+sustained40%repair and28HPheal, readableHUD. Fixed continuouspressure timer reset,
+bar min-height/text overlap and longwarning overflow. No outstanding tested failures.
+
+Full details: [PHASE_4A_BALANCE_REPORT.md](PHASE_4A_BALANCE_REPORT.md).
+Evidence: docs/evidence/difficulty/. Native Windows feel/FPS/audio, subjective fear
+and broad human balance remain UNVERIFIED. Hell is severe; only specific tested
+room/policy combinations are demonstrated beatable. Human feedback is next.
+No Grim Reaper/Phase4B/Mythic/Android/APK or unrelated features.
+
+Final response records exact pushed SHA after remote verification. Next: Windows
+Godot4.6.3 playtest Long Night and Hell with reactive repairs/roomchoice/early
+defense; collect observed difficulty before further tuning. Stop after Phase4A.
+
+---
+
 # Phase 3B — five maps and expanded building space (12 November 2026, Singapore)
 
 Continued clean `work` at `788442c72edb46051f825daff9734b3f9e9ffa2e`.

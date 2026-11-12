@@ -190,6 +190,7 @@ func run():
  room.door_hp = room.max_hp()
  g.hunter.target = 0
  g.hunter.state = HunterState.State.ATTACK
+ g.hunter.position = room.door_approach()
  g.hunter.target_time = Catalog.HUNTER.retarget_seconds+1
  g.hunter.tick(0.01,g)
  g.hunter.tick(0.01,g)
@@ -215,7 +216,7 @@ func run():
  room = occupy(g)
  g.hunter.target = 0
  g.hunter.state = HunterState.State.ATTACK
- g.hunter.position = room.door_position()
+ g.hunter.position = room.door_approach()
  for i in range(5):
   g.hunter.tick(0.02,g)
  check(g.hunter.attacks == 1, "idle time does not bank repeated hunter attacks")

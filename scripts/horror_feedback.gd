@@ -81,6 +81,9 @@ func observe(event: Dictionary,model):
  elif kind=="encounter":
   danger_rooms[index]=3.0
   alert("encounter:%d" % index,"!!","%s under attack · %s" % ["You are" if room.owner==0 else name+" is",room_name],1,4.0)
+ elif kind=="charged_attack":
+  danger_rooms[index]=2.0
+  alert("charged:%d" % index,"!!","Heavy strike · %s · repair now!" % room_name,2,1.0)
  elif kind=="door_break":
   breaks.append({"room":index,"position":event.position,"age":0.0,"life":1.0})
   if breaks.size()>6: breaks.pop_front()

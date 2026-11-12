@@ -17,9 +17,18 @@ const PERKS=[
  {"id":"first_aid","name":"Last light","description":"Once below 25% HP: heal 10%.\nCannot revive a broken door.","rank":5,"rescue":0.1}
 ]
 const DIFFICULTIES={
- "standard":{"name":"Night watch","hp":1.0,"damage":1.0,"speed":1.0,"xp":1.0},
- "hard":{"name":"Long night","hp":1.15,"damage":1.15,"speed":1.05,"xp":1.25}
+ "standard":{"name":"Normal","hp":1.0,"damage":1.0,"speed":1.0,"xp":1.0},
+ "hard":{"name":"Long night","hp":1.15,"damage":1.3,"speed":1.08,"xp":1.25},
+ "hell":{"name":"HELL MODE","hp":1.25,"damage":1.5,"speed":1.12,"xp":1.5}
 }
+# Separate behavior tuning; Normal preserves the original opening and economy.
+const PRESSURE={
+ "standard":{"opening":45.0,"growth_seconds":45.0,"damage_growth":10.0,"interval_scale":1.0,"commit":24.0,"door_weight":1.8,"repair_floor":1.0,"siege_ramp":16.0,"charged_every":0,"charged_scale":1.0,"windup":0.0},
+ "hard":{"opening":45.0,"growth_seconds":32.0,"damage_growth":14.0,"interval_scale":0.94,"commit":16.0,"door_weight":0.35,"repair_floor":0.65,"siege_ramp":16.0,"charged_every":4,"charged_scale":1.65,"windup":0.75},
+ "hell":{"opening":45.0,"growth_seconds":25.0,"damage_growth":18.0,"interval_scale":0.88,"commit":12.0,"door_weight":0.18,"repair_floor":0.4,"siege_ramp":12.0,"charged_every":3,"charged_scale":1.9,"windup":0.9}
+}
+static func pressure(mode: String) -> Dictionary:
+ return PRESSURE.get(mode,PRESSURE.standard)
 const MIN_OCCUPIED_SECONDS=20.0
 const DEFEAT_CAP=80
 const VICTORY_BASE=120

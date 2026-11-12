@@ -103,14 +103,17 @@ func show_loadout():
    show_loadout(),120,44)
   b.disabled=not owned or game.profile.read_only
  ui.label_at("DIFFICULTY",Vector2(125,506),19,250,true)
- for index in range(2):
-  var key=["standard","hard"][index]
+ for index in range(3):
+  var key=["standard","hard","hell"][index]
   var selected=key
-  var b=ui.button(("✓ " if difficulty==key else "")+RankCatalog.DIFFICULTIES[key].name,Vector2(340+index*260,496),func():
+  var b=ui.button(("✓ " if difficulty==key else "")+RankCatalog.DIFFICULTIES[key].name,Vector2(325+index*255,496),func():
    difficulty=selected
    if game.campaign_mode: game.profile.select_difficulty(selected)
    show_loadout(),242,46)
-  b.tooltip_text="Baseline early game, gradual later escalation" if key=="standard" else "+15% hunter HP/damage, +5% speed; +25% XP before defeat adjustment"
+  b.tooltip_text={"standard":"Original forgiving economy and pressure.","hard":"32s escalation; charged fourth strikes; repairs weaken to65% during siege. +25% XP.","hell":"EXPERT RISK:25s escalation; charged third strikes; repairs weaken to40%. +50% XP."}[key]
+  if key=="hell": b.modulate=Color("F08B88")
+ var hint={"standard":"Normal · forgiving pressure and full repair effectiveness.","hard":"Long Night · charged strikes,32s escalation; siege repairs fall to65%.","hell":"HELL · expert risk! Charged strikes,25s escalation; siege repairs fall to40%."}
+ ui.label_at(hint[difficulty],Vector2(125,583),15,990)
  var names=PackedStringArray()
  for id in game.profile.equipped: names.append(RankCatalog.perk(id).name)
  ui.label_at("Boost: "+("None" if names.is_empty() else ", ".join(names))+" · "+RankCatalog.DIFFICULTIES[difficulty].name,Vector2(125,554),18,980)

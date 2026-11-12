@@ -34,6 +34,14 @@ Godot Linux import/startup, automated scene/input/gameplay tests, transactions a
 
 Earlier Windows export records are historical; use source branch `work` for current home editor testing. The Android milestone creates a private-test APK as described below; nothing was publicly published/deployed.
 
+## Difficulty and hunter pressure
+
+Normal keeps the forgiving original tuning. Long Night now uses stronger siege
+decisions and faster escalation. Hell adds more frequent telegraphed heavy strikes
+and stronger sustained pressure. The first 45 active seconds protect setup;
+repairs return to full strength after the hunter leaves. Difficulty stays separate
+from stages and saved perks. [Balance evidence](docs/PHASE_4A_BALANCE_REPORT.md).
+
 ## Horror and immersion
 
 Real encounters now show named teammate warnings, rising actual door-damage

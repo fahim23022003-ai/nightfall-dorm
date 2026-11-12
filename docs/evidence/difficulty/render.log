@@ -1,0 +1,16 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+DIFFICULTY_CAPTURE 01-hell-risk-preparation size=(1280, 720) code=0
+DIFFICULTY_CAPTURE 02-hell-risk-preparation-960x540 size=(960, 540) code=0
+DIFFICULTY_CAPTURE 03-heavy-windup-and-threat-hud size=(1280, 720) code=0
+DIFFICULTY_CAPTURE 03b-heavy-windup-960x540 size=(960, 540) code=0
+DIFFICULTY_CAPTURE 04-charged-impact-repair-pressure size=(1280, 720) code=0
+DIFFICULTY_UI_BOUNDS minimum=(4.0, 4.0) font=1 percentage=false bar=[P: (704.0, 46.0), S: (286.0, 8.0)] detail=[P: (704.0, 58.0), S: (290.0, 30.0)] warning_text_width=327.0 label_width=476.0
+DIFFICULTY_CAPTURE 05-repair-pressure-960x540 size=(960, 540) code=0
+DIFFICULTY_CAPTURE 06-hell-defeat-retry-960x540 size=(960, 540) code=0
+DIFFICULTY_CAPTURE 07-hell-retry-preserved-960x540 size=(960, 540) code=0
+DIFFICULTY_RENDER_CHECKS=23 FAILURES=0
+DIFFICULTY_RENDER_POLICY={"charged_every":3,"charged_scale":1.9,"commit":12.0,"damage_growth":18.0,"door_weight":0.18,"growth_seconds":25.0,"interval_scale":0.88,"opening":45.0,"repair_floor":0.4,"siege_ramp":12.0,"windup":0.9}

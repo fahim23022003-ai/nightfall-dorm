@@ -36,11 +36,11 @@ func run():
   check(h.max_hp-before_max<0.01 and h.damage-Catalog.HUNTER.damage*tuning.damage<0.01,"level boundary begins gradual ramp rather than stat jump")
   game.time=game.preparation+49
   h.tick(0.01,game)
-  check(h.damage>Catalog.HUNTER.damage*tuning.damage and h.damage<(Catalog.HUNTER.damage+Catalog.HUNTER.damage_growth)*tuning.damage,"mid-ramp damage is between adjacent levels")
+  check(h.damage>Catalog.HUNTER.damage*tuning.damage and h.damage<(Catalog.HUNTER.damage+RankCatalog.pressure(mode).damage_growth)*tuning.damage,"mid-ramp damage is between adjacent levels")
   game.time=game.preparation+53
   h.tick(0.01,game)
   check(is_equal_approx(h.max_hp,(Catalog.HUNTER.hp+Catalog.HUNTER.hp_growth)*tuning.hp) and is_equal_approx(h.max_hp-h.hp,50),"completed ramp applies correct HP while preserving damage taken")
-  check(is_equal_approx(h.damage,(Catalog.HUNTER.damage+Catalog.HUNTER.damage_growth)*tuning.damage),"completed ramp applies correct damage")
+  check(is_equal_approx(h.damage,(Catalog.HUNTER.damage+RankCatalog.pressure(mode).damage_growth)*tuning.damage),"completed ramp applies correct damage")
   var late_interval=h.interval
   game.time=game.preparation+10000
   h.tick(0.01,game)

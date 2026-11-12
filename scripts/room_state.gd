@@ -32,6 +32,7 @@ var door_multiplier=1.0
 var turret_multiplier=1.0
 var rescue_fraction=0.0
 var rescue_used=false
+var repair_factor=1.0
 
 func apply_boosts(boosts: Dictionary):
  gold+=boosts.get("gold",0.0)
@@ -162,7 +163,7 @@ func repair_door() -> bool:
  if not afford(Catalog.REPAIR_COST):
   return false
  pay(Catalog.REPAIR_COST)
- door_hp = minf(max_hp(),door_hp+Catalog.REPAIR_HEAL)
+ door_hp = minf(max_hp(),door_hp+Catalog.REPAIR_HEAL*repair_factor)
  presentation_action.emit("repair",{})
  return true
 
@@ -253,4 +254,4 @@ func tick_economy(delta: float):
   if b.kind == "generator":
    electricity += Catalog.BUILDINGS.generator.rate*b.level*delta*power_multiplier
   elif b.kind == "repair" and door_hp > 0:
-   door_hp = minf(max_hp(),door_hp+Catalog.BUILDINGS.repair.rate*b.level*delta)
+   door_hp = minf(max_hp(),door_hp+Catalog.BUILDINGS.repair.rate*b.level*delta*repair_factor)

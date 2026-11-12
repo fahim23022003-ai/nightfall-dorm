@@ -159,6 +159,29 @@ func _build_navigation():
 func player_navigation_path(from: Vector2,to: Vector2) -> Array:
  return navigation_path(from,to,true)
 
+# Static corridor graph estimates for all candidate rooms in one decision.
+# Only the nearest visible start needs testing; doorway endpoints already exist.
+func hunter_route_costs(from: Vector2) -> Dictionary:
+ var ids=Array(_navigation.get_point_ids())
+ ids.sort_custom(func(a,b): return from.distance_squared_to(_navigation.get_point_position(a))<from.distance_squared_to(_navigation.get_point_position(b)))
+ var start=-1
+ for id in ids:
+  if _visible(from,_navigation.get_point_position(id)):
+   start=id
+   break
+ var result={}
+ if start<0:
+  for room in rooms: result[room.index]=INF
+  return result
+ for room in rooms:
+  var end=_navigation.get_closest_point(room.door_approach())
+  var points=_navigation.get_point_path(start,end)
+  if points.is_empty(): result[room.index]=INF; continue
+  var length=from.distance_to(points[0])
+  for i in range(1,points.size()): length+=points[i-1].distance_to(points[i])
+  result[room.index]=length
+ return result
+
 func navigation_path(from: Vector2,to: Vector2,player: bool=false) -> Array:
  if from.distance_to(to)<0.1: return []
  if _visible(from,to,player): return [to]

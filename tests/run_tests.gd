@@ -210,7 +210,7 @@ func run():
  section("11 intact door protects resident and hunter attacks")
  g.hunter.target = 0
  g.hunter.state = HunterState.State.ATTACK
- g.hunter.position = r.door_position()
+ g.hunter.position = r.door_approach()
  g.hunter.cooldown = 0
  hp = r.door_hp
  g.tick(0.1)

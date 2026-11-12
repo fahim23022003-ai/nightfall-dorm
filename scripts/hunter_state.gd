@@ -24,6 +24,15 @@ var stalled_seconds=0.0
 var navigation_recoveries=0
 var retargets=0
 var siege_start_hp=0.0
+var siege_seconds=0.0
+var reassess_seconds=0.0
+var encounter_attacks=0
+var charged_ready=false
+var windup_remaining=0.0
+var _previous_siege_room=-1
+var _model_ref: WeakRef
+var decision_count=0
+var _route_costs: Dictionary={}
 
 func configure(mode: String):
  difficulty=mode if RankCatalog.DIFFICULTIES.has(mode) else "standard"
@@ -38,10 +47,11 @@ func _tuning() -> Dictionary:
  return {"hp":base.hp*stage_scaling.hunter_hp,"damage":base.damage*stage_scaling.hunter_damage,"speed":base.speed*stage_scaling.hunter_speed}
 
 func growth_at(active_seconds: float) -> float:
- var cycles=int(maxf(0,active_seconds)/Catalog.HUNTER.growth_seconds)
- if cycles==0: return 0.0
- var phase=fmod(maxf(0,active_seconds),Catalog.HUNTER.growth_seconds)
- return cycles-1+smoothstep(0.0,Catalog.HUNTER_ESCALATION.ramp_seconds,phase)
+ var profile=RankCatalog.pressure(difficulty)
+ if active_seconds<profile.opening: return 0.0
+ var since=active_seconds-profile.opening
+ var cycles=1+int(since/profile.growth_seconds)
+ return cycles-1+smoothstep(0.0,Catalog.HUNTER_ESCALATION.ramp_seconds,fmod(since,profile.growth_seconds))
 
 func target_score(room: RoomState) -> float:
  var approach=room.door_approach()
@@ -57,8 +67,17 @@ func target_score(room: RoomState) -> float:
    if room.tile_position(tile).distance_to(approach)<=data.range:
     dps+=data.damage*b.level*relay*room.turret_multiplier/(data.interval/(1+(b.level-1)*0.12))
   elif b.kind=="repair": repair+=Catalog.BUILDINGS.repair.rate*b.level
+ if difficulty!="standard" and _model_ref!=null and _model_ref.get_ref()!=null:
+  for other in _model_ref.get_ref().rooms:
+   if other==room or not other.alive: continue
+   for tile in other.buildings:
+    var b=other.buildings[tile]
+    if b.kind in ["turret","heavy"]:
+     var data=Catalog.BUILDINGS[b.kind]
+     if other.tile_position(tile).distance_to(approach)<=data.range:
+      dps+=data.damage*b.level*other.turret_multiplier/data.interval
  var caution=1.0+clampf(1.0-hp/maxf(1,max_hp),0,1)*0.5
- return position.distance_to(room.door_position())+room.door_hp*Catalog.HUNTER.door_weight+minf(Catalog.HUNTER_ESCALATION.dps_penalty_cap,dps*Catalog.HUNTER_ESCALATION.dps_weight*caution)+minf(Catalog.HUNTER_ESCALATION.repair_penalty_cap,repair)
+ return position.distance_to(room.door_position())+room.door_hp*RankCatalog.pressure(difficulty).door_weight+minf(Catalog.HUNTER_ESCALATION.dps_penalty_cap,dps*Catalog.HUNTER_ESCALATION.dps_weight*caution)+minf(Catalog.HUNTER_ESCALATION.repair_penalty_cap,repair)
 
 func navigate(goal: Vector2,delta: float):
  var previous=position
@@ -73,12 +92,38 @@ func navigate(goal: Vector2,delta: float):
   state=State.SEEK
   stalled_seconds=0
 
+func _advance_custom(goal: Vector2,delta: float,model,key: String):
+ var previous=position
+ position=model.step_navigation(position,goal,speed*delta,key)
+ if delta>0 and previous.distance_to(position)<0.01 and position.distance_to(goal)>3:
+  stalled_seconds+=delta
+ else: stalled_seconds=0
+ if stalled_seconds>=Catalog.HUNTER_ESCALATION.stuck_seconds:
+  navigation_recoveries+=1
+  avoid_target=target
+  state=State.SEEK
+  target_time=0
+  siege_seconds=0
+  charged_ready=false
+  windup_remaining=0
+  stalled_seconds=0
+
 func tick(delta: float, match_state):
  hit_flash = maxf(0,hit_flash-delta)
+ _model_ref=weakref(match_state)
+ var profile=RankCatalog.pressure(difficulty)
+ if _previous_siege_room>=0: match_state.rooms[_previous_siege_room].repair_factor=1.0
+ _previous_siege_room=-1
+ if state==State.ATTACK and target>=0 and target<match_state.rooms.size():
+  siege_seconds+=delta
+  reassess_seconds+=delta
+  match_state.rooms[target].repair_factor=lerpf(1.0,profile.repair_floor,clampf(minf(siege_seconds,maxf(0,match_state.time-match_state.preparation-profile.opening))/profile.siege_ramp,0,1))
+  _previous_siege_room=target
+ windup_remaining=maxf(0,cooldown-delta) if charged_ready else 0.0
  if state == State.DEAD or match_state.time < match_state.preparation:
   return
  var active_seconds=maxf(0,match_state.time-match_state.preparation)
- var next_level=1+int(active_seconds/Catalog.HUNTER.growth_seconds)
+ var next_level=1 if active_seconds<profile.opening else 2+int((active_seconds-profile.opening)/profile.growth_seconds)
  level=maxi(level,next_level)
  var growth=growth_at(active_seconds)
  var tuning=_tuning()
@@ -87,14 +132,14 @@ func tick(delta: float, match_state):
   max_hp+=added
   if hp>0: hp=minf(max_hp,hp+added)
   applied_growth=growth
- damage=(Catalog.HUNTER.damage+growth*Catalog.HUNTER.damage_growth)*tuning.damage
- interval=maxf(Catalog.HUNTER.min_interval,Catalog.HUNTER.interval-growth*Catalog.HUNTER.interval_growth)
+ damage=(Catalog.HUNTER.damage+growth*profile.damage_growth)*tuning.damage
+ interval=maxf(Catalog.HUNTER.min_interval,(Catalog.HUNTER.interval-growth*Catalog.HUNTER.interval_growth)*profile.interval_scale)
  speed=(Catalog.HUNTER.speed+minf(Catalog.HUNTER_ESCALATION.speed_bonus_cap,growth*Catalog.HUNTER_ESCALATION.speed_growth))*tuning.speed
  cooldown = maxf(-delta,cooldown-delta)
  target_time += delta
  if state == State.EXIT:
   if match_state.map_id!="legacy":
-   position=match_state.step_navigation(position,match_state.rooms[target].corridor_anchor(),speed*delta,"hunter_exit")
+   _advance_custom(match_state.rooms[target].corridor_anchor(),delta,match_state,"hunter_exit")
    if position.distance_to(match_state.rooms[target].corridor_anchor())<3: state=State.SEEK
    return
   var exit_door = match_state.rooms[target].door_position()
@@ -127,16 +172,36 @@ func tick(delta: float, match_state):
   elif absf(position.x-approach.x)>2:
    waypoint = Vector2(approach.x,410)
   if match_state.map_id=="legacy": navigate(waypoint,delta)
-  else: position=match_state.step_navigation(position,approach,speed*delta,"hunter_move")
+  else: _advance_custom(approach,delta,match_state,"hunter_move")
   if position.distance_to(approach)<3:
    state = State.ATTACK if room.closed and room.door_hp > 0 else State.BREACH
+   siege_seconds=0
+   reassess_seconds=0
+   encounter_attacks=0
+   charged_ready=false
    if delta>0: match_state.record_event("encounter",target)
  elif state == State.ATTACK:
+  if position.distance_to(approach)>3:
+   state=State.MOVE
+   charged_ready=false
+   windup_remaining=0
+   room.repair_factor=1.0
+   return
   if room.door_hp <= 0 or not room.closed:
    state = State.BREACH
   elif cooldown <= 0:
+   if active_seconds>=profile.opening and profile.charged_every>0 and (encounter_attacks+1)%int(profile.charged_every)==0 and not charged_ready:
+    charged_ready=true
+    cooldown=profile.windup
+    windup_remaining=cooldown
+    match_state.record_event("charged_attack",target,{"delay":cooldown,"multiplier":profile.charged_scale})
+    return
+   var strike_scale=profile.charged_scale if charged_ready else 1.0
+   charged_ready=false
+   windup_remaining=0
+   encounter_attacks+=1
    var old_hp=room.door_hp
-   room.door_hp = maxf(0,room.door_hp-damage)
+   room.door_hp = maxf(0,room.door_hp-damage*strike_scale)
    room.door_damage_taken+=old_hp-room.door_hp
    match_state.record_event("door_damage",target,{"damage":old_hp-room.door_hp,"hp":room.door_hp,"max_hp":room.max_hp()})
    if old_hp>0 and room.door_hp<=0: match_state.record_event("door_break",target)
@@ -144,20 +209,24 @@ func tick(delta: float, match_state):
    room.damage_flash = 0.25
    attacks += 1
    cooldown += interval
-  if target_time>maxf(Catalog.HUNTER.retarget_seconds,Catalog.HUNTER_ESCALATION.minimum_commitment) and room.door_hp>damage*2:
+  if (target_time if difficulty=="standard" else reassess_seconds)>maxf(profile.commit,Catalog.HUNTER_ESCALATION.minimum_commitment) and room.door_hp>damage*2:
    var alternative=choose_target(match_state.rooms,target)
    var stalled=room.door_hp>=siege_start_hp-damage*2
    if alternative>=0 and alternative!=target and (stalled or target_score(match_state.rooms[alternative])<target_score(room)*(1-Catalog.HUNTER_ESCALATION.retarget_improvement)):
     avoid_target=target
     retargets+=1
+    charged_ready=false
+    windup_remaining=0
+    room.repair_factor=1.0
     state=State.SEEK
    else:
     # Reassess later; do not churn targets on every frame.
     target_time=0
+    reassess_seconds=0
     siege_start_hp=room.door_hp
  elif state == State.BREACH:
   if match_state.map_id=="legacy": navigate(room.bed_position(),delta)
-  else: position=match_state.step_navigation(position,room.bed_position(),speed*delta,"hunter_breach")
+  else: _advance_custom(room.bed_position(),delta,match_state,"hunter_breach")
   if position.distance_to(room.bed_position()) < 12:
    room.alive = false
    room.sleeping = false
@@ -167,11 +236,20 @@ func tick(delta: float, match_state):
    state = State.EXIT
 
 func choose_target(rooms: Array, excluded: int = -1) -> int:
+ decision_count+=1
+ _route_costs.clear()
+ if difficulty!="standard" and _model_ref!=null and _model_ref.get_ref()!=null:
+  var model=_model_ref.get_ref()
+  if model.map_id!="legacy": _route_costs=model.hunter_route_costs(position)
  var best = -1
  var score = INF
  for room in rooms:
   if room.owner >= 0 and room.alive and room.sleeping and room.index != excluded:
    var value = target_score(room)
+   if not _route_costs.is_empty():
+    var travel=float(_route_costs.get(room.index,INF))
+    if not is_finite(travel): continue
+    value+=travel-position.distance_to(room.door_position())
    if value < score:
     best = room.index
     score = value
