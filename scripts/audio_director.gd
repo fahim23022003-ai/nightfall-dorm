@@ -658,7 +658,8 @@ func _wrath_presentation(type: String, record: Dictionary, model, position: Vect
    var cue={"pressure":"hunter_crusher_pressure","conceal":"hunter_stalker_conceal","feint":"hunter_stalker_feint","dash":"hunter_ravager_dash","cursed_projectile":"shot_frost","interference":"shot_shock","chain_lightning":"shot_arc","soul_drain":"reaper_surge","shadow_dash":"hunter_ravager_dash"}.get(str(record.get("ability","")),"danger")
    event(cue,position)
   "archetype_warning":
-   var cue="hunter_"+str(record.get("archetype",model.hunter.archetype))+"_warning"
+   var identity=str(record.get("archetype",model.hunter.archetype))
+   var cue="hunter_"+str({"witch":"stalker","electric":"ravager","storm":"crusher"}.get(identity,identity))+"_warning"
    if cue in EFFECT_NAMES:event(cue,position,{"expires_in":maxf(.03,float(record.get("delay",1.0)))})
   "charged_attack":event("hunter_charged_warning",position,{"expires_in":maxf(.03,float(record.get("delay",1.0)))})
   "build":

@@ -311,7 +311,8 @@ func render(c):
     var v=Vector2.from_angle(i*TAU/6)*(8+(1-fraction)*15)
     c.draw_line(p+v,p+v*1.3,Color(color,fraction),2)
  for room in m.rooms:
-  if room.bed_level>=5:support_prestige(c,OFFSET+room.bed_position()+Vector2(0,34),room.bed_level+1,room.bed_branch)
+  var bed_badge_offset=Vector2(40,-17) if m.run_kind=="endless" and m.expansion.initialized and not m.expansion.legacy else Vector2(0,34)
+  if room.bed_level>=5:support_prestige(c,OFFSET+room.bed_position()+bed_badge_offset,room.bed_level+1,room.bed_branch)
   if room.door_level>=5 and room.door_hp>0:support_prestige(c,OFFSET+room.door_position()+Vector2(0,-58),room.door_level+1,room.door_branch)
   for tile in room.buildings:
    var b=room.buildings[tile]

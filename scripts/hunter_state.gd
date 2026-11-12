@@ -461,7 +461,7 @@ func tick(delta: float, match_state):
    if transformed:
     _boss_strike(room,match_state)
    else:
-    var needs_telegraph=archetype=="crusher" or (archetype=="stalker" and encounter_attacks==0) or (archetype=="ravager" and encounter_attacks%3==0)
+    var needs_telegraph=archetype=="crusher" or (archetype=="stalker" and encounter_attacks==0) or (archetype=="ravager" and encounter_attacks%3==0) or (archetype in ["witch","electric","storm"] and encounter_attacks==0)
     if needs_telegraph and not archetype_primed and not charged_ready:
      archetype_primed=true
      cooldown=StrategyCatalog.ARCHETYPES[archetype].windup
