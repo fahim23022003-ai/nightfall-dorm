@@ -16,11 +16,19 @@ func run():
  require(game.profile!=null and game.ui!=null,"actual launch/profile/UI initialized")
  require(game.audio_system.streams.size()==AudioDirector.LOOP_NAMES.size()+AudioDirector.EFFECT_NAMES.size(),"all audio streams packaged")
  require(ItemCatalog.IDS.size()==20 and MapCatalog.IDS.size()==5,"item/map catalogs packaged")
- require(Catalog.BUILDINGS.size()==12 and HunterEvolution.BUFFS.size()==15,"Wrath building and evolution catalogs packaged")
- for kind in ["flame","frost","shock","auto_repair","shield","decoy"]:
+ require(Catalog.BUILDINGS.size()==15 and HunterEvolution.BUFFS.size()==15,"Expanded building and evolution catalogs packaged")
+ for kind in ["flame","frost","shock","auto_repair","shield","decoy","barrier","plasma","antenna"]:
   require(ResourceLoader.load("res://assets/wrath/"+kind+".svg")!=null,"new building art packaged: "+kind)
  require(game.audio_system.streams.has("music_crimson") and game.audio_system.streams.has("hunter_evolve"),"Crimson music and evolution stream packaged")
- require(game.start_practice("crusher",false,["shield","repair"]),"actual practice starts")
+ require(StrategyCatalog.ARCHETYPE_IDS.size()==6,"all six Hunters packaged")
+ for kind in StrategyCatalog.ARCHETYPE_IDS:
+  require(ResourceLoader.load("res://assets/premium_ui/"+kind+".svg")!=null,"Hunter menu art packaged: "+kind)
+  for pose in ["idle","walk","attack","hurt","defend","special","death"]:
+   require(ResourceLoader.load("res://assets/hunters/"+kind+"_"+pose+".svg")!=null,"Hunter pose packaged: "+kind+"/"+pose)
+ for element in ["fire","ice","electric","earth"]:
+  require(ResourceLoader.load("res://assets/hunters/element_"+element+".svg")!=null,"affinity art packaged: "+element)
+ require(RoomExpansion.SLOTS==[3,6,8,10,11,12,14,16] and ChallengeCode.RULESET==4,"expansion/current rules packaged")
+ require(game.start_practice("witch",false,["shield","repair"]),"actual new Hunter practice starts")
  await process_frame
  require(game.model.player()!=null and game.model.run_kind=="practice","actual model integrated")
  require(game.model.wrath!=null and game.model.evolution!=null and game.model.defenses!=null,"Wrath runtime components initialize in exported practice")

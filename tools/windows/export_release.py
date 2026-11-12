@@ -42,7 +42,7 @@ def main():
         empty.mkdir(exist_ok=True)
         run([args.godot, '--headless', '--path', str(empty), '--main-pack', str(exe), '--script', str(ROOT / 'tools/windows/verify_pack.gd')], evidence / 'windows-pack-final.log', env)
     commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
-    notices = {'GODOT_LICENSE.txt': ROOT / 'docs/licenses/GODOT_LICENSE.txt', 'GODOT_COPYRIGHT.txt': ROOT / 'docs/licenses/GODOT_COPYRIGHT.txt', 'FONT_DejaVu_LICENSE.txt': ROOT / 'assets/fonts/LICENSE.txt', 'FONT_GrenzeGotisch_OFL.txt': ROOT / 'assets/fonts/GrenzeGotisch-OFL.txt', 'WINDOWS_PLAYTEST_GUIDE.md': ROOT / 'docs/WINDOWS_PLAYTEST_GUIDE.md'}
+    notices = {'GODOT_LICENSE.txt': ROOT / 'docs/licenses/GODOT_LICENSE.txt', 'GODOT_COPYRIGHT.txt': ROOT / 'docs/licenses/GODOT_COPYRIGHT.txt', 'FONT_DejaVu_LICENSE.txt': ROOT / 'assets/fonts/LICENSE.txt', 'FONT_GrenzeGotisch_OFL.txt': ROOT / 'assets/fonts/GrenzeGotisch-OFL.txt', 'WINDOWS_PLAYTEST_GUIDE.md': ROOT / 'docs/GAMEPLAY_HUNTER_HUD_PLAYTEST_GUIDE.md'}
     notices.update({'MUSIC_AND_AUDIO_CREDITS.md': ROOT / 'docs/AUDIO_SOURCES.md', 'VSCO_CC0_LICENSE.txt': ROOT / 'tools/audio/source/vsco/LICENSE', 'RECORDED_VOCAL_CREDITS.md': ROOT / 'tools/audio/source/vocals/CREDITS-soundboard.md', 'RECORDED_VOCAL_SOURCES.json': ROOT / 'tools/audio/source/vocals/SOURCES.json', 'VERTIGO_VOCAL_CREDITS.md': ROOT / 'tools/audio/source/vocals/vertigo-CREDITS.md'})
     notices.update({
         'PHASE_5D4_HUMAN_PLAYTEST_GUIDE.md': ROOT / 'docs/PHASE_5D4_HUMAN_PLAYTEST_GUIDE.md',
