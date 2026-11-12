@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="160" viewBox="0 0 128 160">
+<defs><linearGradient id="robe" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3d3458"/><stop offset=".5" stop-color="#151523"/><stop offset="1" stop-color="#070a13"/></linearGradient><linearGradient id="hood" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#635077"/><stop offset=".45" stop-color="#242034"/><stop offset="1" stop-color="#11131c"/></linearGradient><linearGradient id="steel"><stop stop-color="#aab0bd"/><stop offset=".5" stop-color="#e5d5cf"/><stop offset="1" stop-color="#6f6585"/></linearGradient></defs>
+<!-- Layered torn mantle and asymmetric wind-blown hem -->
+<path d="M42 53 Q24 57 22 83 L9 136 L29 132 L24 153 L45 142 L53 157 L68 146 L86 154 L87 140 L113 150 Q98 109 105 80 Q100 62 83 56Z" fill="url(#robe)" stroke="#080c14" stroke-width="4" stroke-linejoin="round"/>
+<path d="M39 64 Q33 105 20 133 L38 124 L32 145 Q53 110 51 71 M81 64 Q100 96 97 136 L83 125 L87 142 Q71 108 73 68" fill="#3e344f" opacity=".6"/>
+<path d="M54 72 Q43 115 47 140 L57 132 L59 151 Q70 126 73 83 M77 88 Q79 113 88 133" fill="#171a2b" stroke="#5c436b" stroke-width="1.7"/>
+<!-- Collar with silver clasp and hanging chain -->
+<path d="M29 62 L56 80 L66 74 L77 80 L97 64 L86 88 L65 83 L43 89Z" fill="#141723" stroke="#75617d" stroke-width="2"/>
+<path d="M43 77 Q62 103 85 77" fill="none" stroke="#a99cae" stroke-width="2" stroke-dasharray="2 3"/>
+<path d="M63 78 L68 84 L63 91 L58 84Z" fill="#e3b7d7" stroke="#794572" stroke-width="2"/>
+<!-- Angular hood: an actual silhouette, not the existing Hunter recolored -->
+<path d="M28 57 Q26 24 62 6 Q91 12 101 52 L87 72 L64 64 L44 74Z" fill="url(#hood)" stroke="#0a0e18" stroke-width="4"/>
+<path d="M39 56 Q40 31 62 21 Q83 27 88 53 L76 65 L51 65Z" fill="#080b16" stroke="#6b526c" stroke-width="2"/>
+<path d="M46 43 Q62 32 81 43 L77 58 L70 59 L69 67 L56 67 L54 58 L48 55Z" fill="#b6b2c4"/>
+<path d="M46 43 L60 48 L57 55 L48 52Z M65 48 L81 43 L77 53 L67 55Z" fill="#35152e"/>
+<path d="M48 47 L58 50 L56 52 L49 50Z M68 50 L78 47 L76 51 L68 52Z" fill="#ff487c"/>
+<path d="M62 51 L58 59 L65 59Z" fill="#252033"/>
+<path d="M57 62 L57 67 M61 62 L61 68 M65 62 L65 67" stroke="#414050" stroke-width="2"/>
+<path d="M31 54 Q32 24 62 10 Q49 26 43 33 M86 27 L97 51 L86 64" fill="none" stroke="#9c759c" stroke-width="2" opacity=".7"/>
+<!-- Sleeves and bony hands -->
+<path d="M28 70 Q12 84 15 103 L31 109 L43 86 M91 70 Q110 78 113 94 L96 101 L83 83" fill="url(#robe)" stroke="#080d16" stroke-width="3"/>
+<path d="M20 100 L32 102 L30 113 L27 116 L25 109 L22 115 L18 110Z M100 92 L112 90 L115 98 L112 106 L108 99 L104 105 L100 101Z" fill="url(#steel)" stroke="#53485c" stroke-width="2"/>
+<path d="M44 117 L39 132 M75 110 L79 133 M55 97 L52 115" stroke="#89718f" stroke-width="1.4" opacity=".6"/>
+</svg>

@@ -5,6 +5,7 @@ const ROOM_NAMES = ["WILLOW","WREN","ASTER","MOSS","CEDAR","FERN"]
 var textures: Dictionary = {}
 var cartoon: Dictionary = {}
 var all_rooms=true
+var boss_presentation=preload("res://scripts/boss_presentation.gd").new()
 var map_presentation=preload("res://scripts/map_presentation.gd").new()
 var previous_sleep: Dictionary={}
 var sleep_age: Dictionary={}
@@ -306,6 +307,9 @@ func resident(c, pos: Vector2, index: int, player: bool):
  if not player: text(c,c.model.rooms[index].survivor_name(),OFFSET+pos+Vector2(-17,-44),10,Color("E2D9C8"))
 
 func hunter(c,h):
+ if h.transformed:
+  boss_presentation.draw(c,h,clock,death_age)
+  return
  var name="hunter_move" if int(clock*4)%2 else "hunter_idle"
  if h.target_time<0.4 and h.target>=0: name="hunter_target"
  if h.state==HunterState.State.ATTACK and h.cooldown>h.interval-0.32:

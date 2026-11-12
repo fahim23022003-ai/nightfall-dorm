@@ -13,9 +13,11 @@ var last_event=0
 var last_model
 var cooldowns: Dictionary={}
 var observed_counts: Dictionary={}
+var boss_banner=0.0
 var font=preload("res://assets/fonts/Interface.ttf")
 
 func reset():
+ boss_banner=0
  notifications.clear()
  damage_numbers.clear()
  door_impacts.clear()
@@ -32,6 +34,7 @@ func update(delta: float,model):
  if last_model!=null and last_model!=model: reset()
  last_model=model
  clock+=delta
+ boss_banner=maxf(0,boss_banner-delta)
  for collection in [notifications,damage_numbers,breaks]:
   for item in collection: item.age+=delta
  notifications=notifications.filter(func(n): return n.age<n.life)
@@ -49,6 +52,13 @@ func update(delta: float,model):
   observe(event,model)
 
 func observe(event: Dictionary,model):
+ if event.type=="boss_transform":
+  boss_banner=3.4
+  observed_counts["boss_transform"]=int(observed_counts.get("boss_transform",0))+1
+  return
+ if event.type=="boss_death":
+  boss_banner=0
+  return
  var index=int(event.get("room",-1))
  if index<0 or index>=model.rooms.size(): return
  var room=model.rooms[index]
@@ -81,6 +91,14 @@ func observe(event: Dictionary,model):
  elif kind=="encounter":
   danger_rooms[index]=3.0
   alert("encounter:%d" % index,"!!","%s under attack · %s" % ["You are" if room.owner==0 else name+" is",room_name],1,4.0)
+ elif kind=="boss_warning":
+  danger_rooms[index]=float(event.delay)+0.5
+  var attack=str(event.attack)
+  var hint="repair now" if attack!="surge" else "repair through turret silence"
+  alert("boss:%s:%d" % [attack,index],"!!","%s · %s · %s" % [BossCatalog.ATTACKS[attack].name.capitalize(),room_name,hint],2,0.5)
+ elif kind=="boss_surge":
+  danger_rooms[index]=float(event.duration)
+  alert("surge:%d" % index,"!!","%s turrets silenced · repairs still work" % room_name,2,1.0)
  elif kind=="charged_attack":
   danger_rooms[index]=2.0
   alert("charged:%d" % index,"!!","Heavy strike · %s · repair now!" % room_name,2,1.0)
@@ -136,6 +154,16 @@ func render_world(c):
    c.draw_line(shard,shard+direction*8,Color(0.75,0.45,0.28,alpha),4*alpha)
 
 func render_notifications(c):
+ if boss_banner>0:
+  var alpha=minf(1,boss_banner/.5)
+  var box=StyleBoxFlat.new()
+  box.bg_color=Color(.065,.025,.1,.94*alpha)
+  box.border_color=Color(.85,.35,.68,alpha)
+  box.set_border_width_all(2)
+  box.set_corner_radius_all(8)
+  c.draw_style_box(box,Rect2(285,100,710,75))
+  c.draw_string(font,Vector2(317,131),"THE GRIM REAPER HAS AWAKENED",HORIZONTAL_ALIGNMENT_LEFT,-1,25,Color(1,.72,.84,alpha))
+  c.draw_string(font,Vector2(319,157),"Watch the scythe. Repair during warnings. Keep your defenses firing.",HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color(.88,.82,.96,alpha))
  # Screen-space, left of build controls and below the tutorial panel. No input capture.
  for i in range(notifications.size()):
   var n=notifications[i]

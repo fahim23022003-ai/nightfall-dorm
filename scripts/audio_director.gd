@@ -2,12 +2,12 @@ class_name AudioDirector
 extends Node
 
 const ROOT = "res://assets/audio/"
-const LOOP_NAMES = ["music_menu","music_calm","music_danger","ambient_dorm","proximity_loop","generator_loop"]
-const EFFECT_NAMES = ["button","menu","match_start","purchase","failure","rank","reward","victory","defeat","shot_needle","shot_arc","impact","ghost_hurt","ghost_defeat","door_hit","door_crack","door_break","build","turret_upgrade","bed_upgrade","door_upgrade","repair","upgrade","income","electricity","footstep","danger","breach","hunter_spawn","hunter_level","elimination","scream_1","scream_2","scream_3","door_reaction","sale","refund","insufficient_gold","insufficient_power","eerie"]
-const CRITICAL_EVENTS = ["victory","defeat","ghost_defeat","rank","reward","hunter_level","breach","door_break","match_start","door_reaction","sale","refund"]
+const LOOP_NAMES = ["music_menu","music_calm","music_danger","ambient_dorm","proximity_loop","generator_loop","music_reaper","reaper_ambience"]
+const EFFECT_NAMES = ["button","menu","match_start","purchase","failure","rank","reward","victory","defeat","shot_needle","shot_arc","impact","ghost_hurt","ghost_defeat","door_hit","door_crack","door_break","build","turret_upgrade","bed_upgrade","door_upgrade","repair","upgrade","income","electricity","footstep","danger","breach","hunter_spawn","hunter_level","elimination","scream_1","scream_2","scream_3","door_reaction","sale","refund","insufficient_gold","insufficient_power","eerie","reaper_transform","reaper_scythe","reaper_charge","reaper_surge","reaper_impact","reaper_hurt","reaper_death"]
+const CRITICAL_EVENTS = ["victory","defeat","ghost_defeat","rank","reward","hunter_level","breach","door_break","match_start","door_reaction","sale","refund","reaper_transform","reaper_charge","reaper_surge","reaper_death"]
 const VOICE_LIMIT = 16
 const FRAME_VOICE_LIMIT = 6
-const EFFECT_COOLDOWNS = {"scream_1":2.0,"scream_2":2.0,"scream_3":2.0,"door_reaction":2.0,"sale":0.15,"refund":0.15,"insufficient_gold":0.4,"insufficient_power":0.4,"eerie":12.0,"shot_needle":0.07,"shot_arc":0.11,"impact":0.09,"ghost_hurt":0.22,"door_hit":0.12,"door_crack":0.8,"door_break":1.0,"income":1.1,"electricity":1.0,"repair":1.0,"footstep":0.38,"danger":3.0,"build":0.15,"upgrade":0.18,"hunter_level":0.5,"hunter_spawn":1.0,"match_start":0.8,"victory":2.0,"defeat":2.0,"rank":0.8,"reward":0.4,"menu":0.2}
+const EFFECT_COOLDOWNS = {"reaper_transform":4.0,"reaper_scythe":0.7,"reaper_charge":1.8,"reaper_surge":1.5,"reaper_impact":0.5,"reaper_hurt":0.35,"reaper_death":4.0,"scream_1":2.0,"scream_2":2.0,"scream_3":2.0,"door_reaction":2.0,"sale":0.15,"refund":0.15,"insufficient_gold":0.4,"insufficient_power":0.4,"eerie":12.0,"shot_needle":0.07,"shot_arc":0.11,"impact":0.09,"ghost_hurt":0.22,"door_hit":0.12,"door_crack":0.8,"door_break":1.0,"income":1.1,"electricity":1.0,"repair":1.0,"footstep":0.38,"danger":3.0,"build":0.15,"upgrade":0.18,"hunter_level":0.5,"hunter_spawn":1.0,"match_start":0.8,"victory":2.0,"defeat":2.0,"rank":0.8,"reward":0.4,"menu":0.2}
 var mobile_profile=false
 var suspended=false
 var event_counts: Dictionary = {}
@@ -215,7 +215,7 @@ func update_state(delta: float, model, mode: String):
  var active = model != null and mode == "match" and model.result == ""
  if model != null:
   if not _previous.is_empty() and _previous.state!=HunterState.State.DEAD and model.hunter.state==HunterState.State.DEAD and _previous.hp>0:
-   event("ghost_defeat")
+   event("reaper_death" if model.hunter.transformed else "ghost_defeat")
    _previous.state = HunterState.State.DEAD
    _previous.hp = model.hunter.hp
   var room = model.player()
@@ -247,12 +247,18 @@ func update_state(delta: float, model, mode: String):
  intensity = move_toward(intensity,target_intensity,delta*1.6)
  proximity = move_toward(proximity,target_proximity,delta*1.8)
  var music_active = mode=="match" and (model==null or model.result=="")
- var targets = {"music_menu":1.0 if mode=="menu" else 0.0,"music_calm":(1.0-intensity)*0.85 if music_active else 0.0,"music_danger":intensity*0.85 if music_active else 0.0,"ambient_dorm":0.35+proximity*0.30 if active else 0.15 if mode=="menu" else 0.0,"proximity_loop":proximity*intensity*0.65 if active else 0.0,"generator_loop":generator_weight if active else 0.0}
+ var boss_active=active and model.hunter.transformed and model.hunter.hp>0
+ var targets = {"music_menu":1.0 if mode=="menu" else 0.0,"music_calm":(1.0-intensity)*0.85 if music_active and not boss_active else 0.0,"music_danger":intensity*0.85 if music_active and not boss_active else 0.0,"ambient_dorm":0.35+proximity*0.30 if active else 0.15 if mode=="menu" else 0.0,"proximity_loop":proximity*intensity*0.65 if active else 0.0,"generator_loop":generator_weight if active else 0.0}
+ targets["music_reaper"]=0.85 if boss_active else 0.0
+ targets["reaper_ambience"]=proximity*0.55 if boss_active else 0.0
  for name in loops:
   loop_weights[name] = move_toward(float(loop_weights[name]),float(targets[name]),delta*1.1)
   loops[name].volume_db = linear_to_db(maxf(0.0001,loop_weights[name]))-12.0
  # Outcomes may be supplied explicitly by the host, too; cooldown prevents repeats.
  if model != null and model.result != "" and _previous.get("result","") != model.result:
+  _pending_critical=_pending_critical.filter(func(cue): return cue.name not in ["reaper_transform","reaper_charge","reaper_surge"])
+  for voice in voices:
+   if _voice_names.get(voice.get_instance_id(),"") in ["reaper_transform","reaper_charge","reaper_surge","reaper_scythe"]: voice.stop()
   event("victory" if model.result=="victory" else "defeat")
   _previous.result = model.result
 
@@ -323,7 +329,7 @@ func _observe(model):
   elif combat.type=="impact":
    event("impact",combat.position)
    if combat.damage>0:
-    event("ghost_hurt",combat.position)
+    event("reaper_hurt" if model.hunter.transformed else "ghost_hurt",combat.position)
  _previous = _snapshot(model)
 
 func get_diagnostics() -> Dictionary:
@@ -370,7 +376,14 @@ func _observe_presentation(model):
   var type=str(record.type)
   var position: Vector2=record.position
   _seen_presentation[str(room)+":"+type]=true
+  # Terminal frames keep death/outcome cues but discard obsolete attack warnings.
+  if model.result!="" and type in ["boss_transform","boss_warning","boss_surge"]: continue
   match type:
+   "boss_transform": event("reaper_transform")
+   "boss_death": event("reaper_death")
+   "boss_warning":
+    event({"scythe":"reaper_scythe","siege":"reaper_charge","surge":"reaper_surge"}.get(record.get("attack",""),"danger"),position)
+   "boss_impact": event("reaper_impact",position)
    "encounter":
     if _clock>=float(_encounter_cooldowns.get(room,-1)) and _clock>=_scream_next and (not is_instance_valid(_scream_voice) or not _scream_voice.playing):
      if event("scream_"+str(1+_scream_variation%3),position):

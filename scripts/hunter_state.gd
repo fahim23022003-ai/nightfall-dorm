@@ -90,8 +90,9 @@ func _boss_tick(delta: float, model) -> bool:
 
 func _choose_boss_attack(room) -> String:
  var defenses=0
- for b in room.buildings.values():
-  if b.kind in ["turret","heavy"] and room.tile_position(room.buildings.find_key(b)).distance_to(position)<=Catalog.BUILDINGS[b.kind].range: defenses+=1
+ for tile in room.buildings:
+  var b=room.buildings[tile]
+  if b.kind in ["turret","heavy"] and room.tile_position(tile).distance_to(position)<=Catalog.BUILDINGS[b.kind].range: defenses+=1
  if defenses>=2 and room.door_hp>damage*2 and boss_cooldowns.surge<=0: return "surge"
  if room.door_hp>damage*2 and boss_cooldowns.siege<=0: return "siege"
  return "scythe" if boss_cooldowns.scythe<=0 else ""

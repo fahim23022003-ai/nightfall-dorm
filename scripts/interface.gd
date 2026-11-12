@@ -458,8 +458,11 @@ func update_match():
  gold_label.text=str(int(room.gold)) if room!=null else "—"
  power_label.text=str(int(room.electricity)) if room!=null else "—"
  phase_label.text="%02d:%02d\n%s" % [int(m.time)/60,int(m.time)%60,"PREP %ds" % maxi(0,ceili(m.preparation-m.time)) if m.time<m.preparation else "SURVIVE"]
- hunter_label.text="HUNTER L%d  ·  %d/%d" % [m.hunter.level,m.hunter.hp,m.hunter.max_hp]
+ hunter_label.text=("REAPER · %d/%d" % [m.hunter.hp,m.hunter.max_hp]) if m.hunter.transformed else "HUNTER L%d  ·  %d/%d" % [m.hunter.level,m.hunter.hp,m.hunter.max_hp]
  hunter_detail.text="%d ATK · %.2fs%s" % [m.hunter.damage,m.hunter.interval," · WINDUP!" if m.hunter.charged_ready else ""]
+ if m.hunter.state==HunterState.State.TRANSFORM: hunter_detail.text="AWAKENING · %.1fs · KEEP FIRING" % m.hunter.transform_remaining
+ elif m.hunter.boss_attack!="": hunter_detail.text="%s · %.1fs" % [BossCatalog.ATTACKS[m.hunter.boss_attack].name,m.hunter.windup_remaining]
+ elif m.hunter.surge_remaining>0: hunter_detail.text="SURGE · %.1fs · REAPER EXPOSED +20%%" % m.hunter.surge_remaining
  hunter_detail.modulate=Color("FF7777") if m.difficulty=="hell" else Color("FFD27A")
  hunter_bar.max_value=m.hunter.max_hp
  hunter_bar.value=m.hunter.hp
@@ -475,6 +478,9 @@ func update_match():
   warning_label.text="DOOR %d/%d · UNDER ATTACK" % [room.door_hp,room.max_hp()]
   if m.hunter.charged_ready: warning_label.text="HEAVY STRIKE %.1fs · REPAIR / UPGRADE" % m.hunter.windup_remaining
   elif room.repair_factor<0.99: warning_label.text="DOOR %d/%d · REPAIRS %d%%" % [room.door_hp,room.max_hp(),roundi(room.repair_factor*100)]
+  if m.hunter.boss_attack!="":
+   warning_label.text="%s %.1fs · REPAIR NOW" % [BossCatalog.ATTACKS[m.hunter.boss_attack].name,m.hunter.windup_remaining]
+  elif m.hunter.shadow_active(room.index): warning_label.text="TURRETS SILENCED %.1fs · KEEP REPAIRING" % m.hunter.surge_remaining
   warning_box.modulate.a=0.75+game.danger_time*0.35
  details.text="Choose a room" if room==null else "%s · %s" % [game.presentation.ROOM_NAMES[room.index].capitalize(),"sleeping" if room.sleeping else "awake"]
  for control in [room_bed_summary,room_door_summary,room_selected_summary]: control.disabled=room==null
@@ -517,6 +523,8 @@ func show_result():
  box(Rect2(340,100,600,520),"263E50","7BE3A1" if game.model.result=="victory" else "F05467")
  icon("economy" if game.model.result=="victory" else "hunter_idle",Vector2(585,118),Vector2(110,110))
  var title=label_at(("STAGE CLEARED" if game.model.result=="victory" else "STAGE FAILED") if game.campaign_mode else ("YOU SURVIVED!" if game.model.result=="victory" else "LIGHTS OUT"),Vector2(375,243),34,530,true)
+ if game.model.result=="victory" and game.model.hunter.transformed:
+  title.text="REAPER DEFEATED"
  title.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  if game.campaign_mode:
   var stage=StageCatalog.stage(game.model.stage_id)
