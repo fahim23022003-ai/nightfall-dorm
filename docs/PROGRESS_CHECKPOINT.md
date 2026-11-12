@@ -1,52 +1,60 @@
 # Phase 5D-1 — premium UI and strategy complete (12 November 2026)
 
-IMPLEMENTED / TESTED on Godot4.6.3 Linux. Clean `work` baseline
-496b9b9df9efbe95f99f2efc0e7a5de3c6597815 matched GitHub.
-Recovery tag pre-phase5d1-496b9b9; baseline83f915c; core d5c35a4;
-reviewed premium UI/save fixes45a3f3f. B production, C independent QA,
-D actual visual/audio and bounded A balance audit finished. Main unchanged.
+IMPLEMENTED and TESTED on Godot 4.6.3 Linux. Started clean on `work` at
+`496b9b9df9efbe95f99f2efc0e7a5de3c6597815`, matching GitHub. Recovery tag:
+`pre-phase5d1-496b9b9`. Milestones: baseline `83f915c`, mechanics `d5c35a4`,
+reviewed UI/save fixes `45a3f3f`, integrated tests/report `f116a7a`.
+B owned production; C independently tested; D reviewed actual rendering/audio;
+A performed the bounded balance audit. `main` is unchanged.
 
-3genuine stable-ordinal Hunterarchetypes, fairwindups/recovery/targetpreferences,
-boundedonce-onlyReaper composition;4exclusivepaidL5→10Needle/Arcbranches;
-3roombenefit/drawbacktraits/6rooms/all5maps;3optionalcontracts with45once-only
-stage/difficulty keys/390RMmaximum, genuine sealedterminal facts and existing
-transaction/save/RNG rollback. Actualinvestment/coupons/50%separateGold/Power
-refunds retained. RealGamestartsenable strategy; standalonelegacyfixtures optin.
-No midmatchsaving existed orwasadded; oldprofiledata preserved.
+Three genuine Hunter archetypes have stable saved selection, fair telegraphs,
+different target/attack behavior and bounded Reaper composition. Four exclusive
+paid Needle/Arc branches open at Level 5 and progress through 10. Three room
+traits trade door durability, income and electricity across all six rooms/five
+maps. Three optional contracts use genuine sealed terminal conditions and the
+existing reward/save/RNG rollback, with 45 once-only keys and 390 RM maximum.
+Actual paid investments, coupons and separate 50% Gold/Electricity refunds remain.
+There is no mid-match save system. Existing profiles and all 20 items are preserved.
 
-30originalSVGaction/currency/mode/archetype/branch emblems,4Commonillustrations,
-localOFLGrenzeGotisch headings/readablebodyfont, dimensionalbuttonhover/press/
-focus,3modecards, reorganizedperks/contracts, shop and exactprice/refundreadouts.
-Fixedmalformedactive-save exception, branchsuccesscontext, repeatedpurchaseglow,
-title/menu/Sell clipping, traitplaque/pad overlap, occupiedroomguide/lostTEAMcount,
-stalepracticecombatwarning. Allconfirmedfixes retested; no knownfunctionalfailure.
+Thirty original emblems, four improved Common illustrations, local OFL Gothic
+headings and readable body type extend dimensional button states, difficulty
+cards, shop, preparation, perks, contracts and HUD. Confirmed save, inspector,
+room-guide, team-count, tutorial warning and rendered text/trait/refund clipping
+issues were fixed and retested. No known functional failure remains in tested paths.
 
-C mechanics172324checks/270actualapproaches; finalweaponfocused983,economy556,
-contracts425,migration159,UI3190, all0failures/cleanengine. A150livecases
-140victories10defeats/0integrity orsettlementfailures;8controlledL10checks.
-Precision204px vsSuppression240 tuningchanges26pairedL5finishcomparisons from
-19/0/7 to13/5/8faster/ties. Arcfirst12/12reachL5; naturalArc10notreached inA's
-boundedpolicies. Budgetedautomated outcomes, not humanrates/universalbalance.
+C passes 172,324 mechanic checks/270 actual approaches, 983 final weapon checks,
+556 economy, 425 contract, 159 migration and 3,190 UI checks, with clean logs.
+A's 150 live cases produce 140 victories/10 defeats and zero integrity/settlement
+failures; eight controlled L10 checks pass. Precision 204px versus Suppression 240px
+makes a real coverage tradeoff: 13/5/8 faster/tied results in 26 paired L5 cases.
+Arc-first 12/12 reach L5; natural Arc 10 was not reached by A's bounded policies.
+These are diagnostic budgets and automated policies, not human win rates.
 
-D45BEFORE/113AFTER PNGs; baseline73/finalpaired85/strategy264/map21checks,
-all0failures/cleanengine. Actual43.096s stereomix/105streams/nomissing/0fullscale,
-peak.0230103/RMS.00386990. WarmLinuxsoftwaremeans32.678/46.430/31.003ms
-720/1080/Reduced; cache18stable. No freshmatchedprephaseFPS comparison.
+D reviewed 45 BEFORE/113 AFTER PNGs; final 85 paired/264 strategy/21 map checks
+pass without engine errors. Actual 43.096s audio capture loads 105 streams, none
+missing, zero full-scale samples (peak 0.0230103 /RMS 0.00386990). Warm Linux software
+frame means 32.678/46.430/31.003ms at 720p/1080p/Reduced; cache 18 stays stable.
+There was no fresh matched prephase FPS comparison.
 
-Allregular+extendedsuitespass via initialrun/correcteddifficulty269/resumedrun
-(exit0/noerrors), including27timesteps/144audit/48phase2matches,20items,
-105audio281checks,20ktransactions175889invariants, profileprocessroundtrip and
-startupintro. Legacyselectors/perknavigation/statcomposition/terminalfixtures
-adapted withoutdisablingassertions/bypassingstrategy. Cnew5suitesregistered
-regular andA--checkextended. Finalimportclean; finallegacyvisualUI1267checks0.
+All regular/extended suites passed through initial and resumed runs after legacy
+selectors, perk routes, stat composition and terminal fixtures were adapted.
+No assertions or strategy eligibility were bypassed. Extended 27 timestep,
+144 audit and 48 phase2 matches pass; all 20 items, economy/refunds, 105 audio,
+20,000 property transactions/175,889 invariants, profile round-trip and startup
+pass. Final import is clean; final legacy visual UI passes 1,267 checks. Five new
+C suites are registered in the regular command; bounded A --check is extended.
 
-Full implementation/evidence/limits: [PHASE_5D1_PREMIUM_UI_STRATEGY_REPORT.md](PHASE_5D1_PREMIUM_UI_STRATEGY_REPORT.md),
-`docs/evidence/premium-strategy/`. NativeWindows/physicalcontrols/speakers,
-hardware/longsessionFPS and subjectiveart/horror/audio/humanbalanceUNVERIFIED.
-Retainedsimple sprites/pads remainartlimits. No required5D1codefeatureincomplete.
-No5D2/6, EndlessSiege/newmodes/practiceroom/cosmeticeconomy/Android/multiplayer.
-Final code/evidence commits and exactprivateGitHubworkpushverification pending;
-only delivery remains. Stop after5D1.
+Verified code/evidence delivery `ff06a7f4dfda96bb55f220b08e536868b7185907` was pushed
+successfully to private GitHub `work`. A fresh remote SHA exactly matched local
+HEAD and the tree was clean. This following documentation-only commit records
+that verification; the final response records its own newest SHA and push check.
+
+Full report: [PHASE_5D1_PREMIUM_UI_STRATEGY_REPORT.md](PHASE_5D1_PREMIUM_UI_STRATEGY_REPORT.md).
+Evidence: `docs/evidence/premium-strategy/`. Native Windows, physical controls/
+speakers, hardware/long-session FPS and subjective art/horror/audio/human balance
+remain UNVERIFIED. Retained simple sprites/pads are art limits; no required code
+feature is INCOMPLETE. Stop after 5D-1; no 5D-2/6, Endless Siege, new modes,
+practice room, cosmetic economy, Android or multiplayer.
 
 ---
 

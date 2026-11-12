@@ -207,7 +207,7 @@ control rectangles; counters alone do not establish art quality.
 The initial full command passed through `boss_matrix`, then exited1 at a stale
 legacy test searching Button.text for Hell. The mode card now has semantic mode
 metadata and visible labels. `difficulty_behavior.gd` was updated to click that
-actual card, additionally check its visible name, and passes269checks. The remaining
+actual card, additionally check its visible name, and passes 269 checks. The remaining
 regular and all extended suites then ran sequentially with explicit exit/error
 recording; `regression-resume-results.json` has no failures. Completed unchanged
 suites were not needlessly repeated.
@@ -216,17 +216,17 @@ Two other legacy UI fixtures were adapted before their resumed runs: campaign
 and rank UI follow the dedicated perk screen, include archetype/trait composition
 in stat expectations, and let the real model tick establish/seal terminal results.
 No assertion was disabled, no real Game strategy was bypassed, and reward
-eligibility was not weakened. Campaign flow148 and rank UI76 checks pass.
+eligibility was not weakened. Campaign flow 148 and rank UI 76 checks pass.
 `regression-full.log`, `regression-difficulty-behavior-{initial,final}.log`,
 `regression-resume.log` and per-suite logs preserve the complete history. The final
 legacy visual UI rerun covers late layout-only fixes.
 
-The extended suites pass27timestep matches (none unresolved),144strategy audit
-matches and48phase2matches (22victories/26defeats), plus A's separate eight-fixture
-`--check`. Regular coverage includes all20items/combos, haunted worlds/Level10,
-105audio streams/281assertions,512+421purchase/cancel/refund checks, safe RMshop/
-spins/perks/ranks/achievements,5maps/navigation/campaign,20,000property transactions
-with175,889invariants, cross-process profile write/read and actual startup. All
+The extended suites pass 27 timestep matches (none unresolved),144 strategy audit
+matches and48 phase2 matches (22 victories/26 defeats), plus A's separate eight-fixture
+`--check`. Regular coverage includes all 20 items/combos, haunted worlds/Level 10,
+105 audio streams/281 assertions,512 +421 purchase/cancel/refund checks, safe RMshop/
+spins/perks/ranks/achievements,5 maps/navigation/campaign,20,000 property transactions
+with 175,889 invariants, cross-process profile write/read and actual startup. All
 five new C suites are registered in `tools/check.sh`; A's bounded `--check` is
 registered under `--extended`, preserving live audit evidence.
 
@@ -260,7 +260,7 @@ Normal/Long Night core each have 36 victories; Hell has 29 victories/7 defeats.
 These automated results are not human win rates. Room/encounter comparisons
 across different geometry remain confounded; no universal best room is claimed.
 
-Arc branch-first play reaches Level 5 in all 12 additional probes at123.4–152.6s;
+Arc branch-first play reaches Level 5 in all 12 additional probes at 123.4–152.6s;
 actual Long Night/Stalker/Lab specialized impacts occur for both branches.
 Four reservation probes reach Needle 10; some wins depend wholly on teammates.
 **Natural Arc 10 was not reached by these bounded Phase 5D-1 policies.** Paid
@@ -268,9 +268,9 @@ controlled combat proves both Arc branches work at10, not natural reachability.
 Finite Mythic Frost/Freeze arms leave Reaper attacking (2–14 strikes in six
 transformed encounters); three Hell control arms lose before transformation.
 
-Controlled 20s Level 10 tests separately show close Precision damage4603.5 versus
-Suppression4032 at180px; at220px Precision0 versus Suppression3960. Arc Focus9660
-versus Storm8870.4 at210px; at330px Focus0 versus Storm8668.8. These injected
+Controlled 20s Level 10 tests separately show close Precision damage 4603.5 versus
+Suppression 4032 at 180px; at 220px Precision 0 versus Suppression 3960. Arc Focus 9660
+versus Storm 8870.4 at 210px; at 330px Focus 0 versus Storm 8668.8. These injected
 stationary-target probes establish damage/coverage mechanics, not AI balance.
 
 Contracts may be inexpensive restrictions for an already compatible one-weapon
@@ -291,14 +291,14 @@ Godot viewport images, not mockups or natural human matches.
 | Common shop720 | [Before](evidence/premium-strategy/before/07-shop-720.png) | [After](evidence/premium-strategy/after/07-shop-720.png) |
 | Gameplay720 | [Before](evidence/premium-strategy/before/11-hud-siege-720.png) | [After](evidence/premium-strategy/after/11-hud-siege-720.png) |
 
-D individually inspected **45 BEFORE /113 AFTER** PNGs (45paired +68new),
+D individually inspected **45 BEFORE /113 AFTER** PNGs (45 paired +68 new),
 including pointer hover/held press/focus, all five maps, room choices, all four
-paid/coupon branches and Level10, failed/qualified/already-claimed contracts,
+paid/coupon branches and Level 10, failed/qualified/already-claimed contracts,
 Reaper states and safe tutorial replay. Baseline PNG hashes are unchanged. The
 coordinator also inspected the actual before/after menu, shop, Hell, discounted
-Needle choices and contract cards. Glyph ink leaves8px between title/subtitle;
+Needle choices and contract cards. Glyph ink leaves 8px between title/subtitle;
 How-to-Play and ordinary/discounted L10 refund labels fit without hiding either
-resource or50%. Actual mouse and Enter interactions accompany these renders.
+resource or 50%. Actual mouse and Enter interactions accompany these renders.
 
 Additional strategy examples: [room choice](evidence/premium-strategy/after/extra-room-1-720.png),
 [discounted Needle branches](evidence/premium-strategy/after/extra-specialization-turret-720.png),
@@ -306,14 +306,14 @@ Additional strategy examples: [room choice](evidence/premium-strategy/after/extr
 [Storm10](evidence/premium-strategy/after/extra-level10-storm-1080.png),
 [failed contract result](evidence/premium-strategy/after/extra-contract-failed-result-720.png).
 
-No fresh pre-phase timing was captured. Warm2.5s Linux llvmpipe samples measure
-mean/p95 **32.678/39.972ms720p**, **46.430/52.225ms1080p**,
-**31.003/37.000msReduced720p**; material cache stays18→18. These are bounded
+No fresh pre-phase timing was captured. Warm 2.5s Linux llvmpipe samples measure
+mean/p95 **32.678/39.972ms at 720p**, **46.430/52.225ms at 1080p**,
+**31.003/37.000ms Reduced 720p**; material cache stays 18→18. These are bounded
 post-change observations, not a matched performance comparison or hardware FPS
 claim. New emblems/materials are cached; existing bounded effects/culling remain.
 
-The actual **43.096s stereo44100Hz** Master-bus recording has peak0.0230103,
-RMS0.00386990 and **zero full-scale samples**. All105existing streams load with
+The actual **43.096s stereo 44100Hz** Master-bus recording has peak 0.0230103,
+RMS 0.00386990 and **zero full-scale samples**. All 105 existing streams load with
 none missing. Real purchase/refund/projectile/coupon/archetype/Reaper/victory
 events played. Thirty-three low-priority events were intentionally suppressed
 in prepared upgrade bursts; no critical events were pending. No WAV was added
@@ -332,5 +332,16 @@ new practice mode was added.
 
 ## Final delivery verification
 
-Pending final acceptance, commit and actual private GitHub `work` push.
-No push success is inferred from local checkpoints.
+**SUCCEEDED:** verified code, tests, report and all screenshot/audio evidence were
+pushed to the existing private GitHub `work` branch. Final code/evidence delivery:
+`ff06a7f4dfda96bb55f220b08e536868b7185907`.
+
+After that push, fresh `git ls-remote origin refs/heads/work` returned exactly
+`ff06a7f4dfda96bb55f220b08e536868b7185907`, matching local HEAD; the working tree was clean.
+The reviewed production milestone is `45a3f3f`; integrated tests/report are `f116a7a`;
+subsequent commits add the actual paired/strategy screenshot evidence.
+
+This following documentation-only receipt records the observed successful push.
+Its own newest SHA and exact remote verification are provided in the delivery
+response. No force push, merge to `main`, environment publication, deployment or
+Phase 5D-2/6 work was performed.
