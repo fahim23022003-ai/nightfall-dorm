@@ -11,7 +11,7 @@ An original single-player Godot 4 dormitory survival defense game. Choose a room
 3. Choose **Import**, select the extracted `project.godot`, then **Import & Edit**. Wait for asset import.
 4. Press **F5 / Run Project**, then **Start Game**. Choose an optional unlocked boost and difficulty in the loadout, then **Start Night**.
 5. Move with **WASD/arrows**, enter a vacant room and press **E** to claim it. Approach its bed and press **E** to sleep/lock the door.
-6. Click an owned floor pad, choose a card, then **Confirm placement**. Start with a Needle turret and build a Dynamo for electricity. Click existing buildings or the bottom bed/door summaries for upgrades.
+6. Click an owned floor pad, choose a card, then **Confirm placement**. Start with a Needle turret and build a Dynamo for electricity. Click existing buildings or the bottom bed/door summaries for upgrades. A building inspector also offers Sell: it frees the pad and refunds 50% of the gold and electricity spent on that building and its upgrades (fractional amounts are retained). Bed and door upgrades cannot be sold.
 
 **R** repairs, **M** toggles map/focus, **wheel** zooms, **G** toggles the guide. **Escape** cancels a preview, closes the inspector, then pauses/resumes. Gold starts only while sleeping; later purchases need electricity/prerequisites. Hunter death wins; your elimination loses. Restart/Main menu are on the result screen.
 

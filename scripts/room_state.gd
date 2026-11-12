@@ -185,6 +185,25 @@ func upgrade_building(tile: int) -> bool:
  b.level += 1
  return true
 
+# Current prices are fixed: sum the initial purchase and each paid upgrade.
+# Keep fractional currency; rounding must never turn repeated sales into profit.
+func building_refund(tile: int) -> Vector2:
+ if not buildings.has(tile): return Vector2.ZERO
+ var b=buildings[tile]
+ var data=Catalog.BUILDINGS[b.kind]
+ var upgrades=b.level*(b.level-1)/2.0
+ return Vector2(data.gold*(1+upgrades),data.power+(data.power+3)*upgrades)*Catalog.BUILDING_REFUND_FRACTION
+
+func sell_building(tile: int) -> bool:
+ if not alive: return reject("Resident eliminated.")
+ if not buildings.has(tile): return reject("Select an existing building to sell.")
+ var refund=building_refund(tile)
+ buildings.erase(tile)
+ gold+=refund.x
+ electricity+=refund.y
+ last_error=""
+ return true
+
 func tick_economy(delta: float):
  if sleeping and alive: occupied_seconds+=delta
  var income = income_rate()*delta

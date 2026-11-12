@@ -172,6 +172,20 @@ func _process(delta: float):
  presentation.update(delta,model)
  queue_redraw()
 
+# A double-click is one intent. Consume its second press AND release before
+# Controls see it, so a newly opened panel cannot receive the trailing click.
+var suppress_double_click_release=false
+
+func _input(event):
+ if mode!="match" or not event is InputEventMouseButton: return
+ if event.button_index!=MOUSE_BUTTON_LEFT: return
+ if event.pressed:
+  suppress_double_click_release=event.double_click
+  if event.double_click: get_viewport().set_input_as_handled()
+ elif suppress_double_click_release:
+  suppress_double_click_release=false
+  get_viewport().set_input_as_handled()
+
 func _unhandled_input(event):
  if mode!="match" or in_background: return
  if mobile_mode and event is InputEventMouse: return

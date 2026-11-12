@@ -220,12 +220,13 @@ func context(ui):
      node.set_meta("mobile_card_configured",true)
     index+=1
  else:
-  ui.context_box.position.y=132 if ui.context_mode=="door" else 230
-  ui.context_box.size.y=466 if ui.context_mode=="door" else 368
-  for button in [ui.actions.upgrade,ui.bed_button,ui.door_button,ui.actions.repair,ui.confirm_button]:
+  ui.context_box.position.y=132 if ui.context_mode=="door" else 158 if ui.context_mode=="upgrade" else 230
+  ui.context_box.size.y=466 if ui.context_mode=="door" else 440 if ui.context_mode=="upgrade" else 368
+  for button in [ui.actions.sell,ui.actions.upgrade,ui.bed_button,ui.door_button,ui.actions.repair,ui.confirm_button]:
    button.position.x=14
    button.size=Vector2(392,64)
   ui.actions.upgrade.position.y=286
+  ui.actions.sell.position.y=358
   ui.bed_button.position.y=286
   ui.door_button.position.y=310
   ui.actions.repair.position.y=386

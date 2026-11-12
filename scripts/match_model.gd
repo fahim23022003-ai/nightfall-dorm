@@ -107,6 +107,9 @@ func repair_door() -> bool:
 func upgrade_building(tile: int) -> bool:
  return player().upgrade_building(tile) if _can_purchase() else false
 
+func sell_building(tile: int) -> bool:
+ return player().sell_building(tile) if _can_purchase() else false
+
 func _can_purchase() -> bool:
  return running and result == "" and player() != null and player().alive
 

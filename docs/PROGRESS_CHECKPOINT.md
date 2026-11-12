@@ -1,3 +1,24 @@
+# Phase 1 — building input and refunds (12 November 2026, Singapore)
+
+Continued clean branch `work` from verified local/remote checkpoint
+`1753c91705c9c58192968961e246d23542909649`. Main was not changed.
+
+- Mouse double-clicks in a match consume the second press and release before UI
+  dispatch, preventing a trailing click from activating another building action.
+  Subsequent ordinary clicks remain available.
+- Building inspectors on desktop and mobile expose Sell with the exact refund.
+  Sales free the pad and refund 50% of initial and upgrade gold/electricity costs.
+  Fractional currency is retained. Beds/doors are excluded. Duplicate, invalid,
+  paused, terminal and eliminated-resident sales are rejected.
+- Regression suite: `tests/phase1_building.gd`, included by `tools/check.sh`,
+  checks all six types at all four levels, duplicate/invalid transactions, tile
+  reuse, real mouse double-click dispatch, and mobile drawer sale/layout.
+- Regular suite and focused tests passed during implementation. Native Windows,
+  Android, audible output and rendered appearance remain unverified in this task.
+- No push performed: repository instructions require explicit push authorization.
+
+---
+
 # Latest checkpoint — Android shared-source port (11 November2026, Singapore)
 
 **Continue here; do not rebuild or remove the Windows game.** Started from private `work` at `0de14345e6f4f66f027fd1038a82a6278947eca3`, with recoverable tag `pre-android-2026-11-11`. The old Phase2 checkpoint below is history. Windows preset0 is byte-identical, and core economy/AI/door/turret/rank rule files are unchanged.

@@ -281,7 +281,8 @@ func show_match():
  selected_details.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  selected_details.size.y=126
  actions.upgrade=button("Upgrade",Vector2(14,190),func(): purchase(game.model.upgrade_building(game.selected_tile)),336,44,context_box)
- upgrade_items=[selected_icon,selected_details,actions.upgrade]
+ actions.sell=button("Sell · 50% refund",Vector2(14,240),sell_selected,336,44,context_box)
+ upgrade_items=[selected_icon,selected_details,actions.upgrade,actions.sell]
  var bed_art=icon("bed",Vector2(14,52),Vector2(80,108),context_box)
  bed_details=label_at("",Vector2(104,50),18,244,false,context_box)
  bed_details.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
@@ -340,7 +341,7 @@ func close_context():
 func refresh_context():
  if not context_open or game.model.player()==null: close_context(); return
  var room=game.model.player()
- var heights={"build":382,"upgrade":250,"bed":250,"door":300,"confirm":272}
+ var heights={"build":382,"upgrade":300,"bed":250,"door":300,"confirm":272}
  if not game.mobile_mode:
   context_box.position=Vector2(900,628-heights[context_mode])
   context_box.size=Vector2(364,heights[context_mode])
@@ -398,6 +399,12 @@ func show_pause(open: bool):
  var menu=button("Return to main menu",Vector2(450,397),game.return_menu,380,48)
  pause_items=[veil,bg,title,subtitle,resume,menu]
 
+func sell_selected():
+ var success=game.model.sell_building(game.selected_tile)
+ if success: close_context()
+ purchase(success)
+ if success: feedback_text="Building sold · 50% gold and electricity refunded."
+
 func purchase(success: bool):
  game.audio_event("purchase" if success else "failure")
  feedback_text="Defense improved!" if success else game.model.purchase_error()
@@ -450,6 +457,8 @@ func update_match():
   if room.buildings.has(game.selected_tile):
    var b=room.buildings[game.selected_tile]
    var d=Catalog.BUILDINGS[b.kind]
+   var refund=room.building_refund(game.selected_tile)
+   actions.sell.text="Sell · +%s G / +%s E (50%%)" % [str(refund.x),str(refund.y)]
    actions.upgrade.text="MAX LEVEL" if b.level>=4 else "Upgrade  ·  %dG / %dE" % [d.gold*b.level,(d.power+3)*b.level]
   else: actions.upgrade.text="Select a building to upgrade"
  actions.repair.text="Repair  ·  %d gold" % Catalog.REPAIR_COST
@@ -532,6 +541,8 @@ func action_reason(action: String) -> String:
   if kind == "heavy" and room.bed_level < 1: return "Requires bed level 2."
   gold = Catalog.BUILDINGS[kind].gold
   power = Catalog.BUILDINGS[kind].power
+ elif action == "sell":
+  if not room.buildings.has(game.selected_tile): return "Select an existing building."
  elif action == "upgrade":
   if not room.buildings.has(game.selected_tile): return "Select an existing building."
   var b = room.buildings[game.selected_tile]
