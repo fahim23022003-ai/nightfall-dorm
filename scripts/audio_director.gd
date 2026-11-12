@@ -437,6 +437,7 @@ func _observe_presentation(model):
       for voice in voices:
        if voice.playing and voice.stream==streams["scream_"+str(1+(_scream_variation-1)%3)]: _scream_voice=voice
    "charged_attack": event("danger",position)
+   "archetype_warning": event("danger",position)
    "door_damage":
     event("door_hit",position)
     var hp=float(record.get("hp",0))

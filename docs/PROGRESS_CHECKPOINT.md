@@ -1,37 +1,42 @@
 # Phase 5D-1 — premium UI and strategy (12 November 2026)
 
-IN PROGRESS. Started clean `work` at
-`496b9b9df9efbe95f99f2efc0e7a5de3c6597815`, verified against GitHub.
-Recovery tag `pre-phase5d1-496b9b9`; baseline checkpoint83f915c (local).
-B sole production, C independent QA, D actual renders, A bounded balance.
-Root owns docs/full regular+extended orchestration and verified Git push.
+IMPLEMENTATION COMPLETE; final regression/delivery IN PROGRESS. Clean baseline
+`work` at496b9b9df9efbe95f99f2efc0e7a5de3c6597815 matched GitHub.
+Recovery tag pre-phase5d1-496b9b9; baseline83f915c; core d5c35a4 (local).
+B sole production/C independent QA/D actual renders/A bounded balance complete
+or finishing evidence. Root owns remaining regression integration/docs/Git.
 
-Baseline:45 actual PNGs/73 checks and core/economy/profile/item/reward/property/
-scene/startup commands pass. Mechanics now implemented:3 real archetypes with
-stable legitimate-match ordinal selection, bounded Reaper modifiers, 4 exclusive
-paid L5→10 branches, six rooms with three benefit/drawback traits, 3 optional
-once-per-stage/difficulty contract bonuses in existing rollback-safe settlement.
-Real Game starts enable strategy; standalone legacy fixtures remain neutral.
-No mid-match saving existed or was added.
+3 genuine archetypes, stable legitimate-result ordinal/active snapshot, bounded
+Reaper composition; four paid exclusive L5→10 branches;3benefit/drawback traits
+across6rooms/5maps;3optional contracts,45once-onlystage/difficulty keys/390RMmax,
+sealed realterminal conditions and existing failed-save rollback. Real Game
+starts enable strategy; legacy standalone fixtures opt in. No midmatch save.
 
-C passes172324mechanic assertions/270actual navigation approaches,556economy/
-16scenarios,149migration and407contract checks. After A balance findings,
-Precision range reduced to204px (Suppression240); focused current-source983
-checks verify actual shots/threat estimates/CC/Reaper without repeating nav.
-Initial test-fixture errors retained and corrected without production rounding
-or weakened numeric tolerance. A live150/controlled8 audit complete, report in
-progress; no integrity/settlement failure. Real tradeoff in26NeedleL5pairs:
-Precision faster13/Suppression5/ties8; limited automated policies, not humanrates.
+30originalaction/currency/mode/archetype/branch SVGs,4improvedCommonillustrations,
+local OFLGrenzeGotisch headings/bodyInterface.ttf, raised buttons/hover/press/
+focus, distinctmodecards/reorganizedperks/contracts, framedshop and actual
+purchase feedback, room/archetype/HUD/branch readouts. Confirmed main title/
+menu/Sell clipping, traitplaque/pad overlap, occupiedroomguide, missingteamcount,
+staleReplayTutorialwarning and partialactivesave exception fixed and retested.
 
-Premium UI imports/starts clean, actual D review in progress. D found main title/
-subtitle and narrow How-to-Play clipping; B refining those and button depth.
-C actual UI controls test3015checks had two expected-copy mismatches, being
-corrected; final UI acceptance pending. Root full regular+extended running in
-`docs/evidence/premium-strategy/regression-full.log`; final status pending.
-Next: finish D/C visual/layout review, handle confirmed failures, finish full
-regressions, update finalreport/docs, commit and push exact verifiedworkSHA.
-Native Windows/hardwareFPS/physicalcontrols/speakers and subjective quality
-UNVERIFIED. No completion/push claimed yet; stop after5D1, no5D2/6.
+C fullmechanics172324checks/270approaches; finalweaponfocused983, economy556,
+contracts425, migration159 andUI3190, all0failures/cleanengine. A150live cases
+140wins10losses,0integrity/settlement failures;8controlledL10checks. Precision
+204px vsSuppression240 tuning gives13/5/8faster/ties in26pairedNeedle cases.
+Arcbranchfirst12/12reachL5; no naturalArc10 reached inA's boundedpolicies.
+Not humanrates/universalbalance. Baseline45PNGs73checks; Dfinalpaired85/detail264/
+map21 checks pass; screenshot/metadata finalization ongoing.
+
+Existing fullregular+extended initial run passed throughbossmatrix then stopped
+on outdated HellButton.text selector. Root adapted actualmodecard/perk routes,
+archetype/trait composition and genuine model-terminal testfixtures, retaining
+all assertions. Hell269checks nowpasses; remaining suites running sequentially
+with all output/errors retained inregression-resume.log. Earlierpassed suites
+not repeated unnecessarily. FiveC suites registered regular; A--check extended.
+Next: finish legacy regressions/affected retests/finalimport; finalize report/
+evidence/checkpoint; commit, push privatework andverifyexactremoteSHA.
+NativeWindows/hardwareFPS/physicalcontrols/speakers/humanquality UNVERIFIED.
+No5D2/6, newmodes/practiceroom/Android/multiplayer. No push claimed yet.
 
 ---
 

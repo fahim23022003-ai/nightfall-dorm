@@ -94,67 +94,112 @@ func show_ranks():
  ui.button("Choose loadout",Vector2(900,622),func(): ui.campaign.prepare(game.profile.selected_stage),270,40)
 
 func show_loadout():
- if game.mode=="result": game.return_menu()
- if game.mobile_mode:
-  game.mobile_ui.show_rewards(ui,true)
-  return
- ui.clear()
- ui.current_screen="loadout"
- game.audio_event("menu")
- ui.box(Rect2(90,40,1100,640))
+ if game.mode=="result":game.return_menu()
+ if game.mobile_mode:game.mobile_ui.show_rewards(ui,true);return
+ ui.clear();ui.current_screen="loadout";game.audio_event("menu")
+ ui.box(Rect2(90,35,1100,650))
  var stage=StageCatalog.stage(game.profile.selected_stage) if game.campaign_mode else {}
- ui.label_at("STAGE %d · %s" % [stage.number,stage.title] if not stage.is_empty() else "PREPARE FOR THE NIGHT",Vector2(125,68),27,950,true)
- badge(game.profile.rank_index(),Vector2(1090,58),64)
- var preparation="Choose at most %d unlocked boost. Selection is saved; bots receive no rank bonuses." % game.profile.perk_slots()
- if not stage.is_empty(): preparation="Defeat the hunter · Prep %ds · Hunter HP ×%.2f / damage ×%.2f / speed ×%.2f" % [stage.preparation,stage.hunter_hp,stage.hunter_damage,stage.hunter_speed]
- ui.label_at(preparation,Vector2(125,117),17,980)
- if not stage.is_empty():
-  var boss=BossCatalog.encounter(stage.id,difficulty)
-  var encounter=" · Reaper: after %ds at ≤55%% HP, or %ds. No healing." % [boss.opening,boss.deadline] if boss.enabled else " · Introductory encounter: no Reaper transformation."
-  ui.label_at(MapCatalog.map(stage.map).get("title","")+encounter,Vector2(125,143),15,980)
- for i in range(RankCatalog.PERKS.size()):
-  var item=RankCatalog.PERKS[i]
-  var owned=item.id in game.profile.unlocked()
-  var at=Vector2(125+(i%2)*520,168+int(i/2)*80)
-  var id=item.id
-  perk_icon(id,at,40)
-  var text=ui.label_at(item.name+"\n"+item.description,at+Vector2(48,0),14,325)
-  text.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
-  text.set_deferred("size",Vector2(325,72))
-  var b=ui.button("Equipped ✓" if id in game.profile.equipped else ("Equip" if owned else RankCatalog.NAMES[item.rank]),at+Vector2(378,10),func():
-   if game.profile.equip(id): game.audio_event("reward")
-   show_loadout(),120,44)
-  b.disabled=not owned or game.profile.read_only
- ui.label_at("DIFFICULTY",Vector2(125,506),19,250,true)
- for index in range(3):
-  var key=["standard","hard","hell"][index]
-  var selected=key
-  var b=ui.button(("✓ " if difficulty==key else "")+RankCatalog.DIFFICULTIES[key].name,Vector2(325+index*255,496),func():
-   difficulty=selected
-   if game.campaign_mode: game.profile.select_difficulty(selected)
-   show_loadout(),242,46)
-  b.tooltip_text={"standard":"Original forgiving economy and pressure.","hard":"32s escalation; charged fourth strikes; repairs weaken to65% during siege. +25% XP.","hell":"EXPERT RISK:25s escalation; charged third strikes; repairs weaken to40%. +50% XP."}[key]
-  if key=="hell": b.modulate=Color("F08B88")
- var hint={"standard":"Normal · forgiving pressure and full repair effectiveness.","hard":"Long Night · charged strikes,32s escalation; siege repairs fall to65%.","hell":"HELL · expert risk! Charged strikes,25s escalation; siege repairs fall to40%."}
- var bonus=RankCatalog.bonuses(game.profile.equipped)
- ui.label_at("Preview: +%.0f Gold · Door +%.0f%% · Income +%.0f%% · Power +%.0f%% · Turrets +%.0f%% · Reaper +%.0f%%" % [bonus.gold,(bonus.door-1)*100,(bonus.income-1)*100,(bonus.power-1)*100,(bonus.damage-1)*100,(bonus.reaper-1)*100],Vector2(125,583),14,990)
- var names=PackedStringArray()
- for id in game.profile.equipped: names.append(RankCatalog.perk(id).name)
+ ui.label_at("STAGE %d · %s" % [stage.number,stage.title] if not stage.is_empty() else "PREPARE FOR THE NIGHT",Vector2(125,55),31,950,true)
+ badge(game.profile.rank_index(),Vector2(1090,48),64)
+ var boosts=RankCatalog.bonuses(game.profile.equipped)
+ ui.label_at("Perks %d/%d · Gold +%.0f · Door +%.0f%% · Income +%.0f%% · Turrets +%.0f%% · Items %d/2" % [game.profile.equipped.size(),game.profile.perk_slots(),boosts.gold,(boosts.door-1)*100,(boosts.income-1)*100,(boosts.damage-1)*100,game.profile.item_loadout.size()],Vector2(125,107),16,1000)
+ var archetype=game.profile.next_archetype(game.profile.selected_stage if game.campaign_mode else "",difficulty)
+ ui.premium_icon(archetype,Vector2(125,143),Vector2(54,54))
+ ui.label_at("TONIGHT · "+StrategyCatalog.ARCHETYPES[archetype].name,Vector2(191,140),24,930,true)
+ var hint=ui.label_at(StrategyCatalog.ARCHETYPES[archetype].hint,Vector2(191,171),15,930)
+ hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;hint.set_deferred("size",Vector2(930,40))
+ var descriptions={"standard":"Full repairs · forgiving pressure","hard":"Charged strikes · siege repairs 65%","hell":"Expert risk · siege repairs 40%"}
+ for i in range(3):
+  var key=["standard","hard","hell"][i];var chosen=key;var at=Vector2(125+i*345,225)
+  var card=ui.button("",at,func():
+   difficulty=chosen
+   if game.campaign_mode:game.profile.select_difficulty(chosen)
+   show_loadout(),330,145)
+  card.name="mode_"+key;card.set_meta("mode",key)
+  for state in ["normal","hover","pressed","disabled","focus"]:
+   card.add_theme_stylebox_override(state,GothicTheme.surface("3A2228" if key=="hell" else "292538","CA916F" if key=="hell" else "A89BC5" if key=="hard" else "96B49A","mode_"+key+"_"+("selected" if state=="normal" and difficulty==key else state)))
+  card.tooltip_text=descriptions[key]
+  ui.premium_icon(key,at+Vector2(14,15),Vector2(65,65))
+  ui.label_at(RankCatalog.DIFFICULTIES[key].name.to_upper(),at+Vector2(91,19),26,225,true)
+  ui.label_at("SELECTED ✓" if difficulty==key else "Choose this night",at+Vector2(92,58),14,220).modulate=Color("E0C992") if difficulty==key else Color("9DAAA4")
+  var description=ui.label_at(descriptions[key],at+Vector2(16,100),15,300)
+  description.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;description.set_deferred("size",Vector2(300,36))
+ var selected=game.profile.selected_contract
+ ui.premium_icon("contract",Vector2(125,395),Vector2(42,42))
+ ui.label_at("OPTIONAL CONTRACT · "+(StrategyCatalog.CONTRACTS[selected].name if selected!="" else "None"),Vector2(180,397),23,940,true)
+ var description=StrategyCatalog.CONTRACTS[selected].objective+" First qualifying stage/mode clear: +%d RM Cash." % StrategyCatalog.CONTRACTS[selected].cash if selected!="" else "Add a voluntary restriction for a one-time stage/difficulty RM Cash bonus. Standard rewards are unchanged."
+ var contract_text=ui.label_at(description,Vector2(125,444),17,1000);contract_text.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;contract_text.set_deferred("size",Vector2(1000,44))
+ ui.button("Optional contracts",Vector2(125,505),show_contracts,305,46)
+ ui.button("Permanent perk loadout",Vector2(455,505),show_perk_loadout,335,46)
+ ui.button("Consumable inventory",Vector2(815,505),ui.items_ui.inventory,335,46)
  var reserved=game.profile.pending_stage_bonus
- var stage_hint=" · Stage bonus: "+RewardCatalog.STAGE_BONUSES[reserved.choice].name if not reserved.is_empty() and reserved.target==game.profile.selected_stage and reserved.choice!="" else ""
- ui.label_at("Perks %d/%d: " % [game.profile.equipped.size(),game.profile.perk_slots()]+("None" if names.is_empty() else ", ".join(names))+stage_hint,Vector2(125,554),16,980)
- ui.button("Back",Vector2(125,612),ui.campaign.show_stages if game.campaign_mode else ui.show_menu,180,44)
- ui.button("Ranks & rewards",Vector2(330,612),show_ranks,250,44)
- ui.button("Items · %d/2" % game.profile.item_loadout.size(),Vector2(605,612),ui.items_ui.inventory,230,44)
- ui.button("Start Match" if game.campaign_mode else "Start Night",Vector2(860,612),func():
-  if game.campaign_mode: game.start_stage(game.profile.selected_stage,difficulty)
-  else: game.start_match(difficulty),290,44)
+ var bonus="Stage bonus: "+RewardCatalog.STAGE_BONUSES[reserved.choice].name if not reserved.is_empty() and reserved.target==game.profile.selected_stage and reserved.choice!="" else "One Hunter · room traits trade durability, income and power · specialization opens at turret level 4"
+ ui.label_at(bonus,Vector2(125,568),15,1010)
+ ui.button("Back",Vector2(125,618),ui.campaign.show_stages if game.campaign_mode else ui.show_menu,180,44)
+ ui.button("Ranks & rewards",Vector2(330,618),show_ranks,250,44)
+ ui.button("Items · %d/2" % game.profile.item_loadout.size(),Vector2(605,618),ui.items_ui.inventory,230,44)
+ ui.button("Start Match" if game.campaign_mode else "Start Night",Vector2(860,618),func():
+  if game.campaign_mode:game.start_stage(game.profile.selected_stage,difficulty)
+  else:game.start_match(difficulty),290,44)
+
+func show_perk_loadout():
+ ui.clear();ui.current_screen="perk_loadout"
+ ui.box(Rect2(90,40,1100,640))
+ ui.label_at("PERMANENT PERK LOADOUT",Vector2(125,68),32,1000,true)
+ ui.label_at("Choose %d permanent perks. Consumables use their own two slots; selections save immediately." % game.profile.perk_slots(),Vector2(125,118),17,1000)
+ for i in range(RankCatalog.PERKS.size()):
+  var item=RankCatalog.PERKS[i];var id=item.id;var owned=id in game.profile.unlocked()
+  var at=Vector2(125+(i%2)*520,174+int(i/2)*96)
+  ui.box(Rect2(at,Vector2(500,86)),"203747","A4AE93" if id in game.profile.equipped else "607D8B")
+  perk_icon(id,at+Vector2(10,15),48)
+  var text=ui.label_at(item.name+"\n"+item.description,at+Vector2(68,8),15,282)
+  text.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;text.set_deferred("size",Vector2(282,70))
+  var button=ui.button("Equipped ✓" if id in game.profile.equipped else "Equip" if owned else RankCatalog.NAMES[item.rank],at+Vector2(362,20),func():
+   if game.profile.equip(id):game.audio_event("reward")
+   show_perk_loadout(),126,44)
+  button.disabled=not owned or game.profile.read_only
+ ui.button("Back to preparation",Vector2(125,612),show_loadout,330,44)
+ ui.button("Ranks & rewards",Vector2(825,612),show_ranks,330,44)
+
+func show_contracts():
+ ui.clear();ui.current_screen="contracts"
+ ui.box(Rect2(90,45,1100,630))
+ ui.label_at("OPTIONAL CHALLENGE CONTRACTS",Vector2(125,70),32,1020,true)
+ ui.label_at("Win a genuine match to qualify. Each stage + difficulty + contract pays once. Aborts and defeats pay no contract bonus.",Vector2(125,121),16,1010)
+ var index=0
+ for id in StrategyCatalog.CONTRACTS:
+  var data=StrategyCatalog.CONTRACTS[id];var chosen=id;var at=Vector2(125+index*345,188)
+  ui.box(Rect2(at,Vector2(330,332)),"203747","C4B27D" if game.profile.selected_contract==id else "7C8988")
+  ui.premium_icon("contract",at+Vector2(132,16),Vector2(64,64))
+  ui.label_at(data.name,at+Vector2(15,91),25,300,true)
+  var objective=ui.label_at(data.objective,at+Vector2(15,136),18,300)
+  objective.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;objective.set_deferred("size",Vector2(300,94))
+  var key=StrategyCatalog.claim_key(game.profile.selected_stage,difficulty,id)
+  ui.premium_icon("cash",at+Vector2(15,239),Vector2(30,30))
+  ui.label_at("+%d RM Cash · %s" % [data.cash,"CLAIMED" if game.profile.contract_claims.has(key) else "first completion"],at+Vector2(54,242),15,260)
+  var button=ui.button("Selected ✓" if game.profile.selected_contract==id else "Choose contract",at+Vector2(15,283),func():
+   if game.profile.select_contract(chosen):game.audio_event("button")
+   show_contracts(),300,36)
+  button.disabled=game.profile.read_only
+  index+=1
+ ui.button("No contract · standard match",Vector2(125,565),func():
+  game.profile.select_contract("");show_contracts(),470,44)
+ ui.button("Confirm & return",Vector2(655,565),show_loadout,495,44)
 
 func result_summary():
  var report=game.last_progression
  if report.is_empty():
   if not game.profile.save_ok:ui.button("Retry reward save",Vector2(390,530),game.retry_settlement,495,44)
   return
+ if report.has("contract"):
+  var contract=report.contract
+  ui.box(Rect2(945,224,300,180),"203747","C4B27D")
+  ui.premium_icon("contract",Vector2(960,238),Vector2(40,40))
+  ui.label_at("CONTRACT RESULT",Vector2(1009,244),22,221,true)
+  ui.label_at(StrategyCatalog.CONTRACTS[contract.id].name,Vector2(960,291),21,270,true)
+  var detail="Qualified · +%d RM Cash" % contract.cash if contract.cash>0 else "Qualified · already claimed" if contract.qualified and contract.claimed else "Qualified · wallet full; retry on another win" if contract.qualified else "Not completed · no bonus"
+  var text=ui.label_at(detail+("\n"+contract.reason if contract.reason!="" else ""),Vector2(960,332),15,270)
+  text.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;text.set_deferred("size",Vector2(270,66))
  var earned=report.get("achievements",[])
  if not earned.is_empty():
   var celebration=ui.box(Rect2(28,212,300,170),"203747","E8BE61")

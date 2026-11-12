@@ -91,6 +91,8 @@ func start_tutorial(replay=false):
  model=MatchModel.new();model.tutorial_mode=true;model.reset(17);model.tutorial_mode=true;model.configure_stage("stage_1");model.preparation=10000;model.bot_claimed=5
  model.feedback.connect(func(value):ui.feedback_text=value;ui.feedback_until=presentation.clock+2)
  match_id=0;campaign_mode=false;last_progression={};pending_build="";tutorial_enabled=false
+ last_hunter_level=1;level_warning_time=0;danger_time=0;last_attacks=0;last_shots=0
+ floating.clear();last_income.clear();income_clock=0;ui_clock=0
  audio_system.reset_match(model);presentation.reset();horror.reset();mode="match";full_map=false;zoom_factor=1
  ui.show_match();focus_camera(true);onboarding.begin_tutorial()
  return true

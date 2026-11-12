@@ -17,6 +17,11 @@ static func surface(fill: String,edge: String,role: String="panel") -> StyleBoxT
  if role=="button_pressed":base=Color("131B1B")
  if role=="button_disabled":base=Color("1C2023");accent=Color("535B5B")
  if role=="button_focus":base=Color("293A35");accent=Color("B8C3A3")
+ if role.begins_with("mode_"):
+  base=Color("3A2228") if "hell" in role else Color("292538") if "hard" in role else Color("25332E")
+  accent=Color("CD8A6A") if "hell" in role else Color("B3A3CC") if "hard" in role else Color("A4B99E")
+  if role.ends_with("hover"):base=base.lightened(.07)
+  if role.ends_with("selected"):base=base.lightened(.035);accent=accent.lightened(.15)
  if danger:accent=Color("BC626B")
  # Antique-metal edge is deliberately restrained; rarity remains an icon/detail accent.
  accent=accent.lerp(Color("9C9685"),.58)
@@ -44,11 +49,25 @@ static func surface(fill: String,edge: String,role: String="panel") -> StyleBoxT
    if x in [11,246] and y in [11,118]:color=Color("05080D")
    # Fine worn hatch along the protected outer edge, leaving the label center quiet.
    if edge_dist>6 and edge_dist<10 and posmod(x+y,17)<2:color=color.lightened(.09)
+   if role.begins_with("button_") or role.begins_with("primary_") or role.begins_with("mode_"):
+    # Raised rail, deep cast shadow and bright upper chamfer read at actual 44px.
+    if y>=125:color=Color(.015,.025,.035,.48-float(y-125)*.1)
+    elif y>=122:color=base.darkened(.32)
+    if y in [4,5,6] and x>8 and x<248:color=accent.lightened(.24 if role.ends_with("hover") else .08)
+    if y in [120,121] and x>8 and x<248:color=base.darkened(.5)
+    if x<3 or x>252:color=color.darkened(.2)
+    if x in [3,4,251,252] and y>16 and y<103:color=accent.darkened(.2 if role.ends_with("hover") else .55)
+    if role.ends_with("pressed"):color=color.darkened(.15)
+    if role.ends_with("focus"):
+     if edge_dist>4 and edge_dist<8:color=Color("D8D6AF")
+     elif edge_dist>=8:color.a=0
    image.set_pixel(x,y,color)
  var style=StyleBoxTexture.new();style.texture=ImageTexture.create_from_image(image)
  for side in [SIDE_LEFT,SIDE_TOP,SIDE_RIGHT,SIDE_BOTTOM]:
   style.set_texture_margin(side,14)
   style.set_content_margin(side,4 if (role.begins_with("button_") or role.begins_with("primary_")) and side in [SIDE_TOP,SIDE_BOTTOM] else 8)
+ if role.ends_with("pressed"):
+  style.set_content_margin(SIDE_TOP,7);style.set_content_margin(SIDE_BOTTOM,1)
  materials[key]=style
  return style
 static func make_theme(font: Font) -> Theme:

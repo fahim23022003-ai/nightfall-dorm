@@ -147,6 +147,9 @@ func _input(event):
   skip();get_viewport().set_input_as_handled()
 func text(value,pos,size,color=Color.WHITE):
  draw_string(game.ui.default_font,pos,value,HORIZONTAL_ALIGNMENT_CENTER,-1,size,color)
+func heading(value,pos,size,color=Color.WHITE):
+ var width=game.ui.horror_font.get_string_size(value,HORIZONTAL_ALIGNMENT_LEFT,-1,size).x
+ draw_string(game.ui.horror_font,pos-Vector2(width*.5,0),value,HORIZONTAL_ALIGNMENT_LEFT,-1,size,color)
 func _draw():
  if not active:return
  if phase=="tutorial":
@@ -170,7 +173,7 @@ func _draw():
   if step<8:draw_line(q+Vector2(0,-60),q+Vector2(0,-32),Color("FFE39C"),4)
   if step<8:draw_colored_polygon(PackedVector2Array([q+Vector2(0,-25),q+Vector2(-8,-38),q+Vector2(8,-38)]),Color("FFE39C"))
   if step==8:
-   draw_rect(Rect2(380,220,520,300),Color("172839"));text("TUTORIAL COMPLETE",Vector2(440,310),32,Color("FFE39C"));text("Your first night begins with preparation.",Vector2(440,370),20)
+   draw_rect(Rect2(380,220,520,300),Color("172839"));heading("TUTORIAL COMPLETE",Vector2(640,310),32,Color("FFE39C"));text("Your first night begins with preparation.",Vector2(440,370),20)
   return
  draw_rect(Rect2(0,0,1280,720),Color("080D19"))
  var t=elapsed
@@ -186,7 +189,7 @@ func _draw():
   fog_ellipse(q,Vector2(200,55),Color(.4,.53,.6,.035))
  if phase=="title":
   draw_rect(Rect2(0,0,1280,720),Color(0,0,0,.65))
-  text("Welcome to NightFall Dorm",Vector2(280,255),46,Color("CF6574"))
+  heading("Welcome to NightFall Dorm",Vector2(640,255),46,Color("CF6574"))
   text("Created by Fahim",Vector2(485,320),30,Color("F0D7B5"))
   var lines=["You escaped the darkness...","But the nightmare followed you.","Find a room. Lock the door.","Survive the night."]
   for i in range(lines.size()):
@@ -197,7 +200,7 @@ func _draw():
   var approach=clampf((t-8)/2.5,0,1)
   draw_rect(Rect2(800,170,370,420),Color("182532"));draw_colored_polygon(PackedVector2Array([Vector2(750,175),Vector2(980,50),Vector2(1220,175)]),Color("223544"))
   draw_rect(Rect2(910,380,95,210),Color("070B10"))
-  text("DORMITORY",Vector2(845,270),23,Color("83989C"))
+  heading("DORMITORY",Vector2(980,270),23,Color("83989C"))
   player=Vector2(632,495).lerp(Vector2(958,520),approach)
   if t>=10.3:
    var closed=clampf((t-10.3)/.2,0,1)

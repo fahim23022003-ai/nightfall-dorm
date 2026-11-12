@@ -8,7 +8,7 @@ const ARCHETYPES={
  "ravager":{"name":"The Ravager","hp":.88,"damage":.85,"speed":1.18,"windup":.3,"commit":.7,"hint":"Fast pressure, fragile body. Three strikes then a recovery window; invest in rapid fire.","color":"CA7872"}}
 const BRANCHES={
  "precision":{"kind":"turret","name":"Heavy Precision","damage":1.55,"interval":1.4,"range":.85,"speed":1.0,"slow":0.0,"description":"+55% hit damage / 40% longer interval / 15% shorter range (204px). Concentrated shots; placement matters."},
- "suppression":{"kind":"turret","name":"Suppression","damage":.8,"interval":.82,"range":1.0,"speed":1.0,"slow":.15,"description":"20% weaker hits / 18% shorter interval. Hits slow movement 15% for1s; Reaper7.5%."},
+ "suppression":{"kind":"turret","name":"Suppression","damage":.8,"interval":.82,"range":1.0,"speed":1.0,"slow":.15,"description":"20% weaker hits / 18% shorter interval. Hits slow movement 15% for 1s; Reaper 7.5%."},
  "focus":{"kind":"heavy","name":"Focused Discharge","damage":1.5,"interval":1.35,"range":1.0,"speed":1.0,"slow":0.0,"description":"50% stronger hits / 35% longer interval. Powerful single-target bursts."},
  "storm":{"kind":"heavy","name":"Storm Coil","damage":.72,"interval":.72,"range":1.2,"speed":1.25,"slow":0.0,"description":"28% weaker hits / 28% shorter interval. 20% more range; 25% faster projectiles."}}
 const BRANCH_FEE=Vector2(25,4)

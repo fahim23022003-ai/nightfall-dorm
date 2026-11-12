@@ -78,6 +78,13 @@ func render_room(c,p,room,theme,colors):
   p.text(c,"YOUR ROOM",r.position+Vector2(10,r.size.y-12),11,Color("D4FFE1"))
  var plaque=r.position+Vector2(10,18)
  p.text(c,"%02d · %s" % [room.index+1,room.survivor_name() if room.owner>=0 else "VACANT"],plaque,11,Color("EDF4ED"))
+ if room.trait_id!="":
+  var room_trait=StrategyCatalog.TRAITS[room.trait_id]
+  var at=r.position+Vector2(r.size.x-193,4)
+  c.draw_texture_rect(PremiumButton.texture(room_trait.icon),Rect2(at,Vector2(23,23)),false)
+  p.text(c,room_trait.name,at+Vector2(28,13),11,Color("DDD3B9"))
+  p.text(c,room_trait.benefit,at+Vector2(0,29),9,Color("B1C2AA"))
+  p.text(c,room_trait.drawback,at+Vector2(0,41),9,Color("C99A8D"))
  # Original illustrations stay in the dedicated furniture strip from map data.
  var bed=OFFSET+room.bed_position()
  if theme in ["hotel","mansion"]:
@@ -162,6 +169,14 @@ func render_tiles(c,p,room,owned):
    var target=c.model.hunter.position-room.tile_position(tile)
    var tilt=clampf(atan2(target.y,absf(target.x)),-0.4,0.4) if building.kind=="turret" else 0.0
    p.sprite(c,name,point-Vector2(0,6),size,Color.WHITE,tilt)
+   var branch=str(building.get("specialization",""))
+   if branch!="":
+    var tint={"precision":Color("DDC68E"),"suppression":Color("9BD3B2"),"focus":Color("BFACE0"),"storm":Color("93DFDF")}[branch]
+    c.draw_arc(point+Vector2(0,7),23,.1,PI-.1,16,Color(tint,.75),2)
+    c.draw_texture_rect(PremiumButton.texture(branch),Rect2(point+Vector2(11,-32),Vector2(20,20)),false)
+    if branch=="precision":c.draw_line(point+Vector2(0,-15),point+target.normalized()*32-Vector2(0,15),tint,5)
+    elif branch=="storm":
+     for side in [-1,1]:c.draw_line(point+Vector2(side*17,-6),point+Vector2(side*22,-22),tint,3)
    if building.kind in ["turret","heavy"] and building.flash>0:
     var direction=target.normalized()
     var muzzle=point+direction*21-Vector2(0,5)

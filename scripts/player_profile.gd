@@ -388,7 +388,9 @@ func load_profile() -> bool:
   if data.settings.get(key) is bool: settings[key]=data.settings[key]
  active_match=data.get("active_match",{}).duplicate(true)
  if active_match.has("archetype") or active_match.has("contract"):
-  if not StrategyCatalog.ARCHETYPES.has(active_match.get("archetype","")) or not active_match.get("contract","") is String or (active_match.contract!="" and not StrategyCatalog.CONTRACTS.has(active_match.contract)):
+  var saved_archetype=active_match.get("archetype")
+  var saved_contract=active_match.get("contract")
+  if not saved_archetype is String or not StrategyCatalog.ARCHETYPES.has(saved_archetype) or not saved_contract is String or (saved_contract!="" and not StrategyCatalog.CONTRACTS.has(saved_contract)):
    read_only=true;warning="Active strategy snapshot invalid; original progress preserved read-only."
  if not _valid_item_snapshot(active_match.get("items",[])):
   read_only=true

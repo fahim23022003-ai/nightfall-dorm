@@ -68,6 +68,14 @@ func run():
  var snapshot=active._reward_snapshot()
  check(not active.select_contract("") and active._reward_snapshot()==snapshot,"failed contract-selection save rolls back selection")
  active.path=path
+ for variant in [{"archetype":"crusher"},{"contract":"no_legendary"},{"archetype":"future_hunter","contract":""},{"archetype":"crusher","contract":3},{"archetype":"crusher","contract":"future_contract"}]:
+  var data=source.duplicate(true);data.next_match_id=8
+  data.active_match={"id":7,"difficulty":"hell","equipped":source.equipped.duplicate(),"items":source.consumables.loadout.duplicate(),"stage_id":"stage_5"}
+  data.active_match.merge(variant,true)
+  var broken_path=write(data);var bytes=FileAccess.get_file_as_string(broken_path)
+  var broken=PlayerProfile.new(broken_path);broken.load_profile()
+  check(broken.read_only and broken.xp==8200 and numeric_same(broken.inventory,source.consumables.inventory) and broken.rm_cash==102,"partial/unknown active strategy is read-only while preserving old progress")
+  check(not broken.save_profile() and FileAccess.get_file_as_string(broken_path)==bytes,"partial/unknown active strategy cannot overwrite original bytes")
  var d=DirAccess.open("user://")
  for file in d.get_files():
   if file.begins_with(prefix.trim_prefix("user://")):DirAccess.remove_absolute("user://"+file)

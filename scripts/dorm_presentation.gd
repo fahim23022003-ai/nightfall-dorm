@@ -257,6 +257,11 @@ func render(c):
  for shot in m.projectiles:
   var p=OFFSET+shot.position
   var direction=(m.hunter.position-shot.position).normalized()
+  var branch=str(shot.get("specialization",""))
+  if branch!="":
+   var tint={"precision":Color("E6C48D"),"suppression":Color("9EC7A4"),"focus":Color("C1A6DF"),"storm":Color("83DFDA")}[branch]
+   c.draw_line(p-direction*(24 if branch=="precision" else 13),p,tint,4 if branch=="precision" else 2)
+   if branch=="storm":c.draw_polyline(PackedVector2Array([p-direction*17,p-direction*8+Vector2(0,5),p]),tint,2)
   if not c.profile.settings.reduced_effects:
    c.draw_line(p-direction*15,p,Color(.45,.65,.72,.16),6)
   if shot.level>=7:
@@ -386,6 +391,10 @@ func hunter(c,h):
   name="hunter_target" if identity.heading.y<-.2 else "hunter_attack"
  if h.hit_flash>0: name="hunter_hurt"
  var alpha=1.0
+ var archetype=h.archetype
+ var shape=Vector2(1.13,1.04) if archetype=="crusher" else Vector2(.9,1.08) if archetype=="stalker" else Vector2(1.03,.94) if archetype=="ravager" else Vector2.ONE
+ var tint=Color("C9B5A0") if archetype=="crusher" else Color("B8B0D6") if archetype=="stalker" else Color("D3AAA3") if archetype=="ravager" else Color(.83,.88,.92)
+ if archetype=="stalker" and h.state in [HunterState.State.MOVE,HunterState.State.SEEK] and h.position.distance_to(c.model.player_position)>300:alpha=.68
  if attack_pose>0:name="hunter_attack"
  if h.state==HunterState.State.DEAD:
   name="hunter_death"
@@ -397,9 +406,20 @@ func hunter(c,h):
  var lean=clampf(identity.velocity.x/300,-.12,.12)
  if h.state==HunterState.State.ATTACK:lean=identity.heading.x*.08
  if h.charged_ready:lean-=identity.heading.x*clampf(1-h.windup_remaining/maxf(.01,RankCatalog.pressure(h.difficulty).windup),0,1)*.12
- c.draw_set_transform(p,lean,Vector2(facing,1))
- c.draw_texture_rect(cartoon[name],Rect2(Vector2(-33,-42),Vector2(66,84)),false,Color(.83,.88,.92,alpha))
+ if h.archetype_primed:
+  name="hunter_target";lean-=identity.heading.x*.18
+  c.draw_arc(p+Vector2(0,10),38,-PI*.9,PI*.1,24,Color(tint,.75),2)
+ c.draw_set_transform(p,lean,Vector2(facing,1)*shape)
+ c.draw_texture_rect(cartoon[name],Rect2(Vector2(-33,-42),Vector2(66,84)),false,Color(tint,alpha))
+ if archetype=="crusher":
+  for side in [-1,1]:c.draw_style_box(frame(Color("414444"),Color("A2987E"),2),Rect2(Vector2(side*27-9,-19),Vector2(18,21)))
+ elif archetype=="stalker":
+  c.draw_line(Vector2(-16,-25),Vector2(16,-25),Color("C4B3DE"),2)
+ elif archetype=="ravager":
+  for side in [-1,1]:
+   for i in range(3):c.draw_line(Vector2(side*(26+i*3),5),Vector2(side*(30+i*3),18),Color("D6A898"),2)
  c.draw_set_transform(Vector2.ZERO)
+ if archetype!="" and (h.archetype_primed or c.full_map):text(c,StrategyCatalog.ARCHETYPES[archetype].name,p+Vector2(-42,-57),10,tint)
  if h.state in [HunterState.State.MOVE,HunterState.State.EXIT] and identity.velocity.length()>1 and not c.profile.settings.reduced_effects:
   var trailing=-identity.heading
   for i in range(3):c.draw_line(p+trailing*(15+i*7)+Vector2(0,15),p+trailing*(24+i*7)+Vector2(0,17),Color(.4,.35,.6,.18-i*.035),2)

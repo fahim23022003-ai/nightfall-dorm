@@ -136,8 +136,22 @@ func rollback():
  for token in range(1,4):check(a.p.buy_common("repair",token),"full-wallet player may legitimately free enough space for base reward plus bonus")
  var next=begin(a.p);finish(next);award=settle(next)
  check(award.contract.cash==StrategyCatalog.CONTRACTS.no_legendary.cash and a.p.contract_claims.size()==1,"postponed contract remains claimable on later qualifying match")
+func legendary_edges():
+ var p=fresh("no_legendary");p.item_loadout=["guardian_heart"]
+ var a=begin(p);var m=a.m;var r=m.player();var h=m.hunter
+ r.door_hp=1;h.cooldown=0;h.archetype_primed=true;h.encounter_attacks=1
+ h.tick(.1,m)
+ check(r.door_hp>1 and p.inventory.guardian_heart==1 and m.items.legendary_used==1,"real lethal Hunter strike triggers exactly one equipped Guardian rescue")
+ check(m.strategy.failed and m.strategy.legendary_uses==1,"automatic Legendary genuinely fails No Legendary contract once")
+ finish(a);var award=settle(a)
+ check(not award.is_empty() and award.contract.cash==0 and not award.contract.qualified,"automatic rescue cannot bypass restriction at settlement")
+ a=begin(fresh("no_legendary"));var path=a.p.path;a.p.path=prefix+"missing/not-created.json"
+ check(not a.p.activate_item(0,a.m,a.id) and a.p.inventory.time_freeze==2,"failed Legendary save consumes no item")
+ check(not a.m.strategy.failed and a.m.strategy.legendary_uses==0 and a.m.items.legendary_used==0 and not a.m.items.timers.has("time_freeze"),"failed activation cannot falsely fail contract or apply power")
+ a.p.path=path;finish(a);award=settle(a)
+ check(not award.is_empty() and award.contract.qualified and award.contract.cash==8,"valid later win remains eligible after genuinely failed activation")
 func run():
- payouts();identity_and_tampering();rollback()
+ payouts();identity_and_tampering();rollback();legendary_edges()
  var d=DirAccess.open("user://")
  for file in d.get_files():
   if file.begins_with(prefix.trim_prefix("user://")):DirAccess.remove_absolute("user://"+file)

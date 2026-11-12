@@ -46,6 +46,7 @@ var warning_box: Panel
 var warning_label: Label
 var default_font=preload("res://assets/fonts/Interface.ttf")
 var display_font=preload("res://assets/fonts/CartoonDisplay.ttf")
+var horror_font=preload("res://assets/fonts/GrenzeGotisch-SemiBold.ttf")
 var campaign
 var shop
 var items_ui
@@ -54,6 +55,7 @@ var current_screen="menu"
 var horror_layer: Control
 var feedback_text=""
 var feedback_until=0.0
+var specialization_items: Array=[]
 
 func _init(owner_game=null): game=owner_game
 
@@ -80,6 +82,7 @@ func clear():
  confirmation_items.clear()
  pause_items.clear()
  card_visuals.clear()
+ specialization_items.clear()
  context_open=false
  feedback_text=""
  feedback_until=0
@@ -116,7 +119,7 @@ func label_at(text: String,pos: Vector2,size: int=18,width: float=900,heading: b
  l.add_theme_font_size_override("font_size",size)
  l.add_theme_color_override("font_color",Color("EDF5F7"))
  if heading:
-  l.add_theme_font_override("font",default_font)
+  l.add_theme_font_override("font",horror_font if size>=20 else default_font)
   l.add_theme_color_override("font_color",Color("DDD3B9"))
  l.add_theme_color_override("font_shadow_color",Color("080B0F"))
  l.add_theme_constant_override("shadow_offset_y",1)
@@ -131,6 +134,13 @@ func icon(name: String,pos: Vector2,size: Vector2,parent: Control=null) -> Textu
  t.position=pos
  t.size=size
  t.mouse_filter=Control.MOUSE_FILTER_IGNORE
+ attach(t,parent)
+ return t
+
+func premium_icon(id: String,pos: Vector2,size: Vector2,parent: Control=null) -> TextureRect:
+ var t=TextureRect.new();t.texture=PremiumButton.texture(id)
+ t.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;t.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+ t.position=pos;t.size=size;t.mouse_filter=Control.MOUSE_FILTER_IGNORE
  attach(t,parent)
  return t
 
@@ -160,6 +170,7 @@ func button(text: String,pos: Vector2,callback: Callable,width: float=240,height
  b.add_theme_color_override("font_color",Color("EDF5F7"))
  b.add_theme_color_override("font_disabled_color",Color("889CA8"))
  attach(b,parent)
+ PremiumButton.decorate(b,game.profile.settings.get("reduced_effects",false))
  return b
 
 func show_menu():
@@ -170,7 +181,8 @@ func show_menu():
   return
  label_at("SMALL ROOMS. BIG NIGHTMARES.",Vector2(72,108),18,580).modulate=Color("7BE3A1")
  var wordmark=label_at("NIGHTFALL\nDORM",Vector2(66,157),58,600,true)
- wordmark.add_theme_font_override("font",preload("res://assets/fonts/Display.ttf"))
+ wordmark.add_theme_font_override("font",horror_font)
+ wordmark.add_theme_constant_override("line_spacing",-32)
  label_at("—  THE NIGHT WATCH  —",Vector2(74,284),13,560).modulate=Color("B8A478")
  label_at("Claim a bed. Build your defenses.\nMake it through the night.",Vector2(72,315),20,590)
  button("Start Game",Vector2(72,405),game.enter_game,330,54)
@@ -181,7 +193,8 @@ func show_menu():
  button("Consumable inventory",Vector2(72,644),items_ui.inventory,330,36)
  if not game.profile.pending_spins.is_empty(): button("Resume Lucky Spin",Vector2(430,644),items_ui.spin,240,36)
  if not game.mobile_mode:
-  label_at("RM Cash %d" % game.profile.rm_cash,Vector2(735,552),22,420,true)
+  premium_icon("cash",Vector2(735,549),Vector2(38,38))
+  label_at("RM Cash %d" % game.profile.rm_cash,Vector2(787,552),22,368)
   button("Shop · Common supplies",Vector2(735,594),shop.show_shop,440,42)
   button("Replay Tutorial",Vector2(735,644),func():game.start_tutorial(true),440,36)
  label_at("A cursed residence. A night without mercy.",Vector2(72,690),16,620).modulate=Color("9DB6C2")
@@ -242,12 +255,12 @@ func show_match():
  clear()
  current_screen="match"
  box(Rect2(18,12,1244,64),"203747","607D8B")
- var brand=label_at("NIGHTFALL DORM",Vector2(34,27),20,240,true)
- brand.add_theme_font_override("font",preload("res://assets/fonts/Display.ttf"))
- icon("coin",Vector2(280,25),Vector2(32,32))
+ var brand=label_at("NIGHTFALL DORM",Vector2(34,23),26,240,true)
+ brand.add_theme_font_override("font",horror_font)
+ premium_icon("gold",Vector2(280,25),Vector2(32,32))
  gold_label=label_at("—",Vector2(320,24),25,98)
  gold_label.modulate=Color("DFC48B")
- icon("power",Vector2(429,23),Vector2(30,36))
+ premium_icon("power",Vector2(429,23),Vector2(30,36))
  power_label=label_at("—",Vector2(468,24),25,98)
  power_label.modulate=Color("8CD6DA")
  phase_label=label_at("",Vector2(576,22),18,120)
@@ -316,9 +329,28 @@ func show_match():
  selected_details=label_at("",Vector2(104,50),16,244,false,context_box)
  selected_details.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  selected_details.size.y=126
- actions.upgrade=button("Upgrade",Vector2(14,190),func(): purchase(game.model.upgrade_building(game.selected_tile)),336,44,context_box)
+ actions.upgrade=button("Upgrade",Vector2(14,190),upgrade_selected,336,44,context_box)
  actions.sell=button("Sell · 50% refund",Vector2(14,240),sell_selected,336,44,context_box)
+ actions.sell.add_theme_font_size_override("font_size",16)
+ actions.sell.add_theme_constant_override("icon_max_width",22)
+ actions.sell.add_theme_constant_override("h_separation",6)
  upgrade_items=[selected_icon,selected_details,actions.upgrade,actions.sell]
+ var branch_hint=label_at("ONE PERMANENT CHOICE · advances to level 5",Vector2(14,43),13,336,false,context_box)
+ specialization_items.append(branch_hint)
+ for i in range(2):
+  var choice=i
+  var branch_button=button("",Vector2(14,76+i*105),func():
+   var room=game.model.player()
+   if room==null or not room.buildings.has(game.selected_tile):return
+   var ids=StrategyCatalog.branches(room.buildings[game.selected_tile].kind)
+   if ids.size()==2:
+    var success=game.model.specialize_building(game.selected_tile,ids[choice])
+    if success:context_mode="upgrade"
+    purchase(success);refresh_context(),336,96,context_box)
+  branch_button.name="specialization_"+str(i)
+  specialization_items.append(branch_button)
+ var branch_cancel=button("Back · keep level 4",Vector2(14,294),func():context_mode="upgrade";refresh_context(),336,36,context_box)
+ specialization_items.append(branch_cancel)
  var bed_art=icon("bed",Vector2(14,52),Vector2(80,108),context_box)
  bed_details=label_at("",Vector2(104,50),18,244,false,context_box)
  bed_details.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
@@ -384,20 +416,36 @@ func close_context():
  game.placement_on_tile=false
  context_open=false
  if is_instance_valid(context_box): context_box.visible=false
- for node in build_items+upgrade_items+bed_items+door_items+confirmation_items: node.visible=false
+ for node in build_items+upgrade_items+bed_items+door_items+confirmation_items+specialization_items: node.visible=false
 
 func refresh_context():
  if not context_open or game.model.player()==null: close_context(); return
  var room=game.model.player()
- var heights={"build":382,"upgrade":300,"bed":250,"door":300,"confirm":272}
+ var heights={"build":382,"upgrade":300,"bed":250,"door":300,"confirm":272,"specialize":344}
  if not game.mobile_mode:
   context_box.position=Vector2(900,628-heights[context_mode])
   context_box.size=Vector2(364,heights[context_mode])
  context_box.visible=true
- for group in {"build":build_items,"upgrade":upgrade_items,"bed":bed_items,"door":door_items,"confirm":confirmation_items}:
-  var list={"build":build_items,"upgrade":upgrade_items,"bed":bed_items,"door":door_items,"confirm":confirmation_items}[group]
+ for group in {"build":build_items,"upgrade":upgrade_items,"bed":bed_items,"door":door_items,"confirm":confirmation_items,"specialize":specialization_items}:
+  var list={"build":build_items,"upgrade":upgrade_items,"bed":bed_items,"door":door_items,"confirm":confirmation_items,"specialize":specialization_items}[group]
   for node in list: node.visible=group==context_mode
  if context_mode=="build": context_title.text="BUILD A DEFENSE"
+ elif context_mode=="specialize" and room.buildings.has(game.selected_tile):
+  var b=room.buildings[game.selected_tile]
+  context_title.text="CHOOSE SPECIALIZATION"
+  var ids=StrategyCatalog.branches(b.kind)
+  if ids.size()!=2:close_context();return
+  var price=Catalog.upgrade_cost(b.kind,b.level)+StrategyCatalog.BRANCH_FEE
+  var quote=room.building_price(price.x,price.y)
+  for i in range(2):
+   var button=specialization_items[i+1]
+   var id=ids[i];var data=StrategyCatalog.BRANCHES[id]
+   var stats={"precision":"+55% damage · 40% slower shots\n15% shorter range (204px)","suppression":"20% weaker · 18% faster shots\nSlow 15% / Reaper 7.5% for 1s","focus":"+50% damage · 35% slower shots","storm":"28% weaker · 28% faster shots\n+20% range · +25% projectile speed"}
+   button.text=data.name+"\n"+stats[id]+"\n%.1fG / %.1fE%s" % [quote.x,quote.y," · COUPON" if room.coupon_armed else ""]
+   button.icon=PremiumButton.texture(id);button.expand_icon=true;button.add_theme_constant_override("icon_max_width",36)
+   button.add_theme_font_size_override("font_size",14)
+   button.tooltip_text=data.description+"\nCosts include level 5 upgrade and 25G/4E specialization fee. One branch only; upgrades continue to10."
+   button.disabled=not game.model._can_purchase() or b.level!=4 or b.get("specialization","")!="" or room.bed_level<2 or room.door_level<2 or room.gold<quote.x or room.electricity<quote.y
  elif context_mode=="upgrade" and room.buildings.has(game.selected_tile):
   var b=room.buildings[game.selected_tile]
   selected_icon.texture=game.presentation.cartoon[game.presentation.building_key(b.kind,b.level)]
@@ -405,6 +453,7 @@ func refresh_context():
   var list_price=Catalog.upgrade_cost(b.kind,b.level)
   var quote=room.building_price(list_price.x,list_price.y)
   selected_details.text=selected_stats(b)+"\n"+action_reason("upgrade")+(" · COUPON %.1fG/%.1fE" % [quote.x,quote.y] if room.coupon_armed else "")
+  if room.strategy_enabled and b.kind in ["turret","heavy"] and b.level==4:actions.upgrade.text="Choose specialization → Level 5"
  elif context_mode=="bed":
   context_title.text="BED LEVEL %d / 5" % (room.bed_level+1)
   bed_details.text="Income %.1f gold/s\nNext: %s\n%s" % [room.income_rate(),"MAX" if room.bed_level>=4 else str(Catalog.BED_INCOME[room.bed_level+1])+" gold/s",action_reason("bed")]
@@ -424,10 +473,19 @@ func refresh_context():
 func selected_stats(b) -> String:
  var d=Catalog.BUILDINGS[b.kind]
  if b.kind in ["turret","heavy"]:
-  return "Level %d / 10%s\nDamage %.0f\nRange %.0f\nEvery %.2fs" % [b.level," · PRESTIGE MAX" if b.level==10 else "",Catalog.turret_damage(b.kind,b.level)*(game.model.player().turret_multiplier if game.model.player()!=null else 1),d.range,Catalog.turret_interval(b.kind,b.level)]
+  var branch=StrategyCatalog.weapon(b)
+  var id=b.get("specialization","")
+  return "Level %d / 10%s\n%s\nDamage %.1f · Range %.0f\nEvery %.2fs" % [b.level," · MAX" if b.level==10 else "",StrategyCatalog.BRANCHES[id].name if id!="" else "Unmodified",Catalog.turret_damage(b.kind,b.level)*(game.model.player().turret_multiplier if game.model.player()!=null else 1)*branch.damage,d.range*branch.range,Catalog.turret_interval(b.kind,b.level)*branch.interval]
  if b.kind=="generator": return "Level %d / 4\n%.1f electricity/s" % [b.level,d.rate*b.level*(game.model.player().power_multiplier if game.model.player()!=null else 1)]
  if b.kind=="repair": return "Level %d / 4\n%.1f door HP/s" % [b.level,d.rate*b.level]
  return "Level %d / 4\n+%d%% %s" % [b.level,d.rate*b.level*100,"income" if b.kind=="economy" else "turret damage"]
+
+func upgrade_selected():
+ var room=game.model.player()
+ if room!=null and room.strategy_enabled and room.buildings.has(game.selected_tile):
+  var b=room.buildings[game.selected_tile]
+  if b.kind in ["turret","heavy"] and b.level==4:context_mode="specialize";refresh_context();return
+ purchase(game.model.upgrade_building(game.selected_tile))
 
 func show_pause(open: bool):
  game.pending_build=""
@@ -468,7 +526,15 @@ func tutorial_text() -> String:
  if game.mobile_mode: return game.mobile_ui.tutorial_text()
  var m=game.model
  var room=m.player()
- if room==null: return "1 / 5  FIND A ROOM\nMove with WASD. Press E inside a vacant bedroom."
+ if room==null:
+  if m.strategy.enabled:
+   var closest=null
+   for candidate in m.rooms:
+    if candidate.owner<0 and (closest==null or candidate.center().distance_to(m.player_position)<closest.center().distance_to(m.player_position)):closest=candidate
+   if closest==null:return "NO VACANT ROOM\nEvery room is claimed. Restart to choose a room."
+   var room_trait=StrategyCatalog.TRAITS[closest.trait_id]
+   return "ROOM %d · %s\n%s / %s. Enter and press E." % [closest.index+1,room_trait.name,room_trait.benefit,room_trait.drawback]
+  return "1 / 5  FIND A ROOM\nMove with WASD. Press E inside a vacant bedroom."
  if not room.sleeping: return "2 / 5  OCCUPY THE BED\nApproach your bed and press E. Gold starts while sleeping."
  if room.income_total<8: return "3 / 5  EARN GOLD\nYour bed earns gold automatically while you sleep."
  if room.bed_level==0 and room.door_level==0: return "4 / 5  UPGRADE\nClick the bed or door summary below."
@@ -480,6 +546,8 @@ func update_match():
  if not is_instance_valid(gold_label) or game.mode!="match": return
  var m=game.model
  var room=m.player()
+ if m.strategy.enabled:
+  guide_label.tooltip_text=StrategyCatalog.ARCHETYPES[m.strategy.archetype].hint+"\n"+m.strategy.status()
  gold_label.text=resource_text(room.gold) if room!=null else "—"
  gold_label.tooltip_text="Gold: %s" % str(snappedf(room.gold,.01)) if room!=null else "Gold"
  power_label.text=resource_text(room.electricity) if room!=null else "—"
@@ -493,6 +561,12 @@ func update_match():
  hunter_detail.modulate=Color("FF7777") if m.difficulty=="hell" else Color("FFD27A")
  hunter_bar.max_value=m.hunter.max_hp
  hunter_bar.value=m.hunter.hp
+ if m.strategy.enabled:
+  hunter_label.tooltip_text=StrategyCatalog.ARCHETYPES[m.strategy.archetype].name+"\n"+StrategyCatalog.ARCHETYPES[m.strategy.archetype].hint
+  if m.hunter.state!=HunterState.State.TRANSFORM and m.hunter.boss_attack=="" and m.hunter.surge_remaining<=0:
+   var contract_state="No contract" if m.strategy.contract=="" else "CONTRACT FAILED" if m.strategy.failed else "CONTRACT ACTIVE"
+   hunter_detail.text=StrategyCatalog.ARCHETYPES[m.strategy.archetype].name+" · TEAM %d · " % m.rooms.filter(func(r):return r.owner>=0 and r.alive).size()+contract_state
+  hunter_detail.clip_text=true;hunter_detail.tooltip_text=StrategyCatalog.ARCHETYPES[m.strategy.archetype].hint+"\n"+m.strategy.status()
  if game.tutorial_active:
   phase_label.text="PRACTICE\nSTEP %d / 9" % [game.onboarding.step+1]
   if game.onboarding.step<7:
@@ -513,6 +587,7 @@ func update_match():
  if threat:
   warning_label.text="DOOR %d/%d · UNDER ATTACK" % [room.door_hp,room.max_hp()]
   if m.hunter.charged_ready: warning_label.text="HEAVY STRIKE %.1fs · REPAIR / UPGRADE" % m.hunter.windup_remaining
+  elif m.hunter.archetype_primed:warning_label.text="%s · STRIKE WARNING · REPAIR NOW" % StrategyCatalog.ARCHETYPES[m.hunter.archetype].name.to_upper()
   elif room.repair_factor<0.99: warning_label.text="DOOR %d/%d · REPAIRS %d%%" % [room.door_hp,room.max_hp(),roundi(room.repair_factor*100)]
   if m.hunter.boss_attack!="":
    warning_label.text="%s %.1fs · REPAIR NOW" % [BossCatalog.ATTACKS[m.hunter.boss_attack].name,m.hunter.windup_remaining]
@@ -534,7 +609,8 @@ func update_match():
    var refund=room.building_refund(game.selected_tile)
    actions.sell.text="Sell · +%.2fG / +%.2fE (50%%)" % [refund.x,refund.y]
    var price=Catalog.upgrade_cost(b.kind,b.level)
-   actions.upgrade.text="MAX LEVEL" if b.level>=Catalog.building_max_level(b.kind) else "Upgrade  ·  %dG / %dE" % [price.x,price.y]
+   actions.upgrade.text="MAX LEVEL" if b.level>=Catalog.building_max_level(b.kind) else "Upgrade L%d · %dG / %dE" % [b.level+1,price.x,price.y]
+   if room.strategy_enabled and b.kind in ["turret","heavy"] and b.level==4:actions.upgrade.text="Choose specialization → Level 5"
   else: actions.upgrade.text="Select a building to upgrade"
  actions.repair.text="Repair  ·  %d gold" % Catalog.REPAIR_COST
  var immediate=room!=null and room.alive and room.door_hp<room.max_hp()*.35 and game.model.hunter.target==room.index and game.model.hunter.state in [HunterState.State.ATTACK,HunterState.State.BREACH]
@@ -637,6 +713,7 @@ func action_reason(action: String) -> String:
  elif action == "upgrade":
   if not room.buildings.has(game.selected_tile): return "Select an existing building."
   var b = room.buildings[game.selected_tile]
+  if room.strategy_enabled and b.kind in ["turret","heavy"] and b.level==4:return ""
   var requirement=Catalog.upgrade_requirement(b.kind,b.level,room.bed_level,room.door_level)
   if requirement!="":return requirement
   var price=Catalog.upgrade_cost(b.kind,b.level)

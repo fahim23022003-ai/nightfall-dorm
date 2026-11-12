@@ -1,4 +1,5 @@
 extends RefCounted
+var heading_font=preload("res://assets/fonts/GrenzeGotisch-SemiBold.ttf")
 ## Read-only event presentation. Never changes gameplay or consumes model RNG.
 const OFFSET=Vector2(145,40)
 const MAX_ALERTS=3
@@ -171,7 +172,7 @@ func render_notifications(c):
   var box=GothicTheme.surface("583344","A28EB2").duplicate()
   box.modulate_color=Color(1,1,1,.94*alpha)
   c.draw_style_box(box,Rect2(285,100,710,75))
-  c.draw_string(font,Vector2(317,131),"THE GRIM REAPER HAS AWAKENED",HORIZONTAL_ALIGNMENT_LEFT,-1,25,Color(1,.72,.84,alpha))
+  c.draw_string(heading_font,Vector2(317,131),"THE GRIM REAPER HAS AWAKENED",HORIZONTAL_ALIGNMENT_LEFT,-1,28,Color(1,.72,.84,alpha))
   c.draw_string(font,Vector2(319,157),"Watch the scythe. Repair during warnings. Keep your defenses firing.",HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color(.88,.82,.96,alpha))
  # Screen-space, left of build controls and below the tutorial panel. No input capture.
  var offset=0.0

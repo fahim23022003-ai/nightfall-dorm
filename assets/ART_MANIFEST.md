@@ -81,3 +81,23 @@ The licensed DejaVu Serif Bold display font is reused for the wordmark; existing
 DejaVu Sans remains the body font. Existing font attribution still applies.
 This is a layered 2D treatment, not a new fully rigged character animation set;
 retained survivor/bed sprites and simple exterior silhouettes remain art limits.
+
+
+## Phase 5D-1 premium UI and strategy
+
+`tools/art/generate_premium_ui.py` authors30 original action/currency/mode/
+archetype/branch SVG emblems in `assets/premium_ui/`, plus four improved Common
+supply illustrations at the existing repair/gold/battery/radar item paths.
+The geometric silhouettes, gradient materials, shadows and engraved details
+are authored locally, with no copied stock/game imagery. Existing UI material
+textures gain restrained dimensional button rails, pressed depth and focus edges.
+Archetype/branch overlays reuse existing original actors and prestige armor.
+
+`assets/fonts/GrenzeGotisch-SemiBold.ttf` is a locally bundled static600-weight
+instance of Grenze Gotisch from Google Fonts/Omnibus-Type, produced with
+fontTools. `GrenzeGotisch-OFL.txt` includes SIL OFL1.1 and author copyright;
+`GrenzeGotisch-SOURCE.txt` records the exact source. This licensed typeface is
+not claimed as original game art. Heading/title/mode/event use is separate from
+the retained licensed DejaVu Sans body font. No machine-installed font or runtime
+asset download is required. All95 printable English ASCII glyphs were inspected;
+actual typography and icons are independently checked through Godot rendering.

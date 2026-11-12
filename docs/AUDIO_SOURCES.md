@@ -161,3 +161,14 @@ Its 42.818-second stereo mix peaks at 0.03653 full scale, RMS 0.00415, with zero
 full-scale samples. This validates nonzero engine output and no clipping in that
 fixture, not perceived loudness, sound quality or physical Windows speakers.
 Native Windows and subjective human listening remain UNVERIFIED.
+
+
+## Phase 5D-1 archetype telegraphs
+
+All105 original audio assets remain unchanged. Model-owned `archetype_warning`
+events route through the existing distance-aware danger cue and voice/bus
+architecture. Crusher's heavy wind-up, Stalker's first strike and Ravager's burst
+opening therefore have genuine event-driven anticipation; shop success reuses
+its existing valid cue. No new audio authorship or subjective/nativeWindows
+listening claim is made. Prior critical ducking, positional projection, settings
+and bounded playback budgets remain.
