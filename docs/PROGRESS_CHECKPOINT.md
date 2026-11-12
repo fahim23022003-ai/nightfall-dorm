@@ -36,7 +36,9 @@ and broad human balance remain UNVERIFIED. Hell is severe; only specific tested
 room/policy combinations are demonstrated beatable. Human feedback is next.
 No Grim Reaper/Phase4B/Mythic/Android/APK or unrelated features.
 
-Final response records exact pushed SHA after remote verification. Next: Windows
+Feature checkpoint 641f2cc1ffb4f7ffa1950100b3142368c3673d04 was pushed and
+remote SHA verified. The final follow-up includes the corrected legacy audio
+attack-position fixture; final response reports the latest pushed SHA. Next: Windows
 Godot4.6.3 playtest Long Night and Hell with reactive repairs/roomchoice/early
 defense; collect observed difficulty before further tuning. Stop after Phase4A.
 

@@ -172,6 +172,7 @@ func run():
  audible.player().door_hp=20
  audible.hunter.state=HunterState.State.ATTACK
  audible.hunter.target=0
+ audible.hunter.position=audible.player().door_approach()
  audible.hunter.cooldown=0
  audible.hunter.tick(0.01,audible)
  audio.update_state(2.1,audible,"match")

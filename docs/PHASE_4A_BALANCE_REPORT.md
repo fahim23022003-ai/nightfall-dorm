@@ -129,3 +129,8 @@ unrelated features were not started. Windows project/export settings unchanged.
 Final response records exact committed/pushed SHA after comparing remote work
 with local HEAD. Push without force to the existing private branch; a local
 commit alone does not establish backup. No public deployment or publication.
+
+Verified feature checkpoint: 641f2cc1ffb4f7ffa1950100b3142368c3673d04. Push to work succeeded and
+remote full SHA matched local HEAD. A final follow-up includes the corrected
+legacy audio attack-position fixture and this backup record; final chat reports
+the latest pushed SHA.
