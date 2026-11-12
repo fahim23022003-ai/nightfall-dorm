@@ -1,0 +1,80 @@
+{
+  "kind": "Independent QA C first sliding-HUD milestone acceptance",
+  "utc": "2026-11-12T23:06:07.255762+00:00",
+  "branch": "work",
+  "head": "02736a1eef5a287736417b58f9563ec5c5a56ad9",
+  "status": "HUD functional gate accepted after focused fixture/toolbar retests; core overhaul not tested",
+  "test": "tests/overhaul_qa_hud.gd",
+  "test_sha256": "9e800d6b1bedd2fe9685b28114836dbc29c9c15d930f5cbd1444d85b348370c0",
+  "engine": "Godot 4.6.3, Linux headless",
+  "first_full_probe": {
+    "log": "docs/evidence/gameplay-overhaul/qa-hud-initial.log",
+    "checks": 2416,
+    "failures": 8,
+    "exit_code": 1,
+    "diagnosis": "Only the eight non-default-map reset fixtures failed: calling start_practice(map) directly does not set UI.practice_map, which Reset uses. The corrected fixture sets the actual UI selection before starting. No production change was needed."
+  },
+  "affected_reset_probe": {
+    "log": "docs/evidence/gameplay-overhaul/qa-hud-reset-accepted.log",
+    "argument": "--reset-only",
+    "checks": 60,
+    "scenarios": 10,
+    "failures": 0,
+    "exit_code": 0
+  },
+  "latest_toolbar_overlap_probe": {
+    "log": "docs/evidence/gameplay-overhaul/qa-hud-toolbar-accepted.log",
+    "argument": "--toolbar-only",
+    "checks": 90,
+    "scenarios": 10,
+    "failures": 0,
+    "exit_code": 0,
+    "source_delta": "Toolbar Controls moved above the travelling drawer for both drawing and GUI hit testing. Actual mouse clicks were verified while their rectangles overlapped."
+  },
+  "unpaused_timing": {
+    "samples": 20,
+    "min_seconds": 0.251522,
+    "max_seconds": 0.266054,
+    "path": "docs/evidence/gameplay-overhaul/qa-hud-timing.json",
+    "physical_sizes": [
+      [
+        1280,
+        720
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "logical_viewport": [
+      1280,
+      720
+    ]
+  },
+  "scope": [
+    "Fresh compact toolbar and actual 0.26s upward/downward SceneTree tweens: monotonic finite positions, correct endpoints, stable camera/player/model/RNG.",
+    "Real BaseButton presses reach paused controls midway through opening/closing; economic callbacks reject them. Timing is measured separately without pausing.",
+    "Twenty rapid open/close cycles per map/resolution retain one panel and bounded tweens. Actual rapid BUILD, upgrade and sale charge/refund once; the pad reopens. Held Escape cancels safely and the next valid purchase works.",
+    "Actual contact damage updates danger without closing the drawer. Paid R repair and Escape remain functional. Rapid bed/door switching does not charge.",
+    "Reset during a tween frees the old panel and restores compact controls. Temporary transactions preserve permanent profile bytes and values.",
+    "All 12 currently registered cards are within the accessible drawer. The 15 planned target rectangles fit mathematically; the three future building controls are not implemented/tested yet."
+  ],
+  "source_sha256": {
+    "scripts/bottom_context_panel.gd": "62e19ff03d37d5fdc9a912334f90f4b780eca5e540a90ee4c0d1be0a9bd4fdd8",
+    "scripts/interface.gd": "ca40a8e2a3bb0a2ac99f6a963be62bdf0f962c3eb023f983efcf2348d6238cf9",
+    "scripts/game.gd": "89b2d452600773b82fb05a439240cec460184374614b796ae157d9ce5c8a75e7",
+    "tests/overhaul_qa_hud.gd": "9e800d6b1bedd2fe9685b28114836dbc29c9c15d930f5cbd1444d85b348370c0"
+  },
+  "log_sha256": {
+    "docs/evidence/gameplay-overhaul/qa-hud-initial.log": "a71a2dd540302a3b0f984d735b6599b330bc2f5aa0316b5d9b570cb14b57948e",
+    "docs/evidence/gameplay-overhaul/qa-hud-reset-accepted.log": "11bb5acc12ab5001ddc0a99472590f6ee5199d0c9d5ea2f70cede9470e7e75c9",
+    "docs/evidence/gameplay-overhaul/qa-hud-toolbar-accepted.log": "ea88150d132d70cd4fa847128f07d68be82f97b1ed97ffc868dcd08e234754b5",
+    "docs/evidence/gameplay-overhaul/qa-hud-timing.json": "cd938fe20a9e8e9867c6c6010013819e2cf695eac35c36e75bb9f4946539105d"
+  },
+  "limitations": [
+    "No acceptance of expansion, typed combat, new defenses or new Hunters yet.",
+    "The corrected default full HUD test is prepared for final integration. Only affected reset/toolbar scopes were rerun here; the initial full probe is not presented as a zero-exit run.",
+    "Headless input/geometry does not establish raster quality or native Windows hardware behavior. D owns screenshots.",
+    "C made no production edits, changed no historical tests/evidence and performed no commit or push."
+  ]
+}
