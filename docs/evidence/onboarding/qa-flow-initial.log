@@ -1,0 +1,83 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: ONBOARDING FLOW: successful actual movement completes first lesson
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] graduate (res://tests/onboarding_flow.gd:50)
+       [2] run (res://tests/onboarding_flow.gd:113)
+       [3] create (res://tests/onboarding_flow.gd:20)
+ERROR: ONBOARDING FLOW: actual player motion reaches target
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] walk_to (res://tests/onboarding_flow.gd:35)
+       [2] graduate (res://tests/onboarding_flow.gd:51)
+       [3] run (res://tests/onboarding_flow.gd:113)
+       [4] create (res://tests/onboarding_flow.gd:20)
+ERROR: ONBOARDING FLOW: actual E claims a room
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] graduate (res://tests/onboarding_flow.gd:53)
+       [2] key (res://tests/onboarding_flow.gd:27)
+SCRIPT ERROR: Invalid access to property or key 'sleeping' on a base object of type 'Nil'.
+          at: graduate (res://tests/onboarding_flow.gd:55)
+          GDScript backtrace (most recent call first):
+              [0] graduate (res://tests/onboarding_flow.gd:55)
+              [1] key (res://tests/onboarding_flow.gd:27)
+ERROR: ONBOARDING FLOW: replay preserves all real progress, cash, inventory and rewards
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] run (res://tests/onboarding_flow.gd:116)
+       [2] graduate (res://tests/onboarding_flow.gd:55)
+       [3] key (res://tests/onboarding_flow.gd:27)
+ERROR: ONBOARDING FLOW: successful actual movement completes first lesson
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] graduate (res://tests/onboarding_flow.gd:50)
+       [2] run (res://tests/onboarding_flow.gd:122)
+       [3] create (res://tests/onboarding_flow.gd:20)
+ERROR: ONBOARDING FLOW: actual player motion reaches target
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] walk_to (res://tests/onboarding_flow.gd:35)
+       [2] graduate (res://tests/onboarding_flow.gd:51)
+       [3] run (res://tests/onboarding_flow.gd:122)
+       [4] create (res://tests/onboarding_flow.gd:20)
+ERROR: ONBOARDING FLOW: actual E claims a room
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] graduate (res://tests/onboarding_flow.gd:53)
+       [2] key (res://tests/onboarding_flow.gd:27)
+SCRIPT ERROR: Invalid access to property or key 'sleeping' on a base object of type 'Nil'.
+          at: graduate (res://tests/onboarding_flow.gd:55)
+          GDScript backtrace (most recent call first):
+              [0] graduate (res://tests/onboarding_flow.gd:55)
+              [1] key (res://tests/onboarding_flow.gd:27)
+ERROR: ONBOARDING FLOW: failed completion save cannot unlock gameplay
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] run (res://tests/onboarding_flow.gd:125)
+       [2] graduate (res://tests/onboarding_flow.gd:55)
+       [3] key (res://tests/onboarding_flow.gd:27)
+ERROR: ONBOARDING FLOW: completion retry unlocks menu once durable
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] run (res://tests/onboarding_flow.gd:127)
+       [2] graduate (res://tests/onboarding_flow.gd:55)
+       [3] key (res://tests/onboarding_flow.gd:27)
+ERROR: ONBOARDING FLOW: fresh tutorial completes without campaign rewards
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] run (res://tests/onboarding_flow.gd:129)
+       [2] graduate (res://tests/onboarding_flow.gd:55)
+       [3] key (res://tests/onboarding_flow.gd:27)
+ONBOARDING_FLOW_CHECKS=38 FAILURES=10

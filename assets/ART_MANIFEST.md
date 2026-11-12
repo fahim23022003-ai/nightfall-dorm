@@ -43,3 +43,12 @@ See the Legendary report for actual rendered inspection and its limitations.
 `tools/art/generate_rewards.py` generates seven original perk emblems and twelve
 achievement emblems using local SVG geometry. Reward screens add brief panel
 flourishes, explicit values and saved status indicators. No external assets.
+
+
+## Phase 5C-1 cinematic and tutorial
+
+The opening animates original existing player/Hunter artwork with locally authored
+procedural forest silhouettes, parallax, fog, dorm entry/door and restrained
+lightning/fade. The welcome card and practice use original UI drawing, highlights
+and arrows. These cinematic backdrops add no playable outdoor map/weather system.
+Common shop artwork reuses the existing registered item icons. No external assets.

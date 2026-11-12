@@ -9,13 +9,26 @@ An original single-player Godot 4 dormitory survival defense game. Choose a room
 1. Sign in to the private [GitHub repository](https://github.com/fahim23022003-ai/nightfall-dorm), select **work**, and choose **Code → Download ZIP**.
 2. Extract the complete ZIP. Install/open **Godot 4.6.3 stable, standard build**; no .NET or export templates needed.
 3. Choose **Import**, select the extracted `project.godot`, then **Import & Edit**. Wait for asset import.
-4. Press **F5 / Run Project**, then **Start Game**. Select an unlocked stage with **Prepare**, choose an optional unlocked boost and difficulty, then **Start Match**.
+4. Press **F5 / Run Project**. Watch or skip the opening; a fresh save completes the guided practice first. Then choose **Start Game** and select an unlocked stage with **Prepare**, choose an optional unlocked boost and difficulty, then **Start Match**.
 5. Move with **WASD/arrows**, enter a vacant room and press **E** to claim it. Approach its bed and press **E** to sleep/lock the door.
 6. Click an owned floor pad, choose a card, then **Confirm placement**. The preview stays on that pad while you move the mouse to Confirm or Cancel; click another pad to change its position. Start with a Needle turret and build a Dynamo for electricity. Click existing buildings or the bottom bed/door summaries for upgrades. A building inspector also offers Sell: it frees the pad and refunds 50% of the gold and electricity spent on that building and its upgrades (fractional amounts are retained). Bed and door upgrades cannot be sold.
 
 **R** repairs, **M** toggles map/focus, **wheel** zooms, **G** toggles the guide. **Escape** cancels a preview, closes the inspector, then pauses/resumes. Gold starts only while sleeping; later purchases need electricity/prerequisites. Hunter death wins; your elimination loses. Restart/Main menu are on the result screen.
 
 Full controls, ZIP/Git instructions and a practical test checklist: [Windows home testing](docs/HOME_TESTING_WINDOWS.md).
+
+## Opening, practice and RM Cash shop (Phase 5C-1)
+
+Every fresh desktop launch opens with a 15-second animated chase and a short
+welcome/story card. Click or press Space, Enter or Escape to skip. New players
+complete a guided practice using real controls; returning saves with recorded
+progress continue to the menu. Replay Tutorial is available there.
+
+Legitimate results now award persistent **RM Cash**, a separate in-game currency.
+The Common shop sells Repair Kit (18 RM), Gold Supply Crate (16), Emergency
+Battery (16) and Hunter Radar (12), using the existing inventory. Saved purchases
+and rewards prevent duplicate grants; practice awards no permanent resources.
+See the [onboarding and shop report](docs/PHASE_5C1_ONBOARDING_SHOP_REPORT.md).
 
 ## Rank perks, achievements and stage choices (Phase 5B-3)
 

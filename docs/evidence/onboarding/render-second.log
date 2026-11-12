@@ -1,0 +1,33 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+ONBOARDING_CAPTURE render-01-chase PHASE=cinematic STEP=0
+ONBOARDING_CAPTURE render-02-moving-chase PHASE=cinematic STEP=0
+ONBOARDING_CAPTURE render-03-hunter-reveal PHASE=cinematic STEP=0
+ONBOARDING_CAPTURE render-04-dorm-approach PHASE=cinematic STEP=0
+ONBOARDING_CAPTURE render-05-entering-dorm PHASE=cinematic STEP=0
+ONBOARDING_CAPTURE render-06-door-impact PHASE=cinematic STEP=0
+ONBOARDING_CAPTURE render-07-darkness PHASE=cinematic STEP=0
+ONBOARDING_CAPTURE render-08-welcome-credit-story PHASE=title STEP=0
+ONBOARDING_CAPTURE render-09-title-small PHASE=title STEP=0
+ONBOARDING_CAPTURE render-10-tutorial-move PHASE=tutorial STEP=0
+ONBOARDING_CAPTURE render-11-tutorial-room PHASE=tutorial STEP=1
+ONBOARDING_CAPTURE render-12-tutorial-bed PHASE=tutorial STEP=2
+ONBOARDING_CAPTURE render-12a-tutorial-bed-small PHASE=tutorial STEP=2
+ONBOARDING_CAPTURE render-13-tutorial-gold PHASE=tutorial STEP=3
+ONBOARDING_CAPTURE render-14-tutorial-dynamo PHASE=tutorial STEP=4
+ONBOARDING_CAPTURE render-15-tutorial-turret PHASE=tutorial STEP=5
+ONBOARDING_CAPTURE render-16-tutorial-upgrade-repair PHASE=tutorial STEP=6
+ONBOARDING_CAPTURE render-17-tutorial-simple-threat PHASE=tutorial STEP=7
+ONBOARDING_CAPTURE render-18-tutorial-complete PHASE=tutorial STEP=8
+ONBOARDING_CAPTURE render-19-returning-menu PHASE=idle STEP=8
+ONBOARDING_CAPTURE render-20-common-shop PHASE=idle STEP=0
+ONBOARDING_CAPTURE render-21-shop-small PHASE=idle STEP=0
+ONBOARDING_CAPTURE render-22-shop-purchase PHASE=idle STEP=0
+ONBOARDING_CAPTURE render-23-shop-insufficient PHASE=idle STEP=0
+ONBOARDING_CAPTURE render-23a-shop-save-failure PHASE=idle STEP=0
+ONBOARDING_CAPTURE render-24-reduced-flash-cinematic PHASE=cinematic STEP=0
+ONBOARDING_RENDER_AUDIO={"dropped_events":0,"event_counts":{"build":2,"button":10,"danger":1,"door_crack":1,"door_hit":4,"electricity":2,"failure":1,"footstep":1,"ghost_defeat":1,"ghost_hurt":6,"hunter_spawn":1,"impact":6,"income":2,"intro_breath":3,"intro_impact":1,"intro_lightning":1,"intro_running":4,"intro_shriek":1,"intro_whisper":1,"match_start":2,"menu":3,"purchase":3,"repair":1,"shop_purchase":1,"shot_needle":6,"turret_upgrade":1,"tutorial_complete":1,"tutorial_step":8,"victory":1},"frame_voice_limit":6,"intensity":0.0,"loop_weights":{"ambient_dorm":0.15,"generator_loop":0.0,"music_calm":0.0,"music_danger":0.0,"music_menu":0.196091499999999,"music_reaper":0.0,"proximity_loop":0.0,"reaper_ambience":0.0},"missing_assets":[],"mix":{"ambient":0.5,"effects":0.65,"music":0.5,"muted":false},"music_start_count":4,"pending_critical":0,"proximity":0.0,"stream_count":96,"voice_limit":16,"voices":1}
+ONBOARDING_RENDER_CHECKS=76 FAILURES=0

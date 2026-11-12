@@ -5,7 +5,7 @@ var failures=0
 var game
 var serial=0
 var prefix="user://onboarding-flow-"
-func _initialize():prefix+=str(Time.get_ticks_usec())+"-";call_deferred("run")
+func _initialize():root.size=Vector2i(1280,720);prefix+=str(Time.get_ticks_usec())+"-";call_deferred("run")
 func check(ok,label):
  checks+=1
  if not ok:failures+=1;push_error("ONBOARDING FLOW: "+label)
@@ -27,6 +27,8 @@ func key(code):
   Input.parse_input_event(event);await process_frame
 func mouse_button(button,double_click=false):
  var point=root.get_final_transform()*button.get_global_rect().get_center()
+ var motion=InputEventMouseMotion.new();motion.position=point;motion.global_position=point
+ Input.parse_input_event(motion);await process_frame
  for pressed in [true,false]:
   var event=InputEventMouseButton.new();event.position=point;event.global_position=point
   event.button_index=MOUSE_BUTTON_LEFT;event.pressed=pressed;event.double_click=double_click if pressed else false
@@ -119,13 +121,21 @@ func run():
  game.ui.shop.purchase("repair",game.profile.purchase_serial+1)
  game.ui.shop.purchase("repair",game.profile.purchase_serial+1)
  check(game.profile.rm_cash==cash-OnboardingCatalog.PRICES.repair and game.profile.inventory.repair==stock+1,"UI double press with newly rendered token still buys exactly once")
- await create_timer(.5).timeout
+ var wall_deadline=Time.get_ticks_msec()+550
+ while Time.get_ticks_msec()<wall_deadline:await process_frame
  game.ui.shop.update()
+ check(not game.ui.shop.buttons[0].button.disabled,"actual wall-clock debounce expired before OS double click")
  var before_double_cash=game.profile.rm_cash;var before_double_stock=game.profile.inventory.repair
  await mouse_button(game.ui.shop.buttons[0].button,true)
  check(game.profile.rm_cash==before_double_cash and game.profile.inventory.repair==before_double_stock,"Windows double-click second press/release suppressed after 500ms with refreshed button")
  await mouse_button(game.ui.shop.buttons[0].button,false)
  check(game.profile.rm_cash==before_double_cash-OnboardingCatalog.PRICES.repair and game.profile.inventory.repair==before_double_stock+1,"separate real mouse shop click purchases normally")
+ var entry=game.profile.begin_match("standard","stage_1")
+ var settled=MatchModel.new();settled.configure_match("standard");settled.configure_stage("stage_1")
+ settled.claim_room(0);settled.player_position=settled.player().bed_position();settled.sleep_player()
+ settled.time=settled.preparation+120;settled.player().occupied_seconds=120;settled.player().damage_dealt=1000
+ settled.hunter.hp=0;settled.result="victory"
+ check(not game.profile.settle_match(entry.id,settled).is_empty() and not game.profile.pending_spins.is_empty() and not game.profile.pending_stage_bonus.is_empty(),"prepare legitimate pending spin and stage offer before replay")
  var before=game.profile._reward_snapshot()
  check(game.start_tutorial(true),"replay tutorial starts")
  game.onboarding.set_process(false)

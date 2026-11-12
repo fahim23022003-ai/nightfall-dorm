@@ -1,15 +1,41 @@
-# Phase 5C-1 — cinematic, tutorial and RM shop (12 November 2026)
+# Phase 5C-1 — opening, tutorial and RM shop complete (12 November 2026)
 
-IN PROGRESS. Started clean `work` at
-`d8ac232cf40f785e9454222a1d204d2dfb6e5ab3`, verified against GitHub.
-Recovery tag `pre-phase5c1-d8ac232`. B production, C independent QA, bounded A
-onboarding/economy review and later D actual cinematic/tutorial/audio inspection.
-Milestone: implemented opening/tutorial/RM/shop. Focused QA 148 checks, flow 88
-checks and 42 economy scenarios/57,016 checks pass; audio 263 assertions pass.
-Legacy regressions and final actual rendered verification remain in progress.
-Next: finish legacy regressions, actual rendered
-walkthrough/audio, report, commit and verified private `work` push.
-Native Windows/subjective quality UNVERIFIED. Stop after 5C-1.
+Started clean `work` at `d8ac232cf40f785e9454222a1d204d2dfb6e5ab3`, verified
+against GitHub. Recovery tag `pre-phase5c1-d8ac232`; milestone `238e2ec`.
+B production, C independent QA, bounded A audit and actual D render/audio complete.
+
+Every desktop launch plays15s animated chase/Hunter/dormentry/doorimpact/darkness
+then4s exact welcome/Created by Fahim/story card. Immediate mouse/keyboard skip,
+owned audio cleanup, Reduced Effects, no repeat on menu return. Fresh saves enter
+nine real practice steps; old reliable progress bypasses mandatory practice.
+Focused camera/HUD, contextual arrows, recovery for badpads/fullgrids/solddefense,
+weak100HP Hunter, saved completion/retry and Replay Tutorial. No practice XP,
+RM/items/achievements/spins or active-match reward consumption.
+
+RM Cash uses same atomic settlement/RNG rollback; win24–32+boundedperformance+
+modebonus; qualifying90s+contribution loss3–5+boundedtime. Common shopprices
+18/16/16/12 forRepair/Gold/Battery/Radar, existinginventory, persistentintent serial,
+failedsave rollback and realOSdoubleclickguard. Newmenu12sloop+9originalPCM cues:
+96streams, quieter gameplay music/critical ducking, savedprefs preserved.
+
+C164profile/shop checks+92flowchecks pass;42syntheticRMscenarios57,016assertions
+pass. D77actualrenderchecks/26PNGs, fullinputwalkthrough, all9cues;34.737sactual
+engine mix no clipping. Final import clean. Human2–3minpacing, subjectivefear/
+quality and nativeWindows UNVERIFIED. No known functional test failure remains.
+
+Full regular+extended regressions pass: all20items, progression342+27, Mythic204+7/
+rank354,boss6,703/60comparisons,90difficulty unchanged,144mapmatches79/65,campaign
+89profile/146flow,building314+421,audio263,20ktransactions/175,941invariants,
+27timesteps/144strategycases/48rankmatches22/26,profile round-trip and startupintro.
+No gameplay assertions disabled. Legacy scenes seedexplicitgraduateprofiles and
+skipactualintro; no productiontestbypass. Fixed drawing-helpernativecollision,
+practice recovery/camera/HUD/arrow and cinematicentry/impactcoherence. Initial
+fixture failures and passing reruns preserved.
+
+Report: [PHASE_5C1_ONBOARDING_SHOP_REPORT.md](PHASE_5C1_ONBOARDING_SHOP_REPORT.md),
+`docs/evidence/onboarding/`. Final response records completed commit and actual
+private GitHub `work` push verification. No Phase5C-2/6, newplayablemap/weather/
+boss/Android/multiplayer. `main` unchanged. Stop after Phase5C-1.
 
 ---
 
