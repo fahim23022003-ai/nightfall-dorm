@@ -34,6 +34,21 @@ var difficulty="standard"
 var match_boosts: Dictionary={}
 var stage_bonus: Dictionary={}
 var strategy=MatchStrategy.new()
+var run_kind="campaign"
+var endless
+var challenge_code=""
+var challenge_config: Dictionary={}
+var challenge_accumulator=0.0
+var challenge_recorded=false
+var terminal_recorded=false
+var defeat_facts=DefeatFacts.new()
+var practice_tile=0
+func configure_endless(map: String,mode: String,seed_value: int,run_id: int,boosts: Dictionary={}) -> bool:
+ return EndlessRun.new().configure(self,map,mode,seed_value,run_id,boosts)
+func continue_wave(choice: String="repair") -> bool:
+ return endless!=null and endless.continue_wave(self,choice)
+func hunter_active_seconds() -> float:
+ return maxf(0,time-(endless.wave_started_at if run_kind=="endless" and endless!=null else preparation))
 func configure_strategy(seed_value: int,archetype: String="",contract: String="",identity: int=0) -> bool:
  return strategy.configure(self,seed_value,archetype,contract,identity)
 
@@ -64,6 +79,7 @@ func _init():
 func reset(seed_value: int = 1):
  items=ItemEffects.new()
  strategy=MatchStrategy.new()
+ run_kind="campaign";endless=null;challenge_code="";challenge_config={};challenge_accumulator=0;challenge_recorded=false;terminal_recorded=false;defeat_facts=DefeatFacts.new()
  random.seed = seed_value
  rooms.clear()
  map_id="legacy"
@@ -245,6 +261,7 @@ func record_event(type: String, room_index: int, data: Dictionary={}):
  presentation_events.append(entry)
  if presentation_events.size()>128: presentation_events.pop_front()
  strategy.event(type,room_index,self)
+ defeat_facts.event(type,room_index,self,data)
 
 func claim_room(index: int) -> bool:
  if not running or result != "" or index < 0 or index >= rooms.size() or player_room >= 0 or rooms[index].owner >= 0:
@@ -257,6 +274,11 @@ func claim_room(index: int) -> bool:
   rooms[index].door_multiplier*=stage_bonus.get("door",1.0)
   rooms[index].door_hp+=rooms[index].max_hp()-old_max
  player_room = index
+ # Bind callbacks to the newly occupied room as well as the pre-room loadout.
+ # Automatic First Aid must persist even if no manual item is ever activated.
+ if items.profile_ref!=null and items.profile_ref.get_ref()!=null:
+  var wallet=items.profile_ref.get_ref()
+  if wallet.has_method("bind_items"):wallet.bind_items(self,items.match_id)
  feedback.emit("Room claimed. Approach the bed and press E to sleep.")
  return true
 
@@ -366,8 +388,19 @@ func interact():
   sleep_player()
 
 func tick(delta: float):
+ if not running or result!="" or not is_finite(delta) or delta<=0:return
+ if run_kind=="challenge":
+  challenge_accumulator+=minf(delta,.25)
+  while challenge_accumulator+1e-10>=ChallengeCode.FIXED_STEP:
+   challenge_accumulator=maxf(0,challenge_accumulator-ChallengeCode.FIXED_STEP)
+   _tick_sim(ChallengeCode.FIXED_STEP)
+   if result!="":break
+ else:_tick_sim(minf(delta,.25) if run_kind=="endless" else delta)
+
+func _tick_sim(delta: float):
  if not running or result != "" or not is_finite(delta) or delta <= 0:
   return
+ if run_kind=="endless" and endless!=null and endless.phase=="intermission":return
  _age_combat_events(delta)
  time += delta
  items.tick(delta,self)
@@ -394,6 +427,8 @@ func tick(delta: float):
     room.sleeping = true
     room.closed = true
   room.tick_economy(delta)
+  if run_kind=="endless":
+   room.gold=minf(1e12,room.gold);room.electricity=minf(1e12,room.electricity);room.income_total=minf(1e12,room.income_total)
   if room.owner > 0:
    BotAI.tick(room,delta)
  var exposed = time > preparation+25 and (player() == null or not player().sleeping)
@@ -410,10 +445,7 @@ func tick(delta: float):
  # A breach resolves before pending teammate shots can revive a lost match.
  if player_room >= 0 and not rooms[player_room].alive:
   result = "defeat"
-  items.clear(self)
-  hunter.stop_combat(self)
-  _cancel_projectiles("terminal")
-  strategy.seal(self)
+  _finish_terminal()
   return
  # Contact with an exposed survivor has the same priority as a room breach.
  if exposed and hunter.state!=HunterState.State.TRANSFORM and hunter.hp > 0 and hunter.position.distance_to(player_position)<15:
@@ -424,22 +456,19 @@ func tick(delta: float):
    record_event("elimination",player_room,{"survivor_position":player_position})
   eliminations += 1
   result = "defeat"
-  items.clear(self)
-  hunter.stop_combat(self)
-  _cancel_projectiles("terminal")
-  strategy.seal(self)
+  _finish_terminal()
   return
  _advance_projectiles(delta)
  _turrets(delta)
  if player_room >= 0 and not rooms[player_room].alive:
   result = "defeat"
  elif hunter.hp <= 0:
+  if run_kind=="endless" and endless!=null:
+   endless.finish_wave(self)
+   return
   result = "victory"
  if result != "":
-  items.clear(self)
-  hunter.stop_combat(self)
-  _cancel_projectiles("terminal")
-  strategy.seal(self)
+  _finish_terminal()
 
 func _turrets(delta: float):
  if not running or result != "":
@@ -544,3 +573,11 @@ func _pursue_exposed_player(delta: float):
   if absf(hunter.position.y-410)>3 and absf(hunter.position.x-player_position.x)>3:
    waypoint = Vector2(hunter.position.x,410)
  hunter.position = hunter.position.move_toward(waypoint,hunter.speed*delta)
+
+func _finish_terminal():
+ terminal_recorded=true
+ if result=="defeat":defeat_facts.capture(self)
+ items.clear(self)
+ hunter.stop_combat(self)
+ _cancel_projectiles("terminal")
+ strategy.seal(self)

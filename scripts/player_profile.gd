@@ -31,6 +31,36 @@ var rm_cash=0
 var purchase_serial=0
 var selected_contract=""
 var contract_claims: Dictionary={}
+var replay=ReplayProgress.defaults()
+func begin_endless(map: String,mode: String,seed_value: int) -> Dictionary:return ReplayProgress.begin_endless(self,map,mode,seed_value)
+func checkpoint_endless(model) -> bool:return ReplayProgress.checkpoint(self,model)
+func resume_endless():return ReplayProgress.resume(self)
+func settle_endless(model) -> Dictionary:return ReplayProgress.finish(self,model)
+func end_endless_here(model) -> Dictionary:return ReplayProgress.finish_cleared(self,model)
+func forfeit_endless() -> bool:
+ if read_only or active_match.get("run_kind","")!="endless":return false
+ var before=_reward_snapshot();active_match={};replay.checkpoint={}
+ if not save_profile():_restore_rewards(before);return false
+ return true
+func equip_cosmetic(id: String) -> bool:
+ if read_only or not CosmeticCatalog.ITEMS.has(id) or not CosmeticCatalog.earned(self,id):return false
+ var before=replay.cosmetics.duplicate(true);var slot=CosmeticCatalog.ITEMS[id].slot
+ replay.cosmetics[slot]="" if replay.cosmetics[slot]==id else id
+ if not save_profile():replay.cosmetics=before;return false
+ return true
+func record_challenge(model) -> bool:
+ if read_only or model.run_kind!="challenge" or model.challenge_recorded or model.challenge_code=="" or model.result not in ["victory","defeat"] or not model.terminal_recorded:return false
+ var decoded=ChallengeCode.decode(model.challenge_code)
+ if not decoded.ok or model.challenge_config!=decoded.config:return false
+ var key=model.challenge_code.sha256_text().left(16);var before=replay.duplicate(true)
+ var old=replay.challenge_best.get(key,{})
+ if not replay.challenge_best.has(key) and replay.challenge_best.size()>=32:replay.challenge_best.erase(replay.challenge_best.keys()[0])
+ var score=int(model.damage_dealt)+10000 if model.result=="victory" else int(model.damage_dealt)
+ var improved=old.is_empty() or score>int(old.get("score",0)) or (score==int(old.get("score",0)) and model.time<float(old.get("time",1e9)))
+ replay.challenge_best[key]={"code":model.challenge_code,"time":model.time if improved else old.time,"outcome":model.result if improved else old.get("outcome","defeat"),"score":maxi(score,int(old.get("score",0))),"plays":mini(1000000000000,int(old.get("plays",0))+1)}
+ if not save_profile():replay=before;return false
+ model.challenge_recorded=true
+ return true
 func select_contract(id: String) -> bool:
  if read_only or (id!="" and not StrategyCatalog.CONTRACTS.has(id)):return false
  var old=selected_contract;selected_contract=id
@@ -67,7 +97,7 @@ func buy_common(id: String,token) -> bool:
 func perk_slots() -> int: return 2 if rank_index()>=5 else 1
 func _reward_snapshot() -> Dictionary:
  var out={}
- for key in ["xp","equipped","highest_rank","statistics","campaign_records","inventory","item_loadout","pending_spins","active_match","last_award","achievements","reward_counters","seen_items","pending_stage_bonus","stage_bonus_queue","next_match_id","tutorial_completed","rm_cash","purchase_serial","selected_contract","contract_claims"]:
+ for key in ["xp","equipped","highest_rank","statistics","campaign_records","inventory","item_loadout","pending_spins","active_match","last_award","achievements","reward_counters","seen_items","pending_stage_bonus","stage_bonus_queue","next_match_id","tutorial_completed","rm_cash","purchase_serial","selected_contract","contract_claims","replay"]:
   var v=get(key)
   out[key]=v.duplicate(true) if v is Dictionary or v is Array else v
  return out
@@ -144,14 +174,21 @@ func bind_items(model,id: int):
     fx.emit_item("coupon",m,saved.x,"used")
     fx.events[-1].power=saved.y
    return ok
+  if model.run_kind=="endless":
+   var profile_ref=weakref(self)
+   model.player().rescue_payment=func():return profile_ref.get_ref()!=null and ReplayProgress.mark_rescue(profile_ref.get_ref(),id)
 func consume_item(item: String,model,id: int) -> bool:
- if model.tutorial_mode:return false
+ if model.tutorial_mode or model.run_kind not in ["campaign","endless"] or active_match.get("run_kind","campaign")!=model.run_kind:return false
  if read_only or active_match.is_empty() or int(active_match.id)!=id or item not in active_match.get("items",[]) or int(inventory.get(item,0))<=0: return false
  var selected=item_loadout.duplicate()
  var old_active=active_match.duplicate(true)
  if ItemCatalog.legendary(item):
   if maxi(int(active_match.get("legendary_used",0)),model.items.legendary_used)>=ItemCatalog.TUNING.legendary_limit: return false
   active_match["legendary_used"]=int(active_match.get("legendary_used",0))+1
+ if model.run_kind=="endless":
+  var uses=active_match.get("use_counts",{}).duplicate(true)
+  uses[item]=mini(ItemCatalog.MAX_STOCK,int(uses.get(item,0))+1);active_match.use_counts=uses
+  if item=="feather":active_match.feather_used=true
  inventory[item]-=1
  if inventory[item]<=0: item_loadout.erase(item)
  if not save_profile(): inventory[item]+=1; item_loadout=selected; active_match=old_active; return false
@@ -160,6 +197,7 @@ func consume_item(item: String,model,id: int) -> bool:
   if model.strategy.contract=="no_legendary":model.strategy.fail("A Legendary was triggered.")
  return true
 func activate_item(slot: int,model,id: int,target: int=-1) -> bool:
+ if model.run_kind not in ["campaign","endless"] and not has_method("_temporary_marker"):return _item_failure(model,"This session uses temporary inventory.")
  if model.tutorial_mode:return _item_failure(model,"Tutorial uses practice resources; stored items stay safe.")
  item_error=""
  if read_only: return _item_failure(model,"Items unavailable: profile is read-only.")
@@ -387,6 +425,19 @@ func load_profile() -> bool:
  for key in ["muted","fullscreen","tutorial","battery_saver","reduced_effects"]:
   if data.settings.get(key) is bool: settings[key]=data.settings[key]
  active_match=data.get("active_match",{}).duplicate(true)
+ replay=ReplayProgress.defaults()
+ if data.has("replay"):
+  if not ReplayProgress.valid(data.replay):read_only=true;warning="Replay records damaged or newer; original progress preserved read-only."
+  else:replay=data.replay.duplicate(true)
+ if active_match.get("run_kind","campaign") not in ["campaign","endless"]:
+  read_only=true;warning="Unknown saved session type; original progress preserved read-only."
+ if active_match.get("run_kind","")=="endless":
+  if not data.has("replay") or not ReplayProgress.valid_active(active_match):
+   read_only=true;warning="Endless run identity damaged; progress preserved read-only."
+  elif not replay.checkpoint.is_empty() and (replay.checkpoint.run_id!=active_match.run_id or replay.checkpoint.map!=active_match.map or replay.checkpoint.seed!=active_match.seed or replay.checkpoint.difficulty!=active_match.difficulty):
+   read_only=true;warning="Endless checkpoint identity mismatch; original progress preserved read-only."
+ if not replay.checkpoint.is_empty() and active_match.get("run_kind","")!="endless":
+  read_only=true;warning="Orphaned Endless checkpoint; original progress preserved read-only."
  if active_match.has("archetype") or active_match.has("contract"):
   var saved_archetype=active_match.get("archetype")
   var saved_contract=active_match.get("contract")
@@ -437,8 +488,10 @@ func save_profile() -> bool:
  if read_only:
   save_ok=false
   return false
+ if not ReplayProgress.valid(replay):return _write_failed()
  var data={"onboarding":{"version":1,"tutorial_completed":tutorial_completed,"rm_cash":rm_cash,"purchase_serial":purchase_serial},"rewards":{"version":1,"achievements":achievements,"counters":reward_counters,"seen_items":seen_items,"stage_bonus":pending_stage_bonus,"stage_queue":stage_bonus_queue},"consumables":{"version":1,"inventory":inventory,"loadout":item_loadout,"pending":pending_spins},"version":RankCatalog.VERSION,"progression":{"version":1,"statistics":statistics,"highest_rank":maxi(highest_rank,rank_index())},"xp":xp,"equipped":equipped,"settings":settings,"next_match_id":next_match_id,"active_match":active_match,"last_award":last_award,"campaign":{"selected_stage":selected_stage,"difficulty":selected_difficulty,"records":campaign_records}}
  data.strategy={"version":1,"selected":selected_contract,"claims":contract_claims}
+ data.replay=replay
  var f=FileAccess.open(path+".tmp",FileAccess.WRITE)
  if f==null: return _write_failed()
  f.store_string(JSON.stringify(data," "))
@@ -481,6 +534,7 @@ func update_setting(key: String,value) -> bool:
  return save_profile()
 
 func begin_match(difficulty: String="standard",stage_id: String="",strategic: bool=false) -> Dictionary:
+ if active_match.get("run_kind","")=="endless":warning="Resume or explicitly forfeit your Endless run before starting a campaign match.";return {}
  if read_only or pending_spins.size()>=128 or (stage_id!="" and not stage_unlocked(stage_id)): return {}
  if next_match_id>=1000000000000:
   warning="Match counter limit reached; progress saving disabled."
@@ -509,7 +563,7 @@ func begin_match(difficulty: String="standard",stage_id: String="",strategic: bo
  return active_match.duplicate(true)
 
 func settle_match(id: int,model) -> Dictionary:
- if model.tutorial_mode:return {}
+ if model.tutorial_mode or model.run_kind!="campaign" or active_match.get("run_kind","campaign")!="campaign":return {}
  if active_match.is_empty() or id!=int(active_match.id) or model.result not in ["victory","defeat"]: return {}
  if not last_award.is_empty() and id<=int(last_award.match_id): return {}
  if model.difficulty!=active_match.difficulty: return {}
@@ -568,11 +622,13 @@ func settle_match(id: int,model) -> Dictionary:
  last_award={"match_id":id,"old_xp":old_xp,"new_xp":xp,"breakdown":points,"old_rank":before,"new_rank":after,"promoted":after>before,"result":model.result}
  if not campaign_report.is_empty(): last_award.campaign=campaign_report
  if ItemCatalog.reward_eligible(model):
-  var item=ItemCatalog.roll(model.result,reward_rng)
+  var pity_before=replay.pity.duplicate(true)
+  var actual_odds=SpinPity.summary(model.result,pity_before)
+  var item=SpinPity.roll(model.result,reward_rng,replay.pity)
   var quantity=4 if model.result=="victory" else 1
   var granted=mini(quantity,ItemCatalog.MAX_STOCK-int(inventory.get(item,0)))
   inventory[item]=int(inventory.get(item,0))+granted
-  pending_spins.append({"match_id":id,"item":item,"result":model.result,"quantity":granted})
+  pending_spins.append({"match_id":id,"item":item,"result":model.result,"quantity":granted,"odds":actual_odds,"pity_before":pity_before})
  if points.eligible and legitimate and model.player()!=null:
   var room=model.player()
   if room.alive:reward_counters.door_damage=minf(1e12,reward_counters.door_damage+room.door_damage_taken)

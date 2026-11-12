@@ -1,0 +1,10 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+REPLAY_PITY_REVEAL readonly=true warning=Replay records damaged or newer; original progress preserved read-only. reward={  } inventory_same=true pity_same=true
+ERROR: REPLAY PITY: revealing already-rolled spin consumes receipt only
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_pity.gd:12)
+       [1] transactions (res://tests/replay_pity.gd:79)
+       [2] run (res://tests/replay_pity.gd:88)
+REPLAY_PITY_CHECKS=20180 VICTORY_DRAWS=6000 FAILURES=1

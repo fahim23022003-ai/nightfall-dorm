@@ -1,22 +1,43 @@
 # Phase 5D-2 — Endless and replayability (12 November 2026)
 
-IN PROGRESS. Started clean on `work` at
-`d16a82da5baccdf5bcbe566635ee949c086c7a32`, matching GitHub.
-Recovery tag: `pre-phase5d2-d16a82d`. Existing reports and model/profile/UI/item
-architecture inspected before implementation. B owns production; C independent
-save/reward/mechanics QA; D baseline rendering then actual new-feature review;
-A activates for earned-economy and long-run balance after functional mechanics.
-Root owns documentation, regular/extended regression integration and Git delivery.
+IN PROGRESS. Clean `work` baseline `d16a82da5baccdf5bcbe566635ee949c086c7a32`
+matched GitHub. Recovery tag `pre-phase5d2-d16a82d`; baseline checkpoint `1e0fc86`.
+B owns production; C independent mechanics/save/reward QA; A bounded earned-
+economy/pity audit; D actual rendered/audio review. Root owns docs, existing
+regular/extended integration and actual Git push verification. `main` unchanged.
 
-Scope: actual Endless waves/intermissions/checkpoints; normalized shareable
-Challenge Codes; persistent transparent pity; visual-only earnable cosmetics;
-factual post-defeat analysis; isolated real-combat Practice Room. Preserve all
-previous content. Baseline complete: six actual menu/spin/HUD PNGs,14renderchecks and11baseline
-import/core/economy/profile/items/rewards/scene/startup commands pass without
-engine errors. A frozen progressed20item/strategy profile is preserved for
-migration tests. B now implementing approved mode APIs, wave checkpoints and
-reward isolation; no new feature is claimed complete yet. Stop after5D-2, no Phase6/multiplayer/server/payments/Android.
-Native Windows, physical controls/speakers and subjective quality UNVERIFIED.
+Baseline six actual PNGs/14 checks and 11 import/core/economy/profile/item/reward/
+scene/startup commands pass. Frozen progressed 20-item/strategy save retained.
+All six core systems are implemented and import clean: actual one-Hunter Endless
+waves with frozen intermissions, bounded late pressure and between-wave saves;
+normalized versioned Challenge Codes; transactional Victory-only 8/40 pity;
+four earned visual-only cosmetics; factual bounded defeat analysis; isolated
+full-combat Practice Room. Game/UI integration is implemented, review in progress.
+
+Core QA passes Endless 28,123 /45 actual approaches, final extreme-growth 187,
+transactions 284, code 759 (six fresh engine workers), pity 20,180, migration 190,
+Practice 3,644 plus focused item 87, facts/cosmetics 25. All accepted logs clean.
+Fixed saved-number validation, RNG overflow logging, dead-target status carry,
+missing durable Legendary field and pre-claim FirstAid callback; saved stock/
+Legendary/Feather/coupon/rescue caps do not rewind. Genuine no-room defeat closes
+correctly. Campaign requires explicit forfeit of suspended Endless; Practice/
+Challenge preserve it. Updated prep ledgers save before Continue/exit/quit.
+
+A final 39 earned-currency runs clear 1,295 waves, no integrity/settlement failure;
+24 final policies clear 12 waves /all reach L10,16 actually hit atL10. Canonical
+Needle/Arc 10 earned profiles are in balance-earned-{turret,heavy}-profile.json;
+advanced genuine wave 20 also retained for D. Fully upgraded passive 16-pad
+Fortified fortress loses at77, active counterpart survives 130. Pity 500k draws
+support 8/40; exact Epic-guarantee odds 80%Epic/20%Legendary,40th 100%Legendary.
+These are prepared finite budgets/policies, not human balance or nativeWindows.
+
+D baseline and first six-feature UI 36 checks pass; final natural-checkpoint render/
+cosmetic/Practice/audio review underway. Root existing fullregular+extended run
+started in docs/evidence/replay/regression-full.log; final status pending.
+Core-only checkpoint excludes current Game/UI integration and art dependencies;
+next checkpoint must include those together. No final completion/push claimed.
+Stop after 5D-2; no Phase6/multiplayer/onlineleaders/payments/Android/newcampaign.
+NativeWindows/physicalcontrols/speakers/hardwareFPS/humanquality UNVERIFIED.
 
 ---
 

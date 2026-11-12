@@ -67,7 +67,7 @@ static func bonuses(equipped: Array) -> Dictionary:
 
 static func performance(model) -> Dictionary:
  var r=model.player()
- var eligible=model.result in ["victory","defeat"] and r!=null and r.occupied_seconds>=MIN_OCCUPIED_SECONDS and model.time>=model.preparation+10.0
+ var eligible=model.run_kind=="campaign" and model.result in ["victory","defeat"] and r!=null and r.occupied_seconds>=MIN_OCCUPIED_SECONDS and model.time>=model.preparation+10.0
  var result={"victory":0,"survival":0,"damage":0,"defense":0,"difficulty_bonus":0,"loss_adjustment":0,"ceiling_adjustment":0,"total":0,"eligible":eligible,"difficulty":model.difficulty,"stage_bonus":0,"reaper_bonus":0}
  if not eligible: return result
  result.victory=VICTORY_BASE if model.result=="victory" else 0

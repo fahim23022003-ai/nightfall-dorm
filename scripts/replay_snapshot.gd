@@ -1,0 +1,124 @@
+class_name ReplaySnapshot
+extends RefCounted
+const ROOM_NUMBERS=["gold","electricity","bed_level","door_level","door_hp","income_total","shots","damage_dealt","spent","occupied_seconds","door_damage_taken","income_multiplier","power_multiplier","door_multiplier","turret_multiplier","rescue_fraction","construction_actions","repair_actions","bot_timer","repair_factor","temporary_income"]
+const ROOM_FLAGS=["alive","sleeping","closed","rescue_used","coupon_armed","breach_reacted"]
+const ITEM_NUMBERS=["shield_hp","cooldown","burn_remaining","control_recovery","legendary_used","guardian_shield_hp"]
+static func number(value,low=0.0,high=1e12) -> bool:
+ return (value is int or value is float) and is_finite(float(value)) and value>=low and value<=high
+static func whole(value,low=0,high=1000000000000) -> bool:
+ return number(value,low,high) and float(value)==floor(float(value))
+static func point(value) -> bool:
+ return value is Array and value.size()==2 and number(value[0],-10000,10000) and number(value[1],-10000,10000)
+static func vec(value) -> Vector2:return Vector2(value[0],value[1])
+static func pair(value: Vector2) -> Array:return [value.x,value.y]
+static func valid_boosts(boosts: Dictionary) -> bool:
+ var candidates=[[]];var ids=[]
+ for perk in RankCatalog.PERKS:ids.append(perk.id);candidates.append([perk.id])
+ for i in range(ids.size()):
+  for j in range(i):candidates.append([ids[i],ids[j]])
+ for selected in candidates:
+  var expected=RankCatalog.bonuses(selected);var same=true
+  for key in expected:
+   if float(boosts.get(key,0.0 if key in ["gold","rescue"] else 1.0))!=float(expected[key]):same=false;break
+  if same:return true
+ return false
+static func encode(model,use_counts: Dictionary={}) -> Dictionary:
+ var run=model.endless
+ if model.run_kind!="endless" or run==null or run.phase!="intermission" or run.completed!=run.sealed_wave or model.hunter.hp>0 or model.player()==null or not model.player().alive:return {}
+ var data={"version":1,"ruleset":1,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
+ for room in model.rooms:
+  var saved={"owner":room.owner,"profile":room.profile,"trait":room.trait_id,"position":pair(room.resident_position),"buildings":[]}
+  for key in ROOM_NUMBERS+ROOM_FLAGS:saved[key]=room.get(key)
+  saved.bot_timer=maxf(0,saved.bot_timer)
+  for tile in room.buildings:
+   var b=room.buildings[tile]
+   saved.buildings.append({"tile":tile,"kind":b.kind,"level":b.level,"specialization":b.get("specialization",""),"invested_gold":b.get("invested_gold",0.0),"invested_power":b.get("invested_power",0.0),"cooldown":maxf(0,b.cooldown)})
+  data.rooms.append(saved)
+ var fx=model.items
+ for key in ITEM_NUMBERS:data.items[key]=fx.get(key)
+ data.items.feather_used=fx.feather_used;data.items.timers=fx.timers.duplicate(true);data.items.decoy_point=pair(fx.decoy_point)
+ data.items.trap={"position":pair(fx.trap.position),"remaining":fx.trap.remaining} if not fx.trap.is_empty() else {}
+ return data if valid(data) else {}
+static func valid(data) -> bool:
+ if not data is Dictionary or data.get("version")!=1 or data.get("ruleset")!=1 or data.get("map","") not in MapCatalog.IDS or data.get("difficulty","") not in RankCatalog.DIFFICULTIES:return false
+ for key in ["run_id","seed","completed"]:
+  if not whole(data.get(key),1):return false
+ for key in ["time","preparation","shots","damage","eliminations"]:
+  if not number(data.get(key)):return false
+ if not whole(data.get("player_room"),0,5) or not whole(data.get("bot_claimed"),0,5) or not point(data.get("player_position")):return false
+ if not data.get("rng") is String or data.rng.length()>20 or not data.rng.is_valid_int():return false
+ var digits=data.rng.trim_prefix("-")
+ var limit="9223372036854775808" if data.rng.begins_with("-") else "9223372036854775807"
+ if digits.length()>19 or (digits.length()==19 and digits.casecmp_to(limit)>0):return false
+ if str(int(data.rng))!=data.rng:return false
+ if not data.get("boosts") is Dictionary or data.boosts.size()>8:return false
+ for key in data.boosts:
+  if key not in ["gold","door","income","power","damage","rescue","reaper"] or not number(data.boosts[key],0,100):return false
+ if not valid_boosts(data.boosts):return false
+ if not data.get("rooms") is Array or data.rooms.size()!=6 or not data.get("items") is Dictionary:return false
+ if not data.get("use_counts",{}) is Dictionary:return false
+ for key in data.get("use_counts",{}):
+  if key not in ItemCatalog.IDS or not whole(data.use_counts[key],0,ItemCatalog.MAX_STOCK):return false
+ var owners=[];var map=MapCatalog.map(data.map)
+ if vec(data.player_position).distance_to(map.rooms[int(data.player_room)].bed)>1:return false
+ for i in range(6):
+  var room=data.rooms[i]
+  if not room is Dictionary or not whole(room.get("owner"),-1,5) or room.get("profile","") not in ["player"]+Catalog.BOT_PROFILES or room.get("trait","")!=StrategyCatalog.trait_for(i,data.map) or not point(room.get("position")) or not room.get("buildings") is Array or room.buildings.size()>map.rooms[i].tiles.size():return false
+  if room.owner>=0:
+   if room.owner in owners:return false
+   owners.append(room.owner)
+  for key in ROOM_NUMBERS:
+   if not number(room.get(key)):return false
+  for key in ROOM_FLAGS:
+   if not room.get(key) is bool:return false
+  for key in ["shots","construction_actions","repair_actions"]:
+   if not whole(room[key]):return false
+  if room.sleeping and (not room.alive or not room.closed):return false
+  if room.owner<0 and (room.sleeping or room.closed or not room.alive or not room.buildings.is_empty()):return false
+  if room.owner>0 and room.sleeping and vec(room.position).distance_to(map.rooms[i].bed)>2:return false
+  if not whole(room.bed_level,0,4) or not whole(room.door_level,0,4) or room.door_multiplier<=0 or room.temporary_income not in [1.0,1.5] or room.door_hp>Catalog.DOOR_HP[int(room.door_level)]*room.door_multiplier*StrategyCatalog.TRAITS[room.trait].door+.0001:return false
+  for rule in {"door_multiplier":"door","income_multiplier":"income","power_multiplier":"power","turret_multiplier":"damage","rescue_fraction":"rescue"}:
+   var field={"door_multiplier":"door","income_multiplier":"income","power_multiplier":"power","turret_multiplier":"damage","rescue_fraction":"rescue"}[rule]
+   var expected=float(data.boosts.get(field,0.0 if field=="rescue" else 1.0)) if room.owner==0 else 0.0 if field=="rescue" else 1.0
+   if not is_equal_approx(float(room[rule]),expected):return false
+  var tiles=[]
+  for b in room.buildings:
+   if not b is Dictionary or b.get("kind","") not in Catalog.BUILDINGS or not whole(b.get("tile"),0,map.rooms[i].tiles.size()-1) or b.tile in tiles or not whole(b.get("level"),1,Catalog.building_max_level(b.kind)) or not b.get("specialization","") is String:return false
+   tiles.append(b.tile)
+   var branch=b.specialization
+   if branch!="" and (branch not in StrategyCatalog.branches(b.kind) or b.level<5):return false
+   if b.kind in ["turret","heavy"] and b.level>=5 and branch=="":return false
+   var ceiling=Vector2(Catalog.BUILDINGS[b.kind].gold,Catalog.BUILDINGS[b.kind].power)
+   for level in range(1,int(b.level)):ceiling+=Catalog.upgrade_cost(b.kind,level)
+   if branch!="":ceiling+=StrategyCatalog.BRANCH_FEE
+   if not number(b.get("invested_gold"),0,ceiling.x+.0001) or not number(b.get("invested_power"),0,ceiling.y+.0001) or not number(b.get("cooldown"),0,10):return false
+ if data.rooms[int(data.player_room)].owner!=0 or not data.rooms[int(data.player_room)].alive or not data.rooms[int(data.player_room)].sleeping:return false
+ if owners.size()-1!=data.bot_claimed or not whole(data.eliminations,0,6) or not whole(data.shots):return false
+ var fx=data.items
+ for key in ITEM_NUMBERS:
+  if not number(fx.get(key),0,10000):return false
+ if not whole(fx.legendary_used,0,1) or not fx.get("feather_used") is bool or not fx.get("timers") is Dictionary or fx.timers.size()>20 or not point(fx.get("decoy_point")) or not fx.get("trap") is Dictionary:return false
+ for key in fx.timers:
+  if key not in ItemCatalog.IDS or not number(fx.timers[key],0,60):return false
+ if not fx.trap.is_empty() and (not point(fx.trap.get("position")) or not number(fx.trap.get("remaining"),0,45)):return false
+ return true
+static func restore(data) -> MatchModel:
+ if not valid(data):return null
+ var model=MatchModel.new();var run=EndlessRun.new()
+ if not run.configure(model,data.map,data.difficulty,int(data.seed),int(data.run_id),data.boosts):return null
+ model.random.state=int(data.rng);model.time=data.time;model.preparation=data.preparation
+ model.player_room=int(data.player_room);model.player_position=vec(data.player_position);model.bot_claimed=int(data.bot_claimed)
+ model.eliminations=int(data.eliminations);model.shots=int(data.shots);model.damage_dealt=data.damage
+ for i in range(6):
+  var room=model.rooms[i];var saved=data.rooms[i]
+  room.owner=int(saved.owner);room.profile=saved.profile;room.resident_position=vec(saved.position)
+  for key in ROOM_NUMBERS+ROOM_FLAGS:room.set(key,saved[key])
+  for b in saved.buildings:
+   var building=b.duplicate(true);building.erase("tile");building.flash=0.0
+   room.buildings[int(b.tile)]=building
+ for key in ITEM_NUMBERS:model.items.set(key,data.items[key])
+ model.items.feather_used=data.items.feather_used;model.items.timers=data.items.timers.duplicate(true);model.items.decoy_point=vec(data.items.decoy_point)
+ if not data.items.trap.is_empty():model.items.trap={"position":vec(data.items.trap.position),"remaining":data.items.trap.remaining}
+ run.wave=int(data.completed);run.completed=int(data.completed);run.sealed_wave=run.completed;run.phase="intermission"
+ model.hunter.hp=0;model.hunter.state=HunterState.State.DEAD
+ return model

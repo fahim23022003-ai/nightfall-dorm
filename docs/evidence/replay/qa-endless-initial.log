@@ -1,0 +1,34 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: REPLAY ENDLESS: real paid Inferno activates
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] transitions (res://tests/replay_endless.gd:40)
+       [2] run (res://tests/replay_endless.gd:81)
+ERROR: REPLAY ENDLESS: restore retains paid building/actual resources
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] transitions (res://tests/replay_endless.gd:52)
+       [2] run (res://tests/replay_endless.gd:81)
+ERROR: REPLAY ENDLESS: dead-target burn/control cannot transfer to fresh Hunter
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] transitions (res://tests/replay_endless.gd:59)
+       [2] run (res://tests/replay_endless.gd:81)
+ERROR: Cannot represent 99999999999999999999 as a 64-bit signed integer, since the value is too large.
+   at: _to_int (core/string/ustring.cpp:2284)
+   GDScript backtrace (most recent call first):
+       [0] valid (res://scripts/replay_snapshot.gd:38)
+       [1] invalid_snapshots (res://tests/replay_endless.gd:73)
+       [2] run (res://tests/replay_endless.gd:81)
+ERROR: Cannot represent 99999999999999999999 as a 64-bit signed integer, since the value is too large.
+   at: _to_int (core/string/ustring.cpp:2284)
+   GDScript backtrace (most recent call first):
+       [0] valid (res://scripts/replay_snapshot.gd:38)
+       [1] restore (res://scripts/replay_snapshot.gd:90)
+       [2] invalid_snapshots (res://tests/replay_endless.gd:73)
+       [3] run (res://tests/replay_endless.gd:81)
+REPLAY_ENDLESS_CHECKS=64 FAILURES=3

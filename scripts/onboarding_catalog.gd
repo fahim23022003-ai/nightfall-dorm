@@ -5,7 +5,7 @@ const MAX_CASH=100000000
 const PRICES={"repair":18,"gold":16,"battery":16,"radar":12}
 const RM={"win_min":24,"win_max":32,"performance_cap":12,"hard":10,"hell":20,"loss_min":3,"loss_max":5,"loss_seconds":90.0,"loss_contribution":100.0}
 static func cash_reward(model,rng: RandomNumberGenerator) -> int:
- if model.tutorial_mode or not RankCatalog.performance(model).eligible:return 0
+ if model.tutorial_mode or model.run_kind!="campaign" or not RankCatalog.performance(model).eligible:return 0
  var r=model.player()
  if r==null:return 0
  if model.result=="victory" and r.alive and model.hunter.hp<=0:

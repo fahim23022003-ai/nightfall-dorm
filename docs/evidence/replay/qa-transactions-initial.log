@@ -1,0 +1,22 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: REPLAY ENDLESS: checkpoint may hold legitimately armed unspent coupon
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] durable_caps (res://tests/replay_transactions.gd:6)
+       [2] run (res://tests/replay_transactions.gd:100)
+ERROR: REPLAY ENDLESS: post-checkpoint discounted purchase consumes real coupon exactly once
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] durable_caps (res://tests/replay_transactions.gd:11)
+       [2] run (res://tests/replay_transactions.gd:100)
+ERROR: REPLAY ENDLESS: another persistent match explicitly supersedes/rejects old run resume
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] durable_caps (res://tests/replay_transactions.gd:25)
+       [2] run (res://tests/replay_transactions.gd:100)
+REPLAY_STRESS_WAVES=25 MAX_SAVE_BYTES=11879
+REPLAY_TRANSACTION_CHECKS=272 FAILURES=3

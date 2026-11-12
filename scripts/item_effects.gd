@@ -67,6 +67,7 @@ func emit_item(id: String,model,value=0.0,phase="activate"):
 func can_activate(id: String,model) -> String:
  if not ItemCatalog.ITEMS.has(id): return "Unknown item."
  if not model.running or model.result!="": return "Items require an active, unpaused match."
+ if model.run_kind=="endless" and model.endless!=null and model.endless.phase=="intermission":return "Continue the next wave before activating items."
  var room=model.player()
  if room==null or not room.alive or not room.sleeping: return "Occupy your bed first."
  if ItemCatalog.legendary(id) and legendary_used>=ItemCatalog.TUNING.legendary_limit: return "Legendary power already used this match."

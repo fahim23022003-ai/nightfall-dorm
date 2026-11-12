@@ -41,6 +41,7 @@ var temporary_income=1.0
 var item_bonus_income=0.0
 var coupon_armed=false
 var coupon_payment: Callable
+var rescue_payment: Callable
 var strategy_enabled=false
 var trait_id=""
 var trait_modifiers={"door":1.0,"income":1.0,"power":1.0}
@@ -71,6 +72,7 @@ func apply_boosts(boosts: Dictionary):
 
 func try_rescue() -> bool:
  if rescue_used or rescue_fraction<=0 or not alive or door_hp<=0 or door_hp>max_hp()*0.25: return false
+ if rescue_payment.is_valid() and not rescue_payment.call():return false
  rescue_used=true
  door_hp=minf(max_hp(),door_hp+max_hp()*rescue_fraction)
  return true

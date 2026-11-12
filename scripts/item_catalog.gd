@@ -45,7 +45,7 @@ static func roll(result: String,rng: RandomNumberGenerator) -> String:
   if value<=0: return IDS[i]
  return IDS[0]
 static func reward_eligible(model) -> bool:
- if model.tutorial_mode:return false
+ if model.tutorial_mode or model.run_kind!="campaign":return false
  var r=model.player()
  if r==null or not RankCatalog.performance(model).eligible: return false
  if model.result=="victory": return model.hunter.hp<=0 and r.alive

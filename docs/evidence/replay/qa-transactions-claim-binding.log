@@ -1,0 +1,16 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: REPLAY ENDLESS: claim after pre-room Game bind installs durable rank-rescue callback
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] automatic_caps (res://tests/replay_transactions.gd:56)
+       [2] run (res://tests/replay_transactions.gd:113)
+ERROR: REPLAY ENDLESS: empty-loadout rank rescue durably marks once without any manual item activation
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] automatic_caps (res://tests/replay_transactions.gd:60)
+       [2] run (res://tests/replay_transactions.gd:113)
+REPLAY_STRESS_WAVES=25 MAX_SAVE_BYTES=11879
+REPLAY_TRANSACTION_CHECKS=284 FAILURES=2

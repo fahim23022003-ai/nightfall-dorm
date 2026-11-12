@@ -1,0 +1,9 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: REPLAY PITY: revealing already-rolled spin consumes receipt only
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_pity.gd:12)
+       [1] transactions (res://tests/replay_pity.gd:76)
+       [2] run (res://tests/replay_pity.gd:85)
+REPLAY_PITY_CHECKS=20179 VICTORY_DRAWS=6000 FAILURES=1

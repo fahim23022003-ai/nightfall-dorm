@@ -121,7 +121,7 @@ func _boss_tick(delta: float, model) -> bool:
    model.record_event("boss_awakened",target,{"position":position})
   return true
  if hp>0 and not transformed and boss_policy.get("enabled",false) and state not in [State.DORMANT,State.DEAD,State.BREACH,State.EXIT]:
-  var active=model.time-model.preparation
+  var active=model.hunter_active_seconds()
   if active>=boss_policy.opening and (hp/maxf(1,max_hp)<=boss_policy.hp_fraction or active>=boss_policy.deadline):
    _begin_transformation(model)
    return true
@@ -160,17 +160,17 @@ func _boss_strike(room, model):
   surge_remaining=BossCatalog.SURGE_SECONDS
   model.record_event("boss_surge",target,{"duration":surge_remaining})
  else:
-  _damage_door(room,model,damage*data.damage)
+  _damage_door(room,model,damage*data.damage,attack)
   model.record_event("boss_impact",target,{"attack":attack})
  cooldown=interval*data.recovery*float(boss_policy.get("recovery",1.0))
 
-func _damage_door(room, model, amount: float):
+func _damage_door(room, model, amount: float,source: String="door strike"):
  var old_hp=room.door_hp
  amount=model.items.absorb(amount,model)
  var rescued=room.index==model.player_room and model.items.guardian_intercept(amount,model)
  if not rescued: room.door_hp=maxf(0,room.door_hp-amount)
  room.door_damage_taken+=maxf(0,old_hp-room.door_hp)
- model.record_event("door_damage",target,{"damage":maxf(0,old_hp-room.door_hp),"hp":room.door_hp,"max_hp":room.max_hp()})
+ model.record_event("door_damage",target,{"damage":maxf(0,old_hp-room.door_hp),"hp":room.door_hp,"max_hp":room.max_hp(),"source":source})
  if old_hp>0 and room.door_hp<=0: model.record_event("door_break",target)
  if room.index==model.player_room and not rescued: model.items.feather_cross(old_hp,model)
  if not rescued: room.try_rescue()
@@ -299,15 +299,17 @@ func tick(delta: float, match_state):
   siege_seconds+=delta
   reassess_seconds+=delta
   match_state.rooms[target].repair_factor=lerpf(1.0,profile.repair_floor,clampf(minf(siege_seconds,maxf(0,match_state.time-match_state.preparation-profile.opening))/profile.siege_ramp,0,1))
+  if match_state.run_kind=="endless" and match_state.endless!=null:match_state.rooms[target].repair_factor*=match_state.endless.repair_effectiveness()
   _previous_siege_room=target
  windup_remaining=maxf(0,cooldown-delta) if charged_ready or archetype_primed or boss_attack!="" else 0.0
  if state == State.DEAD or match_state.time < match_state.preparation:
   return
  if _boss_tick(delta,match_state): return
- var active_seconds=maxf(0,match_state.time-match_state.preparation)
+ var active_seconds=match_state.hunter_active_seconds()
  var next_level=1 if active_seconds<profile.opening else 2+int((active_seconds-profile.opening)/profile.growth_seconds)
  level=maxi(level,next_level)
  var growth=growth_at(active_seconds)
+ if match_state.run_kind=="endless":growth=minf(1.0,growth);level=mini(level,2)
  var tuning=_tuning()
  if growth>applied_growth:
   var added=(growth-applied_growth)*Catalog.HUNTER.hp_growth*tuning.hp
@@ -409,7 +411,7 @@ func tick(delta: float, match_state):
     charged_ready=false
     windup_remaining=0
     encounter_attacks+=1
-    _damage_door(room,match_state,damage*strike_scale)
+    _damage_door(room,match_state,damage*strike_scale,"charged heavy strike" if strike_scale>1.0 else "door strike")
     cooldown += interval
     archetype_primed=false
     if archetype=="ravager" and encounter_attacks%3==0:cooldown+=.8
