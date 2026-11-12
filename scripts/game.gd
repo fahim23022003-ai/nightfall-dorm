@@ -462,6 +462,12 @@ func focus_camera(snap: bool=false,delta: float=0.016):
    # Fixed room framing includes heads/scythe above upward-facing doors.
    extent=extent.expand(observed.door_approach()+Vector2(0,-100))
    extent=extent.expand(observed.door_approach()+Vector2(0,40))
+   # Include a live local attacker as it approaches; drawer state is never a
+   # framing input. Distant Hunters cannot zoom another room out.
+   var local_hunter=model.hunter
+   if local_hunter.hp>0 and local_hunter.target==observed.index and local_hunter.state in [HunterState.State.MOVE,HunterState.State.ATTACK,HunterState.State.BREACH,HunterState.State.TRANSFORM] and local_hunter.position.distance_to(observed.door_approach())<=150:
+    extent=extent.expand(local_hunter.position+Vector2(-50,-105))
+    extent=extent.expand(local_hunter.position+Vector2(50,45))
    var available=Vector2(1160,470)
    zoom=minf(available.x/extent.size.x,available.y/extent.size.y)*zoom_factor
    var desired=Vector2(640,385)
