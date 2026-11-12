@@ -33,7 +33,9 @@ Native Windows/GPU/high-DPI/input/audio/human balance remain UNVERIFIED.
 See [final audit report](PHASE_6_FINAL_AUDIT_REPORT.md),
 [Windows checklist](WINDOWS_PLAYTEST_GUIDE.md) and
 [current limitations](KNOWN_LIMITATIONS.md). Preserve saves/use separate test
-profiles. Final Git delivery receipt follows actual evidence push. STOP AFTER PHASE 6.
+profiles. Complete source/evidence `8e099a58663652d81f99672a0cc23229436f1f41` is VERIFIED PUSHED: remote SHA matched
+local HEAD and content working tree was clean. Subsequent documentation-only
+receipt SHA is in Git history/final response. Main unchanged. STOP AFTER PHASE6.
 
 ---
 
