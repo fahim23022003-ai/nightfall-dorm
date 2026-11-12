@@ -40,7 +40,7 @@ func screen(name):
   for state in ["normal","hover","pressed","disabled","focus"]:check(b.get_theme_stylebox(state) is StyleBoxTexture,name+" dimensional button material: "+state)
   check(b.focus_mode!=Control.FOCUS_NONE,name+" keyboard focus remains available")
  for i in range(visible.size()):
-  for j in range(i):check(not visible[i].get_global_rect().intersects(visible[j].get_global_rect()),name+" interactive buttons do not overlap")
+  for j in range(i):check(not visible[i].get_global_rect().intersects(visible[j].get_global_rect()),name+" interactive buttons do not overlap: "+visible[i].text+" "+str(visible[i].get_global_rect())+" / "+visible[j].text+" "+str(visible[j].get_global_rect()))
  for label in controls(game.ui.panel,Label):
   if label.is_visible_in_tree():check(inside(label.get_global_rect(),Rect2(0,0,1280,720)),name+" label fits logical viewport: "+label.text.left(35))
 func artwork():
@@ -154,9 +154,11 @@ func match_and_branch():
  check(options.size()==2,"exactly two mutually exclusive branch choices")
  for b in options:
   check(b.icon!=null and inside(b.get_global_rect(),game.ui.context_box.get_global_rect()),"branch art/control fits actual inspector")
-  check(b.text.contains("G /") and b.tooltip_text.contains("One branch only"),"branch actual price/tradeoff is visible")
+  check(b.text.contains("Gold /") and b.tooltip_text.contains("One branch only"),"branch actual price/tradeoff is visible")
  var wallet=[r.gold,r.electricity];var quote=Catalog.upgrade_cost("turret",4)+StrategyCatalog.BRANCH_FEE
  await click(options[0]);await settle()
+ check(r.buildings[0].level==4 and r.gold==wallet[0] and r.electricity==wallet[1],"branch preview cannot spend before explicit confirmation")
+ await click(game.ui.branch_confirm);await settle()
  check(r.buildings[0].level==5 and r.buildings[0].specialization=="precision","actual branch mouse input buys one specialization")
  check(absf(wallet[0]-r.gold-quote.x)<.00001 and absf(wallet[1]-r.electricity-quote.y)<.00001,"branch UI charges actual exact Gold and Electricity")
  check(game.ui.context_mode=="upgrade" and game.ui.selected_details.text.contains("Heavy Precision"),"successful branch returns to truthful selected-building progression")
@@ -189,10 +191,11 @@ func refund_labels():
    game.selected_tile=0;game.ui.open_context();game.ui.update_match();await settle()
    var b=game.ui.actions.sell;var refund=r.building_refund(0)
    check(b.is_visible_in_tree() and not b.disabled and b.icon!=null,"real max-tier Sell remains actionable with recognizable icon")
-   check(b.text=="Sell · +%.2fG / +%.2fE (50%%)" % [refund.x,refund.y],"Sell names both actual resource refunds and50% without abbreviated amounts")
+   check(b.text=="Sell · 50%% actual investment\n+%.2f Gold / +%.2f Electricity" % [refund.x,refund.y],"Sell names both actual resource refunds and50% without abbreviated amounts")
    var style=b.get_theme_stylebox("normal")
    var icon_width=minf(b.get_theme_constant("icon_max_width"),float(b.icon.get_width())*(b.size.y-style.get_minimum_size().y)/b.icon.get_height())
-   var text_width=b.get_theme_font("font").get_string_size(b.text,HORIZONTAL_ALIGNMENT_LEFT,-1,b.get_theme_font_size("font_size")).x
+   var text_width=0.0
+   for line in b.text.split("\n"):text_width=maxf(text_width,b.get_theme_font("font").get_string_size(line,HORIZONTAL_ALIGNMENT_LEFT,-1,b.get_theme_font_size("font_size")).x)
    var required=text_width+icon_width+b.get_theme_constant("h_separation")+style.get_minimum_size().x
    print("PREMIUM_SELL_TEXT ",kind," discounted=",discounted," required=",required," available=",b.size.x," text=",b.text)
    check(required<=b.size.x+.1 and b.get_theme_font_size("font_size")>=16,"both exact max-tier refunds and50% fit actual icon/glyph/padding budget")

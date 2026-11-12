@@ -2,12 +2,12 @@
 
 ## Status
 
-**IMPLEMENTED:** baseline/recovery preparation only; production work pending.
+**IMPLEMENTED:** first contextual HUD and specialization workflow milestone; licensed sampled SFX assets and additional Crimson score. Boss, evolution and building integration remains in progress.
 **TESTED:** actual starting branch/HEAD and remote equality; 53 baseline render/input checks with 22 fresh screenshots; 51 baseline strategy scenarios. All 97 regular/extended baseline commands pass (1456.456 seconds), with zero engine/assertion errors or warnings.
 **FAILURES AND FIXES:** findings are being investigated; no acceptance inferred.
 **UNVERIFIED:** native Windows, physical sound/input, subjective horror, visual
 quality, beginner usability and human difficulty on this new version.
-**INCOMPLETE:** implementation and acceptance of all workstreams below.
+**INCOMPLETE:** gameplay expansion and final integrated acceptance; see table below.
 
 ## Baseline and delivery
 
@@ -20,7 +20,7 @@ evidence remain outside modification. No public release or new Phase 6 audit.
 | Workstream | Functional acceptance | Evidence status |
 | --- | --- | --- |
 | HUD | Readable hierarchy and one consistent contextual build/upgrade panel at 720p/1080p; actual mouse/keyboard flow | 53 checks / 22 screenshots passed |
-| Specializations | Actual computed stat differences, benefit/drawback, confirmation, exclusive selection | Pending |
+| Specializations | Actual computed stat differences, benefit/drawback, confirmation, exclusive selection | Early independent input QA 698/0; affected legacy branch UI 518/0 |
 | NPC / Hell | Genuine no-turret and active strategies across maps/archetypes; explain damage and targeting, preserve accessible Normal | 51 baseline cases passed |
 | Hunter evolution | All 15 distinct bounded effects, one reward per genuine unique kill, seeded choice, readable notification and sound | Pending |
 | Reaper eligibility | Diagnose actual restrictions and early deaths, communicate eligibility, genuine visible transformation | Pending |
@@ -59,3 +59,23 @@ and explain eligibility while preserving stage progression.
 Baseline source and recovery tag recorded above. Production milestones and exact
 Git delivery will be appended after implementation tests complete; this document is not a claim
 of a finished implementation or successful push.
+
+## First contextual UI checkpoint
+
+Fixed bottom actions replace shifting purchase/upgrade panels. Opening the panel
+does not move the camera on any map. BUILD purchases directly into the selected
+pad. Branch cards show computed effects; preview is free and a separate Confirm
+button makes the exclusive transaction. Current and next weapon/production values
+use effective gameplay calculations. Idle detail body collapses.
+
+Independent input QA: 698 checks, zero failures. Actual rendered UI: 301 checks
+plus 209 final clarity checks, zero failures, at 720p and 1080p. Root inspected
+the current 720p build palette. Legacy affected purchasing 908, premium UI 3483,
+branch UI 518 and onboarding 92 checks pass. Initial card/button overlaps and
+missing current-level/branch labels were fixed; diagnostic evidence is retained.
+These checks do not establish beginner usability or human approval.
+
+Early actual engine combat audio: 76 checks pass; Needle 12 launches/12 impacts
+and Arc 6/6 in each paired default/Music-muted capture. Master output remains
+nonzero with music muted; 18 PCM recordings have no full-scale samples. This
+is evidence of existing weapon playback, not yet the new boss or building events.

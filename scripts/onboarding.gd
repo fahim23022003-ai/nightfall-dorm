@@ -15,7 +15,7 @@ var progress
 var continue_button
 var sounds_seen={}
 const TITLES=["MOVE","FIND A ROOM","SLEEP","GOLD ECONOMY","ELECTRICITY","BUILD A DEFENSE","UPGRADE AND REPAIR","SURVIVE A SIMPLE THREAT","TUTORIAL COMPLETE"]
-const NOTES=["WASD or arrow keys: move toward the glowing marker.","Walk into the highlighted empty room. Press E to claim it.","Walk to the glowing bed. Press E to sleep and lock your door.","Sleep to earn Gold. Use Gold to build and upgrade. Watch the Gold counter increase.","Click a floor pad, choose Dynamo, then Confirm placement. The Dynamo produces Electricity, separately from Gold.","Use the glowing pad near your door. Build a Needle turret in range. A distant turret cannot defend this door; sell and rebuild it, or use Recover.","Click your turret and upgrade it once. Then press R to repair the damaged door.","Your practice Hunter is weak. Watch the door take a hit and your turret fire. Your practice resources and stored items are separate.","You are ready. Claim a room, sleep, build defenses and survive the night."]
+const NOTES=["WASD or arrow keys: move toward the glowing marker.","Walk into the highlighted empty room. Press E to claim it.","Walk to the glowing bed. Press E to sleep and lock your door.","Sleep to earn Gold. Use Gold to build and upgrade. Watch the Gold counter increase.","Click a floor pad, choose Dynamo, then BUILD. The Dynamo produces Electricity, separately from Gold.","Use the glowing pad near your door. Build a Needle turret in range. A distant turret cannot defend this door; sell and rebuild it, or use Recover.","Click your turret and upgrade it once. Then press R to repair the damaged door.","Your practice Hunter is weak. Watch the door take a hit and your turret fire. Your practice resources and stored items are separate.","You are ready. Claim a room, sleep, build defenses and survive the night."]
 func _init(owner):game=owner
 func _ready():
  theme=GothicTheme.make_theme(game.ui.default_font)
@@ -63,7 +63,7 @@ func free_practice_pad(r):
   if d<distance:distance=d;nearest=tile
  if r.buildings.has(nearest):r.sell_building(nearest)
  game.selected_tile=nearest
- objective.text="A practice pad near the door is ready. Click its glow, buy a Needle turret and confirm."
+ objective.text="A practice pad near the door is ready. Click its glow, then BUILD a Needle turret in the bottom panel."
 func recover():
  if phase!="tutorial":return
  game.model.running=true

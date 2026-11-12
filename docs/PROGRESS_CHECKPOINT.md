@@ -3,7 +3,9 @@
 Owner and Adie’s Windows playtest feedback supersedes earlier automated balance
 and usability assumptions. Starting clean on `work` at
 `d507600f64c3c55ff858a9d5bc5d3c938b6e5f6d`, verified equal to remote `work`.
-Recovery tag: `pre-phase5d4-d507600`. Main is outside scope; no release publication
+Recovery tag: `pre-phase5d4-d507600`. Baseline checkpoint
+`54ef155f12a6ea9b0258c1b1b8ea59c91c3498a3` is verified pushed to private `work`;
+remote SHA matched local HEAD. Main is outside scope; no release publication
 or new Phase 6 audit. Baseline complete before production edits: all 97 regular/extended commands
 pass (24.3 minutes); actual rendered baseline passes 53 checks/22 screenshots;
 independent balance baseline passes 51 cases. Original runtime and historical
@@ -14,10 +16,14 @@ and SFX assets; C independently tests integration; A audits balance; D inspects
 rendered UI and engine audio. Root owns documentation, regression integration,
 recoverable commits, Windows export and verified private Git delivery.
 
-See [current report](PHASE_5D4_REAPERS_WRATH_REPORT.md). No new feature is yet
-accepted as complete. Next: contextual HUD, tactical/NPC
-repairs, evolution, two-phase Reaper and combined ultimate, six buildings,
-sampled interactive SFX and independent integration verification.
+See [current report](PHASE_5D4_REAPERS_WRATH_REPORT.md). First contextual HUD milestone accepted: independent input QA 698/0; rendered
+UI 301/0 plus final clarity 209/0, with fixed camera across all five maps.
+Legacy affected suites: purchasing 908/0, premium UI 3483/0, branch UI 518/0,
+onboarding 92/0. Direct BUILD uses the selected pad; branch preview is free
+until explicit confirmation; current/next values use actual calculations.
+Sampled audio source/assets checkpoints 53eb50a and 2de0ea2 are local only.
+Next: tactical/NPC repairs, evolution, two-phase Reaper and combined ultimate,
+six buildings, final audio runtime and independent integration verification.
 
 ---
 

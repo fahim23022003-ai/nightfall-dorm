@@ -1,0 +1,25 @@
+{
+  "accepted": true,
+  "checks": 698,
+  "maps": 5,
+  "failures": 0,
+  "exit_code": 0,
+  "engine_errors": false,
+  "warnings": false,
+  "log": "qa-ui-final.log",
+  "baseline": "d507600f64c3c55ff858a9d5bc5d3c938b6e5f6d",
+  "head_when_recorded": "2de0ea2091e4ead02f98f079df4aa017cccfa39d",
+  "source_sha256": {
+    "tests/phase5d4_qa_ui.gd": "1294f580a8720c499d51e360b3fd59f5ea557d165c6547c95c9ceba76b1a1f86",
+    "scripts/interface.gd": "bc57b7a74a735a237bfa230ff505b70fd22f6665d078e1aad6052326581c75f9",
+    "scripts/game.gd": "7f3063a5e4dbd4ad9b836928f4c378c93e17107b13b6362d1137a969f4262d2f",
+    "scripts/bottom_context_panel.gd": "ce19f32289b1dba2ab84202c654317bceb8104f37f84b016b544395c31462bf4",
+    "scripts/building_stats.gd": "f0c03dfc8aa8c885ee02e67ac862a4afd02342b7c84a82773fe5a26877a1b353",
+    "scripts/match_model.gd": "3b068cff8696d979a8349cbb5d5423e6da00e1d8020aee693ce3c20c5b099fcf",
+    "scripts/catalog.gd": "2782a165266be2b63ffda147d9bc6a2f168223d35e6f596b1b73b41bb986cc2c",
+    "scripts/strategy_catalog.gd": "6c69f05aa8b6b614eb1736324abaab672f7f05549bbc4aa8b64f3255a76f11cb"
+  },
+  "scope": "Early UX milestone; original six machines at this gate. New six buildings/boss/evolution integration tested later.",
+  "native_windows": "UNVERIFIED",
+  "visual_quality": "Independent D actual rasters; headless C tests validate real control/data behavior."
+}

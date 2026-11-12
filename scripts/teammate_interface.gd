@@ -27,7 +27,7 @@ func create():
  update()
 func toggle_panel():
  expanded=not expanded
- if expanded:game.cancel_placement();ui.close_context()
+ if expanded:game.cancel_placement();ui.close_context();ui.items_ui.expanded=false
  update()
 func update():
  if not is_instance_valid(toggle):return

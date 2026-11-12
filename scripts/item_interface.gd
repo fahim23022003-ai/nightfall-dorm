@@ -10,6 +10,8 @@ var spin_claiming=false
 var seen_event=0
 var observed_model
 var inventory_page=0
+var expanded=false
+var item_toggle: Button
 var legendary_banner
 var legendary_name
 var observed_effects
@@ -145,17 +147,18 @@ func create_hotbar():
  legendary_name.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  legendary_banner.visible=false
  legendary_name.visible=false
- hotbar.clear()
+ hotbar.clear();expanded=false
+ item_toggle=ui.button("Items [I]",Vector2(188,88),toggle_expanded,154,44)
  var equipped=game.item_wallet().active_match.get("items",[])
  for i in range(equipped.size()):
   var slot=i
-  var b=ui.button("",Vector2(20,494+i*65),func(): game.activate_item(slot),334,58)
+  var b=ui.button("",Vector2(20+i*82,88),func(): game.activate_item(slot),78,44)
   b.add_theme_font_size_override("font_size",14)
   b.add_theme_stylebox_override("normal",GothicTheme.surface("172839",{"Common":"92B39A","Rare":"8FAFB9","Epic":"A28EB2","Legendary":"C5A56A"}[ItemCatalog.ITEMS[equipped[i]].rarity]))
   b.alignment=HORIZONTAL_ALIGNMENT_LEFT
   b.icon=load("res://assets/items/"+str(equipped[i])+".svg")
   b.expand_icon=true
-  b.add_theme_constant_override("icon_max_width",40)
+  b.add_theme_constant_override("icon_max_width",25)
   hotbar.append(b)
  feedback_label=ui.label_at("",Vector2(20,454),15,360)
  radar_label=ui.label_at("",Vector2(20,384),14,365)
@@ -206,9 +209,12 @@ func update(delta):
    elif id=="coupon" and game.model.player()!=null and game.model.player().coupon_armed:state="ARMED";special=" · 40% discount"
    elif game.item_wallet().read_only:state="UNAVAILABLE"
    elif reason!="" and fx.cooldown<=0:state="UNAVAILABLE"
-  hotbar[i].text="[%d] %s\n%s · ×%d · %s%s" % [i+1,ItemCatalog.ITEMS[id].name,ItemCatalog.ITEMS[id].rarity.to_upper(),quantity,state,special]
+  hotbar[i].text=("[%d] %s\n×%d · %s%s" % [i+1,ItemCatalog.ITEMS[id].name,quantity,state,special]) if expanded else ("[%d] ×%d\n%s" % [i+1,quantity,"%.0fs" % seconds if seconds>0 else state])
+  hotbar[i].position=Vector2(20,142+i*62) if expanded else Vector2(20+i*82,88)
+  hotbar[i].size=Vector2(334,58) if expanded else Vector2(78,44)
+  hotbar[i].add_theme_font_size_override("font_size",14 if expanded else 11)
   hotbar[i].disabled=quantity<=0 or reason!="" or game.item_wallet().read_only
-  hotbar[i].tooltip_text=ItemCatalog.ITEMS[id].description+"\n"+(reason if reason!="" else "Ready")
+  hotbar[i].tooltip_text=ItemCatalog.ITEMS[id].name+" · "+state+special+"\n"+ItemCatalog.ITEMS[id].description+"\n"+(reason if reason!="" else "Ready")
  if is_instance_valid(feedback_label):
   feedback_label.text=""
   if not fx.events.is_empty():
@@ -224,3 +230,10 @@ func update(delta):
  if is_instance_valid(radar_label):
   radar_label.text="RADAR %.0fs · Hunter L%d at %.0f,%.0f
 Target %s · Map / M to locate" % [fx.timers.radar,game.model.hunter.level,game.model.hunter.position.x,game.model.hunter.position.y,"Room %d" % (game.model.hunter.target+1) if game.model.hunter.target>=0 else "seeking"] if float(fx.timers.get("radar",0))>0 else ""
+
+func toggle_expanded():
+ expanded=not expanded
+ if expanded:
+  game.ui.help_open=false
+  if game.ui.teammates!=null:game.ui.teammates.expanded=false;game.ui.teammates.update()
+ update(0)

@@ -53,12 +53,16 @@ var teammates: TeammateInterface
 var replay_ui: ReplayInterface
 var items_ui
 var progression: ProgressionInterface
+var help_open=false
 var current_screen="menu"
 var horror_layer: Control
 var feedback_text=""
 var feedback_until=0.0
 var specialization_items: Array=[]
 var specialization_structure=""
+var bottom_context: BottomContextPanel
+var branch_confirm: Button
+var pending_branch=""
 
 func _init(owner_game=null): game=owner_game
 
@@ -88,7 +92,7 @@ func clear():
  pause_items.clear()
  card_visuals.clear()
  specialization_items.clear();specialization_structure=""
- context_open=false
+ context_open=false;help_open=false;bottom_context=null;branch_confirm=null;pending_branch=""
  feedback_text=""
  feedback_until=0
 
@@ -155,7 +159,14 @@ func button(text: String,pos: Vector2,callback: Callable,width: float=240,height
  b.position=pos
  b.size=Vector2(width,height)
  b.pressed.connect(func(): game.audio_event("button"))
- b.pressed.connect(callback)
+ b.pressed.connect(func():
+  if bool(b.get_meta("ignore_double_release",false)):
+   b.set_meta("ignore_double_release",false);return
+  callback.call())
+ b.gui_input.connect(func(event):
+  if event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT and event.pressed:b.set_meta("ignore_double_release",event.double_click))
+ b.mouse_entered.connect(func():
+  if game.audio_system.streams.has("ui_hover"):game.audio_event("ui_hover"))
  var primary=text.begins_with("Start") or text.begins_with("Confirm") or text.begins_with("Continue") or text.begins_with("Claim reward") or text.begins_with("Buy")
  b.set_meta("visual_role","primary" if primary else "secondary")
  # Disabled economic actions still explain an unaffordable attempt audibly.
@@ -218,7 +229,7 @@ func show_help():
   return
  box(Rect2(90,65,1100,590))
  label_at("SURVIVAL HANDBOOK",Vector2(125,92),30,950,true)
- label_at("WASD / arrows: move     E: room / bed     M: map     Wheel: zoom     R: repair\n\nFind a vacant bedroom, press E inside, then E near its bed to sleep.\nGold starts while sleeping. You cannot leave the bed afterward.\n\nClick a floor pad, choose a building card, then confirm its green preview.\nRed previews cannot be purchased. Escape cancels without spending.\nClick a machine for its upgrade panel. Click the bottom bed/door summaries\nfor upgrades and repair. A Dynamo produces electricity for advanced purchases.\n\nThe hunter arrives after 30 seconds. Your turrets fire real projectiles.\nDefeat the hunter to win; your elimination loses. Doors need bed progression.\nM switches between focused play and the strategic overview.\nEscape closes cards first, then pauses. Help/G toggles the short guide.",Vector2(125,156),19,1020)
+ label_at("WASD / arrows: move     E: room / bed     M: map     Wheel: zoom     R: repair\n\nFind a vacant bedroom, press E inside, then E near its bed to sleep.\nGold starts while sleeping. You cannot leave the bed afterward.\n\nClick a floor pad, then BUILD on a machine card in the bottom panel.\nDisabled cards explain missing resources. Escape closes without spending.\nClick a machine for its upgrade panel. Click the bottom bed/door summaries\nfor upgrades and repair. A Dynamo produces electricity for advanced purchases.\n\nThe hunter arrives after 30 seconds. Your turrets fire real projectiles.\nDefeat the hunter to win; your elimination loses. Doors need bed progression.\nM switches between focused play and the strategic overview.\nEscape closes cards first, then pauses. Help/G toggles the short guide.",Vector2(125,156),19,1020)
  button("Back",Vector2(125,585),show_menu,180,46)
 
 func show_settings():
@@ -275,10 +286,12 @@ func show_match():
   replay_ui.wave_label=label_at("TEMPORARY · PAUSE TO RESET" if game.model.run_kind=="practice" else "NORMALIZED · FIXED 30Hz",Vector2(34,53),10,252)
  if CosmeticPresentation.equipped(game,"badge"):premium_icon("reaper_crest",Vector2(242,27),Vector2(27,27))
  premium_icon("gold",Vector2(280,25),Vector2(32,32))
- gold_label=label_at("—",Vector2(320,24),25,98)
+ label_at("GOLD",Vector2(320,14),11,126,true)
+ gold_label=label_at("—",Vector2(320,32),22,126)
  gold_label.modulate=Color("DFC48B")
  premium_icon("power",Vector2(429,23),Vector2(30,36))
- power_label=label_at("—",Vector2(468,24),25,98)
+ label_at("ELECTRICITY",Vector2(468,14),11,106,true)
+ power_label=label_at("—",Vector2(468,32),22,106)
  power_label.modulate=Color("8CD6DA")
  phase_label=label_at("",Vector2(576,22),18,120)
  hunter_label=label_at("",Vector2(704,21),18,290)
@@ -300,9 +313,9 @@ func show_match():
  pause_button=button("Wave" if replay_ui.preparing else "Ⅱ",Vector2(1174,24),replay_ui.show_intermission if replay_ui.preparing else game.toggle_pause,62,36)
  pause_button.tooltip_text="Pause / resume [Esc]"
  guide_box=box(Rect2(20,92,334,112),"294957","7BE3A1")
- guide_label=label_at("",Vector2(34,105),18,306)
+ guide_label=label_at("",Vector2(34,153),16,306)
  guide_label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
- guide_label.size.y=90
+ guide_label.size.y=160
  warning_box=box(Rect2(390,88,500,48),"583344","F05467")
  warning_label=label_at("",Vector2(402,98),18,476,true)
  warning_label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
@@ -326,17 +339,17 @@ func show_match():
   var id=kind
   var data=Catalog.BUILDINGS[kind]
   var at=Vector2(12+(n%3)*114,42+(n/3)*152)
-  var b=button("",at,func(): game.begin_placement(id),108,142,context_box)
+  var b=button("",at,func(): game.build_selected(id),108,142,context_box)
   var art=icon(kind,at+Vector2(29,5),Vector2(50,48),context_box)
   var display_names={"turret":"Needle\nturret","heavy":"Arc\nturret","generator":"Dynamo","repair":"Repair\nstation","economy":"Dream\namplifier","enhancer":"Target\nrelay"}
-  var name=label_at(display_names[kind],at+Vector2(3,53),16,102,false,context_box)
+  var name=label_at(display_names.get(kind,data.name),at+Vector2(3,53),16,102,false,context_box)
   name.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
   name.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
   name.size=Vector2(102,38)
   var cost=label_at("%d G" % data.gold+("+%d E" % data.power if data.power>0 else ""),at+Vector2(3,94),16,102,false,context_box)
   cost.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
   cost.modulate=Color("FFD27A")
-  var effect=label_at(descs[kind],at+Vector2(3,118),16,102,false,context_box)
+  var effect=label_at(descs.get(kind,data.get("role","Defense")),at+Vector2(3,118),16,102,false,context_box)
   effect.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
   actions["build:"+kind]=b
   build_items.append_array([b,art,name,cost,effect])
@@ -359,15 +372,15 @@ func show_match():
   var branch_button=button("",Vector2(14,76+i*105),func():
    var room=game.model.player()
    if room==null or (specialization_structure=="" and not room.buildings.has(game.selected_tile)):return
-   var ids=StrategyCatalog.branches(specialization_structure if specialization_structure!="" else room.buildings[game.selected_tile].kind)
-   if ids.size()==2:
-    var success=room.specialize_structure(specialization_structure,ids[choice]) if specialization_structure!="" and game.model._can_purchase() else game.model.specialize_building(game.selected_tile,ids[choice])
-    if success:context_mode=specialization_structure if specialization_structure!="" else "upgrade";specialization_structure=""
-    purchase(success);refresh_context(),336,96,context_box)
+   var kind=specialization_structure if specialization_structure!="" else room.buildings[game.selected_tile].kind
+   var ids=StrategyCatalog.branches(kind)
+   if ids.size()==2:pending_branch=ids[choice];refresh_context(),336,96,context_box)
   branch_button.name="specialization_"+str(i)
   specialization_items.append(branch_button)
  var branch_cancel=button("Back · keep level 4",Vector2(14,294),func():context_mode=specialization_structure if specialization_structure!="" else "upgrade";specialization_structure="";refresh_context(),336,36,context_box)
  specialization_items.append(branch_cancel)
+ branch_confirm=button("Confirm exclusive specialization",Vector2(14,330),confirm_specialization,336,38,context_box)
+ specialization_items.append(branch_confirm)
  var bed_art=icon("bed",Vector2(14,52),Vector2(80,108),context_box)
  bed_details=label_at("",Vector2(104,50),18,244,false,context_box)
  bed_details.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
@@ -404,14 +417,15 @@ func show_match():
  horror_layer.draw.connect(func(): game.horror.render_notifications(draw_target))
 
  items_ui.create_hotbar()
- if not game.mobile_mode:teammates.create()
+ if not game.mobile_mode:
+  teammates.create()
+  bottom_context=BottomContextPanel.new(self);bottom_context.install()
 
 func open_context():
  if game.watched_room>=0:return
  teammates.expanded=false;teammates.update()
+ items_ui.expanded=false;help_open=false
  game.cancel_placement()
- game.full_map=false
- game.focus_camera(true)
  context_open=true
  var room=game.model.player()
  context_mode="upgrade" if room!=null and room.buildings.has(game.selected_tile) else "build"
@@ -422,8 +436,6 @@ func open_room_panel(kind: String):
  teammates.expanded=false;teammates.update()
  if game.model.player()==null: return
  game.cancel_placement()
- game.full_map=false
- game.focus_camera(true)
  context_open=true
  context_mode=kind
  refresh_context()
@@ -437,15 +449,16 @@ func open_confirmation():
 func close_context():
  game.pending_build=""
  game.placement_on_tile=false
- context_open=false
- if is_instance_valid(context_box): context_box.visible=false
+ context_open=false;pending_branch=""
+ if is_instance_valid(context_box): context_box.visible=bottom_context!=null
  for node in build_items+upgrade_items+bed_items+door_items+confirmation_items+specialization_items: node.visible=false
+ if bottom_context!=null:bottom_context.refresh()
 
 func refresh_context():
  if not context_open or game.model.player()==null: close_context(); return
  var room=game.model.player()
  var heights={"build":382,"upgrade":300,"bed":250,"door":300,"confirm":272,"specialize":344}
- if not game.mobile_mode:
+ if not game.mobile_mode and bottom_context==null:
   context_box.position=Vector2(900,628-heights[context_mode])
   context_box.size=Vector2(364,heights[context_mode])
  context_box.visible=true
@@ -466,12 +479,15 @@ func refresh_context():
    var button=specialization_items[i+1]
    var id=ids[i];var data=StrategyCatalog.BRANCHES[id]
    var stats={"precision":"+55% damage · 40% slower shots\n15% shorter range (204px)","suppression":"20% weaker · 18% faster shots\nSlow 15% / Reaper 7.5% for 1s","focus":"+50% damage · 35% slower shots","storm":"28% weaker · 28% faster shots\n+20% range · +25% projectile speed"}
-   button.text=data.name+"\n"+stats.get(id,data.description)+"\n%.1fG / %.1fE%s" % [quote.x,quote.y," · COUPON" if room.coupon_armed and specialization_structure=="" else ""]
+   var preview=BuildingStats.branch_preview(game.model,room,b,id,specialization_structure)
+   var lines=preview.split("\n");lines.remove_at(lines.size()-1)
+   button.text=("SELECTED · " if pending_branch==id else "CHOOSE · ")+data.name+"\n"+"\n".join(lines)+"\n%.1f Gold / %.1f Electricity%s" % [quote.x,quote.y," · COUPON" if room.coupon_armed and specialization_structure=="" else ""]
    button.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
    button.icon=PremiumButton.texture(id);button.expand_icon=true;button.add_theme_constant_override("icon_max_width",36)
    button.add_theme_font_size_override("font_size",14)
    button.tooltip_text=data.description+"\n"+("Full-price level6 upgrade; coupon remains for a placeable machine." if specialization_structure!="" else "Price includes level5 upgrade and25G/4E branch fee.")+" One branch only; level10cap."
    button.disabled=not game.model._can_purchase() or b.level!=4 or b.get("specialization","")!="" or room.bed_level<2 or room.door_level<2 or room.gold<quote.x or room.electricity<quote.y
+  branch_confirm.disabled=pending_branch not in ids or not game.model._can_purchase() or room.gold<quote.x or room.electricity<quote.y
  elif context_mode=="upgrade" and room.buildings.has(game.selected_tile):
   var b=room.buildings[game.selected_tile]
   selected_icon.texture=game.presentation.cartoon[game.presentation.building_key(b.kind,b.level)]
@@ -479,14 +495,14 @@ func refresh_context():
   var list_price=Catalog.upgrade_cost(b.kind,b.level)
   var quote=room.building_price(list_price.x,list_price.y)
   selected_details.tooltip_text=StrategyCatalog.BRANCHES.get(b.get("specialization",""),{}).get("description","")
-  selected_details.text=selected_stats(b)+"\n"+action_reason("upgrade")+(" · COUPON %.1fG/%.1fE" % [quote.x,quote.y] if room.coupon_armed else "")
+  selected_details.text=BuildingStats.next_machine(game.model,room,game.selected_tile)+"\n"+action_reason("upgrade")+(" · COUPON %.1fG/%.1fE" % [quote.x,quote.y] if room.coupon_armed else "")
   if room.strategy_enabled and b.level==4:actions.upgrade.text="Specialize → Level 5"
  elif context_mode=="bed":
   context_title.text="BED LEVEL %d / 10" % (room.bed_level+1)
-  bed_details.text="Income %.1f gold/s\nNext: %s\n%s" % [room.income_rate(),"MAX" if room.bed_level>=9 else str(Catalog.BED_INCOME[room.bed_level+1])+" gold/s",action_reason("bed")]
+  bed_details.text=BuildingStats.structure_preview(game.model,room,"bed")+"\n"+action_reason("bed")
  elif context_mode=="door":
   context_title.text="DOOR LEVEL %d / 10" % (room.door_level+1)
-  door_details.text="%d / %d HP\nNext: %s\n%s" % [room.door_hp,room.max_hp(),"MAX" if room.door_level>=9 else str(Catalog.DOOR_HP[room.door_level+1]*room.door_multiplier*room.trait_modifiers.door*StrategyCatalog.BRANCHES.get(room.door_branch,{}).get("hp",1.0))+" HP",action_reason("door")]
+  door_details.text=BuildingStats.structure_preview(game.model,room,"door")+"\n"+action_reason("door")
  elif context_mode=="confirm" and game.pending_build!="":
   var data=Catalog.BUILDINGS[game.pending_build]
   context_title.text="PLACE "+data.name.to_upper()
@@ -495,8 +511,12 @@ func refresh_context():
   var quoted=room.building_price(data.gold,data.power)
   confirmation_details.text="%.1f G / %.1f E%s\n%s" % [quoted.x,quoted.y," · COUPON40%" if room.coupon_armed else "",reason if reason!="" else "Pad locked. Confirm to buy, or click another pad."]
   confirm_button.disabled=reason!=""
- if context_mode=="bed" and room.bed_branch!="":bed_details.text+="\n"+StrategyCatalog.BRANCHES[room.bed_branch].name;bed_details.tooltip_text=StrategyCatalog.BRANCHES[room.bed_branch].description
- if context_mode=="door" and room.door_branch!="":door_details.text+="\n"+StrategyCatalog.BRANCHES[room.door_branch].name;door_details.tooltip_text=StrategyCatalog.BRANCHES[room.door_branch].description
+ if context_mode=="bed" and room.bed_branch!="":bed_details.tooltip_text=StrategyCatalog.BRANCHES[room.bed_branch].description
+ if context_mode=="door" and room.door_branch!="":door_details.tooltip_text=StrategyCatalog.BRANCHES[room.door_branch].description
+ if context_mode=="specialize":
+  branch_confirm.visible=true
+  branch_confirm.text="Confirm "+StrategyCatalog.BRANCHES.get(pending_branch,{}).get("name","exclusive choice")
+ if bottom_context!=null:bottom_context.refresh()
  if game.mobile_mode: game.mobile_ui.context(self)
 
 func selected_stats(b) -> String:
@@ -513,7 +533,7 @@ func upgrade_selected():
  var room=game.model.player()
  if room!=null and room.strategy_enabled and room.buildings.has(game.selected_tile):
   var b=room.buildings[game.selected_tile]
-  if b.level==4:specialization_structure="";context_mode="specialize";refresh_context();return
+  if b.level==4:pending_branch="";specialization_structure="";context_mode="specialize";refresh_context();return
  purchase(game.model.upgrade_building(game.selected_tile))
 
 func show_pause(open: bool):
@@ -573,7 +593,7 @@ func tutorial_text() -> String:
  if room.bed_level==0 and room.door_level==0: return "4 / 5  UPGRADE\nClick the bed or door summary below."
  for b in room.buildings.values():
   if b.kind in ["turret","heavy"]: return "NIGHTWATCH READY\nSave for power and stronger defenses. Help/G hides this guide."
- return "5 / 5  FIRST DEFENSE\nClick a green floor pad, choose a turret and confirm."
+ return "5 / 5  FIRST DEFENSE\nClick a floor pad, then BUILD a turret in the bottom panel."
 
 func update_match():
  if not is_instance_valid(gold_label) or game.mode!="match": return
@@ -611,7 +631,7 @@ func update_match():
    hunter_label.text="PRACTICE HUNTER · %d / %d" % [m.hunter.hp,m.hunter.max_hp]
    hunter_detail.text="Very weak attack · practice only"
  map_button.text="Focus" if game.full_map else "Map"
- guide_box.visible=((game.tutorial_enabled and not game.full_map) or game.presentation.clock<feedback_until) and not (game.model.map_id!="legacy" and context_open)
+ guide_box.visible=((help_open and not game.full_map) or game.presentation.clock<feedback_until) and not (game.model.map_id!="legacy" and context_open)
  guide_label.visible=guide_box.visible
  if guide_label.visible: guide_label.text=feedback_text if game.presentation.clock<feedback_until else tutorial_text()
  var threat=room!=null and m.hunter.target==room.index and m.hunter.state==HunterState.State.ATTACK
@@ -634,17 +654,17 @@ func update_match():
   room_bed_summary.text="Bed L%d  ·  %.1f G/s" % [room.bed_level+1,room.income_rate()]
   room_door_summary.text="Door L%d  ·  %d/%d" % [room.door_level+1,room.door_hp,room.max_hp()]
   room_selected_summary.text=Catalog.BUILDINGS[room.buildings[game.selected_tile].kind].name if room.buildings.has(game.selected_tile) else "Build on a floor pad"
-  var bed_cost="MAX" if room.bed_level>=9 else "%dG / %dE" % [Catalog.BED_COST[room.bed_level],Catalog.BED_POWER[room.bed_level]]
-  var door_cost="MAX" if room.door_level>=9 else "%dG / %dE" % [Catalog.DOOR_COST[room.door_level],Catalog.DOOR_POWER[room.door_level]]
-  bed_button.text="Upgrade bed  ·  "+bed_cost
-  door_button.text="Upgrade door  ·  "+door_cost
+  var bed_cost="MAX" if room.bed_level>=9 else "%d Gold / %d Electricity" % [Catalog.BED_COST[room.bed_level],Catalog.BED_POWER[room.bed_level]]
+  var door_cost="MAX" if room.door_level>=9 else "%d Gold / %d Electricity" % [Catalog.DOOR_COST[room.door_level],Catalog.DOOR_POWER[room.door_level]]
+  bed_button.text="Upgrade Bed — "+bed_cost
+  door_button.text="Upgrade Door — "+door_cost
   if room.buildings.has(game.selected_tile):
    var b=room.buildings[game.selected_tile]
    var d=Catalog.BUILDINGS[b.kind]
    var refund=room.building_refund(game.selected_tile)
-   actions.sell.text="Sell · +%.2fG / +%.2fE (50%%)" % [refund.x,refund.y]
+   actions.sell.text="Sell · 50%% actual investment\n+%.2f Gold / +%.2f Electricity" % [refund.x,refund.y]
    var price=Catalog.upgrade_cost(b.kind,b.level)
-   actions.upgrade.text="MAX LEVEL" if b.level>=Catalog.building_max_level(b.kind) else "Upgrade L%d · %dG / %dE" % [b.level+1,price.x,price.y]
+   actions.upgrade.text="MAX LEVEL" if b.level>=Catalog.building_max_level(b.kind) else "Upgrade L%d — %d Gold / %d Electricity" % [b.level+1,price.x,price.y]
    if room.strategy_enabled and b.level==4:actions.upgrade.text="Specialize → Level 5"
   else: actions.upgrade.text="Select a building to upgrade"
  actions.repair.text="Repair · %.1f gold" % (room.manual_repair_cost() if room!=null else Catalog.REPAIR_COST)
@@ -666,6 +686,7 @@ func update_match():
   b.tooltip_text=(building_effect(action.trim_prefix("build:"))+"\n" if action.begins_with("build:") else "")+(reason if reason!="" else "Ready")
  refresh_context()
  if game.mobile_mode: game.mobile_ui.update_match(self)
+ if bottom_context!=null:bottom_context.refresh()
  if game.model.run_kind!="campaign":replay_ui.update_hud()
  if not game.mobile_mode:teammates.update()
 
@@ -814,5 +835,15 @@ func upgrade_structure(kind: String):
  var room=game.model.player()
  if room==null:return
  if (room.bed_level if kind=="bed" else room.door_level)==4 and (room.bed_branch if kind=="bed" else room.door_branch)=="":
-  specialization_structure=kind;context_mode="specialize";refresh_context();return
+  pending_branch="";specialization_structure=kind;context_mode="specialize";refresh_context();return
  purchase(game.model.upgrade_bed() if kind=="bed" else game.model.upgrade_door())
+
+func confirm_specialization():
+ var room=game.model.player()
+ if room==null or pending_branch=="" or not game.model._can_purchase():return
+ var ok=room.specialize_structure(specialization_structure,pending_branch) if specialization_structure!="" else game.model.specialize_building(game.selected_tile,pending_branch)
+ if ok:
+  if game.audio_system.streams.has("ui_confirm"):game.audio_event("ui_confirm")
+  context_mode=specialization_structure if specialization_structure!="" else "upgrade"
+  specialization_structure="";pending_branch=""
+ purchase(ok);refresh_context()

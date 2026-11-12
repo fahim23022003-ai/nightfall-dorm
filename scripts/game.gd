@@ -364,6 +364,7 @@ func _unhandled_input(event):
   elif event.keycode==KEY_E and model.running and watched_room<0: model.interact()
   elif event.keycode==KEY_M: toggle_map()
   elif event.keycode==KEY_G: toggle_guide()
+  elif event.keycode==KEY_I and not tutorial_active:ui.items_ui.toggle_expanded()
   elif event.keycode==KEY_R and model.running: ui.purchase(model.repair_door())
   elif event.keycode==KEY_ESCAPE:
    if pending_build!="": cancel_placement()
@@ -450,9 +451,9 @@ func focus_camera(snap: bool=false,delta: float=0.016):
   elif model.player()!=null or watched_room>=0:
    var observed=model.rooms[watched_room] if watched_room>=0 else model.player()
    var extent=observed.bounds().grow(35)
-   var available=Vector2(820,490) if ui.context_open else Vector2(1160,490)
+   var available=Vector2(1160,350)
    zoom=minf(available.x/extent.size.x,available.y/extent.size.y)*zoom_factor
-   var desired=Vector2(452,348) if ui.context_open else Vector2(640,348)
+   var desired=Vector2(640,278)
    goal=extent.get_center()+MAP_OFFSET+(get_viewport_rect().size/2-desired)/zoom
  if mobile_mode and not full_map:
   var desired=Vector2(470 if ui.context_open and model.player()!=null and model.player().sleeping else 640,340)
@@ -481,7 +482,8 @@ func change_setting(key: String,value):
  if key=="tutorial": tutorial_enabled=value
 
 func toggle_guide():
- change_setting("tutorial",not tutorial_enabled)
+ ui.help_open=not ui.help_open
+ if ui.help_open:ui.items_ui.expanded=false
 
 func request_quit():
  if closing: return
@@ -578,3 +580,11 @@ func cycle_spectator(direction: int):
  if valid.is_empty():return
  var current=valid.find(watched_room)
  spectate_room(valid[posmod(current+direction,valid.size())])
+
+func build_selected(kind: String) -> bool:
+ if mode!="match" or watched_room>=0:return false
+ var ok=model.buy(kind,selected_tile)
+ pending_build="";placement_on_tile=false
+ if ok:ui.context_open=true;ui.context_mode="upgrade"
+ ui.purchase(ok);ui.refresh_context()
+ return ok
