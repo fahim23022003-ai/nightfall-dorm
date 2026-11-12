@@ -1,0 +1,1109 @@
+{
+  "stage": "EARLY UX ONLY before boss/new-building integration",
+  "baseline_commit": "d507600f64c3c55ff858a9d5bc5d3c938b6e5f6d",
+  "tests": [
+    {
+      "label": "full-ux",
+      "checks": 301,
+      "failures": 0,
+      "exit_code": 0,
+      "source_snapshot": "early-source-accepted-before.json",
+      "log": "early-render-accepted.log"
+    },
+    {
+      "label": "clarity-final",
+      "checks": 209,
+      "failures": 0,
+      "exit_code": 0,
+      "source_snapshot": "early-source-clarity-before.json",
+      "log": "early-render-clarity.log",
+      "source_unchanged_during_run": true
+    }
+  ],
+  "current_images": [
+    {
+      "path": "docs/evidence/phase5d4/early-render/01-hud-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "d0af0a55cbf966f711e1ae5385765ad7415af411b93934769b03458a683f87e3",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/01-hud-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "32c32659fdee48a5708bc0407529876773af6be080a7fe9e58e8ea499caf0f4a",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/02-items-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "ed67781d340da41158f8cf033158880cc8a68b167af747c9ded72248edbe848b",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/02-items-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "3fa6ab1768cc04dd92a437142f00b182e99d95ce43f5efe23276e4dfde4b0168",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/03-help-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "d70f311b74b35c59cad786cc9ddfc7342f38a7456e625defdfad5cf44a0df982",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/03-help-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "f2622a2872f78a43a0465661e2028d155b7cd9c76fe19c6442500b7d1248ae6f",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/04-team-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "a7fc754aee14d159363230aa08efb7243c95fdb58846e75f3b96d013c8a7b165",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/04-team-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "154f24c4ea5bf59c2fb3ddf45920649ddbcb743ef87bacfc78dc833a018e4f10",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/05-build-palette-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "090277cd2cfc48daa824d6bec31c2794f8bdc5b3a2adc55350f2a454915d4044",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/05-build-palette-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "bf273dec78b06efe0adb1ae32103ec9c63eb2c7acf78c75828e335cd52baf55c",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/06-build-tooltip-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "982bf08c279e64e8b9700eec57990bcdd3fb5dfb1f0d577e7a08798ccb4037e9",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/06-build-tooltip-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "5f9557edf6559a31ccd9598363025c7e6a9747b04b454ac6daa27438a193ba70",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/07-built-inspector-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "763e407d32903057d5a43f8e344eee65aabb93154c5eae80ac623d5ab796a823",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/07-built-inspector-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "4284bef160e910cdadf98160af01f32ee79d551dd8c9914a6d8b1eb0a5594292",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/08-upgraded-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "230e8fa5dba8bbac0f3a3469cc1ce19e25a1b03cfd5889b33c4a91fc5cbe832e",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/08-upgraded-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a8cb3af71a731a8c5bac5cc1b15f783c610e2ad27b86b936baab8930bb3e3fce",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/bed-branch-tooltip-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "e2079b8d5896269bb98cfbc9bdb2031d1abdfb88865a3373a7caaed711ba1184",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/bed-branch-tooltip-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "712eefb9ff4a6fad16573c8faeaf84234687effe533c099f61e30871a61490ee",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/bed-choices-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "96f416512d6ff1ce9bb84f544422241e5f9dd452e10029c04c68e1e750be07e2",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/bed-choices-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "865e52b333d9c1e597126cd0783613ed09db5728e4d89feb214d08a441041f1f",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/bed-confirmed-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "6bfe2e0f53237913e7d0302f37b0ad4c9b7781446f5b407749aa808e3c48c6e7",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/bed-confirmed-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "eadb54fc3b14a10f1198b414524415f273567c5bf68ad3087b7847ced3042ec5",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/bed-current-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "7f101f90e0a82816d912c2af6a7beca065ccedba9cb1d6f5e064aeeb64a007dd",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/bed-current-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "bfd8ca41aa8242de309a1ddabb3ea2e664d0b78cee0cbfa657a75645f02f1ddb",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/bed-selected-before-confirm-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "06aff49b4c03c043c5faee88a6185b1a2d624c8fcb98520a795d118085efd7c4",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/bed-selected-before-confirm-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "b5091a367d73e890197f4824bbf3b6597ee5f305e0721937e1d910d7d1866f04",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/build-insufficient-reason-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "7ed673479436a81575638fba14c4c41a2abd376104d4d462081b3463d0009380",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/build-insufficient-reason-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "efaa57bd1b11ce5d7296f8ecd54b9c3ab9ef81eafa58d6847ba0ccd263c891c7",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/door-branch-tooltip-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "2e821465d411fd0174890c0d30be59e71c3c3e1896595d1f056fc5ff57a6461f",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/door-branch-tooltip-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "9e04064f6d44ea8ef046fe03f9ca78d725f217412540375dc6797b72d723eaa5",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/door-choices-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "00c619a97df2c5e007527cb31ad9545175c41ead3c4d0ee3f166fdd743eb37a8",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/door-choices-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "5005232972ef0c0d715c6531fe103b025d848a41c7f62b0cfcf3d6bd86b047dd",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/door-confirmed-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "d9eb01a3cf3813b5cc34b47381003b92f0e6e64e6c1c710314d95e67d0f92618",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/door-confirmed-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "faa50be657c8faf660255c3c9116c094a5ad3448ae6527ce1b4ade61cff5191f",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/door-current-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "1b7cbad932e471647157252114544bb5dd3b84ba177c6f7b0e8d6f7a0cd39185",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/door-current-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "86caf34b21fdd3bc8864bdb3a5b36f7a7d5b7d15b925fb0db4ea25d5cebf6815",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/door-selected-before-confirm-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "b5a225dd00c2edf91a680de1840001a3ca930ceb2875cf16bc8aedf0ea6e3f0a",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/door-selected-before-confirm-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "225a1c48e74f33525b8dd997dd0d2a65b46f9004ce5a50674b0b1c513ae9a647",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/economy-branch-tooltip-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "e4e628cbe7d1f6fd2224fd8395817fff1a2810d7ce0478567f51f19f7d6873ca",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/economy-branch-tooltip-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "79f7ffa6ae61fc48e445d7149f0280c8f781aca3a10969e5a9ece548aea0d067",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/economy-choices-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "1ec3daed9981c46223269dc93cb547cd2f663d424c953d0829ac2143ef054f0a",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/economy-choices-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a2181e3b7b2b34164417983ffee2603b6ba75ad75c2146d55a373e3e6d197572",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/economy-confirmed-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "58c9f5d3548dfc14d89cee31a77d8a460cb83c9ca1cda3ba8194b3b7a36e9c17",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/economy-confirmed-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "db4631c62e67201f66f03de40c1c6b0f69f60557b61e5f08e22f230187e78b6c",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/economy-current-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "14ed5f530083c5c9ab97333b2e2562cd23ce7d9c7f514b230dd74c68f1825988",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/economy-current-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "031c8047a9df3e5bd0a0be2ffead1007ea9dfbf746c567e0bfebcd04923a7fbb",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/economy-selected-before-confirm-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "5a7d83ae18c03bd1d978000a88e5bf3df90919a4906d4304dbf29bc08f4ef39f",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/economy-selected-before-confirm-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "29fc76eb083430d93b596f36606e710bbe9030300d3a6efb18a1e767fa20fea1",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/enhancer-branch-tooltip-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "61edcdecf7253ce47ff823174e566522c6babef983e8c7331d73675f04ba22ef",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/enhancer-branch-tooltip-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "26cf2941aaede3a07f782ea8d05f3c99897ce6693d092bbc25d6cc8e4b478263",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/enhancer-choices-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "035162034c31497059494c08fd7d836c0f620312c20d2e78ebebf861a8c2253e",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/enhancer-choices-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "e319a5f1feef7932883986e012b3185a8dd0b43ecd0a3730741bd7da5fd5aced",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/enhancer-confirmed-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "b2919c521aab68e528a4aa95bd6d51cbdf9e80ce2ff15b53804d8f76d2901468",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/enhancer-confirmed-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "4085eb9cfc1916277a19b1273f22d80e05e4eecc47448d664faf9d747f72b9eb",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/enhancer-current-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "bed74c9affb4b20afe5a2013eded6c0fc138b71acef7af862c3e203624b4f001",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/enhancer-current-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "5696a9a71aa483be45a13fe35204c2145fb523f082caf4ae7dcdc5b6dc8ae960",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/enhancer-selected-before-confirm-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "ab17f80b5a7fcb1104e5c8dc845328cc3be36f196405897d04b42ac1aea18c1f",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/enhancer-selected-before-confirm-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "ca3f6b02676bc0c6f4fa0ca0f89356ad5fb5e7920d6046784512cb93d661660a",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/generator-branch-tooltip-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "37f87f943d1e3205b9ca5e4b5ced7683ec0ce01be9949a287611bad0a4344bb3",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/generator-branch-tooltip-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a5f5adba8e8bd299e5bb60a86e1c8e79361af6ec9481ad66aa65b1ffa562824e",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/generator-choices-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "7cec085ae8bb61b1e6386e275d84053479bc4e509c336758aa4c66797771fa7b",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/generator-choices-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "8883538f8bd658f4ccd008392c7609d19094357cce46e37b933c958d870aab43",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/generator-confirmed-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "03f0601b42fb34ebcda68c66d4124c2dc2fe0584026af7bdb32e338581b474a5",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/generator-confirmed-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "eeeffc642bc4552fa4e4267d652df7210515fce14e745e692e3b3d1006a3b449",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/generator-current-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "12605b69ce9db85fac58a9c9e08ef9bc0b9d5699dd4e2776c967f62f73d8435e",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/generator-current-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "5e171813865f01f93b3ee2dbb7c58343e7cffa5a5188c5efedfbb5f21ec612cb",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/generator-selected-before-confirm-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "c172880e459df89d9909556d15dfc2bed78d574e3255933cd6c710474806cbf4",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/generator-selected-before-confirm-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "15f41163c9f56442b338c97b9b1dbf9cb0a9cd35bcd29386bc991047b9c2ec21",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/heavy-branch-tooltip-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "83807c6768267197fcaa4092d0cf4c0bfb6802b9a716c027b0055dcbcff66e10",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/heavy-branch-tooltip-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "382a0944b9afd93483c7c5cce031b2715a8a50841e16ea3ba914627ab854a4e8",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/heavy-choices-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "49cd015f48943b3193f49d3d11749e00f27068ce4c73643716faa14e58e8a3a0",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/heavy-choices-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "e01d82b8aefae4f3b3de8c6ccb62b4682bf833b015721529309fde706c2d3b27",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/heavy-confirmed-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "ac49aa5cb7c6625c4890558e016be7c10e139022d01c3fc5e058bbffa40ff826",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/heavy-confirmed-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "139cc1754dbaf8ffbe9c1d8c1cc1517dc19b26b27253123c18f63a07c4488e16",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/heavy-current-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "e4c831c5467cbd1c2bb357599661465b85b4e4b2f3f9cb17bd2a76288a81691f",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/heavy-current-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "f0bd940ab1f63739c3d53019bff1b9f11478b5e6416a778dba3255a219dd83de",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/heavy-selected-before-confirm-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "23e29d68ce701c4d444fd4dfc0ba38df8c7931be41b282097388d14dae1c6b5c",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/heavy-selected-before-confirm-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "ec94329df413b418b3f66656b5cbe5e5eda4582da1975c9d4e535c3b7ab84345",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/repair-branch-tooltip-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "1f23b3b529a6f739f54fca7208ca03834ad9ba1a82a99244e75b1ff451dd1c8d",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/repair-branch-tooltip-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "0ed3c1cf6110a7db799f107a3203070f9ff416b722ce36bab0b1a17b529ec6a8",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/repair-choices-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "d2ba95c04f35dc0d746bd8d547603d1e331d341ff9b22060a8bd7ccd46da3000",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/repair-choices-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a97279503612ba685c65c3a99bad1e772c0ff6a6b301556083a1d97424060a56",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/repair-confirmed-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "0562a7feac7be569ffb5eaa9cf21353184d9bf02b703036af14253515fca709c",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/repair-confirmed-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "27d49e82c1e6d98db5814f5376d33603277719d34ea44810f572d01a401ccee9",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/repair-current-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "2d7ce1c48255dc056527e55f636e4336fd2fe092f678b5d96d8fc53169a6304a",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/repair-current-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "ba12b6c89764ac5988391ef8222667d4ddfe5fc458ffa051a4c05be35b9ca217",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/repair-selected-before-confirm-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "04c61b07b0f3292bf56c2b94e89d94a28d43b70001f95bebdf61626d75e2d847",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/repair-selected-before-confirm-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "3267513e45abbacd14060ff54ad55ef21a713e5e676d18715e2fda7d76aa2258",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_1-build-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "5c4f966dbb40f7d51657db3bc9450f5db72f6d16dc31e53db2b1511a5a8793d0",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_1-build-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "ec1b74a0bba98bc6264f9bfe492aeeddf1f6f7bcf026e865b11f067ee3e146f1",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_1-hud-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "e21e4071ae135cc790bf4375b15d5522c7bf9aff5649b1be9892e9657375b01e",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_1-hud-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "59f6090317d6d23a6f2ca5513988fafcf2b6514f06dcc7578881f7b8a8cac734",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_2-build-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "96b5197e1d4f336bbacdb5fab60b553c44c1e00cfbc32071b5356c7e2eb9cf45",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_2-build-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "2717ccf088ec1f50b44c8a1ea26f34b75ded2b1073fc2667ba3347c4e4b12edb",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_2-hud-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "d5b2f364284ed0184fc51341a6a3334ff69804163b12c43c5680d57631655108",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_2-hud-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "eb0519a8cef6c2141d995ef5363a4ac7b89d53048fe7d0442110c3c2d32c2b56",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_3-build-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "00b7f5c16e3d61c3f8d0e7beaeff1d5d1442f4bcad6191b8d5dcb03567625c56",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_3-build-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "b804c9b0b8c8a39bf25b820713d8242dd2ebb43fbec31b767c3670ef47eb6030",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_3-hud-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "204ddc9c8b6bbe94fab1b43a6bb40d6f47a0675923d012c09003fd9c00f78708",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_3-hud-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "b414128fc79d91fb4497875be786055f8f6198c730caae517ee7bf838d4c14ea",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_4-build-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "5e3b21c39a1e21e3663335ca6c0b6ea4be0d671e99588c19a361686c372ecbf3",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_4-build-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "07f67b38aa3134a8ee74c4782d9be54a9bd7b3596f46282e9341231931b56800",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_4-hud-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "e74ed4c5b3da6c32b6d4aaccdb04eb9cd2e5453f17979079abe4721d8ed8d870",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_4-hud-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "ff7d8beea72b1c63477cd8f14d95da5bd45627ee5e98b01277b5a94a49095ba5",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_5-build-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "a057bef0c38893737b0f48513f9c1b3138f4d55a29ee86a44f773b6e21089218",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_5-build-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "67e0490bf21df24e5351b0ff68918a8fdfa79897aceaf97ecdbd6720d09016bd",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_5-hud-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "63293897f96a38ef6808d20adfc7549154dcadc96f53e9ca2d2a5cb181ad6832",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/stage_5-hud-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "6563e986a80ca240c47507c62df51a9ffe590df589d628ded7a5b917c69cc62a",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/turret-branch-tooltip-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "7ad0108f0f0fc802a46e0392ac97c9fac7fca4bbec0209696c5d724ae9c3c0be",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/turret-branch-tooltip-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "7deca8434febb35cddaf43ea0c05e57071dfa03fca2017ae3e2b46aeb4b6cb65",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/turret-choices-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "76072bc7f45187d131c35801daf237e016864cf4c8fb5cf91ecd541565c5c72a",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/turret-choices-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "f580df4ca950df52cdb78ca3d99708452ce0cffd3e82df6715ad6091ab229431",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/turret-confirmed-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "b710e5e6c8a9d54c0fa122f80f19b8d1034adcf71e98c9bbf04284f4f719663b",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/turret-confirmed-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "7cca9d8e524b137ffdd66aa7aee8fdcecb4d979b4e198d9d5d7d7b53b4fd304b",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/turret-current-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "b54a5a1303225cb8ee74721ec8ad6f9211d635f355450f4bb0ccdd74d24210e0",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/turret-current-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "f87833342cab867b11e2b1da61153b5529a3282e16890c3414ca2804c4fe305c",
+      "source_group": "full-ux"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/turret-selected-before-confirm-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "65b8080268e029d546a86aed846984b778fbbc16f426864f290efcad228fe850",
+      "source_group": "clarity-final"
+    },
+    {
+      "path": "docs/evidence/phase5d4/early-render/turret-selected-before-confirm-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a887841579f0d19667c8910c2bce6479ed9168fd21739f68638bcbf483814118",
+      "source_group": "clarity-final"
+    }
+  ],
+  "current_image_count": 118,
+  "diagnostics": [
+    {
+      "path": "early-render-before-overlap-fix",
+      "checks": 255,
+      "failures": 14,
+      "reason": "7roles x2res automatic font minimum height exceeded86px; branch buttons overlapped Back/Confirm. Source fix and final rendered rerun clear."
+    },
+    {
+      "path": "early-render-before-close-clearance",
+      "image_count": 32,
+      "reason": "First clean card layout had 3px close-button/card intersection found by root. Final affected32frames replaced after+6px card y fix; strictrectangle checks included."
+    }
+  ],
+  "source_provenance": "This is an uncommitted early implementation gate; hashes identify exact source groups, not a claim that later integration source was tested. Final affected choice/selection/tooltip screens use clarity-final hashes. Other screens use full-ux hashes. No cached PNGs reused.",
+  "environment": "Godot4.6.3 Linux Xorg97 Mesa llvmpipe, real GUI input; Dummy audio sink for these render-only frames.",
+  "fixture": "Isolated Practice temporary20kGold/5kElectricity, actual paid structures/branches, controlled living teammate/Hunter pose. Full economy and strategic balance are outside this UI fixture. Deliberate0funds screenshot for disabled action reasons.",
+  "limitations": [
+    "Native Windows UNVERIFIED",
+    "Human usability/preference requires owner playtest",
+    "Boss/new buildings not implemented at this gate"
+  ]
+}

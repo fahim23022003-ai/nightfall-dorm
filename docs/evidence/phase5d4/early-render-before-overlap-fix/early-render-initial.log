@@ -1,0 +1,184 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+VISUAL_CAPTURE early-render/01-hud-720
+VISUAL_CAPTURE early-render/02-items-720
+VISUAL_CAPTURE early-render/03-help-720
+VISUAL_CAPTURE early-render/04-team-720
+VISUAL_CAPTURE early-render/05-build-palette-720
+VISUAL_CAPTURE early-render/06-build-tooltip-720
+VISUAL_CAPTURE early-render/07-built-inspector-720
+VISUAL_CAPTURE early-render/08-upgraded-720
+VISUAL_CAPTURE early-render/turret-current-720
+ERROR: VISUAL REVIEW: branch controls do not overlap turret720
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branch_geometry (res://tools/capture_phase5d4_early.gd:20)
+       [2] run (res://tools/capture_phase5d4_early.gd:54)
+       [3] advance (res://tools/capture_phase5d3_team.gd:15)
+VISUAL_CAPTURE early-render/turret-choices-720
+VISUAL_CAPTURE early-render/turret-selected-before-confirm-720
+VISUAL_CAPTURE early-render/turret-confirmed-720
+VISUAL_CAPTURE early-render/heavy-current-720
+ERROR: VISUAL REVIEW: branch controls do not overlap heavy720
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branch_geometry (res://tools/capture_phase5d4_early.gd:20)
+       [2] run (res://tools/capture_phase5d4_early.gd:54)
+       [3] advance (res://tools/capture_phase5d3_team.gd:15)
+VISUAL_CAPTURE early-render/heavy-choices-720
+VISUAL_CAPTURE early-render/heavy-selected-before-confirm-720
+VISUAL_CAPTURE early-render/heavy-confirmed-720
+VISUAL_CAPTURE early-render/generator-current-720
+ERROR: VISUAL REVIEW: branch controls do not overlap generator720
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branch_geometry (res://tools/capture_phase5d4_early.gd:20)
+       [2] run (res://tools/capture_phase5d4_early.gd:54)
+       [3] advance (res://tools/capture_phase5d3_team.gd:15)
+VISUAL_CAPTURE early-render/generator-choices-720
+VISUAL_CAPTURE early-render/generator-selected-before-confirm-720
+VISUAL_CAPTURE early-render/generator-confirmed-720
+VISUAL_CAPTURE early-render/repair-current-720
+ERROR: VISUAL REVIEW: branch controls do not overlap repair720
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branch_geometry (res://tools/capture_phase5d4_early.gd:20)
+       [2] run (res://tools/capture_phase5d4_early.gd:54)
+       [3] advance (res://tools/capture_phase5d3_team.gd:15)
+VISUAL_CAPTURE early-render/repair-choices-720
+VISUAL_CAPTURE early-render/repair-selected-before-confirm-720
+VISUAL_CAPTURE early-render/repair-confirmed-720
+VISUAL_CAPTURE early-render/economy-current-720
+VISUAL_CAPTURE early-render/economy-choices-720
+VISUAL_CAPTURE early-render/economy-selected-before-confirm-720
+VISUAL_CAPTURE early-render/economy-confirmed-720
+VISUAL_CAPTURE early-render/enhancer-current-720
+ERROR: VISUAL REVIEW: branch controls do not overlap enhancer720
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branch_geometry (res://tools/capture_phase5d4_early.gd:20)
+       [2] run (res://tools/capture_phase5d4_early.gd:54)
+       [3] advance (res://tools/capture_phase5d3_team.gd:15)
+VISUAL_CAPTURE early-render/enhancer-choices-720
+VISUAL_CAPTURE early-render/enhancer-selected-before-confirm-720
+VISUAL_CAPTURE early-render/enhancer-confirmed-720
+VISUAL_CAPTURE early-render/bed-current-720
+ERROR: VISUAL REVIEW: branch controls do not overlap bed720
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branch_geometry (res://tools/capture_phase5d4_early.gd:20)
+       [2] run (res://tools/capture_phase5d4_early.gd:54)
+       [3] advance (res://tools/capture_phase5d3_team.gd:15)
+VISUAL_CAPTURE early-render/bed-choices-720
+VISUAL_CAPTURE early-render/bed-selected-before-confirm-720
+VISUAL_CAPTURE early-render/bed-confirmed-720
+VISUAL_CAPTURE early-render/door-current-720
+ERROR: VISUAL REVIEW: branch controls do not overlap door720
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branch_geometry (res://tools/capture_phase5d4_early.gd:20)
+       [2] run (res://tools/capture_phase5d4_early.gd:54)
+       [3] advance (res://tools/capture_phase5d3_team.gd:15)
+VISUAL_CAPTURE early-render/door-choices-720
+VISUAL_CAPTURE early-render/door-selected-before-confirm-720
+VISUAL_CAPTURE early-render/door-confirmed-720
+VISUAL_CAPTURE early-render/01-hud-1080
+VISUAL_CAPTURE early-render/02-items-1080
+VISUAL_CAPTURE early-render/03-help-1080
+VISUAL_CAPTURE early-render/04-team-1080
+VISUAL_CAPTURE early-render/05-build-palette-1080
+VISUAL_CAPTURE early-render/06-build-tooltip-1080
+VISUAL_CAPTURE early-render/07-built-inspector-1080
+VISUAL_CAPTURE early-render/08-upgraded-1080
+VISUAL_CAPTURE early-render/turret-current-1080
+ERROR: VISUAL REVIEW: branch controls do not overlap turret1080
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branch_geometry (res://tools/capture_phase5d4_early.gd:20)
+       [2] run (res://tools/capture_phase5d4_early.gd:54)
+       [3] advance (res://tools/capture_phase5d3_team.gd:15)
+VISUAL_CAPTURE early-render/turret-choices-1080
+VISUAL_CAPTURE early-render/turret-selected-before-confirm-1080
+VISUAL_CAPTURE early-render/turret-confirmed-1080
+VISUAL_CAPTURE early-render/heavy-current-1080
+ERROR: VISUAL REVIEW: branch controls do not overlap heavy1080
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branch_geometry (res://tools/capture_phase5d4_early.gd:20)
+       [2] run (res://tools/capture_phase5d4_early.gd:54)
+       [3] advance (res://tools/capture_phase5d3_team.gd:15)
+VISUAL_CAPTURE early-render/heavy-choices-1080
+VISUAL_CAPTURE early-render/heavy-selected-before-confirm-1080
+VISUAL_CAPTURE early-render/heavy-confirmed-1080
+VISUAL_CAPTURE early-render/generator-current-1080
+ERROR: VISUAL REVIEW: branch controls do not overlap generator1080
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branch_geometry (res://tools/capture_phase5d4_early.gd:20)
+       [2] run (res://tools/capture_phase5d4_early.gd:54)
+       [3] advance (res://tools/capture_phase5d3_team.gd:15)
+VISUAL_CAPTURE early-render/generator-choices-1080
+VISUAL_CAPTURE early-render/generator-selected-before-confirm-1080
+VISUAL_CAPTURE early-render/generator-confirmed-1080
+VISUAL_CAPTURE early-render/repair-current-1080
+ERROR: VISUAL REVIEW: branch controls do not overlap repair1080
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branch_geometry (res://tools/capture_phase5d4_early.gd:20)
+       [2] run (res://tools/capture_phase5d4_early.gd:54)
+       [3] advance (res://tools/capture_phase5d3_team.gd:15)
+VISUAL_CAPTURE early-render/repair-choices-1080
+VISUAL_CAPTURE early-render/repair-selected-before-confirm-1080
+VISUAL_CAPTURE early-render/repair-confirmed-1080
+VISUAL_CAPTURE early-render/economy-current-1080
+VISUAL_CAPTURE early-render/economy-choices-1080
+VISUAL_CAPTURE early-render/economy-selected-before-confirm-1080
+VISUAL_CAPTURE early-render/economy-confirmed-1080
+VISUAL_CAPTURE early-render/enhancer-current-1080
+ERROR: VISUAL REVIEW: branch controls do not overlap enhancer1080
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branch_geometry (res://tools/capture_phase5d4_early.gd:20)
+       [2] run (res://tools/capture_phase5d4_early.gd:54)
+       [3] advance (res://tools/capture_phase5d3_team.gd:15)
+VISUAL_CAPTURE early-render/enhancer-choices-1080
+VISUAL_CAPTURE early-render/enhancer-selected-before-confirm-1080
+VISUAL_CAPTURE early-render/enhancer-confirmed-1080
+VISUAL_CAPTURE early-render/bed-current-1080
+ERROR: VISUAL REVIEW: branch controls do not overlap bed1080
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branch_geometry (res://tools/capture_phase5d4_early.gd:20)
+       [2] run (res://tools/capture_phase5d4_early.gd:54)
+       [3] advance (res://tools/capture_phase5d3_team.gd:15)
+VISUAL_CAPTURE early-render/bed-choices-1080
+VISUAL_CAPTURE early-render/bed-selected-before-confirm-1080
+VISUAL_CAPTURE early-render/bed-confirmed-1080
+VISUAL_CAPTURE early-render/door-current-1080
+ERROR: VISUAL REVIEW: branch controls do not overlap door1080
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branch_geometry (res://tools/capture_phase5d4_early.gd:20)
+       [2] run (res://tools/capture_phase5d4_early.gd:54)
+       [3] advance (res://tools/capture_phase5d3_team.gd:15)
+VISUAL_CAPTURE early-render/door-choices-1080
+VISUAL_CAPTURE early-render/door-selected-before-confirm-1080
+VISUAL_CAPTURE early-render/door-confirmed-1080
+PHASE5D4_EARLY_RENDER_CHECKS=255 FAILURES=14

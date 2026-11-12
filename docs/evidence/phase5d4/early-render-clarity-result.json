@@ -1,0 +1,167 @@
+{
+ "checks": 209,
+ "failures": 0,
+ "fixture": "Real input. Paid Practice setup; branch preview holds actual funds. Zero-funds disabled state deliberately configured for reason visibility.",
+ "rows": [
+  {
+   "back": "[P: (34.0, 652.0), S: (280.0, 44.0)]",
+   "card_a": "[P: (34.0, 541.0), S: (596.0, 110.0)]",
+   "card_b": "[P: (644.0, 541.0), S: (596.0, 110.0)]",
+   "close": "[P: (1210.0, 508.0), S: (32.0, 30.0)]",
+   "confirm": "[P: (860.0, 652.0), S: (370.0, 44.0)]",
+   "kind": "turret",
+   "resolution": "720",
+   "tooltip": "20% weaker hits / 18% shorter interval. Hits slow movement 15% for 1s; Reaper 7.5%.\nPrice includes level5 upgrade and25G/4E branch fee. One branch only; level10cap."
+  },
+  {
+   "back": "[P: (34.0, 652.0), S: (280.0, 44.0)]",
+   "card_a": "[P: (34.0, 541.0), S: (596.0, 110.0)]",
+   "card_b": "[P: (644.0, 541.0), S: (596.0, 110.0)]",
+   "close": "[P: (1210.0, 508.0), S: (32.0, 30.0)]",
+   "confirm": "[P: (860.0, 652.0), S: (370.0, 44.0)]",
+   "kind": "heavy",
+   "resolution": "720",
+   "tooltip": "28% weaker hits / 28% shorter interval. 20% more range; 25% faster projectiles.\nPrice includes level5 upgrade and25G/4E branch fee. One branch only; level10cap."
+  },
+  {
+   "back": "[P: (34.0, 652.0), S: (280.0, 44.0)]",
+   "card_a": "[P: (34.0, 541.0), S: (596.0, 110.0)]",
+   "card_b": "[P: (644.0, 541.0), S: (596.0, 110.0)]",
+   "close": "[P: (1210.0, 508.0), S: (32.0, 30.0)]",
+   "confirm": "[P: (860.0, 652.0), S: (370.0, 44.0)]",
+   "kind": "generator",
+   "resolution": "720",
+   "tooltip": "60% more power; occupied bed income 20% lower while installed. Penalties bounded.\nPrice includes level5 upgrade and25G/4E branch fee. One branch only; level10cap."
+  },
+  {
+   "back": "[P: (34.0, 652.0), S: (280.0, 44.0)]",
+   "card_a": "[P: (34.0, 541.0), S: (596.0, 110.0)]",
+   "card_b": "[P: (644.0, 541.0), S: (596.0, 110.0)]",
+   "close": "[P: (1210.0, 508.0), S: (32.0, 30.0)]",
+   "confirm": "[P: (860.0, 652.0), S: (370.0, 44.0)]",
+   "kind": "repair",
+   "resolution": "720",
+   "tooltip": "20% weaker station healing; manual repair Gold cost 25% lower (total discount capped 40%).\nPrice includes level5 upgrade and25G/4E branch fee. One branch only; level10cap."
+  },
+  {
+   "back": "[P: (34.0, 652.0), S: (280.0, 44.0)]",
+   "card_a": "[P: (34.0, 541.0), S: (596.0, 110.0)]",
+   "card_b": "[P: (644.0, 541.0), S: (596.0, 110.0)]",
+   "close": "[P: (1210.0, 508.0), S: (32.0, 30.0)]",
+   "confirm": "[P: (860.0, 652.0), S: (370.0, 44.0)]",
+   "kind": "economy",
+   "resolution": "720",
+   "tooltip": "20% weaker income bonus; 30% greater generator output (room cap 50%).\nPrice includes level5 upgrade and25G/4E branch fee. One branch only; level10cap."
+  },
+  {
+   "back": "[P: (34.0, 652.0), S: (280.0, 44.0)]",
+   "card_a": "[P: (34.0, 541.0), S: (596.0, 110.0)]",
+   "card_b": "[P: (644.0, 541.0), S: (596.0, 110.0)]",
+   "close": "[P: (1210.0, 508.0), S: (32.0, 30.0)]",
+   "confirm": "[P: (860.0, 652.0), S: (370.0, 44.0)]",
+   "kind": "enhancer",
+   "resolution": "720",
+   "tooltip": "25% weaker damage bonus; room turrets fire 10% faster (total rate benefit capped 20%).\nPrice includes level5 upgrade and25G/4E branch fee. One branch only; level10cap."
+  },
+  {
+   "back": "[P: (34.0, 652.0), S: (280.0, 44.0)]",
+   "card_a": "[P: (34.0, 541.0), S: (596.0, 110.0)]",
+   "card_b": "[P: (644.0, 541.0), S: (596.0, 110.0)]",
+   "close": "[P: (1210.0, 508.0), S: (32.0, 30.0)]",
+   "confirm": "[P: (860.0, 652.0), S: (370.0, 44.0)]",
+   "kind": "bed",
+   "resolution": "720",
+   "tooltip": "15% less bed income; occupied bed converts 4% base income into Electricity/s.\nFull-price level6 upgrade; coupon remains for a placeable machine. One branch only; level10cap."
+  },
+  {
+   "back": "[P: (34.0, 652.0), S: (280.0, 44.0)]",
+   "card_a": "[P: (34.0, 541.0), S: (596.0, 110.0)]",
+   "card_b": "[P: (644.0, 541.0), S: (596.0, 110.0)]",
+   "close": "[P: (1210.0, 508.0), S: (32.0, 30.0)]",
+   "confirm": "[P: (860.0, 652.0), S: (370.0, 44.0)]",
+   "kind": "door",
+   "resolution": "720",
+   "tooltip": "50% stronger manual repairs; maximum durability10% lower.\nFull-price level6 upgrade; coupon remains for a placeable machine. One branch only; level10cap."
+  },
+  {
+   "back": "[P: (34.0, 652.0), S: (280.0, 44.0)]",
+   "card_a": "[P: (34.0, 541.0), S: (596.0, 110.0)]",
+   "card_b": "[P: (644.0, 541.0), S: (596.0, 110.0)]",
+   "close": "[P: (1210.0, 508.0), S: (32.0, 30.0)]",
+   "confirm": "[P: (860.0, 652.0), S: (370.0, 44.0)]",
+   "kind": "turret",
+   "resolution": "1080",
+   "tooltip": "20% weaker hits / 18% shorter interval. Hits slow movement 15% for 1s; Reaper 7.5%.\nPrice includes level5 upgrade and25G/4E branch fee. One branch only; level10cap."
+  },
+  {
+   "back": "[P: (34.0, 652.0), S: (280.0, 44.0)]",
+   "card_a": "[P: (34.0, 541.0), S: (596.0, 110.0)]",
+   "card_b": "[P: (644.0, 541.0), S: (596.0, 110.0)]",
+   "close": "[P: (1210.0, 508.0), S: (32.0, 30.0)]",
+   "confirm": "[P: (860.0, 652.0), S: (370.0, 44.0)]",
+   "kind": "heavy",
+   "resolution": "1080",
+   "tooltip": "28% weaker hits / 28% shorter interval. 20% more range; 25% faster projectiles.\nPrice includes level5 upgrade and25G/4E branch fee. One branch only; level10cap."
+  },
+  {
+   "back": "[P: (34.0, 652.0), S: (280.0, 44.0)]",
+   "card_a": "[P: (34.0, 541.0), S: (596.0, 110.0)]",
+   "card_b": "[P: (644.0, 541.0), S: (596.0, 110.0)]",
+   "close": "[P: (1210.0, 508.0), S: (32.0, 30.0)]",
+   "confirm": "[P: (860.0, 652.0), S: (370.0, 44.0)]",
+   "kind": "generator",
+   "resolution": "1080",
+   "tooltip": "60% more power; occupied bed income 20% lower while installed. Penalties bounded.\nPrice includes level5 upgrade and25G/4E branch fee. One branch only; level10cap."
+  },
+  {
+   "back": "[P: (34.0, 652.0), S: (280.0, 44.0)]",
+   "card_a": "[P: (34.0, 541.0), S: (596.0, 110.0)]",
+   "card_b": "[P: (644.0, 541.0), S: (596.0, 110.0)]",
+   "close": "[P: (1210.0, 508.0), S: (32.0, 30.0)]",
+   "confirm": "[P: (860.0, 652.0), S: (370.0, 44.0)]",
+   "kind": "repair",
+   "resolution": "1080",
+   "tooltip": "20% weaker station healing; manual repair Gold cost 25% lower (total discount capped 40%).\nPrice includes level5 upgrade and25G/4E branch fee. One branch only; level10cap."
+  },
+  {
+   "back": "[P: (34.0, 652.0), S: (280.0, 44.0)]",
+   "card_a": "[P: (34.0, 541.0), S: (596.0, 110.0)]",
+   "card_b": "[P: (644.0, 541.0), S: (596.0, 110.0)]",
+   "close": "[P: (1210.0, 508.0), S: (32.0, 30.0)]",
+   "confirm": "[P: (860.0, 652.0), S: (370.0, 44.0)]",
+   "kind": "economy",
+   "resolution": "1080",
+   "tooltip": "20% weaker income bonus; 30% greater generator output (room cap 50%).\nPrice includes level5 upgrade and25G/4E branch fee. One branch only; level10cap."
+  },
+  {
+   "back": "[P: (34.0, 652.0), S: (280.0, 44.0)]",
+   "card_a": "[P: (34.0, 541.0), S: (596.0, 110.0)]",
+   "card_b": "[P: (644.0, 541.0), S: (596.0, 110.0)]",
+   "close": "[P: (1210.0, 508.0), S: (32.0, 30.0)]",
+   "confirm": "[P: (860.0, 652.0), S: (370.0, 44.0)]",
+   "kind": "enhancer",
+   "resolution": "1080",
+   "tooltip": "25% weaker damage bonus; room turrets fire 10% faster (total rate benefit capped 20%).\nPrice includes level5 upgrade and25G/4E branch fee. One branch only; level10cap."
+  },
+  {
+   "back": "[P: (34.0, 652.0), S: (280.0, 44.0)]",
+   "card_a": "[P: (34.0, 541.0), S: (596.0, 110.0)]",
+   "card_b": "[P: (644.0, 541.0), S: (596.0, 110.0)]",
+   "close": "[P: (1210.0, 508.0), S: (32.0, 30.0)]",
+   "confirm": "[P: (860.0, 652.0), S: (370.0, 44.0)]",
+   "kind": "bed",
+   "resolution": "1080",
+   "tooltip": "15% less bed income; occupied bed converts 4% base income into Electricity/s.\nFull-price level6 upgrade; coupon remains for a placeable machine. One branch only; level10cap."
+  },
+  {
+   "back": "[P: (34.0, 652.0), S: (280.0, 44.0)]",
+   "card_a": "[P: (34.0, 541.0), S: (596.0, 110.0)]",
+   "card_b": "[P: (644.0, 541.0), S: (596.0, 110.0)]",
+   "close": "[P: (1210.0, 508.0), S: (32.0, 30.0)]",
+   "confirm": "[P: (860.0, 652.0), S: (370.0, 44.0)]",
+   "kind": "door",
+   "resolution": "1080",
+   "tooltip": "50% stronger manual repairs; maximum durability10% lower.\nFull-price level6 upgrade; coupon remains for a placeable machine. One branch only; level10cap."
+  }
+ ]
+}
