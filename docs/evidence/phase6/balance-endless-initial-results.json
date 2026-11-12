@@ -1,0 +1,357 @@
+{
+ "failures": 1,
+ "resume_checks": 0,
+ "runs": [
+  {
+   "active_wave": 5,
+   "buildings": {
+    "0": {
+     "invested_gold": 1765.0,
+     "invested_power": 262.0,
+     "kind": "turret",
+     "level": 10,
+     "specialization": "precision"
+    },
+    "1": {
+     "invested_gold": 1265.0,
+     "invested_power": 187.0,
+     "kind": "turret",
+     "level": 9,
+     "specialization": "precision"
+    },
+    "5": {
+     "invested_gold": 315.0,
+     "invested_power": 46.0,
+     "kind": "economy",
+     "level": 4
+    },
+    "7": {
+     "invested_gold": 315.0,
+     "invested_power": 46.0,
+     "kind": "economy",
+     "level": 4
+    },
+    "8": {
+     "invested_gold": 65.0,
+     "invested_power": 8.0,
+     "kind": "enhancer",
+     "level": 1
+    },
+    "9": {
+     "invested_gold": 210.0,
+     "invested_power": 18.0,
+     "kind": "generator",
+     "level": 4
+    },
+    "10": {
+     "invested_gold": 280.0,
+     "invested_power": 53.0,
+     "kind": "repair",
+     "level": 4
+    },
+    "11": {
+     "invested_gold": 210.0,
+     "invested_power": 18.0,
+     "kind": "generator",
+     "level": 4
+    }
+   },
+   "checkpoint_bytes": 17221,
+   "completed": 5,
+   "config": {
+    "branch": "precision",
+    "map": "abandoned_dorm",
+    "mode": "standard",
+    "policy": "typical",
+    "resume": true,
+    "seed": 11,
+    "trait_id": "fortified",
+    "waves": 12
+   },
+   "events": {
+    "approach": 10,
+    "archetype_warning": 43,
+    "bed_upgrade": 24,
+    "boss_awakened": 1,
+    "boss_death": 1,
+    "boss_impact": 4,
+    "boss_transform": 1,
+    "boss_warning": 4,
+    "build": 38,
+    "building_upgrade": 122,
+    "door_damage": 115,
+    "door_upgrade": 24,
+    "encounter": 9,
+    "repair": 3
+   },
+   "final_wave": {
+    "boss_attacks": {
+     "scythe": 3,
+     "siege": 1
+    },
+    "door_hp": 2070.0,
+    "events": {
+     "approach": 2,
+     "boss_awakened": 1,
+     "boss_death": 1,
+     "boss_impact": 4,
+     "boss_transform": 1,
+     "boss_warning": 4,
+     "building_upgrade": 11,
+     "door_damage": 4,
+     "encounter": 1
+    },
+    "hunter_attacks": 4,
+    "hunter_hp": 0.0,
+    "manual_repairs": 0,
+    "min_door_hp": 2070.0,
+    "observed_player_damage_received": 0,
+    "observed_player_hits": 0,
+    "wave": 5
+   },
+   "gold": 389.8,
+   "income": 6099.8,
+   "invalid": [
+    "checkpoint_state_or_stock_changed"
+   ],
+   "legendary_used": 0,
+   "passive_since": {
+
+   },
+   "peak_combat_events": 6,
+   "peak_presentation_events": 128,
+   "peak_projectiles": 4,
+   "perks": [
+    "dreamer",
+    "first_aid"
+   ],
+   "power": 826.5,
+   "reaches": {
+    "10": {
+     "gold": 12.7,
+     "income": 4597.7,
+     "invested_gold": 1765.0,
+     "invested_power": 262.0,
+     "power": 798.7,
+     "refunds": 0.0,
+     "spent": 4610.0,
+     "tile": 0,
+     "time": 230.1,
+     "wave": 5
+    },
+    "5": {
+     "gold": 47.3,
+     "income": 3132.3,
+     "invested_gold": 265.0,
+     "invested_power": 37.0,
+     "power": 831.7,
+     "refunds": 0.0,
+     "spent": 3110.0,
+     "tile": 0,
+     "time": 214.1,
+     "wave": 4
+    }
+   },
+   "refunds": 0.0,
+   "remaining_stock": {
+    "guardian_heart": 1,
+    "shield": 4
+   },
+   "seconds": 246.5,
+   "sleep_at": 0.6,
+   "spent": 5735.0,
+   "stop": "limit",
+   "tier10_impact_damage": 0.0,
+   "uses": 0,
+   "waves": [
+    {
+     "alive_team": 6,
+     "archetype": "ravager",
+     "boss_attacks": {
+
+     },
+     "door_hp": 1265.0,
+     "engine_objects": 1512,
+     "events": {
+      "approach": 3,
+      "archetype_warning": 21,
+      "bed_upgrade": 18,
+      "build": 34,
+      "building_upgrade": 11,
+      "door_damage": 59,
+      "door_upgrade": 17,
+      "encounter": 3,
+      "repair": 3
+     },
+     "gold": 48.4,
+     "hunter_attacks": 59,
+     "hunter_damage": 27.2,
+     "hunter_speed": 96.2,
+     "hunter_start_hp": 4400.0,
+     "manual_repairs": 0,
+     "min_door_hp": 172.5,
+     "observed_player_damage_received": 0.0,
+     "observed_player_hits": 0,
+     "passive": false,
+     "player_damage": 0.0,
+     "power": 168.9,
+     "projectiles": 0,
+     "seconds": 121.8,
+     "static_memory": 25409559,
+     "time": 121.8,
+     "transformed": false,
+     "wave": 1
+    },
+    {
+     "alive_team": 6,
+     "archetype": "crusher",
+     "boss_attacks": {
+
+     },
+     "door_hp": 1265.0,
+     "engine_objects": 1512,
+     "events": {
+      "approach": 2,
+      "archetype_warning": 16,
+      "bed_upgrade": 3,
+      "build": 2,
+      "building_upgrade": 47,
+      "door_damage": 16,
+      "door_upgrade": 3,
+      "encounter": 2
+     },
+     "gold": 94.9,
+     "hunter_attacks": 16,
+     "hunter_damage": 27.1,
+     "hunter_speed": 66.1,
+     "hunter_start_hp": 7475.0,
+     "manual_repairs": 0,
+     "min_door_hp": 1265.0,
+     "observed_player_damage_received": 0.0,
+     "observed_player_hits": 0,
+     "passive": false,
+     "player_damage": 0.0,
+     "power": 412.3,
+     "projectiles": 0,
+     "seconds": 41.1,
+     "static_memory": 25431359,
+     "time": 162.9,
+     "transformed": false,
+     "wave": 2
+    },
+    {
+     "alive_team": 6,
+     "archetype": "stalker",
+     "boss_attacks": {
+
+     },
+     "door_hp": 1265.0,
+     "engine_objects": 1512,
+     "events": {
+      "approach": 1,
+      "archetype_warning": 1,
+      "bed_upgrade": 3,
+      "building_upgrade": 30,
+      "door_damage": 23,
+      "door_upgrade": 2,
+      "encounter": 1
+     },
+     "gold": 396.1,
+     "hunter_attacks": 23,
+     "hunter_damage": 18.9,
+     "hunter_speed": 87.8,
+     "hunter_start_hp": 7360.0,
+     "manual_repairs": 0,
+     "min_door_hp": 1265.0,
+     "observed_player_damage_received": 0.0,
+     "observed_player_hits": 0,
+     "passive": false,
+     "player_damage": 0.0,
+     "power": 803.5,
+     "projectiles": 0,
+     "seconds": 35.1,
+     "static_memory": 25406931,
+     "time": 198.0,
+     "transformed": false,
+     "wave": 3
+    },
+    {
+     "alive_team": 6,
+     "archetype": "ravager",
+     "boss_attacks": {
+
+     },
+     "door_hp": 2070.0,
+     "engine_objects": 1512,
+     "events": {
+      "approach": 2,
+      "archetype_warning": 5,
+      "build": 2,
+      "building_upgrade": 23,
+      "door_damage": 13,
+      "door_upgrade": 2,
+      "encounter": 2
+     },
+     "gold": 82.3,
+     "hunter_attacks": 13,
+     "hunter_damage": 20.1,
+     "hunter_speed": 96.7,
+     "hunter_start_hp": 8360.0,
+     "manual_repairs": 0,
+     "min_door_hp": 1265.0,
+     "observed_player_damage_received": 0.0,
+     "observed_player_hits": 0,
+     "passive": false,
+     "player_damage": 0.0,
+     "power": 817.3,
+     "projectiles": 0,
+     "seconds": 27.4,
+     "static_memory": 25399279,
+     "time": 225.4,
+     "transformed": false,
+     "wave": 4
+    },
+    {
+     "alive_team": 6,
+     "archetype": "crusher",
+     "boss_attacks": {
+      "scythe": 3,
+      "siege": 1
+     },
+     "door_hp": 2070.0,
+     "engine_objects": 1512,
+     "events": {
+      "approach": 2,
+      "boss_awakened": 1,
+      "boss_death": 1,
+      "boss_impact": 4,
+      "boss_transform": 1,
+      "boss_warning": 4,
+      "building_upgrade": 11,
+      "door_damage": 4,
+      "encounter": 1
+     },
+     "gold": 389.8,
+     "hunter_attacks": 4,
+     "hunter_damage": 25.9,
+     "hunter_speed": 77.4,
+     "hunter_start_hp": 12650.0,
+     "manual_repairs": 0,
+     "min_door_hp": 2070.0,
+     "observed_player_damage_received": 0.0,
+     "observed_player_hits": 0,
+     "passive": false,
+     "player_damage": 0.0,
+     "power": 826.5,
+     "projectiles": 0,
+     "seconds": 21.1,
+     "static_memory": 25383583,
+     "time": 246.5,
+     "transformed": true,
+     "wave": 5
+    }
+   ]
+  }
+ ],
+ "scope": "Fresh Phase6 actual earned-currency runs using prior diagnostic policies; finite prepared Master/Mythic stock and scripted 0.2/1s repair decisions, not human rates."
+}

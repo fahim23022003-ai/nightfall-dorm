@@ -1,3 +1,15 @@
+# Current Phase 6 Windows candidate
+
+Version 0.6.0-rc1, Godot 4.6.3. Current export/checksums, pack audit and remaining
+native validation are recorded in [PHASE_6_FINAL_AUDIT_REPORT.md](PHASE_6_FINAL_AUDIT_REPORT.md).
+Use [WINDOWS_PLAYTEST_GUIDE.md](WINDOWS_PLAYTEST_GUIDE.md) for fresh isolated test
+profiles, save backup, launch/export and Fahim/Adie playtest instructions.
+An export built on Linux is not a native Windows execution pass.
+
+The records below are preserved historical exports and are not the current build.
+
+---
+
 # Windows readiness
 
 Latest visual-overhaul artifact: `/workspace/NightfallDorm-VisualOverhaul-Windows-x64.zip`, from source `e7a7ab12c6e53290e5ae9501fef9d83bfb9b0b86`. It was rebuilt with illustrated assets, new UI, custom icon and font notices. See `evidence/visual_overhaul/windows-export.log`, `windows-artifact.json` and `pack-smoke.log` in that evidence directory. Native Windows runtime remains unverified. The earlier ZIP/checksum described below is historical.

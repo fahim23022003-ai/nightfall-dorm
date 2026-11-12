@@ -1,0 +1,96 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: ONBOARDING FLOW: controlled genuine terminal settles first clear
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] run (res://tests/phase6_journey.gd:27)
+ERROR: ONBOARDING FLOW: actual button exists: Lucky Spin · reveal earned item
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] press (res://tests/phase6_journey.gd:11)
+       [2] run (res://tests/phase6_journey.gd:29)
+ERROR: ONBOARDING FLOW: actual button exists: Skip animation
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] press (res://tests/phase6_journey.gd:11)
+       [2] run (res://tests/phase6_journey.gd:29)
+       [3] press (res://tests/phase6_journey.gd:13)
+ERROR: ONBOARDING FLOW: actual button exists: Save reveal & continue
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] press (res://tests/phase6_journey.gd:11)
+       [2] run (res://tests/phase6_journey.gd:29)
+       [3] press (res://tests/phase6_journey.gd:13)
+ERROR: ONBOARDING FLOW: first earned spin reveal never duplicates stock
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] run (res://tests/phase6_journey.gd:30)
+       [2] press (res://tests/phase6_journey.gd:13)
+ERROR: ONBOARDING FLOW: actual button exists: Choose stage bonus
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] press (res://tests/phase6_journey.gd:11)
+       [2] run (res://tests/phase6_journey.gd:31)
+       [3] press (res://tests/phase6_journey.gd:13)
+ERROR: ONBOARDING FLOW: actual button exists: Select
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] press (res://tests/phase6_journey.gd:11)
+       [2] run (res://tests/phase6_journey.gd:31)
+       [3] press (res://tests/phase6_journey.gd:13)
+ERROR: ONBOARDING FLOW: actual button exists: Next Stage
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] press (res://tests/phase6_journey.gd:11)
+       [2] run (res://tests/phase6_journey.gd:33)
+ERROR: ONBOARDING FLOW: first reward/choice routes Next Stage correctly
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] run (res://tests/phase6_journey.gd:34)
+       [2] press (res://tests/phase6_journey.gd:13)
+ERROR: ONBOARDING FLOW: actual first-win RM funds ordinary repair purchase
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] run (res://tests/phase6_journey.gd:38)
+       [2] press (res://tests/phase6_journey.gd:13)
+ERROR: ONBOARDING FLOW: shop spends earned cash and grants exactly one repair
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] run (res://tests/phase6_journey.gd:44)
+       [2] mouse_button (res://tests/onboarding_flow.gd:35)
+ERROR: ONBOARDING FLOW: real inventory card equips purchased item
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] run (res://tests/phase6_journey.gd:47)
+       [2] press (res://tests/phase6_journey.gd:13)
+ERROR: ONBOARDING FLOW: next campaign snapshots purchased loadout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] run (res://tests/phase6_journey.gd:50)
+       [2] press (res://tests/phase6_journey.gd:13)
+ERROR: ONBOARDING FLOW: actual campaign hotkey repairs and consumes purchased permanent stock once
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] run (res://tests/phase6_journey.gd:62)
+       [2] key (res://tests/onboarding_flow.gd:27)
+ERROR: ONBOARDING FLOW: restart preserves tutorial, stage, earned balance and consumed stock
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/onboarding_flow.gd:11)
+       [1] run (res://tests/phase6_journey.gd:65)
+       [2] key (res://tests/onboarding_flow.gd:27)
+PHASE6_JOURNEY_CHECKS=53 FAILURES=15

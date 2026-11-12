@@ -34,7 +34,8 @@ func run():
  check(not game.activate_item(0),"read-only rejects")
  check(game.ui.feedback_text.contains("read-only"),"read-only banner explains why")
  game.audio_system.shutdown()
- await create_timer(.3).timeout
+ # Allow the audio thread to release stopped loop/playback references before exit.
+ await create_timer(.6).timeout
  game.queue_free()
  await process_frame
  for suffix in ["",".bak",".tmp"]:

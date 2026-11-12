@@ -1,0 +1,41 @@
+{
+  "accepted": true,
+  "regular_logs": 76,
+  "regular_suites": 74,
+  "regular_core_and_import": 2,
+  "regular_engine_assertion_failures": 0,
+  "initial_runner_exit": 2,
+  "runner_interruption": "Live tools/check.sh was edited during execution; current bash-n passes. Completed regular suites preserved; only missing tail resumed.",
+  "initial_warning_logs": [
+    {
+      "log": "regression-items_activation_feedback.log",
+      "warnings": [
+        "WARNING: ObjectDB instances leaked at exit (run with --verbose for details)."
+      ]
+    }
+  ],
+  "cleanup_warning_resolution": "tests/items_activation_feedback.gd shutdown drain0.3\u21920.6s; affected verbose13/0 with no warnings/leaks",
+  "extended_and_tail_commands": 10,
+  "extended_tail_passed": true,
+  "new_targeted": {
+    "journey": {
+      "checks": 68,
+      "failures": 0
+    },
+    "inputs": {
+      "checks": 4062,
+      "cases": 2009,
+      "failures": 0
+    }
+  },
+  "historical_files_restored": [
+    "docs/evidence/boss/matrix-matched.json",
+    "docs/evidence/rewards/balance-results.json"
+  ],
+  "production_checkpoint": "f5e6970280b365d2f5c3f0062323aa7e92b63ed9",
+  "new_test_sha256": {
+    "tests/phase6_inputs.gd": "ce674564933d55ea25061f140008a93a4c1d975358368e8f8c44a3148c0c66f8",
+    "tests/phase6_journey.gd": "b7a88d33f082921c32eb0c5167a13997bc6745f47864858a7916e6d423240c8e"
+  },
+  "native_windows": "UNVERIFIED"
+}

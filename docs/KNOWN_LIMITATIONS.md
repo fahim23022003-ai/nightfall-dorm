@@ -1,20 +1,38 @@
-# Known limitations
+# Known limitations — current Phase 6 audit
 
-- This is an original small-scale game with configurable approximate balance. Exact Haunted Dorm numerical parity and overall parity are **unverified** because reference access was blocked; see GAMEPLAY_REFERENCE.md and FEATURE_PARITY.md.
-- Windows keyboard/mouse and Android landscape touch controls now share the same project. A signed Android debug APK exists and is statically verified; native phone/emulator execution, physical touch comfort and device performance remain unverified. Controller/accessibility work is still future scope.
-- The visual overhaul replaces programmer placeholders with original illustrated sprites and textured rooms. Final production polish remains partial: direction-limited bot/hunter animation, five bot identities and individual sleeping poses, one fixed map, layered glow/contact shadows rather than dynamic occlusion, and limited decoration variety. The camera now focuses the player’s room with an optional strategic overview.
-- Sound effects are synthesized locally. Phase2 captured a non-silent unclipped mixed WAV, but no human listening or Windows-speaker session occurred, so audible quality/mixing remains unverified. Settings and ranked progression now persist in a validated `user://profile.json` with backup/recovery.
-- Navigation retains the rectangular six-room corridor graph and one hunter archetype. Beds, cabinets and plant pots now have player foot-point collision, with all door-to-bed approaches tested. The graphical design canvas is 1280×720 with a 960×540 minimum; native high-DPI/Windows display validation remains outstanding.
-- Action buttons now disable when unavailable and expose specific reasons/effects through tooltips; controller/touch alternatives to hover are not implemented.
-- Automated tests and Linux software-rendered screenshots do not establish Windows hardware compatibility, mobile compatibility, real-time performance on target devices, or long-term balance quality.
-- Export availability and automated QA outcomes are recorded separately in README.md and QA_REPORT.md. Do not infer an export or a passing test from this limitations document.
-- An earlier balance revision allowed passive-player wins. The final 144-match matrix recorded 0/72 passive wins and 72/72 balanced automated-player wins (median 141 seconds), with advanced-building construction in all 72 active matches. This is evidence for those deterministic strategies/seeds, not broad human balance or difficulty validation; further playtesting and tuning remain useful.
-- A Windows x86-64 release executable was created using checksum-verified official templates. Its embedded resources passed a Linux Godot smoke test, but native Windows execution, hardware and audio remain UNVERIFIED. See WINDOWS_READINESS.md.
+Current scope is five campaign stages/maps, Normal/Long Night/Hell, three Hunter
+archetypes, Grim Reaper, twenty consumables and six Phase 5D-2 replay systems.
+Earlier statements describing one map, one archetype or eight items are historical.
+See the [Phase 6 report](PHASE_6_FINAL_AUDIT_REPORT.md) for current evidence/status.
 
-- Historical illustrated-build graphics used1280×800/960×600 tests. The current cartoon build uses a1280×720 design canvas (minimum960×540) and actual1280×720 viewport captures. Windows display scaling, other aspect ratios and mobile screens remain unverified.
-
-- Current visual status and evidence are in VISUAL_OVERHAUL_REPORT.md. The independent review found the programmer-art impression largely removed but still judged the build an illustrated indie prototype rather than commercial-finished artwork. Historical functional audit scores are not visual-completion approval.
-
-Current cartoon milestone adds real travelling projectiles and impact-time damage, explicit placement confirmation and six room themes. See VISUAL_REDESIGN_REPORT.md for current evidence; older visual audit descriptions are historical. Full directional bot animation, wall occlusion and native Windows/audio testing remain outstanding. Phase2 adds normal/hard threat progression, bounded defense-aware retargeting, and modest optional rank bonuses; long-term human balancing remains unverified. Saves are local/offline, with no online leaderboard or server anti-cheat.
-
-The Android port adds safe-fit layouts, mobile touch/scroll,10 effect voices and a saved30/60FPS cap preference. These are implemented settings/limits, not achieved device benchmarks. App backgrounding freezes simulation and audio; resume is manual. Windows/Android user:// saves are separate with no sync. See ANDROID_PORT_REPORT.md and ANDROID_EXPORT.md for actual APK evidence and signing/update caveats.
+- Native Windows execution, GPU/drivers, high-DPI, physical keyboard/mouse/audio,
+  accessibility comfort and human long-session enjoyment/balance are UNVERIFIED.
+  Linux Godot tests/screens/mixer output cannot certify those matters.
+- A 2D layered art style retains limited directional actor animation, simple
+  ambient silhouettes and repeated building pads. Shadows/glow are procedural,
+  not a dynamic light-occlusion simulation. Cosmetics are visual overlays.
+- Turret targeting retains distance/range rules rather than wall raycasting.
+  Navigation uses the existing six-room corridor graph per map, one attacking
+  Hunter, and autonomous local teammates. This is offline single-player.
+- No multiplayer, verified online leaderboard, server anti-cheat or cloud save.
+  Manually shared Challenge results are self-reported. Identical supported code
+  conditions reproduce with matching ruleset/engine/inputs in tested simulations;
+  timing differences and cross-platform bitwise determinism are not certified.
+- Endless saves one between-wave checkpoint, not arbitrary mid-wave state.
+  Already-consumed permanent items and per-run rescue/Legendary limits cannot
+  rewind. Destroyed doors and eliminated teammates carry between waves. Recent
+  defeat telemetry covers start/resume; older recent events are not fabricated.
+- Endless milestone cash/XP is once per profile and bounded. Prepared progressed
+  profiles, scripted fast repair policies and finite automated wave runs are not
+  evidence of natural human inventory acquisition, human skill or infinite-run
+  stability. Balance needs Fahim/Adie's feedback.
+- Fonts and original synthesized audio are local. Internal engine recordings
+  establish valid nonzero playback, not subjective mix quality or speaker safety.
+- The historical Android test preset/artifacts remain preserved; this audit adds
+  no Android work and does not certify native phone performance. Controller/full
+  screen-reader support is not implemented. Windows PC remains the priority.
+- Unsigned private Windows builds may encounter local trust prompts. No public
+  release, signing certificate, installer, auto-updater or production deployment
+  is provided. Source and export instructions remain available on private work.
+- No exact Haunted Dorm parity claim is made. This is an original game, with
+  original artwork/audio and separately attributed local fonts/engine components.

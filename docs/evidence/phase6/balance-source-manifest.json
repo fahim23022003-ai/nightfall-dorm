@@ -1,0 +1,46 @@
+{
+  "phase": "6",
+  "baseline_commit": "dfe4bc8f3cf4e4082d07d39bc190f8c09ae4458d",
+  "head_at_handoff": "32f74572940f51f9b9e486f49f04a5f7e9874305",
+  "branch": "work",
+  "engine": "Godot 4.6.3 stable, Linux headless",
+  "fresh_accepted": {
+    "endless_runs": 8,
+    "cleared_waves": 222,
+    "fresh_profile_resumes": 12,
+    "safe_exit_paths": 8,
+    "repeat_exit_guards": 8,
+    "campaign_prepared_runs": 14,
+    "campaign_beginner_runs": 2,
+    "failures": 0
+  },
+  "source_sha256": {
+    "scripts/match_model.gd": "b066efd8d343e7f59e8592238ff0ae853bf7c6d9807ef3bd22c40e2086380a13",
+    "scripts/hunter_state.gd": "8b092c860518f4416357b962e9dbf8ed179e5fa1a4a29d4b935599ed5a3560c5",
+    "scripts/endless_run.gd": "ecc915bad4f329ebace6dfeb77f4d06e24ad0b7e4ce91b57da93b114745d91f3",
+    "scripts/replay_snapshot.gd": "4ffeb69b078d0a112fccf7892d39b5296f9cdeac8ec5c89ae4d4a24065aa8b3b",
+    "scripts/replay_progress.gd": "d24609a576ada3aacfa74910f30f94464444cade6ce8e065f1d60574d4ca611a",
+    "scripts/room_state.gd": "296bed93aa040273fa7ee281b4d7eec7e8ef3f319e7e95597432644c81925816",
+    "scripts/player_profile.gd": "48e4ecc32f8eb4267f1a68f826404d98a69720b512c380f032996805bd6ed22a",
+    "scripts/item_effects.gd": "3d536e29661e7b504fb8992a75f13127269caf016c70cf650f6e73cf3200eeea",
+    "scripts/catalog.gd": "b7fc643ad42b3cd2240c752d83d836c1d055cfb8d9916e0031805d61c7796c14",
+    "scripts/strategy_catalog.gd": "fa0230a767699853114381116660afaf377ae5eaa21509ae641546029469eb0c",
+    "tests/phase6_balance_campaign.gd": "2d42fca26b17a2f2db7d8c7520a40d0a7036a4de3f26ea8f5758717bf8c0905f",
+    "tests/phase6_balance_endless.gd": "8052f93490d48128bae6d3846a8539c1308ad64423f8bff3100983ed718ac8ed"
+  },
+  "accepted_results": {
+    "balance-endless-results.json": {
+      "sha256": "977ff7f0e94daba4a7658f30ed6bd2d234c932a0e7335d26fc064b3bcef114fb",
+      "failures": 0
+    },
+    "balance-campaign-results.json": {
+      "sha256": "821f885da4e1ba62a0777729d9ac79c6decf11650cfb0407e32c59c2edc31803",
+      "failures": 0
+    },
+    "balance-beginner-results.json": {
+      "sha256": "7529b53b89ffed366fbebb762baed684033b9a44574c051100f1e45a143e2e79",
+      "failures": 0
+    }
+  },
+  "scope": "Earned live currencies/HP/position/time/paid upgrades; prepared finite Master/Mythic budgets except explicit zero-XP/perk/item beginner cases. Scripted decisions, not human win rates. No production changes."
+}

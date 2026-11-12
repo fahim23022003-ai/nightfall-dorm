@@ -4,6 +4,16 @@ An original single-player Godot 4 dormitory survival defense game. Choose a room
 
 **For home testing, download branch [`work`](https://github.com/fahim23022003-ai/nightfall-dorm/tree/work), not `main`.**
 
+## Phase 6 private Windows candidate
+
+Version **0.6.0-rc1** uses Godot **4.6.3 standard**. Final audit and Windows
+packaging are recorded in [Phase 6 report](docs/PHASE_6_FINAL_AUDIT_REPORT.md).
+Native Windows validation remains outstanding. Start with the nontechnical
+[Windows playtest guide](docs/WINDOWS_PLAYTEST_GUIDE.md), including separate test
+profiles, save preservation, Adie's Challenge Code flow and bug reporting.
+No public release or main merge is performed. Historical export/report sections
+below describe their own earlier checkpoints, not current Windows certification.
+
 ## Play in Godot on Windows
 
 1. Sign in to the private [GitHub repository](https://github.com/fahim23022003-ai/nightfall-dorm), select **work**, and choose **Code → Download ZIP**.
@@ -150,7 +160,7 @@ with 10–16 building pads per room. [Map implementation and evidence](docs/PHAS
 
 **Playable core tested; overall polish PARTIAL.** Six original cartoon room themes, room-focused camera, explicit placement confirmation, five bot identities, hunter finite-state AI, six functional building types, upgrades, repairs, real travelling projectiles/impact damage, victory/defeat and clean restart are implemented. Latest checkpoint/evidence: [PROGRESS_CHECKPOINT.md](docs/PROGRESS_CHECKPOINT.md).
 
-Godot Linux import/startup, automated scene/input/gameplay tests, transactions and seeded matches pass. Prior actual software-rendered screenshots and two complete rendered matches are in [VISUAL_REDESIGN_REPORT.md](docs/VISUAL_REDESIGN_REPORT.md). Native Windows execution, audible output and display scaling remain unverified. Bot/hunter directional animation, small art cleanup and human balancing remain unfinished. Phase2 settings/rank/XP/equipped boosts now persist under `user://profile.json`. One map/hunter, simplified bot arrival and distance-only targeting are documented in [KNOWN_LIMITATIONS.md](docs/KNOWN_LIMITATIONS.md).
+Godot Linux import/startup, automated scene/input/gameplay tests, transactions and seeded matches pass. Prior actual software-rendered screenshots and two complete rendered matches are in [VISUAL_REDESIGN_REPORT.md](docs/VISUAL_REDESIGN_REPORT.md). Native Windows execution, audible output and display scaling remain unverified. Bot/hunter directional animation, small art cleanup and human balancing remain unfinished. Phase2 settings/rank/XP/equipped boosts now persist under `user://profile.json`. Five maps/three Hunter archetypes with one attacking Hunter, simplified bot arrival and distance-only targeting are documented in [KNOWN_LIMITATIONS.md](docs/KNOWN_LIMITATIONS.md).
 
 Earlier Windows export records are historical; use source branch `work` for current home editor testing. The Android milestone creates a private-test APK as described below; nothing was publicly published/deployed.
 

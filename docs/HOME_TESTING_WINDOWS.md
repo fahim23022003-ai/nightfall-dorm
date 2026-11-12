@@ -68,7 +68,7 @@ Prior actual Linux/Xorg/Mesa captures show the menu, six room themes, focused/ma
 
 **Not verified graphically on the target platform:** native Windows/GPU execution, high-DPI and other aspect ratios, audible sound/mixing, and every animation frame/direction. Cloud captures do not prove human enjoyment or target-hardware performance. Touch/controller/mobile play is not implemented. Bots/hunter have limited directional animation, settings/rank/XP/equipped boosts now persist in `user://profile.json`, and small art cleanup remains. The map has six rooms and one hunter; turret targeting is distance-based without wall occlusion. Exact Haunted Dorm parity remains unverified because requested sources were inaccessible. See [KNOWN_LIMITATIONS.md](KNOWN_LIMITATIONS.md).
 
-No new executable export, public release or deployment is part of this checkpoint. Test the source in Godot using the steps above; older export records remain historical.
+Phase 6 adds a current private Windows export and checklist; see [WINDOWS_PLAYTEST_GUIDE.md](WINDOWS_PLAYTEST_GUIDE.md) and the Phase 6 report. Older export records remain historical. Native Windows testing is still unverified; no public release or deployment is performed.
 
 ## Phase 2 home checks
 

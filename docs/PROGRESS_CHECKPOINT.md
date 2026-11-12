@@ -1,24 +1,39 @@
-# Phase 6 — final quality audit (12 November 2026, Singapore)
+# Phase 6 — audit complete; Windows validation pending (12 November 2026)
 
-IN PROGRESS. Clean `work` baseline and GitHub both match
-`dfe4bc8f3cf4e4082d07d39bc190f8c09ae4458d` (the supplied reference omitted its
-last `d`). Recovery tag: `pre-phase6-dfe4bc8`. Current engine: Godot 4.6.3.
-Root owns production fixes/export/docs. C runs independent full regular/extended
-QA and journey/save review; A a bounded fresh strategy/Endless audit; D actual
-baseline rendering/audio/Linux performance. No new gameplay systems or Android
-work; main remains unchanged. Windows native execution/hardware and human
-quality remain UNVERIFIED. Final findings, status and push will be recorded
-only after actual checks complete.
+RELEASE CANDIDATE, PENDING WINDOWS VALIDATION. Godot4.6.3 Linux; version0.6.0-rc1.
+Started clean work at dfe4bc8f3cf4e4082d07d39bc190f8c09ae4458d, matching GitHub.
+Recovery pre-phase6-dfe4bc8; baseline32f7457; verified production/export source
+f5e6970280b365d2f5c3f0062323aa7e92b63ed9. No main modification or public release.
 
+Fixed actual perk-slot header and Reaper awakening/attack-warning overlap.
+No new gameplay features or balance changes. All existing regular checks pass;
+runner was interrupted after regulars by root editing its active Bash script.
+The ten remaining extended/balance/profile/startup commands pass from an immutable
+list. Initial failure is retained, not reported as uninterrupted success.
+New tutorial→campaign→reward→Shop→equip→use→reload journey68 and malformed-input
+4062 checks pass. Existing audio-feedback test's old shutdown warning was fixed
+with a longer fixture drain; affected13-check verbose rerun is clean.
 
-Verified presentation milestone: actual perk-slot label and prioritized Reaper
-attack telegraphs repaired. D passes314 actual render/audio/stress checks,88
-PNG evidence frames. A fresh16 campaign/8 Endless runs clear222waves with12
-load/resumes and no integrity failure; no balance changes. C full regular/extended
-is still running; targeted journey68/input4062 checks pass. Current Windows
-export templates verified against official full-archive SHA512; initial actual
-PE x64 release/embedded pack11 checks pass. Final source rebuild follows this
-checkpoint. No native Windows or public-release claim.
+A:16 campaign cases,8 earned Endless runs/222waves/66 actual Reaper waves,
+12 fresh load/resumes,8 valid exits/duplicate guards; no integrity failure.
+Two genuinely zero-XP/no-stock Normal strategies win; no forced winrate tuning.
+D:314 actual render/audio/stress checks;88 PNGs indexed/hashed; fresh five-map/
+all-menu review. Dense60s actual16-L10 stress fires1097 shots with bounded objects/
+audio/presentation. Software Linux timings are not Windows/hardware benchmarks.
+Initial root banner-fix context error was caught by rendering and corrected;
+accepted affected gates contain no engine errors. Human quality remains unverified.
+
+Actual Windows x64 release is built from checksum-verified official templates,
+with embedded resources/11 pack checks and ZIP CRC verified. Private artifact:
+/workspace/NightfallDorm-Phase6-Windows-x64.zip (51,304,125 bytes).
+ZIP SHA256 d60963d26dfa2a789efefdc7586c3137421965b6b3daa3797407ce155ba93537.
+Source ZIP on GitHub contains project/export workflow, not the executable.
+Native Windows/GPU/high-DPI/input/audio/human balance remain UNVERIFIED.
+
+See [final audit report](PHASE_6_FINAL_AUDIT_REPORT.md),
+[Windows checklist](WINDOWS_PLAYTEST_GUIDE.md) and
+[current limitations](KNOWN_LIMITATIONS.md). Preserve saves/use separate test
+profiles. Final Git delivery receipt follows actual evidence push. STOP AFTER PHASE 6.
 
 ---
 

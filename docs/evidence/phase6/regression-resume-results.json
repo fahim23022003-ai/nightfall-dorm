@@ -1,0 +1,87 @@
+{
+  "passed": true,
+  "seconds": 29.45002818107605,
+  "commands": [
+    {
+      "command": "audit_timesteps",
+      "log": "regression-resume-audit_timesteps.log",
+      "exit_code": 0,
+      "engine_errors": false,
+      "failure_counter": false,
+      "warnings": []
+    },
+    {
+      "command": "audit_matrix",
+      "log": "regression-resume-audit_matrix.log",
+      "exit_code": 0,
+      "engine_errors": false,
+      "failure_counter": false,
+      "warnings": []
+    },
+    {
+      "command": "phase2_matrix",
+      "log": "regression-resume-phase2_matrix.log",
+      "exit_code": 0,
+      "engine_errors": false,
+      "failure_counter": false,
+      "warnings": []
+    },
+    {
+      "command": "strategy_balance_check",
+      "log": "regression-resume-strategy_balance_check.log",
+      "exit_code": 0,
+      "engine_errors": false,
+      "failure_counter": false,
+      "warnings": []
+    },
+    {
+      "command": "endless_balance_check",
+      "log": "regression-resume-endless_balance_check.log",
+      "exit_code": 0,
+      "engine_errors": false,
+      "failure_counter": false,
+      "warnings": []
+    },
+    {
+      "command": "profile_0_cleanup",
+      "log": "regression-resume-profile_0_cleanup.log",
+      "exit_code": 0,
+      "engine_errors": false,
+      "failure_counter": false,
+      "warnings": []
+    },
+    {
+      "command": "profile_1_write",
+      "log": "regression-resume-profile_1_write.log",
+      "exit_code": 0,
+      "engine_errors": false,
+      "failure_counter": false,
+      "warnings": []
+    },
+    {
+      "command": "profile_2_read",
+      "log": "regression-resume-profile_2_read.log",
+      "exit_code": 0,
+      "engine_errors": false,
+      "failure_counter": false,
+      "warnings": []
+    },
+    {
+      "command": "profile_3_cleanup",
+      "log": "regression-resume-profile_3_cleanup.log",
+      "exit_code": 0,
+      "engine_errors": false,
+      "failure_counter": false,
+      "warnings": []
+    },
+    {
+      "command": "startup",
+      "log": "regression-resume-startup.log",
+      "exit_code": 0,
+      "engine_errors": false,
+      "failure_counter": false,
+      "warnings": []
+    }
+  ],
+  "historical_restored": []
+}
