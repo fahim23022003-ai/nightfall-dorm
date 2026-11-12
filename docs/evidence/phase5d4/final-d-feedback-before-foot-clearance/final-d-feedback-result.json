@@ -1,0 +1,57 @@
+{
+ "checks": 97,
+ "failures": 0,
+ "feedback": [
+  {
+   "barrier": 142.5,
+   "case": "actualpaid+120healing/Shield/Decoy",
+   "heals": [
+    {
+     "damage": 120.0,
+     "id": 48,
+     "kind": "auto_repair",
+     "position": "(335.0, -15.0)",
+     "room": 0,
+     "time": 31.05,
+     "transformed": false,
+     "type": "defense_heal"
+    }
+   ],
+   "lure": 3.25,
+   "resolution": "720"
+  },
+  {
+   "badge_rect": "[P: (521.8462, 459.9231), S: (67.28204, 13.94873)]",
+   "case": "bottom-facingburnbadge",
+   "header_rect": "[P: (20.0, 460.0), S: (1240.0, 46.0)]",
+   "intersects_header": true,
+   "resolution": "720"
+  },
+  {
+   "barrier": 142.5,
+   "case": "actualpaid+120healing/Shield/Decoy",
+   "heals": [
+    {
+     "damage": 120.0,
+     "id": 48,
+     "kind": "auto_repair",
+     "position": "(335.0, -15.0)",
+     "room": 0,
+     "time": 31.05,
+     "transformed": false,
+     "type": "defense_heal"
+    }
+   ],
+   "lure": 3.25,
+   "resolution": "1080"
+  },
+  {
+   "badge_rect": "[P: (521.8462, 459.9231), S: (67.28204, 13.94873)]",
+   "case": "bottom-facingburnbadge",
+   "header_rect": "[P: (20.0, 460.0), S: (1240.0, 46.0)]",
+   "intersects_header": true,
+   "resolution": "1080"
+  }
+ ],
+ "fixture": "ActualpaidPractice realhealing/barrier/lure/burn states, read-onlynewFX; twores, ReducedFX and truthfulFrostcurrent/branch/tooltip. No naturalbalanceclaim."
+}

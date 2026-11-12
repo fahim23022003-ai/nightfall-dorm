@@ -1,0 +1,3277 @@
+{
+  "status": "D ACCEPTED; human/Windows limitations explicit",
+  "scope": "Phase5D4 independent rendered/input/audio/stability evidence only; parent owns production, regression summary, export and Git/push. No Phase6 work.",
+  "final_runtime_commit": "a4dc1d0e5094825abc3b78b13879c50598f4c047",
+  "created_utc": "2026-11-12T18:04:06.741865+00:00",
+  "runtime_unchanged_through_final_dense": true,
+  "current_runtime_sha256": {
+    "scripts/audio_director.gd": "9e2e7b0f1665a339aaed0a0dc2e968c2233b4235dfc0799b0e6a2b15dcd2f638",
+    "scripts/bot_ai.gd": "4999b0b965f654823075de5fef8a674f5297a6e19c6df6d5c88e2b2290e2f41a",
+    "scripts/catalog.gd": "57046a54eadf066f72af47be410a45cfb940e9ca574fdb3a60fbe395b8787cd3",
+    "scripts/dorm_presentation.gd": "e2c64cf714d411558a5bc257e73b3d677f7435b1fa080990e0dd5fb19d98c530",
+    "scripts/game.gd": "bdbbd4f85c4fa49459cedbbbbf9c9abc126107706932778e97d8d6442a334d15",
+    "scripts/hunter_state.gd": "3456ddd839b9983fd51a15d1238b1ab33ea1b67cfd724b8acd4091051676af59",
+    "scripts/interface.gd": "48918b1d833acfb82c00d3f1cc4596abeb36f6fb6f7004e6f7a2edfc4689463b",
+    "scripts/match_model.gd": "dd774e8198cce31fda47b86319b5363bdaab3c476215abb236b0cc2c8a9fd54c",
+    "scripts/mobile_interface.gd": "f51ed3b811e7fa8142674923038b1d6ba725971a47f39f91d39025941c5e165a",
+    "scripts/mobile_layout.gd": "99e98d519525265afffc6a703f36a216633ebcc4601daf05aa712cdace4b67d2",
+    "scripts/player_profile.gd": "48e4ecc32f8eb4267f1a68f826404d98a69720b512c380f032996805bd6ed22a",
+    "scripts/progression_interface.gd": "dda843d3cdcbb4f4bd51e0475b018c8257f3912bf1c4ed82cdd004f70ed7d04c",
+    "scripts/rank_catalog.gd": "b03b428faf61f11ba8530d4973cd7baa65b408dca7aa907882b28a04f369e2c3",
+    "scripts/room_state.gd": "40b1aae50ab7b85ab4dbbb0a3b8c7012d735ad7dd3994bda793f8e4ca32c46b4",
+    "scripts/touch_controls.gd": "52cd25b8c25b7545e5e0004d19ffabd14452810481299df458363b9d07c53407",
+    "scripts/bottom_context_panel.gd": "c043e2c7250a44f5376ddc47b9d5e7cf43835c2b30fde510ceda173ae138d6e8",
+    "scripts/cosmetic_catalog.gd": "3205af563eb524ccd45be51ba1e8daa9aced53cdbb290ca43573d40ca276812f",
+    "scripts/premium_button.gd": "031a972671442669d102daceefaac5f21965f5759a99192db5415672b2c5cecd",
+    "scripts/endless_run.gd": "44595586d15d4d042e2960025fcf08655fe923d40507beee1d74aa53894a903d",
+    "scripts/spin_pity.gd": "285f668d50b2e525da8279403472c25dbc324a5622b70031b2545358ee3b1cc1",
+    "scripts/hunter_evolution.gd": "ba7c83a8800ea98bfcc0ef19f44a27757efdfe5cace73aa9bdfb72db6ea6dde0",
+    "scripts/teammate_interface.gd": "e1f15b8eaf3cf58b64ceb5d1ed0dc95ebc10fb70c601ff4d87ef0463a8b4f8fa",
+    "scripts/reward_catalog.gd": "52f44e7f08b10db0c8472764cc83326505fb150137df3f84903c4882cbba9602",
+    "scripts/practice_room.gd": "8b097b6225686386323a9b3ae9db8874e343bef3a0b84c49d614fc46c37b3f77",
+    "scripts/boss_catalog.gd": "3bf2d6bfadc2791112af4c7e9f7a710d3ca2cda82b593faacdcb3490857d4ba9",
+    "scripts/replay_progress.gd": "fc277605d6a2f70fd27be43bfa94748d6d6f10db6b9d20bcf64de4c42bbc68e8",
+    "scripts/temporary_loadout.gd": "16be4d780dc4215ea766fe668dede89d5e8fde0402032c6e3d66c1facee4a6db",
+    "scripts/replay_snapshot.gd": "5e0033cfda55a4bfbda9af32d86a5e87214bd273127b31f301fa5eeb9c49ff6d",
+    "scripts/defense_effects.gd": "9cfa5262d209716b085768e54e73fe2d440ed4522faac17b362ce0d027741510",
+    "scripts/strategy_catalog.gd": "0d68d899b9076a22e030ae76a11becc23c36e56c30ccdf8a6621451b46ad269a",
+    "scripts/replay_interface.gd": "32b8c21a9ba62187aece33772e86518c09c3fe5237cc0d22045cd8d6196c6759",
+    "scripts/item_interface.gd": "4de2406b6df85c75a1ef9e89acfd0ec31725052ae62f52f2957ed38415d639a3",
+    "scripts/cosmetic_presentation.gd": "1f09129ecedd0b6412da7f2640fd40b6453908386a3e3a216d3dd0c357d0468c",
+    "scripts/map_catalog.gd": "81deff2f1ff5ac6f00fac8dd34d501ff0654c263aaecd24d8fb0720badc745b5",
+    "scripts/horror_feedback.gd": "34098b50306eabbd7f487933fe8d350a98c07ee553d8939e9f6829d96634d4fd",
+    "scripts/gothic_theme.gd": "776694c60399df9976e9594aa69060a6f4eda7057c11397bcc1faaddf808b096",
+    "scripts/stage_catalog.gd": "b723720aa63607dc4c52433c8134741010efbf9eb45eddf194586c394bc3d108",
+    "scripts/map_presentation.gd": "f52d74e42a32e25898499383269b4313033c83127e187cd69a0ce4a8c9d4d5d7",
+    "scripts/onboarding.gd": "54f4b2e0af541a513da86f3e91f7df64659289bc5aedc379406c769376be546a",
+    "scripts/wrath_presentation.gd": "b254b95b0b4cdc6d0648cb38394b0429c05908a322ab10a98adc1d1291c4bf9e",
+    "scripts/undead_agent.gd": "4ab0d6d9eb1ccbc01869756bdba28f0c46f10bb2e83d58190dbe40c36db08ba7",
+    "scripts/item_presentation.gd": "8b1603f57a073c2a2f7d04430449da1019d2b44d8b8034a971685a5c8d2ede1f",
+    "scripts/match_strategy.gd": "c77383be7e6e0a3c52b7d2ecafbbd5f4704528765c6013f9bba40d80d8585001",
+    "scripts/reaper_wrath.gd": "37994365903fa041b2f56324ad5a60ea8330269bef9fcccb17169e9f5e40a1f9",
+    "scripts/item_catalog.gd": "64a6f33f90c3d3ef8e253fcd8b3f08d8f94fe5bf79448bdb44c5184d40d0c8cb",
+    "scripts/haunted_environment.gd": "f144e50d08cd3e5777976d88aea63ed0a912fdb1230e1c4bd5d7a4c511c2437b",
+    "scripts/building_stats.gd": "5e257be5d211f51a4162c7a27ade0da0ff1367d1c8e46cb6b76411dce3ebe391",
+    "scripts/cash_shop.gd": "a5fae363255cd6871e9a0fec573dfa85519ab03270559a0ac18f520a1aa259a7",
+    "scripts/item_wheel.gd": "160400b1dc908021c4e0d1ccc376498a80581b433352741ab2f810bad580df46",
+    "scripts/item_effects.gd": "6924dcf3100be8dd86a2a4319c87d83501c165872935afa4c270164b2486036c",
+    "scripts/boss_presentation.gd": "043eb993f30e2fc0629c622105c99d93030a80319ed7af8735b8966c66fdf6cc",
+    "scripts/onboarding_catalog.gd": "7089ca586736ca3eac299e95f4c6d5742aa179fc4d2f7cba796ca1be6ae46f35",
+    "scripts/challenge_code.gd": "6f26e4e07e76a592279210cfd6e1e0e8b820a14918cec99c783bea49979d5cb4",
+    "scripts/wrath_audio_catalog.gd": "7e4b5d4e7a193860eee42e8d734331011fd3e59886ba355805c4d8fbf1bffce8",
+    "scripts/campaign_interface.gd": "2f93c3081a83f53eef7969d2171d7308562aa4275d1b89c26b15ba1c6ac5def4",
+    "scripts/visual_presence.gd": "7567fe3ca1798fcfd1b3ebf6153e9c4e2221fb7286be5cb5434ede8b683b4d26",
+    "scripts/defeat_facts.gd": "dad3a294122d76cb700bb5f34da5e76347e9d33993b3f524638ef886c02fde60",
+    "assets/audio/ambient_dorm.wav": "117022f89eede7a314b5bdef5c7666a955dea9e96f677b58d47e7aed167a6510",
+    "assets/audio/bed_upgrade.wav": "e11a0afa9ea3cbd199f3551cda5b3719aa23b8b4a6a2706aaf2e9f066932623d",
+    "assets/audio/breach.wav": "f311b0fc79a288460a538a4a0544d8a9a5c37e848b347a48fdee0eb6e1c650f1",
+    "assets/audio/build.wav": "b7bf4ad4514908476145ca8a95957332394cc46bca752d3ffa3d30fc1802e491",
+    "assets/audio/button.wav": "2207c5d780a92fb6ca4a95a796ec37653d48ba5aa0ed570326bcea274a8092d7",
+    "assets/audio/danger.wav": "fa9897b7854408563c33d7b6154326c44406f2b5f95b30d2c1d4515ebb9215cf",
+    "assets/audio/defeat.wav": "6ff0cbe201cbc105aba329c4bfa6ea1f5db1746a77de5a2f1099c3dedc739be9",
+    "assets/audio/door_break.wav": "87e9c0331dc0c9aa0687e7769124eb87cd7762b393e1b7b21fe2c07b8eb4341d",
+    "assets/audio/door_crack.wav": "20b07fbccdc00fb97b6c723c836f64057c1169185d150903255598a259abdee4",
+    "assets/audio/door_hit.wav": "f9dca31658ceabe50b815b8382e2d24de36a3a3ed7b3a58eef3a3ee2b4b22d34",
+    "assets/audio/door_upgrade.wav": "9b3ac52450ac0faf1fc701c42df97370a6384f8144dd6155d27513cba8fdfee3",
+    "assets/audio/electricity.wav": "4998dd31815c9b88ccf373e87b930a14da17254c1a1a16a5cf99e67491d09248",
+    "assets/audio/elimination.wav": "f8c0719127be39f3f94913b83b8ec365aa4bf2cf77f297a400c4df6e4794ece3",
+    "assets/audio/failure.wav": "fb689f502577d90f40c3964038d90967622d5c0bb2b94ba43f809a8290f73367",
+    "assets/audio/footstep.wav": "e3192e438c48a02625585e2f960740423307ce952fbdfd3ba209aec54594a6b0",
+    "assets/audio/generator_loop.wav": "ab5a8ff0c642ae74ef2298a8ebdbbc1ff280b466dad68837f86d14576b0a5904",
+    "assets/audio/ghost_defeat.wav": "e6fb669bc17136da2d9775f9f41d12ef01998b0a41c0b8420c156775ad7bb66c",
+    "assets/audio/ghost_hurt.wav": "fb8a50a6c0ed963527c86e2d9f101e98a960a55f115e7b2d99143bb526c28fd7",
+    "assets/audio/hunter_level.wav": "375ab1dc8d01118b06db614c5c2d9d34c053c88f7361b7ce2c1ea358997a65ae",
+    "assets/audio/hunter_spawn.wav": "d61a185d5d40f2d02df3d0c0f8997d38e0ecf4b31644c9a22fbab6c6a59852b2",
+    "assets/audio/impact.wav": "92708a6c69bd0f23883ecce1ecd9bf6cd76b4fc827706f0ca187e10e4eb3755e",
+    "assets/audio/income.wav": "cbd9fbd21d82ff267227ff7b8c5abf61361a25627a70d8e27293a34dc392ea83",
+    "assets/audio/match_start.wav": "2608a4b272109ab5484968e418574c174915107df51a2a16d757a4acafc1a2ff",
+    "assets/audio/menu.wav": "b1054298fadaa685f09de786e294a4b3bf1e2d14facc3e56ec7d64e53b3f402e",
+    "assets/audio/music_calm.wav": "001025437d5d85cf74fc5d5d354985c923d2bf9786e429a668e803c391839a1b",
+    "assets/audio/music_danger.wav": "b8485d45bf0536e138a64f7d418a7f6a49ba2bee1fc3de27cb2504a59d2109b1",
+    "assets/audio/music_menu.wav": "9c909f4d9db79f97a62d790660e644884692e970af3bb7c8c9340e2d487eafe6",
+    "assets/audio/proximity_loop.wav": "2b8d464b140d2c5c128c2c915f9f7c6ea5bdb916a187442f317e1f20bf8cc7fb",
+    "assets/audio/purchase.wav": "2207c5d780a92fb6ca4a95a796ec37653d48ba5aa0ed570326bcea274a8092d7",
+    "assets/audio/rank.wav": "da4e26e760227d9f9409cffa921065c035c4b4b6e63396916bf522a8fa909e3a",
+    "assets/audio/repair.wav": "540cd66458a5e176bf9236b2fc2c96aa4b2f213d356e7a2c79946206f2f063c9",
+    "assets/audio/reward.wav": "e8399d93e0c1299d93a6344351e8afded460acafc551d98a2fc7747e4c42a582",
+    "assets/audio/shot_arc.wav": "27ddcbf1f4ed6cb23d582170bd498abee8e0503a0adf6cfe8fc8bd0c14595192",
+    "assets/audio/shot_needle.wav": "a0126f28763bb628ecc1721d7a3dc7c731912c6eb9e43d2d18311a088d8eff72",
+    "assets/audio/turret_upgrade.wav": "75c1bc09e3c439f769f2fa187ee0bbc0886af62d11b96701014d8e01ee343875",
+    "assets/audio/upgrade.wav": "75c1bc09e3c439f769f2fa187ee0bbc0886af62d11b96701014d8e01ee343875",
+    "assets/audio/victory.wav": "4e42b10e53db15ecd838ddb29ced8100077890a92ac4ed525436c63836823955",
+    "assets/audio/scream_3.wav": "0a51256a9a896d655d8afefd55410dc4f9bad297d24cc1acd39160bbe57eb1ed",
+    "assets/audio/scythe_end.wav": "d603831087de830eaa0c40f6f3e9c8c372596731361106ce534a92ce3b94b0d4",
+    "assets/audio/decoy_activate.wav": "fbe192faa1e5cd3e341d3c407642c3deb330d8061278b906531f20aee56ad2e4",
+    "assets/audio/perk_unlocked.wav": "9b90897334a6d39b125389fe39ce50d8bc1388d588bc96230e8fe7d40773d408",
+    "assets/audio/reaper_hurt.wav": "ea6d6efb144a487bdafdb2ed623a76fc98dccbc543fb9ef3d41aab98c443499f",
+    "assets/audio/wrath_warning_final_judgement.wav": "e82dd2f67dc73e8f3804db0f0030242d56dcdeab4b3c6e19646c67f66c8f9ebd",
+    "assets/audio/item_shield.wav": "1133a3302b8203b2e8f7852508fe3246a9e6b52ac30bac4da4b0b2e190f857ea",
+    "assets/audio/branch_select.wav": "e91abb2a9dbdb6f5bad379c3f66d1d663e5636807b1033ddaa9abd5187b5443f",
+    "assets/audio/wrath_activate_rules_judgement.wav": "cec79cd19f21b397cbe8d8e72dadfa74eb8d5ec38cf562e0c761830da7c82979",
+    "assets/audio/undead_attack.wav": "ab77981555597d5e5d56f37916347ab568ada491f53beb032f36b32b7ce7f672",
+    "assets/audio/ui_fail.wav": "fb689f502577d90f40c3964038d90967622d5c0bb2b94ba43f809a8290f73367",
+    "assets/audio/door_reaction.wav": "fc9e481d6b8e908411fa93ada1528b9c47cd92488694894a9733f573f91cf508",
+    "assets/audio/wrath_activate_crimson_execution.wav": "aa1dfc5d8f53b2727a3a0a05543618c19dd2e13c81b6d38f3117fb4108b884fd",
+    "assets/audio/sale.wav": "125b2964cbb0450839f0fb46b07443114bea3c7855d53214932f581ba2ae412b",
+    "assets/audio/wrath_activate_final_judgement.wav": "0f4a497f05114be73d76902bcb55cdf0013b40078f59d6112c9f0e33b0e6f7e0",
+    "assets/audio/intro_running.wav": "543040c9c877402f406c9687abbf3e0f4584a2fa7381988258f24d46dede4bc8",
+    "assets/audio/undead_hurt.wav": "02d8d703990e143cc672ef1570ba4aa7b570304a775348c378235077e7536b8f",
+    "assets/audio/hunter_ravager_dash.wav": "5ee7cea69b21f4895469595a4a8996dddd086ac277323d179f2e16327adc2078",
+    "assets/audio/hunter_laugh.wav": "2cfabbea3539b6d933433474f66bc6eea4b4cd7bf076f450df20a4af64ff61a9",
+    "assets/audio/reaper_ambience.wav": "abcd11367eb9feec7bf58e12cb5de1b431220035d3ff6000a046b3a2637e1d80",
+    "assets/audio/shop_purchase.wav": "4fe3b193010b0562fff75a1ea35a88ed79ae7f1c59a7320399966d40388c5d6d",
+    "assets/audio/undead_death.wav": "518c067a8a6322398fc2beb638088b4b0b36ad9eb053ceab08e2669de7fa1f2f",
+    "assets/audio/item_guardian_heart.wav": "462c83ff8dd9418c206730e554cbd82f30921d70ec1e7e1779b16ddaa8fb0b7c",
+    "assets/audio/build_frost.wav": "4a512e9d815d1918610986c4535802b14c44f4ba73ec2557fc7d9e1cf4ef0438",
+    "assets/audio/wrath_warning_soul_reaper.wav": "a45f95a4acca0dcfaf66c8a24aea86a4d3f7d8b276c9f66739c8014701100240",
+    "assets/audio/shot_frost_rime_field.wav": "d6b32d30d841e9f7ff53c1a63c15379b6fa0f8734e1fb00238bd5da2d178bf65",
+    "assets/audio/shot_needle_precision.wav": "0c76b4ff0a26e99f81ec1352bdd794d20071ad7f16c01a42b4bda9b624ecbac8",
+    "assets/audio/generator_activate.wav": "0d3e09c07009f08ea6733bddc0ed1f32735773f2e6dc1c761d129b1d86f64e4d",
+    "assets/audio/shot_needle_suppression_high.wav": "94684fde3836367eaa8c882f9ce520ae5b9c1e023d1364ba3c79140e555db2f6",
+    "assets/audio/wrath_activate_soul_steal.wav": "e0efa1161aed2da839bfa6eb7b5f885b9642326433d4773e3366cab024a11193",
+    "assets/audio/hunter_stalker_conceal.wav": "e2b92dab12c2851606beb1e709505bff999957faad33dab6cd76787678393ef9",
+    "assets/audio/music_intro.wav": "0de5cfbbbf611a48cccbd4a4de985936ddb6b7002c70ff43827fa8833184cbfb",
+    "assets/audio/intro_breath.wav": "a3c1722537c0549339e10195a2fcef07a083133579269fde2086faedbb6d04c3",
+    "assets/audio/shot_arc_focus_high.wav": "09348dd39e4d338a9c9cba023ba8063d2310d5e035bf1397752c05e46fd5ae7c",
+    "assets/audio/achievement_claim.wav": "95af69eec3e57a3e5db49886671a7655cd6ee7cb6d6faddfdf993c0a1a684091",
+    "assets/audio/buff_armor.wav": "744d809b536bcd89b4d7215014d2327c7febd78ad62b2edf18acfaa32afd1255",
+    "assets/audio/item_reaper_seal.wav": "7e2931207a03606c2bb8b2264026b68e050cfc960f0e30e8658d66add3e3b0f7",
+    "assets/audio/build_decoy.wav": "1852043817081ba09974766f889591c60d617893426ad426a3d487bb8ffd2e41",
+    "assets/audio/wrath_warning_scythe_slash.wav": "6982a1b7811352320440e4eb7627316320e6108dea66f41abdadf5a6b422b464",
+    "assets/audio/shield_activate.wav": "b7975d46c4ce3b9cf8dd904cdc1f57d568f269e1b21a2fc4ceced3e405f3ac89",
+    "assets/audio/eerie.wav": "1eb0f0d091b4ca07421641d072b4997319cb9b70cbe4e762b512d93834fa4491",
+    "assets/audio/scream_1.wav": "a591633d2f7de008168eb3bd3ef1f0c7988f98e00d6c7730a04555a268dff851",
+    "assets/audio/impact_flame.wav": "e4b4a66751f5d24bfc2b18c0be27b3d099901f8bd0078de3a06094743b43fb0b",
+    "assets/audio/impact_frost.wav": "e8c77d77775bb445ceea9ce33dd1db9bd1469a5a50818d18caca0651e42e91d2",
+    "assets/audio/mythic_perk.wav": "7bdd7e0c7c91dc6936b61d76e1566020ff24f43b96595717d66972c3f90ce3bb",
+    "assets/audio/reaper_scythe.wav": "2c65549159bd798a9a11c529f28fd775796d65e227bf6489f4d33542e7be9a2c",
+    "assets/audio/achievement_unlocked.wav": "8174a87af13a754e9eea81ae5f4b08f885a113bf180e55b8c91acdeb34124d62",
+    "assets/audio/wrath_activate_summon.wav": "2296fbfb6fc19bb471854c085520b46d084541ea1ce4c7015afff9367bc2c9b8",
+    "assets/audio/prestige_upgrade.wav": "ed385889794aa480388af9c116edfcf3d31ae9ce319ed95b24dc640329a5614d",
+    "assets/audio/impact_shock.wav": "a50050c46cea0271983c1d344fd746d2bcb869cf5dcf456c011e58fd06114aae",
+    "assets/audio/wrath_activate_soul_reaper.wav": "aff9d9d889014369655c21e9e92cfa28368a18333b80c01286600470338657b6",
+    "assets/audio/buff_offense.wav": "d39e7bec67787873e7a9a9a2596d561618b68a5ac22d651241e7a47cdc93f50c",
+    "assets/audio/build_shield.wav": "eeeef0ae02b31ecb53d8cb44be9f1372744759ac299c15e411be2651053d13e9",
+    "assets/audio/death_scream_1.wav": "ed52d9c6ea4313fe44144e896223e12a4cdebdac4acb9e3183c79d7037cedd1b",
+    "assets/audio/wrath_warning_assault.wav": "bace54bfff0515e8bdc55721b8a28bbccadb9268f2178729e58786b97b55c3a5",
+    "assets/audio/shot_flame.wav": "856d8ca5f7d846eb6a0a2109d25be2a0fbb0dbc3597dcdb78f27e896571f14de",
+    "assets/audio/item_overdrive.wav": "da0a314354b9919547da30090201966cabbdd30697637cc182a675684500ecb4",
+    "assets/audio/shot_flame_searing_high.wav": "c7a1fed06a6d99d880f4cb512a3371e196508c4623f8f3ac3b54ced4c7d6c17a",
+    "assets/audio/shot_arc_high.wav": "6ca65da966ba30956cb448197590befcfff03ae2db80b371d86d061d5604f52c",
+    "assets/audio/wrath_warning_rules_judgement.wav": "f6b64f689a0017003e0aa5b2118f0ada5a40e5c7cf96550f7ce73d3aaa26d013",
+    "assets/audio/item_legendary_reveal.wav": "5db088a99f827354454a0618eba85953ba20acc700b63a4cd876022b2d4fe985",
+    "assets/audio/undead_spawn.wav": "78fc1afd5238b9067853f6ac8ddd7399c213c1611258d87b7ba119c69a8265ab",
+    "assets/audio/music_reaper.wav": "044adf894bf9982f77c61d469cd6c59cf6fc5c8199fe5b471e038336991a0ee0",
+    "assets/audio/insufficient_power.wav": "0e928c6abf66db1a9976c69ecc5150fb5300aecff43900da40aaacf2fc4c0a23",
+    "assets/audio/shot_shock_capacitor_burst.wav": "51d474e0fd009ab956cd23f78c43cf7b40da0ad9685850bf0b3000d9e0a1f308",
+    "assets/audio/reaper_transform.wav": "8af2bda553005b7d691024ba39ede840f179deafa6b06bb9a0cf819e6932ee0d",
+    "assets/audio/shot_arc_storm_high.wav": "50eb9b882cf143c1d9101831959968311b76a6c0a3527b38df55a16fb6af3850",
+    "assets/audio/hunter_stalker_feint.wav": "3524d22740d9f792328f2b94f99e985d3fee31831e45696f11465bd18db6afd1",
+    "assets/audio/lock_release.wav": "2fb0e434e466deb616788fcf90693cc0f24616c15b384ceddf36b459519d5d62",
+    "assets/audio/item_repair.wav": "68d5ba45c726f88151b4a2d723ed9e0dd9923bc4f367e64adb13b3044750597d",
+    "assets/audio/buff_resource.wav": "2f74cdda77ce2e597cd44bac7b498c6f980d97e7b1e19cd3e44d13ffc799eadf",
+    "assets/audio/reaper_charge.wav": "3ae1dacd940e7c3eee80cb259f1fc9fd6a333fc8bd268b637e65a345dec539a4",
+    "assets/audio/buff_command.wav": "0f66c42aae23f3a0685573bcad9b70d509fb1df532bc7661dc0e30b269799318",
+    "assets/audio/shot_shock.wav": "dad201d7eaee5d912515d4fcd5c4d60472c85d324788fb9d90f326b1b40e1488",
+    "assets/audio/shot_flame_searing.wav": "ab8645798ec33e49a4f4842b67771479634058fe98daa1dbf4b84bfefe8c034c",
+    "assets/audio/wrath_activate_enhanced_undead.wav": "abbf0b9ca5ba6dc8b97b6acbd0cf0239b935ddd5bd0450cb5cb5713dfe49b6bb",
+    "assets/audio/shield_absorb.wav": "e560f6c395142aa6278ae5ce23bb8a4e3e8cb3601e22a89c8426f50db09e3e33",
+    "assets/audio/resource_power.wav": "9a555cf48dd8577faeed677783a5b4636bc4d14cbfd35903e1f877be0c5ba398",
+    "assets/audio/wrath_activate_eternal_sacrifices.wav": "f7b290754a1c4d1279ad9d76fee2643d04f3cbdf74f60b01f9a378b127d54098",
+    "assets/audio/shot_flame_wildfire_high.wav": "9fc9bd3298aca8a6bbf5d53e29bedc3511f85323060d1211d07243e10ea3bb54",
+    "assets/audio/auto_repair_activate.wav": "2d1e7d311adabbde3a2eadedc56e3a4963cffbc530387936289ca10a7cbe100c",
+    "assets/audio/shot_frost_deep_chill_high.wav": "1ce5d2b3f7863d4335521245cb75503467cd7f111b1f1b94d45036bfb2111964",
+    "assets/audio/item_radar.wav": "b47da8be5bfdcc127ff9042ca54030bc59a0628500b6e7c2bb215575d45c6b5f",
+    "assets/audio/mythic_promotion.wav": "b655ed8fe19fe9f121f53794073efbd33c355d6f673b223ca774707f4b8589b8",
+    "assets/audio/resource_gold.wav": "436a50a896588421f9d1f517ba3378633d288b554cfa4e5b51c160ab9a19873d",
+    "assets/audio/item_decoy.wav": "924b90378f510e837d71c27294817097ba518922b220a16a1a6e500215946e68",
+    "assets/audio/insufficient_gold.wav": "233cd54a4e458d361af4891df309f8a6b67365962692fe03a62712dbd01e48c2",
+    "assets/audio/shot_needle_suppression.wav": "e025eb0788cae29615b52b118c2bb977d0d9bd317dbbfaf61f9440e6c28cfd22",
+    "assets/audio/reaper_surge.wav": "8030470ba540ab59bf30a623e86cb30ee9adee01ca667ce5469e1fd034dd89b2",
+    "assets/audio/item_gold.wav": "bc16de8a4770917744923d7ab269d6b34fca8ffd5c4b95662d38dfec6221cf9d",
+    "assets/audio/shot_needle_precision_high.wav": "f1788ca529cecd414bf800e15e6312de0e7026c41553f7f8f59e377ff391615c",
+    "assets/audio/shot_frost.wav": "2ec1449aac312805186346542e115d1ac3c3d3e84fe6f947ec6ff8f5e5a37c2e",
+    "assets/audio/build_shock.wav": "2a23fcfcdb8cf05f0361521de6e12dc41db6ab688d5dd95dc45c025ce51f2ad3",
+    "assets/audio/reaper_impact.wav": "774e86e2a559df0c53cc2613321cb993c5fd8681b236d32a71946819f8ec7f78",
+    "assets/audio/item_smoke.wav": "92640670b59b233f97997554286096e387e76f476881ec1263be825e3f15490d",
+    "assets/audio/scythe_tick.wav": "7aea022c054e2ebed3413d65b4be4a6489c56ae8b1d0d875e0d000cc5817b24d",
+    "assets/audio/wrath_warning_eternal_sacrifices.wav": "5d4e159679867f9de80b8ab8f467ab4f065e9ae764bf6cb2438bbbc24ab35d5f",
+    "assets/audio/weather_rain.wav": "f7073259dc073fc8eb0c947003568e0df10c07480647191de8d748cab349c9f4",
+    "assets/audio/wrath_warning_summon.wav": "d38cac50c7742f57151c8023b4259495e38f743dcedcef4699b2cecbdc98a222",
+    "assets/audio/wrath_warning_soul_steal.wav": "919c48a8e448b43e74fa19cc85d3b519c04f234ef4d6d6da039856df8e911c3c",
+    "assets/audio/intro_whisper.wav": "bb43d754cf4b1a72a0bb1e0fc8af5329c5a2aec05b2abe25eaf33adf6bd9ec96",
+    "assets/audio/tutorial_step.wav": "5301c4d54d61d35f866fe8fdc3d5f37e3ec09dda6caede51964afba9a7ceb61c",
+    "assets/audio/survivor_notice.wav": "ea696ed22d980253bf9497c98907b0c23c906a06d0f4678006fa3c84a6c480c3",
+    "assets/audio/intro_lightning.wav": "87794bae0a131c4131c2a080819a83b942f28d24fb6ca9bc9f66237966119653",
+    "assets/audio/item_shield_hit.wav": "4336b5080d4120f96d0b40a4eca478db6667ee417b695411d9baa07dc244f255",
+    "assets/audio/shot_shock_high.wav": "8f810e280031d8e26e1ab293ece990bae4622977f4d138b7baf2e0f9dea06fb6",
+    "assets/audio/weather_wind.wav": "87d356620b1a50dd35c510bbd0c19ba769b4b26aec9964022de529f67e610c39",
+    "assets/audio/build_flame.wav": "3a3c2c716d1b0c627b0c51fcdf654b638ec5579eee39c2a33708e231627c2eb4",
+    "assets/audio/shot_needle_high.wav": "a53387119dc27cbd8bb0c18a1628d172df5d959dcd71dd9a6e4b0e547f825b6c",
+    "assets/audio/shot_frost_deep_chill.wav": "121ecd36d1c3fe7beefa9dbf737091056c2e37cb2b63243b4909423398c109d8",
+    "assets/audio/item_end.wav": "f90275a8d085334939b5775d6fd0de1c49dce627361da2fc64ab4284e4e14b27",
+    "assets/audio/shot_shock_capacitor_burst_high.wav": "c9134ae5010077fd5b2e4baf8f15c4746b2e8e86d5ba2224047407a5de2c53f4",
+    "assets/audio/item_barricade.wav": "8edce0430396161f8d6bea78dce8be630179b3938e30235ab58649282c063c4a",
+    "assets/audio/shot_flame_wildfire.wav": "8af2945c0ab1698b367252e8b8268357e00ac073ac8255eadc6418e6d36606a1",
+    "assets/audio/wrath_activate_scythe_slash.wav": "b72fb45f0a9befc0f34bbfade807d64c9cdbe0e7cc3026bcd2b6c1b1dff2c1b4",
+    "assets/audio/intro_impact.wav": "b33c4821e99be9b1410a8d0fc9165abb838a3a5a6e089ef196fcb0c84fb68545",
+    "assets/audio/difficult_stage.wav": "503e3b1645a050e82c8fea0578a1121d9a6cd402f3d6878dc9164bc95468b1d7",
+    "assets/audio/shot_arc_storm.wav": "3c845867a74406c17cd95d0d251b1fc027bea5121685c6ee0ff74e0928bbf222",
+    "assets/audio/music_crimson.wav": "aac3c346e14e4ba0e02c456eb2b19216697192ae29a5a23d74b68140828f1424",
+    "assets/audio/shot_shock_rapid_discharge.wav": "908611b55cbbad9a07c7717315d7dbe28226cde8eeb84e05dc65224a07afd5a4",
+    "assets/audio/stage_bonus_selected.wav": "2c4d1206dc4a47528e4f94041398d2f0a9abd1ca3396ba4befce201dff857feb",
+    "assets/audio/wrath_activate_phantom_scream.wav": "131c8483fc1bd1871378d679d6f98232a6d5989b1c4af8f5efccde978591220e",
+    "assets/audio/hunter_crusher_pressure.wav": "6d07ea75aa83c20c9847b15ccef454d41366899846b0cd8424afa0c51c47ee2d",
+    "assets/audio/scythe_throw.wav": "efdbfe737c40df794bcc20049691e6498d2075f5e438a0437188174c1d5b5260",
+    "assets/audio/shot_frost_rime_field_high.wav": "605d059108d354ff49354f33a7abed59ab0de06438bdfff3683c10cc354e66ae",
+    "assets/audio/item_trap.wav": "3fa800f6f5b65358d7ebbe39c0c32e8102ee9226f6b9911e12664c152263a951",
+    "assets/audio/item_feather.wav": "e0505ec04a6c602b5e3f65fce1f186340bc6438ee2b87763b32afeda67e9afc6",
+    "assets/audio/refund.wav": "4fe3b193010b0562fff75a1ea35a88ed79ae7f1c59a7320399966d40388c5d6d",
+    "assets/audio/reaper_phase_2.wav": "cb7e384938e86608fe788c23c1950306460d04da0b74dfe0d45364fc1cee140e",
+    "assets/audio/item_reveal.wav": "5f7dc4a157f6ea113f65689d33d3819658b31b30832b0c7593dfa7e68b8d807d",
+    "assets/audio/scythe_embed.wav": "c6481de3448e4a08f32da169a8aa451e1e7245c7f2330d6267b4f68b24108d82",
+    "assets/audio/item_frost.wav": "ef08910ff0a81dc26b2539a75e04a644d124a93f184b5064b3c4047deaebeadd",
+    "assets/audio/music_endless.wav": "6bf85a6a3883d8ee2b7d3b52c7414aa636896e8114523c9b51642cab1dc7589a",
+    "assets/audio/item_rescue.wav": "7e3a07a9786c38938107b34a6990e16374a93299bba05e9ba96c06eca486161e",
+    "assets/audio/shot_flame_high.wav": "3db3a5797dd3a5cf567c8f534a66d96c5e4fbfd9e8a5497e40c387ff3bec23ff",
+    "assets/audio/reaper_laugh.wav": "33494e9b4b975669967054ae932b565d26ca3d6a6175d33c594ca586811fee14",
+    "assets/audio/wrath_activate_assault.wav": "204d819bd8cd5255ed9669796a98f53821664972a8d1efd67c2718ea872dd06e",
+    "assets/audio/death_scream_2.wav": "ef4dab1556898f819245f5ac146a1f56525fb9c26201e3fe56514b029a61bec9",
+    "assets/audio/item_cursed_fortune.wav": "92d675d8ef3dad66fa9b3659803d4444eff3df016619a33c07a5ed78fd977189",
+    "assets/audio/reaper_death.wav": "0a9a5088c68df0449aa59bebef919b1c5ffda37718df1cf229ef62fd714cd3da",
+    "assets/audio/wrath_warning_phantom_scream.wav": "8d19a04f93aeda8e7d1a5802184acfa9306ec1a95e82386a7fe0d283bca330db",
+    "assets/audio/wrath_warning_crimson_execution.wav": "66a6151b4f810d4013f73c885f3248c4fa4d9584296e026a0613b15af6f3d47b",
+    "assets/audio/ui_hover.wav": "b1054298fadaa685f09de786e294a4b3bf1e2d14facc3e56ec7d64e53b3f402e",
+    "assets/audio/buff_speed.wav": "8cd291934718c9016e71355aac2d6c017ac42db6293c1b9b38a210830e2dcb2f",
+    "assets/audio/shot_frost_high.wav": "06dc2bcff4c79bdfba6caad7717cb5188616e0fab017fe1b8bafff68dbebce6f",
+    "assets/audio/hunter_stalker_warning.wav": "e1a8e844aa1ef95a1b8f20f8a5278ba15edad7db01cb185f605e7eb15c96856c",
+    "assets/audio/weather_thunder.wav": "70cd4c71c33e5a19624a2da417e351afc978dbca66f08b2b237f7b2c11d27ec3",
+    "assets/audio/item_battery.wav": "b4df8fff2e21d83602b8f4d68c472ae92939f4d718e8de0b1af627c91747844c",
+    "assets/audio/tutorial_complete.wav": "30eb30e9fe4b3382010c1339c8832402debb9385ef9fa9a28ae14bfc00f27833",
+    "assets/audio/build_auto_repair.wav": "6523681db7bba930765c1f389e34dd2918aad815a071eb960b608041e1d9db78",
+    "assets/audio/scream_2.wav": "d862905ff257c22ad165c93d71829c7fe3c6f4df0f2d436f94eb30a40a7d9f07",
+    "assets/audio/shot_shock_rapid_discharge_high.wav": "7846ad327b3cdaca77f2e3d19e9a230d138aa19ac42495106a9e5e992686db88",
+    "assets/audio/undead_spawn_enhanced.wav": "f6b312ec14f89d7db535697eddc2030036022cbc2cc0594ad7249b1412e768c9",
+    "assets/audio/ui_confirm.wav": "2207c5d780a92fb6ca4a95a796ec37653d48ba5aa0ed570326bcea274a8092d7",
+    "assets/audio/item_coupon.wav": "d01ad124db83a956db9e3822e00fe752c88beb5346a9432a6cf3ebb494da8423",
+    "assets/audio/item_inferno.wav": "213de026954f6e6032394a17807394ed7c694c37c392f065efe928108d03d053",
+    "assets/audio/item_time_freeze.wav": "1b6e202af53f836dfd5f6827a52318c56939a49f4be356b53fdbb3f3176ccf80",
+    "assets/audio/item_explosion.wav": "339343cb45e8773233577fd257587b3c3a90ce40a75006eee5488f4eeb702058",
+    "assets/audio/hunter_crusher_warning.wav": "9bd73300ab8c553e9b1e5718498c4b9f00d510f4669b829d9955ba12a7642746",
+    "assets/audio/music_approach.wav": "845025bf01827d19611ba606cd7980fd529e51122178139cd1f322102ba578d1",
+    "assets/audio/hunter_ravager_warning.wav": "50a92a6008422d1f446c353c82b362119c8af1d8c97d6dd7ac91f1c78eedd039",
+    "assets/audio/hunter_evolve.wav": "76a33c27ea2d5b7f8dbe185ece3a727edaac59c77827db9c8326e66e57ff3041",
+    "assets/audio/shot_arc_focus.wav": "67005cf2aa4a0182a1a1e35f809160886a10e20dd5a7806f588d77c9b5d7f0a4",
+    "assets/audio/wrath_warning_enhanced_undead.wav": "4211034c9e15f8cb72b9402f486b9f0dd89b0e24ec8c78135e5529de0aa5308a",
+    "assets/audio/hunter_charged_warning.wav": "7d50d3e7c1a61898476dbadbb922d5f5e96f41d0fe678cdee3cc277fe6fc87d0",
+    "assets/audio/intro_shriek.wav": "5f49985447f9840b386f6ba6da423e030d6d679820c546c4548bb1044eace58a",
+    "assets/audio/item_pillow.wav": "c638378b8ee222bcac631b8964b4f5e6ca4b4316ac6372598cd965f8f566fb62",
+    "assets/wrath/frost.svg.import": "30d97550c1f348af9deae153f4da775636f2fe2d459b1cc5f73de86355b3a821",
+    "assets/wrath/decoy.svg.import": "87693b44a972b4a998ba29e56e7ec2d61bb25a0d7ac7e88a8e669cd6365f84d3",
+    "assets/wrath/shield.svg": "10281d8ec1f3e61a332ad2c09f94249076d1965db47cb49d54e1391728a5ef8d",
+    "assets/wrath/flame.svg.import": "c7393001db8f327fca94e242be60106dfcd77734154890eee0764a190654e3ac",
+    "assets/wrath/shield.svg.import": "6473b96fb5ca03e9bbc48fa9545182e34451cd5574e95caf8b60c98f23ce6090",
+    "assets/wrath/flame.svg": "1ea68a8252fb76ab68d7226be0b3ce242b99f0465768d714f11f74b68e67c63f",
+    "assets/wrath/decoy.svg": "9838df75d551ff8a772c09fd4bd05233fbb4a5d70b426cd6f0b6bc36f22f0381",
+    "assets/wrath/frost.svg": "860f3155e199654e91de53690070ff257bed3fa02012adac8e8b760b6de383c8",
+    "assets/wrath/shock.svg.import": "d3fb73d8b6dd295b185c013b759c25317fa9a6c78608d3e2e7a4c4e87c9a2a28",
+    "assets/wrath/auto_repair.svg.import": "c1711a4ac42f1b62dff11979051bf73a6674cd8c58f049b4eaa69ad35f2fc120",
+    "assets/wrath/auto_repair.svg": "79501f8e26cdacde17460aec168fa257c0b9328b7457281ec2de539001fbd4aa",
+    "assets/wrath/shock.svg": "172cf88c145907f254aa8a4235d9b83d01ef25f048afacc75932c9a31a90e1db",
+    "project.godot": "9a9c238c50f159d625fb030608feb69fe4ea7044bf39911fd3410c8f7cef04af",
+    "scenes/main.tscn": "544826bfbc74ba1d2e134b009010e7fc97191c0c6416ce6c9ba7f46f7931fea7"
+  },
+  "gates": [
+    {
+      "label": "Baseline render",
+      "log": "docs/evidence/phase5d4/baseline/render-initial.log",
+      "checks": 53,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "a4aaf483c399f9295b2910f7405bda7feeeaa6574f409f34073f60b5b95ca1bf"
+    },
+    {
+      "label": "Early full UX",
+      "log": "docs/evidence/phase5d4/early-render-accepted.log",
+      "checks": 301,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "21374977bd2b8fd50d0be79cc50403f1ad027089a8d0223ea57390ee24cbcd75"
+    },
+    {
+      "label": "Early final branch clarity",
+      "log": "docs/evidence/phase5d4/early-render-clarity.log",
+      "checks": 209,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "c9e7425ab60eb266b9079b661ffff564734ab6faeee8db8cf80c6aff0c037212"
+    },
+    {
+      "label": "Early paired actual audio",
+      "log": "docs/evidence/phase5d4/early-audio-accepted.log",
+      "checks": 76,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "915f2d3de742364069a10d6278b79955a67b6d067f1ee38b8d46351e67bb7f57"
+    },
+    {
+      "label": "Six new buildings/both branches/paid L10",
+      "log": "docs/evidence/phase5d4/core-render-buildings-initial.log",
+      "checks": 555,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "e29b2341bfbbdc25b4b04397d2ee749e82888d9a954f5e24c127380b154af508"
+    },
+    {
+      "label": "Controlled boss phases/casts",
+      "log": "docs/evidence/phase5d4/core-render-boss-accepted.log",
+      "checks": 117,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "fd5695064026d3126280945fbbbad46f6f3eb38df414055ed849b7345101c9d3"
+    },
+    {
+      "label": "Archetypes/evolution reset fix",
+      "log": "docs/evidence/phase5d4/core-render-status-accepted.log",
+      "checks": 37,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "027c8eaa6962a732c244489ea77ea05ac59cd0a555ddfb2d03cf64ab7c70f2dc"
+    },
+    {
+      "label": "Listening Room input",
+      "log": "docs/evidence/phase5d4/core-listening-initial.log",
+      "checks": 189,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "b8ab03fa62384878d95d782a72b8988d70f7e7177233d9ac8d68be0b0267165e"
+    },
+    {
+      "label": "Final actual weapon PCM",
+      "log": "docs/evidence/phase5d4/core-final-audio-weapons.log",
+      "checks": 38,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "188ff6cea4c8e81828612381562072b5a95da2d2f665ee30640ee2ce0bac307a"
+    },
+    {
+      "label": "Final three-evolution PCM",
+      "log": "docs/evidence/phase5d4/core-final-audio-evolution.log",
+      "checks": 10,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "8395c8e5c80a60f2621488bfa6f53d2c544683b3e39ef40d07e45dd36b913db6"
+    },
+    {
+      "label": "Final boss/Crimson/menu PCM",
+      "log": "docs/evidence/phase5d4/core-final-audio-boss.log",
+      "checks": 37,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "3eb947c327edb2470b5bb85224bebc49edd11daf2a4a365b320c093a756e66fe"
+    },
+    {
+      "label": "Final genuine breach/reaction PCM",
+      "log": "docs/evidence/phase5d4/final-d-audio-breach.log",
+      "checks": 9,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "487d5c63d02d1b8690a45f705e1701f31851e71f4d61f7411c0c330eff779b27"
+    },
+    {
+      "label": "Final actual defense FX/Frost/costs",
+      "log": "docs/evidence/phase5d4/final-d-feedback-accepted.log",
+      "checks": 99,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "4cd5448b9b919c83ec4c277c843dabac0cdc859c3943fc12a606cf0fc3a5d7bb"
+    },
+    {
+      "label": "Final NPC domain navigation/framing",
+      "log": "docs/evidence/phase5d4/final-d-arrival-accepted.log",
+      "checks": 19,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "0e420830c238dd84b2cf54e89bd10fb8700891c86d8868a2bc85402afee58a1e"
+    },
+    {
+      "label": "Final own Phase II framing",
+      "log": "docs/evidence/phase5d4/final-d-own-phase2.log",
+      "checks": 9,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "23e70b9f60cba2c5e8f778f8c45fc67ea11079198eabc137ec5d21c9866af0f1"
+    },
+    {
+      "label": "Genuine earned all-six-L10 inspection",
+      "log": "docs/evidence/phase5d4/final-d-earned.log",
+      "checks": 141,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "3ce5417696dec8027f4b293268c56076e6c737fb5bc568f80a4f2e1d970aea33"
+    },
+    {
+      "label": "Affected integer HP display",
+      "log": "docs/evidence/phase5d4/final-d-earned-hp.log",
+      "checks": 45,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "00926ecd399ed5efab27877d530d7244357cb1cfe206a0c6472581591129fd3e"
+    },
+    {
+      "label": "Final all-five-map teammates",
+      "log": "docs/evidence/phase5d4/final-d-team.log",
+      "checks": 293,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "d3d508382cd957b10784c50ab490987fe6172dc0d1da911c5d5faaa6b3126bb9"
+    },
+    {
+      "label": "Final committed-source 600s dense",
+      "log": "docs/evidence/phase5d4/final-d-dense.log",
+      "checks": 764,
+      "failures": 0,
+      "exit_code": 0,
+      "log_sha256": "5fb3b5674056a1059e2ec65c99695e2d482bf6ec215a4ca4b340ad3b5054e106"
+    }
+  ],
+  "accepted_check_sum": 3001,
+  "check_sum_note": "Counts include input/transaction/state assertions and image/PCM-write checks; they are not all unique gameplay scenarios.",
+  "core_image_count": 286,
+  "core_images": [
+    {
+      "path": "docs/evidence/phase5d4/core-render/abandoned_dorm-eliminated-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "e10a1b33ebe2d3dd652fb71fb862c6ccc681add318023a8282fd1b44798f183f",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/abandoned_dorm-eliminated-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "9a7adfb1b0d6510a6a706657579b7fc1b60bc9204a5a6f0393e3f3c47e4c425b",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/abandoned_dorm-own-danger-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "dcfbdf0b5e64776ff2d0694f3986664ce32828e85a22da0a92463d814452c8c5",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/abandoned_dorm-own-danger-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "c3d1dae55f72026825ffd1b680f8e702c016d5515bc9ea1b1b0edc89296f1be6",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/abandoned_dorm-roster-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "5bfcf085aebd24a98b6551d31abd83a09231b17ead6c47dfdc3c4f90ffd3efa1",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/abandoned_dorm-roster-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "aca637ac78eb4ffa1fcd2639704d6dec5221b1a2cc6b311be02f644adbb68ec9",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/abandoned_dorm-watching-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "3b8c779410ea0fe6bb91ce3d1878d21685752886f9c46c39d32ee179bc4e395c",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/abandoned_dorm-watching-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "f609cd888b0aa274952589c4daac263c211cd95f18f003065e71b4949639115e",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/assault-active-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "fc5288d27cb8df63545ee9643d870c26a3425ff1a7239b752122c8086bafae13",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/assault-active-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "a14d3ce45195a94c4c250b223e1fd917bbe751270e1f4732fd07141656507ed8",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/assault-warning-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "b263a4d82a9503ba4c9370465b6865aefc15b1bcdc7049a1b684f9f932ed3c5d",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/assault-warning-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "cf43df51c63df6f7f1582e0f4dddd537e58fc6f4de6a88ce12c9e858f1f5c3d0",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/audio-assault-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "965989d2ee2841153b8d846d4f21c56a2e3848fafb1775243d9b71677318db13",
+      "source_group": "actual real-time PCM companion frame"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/audio-crimson-active-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "db44c159e0d90f8c8653819e29f62bb803a88a850498df3ca08971516ec1f1d5",
+      "source_group": "actual real-time PCM companion frame"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/audio-phantom_scream-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "7bf633884fc3fb69cbbcc3762de1361678302fe9be4cfb43efe1f5ec00ee1265",
+      "source_group": "actual real-time PCM companion frame"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/audio-real-breach-after-reactions-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "174b3954b53726df9ca6fa79a2d1c8984e42547716fba4823b748983c9e73877",
+      "source_group": "actual real-time PCM companion frame"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/audio-rules_judgement-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "c354891fec797087ee2e8d8a42fe9d7ad3c5918c63d4afc4ae4796071038be91",
+      "source_group": "actual real-time PCM companion frame"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/audio-scythe_slash-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "6ae7a33f1af6a81d15ec26c448bcbadbced10f0c60dabd363fb0de788559c018",
+      "source_group": "actual real-time PCM companion frame"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/audio-soul_reaper-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "68d903dbbcb29f1099902ab94eb1ea8e90fd0e4a98b872bb16fd0a3ba9339470",
+      "source_group": "actual real-time PCM companion frame"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/auto_repair-branch1-level10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "bdf7c3d5a5d81b512de64baf53c53d63940246cb31419cdfc75cedac99e72197",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/auto_repair-branch1-level10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "88ab5ba2df284450fa63561a9245860ad68805260f59fea3ed12578601a8c451",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/auto_repair-branch1-level5-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "00749610a35c5db5768a8b59c7deba6c4592d0beca6322d88f7fb8527fc94df6",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/auto_repair-branch1-level5-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "f17f4865edc1a7d3058eafb81072dd81038d5c029eb49e5cd5b853740cd330ca",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/auto_repair-branch2-level10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "08244fc255e95a71942d621ec02016d8a792e7f4a41bdde11e071d126f0e96fd",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/auto_repair-branch2-level10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "fe26a41411b89d9236b6d3f250c874335117298aabb821788fffce62ac0dd234",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/auto_repair-branch2-level5-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "5206bfdf3890c29270ab4a07aace377e65087660ab6010fde89eed5469226306",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/auto_repair-branch2-level5-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "5b7c3f7c1f0ef97c0e638de527f10ad8c47d78ddf8bf112cb9ee861a04ebd721",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/auto_repair-branches-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "8cd289d90d6c98e0045010225cfc5d833a93b96db29440c17e459d3205943d4d",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/auto_repair-branches-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "50b9d1bd2935c967dad4e76e1a0b439cf6599af3fffcc87ef82a39a5bde0ed0c",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/auto_repair-level1-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "a07225d4ac7e282c6accf1c34512f8b8001dd4e452af49c36e3409f1ffdcf798",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/auto_repair-level1-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "8a1f3f1975994d1e777c65f67dff0e8cb36d29c9c5db3979935293d829645a55",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/core-audio-weapon-flame-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "0234d92e0dcc2b32b8ca7d0e53b94eb082045de2f5b4e4ae102ce29f249d6517",
+      "source_group": "actual real-time PCM companion frame"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/core-audio-weapon-frost-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "3c4548b2d020107ff3ce4cbf7ebbb87c748276779f4760eaaabc56ee80ab4e16",
+      "source_group": "actual real-time PCM companion frame"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/core-audio-weapon-heavy-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "1184f51315d76b0b2865ddfd8562febca2f5133751788c0fd341a2d81d5525a7",
+      "source_group": "actual real-time PCM companion frame"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/core-audio-weapon-shock-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "3cb2e53d0984d5603f5e0655f812bd40b74e533b2f7f812fd4876e4915c13556",
+      "source_group": "actual real-time PCM companion frame"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/core-audio-weapon-turret-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "51d7bf888bbed2608713f6c5e731de6bdf8e10c56b2725afcec935699509fed3",
+      "source_group": "actual real-time PCM companion frame"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/crimson-arrival-duel-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "ea4745a2b8ab35923aea1438bf7d41106dc8e50e63fc52cb50413e2c726d5639",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/crimson-arrival-duel-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "a5f6f1ba87b8ae60f10747f3b38a639c2fa8cbd9660b6794cac5f9a97af7401e",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/crimson-boss-death-cleanup-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "6e459687876638c87b3ae1fd81f762230c35e05efed5323b256244a05a1f96b1",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/crimson-boss-death-cleanup-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "34c5c38095b34406e4bd5eeb6b57caa236714f1e1b4fc16b8fab088ba992615f",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/crimson-embedded-domain-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "aa92b8089a7571d9dd33ee0ff2fd356bcd1ae7e9267e3a14766aaea9759b907b",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/crimson-embedded-domain-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "f7189c5d3a0931f921140964b0d168f62a0ff2f9505b73d1d4655c80a3098e95",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/crimson-reduced-effects-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "0e53c416e0534076b564a26851263bcff4926691359c5d2c79220b32b95524f5",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/crimson-reduced-effects-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "a2cc605062f49508147e2c58833b27085b4a798ced6415ce5674f5c463e28bad",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/crimson-thrown-scythe-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "a154585202e1470bfe3b72219f4a252cc70b62a25006a80a901b9ce6063a69c3",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/crimson-thrown-scythe-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "ac8eaca540f408ee1bdfe23209ae989b9057f08b684fed561f627ae9c60601a4",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/crimson-warning-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "5431761a5e219ee6e6fd7d974caab2b8f3c107db92b5d108cc713c419f6b4f55",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/crimson-warning-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "36eae47751001e10f65e5fe0ea1bac8eadc9e8c3120aec39740840de2fe9b752",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/crusher-ability-active-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "018a0dd3164efc568baedb2a3dd429e32a2101556be9f7a16eeb57c20d5f7f5d",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/crusher-ability-active-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "675cd6b2d333787dc5f9cf063dd60072bda618d15527c698ac3b4991b072d317",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/crusher-ability-warning-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "11d2daf75f4969444a181c3ed831c4f4439b3af1c7a388dba4017b871641241c",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/crusher-ability-warning-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "e1f5edc01f28705b7b88299486bb7aba63b5910e0983dcd782b00fe0f8261d9b",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/cursed_mansion-eliminated-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "297f22e4230880287c75c42a5e5a23c66bf5b0bb7a5ab5f4f6e5f5fe0509b320",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/cursed_mansion-eliminated-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "2d20811545365c12fda150c7321c469b2d42065e093f1062e4751a4398e8c32e",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/cursed_mansion-own-danger-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "8b41e166e4e138de59862f9b09e7f157c4cfe28ea2a6b5839a485ee3ca0c11f1",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/cursed_mansion-own-danger-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "1892df9e26a365b049e6c205da642628df7c5a689b82f6110efaae25a8bb35d9",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/cursed_mansion-roster-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "3474c503e822e7a1518f8dc6bf2d12d176a1b0726eec71cac8a7fc60b6e920ba",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/cursed_mansion-roster-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "59ea2dabbba6c3aefce220e69d402802b55748003779b3532df8bee1ad84e163",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/cursed_mansion-watching-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "5ff590a11bdec95c8a585cf9ada3491eefdeba0c75ec02f777319fbf95618b22",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/cursed_mansion-watching-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "3eb3eace1c75af12f7509ce0947328b9de3bf6752c4a87d03b92ede647f164d9",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/decoy-branch1-level10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "2ead3d60abade9aba67171ad0d1176e6aa90703d02a49f0c1348d5a925d35281",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/decoy-branch1-level10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "bab54af8daa8e1554ac61c86f468f794a6a062040a90b2725f12f0f17205faa6",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/decoy-branch1-level5-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "e07b6dd1c7c070f360f6b70afb8077e0852edc98037d76b7f09dcc0deb72bca7",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/decoy-branch1-level5-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "13726be31d76ab16527181a24263b1988830968b7c5c92f83993fb78ecb97384",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/decoy-branch2-level10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "966cb6589eb5ecc406b66aeb6baab26e84a12b4581b8ccfd679da942f336dee4",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/decoy-branch2-level10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "78d87eb06809e4c3f2a713df30161b581bd97a7b25240d72f7000024d93a9387",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/decoy-branch2-level5-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "fe6a0c70e6e6c9486ed927775ccd87da3e15d66ac3a55296649c542e5ff910fa",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/decoy-branch2-level5-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "884384450b436174fb11929fe85073fd46358a73d6cb2efc1b238b16f63fbbac",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/decoy-branches-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "94bd11112b73a1a2916dcdf0d1bf55a4cf106be26e732ca97603a8f8eab9eff0",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/decoy-branches-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "5f93c4c121f5ffc8e42f905555487d81d451e31d467ec23be91c6f792eae13a2",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/decoy-level1-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "cb652ff32a8b98956ebaddf7938a564621c59919a7002120e68e5df36c1b1b02",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/decoy-level1-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "7208c771b5c593e2abfedd4a9ef98c222aec4ad826c29a4719fe0bc9ae775ae3",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/dense-after600simulated-seconds-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "dc505c6ee9746266cfbdf617f0e2280e4d27f09e990c656ab846c387c40dc737",
+      "source_group": "final committed a4dc dense"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/dense-ten-undead-many-turrets-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "1b80592649487af6816d443d53f6a4bc87df11749be35a02016df4f432922b41",
+      "source_group": "final committed a4dc dense"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-auto_repair10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "abf56a401a205746a05e25fe57f3f99c8a617a2abeb35c1bc68b83ffadf32426",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-auto_repair10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "18f60be41c7c2ece5515a488836b6ed094c97490a2b70b6526ac0ad20cef2d87",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-bed10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "f5d48aaa0ace22cc361dffb527c6cb9a2b0d6c1df7b8dcc33504bb0e1457565b",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-bed10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "aad79a9e56dd0af0115587cad731d12c7ae88bc537f8499bf297e85017d40677",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-decoy10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "87d0fad6976c3ea9d9fd7a61c877e6345be337993ece4ea86f97c0b581839a9e",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-decoy10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "dfd00802d6a38df708c965c4b6b646e72927d69ef4fc80d23797aa22ddca1b45",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-door10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "8754b161f0b34deaf87fbf72c8c8756b82ef86573f40508b46646993a91082da",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-door10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "f1f74830824ea7e4d702f34d5765eaafeda680ea22e5f9ffe4e63340b4d59bd6",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-flame10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "12aa8efa06f32affb6a42dd3c01cd8176e09805e52d1a0552db21044c9909609",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-flame10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "1cb4aff4356942f292c8885b10053a8fcaeda25ed032f88ef693d2dc7b7834b9",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-frost10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "07cfb080cb23ff2682c128287085a550e19b7542a0c8233b1aa035e901fb78dc",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-frost10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "bcc4d989349d6cb4d76e46cd416245ebe56e3a37902b94f513d83d9d3407ac6b",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-heavy10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "640c98c29aac3bc7e78742e1f334e1832b7d3440661d9df76947439ed79d81ea",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-heavy10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "0f0a249b9aabd018526fcc5636981a8e79cded39add30df278403a9b5b0c5ffa",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-reduced-effects-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "2b89c9c5d87424eaba73ae85286e4bbb290313bee5f4fa0010e191397c8f2b2f",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-reduced-effects-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "c2a21ee48d09b332cf796185af9bbf6a6d5bec71c431ef9b8b21e33ac5193994",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-shield10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "322b14b56056842837a960ad1bdc0f5140298f17b8ecd5e0af017d1626f58237",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-shield10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "f3ecbd811a1a90103115ccbe69e99bef0e45d8a2d3374e25641b884164bd88c2",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-shock10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "e9a04a2a2d73270ca1a4f9a01bd7373e4a1a8f89240606f0a59d33d592534afe",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-shock10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "ed4657694c887cb11900146daca341131243b6b4fe7b6396fb234289841e7d6b",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-six-new-level10-world-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "c22ba88b495e029cceda40198d3f20c544762923d59c3399a54fef635631cf13",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-hell-six-new-level10-world-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "c2cd83796f9fa40573d93c0ea8ffeda6799b9e462487f7d49a417b883e786229",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-auto_repair10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "205985dcd594c61e3bb0664cde3625beaf8fbf9c8da9183b53a3cd105b95b384",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-auto_repair10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "6c620d3bd0d8793c13232dafcbac552e48c0339e94f84f7d6fb4649b784f391c",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-bed10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "117853fd3612b0fcbc86bc1387d1895905dcbe26825d56ea1ee5bb13d998cf28",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-bed10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "9a7d3e82f4ba2be46ecfe98347ea18827bc5c63e3822d5408060362246ae755e",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-decoy10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "8fa5f711915075467081ea8f4aae65ec86978c9396a40c2aec57c7447714563a",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-decoy10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "20e06fb217ff1a1b4dc5801a99af2b036238145853f4c97e934efcefff347fae",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-door10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "cf55aca7468fc24faa3709fdce9f4fbcfd2200ae22a587e6a75931321947582d",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-door10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "f7eb5b41e9ebe7296a1c6bc39118f6a452b2d69bf56bd0bd5e3b3d0df1ac238a",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-flame10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "ee399f0f36f15651e23ed4e4e4d2b4ecd106773f5c42a08656feb83be9571fec",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-flame10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "10144aebcf0a309737b24c9725ed848f3324e0287f8be6bf6269eb6a67e24c31",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-frost10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "5e77bd21c433e309da9ab516232971279d78dfb0866e3f121e941a6e319e3517",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-frost10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "22dea380f737280bc2ea56810d670be945b8ba40750682e90ab55be054285dfe",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-heavy10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "69963c58a497dfb99a844dfd4fa77f737b5055fbd9b1e0a2a15827937e586244",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-heavy10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "881733217f1a5782cc7c86fc28a3900e2f72283ce129b9f3239aecb761969a53",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-reduced-effects-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "91ec2efa2c23e4ce2f08590e498f39531d4b6f8c381f2ace8d15c9598deb16c1",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-reduced-effects-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "2954176f7b9013f6ca744ceb250fcc0498d956fc1612dde7b728a0963b681ade",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-shield10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "a056f3c1493f81104e0f348e8b2ba3599e46abc36954ca8619aa97a1e46a74e5",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-shield10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "a629ba149afbce419e83a00d1ec8be5700befe9b86e30c81026b3f6c5602886d",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-shock10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "51f060094f98bc1b8137bd52bbc8c46a8ecdc140d34556b0c281792a39163b7f",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-shock10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "35f978f816228c904dfab17ee26835127f95d12580302c744546a7700ef4f2f1",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-six-new-level10-world-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "dddf8eb6299faf81ccb2ae2f26cb8027772499beeb1669e959918765c437f127",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/earned-normal-six-new-level10-world-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "82bfb8bb9ff29ba8a9ef2b275def5198f68a2e4933ec55dbf2e89763927734f6",
+      "source_group": "genuine canonical earned; world/door frames refreshed for HP rounding"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/eligible-transformation-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "6ee504fc700d96ff6b24dd8a5ab10db3e1cd7aaa1b643120246a23c07741f1aa",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/eligible-transformation-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "be800f5bc7699e3814fd8b77ebded30a468c5d6eb58d3052bdb423ec570eb293",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/enhanced_undead-active-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "bcefa6d21b32c5cbfe9fd9930d7c98685ddcd7ba26e1b4f1f948397e2d473cc2",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/enhanced_undead-active-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "94d6a7ac2e898b09fe5b790049a410c8a861f1241f3f7415dbb2601f5deb6a45",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/enhanced_undead-warning-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "0c0af165cab382699e10a19a4eb5ef7427d38e6be38c427abd9cd1b698cf7ca4",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/enhanced_undead-warning-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "2fe6f06119544f142bee83da7fd6a9e3350d666acdb82672a4201712bb2351a2",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/evolution-first-banner-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "70860e374da79f06f1b1a6b6f65dcb67f9d3ea4b5871f1067b0606efd1f656f1",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/evolution-first-banner-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "cfe96e30f5be4483dc0d451ee6da73f8580965f6a6270335baa0ea524dacc406",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/evolution-persistent-hover-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "9968502f633836006ee1ce8647fad56c5640426849ef2328a100cace5080d47e",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/evolution-persistent-hover-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "980ed94ef3450ed112fa111efaa3d3ed63738fb6787722e6299c4954873198bb",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/evolution-second-banner-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "f786791ea9e50cd5447053d7988afe4c610963583c15c9b147ea1552ec2aa8b9",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/evolution-second-banner-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "b27aa9961ba4d55becaec6189575812d93322fe7805a00c394fa1ed1b60013d9",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/evolution-third-banner-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "5d2ebc9083fa050c9760e6b65d117878b876851c6235d0a770eac3e9dd1e6a6e",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/evolution-third-banner-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "d7e5908964366d9ff9443773327431ab01ea1f08996dcdc55f8dd0de40e1f86a",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-bottom-door-burn-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "15e2841d3ec0f015f3cc95bb916795e7d7ca5587aecc3e6215fb06772fb85235",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-bottom-door-burn-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "39408a0facda32e2d3411f41ee52582dc38bf09e8e7426a11e0a86c54523b1c7",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-frost-current-next-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "7be633f3f88bb44edacc581f58a6c37d4d90d2021c2de70346b4284ac5ed5aea",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-frost-current-next-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "7a247d1f1cdfe765e8e4363f9dc6fa7c830c328367ae741d9a603ac57a6121ac",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-frost-full-tooltip-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "82e6cbbd35a92a35af5c1bb6f860146cd854d79bd7fad41a56f72d44642c9b51",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-frost-full-tooltip-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "c99b13906e9cd2cf9ed21b222a6468ddda0197721f686979b392bf595993e948",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-frost-truthful-branches-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "9a4a8b2e6fde45fb6bfdb1688ad36e759e493bf85f34713b64dcb8c6a214d60b",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-frost-truthful-branches-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "29e7d72b1fee677115ff8d51f9606d4fb08aab37804c9320e3b055f0e7fd514a",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-live-burn-lure-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "30590550ea5651693dd19d37399e10c71e79518368576c72cc9e0bc4cde6ea6c",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-live-burn-lure-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "9e9310fedc3efa9636782027d96c7d6a4fe698a9b303d8e9d2ad6b908c70779b",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-live-defense-reduced-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "a46e53b9558d4b03dabf9a692cc8e8277a827d897f61a6fa7166a787e64687c5",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-live-defense-reduced-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "e8495609c28aea1afaebf6cdf632ad225430c03683cef0bb6f9efcd1e6e45487",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-live-heal-shield-decoy-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "ff2e1ff927cf5ab2c6e8f12087697182f976e719b638a0edeb7f52b8546ce782",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-live-heal-shield-decoy-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "a5e02f79ef13bc24a21fac7fd40150f86df3000ad4bd975c05982c234cee7df1",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-npc-crimson-arrival-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "7d3af6b2a75bff283a1d18c2151fe2b36104c325ac2ad5fb37689bdfdb65c35c",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-npc-crimson-arrival-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "95e907bebdad9c785c0d07731461ed0054e929b38b45ea82870d45a7605e37f6",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-npc-domain-team-expanded-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "db59d4d24ad4663e0ebb5e6aacf540c34aec0fa4c33997218fb0d0784887db71",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-npc-domain-team-expanded-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "fdd6d11839b636f93c64d64afff11fa56665aa9ef4b67907586fbce915e66cb8",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-own-reaper-phase2-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "7eb3b6e3fc6a7652965fdaac7a28e402742a28f70423e7b3dd253e96dda7899f",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final-own-reaper-phase2-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "381754e287f82ac5684fc34432292ceffb6449d5d11c205dbe0c9a5314f001ed",
+      "source_group": "final affected visual gates; see per-gate source snapshots"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final_judgement-active-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "cf6db11ddf3cd5479911804ce501f17911cca536f1d7dc4b75713f72de747b98",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final_judgement-active-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "502b8b4b539f5c9c8d26a4f69900c991f85319c4d5cee4a046f4449c47127d42",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final_judgement-warning-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "4f38c65d69ad0fbf68a3e632a155ea007ba812f6b93877e8cc54e3a181c88246",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/final_judgement-warning-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "0c9b0c628b27d297d9bba7ad4d980ebff3c5d0a312e938f76a0761db2eeb97ca",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/flame-branch1-level10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "13d872b8a09439562198fba2f0e8c95dfeae7b354515fc6f8d9d5b4bf6a5581b",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/flame-branch1-level10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "02034722502396e85309a4e48032fca05a4791d25692ea0d1b2449658e72eaed",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/flame-branch1-level5-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "e37aad08d6d0667117395fce82144d390b144bdd33322f85d07a4b757ff5502f",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/flame-branch1-level5-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "0a3f788d47dc9a8c33eef12398ff71e0191a98b4d4ef8e503018183b130c9acc",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/flame-branch2-level10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "68b823a915d7668a4ae8f279bb01433fd3c6595e0c725b51be94ef0127f1e823",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/flame-branch2-level10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "daf97d1143554ebb7f10739a10cb64e0d8d3b9d54d8234275f297b9c66d9cd52",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/flame-branch2-level5-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "0c9c5923ec36501ce0c7242181a62714aa98659e0fdcadbbfc92806c5615e4d4",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/flame-branch2-level5-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "e3aa0cc8fb5068f6432833ef9f474f6317a28d1b4de1c9cf4220f7f7cad9cbdc",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/flame-branches-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "543ef5b1ffbca8fc58b59e9b3c340c9db7862e5f96b7c29756e130cff4caf640",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/flame-branches-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "4c01121b5ff25ad52f58ece0bdc419363c34c68a97a55209a512b217e57a2167",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/flame-level1-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "f385002735ff7521d9851e30e5ace176081b13809fc59860dd9ec9ce33995f6a",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/flame-level1-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "22619989751f80df41c252350801025c1e518c2831ac1b9579c11d7d65437a46",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/forgotten_hotel-eliminated-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "6529ed34e0cdf6b54029c37d18cb3712931d3c54b8a63e623067a46d09629ac4",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/forgotten_hotel-eliminated-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "f62688d4c03e488352f6fad9f99104ed60f4c74a3507f404f7262d084852e22d",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/forgotten_hotel-own-danger-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "66c852f5ddb0daa544839e0069c26c766b51dafb215dcb8a686ed2264a142921",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/forgotten_hotel-own-danger-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "f4ebc928ab08118d94d837c9ebc0a18aefdeddfe9104eda9571207286a96b817",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/forgotten_hotel-roster-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "72441ad99df6fc15d565ce81652bd0251d16375c6191f3095e42f910f8e832af",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/forgotten_hotel-roster-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "cee451ee2273a219717f8fb125b4247c9e2a9a1d1b9444b355c97290aee2dfb9",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/forgotten_hotel-watching-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "4f5c0e4a06bf4f06d67b8d00fd87997f687456b77336135e7923c2f6352a67a9",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/forgotten_hotel-watching-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "0dce942b8487bf7552d64efe2c9085b3bd8fcc911613cd0e6db8711688ed1ae9",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/frost-branch1-level10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "17e88d8ab08e983885fcd14a3c4021d152deacef5bbc2cdc85a3299d417db2b0",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/frost-branch1-level10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "972ba8d1fed6da20a3a6d8fd20ba032e6dff439f70cf2bc72d2a458b7d5eaddc",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/frost-branch1-level5-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "e7646fd891ad3eea3e260d7f86a8eb2972b27e1c2704b8b36f0e5238694cac94",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/frost-branch1-level5-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "69948df7e09c86f0058a386a20bf1a7765dbff2a3a287def9d0f10fb2bd227f6",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/frost-branch2-level10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "db68661c679cbd5da1e9c3580048fd209989f4328cd09ae95395e26af3240f8b",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/frost-branch2-level10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "d63fa1b4d2ebd67410e6fa55c897135ec299cb0608a8f4e1e8c643f909cb267c",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/frost-branch2-level5-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "df80e2de08832b3faaf5c280979693eb0e472fec543b42bb09877840bf18b161",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/frost-branch2-level5-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "9f85647a3c91780c57ab00e131274a68e4c722122ac72ef7aa0acb6be760b7dd",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/frost-branches-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "538b12f77577913b1845cc98680c406700b3a01f89f7eb381f5e2e3d8758d7e9",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/frost-branches-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "76888a34b39d733711b7ad45a9b020edd14dd2b1ca31fbecd0203e24270249b2",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/frost-level1-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "616fa8788521d8caa62c8466ae102c8e6f4f22dddbbf82dd48a20a57712ca375",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/frost-level1-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "7e45ccc36ef58b99fe5800ec48288da421f59e6acb5b7d45dc8da82b1ca1cdaf",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/haunted_hospital-eliminated-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "e8fef2b4ce95bcd207a335e4f5edfe12ffcf1654651a9590e14981c267d8a100",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/haunted_hospital-eliminated-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "bdaf63e1e3b313a6475a856e9cbcf7ffc7ac6d3f4a3d50d9ebf6e65b16d81256",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/haunted_hospital-own-danger-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "91fb83f64f3bcbe7dd080f0116e2c62f813cdd9a8bae33fe2cb6f38dd7abbb7f",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/haunted_hospital-own-danger-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "282106b6433d82a0fb61d7feca652c1451b2326ccca225156c54a854cc22c7db",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/haunted_hospital-roster-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "a716aec9ef3488bf978e88cebf37286960ac8b7f17bcc9c076ba0dccff35c8c2",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/haunted_hospital-roster-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "3dc87f5918313dd7d0997517e8eec79d61a797454250be02093878256de830ba",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/haunted_hospital-watching-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "e191ed4314058967e005ac326f7f1101096c3617c55d248e93de007e2fa888c9",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/haunted_hospital-watching-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "9e1b9fd0c2a54ce4d12e00634fdb1df5163b17613a939ac38740ac2b927e0b80",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/listening-action-construction-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "56aa30c8e8d4c2a56147a4d4ce4ffa53dbe4e520b8e500c8582e915577ec5dac",
+      "source_group": "Listening Room actual input"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/listening-action-construction-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "7b6f1a10612ec78730d47bc44aec8c751007c642f02de968d82ef09b63fc016d",
+      "source_group": "Listening Room actual input"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/listening-action-hunter-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "b497437fda3a76d7869c968d7353d66465b41b9a4f0ea6c285e24a2e62394e72",
+      "source_group": "Listening Room actual input"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/listening-action-hunter-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "d58a73d7853ddfa565d5015af75b8764cb8e03a2e715b95d9e28d87078724724",
+      "source_group": "Listening Room actual input"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/listening-action-reaper-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "99d0b1e6aac5419ff35383315757d0a6a0460310b4ff04b2f6c66acc2a648f14",
+      "source_group": "Listening Room actual input"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/listening-action-reaper-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "738c72e438f3daacb4f872976e1855404fb6bf0984c2f79541970b70c4bdffe3",
+      "source_group": "Listening Room actual input"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/listening-action-weapons-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "2dabd08d1f709cdfbeafc23ab2fea6048e342d14026ee451549e6c05f9d24760",
+      "source_group": "Listening Room actual input"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/listening-action-weapons-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "5a3269655c98478c321b86c5101e30bad0845eedcb507f5638e2b6cc4e7edbfa",
+      "source_group": "Listening Room actual input"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/listening-eight-music-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "2b99d153daab47327a6feb69db38205bc48c621e371ffdec67ce56d9c2fa4087",
+      "source_group": "Listening Room actual input"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/listening-eight-music-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "6896e278181b438257657af735d9337842ada7070b16ba75363fb09d073236da",
+      "source_group": "Listening Room actual input"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/listening-voices-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "2d03997afed228e6801665a67e4b5d76e2522af82a7f0f61dbfdae7b7aa6cdd1",
+      "source_group": "Listening Room actual input"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/listening-voices-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "e3b8446835b16629f6d61414adfab171a3b3101b3391b141fb0d77d93f7fe2af",
+      "source_group": "Listening Room actual input"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/new-twelve-card-palette-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "42567afec8db8edc0b403ccaa2982727e2a47452db5dbec8b650b68b05792623",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/new-twelve-card-palette-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "b6c0771f2fff3b72172e062533c4714e06b0c92b87418fc0168f2524dd483a6c",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/own-context-with-roster-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "216dbe52c60540d1588b916debb7c94de464a9b914c7bb8d3062de4f84ec3dc0",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/own-context-with-roster-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "46498a0d33b5cee8cc7339eca0e9a67399554cf6be8b4fc0a386aab05e2652e5",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/phantom_scream-active-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "4c2199992812fb7327f37991dca9c4a6e37ce181524529be9e5611a34d8a5d6b",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/phantom_scream-active-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "2d502d85bd90bbb35648030da488668030f935a6c98da5d95cdc3d0f6dfda6f1",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/phantom_scream-warning-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "471899518ac914cf18eb1dc1eae62017c2a79014f710b0186f40ec90d3f1239e",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/phantom_scream-warning-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "7ba546efa26ad4ad28c680008283027977ae484ae1e902bf53a1d0e446799a7e",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/ravager-ability-active-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "43e03b1faa35284b1a7c4a28d7cef71d82d70d835f644ed27800b4c28fe5b123",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/ravager-ability-active-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "328f0ee29a66254b945c933f6b577ac3019361ac330177768697f2bc58e64e7e",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/ravager-ability-warning-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "7b75bfd2ebe9f7e76b3d529ec610007c2e790fcd1cf7d1f4517431a8993897e8",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/ravager-ability-warning-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "1e165b9382f517c25f08e589b533205b8d6f92f6a726455fbe6df392aa21bb22",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/reaper-phase1-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "515cd4e49bc3cf125dfc87a85cc360e3488088f2a820fda91d4300748acf399c",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/reaper-phase1-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "d28a86b505f5f8fe542d0bd0743c256df8e7c715719f30f4c86018432bd8b6dc",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/reaper-phase2-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "8acd77e755757d67ab85250be8b36302e5f51ff0c3ad6701e112cf77b195a0d5",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/reaper-phase2-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "04d3f76093370c1895656105f635547f8bf12187d89c48e64493a7c126f1c313",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/rules_judgement-active-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "b6ce79d9133f98b665dd9bded9174f4d62f5ab46042deb04236ec58ee14fe99e",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/rules_judgement-active-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "68f39105267c883e4b5d53e77167a2844c057750d31b0bf3f5b5aa975f0d8ca0",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/rules_judgement-warning-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "f9313ae5cb479b71841cbabcdcdda40e0af8646b8fe09105429e7b5ca74c2807",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/rules_judgement-warning-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "5d1514b4536016cee25b8d8f9d406cb133f30f3009e2a523c2b1f8211ba2b22c",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/scythe_slash-active-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "236708193edbb14bbc7a52170e6c5ca88562435d27641f9f4410236cafe06e7e",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/scythe_slash-active-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "8be8f586b127ff8dcf4096262e8d92f0726ad1bfba2f1d51b6a241da211590ed",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/scythe_slash-warning-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "7b8d61faa1d1585e7e4eb5f1681b2eda69a27b03a9a9ef34d4c54728f89d6504",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/scythe_slash-warning-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "eb26fbc42e1a5b87affadb15b542e5691fabcb8144b1032f3745078146a5e9a7",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shield-branch1-level10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "d3ba4b60bd152ca5eb42e3c63659b41eabfa88a9f8054b78a1b8612bb6ee9100",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shield-branch1-level10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "ba5936222c2503550cea74d1b04c5f9394d3254ea4a683fce82b38a3e46b2b15",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shield-branch1-level5-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "7f9880e19a83bbb275bda70a41c896cf9402772f2d237839bc8014787e7e7927",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shield-branch1-level5-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "1a915a6bb8698387aac82a1e99676483a7f259cf65df8331984ded769b71e5df",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shield-branch2-level10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "124124606099a9fe2204746a75997e7138c3da6d4819282ead926e71f0139347",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shield-branch2-level10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "d6e521f1071264a696df8f4f6e937b610f8428e64a3a38b392d78ec88b447cf7",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shield-branch2-level5-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "b536690f5f41eb6c60724d4c45bdd6199cd6f20d9a6abc9d25d14b1fecff5910",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shield-branch2-level5-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "eb97b1b894f28c48c3de0cee4aaa1c632d021fb3396474980f51bb732491d0c4",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shield-branches-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "65832d58d45541b6b236d999185cfe8eb459d88c541fe5c82281dd45096cc472",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shield-branches-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "a4c00b1f23f1428100726c6f168d29029288012be2df368a308e07968203849e",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shield-level1-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "bed15e45b3d2b33c000e55c7d0e13a1f27e5470fa28952bfd9a25333d538ee71",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shield-level1-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "3e1e00546b96ed2d16283e17caeff184f1c81ebebc8d768ec5b0218753e81a34",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shock-branch1-level10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "ae3dd95ddd217ca584d4351196d3cc552957987caeeaab77b1fabb46ef959603",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shock-branch1-level10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "424d13c1ff4b1a9ff5eeaca08b7303a64bb83acc408a7cffdff0738a4f800b7b",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shock-branch1-level5-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "7da3a6e966a3072b5c006bf6cd3b04ffb199751095f73bab4d8aad4e55174ef9",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shock-branch1-level5-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "e053fb1fe23411389c008273e8df8cb27b3310f53cbc81dc24e46e3a7f8ed49d",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shock-branch2-level10-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "00a9e5134563d1ba5ad2334a60debf4421b0c8ba7dcd19a4c116c5a80b25226a",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shock-branch2-level10-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "ed4282f2a7dafbb964871db8424f4cbfee78e8cf7889a8ef0a748d0393f1c4bb",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shock-branch2-level5-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "a623234ae978a518cdcfd2b721f4f23d9b5513380a62d044cea12048a87ee982",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shock-branch2-level5-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "608a57224c655e98b1a94a1b73a2798d4a122f9cb902e41498ad0ab184dbc8fa",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shock-branches-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "c1736f0944ee28053685f505da3613bbdcd4c6aa52c13cb55b1737302e9dd108",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shock-branches-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "a27bc7997310075da3ac5b4c135f07d6730b5e6b73704d1ea3ae016676167e92",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shock-level1-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "e098cc082b0c704c9d61ed1641fb6844b242b74400d78dc8758451b3ac1b3efe",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/shock-level1-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "c81d503e9d50e7dedc7078a2a8b37ad53cad02e01ca94d76ac9c54128d5dda33",
+      "source_group": "initial six-building/both-branch paid L10 gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/six-defenses-actually-active-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "4f9d6afbd5d8cafea4bb7b3fa2da41c2ee8d8884265c36b61ff5b5a94cace675",
+      "source_group": "final committed a4dc dense"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/soul_reaper-active-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "afda39c7cb92e54597f30f771cdd072b3fa6381e74552ab2872c33da1fb33d87",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/soul_reaper-active-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "cbcd18390330da8a2fa263490c861ef88386fa741f993eef188924cc340f84f8",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/soul_reaper-warning-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "c0f84924a55017b5d0183a51acdc99628cf14476934879bcb2dc7b7f7dad61f3",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/soul_reaper-warning-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "b950579348b35404ae69794184fcc09cd211ab2edd0123ff7a524f73261c6a29",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/soul_steal-active-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "ec3d83f1fa5c8d6a37d00cb92747d257077b1b017fc7cbd5cae9683414bef2ca",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/soul_steal-active-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "248b44e34f9741ff0e1ad5a6cee8e44c94d14e03f7a2914bdb4f1332e5cda6e3",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/soul_steal-warning-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "60476f9a9d84f58709ca781246019b156495ecbd65c48e3c5f6b043a972ddf05",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/soul_steal-warning-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "d4f0754420acc746355acf1d9bb98f08e41fda25f7ec59d1a365844cfc9d207f",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/stalker-ability-active-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "b47f994daf5fdf6e3b4505712b4701dc4e3cd6d90ac33f575559c541624a8aee",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/stalker-ability-active-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "a4b4ad5cb3b25e5458d7bd41625f4debc2c284d1d1623eac6b5dfcf4736a1104",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/stalker-ability-warning-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "ad49bc3056467ac7ac9637fa3fc04371bfaa63ec4a8f21a875185e513a85c0bb",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/stalker-ability-warning-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "72ad1047cc6ed003681add950b63341c07a1a03a43138e0f13a4aa539684479f",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/summon-active-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "a8d8c917594b984c6a0979727c6bec833491219452ccc622c7da1958c054e3ea",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/summon-active-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "c45e2e3e3589bd6dbc1df07dd106f05a2e976dab1bcf6b0b7b44a4fa3cb24407",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/summon-warning-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "c2edfbd7ba8a9024425d5fbb2a2b6c53fd512fa8f01463955baf780ed5908f30",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/summon-warning-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "66fcbe08986413ef5fd4b35dd06964c582c20d31aeb96a4e8c71ce2bdb3a99b1",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/ten-undead-map-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "47276f64ed7a8f9dc3420664a1edad97105a4a3ef4be417d3852bf0f25a70918",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/ten-undead-map-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "3e44a841e839aec328999ce0ef03f4ff03889389c42d7db2f29d54c8d62fddfd",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/ten-undead-spread-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "d21a98e7267422066d857707c01278061e9eddbfa166759e6227e36890e438bd",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/ten-undead-spread-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "3ebf144cd2745177742be9229c8902503a0e309a79e5058e3a87d55c8d371346",
+      "source_group": "controlled boss/archetype/evolution state; source snapshot identified by gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/three-evolutions-audio-end-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "4660c23ccf8124e67819a76f470030631a11a77905c4ced772285f89b0d78d11",
+      "source_group": "actual real-time PCM companion frame"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/underground_lab-eliminated-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "4b69409c6462fb88ace903778ba3083a5852335e848e13aea340b0c47d1811bb",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/underground_lab-eliminated-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "eaec44fd3b213d84db7b3d78366f936b21e054a39df8396a0270477364ed8fec",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/underground_lab-own-danger-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "40bd965373a035cc2c12f4a7e304188dca6657eac62b75d71f21df3bcb7c5a0a",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/underground_lab-own-danger-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "e695790fb9e458905b326ecdad81ee7883cc0c1c297bc059d09cb90d4a202a3a",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/underground_lab-roster-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "f58ac96337091d41313fcb16b2e7b74f5185c06cd59eadb34508680ac9324973",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/underground_lab-roster-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "8bf35350199eb814397d21158f06737a94bd8efc608b65ad52b955e176b4d3d8",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/underground_lab-watching-1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "a0fd658b57e415cb639c5b55cc7d68886dd1f98e015c2bcea3ea93b2a02ede78",
+      "source_group": "final five-map team gate"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-render/underground_lab-watching-720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "e90e2e792ebfb0f603696f1b39877b406f9f85dcdd98f76c12215f1763120845",
+      "source_group": "final five-map team gate"
+    }
+  ],
+  "baseline_and_early_manifests": [
+    "baseline/render-manifest.json",
+    "early-render-manifest.json",
+    "early-audio-manifest.json"
+  ],
+  "source_snapshots": [
+    "core-source-before.json",
+    "core-boss-accepted-source-before.json",
+    "core-status-accepted-source-before.json",
+    "core-listening-source-before.json",
+    "core-final-source-before.json",
+    "final-d-render-source.json",
+    "final-d-current-source.json",
+    "final-d-dense-source.json"
+  ],
+  "image_provenance": "Screenshots are unedited actual Godot viewports. Groups retain their exact prior source snapshots; they are not retroactively relabeled final HEAD. Later changes were bounded presentation/HP text/Legacy-mobile preservation; current critical FX/Frost/foot/head/earned-HP/team frames and final dense cover affected views. Earlier boss and paid-branch frames remain honest earlier-source integration evidence.",
+  "pcm": [
+    {
+      "path": "docs/evidence/phase5d4/core-audio-boss-assault.wav",
+      "seconds": 6.594467120181406,
+      "sample_rate": 44100,
+      "channels": 2,
+      "pcm_width": 2,
+      "rms": 0.015311027659463608,
+      "peak": 0.0648193359375,
+      "clipped_samples": 0,
+      "sha256": "d2ca56a87aabb5166a4386cda4971b9125698aac239a5504743aae6a80421109",
+      "bytes": 1163308
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-audio-boss-phantom_scream.wav",
+      "seconds": 3.3436734693877552,
+      "sample_rate": 44100,
+      "channels": 2,
+      "pcm_width": 2,
+      "rms": 0.016774931397762767,
+      "peak": 0.07843017578125,
+      "clipped_samples": 0,
+      "sha256": "c8a7203994e4fa56b5ddf02488cf8c1cc77bef5ecf16a4b35d1b8dd613be495f",
+      "bytes": 589868
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-audio-boss-rules_judgement.wav",
+      "seconds": 3.1579138321995464,
+      "sample_rate": 44100,
+      "channels": 2,
+      "pcm_width": 2,
+      "rms": 0.01389943079377,
+      "peak": 0.05859375,
+      "clipped_samples": 0,
+      "sha256": "85197871e10dd47271a7c7f53a35259b4f35806c8fe900a43ee6f135b3979ff6",
+      "bytes": 557100
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-audio-boss-scythe_slash.wav",
+      "seconds": 2.972154195011338,
+      "sample_rate": 44100,
+      "channels": 2,
+      "pcm_width": 2,
+      "rms": 0.013931992337141829,
+      "peak": 0.06689453125,
+      "clipped_samples": 0,
+      "sha256": "bc995e20ca2c0ef1714f12b54c4484c8c99fa5b468ed00ace46d8c542f568409",
+      "bytes": 524332
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-audio-boss-soul_reaper.wav",
+      "seconds": 4.6439909297052155,
+      "sample_rate": 44100,
+      "channels": 2,
+      "pcm_width": 2,
+      "rms": 0.015163997189151946,
+      "peak": 0.085601806640625,
+      "clipped_samples": 0,
+      "sha256": "dbc024e182afc83563dc93881edb2faab68b3289f443bc40c083810fbd52ace2",
+      "bytes": 819244
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-audio-crimson-real-threshold-transition.wav",
+      "seconds": 8.916462585034013,
+      "sample_rate": 44100,
+      "channels": 2,
+      "pcm_width": 2,
+      "rms": 0.011816514510948823,
+      "peak": 0.087005615234375,
+      "clipped_samples": 0,
+      "sha256": "c7300e8d6a5226338d5a05b8a88ddf586e0614d092f4986ab515bbd1b4e5a7c7",
+      "bytes": 1572908
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-audio-domain-to-menu-cleanup.wav",
+      "seconds": 1.9504761904761905,
+      "sample_rate": 44100,
+      "channels": 2,
+      "pcm_width": 2,
+      "rms": 0.010596656599744807,
+      "peak": 0.05169677734375,
+      "clipped_samples": 0,
+      "sha256": "a616b41a5e23c61d78bb1216880cd072902a0e478f7e7dbc0d4e5d32071c84b7",
+      "bytes": 344108
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-audio-eligible-transformation.wav",
+      "seconds": 2.786394557823129,
+      "sample_rate": 44100,
+      "channels": 2,
+      "pcm_width": 2,
+      "rms": 0.009212876347775236,
+      "peak": 0.053863525390625,
+      "clipped_samples": 0,
+      "sha256": "6c2b3847f723edf6d975f5dc1548e017c2f5ec33b87b7335b5ec601804821521",
+      "bytes": 491564
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-audio-real-breach-death-evolve-laugh.wav",
+      "seconds": 15.789569160997733,
+      "sample_rate": 44100,
+      "channels": 2,
+      "pcm_width": 2,
+      "rms": 0.010233134700749408,
+      "peak": 0.06256103515625,
+      "clipped_samples": 0,
+      "sha256": "8419761c2c4f5122f8d72a4d31738b904683685e7f12d45f8a1fdcf902563f34",
+      "bytes": 2785324
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-audio-three-genuine-evolutions.wav",
+      "seconds": 35.57297052154195,
+      "sample_rate": 44100,
+      "channels": 2,
+      "pcm_width": 2,
+      "rms": 0.010120134050068251,
+      "peak": 0.067626953125,
+      "clipped_samples": 0,
+      "sha256": "e1a3749580a82986bd99ebd5cc36db6d4b085d13910c47fa03fb9a8cd0373d73",
+      "bytes": 6275116
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-audio-weapon-flame.wav",
+      "seconds": 5.944308390022676,
+      "sample_rate": 44100,
+      "channels": 2,
+      "pcm_width": 2,
+      "rms": 0.010075422482695488,
+      "peak": 0.044586181640625,
+      "clipped_samples": 0,
+      "sha256": "767c4cdf277b4c0094e8b82e94e6bc4e7a6080afe194f7fa77fa9e117a659ce5",
+      "bytes": 1048620
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-audio-weapon-frost.wav",
+      "seconds": 5.944308390022676,
+      "sample_rate": 44100,
+      "channels": 2,
+      "pcm_width": 2,
+      "rms": 0.016341784335223045,
+      "peak": 0.0694580078125,
+      "clipped_samples": 0,
+      "sha256": "ec842189694640c7fcfccb9271874f9a3e59264df77acea8aa4ed320e4735749",
+      "bytes": 1048620
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-audio-weapon-heavy.wav",
+      "seconds": 5.944308390022676,
+      "sample_rate": 44100,
+      "channels": 2,
+      "pcm_width": 2,
+      "rms": 0.015079353207965822,
+      "peak": 0.05804443359375,
+      "clipped_samples": 0,
+      "sha256": "7e724b8a2f6cfa4df2fd61ad60d9d2a3c7cebd8c2f1627d58c625a8dbf0a4871",
+      "bytes": 1048620
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-audio-weapon-shock.wav",
+      "seconds": 5.944308390022676,
+      "sample_rate": 44100,
+      "channels": 2,
+      "pcm_width": 2,
+      "rms": 0.011503922273866365,
+      "peak": 0.04559326171875,
+      "clipped_samples": 0,
+      "sha256": "eb7d6bd17298303d0996ccdfaf6b9ab1547ac7d43fc14c8fd2e35af50473dd24",
+      "bytes": 1048620
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-audio-weapon-turret.wav",
+      "seconds": 5.851428571428571,
+      "sample_rate": 44100,
+      "channels": 2,
+      "pcm_width": 2,
+      "rms": 0.012948342185911867,
+      "peak": 0.05706787109375,
+      "clipped_samples": 0,
+      "sha256": "ad735498e9280802979303cc2a87a68ca96d7c5e44e3a4e45a8297326d60803e",
+      "bytes": 1032236
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-effects-default-master.wav",
+      "seconds": 1.5789569160997732,
+      "sample_rate": 44100,
+      "channels": 2,
+      "pcm_width": 2,
+      "rms": 0.015142482411951475,
+      "peak": 0.159881591796875,
+      "clipped_samples": 0,
+      "sha256": "54b5ea08efe330aafe1a27df284b27df48ff0f3eaac3de9e787e2a1741bbe06a",
+      "bytes": 278572
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-dense-maxmix-start.wav",
+      "seconds": 7.894784580498866,
+      "sample_rate": 44100,
+      "channels": 2,
+      "pcm_width": 2,
+      "rms": 0.031064306600700215,
+      "peak": 0.186309814453125,
+      "clipped_samples": 0,
+      "sha256": "6907bb903864bae9652fe9e4716e6931dd276930758a43d34eed987b8735a961",
+      "bytes": 1392684
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-dense-maxmix-end.wav",
+      "seconds": 7.894784580498866,
+      "sample_rate": 44100,
+      "channels": 2,
+      "pcm_width": 2,
+      "rms": 0.03458425307078173,
+      "peak": 0.1705322265625,
+      "clipped_samples": 0,
+      "sha256": "a88dc94131e0aefcd507472bbc762db97bbd354663214f63ec132dfb97ada09c",
+      "bytes": 1392684
+    }
+  ],
+  "pcm_total_seconds": 132.72526077097504,
+  "all_pcm_unclipped": true,
+  "genuine_earned_profile_sha256": {
+    "balance-earned-47hell": "7bf9d8e4e393cfe9c8f6ca2fc26af8e9a1427e32b7c865abb6d36be4a8859415",
+    "balance-earned-71standard": "387a8bfc8135f89cccaa507eb9d4c36a3764b377905d96ffe5bcc5bd47530992"
+  },
+  "preserved_diagnostics": [
+    "early-render-before-overlap-fix",
+    "early-render-before-close-clearance",
+    "early-audio-before-fixture-settle",
+    "core-status-before-session-reset",
+    "core-boss-before-readability-fix",
+    "core-dense-before-endurance-control",
+    "core-dense-before-longer-wall-budget",
+    "final-d-arrival-before-phase-guard-wait",
+    "final-d-feedback-before-foot-clearance",
+    "final-d-earned-before-hp-rounding",
+    "final-d-dense-before-final-visual"
+  ],
+  "limitations": [
+    "Native Windows execution/input/hardware audio UNVERIFIED",
+    "Subjective sound quality/scariness and human usability UNVERIFIED",
+    "Linux Mesa software-rendered synthetic-density frame timings do not establish Windows GPU performance",
+    "600s elapsed is simulated game time; exact115.766s accelerated wall duration and separate real-time8s PCM windows are reported",
+    "Dense fixture deliberately uses high temporary resources/HP and suppresses random percent-HP boss casts; natural difficulty/reachability comes from AgentA checkpoints and parent reports, not this fixture"
+  ]
+}

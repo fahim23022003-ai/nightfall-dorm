@@ -1,0 +1,64 @@
+{
+ "cases": [
+  {
+   "events": [
+    {
+     "damage": 0.0,
+     "duration": 2.4,
+     "id": 1,
+     "position": "(60.0, 244.0)",
+     "room": 0,
+     "time": 37.05,
+     "transformed": true,
+     "type": "boss_transform"
+    },
+    {
+     "damage": 0.0,
+     "id": 2,
+     "position": "(60.0, 244.0)",
+     "room": 0,
+     "time": 39.4999999999999,
+     "transformed": true,
+     "type": "boss_awakened"
+    },
+    {
+     "damage": 0.0,
+     "id": 3,
+     "phase": 1,
+     "position": "(60.0, 244.0)",
+     "room": 0,
+     "time": 39.5499999999999,
+     "transformed": true,
+     "type": "boss_phase"
+    },
+    {
+     "damage": 0.0,
+     "id": 4,
+     "position": "(60.0, 220.0)",
+     "room": 0,
+     "time": 39.5499999999999,
+     "transformed": true,
+     "type": "approach"
+    },
+    {
+     "damage": 0.0,
+     "id": 5,
+     "position": "(60.0, 220.0)",
+     "room": 0,
+     "time": 39.5499999999999,
+     "transformed": true,
+     "type": "encounter"
+    }
+   ],
+   "hp_after": 4114.125,
+   "hp_before": 7618.75,
+   "label": "genuine eligible transform",
+   "minions": 0,
+   "phase": 1,
+   "time": 39.5999999999999
+  }
+ ],
+ "checks": 9,
+ "failures": 0,
+ "fixture": "Actualmodel/input. ControlledeligibleStage3Hell, realHPthresholds, seededNPCtarget andlegalHunterroute; no teleportingHunter intoNPCduel. Teamframes actualPracticefixtures acrossfive maps. NativeWindowsUNVERIFIED."
+}

@@ -1,0 +1,228 @@
+{
+ "cases": [
+  {
+   "events": [
+    {
+     "damage": 0.0,
+     "duration": 2.4,
+     "id": 1,
+     "position": "(60.0, 244.0)",
+     "room": 0,
+     "time": 37.05,
+     "transformed": true,
+     "type": "boss_transform"
+    },
+    {
+     "damage": 0.0,
+     "id": 2,
+     "position": "(60.0, 244.0)",
+     "room": 0,
+     "time": 39.4999999999999,
+     "transformed": true,
+     "type": "boss_awakened"
+    },
+    {
+     "damage": 0.0,
+     "id": 3,
+     "phase": 1,
+     "position": "(60.0, 244.0)",
+     "room": 0,
+     "time": 39.5499999999999,
+     "transformed": true,
+     "type": "boss_phase"
+    },
+    {
+     "damage": 0.0,
+     "id": 4,
+     "position": "(60.0, 220.0)",
+     "room": 0,
+     "time": 39.5499999999999,
+     "transformed": true,
+     "type": "approach"
+    },
+    {
+     "damage": 0.0,
+     "id": 5,
+     "position": "(60.0, 220.0)",
+     "room": 0,
+     "time": 39.5499999999999,
+     "transformed": true,
+     "type": "encounter"
+    }
+   ],
+   "hp_after": 4114.125,
+   "hp_before": 7618.75,
+   "label": "genuine eligible transform",
+   "minions": 0,
+   "phase": 1,
+   "time": 39.5999999999999
+  },
+  {
+   "distance_to_valid_door": 1704.3720703125,
+   "events": [
+    {
+     "damage": 0.0,
+     "duration": 2.4,
+     "id": 1,
+     "position": "(60.0, 244.0)",
+     "room": 0,
+     "time": 37.05,
+     "transformed": true,
+     "type": "boss_transform"
+    },
+    {
+     "damage": 0.0,
+     "id": 2,
+     "position": "(60.0, 244.0)",
+     "room": 0,
+     "time": 39.4999999999999,
+     "transformed": true,
+     "type": "boss_awakened"
+    },
+    {
+     "damage": 0.0,
+     "id": 3,
+     "phase": 1,
+     "position": "(60.0, 244.0)",
+     "room": 0,
+     "time": 39.5499999999999,
+     "transformed": true,
+     "type": "boss_phase"
+    },
+    {
+     "damage": 0.0,
+     "id": 4,
+     "position": "(60.0, 220.0)",
+     "room": 0,
+     "time": 39.5499999999999,
+     "transformed": true,
+     "type": "approach"
+    },
+    {
+     "damage": 0.0,
+     "id": 5,
+     "position": "(60.0, 220.0)",
+     "room": 0,
+     "time": 39.5499999999999,
+     "transformed": true,
+     "type": "encounter"
+    },
+    {
+     "damage": 0.0,
+     "id": 6,
+     "phase": 2,
+     "position": "(60.0, 244.0)",
+     "room": 0,
+     "time": 39.6499999999998,
+     "transformed": true,
+     "type": "boss_phase"
+    },
+    {
+     "attack": "siege",
+     "damage": 0.0,
+     "delay": 1.8,
+     "id": 7,
+     "position": "(60.0, 220.0)",
+     "room": 0,
+     "time": 41.6499999999997,
+     "transformed": true,
+     "type": "boss_warning"
+    }
+   ],
+   "home_rect": "[P: (770.0, 466.0), S: (263.0, 34.0)]",
+   "hunter_screen_feet": "(551.5789, 445.7368)",
+   "hunter_world": "(60.0, 244.0)",
+   "label": "finalactualNPCduel",
+   "minions": 0,
+   "phase": 2,
+   "resolution": "(1280, 720)",
+   "room": -1,
+   "time": 42.8999999999997
+  },
+  {
+   "distance_to_valid_door": 1704.3720703125,
+   "events": [
+    {
+     "damage": 0.0,
+     "duration": 2.4,
+     "id": 1,
+     "position": "(60.0, 244.0)",
+     "room": 0,
+     "time": 37.05,
+     "transformed": true,
+     "type": "boss_transform"
+    },
+    {
+     "damage": 0.0,
+     "id": 2,
+     "position": "(60.0, 244.0)",
+     "room": 0,
+     "time": 39.4999999999999,
+     "transformed": true,
+     "type": "boss_awakened"
+    },
+    {
+     "damage": 0.0,
+     "id": 3,
+     "phase": 1,
+     "position": "(60.0, 244.0)",
+     "room": 0,
+     "time": 39.5499999999999,
+     "transformed": true,
+     "type": "boss_phase"
+    },
+    {
+     "damage": 0.0,
+     "id": 4,
+     "position": "(60.0, 220.0)",
+     "room": 0,
+     "time": 39.5499999999999,
+     "transformed": true,
+     "type": "approach"
+    },
+    {
+     "damage": 0.0,
+     "id": 5,
+     "position": "(60.0, 220.0)",
+     "room": 0,
+     "time": 39.5499999999999,
+     "transformed": true,
+     "type": "encounter"
+    },
+    {
+     "damage": 0.0,
+     "id": 6,
+     "phase": 2,
+     "position": "(60.0, 244.0)",
+     "room": 0,
+     "time": 39.6499999999998,
+     "transformed": true,
+     "type": "boss_phase"
+    },
+    {
+     "attack": "siege",
+     "damage": 0.0,
+     "delay": 1.8,
+     "id": 7,
+     "position": "(60.0, 220.0)",
+     "room": 0,
+     "time": 41.6499999999997,
+     "transformed": true,
+     "type": "boss_warning"
+    }
+   ],
+   "home_rect": "[P: (770.0, 466.0), S: (263.0, 34.0)]",
+   "hunter_screen_feet": "(551.5789, 445.7368)",
+   "hunter_world": "(60.0, 244.0)",
+   "label": "finalactualNPCduel",
+   "minions": 0,
+   "phase": 2,
+   "resolution": "(1920, 1080)",
+   "room": -1,
+   "time": 42.8999999999997
+  }
+ ],
+ "checks": 19,
+ "failures": 8,
+ "fixture": "Actualmodel/input. ControlledeligibleStage3Hell, realHPthresholds, seededNPCtarget andlegalHunterroute; no teleportingHunter intoNPCduel. Teamframes actualPracticefixtures acrossfive maps. NativeWindowsUNVERIFIED."
+}

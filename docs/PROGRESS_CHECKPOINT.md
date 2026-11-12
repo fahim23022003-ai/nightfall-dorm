@@ -1,32 +1,39 @@
-# Phase 5D-4 — The Reaper’s Wrath — final delivery checks
+# Phase 5D-4 — The Reaper’s Wrath — IMPLEMENTED AND TESTED
 
-All requested workstreams are implemented: unified building HUD, meaningful
-specialization previews, measured Hell/NPC pressure, fifteen bounded kill buffs,
-two Reaper phases with ten controlled undead and the integrated final domain,
-six Level1–10 buildings, and dedicated sampled interactive sound design.
+Version0.6.2-5d4, Godot4.6.3. All requested workstreams are implemented: unified
+building HUD, truthful specialization previews, measured Hell/NPC pressure,
+fifteen bounded kill buffs, two Reaper phases with ten controlled undead and the
+integrated Eternal Sacrifices/Crimson Execution domain, six Level1–10 buildings,
+and dedicated sampled interactive sound design. Existing saves and systems remain.
 
 Started clean on private `work` at `d507600f64c3c55ff858a9d5bc5d3c938b6e5f6d`;
-recovery tag `pre-phase5d4-d507600`. Checkpoints through
-`1d16069d44db22d038db562bbec22570e362b5c4` are verified pushed. Main is unchanged;
-no public release or new Phase6 work. Original user saves are untouched.
+recovery tag `pre-phase5d4-d507600`. Final implementation/test-source checkpoint
+**`a4dc1d0e5094825abc3b78b13879c50598f4c047` is VERIFIED PUSHED**; remote work SHA
+matched. Documentation/evidence-only commits follow without changing game sources.
+Main is unchanged; no public release or new Phase6 work. User saves are untouched.
 
-Baseline97/97 commands passed before changes. Final regular/extended coverage now
+Baseline97/97 commands passed before changes. Final regular/extended coverage
 passes all115 registered command gates, including corrected affected reruns.
-The initial112-command sweep took2131.205s and found15 failing gates; raw failures
-remain recorded alongside fixes. No warnings. Independent core QA7357/0,
-final transaction/preview delta302/0, Frost30/0, HP display6/0, audio1018/0.
-Final balance49 cases/0 integrity failures plus7 fresh checkpoint comparisons.
-All-six new buildings reach10 with earned Endless resources bywave12; tested
-Hell builds eventually lose at44 and74, rather than surviving indefinitely.
+Initial112-command sweep2131.205s,15 failing gates repaired,0 warnings; raw failed
+runs retained. Independent core QA7357/0, final transaction/preview delta302/0,
+Frost30/0, HP display6/0, audio1018/0. Final balance49 cases/0 integrity failures
+plus7 fresh checkpoint comparisons. All six new buildings reach10 with earned
+Endless resources bywave12; tested Hell builds eventually lose at44 and74.
 
-Final authored rendering accepts new defense feedback99/0, actual NPC Crimson
-arrival19/0, own-room PhaseII9/0, earned Level10 frames141/0 and five-map teammate
-flows293/0. Final600-second rendered stress refresh, final Windows re-export and
-clean-tree/remote-equality receipt remain pending. Native Windows hardware,
-human usability, subjective sound/horror and owner/Adie approval are UNVERIFIED.
+Final rendering: feedback99/0, NPC Crimson arrival19/0, own PhaseII9/0, earned
+Level10 frames141/0 plus45/0 HP refresh, five-map teammate flows293/0. Final
+600.4-simulated-second rendered stress764/0, stable165nodes/249resources, bounded
+minions/events/voices. All18 final Master PCM files have zero clipped samples.
 
-B owns production; dedicated Audio specialist owns SFX; C independent QA;
-A balance; D real rendering/PCM; root integration, documentation and Git delivery.
+Windows x64 private test ZIP rebuilt from a4dc1d0:20 Linux embedded-pack checks,
+17 archive-entry CRC checks and source/hash verification pass. ZIP SHA256:
+`95e3ee817ea6e8da49ab96eb343018fde87b1ecffa06ab78c87137886e38d03d`.
+Native Windows hardware/input, human usability, subjective sound/horror and
+owner/Adie approval remain **UNVERIFIED**. No confirmed functional failure remains
+from this test cycle; finite strategy coverage is not universal balance proof.
+
+B owned production; dedicated Audio specialist SFX; C independent QA; A balance;
+D real rendering/PCM; root integration, reports, Windows export and Git delivery.
 See [full report](PHASE_5D4_REAPERS_WRATH_REPORT.md) and
 [owner/Adie playtest guide](PHASE_5D4_HUMAN_PLAYTEST_GUIDE.md).
 

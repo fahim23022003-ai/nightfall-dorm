@@ -1,25 +1,28 @@
 # Phase 5D-4 — The Reaper’s Wrath
 
-## Status: final integration in progress
+## Status: implemented, tested and ready for the Windows human playtest
 
 **IMPLEMENTED:** unified contextual HUD; actual specialization comparisons;
 validated evolution/kill credit; two-phase Reaper and combined final domain;
 bounded attacking undead; six Level1–10 buildings; sampled interactive audio,
 listening tabs and save/ruleset integration.
 
-**TESTED:** focused independent runtime, economy, migration, item, deterministic
-process and rendered gates listed below. Baseline97 commands passed before edits.
+**TESTED:** all115 registered regular/extended command gates after affected
+reruns; independent gameplay/balance/audio QA; actual rendered interaction,
+600-second stress, engine PCM, and Windows export/embedded-pack validation.
+Baseline97 commands passed before edits. No confirmed functional failure remains
+from this test cycle.
 
 **FAILURES AND FIXES:** real lifecycle, transaction and presentation defects were
-found and repaired; affected acceptance and remaining verification are explicit.
+found and repaired; raw failed runs and corrected acceptance are retained.
 
 **UNVERIFIED:** native Windows execution/input/hardware performance, human
 beginner usability, subjective horror, speaker/headphone balance and human
 approval. Linux renders and PCM measurements do not establish these.
 
-**INCOMPLETE:** final rendered stress refresh on the last presentation changes,
-Windows re-export from final sources and final clean-tree/push receipt.
-This document is not yet a completion claim.
+**INCOMPLETE:** no known implementation work remains within Phase5D-4.
+Native Windows and human acceptance are explicitly UNVERIFIED above; they are
+not inferred from automated success. Phase6 has not begun.
 
 ## Repository and recovery
 
@@ -27,9 +30,9 @@ Started clean on private `work` at
 `d507600f64c3c55ff858a9d5bc5d3c938b6e5f6d`, equal to remote. Recovery tag:
 `pre-phase5d4-d507600`. Baseline54ef155, sampled sources53eb50a, sound assets2de0ea2,
 contextual UI73c7698, rendered evidence8a392f3, audio evidence9db04a0.
-Latest accepted integration checkpoint `1d16069d44db22d038db562bbec22570e362b5c4`
-is VERIFIED PUSHED: remote `work` matched local HEAD. Final regression fixes and
-rendered receipts are still being validated. Main was not modified;
+Final verified implementation checkpoint `a4dc1d0e5094825abc3b78b13879c50598f4c047`
+is VERIFIED PUSHED: remote `work` matched local HEAD. All115 registered regression
+gates are accepted after fixes; final rendered stress and export also pass. Main was not modified;
 no public release, multiplayer, Android work or new Phase6 audit was started.
 
 B owns gameplay production; dedicated Audio specialist owns sound design/runtime;
@@ -248,7 +251,8 @@ The early actual Needle/Arc/action gate76/0 records18PCM files with nonzero
 Music-muted Master output and no full-scale samples. Final actual weapon capture
 passes38 checks, three genuine kill/evolution playback10, boss playback37 and
 legal door-breach→resident death→evolution→laughter9. These cover actual dispatched
-streams and recorded engine output; final consolidated receipts are pending.
+streams and recorded engine output. The18 final Master PCM recordings total132.725s
+with zero clipped samples; this proves digital playback, not human sound approval.
 Thirty recorded/designed CC0-declared sources produce122 recipes (27 replacements
 and95 new effects),116 distinct output hashes. The recorded debris explosion
 passes an actual Practice trap→legal Hunter approach→detonation capture:9/0,
@@ -289,8 +293,8 @@ human timing across operating systems or a verified online leaderboard.
 | Audio | Specialist782/0, pooled-reaction5/0, target-routing209/0, lifecycle13/0, real explosion9/0; legacy491/0, listening256/0, visual/audio103/0. |
 | Actual strategy | Final A49 cases/0 integrity errors,7 fresh checkpoint comparisons (intermediate69 cases retained as diagnostics); earned new-building and long-Endless evidence below. |
 | Full final regression | PASS: all115 registered regular/extended command gates covered. Initial112-command sweep2131.205s,15 failing gates corrected and rerun,0 warnings. Original first-pass failures retained. Independent delta302/0, Frost30/0 and HP display6/0 are included. |
-| Final rendered/audio/stress | IN PROGRESS; initial boss visibility issues require fresh affected frames. |
-| Windows x64 export | Pending final committed sources; native Windows remains UNVERIFIED. |
+| Final rendered/audio/stress | PASS: final feedback99/0, NPC domain19/0, own PhaseII9/0, earned141/0 plus45/0 HP refresh, five-map teammate293/0 and final dense764/0. Actual PCM verified. |
+| Windows x64 export | PASS: Godot4.6.3 Windows x64 executable/embedded PCK,20 Linux embedded-pack checks,17 ZIP entries CRC/source/hash verified. Native Windows UNVERIFIED. |
 
 Final-source earned Normal cleared20waves and allsix new roles reached10 bywave12.
 Corrected Hell reached allsix10 bywave12 and continued until legitimate defeat44
@@ -308,19 +312,43 @@ profiles2698/2666bytes. These are accelerated Linux model measurements, not Wind
 FPS. Earlier74/75 and52/53 outcomes are retained only under pre-cutover diagnostics.
 See [final balance evidence](evidence/phase5d4/balance-final-summary.md).
 The final dense rendered fixture passes764 checks over600.4 simulated seconds
-(117.727s accelerated wall time). It deliberately prepares72 paid Level10 machines,
+(115.766s accelerated wall time on final committed sources). It deliberately prepares72 paid Level10 machines,
 30 weapons and very large temporary budgets/HP, and suppresses random new boss
 casts to isolate rendering/object/audio endurance. It is not earned progression
 or a full unconstrained boss difficulty test. Real assault spawning reaches the
 10-minion cap. Eight-second real-time max-volume captures before/after show
-Master RMS0.030877/0.033036, peak0.168610/0.177826, zero clipped samples.
+Master RMS0.031064/0.034584, peak0.186310/0.170532, zero clipped samples.
 All five weapon families actually dispatch. Nodes165/resources249 stay constant;
-static memory100.216→100.825MB. Projectile/event/visual/route buffers remain bounded.
-Mean frame intervals56.49/55.65ms and p95 65.06/66.31ms describe Linux software-Mesa
+static memory starts100.675MB, peaks101.302MB and ends101.264MB.
+Projectile/event/visual/route buffers remain bounded.
+Mean frame intervals61.280/54.484ms and p95 80.026/63.671ms describe Linux software-Mesa
 synthetic stress only; they do not predict native Windows hardware performance.
 An initial endurance fixture legitimately died from percentage-based Scythe Slash;
 a second reached its wall-time limit before600s. Both diagnostics are retained,
 with fixture controls and the final successful run disclosed.
+
+## Reviewable rendered and audio evidence
+
+These are real Godot Linux frames, not mockups. The specialist inspected both
+1280×720 and1920×1080; root also inspected the selected full-size frames below.
+Prepared Practice/boss fixtures prove interactions and visibility, while the
+separate earned profiles establish natural progression. Human usability and
+horror intensity remain unverified.
+
+| Feature | Evidence |
+| --- | --- |
+| Before HUD | [Baseline gameplay](evidence/phase5d4/baseline/render/01-gameplay-hud-720.png) |
+| Twelve-card purchase panel | [Actual palette](evidence/phase5d4/core-render/new-twelve-card-palette-720.png) |
+| Actual Frost stats and complete price | [Current/next inspector](evidence/phase5d4/core-render/final-frost-current-next-720.png) |
+| Exclusive specialization | [Truthful branch comparison](evidence/phase5d4/core-render/final-frost-truthful-branches-720.png) |
+| Burn and bottom-door clearance | [Final focused room](evidence/phase5d4/core-render/final-bottom-door-burn-720.png) |
+| Evolution | [Queued announcement](evidence/phase5d4/core-render/evolution-first-banner-720.png) |
+| PhaseII silhouette | [Own-room Reaper](evidence/phase5d4/core-render/final-own-reaper-phase2-720.png) |
+| Ten undead | [Actual spawned assault](evidence/phase5d4/core-render/ten-undead-spread-720.png) |
+| Phantom Scream | [Multi-room attack](evidence/phase5d4/core-render/phantom_scream-active-720.png) |
+| NPC Crimson encounter | [Legal arrival, warning and Home control](evidence/phase5d4/core-render/final-npc-crimson-arrival-720.png) |
+| Actual death/evolution/laughter | [Captured engine PCM](evidence/phase5d4/core-audio-real-breach-death-evolve-laugh.wav) |
+| Crimson musical transition | [Captured engine PCM](evidence/phase5d4/core-audio-crimson-real-threshold-transition.wav) |
 
 ## Failures and fixes retained in evidence
 
@@ -337,8 +365,9 @@ with fixture controls and the final successful run disclosed.
   also receive bounded read-only visual feedback, including Reduced Effects.
 - New compressed imports mismatched old PCM inspection; consistent PCM16 import.
 - Boss warning/awakening occlusion and domain camera headroom; affected rendering
-  is being refreshed. Evolution reset and held-press/Escape fixes now pass their affected checks;
-  final camera headroom is receiving an additional rendered check.
+  passes fresh affected screenshots. Evolution reset and held-press/Escape fixes
+  pass their affected checks; final head/foot clearance and full price text are
+  visible at both target resolutions.
 - Challenge preview used a literal unescaped percent sign in a formatted string,
   producing an engine error despite a zero suite exit code. Escaped it and added
   assertions for the actual generated and rendered preview; affected1541/0.
@@ -364,11 +393,42 @@ with fixture controls and the final successful run disclosed.
   tested separately:60 boss-matrix games recorded36 Scythe impacts,17 Soul Siege
   impacts and7 Shadow Surges alongside62 new ability activations. No combat
   parameter was changed to satisfy the old isolated test.
+  Full-size review also caught clipped price text, a burn badge behind the action
+  bar and a one-point current/max-HP display discrepancy caused by truncating
+  floating values. Measured glyph fitting, fixed head/foot clearance and consistent
+  display-only rounding fix these without changing resource/HP calculations.
   Root’s invalid map-ID and duplicate local-variable test-edit errors were caught,
   corrected and retained as fixture failures, not product defects.
 
+## Remaining limitations
+
+No confirmed functional bug remains from this cycle. Balance is not an exhaustive
+proof: some no-offense Hell strategies still win legitimately, and these finite
+seeded scenarios do not establish a universal win rate. Human beginner usability,
+subjective horror/SFX quality and Windows hardware/input performance require the
+owner-and-Adie playtest. Linux software-renderer stress timings are not Windows
+benchmarks. Challenge reproducibility is verified for the stated fixed-input
+Linux/Godot setup, not arbitrary cross-platform human timing.
+
 ## Final delivery receipt
 
-Final commit, clean-tree status, verified remote equality, Windows archive hashes
-and final regression/render/audio receipts will replace this section when all
-remaining gates complete. No final delivery or human approval is claimed yet.
+- Final implementation/test-source commit: **`a4dc1d0e5094825abc3b78b13879c50598f4c047`**.
+  Push to private `work` succeeded and remote SHA matched local HEAD. Subsequent
+  documentation/evidence commits do not change this executable’s game sources.
+- Version **0.6.2-5d4**, Godot **4.6.3**. Main unchanged; no public release.
+- Windows archive: **`NightfallDorm-Phase5D4-Windows-x64.zip`**,91,227,595bytes.
+- ZIP SHA256: `95e3ee817ea6e8da49ab96eb343018fde87b1ecffa06ab78c87137886e38d03d`.
+- EXE SHA256: `49c0cc4c630b94d516349c1c4390e3d085e9fe695c29e3f4d14522042658ce28`.
+- PE x64/embedded PCK verified;20 actual Linux embedded-pack checks and all17 ZIP
+  entries pass. **Native Windows execution: UNVERIFIED.**
+- [Final test acceptance](evidence/phase5d4/final-test-acceptance.json),
+  [runtime/visual/PCM verification](evidence/phase5d4/root-final-output-verification.json),
+  [render/audio measurements](evidence/phase5d4/final-d-metrics.json),
+  [independent rendered review](evidence/phase5d4/final-d-review.md),
+  [rendered evidence manifest](evidence/phase5d4/final-d-manifest.json),
+  [Windows build receipt](evidence/phase5d4/windows-export/windows-artifact.json),
+  [ZIP integrity](evidence/phase5d4/windows-export/zip-integrity.json).
+- [Owner and Adie playtest guide](PHASE_5D4_HUMAN_PLAYTEST_GUIDE.md).
+
+Stop after Phase5D-4. No Phase6, Android expansion, multiplayer, payment system,
+public release or main merge was performed.

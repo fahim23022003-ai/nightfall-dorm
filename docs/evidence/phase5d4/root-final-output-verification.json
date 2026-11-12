@@ -1,0 +1,33 @@
+{
+  "source_commit": "a4dc1d0e5094825abc3b78b13879c50598f4c047",
+  "runtime_matches_accepted_hashes": true,
+  "runtime_files": 1130,
+  "screens_inspected_by_root": {
+    "new-twelve-card-palette-720.png": "b6c0771f2fff3b72172e062533c4714e06b0c92b87418fc0168f2524dd483a6c",
+    "final-bottom-door-burn-720.png": "39408a0facda32e2d3411f41ee52582dc38bf09e8e7426a11e0a86c54523b1c7",
+    "final-frost-current-next-720.png": "7a247d1f1cdfe765e8e4363f9dc6fa7c830c328367ae741d9a603ac57a6121ac",
+    "final-own-reaper-phase2-720.png": "381754e287f82ac5684fc34432292ceffb6449d5d11c205dbe0c9a5314f001ed",
+    "final-npc-crimson-arrival-720.png": "95e907bebdad9c785c0d07731461ed0054e929b38b45ea82870d45a7605e37f6"
+  },
+  "actual_final_engine_pcm": [
+    {
+      "path": "docs/evidence/phase5d4/core-dense-maxmix-start.wav",
+      "seconds": 7.894784580498866,
+      "channels": 2,
+      "rms": 0.031064306600700215,
+      "peak": 0.186309814453125,
+      "clipped_samples": 0,
+      "sha256": "6907bb903864bae9652fe9e4716e6931dd276930758a43d34eed987b8735a961"
+    },
+    {
+      "path": "docs/evidence/phase5d4/core-dense-maxmix-end.wav",
+      "seconds": 7.894784580498866,
+      "channels": 2,
+      "rms": 0.03458425307078173,
+      "peak": 0.1705322265625,
+      "clipped_samples": 0,
+      "sha256": "a88dc94131e0aefcd507472bbc762db97bbd354663214f63ec132dfb97ada09c"
+    }
+  ],
+  "limitations": "AI inspection of actual Linux Godot frames and internal Master PCM. Native Windows/human usability/horror/audio approval unverified."
+}

@@ -1,0 +1,63 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+VISUAL_CAPTURE core-render/eligible-transformation-720
+ERROR: VISUAL REVIEW: seeded threshold selects real NPC room
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (res://tools/capture_phase5d4_final_scene.gd:11)
+       [2] drive (res://tools/capture_phase5d4_core.gd:9)
+ERROR: VISUAL REVIEW: actual finalcombineddomain active
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (res://tools/capture_phase5d4_final_scene.gd:12)
+       [2] drive (res://tools/capture_phase5d4_core.gd:9)
+ERROR: VISUAL REVIEW: actual teammate spectate accepts live NPCtarget
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (res://tools/capture_phase5d4_final_scene.gd:13)
+       [2] drive (res://tools/capture_phase5d4_core.gd:9)
+ERROR: VISUAL REVIEW: actual legalnavigation arrives forduel
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (res://tools/capture_phase5d4_final_scene.gd:16)
+       [2] drive (res://tools/capture_phase5d4_core.gd:9)
+VISUAL_CAPTURE core-render/final-npc-crimson-arrival-720
+ERROR: VISUAL REVIEW: ReturnHome remains visible
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (res://tools/capture_phase5d4_final_scene.gd:21)
+       [2] capture (res://tools/capture_phase5d3_team.gd:6)
+       [3] capture (res://tools/capture_visual_overhaul.gd:21)
+VISUAL_CAPTURE core-render/final-npc-domain-team-expanded-720
+ERROR: VISUAL REVIEW: ReturnHome survives expanded roster
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (res://tools/capture_phase5d4_final_scene.gd:23)
+       [2] capture (res://tools/capture_phase5d3_team.gd:6)
+       [3] capture (res://tools/capture_visual_overhaul.gd:21)
+VISUAL_CAPTURE core-render/final-npc-crimson-arrival-1080
+ERROR: VISUAL REVIEW: ReturnHome remains visible
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (res://tools/capture_phase5d4_final_scene.gd:21)
+       [2] capture (res://tools/capture_phase5d3_team.gd:6)
+       [3] capture (res://tools/capture_visual_overhaul.gd:21)
+VISUAL_CAPTURE core-render/final-npc-domain-team-expanded-1080
+ERROR: VISUAL REVIEW: ReturnHome survives expanded roster
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (res://tools/capture_phase5d4_final_scene.gd:23)
+       [2] capture (res://tools/capture_phase5d3_team.gd:6)
+       [3] capture (res://tools/capture_visual_overhaul.gd:21)
+PHASE5D4_FINAL_SCENE_ARRIVAL_CHECKS=19 FAILURES=8
