@@ -75,7 +75,7 @@ func show_ranks():
   var record=p.stage_record(stage.id)
   records.append("%d: uncleared" % stage.number if record.is_empty() else "%d: %.1fs / %dXP" % [stage.number,record.best_time,record.best_xp])
  ui.label_at("Best stages · "+" · ".join(records),Vector2(92,352),15,1060)
- ui.label_at("PERMANENT PERKS · 1 slot; Master unlocks 2 · Mythic: Reaper Slayer",Vector2(92,389),18,1060,true)
+ ui.label_at("PERMANENT PERKS · %d slot%s · Second at Master · Mythic: Reaper Slayer" % [p.perk_slots(),"s" if p.perk_slots()>1 else ""],Vector2(92,389),18,1060,true)
  for i in range(RankCatalog.PERKS.size()):
   var perk=RankCatalog.PERKS[i]
   var pos=Vector2(92+(i%3)*365,424+int(i/3)*51)

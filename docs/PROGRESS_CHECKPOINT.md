@@ -10,6 +10,16 @@ work; main remains unchanged. Windows native execution/hardware and human
 quality remain UNVERIFIED. Final findings, status and push will be recorded
 only after actual checks complete.
 
+
+Verified presentation milestone: actual perk-slot label and prioritized Reaper
+attack telegraphs repaired. D passes314 actual render/audio/stress checks,88
+PNG evidence frames. A fresh16 campaign/8 Endless runs clear222waves with12
+load/resumes and no integrity failure; no balance changes. C full regular/extended
+is still running; targeted journey68/input4062 checks pass. Current Windows
+export templates verified against official full-archive SHA512; initial actual
+PE x64 release/embedded pack11 checks pass. Final source rebuild follows this
+checkpoint. No native Windows or public-release claim.
+
 ---
 
 # Phase 5D-2 — Endless and replayability (12 November 2026)

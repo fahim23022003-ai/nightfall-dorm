@@ -167,7 +167,8 @@ func render_world(c):
    c.draw_line(shard,shard+direction*8,Color(0.75,0.45,0.28,alpha),4*alpha)
 
 func render_notifications(c):
- if boss_banner>0:
+ # Active counterplay warnings take priority over the decorative awakening.
+ if boss_banner>0 and (last_model==null or (last_model.hunter.boss_attack=="" and last_model.hunter.surge_remaining<=0)):
   var alpha=minf(1,boss_banner/.5)
   var box=GothicTheme.surface("583344","A28EB2").duplicate()
   box.modulate_color=Color(1,1,1,.94*alpha)
