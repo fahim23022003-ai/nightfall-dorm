@@ -72,8 +72,10 @@ func run():
  await process_frame
  press("Start Game")
  await process_frame
- check(game.mode=="menu","Start Game opens pre-match loadout")
- press("Start Night")
+ check(game.mode=="menu" and game.ui.current_screen=="stages","Start Game opens campaign stages")
+ press("Prepare")
+ await process_frame
+ press("Start Match")
  await process_frame
  check(game.mode == "match" and game.model.time > 0,"Start Game starts active simulation")
  game.ui.pause_button.pressed.emit()
@@ -101,12 +103,12 @@ func run():
  check(game.model.player().buildings.has(1) and game.model.player().buildings[1].kind == "generator","actual UI mouse click builds generator on selected floor")
  for kind in Catalog.BUILDINGS:
   check(not game.ui.building_effect(kind).is_empty(),"building effect tooltip formats for " + kind)
- game.model.result = "victory"
+ game.model.result = "defeat"
  await process_frame
  check(game.mode == "result", "model terminal result reaches end screen")
- press("Restart")
+ press("Retry Stage")
  await process_frame
- check(game.mode == "match" and game.model.result == "" and game.model.player_room == -1,"restart button clears match")
+ check(game.mode == "match" and game.model.result == "" and game.model.player_room == -1,"retry stage button clears match and replays the stage")
  game.model.result = "defeat"
  await process_frame
  press("Main menu")

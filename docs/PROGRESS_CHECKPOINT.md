@@ -1,3 +1,36 @@
+# Phase 3A — stage progression and loadout flow (12 November 2026, Singapore)
+
+Continued clean `work` at `76c1e393838c4930918fb787eb540dea7d78bfb3`.
+Recovery tag `pre-phase3a-76c1e39`; previous content remains in history.
+
+Five configurable persistent campaign stages now replace normal Windows menu
+restart flow. Stage Select shows locks/completed/best/reward/difficulty;
+preparation reuses existing ranked perks. Next Stage opens next preparation,
+Retry keeps the correct stage/difficulty, Stage5 ends with Campaign complete.
+Stage modifiers compose with Normal/Long night; all stages retain original map.
+Legacy saves migrate additively; selected stage/difficulty, completion records,
+derived highest unlock, existing loadout/ranks/XP/settings persist. First-clear XP
+is once-only; locked stages/perks, invalid settlements and duplicate grants guarded.
+
+Final regular wrapper exit0: campaign85profile/54independentflow checks;
+20campaignmatches10W/10L/0unresolved across5stages/bothdifficulties. Actual child
+Godot save/write/read processes passed. All Phase1/2, rank/save348, UI/input,
+AI/combat/property tests,12representativematches9W/3L and main startup passed.
+Real Linux render audit57checks/19captures: stage select, all perks, next/retry,
+records/completion, hard XPcap and actual savefailure/retry. Fixed result summary
+and save-retry overlap plus false-success failedstart return path.
+
+Evidence and full scope: [PHASE3A_REPORT.md](PHASE3A_REPORT.md),
+`docs/evidence/campaign/`. Native Windows and human balancing remain UNVERIFIED.
+Windows project/export config unchanged. No Phase3B/Phase4/Android work.
+Final response records exact committed/pushed SHA after remote verification.
+
+Next: playtest latest `work` on Windows Godot4.6.3, especially a natural stage
+clear → Next Stage → prepare, replay, defeat/retry and restart persistence.
+Stop here pending user direction; do not begin later phases automatically.
+
+---
+
 # Nightfall Dorm 3.0 — Phase 2 horror/immersion (12 November 2026, Singapore)
 
 Continued clean `work` at `f66c0265440b9ce46f27e13ec039070bd696ffea`.

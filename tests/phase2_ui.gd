@@ -74,7 +74,7 @@ func run():
   if node is Label and not node.is_queued_for_deletion() and "Cannot revive" in node.text:
    check(node.size.x<=412,"long reward description stays within its column")
  await click_button("Choose loadout")
- check(has_label("PREPARE FOR THE NIGHT"),"actual loadout button opens pre-match choices")
+ check(game.ui.current_screen=="loadout" and game.campaign_mode,"rank loadout opens current stage preparation")
  for node in game.ui.panel.get_children():
   if node is Label and not node.is_queued_for_deletion() and "Cannot revive" in node.text:
    check(node.size.x<=370,"loadout description does not overlap equipped/locked buttons")
@@ -88,6 +88,7 @@ func run():
  var loaded=PlayerProfile.new(save_path)
  check(loaded.load_profile() and loaded.equipped==["pocket"],"loadout survives fresh profile instance")
  await click_button("Back")
+ await click_button("Main menu")
  await click_button("Settings")
  for setting in ["music","effects","ambient"]:
   var slider=game.ui.panel.get_node_or_null(setting+"_volume")
@@ -111,13 +112,14 @@ func run():
  await process_frame
  check(has_label("Silver"),"menu shows promoted profile rank")
  await click_button("Start Game")
+ await click_button("Prepare")
  await click_button("Equip",1000)
  check(game.profile.equipped==["reinforced"],"second unlocked perk replaces one equipped slot")
  game.profile.xp=690
  game.profile.save_profile()
  await click_button("Long night")
  check(game.ui.progression.difficulty=="hard","actual difficulty choice records hard mode")
- await click_button("Start Night")
+ await click_button("Start Match")
  check(game.mode=="match" and game.model.difficulty=="hard" and game.match_id>0,"actual Start Night launches persisted match snapshot")
  check(game.profile.active_match.equipped==["reinforced"],"active match freezes selected loadout")
  game.model.claim_room(0)

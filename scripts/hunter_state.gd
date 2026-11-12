@@ -18,6 +18,7 @@ var damage = Catalog.HUNTER.damage
 var interval = Catalog.HUNTER.interval
 var speed = Catalog.HUNTER.speed
 var difficulty="standard"
+var stage_scaling={"hunter_hp":1.0,"hunter_damage":1.0,"hunter_speed":1.0}
 var applied_growth=0.0
 var stalled_seconds=0.0
 var navigation_recoveries=0
@@ -26,11 +27,15 @@ var siege_start_hp=0.0
 
 func configure(mode: String):
  difficulty=mode if RankCatalog.DIFFICULTIES.has(mode) else "standard"
- var tuning=RankCatalog.DIFFICULTIES[difficulty]
+ var tuning=_tuning()
  max_hp=Catalog.HUNTER.hp*tuning.hp
  hp=max_hp
  damage=Catalog.HUNTER.damage*tuning.damage
  speed=Catalog.HUNTER.speed*tuning.speed
+
+func _tuning() -> Dictionary:
+ var base=RankCatalog.DIFFICULTIES[difficulty]
+ return {"hp":base.hp*stage_scaling.hunter_hp,"damage":base.damage*stage_scaling.hunter_damage,"speed":base.speed*stage_scaling.hunter_speed}
 
 func growth_at(active_seconds: float) -> float:
  var cycles=int(maxf(0,active_seconds)/Catalog.HUNTER.growth_seconds)
@@ -76,7 +81,7 @@ func tick(delta: float, match_state):
  var next_level=1+int(active_seconds/Catalog.HUNTER.growth_seconds)
  level=maxi(level,next_level)
  var growth=growth_at(active_seconds)
- var tuning=RankCatalog.DIFFICULTIES[difficulty]
+ var tuning=_tuning()
  if growth>applied_growth:
   var added=(growth-applied_growth)*Catalog.HUNTER.hp_growth*tuning.hp
   max_hp+=added

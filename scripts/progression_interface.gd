@@ -72,7 +72,7 @@ func show_ranks():
   b.disabled=not owned or p.read_only
  ui.label_at("Wins: 120 base XP + capped performance. Losses: 35% performance, at most 80 XP.",Vector2(92,580),16,1050)
  ui.button("Back",Vector2(92,622),ui.show_menu,180,40)
- ui.button("Choose loadout",Vector2(900,622),show_loadout,270,40)
+ ui.button("Choose loadout",Vector2(900,622),func(): ui.campaign.prepare(game.profile.selected_stage),270,40)
 
 func show_loadout():
  if game.mode=="result": game.return_menu()
@@ -80,11 +80,15 @@ func show_loadout():
   game.mobile_ui.show_rewards(ui,true)
   return
  ui.clear()
+ ui.current_screen="loadout"
  game.audio_event("menu")
  ui.box(Rect2(90,40,1100,640))
- ui.label_at("PREPARE FOR THE NIGHT",Vector2(125,68),30,980,true)
+ var stage=StageCatalog.stage(game.profile.selected_stage) if game.campaign_mode else {}
+ ui.label_at("STAGE %d · %s" % [stage.number,stage.title] if not stage.is_empty() else "PREPARE FOR THE NIGHT",Vector2(125,68),27,950,true)
  badge(game.profile.rank_index(),Vector2(1090,58),64)
- ui.label_at("Choose at most %d unlocked boost. Your selection is saved; bots receive no rank bonuses." % RankCatalog.MAX_EQUIPPED,Vector2(125,117),18,980)
+ var preparation="Choose at most %d unlocked boost. Selection is saved; bots receive no rank bonuses." % RankCatalog.MAX_EQUIPPED
+ if not stage.is_empty(): preparation="Defeat the hunter · Prep %ds · Hunter HP ×%.2f / damage ×%.2f / speed ×%.2f" % [stage.preparation,stage.hunter_hp,stage.hunter_damage,stage.hunter_speed]
+ ui.label_at(preparation,Vector2(125,117),17,980)
  for i in range(6):
   var item=RankCatalog.PERKS[i]
   var owned=item.id in game.profile.unlocked()
@@ -103,14 +107,17 @@ func show_loadout():
   var selected=key
   var b=ui.button(("✓ " if difficulty==key else "")+RankCatalog.DIFFICULTIES[key].name,Vector2(340+index*260,496),func():
    difficulty=selected
+   if game.campaign_mode: game.profile.select_difficulty(selected)
    show_loadout(),242,46)
   b.tooltip_text="Baseline early game, gradual later escalation" if key=="standard" else "+15% hunter HP/damage, +5% speed; +25% XP before defeat adjustment"
  var names=PackedStringArray()
  for id in game.profile.equipped: names.append(RankCatalog.perk(id).name)
  ui.label_at("Boost: "+("None" if names.is_empty() else ", ".join(names))+" · "+RankCatalog.DIFFICULTIES[difficulty].name,Vector2(125,554),18,980)
- ui.button("Back",Vector2(125,612),ui.show_menu,180,44)
+ ui.button("Back",Vector2(125,612),ui.campaign.show_stages if game.campaign_mode else ui.show_menu,180,44)
  ui.button("Ranks & rewards",Vector2(330,612),show_ranks,250,44)
- ui.button("Start Night",Vector2(860,612),func(): game.start_match(difficulty),290,44)
+ ui.button("Start Match" if game.campaign_mode else "Start Night",Vector2(860,612),func():
+  if game.campaign_mode: game.start_stage(game.profile.selected_stage,difficulty)
+  else: game.start_match(difficulty),290,44)
 
 func result_summary():
  var report=game.last_progression
@@ -119,7 +126,11 @@ func result_summary():
  var line="No XP: occupy a bed for 20s and survive 10s after the hunter arrives."
  if b.eligible:
   line="Victory %d + Survival %d + Damage %d + Defense %d\nDifficulty +%d · Loss adjustment %d  =  +%d XP" % [b.victory,b.survival,b.damage,b.defense,b.difficulty_bonus,b.loss_adjustment,b.total]
- if b.get("ceiling_adjustment",0)<0: line+="\nLifetime XP cap adjustment: %d" % b.ceiling_adjustment
+ if game.campaign_mode:
+  var campaign=report.get("campaign",{})
+  line+="\nStage reward: +%d XP%s" % [campaign.get("reward_xp",0)," (already claimed)" if campaign.get("cleared",false) and not campaign.get("first_clear",false) else ""]
+ if b.get("ceiling_adjustment",0)<0:
+  line+=(" · XP cap %d" if game.campaign_mode else "\nLifetime XP cap adjustment: %d") % b.ceiling_adjustment
  var text=ui.label_at(line,Vector2(366,418),16,548)
  text.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  text.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
@@ -132,6 +143,6 @@ func result_summary():
   rankline.scale=Vector2(0.92,0.92)
   rankline.create_tween().tween_property(rankline,"scale",Vector2.ONE,0.5).set_trans(Tween.TRANS_BACK)
  if not game.profile.save_ok:
-  ui.button("Save failed — retry",Vector2(650,580),func():
+  ui.button("Save failed — retry",Vector2(390 if game.campaign_mode else 650,580),func():
    game.profile.save_profile()
    if game.profile.save_ok: ui.show_result(),235,32)

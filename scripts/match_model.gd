@@ -22,6 +22,7 @@ var presentation_events: Array = []
 var next_presentation_event_id=1
 var next_projectile_id = 1
 var next_combat_event_id = 1
+var stage_id=""
 var difficulty="standard"
 var match_boosts: Dictionary={}
 
@@ -30,6 +31,16 @@ func configure_match(mode: String="standard", boosts: Dictionary={}):
  if time>0 or player_room>=0: return false
  difficulty=mode if RankCatalog.DIFFICULTIES.has(mode) else "standard"
  match_boosts=boosts.duplicate(true)
+ hunter.configure(difficulty)
+ return true
+
+func configure_stage(id: String) -> bool:
+ if time>0 or player_room>=0: return false
+ var stage=StageCatalog.stage(id)
+ if stage.is_empty(): return false
+ stage_id=id
+ preparation=float(stage.preparation)
+ hunter.stage_scaling={"hunter_hp":stage.hunter_hp,"hunter_damage":stage.hunter_damage,"hunter_speed":stage.hunter_speed}
  hunter.configure(difficulty)
  return true
 
@@ -49,6 +60,8 @@ func reset(seed_value: int = 1):
   rooms.append(room)
  hunter = HunterState.new()
  difficulty="standard"
+ stage_id=""
+ preparation=Catalog.PREPARATION
  match_boosts={}
  player_room = -1
  player_position = Vector2(500,410)

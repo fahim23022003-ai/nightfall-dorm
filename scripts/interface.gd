@@ -45,6 +45,7 @@ var warning_box: Panel
 var warning_label: Label
 var default_font=preload("res://assets/fonts/Interface.ttf")
 var display_font=preload("res://assets/fonts/CartoonDisplay.ttf")
+var campaign
 var progression: ProgressionInterface
 var current_screen="menu"
 var horror_layer: Control
@@ -63,6 +64,7 @@ func _ready():
  theme.default_font_size=18
  panel.theme=theme
  progression=ProgressionInterface.new(self)
+ campaign=preload("res://scripts/campaign_interface.gd").new(self)
  show_menu()
 
 func clear():
@@ -160,7 +162,7 @@ func show_menu():
  label_at("SMALL ROOMS. BIG NIGHTMARES.",Vector2(72,108),18,580).modulate=Color("7BE3A1")
  label_at("NIGHTFALL\nDORM",Vector2(66,157),58,600,true)
  label_at("Claim a bed. Build your defenses.\nMake it through the night.",Vector2(72,315),20,590)
- button("Start Game",Vector2(72,405),progression.show_loadout,330,54)
+ button("Start Game",Vector2(72,405),campaign.show_stages,330,54)
  button("How to Play",Vector2(72,477),show_help,160,46)
  button("Settings",Vector2(242,477),show_settings,160,46)
  button("Exit Game",Vector2(72,539),game.request_quit,330,44)
@@ -506,16 +508,23 @@ func show_result():
  veil.create_tween().tween_property(veil,"color",Color(0.04,0.08,0.13,0.93),1.2)
  box(Rect2(340,100,600,520),"263E50","7BE3A1" if game.model.result=="victory" else "F05467")
  icon("economy" if game.model.result=="victory" else "hunter_idle",Vector2(585,118),Vector2(110,110))
- var title=label_at("YOU SURVIVED!" if game.model.result=="victory" else "LIGHTS OUT",Vector2(375,243),34,530,true)
+ var title=label_at(("STAGE CLEARED" if game.model.result=="victory" else "STAGE FAILED") if game.campaign_mode else ("YOU SURVIVED!" if game.model.result=="victory" else "LIGHTS OUT"),Vector2(375,243),34,530,true)
  title.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+ if game.campaign_mode:
+  var stage=StageCatalog.stage(game.model.stage_id)
+  if not stage.is_empty():
+   var caption=label_at("Stage %d · %s" % [stage.number,stage.title],Vector2(390,284),16,500)
+   caption.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  var m=game.model
  var r=m.player()
  var l=label_at("%ds survived  ·  Hunter level %d\n%d shots  ·  %d damage\n%d gold earned  ·  %d residents lost" % [m.time,m.hunter.level,r.shots if r!=null else 0,r.damage_dealt if r!=null else 0,r.income_total if r!=null else 0,m.eliminations],Vector2(390,312),20,500)
  l.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  progression.result_summary()
- button("Loadout",Vector2(390,580),progression.show_loadout,235,32)
- button("Restart",Vector2(390,530),game.start_match,235,48)
- button("Main menu",Vector2(650,530),game.return_menu,235,48)
+ if game.campaign_mode: campaign.result_actions()
+ else:
+  button("Loadout",Vector2(390,580),progression.show_loadout,235,32)
+  button("Restart",Vector2(390,530),game.start_match,235,48)
+  button("Main menu",Vector2(650,530),game.return_menu,235,48)
  if game.mobile_mode: game.mobile_ui.result_layout(self)
  for item in panel.get_children():
   if item==veil: continue

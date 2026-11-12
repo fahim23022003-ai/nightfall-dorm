@@ -9,6 +9,8 @@ var audio_system
 var match_id=0
 var last_progression: Dictionary={}
 var selected_difficulty="standard"
+var campaign_mode=false
+var _stage_request=""
 var last_hunter_level=1
 var level_warning_time=0.0
 var sound_volume: float:
@@ -77,12 +79,24 @@ func _ready():
  get_viewport().size_changed.connect(func(): mobile_layout.apply())
  mobile_layout.apply()
 
-func start_match(difficulty: String=""):
+func start_stage(id: String, difficulty: String="standard") -> bool:
+ if not RankCatalog.DIFFICULTIES.has(difficulty) or not profile.stage_unlocked(id): return false
+ if not profile.select_stage(id) or not profile.select_difficulty(difficulty): return false
+ campaign_mode=true
+ _stage_request=id
+ return start_match(difficulty)
+
+func start_match(difficulty: String="") -> bool:
  if difficulty!="": selected_difficulty=difficulty
- var entry=profile.begin_match(selected_difficulty)
+ var requested=_stage_request
+ _stage_request=""
+ campaign_mode=requested!=""
+ var entry=profile.begin_match(selected_difficulty,requested)
+ if entry.is_empty(): return false
  match_id=int(entry.get("id",0))
  model.reset(int(Time.get_ticks_msec()))
  model.configure_match(selected_difficulty,RankCatalog.bonuses(entry.get("equipped",[])))
+ if requested!="": model.configure_stage(requested)
  audio_system.reset_match(model)
  audio_event("match_start")
  last_progression={}
@@ -105,6 +119,7 @@ func start_match(difficulty: String=""):
  ui.show_match()
  focus_camera(true)
  queue_redraw()
+ return true
 
 func return_menu():
  mode = "menu"
