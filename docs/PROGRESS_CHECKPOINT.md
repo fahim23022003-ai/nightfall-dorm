@@ -1,3 +1,24 @@
+# Phase 5D-1 — premium UI and strategy (12 November 2026)
+
+IN PROGRESS. Started clean `work` at
+`496b9b9df9efbe95f99f2efc0e7a5de3c6597815`, verified against GitHub.
+Recovery tag `pre-phase5d1-496b9b9`. Existing Phase5C3 materials, presentation,
+105audio/20items/Level10, profile transactions and five-map navigation reused.
+B owns all production; C independent mechanic/economy/save QA; D actual baseline/
+after rendering. A balance auditor activates only after mechanics are ready.
+Root owns regression orchestration, docs and actual commit/push verification.
+
+Milestones: baseline tests/captures; premium UI; archetypes; turret branches;
+room tradeoffs; optional transactional contracts; integration/balance/visual QA.
+Do not begin5D2/6, EndlessSiege, new practice mode, Android or multiplayer.
+NativeWindows, physical controls/speakers and subjective quality UNVERIFIED.
+Milestone A verified:45 actual baseline PNGs/73 render checks, zero failures;
+12 baseline import/core/economy/profile/item/reward/property/scene/startup commands
+exit0 with no engine errors. Baseline production matches496b9b9. Production work
+has begun after both gates. No Phase5D1 mechanic/UI completion or push claimed.
+
+---
+
 # Phase 5C-3 — visual identity and game feel complete (12 November 2026)
 
 IMPLEMENTED / TESTED on Godot 4.6.3 Linux. Started clean `work` at
