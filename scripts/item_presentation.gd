@@ -9,6 +9,7 @@ func draw(c):
  var time=m.time
  var reduced=game_reduced(c)
  advanced(c,m,room,fx,p,time,reduced)
+ legendary(c,m,room,fx,p,time,reduced)
  if fx.shield_hp>0:
   c.draw_circle(p,39,Color(.2,.55,1,.14))
   c.draw_arc(p,40,0,TAU,48,Color(.4,.8,1,.9),3)
@@ -86,7 +87,7 @@ func draw(c):
   var point=OFFSET+e.position+Vector2(-145,-94-lane*26-group.age*12)
   if e.item in ["gold","battery","pillow"]: point=OFFSET+room.bed_position()+Vector2(40,-35-lane*26)
   var prefix="+" if e.phase in ["activate","income"] else "-" if e.phase=="explode" else "BLOCK "
-  var text=prefix+str(snappedf(group.value,.01))
+  var text=prefix+str(snappedf(group.value,.01))+(" GOLD" if e.item=="cursed_fortune" else "")
   var color=Color(ItemCatalog.ITEMS[e.item].color)
   c.draw_string_outline(c.presentation.font,point,text,HORIZONTAL_ALIGNMENT_LEFT,-1,18,4,Color("111421"))
   c.draw_string(c.presentation.font,point,text,HORIZONTAL_ALIGNMENT_LEFT,-1,18,color)
@@ -134,3 +135,55 @@ func advanced(c,m,room,fx,p,time,reduced):
    for i in range(3 if reduced else 7):
     var direction=Vector2.from_angle(i*TAU/7+event.age)
     c.draw_texture_rect(load("res://assets/items/feather.svg"),Rect2(q+direction*(15+event.age*55)-Vector2(10,10),Vector2(20,20)),false,Color(1,1,1,1-event.age/1.5))
+
+func legendary(c,m,room,fx,p,time,reduced):
+ var h=OFFSET+m.hunter.position
+ var freeze=float(fx.timers.get("time_freeze",0))
+ if freeze>0:
+  c.draw_circle(h,35,Color(.25,.65,1,.12))
+  c.draw_arc(h,39,0,TAU,48,Color("A9EAFF"),3)
+  for i in range(4 if reduced else 8):
+   var ray=Vector2.from_angle(i*TAU/8)
+   c.draw_line(h+ray*31,h+ray*45,Color("D4F4FF"),2)
+  c.draw_line(h,h+Vector2(0,-25),Color("E1F8FF"),3)
+  c.draw_line(h,h+Vector2(19,0),Color("E1F8FF"),3)
+  c.draw_string(c.presentation.font,h+Vector2(44,-46),"FROZEN %.1fs" % freeze,HORIZONTAL_ALIGNMENT_LEFT,-1,14,Color("BEF0FF"))
+ if float(fx.timers.get("reaper_seal",0))>0:
+  for ring in range(1 if reduced else 2):
+   var points=PackedVector2Array()
+   for i in range(7): points.append(h+Vector2.from_angle(i*TAU/6+time*.3)*(38+ring*12))
+   c.draw_polyline(points,Color("FFE291"),2)
+  c.draw_line(h+Vector2(-23,-23),h+Vector2(23,23),Color("FFE291"),3)
+  c.draw_line(h+Vector2(-23,23),h+Vector2(23,-23),Color("FFE291"),3)
+ if fx.guardian_shield_hp>0 and float(fx.timers.get("guardian_heart",0))>0:
+  c.draw_arc(p,46,0,TAU,48,Color("FFE6B1"),3)
+  c.draw_string(c.presentation.font,p+Vector2(48,-55),"GUARDIAN %d · %.1fs" % [fx.guardian_shield_hp,fx.timers.guardian_heart],HORIZONTAL_ALIGNMENT_LEFT,-1,12,Color("FFE6B1"))
+ if float(fx.timers.get("cursed_fortune",0))>0:
+  c.draw_arc(h,43,time,time+TAU*.8,40,Color("DB9CF4"),3)
+  c.draw_string(c.presentation.font,h+Vector2(44,-64),"CURSED %.1fs · +25%% DMG" % fx.timers.cursed_fortune,HORIZONTAL_ALIGNMENT_LEFT,-1,12,Color("E1B1F6"))
+ for e in fx.events:
+  if not ItemCatalog.legendary(str(e.item)) or e.phase!="activate" or e.age>1.6: continue
+  var age=float(e.age)
+  var fade=clampf(1-age/1.6,0,1)
+  var q=h if e.item in ["time_freeze","reaper_seal"] else p
+  var color=Color(ItemCatalog.ITEMS[e.item].color)
+  if e.item=="time_freeze":
+   for i in range(1 if reduced else 3):
+    c.draw_arc(q,30+age*(75+i*20),0,TAU,64,Color(color,fade*.55),2)
+  elif e.item=="guardian_heart":
+   for side in [-1,1]:
+    for i in range(3 if reduced else 6):
+     var spread=sin(minf(age/.4,1)*PI/2)
+     var start=q+Vector2(side*15,0)
+     var tip=q+Vector2(side*(40+i*7)*spread,-10-i*8)
+     c.draw_colored_polygon(PackedVector2Array([start,tip,tip+Vector2(side*7,12),start+Vector2(0,12)]),Color(1,.85,.5,fade*.8))
+   c.draw_texture_rect(load("res://assets/items/guardian_heart.svg"),Rect2(q+Vector2(-23,-46-age*12),Vector2(46,46)),false,Color(1,1,1,fade))
+  elif e.item=="cursed_fortune":
+   c.draw_texture_rect(load("res://assets/items/cursed_fortune.svg"),Rect2(q+Vector2(-27,-55),Vector2(54,54)),false,Color(1,1,1,fade))
+   c.draw_line(q+Vector2(-24,-51-age*16),q+Vector2(24,-51-age*16),Color(1,.85,.4,fade),5)
+   for i in range(3 if reduced else 12):
+    var coin=q+Vector2.from_angle(-PI+i*PI/12)*(22+age*65)+Vector2(0,age*age*18)
+    c.draw_circle(coin,3,Color(1,.81,.3,fade))
+    if i%3==0: c.draw_circle(q+Vector2.from_angle(i*2+age)*40,10,Color(.5,.2,.65,fade*.18))
+  else:
+   c.draw_texture_rect(load("res://assets/items/reaper_seal.svg"),Rect2(q+Vector2(-31,-45),Vector2(62,62)),false,Color(1,1,1,fade*.8))

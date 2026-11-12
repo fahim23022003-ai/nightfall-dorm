@@ -2,8 +2,8 @@ class_name ItemCatalog
 extends RefCounted
 const MAX_STOCK=9999
 const SLOTS=2
-const TUNING={"global_cooldown":1.0,"repair_fraction":0.25,"gold":150.0,"battery":80.0,"radar_seconds":30.0,"shield_seconds":15.0,"shield_fraction":0.3,"overdrive_seconds":12.0,"overdrive_rate":1.35,"frost_seconds":7.0,"frost_factor":0.6,"reaper_frost_factor":0.75,"trap_seconds":45.0,"trap_damage":220.0,"trap_radius":30.0,"barricade_seconds":20.0,"barricade_factor":0.75,"feather_threshold":0.25,"feather_fraction":0.15,"inferno_seconds":15.0,"burn_seconds":4.0,"burn_dps":12.0,"burn_boss_factor":0.6,"pillow_seconds":25.0,"pillow_factor":1.5,"coupon_factor":0.6,"decoy_seconds":8.0,"boss_decoy_seconds":4.0,"control_refractory":20.0,"rescue_fraction":0.25,"smoke_seconds":6.0,"boss_smoke_seconds":3.0}
-const IDS=["repair","gold","battery","radar","shield","overdrive","frost","trap","barricade","feather","inferno","pillow","coupon","decoy","rescue","smoke"]
+const TUNING={"global_cooldown":1.0,"repair_fraction":0.25,"gold":150.0,"battery":80.0,"radar_seconds":30.0,"shield_seconds":15.0,"shield_fraction":0.3,"overdrive_seconds":12.0,"overdrive_rate":1.35,"frost_seconds":7.0,"frost_factor":0.6,"reaper_frost_factor":0.75,"trap_seconds":45.0,"trap_damage":220.0,"trap_radius":30.0,"barricade_seconds":20.0,"barricade_factor":0.75,"feather_threshold":0.25,"feather_fraction":0.15,"inferno_seconds":15.0,"burn_seconds":4.0,"burn_dps":12.0,"burn_boss_factor":0.6,"pillow_seconds":25.0,"pillow_factor":1.5,"coupon_factor":0.6,"decoy_seconds":8.0,"boss_decoy_seconds":4.0,"control_refractory":20.0,"rescue_fraction":0.25,"smoke_seconds":6.0,"boss_smoke_seconds":3.0,"legendary_limit":1,"freeze_seconds":3.0,"boss_freeze_seconds":1.5,"seal_recovery":1.25,"heart_fraction":0.15,"heart_shield_fraction":0.2,"heart_shield_seconds":3.0,"fortune_gold":500.0,"curse_seconds":20.0,"curse_damage":1.25,"curse_interval":0.8}
+const IDS=["repair","gold","battery","radar","shield","overdrive","frost","trap","barricade","feather","inferno","pillow","coupon","decoy","rescue","smoke","time_freeze","reaper_seal","guardian_heart","cursed_fortune"]
 const ITEMS={
  "repair":{"name":"Instant Repair Kit","rarity":"Common","color":"74E5A3","description":"Restore 25% maximum door HP. Intact damaged doors only."},
  "gold":{"name":"Gold Supply Crate","rarity":"Common","color":"FFD368","description":"Gain 150 Gold for this match."},
@@ -20,13 +20,28 @@ const ITEMS={
  "coupon":{"name":"Construction Coupon","rarity":"Rare","color":"93E3CB","description":"Arm free: next building purchase/upgrade costs 40% less. Spent only on success."},
  "decoy":{"name":"Ghost Decoy Doll","rarity":"Epic","color":"E2AAF2","description":"Distract Hunter at your doorway up to 8s (Reaper 4s). 20s recovery."},
  "rescue":{"name":"Team Rescue Signal","rarity":"Rare","color":"82F1D5","description":"Select a living teammate: restore 25% max intact door HP."},
- "smoke":{"name":"Shadow Smoke","rarity":"Epic","color":"C89AF4","description":"Lower your room priority for 6s (Reaper 3s). Hunter can still attack."}
+ "smoke":{"name":"Shadow Smoke","rarity":"Epic","color":"C89AF4","description":"Lower your room priority for 6s (Reaper 3s). Hunter can still attack."},
+ "time_freeze":{"name":"Time Freeze","rarity":"Legendary","color":"86DCFF","description":"Stop Hunter actions for 3s (Reaper 1.5s). Economy continues. One Legendary per match."},
+ "reaper_seal":{"name":"Reaper Seal","rarity":"Legendary","color":"FFE291","description":"Counter a telegraphed Reaper special. 1.25s recovery; invalid use is free."},
+ "guardian_heart":{"name":"Guardian Heart","rarity":"Legendary","color":"FFD2A1","description":"Automatic lethal-hit rescue: 15% door HP + 20% HP shield for 3s. One Legendary per match."},
+ "cursed_fortune":{"name":"Cursed Fortune","rarity":"Legendary","color":"E6B0FF","description":"Gain 500 Gold; Hunter damage +25%, attack interval -20% for 20s. One Legendary per match."}
 }
-const TABLES={"victory":[10,10,10,10,5,5,5,5,5,5,5,5,5,5,5,5],"defeat":[20,20,20,20,2,2,2,2,2,1,1,2,2,1,2,1]}
+# Integer weights permit exact quarter-percent drops without rounding or rerolls.
+const TABLES={"victory":[100,100,100,100,50,50,50,50,50,40,40,50,50,40,50,40,10,10,10,10],"defeat":[800,800,800,800,80,80,80,80,80,30,30,80,80,30,80,30,10,10,10,10]}
+static func probability(result: String,index: int) -> float:
+ var weights=TABLES.get(result,TABLES.defeat)
+ var total=0.0
+ for weight in weights: total+=weight
+ return 100.0*weights[index]/total
+static func legendary(id: String) -> bool:
+ return ITEMS.has(id) and ITEMS[id].rarity=="Legendary"
 static func roll(result: String,rng: RandomNumberGenerator) -> String:
- var value=rng.randi_range(1,100)
+ var weights=TABLES.get(result,TABLES.defeat)
+ var total=0
+ for weight in weights: total+=weight
+ var value=rng.randi_range(1,total)
  for i in range(IDS.size()):
-  value-=TABLES.get(result,TABLES.defeat)[i]
+  value-=weights[i]
   if value<=0: return IDS[i]
  return IDS[0]
 static func reward_eligible(model) -> bool:

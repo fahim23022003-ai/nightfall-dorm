@@ -382,11 +382,11 @@ func tick(delta: float):
  var exposed = time > preparation+25 and (player() == null or not player().sleeping)
  if exposed:
   hunter.tick(delta if hunter.state==HunterState.State.TRANSFORM else 0.0,self)
-  if hunter.state not in [HunterState.State.TRANSFORM,HunterState.State.DEAD]:
+  if hunter.state not in [HunterState.State.TRANSFORM,HunterState.State.DEAD] and delta>items.frozen_delta:
    hunter.cancel_boss_attack()
    hunter.state = HunterState.State.MOVE
    var previous=hunter.position
-   _pursue_exposed_player(delta)
+   _pursue_exposed_player(maxf(0,delta-items.frozen_delta))
    items.trigger_segment(previous,hunter.position,self)
  else:
   hunter.tick(delta,self)

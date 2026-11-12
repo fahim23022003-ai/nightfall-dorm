@@ -144,12 +144,13 @@ func _boss_strike(room, model):
 func _damage_door(room, model, amount: float):
  var old_hp=room.door_hp
  amount=model.items.absorb(amount,model)
- room.door_hp=maxf(0,room.door_hp-amount)
- room.door_damage_taken+=old_hp-room.door_hp
- model.record_event("door_damage",target,{"damage":old_hp-room.door_hp,"hp":room.door_hp,"max_hp":room.max_hp()})
+ var rescued=room.index==model.player_room and model.items.guardian_intercept(amount,model)
+ if not rescued: room.door_hp=maxf(0,room.door_hp-amount)
+ room.door_damage_taken+=maxf(0,old_hp-room.door_hp)
+ model.record_event("door_damage",target,{"damage":maxf(0,old_hp-room.door_hp),"hp":room.door_hp,"max_hp":room.max_hp()})
  if old_hp>0 and room.door_hp<=0: model.record_event("door_break",target)
- if room.index==model.player_room: model.items.feather_cross(old_hp,model)
- room.try_rescue()
+ if room.index==model.player_room and not rescued: model.items.feather_cross(old_hp,model)
+ if not rescued: room.try_rescue()
  room.damage_flash=0.25
  attacks+=1
 
@@ -249,6 +250,8 @@ func tick(delta: float, match_state):
  if match_state.result!="":
   stop_combat(match_state)
   return
+ delta=maxf(0,delta-match_state.items.frozen_delta)
+ if delta<=0 and match_state.items.frozen_delta>0: return
  hit_flash = maxf(0,hit_flash-delta)
  _model_ref=weakref(match_state)
  var profile=RankCatalog.pressure(difficulty)
@@ -273,8 +276,8 @@ func tick(delta: float, match_state):
   max_hp+=added
   if hp>0: hp=minf(max_hp,hp+added)
   applied_growth=growth
- damage=(Catalog.HUNTER.damage+growth*profile.damage_growth)*tuning.damage
- interval=maxf(Catalog.HUNTER.min_interval,(Catalog.HUNTER.interval-growth*Catalog.HUNTER.interval_growth)*profile.interval_scale)
+ damage=(Catalog.HUNTER.damage+growth*profile.damage_growth)*tuning.damage*lerpf(1.0,ItemCatalog.TUNING.curse_damage,match_state.items.curse_frame_fraction)
+ interval=maxf(Catalog.HUNTER.min_interval,(Catalog.HUNTER.interval-growth*Catalog.HUNTER.interval_growth)*profile.interval_scale)*lerpf(1.0,ItemCatalog.TUNING.curse_interval,match_state.items.curse_frame_fraction)
  speed=(Catalog.HUNTER.speed+minf(Catalog.HUNTER_ESCALATION.speed_bonus_cap,growth*Catalog.HUNTER_ESCALATION.speed_growth))*tuning.speed*match_state.items.speed_factor(self)
  if match_state.items.decoy_tick(delta,match_state): return
  cooldown = maxf(-delta,cooldown-delta)

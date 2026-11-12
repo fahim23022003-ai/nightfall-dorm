@@ -68,24 +68,24 @@ func actor(m,id,quantity=3):
  return {"profile":p,"match_id":int(entry.id)}
 func activate(a,m):return a.profile.activate_item(0,m,a.match_id)
 func run():
- check(ItemCatalog.IDS.size()==16 and ItemCatalog.SLOTS==2,"sixteen functional items and two types")
+ check(ItemCatalog.IDS.size()==20 and ItemCatalog.SLOTS==2,"twenty functional items and two types")
  for outcome in ["victory","defeat"]:
-  check(ItemCatalog.TABLES[outcome].size()==16,"table covers exactly implemented items")
+  check(ItemCatalog.TABLES[outcome].size()==20,"table covers exactly implemented items")
   var total=0
   for weight in ItemCatalog.TABLES[outcome]:
    check(weight>0,"positive configured reward weight")
    total+=weight
-  check(total==100,"visible probabilities total100")
+  check(total==(1000 if outcome=="victory" else 4000),"configured integerweight total")
   var first=RandomNumberGenerator.new()
   var second=RandomNumberGenerator.new()
   first.seed=991
   second.seed=991
   var counts={}
-  for i in range(1000):
+  for i in range(5000):
    var item=ItemCatalog.roll(outcome,first)
    check(item==ItemCatalog.roll(outcome,second) and item in ItemCatalog.IDS,"repeatable seed yields implemented reward")
    counts[item]=int(counts.get(item,0))+1
-  check(counts.size()==16,"seed sweep reaches all functional items")
+  check(counts.size()==20,"seed sweep reaches all functional items")
  # Inventory and save migration are additive to the existing profile.
  var p=fresh()
  check(p.inventory.is_empty() and p.item_loadout.is_empty(),"fresh inventory and loadout empty")

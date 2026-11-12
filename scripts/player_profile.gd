@@ -50,6 +50,7 @@ func claim_spin(id: int) -> Dictionary:
 func bind_items(model,id: int):
  model.items.profile_ref=weakref(self)
  model.items.match_id=id
+ model.items.legendary_used=maxi(model.items.legendary_used,int(active_match.get("legendary_used",0)))
  if model.player()!=null:
   var effects=weakref(model.items)
   var reference=weakref(model)
@@ -64,9 +65,13 @@ func bind_items(model,id: int):
 func consume_item(item: String,model,id: int) -> bool:
  if read_only or active_match.is_empty() or int(active_match.id)!=id or item not in active_match.get("items",[]) or int(inventory.get(item,0))<=0: return false
  var selected=item_loadout.duplicate()
+ var old_active=active_match.duplicate(true)
+ if ItemCatalog.legendary(item):
+  if maxi(int(active_match.get("legendary_used",0)),model.items.legendary_used)>=ItemCatalog.TUNING.legendary_limit: return false
+  active_match["legendary_used"]=int(active_match.get("legendary_used",0))+1
  inventory[item]-=1
  if inventory[item]<=0: item_loadout.erase(item)
- if not save_profile(): inventory[item]+=1; item_loadout=selected; return false
+ if not save_profile(): inventory[item]+=1; item_loadout=selected; active_match=old_active; return false
  return true
 func activate_item(slot: int,model,id: int,target: int=-1) -> bool:
  item_error=""
@@ -81,13 +86,7 @@ func activate_item(slot: int,model,id: int,target: int=-1) -> bool:
  if item=="coupon":
   model.items.apply(item,model)
   return true
- var old_selection=item_loadout.duplicate()
- inventory[item]-=1
- if inventory[item]<=0: item_loadout.erase(item)
- if not save_profile():
-  inventory[item]+=1
-  item_loadout=old_selection
-  return _item_failure(model,"Item not used: inventory could not be saved.")
+ if not consume_item(item,model,id): return _item_failure(model,"Item not used: inventory or Legendary limit could not be saved.")
  model.items.apply(item,model)
  return true
 
@@ -194,6 +193,7 @@ func _decode(file_path: String) -> Dictionary:
   for record in value.campaign.records.values():
    if not _whole(record.first_match_id,1,int(value.next_match_id)-1): return {}
  var active=value.get("active_match",{})
+ if not _whole(active.get("legendary_used",0),0,int(ItemCatalog.TUNING.legendary_limit)): return {}
  if not active.is_empty():
   if not _whole(active.get("id"),1,int(value.next_match_id)-1): return {}
   if not _valid_loadout(active.get("equipped"),int(value.xp)): return {}

@@ -47,18 +47,18 @@ func cleanup():
   for file in d.get_files():
    if file.begins_with(prefix.trim_prefix("user://")):DirAccess.remove_absolute("user://"+file)
 func run():
- check(ItemCatalog.IDS.size()==16,"all16 registered")
+ check(ItemCatalog.IDS.size()==20,"all20 registered")
  for id in OLD+NEW:
   check(id in ItemCatalog.IDS and ItemCatalog.ITEMS.has(id),"registered "+id)
   check(ResourceLoader.exists("res://assets/items/"+id+".svg"),"originalicon "+id)
  for outcome in ["victory","defeat"]:
   var weights=ItemCatalog.TABLES[outcome]
-  check(weights.size()==16,"exact16probabilities")
+  check(weights.size()==20,"exact20probabilities")
   var sum=0
-  var rarities={"Common":0,"Rare":0,"Epic":0}
-  for i in range(16):sum+=weights[i];rarities[ItemCatalog.ITEMS[ItemCatalog.IDS[i]].rarity]+=weights[i]
-  check(sum==100,"probabilities sum100")
-  check(rarities==({"Common":40,"Rare":40,"Epic":20} if outcome=="victory" else {"Common":80,"Rare":16,"Epic":4}),"documentedraritydistribution "+outcome)
+  var rarities={"Common":0,"Rare":0,"Epic":0,"Legendary":0}
+  for i in range(20):sum+=weights[i];rarities[ItemCatalog.ITEMS[ItemCatalog.IDS[i]].rarity]+=weights[i]
+  check(sum==(1000 if outcome=="victory" else 4000),"integer weight sum")
+  check(rarities==({"Common":400,"Rare":400,"Epic":160,"Legendary":40} if outcome=="victory" else {"Common":3200,"Rare":640,"Epic":120,"Legendary":40}),"documentedraritydistribution "+outcome)
   var rng=RandomNumberGenerator.new();rng.seed=775
   var second=RandomNumberGenerator.new();second.seed=775
   var reached={}
@@ -66,7 +66,7 @@ func run():
    var id=ItemCatalog.roll(outcome,rng)
    check(id==ItemCatalog.roll(outcome,second) and id in ItemCatalog.IDS,"seeded implemented reward")
    reached[id]=true
-  check(reached.size()==16,"seed sweep reaches all16")
+  check(reached.size()==20,"seed sweep reaches all20")
  # Migrate existing8item inventories and queued receipts without changing them.
  var legacy=fresh()
  for id in OLD:legacy.inventory[id]=7

@@ -1,0 +1,10 @@
+"""Original vector insignia designed for Nightfall Dorm; no third party assets."""
+from pathlib import Path
+root=Path(__file__).resolve().parents[2]/'assets/items'
+shapes={
+'time_freeze':('<circle cx="48" cy="48" r="28" fill="#193b68" stroke="#a0eaff" stroke-width="4"/><path d="M48 23v25l16 10M18 48H9m78 0h-9M48 9v9m0 60v9M24 24l-6-6m54 54 6 6m-54-6-6 6m54-54 6-6" fill="none" stroke="#e0faff" stroke-width="4"/><path d="M40 15l8-9 8 9M40 81l8 9 8-9" fill="none" stroke="#75b9ff" stroke-width="3"/>','86DCFF'),
+'reaper_seal':('<path d="M48 12l31 18v36L48 84 17 66V30Z" fill="#573e32" stroke="#ffe393" stroke-width="4"/><circle cx="48" cy="48" r="23" fill="none" stroke="#fff1bd" stroke-width="3"/><path d="M48 25l19 34H29ZM48 37v23M36 48h24M17 30l13 8m36 20 13 8M17 66l13-8m36-20 13-8" fill="none" stroke="#ffd363" stroke-width="3"/>','FFE291'),
+'guardian_heart':('<path d="M40 43Q15 13 10 27Q9 52 36 67L45 76M56 43Q81 13 86 27Q87 52 60 67L51 76" fill="#f1c975" stroke="#fff2cc" stroke-width="3"/><path d="M48 41Q33 24 26 39Q19 53 48 73Q77 53 70 39Q63 24 48 41" fill="#dd7e77" stroke="#ffe1af" stroke-width="4"/><path d="M48 15v12M32 18l5 10m27-10-5 10" stroke="#fff5cf" stroke-width="3"/>','FFD2A1'),
+'cursed_fortune':('<path d="M20 46Q13 19 39 26Q47 8 58 24Q83 18 76 46" fill="#6d408c" stroke="#d4a0ef" stroke-width="3"/><path d="M17 45h62v32H17Z" fill="#89562f" stroke="#ffe39a" stroke-width="4"/><path d="M17 45l9-14h45l8 14Z" fill="#be8c47" stroke="#ffe39a" stroke-width="3"/><path d="M24 55h48M29 47v27m38-27v27" stroke="#edc574" stroke-width="3"/><circle cx="48" cy="51" r="8" fill="#ffe39a"/><path d="M44 50h8m-4-4v10" stroke="#72504a" stroke-width="2"/>','E6B0FF')}
+for name,(body,color) in shapes.items():
+ (root/(name+'.svg')).write_text(f'<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96"><defs><radialGradient id="g"><stop stop-color="#40324c"/><stop offset="1" stop-color="#151b2b"/></radialGradient></defs><rect x="3" y="3" width="90" height="90" rx="21" fill="url(#g)" stroke="#f2c976" stroke-width="3"/><path d="M8 24V9h15M73 9h14v15M8 72v15h15m50 0h14V72" fill="none" stroke="#{color}" stroke-width="2"/>{body}</svg>')

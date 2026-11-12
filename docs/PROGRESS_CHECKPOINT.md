@@ -1,3 +1,25 @@
+# Phase 5B-2B — Legendary items (12 November 2026)
+
+IN PROGRESS. Started from clean `work` at
+`b4d1798d82a458636eebb1b62419f7e0bbd66b7d`; private remote SHA matched.
+Recoverable tag: `pre-phase5b2b-b4d1798`. Existing project and saves are being
+extended, not rebuilt. B owns production; C independently tests mechanics and
+balance; A performs a bounded audit; D will inspect rendered effects and audio.
+
+Scope: Time Freeze, Reaper Seal, Guardian Heart and Cursed Fortune; 20-item
+inventory and exact Legendary spin odds; one successful Legendary per match.
+Mechanics milestone: four Legendary effects, persistent shared limit, exact odds,
+icons/audio and presentation implemented. Independent mechanics 20,758 checks
+pass; original advanced items 7,988 and 60 matched simulations pass unchanged.
+Core model 126 checks pass. Render inspection and broader regressions remain
+in progress; no completion claim yet.
+Next steps: finish combinations and balance, inspect presentation, complete
+regular and extended regressions, finish
+`docs/PHASE_5B2B_LEGENDARY_REPORT.md`, commit and verify private `work` push.
+Native Windows and subjective quality remain UNVERIFIED. Stop after 5B-2B.
+
+---
+
 # Phase 5B-2A — eight advanced Rare/Epic items (12 November 2026)
 
 Continued clean `work` at `23333de60f5abf783d69666a61703f1ef7428f4d`.

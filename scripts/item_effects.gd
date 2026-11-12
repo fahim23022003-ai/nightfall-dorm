@@ -15,6 +15,28 @@ var pillow_display_total=0.0
 var pillow_display_clock=0.0
 var control_recovery=0.0
 var decoy_point=Vector2.ZERO
+var legendary_used=0
+var guardian_shield_hp=0.0
+var frozen_delta=0.0
+var curse_frame_fraction=0.0
+func guardian_intercept(amount: float,model) -> bool:
+ var r=model.player()
+ if r==null or not model.running or model.result!="" or not r.alive or not r.sleeping or not r.closed or r.door_hp<=0 or amount<r.door_hp: return false
+ if legendary_used>=ItemCatalog.TUNING.legendary_limit: return false
+ if not consume("guardian_heart",model): return false
+ legendary_used+=1
+ r.door_hp=r.max_hp()*ItemCatalog.TUNING.heart_fraction
+ guardian_shield_hp=r.max_hp()*ItemCatalog.TUNING.heart_shield_fraction
+ timers["guardian_heart"]=ItemCatalog.TUNING.heart_shield_seconds
+ emit_item("guardian_heart",model,r.door_hp)
+ return true
+func seal_valid(model) -> bool:
+ var h=model.hunter
+ if h.hp<=0 or not h.transformed or h.state!=HunterState.State.ATTACK or not BossCatalog.ATTACKS.has(h.boss_attack) or h.cooldown<=0 or h.boss_attack_target!=h.target: return false
+ if h.target<0 or h.target>=model.rooms.size(): return false
+ var r=model.rooms[h.target]
+ return r.alive and r.sleeping and r.closed and r.door_hp>0 and h.position.distance_to(r.door_approach() if model.map_id!="legacy" else r.door_position()+Vector2(0,22 if h.target<3 else -22))<3
+
 func consume(id: String,model) -> bool:
  return profile_ref!=null and profile_ref.get_ref()!=null and profile_ref.get_ref().consume_item(id,model,match_id)
 func feather_cross(old_hp: float,model):
@@ -47,6 +69,11 @@ func can_activate(id: String,model) -> String:
  if not model.running or model.result!="": return "Items require an active, unpaused match."
  var room=model.player()
  if room==null or not room.alive or not room.sleeping: return "Occupy your bed first."
+ if ItemCatalog.legendary(id) and legendary_used>=ItemCatalog.TUNING.legendary_limit: return "Legendary power already used this match."
+ if id=="guardian_heart": return "Automatic: equipped Heart intercepts one lethal door hit."
+ if id=="reaper_seal" and not seal_valid(model): return "Wait for a telegraphed Reaper special attack."
+ if id in ["time_freeze","cursed_fortune"] and (model.hunter.hp<=0 or model.hunter.state in [HunterState.State.DORMANT,HunterState.State.DEAD]): return "Wait until the Hunter arrives."
+ if id=="time_freeze" and control_recovery>0: return "Hunter control recovery is still active."
  if cooldown>0: return "Wait for the item cooldown."
  if float(timers.get(id,0))>0: return "That effect is already active."
  if id=="feather": return "Automatic: equip it; an intact door crossing 25% HP triggers once per match."
@@ -75,7 +102,19 @@ func apply(id: String,model):
  var room=model.player()
  var value=0.0
  cooldown=ItemCatalog.TUNING.global_cooldown
+ if ItemCatalog.legendary(id): legendary_used+=1
  match id:
+  "time_freeze":
+   timers[id]=ItemCatalog.TUNING.boss_freeze_seconds if model.hunter.transformed else ItemCatalog.TUNING.freeze_seconds
+   control_recovery=ItemCatalog.TUNING.control_refractory
+  "reaper_seal":
+   model.hunter.cancel_boss_attack()
+   model.hunter.cooldown=maxf(model.hunter.cooldown,ItemCatalog.TUNING.seal_recovery)
+   timers[id]=model.hunter.cooldown
+  "cursed_fortune":
+   room.gold+=ItemCatalog.TUNING.fortune_gold
+   value=ItemCatalog.TUNING.fortune_gold
+   timers[id]=ItemCatalog.TUNING.curse_seconds
   "barricade": timers[id]=ItemCatalog.TUNING.barricade_seconds
   "inferno": timers[id]=ItemCatalog.TUNING.inferno_seconds
   "pillow": timers[id]=ItemCatalog.TUNING.pillow_seconds; room.temporary_income=ItemCatalog.TUNING.pillow_factor
@@ -115,6 +154,11 @@ func absorb(amount: float,model) -> float:
   var prevented=amount*(1-ItemCatalog.TUNING.barricade_factor)
   amount-=prevented
   emit_item("barricade",model,prevented,"absorb")
+ if guardian_shield_hp>0 and float(timers.get("guardian_heart",0))>0 and model.hunter.target==model.player_room:
+  var blocked=minf(guardian_shield_hp,amount)
+  guardian_shield_hp-=blocked
+  amount-=blocked
+  if blocked>0: emit_item("guardian_heart",model,blocked,"absorb")
  if shield_hp<=0 or float(timers.get("shield",0))<=0 or model.hunter.target!=model.player_room: return amount
  var absorbed=minf(shield_hp,amount)
  shield_hp-=absorbed
@@ -124,6 +168,8 @@ func absorb(amount: float,model) -> float:
 func speed_factor(hunter) -> float:
  return (ItemCatalog.TUNING.reaper_frost_factor if hunter.transformed else ItemCatalog.TUNING.frost_factor) if float(timers.get("frost",0))>0 else 1.0
 func tick(delta: float,model):
+ frozen_delta=minf(delta,float(timers.get("time_freeze",0)))
+ curse_frame_fraction=minf(delta,float(timers.get("cursed_fortune",0)))/delta if delta>0 else 0.0
  if model.player()!=null:
   var r=model.player()
   r.item_bonus_income=r.income_rate()/r.temporary_income*(ItemCatalog.TUNING.pillow_factor-1)*minf(delta,float(timers.get("pillow",0)))
@@ -150,6 +196,7 @@ func tick(delta: float,model):
   if timers[id]<=0:
    timers.erase(id)
    if id=="shield": shield_hp=0
+   if id=="guardian_heart": guardian_shield_hp=0
    if id=="pillow" and model.player()!=null: model.player().temporary_income=1.0
    emit_item(id,model,0,"end")
  if not trap.is_empty():
@@ -176,4 +223,5 @@ func clear(model):
  if model.player()!=null:
   model.player().temporary_income=1.0
   model.player().coupon_armed=false
+ guardian_shield_hp=0; frozen_delta=0; curse_frame_fraction=0
  timers.clear(); trap.clear(); shield_hp=0; cooldown=0; burn_remaining=0; control_recovery=0; pillow_display_total=0; pillow_display_clock=0

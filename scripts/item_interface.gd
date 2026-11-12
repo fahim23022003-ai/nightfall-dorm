@@ -10,6 +10,8 @@ var spin_claiming=false
 var seen_event=0
 var observed_model
 var inventory_page=0
+var legendary_banner
+var legendary_name
 var observed_effects
 func _init(owner): ui=owner; game=ui.game
 func art(id,pos,size=52):
@@ -26,7 +28,7 @@ func inventory():
  ui.box(Rect2(60,35,1160,650))
  ui.label_at("CONSUMABLE INVENTORY",Vector2(90,55),30,1000,true)
  ui.label_at("Choose up to TWO item types. Equip is free; only a valid activation spends one. Permanent perks are separate.",Vector2(92,100),16,1090)
- for i in range(8):
+ for i in range(mini(8,ItemCatalog.IDS.size()-inventory_page*8)):
   var id=ItemCatalog.IDS[i+inventory_page*8]
   var data=ItemCatalog.ITEMS[id]
   var pos=Vector2(90+(i%2)*560,144+int(i/2)*112)
@@ -41,7 +43,7 @@ func inventory():
    if not game.profile.equip_item(id): game.audio_event("failure")
    inventory(),140,30)
   button.disabled=game.profile.read_only or (id not in game.profile.item_loadout and (int(game.profile.inventory.get(id,0))<=0 or game.profile.item_loadout.size()>=ItemCatalog.SLOTS))
- ui.button("Advanced items →" if inventory_page==0 else "← Original items",Vector2(900,55),func(): inventory_page=1-inventory_page; inventory(),270,36)
+ ui.button(["Advanced items →","Legendary items →","← Original items"][inventory_page],Vector2(900,55),func(): inventory_page=(inventory_page+1)%3; inventory(),270,36)
  ui.label_at("Selected: "+", ".join(game.profile.item_loadout)+" · Stock persists; unused items stay yours.",Vector2(92,600),16,1080)
  ui.button("Back to loadout",Vector2(92,638),ui.progression.show_loadout,250,36)
  ui.button("Main menu",Vector2(360,638),game.return_menu,220,36)
@@ -68,12 +70,12 @@ func spin():
  var wheel=preload("res://scripts/item_wheel.gd").new()
  wheel.position=Vector2(155,175); wheel.size=Vector2(420,380)
  ui.panel.add_child(wheel)
- var rarity="Common 40% · Rare 40% · Epic 20%" if receipt.result=="victory" else "Common 80% · Rare 16% · Epic 4%"
- ui.label_at(rarity+" · no paid spins",Vector2(640,186),17,490,true)
+ var rarity="Common40 · Rare40 · Epic16 · Legendary4%" if receipt.result=="victory" else "Common80 · Rare16 · Epic3 · Legendary1%"
+ ui.label_at(rarity,Vector2(615,186),16,525,true)
  var probability=[]
- for i in range(ItemCatalog.IDS.size()): probability.append("%s %d%%" % [ItemCatalog.ITEMS[ItemCatalog.IDS[i]].name,ItemCatalog.TABLES[receipt.result][i]])
- var odds=ui.label_at("\n".join(probability),Vector2(640,222),12,470)
- odds.size.y=340
+ for i in range(ItemCatalog.IDS.size()): probability.append("%s %s%%" % [ItemCatalog.ITEMS[ItemCatalog.IDS[i]].name,str(snappedf(ItemCatalog.probability(receipt.result,i),.01))])
+ var odds=ui.label_at("\n".join(probability),Vector2(640,218),11,470)
+ odds.size.y=370
  var index=ItemCatalog.IDS.find(receipt.item)
  var target=TAU*4-index*TAU/ItemCatalog.IDS.size()
  spin_tween=wheel.create_tween()
@@ -86,9 +88,15 @@ func spin():
 func reveal(receipt,wheel,target):
  if spin_ready or not is_instance_valid(wheel): return
  spin_ready=true; wheel.angle=target; wheel.queue_redraw()
- game.audio_event("item_reveal")
+ game.audio_event("item_legendary_reveal" if ItemCatalog.legendary(receipt.item) else "item_reveal")
  ui.box(Rect2(615,215,525,350),"263E50",ItemCatalog.ITEMS[receipt.item].color)
- art(receipt.item,Vector2(805,235),104)
+ var reward_art=art(receipt.item,Vector2(805,235),104)
+ if ItemCatalog.legendary(receipt.item):
+  reward_art.pivot_offset=Vector2(52,52)
+  reward_art.scale=Vector2(.65,.65)
+  var flourish=reward_art.create_tween()
+  flourish.tween_property(reward_art,"scale",Vector2.ONE,.6).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+  ui.label_at("✦ LEGENDARY ✦",Vector2(645,220),18,150,true).modulate=Color("FFE291")
  var data=ItemCatalog.ITEMS[receipt.item]
  ui.label_at(data.name,Vector2(645,345),25,470,true)
  ui.label_at(data.rarity+(" · Stock full (9,999) · no items added" if int(receipt.get("quantity",1))==0 else " · +%d earned · Inventory ×%d" % [int(receipt.get("quantity",1)),int(game.profile.inventory.get(receipt.item,0))]),Vector2(645,388),18,470)
@@ -119,6 +127,13 @@ func choose_teammate(slot: int):
   b.disabled=r.owner<=0 or not r.alive or not r.closed or r.door_hp<=0 or r.door_hp>=r.max_hp()
  ui.button("Cancel selection",Vector2(330,445),ui.show_match,300,44)
 func create_hotbar():
+ legendary_banner=ui.box(Rect2(405,83,470,49),"172338","EAC979")
+ legendary_banner.mouse_filter=Control.MOUSE_FILTER_IGNORE
+ legendary_name=ui.label_at("",Vector2(420,92),22,440,true)
+ legendary_name.mouse_filter=Control.MOUSE_FILTER_IGNORE
+ legendary_name.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+ legendary_banner.visible=false
+ legendary_name.visible=false
  hotbar.clear()
  var equipped=game.profile.active_match.get("items",[])
  for i in range(equipped.size()):
@@ -144,12 +159,27 @@ func update(delta):
   if e.phase=="income": continue
   game.audio_event("item_"+e.item if e.phase in ["activate","used"] else "item_explosion" if e.phase=="explode" else "item_end" if e.phase=="end" else "item_shield_hit")
  if game.mode!="match": return
+ if is_instance_valid(legendary_banner) and is_instance_valid(legendary_name):
+  legendary_banner.visible=false
+  legendary_name.visible=false
+  for event in fx.events:
+   if ItemCatalog.legendary(str(event.item)) and event.phase=="activate" and event.age<1.6:
+    var alpha=clampf((1.6-event.age)*3,0,1)
+    legendary_banner.visible=true; legendary_name.visible=true
+    legendary_banner.modulate=Color(1,1,1,alpha)
+    legendary_name.modulate=Color("FFE5A1")*Color(1,1,1,alpha)
+    legendary_name.text="✦ "+ItemCatalog.ITEMS[event.item].name.to_upper()+" ✦"
+    var pulse=1.0 if game.profile.settings.get("reduced_effects",false) else 1+sin(event.age*PI/1.6)*.035
+    legendary_name.pivot_offset=Vector2(220,14)
+    legendary_name.scale=Vector2(pulse,pulse)
  var selected=game.profile.active_match.get("items",[])
  for i in range(hotbar.size()):
   if not is_instance_valid(hotbar[i]) or i>=selected.size(): continue
   var id=str(selected[i]); var quantity=int(game.profile.inventory.get(id,0)); var seconds=float(fx.timers.get(id,0))
   if id=="trap" and not fx.trap.is_empty(): seconds=fx.trap.remaining
   var special=""
+  if id=="guardian_heart": special=" · USED" if fx.legendary_used>0 else " · AUTO lethal"
+  if ItemCatalog.legendary(id) and id!="guardian_heart" and fx.legendary_used>0 and seconds<=0: special=" · USED"
   if id=="feather": special=" · USED" if fx.feather_used else " · AUTO at25%"
   if id=="coupon" and game.model.player()!=null and game.model.player().coupon_armed: special=" · ARMED40%"
   hotbar[i].text="[%d] %s ×%d%s" % [i+1,ItemCatalog.ITEMS[id].name,quantity," · %.1fs" % seconds if seconds>0 else " · CD %.1fs" % fx.cooldown if fx.cooldown>0 else ""]+special
@@ -163,6 +193,13 @@ func update(delta):
   if not fx.events.is_empty():
    var last=fx.events[-1]
    if last.age<1.8: feedback_label.text=ItemCatalog.ITEMS[last.item].name+(" · ended" if last.phase=="end" else " · -%s damage" % str(snappedf(last.value,.01)) if last.phase=="explode" else " · absorbed %s" % str(snappedf(last.value,.01)) if last.phase=="absorb" else " · saved %.1fG / %.1fE" % [last.value,last.get("power",0)] if last.phase=="used" else " · active" if last.value<=0 else " · +%s" % str(snappedf(last.value,.01)))
+ if is_instance_valid(feedback_label) and not fx.events.is_empty():
+  var recent=fx.events.filter(func(e): return ItemCatalog.legendary(str(e.item)) and e.phase=="activate" and e.age<1.8)
+  var last=recent[-1] if not recent.is_empty() else fx.events[-1]
+  if last.age<1.8 and last.phase=="activate":
+   if last.item=="guardian_heart": feedback_label.text="GUARDIAN HEART ACTIVATED!"
+   if last.item=="reaper_seal": feedback_label.text="SPECIAL ATTACK INTERRUPTED!"
+   if last.item=="cursed_fortune": feedback_label.text="+500 GOLD · Hunter empowered for20s!"
  if is_instance_valid(radar_label):
   radar_label.text="RADAR %.0fs · Hunter L%d at %.0f,%.0f
 Target %s · Map / M to locate" % [fx.timers.radar,game.model.hunter.level,game.model.hunter.position.x,game.model.hunter.position.y,"Room %d" % (game.model.hunter.target+1) if game.model.hunter.target>=0 else "seeking"] if float(fx.timers.get("radar",0))>0 else ""

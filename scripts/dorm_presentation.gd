@@ -18,6 +18,7 @@ var previous_life: Dictionary={}
 var death_ages: Dictionary={}
 var enter_from: Dictionary={}
 var last_model_time=0.0
+var hunter_clock=0.0
 var levels: Dictionary={}
 var clock = 0.0
 var previous: Dictionary = {}
@@ -68,11 +69,13 @@ func reset():
  visual_events.clear()
  seen_event=0
  death_age=0
+ hunter_clock=0
  last_model_time=0
 
 func update(delta: float, model):
  if model.time<last_model_time: reset()
  last_model_time=model.time
+ hunter_clock+=maxf(0,delta-model.items.frozen_delta) if model.running else delta
  clock+=delta
  var old=previous.duplicate()
  var motion=model.player_position-old.get("player",model.player_position)
@@ -310,9 +313,9 @@ func resident(c, pos: Vector2, index: int, player: bool):
 
 func hunter(c,h):
  if h.transformed:
-  boss_presentation.draw(c,h,clock,death_age)
+  boss_presentation.draw(c,h,hunter_clock,death_age)
   return
- var name="hunter_move" if int(clock*4)%2 else "hunter_idle"
+ var name="hunter_move" if int(hunter_clock*4)%2 else "hunter_idle"
  if h.target_time<0.4 and h.target>=0: name="hunter_target"
  if h.state==HunterState.State.ATTACK and h.cooldown>h.interval-0.32:
   name="hunter_target" if h.target<3 else "hunter_attack"
@@ -321,7 +324,7 @@ func hunter(c,h):
  if h.state==HunterState.State.DEAD:
   name="hunter_death"
   alpha=maxf(0,1-death_age/1.2)
- var p=OFFSET+h.position+Vector2(0,-18+sin(clock*3)*2)
+ var p=OFFSET+h.position+Vector2(0,-18+sin(hunter_clock*3)*2)
  c.draw_circle(p+Vector2(0,13),25+min(h.level,6)*2,Color(0.65,0.55,0.92,0.035*alpha))
  sprite(c,"shadow",OFFSET+h.position+Vector2(0,14),Vector2(59,27),Color(1,1,1,alpha))
  c.draw_texture_rect(cartoon[name],Rect2(p-Vector2(33,42),Vector2(66,84)),false,Color(1,1,1,alpha))
