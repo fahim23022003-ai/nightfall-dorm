@@ -1,0 +1,801 @@
+{
+  "baseline": "d507600f64c3c55ff858a9d5bc5d3c938b6e5f6d",
+  "commands": 97,
+  "completed": 97,
+  "passed": true,
+  "seconds": 1456.456,
+  "historical_restored": [
+    "docs/evidence/advanced-items/balance-results.json",
+    "docs/evidence/boss/matrix-matched.json",
+    "docs/evidence/haunted/balance-results.json",
+    "docs/evidence/items/balance-results.json",
+    "docs/evidence/legendary/balance-results.json",
+    "docs/evidence/phase5d3/qa-ai-cases.json",
+    "docs/evidence/replay/qa-code-process-0-advanced.json",
+    "docs/evidence/replay/qa-code-process-0-beginner.json",
+    "docs/evidence/replay/qa-code-process-1-advanced.json",
+    "docs/evidence/replay/qa-code-process-1-beginner.json",
+    "docs/evidence/replay/qa-code-process-2-advanced.json",
+    "docs/evidence/replay/qa-code-process-2-beginner.json",
+    "docs/evidence/rewards/balance-results.json"
+  ],
+  "source_end": "d507600f64c3c55ff858a9d5bc5d3c938b6e5f6d",
+  "rows": [
+    {
+      "name": "import",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 48.51
+    },
+    {
+      "name": "core",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.441
+    },
+    {
+      "name": "phase5d3_qa_support_roles",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.65
+    },
+    {
+      "name": "phase5d3_qa_contact_guards",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 36.35
+    },
+    {
+      "name": "phase5d3_qa_audio",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 5.508
+    },
+    {
+      "name": "phase5d3_qa_economy",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 16.248
+    },
+    {
+      "name": "phase5d3_qa_structures",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.451
+    },
+    {
+      "name": "phase5d3_qa_migration",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.556
+    },
+    {
+      "name": "phase5d3_qa_ai",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 37.571
+    },
+    {
+      "name": "phase5d3_qa_spectator",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 10.931
+    },
+    {
+      "name": "phase5d3_qa_branch_ui",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 3.719
+    },
+    {
+      "name": "phase6_journey",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 9.239
+    },
+    {
+      "name": "phase6_inputs",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.489
+    },
+    {
+      "name": "replay_endless",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 24.61
+    },
+    {
+      "name": "replay_transactions",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 4.004
+    },
+    {
+      "name": "replay_codes",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 10.21
+    },
+    {
+      "name": "replay_pity",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.838
+    },
+    {
+      "name": "replay_migration",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.341
+    },
+    {
+      "name": "replay_practice",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 19.237
+    },
+    {
+      "name": "replay_facts_cosmetics",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.087
+    },
+    {
+      "name": "replay_retirement",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.002
+    },
+    {
+      "name": "replay_ui",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 17.635
+    },
+    {
+      "name": "premium_strategy_mechanics",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 126.919
+    },
+    {
+      "name": "premium_strategy_economy",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 5.965
+    },
+    {
+      "name": "premium_strategy_contracts",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 17.868
+    },
+    {
+      "name": "premium_strategy_migration",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.444
+    },
+    {
+      "name": "premium_strategy_ui",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 10.181
+    },
+    {
+      "name": "visual_identity_qa",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 5.203
+    },
+    {
+      "name": "visual_identity_ui",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 4.737
+    },
+    {
+      "name": "visual_identity_audio",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.374
+    },
+    {
+      "name": "visual_identity_culling",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.779
+    },
+    {
+      "name": "visual_identity_navigation",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 35.336
+    },
+    {
+      "name": "haunted_qa",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 28.083
+    },
+    {
+      "name": "haunted_economy",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.251
+    },
+    {
+      "name": "haunted_balance",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 45.454
+    },
+    {
+      "name": "onboarding_qa",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.552
+    },
+    {
+      "name": "onboarding_flow",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 14.484
+    },
+    {
+      "name": "onboarding_economy",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.528
+    },
+    {
+      "name": "rewards_qa",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 7.8
+    },
+    {
+      "name": "rewards_combos",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.678
+    },
+    {
+      "name": "rewards_balance",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 90.299
+    },
+    {
+      "name": "legendary_qa",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 37.405
+    },
+    {
+      "name": "legendary_combos",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 12.01
+    },
+    {
+      "name": "legendary_balance",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 94.505
+    },
+    {
+      "name": "advanced_items_qa",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 28.455
+    },
+    {
+      "name": "advanced_item_combos",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.833
+    },
+    {
+      "name": "advanced_items_balance",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 49.967
+    },
+    {
+      "name": "items_qa",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 57.708
+    },
+    {
+      "name": "items_activation_feedback",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.694
+    },
+    {
+      "name": "items_balance",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 49.563
+    },
+    {
+      "name": "mythic_progression",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 3.797
+    },
+    {
+      "name": "mythic_edges",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.367
+    },
+    {
+      "name": "boss_architecture",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.923
+    },
+    {
+      "name": "boss_qa",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 42.03
+    },
+    {
+      "name": "boss_audio",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.176
+    },
+    {
+      "name": "boss_matrix",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 49.756
+    },
+    {
+      "name": "difficulty_behavior",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 14.727
+    },
+    {
+      "name": "difficulty_matrix",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 68.35
+    },
+    {
+      "name": "maps_core",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 4.163
+    },
+    {
+      "name": "maps_integration",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 38.672
+    },
+    {
+      "name": "maps_ui",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 6.42
+    },
+    {
+      "name": "maps_simulations",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 105.413
+    },
+    {
+      "name": "campaign_profile",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 5.958
+    },
+    {
+      "name": "campaign_flow",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 9.709
+    },
+    {
+      "name": "campaign_simulations",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 13.038
+    },
+    {
+      "name": "horror_events",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.747
+    },
+    {
+      "name": "horror_feedback",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.248
+    },
+    {
+      "name": "horror_ui",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.785
+    },
+    {
+      "name": "phase1_building",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.786
+    },
+    {
+      "name": "phase1_independent",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.88
+    },
+    {
+      "name": "mobile_controls",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 3.742
+    },
+    {
+      "name": "mobile_layout",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.514
+    },
+    {
+      "name": "audio_system",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.413
+    },
+    {
+      "name": "ranked_progression",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.345
+    },
+    {
+      "name": "phase2_ui",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 6.15
+    },
+    {
+      "name": "phase2_hunter",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.257
+    },
+    {
+      "name": "projectiles",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.256
+    },
+    {
+      "name": "redesign_projectile_edges",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.25
+    },
+    {
+      "name": "redesign_ui",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 4.733
+    },
+    {
+      "name": "scene_smoke",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 4.173
+    },
+    {
+      "name": "overhaul_ui",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 3.81
+    },
+    {
+      "name": "furniture_collision",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.245
+    },
+    {
+      "name": "ui_availability",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.402
+    },
+    {
+      "name": "simulate_matches",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.488
+    },
+    {
+      "name": "audit_regressions",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.339
+    },
+    {
+      "name": "audit_properties",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.827
+    },
+    {
+      "name": "audit_rates",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.349
+    },
+    {
+      "name": "audit_timesteps",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 12.747
+    },
+    {
+      "name": "audit_matrix",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 26.727
+    },
+    {
+      "name": "phase2_matrix",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 7.628
+    },
+    {
+      "name": "strategy_balance_check",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 3.894
+    },
+    {
+      "name": "endless_balance_check",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.185
+    },
+    {
+      "name": "profile_0_cleanup",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.344
+    },
+    {
+      "name": "profile_1_write",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.444
+    },
+    {
+      "name": "profile_2_read",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.453
+    },
+    {
+      "name": "profile_3_cleanup",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.364
+    },
+    {
+      "name": "startup",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 3.619
+    }
+  ]
+}

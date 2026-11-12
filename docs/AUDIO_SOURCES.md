@@ -1,4 +1,24 @@
-# Original audio sources and implementation
+# Audio sources, licenses and implementation
+
+## Current provenance
+
+The current soundtrack and vocals include third-party **CC0 recordings**. They
+are not entirely sample-free or performed by this project. The seven Phase 5D-3
+scores use recorded VSCO2 Community Edition instruments; voice derivatives use
+the credited human/creature recordings listed in the Phase 5D-3 section below.
+Original project compositions and processing are distinguished from the source
+performances. Source URLs, authors, license declarations and hashes are retained
+under `tools/audio/source/`. The new Phase 5D-4 sampled SFX inventory will be added
+after asset selection and engine verification.
+
+The earlier generator descriptions below are **historical records**. Counts,
+durations and claims that assets contain no third-party samples describe those
+earlier versions; they do not describe replacements introduced in Phase 5D-3 or
+later. Do not run an old generator over the current recorded assets when preparing
+a release. Native Windows playback and subjective audio quality require human
+verification.
+
+## Historical original synthesis implementation
 
 All 105 files under `assets/audio/` are original, locally generated PCM WAV assets. They contain no recordings, samples, commercial-game material, external music, paid assets, or downloaded sound libraries. Their reproducible generators are tracked under `tools/audio/`, including the base, boss, progression, item, advanced-item and Legendary sources described below. They use Python's standard library (`math`, `random`, `struct`, `wave`). No third-party audio license or attribution applies. These are original project assets; distribution follows the project owner's license.
 

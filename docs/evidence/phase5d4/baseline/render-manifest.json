@@ -1,0 +1,254 @@
+{
+  "phase": "5D-4 baseline only",
+  "captured_at_utc": "2026-11-12T15:29:41.986879+00:00",
+  "source_commit": "d507600f64c3c55ff858a9d5bc5d3c938b6e5f6d",
+  "source_binding": "Tracked runtime scripts/assets/scenes/project.godot had no diff after the accepted render, before B was released to begin implementation. Baseline hashes below are read from that exact Git commit; later production edits are outside this capture.",
+  "checks": 53,
+  "failures": 0,
+  "process_exit_code": 0,
+  "engine": "Godot 4.6.3 Linux, real Xorg :97/Mesa renderer, Dummy audio driver",
+  "resolution_count": 2,
+  "image_count": 22,
+  "fixture": "Isolated temporary profile. Actual Practice temporary20k Gold/5k Electricity budget, real paid existing defenses; living teammates and Hunter attack pose populated for controlled HUD inspection. Tutorial hint deliberately visible. Actual input purchase/upgrade/branch transactions; model paused between explicit render steps. This is a UI/input fixture, not natural economy, threat balance, audio or Windows evidence.",
+  "capture_script": {
+    "path": "tools/capture_phase5d4_baseline.gd",
+    "sha256": "78465b4d546836f546f1eec0f7c8b942526b5a8f3ce5f1bc9c8528a969f4e269"
+  },
+  "log_sha256": "a4aaf483c399f9295b2910f7405bda7feeeaa6574f409f34073f60b5b95ca1bf",
+  "runtime_source_sha256": {
+    "project.godot": "9dc6053989ac07cea84ef3c308b0d6cb7015d6791d53be910033af7f943e0e4a",
+    "scripts/audio_director.gd": "3a01901111034786a2591fa9ab10bb8d306ad0386e59092d4c395b9af9fa8726",
+    "scripts/boss_catalog.gd": "bc4a8a9a412fbfbb3fc64e93e532ae1191b48fd2a862e0339dcc98c5d955aea7",
+    "scripts/boss_presentation.gd": "2e63c6d181c5b15f06d2868c1ad54a32e69271687582a60f86a31b524d1e6c7b",
+    "scripts/bot_ai.gd": "13b91cda49e343dd98db31abfa2a84c5aa20874c25f1e557523b99dccf7fd1c7",
+    "scripts/campaign_interface.gd": "2f93c3081a83f53eef7969d2171d7308562aa4275d1b89c26b15ba1c6ac5def4",
+    "scripts/cash_shop.gd": "a5fae363255cd6871e9a0fec573dfa85519ab03270559a0ac18f520a1aa259a7",
+    "scripts/catalog.gd": "2782a165266be2b63ffda147d9bc6a2f168223d35e6f596b1b73b41bb986cc2c",
+    "scripts/challenge_code.gd": "e5f32add368a5b624a9a1b84c2a11c5151b350617c65dd21c45738e62f903a42",
+    "scripts/cosmetic_catalog.gd": "3205af563eb524ccd45be51ba1e8daa9aced53cdbb290ca43573d40ca276812f",
+    "scripts/cosmetic_presentation.gd": "1f09129ecedd0b6412da7f2640fd40b6453908386a3e3a216d3dd0c357d0468c",
+    "scripts/defeat_facts.gd": "dad3a294122d76cb700bb5f34da5e76347e9d33993b3f524638ef886c02fde60",
+    "scripts/dorm_presentation.gd": "e4676af3ca048dec48818c4558279ddcf183aa6d84520d956e0f3afe6e702677",
+    "scripts/endless_run.gd": "ecc915bad4f329ebace6dfeb77f4d06e24ad0b7e4ce91b57da93b114745d91f3",
+    "scripts/game.gd": "b249861e233fc7b7b68cbee545c678e967348870f406da952b072a96c1d15640",
+    "scripts/gothic_theme.gd": "776694c60399df9976e9594aa69060a6f4eda7057c11397bcc1faaddf808b096",
+    "scripts/haunted_environment.gd": "f144e50d08cd3e5777976d88aea63ed0a912fdb1230e1c4bd5d7a4c511c2437b",
+    "scripts/horror_feedback.gd": "64f5e1fca17e7e8859e336098919513ca80eea63b6f4d95d341412bae54ce0d8",
+    "scripts/hunter_state.gd": "6a6bca7680273196647293baa685f8e1458396671240bfc17886dd5e41cfdb5d",
+    "scripts/interface.gd": "f60a21248e56f11c4a528bce85dc61325dbb2395b6b090516aec35dafb3101a5",
+    "scripts/item_catalog.gd": "64a6f33f90c3d3ef8e253fcd8b3f08d8f94fe5bf79448bdb44c5184d40d0c8cb",
+    "scripts/item_effects.gd": "3d536e29661e7b504fb8992a75f13127269caf016c70cf650f6e73cf3200eeea",
+    "scripts/item_interface.gd": "89b4849eb6aa1a3f415139a6577a3df3fce0c4fcfb238d0aec72306b35e093e6",
+    "scripts/item_presentation.gd": "3065413e9ae40b3d72c79c97f882e219b6ac4db7f55db6b1f1c19d2650a01ade",
+    "scripts/item_wheel.gd": "160400b1dc908021c4e0d1ccc376498a80581b433352741ab2f810bad580df46",
+    "scripts/map_catalog.gd": "81deff2f1ff5ac6f00fac8dd34d501ff0654c263aaecd24d8fb0720badc745b5",
+    "scripts/map_presentation.gd": "c8562f7153d795036172d39205a312e3c556c73d7460d263bae1e9bd0b30d2ab",
+    "scripts/match_model.gd": "b2f96a10b928618e65a489cad67f5c301e5af92cb4e771fed590454fc605cfe2",
+    "scripts/match_strategy.gd": "6bc96f1553cf9b75334d519089ae15da4d0e71fd18e0e111f732de467c91620f",
+    "scripts/mobile_interface.gd": "f51ed3b811e7fa8142674923038b1d6ba725971a47f39f91d39025941c5e165a",
+    "scripts/mobile_layout.gd": "99e98d519525265afffc6a703f36a216633ebcc4601daf05aa712cdace4b67d2",
+    "scripts/onboarding.gd": "edd493e585e2e63ab18cc1621a0fb376849661dda264d09d3ab0f5fee6c54b76",
+    "scripts/onboarding_catalog.gd": "7089ca586736ca3eac299e95f4c6d5742aa179fc4d2f7cba796ca1be6ae46f35",
+    "scripts/player_profile.gd": "48e4ecc32f8eb4267f1a68f826404d98a69720b512c380f032996805bd6ed22a",
+    "scripts/practice_room.gd": "8b097b6225686386323a9b3ae9db8874e343bef3a0b84c49d614fc46c37b3f77",
+    "scripts/premium_button.gd": "031a972671442669d102daceefaac5f21965f5759a99192db5415672b2c5cecd",
+    "scripts/progression_interface.gd": "badeebe643d9243344b27a78d90ebf3222ae18133d23a492662d28c2bca2218e",
+    "scripts/rank_catalog.gd": "b03b428faf61f11ba8530d4973cd7baa65b408dca7aa907882b28a04f369e2c3",
+    "scripts/replay_interface.gd": "842129fba6918a1e632d84d10ef9bd366d22522c06cb7784b7bf317a7b596ea7",
+    "scripts/replay_progress.gd": "fc277605d6a2f70fd27be43bfa94748d6d6f10db6b9d20bcf64de4c42bbc68e8",
+    "scripts/replay_snapshot.gd": "ffbacc0657360ff893280bad2bd6ffa907fa6bd37956d6cda878e06e1e1aa2c2",
+    "scripts/reward_catalog.gd": "52f44e7f08b10db0c8472764cc83326505fb150137df3f84903c4882cbba9602",
+    "scripts/room_state.gd": "1e378bebec52ecf1e63f3051a30acfa5a51ca1c7d113b1a707016346bc2bc963",
+    "scripts/spin_pity.gd": "285f668d50b2e525da8279403472c25dbc324a5622b70031b2545358ee3b1cc1",
+    "scripts/stage_catalog.gd": "b723720aa63607dc4c52433c8134741010efbf9eb45eddf194586c394bc3d108",
+    "scripts/strategy_catalog.gd": "6c69f05aa8b6b614eb1736324abaab672f7f05549bbc4aa8b64f3255a76f11cb",
+    "scripts/teammate_interface.gd": "82a3bffb77817b9258612f7aa22b8a615231e757f8e5cdf1957f05d3d0c100b6",
+    "scripts/temporary_loadout.gd": "16be4d780dc4215ea766fe668dede89d5e8fde0402032c6e3d66c1facee4a6db",
+    "scripts/touch_controls.gd": "52cd25b8c25b7545e5e0004d19ffabd14452810481299df458363b9d07c53407",
+    "scripts/visual_presence.gd": "7567fe3ca1798fcfd1b3ebf6153e9c4e2221fb7286be5cb5434ede8b683b4d26"
+  },
+  "images": [
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/01-gameplay-hud-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "be56a6b0bd25bcb2298beb5a576c6fb54a1a4b925bd80cb73ffd9e4fa93cbaa7"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/01-gameplay-hud-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "df6a4ff5b502787505eb4ccb35ddc24eceffd14222ae30ed8e5f54776fba00c7"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/02-expanded-roster-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "9dbd47189deb38ee30894c285e5289d1f363626cb023f7cbb5f740866c332024"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/02-expanded-roster-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "cf203ea8958cac9934254c0679fba7b2b435f0d421098444fb9bd69cb5e223c0"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/03-purchase-cards-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "2fcbf2b858b6054f3d53a85a14f188e20b7d344fa4b6fae959c5af21afe07a55"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/03-purchase-cards-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "ad0fff915221829c09b03909d7eb4de12f91cb2b0aa129b7420d62f65a22fa5a"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/04-placement-confirmation-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "90c975c416e952b19e6596b771b7281138564469133a4614d5966ceb20af29d6"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/04-placement-confirmation-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "39a52bb8c58910cc52878f5b911a23ea858de0651bcb7a7f57ee5016dcfa63dd"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/05-building-current-stats-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "fee9b671b2f296d4504163972fe95f9caf46de2af3db70a0c6fca5cea94ece3b"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/05-building-current-stats-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "31adee930293938d2d2fd3eedbdc246e071749ece53f60e58bb387f1c6857cab"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/06-building-upgraded-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "a8a67a899aaf6f9e42c6c7408754cda3137f840717aad7fa4a5d30d8fd5d6435"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/06-building-upgraded-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "563dc5e51d6d8b9fc5108981c9cca269082bc55ea4be7422a49d361748c763c9"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/07-needle-level4-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "9765cdd183065144e3a71c47945bee6951d85700b922a8cfb1a55eb353e52144"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/07-needle-level4-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "a3b98ea4ca53e45db2f9fdd973c01aedab94191d8406d316a80aa501bc8d401f"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/08-specialization-choice-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "b25522b9fd2a084e9d79ac7cbe6054070436a6823a479cab56ff6787387713b7"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/08-specialization-choice-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "097f74bd1cb7278d0b395d5e58cfef2ee0670c99badb816e18432d30999c0fcc"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/09-specialization-selected-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "f932fcb28f1d56f01cb0d2503729171b7d98b51ba9a1e64d0ba671880957dfc2"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/09-specialization-selected-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "a14391694cd9a50440c51783fed1c74071651a5b3eb23ada98754c4b8dadb602"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/10-bed-upgrade-panel-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "7c40a1bc0002e5af3028b05b91dea06aa42b624bc942dd8783b4bbbcbecb20ac"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/10-bed-upgrade-panel-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "edf7f38d4f182b1d05a39fe4be0936e77f713fca9d13a681a4fee3eae6eac630"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/11-door-upgrade-panel-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "da471e9ac8860ff78234b82796d4f68ddd27242028e3d29ecfa40861a971b0d8"
+    },
+    {
+      "path": "docs/evidence/phase5d4/baseline/render/11-door-upgrade-panel-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "15779f7c7a72cf3330e46a6a0f34ee1aeedad946362900fea64f36b2b14cfaaa"
+    }
+  ],
+  "inspection": "All 22 fresh PNGs examined in a contact sheet; full-size 720p HUD, 720p branch, 720p Dynamo inspector and 1080p purchase cards inspected. No cached images reused.",
+  "limitations": [
+    "Native Windows not tested",
+    "Human gameplay/perceptual preference is not validated by53 automated assertions",
+    "No audio playback claim from Dummy driver render"
+  ]
+}

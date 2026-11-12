@@ -1,3 +1,26 @@
+# Phase 5D-4 — The Reaper’s Wrath — IN PROGRESS
+
+Owner and Adie’s Windows playtest feedback supersedes earlier automated balance
+and usability assumptions. Starting clean on `work` at
+`d507600f64c3c55ff858a9d5bc5d3c938b6e5f6d`, verified equal to remote `work`.
+Recovery tag: `pre-phase5d4-d507600`. Main is outside scope; no release publication
+or new Phase 6 audit. Baseline complete before production edits: all 97 regular/extended commands
+pass (24.3 minutes); actual rendered baseline passes 53 checks/22 screenshots;
+independent balance baseline passes 51 cases. Original runtime and historical
+evidence are hash-verified unchanged.
+
+B owns gameplay/UI/AI/buildings; dedicated Audio specialist owns AudioDirector
+and SFX assets; C independently tests integration; A audits balance; D inspects
+rendered UI and engine audio. Root owns documentation, regression integration,
+recoverable commits, Windows export and verified private Git delivery.
+
+See [current report](PHASE_5D4_REAPERS_WRATH_REPORT.md). No new feature is yet
+accepted as complete. Next: contextual HUD, tactical/NPC
+repairs, evolution, two-phase Reaper and combined ultimate, six buildings,
+sampled interactive SFX and independent integration verification.
+
+---
+
 # Phase 5D-3 — implemented and verified (12 November 2026)
 
 Version0.6.1-5d3, Godot4.6.3 Linux. Allfour owner-feedback workstreams implemented:

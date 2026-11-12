@@ -1,0 +1,112 @@
+{
+ "checks": 53,
+ "conditions": "ActualGame Practice temporarybudget20kG/5kE; populatedactualNPCstate controlledrenderfixture. Purchases/upgrades/branchuseactualmouseinput. No naturalincome/balance/Windowsclaim.",
+ "failures": 0,
+ "observations": [
+  {
+   "action": "openempty-padpanel",
+   "after": {
+    "player": [
+     43.0,
+     -17.0
+    ],
+    "position": [
+     465.580230712891,
+     129.551025390625
+    ],
+    "zoom": [
+     1.25641024112701,
+     1.25641024112701
+    ]
+   },
+   "before": {
+    "player": [
+     43.0,
+     -17.0
+    ],
+    "position": [
+     325.0,
+     129.551025390625
+    ],
+    "zoom": [
+     1.25641024112701,
+     1.25641024112701
+    ]
+   },
+   "panel_rect": "[P: (900.0, 246.0), S: (364.0, 382.0)]",
+   "resolution": "720"
+  },
+  {
+   "action": "doorpanel",
+   "camera": {
+    "player": [
+     43.0,
+     -17.0
+    ],
+    "position": [
+     450.70947265625,
+     129.551025390625
+    ],
+    "zoom": [
+     1.25641024112701,
+     1.25641024112701
+    ]
+   },
+   "panel_rect": "[P: (900.0, 328.0), S: (364.0, 300.0)]",
+   "resolution": "720"
+  },
+  {
+   "action": "openempty-padpanel",
+   "after": {
+    "player": [
+     43.0,
+     -17.0
+    ],
+    "position": [
+     465.619812011719,
+     129.551025390625
+    ],
+    "zoom": [
+     1.25641024112701,
+     1.25641024112701
+    ]
+   },
+   "before": {
+    "player": [
+     43.0,
+     -17.0
+    ],
+    "position": [
+     325.0,
+     129.551025390625
+    ],
+    "zoom": [
+     1.25641024112701,
+     1.25641024112701
+    ]
+   },
+   "panel_rect": "[P: (900.0, 246.0), S: (364.0, 382.0)]",
+   "resolution": "1080"
+  },
+  {
+   "action": "doorpanel",
+   "camera": {
+    "player": [
+     43.0,
+     -17.0
+    ],
+    "position": [
+     453.983673095703,
+     129.551025390625
+    ],
+    "zoom": [
+     1.25641024112701,
+     1.25641024112701
+    ]
+   },
+   "panel_rect": "[P: (900.0, 328.0), S: (364.0, 300.0)]",
+   "resolution": "1080"
+  }
+ ],
+ "source": "d507600f64c3c55ff858a9d5bc5d3c938b6e5f6d"
+}

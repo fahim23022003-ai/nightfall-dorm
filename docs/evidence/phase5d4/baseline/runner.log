@@ -1,0 +1,196 @@
+BASELINE_COMMANDS 97 HEAD d507600f64c3c55ff858a9d5bc5d3c938b6e5f6d
+RUN 1 97 import
+DONE import EXIT 0 ERRORS False FAILURES False
+RUN 2 97 core
+DONE core EXIT 0 ERRORS False FAILURES False
+RUN 3 97 phase5d3_qa_support_roles
+DONE phase5d3_qa_support_roles EXIT 0 ERRORS False FAILURES False
+RUN 4 97 phase5d3_qa_contact_guards
+DONE phase5d3_qa_contact_guards EXIT 0 ERRORS False FAILURES False
+RUN 5 97 phase5d3_qa_audio
+DONE phase5d3_qa_audio EXIT 0 ERRORS False FAILURES False
+RUN 6 97 phase5d3_qa_economy
+DONE phase5d3_qa_economy EXIT 0 ERRORS False FAILURES False
+RUN 7 97 phase5d3_qa_structures
+DONE phase5d3_qa_structures EXIT 0 ERRORS False FAILURES False
+RUN 8 97 phase5d3_qa_migration
+DONE phase5d3_qa_migration EXIT 0 ERRORS False FAILURES False
+RUN 9 97 phase5d3_qa_ai
+DONE phase5d3_qa_ai EXIT 0 ERRORS False FAILURES False
+RUN 10 97 phase5d3_qa_spectator
+DONE phase5d3_qa_spectator EXIT 0 ERRORS False FAILURES False
+RUN 11 97 phase5d3_qa_branch_ui
+DONE phase5d3_qa_branch_ui EXIT 0 ERRORS False FAILURES False
+RUN 12 97 phase6_journey
+DONE phase6_journey EXIT 0 ERRORS False FAILURES False
+RUN 13 97 phase6_inputs
+DONE phase6_inputs EXIT 0 ERRORS False FAILURES False
+RUN 14 97 replay_endless
+DONE replay_endless EXIT 0 ERRORS False FAILURES False
+RUN 15 97 replay_transactions
+DONE replay_transactions EXIT 0 ERRORS False FAILURES False
+RUN 16 97 replay_codes
+DONE replay_codes EXIT 0 ERRORS False FAILURES False
+RUN 17 97 replay_pity
+DONE replay_pity EXIT 0 ERRORS False FAILURES False
+RUN 18 97 replay_migration
+DONE replay_migration EXIT 0 ERRORS False FAILURES False
+RUN 19 97 replay_practice
+DONE replay_practice EXIT 0 ERRORS False FAILURES False
+RUN 20 97 replay_facts_cosmetics
+DONE replay_facts_cosmetics EXIT 0 ERRORS False FAILURES False
+RUN 21 97 replay_retirement
+DONE replay_retirement EXIT 0 ERRORS False FAILURES False
+RUN 22 97 replay_ui
+DONE replay_ui EXIT 0 ERRORS False FAILURES False
+RUN 23 97 premium_strategy_mechanics
+DONE premium_strategy_mechanics EXIT 0 ERRORS False FAILURES False
+RUN 24 97 premium_strategy_economy
+DONE premium_strategy_economy EXIT 0 ERRORS False FAILURES False
+RUN 25 97 premium_strategy_contracts
+DONE premium_strategy_contracts EXIT 0 ERRORS False FAILURES False
+RUN 26 97 premium_strategy_migration
+DONE premium_strategy_migration EXIT 0 ERRORS False FAILURES False
+RUN 27 97 premium_strategy_ui
+DONE premium_strategy_ui EXIT 0 ERRORS False FAILURES False
+RUN 28 97 visual_identity_qa
+DONE visual_identity_qa EXIT 0 ERRORS False FAILURES False
+RUN 29 97 visual_identity_ui
+DONE visual_identity_ui EXIT 0 ERRORS False FAILURES False
+RUN 30 97 visual_identity_audio
+DONE visual_identity_audio EXIT 0 ERRORS False FAILURES False
+RUN 31 97 visual_identity_culling
+DONE visual_identity_culling EXIT 0 ERRORS False FAILURES False
+RUN 32 97 visual_identity_navigation
+DONE visual_identity_navigation EXIT 0 ERRORS False FAILURES False
+RUN 33 97 haunted_qa
+DONE haunted_qa EXIT 0 ERRORS False FAILURES False
+RUN 34 97 haunted_economy
+DONE haunted_economy EXIT 0 ERRORS False FAILURES False
+RUN 35 97 haunted_balance
+DONE haunted_balance EXIT 0 ERRORS False FAILURES False
+RUN 36 97 onboarding_qa
+DONE onboarding_qa EXIT 0 ERRORS False FAILURES False
+RUN 37 97 onboarding_flow
+DONE onboarding_flow EXIT 0 ERRORS False FAILURES False
+RUN 38 97 onboarding_economy
+DONE onboarding_economy EXIT 0 ERRORS False FAILURES False
+RUN 39 97 rewards_qa
+DONE rewards_qa EXIT 0 ERRORS False FAILURES False
+RUN 40 97 rewards_combos
+DONE rewards_combos EXIT 0 ERRORS False FAILURES False
+RUN 41 97 rewards_balance
+DONE rewards_balance EXIT 0 ERRORS False FAILURES False
+RUN 42 97 legendary_qa
+DONE legendary_qa EXIT 0 ERRORS False FAILURES False
+RUN 43 97 legendary_combos
+DONE legendary_combos EXIT 0 ERRORS False FAILURES False
+RUN 44 97 legendary_balance
+DONE legendary_balance EXIT 0 ERRORS False FAILURES False
+RUN 45 97 advanced_items_qa
+DONE advanced_items_qa EXIT 0 ERRORS False FAILURES False
+RUN 46 97 advanced_item_combos
+DONE advanced_item_combos EXIT 0 ERRORS False FAILURES False
+RUN 47 97 advanced_items_balance
+DONE advanced_items_balance EXIT 0 ERRORS False FAILURES False
+RUN 48 97 items_qa
+DONE items_qa EXIT 0 ERRORS False FAILURES False
+RUN 49 97 items_activation_feedback
+DONE items_activation_feedback EXIT 0 ERRORS False FAILURES False
+RUN 50 97 items_balance
+DONE items_balance EXIT 0 ERRORS False FAILURES False
+RUN 51 97 mythic_progression
+DONE mythic_progression EXIT 0 ERRORS False FAILURES False
+RUN 52 97 mythic_edges
+DONE mythic_edges EXIT 0 ERRORS False FAILURES False
+RUN 53 97 boss_architecture
+DONE boss_architecture EXIT 0 ERRORS False FAILURES False
+RUN 54 97 boss_qa
+DONE boss_qa EXIT 0 ERRORS False FAILURES False
+RUN 55 97 boss_audio
+DONE boss_audio EXIT 0 ERRORS False FAILURES False
+RUN 56 97 boss_matrix
+DONE boss_matrix EXIT 0 ERRORS False FAILURES False
+RUN 57 97 difficulty_behavior
+DONE difficulty_behavior EXIT 0 ERRORS False FAILURES False
+RUN 58 97 difficulty_matrix
+DONE difficulty_matrix EXIT 0 ERRORS False FAILURES False
+RUN 59 97 maps_core
+DONE maps_core EXIT 0 ERRORS False FAILURES False
+RUN 60 97 maps_integration
+DONE maps_integration EXIT 0 ERRORS False FAILURES False
+RUN 61 97 maps_ui
+DONE maps_ui EXIT 0 ERRORS False FAILURES False
+RUN 62 97 maps_simulations
+DONE maps_simulations EXIT 0 ERRORS False FAILURES False
+RUN 63 97 campaign_profile
+DONE campaign_profile EXIT 0 ERRORS False FAILURES False
+RUN 64 97 campaign_flow
+DONE campaign_flow EXIT 0 ERRORS False FAILURES False
+RUN 65 97 campaign_simulations
+DONE campaign_simulations EXIT 0 ERRORS False FAILURES False
+RUN 66 97 horror_events
+DONE horror_events EXIT 0 ERRORS False FAILURES False
+RUN 67 97 horror_feedback
+DONE horror_feedback EXIT 0 ERRORS False FAILURES False
+RUN 68 97 horror_ui
+DONE horror_ui EXIT 0 ERRORS False FAILURES False
+RUN 69 97 phase1_building
+DONE phase1_building EXIT 0 ERRORS False FAILURES False
+RUN 70 97 phase1_independent
+DONE phase1_independent EXIT 0 ERRORS False FAILURES False
+RUN 71 97 mobile_controls
+DONE mobile_controls EXIT 0 ERRORS False FAILURES False
+RUN 72 97 mobile_layout
+DONE mobile_layout EXIT 0 ERRORS False FAILURES False
+RUN 73 97 audio_system
+DONE audio_system EXIT 0 ERRORS False FAILURES False
+RUN 74 97 ranked_progression
+DONE ranked_progression EXIT 0 ERRORS False FAILURES False
+RUN 75 97 phase2_ui
+DONE phase2_ui EXIT 0 ERRORS False FAILURES False
+RUN 76 97 phase2_hunter
+DONE phase2_hunter EXIT 0 ERRORS False FAILURES False
+RUN 77 97 projectiles
+DONE projectiles EXIT 0 ERRORS False FAILURES False
+RUN 78 97 redesign_projectile_edges
+DONE redesign_projectile_edges EXIT 0 ERRORS False FAILURES False
+RUN 79 97 redesign_ui
+DONE redesign_ui EXIT 0 ERRORS False FAILURES False
+RUN 80 97 scene_smoke
+DONE scene_smoke EXIT 0 ERRORS False FAILURES False
+RUN 81 97 overhaul_ui
+DONE overhaul_ui EXIT 0 ERRORS False FAILURES False
+RUN 82 97 furniture_collision
+DONE furniture_collision EXIT 0 ERRORS False FAILURES False
+RUN 83 97 ui_availability
+DONE ui_availability EXIT 0 ERRORS False FAILURES False
+RUN 84 97 simulate_matches
+DONE simulate_matches EXIT 0 ERRORS False FAILURES False
+RUN 85 97 audit_regressions
+DONE audit_regressions EXIT 0 ERRORS False FAILURES False
+RUN 86 97 audit_properties
+DONE audit_properties EXIT 0 ERRORS False FAILURES False
+RUN 87 97 audit_rates
+DONE audit_rates EXIT 0 ERRORS False FAILURES False
+RUN 88 97 audit_timesteps
+DONE audit_timesteps EXIT 0 ERRORS False FAILURES False
+RUN 89 97 audit_matrix
+DONE audit_matrix EXIT 0 ERRORS False FAILURES False
+RUN 90 97 phase2_matrix
+DONE phase2_matrix EXIT 0 ERRORS False FAILURES False
+RUN 91 97 strategy_balance_check
+DONE strategy_balance_check EXIT 0 ERRORS False FAILURES False
+RUN 92 97 endless_balance_check
+DONE endless_balance_check EXIT 0 ERRORS False FAILURES False
+RUN 93 97 profile_0_cleanup
+DONE profile_0_cleanup EXIT 0 ERRORS False FAILURES False
+RUN 94 97 profile_1_write
+DONE profile_1_write EXIT 0 ERRORS False FAILURES False
+RUN 95 97 profile_2_read
+DONE profile_2_read EXIT 0 ERRORS False FAILURES False
+RUN 96 97 profile_3_cleanup
+DONE profile_3_cleanup EXIT 0 ERRORS False FAILURES False
+RUN 97 97 startup
+DONE startup EXIT 0 ERRORS False FAILURES False
+FINAL True RESTORED ['docs/evidence/advanced-items/balance-results.json', 'docs/evidence/boss/matrix-matched.json', 'docs/evidence/haunted/balance-results.json', 'docs/evidence/items/balance-results.json', 'docs/evidence/legendary/balance-results.json', 'docs/evidence/phase5d3/qa-ai-cases.json', 'docs/evidence/replay/qa-code-process-0-advanced.json', 'docs/evidence/replay/qa-code-process-0-beginner.json', 'docs/evidence/replay/qa-code-process-1-advanced.json', 'docs/evidence/replay/qa-code-process-1-beginner.json', 'docs/evidence/replay/qa-code-process-2-advanced.json', 'docs/evidence/replay/qa-code-process-2-beginner.json', 'docs/evidence/rewards/balance-results.json']
