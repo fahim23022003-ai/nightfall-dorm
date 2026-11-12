@@ -62,9 +62,7 @@ func _ready():
  panel.mouse_filter=Control.MOUSE_FILTER_IGNORE
  add_child(panel)
  panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
- var theme=Theme.new()
- theme.default_font=default_font
- theme.default_font_size=18
+ var theme=GothicTheme.make_theme(default_font)
  panel.theme=theme
  items_ui=preload("res://scripts/item_interface.gd").new(self)
  shop=preload("res://scripts/cash_shop.gd").new(self)
@@ -86,16 +84,16 @@ func clear():
  feedback_text=""
  feedback_until=0
 
-func style(fill: String="263E50",edge: String="607D8B",radius: int=10) -> StyleBoxFlat:
- var s=StyleBoxFlat.new()
- s.bg_color=Color(fill)
- s.border_color=Color(edge)
- s.set_border_width_all(2)
- s.set_corner_radius_all(radius)
- s.shadow_color=Color(0.04,0.09,0.14,0.4)
- s.shadow_size=4
- s.shadow_offset=Vector2(0,3)
+func style(fill: String="263E50",edge: String="607D8B",radius: int=10) -> StyleBox:
+ return GothicTheme.surface(fill,edge)
+
+func meter_style(color: Color) -> StyleBoxFlat:
+ var s=StyleBoxFlat.new();s.bg_color=color;s.set_corner_radius_all(3)
  return s
+func resource_text(value: float) -> String:
+ if value>=1000000:return "%.1fM" % (value/1000000)
+ if value>=100000:return "%.1fK" % (value/1000)
+ return str(int(value))
 
 func attach(node: Control,parent: Control=null):
  (panel if parent==null else parent).add_child(node)
@@ -117,7 +115,11 @@ func label_at(text: String,pos: Vector2,size: int=18,width: float=900,heading: b
  l.mouse_filter=Control.MOUSE_FILTER_IGNORE
  l.add_theme_font_size_override("font_size",size)
  l.add_theme_color_override("font_color",Color("EDF5F7"))
- if heading: l.add_theme_font_override("font",display_font)
+ if heading:
+  l.add_theme_font_override("font",default_font)
+  l.add_theme_color_override("font_color",Color("DDD3B9"))
+ l.add_theme_color_override("font_shadow_color",Color("080B0F"))
+ l.add_theme_constant_override("shadow_offset_y",1)
  attach(l,parent)
  return l
 
@@ -139,6 +141,8 @@ func button(text: String,pos: Vector2,callback: Callable,width: float=240,height
  b.size=Vector2(width,height)
  b.pressed.connect(func(): game.audio_event("button"))
  b.pressed.connect(callback)
+ var primary=text.begins_with("Start") or text.begins_with("Confirm") or text.begins_with("Continue") or text.begins_with("Claim reward") or text.begins_with("Buy")
+ b.set_meta("visual_role","primary" if primary else "secondary")
  # Disabled economic actions still explain an unaffordable attempt audibly.
  b.gui_input.connect(func(event):
   if not b.disabled or not event is InputEventMouseButton or not event.pressed or event.button_index!=MOUSE_BUTTON_LEFT: return
@@ -152,7 +156,7 @@ func button(text: String,pos: Vector2,callback: Callable,width: float=240,height
  for state in ["normal","hover","pressed","disabled","focus"]:
   var fill="3F6675" if state=="hover" else "304D61"
   if state=="disabled": fill="263746"
-  b.add_theme_stylebox_override(state,style(fill,"7BE3A1" if state in ["hover","focus"] else "607D8B",8))
+  b.add_theme_stylebox_override(state,GothicTheme.surface(fill,"7BE3A1" if state in ["hover","focus"] else "938876",("primary_" if primary else "button_")+state))
  b.add_theme_color_override("font_color",Color("EDF5F7"))
  b.add_theme_color_override("font_disabled_color",Color("889CA8"))
  attach(b,parent)
@@ -165,7 +169,9 @@ func show_menu():
   game.mobile_ui.show_menu(self)
   return
  label_at("SMALL ROOMS. BIG NIGHTMARES.",Vector2(72,108),18,580).modulate=Color("7BE3A1")
- label_at("NIGHTFALL\nDORM",Vector2(66,157),58,600,true)
+ var wordmark=label_at("NIGHTFALL\nDORM",Vector2(66,157),58,600,true)
+ wordmark.add_theme_font_override("font",preload("res://assets/fonts/Display.ttf"))
+ label_at("—  THE NIGHT WATCH  —",Vector2(74,284),13,560).modulate=Color("B8A478")
  label_at("Claim a bed. Build your defenses.\nMake it through the night.",Vector2(72,315),20,590)
  button("Start Game",Vector2(72,405),game.enter_game,330,54)
  button("How to Play",Vector2(72,477),show_help,160,46)
@@ -178,7 +184,7 @@ func show_menu():
   label_at("RM Cash %d" % game.profile.rm_cash,Vector2(735,552),22,420,true)
   button("Shop · Common supplies",Vector2(735,594),shop.show_shop,440,42)
   button("Replay Tutorial",Vector2(735,644),func():game.start_tutorial(true),440,36)
- label_at("Original cartoon dormitory survival defense",Vector2(72,690),16,620).modulate=Color("9DB6C2")
+ label_at("A cursed residence. A night without mercy.",Vector2(72,690),16,620).modulate=Color("9DB6C2")
 
 func show_help():
  clear()
@@ -236,11 +242,14 @@ func show_match():
  clear()
  current_screen="match"
  box(Rect2(18,12,1244,64),"203747","607D8B")
- label_at("NIGHTFALL DORM",Vector2(34,27),23,260,true)
+ var brand=label_at("NIGHTFALL DORM",Vector2(34,27),20,240,true)
+ brand.add_theme_font_override("font",preload("res://assets/fonts/Display.ttf"))
  icon("coin",Vector2(280,25),Vector2(32,32))
  gold_label=label_at("—",Vector2(320,24),25,98)
+ gold_label.modulate=Color("DFC48B")
  icon("power",Vector2(429,23),Vector2(30,36))
  power_label=label_at("—",Vector2(468,24),25,98)
+ power_label.modulate=Color("8CD6DA")
  phase_label=label_at("",Vector2(576,22),18,120)
  hunter_label=label_at("",Vector2(704,21),18,290)
  hunter_bar=ProgressBar.new()
@@ -249,8 +258,8 @@ func show_match():
  hunter_bar.show_percentage=false
  hunter_bar.add_theme_font_size_override("font_size",1)
  hunter_bar.mouse_filter=Control.MOUSE_FILTER_IGNORE
- hunter_bar.add_theme_stylebox_override("background",style("182B3A","607D8B",4))
- hunter_bar.add_theme_stylebox_override("fill",style("F05467","F05467",4))
+ hunter_bar.add_theme_stylebox_override("background",meter_style(Color("15191F")))
+ hunter_bar.add_theme_stylebox_override("fill",meter_style(Color("B65D67")))
  hunter_bar.size=Vector2(286,8)
  panel.add_child(hunter_bar)
  hunter_bar.set_deferred("size",Vector2(286,8))
@@ -471,8 +480,10 @@ func update_match():
  if not is_instance_valid(gold_label) or game.mode!="match": return
  var m=game.model
  var room=m.player()
- gold_label.text=str(int(room.gold)) if room!=null else "—"
- power_label.text=str(int(room.electricity)) if room!=null else "—"
+ gold_label.text=resource_text(room.gold) if room!=null else "—"
+ gold_label.tooltip_text="Gold: %s" % str(snappedf(room.gold,.01)) if room!=null else "Gold"
+ power_label.text=resource_text(room.electricity) if room!=null else "—"
+ power_label.tooltip_text="Electricity: %s" % str(snappedf(room.electricity,.01)) if room!=null else "Electricity"
  phase_label.text="%02d:%02d\n%s" % [int(m.time)/60,int(m.time)%60,"PREP %ds" % maxi(0,ceili(m.preparation-m.time)) if m.time<m.preparation else "SURVIVE"]
  hunter_label.text=("REAPER · %d/%d" % [m.hunter.hp,m.hunter.max_hp]) if m.hunter.transformed else "HUNTER L%d  ·  %d/%d" % [m.hunter.level,m.hunter.hp,m.hunter.max_hp]
  hunter_detail.text="%d ATK · %.2fs%s · TEAM %d" % [m.hunter.damage,m.hunter.interval," · WINDUP!" if m.hunter.charged_ready else "",m.rooms.filter(func(r):return r.owner>=0 and r.alive).size()]
@@ -526,6 +537,9 @@ func update_match():
    actions.upgrade.text="MAX LEVEL" if b.level>=Catalog.building_max_level(b.kind) else "Upgrade  ·  %dG / %dE" % [price.x,price.y]
   else: actions.upgrade.text="Select a building to upgrade"
  actions.repair.text="Repair  ·  %d gold" % Catalog.REPAIR_COST
+ var immediate=room!=null and room.alive and room.door_hp<room.max_hp()*.35 and game.model.hunter.target==room.index and game.model.hunter.state in [HunterState.State.ATTACK,HunterState.State.BREACH]
+ room_door_summary.add_theme_stylebox_override("normal",GothicTheme.surface("583344" if immediate else "22292B","BC626B" if immediate else "938876","button_normal"))
+ room_door_summary.modulate=Color(1,.91+.09*sin(game.presentation.clock*3),.91+.09*sin(game.presentation.clock*3)) if immediate and not game.profile.settings.reduced_effects else Color.WHITE
  quick_repair.text="Repair %d G  [R]" % Catalog.REPAIR_COST
  quick_repair.disabled=action_reason("repair")!=""
  for action in actions:

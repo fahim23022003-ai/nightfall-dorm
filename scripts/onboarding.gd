@@ -18,9 +18,12 @@ const TITLES=["MOVE","FIND A ROOM","SLEEP","GOLD ECONOMY","ELECTRICITY","BUILD A
 const NOTES=["WASD or arrow keys: move toward the glowing marker.","Walk into the highlighted empty room. Press E to claim it.","Walk to the glowing bed. Press E to sleep and lock your door.","Sleep to earn Gold. Use Gold to build and upgrade. Watch the Gold counter increase.","Click a floor pad, choose Dynamo, then Confirm placement. The Dynamo produces Electricity, separately from Gold.","Use the glowing pad near your door. Build a Needle turret in range. A distant turret cannot defend this door; sell and rebuild it, or use Recover.","Click your turret and upgrade it once. Then press R to repair the damaged door.","Your practice Hunter is weak. Watch the door take a hit and your turret fire. Your practice resources and stored items are separate.","You are ready. Claim a room, sleep, build defenses and survive the night."]
 func _init(owner):game=owner
 func _ready():
+ theme=GothicTheme.make_theme(game.ui.default_font)
  mouse_filter=Control.MOUSE_FILTER_IGNORE
  size=Vector2(1280,720)
  show_opening()
+func primary_button(button: Button):
+ for state in ["normal","hover","pressed","disabled","focus"]:button.add_theme_stylebox_override(state,GothicTheme.surface("22292B","B49C6E","primary_"+state))
 func clean_controls():
  for child in get_children():child.queue_free()
 func show_opening():
@@ -36,6 +39,7 @@ func show_title():
  phase="title";elapsed=0;cancel_intro_audio();game.audio_event("intro_whisper")
  clean_controls()
  var b=Button.new();b.text="Continue · Enter / Space";b.position=Vector2(420,605);b.size=Vector2(440,48);b.pressed.connect(skip);add_child(b)
+ primary_button(b)
 func cancel_intro_audio():
  if is_instance_valid(game.audio_system):game.audio_system.stop_events(["intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper"])
 func begin_tutorial():
@@ -125,6 +129,7 @@ func tutorial_tick(delta):
    if m.result=="victory" and r.shots>0 and damage_observed:
     m.result="";m.running=false;game.pending_build="";game.ui.close_context();next_step()
     var b=Button.new();b.text="Save completion & enter menu";b.position=Vector2(420,565);b.size=Vector2(440,48);b.pressed.connect(save_completion);add_child(b)
+    primary_button(b)
 func _process(delta):
  if not active:return
  if phase in ["cinematic","title"]:

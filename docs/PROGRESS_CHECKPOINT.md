@@ -1,3 +1,21 @@
+# Phase 5C-3 — visual identity and game feel (12 November 2026)
+
+IN PROGRESS. Started clean `work` at
+`f2f69f383e562c0ba8b6178bc3ba8d012da31024`, verified against GitHub.
+Recovery tag `pre-phase5c3-f2f69f3`. D captured33 actual baseline PNGs/51checks
+before production edits. B owns production, C independent QA/navigation review,
+D paired render/audio review. Milestone: shared textured materials, menu/world/
+Hunter/combat/scars/tension and positional audio implemented. C186focused/1138UI/
+103audio checks pass;57,056baseline nav checks/90 approaches found no model defect.
+Final paired captures/performance/full regressions remain pending.
+Existing navigation is valid from initial review;
+no AI rewrite justified. Next: reusable gothic-industrial materials/UI, room/
+corridor/Hunter/combat/scar/tension polish, paired720p/1080p inspection, targeted
+and existing regressions, finalreport/commit/verified privateworkpush.
+Native Windows and subjective quality UNVERIFIED. Stop after5C-3, no5D/6.
+
+---
+
 # Phase 5C-2 — haunted world and Level 10 defenses complete (12 November 2026)
 
 Baseline clean `work` at `48ecdae4bc77114108e6f5f2c123bf158c50d6ba`, verified

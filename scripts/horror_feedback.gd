@@ -168,11 +168,8 @@ func render_world(c):
 func render_notifications(c):
  if boss_banner>0:
   var alpha=minf(1,boss_banner/.5)
-  var box=StyleBoxFlat.new()
-  box.bg_color=Color(.065,.025,.1,.94*alpha)
-  box.border_color=Color(.85,.35,.68,alpha)
-  box.set_border_width_all(2)
-  box.set_corner_radius_all(8)
+  var box=GothicTheme.surface("583344","A28EB2").duplicate()
+  box.modulate_color=Color(1,1,1,.94*alpha)
   c.draw_style_box(box,Rect2(285,100,710,75))
   c.draw_string(font,Vector2(317,131),"THE GRIM REAPER HAS AWAKENED",HORIZONTAL_ALIGNMENT_LEFT,-1,25,Color(1,.72,.84,alpha))
   c.draw_string(font,Vector2(319,157),"Watch the scythe. Repair during warnings. Keep your defenses firing.",HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color(.88,.82,.96,alpha))
@@ -185,11 +182,8 @@ func render_notifications(c):
   var alpha=minf(entering,clampf((n.life-n.age)/0.5,0,1))
   var point=Vector2(20-(1-entering)*430,218+offset)
   var color=Color("F45A61") if elimination or n.priority>=4 else [Color("D9B65B"),Color("EF8864"),Color("F45A61"),Color("C293EE")][clampi(n.priority,0,3)]
-  var panel=StyleBoxFlat.new()
-  panel.bg_color=Color(0.08,0.12,0.18,alpha*0.94)
-  panel.border_color=Color(color,alpha)
-  panel.set_border_width_all(1)
-  panel.set_corner_radius_all(6)
+  var panel=GothicTheme.surface("583344" if elimination or n.priority>=4 else "172839",color.to_html(false)).duplicate()
+  panel.modulate_color=Color(1,1,1,alpha*.94)
   var height=56 if elimination else 33
   c.draw_style_box(panel,Rect2(point,Vector2(420,height)))
   c.draw_string(font,point+Vector2(10,22),n.icon,HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color(color,alpha))

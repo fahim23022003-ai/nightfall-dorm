@@ -32,7 +32,7 @@ func inventory():
   var id=ItemCatalog.IDS[i+inventory_page*8]
   var data=ItemCatalog.ITEMS[id]
   var pos=Vector2(90+(i%2)*560,144+int(i/2)*112)
-  ui.box(Rect2(pos,Vector2(540,109)),"203747",data.color)
+  ui.box(Rect2(pos,Vector2(540,109)),"203747",{"Common":"92B39A","Rare":"8FAFB9","Epic":"A28EB2","Legendary":"C5A56A"}[data.rarity])
   art(id,pos+Vector2(10,18),62)
   ui.label_at(data.name+" · ×%d" % int(game.profile.inventory.get(id,0)),pos+Vector2(82,8),19,440,true)
   var description=ui.label_at(data.rarity+" · "+data.description,pos+Vector2(82,34),12,432)
@@ -142,8 +142,9 @@ func create_hotbar():
  var equipped=game.profile.active_match.get("items",[])
  for i in range(equipped.size()):
   var slot=i
-  var b=ui.button("",Vector2(20,494+i*65),func(): game.activate_item(slot),270,58)
+  var b=ui.button("",Vector2(20,494+i*65),func(): game.activate_item(slot),334,58)
   b.add_theme_font_size_override("font_size",14)
+  b.add_theme_stylebox_override("normal",GothicTheme.surface("172839",{"Common":"92B39A","Rare":"8FAFB9","Epic":"A28EB2","Legendary":"C5A56A"}[ItemCatalog.ITEMS[equipped[i]].rarity]))
   b.alignment=HORIZONTAL_ALIGNMENT_LEFT
   b.icon=load("res://assets/items/"+str(equipped[i])+".svg")
   b.expand_icon=true
@@ -186,7 +187,9 @@ func update(delta):
   if ItemCatalog.legendary(id) and id!="guardian_heart" and fx.legendary_used>0 and seconds<=0: special=" · USED"
   if id=="feather": special=" · USED" if fx.feather_used else " · AUTO at25%"
   if id=="coupon" and game.model.player()!=null and game.model.player().coupon_armed: special=" · ARMED40%"
-  hotbar[i].text="[%d] %s ×%d%s" % [i+1,ItemCatalog.ITEMS[id].name,quantity," · %.1fs" % seconds if seconds>0 else " · CD %.1fs" % fx.cooldown if fx.cooldown>0 else ""]+special
+  var state="ACTIVE %.1fs" % seconds if seconds>0 else "COOLDOWN %.1fs" % fx.cooldown if fx.cooldown>0 else "READY"
+  hotbar[i].text="[%d] %s\n%s · ×%d · %s%s" % [i+1,ItemCatalog.ITEMS[id].name,ItemCatalog.ITEMS[id].rarity.to_upper(),quantity,state,special]
+  hotbar[i].self_modulate=Color(1.04,1.08,1.02) if seconds>0 else Color.WHITE
   var reason=fx.can_activate(id,game.model)
   if id=="rescue" and reason.begins_with("Select"):
    if game.model.rooms.any(func(r):return r.owner>0 and r.alive and r.closed and r.door_hp>0 and r.door_hp<r.max_hp()): reason=""

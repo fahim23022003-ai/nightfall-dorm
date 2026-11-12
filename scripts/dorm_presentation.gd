@@ -8,6 +8,8 @@ var prestige_art: Dictionary={}
 var all_rooms=true
 var item_presentation=preload("res://scripts/item_presentation.gd").new()
 var boss_presentation=preload("res://scripts/boss_presentation.gd").new()
+var identity=preload("res://scripts/visual_presence.gd").new()
+var menu_art=preload("res://assets/visual_identity/menu_facade.svg")
 var environment=preload("res://scripts/haunted_environment.gd").new()
 var fear_rooms: Dictionary={}
 var seen_deaths: Dictionary={}
@@ -65,6 +67,7 @@ func _init():
  for name in ["hunter_idle","hunter_move","hunter_attack","hunter_hurt","hunter_death"]: textures[name]=cartoon[name]
 
 func reset():
+ identity.reset()
  fear_rooms.clear();seen_deaths.clear();strike_events.clear();attack_pose=0
  environment.observed_model=null
  previous.clear()
@@ -86,9 +89,11 @@ func reset():
 func update(delta: float, model):
  if model.time<last_model_time: reset()
  last_model_time=model.time
- hunter_clock+=maxf(0,delta-model.items.frozen_delta) if model.running else delta
+ var action_delta=maxf(0,delta-model.items.frozen_delta) if model.running else 0.0
+ hunter_clock+=action_delta
+ identity.update(delta,model)
  clock+=delta
- attack_pose=maxf(0,attack_pose-maxf(0,delta-model.items.frozen_delta))
+ attack_pose=maxf(0,attack_pose-action_delta)
  if not model.tutorial_mode:environment.update(delta,model)
  for index in fear_rooms:fear_rooms[index]+=delta
  var old=previous.duplicate()
@@ -139,7 +144,7 @@ func update(delta: float, model):
  else: death_age=0
 
 func effect(kind: String,point: Vector2,life: float):
- if kind in ["level","prestige"]:visual_events=visual_events.filter(func(e):return not (e.kind in ["level","prestige"] and e.position.distance_to(point)<1))
+ if kind in ["level","prestige","repair"]:visual_events=visual_events.filter(func(e):return not (e.kind in (["level","prestige"] if kind!="repair" else ["repair"]) and e.position.distance_to(point)<1))
  visual_events.append({"kind":kind,"position":point,"life":life,"total":life})
  if visual_events.size()>80: visual_events.pop_front()
 
@@ -170,7 +175,7 @@ func frame(fill: Color, edge: Color, radius: int = 5) -> StyleBoxFlat:
  return style
 
 func render(c):
- c.draw_rect(Rect2(-3000,-3000,6000,6000),Color("182B3A"))
+ c.draw_rect(Rect2(-3000,-3000,6000,6000),Color("11171E"))
  # Architectural surround, soft night haze and deliberate negative space.
  for i in range(8):
   c.draw_circle(Vector2(1050,170),420-i*30,Color(0.22,0.29,0.39,0.025))
@@ -201,9 +206,11 @@ func render(c):
    sprite(c,"lantern",OFFSET+Vector2(x,481),Vector2(23,36))
   text(c,"NORTH   •   NIGHT WATCH",OFFSET+Vector2(363,353),10,Color("b8b5a6"))
   text(c,"SOUTH   •   KEEP THE LIGHTS ALIVE",OFFSET+Vector2(345,479),10,Color("b8b5a6"))
+ render_scars(c)
  for room in m.rooms:
   if m.map_id!="legacy": map_presentation.render_door(c,self,room)
   else: door_scene(c,room)
+  render_door_scars(c,room)
   if room.sleeping:
    if fear_rooms.has(room.index) and m.hunter.target==room.index and m.hunter.state==HunterState.State.BREACH and m.hunter.hp>0:
     var q=OFFSET+room.bed_position()+Vector2(sin(clock*32)*2,-8)
@@ -242,6 +249,8 @@ func render(c):
  for shot in m.projectiles:
   var p=OFFSET+shot.position
   var direction=(m.hunter.position-shot.position).normalized()
+  if not c.profile.settings.reduced_effects:
+   c.draw_line(p-direction*15,p,Color(.45,.65,.72,.16),6)
   if shot.level>=7:
    c.draw_line(p-direction*18,p,Color("F3CB78") if shot.level==10 else Color("B2A3FA"),3)
   if shot.kind=="heavy":
@@ -261,8 +270,9 @@ func render(c):
    c.draw_arc(p,20+(1-fraction)*18,0,TAU,32,Color(0.48,0.89,0.63,fraction),2)
    text(c,"LEVEL 10 · PRESTIGE" if e.kind=="prestige" else "LEVEL UP",p+Vector2(-40,-20-(1-fraction)*15),12,Color(1,.85,.5,fraction) if e.kind=="prestige" else Color(0.7,1,0.75,fraction))
   else:
-   var color=Color("7BE3A1") if e.kind=="repair" else Color("A88CEB")
-   for i in range(6):
+   var color=Color("A8C9AE") if e.kind=="repair" else Color("C8AA79")
+   if e.kind=="impact":c.draw_arc(p,5+(1-fraction)*13,0,TAU,20,Color(color,fraction*.65),1.5)
+   for i in range(3 if c.profile.settings.reduced_effects else 6):
     var v=Vector2.from_angle(i*TAU/6)*(8+(1-fraction)*15)
     c.draw_line(p+v,p+v*1.3,Color(color,fraction),2)
  for room in m.rooms:
@@ -360,12 +370,12 @@ func resident(c, pos: Vector2, index: int, player: bool):
 
 func hunter(c,h):
  if h.transformed:
-  boss_presentation.draw(c,h,hunter_clock,death_age)
+  boss_presentation.draw(c,h,hunter_clock,death_age,identity.heading,c.profile.settings.get("reduced_effects",false))
   return
  var name="hunter_move" if int(hunter_clock*4)%2 else "hunter_idle"
  if h.target_time<0.4 and h.target>=0: name="hunter_target"
  if h.state==HunterState.State.ATTACK and h.cooldown>h.interval-0.32:
-  name="hunter_target" if h.target<3 else "hunter_attack"
+  name="hunter_target" if identity.heading.y<-.2 else "hunter_attack"
  if h.hit_flash>0: name="hunter_hurt"
  var alpha=1.0
  if attack_pose>0:name="hunter_attack"
@@ -375,21 +385,58 @@ func hunter(c,h):
  var p=OFFSET+h.position+Vector2(0,-18+sin(hunter_clock*3)*2)
  c.draw_circle(p+Vector2(0,13),25+min(h.level,6)*2,Color(0.65,0.55,0.92,0.035*alpha))
  sprite(c,"shadow",OFFSET+h.position+Vector2(0,14),Vector2(59,27),Color(1,1,1,alpha))
- c.draw_texture_rect(cartoon[name],Rect2(p-Vector2(33,42),Vector2(66,84)),false,Color(1,1,1,alpha))
+ var facing=-1.0 if identity.heading.x<-.15 else 1.0
+ var lean=clampf(identity.velocity.x/300,-.12,.12)
+ if h.state==HunterState.State.ATTACK:lean=identity.heading.x*.08
+ if h.charged_ready:lean-=identity.heading.x*clampf(1-h.windup_remaining/maxf(.01,RankCatalog.pressure(h.difficulty).windup),0,1)*.12
+ c.draw_set_transform(p,lean,Vector2(facing,1))
+ c.draw_texture_rect(cartoon[name],Rect2(Vector2(-33,-42),Vector2(66,84)),false,Color(.83,.88,.92,alpha))
+ c.draw_set_transform(Vector2.ZERO)
+ if h.state in [HunterState.State.MOVE,HunterState.State.EXIT] and identity.velocity.length()>1 and not c.profile.settings.reduced_effects:
+  var trailing=-identity.heading
+  for i in range(3):c.draw_line(p+trailing*(15+i*7)+Vector2(0,15),p+trailing*(24+i*7)+Vector2(0,17),Color(.4,.35,.6,.18-i*.035),2)
+ # Attack contact and wind-up read separately from hovering locomotion.
+ if h.state==HunterState.State.ATTACK and h.cooldown<h.interval*.22:
+  var claw=p+identity.heading*25
+  for i in range(3):c.draw_line(claw+Vector2(-6+i*6,-6),claw+Vector2(-11+i*6,8),Color(.8,.54,.58,.55),1.5)
 
 func menu_scene(c):
- # A furnished moonlit vignette, not the old abstract grid backdrop.
- var r = Rect2(680,170,440,515)
- c.draw_style_box(frame(Color("263b49"),Color("607D8B"),22),r.grow(17))
- c.draw_texture_rect(textures.floor_wood,r,false,Color("d6c8b5"))
- sprite(c,"window",Vector2(905,186),Vector2(174,112))
- sprite(c,"cabinet",Vector2(1060,345),Vector2(119,153))
- sprite(c,"bed_upgraded",Vector2(826,451),Vector2(196,275))
- sprite(c,"survivor_sleep",Vector2(825,421),Vector2(86,122))
- sprite(c,"plant",Vector2(1069,586),Vector2(93,124))
- sprite(c,"warm_glow",Vector2(702,341),Vector2(330,380))
- sprite(c,"lantern",Vector2(710,360),Vector2(74,138))
- sprite(c,"hunter_idle",Vector2(1132,170+sin(clock)*8),Vector2(135,151),Color(0.8,0.9,1,0.42))
+ c.draw_texture_rect(menu_art,Rect2(0,0,1280,720),false)
+ # Slow, bounded moving haze and distant presence remain behind all interaction.
+ for i in range(4 if not c.profile.settings.reduced_effects else 2):
+  var q=Vector2(700+fmod(clock*10+i*170,650),360+i*65)
+  var points=PackedVector2Array()
+  for n in range(32):points.append(q+Vector2(cos(n*TAU/32)*220,sin(n*TAU/32)*28))
+  c.draw_colored_polygon(points,Color(.55,.61,.61,.025))
+ var q=Vector2(1115+sin(clock*.3)*8,370+sin(clock*1.5)*4)
+ sprite(c,"hunter_idle",q,Vector2(94,120),Color(.5,.58,.65,.43))
+ for side in [-1,1]:c.draw_circle(q+Vector2(side*7,-27),2,Color(.65,.22,.28,.7))
+ c.draw_line(Vector2(72,143),Vector2(391,143),Color("7D6854"),1)
+ for x in [72,391]:c.draw_colored_polygon(PackedVector2Array([Vector2(x,139),Vector2(x+4,143),Vector2(x,147),Vector2(x-4,143)]),Color("B69A6A"))
+ # A separate dark-glass wallet plinth gives the shop its own visual group.
+ c.draw_style_box(GothicTheme.surface("181C22","A08B67"),Rect2(716,531,478,160))
+
+func render_door_scars(c,room):
+ if not identity.scars.any(func(s):return s.kind=="door_damage" and s.room==room.index):return
+ var q=OFFSET+room.door_position()
+ var angle=PI/2 if absf(room.door_normal().x)>.5 else 0.0
+ c.draw_set_transform(q,angle)
+ for i in range(3):c.draw_line(Vector2(-14+i*10,-16),Vector2(-20+i*10,8),Color(.16,.09,.12,.75),1.8)
+ c.draw_set_transform(Vector2.ZERO)
+
+func render_scars(c):
+ for scar in identity.scars:
+  var q=OFFSET+scar.point
+  if scar.kind=="door_damage":continue
+  elif scar.kind=="door_break":
+   for i in range(5):
+    var point=q+Vector2(-24+i*12,12+(i%2)*6)
+    c.draw_line(point,point+Vector2(8,-4),Color("7F6655"),3)
+  elif scar.kind=="scorch":
+   c.draw_circle(q,20,Color(.045,.04,.055,.65))
+   for i in range(5):c.draw_line(q+Vector2.from_angle(i*TAU/5)*8,q+Vector2.from_angle(i*TAU/5+.2)*24,Color(.1,.07,.1,.45),2)
+  elif scar.kind=="elimination":
+   c.draw_arc(q+Vector2(13,17),25,.2,2.8,16,Color(.1,.08,.13,.35),4)
 
 func cartoon_room(c,room: RoomState,owned: bool):
  var r=Rect2(OFFSET+room.bounds().position,room.bounds().size)

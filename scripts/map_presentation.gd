@@ -2,12 +2,15 @@ extends RefCounted
 ## Original procedural environments over shared model geometry and existing art.
 ## Decorations are presentation only; collision remains entirely map-owned.
 const OFFSET=Vector2(145,40)
+var floors={}
+func _init():
+ for theme in ["dorm","hospital","hotel","lab","mansion"]:floors[theme]=load("res://assets/visual_identity/"+theme+"_floor.svg")
 const PALETTES={
- "dorm":[Color("5C5C58"),Color("66665D"),Color("39494E"),Color("B7A078"),Color("D6BC77")],
- "hospital":[Color("9CACAB"),Color("829797"),Color("4B727B"),Color("D0E2DC"),Color("8DCFD5")],
- "hotel":[Color("54465C"),Color("635067"),Color("352F48"),Color("B99E69"),Color("D4AB82")],
- "lab":[Color("354B55"),Color("415A60"),Color("233640"),Color("80ADA8"),Color("75DED1")],
- "mansion":[Color("604D43"),Color("755D47"),Color("3F3540"),Color("B29B70"),Color("E5B76D")]
+ "dorm":[Color("484844"),Color("59574E"),Color("273033"),Color("918166"),Color("D5BE8E")],
+ "hospital":[Color("526060"),Color("68716A"),Color("293B3F"),Color("9CAFA4"),Color("B7D7BF")],
+ "hotel":[Color("49404B"),Color("61565C"),Color("2C2837"),Color("998265"),Color("CBB797")],
+ "lab":[Color("35484C"),Color("4A5B5C"),Color("202F35"),Color("77998D"),Color("A5CCC3")],
+ "mansion":[Color("483E3B"),Color("63534A"),Color("302831"),Color("9E8967"),Color("D7BE8B")]
 }
 func render_architecture(c,p):
  var data=c.model.map_data
@@ -16,7 +19,15 @@ func render_architecture(c,p):
  for corridor in data.corridors:
   var rect=Rect2(OFFSET+corridor.position,corridor.size)
   c.draw_style_box(p.frame(colors[2],colors[3],3),rect.grow(4))
-  c.draw_rect(rect,colors[0].darkened(0.28))
+  c.draw_texture_rect(floors[theme],rect,true,Color("737B7B"))
+  # Metal service rails, rivets and warm wall lights anchor corridor depth.
+  for i in range(0,int(rect.size.x),64):
+   var q=rect.position+Vector2(i+8,8)
+   c.draw_circle(q,2,colors[3].darkened(.1))
+   c.draw_line(q+Vector2(0,12),q+Vector2(7,22),Color(.08,.09,.12,.5),2)
+  var light=rect.position+Vector2(15,15)
+  c.draw_circle(light,20,Color(colors[4],.035+.012*sin(p.clock*1.1+light.x)))
+  c.draw_line(light-Vector2(5,0),light+Vector2(5,0),colors[4],2)
   if theme=="hotel":
    var runner=rect.grow(-12)
    c.draw_rect(runner,Color("674759"))
@@ -33,24 +44,17 @@ func render_architecture(c,p):
    for y in range(0,int(rect.size.y),22): c.draw_line(rect.position+Vector2(0,y),rect.position+Vector2(rect.size.x,y),colors[3].darkened(0.5),1)
  for room in c.model.rooms: render_room(c,p,room,theme,colors)
  var title=OFFSET+data.bounds.position+Vector2(10,-20)
- p.text(c,str(data.title).to_upper(),title,18,colors[4])
+ if c.full_map:p.text(c,str(data.title).to_upper(),title,18,colors[4])
 
 func render_room(c,p,room,theme,colors):
  var r=Rect2(OFFSET+room.bounds().position,room.bounds().size)
  c.draw_style_box(p.frame(Color("14232D"),Color("111E26"),7),r.grow(9))
  c.draw_rect(r,colors[0])
- var step=32 if theme=="hospital" else 24
- for x in range(0,int(r.size.x),step):
-  for y in range(0,int(r.size.y),step):
-   var fill=colors[1] if (x/step+y/step)%2==0 else colors[0]
-   if theme in ["dorm","mansion"]:
-    c.draw_rect(Rect2(r.position+Vector2(x,y),Vector2(minf(step-1,r.size.x-x),minf(step-2,r.size.y-y))),fill)
-   elif theme=="hospital":
-    c.draw_rect(Rect2(r.position+Vector2(x,y),Vector2(minf(step-1,r.size.x-x),minf(step-1,r.size.y-y))),fill)
-   elif theme=="hotel":
-    c.draw_circle(r.position+Vector2(x+5,y+5),1.2,colors[3].darkened(0.35))
-   else:
-    c.draw_rect(Rect2(r.position+Vector2(x,y),Vector2(minf(step,r.size.x-x),minf(step,r.size.y-y))),colors[1],false,0.7)
+ c.draw_texture_rect(floors[theme],r,true,Color.WHITE if room.alive else Color("85818C"))
+ # Quiet seams and water stains replace a uniform checkerboard.
+ for i in range(4):
+  var q=r.position+Vector2(18+i*23,45+i*31)
+  c.draw_arc(q,12+i*3,.3,2.2,12,Color(.08,.09,.11,.15),2)
  # Wall surfaces follow actual room size; entrances are cut from the right edge.
  var normal=room.door_normal()
  var doorway=OFFSET+room.door_position()
@@ -127,6 +131,12 @@ func render_decor(c,p,r,bed,cabinet,theme,colors):
   p.sprite(c,"poster",wall+Vector2(15,9),Vector2(25,31))
   p.sprite(c,"books",cabinet+Vector2(0,-22),Vector2(25,18))
   c.draw_polyline(PackedVector2Array([r.position+Vector2(9,53),r.position+Vector2(17,63),r.position+Vector2(12,76)]),Color("303E42"),2)
+ # Small paper scraps and old pipework live in the furniture strip only.
+ for i in range(3):
+  var scrap=Vector2(r.position.x+12+i*9,r.end.y-42+i*6)
+  c.draw_colored_polygon(PackedVector2Array([scrap,scrap+Vector2(8,-2),scrap+Vector2(10,6),scrap+Vector2(1,8)]),Color("928878").darkened(.2+i*.08))
+ c.draw_polyline(PackedVector2Array([r.position+Vector2(8,75),r.position+Vector2(8,116),r.position+Vector2(20,116)]),Color("78685C"),3)
+ c.draw_line(r.position+Vector2(6,93),r.position+Vector2(11,93),Color("A18C6C"),2)
  var glow=r.position+Vector2(25,36)
  p.sprite(c,"warm_glow",glow,Vector2(145,145),Color(colors[4],0.3))
  p.sprite(c,"lantern",glow,Vector2(17,28),colors[4])
@@ -135,7 +145,9 @@ func render_tiles(c,p,room,owned):
  for tile in range(room.tile_count()):
   var point=OFFSET+room.tile_position(tile)
   if not room.buildings.has(tile):
-   c.draw_style_box(p.frame(Color("657F86") if owned else Color("53666A"),Color("344D59"),6),Rect2(point-Vector2(22,21),Vector2(44,42)))
+   c.draw_style_box(p.frame(Color("333E3E") if owned else Color("303839"),Color("7C8270") if owned else Color("414D4B"),4),Rect2(point-Vector2(22,21),Vector2(44,42)))
+   c.draw_line(point+Vector2(-18,-17),point+Vector2(18,-17),Color("89917C") if owned else Color("4C5854"),1)
+   for side in [-1,1]:c.draw_circle(point+Vector2(side*17,16),1.2,Color("9B947B"))
    c.draw_line(point-Vector2(5,0),point+Vector2(5,0),Color("AFC8C8"),1.5)
    c.draw_line(point-Vector2(0,5),point+Vector2(0,5),Color("AFC8C8"),1.5)
    p.text(c,str(tile+1),point+Vector2(-17,16),8,Color("C3D5D2"))
@@ -147,6 +159,13 @@ func render_tiles(c,p,room,owned):
    var target=c.model.hunter.position-room.tile_position(tile)
    var tilt=clampf(atan2(target.y,absf(target.x)),-0.4,0.4) if building.kind=="turret" else 0.0
    p.sprite(c,name,point-Vector2(0,6),size,Color.WHITE,tilt)
+   if building.kind in ["turret","heavy"] and building.flash>0:
+    var direction=target.normalized()
+    var muzzle=point+direction*21-Vector2(0,5)
+    var side=Vector2(-direction.y,direction.x)
+    var flash=clampf(building.flash/.15,0,1)
+    c.draw_colored_polygon(PackedVector2Array([muzzle-side*4,muzzle+direction*(7+flash*10),muzzle+side*4]),Color("E5C898") if building.kind=="heavy" else Color("A1E0DB"))
+    if not c.profile.settings.reduced_effects:c.draw_circle(muzzle,9,Color(.8,.75,.45,.12*flash))
    for pip in range(building.level): c.draw_circle(point+Vector2(-7+pip*5,24),1.5,Color("7BE3A1"))
   if owned and c.selected_tile==tile and c.ui.context_open:
    c.draw_style_box(p.frame(Color.TRANSPARENT,Color("7BE3A1"),6),Rect2(point-Vector2(26,25),Vector2(52,50)))

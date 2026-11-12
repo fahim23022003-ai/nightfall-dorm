@@ -39,6 +39,10 @@ var _voice_names: Dictionary = {}
 var _last_presentation_event=0
 var _encounter_cooldowns: Dictionary={}
 var music_duck=1.0
+var tension_state="quiet"
+var tension_weight=0.0
+var pacing_gain=1.0
+var ambience_gain=1.0
 var death_rooms: Dictionary={}
 var laughed_rooms: Dictionary={}
 var pending_laughs: Array=[]
@@ -170,10 +174,17 @@ func event(name: String, position: Vector2 = Vector2.INF) -> bool:
    dropped_events += 1
   return false
  _voice_names[free_voice.get_instance_id()] = name
- free_voice.global_position=(position if position.is_finite() else listener_position)+Vector2(145,40)
+ var offset=position-listener_position if position.is_finite() else Vector2.ZERO
+ # Put positional voices around the actual listener's viewport, not the world origin.
+ var canvas_center=get_viewport().get_visible_rect().get_center()
+ var canvas=get_viewport().get_canvas_transform()
+ var canvas_scale=maxf(.1,canvas.get_scale().x)
+ free_voice.max_distance=maxf(2000,1800/canvas_scale)
+ free_voice.global_position=canvas.affine_inverse()*canvas_center+Vector2(clampf(offset.x/2,-500,500),clampf(offset.y/2,-220,220))/canvas_scale
+ free_voice.panning_strength=.65 if name in ["footstep","door_hit","reaper_charge","reaper_scythe","death_scream_1","death_scream_2"] else .35
  free_voice.stream = streams[name]
  free_voice.bus="Ambient" if name.begins_with("weather_") else "Effects"
- free_voice.volume_db = linear_to_db(distance_gain)+(-29.0 if name.begins_with("weather_") else -17.0 if name.begins_with("death_scream") else -20.0)
+ free_voice.volume_db = linear_to_db(distance_gain*(ambience_gain if name.begins_with("weather_") else 1.0))+(-29.0 if name.begins_with("weather_") else -17.0 if name.begins_with("death_scream") else -20.0)
  free_voice.pitch_scale = 1.0
  free_voice.play()
  _cooldowns[name] = _clock+float(EFFECT_COOLDOWNS.get(name,0.08))
@@ -182,6 +193,7 @@ func event(name: String, position: Vector2 = Vector2.INF) -> bool:
  return true
 
 func reset_match(model):
+ tension_state="quiet";tension_weight=0;pacing_gain=1;ambience_gain=1
  setup()
  _observed_model = model
  _last_combat_event = 0
@@ -215,6 +227,7 @@ func update_state(delta: float, model, mode: String):
  _frame_voices = 0
  _mode = mode
  if mode in ["menu","intro"] or (model!=null and model.tutorial_mode):
+  set_tension("quiet",0)
   pending_laughs.clear();pending_deaths.clear()
   stop_events(["hunter_laugh","reaper_laugh","death_scream_1","death_scream_2","weather_thunder","weather_wind","weather_rain"])
  for cue in pending_laughs.duplicate():
@@ -251,7 +264,7 @@ func update_state(delta: float, model, mode: String):
    _play_death_queue()
   if active:
    _observe(model)
-   if model.running and _clock>=_next_eerie:
+   if model.running and tension_state in ["quiet","distant"] and _clock>=_next_eerie:
     event("eerie",listener_position)
     _next_eerie=_clock+17+int(model.time)%9
    if model.hunter.state not in [HunterState.State.DORMANT,HunterState.State.DEAD] and model.hunter.hp > 0:
@@ -279,9 +292,11 @@ func update_state(delta: float, model, mode: String):
  var critical_active=voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"") in CRITICAL_EVENTS)
  music_duck=move_toward(music_duck,.48 if critical_active else 1.0,delta*3.0)
  targets["reaper_ambience"]=proximity*0.55 if boss_active else 0.0
+ pacing_gain=move_toward(pacing_gain,1.0-.35*tension_weight,delta*.7)
+ ambience_gain=move_toward(ambience_gain,1.0-.4*tension_weight,delta*.6)
  for name in loops:
   loop_weights[name] = move_toward(float(loop_weights[name]),float(targets[name]),delta*1.1)
-  var music_gain=(.55 if mode=="match" else .85)*music_duck if name.begins_with("music") else 1.0
+  var music_gain=(.55 if mode=="match" else .85)*music_duck*pacing_gain if name.begins_with("music") else ambience_gain if name in ["ambient_dorm","reaper_ambience"] else 1.0
   loops[name].volume_db = linear_to_db(maxf(0.0001,loop_weights[name]*music_gain))-12.0
  # Outcomes may be supplied explicitly by the host, too; cooldown prevents repeats.
  if model != null and model.result != "" and _previous.get("result","") != model.result:
@@ -366,7 +381,7 @@ func get_diagnostics() -> Dictionary:
  for voice in voices:
   if voice.playing:
    count += 1
- return {"event_counts":event_counts.duplicate(),"music_start_count":music_start_count,"intensity":intensity,"proximity":proximity,"loop_weights":loop_weights.duplicate(),"voices":count,"voice_limit":voices.size(),"frame_voice_limit":FRAME_VOICE_LIMIT,"dropped_events":dropped_events,"mix":mix.duplicate(),"missing_assets":missing_assets.duplicate(),"stream_count":streams.size(),"pending_critical":_pending_critical.size()}
+ return {"pacing_gain":pacing_gain,"ambience_gain":ambience_gain,"tension_state":tension_state,"tension_weight":tension_weight,"music_duck":music_duck,"event_counts":event_counts.duplicate(),"music_start_count":music_start_count,"intensity":intensity,"proximity":proximity,"loop_weights":loop_weights.duplicate(),"voices":count,"voice_limit":voices.size(),"frame_voice_limit":FRAME_VOICE_LIMIT,"dropped_events":dropped_events,"mix":mix.duplicate(),"missing_assets":missing_assets.duplicate(),"stream_count":streams.size(),"pending_critical":_pending_critical.size()}
 
 func shutdown():
  for player in loops.values()+voices:
@@ -457,6 +472,10 @@ func _observe_presentation(model):
     event("sale",position)
     event("refund",position)
 
+func set_tension(state: String,weight: float):
+ tension_state=state
+ tension_weight=clampf(weight,0,1) if is_finite(weight) else 0.0
+
 func update_environment(environment):
  if environment!=environment_ref:
   environment_ref=environment;environment_serial=0
@@ -464,7 +483,7 @@ func update_environment(environment):
   if cue.id<=environment_serial:continue
   environment_serial=cue.id
   var critical_playing=voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"") in CRITICAL_EVENTS)
-  if not critical_playing:event(cue.cue,listener_position)
+  if not critical_playing and tension_state not in ["danger","elimination"]:event(cue.cue,listener_position)
 
 func _play_death_queue():
  if pending_deaths.is_empty():return

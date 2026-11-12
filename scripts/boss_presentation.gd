@@ -5,7 +5,7 @@ var robes=[]
 var weapon=preload("res://assets/boss/scythe.svg")
 func _init():
  for i in range(4): robes.append(load("res://assets/boss/reaper_%d.svg" % i))
-func draw(c,h,clock: float,death_age: float):
+func draw(c,h,clock: float,death_age: float,heading=Vector2.RIGHT,reduced=false):
  var changing=h.state==HunterState.State.TRANSFORM
  var progress=1.0-h.transform_remaining/BossCatalog.TRANSFORM_SECONDS if changing else 1.0
  var dead=h.state==HunterState.State.DEAD
@@ -13,7 +13,7 @@ func draw(c,h,clock: float,death_age: float):
  var p=OFFSET+h.position+Vector2(0,-14+sin(clock*3)*3)
  if dead and death_age>1.8: return
  # Smoke wreath curls with time, expanding through the transformation and death.
- for i in range(18):
+ for i in range(7 if reduced else 18):
   var angle=i*TAU/18+clock*(0.6 if i%2 else -0.45)
   var radius=24+sin(clock*2+i)*8+(30*sin(progress*PI) if changing else 0)+(death_age*60 if dead else 0)
   var q=p+Vector2(cos(angle)*radius,sin(angle)*radius*.55+12-i%3*8)
@@ -28,7 +28,8 @@ func draw(c,h,clock: float,death_age: float):
  var tint=Color(1.7,1.1,1.4,alpha) if h.hit_flash>0 else Color(1,1,1,alpha)
  var fall=Vector2(0,death_age*16) if dead else Vector2.ZERO
  c.draw_texture_rect(robes[int(clock*6)%4],Rect2(p+Vector2(-42,-76)+fall,Vector2(84,110*stretch)),false,tint)
- var angle=-.18+sin(clock*2)*.05
+ var handed=-1.0 if heading.x<-.15 else 1.0
+ var angle=(-.18+sin(clock*2)*.05)*handed
  if h.boss_attack!="":
   var data=BossCatalog.ATTACKS[h.boss_attack]
   var charge=clampf(1-h.windup_remaining/data.windup,0,1)
@@ -42,7 +43,7 @@ func draw(c,h,clock: float,death_age: float):
  elif h.boss_action_age<.4 and h.last_boss_attack in ["scythe","siege"]:
   angle=lerpf(-1.5,1.2,h.boss_action_age/.4)
   c.draw_arc(p,53,-1.9,angle,32,Color(1,.57,.66,(1-h.boss_action_age/.4)*alpha),4)
- c.draw_set_transform(p+Vector2(23,-23)+fall,angle,Vector2.ONE)
+ c.draw_set_transform(p+Vector2(23*handed,-23)+fall,angle,Vector2(handed,1))
  c.draw_texture_rect(weapon,Rect2(-20,-61,62,105),false,tint)
  c.draw_set_transform(Vector2.ZERO)
  # Eyes pulse separately from cloth motion.
