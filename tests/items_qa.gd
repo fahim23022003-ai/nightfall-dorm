@@ -68,9 +68,9 @@ func actor(m,id,quantity=3):
  return {"profile":p,"match_id":int(entry.id)}
 func activate(a,m):return a.profile.activate_item(0,m,a.match_id)
 func run():
- check(ItemCatalog.IDS.size()==8 and ItemCatalog.SLOTS==2,"eight functional items and two types")
+ check(ItemCatalog.IDS.size()==16 and ItemCatalog.SLOTS==2,"sixteen functional items and two types")
  for outcome in ["victory","defeat"]:
-  check(ItemCatalog.TABLES[outcome].size()==8,"table covers exactly implemented items")
+  check(ItemCatalog.TABLES[outcome].size()==16,"table covers exactly implemented items")
   var total=0
   for weight in ItemCatalog.TABLES[outcome]:
    check(weight>0,"positive configured reward weight")
@@ -85,7 +85,7 @@ func run():
    var item=ItemCatalog.roll(outcome,first)
    check(item==ItemCatalog.roll(outcome,second) and item in ItemCatalog.IDS,"repeatable seed yields implemented reward")
    counts[item]=int(counts.get(item,0))+1
-  check(counts.size()==8,"seed sweep reaches all functional items")
+  check(counts.size()==16,"seed sweep reaches all functional items")
  # Inventory and save migration are additive to the existing profile.
  var p=fresh()
  check(p.inventory.is_empty() and p.item_loadout.is_empty(),"fresh inventory and loadout empty")
@@ -188,7 +188,7 @@ func run():
  # Every successful activation persists stock first and rejects repeated input.
  for mode in ["standard","hard","hell"]:
   for stage in StageCatalog.STAGES:
-   for item in ItemCatalog.IDS:
+   for item in ["repair","gold","battery","radar","shield","overdrive","frost","trap"]:
     var m=fixture(mode,stage.id)
     if item=="repair":m.player().door_hp-=m.player().max_hp()*.5
     if item=="overdrive":check(m.player().build("turret",0),"real turret fixture purchase")

@@ -4,7 +4,7 @@ extends RefCounted
 var path="user://profile.json"
 var xp=0
 var equipped: Array=[]
-var settings={"music":0.5,"effects":0.65,"ambient":0.5,"muted":false,"fullscreen":false,"tutorial":true,"battery_saver":false}
+var settings={"music":0.5,"effects":0.65,"ambient":0.5,"muted":false,"fullscreen":false,"tutorial":true,"battery_saver":false,"reduced_effects":false}
 var next_match_id=1
 var active_match: Dictionary={}
 var last_award: Dictionary={}
@@ -47,14 +47,40 @@ func claim_spin(id: int) -> Dictionary:
  var reward=pending_spins.pop_front()
  if not save_profile(): pending_spins.push_front(reward); return {}
  return reward.duplicate(true)
-func activate_item(slot: int,model,id: int) -> bool:
+func bind_items(model,id: int):
+ model.items.profile_ref=weakref(self)
+ model.items.match_id=id
+ if model.player()!=null:
+  var effects=weakref(model.items)
+  var reference=weakref(model)
+  model.player().coupon_payment=func(saved: Vector2):
+   var fx=effects.get_ref()
+   var m=reference.get_ref()
+   var ok=fx!=null and m!=null and fx.consume("coupon",m)
+   if ok:
+    fx.emit_item("coupon",m,saved.x,"used")
+    fx.events[-1].power=saved.y
+   return ok
+func consume_item(item: String,model,id: int) -> bool:
+ if read_only or active_match.is_empty() or int(active_match.id)!=id or item not in active_match.get("items",[]) or int(inventory.get(item,0))<=0: return false
+ var selected=item_loadout.duplicate()
+ inventory[item]-=1
+ if inventory[item]<=0: item_loadout.erase(item)
+ if not save_profile(): inventory[item]+=1; item_loadout=selected; return false
+ return true
+func activate_item(slot: int,model,id: int,target: int=-1) -> bool:
  item_error=""
  if read_only: return _item_failure(model,"Items unavailable: profile is read-only.")
  if active_match.is_empty() or int(active_match.id)!=id or not _valid_item_snapshot(active_match.get("items",[])) or slot<0 or slot>=active_match.get("items",[]).size(): return _item_failure(model,"No item equipped in that slot for this match.")
  var item=str(active_match.items[slot])
  if int(inventory.get(item,0))<=0: return _item_failure(model,"No stock remaining.")
+ bind_items(model,id)
+ model.items.rescue_target=target
  var reason=model.items.can_activate(item,model)
  if reason!="": return _item_failure(model,reason)
+ if item=="coupon":
+  model.items.apply(item,model)
+  return true
  var old_selection=item_loadout.duplicate()
  inventory[item]-=1
  if inventory[item]<=0: item_loadout.erase(item)
@@ -266,7 +292,7 @@ func load_profile() -> bool:
  for key in ["music","effects","ambient"]:
   var value=data.settings.get(key,settings[key])
   if (value is float or value is int) and is_finite(float(value)): settings[key]=clampf(float(value),0,1)
- for key in ["muted","fullscreen","tutorial","battery_saver"]:
+ for key in ["muted","fullscreen","tutorial","battery_saver","reduced_effects"]:
   if data.settings.get(key) is bool: settings[key]=data.settings[key]
  active_match=data.get("active_match",{}).duplicate(true)
  if not _valid_item_snapshot(active_match.get("items",[])):

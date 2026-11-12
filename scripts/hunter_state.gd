@@ -148,6 +148,7 @@ func _damage_door(room, model, amount: float):
  room.door_damage_taken+=old_hp-room.door_hp
  model.record_event("door_damage",target,{"damage":old_hp-room.door_hp,"hp":room.door_hp,"max_hp":room.max_hp()})
  if old_hp>0 and room.door_hp<=0: model.record_event("door_break",target)
+ if room.index==model.player_room: model.items.feather_cross(old_hp,model)
  room.try_rescue()
  room.damage_flash=0.25
  attacks+=1
@@ -203,8 +204,12 @@ func target_score(room: RoomState) -> float:
      var data=Catalog.BUILDINGS[b.kind]
      if other.tile_position(tile).distance_to(approach)<=data.range:
       dps+=data.damage*b.level*other.turret_multiplier/data.interval
+ var smoke_penalty=0.0
+ if _model_ref!=null and _model_ref.get_ref()!=null:
+  var m=_model_ref.get_ref()
+  if room.index==m.player_room and float(m.items.timers.get("smoke",0))>0: smoke_penalty=5000.0
  var caution=1.0+clampf(1.0-hp/maxf(1,max_hp),0,1)*0.5
- return position.distance_to(room.door_position())+room.door_hp*(0.35 if transformed else RankCatalog.pressure(difficulty).door_weight)+minf(Catalog.HUNTER_ESCALATION.dps_penalty_cap,dps*Catalog.HUNTER_ESCALATION.dps_weight*caution)+minf(Catalog.HUNTER_ESCALATION.repair_penalty_cap,repair)
+ return smoke_penalty+position.distance_to(room.door_position())+room.door_hp*(0.35 if transformed else RankCatalog.pressure(difficulty).door_weight)+minf(Catalog.HUNTER_ESCALATION.dps_penalty_cap,dps*Catalog.HUNTER_ESCALATION.dps_weight*caution)+minf(Catalog.HUNTER_ESCALATION.repair_penalty_cap,repair)
 
 func navigate(goal: Vector2,delta: float):
  var previous=position
@@ -271,6 +276,7 @@ func tick(delta: float, match_state):
  damage=(Catalog.HUNTER.damage+growth*profile.damage_growth)*tuning.damage
  interval=maxf(Catalog.HUNTER.min_interval,(Catalog.HUNTER.interval-growth*Catalog.HUNTER.interval_growth)*profile.interval_scale)
  speed=(Catalog.HUNTER.speed+minf(Catalog.HUNTER_ESCALATION.speed_bonus_cap,growth*Catalog.HUNTER_ESCALATION.speed_growth))*tuning.speed*match_state.items.speed_factor(self)
+ if match_state.items.decoy_tick(delta,match_state): return
  cooldown = maxf(-delta,cooldown-delta)
  target_time += delta
  if state == State.EXIT:

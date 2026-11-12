@@ -9,6 +9,7 @@ var spin_ready=false
 var spin_claiming=false
 var seen_event=0
 var observed_model
+var inventory_page=0
 var observed_effects
 func _init(owner): ui=owner; game=ui.game
 func art(id,pos,size=52):
@@ -25,8 +26,8 @@ func inventory():
  ui.box(Rect2(60,35,1160,650))
  ui.label_at("CONSUMABLE INVENTORY",Vector2(90,55),30,1000,true)
  ui.label_at("Choose up to TWO item types. Equip is free; only a valid activation spends one. Permanent perks are separate.",Vector2(92,100),16,1090)
- for i in range(ItemCatalog.IDS.size()):
-  var id=ItemCatalog.IDS[i]
+ for i in range(8):
+  var id=ItemCatalog.IDS[i+inventory_page*8]
   var data=ItemCatalog.ITEMS[id]
   var pos=Vector2(90+(i%2)*560,144+int(i/2)*112)
   ui.box(Rect2(pos,Vector2(540,103)),"203747",data.color)
@@ -40,6 +41,7 @@ func inventory():
    if not game.profile.equip_item(id): game.audio_event("failure")
    inventory(),140,30)
   button.disabled=game.profile.read_only or (id not in game.profile.item_loadout and (int(game.profile.inventory.get(id,0))<=0 or game.profile.item_loadout.size()>=ItemCatalog.SLOTS))
+ ui.button("Advanced items →" if inventory_page==0 else "← Original items",Vector2(900,55),func(): inventory_page=1-inventory_page; inventory(),270,36)
  ui.label_at("Selected: "+", ".join(game.profile.item_loadout)+" · Stock persists; unused items stay yours.",Vector2(92,600),16,1080)
  ui.button("Back to loadout",Vector2(92,638),ui.progression.show_loadout,250,36)
  ui.button("Main menu",Vector2(360,638),game.return_menu,220,36)
@@ -66,14 +68,14 @@ func spin():
  var wheel=preload("res://scripts/item_wheel.gd").new()
  wheel.position=Vector2(155,175); wheel.size=Vector2(420,380)
  ui.panel.add_child(wheel)
- var rarity="Common 60% · Rare 40%" if receipt.result=="victory" else "Common 90% · Rare 10%"
- ui.label_at(rarity+" · no paid spins",Vector2(640,186),21,490,true)
+ var rarity="Common 40% · Rare 40% · Epic 20%" if receipt.result=="victory" else "Common 80% · Rare 16% · Epic 4%"
+ ui.label_at(rarity+" · no paid spins",Vector2(640,186),17,490,true)
  var probability=[]
  for i in range(ItemCatalog.IDS.size()): probability.append("%s %d%%" % [ItemCatalog.ITEMS[ItemCatalog.IDS[i]].name,ItemCatalog.TABLES[receipt.result][i]])
- var odds=ui.label_at("\n".join(probability),Vector2(640,230),16,470)
- odds.size.y=240
+ var odds=ui.label_at("\n".join(probability),Vector2(640,222),12,470)
+ odds.size.y=340
  var index=ItemCatalog.IDS.find(receipt.item)
- var target=TAU*4-index*TAU/8
+ var target=TAU*4-index*TAU/ItemCatalog.IDS.size()
  spin_tween=wheel.create_tween()
  spin_tween.tween_property(wheel,"angle",target,2.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
  spin_tween.tween_callback(func(): reveal(receipt,wheel,target))
@@ -104,6 +106,18 @@ func result_gate() -> bool:
  ui.button("Lucky Spin · reveal earned item",Vector2(390,530),spin,495,44)
  ui.label_at("Reward saved · reveal it before continuing" if game.profile.save_ok else "Reward pending save · retry before closing",Vector2(390,580),15,495)
  return true
+func choose_teammate(slot: int):
+ if game.mode!="match": return
+ var box=ui.box(Rect2(310,190,660,330))
+ ui.label_at("TEAM RESCUE · choose an intact damaged door",Vector2(330,210),21,620)
+ for i in range(game.model.rooms.size()):
+  var r=game.model.rooms[i]
+  var index=i
+  var b=ui.button("%s · %d/%d HP" % [r.survivor_name(),r.door_hp,r.max_hp()],Vector2(330+(i%2)*310,255+int(i/2)*60),func():
+   var ok=game.activate_item(slot,index)
+   ui.show_match(),295,46)
+  b.disabled=r.owner<=0 or not r.alive or not r.closed or r.door_hp<=0 or r.door_hp>=r.max_hp()
+ ui.button("Cancel selection",Vector2(330,445),ui.show_match,300,44)
 func create_hotbar():
  hotbar.clear()
  var equipped=game.profile.active_match.get("items",[])
@@ -127,22 +141,28 @@ func update(delta):
  for e in fx.events:
   if e.id<=seen_event: continue
   seen_event=e.id
-  game.audio_event("item_"+e.item if e.phase=="activate" else "item_explosion" if e.phase=="explode" else "item_end" if e.phase=="end" else "item_shield_hit")
+  if e.phase=="income": continue
+  game.audio_event("item_"+e.item if e.phase in ["activate","used"] else "item_explosion" if e.phase=="explode" else "item_end" if e.phase=="end" else "item_shield_hit")
  if game.mode!="match": return
  var selected=game.profile.active_match.get("items",[])
  for i in range(hotbar.size()):
   if not is_instance_valid(hotbar[i]) or i>=selected.size(): continue
   var id=str(selected[i]); var quantity=int(game.profile.inventory.get(id,0)); var seconds=float(fx.timers.get(id,0))
   if id=="trap" and not fx.trap.is_empty(): seconds=fx.trap.remaining
-  hotbar[i].text="[%d] %s ×%d%s" % [i+1,ItemCatalog.ITEMS[id].name,quantity," · %.1fs" % seconds if seconds>0 else " · CD %.1fs" % fx.cooldown if fx.cooldown>0 else ""]
+  var special=""
+  if id=="feather": special=" · USED" if fx.feather_used else " · AUTO at25%"
+  if id=="coupon" and game.model.player()!=null and game.model.player().coupon_armed: special=" · ARMED40%"
+  hotbar[i].text="[%d] %s ×%d%s" % [i+1,ItemCatalog.ITEMS[id].name,quantity," · %.1fs" % seconds if seconds>0 else " · CD %.1fs" % fx.cooldown if fx.cooldown>0 else ""]+special
   var reason=fx.can_activate(id,game.model)
+  if id=="rescue" and reason.begins_with("Select"):
+   if game.model.rooms.any(func(r):return r.owner>0 and r.alive and r.closed and r.door_hp>0 and r.door_hp<r.max_hp()): reason=""
   hotbar[i].disabled=quantity<=0 or reason!="" or game.profile.read_only
   hotbar[i].tooltip_text=ItemCatalog.ITEMS[id].description+"\n"+(reason if reason!="" else "Ready")
  if is_instance_valid(feedback_label):
   feedback_label.text=""
   if not fx.events.is_empty():
    var last=fx.events[-1]
-   if last.age<1.8: feedback_label.text=ItemCatalog.ITEMS[last.item].name+(" · ended" if last.phase=="end" else " · -%s damage" % str(snappedf(last.value,.01)) if last.phase=="explode" else " · absorbed %s" % str(snappedf(last.value,.01)) if last.phase=="absorb" else " · active" if last.value<=0 else " · +%s" % str(snappedf(last.value,.01)))
+   if last.age<1.8: feedback_label.text=ItemCatalog.ITEMS[last.item].name+(" · ended" if last.phase=="end" else " · -%s damage" % str(snappedf(last.value,.01)) if last.phase=="explode" else " · absorbed %s" % str(snappedf(last.value,.01)) if last.phase=="absorb" else " · saved %.1fG / %.1fE" % [last.value,last.get("power",0)] if last.phase=="used" else " · active" if last.value<=0 else " · +%s" % str(snappedf(last.value,.01)))
  if is_instance_valid(radar_label):
   radar_label.text="RADAR %.0fs · Hunter L%d at %.0f,%.0f
 Target %s · Map / M to locate" % [fx.timers.radar,game.model.hunter.level,game.model.hunter.position.x,game.model.hunter.position.y,"Room %d" % (game.model.hunter.target+1) if game.model.hunter.target>=0 else "seeking"] if float(fx.timers.get("radar",0))>0 else ""

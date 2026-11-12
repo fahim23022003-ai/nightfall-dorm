@@ -33,6 +33,18 @@ var turret_multiplier=1.0
 var rescue_fraction=0.0
 var rescue_used=false
 var repair_factor=1.0
+var temporary_income=1.0
+var item_bonus_income=0.0
+var coupon_armed=false
+var coupon_payment: Callable
+func building_price(g: float,e: float) -> Vector2:
+ return Vector2(g,e)*(ItemCatalog.TUNING.coupon_factor if coupon_armed else 1.0)
+func spend_coupon(saved: Vector2=Vector2.ZERO) -> bool:
+ if not coupon_armed: return true
+ if not coupon_payment.is_valid() or not coupon_payment.call(saved): return reject("Coupon could not be saved; purchase cancelled.")
+ coupon_armed=false
+ presentation_action.emit("coupon_used",{"gold":saved.x,"power":saved.y})
+ return true
 
 func apply_boosts(boosts: Dictionary):
  gold+=boosts.get("gold",0.0)
@@ -105,7 +117,7 @@ func income_rate() -> float:
  for building in buildings.values():
   if building.kind == "economy":
    factor += Catalog.BUILDINGS.economy.rate * building.level
- return Catalog.BED_INCOME[bed_level] * factor * income_multiplier if sleeping and alive else 0.0
+ return Catalog.BED_INCOME[bed_level] * factor * income_multiplier * temporary_income if sleeping and alive else 0.0
 
 func pay(g: float, e: float = 0.0) -> bool:
  if not is_finite(g) or not is_finite(e) or g < 0 or e < 0:
@@ -190,11 +202,13 @@ func build(kind: String, tile: int) -> bool:
  var data = Catalog.BUILDINGS[kind]
  if kind == "heavy" and bed_level < 1:
   return reject("Arc turret requires bed level 2.")
- if not afford(data.gold,data.power):
+ var price=building_price(data.gold,data.power)
+ if not afford(price.x,price.y):
   return false
- if not pay(data.gold,data.power): return reject("Purchase could not be paid.")
+ if not spend_coupon(Vector2(data.gold,data.power)-price): return false
+ if not pay(price.x,price.y): return reject("Purchase could not be paid.")
  buildings[tile] = {"kind":kind,"level":1,"cooldown":0.0,"flash":0.0,
-  "invested_gold":float(data.gold),"invested_power":float(data.power)}
+  "invested_gold":price.x,"invested_power":price.y}
  presentation_action.emit("build",{"kind":kind,"tile":tile})
  return true
 
@@ -207,10 +221,12 @@ func upgrade_building(tile: int) -> bool:
  if b.level >= Catalog.BUILDING_MAX_LEVEL:
   return reject("Building is at maximum level.")
  var data = Catalog.BUILDINGS[b.kind]
- if not afford(data.gold*b.level, (data.power+3)*b.level):
+ var price=building_price(data.gold*b.level,(data.power+3)*b.level)
+ if not afford(price.x,price.y):
   return false
- var paid_gold=float(data.gold*b.level)
- var paid_power=float((data.power+3)*b.level)
+ var paid_gold=price.x
+ var paid_power=price.y
+ if not spend_coupon(Vector2(data.gold*b.level,(data.power+3)*b.level)-price): return false
  if not pay(paid_gold,paid_power): return reject("Upgrade could not be paid.")
  b.invested_gold=b.get("invested_gold",0.0)+paid_gold
  b.invested_power=b.get("invested_power",0.0)+paid_power
@@ -243,7 +259,8 @@ func sell_building(tile: int) -> bool:
 
 func tick_economy(delta: float):
  if sleeping and alive: occupied_seconds+=delta
- var income = income_rate()*delta
+ var income = income_rate()/temporary_income*delta+item_bonus_income
+ item_bonus_income=0
  gold += income
  income_total += income
  damage_flash = maxf(0,damage_flash-delta)

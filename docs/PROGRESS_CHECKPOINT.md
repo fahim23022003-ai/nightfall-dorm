@@ -1,3 +1,43 @@
+# Phase 5B-2A — eight advanced Rare/Epic items (12 November 2026)
+
+Continued clean `work` at `23333de60f5abf783d69666a61703f1ef7428f4d`.
+Recovery tag `pre-phase5b2a-23333de`. Bproductionowner, Cindependent QA, bounded
+Abalance review and Dactualrender/audio inspection complete.
+
+Same inventory/spin/profile now16items: Barricade25%20s, automatic Feather15%
+heal on intact25%downcross once/match, Inferno15s ownedhits refreshone4s12DPS
+burn(Reaper60%), Pillow50%income25s, Coupon40%onebuildingbuy/upg, Decoy8s/Reaper4,
+selectedteammate25%rescue, Smoke6s/Reaper3. Shared20scontrol recovery prevents
+alternating permanent interrupts; valid last targets remain attackable. Coupon
+arms free and spends on valid saved transaction; ledger/refund uses actual.6cost
+in both currencies. Feather precedes FirstAid and ignoresmanualitemcooldown.
+
+Readable foreground aggregate/spaced numbers, particlesbelow, saved ReducedEffects
+3vs10particles/4vs9smokepuffs. Original8items/2slots/perk/rank/stage/save flows
+preserved. +8originalSVG/+8PCM =>76streams. New visible odds Victory40/40/20%
+Common/Rare/Epic; Consolation80/16/4%, original up-to4/1units and saved receipts.
+
+FinalC7,988checks +27activecombo checks pass; originalitems3,195; D84checks,
+20actualcaptured PNGs and15.047sengineaudio0clips. Regular+extended regressions
+allpass in batches: boss6,699;90difficulty29/1Normal18/12Hard3/27Hell unchanged;
+144map79/65;20campaign9/11;12legacy9/3;27timestep,144roommatrix,48rank/perk22/26;
+20ktransactions/175,941invariants;purchase/refund314+421;rank350;profile/startup.
+
+60advanced matched simulations:Normal10/0→10/0,Hard8/2→9/1,Hell2/8→5/5 with
+four units/type in two selected types and earnedcurrency.115manualactivations
+excludes autoFeather. Results are diagnostic policies, not humanwinrates or all
+120pairs. ActualInferno+Overdrive12vs9shots withboundedburn; Frost+control expiry
+then Reaper siege verified. No Legendary/newranks/maps/bosses/Android/5B-3.
+
+Fixed couponaffordabilitypreview, busyframeactivationaudio and oddsheadingoverflow.
+No knownfunctionaltestfailures. NativeWindows/FPS/input and subjective sound/
+polish/humanbalance UNVERIFIED. Full rules/evidence and Windows checklist:
+[PHASE_5B2A_ITEM_REPORT.md](PHASE_5B2A_ITEM_REPORT.md), docs/evidence/advanced-items/.
+Finalresponse records latest committedSHA and actual privatework push verification.
+Stop after Phase5B-2A.
+
+---
+
 # Phase 5B-1 — Lucky Spin and eight consumables (12 November 2026)
 
 Continued clean `work` at `c3bdc49b7c536f11b9601bd4e3c71995954b8d86`.

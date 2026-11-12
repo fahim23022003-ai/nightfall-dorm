@@ -208,13 +208,13 @@ func show_settings():
   var id=key
   slider.value_changed.connect(func(value): game.change_setting(id,value))
   panel.add_child(slider)
- var options=["muted","fullscreen","tutorial"]
- var names=["Mute all audio","Fullscreen","First-night tutorial"]
- for i in range(3):
+ var options=["muted","fullscreen","tutorial","reduced_effects"]
+ var names=["Mute all audio","Fullscreen","First-night tutorial","Reduced visual effects"]
+ for i in range(4):
   var toggle=CheckButton.new()
   toggle.name=options[i]
   toggle.text=names[i]
-  toggle.position=Vector2(370,395+i*54)
+  toggle.position=Vector2(370,385+i*48)
   toggle.button_pressed=game.profile.settings[options[i]]
   var id=options[i]
   toggle.toggled.connect(func(value): game.change_setting(id,value))
@@ -386,7 +386,8 @@ func refresh_context():
   var b=room.buildings[game.selected_tile]
   selected_icon.texture=game.presentation.cartoon[game.presentation.building_key(b.kind,b.level)]
   context_title.text=Catalog.BUILDINGS[b.kind].name.to_upper()
-  selected_details.text=selected_stats(b)+"\n"+action_reason("upgrade")
+  var quote=room.building_price(Catalog.BUILDINGS[b.kind].gold*b.level,(Catalog.BUILDINGS[b.kind].power+3)*b.level)
+  selected_details.text=selected_stats(b)+"\n"+action_reason("upgrade")+(" · COUPON %.1fG/%.1fE" % [quote.x,quote.y] if room.coupon_armed else "")
  elif context_mode=="bed":
   context_title.text="BED LEVEL %d / 5" % (room.bed_level+1)
   bed_details.text="Income %.1f gold/s\nNext: %s\n%s" % [room.income_rate(),"MAX" if room.bed_level>=4 else str(Catalog.BED_INCOME[room.bed_level+1])+" gold/s",action_reason("bed")]
@@ -398,7 +399,8 @@ func refresh_context():
   context_title.text="PLACE "+data.name.to_upper()
   confirmation_icon.texture=game.presentation.textures[game.pending_build]
   var reason=game.placement_reason()
-  confirmation_details.text="%d G / %d E\n%s" % [data.gold,data.power,reason if reason!="" else "Pad locked. Confirm to buy, or click another pad."]
+  var quoted=room.building_price(data.gold,data.power)
+  confirmation_details.text="%.1f G / %.1f E%s\n%s" % [quoted.x,quoted.y," · COUPON40%" if room.coupon_armed else "",reason if reason!="" else "Pad locked. Confirm to buy, or click another pad."]
   confirm_button.disabled=reason!=""
  if game.mobile_mode: game.mobile_ui.context(self)
 
@@ -603,6 +605,9 @@ func action_reason(action: String) -> String:
   if b.level >= Catalog.BUILDING_MAX_LEVEL: return "Maximum building level."
   gold = Catalog.BUILDINGS[b.kind].gold*b.level
   power = (Catalog.BUILDINGS[b.kind].power+3)*b.level
+ if action.begins_with("build:") or action=="upgrade":
+  var quoted=room.building_price(gold,power)
+  gold=quoted.x; power=quoted.y
  if room.gold+0.00001 < gold: return "Need %d more gold." % ceili(gold-room.gold)
  if room.electricity+0.00001 < power: return "Need %d more electricity. Build a Dynamo." % ceili(power-room.electricity)
  return ""

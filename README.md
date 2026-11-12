@@ -17,6 +17,10 @@ An original single-player Godot 4 dormitory survival defense game. Choose a room
 
 Full controls, ZIP/Git instructions and a practical test checklist: [Windows home testing](docs/HOME_TESTING_WINDOWS.md).
 
+## Advanced Rare and Epic items (Phase 5B-2A)
+
+The same inventory now supports16functional items. Eight new choices add door mitigation, automatic rescue, bounded turret burn, bonus bed income, a one-purchase40%building coupon, a navigable decoy, selected-teammate repair and temporary targeting smoke. Coupon refunds use actual discounted gold/electricity paid. Settings includes saved Reduced Effects, and floating item numbers are spaced above particles. Spin odds now include Epic: Victory40/40/20%Common/Rare/Epic, Consolation80/16/4%; quantities remain up to4/1. See [advanced item report](docs/PHASE_5B2A_ITEM_REPORT.md).
+
 ## Consumable items and Lucky Spin (Phase 5B-1)
 
 Eligible results now save a reward before its Lucky Spin animation: Victory up to4of one type, qualifying Consolation1. View exact odds in the spin, skip/reload safely, inspect persistent inventory and choose two consumable types separately from your permanent perk. Keys1/2 or hotbar clicks activate items; only a successful saved activation spends stock. Eight functional items cover repair, Gold, Electricity, radar, shield, overdrive, frost and traps. Meaningful defeat requirements and economy limits are documented in the [item report](docs/PHASE_5B1_ITEM_REPORT.md). Windows manual verification remains pending.

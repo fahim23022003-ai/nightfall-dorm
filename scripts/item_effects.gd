@@ -6,6 +6,38 @@ var trap: Dictionary={}
 var cooldown=0.0
 var events: Array=[]
 var serial=0
+var profile_ref: WeakRef
+var match_id=0
+var feather_used=false
+var rescue_target=-1
+var burn_remaining=0.0
+var pillow_display_total=0.0
+var pillow_display_clock=0.0
+var control_recovery=0.0
+var decoy_point=Vector2.ZERO
+func consume(id: String,model) -> bool:
+ return profile_ref!=null and profile_ref.get_ref()!=null and profile_ref.get_ref().consume_item(id,model,match_id)
+func feather_cross(old_hp: float,model):
+ var r=model.player()
+ if r==null or feather_used or not r.alive or r.door_hp<=0: return
+ if old_hp<=r.max_hp()*ItemCatalog.TUNING.feather_threshold or r.door_hp>r.max_hp()*ItemCatalog.TUNING.feather_threshold: return
+ if not consume("feather",model): return
+ feather_used=true
+ var healed=minf(r.max_hp()-r.door_hp,r.max_hp()*ItemCatalog.TUNING.feather_fraction)
+ r.door_hp+=healed
+ emit_item("feather",model,healed)
+func ignite(model,room_index: int):
+ if room_index==model.player_room and float(timers.get("inferno",0))>0 and model.hunter.hp>0: burn_remaining=ItemCatalog.TUNING.burn_seconds
+func decoy_tick(delta: float,model) -> bool:
+ var h=model.hunter
+ if float(timers.get("decoy",0))<=0 or h.state in [HunterState.State.TRANSFORM,HunterState.State.DEAD,HunterState.State.DORMANT,HunterState.State.BREACH,HunterState.State.EXIT]: return false
+ h.cancel_boss_attack()
+ var previous=h.position
+ h.position=model.step_navigation(h.position,decoy_point,h.speed*delta,"item_decoy") if model.map_id!="legacy" else h.position.move_toward(decoy_point,h.speed*delta)
+ trigger_segment(previous,h.position,model)
+ if h.hp>0: h.state=HunterState.State.MOVE
+ return true
+
 func emit_item(id: String,model,value=0.0,phase="activate"):
  serial+=1
  events.append({"id":serial,"item":id,"phase":phase,"value":value,"age":0.0,"position":model.player().door_position() if model.player()!=null else model.hunter.position})
@@ -17,6 +49,16 @@ func can_activate(id: String,model) -> String:
  if room==null or not room.alive or not room.sleeping: return "Occupy your bed first."
  if cooldown>0: return "Wait for the item cooldown."
  if float(timers.get(id,0))>0: return "That effect is already active."
+ if id=="feather": return "Automatic: equip it; an intact door crossing 25% HP triggers once per match."
+ if id=="coupon" and room.coupon_armed: return "Coupon already armed; complete one building purchase or upgrade."
+ if id=="barricade" and (room.door_hp<=0 or not room.closed): return "An intact closed door is required."
+ if id=="inferno" and not room.buildings.values().any(func(b):return b.kind in ["turret","heavy"]): return "Build a turret first."
+ if id in ["decoy","smoke"] and (control_recovery>0 or model.hunter.state in [HunterState.State.DORMANT,HunterState.State.DEAD,HunterState.State.TRANSFORM,HunterState.State.BREACH,HunterState.State.EXIT]): return "Target disruption unavailable during this state or recovery."
+ if id=="decoy" and not model.navigation_walkable(room.door_approach()): return "No reachable decoy position."
+ if id=="rescue":
+  if rescue_target<0 or rescue_target>=model.rooms.size(): return "Select a valid teammate."
+  var other=model.rooms[rescue_target]
+  if other.owner<=0 or not other.alive or not other.closed or other.door_hp<=0 or other.door_hp>=other.max_hp(): return "Select a living teammate with an intact damaged door."
  if id=="repair" and (room.door_hp<=0 or room.door_hp>=room.max_hp()): return "An intact damaged door is required."
  if id=="shield" and (room.door_hp<=0 or not room.closed): return "Shield requires an intact closed door."
  if id in ["frost","trap","radar"] and (model.hunter.hp<=0 or model.hunter.state==HunterState.State.DORMANT): return "Wait until the Hunter arrives."
@@ -34,6 +76,28 @@ func apply(id: String,model):
  var value=0.0
  cooldown=ItemCatalog.TUNING.global_cooldown
  match id:
+  "barricade": timers[id]=ItemCatalog.TUNING.barricade_seconds
+  "inferno": timers[id]=ItemCatalog.TUNING.inferno_seconds
+  "pillow": timers[id]=ItemCatalog.TUNING.pillow_seconds; room.temporary_income=ItemCatalog.TUNING.pillow_factor
+  "coupon": room.coupon_armed=true; cooldown=0
+  "decoy":
+   timers[id]=ItemCatalog.TUNING.boss_decoy_seconds if model.hunter.transformed else ItemCatalog.TUNING.decoy_seconds
+   control_recovery=ItemCatalog.TUNING.control_refractory
+   decoy_point=room.door_approach()
+  "smoke":
+   timers[id]=ItemCatalog.TUNING.boss_smoke_seconds if model.hunter.transformed else ItemCatalog.TUNING.smoke_seconds
+   control_recovery=ItemCatalog.TUNING.control_refractory
+   if model.hunter.target==model.player_room:
+    var alternative=model.hunter.choose_target(model.rooms,model.player_room)
+    if alternative>=0 and alternative!=model.player_room:
+     model.hunter.cancel_boss_attack()
+     model.hunter.target=alternative
+     model.hunter.state=HunterState.State.MOVE
+  "rescue":
+   var teammate=model.rooms[rescue_target]
+   value=minf(teammate.max_hp()-teammate.door_hp,teammate.max_hp()*ItemCatalog.TUNING.rescue_fraction)
+   teammate.door_hp+=value
+   model.record_event("item_rescue",rescue_target,{"damage":value})
   "repair":
    value=minf(room.max_hp()-room.door_hp,room.max_hp()*ItemCatalog.TUNING.repair_fraction)
    room.door_hp+=value
@@ -45,7 +109,12 @@ func apply(id: String,model):
   "frost": timers[id]=ItemCatalog.TUNING.frost_seconds
   "trap": trap={"position":room.door_approach(),"remaining":ItemCatalog.TUNING.trap_seconds}
  emit_item(id,model,value)
+ if id=="rescue": events[-1].position=model.rooms[rescue_target].door_position()
 func absorb(amount: float,model) -> float:
+ if model.hunter.target==model.player_room and float(timers.get("barricade",0))>0:
+  var prevented=amount*(1-ItemCatalog.TUNING.barricade_factor)
+  amount-=prevented
+  emit_item("barricade",model,prevented,"absorb")
  if shield_hp<=0 or float(timers.get("shield",0))<=0 or model.hunter.target!=model.player_room: return amount
  var absorbed=minf(shield_hp,amount)
  shield_hp-=absorbed
@@ -55,6 +124,24 @@ func absorb(amount: float,model) -> float:
 func speed_factor(hunter) -> float:
  return (ItemCatalog.TUNING.reaper_frost_factor if hunter.transformed else ItemCatalog.TUNING.frost_factor) if float(timers.get("frost",0))>0 else 1.0
 func tick(delta: float,model):
+ if model.player()!=null:
+  var r=model.player()
+  r.item_bonus_income=r.income_rate()/r.temporary_income*(ItemCatalog.TUNING.pillow_factor-1)*minf(delta,float(timers.get("pillow",0)))
+  if r.item_bonus_income>0:
+   pillow_display_total+=r.item_bonus_income
+   pillow_display_clock+=delta
+   if pillow_display_clock>=1 or delta>=float(timers.get("pillow",0)):
+    emit_item("pillow",model,pillow_display_total,"income")
+    pillow_display_total=0; pillow_display_clock=0
+ control_recovery=maxf(0,control_recovery-delta)
+ if burn_remaining>0 and model.hunter.hp>0:
+  var damage=minf(delta,burn_remaining)*ItemCatalog.TUNING.burn_dps*(ItemCatalog.TUNING.burn_boss_factor if model.hunter.transformed else 1.0)
+  var old=model.hunter.hp
+  model.hunter.hurt(damage)
+  var dealt=old-model.hunter.hp
+  if model.player()!=null: model.player().damage_dealt+=dealt
+  model.damage_dealt+=dealt
+  burn_remaining=maxf(0,burn_remaining-delta)
  cooldown=maxf(0,cooldown-delta)
  for event in events: event.age+=delta
  events=events.filter(func(e):return e.age<2.0)
@@ -63,6 +150,7 @@ func tick(delta: float,model):
   if timers[id]<=0:
    timers.erase(id)
    if id=="shield": shield_hp=0
+   if id=="pillow" and model.player()!=null: model.player().temporary_income=1.0
    emit_item(id,model,0,"end")
  if not trap.is_empty():
   trap.remaining-=delta
@@ -85,4 +173,7 @@ func trigger_segment(from: Vector2,to: Vector2,model):
 func clear(model):
  for id in timers.keys(): emit_item(id,model,0,"end")
  if not trap.is_empty(): emit_item("trap",model,0,"end")
- timers.clear(); trap.clear(); shield_hp=0; cooldown=0
+ if model.player()!=null:
+  model.player().temporary_income=1.0
+  model.player().coupon_armed=false
+ timers.clear(); trap.clear(); shield_hp=0; cooldown=0; burn_remaining=0; control_recovery=0; pillow_display_total=0; pillow_display_clock=0

@@ -1,0 +1,8 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: ADVANCED QA: feather requires downward crossing
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/advanced_items_qa.gd:14)
+       [1] run (res://tests/advanced_items_qa.gd:190)
+ADVANCED_QA_CHECKS=7985 FAILURES=1

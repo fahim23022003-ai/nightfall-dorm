@@ -467,6 +467,7 @@ func _advance_projectiles(delta: float):
    shot.position = hunter.position
    var previous_hp = hunter.hp
    hunter.hurt(shot.damage)
+   items.ignite(self,shot.room)
    var applied_damage = previous_hp-hunter.hp
    damage_dealt += applied_damage
    rooms[shot.room].damage_dealt += applied_damage

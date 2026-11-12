@@ -1,0 +1,69 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+ADVANCED_CAPTURE render-01-original-inventory
+ADVANCED_CAPTURE render-02-advanced-inventory
+ADVANCED_CAPTURE render-03-advanced-inventory-small
+ADVANCED_CAPTURE render-04-three-rarity-wheel-odds
+ADVANCED_CAPTURE render-05-epic-reveal
+ADVANCED_CAPTURE render-06-barricade-shield-combination
+ADVANCED_CAPTURE render-07a-reduced-effects-setting
+ADVANCED_CAPTURE render-07-reduced-effects
+ADVANCED_CAPTURE render-08-feather-rescue
+ERROR: ADVANCED RENDER: owned projectile ignites actual burn
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_advanced_items.gd:10)
+       [1] run (res://tools/capture_advanced_items.gd:163)
+       [2] activate (res://tools/capture_advanced_items.gd:98)
+       [3] advance (res://tools/capture_advanced_items.gd:24)
+ADVANCED_CAPTURE render-09-inferno-burn
+ADVANCED_CAPTURE render-10-pillow-income
+ADVANCED_CAPTURE render-11-coupon-price-preview
+ADVANCED_CAPTURE render-12-coupon-purchase
+ADVANCED_CAPTURE render-13-decoy-navigation
+ADVANCED_CAPTURE render-14-shadow-smoke
+ADVANCED_CAPTURE render-15-rescue-selection
+ADVANCED_CAPTURE render-16-team-rescue
+ADVANCED_CAPTURE render-17-team-rescue-small
+ADVANCED_CAPTURE render-18-expiry
+ERROR: ADVANCED RENDER: actual activation cue barricade
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_advanced_items.gd:10)
+       [1] run (res://tools/capture_advanced_items.gd:229)
+       [2] capture (res://tools/capture_advanced_items.gd:31)
+ERROR: ADVANCED RENDER: actual activation cue feather
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_advanced_items.gd:10)
+       [1] run (res://tools/capture_advanced_items.gd:229)
+       [2] capture (res://tools/capture_advanced_items.gd:31)
+ERROR: ADVANCED RENDER: actual activation cue inferno
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_advanced_items.gd:10)
+       [1] run (res://tools/capture_advanced_items.gd:229)
+       [2] capture (res://tools/capture_advanced_items.gd:31)
+ERROR: ADVANCED RENDER: actual activation cue pillow
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_advanced_items.gd:10)
+       [1] run (res://tools/capture_advanced_items.gd:229)
+       [2] capture (res://tools/capture_advanced_items.gd:31)
+ERROR: ADVANCED RENDER: actual activation cue decoy
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_advanced_items.gd:10)
+       [1] run (res://tools/capture_advanced_items.gd:229)
+       [2] capture (res://tools/capture_advanced_items.gd:31)
+ERROR: ADVANCED RENDER: actual activation cue smoke
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_advanced_items.gd:10)
+       [1] run (res://tools/capture_advanced_items.gd:229)
+       [2] capture (res://tools/capture_advanced_items.gd:31)
+ADVANCED_RENDER_AUDIO={"dropped_events":16,"event_counts":{"build":8,"button":4,"danger":1,"door_hit":2,"door_upgrade":5,"electricity":5,"ghost_defeat":1,"hunter_level":3,"hunter_spawn":6,"item_coupon":2,"item_end":1,"item_overdrive":1,"item_rescue":1,"item_reveal":1,"item_shield":1,"item_shield_hit":1,"match_start":7,"menu":1,"purchase":1,"rank":1,"repair":1,"reward":1,"victory":1},"frame_voice_limit":6,"intensity":0.684,"loop_weights":{"ambient_dorm":0.635,"generator_loop":0.0,"music_calm":0.2686,"music_danger":0.5814,"music_menu":0.0,"music_reaper":0.0,"proximity_loop":0.42237,"reaper_ambience":0.0},"missing_assets":[],"mix":{"ambient":0.5,"effects":0.65,"music":0.5,"muted":false},"music_start_count":4,"pending_critical":0,"proximity":0.95,"stream_count":76,"voice_limit":16,"voices":1}
+ADVANCED_RENDER_CHECKS=71 FAILURES=7

@@ -119,14 +119,19 @@ func start_match(difficulty: String="") -> bool:
  last_attacks = 0
  last_shots = 0
  mode = "match"
+ profile.bind_items(model,match_id)
  ui.show_match()
  focus_camera(true)
  queue_redraw()
  return true
 
-func activate_item(slot: int) -> bool:
+func activate_item(slot: int,target: int=-1) -> bool:
  if mode!="match" or in_background: return false
- var ok=profile.activate_item(slot,model,match_id)
+ var selected=profile.active_match.get("items",[])
+ if slot>=0 and slot<selected.size() and selected[slot]=="rescue" and target<0:
+  ui.items_ui.choose_teammate(slot)
+  return false
+ var ok=profile.activate_item(slot,model,match_id,target)
  if not ok:
   audio_event("failure")
   ui.feedback_text=profile.item_error if profile.item_error!="" else "Item unavailable for this match."
