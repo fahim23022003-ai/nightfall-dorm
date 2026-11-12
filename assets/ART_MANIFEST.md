@@ -101,3 +101,17 @@ not claimed as original game art. Heading/title/mode/event use is separate from
 the retained licensed DejaVu Sans body font. No machine-installed font or runtime
 asset download is required. All95 printable English ASCII glyphs were inspected;
 actual typography and icons are independently checked through Godot rendering.
+
+
+## Phase 5D-2 replay identity and cosmetics
+
+`tools/art/generate_replay_art.py` authors nine original SVGs in
+`assets/premium_ui/`: Endless skull, challenge, practice, cosmetics, analysis,
+and four appearance previews. Original runtime drawing in
+`scripts/cosmetic_presentation.gd` adds arched/riveted door ironwork, turret
+spires/halo/casing, bed posts/canopy and the scythe HUD crest. These are shape/
+detail changes layered with existing damage, specialization and prestige art;
+no external imagery, paid asset or runtime download was introduced. Existing
+local OFL/DejaVu font licenses remain unchanged. Cosmetic data has no combat or
+economy multiplier and is read only by presentation. Actual rendered inspection
+and its quality limits are recorded in the Phase5D2 report/evidence.

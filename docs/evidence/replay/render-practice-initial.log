@@ -1,0 +1,38 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+VISUAL_CAPTURE after/practice-paid-level4-720
+VISUAL_CAPTURE after/practice-real-branch-selection-720
+REPLAY_PRACTICE_DAMAGE steps=412 damage=26.4000000000001 hunter_damage=26.4
+VISUAL_CAPTURE after/practice-real-combat-720
+VISUAL_CAPTURE after/practice-pause-reset-720
+VISUAL_CAPTURE after/practice-reaper-720
+ERROR: VISUAL REVIEW: real visible enabled control
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] click (res://tools/capture_replay.gd:10)
+       [2] practice_review (res://tools/capture_replay.gd:114)
+       [3] click (res://tools/capture_replay.gd:11)
+       [4] click (res://tools/capture_visual_overhaul.gd:63)
+VISUAL_CAPTURE after/practice-legendary-limit-720
+VISUAL_CAPTURE after/practice-original-tutorial-preserved-720
+VISUAL_CAPTURE after/practice-paid-level4-1080
+VISUAL_CAPTURE after/practice-real-branch-selection-1080
+REPLAY_PRACTICE_DAMAGE steps=412 damage=26.4000000000001 hunter_damage=26.4
+VISUAL_CAPTURE after/practice-real-combat-1080
+VISUAL_CAPTURE after/practice-pause-reset-1080
+VISUAL_CAPTURE after/practice-reaper-1080
+ERROR: VISUAL REVIEW: real visible enabled control
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] click (res://tools/capture_replay.gd:10)
+       [2] practice_review (res://tools/capture_replay.gd:114)
+       [3] click (res://tools/capture_replay.gd:11)
+       [4] click (res://tools/capture_visual_overhaul.gd:63)
+VISUAL_CAPTURE after/practice-legendary-limit-1080
+VISUAL_CAPTURE after/practice-original-tutorial-preserved-1080
+REPLAY_RENDER_CHECKS=72 FAILURES=2 BASELINE=d16a82da5baccdf5bcbe566635ee949c086c7a32

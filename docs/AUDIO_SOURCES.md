@@ -172,3 +172,28 @@ opening therefore have genuine event-driven anticipation; shop success reuses
 its existing valid cue. No new audio authorship or subjective/nativeWindows
 listening claim is made. Prior critical ducking, positional projection, settings
 and bounded playback budgets remain.
+
+
+## Phase 5D-2 wave continuity and replay modes
+
+No WAV assets were added or replaced. All 105 original streams remain decoded
+and playable through the existing buses and bounded voice pool. Wave transitions
+and rewards reuse genuine encounter/reward cues; actual Reaper, combat, item,
+scream and laughter events retain their established routing.
+
+An independently reproduced defect cut off a playing death scream and pending
+laugh on immediate Continue. The same-run encounter reset now preserves those
+voices and serialized queues while clearing obsolete boss warnings. The actual
+Continue retest passes 14 checks, including preservation and eventual queue drain.
+
+`docs/evidence/replay/render-realtime-mix.wav` captures actual master-bus output
+from real-time Practice Reaper combat and valid Inferno/Overdrive activations.
+The 18.297-second stereo PCM recording peaks at 0.035522 full scale, RMS 0.004455,
+with zero full-scale samples. Runtime diagnostics show 105 streams, no missing
+assets, peak 6/16 voices, no dropped events/backlog, and 24 audio nodes unchanged
+across five mode transitions. This verifies actual nonzero engine playback and
+bounded routing, not subjective loudness or physical speakers.
+
+The separate accelerated earned-run recording is stress evidence and reports
+1,015 low-priority dropped events; it is not evidence of normal real-time sound.
+Native Windows, hardware audio and human listening remain UNVERIFIED.

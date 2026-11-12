@@ -1,0 +1,154 @@
+{
+  "source_commit": "e2a75f8fa820372478d1895e63aa0aba418d24ba",
+  "branch": "work",
+  "accepted_standalone_runs": [
+    {
+      "log": "render-earned-second.log",
+      "checks": 190,
+      "failures": 0,
+      "exit_code": 0
+    },
+    {
+      "log": "render-challenge-metadata-final.log",
+      "checks": 38,
+      "failures": 0,
+      "exit_code": 0
+    },
+    {
+      "log": "render-presentation-final.log",
+      "checks": 77,
+      "failures": 0,
+      "exit_code": 0
+    },
+    {
+      "log": "render-practice-accepted.log",
+      "checks": 78,
+      "failures": 0,
+      "exit_code": 0
+    },
+    {
+      "log": "render-defeat-accepted.log",
+      "checks": 24,
+      "failures": 0,
+      "exit_code": 0
+    },
+    {
+      "log": "render-final-detail-accepted.log",
+      "checks": 70,
+      "failures": 0,
+      "exit_code": 0
+    },
+    {
+      "log": "render-realtime-audio-verified.log",
+      "checks": 12,
+      "failures": 0,
+      "exit_code": 0
+    },
+    {
+      "log": "render-audio-transition-accepted.log",
+      "checks": 14,
+      "failures": 0,
+      "exit_code": 0
+    },
+    {
+      "log": "render-after-accepted.log",
+      "checks": 14,
+      "failures": 0,
+      "exit_code": 0
+    },
+    {
+      "log": "render-early-focused.log",
+      "checks": 14,
+      "failures": 0,
+      "exit_code": 0
+    }
+  ],
+  "accepted_checks": 531,
+  "accepted_failures": 0,
+  "before_checks": 14,
+  "before_failures": 0,
+  "before_source": "d16a82da5baccdf5bcbe566635ee949c086c7a32",
+  "audio_waveform": {
+    "filename": "render-realtime-mix.wav",
+    "rate": 44100,
+    "channels": 2,
+    "sample_bits": 16,
+    "seconds": 18.297324263038547,
+    "peak": 0.0355224609375,
+    "rms": 0.004455128215208075,
+    "fullscale_samples": 0
+  },
+  "audio_engine": {
+    "children_after": 24,
+    "children_before": 24,
+    "diagnostics": {
+      "ambience_gain": 0.74,
+      "dropped_events": 0,
+      "event_counts": {
+        "bed_upgrade": 1,
+        "build": 1,
+        "button": 2,
+        "danger": 1,
+        "door_hit": 1,
+        "door_upgrade": 1,
+        "footstep": 11,
+        "impact": 16,
+        "income": 14,
+        "item_inferno": 1,
+        "item_overdrive": 1,
+        "match_start": 6,
+        "reaper_charge": 1,
+        "reaper_hurt": 16,
+        "reaper_impact": 1,
+        "reaper_scythe": 1,
+        "reaper_transform": 1,
+        "scream_1": 1,
+        "shot_needle": 17,
+        "turret_upgrade": 1,
+        "weather_rain": 1,
+        "weather_wind": 1
+      },
+      "frame_voice_limit": 6,
+      "intensity": 0.809341051240783,
+      "loop_weights": {
+        "ambient_dorm": 0.633827095031738,
+        "generator_loop": 0.0,
+        "music_calm": 0.0,
+        "music_danger": 0.0,
+        "music_menu": 0.0,
+        "music_reaper": 0.85,
+        "proximity_loop": 0.497711325504477,
+        "reaper_ambience": 0.520349674224854
+      },
+      "missing_assets": [],
+      "mix": {
+        "ambient": 0.5,
+        "effects": 0.65,
+        "music": 0.5,
+        "muted": false
+      },
+      "music_duck": 1.0,
+      "music_start_count": 4,
+      "pacing_gain": 0.7725,
+      "pending_critical": 0,
+      "proximity": 0.946090316772461,
+      "stream_count": 105,
+      "tension_state": "siege",
+      "tension_weight": 0.65,
+      "voice_limit": 16,
+      "voices": 1
+    },
+    "fixture": "Actual Practice Reaper, real wall-clock deltas; temporary Inferno + Overdrive activated through visible buttons.",
+    "peak_pending": 0,
+    "peak_voices": 6,
+    "stream_lengths_valid": true
+  },
+  "limitations": [
+    "Native Windows unverified",
+    "Human subjective art/audio/horror quality unverified",
+    "No hardware FPS or fresh performance comparison"
+  ],
+  "source_commit_is_base": false,
+  "production_modifications_from_source_commit": [],
+  "final_production_hashes_match_committed_source": true
+}

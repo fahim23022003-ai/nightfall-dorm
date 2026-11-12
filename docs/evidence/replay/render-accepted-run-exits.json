@@ -1,0 +1,46 @@
+[
+  {
+    "mode": "practice",
+    "exit": 0,
+    "seconds": 26.77,
+    "log": "docs/evidence/replay/render-practice-accepted.log"
+  },
+  {
+    "mode": "defeat",
+    "exit": 0,
+    "seconds": 24.08,
+    "log": "docs/evidence/replay/render-defeat-accepted.log"
+  },
+  {
+    "mode": "final-detail",
+    "exit": 0,
+    "seconds": 22.5,
+    "log": "docs/evidence/replay/render-final-detail-accepted.log"
+  },
+  {
+    "mode": "realtime-audio",
+    "exit": 0,
+    "seconds": 34.34,
+    "log": "docs/evidence/replay/render-realtime-audio-first-mix.log",
+    "intermediate": true
+  },
+  {
+    "mode": "audio-transition",
+    "exit": 0,
+    "seconds": 16.62,
+    "log": "docs/evidence/replay/render-audio-transition-accepted.log"
+  },
+  {
+    "mode": "after",
+    "exit": 0,
+    "seconds": 20.81,
+    "log": "docs/evidence/replay/render-after-accepted.log"
+  },
+  {
+    "mode": "early",
+    "exit": 1,
+    "seconds": 17.12,
+    "log": "docs/evidence/replay/render-early-initial.log",
+    "intermediate": true
+  }
+]

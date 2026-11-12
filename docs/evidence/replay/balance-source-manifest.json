@@ -1,0 +1,39 @@
+{
+ "captured_at_utc": "2026-11-12T10:49:53.400264+00:00",
+ "git_head_at_capture": "1e0fc86fec81cefc4b721b9829dfec1e86ab9da0",
+ "engine": "4.6.3.stable.official.7d41c59c4",
+ "working_tree_hashes": {
+  "scripts/endless_run.gd": "ecc915bad4f329ebace6dfeb77f4d06e24ad0b7e4ce91b57da93b114745d91f3",
+  "scripts/hunter_state.gd": "8b092c860518f4416357b962e9dbf8ed179e5fa1a4a29d4b935599ed5a3560c5",
+  "scripts/match_model.gd": "b066efd8d343e7f59e8592238ff0ae853bf7c6d9807ef3bd22c40e2086380a13",
+  "scripts/replay_progress.gd": "d24609a576ada3aacfa74910f30f94464444cade6ce8e065f1d60574d4ca611a",
+  "scripts/replay_snapshot.gd": "4ffeb69b078d0a112fccf7892d39b5296f9cdeac8ec5c89ae4d4a24065aa8b3b",
+  "scripts/room_state.gd": "296bed93aa040273fa7ee281b4d7eec7e8ef3f319e7e95597432644c81925816",
+  "scripts/strategy_catalog.gd": "fa0230a767699853114381116660afaf377ae5eaa21509ae641546029469eb0c",
+  "scripts/spin_pity.gd": "285f668d50b2e525da8279403472c25dbc324a5622b70031b2545358ee3b1cc1",
+  "scripts/item_catalog.gd": "e0687d5a93205a1e90b40f74f2708b5ec49af0c298ab85aae023c7d88b19f3b4",
+  "scripts/item_effects.gd": "3d536e29661e7b504fb8992a75f13127269caf016c70cf650f6e73cf3200eeea",
+  "scripts/rank_catalog.gd": "b03b428faf61f11ba8530d4973cd7baa65b408dca7aa907882b28a04f369e2c3",
+  "scripts/player_profile.gd": "48e4ecc32f8eb4267f1a68f826404d98a69720b512c380f032996805bd6ed22a",
+  "tests/endless_balance_audit.gd": "e6914ae408609451bf34b2d87204e1b99bcc7e79bb077bd6ec0a9397c1559ed8"
+ },
+ "provenance": {
+  "balance-results.json": "24 current-source matched early/mid cases after within-wave growth cap1",
+  "balance-results-before-growth.json": "24 prior-source matched cases before within-wave cap; retained, superseded",
+  "balance-advanced-results.json": "12 current-source late arms;100/9/.35 candidates, within-wave growth1; includes two130-wave active fortresses",
+  "balance-max-layout-results.json": "One additional current-source Fortified readiness arm; waits for full16-pad4Arc10/4Relay4/4Repair4 before going passive",
+  "balance-earned-results.json": "Two current-source six-wave natural checkpoint export arms, refreshed after growth cap1",
+  "balance-advanced-candidate-results.json": "Prior50/6/.55 candidate; not final balance",
+  "balance-pilot-endgame-results.json": "Prior18.7/2.475/1.25 cap; passive70 plateau evidence",
+  "balance-pilot-initial-results.json": "Initial helper-policy pad rebalancing bug; retained, not optimized balance proof",
+  "pity-balance-results.json": "500000 registered-table draws; production8/40 plus alternatives/base comparisons",
+  "balance-damage-bound-results.json": "Two controlled actual high-wave damage composition fixtures, not natural reachability"
+ },
+ "artifact_sha256": {
+  "balance-earned-initial-heavy-profile.json": "cbe0b64de8081e262ab6f4d3a4f7543a48889ae7ab2353789fed5cd09313fd51",
+  "balance-earned-advanced-profile.json": "16bd36c8ba5db9e516b0c09323c5e2e2d601c618503c31861d3f46ad58e05106",
+  "balance-earned-initial-turret-profile.json": "736a9221e6df6eb39bd4b9667b209ecf7ad0fd9a9558b2e9ff74445d80c94b7c",
+  "balance-earned-heavy-profile.json": "4c9147c61796d51fe5dca4a206da22f9fe1d90b04a5bb5bd0062feb76493cb3c",
+  "balance-earned-turret-profile.json": "2008f84dd1ce7b2c06fec0c1ea1fa33198a678eca1d5d629529f0c3073e72b13"
+ }
+}

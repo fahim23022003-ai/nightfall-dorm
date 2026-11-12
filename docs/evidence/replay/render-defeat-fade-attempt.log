@@ -1,0 +1,28 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+VISUAL_CAPTURE after/defeat-real-campaign-result-720
+ERROR: VISUAL REVIEW: real visible enabled control
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] click (res://tools/capture_replay.gd:10)
+       [2] defeat_review (res://tools/capture_replay.gd:233)
+       [3] capture (res://tools/capture_replay.gd:7)
+       [4] capture (res://tools/capture_visual_overhaul.gd:21)
+VISUAL_CAPTURE after/defeat-real-door-facts-before-reward-stock-720
+VISUAL_CAPTURE after/pity-consolation-unchanged-720
+VISUAL_CAPTURE after/defeat-real-campaign-result-1080
+ERROR: VISUAL REVIEW: real visible enabled control
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] click (res://tools/capture_replay.gd:10)
+       [2] defeat_review (res://tools/capture_replay.gd:233)
+       [3] capture (res://tools/capture_replay.gd:7)
+       [4] capture (res://tools/capture_visual_overhaul.gd:21)
+VISUAL_CAPTURE after/defeat-real-door-facts-before-reward-stock-1080
+VISUAL_CAPTURE after/pity-consolation-unchanged-1080
+REPLAY_RENDER_CHECKS=22 FAILURES=2 BASELINE=d16a82da5baccdf5bcbe566635ee949c086c7a32

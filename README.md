@@ -17,6 +17,27 @@ An original single-player Godot 4 dormitory survival defense game. Choose a room
 
 Full controls, ZIP/Git instructions and a practical test checklist: [Windows home testing](docs/HOME_TESTING_WINDOWS.md).
 
+## Endless and replayability (Phase 5D-2)
+
+Choose **Endless Siege** from the main menu for persistent in-run defenses,
+rotating Hunters and Reaper milestones. Cleared waves pause the economy: prepare,
+choose one aid, continue, suspend at a saved checkpoint or safely end the run.
+Resume restores the last cleared-wave checkpoint; spent permanent items stay
+spent. Starting a campaign requires explicitly ending/forfeiting a suspended run.
+
+**Challenge · Practice · Cosmetics** opens normalized shareable Challenge Codes,
+a dedicated real-combat training room with temporary resources, and four earned
+visual appearances. Code results are local/self-reported; share the code and
+copyable result summary with a friend. Practice never consumes saved inventory
+or awards progression, and supplements the original first-time tutorial.
+
+Campaign Victory spins now guarantee Epic+ by eight dry draws and Legendary by
+40, with actual conditional odds and saved progress shown. A compact optional
+defeat page reports real events and available-item tips. See the
+[Endless and replayability report](docs/PHASE_5D2_ENDLESS_REPLAYABILITY_REPORT.md)
+for natural Needle/Arc10 saves, scaling, reward caps, screenshots, reproducibility
+and Windows verification limits.
+
 ## Hunter strategy and premium UI (Phase 5D-1)
 
 New matches show a stable Hunter archetype in preparation: the heavy Crusher,

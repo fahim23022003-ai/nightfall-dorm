@@ -1,0 +1,32 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+ERROR: VISUAL REVIEW: actual breach produces NPC elimination event
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] transition_audio_review (res://tools/capture_replay.gd:63)
+       [2] click (res://tools/capture_replay.gd:11)
+       [3] click (res://tools/capture_visual_overhaul.gd:63)
+ERROR: VISUAL REVIEW: genuine elimination begins actual death audio
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] transition_audio_review (res://tools/capture_replay.gd:68)
+       [2] click (res://tools/capture_replay.gd:11)
+       [3] click (res://tools/capture_visual_overhaul.gd:63)
+REPLAY_AUDIO_BEFORE_CONTINUE active=0 pending=0 positions=[]
+ERROR: VISUAL REVIEW: real visible enabled control
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] click (res://tools/capture_replay.gd:10)
+       [2] transition_audio_review (res://tools/capture_replay.gd:73)
+       [3] click (res://tools/capture_replay.gd:11)
+       [4] click (res://tools/capture_visual_overhaul.gd:63)
+REPLAY_AUDIO_AFTER_CONTINUE playing=[] pending=0
+REPLAY_AUDIO_CONTINUE_PRESERVED=true
+VISUAL_CAPTURE after/detail-immediate-wave-transition
+REPLAY_RENDER_CHECKS=11 FAILURES=3 BASELINE=d16a82da5baccdf5bcbe566635ee949c086c7a32

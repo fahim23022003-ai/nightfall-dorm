@@ -3,7 +3,8 @@
 IMPLEMENTED and TESTED on Godot 4.6.3 Linux. Clean `work` baseline
 `d16a82da5baccdf5bcbe566635ee949c086c7a32` matched GitHub. Recovery tag
 `pre-phase5d2-d16a82d`; baseline checkpoint `1e0fc86`; tested core `160081b`.
-B owned production, C independent mechanics/save/reward QA, A earned-economy/
+Final result metadata checkpoint `e2a75f8` shows actual difficulty/archetype and
+copyable rules. B owned production, C independent mechanics/save/reward QA, A earned-economy/
 pity balance, D actual rendering/audio. Root integrated full existing regular/
 extended regressions, documentation and recoverable Git checkpoints. `main`
 was not modified. Final delivery SHA and verified push are recorded below once
@@ -22,7 +23,7 @@ contracts, shop, nine-step tutorial and Gothic presentation remain.
 Independent QA passes Endless 28,123 checks/45 actual approaches plus 187 late
 bounds; transactions 284; retirement failure recovery 21; codes 759 including
 six fresh engine workers, plus 749 focused validation; pity 20,180; migration
-190; Practice 3,644 plus 87 item-effect checks; facts/cosmetics 25; UI 1,531.
+190; Practice 3,644 plus 87 item-effect checks; facts/cosmetics 25; UI 1,537.
 Accepted logs are clean. Confirmed state, save, telemetry, feedback and audio
 transition defects were repaired and retested. Historical failed runs remain
 with explanations. All existing regular/extended regressions pass in documented
@@ -38,7 +39,8 @@ repair build clears130. These use prepared finite progression/item budgets and
 scripted decisions, not human acquisition/skill evidence. 500,000 simulated draws
 support pity8/40; Epic guarantee is exactly80%Epic/20%Legendary, Legend100%.
 
-Real Godot screenshots inspect both 720p/1080p: distinctive skull mode button,
+531 accepted render/audio checks pass; 119 after and six unchanged baseline PNGs
+are indexed and hashed. Real Godot screenshots inspect both 720p/1080p: distinctive skull mode button,
 actual first-wave entry, earned advanced/L10/Reaper runs, save/preparation/sales,
 codes/results/clipboard, pity, all cosmetic overlays, defeat facts and Practice.
 The audio review found/fixed immediate Continue truncation: same-run transitions

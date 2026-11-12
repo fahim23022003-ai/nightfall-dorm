@@ -3,7 +3,7 @@
 Source repository: https://github.com/fahim23022003-ai/nightfall-dorm  
 **Branch: `work` — select this branch, not `main`.**
 
-Cloud-verified editor: **Godot 4.6.3 stable, standard Windows x86-64 build**. The project uses GDScript; .NET, Python, export templates and paid assets are not required to play in the editor. Other Godot 4 versions have not been validated for this checkpoint.
+Use **Godot 4.6.3 stable, standard Windows x86-64 build**. Cloud tests used Godot 4.6.3 on Linux; native Windows execution remains unverified. The project uses GDScript; .NET, Python, export templates and paid assets are not required to play in the editor. Other Godot 4 versions have not been validated for this checkpoint.
 
 ## Download and run
 
@@ -24,7 +24,7 @@ cd nightfall-dorm
 git log -1 --oneline
 ```
 
-Use your normal private GitHub sign-in if prompted. The final checkpoint response reports the pushed commit. Source gameplay is preserved from feature commit `f497ca105debe69934fe9fc6c0ed3c8a125d9b44`; later checkpoint commits update documentation/evidence.
+Use your normal private GitHub sign-in if prompted. The final checkpoint response reports the pushed commit. Phase 5D-2 gameplay is committed at `e2a75f8fa820372478d1895e63aa0aba418d24ba`; later commits add verification evidence and delivery documentation.
 
 ## Controls
 
@@ -78,3 +78,31 @@ No new executable export, public release or deployment is part of this checkpoin
 - Close and reopen Godot's game. Verify rank XP, equipped reward, volumes/mute, tutorial and fullscreen preferences survive. Difficulty can be reselected in loadout; Restart uses the previous selected difficulty/loadout.
 - User data normally lives at `%APPDATA%\Godot\app_userdata\Nightfall Dorm\profile.json` on Windows. Godot's **Project → Open User Data Folder** locates it. `.bak` is the previous valid generation; `.corrupt.*` preserves damaged input. Back up the profile before deliberate recovery testing. Tests use isolated `qa-*` profiles and do not touch your normal profile.
 - New Phase2 code has not been run on native Windows in cloud. Baseline Windows success was reported by you; new mixer loudness, long-term rank pace and difficulty still need your own feedback. Do not use an old EXE to test these changes; import the latest `work` source.
+
+
+## Phase 5D-2 checks at home
+
+- Click the purple skull **Endless Siege** button. Choose a map and difficulty,
+  claim/sleep in a room, earn resources and build. After a Hunter falls, verify
+  the wave/choice display and that intermission earns no passive resources.
+- Use **Prepare defenses**, then **Wave** to return. Continue, check retained
+  buildings/resources, and listen for death screams/laughter finishing across
+  the transition. At a later checkpoint use **Save & exit**, then **Resume**.
+  Resume restores the between-wave checkpoint; permanent items already used
+  stay spent. **End run here** closes the run instead of suspending it.
+- Open **Challenge · Practice · Cosmetics**. Generate/copy a code for Adie and
+  paste it into another current copy. Check the normalized rules and copy the
+  self-reported results. Different inputs can produce different outcomes.
+- Enter **Practice**, choose an archetype/Reaper and temporary items, try actual
+  repair/upgrade/item controls, and use Pause → Reset Practice. Check that real
+  inventory and progression did not change. The original tutorial stays separate.
+- Preview/equip earned cosmetic designs and inspect their actual door/turret/bed/
+  badge overlays. Verify cracked doors, branch effects and projectile visibility
+  with Reduced Effects both on and off.
+- After a genuine defeat, open **Why did I lose?** and compare its resource/item/
+  repair facts with the run. On an eligible campaign spin, compare draw-time
+  odds with the separately labelled NEXT Victory pity progress.
+
+Use 1280×720 and 1920×1080, actual keyboard/mouse, headphones/speakers and a
+longer ordinary play session. These human/platform checks are not claimed by
+the cloud automation. See the Phase 5D-2 report for finite strategy-test limits.
