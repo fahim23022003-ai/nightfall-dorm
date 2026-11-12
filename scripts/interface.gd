@@ -163,6 +163,7 @@ func button(text: String,pos: Vector2,callback: Callable,width: float=240,height
  b.pressed.connect(func(): game.audio_event("button"))
  b.pressed.connect(func():
   if game.cancelled_pointer:return
+  if b.get_parent()==context_box and bottom_context!=null and (not context_open or bottom_context.is_transitioning()):return
   if bool(b.get_meta("ignore_double_release",false)):
    b.set_meta("ignore_double_release",false);return
   callback.call())
@@ -329,7 +330,7 @@ func show_match():
  details=label_at("Choose a room",Vector2(35,653),18,205,true)
  room_bed_summary=button("Bed",Vector2(250,649),func(): open_room_panel("bed"),226,44)
  room_door_summary=button("Door",Vector2(490,649),func(): open_room_panel("door"),266,44)
- room_selected_summary=button("Build pads",Vector2(770,649),open_context,263,44)
+ room_selected_summary=button("Build",Vector2(770,649),open_build_menu,263,44)
  quick_repair=button("Repair",Vector2(1047,649),func(): purchase(game.model.repair_door()),196,44)
  quick_repair.tooltip_text="Repair your door quickly [R]"
  # Side inspector lies beyond the focused bedroom's playable bounds.
@@ -425,6 +426,15 @@ func show_match():
   teammates.create()
   bottom_context=BottomContextPanel.new(self);bottom_context.install()
 
+func open_build_menu():
+ if game.watched_room>=0 or game.model.player()==null:return
+ var room=game.model.player()
+ if game.selected_tile<0 or room.buildings.has(game.selected_tile):
+  for tile in range(room.tile_count()):
+   if not room.buildings.has(tile):game.selected_tile=tile;break
+ open_context()
+ if not room.buildings.has(game.selected_tile):context_mode="build";refresh_context()
+
 func open_context():
  if game.watched_room>=0:return
  teammates.expanded=false;teammates.update()
@@ -458,8 +468,9 @@ func close_context():
  game.pending_build=""
  game.placement_on_tile=false
  context_open=false;pending_branch=""
- if is_instance_valid(context_box): context_box.visible=bottom_context!=null
- for node in build_items+upgrade_items+bed_items+door_items+confirmation_items+specialization_items: node.visible=false
+ if bottom_context==null:
+  if is_instance_valid(context_box):context_box.visible=false
+  for node in build_items+upgrade_items+bed_items+door_items+confirmation_items+specialization_items:node.visible=false
  if bottom_context!=null:bottom_context.refresh()
 
 func refresh_context():
@@ -669,7 +680,7 @@ func update_match():
  if room!=null:
   room_bed_summary.text="Bed L%d  ·  %.1f G/s" % [room.bed_level+1,room.income_rate()]
   room_door_summary.text="Door L%d  ·  %d/%d" % [room.door_level+1,roundi(room.door_hp),roundi(room.max_hp())]
-  room_selected_summary.text=Catalog.BUILDINGS[room.buildings[game.selected_tile].kind].name if room.buildings.has(game.selected_tile) else "Build on a floor pad"
+  room_selected_summary.text="Build · choose pad"
   var bed_cost="MAX" if room.bed_level>=9 else "%d Gold / %d Electricity" % [Catalog.BED_COST[room.bed_level],Catalog.BED_POWER[room.bed_level]]
   var door_cost="MAX" if room.door_level>=9 else "%d Gold / %d Electricity" % [Catalog.DOOR_COST[room.door_level],Catalog.DOOR_POWER[room.door_level]]
   bed_button.text="Upgrade Bed — "+bed_cost

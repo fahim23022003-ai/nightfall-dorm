@@ -23,7 +23,7 @@ func create():
   b.add_theme_font_size_override("font_size",14);b.clip_text=true
   rows.append(b)
  watching=ui.label_at("",Vector2(920,137),14,334,true)
- home=ui.button("Return to My Room · Home",Vector2(770,466),game.return_to_my_room,263,34)
+ home=ui.button("My Room · Home",Vector2(188,658),game.return_to_my_room,180,38)
  update()
 func toggle_panel():
  expanded=not expanded

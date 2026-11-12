@@ -462,9 +462,9 @@ func focus_camera(snap: bool=false,delta: float=0.016):
    # Fixed room framing includes heads/scythe above upward-facing doors.
    extent=extent.expand(observed.door_approach()+Vector2(0,-100))
    extent=extent.expand(observed.door_approach()+Vector2(0,40))
-   var available=Vector2(1160,320)
+   var available=Vector2(1160,470)
    zoom=minf(available.x/extent.size.x,available.y/extent.size.y)*zoom_factor
-   var desired=Vector2(640,295)
+   var desired=Vector2(640,385)
    goal=extent.get_center()+MAP_OFFSET+(get_viewport_rect().size/2-desired)/zoom
  if mobile_mode and not full_map:
   var desired=Vector2(470 if ui.context_open and model.player()!=null and model.player().sleeping else 640,340)
