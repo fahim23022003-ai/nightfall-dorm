@@ -1,3 +1,26 @@
+# Gameplay, Hunter and HUD overhaul — IN PROGRESS
+
+Current request extends the existing game; do not restart earlier phases. Started
+clean on `work` at457560d; recovery tag `pre-gameplay-overhaul-457560d`.
+Baseline model133/0, scene30/0 and real render16/0 passed. Recoverable checkpoints:
+7cbc337 compact bottom toolbar/0.26s sliding drawer;02736a1 toolbar draw/input
+layering correction;04ace21 physical Endless expansion and checkpoint migration.
+Expansion developer geometry/transactions/restore19201/0; initial real UI5/0.
+HUD actual independent rendered192/0 plus adversarial economic/input checks pass;
+original fixture failures and corrected affected runs are retained honestly.
+
+Remaining implementation: Physical/Magic routing, Barrier/Plasma/Antenna,
+small elemental counters, additional distinct magical Hunter behaviors and
+original animated visual overhaul, bot integration, independent balance/core QA,
+full regressions and final evidence/docs. Expansion independent save/geometry and
+rendered review is active. No claim of full completion yet. Existing Phase5D4
+history below is preserved. Main/release/Phase6 unchanged; native Windows and
+human usability/art/audio remain unverified. Latest scope and restart notes:
+`/tmp/hunter-hud-overhaul-brief.md`, `/tmp/gameplay-overhaul-root-state.md`.
+See [current report](GAMEPLAY_HUNTER_HUD_OVERHAUL_REPORT.md).
+
+---
+
 # Phase 5D-4 — The Reaper’s Wrath — IMPLEMENTED AND TESTED
 
 Version0.6.2-5d4, Godot4.6.3. All requested workstreams are implemented: unified

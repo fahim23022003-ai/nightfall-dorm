@@ -18,9 +18,9 @@ The current Crusher already represents a physical tank, and the existing Grim Re
 
 ## Final acceptance
 
-IMPLEMENTED: pending source checkpoints.
+IMPLEMENTED: compact bottom toolbar and guarded0.26s sliding contextual drawer, checkpoint `7cbc337`. Existing actions retained; drawer stays open during attacks. Further workstreams remain in progress.
 
-TESTED: baseline only at this stage.
+TESTED: baseline133/0 model,30/0 scene,16/0 rendered. HUD developer115/0 and independent rendered164/0 checks at720p/1080p passed; raw evidence retained. Independent adversarial input gate is finishing.
 
 UNVERIFIED: native Windows execution and subjective human usability/art/audio judgments.
 
