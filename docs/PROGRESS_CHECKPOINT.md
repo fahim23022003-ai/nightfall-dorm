@@ -1,3 +1,18 @@
+# Phase 5C-1 — cinematic, tutorial and RM shop (12 November 2026)
+
+IN PROGRESS. Started clean `work` at
+`d8ac232cf40f785e9454222a1d204d2dfb6e5ab3`, verified against GitHub.
+Recovery tag `pre-phase5c1-d8ac232`. B production, C independent QA, bounded A
+onboarding/economy review and later D actual cinematic/tutorial/audio inspection.
+Milestone: implemented opening/tutorial/RM/shop. Focused QA 148 checks, flow 88
+checks and 42 economy scenarios/57,016 checks pass; audio 263 assertions pass.
+Legacy regressions and final actual rendered verification remain in progress.
+Next: finish legacy regressions, actual rendered
+walkthrough/audio, report, commit and verified private `work` push.
+Native Windows/subjective quality UNVERIFIED. Stop after 5C-1.
+
+---
+
 # Phase 5B-3 — progression rewards complete (12 November 2026)
 
 Baseline `work` was clean at `88a6821aaa3df885f2fcf954eb817b2961ffc6e6`, verified

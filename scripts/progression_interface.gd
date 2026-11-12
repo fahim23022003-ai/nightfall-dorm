@@ -188,6 +188,7 @@ func result_summary():
  text.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  text.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  text.size.y=70
+ ui.label_at("RM Cash +%d · Balance %d" % [report.get("rm_cash",0),game.profile.rm_cash],Vector2(390,510),15,495,true)
  var result_badge=badge(game.profile.rank_index(),Vector2(382,480),42)
  var rankline=ui.label_at("%s → %s · %d → %d XP" % [RankCatalog.NAMES[report.old_rank],game.profile.rank_name(),report.get("old_xp",game.profile.xp),game.profile.xp],Vector2(434,482),15,415)
  if report.promoted:

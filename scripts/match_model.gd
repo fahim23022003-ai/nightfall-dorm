@@ -7,6 +7,7 @@ var rooms: Array = []
 var hunter: HunterState
 var player_room = -1
 var player_position = Vector2(500,410)
+var tutorial_mode=false
 var preparation = Catalog.PREPARATION
 var time = 0.0
 var result = ""

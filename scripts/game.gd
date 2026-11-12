@@ -43,6 +43,9 @@ var mobile_ui
 var touch
 var in_background=false
 var ui_clock=0.0
+var tutorial_active=false
+var onboarding
+var onboarding_layer
 
 func _ready():
  var window = get_window()
@@ -78,6 +81,23 @@ func _ready():
  add_child(camera)
  get_viewport().size_changed.connect(func(): mobile_layout.apply())
  mobile_layout.apply()
+ if not mobile_mode:
+  onboarding_layer=CanvasLayer.new();onboarding_layer.layer=90;add_child(onboarding_layer)
+  onboarding=preload("res://scripts/onboarding.gd").new(self);onboarding_layer.add_child(onboarding)
+
+func start_tutorial(replay=false):
+ if mobile_mode:return false
+ tutorial_active=true
+ model=MatchModel.new();model.tutorial_mode=true;model.reset(17);model.tutorial_mode=true;model.configure_stage("stage_1");model.preparation=10000;model.bot_claimed=5
+ model.feedback.connect(func(value):ui.feedback_text=value;ui.feedback_until=presentation.clock+2)
+ match_id=0;campaign_mode=false;last_progression={};pending_build="";tutorial_enabled=false
+ audio_system.reset_match(model);presentation.reset();horror.reset();mode="match";full_map=false;zoom_factor=1
+ ui.show_match();focus_camera(true);onboarding.begin_tutorial()
+ return true
+
+func enter_game():
+ if not profile.tutorial_completed:start_tutorial();return
+ ui.campaign.show_stages()
 
 func start_stage(id: String, difficulty: String="standard") -> bool:
  if not RankCatalog.DIFFICULTIES.has(difficulty) or not profile.stage_unlocked(id): return false
@@ -87,6 +107,10 @@ func start_stage(id: String, difficulty: String="standard") -> bool:
  return start_match(difficulty)
 
 func start_match(difficulty: String="") -> bool:
+ if not mobile_mode and not profile.tutorial_completed:
+  start_tutorial();return false
+ if tutorial_active:return false
+ model.tutorial_mode=false
  if not profile.pending_spins.is_empty():
   ui.items_ui.spin()
   return false
@@ -127,7 +151,7 @@ func start_match(difficulty: String="") -> bool:
  return true
 
 func activate_item(slot: int,target: int=-1) -> bool:
- if mode!="match" or in_background: return false
+ if mode!="match" or in_background or tutorial_active: return false
  var selected=profile.active_match.get("items",[])
  if slot>=0 and slot<selected.size() and selected[slot]=="rescue" and target<0:
   ui.items_ui.choose_teammate(slot)
@@ -143,6 +167,10 @@ func activate_item(slot: int,target: int=-1) -> bool:
  return ok
 
 func return_menu():
+ if not mobile_mode and not profile.tutorial_completed:
+  if onboarding!=null and onboarding.phase not in ["cinematic","title","tutorial"]:start_tutorial()
+  return
+ tutorial_active=false
  mode = "menu"
  pending_build=""
  if is_instance_valid(touch): touch.reset()
@@ -161,6 +189,7 @@ func toggle_pause():
 
 func _process(delta: float):
  if in_background: return
+ if ui.shop!=null:ui.shop.update()
  level_warning_time=maxf(0,level_warning_time-delta)
  danger_time=maxf(0,danger_time-delta)
  if mode == "match":
@@ -200,7 +229,7 @@ func _process(delta: float):
    ui_clock=0
    ui.update_match()
   horror.update(delta,model)
-  if model.result != "":
+  if model.result != "" and not tutorial_active:
    last_progression=profile.settle_match(match_id,model)
    mode = "result"
    cancel_placement()
@@ -223,7 +252,7 @@ func _process(delta: float):
 var suppress_double_click_release=false
 
 func _input(event):
- if mode!="match" or not event is InputEventMouseButton: return
+ if (mode!="match" and ui.current_screen!="shop") or not event is InputEventMouseButton: return
  if event.button_index!=MOUSE_BUTTON_LEFT: return
  if event.pressed:
   suppress_double_click_release=event.double_click

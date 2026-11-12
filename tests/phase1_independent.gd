@@ -79,8 +79,10 @@ func run():
   r.electricity=0
   check(not r.upgrade_building(0),"unaffordable upgrade rejects "+kind)
   check(r.building_refund(0)==original,"failed upgrade not refundable "+kind)
+ preload("res://tests/onboarding_test_support.gd").prepare()
  game=load("res://scenes/main.tscn").instantiate()
  root.add_child(game)
+ preload("res://tests/onboarding_test_support.gd").skip(game)
  await process_frame
  game.start_match()
  game.set_process(false)

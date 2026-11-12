@@ -45,10 +45,12 @@ func _initialize():
  call_deferred("run")
 
 func run():
+ preload("res://tests/onboarding_test_support.gd").prepare()
  var scene = load("res://scenes/main.tscn")
  check(scene is PackedScene,"main scene loads")
  game = scene.instantiate()
  root.add_child(game)
+ preload("res://tests/onboarding_test_support.gd").skip(game)
  await process_frame
  check(game.mode == "menu", "main menu initial mode")
  check(press("How to Play"),"help button connected")

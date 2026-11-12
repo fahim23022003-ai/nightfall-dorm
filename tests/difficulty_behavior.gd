@@ -161,8 +161,10 @@ func run():
  check(loaded.load_profile() and loaded.selected_difficulty=="hell" and loaded.equipped==["pocket"] and loaded.selected_stage=="stage_1","fresh profile preserves Hell stage and perk")
  check(not profile.equip("marksman"),"locked perk remains blocked")
  OS.set_environment("NIGHTFALL_PROFILE_PATH","user://difficulty-ui-"+str(Time.get_ticks_usec())+".json")
+ preload("res://tests/onboarding_test_support.gd").prepare()
  var game=load("res://scenes/main.tscn").instantiate()
  root.add_child(game)
+ preload("res://tests/onboarding_test_support.gd").skip(game)
  await process_frame
  game.set_process(false)
  game.profile.equip("pocket")

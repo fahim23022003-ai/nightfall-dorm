@@ -8,8 +8,10 @@ func check(ok,label):
 func run():
  var path="user://item-feedback-"+str(Time.get_ticks_usec())+".json"
  OS.set_environment("NIGHTFALL_PROFILE_PATH",path)
+ preload("res://tests/onboarding_test_support.gd").prepare()
  var game=load("res://scenes/main.tscn").instantiate()
  root.add_child(game)
+ preload("res://tests/onboarding_test_support.gd").skip(game)
  await process_frame
  game.set_process(false)
  game.profile.inventory={"repair":1}

@@ -47,6 +47,7 @@ var warning_label: Label
 var default_font=preload("res://assets/fonts/Interface.ttf")
 var display_font=preload("res://assets/fonts/CartoonDisplay.ttf")
 var campaign
+var shop
 var items_ui
 var progression: ProgressionInterface
 var current_screen="menu"
@@ -66,6 +67,7 @@ func _ready():
  theme.default_font_size=18
  panel.theme=theme
  items_ui=preload("res://scripts/item_interface.gd").new(self)
+ shop=preload("res://scripts/cash_shop.gd").new(self)
  progression=ProgressionInterface.new(self)
  campaign=preload("res://scripts/campaign_interface.gd").new(self)
  show_menu()
@@ -165,13 +167,17 @@ func show_menu():
  label_at("SMALL ROOMS. BIG NIGHTMARES.",Vector2(72,108),18,580).modulate=Color("7BE3A1")
  label_at("NIGHTFALL\nDORM",Vector2(66,157),58,600,true)
  label_at("Claim a bed. Build your defenses.\nMake it through the night.",Vector2(72,315),20,590)
- button("Start Game",Vector2(72,405),campaign.show_stages,330,54)
+ button("Start Game",Vector2(72,405),game.enter_game,330,54)
  button("How to Play",Vector2(72,477),show_help,160,46)
  button("Settings",Vector2(242,477),show_settings,160,46)
  button("Exit Game",Vector2(72,539),game.request_quit,330,44)
  progression.menu_summary()
  button("Consumable inventory",Vector2(72,644),items_ui.inventory,330,36)
  if not game.profile.pending_spins.is_empty(): button("Resume Lucky Spin",Vector2(430,644),items_ui.spin,240,36)
+ if not game.mobile_mode:
+  label_at("RM Cash %d" % game.profile.rm_cash,Vector2(735,552),22,420,true)
+  button("Shop · Common supplies",Vector2(735,594),shop.show_shop,440,42)
+  button("Replay Tutorial",Vector2(735,644),func():game.start_tutorial(true),440,36)
  label_at("Original cartoon dormitory survival defense",Vector2(72,690),16,620).modulate=Color("9DB6C2")
 
 func show_help():
@@ -474,6 +480,15 @@ func update_match():
  hunter_detail.modulate=Color("FF7777") if m.difficulty=="hell" else Color("FFD27A")
  hunter_bar.max_value=m.hunter.max_hp
  hunter_bar.value=m.hunter.hp
+ if game.tutorial_active:
+  phase_label.text="PRACTICE\nSTEP %d / 9" % [game.onboarding.step+1]
+  if game.onboarding.step<7:
+   hunter_label.text="SAFE PRACTICE · NO ENEMY YET"
+   hunter_detail.text="Learn at your own pace"
+   hunter_bar.value=0
+  else:
+   hunter_label.text="PRACTICE HUNTER · %d / %d" % [m.hunter.hp,m.hunter.max_hp]
+   hunter_detail.text="Very weak attack · practice only"
  map_button.text="Focus" if game.full_map else "Map"
  guide_box.visible=((game.tutorial_enabled and not game.full_map) or game.presentation.clock<feedback_until) and not (game.model.map_id!="legacy" and context_open)
  guide_label.visible=guide_box.visible

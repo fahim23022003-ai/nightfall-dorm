@@ -90,8 +90,10 @@ func run():
  for suffix in ["",".bak",".tmp"]:
   DirAccess.remove_absolute(profile_path+suffix)
  OS.set_environment("NIGHTFALL_PROFILE_PATH",profile_path)
+ preload("res://tests/onboarding_test_support.gd").prepare()
  game=load("res://scenes/main.tscn").instantiate()
  root.add_child(game)
+ preload("res://tests/onboarding_test_support.gd").skip(game)
  await process_frame
  game.set_process(false)
  check(game.profile.selected_stage=="stage_1","new profile selects stage1")

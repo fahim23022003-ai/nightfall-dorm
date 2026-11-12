@@ -279,6 +279,8 @@ func tick(delta: float, match_state):
  damage=(Catalog.HUNTER.damage+growth*profile.damage_growth)*tuning.damage*lerpf(1.0,ItemCatalog.TUNING.curse_damage,match_state.items.curse_frame_fraction)
  interval=maxf(Catalog.HUNTER.min_interval,(Catalog.HUNTER.interval-growth*Catalog.HUNTER.interval_growth)*profile.interval_scale)*lerpf(1.0,ItemCatalog.TUNING.curse_interval,match_state.items.curse_frame_fraction)
  speed=(Catalog.HUNTER.speed+minf(Catalog.HUNTER_ESCALATION.speed_bonus_cap,growth*Catalog.HUNTER_ESCALATION.speed_growth))*tuning.speed*match_state.items.speed_factor(self)
+ if match_state.tutorial_mode:
+  damage*=0.08;interval=maxf(interval,2.0);speed*=0.65
  if match_state.items.decoy_tick(delta,match_state): return
  cooldown = maxf(-delta,cooldown-delta)
  target_time += delta

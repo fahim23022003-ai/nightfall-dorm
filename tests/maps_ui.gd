@@ -26,8 +26,10 @@ func click(point,double_click=false):
   await process_frame
 func run():
  OS.set_environment("NIGHTFALL_PROFILE_PATH","user://maps-ui-"+str(Time.get_ticks_usec())+".json")
+ preload("res://tests/onboarding_test_support.gd").prepare()
  game=load("res://scenes/main.tscn").instantiate()
  root.add_child(game)
+ preload("res://tests/onboarding_test_support.gd").skip(game)
  await process_frame
  game.set_process(false)
  for stage in StageCatalog.STAGES:

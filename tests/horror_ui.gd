@@ -20,8 +20,10 @@ func click(button):
   await process_frame
 func run():
  OS.set_environment("NIGHTFALL_PROFILE_PATH","user://horror-ui-test.json")
+ preload("res://tests/onboarding_test_support.gd").prepare()
  game=load("res://scenes/main.tscn").instantiate()
  root.add_child(game)
+ preload("res://tests/onboarding_test_support.gd").skip(game)
  await process_frame
  game.start_match()
  game.set_process(false)

@@ -3,8 +3,8 @@ extends Node
 
 const ROOT = "res://assets/audio/"
 const LOOP_NAMES = ["music_menu","music_calm","music_danger","ambient_dorm","proximity_loop","generator_loop","music_reaper","reaper_ambience"]
-const EFFECT_NAMES = ["perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","button","menu","match_start","purchase","failure","rank","reward","victory","defeat","shot_needle","shot_arc","impact","ghost_hurt","ghost_defeat","door_hit","door_crack","door_break","build","turret_upgrade","bed_upgrade","door_upgrade","repair","upgrade","income","electricity","footstep","danger","breach","hunter_spawn","hunter_level","elimination","scream_1","scream_2","scream_3","door_reaction","sale","refund","insufficient_gold","insufficient_power","eerie","reaper_transform","reaper_scythe","reaper_charge","reaper_surge","reaper_impact","reaper_hurt","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_end","item_explosion","item_shield_hit"]
-const CRITICAL_EVENTS = ["perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","victory","defeat","ghost_defeat","rank","reward","hunter_level","breach","door_break","match_start","door_reaction","sale","refund","reaper_transform","reaper_charge","reaper_surge","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_explosion"]
+const EFFECT_NAMES = ["intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","button","menu","match_start","purchase","failure","rank","reward","victory","defeat","shot_needle","shot_arc","impact","ghost_hurt","ghost_defeat","door_hit","door_crack","door_break","build","turret_upgrade","bed_upgrade","door_upgrade","repair","upgrade","income","electricity","footstep","danger","breach","hunter_spawn","hunter_level","elimination","scream_1","scream_2","scream_3","door_reaction","sale","refund","insufficient_gold","insufficient_power","eerie","reaper_transform","reaper_scythe","reaper_charge","reaper_surge","reaper_impact","reaper_hurt","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_end","item_explosion","item_shield_hit"]
+const CRITICAL_EVENTS = ["intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","victory","defeat","ghost_defeat","rank","reward","hunter_level","breach","door_break","match_start","door_reaction","sale","refund","reaper_transform","reaper_charge","reaper_surge","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_explosion"]
 const VOICE_LIMIT = 16
 const FRAME_VOICE_LIMIT = 6
 const EFFECT_COOLDOWNS = {"reaper_transform":4.0,"reaper_scythe":0.7,"reaper_charge":1.8,"reaper_surge":1.5,"reaper_impact":0.5,"reaper_hurt":0.35,"reaper_death":4.0,"scream_1":2.0,"scream_2":2.0,"scream_3":2.0,"door_reaction":2.0,"sale":0.15,"refund":0.15,"insufficient_gold":0.4,"insufficient_power":0.4,"eerie":12.0,"shot_needle":0.07,"shot_arc":0.11,"impact":0.09,"ghost_hurt":0.22,"door_hit":0.12,"door_crack":0.8,"door_break":1.0,"income":1.1,"electricity":1.0,"repair":1.0,"footstep":0.38,"danger":3.0,"build":0.15,"upgrade":0.18,"hunter_level":0.5,"hunter_spawn":1.0,"match_start":0.8,"victory":2.0,"defeat":2.0,"rank":0.8,"reward":0.4,"menu":0.2}
@@ -38,6 +38,7 @@ var _pending_critical: Array = []
 var _voice_names: Dictionary = {}
 var _last_presentation_event=0
 var _encounter_cooldowns: Dictionary={}
+var music_duck=1.0
 var _scream_voice
 var _scream_next=0.0
 var _scream_variation=0
@@ -189,6 +190,11 @@ func reset_match(model):
  for voice in voices:
   voice.stop()
 
+func stop_events(names: Array):
+ _pending_critical=_pending_critical.filter(func(cue):return cue.name not in names)
+ for voice in voices:
+  if _voice_names.get(voice.get_instance_id(),"") in names:voice.stop()
+
 func update_state(delta: float, model, mode: String):
  if suspended: return
  setup()
@@ -250,10 +256,13 @@ func update_state(delta: float, model, mode: String):
  var boss_active=active and model.hunter.transformed and model.hunter.hp>0
  var targets = {"music_menu":1.0 if mode=="menu" else 0.0,"music_calm":(1.0-intensity)*0.85 if music_active and not boss_active else 0.0,"music_danger":intensity*0.85 if music_active and not boss_active else 0.0,"ambient_dorm":0.35+proximity*0.30 if active else 0.15 if mode=="menu" else 0.0,"proximity_loop":proximity*intensity*0.65 if active else 0.0,"generator_loop":generator_weight if active else 0.0}
  targets["music_reaper"]=0.85 if boss_active else 0.0
+ var critical_active=voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"") in CRITICAL_EVENTS)
+ music_duck=move_toward(music_duck,.48 if critical_active else 1.0,delta*3.0)
  targets["reaper_ambience"]=proximity*0.55 if boss_active else 0.0
  for name in loops:
   loop_weights[name] = move_toward(float(loop_weights[name]),float(targets[name]),delta*1.1)
-  loops[name].volume_db = linear_to_db(maxf(0.0001,loop_weights[name]))-12.0
+  var music_gain=(.55 if mode=="match" else .85)*music_duck if name.begins_with("music") else 1.0
+  loops[name].volume_db = linear_to_db(maxf(0.0001,loop_weights[name]*music_gain))-12.0
  # Outcomes may be supplied explicitly by the host, too; cooldown prevents repeats.
  if model != null and model.result != "" and _previous.get("result","") != model.result:
   _pending_critical=_pending_critical.filter(func(cue): return cue.name not in ["reaper_transform","reaper_charge","reaper_surge"])

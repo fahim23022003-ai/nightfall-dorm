@@ -121,8 +121,10 @@ func verify_bots(definition):
  check(not crossed_wall and not jumped,"bot routes respect geometry without teleport "+definition.id)
 func run():
  OS.set_environment("NIGHTFALL_PROFILE_PATH","user://maps-independent-ui-"+str(OS.get_process_id())+".json")
+ preload("res://tests/onboarding_test_support.gd").prepare()
  game=load("res://scenes/main.tscn").instantiate()
  root.add_child(game)
+ preload("res://tests/onboarding_test_support.gd").skip(game)
  await process_frame
  game.set_process(false)
  var ids=[]

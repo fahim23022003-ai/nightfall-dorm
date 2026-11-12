@@ -28,9 +28,11 @@ func run():
  check(invalid.origin==Vector2.ZERO and invalid.scale==1,"invalid offscreen safe area falls back to viewport")
  profile_path="user://qa-mobile-layout-"+str(Time.get_ticks_usec())+".json"
  OS.set_environment("NIGHTFALL_PROFILE_PATH",profile_path)
+ preload("res://tests/onboarding_test_support.gd").prepare()
  game=load("res://scenes/main.tscn").instantiate()
  game.mobile_mode=true
  root.add_child(game)
+ preload("res://tests/onboarding_test_support.gd").skip(game)
  await process_frame
  game.set_process(false)
  for page in ["menu","settings","help","ranks","loadout"]:

@@ -70,8 +70,10 @@ func run():
  for cycle in range(20):
   check(ledger.build("repair",0) and ledger.sell_building(0),"repeat build sell succeeds")
  check(Vector2(ledger.gold,ledger.electricity).is_equal_approx(start-Vector2(400,50)),"repeated cycles lose exactly half the payments")
+ preload("res://tests/onboarding_test_support.gd").prepare()
  game=load("res://scenes/main.tscn").instantiate()
  root.add_child(game)
+ preload("res://tests/onboarding_test_support.gd").skip(game)
  await process_frame
  game.start_match()
  game.model.claim_room(0)

@@ -26,10 +26,32 @@ var reward_counters={"door_damage":0.0,"income":0.0,"construction":0,"legendary"
 var seen_items: Array=[]
 var pending_stage_bonus: Dictionary={}
 var stage_bonus_queue: Array=[]
+var tutorial_completed=false
+var rm_cash=0
+var purchase_serial=0
+func complete_tutorial() -> bool:
+ if read_only:return false
+ var old=tutorial_completed
+ tutorial_completed=true
+ if not save_profile():tutorial_completed=old;return false
+ return true
+func buy_common(id: String,token) -> bool:
+ if purchase_serial>=1000000000000:return false
+ if read_only or not _whole(token,1,1000000000000) or int(token)!=purchase_serial+1 or not OnboardingCatalog.PRICES.has(id):return false
+ if not ItemCatalog.ITEMS.has(id) or ItemCatalog.ITEMS[id].rarity!="Common":return false
+ var price=int(OnboardingCatalog.PRICES[id])
+ if rm_cash<price or int(inventory.get(id,0))>=ItemCatalog.MAX_STOCK:return false
+ var before=_reward_snapshot()
+ rm_cash-=price;purchase_serial=int(token)
+ inventory[id]=int(inventory.get(id,0))+1
+ refresh_achievements()
+ if not save_profile():_restore_rewards(before);return false
+ return true
+
 func perk_slots() -> int: return 2 if rank_index()>=5 else 1
 func _reward_snapshot() -> Dictionary:
  var out={}
- for key in ["xp","equipped","highest_rank","statistics","campaign_records","inventory","item_loadout","pending_spins","active_match","last_award","achievements","reward_counters","seen_items","pending_stage_bonus","stage_bonus_queue","next_match_id"]:
+ for key in ["xp","equipped","highest_rank","statistics","campaign_records","inventory","item_loadout","pending_spins","active_match","last_award","achievements","reward_counters","seen_items","pending_stage_bonus","stage_bonus_queue","next_match_id","tutorial_completed","rm_cash","purchase_serial"]:
   var v=get(key)
   out[key]=v.duplicate(true) if v is Dictionary or v is Array else v
  return out
@@ -107,6 +129,7 @@ func bind_items(model,id: int):
     fx.events[-1].power=saved.y
    return ok
 func consume_item(item: String,model,id: int) -> bool:
+ if model.tutorial_mode:return false
  if read_only or active_match.is_empty() or int(active_match.id)!=id or item not in active_match.get("items",[]) or int(inventory.get(item,0))<=0: return false
  var selected=item_loadout.duplicate()
  var old_active=active_match.duplicate(true)
@@ -118,6 +141,7 @@ func consume_item(item: String,model,id: int) -> bool:
  if not save_profile(): inventory[item]+=1; item_loadout=selected; active_match=old_active; return false
  return true
 func activate_item(slot: int,model,id: int,target: int=-1) -> bool:
+ if model.tutorial_mode:return _item_failure(model,"Tutorial uses practice resources; stored items stay safe.")
  item_error=""
  if read_only: return _item_failure(model,"Items unavailable: profile is read-only.")
  if active_match.is_empty() or int(active_match.id)!=id or not _valid_item_snapshot(active_match.get("items",[])) or slot<0 or slot>=active_match.get("items",[]).size(): return _item_failure(model,"No item equipped in that slot for this match.")
@@ -362,6 +386,17 @@ func load_profile() -> bool:
    stage_bonus_queue=rewards.get("stage_queue",[]).duplicate(true)
    if not pending_stage_bonus.is_empty():pending_stage_bonus.match_id=int(pending_stage_bonus.match_id)
    for offer in stage_bonus_queue:offer.match_id=int(offer.match_id)
+ tutorial_completed=false;rm_cash=0;purchase_serial=0
+ var onboarding=data.get("onboarding",{})
+ if not onboarding is Dictionary:
+  read_only=true;warning="Onboarding/currency data invalid; original progress preserved read-only."
+ elif onboarding.is_empty():
+  tutorial_completed=xp>0 or statistics.matches>0 or not campaign_records.is_empty() or inventory.values().any(func(n):return int(n)>0)
+ else:
+  if onboarding.get("version")!=1 or not onboarding.get("tutorial_completed") is bool or not _whole(onboarding.get("rm_cash"),0,OnboardingCatalog.MAX_CASH) or not _whole(onboarding.get("purchase_serial"),0,1000000000000):
+   read_only=true;warning="Onboarding/currency data damaged or newer; original progress preserved read-only."
+  else:
+   tutorial_completed=onboarding.tutorial_completed;rm_cash=int(onboarding.rm_cash);purchase_serial=int(onboarding.purchase_serial)
  if not read_only:
   var before=_reward_snapshot()
   var earned=refresh_achievements()
@@ -372,7 +407,7 @@ func save_profile() -> bool:
  if read_only:
   save_ok=false
   return false
- var data={"rewards":{"version":1,"achievements":achievements,"counters":reward_counters,"seen_items":seen_items,"stage_bonus":pending_stage_bonus,"stage_queue":stage_bonus_queue},"consumables":{"version":1,"inventory":inventory,"loadout":item_loadout,"pending":pending_spins},"version":RankCatalog.VERSION,"progression":{"version":1,"statistics":statistics,"highest_rank":maxi(highest_rank,rank_index())},"xp":xp,"equipped":equipped,"settings":settings,"next_match_id":next_match_id,"active_match":active_match,"last_award":last_award,"campaign":{"selected_stage":selected_stage,"difficulty":selected_difficulty,"records":campaign_records}}
+ var data={"onboarding":{"version":1,"tutorial_completed":tutorial_completed,"rm_cash":rm_cash,"purchase_serial":purchase_serial},"rewards":{"version":1,"achievements":achievements,"counters":reward_counters,"seen_items":seen_items,"stage_bonus":pending_stage_bonus,"stage_queue":stage_bonus_queue},"consumables":{"version":1,"inventory":inventory,"loadout":item_loadout,"pending":pending_spins},"version":RankCatalog.VERSION,"progression":{"version":1,"statistics":statistics,"highest_rank":maxi(highest_rank,rank_index())},"xp":xp,"equipped":equipped,"settings":settings,"next_match_id":next_match_id,"active_match":active_match,"last_award":last_award,"campaign":{"selected_stage":selected_stage,"difficulty":selected_difficulty,"records":campaign_records}}
  var f=FileAccess.open(path+".tmp",FileAccess.WRITE)
  if f==null: return _write_failed()
  f.store_string(JSON.stringify(data," "))
@@ -440,6 +475,7 @@ func begin_match(difficulty: String="standard",stage_id: String="") -> Dictionar
  return active_match.duplicate(true)
 
 func settle_match(id: int,model) -> Dictionary:
+ if model.tutorial_mode:return {}
  if active_match.is_empty() or id!=int(active_match.id) or model.result not in ["victory","defeat"]: return {}
  if not last_award.is_empty() and id<=int(last_award.match_id): return {}
  if model.difficulty!=active_match.difficulty: return {}
@@ -509,6 +545,10 @@ func settle_match(id: int,model) -> Dictionary:
   reward_counters.construction=mini(1000000000000,int(reward_counters.construction)+room.construction_actions)
   reward_counters.legendary=mini(1000000000000,int(reward_counters.legendary)+int(active_match.get("legendary_used",0)))
   if victorious and model.rooms.all(func(r):return r.alive and r.sleeping and r.owner>=0):reward_counters.perfect_team+=1
+ var cash_award=mini(OnboardingCatalog.cash_reward(model,reward_rng),OnboardingCatalog.MAX_CASH-rm_cash)
+ rm_cash+=cash_award
+ last_award.rm_cash=cash_award
+ last_award.rm_balance=rm_cash
  last_award.achievements=refresh_achievements()
  active_match={}
  if not save_profile():

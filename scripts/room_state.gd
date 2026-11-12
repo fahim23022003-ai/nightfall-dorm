@@ -33,6 +33,7 @@ var turret_multiplier=1.0
 var rescue_fraction=0.0
 var rescue_used=false
 var construction_actions=0
+var repair_actions=0
 var repair_factor=1.0
 var temporary_income=1.0
 var item_bonus_income=0.0
@@ -176,6 +177,7 @@ func repair_door() -> bool:
  if not afford(Catalog.REPAIR_COST):
   return false
  pay(Catalog.REPAIR_COST)
+ repair_actions+=1
  door_hp = minf(max_hp(),door_hp+Catalog.REPAIR_HEAL*repair_factor)
  presentation_action.emit("repair",{})
  return true

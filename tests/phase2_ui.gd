@@ -55,8 +55,10 @@ func _initialize():
  call_deferred("run")
 
 func run():
+ preload("res://tests/onboarding_test_support.gd").prepare()
  game=load("res://scenes/main.tscn").instantiate()
  root.add_child(game)
+ preload("res://tests/onboarding_test_support.gd").skip(game)
  await process_frame
  game.set_process(false)
  check(game.profile.path==save_path,"scene uses isolated QA save override")

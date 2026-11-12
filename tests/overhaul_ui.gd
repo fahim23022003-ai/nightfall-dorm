@@ -37,8 +37,10 @@ func escape():
   await process_frame
 
 func run():
+ preload("res://tests/onboarding_test_support.gd").prepare()
  game=load("res://scenes/main.tscn").instantiate()
  root.add_child(game)
+ preload("res://tests/onboarding_test_support.gd").skip(game)
  await process_frame
  game.sound_volume=0
  game.start_match()
