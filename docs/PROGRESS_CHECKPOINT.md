@@ -1,3 +1,40 @@
+# Phase 1 PC placement correction — anchored preview (12 November 2026, Singapore)
+
+Continued `work` at `4f336c60086c8aee8be1b125fe442d432e2ceaed`.
+The user's PC playtest clarified that the main reported bug was the preview
+following the mouse to Confirm/Cancel, not just duplicate button activation.
+Earlier completion evidence did not cover travel across the map between buttons.
+
+Reproduced before the fix using actual InputEventMouseMotion and button events:
+`tests/redesign_ui.gd` exited 1 with 24 failures out of 209 checks. Hovering
+over map space or another pad changed placement validity/target, preventing
+purchase on the selected pad even after moving to Confirm.
+
+Removed mouse-motion relocation. Selecting a card now anchors the preview to the
+selected pad. Move the pointer freely to Confirm/Cancel; click a different floor
+pad to explicitly change position. Confirmation remains required and single-use.
+Clicking invalid map space still gives a recoverable invalid preview. Existing
+double-click protection, cancellation, refunds and Windows keys are preserved.
+README and confirmation help describe this behavior.
+
+Regression tests cover all six building types: double-click a card, move across
+out-of-room map space and another pad, then Confirm or Cancel. They check the
+locked target, enabled confirmation, exact single charge, no-charge cancellation,
+and retain existing click-to-relocate/invalid-target/recovery tests.
+Focused reproduction after removing mouse-follow passed 209 checks, zero failures.
+Final expanded UI suite: 221 checks, zero failures. Full regular wrapper exited 0,
+including 314 developer/421 independent Phase 1 checks, 12 matches (9 wins/3
+defeats, zero unresolved), save persistence and main startup. No script/parse/error
+signatures. The new Cancel fixture initially needed an explicit UI refresh because
+it freezes automatic processing; corrected fixture passes without weakening checks.
+Native Windows Godot execution remains unverified here; the tests exercise
+the real Linux Godot scene/input pipeline, not a simulated UI implementation.
+
+Continue on `work`; no Phase 2 work or balance changes. The final response records
+the exact commit and independently verified remote SHA after the authorized push.
+
+---
+
 # Phase 1 quality completion — building purchases and refunds (12 November 2026, Singapore)
 
 Continued existing `work` commit `1a9e0068d079b029c486402e13326afb5463ebf9`;

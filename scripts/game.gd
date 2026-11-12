@@ -218,16 +218,8 @@ func _unhandled_input(event):
     placement_on_tile=false
     preview_position=point
     ui.open_confirmation()
- if event is InputEventMouseMotion and pending_build!="" and model.player()!=null:
-  var point=get_global_mouse_position()-MAP_OFFSET
-  placement_on_tile=false
-  preview_position=point
-  for tile in range(6):
-   if Rect2(model.player().tile_position(tile)-Vector2(27,27),Vector2(54,54)).has_point(point):
-    selected_tile=tile
-    placement_on_tile=true
-    preview_position=model.player().tile_position(tile)
-    break
+ # Placement is selected by floor-pad clicks, not mouse motion. Keep the
+ # preview anchored while the pointer travels to Confirm or Cancel.
 
 func begin_placement(kind: String):
  if mode!="match" or in_background or not model._can_purchase(): return

@@ -9,7 +9,7 @@ func check(ok: bool,label: String):
   failures+=1
   push_error("REDESIGN_UI_FAIL: "+label)
 
-func click(point: Vector2):
+func click(point: Vector2,double_click: bool=false):
  var physical=root.get_final_transform()*point
  var motion=InputEventMouseMotion.new()
  motion.position=physical
@@ -22,6 +22,7 @@ func click(point: Vector2):
   event.global_position=physical
   event.button_index=MOUSE_BUTTON_LEFT
   event.pressed=pressed
+  event.double_click=double_click and pressed
   Input.parse_input_event(event)
   await process_frame
 
@@ -97,6 +98,46 @@ func run():
   game.toggle_map()
   game.focus_camera(true)
   check(not game.full_map and is_equal_approx(game.camera.zoom.x,focus_zoom),"focus restores correct room zoom")
+ # Reproduce the PC report: move from a double-clicked card across the map
+ # before reaching Confirm. Mere mouse motion must never relocate the preview.
+ for kind in Catalog.BUILDINGS:
+  fixture(0)
+  var resident=game.model.player()
+  resident.bed_level=4
+  game.ui.update_match()
+  await click(game.world_to_screen(resident.tile_position(2)))
+  var card=game.ui.actions["build:"+kind].get_global_rect().get_center()
+  await click(card)
+  await click(card,true)
+  var locked=resident.tile_position(2)
+  var funds=Vector2(resident.gold,resident.electricity)
+  for point in [resident.center()+Vector2(0,140),resident.tile_position(4)]:
+   var motion=InputEventMouseMotion.new()
+   motion.position=root.get_final_transform()*game.world_to_screen(point)
+   motion.global_position=motion.position
+   Input.parse_input_event(motion)
+   await process_frame
+   game.ui.update_match()
+   check(game.preview_position==locked and game.selected_tile==2 and game.placement_on_tile,"mouse travel leaves preview locked: "+kind)
+   check(game.placement_reason()=="" and not game.ui.confirm_button.disabled,"mouse travel leaves Confirm enabled: "+kind)
+  await click(game.ui.confirm_button.get_global_rect().get_center())
+  check(resident.buildings.has(2) and game.pending_build=="","pointer travel then Confirm purchases chosen pad: "+kind)
+  check(Vector2(resident.gold,resident.electricity)==funds-Vector2(Catalog.BUILDINGS[kind].gold,Catalog.BUILDINGS[kind].power),"pointer travel purchase charges once: "+kind)
+  var paid=Vector2(resident.gold,resident.electricity)
+  await click(game.world_to_screen(resident.tile_position(1)))
+  game.ui.update_match() # fixture freezes processing; refresh newly selected pad actions
+  await click(game.ui.actions["build:"+kind].get_global_rect().get_center())
+  var travel=InputEventMouseMotion.new()
+  travel.position=root.get_final_transform()*game.world_to_screen(resident.center()+Vector2(0,140))
+  travel.global_position=travel.position
+  Input.parse_input_event(travel)
+  await process_frame
+  var cancel_button: Button
+  for item in game.ui.confirmation_items:
+   if item is Button and item!=game.ui.confirm_button: cancel_button=item
+  await click(cancel_button.get_global_rect().get_center())
+  check(game.pending_build=="" and not game.ui.context_open and not resident.buildings.has(1),"mouse travel then Cancel clears placement: "+kind)
+  check(Vector2(resident.gold,resident.electricity)==paid,"mouse travel then Cancel never charges: "+kind)
  fixture(0)
  await process_frame
  var room=game.model.player()

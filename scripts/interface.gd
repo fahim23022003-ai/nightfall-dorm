@@ -369,7 +369,7 @@ func refresh_context():
   context_title.text="PLACE "+data.name.to_upper()
   confirmation_icon.texture=game.presentation.textures[game.pending_build]
   var reason=game.placement_reason()
-  confirmation_details.text="%d G / %d E\n%s" % [data.gold,data.power,reason if reason!="" else "Green pad ready. Confirm to purchase."]
+  confirmation_details.text="%d G / %d E\n%s" % [data.gold,data.power,reason if reason!="" else "Pad locked. Confirm to buy, or click another pad."]
   confirm_button.disabled=reason!=""
  if game.mobile_mode: game.mobile_ui.context(self)
 
