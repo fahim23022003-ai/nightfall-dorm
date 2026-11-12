@@ -137,6 +137,7 @@ func _tactics(delta: float,model) -> bool:
    return true
  return false
 func _begin_transformation(model):
+ arcane.clear_transients()
  _clear_tactics()
  var normal_hp=archetype_factor("hp")
  transformed=true
@@ -217,6 +218,7 @@ func _damage_door(room, model, amount: float,source: String="door strike"):
 
 
 func stop_combat(model):
+ arcane.clear_transients()
  _clear_tactics()
  _transform_exit_room=-1
  cancel_boss_attack()
@@ -569,6 +571,7 @@ func hurt(amount: float):
  if begin_transform:_begin_transformation(model)
  hit_flash = 0.15
  if hp <= 0:
+  arcane.clear_transients()
   state = State.DEAD
   transform_remaining=0
   _transform_exit_room=-1

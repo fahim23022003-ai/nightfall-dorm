@@ -8,10 +8,12 @@ var bolt={}
 var dash=0.0
 var defensive_flash=0.0
 var casts={}
+func clear_transients():
+ action="";target=-1;warning=0.0;bolt.clear();dash=0.0;defensive_flash=0.0
 func tick(h,model,delta: float) -> bool:
  defensive_flash=maxf(0,defensive_flash-delta);dash=maxf(0,dash-delta)
  if h.hp<=0 or h.state in [HunterState.State.DEAD,HunterState.State.TRANSFORM] or model.wrath.active() or h.phase_guard_remaining>0:
-  action="";bolt.clear();warning=0;return false
+  clear_transients();return false
  cooldown=maxf(0,cooldown-delta)
  if not bolt.is_empty():
   var room=model.rooms[int(bolt.target)];var goal=room.door_approach();var before: Vector2=bolt.point
