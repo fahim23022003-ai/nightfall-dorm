@@ -24,7 +24,7 @@ cd nightfall-dorm
 git log -1 --oneline
 ```
 
-Use your normal private GitHub sign-in if prompted. The final checkpoint response reports the pushed commit. Phase 5D-2 gameplay is committed at `e2a75f8fa820372478d1895e63aa0aba418d24ba`; later commits add verification evidence and delivery documentation.
+Use your normal private GitHub sign-in if prompted. The final checkpoint response reports the pushed commit. Current Phase5D-3 repaired runtime is committed at `e60a114e14bb2515cdfb381023902a32770c98dd`; see its report for final delivery/evidence commits.
 
 ## Controls
 
@@ -68,7 +68,7 @@ Prior actual Linux/Xorg/Mesa captures show the menu, six room themes, focused/ma
 
 **Not verified graphically on the target platform:** native Windows/GPU execution, high-DPI and other aspect ratios, audible sound/mixing, and every animation frame/direction. Cloud captures do not prove human enjoyment or target-hardware performance. Touch/controller/mobile play is not implemented. Bots/hunter have limited directional animation, settings/rank/XP/equipped boosts now persist in `user://profile.json`, and small art cleanup remains. The map has six rooms and one hunter; turret targeting is distance-based without wall occlusion. Exact Haunted Dorm parity remains unverified because requested sources were inaccessible. See [KNOWN_LIMITATIONS.md](KNOWN_LIMITATIONS.md).
 
-Phase 6 adds a current private Windows export and checklist; see [WINDOWS_PLAYTEST_GUIDE.md](WINDOWS_PLAYTEST_GUIDE.md) and the Phase 6 report. Older export records remain historical. Native Windows testing is still unverified; no public release or deployment is performed.
+The current Phase5D-3 build adds updated recorded music, tactical AI, all-building upgrades and teammate observation; see [WINDOWS_PLAYTEST_GUIDE.md](WINDOWS_PLAYTEST_GUIDE.md) and the Phase 6 report. Older export records remain historical. Native Windows testing is still unverified; no public release or deployment is performed.
 
 ## Phase 2 home checks
 

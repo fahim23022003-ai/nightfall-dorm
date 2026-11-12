@@ -1,0 +1,22 @@
+[
+  {
+    "suite": "audio_system",
+    "exit": 1,
+    "errors": true
+  },
+  {
+    "suite": "visual_identity_audio",
+    "exit": 0,
+    "errors": false
+  },
+  {
+    "suite": "replay_codes",
+    "exit": 0,
+    "errors": false
+  },
+  {
+    "suite": "audit_regressions",
+    "exit": 1,
+    "errors": true
+  }
+]

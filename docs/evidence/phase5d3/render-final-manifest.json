@@ -1,0 +1,1687 @@
+{
+  "capture_base_commit": "633efc06bcb5d99b385488144adb09697f6c8f3f",
+  "accepted_checks": 775,
+  "accepted_runs": [
+    {
+      "log": "audio-render-final.log",
+      "checks": 140,
+      "failures": 0,
+      "exit_code": 0
+    },
+    {
+      "log": "audio-transition-final.log",
+      "checks": 16,
+      "failures": 0,
+      "exit_code": 0
+    },
+    {
+      "log": "render-team-final.log",
+      "checks": 293,
+      "failures": 0,
+      "exit_code": 0
+    },
+    {
+      "log": "render-branches-final.log",
+      "checks": 133,
+      "failures": 0,
+      "exit_code": 0
+    },
+    {
+      "log": "render-clarity-final.log",
+      "checks": 51,
+      "failures": 0,
+      "exit_code": 0
+    },
+    {
+      "log": "render-earned-normal-postfilter-final.log",
+      "checks": 71,
+      "failures": 0,
+      "exit_code": 0
+    },
+    {
+      "log": "render-earned-hell-postfilter-final.log",
+      "checks": 71,
+      "failures": 0,
+      "exit_code": 0
+    }
+  ],
+  "png_count": 171,
+  "pngs": [
+    {
+      "path": "render-screens/audio/listening-room-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "a0f1f62530fb7d3216bb3518125c275b704624fd529887140410cbb25debaa66",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/audio/listening-room-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "3606ed799d6ad5981341a7276d4053dc3a099f2e3911b50820061366926fe95d",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/audio/music-state-approach-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "2af4b696896968ed91c7a125db87a8e6cbd60d184f4c96680a6828c42900e0bd",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/audio/music-state-endless-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "86489cd471ea7aa9f23515550a24a1bd38c0a8876a931a9178803f04699663e9",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/audio/music-state-preparation-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "5167e85e86408466e7c691868a027196ac45c36eab6b46323611a4ff9014d9db",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/audio/music-state-reaper-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "5fc87dc62506770ca1d853e45b53bd3c31f693fd0f851eaada3096df5da9a15d",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/audio/music-state-siege-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "9d1707327c6bbf9398de0e2cd084f0adfb28b4676602eccd9f28148974fb75ed",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/audio/opening-climax-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "1fd90744b6722a1f1fffadeb1d1d6aac7b0f69e050db6249f101ffb05e557a57",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/audio/opening-immediate-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "6e0d020e738cd8a8d3d3f1eb044e6d6655787eff3457915c39510050c435b82c",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/audio/opening-title-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "03f6fda3605eff0c95f0129296be078b5d139430fed703976f9059dfc37c1fc4",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/audio/settings-audio-entry-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "6c94837a34ebf22098e89bc4799f7e767de96c2c7f57380b43a9498fc98ed85d",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/audio/settings-audio-entry-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "b974e294a4386d1062659a96ade10937ec7d19ee8530fa2ff79d911d99ae43a6",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/bed-branches-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "a0b02c7f64f1a6a18975fa0fd178254f7ecd6da6fc283b35bf1c0954f422468f",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/bed-branches-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "499f36c685c29118a97e1980f26b002e038e58bd529bc8b42031e04188c9a403",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/bed-chosen-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "ba6303df1fe8b123b4cc124862a2eb32ac0103f15e2e4a8d9e75897ff1184588",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/bed-chosen-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "6ca51b61d1abce727913034ff7a5220181fdb2eea396964a3796ddb7c33b3784",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/door-branches-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "61c56c068db4f50fb27e4c85301d9d78df7c79435de4ab53d2595392a2e9721b",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/door-branches-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "6b8ff68a282766087773e84d0009af5b4145f17dea3eb742bc733a9dc7ecf66c",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/door-chosen-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "808effa04965f9faecdd821788c035378ac51caf0767c1483396c46593da3f15",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/door-chosen-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "46c9149399947807c0b50e5d35c008237a58865803c251dcce3b0e8690fe3924",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/economy-branches-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "3a08bd9ac63d753aaae792c67e790a2345f24bfa1d3f8becbb5a0669ca614092",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/economy-branches-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "22d4ef3ab4dad43d2c298523bdcf8409b8b37758161168d406298b43f276a429",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/economy-chosen-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "550c1c2a8533c2aa5ca575ebd89927e5cf5d85233b09e032ebc46edd1708409b",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/economy-chosen-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "082ce52a948e82cfe897dac432f3bc704c5aba8fdc59588991da27230dba1da8",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/enhancer-branches-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "349953e3ab1214fca65b51bd0e72b66d5d1fd1d67ed7e7d1265866652369ac2a",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/enhancer-branches-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "10594ffd9280518b3c7e397e03e50ae144ef1d95d4d5ebd5f715d61ee309e644",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/enhancer-chosen-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "b862bddf0190f03f6430456c59d350ca1fbc62c7d90624785b12a4356886a787",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/enhancer-chosen-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "483e6b3368efcfaa4a81148bf3120e316da7e4a57f589ab46141fa8cc7fb8fbf",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/generator-branches-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "0b36c9b2de123fffa4e9ec099a19f5bdac30af3c5bb659bedc8ed9dcdecf079d",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/generator-branches-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "98782a8ccc7d9a32c6181dabff28e51fd83459986d916b86453383cb3c9200e4",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/generator-chosen-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "16f6e2e8b108c0ee82355a6012538c762a34b1c24b541f700497edd6f9c3d7d9",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/generator-chosen-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "e8d91b6d23716bb8306e10d523a3e8f8b371d834f8263faf9405858307b56b44",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/repair-branches-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "d9c71884bc19e9537b7e28e378f4ca9b6f8f297638e06cad1451f8fe49493124",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/repair-branches-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "41ee881c3b52852197f9b5587d6f3d3bc672b063fcf354ed163fb2a0c0187e80",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/repair-chosen-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "74d265239b5140ea95975fdff92bb9379184af3e67a8a6f130ece24a118bf0f4",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/branches/repair-chosen-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "9ce0542bb7b60680a4c6bda3afc082c59985616bf654867525e695d10a79f704",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/clarity/bed-full-price-coupon-retained-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "06218ec8febb0db59ac0bc045f6a34d60180a6e3cda87f4b485a565c1401c663",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/clarity/bed-full-price-coupon-retained-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "c9d761faaa172e096e0e73c7773770d50e126ea357bab60a77c040949807980c",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/clarity/bed-upgraded-coupon-still-armed-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "a82fcbfbe877164cd3eea29eab43b611d70a694e8c82dfcf754b0495cc7482e5",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/clarity/bed-upgraded-coupon-still-armed-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "d04eff0d0031c03bc70f84df58484d2262c4ef8d19d868c2443442d14120159a",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/clarity/machine-actual-discount-refund-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "838802744b08204bdb5d25d9d292acb565680031c74cff9e2c6e373f84a40e16",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/clarity/machine-actual-discount-refund-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "5ea8bf380272bf18c7c8dd08b0543d53a5117efaed6a93cbe849327778e04e19",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/clarity/machine-discounted-branch-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "1d51aa2beac504914570ee6bc570ae966280ddf51ff2aecfbb05a4639e539ce6",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/clarity/machine-discounted-branch-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "5478edcf646989cabc7d5a181115d03447c494cf50e4a84088738bae6ffbe01a",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/clarity/machine-specialize-action-fits-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "3d074f96039971347466c827a1d7b8e3f877f746a08b6bf7065f5ff3fcc5df24",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/clarity/machine-specialize-action-fits-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "fb9a5a5818fc8834fd46f22b8816f4b3f07bbc616db20a52a819dc62b87fdaf9",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/clarity/team-approaching-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "12877a90bf641199887e9ce96eb1a3c823f3664752aabc396fe31acd50208db7",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/clarity/team-approaching-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "898e1dfd3c9a1a859adfad01b351c22f7e9a6a44294d66b60aa748a8f28a39a8",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-all8-reduced-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "f6fc1f7d5fab7a6ddef69031ead02ce39a9f59decd5a9f6243b16d03c2cc0005",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-all8-reduced-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "cab33ea1432c523fb1e1011fdc232fc8d3477c1703864d8e7b41deaedca8ecb3",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-all8-world-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "2a70c35af32ef946f57af1e27ffe919894b52e32bffad6bd17d83ed68bc66355",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-all8-world-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "2e9f73c3e451d6c5397dc844e3b884ef9ac23a10979a8a9f6926dc0e60bccdc0",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-bed10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "c5403a9bd6c4ab6ce26920105ca75fafe56260dbd9a8f2b5391f2b63c2e49d18",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-bed10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "d1de9c372b0df3fe21c497c971a437607c2858e41776b0e16421c3321e01c07b",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-door10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "e9fb272621abe5f42b8f564e7e4fd23baf089388b4749329e55e6d2cbe6070ac",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-door10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "389db367f1d7090c4a1d46a3306bf500fecd2289eb3c3876df180eeb3cb932de",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-economy10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "556a2af4f0395232c7853e4ee2755a7668a7c9c42cdd9d4f65399d7662c9458e",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-economy10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "d9658c5fa542ca99cb5ae1814a7ca6bcc4231bcef71b711c259fc3d90f932b70",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-enhancer10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "f4fd5b4cc1c4f11e4784d1323a50e5b5c379fd19040b9a81bc606e740752c7a3",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-enhancer10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "ce05498ba45ea5ae8094ef8a08cbed6463bbc0de787ccf90cd458d57389ee7eb",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-generator10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "43508df33e72163d4a0ffd5844a7677f1964fafc4ce9cf4cb0618dbad7119649",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-generator10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "0580b510555cad0b88d6bca7ce2458466982d3fd04b797ec86ca050dd476ba80",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-heavy10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "cc3eff0cfb1a901759eb2ef7c8a51ccc76eadcf908bc2607dc5431fe7af77b83",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-heavy10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "d065835e49d6455173e4b9bc78879742935d76d2083bbfa9a6015bb230e3a69a",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-repair10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "4b640321e803a0fe53474a195ef107055eebd21abb5932f6663623115004a043",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-repair10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "f895c1b9396ca69c1a0f2657c0e66a5b482e755bfeed61236f1f46c4aad27424",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-turret10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "063a40aeff775fac4a7dccf65b50e330f392306885a67f72d01dbb2240b11e78",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/hell-turret10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "08efc99f4d2777f11ec423f06cf88184ea8909b8bfcc0cddd64631904d23d909",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-all8-reduced-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "2345fa4f82e22963895a348f4f1a5ddb44fdf2d3196e1c275a6e83becd0d92bb",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-all8-reduced-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "7c4a755ea324a46a9075e156532045c9fba2452613508418d3fe3f9f966ff959",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-all8-world-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "1fe79669a64f10318291a8d766b44cb81aa599c5a812f8f15d9713b9a1b4fcfb",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-all8-world-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "50835a19e95e7250c42a51983f2bf610080da07ce074856c96bec79e80a60667",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-bed10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "2ab331b360f6b3652b57ed192b615b376a0633ba08659cbe6e11beca49cd046d",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-bed10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "19ab4c7458535d57d608769e0fa6a53ca75b577b6a9784eb40a88c1420e6d4fd",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-door10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "ebf1bdcfa0831cb6035fa2dacccb88dd7097afcb9a44203df1668c2102f888e8",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-door10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "dea7a652a728a8131b02e640006e22042867a1dd428e71800be439be5872dfe1",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-economy10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "c7ff0fb3ddd3b122050b6992603ef14875ab26b6bb22e2216f548ffa358866b5",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-economy10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "9c2f37382913e5e6196ac662da5e788494185e3fd80cbab308c6eaee8bb97369",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-enhancer10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "d2043047f54c5955eaa99b35cdb432dca2746b9ff7e3d0435caa737c9b89bdd1",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-enhancer10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "0faa6a6e6954570de41286619084341a6f49907ed3e8902ec70d5394231b1969",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-generator10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "3de6c72270a1253a22300c5c08d363e9bca132f5944402372d9c7b7a1f9bacf9",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-generator10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "f617ea1ec9d3401982bf26eff66259036b8fe67ebb7fd51017aab1129177b527",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-heavy10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "a6dfee708424d1913ca07f5655b3de63b5573db8ae487cf8efcde03a6d5618c9",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-heavy10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "b1bff75115e68a36d1ed411f791e5903ee2de803cb0e47ab2d9da5ccc8e93e32",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-repair10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "d4c33d38a9573f93a41667610d27c215200f540fe9c4b448a64fab67ad9c9895",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-repair10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "1042d41ac970d0499481683a6f690a5d12863be628cc1bdfa81acf565320f0b1",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-turret10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "d2b338fcc809411a91d61385053409a048fc31f5721b2d8a8f44aa42a37d3768",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned/normal-turret10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "9b2a877cfeb9b9b9915343909dcdfe185c4793e9c858e2be185fbbce70ddaf9c",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-all8-reduced-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "5e05a76bf52d759a197abaf6f612ff8254cab6fe5bf392a850574a3bd1f3d31e",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-all8-reduced-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "d6afdb6c5515ab600380671dcd8ca4bb8582e4956ea4239002103daf7cb4771a",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-all8-world-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "bc4addb6c1fab6a66e261c01c757d983fea005e6fee79910ededbc1f3b4f4beb",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-all8-world-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "059a717f6cd5c6f0d93432700907286cef36f20c660c95fd1014163a6da1f8e6",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-bed10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "64f9688a9f0af17a0416b852a0993d84fa83bd3dd5436fd2036603504d3eae63",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-bed10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "078a76fe6734b377559ab6a61719e751b77f1805d4dcb2f27530530ecf2ef938",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-door10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "ff6f0d3330b45e90d1d0d2338040e55a0e05beaa9278ea52f549b8f349ba74aa",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-door10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "1683effb3686bf97e4ad15c6d5e7362d01723cdd1ae72edbcadee5b6144d7447",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-economy10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "d7e4ea9f77618b47887de8ff2bd6c9df1f26e4966029dc7a09049a26d1ff4ebf",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-economy10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "17ff5d79aec232d5fb02a3a0d9e2a60fd47756452d02418e2aaa6c43f4822ea9",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-enhancer10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "ae48e9ae10b552a96dc0c96a600af118fd7ab80df7967d62a5c5d215f789a58b",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-enhancer10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "9915dfea8bd36923d55640492a9a8d6b696ebea7af7908b7a17e80c5bafdaa0a",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-generator10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "c5f339cbca4f48f9b5354882358804a012cc201f5d0e4bbcde688d89e865ceba",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-generator10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "5f706eda3bc126b17bfb057ea738eb7ef62fc239fd40e846091e1e7b728699e1",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-heavy10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "f7d7dcbe26b61d7e7e4f6fdcd4291c8e9a7a74f55006de74af3d027d0e28c850",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-heavy10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "6feb305077175c79586270ab948235984a3a8bfeff19a9689ef76085dfeebbf4",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-repair10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "477b5ae8b03b73b4ae6d84af9627000839176cbd32aa781849d5da43dbe6a6b0",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-repair10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "81d695f3dbf04cc9a63f1890d34a50379c3d38c75e6869e9c0bf36741699b1d0",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-turret10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "1ce50db8defd6e2eb5d8ae83a9447310532207b4f704bc76bfbe9cd12ba074ed",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/hell-turret10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "481af0383799430917dd50036ecfb5c085da944d7fd41d557c8937fe6425137e",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-all8-reduced-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "77e9b578011297666d9280d3df77db1df325bfc0730830ececc4dd3d8b5ad6f4",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-all8-reduced-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "6c2fa8625b040384398fae6db8dbb322c85ccd4107a6c05ee86609e7a4071e11",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-all8-world-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "d0c7dbabc05b7137e447b13482eda03b0e6f5db01df59281e1a54547098a27f8",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-all8-world-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "b042c3abe214bd2eafe10efcd302965bf42d2b9bb083ca62b94f4e00fdd91d3e",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-bed10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "eee869d435ea727b861662770c15d75686ee824ac064742f7f2cb2223966baf9",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-bed10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "f40316c768bc93101344125a447578f29489e96a5d1b7663dfbccac84de52e36",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-door10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "4017c4ac2029ae016f7baf9d4a6ee7cca5c2d8f6a6b5957aa08c403085d3ea4a",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-door10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "1fb289bf26806c116c14ea5090c7aefd8c8478f1f6ecdc6ce0d899a1840ffcac",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-economy10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "df1faaee4848a7cc29fdcb02326d8be3d9b55d8d23824ebcf2f384a397a43029",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-economy10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "0fd4737a808e52f1cc6610f6046e07a6c290d201b7e92ea2e4adaf2192a517fb",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-enhancer10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "f3b4f7b8f4e26431e803c23baf06bf3595df52876e894058797e5e4c308f1dd4",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-enhancer10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "81fae679735172e66f8c0f4818a33c17b7306487c91158fe92714b93afcbc838",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-generator10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "aec6e637b374bcacc6826277ac8ca27c6cb48d3bac6eb1526160d7375a3e0c98",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-generator10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "73b21fad849791c702f2bfc3fcc451c20648502318416577b017c433a1d81100",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-heavy10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "28e394c0e1d49cdf5e32503149e6062ba219b435a6549ef04e33abe55c14b8ba",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-heavy10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "2f08c99185c06d51c32941021468202805461e0719fa30da6a65011ace72479a",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-repair10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "e3bbf7bdb5429b2461016325ca21f5959d972acd2573faad6d73f7e2c4eca85e",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-repair10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "161af69c0d118463b44f8f5fb0819e08ecece851456697f8821181cdbfa4a575",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-turret10-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "8ac09e6323a99ce74273bef3a76c4a28333f7f7816450a2f6b4b2c16712622cb",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/earned-before-support-fix/normal-turret10-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "cb813a7e65c5c59ef6d2a507fe680262061005b15b8206db756cb62167765d6f",
+      "status": "superseded pre-support-filter diagnostic"
+    },
+    {
+      "path": "render-screens/team/abandoned_dorm-eliminated-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "9f2071131fbc7dd463cfe80d799a2a1bcd920921169c8fff5f5a213b80154409",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/abandoned_dorm-eliminated-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "6a9a633b715c0d020e9b1f4693a143b665ce8ae569371c06f6c4805ae8feb647",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/abandoned_dorm-own-danger-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "562f91acac23bee5e66098955b13b8c6a964eac751395c438a5040cf9e2422bc",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/abandoned_dorm-own-danger-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "39f99e682415c719288b6efbf4b78303645b7c8d65cfa57e18a70019d011d89c",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/abandoned_dorm-roster-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "c6b1f69f1957c2226ac05c342b017bb4302c08bdc73d1aebdf46cb94ed7cfaca",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/abandoned_dorm-roster-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "7c2ecb8ab38100fc82a2fc46499e57d0ceb3c8c2b7207d9616bbc7b8029ccc69",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/abandoned_dorm-watching-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "02108bb3a265be7ddebcc98f5d356be1609cdc08ec75b92c19834a0c3e90f5fb",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/abandoned_dorm-watching-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "cc94a97f89b5f9d93f8a7c080bc7a0063545c4f56d248d858ef8da8d48ed0567",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/cursed_mansion-eliminated-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "65562a664f23b04df91b9aa16c5fb666f0162eb87e4ce62c077d997f1ca4dbc8",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/cursed_mansion-eliminated-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "3eaebabce4a4ff5bb994b4e0a973f67ed96bd11156ccfb702e76a26061aa17b9",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/cursed_mansion-own-danger-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "ff7f8a62c9b7b80a789f39d669a9e2271a79ae2eceee95cb123086a05bb0461d",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/cursed_mansion-own-danger-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "6a85e971b5c460a558acbdc91523796923c7ad918738f7c724a0538ba53d1dbc",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/cursed_mansion-roster-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "eececf44cfb6bdd1dc538d921543b00150dea1227ea7eb5ab75f7567352d2dfd",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/cursed_mansion-roster-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "e334f031029a33121e015c39d75a6d77c945222ee0f93b6b88e8117337d16b51",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/cursed_mansion-watching-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "9fff04ceb90532a725b41ab44a910f2acf0db484660301deac0d90a59dbe9638",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/cursed_mansion-watching-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "2341994c95777aa3480c772505e3e53b13a51b666255ae22e534140aed2f07c1",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/defect-own-context-with-roster-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "c7f9e87eeb9966ee7fb615e0e8e631a250aa6688aab9106d304767fe6274178f",
+      "status": "explicit preserved defect"
+    },
+    {
+      "path": "render-screens/team/forgotten_hotel-eliminated-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "78a58e7d474d85f28aa6e6a7c87c39e9e9bea3d25fa17277ab2fbe95a38a8a13",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/forgotten_hotel-eliminated-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "a5a6c8c67aa294a0b9ce32dacdb79a985ebcdfcd51e1dafaaac850ff4a9fef07",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/forgotten_hotel-own-danger-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "74398f0104ef01452a438ee867ed8315bb1575fb5d62f4a7a8fbca9752211597",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/forgotten_hotel-own-danger-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "b4c98d91afcd4736ef629168628d9df51da40125d7806d931fe91a2163cd41f9",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/forgotten_hotel-roster-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "b01cade0d705b7e543bd4a7950bd27ee0df55db5fd6988d6c99185c493700bca",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/forgotten_hotel-roster-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "154abc29d25f0516b442d9904a4b48667d8ba57129eb4453b338f916c7655a45",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/forgotten_hotel-watching-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "ad347f31c51c9e934b017bdb906f2465c31f1cbb3a19a699e0f092d9e423147d",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/forgotten_hotel-watching-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "b979e25e20c3ed85b22546780700870ee73242b5e1f9a5e420f2e96bfe2dd911",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/haunted_hospital-eliminated-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "e297a3b9e0dcb178a5df70f1004528422da94a42e18099444ed1546b77cac255",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/haunted_hospital-eliminated-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "293b328b20da6bb6d6e9fd75cf3d760376f3af5b79e98f55b793f9a9a56d9246",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/haunted_hospital-own-danger-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "ccdc440ec252ca63cacafb52d140e4b9b8f917462a97a1218e279580a446d99d",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/haunted_hospital-own-danger-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "afa1fff88f3273b39ee48ed54ea1187e924ef00ec0db73cebdd54332f4dab988",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/haunted_hospital-roster-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "cd256a8cb95e7d6ba0884aa4c1130a99cf329ddd8a07e4c947ad6c1280511688",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/haunted_hospital-roster-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "2b2c9c21552c37b65717057d99e83c061e55bc63f66f144d7adb509de8854fb8",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/haunted_hospital-watching-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "c1977e38727a18c6962b1be99e824e62f7cd6bf1d310659b0123dfdb25e27d26",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/haunted_hospital-watching-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "117dfccb5457dd39178d84dfcd8918d097f366da78aad31dc63847d6a02de66b",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/own-context-with-roster-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "a75cf98ffe74c6cf997a581e692ae9d20216e24e30cd50b1d78b0e38ce609c96",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/own-context-with-roster-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "bae7bdd8cd548143569711af4d9e320f5d87c6335424b7091fef664ac43a7830",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/underground_lab-eliminated-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "20de1495a67cc8e4a701d622e5477fef0bf1b93c9254658cf93c960cd5636fba",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/underground_lab-eliminated-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "9f95c403954f1225ec60c4dcf7aedb1345ce482c78ef7fc37367353794cacb6e",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/underground_lab-own-danger-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "5c48ea248c014873b8ff5eb3181709dd68f95225d6cb32d39daeec4d07aee4c2",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/underground_lab-own-danger-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "48e08c12e33809a2011e1b98e1adac5db1b388a67bd663d33f5456e6dd1ee663",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/underground_lab-roster-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "26aab73d687ffb4e943377a39c7df107a7bd27f2ffb95b93b934a366708028de",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/underground_lab-roster-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "ac395f55af99e60d404fb9b80a0b2cc546759a565d2239d06e8dd0bf62c1a9ff",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/underground_lab-watching-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "52f9fcf89127e05abaa4bd5fe71c1c1d04f2d2ad682c048f4c9abefe6a5163db",
+      "status": "accepted final"
+    },
+    {
+      "path": "render-screens/team/underground_lab-watching-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "b34ce757ed16fc0e43e387a52f6f16dc2819287e9d8f5e0614fe061fd062a2f9",
+      "status": "accepted final"
+    }
+  ],
+  "current_production_script_sha256": {
+    "scripts/audio_director.gd": "3a01901111034786a2591fa9ab10bb8d306ad0386e59092d4c395b9af9fa8726",
+    "scripts/bot_ai.gd": "13b91cda49e343dd98db31abfa2a84c5aa20874c25f1e557523b99dccf7fd1c7",
+    "scripts/catalog.gd": "2782a165266be2b63ffda147d9bc6a2f168223d35e6f596b1b73b41bb986cc2c",
+    "scripts/dorm_presentation.gd": "e4676af3ca048dec48818c4558279ddcf183aa6d84520d956e0f3afe6e702677",
+    "scripts/game.gd": "b249861e233fc7b7b68cbee545c678e967348870f406da952b072a96c1d15640",
+    "scripts/hunter_state.gd": "6a6bca7680273196647293baa685f8e1458396671240bfc17886dd5e41cfdb5d",
+    "scripts/interface.gd": "f60a21248e56f11c4a528bce85dc61325dbb2395b6b090516aec35dafb3101a5",
+    "scripts/match_model.gd": "b2f96a10b928618e65a489cad67f5c301e5af92cb4e771fed590454fc605cfe2",
+    "scripts/mobile_interface.gd": "f51ed3b811e7fa8142674923038b1d6ba725971a47f39f91d39025941c5e165a",
+    "scripts/mobile_layout.gd": "99e98d519525265afffc6a703f36a216633ebcc4601daf05aa712cdace4b67d2",
+    "scripts/player_profile.gd": "48e4ecc32f8eb4267f1a68f826404d98a69720b512c380f032996805bd6ed22a",
+    "scripts/progression_interface.gd": "badeebe643d9243344b27a78d90ebf3222ae18133d23a492662d28c2bca2218e",
+    "scripts/rank_catalog.gd": "b03b428faf61f11ba8530d4973cd7baa65b408dca7aa907882b28a04f369e2c3",
+    "scripts/room_state.gd": "1e378bebec52ecf1e63f3051a30acfa5a51ca1c7d113b1a707016346bc2bc963",
+    "scripts/touch_controls.gd": "52cd25b8c25b7545e5e0004d19ffabd14452810481299df458363b9d07c53407",
+    "scripts/cosmetic_catalog.gd": "3205af563eb524ccd45be51ba1e8daa9aced53cdbb290ca43573d40ca276812f",
+    "scripts/premium_button.gd": "031a972671442669d102daceefaac5f21965f5759a99192db5415672b2c5cecd",
+    "scripts/endless_run.gd": "ecc915bad4f329ebace6dfeb77f4d06e24ad0b7e4ce91b57da93b114745d91f3",
+    "scripts/spin_pity.gd": "285f668d50b2e525da8279403472c25dbc324a5622b70031b2545358ee3b1cc1",
+    "scripts/teammate_interface.gd": "82a3bffb77817b9258612f7aa22b8a615231e757f8e5cdf1957f05d3d0c100b6",
+    "scripts/reward_catalog.gd": "52f44e7f08b10db0c8472764cc83326505fb150137df3f84903c4882cbba9602",
+    "scripts/practice_room.gd": "8b097b6225686386323a9b3ae9db8874e343bef3a0b84c49d614fc46c37b3f77",
+    "scripts/boss_catalog.gd": "bc4a8a9a412fbfbb3fc64e93e532ae1191b48fd2a862e0339dcc98c5d955aea7",
+    "scripts/replay_progress.gd": "fc277605d6a2f70fd27be43bfa94748d6d6f10db6b9d20bcf64de4c42bbc68e8",
+    "scripts/temporary_loadout.gd": "16be4d780dc4215ea766fe668dede89d5e8fde0402032c6e3d66c1facee4a6db",
+    "scripts/replay_snapshot.gd": "ffbacc0657360ff893280bad2bd6ffa907fa6bd37956d6cda878e06e1e1aa2c2",
+    "scripts/strategy_catalog.gd": "6c69f05aa8b6b614eb1736324abaab672f7f05549bbc4aa8b64f3255a76f11cb",
+    "scripts/replay_interface.gd": "842129fba6918a1e632d84d10ef9bd366d22522c06cb7784b7bf317a7b596ea7",
+    "scripts/item_interface.gd": "89b4849eb6aa1a3f415139a6577a3df3fce0c4fcfb238d0aec72306b35e093e6",
+    "scripts/cosmetic_presentation.gd": "1f09129ecedd0b6412da7f2640fd40b6453908386a3e3a216d3dd0c357d0468c",
+    "scripts/map_catalog.gd": "81deff2f1ff5ac6f00fac8dd34d501ff0654c263aaecd24d8fb0720badc745b5",
+    "scripts/horror_feedback.gd": "64f5e1fca17e7e8859e336098919513ca80eea63b6f4d95d341412bae54ce0d8",
+    "scripts/gothic_theme.gd": "776694c60399df9976e9594aa69060a6f4eda7057c11397bcc1faaddf808b096",
+    "scripts/stage_catalog.gd": "b723720aa63607dc4c52433c8134741010efbf9eb45eddf194586c394bc3d108",
+    "scripts/map_presentation.gd": "c8562f7153d795036172d39205a312e3c556c73d7460d263bae1e9bd0b30d2ab",
+    "scripts/onboarding.gd": "edd493e585e2e63ab18cc1621a0fb376849661dda264d09d3ab0f5fee6c54b76",
+    "scripts/item_presentation.gd": "3065413e9ae40b3d72c79c97f882e219b6ac4db7f55db6b1f1c19d2650a01ade",
+    "scripts/match_strategy.gd": "6bc96f1553cf9b75334d519089ae15da4d0e71fd18e0e111f732de467c91620f",
+    "scripts/item_catalog.gd": "64a6f33f90c3d3ef8e253fcd8b3f08d8f94fe5bf79448bdb44c5184d40d0c8cb",
+    "scripts/haunted_environment.gd": "f144e50d08cd3e5777976d88aea63ed0a912fdb1230e1c4bd5d7a4c511c2437b",
+    "scripts/cash_shop.gd": "a5fae363255cd6871e9a0fec573dfa85519ab03270559a0ac18f520a1aa259a7",
+    "scripts/item_wheel.gd": "160400b1dc908021c4e0d1ccc376498a80581b433352741ab2f810bad580df46",
+    "scripts/item_effects.gd": "3d536e29661e7b504fb8992a75f13127269caf016c70cf650f6e73cf3200eeea",
+    "scripts/boss_presentation.gd": "2e63c6d181c5b15f06d2868c1ad54a32e69271687582a60f86a31b524d1e6c7b",
+    "scripts/onboarding_catalog.gd": "7089ca586736ca3eac299e95f4c6d5742aa179fc4d2f7cba796ca1be6ae46f35",
+    "scripts/challenge_code.gd": "e5f32add368a5b624a9a1b84c2a11c5151b350617c65dd21c45738e62f903a42",
+    "scripts/campaign_interface.gd": "2f93c3081a83f53eef7969d2171d7308562aa4275d1b89c26b15ba1c6ac5def4",
+    "scripts/visual_presence.gd": "7567fe3ca1798fcfd1b3ebf6153e9c4e2221fb7286be5cb5434ede8b683b4d26",
+    "scripts/defeat_facts.gd": "dad3a294122d76cb700bb5f34da5e76347e9d33993b3f524638ef886c02fde60"
+  },
+  "capture_source_sha256": {
+    "tools/capture_phase5d3_audio.gd": "7ef1c97d21968869b3d096c8e88df97383e953cbaed0d5e795daf5ff1529aabc",
+    "tools/capture_phase5d3_team.gd": "cf10e5ed6b919347ad4b5a72326baef24aafc4fd3112578afc95dc435748d6e9"
+  },
+  "runtime_audio_imports": {
+    "assets/audio/music_intro.wav.import": "[remap]\n\nimporter=\"wav\"\ntype=\"AudioStreamWAV\"\nuid=\"uid://dvkg0eogih2bf\"\npath=\"res://.godot/imported/music_intro.wav-19196da23c2a63a57b481fadd4bdb183.sample\"\n\n[deps]\n\nsource_file=\"res://assets/audio/music_intro.wav\"\ndest_files=[\"res://.godot/imported/music_intro.wav-19196da23c2a63a57b481fadd4bdb183.sample\"]\n\n[params]\n\nforce/8_bit=false\nforce/mono=false\nforce/max_rate=false\nforce/max_rate_hz=44100\nedit/trim=false\nedit/normalize=false\nedit/loop_mode=0\nedit/loop_begin=0\nedit/loop_end=-1\ncompress/mode=0\n",
+    "assets/audio/music_approach.wav.import": "[remap]\n\nimporter=\"wav\"\ntype=\"AudioStreamWAV\"\nuid=\"uid://62t0c5u6opku\"\npath=\"res://.godot/imported/music_approach.wav-eb2ab3ecfc786e3991e795ce4fd7c237.sample\"\n\n[deps]\n\nsource_file=\"res://assets/audio/music_approach.wav\"\ndest_files=[\"res://.godot/imported/music_approach.wav-eb2ab3ecfc786e3991e795ce4fd7c237.sample\"]\n\n[params]\n\nforce/8_bit=false\nforce/mono=false\nforce/max_rate=false\nforce/max_rate_hz=44100\nedit/trim=false\nedit/normalize=false\nedit/loop_mode=0\nedit/loop_begin=0\nedit/loop_end=-1\ncompress/mode=0\n",
+    "assets/audio/music_endless.wav.import": "[remap]\n\nimporter=\"wav\"\ntype=\"AudioStreamWAV\"\nuid=\"uid://dxixadsfvl11n\"\npath=\"res://.godot/imported/music_endless.wav-c0d09df11fc1183790275784fcc62678.sample\"\n\n[deps]\n\nsource_file=\"res://assets/audio/music_endless.wav\"\ndest_files=[\"res://.godot/imported/music_endless.wav-c0d09df11fc1183790275784fcc62678.sample\"]\n\n[params]\n\nforce/8_bit=false\nforce/mono=false\nforce/max_rate=false\nforce/max_rate_hz=44100\nedit/trim=false\nedit/normalize=false\nedit/loop_mode=0\nedit/loop_begin=0\nedit/loop_end=-1\ncompress/mode=0\n"
+  },
+  "original_menu_source": {
+    "path": "audio-old-menu-source.wav",
+    "source_commit": "3e6224e649ae7d30de0742e2dc58688a078f43a2",
+    "original_path": "assets/audio/music_menu.wav",
+    "sha256": "51f55479a982df5f63a28a0c0cb8c8b947b6d8597ff7e845286ec71ff3f27a14"
+  },
+  "platform": "Godot4.6.3 Linux Mesa software rendering and actual internalPCM, Dummy hardware driver",
+  "limitations": [
+    "No nativeWindows/physicalaudio/humanperceptualscaryverification",
+    "A-gate captures preceded final tiny UI strings which were independently affected-rerendered",
+    "Three new score imports initiallyQOA during actualA-capture; Bstandardizedtheir metadata toPCMafterward without changing sourceWAVs; original internal captures remain genuine renderedengineplayback",
+    "All8 naturalprofiles fromA are separate earned evidence; UIbranch/coupon/target/death fixtures are prepared and notnaturalprogression claims"
+  ],
+  "historical_pre_support_fix_checks": 775,
+  "earned_refresh_note": "Confirmed support-filter/contact-guard corrections now covered by finalB/C/A evidence; Normal/Hell earned-only142checks fresh actualrender aftercorrectedphysics. Earlier40earnedPNGs+142-run receipts retaineddiagnostic, notcurrentacceptance. Unaffected633audio/team/branch/clarityreusedwithpergateprovenance.",
+  "historical_superseded_earned_runs": [
+    {
+      "log": "render-earned-normal-final.log",
+      "checks": 71,
+      "failures": 0,
+      "exit_code": 0
+    },
+    {
+      "log": "render-earned-hell-final.log",
+      "checks": 71,
+      "failures": 0,
+      "exit_code": 0
+    }
+  ],
+  "verified_committed_production": "e60a114e14bb2515cdfb381023902a32770c98dd",
+  "current_git_head": "e60a114e14bb2515cdfb381023902a32770c98dd",
+  "png_current_accepted": 130,
+  "png_diagnostic": 41,
+  "final_canonical_earned_profiles": {
+    "balance-earned-all8-haunted_hospital-standard": "194632e2bce7a62a3c782d216edfeca9c10608ae6c4caff1d58145cf6e42d527",
+    "balance-earned-all8-cursed_mansion-hell-alternative": "1a76278ef05d15753c39447b6182dd8df4cbbe6b342e04d178b96db54fa26bd9"
+  }
+}

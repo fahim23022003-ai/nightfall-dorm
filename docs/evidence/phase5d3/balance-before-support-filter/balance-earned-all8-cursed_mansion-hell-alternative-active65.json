@@ -1,0 +1,840 @@
+{
+ "active_match": {
+  "archetype": "ravager",
+  "contract": "",
+  "difficulty": "hell",
+  "equipped": [
+   "marksman",
+   "reaper_slayer"
+  ],
+  "feather_used": false,
+  "id": 7.0,
+  "items": [
+   "frost",
+   "time_freeze"
+  ],
+  "legendary_used": 1.0,
+  "map": "cursed_mansion",
+  "rescue_used": false,
+  "run_id": 7.0,
+  "run_kind": "endless",
+  "seed": 47.0,
+  "use_counts": {
+   "frost": 4.0,
+   "time_freeze": 1.0
+  }
+ },
+ "campaign": {
+  "difficulty": "standard",
+  "records": {
+   "stage_1": {
+    "best_damage": 1000.0,
+    "best_time": 100.0,
+    "best_xp": 100.0,
+    "clears": 1.0,
+    "difficulty": "hard",
+    "first_match_id": 1.0
+   },
+   "stage_2": {
+    "best_damage": 1000.0,
+    "best_time": 100.0,
+    "best_xp": 100.0,
+    "clears": 1.0,
+    "difficulty": "hard",
+    "first_match_id": 1.0
+   },
+   "stage_3": {
+    "best_damage": 1000.0,
+    "best_time": 100.0,
+    "best_xp": 100.0,
+    "clears": 1.0,
+    "difficulty": "hard",
+    "first_match_id": 1.0
+   },
+   "stage_4": {
+    "best_damage": 1000.0,
+    "best_time": 100.0,
+    "best_xp": 100.0,
+    "clears": 1.0,
+    "difficulty": "hard",
+    "first_match_id": 1.0
+   },
+   "stage_5": {
+    "best_damage": 1000.0,
+    "best_time": 100.0,
+    "best_xp": 100.0,
+    "clears": 1.0,
+    "difficulty": "hard",
+    "first_match_id": 1.0
+   }
+  },
+  "selected_stage": "stage_1"
+ },
+ "consumables": {
+  "inventory": {
+   "frost": 0,
+   "time_freeze": 0
+  },
+  "loadout": [],
+  "pending": [],
+  "version": 1
+ },
+ "equipped": [
+  "marksman",
+  "reaper_slayer"
+ ],
+ "last_award": {
+
+ },
+ "next_match_id": 8,
+ "onboarding": {
+  "purchase_serial": 0,
+  "rm_cash": 8,
+  "tutorial_completed": false,
+  "version": 1
+ },
+ "progression": {
+  "highest_rank": 6,
+  "statistics": {
+   "defeats": 3,
+   "hard": 3,
+   "hell": 0,
+   "matches": 6,
+   "reaper_defeats": 3,
+   "standard": 0,
+   "victories": 3
+  },
+  "version": 1
+ },
+ "replay": {
+  "best_wave": 9,
+  "challenge_best": {
+
+  },
+  "checkpoint": {
+   "boosts": {
+    "damage": 1.03,
+    "door": 1.0,
+    "gold": 0.0,
+    "income": 1.0,
+    "power": 1.0,
+    "reaper": 1.06,
+    "rescue": 0.0
+   },
+   "bot_claimed": 5,
+   "completed": 9,
+   "damage": 120868.75,
+   "difficulty": "hell",
+   "eliminations": 0,
+   "items": {
+    "burn_remaining": 0,
+    "control_recovery": 0.0,
+    "cooldown": 0.0,
+    "decoy_point": [
+     0.0,
+     0.0
+    ],
+    "feather_used": false,
+    "guardian_shield_hp": 0.0,
+    "legendary_used": 1,
+    "shield_hp": 0.0,
+    "timers": {
+
+    },
+    "trap": {
+
+    }
+   },
+   "map": "cursed_mansion",
+   "player_position": [
+    963.0,
+    -17.0
+   ],
+   "player_room": 2,
+   "preparation": 439.00000000003,
+   "rng": "-6150781812392624231",
+   "rooms": [
+    {
+     "alive": true,
+     "bed_branch": "",
+     "bed_level": 4.0,
+     "bot_timer": 0.200000000000095,
+     "breach_reacted": false,
+     "buildings": [
+      {
+       "cooldown": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 0
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 1
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 2
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 3
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 4
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 5
+      }
+     ],
+     "closed": true,
+     "construction_actions": 24.0,
+     "coupon_armed": false,
+     "damage_dealt": 0.0,
+     "door_branch": "",
+     "door_damage_taken": 0.0,
+     "door_hp": 1620.0,
+     "door_level": 4.0,
+     "door_multiplier": 1.0,
+     "electricity": 2176.86000000004,
+     "gold": 18398.28,
+     "income_multiplier": 1.0,
+     "income_total": 21748.2800000009,
+     "occupied_seconds": 473.900000000039,
+     "owner": 1,
+     "position": [
+      43.0,
+      -17.0
+     ],
+     "power_multiplier": 1.0,
+     "profile": "guard",
+     "repair_actions": 0.0,
+     "repair_factor": 1.0,
+     "rescue_fraction": 0.0,
+     "rescue_used": false,
+     "shots": 0.0,
+     "sleeping": true,
+     "spent": 3375.0,
+     "temporary_income": 1.0,
+     "trait": "power",
+     "turret_multiplier": 1.0
+    },
+    {
+     "alive": true,
+     "bed_branch": "",
+     "bed_level": 4.0,
+     "bot_timer": 0.900000000000093,
+     "breach_reacted": false,
+     "buildings": [
+      {
+       "cooldown": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 0
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 1
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 2
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 3
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 4
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 5
+      }
+     ],
+     "closed": true,
+     "construction_actions": 24.0,
+     "coupon_armed": false,
+     "damage_dealt": 32156.051904,
+     "door_branch": "",
+     "door_damage_taken": 3649.10407134368,
+     "door_hp": 1800.0,
+     "door_level": 4.0,
+     "door_multiplier": 1.0,
+     "electricity": 1607.83499999993,
+     "gold": 22923.9924999991,
+     "income_multiplier": 1.0,
+     "income_total": 26273.9924999989,
+     "occupied_seconds": 463.300000000037,
+     "owner": 5,
+     "position": [
+      503.0,
+      -17.0
+     ],
+     "power_multiplier": 1.0,
+     "profile": "balanced",
+     "repair_actions": 0.0,
+     "repair_factor": 1.0,
+     "rescue_fraction": 0.0,
+     "rescue_used": false,
+     "shots": 121.0,
+     "sleeping": true,
+     "spent": 3375.0,
+     "temporary_income": 1.0,
+     "trait": "economy",
+     "turret_multiplier": 1.0
+    },
+    {
+     "alive": true,
+     "bed_branch": "conductor",
+     "bed_level": 9.0,
+     "bot_timer": 0.0,
+     "breach_reacted": false,
+     "buildings": [
+      {
+       "cooldown": 0.0,
+       "invested_gold": 1765.0,
+       "invested_power": 262.0,
+       "kind": "turret",
+       "level": 10.0,
+       "specialization": "suppression",
+       "tile": 12
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 2635.0,
+       "invested_power": 262.0,
+       "kind": "generator",
+       "level": 10.0,
+       "specialization": "overcharge",
+       "tile": 3
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 3505.0,
+       "invested_power": 697.0,
+       "kind": "repair",
+       "level": 10.0,
+       "specialization": "conservation",
+       "tile": 2
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 2635.0,
+       "invested_power": 262.0,
+       "kind": "generator",
+       "level": 10.0,
+       "specialization": "overcharge",
+       "tile": 7
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 3940.0,
+       "invested_power": 610.0,
+       "kind": "economy",
+       "level": 10.0,
+       "specialization": "capacitive",
+       "tile": 1
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 3940.0,
+       "invested_power": 610.0,
+       "kind": "economy",
+       "level": 10.0,
+       "specialization": "capacitive",
+       "tile": 11
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 3940.0,
+       "invested_power": 610.0,
+       "kind": "economy",
+       "level": 10.0,
+       "specialization": "capacitive",
+       "tile": 6
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 3940.0,
+       "invested_power": 610.0,
+       "kind": "economy",
+       "level": 10.0,
+       "specialization": "capacitive",
+       "tile": 0
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 8290.0,
+       "invested_power": 1306.0,
+       "kind": "heavy",
+       "level": 10.0,
+       "specialization": "storm",
+       "tile": 13
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 5680.0,
+       "invested_power": 958.0,
+       "kind": "enhancer",
+       "level": 10,
+       "specialization": "coolant",
+       "tile": 15
+      }
+     ],
+     "closed": true,
+     "construction_actions": 100.0,
+     "coupon_armed": false,
+     "damage_dealt": 65783.9212960001,
+     "door_branch": "renewal",
+     "door_damage_taken": 2710.719,
+     "door_hp": 6624.0,
+     "door_level": 9.0,
+     "door_multiplier": 1.0,
+     "electricity": 6611.17600000032,
+     "gold": 25738.9821000001,
+     "income_multiplier": 1.0,
+     "income_total": 85165.9820999982,
+     "occupied_seconds": 475.90000000004,
+     "owner": 0,
+     "position": [
+      0.0,
+      0.0
+     ],
+     "power_multiplier": 1.0,
+     "profile": "player",
+     "repair_actions": 6.0,
+     "repair_factor": 1.0,
+     "rescue_fraction": 0.0,
+     "rescue_used": false,
+     "shots": 435.0,
+     "sleeping": true,
+     "spent": 59452.0,
+     "temporary_income": 1.0,
+     "trait": "fortified",
+     "turret_multiplier": 1.03
+    },
+    {
+     "alive": true,
+     "bed_branch": "",
+     "bed_level": 4.0,
+     "bot_timer": 0.800000000000057,
+     "breach_reacted": false,
+     "buildings": [
+      {
+       "cooldown": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 0
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 1
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 2
+      },
+      {
+       "cooldown": 0.182352941176474,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 3
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 4
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 5
+      }
+     ],
+     "closed": true,
+     "construction_actions": 24.0,
+     "coupon_armed": false,
+     "damage_dealt": 9800.43880000004,
+     "door_branch": "",
+     "door_damage_taken": 698.7,
+     "door_hp": 1620.0,
+     "door_level": 4.0,
+     "door_multiplier": 1.0,
+     "electricity": 1789.14000000007,
+     "gold": 14445.1649999996,
+     "income_multiplier": 1.0,
+     "income_total": 17891.165,
+     "occupied_seconds": 461.800000000036,
+     "owner": 4,
+     "position": [
+      43.0,
+      653.0
+     ],
+     "power_multiplier": 1.0,
+     "profile": "gunner",
+     "repair_actions": 8.0,
+     "repair_factor": 1.0,
+     "rescue_fraction": 0.0,
+     "rescue_used": false,
+     "shots": 97.0,
+     "sleeping": true,
+     "spent": 3471.0,
+     "temporary_income": 1.0,
+     "trait": "power",
+     "turret_multiplier": 1.0
+    },
+    {
+     "alive": true,
+     "bed_branch": "",
+     "bed_level": 4.0,
+     "bot_timer": 0.0000000000000516531262206854,
+     "breach_reacted": false,
+     "buildings": [
+      {
+       "cooldown": 0.297058823529414,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 0
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 1
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 2
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 3
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 4
+      },
+      {
+       "cooldown": 0.382352941176474,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 5
+      }
+     ],
+     "closed": true,
+     "construction_actions": 24.0,
+     "coupon_armed": false,
+     "damage_dealt": 12592.388,
+     "door_branch": "",
+     "door_damage_taken": 1911.53805568359,
+     "door_hp": 1719.46399999999,
+     "door_level": 4.0,
+     "door_multiplier": 1.0,
+     "electricity": 1634.15999999993,
+     "gold": 23206.1514999991,
+     "income_multiplier": 1.0,
+     "income_total": 26592.1514999989,
+     "occupied_seconds": 469.000000000038,
+     "owner": 2,
+     "position": [
+      503.0,
+      653.0
+     ],
+     "power_multiplier": 1.0,
+     "profile": "engineer",
+     "repair_actions": 3.0,
+     "repair_factor": 1.0,
+     "rescue_fraction": 0.0,
+     "rescue_used": false,
+     "shots": 150.0,
+     "sleeping": true,
+     "spent": 3411.0,
+     "temporary_income": 1.0,
+     "trait": "economy",
+     "turret_multiplier": 1.0
+    },
+    {
+     "alive": true,
+     "bed_branch": "",
+     "bed_level": 4.0,
+     "bot_timer": 1.0,
+     "breach_reacted": false,
+     "buildings": [
+      {
+       "cooldown": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 0
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 1
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 2
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 3
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 4
+      },
+      {
+       "cooldown": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4.0,
+       "specialization": "",
+       "tile": 5
+      }
+     ],
+     "closed": true,
+     "construction_actions": 24.0,
+     "coupon_armed": false,
+     "damage_dealt": 535.950000000001,
+     "door_branch": "",
+     "door_damage_taken": 397.8,
+     "door_hp": 2070.0,
+     "door_level": 4.0,
+     "door_multiplier": 1.0,
+     "electricity": 1724.39999999992,
+     "gold": 16303.696,
+     "income_multiplier": 1.0,
+     "income_total": 19653.696000001,
+     "occupied_seconds": 463.400000000037,
+     "owner": 3,
+     "position": [
+      963.936340332031,
+      651.266723632812
+     ],
+     "power_multiplier": 1.0,
+     "profile": "economist",
+     "repair_actions": 0.0,
+     "repair_factor": 1.0,
+     "rescue_fraction": 0.0,
+     "rescue_used": false,
+     "shots": 23.0,
+     "sleeping": true,
+     "spent": 3375.0,
+     "temporary_income": 1.0,
+     "trait": "fortified",
+     "turret_multiplier": 1.0
+    }
+   ],
+   "ruleset": 2,
+   "run_id": 7,
+   "seed": 47,
+   "shots": 826,
+   "time": 482.900000000041,
+   "use_counts": {
+    "frost": 4.0,
+    "time_freeze": 1.0
+   },
+   "version": 1
+  },
+  "cosmetics": {
+   "badge": "",
+   "bed": "",
+   "door": "",
+   "turret": ""
+  },
+  "last_award": {
+   "completed": 9,
+   "rm_cash": 0,
+   "run_id": 7,
+   "xp": 0
+  },
+  "milestone_wave": 5.0,
+  "pity": {
+   "epic_dry": 0.0,
+   "legendary_dry": 0.0
+  },
+  "run_serial": 1.0,
+  "version": 1.0
+ },
+ "rewards": {
+  "achievements": {
+   "first_blood": {
+    "claimed": false
+   },
+   "first_victory": {
+    "claimed": false
+   },
+   "night_survivor": {
+    "claimed": false
+   },
+   "reaper_hunter": {
+    "claimed": false
+   },
+   "reaper_slayer": {
+    "claimed": false
+   }
+  },
+  "counters": {
+   "construction": 0.0,
+   "door_damage": 0.0,
+   "income": 0.0,
+   "legendary": 0.0,
+   "perfect_team": 0.0
+  },
+  "seen_items": [],
+  "stage_bonus": {
+
+  },
+  "stage_queue": [],
+  "version": 1
+ },
+ "settings": {
+  "ambient": 0.5,
+  "battery_saver": false,
+  "effects": 0.65,
+  "fullscreen": false,
+  "music": 0.5,
+  "muted": false,
+  "reduced_effects": false,
+  "tutorial": true
+ },
+ "strategy": {
+  "claims": {
+
+  },
+  "selected": "",
+  "version": 1
+ },
+ "version": 1,
+ "xp": 8020
+}

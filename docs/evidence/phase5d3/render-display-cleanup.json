@@ -1,0 +1,10 @@
+{
+  "owned_pid": 133981,
+  "owned_command": "/usr/lib/xorg/Xorg :97 -config /workspace/nightfall-dorm/docs/evidence/xorg-dummy.conf -noreset -nolisten tcp -logfile /tmp/phase5d3-audio-xorg.log ",
+  "termination": "SIGTERM sent only to ownedXorg97",
+  "observed_after": [
+    "Name:\tXorg",
+    "State:\tZ (zombie)",
+    "Tgid:\t133981"
+  ]
+}

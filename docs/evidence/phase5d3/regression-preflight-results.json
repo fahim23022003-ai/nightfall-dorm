@@ -1,0 +1,22 @@
+[
+  {
+    "suite": "audio_system",
+    "exit": -15,
+    "engine_errors": true
+  },
+  {
+    "suite": "visual_identity_audio",
+    "exit": 1,
+    "engine_errors": true
+  },
+  {
+    "suite": "replay_codes",
+    "exit": 1,
+    "engine_errors": true
+  },
+  {
+    "suite": "audit_regressions",
+    "exit": 1,
+    "engine_errors": true
+  }
+]

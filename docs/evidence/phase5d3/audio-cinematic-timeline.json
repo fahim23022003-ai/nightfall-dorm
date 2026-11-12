@@ -1,0 +1,77 @@
+[
+ {
+  "elapsed": 0.953130666666666,
+  "event_counts": {
+   "intro_breath": 1,
+   "intro_running": 1
+  },
+  "label": "opening-immediate",
+  "phase": "cinematic"
+ },
+ {
+  "elapsed": 5.56500466666666,
+  "event_counts": {
+   "intro_breath": 2,
+   "intro_lightning": 1,
+   "intro_running": 2,
+   "intro_whisper": 1
+  },
+  "label": "opening-pursuit",
+  "phase": "cinematic"
+ },
+ {
+  "elapsed": 10.0601564848485,
+  "event_counts": {
+   "door_break": 1,
+   "intro_breath": 3,
+   "intro_lightning": 1,
+   "intro_running": 4,
+   "intro_whisper": 1
+  },
+  "label": "opening-door",
+  "phase": "cinematic"
+ },
+ {
+  "elapsed": 13.5595748888889,
+  "event_counts": {
+   "door_break": 1,
+   "intro_breath": 3,
+   "intro_impact": 1,
+   "intro_lightning": 1,
+   "intro_running": 4,
+   "intro_shriek": 1,
+   "intro_whisper": 1
+  },
+  "label": "opening-climax",
+  "phase": "cinematic"
+ },
+ {
+  "elapsed": 0.924679666666666,
+  "event_counts": {
+   "door_break": 1,
+   "intro_breath": 3,
+   "intro_impact": 1,
+   "intro_lightning": 1,
+   "intro_running": 4,
+   "intro_shriek": 1,
+   "intro_whisper": 2
+  },
+  "label": "opening-title",
+  "phase": "title"
+ },
+ {
+  "elapsed": 4.03444498941799,
+  "event_counts": {
+   "door_break": 1,
+   "intro_breath": 3,
+   "intro_impact": 1,
+   "intro_lightning": 1,
+   "intro_running": 4,
+   "intro_shriek": 1,
+   "intro_whisper": 2,
+   "match_start": 1
+  },
+  "label": "opening-end",
+  "phase": "tutorial"
+ }
+]

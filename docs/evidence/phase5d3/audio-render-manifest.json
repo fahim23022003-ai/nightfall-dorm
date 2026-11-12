@@ -1,0 +1,239 @@
+{
+  "capture_base_commit": "9f37cc6853f9fa1daa707d4fb6ae5b8b8ede4a4b",
+  "scope": "Audio milestoneA only; B owns ongoing AI/building/camera edits. Final hashes identify currently accepted audio sources; no claim all otherworkstream changes are tested here.",
+  "accepted_runs": [
+    {
+      "log": "audio-render-final.log",
+      "checks": 140,
+      "failures": 0,
+      "exit_code": 0
+    },
+    {
+      "log": "audio-transition-final.log",
+      "checks": 16,
+      "failures": 0,
+      "exit_code": 0
+    }
+  ],
+  "accepted_checks": 156,
+  "pngs": [
+    {
+      "path": "render-screens/audio/listening-room-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "a0f1f62530fb7d3216bb3518125c275b704624fd529887140410cbb25debaa66"
+    },
+    {
+      "path": "render-screens/audio/listening-room-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "3606ed799d6ad5981341a7276d4053dc3a099f2e3911b50820061366926fe95d"
+    },
+    {
+      "path": "render-screens/audio/music-state-approach-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "2af4b696896968ed91c7a125db87a8e6cbd60d184f4c96680a6828c42900e0bd"
+    },
+    {
+      "path": "render-screens/audio/music-state-endless-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "86489cd471ea7aa9f23515550a24a1bd38c0a8876a931a9178803f04699663e9"
+    },
+    {
+      "path": "render-screens/audio/music-state-preparation-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "5167e85e86408466e7c691868a027196ac45c36eab6b46323611a4ff9014d9db"
+    },
+    {
+      "path": "render-screens/audio/music-state-reaper-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "5fc87dc62506770ca1d853e45b53bd3c31f693fd0f851eaada3096df5da9a15d"
+    },
+    {
+      "path": "render-screens/audio/music-state-siege-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "9d1707327c6bbf9398de0e2cd084f0adfb28b4676602eccd9f28148974fb75ed"
+    },
+    {
+      "path": "render-screens/audio/opening-climax-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "1fd90744b6722a1f1fffadeb1d1d6aac7b0f69e050db6249f101ffb05e557a57"
+    },
+    {
+      "path": "render-screens/audio/opening-immediate-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "6e0d020e738cd8a8d3d3f1eb044e6d6655787eff3457915c39510050c435b82c"
+    },
+    {
+      "path": "render-screens/audio/opening-title-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "03f6fda3605eff0c95f0129296be078b5d139430fed703976f9059dfc37c1fc4"
+    },
+    {
+      "path": "render-screens/audio/settings-audio-entry-1080.png",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "sha256": "6c94837a34ebf22098e89bc4799f7e767de96c2c7f57380b43a9498fc98ed85d"
+    },
+    {
+      "path": "render-screens/audio/settings-audio-entry-720.png",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "b974e294a4386d1062659a96ade10937ec7d19ee8530fa2ff79d911d99ae43a6"
+    }
+  ],
+  "audio_source_sha256": {
+    "scripts/audio_director.gd": "3a01901111034786a2591fa9ab10bb8d306ad0386e59092d4c395b9af9fa8726",
+    "scripts/onboarding.gd": "edd493e585e2e63ab18cc1621a0fb376849661dda264d09d3ab0f5fee6c54b76",
+    "scripts/interface.gd": "0d5eb78e1efef2ff072da255edc1a49ac482bce15d46789c0ab66178b70eaa6a",
+    "tools/audio/compose_horror_scores.py": "2aa05786b500de0413147a05114e6aa36f7d550c8a5ab40c67ef982b793952f0",
+    "tools/audio/prepare_recorded_vocals.py": "63850457ee959abebd060c64b4d99aac0f9fa4246bcdd723e61afbb0e314b2ab",
+    "assets/audio/score-arrangements.json": "b973fdfe2cf24807da8f8d9c7edca53926e0b3fbbea0dd138a1377772ce458f6",
+    "tools/capture_phase5d3_audio.gd": "389eff9b295a07e68b2d98c2d6388c7593bac47713523731cae7f4a613817c22"
+  },
+  "runtime_wav_sha256": {
+    "assets/audio/ambient_dorm.wav": "117022f89eede7a314b5bdef5c7666a955dea9e96f677b58d47e7aed167a6510",
+    "assets/audio/bed_upgrade.wav": "b4fdbe01611ec2eb2bbb4e6c192da8653eda02bbc7f0a35311d8585a681acfc4",
+    "assets/audio/breach.wav": "f311b0fc79a288460a538a4a0544d8a9a5c37e848b347a48fdee0eb6e1c650f1",
+    "assets/audio/build.wav": "752e643b16c4ca89be6c9b45acc8c3d71f77c8f81d2e7f1f0ede46001f7083b3",
+    "assets/audio/button.wav": "86a43bfb414f7f7ec01d71949e8976c1581d637f8a6e276c6e2a7aaec26ab8dd",
+    "assets/audio/danger.wav": "5a17c3d2fcae7083b56d0f3386bbf78d87058a219bb002bf0d372ff1d9ca7af2",
+    "assets/audio/defeat.wav": "6ff0cbe201cbc105aba329c4bfa6ea1f5db1746a77de5a2f1099c3dedc739be9",
+    "assets/audio/door_break.wav": "d239f795db848854ff626633e76a176905c6aa477612d97d9285a1ffed88960e",
+    "assets/audio/door_crack.wav": "38f96eef024edd2eaa48b6b90e6b42cc61356d5686b48db6bb85de87648df4a5",
+    "assets/audio/door_hit.wav": "d95a4a7e4cded4e25415a29bd51e18120b5c7ae0b5190f00d8d91fa40a8eebcd",
+    "assets/audio/door_upgrade.wav": "64e93bc615ae61a4a0147a23f7efc72b7f7e4e79e5a878bebe535c7f03414bca",
+    "assets/audio/electricity.wav": "a262df250baa63f1eb6f270d7ac9230efe1ab805cc268b6a26b034adb7febe58",
+    "assets/audio/elimination.wav": "f8c0719127be39f3f94913b83b8ec365aa4bf2cf77f297a400c4df6e4794ece3",
+    "assets/audio/failure.wav": "f7a5dcd671e6747b309dbe4afebc66a2748579970ab181122c97d20ed90a4e62",
+    "assets/audio/footstep.wav": "228bda62ec7305b7dc817785b42a0eb5a99ac1e24e5f110ff92f70bc8644fdfb",
+    "assets/audio/generator_loop.wav": "ab5a8ff0c642ae74ef2298a8ebdbbc1ff280b466dad68837f86d14576b0a5904",
+    "assets/audio/ghost_defeat.wav": "e6fb669bc17136da2d9775f9f41d12ef01998b0a41c0b8420c156775ad7bb66c",
+    "assets/audio/ghost_hurt.wav": "fb8a50a6c0ed963527c86e2d9f101e98a960a55f115e7b2d99143bb526c28fd7",
+    "assets/audio/hunter_level.wav": "375ab1dc8d01118b06db614c5c2d9d34c053c88f7361b7ce2c1ea358997a65ae",
+    "assets/audio/hunter_spawn.wav": "d61a185d5d40f2d02df3d0c0f8997d38e0ecf4b31644c9a22fbab6c6a59852b2",
+    "assets/audio/impact.wav": "f5e9db8247382dd576dc64c9e4a6e181135b6065b675c634a0232dd1ec9f7434",
+    "assets/audio/income.wav": "3b93bd88aafeea2942d33dd545bed726d901ce18cf9f49ef9213f5aca65bdedd",
+    "assets/audio/match_start.wav": "2608a4b272109ab5484968e418574c174915107df51a2a16d757a4acafc1a2ff",
+    "assets/audio/menu.wav": "ee58f8f46e4d4a0ca44fa7da54afd76d11797e1c1a27482d3ac5725ea1b495b7",
+    "assets/audio/music_calm.wav": "001025437d5d85cf74fc5d5d354985c923d2bf9786e429a668e803c391839a1b",
+    "assets/audio/music_danger.wav": "b8485d45bf0536e138a64f7d418a7f6a49ba2bee1fc3de27cb2504a59d2109b1",
+    "assets/audio/music_menu.wav": "9c909f4d9db79f97a62d790660e644884692e970af3bb7c8c9340e2d487eafe6",
+    "assets/audio/proximity_loop.wav": "2b8d464b140d2c5c128c2c915f9f7c6ea5bdb916a187442f317e1f20bf8cc7fb",
+    "assets/audio/purchase.wav": "bbf7dc7dca439e5c20882fc120ef096bdb3f42a3ed6aa75a15a371d147d48817",
+    "assets/audio/rank.wav": "da4e26e760227d9f9409cffa921065c035c4b4b6e63396916bf522a8fa909e3a",
+    "assets/audio/repair.wav": "4abd45e66ac58da587ce5d73ab2bba9be165a74c0190d454026ac58c642f4746",
+    "assets/audio/reward.wav": "5fad45b81f6175d2e72889aa8c75881a6a18251d14aa92faab19e3b9bfcc50d1",
+    "assets/audio/shot_arc.wav": "21a15b23fa21cd1b1bb43c4b166aff6bdb527abb15599990eedcb1fa41caec6f",
+    "assets/audio/shot_needle.wav": "3719986f5e8b80820237b5e779dfcb38654b12ed5c522402e261c30ffc24fbf0",
+    "assets/audio/turret_upgrade.wav": "4798a273b969cd8a5b802269d682550c6e39f43415998a4dbfa1404cb0036af9",
+    "assets/audio/upgrade.wav": "0fda1c37888169ac53143bad331a0119cf35bc82366dd87dc3d52479016c6a89",
+    "assets/audio/victory.wav": "4e42b10e53db15ecd838ddb29ced8100077890a92ac4ed525436c63836823955",
+    "assets/audio/scream_3.wav": "0a51256a9a896d655d8afefd55410dc4f9bad297d24cc1acd39160bbe57eb1ed",
+    "assets/audio/perk_unlocked.wav": "9b90897334a6d39b125389fe39ce50d8bc1388d588bc96230e8fe7d40773d408",
+    "assets/audio/reaper_hurt.wav": "ea6d6efb144a487bdafdb2ed623a76fc98dccbc543fb9ef3d41aab98c443499f",
+    "assets/audio/item_shield.wav": "1133a3302b8203b2e8f7852508fe3246a9e6b52ac30bac4da4b0b2e190f857ea",
+    "assets/audio/door_reaction.wav": "fc9e481d6b8e908411fa93ada1528b9c47cd92488694894a9733f573f91cf508",
+    "assets/audio/sale.wav": "6c18dc41c1af3865c28e1a83f519d0654d913ddb33c01e41e95a5620f36ccc78",
+    "assets/audio/intro_running.wav": "543040c9c877402f406c9687abbf3e0f4584a2fa7381988258f24d46dede4bc8",
+    "assets/audio/hunter_laugh.wav": "2cfabbea3539b6d933433474f66bc6eea4b4cd7bf076f450df20a4af64ff61a9",
+    "assets/audio/reaper_ambience.wav": "abcd11367eb9feec7bf58e12cb5de1b431220035d3ff6000a046b3a2637e1d80",
+    "assets/audio/shop_purchase.wav": "af9ba2d420eb46e378fb72e597480303de51da8292837fe395c52e313beb0dd0",
+    "assets/audio/item_guardian_heart.wav": "462c83ff8dd9418c206730e554cbd82f30921d70ec1e7e1779b16ddaa8fb0b7c",
+    "assets/audio/music_intro.wav": "0de5cfbbbf611a48cccbd4a4de985936ddb6b7002c70ff43827fa8833184cbfb",
+    "assets/audio/intro_breath.wav": "a3c1722537c0549339e10195a2fcef07a083133579269fde2086faedbb6d04c3",
+    "assets/audio/achievement_claim.wav": "95af69eec3e57a3e5db49886671a7655cd6ee7cb6d6faddfdf993c0a1a684091",
+    "assets/audio/item_reaper_seal.wav": "7e2931207a03606c2bb8b2264026b68e050cfc960f0e30e8658d66add3e3b0f7",
+    "assets/audio/eerie.wav": "1eb0f0d091b4ca07421641d072b4997319cb9b70cbe4e762b512d93834fa4491",
+    "assets/audio/scream_1.wav": "a591633d2f7de008168eb3bd3ef1f0c7988f98e00d6c7730a04555a268dff851",
+    "assets/audio/mythic_perk.wav": "7bdd7e0c7c91dc6936b61d76e1566020ff24f43b96595717d66972c3f90ce3bb",
+    "assets/audio/reaper_scythe.wav": "2c65549159bd798a9a11c529f28fd775796d65e227bf6489f4d33542e7be9a2c",
+    "assets/audio/achievement_unlocked.wav": "8174a87af13a754e9eea81ae5f4b08f885a113bf180e55b8c91acdeb34124d62",
+    "assets/audio/prestige_upgrade.wav": "e787340b46bb42d64284f7b5952d8e14245da827b4a90abe5c7a6c5dfaa8fb43",
+    "assets/audio/death_scream_1.wav": "ed52d9c6ea4313fe44144e896223e12a4cdebdac4acb9e3183c79d7037cedd1b",
+    "assets/audio/item_overdrive.wav": "da0a314354b9919547da30090201966cabbdd30697637cc182a675684500ecb4",
+    "assets/audio/item_legendary_reveal.wav": "5db088a99f827354454a0618eba85953ba20acc700b63a4cd876022b2d4fe985",
+    "assets/audio/music_reaper.wav": "044adf894bf9982f77c61d469cd6c59cf6fc5c8199fe5b471e038336991a0ee0",
+    "assets/audio/insufficient_power.wav": "0e928c6abf66db1a9976c69ecc5150fb5300aecff43900da40aaacf2fc4c0a23",
+    "assets/audio/reaper_transform.wav": "8af2bda553005b7d691024ba39ede840f179deafa6b06bb9a0cf819e6932ee0d",
+    "assets/audio/item_repair.wav": "68d5ba45c726f88151b4a2d723ed9e0dd9923bc4f367e64adb13b3044750597d",
+    "assets/audio/reaper_charge.wav": "3ae1dacd940e7c3eee80cb259f1fc9fd6a333fc8bd268b637e65a345dec539a4",
+    "assets/audio/item_radar.wav": "b47da8be5bfdcc127ff9042ca54030bc59a0628500b6e7c2bb215575d45c6b5f",
+    "assets/audio/mythic_promotion.wav": "b655ed8fe19fe9f121f53794073efbd33c355d6f673b223ca774707f4b8589b8",
+    "assets/audio/item_decoy.wav": "924b90378f510e837d71c27294817097ba518922b220a16a1a6e500215946e68",
+    "assets/audio/insufficient_gold.wav": "233cd54a4e458d361af4891df309f8a6b67365962692fe03a62712dbd01e48c2",
+    "assets/audio/reaper_surge.wav": "8030470ba540ab59bf30a623e86cb30ee9adee01ca667ce5469e1fd034dd89b2",
+    "assets/audio/item_gold.wav": "bc16de8a4770917744923d7ab269d6b34fca8ffd5c4b95662d38dfec6221cf9d",
+    "assets/audio/reaper_impact.wav": "f9387d1c3eb5399b73e7b7ed3f324d4a092c76b99074194e48bf276d723e266a",
+    "assets/audio/item_smoke.wav": "92640670b59b233f97997554286096e387e76f476881ec1263be825e3f15490d",
+    "assets/audio/weather_rain.wav": "f7073259dc073fc8eb0c947003568e0df10c07480647191de8d748cab349c9f4",
+    "assets/audio/intro_whisper.wav": "bb43d754cf4b1a72a0bb1e0fc8af5329c5a2aec05b2abe25eaf33adf6bd9ec96",
+    "assets/audio/tutorial_step.wav": "5301c4d54d61d35f866fe8fdc3d5f37e3ec09dda6caede51964afba9a7ceb61c",
+    "assets/audio/survivor_notice.wav": "ea696ed22d980253bf9497c98907b0c23c906a06d0f4678006fa3c84a6c480c3",
+    "assets/audio/intro_lightning.wav": "87794bae0a131c4131c2a080819a83b942f28d24fb6ca9bc9f66237966119653",
+    "assets/audio/item_shield_hit.wav": "4336b5080d4120f96d0b40a4eca478db6667ee417b695411d9baa07dc244f255",
+    "assets/audio/weather_wind.wav": "87d356620b1a50dd35c510bbd0c19ba769b4b26aec9964022de529f67e610c39",
+    "assets/audio/item_end.wav": "f90275a8d085334939b5775d6fd0de1c49dce627361da2fc64ab4284e4e14b27",
+    "assets/audio/item_barricade.wav": "8edce0430396161f8d6bea78dce8be630179b3938e30235ab58649282c063c4a",
+    "assets/audio/intro_impact.wav": "b33c4821e99be9b1410a8d0fc9165abb838a3a5a6e089ef196fcb0c84fb68545",
+    "assets/audio/difficult_stage.wav": "503e3b1645a050e82c8fea0578a1121d9a6cd402f3d6878dc9164bc95468b1d7",
+    "assets/audio/stage_bonus_selected.wav": "2c4d1206dc4a47528e4f94041398d2f0a9abd1ca3396ba4befce201dff857feb",
+    "assets/audio/item_trap.wav": "3fa800f6f5b65358d7ebbe39c0c32e8102ee9226f6b9911e12664c152263a951",
+    "assets/audio/item_feather.wav": "e0505ec04a6c602b5e3f65fce1f186340bc6438ee2b87763b32afeda67e9afc6",
+    "assets/audio/refund.wav": "7c6c82d6a397938080b85dd1f0bd68d4ccc91cafdce9483bc536ecc8eb3f4ad4",
+    "assets/audio/item_reveal.wav": "5f7dc4a157f6ea113f65689d33d3819658b31b30832b0c7593dfa7e68b8d807d",
+    "assets/audio/item_frost.wav": "ef08910ff0a81dc26b2539a75e04a644d124a93f184b5064b3c4047deaebeadd",
+    "assets/audio/music_endless.wav": "6bf85a6a3883d8ee2b7d3b52c7414aa636896e8114523c9b51642cab1dc7589a",
+    "assets/audio/item_rescue.wav": "7e3a07a9786c38938107b34a6990e16374a93299bba05e9ba96c06eca486161e",
+    "assets/audio/reaper_laugh.wav": "33494e9b4b975669967054ae932b565d26ca3d6a6175d33c594ca586811fee14",
+    "assets/audio/death_scream_2.wav": "ef4dab1556898f819245f5ac146a1f56525fb9c26201e3fe56514b029a61bec9",
+    "assets/audio/item_cursed_fortune.wav": "92d675d8ef3dad66fa9b3659803d4444eff3df016619a33c07a5ed78fd977189",
+    "assets/audio/reaper_death.wav": "0a9a5088c68df0449aa59bebef919b1c5ffda37718df1cf229ef62fd714cd3da",
+    "assets/audio/weather_thunder.wav": "70cd4c71c33e5a19624a2da417e351afc978dbca66f08b2b237f7b2c11d27ec3",
+    "assets/audio/item_battery.wav": "b4df8fff2e21d83602b8f4d68c472ae92939f4d718e8de0b1af627c91747844c",
+    "assets/audio/tutorial_complete.wav": "30eb30e9fe4b3382010c1339c8832402debb9385ef9fa9a28ae14bfc00f27833",
+    "assets/audio/scream_2.wav": "d862905ff257c22ad165c93d71829c7fe3c6f4df0f2d436f94eb30a40a7d9f07",
+    "assets/audio/item_coupon.wav": "d01ad124db83a956db9e3822e00fe752c88beb5346a9432a6cf3ebb494da8423",
+    "assets/audio/item_inferno.wav": "213de026954f6e6032394a17807394ed7c694c37c392f065efe928108d03d053",
+    "assets/audio/item_time_freeze.wav": "1b6e202af53f836dfd5f6827a52318c56939a49f4be356b53fdbb3f3176ccf80",
+    "assets/audio/item_explosion.wav": "dd99d3c7647fcd7968405fb4e9a491513643e8752faae6b75c305536bdb90947",
+    "assets/audio/music_approach.wav": "845025bf01827d19611ba606cd7980fd529e51122178139cd1f322102ba578d1",
+    "assets/audio/intro_shriek.wav": "5f49985447f9840b386f6ba6da423e030d6d679820c546c4548bb1044eace58a",
+    "assets/audio/item_pillow.wav": "c638378b8ee222bcac631b8964b4f5e6ca4b4316ac6372598cd965f8f566fb62"
+  },
+  "expected_driver_warning": "llvmpipe cannot changeVSync mode",
+  "native_windows": "UNVERIFIED",
+  "physical_audio_and_subjective_horror": "UNVERIFIED"
+}

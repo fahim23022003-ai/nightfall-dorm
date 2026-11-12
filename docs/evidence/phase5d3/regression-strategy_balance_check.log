@@ -1,0 +1,21 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+STRATEGY_BALANCE_CONTROLLED {"branch":"precision","distance":180.0,"dps":0.0,"fixture":"CONTROLLED_FIXED_TARGET_L10","impacts_damage":0.0,"level":10,"paid_gold":1765.0,"paid_power":262.0,"reaper":false,"remaining_projectiles":0,"seconds":20,"shots":0,"suppression_strength":0.0}
+STRATEGY_BALANCE_CONTROLLED {"branch":"suppression","distance":180.0,"dps":244.8,"fixture":"CONTROLLED_FIXED_TARGET_L10","impacts_damage":4896.0,"level":10,"paid_gold":1765.0,"paid_power":262.0,"reaper":false,"remaining_projectiles":1,"seconds":20,"shots":69,"suppression_strength":0.15}
+STRATEGY_BALANCE_CONTROLLED {"branch":"precision","distance":220.0,"dps":0.0,"fixture":"CONTROLLED_FIXED_TARGET_L10","impacts_damage":0.0,"level":10,"paid_gold":1765.0,"paid_power":262.0,"reaper":false,"remaining_projectiles":0,"seconds":20,"shots":0,"suppression_strength":0.0}
+STRATEGY_BALANCE_CONTROLLED {"branch":"suppression","distance":220.0,"dps":244.8,"fixture":"CONTROLLED_FIXED_TARGET_L10","impacts_damage":4896.0,"level":10,"paid_gold":1765.0,"paid_power":262.0,"reaper":false,"remaining_projectiles":1,"seconds":20,"shots":69,"suppression_strength":0.15}
+STRATEGY_BALANCE_CONTROLLED {"branch":"precision","distance":180.0,"dps":0.0,"fixture":"CONTROLLED_FIXED_TARGET_L10","impacts_damage":0.0,"level":10,"paid_gold":1765.0,"paid_power":262.0,"reaper":true,"remaining_projectiles":0,"seconds":20,"shots":0,"suppression_strength":0.0}
+STRATEGY_BALANCE_CONTROLLED {"branch":"suppression","distance":180.0,"dps":244.8,"fixture":"CONTROLLED_FIXED_TARGET_L10","impacts_damage":4896.0,"level":10,"paid_gold":1765.0,"paid_power":262.0,"reaper":true,"remaining_projectiles":1,"seconds":20,"shots":69,"suppression_strength":0.15}
+STRATEGY_BALANCE_CONTROLLED {"branch":"precision","distance":220.0,"dps":0.0,"fixture":"CONTROLLED_FIXED_TARGET_L10","impacts_damage":0.0,"level":10,"paid_gold":1765.0,"paid_power":262.0,"reaper":true,"remaining_projectiles":0,"seconds":20,"shots":0,"suppression_strength":0.0}
+STRATEGY_BALANCE_CONTROLLED {"branch":"suppression","distance":220.0,"dps":244.8,"fixture":"CONTROLLED_FIXED_TARGET_L10","impacts_damage":4896.0,"level":10,"paid_gold":1765.0,"paid_power":262.0,"reaper":true,"remaining_projectiles":1,"seconds":20,"shots":69,"suppression_strength":0.15}
+ERROR: Needle close-range damage tradeoff missing
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] controlled_combat (res://tests/strategy_balance_audit.gd:263)
+       [1] run (res://tests/strategy_balance_audit.gd:190)
+ERROR: Needle close-range damage tradeoff missing
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] controlled_combat (res://tests/strategy_balance_audit.gd:263)
+       [1] run (res://tests/strategy_balance_audit.gd:190)
+STRATEGY_BALANCE_CONTROLLED_FIXTURES=8 FAILURES=2

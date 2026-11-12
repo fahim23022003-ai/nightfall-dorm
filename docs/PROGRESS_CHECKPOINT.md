@@ -1,29 +1,50 @@
-# Phase 5D-3 — owner-feedback improvements (12 November 2026)
+# Phase 5D-3 — implemented and verified (12 November 2026)
 
-IN PROGRESS. Actual clean work/GitHub baseline
-3e6224e649ae7d30de0742e2dc58688a078f43a2 is newer than supplied5D2reference.
-Preserve existing Phase6 fixes/history; this task does not repeat/start Phase6.
-Recoverytag pre-phase5d3-3e6224e. Baseline9commands pass. B soleproduction;
-C independentQA; root docs/checkpoints/regressions; bounded genuineaudio source
-scout. Four workstreams: sampled musical score/genuinevocals and audio test UI;
-tacticalHunter abilities; allsix machines plusbed/door L10specializations;
-teammate status/safe camera. No main changes/publicrelease. NativeWindows
-and subjective scariness remainUNVERIFIED. Do not markpartial featurescomplete.
+Version0.6.1-5d3, Godot4.6.3 Linux. Allfour owner-feedback workstreams implemented:
+seven recorded-instrument musical scores +genuine recorded voices/listening room;
+tactical Hunter target memory and telegraphed active abilities; allsix machines
+plus beds/doors Level10/exclusive branches; actual teammate HUD/read-only camera.
+Native Windows, subjective scariness/vocal credibility and human difficulty remain
+UNVERIFIED. Existing Phase6 history/repairs preserved; no new Phase6 audit started.
 
+Actual clean baseline/work GitHub3e6224e649ae7d30de0742e2dc58688a078f43a2;
+recoverypre-phase5d3-3e6224e; baseline9f37cc6. Sources3a64516, scoreasset checkpoints
+2df41e3/d05e3f4, runtime633efc0, credits/build846691e, finalpreservatione60a114.
+Bsoleproduction; independentC/A/D; rootdocs/regression/Git. Main untouched.
 
-Integrated milestone: allfourworkstreams implemented; originalsampledscore and
-licensedsource checkpoints3a64516/d05e3f4 pushed. C acceptance: audio271,
-machineeconomy1668/48scenarios, structures99, migration43, spectator1420,
-branchUI425, tactical60251 plus affectedRavager20076/finalcharged+codes4033.
-Dactualaudio156 and teamHUD293 checks pass; finalbranch/earnedrender pending.
-Originalintro music0target fixed; firstphrase raised withheadroom, genuine
-recordingsreplaceweaksyntheticvoices. OldsaveJSONversioncheck, longer-scream
-laughqueueexpiry, Ravagerarrivalrecovery, roster/inspector overlap, structural
-labels/couponpolicy and HellCrusher3-hitfrequency fixed and affectedretested.
-Sixmachines+bed/door now10; bed/door remainexistingunsellable full-price
-structures; sixmachinesretaincoupon/actualinvestment50%refunds. CodesRULESET2
-rejectoldplayconditionswhilepreservingarchivalrecords. Transientcameraunsaved.
-Full88-command immutable regression isrunning; finalcompletion/pushnotclaimed.
+C11gatesaccepted: audio271; economy1668/48; structures99; migration43;
+AI60251 plus affected20076/final4033 and six actualGame codeworker traces;
+spectator1420 acrossfive maps; branchUI425; support-role400; contact235/50cases.
+D775checks;130current PNGs+41explicitdiagnostics; actualengine PCM. Menu samevolume
++11.464dB vsoldroute, strengthenedintro0–4RMS.008002, climaxpeak.13934. Subjective
+quality isnotinferredfromnumbers. Credits/sourcehashes retained; originalFreesound
+originblocked403, explicitCC0 mirror metadata/corroboration documented.
+
+Afinalfullrefresh16campaign,10earnedEndless245waves,15resumes,60once-onlyReapers,
+15controlledAI55079checks passes. All8L10 Normalwave11/563.8s, Hellwave8/436.2s;
+passiveNormaldieswave62, activeHell53. No universal-hardening or humanwinrateclaim.
+No blanketHP/damage tuning. Bed/door retain unsellable/full-price policy; machine
+coupons/50%actual separateGold/Electricity refunds and reusedpads verified.
+Codesruleset2 changesplayconditions; oldresultsarchived, oldcodesrejectclearly.
+
+Full88-command existingregular/extended completed83initialpasses/fivefailures.
+Resolved real weapon-modifier doubleapplication and Hunter contact/door guard
+ordering; corrected HellCrusher3chargedcadence, savewhole-number validation,
+long-recorded-scream laughexpiry and rendered UIissues. Ported obsoletelegacy
+caps/formulas/counters/clockfixtures without relaxing transaction checks. Allfive
+affectedsuites nowpass, including originalpremium176279/270approaches. Historical
+JSON evidence restored unchanged. Nine new QA suites registered forfuture runs.
+
+ActualWindows x64 build/11Linux embedded-pack checks/ZIP CRC verified, source
+ e60a114e14bb2515cdfb381023902a32770c98dd. Private download:
+/workspace/NightfallDorm-Phase5D3-Windows-x64.zip (80,976,099 bytes), SHA256
+33ae95cdfa14d86e70b6b5b900e61c33f097f8d6ccaf46f591d6e9c984e504c3.
+SourceGitHubZIP includesproject/assets/exportworkflow, not executable.
+
+[Fullreport](PHASE_5D3_MUSIC_HUNTER_BUILDINGS_SPECTATE_REPORT.md),
+[Windowsowner/Adieguide](WINDOWS_PLAYTEST_GUIDE.md). Remaining LOWdisplaylimitation:
+weaponinspector values are weapon/perk stats, not all-relay/item effectiveDPS.
+Final source/evidence Gitdelivery receipt follows actualpush. STOP AFTER PHASE 5D-3.
 
 ---
 

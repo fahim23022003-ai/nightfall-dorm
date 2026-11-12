@@ -1,0 +1,1081 @@
+{
+  "cases": [
+    {
+      "abilities": {
+        "conceal": 0,
+        "dash": 0,
+        "feint": 0,
+        "pressure": 9
+      },
+      "archetype": "crusher",
+      "attacks": 77,
+      "events": {
+        "approach": 5,
+        "archetype_warning": 78,
+        "build": 6,
+        "building_upgrade": 54,
+        "charged_attack": 18,
+        "door_damage": 77,
+        "encounter": 5,
+        "hunter_ability": 9,
+        "hunter_ability_warning": 9
+      },
+      "map": "abandoned_dorm",
+      "minimum_target_gap": 35.499999999998,
+      "mode": "standard",
+      "result": "",
+      "seconds": 179.999999999994,
+      "target_changes": [
+        {
+          "room": 4,
+          "time": 0.1
+        },
+        {
+          "room": 1,
+          "time": 40.7000000000003
+        },
+        {
+          "room": 4,
+          "time": 76.9999999999999
+        },
+        {
+          "room": 1,
+          "time": 112.499999999998
+        },
+        {
+          "room": 4,
+          "time": 148.199999999996
+        }
+      ],
+      "targets": [
+        4,
+        1
+      ]
+    },
+    {
+      "abilities": {
+        "conceal": 10,
+        "dash": 0,
+        "feint": 10,
+        "pressure": 0
+      },
+      "archetype": "stalker",
+      "attacks": 136,
+      "events": {
+        "approach": 11,
+        "archetype_warning": 11,
+        "build": 6,
+        "building_upgrade": 54,
+        "charged_attack": 25,
+        "door_damage": 136,
+        "encounter": 11,
+        "hunter_ability": 20,
+        "hunter_ability_warning": 10
+      },
+      "map": "abandoned_dorm",
+      "minimum_target_gap": 15.1,
+      "mode": "hard",
+      "result": "",
+      "seconds": 179.999999999994,
+      "target_changes": [
+        {
+          "room": 2,
+          "time": 0.1
+        },
+        {
+          "room": 5,
+          "time": 15.2
+        },
+        {
+          "room": 1,
+          "time": 31.5000000000002
+        },
+        {
+          "room": 4,
+          "time": 51.8000000000005
+        },
+        {
+          "room": 1,
+          "time": 68.1000000000004
+        },
+        {
+          "room": 4,
+          "time": 84.3999999999995
+        },
+        {
+          "room": 1,
+          "time": 100.599999999999
+        },
+        {
+          "room": 4,
+          "time": 116.799999999998
+        },
+        {
+          "room": 1,
+          "time": 132.999999999997
+        },
+        {
+          "room": 4,
+          "time": 149.199999999996
+        },
+        {
+          "room": 2,
+          "time": 165.399999999995
+        }
+      ],
+      "targets": [
+        2,
+        5,
+        1,
+        4
+      ]
+    },
+    {
+      "abilities": {
+        "conceal": 0,
+        "dash": 9,
+        "feint": 0,
+        "pressure": 0
+      },
+      "archetype": "ravager",
+      "attacks": 105,
+      "events": {
+        "approach": 18,
+        "archetype_warning": 38,
+        "build": 6,
+        "building_upgrade": 54,
+        "charged_attack": 26,
+        "door_damage": 105,
+        "encounter": 18,
+        "hunter_ability": 9,
+        "hunter_ability_warning": 9
+      },
+      "map": "abandoned_dorm",
+      "minimum_target_gap": 9.19999999999998,
+      "mode": "hell",
+      "result": "",
+      "seconds": 179.999999999994,
+      "target_changes": [
+        {
+          "room": 2,
+          "time": 0.1
+        },
+        {
+          "room": 5,
+          "time": 9.29999999999998
+        },
+        {
+          "room": 2,
+          "time": 19.2
+        },
+        {
+          "room": 5,
+          "time": 28.9000000000001
+        },
+        {
+          "room": 1,
+          "time": 38.8000000000003
+        },
+        {
+          "room": 4,
+          "time": 52.2000000000005
+        },
+        {
+          "room": 1,
+          "time": 62.1000000000006
+        },
+        {
+          "room": 4,
+          "time": 71.7000000000002
+        },
+        {
+          "room": 1,
+          "time": 81.5999999999996
+        },
+        {
+          "room": 4,
+          "time": 91.0999999999991
+        },
+        {
+          "room": 0,
+          "time": 100.999999999999
+        },
+        {
+          "room": 3,
+          "time": 114.099999999998
+        },
+        {
+          "room": 0,
+          "time": 123.999999999997
+        },
+        {
+          "room": 3,
+          "time": 133.499999999997
+        },
+        {
+          "room": 0,
+          "time": 143.399999999996
+        },
+        {
+          "room": 3,
+          "time": 152.899999999996
+        },
+        {
+          "room": 0,
+          "time": 162.799999999995
+        },
+        {
+          "room": 3,
+          "time": 172.299999999994
+        }
+      ],
+      "targets": [
+        2,
+        5,
+        1,
+        4,
+        0,
+        3
+      ]
+    },
+    {
+      "abilities": {
+        "conceal": 0,
+        "dash": 0,
+        "feint": 0,
+        "pressure": 9
+      },
+      "archetype": "crusher",
+      "attacks": 76,
+      "events": {
+        "approach": 6,
+        "archetype_warning": 77,
+        "build": 6,
+        "building_upgrade": 54,
+        "charged_attack": 16,
+        "door_damage": 76,
+        "encounter": 6,
+        "hunter_ability": 9,
+        "hunter_ability_warning": 9
+      },
+      "map": "haunted_hospital",
+      "minimum_target_gap": 24.0000000000001,
+      "mode": "hard",
+      "result": "",
+      "seconds": 179.999999999994,
+      "target_changes": [
+        {
+          "room": 2,
+          "time": 0.1
+        },
+        {
+          "room": 5,
+          "time": 24.1000000000001
+        },
+        {
+          "room": 4,
+          "time": 49.8000000000004
+        },
+        {
+          "room": 1,
+          "time": 80.9999999999997
+        },
+        {
+          "room": 3,
+          "time": 106.499999999998
+        },
+        {
+          "room": 0,
+          "time": 138.399999999996
+        }
+      ],
+      "targets": [
+        2,
+        5,
+        4,
+        1,
+        3,
+        0
+      ]
+    },
+    {
+      "abilities": {
+        "conceal": 10,
+        "dash": 0,
+        "feint": 12,
+        "pressure": 0
+      },
+      "archetype": "stalker",
+      "attacks": 124,
+      "events": {
+        "approach": 13,
+        "archetype_warning": 12,
+        "build": 6,
+        "building_upgrade": 54,
+        "charged_attack": 30,
+        "door_damage": 124,
+        "encounter": 12,
+        "hunter_ability": 22,
+        "hunter_ability_warning": 10
+      },
+      "map": "haunted_hospital",
+      "minimum_target_gap": 11.5,
+      "mode": "hell",
+      "result": "",
+      "seconds": 179.999999999994,
+      "target_changes": [
+        {
+          "room": 2,
+          "time": 0.1
+        },
+        {
+          "room": 5,
+          "time": 11.6
+        },
+        {
+          "room": 4,
+          "time": 25.3000000000001
+        },
+        {
+          "room": 1,
+          "time": 41.9000000000003
+        },
+        {
+          "room": 3,
+          "time": 55.6000000000005
+        },
+        {
+          "room": 0,
+          "time": 73.3000000000001
+        },
+        {
+          "room": 3,
+          "time": 97.7999999999987
+        },
+        {
+          "room": 0,
+          "time": 111.399999999998
+        },
+        {
+          "room": 3,
+          "time": 125.199999999997
+        },
+        {
+          "room": 0,
+          "time": 138.299999999996
+        },
+        {
+          "room": 3,
+          "time": 151.799999999996
+        },
+        {
+          "room": 0,
+          "time": 165.499999999995
+        },
+        {
+          "room": 3,
+          "time": 178.599999999994
+        }
+      ],
+      "targets": [
+        2,
+        5,
+        4,
+        1,
+        3,
+        0
+      ]
+    },
+    {
+      "abilities": {
+        "conceal": 0,
+        "dash": 9,
+        "feint": 0,
+        "pressure": 0
+      },
+      "archetype": "ravager",
+      "attacks": 105,
+      "events": {
+        "approach": 9,
+        "archetype_warning": 36,
+        "build": 6,
+        "building_upgrade": 54,
+        "door_damage": 105,
+        "encounter": 9,
+        "hunter_ability": 9,
+        "hunter_ability_warning": 9
+      },
+      "map": "haunted_hospital",
+      "minimum_target_gap": 19.0999999999989,
+      "mode": "standard",
+      "result": "",
+      "seconds": 179.999999999994,
+      "target_changes": [
+        {
+          "room": 0,
+          "time": 0.1
+        },
+        {
+          "room": 3,
+          "time": 26.9000000000001
+        },
+        {
+          "room": 0,
+          "time": 46.0000000000004
+        },
+        {
+          "room": 3,
+          "time": 65.1000000000006
+        },
+        {
+          "room": 0,
+          "time": 84.1999999999995
+        },
+        {
+          "room": 3,
+          "time": 103.299999999998
+        },
+        {
+          "room": 0,
+          "time": 122.399999999997
+        },
+        {
+          "room": 3,
+          "time": 141.499999999996
+        },
+        {
+          "room": 1,
+          "time": 160.599999999995
+        }
+      ],
+      "targets": [
+        0,
+        3,
+        1
+      ]
+    },
+    {
+      "abilities": {
+        "conceal": 0,
+        "dash": 0,
+        "feint": 0,
+        "pressure": 8
+      },
+      "archetype": "crusher",
+      "attacks": 68,
+      "events": {
+        "approach": 7,
+        "archetype_warning": 68,
+        "build": 6,
+        "building_upgrade": 54,
+        "charged_attack": 20,
+        "door_damage": 68,
+        "encounter": 7,
+        "hunter_ability": 8,
+        "hunter_ability_warning": 9
+      },
+      "map": "forgotten_hotel",
+      "minimum_target_gap": 18.0,
+      "mode": "hell",
+      "result": "",
+      "seconds": 179.999999999994,
+      "target_changes": [
+        {
+          "room": 2,
+          "time": 0.1
+        },
+        {
+          "room": 3,
+          "time": 18.1
+        },
+        {
+          "room": 4,
+          "time": 41.1000000000003
+        },
+        {
+          "room": 5,
+          "time": 82.4999999999996
+        },
+        {
+          "room": 4,
+          "time": 123.599999999997
+        },
+        {
+          "room": 5,
+          "time": 146.899999999996
+        },
+        {
+          "room": 3,
+          "time": 169.699999999995
+        }
+      ],
+      "targets": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "abilities": {
+        "conceal": 5,
+        "dash": 0,
+        "feint": 5,
+        "pressure": 0
+      },
+      "archetype": "stalker",
+      "attacks": 121,
+      "events": {
+        "approach": 6,
+        "archetype_warning": 6,
+        "build": 6,
+        "building_upgrade": 54,
+        "door_damage": 121,
+        "encounter": 6,
+        "hunter_ability": 10,
+        "hunter_ability_warning": 5
+      },
+      "map": "forgotten_hotel",
+      "minimum_target_gap": 22.3,
+      "mode": "standard",
+      "result": "",
+      "seconds": 179.999999999994,
+      "target_changes": [
+        {
+          "room": 2,
+          "time": 0.1
+        },
+        {
+          "room": 5,
+          "time": 22.4
+        },
+        {
+          "room": 2,
+          "time": 57.2000000000005
+        },
+        {
+          "room": 5,
+          "time": 91.6999999999991
+        },
+        {
+          "room": 3,
+          "time": 125.999999999997
+        },
+        {
+          "room": 2,
+          "time": 156.699999999995
+        }
+      ],
+      "targets": [
+        2,
+        5,
+        3
+      ]
+    },
+    {
+      "abilities": {
+        "conceal": 0,
+        "dash": 11,
+        "feint": 0,
+        "pressure": 0
+      },
+      "archetype": "ravager",
+      "attacks": 91,
+      "events": {
+        "approach": 12,
+        "archetype_warning": 33,
+        "build": 6,
+        "building_upgrade": 54,
+        "charged_attack": 16,
+        "door_damage": 91,
+        "encounter": 11,
+        "hunter_ability": 11,
+        "hunter_ability_warning": 11
+      },
+      "map": "forgotten_hotel",
+      "minimum_target_gap": 11.9,
+      "mode": "hard",
+      "result": "",
+      "seconds": 179.999999999994,
+      "target_changes": [
+        {
+          "room": 2,
+          "time": 0.1
+        },
+        {
+          "room": 3,
+          "time": 12.0
+        },
+        {
+          "room": 2,
+          "time": 28.2000000000001
+        },
+        {
+          "room": 3,
+          "time": 44.4000000000004
+        },
+        {
+          "room": 5,
+          "time": 60.6000000000006
+        },
+        {
+          "room": 4,
+          "time": 79.9999999999997
+        },
+        {
+          "room": 5,
+          "time": 96.0999999999988
+        },
+        {
+          "room": 4,
+          "time": 112.099999999998
+        },
+        {
+          "room": 5,
+          "time": 128.099999999997
+        },
+        {
+          "room": 4,
+          "time": 144.099999999996
+        },
+        {
+          "room": 3,
+          "time": 159.999999999995
+        },
+        {
+          "room": 2,
+          "time": 175.899999999994
+        }
+      ],
+      "targets": [
+        2,
+        3,
+        5,
+        4
+      ]
+    },
+    {
+      "abilities": {
+        "conceal": 0,
+        "dash": 0,
+        "feint": 0,
+        "pressure": 8
+      },
+      "archetype": "crusher",
+      "attacks": 59,
+      "events": {
+        "approach": 4,
+        "archetype_warning": 59,
+        "build": 6,
+        "building_upgrade": 54,
+        "charged_attack": 14,
+        "door_damage": 59,
+        "encounter": 4,
+        "hunter_ability": 8,
+        "hunter_ability_warning": 8
+      },
+      "map": "underground_lab",
+      "minimum_target_gap": 44.6000000000004,
+      "mode": "standard",
+      "result": "",
+      "seconds": 179.999999999994,
+      "target_changes": [
+        {
+          "room": 4,
+          "time": 0.1
+        },
+        {
+          "room": 1,
+          "time": 44.7000000000004
+        },
+        {
+          "room": 4,
+          "time": 92.999999999999
+        },
+        {
+          "room": 2,
+          "time": 139.899999999996
+        }
+      ],
+      "targets": [
+        4,
+        1,
+        2
+      ]
+    },
+    {
+      "abilities": {
+        "conceal": 8,
+        "dash": 0,
+        "feint": 8,
+        "pressure": 0
+      },
+      "archetype": "stalker",
+      "attacks": 112,
+      "events": {
+        "approach": 9,
+        "archetype_warning": 9,
+        "build": 6,
+        "building_upgrade": 54,
+        "charged_attack": 20,
+        "door_damage": 112,
+        "encounter": 9,
+        "hunter_ability": 16,
+        "hunter_ability_warning": 8
+      },
+      "map": "underground_lab",
+      "minimum_target_gap": 16.2,
+      "mode": "hard",
+      "result": "",
+      "seconds": 179.999999999994,
+      "target_changes": [
+        {
+          "room": 2,
+          "time": 0.1
+        },
+        {
+          "room": 1,
+          "time": 16.3
+        },
+        {
+          "room": 4,
+          "time": 36.7000000000003
+        },
+        {
+          "room": 5,
+          "time": 61.1000000000006
+        },
+        {
+          "room": 4,
+          "time": 81.2999999999997
+        },
+        {
+          "room": 3,
+          "time": 101.399999999999
+        },
+        {
+          "room": 4,
+          "time": 121.499999999997
+        },
+        {
+          "room": 5,
+          "time": 141.499999999996
+        },
+        {
+          "room": 1,
+          "time": 161.499999999995
+        }
+      ],
+      "targets": [
+        2,
+        1,
+        4,
+        5,
+        3
+      ]
+    },
+    {
+      "abilities": {
+        "conceal": 0,
+        "dash": 11,
+        "feint": 0,
+        "pressure": 0
+      },
+      "archetype": "ravager",
+      "attacks": 80,
+      "events": {
+        "approach": 14,
+        "archetype_warning": 30,
+        "build": 6,
+        "building_upgrade": 54,
+        "charged_attack": 20,
+        "door_damage": 80,
+        "encounter": 14,
+        "hunter_ability": 11,
+        "hunter_ability_warning": 11
+      },
+      "map": "underground_lab",
+      "minimum_target_gap": 10.1,
+      "mode": "hell",
+      "result": "",
+      "seconds": 179.999999999994,
+      "target_changes": [
+        {
+          "room": 2,
+          "time": 0.1
+        },
+        {
+          "room": 1,
+          "time": 10.2
+        },
+        {
+          "room": 0,
+          "time": 24.3000000000001
+        },
+        {
+          "room": 4,
+          "time": 38.4000000000003
+        },
+        {
+          "room": 5,
+          "time": 54.0000000000005
+        },
+        {
+          "room": 4,
+          "time": 67.8000000000004
+        },
+        {
+          "room": 3,
+          "time": 81.0999999999997
+        },
+        {
+          "room": 0,
+          "time": 94.2999999999989
+        },
+        {
+          "room": 1,
+          "time": 107.799999999998
+        },
+        {
+          "room": 2,
+          "time": 121.499999999997
+        },
+        {
+          "room": 5,
+          "time": 134.799999999997
+        },
+        {
+          "room": 2,
+          "time": 147.699999999996
+        },
+        {
+          "room": 5,
+          "time": 160.999999999995
+        },
+        {
+          "room": 4,
+          "time": 174.299999999994
+        }
+      ],
+      "targets": [
+        2,
+        1,
+        0,
+        4,
+        5,
+        3
+      ]
+    },
+    {
+      "abilities": {
+        "conceal": 0,
+        "dash": 0,
+        "feint": 0,
+        "pressure": 9
+      },
+      "archetype": "crusher",
+      "attacks": 69,
+      "events": {
+        "approach": 7,
+        "archetype_warning": 70,
+        "build": 6,
+        "building_upgrade": 54,
+        "charged_attack": 15,
+        "door_damage": 69,
+        "encounter": 7,
+        "hunter_ability": 9,
+        "hunter_ability_warning": 9
+      },
+      "map": "cursed_mansion",
+      "minimum_target_gap": 24.0000000000001,
+      "mode": "hard",
+      "result": "",
+      "seconds": 179.999999999994,
+      "target_changes": [
+        {
+          "room": 2,
+          "time": 0.1
+        },
+        {
+          "room": 1,
+          "time": 24.1000000000001
+        },
+        {
+          "room": 4,
+          "time": 56.3000000000005
+        },
+        {
+          "room": 3,
+          "time": 84.9999999999994
+        },
+        {
+          "room": 4,
+          "time": 115.899999999998
+        },
+        {
+          "room": 1,
+          "time": 145.699999999996
+        },
+        {
+          "room": 0,
+          "time": 171.999999999995
+        }
+      ],
+      "targets": [
+        2,
+        1,
+        4,
+        3,
+        0
+      ]
+    },
+    {
+      "abilities": {
+        "conceal": 10,
+        "dash": 0,
+        "feint": 10,
+        "pressure": 0
+      },
+      "archetype": "stalker",
+      "attacks": 110,
+      "events": {
+        "approach": 11,
+        "archetype_warning": 11,
+        "build": 6,
+        "building_upgrade": 54,
+        "charged_attack": 25,
+        "door_damage": 110,
+        "encounter": 11,
+        "hunter_ability": 20,
+        "hunter_ability_warning": 10
+      },
+      "map": "cursed_mansion",
+      "minimum_target_gap": 11.5,
+      "mode": "hell",
+      "result": "",
+      "seconds": 179.999999999994,
+      "target_changes": [
+        {
+          "room": 2,
+          "time": 0.1
+        },
+        {
+          "room": 1,
+          "time": 11.6
+        },
+        {
+          "room": 4,
+          "time": 28.8000000000001
+        },
+        {
+          "room": 3,
+          "time": 43.1000000000003
+        },
+        {
+          "room": 4,
+          "time": 59.9000000000006
+        },
+        {
+          "room": 1,
+          "time": 76.5999999999999
+        },
+        {
+          "room": 0,
+          "time": 90.7999999999991
+        },
+        {
+          "room": 1,
+          "time": 118.499999999998
+        },
+        {
+          "room": 0,
+          "time": 135.199999999997
+        },
+        {
+          "room": 1,
+          "time": 151.799999999996
+        },
+        {
+          "room": 3,
+          "time": 168.299999999995
+        }
+      ],
+      "targets": [
+        2,
+        1,
+        4,
+        3,
+        0
+      ]
+    },
+    {
+      "abilities": {
+        "conceal": 0,
+        "dash": 8,
+        "feint": 0,
+        "pressure": 0
+      },
+      "archetype": "ravager",
+      "attacks": 87,
+      "events": {
+        "approach": 8,
+        "archetype_warning": 31,
+        "build": 6,
+        "building_upgrade": 54,
+        "door_damage": 87,
+        "encounter": 7,
+        "hunter_ability": 8,
+        "hunter_ability_warning": 8
+      },
+      "map": "cursed_mansion",
+      "minimum_target_gap": 20.3999999999988,
+      "mode": "standard",
+      "result": "",
+      "seconds": 179.999999999994,
+      "target_changes": [
+        {
+          "room": 0,
+          "time": 0.1
+        },
+        {
+          "room": 3,
+          "time": 27.3000000000001
+        },
+        {
+          "room": 1,
+          "time": 56.4000000000005
+        },
+        {
+          "room": 0,
+          "time": 81.2999999999997
+        },
+        {
+          "room": 3,
+          "time": 104.599999999998
+        },
+        {
+          "room": 1,
+          "time": 133.599999999997
+        },
+        {
+          "room": 4,
+          "time": 158.299999999995
+        },
+        {
+          "room": 0,
+          "time": 178.699999999994
+        }
+      ],
+      "targets": [
+        0,
+        3,
+        1,
+        4
+      ]
+    }
+  ],
+  "checks": 55079,
+  "failures": 0,
+  "scope": "Controlled initial L10bed/door, paid L10repair, seeded wallets and paused bot purchasing to keep valid healed alternatives alive; actual Hunter navigation/ability/combat ticking. Not natural economy or victory evidence.",
+  "source_provenance": "All15controlledcasesfreshlyrerun after final support-role filtering/contactguard; initial seeded high-tier setup is controlled, not natural economy."
+}

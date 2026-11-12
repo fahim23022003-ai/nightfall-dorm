@@ -1,0 +1,19 @@
+{
+  "accepted": true,
+  "checks": 271,
+  "failures": 0,
+  "exit_code": 0,
+  "engine_errors": false,
+  "warnings": false,
+  "log": "qa-audio-accepted.log",
+  "source_sha256": {
+    "scripts/audio_director.gd": "4087a66a2c4dd882fa8d3d4b605fe0c6aa882b4712010ba00c9f1b47ea6563f3",
+    "scripts/interface.gd": "da43e92fd82cda60911d017fa2fe096bcf6ae5ad16e7b633a8e0f91c2a038ce1",
+    "scripts/onboarding.gd": "edd493e585e2e63ab18cc1621a0fb376849661dda264d09d3ab0f5fee6c54b76",
+    "tests/phase5d3_qa_audio.gd": "9e8f1b75e16fb26981be3df97869138d29c660b0085904104c87eccdcc82bc66"
+  },
+  "platform": "Godot4.6.3 Linux headless",
+  "native_windows": "UNVERIFIED",
+  "subjective_musicality_scariness": "UNVERIFIED",
+  "actual_mixer_capture": "Separate root/D evidence; this test verifies real players/routing and controls"
+}

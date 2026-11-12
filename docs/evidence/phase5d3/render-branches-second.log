@@ -1,0 +1,102 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+VISUAL_CAPTURE branches/bed-branches-720
+VISUAL_CAPTURE branches/bed-chosen-720
+VISUAL_CAPTURE branches/door-branches-720
+VISUAL_CAPTURE branches/door-chosen-720
+VISUAL_CAPTURE branches/generator-branches-720
+VISUAL_CAPTURE branches/generator-chosen-720
+VISUAL_CAPTURE branches/repair-branches-720
+VISUAL_CAPTURE branches/repair-chosen-720
+VISUAL_CAPTURE branches/economy-branches-720
+VISUAL_CAPTURE branches/economy-chosen-720
+VISUAL_CAPTURE branches/enhancer-branches-720
+VISUAL_CAPTURE branches/enhancer-chosen-720
+VISUAL_CAPTURE branches/bed-branches-1080
+VISUAL_CAPTURE branches/bed-chosen-1080
+VISUAL_CAPTURE branches/door-branches-1080
+VISUAL_CAPTURE branches/door-chosen-1080
+ERROR: VISUAL REVIEW: actualrole choice UI generator
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branches (res://tools/capture_phase5d3_team.gd:149)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+ERROR: VISUAL REVIEW: actual newbranchicon/description/eligiblequote
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branches (res://tools/capture_phase5d3_team.gd:153)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+ERROR: VISUAL REVIEW: actual newbranchicon/description/eligiblequote
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branches (res://tools/capture_phase5d3_team.gd:153)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+VISUAL_CAPTURE branches/generator-branches-1080
+VISUAL_CAPTURE branches/generator-chosen-1080
+ERROR: VISUAL REVIEW: actualrole choice UI repair
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branches (res://tools/capture_phase5d3_team.gd:149)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+ERROR: VISUAL REVIEW: actual newbranchicon/description/eligiblequote
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branches (res://tools/capture_phase5d3_team.gd:153)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+ERROR: VISUAL REVIEW: actual newbranchicon/description/eligiblequote
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branches (res://tools/capture_phase5d3_team.gd:153)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+VISUAL_CAPTURE branches/repair-branches-1080
+VISUAL_CAPTURE branches/repair-chosen-1080
+ERROR: VISUAL REVIEW: actualrole choice UI economy
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branches (res://tools/capture_phase5d3_team.gd:149)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+ERROR: VISUAL REVIEW: actual newbranchicon/description/eligiblequote
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branches (res://tools/capture_phase5d3_team.gd:153)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+ERROR: VISUAL REVIEW: actual newbranchicon/description/eligiblequote
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branches (res://tools/capture_phase5d3_team.gd:153)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+VISUAL_CAPTURE branches/economy-branches-1080
+VISUAL_CAPTURE branches/economy-chosen-1080
+ERROR: VISUAL REVIEW: actualrole choice UI enhancer
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branches (res://tools/capture_phase5d3_team.gd:149)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+ERROR: VISUAL REVIEW: actual newbranchicon/description/eligiblequote
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branches (res://tools/capture_phase5d3_team.gd:153)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+ERROR: VISUAL REVIEW: actual newbranchicon/description/eligiblequote
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] branches (res://tools/capture_phase5d3_team.gd:153)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+VISUAL_CAPTURE branches/enhancer-branches-1080
+VISUAL_CAPTURE branches/enhancer-chosen-1080
+PHASE5D3_BRANCHES_CHECKS=133 FAILURES=12

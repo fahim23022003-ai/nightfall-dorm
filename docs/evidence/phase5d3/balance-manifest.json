@@ -1,0 +1,86 @@
+{
+  "phase": "5D3",
+  "status": "FINAL_POST_SUPPORT_FILTER_AND_CONTACT_GUARD",
+  "captured_utc": "2026-11-12T13:22:24.357903+00:00",
+  "git_head_at_completion": "e60a114e14bb2515cdfb381023902a32770c98dd",
+  "production_owner": "B; A makes no production changes",
+  "source_sha256": {
+    "scripts/catalog.gd": "2782a165266be2b63ffda147d9bc6a2f168223d35e6f596b1b73b41bb986cc2c",
+    "scripts/strategy_catalog.gd": "6c69f05aa8b6b614eb1736324abaab672f7f05549bbc4aa8b64f3255a76f11cb",
+    "scripts/hunter_state.gd": "6a6bca7680273196647293baa685f8e1458396671240bfc17886dd5e41cfdb5d",
+    "scripts/match_model.gd": "b2f96a10b928618e65a489cad67f5c301e5af92cb4e771fed590454fc605cfe2",
+    "scripts/room_state.gd": "1e378bebec52ecf1e63f3051a30acfa5a51ca1c7d113b1a707016346bc2bc963",
+    "scripts/replay_snapshot.gd": "ffbacc0657360ff893280bad2bd6ffa907fa6bd37956d6cda878e06e1e1aa2c2",
+    "scripts/replay_progress.gd": "fc277605d6a2f70fd27be43bfa94748d6d6f10db6b9d20bcf64de4c42bbc68e8",
+    "scripts/player_profile.gd": "48e4ecc32f8eb4267f1a68f826404d98a69720b512c380f032996805bd6ed22a",
+    "scripts/endless_run.gd": "ecc915bad4f329ebace6dfeb77f4d06e24ad0b7e4ce91b57da93b114745d91f3",
+    "scripts/item_catalog.gd": "64a6f33f90c3d3ef8e253fcd8b3f08d8f94fe5bf79448bdb44c5184d40d0c8cb",
+    "scripts/item_effects.gd": "3d536e29661e7b504fb8992a75f13127269caf016c70cf650f6e73cf3200eeea",
+    "scripts/rank_catalog.gd": "b03b428faf61f11ba8530d4973cd7baa65b408dca7aa907882b28a04f369e2c3",
+    "scripts/map_catalog.gd": "81deff2f1ff5ac6f00fac8dd34d501ff0654c263aaecd24d8fb0720badc745b5",
+    "scripts/challenge_code.gd": "e5f32add368a5b624a9a1b84c2a11c5151b350617c65dd21c45738e62f903a42",
+    "tests/phase6_balance_campaign.gd": "2d42fca26b17a2f2db7d8c7520a40d0a7036a4de3f26ea8f5758717bf8c0905f",
+    "tests/phase6_balance_endless.gd": "8052f93490d48128bae6d3846a8539c1308ad64423f8bff3100983ed718ac8ed",
+    "tests/phase5d3_audit_ai.gd": "69d786833866e12d54160408c746359d61de7a43318485d93c750ecee50ebb2f",
+    "tests/phase5d3_audit_campaign.gd": "68d14be507c89f1d94be89af913d06b51a46acb834426ae737da3fd9d39e7ae0",
+    "tests/phase5d3_audit_endless.gd": "61248872241ac1ce6f3c52c160c50af55bf87f9a5bddefba20112707560088f3"
+  },
+  "artifact_sha256": {
+    "balance-ai-final-results.json": "7c3aee0e747cf6274b2a05ab765482d0e04180090396f11482caf74ea6fdda85",
+    "balance-campaign-final-results.json": "3110e404027d814f61098d9f76b8875aae28164543cc90280756b83a031af803",
+    "balance-beginner-results.json": "52702cc1988bf2330ee7f29ed3946cc3c39d6cc71c839a6f3672df791bf9530f",
+    "balance-endless-final-results.json": "3a59f911c2e15b5437e2fcf77a4c34f478db20136a2c5a60a4118cb91725a351",
+    "balance-earned-all8-haunted_hospital-standard.json": "194632e2bce7a62a3c782d216edfeca9c10608ae6c4caff1d58145cf6e42d527",
+    "balance-earned-all8-cursed_mansion-hell-alternative.json": "1a76278ef05d15753c39447b6182dd8df4cbbe6b342e04d178b96db54fa26bd9",
+    "balance-summary.md": "98e7a27bbe1b6866494ef2eb462c89adc6a64adf3978f336062c6fe710e98cc3"
+  },
+  "accepted_process_gates": [
+    {
+      "log": "balance-campaign.log",
+      "exit_code": 0,
+      "engine_errors_or_warnings": [],
+      "footer": "PHASE5D3_AUDIT_CAMPAIGN_MATCHES=14 FAILURES=0"
+    },
+    {
+      "log": "balance-beginner.log",
+      "exit_code": 0,
+      "engine_errors_or_warnings": [],
+      "footer": "PHASE5D3_AUDIT_CAMPAIGN_MATCHES=2 FAILURES=0"
+    },
+    {
+      "log": "balance-ai.log",
+      "exit_code": 0,
+      "engine_errors_or_warnings": [],
+      "footer": "PHASE5D3_AUDIT_AI_CASES=15 CHECKS=55079 FAILURES=0"
+    },
+    {
+      "log": "balance-endless.log",
+      "exit_code": 0,
+      "engine_errors_or_warnings": [],
+      "footer": "PHASE5D3_AUDIT_ENDLESS_RUNS=8 RESUMES=10 ALL8_PROFILES=2 FAILURES=0"
+    },
+    {
+      "log": "balance-endless-advanced.log",
+      "exit_code": 0,
+      "engine_errors_or_warnings": [],
+      "footer": "PHASE5D3_AUDIT_ENDLESS_RUNS=2 RESUMES=5 ALL8_PROFILES=2 FAILURES=0"
+    }
+  ],
+  "unique_acceptance": {
+    "campaign_matches": 16,
+    "endless_runs": 10,
+    "cleared_waves": 245,
+    "fresh_profile_resumes": 15,
+    "actual_once_only_Reaper_waves": 60,
+    "controlled_AI_cases": 15,
+    "controlled_AI_checks": 55079,
+    "all8_natural_profiles": 2
+  },
+  "provenance_note": "All five accepted commands/41unique scenarios freshly rerun on final core after support-only branch filtering and contact/open-door correction. Coherent old artifacts/source/profile manifest preserved in balance-before-support-filter; earlier per-patch runs diagnostic only, never double-counted. Sourcehashes capture runtime core at completion; GitHEAD may precede owner uncommitted changes.",
+  "limitations": [
+    "preparedfiniteprogression/itembudgets, notnaturallyearnedpermanentstock",
+    "scripted0.2s/1sactions, nothumanreaction",
+    "nativeWindows/humanfun/threatUNVERIFIED",
+    "finiteheadlessmodelruns, notrenderedhardwareFPSorinfinitestability"
+  ]
+}

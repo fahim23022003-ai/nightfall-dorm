@@ -1,0 +1,27 @@
+diff --git a/assets/ART_MANIFEST.md b/assets/ART_MANIFEST.md
+index c226583..7931994 100644
+--- a/assets/ART_MANIFEST.md
++++ b/assets/ART_MANIFEST.md
+@@ -115,3 +115,13 @@ no external imagery, paid asset or runtime download was introduced. Existing
+ local OFL/DejaVu font licenses remain unchanged. Cosmetic data has no combat or
+ economy multiplier and is read only by presentation. Actual rendered inspection
+ and its quality limits are recorded in the Phase5D2 report/evidence.
++
++
++## Phase5D-3 role-specific progression
++
++`tools/art/generate_support_branches.py` authors twelve original geometric SVG
++branch emblems for Bed/Door/Dynamo/Repair/Amplifier/Relay. Existing Needle/Arc
++branch icons and prestige layers remain. Support/structural late tiers add
++procedural geometry/badges over existing authored art; no copied stock/game
++image or new animation rig is claimed. Gothic teammate controls reuse the
++existing material/font/portrait system and actual survivor/room identities.
+Traceback (most recent call last):
+  File "/workspace/nightfall-dorm/tools/windows/export_release.py", line 58, in <module>
+    if __name__ == '__main__': main()
+                               ^^^^^^
+  File "/workspace/nightfall-dorm/tools/windows/export_release.py", line 18, in main
+    subprocess.run(['git', 'diff', '--exit-code', 'HEAD', '--', 'project.godot', 'export_presets.cfg', 'scripts', 'scenes', 'assets'], cwd=ROOT, check=True)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'diff', '--exit-code', 'HEAD', '--', 'project.godot', 'export_presets.cfg', 'scripts', 'scenes', 'assets']' returned non-zero exit status 1.

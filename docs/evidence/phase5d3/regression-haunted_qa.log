@@ -1,0 +1,51 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: HAUNTED QA: eligible cap generator
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/haunted_qa.gd:10)
+       [1] transactions (res://tests/haunted_qa.gd:33)
+       [2] run (res://tests/haunted_qa.gd:229)
+ERROR: HAUNTED QA: cap atomic generator
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/haunted_qa.gd:10)
+       [1] transactions (res://tests/haunted_qa.gd:47)
+       [2] run (res://tests/haunted_qa.gd:229)
+ERROR: HAUNTED QA: eligible cap repair
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/haunted_qa.gd:10)
+       [1] transactions (res://tests/haunted_qa.gd:33)
+       [2] run (res://tests/haunted_qa.gd:229)
+ERROR: HAUNTED QA: cap atomic repair
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/haunted_qa.gd:10)
+       [1] transactions (res://tests/haunted_qa.gd:47)
+       [2] run (res://tests/haunted_qa.gd:229)
+ERROR: HAUNTED QA: eligible cap economy
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/haunted_qa.gd:10)
+       [1] transactions (res://tests/haunted_qa.gd:33)
+       [2] run (res://tests/haunted_qa.gd:229)
+ERROR: HAUNTED QA: cap atomic economy
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/haunted_qa.gd:10)
+       [1] transactions (res://tests/haunted_qa.gd:47)
+       [2] run (res://tests/haunted_qa.gd:229)
+ERROR: HAUNTED QA: eligible cap enhancer
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/haunted_qa.gd:10)
+       [1] transactions (res://tests/haunted_qa.gd:33)
+       [2] run (res://tests/haunted_qa.gd:229)
+ERROR: HAUNTED QA: cap atomic enhancer
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/haunted_qa.gd:10)
+       [1] transactions (res://tests/haunted_qa.gd:47)
+       [2] run (res://tests/haunted_qa.gd:229)
+HAUNTED_QA_CHECKS=78195 FAILURES=8

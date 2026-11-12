@@ -1,0 +1,31 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+TRANSITION_PROFILE readonly=false warning=
+ERROR: VISUAL REVIEW: genuine controlled NPC breach/bed contact elimination
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] transition_case (res://tools/capture_phase5d3_audio.gd:55)
+       [2] click (res://tools/capture_visual_overhaul.gd:63)
+ERROR: VISUAL REVIEW: actual long death scream starts
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] transition_case (res://tools/capture_phase5d3_audio.gd:60)
+       [2] click (res://tools/capture_visual_overhaul.gd:63)
+ERROR: VISUAL REVIEW: actual button exists
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] click (res://tools/capture_visual_overhaul.gd:57)
+       [2] transition_case (res://tools/capture_phase5d3_audio.gd:65)
+ERROR: VISUAL REVIEW: queued laugh actually plays after3.47second scream, not silently expires
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] transition_case (res://tools/capture_phase5d3_audio.gd:68)
+       [2] live (res://tools/capture_phase5d3_audio.gd:20)
+PHASE5D3_AUDIO_TRANSITION_CHECKS=15 FAILURES=4

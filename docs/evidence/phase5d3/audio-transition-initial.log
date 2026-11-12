@@ -1,0 +1,34 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+ERROR: VISUAL REVIEW: graduate GUI copy only
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] transition_case (res://tools/capture_phase5d3_audio.gd:45)
+       [2] run (res://tools/capture_phase5d3_audio.gd:77)
+ERROR: VISUAL REVIEW: actual checkpoint resume
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] transition_case (res://tools/capture_phase5d3_audio.gd:46)
+       [2] run (res://tools/capture_phase5d3_audio.gd:77)
+ERROR: VISUAL REVIEW: actual button exists
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] click (res://tools/capture_visual_overhaul.gd:57)
+       [2] transition_case (res://tools/capture_phase5d3_audio.gd:47)
+       [3] run (res://tools/capture_phase5d3_audio.gd:77)
+ERROR: VISUAL REVIEW: actual long death scream starts
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] transition_case (res://tools/capture_phase5d3_audio.gd:57)
+       [2] run (res://tools/capture_phase5d3_audio.gd:77)
+SCRIPT ERROR: Invalid access to property or key 'phase' on a base object of type 'Nil'.
+          at: transition_case (res://tools/capture_phase5d3_audio.gd:61)
+          GDScript backtrace (most recent call first):
+              [0] transition_case (res://tools/capture_phase5d3_audio.gd:61)

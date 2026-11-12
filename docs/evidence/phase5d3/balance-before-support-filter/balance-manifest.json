@@ -1,0 +1,114 @@
+{
+  "phase": "5D3",
+  "captured_utc": "2026-11-12T13:03:51.464329+00:00",
+  "git_head_at_completion": "633efc06bcb5d99b385488144adb09697f6c8f3f",
+  "production_owner": "B; A makes no production changes",
+  "source_sha256": {
+    "scripts/catalog.gd": "e4c8d541ad8e23340973ec9c8077fae0d420131e3fe9bff25ee9bdcace5858b5",
+    "scripts/strategy_catalog.gd": "25094964070fb7ddccc1d3308ec54066768e506858fa1a88d297d2b1a91ce67d",
+    "scripts/hunter_state.gd": "50a261b6c11ca40480bb3d50c89698243f21cde84216d90674ada921edc2086b",
+    "scripts/match_model.gd": "b2f96a10b928618e65a489cad67f5c301e5af92cb4e771fed590454fc605cfe2",
+    "scripts/room_state.gd": "1e378bebec52ecf1e63f3051a30acfa5a51ca1c7d113b1a707016346bc2bc963",
+    "scripts/replay_snapshot.gd": "ffbacc0657360ff893280bad2bd6ffa907fa6bd37956d6cda878e06e1e1aa2c2",
+    "scripts/replay_progress.gd": "fc277605d6a2f70fd27be43bfa94748d6d6f10db6b9d20bcf64de4c42bbc68e8",
+    "scripts/player_profile.gd": "48e4ecc32f8eb4267f1a68f826404d98a69720b512c380f032996805bd6ed22a",
+    "scripts/endless_run.gd": "ecc915bad4f329ebace6dfeb77f4d06e24ad0b7e4ce91b57da93b114745d91f3",
+    "scripts/item_catalog.gd": "64a6f33f90c3d3ef8e253fcd8b3f08d8f94fe5bf79448bdb44c5184d40d0c8cb",
+    "scripts/item_effects.gd": "3d536e29661e7b504fb8992a75f13127269caf016c70cf650f6e73cf3200eeea",
+    "scripts/rank_catalog.gd": "b03b428faf61f11ba8530d4973cd7baa65b408dca7aa907882b28a04f369e2c3",
+    "scripts/map_catalog.gd": "81deff2f1ff5ac6f00fac8dd34d501ff0654c263aaecd24d8fb0720badc745b5",
+    "scripts/challenge_code.gd": "e5f32add368a5b624a9a1b84c2a11c5151b350617c65dd21c45738e62f903a42",
+    "tests/phase6_balance_campaign.gd": "2d42fca26b17a2f2db7d8c7520a40d0a7036a4de3f26ea8f5758717bf8c0905f",
+    "tests/phase6_balance_endless.gd": "8052f93490d48128bae6d3846a8539c1308ad64423f8bff3100983ed718ac8ed",
+    "tests/phase5d3_audit_ai.gd": "69d786833866e12d54160408c746359d61de7a43318485d93c750ecee50ebb2f",
+    "tests/phase5d3_audit_campaign.gd": "68d14be507c89f1d94be89af913d06b51a46acb834426ae737da3fd9d39e7ae0",
+    "tests/phase5d3_audit_endless.gd": "61248872241ac1ce6f3c52c160c50af55bf87f9a5bddefba20112707560088f3"
+  },
+  "artifact_sha256": {
+    "balance-ai-final-results.json": "06f5ac61b5cfb33b08a17f9360eb1e354d08e2c76366571b6e339b566e7df4b4",
+    "balance-campaign-final-results.json": "d9981e73b1d7641913b459b216d5b9ef56e49ca7ecfc906efa071a1bffbc000e",
+    "balance-beginner-results.json": "3497be486811a021fa63d96f9737342f2b8ec5826d9a0601fd2175646ee0d9d6",
+    "balance-endless-final-results.json": "44c693fefaf905871bf90941cff6a0170f0882f5d9a119b2d26bf63bd884b22f",
+    "balance-earned-all8-haunted_hospital-standard.json": "194632e2bce7a62a3c782d216edfeca9c10608ae6c4caff1d58145cf6e42d527",
+    "balance-earned-all8-cursed_mansion-hell-alternative.json": "fd9758f5a70c0a77be49c168fded9c84121bbcc6aa74814f0bc0699513da91e5",
+    "balance-summary.md": "15b8af9f97b6bd9e7db27a3f0223d228381a344a79cd8452b11ca8c523c78a18"
+  },
+  "accepted_process_gates": [
+    {
+      "log": "balance-campaign.log",
+      "exit_code": 0,
+      "engine_errors_or_warnings": [],
+      "footer": "PHASE5D3_AUDIT_CAMPAIGN_MATCHES=14 FAILURES=0"
+    },
+    {
+      "log": "balance-ravager-campaign-final.log",
+      "exit_code": 0,
+      "engine_errors_or_warnings": [],
+      "footer": "PHASE5D3_AUDIT_CAMPAIGN_MATCHES=6 FAILURES=0"
+    },
+    {
+      "log": "balance-hell-crusher-campaign-final.log",
+      "exit_code": 0,
+      "engine_errors_or_warnings": [],
+      "footer": "PHASE5D3_AUDIT_CAMPAIGN_MATCHES=2 FAILURES=0"
+    },
+    {
+      "log": "balance-beginner.log",
+      "exit_code": 0,
+      "engine_errors_or_warnings": [],
+      "footer": "PHASE5D3_AUDIT_CAMPAIGN_MATCHES=2 FAILURES=0"
+    },
+    {
+      "log": "balance-ai.log",
+      "exit_code": 0,
+      "engine_errors_or_warnings": [],
+      "footer": "PHASE5D3_AUDIT_AI_CASES=15 CHECKS=55080 FAILURES=0"
+    },
+    {
+      "log": "balance-ai-ravager-final.log",
+      "exit_code": 0,
+      "engine_errors_or_warnings": [],
+      "footer": "PHASE5D3_AUDIT_AI_CASES=5 CHECKS=18363 FAILURES=0"
+    },
+    {
+      "log": "balance-ai-hell-crusher-final.log",
+      "exit_code": 0,
+      "engine_errors_or_warnings": [],
+      "footer": "PHASE5D3_AUDIT_AI_CASES=1 CHECKS=3671 FAILURES=0"
+    },
+    {
+      "log": "balance-endless.log",
+      "exit_code": 0,
+      "engine_errors_or_warnings": [],
+      "footer": "PHASE5D3_AUDIT_ENDLESS_RUNS=8 RESUMES=10 ALL8_PROFILES=2 FAILURES=0"
+    },
+    {
+      "log": "balance-endless-advanced.log",
+      "exit_code": 0,
+      "engine_errors_or_warnings": [],
+      "footer": "PHASE5D3_AUDIT_ENDLESS_RUNS=2 RESUMES=5 ALL8_PROFILES=2 FAILURES=0"
+    },
+    {
+      "log": "balance-endless-hell-final.log",
+      "exit_code": 0,
+      "engine_errors_or_warnings": [],
+      "footer": "PHASE5D3_AUDIT_ENDLESS_RUNS=4 RESUMES=6 ALL8_PROFILES=2 FAILURES=0"
+    }
+  ],
+  "unique_acceptance": {
+    "campaign_matches": 16,
+    "endless_runs": 10,
+    "cleared_waves": 245,
+    "fresh_profile_resumes": 15,
+    "actual_once_only_Reaper_waves": 60,
+    "controlled_AI_cases": 15,
+    "all8_natural_profiles": 2
+  },
+  "provenance_note": "Final mergedrecords select freshaffected rows after Ravagerdoor-arrivalrecovery and HellCrusherchargedcadence corrections; unchanged rows reusedexplicitly. Earlierrawfiles retaineddiagnostic, notdouble-counted. Sourcehashes capturecompletion, GitHEADmayprecedeuncommittedownerchanges.",
+  "limitations": [
+    "preparedfiniteprogression/itembudgets, notnaturallyearnedpermanentstock",
+    "scripted0.2s/1sactions, nothumanreaction",
+    "nativeWindows/humanfun/threatUNVERIFIED",
+    "finiteheadlessmodelruns, notrenderedhardwareFPSorinfinitestability"
+  ]
+}
