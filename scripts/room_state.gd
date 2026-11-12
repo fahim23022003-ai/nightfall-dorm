@@ -4,6 +4,7 @@ extends RefCounted
 signal presentation_action(type: String, data: Dictionary)
 
 var layout: Dictionary={}
+var expansion_tier=-1
 var index: int
 var owner = -1
 var alive = true

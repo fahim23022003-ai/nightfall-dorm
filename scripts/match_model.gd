@@ -4,6 +4,7 @@ extends RefCounted
 signal feedback(message: String)
 var items=ItemEffects.new()
 var evolution=HunterEvolution.new()
+var expansion=RoomExpansion.new()
 var wrath=ReaperWrath.new()
 var defenses=DefenseEffects.new()
 var minions: Array=[]
@@ -84,7 +85,7 @@ func _init():
 
 func reset(seed_value: int = 1):
  items=ItemEffects.new()
- evolution=HunterEvolution.new();wrath=ReaperWrath.new();defenses=DefenseEffects.new();minions=[];next_entity_id=2
+ evolution=HunterEvolution.new();expansion=RoomExpansion.new();wrath=ReaperWrath.new();defenses=DefenseEffects.new();minions=[];next_entity_id=2
  strategy=MatchStrategy.new()
  run_kind="campaign";endless=null;challenge_code="";challenge_config={};challenge_accumulator=0;challenge_recorded=false;terminal_recorded=false;defeat_facts=DefeatFacts.new()
  random.seed = seed_value

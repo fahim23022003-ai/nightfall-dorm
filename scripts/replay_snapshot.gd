@@ -25,7 +25,7 @@ static func valid_boosts(boosts: Dictionary) -> bool:
 static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  var run=model.endless
  if model.run_kind!="endless" or run==null or run.phase!="intermission" or run.completed!=run.sealed_wave or model.hunter.hp>0 or model.player()==null or not model.player().alive:return {}
- var data={"version":1,"ruleset":3,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"evolution":model.evolution.snapshot(),"defense_refractory":model.defenses.shield_cooldowns.duplicate(true),"repair_refractory":model.defenses.repair_cooldowns.duplicate(true),"lure_refractory":model.defenses.lure_cooldown,"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
+ var data={"version":1,"ruleset":4,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"expansion":model.expansion.snapshot(model),"evolution":model.evolution.snapshot(),"defense_refractory":model.defenses.shield_cooldowns.duplicate(true),"repair_refractory":model.defenses.repair_cooldowns.duplicate(true),"lure_refractory":model.defenses.lure_cooldown,"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
  for room in model.rooms:
   var saved={"owner":room.owner,"profile":room.profile,"bed_branch":room.bed_branch,"door_branch":room.door_branch,"trait":room.trait_id,"position":pair(room.resident_position),"main_damage":room.main_damage_dealt,"minion_damage":room.minion_damage_dealt,"buildings":[]}
   for key in ROOM_NUMBERS+ROOM_FLAGS:saved[key]=room.get(key)
@@ -40,7 +40,7 @@ static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  data.items.trap={"position":pair(fx.trap.position),"remaining":fx.trap.remaining} if not fx.trap.is_empty() else {}
  return data if valid(data) else {}
 static func valid(data) -> bool:
- if not data is Dictionary or data.get("version")!=1 or not whole(data.get("ruleset"),1,3) or data.get("map","") not in MapCatalog.IDS or data.get("difficulty","") not in RankCatalog.DIFFICULTIES:return false
+ if not data is Dictionary or data.get("version")!=1 or not whole(data.get("ruleset"),1,4) or data.get("map","") not in MapCatalog.IDS or data.get("difficulty","") not in RankCatalog.DIFFICULTIES:return false
  for key in ["run_id","seed","completed"]:
   if not whole(data.get(key),1):return false
  for key in ["time","preparation","shots","damage","eliminations"]:
@@ -59,7 +59,11 @@ static func valid(data) -> bool:
  if not data.get("use_counts",{}) is Dictionary:return false
  for key in data.get("use_counts",{}):
   if key not in ItemCatalog.IDS or not whole(data.use_counts[key],0,ItemCatalog.MAX_STOCK):return false
+ if int(data.ruleset)>=4 and not data.has("expansion"):return false
+ if data.has("expansion") and not RoomExpansion.valid(data.expansion,data.map):return false
  var owners=[];var map=MapCatalog.map(data.map)
+ if data.has("expansion"):
+  for i in range(6):map.rooms[i]=RoomExpansion.geometry(data.map,i,int(data.expansion.levels[i]),data.expansion.legacy)
  if vec(data.player_position).distance_to(map.rooms[int(data.player_room)].bed)>1:return false
  for i in range(6):
   var room=data.rooms[i]
@@ -119,6 +123,8 @@ static func restore(data) -> MatchModel:
  if not valid(data):return null
  var model=MatchModel.new();var run=EndlessRun.new()
  if not run.configure(model,data.map,data.difficulty,int(data.seed),int(data.run_id),data.boosts):return null
+ if data.has("expansion"):model.expansion.configure(model,data.expansion.legacy,data.expansion.levels)
+ else:model.expansion.configure(model,true)
  model.random.state=int(data.rng);model.time=data.time;model.preparation=data.preparation
  model.player_room=int(data.player_room);model.player_position=vec(data.player_position);model.bot_claimed=int(data.bot_claimed)
  model.eliminations=int(data.eliminations);model.shots=int(data.shots);model.damage_dealt=data.damage

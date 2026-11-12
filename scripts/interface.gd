@@ -62,6 +62,7 @@ var feedback_text=""
 var feedback_until=0.0
 var specialization_items: Array=[]
 var specialization_structure=""
+var expansion_ui
 var bottom_context: BottomContextPanel
 var branch_confirm: Button
 var pending_branch=""
@@ -94,7 +95,7 @@ func clear():
  pause_items.clear()
  card_visuals.clear()
  specialization_items.clear();specialization_structure=""
- context_open=false;help_open=false;bottom_context=null;branch_confirm=null;pending_branch=""
+ context_open=false;help_open=false;expansion_ui=null;bottom_context=null;branch_confirm=null;pending_branch=""
  feedback_text=""
  feedback_until=0
 
@@ -425,10 +426,13 @@ func show_match():
  if not game.mobile_mode:
   teammates.create()
   bottom_context=BottomContextPanel.new(self);bottom_context.install()
+  expansion_ui=preload("res://scripts/expansion_interface.gd").new(self);expansion_ui.create()
 
 func open_build_menu():
  if game.watched_room>=0 or game.model.player()==null:return
  var room=game.model.player()
+ if room.buildings.size()>=room.tile_count() and game.model.run_kind=="endless" and expansion_ui!=null:
+  expansion_ui.open();return
  if game.selected_tile<0 or room.buildings.has(game.selected_tile):
   for tile in range(room.tile_count()):
    if not room.buildings.has(tile):game.selected_tile=tile;break
@@ -471,6 +475,7 @@ func close_context():
  if bottom_context==null:
   if is_instance_valid(context_box):context_box.visible=false
   for node in build_items+upgrade_items+bed_items+door_items+confirmation_items+specialization_items:node.visible=false
+ if expansion_ui!=null:expansion_ui.refresh()
  if bottom_context!=null:bottom_context.refresh()
 
 func refresh_context():
@@ -530,6 +535,7 @@ func refresh_context():
   var quoted=room.building_price(data.gold,data.power)
   confirmation_details.text="%.1f G / %.1f E%s\n%s" % [quoted.x,quoted.y," · COUPON40%" if room.coupon_armed else "",reason if reason!="" else "Pad locked. Confirm to buy, or click another pad."]
   confirm_button.disabled=reason!=""
+ if expansion_ui!=null:expansion_ui.refresh()
  if context_mode=="bed" and room.bed_branch!="":bed_details.tooltip_text=StrategyCatalog.BRANCHES[room.bed_branch].description
  if context_mode=="door" and room.door_branch!="":door_details.tooltip_text=StrategyCatalog.BRANCHES[room.door_branch].description
  if context_mode=="specialize":

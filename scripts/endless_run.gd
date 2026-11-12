@@ -14,6 +14,7 @@ func configure(model,map: String,mode: String,seed_number: int,id: int,boosts: D
  if map not in MapCatalog.IDS or mode not in RankCatalog.DIFFICULTIES or id<=0:return false
  model.reset(seed_number);model.run_kind="endless";model.configure_map(map);model.configure_match(mode,boosts)
  model.configure_strategy(seed_number,StrategyCatalog.ARCHETYPE_IDS[posmod(seed_number,3)])
+ model.expansion.configure(model)
  model.endless=self;run_id=id;seed_value=seed_number;_model=weakref(model)
  _prepare_hunter(model,false)
  return true
