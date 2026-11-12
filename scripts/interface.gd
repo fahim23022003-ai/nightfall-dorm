@@ -312,6 +312,7 @@ func show_match():
  update_match()
 
 func open_context():
+ game.cancel_placement()
  game.full_map=false
  game.focus_camera(true)
  context_open=true
@@ -334,6 +335,8 @@ func open_confirmation():
  refresh_context()
 
 func close_context():
+ game.pending_build=""
+ game.placement_on_tile=false
  context_open=false
  if is_instance_valid(context_box): context_box.visible=false
  for node in build_items+upgrade_items+bed_items+door_items+confirmation_items: node.visible=false

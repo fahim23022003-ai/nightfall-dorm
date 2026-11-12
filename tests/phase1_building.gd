@@ -46,6 +46,30 @@ func run():
    check(room.build(kind,0),"tile reusable")
    room.alive=false
    check(not room.sell_building(0) and room.buildings.has(0),"eliminated resident cannot sell")
+ # Investment belongs to payments, not an inferred level or an unpaid fixture.
+ var unpaid=RoomState.new(0)
+ unpaid.buildings[0]={"kind":"heavy","level":4}
+ check(unpaid.building_refund(0)==Vector2.ZERO,"unpaid building has no invented refund")
+ var ledger=RoomState.new(0)
+ ledger.sleeping=true
+ ledger.gold=1000
+ ledger.electricity=1000
+ ledger.build("repair",0)
+ var quote=ledger.building_refund(0)
+ ledger.buildings[0].level=4
+ check(ledger.building_refund(0)==quote,"refund depends on paid ledger rather than level")
+ ledger.buildings[0].level=1
+ ledger.gold=0
+ var power=ledger.electricity
+ check(not ledger.upgrade_building(0),"unaffordable upgrade rejected")
+ check(ledger.building_refund(0)==quote and ledger.electricity==power,"failed upgrade adds no investment or power charge")
+ ledger.gold=1000
+ var start=Vector2(ledger.gold,ledger.electricity)
+ ledger.sell_building(0)
+ start=Vector2(ledger.gold,ledger.electricity)
+ for cycle in range(20):
+  check(ledger.build("repair",0) and ledger.sell_building(0),"repeat build sell succeeds")
+ check(Vector2(ledger.gold,ledger.electricity).is_equal_approx(start-Vector2(400,50)),"repeated cycles lose exactly half the payments")
  game=load("res://scenes/main.tscn").instantiate()
  root.add_child(game)
  await process_frame

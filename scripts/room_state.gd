@@ -166,8 +166,9 @@ func build(kind: String, tile: int) -> bool:
   return reject("Arc turret requires bed level 2.")
  if not afford(data.gold,data.power):
   return false
- pay(data.gold,data.power)
- buildings[tile] = {"kind":kind,"level":1,"cooldown":0.0,"flash":0.0}
+ if not pay(data.gold,data.power): return reject("Purchase could not be paid.")
+ buildings[tile] = {"kind":kind,"level":1,"cooldown":0.0,"flash":0.0,
+  "invested_gold":float(data.gold),"invested_power":float(data.power)}
  return true
 
 func upgrade_building(tile: int) -> bool:
@@ -181,22 +182,29 @@ func upgrade_building(tile: int) -> bool:
  var data = Catalog.BUILDINGS[b.kind]
  if not afford(data.gold*b.level, (data.power+3)*b.level):
   return false
- pay(data.gold*b.level, (data.power+3)*b.level)
+ var paid_gold=float(data.gold*b.level)
+ var paid_power=float((data.power+3)*b.level)
+ if not pay(paid_gold,paid_power): return reject("Upgrade could not be paid.")
+ b.invested_gold=b.get("invested_gold",0.0)+paid_gold
+ b.invested_power=b.get("invested_power",0.0)+paid_power
  b.level += 1
  return true
 
-# Current prices are fixed: sum the initial purchase and each paid upgrade.
-# Keep fractional currency; rounding must never turn repeated sales into profit.
+# Record actual successful payments, never infer investment from level or prices.
+# Match buildings are transient, not part of profile saves. Unpaid fixtures have
+# no refundable investment. Fractional currency is retained without rounding.
 func building_refund(tile: int) -> Vector2:
- if not buildings.has(tile): return Vector2.ZERO
- var b=buildings[tile]
- var data=Catalog.BUILDINGS[b.kind]
- var upgrades=b.level*(b.level-1)/2.0
- return Vector2(data.gold*(1+upgrades),data.power+(data.power+3)*upgrades)*Catalog.BUILDING_REFUND_FRACTION
+ if tile<0 or tile>=6 or not buildings.has(tile): return Vector2.ZERO
+ var building=buildings[tile]
+ var gold_paid=float(building.get("invested_gold",0.0))
+ var power_paid=float(building.get("invested_power",0.0))
+ if not is_finite(gold_paid) or not is_finite(power_paid) or gold_paid<0 or power_paid<0:
+  return Vector2.ZERO
+ return Vector2(gold_paid,power_paid)*Catalog.BUILDING_REFUND_FRACTION
 
 func sell_building(tile: int) -> bool:
  if not alive: return reject("Resident eliminated.")
- if not buildings.has(tile): return reject("Select an existing building to sell.")
+ if tile<0 or tile>=6 or not buildings.has(tile): return reject("Select an existing building to sell.")
  var refund=building_refund(tile)
  buildings.erase(tile)
  gold+=refund.x

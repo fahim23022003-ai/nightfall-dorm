@@ -1,21 +1,66 @@
-# Phase 1 — building input and refunds (12 November 2026, Singapore)
+# Phase 1 quality completion — building purchases and refunds (12 November 2026, Singapore)
 
-Continued clean branch `work` from verified local/remote checkpoint
+Continued existing `work` commit `1a9e0068d079b029c486402e13326afb5463ebf9`;
+the last reported reference and verified remote starting point was
 `1753c91705c9c58192968961e246d23542909649`. Main was not changed.
 
-- Mouse double-clicks in a match consume the second press and release before UI
-  dispatch, preventing a trailing click from activating another building action.
-  Subsequent ordinary clicks remain available.
-- Building inspectors on desktop and mobile expose Sell with the exact refund.
-  Sales free the pad and refund 50% of initial and upgrade gold/electricity costs.
-  Fractional currency is retained. Beds/doors are excluded. Duplicate, invalid,
-  paused, terminal and eliminated-resident sales are rejected.
-- Regression suite: `tests/phase1_building.gd`, included by `tools/check.sh`,
-  checks all six types at all four levels, duplicate/invalid transactions, tile
-  reuse, real mouse double-click dispatch, and mobile drawer sale/layout.
-- Regular suite and focused tests passed during implementation. Native Windows,
-  Android, audible output and rendered appearance remain unverified in this task.
-- No push performed: repository instructions require explicit push authorization.
+**Implementation and automated verification: COMPLETE.**
+
+## Completed behavior
+
+- The second mouse double-click press and release are consumed before UI
+  dispatch. Purchase confirmation is single-use: successful placement clears
+  pending intent before another callback can purchase or charge again.
+- Cancel, Escape/Android Back, inspector close/switch, pause, menu/restart and
+  match result clear pending placement. Invalid previews remain recoverable on
+  a valid pad; invalid/paused/terminal placement requests cannot buy.
+- Desktop/mobile building inspectors offer Sell with a separate gold/electricity
+  quote. Each building records actual successfully paid original and upgrade
+  gold/electricity investment. Sale refunds exactly 50% of each accumulated
+  investment, retaining fractions. Failed upgrades add no investment; unpaid
+  fixtures gain no fabricated refund. Beds and doors cannot be sold.
+- Sale removes the building before crediting resources. Duplicate, invalid,
+  paused, terminal and eliminated-resident sales cannot grant resources.
+  Pads can be reused immediately. Repeated purchase/sale cycles cannot profit.
+- No changes to balance prices, AI, audio, rank rules or profile save format.
+  Existing keyboard/mouse controls remain available.
+
+## Development and independent verification
+
+Main agent served as Agent B, with genuine Agent C independently testing bounded
+Phase 1 paths. No Agents A/D were needed. Agent C found the hidden pending state
+on match result; review also replaced inferred refunds with paid investment
+records and fixed inspector-switch/close cleanup.
+
+`bash tools/check.sh` includes both committed Phase 1 suites:
+314 developer checks and 421 independent checks. They exercise all six building
+types and all four levels, separate resource accounting, rejected upgrades,
+duplicate purchases/sales, repeated buy/sell cycles, tile reuse, actual desktop
+mouse events, real touch plus mouse emulation, Cancel/Escape/Back, invalid-preview
+recovery and result/pause/inspector cleanup.
+
+The regular suite also verifies model126, mobile52/layout196, audio139,
+rank/save348, Phase2UI52/hunter39, projectiles22/edges12, camera/UI173,
+scene24, contextualUI53, furniture30, availability3209, audit72,
+20,000 transactions/175,941 invariants, six combat-rate scenarios,
+12 deterministic matches (9 wins/3 defeats/0 unresolved), separate-process
+profile persistence and main startup. Test counts are distinct measures, not a
+combined count of gameplay scenarios. Logs are generated under ignored
+`artifacts/`; final regular validation exited 0, both Phase 1 suites had zero failures,
+and MAIN_STARTUP=PASS MODE=menu. No script/parse/error signatures were found.
+
+No known remaining Phase 1 bug in these tested paths. Native Windows/Android,
+audible output and rendered appearance remain unverified in this task.
+The extended balance matrix was not rerun: no balance/rule-rate changes.
+No Phase 2 or future features were started.
+
+## Commit and private backup
+
+The user explicitly authorized commit/push to the existing `work` branch.
+After the final test pass, commit without changing branches, push `HEAD:work`
+without force, and verify `git ls-remote origin refs/heads/work` equals local
+full HEAD. The final response records the exact verified pushed commit; this
+pre-commit checkpoint text alone is not evidence of a successful push.
 
 ---
 

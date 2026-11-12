@@ -164,6 +164,7 @@ func _process(delta: float):
   if model.result != "":
    last_progression=profile.settle_match(match_id,model)
    mode = "result"
+   cancel_placement()
    if not last_progression.is_empty() and last_progression.promoted:
     audio_event("rank")
     audio_event("reward")
@@ -229,7 +230,9 @@ func _unhandled_input(event):
     break
 
 func begin_placement(kind: String):
- if model.player()==null: return
+ if mode!="match" or in_background or not model._can_purchase(): return
+ if not Catalog.BUILDINGS.has(kind) or selected_tile<0 or selected_tile>=6: return
+ if model.player().buildings.has(selected_tile) or not model.player().sleeping: return
  pending_build=kind
  placement_on_tile=true
  preview_position=model.player().tile_position(selected_tile)
@@ -237,7 +240,8 @@ func begin_placement(kind: String):
 
 func placement_reason() -> String:
  if not placement_on_tile: return "Choose a floor pad inside your room."
- return ui.action_reason("build:"+pending_build) if pending_build!="" else "Choose a building."
+ if not Catalog.BUILDINGS.has(pending_build): return "Choose a building."
+ return ui.action_reason("build:"+pending_build)
 
 func confirm_placement():
  if pending_build=="" or placement_reason()!="": return false
@@ -250,6 +254,7 @@ func confirm_placement():
 
 func cancel_placement():
  pending_build=""
+ placement_on_tile=false
  ui.close_context()
 
 func toggle_map():
