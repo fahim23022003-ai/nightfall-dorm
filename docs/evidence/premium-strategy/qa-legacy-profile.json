@@ -1,0 +1,183 @@
+{
+ "active_match": {
+
+ },
+ "campaign": {
+  "difficulty": "standard",
+  "records": {
+   "stage_1": {
+    "best_damage": 2000.0,
+    "best_time": 180.0,
+    "best_xp": 200,
+    "clears": 1,
+    "difficulty": "hell",
+    "first_match_id": 1
+   },
+   "stage_2": {
+    "best_damage": 2001.0,
+    "best_time": 181.0,
+    "best_xp": 200,
+    "clears": 1,
+    "difficulty": "hell",
+    "first_match_id": 2
+   },
+   "stage_3": {
+    "best_damage": 2002.0,
+    "best_time": 182.0,
+    "best_xp": 200,
+    "clears": 1,
+    "difficulty": "hell",
+    "first_match_id": 3
+   },
+   "stage_4": {
+    "best_damage": 2003.0,
+    "best_time": 183.0,
+    "best_xp": 200,
+    "clears": 1,
+    "difficulty": "hell",
+    "first_match_id": 4
+   },
+   "stage_5": {
+    "best_damage": 2004.0,
+    "best_time": 184.0,
+    "best_xp": 200,
+    "clears": 1,
+    "difficulty": "hell",
+    "first_match_id": 5
+   }
+  },
+  "selected_stage": "stage_1"
+ },
+ "consumables": {
+  "inventory": {
+   "barricade": 9,
+   "battery": 3,
+   "coupon": 13,
+   "cursed_fortune": 20,
+   "decoy": 14,
+   "feather": 10,
+   "frost": 7,
+   "gold": 2,
+   "guardian_heart": 19,
+   "inferno": 11,
+   "overdrive": 6,
+   "pillow": 12,
+   "radar": 4,
+   "reaper_seal": 18,
+   "repair": 2,
+   "rescue": 15,
+   "shield": 5,
+   "smoke": 16,
+   "time_freeze": 17,
+   "trap": 8
+  },
+  "loadout": [
+   "repair",
+   "guardian_heart"
+  ],
+  "pending": [
+   {
+    "item": "radar",
+    "match_id": 6,
+    "quantity": 1,
+    "result": "defeat"
+   }
+  ],
+  "version": 1
+ },
+ "equipped": [
+  "marksman",
+  "reaper_slayer"
+ ],
+ "last_award": {
+
+ },
+ "next_match_id": 7,
+ "onboarding": {
+  "purchase_serial": 4,
+  "rm_cash": 102,
+  "tutorial_completed": true,
+  "version": 1
+ },
+ "progression": {
+  "highest_rank": 6,
+  "statistics": {
+   "defeats": 0,
+   "hard": 0,
+   "hell": 5,
+   "matches": 5,
+   "reaper_defeats": 3,
+   "standard": 0,
+   "victories": 5
+  },
+  "version": 1
+ },
+ "rewards": {
+  "achievements": {
+   "first_blood": {
+    "claimed": false
+   },
+   "first_victory": {
+    "claimed": false
+   },
+   "hell_survivor": {
+    "claimed": false
+   },
+   "item_collector": {
+    "claimed": false
+   },
+   "reaper_hunter": {
+    "claimed": false
+   },
+   "reaper_slayer": {
+    "claimed": false
+   }
+  },
+  "counters": {
+   "construction": 0,
+   "door_damage": 0.0,
+   "income": 0.0,
+   "legendary": 0,
+   "perfect_team": 0
+  },
+  "seen_items": [
+   "repair",
+   "gold",
+   "battery",
+   "radar",
+   "shield",
+   "overdrive",
+   "frost",
+   "trap",
+   "barricade",
+   "feather",
+   "inferno",
+   "pillow",
+   "coupon",
+   "decoy",
+   "rescue",
+   "smoke",
+   "time_freeze",
+   "reaper_seal",
+   "guardian_heart",
+   "cursed_fortune"
+  ],
+  "stage_bonus": {
+
+  },
+  "stage_queue": [],
+  "version": 1
+ },
+ "settings": {
+  "ambient": 0.34,
+  "battery_saver": false,
+  "effects": 0.65,
+  "fullscreen": false,
+  "music": 0.21,
+  "muted": false,
+  "reduced_effects": true,
+  "tutorial": true
+ },
+ "version": 1,
+ "xp": 8200
+}

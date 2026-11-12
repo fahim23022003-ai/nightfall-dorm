@@ -29,6 +29,22 @@ var stage_bonus_queue: Array=[]
 var tutorial_completed=false
 var rm_cash=0
 var purchase_serial=0
+var selected_contract=""
+var contract_claims: Dictionary={}
+func select_contract(id: String) -> bool:
+ if read_only or (id!="" and not StrategyCatalog.CONTRACTS.has(id)):return false
+ var old=selected_contract;selected_contract=id
+ if not save_profile():selected_contract=old;return false
+ return true
+func next_archetype(stage: String,mode: String) -> String:
+ return StrategyCatalog.choose_archetype(int(statistics.matches),stage,mode)
+func _valid_strategy(value) -> bool:
+ if not value is Dictionary or value.get("version")!=1 or not value.get("selected") is String or (value.selected!="" and not StrategyCatalog.CONTRACTS.has(value.selected)) or not value.get("claims") is Dictionary or value.claims.size()>45:return false
+ for key in value.claims:
+  if not key is String:return false
+  var parts=key.split(":")
+  if parts.size()!=3 or StageCatalog.stage(parts[0]).is_empty() or not RankCatalog.DIFFICULTIES.has(parts[1]) or not StrategyCatalog.CONTRACTS.has(parts[2]) or not _whole(value.claims[key],1):return false
+ return true
 func complete_tutorial() -> bool:
  if read_only:return false
  var old=tutorial_completed
@@ -51,7 +67,7 @@ func buy_common(id: String,token) -> bool:
 func perk_slots() -> int: return 2 if rank_index()>=5 else 1
 func _reward_snapshot() -> Dictionary:
  var out={}
- for key in ["xp","equipped","highest_rank","statistics","campaign_records","inventory","item_loadout","pending_spins","active_match","last_award","achievements","reward_counters","seen_items","pending_stage_bonus","stage_bonus_queue","next_match_id","tutorial_completed","rm_cash","purchase_serial"]:
+ for key in ["xp","equipped","highest_rank","statistics","campaign_records","inventory","item_loadout","pending_spins","active_match","last_award","achievements","reward_counters","seen_items","pending_stage_bonus","stage_bonus_queue","next_match_id","tutorial_completed","rm_cash","purchase_serial","selected_contract","contract_claims"]:
   var v=get(key)
   out[key]=v.duplicate(true) if v is Dictionary or v is Array else v
  return out
@@ -139,6 +155,9 @@ func consume_item(item: String,model,id: int) -> bool:
  inventory[item]-=1
  if inventory[item]<=0: item_loadout.erase(item)
  if not save_profile(): inventory[item]+=1; item_loadout=selected; active_match=old_active; return false
+ if ItemCatalog.legendary(item) and model.strategy.enabled:
+  model.strategy.legendary_uses+=1
+  if model.strategy.contract=="no_legendary":model.strategy.fail("A Legendary was triggered.")
  return true
 func activate_item(slot: int,model,id: int,target: int=-1) -> bool:
  if model.tutorial_mode:return _item_failure(model,"Tutorial uses practice resources; stored items stay safe.")
@@ -156,6 +175,7 @@ func activate_item(slot: int,model,id: int,target: int=-1) -> bool:
   return true
  if not consume_item(item,model,id): return _item_failure(model,"Item not used: inventory or Legendary limit could not be saved.")
  model.items.apply(item,model)
+ model.strategy.observe(model)
  return true
 
 
@@ -367,6 +387,9 @@ func load_profile() -> bool:
  for key in ["muted","fullscreen","tutorial","battery_saver","reduced_effects"]:
   if data.settings.get(key) is bool: settings[key]=data.settings[key]
  active_match=data.get("active_match",{}).duplicate(true)
+ if active_match.has("archetype") or active_match.has("contract"):
+  if not StrategyCatalog.ARCHETYPES.has(active_match.get("archetype","")) or not active_match.get("contract","") is String or (active_match.contract!="" and not StrategyCatalog.CONTRACTS.has(active_match.contract)):
+   read_only=true;warning="Active strategy snapshot invalid; original progress preserved read-only."
  if not _valid_item_snapshot(active_match.get("items",[])):
   read_only=true
   active_match["items"]=[]
@@ -387,6 +410,11 @@ func load_profile() -> bool:
    if not pending_stage_bonus.is_empty():pending_stage_bonus.match_id=int(pending_stage_bonus.match_id)
    for offer in stage_bonus_queue:offer.match_id=int(offer.match_id)
  tutorial_completed=false;rm_cash=0;purchase_serial=0
+ selected_contract="";contract_claims={}
+ var strategy_data=data.get("strategy",{})
+ if data.has("strategy"):
+  if not _valid_strategy(strategy_data):read_only=true;warning="Strategy records damaged or newer; original progress preserved read-only."
+  else:selected_contract=strategy_data.selected;contract_claims=strategy_data.claims.duplicate(true)
  var onboarding=data.get("onboarding",{})
  if not onboarding is Dictionary:
   read_only=true;warning="Onboarding/currency data invalid; original progress preserved read-only."
@@ -408,6 +436,7 @@ func save_profile() -> bool:
   save_ok=false
   return false
  var data={"onboarding":{"version":1,"tutorial_completed":tutorial_completed,"rm_cash":rm_cash,"purchase_serial":purchase_serial},"rewards":{"version":1,"achievements":achievements,"counters":reward_counters,"seen_items":seen_items,"stage_bonus":pending_stage_bonus,"stage_queue":stage_bonus_queue},"consumables":{"version":1,"inventory":inventory,"loadout":item_loadout,"pending":pending_spins},"version":RankCatalog.VERSION,"progression":{"version":1,"statistics":statistics,"highest_rank":maxi(highest_rank,rank_index())},"xp":xp,"equipped":equipped,"settings":settings,"next_match_id":next_match_id,"active_match":active_match,"last_award":last_award,"campaign":{"selected_stage":selected_stage,"difficulty":selected_difficulty,"records":campaign_records}}
+ data.strategy={"version":1,"selected":selected_contract,"claims":contract_claims}
  var f=FileAccess.open(path+".tmp",FileAccess.WRITE)
  if f==null: return _write_failed()
  f.store_string(JSON.stringify(data," "))
@@ -449,7 +478,7 @@ func update_setting(key: String,value) -> bool:
  settings[key]=value
  return save_profile()
 
-func begin_match(difficulty: String="standard",stage_id: String="") -> Dictionary:
+func begin_match(difficulty: String="standard",stage_id: String="",strategic: bool=false) -> Dictionary:
  if read_only or pending_spins.size()>=128 or (stage_id!="" and not stage_unlocked(stage_id)): return {}
  if next_match_id>=1000000000000:
   warning="Match counter limit reached; progress saving disabled."
@@ -461,6 +490,9 @@ func begin_match(difficulty: String="standard",stage_id: String="") -> Dictionar
  if not pending_stage_bonus.is_empty() and pending_stage_bonus.target==stage_id and pending_stage_bonus.choice=="":return {}
  var before=active_match.duplicate(true)
  active_match={"id":next_match_id,"difficulty":difficulty,"equipped":equipped.duplicate(),"items":item_loadout.duplicate()}
+ if strategic:
+  active_match.archetype=next_archetype(stage_id,difficulty)
+  active_match.contract=selected_contract if stage_id!="" else ""
  if stage_id!="": active_match.stage_id=stage_id
  if not pending_stage_bonus.is_empty() and pending_stage_bonus.target==stage_id:
   active_match.stage_bonus=pending_stage_bonus.choice
@@ -487,6 +519,7 @@ func settle_match(id: int,model) -> Dictionary:
   if model.match_boosts.get(key,neutral[key])!=expected[key]: return {}
  var campaign_id=str(active_match.get("stage_id",""))
  if campaign_id!="" and (not stage_unlocked(campaign_id) or not "stage_id" in model or model.stage_id!=campaign_id): return {}
+ if active_match.has("archetype") and not model.strategy.verified(model,active_match):return {}
  var transaction_before=_reward_snapshot()
  var rng_before=reward_rng.state
  var points=RankCatalog.performance(model)
@@ -549,6 +582,20 @@ func settle_match(id: int,model) -> Dictionary:
  rm_cash+=cash_award
  last_award.rm_cash=cash_award
  last_award.rm_balance=rm_cash
+ if active_match.has("archetype"):
+  last_award.archetype=active_match.archetype
+  var selected=str(active_match.get("contract",""))
+  if selected!="":
+   var key=StrategyCatalog.claim_key(campaign_id,model.difficulty,selected)
+   var qualified=model.strategy.reward_eligible(model,active_match)
+   var bonus=0
+   if qualified and not contract_claims.has(key):
+    bonus=mini(int(StrategyCatalog.CONTRACTS[selected].cash),OnboardingCatalog.MAX_CASH-rm_cash)
+    # A full wallet postpones the claim; no phantom payment is recorded.
+    if bonus==int(StrategyCatalog.CONTRACTS[selected].cash):rm_cash+=bonus;contract_claims[key]=id
+    else:bonus=0
+   last_award.contract={"id":selected,"qualified":qualified,"cash":bonus,"claimed":contract_claims.has(key),"reason":model.strategy.failure_reason}
+   last_award.rm_cash+=bonus;last_award.rm_balance=rm_cash
  last_award.achievements=refresh_achievements()
  active_match={}
  if not save_profile():

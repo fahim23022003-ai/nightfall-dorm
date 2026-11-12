@@ -41,6 +41,15 @@ var temporary_income=1.0
 var item_bonus_income=0.0
 var coupon_armed=false
 var coupon_payment: Callable
+var strategy_enabled=false
+var trait_id=""
+var trait_modifiers={"door":1.0,"income":1.0,"power":1.0}
+func apply_trait(id: String) -> bool:
+ if trait_id!="" or not StrategyCatalog.TRAITS.has(id):return false
+ var old_max=max_hp()
+ trait_id=id;trait_modifiers=StrategyCatalog.TRAITS[id]
+ door_hp+=max_hp()-old_max
+ return true
 func building_price(g: float,e: float) -> Vector2:
  return Vector2(g,e)*(ItemCatalog.TUNING.coupon_factor if coupon_armed else 1.0)
 func spend_coupon(saved: Vector2=Vector2.ZERO) -> bool:
@@ -114,14 +123,14 @@ func corridor_anchor() -> Vector2:
  return layout.anchor if not layout.is_empty() else Vector2(door_position().x,410)
 
 func max_hp() -> float:
- return Catalog.DOOR_HP[door_level]*door_multiplier
+ return Catalog.DOOR_HP[door_level]*door_multiplier*trait_modifiers.door
 
 func income_rate() -> float:
  var factor = 1.0
  for building in buildings.values():
   if building.kind == "economy":
    factor += Catalog.BUILDINGS.economy.rate * building.level
- return Catalog.BED_INCOME[bed_level] * factor * income_multiplier * temporary_income if sleeping and alive else 0.0
+ return Catalog.BED_INCOME[bed_level] * factor * income_multiplier * trait_modifiers.income * temporary_income if sleeping and alive else 0.0
 
 func pay(g: float, e: float = 0.0) -> bool:
  if not is_finite(g) or not is_finite(e) or g < 0 or e < 0:
@@ -219,15 +228,26 @@ func build(kind: String, tile: int) -> bool:
  return true
 
 func upgrade_building(tile: int) -> bool:
+ return _upgrade_building(tile,"")
+
+func specialize_building(tile: int,branch: String) -> bool:
+ if not strategy_enabled or not buildings.has(tile):return reject("Select an eligible level4 turret.")
+ var b=buildings[tile]
+ if b.level!=4 or b.get("specialization","")!="" or branch not in StrategyCatalog.branches(b.kind):return reject("Choose one valid specialization at level4; the choice is permanent.")
+ return _upgrade_building(tile,branch)
+
+func _upgrade_building(tile: int,branch: String) -> bool:
  if not alive:
   return reject("Resident eliminated.")
  if not buildings.has(tile):
   return reject("Select an existing building to upgrade.")
  var b = buildings[tile]
+ if strategy_enabled and b.kind in ["turret","heavy"] and b.level==4 and branch=="":return reject("Choose ONE specialization to advance to level5.")
  var requirement=Catalog.upgrade_requirement(b.kind,b.level,bed_level,door_level)
  if requirement!="":return reject(requirement)
  var data = Catalog.BUILDINGS[b.kind]
  var list_price=Catalog.upgrade_cost(b.kind,b.level)
+ if branch!="":list_price+=StrategyCatalog.BRANCH_FEE
  var price=building_price(list_price.x,list_price.y)
  if not afford(price.x,price.y):
   return false
@@ -238,6 +258,7 @@ func upgrade_building(tile: int) -> bool:
  b.invested_gold=b.get("invested_gold",0.0)+paid_gold
  b.invested_power=b.get("invested_power",0.0)+paid_power
  b.level += 1
+ if branch!="":b.specialization=branch
  construction_actions+=1
  presentation_action.emit("building_upgrade",{"kind":b.kind,"tile":tile,"level":b.level})
  return true
@@ -277,6 +298,6 @@ func tick_economy(delta: float):
  for b in buildings.values():
   b.flash = maxf(0,b.flash-delta)
   if b.kind == "generator":
-   electricity += Catalog.BUILDINGS.generator.rate*b.level*delta*power_multiplier
+   electricity += Catalog.BUILDINGS.generator.rate*b.level*delta*power_multiplier*trait_modifiers.power
   elif b.kind == "repair" and door_hp > 0:
    door_hp = minf(max_hp(),door_hp+Catalog.BUILDINGS.repair.rate*b.level*delta*repair_factor)

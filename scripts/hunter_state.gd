@@ -45,6 +45,24 @@ var surge_room=-1
 var boss_action_age=0.0
 var last_boss_attack=""
 var _transform_exit_room=-1
+var archetype=""
+var archetype_primed=false
+var suppression_remaining=0.0
+var suppression_strength=0.0
+func configure_archetype(id: String) -> bool:
+ if archetype!="" or not StrategyCatalog.ARCHETYPES.has(id):return false
+ archetype=id
+ var tuning=StrategyCatalog.ARCHETYPES[id]
+ max_hp*=tuning.hp;hp*=tuning.hp;damage*=tuning.damage;speed*=tuning.speed
+ return true
+func archetype_factor(stat: String) -> float:
+ if archetype=="":return 1.0
+ var factor=float(StrategyCatalog.ARCHETYPES[archetype][stat])
+ return clampf(lerpf(1.0,factor,.35),.9,1.1) if transformed else factor
+func apply_suppression(strength: float):
+ if hp<=0 or not is_finite(strength) or strength<=0:return
+ suppression_remaining=maxf(suppression_remaining,1.0)
+ suppression_strength=maxf(suppression_strength,minf(.15,strength))
 
 func configure_encounter(stage_id: String):
  boss_policy=BossCatalog.encounter(stage_id,difficulty)
@@ -55,6 +73,7 @@ func cancel_boss_attack():
  boss_attack_target=-1
  windup_remaining=0.0
  charged_ready=false
+ archetype_primed=false
  if interrupted: cooldown=maxf(cooldown,0.5)
 
 func request_exit(room_index: int):
@@ -72,7 +91,11 @@ func shadow_active(room_index: int) -> bool:
  return state==State.ATTACK and hp>0 and target==surge_room and room_index==surge_room and surge_remaining>0
 
 func _begin_transformation(model):
+ var normal_hp=archetype_factor("hp")
  transformed=true
+ # Boss replaces normal archetype tuning. It never receives transformation healing.
+ max_hp*=archetype_factor("hp")/normal_hp
+ hp=minf(hp,max_hp)
  transform_remaining=BossCatalog.TRANSFORM_SECONDS
  state=State.TRANSFORM
  cancel_boss_attack()
@@ -108,7 +131,7 @@ func _choose_boss_attack(room) -> String:
  var defenses=0
  for tile in room.buildings:
   var b=room.buildings[tile]
-  if b.kind in ["turret","heavy"] and room.tile_position(tile).distance_to(position)<=Catalog.BUILDINGS[b.kind].range: defenses+=1
+  if room.alive and b.kind in ["turret","heavy"] and room.tile_position(tile).distance_to(position)<=Catalog.BUILDINGS[b.kind].range*StrategyCatalog.weapon(b).range: defenses+=1
  if defenses>=2 and room.door_hp>damage*2 and boss_cooldowns.surge<=0: return "surge"
  if room.door_hp>damage*2 and boss_cooldowns.siege<=0: return "siege"
  return "scythe" if boss_cooldowns.scythe<=0 else ""
@@ -173,7 +196,7 @@ func configure(mode: String):
 
 func _tuning() -> Dictionary:
  var base=RankCatalog.DIFFICULTIES[difficulty]
- return {"hp":base.hp*stage_scaling.hunter_hp,"damage":base.damage*stage_scaling.hunter_damage,"speed":base.speed*stage_scaling.hunter_speed}
+ return {"hp":base.hp*stage_scaling.hunter_hp*archetype_factor("hp"),"damage":base.damage*stage_scaling.hunter_damage*archetype_factor("damage"),"speed":base.speed*stage_scaling.hunter_speed*archetype_factor("speed")}
 
 func growth_at(active_seconds: float) -> float:
  var profile=RankCatalog.pressure(difficulty)
@@ -193,8 +216,9 @@ func target_score(room: RoomState) -> float:
   var b=room.buildings[tile]
   if b.kind in ["turret","heavy"]:
    var data=Catalog.BUILDINGS[b.kind]
-   if room.tile_position(tile).distance_to(approach)<=data.range:
-    dps+=Catalog.turret_damage(b.kind,b.level)*relay*room.turret_multiplier/Catalog.turret_interval(b.kind,b.level)
+   var branch=StrategyCatalog.weapon(b)
+   if room.tile_position(tile).distance_to(approach)<=data.range*branch.range:
+    dps+=Catalog.turret_damage(b.kind,b.level)*branch.damage*relay*room.turret_multiplier/(Catalog.turret_interval(b.kind,b.level)*branch.interval)
   elif b.kind=="repair": repair+=Catalog.BUILDINGS.repair.rate*b.level
  if (difficulty!="standard" or transformed) and _model_ref!=null and _model_ref.get_ref()!=null:
   for other in _model_ref.get_ref().rooms:
@@ -203,14 +227,26 @@ func target_score(room: RoomState) -> float:
     var b=other.buildings[tile]
     if b.kind in ["turret","heavy"]:
      var data=Catalog.BUILDINGS[b.kind]
-     if other.tile_position(tile).distance_to(approach)<=data.range:
-      dps+=data.damage*b.level*other.turret_multiplier/data.interval
+     var branch=StrategyCatalog.weapon(b)
+     if other.tile_position(tile).distance_to(approach)<=data.range*branch.range:
+      dps+=Catalog.turret_damage(b.kind,b.level)*branch.damage*other.turret_multiplier/(Catalog.turret_interval(b.kind,b.level)*branch.interval)
  var smoke_penalty=0.0
  if _model_ref!=null and _model_ref.get_ref()!=null:
   var m=_model_ref.get_ref()
   if room.index==m.player_room and float(m.items.timers.get("smoke",0))>0: smoke_penalty=5000.0
  var caution=1.0+clampf(1.0-hp/maxf(1,max_hp),0,1)*0.5
- return smoke_penalty+position.distance_to(room.door_position())+room.door_hp*(0.35 if transformed else RankCatalog.pressure(difficulty).door_weight)+minf(Catalog.HUNTER_ESCALATION.dps_penalty_cap,dps*Catalog.HUNTER_ESCALATION.dps_weight*caution)+minf(Catalog.HUNTER_ESCALATION.repair_penalty_cap,repair)
+ var preference=0.0
+ var door_weight=0.35 if transformed else RankCatalog.pressure(difficulty).door_weight
+ if not transformed and archetype=="crusher":door_weight*=.6
+ if not transformed and archetype=="ravager":preference=position.distance_to(room.door_position())*.35;door_weight*=.75
+ if not transformed and archetype=="stalker" and _model_ref!=null and _model_ref.get_ref()!=null:
+  # Avoid overlapping firing lanes: isolated doors are preferred over supported ones.
+  for other in _model_ref.get_ref().rooms:
+   if other==room or not other.alive:continue
+   for tile in other.buildings:
+    var b=other.buildings[tile]
+    if b.kind in ["turret","heavy"] and other.tile_position(tile).distance_to(approach)<=Catalog.BUILDINGS[b.kind].range*StrategyCatalog.weapon(b).range:preference+=65
+ return smoke_penalty+preference+position.distance_to(room.door_position())+room.door_hp*door_weight+minf(Catalog.HUNTER_ESCALATION.dps_penalty_cap,dps*Catalog.HUNTER_ESCALATION.dps_weight*caution)+minf(Catalog.HUNTER_ESCALATION.repair_penalty_cap,repair)
 
 func navigate(goal: Vector2,delta: float):
  var previous=position
@@ -253,6 +289,8 @@ func tick(delta: float, match_state):
  delta=maxf(0,delta-match_state.items.frozen_delta)
  if delta<=0 and match_state.items.frozen_delta>0: return
  hit_flash = maxf(0,hit_flash-delta)
+ suppression_remaining=maxf(0,suppression_remaining-delta)
+ if suppression_remaining<=0:suppression_strength=0
  _model_ref=weakref(match_state)
  var profile=RankCatalog.pressure(difficulty)
  if _previous_siege_room>=0: match_state.rooms[_previous_siege_room].repair_factor=1.0
@@ -262,7 +300,7 @@ func tick(delta: float, match_state):
   reassess_seconds+=delta
   match_state.rooms[target].repair_factor=lerpf(1.0,profile.repair_floor,clampf(minf(siege_seconds,maxf(0,match_state.time-match_state.preparation-profile.opening))/profile.siege_ramp,0,1))
   _previous_siege_room=target
- windup_remaining=maxf(0,cooldown-delta) if charged_ready or boss_attack!="" else 0.0
+ windup_remaining=maxf(0,cooldown-delta) if charged_ready or archetype_primed or boss_attack!="" else 0.0
  if state == State.DEAD or match_state.time < match_state.preparation:
   return
  if _boss_tick(delta,match_state): return
@@ -279,6 +317,11 @@ func tick(delta: float, match_state):
  damage=(Catalog.HUNTER.damage+growth*profile.damage_growth)*tuning.damage*lerpf(1.0,ItemCatalog.TUNING.curse_damage,match_state.items.curse_frame_fraction)
  interval=maxf(Catalog.HUNTER.min_interval,(Catalog.HUNTER.interval-growth*Catalog.HUNTER.interval_growth)*profile.interval_scale)*lerpf(1.0,ItemCatalog.TUNING.curse_interval,match_state.items.curse_frame_fraction)
  speed=(Catalog.HUNTER.speed+minf(Catalog.HUNTER_ESCALATION.speed_bonus_cap,growth*Catalog.HUNTER_ESCALATION.speed_growth))*tuning.speed*match_state.items.speed_factor(self)
+ # Strongest movement slow wins; Frost and suppression never multiply to immobilize.
+ if suppression_remaining>0:
+  var item_factor=match_state.items.speed_factor(self)
+  var slow_factor=1.0-suppression_strength*(.5 if transformed else 1.0)
+  speed=speed/maxf(.01,item_factor)*minf(item_factor,slow_factor)
  if match_state.tutorial_mode:
   damage*=0.08;interval=maxf(interval,2.0);speed*=0.65
  if match_state.items.decoy_tick(delta,match_state): return
@@ -329,6 +372,7 @@ func tick(delta: float, match_state):
    siege_seconds=0
    reassess_seconds=0
    encounter_attacks=0
+   archetype_primed=false
    charged_ready=false
    if delta>0: match_state.record_event("encounter",target)
  elif state == State.ATTACK:
@@ -348,6 +392,13 @@ func tick(delta: float, match_state):
    if transformed:
     _boss_strike(room,match_state)
    else:
+    var needs_telegraph=archetype=="crusher" or (archetype=="stalker" and encounter_attacks==0) or (archetype=="ravager" and encounter_attacks%3==0)
+    if needs_telegraph and not archetype_primed and not charged_ready:
+     archetype_primed=true
+     cooldown=StrategyCatalog.ARCHETYPES[archetype].windup
+     windup_remaining=cooldown
+     match_state.record_event("archetype_warning",target,{"archetype":archetype,"delay":cooldown})
+     return
     if active_seconds>=profile.opening and profile.charged_every>0 and (encounter_attacks+1)%int(profile.charged_every)==0 and not charged_ready:
      charged_ready=true
      cooldown=profile.windup
@@ -360,7 +411,10 @@ func tick(delta: float, match_state):
     encounter_attacks+=1
     _damage_door(room,match_state,damage*strike_scale)
     cooldown += interval
-  if boss_attack=="" and (target_time if difficulty=="standard" and not transformed else reassess_seconds)>maxf(profile.commit,Catalog.HUNTER_ESCALATION.minimum_commitment) and room.door_hp>damage*2:
+    archetype_primed=false
+    if archetype=="ravager" and encounter_attacks%3==0:cooldown+=.8
+  var commitment=StrategyCatalog.ARCHETYPES[archetype].commit if archetype!="" and not transformed else 1.0
+  if boss_attack=="" and not archetype_primed and (target_time if difficulty=="standard" and not transformed else reassess_seconds)>maxf(profile.commit*commitment,Catalog.HUNTER_ESCALATION.minimum_commitment) and room.door_hp>damage*2:
    var alternative=choose_target(match_state.rooms,target)
    var stalled=room.door_hp>=siege_start_hp-damage*2
    if alternative>=0 and alternative!=target and (stalled or target_score(match_state.rooms[alternative])<target_score(room)*(1-Catalog.HUNTER_ESCALATION.retarget_improvement)):

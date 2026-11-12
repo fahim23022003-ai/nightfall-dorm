@@ -33,10 +33,13 @@ var stage_id=""
 var difficulty="standard"
 var match_boosts: Dictionary={}
 var stage_bonus: Dictionary={}
+var strategy=MatchStrategy.new()
+func configure_strategy(seed_value: int,archetype: String="",contract: String="",identity: int=0) -> bool:
+ return strategy.configure(self,seed_value,archetype,contract,identity)
 
 func configure_match(mode: String="standard", boosts: Dictionary={}):
  # Called once on a fresh match; loadout changes never alter an active room.
- if time>0 or player_room>=0: return false
+ if time>0 or player_room>=0 or strategy.enabled: return false
  difficulty=mode if RankCatalog.DIFFICULTIES.has(mode) else "standard"
  match_boosts=boosts.duplicate(true)
  hunter.configure(difficulty)
@@ -44,7 +47,7 @@ func configure_match(mode: String="standard", boosts: Dictionary={}):
  return true
 
 func configure_stage(id: String) -> bool:
- if time>0 or player_room>=0: return false
+ if time>0 or player_room>=0 or strategy.enabled: return false
  var stage=StageCatalog.stage(id)
  if stage.is_empty(): return false
  if not configure_map(stage.map): return false
@@ -60,6 +63,7 @@ func _init():
 
 func reset(seed_value: int = 1):
  items=ItemEffects.new()
+ strategy=MatchStrategy.new()
  random.seed = seed_value
  rooms.clear()
  map_id="legacy"
@@ -240,6 +244,7 @@ func record_event(type: String, room_index: int, data: Dictionary={}):
  next_presentation_event_id+=1
  presentation_events.append(entry)
  if presentation_events.size()>128: presentation_events.pop_front()
+ strategy.event(type,room_index,self)
 
 func claim_room(index: int) -> bool:
  if not running or result != "" or index < 0 or index >= rooms.size() or player_room >= 0 or rooms[index].owner >= 0:
@@ -294,6 +299,9 @@ func repair_door() -> bool:
 
 func upgrade_building(tile: int) -> bool:
  return player().upgrade_building(tile) if _can_purchase() else false
+
+func specialize_building(tile: int,branch: String) -> bool:
+ return player().specialize_building(tile,branch) if _can_purchase() else false
 
 func sell_building(tile: int) -> bool:
  return player().sell_building(tile) if _can_purchase() else false
@@ -363,6 +371,7 @@ func tick(delta: float):
  _age_combat_events(delta)
  time += delta
  items.tick(delta,self)
+ strategy.observe(self)
  if bot_claimed < 5 and time > 6+bot_claimed*1.7:
   var options: Array = []
   for room in rooms:
@@ -404,6 +413,7 @@ func tick(delta: float):
   items.clear(self)
   hunter.stop_combat(self)
   _cancel_projectiles("terminal")
+  strategy.seal(self)
   return
  # Contact with an exposed survivor has the same priority as a room breach.
  if exposed and hunter.state!=HunterState.State.TRANSFORM and hunter.hp > 0 and hunter.position.distance_to(player_position)<15:
@@ -417,6 +427,7 @@ func tick(delta: float):
   items.clear(self)
   hunter.stop_combat(self)
   _cancel_projectiles("terminal")
+  strategy.seal(self)
   return
  _advance_projectiles(delta)
  _turrets(delta)
@@ -428,6 +439,7 @@ func tick(delta: float):
   items.clear(self)
   hunter.stop_combat(self)
   _cancel_projectiles("terminal")
+  strategy.seal(self)
 
 func _turrets(delta: float):
  if not running or result != "":
@@ -445,19 +457,20 @@ func _turrets(delta: float):
     continue
    b.cooldown = maxf(-delta,b.cooldown-delta)
    var data = Catalog.BUILDINGS[b.kind]
-   if not hunter.shadow_active(room.index) and hunter.hp > 0 and hunter.state != HunterState.State.DORMANT and hunter.state != HunterState.State.DEAD and room.tile_position(tile).distance_to(hunter.position)<=data.range and b.cooldown <= 0:
-    var amount = Catalog.turret_damage(b.kind,b.level)*multiplier*room.turret_multiplier
+   var branch=StrategyCatalog.weapon(b)
+   if not hunter.shadow_active(room.index) and hunter.hp > 0 and hunter.state != HunterState.State.DORMANT and hunter.state != HunterState.State.DEAD and room.tile_position(tile).distance_to(hunter.position)<=data.range*branch.range and b.cooldown <= 0:
+    var amount = Catalog.turret_damage(b.kind,b.level)*multiplier*room.turret_multiplier*branch.damage
     if projectiles.size() >= Catalog.PROJECTILES.max_active:
      continue
     var origin = room.tile_position(tile)
-    var shot = {"id":next_projectile_id,"from":origin,"position":origin,"target_id":1,"damage":amount,"speed":Catalog.PROJECTILES[b.kind],"kind":b.kind,"room":room.index,"level":b.level,"age":0.0}
+    var shot = {"id":next_projectile_id,"from":origin,"position":origin,"target_id":1,"damage":amount,"speed":Catalog.PROJECTILES[b.kind]*branch.speed,"kind":b.kind,"room":room.index,"level":b.level,"age":0.0,"specialization":b.get("specialization",""),"slow":branch.slow}
     next_projectile_id += 1
     projectiles.append(shot)
     _combat_event("launch",shot,origin,0.0)
     shots += 1
     room.shots += 1
     b.flash = 0.15
-    b.cooldown += Catalog.turret_interval(b.kind,b.level)/(ItemCatalog.TUNING.overdrive_rate if room.owner==0 and float(items.timers.get("overdrive",0))>0 else 1.0)
+    b.cooldown += Catalog.turret_interval(b.kind,b.level)*branch.interval/(ItemCatalog.TUNING.overdrive_rate if room.owner==0 and float(items.timers.get("overdrive",0))>0 else 1.0)
 
 func _advance_projectiles(delta: float):
  if not running or result != "" or not is_finite(delta) or delta <= 0:
@@ -480,6 +493,7 @@ func _advance_projectiles(delta: float):
     if hunter.transformed:hit*=match_boosts.get("reaper",1.0)
     if time<preparation+stage_bonus.get("seconds",0.0):hit*=stage_bonus.get("damage",1.0)
    hunter.hurt(hit)
+   if float(shot.get("slow",0))>0:hunter.apply_suppression(float(shot.slow))
    items.ignite(self,shot.room)
    var applied_damage = previous_hp-hunter.hp
    damage_dealt += applied_damage
@@ -491,7 +505,7 @@ func _advance_projectiles(delta: float):
  projectiles = survivors
 
 func _combat_event(type: String, shot: Dictionary, position: Vector2, damage: float, reason: String = ""):
- combat_events.append({"id":next_combat_event_id,"type":type,"projectile_id":shot.id,"position":position,"room":shot.room,"kind":shot.kind,"level":shot.level,"damage":damage,"time":time,"remaining":Catalog.PROJECTILES.event_lifetime,"reason":reason})
+ combat_events.append({"id":next_combat_event_id,"type":type,"projectile_id":shot.id,"position":position,"room":shot.room,"kind":shot.kind,"level":shot.level,"specialization":shot.get("specialization",""),"damage":damage,"time":time,"remaining":Catalog.PROJECTILES.event_lifetime,"reason":reason})
  next_combat_event_id += 1
  if combat_events.size() > Catalog.PROJECTILES.max_events:
   combat_events.pop_front()

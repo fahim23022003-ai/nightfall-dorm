@@ -1,0 +1,253 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: PREMIUM CONTRACT: production combat reaches requested fixture terminal result
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:47)
+       [2] payouts (res://tests/premium_strategy_contracts.gd:65)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: terminal facts sealed by actual model path
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:48)
+       [2] payouts (res://tests/premium_strategy_contracts.gd:65)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: opting out preserves ordinary rewards
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] payouts (res://tests/premium_strategy_contracts.gd:67)
+       [2] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: production combat reaches requested fixture terminal result
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:47)
+       [2] payouts (res://tests/premium_strategy_contracts.gd:69)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: terminal facts sealed by actual model path
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:48)
+       [2] payouts (res://tests/premium_strategy_contracts.gd:69)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: qualifying genuine terminal pays documented contract bonus
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] payouts (res://tests/premium_strategy_contracts.gd:71)
+       [2] run (res://tests/premium_strategy_contracts.gd:134)
+SCRIPT ERROR: Invalid access to property or key 'rm_cash' on a base object of type 'Dictionary'.
+          at: payouts (res://tests/premium_strategy_contracts.gd:72)
+          GDScript backtrace (most recent call first):
+              [0] payouts (res://tests/premium_strategy_contracts.gd:72)
+              [1] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: production combat reaches requested fixture terminal result
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:47)
+       [2] identity_and_tampering (res://tests/premium_strategy_contracts.gd:101)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: terminal facts sealed by actual model path
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:48)
+       [2] identity_and_tampering (res://tests/premium_strategy_contracts.gd:101)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: production combat reaches requested fixture terminal result
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:47)
+       [2] identity_and_tampering (res://tests/premium_strategy_contracts.gd:101)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: terminal facts sealed by actual model path
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:48)
+       [2] identity_and_tampering (res://tests/premium_strategy_contracts.gd:101)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: production combat reaches requested fixture terminal result
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:47)
+       [2] identity_and_tampering (res://tests/premium_strategy_contracts.gd:101)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: terminal facts sealed by actual model path
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:48)
+       [2] identity_and_tampering (res://tests/premium_strategy_contracts.gd:101)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: production combat reaches requested fixture terminal result
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:47)
+       [2] identity_and_tampering (res://tests/premium_strategy_contracts.gd:101)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: terminal facts sealed by actual model path
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:48)
+       [2] identity_and_tampering (res://tests/premium_strategy_contracts.gd:101)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: production combat reaches requested fixture terminal result
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:47)
+       [2] identity_and_tampering (res://tests/premium_strategy_contracts.gd:101)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: terminal facts sealed by actual model path
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:48)
+       [2] identity_and_tampering (res://tests/premium_strategy_contracts.gd:101)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: production combat reaches requested fixture terminal result
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:47)
+       [2] identity_and_tampering (res://tests/premium_strategy_contracts.gd:101)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: terminal facts sealed by actual model path
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:48)
+       [2] identity_and_tampering (res://tests/premium_strategy_contracts.gd:101)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: production combat reaches requested fixture terminal result
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:47)
+       [2] rollback (res://tests/premium_strategy_contracts.gd:117)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: terminal facts sealed by actual model path
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:48)
+       [2] rollback (res://tests/premium_strategy_contracts.gd:117)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: production combat reaches requested fixture terminal result
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:47)
+       [2] rollback (res://tests/premium_strategy_contracts.gd:122)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: terminal facts sealed by actual model path
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:48)
+       [2] rollback (res://tests/premium_strategy_contracts.gd:122)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: retry after failed save produces exact original deterministic award
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] rollback (res://tests/premium_strategy_contracts.gd:124)
+       [2] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: production combat reaches requested fixture terminal result
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:47)
+       [2] rollback (res://tests/premium_strategy_contracts.gd:117)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: terminal facts sealed by actual model path
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:48)
+       [2] rollback (res://tests/premium_strategy_contracts.gd:117)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: production combat reaches requested fixture terminal result
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:47)
+       [2] rollback (res://tests/premium_strategy_contracts.gd:122)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: terminal facts sealed by actual model path
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:48)
+       [2] rollback (res://tests/premium_strategy_contracts.gd:122)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: retry after failed save produces exact original deterministic award
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] rollback (res://tests/premium_strategy_contracts.gd:124)
+       [2] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: production combat reaches requested fixture terminal result
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:47)
+       [2] rollback (res://tests/premium_strategy_contracts.gd:117)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: terminal facts sealed by actual model path
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:48)
+       [2] rollback (res://tests/premium_strategy_contracts.gd:117)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: production combat reaches requested fixture terminal result
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:47)
+       [2] rollback (res://tests/premium_strategy_contracts.gd:122)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: terminal facts sealed by actual model path
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:48)
+       [2] rollback (res://tests/premium_strategy_contracts.gd:122)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: retry after failed save produces exact original deterministic award
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] rollback (res://tests/premium_strategy_contracts.gd:124)
+       [2] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: production combat reaches requested fixture terminal result
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:47)
+       [2] rollback (res://tests/premium_strategy_contracts.gd:127)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+ERROR: PREMIUM CONTRACT: terminal facts sealed by actual model path
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_contracts.gd:11)
+       [1] finish (res://tests/premium_strategy_contracts.gd:48)
+       [2] rollback (res://tests/premium_strategy_contracts.gd:127)
+       [3] run (res://tests/premium_strategy_contracts.gd:134)
+SCRIPT ERROR: Invalid access to property or key 'contract' on a base object of type 'Dictionary'.
+          at: rollback (res://tests/premium_strategy_contracts.gd:129)
+          GDScript backtrace (most recent call first):
+              [0] rollback (res://tests/premium_strategy_contracts.gd:129)
+              [1] run (res://tests/premium_strategy_contracts.gd:134)
+PREMIUM_CONTRACT_CHECKS=129 FAILURES=35

@@ -1,0 +1,33 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: PREMIUM ECONOMY: one sale transfers exact actual half refund
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_economy.gd:10)
+       [1] run (res://tests/premium_strategy_economy.gd:76)
+ERROR: PREMIUM ECONOMY: actual Gold/Electricity debits match paid base/tiers/fee
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_economy.gd:10)
+       [1] run (res://tests/premium_strategy_economy.gd:72)
+ERROR: PREMIUM ECONOMY: one sale transfers exact actual half refund
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_economy.gd:10)
+       [1] run (res://tests/premium_strategy_economy.gd:76)
+ERROR: PREMIUM ECONOMY: one sale transfers exact actual half refund
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_economy.gd:10)
+       [1] run (res://tests/premium_strategy_economy.gd:76)
+ERROR: PREMIUM ECONOMY: actual Gold/Electricity debits match paid base/tiers/fee
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_economy.gd:10)
+       [1] run (res://tests/premium_strategy_economy.gd:72)
+ERROR: PREMIUM ECONOMY: one sale transfers exact actual half refund
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_economy.gd:10)
+       [1] run (res://tests/premium_strategy_economy.gd:76)
+PREMIUM_ECONOMY_CHECKS=556 SCENARIOS=16 FAILURES=6

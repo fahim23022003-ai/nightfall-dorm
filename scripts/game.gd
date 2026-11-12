@@ -118,12 +118,13 @@ func start_match(difficulty: String="") -> bool:
  var requested=_stage_request
  _stage_request=""
  campaign_mode=requested!=""
- var entry=profile.begin_match(selected_difficulty,requested)
+ var entry=profile.begin_match(selected_difficulty,requested,true)
  if entry.is_empty(): return false
  match_id=int(entry.get("id",0))
  model.reset(int(Time.get_ticks_msec()))
  model.configure_match(selected_difficulty,RankCatalog.bonuses(entry.get("equipped",[])))
  if requested!="": model.configure_stage(requested)
+ model.configure_strategy(int(profile.statistics.matches),entry.archetype,entry.contract,match_id)
  profile.apply_stage_bonus(model,entry)
  audio_system.reset_match(model)
  audio_event("match_start")

@@ -2,20 +2,36 @@
 
 IN PROGRESS. Started clean `work` at
 `496b9b9df9efbe95f99f2efc0e7a5de3c6597815`, verified against GitHub.
-Recovery tag `pre-phase5d1-496b9b9`. Existing Phase5C3 materials, presentation,
-105audio/20items/Level10, profile transactions and five-map navigation reused.
-B owns all production; C independent mechanic/economy/save QA; D actual baseline/
-after rendering. A balance auditor activates only after mechanics are ready.
-Root owns regression orchestration, docs and actual commit/push verification.
+Recovery tag `pre-phase5d1-496b9b9`; baseline checkpoint83f915c (local).
+B sole production, C independent QA, D actual renders, A bounded balance.
+Root owns docs/full regular+extended orchestration and verified Git push.
 
-Milestones: baseline tests/captures; premium UI; archetypes; turret branches;
-room tradeoffs; optional transactional contracts; integration/balance/visual QA.
-Do not begin5D2/6, EndlessSiege, new practice mode, Android or multiplayer.
-NativeWindows, physical controls/speakers and subjective quality UNVERIFIED.
-Milestone A verified:45 actual baseline PNGs/73 render checks, zero failures;
-12 baseline import/core/economy/profile/item/reward/property/scene/startup commands
-exit0 with no engine errors. Baseline production matches496b9b9. Production work
-has begun after both gates. No Phase5D1 mechanic/UI completion or push claimed.
+Baseline:45 actual PNGs/73 checks and core/economy/profile/item/reward/property/
+scene/startup commands pass. Mechanics now implemented:3 real archetypes with
+stable legitimate-match ordinal selection, bounded Reaper modifiers, 4 exclusive
+paid L5→10 branches, six rooms with three benefit/drawback traits, 3 optional
+once-per-stage/difficulty contract bonuses in existing rollback-safe settlement.
+Real Game starts enable strategy; standalone legacy fixtures remain neutral.
+No mid-match saving existed or was added.
+
+C passes172324mechanic assertions/270actual navigation approaches,556economy/
+16scenarios,149migration and407contract checks. After A balance findings,
+Precision range reduced to204px (Suppression240); focused current-source983
+checks verify actual shots/threat estimates/CC/Reaper without repeating nav.
+Initial test-fixture errors retained and corrected without production rounding
+or weakened numeric tolerance. A live150/controlled8 audit complete, report in
+progress; no integrity/settlement failure. Real tradeoff in26NeedleL5pairs:
+Precision faster13/Suppression5/ties8; limited automated policies, not humanrates.
+
+Premium UI imports/starts clean, actual D review in progress. D found main title/
+subtitle and narrow How-to-Play clipping; B refining those and button depth.
+C actual UI controls test3015checks had two expected-copy mismatches, being
+corrected; final UI acceptance pending. Root full regular+extended running in
+`docs/evidence/premium-strategy/regression-full.log`; final status pending.
+Next: finish D/C visual/layout review, handle confirmed failures, finish full
+regressions, update finalreport/docs, commit and push exact verifiedworkSHA.
+Native Windows/hardwareFPS/physicalcontrols/speakers and subjective quality
+UNVERIFIED. No completion/push claimed yet; stop after5D1, no5D2/6.
 
 ---
 
