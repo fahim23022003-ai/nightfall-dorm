@@ -179,4 +179,11 @@ expiry, Legendary limits, purchases/cancel/sell and normal boss combat. Native
 Windows results remain UNVERIFIED until executed there.
 
 Delivery: recovery tag `pre-phase5b3-88a6821`; mechanics checkpoint `b3fdb35`.
-Final private `work` push and matching remote SHA are verified after committing.
+Latest verified implementation/evidence commit: `73d9a7ac32ea54f337912f74b548e0feedee5925`.
+GitHub push SUCCEEDED: remote `refs/heads/work` returned exactly this SHA,
+matching local HEAD. Initial HTTP 503 push failures left the remote unchanged;
+pushing the mechanics checkpoint first and using a buffered HTTP/1.1 upload
+completed both fast-forward pushes successfully. No force push was used.
+
+The subsequent documentation-only commit records this verification. Its final
+HEAD and matching GitHub SHA are confirmed in the completion message.

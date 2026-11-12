@@ -36,7 +36,10 @@ No known functional test failures. Native Windows and subjective audiovisual
 quality/human balance UNVERIFIED. Full definitions/rewards/evidence:
 [PHASE_5B3_REWARDS_REPORT.md](PHASE_5B3_REWARDS_REPORT.md),
 `docs/evidence/rewards/`. Final completion records actual commit and verified
-private GitHub `work` push. `main` unchanged.
+private GitHub `work` push. Implementation/evidence commit
+`73d9a7ac32ea54f337912f74b548e0feedee5925` was successfully pushed and its remote SHA
+matched local HEAD after recovering from initial HTTP 503 failures. A following
+documentation-only commit records verification. `main` unchanged.
 
 ---
 
