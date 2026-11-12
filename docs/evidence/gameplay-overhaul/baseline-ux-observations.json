@@ -1,0 +1,46 @@
+{
+ "checks": 16,
+ "failures": 0,
+ "fixture": "Fresh isolated profile. Actual Stage1 Normal campaign, real claim/sleep APIs; player moved to bed for controlled seated HUD. Five actual NPC room states populated for roster layout. Real pad-click input; starting25Gold/0Electricity unchanged. Combat model held while renderer/UI advance. Linux real Xorg/Mesa/Dummy audio; noWindows/audio/naturalplayclaim.",
+ "observations": [
+  {
+   "body_rect": "[P: (20.0, 506.0), S: (1240.0, 198.0)]",
+   "camera_after": {
+    "player": "(43.0, -17.0)",
+    "position": "(325.0, 219.6094)",
+    "zoom": "(0.763723, 0.763723)"
+   },
+   "camera_before": {
+    "player": "(43.0, -17.0)",
+    "position": "(325.0, 219.6094)",
+    "zoom": "(0.763723, 0.763723)"
+   },
+   "default_electricity": 0.0,
+   "default_gold": 25.0,
+   "header_rect": "[P: (20.0, 460.0), S: (1240.0, 46.0)]",
+   "map": "abandoned_dorm",
+   "resolution": "720",
+   "tile_count": 12
+  },
+  {
+   "body_rect": "[P: (20.0, 506.0), S: (1240.0, 198.0)]",
+   "camera_after": {
+    "player": "(43.0, -17.0)",
+    "position": "(325.0, 219.6094)",
+    "zoom": "(0.763723, 0.763723)"
+   },
+   "camera_before": {
+    "player": "(43.0, -17.0)",
+    "position": "(325.0, 219.6094)",
+    "zoom": "(0.763723, 0.763723)"
+   },
+   "default_electricity": 0.0,
+   "default_gold": 25.0,
+   "header_rect": "[P: (20.0, 460.0), S: (1240.0, 46.0)]",
+   "map": "abandoned_dorm",
+   "resolution": "1080",
+   "tile_count": 12
+  }
+ ],
+ "source": "457560dc4a8712dd644b7a7cdca509218fe83f70"
+}
