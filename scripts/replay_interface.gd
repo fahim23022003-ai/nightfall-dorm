@@ -178,18 +178,25 @@ func show_session_result():
  page(("ENDLESS RUN ENDED" if model.run_kind=="endless" else "CHALLENGE "+model.result.to_upper() if model.run_kind=="challenge" else "PRACTICE "+model.result.to_upper()),"Actual local results. Challenge summaries are self-reported, not an online leaderboard. Practice has no permanent rewards.","replay_result")
  var line="Time %.1fs · Damage %.1f" % [model.time,model.damage_dealt]
  if model.run_kind=="endless":line+="\nCompleted wave %d · Best %d · Run %d" % [model.endless.completed,game.profile.replay.best_wave,model.endless.run_id]
- if model.run_kind=="challenge":line+="\n"+model.challenge_code+"\nNormalized rules 1 · "+MapCatalog.map(model.map_id).title
+ if model.run_kind=="challenge":
+  var mode_name=RankCatalog.DIFFICULTIES[model.difficulty].name
+  var archetype_name=StrategyCatalog.ARCHETYPES[model.hunter.archetype].name
+  line+="\n"+model.challenge_code+"\n"+MapCatalog.map(model.map_id).title+" · "+mode_name+"\nNormalized rules %d · " % ChallengeCode.RULESET+archetype_name
  paragraph(line,Vector2(107,205),1060,160,24)
  if model.run_kind=="challenge":
   var record=game.profile.replay.challenge_best.get(model.challenge_code.sha256_text().left(16),{})
   paragraph("Personal best score %d · time of that score %.1fs · %s" % [record.get("score",0),record.get("time",0),str(record.get("outcome","unrecorded"))],Vector2(107,389),1050,50,18)
-  ui.button("Copy result summary",Vector2(107,467),func():copy_text("Nightfall Dorm | "+model.challenge_code+" | "+model.result+" | %.2fs | damage %.1f | self-reported" % [model.time,model.damage_dealt]),500,44)
+  ui.button("Copy result summary",Vector2(107,467),func():copy_text(challenge_result_summary()),500,44)
   if model.challenge_recorded:notice_label=ui.label_at("",Vector2(107,535),15,500)
   if not model.challenge_recorded:ui.button("Retry challenge record save",Vector2(107,535),func():game.profile.record_challenge(model);show_session_result(),500,44)
  if model.result=="defeat":ui.button("Why did I lose?",Vector2(657,467),show_defeat_analysis,518,44)
  if model.run_kind=="endless" and game.last_progression.is_empty() and not game.profile.save_ok:ui.button("Retry result save",Vector2(107,535),game.retry_settlement,500,44)
  ui.button("Main menu",Vector2(107,614),game.return_menu,400,44)
  ui.button("Reset Practice" if model.run_kind=="practice" else "Replay options",Vector2(657,614),game.reset_practice if model.run_kind=="practice" else show_hub,518,44)
+func challenge_result_summary() -> String:
+ var model=game.model
+ if model.run_kind!="challenge":return ""
+ return "Nightfall Dorm | %s | %s | %s | ruleset %d | %s | %s | %.2fs | damage %.1f | self-reported" % [model.challenge_code,MapCatalog.map(model.map_id).title,RankCatalog.DIFFICULTIES[model.difficulty].name,ChallengeCode.RULESET,StrategyCatalog.ARCHETYPES[model.hunter.archetype].name,model.result,model.time,model.damage_dealt]
 func show_defeat_analysis():
  var facts=game.model.defeat_facts.report
  page("WHY DID I LOSE?","A compact factual record from your actual defeat, captured before result rewards changed inventory. It does not claim a single proven cause.","defeat_analysis")

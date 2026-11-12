@@ -106,6 +106,10 @@ func practice_flow():
  check(Support.profile_signature(game.profile)==snapshot and FileAccess.get_file_as_bytes(game.profile.path)==bytes,"Practice reset/defeat/analysis/exit cannot award or consume permanent progress")
 func challenge_flow():
  var snapshot=game.profile._reward_snapshot();var bytes=FileAccess.get_file_as_bytes(game.profile.path)
+ # Use non-default modes/archetypes so the result cannot pass by echoing the
+ # profile's Normal preference or a hardcoded Hunter name.
+ game.ui.replay_ui.difficulty="hell" if root.size.x>1280 else "hard"
+ game.ui.replay_ui.practice_archetype="ravager" if root.size.x>1280 else "stalker"
  game.ui.replay_ui.show_codes();await settle();screen("Challenge codes")
  await click(find("Generate code"));await settle()
  var code=game.ui.replay_ui.code_text
@@ -124,6 +128,14 @@ func challenge_flow():
  check(after==expected,"coded result changes personal code record only, never inventory/cash/XP/pity/campaign")
  check(not game.profile.record_challenge(game.model) and game.profile._reward_snapshot()==after,"same coded result cannot record repeatedly")
  screen("Challenge result card")
+ var model=game.model;var map_title=MapCatalog.map(model.map_id).title
+ var difficulty=RankCatalog.DIFFICULTIES[model.difficulty].name;var archetype=StrategyCatalog.ARCHETYPES[model.hunter.archetype].name
+ var labels=controls(game.ui.panel,Label)
+ check(labels.any(func(l):return l.is_visible_in_tree() and l.text.contains(map_title) and l.text.contains(difficulty)),"result visibly names actual challenge map and difficulty")
+ check(labels.any(func(l):return l.is_visible_in_tree() and l.text.contains(archetype) and l.text.contains("Normalized rules %d" % ChallengeCode.RULESET)),"result visibly names actual archetype and ruleset")
+ var summary=game.ui.replay_ui.challenge_result_summary()
+ check(summary.contains(model.challenge_code) and summary.contains(map_title) and summary.contains(difficulty) and summary.contains(archetype) and summary.contains("ruleset %d" % ChallengeCode.RULESET) and summary.contains(model.result) and summary.contains("self-reported"),"actual Copy builder includes complete factual challenge metadata and self-report limit")
+ print("REPLAY_RESULT_METADATA=",difficulty," / ",archetype," / ",map_title," / ruleset ",ChallengeCode.RULESET)
  await click(find("Copy result summary"));await settle()
  await click(find("Main menu"));await settle()
 func cosmetics_and_pity():
