@@ -1,0 +1,141 @@
+{
+  "scope": "EARLY AUDIO ONLY: real Needle/Arc model launch+impact and actual build/upgrade input, beforeboss/new-build integration",
+  "checks": 76,
+  "failures": 0,
+  "exit_code": 0,
+  "source_snapshot": "early-audio-source-accepted-before.json",
+  "source_unchanged_during_run": true,
+  "source_postcheck": "early-audio-source-after-changes.json",
+  "metrics": "early-audio-pcm-metrics.json",
+  "bus_caveat": "Master is actual postbusmix. EffectRecord stems precede bus faders/mute; nonzero mutedMusic stem is expected and NOT output leakage.",
+  "profile": "Isolated Practice; persistent profile bytes unchanged. DefaultMusic.5/Effects.65/Ambient.5 and MusicMuted0, allothermixsame.",
+  "rejected_diagnostic": "early-audio-before-fixture-settle: 68checks/10failures; Arc setup/transactions clicked before UI status/layout refreshed. Those labels are invalid evidence. Added waits and assertions verified actual sale/tile/build context; clean76/0 rerun accepted. Needle diagnostic valid but not used for final metrics.",
+  "limitations": [
+    "Dummy hardware driver, actual internalPCM; no soundcard/headphone/human audition",
+    "Native Windows UNVERIFIED",
+    "No claim that waveform/RMS alone proves recognizable or satisfying audio",
+    "Boss/new-building SFX and high-density stress not yet reviewed"
+  ],
+  "files": [
+    {
+      "file": "docs/evidence/phase5d4/early-audio/arc-default-mix-720.png",
+      "bytes": 284967,
+      "sha256": "ca443f2acf32785e0c4d625a53563fb47413211a538c8a9647ee231f7c47b0cc"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/arc-default-mix-effects.wav",
+      "bytes": 1409068,
+      "sha256": "8f996b80fdaa6dd9d78b068d5733fd467b9d991267606bc162ad1be814abf3a2"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/arc-default-mix-master.wav",
+      "bytes": 1409068,
+      "sha256": "77f13c599213b394d684e64de95579299aa39badd85979b5eda03bd0b6aec4fc"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/arc-default-mix-music.wav",
+      "bytes": 1409068,
+      "sha256": "765fcbda7aa5ba77c0a3d48aa1598d2e53b09b844b1cfef0eeca25eabcb9eadd"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/arc-music-muted-720.png",
+      "bytes": 285156,
+      "sha256": "322fdd809a33b102e281d647d4d82de6badbad2bb83c0b558d72f2163654ea4e"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/arc-music-muted-effects.wav",
+      "bytes": 1392684,
+      "sha256": "be622097948e46a93115f9e351dd24f7b20bbd66f78f15e377d551aae973a337"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/arc-music-muted-master.wav",
+      "bytes": 1392684,
+      "sha256": "632d40338ea5790020a48f7186be605189ea042360fcea9221059302de6679ec"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/arc-music-muted-music.wav",
+      "bytes": 1392684,
+      "sha256": "8524a2bd82b5f46986704d1058ff153b16b965079478781044136d69d036f097"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/build-upgrade-default-mix-effects.wav",
+      "bytes": 1200172,
+      "sha256": "69e6eb4d896cb1cfac4f520908b8c13c2b7c0630f4cb427bd294594cff8ab742"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/build-upgrade-default-mix-master.wav",
+      "bytes": 1196076,
+      "sha256": "6af41ff5f58f5e421cd8a139e834e8a6cef2e801b46211ce97f09ad7f0f41df3"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/build-upgrade-default-mix-music.wav",
+      "bytes": 1212460,
+      "sha256": "6ce5543ea83d8b223f6cb534d4a49506cd769970c3e38a93260b72a0771b11a7"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/build-upgrade-music-muted-effects.wav",
+      "bytes": 1245228,
+      "sha256": "b4f0d4163b588c31d59ef7439a0983cdedeeb542f67cecaae9c41536060cf6b5"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/build-upgrade-music-muted-master.wav",
+      "bytes": 1228844,
+      "sha256": "67a01dc66ad7c1b86cba1f0613a91a8e2ca2dbe404a670e418cdfe00ba33e198"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/build-upgrade-music-muted-music.wav",
+      "bytes": 1245228,
+      "sha256": "0241923c9d9f3c5a7eeeb43799131883a9082047f607a26f41051307e07f4c87"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/master-waveforms.png",
+      "bytes": 197659,
+      "sha256": "2a05eec83d2cedc167057c2ffb1573e6ff3aac61e5a0f9c6fcc507a83084de9f"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/needle-default-mix-720.png",
+      "bytes": 285624,
+      "sha256": "1351fe8c6a6b2ff96abccd21daf90cc07a339734c6609ccb5aee0f0c6bf1a98c"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/needle-default-mix-effects.wav",
+      "bytes": 1425452,
+      "sha256": "f0bbdd93f10acdca6468c25230b0942f028a786ac31bc452308ede9e968a8bb1"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/needle-default-mix-master.wav",
+      "bytes": 1409068,
+      "sha256": "7d183f62c5b3cba9ff6e5adc05ae8a21c348b73fafc4e542157ac2f7656dc682"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/needle-default-mix-music.wav",
+      "bytes": 1425452,
+      "sha256": "456eca4df958232f950e0f242c5ef37578ad3f2ab55dc399e432565a81b90d5d"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/needle-music-muted-720.png",
+      "bytes": 285987,
+      "sha256": "1de70c970e3c89bc776a1a74ead6f8e07d0750cc49f12c8088161c6706555c08"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/needle-music-muted-effects.wav",
+      "bytes": 1392684,
+      "sha256": "c03215690fca6fc313ec8ba4762a3b5276435b6e6ba0da57e6ae3fc487bed8e6"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/needle-music-muted-master.wav",
+      "bytes": 1392684,
+      "sha256": "ae4194ca612473e53e8380fd52ddfe52eb49d93dd65084a67325dc96e8d960cf"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/needle-music-muted-music.wav",
+      "bytes": 1392684,
+      "sha256": "c36d4df5dd55e37db60be8924dbb3e57c4046787e06c4a6026709f77195e9606"
+    },
+    {
+      "file": "docs/evidence/phase5d4/early-audio/results.json",
+      "bytes": 11764,
+      "sha256": "39f2ca4ac5416f798c4285cc9af7d1e808dcc43a9123d3dfe779c32f84b54aff"
+    }
+  ]
+}

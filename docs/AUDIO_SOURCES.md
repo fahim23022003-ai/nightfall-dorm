@@ -8,8 +8,8 @@ scores use recorded VSCO2 Community Edition instruments; voice derivatives use
 the credited human/creature recordings listed in the Phase 5D-3 section below.
 Original project compositions and processing are distinguished from the source
 performances. Source URLs, authors, license declarations and hashes are retained
-under `tools/audio/source/`. The new Phase 5D-4 sampled SFX inventory will be added
-after asset selection and engine verification.
+under `tools/audio/source/`. The Phase 5D-4 sampled SFX sources and recipes are documented below;
+final boss and new-building playback integration is still being verified.
 
 The earlier generator descriptions below are **historical records**. Counts,
 durations and claims that assets contain no third-party samples describe those
@@ -17,6 +17,36 @@ earlier versions; they do not describe replacements introduced in Phase 5D-3 or
 later. Do not run an old generator over the current recorded assets when preparing
 a release. Native Windows playback and subjective audio quality require human
 verification.
+
+## Phase 5D-4 recorded-source SFX (integration in progress)
+
+Twenty-nine CC0-declared recorded/designed source clips are retained with pinned
+source URLs, per-file authors, license declarations and SHA256 hashes in
+`tools/audio/source/wrath_sfx/SOURCES.json`. Credits and the CC0 text accompany
+that directory. Original Freesound pages returned HTTP 403 in this environment;
+direct-origin confirmation remains UNVERIFIED. The retained pinned mirror has
+explicit per-file licensing metadata; no claim of recording these performers is
+made. Do not remove the source notices from distributions.
+
+`tools/audio/design_wrath_sfx.py` creates 121 documented derivatives (26 existing
+cue replacements and 95 additions), combining recorded gunfire, metal, fire,
+glass, doors, footsteps and creature textures. Each recipe records source offset,
+rate, filtering, level, duration and output hash in
+`assets/audio/wrath-sfx-derivatives.json`. These are sampled sound designs, not
+oscillator stand-ins. Their subjective impact still needs owner/Adie audition.
+
+The seven existing musical scores are byte-preserved against
+`assets/audio/wrath-protected-score-hashes.json`. A separate original 48-second
+Crimson score uses the existing credited VSCO2 CC0 instruments: 120 BPM,
+394 arranged note events. Its generator and arrangement are
+`tools/audio/compose_crimson_score.py` and
+`assets/audio/crimson-score-arrangement.json`.
+
+Early actual engine recordings verify Needle and Arc launches/impacts and build/
+upgrade events. Paired Music-muted Master output remains nonzero; 18 PCM files
+contain no full-scale clipped samples. These captures are not evidence of every
+new boss cue, and RMS values do not establish perceived scariness or Windows
+speaker balance. Final integrated evidence belongs in the Phase 5D-4 report.
 
 ## Historical original synthesis implementation
 
