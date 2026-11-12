@@ -144,7 +144,7 @@ func draw_magic_feedback(c,clock: float,reduced: bool):
    if b.kind=="plasma" and state.stored>0:
     var fraction=clampf(state.stored/MagicDefense.stats(b).capacity,0,1)
     c.draw_arc(p,24,-PI/2,-PI/2+TAU*fraction,24,Color("F6A9DD"),3)
-    c.presentation.text(c,"%.0f / %.0f" % [state.stored,MagicDefense.stats(b).capacity],p+Vector2(-27,33),9,Color("F6B9E3"))
+    c.presentation.text(c,"%.0f / %.0f" % [state.stored,MagicDefense.stats(b).capacity],p+Vector2(-27,-45),9,Color("F6B9E3"))
    if b.kind in DefenseEffects.WEAPONS and state.disrupt>0:
     c.draw_line(p+Vector2(-12,-12),p+Vector2(12,12),Color("EAC5F7"),2)
     c.presentation.text(c,"%.1fs" % state.disrupt,p+Vector2(-14,-26),10,Color("EAC5F7"))

@@ -91,6 +91,9 @@ static func branch_preview(model,room,b: Dictionary,id: String,structure: String
  if tile<0:return "Select an actual owned machine."
  clone.buildings[tile].level=int(b.level)+1;clone.buildings[tile].specialization=id
  var before=machine_stats(model,room,b);var after=machine_stats(model,clone,clone.buildings[tile])
+ if b.kind=="barrier":return "Reflection %.1f%% → %.1f%% · cooldown %.1f → %.1fs\nOriginal Magic hit remains; Physical bypasses reflection.\n%s" % [before.reflect*100,after.reflect*100,before.interval,after.interval,StrategyCatalog.BRANCHES[id].description]
+ if b.kind=="plasma":return "Absorb %.0f%% → %.0f%% · storage %.0f → %.0f\nExpiry %.0f → %.0fs · healing conversion %.0f%% → %.0f%%\n%s" % [before.absorb*100,after.absorb*100,before.capacity,after.capacity,before.expiry,after.expiry,before.heal*100,after.heal*100,StrategyCatalog.BRANCHES[id].description]
+ if b.kind=="antenna":return "Magic durability %.0f → %.0f · recharge %.0f → %.0fs\nElectricity %.1f → %.1f / refill; Physical bypasses this shield.\n%s" % [before.capacity,after.capacity,before.interval,after.interval,before.power,after.power,StrategyCatalog.BRANCHES[id].description]
  if b.kind=="auto_repair":return "Repair %.1f → %.1f HP / %.1f → %.1fs\nUpkeep %.1fG %.1fE → %.1fG %.1fE / burst\n%s" % [before.heal,after.heal,before.interval,after.interval,before.gold,before.power,after.gold,after.power,StrategyCatalog.BRANCHES[id].description]
  if b.kind=="shield":return "Barrier %.0f → %.0f HP · %.1f → %.1fs\nElectricity %.1f → %.1f / activation · 12s room cooldown\n%s" % [before.capacity,after.capacity,before.duration,after.duration,before.power,after.power,StrategyCatalog.BRANCHES[id].description]
  if b.kind=="decoy":return "Lure %.1f → %.1fs · range %.0f → %.0f\nElectricity %.1f → %.1f · cooldown %.1f → %.1fs\n%s" % [before.duration,after.duration,before.range,after.range,before.power,after.power,before.interval,after.interval,StrategyCatalog.BRANCHES[id].description]

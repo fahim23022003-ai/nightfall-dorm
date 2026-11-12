@@ -834,6 +834,9 @@ func tile_description(room: RoomState) -> String:
 func building_effect(kind: String) -> String:
  var data = Catalog.BUILDINGS[kind]
  match kind:
+  "barrier":return "Returns a bounded share of eligible Magic damage to its attacker with a shared cooldown. Original damage still reaches the door; no recursive reflection. Physical bypasses it. Highest-level unit per kind; equal levels use first placed."
+  "plasma":return "Absorbs part of Magic damage into finite temporary storage. Spends stored energy on limited intact-door healing; never grants Gold or Electricity. Physical bypasses it. Highest-level unit per kind; equal levels use first placed."
+  "antenna":return "Pays Electricity to regenerate finite Magic-only shield durability. One highest-level antenna operates per room; equal levels use first placed. Physical bypasses it."
   "turret", "heavy", "flame", "frost", "shock":
    return "%.1f damage / %.1fs; range %.1fpx. Upgrades increase damage and attack speed. %s" % [data.damage,data.interval,data.range,"Requires bed level 2." if kind=="heavy" else ""]
   "auto_repair":return "Automatically pays Gold and Electricity to repair a damaged intact door. No free healing."

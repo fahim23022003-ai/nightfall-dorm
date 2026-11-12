@@ -91,6 +91,8 @@ func run():
  game.focus_camera(true)
  game.model.player().gold = 1000
  game.model.player().electricity = 100
+ game.ui.room_bed_summary.pressed.emit()
+ await create_timer(.32).timeout
  game.ui.actions.bed.pressed.emit()
  check(game.model.player().bed_level == 1,"UI bed button invokes production upgrade")
  await click_position(game.world_to_screen(game.model.player().tile_position(1)))
@@ -99,6 +101,7 @@ func run():
  for node in game.ui.panel.get_children():
   if node is TextureRect:
    check(node.size.x<=154 and node.size.y<=154,"illustration control respects explicit display bounds")
+ await create_timer(.32).timeout
  await click_position(game.ui.actions["build:generator"].get_global_rect().get_center())
  check(game.pending_build=="" and game.model.player().buildings.has(1),"direct BUILD completes purchase without a stuck preview")
  check(game.model.player().buildings.has(1) and game.model.player().buildings[1].kind == "generator","actual UI mouse click builds generator on selected floor")
