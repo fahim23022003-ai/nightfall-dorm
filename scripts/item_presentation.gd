@@ -58,7 +58,6 @@ func draw(c):
   var size=24+age*42
   if event.phase=="end":
    c.draw_arc(q,25+age*20,0,TAU,32,Color(color,alpha*.5),1)
-   c.draw_string(c.presentation.font,q+Vector2(-30,-35-age*20),"EFFECT ENDED",HORIZONTAL_ALIGNMENT_LEFT,-1,12,Color(color,alpha))
    continue
   if event.phase=="explode": size=30+age*85
   c.draw_arc(q,size,0,TAU,40,Color(color,alpha*.8),3)
@@ -75,7 +74,7 @@ func draw(c):
  # Numbers are a final foreground pass. Aggregate same item/phase and assign lanes.
  var groups={}
  for event in fx.events:
-  if event.value<=0 or event.age>=1.5: continue
+  if (event.value<=0 and event.phase!="end") or event.age>=1.5: continue
   var key=str(event.item)+":"+str(event.phase)
   if not groups.has(key): groups[key]={"value":0.0,"age":event.age,"event":event}
   groups[key].value+=event.value
@@ -89,8 +88,13 @@ func draw(c):
   var prefix="+" if e.phase in ["activate","income"] else "-" if e.phase=="explode" else "BLOCK "
   var text=prefix+str(snappedf(group.value,.01))+(" GOLD" if e.item=="cursed_fortune" else "")
   var color=Color(ItemCatalog.ITEMS[e.item].color)
-  c.draw_string_outline(c.presentation.font,point,text,HORIZONTAL_ALIGNMENT_LEFT,-1,18,4,Color("111421"))
-  c.draw_string(c.presentation.font,point,text,HORIZONTAL_ALIGNMENT_LEFT,-1,18,color)
+  var font_size=18
+  if e.phase=="end":
+   text="EFFECT ENDED"
+   font_size=12
+   color.a=clampf(1-group.age/1.5,0,1)
+  c.draw_string_outline(c.presentation.font,point,text,HORIZONTAL_ALIGNMENT_LEFT,-1,font_size,4,Color("111421"))
+  c.draw_string(c.presentation.font,point,text,HORIZONTAL_ALIGNMENT_LEFT,-1,font_size,color)
   lane+=1
 func game_reduced(c) -> bool:
  return c.profile.settings.get("reduced_effects",false)
@@ -147,7 +151,7 @@ func legendary(c,m,room,fx,p,time,reduced):
    c.draw_line(h+ray*31,h+ray*45,Color("D4F4FF"),2)
   c.draw_line(h,h+Vector2(0,-25),Color("E1F8FF"),3)
   c.draw_line(h,h+Vector2(19,0),Color("E1F8FF"),3)
-  c.draw_string(c.presentation.font,h+Vector2(44,-46),"FROZEN %.1fs" % freeze,HORIZONTAL_ALIGNMENT_LEFT,-1,14,Color("BEF0FF"))
+  c.draw_string(c.presentation.font,h+Vector2(44,-100),"FROZEN %.1fs" % freeze,HORIZONTAL_ALIGNMENT_LEFT,-1,14,Color("BEF0FF"))
  if float(fx.timers.get("reaper_seal",0))>0:
   for ring in range(1 if reduced else 2):
    var points=PackedVector2Array()
@@ -175,8 +179,8 @@ func legendary(c,m,room,fx,p,time,reduced):
     for i in range(3 if reduced else 6):
      var spread=sin(minf(age/.4,1)*PI/2)
      var start=q+Vector2(side*15,0)
-     var tip=q+Vector2(side*(40+i*7)*spread,-10-i*8)
-     c.draw_colored_polygon(PackedVector2Array([start,tip,tip+Vector2(side*7,12),start+Vector2(0,12)]),Color(1,.85,.5,fade*.8))
+     var tip=q+Vector2(side*(25+(20+i*7)*spread),-10-i*8)
+     c.draw_colored_polygon(PackedVector2Array([start,tip,start+Vector2(0,9)]),Color(1,.85,.5,fade*.8))
    c.draw_texture_rect(load("res://assets/items/guardian_heart.svg"),Rect2(q+Vector2(-23,-46-age*12),Vector2(46,46)),false,Color(1,1,1,fade))
   elif e.item=="cursed_fortune":
    c.draw_texture_rect(load("res://assets/items/cursed_fortune.svg"),Rect2(q+Vector2(-27,-55),Vector2(54,54)),false,Color(1,1,1,fade))

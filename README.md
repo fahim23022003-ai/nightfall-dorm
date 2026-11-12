@@ -17,6 +17,20 @@ An original single-player Godot 4 dormitory survival defense game. Choose a room
 
 Full controls, ZIP/Git instructions and a practical test checklist: [Windows home testing](docs/HOME_TESTING_WINDOWS.md).
 
+## Legendary items (Phase 5B-2B)
+
+The inventory now contains 20 functional items. Time Freeze stops Hunter actions
+while economy continues; Reaper Seal counters a real boss special; automatic
+Guardian Heart intercepts one lethal door hit; Cursed Fortune grants 500 Gold
+with 20 seconds of stronger Hunter pressure. Equip up to two item types; only
+one successful Legendary activation is allowed per match, including Heart.
+Legendary odds are 4% for Victory and 1% for qualifying Consolation spins
+(1% / 0.25% for each Legendary). Exact odds, quantities and saved rewards remain
+visible. Original icons, cues and brief effects respect Reduced Effects.
+See the [Legendary report](docs/PHASE_5B2B_LEGENDARY_REPORT.md) for rules,
+verification and native Windows limitations. Earlier phase sections below
+record their original distributions; the current table is in that report.
+
 ## Advanced Rare and Epic items (Phase 5B-2A)
 
 The same inventory now supports16functional items. Eight new choices add door mitigation, automatic rescue, bounded turret burn, bonus bed income, a one-purchase40%building coupon, a navigable decoy, selected-teammate repair and temporary targeting smoke. Coupon refunds use actual discounted gold/electricity paid. Settings includes saved Reduced Effects, and floating item numbers are spaced above particles. Spin odds now include Epic: Victory40/40/20%Common/Rare/Epic, Consolation80/16/4%; quantities remain up to4/1. See [advanced item report](docs/PHASE_5B2A_ITEM_REPORT.md).

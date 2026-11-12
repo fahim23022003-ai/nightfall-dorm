@@ -22,7 +22,7 @@ const ITEMS={
  "rescue":{"name":"Team Rescue Signal","rarity":"Rare","color":"82F1D5","description":"Select a living teammate: restore 25% max intact door HP."},
  "smoke":{"name":"Shadow Smoke","rarity":"Epic","color":"C89AF4","description":"Lower your room priority for 6s (Reaper 3s). Hunter can still attack."},
  "time_freeze":{"name":"Time Freeze","rarity":"Legendary","color":"86DCFF","description":"Stop Hunter actions for 3s (Reaper 1.5s). Economy continues. One Legendary per match."},
- "reaper_seal":{"name":"Reaper Seal","rarity":"Legendary","color":"FFE291","description":"Counter a telegraphed Reaper special. 1.25s recovery; invalid use is free."},
+ "reaper_seal":{"name":"Reaper Seal","rarity":"Legendary","color":"FFE291","description":"Counter a telegraphed Reaper special. At least 1.25s recovery; invalid use is free."},
  "guardian_heart":{"name":"Guardian Heart","rarity":"Legendary","color":"FFD2A1","description":"Automatic lethal-hit rescue: 15% door HP + 20% HP shield for 3s. One Legendary per match."},
  "cursed_fortune":{"name":"Cursed Fortune","rarity":"Legendary","color":"E6B0FF","description":"Gain 500 Gold; Hunter damage +25%, attack interval -20% for 20s. One Legendary per match."}
 }

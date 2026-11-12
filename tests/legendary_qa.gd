@@ -119,6 +119,22 @@ func run():
  var legacy_path=fresh().path
  var legacy_writer=FileAccess.open(legacy_path,FileAccess.WRITE);legacy_writer.store_string(JSON.stringify(legacy_active));legacy_writer.close()
  check(not lp._decode(legacy_path).is_empty(),"older active snapshot missing counter accepted")
+ # Fresh matches receive a fresh budget, while old sixteen-item profiles preserve stacks.
+ var next_entry=lp.begin_match("standard");var next_model=fixture();lp.bind_items(next_model,next_entry.id)
+ check(next_model.items.legendary_used==0 and lp.activate_item(1,next_model,next_entry.id),"new match resets budget only for new ID")
+ var old_profile=fresh()
+ for id in ItemCatalog.IDS:
+  if not id in NEW:old_profile.inventory[id]=11
+ old_profile.item_loadout=["smoke","feather"]
+ old_profile.xp=3800;old_profile.equipped=["first_aid"]
+ check(old_profile.save_profile(),"old16 fixture saves without Legendary keys")
+ var old_disk=PlayerProfile.new(old_profile.path)
+ check(old_disk.load_profile() and old_disk.item_loadout==["smoke","feather"],"old16 loadout preserved")
+ for id in ItemCatalog.IDS:
+  check(int(old_disk.inventory.get(id,0))==(0 if id in NEW else 11),"migration preserves oldstock and no freeLegendary")
+ for outcome in ["victory","defeat"]:
+  for id in NEW:
+   check(is_equal_approx(ItemCatalog.probability(outcome,ItemCatalog.IDS.find(id)),1.0 if outcome=="victory" else .25),"exact visible probability "+outcome+id)
  # Actual freeze movement/cooldown/attack progress, economy unaffected at frame boundaries.
  for mode in ["standard","hard","hell"]:
   for boss in [false,true]:
@@ -200,6 +216,23 @@ func run():
    m.items.tick(4,m)
    m.hunter._damage_door(r,m,100000)
    check(r.door_hp==0 and a.p.inventory.guardian_heart==2,"shield expires; later lethal breaks no infinite rescue")
+ # Automatic Heart never fires for invalid or unequipped owners, even under lethal test damage.
+ for invalid in ["no_stock","unequipped","paused","terminal","eliminated","broken","open","unoccupied","read_only"]:
+  var m=fixture();var a=actor(m,["guardian_heart"]);var r=m.player()
+  r.door_hp=10
+  match invalid:
+   "no_stock":a.p.inventory.guardian_heart=0
+   "unequipped":a.p.active_match.items=[]
+   "paused":m.running=false
+   "terminal":m.result="defeat"
+   "eliminated":r.alive=false
+   "broken":r.door_hp=0
+   "open":r.closed=false
+   "unoccupied":r.sleeping=false
+   "read_only":a.p.read_only=true
+  var stock=a.p.inventory.guardian_heart
+  m.hunter._damage_door(r,m,20)
+  check(a.p.inventory.guardian_heart==stock and m.items.legendary_used==0 and r.door_hp==0,"invalid Heart no rescue/stockloss "+invalid)
  # No save means no spend/no effect, and retry remains valid for manual Legendary.
  for id in NEW:
   var m=fixture();var a=actor(m,[id]);var r=m.player()

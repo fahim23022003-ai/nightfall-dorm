@@ -15,3 +15,7 @@ for n,name in enumerate(['time_freeze','reaper_seal','guardian_heart','cursed_fo
   out.append(.23*env*(tone+shimmer+undertone+noise))
  with wave.open(str(root/('item_'+name+'.wav')),'wb') as f:
   f.setnchannels(1);f.setsampwidth(2);f.setframerate(rate);f.writeframes(b''.join(struct.pack('<h',round(max(-.8,min(.8,v))*32767)) for v in out))
+
+ # Preserve lossless PCM when regenerating imported streams.
+ imported=root/("item_"+name+".wav.import")
+ if imported.exists(): imported.write_text(imported.read_text().replace("compress/mode=2","compress/mode=0"))

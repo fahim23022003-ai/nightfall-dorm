@@ -32,16 +32,16 @@ func inventory():
   var id=ItemCatalog.IDS[i+inventory_page*8]
   var data=ItemCatalog.ITEMS[id]
   var pos=Vector2(90+(i%2)*560,144+int(i/2)*112)
-  ui.box(Rect2(pos,Vector2(540,103)),"203747",data.color)
+  ui.box(Rect2(pos,Vector2(540,109)),"203747",data.color)
   art(id,pos+Vector2(10,18),62)
   ui.label_at(data.name+" · ×%d" % int(game.profile.inventory.get(id,0)),pos+Vector2(82,8),19,440,true)
-  var description=ui.label_at(data.rarity+" · "+data.description,pos+Vector2(82,34),13,432)
+  var description=ui.label_at(data.rarity+" · "+data.description,pos+Vector2(82,34),12,432)
   description.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
-  description.set_deferred("size",Vector2(432,32))
+  description.set_deferred("size",Vector2(432,42))
   description.tooltip_text=data.description
-  var button=ui.button("Equipped ✓" if id in game.profile.item_loadout else "Equip",pos+Vector2(82,66),func():
+  var button=ui.button("Equipped ✓" if id in game.profile.item_loadout else "Equip",pos+Vector2(82,78),func():
    if not game.profile.equip_item(id): game.audio_event("failure")
-   inventory(),140,30)
+   inventory(),140,22)
   button.disabled=game.profile.read_only or (id not in game.profile.item_loadout and (int(game.profile.inventory.get(id,0))<=0 or game.profile.item_loadout.size()>=ItemCatalog.SLOTS))
  ui.button(["Advanced items →","Legendary items →","← Original items"][inventory_page],Vector2(900,55),func(): inventory_page=(inventory_page+1)%3; inventory(),270,36)
  ui.label_at("Selected: "+", ".join(game.profile.item_loadout)+" · Stock persists; unused items stay yours.",Vector2(92,600),16,1080)
@@ -70,8 +70,8 @@ func spin():
  var wheel=preload("res://scripts/item_wheel.gd").new()
  wheel.position=Vector2(155,175); wheel.size=Vector2(420,380)
  ui.panel.add_child(wheel)
- var rarity="Common40 · Rare40 · Epic16 · Legendary4%" if receipt.result=="victory" else "Common80 · Rare16 · Epic3 · Legendary1%"
- ui.label_at(rarity,Vector2(615,186),16,525,true)
+ var rarity="Common 40% · Rare 40% · Epic 16% · Legendary 4%" if receipt.result=="victory" else "Common 80% · Rare 16% · Epic 3% · Legendary 1%"
+ ui.label_at(rarity,Vector2(615,186),15,525,true)
  var probability=[]
  for i in range(ItemCatalog.IDS.size()): probability.append("%s %s%%" % [ItemCatalog.ITEMS[ItemCatalog.IDS[i]].name,str(snappedf(ItemCatalog.probability(receipt.result,i),.01))])
  var odds=ui.label_at("\n".join(probability),Vector2(640,218),11,470)
@@ -127,9 +127,9 @@ func choose_teammate(slot: int):
   b.disabled=r.owner<=0 or not r.alive or not r.closed or r.door_hp<=0 or r.door_hp>=r.max_hp()
  ui.button("Cancel selection",Vector2(330,445),ui.show_match,300,44)
 func create_hotbar():
- legendary_banner=ui.box(Rect2(405,83,470,49),"172338","EAC979")
+ legendary_banner=ui.box(Rect2(20,215,334,44),"172338","EAC979")
  legendary_banner.mouse_filter=Control.MOUSE_FILTER_IGNORE
- legendary_name=ui.label_at("",Vector2(420,92),22,440,true)
+ legendary_name=ui.label_at("",Vector2(30,225),18,314,true)
  legendary_name.mouse_filter=Control.MOUSE_FILTER_IGNORE
  legendary_name.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  legendary_banner.visible=false
@@ -170,7 +170,7 @@ func update(delta):
     legendary_name.modulate=Color("FFE5A1")*Color(1,1,1,alpha)
     legendary_name.text="✦ "+ItemCatalog.ITEMS[event.item].name.to_upper()+" ✦"
     var pulse=1.0 if game.profile.settings.get("reduced_effects",false) else 1+sin(event.age*PI/1.6)*.035
-    legendary_name.pivot_offset=Vector2(220,14)
+    legendary_name.pivot_offset=Vector2(157,12)
     legendary_name.scale=Vector2(pulse,pulse)
  var selected=game.profile.active_match.get("items",[])
  for i in range(hotbar.size()):

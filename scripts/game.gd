@@ -132,6 +132,9 @@ func activate_item(slot: int,target: int=-1) -> bool:
   ui.items_ui.choose_teammate(slot)
   return false
  var ok=profile.activate_item(slot,model,match_id,target)
+ if ok:
+  ui.feedback_text=""
+  ui.feedback_until=0
  if not ok:
   audio_event("failure")
   ui.feedback_text=profile.item_error if profile.item_error!="" else "Item unavailable for this match."

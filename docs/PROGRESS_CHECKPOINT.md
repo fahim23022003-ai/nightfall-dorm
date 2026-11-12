@@ -1,22 +1,41 @@
-# Phase 5B-2B — Legendary items (12 November 2026)
+# Phase 5B-2B — Legendary items complete (12 November 2026)
 
-IN PROGRESS. Started from clean `work` at
-`b4d1798d82a458636eebb1b62419f7e0bbd66b7d`; private remote SHA matched.
-Recoverable tag: `pre-phase5b2b-b4d1798`. Existing project and saves are being
-extended, not rebuilt. B owns production; C independently tests mechanics and
-balance; A performs a bounded audit; D will inspect rendered effects and audio.
+Continued clean `work` at `b4d1798d82a458636eebb1b62419f7e0bbd66b7d`, verified
+against GitHub. Recovery tag `pre-phase5b2b-b4d1798`; mechanics milestone `e920274`.
+B implemented production, C independently tested, A performed a bounded balance
+review, and D captured actual rendered/audio evidence. All specialists finished.
 
-Scope: Time Freeze, Reaper Seal, Guardian Heart and Cursed Fortune; 20-item
-inventory and exact Legendary spin odds; one successful Legendary per match.
-Mechanics milestone: four Legendary effects, persistent shared limit, exact odds,
-icons/audio and presentation implemented. Independent mechanics 20,758 checks
-pass; original advanced items 7,988 and 60 matched simulations pass unchanged.
-Core model 126 checks pass. Render inspection and broader regressions remain
-in progress; no completion claim yet.
-Next steps: finish combinations and balance, inspect presentation, complete
-regular and extended regressions, finish
-`docs/PHASE_5B2B_LEGENDARY_REPORT.md`, commit and verify private `work` push.
-Native Windows and subjective quality remain UNVERIFIED. Stop after 5B-2B.
+Twenty functional items now include Time Freeze (3s / Reaper 1.5s), Reaper Seal
+(valid special counter, at least 1.25s recovery), Guardian Heart (lethal rescue
+to 15% HP plus a finite 20%-HP shield for 3s), and Cursed Fortune (500 Gold;
+20s of 1.25× Hunter damage and 0.8× attack interval). One successful Legendary
+per match is saved atomically with stock; failed activation/save spends nothing.
+Old 16 items, two slots, saves, ranks, maps and difficulty tuning are preserved.
+
+Exact Common/Rare/Epic/Legendary odds: Victory 40/40/16/4%; Consolation 80/16/3/1%.
+Each Legendary is 1% / 0.25%; old awarded receipts never reroll. Four original
+icons and five original cues extend to 81 audio streams. Brief readable effects,
+paused Hunter animation and Reduced Effects support are implemented.
+
+Independent QA 20,798 checks; combinations 140; matched simulations 120, all pass.
+Normal 20/0→20/0, Long Night 17/3→18/2, Hell 5/15→13/7 under disclosed policies;
+32 Legendary uses across 60 item-arm matches. These are not human win rates.
+Regular and extended regressions all pass after fixing new WAV compression
+imports: original items 11,203, advanced items 7,988, boss 6,699, 90 difficulty
+simulations unchanged; 144 map matches, 20 campaign matches; 20k transactions /
+175,941 invariants; 27 timesteps, 144 strategy cases, 48 rank/perk matches;
+profile round-trip and startup pass. Full details and preserved logs in report.
+
+D: 115 full render checks + 22 inventory checks, 22 inspected PNGs. Final actual
+11.703s engine PCM mix has no clipping; all five new cues played. Fixed Heart
+wing geometry, warning/banner and expiry/HP overlaps, inventory clipping and
+stale Seal feedback. Final import clean. No known functional failures remain.
+
+Native Windows and subjective audiovisual quality/human balance UNVERIFIED.
+No Phase 5B-3, Android or unrelated feature work. Stop after Phase 5B-2B.
+See [PHASE_5B2B_LEGENDARY_REPORT.md](PHASE_5B2B_LEGENDARY_REPORT.md) and
+`docs/evidence/legendary/` for rules, tests and limitations. Final delivery SHA
+and actual GitHub `work` push are verified in the completion response.
 
 ---
 
