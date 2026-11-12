@@ -1,0 +1,403 @@
+{
+  "scope": "Bounded HUD milestone independent real rendering/input, not full gameplay overhaul QA",
+  "baseline_source": "457560dc4a8712dd644b7a7cdca509218fe83f70",
+  "milestone_functional": {
+    "checks": 164,
+    "failures": 0,
+    "actual_exit": 0,
+    "source_bind": "source-bind.json"
+  },
+  "affected_layering": {
+    "checks": 28,
+    "failures": 0,
+    "actual_exit": 0,
+    "source_bind": "after-layering/source-bind.json"
+  },
+  "combined_checks": 192,
+  "confirmed_visual_defects_found": 1,
+  "confirmed_visual_defects_fixed": 1,
+  "fresh_pngs": 32,
+  "superseded_transition_pngs": 4,
+  "diagnostic_initial_harness": "diagnostic-harness-v1/README.md",
+  "engine": "Godot4.6.3Linux/Mesa llvmpipe/Xorg97/Dummyaudio",
+  "native_windows": "UNVERIFIED",
+  "human_audio_visual_quality": "UNVERIFIED",
+  "display_stopped": true,
+  "artifacts": [
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/REVIEW.md",
+      "bytes": 4574,
+      "sha256": "94f839f9d0defb304350ea4f870c33e0d0650bddad215ca1fb32ddd3065d2a29"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/after-layering/closed-1080.png",
+      "bytes": 403971,
+      "sha256": "efe6289b1d1af4cbe24645efd0d5f3f1e54c06b4787f042b64b95baec6853138",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/after-layering/closed-720.png",
+      "bytes": 224685,
+      "sha256": "11e104eacdea958f0b624b176f744ca749856d2a23dc4459b9e2cc19a9cf4c70",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/after-layering/closing-1080.png",
+      "bytes": 568261,
+      "sha256": "8968c302308db458e28315d4f7712f32e7801685192bcda9097702fa6cab0d67",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/after-layering/closing-720.png",
+      "bytes": 329301,
+      "sha256": "0e0de15a32c364c796346cdeaea91f8757eb270a144c17b1692274775c62c3a8",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/after-layering/display-cleanup.json",
+      "bytes": 256,
+      "sha256": "9e634073542e27f8d7cb3350c4ad59ea66086433b52080ae53dcb24a09cf3939"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/after-layering/opened-1080.png",
+      "bytes": 628462,
+      "sha256": "3d507d25c3fa75e0fe9135b3c1cd499bb7996f5ed692b303f7fdc1c5c34c9b0a",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/after-layering/opened-720.png",
+      "bytes": 341480,
+      "sha256": "f744a1f74265364fabe0e2e27517a66f8adce4fe4963ed2976f1b1e828df6150",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/after-layering/opening-1080.png",
+      "bytes": 593275,
+      "sha256": "7b115c8f0a26e0cf21c4d822e0e14576d86ff0f29fc1f75a1c02480357cb230c",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/after-layering/opening-720.png",
+      "bytes": 297415,
+      "sha256": "249ed0a66261c02564fccec746f42956003d9e5854e550964a6907ae071b3987",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/after-layering/render.log",
+      "bytes": 779,
+      "sha256": "a35d0ce9e30b6aeafdef23c58372659ea09df9800e815d6795e1c665dbca5a12"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/after-layering/result.json",
+      "bytes": 1556,
+      "sha256": "9ec5712301ace37d1a6e44498ab800bdcc8bb29b58929c05af4f00261581d3a1"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/after-layering/source-bind.json",
+      "bytes": 5639,
+      "sha256": "09dc868761bebcfa56f2a6adafc545cb510de6c0f090b714383440996aa7ce79"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/bed-inspector-1080.png",
+      "bytes": 601545,
+      "sha256": "e940acc5862791918cac51dbc88001447da6d905be791fe5a3c22ba1c7541d72",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/bed-inspector-720.png",
+      "bytes": 331539,
+      "sha256": "31577eda4f714bb499e2e4f5f835e33e0a32eac71dcbc0cfa6bf41ef9d0a7617",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/closed-after-attack-1080.png",
+      "bytes": 531982,
+      "sha256": "8fb658f453afde69382f9fc54054c07ebf99f29f1102e6db47bc49e5a1ebe66e",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/closed-after-attack-720.png",
+      "bytes": 292136,
+      "sha256": "194ba0e1a35409e56c98d4f8cb58175f2606c3c79cc3ddc409b8caf8b199ff30",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/closing-build-1080.png",
+      "bytes": 646494,
+      "sha256": "dd9c1e003c1a3c1db50ce6a5ccaef83d5cf8ed6735c4cf5ffe1aeadab2148da4",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "status": "superseded transition defect"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/closing-build-720.png",
+      "bytes": 385522,
+      "sha256": "25ed6cdd16de302a4e42027671f3cedf381bff77a555fb480e3d73f9fe9bfb17",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "status": "superseded transition defect"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/contact-sheet.jpg",
+      "bytes": 1259686,
+      "sha256": "e6dc14d44a640b50971239e835fe925e8fb0e420ebf930ec069b190970bc23c9"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/default-hud-1080.png",
+      "bytes": 413241,
+      "sha256": "785c4ef9efa5809dca23a4ded25494190ac94859f92da7ee566d0ac7ca026d4c",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/default-hud-720.png",
+      "bytes": 231508,
+      "sha256": "85548b1269aa21b3586ef0a8d7e58514c2ac26fff37c47576e879d401383e123",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/display-cleanup.json",
+      "bytes": 247,
+      "sha256": "ee1b0f0411ffe53fad8ef4c6783d942e59663b8b775b157387a48bd655748946"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/door-inspector-1080.png",
+      "bytes": 621915,
+      "sha256": "6a4836eb9ef294b41de52c2a408ac680f720764874d80d3578354ec0a9196888",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/door-inspector-720.png",
+      "bytes": 338551,
+      "sha256": "71c30c6d9f713d0463cee9704638622c7f80684b8358287c5f5d2d03374fb365",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/open-build-1080.png",
+      "bytes": 635588,
+      "sha256": "0c0e3b20623df0f9eb0cde9fc6a09ea71a17113886052bd953c717254e9165ee",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/open-build-720.png",
+      "bytes": 345075,
+      "sha256": "57cc8ee12a565988a900b0bede0da1fd15560f127d3ccd65498775678a99c49a",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/opening-build-1080.png",
+      "bytes": 576915,
+      "sha256": "1fe0c2c8589d1b80e69ce1b5ca65c519d9785922a8652ea2131e6cc60d83be0e",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "status": "superseded transition defect"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/opening-build-720.png",
+      "bytes": 319672,
+      "sha256": "3a1faf00bb7e0c3052a8bd7f0f6b501f3f3b9bbefd4c8f7652a95f984eb77fab",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "status": "superseded transition defect"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/purchased-needle-1080.png",
+      "bytes": 606604,
+      "sha256": "e3abee2cfb87f28f93f21a0604c91dc74939219630485bc2c817c6501e853552",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/purchased-needle-720.png",
+      "bytes": 337784,
+      "sha256": "068498bce13ca465c0c8e470d0235cd668c34518f067c9f90eb0e9dd93503d50",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/render.log",
+      "bytes": 1370,
+      "sha256": "a605b5a02e5076e55074ca3658c5962edef04733d8d543aca3ae3fa9966ef319"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/result.json",
+      "bytes": 6897,
+      "sha256": "47a05a6e720f37e8f8a0dadffe049ebe179ee23add4887581bd70ea681ecf857"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/source-bind.json",
+      "bytes": 6079,
+      "sha256": "3431203dd28c3633bfbe61dbda32efcc0599fc9170363f9150bdfa3313ce3d71"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/specialization-chosen-1080.png",
+      "bytes": 636116,
+      "sha256": "32bf6331d9a2f3341698ab18a03d1c15372d9d97ff686be26a8407ae5ad3f0cd",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/specialization-chosen-720.png",
+      "bytes": 349940,
+      "sha256": "81b82f49fbf5bb064917378342b0e96e0210a34a3690ffb348133b0640ca76c7",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/specialization-preview-1080.png",
+      "bytes": 669620,
+      "sha256": "4bf41bd61063e1de8c1addb906ecfc0f6836d2569f58d5e7649d6936cef4b107",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/specialization-preview-720.png",
+      "bytes": 363689,
+      "sha256": "a7a861e5fb30f09008e3a41bb89299758b113a6724a494240d595acf9d784bc7",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/under-attack-open-1080.png",
+      "bytes": 650737,
+      "sha256": "1ef3e3bba7d32fca384f3304f5fe6d2f319988e50968c5fec0c84713a8a67a64",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/under-attack-open-720.png",
+      "bytes": 360031,
+      "sha256": "1199e723ea820be51d4f8a7fa30a2159f06e4f0466d30921c01aa29dcbe126d7",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/upgrade-inspector-1080.png",
+      "bytes": 621278,
+      "sha256": "5863c5d34fc89da830e2b6d90646b6de94629da823f64a49691eca4bb474e14a",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "docs/evidence/gameplay-overhaul/hud/upgrade-inspector-720.png",
+      "bytes": 340755,
+      "sha256": "4f040a794ad909a486715119acf955b72de8b3151d8093ae9929960c3f2fb259",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "status": "actual evidence"
+    },
+    {
+      "path": "tools/capture_overhaul_hud.gd",
+      "bytes": 11194,
+      "sha256": "f95d76856dee9375ed13e901b2b9982f5a69299bc11e6702e92702c909f523d5"
+    }
+  ]
+}

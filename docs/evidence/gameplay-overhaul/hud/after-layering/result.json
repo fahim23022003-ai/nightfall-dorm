@@ -1,0 +1,91 @@
+{
+ "checks": 28,
+ "failures": 0,
+ "fixture": "Affected visual layering refresh only; actual campaign toolbar/close inputs, controlled held model, real0.26Tween, LinuxXorg/Mesa/Dummy.",
+ "transitions": [
+  {
+   "configured_seconds": 0.26,
+   "label": "open-720",
+   "samples": [
+    {
+     "elapsed": 0.000011,
+     "visible": true,
+     "y": 563.769653320312
+    },
+    {
+     "elapsed": 0.040948,
+     "visible": true,
+     "y": 446.72265625
+    },
+    {
+     "elapsed": 0.088459,
+     "visible": true,
+     "y": 439.182495117188
+    },
+    {
+     "elapsed": 0.132587,
+     "visible": true,
+     "y": 438.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "close-720",
+   "samples": [
+    {
+     "elapsed": 0.000015,
+     "visible": true,
+     "y": 472.708435058594
+    },
+    {
+     "elapsed": 0.033334,
+     "visible": true,
+     "y": 692.252990722656
+    },
+    {
+     "elapsed": 0.063112,
+     "visible": false,
+     "y": 724.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "open-1080",
+   "samples": [
+    {
+     "elapsed": 0.000012,
+     "visible": true,
+     "y": 521.677978515625
+    },
+    {
+     "elapsed": 0.057616,
+     "visible": true,
+     "y": 438.726409912109
+    },
+    {
+     "elapsed": 0.111724,
+     "visible": true,
+     "y": 438.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "close-1080",
+   "samples": [
+    {
+     "elapsed": 0.000011,
+     "visible": true,
+     "y": 541.334350585938
+    },
+    {
+     "elapsed": 0.052354,
+     "visible": false,
+     "y": 724.0
+    }
+   ]
+  }
+ ]
+}

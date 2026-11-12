@@ -52,6 +52,10 @@ func install():
  for i in range(2):place(ui.specialization_items[i+1],Vector2(14+i*610,35),Vector2(596,110));ui.specialization_items[i+1].add_theme_font_size_override("font_size",14)
  place(ui.specialization_items[3],Vector2(14,151),Vector2(280,44))
  if is_instance_valid(ui.branch_confirm):place(ui.branch_confirm,Vector2(840,151),Vector2(370,44))
+ # Keep the complete toolbar above the travelling drawer for both drawing and
+ # GUI hit testing; z_index alone would not fix Control input ordering.
+ for control in [ui.room_dock,ui.details,ui.room_selected_summary,ui.room_bed_summary,ui.room_door_summary,ui.quick_repair,upgrade_shortcut,ui.teammates.home]:
+  if is_instance_valid(control) and control.get_parent()==ui.panel:ui.panel.move_child(control,-1)
  refresh()
 func is_transitioning() -> bool:return transitioning
 func fit_action(button: Button):

@@ -1,0 +1,354 @@
+{
+ "checks": 168,
+ "failures": 12,
+ "fixture": "Linux actual Xorg/Mesa/Dummy sink. Unique isolated profile; controlled seated Stage1 campaign layout for default/build/purchase; Practice's own temporary resources for upgrade/branches. Held model except actual scripted door damage. No natural-play/audio/Windows/performance claim.",
+ "observations": [
+  {
+   "body": "[P: (20.0, 438.0), S: (1240.0, 204.0)]",
+   "camera": "(325.0, 112.2128)",
+   "campaign_electricity_after": 0.0,
+   "campaign_gold_after": 5.0,
+   "player": "(43.0, -17.0)",
+   "resolution": "720",
+   "toolbar": "[P: (20.0, 650.0), S: (1240.0, 54.0)]",
+   "zoom": "(1.121718, 1.121718)"
+  },
+  {
+   "body": "[P: (20.0, 438.0), S: (1240.0, 204.0)]",
+   "camera": "(325.0, 112.2128)",
+   "campaign_electricity_after": 0.0,
+   "campaign_gold_after": 5.0,
+   "player": "(43.0, -17.0)",
+   "resolution": "1080",
+   "toolbar": "[P: (20.0, 650.0), S: (1240.0, 54.0)]",
+   "zoom": "(1.121718, 1.121718)"
+  }
+ ],
+ "transitions": [
+  {
+   "configured_seconds": 0.26,
+   "label": "open-720",
+   "samples": [
+    {
+     "elapsed": 0.000012,
+     "visible": true,
+     "y": 546.259765625
+    },
+    {
+     "elapsed": 0.041927,
+     "visible": true,
+     "y": 444.044769287109
+    },
+    {
+     "elapsed": 0.081973,
+     "visible": true,
+     "y": 438.508575439453
+    },
+    {
+     "elapsed": 0.120516,
+     "visible": true,
+     "y": 438.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "close-720",
+   "samples": [
+    {
+     "elapsed": 0.000013,
+     "visible": true,
+     "y": 441.306396484375
+    },
+    {
+     "elapsed": 0.03826,
+     "visible": true,
+     "y": 568.177490234375
+    },
+    {
+     "elapsed": 0.074323,
+     "visible": true,
+     "y": 660.880798339844
+    },
+    {
+     "elapsed": 0.11767,
+     "visible": false,
+     "y": 724.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "rapid-reversal-720",
+   "samples": [
+    {
+     "elapsed": 0.000003,
+     "visible": true,
+     "y": 438.013092041016
+    },
+    {
+     "elapsed": 0.032752,
+     "visible": true,
+     "y": 438.00732421875
+    },
+    {
+     "elapsed": 0.070017,
+     "visible": true,
+     "y": 438.003570556641
+    },
+    {
+     "elapsed": 0.106143,
+     "visible": true,
+     "y": 438.001373291016
+    },
+    {
+     "elapsed": 0.137966,
+     "visible": true,
+     "y": 438.000335693359
+    },
+    {
+     "elapsed": 0.172107,
+     "visible": true,
+     "y": 438.000030517578
+    },
+    {
+     "elapsed": 0.204667,
+     "visible": true,
+     "y": 438.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "practice-inspector-720",
+   "samples": [
+    {
+     "elapsed": 0.000006,
+     "visible": true,
+     "y": 588.69677734375
+    },
+    {
+     "elapsed": 0.028478,
+     "visible": true,
+     "y": 527.724243164062
+    },
+    {
+     "elapsed": 0.069537,
+     "visible": true,
+     "y": 498.60107421875
+    },
+    {
+     "elapsed": 0.100231,
+     "visible": true,
+     "y": 462.605987548828
+    },
+    {
+     "elapsed": 0.129427,
+     "visible": true,
+     "y": 447.400634765625
+    },
+    {
+     "elapsed": 0.158809,
+     "visible": true,
+     "y": 440.461944580078
+    },
+    {
+     "elapsed": 0.1878,
+     "visible": true,
+     "y": 438.191101074219
+    },
+    {
+     "elapsed": 0.22454,
+     "visible": true,
+     "y": 438.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "escape-close-720",
+   "samples": [
+    {
+     "elapsed": 0.000006,
+     "visible": true,
+     "y": 438.379516601562
+    },
+    {
+     "elapsed": 0.025474,
+     "visible": true,
+     "y": 441.132080078125
+    },
+    {
+     "elapsed": 0.058402,
+     "visible": true,
+     "y": 448.680145263672
+    },
+    {
+     "elapsed": 0.088057,
+     "visible": true,
+     "y": 463.446136474609
+    },
+    {
+     "elapsed": 0.119986,
+     "visible": true,
+     "y": 487.463531494141
+    },
+    {
+     "elapsed": 0.148875,
+     "visible": true,
+     "y": 523.760681152344
+    },
+    {
+     "elapsed": 0.181938,
+     "visible": true,
+     "y": 574.51171875
+    },
+    {
+     "elapsed": 0.21237,
+     "visible": true,
+     "y": 642.13916015625
+    },
+    {
+     "elapsed": 0.241405,
+     "visible": false,
+     "y": 724.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "open-1080",
+   "samples": [
+    {
+     "elapsed": 0.000012,
+     "visible": true,
+     "y": 485.916748046875
+    },
+    {
+     "elapsed": 0.054575,
+     "visible": true,
+     "y": 438.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "close-1080",
+   "samples": [
+    {
+     "elapsed": 0.000012,
+     "visible": true,
+     "y": 453.686706542969
+    },
+    {
+     "elapsed": 0.050975,
+     "visible": true,
+     "y": 650.656616210938
+    },
+    {
+     "elapsed": 0.099178,
+     "visible": false,
+     "y": 724.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "rapid-reversal-1080",
+   "samples": [
+    {
+     "elapsed": 0.000003,
+     "visible": true,
+     "y": 438.0
+    },
+    {
+     "elapsed": 0.039796,
+     "visible": true,
+     "y": 438.0
+    },
+    {
+     "elapsed": 0.090413,
+     "visible": true,
+     "y": 438.0
+    },
+    {
+     "elapsed": 0.138018,
+     "visible": true,
+     "y": 438.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "practice-inspector-1080",
+   "samples": [
+    {
+     "elapsed": 0.000007,
+     "visible": true,
+     "y": 584.7451171875
+    },
+    {
+     "elapsed": 0.051252,
+     "visible": true,
+     "y": 500.780853271484
+    },
+    {
+     "elapsed": 0.108637,
+     "visible": true,
+     "y": 458.038421630859
+    },
+    {
+     "elapsed": 0.16623,
+     "visible": true,
+     "y": 440.577758789062
+    },
+    {
+     "elapsed": 0.225395,
+     "visible": true,
+     "y": 438.000244140625
+    },
+    {
+     "elapsed": 0.282842,
+     "visible": true,
+     "y": 438.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "escape-close-1080",
+   "samples": [
+    {
+     "elapsed": 0.000006,
+     "visible": true,
+     "y": 439.937164306641
+    },
+    {
+     "elapsed": 0.041475,
+     "visible": true,
+     "y": 451.963134765625
+    },
+    {
+     "elapsed": 0.087152,
+     "visible": true,
+     "y": 478.383087158203
+    },
+    {
+     "elapsed": 0.132618,
+     "visible": true,
+     "y": 532.636779785156
+    },
+    {
+     "elapsed": 0.178655,
+     "visible": true,
+     "y": 621.572387695312
+    },
+    {
+     "elapsed": 0.22171,
+     "visible": false,
+     "y": 724.0
+    }
+   ]
+  }
+ ]
+}

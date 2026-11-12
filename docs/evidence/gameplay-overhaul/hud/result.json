@@ -1,0 +1,391 @@
+{
+ "checks": 164,
+ "failures": 0,
+ "fixture": "Linux actual Xorg/Mesa/Dummy sink. Unique isolated profile; controlled seated Stage1 campaign layout for default/build/purchase; Practice's own temporary resources for upgrade/branches. Held model except actual scripted door damage. No natural-play/audio/Windows/performance claim.",
+ "observations": [
+  {
+   "body": "[P: (20.0, 724.0), S: (1240.0, 204.0)]",
+   "camera": "(325.0, 112.2128)",
+   "campaign_electricity_after": 0.0,
+   "campaign_gold_after": 5.0,
+   "player": "(43.0, -17.0)",
+   "resolution": "720",
+   "toolbar": "[P: (20.0, 650.0), S: (1240.0, 54.0)]",
+   "zoom": "(1.121718, 1.121718)"
+  },
+  {
+   "body": "[P: (20.0, 724.0), S: (1240.0, 204.0)]",
+   "camera": "(325.0, 112.2128)",
+   "campaign_electricity_after": 0.0,
+   "campaign_gold_after": 5.0,
+   "player": "(43.0, -17.0)",
+   "resolution": "1080",
+   "toolbar": "[P: (20.0, 650.0), S: (1240.0, 54.0)]",
+   "zoom": "(1.121718, 1.121718)"
+  }
+ ],
+ "transitions": [
+  {
+   "configured_seconds": 0.26,
+   "label": "open-720",
+   "samples": [
+    {
+     "elapsed": 0.000013,
+     "visible": true,
+     "y": 525.963928222656
+    },
+    {
+     "elapsed": 0.054473,
+     "visible": true,
+     "y": 438.380218505859
+    },
+    {
+     "elapsed": 0.101533,
+     "visible": true,
+     "y": 438.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "close-720",
+   "samples": [
+    {
+     "elapsed": 0.000013,
+     "visible": true,
+     "y": 442.821380615234
+    },
+    {
+     "elapsed": 0.037219,
+     "visible": true,
+     "y": 598.171630859375
+    },
+    {
+     "elapsed": 0.082905,
+     "visible": true,
+     "y": 692.252990722656
+    },
+    {
+     "elapsed": 0.123732,
+     "visible": false,
+     "y": 724.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "rapid-reversal-720",
+   "samples": [
+    {
+     "elapsed": 0.000007,
+     "visible": false,
+     "y": 724.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "practice-inspector-720",
+   "samples": [
+    {
+     "elapsed": 0.000007,
+     "visible": true,
+     "y": 588.69677734375
+    },
+    {
+     "elapsed": 0.032955,
+     "visible": true,
+     "y": 512.440551757812
+    },
+    {
+     "elapsed": 0.071638,
+     "visible": true,
+     "y": 477.686157226562
+    },
+    {
+     "elapsed": 0.106625,
+     "visible": true,
+     "y": 452.366455078125
+    },
+    {
+     "elapsed": 0.145345,
+     "visible": true,
+     "y": 441.764404296875
+    },
+    {
+     "elapsed": 0.181049,
+     "visible": true,
+     "y": 438.189300537109
+    },
+    {
+     "elapsed": 0.21876,
+     "visible": true,
+     "y": 438.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "shortcut-open-720",
+   "samples": [
+    {
+     "elapsed": 0.000003,
+     "visible": true,
+     "y": 438.0
+    },
+    {
+     "elapsed": 0.030673,
+     "visible": true,
+     "y": 438.0
+    },
+    {
+     "elapsed": 0.064357,
+     "visible": true,
+     "y": 438.0
+    },
+    {
+     "elapsed": 0.100583,
+     "visible": true,
+     "y": 438.0
+    },
+    {
+     "elapsed": 0.134061,
+     "visible": true,
+     "y": 438.0
+    },
+    {
+     "elapsed": 0.174862,
+     "visible": true,
+     "y": 438.0
+    },
+    {
+     "elapsed": 0.21332,
+     "visible": true,
+     "y": 438.0
+    },
+    {
+     "elapsed": 0.248578,
+     "visible": true,
+     "y": 438.0
+    },
+    {
+     "elapsed": 0.284176,
+     "visible": true,
+     "y": 438.0
+    },
+    {
+     "elapsed": 0.318578,
+     "visible": true,
+     "y": 438.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "escape-close-720",
+   "samples": [
+    {
+     "elapsed": 0.000007,
+     "visible": true,
+     "y": 438.602661132812
+    },
+    {
+     "elapsed": 0.027642,
+     "visible": true,
+     "y": 442.821380615234
+    },
+    {
+     "elapsed": 0.062124,
+     "visible": true,
+     "y": 451.299468994141
+    },
+    {
+     "elapsed": 0.097998,
+     "visible": true,
+     "y": 469.906372070312
+    },
+    {
+     "elapsed": 0.133572,
+     "visible": true,
+     "y": 500.949401855469
+    },
+    {
+     "elapsed": 0.170303,
+     "visible": true,
+     "y": 550.166748046875
+    },
+    {
+     "elapsed": 0.202789,
+     "visible": true,
+     "y": 620.029663085938
+    },
+    {
+     "elapsed": 0.242183,
+     "visible": true,
+     "y": 714.154235839844
+    },
+    {
+     "elapsed": 0.281989,
+     "visible": false,
+     "y": 724.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "open-1080",
+   "samples": [
+    {
+     "elapsed": 0.000012,
+     "visible": true,
+     "y": 513.900146484375
+    },
+    {
+     "elapsed": 0.054884,
+     "visible": true,
+     "y": 438.308563232422
+    },
+    {
+     "elapsed": 0.107017,
+     "visible": true,
+     "y": 438.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "close-1080",
+   "samples": [
+    {
+     "elapsed": 0.000012,
+     "visible": true,
+     "y": 528.608337402344
+    },
+    {
+     "elapsed": 0.060454,
+     "visible": false,
+     "y": 724.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "rapid-reversal-1080",
+   "samples": [
+    {
+     "elapsed": 0.000006,
+     "visible": false,
+     "y": 724.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "practice-inspector-1080",
+   "samples": [
+    {
+     "elapsed": 0.000007,
+     "visible": true,
+     "y": 579.903442382812
+    },
+    {
+     "elapsed": 0.048363,
+     "visible": true,
+     "y": 496.189483642578
+    },
+    {
+     "elapsed": 0.105281,
+     "visible": true,
+     "y": 457.365997314453
+    },
+    {
+     "elapsed": 0.152399,
+     "visible": true,
+     "y": 440.087158203125
+    },
+    {
+     "elapsed": 0.199362,
+     "visible": true,
+     "y": 438.000091552734
+    },
+    {
+     "elapsed": 0.254937,
+     "visible": true,
+     "y": 438.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "shortcut-open-1080",
+   "samples": [
+    {
+     "elapsed": 0.000002,
+     "visible": true,
+     "y": 438.0
+    },
+    {
+     "elapsed": 0.046807,
+     "visible": true,
+     "y": 438.0
+    },
+    {
+     "elapsed": 0.098992,
+     "visible": true,
+     "y": 438.0
+    },
+    {
+     "elapsed": 0.161405,
+     "visible": true,
+     "y": 438.0
+    },
+    {
+     "elapsed": 0.216949,
+     "visible": true,
+     "y": 438.0
+    },
+    {
+     "elapsed": 0.27193,
+     "visible": true,
+     "y": 438.0
+    },
+    {
+     "elapsed": 0.328519,
+     "visible": true,
+     "y": 438.0
+    }
+   ]
+  },
+  {
+   "configured_seconds": 0.26,
+   "label": "escape-close-1080",
+   "samples": [
+    {
+     "elapsed": 0.000007,
+     "visible": true,
+     "y": 440.034027099609
+    },
+    {
+     "elapsed": 0.060297,
+     "visible": true,
+     "y": 453.741088867188
+    },
+    {
+     "elapsed": 0.13062,
+     "visible": true,
+     "y": 492.192199707031
+    },
+    {
+     "elapsed": 0.183391,
+     "visible": true,
+     "y": 610.576538085938
+    },
+    {
+     "elapsed": 0.293721,
+     "visible": false,
+     "y": 724.0
+    }
+   ]
+  }
+ ]
+}
