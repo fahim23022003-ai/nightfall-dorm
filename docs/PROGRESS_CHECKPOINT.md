@@ -34,7 +34,10 @@ fixture failures and passing reruns preserved.
 
 Report: [PHASE_5C1_ONBOARDING_SHOP_REPORT.md](PHASE_5C1_ONBOARDING_SHOP_REPORT.md),
 `docs/evidence/onboarding/`. Final response records completed commit and actual
-private GitHub `work` push verification. No Phase5C-2/6, newplayablemap/weather/
+private GitHub `work` push verification. Implementation/evidence commit
+`c636b225cb8127dbd4caf7a5cf22439d8f03929d` was pushed successfully and the remote SHA matched
+local HEAD. The following documentation-only commit records verification.
+No Phase5C-2/6, newplayablemap/weather/
 boss/Android/multiplayer. `main` unchanged. Stop after Phase5C-1.
 
 ---

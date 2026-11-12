@@ -151,5 +151,9 @@ The only new gameplay-rule branches are practice isolation and weak practice
 Hunter tuning; existing difficulty, maps, stage and boss catalogs, project and
 Windows export configuration remain unchanged. Native Windows is unverified.
 Recovery tag `pre-phase5c1-d8ac232`; tested implementation milestone `238e2ec`.
-Final completed implementation/evidence commit and actual private `work` push
-verification are recorded after committing. `main` is unchanged. Stop after 5C-1.
+Latest verified implementation/evidence commit: `c636b225cb8127dbd4caf7a5cf22439d8f03929d`.
+GitHub push SUCCEEDED: `d8ac232..c636b22 work -> work`; `git ls-remote origin
+refs/heads/work` returned exactly that full SHA, matching local HEAD.
+The subsequent documentation-only commit records this verification; its final
+HEAD and matching remote SHA are confirmed in the completion response.
+`main` is unchanged. Stop after 5C-1.
