@@ -115,3 +115,13 @@ no external imagery, paid asset or runtime download was introduced. Existing
 local OFL/DejaVu font licenses remain unchanged. Cosmetic data has no combat or
 economy multiplier and is read only by presentation. Actual rendered inspection
 and its quality limits are recorded in the Phase5D2 report/evidence.
+
+
+## Phase5D-3 role-specific progression
+
+`tools/art/generate_support_branches.py` authors twelve original geometric SVG
+branch emblems for Bed/Door/Dynamo/Repair/Amplifier/Relay. Existing Needle/Arc
+branch icons and prestige layers remain. Support/structural late tiers add
+procedural geometry/badges over existing authored art; no copied stock/game
+image or new animation rig is claimed. Gothic teammate controls reuse the
+existing material/font/portrait system and actual survivor/room identities.

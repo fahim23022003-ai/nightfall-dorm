@@ -1,3 +1,13 @@
+# Current Phase5D-3 Windows feedback build
+
+Version0.6.1-5d3 uses Godot4.6.3. Current source, audio credits, export receipt
+and native limitations are in the [Phase5D3 report](PHASE_5D3_MUSIC_HUNTER_BUILDINGS_SPECTATE_REPORT.md).
+Use the [owner/Adie checklist](WINDOWS_PLAYTEST_GUIDE.md) for audio auditions,
+all-building upgrades and teammate observation. No new Phase6 audit/public release.
+The earlier records below remain historical, not current Windows certification.
+
+---
+
 # Current Phase 6 Windows candidate
 
 Version 0.6.0-rc1, Godot 4.6.3. Current export/checksums, pack audit and remaining

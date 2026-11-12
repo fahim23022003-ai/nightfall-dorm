@@ -197,3 +197,40 @@ bounded routing, not subjective loudness or physical speakers.
 The separate accelerated earned-run recording is stress evidence and reports
 1,015 low-priority dropped events; it is not evidence of normal real-time sound.
 Native Windows, hardware audio and human listening remain UNVERIFIED.
+
+## Phase 5D-3 — recorded instruments and voices
+
+The owner's listening feedback supersedes earlier waveform-only acceptance.
+The old opening had no enabled musical target; synthesized oscillator material
+and stacked attenuation failed the requested recognizable musical experience.
+Current work replaces four musical assets and adds intro/approach/Endless scores.
+`tools/audio/compose_horror_scores.py` renders authored chromatic motifs, changing
+harmonies, contrasting phrases and orchestral ostinati using actual piano,
+violin/tremolo, glockenspiel, bass drum and timpani recordings. Full note events,
+tempo, tonic and durations are in `assets/audio/score-arrangements.json`.
+These are sampled instrumental arrangements, not a claim of live orchestral
+performance or human approval of scariness.
+
+Instrument recordings: VSCO2 Community Edition, Sam Gossner/Versilian Studios,
+Simon Dalzell/Ivy Audio; sample editing Elan Hickler/Soundemote. Pinned upstream
+`sgossner/VSCO-2-CE` commit440300901dfe9275fd84e0b7763af1f8443ae62e supplies
+CC0-1.0 license, README, original sample paths and hashes retained under
+`tools/audio/source/vsco`. No GPL TimGM soundfont was used.
+
+`prepare_recorded_vocals.py` converts genuine recorded human/creature performances,
+with cropping, modest filtering/rate changes, fades and headroom; it does not
+create speech or screams from oscillator beeps. Derived event/source mappings
+are in `assets/audio/vocal-derivatives.json`. Pinned source metadata/credits and
+original downloaded files are retained under `tools/audio/source/vocals`.
+Only explicit CC0 declarations were selected. The Freesound redistribution mirror
+records original artists/descriptions/source URLs; independent credits corroborate
+selected recordings. Original Freesound page access is blocked403 in cloud,
+so direct-original-page license confirmation is UNVERIFIED; metadata provenance
+and actual content hashes are retained for review rather than invented.
+
+Final engine PCM, actual musical-state routing, audibility comparisons, queue
+cleanup, default/saved-volume checks and listening controls are documented in the
+Phase5D3 report. Internal playback cannot certify physical Windows speakers,
+perceived mix or subjective vocal credibility/scariness. The accessible listening
+room lets the owner audition those directly. Earlier synthesized-audio reports
+remain historical and should not be read as the new soundtrack's provenance.

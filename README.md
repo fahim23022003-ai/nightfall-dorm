@@ -1,8 +1,26 @@
 # Nightfall Dorm
 
-An original single-player Godot 4 dormitory survival defense game. Choose a room, sleep to earn gold, upgrade your bed and door, build defenses and electricity production, and defeat the hunter. Five autonomous survivors defend the other rooms. Artwork, characters and locally synthesized sounds are original; exact Haunted Dorm fidelity remains unverified.
+An original single-player Godot 4 dormitory survival defense game. Choose a room, sleep to earn gold, upgrade your bed and door, build defenses and electricity production, and defeat the hunter. Five autonomous survivors defend the other rooms. Artwork and characters are original; the score combines original arrangements with credited CC0 recorded instruments and voices; exact Haunted Dorm fidelity remains unverified.
 
 **For home testing, download branch [`work`](https://github.com/fahim23022003-ai/nightfall-dorm/tree/work), not `main`.**
+
+## Phase 5D-3 — music, tactical Hunters and teammate rooms
+
+Current version **0.6.1-5d3**, Godot4.6.3. Seven sampled musical scores and
+recorded voices replace weak synthesized music/vocals. Open Settings → Audio
+listening room to audition them. The opening now has its own19-second score.
+
+All six machines plus beds/doors support Level10 and exclusive role choices.
+Hunters gain purposeful target memory and telegraphed tactical abilities. Press
+T for actual teammate status; click to observe, Home to return, Page keys to cycle.
+Watching is read-only and keeps your own danger/audio awareness. Challenge ruleset2
+reflects changed combat; old results remain archived. Existing progress is preserved.
+
+See the [Phase5D3 report](docs/PHASE_5D3_MUSIC_HUNTER_BUILDINGS_SPECTATE_REPORT.md)
+and [Windows guide](docs/WINDOWS_PLAYTEST_GUIDE.md). Native Windows and subjective
+music/scariness/human balance remain unverified for this version. Earlier export
+and Phase6 reports below describe historical checkpoints; no new Phase6 audit
+is part of this feature task.
 
 ## Phase 6 private Windows candidate
 

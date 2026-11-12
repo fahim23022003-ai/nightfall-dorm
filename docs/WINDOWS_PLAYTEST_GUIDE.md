@@ -1,6 +1,6 @@
 # Nightfall Dorm — private Windows playtest
 
-Version: **0.6.0-rc1**, Godot **4.6.3 stable standard**, Windows 10/11 x64.
+Version: **0.6.1-5d3**, Godot **4.6.3 stable standard**, Windows 10/11 x64.
 This is a private release candidate pending native Windows validation, not a
 public release. Test with Fahim and Adie; no login or multiplayer is required.
 
@@ -31,6 +31,31 @@ public release. Test with Fahim and Adie; no login or multiplayer is required.
 
 If the game cannot save, keep the window open, report the warning and retry the
 operation after resolving disk permissions. Do not overwrite a valid backup.
+
+## Phase 5D-3 owner-feedback checks
+
+- In Settings open **Audio listening room**. With Music above zero and Mute off,
+  audition all seven scores and major voices. Stop/Back should restore normal
+  menu audio. Restart for the full19-second opening/title; listen for immediate
+  music, breathing/threat voice, door impacts and climax. Report what sounds
+  musical/frightening or still weak; numerical captures cannot decide this.
+- During combat watch Crusher's pressure/charged smash, Stalker's concealed
+  approach/failed-siege feint, and Ravager's dash/combo/recovery. Attacks must
+  remain telegraphed and navigation legal. Report repetitive or unfair cases.
+- All six machines plus bed/door now upgrade to10. Machines choose an exclusive
+  branch at4→5; bed/door choose at5→6, preserving existing Level5 saves. Read
+  tradeoffs before choosing. Beds/doors retain their existing full-price,
+  unsellable policy; a coupon stays available for a valid machine transaction.
+  Machine sales refund50% of actual eligible Gold/Electricity after discounts.
+- Press **T** for live teammate names/rooms/HP/danger. Click a row to watch;
+  **Home** returns immediately, PageUp/PageDown cycle rooms. You observe only.
+  Movement/E/building edits are blocked while watching; R and equipped items
+  still act on your own room (or their ordinary valid item targets). Check your
+  own danger warning and audible cues. Watching never pauses combat.
+- Current Challenge ruleset is2. Old rule1 results remain archived, but old codes
+  are rejected for play rather than pretending the changed AI/rules are equivalent.
+  Generate a new code to compare with Adie on this same version.
+
 
 ## Playtest checklist
 
