@@ -3,6 +3,7 @@ extends RefCounted
 
 signal presentation_action(type: String, data: Dictionary)
 
+var layout: Dictionary={}
 var index: int
 var owner = -1
 var alive = true
@@ -55,21 +56,27 @@ func survivor_name() -> String:
  return Catalog.SURVIVOR_NAMES[clampi(owner,0,Catalog.SURVIVOR_NAMES.size()-1)]
 
 func center() -> Vector2:
+ if not layout.is_empty(): return layout.bounds.get_center()
  return Vector2(185 + (index % 3) * 310, 210 if index < 3 else 610)
 
 func bounds() -> Rect2:
+ if not layout.is_empty(): return layout.bounds
  return Rect2(center() - Vector2(135,110), Vector2(270,220))
 
 func door_position() -> Vector2:
+ if not layout.is_empty(): return layout.door
  return center() + Vector2(0,110 if index < 3 else -110)
 
 func bed_position() -> Vector2:
+ if not layout.is_empty(): return layout.bed
  return center() + Vector2(-80,-45 if index < 3 else 45)
 
 func cabinet_position() -> Vector2:
+ if not layout.is_empty(): return layout.cabinet
  return bounds().position+Vector2(224,39)
 
 func plant_position() -> Vector2:
+ if not layout.is_empty(): return layout.plant
  return bounds().position+Vector2(23,179 if index<3 else 37)
 
 func furniture_blocks(point: Vector2) -> bool:
@@ -77,7 +84,17 @@ func furniture_blocks(point: Vector2) -> bool:
  return Rect2(bed_position()-Vector2(27,45),Vector2(54,89)).has_point(point) or Rect2(cabinet_position()+Vector2(-18,5),Vector2(36,20)).has_point(point) or Rect2(plant_position()+Vector2(-10,7),Vector2(20,14)).has_point(point)
 
 func tile_position(tile: int) -> Vector2:
+ if not layout.is_empty(): return layout.tiles[tile] if tile>=0 and tile<tile_count() else center()
  return center() + Vector2(-20 + (tile % 3) * 55, -20 + (tile / 3) * 65)
+
+func tile_count() -> int:
+ return layout.tiles.size() if not layout.is_empty() else 6
+func door_normal() -> Vector2:
+ return layout.door_normal if not layout.is_empty() else Vector2.DOWN if index<3 else Vector2.UP
+func door_approach() -> Vector2:
+ return door_position()+door_normal()*(24 if not layout.is_empty() else 22)
+func corridor_anchor() -> Vector2:
+ return layout.anchor if not layout.is_empty() else Vector2(door_position().x,410)
 
 func max_hp() -> float:
  return Catalog.DOOR_HP[door_level]*door_multiplier
@@ -165,7 +182,7 @@ func build(kind: String, tile: int) -> bool:
   return reject("Sleep in your bed before building.")
  if not Catalog.BUILDINGS.has(kind):
   return reject("Unknown building.")
- if tile < 0 or tile > 5:
+ if tile < 0 or tile >= tile_count():
   return reject("Select a numbered floor tile in your room.")
  if buildings.has(tile):
   return reject("Tile occupied. Select an empty tile or upgrade this building.")
@@ -204,7 +221,7 @@ func upgrade_building(tile: int) -> bool:
 # Match buildings are transient, not part of profile saves. Unpaid fixtures have
 # no refundable investment. Fractional currency is retained without rounding.
 func building_refund(tile: int) -> Vector2:
- if tile<0 or tile>=6 or not buildings.has(tile): return Vector2.ZERO
+ if tile<0 or tile>=tile_count() or not buildings.has(tile): return Vector2.ZERO
  var building=buildings[tile]
  var gold_paid=float(building.get("invested_gold",0.0))
  var power_paid=float(building.get("invested_power",0.0))
@@ -214,7 +231,7 @@ func building_refund(tile: int) -> Vector2:
 
 func sell_building(tile: int) -> bool:
  if not alive: return reject("Resident eliminated.")
- if tile<0 or tile>=6 or not buildings.has(tile): return reject("Select an existing building to sell.")
+ if tile<0 or tile>=tile_count() or not buildings.has(tile): return reject("Select an existing building to sell.")
  var refund=building_refund(tile)
  buildings.erase(tile)
  gold+=refund.x

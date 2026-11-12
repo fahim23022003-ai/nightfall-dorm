@@ -222,9 +222,9 @@ func _unhandled_input(event):
   if event.button_index in [MOUSE_BUTTON_WHEEL_UP,MOUSE_BUTTON_WHEEL_DOWN]:
    zoom_factor=clampf(zoom_factor+(0.1 if event.button_index==MOUSE_BUTTON_WHEEL_UP else -0.1),0.75,1.2)
   elif event.button_index==MOUSE_BUTTON_LEFT and model.player()!=null:
-   var point=get_global_mouse_position()-MAP_OFFSET
+   var point=get_viewport().get_canvas_transform().affine_inverse()*event.position-MAP_OFFSET
    var found=false
-   for tile in range(6):
+   for tile in range(model.player().tile_count()):
     if Rect2(model.player().tile_position(tile)-Vector2(27,27),Vector2(54,54)).has_point(point):
      selected_tile=tile
      placement_on_tile=true
@@ -242,7 +242,7 @@ func _unhandled_input(event):
 
 func begin_placement(kind: String):
  if mode!="match" or in_background or not model._can_purchase(): return
- if not Catalog.BUILDINGS.has(kind) or selected_tile<0 or selected_tile>=6: return
+ if not Catalog.BUILDINGS.has(kind) or selected_tile<0 or selected_tile>=model.player().tile_count(): return
  if model.player().buildings.has(selected_tile) or not model.player().sleeping: return
  pending_build=kind
  placement_on_tile=true
@@ -286,6 +286,17 @@ func focus_camera(snap: bool=false,delta: float=0.016):
   if model.hunter.target==room.index and model.hunter.state==HunterState.State.ATTACK:
    goal=(room.center().lerp(model.hunter.position,0.38))+MAP_OFFSET
    zoom=1.65*zoom_factor
+ if model.map_id!="legacy":
+  if full_map:
+   var extent=model.map_bounds().grow(35)
+   zoom=minf(1220.0/extent.size.x,500.0/extent.size.y)
+   goal=extent.get_center()+MAP_OFFSET+Vector2(0,10)/zoom
+  elif model.player()!=null:
+   var extent=model.player().bounds().grow(35)
+   var available=Vector2(820,490) if ui.context_open else Vector2(1160,490)
+   zoom=minf(available.x/extent.size.x,available.y/extent.size.y)*zoom_factor
+   var desired=Vector2(452,348) if ui.context_open else Vector2(640,348)
+   goal=extent.get_center()+MAP_OFFSET+(get_viewport_rect().size/2-desired)/zoom
  if mobile_mode and not full_map:
   var desired=Vector2(470 if ui.context_open and model.player()!=null and model.player().sleeping else 640,340)
   goal+=(get_viewport_rect().size/2-mobile_layout.screen_point(desired))/zoom
@@ -361,7 +372,7 @@ func handle_touch_tap(screen: Vector2):
  var room=model.player()
  if room!=null and room.sleeping:
   var found=false
-  for tile in range(6):
+  for tile in range(model.player().tile_count()):
    if Rect2(room.tile_position(tile)-Vector2(27,27),Vector2(54,54)).has_point(point):
     selected_tile=tile
     preview_position=room.tile_position(tile)

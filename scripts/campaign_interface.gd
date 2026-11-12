@@ -28,8 +28,8 @@ func show_stages():
   ui.box(Rect2(104,y,1072,72),"263E50","7BE3A1" if int(record.get("clears",0))>0 else "607D8B")
   ui.label_at("%d · %s" % [definition.number,definition.title],Vector2(120,y+9),20,600,true)
   var status="CLEARED" if int(record.get("clears",0))>0 else "UNLOCKED" if unlocked else "LOCKED · clear Stage %d" % i
-  var best=""
-  if int(record.get("clears",0))>0: best=" · Best %.1fs" % float(record.get("best_time",0))
+  var best=" · "+str(MapCatalog.map(definition.map).get("title",""))
+  if int(record.get("clears",0))>0: best+=" · Best %.1fs" % float(record.get("best_time",0))
   ui.label_at(status+best+" · First clear +%d XP" % definition.first_clear_xp,Vector2(120,y+39),16,820)
   var button=ui.button("Replay" if int(record.get("clears",0))>0 else "Prepare" if unlocked else "Locked",Vector2(988,y+13),func(): prepare(id),170,46)
   button.disabled=not unlocked or game.profile.read_only

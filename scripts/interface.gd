@@ -458,7 +458,7 @@ func update_match():
  hunter_bar.max_value=m.hunter.max_hp
  hunter_bar.value=m.hunter.hp
  map_button.text="Focus" if game.full_map else "Map"
- guide_box.visible=(game.tutorial_enabled and not game.full_map) or game.presentation.clock<feedback_until
+ guide_box.visible=((game.tutorial_enabled and not game.full_map) or game.presentation.clock<feedback_until) and not (game.model.map_id!="legacy" and context_open)
  guide_label.visible=guide_box.visible
  if guide_label.visible: guide_label.text=feedback_text if game.presentation.clock<feedback_until else tutorial_text()
  var threat=room!=null and m.hunter.target==room.index and m.hunter.state==HunterState.State.ATTACK
@@ -566,7 +566,7 @@ func action_reason(action: String) -> String:
   gold = Catalog.REPAIR_COST
  elif action.begins_with("build:"):
   if not room.sleeping: return "Sleep in your bed before building."
-  if game.selected_tile < 0 or game.selected_tile > 5: return "Select a numbered floor tile in your room."
+  if game.selected_tile < 0 or game.selected_tile >= room.tile_count(): return "Select a numbered floor tile in your room."
   if room.buildings.has(game.selected_tile): return "Tile occupied. Select an empty numbered tile."
   var kind = action.trim_prefix("build:")
   if kind == "heavy" and room.bed_level < 1: return "Requires bed level 2."

@@ -1,0 +1,105 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+MAP_TACTIC map=abandoned_dorm room=1 slots=12 own_door_needle=6 own_door_arc=11 size=(360.0, 320.0)
+MAP_TACTIC map=abandoned_dorm room=2 slots=12 own_door_needle=6 own_door_arc=11 size=(360.0, 320.0)
+MAP_TACTIC map=abandoned_dorm room=3 slots=12 own_door_needle=6 own_door_arc=11 size=(360.0, 320.0)
+MAP_TACTIC map=abandoned_dorm room=4 slots=12 own_door_needle=6 own_door_arc=10 size=(360.0, 320.0)
+MAP_TACTIC map=abandoned_dorm room=5 slots=12 own_door_needle=6 own_door_arc=10 size=(360.0, 320.0)
+MAP_TACTIC map=abandoned_dorm room=6 slots=12 own_door_needle=6 own_door_arc=10 size=(360.0, 320.0)
+MAP_TACTIC map=haunted_hospital room=1 slots=12 own_door_needle=7 own_door_arc=11 size=(350.0, 315.0)
+MAP_TACTIC map=haunted_hospital room=2 slots=10 own_door_needle=5 own_door_arc=9 size=(350.0, 315.0)
+MAP_TACTIC map=haunted_hospital room=3 slots=12 own_door_needle=7 own_door_arc=11 size=(350.0, 315.0)
+MAP_TACTIC map=haunted_hospital room=4 slots=12 own_door_needle=6 own_door_arc=11 size=(350.0, 315.0)
+MAP_TACTIC map=haunted_hospital room=5 slots=10 own_door_needle=6 own_door_arc=10 size=(350.0, 315.0)
+MAP_TACTIC map=haunted_hospital room=6 slots=12 own_door_needle=6 own_door_arc=11 size=(350.0, 315.0)
+MAP_TACTIC map=forgotten_hotel room=1 slots=10 own_door_needle=5 own_door_arc=9 size=(330.0, 310.0)
+MAP_TACTIC map=forgotten_hotel room=2 slots=10 own_door_needle=6 own_door_arc=10 size=(330.0, 310.0)
+MAP_TACTIC map=forgotten_hotel room=3 slots=10 own_door_needle=5 own_door_arc=9 size=(330.0, 310.0)
+MAP_TACTIC map=forgotten_hotel room=4 slots=10 own_door_needle=6 own_door_arc=10 size=(330.0, 310.0)
+MAP_TACTIC map=forgotten_hotel room=5 slots=10 own_door_needle=5 own_door_arc=9 size=(330.0, 310.0)
+MAP_TACTIC map=forgotten_hotel room=6 slots=10 own_door_needle=6 own_door_arc=10 size=(330.0, 310.0)
+MAP_TACTIC map=underground_lab room=1 slots=12 own_door_needle=6 own_door_arc=10 size=(350.0, 340.0)
+MAP_TACTIC map=underground_lab room=2 slots=12 own_door_needle=6 own_door_arc=10 size=(350.0, 340.0)
+MAP_TACTIC map=underground_lab room=3 slots=12 own_door_needle=6 own_door_arc=10 size=(350.0, 340.0)
+MAP_TACTIC map=underground_lab room=4 slots=12 own_door_needle=5 own_door_arc=10 size=(350.0, 340.0)
+MAP_TACTIC map=underground_lab room=5 slots=12 own_door_needle=5 own_door_arc=10 size=(350.0, 340.0)
+MAP_TACTIC map=underground_lab room=6 slots=12 own_door_needle=5 own_door_arc=10 size=(350.0, 340.0)
+MAP_TACTIC map=cursed_mansion room=1 slots=16 own_door_needle=6 own_door_arc=12 size=(390.0, 350.0)
+MAP_TACTIC map=cursed_mansion room=2 slots=10 own_door_needle=5 own_door_arc=9 size=(350.0, 315.0)
+MAP_TACTIC map=cursed_mansion room=3 slots=16 own_door_needle=6 own_door_arc=12 size=(390.0, 350.0)
+MAP_TACTIC map=cursed_mansion room=4 slots=16 own_door_needle=5 own_door_arc=12 size=(390.0, 350.0)
+MAP_TACTIC map=cursed_mansion room=5 slots=10 own_door_needle=6 own_door_arc=10 size=(350.0, 315.0)
+MAP_TACTIC map=cursed_mansion room=6 slots=16 own_door_needle=5 own_door_arc=12 size=(390.0, 350.0)
+BALANCE_PROBE stage=stage_2 difficulty=standard room=1 strategy=balanced result=victory time=181.3 buildings=6 gold=1312.4 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=standard room=1 strategy=turret_rush result=victory time=181.3 buildings=12 gold=5.0 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=standard room=1 strategy=economy_stack result=victory time=181.3 buildings=12 gold=1360.8 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=standard room=2 strategy=balanced result=victory time=181.3 buildings=6 gold=1312.4 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=standard room=2 strategy=turret_rush result=victory time=181.3 buildings=10 gold=45.0 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=standard room=2 strategy=economy_stack result=victory time=181.3 buildings=10 gold=1640.8 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=standard room=3 strategy=balanced result=victory time=164.5 buildings=6 gold=322.7 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=standard room=3 strategy=turret_rush result=victory time=160.2 buildings=12 gold=16.2 hunter_hp=0.0 player_damage=2801.5
+BALANCE_PROBE stage=stage_2 difficulty=standard room=3 strategy=economy_stack result=victory time=122.9 buildings=12 gold=67.4 hunter_hp=0.0 player_damage=4648.6
+BALANCE_PROBE stage=stage_2 difficulty=standard room=4 strategy=balanced result=victory time=182.6 buildings=6 gold=1393.5 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=standard room=4 strategy=turret_rush result=victory time=182.6 buildings=12 gold=15.4 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=standard room=4 strategy=economy_stack result=victory time=182.6 buildings=12 gold=1385.7 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=standard room=5 strategy=balanced result=victory time=182.6 buildings=6 gold=1393.5 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=standard room=5 strategy=turret_rush result=victory time=182.6 buildings=10 gold=55.4 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=standard room=5 strategy=economy_stack result=victory time=182.6 buildings=10 gold=1665.7 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=standard room=6 strategy=balanced result=victory time=174.7 buildings=6 gold=633.4 hunter_hp=0.0 player_damage=1058.4
+BALANCE_PROBE stage=stage_2 difficulty=standard room=6 strategy=turret_rush result=victory time=175.4 buildings=12 gold=17.8 hunter_hp=0.0 player_damage=4316.6
+BALANCE_PROBE stage=stage_2 difficulty=standard room=6 strategy=economy_stack result=victory time=202.2 buildings=12 gold=920.0 hunter_hp=0.0 player_damage=3708.0
+BALANCE_PROBE stage=stage_2 difficulty=hard room=1 strategy=balanced result=victory time=188.5 buildings=6 gold=1761.7 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=hard room=1 strategy=turret_rush result=victory time=188.5 buildings=12 gold=2.6 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=hard room=1 strategy=economy_stack result=victory time=188.5 buildings=12 gold=1499.0 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=hard room=2 strategy=balanced result=victory time=188.5 buildings=6 gold=1761.7 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=hard room=2 strategy=turret_rush result=victory time=188.5 buildings=10 gold=22.6 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=hard room=2 strategy=economy_stack result=victory time=188.5 buildings=10 gold=1779.0 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=hard room=3 strategy=balanced result=victory time=170.0 buildings=6 gold=105.6 hunter_hp=0.0 player_damage=680.4
+BALANCE_PROBE stage=stage_2 difficulty=hard room=3 strategy=turret_rush result=victory time=178.5 buildings=12 gold=6.6 hunter_hp=0.0 player_damage=3339.0
+BALANCE_PROBE stage=stage_2 difficulty=hard room=3 strategy=economy_stack result=victory time=123.4 buildings=12 gold=25.9 hunter_hp=0.0 player_damage=5595.0
+BALANCE_PROBE stage=stage_2 difficulty=hard room=4 strategy=balanced result=victory time=190.6 buildings=6 gold=1892.7 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=hard room=4 strategy=turret_rush result=victory time=190.6 buildings=12 gold=19.4 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=hard room=4 strategy=economy_stack result=victory time=190.6 buildings=12 gold=1539.3 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=hard room=5 strategy=balanced result=victory time=190.6 buildings=6 gold=1892.7 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=hard room=5 strategy=turret_rush result=victory time=190.6 buildings=10 gold=39.4 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=hard room=5 strategy=economy_stack result=victory time=190.6 buildings=10 gold=1819.3 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_2 difficulty=hard room=6 strategy=balanced result=victory time=212.7 buildings=6 gold=2934.3 hunter_hp=0.0 player_damage=1058.4
+BALANCE_PROBE stage=stage_2 difficulty=hard room=6 strategy=turret_rush result=victory time=181.8 buildings=12 gold=13.0 hunter_hp=0.0 player_damage=5598.9
+BALANCE_PROBE stage=stage_2 difficulty=hard room=6 strategy=economy_stack result=victory time=248.1 buildings=12 gold=1453.3 hunter_hp=0.0 player_damage=4968.0
+BALANCE_PROBE stage=stage_5 difficulty=standard room=1 strategy=balanced result=victory time=164.2 buildings=6 gold=440.4 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_5 difficulty=standard room=1 strategy=turret_rush result=victory time=164.2 buildings=16 gold=28.2 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_5 difficulty=standard room=1 strategy=economy_stack result=victory time=164.2 buildings=16 gold=472.4 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_5 difficulty=standard room=2 strategy=balanced result=victory time=163.6 buildings=6 gold=532.9 hunter_hp=0.0 player_damage=113.4
+BALANCE_PROBE stage=stage_5 difficulty=standard room=2 strategy=turret_rush result=victory time=164.2 buildings=10 gold=28.2 hunter_hp=0.0 player_damage=99.0
+BALANCE_PROBE stage=stage_5 difficulty=standard room=2 strategy=economy_stack result=victory time=162.1 buildings=10 gold=1272.1 hunter_hp=0.0 player_damage=396.0
+BALANCE_PROBE stage=stage_5 difficulty=standard room=3 strategy=balanced result=victory time=167.8 buildings=6 gold=373.9 hunter_hp=0.0 player_damage=1058.4
+BALANCE_PROBE stage=stage_5 difficulty=standard room=3 strategy=turret_rush result=victory time=159.3 buildings=16 gold=5.0 hunter_hp=0.0 player_damage=2097.0
+BALANCE_PROBE stage=stage_5 difficulty=standard room=3 strategy=economy_stack result=victory time=145.3 buildings=16 gold=145.6 hunter_hp=0.0 player_damage=4095.0
+BALANCE_PROBE stage=stage_5 difficulty=standard room=4 strategy=balanced result=victory time=163.8 buildings=6 gold=545.4 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_5 difficulty=standard room=4 strategy=turret_rush result=victory time=163.8 buildings=16 gold=25.0 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_5 difficulty=standard room=4 strategy=economy_stack result=victory time=163.8 buildings=16 gold=464.8 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_5 difficulty=standard room=5 strategy=balanced result=victory time=160.7 buildings=6 gold=352.0 hunter_hp=0.0 player_damage=842.4
+BALANCE_PROBE stage=stage_5 difficulty=standard room=5 strategy=turret_rush result=victory time=156.5 buildings=10 gold=6.6 hunter_hp=0.0 player_damage=1521.0
+BALANCE_PROBE stage=stage_5 difficulty=standard room=5 strategy=economy_stack result=victory time=162.8 buildings=10 gold=1285.6 hunter_hp=0.0 player_damage=432.0
+BALANCE_PROBE stage=stage_5 difficulty=standard room=6 strategy=balanced result=victory time=192.9 buildings=6 gold=2036.3 hunter_hp=0.0 player_damage=598.0
+BALANCE_PROBE stage=stage_5 difficulty=standard room=6 strategy=turret_rush result=victory time=184.0 buildings=16 gold=22.6 hunter_hp=0.0 player_damage=2699.1
+BALANCE_PROBE stage=stage_5 difficulty=standard room=6 strategy=economy_stack result=victory time=201.5 buildings=16 gold=514.6 hunter_hp=0.0 player_damage=1836.0
+BALANCE_PROBE stage=stage_5 difficulty=hard room=1 strategy=balanced result=victory time=184.1 buildings=6 gold=1487.1 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_5 difficulty=hard room=1 strategy=turret_rush result=victory time=184.1 buildings=16 gold=7.4 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_5 difficulty=hard room=1 strategy=economy_stack result=victory time=184.1 buildings=16 gold=854.5 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_5 difficulty=hard room=2 strategy=balanced result=victory time=182.8 buildings=6 gold=1406.0 hunter_hp=0.0 player_damage=457.8
+BALANCE_PROBE stage=stage_5 difficulty=hard room=2 strategy=turret_rush result=victory time=184.5 buildings=10 gold=10.6 hunter_hp=0.0 player_damage=144.0
+BALANCE_PROBE stage=stage_5 difficulty=hard room=2 strategy=economy_stack result=victory time=182.2 buildings=10 gold=1658.0 hunter_hp=0.0 player_damage=576.0
+BALANCE_PROBE stage=stage_5 difficulty=hard room=3 strategy=balanced result=victory time=183.9 buildings=6 gold=1113.2 hunter_hp=0.0 player_damage=1585.2
+BALANCE_PROBE stage=stage_5 difficulty=hard room=3 strategy=turret_rush result=victory time=173.9 buildings=16 gold=57.8 hunter_hp=0.0 player_damage=2124.0
+BALANCE_PROBE stage=stage_5 difficulty=hard room=3 strategy=economy_stack result=victory time=155.5 buildings=16 gold=197.4 hunter_hp=0.0 player_damage=4032.0
+BALANCE_PROBE stage=stage_5 difficulty=hard room=4 strategy=balanced result=victory time=162.8 buildings=6 gold=483.0 hunter_hp=0.0 player_damage=0.0
+BALANCE_PROBE stage=stage_5 difficulty=hard room=4 strategy=turret_rush result=victory time=162.4 buildings=16 gold=13.8 hunter_hp=0.0 player_damage=36.0
+BALANCE_PROBE stage=stage_5 difficulty=hard room=4 strategy=economy_stack result=victory time=164.2 buildings=16 gold=472.4 hunter_hp=0.0 player_damage=58.5
+BALANCE_PROBE stage=stage_5 difficulty=hard room=5 strategy=balanced result=victory time=159.2 buildings=6 gold=323.4 hunter_hp=0.0 player_damage=479.8
+BALANCE_PROBE stage=stage_5 difficulty=hard room=5 strategy=turret_rush result=victory time=159.0 buildings=10 gold=26.6 hunter_hp=0.0 player_damage=479.8
+BALANCE_PROBE stage=stage_5 difficulty=hard room=5 strategy=economy_stack result=victory time=167.3 buildings=10 gold=1372.0 hunter_hp=0.0 player_damage=593.7
+BALANCE_PROBE stage=stage_5 difficulty=hard room=6 strategy=balanced result=victory time=158.5 buildings=6 gold=245.7 hunter_hp=0.0 player_damage=2058.7
+BALANCE_PROBE stage=stage_5 difficulty=hard room=6 strategy=turret_rush result=victory time=155.4 buildings=16 gold=5.8 hunter_hp=0.0 player_damage=2646.0
+BALANCE_PROBE stage=stage_5 difficulty=hard room=6 strategy=economy_stack result=victory time=159.5 buildings=16 gold=190.2 hunter_hp=0.0 player_damage=1980.0
+BALANCE_PROBE_MATCHES=72 FAILURES=0

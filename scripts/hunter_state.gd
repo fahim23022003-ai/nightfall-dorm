@@ -44,7 +44,7 @@ func growth_at(active_seconds: float) -> float:
  return cycles-1+smoothstep(0.0,Catalog.HUNTER_ESCALATION.ramp_seconds,phase)
 
 func target_score(room: RoomState) -> float:
- var approach=room.door_position()+Vector2(0,22 if room.index<3 else -22)
+ var approach=room.door_approach()
  var dps=0.0
  var repair=0.0
  var relay=1.0
@@ -93,6 +93,10 @@ func tick(delta: float, match_state):
  cooldown = maxf(-delta,cooldown-delta)
  target_time += delta
  if state == State.EXIT:
+  if match_state.map_id!="legacy":
+   position=match_state.step_navigation(position,match_state.rooms[target].corridor_anchor(),speed*delta,"hunter_exit")
+   if position.distance_to(match_state.rooms[target].corridor_anchor())<3: state=State.SEEK
+   return
   var exit_door = match_state.rooms[target].door_position()
   if position.distance_to(exit_door)<3:
    exit_corridor = true
@@ -115,14 +119,15 @@ func tick(delta: float, match_state):
   state = State.MOVE
   if delta>0: match_state.record_event("approach",target)
  var room = match_state.rooms[target]
- var approach = room.door_position()+Vector2(0,22 if target < 3 else -22)
+ var approach = room.door_position()+Vector2(0,22 if target < 3 else -22) if match_state.map_id=="legacy" else room.door_approach()
  if state == State.MOVE:
   var waypoint = approach
   if absf(position.x-approach.x)>2 and absf(position.y-410)>2:
    waypoint = Vector2(position.x,410)
   elif absf(position.x-approach.x)>2:
    waypoint = Vector2(approach.x,410)
-  navigate(waypoint,delta)
+  if match_state.map_id=="legacy": navigate(waypoint,delta)
+  else: position=match_state.step_navigation(position,approach,speed*delta,"hunter_move")
   if position.distance_to(approach)<3:
    state = State.ATTACK if room.closed and room.door_hp > 0 else State.BREACH
    if delta>0: match_state.record_event("encounter",target)
@@ -151,7 +156,8 @@ func tick(delta: float, match_state):
     target_time=0
     siege_start_hp=room.door_hp
  elif state == State.BREACH:
-  navigate(room.bed_position(),delta)
+  if match_state.map_id=="legacy": navigate(room.bed_position(),delta)
+  else: position=match_state.step_navigation(position,room.bed_position(),speed*delta,"hunter_breach")
   if position.distance_to(room.bed_position()) < 12:
    room.alive = false
    room.sleeping = false

@@ -89,6 +89,7 @@ func show_loadout():
  var preparation="Choose at most %d unlocked boost. Selection is saved; bots receive no rank bonuses." % RankCatalog.MAX_EQUIPPED
  if not stage.is_empty(): preparation="Defeat the hunter · Prep %ds · Hunter HP ×%.2f / damage ×%.2f / speed ×%.2f" % [stage.preparation,stage.hunter_hp,stage.hunter_damage,stage.hunter_speed]
  ui.label_at(preparation,Vector2(125,117),17,980)
+ if not stage.is_empty(): ui.label_at(MapCatalog.map(stage.map).get("title",""),Vector2(125,143),16,980)
  for i in range(6):
   var item=RankCatalog.PERKS[i]
   var owned=item.id in game.profile.unlocked()

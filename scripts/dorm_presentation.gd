@@ -5,6 +5,7 @@ const ROOM_NAMES = ["WILLOW","WREN","ASTER","MOSS","CEDAR","FERN"]
 var textures: Dictionary = {}
 var cartoon: Dictionary = {}
 var all_rooms=true
+var map_presentation=preload("res://scripts/map_presentation.gd").new()
 var previous_sleep: Dictionary={}
 var sleep_age: Dictionary={}
 var directions: Dictionary={}
@@ -156,22 +157,25 @@ func render(c):
   return
  # Coordinates are translated only here; model geometry is unchanged.
  var m = c.model
+ if m.map_id!="legacy": map_presentation.render_architecture(c,self)
+ else:
+  for room in m.rooms:
+   if all_rooms or room.index==1: cartoon_room(c,room,room.index==m.player_room)
+   else: room_scene(c,room,room.index==m.player_room)
+  c.draw_texture_rect(textures.corridor,Rect2(OFFSET+Vector2(35,330),Vector2(900,160)),false)
+  # Hall edges, brass runner and wall sconces join the rooms into one building.
+  c.draw_line(OFFSET+Vector2(30,329),OFFSET+Vector2(940,329),Color("a48b6e"),3)
+  c.draw_line(OFFSET+Vector2(30,491),OFFSET+Vector2(940,491),Color("a48b6e"),3)
+  for x in [340,650]:
+   sprite(c,"warm_glow",OFFSET+Vector2(x,366),Vector2(160,150))
+   sprite(c,"lantern",OFFSET+Vector2(x,340),Vector2(24,40))
+   sprite(c,"warm_glow",OFFSET+Vector2(x,461),Vector2(140,130))
+   sprite(c,"lantern",OFFSET+Vector2(x,481),Vector2(23,36))
+  text(c,"NORTH   •   NIGHT WATCH",OFFSET+Vector2(363,353),10,Color("b8b5a6"))
+  text(c,"SOUTH   •   KEEP THE LIGHTS ALIVE",OFFSET+Vector2(345,479),10,Color("b8b5a6"))
  for room in m.rooms:
-  if all_rooms or room.index==1: cartoon_room(c,room,room.index==m.player_room)
-  else: room_scene(c,room,room.index==m.player_room)
- c.draw_texture_rect(textures.corridor,Rect2(OFFSET+Vector2(35,330),Vector2(900,160)),false)
- # Hall edges, brass runner and wall sconces join the rooms into one building.
- c.draw_line(OFFSET+Vector2(30,329),OFFSET+Vector2(940,329),Color("a48b6e"),3)
- c.draw_line(OFFSET+Vector2(30,491),OFFSET+Vector2(940,491),Color("a48b6e"),3)
- for x in [340,650]:
-  sprite(c,"warm_glow",OFFSET+Vector2(x,366),Vector2(160,150))
-  sprite(c,"lantern",OFFSET+Vector2(x,340),Vector2(24,40))
-  sprite(c,"warm_glow",OFFSET+Vector2(x,461),Vector2(140,130))
-  sprite(c,"lantern",OFFSET+Vector2(x,481),Vector2(23,36))
- text(c,"NORTH   •   NIGHT WATCH",OFFSET+Vector2(363,353),10,Color("b8b5a6"))
- text(c,"SOUTH   •   KEEP THE LIGHTS ALIVE",OFFSET+Vector2(345,479),10,Color("b8b5a6"))
- for room in m.rooms:
-  door_scene(c,room)
+  if m.map_id!="legacy": map_presentation.render_door(c,self,room)
+  else: door_scene(c,room)
   if room.sleeping:
    var age=sleep_age.get(room.index,1.0)
    if age<0.35:

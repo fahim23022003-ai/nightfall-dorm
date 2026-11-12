@@ -22,6 +22,11 @@ var presentation_events: Array = []
 var next_presentation_event_id=1
 var next_projectile_id = 1
 var next_combat_event_id = 1
+var map_id="legacy"
+var map_data: Dictionary={}
+var _navigation=AStar2D.new()
+var _player_navigation=AStar2D.new()
+var _navigation_routes: Dictionary={}
 var stage_id=""
 var difficulty="standard"
 var match_boosts: Dictionary={}
@@ -38,6 +43,7 @@ func configure_stage(id: String) -> bool:
  if time>0 or player_room>=0: return false
  var stage=StageCatalog.stage(id)
  if stage.is_empty(): return false
+ if not configure_map(stage.map): return false
  stage_id=id
  preparation=float(stage.preparation)
  hunter.stage_scaling={"hunter_hp":stage.hunter_hp,"hunter_damage":stage.hunter_damage,"hunter_speed":stage.hunter_speed}
@@ -50,6 +56,11 @@ func _init():
 func reset(seed_value: int = 1):
  random.seed = seed_value
  rooms.clear()
+ map_id="legacy"
+ map_data={}
+ _navigation.clear()
+ _player_navigation.clear()
+ _navigation_routes.clear()
  for i in range(6):
   var room=RoomState.new(i)
   var receiver=weakref(self)
@@ -78,6 +89,116 @@ func reset(seed_value: int = 1):
  next_presentation_event_id=1
  next_projectile_id = 1
  next_combat_event_id = 1
+
+func map_bounds() -> Rect2:
+ return map_data.bounds if not map_data.is_empty() else Rect2(35,100,900,620)
+
+func configure_map(id: String) -> bool:
+ if time>0 or player_room>=0: return false
+ var data=MapCatalog.map(id)
+ if data.is_empty(): return false
+ map_id=id
+ map_data=data
+ _navigation_routes.clear()
+ for i in range(rooms.size()): rooms[i].layout=data.rooms[i].duplicate(true)
+ player_position=data.spawn
+ hunter.position=data.hunter_spawn
+ _build_navigation()
+ return true
+
+func navigation_walkable(point: Vector2) -> bool:
+ if map_id=="legacy":
+  if Rect2(35,320,930,180).has_point(point): return true
+  for room in rooms:
+   if room.bounds().has_point(point): return true
+  return false
+ for room in rooms:
+  if room.bounds().has_point(point):
+   if room.bounds().grow(-10).has_point(point):
+    if point.distance_to(room.bed_position())<58: return true
+    return not room.furniture_blocks(point)
+   var offset=point-room.door_position()
+   return absf(offset.x)<26 and absf(offset.y)<14 if absf(room.door_normal().y)>0 else absf(offset.y)<26 and absf(offset.x)<14
+ for corridor in map_data.corridors:
+  if corridor.grow(-8).has_point(point): return true
+ return false
+
+func _visible(a: Vector2,b: Vector2,player: bool=false) -> bool:
+ var count=maxi(1,ceili(a.distance_to(b)/2.0))
+ for i in range(count+1):
+  var point=a.lerp(b,float(i)/count)
+  if not (can_walk(point) if player else navigation_walkable(point)): return false
+ return true
+
+func _build_navigation():
+ _navigation.clear()
+ _player_navigation.clear()
+ var points: Array=map_data.nodes.duplicate()
+ for room in rooms:
+  points.append(room.door_approach())
+  points.append(room.door_position())
+  points.append(room.door_position()-room.door_normal()*35)
+  points.append(room.bed_position())
+  points.append(room.bed_position()+Vector2(40,40))
+  # Bottom corners let player paths approach either side of the bed without
+  # treating the blocking bed footprint as walkable.
+  points.append(room.bed_position()+Vector2(-31,49))
+  points.append(room.bed_position()+Vector2(31,49))
+  # Reserved access lane along the furniture strip, away from all build pads.
+  if absf(room.door_normal().y)>0:
+   points.append(Vector2(room.door_position().x,room.bed_position().y))
+  else: points.append(Vector2(room.bed_position().x,room.door_position().y))
+ for i in range(points.size()):
+  _navigation.add_point(i,points[i])
+  _player_navigation.add_point(i,points[i])
+ for i in range(points.size()):
+  for j in range(i):
+   if _visible(points[i],points[j]): _navigation.connect_points(i,j)
+   if _visible(points[i],points[j],true): _player_navigation.connect_points(i,j)
+
+func player_navigation_path(from: Vector2,to: Vector2) -> Array:
+ return navigation_path(from,to,true)
+
+func navigation_path(from: Vector2,to: Vector2,player: bool=false) -> Array:
+ if from.distance_to(to)<0.1: return []
+ if _visible(from,to,player): return [to]
+ if map_id=="legacy": return [to]
+ var graph=_player_navigation if player else _navigation
+ var start=9000
+ var end=9001
+ graph.add_point(start,from)
+ graph.add_point(end,to)
+ for id in graph.get_point_ids():
+  if id>=start: continue
+  var point=graph.get_point_position(id)
+  if _visible(from,point,player): graph.connect_points(start,id)
+  if _visible(to,point,player): graph.connect_points(end,id)
+ var points=graph.get_point_path(start,end)
+ graph.remove_point(start)
+ graph.remove_point(end)
+ var path: Array=[]
+ for i in range(1,points.size()): path.append(points[i])
+ return path
+
+func step_navigation(from: Vector2,to: Vector2,distance: float,key: String="") -> Vector2:
+ var route: Array=[]
+ if key!="" and _navigation_routes.has(key):
+  var saved=_navigation_routes[key]
+  if saved.goal==to and saved.last.distance_to(from)<1: route=saved.route
+ if route.is_empty(): route=navigation_path(from,to)
+ var point=from
+ var remaining=distance
+ while not route.is_empty():
+  var goal: Vector2=route[0]
+  var length=point.distance_to(goal)
+  if length>remaining:
+   point=point.move_toward(goal,remaining)
+   break
+  point=goal
+  remaining-=length
+  route.pop_front()
+ if key!="": _navigation_routes[key]={"goal":to,"last":point,"route":route}
+ return point
 
 func record_event(type: String, room_index: int, data: Dictionary={}):
  if room_index<0 or room_index>=rooms.size(): return
@@ -170,6 +291,18 @@ func move_player(direction: Vector2, delta: float):
   remaining -= step
 
 func can_walk(point: Vector2) -> bool:
+ if map_id!="legacy":
+  for room in rooms:
+   if room.bounds().has_point(point):
+    if room.closed or (room.owner>=0 and room.owner!=0): return false
+    if room.furniture_blocks(point): return false
+    if room.bounds().grow(-12).has_point(point): return true
+    if absf(room.door_normal().y)>0:
+     return absf(point.x-room.door_position().x)<26
+    return absf(point.y-room.door_position().y)<26
+  for corridor in map_data.corridors:
+   if corridor.grow(-10).has_point(point): return true
+  return false
  if Rect2(35,335,900,150).has_point(point):
   return true
  for room in rooms:
@@ -207,11 +340,11 @@ func tick(delta: float):
    var room = options[random.randi_range(0,options.size()-1)]
    room.owner = bot_claimed+1
    room.profile = Catalog.BOT_PROFILES[bot_claimed]
-   room.resident_position = room.door_position()+Vector2(0,22 if room.index<3 else -22)
+   room.resident_position = room.door_position()+Vector2(0,22 if room.index<3 else -22) if map_id=="legacy" else map_data.spawn
    bot_claimed += 1
  for room in rooms:
   if room.owner > 0 and room.alive and not room.sleeping:
-   room.resident_position = room.resident_position.move_toward(room.bed_position(),120*delta)
+   room.resident_position = room.resident_position.move_toward(room.bed_position(),120*delta) if map_id=="legacy" else step_navigation(room.resident_position,room.bed_position(),120*delta,"bot_"+str(room.index))
    if room.resident_position.distance_to(room.bed_position())<2:
     room.sleeping = true
     room.closed = true
@@ -322,6 +455,9 @@ func _cancel_projectiles(reason: String):
  projectiles.clear()
 
 func _pursue_exposed_player(delta: float):
+ if map_id!="legacy":
+  hunter.position=step_navigation(hunter.position,player_position,hunter.speed*delta,"pursue")
+  return
  var current_room = null
  var destination_room = null
  for room in rooms:

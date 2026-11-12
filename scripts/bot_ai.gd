@@ -80,7 +80,7 @@ static func has_kind(room: RoomState, kind: String) -> bool:
  return false
 
 static func build_first_empty(room: RoomState, kind: String) -> bool:
- for tile in range(6):
+ for tile in range(room.tile_count()):
   if not room.buildings.has(tile):
    return room.build(kind,tile)
  return false

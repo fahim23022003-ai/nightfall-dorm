@@ -99,6 +99,11 @@ func movement(delta: float) -> Vector2:
 func navigate_room(room: RoomState):
  if not awake() or room.owner>=0: return
  route.clear()
+ if game.model.map_id!="legacy":
+  route=game.model.player_navigation_path(game.model.player_position,room.door_position()-room.door_normal()*35)
+  destination_room=room.index
+  arrival="claim"
+  return
  var pos=game.model.player_position
  for current in game.model.rooms:
   if current.bounds().has_point(pos):
@@ -113,8 +118,8 @@ func navigate_room(room: RoomState):
 func navigate_bed():
  if not awake() or game.model.player()==null: return
  var room=game.model.player()
- var near=room.bed_position()+Vector2(0,55 if room.index<3 else -55)
- route=[Vector2(room.center().x,near.y),near]
+ var near=room.bed_position()+Vector2(0,55 if room.index<3 else -55) if game.model.map_id=="legacy" else room.bed_position()+Vector2(40,40)
+ route=[Vector2(room.center().x,near.y),near] if game.model.map_id=="legacy" else game.model.player_navigation_path(game.model.player_position,near)
  arrival="sleep"
 
 func scroll_at(point: Vector2,node: Node=null):

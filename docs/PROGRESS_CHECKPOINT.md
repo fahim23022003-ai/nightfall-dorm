@@ -1,3 +1,46 @@
+# Phase 3B — five maps and expanded building space (12 November 2026, Singapore)
+
+Continued clean `work` at `788442c72edb46051f825daff9734b3f9e9ffa2e`.
+Recovery tag `pre-phase3b-788442c`; full Phase3A baseline passed before editing.
+
+Stage assignments: abandoned dorm (12 pads), hospital (10/12), hotel (10),
+laboratory (12), mansion (10/16). Distinct room sizes/positions, corridor graphs,
+door directions, entrances, themed original decoration/floors/lighting and build
+layouts replace the shared map. Maps are data-driven and reusable by future
+stages; no later-stage features were added.
+
+Implemented variable-capacity purchase/sale/refund/UI, anchored preview and bounds-
+fitted camera. Separate collision-safe player and cached AI navigation supports
+all rooms and side doors without teleportation. Bots walk from corridor spawn
+to their claimed beds, earn/build/upgrade under existing AI. Wider maps retain
+attenuated teammate sound. Campaign/loadout/ranks/saves/perks remain compatible.
+
+Confirmed and fixed player paths crossing beds and too-wide doorway connectors,
+plus tutorial covering bed/side door during building. Real retests passed.
+No price/DPS/door-stat nerfs without evidence: paid extra-slot strategies have
+range/opportunity-cost tradeoffs. Human balance remains unverified.
+
+Final regular wrapper: core15,348 checks, independent integration5,107, UI922;
+144 map matches84W/60L/0unresolved, campaign20matches10W/10L, legacy12matches9W/3L;
+all Phase1/2/3A save/load/perks/audio/AI/combat/property tests and main startup
+passed. Separate independent72-match balance probe retained. Actual Linux render
+audit201checks/18screenshots covers5environments, every representative pad,
+highest-pad buy/sell/refund, lab side doors and both mansion capacities.
+Map-load samples approximately0.33–0.49seconds in cloud, not Windows FPS.
+
+Full report: [PHASE_3B_MAP_REPORT.md](PHASE_3B_MAP_REPORT.md).
+Evidence: `docs/evidence/maps/`; reproducible `tools/capture_maps.gd`.
+No known remaining failures in tested paths. Native Windows, subjective audio,
+human balance and target hardware performance remain UNVERIFIED.
+Project/Windows export config unchanged; no Android/APK/Phase4 work.
+
+Final response reports exact committed/pushed SHA after remote verification.
+Next: download latest `work` and playtest new stages on Windows Godot4.6.3,
+including manual room entry/bed approach, side doors, expanded construction,
+sell/rebuild and stage transitions. Stop after Phase3B pending user direction.
+
+---
+
 # Phase 3A — stage progression and loadout flow (12 November 2026, Singapore)
 
 Continued clean `work` at `76c1e393838c4930918fb787eb540dea7d78bfb3`.

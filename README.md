@@ -22,7 +22,8 @@ Full controls, ZIP/Git instructions and a practical test checklist: [Windows hom
 Five stages unlock through eligible victories. Stage Select shows completion,
 best times and first-clear XP rewards. Next Stage opens preparation; defeat
 offers Retry Stage or Change Loadout. Existing rank perks, difficulty options
-and save progress are retained. All stages currently use the original map.
+and save progress are retained. Stages now use distinct dorm, hospital, hotel, laboratory and mansion layouts,
+with 10–16 building pads per room. [Map implementation and evidence](docs/PHASE_3B_MAP_REPORT.md).
 [Phase3A implementation and evidence](docs/PHASE3A_REPORT.md).
 
 ## Current status

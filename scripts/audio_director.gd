@@ -21,6 +21,7 @@ var dropped_events = 0
 var voices: Array = []
 var loops: Dictionary = {}
 var streams: Dictionary = {}
+var hearing_radius=850.0
 var listener_position = Vector2(500,410)
 var _initialized = false
 var _clock = 0.0
@@ -138,9 +139,9 @@ func event(name: String, position: Vector2 = Vector2.INF) -> bool:
  var distance_gain = 1.0
  if position.is_finite():
   var distance = listener_position.distance_to(position)
-  if distance > 850:
+  if distance > hearing_radius:
    return false
-  distance_gain = clampf(1.0-distance/1000.0,0.15,1.0)
+  distance_gain = clampf(1.0-distance/(hearing_radius/0.85),0.15,1.0)
  var free_voice = null
  for voice in voices:
   if not voice.playing:
@@ -219,6 +220,7 @@ func update_state(delta: float, model, mode: String):
    _previous.hp = model.hunter.hp
   var room = model.player()
   listener_position = room.bed_position() if room != null else model.player_position
+  hearing_radius=maxf(850.0,model.map_bounds().size.length()) if model.map_id!="legacy" else 850.0
   if mode in ["match","result"]:
    _observe_presentation(model)
   if active:
