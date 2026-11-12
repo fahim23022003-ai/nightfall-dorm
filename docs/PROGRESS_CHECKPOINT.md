@@ -34,7 +34,9 @@ No known remaining failures in tested paths. Native Windows, subjective audio,
 human balance and target hardware performance remain UNVERIFIED.
 Project/Windows export config unchanged; no Android/APK/Phase4 work.
 
-Final response reports exact committed/pushed SHA after remote verification.
+Implementation `ea5d4f85135d736b533432380779b3961d484b6f` was pushed to `work` and
+remote full SHA verified equal to local HEAD. This documentation follow-up records
+that successful backup; final response reports its latest pushed SHA.
 Next: download latest `work` and playtest new stages on Windows Godot4.6.3,
 including manual room entry/bed approach, side doors, expanded construction,
 sell/rebuild and stage transitions. Stop after Phase3B pending user direction.
