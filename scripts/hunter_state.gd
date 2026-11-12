@@ -549,19 +549,21 @@ func hurt(amount: float):
  if not is_finite(amount) or amount<=0 or state == State.DORMANT or state == State.DEAD:
   return
  var model=_model_ref.get_ref() if _model_ref!=null else null
+ var begin_transform=false
  if phase_guard_remaining>0 or state==State.TRANSFORM:return
  amount*=BossCatalog.SURGE_VULNERABILITY if shadow_active(surge_room) else 1.0
  if model!=null:
   amount=model.evolution.absorb(amount)
   if not transformed and boss_policy.get("enabled",false) and not transformation_guard_used and model.hunter_active_seconds()>=float(boss_policy.get("opening",8.0)) and hp>max_hp*.55 and hp-amount<=max_hp*.55:
-   amount=hp-max_hp*.55;transformation_guard_used=true
+   amount=hp-max_hp*.55;transformation_guard_used=true;begin_transform=true
   elif transformed and not phase2_guard_used and hp>max_hp*.35 and hp-amount<=max_hp*.35:
    amount=hp-max_hp*.35;phase2_guard_used=true;phase_guard_remaining=1.2
   elif transformed and not final_guard_used and hp>max_hp*.1 and hp-amount<=max_hp*.1:
-   amount=hp-max_hp*.1;final_guard_used=true;phase_guard_remaining=3.0
+   amount=hp-max_hp*.1;final_guard_used=true;phase_guard_remaining=3.3
  var previous_hp=hp
  hp = maxf(0,hp-amount)
  if model!=null:model.wrath.channel_damage+=previous_hp-hp
+ if begin_transform:_begin_transformation(model)
  hit_flash = 0.15
  if hp <= 0:
   state = State.DEAD
@@ -573,3 +575,4 @@ func hurt(amount: float):
    model=_model_ref.get_ref()
    if _previous_siege_room>=0: model.rooms[_previous_siege_room].repair_factor=1.0
    if transformed: model.record_event("boss_death",target,{"position":position})
+   model.wrath.clear(model)

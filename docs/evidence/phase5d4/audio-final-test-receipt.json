@@ -1,0 +1,57 @@
+{
+  "accepted": true,
+  "gates": [
+    {
+      "suite": "phase5d4_audio",
+      "checks": 782,
+      "failures": 0,
+      "exit_code": 0,
+      "log": "audio-final-bank-unit.log",
+      "log_sha256": "af80de663bb3ccb4534f93d3bc946251755900a6f8754e35871b5538af962d6b"
+    },
+    {
+      "suite": "phase5d4_audio_reactions",
+      "checks": 5,
+      "failures": 0,
+      "exit_code": 0,
+      "log": "audio-final-reactions.log",
+      "log_sha256": "f5ddffd43f3a578911d6581c29c9d26833f87ebcb86905f2ca564af3e7f4daa8"
+    },
+    {
+      "suite": "phase5d4_audio_targets",
+      "checks": 209,
+      "failures": 0,
+      "exit_code": 0,
+      "log": "audio-final-targets.log",
+      "log_sha256": "faeb82afaf7456ef550becc6eed45590fa4c645415841fe8d0aaf97f6353bfeb"
+    },
+    {
+      "suite": "phase5d4_audio_lifecycle",
+      "checks": 13,
+      "failures": 0,
+      "exit_code": 0,
+      "log": "audio-lifecycle.log",
+      "log_sha256": "63952cf190234e49aa446a99fd7dc30edc662284655e0fea1f0c64b4a22513e1"
+    },
+    {
+      "suite": "phase5d4_audio_explosion",
+      "checks": 9,
+      "failures": 0,
+      "exit_code": 0,
+      "log": "audio-explosion-real-practice.log",
+      "log_sha256": "bfb2bfae5703bab6334d7b02ad9d0ccc819a3eee0848bef4628f79a4020a538d"
+    }
+  ],
+  "checks": 1018,
+  "failures": 0,
+  "import_log": "audio-final-bank-import.log",
+  "source_sha256": {
+    "scripts/audio_director.gd": "9e2e7b0f1665a339aaed0a0dc2e968c2233b4235dfc0799b0e6a2b15dcd2f638",
+    "scripts/wrath_audio_catalog.gd": "7e4b5d4e7a193860eee42e8d734331011fd3e59886ba355805c4d8fbf1bffce8",
+    "tools/audio/design_wrath_sfx.py": "b171524d15398821eb4cd2445295b83c6bdb0b79ffdbdd295e00b6f14795fa91",
+    "assets/audio/item_explosion.wav": "339343cb45e8773233577fd257587b3c3a90ce40a75006eee5488f4eeb702058",
+    "assets/audio/wrath-sfx-derivatives.json": "c3b6522d81bc0fe8f912ffab493b468159a464c62e386bda500730d801c1ed13",
+    "tools/audio/source/wrath_sfx/SOURCES.json": "4820ba34df9d3b6c54ab1ab9a58d2ba362d1cca930ba94e093202ffbd215fa16"
+  },
+  "note": "Focused source/dispatch/lifecycle tests plus real Practice trap transaction/navigation. Independent actual new-machine/boss/domain/maxmix captures remain separate D gate; human listening/native Windows unverified."
+}

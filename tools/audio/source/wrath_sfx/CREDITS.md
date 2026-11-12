@@ -35,3 +35,4 @@ Mirror authors are redistributors, not claimed performers of every sound. Source
 | floorboard-creaks | Rudmer_Rotteveel | https://freesound.org/people/Rudmer_Rotteveel/sounds/502507/ |
 | knocking-on-door | Flem0527 | https://freesound.org/people/Flem0527/sounds/629987/ |
 | thunder-crack-2 | vonz | https://freesound.org/people/vonz/sounds/188767/ |
+| explosion | FxKid2 | https://freesound.org/people/FxKid2/sounds/367622 |

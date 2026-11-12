@@ -79,8 +79,8 @@ or coalesced by the mixer. Gameplay acceptance is recorded separately.
 | `shot_shock_capacitor_burst_high` | 0.537 | static_2, laser_1, impact_3 |
 | `shot_shock_rapid_discharge_high` | 0.224 | static_2, laser_1, impact_3 |
 | `turret_upgrade` | 0.403 | chains-rattling-2, glass_clink_1 |
-| `bed_upgrade` | 0.403 | chains-rattling-2, glass_clink_1 |
-| `door_upgrade` | 0.403 | chains-rattling-2, glass_clink_1 |
+| `bed_upgrade` | 0.478 | chains-rattling-2, glass_clink_1, floorboard-creaks |
+| `door_upgrade` | 0.679 | impact_3, chains-rattling-2 |
 | `prestige_upgrade` | 1.250 | chains-rattling-2, impact_3, glass_clink_1 |
 | `button` | 0.200 | mouse_click_3, glass_clink_1 |
 | `menu` | 0.118 | mouse_click_3 |
@@ -104,6 +104,7 @@ or coalesced by the mixer. Gameplay acceptance is recorded separately.
 | `build_decoy` | 0.470 | impact_3, chains-rattling-2, door_knock_3 |
 | `income` | 0.170 | glass_clink_1 |
 | `electricity` | 0.179 | static_2 |
+| `item_explosion` | 1.170 | explosion, impact_3 |
 | `reward` | 0.470 | glass_clink_1 |
 | `wrath_warning_summon` | 1.048 | zombie_1, chains-rattling-2, coffin-lid |
 | `wrath_activate_summon` | 1.395 | zombie_1, impact_3 |

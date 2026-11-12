@@ -6,6 +6,8 @@ var evolution_queue=[]
 var banner_remaining=0.0
 var last_model
 var font=preload("res://assets/fonts/Interface.ttf")
+func reset():
+ seen_event=0;evolution_queue.clear();banner_remaining=0;last_model=null
 func draw(c,clock: float):
  var m=c.model;var w=m.wrath;var reduced=c.profile.settings.get("reduced_effects",false)
  for u in m.minions:
@@ -27,6 +29,7 @@ func draw(c,clock: float):
    var p=O+e.position;var age=m.time-e.time
    c.draw_set_transform(p,age*PI*.65,Vector2.ONE)
    c.draw_rect(Rect2(-9,-28,18,33),Color(.44,.36,.45,1-age/.8));c.draw_circle(Vector2(0,-35),8,Color(.7,.6,.65,1-age/.8));c.draw_set_transform(Vector2.ZERO)
+ if m.hunter.phase_guard_remaining>0:c.draw_arc(O+m.hunter.position,42,0,TAU,48,Color(.95,.6,.78,.75),4)
  if m.hunter.transformed and w.phase>=2:
   var p=O+m.hunter.position
   c.draw_arc(p,38,clock,clock+TAU*.8,40,Color(.9,.13,.3,.6),3)

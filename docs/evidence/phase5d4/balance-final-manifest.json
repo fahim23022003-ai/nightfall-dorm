@@ -1,0 +1,435 @@
+{
+  "captured_utc": "2026-11-12T16:48:14.360684+00:00",
+  "git_head_during_audit": "0bc84216ed18c805a98c70bb0a296c473473215d",
+  "scope": "Independent A final cutover acceptance:29Hell+3earnedEndless+17controlledrepair=49cases/0;7freshcheckpointcomparisons. LinuxGodot4.6.3. NativeWindows/humanbalanceunverified. No production or Git mutations.",
+  "final_runtime_hashes": {
+    "scripts/audio_director.gd": "e7f90f9ca12130a812079d7479db6def83e2aedb6b0761d33ee6215f81a445d3",
+    "scripts/boss_catalog.gd": "3bf2d6bfadc2791112af4c7e9f7a710d3ca2cda82b593faacdcb3490857d4ba9",
+    "scripts/boss_presentation.gd": "043eb993f30e2fc0629c622105c99d93030a80319ed7af8735b8966c66fdf6cc",
+    "scripts/bot_ai.gd": "4999b0b965f654823075de5fef8a674f5297a6e19c6df6d5c88e2b2290e2f41a",
+    "scripts/bottom_context_panel.gd": "ce19f32289b1dba2ab84202c654317bceb8104f37f84b016b544395c31462bf4",
+    "scripts/building_stats.gd": "b7769c895f0d013c1a271c1555eb7a6648c9c1cbe28a4f4abe306326f318bf10",
+    "scripts/campaign_interface.gd": "2f93c3081a83f53eef7969d2171d7308562aa4275d1b89c26b15ba1c6ac5def4",
+    "scripts/cash_shop.gd": "a5fae363255cd6871e9a0fec573dfa85519ab03270559a0ac18f520a1aa259a7",
+    "scripts/catalog.gd": "57046a54eadf066f72af47be410a45cfb940e9ca574fdb3a60fbe395b8787cd3",
+    "scripts/challenge_code.gd": "6f26e4e07e76a592279210cfd6e1e0e8b820a14918cec99c783bea49979d5cb4",
+    "scripts/cosmetic_catalog.gd": "3205af563eb524ccd45be51ba1e8daa9aced53cdbb290ca43573d40ca276812f",
+    "scripts/cosmetic_presentation.gd": "1f09129ecedd0b6412da7f2640fd40b6453908386a3e3a216d3dd0c357d0468c",
+    "scripts/defeat_facts.gd": "dad3a294122d76cb700bb5f34da5e76347e9d33993b3f524638ef886c02fde60",
+    "scripts/defense_effects.gd": "9cfa5262d209716b085768e54e73fe2d440ed4522faac17b362ce0d027741510",
+    "scripts/dorm_presentation.gd": "1004c95ea460c66813fffcdd61767018dd0c5e66c97cb99434a8eb4f1814d227",
+    "scripts/endless_run.gd": "44595586d15d4d042e2960025fcf08655fe923d40507beee1d74aa53894a903d",
+    "scripts/game.gd": "144725baddb73356f20821d6e58e3cf610f9b101e36088553c5dfe86bf3b69e7",
+    "scripts/gothic_theme.gd": "776694c60399df9976e9594aa69060a6f4eda7057c11397bcc1faaddf808b096",
+    "scripts/haunted_environment.gd": "f144e50d08cd3e5777976d88aea63ed0a912fdb1230e1c4bd5d7a4c511c2437b",
+    "scripts/horror_feedback.gd": "34098b50306eabbd7f487933fe8d350a98c07ee553d8939e9f6829d96634d4fd",
+    "scripts/hunter_evolution.gd": "ba7c83a8800ea98bfcc0ef19f44a27757efdfe5cace73aa9bdfb72db6ea6dde0",
+    "scripts/hunter_state.gd": "3456ddd839b9983fd51a15d1238b1ab33ea1b67cfd724b8acd4091051676af59",
+    "scripts/interface.gd": "ab750b1cf91ec8c6a362789e12ae8ddbacbe1ba5b7cab49945eaabc1890be054",
+    "scripts/item_catalog.gd": "64a6f33f90c3d3ef8e253fcd8b3f08d8f94fe5bf79448bdb44c5184d40d0c8cb",
+    "scripts/item_effects.gd": "6924dcf3100be8dd86a2a4319c87d83501c165872935afa4c270164b2486036c",
+    "scripts/item_interface.gd": "4de2406b6df85c75a1ef9e89acfd0ec31725052ae62f52f2957ed38415d639a3",
+    "scripts/item_presentation.gd": "8b1603f57a073c2a2f7d04430449da1019d2b44d8b8034a971685a5c8d2ede1f",
+    "scripts/item_wheel.gd": "160400b1dc908021c4e0d1ccc376498a80581b433352741ab2f810bad580df46",
+    "scripts/map_catalog.gd": "81deff2f1ff5ac6f00fac8dd34d501ff0654c263aaecd24d8fb0720badc745b5",
+    "scripts/map_presentation.gd": "c8562f7153d795036172d39205a312e3c556c73d7460d263bae1e9bd0b30d2ab",
+    "scripts/match_model.gd": "b0c7087e83b4c6035859b03dc276b673e3350f86da6cb6a81f5797758dbe3f11",
+    "scripts/match_strategy.gd": "c77383be7e6e0a3c52b7d2ecafbbd5f4704528765c6013f9bba40d80d8585001",
+    "scripts/mobile_interface.gd": "f51ed3b811e7fa8142674923038b1d6ba725971a47f39f91d39025941c5e165a",
+    "scripts/mobile_layout.gd": "99e98d519525265afffc6a703f36a216633ebcc4601daf05aa712cdace4b67d2",
+    "scripts/onboarding.gd": "54f4b2e0af541a513da86f3e91f7df64659289bc5aedc379406c769376be546a",
+    "scripts/onboarding_catalog.gd": "7089ca586736ca3eac299e95f4c6d5742aa179fc4d2f7cba796ca1be6ae46f35",
+    "scripts/player_profile.gd": "48e4ecc32f8eb4267f1a68f826404d98a69720b512c380f032996805bd6ed22a",
+    "scripts/practice_room.gd": "8b097b6225686386323a9b3ae9db8874e343bef3a0b84c49d614fc46c37b3f77",
+    "scripts/premium_button.gd": "031a972671442669d102daceefaac5f21965f5759a99192db5415672b2c5cecd",
+    "scripts/progression_interface.gd": "dda843d3cdcbb4f4bd51e0475b018c8257f3912bf1c4ed82cdd004f70ed7d04c",
+    "scripts/rank_catalog.gd": "b03b428faf61f11ba8530d4973cd7baa65b408dca7aa907882b28a04f369e2c3",
+    "scripts/reaper_wrath.gd": "37994365903fa041b2f56324ad5a60ea8330269bef9fcccb17169e9f5e40a1f9",
+    "scripts/replay_interface.gd": "87eb84d503b99fe9310e9b9c7e2a4dc0e2334b445d3f691459ebc94c34bb3143",
+    "scripts/replay_progress.gd": "fc277605d6a2f70fd27be43bfa94748d6d6f10db6b9d20bcf64de4c42bbc68e8",
+    "scripts/replay_snapshot.gd": "5e0033cfda55a4bfbda9af32d86a5e87214bd273127b31f301fa5eeb9c49ff6d",
+    "scripts/reward_catalog.gd": "52f44e7f08b10db0c8472764cc83326505fb150137df3f84903c4882cbba9602",
+    "scripts/room_state.gd": "40b1aae50ab7b85ab4dbbb0a3b8c7012d735ad7dd3994bda793f8e4ca32c46b4",
+    "scripts/spin_pity.gd": "285f668d50b2e525da8279403472c25dbc324a5622b70031b2545358ee3b1cc1",
+    "scripts/stage_catalog.gd": "b723720aa63607dc4c52433c8134741010efbf9eb45eddf194586c394bc3d108",
+    "scripts/strategy_catalog.gd": "a41bcfe9fdc4a5f0b6239d627f80ab61ef2ac6d9a7ec87760fbd687b929ceb82",
+    "scripts/teammate_interface.gd": "b6fb4a7c00f7b06ed2b7506eb5505f82076870d01045a1774bdd174c689464e0",
+    "scripts/temporary_loadout.gd": "16be4d780dc4215ea766fe668dede89d5e8fde0402032c6e3d66c1facee4a6db",
+    "scripts/touch_controls.gd": "52cd25b8c25b7545e5e0004d19ffabd14452810481299df458363b9d07c53407",
+    "scripts/undead_agent.gd": "4ab0d6d9eb1ccbc01869756bdba28f0c46f10bb2e83d58190dbe40c36db08ba7",
+    "scripts/visual_presence.gd": "7567fe3ca1798fcfd1b3ebf6153e9c4e2221fb7286be5cb5434ede8b683b4d26",
+    "scripts/wrath_audio_catalog.gd": "7e4b5d4e7a193860eee42e8d734331011fd3e59886ba355805c4d8fbf1bffce8",
+    "scripts/wrath_presentation.gd": "8bd14fe8d4fef4cbbb07482a30a54959eb7840f1900277183175fb4d5d6a1434",
+    "project.godot": "9a9c238c50f159d625fb030608feb69fe4ea7044bf39911fd3410c8f7cef04af"
+  },
+  "source_changes_since_final_launch": [],
+  "test_hashes": {
+    "tests/phase5d4_balance_baseline.gd": "38451445ff53c6b78e2781129c7686810b2b916a6bc3c7f3bb1c13fa6def6a3f",
+    "tests/phase5d4_balance_endless.gd": "246ad157e416bee8ec351fd9bb5bccf35902cac53c4d443ce8659bc1498ecdc7",
+    "tests/phase5d4_balance_final.gd": "d1d091f50a6d90fdf462e405abb39ffb6dd30dcb475888688fc73413525010aa",
+    "tests/phase5d4_balance_map_probe.gd": "5a354a3ca19fc5bb3306760a7aa11bb03015f363df9fbb03df0b6fdde5f9ab21",
+    "tests/phase5d4_balance_repair.gd": "5d2a234547dfa11ca350bc2dd50dee9e199ef57e3128c48c05af797247c2ac9c",
+    "tests/phase6_balance_campaign.gd": "2d42fca26b17a2f2db7d8c7520a40d0a7036a4de3f26ea8f5758717bf8c0905f",
+    "tests/replay_test_support.gd": "ad17f314f26cdf5298437961e6eab2409ecb2ee2f8630f7283aa68af5e9e18ef"
+  },
+  "accepted_final_runs": [
+    {
+      "kind": "live29Hell",
+      "command": "godot --headless --path . --script tests/phase5d4_balance_final.gd -- --hell-final",
+      "results": "docs/evidence/phase5d4/balance-paired-hell-final-results.json",
+      "cases": 29,
+      "failures": 0,
+      "fresh_resume_checks": 0,
+      "log": "docs/evidence/phase5d4/balance-paired-hell-final.log",
+      "actual_exit_code": 0,
+      "engine_error_warning_lines": []
+    },
+    {
+      "kind": "liveOldFortress",
+      "command": "godot --headless --path . --script tests/phase5d4_balance_endless.gd -- --long",
+      "results": "docs/evidence/phase5d4/balance-endless-long-results.json",
+      "cases": 1,
+      "failures": 0,
+      "fresh_resume_checks": 3,
+      "log": "docs/evidence/phase5d4/balance-endless-long.log",
+      "actual_exit_code": 0,
+      "engine_error_warning_lines": []
+    },
+    {
+      "kind": "liveAll6Roles",
+      "command": "godot --headless --path . --script tests/phase5d4_balance_endless.gd -- --new-long",
+      "results": "docs/evidence/phase5d4/balance-endless-new-long-results.json",
+      "cases": 1,
+      "failures": 0,
+      "fresh_resume_checks": 2,
+      "log": "docs/evidence/phase5d4/balance-endless-new-long.log",
+      "actual_exit_code": 0,
+      "engine_error_warning_lines": []
+    },
+    {
+      "kind": "liveNormalCheckpoint",
+      "command": "godot --headless --path . --script tests/phase5d4_balance_endless.gd -- --checkpoint",
+      "results": "docs/evidence/phase5d4/balance-endless-checkpoint-results.json",
+      "cases": 1,
+      "failures": 0,
+      "fresh_resume_checks": 2,
+      "log": "docs/evidence/phase5d4/balance-endless-checkpoint.log",
+      "actual_exit_code": 0,
+      "engine_error_warning_lines": []
+    },
+    {
+      "kind": "controlledUnchangedRepairHandlers",
+      "command": "godot --headless --path . --script tests/phase5d4_balance_repair.gd",
+      "results": "docs/evidence/phase5d4/balance-repair-results.json",
+      "cases": 17,
+      "failures": 0,
+      "fresh_resume_checks": 0,
+      "log": "docs/evidence/phase5d4/balance-repair.log",
+      "actual_exit_code": 0,
+      "engine_error_warning_lines": []
+    }
+  ],
+  "current_artifact_hashes": {
+    "docs/evidence/phase5d4/balance-baseline-controls-results.json": {
+      "bytes": 53920,
+      "sha256": "621a95eea1dcd7d534739fd90a9ce551be931f06c4bbe913fba0d3768f8f1d25"
+    },
+    "docs/evidence/phase5d4/balance-baseline-controls.log": {
+      "bytes": 35574,
+      "sha256": "41c7c1e22d269e7f10219726326245fd2765f5a23f1fafdb397db9d4a736d911"
+    },
+    "docs/evidence/phase5d4/balance-baseline-manifest.json": {
+      "bytes": 6490,
+      "sha256": "29384f89ba013252d0285e4851553a20771e424a74a8f451a201ee9062b99ad3"
+    },
+    "docs/evidence/phase5d4/balance-baseline-results.json": {
+      "bytes": 402950,
+      "sha256": "d723ac52f2b2b20d5f5ccccbbb29afb16751a0a326afdfbb069a4924ef061e1a"
+    },
+    "docs/evidence/phase5d4/balance-baseline-summary.md": {
+      "bytes": 6618,
+      "sha256": "31c27c9d57496610442e976218e1f3cbe247e68751b165df47d673600de27fa3"
+    },
+    "docs/evidence/phase5d4/balance-baseline.log": {
+      "bytes": 266195,
+      "sha256": "7e8a3b04ddc1a0d4aada1ed4466ba9fd5a2461218a016598889a093a5159fa70"
+    },
+    "docs/evidence/phase5d4/balance-earned-47hell.json": {
+      "bytes": 19068,
+      "sha256": "7bf9d8e4e393cfe9c8f6ca2fc26af8e9a1427e32b7c865abb6d36be4a8859415"
+    },
+    "docs/evidence/phase5d4/balance-earned-71standard.json": {
+      "bytes": 19024,
+      "sha256": "387a8bfc8135f89cccaa507eb9d4c36a3764b377905d96ffe5bcc5bd47530992"
+    },
+    "docs/evidence/phase5d4/balance-endless-all-new-results.json": {
+      "bytes": 34265,
+      "sha256": "9e0d719f6c8aa7f574d1cdb075058aad7d49c689d5ef74c20fccb1f327fd4f53"
+    },
+    "docs/evidence/phase5d4/balance-endless-all-new.log": {
+      "bytes": 44403,
+      "sha256": "6d58c598bbcad06548b32fa651e1a0d762643a7e4250ce8794437508b6ea5060"
+    },
+    "docs/evidence/phase5d4/balance-endless-checkpoint-results.json": {
+      "bytes": 27099,
+      "sha256": "eb9c2d52ebbdcde4e7a702fa9c2a258f43d297811a7f16c250cd59c03e0ec4e3"
+    },
+    "docs/evidence/phase5d4/balance-endless-checkpoint.log": {
+      "bytes": 32894,
+      "sha256": "26b9279e685bca7924644c9028342bf6a1e9fe92ce940dd303d1200ffede3757"
+    },
+    "docs/evidence/phase5d4/balance-endless-fortress-results.json": {
+      "bytes": 73728,
+      "sha256": "dcaf391e76f3f8270a29721313518a805149f95965cf1a81bc9de75c61e7ea88"
+    },
+    "docs/evidence/phase5d4/balance-endless-fortress.log": {
+      "bytes": 96659,
+      "sha256": "f22ee974b356d72f23117904508f4a51cb5732629c001935f790b7cc6b61e9dd"
+    },
+    "docs/evidence/phase5d4/balance-endless-hell-checkpoint-results.json": {
+      "bytes": 27421,
+      "sha256": "16abb5e0b265daf6b105382ceecf6e6134bcb6d68630ce1593f0bd04e730547a"
+    },
+    "docs/evidence/phase5d4/balance-endless-hell-checkpoint.log": {
+      "bytes": 33329,
+      "sha256": "ad54b54d9946a0a21b7343689dbc8ea411de6ed355da0a09f42b24d512d38fd3"
+    },
+    "docs/evidence/phase5d4/balance-endless-long-results.json": {
+      "bytes": 77803,
+      "sha256": "0e02a8fba827562b2244188ba097c65d92728bdc0dfcf910098dce22cf0b3ccd"
+    },
+    "docs/evidence/phase5d4/balance-endless-long.log": {
+      "bytes": 106051,
+      "sha256": "d051aadb29324debb2c4b44757b0cb2b98f6993a76212feea53f0aa4ca65294f"
+    },
+    "docs/evidence/phase5d4/balance-endless-new-final-results.json": {
+      "bytes": 96976,
+      "sha256": "4b007905fdae1323c6a2f25f6c9aeff1ae476ccd110da75086c1f432476e8f28"
+    },
+    "docs/evidence/phase5d4/balance-endless-new-final.log": {
+      "bytes": 127291,
+      "sha256": "74f6f2d230018847651b1ea16d88bccef3170f60532e09204f6c8ef6bd8f9492"
+    },
+    "docs/evidence/phase5d4/balance-endless-new-long-results.json": {
+      "bytes": 52808,
+      "sha256": "43219ada63a89046ce48b3aa570cf05a6045876dbd336515bcc5c358a6d6da17"
+    },
+    "docs/evidence/phase5d4/balance-endless-new-long.log": {
+      "bytes": 69538,
+      "sha256": "a3b80bad1b6a72fc1d9f5326ef81855c76deac8aece3fd37558668134a394286"
+    },
+    "docs/evidence/phase5d4/balance-endless-results.json": {
+      "bytes": 133015,
+      "sha256": "233c728abdca2927253d9bfa09fd640d566222c0f2e1213c23a43e7ccbae6b20"
+    },
+    "docs/evidence/phase5d4/balance-endless.log": {
+      "bytes": 177111,
+      "sha256": "413dad4f1d6cf4282baace0d6ba42d732b2aa15fc527ace65e01105fc82674f0"
+    },
+    "docs/evidence/phase5d4/balance-final-cutover-source.json": {
+      "bytes": 6014,
+      "sha256": "16e1d7ac160cb6bde7a6c3aa95eb0af50620a0adc658257a53fd58cc1baf0d9e"
+    },
+    "docs/evidence/phase5d4/balance-final-runtime-start.json": {
+      "bytes": 5920,
+      "sha256": "9fd5bd032e8ffca1bb075f3b48d4c114c8a8507c6c84676bfec387ea688acd29"
+    },
+    "docs/evidence/phase5d4/balance-final-summary.md": {
+      "bytes": 10836,
+      "sha256": "cb6685372af6d8417e7f4960f1b504616903da5de438689ecc2cc085f41184a1"
+    },
+    "docs/evidence/phase5d4/balance-paired-controls-results.json": {
+      "bytes": 62158,
+      "sha256": "45f3a2c92e5c835e9b765889ea9f8107374fc37ea8f8412eb0ed6a942f0a9be7"
+    },
+    "docs/evidence/phase5d4/balance-paired-controls.log": {
+      "bytes": 41462,
+      "sha256": "761a914c11d17b5197cf048ba97047245908ec96fbf175cee4c3a05b17458a0e"
+    },
+    "docs/evidence/phase5d4/balance-paired-fresh-results.json": {
+      "bytes": 184566,
+      "sha256": "a9679f886103f8dc1eb5dbabeccdc11cb5f396d454221ad83e0f9454735f5e24"
+    },
+    "docs/evidence/phase5d4/balance-paired-fresh.log": {
+      "bytes": 123230,
+      "sha256": "27750541e29229d2c4138c7dd639970aeb32a97a40aeef89f760347a36426870"
+    },
+    "docs/evidence/phase5d4/balance-paired-hell-final-results.json": {
+      "bytes": 315200,
+      "sha256": "fda4ece042b5e7182b3f3782dbeb30e2a2dca96632396343ab6ba59594c53faa"
+    },
+    "docs/evidence/phase5d4/balance-paired-hell-final.log": {
+      "bytes": 210748,
+      "sha256": "08c3a6d484b9b425f6a1117bd9812a2cff7aabdbfe5dc37dc76cc0ac52221f88"
+    },
+    "docs/evidence/phase5d4/balance-paired-results.json": {
+      "bytes": 451725,
+      "sha256": "f79c2ddf04f678b493aebda5229b0bc9ae8aea2798ef4e8f3a87304dbe0cd14c"
+    },
+    "docs/evidence/phase5d4/balance-paired.log": {
+      "bytes": 301480,
+      "sha256": "7358effe3a1b3e133df82c28496c136c7272a86ea31ab45dc2a68cef9da08ad3"
+    },
+    "docs/evidence/phase5d4/balance-repair-results.json": {
+      "bytes": 18215,
+      "sha256": "9c902dd135b798f9316266970e395d5310b4a99f21ed540189e531ff6846589f"
+    },
+    "docs/evidence/phase5d4/balance-repair.log": {
+      "bytes": 109,
+      "sha256": "d34a4cc8d50dc7e5671c28c2099dee9a14c3d608089c4adef8dd6b58d336412f"
+    }
+  },
+  "pre_cutover_diagnostic_hashes": {
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-earned-47hell.json": {
+      "bytes": 19079,
+      "sha256": "c6ad2f113740c991794cecb7231a2463c48dbf6475461d96815dba06202d460a"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-earned-71standard.json": {
+      "bytes": 19053,
+      "sha256": "650a49ce6915dc8db11792a3dc87a6493058f644ed994774e6b8bde65d2ea2dc"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-endless-all-new-results.json": {
+      "bytes": 34265,
+      "sha256": "9e0d719f6c8aa7f574d1cdb075058aad7d49c689d5ef74c20fccb1f327fd4f53"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-endless-all-new.log": {
+      "bytes": 44403,
+      "sha256": "6d58c598bbcad06548b32fa651e1a0d762643a7e4250ce8794437508b6ea5060"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-endless-checkpoint-results.json": {
+      "bytes": 27101,
+      "sha256": "7f4662c00ddf32fbbdc51364da0819d4ba8d4207e73ea4aac62c2b37449448c7"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-endless-checkpoint.log": {
+      "bytes": 32897,
+      "sha256": "2fbca834df4fd45f9a4a44f8fc6703bc3e45c254097527a69c78d650a2cf195f"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-endless-fortress-results.json": {
+      "bytes": 73728,
+      "sha256": "dcaf391e76f3f8270a29721313518a805149f95965cf1a81bc9de75c61e7ea88"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-endless-fortress.log": {
+      "bytes": 96659,
+      "sha256": "f22ee974b356d72f23117904508f4a51cb5732629c001935f790b7cc6b61e9dd"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-endless-hell-checkpoint-results.json": {
+      "bytes": 27421,
+      "sha256": "16abb5e0b265daf6b105382ceecf6e6134bcb6d68630ce1593f0bd04e730547a"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-endless-hell-checkpoint.log": {
+      "bytes": 33329,
+      "sha256": "ad54b54d9946a0a21b7343689dbc8ea411de6ed355da0a09f42b24d512d38fd3"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-endless-long-results.json": {
+      "bytes": 77939,
+      "sha256": "4dc18d8e828a4e0ea1a8818bb97e4ea8f3f09c1771c9716c4a6b74abe8f4235b"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-endless-long.log": {
+      "bytes": 106602,
+      "sha256": "fc0e231c39b0d50c5c4b4f3d058db07d727bd28b78cb9886edd65626887cfd89"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-endless-new-final-results.json": {
+      "bytes": 96976,
+      "sha256": "4b007905fdae1323c6a2f25f6c9aeff1ae476ccd110da75086c1f432476e8f28"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-endless-new-final.log": {
+      "bytes": 127291,
+      "sha256": "74f6f2d230018847651b1ea16d88bccef3170f60532e09204f6c8ef6bd8f9492"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-endless-new-long-results.json": {
+      "bytes": 63465,
+      "sha256": "9400bbd4a0d13a0ee0c36c2b6cb3d443e1ea1525a836911a4873b1af3aa33690"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-endless-new-long.log": {
+      "bytes": 84694,
+      "sha256": "32cebe5c26ebc4609cae0b88f5f479709449f31c87ac0c8f20518ea16e7429b9"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-endless-results.json": {
+      "bytes": 133015,
+      "sha256": "233c728abdca2927253d9bfa09fd640d566222c0f2e1213c23a43e7ccbae6b20"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-endless.log": {
+      "bytes": 177111,
+      "sha256": "413dad4f1d6cf4282baace0d6ba42d732b2aa15fc527ace65e01105fc82674f0"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-final-manifest.json": {
+      "bytes": 17430,
+      "sha256": "78fe18bd8f252e2d77ef53296b0d8c84e479d6ff544a7be254c498b7a8186997"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-final-runtime-start.json": {
+      "bytes": 5920,
+      "sha256": "9fd5bd032e8ffca1bb075f3b48d4c114c8a8507c6c84676bfec387ea688acd29"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-final-summary.md": {
+      "bytes": 10674,
+      "sha256": "1aff76d81fa44b7ae3d2bfd6406bb0514ff1727fb655de8009a030a935b7faf2"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-paired-controls-results.json": {
+      "bytes": 62158,
+      "sha256": "45f3a2c92e5c835e9b765889ea9f8107374fc37ea8f8412eb0ed6a942f0a9be7"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-paired-controls.log": {
+      "bytes": 41462,
+      "sha256": "761a914c11d17b5197cf048ba97047245908ec96fbf175cee4c3a05b17458a0e"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-paired-fresh-results.json": {
+      "bytes": 184566,
+      "sha256": "a9679f886103f8dc1eb5dbabeccdc11cb5f396d454221ad83e0f9454735f5e24"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-paired-fresh.log": {
+      "bytes": 123230,
+      "sha256": "27750541e29229d2c4138c7dd639970aeb32a97a40aeef89f760347a36426870"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-paired-results.json": {
+      "bytes": 451725,
+      "sha256": "f79c2ddf04f678b493aebda5229b0bc9ae8aea2798ef4e8f3a87304dbe0cd14c"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-paired.log": {
+      "bytes": 301480,
+      "sha256": "7358effe3a1b3e133df82c28496c136c7272a86ea31ab45dc2a68cef9da08ad3"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-repair-results.json": {
+      "bytes": 18215,
+      "sha256": "9c902dd135b798f9316266970e395d5310b4a99f21ed540189e531ff6846589f"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/balance-repair.log": {
+      "bytes": 109,
+      "sha256": "d34a4cc8d50dc7e5671c28c2099dee9a14c3d608089c4adef8dd6b58d336412f"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/phase5d4_balance_baseline.gd.txt": {
+      "bytes": 9349,
+      "sha256": "38451445ff53c6b78e2781129c7686810b2b916a6bc3c7f3bb1c13fa6def6a3f"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/phase5d4_balance_endless.gd.txt": {
+      "bytes": 23008,
+      "sha256": "246ad157e416bee8ec351fd9bb5bccf35902cac53c4d443ce8659bc1498ecdc7"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/phase5d4_balance_final.gd.txt": {
+      "bytes": 11602,
+      "sha256": "8df51c7e727099b16f0df5177e5233447e2bd92f9c9a492804c05a471a791c65"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/phase5d4_balance_map_probe.gd.txt": {
+      "bytes": 317,
+      "sha256": "5a354a3ca19fc5bb3306760a7aa11bb03015f363df9fbb03df0b6fdde5f9ab21"
+    },
+    "docs/evidence/phase5d4/balance-pre-cutover/phase5d4_balance_repair.gd.txt": {
+      "bytes": 2512,
+      "sha256": "5d2a234547dfa11ca350bc2dd50dee9e199ef57e3128c48c05af797247c2ac9c"
+    }
+  },
+  "status_rules": "Only accepted_final_runs bound tofinalsource. Other current non-baseline result files are pre-cutover diagnostics; their immutable copies are inbalance-pre-cutover. Baseline51 d507600 unchanged. Controlledrepair predates finalguard/lifecycle fixes but actualRoomState/DefenseEffects handlers are unchanged and no boss damage logic is exercised.",
+  "canonical_profiles": [
+    {
+      "path": "docs/evidence/phase5d4/balance-earned-71standard.json",
+      "completed": 12,
+      "bytes": 19024,
+      "sha256": "387a8bfc8135f89cccaa507eb9d4c36a3764b377905d96ffe5bcc5bd47530992"
+    },
+    {
+      "path": "docs/evidence/phase5d4/balance-earned-47hell.json",
+      "completed": 12,
+      "bytes": 19068,
+      "sha256": "7bf9d8e4e393cfe9c8f6ca2fc26af8e9a1427e32b7c865abb6d36be4a8859415"
+    }
+  ]
+}

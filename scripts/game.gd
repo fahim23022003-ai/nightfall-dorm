@@ -341,8 +341,15 @@ func _process(delta: float):
 # A double-click is one intent. Consume its second press AND release before
 # Controls see it, so a newly opened panel cannot receive the trailing click.
 var suppress_double_click_release=false
+var cancelled_pointer=false
 
 func _input(event):
+ # Cancel a held GUI press before BaseButton processes Escape/focus changes.
+ if event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT and not event.pressed and cancelled_pointer:
+  cancelled_pointer=false;get_viewport().set_input_as_handled();return
+ if mode=="match" and event is InputEventKey and event.keycode==KEY_ESCAPE and event.pressed and not event.echo and ui.context_open:
+  cancelled_pointer=Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+  ui.close_context();get_viewport().set_input_as_handled();return
  if (mode!="match" and ui.current_screen!="shop") or not event is InputEventMouseButton: return
  if event.button_index!=MOUSE_BUTTON_LEFT: return
  if event.pressed:
@@ -451,9 +458,11 @@ func focus_camera(snap: bool=false,delta: float=0.016):
   elif model.player()!=null or watched_room>=0:
    var observed=model.rooms[watched_room] if watched_room>=0 else model.player()
    var extent=observed.bounds().grow(35)
-   var available=Vector2(1160,350)
+   # Fixed room framing includes heads/scythe above upward-facing doors.
+   extent=extent.expand(observed.door_approach()+Vector2(0,-100))
+   var available=Vector2(1160,320)
    zoom=minf(available.x/extent.size.x,available.y/extent.size.y)*zoom_factor
-   var desired=Vector2(640,278)
+   var desired=Vector2(640,295)
    goal=extent.get_center()+MAP_OFFSET+(get_viewport_rect().size/2-desired)/zoom
  if mobile_mode and not full_map:
   var desired=Vector2(470 if ui.context_open and model.player()!=null and model.player().sleeping else 640,340)

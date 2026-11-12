@@ -231,8 +231,10 @@ func run():
    "unoccupied":r.sleeping=false
    "read_only":a.p.read_only=true
   var stock=a.p.inventory.guardian_heart
+  var before_invalid=r.door_hp
   m.hunter._damage_door(r,m,20)
-  check(a.p.inventory.guardian_heart==stock and m.items.legendary_used==0 and r.door_hp==0,"invalid Heart no rescue/stockloss "+invalid)
+  var expected_hp=before_invalid if invalid in ["paused","terminal","eliminated","open"] else 0.0
+  check(a.p.inventory.guardian_heart==stock and m.items.legendary_used==0 and r.door_hp==expected_hp,"invalid Heart no rescue/stockloss; illegal damage rejected "+invalid)
  # No save means no spend/no effect, and retry remains valid for manual Legendary.
  for id in NEW:
   var m=fixture();var a=actor(m,[id]);var r=m.player()

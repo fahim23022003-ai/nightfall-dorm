@@ -16,9 +16,14 @@ func run():
  require(game.profile!=null and game.ui!=null,"actual launch/profile/UI initialized")
  require(game.audio_system.streams.size()==AudioDirector.LOOP_NAMES.size()+AudioDirector.EFFECT_NAMES.size(),"all audio streams packaged")
  require(ItemCatalog.IDS.size()==20 and MapCatalog.IDS.size()==5,"item/map catalogs packaged")
+ require(Catalog.BUILDINGS.size()==12 and HunterEvolution.BUFFS.size()==15,"Wrath building and evolution catalogs packaged")
+ for kind in ["flame","frost","shock","auto_repair","shield","decoy"]:
+  require(ResourceLoader.load("res://assets/wrath/"+kind+".svg")!=null,"new building art packaged: "+kind)
+ require(game.audio_system.streams.has("music_crimson") and game.audio_system.streams.has("hunter_evolve"),"Crimson music and evolution stream packaged")
  require(game.start_practice("crusher",false,["shield","repair"]),"actual practice starts")
  await process_frame
  require(game.model.player()!=null and game.model.run_kind=="practice","actual model integrated")
+ require(game.model.wrath!=null and game.model.evolution!=null and game.model.defenses!=null,"Wrath runtime components initialize in exported practice")
  game.return_menu();game.audio_system.shutdown()
  await create_timer(0.5).timeout
  game.queue_free();await create_timer(0.2).timeout

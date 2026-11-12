@@ -1,0 +1,243 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+QA_CARD_BEFORE abandoned_dorm repair at=(1097.0, 555.0) rect=[P: (948.0, 532.0), S: (298.0, 46.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER repair mode=upgrade selected=0 bought={ "instance_id": 5, "kind": "repair", "level": 1, "cooldown": 0.0, "flash": 0.0, "invested_gold": 40.0, "invested_power": 5.0 } last_error= hover=@Button@141:<Button#160071420407>
+QA_CARD_BEFORE abandoned_dorm frost at=(1097.0, 603.0) rect=[P: (948.0, 580.0), S: (298.0, 46.0)] disabled=true selected=1 mode=build
+QA_CARD_AFTER frost mode=build selected=1 bought={  } last_error= hover=@Button@114:<Button#159081564604>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade frost
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:131)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:132)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:133)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+QA_CARD_BEFORE abandoned_dorm decoy at=(1097.0, 651.0) rect=[P: (948.0, 628.0), S: (298.0, 46.0)] disabled=true selected=1 mode=build
+QA_CARD_AFTER decoy mode=build selected=1 bought={  } last_error= hover=@Button@134:<Button#159819762152>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade decoy
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:131)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:132)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:133)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+QA_CARD_BEFORE haunted_hospital repair at=(1097.0, 555.0) rect=[P: (948.0, 532.0), S: (298.0, 46.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER repair mode=upgrade selected=0 bought={ "instance_id": 5, "kind": "repair", "level": 1, "cooldown": 0.0, "flash": 0.0, "invested_gold": 40.0, "invested_power": 5.0 } last_error= hover=@Button@289:<Button#191260264986>
+QA_CARD_BEFORE haunted_hospital frost at=(1097.0, 603.0) rect=[P: (948.0, 580.0), S: (298.0, 46.0)] disabled=true selected=1 mode=build
+QA_CARD_AFTER frost mode=build selected=1 bought={  } last_error= hover=@Button@262:<Button#190270409182>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade frost
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:131)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:132)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:133)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+QA_CARD_BEFORE haunted_hospital decoy at=(1097.0, 651.0) rect=[P: (948.0, 628.0), S: (298.0, 46.0)] disabled=true selected=1 mode=build
+QA_CARD_AFTER decoy mode=build selected=1 bought={  } last_error= hover=@Button@282:<Button#191008606730>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade decoy
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:131)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:132)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:133)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+QA_CARD_BEFORE forgotten_hotel repair at=(1097.0, 555.0) rect=[P: (948.0, 532.0), S: (298.0, 46.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER repair mode=upgrade selected=0 bought={ "instance_id": 5, "kind": "repair", "level": 1, "cooldown": 0.0, "flash": 0.0, "invested_gold": 40.0, "invested_power": 5.0 } last_error= hover=@Button@437:<Button#220184185512>
+QA_CARD_BEFORE forgotten_hotel frost at=(1097.0, 603.0) rect=[P: (948.0, 580.0), S: (298.0, 46.0)] disabled=true selected=1 mode=build
+QA_CARD_AFTER frost mode=build selected=1 bought={  } last_error= hover=@Button@410:<Button#219194329604>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade frost
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:131)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:132)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:133)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+QA_CARD_BEFORE forgotten_hotel decoy at=(1097.0, 651.0) rect=[P: (948.0, 628.0), S: (298.0, 46.0)] disabled=true selected=1 mode=build
+QA_CARD_AFTER decoy mode=build selected=1 bought={  } last_error= hover=@Button@430:<Button#219932527209>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade decoy
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:131)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:132)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:133)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+QA_CARD_BEFORE underground_lab repair at=(1097.0, 555.0) rect=[P: (948.0, 532.0), S: (298.0, 46.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER repair mode=upgrade selected=0 bought={ "instance_id": 5, "kind": "repair", "level": 1, "cooldown": 0.0, "flash": 0.0, "invested_gold": 40.0, "invested_power": 5.0 } last_error= hover=@Button@585:<Button#249007442528>
+QA_CARD_BEFORE underground_lab frost at=(1097.0, 603.0) rect=[P: (948.0, 580.0), S: (298.0, 46.0)] disabled=true selected=1 mode=build
+QA_CARD_AFTER frost mode=build selected=1 bought={  } last_error= hover=@Button@558:<Button#248017586726>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade frost
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:131)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:132)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:133)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+QA_CARD_BEFORE underground_lab decoy at=(1097.0, 651.0) rect=[P: (948.0, 628.0), S: (298.0, 46.0)] disabled=true selected=1 mode=build
+QA_CARD_AFTER decoy mode=build selected=1 bought={  } last_error= hover=@Button@578:<Button#248755784073>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade decoy
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:131)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:132)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:133)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+QA_CARD_BEFORE cursed_mansion repair at=(1097.0, 555.0) rect=[P: (948.0, 532.0), S: (298.0, 46.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER repair mode=upgrade selected=0 bought={ "instance_id": 5, "kind": "repair", "level": 1, "cooldown": 0.0, "flash": 0.0, "invested_gold": 40.0, "invested_power": 5.0 } last_error= hover=@Button@733:<Button#277813922046>
+QA_CARD_BEFORE cursed_mansion frost at=(1097.0, 603.0) rect=[P: (948.0, 580.0), S: (298.0, 46.0)] disabled=true selected=1 mode=build
+QA_CARD_AFTER frost mode=build selected=1 bought={  } last_error= hover=@Button@706:<Button#276824066380>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade frost
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:131)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:132)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:133)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+QA_CARD_BEFORE cursed_mansion decoy at=(1097.0, 651.0) rect=[P: (948.0, 628.0), S: (298.0, 46.0)] disabled=true selected=1 mode=build
+QA_CARD_AFTER decoy mode=build selected=1 bought={  } last_error= hover=@Button@726:<Button#277562263983>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade decoy
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:131)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:132)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:133)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:36)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+PHASE5D4_UI_QA_CHECKS=818 MAPS=5 FAILURES=30

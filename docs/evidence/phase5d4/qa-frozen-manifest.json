@@ -1,0 +1,197 @@
+[
+  {
+    "source": "docs/evidence/phase5d3/balance-earned-all8-haunted_hospital-standard.json",
+    "copy": "qa-frozen-5d3-normal.json",
+    "sha256": "194632e2bce7a62a3c782d216edfeca9c10608ae6c4caff1d58145cf6e42d527",
+    "checkpoint_ruleset": 2,
+    "completed": 11,
+    "bed_level_index": 9.0,
+    "door_level_index": 9.0,
+    "branches": [
+      "lucid",
+      "bulwark"
+    ],
+    "machines": [
+      [
+        "turret",
+        10.0,
+        "suppression"
+      ],
+      [
+        "generator",
+        10.0,
+        "regulated"
+      ],
+      [
+        "repair",
+        10.0,
+        "sustain"
+      ],
+      [
+        "generator",
+        10.0,
+        "regulated"
+      ],
+      [
+        "economy",
+        10.0,
+        "dividend"
+      ],
+      [
+        "economy",
+        10.0,
+        "dividend"
+      ],
+      [
+        "economy",
+        10.0,
+        "dividend"
+      ],
+      [
+        "economy",
+        10.0,
+        "dividend"
+      ],
+      [
+        "enhancer",
+        10,
+        "ballistic"
+      ],
+      [
+        "heavy",
+        10,
+        "focus"
+      ]
+    ]
+  },
+  {
+    "source": "docs/evidence/phase5d3/balance-earned-all8-cursed_mansion-hell-alternative.json",
+    "copy": "qa-frozen-5d3-hell.json",
+    "sha256": "1a76278ef05d15753c39447b6182dd8df4cbbe6b342e04d178b96db54fa26bd9",
+    "checkpoint_ruleset": 2,
+    "completed": 8,
+    "bed_level_index": 9.0,
+    "door_level_index": 9.0,
+    "branches": [
+      "conductor",
+      "renewal"
+    ],
+    "machines": [
+      [
+        "turret",
+        10.0,
+        "suppression"
+      ],
+      [
+        "generator",
+        10.0,
+        "overcharge"
+      ],
+      [
+        "repair",
+        10.0,
+        "conservation"
+      ],
+      [
+        "generator",
+        10.0,
+        "overcharge"
+      ],
+      [
+        "economy",
+        10.0,
+        "capacitive"
+      ],
+      [
+        "economy",
+        10.0,
+        "capacitive"
+      ],
+      [
+        "economy",
+        10.0,
+        "capacitive"
+      ],
+      [
+        "economy",
+        10.0,
+        "capacitive"
+      ],
+      [
+        "heavy",
+        10.0,
+        "storm"
+      ],
+      [
+        "enhancer",
+        10,
+        "coolant"
+      ]
+    ]
+  },
+  {
+    "source": "docs/evidence/phase5d3/qa-pre5d3-endless-profile.json",
+    "copy": "qa-frozen-5d2.json",
+    "sha256": "4c9147c61796d51fe5dca4a206da22f9fe1d90b04a5bb5bd0062feb76493cb3c",
+    "checkpoint_ruleset": 1.0,
+    "completed": 4.0,
+    "bed_level_index": 4.0,
+    "door_level_index": 4.0,
+    "branches": [
+      "",
+      ""
+    ],
+    "machines": [
+      [
+        "generator",
+        4.0,
+        ""
+      ],
+      [
+        "repair",
+        4.0,
+        ""
+      ],
+      [
+        "generator",
+        4.0,
+        ""
+      ],
+      [
+        "economy",
+        4.0,
+        ""
+      ],
+      [
+        "economy",
+        4.0,
+        ""
+      ],
+      [
+        "heavy",
+        10.0,
+        "storm"
+      ],
+      [
+        "repair",
+        4.0,
+        ""
+      ],
+      [
+        "enhancer",
+        4.0,
+        ""
+      ],
+      [
+        "enhancer",
+        4.0,
+        ""
+      ],
+      [
+        "heavy",
+        3.0,
+        ""
+      ]
+    ]
+  }
+]

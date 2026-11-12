@@ -29,8 +29,15 @@ and migration, audio routing/mixing and sampled cues. Independent early gates:
 evolution648/0, defenses972/0, save264/0, boss111/0; developer728/0 and UI40/0.
 Audio774/0, voice regression5/0, target routing209/0; legacy audio491/0 and
 listening room256/0. Final integration, balance, screenshots, all regressions
-and Windows export remain IN PROGRESS. Old test fixtures are being ported to
-finite boss phase guards and ruleset3 without dropping transaction checks.
+and Windows export remain IN PROGRESS. Old test fixtures are ported to finite boss phase guards and ruleset3 without
+dropping transaction checks. Final focused QA now7357/0 across10 suites;
+final-cutover balance49/0 with7 fresh checkpoint comparisons. Audio1018/0 across
+five suites. Confirmed post-core fixes: held-click/Escape cancellation, Decoy
+instance identity, same-frame multishot transformation, immediate death/domain
+cleanup, reused-model evolution banners, HUD warnings and camera safe region.
+D final dense fixture completed600 simulated seconds,764/0; final mixed-audio
+review continues. Full112-command regression starts next. Native Windows and
+human judgment remain UNVERIFIED.
 
 ---
 

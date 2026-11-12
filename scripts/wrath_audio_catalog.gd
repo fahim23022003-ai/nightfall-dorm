@@ -767,6 +767,11 @@ const RULES = {
   "gain_db": -11.0,
   "cooldown": 0.5,
   "critical": true
+ },
+ "item_explosion": {
+  "gain_db": -12.0,
+  "cooldown": 0.3,
+  "critical": true
  }
 }
 const PREVIEW_GROUPS = {

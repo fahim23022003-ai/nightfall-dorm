@@ -1,0 +1,18 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: no resurrection
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/boss_architecture.gd:6)
+       [1] _initialize (res://tests/boss_architecture.gd:35)
+ERROR: no resurrection
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/boss_architecture.gd:6)
+       [1] _initialize (res://tests/boss_architecture.gd:35)
+ERROR: no resurrection
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/boss_architecture.gd:6)
+       [1] _initialize (res://tests/boss_architecture.gd:35)
+BOSS_ARCHITECTURE_CHECKS=25 FAILURES=3

@@ -150,16 +150,19 @@ func run():
     var hp=ch.hp
     combat._advance_projectiles(0.1)
     check(ch.hp<hp,"turret projectile damages boss "+kind)
-   # Transformation can be killed, then never resumes or grants repeated victory.
+   # Transformation has a finite protected visual window; death afterward is final.
    var dying=fixture(mode,stage.id)
    dying.hunter.hp=1
    dying.hunter.tick(0.01,dying)
    dying.hunter.hurt(10)
-   check(dying.hunter.state==HunterState.State.DEAD and dying.hunter.transform_remaining==0,"death interrupts transformation")
+   check(dying.hunter.state==HunterState.State.TRANSFORM and dying.hunter.hp==1,"finite transformation protects without refilling HP")
+   dying.hunter.tick(BossCatalog.TRANSFORM_SECONDS+.01,dying)
+   dying.hunter.hurt(10)
+   check(dying.hunter.state==HunterState.State.DEAD and dying.hunter.transform_remaining==0,"lethal damage works after finite transformation")
    dying.tick(0.1)
    check(dying.result=="victory" and events(dying,"boss_death").size()==1,"death produces victory and one boss death event")
    for step in range(5): dying.tick(10)
-   check(events(dying,"boss_death").size()==1 and events(dying,"boss_awakened").is_empty(),"terminal state never awakens or repeats death")
+   check(events(dying,"boss_death").size()==1 and events(dying,"boss_awakened").size()==1,"terminal state never repeats awakening or death")
    dying.reset()
    check(not dying.hunter.transformed and dying.hunter.boss_attack=="" and dying.hunter.surge_remaining==0,"restart resets all boss state")
  # Interruptions must not redirect a pending damage packet.
@@ -300,7 +303,14 @@ func run():
   var m=fixture("standard",stage.id)
   m.player().occupied_seconds=100
   awaken(m)
-  m.hunter.hurt(1e9)
+  # Component settlement fixture traverses both finite phase guards. Full
+  # controlled-domain gameplay is independently tested in phase5d4_qa_boss.
+  for attempt in range(3):
+   var settlement_hp=m.hunter.hp
+   m.hunter.hurt(1e9)
+   check(m.hunter.hp<=settlement_hp,"finite guards never refill settlement boss")
+   check(m.hunter.phase_guard_remaining<=3.3,"settlement phase protection bounded")
+   m.hunter.tick(3.31,m)
   m.tick(0.1)
   var reward=profile.settle_match(entry.id,m)
   check(not reward.is_empty() and reward.campaign.first_clear,"boss victory uses existing stage settlement "+stage.id)

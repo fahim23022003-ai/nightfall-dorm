@@ -98,6 +98,7 @@ recipes['lock_release']=[P('chains-rattling-2',.1,.35,.5,1.25),P('glass_clink_1'
 for kind,texture,start in [('flame','fire_3',.13),('frost','glass_break',.3),('shock','static_2',.2),('auto_repair','chains-rattling-2',.1),('shield','glass_clink_1',0),('decoy','door_knock_3',.03)]:
  recipes['build_'+kind]=recipes['build']+[P(texture,start,.28,.25)]
 recipes['income']=recipes['resource_gold'];recipes['electricity']=recipes['resource_power']
+recipes['item_explosion']=[P('explosion',.15,1.10,.8),P('impact_3',.04,.45,.2,.8)]
 recipes['reward']=[P('glass_clink_1',0,.35,.5),P('glass_clink_1',0,.35,.3,1.25,.12)]
 ABILITY_SOURCES={
  'summon':('zombie_1',.05,.9), 'assault':('zombie_attack',.6,1.1),

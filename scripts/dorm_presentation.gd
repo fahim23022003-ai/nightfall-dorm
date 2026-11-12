@@ -70,6 +70,7 @@ func _init():
  for name in ["hunter_idle","hunter_move","hunter_attack","hunter_hurt","hunter_death"]: textures[name]=cartoon[name]
 
 func reset():
+ wrath_presentation.reset()
  identity.reset()
  fear_rooms.clear();seen_deaths.clear();strike_events.clear();attack_pose=0
  environment.observed_model=null

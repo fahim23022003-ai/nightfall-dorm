@@ -1,0 +1,83 @@
+{
+  "baseline": "0bc84216ed18c805a98c70bb0a296c473473215d",
+  "commands": 8,
+  "completed": 8,
+  "passed": false,
+  "seconds": 107.239,
+  "historical_restored": [
+    "docs/evidence/replay/qa-code-process-0-advanced.json",
+    "docs/evidence/replay/qa-code-process-0-beginner.json",
+    "docs/evidence/replay/qa-code-process-1-advanced.json",
+    "docs/evidence/replay/qa-code-process-1-beginner.json",
+    "docs/evidence/replay/qa-code-process-2-advanced.json",
+    "docs/evidence/replay/qa-code-process-2-beginner.json"
+  ],
+  "source_end": "0bc84216ed18c805a98c70bb0a296c473473215d",
+  "rows": [
+    {
+      "name": "run_tests",
+      "exit_code": -15,
+      "engine_errors": true,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.009
+    },
+    {
+      "name": "boss_architecture",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.001
+    },
+    {
+      "name": "boss_qa",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 1.002
+    },
+    {
+      "name": "legendary_qa",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 42.035
+    },
+    {
+      "name": "legendary_combos",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 16.014
+    },
+    {
+      "name": "replay_endless",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 25.049
+    },
+    {
+      "name": "phase5d3_qa_migration",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 2.006
+    },
+    {
+      "name": "replay_codes",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 18.079
+    }
+  ],
+  "runtime_unchanged": false
+}

@@ -4,20 +4,20 @@
   "fixture": "direct event unit playback; not gameplay",
   "fullscale_samples": 0,
   "music": 0,
-  "peak": 0.05047607421875,
-  "rms": 0.00824850580339817,
-  "seconds": 3.06503401360544
+  "peak": 0.054718017578125,
+  "rms": 0.00811236386108068,
+  "seconds": 4.45823129251701
  },
  "1.0": {
   "effects": 1.0,
   "fixture": "direct event unit playback; not gameplay",
   "fullscale_samples": 0,
   "music": 0,
-  "peak": 0.07440185546875,
-  "rms": 0.0122970947497555,
-  "seconds": 3.25079365079365
+  "peak": 0.084197998046875,
+  "rms": 0.0123592349371772,
+  "seconds": 4.55111111111111
  },
- "checks": 774,
+ "checks": 782,
  "children": 28,
  "failures": 0,
  "note": "Actual AudioDirector cue-unit playback, not a full gameplay/10-minion stress claim. Human audition unverified.",
@@ -26,22 +26,22 @@
   "overlap": false,
   "played_deaths": 2,
   "played_evolutions": 2,
-  "seconds": 10.3096598639456,
+  "seconds": 10.4954195011338,
   "sequence": [
    {
     "time": 0.0499999999999972,
     "type": "death"
    },
    {
-    "time": 3.29999999999981,
+    "time": 3.24999999999982,
     "type": "evolution"
    },
    {
-    "time": 5.1999999999997,
+    "time": 5.14999999999971,
     "type": "death"
    },
    {
-    "time": 8.04999999999954,
+    "time": 7.79999999999956,
     "type": "evolution"
    }
   ],

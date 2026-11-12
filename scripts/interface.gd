@@ -162,6 +162,7 @@ func button(text: String,pos: Vector2,callback: Callable,width: float=240,height
  b.size=Vector2(width,height)
  b.pressed.connect(func(): game.audio_event("button"))
  b.pressed.connect(func():
+  if game.cancelled_pointer:return
   if bool(b.get_meta("ignore_double_release",false)):
    b.set_meta("ignore_double_release",false);return
   callback.call())
@@ -611,7 +612,7 @@ func update_match():
  phase_label.text="%02d:%02d\n%s" % [int(m.time)/60,int(m.time)%60,"PREP %ds" % maxi(0,ceili(m.preparation-m.time)) if m.time<m.preparation else "SURVIVE"]
  hunter_label.text=("REAPER · %d/%d" % [m.hunter.hp,m.hunter.max_hp]) if m.hunter.transformed else "HUNTER L%d  ·  %d/%d" % [m.hunter.level,m.hunter.hp,m.hunter.max_hp]
  hunter_detail.text="%d ATK · %.2fs%s · TEAM %d" % [m.hunter.damage,m.hunter.interval," · WINDUP!" if m.hunter.charged_ready else "",m.rooms.filter(func(r):return r.owner>=0 and r.alive).size()]
- if m.hunter.state==HunterState.State.TRANSFORM: hunter_detail.text="AWAKENING · %.1fs · KEEP FIRING" % m.hunter.transform_remaining
+ if m.hunter.state==HunterState.State.TRANSFORM: hunter_detail.text="AWAKENING · %.1fs · TRANSITION GUARD" % m.hunter.transform_remaining
  elif m.hunter.tactical_action!="":hunter_detail.text="%s · %.1fs · WATCH THE DOOR" % [m.hunter.tactical_action.to_upper(),m.hunter.tactical_windup]
  elif m.hunter.boss_attack!="": hunter_detail.text="%s · %.1fs" % [BossCatalog.ATTACKS[m.hunter.boss_attack].name,m.hunter.windup_remaining]
  elif m.hunter.surge_remaining>0: hunter_detail.text="SURGE · %.1fs · REAPER EXPOSED +20%%" % m.hunter.surge_remaining
@@ -629,6 +630,7 @@ func update_match():
   hunter_label.tooltip_text="ACQUIRED EVOLUTIONS (this run)"
   for id in m.evolution.acquired:hunter_label.tooltip_text+="\n"+HunterEvolution.BUFFS[id].name+": "+HunterEvolution.BUFFS[id].effect
  if m.wrath.active():hunter_detail.text="%s · %.1fs · ROOM %d" % [ReaperWrath.ABILITIES[m.wrath.ability].name.to_upper(),m.wrath.warning,m.wrath.cast_target+1]
+ elif m.hunter.phase_guard_remaining>0:hunter_detail.text="PHASE TRANSITION GUARD · %.1fs" % m.hunter.phase_guard_remaining
  elif m.hunter.transformed and m.hunter.state!=HunterState.State.TRANSFORM and m.hunter.boss_attack=="" and m.hunter.surge_remaining<=0:hunter_detail.text="PHASE %s · %d UNDEAD · POWER %d" % ["II" if m.wrath.phase==2 else "I",m.minions.size(),m.evolution.acquired.size()]
  if game.tutorial_active:
   phase_label.text="PRACTICE\nSTEP %d / 9" % [game.onboarding.step+1]
@@ -643,7 +645,7 @@ func update_match():
  guide_box.visible=((help_open and not game.full_map) or game.presentation.clock<feedback_until) and not (game.model.map_id!="legacy" and context_open)
  guide_label.visible=guide_box.visible
  if guide_label.visible: guide_label.text=feedback_text if game.presentation.clock<feedback_until else tutorial_text()
- var threat=room!=null and m.hunter.target==room.index and m.hunter.state==HunterState.State.ATTACK
+ var threat=room!=null and (m.hunter.target==room.index and m.hunter.state==HunterState.State.ATTACK or m.minions.any(func(u):return u.hp>0 and u.target==room.index and u.position.distance_to(room.door_approach())<=3))
  warning_box.visible=threat or game.level_warning_time>0 or m.wrath.active()
  warning_label.visible=warning_box.visible
  if not threat and game.level_warning_time>0: warning_label.text="THE HUNTER GROWS STRONGER · LEVEL %d" % m.hunter.level

@@ -1,6 +1,11 @@
 extends "res://tests/premium_strategy_ui.gd"
 const Support=preload("res://tests/replay_test_support.gd")
 var rectangles=[]
+# Freeze simulation, but preserve real frame-driven enabled/reason updates.
+func settle():
+ await process_frame
+ if game!=null and is_instance_valid(game) and game.mode=="match":game.ui.update_match()
+ await process_frame
 func primitive(value,seen={}):
  if value is RandomNumberGenerator:return {"seed":str(value.seed),"state":str(value.state)}
  if value is Dictionary:
@@ -36,6 +41,7 @@ func point_click(point,double_click=false):
  await pointer(point,true,double_click);await pointer(point,false);await settle()
 func pad(tile):
  var pos=game.world_to_screen(game.model.player().tile_position(tile));await point_click(pos)
+ game.ui.update_match();await settle()
 func next_pad():
  var r=game.model.player()
  for i in range(r.tile_count()):
@@ -113,6 +119,7 @@ func run():
  game=load("res://scenes/main.tscn").instantiate();root.add_child(game);game.set_process(false);game.onboarding.set_process(false);game.onboarding.skip();await settle()
  var permanent=Support.profile_signature(game.profile);var bytes=FileAccess.get_file_as_bytes(profile_path)
  for map in MapCatalog.IDS:
+  if "--one-map" in OS.get_cmdline_user_args() and map!=MapCatalog.IDS[0]:continue
   rectangles.clear();game.start_practice("crusher",false,["repair","shield"],map);await settle();game.focus_camera(true)
   var r=game.model.player();var before=camera();var initial=state();var parent_id=game.ui.context_box.get_instance_id();var tile=next_pad()
   await pad(tile);await settle();stable_panel("actual emptyfloor click "+map,before,initial)
@@ -125,13 +132,21 @@ func run():
   var kinds=Catalog.BUILDINGS.keys()
   for index in range(3,kinds.size(),4):
    tile=next_pad();await pad(tile);await settle();var kind=kinds[index];var card=game.ui.actions["build:"+kind];var at=card.get_global_rect().get_center();var gold=r.gold;var power=r.electricity;var count=r.buildings.size();before=camera()
+   print("QA_CARD_BEFORE ",map," ",kind," at=",at," rect=",card.get_global_rect()," disabled=",card.disabled," selected=",game.selected_tile," mode=",game.ui.context_mode)
    await point_click(at);await point_click(at,true)
+   print("QA_CARD_AFTER ",kind," mode=",game.ui.context_mode," selected=",game.selected_tile," bought=",r.buildings.get(tile,{})," last_error=",r.last_error," hover=",root.gui_get_hovered_control())
    check(r.buildings.size()==count+1 and r.buildings[tile].kind==kind and r.buildings[tile].level==1,"rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade "+kind)
    check(is_equal_approx(gold-r.gold,Catalog.BUILDINGS[kind].gold) and is_equal_approx(power-r.electricity,Catalog.BUILDINGS[kind].power),"doubleclickchargesonlyoneactualbaseprice")
    check(game.pending_build=="" and not game.placement_on_tile and game.ui.context_mode=="upgrade","directBuildhasnostuckmouse-followpreview")
    check(camera()==before,"Build/inspectorswapdoesnotmoveview")
    game.ui.close_context();tile=next_pad();await pad(tile);await settle();card=game.ui.actions["build:"+kind];at=card.get_global_rect().get_center();var unchanged=state()
-   await pointer(at,true);await key(KEY_ESCAPE);await pointer(at,false);await settle()
+   print("QA_HELD_START ",kind," actionmode=",card.action_mode," count=",r.buildings.size()," context=",game.ui.context_mode)
+   await pointer(at,true)
+   print("QA_HELD_DOWN ",kind," count=",r.buildings.size()," context=",game.ui.context_mode," visible=",card.is_visible_in_tree()," pressed=",card.is_pressed())
+   await key(KEY_ESCAPE)
+   print("QA_HELD_ESCAPE ",kind," context=",game.ui.context_open," mode=",game.ui.context_mode," running=",game.model.running," count=",r.buildings.size())
+   await pointer(at,false);await settle()
+   print("QA_HELD_RELEASE ",kind," context=",game.ui.context_open," mode=",game.ui.context_mode," running=",game.model.running," count=",r.buildings.size()," newtile=",r.buildings.get(tile,{}))
    check(state()==unchanged and not game.ui.context_open and game.pending_build=="","heldBuildpresscancelledwithEscapebefore releasecannotchargeorstick")
    await pad(tile);await settle();check(game.ui.context_mode=="build","samepadreopenscleanlyaftercancel")
    game.ui.close_context()
@@ -146,6 +161,6 @@ func run():
   game.return_menu();await settle()
   check(Support.profile_signature(game.profile)==permanent and FileAccess.get_file_as_bytes(profile_path)==bytes,"UI/previews/temporarypurchasesnevermutatepermanentprogress")
  await effective_stats()
- print("PHASE5D4_UI_QA_CHECKS=",checks," MAPS=5 FAILURES=",failures)
+ print("PHASE5D4_UI_QA_CHECKS=",checks," MAPS=",1 if "--one-map" in OS.get_cmdline_user_args() else 5," FAILURES=",failures)
  game.audio_system.shutdown();await create_timer(.6).timeout;game.queue_free();await create_timer(.2).timeout
  Support.cleanup(profile_path);quit(1 if failures else 0)

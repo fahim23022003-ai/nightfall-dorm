@@ -113,8 +113,17 @@ func run():
   check(not m.items.timers.has("frost") and not m.items.timers.has("time_freeze"),"both controls expire")
   m.hunter.target=0;m.hunter.state=HunterState.State.ATTACK;m.hunter.position=m.player().door_approach()
   m.hunter.cooldown=0;m.hunter.boss_cooldowns={"scythe":100.0,"siege":0.0,"surge":100.0}
-  hp=m.player().door_hp;m.tick(.01);m.tick(2)
-  check(m.player().door_hp<hp,"ordinary/Reaper attack resumes after combined expiry")
+  hp=m.player().door_hp
+  # New telegraphed Reaper casts can defer its old melee attack. Verify real
+  # main-Hunter damage returns within a bounded combat window, not exactly2s.
+  var resumed=false
+  var event_start=m.next_presentation_event_id
+  for step in range(120):
+   m.tick(.1)
+   for event in m.presentation_events:
+    if event.id>=event_start and event.type=="door_damage" and int(event.get("attacker_id",1))==1 and event.get("damage",0)>0:resumed=true
+   if resumed:break
+  check(resumed and m.player().door_hp<hp,"ordinary/Reaper attack resumes after combined expiry")
  # Cursed Fortune + old defense does not erase penalty, income actual and cleanup finite.
  for old in ["shield","barricade","repair"]:
   m=fixture("hell");a=actor(m,["cursed_fortune",old]);r=m.player()

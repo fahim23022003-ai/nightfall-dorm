@@ -260,6 +260,15 @@ func stop_events(names: Array):
  for voice in voices:
   if _voice_names.get(voice.get_instance_id(),"") in names:voice.stop()
 
+func _stop_battle_cues():
+ # Terminal defeat still owns its recorded death/evolution sequence. Combat
+ # warnings and attacks have no valid target after the encounter has ended.
+ var names=[]
+ for name in EFFECT_NAMES:
+  if name.begins_with("shot_") or name.begins_with("impact_") or name.begins_with("wrath_") or name.begins_with("undead_") or name.begins_with("scythe_") or name.begins_with("item_") or (name.begins_with("hunter_") and name not in ["hunter_evolve","hunter_laugh"]) or name in ["impact","ghost_hurt","door_hit","door_crack","door_break","danger","breach","footstep","eerie","reaper_transform","reaper_charge","reaper_surge","reaper_scythe","reaper_impact","reaper_hurt","shield_activate","shield_absorb","auto_repair_activate","decoy_activate","scream_1","scream_2","scream_3","door_reaction"]:
+   if name!=preview_effect_name or _clock>=preview_effect_until:names.append(name)
+ stop_events(names)
+
 func new_encounter(model):
  # Same run and rooms, intentionally fresh Hunter. Valid screams/laughs and
  # their serialized queues continue; only the defeated Hunter's warnings stop.
@@ -279,6 +288,11 @@ func update_state(delta: float, model, mode: String):
  _clock += delta
  _frame_voices = 0
  _mode = mode
+ if mode in ["menu","intro"] and mode!=_last_mode:
+  # A menu can retain the previous model for its result summary. It must not
+  # retain combat players or delayed cues; listening-room previews remain valid.
+  var cancelled=EFFECT_NAMES.filter(func(name):return name!=preview_effect_name or _clock>=preview_effect_until)
+  stop_events(cancelled)
  if mode in ["menu","intro"] or (model!=null and model.tutorial_mode):
   set_tension("quiet",0)
   pending_laughs.clear();pending_deaths.clear();pending_evolutions.clear();_last_death_room=-1;_evolution_busy_until=0
@@ -342,7 +356,7 @@ func update_state(delta: float, model, mode: String):
  proximity = move_toward(proximity,target_proximity,delta*1.8)
  var music_active = mode=="match" and (model==null or model.result=="")
  var boss_active=active and model.hunter.transformed and model.hunter.hp>0
- var domain=model!=null and model.has_method("domain_music_active") and model.domain_music_active()
+ var domain=active and model.has_method("domain_music_active") and model.domain_music_active()
  if domain and not _domain_music_active:
   loops.music_crimson.play(0);crimson_music_starts+=1
  _domain_music_active=domain
@@ -375,6 +389,7 @@ func update_state(delta: float, model, mode: String):
    if _voice_names.get(voice.get_instance_id(),"") in ["reaper_transform","reaper_charge","reaper_surge","reaper_scythe"]: voice.stop()
   event("reward" if model.result=="retired" else "victory" if model.result=="victory" else "defeat")
   _previous.result = model.result
+ if mode=="result" or (model!=null and model.result!=""):_stop_battle_cues()
 
 func _snapshot(model) -> Dictionary:
  var rooms: Dictionary = {}

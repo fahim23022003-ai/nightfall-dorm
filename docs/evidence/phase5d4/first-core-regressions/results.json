@@ -1,0 +1,123 @@
+{
+  "baseline": "9db04a0e5141c0c5e510542e71fcdccdb5b57f9b",
+  "commands": 13,
+  "completed": 13,
+  "passed": false,
+  "seconds": 428.845,
+  "historical_restored": [
+    "docs/evidence/replay/qa-code-process-0-advanced.json",
+    "docs/evidence/replay/qa-code-process-0-beginner.json",
+    "docs/evidence/replay/qa-code-process-1-advanced.json",
+    "docs/evidence/replay/qa-code-process-1-beginner.json",
+    "docs/evidence/replay/qa-code-process-2-advanced.json",
+    "docs/evidence/replay/qa-code-process-2-beginner.json"
+  ],
+  "source_end": "9db04a0e5141c0c5e510542e71fcdccdb5b57f9b",
+  "rows": [
+    {
+      "name": "run_tests",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 0.477
+    },
+    {
+      "name": "boss_architecture",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 1.918
+    },
+    {
+      "name": "boss_qa",
+      "exit_code": -15,
+      "engine_errors": true,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 212.984
+    },
+    {
+      "name": "legendary_qa",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 49.427
+    },
+    {
+      "name": "legendary_combos",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 18.202
+    },
+    {
+      "name": "advanced_items_qa",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 40.179
+    },
+    {
+      "name": "projectiles",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.378
+    },
+    {
+      "name": "phase5d3_qa_contact_guards",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 39.194
+    },
+    {
+      "name": "replay_endless",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 24.243
+    },
+    {
+      "name": "replay_migration",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 0.614
+    },
+    {
+      "name": "phase5d3_qa_migration",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 2.127
+    },
+    {
+      "name": "replay_codes",
+      "exit_code": 1,
+      "engine_errors": true,
+      "assertion_failure": true,
+      "warnings": [],
+      "seconds": 18.752
+    },
+    {
+      "name": "premium_strategy_contracts",
+      "exit_code": 0,
+      "engine_errors": false,
+      "assertion_failure": false,
+      "warnings": [],
+      "seconds": 20.299
+    }
+  ],
+  "runtime_unchanged": false
+}

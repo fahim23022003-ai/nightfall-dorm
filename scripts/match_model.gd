@@ -546,6 +546,7 @@ func eliminate_resident(index: int,attacker_id: int=1,exposed: bool=false) -> bo
  _kill_credit_room=index
  evolution.award(self,index,"Hunter" if attacker_id==1 else "Undead")
  _kill_credit_room=-1
+ if wrath.domain_active() and wrath.domain_room==index:wrath.end_domain(self)
  return true
 func apply_target_damage(id: int,amount: float,room_index: int) -> float:
  var actor=target_by_id(id)

@@ -1,0 +1,9 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: 5D4 EVOLUTION QA: real operations establish shared shield/lure/repair refractory
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d4_qa_evolution.gd:10)
+       [1] live_refractory (res://tests/phase5d4_qa_save.gd:78)
+       [2] run (res://tests/phase5d4_qa_save.gd:101)
+PHASE5D4_QA_SAVE_CHECKS=264 FAILURES=1

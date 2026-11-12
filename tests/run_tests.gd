@@ -147,11 +147,13 @@ func run():
  check(room.build("repair",0), "repair facility builds")
  room.tick_economy(1.0)
  check(is_equal_approx(room.door_hp,57), "repair facility heals actual HP")
- section("14 electricity generation and spending; all six building effects")
+ section("14 electricity generation and spending; all registered building purchases")
  room = RoomState.new(0)
  room.sleeping = true
  room.gold = 10000
  room.electricity = 1000
+ room.layout=MapCatalog.map(MapCatalog.IDS[0]).rooms[0]
+ check(room.tile_count()>=Catalog.BUILDINGS.size(),"current map supports complete registered-machine purchase fixture")
  for kind in Catalog.BUILDINGS.keys():
   room.bed_level = 1
   check(room.build(kind,room.buildings.size()), "build " + kind)

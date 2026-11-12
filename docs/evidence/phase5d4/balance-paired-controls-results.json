@@ -1,0 +1,2841 @@
+{
+ "failures": 0,
+ "rows": [
+  {
+   "NPC_max_bed": 5,
+   "NPC_max_door": 5,
+   "NPC_max_machine": 4,
+   "NPCs": [
+    {
+     "alive": false,
+     "bed": 3,
+     "buildings": {
+      "0": {
+       "cooldown": 0.0470588235294123,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.777419354838711,
+       "flash": 0.0,
+       "invested_gold": 380.0,
+       "invested_power": 57.0,
+       "kind": "heavy",
+       "level": 3
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      }
+     },
+     "damage": 1782.0,
+     "door": 3,
+     "door_branch": "",
+     "door_damage_taken": 806.8395,
+     "gold": 141.560000000001,
+     "income": 1074.55999999999,
+     "main_damage": 1782.0,
+     "minion_damage": 0.0,
+     "owner": 4,
+     "power": 41.379999999999,
+     "profile": "gunner",
+     "repairs": 4,
+     "room": 1,
+     "shots": 18,
+     "spent": 958.0
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "buildings": {
+      "0": {
+       "cooldown": 0.6,
+       "flash": 0.0,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      }
+     },
+     "damage": 36.0,
+     "door": 2,
+     "door_branch": "",
+     "door_damage_taken": 485.0,
+     "gold": 25.0599999999999,
+     "income": 129.06,
+     "main_damage": 36.0,
+     "minion_damage": 0.0,
+     "owner": 2,
+     "power": 19.2,
+     "profile": "engineer",
+     "repairs": 2,
+     "room": 2,
+     "shots": 4,
+     "spent": 129.0
+    },
+    {
+     "alive": false,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": 0.429411764705886,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": 0.4,
+       "flash": 0.0,
+       "invested_gold": 190.0,
+       "invested_power": 27.0,
+       "kind": "heavy",
+       "level": 2
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      }
+     },
+     "damage": 1723.72296875,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 1974.445,
+     "gold": 226.959999999999,
+     "income": 2759.96000000002,
+     "main_damage": 1397.32296875,
+     "minion_damage": 326.4,
+     "owner": 1,
+     "power": 126.900000000006,
+     "profile": "guard",
+     "repairs": 4,
+     "room": 3,
+     "shots": 43,
+     "spent": 2558.0
+    },
+    {
+     "alive": false,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": 0.0000000000000033584246494911,
+       "flash": 0.0,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.5,
+       "flash": 0.0,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      }
+     },
+     "damage": 1224.09999999999,
+     "door": 4,
+     "door_branch": "",
+     "door_damage_taken": 1294.628,
+     "gold": 85.817500000003,
+     "income": 1313.81749999999,
+     "main_damage": 1224.09999999999,
+     "minion_damage": 0.0,
+     "owner": 3,
+     "power": 33.074999999999,
+     "profile": "economist",
+     "repairs": 4,
+     "room": 4,
+     "shots": 53,
+     "spent": 1253.0
+    },
+    {
+     "alive": false,
+     "bed": 3,
+     "buildings": {
+      "0": {
+       "cooldown": 0.700000000000004,
+       "flash": 0.0,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      }
+     },
+     "damage": 297.0,
+     "door": 2,
+     "door_branch": "",
+     "door_damage_taken": 803.850000000008,
+     "gold": 58.2599999999996,
+     "income": 316.260000000003,
+     "main_damage": 297.0,
+     "minion_damage": 0.0,
+     "owner": 5,
+     "power": 62.5499999999996,
+     "profile": "balanced",
+     "repairs": 9,
+     "room": 5,
+     "shots": 33,
+     "spent": 283.0
+    }
+   ],
+   "active_seconds": 178.899999999992,
+   "archetype": "crusher",
+   "boss_casts": {
+    "assault": 1,
+    "crimson_execution": 1,
+    "enhanced_undead": 1,
+    "phantom_scream": 1,
+    "rules_judgement": 1,
+    "scythe_slash": 2,
+    "soul_reaper": 1
+   },
+   "boss_phases": [
+    {
+     "hp": 4316.021875,
+     "phase": 1,
+     "time": 143.999999999996
+    },
+    {
+     "hp": 2513.69890625,
+     "phase": 2,
+     "time": 168.599999999995
+    }
+   ],
+   "boss_policy": {
+    "deadline": 210.0,
+    "enabled": true,
+    "first_stage": 2,
+    "hp_fraction": 0.55,
+    "opening": 8.0,
+    "recovery": 1.1
+   },
+   "boss_reason": "transformed",
+   "buffs": [
+    {
+     "id": "predator_rush",
+     "room": 2,
+     "source": "Hunter",
+     "time": 53.3000000000005
+    },
+    {
+     "id": "ruthless_pursuit",
+     "room": 5,
+     "source": "Hunter",
+     "time": 86.7999999999993
+    },
+    {
+     "id": "door_crusher",
+     "room": 4,
+     "source": "Hunter",
+     "time": 117.599999999998
+    },
+    {
+     "id": "shadow_step",
+     "room": 1,
+     "source": "Hunter",
+     "time": 134.199999999997
+    },
+    {
+     "id": "cursed_armor",
+     "room": 3,
+     "source": "Hunter",
+     "time": 177.699999999994
+    }
+   ],
+   "domains": [
+    {
+     "hp": 718.1996875,
+     "owner": 0,
+     "room": 0,
+     "time": 199.999999999993
+    }
+   ],
+   "door_damage_total": 7350.60497920414,
+   "drained_gold": 28.3439999999996,
+   "drained_power": 292.820000000009,
+   "events": {
+    "approach": 8,
+    "archetype_warning": 37,
+    "bed_upgrade": 16,
+    "boss_ability_activate": 8,
+    "boss_ability_end": 3,
+    "boss_ability_warning": 10,
+    "boss_awakened": 1,
+    "boss_death": 1,
+    "boss_impact": 9,
+    "boss_phase": 2,
+    "boss_resource_drain": 1,
+    "boss_transform": 1,
+    "boss_warning": 14,
+    "build": 25,
+    "building_upgrade": 28,
+    "charged_attack": 11,
+    "door_break": 5,
+    "door_damage": 181,
+    "door_upgrade": 14,
+    "elimination": 5,
+    "encounter": 8,
+    "hunter_ability": 6,
+    "hunter_ability_warning": 5,
+    "hunter_evolved": 5,
+    "repair": 60,
+    "scythe_embed": 1,
+    "scythe_end": 1,
+    "scythe_throw": 1,
+    "scythe_tick": 2,
+    "scythe_warded": 2,
+    "survivor_attack": 5,
+    "survivor_fear": 5,
+    "undead_attack": 129,
+    "undead_death": 5,
+    "undead_spawn": 10
+   },
+   "evolution_count": 5,
+   "evolution_credited": {
+    "owner:1": 3,
+    "owner:2": 2,
+    "owner:3": 4,
+    "owner:4": 1,
+    "owner:5": 5
+   },
+   "first_hunter_damage": 50.8000000000005,
+   "first_hunter_door_attack": 30.5000000000002,
+   "first_player_door_hit": 150.799999999996,
+   "high_NPC_counterfactual": false,
+   "hunter_attacks": 46,
+   "hunter_retargets": 1,
+   "hunter_states_seconds": {
+    "ATTACK": 129.299999999997,
+    "BREACH": 9.49999999999998,
+    "DORMANT": 29.0000000000001,
+    "EXIT": 12.4,
+    "MOVE": 19.4,
+    "SEEK": 5.9,
+    "TRANSFORM": 2.4
+   },
+   "invalid": [],
+   "last_alive_ratio": 0.00375935662043847,
+   "last_alive_time": 207.799999999992,
+   "legendary_uses": 0,
+   "map": "haunted_hospital",
+   "max_evolution": 5,
+   "min_alive_hp_ratio_after_opening": 0.00375935662043847,
+   "mode": "hell",
+   "npc_damage": 5062.82296874999,
+   "peak_minions": 10,
+   "peak_projectiles": 3,
+   "player_bed": 4,
+   "player_buildings": {
+    "1": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "invested_gold": 120.0,
+     "invested_power": 9.0,
+     "kind": "generator",
+     "level": 3
+    },
+    "2": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "invested_gold": 210.0,
+     "invested_power": 18.0,
+     "kind": "generator",
+     "level": 4
+    },
+    "9": {
+     "cooldown": 0.136249999999999,
+     "flash": 0.0,
+     "invested_gold": 405.0,
+     "invested_power": 58.0,
+     "kind": "turret",
+     "level": 6,
+     "specialization": "suppression"
+    }
+   },
+   "player_damage": 3514.08953125,
+   "player_door": 4,
+   "player_gold": 59.2289999999999,
+   "player_income": 1801.57300000002,
+   "player_power": 611.600000000017,
+   "player_shots": 97,
+   "player_spent": 1739.0,
+   "policy": "active",
+   "pre_arrival_hunter_damage": 0.0,
+   "preparation": 29.0,
+   "result": "victory",
+   "room": 0,
+   "seconds": 207.899999999992,
+   "seed": 17,
+   "shield_uses": 4,
+   "stage": "stage_2",
+   "transform_time": 141.499999999996,
+   "ultimate_warnings": 1
+  },
+  {
+   "NPC_max_bed": 5,
+   "NPC_max_door": 5,
+   "NPC_max_machine": 4,
+   "NPCs": [
+    {
+     "alive": true,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      }
+     },
+     "damage": 0.0,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 0.0,
+     "gold": 9303.29724999997,
+     "income": 2653.29724999999,
+     "main_damage": 0.0,
+     "minion_damage": 0.0,
+     "owner": 4,
+     "power": 824.889999999985,
+     "profile": "gunner",
+     "repairs": 0,
+     "room": 1,
+     "shots": 0,
+     "spent": 3375.0
+    },
+    {
+     "alive": true,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      },
+      "5": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      }
+     },
+     "damage": 588.000000000002,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 419.26896,
+     "gold": 8890.81099999995,
+     "income": 2240.811,
+     "main_damage": 588.000000000002,
+     "minion_damage": 0.0,
+     "owner": 2,
+     "power": 852.100000000005,
+     "profile": "engineer",
+     "repairs": 0,
+     "room": 2,
+     "shots": 14,
+     "spent": 3375.0
+    },
+    {
+     "alive": true,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      }
+     },
+     "damage": 0.0,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 0.0,
+     "gold": 9595.43499999989,
+     "income": 2945.43499999997,
+     "main_damage": 0.0,
+     "minion_damage": 0.0,
+     "owner": 1,
+     "power": 957.820000000004,
+     "profile": "guard",
+     "repairs": 0,
+     "room": 3,
+     "shots": 0,
+     "spent": 3375.0
+    },
+    {
+     "alive": true,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      }
+     },
+     "damage": 0.0,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 0.0,
+     "gold": 9499.17099999989,
+     "income": 2849.17099999999,
+     "main_damage": 0.0,
+     "minion_damage": 0.0,
+     "owner": 3,
+     "power": 825.159999999985,
+     "profile": "economist",
+     "repairs": 0,
+     "room": 4,
+     "shots": 0,
+     "spent": 3375.0
+    },
+    {
+     "alive": true,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": 0.517647058823535,
+       "flash": 0.05,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": 0.306160206017898,
+       "flash": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      }
+     },
+     "damage": 6815.125,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 221.34816,
+     "gold": 8552.71249999995,
+     "income": 1902.7125,
+     "main_damage": 6815.125,
+     "minion_damage": 0.0,
+     "owner": 5,
+     "power": 816.550000000003,
+     "profile": "balanced",
+     "repairs": 0,
+     "room": 5,
+     "shots": 73,
+     "spent": 3375.0
+    }
+   ],
+   "active_seconds": 47.7999999999999,
+   "archetype": "crusher",
+   "boss_casts": {
+    "crimson_execution": 1,
+    "final_judgement": 1
+   },
+   "boss_phases": [
+    {
+     "hp": 4071.71875,
+     "phase": 1,
+     "time": 62.2000000000006
+    },
+    {
+     "hp": 2371.4140625,
+     "phase": 2,
+     "time": 66.4000000000005
+    }
+   ],
+   "boss_policy": {
+    "deadline": 210.0,
+    "enabled": true,
+    "first_stage": 2,
+    "hp_fraction": 0.55,
+    "opening": 8.0,
+    "recovery": 1.1
+   },
+   "boss_reason": "transformed",
+   "buffs": [],
+   "domains": [
+    {
+     "hp": 591.146875,
+     "owner": 5,
+     "room": 5,
+     "time": 75.1
+    }
+   ],
+   "door_damage_total": 640.61712,
+   "drained_gold": 0.0,
+   "drained_power": 0.0,
+   "events": {
+    "approach": 3,
+    "archetype_warning": 12,
+    "bed_upgrade": 20,
+    "boss_ability_activate": 2,
+    "boss_ability_end": 3,
+    "boss_ability_warning": 4,
+    "boss_awakened": 1,
+    "boss_death": 1,
+    "boss_phase": 2,
+    "boss_transform": 1,
+    "boss_warning": 2,
+    "build": 30,
+    "building_upgrade": 90,
+    "charged_attack": 3,
+    "door_damage": 12,
+    "door_upgrade": 20,
+    "encounter": 4,
+    "hunter_ability": 2,
+    "hunter_ability_warning": 2,
+    "scythe_embed": 1,
+    "scythe_end": 1,
+    "scythe_throw": 1
+   },
+   "evolution_count": 0,
+   "evolution_credited": {
+
+   },
+   "first_hunter_damage": 30.1000000000002,
+   "first_hunter_door_attack": 30.5000000000002,
+   "first_player_door_hit": -1.0,
+   "high_NPC_counterfactual": true,
+   "hunter_attacks": 12,
+   "hunter_retargets": 1,
+   "hunter_states_seconds": {
+    "ATTACK": 41.1000000000003,
+    "DORMANT": 29.0000000000001,
+    "MOVE": 3.7,
+    "SEEK": 0.6,
+    "TRANSFORM": 2.4
+   },
+   "invalid": [],
+   "last_alive_ratio": 0.0220718123746051,
+   "last_alive_time": 76.6999999999999,
+   "legendary_uses": 0,
+   "map": "haunted_hospital",
+   "max_evolution": 0,
+   "min_alive_hp_ratio_after_opening": 0.0220718123746051,
+   "mode": "hell",
+   "npc_damage": 7403.125,
+   "peak_minions": 0,
+   "peak_projectiles": 2,
+   "player_bed": 1,
+   "player_buildings": {
+
+   },
+   "player_damage": 0.0,
+   "player_door": 1,
+   "player_gold": 166.999999999999,
+   "player_income": 142.0,
+   "player_power": 0.0,
+   "player_shots": 0,
+   "player_spent": 0.0,
+   "policy": "idle",
+   "pre_arrival_hunter_damage": 0.0,
+   "preparation": 29.0,
+   "result": "victory",
+   "room": 0,
+   "seconds": 76.7999999999999,
+   "seed": 17,
+   "shield_uses": 0,
+   "stage": "stage_2",
+   "transform_time": 59.7000000000006,
+   "ultimate_warnings": 1
+  },
+  {
+   "NPC_max_bed": 4,
+   "NPC_max_door": 4,
+   "NPC_max_machine": 4,
+   "NPCs": [
+    {
+     "alive": false,
+     "bed": 4,
+     "buildings": {
+      "0": {
+       "cooldown": 0.300000000000002,
+       "flash": 0.0,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.5,
+       "flash": 0.0,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      }
+     },
+     "damage": 639.090000000013,
+     "door": 4,
+     "door_branch": "",
+     "door_damage_taken": 1381.8335,
+     "gold": 344.417499999998,
+     "income": 1198.4175,
+     "main_damage": 639.090000000013,
+     "minion_damage": 0.0,
+     "owner": 1,
+     "power": 132.300000000004,
+     "profile": "guard",
+     "repairs": 2,
+     "room": 1,
+     "shots": 31,
+     "spent": 879.0
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "buildings": {
+      "0": {
+       "cooldown": 0.2,
+       "flash": 0.0,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      }
+     },
+     "damage": 27.0,
+     "door": 2,
+     "door_branch": "",
+     "door_damage_taken": 410.0,
+     "gold": 24.1999999999999,
+     "income": 98.2000000000003,
+     "main_damage": 27.0,
+     "minion_damage": 0.0,
+     "owner": 5,
+     "power": 0.0,
+     "profile": "balanced",
+     "repairs": 2,
+     "room": 2,
+     "shots": 3,
+     "spent": 99.0
+    },
+    {
+     "alive": false,
+     "bed": 3,
+     "buildings": {
+      "0": {
+       "cooldown": 0.350000000000002,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.669239631336406,
+       "flash": 0.0,
+       "invested_gold": 380.0,
+       "invested_power": 57.0,
+       "kind": "heavy",
+       "level": 3
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      }
+     },
+     "damage": 1999.08000000001,
+     "door": 3,
+     "door_branch": "",
+     "door_damage_taken": 1323.74749999999,
+     "gold": 71.1860000000003,
+     "income": 1016.18599999999,
+     "main_damage": 1999.08000000001,
+     "minion_damage": 0.0,
+     "owner": 4,
+     "power": 35.979999999999,
+     "profile": "gunner",
+     "repairs": 5,
+     "room": 3,
+     "shots": 57,
+     "spent": 970.0
+    },
+    {
+     "alive": false,
+     "bed": 3,
+     "buildings": {
+      "0": {
+       "cooldown": 0.3,
+       "flash": 0.0,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      }
+     },
+     "damage": 24.3000000000011,
+     "door": 3,
+     "door_branch": "",
+     "door_damage_taken": 892.58,
+     "gold": 58.8759999999998,
+     "income": 438.876000000001,
+     "main_damage": 24.3000000000011,
+     "minion_damage": 0.0,
+     "owner": 2,
+     "power": 73.1999999999998,
+     "profile": "engineer",
+     "repairs": 5,
+     "room": 4,
+     "shots": 3,
+     "spent": 405.0
+    },
+    {
+     "alive": false,
+     "bed": 4,
+     "buildings": {
+      "0": {
+       "cooldown": 0.300000000000001,
+       "flash": 0.0,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 1.2,
+       "flash": 0.05,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      }
+     },
+     "damage": 371.565000000007,
+     "door": 3,
+     "door_branch": "",
+     "door_damage_taken": 678.5755,
+     "gold": 115.3,
+     "income": 779.300000000002,
+     "main_damage": 371.565000000007,
+     "minion_damage": 0.0,
+     "owner": 3,
+     "power": 87.8800000000022,
+     "profile": "economist",
+     "repairs": 2,
+     "room": 5,
+     "shots": 20,
+     "spent": 689.0
+    }
+   ],
+   "active_seconds": 188.299999999992,
+   "archetype": "stalker",
+   "boss_casts": {
+    "assault": 1,
+    "crimson_execution": 1,
+    "final_judgement": 1,
+    "phantom_scream": 1,
+    "rules_judgement": 1
+   },
+   "boss_phases": [
+    {
+     "hp": 3620.43,
+     "phase": 1,
+     "time": 172.199999999995
+    },
+    {
+     "hp": 2434.131,
+     "phase": 2,
+     "time": 189.399999999994
+    }
+   ],
+   "boss_policy": {
+    "deadline": 210.0,
+    "enabled": true,
+    "first_stage": 2,
+    "hp_fraction": 0.55,
+    "opening": 8.0,
+    "recovery": 1.1
+   },
+   "boss_reason": "transformed",
+   "buffs": [
+    {
+     "id": "iron_skin",
+     "room": 2,
+     "source": "Hunter",
+     "time": 45.8000000000004
+    },
+    {
+     "id": "soul_hunger",
+     "room": 4,
+     "source": "Hunter",
+     "time": 99.6999999999986
+    },
+    {
+     "id": "undead_commander",
+     "room": 5,
+     "source": "Hunter",
+     "time": 116.899999999998
+    },
+    {
+     "id": "shadow_step",
+     "room": 3,
+     "source": "Hunter",
+     "time": 133.699999999997
+    },
+    {
+     "id": "savage_strike",
+     "room": 1,
+     "source": "Hunter",
+     "time": 155.399999999995
+    }
+   ],
+   "domains": [
+    {
+     "hp": 650.106,
+     "owner": 0,
+     "room": 0,
+     "time": 209.999999999992
+    }
+   ],
+   "door_damage_total": 6990.88010189028,
+   "drained_gold": 0.0,
+   "drained_power": 0.0,
+   "events": {
+    "approach": 8,
+    "archetype_warning": 7,
+    "bed_upgrade": 14,
+    "boss_ability_activate": 5,
+    "boss_ability_end": 3,
+    "boss_ability_warning": 7,
+    "boss_awakened": 1,
+    "boss_death": 1,
+    "boss_impact": 8,
+    "boss_phase": 2,
+    "boss_transform": 1,
+    "boss_warning": 10,
+    "build": 26,
+    "building_upgrade": 17,
+    "charged_attack": 14,
+    "door_break": 5,
+    "door_damage": 93,
+    "door_upgrade": 13,
+    "elimination": 5,
+    "encounter": 9,
+    "hunter_ability": 9,
+    "hunter_ability_warning": 6,
+    "hunter_evolved": 5,
+    "repair": 64,
+    "scythe_embed": 1,
+    "scythe_end": 1,
+    "scythe_throw": 1,
+    "scythe_tick": 1,
+    "survivor_attack": 5,
+    "survivor_fear": 5
+   },
+   "evolution_count": 5,
+   "evolution_credited": {
+    "owner:1": 1,
+    "owner:2": 4,
+    "owner:3": 5,
+    "owner:4": 3,
+    "owner:5": 2
+   },
+   "first_hunter_damage": 43.8000000000004,
+   "first_hunter_door_attack": 29.2000000000001,
+   "first_player_door_hit": 161.799999999995,
+   "high_NPC_counterfactual": false,
+   "hunter_attacks": 91,
+   "hunter_retargets": 1,
+   "hunter_states_seconds": {
+    "ATTACK": 131.599999999997,
+    "BREACH": 8.09999999999999,
+    "DORMANT": 28.0000000000001,
+    "EXIT": 11.0,
+    "MOVE": 32.5000000000002,
+    "SEEK": 2.7,
+    "TRANSFORM": 2.4
+   },
+   "invalid": [],
+   "last_alive_ratio": 0.00216631726065689,
+   "last_alive_time": 216.199999999992,
+   "legendary_uses": 0,
+   "map": "forgotten_hotel",
+   "max_evolution": 5,
+   "min_alive_hp_ratio_after_opening": 0.00216631726065689,
+   "mode": "hell",
+   "npc_damage": 3061.03500000003,
+   "peak_minions": 10,
+   "peak_projectiles": 2,
+   "player_bed": 4,
+   "player_buildings": {
+    "1": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "invested_gold": 210.0,
+     "invested_power": 18.0,
+     "kind": "generator",
+     "level": 4
+    },
+    "2": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "invested_gold": 210.0,
+     "invested_power": 18.0,
+     "kind": "generator",
+     "level": 4
+    },
+    "9": {
+     "cooldown": 0.0790406976744202,
+     "flash": 0.0,
+     "invested_gold": 605.0,
+     "invested_power": 88.0,
+     "kind": "turret",
+     "level": 7,
+     "specialization": "suppression"
+    }
+   },
+   "player_damage": 4546.01379995309,
+   "player_door": 4,
+   "player_gold": 182.540299999994,
+   "player_income": 2318.54029999999,
+   "player_power": 888.639999999983,
+   "player_shots": 120,
+   "player_spent": 2161.0,
+   "policy": "active",
+   "pre_arrival_hunter_damage": 0.0,
+   "preparation": 28.0,
+   "result": "victory",
+   "room": 0,
+   "seconds": 216.299999999992,
+   "seed": 47,
+   "shield_uses": 4,
+   "stage": "stage_3",
+   "transform_time": 169.699999999995,
+   "ultimate_warnings": 1
+  },
+  {
+   "NPC_max_bed": 5,
+   "NPC_max_door": 5,
+   "NPC_max_machine": 4,
+   "NPCs": [
+    {
+     "alive": true,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      }
+     },
+     "damage": 1196.4,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 0.0,
+     "gold": 8267.54749999994,
+     "income": 1617.5475,
+     "main_damage": 1196.4,
+     "minion_damage": 0.0,
+     "owner": 1,
+     "power": 788.950000000002,
+     "profile": "guard",
+     "repairs": 0,
+     "room": 1,
+     "shots": 9,
+     "spent": 3375.0
+    },
+    {
+     "alive": true,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      }
+     },
+     "damage": 292.600000000001,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 309.5664,
+     "gold": 7778.20499999997,
+     "income": 1128.205,
+     "main_damage": 292.600000000001,
+     "minion_damage": 0.0,
+     "owner": 5,
+     "power": 744.699999999996,
+     "profile": "balanced",
+     "repairs": 0,
+     "room": 2,
+     "shots": 8,
+     "spent": 3375.0
+    },
+    {
+     "alive": true,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      }
+     },
+     "damage": 0.0,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 0.0,
+     "gold": 7868.09725000003,
+     "income": 1218.09725,
+     "main_damage": 0.0,
+     "minion_damage": 0.0,
+     "owner": 4,
+     "power": 716.889999999993,
+     "profile": "gunner",
+     "repairs": 0,
+     "room": 3,
+     "shots": 0,
+     "spent": 3375.0
+    },
+    {
+     "alive": true,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      },
+      "5": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      }
+     },
+     "damage": 0.0,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 0.0,
+     "gold": 7717.06699999995,
+     "income": 1067.067,
+     "main_damage": 0.0,
+     "minion_damage": 0.0,
+     "owner": 2,
+     "power": 726.7,
+     "profile": "engineer",
+     "repairs": 0,
+     "room": 4,
+     "shots": 0,
+     "spent": 3375.0
+    },
+    {
+     "alive": true,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 190.0,
+       "invested_power": 27.0,
+       "kind": "heavy",
+       "level": 2
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      }
+     },
+     "damage": 0.0,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 0.0,
+     "gold": 8351.41999999997,
+     "income": 836.419999999999,
+     "main_damage": 0.0,
+     "minion_damage": 0.0,
+     "owner": 3,
+     "power": 849.519999999994,
+     "profile": "economist",
+     "repairs": 0,
+     "room": 5,
+     "shots": 0,
+     "spent": 2510.0
+    }
+   ],
+   "active_seconds": 28.1000000000005,
+   "archetype": "stalker",
+   "boss_casts": {
+
+   },
+   "boss_phases": [],
+   "boss_policy": {
+    "deadline": 210.0,
+    "enabled": true,
+    "first_stage": 2,
+    "hp_fraction": 0.55,
+    "opening": 8.0,
+    "recovery": 1.1
+   },
+   "boss_reason": "eligible opening passed; threshold/deadline or breach/exit state timing",
+   "buffs": [
+    {
+     "id": "iron_skin",
+     "room": 0,
+     "source": "Hunter",
+     "time": 56.1000000000005
+    }
+   ],
+   "domains": [],
+   "door_damage_total": 459.5664,
+   "drained_gold": 0.0,
+   "drained_power": 0.0,
+   "events": {
+    "approach": 2,
+    "archetype_warning": 2,
+    "bed_upgrade": 20,
+    "build": 30,
+    "building_upgrade": 85,
+    "door_break": 1,
+    "door_damage": 17,
+    "door_upgrade": 20,
+    "elimination": 1,
+    "encounter": 2,
+    "hunter_ability": 2,
+    "hunter_ability_warning": 1,
+    "hunter_evolved": 1,
+    "survivor_attack": 1,
+    "survivor_fear": 1
+   },
+   "evolution_count": 1,
+   "evolution_credited": {
+    "owner:0": 0
+   },
+   "first_hunter_damage": 30.8000000000002,
+   "first_hunter_door_attack": 29.2000000000001,
+   "first_player_door_hit": 48.3000000000004,
+   "high_NPC_counterfactual": true,
+   "hunter_attacks": 17,
+   "hunter_retargets": 1,
+   "hunter_states_seconds": {
+    "ATTACK": 16.5,
+    "BREACH": 2.9,
+    "DORMANT": 28.0000000000001,
+    "MOVE": 8.59999999999999,
+    "SEEK": 0.1
+   },
+   "invalid": [],
+   "last_alive_ratio": 0.755701394585726,
+   "last_alive_time": 56.0000000000005,
+   "legendary_uses": 0,
+   "map": "forgotten_hotel",
+   "max_evolution": 1,
+   "min_alive_hp_ratio_after_opening": 0.755701394585726,
+   "mode": "hell",
+   "npc_damage": 1489.0,
+   "peak_minions": 0,
+   "peak_projectiles": 2,
+   "player_bed": 1,
+   "player_buildings": {
+
+   },
+   "player_damage": 0.0,
+   "player_door": 1,
+   "player_gold": 150.12,
+   "player_income": 125.120000000001,
+   "player_power": 0.0,
+   "player_shots": 0,
+   "player_spent": 0.0,
+   "policy": "idle",
+   "pre_arrival_hunter_damage": 0.0,
+   "preparation": 28.0,
+   "result": "defeat",
+   "room": 0,
+   "seconds": 56.1000000000005,
+   "seed": 47,
+   "shield_uses": 0,
+   "stage": "stage_3",
+   "transform_time": -1.0,
+   "ultimate_warnings": 0
+  },
+  {
+   "NPC_max_bed": 5,
+   "NPC_max_door": 5,
+   "NPC_max_machine": 4,
+   "NPCs": [
+    {
+     "alive": true,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      }
+     },
+     "damage": 1661.89,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 1067.3366,
+     "gold": 2048.90949999999,
+     "income": 5430.90950000006,
+     "main_damage": 1301.89,
+     "minion_damage": 360.0,
+     "owner": 5,
+     "power": 42.5349999999988,
+     "profile": "balanced",
+     "repairs": 2,
+     "room": 1,
+     "shots": 19,
+     "spent": 3399.0
+    },
+    {
+     "alive": true,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      },
+      "4": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      }
+     },
+     "damage": 120.0,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 429.572,
+     "gold": 37.9064999999986,
+     "income": 2003.78700000003,
+     "main_damage": 0.0,
+     "minion_damage": 120.0,
+     "owner": 1,
+     "power": 33.3750000000022,
+     "profile": "guard",
+     "repairs": 2,
+     "room": 2,
+     "shots": 4,
+     "spent": 1929.0
+    },
+    {
+     "alive": false,
+     "bed": 4,
+     "buildings": {
+      "0": {
+       "cooldown": 0.600000000000002,
+       "flash": 0.0,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.9,
+       "flash": 0.0,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      }
+     },
+     "damage": 283.0,
+     "door": 3,
+     "door_branch": "",
+     "door_damage_taken": 700.881,
+     "gold": 69.075,
+     "income": 680.075000000003,
+     "main_damage": 283.0,
+     "minion_damage": 0.0,
+     "owner": 3,
+     "power": 87.0600000000018,
+     "profile": "economist",
+     "repairs": 3,
+     "room": 3,
+     "shots": 23,
+     "spent": 636.0
+    },
+    {
+     "alive": true,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      },
+      "5": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      }
+     },
+     "damage": 1874.72,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 1271.54267553516,
+     "gold": 2391.68649999999,
+     "income": 5789.68650000008,
+     "main_damage": 1548.32,
+     "minion_damage": 326.4,
+     "owner": 2,
+     "power": 70.8599999999989,
+     "profile": "engineer",
+     "repairs": 4,
+     "room": 4,
+     "shots": 78,
+     "spent": 3423.0
+    },
+    {
+     "alive": false,
+     "bed": 3,
+     "buildings": {
+      "0": {
+       "cooldown": 0.573529411764708,
+       "flash": 0.05,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.503571428571428,
+       "flash": 0.0,
+       "invested_gold": 190.0,
+       "invested_power": 27.0,
+       "kind": "heavy",
+       "level": 2
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      }
+     },
+     "damage": 1452.60000000001,
+     "door": 3,
+     "door_branch": "",
+     "door_damage_taken": 875.57,
+     "gold": 22.1559999999994,
+     "income": 753.156000000004,
+     "main_damage": 1452.60000000001,
+     "minion_damage": 0.0,
+     "owner": 4,
+     "power": 78.250000000002,
+     "profile": "gunner",
+     "repairs": 3,
+     "room": 5,
+     "shots": 28,
+     "spent": 756.0
+    }
+   ],
+   "active_seconds": 173.499999999993,
+   "archetype": "ravager",
+   "boss_casts": {
+    "assault": 1,
+    "crimson_execution": 1,
+    "enhanced_undead": 1,
+    "final_judgement": 1,
+    "rules_judgement": 1,
+    "scythe_slash": 1,
+    "soul_reaper": 1
+   },
+   "boss_phases": [
+    {
+     "hp": 3553.48,
+     "phase": 1,
+     "time": 143.199999999996
+    },
+    {
+     "hp": 2487.926,
+     "phase": 2,
+     "time": 164.599999999995
+    }
+   ],
+   "boss_policy": {
+    "deadline": 210.0,
+    "enabled": true,
+    "first_stage": 2,
+    "hp_fraction": 0.55,
+    "opening": 8.0,
+    "recovery": 1.1
+   },
+   "boss_reason": "transformed",
+   "buffs": [
+    {
+     "id": "blood_frenzy",
+     "room": 3,
+     "source": "Hunter",
+     "time": 106.599999999998
+    },
+    {
+     "id": "soul_drain",
+     "room": 5,
+     "source": "Hunter",
+     "time": 137.299999999996
+    }
+   ],
+   "domains": [
+    {
+     "hp": 710.836000000001,
+     "owner": 0,
+     "room": 0,
+     "time": 189.299999999994
+    }
+   ],
+   "door_damage_total": 5637.88097186323,
+   "drained_gold": 0.0,
+   "drained_power": 0.0,
+   "events": {
+    "approach": 9,
+    "archetype_warning": 22,
+    "bed_upgrade": 20,
+    "boss_ability_activate": 7,
+    "boss_ability_end": 3,
+    "boss_ability_warning": 9,
+    "boss_awakened": 1,
+    "boss_death": 1,
+    "boss_impact": 6,
+    "boss_phase": 2,
+    "boss_resource_drain": 1,
+    "boss_transform": 1,
+    "boss_warning": 8,
+    "build": 32,
+    "building_upgrade": 57,
+    "charged_attack": 11,
+    "door_break": 2,
+    "door_damage": 120,
+    "door_upgrade": 19,
+    "elimination": 2,
+    "encounter": 9,
+    "hunter_ability": 6,
+    "hunter_ability_warning": 6,
+    "hunter_evolved": 2,
+    "repair": 31,
+    "scythe_embed": 1,
+    "scythe_end": 1,
+    "scythe_throw": 1,
+    "scythe_tick": 3,
+    "scythe_warded": 1,
+    "soul_drain": 1,
+    "survivor_attack": 2,
+    "survivor_fear": 2,
+    "undead_attack": 51,
+    "undead_death": 10,
+    "undead_spawn": 14
+   },
+   "evolution_count": 2,
+   "evolution_credited": {
+    "owner:3": 3,
+    "owner:4": 5
+   },
+   "first_hunter_damage": 68.7000000000004,
+   "first_hunter_door_attack": 26.8000000000001,
+   "first_player_door_hit": 159.999999999995,
+   "high_NPC_counterfactual": false,
+   "hunter_attacks": 65,
+   "hunter_retargets": 5,
+   "hunter_states_seconds": {
+    "ATTACK": 109.099999999998,
+    "BREACH": 1.6,
+    "DORMANT": 26.0000000000001,
+    "EXIT": 2.8,
+    "MOVE": 54.2000000000005,
+    "SEEK": 3.4,
+    "TRANSFORM": 2.4
+   },
+   "invalid": [],
+   "last_alive_ratio": 0.00276238119622539,
+   "last_alive_time": 199.399999999993,
+   "legendary_uses": 0,
+   "map": "cursed_mansion",
+   "max_evolution": 2,
+   "min_alive_hp_ratio_after_opening": 0.00276238119622539,
+   "mode": "hell",
+   "npc_damage": 5392.21000000001,
+   "peak_minions": 10,
+   "peak_projectiles": 3,
+   "player_bed": 4,
+   "player_buildings": {
+    "2": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "invested_gold": 210.0,
+     "invested_power": 18.0,
+     "kind": "generator",
+     "level": 4
+    },
+    "3": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "invested_gold": 210.0,
+     "invested_power": 18.0,
+     "kind": "generator",
+     "level": 4
+    },
+    "12": {
+     "cooldown": 0.14125,
+     "flash": 0.0,
+     "invested_gold": 405.0,
+     "invested_power": 58.0,
+     "kind": "turret",
+     "level": 6,
+     "specialization": "suppression"
+    }
+   },
+   "player_damage": 2423.79,
+   "player_door": 4,
+   "player_gold": 10.4579999999998,
+   "player_income": 1574.45800000001,
+   "player_power": 724.06000000002,
+   "player_shots": 60,
+   "player_spent": 1589.0,
+   "policy": "active",
+   "pre_arrival_hunter_damage": 0.0,
+   "preparation": 26.0,
+   "result": "victory",
+   "room": 0,
+   "seconds": 199.499999999993,
+   "seed": 91,
+   "shield_uses": 1,
+   "stage": "stage_5",
+   "transform_time": 140.699999999996,
+   "ultimate_warnings": 1
+  },
+  {
+   "NPC_max_bed": 5,
+   "NPC_max_door": 5,
+   "NPC_max_machine": 4,
+   "NPCs": [
+    {
+     "alive": true,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      }
+     },
+     "damage": 453.600000000001,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 212.058000000001,
+     "gold": 8614.80374999997,
+     "income": 1964.80374999999,
+     "main_damage": 453.600000000001,
+     "minion_damage": 0.0,
+     "owner": 5,
+     "power": 760.49499999999,
+     "profile": "balanced",
+     "repairs": 0,
+     "room": 1,
+     "shots": 9,
+     "spent": 3375.0
+    },
+    {
+     "alive": true,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      }
+     },
+     "damage": 292.600000000001,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 212.058000000001,
+     "gold": 8323.70749999994,
+     "income": 1673.7075,
+     "main_damage": 292.600000000001,
+     "minion_damage": 0.0,
+     "owner": 1,
+     "power": 794.950000000002,
+     "profile": "guard",
+     "repairs": 0,
+     "room": 2,
+     "shots": 8,
+     "spent": 3375.0
+    },
+    {
+     "alive": true,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      }
+     },
+     "damage": 0.0,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 0.0,
+     "gold": 8303.85999999994,
+     "income": 1653.86,
+     "main_damage": 0.0,
+     "minion_damage": 0.0,
+     "owner": 3,
+     "power": 802.839999999997,
+     "profile": "economist",
+     "repairs": 0,
+     "room": 3,
+     "shots": 0,
+     "spent": 3375.0
+    },
+    {
+     "alive": true,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      },
+      "5": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      }
+     },
+     "damage": 0.0,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 0.0,
+     "gold": 9132.93049999994,
+     "income": 2482.93049999999,
+     "main_damage": 0.0,
+     "minion_damage": 0.0,
+     "owner": 2,
+     "power": 798.969999999987,
+     "profile": "engineer",
+     "repairs": 0,
+     "room": 4,
+     "shots": 0,
+     "spent": 3375.0
+    },
+    {
+     "alive": true,
+     "bed": 5,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      }
+     },
+     "damage": 0.0,
+     "door": 5,
+     "door_branch": "",
+     "door_damage_taken": 0.0,
+     "gold": 8013.26149999994,
+     "income": 1363.2615,
+     "main_damage": 0.0,
+     "minion_damage": 0.0,
+     "owner": 4,
+     "power": 772.900000000002,
+     "profile": "gunner",
+     "repairs": 0,
+     "room": 5,
+     "shots": 0,
+     "spent": 3375.0
+    }
+   ],
+   "active_seconds": 37.8000000000006,
+   "archetype": "ravager",
+   "boss_casts": {
+
+   },
+   "boss_phases": [],
+   "boss_policy": {
+    "deadline": 210.0,
+    "enabled": true,
+    "first_stage": 2,
+    "hp_fraction": 0.55,
+    "opening": 8.0,
+    "recovery": 1.1
+   },
+   "boss_reason": "eligible opening passed; threshold/deadline or breach/exit state timing",
+   "buffs": [
+    {
+     "id": "blood_frenzy",
+     "room": 0,
+     "source": "Hunter",
+     "time": 63.8000000000006
+    }
+   ],
+   "domains": [],
+   "door_damage_total": 559.116000000001,
+   "drained_gold": 0.0,
+   "drained_power": 0.0,
+   "events": {
+    "approach": 3,
+    "archetype_warning": 8,
+    "bed_upgrade": 20,
+    "build": 30,
+    "building_upgrade": 90,
+    "door_break": 1,
+    "door_damage": 19,
+    "door_upgrade": 20,
+    "elimination": 1,
+    "encounter": 3,
+    "hunter_ability": 2,
+    "hunter_ability_warning": 2,
+    "hunter_evolved": 1,
+    "survivor_attack": 1,
+    "survivor_fear": 1
+   },
+   "evolution_count": 1,
+   "evolution_credited": {
+    "owner:0": 0
+   },
+   "first_hunter_damage": 27.4000000000001,
+   "first_hunter_door_attack": 26.8000000000001,
+   "first_player_door_hit": 55.8000000000005,
+   "high_NPC_counterfactual": true,
+   "hunter_attacks": 19,
+   "hunter_retargets": 2,
+   "hunter_states_seconds": {
+    "ATTACK": 22.8000000000001,
+    "BREACH": 2.8,
+    "DORMANT": 26.0000000000001,
+    "MOVE": 12.0,
+    "SEEK": 0.2
+   },
+   "invalid": [],
+   "last_alive_ratio": 0.878863636363636,
+   "last_alive_time": 63.7000000000006,
+   "legendary_uses": 0,
+   "map": "cursed_mansion",
+   "max_evolution": 1,
+   "min_alive_hp_ratio_after_opening": 0.878863636363636,
+   "mode": "hell",
+   "npc_damage": 746.200000000003,
+   "peak_minions": 0,
+   "peak_projectiles": 1,
+   "player_bed": 1,
+   "player_buildings": {
+
+   },
+   "player_damage": 0.0,
+   "player_door": 1,
+   "player_gold": 149.0,
+   "player_income": 124.000000000001,
+   "player_power": 0.0,
+   "player_shots": 0,
+   "player_spent": 0.0,
+   "policy": "idle",
+   "pre_arrival_hunter_damage": 0.0,
+   "preparation": 26.0,
+   "result": "defeat",
+   "room": 0,
+   "seconds": 63.8000000000006,
+   "seed": 91,
+   "shield_uses": 0,
+   "stage": "stage_5",
+   "transform_time": -1.0,
+   "ultimate_warnings": 0
+  }
+ ],
+ "scope": "Actual live model navigation/claim/sleep/economy/fullNPC AI/Hunter evolution.0XP/no-perk/no-stock player for no-turret arms; active Master4Shield+1Heart finite budget; highNPC separatelydeclared +10000G/+1000EonceperNPC. No player live funds/HP/time/position injection.",
+ "source": "Final Phase5D4 paired runtime, exact source hashes in manifest"
+}

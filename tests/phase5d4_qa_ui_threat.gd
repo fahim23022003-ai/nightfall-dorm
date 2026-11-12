@@ -1,0 +1,36 @@
+extends "res://tests/phase5d4_qa_ui.gd"
+func run():
+ profile_path="user://phase5d4-qa-ui-threat-"+str(Time.get_ticks_usec())+".json"
+ var p=PlayerProfile.new(profile_path);p.tutorial_completed=true;p.save_profile();OS.set_environment("NIGHTFALL_PROFILE_PATH",profile_path)
+ game=load("res://scenes/main.tscn").instantiate();root.add_child(game);game.set_process(false);game.onboarding.set_process(false);game.onboarding.skip();await settle()
+ var disk=FileAccess.get_file_as_bytes(profile_path)
+ for map in MapCatalog.IDS:
+  game.start_practice("crusher",false,["repair","shield"],map);await settle();game.focus_camera(true)
+  var m=game.model;var r=m.player();var other=m.rooms[1];other.owner=3;other.profile="gunner";other.sleeping=true;other.closed=true;other.resident_position=other.bed_position();other.door_hp=other.max_hp()
+  m.hunter.state=HunterState.State.MOVE;m.hunter.target=2;m.hunter.position=m.map_data.hunter_spawn;m.spawn_undead(2)
+  var own=m.minions[0];own.target=0;own.position=r.door_approach();var visitor=m.minions[1];visitor.target=1;visitor.position=other.door_approach()
+  game.ui.update_match();await settle();var ui=game.ui.teammates
+  check(game.ui.warning_box.visible and game.ui.warning_label.text.contains("UNDER ATTACK"),"actual undead door contact gives own prominent danger warning "+map)
+  check(ui.rows[0].text.contains(other.survivor_name()) and ui.rows[0].text.contains("UNDER ATTACK"),"real teammate row attributes undead contact to correct survivor "+map)
+  var before=state()
+  if not ui.expanded:await click(ui.toggle)
+  await click(ui.rows[0]);await settle()
+  if ui.expanded:await click(ui.toggle)
+  for i in range(70):game.focus_camera(false,.016)
+  game.audio_system.update_state(.1,m,game.mode);game.ui.update_match()
+  check(game.watched_room==1 and ui.watching.visible and ui.watching.text.contains("YOUR DOOR IS UNDER ATTACK"),"watching actual NPC preserves own minion danger awareness "+map)
+  check(state()==before and game.audio_system.listener_position==r.bed_position(),"minion-aware spectator changes no model or own danger listener "+map)
+  var origin=m.player_position
+  if not ui.expanded:await click(ui.toggle)
+  check(ui.home.visible and ui.body.visible and not game.ui.room_selected_summary.visible,"actual Home button remains available with expanded teammate roster "+map)
+  await click(ui.home);await settle()
+  check(game.watched_room==-1 and m.player_position==origin and not ui.home.visible and game.ui.room_selected_summary.visible,"actual expanded-roster Home mouse button restores own room without player/ownership mutation "+map)
+  await click(ui.rows[0]);await key(KEY_HOME)
+  check(game.watched_room==-1 and m.player_position==origin,"keyboard Home also returns own view without moving player "+map)
+  var hp=r.door_hp;own.tick(2,m);game.ui.update_match();check(r.door_hp<hp,"real registered undead actually damages intact door while HUD observes "+map)
+  own.despawn(m);visitor.despawn(m);game.ui.update_match();await settle()
+  check(not game.ui.warning_box.visible and not ui.rows[0].text.contains("UNDER ATTACK"),"dead/despawned undead removes danger rather than stale warning "+map)
+  check(FileAccess.get_file_as_bytes(profile_path)==disk,"new minion spectator/HUD never changes permanent save "+map)
+  game.return_menu();await settle()
+ print("PHASE5D4_QA_MINION_UI_CHECKS=",checks," MAPS=5 FAILURES=",failures)
+ game.audio_system.shutdown();await create_timer(.6).timeout;game.queue_free();await create_timer(.2).timeout;Support.cleanup(profile_path);quit(1 if failures else 0)

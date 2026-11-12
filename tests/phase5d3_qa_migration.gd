@@ -28,7 +28,7 @@ func run():
   if b.kind in ["generator","repair","economy","enhancer"] and b.level==4:
    check(m.specialize_building(tile,StrategyCatalog.branches(b.kind)[0]),"existing support4 advanceswithnewpaidbranch "+b.kind)
  check(p.checkpoint_endless(m),"new branching state saves through realcheckpoint transaction")
- check(p.replay.checkpoint.ruleset==2 and ReplaySnapshot.valid(p.replay.checkpoint),"new savesupgrade onlyruleset markerandvalidbranchdata")
+ check(p.replay.checkpoint.ruleset==3 and ReplaySnapshot.valid(p.replay.checkpoint),"new saves upgrade ruleset with valid branch data and bounded evolution ledger")
  var after=JSON.parse_string(JSON.stringify(ReplaySnapshot.encode(m,p.active_match.use_counts)))
  var q=PlayerProfile.new(path);check(q.load_profile() and not q.read_only,"newbranch profile reloads writable")
  var restored=q.resume_endless();check(restored!=null,"newstructural/support branches resume")
@@ -58,7 +58,7 @@ func run():
  var entry=pp.begin_match("standard");var mm=MatchModel.new();mm.configure_match("standard");mm.configure_stage("stage_1");mm.configure_strategy(0,"crusher","",entry.id);mm.claim_room(0);mm.player_position=mm.player().bed_position();mm.sleep_player();mm.time=mm.preparation+1;mm.bot_claimed=5
  var rr=mm.player();rr.gold=100000;rr.electricity=10000;rr.bed_level=4;rr.door_level=4;rr.door_hp=rr.max_hp();pp.bind_items(mm,entry.id)
  check(rr.specialize_structure("door","bulwark") and pp.activate_item(0,mm,entry.id),"actual Bulwark andpaidstockBarricadeactivate")
- var hp=rr.door_hp;mm.hunter.target=0;mm.hunter._damage_door(rr,mm,100)
+ var hp=rr.door_hp;mm.hunter.target=0;mm.hunter.state=HunterState.State.ATTACK;mm.hunter.position=rr.door_approach();mm.hunter._damage_door(rr,mm,100)
  check(is_equal_approx(hp-rr.door_hp,67.5) and pp.inventory.barricade==0,"actual combat mitigationstacks multiplicatively, chargesoneitem")
  mm.items.tick(2,mm);check(pp.activate_item(1,mm,entry.id),"actual shieldstockactivatesaftersharedcooldown")
  hp=rr.door_hp;var shield=mm.items.shield_hp;mm.hunter._damage_door(rr,mm,100)

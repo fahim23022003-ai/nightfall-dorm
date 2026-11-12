@@ -1,0 +1,933 @@
+{
+ "failures": 0,
+ "rows": [
+  {
+   "actual_healed30s": 839.999999999986,
+   "branch": "conservation",
+   "expected_stats": {
+    "income": 135.0,
+    "operating_power": 0.0,
+    "rate": 28.0,
+    "repair_gold": 9.0
+   },
+   "gold_spent": 0.0,
+   "kind": "repair",
+   "level": 5,
+   "power_spent": 0.0,
+   "samples": [
+    {
+     "gold_spent": 0.0,
+     "healed": 2.79999999999995,
+     "power_spent": 0.0,
+     "seconds": 0.1
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 27.9999999999995,
+     "power_spent": 0.0,
+     "seconds": 1.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 83.9999999999986,
+     "power_spent": 0.0,
+     "seconds": 3.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 139.999999999998,
+     "power_spent": 0.0,
+     "seconds": 5.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 279.999999999995,
+     "power_spent": 0.0,
+     "seconds": 10.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 839.999999999986,
+     "power_spent": 0.0,
+     "seconds": 30.0
+    }
+   ],
+   "siege_factor": 1.0,
+   "station_count": 1
+  },
+  {
+   "actual_healed30s": 1417.49999999998,
+   "branch": "sustain",
+   "expected_stats": {
+    "income": 135.0,
+    "operating_power": 1.25,
+    "rate": 47.25,
+    "repair_gold": 12.0
+   },
+   "gold_spent": 0.0,
+   "kind": "repair",
+   "level": 5,
+   "power_spent": 37.5,
+   "samples": [
+    {
+     "gold_spent": 0.0,
+     "healed": 4.72500000000002,
+     "power_spent": 0.125,
+     "seconds": 0.1
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 47.2500000000002,
+     "power_spent": 1.25,
+     "seconds": 1.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 141.750000000001,
+     "power_spent": 3.75,
+     "seconds": 3.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 236.250000000001,
+     "power_spent": 6.25,
+     "seconds": 5.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 472.5,
+     "power_spent": 12.5,
+     "seconds": 10.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 1417.49999999998,
+     "power_spent": 37.5,
+     "seconds": 30.0
+    }
+   ],
+   "siege_factor": 1.0,
+   "station_count": 1
+  },
+  {
+   "actual_healed30s": 1200.0,
+   "branch": "efficient_mending",
+   "expected_stats": {
+    "gold": 3.15,
+    "heal": 120.0,
+    "interval": 3.0,
+    "power": 2.0,
+    "threshold": 0.9
+   },
+   "gold_spent": 31.4999999999964,
+   "kind": "auto_repair",
+   "level": 5,
+   "power_spent": 20.0,
+   "samples": [
+    {
+     "gold_spent": 3.14999999999964,
+     "healed": 120.0,
+     "power_spent": 2.0,
+     "seconds": 0.1
+    },
+    {
+     "gold_spent": 3.14999999999964,
+     "healed": 120.0,
+     "power_spent": 2.0,
+     "seconds": 1.0
+    },
+    {
+     "gold_spent": 3.14999999999964,
+     "healed": 120.0,
+     "power_spent": 2.0,
+     "seconds": 3.0
+    },
+    {
+     "gold_spent": 6.29999999999927,
+     "healed": 240.0,
+     "power_spent": 4.0,
+     "seconds": 5.0
+    },
+    {
+     "gold_spent": 12.5999999999985,
+     "healed": 480.0,
+     "power_spent": 8.0,
+     "seconds": 10.0
+    },
+    {
+     "gold_spent": 31.4999999999964,
+     "healed": 1200.0,
+     "power_spent": 20.0,
+     "seconds": 30.0
+    }
+   ],
+   "siege_factor": 1.0,
+   "station_count": 1
+  },
+  {
+   "actual_healed30s": 1296.0,
+   "branch": "emergency_protocol",
+   "expected_stats": {
+    "gold": 7.2,
+    "heal": 216.0,
+    "interval": 5.0,
+    "power": 3.0,
+    "threshold": 0.45
+   },
+   "gold_spent": 43.1999999999989,
+   "kind": "auto_repair",
+   "level": 5,
+   "power_spent": 18.0,
+   "samples": [
+    {
+     "gold_spent": 7.19999999999982,
+     "healed": 216.0,
+     "power_spent": 3.0,
+     "seconds": 0.1
+    },
+    {
+     "gold_spent": 7.19999999999982,
+     "healed": 216.0,
+     "power_spent": 3.0,
+     "seconds": 1.0
+    },
+    {
+     "gold_spent": 7.19999999999982,
+     "healed": 216.0,
+     "power_spent": 3.0,
+     "seconds": 3.0
+    },
+    {
+     "gold_spent": 7.19999999999982,
+     "healed": 216.0,
+     "power_spent": 3.0,
+     "seconds": 5.0
+    },
+    {
+     "gold_spent": 14.3999999999996,
+     "healed": 432.0,
+     "power_spent": 6.0,
+     "seconds": 10.0
+    },
+    {
+     "gold_spent": 43.1999999999989,
+     "healed": 1296.0,
+     "power_spent": 18.0,
+     "seconds": 30.0
+    }
+   ],
+   "siege_factor": 1.0,
+   "station_count": 1
+  },
+  {
+   "actual_healed30s": 1679.99999999998,
+   "branch": "conservation",
+   "expected_stats": {
+    "income": 135.0,
+    "operating_power": 0.0,
+    "rate": 56.0,
+    "repair_gold": 9.0
+   },
+   "gold_spent": 0.0,
+   "kind": "repair",
+   "level": 10,
+   "power_spent": 0.0,
+   "samples": [
+    {
+     "gold_spent": 0.0,
+     "healed": 5.60000000000002,
+     "power_spent": 0.0,
+     "seconds": 0.1
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 56.0000000000002,
+     "power_spent": 0.0,
+     "seconds": 1.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 168.000000000001,
+     "power_spent": 0.0,
+     "seconds": 3.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 280.000000000001,
+     "power_spent": 0.0,
+     "seconds": 5.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 559.999999999999,
+     "power_spent": 0.0,
+     "seconds": 10.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 1679.99999999998,
+     "power_spent": 0.0,
+     "seconds": 30.0
+    }
+   ],
+   "siege_factor": 1.0,
+   "station_count": 1
+  },
+  {
+   "actual_healed30s": 2834.99999999998,
+   "branch": "sustain",
+   "expected_stats": {
+    "income": 135.0,
+    "operating_power": 2.5,
+    "rate": 94.5,
+    "repair_gold": 12.0
+   },
+   "gold_spent": 0.0,
+   "kind": "repair",
+   "level": 10,
+   "power_spent": 75.0,
+   "samples": [
+    {
+     "gold_spent": 0.0,
+     "healed": 9.45000000000005,
+     "power_spent": 0.25,
+     "seconds": 0.1
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 94.5000000000005,
+     "power_spent": 2.5,
+     "seconds": 1.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 283.500000000001,
+     "power_spent": 7.5,
+     "seconds": 3.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 472.500000000002,
+     "power_spent": 12.5,
+     "seconds": 5.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 945.000000000005,
+     "power_spent": 25.0,
+     "seconds": 10.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 2834.99999999998,
+     "power_spent": 75.0,
+     "seconds": 30.0
+    }
+   ],
+   "siege_factor": 1.0,
+   "station_count": 1
+  },
+  {
+   "actual_healed30s": 2200.0,
+   "branch": "efficient_mending",
+   "expected_stats": {
+    "gold": 4.9,
+    "heal": 220.0,
+    "interval": 3.0,
+    "power": 3.0,
+    "threshold": 0.9
+   },
+   "gold_spent": 48.9999999999964,
+   "kind": "auto_repair",
+   "level": 10,
+   "power_spent": 30.0,
+   "samples": [
+    {
+     "gold_spent": 4.89999999999964,
+     "healed": 220.0,
+     "power_spent": 3.0,
+     "seconds": 0.1
+    },
+    {
+     "gold_spent": 4.89999999999964,
+     "healed": 220.0,
+     "power_spent": 3.0,
+     "seconds": 1.0
+    },
+    {
+     "gold_spent": 4.89999999999964,
+     "healed": 220.0,
+     "power_spent": 3.0,
+     "seconds": 3.0
+    },
+    {
+     "gold_spent": 9.79999999999927,
+     "healed": 440.0,
+     "power_spent": 6.0,
+     "seconds": 5.0
+    },
+    {
+     "gold_spent": 19.5999999999985,
+     "healed": 880.0,
+     "power_spent": 12.0,
+     "seconds": 10.0
+    },
+    {
+     "gold_spent": 48.9999999999964,
+     "healed": 2200.0,
+     "power_spent": 30.0,
+     "seconds": 30.0
+    }
+   ],
+   "siege_factor": 1.0,
+   "station_count": 1
+  },
+  {
+   "actual_healed30s": 2376.0,
+   "branch": "emergency_protocol",
+   "expected_stats": {
+    "gold": 11.2,
+    "heal": 396.0,
+    "interval": 5.0,
+    "power": 4.5,
+    "threshold": 0.45
+   },
+   "gold_spent": 67.1999999999989,
+   "kind": "auto_repair",
+   "level": 10,
+   "power_spent": 27.0,
+   "samples": [
+    {
+     "gold_spent": 11.1999999999998,
+     "healed": 396.0,
+     "power_spent": 4.5,
+     "seconds": 0.1
+    },
+    {
+     "gold_spent": 11.1999999999998,
+     "healed": 396.0,
+     "power_spent": 4.5,
+     "seconds": 1.0
+    },
+    {
+     "gold_spent": 11.1999999999998,
+     "healed": 396.0,
+     "power_spent": 4.5,
+     "seconds": 3.0
+    },
+    {
+     "gold_spent": 11.1999999999998,
+     "healed": 396.0,
+     "power_spent": 4.5,
+     "seconds": 5.0
+    },
+    {
+     "gold_spent": 22.3999999999996,
+     "healed": 792.0,
+     "power_spent": 9.0,
+     "seconds": 10.0
+    },
+    {
+     "gold_spent": 67.1999999999989,
+     "healed": 2376.0,
+     "power_spent": 27.0,
+     "seconds": 30.0
+    }
+   ],
+   "siege_factor": 1.0,
+   "station_count": 1
+  },
+  {
+   "actual_healed30s": 294.000000000005,
+   "branch": "conservation",
+   "expected_stats": {
+    "income": 135.0,
+    "operating_power": 0.0,
+    "rate": 9.8,
+    "repair_gold": 9.0
+   },
+   "gold_spent": 0.0,
+   "kind": "repair",
+   "level": 5,
+   "power_spent": 0.0,
+   "samples": [
+    {
+     "gold_spent": 0.0,
+     "healed": 0.980000000000018,
+     "power_spent": 0.0,
+     "seconds": 0.1
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 9.80000000000018,
+     "power_spent": 0.0,
+     "seconds": 1.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 29.4000000000005,
+     "power_spent": 0.0,
+     "seconds": 3.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 49.0000000000009,
+     "power_spent": 0.0,
+     "seconds": 5.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 98.0000000000018,
+     "power_spent": 0.0,
+     "seconds": 10.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 294.000000000005,
+     "power_spent": 0.0,
+     "seconds": 30.0
+    }
+   ],
+   "siege_factor": 0.35,
+   "station_count": 1
+  },
+  {
+   "actual_healed30s": 496.124999999984,
+   "branch": "sustain",
+   "expected_stats": {
+    "income": 135.0,
+    "operating_power": 1.25,
+    "rate": 16.5375,
+    "repair_gold": 12.0
+   },
+   "gold_spent": 0.0,
+   "kind": "repair",
+   "level": 5,
+   "power_spent": 37.5,
+   "samples": [
+    {
+     "gold_spent": 0.0,
+     "healed": 1.65374999999995,
+     "power_spent": 0.125,
+     "seconds": 0.1
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 16.5374999999995,
+     "power_spent": 1.25,
+     "seconds": 1.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 49.6124999999984,
+     "power_spent": 3.75,
+     "seconds": 3.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 82.6874999999973,
+     "power_spent": 6.25,
+     "seconds": 5.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 165.374999999995,
+     "power_spent": 12.5,
+     "seconds": 10.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 496.124999999984,
+     "power_spent": 37.5,
+     "seconds": 30.0
+    }
+   ],
+   "siege_factor": 0.35,
+   "station_count": 1
+  },
+  {
+   "actual_healed30s": 780.0,
+   "branch": "efficient_mending",
+   "expected_stats": {
+    "gold": 3.15,
+    "heal": 78.0,
+    "interval": 3.0,
+    "power": 2.0,
+    "threshold": 0.9
+   },
+   "gold_spent": 31.4999999999964,
+   "kind": "auto_repair",
+   "level": 5,
+   "power_spent": 20.0,
+   "samples": [
+    {
+     "gold_spent": 3.14999999999964,
+     "healed": 78.0,
+     "power_spent": 2.0,
+     "seconds": 0.1
+    },
+    {
+     "gold_spent": 3.14999999999964,
+     "healed": 78.0,
+     "power_spent": 2.0,
+     "seconds": 1.0
+    },
+    {
+     "gold_spent": 3.14999999999964,
+     "healed": 78.0,
+     "power_spent": 2.0,
+     "seconds": 3.0
+    },
+    {
+     "gold_spent": 6.29999999999927,
+     "healed": 156.0,
+     "power_spent": 4.0,
+     "seconds": 5.0
+    },
+    {
+     "gold_spent": 12.5999999999985,
+     "healed": 312.0,
+     "power_spent": 8.0,
+     "seconds": 10.0
+    },
+    {
+     "gold_spent": 31.4999999999964,
+     "healed": 780.0,
+     "power_spent": 20.0,
+     "seconds": 30.0
+    }
+   ],
+   "siege_factor": 0.35,
+   "station_count": 1
+  },
+  {
+   "actual_healed30s": 842.4,
+   "branch": "emergency_protocol",
+   "expected_stats": {
+    "gold": 7.2,
+    "heal": 140.4,
+    "interval": 5.0,
+    "power": 3.0,
+    "threshold": 0.45
+   },
+   "gold_spent": 43.1999999999989,
+   "kind": "auto_repair",
+   "level": 5,
+   "power_spent": 18.0,
+   "samples": [
+    {
+     "gold_spent": 7.19999999999982,
+     "healed": 140.4,
+     "power_spent": 3.0,
+     "seconds": 0.1
+    },
+    {
+     "gold_spent": 7.19999999999982,
+     "healed": 140.4,
+     "power_spent": 3.0,
+     "seconds": 1.0
+    },
+    {
+     "gold_spent": 7.19999999999982,
+     "healed": 140.4,
+     "power_spent": 3.0,
+     "seconds": 3.0
+    },
+    {
+     "gold_spent": 7.19999999999982,
+     "healed": 140.4,
+     "power_spent": 3.0,
+     "seconds": 5.0
+    },
+    {
+     "gold_spent": 14.3999999999996,
+     "healed": 280.8,
+     "power_spent": 6.0,
+     "seconds": 10.0
+    },
+    {
+     "gold_spent": 43.1999999999989,
+     "healed": 842.4,
+     "power_spent": 18.0,
+     "seconds": 30.0
+    }
+   ],
+   "siege_factor": 0.35,
+   "station_count": 1
+  },
+  {
+   "actual_healed30s": 588.000000000011,
+   "branch": "conservation",
+   "expected_stats": {
+    "income": 135.0,
+    "operating_power": 0.0,
+    "rate": 19.6,
+    "repair_gold": 9.0
+   },
+   "gold_spent": 0.0,
+   "kind": "repair",
+   "level": 10,
+   "power_spent": 0.0,
+   "samples": [
+    {
+     "gold_spent": 0.0,
+     "healed": 1.96000000000004,
+     "power_spent": 0.0,
+     "seconds": 0.1
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 19.6000000000004,
+     "power_spent": 0.0,
+     "seconds": 1.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 58.8000000000011,
+     "power_spent": 0.0,
+     "seconds": 3.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 98.0000000000018,
+     "power_spent": 0.0,
+     "seconds": 5.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 196.000000000004,
+     "power_spent": 0.0,
+     "seconds": 10.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 588.000000000011,
+     "power_spent": 0.0,
+     "seconds": 30.0
+    }
+   ],
+   "siege_factor": 0.35,
+   "station_count": 1
+  },
+  {
+   "actual_healed30s": 992.24999999998,
+   "branch": "sustain",
+   "expected_stats": {
+    "income": 135.0,
+    "operating_power": 2.5,
+    "rate": 33.075,
+    "repair_gold": 12.0
+   },
+   "gold_spent": 0.0,
+   "kind": "repair",
+   "level": 10,
+   "power_spent": 75.0,
+   "samples": [
+    {
+     "gold_spent": 0.0,
+     "healed": 3.3075,
+     "power_spent": 0.25,
+     "seconds": 0.1
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 33.075,
+     "power_spent": 2.5,
+     "seconds": 1.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 99.2250000000001,
+     "power_spent": 7.5,
+     "seconds": 3.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 165.375,
+     "power_spent": 12.5,
+     "seconds": 5.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 330.75,
+     "power_spent": 25.0,
+     "seconds": 10.0
+    },
+    {
+     "gold_spent": 0.0,
+     "healed": 992.24999999998,
+     "power_spent": 75.0,
+     "seconds": 30.0
+    }
+   ],
+   "siege_factor": 0.35,
+   "station_count": 1
+  },
+  {
+   "actual_healed30s": 1430.0,
+   "branch": "efficient_mending",
+   "expected_stats": {
+    "gold": 4.9,
+    "heal": 143.0,
+    "interval": 3.0,
+    "power": 3.0,
+    "threshold": 0.9
+   },
+   "gold_spent": 48.9999999999964,
+   "kind": "auto_repair",
+   "level": 10,
+   "power_spent": 30.0,
+   "samples": [
+    {
+     "gold_spent": 4.89999999999964,
+     "healed": 143.0,
+     "power_spent": 3.0,
+     "seconds": 0.1
+    },
+    {
+     "gold_spent": 4.89999999999964,
+     "healed": 143.0,
+     "power_spent": 3.0,
+     "seconds": 1.0
+    },
+    {
+     "gold_spent": 4.89999999999964,
+     "healed": 143.0,
+     "power_spent": 3.0,
+     "seconds": 3.0
+    },
+    {
+     "gold_spent": 9.79999999999927,
+     "healed": 286.0,
+     "power_spent": 6.0,
+     "seconds": 5.0
+    },
+    {
+     "gold_spent": 19.5999999999985,
+     "healed": 572.0,
+     "power_spent": 12.0,
+     "seconds": 10.0
+    },
+    {
+     "gold_spent": 48.9999999999964,
+     "healed": 1430.0,
+     "power_spent": 30.0,
+     "seconds": 30.0
+    }
+   ],
+   "siege_factor": 0.35,
+   "station_count": 1
+  },
+  {
+   "actual_healed30s": 1544.4,
+   "branch": "emergency_protocol",
+   "expected_stats": {
+    "gold": 11.2,
+    "heal": 257.4,
+    "interval": 5.0,
+    "power": 4.5,
+    "threshold": 0.45
+   },
+   "gold_spent": 67.1999999999989,
+   "kind": "auto_repair",
+   "level": 10,
+   "power_spent": 27.0,
+   "samples": [
+    {
+     "gold_spent": 11.1999999999998,
+     "healed": 257.4,
+     "power_spent": 4.5,
+     "seconds": 0.1
+    },
+    {
+     "gold_spent": 11.1999999999998,
+     "healed": 257.4,
+     "power_spent": 4.5,
+     "seconds": 1.0
+    },
+    {
+     "gold_spent": 11.1999999999998,
+     "healed": 257.4,
+     "power_spent": 4.5,
+     "seconds": 3.0
+    },
+    {
+     "gold_spent": 11.1999999999998,
+     "healed": 257.4,
+     "power_spent": 4.5,
+     "seconds": 5.0
+    },
+    {
+     "gold_spent": 22.3999999999996,
+     "healed": 514.8,
+     "power_spent": 9.0,
+     "seconds": 10.0
+    },
+    {
+     "gold_spent": 67.1999999999989,
+     "healed": 1544.4,
+     "power_spent": 27.0,
+     "seconds": 30.0
+    }
+   ],
+   "siege_factor": 0.35,
+   "station_count": 1
+  },
+  {
+   "actual_healed30s": 1430.0,
+   "branch": "efficient_mending",
+   "expected_stats": {
+    "gold": 4.9,
+    "heal": 143.0,
+    "interval": 3.0,
+    "power": 3.0,
+    "threshold": 0.9
+   },
+   "gold_spent": 48.9999999999964,
+   "kind": "auto_repair",
+   "level": 10,
+   "power_spent": 30.0,
+   "samples": [
+    {
+     "gold_spent": 4.89999999999964,
+     "healed": 143.0,
+     "power_spent": 3.0,
+     "seconds": 0.1
+    },
+    {
+     "gold_spent": 4.89999999999964,
+     "healed": 143.0,
+     "power_spent": 3.0,
+     "seconds": 1.0
+    },
+    {
+     "gold_spent": 4.89999999999964,
+     "healed": 143.0,
+     "power_spent": 3.0,
+     "seconds": 3.0
+    },
+    {
+     "gold_spent": 9.79999999999927,
+     "healed": 286.0,
+     "power_spent": 6.0,
+     "seconds": 5.0
+    },
+    {
+     "gold_spent": 19.5999999999985,
+     "healed": 572.0,
+     "power_spent": 12.0,
+     "seconds": 10.0
+    },
+    {
+     "gold_spent": 48.9999999999964,
+     "healed": 1430.0,
+     "power_spent": 30.0,
+     "seconds": 30.0
+    }
+   ],
+   "siege_factor": 0.35,
+   "station_count": 2
+  }
+ ],
+ "scope": "Controlled fixtures, prepaid5000G/E, real RoomState.tick_economy vs DefenseEffects.tick only. Starts10% doorHP.30s, no damage, no income for AutoRepair. OldRepair income removed from spending ledger. No natural survival claim."
+}

@@ -44,6 +44,12 @@ def main():
     commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
     notices = {'GODOT_LICENSE.txt': ROOT / 'docs/licenses/GODOT_LICENSE.txt', 'GODOT_COPYRIGHT.txt': ROOT / 'docs/licenses/GODOT_COPYRIGHT.txt', 'FONT_DejaVu_LICENSE.txt': ROOT / 'assets/fonts/LICENSE.txt', 'FONT_GrenzeGotisch_OFL.txt': ROOT / 'assets/fonts/GrenzeGotisch-OFL.txt', 'WINDOWS_PLAYTEST_GUIDE.md': ROOT / 'docs/WINDOWS_PLAYTEST_GUIDE.md'}
     notices.update({'MUSIC_AND_AUDIO_CREDITS.md': ROOT / 'docs/AUDIO_SOURCES.md', 'VSCO_CC0_LICENSE.txt': ROOT / 'tools/audio/source/vsco/LICENSE', 'RECORDED_VOCAL_CREDITS.md': ROOT / 'tools/audio/source/vocals/CREDITS-soundboard.md', 'RECORDED_VOCAL_SOURCES.json': ROOT / 'tools/audio/source/vocals/SOURCES.json', 'VERTIGO_VOCAL_CREDITS.md': ROOT / 'tools/audio/source/vocals/vertigo-CREDITS.md'})
+    notices.update({
+        'PHASE_5D4_HUMAN_PLAYTEST_GUIDE.md': ROOT / 'docs/PHASE_5D4_HUMAN_PLAYTEST_GUIDE.md',
+        'REAPERS_WRATH_SFX_CREDITS.md': ROOT / 'tools/audio/source/wrath_sfx/CREDITS.md',
+        'REAPERS_WRATH_SFX_SOURCES.json': ROOT / 'tools/audio/source/wrath_sfx/SOURCES.json',
+        'REAPERS_WRATH_SFX_CC0.txt': ROOT / 'tools/audio/source/wrath_sfx/CC0-1.0.txt',
+    })
     (output / 'VERSION.txt').write_text(f'Nightfall Dorm {build_version}\nSource commit: {commit}\nGodot: {version}\nNative Windows runtime: UNVERIFIED by cloud build\nPrivate playtest; no public release\n')
     sha = hashlib.file_digest(exe.open('rb'), 'sha256').hexdigest()
     (output / 'SHA256SUMS.txt').write_text(sha + '  NightfallDorm.exe\n')

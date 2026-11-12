@@ -19,7 +19,7 @@ func run():
   check(FileAccess.get_sha256("res://tools/audio/source/wrath_sfx/"+row.file)==row.sha256,"source bytes match pinned manifest "+row.id)
   check(str(row.download_url).contains(row.mirror_commit),"immutable mirror commit "+row.id)
  var derivatives=read_json("res://assets/audio/wrath-sfx-derivatives.json")
- check(derivatives.size()==121,"complete declared cue recipes")
+ check(derivatives.size()==122,"complete declared cue recipes")
  for row in derivatives:
   check(FileAccess.get_sha256("res://assets/audio/"+row.event+".wav")==row.sha256,"rendered cue bytes "+row.event)
   check(row.layers.size()>0 and row.seconds>.02 and row.seconds<5,"finite sourced recipe "+row.event)
@@ -68,9 +68,9 @@ func run():
 func capture_unit(volume: float) -> Dictionary:
  audio.stop_events(AudioDirector.EFFECT_NAMES);audio.set_mix({"music":0.0,"effects":volume,"ambient":0.0,"muted":false})
  var recorder=AudioEffectRecord.new();var slot=AudioServer.get_bus_effect_count(0);AudioServer.add_bus_effect(0,recorder);recorder.set_recording_active(true)
- for name in ["shot_needle","shot_arc","shot_flame","shot_frost","shot_shock","build","branch_select","repair","hunter_evolve","wrath_warning_summon","wrath_activate_scythe_slash"]:
+ for name in ["shot_needle","shot_arc","shot_flame","shot_frost","shot_shock","build","branch_select","repair","hunter_evolve","wrath_warning_summon","wrath_activate_scythe_slash","item_explosion"]:
   audio.update_state(.28,null,"unit");audio.event(name);await create_timer(.28).timeout
- await create_timer(.3).timeout;recorder.set_recording_active(false)
+ await create_timer(1.3).timeout;recorder.set_recording_active(false)
  var recording=recorder.get_recording();var path="res://docs/evidence/phase5d4/audio-unit-"+str(volume)+".wav"
  check(recording.save_to_wav(ProjectSettings.globalize_path(path))==OK,"actual unit recording saved")
  var data=recording.data;var peak=0.0;var squares=0.0;var fullscale=0

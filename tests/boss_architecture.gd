@@ -30,9 +30,15 @@ func _initialize():
   h.tick(0.11,m)
   check(h.transformed and h.state==HunterState.State.SEEK,"transform exits")
   check(h.get_instance_id()==id,"entity identity preserved")
-  h.hurt(1e9)
-  h.tick(1,m)
-  check(h.state==HunterState.State.DEAD,"no resurrection")
+  # New finite phase guards preserve the two requested awakenings. Once each
+  # window expires, lethal damage must still finish this same entity.
+  for attempt in range(3):
+   var previous=h.hp
+   h.hurt(1e9)
+   check(h.hp<=previous,"phase guard never refills health")
+   check(h.phase_guard_remaining<=3.3,"phase protection is bounded")
+   h.tick(3.31,m)
+  check(h.state==HunterState.State.DEAD,"finite phase guards cannot resurrect boss")
   m.reset()
   check(not m.hunter.transformed,"reset")
  var m=MatchModel.new()

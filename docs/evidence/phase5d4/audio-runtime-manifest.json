@@ -1,13 +1,15 @@
 {
-  "checkpoint": "focused audio runtime before completedWrath integration",
+  "checkpoint": "final audio bank/runtime; independent integrated gameplay captures tracked separately",
   "source_hashes": {
-    "scripts/audio_director.gd": "e7f90f9ca12130a812079d7479db6def83e2aedb6b0761d33ee6215f81a445d3",
-    "scripts/wrath_audio_catalog.gd": "a9baf7b63baafb275050ec38be477ac70c72fbafa7e93a71f9d533da4da1cc17",
-    "tools/audio/design_wrath_sfx.py": "b5394288105bb4abba1b037bd48d5d27e4c502949088074479b5e16509815216",
+    "scripts/audio_director.gd": "9e2e7b0f1665a339aaed0a0dc2e968c2233b4235dfc0799b0e6a2b15dcd2f638",
+    "scripts/wrath_audio_catalog.gd": "7e4b5d4e7a193860eee42e8d734331011fd3e59886ba355805c4d8fbf1bffce8",
+    "tools/audio/design_wrath_sfx.py": "b171524d15398821eb4cd2445295b83c6bdb0b79ffdbdd295e00b6f14795fa91",
     "tools/audio/compose_crimson_score.py": "011ecda700b147f129be8876f740628a4bc1e4b00a6043ca18c279d291a2806a",
-    "tests/phase5d4_audio.gd": "c463b7fb6cf7ed10900141d714ffccf2c2c4f498e35658577101b8c0f709e801",
+    "tests/phase5d4_audio.gd": "9fef91750a1961030cae8a6331f1957610c6c760470378e5e855c6fcbb1358fb",
     "tests/phase5d4_audio_reactions.gd": "24f893835914015288c0b534b401844fb3fae1270457802694901103a821cd21",
-    "tests/phase5d4_audio_targets.gd": "37b16deb88484b8ec4b1e300c68ddadbf36c68962f2fb3cc0eda6b5187631aed"
+    "tests/phase5d4_audio_targets.gd": "37b16deb88484b8ec4b1e300c68ddadbf36c68962f2fb3cc0eda6b5187631aed",
+    "tests/phase5d4_audio_explosion.gd": "937957ae789b492c011b20d825c09485d439d06d648cdf2b896047e5e65e0d6e",
+    "tests/phase5d4_audio_lifecycle.gd": "e43a89502b1dec0f65e14c07d030fb2a06fc4e89288378a742ffc4e70c866e78"
   },
   "protected_baseline": "d507600",
   "protected_scores": {
@@ -19,9 +21,9 @@
     "music_reaper": "044adf894bf9982f77c61d469cd6c59cf6fc5c8199fe5b471e038336991a0ee0",
     "music_endless": "6bf85a6a3883d8ee2b7d3b52c7414aa636896e8114523c9b51642cab1dc7589a"
   },
-  "source_count": 29,
-  "cue_recipes": 121,
-  "distinct_wave_hashes": 115,
+  "source_count": 30,
+  "cue_recipes": 122,
+  "distinct_wave_hashes": 116,
   "stream_count": 204,
   "effect_voice_limit": 16,
   "loop_players": 12,

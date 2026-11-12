@@ -20,7 +20,7 @@ verification.
 
 ## Phase 5D-4 recorded-source SFX (integration in progress)
 
-Twenty-nine CC0-declared recorded/designed source clips are retained with pinned
+Thirty CC0-declared recorded/designed source clips are retained with pinned
 source URLs, per-file authors, license declarations and SHA256 hashes in
 `tools/audio/source/wrath_sfx/SOURCES.json`. Credits and the CC0 text accompany
 that directory. Original Freesound pages returned HTTP 403 in this environment;
@@ -28,7 +28,7 @@ direct-origin confirmation remains UNVERIFIED. The retained pinned mirror has
 explicit per-file licensing metadata; no claim of recording these performers is
 made. Do not remove the source notices from distributions.
 
-`tools/audio/design_wrath_sfx.py` creates 121 documented derivatives (26 existing
+`tools/audio/design_wrath_sfx.py` creates 122 documented derivatives (27 existing
 cue replacements and 95 additions), combining recorded gunfire, metal, fire,
 glass, doors, footsteps and creature textures. Each recipe records source offset,
 rate, filtering, level, duration and output hash in

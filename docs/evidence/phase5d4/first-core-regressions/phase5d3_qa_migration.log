@@ -1,0 +1,18 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: MIGRATION QA: new savesupgrade onlyruleset markerandvalidbranchdata
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d3_qa_migration.gd:9)
+       [1] run (res://tests/phase5d3_qa_migration.gd:31)
+ERROR: MIGRATION QA: actual combat mitigationstacks multiplicatively, chargesoneitem
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d3_qa_migration.gd:9)
+       [1] run (res://tests/phase5d3_qa_migration.gd:62)
+ERROR: MIGRATION QA: shield absorbsactualmitigateddamagewithfinitecapacityandcorrectstock
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d3_qa_migration.gd:9)
+       [1] run (res://tests/phase5d3_qa_migration.gd:65)
+PHASE5D3_MIGRATION_QA_CHECKS=43 FAILURES=3

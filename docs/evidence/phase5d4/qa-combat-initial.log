@@ -1,0 +1,33 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: 5D4 EVOLUTION QA: actual same-batch extra projectile cannot skip first readable transformation abandoned_dorm
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d4_qa_evolution.gd:10)
+       [1] rapid_phases (res://tests/phase5d4_qa_combat.gd:18)
+       [2] run (res://tests/phase5d4_qa_combat.gd:42)
+ERROR: 5D4 EVOLUTION QA: actual same-batch extra projectile cannot skip first readable transformation haunted_hospital
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d4_qa_evolution.gd:10)
+       [1] rapid_phases (res://tests/phase5d4_qa_combat.gd:18)
+       [2] run (res://tests/phase5d4_qa_combat.gd:42)
+ERROR: 5D4 EVOLUTION QA: actual same-batch extra projectile cannot skip first readable transformation forgotten_hotel
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d4_qa_evolution.gd:10)
+       [1] rapid_phases (res://tests/phase5d4_qa_combat.gd:18)
+       [2] run (res://tests/phase5d4_qa_combat.gd:42)
+ERROR: 5D4 EVOLUTION QA: actual same-batch extra projectile cannot skip first readable transformation underground_lab
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d4_qa_evolution.gd:10)
+       [1] rapid_phases (res://tests/phase5d4_qa_combat.gd:18)
+       [2] run (res://tests/phase5d4_qa_combat.gd:42)
+ERROR: 5D4 EVOLUTION QA: actual same-batch extra projectile cannot skip first readable transformation cursed_mansion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d4_qa_evolution.gd:10)
+       [1] rapid_phases (res://tests/phase5d4_qa_combat.gd:18)
+       [2] run (res://tests/phase5d4_qa_combat.gd:42)
+PHASE5D4_QA_INTEGRATED_COMBAT_CHECKS=2580 MAPS=5 FAILURES=5

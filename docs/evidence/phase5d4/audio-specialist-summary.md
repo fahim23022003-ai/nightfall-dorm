@@ -7,17 +7,17 @@ identifiers while adding explicit machine, Hunter, evolution, minion and Reaper
 routes. This component never chooses targets, applies damage, changes inventory,
 saves progress or consumes gameplay RNG.
 
-- 29 pinned, explicitly CC0-declared recorded/designed sources supply physical
+- 30 pinned, explicitly CC0-declared recorded/designed sources supply physical
   rifle transients, metal/wood/door impacts, blades, glass, fire, electrical
   texture, clicks and creature vocals. Source catalog, authors, original URLs,
   mirror commit URLs, hashes, generic CC0 legal text and credits are retained in
   `tools/audio/source/wrath_sfx/`. Direct original Freesound pages remain blocked;
   direct-original license confirmation is UNVERIFIED. Mirror maintainers are
   not claimed to have performed every recording.
-- 121 cue recipes render 115 distinct WAV hashes. Six intentional aliases keep
-  common UI confirmation behavior consistent; this is not a claim of 121 unique
-  original performances or 121 independently human-approved sounds. Recipes
-  include 26 physical replacements for legacy effects and 95 new identifiers.
+- 122 cue recipes render 116 distinct WAV hashes. Six intentional aliases keep
+  common UI confirmation behavior consistent; this is not a claim of 122 unique
+  original performances or 122 independently human-approved sounds. Recipes
+  include 27 physical replacements for legacy effects and 95 new identifiers.
   Exact source cuts, rates, layers, gains and derived hashes are in
   `assets/audio/wrath-sfx-derivatives.json`.
 - Needle/Arc and Flame/Frost/Shock have source-specific shots and impacts,
@@ -55,11 +55,19 @@ cancels pending context. This is transient audio state, not new save data.
 
 ## Accepted focused tests
 
-`audio-pcm-test-receipt.json` indexes current accepted runs:
+`audio-final-test-receipt.json` indexes final accepted runs; older PCM receipts preserve earlier checkpoints:
 
-- `phase5d4_audio.gd`: **774/0**, source/hash/decode/registry checks, exact seven
+- `phase5d4_audio.gd`: **782/0**, source/hash/decode/registry checks, exact seven
   protected score hashes, branch/high-tier differentiation, pool/queue bounds,
   expiry, saved volume/mute, actual cue-player starts and internal Master PCM.
+- `phase5d4_audio_explosion.gd`: **9/0**, real configured Practice, actual keyboard
+  deployment and ordinary Hunter navigation trigger exactly one sampled trap
+  explosion, decrease actual HP and preserve permanent profile bytes. Captured
+  Master 13.746s, RMS0.005275, peak0.052094, zero full-scale samples (Music0,
+  Effects0.65). Standard temporary practice budget; no actor position/HP injection.
+- `phase5d4_audio_lifecycle.gd`: **13/0**, terminal records are observed once,
+  death/evolution survives result, obsolete warnings and domain stop, explicit
+  menu clears combat queues and retains Listening Room preview functionality.
 - `phase5d4_audio_reactions.gd`: **5/0**, actual pooled voice identity is preserved
   across another room's door breach and ordinary encounter vocals yield to death.
 - `phase5d4_audio_targets.gd`: **209/0**, main Hunter ID1/Undead IDs>=2/Reaper
@@ -117,6 +125,10 @@ warning priorities, menu/domain music continuity and long-run player counts.
 No whole-game safety or gain-perfect claim follows from source peak normalization
 or the direct unit recordings. If the actual stress mix clips, bus dynamics or
 priority should be adjusted and affected captures repeated.
+
+The final legacy item_explosion uses a recorded explosion/debris transient
+(FxKid2/Freesound367622, explicit CC0 mirror metadata) layered with a physical
+impact, replacing its earlier synthetic asset. This adds no new item or mechanic.
 
 Native Windows, physical output, human listening, perceived mix, scariness and
 source realism remain UNVERIFIED. No specialist commit or push was performed.

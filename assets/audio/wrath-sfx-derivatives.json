@@ -2982,6 +2982,35 @@
     "sha256": "4998dd31815c9b88ccf373e87b930a14da17254c1a1a16a5cf99e67491d09248"
   },
   {
+    "event": "item_explosion",
+    "seconds": 1.17,
+    "peak": 0.58,
+    "rms": 0.13343628597540735,
+    "layers": [
+      {
+        "source": "explosion",
+        "start": 0.15,
+        "seconds": 1.1,
+        "gain": 0.8,
+        "playback_rate": 1,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      },
+      {
+        "source": "impact_3",
+        "start": 0.04,
+        "seconds": 0.45,
+        "gain": 0.2,
+        "playback_rate": 0.8,
+        "at": 0,
+        "highpass": 50,
+        "lowpass": 16000
+      }
+    ],
+    "sha256": "339343cb45e8773233577fd257587b3c3a90ce40a75006eee5488f4eeb702058"
+  },
+  {
     "event": "reward",
     "seconds": 0.47,
     "peak": 0.58,
