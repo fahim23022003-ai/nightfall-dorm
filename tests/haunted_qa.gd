@@ -29,7 +29,7 @@ func count_event(m,type,index):
  return total
 func transactions():
  for kind in Catalog.BUILDINGS:
-  var cap=10 if kind in ["turret","heavy"] else 4
+  var cap=10
   check(Catalog.building_max_level(kind)==cap,"eligible cap "+kind)
   var m=fixture();var r=m.player();r.bed_level=4;r.door_level=4;r.gold=100000;r.electricity=100000
   var origin=Vector2(r.gold,r.electricity)

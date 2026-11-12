@@ -101,6 +101,7 @@ func run():
  h.tick(0.01,game)
  check(h.target==0 and h.state==HunterState.State.ATTACK,"hunter commits instead of instantly switching away")
  h.target_time=Catalog.HUNTER.retarget_seconds+1
+ h.reassess_seconds=RankCatalog.pressure(game.difficulty).commit+1
  h.tick(0.01,game)
  h.tick(0.01,game)
  check(h.target==1 and h.retargets==1,"clearly weaker alternative attracts a committed hunter after timeout")
@@ -122,10 +123,12 @@ func run():
  h.siege_start_hp=600
  h.cooldown=1000
  h.target_time=Catalog.HUNTER.retarget_seconds+1
+ h.reassess_seconds=RankCatalog.pressure(game.difficulty).commit+1
  h.tick(0.01,game)
  check(h.state==HunterState.State.ATTACK and h.target==0,"first siege window retains target after meaningful600to200damage")
  check(h.siege_start_hp==200 and h.target_time==0,"retained assessment refreshes its HP and time baseline")
  h.target_time=Catalog.HUNTER.retarget_seconds+1
+ h.reassess_seconds=RankCatalog.pressure(game.difficulty).commit+1
  h.tick(0.01,game)
  h.tick(0.01,game)
  check(h.target==1 and h.retargets==1,"second stalled200HPwindow escapes even when alternative has stronger door")
@@ -138,6 +141,7 @@ func run():
  h.siege_start_hp=room.door_hp
  h.cooldown=1000
  h.target_time=Catalog.HUNTER.retarget_seconds+1
+ h.reassess_seconds=RankCatalog.pressure(game.difficulty).commit+1
  h.tick(0.01,game)
  check(h.state==HunterState.State.ATTACK and h.target==0 and h.retargets==0,"sole valid target is retained without pointless seek loop")
  other=game.rooms[1]
@@ -148,6 +152,7 @@ func run():
  room.door_hp=h.damage*1.5
  h.siege_start_hp=room.door_hp
  h.target_time=Catalog.HUNTER.retarget_seconds+1
+ h.reassess_seconds=RankCatalog.pressure(game.difficulty).commit+1
  h.tick(0.01,game)
  check(h.state==HunterState.State.ATTACK and h.target==0,"nearly broken door within two strikes retains commitment")
  print("PHASE2_HUNTER corridor route and no-teleport recovery")

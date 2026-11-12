@@ -38,8 +38,8 @@ const PROJECTILES = {"turret":480.0,"heavy":360.0,"max_age":5.0,"max_active":256
 # Preserve the first active phase; each later level ramps its stats over eight seconds.
 const HUNTER_ESCALATION={"ramp_seconds":8.0,"speed_growth":1.5,"speed_bonus_cap":8.0,"dps_weight":2.0,"dps_penalty_cap":90.0,"repair_penalty_cap":35.0,"retarget_improvement":0.12,"minimum_commitment":8.0,"stuck_seconds":4.0}
 
-# Only weapon defenses receive prestige tiers. Economy/support and autonomous
-# purchasing budgets retain the existing four-level progression.
+# All six permanent machines support late tiers through10. Early prices stay
+# unchanged; autonomous spending goals remain separately bounded in BotAI.
 const DEFENSE_MAX_LEVEL=10
 const PRESTIGE_COST_FACTORS=[5,7,10,14,19,25]
 static func building_max_level(kind: String) -> int:

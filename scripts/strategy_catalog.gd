@@ -53,4 +53,4 @@ static func claim_key(stage: String,mode: String,contract: String) -> String:
 
 static func support(building: Dictionary) -> Dictionary:
  var id=str(building.get("specialization",""))
- return BRANCHES[id] if id in BRANCHES and BRANCHES[id].kind==building.kind else {}
+ return BRANCHES[id] if building.kind in ["generator","repair","economy","enhancer"] and id in BRANCHES and BRANCHES[id].kind==building.kind else {}

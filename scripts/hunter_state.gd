@@ -337,6 +337,17 @@ func tick(delta: float, match_state):
  var profile=RankCatalog.pressure(difficulty)
  if _previous_siege_room>=0: match_state.rooms[_previous_siege_room].repair_factor=1.0
  _previous_siege_room=-1
+ # Contact and door validity outrank ability windups/recovery. A presentation
+ # or tactics timer must never defer legal movement/breach state correction.
+ if state==State.ATTACK and target>=0 and target<match_state.rooms.size():
+  var contact_room=match_state.rooms[target]
+  var contact=contact_room.door_approach()
+  if position.distance_to(contact)>3:
+   contact_room.repair_factor=1.0;cancel_boss_attack();_clear_tactics();surge_remaining=0;state=State.MOVE
+   return
+  if contact_room.door_hp<=0 or not contact_room.closed:
+   contact_room.repair_factor=1.0;cancel_boss_attack();_clear_tactics();surge_remaining=0;state=State.BREACH
+   return
  if state==State.ATTACK and target>=0 and target<match_state.rooms.size():
   siege_seconds+=delta
   reassess_seconds+=delta
