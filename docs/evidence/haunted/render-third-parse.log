@@ -1,0 +1,103 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+SCRIPT ERROR: Parse Error: Identifier "group" not declared in the current scope.
+          at: GDScript::reload (res://scripts/item_presentation.gd:174)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tools/capture_haunted.gd:82)
+SCRIPT ERROR: Parse Error: Identifier "text" not declared in the current scope.
+          at: GDScript::reload (res://scripts/item_presentation.gd:174)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tools/capture_haunted.gd:82)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://scripts/dorm_presentation.gd:0)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tools/capture_haunted.gd:82)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://scripts/game.gd:0)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tools/capture_haunted.gd:82)
+ERROR: Failed to load script "res://scripts/game.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:2907)
+   GDScript backtrace (most recent call first):
+       [0] run (res://tools/capture_haunted.gd:82)
+SCRIPT ERROR: Invalid call. Nonexistent function 'new' in base 'GDScript'.
+          at: @implicit_new (res://scripts/dorm_presentation.gd:9)
+          GDScript backtrace (most recent call first):
+              [0] @implicit_new (res://scripts/dorm_presentation.gd:9)
+              [1] @implicit_new (res://scripts/game.gd:28)
+              [2] run (res://tools/capture_haunted.gd:82)
+SCRIPT ERROR: Invalid operands 'Nil' and 'int' in operator '+'.
+          at: render (res://scripts/dorm_presentation.gd:180)
+          GDScript backtrace (most recent call first):
+              [0] render (res://scripts/dorm_presentation.gd:180)
+              [1] _draw (res://scripts/game.gd:371)
+SCRIPT ERROR: Invalid assignment of property or key 'observed_model' with value of type 'Nil' on a base object of type 'Nil'.
+          at: reset (res://scripts/dorm_presentation.gd:69)
+          GDScript backtrace (most recent call first):
+              [0] reset (res://scripts/dorm_presentation.gd:69)
+              [1] start_match (res://scripts/game.gd:142)
+              [2] start_stage (res://scripts/game.gd:107)
+              [3] fixture (res://tools/capture_haunted.gd:43)
+              [4] run (res://tools/capture_haunted.gd:90)
+SCRIPT ERROR: Invalid operands 'Nil' and 'int' in operator '<'.
+          at: GameInterface.update_match (res://scripts/interface.gd:497)
+          GDScript backtrace (most recent call first):
+              [0] update_match (res://scripts/interface.gd:497)
+              [1] show_match (res://scripts/interface.gd:339)
+              [2] start_match (res://scripts/game.gd:148)
+              [3] start_stage (res://scripts/game.gd:107)
+              [4] fixture (res://tools/capture_haunted.gd:43)
+              [5] run (res://tools/capture_haunted.gd:90)
+SCRIPT ERROR: Invalid operands 'Nil' and 'int' in operator '*'.
+          at: focus_camera (res://scripts/game.gd:364)
+          GDScript backtrace (most recent call first):
+              [0] focus_camera (res://scripts/game.gd:364)
+              [1] start_match (res://scripts/game.gd:149)
+              [2] start_stage (res://scripts/game.gd:107)
+              [3] fixture (res://tools/capture_haunted.gd:43)
+              [4] run (res://tools/capture_haunted.gd:90)
+SCRIPT ERROR: Invalid assignment of property or key 'observed_model' with value of type 'Nil' on a base object of type 'Nil'.
+          at: reset (res://scripts/dorm_presentation.gd:69)
+          GDScript backtrace (most recent call first):
+              [0] reset (res://scripts/dorm_presentation.gd:69)
+              [1] fixture (res://tools/capture_haunted.gd:50)
+              [2] run (res://tools/capture_haunted.gd:90)
+SCRIPT ERROR: Invalid operands 'Nil' and 'int' in operator '*'.
+          at: focus_camera (res://scripts/game.gd:364)
+          GDScript backtrace (most recent call first):
+              [0] focus_camera (res://scripts/game.gd:364)
+              [1] fixture (res://tools/capture_haunted.gd:51)
+              [2] run (res://tools/capture_haunted.gd:90)
+SCRIPT ERROR: Invalid operands 'float' and 'Nil' in operator '<'.
+          at: update (res://scripts/dorm_presentation.gd:87)
+          GDScript backtrace (most recent call first):
+              [0] update (res://scripts/dorm_presentation.gd:87)
+              [1] update (res://tools/capture_haunted.gd:12)
+              [2] fixture (res://tools/capture_haunted.gd:51)
+              [3] run (res://tools/capture_haunted.gd:90)
+SCRIPT ERROR: Invalid access to property or key 'weather_events' on a base object of type 'Nil'.
+          at: AudioDirector.update_environment (res://scripts/audio_director.gd:463)
+          GDScript backtrace (most recent call first):
+              [0] update_environment (res://scripts/audio_director.gd:463)
+              [1] update (res://tools/capture_haunted.gd:15)
+              [2] fixture (res://tools/capture_haunted.gd:51)
+              [3] run (res://tools/capture_haunted.gd:90)
+SCRIPT ERROR: Invalid operands 'Nil' and 'int' in operator '<'.
+          at: GameInterface.update_match (res://scripts/interface.gd:495)
+          GDScript backtrace (most recent call first):
+              [0] update_match (res://scripts/interface.gd:495)
+              [1] update (res://tools/capture_haunted.gd:17)
+              [2] fixture (res://tools/capture_haunted.gd:51)
+              [3] run (res://tools/capture_haunted.gd:90)
+SCRIPT ERROR: Invalid call. Nonexistent function 'update' in base 'Nil'.
+          at: run (res://tools/capture_haunted.gd:92)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tools/capture_haunted.gd:92)
+SCRIPT ERROR: Invalid operands 'Nil' and 'int' in operator '+'.
+          at: render (res://scripts/dorm_presentation.gd:180)
+          GDScript backtrace (most recent call first):
+              [0] render (res://scripts/dorm_presentation.gd:180)
+              [1] _draw (res://scripts/game.gd:371)

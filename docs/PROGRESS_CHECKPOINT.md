@@ -1,17 +1,39 @@
-# Phase 5C-2 — haunted world and Level 10 defenses (12 November 2026)
+# Phase 5C-2 — haunted world and Level 10 defenses complete (12 November 2026)
 
-IN PROGRESS. Baseline clean `work` at
-`48ecdae4bc77114108e6f5f2c123bf158c50d6ba`, verified against GitHub.
-Recovery tag `pre-phase5c2-48ecdae`. B production, C independent QA, bounded A
-fairness/balance audit and later D actual world/death/prestige/audio inspection.
-Milestone: core world/events/eligible L10 implemented; independent QA78,195 and
-focused audio281 checks pass. Needle and Arc L10 reached in live earned-resource
-scenarios; final matrix/render/full regressions remain in progress.
-Preserve 5C-1, maps/layouts, all20items and progression; eligible defenses only
-extend to L10 with actual-investment refunds. Next: implement, focused tests,
-earned-resource reachability/balance, full regressions, actual render/audio,
-report, commit and verified private `work` push. Stop after5C-2; noPhase6.
-Native Windows and subjective quality UNVERIFIED.
+Baseline clean `work` at `48ecdae4bc77114108e6f5f2c123bf158c50d6ba`, verified
+against GitHub. Recovery tag `pre-phase5c2-48ecdae`; milestone `327b27a`.
+B production, C independent QA, bounded A audit and actual D render/audio complete.
+
+Five map-specific haunted backdrops share read-only boundedcosmetic state:5actors,
+70scenery, ownRNG, outsideprotectedrooms/corridors, no combat/target/nav influence.
+Fog/rain/clouds/birds, controlledlightning hiddenapparitionreveal/thunderdelay,
+ReducedEffects/Ambience support. Practice/intro stayisolated.
+
+Genuinebreach/fear/bedcontactkill events add strike/collapse1.4s/corpse/darkroom,
+actualname/room/remainingteam warning and playerbreachpriority. Perroomdedup,
+serialized2deathcues, distinctnormal/Reaperlaugh,9newPCM=>105streams; modeexitcleanup.
+OnlyNeedle/Arc extend10; old1–4cost/stats,utility/Botcap4 andHunterbaselinepreserved.
+Newcost/prereqs,12originalarmortiers,crown/MAX/projectile/prestigecue. Actualpaid
+coupon/Gold/Electricityledgers and50%refund/tile reuse retained.
+
+C78,195focusedchecks (mostlysampledinvariants),5,382controlledworkshopchecks and
+60livematches pass. ActualearnedNeedle10stage2Normal191.1s,Arc10stage4Normal218.7s.
+Pairedcap4→10 Normal10/0→10/0,LongNight10/0→10/0,Hell3/7→2/8; noL10Hellreach.
+Budget4Shield+1Heart/Master2perks; fast.1supgradepolicy; nofakeGold/HP/time.
+Do notclaimuniversalreachability, winimprovement orhumanrates.
+
+D151renderchecks/31inspectedPNGs; all9cues105streams,18.669sactualmix0clips.
+Fixedreducedstate,drawcallback,offcameraactors,strikefeedback,warning/refund/MAX/
+pulse/couponreadability. Caughtfeedbackscopeparseerrorfixed; affectedmapintegration
+andremainingregular/extendedsuitesrerunpass. Finalimportclean. Full20items/5C1/
+progression/boss/maps remainverified;20ktransactions175,889invariants;27timesteps/
+144strategy/48rankmatches22/26;profile round-trip and startupintro pass.
+
+No known functional failure remains. NativeWindows,hardwareFPS,humanbalance and
+subjectivehorror/audioquality UNVERIFIED. Fullrules/costs/evidence/limits in
+[PHASE_5C2_HAUNTED_WORLD_REPORT.md](PHASE_5C2_HAUNTED_WORLD_REPORT.md),
+`docs/evidence/haunted/`. Finalresponse records actualcommit and verifiedprivate
+GitHub `work` push. `main` unchanged. Stopafter5C-2; noPhase6/Android/newboss/map.
 
 ---
 

@@ -220,7 +220,8 @@ func update_state(delta: float, model, mode: String):
  for cue in pending_laughs.duplicate():
   if _clock-cue.time>3:pending_laughs.erase(cue);continue
   var death_playing=voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"").begins_with("death_scream"))
-  if _clock>=cue.time+.25 and not death_playing and event(cue.name,cue.position):pending_laughs.erase(cue)
+  var laugh_playing=voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"") in ["hunter_laugh","reaper_laugh"])
+  if _clock>=cue.time+.25 and not death_playing and not laugh_playing and event(cue.name,cue.position):pending_laughs.erase(cue)
  var pending = _pending_critical.duplicate()
  _pending_critical.clear()
  for cue in pending:

@@ -13,6 +13,8 @@ var last_event=0
 var last_model
 var cooldowns: Dictionary={}
 var observed_counts: Dictionary={}
+var eliminated_rooms: Dictionary={}
+var breached_rooms: Dictionary={}
 var boss_banner=0.0
 var font=preload("res://assets/fonts/Interface.ttf")
 
@@ -24,7 +26,7 @@ func reset():
  danger_rooms.clear()
  breaks.clear()
  cooldowns.clear()
- observed_counts.clear()
+ observed_counts.clear();eliminated_rooms.clear();breached_rooms.clear()
  last_event=0
  clock=0
  last_model=null
@@ -64,8 +66,12 @@ func observe(event: Dictionary,model):
  var room=model.rooms[index]
  if room.owner<0: return
  var kind=event.type
- if kind=="elimination" and room.alive:return
- if kind=="door_break" and room.door_hp>0:return
+ if kind=="elimination":
+  if room.alive or eliminated_rooms.has(index):return
+  eliminated_rooms[index]=true
+ if kind=="door_break":
+  if room.door_hp>0 or breached_rooms.has(index):return
+  breached_rooms[index]=true
  observed_counts[kind]=int(observed_counts.get(kind,0))+1
  var name=room.survivor_name()
  var room_name="Room %d" % (index+1)
@@ -171,17 +177,25 @@ func render_notifications(c):
   c.draw_string(font,Vector2(317,131),"THE GRIM REAPER HAS AWAKENED",HORIZONTAL_ALIGNMENT_LEFT,-1,25,Color(1,.72,.84,alpha))
   c.draw_string(font,Vector2(319,157),"Watch the scythe. Repair during warnings. Keep your defenses firing.",HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color(.88,.82,.96,alpha))
  # Screen-space, left of build controls and below the tutorial panel. No input capture.
+ var offset=0.0
  for i in range(notifications.size()):
   var n=notifications[i]
+  var elimination=n.key.begins_with("elimination:")
   var entering=1-pow(1-clampf(n.age/0.22,0,1),3)
   var alpha=minf(entering,clampf((n.life-n.age)/0.5,0,1))
-  var point=Vector2(20-(1-entering)*430,218+i*38)
-  var color=[Color("D9B65B"),Color("EF8864"),Color("F45A61"),Color("C293EE")][clampi(n.priority,0,3)]
+  var point=Vector2(20-(1-entering)*430,218+offset)
+  var color=Color("F45A61") if elimination or n.priority>=4 else [Color("D9B65B"),Color("EF8864"),Color("F45A61"),Color("C293EE")][clampi(n.priority,0,3)]
   var panel=StyleBoxFlat.new()
   panel.bg_color=Color(0.08,0.12,0.18,alpha*0.94)
   panel.border_color=Color(color,alpha)
   panel.set_border_width_all(1)
   panel.set_corner_radius_all(6)
-  c.draw_style_box(panel,Rect2(point,Vector2(420,33)))
+  var height=56 if elimination else 33
+  c.draw_style_box(panel,Rect2(point,Vector2(420,height)))
   c.draw_string(font,point+Vector2(10,22),n.icon,HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color(color,alpha))
-  c.draw_string(font,point+Vector2(40,22),n.text,HORIZONTAL_ALIGNMENT_LEFT,370,16,Color(0.96,0.95,0.92,alpha))
+  if elimination:
+   var parts=n.text.split(" — ",true,1)
+   c.draw_string(font,point+Vector2(40,21),parts[0],HORIZONTAL_ALIGNMENT_LEFT,370,15,Color(1,.78,.78,alpha))
+   c.draw_string(font,point+Vector2(40,43),parts[1] if parts.size()>1 else n.text,HORIZONTAL_ALIGNMENT_LEFT,370,12,Color(.96,.95,.92,alpha))
+  else:c.draw_string(font,point+Vector2(40,22),n.text,HORIZONTAL_ALIGNMENT_LEFT,370,16,Color(.96,.95,.92,alpha))
+  offset+=height+5

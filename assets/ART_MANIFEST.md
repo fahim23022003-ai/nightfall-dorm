@@ -52,3 +52,13 @@ procedural forest silhouettes, parallax, fog, dorm entry/door and restrained
 lightning/fade. The welcome card and practice use original UI drawing, highlights
 and arrows. These cinematic backdrops add no playable outdoor map/weather system.
 Common shop artwork reuses the existing registered item icons. No external assets.
+
+
+## Phase 5C-2 haunted scenery and prestige defenses
+
+A read-only procedural environment adds five themed exterior sets, bounded ambient
+silhouettes/eyes/crawlers/watchers/apparitions and weather over existing geometry.
+`tools/art/generate_prestige_defenses.py` authors twelve original SVG armor tiers
+for Needle/Arc Levels 5–10, layered with existing sprites, fins/crown/badges and
+bounded projectiles. Actual combat events drive fear, strike, collapse and corpse
+presentation. No external assets, playable map or extra combat enemy was added.

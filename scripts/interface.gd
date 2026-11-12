@@ -521,7 +521,7 @@ func update_match():
    var b=room.buildings[game.selected_tile]
    var d=Catalog.BUILDINGS[b.kind]
    var refund=room.building_refund(game.selected_tile)
-   actions.sell.text="Sell · +%s G / +%s E (50%%)" % [str(refund.x),str(refund.y)]
+   actions.sell.text="Sell · +%.2fG / +%.2fE (50%%)" % [refund.x,refund.y]
    var price=Catalog.upgrade_cost(b.kind,b.level)
    actions.upgrade.text="MAX LEVEL" if b.level>=Catalog.building_max_level(b.kind) else "Upgrade  ·  %dG / %dE" % [price.x,price.y]
   else: actions.upgrade.text="Select a building to upgrade"

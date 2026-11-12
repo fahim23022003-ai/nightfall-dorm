@@ -37,9 +37,15 @@ func configure(model):
    if is_exterior(point,model,30):anchors.append(point)
  for i in range(mini(70,anchors.size())):
   scenery.append({"position":anchors[(i*17)%anchors.size()],"variant":i%5})
+ var visible_anchors=[]
+ var center=model.map_bounds().get_center()
+ for point in anchors:
+  if model.map_bounds().grow(60).has_point(point) and absf(point.y-center.y)<model.map_bounds().size.y*.35:visible_anchors.append(point)
+ if visible_anchors.is_empty():visible_anchors=anchors.duplicate()
+ visible_anchors.sort_custom(func(a,b):return a.distance_to(center)<b.distance_to(center))
  for i in range(5):
   if anchors.is_empty():break
-  var point=anchors[(i*37+3)%anchors.size()]
+  var point=visible_anchors[mini(i*3,visible_anchors.size()-1)]
   creatures.append({"kind":KINDS[i],"position":point,"origin":point,"age":float(-i*2),"life":12.0+i,"visible":i==0,"generation":0})
  next_lightning=12+rng.randf_range(0,5);next_wind=3
 func emit_weather(cue: String,point: Vector2):

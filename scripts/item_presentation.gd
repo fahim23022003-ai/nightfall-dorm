@@ -87,6 +87,7 @@ func draw(c):
   if e.item in ["gold","battery","pillow"]: point=OFFSET+room.bed_position()+Vector2(40,-35-lane*26)
   var prefix="+" if e.phase in ["activate","income"] else "-" if e.phase=="explode" else "BLOCK "
   var text=prefix+str(snappedf(group.value,.01))+(" GOLD" if e.item=="cursed_fortune" else "")
+  if e.item=="coupon" and e.phase=="used":text="SAVED %.2fG / %.2fE" % [group.value,e.get("power",0)]
   var color=Color(ItemCatalog.ITEMS[e.item].color)
   var font_size=18
   if e.phase=="end":

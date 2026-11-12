@@ -43,7 +43,7 @@ func run():
     if target>=0 and r.buildings[target].level==10:break
    var target=has(r,kind)
    check(target>=0 and r.buildings[target].level==10,"earned L10 within suitable extended economy "+kind)
-   var row={"kind":kind,"perks":boosted,"seconds":seconds*.5,"gold_generated":r.income_total,"gold_remaining":r.gold,"electricity_remaining":r.electricity,"investment":r.building_refund(target)*2 if target>=0 else Vector2.ZERO,"level":r.buildings[target].level if target>=0 else 0}
+   var row={"kind":kind,"perks":boosted,"seconds":seconds*.5,"gold_generated":r.income_total,"gold_remaining":r.gold,"electricity_remaining":r.electricity,"gold_invested":r.building_refund(target).x*2 if target>=0 else 0,"power_invested":r.building_refund(target).y*2 if target>=0 else 0,"level":r.buildings[target].level if target>=0 else 0}
    rows.append(row);print("HAUNTED_ECONOMY_RUN ",JSON.stringify(row))
  var result={"checks":checks,"failures":failures,"rows":rows,"controlled_no_hunter":true}
  var file=FileAccess.open("res://docs/evidence/haunted/economy-results.json",FileAccess.WRITE)

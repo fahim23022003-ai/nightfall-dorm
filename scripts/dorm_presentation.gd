@@ -11,6 +11,9 @@ var boss_presentation=preload("res://scripts/boss_presentation.gd").new()
 var environment=preload("res://scripts/haunted_environment.gd").new()
 var fear_rooms: Dictionary={}
 var seen_deaths: Dictionary={}
+var attack_pose=0.0
+var strike_position=Vector2.ZERO
+var strike_events: Dictionary={}
 var map_presentation=preload("res://scripts/map_presentation.gd").new()
 var previous_sleep: Dictionary={}
 var sleep_age: Dictionary={}
@@ -62,7 +65,7 @@ func _init():
  for name in ["hunter_idle","hunter_move","hunter_attack","hunter_hurt","hunter_death"]: textures[name]=cartoon[name]
 
 func reset():
- fear_rooms.clear();seen_deaths.clear()
+ fear_rooms.clear();seen_deaths.clear();strike_events.clear();attack_pose=0
  environment.observed_model=null
  previous.clear()
  moving.clear()
@@ -85,6 +88,7 @@ func update(delta: float, model):
  last_model_time=model.time
  hunter_clock+=maxf(0,delta-model.items.frozen_delta) if model.running else delta
  clock+=delta
+ attack_pose=maxf(0,attack_pose-maxf(0,delta-model.items.frozen_delta))
  if not model.tutorial_mode:environment.update(delta,model)
  for index in fear_rooms:fear_rooms[index]+=delta
  var old=previous.duplicate()
@@ -126,6 +130,8 @@ func update(delta: float, model):
  for e in visual_events: e.life-=delta
  visual_events=visual_events.filter(func(e): return e.life>0)
  for event in model.presentation_events:
+  if event.type=="survivor_attack" and not strike_events.has(event.id):
+   strike_events[event.id]=true;attack_pose=.35;strike_position=model.rooms[event.room].bed_position()
   if event.type=="survivor_fear" and not fear_rooms.has(event.room):fear_rooms[event.room]=0.0
   if event.type=="elimination" and not seen_deaths.has(event.room) and not model.rooms[event.room].alive:
    seen_deaths[event.room]=true;death_ages[event.room]=0.0
@@ -133,6 +139,7 @@ func update(delta: float, model):
  else: death_age=0
 
 func effect(kind: String,point: Vector2,life: float):
+ if kind in ["level","prestige"]:visual_events=visual_events.filter(func(e):return not (e.kind in ["level","prestige"] and e.position.distance_to(point)<1))
  visual_events.append({"kind":kind,"position":point,"life":life,"total":life})
  if visual_events.size()>80: visual_events.pop_front()
 
@@ -227,6 +234,11 @@ func render(c):
   resident(c,m.player_position,-1,true)
  if m.hunter.state != HunterState.State.DORMANT:
   hunter(c,m.hunter)
+  if attack_pose>0:
+   var q=OFFSET+strike_position
+   var sweep=(1-attack_pose/.35)*PI
+   c.draw_arc(q,32,sweep-PI*.7,sweep,24,Color(1,.55,.6,attack_pose/.35),3)
+   if not c.profile.settings.get("reduced_effects",false):c.draw_line(q+Vector2(-20,-17),q+Vector2(18,15),Color(1,.7,.7,attack_pose/.35),2)
  for shot in m.projectiles:
   var p=OFFSET+shot.position
   var direction=(m.hunter.position-shot.position).normalized()
@@ -356,6 +368,7 @@ func hunter(c,h):
   name="hunter_target" if h.target<3 else "hunter_attack"
  if h.hit_flash>0: name="hunter_hurt"
  var alpha=1.0
+ if attack_pose>0:name="hunter_attack"
  if h.state==HunterState.State.DEAD:
   name="hunter_death"
   alpha=maxf(0,1-death_age/1.2)
@@ -465,4 +478,5 @@ func prestige(c,point: Vector2,level: int,kind="turret"):
  if level==10:
   c.draw_colored_polygon(PackedVector2Array([point+Vector2(-16,-28),point+Vector2(-18,-42),point+Vector2(-7,-34),point+Vector2(0,-45),point+Vector2(7,-34),point+Vector2(18,-42),point+Vector2(16,-28)]),Color(color,.85))
   if not reduced:c.draw_arc(point,28,sin(clock)*.2,PI+sin(clock)*.2,24,Color(color,.4),2)
- text(c,"L%d%s" % [level," MAX" if level==10 else ""],point+Vector2(-17,37),10,color)
+ c.draw_style_box(frame(Color("172338"),color,2),Rect2(point+Vector2(-22,14),Vector2(44,14)))
+ text(c,"L%d%s" % [level," MAX" if level==10 else ""],point+Vector2(-18,24),8,color)

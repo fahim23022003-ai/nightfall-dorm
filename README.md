@@ -17,6 +17,19 @@ An original single-player Godot 4 dormitory survival defense game. Choose a room
 
 Full controls, ZIP/Git instructions and a practical test checklist: [Windows home testing](docs/HOME_TESTING_WINDOWS.md).
 
+## Haunted worlds and prestige defenses (Phase 5C-2)
+
+The five existing maps now have animated exterior scenery, noncombat ambient
+creatures, controlled storms and separate ambience. Genuine breaches/deaths add
+Hunter/Reaper laughter, survivor scream/collapse/aftermath and actual team counts.
+Reduced Effects simplifies ornament while keeping combat readable.
+
+Needle and Arc turrets can reach Level 10; utilities remain at four. Prestige
+upgrades require higher bed/door levels and substantial Gold/Electricity.
+Coupons and sales use actual paid investments. See the
+[haunted world report](docs/PHASE_5C2_HAUNTED_WORLD_REPORT.md) for tuning,
+earned-resource reachability, test evidence and Windows limitations.
+
 ## Opening, practice and RM Cash shop (Phase 5C-1)
 
 Every fresh desktop launch opens with a 15-second animated chase and a short
