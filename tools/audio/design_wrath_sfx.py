@@ -81,8 +81,9 @@ recipes['shot_shock_capacitor_burst']=[P('static_2',.25,.35,.7,.75),P('laser_1',
 recipes['shot_shock_rapid_discharge']=[P('static_2',.25,.15,.5,1.3),P('laser_1',.21,.12,.4,1.4)]
 for shot in ['needle_precision','needle_suppression','arc_focus','arc_storm','flame_searing','flame_wildfire','frost_deep_chill','frost_rime_field','shock_capacitor_burst','shock_rapid_discharge']:
  recipes['shot_'+shot+'_high']=recipes['shot_'+shot]+[P('impact_3',.04,.12,.2,.78)]
-for event in ['turret_upgrade','bed_upgrade','door_upgrade']:
- recipes[event]=recipes['upgrade']
+recipes['turret_upgrade']=recipes['upgrade']
+recipes['bed_upgrade']=[P('chains-rattling-2',.25,.25,.25,1.2),P('glass_clink_1',0,.4,.45,1.15,.06),P('floorboard-creaks',.2,.3,.18)]
+recipes['door_upgrade']=[P('impact_3',.04,.35,.5,.7),P('chains-rattling-2',.1,.45,.4,.85,.08)]
 recipes['prestige_upgrade']=recipes['branch_select']+[P('glass_clink_1',0,.6,.3,.6,.18)]
 for event,alias in [('button','ui_confirm'),('menu','ui_hover'),('purchase','ui_confirm'),('failure','ui_fail'),('shop_purchase','refund')]:recipes[event]=recipes[alias]
 recipes['footstep']=[P('creepy-footsteps',.25,.32,.7,.85)]

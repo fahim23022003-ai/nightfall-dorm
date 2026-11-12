@@ -3,6 +3,12 @@ extends RefCounted
 
 signal feedback(message: String)
 var items=ItemEffects.new()
+var evolution=HunterEvolution.new()
+var wrath=ReaperWrath.new()
+var defenses=DefenseEffects.new()
+var minions: Array=[]
+var next_entity_id=2
+var _kill_credit_room=-1
 var rooms: Array = []
 var hunter: HunterState
 var player_room = -1
@@ -78,6 +84,7 @@ func _init():
 
 func reset(seed_value: int = 1):
  items=ItemEffects.new()
+ evolution=HunterEvolution.new();wrath=ReaperWrath.new();defenses=DefenseEffects.new();minions=[];next_entity_id=2
  strategy=MatchStrategy.new()
  run_kind="campaign";endless=null;challenge_code="";challenge_config={};challenge_accumulator=0;challenge_recorded=false;terminal_recorded=false;defeat_facts=DefeatFacts.new()
  random.seed = seed_value
@@ -251,9 +258,12 @@ func step_navigation(from: Vector2,to: Vector2,distance: float,key: String="") -
  return point
 
 func record_event(type: String, room_index: int, data: Dictionary={}):
- var global_event=type in ["boss_transform","boss_awakened","boss_death"]
+ if type in ["sale","building_destroyed"]:defenses.removed(room_index,int(data.get("tile",-1)))
+ var global_event=type in ["boss_transform","boss_awakened","boss_death","boss_phase"]
  if (room_index<0 or room_index>=rooms.size()) and not global_event: return
  var event_position=hunter.position if global_event else rooms[room_index].door_position()
+ if data.get("position") is Vector2 and data.position.is_finite():event_position=data.position
+ elif data.get("entity_position") is Vector2 and data.entity_position.is_finite():event_position=data.entity_position
  var entry=data.duplicate(true)
  entry.merge({"id":next_presentation_event_id,"type":type,"room":room_index,
   "position":event_position,"time":time,"damage":data.get("damage",0.0),"transformed":hunter.transformed},true)
@@ -403,6 +413,9 @@ func _tick_sim(delta: float):
  if run_kind=="endless" and endless!=null and endless.phase=="intermission":return
  _age_combat_events(delta)
  time += delta
+ evolution.tick(delta,self)
+ wrath.tick(delta,self)
+ for room in rooms:room.production_paused=wrath.production_remaining>0
  items.tick(delta,self)
  strategy.observe(self)
  if bot_claimed < 5 and time > 6+bot_claimed*1.7:
@@ -442,6 +455,9 @@ func _tick_sim(delta: float):
    items.trigger_segment(previous,hunter.position,self)
  else:
   hunter.tick(delta,self)
+ for undead in minions:undead.tick(maxf(0,delta-items.frozen_delta),self)
+ minions=minions.filter(func(u):return u.hp>0)
+ defenses.tick(delta,self)
  # A breach resolves before pending teammate shots can revive a lost match.
  if player_room >= 0 and not rooms[player_room].alive:
   result = "defeat"
@@ -450,11 +466,7 @@ func _tick_sim(delta: float):
  # Contact with an exposed survivor has the same priority as a room breach.
  if exposed and hunter.state!=HunterState.State.TRANSFORM and hunter.hp > 0 and hunter.position.distance_to(player_position)<15:
   if player() != null:
-   player().eliminated_position=player_position
-   player().alive = false
-   player().sleeping = false
-   record_event("elimination",player_room,{"survivor_position":player_position})
-  eliminations += 1
+   eliminate_resident(player_room,1,true)
   result = "defeat"
   _finish_terminal()
   return
@@ -470,72 +482,136 @@ func _tick_sim(delta: float):
  if result != "":
   _finish_terminal()
 
+func domain_music_active() -> bool:return wrath.domain_active()
+func target_by_id(id: int):
+ if id==1:return hunter if hunter.hp>0 and hunter.state not in [HunterState.State.DORMANT,HunterState.State.DEAD] else null
+ for undead in minions:
+  if undead.id==id and undead.hp>0:return undead
+ return null
+func attackable_targets() -> Array:
+ var result=[]
+ if target_by_id(1)!=null:result.append({"id":1,"actor":hunter})
+ for undead in minions:
+  if undead.hp>0:result.append({"id":undead.id,"actor":undead})
+ return result
+func spawn_undead(count: int,enhanced: bool=false):
+ if wrath.domain_active() or hunter.hp<=0:return
+ minions=minions.filter(func(u):return u.hp>0)
+ var used=[]
+ for u in minions:used.append(u.slot)
+ for slot in range(10):
+  if count<=0:break
+  if slot in used:continue
+  var u=UndeadAgent.new();u.configure(self,next_entity_id,slot,enhanced);next_entity_id+=1;minions.append(u);count-=1
+  record_event("undead_spawn",u.target,{"entity_id":u.id,"entity_position":u.position,"enhanced":enhanced})
+func clear_minions():
+ for u in minions:u.despawn(self)
+ minions.clear()
+ for slot in range(10):_navigation_routes.erase("undead_slot%d" % slot)
+func apply_room_damage(index: int,amount: float,source: String="door strike",attacker_id: int=1,special: bool=false) -> float:
+ if index<0 or index>=rooms.size() or not is_finite(amount) or amount<=0 or not running or result!="":return 0.0
+ var room=rooms[index]
+ var attacker=target_by_id(attacker_id)
+ if attacker==null:return 0.0
+ if attacker_id!=1 and (attacker.target!=index or attacker.position.distance_to(room.door_approach())>3):return 0.0
+ if attacker_id==1 and not special and (hunter.target!=index or hunter.position.distance_to(room.door_approach())>3):return 0.0
+ if not room.alive or not room.closed or room.door_hp<=0:return 0.0
+ if wrath.domain_active() and index!=wrath.domain_room:return 0.0
+ var old=room.door_hp
+ amount*=StrategyCatalog.BRANCHES.get(room.door_branch,{}).get("mitigation",1.0)
+ if attacker_id==1:amount*=evolution.damage_factor(special)
+ var blocked=minf(amount,room.barrier_hp) if room.barrier_remaining>0 else 0.0
+ room.barrier_hp-=blocked;amount-=blocked
+ if blocked>0:record_event("shield_absorb",index,{"damage":blocked,"amount":blocked})
+ amount=items.absorb(amount,self,index)
+ var rescued=items.guardian_intercept(amount,self,index)
+ if not rescued:room.door_hp=maxf(0,room.door_hp-amount)
+ var actual=maxf(0,old-room.door_hp);room.door_damage_taken+=actual;room.damage_flash=.25
+ record_event("door_damage",index,{"damage":actual,"hp":room.door_hp,"max_hp":room.max_hp(),"source":source,"attacker_id":attacker_id})
+ if old>0 and room.door_hp<=0:record_event("door_break",index)
+ if index==player_room and not rescued:items.feather_cross(old,self)
+ if not rescued:room.try_rescue()
+ return actual
+func eliminate_resident(index: int,attacker_id: int=1,exposed: bool=false) -> bool:
+ if index<0 or index>=rooms.size() or not running or result!="":return false
+ if exposed and index!=player_room:return false
+ var r=rooms[index];var actor=target_by_id(attacker_id)
+ if actor==null or not r.alive or r.owner<0 or not exposed and actor.target!=index:return false
+ var point=player_position if exposed and index==player_room else r.bed_position()
+ if actor.position.distance_to(point)>15:return false
+ if not exposed and (r.door_hp>0 and r.closed or not r.sleeping):return false
+ r.eliminated_position=point;r.alive=false;r.sleeping=false;eliminations+=1
+ record_event("survivor_attack",index,{"attacker_id":attacker_id})
+ record_event("elimination",index,{"survivor_position":point,"attacker_id":attacker_id})
+ _kill_credit_room=index
+ evolution.award(self,index,"Hunter" if attacker_id==1 else "Undead")
+ _kill_credit_room=-1
+ return true
+func apply_target_damage(id: int,amount: float,room_index: int) -> float:
+ var actor=target_by_id(id)
+ if actor==null or amount<=0 or not is_finite(amount):return 0.0
+ if id==1 and wrath.domain_active() and room_index!=wrath.domain_room:return 0.0
+ var old=actor.hp
+ if id==1:actor.hurt(amount)
+ else:actor.hurt(amount,self)
+ return maxf(0,old-actor.hp)
+func credit_damage(room_index: int,amount: float,id: int):
+ if room_index<0 or room_index>=rooms.size():return
+ damage_dealt+=amount;rooms[room_index].damage_dealt+=amount
+ if id==1:rooms[room_index].main_damage_dealt+=amount
+ else:rooms[room_index].minion_damage_dealt+=amount
 func _turrets(delta: float):
- if not running or result != "":
-  return
+ if not running or result!="" or wrath.rules_remaining>0:return
  for room in rooms:
-  if not room.alive:
-   continue
-  var multiplier = 1.0
-  for b in room.buildings.values():
-   if b.kind == "enhancer":
-    multiplier += Catalog.support_output("enhancer",b.level)*StrategyCatalog.support(b).get("output",1.0)
+  if not room.alive:continue
   for tile in room.buildings:
-   var b = room.buildings[tile]
-   if b.kind != "turret" and b.kind != "heavy":
-    continue
-   b.cooldown = maxf(-delta,b.cooldown-delta)
-   var data = Catalog.BUILDINGS[b.kind]
-   var branch=StrategyCatalog.weapon(b)
+   var b=room.buildings[tile]
+   if b.kind not in DefenseEffects.WEAPONS:continue
+   b.cooldown=maxf(-delta,b.cooldown-delta)
+   if b.cooldown>0 or projectiles.size()>=Catalog.PROJECTILES.max_active:continue
    var resolved=BuildingStats.weapon_stats(self,room,b)
-   if not hunter.shadow_active(room.index) and hunter.hp > 0 and hunter.state != HunterState.State.DORMANT and hunter.state != HunterState.State.DEAD and room.tile_position(tile).distance_to(hunter.position)<=resolved.range and b.cooldown <= 0:
-    var amount = resolved.damage
-    if projectiles.size() >= Catalog.PROJECTILES.max_active:
-     continue
-    var origin = room.tile_position(tile)
-    var shot = {"id":next_projectile_id,"from":origin,"position":origin,"target_id":1,"damage":amount,"speed":Catalog.PROJECTILES[b.kind]*branch.speed,"kind":b.kind,"room":room.index,"level":b.level,"age":0.0,"specialization":b.get("specialization",""),"slow":branch.slow}
-    next_projectile_id += 1
-    projectiles.append(shot)
-    _combat_event("launch",shot,origin,0.0)
-    shots += 1
-    room.shots += 1
-    b.flash = 0.15
-    b.cooldown += resolved.interval
-
+   var candidates=[]
+   for entry in attackable_targets():
+    if entry.id==1 and (hunter.shadow_active(room.index) or wrath.domain_active() and room.index!=wrath.domain_room):continue
+    if room.tile_position(tile).distance_to(entry.actor.position)<=resolved.range:candidates.append(entry)
+   if candidates.is_empty():continue
+   candidates.sort_custom(func(a,b):return room.tile_position(tile).distance_squared_to(a.actor.position)<room.tile_position(tile).distance_squared_to(b.actor.position))
+   var count=mini(candidates.size(),int(resolved.get("targets",1)))
+   for i in range(count):
+    var entry=candidates[i];var origin=room.tile_position(tile)
+    var shot={"id":next_projectile_id,"from":origin,"position":origin,"target_id":entry.id,"damage":resolved.damage,"speed":resolved.projectile_speed,"kind":b.kind,"room":room.index,"level":b.level,"age":0.0,"specialization":b.get("specialization",""),"slow":resolved.get("slow",0.0),"burn":resolved.get("burn",0.0)}
+    next_projectile_id+=1;projectiles.append(shot);_combat_event("launch",shot,origin,0);shots+=1;room.shots+=1
+   b.flash=.15;b.cooldown+=resolved.interval
 func _advance_projectiles(delta: float):
- if not running or result != "" or not is_finite(delta) or delta <= 0:
-  return
- var survivors: Array = []
+ if not running or result!="" or not is_finite(delta) or delta<=0:return
+ var survivors=[]
  for shot in projectiles:
-  if hunter.hp <= 0 or hunter.state in [HunterState.State.DORMANT,HunterState.State.DEAD] or shot.target_id != 1:
-   _combat_event("cancel",shot,shot.position,0.0,"invalid_target")
-   continue
-  shot.age += delta
-  if shot.age > Catalog.PROJECTILES.max_age:
-   _combat_event("cancel",shot,shot.position,0.0,"expired")
-   continue
-  var travel = shot.speed*delta
-  if shot.position.distance_to(hunter.position) <= travel:
-   shot.position = hunter.position
-   var previous_hp = hunter.hp
-   var hit=shot.damage
+  var actor=target_by_id(int(shot.target_id))
+  if actor==null or shot.target_id==1 and wrath.domain_active() and shot.room!=wrath.domain_room:
+   _combat_event("cancel",shot,shot.position,0,"invalid_target");continue
+  shot.age+=delta
+  if shot.age>Catalog.PROJECTILES.max_age:_combat_event("cancel",shot,shot.position,0,"expired");continue
+  var travel=shot.speed*delta
+  if shot.position.distance_to(actor.position)<=travel:
+   shot.position=actor.position;var hit=shot.damage
    if shot.room==player_room:
-    if hunter.transformed:hit*=match_boosts.get("reaper",1.0)
-    if time<preparation+stage_bonus.get("seconds",0.0):hit*=stage_bonus.get("damage",1.0)
-   hunter.hurt(hit)
-   if float(shot.get("slow",0))>0:hunter.apply_suppression(float(shot.slow))
-   items.ignite(self,shot.room)
-   var applied_damage = previous_hp-hunter.hp
-   damage_dealt += applied_damage
-   rooms[shot.room].damage_dealt += applied_damage
-   _combat_event("impact",shot,shot.position,applied_damage)
-  else:
-   shot.position = shot.position.move_toward(hunter.position,travel)
-   survivors.append(shot)
- projectiles = survivors
+    if hunter.transformed and shot.target_id==1:hit*=match_boosts.get("reaper",1.0)
+    if time<preparation+stage_bonus.get("seconds",0):hit*=stage_bonus.get("damage",1.0)
+   var amount=apply_target_damage(shot.target_id,hit,shot.room)
+   if shot.get("slow",0)>0:
+    if shot.target_id==1:
+     hunter.apply_suppression(float(shot.slow))
+     if shot.kind=="frost":hunter.attack_slow_remaining=1.0;hunter.attack_slow_strength=float(shot.slow)
+    else:actor.suppress(float(shot.slow))
+   if shot.get("burn",0)>0:defenses.ignite(shot.target_id,shot.burn,3.0,shot.room)
+   if shot.target_id==1:items.ignite(self,shot.room)
+   elif shot.room==player_room and float(items.timers.get("inferno",0))>0:defenses.ignite(shot.target_id,ItemCatalog.TUNING.burn_dps,ItemCatalog.TUNING.burn_seconds,shot.room)
+   credit_damage(shot.room,amount,shot.target_id);_combat_event("impact",shot,shot.position,amount)
+  else:shot.position=shot.position.move_toward(actor.position,travel);survivors.append(shot)
+ projectiles=survivors
 
 func _combat_event(type: String, shot: Dictionary, position: Vector2, damage: float, reason: String = ""):
- combat_events.append({"id":next_combat_event_id,"type":type,"projectile_id":shot.id,"position":position,"room":shot.room,"kind":shot.kind,"level":shot.level,"specialization":shot.get("specialization",""),"damage":damage,"time":time,"remaining":Catalog.PROJECTILES.event_lifetime,"reason":reason})
+ combat_events.append({"id":next_combat_event_id,"type":type,"projectile_id":shot.id,"target_id":shot.get("target_id",1),"position":position,"room":shot.room,"kind":shot.kind,"level":shot.level,"specialization":shot.get("specialization",""),"damage":damage,"time":time,"remaining":Catalog.PROJECTILES.event_lifetime,"reason":reason})
  next_combat_event_id += 1
  if combat_events.size() > Catalog.PROJECTILES.max_events:
   combat_events.pop_front()
@@ -576,6 +652,8 @@ func _pursue_exposed_player(delta: float):
  hunter.position = hunter.position.move_toward(waypoint,hunter.speed*delta)
 
 func _finish_terminal():
+ wrath.clear(self);defenses.clear(self)
+ for room in rooms:room.production_paused=false;room.threat_income_factor=1.0;room.threat_power_factor=1.0
  terminal_recorded=true
  if result=="defeat":defeat_facts.capture(self)
  items.clear(self)

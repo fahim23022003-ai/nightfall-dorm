@@ -108,6 +108,8 @@ func show_loadout():
  ui.label_at("TONIGHT · "+StrategyCatalog.ARCHETYPES[archetype].name,Vector2(191,140),24,930,true)
  var hint=ui.label_at(StrategyCatalog.ARCHETYPES[archetype].hint,Vector2(191,171),15,930)
  hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;hint.set_deferred("size",Vector2(930,40))
+ var eligible=BossCatalog.encounter(game.profile.selected_stage if game.campaign_mode else "",difficulty).enabled
+ ui.label_at("REAPER ELIGIBLE · after8s +55% HP; PhaseII35%, final10%" if eligible else "REAPER: Normal Stage3+; Long Night / Hell Stage2+",Vector2(125,207),13,1020)
  var descriptions={"standard":"Full repairs · forgiving pressure","hard":"Charged strikes · siege repairs 65%","hell":"Expert risk · siege repairs 40%"}
  for i in range(3):
   var key=["standard","hard","hell"][i];var chosen=key;var at=Vector2(125+i*345,225)

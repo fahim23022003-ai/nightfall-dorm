@@ -51,7 +51,7 @@ func draw(c,h,clock: float,death_age: float,heading=Vector2.RIGHT,reduced=false)
  if h.surge_remaining>0 and h.surge_room>=0:
   var room=c.model.rooms[h.surge_room]
   for tile in room.buildings:
-   if room.buildings[tile].kind not in ["turret","heavy"]: continue
+   if room.buildings[tile].kind not in DefenseEffects.WEAPONS: continue
    var q=OFFSET+room.tile_position(tile)
    c.draw_arc(q,24,clock,clock+TAU*.85,24,Color(.73,.39,.95,.8),2)
    c.draw_line(q+Vector2(-7,-7),q+Vector2(7,7),Color(.9,.65,1,.9),2)

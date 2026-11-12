@@ -5,9 +5,9 @@ extends RefCounted
 # No transformation health grant: current/max HP are carried through exactly.
 const TRANSFORM_SECONDS=2.4
 const ENCOUNTERS={
- "standard":{"first_stage":3,"opening":90.0,"hp_fraction":0.55,"deadline":210.0,"recovery":1.05},
- "hard":{"first_stage":2,"opening":80.0,"hp_fraction":0.55,"deadline":210.0,"recovery":1.0},
- "hell":{"first_stage":2,"opening":80.0,"hp_fraction":0.55,"deadline":210.0,"recovery":1.1}
+ "standard":{"first_stage":3,"opening":8.0,"hp_fraction":0.55,"deadline":210.0,"recovery":1.05},
+ "hard":{"first_stage":2,"opening":8.0,"hp_fraction":0.55,"deadline":210.0,"recovery":1.0},
+ "hell":{"first_stage":2,"opening":8.0,"hp_fraction":0.55,"deadline":210.0,"recovery":1.1}
 }
 const ATTACKS={
  "scythe":{"name":"SCYTHE STRIKE","windup":1.0,"damage":1.15,"cooldown":3.0,"recovery":0.85},

@@ -25,9 +25,9 @@ static func valid_boosts(boosts: Dictionary) -> bool:
 static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  var run=model.endless
  if model.run_kind!="endless" or run==null or run.phase!="intermission" or run.completed!=run.sealed_wave or model.hunter.hp>0 or model.player()==null or not model.player().alive:return {}
- var data={"version":1,"ruleset":2,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
+ var data={"version":1,"ruleset":3,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"evolution":model.evolution.snapshot(),"defense_refractory":model.defenses.shield_cooldowns.duplicate(true),"repair_refractory":model.defenses.repair_cooldowns.duplicate(true),"lure_refractory":model.defenses.lure_cooldown,"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
  for room in model.rooms:
-  var saved={"owner":room.owner,"profile":room.profile,"bed_branch":room.bed_branch,"door_branch":room.door_branch,"trait":room.trait_id,"position":pair(room.resident_position),"buildings":[]}
+  var saved={"owner":room.owner,"profile":room.profile,"bed_branch":room.bed_branch,"door_branch":room.door_branch,"trait":room.trait_id,"position":pair(room.resident_position),"main_damage":room.main_damage_dealt,"minion_damage":room.minion_damage_dealt,"buildings":[]}
   for key in ROOM_NUMBERS+ROOM_FLAGS:saved[key]=room.get(key)
   saved.bot_timer=maxf(0,saved.bot_timer)
   for tile in room.buildings:
@@ -40,7 +40,7 @@ static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  data.items.trap={"position":pair(fx.trap.position),"remaining":fx.trap.remaining} if not fx.trap.is_empty() else {}
  return data if valid(data) else {}
 static func valid(data) -> bool:
- if not data is Dictionary or data.get("version")!=1 or not whole(data.get("ruleset"),1,2) or data.get("map","") not in MapCatalog.IDS or data.get("difficulty","") not in RankCatalog.DIFFICULTIES:return false
+ if not data is Dictionary or data.get("version")!=1 or not whole(data.get("ruleset"),1,3) or data.get("map","") not in MapCatalog.IDS or data.get("difficulty","") not in RankCatalog.DIFFICULTIES:return false
  for key in ["run_id","seed","completed"]:
   if not whole(data.get(key),1):return false
  for key in ["time","preparation","shots","damage","eliminations"]:
@@ -67,6 +67,7 @@ static func valid(data) -> bool:
   if room.owner>=0:
    if room.owner in owners:return false
    owners.append(room.owner)
+  if not number(room.get("main_damage",0)) or not number(room.get("minion_damage",0)):return false
   for key in ROOM_NUMBERS:
    if not number(room.get(key)):return false
   for key in ROOM_FLAGS:
@@ -94,9 +95,18 @@ static func valid(data) -> bool:
    var ceiling=Vector2(Catalog.BUILDINGS[b.kind].gold,Catalog.BUILDINGS[b.kind].power)
    for level in range(1,int(b.level)):ceiling+=Catalog.upgrade_cost(b.kind,level)
    if branch!="":ceiling+=StrategyCatalog.BRANCH_FEE
-   if not number(b.get("invested_gold"),0,ceiling.x+.0001) or not number(b.get("invested_power"),0,ceiling.y+.0001) or not number(b.get("cooldown"),0,10):return false
+   if not number(b.get("invested_gold"),0,ceiling.x+.0001) or not number(b.get("invested_power"),0,ceiling.y+.0001) or not number(b.get("cooldown"),0,24 if b.kind=="decoy" else 12 if b.kind=="shield" else 10):return false
  if data.rooms[int(data.player_room)].owner!=0 or not data.rooms[int(data.player_room)].alive or not data.rooms[int(data.player_room)].sleeping:return false
  if owners.size()-1!=data.bot_claimed or not whole(data.eliminations,0,6) or not whole(data.shots):return false
+ if int(data.ruleset)>=3 and not data.has("evolution"):return false
+ if data.has("evolution") and not HunterEvolution.valid(data.evolution,data.rooms):return false
+ if not data.get("defense_refractory",{}) is Dictionary or data.get("defense_refractory",{}).size()>6:return false
+ for key in data.get("defense_refractory",{}):
+  if key not in ["0","1","2","3","4","5"] or not number(data.defense_refractory[key],0,12):return false
+ if not data.get("repair_refractory",{}) is Dictionary or data.get("repair_refractory",{}).size()>6:return false
+ for key in data.get("repair_refractory",{}):
+  if key not in ["0","1","2","3","4","5"] or not number(data.repair_refractory[key],0,5):return false
+ if not number(data.get("lure_refractory",0),0,24):return false
  var fx=data.items
  for key in ITEM_NUMBERS:
   if not number(fx.get(key),0,10000):return false
@@ -115,6 +125,7 @@ static func restore(data) -> MatchModel:
  for i in range(6):
   var room=model.rooms[i];var saved=data.rooms[i]
   room.bed_branch=saved.get("bed_branch","");room.door_branch=saved.get("door_branch","")
+  room.main_damage_dealt=float(saved.get("main_damage",0));room.minion_damage_dealt=float(saved.get("minion_damage",0))
   room.owner=int(saved.owner);room.profile=saved.profile;room.resident_position=vec(saved.position)
   for key in ROOM_NUMBERS+ROOM_FLAGS:room.set(key,saved[key])
   for b in saved.buildings:
@@ -122,6 +133,8 @@ static func restore(data) -> MatchModel:
    room.buildings[int(b.tile)]=building
  for key in ITEM_NUMBERS:model.items.set(key,data.items[key])
  model.items.feather_used=data.items.feather_used;model.items.timers=data.items.timers.duplicate(true);model.items.decoy_point=vec(data.items.decoy_point)
+ if data.has("evolution"):model.evolution.restore(data.evolution)
+ model.defenses.repair_cooldowns=data.get("repair_refractory",{}).duplicate(true);model.defenses.shield_cooldowns=data.get("defense_refractory",{}).duplicate(true);model.defenses.lure_cooldown=float(data.get("lure_refractory",0))
  if not data.items.trap.is_empty():model.items.trap={"position":vec(data.items.trap.position),"remaining":data.items.trap.remaining}
  run.wave=int(data.completed);run.completed=int(data.completed);run.sealed_wave=run.completed;run.phase="intermission"
  model.hunter.hp=0;model.hunter.state=HunterState.State.DEAD

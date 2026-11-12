@@ -19,8 +19,9 @@ var legendary_used=0
 var guardian_shield_hp=0.0
 var frozen_delta=0.0
 var curse_frame_fraction=0.0
-func guardian_intercept(amount: float,model) -> bool:
+func guardian_intercept(amount: float,model,victim: int=-1) -> bool:
  var r=model.player()
+ if victim>=0 and victim!=model.player_room:return false
  if r==null or not model.running or model.result!="" or not r.alive or not r.sleeping or not r.closed or r.door_hp<=0 or amount<r.door_hp: return false
  if legendary_used>=ItemCatalog.TUNING.legendary_limit: return false
  if not consume("guardian_heart",model): return false
@@ -32,6 +33,8 @@ func guardian_intercept(amount: float,model) -> bool:
  return true
 func seal_valid(model) -> bool:
  var h=model.hunter
+ if not model.wrath.scythe.is_empty() and model.wrath.scythe.room==model.player_room:return true
+ if model.wrath.active() and h.transformed and (model.wrath.cast_target==model.player_room or model.wrath.ability in ["phantom_scream","rules_judgement","final_judgement"]):return true
  if h.hp<=0 or not h.transformed or h.state!=HunterState.State.ATTACK or not BossCatalog.ATTACKS.has(h.boss_attack) or h.cooldown<=0 or h.boss_attack_target!=h.target: return false
  if h.target<0 or h.target>=model.rooms.size(): return false
  var r=model.rooms[h.target]
@@ -71,6 +74,8 @@ func can_activate(id: String,model) -> String:
  var room=model.player()
  if room==null or not room.alive or not room.sleeping: return "Occupy your bed first."
  if ItemCatalog.legendary(id) and legendary_used>=ItemCatalog.TUNING.legendary_limit: return "Legendary power already used this match."
+ if model.wrath.rules_remaining>0:return "Rules Judgement: manual items locked for %.1fs." % model.wrath.rules_remaining
+ if model.wrath.domain_active() and model.wrath.domain_room!=model.player_room and id in ["time_freeze","frost","trap","decoy","smoke","reaper_seal"]:return "Crimson Domain: only the duelling room may disrupt the Reaper."
  if id=="guardian_heart": return "Automatic: equipped Heart intercepts one lethal door hit."
  if id=="reaper_seal" and not seal_valid(model): return "Wait for a telegraphed Reaper special attack."
  if id in ["time_freeze","cursed_fortune"] and (model.hunter.hp<=0 or model.hunter.state in [HunterState.State.DORMANT,HunterState.State.DEAD]): return "Wait until the Hunter arrives."
@@ -80,7 +85,7 @@ func can_activate(id: String,model) -> String:
  if id=="feather": return "Automatic: equip it; an intact door crossing 25% HP triggers once per match."
  if id=="coupon" and room.coupon_armed: return "Coupon already armed; complete one building purchase or upgrade."
  if id=="barricade" and (room.door_hp<=0 or not room.closed): return "An intact closed door is required."
- if id=="inferno" and not room.buildings.values().any(func(b):return b.kind in ["turret","heavy"]): return "Build a turret first."
+ if id=="inferno" and not room.buildings.values().any(func(b):return b.kind in DefenseEffects.WEAPONS): return "Build a turret first."
  if id in ["decoy","smoke"] and (control_recovery>0 or model.hunter.state in [HunterState.State.DORMANT,HunterState.State.DEAD,HunterState.State.TRANSFORM,HunterState.State.BREACH,HunterState.State.EXIT]): return "Target disruption unavailable during this state or recovery."
  if id=="decoy" and not model.navigation_walkable(room.door_approach()): return "No reachable decoy position."
  if id=="rescue":
@@ -93,7 +98,7 @@ func can_activate(id: String,model) -> String:
  if id=="overdrive":
   var found=false
   for b in room.buildings.values():
-   if b.kind in ["turret","heavy"]: found=true
+   if b.kind in DefenseEffects.WEAPONS: found=true
   if not found: return "Build a turret first."
  if id=="trap":
   if not trap.is_empty(): return "A trap is already deployed."
@@ -109,6 +114,8 @@ func apply(id: String,model):
    timers[id]=ItemCatalog.TUNING.boss_freeze_seconds if model.hunter.transformed else ItemCatalog.TUNING.freeze_seconds
    control_recovery=ItemCatalog.TUNING.control_refractory
   "reaper_seal":
+   model.wrath.interrupt(model,"Reaper Seal")
+   model.wrath.counter_scythe(model)
    model.hunter.cancel_boss_attack()
    model.hunter.cooldown=maxf(model.hunter.cooldown,ItemCatalog.TUNING.seal_recovery)
    timers[id]=model.hunter.cooldown
@@ -150,17 +157,18 @@ func apply(id: String,model):
   "trap": trap={"position":room.door_approach(),"remaining":ItemCatalog.TUNING.trap_seconds}
  emit_item(id,model,value)
  if id=="rescue": events[-1].position=model.rooms[rescue_target].door_position()
-func absorb(amount: float,model) -> float:
- if model.hunter.target==model.player_room and float(timers.get("barricade",0))>0:
+func absorb(amount: float,model,victim: int=-1) -> float:
+ if victim<0:victim=model.hunter.target
+ if victim==model.player_room and float(timers.get("barricade",0))>0:
   var prevented=amount*(1-ItemCatalog.TUNING.barricade_factor)
   amount-=prevented
   emit_item("barricade",model,prevented,"absorb")
- if guardian_shield_hp>0 and float(timers.get("guardian_heart",0))>0 and model.hunter.target==model.player_room:
+ if guardian_shield_hp>0 and float(timers.get("guardian_heart",0))>0 and victim==model.player_room:
   var blocked=minf(guardian_shield_hp,amount)
   guardian_shield_hp-=blocked
   amount-=blocked
   if blocked>0: emit_item("guardian_heart",model,blocked,"absorb")
- if shield_hp<=0 or float(timers.get("shield",0))<=0 or model.hunter.target!=model.player_room: return amount
+ if shield_hp<=0 or float(timers.get("shield",0))<=0 or victim!=model.player_room: return amount
  var absorbed=minf(shield_hp,amount)
  shield_hp-=absorbed
  emit_item("shield",model,absorbed,"absorb")
@@ -182,7 +190,9 @@ func tick(delta: float,model):
     pillow_display_total=0; pillow_display_clock=0
  control_recovery=maxf(0,control_recovery-delta)
  if burn_remaining>0 and model.hunter.hp>0:
-  var damage=minf(delta,burn_remaining)*ItemCatalog.TUNING.burn_dps*(ItemCatalog.TUNING.burn_boss_factor if model.hunter.transformed else 1.0)
+  var dps=ItemCatalog.TUNING.burn_dps*(ItemCatalog.TUNING.burn_boss_factor if model.hunter.transformed else 1.0)
+  var damage=minf(delta,burn_remaining)*maxf(0,dps-model.defenses.burn_dps(1))
+  if model.wrath.domain_active() and model.wrath.domain_room!=model.player_room:damage=0
   var old=model.hunter.hp
   model.hunter.hurt(damage)
   var dealt=old-model.hunter.hp
@@ -206,6 +216,7 @@ func tick(delta: float,model):
    trap.clear(); emit_item("trap",model,0,"end")
   else: trigger_segment(model.hunter.position,model.hunter.position,model)
 func trigger_segment(from: Vector2,to: Vector2,model):
+ if model.wrath.domain_active() and model.wrath.domain_room!=model.player_room:return
  if trap.is_empty() or model.hunter.hp<=0 or model.hunter.state in [HunterState.State.DORMANT,HunterState.State.DEAD]: return
  var closest=Geometry2D.get_closest_point_to_segment(trap.position,from,to)
  if closest.distance_to(trap.position)>ItemCatalog.TUNING.trap_radius: return

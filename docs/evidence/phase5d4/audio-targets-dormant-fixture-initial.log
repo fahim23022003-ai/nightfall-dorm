@@ -1,0 +1,8 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: WRATH AUDIO TARGET: producer identity is Hunter1; Undead begin2
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d4_audio_targets.gd:6)
+       [1] run (res://tests/phase5d4_audio_targets.gd:10)
+WRATH_AUDIO_TARGET_CHECKS=209 FAILURES=1

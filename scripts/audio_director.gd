@@ -2,10 +2,14 @@ class_name AudioDirector
 extends Node
 
 const ROOT = "res://assets/audio/"
-const LOOP_NAMES = ["music_intro","music_approach","music_endless","music_menu","music_calm","music_danger","ambient_dorm","proximity_loop","generator_loop","music_reaper","reaper_ambience"]
-const EFFECT_NAMES = ["death_scream_1","death_scream_2","hunter_laugh","reaper_laugh","weather_thunder","weather_wind","weather_rain","prestige_upgrade","survivor_notice","intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","button","menu","match_start","purchase","failure","rank","reward","victory","defeat","shot_needle","shot_arc","impact","ghost_hurt","ghost_defeat","door_hit","door_crack","door_break","build","turret_upgrade","bed_upgrade","door_upgrade","repair","upgrade","income","electricity","footstep","danger","breach","hunter_spawn","hunter_level","elimination","scream_1","scream_2","scream_3","door_reaction","sale","refund","insufficient_gold","insufficient_power","eerie","reaper_transform","reaper_scythe","reaper_charge","reaper_surge","reaper_impact","reaper_hurt","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_end","item_explosion","item_shield_hit"]
-const CRITICAL_EVENTS = ["death_scream_1","death_scream_2","survivor_notice","prestige_upgrade","intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","victory","defeat","ghost_defeat","rank","reward","hunter_level","breach","door_break","match_start","door_reaction","sale","refund","reaper_transform","reaper_charge","reaper_surge","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_explosion"]
+const WrathAudio = preload("res://scripts/wrath_audio_catalog.gd")
+const LOOP_NAMES = ["music_crimson","music_intro","music_approach","music_endless","music_menu","music_calm","music_danger","ambient_dorm","proximity_loop","generator_loop","music_reaper","reaper_ambience"]
+const LEGACY_EFFECT_NAMES = ["death_scream_1","death_scream_2","hunter_laugh","reaper_laugh","weather_thunder","weather_wind","weather_rain","prestige_upgrade","survivor_notice","intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","button","menu","match_start","purchase","failure","rank","reward","victory","defeat","shot_needle","shot_arc","impact","ghost_hurt","ghost_defeat","door_hit","door_crack","door_break","build","turret_upgrade","bed_upgrade","door_upgrade","repair","upgrade","income","electricity","footstep","danger","breach","hunter_spawn","hunter_level","elimination","scream_1","scream_2","scream_3","door_reaction","sale","refund","insufficient_gold","insufficient_power","eerie","reaper_transform","reaper_scythe","reaper_charge","reaper_surge","reaper_impact","reaper_hurt","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_end","item_explosion","item_shield_hit"]
+const LEGACY_CRITICAL_EVENTS = ["death_scream_1","death_scream_2","survivor_notice","prestige_upgrade","intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","victory","defeat","ghost_defeat","rank","reward","hunter_level","breach","door_break","match_start","door_reaction","sale","refund","reaper_transform","reaper_charge","reaper_surge","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_explosion"]
+const EFFECT_NAMES = LEGACY_EFFECT_NAMES + WrathAudio.NAMES
+const CRITICAL_EVENTS = LEGACY_CRITICAL_EVENTS + WrathAudio.CRITICAL_NAMES
 const VOICE_LIMIT = 16
+const MAX_PENDING_CRITICAL = 24
 const FRAME_VOICE_LIMIT = 6
 const EFFECT_COOLDOWNS = {"reaper_transform":4.0,"reaper_scythe":0.7,"reaper_charge":1.8,"reaper_surge":1.5,"reaper_impact":0.5,"reaper_hurt":0.35,"reaper_death":4.0,"scream_1":2.0,"scream_2":2.0,"scream_3":2.0,"door_reaction":2.0,"sale":0.15,"refund":0.15,"insufficient_gold":0.4,"insufficient_power":0.4,"eerie":12.0,"shot_needle":0.07,"shot_arc":0.11,"impact":0.09,"ghost_hurt":0.22,"door_hit":0.12,"door_crack":0.8,"door_break":1.0,"income":1.1,"electricity":1.0,"repair":1.0,"footstep":0.38,"danger":3.0,"build":0.15,"upgrade":0.18,"hunter_level":0.5,"hunter_spawn":1.0,"match_start":0.8,"victory":2.0,"defeat":2.0,"rank":0.8,"reward":0.4,"menu":0.2}
 var mobile_profile=false
@@ -40,6 +44,11 @@ var _previous_hunter_position = Vector2.ZERO
 var _mode = "menu"
 var _pending_critical: Array = []
 var _voice_names: Dictionary = {}
+var _voice_priority: Dictionary = {}
+var _family_cooldowns: Dictionary = {}
+var expired_events=0
+var crimson_music_starts=0
+var _domain_music_active=false
 var _last_presentation_event=0
 var _encounter_cooldowns: Dictionary={}
 var music_duck=1.0
@@ -54,6 +63,11 @@ var environment_serial=0
 var environment_ref
 var death_sequence=0
 var pending_deaths: Array=[]
+var pending_evolutions: Array=[]
+var _evolved_rooms: Dictionary={}
+var _last_death_room=-1
+var _evolution_busy_until=0.0
+var evolution_cues_played=0
 var _scream_voice
 var _scream_next=0.0
 var _scream_variation=0
@@ -152,7 +166,7 @@ func set_mix(settings: Dictionary):
   AudioServer.set_bus_volume_db(index,linear_to_db(maxf(0.0001,mix[key]))-5.0)
   AudioServer.set_bus_mute(index,mix.muted or mix[key]<=0)
 
-func event(name: String, position: Vector2 = Vector2.INF) -> bool:
+func event(name: String, position: Vector2 = Vector2.INF, details: Dictionary = {}) -> bool:
  setup()
  var aliases = {"menu_open":"menu","menu_navigation":"menu","button_click":"button","rank_promotion":"rank","reward_unlock":"reward","insufficient":"failure","outcome":"victory","generator":"electricity"}
  name = aliases.get(name,name)
@@ -160,17 +174,19 @@ func event(name: String, position: Vector2 = Vector2.INF) -> bool:
   if not EFFECT_NAMES.has(name):
    push_warning("Unknown Nightfall audio event: "+name)
   return false
- var critical = name in CRITICAL_EVENTS
+ var critical = name in CRITICAL_EVENTS and bool(details.get("important",true))
+ var family=WrathAudio.family(name)
+ if family!="" and _clock<float(_family_cooldowns.get(family,-1.0)):return false
  if _clock < float(_cooldowns.get(name,-1.0)):
   return false
  if _frame_voices >= (FRAME_VOICE_LIMIT if critical else FRAME_VOICE_LIMIT-2):
   if critical:
-   _queue_critical(name,position)
+   _queue_critical(name,position,details)
   else:
    dropped_events += 1
   return false
  var distance_gain = 1.0
- var prominent=name in ["death_scream_1","death_scream_2","survivor_notice","hunter_laugh","reaper_laugh"]
+ var prominent=name in ["death_scream_1","death_scream_2","survivor_notice","hunter_laugh","reaper_laugh","hunter_evolve","reaper_phase_2","wrath_activate_crimson_execution"]
  if position.is_finite():
   var distance = listener_position.distance_to(position)
   if distance > hearing_radius and not prominent:
@@ -184,17 +200,18 @@ func event(name: String, position: Vector2 = Vector2.INF) -> bool:
    break
  if free_voice == null and critical:
   for voice in voices:
-   if not _voice_names.get(voice.get_instance_id(),"") in CRITICAL_EVENTS:
+   if not bool(_voice_priority.get(voice.get_instance_id(),_voice_names.get(voice.get_instance_id(),"") in CRITICAL_EVENTS)):
     voice.stop()
     free_voice = voice
     break
  if free_voice == null:
   if critical:
-   _queue_critical(name,position)
+   _queue_critical(name,position,details)
   else:
    dropped_events += 1
   return false
  _voice_names[free_voice.get_instance_id()] = name
+ _voice_priority[free_voice.get_instance_id()] = critical
  var offset=position-listener_position if position.is_finite() else Vector2.ZERO
  # Put positional voices around the actual listener's viewport, not the world origin.
  var canvas_center=get_viewport().get_visible_rect().get_center()
@@ -205,22 +222,26 @@ func event(name: String, position: Vector2 = Vector2.INF) -> bool:
  free_voice.panning_strength=.65 if name in ["footstep","door_hit","reaper_charge","reaper_scythe","death_scream_1","death_scream_2"] else .35
  free_voice.stream = streams[name]
  free_voice.bus="Ambient" if name.begins_with("weather_") else "Effects"
- free_voice.volume_db = linear_to_db(distance_gain*(ambience_gain if name.begins_with("weather_") else 1.0))+(-29.0 if name.begins_with("weather_") else -17.0 if name.begins_with("death_scream") else -20.0)
+ free_voice.volume_db = linear_to_db(distance_gain*(ambience_gain if name.begins_with("weather_") else 1.0))+WrathAudio.gain_db(name)
  free_voice.pitch_scale = 1.0
  free_voice.play()
- _cooldowns[name] = _clock+float(EFFECT_COOLDOWNS.get(name,0.08))
+ _cooldowns[name] = _clock+float(WrathAudio.cooldown(name,EFFECT_COOLDOWNS.get(name,0.08)))
+ if family!="":_family_cooldowns[family]=_cooldowns[name]
  event_counts[name] = int(event_counts.get(name,0))+1
  _frame_voices += 1
  return true
 
+func sfx_preview_groups() -> Dictionary:return WrathAudio.PREVIEW_GROUPS.duplicate(true)
+
 func reset_match(model):
+ _domain_music_active=false
  tension_state="quiet";tension_weight=0;pacing_gain=1;ambience_gain=1
  setup()
  _observed_model = model
  _last_combat_event = 0
  _last_presentation_event=0
  _encounter_cooldowns.clear()
- death_rooms.clear();laughed_rooms.clear();pending_laughs.clear();environment_serial=0;environment_ref=null;death_sequence=0;pending_deaths.clear()
+ death_rooms.clear();laughed_rooms.clear();pending_laughs.clear();environment_serial=0;environment_ref=null;death_sequence=0;pending_deaths.clear();pending_evolutions.clear();_evolved_rooms.clear();_last_death_room=-1;_evolution_busy_until=0;evolution_cues_played=0
  _scream_next=0
  _scream_voice=null
  _next_eerie=_clock+12
@@ -228,7 +249,7 @@ func reset_match(model):
  _previous_hunter_position = model.hunter.position
  _previous = _snapshot(model)
  # Match-specific throttles must not suppress cues after a restart.
- _cooldowns.clear()
+ _cooldowns.clear();_family_cooldowns.clear()
  _pending_critical.clear()
  _frame_voices = 0
  for voice in voices:
@@ -242,7 +263,8 @@ func stop_events(names: Array):
 func new_encounter(model):
  # Same run and rooms, intentionally fresh Hunter. Valid screams/laughs and
  # their serialized queues continue; only the defeated Hunter's warnings stop.
- stop_events(["reaper_transform","reaper_charge","reaper_surge","reaper_scythe"])
+ stop_events(["reaper_transform","reaper_charge","reaper_surge","reaper_scythe"]+WrathAudio.COMBAT_WARNINGS)
+ _domain_music_active=false
  _observed_model=model;_previous_time=model.time
  _previous_hunter_position=model.hunter.position;_previous=_snapshot(model)
  _last_combat_event=model.next_combat_event_id-1
@@ -259,17 +281,19 @@ func update_state(delta: float, model, mode: String):
  _mode = mode
  if mode in ["menu","intro"] or (model!=null and model.tutorial_mode):
   set_tension("quiet",0)
-  pending_laughs.clear();pending_deaths.clear()
-  if _clock>=preview_effect_until:stop_events(["hunter_laugh","reaper_laugh","death_scream_1","death_scream_2","weather_thunder","weather_wind","weather_rain"])
+  pending_laughs.clear();pending_deaths.clear();pending_evolutions.clear();_last_death_room=-1;_evolution_busy_until=0
+  if _clock>=preview_effect_until:stop_events(["hunter_laugh","reaper_laugh","death_scream_1","death_scream_2","weather_thunder","weather_wind","weather_rain","hunter_evolve","buff_offense","buff_armor","buff_speed","buff_resource","buff_command"])
  for cue in pending_laughs.duplicate():
   if _clock-cue.time>60:pending_laughs.erase(cue);continue
   var death_playing=voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"").begins_with("death_scream"))
   var laugh_playing=voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"") in ["hunter_laugh","reaper_laugh"])
-  if _clock>=cue.time+.25 and not death_playing and not laugh_playing and event(cue.name,cue.position):pending_laughs.erase(cue)
+  if _clock>=cue.time+.25 and not death_playing and pending_deaths.is_empty() and pending_evolutions.is_empty() and _clock>=_evolution_busy_until and not laugh_playing and event(cue.name,cue.position):pending_laughs.erase(cue)
  var pending = _pending_critical.duplicate()
  _pending_critical.clear()
  for cue in pending:
-  event(cue.name,cue.position)
+  if _clock<=float(cue.get("deadline",_clock)):
+   event(cue.name,cue.position,cue.get("details",{}))
+  else:expired_events+=1
  if model != null and (model != _observed_model or model.time < _previous_time):
   reset_match(model)
  if mode != _last_mode:
@@ -318,8 +342,15 @@ func update_state(delta: float, model, mode: String):
  proximity = move_toward(proximity,target_proximity,delta*1.8)
  var music_active = mode=="match" and (model==null or model.result=="")
  var boss_active=active and model.hunter.transformed and model.hunter.hp>0
+ var domain=model!=null and model.has_method("domain_music_active") and model.domain_music_active()
+ if domain and not _domain_music_active:
+  loops.music_crimson.play(0);crimson_music_starts+=1
+ _domain_music_active=domain
  var targets = {"music_menu":1.0 if mode=="menu" else 0.0,"music_calm":(1.0-intensity)*0.85 if music_active and not boss_active else 0.0,"music_danger":intensity*0.85 if music_active and not boss_active else 0.0,"ambient_dorm":0.35+proximity*0.30 if active else 0.15 if mode=="menu" else 0.0,"proximity_loop":proximity*intensity*0.65 if active else 0.0,"generator_loop":generator_weight if active else 0.0}
- targets["music_reaper"]=0.95 if boss_active else 0.0
+ targets["music_reaper"]=0.95 if boss_active and not domain else 0.0
+ targets.music_crimson=.95 if music_active and domain else 0.0
+ if domain:
+  targets.music_calm=0;targets.music_danger=0
  targets.music_intro=1.0 if mode=="intro" and cinematic_music else 0.0
  targets.music_approach=.75 if music_active and not boss_active and proximity>.12 and intensity<.65 else 0.0
  targets.music_endless=.85 if music_active and model!=null and model.run_kind=="endless" and not boss_active and int(model.endless.wave)%2==0 else 0.0
@@ -327,7 +358,7 @@ func update_state(delta: float, model, mode: String):
  if targets.music_endless>0:targets.music_calm*=.25;targets.music_danger*=.5
  if preview_music!="":
   for key in targets:targets[key]=1.0 if key==preview_music else 0.0
- var critical_active=voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"") in CRITICAL_EVENTS and _voice_names.get(v.get_instance_id(),"") not in ["intro_running","intro_breath"])
+ var critical_active=voices.any(func(v):return v.playing and bool(_voice_priority.get(v.get_instance_id(),false)) and _voice_names.get(v.get_instance_id(),"") not in ["intro_running","intro_breath"])
  music_duck=move_toward(music_duck,.48 if critical_active else 1.0,delta*3.0)
  targets["reaper_ambience"]=proximity*0.55 if boss_active else 0.0
  pacing_gain=move_toward(pacing_gain,1.0-.35*tension_weight,delta*.7)
@@ -338,6 +369,7 @@ func update_state(delta: float, model, mode: String):
   loops[name].volume_db = linear_to_db(maxf(0.0001,loop_weights[name]*music_gain))+(-3.0 if name.begins_with("music") else -15.0)
  # Outcomes may be supplied explicitly by the host, too; cooldown prevents repeats.
  if model != null and model.result != "" and _previous.get("result","") != model.result:
+  stop_events(WrathAudio.COMBAT_WARNINGS)
   _pending_critical=_pending_critical.filter(func(cue): return cue.name not in ["reaper_transform","reaper_charge","reaper_surge"])
   for voice in voices:
    if _voice_names.get(voice.get_instance_id(),"") in ["reaper_transform","reaper_charge","reaper_surge","reaper_scythe"]: voice.stop()
@@ -407,11 +439,12 @@ func _observe(model):
    continue
   _last_combat_event = combat.id
   if combat.type=="launch":
-   event("shot_arc" if combat.kind=="heavy" else "shot_needle",combat.position)
+   var shot_cue=WrathAudio.shot_event(str(combat.kind),int(combat.get("level",1)),str(combat.get("specialization","")))
+   if shot_cue!="":event(shot_cue,combat.position)
   elif combat.type=="impact":
-   event("impact",combat.position)
+   event(WrathAudio.impact_event(str(combat.kind)),combat.position)
    if combat.damage>0:
-    event("reaper_hurt" if model.hunter.transformed else "ghost_hurt",combat.position)
+    event("undead_hurt" if int(combat.get("target_id",1))>1 else "reaper_hurt" if model.hunter.transformed else "ghost_hurt",combat.position)
  _previous = _snapshot(model)
 
 func get_diagnostics() -> Dictionary:
@@ -419,7 +452,7 @@ func get_diagnostics() -> Dictionary:
  for voice in voices:
   if voice.playing:
    count += 1
- return {"pacing_gain":pacing_gain,"ambience_gain":ambience_gain,"tension_state":tension_state,"tension_weight":tension_weight,"music_duck":music_duck,"event_counts":event_counts.duplicate(),"music_start_count":music_start_count,"intensity":intensity,"proximity":proximity,"loop_weights":loop_weights.duplicate(),"voices":count,"voice_limit":voices.size(),"frame_voice_limit":FRAME_VOICE_LIMIT,"dropped_events":dropped_events,"mix":mix.duplicate(),"missing_assets":missing_assets.duplicate(),"stream_count":streams.size(),"pending_critical":_pending_critical.size()}
+ return {"pacing_gain":pacing_gain,"ambience_gain":ambience_gain,"tension_state":tension_state,"tension_weight":tension_weight,"music_duck":music_duck,"event_counts":event_counts.duplicate(),"music_start_count":music_start_count,"intensity":intensity,"proximity":proximity,"loop_weights":loop_weights.duplicate(),"voices":count,"voice_limit":voices.size(),"frame_voice_limit":FRAME_VOICE_LIMIT,"dropped_events":dropped_events,"mix":mix.duplicate(),"missing_assets":missing_assets.duplicate(),"stream_count":streams.size(),"pending_critical":_pending_critical.size(),"expired_events":expired_events,"crimson_music_starts":crimson_music_starts,"domain_music":_domain_music_active,"pending_evolutions":pending_evolutions.size(),"evolution_cues_played":evolution_cues_played}
 
 func shutdown():
  for player in loops.values()+voices:
@@ -433,12 +466,19 @@ func shutdown():
 func _exit_tree():
  shutdown()
 
-func _queue_critical(name: String, position: Vector2):
+func _queue_critical(name: String, position: Vector2, details: Dictionary = {}):
+ var ttl=float(details.get("expires_in",1.0))
+ if not is_finite(ttl):ttl=1.0
+ var deadline=minf(float(details.get("_audio_deadline",_clock+clampf(ttl,.03,3.0))),_clock+3.0)
+ var saved=details.duplicate();saved._audio_deadline=deadline
  for cue in _pending_critical:
   if cue.name==name:
+   if bool(details.get("important",false)):
+    cue.position=position;cue.details=saved;cue.deadline=deadline
    return
- if _pending_critical.size()<CRITICAL_EVENTS.size():
-  _pending_critical.append({"name":name,"position":position})
+ if _pending_critical.size()<MAX_PENDING_CRITICAL:
+  _pending_critical.append({"name":name,"position":position,"deadline":deadline,"details":saved})
+ else:dropped_events+=1
 
 func set_suspended(value: bool):
  suspended=value
@@ -459,15 +499,17 @@ func _observe_presentation(model):
   var position: Vector2=record.position
   _seen_presentation[str(room)+":"+type]=true
   # Terminal frames keep death/outcome cues but discard obsolete attack warnings.
-  if model.result!="" and type in ["boss_transform","boss_warning","boss_surge"]: continue
+  if model.result!="" and type in ["boss_transform","boss_warning","boss_surge","boss_ability_warning","boss_ability_activate","boss_phase"]: continue
+  if _wrath_presentation(type,record,model,position):continue
   match type:
    "boss_transform": event("reaper_transform")
-   "boss_death": event("reaper_death")
+   "boss_death":
+    stop_events(WrathAudio.COMBAT_WARNINGS);event("reaper_death")
    "boss_warning":
     event({"scythe":"reaper_scythe","siege":"reaper_charge","surge":"reaper_surge"}.get(record.get("attack",""),"danger"),position)
    "boss_impact": event("reaper_impact",position)
    "encounter":
-    if _clock>=float(_encounter_cooldowns.get(room,-1)) and _clock>=_scream_next and (not is_instance_valid(_scream_voice) or not _scream_voice.playing):
+    if _clock>=float(_encounter_cooldowns.get(room,-1)) and _clock>=_scream_next and pending_deaths.is_empty() and pending_evolutions.is_empty() and _clock>=_evolution_busy_until and not voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"") in ["scream_1","scream_2","scream_3","death_scream_1","death_scream_2"]):
      if event("scream_"+str(1+_scream_variation%3),position):
       _scream_variation+=1
       _encounter_cooldowns[room]=_clock+10
@@ -493,7 +535,7 @@ func _observe_presentation(model):
     event("door_break",position)
     event("breach",position)
     # Door destruction gets its own reaction, but never stacks survivor screams.
-    if is_instance_valid(_scream_voice): _scream_voice.stop()
+    if is_instance_valid(_scream_voice) and _voice_names.get(_scream_voice.get_instance_id(),"") in ["scream_1","scream_2","scream_3"]:_scream_voice.stop()
     event("door_reaction",position)
     _scream_next=_clock+2
    "elimination":
@@ -501,7 +543,7 @@ func _observe_presentation(model):
     if not model.rooms[room].alive and not death_rooms.has(room):
      death_rooms[room]=true;death_sequence+=1
      stop_events(["hunter_laugh","reaper_laugh"])
-     pending_deaths.append({"name":"death_scream_%d" % (1+(death_sequence-1)%2),"position":record.get("survivor_position",model.rooms[room].bed_position())})
+     pending_deaths.append({"name":"death_scream_%d" % (1+(death_sequence-1)%2),"position":record.get("survivor_position",model.rooms[room].bed_position()),"room":room})
      event("survivor_notice")
     event("elimination",position)
    "repair": event("repair",position)
@@ -527,9 +569,85 @@ func update_environment(environment):
   if not critical_playing and tension_state not in ["danger","elimination"]:event(cue.cue,listener_position)
 
 func _play_death_queue():
- if pending_deaths.is_empty():return
+ # Real death vocals finish before their evolution sting; no expiring generic
+ # warning queue is used for these bounded, once-per-victim reactions.
  if voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"").begins_with("death_scream")):return
+ if _clock<_evolution_busy_until:return
+ if _last_death_room>=0:
+  for i in range(pending_evolutions.size()):
+   if int(pending_evolutions[i].room)==_last_death_room:
+    if _start_evolution(i):_last_death_room=-1
+    return
+  _last_death_room=-1
+ if pending_deaths.is_empty():
+  if not pending_evolutions.is_empty():_start_evolution(0)
+  return
  var cue=pending_deaths[0]
  if _frame_voices>=FRAME_VOICE_LIMIT or _clock<float(_cooldowns.get(cue.name,-1)):return
- if not voices.any(func(v):return not v.playing or _voice_names.get(v.get_instance_id(),"") not in CRITICAL_EVENTS):return
- if event(cue.name,cue.position):pending_deaths.pop_front()
+ if not voices.any(func(v):return not v.playing or not bool(_voice_priority.get(v.get_instance_id(),_voice_names.get(v.get_instance_id(),"") in CRITICAL_EVENTS))):return
+ stop_events(["scream_1","scream_2","scream_3"])
+ if event(cue.name,cue.position):
+  pending_deaths.pop_front();_last_death_room=int(cue.get("room",-1))
+
+func _start_evolution(index: int) -> bool:
+ if index<0 or index>=pending_evolutions.size() or _frame_voices>FRAME_VOICE_LIMIT-2:return false
+ var cue=pending_evolutions[index];var category="buff_"+str(cue.category)
+ if _clock<float(_cooldowns.get("hunter_evolve",-1)) or _clock<float(_cooldowns.get(category,-1)):return false
+ var available=voices.filter(func(v):return not v.playing or not bool(_voice_priority.get(v.get_instance_id(),false))).size()
+ if available<2:return false
+ if not event("hunter_evolve",cue.position):return false
+ event(category,cue.position)
+ pending_evolutions.remove_at(index);evolution_cues_played+=1
+ _evolution_busy_until=_clock+maxf(streams.hunter_evolve.get_length(),streams[category].get_length())+.05
+ return true
+
+func _wrath_presentation(type: String, record: Dictionary, model, position: Vector2) -> bool:
+ var important=int(record.get("room",-1))==model.player_room
+ var context={"important":important,"expires_in":1.0}
+ match type:
+  "hunter_evolved":
+   var victim=int(record.get("victim_room",record.get("room",-1)))
+   if victim<0 or victim>=Catalog.SURVIVOR_NAMES.size() or _evolved_rooms.has(victim):return true
+   _evolved_rooms[victim]=true
+   var category=WrathAudio.BUFF_CATEGORY.get(str(record.get("buff_id","")),"offense")
+   if pending_evolutions.size()<Catalog.SURVIVOR_NAMES.size():pending_evolutions.append({"room":victim,"category":category,"position":position})
+  "boss_phase":
+   if int(record.get("phase",1))==2 and model.hunter.hp>0:event("reaper_phase_2",position)
+  "boss_ability_warning":
+   if model.hunter.hp<=0:return true
+   context={"expires_in":maxf(.03,float(record.get("delay",1.0)))}
+   var cue="wrath_warning_"+str(record.get("ability",""))
+   if cue in EFFECT_NAMES:event(cue,position,context)
+  "boss_ability_activate":
+   var ability=str(record.get("ability",""));stop_events(["wrath_warning_"+ability])
+   var cue="wrath_activate_"+ability
+   if model.hunter.hp>0 and cue in EFFECT_NAMES:event(cue,position)
+  "boss_ability_end":
+   var ability=str(record.get("ability",""));stop_events(["wrath_warning_"+ability,"wrath_activate_"+ability])
+   if ability in ["rules_judgement","final_judgement"]:event("lock_release",position)
+  "undead_spawn","undead_attack","undead_death":
+   event(type+"_enhanced" if type=="undead_spawn" and bool(record.get("enhanced",false)) else type,record.get("entity_position",position),{"important":false})
+  "scythe_throw","scythe_embed","scythe_tick","scythe_end":event(type,position)
+  "shield_absorb":event("shield_absorb",position,{"important":false})
+  "defense_activate":
+   var cue={"shield":"shield_activate","auto_repair":"auto_repair_activate","decoy":"decoy_activate","generator":"generator_activate"}.get(str(record.get("kind","")),"")
+   if cue!="":event(cue,position,context)
+  "hunter_ability_warning":
+   var cue={"pressure":"hunter_crusher_warning","conceal":"hunter_stalker_warning","dash":"hunter_ravager_warning"}.get(str(record.get("ability","")),"danger")
+   event(cue,position,{"expires_in":maxf(.03,float(record.get("delay",1.0)))})
+  "hunter_ability":
+   var cue={"pressure":"hunter_crusher_pressure","conceal":"hunter_stalker_conceal","feint":"hunter_stalker_feint","dash":"hunter_ravager_dash"}.get(str(record.get("ability","")),"danger")
+   event(cue,position)
+  "archetype_warning":
+   var cue="hunter_"+str(record.get("archetype",model.hunter.archetype))+"_warning"
+   if cue in EFFECT_NAMES:event(cue,position,{"expires_in":maxf(.03,float(record.get("delay",1.0)))})
+  "charged_attack":event("hunter_charged_warning",position,{"expires_in":maxf(.03,float(record.get("delay",1.0)))})
+  "build":
+   var cue="build_"+str(record.get("kind",""))
+   if cue not in EFFECT_NAMES:return false
+   event(cue,position,context)
+  "building_upgrade":
+   if int(record.get("level",0))==5 and str(record.get("specialization",""))!="":event("branch_select",position,context)
+   else:return false
+  _:return false
+ return true

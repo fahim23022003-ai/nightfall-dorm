@@ -47,10 +47,10 @@ func run():
   check(name=="music_intro" or audio.loops[name].playing,"permanent score/ambience player is running: "+name)
   var data = audio.streams[name].data
   check(absi(data.decode_s16(0)-data.decode_s16(data.size()-2))<655,"loop boundary has no large PCM discontinuity: "+name)
- check(audio.music_start_count==7,"seven musical scores, including cinematic and Reaper, initialized once")
+ check(audio.music_start_count==8,"eight musical scores, including the seven preserved scores and Crimson, initialized once")
  for i in range(30):
   audio.update_state(0.1,null,"menu")
- check(audio.loop_weights.music_menu>0.9 and audio.music_start_count==7,"menu music fades in without restart")
+ check(audio.loop_weights.music_menu>0.9 and audio.music_start_count==8,"menu music fades in without restart")
  audio.set_mix({"music":0.2,"effects":0.4,"ambient":0.6,"muted":true})
  for name in ["Music","Effects","Ambient"]:
   check(AudioServer.is_bus_mute(AudioServer.get_bus_index(name)),"mute affects "+name)

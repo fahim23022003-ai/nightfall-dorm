@@ -15,7 +15,7 @@ func run():
  game.set_process(false);game.onboarding.set_process(false);await settle()
  var a=game.audio_system;var before=Support.profile_signature(game.profile);var bytes=FileAccess.get_file_as_bytes(profile_path)
  check(game.mode=="intro" and a.cinematic_music,"actual app opens cinematic with score enabled")
- check(a.streams.size()==108 and a.music_start_count==7,"seven musical players and all108 declared streams decode once")
+ check(a.streams.size()==AudioDirector.LOOP_NAMES.size()+AudioDirector.EFFECT_NAMES.size() and a.music_start_count==8,"eight musical players and all declared streams decode once")
  check(a.streams.music_intro.loop_mode==AudioStreamWAV.LOOP_DISABLED and is_equal_approx(a.streams.music_intro.get_length(),19),"cinematic score is19seconds and never loops")
  for name in ["music_menu","music_calm","music_approach","music_danger","music_reaper","music_endless"]:
   check(a.streams[name].get_length()>=48 and a.streams[name].loop_mode==AudioStreamWAV.LOOP_FORWARD,"structured long musical loop "+name)
@@ -33,12 +33,13 @@ func run():
  check(a.event_counts.get("intro_shriek",0)==1 and a.event_counts.get("intro_whisper",0)==2,"climax and creator-title vocals route once")
  advance_intro(4)
  check(game.mode=="menu" and not a.cinematic_music,"19second completion transitions to menu")
- check(a.music_start_count==7,"minor states never instantiate duplicate music players")
+ check(a.music_start_count==8,"minor states never instantiate duplicate music players")
  game.ui.show_settings();await settle();await click(find("Audio listening room"));await settle();screen("audio listening room")
- for id in ["intro","menu","calm","approach","danger","reaper","endless"]:
+ for id in ["intro","menu","calm","approach","danger","reaper","endless","crimson"]:
   await click(find(id.capitalize()+" · score"));a.update_state(.5,game.model,game.mode)
   check(a.preview_music=="music_"+id and a.loop_weights["music_"+id]>.5,"actual track audition button selects "+id)
- check(a.music_start_count==7 and a.get_child_count()==27,"auditions reuse seven music plus ambience and16 voices")
+ check(a.music_start_count==8 and a.get_child_count()==AudioDirector.LOOP_NAMES.size()+AudioDirector.VOICE_LIMIT,"auditions reuse eight music plus ambience and16 voices")
+ await click(find("Voices"));await settle()
  for label in ["Death Scream 1","Hunter Laugh","Reaper Laugh","Intro Breath","Reaper Charge"]:
   await click(find(label));a.update_state(.1,game.model,game.mode)
   check(a.preview_effect_name!="" and a.preview_effect_until>a._clock,"actual major vocal audition remains active "+label)
@@ -52,6 +53,7 @@ func run():
  check(a._pending_critical.any(func(c):return c.name=="death_scream_2"),"saturated real event budget defers requested audition")
  a.stop_preview();a.update_state(.3,game.model,game.mode)
  check(int(a.event_counts.get("death_scream_2",0))==death_before and not a._pending_critical.any(func(c):return c.name=="death_scream_2"),"Stop cancels queued audition before it can replay")
+ await click(find("Music"));await settle()
  await click(find("Menu · score"));await click(find("Back to settings"));await settle()
  check(game.ui.current_screen=="settings" and a.preview_music=="" and a.preview_effect_name=="","leaving listening room restores ordinary scene music")
  check(Support.profile_signature(game.profile)==before and FileAccess.get_file_as_bytes(profile_path)==bytes,"audition/intro never change stock/progression/settings/save bytes")

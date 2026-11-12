@@ -7,6 +7,7 @@ var cartoon: Dictionary = {}
 var prestige_art: Dictionary={}
 var all_rooms=true
 var item_presentation=preload("res://scripts/item_presentation.gd").new()
+var wrath_presentation=preload("res://scripts/wrath_presentation.gd").new()
 var boss_presentation=preload("res://scripts/boss_presentation.gd").new()
 var identity=preload("res://scripts/visual_presence.gd").new()
 var menu_art=preload("res://assets/visual_identity/menu_facade.svg")
@@ -60,6 +61,8 @@ func _init():
  for alias in {"bed":"bed_1","bed_upgraded":"bed_5","turret":"turret_1","heavy":"heavy_1","cabinet":"cabinet","plant":"plant","lantern":"lamp","window":"window","generator":"generator","repair":"repair","economy":"economy","enhancer":"enhancer","survivor_idle":"player_down_0","survivor_walk_a":"player_down_1","survivor_walk_b":"player_down_3","survivor_sleep":"player_sleep","bot_idle":"bot_0","bot_walk":"bot_0_walk_1"}:
   var mapping={"bed":"bed_1","bed_upgraded":"bed_5","turret":"turret_1","heavy":"heavy_1","cabinet":"cabinet","plant":"plant","lantern":"lamp","window":"window","generator":"generator","repair":"repair","economy":"economy","enhancer":"enhancer","survivor_idle":"player_down_0","survivor_walk_a":"player_down_1","survivor_walk_b":"player_down_3","survivor_sleep":"player_sleep","bot_idle":"bot_0","bot_walk":"bot_0_walk_1"}
   textures[alias]=cartoon[mapping[alias]]
+ for kind in DefenseEffects.SPECIAL:
+  cartoon[kind]=load("res://assets/wrath/"+kind+".svg");textures[kind]=cartoon[kind]
  textures.door=cartoon.door_1
  textures.door_reinforced=cartoon.door_4
  textures.corridor=cartoon.corridor
@@ -259,19 +262,28 @@ func render(c):
    var sweep=(1-attack_pose/.35)*PI
    c.draw_arc(q,32,sweep-PI*.7,sweep,24,Color(1,.55,.6,attack_pose/.35),3)
    if not c.profile.settings.get("reduced_effects",false):c.draw_line(q+Vector2(-20,-17),q+Vector2(18,15),Color(1,.7,.7,attack_pose/.35),2)
+ wrath_presentation.draw(c,clock)
  for shot in m.projectiles:
   var p=OFFSET+shot.position
-  var direction=(m.hunter.position-shot.position).normalized()
+  var actor=m.target_by_id(int(shot.target_id))
+  var direction=((actor.position if actor!=null else shot.position+Vector2.RIGHT)-shot.position).normalized()
   var branch=str(shot.get("specialization",""))
   if branch!="":
-   var tint={"precision":Color("E6C48D"),"suppression":Color("9EC7A4"),"focus":Color("C1A6DF"),"storm":Color("83DFDA")}[branch]
+   var tint={"precision":Color("E6C48D"),"suppression":Color("9EC7A4"),"focus":Color("C1A6DF"),"storm":Color("83DFDA")}.get(branch,Catalog.BUILDINGS[shot.kind].color)
    c.draw_line(p-direction*(24 if branch=="precision" else 13),p,tint,4 if branch=="precision" else 2)
    if branch=="storm":c.draw_polyline(PackedVector2Array([p-direction*17,p-direction*8+Vector2(0,5),p]),tint,2)
   if not c.profile.settings.reduced_effects:
    c.draw_line(p-direction*15,p,Color(.45,.65,.72,.16),6)
   if shot.level>=7:
    c.draw_line(p-direction*18,p,Color("F3CB78") if shot.level==10 else Color("B2A3FA"),3)
-  if shot.kind=="heavy":
+  if shot.kind in ["flame","frost","shock"]:
+   var tint=Catalog.BUILDINGS[shot.kind].color
+   c.draw_line(p-direction*20,p,tint,4 if shot.kind=="shock" else 3)
+   c.draw_circle(p,4,tint)
+   if shot.kind=="frost":
+    c.draw_line(p+Vector2(-4,-5),p+Vector2(4,5),Color("E0F8FF"),1.5)
+    c.draw_line(p+Vector2(4,-5),p+Vector2(-4,5),Color("E0F8FF"),1.5)
+  elif shot.kind=="heavy":
    sprite(c,"projectile",p,Vector2(20+shot.level*2,12+shot.level),Color.WHITE,direction.angle())
   else:
    var side=Vector2(-direction.y,direction.x)*2

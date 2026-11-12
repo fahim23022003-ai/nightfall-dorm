@@ -2,7 +2,7 @@
 
 ## Status
 
-**IMPLEMENTED:** first contextual HUD and specialization workflow milestone; licensed sampled SFX assets and additional Crimson score. Boss, evolution and building integration remains in progress.
+**IMPLEMENTED:** first contextual HUD and specialization workflow milestone; licensed sampled SFX assets and additional Crimson score. Core evolution, two-phase boss, capped minions, final domain and six buildings are implemented; final integrated acceptance remains in progress.
 **TESTED:** actual starting branch/HEAD and remote equality; 53 baseline render/input checks with 22 fresh screenshots; 51 baseline strategy scenarios. All 97 regular/extended baseline commands pass (1456.456 seconds), with zero engine/assertion errors or warnings.
 **FAILURES AND FIXES:** findings are being investigated; no acceptance inferred.
 **UNVERIFIED:** native Windows, physical sound/input, subjective horror, visual
@@ -79,3 +79,25 @@ Early actual engine combat audio: 76 checks pass; Needle 12 launches/12 impacts
 and Arc 6/6 in each paired default/Music-muted capture. Master output remains
 nonzero with music muted; 18 PCM recordings have no full-scale samples. This
 is evidence of existing weapon playback, not yet the new boss or building events.
+
+## Recoverable core implementation checkpoint
+
+Developer core728/0 and actual UI40/0 pass. Independent early gates pass:
+evolution648, new defenses972, save migration264 and boss111 checks. These are
+focused gates; final integration, performance and human quality are not inferred.
+Actual new-building input/render gate555/0 covers74 fresh PNGs and all twelve
+new exclusive branch paths through paid Level10 in temporary Practice funds.
+That validates transactions, not naturally earned Level10 reachability.
+
+Confirmed fixes include Decoy sale/rebuild retaining an old lure, wrong main
+Hunter/minion hit-sound dispatch, stale pooled voices cutting death screams,
+compressed imports being interpreted as PCM by older tests, and duplicate
+bed/door upgrade sound designs. All204 streams now import asPCM16. Audio774,
+pooledvoice5, entityrouting209, legacy491 and listening-room256 checks pass.
+Seven prior score WAVs remain byte-identical.
+
+First paired balance evidence: bed/door-only Hell wins4/5→2/5, support-only4/5→3/5,
+fully idle0/5 unchanged. Fresh bed/door-only Hell1/5; active prepared Hell6/6
+across paired and fresh controls with actual player damage. This does not
+establish a human win rate or justify indiscriminate NPC weakening. Earned
+new-building/Endless policies, full regressions and rendered boss review follow.

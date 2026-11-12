@@ -1,0 +1,20 @@
+[
+  {
+    "suite": "phase5d4_audio_targets",
+    "exit_code": 1,
+    "error_or_warning": true,
+    "log": "docs/evidence/phase5d4/audio-targets-dormant-fixture-initial.log"
+  },
+  {
+    "suite": "phase5d4_audio_reactions",
+    "exit_code": 0,
+    "error_or_warning": false,
+    "log": "docs/evidence/phase5d4/audio-pcm-phase5d4_audio_reactions.log"
+  },
+  {
+    "suite": "phase5d4_audio",
+    "exit_code": 0,
+    "error_or_warning": false,
+    "log": "docs/evidence/phase5d4/audio-pcm-phase5d4_audio.log"
+  }
+]

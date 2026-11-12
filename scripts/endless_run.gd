@@ -30,6 +30,7 @@ func _prepare_hunter(model,new_wave: bool):
  fresh.position=model.map_data.hunter_spawn
  fresh.cooldown=1.5
  fresh.boss_policy={"enabled":boss_wave(wave),"opening":0.0,"hp_fraction":1.0,"deadline":0.0,"recovery":1.1}
+ model.wrath=ReaperWrath.new();model.defenses.clear(model);model.clear_minions()
  model.hunter=fresh;model.strategy.archetype=fresh.archetype
  if new_wave:model.preparation=model.time+4
  wave_started_at=model.preparation
@@ -41,6 +42,8 @@ func finish_wave(model):
  # their remaining active-play durations; intermission does not advance them.
  for id in ["frost","time_freeze","decoy","smoke","reaper_seal"]:model.items.timers.erase(id)
  model.items.burn_remaining=0;model.items.frozen_delta=0
+ model.wrath.clear(model);model.defenses.clear(model)
+ for room in model.rooms:room.production_paused=false
  model.hunter.stop_combat(model);model._cancel_projectiles("wave_complete")
 func continue_wave(model,choice: String="repair") -> bool:
  if phase!="intermission" or model.result!="" or not model.running or choice not in ["repair","supply","power"]:return false

@@ -16,7 +16,7 @@ func draw(c):
   c.draw_string(c.presentation.font,p+Vector2(42,-74),"SHIELD %d · %.0fs" % [fx.shield_hp,fx.timers.get("shield",0)],HORIZONTAL_ALIGNMENT_LEFT,-1,12,Color("9BDFFF"))
  if float(fx.timers.get("overdrive",0))>0:
   for tile in room.buildings:
-   if room.buildings[tile].kind in ["turret","heavy"]:
+   if room.buildings[tile].kind in DefenseEffects.WEAPONS:
     var q=OFFSET+room.tile_position(tile)
     c.draw_arc(q,28,time*4,time*4+TAU*.8,32,Color(1,.64,.25,.8),3)
     c.draw_circle(q,22,Color(1,.5,.1,.13))
@@ -111,7 +111,7 @@ func advanced(c,m,room,fx,p,time,reduced):
   c.draw_texture_rect(load("res://assets/items/pillow.svg"),Rect2(q+Vector2(22,-35),Vector2(30,30)),false)
  if float(fx.timers.get("inferno",0))>0:
   for tile in room.buildings:
-   if room.buildings[tile].kind not in ["turret","heavy"]: continue
+   if room.buildings[tile].kind not in DefenseEffects.WEAPONS: continue
    var q=OFFSET+room.tile_position(tile)
    for i in range(3 if reduced else 6):
     var angle=i*TAU/6+time*2

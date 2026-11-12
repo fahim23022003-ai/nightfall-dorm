@@ -30,7 +30,7 @@ func observe(model):
  if room==null:return
  var offense=0
  for b in room.buildings.values():
-  if b.kind in ["turret","heavy"]:offense+=1
+  if b.kind in DefenseEffects.WEAPONS:offense+=1
  max_offense=maxi(max_offense,offense)
  legendary_uses=maxi(legendary_uses,model.items.legendary_used)
  manual_repairs=maxi(manual_repairs,room.repair_actions)

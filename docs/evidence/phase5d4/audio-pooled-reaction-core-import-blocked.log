@@ -1,0 +1,15 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+SCRIPT ERROR: Parse Error: Identifier "DefenseEffects" not declared in the current scope.
+          at: GDScript::reload (res://scripts/strategy_catalog.gd:61)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://scripts/room_state.gd:0)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://scripts/hunter_state.gd:0)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://scripts/audio_director.gd:0)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+          at: GDScript::reload (res://tests/phase5d4_audio_reactions.gd:0)
+ERROR: Failed to load script "res://tests/phase5d4_audio_reactions.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:2907)
+WRATH_AUDIO_REACTION_CHECKS=5 FAILURES=0

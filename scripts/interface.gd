@@ -54,6 +54,8 @@ var replay_ui: ReplayInterface
 var items_ui
 var progression: ProgressionInterface
 var help_open=false
+var audio_tab="Music"
+var audio_group="Weapons"
 var current_screen="menu"
 var horror_layer: Control
 var feedback_text=""
@@ -282,8 +284,8 @@ func show_match():
  brand.add_theme_font_override("font",horror_font)
  if game.model.run_kind!="campaign":
   brand.text="WAVE %d · ENDLESS" % game.model.endless.wave if game.model.run_kind=="endless" else "PRACTICE ROOM" if game.model.run_kind=="practice" else "CODE CHALLENGE"
-  brand.add_theme_font_size_override("font_size",23)
-  replay_ui.wave_label=label_at("TEMPORARY · PAUSE TO RESET" if game.model.run_kind=="practice" else "NORMALIZED · FIXED 30Hz",Vector2(34,53),10,252)
+  brand.add_theme_font_size_override("font_size",23);brand.position.y=17;brand.size.y=36
+  replay_ui.wave_label=label_at("TEMPORARY · PAUSE TO RESET" if game.model.run_kind=="practice" else "NORMALIZED · FIXED 30Hz",Vector2(34,58),9,242)
  if CosmeticPresentation.equipped(game,"badge"):premium_icon("reaper_crest",Vector2(242,27),Vector2(27,27))
  premium_icon("gold",Vector2(280,25),Vector2(32,32))
  label_at("GOLD",Vector2(320,14),11,126,true)
@@ -295,6 +297,7 @@ func show_match():
  power_label.modulate=Color("8CD6DA")
  phase_label=label_at("",Vector2(576,22),18,120)
  hunter_label=label_at("",Vector2(704,21),18,290)
+ hunter_label.mouse_filter=Control.MOUSE_FILTER_PASS
  hunter_bar=ProgressBar.new()
  hunter_bar.position=Vector2(704,46)
  hunter_bar.size=Vector2(286,8)
@@ -333,7 +336,7 @@ func show_match():
  context_box.mouse_filter=Control.MOUSE_FILTER_STOP
  context_title=label_at("BUILD A DEFENSE",Vector2(14,12),18,304,true,context_box)
  button("×",Vector2(326,8),game.cancel_placement,28,28,context_box)
- var descs={"turret":"Auto fire","heavy":"Arc damage","generator":"Makes power","repair":"Mends door","economy":"More income","enhancer":"Boost guns"}
+ var descs={"turret":"Auto fire","heavy":"Arc damage","generator":"Makes power","repair":"Mends door","economy":"More income","enhancer":"Boost guns","flame":"Burn / DoT","frost":"Slow enemies","shock":"Charged strike","auto_repair":"Paid repairs","shield":"Paid barrier","decoy":"Timed legal lure"}
  var n=0
  for kind in Catalog.BUILDINGS:
   var id=kind
@@ -414,7 +417,7 @@ func show_match():
  horror_layer.size=Vector2(1280,720)
  panel.add_child(horror_layer)
  var draw_target=horror_layer
- horror_layer.draw.connect(func(): game.horror.render_notifications(draw_target))
+ horror_layer.draw.connect(func(): game.horror.render_notifications(draw_target);game.presentation.wrath_presentation.overlay(draw_target,game.model))
 
  items_ui.create_hotbar()
  if not game.mobile_mode:
@@ -621,6 +624,12 @@ func update_match():
    var contract_state="No contract" if m.strategy.contract=="" else "CONTRACT FAILED" if m.strategy.failed else "CONTRACT ACTIVE"
    hunter_detail.text=StrategyCatalog.ARCHETYPES[m.strategy.archetype].name+" · TEAM %d · " % m.rooms.filter(func(r):return r.owner>=0 and r.alive).size()+contract_state
   hunter_detail.clip_text=true;hunter_detail.tooltip_text=StrategyCatalog.ARCHETYPES[m.strategy.archetype].hint+"\n"+m.strategy.status()
+ if not m.evolution.acquired.is_empty():
+  hunter_label.text+=" · ↑%d" % m.evolution.acquired.size()
+  hunter_label.tooltip_text="ACQUIRED EVOLUTIONS (this run)"
+  for id in m.evolution.acquired:hunter_label.tooltip_text+="\n"+HunterEvolution.BUFFS[id].name+": "+HunterEvolution.BUFFS[id].effect
+ if m.wrath.active():hunter_detail.text="%s · %.1fs · ROOM %d" % [ReaperWrath.ABILITIES[m.wrath.ability].name.to_upper(),m.wrath.warning,m.wrath.cast_target+1]
+ elif m.hunter.transformed and m.hunter.state!=HunterState.State.TRANSFORM and m.hunter.boss_attack=="" and m.hunter.surge_remaining<=0:hunter_detail.text="PHASE %s · %d UNDEAD · POWER %d" % ["II" if m.wrath.phase==2 else "I",m.minions.size(),m.evolution.acquired.size()]
  if game.tutorial_active:
   phase_label.text="PRACTICE\nSTEP %d / 9" % [game.onboarding.step+1]
   if game.onboarding.step<7:
@@ -635,7 +644,7 @@ func update_match():
  guide_label.visible=guide_box.visible
  if guide_label.visible: guide_label.text=feedback_text if game.presentation.clock<feedback_until else tutorial_text()
  var threat=room!=null and m.hunter.target==room.index and m.hunter.state==HunterState.State.ATTACK
- warning_box.visible=threat or game.level_warning_time>0
+ warning_box.visible=threat or game.level_warning_time>0 or m.wrath.active()
  warning_label.visible=warning_box.visible
  if not threat and game.level_warning_time>0: warning_label.text="THE HUNTER GROWS STRONGER · LEVEL %d" % m.hunter.level
  if threat:
@@ -648,6 +657,7 @@ func update_match():
    warning_label.text="%s %.1fs · REPAIR NOW" % [BossCatalog.ATTACKS[m.hunter.boss_attack].name,m.hunter.windup_remaining]
   elif m.hunter.shadow_active(room.index): warning_label.text="TURRETS SILENCED %.1fs · KEEP REPAIRING" % m.hunter.surge_remaining
   warning_box.modulate.a=0.75+game.danger_time*0.35
+ if m.wrath.active():warning_label.text="%s · %.1fs · ROOM %d" % [ReaperWrath.ABILITIES[m.wrath.ability].name.to_upper(),m.wrath.warning,m.wrath.cast_target+1]
  details.text="Choose a room" if room==null else "%s · %s" % [game.presentation.ROOM_NAMES[room.index].capitalize(),"sleeping" if room.sleeping else "awake"]
  for control in [room_bed_summary,room_door_summary,room_selected_summary]: control.disabled=room==null
  if room!=null:
@@ -798,8 +808,11 @@ func tile_description(room: RoomState) -> String:
 func building_effect(kind: String) -> String:
  var data = Catalog.BUILDINGS[kind]
  match kind:
-  "turret", "heavy":
+  "turret", "heavy", "flame", "frost", "shock":
    return "%.1f damage / %.1fs; range %.1fpx. Upgrades increase damage and attack speed. %s" % [data.damage,data.interval,data.range,"Requires bed level 2." if kind=="heavy" else ""]
+  "auto_repair":return "Automatically pays Gold and Electricity to repair a damaged intact door. No free healing."
+  "shield":return "Pays Electricity for a finite short barrier; shared room refractory prevents permanent immunity."
+  "decoy":return "Pays Electricity for a finite legal-path Hunter diversion. Shared cooldown; Reaper resistant."
   "generator":
    return "%.1f electricity per second per level." % data.rate
   "repair":
@@ -819,15 +832,33 @@ func show_audio_test():
  clear();current_screen="audio_test"
  box(Rect2(80,40,1120,640))
  label_at("HORROR AUDIO · LISTENING ROOM",Vector2(110,66),28,1050,true)
- label_at("Uses your saved Music/Effects/Mute settings. Adjust those in Settings. Human scariness needs your ears.",Vector2(110,112),16,1050)
- var names=["music_intro","music_menu","music_calm","music_approach","music_danger","music_reaper","music_endless"]
- for i in range(names.size()):
-  var id=names[i]
-  button(id.trim_prefix("music_").capitalize()+" · score",Vector2(110+(i%2)*540,160+int(i/2)*64),func():game.audio_system.preview_track(id),510,48)
- var voices=["death_scream_1","hunter_laugh","reaper_laugh","intro_breath","reaper_charge"]
- for i in range(voices.size()):
-  var id=voices[i]
-  button(id.replace("_"," ").capitalize(),Vector2(110+(i%3)*360,436+int(i/3)*60),func():game.audio_system.preview_effect(id),330,44)
+ label_at("Saved Music/Effects/Mute settings apply. Human quality and scariness require your ears.",Vector2(110,112),16,1050)
+ for i in range(3):
+  var tab=["Music","Voices","Action SFX"][i]
+  var chosen=tab
+  var b=button(tab,Vector2(110+i*360,155),func():game.audio_system.stop_preview();audio_tab=chosen;show_audio_test(),330,44)
+  b.toggle_mode=true;b.button_pressed=audio_tab==tab
+ if audio_tab=="Music":
+  var names=["music_intro","music_menu","music_calm","music_approach","music_danger","music_reaper","music_endless","music_crimson"]
+  for i in range(names.size()):
+   var id=names[i]
+   button(id.trim_prefix("music_").capitalize()+" · score",Vector2(110+(i%2)*540,220+int(i/2)*72),func():game.audio_system.preview_track(id),510,54)
+ elif audio_tab=="Voices":
+  var voices=["death_scream_1","hunter_laugh","reaper_laugh","intro_breath","reaper_charge"]
+  for i in range(voices.size()):
+   var id=voices[i]
+   button(id.replace("_"," ").capitalize(),Vector2(110+(i%2)*540,230+int(i/2)*80),func():game.audio_system.preview_effect(id),510,58)
+ else:
+  var groups=game.audio_system.sfx_preview_groups();var keys=groups.keys()
+  for i in range(keys.size()):
+   var group=keys[i]
+   var b=button(group,Vector2(110+i*270,220),func():audio_group=group;show_audio_test(),250,44)
+   b.toggle_mode=true;b.button_pressed=audio_group==group
+  if audio_group not in groups:audio_group=keys[0]
+  var names=groups[audio_group]
+  for i in range(names.size()):
+   var id=names[i]
+   button(id.replace("_"," ").capitalize(),Vector2(110+(i%2)*540,290+int(i/2)*78),func():game.audio_system.preview_effect(id),510,58)
  button("Stop audition",Vector2(110,598),game.audio_system.stop_preview,330,44)
  button("Back to settings",Vector2(650,598),func():game.audio_system.stop_preview();show_settings(),510,44)
 

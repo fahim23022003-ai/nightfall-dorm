@@ -18,6 +18,13 @@ var door_level = 0
 var door_hp = Catalog.DOOR_HP[0]
 var buildings: Dictionary = {}
 var income_total = 0.0
+var main_damage_dealt=0.0
+var minion_damage_dealt=0.0
+var barrier_hp=0.0
+var barrier_remaining=0.0
+var threat_income_factor=1.0
+var threat_power_factor=1.0
+var production_paused=false
 var shots = 0
 var damage_dealt = 0.0
 var spent = 0.0
@@ -134,7 +141,7 @@ func income_rate() -> float:
  for building in buildings.values():
   if building.kind == "economy":
    factor += Catalog.support_output("economy",building.level)*StrategyCatalog.support(building).get("output",1.0)
- return Catalog.BED_INCOME[bed_level] * factor * income_multiplier * trait_modifiers.income * temporary_income*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("income",1.0)*special_factor("income",.35,1.0) if sleeping and alive else 0.0
+ return Catalog.BED_INCOME[bed_level] * factor * income_multiplier * trait_modifiers.income * temporary_income*threat_income_factor*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("income",1.0)*special_factor("income",.35,1.0) if sleeping and alive and not production_paused else 0.0
 
 func pay(g: float, e: float = 0.0) -> bool:
  if not is_finite(g) or not is_finite(e) or g < 0 or e < 0:
@@ -227,7 +234,7 @@ func build(kind: String, tile: int) -> bool:
   return false
  if not spend_coupon(Vector2(data.gold,data.power)-price): return false
  if not pay(price.x,price.y): return reject("Purchase could not be paid.")
- buildings[tile] = {"kind":kind,"level":1,"cooldown":0.0,"flash":0.0,
+ buildings[tile] = {"instance_id":int(construction_actions)+1,"kind":kind,"level":1,"cooldown":0.0,"flash":0.0,
   "invested_gold":price.x,"invested_power":price.y}
  construction_actions+=1
  presentation_action.emit("build",{"kind":kind,"tile":tile})
@@ -266,7 +273,7 @@ func _upgrade_building(tile: int,branch: String) -> bool:
  b.level += 1
  if branch!="":b.specialization=branch
  construction_actions+=1
- presentation_action.emit("building_upgrade",{"kind":b.kind,"tile":tile,"level":b.level})
+ presentation_action.emit("building_upgrade",{"kind":b.kind,"tile":tile,"level":b.level,"specialization":b.get("specialization","")})
  return true
 
 # Record actual successful payments, never infer investment from level or prices.
@@ -294,18 +301,18 @@ func sell_building(tile: int) -> bool:
 
 func tick_economy(delta: float):
  if sleeping and alive: occupied_seconds+=delta
- var income = income_rate()/temporary_income*delta+item_bonus_income
+ var income = 0.0 if production_paused else income_rate()/temporary_income*delta+item_bonus_income
  item_bonus_income=0
  gold += income
  income_total += income
  damage_flash = maxf(0,damage_flash-delta)
  if not alive or not sleeping:
   return
- electricity+=Catalog.BED_INCOME[bed_level]*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("power_rate",0.0)*delta
+ if not production_paused:electricity+=threat_power_factor*Catalog.BED_INCOME[bed_level]*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("power_rate",0.0)*delta
  for b in buildings.values():
   b.flash = maxf(0,b.flash-delta)
-  if b.kind == "generator":
-   electricity += Catalog.support_output("generator",b.level)*StrategyCatalog.support(b).get("output",1.0)*delta*power_multiplier*trait_modifiers.power*special_factor("power",.55,1.5)*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("power",1.0)
+  if b.kind == "generator" and not production_paused:
+   electricity += threat_power_factor*Catalog.support_output("generator",b.level)*StrategyCatalog.support(b).get("output",1.0)*delta*power_multiplier*trait_modifiers.power*special_factor("power",.55,1.5)*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("power",1.0)
   elif b.kind == "repair" and door_hp > 0:
    var branch=StrategyCatalog.support(b)
    var cost=branch.get("power_cost",0.0)*b.level*delta
@@ -315,7 +322,8 @@ func tick_economy(delta: float):
 
 func special_factor(key: String,low: float,high: float) -> float:
  var value=1.0
- for b in buildings.values():value+=float(StrategyCatalog.support(b).get(key,1.0))-1.0
+ for b in buildings.values():
+  if b.kind=={"income":"generator","power":"economy","range":"enhancer","interval":"enhancer","repair_cost":"repair"}.get(key,""):value+=float(StrategyCatalog.support(b).get(key,1.0))-1.0
  return clampf(value,low,high)
 func manual_repair_cost() -> float:
  return Catalog.REPAIR_COST*special_factor("repair_cost",.6,1.0)

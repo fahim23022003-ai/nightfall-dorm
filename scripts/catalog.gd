@@ -16,7 +16,13 @@ const BUILDINGS = {
  "generator": {"name":"Dynamo", "gold":30, "power":0, "rate":1.5, "color":Color("e9ce67")},
  "repair": {"name":"Repair station", "gold":40, "power":5, "rate":7.0, "color":Color("7cdea0")},
  "economy": {"name":"Dream amplifier", "gold":45, "power":4, "rate":0.35, "color":Color("efab71")},
- "enhancer": {"name":"Target relay", "gold":65, "power":8, "rate":0.35, "color":Color("ee8fb2")}
+ "enhancer": {"name":"Target relay", "gold":65, "power":8, "rate":0.35, "color":Color("ee8fb2")},
+ "flame":{"name":"Flame Turret","gold":75,"power":10,"damage":4.0,"range":190.0,"interval":1.35,"color":Color("f38345")},
+ "frost":{"name":"Frost Tower","gold":80,"power":12,"damage":5.0,"range":220.0,"interval":1.4,"color":Color("80dce7")},
+ "shock":{"name":"Shock Trap","gold":65,"power":10,"damage":24.0,"range":155.0,"interval":3.6,"color":Color("c0a3fa")},
+ "auto_repair":{"name":"Auto Repair Station","gold":85,"power":12,"rate":3.0,"color":Color("9dd6ad")},
+ "shield":{"name":"Shield Generator","gold":100,"power":18,"rate":1.0,"color":Color("7abbee")},
+ "decoy":{"name":"Decoy Beacon","gold":70,"power":10,"rate":1.0,"color":Color("d198be")}
 }
 const BOT_PROFILES = ["guard", "engineer", "economist", "gunner", "balanced"]
 
@@ -33,7 +39,7 @@ const AI_PROFILES = {
 }
 
 # Real homing shots; original economy and turret attack intervals remain unchanged.
-const PROJECTILES = {"turret":480.0,"heavy":360.0,"max_age":5.0,"max_active":256,"max_events":96,"event_lifetime":0.45}
+const PROJECTILES = {"turret":480.0,"heavy":360.0,"flame":340.0,"frost":370.0,"shock":600.0,"max_age":5.0,"max_active":256,"max_events":96,"event_lifetime":0.45}
 
 # Preserve the first active phase; each later level ramps its stats over eight seconds.
 const HUNTER_ESCALATION={"ramp_seconds":8.0,"speed_growth":1.5,"speed_bonus_cap":8.0,"dps_weight":2.0,"dps_penalty_cap":90.0,"repair_penalty_cap":35.0,"retarget_improvement":0.12,"minimum_commitment":8.0,"stuck_seconds":4.0}

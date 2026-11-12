@@ -1,0 +1,32 @@
+{
+  "accepted": true,
+  "gates": [
+    {
+      "suite": "phase5d4_audio_targets",
+      "checks": 209,
+      "failures": 0,
+      "exit_code": 0,
+      "log": "audio-targets-pcm-accepted.log"
+    },
+    {
+      "suite": "phase5d4_audio_reactions",
+      "checks": 5,
+      "failures": 0,
+      "exit_code": 0,
+      "log": "audio-pcm-phase5d4_audio_reactions.log"
+    },
+    {
+      "suite": "phase5d4_audio",
+      "checks": 774,
+      "failures": 0,
+      "exit_code": 0,
+      "log": "audio-pcm-phase5d4_audio.log"
+    }
+  ],
+  "import": "audio-pcm-import.log",
+  "source_sha256": {
+    "scripts/audio_director.gd": "e7f90f9ca12130a812079d7479db6def83e2aedb6b0761d33ee6215f81a445d3",
+    "scripts/wrath_audio_catalog.gd": "a9baf7b63baafb275050ec38be477ac70c72fbafa7e93a71f9d533da4da1cc17"
+  },
+  "note": "Initial target fixture assumed dormant actor attackable; setpreparedSEEK state withoutchangingproducer rules. Actual mixed fullgame/maxmix stillseparate D gate."
+}

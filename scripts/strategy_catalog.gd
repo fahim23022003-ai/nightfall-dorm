@@ -22,7 +22,19 @@ const BRANCHES={
  "precision":{"kind":"turret","name":"Heavy Precision","damage":1.55,"interval":1.4,"range":.85,"speed":1.0,"slow":0.0,"description":"+55% hit damage / 40% longer interval / 15% shorter range (204px). Concentrated shots; placement matters."},
  "suppression":{"kind":"turret","name":"Suppression","damage":.8,"interval":.82,"range":1.0,"speed":1.0,"slow":.15,"description":"20% weaker hits / 18% shorter interval. Hits slow movement 15% for 1s; Reaper 7.5%."},
  "focus":{"kind":"heavy","name":"Focused Discharge","damage":1.5,"interval":1.35,"range":1.0,"speed":1.0,"slow":0.0,"description":"50% stronger hits / 35% longer interval. Powerful single-target bursts."},
- "storm":{"kind":"heavy","name":"Storm Coil","damage":.72,"interval":.72,"range":1.2,"speed":1.25,"slow":0.0,"description":"28% weaker hits / 28% shorter interval. 20% more range; 25% faster projectiles."}}
+ "storm":{"kind":"heavy","name":"Storm Coil","damage":.72,"interval":.72,"range":1.2,"speed":1.25,"slow":0.0,"description":"28% weaker hits / 28% shorter interval. 20% more range; 25% faster projectiles."},
+ "searing":{"kind":"flame","name":"Searing Lance","damage":1.35,"interval":1.0,"range":1.0,"speed":1.0,"slow":0.0,"description":"45% stronger burn and35% stronger contact damage, but only one target."},
+ "wildfire":{"kind":"flame","name":"Wildfire Fan","damage":.72,"interval":1.0,"range":1.0,"speed":1.0,"slow":0.0,"description":"Hits up to three nearby targets; each hit28% weaker and burn35% weaker."},
+ "deep_chill":{"kind":"frost","name":"Deep Chill","damage":1.15,"interval":1.0,"range":1.0,"speed":1.0,"slow":.3,"description":"30% movement slow and15% stronger hits, one target. Reaper slow halved."},
+ "rime_field":{"kind":"frost","name":"Rime Field","damage":.65,"interval":1.0,"range":1.0,"speed":1.0,"slow":.16,"description":"Three targets with16% slow;35% weaker hits. Reaper slow halved."},
+ "capacitor_burst":{"kind":"shock","name":"Capacitor Burst","damage":1.5,"interval":1.25,"range":1.0,"speed":1.0,"slow":.15,"description":"50% stronger charged impact; recharge25% longer. Brief slow, never a stun."},
+ "rapid_discharge":{"kind":"shock","name":"Rapid Discharge","damage":.65,"interval":.667,"range":1.0,"speed":1.0,"slow":.15,"description":"One-third shorter recharge;35% weaker hit. Cannot stun-lock the Hunter."},
+ "efficient_mending":{"kind":"auto_repair","name":"Efficient Mending","description":"Same steady repairs for30% less operating Gold. Paid Electricity still required."},
+ "emergency_protocol":{"kind":"auto_repair","name":"Emergency Protocol","description":"80% stronger burst only below45% door HP; slower5s cycle,60% more Gold and50% more Electricity."},
+ "aegis_burst":{"kind":"shield","name":"Aegis Burst","description":"50% more absorption for2s;25% more operating Electricity. Room refractory remains12s."},
+ "steady_veil":{"kind":"shield","name":"Steady Veil","description":"35% weaker absorption for4s;20% less operating Electricity. No overlapping barriers."},
+ "force_lure":{"kind":"decoy","name":"Force Lure","description":"Lures from240px for3s; requires paid Electricity and legal navigation."},
+ "faint_echo":{"kind":"decoy","name":"Faint Echo","description":"Longer4s lure but shorter160px reach. Reaper duration halved; shared24s cooldown."}}
 const BRANCH_FEE=Vector2(25,4)
 const TRAIT_IDS=["fortified","power","economy"]
 const TRAITS={
@@ -46,7 +58,7 @@ static func branches(kind: String) -> Array:
 static func weapon(building: Dictionary) -> Dictionary:
  var d={"damage":1.0,"interval":1.0,"range":1.0,"speed":1.0,"slow":0.0}
  var id=str(building.get("specialization",""))
- if building.kind in ["turret","heavy"] and BRANCHES.has(id) and BRANCHES[id].kind==building.kind:return BRANCHES[id]
+ if building.kind in DefenseEffects.WEAPONS and BRANCHES.has(id) and BRANCHES[id].kind==building.kind:return BRANCHES[id]
  return d
 static func claim_key(stage: String,mode: String,contract: String) -> String:
  return stage+":"+mode+":"+contract

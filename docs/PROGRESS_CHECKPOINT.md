@@ -21,9 +21,16 @@ UI 301/0 plus final clarity 209/0, with fixed camera across all five maps.
 Legacy affected suites: purchasing 908/0, premium UI 3483/0, branch UI 518/0,
 onboarding 92/0. Direct BUILD uses the selected pad; branch preview is free
 until explicit confirmation; current/next values use actual calculations.
-Sampled audio source/assets checkpoints 53eb50a and 2de0ea2 are local only.
-Next: tactical/NPC repairs, evolution, two-phase Reaper and combined ultimate,
-six buildings, final audio runtime and independent integration verification.
+UI, source/assets and early evidence through 9db04a0 are VERIFIED PUSHED;
+remote work matched local HEAD. Core implementation checkpoint now contains
+15 unique bounded kill buffs, two Reaper phases and combined final domain,
+ten capped navigated minions, six paid Level1–10 machines/branches, ruleset3
+and migration, audio routing/mixing and sampled cues. Independent early gates:
+evolution648/0, defenses972/0, save264/0, boss111/0; developer728/0 and UI40/0.
+Audio774/0, voice regression5/0, target routing209/0; legacy audio491/0 and
+listening room256/0. Final integration, balance, screenshots, all regressions
+and Windows export remain IN PROGRESS. Old test fixtures are being ported to
+finite boss phase guards and ruleset3 without dropping transaction checks.
 
 ---
 
