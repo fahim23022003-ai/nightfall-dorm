@@ -87,6 +87,9 @@ func start_stage(id: String, difficulty: String="standard") -> bool:
  return start_match(difficulty)
 
 func start_match(difficulty: String="") -> bool:
+ if not profile.pending_spins.is_empty():
+  ui.items_ui.spin()
+  return false
  if difficulty!="": selected_difficulty=difficulty
  var requested=_stage_request
  _stage_request=""
@@ -120,6 +123,15 @@ func start_match(difficulty: String="") -> bool:
  focus_camera(true)
  queue_redraw()
  return true
+
+func activate_item(slot: int) -> bool:
+ if mode!="match" or in_background: return false
+ var ok=profile.activate_item(slot,model,match_id)
+ if not ok:
+  audio_event("failure")
+  ui.feedback_text=profile.item_error if profile.item_error!="" else "Item unavailable for this match."
+  ui.feedback_until=presentation.clock+2.0
+ return ok
 
 func return_menu():
  mode = "menu"
@@ -188,6 +200,7 @@ func _process(delta: float):
     audio_event("reward")
    ui.show_result()
  audio_system.update_state(delta,model,mode)
+ if ui.items_ui!=null: ui.items_ui.update(delta)
  presentation.update(delta,model)
  if is_instance_valid(ui.horror_layer): ui.horror_layer.queue_redraw()
  queue_redraw()
@@ -210,7 +223,8 @@ func _unhandled_input(event):
  if mode!="match" or in_background: return
  if mobile_mode and event is InputEventMouse: return
  if event is InputEventKey and event.pressed and not event.echo:
-  if event.keycode==KEY_E and model.running: model.interact()
+  if event.keycode in [KEY_1,KEY_2] and model.running: activate_item(0 if event.keycode==KEY_1 else 1)
+  elif event.keycode==KEY_E and model.running: model.interact()
   elif event.keycode==KEY_M: toggle_map()
   elif event.keycode==KEY_G: toggle_guide()
   elif event.keycode==KEY_R and model.running: ui.purchase(model.repair_door())

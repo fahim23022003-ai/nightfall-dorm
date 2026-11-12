@@ -1,3 +1,46 @@
+# Phase 5B-1 — Lucky Spin and eight consumables (12 November 2026)
+
+Continued clean `work` at `c3bdc49b7c536f11b9601bd4e3c71995954b8d86`.
+Recovery tag `pre-phase5b1-c3bdc49`. Bsoleproductionowner; targetedAeconomy,
+independentCtransactions/balance and Dactualrender/audio reviews complete.
+
+Implemented persisted predetermined reward/inventory transaction before animated
+LuckySpin. Victoryup-to4units ofoneitemtype(Common60%/Rare40%); qualifiedConsolation1
+(Common90%/Rare10%). Consolation requires60occupiedseconds and100Hunterdamage
+or100door damage, actual defeat. Skip/reload never rerolls or duplicates.
+Pending receipt queue resumes from menu; failed writes show retry honestly.
+Inventorycap9999, eight originalicons/descriptions, twoownedtype loadout separate
+from existingperk. Only successfulsavedactivation deductsstock; unusedstockstays.
+Hotbar keyboard1/2 + mouse, quantities/cooldown/durations/reasons.
+
+Eight actual effects:25%doorrepair,150Gold,80Electricity,30sradar,30%doorHPshield15s,
+35%turretspeed12s,40%slow7s(Reaper25%),220damage sweptdoorwaytrap45s. Temporary
+effects pause/expire/clear and cannot infinitelystack. TwelveoriginalPCM cues,
+worldfeedback, wheel/reveal and boundedparticleeffects;68streams, fourmusicstems.
+OriginalXP/Mythic/stages/loadout/settings and all prior systems preserved.
+
+FinalC3,179checks/0 plus13controller-feedback checks; campaign126 +rankUI63; D92checks/23actualcaptures and15.418s
+engine mix0clips. Regular+extended regressions completed in resumedbatches:
+boss6,699checks;90difficulty29/1Normal18/12Hard3/27Hell;144map79/65;20campaign9/11;
+12legacy9/3;27timestep,144roommatrix,48rank/perk22/26;20ktransactions/175,941
+invariants, purchase/refund/audio/profile/startup pass. Details and rawlogs in
+[PHASE_5B1_ITEM_REPORT.md](PHASE_5B1_ITEM_REPORT.md), docs/evidence/items/.
+
+60matched itemcomparisons:Normal10/0→10/0,Hard8/2→10/0,Hell2/8→8/2 with disclosed
+fixture4units/type×2type budget, earnedmatchcurrency. These are nothumanwinrates.
+Victorystack4 improvesoverallrewardthroughput; targetingCommonitems/longwins
+can stillfavorotherincentives. Gatesprotectinstant/abandonedloss farming, not
+allpossibleofflineintent. Dense transientnumberbursts canoverlapnear door;
+essentialHUD/controls remainclear. NativeWindows,subjectiveaudio/polish and
+humanbalance remainUNVERIFIED. No knownfunctionaltestfailures remain.
+
+Fixedtrap tunneling, corruptsnapshots, Retryaudioeventreset, descriptionclipping,
+crateanimation, feedbacksigns, laststockselectionrollback and save-statuswording.
+Finalresponse records exactcommittedSHA/privateworkpushverification. Stopafter
+Phase5B-1; no remaining12items, advancedtiers/newmaps/bosses or Android work.
+
+---
+
 # Phase 5A — Mythic and permanent progression (12 November 2026)
 
 Continued clean `work` at `be88734e89cf563e267991d1ee7c70759776ac44`.

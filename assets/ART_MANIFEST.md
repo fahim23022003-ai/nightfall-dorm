@@ -17,3 +17,7 @@ Animation is deliberately lightweight: sprite pose swaps, breathing/walk bob, gh
 ## Phase 5A Mythic badge
 
 `ranks/mythic.svg` is an original authored purple/gold crown-and-crystal prestige badge extending the six existing rank badges. The runtime animates its color and promotion scale without blocking result actions. No external imagery or new gameplay perk is attached to Mythic.
+
+## Phase 5B-1 consumable art
+
+`items/` contains eight original authored SVG icons from `tools/art/generate_items.py`. Item wheel, rarity reveal, shield/frost/radar/turret overlays, mechanical repair crosses, crate/coins, electricity and trap/explosion animation use these local originals plus bounded procedural drawing. No external assets or runtime download dependencies were introduced.

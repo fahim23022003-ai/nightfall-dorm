@@ -137,6 +137,7 @@ func show_loadout():
  ui.label_at("Boost: "+("None" if names.is_empty() else ", ".join(names))+" · "+RankCatalog.DIFFICULTIES[difficulty].name,Vector2(125,554),18,980)
  ui.button("Back",Vector2(125,612),ui.campaign.show_stages if game.campaign_mode else ui.show_menu,180,44)
  ui.button("Ranks & rewards",Vector2(330,612),show_ranks,250,44)
+ ui.button("Items · %d/2" % game.profile.item_loadout.size(),Vector2(605,612),ui.items_ui.inventory,230,44)
  ui.button("Start Match" if game.campaign_mode else "Start Night",Vector2(860,612),func():
   if game.campaign_mode: game.start_stage(game.profile.selected_stage,difficulty)
   else: game.start_match(difficulty),290,44)

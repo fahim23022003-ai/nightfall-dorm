@@ -47,6 +47,7 @@ var warning_label: Label
 var default_font=preload("res://assets/fonts/Interface.ttf")
 var display_font=preload("res://assets/fonts/CartoonDisplay.ttf")
 var campaign
+var items_ui
 var progression: ProgressionInterface
 var current_screen="menu"
 var horror_layer: Control
@@ -64,6 +65,7 @@ func _ready():
  theme.default_font=default_font
  theme.default_font_size=18
  panel.theme=theme
+ items_ui=preload("res://scripts/item_interface.gd").new(self)
  progression=ProgressionInterface.new(self)
  campaign=preload("res://scripts/campaign_interface.gd").new(self)
  show_menu()
@@ -168,7 +170,9 @@ func show_menu():
  button("Settings",Vector2(242,477),show_settings,160,46)
  button("Exit Game",Vector2(72,539),game.request_quit,330,44)
  progression.menu_summary()
- label_at("Original cartoon dormitory survival defense",Vector2(72,662),16,620).modulate=Color("9DB6C2")
+ button("Consumable inventory",Vector2(72,644),items_ui.inventory,330,36)
+ if not game.profile.pending_spins.is_empty(): button("Resume Lucky Spin",Vector2(430,644),items_ui.spin,240,36)
+ label_at("Original cartoon dormitory survival defense",Vector2(72,690),16,620).modulate=Color("9DB6C2")
 
 func show_help():
  clear()
@@ -333,6 +337,8 @@ func show_match():
  horror_layer.size=Vector2(1280,720)
  panel.add_child(horror_layer)
  horror_layer.draw.connect(func(): game.horror.render_notifications(horror_layer))
+
+ items_ui.create_hotbar()
 
 func open_context():
  game.cancel_placement()
@@ -536,7 +542,8 @@ func show_result():
  var l=label_at("%ds survived  ·  Hunter level %d\n%d shots  ·  %d damage\n%d gold earned  ·  %d residents lost" % [m.time,m.hunter.level,r.shots if r!=null else 0,r.damage_dealt if r!=null else 0,r.income_total if r!=null else 0,m.eliminations],Vector2(390,312),20,500)
  l.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  progression.result_summary()
- if game.campaign_mode: campaign.result_actions()
+ if items_ui.result_gate(): pass
+ elif game.campaign_mode: campaign.result_actions()
  else:
   button("Loadout",Vector2(390,580),progression.show_loadout,235,32)
   button("Restart",Vector2(390,530),game.start_match,235,48)

@@ -16,10 +16,59 @@ var selected_difficulty="standard"
 var campaign_records: Dictionary={}
 var statistics={"matches":0,"victories":0,"defeats":0,"standard":0,"hard":0,"hell":0,"reaper_defeats":0}
 var highest_rank=0
+var inventory: Dictionary={}
+var item_loadout: Array=[]
+var pending_spins: Array=[]
+var reward_rng=RandomNumberGenerator.new()
+var item_error=""
+func _item_failure(model,reason: String) -> bool:
+ item_error=reason
+ model.feedback.emit(reason)
+ return false
+func _valid_item_snapshot(value) -> bool:
+ if not value is Array or value.size()>ItemCatalog.SLOTS: return false
+ var seen=[]
+ for id in value:
+  if not id is String or not ItemCatalog.ITEMS.has(id) or id in seen: return false
+  seen.append(id)
+ return true
+func pending_spin() -> Dictionary:
+ return pending_spins[0].duplicate(true) if not pending_spins.is_empty() else {}
+func equip_item(id: String) -> bool:
+ if read_only or not ItemCatalog.ITEMS.has(id): return false
+ var before=item_loadout.duplicate()
+ if id in item_loadout: item_loadout.erase(id)
+ elif int(inventory.get(id,0))<=0 or item_loadout.size()>=ItemCatalog.SLOTS: return false
+ else: item_loadout.append(id)
+ if not save_profile(): item_loadout=before; return false
+ return true
+func claim_spin(id: int) -> Dictionary:
+ if read_only or pending_spins.is_empty() or int(pending_spins[0].match_id)!=id: return {}
+ var reward=pending_spins.pop_front()
+ if not save_profile(): pending_spins.push_front(reward); return {}
+ return reward.duplicate(true)
+func activate_item(slot: int,model,id: int) -> bool:
+ item_error=""
+ if read_only: return _item_failure(model,"Items unavailable: profile is read-only.")
+ if active_match.is_empty() or int(active_match.id)!=id or not _valid_item_snapshot(active_match.get("items",[])) or slot<0 or slot>=active_match.get("items",[]).size(): return _item_failure(model,"No item equipped in that slot for this match.")
+ var item=str(active_match.items[slot])
+ if int(inventory.get(item,0))<=0: return _item_failure(model,"No stock remaining.")
+ var reason=model.items.can_activate(item,model)
+ if reason!="": return _item_failure(model,reason)
+ var old_selection=item_loadout.duplicate()
+ inventory[item]-=1
+ if inventory[item]<=0: item_loadout.erase(item)
+ if not save_profile():
+  inventory[item]+=1
+  item_loadout=old_selection
+  return _item_failure(model,"Item not used: inventory could not be saved.")
+ model.items.apply(item,model)
+ return true
 
 
 func _init(save_path: String="user://profile.json"):
  path=save_path
+ reward_rng.randomize()
 
 func rank_index() -> int:
  var rank=RankCatalog.rank_for(xp)
@@ -182,6 +231,34 @@ func load_profile() -> bool:
   read_only=true
   warning="This progression belongs to a newer game version; saving disabled to preserve it."
  highest_rank=maxi(highest_rank,rank_index())
+ var consumables=data.get("consumables",{})
+ inventory={}; item_loadout=[]; pending_spins=[]
+ if consumables is Dictionary and consumables.get("version")==1:
+  var valid=consumables.get("inventory") is Dictionary and consumables.get("loadout") is Array and consumables.get("pending") is Array
+  if valid:
+   for key in consumables.inventory:
+    if not ItemCatalog.ITEMS.has(key) or not _whole(consumables.inventory[key],0,ItemCatalog.MAX_STOCK): valid=false
+   if consumables.loadout.size()>ItemCatalog.SLOTS: valid=false
+   var seen=[]
+   for key in consumables.loadout:
+    if not key is String or not ItemCatalog.ITEMS.has(key) or key in seen: valid=false
+    seen.append(key)
+   var ids=[]
+   if consumables.pending.size()>128: valid=false
+   for spin in consumables.pending:
+    if not spin is Dictionary or not _whole(spin.get("quantity",1),0,4) or not _whole(spin.get("match_id"),1,int(data.next_match_id)-1) or not spin.get("item","") in ItemCatalog.IDS or not spin.get("result","") in ["victory","defeat"]: valid=false
+    elif spin.match_id in ids: valid=false
+    else: ids.append(spin.match_id)
+  if valid:
+   for key in consumables.inventory: inventory[key]=int(consumables.inventory[key])
+   item_loadout=consumables.loadout.duplicate()
+   pending_spins=consumables.pending.duplicate(true)
+  else:
+   read_only=true
+   warning="Consumable records are damaged; existing progression loaded read-only to preserve inventory."
+ elif not consumables is Dictionary or (not consumables.is_empty() and consumables.get("version")!=1):
+  read_only=true
+  warning="Unknown consumable save version; saving disabled to preserve it."
  next_match_id=int(data.next_match_id)
  equipped=[]
  for id in data.equipped:
@@ -192,6 +269,10 @@ func load_profile() -> bool:
  for key in ["muted","fullscreen","tutorial","battery_saver"]:
   if data.settings.get(key) is bool: settings[key]=data.settings[key]
  active_match=data.get("active_match",{}).duplicate(true)
+ if not _valid_item_snapshot(active_match.get("items",[])):
+  read_only=true
+  active_match["items"]=[]
+  warning="Active item snapshot was damaged; saving disabled to preserve your original profile."
  last_award=data.get("last_award",{}).duplicate(true)
  return true
 
@@ -199,7 +280,7 @@ func save_profile() -> bool:
  if read_only:
   save_ok=false
   return false
- var data={"version":RankCatalog.VERSION,"progression":{"version":1,"statistics":statistics,"highest_rank":maxi(highest_rank,rank_index())},"xp":xp,"equipped":equipped,"settings":settings,"next_match_id":next_match_id,"active_match":active_match,"last_award":last_award,"campaign":{"selected_stage":selected_stage,"difficulty":selected_difficulty,"records":campaign_records}}
+ var data={"consumables":{"version":1,"inventory":inventory,"loadout":item_loadout,"pending":pending_spins},"version":RankCatalog.VERSION,"progression":{"version":1,"statistics":statistics,"highest_rank":maxi(highest_rank,rank_index())},"xp":xp,"equipped":equipped,"settings":settings,"next_match_id":next_match_id,"active_match":active_match,"last_award":last_award,"campaign":{"selected_stage":selected_stage,"difficulty":selected_difficulty,"records":campaign_records}}
  var f=FileAccess.open(path+".tmp",FileAccess.WRITE)
  if f==null: return _write_failed()
  f.store_string(JSON.stringify(data," "))
@@ -242,17 +323,17 @@ func update_setting(key: String,value) -> bool:
  return save_profile()
 
 func begin_match(difficulty: String="standard",stage_id: String="") -> Dictionary:
- if stage_id!="" and (read_only or not stage_unlocked(stage_id)): return {}
+ if read_only or pending_spins.size()>=128 or (stage_id!="" and not stage_unlocked(stage_id)): return {}
  if next_match_id>=1000000000000:
   warning="Match counter limit reached; progress saving disabled."
   read_only=true
   return {}
  if not RankCatalog.DIFFICULTIES.has(difficulty): difficulty="standard"
  var before=active_match.duplicate(true)
- active_match={"id":next_match_id,"difficulty":difficulty,"equipped":equipped.duplicate()}
+ active_match={"id":next_match_id,"difficulty":difficulty,"equipped":equipped.duplicate(),"items":item_loadout.duplicate()}
  if stage_id!="": active_match.stage_id=stage_id
  next_match_id+=1
- if not save_profile() and stage_id!="":
+ if not save_profile():
   next_match_id-=1
   active_match=before
   return {}
@@ -309,6 +390,12 @@ func settle_match(id: int,model) -> Dictionary:
  highest_rank=maxi(highest_rank,after)
  last_award={"match_id":id,"old_xp":old_xp,"new_xp":xp,"breakdown":points,"old_rank":before,"new_rank":after,"promoted":after>before,"result":model.result}
  if not campaign_report.is_empty(): last_award.campaign=campaign_report
+ if ItemCatalog.reward_eligible(model):
+  var item=ItemCatalog.roll(model.result,reward_rng)
+  var quantity=4 if model.result=="victory" else 1
+  var granted=mini(quantity,ItemCatalog.MAX_STOCK-int(inventory.get(item,0)))
+  inventory[item]=int(inventory.get(item,0))+granted
+  pending_spins.append({"match_id":id,"item":item,"result":model.result,"quantity":granted})
  active_match={}
  save_profile()
  return last_award.duplicate(true)

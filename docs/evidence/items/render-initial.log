@@ -1,0 +1,97 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+ITEM_CAPTURE render-01-inventory
+ITEM_DESCRIPTION_WIDTH repair width=498.0 available=432.0
+ITEM_DESCRIPTION_WIDTH gold width=284.0 available=432.0
+ITEM_DESCRIPTION_WIDTH battery width=312.0 available=432.0
+ITEM_DESCRIPTION_WIDTH radar width=383.0 available=432.0
+ITEM_DESCRIPTION_WIDTH shield width=391.0 available=432.0
+ITEM_DESCRIPTION_WIDTH overdrive width=347.0 available=432.0
+ITEM_DESCRIPTION_WIDTH frost width=419.0 available=432.0
+ITEM_DESCRIPTION_WIDTH trap width=432.0 available=432.0
+ITEM_CAPTURE render-02-inventory-small
+ITEM_CAPTURE render-03-victory-result-spin-gate
+ITEM_CAPTURE render-04-victory-wheel
+ITEM_CAPTURE render-05-victory-reveal
+ITEM_CAPTURE render-06-consolation-reveal
+ITEM_CAPTURE render-07-loadout-inventory-link
+ITEM_CAPTURE render-08-repair-activation
+ERROR: ITEM RENDER: real activation consumes once gold
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_items.gd:10)
+       [1] run (res://tools/capture_items.gd:149)
+       [2] click (res://tools/capture_items.gd:50)
+ITEM_CAPTURE render-08-gold-activation
+ITEM_CAPTURE render-12-expired-repair
+ITEM_CAPTURE render-08-battery-activation
+ERROR: ITEM RENDER: real activation consumes once radar
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_items.gd:10)
+       [1] run (res://tools/capture_items.gd:149)
+       [2] click (res://tools/capture_items.gd:50)
+ITEM_CAPTURE render-08-radar-activation
+ITEM_CAPTURE render-10-radar-small
+ITEM_CAPTURE render-12-expired-battery
+ITEM_CAPTURE render-08-shield-activation
+ITEM_CAPTURE render-09-shield-absorb
+ERROR: ITEM RENDER: real activation consumes once overdrive
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_items.gd:10)
+       [1] run (res://tools/capture_items.gd:149)
+       [2] click (res://tools/capture_items.gd:50)
+ITEM_CAPTURE render-08-overdrive-activation
+ITEM_CAPTURE render-12-expired-shield
+ITEM_CAPTURE render-08-frost-activation
+ERROR: ITEM RENDER: real activation consumes once trap
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_items.gd:10)
+       [1] run (res://tools/capture_items.gd:149)
+       [2] click (res://tools/capture_items.gd:50)
+ITEM_CAPTURE render-08-trap-activation
+ITEM_CAPTURE render-11-trap-explosion
+ITEM_CAPTURE render-12-expired-frost
+ERROR: ITEM RENDER: activation sound battery
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_items.gd:10)
+       [1] run (res://tools/capture_items.gd:183)
+       [2] capture (res://tools/capture_items.gd:31)
+ERROR: ITEM RENDER: activation sound radar
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_items.gd:10)
+       [1] run (res://tools/capture_items.gd:183)
+       [2] capture (res://tools/capture_items.gd:31)
+ERROR: ITEM RENDER: activation sound shield
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_items.gd:10)
+       [1] run (res://tools/capture_items.gd:183)
+       [2] capture (res://tools/capture_items.gd:31)
+ERROR: ITEM RENDER: activation sound overdrive
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_items.gd:10)
+       [1] run (res://tools/capture_items.gd:183)
+       [2] capture (res://tools/capture_items.gd:31)
+ERROR: ITEM RENDER: activation sound frost
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_items.gd:10)
+       [1] run (res://tools/capture_items.gd:183)
+       [2] capture (res://tools/capture_items.gd:31)
+ERROR: ITEM RENDER: activation sound trap
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_items.gd:10)
+       [1] run (res://tools/capture_items.gd:183)
+       [2] capture (res://tools/capture_items.gd:31)
+ITEM_RENDER_AUDIO={"dropped_events":2,"event_counts":{"build":6,"button":4,"danger":1,"defeat":1,"door_hit":1,"door_upgrade":4,"electricity":1,"failure":4,"footstep":4,"ghost_defeat":1,"hunter_level":1,"hunter_spawn":4,"item_end":2,"item_gold":1,"item_repair":1,"item_reveal":2,"match_start":6,"menu":1,"rank":1,"reward":1,"victory":1},"frame_voice_limit":6,"intensity":0.9215,"loop_weights":{"ambient_dorm":0.635,"generator_loop":0.0,"music_calm":0.0,"music_danger":0.0,"music_menu":0.0,"music_reaper":0.85,"proximity_loop":0.56902625,"reaper_ambience":0.5225},"missing_assets":[],"mix":{"ambient":0.5,"effects":0.65,"music":0.5,"muted":false},"music_start_count":4,"pending_critical":0,"proximity":0.95,"stream_count":68,"voice_limit":16,"voices":0}
+ITEM_RENDER_CHECKS=87 FAILURES=10

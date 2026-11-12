@@ -5,6 +5,7 @@ const ROOM_NAMES = ["WILLOW","WREN","ASTER","MOSS","CEDAR","FERN"]
 var textures: Dictionary = {}
 var cartoon: Dictionary = {}
 var all_rooms=true
+var item_presentation=preload("res://scripts/item_presentation.gd").new()
 var boss_presentation=preload("res://scripts/boss_presentation.gd").new()
 var map_presentation=preload("res://scripts/map_presentation.gd").new()
 var previous_sleep: Dictionary={}
@@ -220,6 +221,7 @@ func render(c):
     var v=Vector2.from_angle(i*TAU/6)*(8+(1-fraction)*15)
     c.draw_line(p+v,p+v*1.3,Color(color,fraction),2)
  if c.get("horror")!=null: c.horror.render_world(c)
+ item_presentation.draw(c)
  for f in c.floating:
   sprite(c,"coin",OFFSET+f.position+Vector2(-12,-5),Vector2(13,13),Color(1,1,1,f.life))
   text(c,f.text,OFFSET+f.position,14,Color(0.96,0.77,0.26,f.life))

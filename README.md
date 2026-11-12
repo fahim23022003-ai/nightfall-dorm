@@ -17,6 +17,10 @@ An original single-player Godot 4 dormitory survival defense game. Choose a room
 
 Full controls, ZIP/Git instructions and a practical test checklist: [Windows home testing](docs/HOME_TESTING_WINDOWS.md).
 
+## Consumable items and Lucky Spin (Phase 5B-1)
+
+Eligible results now save a reward before its Lucky Spin animation: Victory up to4of one type, qualifying Consolation1. View exact odds in the spin, skip/reload safely, inspect persistent inventory and choose two consumable types separately from your permanent perk. Keys1/2 or hotbar clicks activate items; only a successful saved activation spends stock. Eight functional items cover repair, Gold, Electricity, radar, shield, overdrive, frost and traps. Meaningful defeat requirements and economy limits are documented in the [item report](docs/PHASE_5B1_ITEM_REPORT.md). Windows manual verification remains pending.
+
 ## Mythic progression (Phase 5A)
 
 Bronze → Silver → Gold → Platinum → Diamond → Master → **Mythic** extends the existing profile. Mythic requires8,000XP, stage5 cleared, three Long Night/Hell victories and three Reaper defeats. Existing XP, six perks, loadouts, settings and campaign records survive migration. Ranks shows saved records and promotion requirements; results explain stage/Reaper/difficulty XP and animate promotions. New difficulty/Reaper records begin with this update because older saves did not store those totals. Loss XP is limited to1per30occupied seconds (cap30), with no difficulty bonus. See [rank report](docs/PHASE_5A_RANK_REPORT.md) for exact rules, migration tests and Windows checks.

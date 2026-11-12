@@ -143,6 +143,7 @@ func _boss_strike(room, model):
 
 func _damage_door(room, model, amount: float):
  var old_hp=room.door_hp
+ amount=model.items.absorb(amount,model)
  room.door_hp=maxf(0,room.door_hp-amount)
  room.door_damage_taken+=old_hp-room.door_hp
  model.record_event("door_damage",target,{"damage":old_hp-room.door_hp,"hp":room.door_hp,"max_hp":room.max_hp()})
@@ -208,6 +209,8 @@ func target_score(room: RoomState) -> float:
 func navigate(goal: Vector2,delta: float):
  var previous=position
  position=position.move_toward(goal,speed*delta)
+ if _model_ref!=null and _model_ref.get_ref()!=null: _model_ref.get_ref().items.trigger_segment(previous,position,_model_ref.get_ref())
+ if hp<=0: return
  if delta>0 and previous.distance_to(position)<0.01 and position.distance_to(goal)>3:
   stalled_seconds+=delta
  else: stalled_seconds=0
@@ -221,6 +224,8 @@ func navigate(goal: Vector2,delta: float):
 func _advance_custom(goal: Vector2,delta: float,model,key: String):
  var previous=position
  position=model.step_navigation(position,goal,speed*delta,key)
+ model.items.trigger_segment(previous,position,model)
+ if hp<=0: return
  if delta>0 and previous.distance_to(position)<0.01 and position.distance_to(goal)>3:
   stalled_seconds+=delta
  else: stalled_seconds=0
@@ -265,12 +270,13 @@ func tick(delta: float, match_state):
   applied_growth=growth
  damage=(Catalog.HUNTER.damage+growth*profile.damage_growth)*tuning.damage
  interval=maxf(Catalog.HUNTER.min_interval,(Catalog.HUNTER.interval-growth*Catalog.HUNTER.interval_growth)*profile.interval_scale)
- speed=(Catalog.HUNTER.speed+minf(Catalog.HUNTER_ESCALATION.speed_bonus_cap,growth*Catalog.HUNTER_ESCALATION.speed_growth))*tuning.speed
+ speed=(Catalog.HUNTER.speed+minf(Catalog.HUNTER_ESCALATION.speed_bonus_cap,growth*Catalog.HUNTER_ESCALATION.speed_growth))*tuning.speed*match_state.items.speed_factor(self)
  cooldown = maxf(-delta,cooldown-delta)
  target_time += delta
  if state == State.EXIT:
   if match_state.map_id!="legacy":
    _advance_custom(match_state.rooms[target].corridor_anchor(),delta,match_state,"hunter_exit")
+   if hp<=0: return
    if position.distance_to(match_state.rooms[target].corridor_anchor())<3: state=State.SEEK
    return
   var exit_door = match_state.rooms[target].door_position()
@@ -278,6 +284,7 @@ func tick(delta: float, match_state):
    exit_corridor = true
   var exit_goal = Vector2(exit_door.x,410) if exit_corridor else exit_door
   navigate(exit_goal,delta)
+  if hp<=0: return
   if absf(position.y-410)<3:
    state = State.SEEK
   return
@@ -305,6 +312,7 @@ func tick(delta: float, match_state):
    waypoint = Vector2(approach.x,410)
   if match_state.map_id=="legacy": navigate(waypoint,delta)
   else: _advance_custom(approach,delta,match_state,"hunter_move")
+  if hp<=0: return
   if position.distance_to(approach)<3:
    state = State.ATTACK if room.closed and room.door_hp > 0 else State.BREACH
    siege_seconds=0
@@ -361,6 +369,7 @@ func tick(delta: float, match_state):
  elif state == State.BREACH:
   if match_state.map_id=="legacy": navigate(room.bed_position(),delta)
   else: _advance_custom(room.bed_position(),delta,match_state,"hunter_breach")
+  if hp<=0: return
   if position.distance_to(room.bed_position()) < 12:
    room.alive = false
    room.sleeping = false

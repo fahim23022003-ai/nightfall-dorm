@@ -18,6 +18,19 @@ func press(text:String):
  check(b!=null,"button exists "+text)
  if b!=null: b.pressed.emit()
  await process_frame
+func reveal_reward():
+ if game.profile.pending_spins.is_empty(): return
+ var receipt=game.profile.pending_spin()
+ var stock=game.profile.inventory.duplicate(true)
+ check(button("Lucky Spin · reveal earned item")!=null,"earned reward gates existing continuation")
+ await press("Lucky Spin · reveal earned item")
+ check(game.ui.current_screen=="spin","results opens real spin screen")
+ await press("Skip animation")
+ check(game.ui.items_ui.spin_ready,"skip reveals predetermined item")
+ check(game.profile.inventory==stock,"skip animation never adds stock twice")
+ await press("Save reveal & continue")
+ check(game.profile.pending_spins.is_empty() and game.profile.inventory==stock,"acknowledgment clears receipt without duplicate grant")
+ check(game.profile.claim_spin(int(receipt.match_id)).is_empty(),"repeated reveal acknowledgment rejected")
 func finish(result:String):
  var room=game.model.player()
  if room==null:
@@ -30,8 +43,10 @@ func finish(result:String):
  room.damage_dealt=1000
  game.model.result=result
  game.model.hunter.hp=0 if result=="victory" else 100
+ if result=="defeat": room.alive=false; room.sleeping=false
  game._process(0.01)
  await process_frame
+ await reveal_reward()
 func process_roundtrip(mode: String):
  var path="user://campaign-independent-process.json"
  if mode=="campaign_write":

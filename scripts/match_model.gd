@@ -2,6 +2,7 @@ class_name MatchModel
 extends RefCounted
 
 signal feedback(message: String)
+var items=ItemEffects.new()
 var rooms: Array = []
 var hunter: HunterState
 var player_room = -1
@@ -56,6 +57,7 @@ func _init():
  reset()
 
 func reset(seed_value: int = 1):
+ items=ItemEffects.new()
  random.seed = seed_value
  rooms.clear()
  map_id="legacy"
@@ -352,6 +354,7 @@ func tick(delta: float):
   return
  _age_combat_events(delta)
  time += delta
+ items.tick(delta,self)
  if bot_claimed < 5 and time > 6+bot_claimed*1.7:
   var options: Array = []
   for room in rooms:
@@ -382,12 +385,15 @@ func tick(delta: float):
   if hunter.state not in [HunterState.State.TRANSFORM,HunterState.State.DEAD]:
    hunter.cancel_boss_attack()
    hunter.state = HunterState.State.MOVE
+   var previous=hunter.position
    _pursue_exposed_player(delta)
+   items.trigger_segment(previous,hunter.position,self)
  else:
   hunter.tick(delta,self)
  # A breach resolves before pending teammate shots can revive a lost match.
  if player_room >= 0 and not rooms[player_room].alive:
   result = "defeat"
+  items.clear(self)
   hunter.stop_combat(self)
   _cancel_projectiles("terminal")
   return
@@ -399,6 +405,7 @@ func tick(delta: float):
    record_event("elimination",player_room)
   eliminations += 1
   result = "defeat"
+  items.clear(self)
   hunter.stop_combat(self)
   _cancel_projectiles("terminal")
   return
@@ -409,6 +416,7 @@ func tick(delta: float):
  elif hunter.hp <= 0:
   result = "victory"
  if result != "":
+  items.clear(self)
   hunter.stop_combat(self)
   _cancel_projectiles("terminal")
 
@@ -440,7 +448,7 @@ func _turrets(delta: float):
     shots += 1
     room.shots += 1
     b.flash = 0.15
-    b.cooldown += data.interval/(1.0+(b.level-1)*0.12)
+    b.cooldown += data.interval/(1.0+(b.level-1)*0.12)/(ItemCatalog.TUNING.overdrive_rate if room.owner==0 and float(items.timers.get("overdrive",0))>0 else 1.0)
 
 func _advance_projectiles(delta: float):
  if not running or result != "" or not is_finite(delta) or delta <= 0:
