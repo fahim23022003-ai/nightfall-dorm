@@ -46,6 +46,69 @@ var ui_clock=0.0
 var tutorial_active=false
 var onboarding
 var onboarding_layer
+var temporary_loadout
+func item_wallet():return temporary_loadout if temporary_loadout!=null and model.run_kind in ["practice","challenge"] else profile
+func start_endless(map: String="abandoned_dorm",difficulty: String="standard",seed_value: int=17) -> bool:
+ var entry=profile.begin_endless(map,difficulty,seed_value)
+ if entry.is_empty():return false
+ var next=MatchModel.new()
+ if not next.configure_endless(map,difficulty,seed_value,int(entry.id),RankCatalog.bonuses(entry.equipped)):return false
+ match_id=int(entry.id);_adopt_session(next)
+ return true
+func resume_endless() -> bool:
+ var next=profile.resume_endless()
+ if next==null:return false
+ match_id=int(profile.active_match.id);_adopt_session(next)
+ ui.replay_ui.intermission_saved=true;ui.replay_ui.show_intermission()
+ return true
+func continue_endless(choice: String) -> bool:
+ if model.run_kind!="endless" or model.endless==null:return false
+ if not profile.checkpoint_endless(model):ui.replay_ui.intermission_saved=false;ui.replay_ui.show_intermission();return false
+ if not model.continue_wave(choice):return false
+ presentation.new_encounter(model);horror.reset();audio_system.new_encounter(model)
+ for room in model.rooms:
+  if not room.alive:audio_system.death_rooms[room.index]=true
+  if room.door_hp<=0:audio_system.laughed_rooms[room.index]=true
+ last_hunter_level=1;level_warning_time=0;danger_time=0;last_attacks=0;last_shots=model.shots;income_clock=0;floating.clear();last_income.clear()
+ for room in model.rooms:last_income[room.index]=room.income_total
+ ui.replay_ui.intermission_saved=false;ui.show_match();focus_camera(true);audio_event("match_start")
+ return true
+func end_endless_here() -> bool:
+ last_progression=profile.end_endless_here(model)
+ if last_progression.is_empty():ui.replay_ui.intermission_saved=false;ui.replay_ui.show_intermission();return false
+ model.endless.phase="finished";model.result="retired";mode="result";ui.replay_ui.show_session_result();audio_event("reward")
+ return true
+func start_challenge(code: String) -> bool:
+ var parsed=ChallengeCode.decode(code)
+ if not parsed.ok:ui.replay_ui.notice=parsed.error;return false
+ var next=MatchModel.new()
+ if not ChallengeCode.configure(next,parsed.config):return false
+ var selected=["shield","repair"] if int(parsed.config.gear)==0 else ["overdrive","frost"]
+ var wallet=TemporaryLoadout.new("challenge",selected);wallet.inventory={}
+ for id in selected:wallet.inventory[id]=2
+ match_id=1;_adopt_session(next,wallet)
+ return true
+func start_practice(archetype="crusher",boss=false,selected: Array=["shield","repair"],map="abandoned_dorm") -> bool:
+ var next=MatchModel.new();var wallet=PracticeRoom.configure(next,archetype,boss,selected,map)
+ match_id=1;_adopt_session(next,wallet);selected_tile=model.practice_tile
+ return true
+func reset_practice():
+ if model.run_kind!="practice":return
+ start_practice(ui.replay_ui.practice_archetype,ui.replay_ui.practice_boss,ui.replay_ui.practice_items,ui.replay_ui.practice_map)
+func _adopt_session(next,wallet=null):
+ model=next;temporary_loadout=wallet;tutorial_active=false;campaign_mode=false;last_progression={};pending_build="";selected_tile=0
+ ui.replay_ui.preparing=false
+ model.feedback.connect(func(value):ui.feedback_text=value;ui.feedback_until=presentation.clock+2)
+ last_hunter_level=1;level_warning_time=0;danger_time=0;last_attacks=0;last_shots=0;income_clock=0;ui_clock=0
+ floating.clear();last_income.clear();full_map=false;zoom_factor=1
+ for room in model.rooms:last_income[room.index]=room.income_total
+ audio_system.reset_match(model);presentation.reset();horror.reset();mode="match"
+ if model.run_kind=="endless" and model.endless.phase=="intermission":
+  for room in model.rooms:
+   presentation.previous_life[room.index]=room.alive;presentation.previous_sleep[room.index]=room.sleeping
+   if not room.alive:presentation.death_ages[room.index]=10;presentation.seen_deaths[room.index]=true
+ item_wallet().bind_items(model,match_id)
+ ui.show_match();focus_camera(true);audio_event("match_start")
 
 func _ready():
  var window = get_window()
@@ -88,6 +151,7 @@ func _ready():
 func start_tutorial(replay=false):
  if mobile_mode:return false
  tutorial_active=true
+ temporary_loadout=null
  model=MatchModel.new();model.tutorial_mode=true;model.reset(17);model.tutorial_mode=true;model.configure_stage("stage_1");model.preparation=10000;model.bot_claimed=5
  model.feedback.connect(func(value):ui.feedback_text=value;ui.feedback_until=presentation.clock+2)
  match_id=0;campaign_mode=false;last_progression={};pending_build="";tutorial_enabled=false
@@ -112,6 +176,12 @@ func start_match(difficulty: String="") -> bool:
  if not mobile_mode and not profile.tutorial_completed:
   start_tutorial();return false
  if tutorial_active:return false
+ if profile.active_match.get("run_kind","")=="endless":
+  mode="menu";camera.position=Vector2(640,360);camera.zoom=Vector2.ONE;camera.force_update_scroll()
+  ui.replay_ui.notice="Your Endless run is still active. Resume its saved checkpoint, start an explicitly NEW run, or Forfeit it before starting a campaign match."
+  ui.replay_ui.show_endless()
+  return false
+ temporary_loadout=null
  model.tutorial_mode=false
  if not profile.pending_spins.is_empty():
   ui.items_ui.spin()
@@ -155,17 +225,18 @@ func start_match(difficulty: String="") -> bool:
 
 func activate_item(slot: int,target: int=-1) -> bool:
  if mode!="match" or in_background or tutorial_active: return false
- var selected=profile.active_match.get("items",[])
+ var wallet=item_wallet()
+ var selected=wallet.active_match.get("items",[])
  if slot>=0 and slot<selected.size() and selected[slot]=="rescue" and target<0:
   ui.items_ui.choose_teammate(slot)
   return false
- var ok=profile.activate_item(slot,model,match_id,target)
+ var ok=wallet.activate_item(slot,model,match_id,target)
  if ok:
   ui.feedback_text=""
   ui.feedback_until=0
  if not ok:
   audio_event("failure")
-  ui.feedback_text=profile.item_error if profile.item_error!="" else "Item unavailable for this match."
+  ui.feedback_text=wallet.item_error if wallet.item_error!="" else "Item unavailable for this match."
   ui.feedback_until=presentation.clock+2.0
  return ok
 
@@ -174,6 +245,7 @@ func return_menu():
   if onboarding!=null and onboarding.phase not in ["cinematic","title","tutorial"]:start_tutorial()
   return
  tutorial_active=false
+ temporary_loadout=null
  mode = "menu"
  pending_build=""
  if is_instance_valid(touch): touch.reset()
@@ -232,18 +304,24 @@ func _process(delta: float):
    ui_clock=0
    ui.update_match()
   horror.update(delta,model)
+  if model.run_kind=="endless" and model.endless!=null and model.endless.phase=="intermission" and ui.current_screen!="intermission" and not ui.replay_ui.preparing:
+   ui.replay_ui.intermission_saved=profile.checkpoint_endless(model)
+   ui.replay_ui.show_intermission();audio_event("reward")
   if model.result != "" and not tutorial_active:
-   last_progression=profile.settle_match(match_id,model)
+   if model.run_kind=="campaign":last_progression=profile.settle_match(match_id,model)
+   elif model.run_kind=="endless":last_progression=profile.settle_endless(model)
+   elif model.run_kind=="challenge":profile.record_challenge(model)
    mode = "result"
    cancel_placement()
    if not last_progression.is_empty():
     if not last_progression.get("achievements",[]).is_empty():audio_event("achievement_unlocked")
     if last_progression.get("campaign",{}).get("cleared",false) and selected_difficulty in ["hard","hell"]:audio_event("difficult_stage")
-   if not last_progression.is_empty() and last_progression.promoted:
+   if not last_progression.is_empty() and last_progression.get("promoted",false):
     audio_event("mythic_promotion" if last_progression.new_rank==6 else "rank")
     if last_progression.new_rank==6:audio_event("mythic_perk")
     audio_event("reward")
-   ui.show_result()
+   if model.run_kind=="campaign":ui.show_result()
+   else:ui.replay_ui.show_session_result()
  if mode not in ["match","result"] or tutorial_active:audio_system.set_tension("quiet",0)
  audio_system.update_state(delta,model,mode)
  if ui.items_ui!=null: ui.items_ui.update(delta)
@@ -269,6 +347,7 @@ func _input(event):
 
 func _unhandled_input(event):
  if mode!="match" or in_background: return
+ if model.run_kind=="endless" and model.endless!=null and model.endless.phase=="intermission" and not ui.replay_ui.preparing:return
  if mobile_mode and event is InputEventMouse: return
  if event is InputEventKey and event.pressed and not event.echo:
   if event.keycode in [KEY_1,KEY_2] and model.running: activate_item(0 if event.keycode==KEY_1 else 1)
@@ -279,6 +358,7 @@ func _unhandled_input(event):
   elif event.keycode==KEY_ESCAPE:
    if pending_build!="": cancel_placement()
    elif ui.context_open: ui.close_context()
+   elif ui.replay_ui.preparing:ui.replay_ui.show_intermission()
    else: toggle_pause()
  if event is InputEventMouseButton and event.pressed:
   if event.button_index in [MOUSE_BUTTON_WHEEL_UP,MOUSE_BUTTON_WHEEL_DOWN]:
@@ -391,6 +471,8 @@ func toggle_guide():
 func request_quit():
  if closing: return
  closing=true
+ if model.run_kind=="endless" and model.endless!=null and model.endless.phase=="intermission" and not profile.checkpoint_endless(model):
+  closing=false;ui.replay_ui.intermission_saved=false;ui.replay_ui.show_intermission();return
  profile.save_profile()
  audio_system.shutdown()
  # Let the audio thread release looping playback before normal window/menu exit.
@@ -462,5 +544,5 @@ func handle_touch_tap(screen: Vector2):
     return
 
 func retry_settlement():
- last_progression=profile.settle_match(match_id,model)
- ui.show_result()
+ if model.run_kind=="endless":last_progression=profile.settle_endless(model);ui.replay_ui.show_session_result()
+ else:last_progression=profile.settle_match(match_id,model);ui.show_result()

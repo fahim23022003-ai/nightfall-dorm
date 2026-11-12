@@ -49,6 +49,7 @@ var display_font=preload("res://assets/fonts/CartoonDisplay.ttf")
 var horror_font=preload("res://assets/fonts/GrenzeGotisch-SemiBold.ttf")
 var campaign
 var shop
+var replay_ui: ReplayInterface
 var items_ui
 var progression: ProgressionInterface
 var current_screen="menu"
@@ -70,6 +71,7 @@ func _ready():
  shop=preload("res://scripts/cash_shop.gd").new(self)
  progression=ProgressionInterface.new(self)
  campaign=preload("res://scripts/campaign_interface.gd").new(self)
+ replay_ui=ReplayInterface.new(self)
  show_menu()
 
 func clear():
@@ -193,6 +195,11 @@ func show_menu():
  button("Consumable inventory",Vector2(72,644),items_ui.inventory,330,36)
  if not game.profile.pending_spins.is_empty(): button("Resume Lucky Spin",Vector2(430,644),items_ui.spin,240,36)
  if not game.mobile_mode:
+  var endless=button("Endless Siege",Vector2(735,405),replay_ui.show_endless,440,54)
+  endless.icon=PremiumButton.texture("endless")
+  for state in ["normal","hover","pressed","disabled","focus"]:endless.add_theme_stylebox_override(state,GothicTheme.surface("271D33","BF88B5","mode_endless_"+state))
+  var replay=button("Challenge · Practice · Cosmetics",Vector2(735,475),replay_ui.show_hub,440,40)
+  replay.icon=PremiumButton.texture("challenge")
   premium_icon("cash",Vector2(735,549),Vector2(38,38))
   label_at("RM Cash %d" % game.profile.rm_cash,Vector2(787,552),22,368)
   button("Shop · Common supplies",Vector2(735,594),shop.show_shop,440,42)
@@ -257,6 +264,11 @@ func show_match():
  box(Rect2(18,12,1244,64),"203747","607D8B")
  var brand=label_at("NIGHTFALL DORM",Vector2(34,23),26,240,true)
  brand.add_theme_font_override("font",horror_font)
+ if game.model.run_kind!="campaign":
+  brand.text="WAVE %d · ENDLESS" % game.model.endless.wave if game.model.run_kind=="endless" else "PRACTICE ROOM" if game.model.run_kind=="practice" else "CODE CHALLENGE"
+  brand.add_theme_font_size_override("font_size",23)
+  replay_ui.wave_label=label_at("TEMPORARY · PAUSE TO RESET" if game.model.run_kind=="practice" else "NORMALIZED · FIXED 30Hz",Vector2(34,53),10,252)
+ if CosmeticPresentation.equipped(game,"badge"):premium_icon("reaper_crest",Vector2(242,27),Vector2(27,27))
  premium_icon("gold",Vector2(280,25),Vector2(32,32))
  gold_label=label_at("—",Vector2(320,24),25,98)
  gold_label.modulate=Color("DFC48B")
@@ -280,7 +292,7 @@ func show_match():
  map_button=button("Map",Vector2(1010,24),game.toggle_map,78,36)
  map_button.tooltip_text="Strategic map / focused room [M]"
  button("Help",Vector2(1098,24),game.toggle_guide,62,36)
- pause_button=button("Ⅱ",Vector2(1174,24),game.toggle_pause,62,36)
+ pause_button=button("Wave" if replay_ui.preparing else "Ⅱ",Vector2(1174,24),replay_ui.show_intermission if replay_ui.preparing else game.toggle_pause,62,36)
  pause_button.tooltip_text="Pause / resume [Esc]"
  guide_box=box(Rect2(20,92,334,112),"294957","7BE3A1")
  guide_label=label_at("",Vector2(34,105),18,306)
@@ -507,6 +519,9 @@ func show_pause(open: bool):
  var resume=button("Resume",Vector2(450,329),game.toggle_pause,380,48)
  var menu=button("Return to main menu",Vector2(450,397),game.return_menu,380,48)
  pause_items=[veil,bg,title,subtitle,resume,menu]
+ if game.model.run_kind=="practice":
+  var reset=button("Reset Practice",Vector2(450,465),game.reset_practice,380,44)
+  pause_items.append(reset)
 
 func sell_selected():
  var success=game.model.sell_building(game.selected_tile)
@@ -525,6 +540,7 @@ func purchase(success: bool):
 func tutorial_text() -> String:
  if game.mobile_mode: return game.mobile_ui.tutorial_text()
  var m=game.model
+ if m.run_kind=="endless" and m.endless.phase=="intermission":return "INTERMISSION · NO INCOME\nBuild, upgrade or sell. WAVE / Esc saves and returns to your choice."
  var room=m.player()
  if room==null:
   if m.strategy.enabled:
@@ -631,6 +647,7 @@ func update_match():
   b.tooltip_text=(building_effect(action.trim_prefix("build:"))+"\n" if action.begins_with("build:") else "")+(reason if reason!="" else "Ready")
  refresh_context()
  if game.mobile_mode: game.mobile_ui.update_match(self)
+ if game.model.run_kind!="campaign":replay_ui.update_hud()
 
 func show_result():
  clear()
@@ -655,6 +672,7 @@ func show_result():
  var l=label_at("%ds survived  ·  Hunter level %d\n%d shots  ·  %d damage\n%d gold earned  ·  %d residents lost" % [m.time,m.hunter.level,r.shots if r!=null else 0,r.damage_dealt if r!=null else 0,r.income_total if r!=null else 0,m.eliminations],Vector2(390,312),20,500)
  l.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  progression.result_summary()
+ if game.model.result=="defeat" and not game.model.defeat_facts.report.is_empty():button("Why did I lose?",Vector2(945,440),replay_ui.show_defeat_analysis,300,44)
  if items_ui.result_gate(): pass
  elif game.campaign_mode: campaign.result_actions()
  else:

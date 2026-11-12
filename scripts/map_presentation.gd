@@ -91,6 +91,7 @@ func render_room(c,p,room,theme,colors):
   c.draw_style_box(p.frame(Color("6B4053") if theme=="hotel" else Color("4F3540"),colors[3],5),Rect2(bed-Vector2(43,55),Vector2(86,116)))
  var bed_tint=Color("D7ECEB") if theme=="hospital" else Color("BACDD5") if theme=="lab" else Color.WHITE
  p.sprite(c,"bed_upgraded" if room.bed_level>=2 else "bed",bed,Vector2(66,92),bed_tint)
+ if owned:CosmeticPresentation.bed(c,bed)
  var cabinet=OFFSET+room.cabinet_position()
  p.sprite(c,"cabinet" if theme not in ["lab","hotel"] else "utility" if theme=="lab" else "desk",cabinet,Vector2(38,48))
  p.sprite(c,"plant",OFFSET+room.plant_position(),Vector2(25,34),Color("A5C6A0") if theme=="hospital" else Color.WHITE)
@@ -169,6 +170,7 @@ func render_tiles(c,p,room,owned):
    var target=c.model.hunter.position-room.tile_position(tile)
    var tilt=clampf(atan2(target.y,absf(target.x)),-0.4,0.4) if building.kind=="turret" else 0.0
    p.sprite(c,name,point-Vector2(0,6),size,Color.WHITE,tilt)
+   if owned and building.kind in ["turret","heavy"]:CosmeticPresentation.turret(c,point)
    var branch=str(building.get("specialization",""))
    if branch!="":
     var tint={"precision":Color("DDC68E"),"suppression":Color("9BD3B2"),"focus":Color("BFACE0"),"storm":Color("93DFDF")}[branch]
@@ -206,6 +208,7 @@ func render_door(c,p,room):
   if room.closed:
    c.draw_texture_rect(p.cartoon["door_%d" % (room.door_level+1)],Rect2(Vector2(-36,-41),Vector2(73,61)),false,color)
   else: c.draw_texture_rect(p.cartoon.door_1,Rect2(Vector2(-47,-20),Vector2(36,50)),false,Color("94AAB2"))
+  if room.owner==0 and room.closed:CosmeticPresentation.door(c)
   if room.door_hp<room.max_hp()*0.55:
    c.draw_polyline(PackedVector2Array([Vector2(-8,-29),Vector2(1,-16),Vector2(-4,-5),Vector2(10,5)]),Color("382432"),2)
  else:

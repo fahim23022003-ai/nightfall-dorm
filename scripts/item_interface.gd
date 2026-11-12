@@ -70,10 +70,12 @@ func spin():
  var wheel=preload("res://scripts/item_wheel.gd").new()
  wheel.position=Vector2(155,175); wheel.size=Vector2(420,380)
  ui.panel.add_child(wheel)
- var rarity="Common 40% · Rare 40% · Epic 16% · Legendary 4%" if receipt.result=="victory" else "Common 80% · Rare 16% · Epic 3% · Legendary 1%"
+ var rarity=receipt.get("odds",SpinPity.summary(receipt.result,{}))
  ui.label_at(rarity,Vector2(615,186),15,525,true)
  var probability=[]
- for i in range(ItemCatalog.IDS.size()): probability.append("%s %s%%" % [ItemCatalog.ITEMS[ItemCatalog.IDS[i]].name,str(snappedf(ItemCatalog.probability(receipt.result,i),.01))])
+ var table=SpinPity.weights(receipt.result,receipt.get("pity_before",{}));var total=0.0
+ for weight in table:total+=weight
+ for i in range(ItemCatalog.IDS.size()):probability.append("%s %s%%" % [ItemCatalog.ITEMS[ItemCatalog.IDS[i]].name,str(snappedf(100.0*table[i]/total,.01))])
  var odds=ui.label_at("\n".join(probability),Vector2(640,218),11,470)
  odds.size.y=370
  var index=ItemCatalog.IDS.find(receipt.item)
@@ -81,7 +83,11 @@ func spin():
  spin_tween=wheel.create_tween()
  spin_tween.tween_property(wheel,"angle",target,2.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
  spin_tween.tween_callback(func(): reveal(receipt,wheel,target))
- ui.button("Skip animation",Vector2(225,590),func():
+ var pity=game.profile.replay.pity
+ var progress=ui.label_at("NEXT Victory: Epic+ %d/8 · Legendary %d/40\nConsolation does not advance/reset pity.",Vector2(158,553),13,440)
+ progress.text=progress.text % [int(pity.epic_dry)+1,int(pity.legendary_dry)+1]
+ progress.tooltip_text="Next qualifying Victory odds: "+SpinPity.summary("victory",pity)+"\nThe top/right odds are for this already saved draw."
+ ui.button("Skip animation",Vector2(225,611),func():
   if spin_ready: return
   if spin_tween!=null and spin_tween.is_valid(): spin_tween.kill()
   reveal(receipt,wheel,target),260,40)
@@ -140,7 +146,7 @@ func create_hotbar():
  legendary_banner.visible=false
  legendary_name.visible=false
  hotbar.clear()
- var equipped=game.profile.active_match.get("items",[])
+ var equipped=game.item_wallet().active_match.get("items",[])
  for i in range(equipped.size()):
   var slot=i
   var b=ui.button("",Vector2(20,494+i*65),func(): game.activate_item(slot),334,58)
@@ -178,10 +184,10 @@ func update(delta):
     var pulse=1.0 if game.profile.settings.get("reduced_effects",false) else 1+sin(event.age*PI/1.6)*.035
     legendary_name.pivot_offset=Vector2(157,12)
     legendary_name.scale=Vector2(pulse,pulse)
- var selected=game.profile.active_match.get("items",[])
+ var selected=game.item_wallet().active_match.get("items",[])
  for i in range(hotbar.size()):
   if not is_instance_valid(hotbar[i]) or i>=selected.size(): continue
-  var id=str(selected[i]); var quantity=int(game.profile.inventory.get(id,0)); var seconds=float(fx.timers.get(id,0))
+  var id=str(selected[i]); var quantity=int(game.item_wallet().inventory.get(id,0)); var seconds=float(fx.timers.get(id,0))
   if id=="trap" and not fx.trap.is_empty(): seconds=fx.trap.remaining
   var special=""
   if id=="guardian_heart": special=" · USED" if fx.legendary_used>0 else " · AUTO lethal"
@@ -198,10 +204,10 @@ func update(delta):
    elif (ItemCatalog.legendary(id) and fx.legendary_used>0) or (id=="feather" and fx.feather_used):state="USED";special=""
    elif id in ["guardian_heart","feather"]:state="AUTO lethal" if id=="guardian_heart" else "AUTO at25%";special=""
    elif id=="coupon" and game.model.player()!=null and game.model.player().coupon_armed:state="ARMED";special=" · 40% discount"
-   elif game.profile.read_only:state="UNAVAILABLE"
+   elif game.item_wallet().read_only:state="UNAVAILABLE"
    elif reason!="" and fx.cooldown<=0:state="UNAVAILABLE"
   hotbar[i].text="[%d] %s\n%s · ×%d · %s%s" % [i+1,ItemCatalog.ITEMS[id].name,ItemCatalog.ITEMS[id].rarity.to_upper(),quantity,state,special]
-  hotbar[i].disabled=quantity<=0 or reason!="" or game.profile.read_only
+  hotbar[i].disabled=quantity<=0 or reason!="" or game.item_wallet().read_only
   hotbar[i].tooltip_text=ItemCatalog.ITEMS[id].description+"\n"+(reason if reason!="" else "Ready")
  if is_instance_valid(feedback_label):
   feedback_label.text=""

@@ -26,6 +26,13 @@ func validation():
  for code in malformed:
   var result=Code.decode(code)
   check(not result.ok and result.get("error","")!="","tampered/malformed/future/noncanonical code rejected with useful error")
+ var config={"map":MapCatalog.IDS[0],"difficulty":"standard","archetype":"crusher","preset":0,"gear":0,"seed":71}
+ for edit in [["seed",1.5],["seed","71"],["seed",null],["seed",1e300],["seed",NAN],["seed",0],["preset",.5],["preset",2],["gear",.5],["gear",2]]:
+  var invalid=config.duplicate(true);invalid[edit[0]]=edit[1]
+  var model=MatchModel.new();var before=Support.model_signature(model)
+  check(Code.encode(invalid)=="" and not Code.configure(model,invalid) and Support.model_signature(model)==before,"invalid API numeric type/fraction/overflow rejects before integer coercion/reset")
+ var minimal={"map":MapCatalog.IDS[0],"difficulty":"standard","archetype":"crusher","seed":71};var model=MatchModel.new()
+ check(Code.configure(model,minimal) and model.challenge_config.preset==0 and model.challenge_config.gear==0,"omitted supported gear/resource defaults canonicalize before configuration")
 func policy(m):
  var r=m.player()
  if r==null or not r.alive:return
@@ -79,6 +86,8 @@ func fresh_processes():
 func run():
  var args=OS.get_cmdline_user_args()
  if not args.is_empty() and args[0]=="--worker":worker(args);return
- validation();fresh_processes()
- print("REPLAY_CODE_CHECKS=",checks," FRESH_PROCESSES=6 FAILURES=",failures)
+ validation()
+ var workers=0
+ if "--validation-only" not in args:fresh_processes();workers=6
+ print("REPLAY_CODE_CHECKS=",checks," FRESH_PROCESSES=",workers," FAILURES=",failures)
  quit(0 if failures==0 else 1)

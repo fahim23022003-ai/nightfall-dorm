@@ -218,6 +218,16 @@ func stop_events(names: Array):
  for voice in voices:
   if _voice_names.get(voice.get_instance_id(),"") in names:voice.stop()
 
+func new_encounter(model):
+ # Same run and rooms, intentionally fresh Hunter. Valid screams/laughs and
+ # their serialized queues continue; only the defeated Hunter's warnings stop.
+ stop_events(["reaper_transform","reaper_charge","reaper_surge","reaper_scythe"])
+ _observed_model=model;_previous_time=model.time
+ _previous_hunter_position=model.hunter.position;_previous=_snapshot(model)
+ _last_combat_event=model.next_combat_event_id-1
+ _last_presentation_event=model.next_presentation_event_id-1
+ set_tension("quiet",0)
+
 func update_state(delta: float, model, mode: String):
  if suspended: return
  setup()
@@ -303,7 +313,7 @@ func update_state(delta: float, model, mode: String):
   _pending_critical=_pending_critical.filter(func(cue): return cue.name not in ["reaper_transform","reaper_charge","reaper_surge"])
   for voice in voices:
    if _voice_names.get(voice.get_instance_id(),"") in ["reaper_transform","reaper_charge","reaper_surge","reaper_scythe"]: voice.stop()
-  event("victory" if model.result=="victory" else "defeat")
+  event("reward" if model.result=="retired" else "victory" if model.result=="victory" else "defeat")
   _previous.result = model.result
 
 func _snapshot(model) -> Dictionary:

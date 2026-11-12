@@ -45,7 +45,7 @@ func run():
  check(p.selected_contract=="" and p.contract_claims.is_empty(),"absent strategy block opts out without phantom claims")
  var before=p._reward_snapshot();check(p.save_profile(),"migrated profile safely saves new block")
  var reopened=PlayerProfile.new(p.path)
- check(reopened.load_profile() and reopened._reward_snapshot()==before,"migration roundtrip preserves complete reward snapshot")
+ check(reopened.load_profile() and numeric_same(reopened._reward_snapshot(),before),"migration roundtrip preserves complete reward snapshot")
  original(reopened,source)
  var inventory=reopened.inventory.duplicate(true)
  check(not reopened.claim_spin(6).is_empty() and reopened.inventory==inventory,"existing spin receipt claims without granting duplicate stock")

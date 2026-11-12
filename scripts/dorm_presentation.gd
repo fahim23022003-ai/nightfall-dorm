@@ -85,6 +85,11 @@ func reset():
  death_age=0
  hunter_clock=0
  last_model_time=0
+func new_encounter(model):
+ # Preserve room aftermath, corpse ages, build levels and bounded scars.
+ identity.heading=Vector2.RIGHT;identity.velocity=Vector2.ZERO;identity.last_hunter=model.hunter.position
+ identity.previous_threat=false;identity.relief=0;identity.elimination_hold=0;identity.tension="quiet";identity.intensity=0
+ hunter_clock=0;death_age=0;attack_pose=0;visual_events.clear()
 
 func update(delta: float, model):
  if model.time<last_model_time: reset()

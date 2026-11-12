@@ -3,6 +3,11 @@ extends RefCounted
 static var icons: Dictionary={}
 static func action(text: String) -> String:
  var t=text.to_lower()
+ if "endless" in t:return "endless"
+ if "challenge" in t:return "challenge"
+ if "practice" in t:return "practice"
+ if "cosmetic" in t or "appearance" in t:return "cosmetic"
+ if "lose" in t or "analysis" in t:return "analysis"
  if t.begins_with("start") or t.begins_with("confirm") or t.begins_with("play"):return "play"
  if "shop" in t or t.begins_with("buy"):return "shop"
  if "inventory" in t or t.begins_with("items"):return "inventory"

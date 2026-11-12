@@ -3,6 +3,10 @@ extends RefCounted
 const RULESET=1
 const FIXED_STEP=1.0/30.0
 static func encode(config: Dictionary) -> String:
+ for key in ["seed","preset","gear"]:
+  var value=config.get(key,0)
+  var low=1 if key=="seed" else 0;var high=999999 if key=="seed" else 1
+  if not (value is int or value is float) or not is_finite(float(value)) or float(value)!=floor(float(value)) or value<low or value>high:return ""
  var map_index=MapCatalog.IDS.find(config.get("map",""))
  var archetype=StrategyCatalog.ARCHETYPE_IDS.find(config.get("archetype",""))
  var mode=["standard","hard","hell"].find(config.get("difficulty",""))
@@ -26,7 +30,9 @@ static func decode(raw: String) -> Dictionary:
  if canonical!=code:return {"ok":false,"error":"Checksum or canonical formatting mismatch."}
  return {"ok":true,"config":config,"code":canonical,"error":""}
 static func configure(model,config: Dictionary) -> bool:
- if encode(config)=="" or model.time>0 or model.player_room>=0:return false
+ var canonical=encode(config)
+ if canonical=="" or model.time>0 or model.player_room>=0:return false
+ config=decode(canonical).config # Apply the same complete normalized manifest as imports.
  model.reset(int(config.seed));model.run_kind="challenge"
  model.configure_map(config.map);model.configure_match(config.difficulty,{})
  model.configure_strategy(config.seed,config.archetype)

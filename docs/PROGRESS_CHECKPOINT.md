@@ -1,43 +1,58 @@
 # Phase 5D-2 — Endless and replayability (12 November 2026)
 
-IN PROGRESS. Clean `work` baseline `d16a82da5baccdf5bcbe566635ee949c086c7a32`
-matched GitHub. Recovery tag `pre-phase5d2-d16a82d`; baseline checkpoint `1e0fc86`.
-B owns production; C independent mechanics/save/reward QA; A bounded earned-
-economy/pity audit; D actual rendered/audio review. Root owns docs, existing
-regular/extended integration and actual Git push verification. `main` unchanged.
+IMPLEMENTED and TESTED on Godot 4.6.3 Linux. Clean `work` baseline
+`d16a82da5baccdf5bcbe566635ee949c086c7a32` matched GitHub. Recovery tag
+`pre-phase5d2-d16a82d`; baseline checkpoint `1e0fc86`; tested core `160081b`.
+B owned production, C independent mechanics/save/reward QA, A earned-economy/
+pity balance, D actual rendering/audio. Root integrated full existing regular/
+extended regressions, documentation and recoverable Git checkpoints. `main`
+was not modified. Final delivery SHA and verified push are recorded below once
+actual remote verification completes.
 
-Baseline six actual PNGs/14 checks and 11 import/core/economy/profile/item/reward/
-scene/startup commands pass. Frozen progressed 20-item/strategy save retained.
-All six core systems are implemented and import clean: actual one-Hunter Endless
-waves with frozen intermissions, bounded late pressure and between-wave saves;
-normalized versioned Challenge Codes; transactional Victory-only 8/40 pity;
-four earned visual-only cosmetics; factual bounded defeat analysis; isolated
-full-combat Practice Room. Game/UI integration is implemented, review in progress.
+All six systems work through real menu/gameplay controls: one-Hunter Endless
+with frozen strategic intermissions, bounded pressure/Reaper milestones, paid
+building carry-over and between-wave resume; normalized versioned Challenge
+Codes and copyable self-reported results; saved Victory-only 8/40 pity with
+actual displayed odds; four earned cosmetic shapes and saved equipment; bounded
+factual defeat analysis; isolated real-combat Practice with reset/temporary stock.
+Permanent Endless milestone rewards are capped at 32 RM/80 XP per profile.
+Campaign prices, five maps, three modes, all 20 items, rank/perks/achievements,
+contracts, shop, nine-step tutorial and Gothic presentation remain.
 
-Core QA passes Endless 28,123 /45 actual approaches, final extreme-growth 187,
-transactions 284, code 759 (six fresh engine workers), pity 20,180, migration 190,
-Practice 3,644 plus focused item 87, facts/cosmetics 25. All accepted logs clean.
-Fixed saved-number validation, RNG overflow logging, dead-target status carry,
-missing durable Legendary field and pre-claim FirstAid callback; saved stock/
-Legendary/Feather/coupon/rescue caps do not rewind. Genuine no-room defeat closes
-correctly. Campaign requires explicit forfeit of suspended Endless; Practice/
-Challenge preserve it. Updated prep ledgers save before Continue/exit/quit.
+Independent QA passes Endless 28,123 checks/45 actual approaches plus 187 late
+bounds; transactions 284; retirement failure recovery 21; codes 759 including
+six fresh engine workers, plus 749 focused validation; pity 20,180; migration
+190; Practice 3,644 plus 87 item-effect checks; facts/cosmetics 25; UI 1,531.
+Accepted logs are clean. Confirmed state, save, telemetry, feedback and audio
+transition defects were repaired and retested. Historical failed runs remain
+with explanations. All existing regular/extended regressions pass in documented
+segments, including 71 resumed commands, profile process round trips and startup;
+final import passes. Nine new replay suites are registered in `tools/check.sh`.
 
-A final 39 earned-currency runs clear 1,295 waves, no integrity/settlement failure;
-24 final policies clear 12 waves /all reach L10,16 actually hit atL10. Canonical
-Needle/Arc 10 earned profiles are in balance-earned-{turret,heavy}-profile.json;
-advanced genuine wave 20 also retained for D. Fully upgraded passive 16-pad
-Fortified fortress loses at77, active counterpart survives 130. Pity 500k draws
-support 8/40; exact Epic-guarantee odds 80%Epic/20%Legendary,40th 100%Legendary.
-These are prepared finite budgets/policies, not human balance or nativeWindows.
+A's 39 final earned-currency policy runs clear 1,295 waves with zero integrity/
+settlement failures. Canonical paid Needle10 and Arc10 are reached at wave1/
+155.5s and wave4/229.9s; their genuine saved profiles and actual L10 damage are
+retained. All 24 paired early policies reach L10; 16 actually deal L10 damage.
+A fully built passive 16-pad fortress loses at wave77; its matched active paid-
+repair build clears130. These use prepared finite progression/item budgets and
+scripted decisions, not human acquisition/skill evidence. 500,000 simulated draws
+support pity8/40; Epic guarantee is exactly80%Epic/20%Legendary, Legend100%.
 
-D baseline and first six-feature UI 36 checks pass; final natural-checkpoint render/
-cosmetic/Practice/audio review underway. Root existing fullregular+extended run
-started in docs/evidence/replay/regression-full.log; final status pending.
-Core-only checkpoint excludes current Game/UI integration and art dependencies;
-next checkpoint must include those together. No final completion/push claimed.
-Stop after 5D-2; no Phase6/multiplayer/onlineleaders/payments/Android/newcampaign.
-NativeWindows/physicalcontrols/speakers/hardwareFPS/humanquality UNVERIFIED.
+Real Godot screenshots inspect both 720p/1080p: distinctive skull mode button,
+actual first-wave entry, earned advanced/L10/Reaper runs, save/preparation/sales,
+codes/results/clipboard, pity, all cosmetic overlays, defeat facts and Practice.
+The audio review found/fixed immediate Continue truncation: same-run transitions
+now preserve actual scream/laugh playback and their bounded queue. Final indexed
+render/audio evidence is in the phase report.
+
+Resume is between waves only; consumed permanent stock stays spent. Challenge
+reproduction is supported for identical conditions/inputs on the tested engine,
+not guaranteed cross-platform bitwise timing. Shared results are self-reported.
+Native Windows, physical controls/speakers, hardware FPS, human long-session
+balance/fun and subjective art/audio quality remain UNVERIFIED. No known
+functional failure remains in accepted tests. Stop after 5D-2; no Phase6.
+
+Report: [PHASE_5D2_ENDLESS_REPLAYABILITY_REPORT.md](PHASE_5D2_ENDLESS_REPLAYABILITY_REPORT.md).
 
 ---
 

@@ -18,8 +18,8 @@ static func surface(fill: String,edge: String,role: String="panel") -> StyleBoxT
  if role=="button_disabled":base=Color("1C2023");accent=Color("535B5B")
  if role=="button_focus":base=Color("293A35");accent=Color("B8C3A3")
  if role.begins_with("mode_"):
-  base=Color("3A2228") if "hell" in role else Color("292538") if "hard" in role else Color("25332E")
-  accent=Color("CD8A6A") if "hell" in role else Color("B3A3CC") if "hard" in role else Color("A4B99E")
+  base=Color("271D33") if "endless" in role else Color("3A2228") if "hell" in role else Color("292538") if "hard" in role else Color("25332E")
+  accent=Color("BF88B5") if "endless" in role else Color("CD8A6A") if "hell" in role else Color("B3A3CC") if "hard" in role else Color("A4B99E")
   if role.ends_with("hover"):base=base.lightened(.07)
   if role.ends_with("selected"):base=base.lightened(.035);accent=accent.lightened(.15)
  if danger:accent=Color("BC626B")
@@ -45,6 +45,9 @@ static func surface(fill: String,edge: String,role: String="panel") -> StyleBoxT
    if role=="primary_hover":color=color.lightened(.045)
    if role=="primary_pressed":color=color.darkened(.06)
    if role=="primary_disabled":color=color.darkened(.15)
+   if role.begins_with("mode_endless"):
+    if y>16 and y<108:color=color.lerp(Color("4E2538") if x<90 else Color("322544"),.2*(1-float(y)/128))
+    if y in [13,114] and x>23 and x<232:color=Color("795579").darkened(.25)
    if x in [10,245] and y in [10,117]:color=accent
    if x in [11,246] and y in [11,118]:color=Color("05080D")
    # Fine worn hatch along the protected outer edge, leaving the label center quiet.
