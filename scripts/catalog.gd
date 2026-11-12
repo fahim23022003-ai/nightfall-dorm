@@ -4,12 +4,12 @@ extends RefCounted
 const BUILDING_REFUND_FRACTION = 0.5
 const SURVIVOR_NAMES = ["You","Alex","Mia","Rowan","Kai","Nora"]
 const PREPARATION = 30.0
-const BED_INCOME = [2.0, 4.0, 8.0, 15.0, 26.0]
-const BED_COST = [25, 70, 160, 350]
-const BED_POWER = [0, 0, 12, 30]
-const DOOR_HP = [150.0, 300.0, 600.0, 1100.0, 1800.0]
-const DOOR_COST = [30, 85, 190, 400]
-const DOOR_POWER = [0, 0, 10, 30]
+const BED_INCOME = [2.0,4.0,8.0,15.0,26.0,40.0,58.0,80.0,105.0,135.0]
+const BED_COST = [25,70,160,350,650,1000,1500,2200,3200]
+const BED_POWER = [0,0,12,30,60,100,160,240,350]
+const DOOR_HP = [150.0,300.0,600.0,1100.0,1800.0,2500.0,3300.0,4200.0,5200.0,6400.0]
+const DOOR_COST = [30,85,190,400,700,1100,1650,2400,3400]
+const DOOR_POWER = [0,0,10,30,60,100,160,240,350]
 const BUILDINGS = {
  "turret": {"name":"Needle turret", "gold":20, "power":0, "damage":9.0, "range":240.0, "interval":0.9, "color":Color("63cdd2")},
  "heavy": {"name":"Arc turret", "gold":95, "power":12, "damage":28.0, "range":300.0, "interval":1.3, "color":Color("a78bfa")},
@@ -23,7 +23,7 @@ const BOT_PROFILES = ["guard", "engineer", "economist", "gunner", "balanced"]
 const HUNTER = {"hp":5000.0,"retarget_seconds":24.0,"door_weight":1.8,"growth_seconds":45.0,"hp_growth":100.0,"damage":22.0,"damage_growth":10.0,"interval":1.1,"interval_growth":0.04,"min_interval":0.45,"speed":80.0}
 const REPAIR_COST = 12
 const REPAIR_HEAL = 70.0
-const BUILDING_MAX_LEVEL = 4
+const BUILDING_MAX_LEVEL = 10
 const AI_PROFILES = {
  "guard":{"priorities":["turret","generator","repair","economy","heavy","enhancer"],"bed_goal":2,"door_goal":3,"interval":1.1},
  "engineer":{"priorities":["generator","turret","repair","economy","enhancer","heavy"],"bed_goal":2,"door_goal":1,"interval":1.0},
@@ -43,7 +43,7 @@ const HUNTER_ESCALATION={"ramp_seconds":8.0,"speed_growth":1.5,"speed_bonus_cap"
 const DEFENSE_MAX_LEVEL=10
 const PRESTIGE_COST_FACTORS=[5,7,10,14,19,25]
 static func building_max_level(kind: String) -> int:
- return DEFENSE_MAX_LEVEL if kind in ["turret","heavy"] else BUILDING_MAX_LEVEL
+ return DEFENSE_MAX_LEVEL if BUILDINGS.has(kind) else 0
 static func upgrade_cost(kind: String,level: int) -> Vector2:
  if not BUILDINGS.has(kind) or level<1 or level>=building_max_level(kind):return Vector2.ZERO
  var factor=float(level) if level<4 else float(PRESTIGE_COST_FACTORS[level-4])
@@ -51,7 +51,7 @@ static func upgrade_cost(kind: String,level: int) -> Vector2:
  return Vector2(data.gold*factor,(data.power+3)*factor)
 static func upgrade_requirement(kind: String,level: int,bed: int,door: int) -> String:
  if level>=building_max_level(kind):return "Building is at maximum level."
- if kind in ["turret","heavy"] and level>=4:
+ if BUILDINGS.has(kind) and level>=4:
   var required=2 if level<7 else 3
   if bed<required or door<required:return "Prestige tier requires bed and door level %d." % (required+1)
  return ""
@@ -59,3 +59,8 @@ static func turret_damage(kind: String,level: int) -> float:
  return BUILDINGS[kind].damage*clampi(level,1,DEFENSE_MAX_LEVEL)
 static func turret_interval(kind: String,level: int) -> float:
  return BUILDINGS[kind].interval/(1.0+(clampi(level,1,DEFENSE_MAX_LEVEL)-1)*0.12)
+
+static func support_output(kind: String,level: int) -> float:
+ var tier=float(clampi(level,1,10))
+ if kind in ["economy","enhancer"]:tier=minf(4,tier)+maxf(0,tier-4)*.5
+ return BUILDINGS[kind].rate*tier

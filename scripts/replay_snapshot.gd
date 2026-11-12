@@ -25,9 +25,9 @@ static func valid_boosts(boosts: Dictionary) -> bool:
 static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  var run=model.endless
  if model.run_kind!="endless" or run==null or run.phase!="intermission" or run.completed!=run.sealed_wave or model.hunter.hp>0 or model.player()==null or not model.player().alive:return {}
- var data={"version":1,"ruleset":1,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
+ var data={"version":1,"ruleset":2,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
  for room in model.rooms:
-  var saved={"owner":room.owner,"profile":room.profile,"trait":room.trait_id,"position":pair(room.resident_position),"buildings":[]}
+  var saved={"owner":room.owner,"profile":room.profile,"bed_branch":room.bed_branch,"door_branch":room.door_branch,"trait":room.trait_id,"position":pair(room.resident_position),"buildings":[]}
   for key in ROOM_NUMBERS+ROOM_FLAGS:saved[key]=room.get(key)
   saved.bot_timer=maxf(0,saved.bot_timer)
   for tile in room.buildings:
@@ -40,7 +40,7 @@ static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  data.items.trap={"position":pair(fx.trap.position),"remaining":fx.trap.remaining} if not fx.trap.is_empty() else {}
  return data if valid(data) else {}
 static func valid(data) -> bool:
- if not data is Dictionary or data.get("version")!=1 or data.get("ruleset")!=1 or data.get("map","") not in MapCatalog.IDS or data.get("difficulty","") not in RankCatalog.DIFFICULTIES:return false
+ if not data is Dictionary or data.get("version")!=1 or not whole(data.get("ruleset"),1,2) or data.get("map","") not in MapCatalog.IDS or data.get("difficulty","") not in RankCatalog.DIFFICULTIES:return false
  for key in ["run_id","seed","completed"]:
   if not whole(data.get(key),1):return false
  for key in ["time","preparation","shots","damage","eliminations"]:
@@ -76,7 +76,10 @@ static func valid(data) -> bool:
   if room.sleeping and (not room.alive or not room.closed):return false
   if room.owner<0 and (room.sleeping or room.closed or not room.alive or not room.buildings.is_empty()):return false
   if room.owner>0 and room.sleeping and vec(room.position).distance_to(map.rooms[i].bed)>2:return false
-  if not whole(room.bed_level,0,4) or not whole(room.door_level,0,4) or room.door_multiplier<=0 or room.temporary_income not in [1.0,1.5] or room.door_hp>Catalog.DOOR_HP[int(room.door_level)]*room.door_multiplier*StrategyCatalog.TRAITS[room.trait].door+.0001:return false
+  if not whole(room.bed_level,0,9) or not whole(room.door_level,0,9) or room.door_multiplier<=0 or room.temporary_income not in [1.0,1.5] or room.door_hp>Catalog.DOOR_HP[int(room.door_level)]*room.door_multiplier*StrategyCatalog.TRAITS[room.trait].door*StrategyCatalog.BRANCHES.get(room.get("door_branch",""),{}).get("hp",1.0)+.0001:return false
+  for kind in ["bed","door"]:
+   var branch=room.get(kind+"_branch","")
+   if not branch is String or (branch!="" and branch not in StrategyCatalog.branches(kind)) or (room[kind+"_level"]>=5 and branch=="") or (room[kind+"_level"]<5 and branch!=""):return false
   for rule in {"door_multiplier":"door","income_multiplier":"income","power_multiplier":"power","turret_multiplier":"damage","rescue_fraction":"rescue"}:
    var field={"door_multiplier":"door","income_multiplier":"income","power_multiplier":"power","turret_multiplier":"damage","rescue_fraction":"rescue"}[rule]
    var expected=float(data.boosts.get(field,0.0 if field=="rescue" else 1.0)) if room.owner==0 else 0.0 if field=="rescue" else 1.0
@@ -87,7 +90,7 @@ static func valid(data) -> bool:
    tiles.append(b.tile)
    var branch=b.specialization
    if branch!="" and (branch not in StrategyCatalog.branches(b.kind) or b.level<5):return false
-   if b.kind in ["turret","heavy"] and b.level>=5 and branch=="":return false
+   if b.level>=5 and branch=="":return false
    var ceiling=Vector2(Catalog.BUILDINGS[b.kind].gold,Catalog.BUILDINGS[b.kind].power)
    for level in range(1,int(b.level)):ceiling+=Catalog.upgrade_cost(b.kind,level)
    if branch!="":ceiling+=StrategyCatalog.BRANCH_FEE
@@ -111,6 +114,7 @@ static func restore(data) -> MatchModel:
  model.eliminations=int(data.eliminations);model.shots=int(data.shots);model.damage_dealt=data.damage
  for i in range(6):
   var room=model.rooms[i];var saved=data.rooms[i]
+  room.bed_branch=saved.get("bed_branch","");room.door_branch=saved.get("door_branch","")
   room.owner=int(saved.owner);room.profile=saved.profile;room.resident_position=vec(saved.position)
   for key in ROOM_NUMBERS+ROOM_FLAGS:room.set(key,saved[key])
   for b in saved.buildings:

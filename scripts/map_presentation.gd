@@ -173,7 +173,7 @@ func render_tiles(c,p,room,owned):
    if owned and building.kind in ["turret","heavy"]:CosmeticPresentation.turret(c,point)
    var branch=str(building.get("specialization",""))
    if branch!="":
-    var tint={"precision":Color("DDC68E"),"suppression":Color("9BD3B2"),"focus":Color("BFACE0"),"storm":Color("93DFDF")}[branch]
+    var tint={"precision":Color("DDC68E"),"suppression":Color("9BD3B2"),"focus":Color("BFACE0"),"storm":Color("93DFDF")}.get(branch,Color("B7D2B4"))
     c.draw_arc(point+Vector2(0,7),23,.1,PI-.1,16,Color(tint,.75),2)
     c.draw_texture_rect(PremiumButton.texture(branch),Rect2(point+Vector2(11,-32),Vector2(20,20)),false)
     if branch=="precision":c.draw_line(point+Vector2(0,-15),point+target.normalized()*32-Vector2(0,15),tint,5)
@@ -206,7 +206,7 @@ func render_door(c,p,room):
  if room.door_hp>0:
   var color=Color(1.65,0.65,0.65) if room.damage_flash>0 else Color.WHITE
   if room.closed:
-   c.draw_texture_rect(p.cartoon["door_%d" % (room.door_level+1)],Rect2(Vector2(-36,-41),Vector2(73,61)),false,color)
+   c.draw_texture_rect(p.cartoon["door_%d" % mini(5,room.door_level+1)],Rect2(Vector2(-36,-41),Vector2(73,61)),false,color)
   else: c.draw_texture_rect(p.cartoon.door_1,Rect2(Vector2(-47,-20),Vector2(36,50)),false,Color("94AAB2"))
   if room.owner==0 and room.closed:CosmeticPresentation.door(c)
   if room.door_hp<room.max_hp()*0.55:

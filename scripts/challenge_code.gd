@@ -1,6 +1,6 @@
 class_name ChallengeCode
 extends RefCounted
-const RULESET=1
+const RULESET=2
 const FIXED_STEP=1.0/30.0
 static func encode(config: Dictionary) -> String:
  for key in ["seed","preset","gear"]:
@@ -14,7 +14,7 @@ static func encode(config: Dictionary) -> String:
  if map_index<0 or archetype<0 or mode<0 or seed_value<1 or seed_value>999999 or preset not in [0,1] or gear not in [0,1]:return ""
  var body="NF2-%d-%d-%d-%d-%d-%d-%d" % [RULESET,map_index,seed_value,archetype,mode,preset,gear]
  return body+"-"+body.sha256_text().left(8).to_upper()
-static func decode(raw: String) -> Dictionary:
+static func decode(raw: String,archive_only: bool=false) -> Dictionary:
  if raw.length()>128:return {"ok":false,"error":"Code exceeds 128 characters."}
  var code=raw.strip_edges().to_upper()
  var expression=RegEx.new();expression.compile("^NF2-[0-9]+-[0-9]+-[0-9]+-[0-9]+-[0-9]+-[0-9]+-[0-9]+-[A-F0-9]{8}$")
@@ -23,10 +23,13 @@ static func decode(raw: String) -> Dictionary:
  for i in range(1,8):
   if parts[i].length()>6:return {"ok":false,"error":"Code field is out of range."}
   numbers.append(int(parts[i]))
- if numbers[0]!=RULESET:return {"ok":false,"error":"Incompatible challenge ruleset."}
+ if numbers[0]!=RULESET and not (archive_only and numbers[0]==1):return {"ok":false,"error":"Incompatible challenge ruleset."}
  if numbers[1] not in range(5) or numbers[2]<1 or numbers[2]>999999 or numbers[3] not in range(3) or numbers[4] not in range(3) or numbers[5] not in [0,1] or numbers[6] not in [0,1]:return {"ok":false,"error":"Unsupported map, mode, seed or normalized gear preset."}
  var config={"map":MapCatalog.IDS[numbers[1]],"seed":numbers[2],"archetype":StrategyCatalog.ARCHETYPE_IDS[numbers[3]],"difficulty":["standard","hard","hell"][numbers[4]],"preset":numbers[5],"gear":numbers[6]}
  var canonical=encode(config)
+ if archive_only and numbers[0]==1:
+  var body=canonical.substr(0,canonical.rfind("-")).replace("NF2-%d-" % RULESET,"NF2-1-")
+  canonical=body+"-"+body.sha256_text().left(8).to_upper()
  if canonical!=code:return {"ok":false,"error":"Checksum or canonical formatting mismatch."}
  return {"ok":true,"config":config,"code":canonical,"error":""}
 static func configure(model,config: Dictionary) -> bool:

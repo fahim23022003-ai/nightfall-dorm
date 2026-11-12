@@ -149,28 +149,29 @@ func run():
  var income_before = room.gold
  var power_before = room.electricity
  room.tick_economy(1.0)
- check(is_equal_approx(room.gold-income_before,Catalog.BED_INCOME[room.bed_level]*(1+Catalog.BUILDINGS.economy.rate*Catalog.BUILDING_MAX_LEVEL)), "level4 amplifier increases real gold")
- check(is_equal_approx(room.electricity-power_before,Catalog.BUILDINGS.generator.rate*Catalog.BUILDING_MAX_LEVEL), "level4 generator produces real electricity")
- check(is_equal_approx(room.door_hp,20+Catalog.BUILDINGS.repair.rate*Catalog.BUILDING_MAX_LEVEL), "level4 repair facility restores real HP")
- print("AUDIT regression: heavy turret and level4 relay combat effects")
+ check(is_equal_approx(room.gold-income_before,Catalog.BED_INCOME[room.bed_level]*(1+Catalog.BUILDINGS.economy.rate*(4.0+(Catalog.BUILDING_MAX_LEVEL-4)*.5))), "maximum-tier amplifier increases real gold")
+ check(is_equal_approx(room.electricity-power_before,Catalog.BUILDINGS.generator.rate*Catalog.BUILDING_MAX_LEVEL), "maximum-tier generator produces real electricity")
+ check(is_equal_approx(room.door_hp,20+Catalog.BUILDINGS.repair.rate*Catalog.BUILDING_MAX_LEVEL), "maximum-tier repair facility restores real HP")
+ print("AUDIT regression: heavy turret and maximum-tier relay combat effects")
  g = fresh()
  room = occupy(g)
  room.gold = 100000
  room.electricity = 100000
- room.bed_level = 1
+ room.bed_level = 3
+ room.door_level = 3
  room.build("heavy",5)
  room.build("enhancer",4)
  for level in range(1,Catalog.BUILDING_MAX_LEVEL):
-  room.upgrade_building(5)
-  room.upgrade_building(4)
+  check(room.upgrade_building(5),"paid weapon upgrade meets late-tier prerequisites")
+  check(room.upgrade_building(4),"paid support upgrade reaches new cap")
  g.hunter.state = HunterState.State.MOVE
  g.hunter.position = room.tile_position(5)+Vector2(Catalog.BUILDINGS.heavy.range-1,0)
  var hunter_hp = g.hunter.hp
  g._turrets(0.1)
  wait_for_impacts(g)
- var expected_damage = Catalog.BUILDINGS.heavy.damage*Catalog.BUILDING_MAX_LEVEL*(1+Catalog.BUILDINGS.enhancer.rate*Catalog.BUILDING_MAX_LEVEL)
- check(is_equal_approx(hunter_hp-g.hunter.hp,expected_damage), "level4 heavy damage and relay multiplier affect real hunter HP")
- check(room.buildings[5].cooldown < Catalog.BUILDINGS.heavy.interval, "level4 heavy fires faster than base")
+ var expected_damage = Catalog.BUILDINGS.heavy.damage*Catalog.BUILDING_MAX_LEVEL*(1+Catalog.BUILDINGS.enhancer.rate*(4.0+(Catalog.BUILDING_MAX_LEVEL-4)*.5))
+ check(is_equal_approx(hunter_hp-g.hunter.hp,expected_damage), "maximum-tier heavy damage and relay multiplier affect real hunter HP")
+ check(room.buildings[5].cooldown < Catalog.BUILDINGS.heavy.interval, "maximum-tier heavy fires faster than base")
  check(room.shots == 1 and room.damage_dealt > 0, "player combat statistics recorded separately")
  print("AUDIT regression: hunter growth and active retargeting")
  g = fresh()
@@ -193,6 +194,10 @@ func run():
  g.hunter.state = HunterState.State.ATTACK
  g.hunter.position = room.door_approach()
  g.hunter.target_time = Catalog.HUNTER.retarget_seconds+1
+ g.hunter.tick(0.01,g)
+ check(g.hunter.target==0,"travel time alone does not exhaust actual siege commitment")
+ g.hunter.reassess_seconds=RankCatalog.pressure(g.difficulty).commit+1
+ g.hunter.siege_start_hp=room.door_hp
  g.hunter.tick(0.01,g)
  g.hunter.tick(0.01,g)
  check(g.hunter.target == 1, "stalled hunter switches to another valid room")

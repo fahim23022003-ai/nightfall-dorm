@@ -16,7 +16,7 @@ static func valid(data) -> bool:
  if not data.get("last_award") is Dictionary or not data.get("challenge_best") is Dictionary or data.challenge_best.size()>32:return false
  for key in data.challenge_best:
   var entry=data.challenge_best[key]
-  if not key is String or key.length()>32 or not entry is Dictionary or not entry.get("code") is String or not ChallengeCode.decode(entry.code).ok or not ReplaySnapshot.number(entry.get("time"),0,1e9) or not ReplaySnapshot.number(entry.get("score"),0,1e12) or not ReplaySnapshot.whole(entry.get("plays"),1):return false
+  if not key is String or key.length()>32 or not entry is Dictionary or not entry.get("code") is String or not ChallengeCode.decode(entry.code,true).ok or not ReplaySnapshot.number(entry.get("time"),0,1e9) or not ReplaySnapshot.number(entry.get("score"),0,1e12) or not ReplaySnapshot.whole(entry.get("plays"),1):return false
  return true
 static func valid_active(entry: Dictionary) -> bool:
  if not ReplaySnapshot.whole(entry.get("legendary_used"),0,1):return false

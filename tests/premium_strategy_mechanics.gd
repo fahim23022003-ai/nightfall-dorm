@@ -101,6 +101,8 @@ func identities():
 func weapons():
  for branch in StrategyCatalog.BRANCHES:
   var data=StrategyCatalog.BRANCHES[branch]
+  # This matrix checks projectile branches; support/structural roles have new independent suites.
+  if data.kind not in ["turret","heavy"]:continue
   for level in [5,10]:
    for boss in [false,true]:
     for overdrive in [false,true]:

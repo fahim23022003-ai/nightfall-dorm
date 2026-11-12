@@ -29,10 +29,11 @@ func clean_controls():
 func show_opening():
  clean_controls();phase="cinematic";elapsed=0;active=true
  game.mode="intro"
+ game.audio_system.begin_cinematic()
  var b=Button.new();b.text="Skip opening · Space / Enter / Esc";b.position=Vector2(800,645);b.size=Vector2(430,42);b.pressed.connect(skip);add_child(b)
 func skip():
  if phase not in ["cinematic","title"]:return
- cancel_intro_audio();active=false;phase="idle";clean_controls();queue_redraw()
+ cancel_intro_audio();game.audio_system.end_cinematic();active=false;phase="idle";clean_controls();queue_redraw()
  if game.profile.tutorial_completed:game.return_menu()
  else:game.start_tutorial()
 func show_title():
@@ -41,7 +42,7 @@ func show_title():
  var b=Button.new();b.text="Continue · Enter / Space";b.position=Vector2(420,605);b.size=Vector2(440,48);b.pressed.connect(skip);add_child(b)
  primary_button(b)
 func cancel_intro_audio():
- if is_instance_valid(game.audio_system):game.audio_system.stop_events(["intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper"])
+ if is_instance_valid(game.audio_system):game.audio_system.stop_events(["intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","door_break"])
 func begin_tutorial():
  cancel_intro_audio()
  clean_controls();phase="tutorial";active=true;step=0;upgraded=false;damage_observed=false;threat_started=false;tutorial_finished=false
@@ -135,7 +136,7 @@ func _process(delta):
  if phase in ["cinematic","title"]:
   elapsed+=minf(delta,.25)
   if phase=="cinematic":
-   for entry in [[.2,"intro_running"],[3.0,"intro_running"],[5.8,"intro_running"],[8.6,"intro_running"],[.5,"intro_breath"],[3.7,"intro_breath"],[6.9,"intro_breath"],[4.3,"intro_lightning"],[10.7,"intro_impact"],[13.0,"intro_shriek"]]:
+   for entry in [[.2,"intro_running"],[3.0,"intro_running"],[5.8,"intro_running"],[8.6,"intro_running"],[.5,"intro_breath"],[3.7,"intro_breath"],[6.9,"intro_breath"],[4.3,"intro_lightning"],[4.7,"intro_whisper"],[8.8,"door_break"],[10.7,"intro_impact"],[13.0,"intro_shriek"]]:
     var key=str(entry[0])+entry[1]
     if elapsed>=entry[0] and not sounds_seen.has(key):sounds_seen[key]=true;game.audio_event(entry[1])
    if elapsed>=15:show_title()

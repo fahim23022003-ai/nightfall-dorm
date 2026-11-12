@@ -38,18 +38,19 @@ func run():
   var stream = audio.streams[name]
   check(stream.get_length()>0.04 and stream.data.size()>100,"nonempty playable PCM: "+name)
   var peak = 0
-  for i in range(0,stream.data.size(),2):
-   peak = maxi(peak,absi(stream.data.decode_s16(i)))
-  check(peak>100 and peak<=20317,"non-silent bounded waveform: "+name)
+  var pcm=stream.data # Cache PCM once; avoid repeated property reads for large sampled scores.
+  for i in range(0,pcm.size(),2):
+   peak = maxi(peak,absi(pcm.decode_s16(i)))
+  check(peak>100 and peak<=24575,"non-silent bounded waveform: "+name)
  for name in AudioDirector.LOOP_NAMES:
-  check(audio.streams[name].loop_mode==AudioStreamWAV.LOOP_FORWARD and audio.streams[name].loop_end>0,"loop configured: "+name)
-  check(audio.loops[name].playing,"permanent loop player is running: "+name)
+  check(audio.streams[name].loop_mode==AudioStreamWAV.LOOP_DISABLED if name=="music_intro" else audio.streams[name].loop_mode==AudioStreamWAV.LOOP_FORWARD and audio.streams[name].loop_end>0,"cinematic one-shot or configured score loop: "+name)
+  check(name=="music_intro" or audio.loops[name].playing,"permanent score/ambience player is running: "+name)
   var data = audio.streams[name].data
   check(absi(data.decode_s16(0)-data.decode_s16(data.size()-2))<655,"loop boundary has no large PCM discontinuity: "+name)
- check(audio.music_start_count==4,"four music stems, including Reaper, started once")
+ check(audio.music_start_count==7,"seven musical scores, including cinematic and Reaper, initialized once")
  for i in range(30):
   audio.update_state(0.1,null,"menu")
- check(audio.loop_weights.music_menu>0.9 and audio.music_start_count==4,"menu music fades in without restart")
+ check(audio.loop_weights.music_menu>0.9 and audio.music_start_count==7,"menu music fades in without restart")
  audio.set_mix({"music":0.2,"effects":0.4,"ambient":0.6,"muted":true})
  for name in ["Music","Effects","Ambient"]:
   check(AudioServer.is_bus_mute(AudioServer.get_bus_index(name)),"mute affects "+name)

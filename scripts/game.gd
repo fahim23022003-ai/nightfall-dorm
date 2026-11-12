@@ -3,6 +3,7 @@ extends Node2D
 var model: MatchModel
 var ui: GameInterface
 var mode = "menu"
+var watched_room=-1
 var selected_tile = 0
 var profile: PlayerProfile
 var audio_system
@@ -65,6 +66,7 @@ func continue_endless(choice: String) -> bool:
  if model.run_kind!="endless" or model.endless==null:return false
  if not profile.checkpoint_endless(model):ui.replay_ui.intermission_saved=false;ui.replay_ui.show_intermission();return false
  if not model.continue_wave(choice):return false
+ watched_room=-1
  presentation.new_encounter(model);horror.reset();audio_system.new_encounter(model)
  for room in model.rooms:
   if not room.alive:audio_system.death_rooms[room.index]=true
@@ -96,6 +98,7 @@ func reset_practice():
  if model.run_kind!="practice":return
  start_practice(ui.replay_ui.practice_archetype,ui.replay_ui.practice_boss,ui.replay_ui.practice_items,ui.replay_ui.practice_map)
 func _adopt_session(next,wallet=null):
+ watched_room=-1
  model=next;temporary_loadout=wallet;tutorial_active=false;campaign_mode=false;last_progression={};pending_build="";selected_tile=0
  ui.replay_ui.preparing=false
  model.feedback.connect(func(value):ui.feedback_text=value;ui.feedback_until=presentation.clock+2)
@@ -149,6 +152,7 @@ func _ready():
   onboarding=preload("res://scripts/onboarding.gd").new(self);onboarding_layer.add_child(onboarding)
 
 func start_tutorial(replay=false):
+ watched_room=-1
  if mobile_mode:return false
  tutorial_active=true
  temporary_loadout=null
@@ -173,6 +177,7 @@ func start_stage(id: String, difficulty: String="standard") -> bool:
  return start_match(difficulty)
 
 func start_match(difficulty: String="") -> bool:
+ watched_room=-1
  if not mobile_mode and not profile.tutorial_completed:
   start_tutorial();return false
  if tutorial_active:return false
@@ -241,6 +246,7 @@ func activate_item(slot: int,target: int=-1) -> bool:
  return ok
 
 func return_menu():
+ watched_room=-1
  if not mobile_mode and not profile.tutorial_completed:
   if onboarding!=null and onboarding.phase not in ["cinematic","title","tutorial"]:start_tutorial()
   return
@@ -271,7 +277,7 @@ func _process(delta: float):
   var direction = Vector2(float(Input.is_physical_key_pressed(KEY_D) or Input.is_physical_key_pressed(KEY_RIGHT))-float(Input.is_physical_key_pressed(KEY_A) or Input.is_physical_key_pressed(KEY_LEFT)),float(Input.is_physical_key_pressed(KEY_S) or Input.is_physical_key_pressed(KEY_DOWN))-float(Input.is_physical_key_pressed(KEY_W) or Input.is_physical_key_pressed(KEY_UP)))
   if mobile_mode: direction=touch.movement(delta)
   if model.running:
-   model.move_player(direction,delta)
+   model.move_player(direction if watched_room<0 else Vector2.ZERO,delta)
   # Fixed simulation substeps avoid attack tunneling during slow rendered frames.
   var remaining = minf(delta,0.25)
   while remaining > 0:
@@ -311,6 +317,7 @@ func _process(delta: float):
    if model.run_kind=="campaign":last_progression=profile.settle_match(match_id,model)
    elif model.run_kind=="endless":last_progression=profile.settle_endless(model)
    elif model.run_kind=="challenge":profile.record_challenge(model)
+   return_to_my_room()
    mode = "result"
    cancel_placement()
    if not last_progression.is_empty():
@@ -350,17 +357,22 @@ func _unhandled_input(event):
  if model.run_kind=="endless" and model.endless!=null and model.endless.phase=="intermission" and not ui.replay_ui.preparing:return
  if mobile_mode and event is InputEventMouse: return
  if event is InputEventKey and event.pressed and not event.echo:
-  if event.keycode in [KEY_1,KEY_2] and model.running: activate_item(0 if event.keycode==KEY_1 else 1)
-  elif event.keycode==KEY_E and model.running: model.interact()
+  if event.keycode==KEY_HOME:return_to_my_room()
+  elif event.keycode==KEY_T and not tutorial_active:ui.teammates.toggle_panel()
+  elif event.keycode in [KEY_PAGEUP,KEY_PAGEDOWN] and not tutorial_active:cycle_spectator(-1 if event.keycode==KEY_PAGEUP else 1)
+  elif event.keycode in [KEY_1,KEY_2] and model.running: activate_item(0 if event.keycode==KEY_1 else 1)
+  elif event.keycode==KEY_E and model.running and watched_room<0: model.interact()
   elif event.keycode==KEY_M: toggle_map()
   elif event.keycode==KEY_G: toggle_guide()
   elif event.keycode==KEY_R and model.running: ui.purchase(model.repair_door())
   elif event.keycode==KEY_ESCAPE:
    if pending_build!="": cancel_placement()
+   elif watched_room>=0:return_to_my_room()
    elif ui.context_open: ui.close_context()
    elif ui.replay_ui.preparing:ui.replay_ui.show_intermission()
    else: toggle_pause()
  if event is InputEventMouseButton and event.pressed:
+  if watched_room>=0:return
   if event.button_index in [MOUSE_BUTTON_WHEEL_UP,MOUSE_BUTTON_WHEEL_DOWN]:
    zoom_factor=clampf(zoom_factor+(0.1 if event.button_index==MOUSE_BUTTON_WHEEL_UP else -0.1),0.75,1.2)
   elif event.button_index==MOUSE_BUTTON_LEFT and model.player()!=null:
@@ -383,6 +395,7 @@ func _unhandled_input(event):
  # preview anchored while the pointer travels to Confirm or Cancel.
 
 func begin_placement(kind: String):
+ if watched_room>=0:return
  if mode!="match" or in_background or not model._can_purchase(): return
  if not Catalog.BUILDINGS.has(kind) or selected_tile<0 or selected_tile>=model.player().tile_count(): return
  if model.player().buildings.has(selected_tile) or not model.player().sleeping: return
@@ -397,6 +410,7 @@ func placement_reason() -> String:
  return ui.action_reason("build:"+pending_build)
 
 func confirm_placement():
+ if watched_room>=0:return
  if pending_build=="" or placement_reason()!="": return false
  var success=model.buy(pending_build,selected_tile)
  if success:
@@ -421,8 +435,8 @@ func focus_camera(snap: bool=false,delta: float=0.016):
  if full_map:
   goal=Vector2(640,450)
   zoom=0.8
- elif model.player()!=null:
-  var room=model.player()
+ elif model.player()!=null or watched_room>=0:
+  var room=model.rooms[watched_room] if watched_room>=0 else model.player()
   goal=room.center()+MAP_OFFSET+Vector2(0,45 if room.index<3 else -45)
   zoom=1.8*zoom_factor
   if model.hunter.target==room.index and model.hunter.state==HunterState.State.ATTACK:
@@ -433,8 +447,9 @@ func focus_camera(snap: bool=false,delta: float=0.016):
    var extent=model.map_bounds().grow(35)
    zoom=minf(1220.0/extent.size.x,500.0/extent.size.y)
    goal=extent.get_center()+MAP_OFFSET+Vector2(0,10)/zoom
-  elif model.player()!=null:
-   var extent=model.player().bounds().grow(35)
+  elif model.player()!=null or watched_room>=0:
+   var observed=model.rooms[watched_room] if watched_room>=0 else model.player()
+   var extent=observed.bounds().grow(35)
    var available=Vector2(820,490) if ui.context_open else Vector2(1160,490)
    zoom=minf(available.x/extent.size.x,available.y/extent.size.y)*zoom_factor
    var desired=Vector2(452,348) if ui.context_open else Vector2(640,348)
@@ -546,3 +561,20 @@ func handle_touch_tap(screen: Vector2):
 func retry_settlement():
  if model.run_kind=="endless":last_progression=profile.settle_endless(model);ui.replay_ui.show_session_result()
  else:last_progression=profile.settle_match(match_id,model);ui.show_result()
+
+func spectate_room(index: int) -> bool:
+ if mode!="match" or tutorial_active or model.result!="" or index<0 or index>=model.rooms.size() or model.rooms[index].owner<=0:return false
+ cancel_placement();ui.close_context();watched_room=index;full_map=false;zoom_factor=1
+ focus_camera();ui.teammates.update()
+ return true
+func return_to_my_room():
+ watched_room=-1;full_map=false;zoom_factor=1
+ if mode=="match":focus_camera(true)
+ if ui!=null and ui.teammates!=null:ui.teammates.update()
+func cycle_spectator(direction: int):
+ var valid=[]
+ for r in model.rooms:
+  if r.owner>0:valid.append(r.index)
+ if valid.is_empty():return
+ var current=valid.find(watched_room)
+ spectate_room(valid[posmod(current+direction,valid.size())])

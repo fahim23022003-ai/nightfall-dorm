@@ -67,7 +67,7 @@ func run():
  check(AudioServer.is_bus_mute(AudioServer.get_bus_index("Effects")),"SFX preference mutes effect bus")
  audio.reset_match(m)
  check(audio.tension_state=="quiet" and audio.pacing_gain==1 and audio.ambience_gain==1,"match reset cannot inherit stale danger or attenuation")
- check(audio.music_start_count==4,"pacing does not duplicate existing music players")
+ check(audio.music_start_count==7,"pacing does not duplicate existing music players")
  audio.shutdown()
  var until=Time.get_ticks_msec()+550
  while Time.get_ticks_msec()<until:await process_frame

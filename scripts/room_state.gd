@@ -11,6 +11,8 @@ var sleeping = false
 var closed = false
 var gold = 25.0
 var electricity = 0.0
+var bed_branch=""
+var door_branch=""
 var bed_level = 0
 var door_level = 0
 var door_hp = Catalog.DOOR_HP[0]
@@ -125,14 +127,14 @@ func corridor_anchor() -> Vector2:
  return layout.anchor if not layout.is_empty() else Vector2(door_position().x,410)
 
 func max_hp() -> float:
- return Catalog.DOOR_HP[door_level]*door_multiplier*trait_modifiers.door
+ return Catalog.DOOR_HP[door_level]*door_multiplier*trait_modifiers.door*StrategyCatalog.BRANCHES.get(door_branch,{}).get("hp",1.0)
 
 func income_rate() -> float:
  var factor = 1.0
  for building in buildings.values():
   if building.kind == "economy":
-   factor += Catalog.BUILDINGS.economy.rate * building.level
- return Catalog.BED_INCOME[bed_level] * factor * income_multiplier * trait_modifiers.income * temporary_income if sleeping and alive else 0.0
+   factor += Catalog.support_output("economy",building.level)*StrategyCatalog.support(building).get("output",1.0)
+ return Catalog.BED_INCOME[bed_level] * factor * income_multiplier * trait_modifiers.income * temporary_income*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("income",1.0)*special_factor("income",.35,1.0) if sleeping and alive else 0.0
 
 func pay(g: float, e: float = 0.0) -> bool:
  if not is_finite(g) or not is_finite(e) or g < 0 or e < 0:
@@ -151,6 +153,7 @@ func reject(reason: String) -> bool:
 func upgrade_bed() -> bool:
  if not alive:
   return reject("Resident eliminated.")
+ if strategy_enabled and bed_level==4 and bed_branch=="":return reject("Choose a bed specialization to advance to level6.")
  if bed_level >= Catalog.BED_COST.size():
   return reject("Bed is at maximum level.")
  if door_level < maxi(0,bed_level-1):
@@ -167,6 +170,7 @@ func upgrade_door() -> bool:
   return reject("Resident eliminated.")
  if door_hp <= 0:
   return reject("Destroyed doors cannot be restored.")
+ if strategy_enabled and door_level==4 and door_branch=="":return reject("Choose a door specialization to advance to level6.")
  if door_level >= Catalog.DOOR_COST.size():
   return reject("Door is at maximum level.")
  if bed_level < maxi(0,door_level-1):
@@ -187,11 +191,11 @@ func repair_door() -> bool:
   return reject("Destroyed doors cannot be repaired.")
  if door_hp >= max_hp():
   return reject("Door already has full health.")
- if not afford(Catalog.REPAIR_COST):
+ if not afford(manual_repair_cost()):
   return false
- pay(Catalog.REPAIR_COST)
+ pay(manual_repair_cost())
  repair_actions+=1
- door_hp = minf(max_hp(),door_hp+Catalog.REPAIR_HEAL*repair_factor)
+ door_hp = minf(max_hp(),door_hp+Catalog.REPAIR_HEAL*repair_factor*StrategyCatalog.BRANCHES.get(door_branch,{}).get("repair",1.0))
  presentation_action.emit("repair",{})
  return true
 
@@ -233,7 +237,7 @@ func upgrade_building(tile: int) -> bool:
  return _upgrade_building(tile,"")
 
 func specialize_building(tile: int,branch: String) -> bool:
- if not strategy_enabled or not buildings.has(tile):return reject("Select an eligible level4 turret.")
+ if not strategy_enabled or not buildings.has(tile):return reject("Select an eligible level4 building.")
  var b=buildings[tile]
  if b.level!=4 or b.get("specialization","")!="" or branch not in StrategyCatalog.branches(b.kind):return reject("Choose one valid specialization at level4; the choice is permanent.")
  return _upgrade_building(tile,branch)
@@ -244,7 +248,7 @@ func _upgrade_building(tile: int,branch: String) -> bool:
  if not buildings.has(tile):
   return reject("Select an existing building to upgrade.")
  var b = buildings[tile]
- if strategy_enabled and b.kind in ["turret","heavy"] and b.level==4 and branch=="":return reject("Choose ONE specialization to advance to level5.")
+ if strategy_enabled and Catalog.BUILDINGS.has(b.kind) and b.level==4 and branch=="":return reject("Choose ONE specialization to advance to level5.")
  var requirement=Catalog.upgrade_requirement(b.kind,b.level,bed_level,door_level)
  if requirement!="":return reject(requirement)
  var data = Catalog.BUILDINGS[b.kind]
@@ -297,9 +301,33 @@ func tick_economy(delta: float):
  damage_flash = maxf(0,damage_flash-delta)
  if not alive or not sleeping:
   return
+ electricity+=Catalog.BED_INCOME[bed_level]*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("power_rate",0.0)*delta
  for b in buildings.values():
   b.flash = maxf(0,b.flash-delta)
   if b.kind == "generator":
-   electricity += Catalog.BUILDINGS.generator.rate*b.level*delta*power_multiplier*trait_modifiers.power
+   electricity += Catalog.support_output("generator",b.level)*StrategyCatalog.support(b).get("output",1.0)*delta*power_multiplier*trait_modifiers.power*special_factor("power",.55,1.5)*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("power",1.0)
   elif b.kind == "repair" and door_hp > 0:
-   door_hp = minf(max_hp(),door_hp+Catalog.BUILDINGS.repair.rate*b.level*delta*repair_factor)
+   var branch=StrategyCatalog.support(b)
+   var cost=branch.get("power_cost",0.0)*b.level*delta
+   if electricity>=cost:
+    electricity-=cost
+    door_hp=minf(max_hp(),door_hp+Catalog.support_output("repair",b.level)*branch.get("output",1.0)*delta*repair_factor)
+
+func special_factor(key: String,low: float,high: float) -> float:
+ var value=1.0
+ for b in buildings.values():value+=float(StrategyCatalog.support(b).get(key,1.0))-1.0
+ return clampf(value,low,high)
+func manual_repair_cost() -> float:
+ return Catalog.REPAIR_COST*special_factor("repair_cost",.6,1.0)
+func specialize_structure(kind: String,id: String) -> bool:
+ if kind not in ["bed","door"] or id not in StrategyCatalog.branches(kind) or not strategy_enabled or not alive:return reject("Choose an eligible structure branch.")
+ if (bed_level if kind=="bed" else door_level)!=4 or (bed_branch if kind=="bed" else door_branch)!="":return reject("Choose once at structure level5.")
+ if kind=="door" and door_hp<=0:return reject("Destroyed doors cannot be restored.")
+ var current=door_hp/maxf(1,max_hp())
+ if kind=="bed":bed_branch=id
+ else:door_branch=id;door_hp=max_hp()*current
+ var ok=upgrade_bed() if kind=="bed" else upgrade_door()
+ if not ok:
+  if kind=="bed":bed_branch=""
+  else:door_branch="";door_hp=max_hp()*current
+ return ok

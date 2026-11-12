@@ -45,6 +45,15 @@ var surge_room=-1
 var boss_action_age=0.0
 var last_boss_attack=""
 var _transform_exit_room=-1
+var target_history: Dictionary={}
+var tactical_cooldown=3.0
+var tactical_windup=0.0
+var tactical_action=""
+var conceal_remaining=0.0
+var dash_remaining=0.0
+var pressure_remaining=0.0
+var tactical_recovery=0.0
+var ability_counts={"pressure":0,"conceal":0,"feint":0,"dash":0}
 var archetype=""
 var archetype_primed=false
 var suppression_remaining=0.0
@@ -90,7 +99,38 @@ func request_exit(room_index: int):
 func shadow_active(room_index: int) -> bool:
  return state==State.ATTACK and hp>0 and target==surge_room and room_index==surge_room and surge_remaining>0
 
+func _clear_tactics():
+ tactical_action="";tactical_windup=0;conceal_remaining=0;dash_remaining=0;pressure_remaining=0;tactical_recovery=0
+func _tactics(delta: float,model) -> bool:
+ if archetype=="" or transformed or model.tutorial_mode:
+  _clear_tactics();return false
+ tactical_cooldown=maxf(0,tactical_cooldown-delta)
+ conceal_remaining=maxf(0,conceal_remaining-delta)
+ var old_dash=dash_remaining
+ dash_remaining=maxf(0,dash_remaining-delta)
+ if old_dash>0 and dash_remaining<=0:tactical_recovery=.7
+ pressure_remaining=maxf(0,pressure_remaining-delta)
+ tactical_recovery=maxf(0,tactical_recovery-delta)
+ if tactical_action!="":
+  tactical_windup=maxf(0,tactical_windup-delta)
+  if tactical_windup>0:return true
+  var action=tactical_action;tactical_action=""
+  ability_counts[action]+=1
+  if action=="dash":dash_remaining=1.35
+  elif action=="conceal":conceal_remaining=3.0
+  elif action=="pressure":pressure_remaining=4.0
+  model.record_event("hunter_ability",target,{"ability":action,"duration":dash_remaining if action=="dash" else conceal_remaining if action=="conceal" else pressure_remaining})
+ if tactical_recovery>0:return true
+ if tactical_cooldown<=0:
+  var selected="pressure" if archetype=="crusher" and state==State.ATTACK else "conceal" if archetype=="stalker" and state==State.MOVE else "dash" if archetype=="ravager" and state==State.MOVE else ""
+  if selected!="":
+   tactical_action=selected;tactical_windup=.9 if selected=="pressure" else .65
+   tactical_cooldown=20.0 if selected=="pressure" else 15.0
+   model.record_event("hunter_ability_warning",target,{"ability":selected,"delay":tactical_windup})
+   return true
+ return false
 func _begin_transformation(model):
+ _clear_tactics()
  var normal_hp=archetype_factor("hp")
  transformed=true
  # Boss replaces normal archetype tuning. It never receives transformation healing.
@@ -166,6 +206,7 @@ func _boss_strike(room, model):
 
 func _damage_door(room, model, amount: float,source: String="door strike"):
  var old_hp=room.door_hp
+ amount*=StrategyCatalog.BRANCHES.get(room.door_branch,{}).get("mitigation",1.0)
  amount=model.items.absorb(amount,model)
  var rescued=room.index==model.player_room and model.items.guardian_intercept(amount,model)
  if not rescued: room.door_hp=maxf(0,room.door_hp-amount)
@@ -179,6 +220,7 @@ func _damage_door(room, model, amount: float,source: String="door strike"):
 
 
 func stop_combat(model):
+ _clear_tactics()
  _transform_exit_room=-1
  cancel_boss_attack()
  surge_remaining=0
@@ -211,7 +253,7 @@ func target_score(room: RoomState) -> float:
  var repair=0.0
  var relay=1.0
  for building in room.buildings.values():
-  if building.kind=="enhancer": relay+=Catalog.BUILDINGS.enhancer.rate*building.level
+  if building.kind=="enhancer": relay+=Catalog.support_output("enhancer",building.level)*StrategyCatalog.support(building).get("output",1.0)
  for tile in room.buildings:
   var b=room.buildings[tile]
   if b.kind in ["turret","heavy"]:
@@ -219,7 +261,7 @@ func target_score(room: RoomState) -> float:
    var branch=StrategyCatalog.weapon(b)
    if room.tile_position(tile).distance_to(approach)<=data.range*branch.range:
     dps+=Catalog.turret_damage(b.kind,b.level)*branch.damage*relay*room.turret_multiplier/(Catalog.turret_interval(b.kind,b.level)*branch.interval)
-  elif b.kind=="repair": repair+=Catalog.BUILDINGS.repair.rate*b.level
+  elif b.kind=="repair": repair+=Catalog.support_output("repair",b.level)*StrategyCatalog.support(b).get("output",1.0)
  if (difficulty!="standard" or transformed) and _model_ref!=null and _model_ref.get_ref()!=null:
   for other in _model_ref.get_ref().rooms:
    if other==room or not other.alive: continue
@@ -305,6 +347,7 @@ func tick(delta: float, match_state):
  if state == State.DEAD or match_state.time < match_state.preparation:
   return
  if _boss_tick(delta,match_state): return
+ if _tactics(delta,match_state):return
  var active_seconds=match_state.hunter_active_seconds()
  var next_level=1 if active_seconds<profile.opening else 2+int((active_seconds-profile.opening)/profile.growth_seconds)
  level=maxi(level,next_level)
@@ -324,6 +367,9 @@ func tick(delta: float, match_state):
   var item_factor=match_state.items.speed_factor(self)
   var slow_factor=1.0-suppression_strength*(.5 if transformed else 1.0)
   speed=speed/maxf(.01,item_factor)*minf(item_factor,slow_factor)
+ if pressure_remaining>0:damage*=1.2
+ if dash_remaining>0:speed*=1.65
+ if conceal_remaining>0:speed*=1.15
  if match_state.tutorial_mode:
   damage*=0.08;interval=maxf(interval,2.0);speed*=0.65
  if match_state.items.decoy_tick(delta,match_state): return
@@ -370,6 +416,8 @@ func tick(delta: float, match_state):
   else: _advance_custom(approach,delta,match_state,"hunter_move")
   if hp<=0: return
   if position.distance_to(approach)<3:
+   if dash_remaining>0:tactical_recovery=.7
+   dash_remaining=0;conceal_remaining=0
    state = State.ATTACK if room.closed and room.door_hp > 0 else State.BREACH
    siege_seconds=0
    reassess_seconds=0
@@ -401,13 +449,14 @@ func tick(delta: float, match_state):
      windup_remaining=cooldown
      match_state.record_event("archetype_warning",target,{"archetype":archetype,"delay":cooldown})
      return
-    if active_seconds>=profile.opening and profile.charged_every>0 and (encounter_attacks+1)%int(profile.charged_every)==0 and not charged_ready:
+    var charged_every=(mini(4,int(profile.charged_every)) if int(profile.charged_every)>0 else 4) if archetype=="crusher" else int(profile.charged_every)
+    if active_seconds>=(0.0 if archetype=="crusher" else profile.opening) and charged_every>0 and (encounter_attacks+1)%charged_every==0 and not charged_ready:
      charged_ready=true
-     cooldown=profile.windup
+     cooldown=maxf(.9,profile.windup) if archetype=="crusher" else profile.windup
      windup_remaining=cooldown
      match_state.record_event("charged_attack",target,{"delay":cooldown,"multiplier":profile.charged_scale})
      return
-    var strike_scale=profile.charged_scale if charged_ready else 1.0
+    var strike_scale=maxf(1.35,profile.charged_scale) if charged_ready and archetype=="crusher" else profile.charged_scale if charged_ready else 1.0
     charged_ready=false
     windup_remaining=0
     encounter_attacks+=1
@@ -415,11 +464,14 @@ func tick(delta: float, match_state):
     cooldown += interval
     archetype_primed=false
     if archetype=="ravager" and encounter_attacks%3==0:cooldown+=.8
+    if archetype=="crusher" and pressure_remaining>0:cooldown+=.35
+    if pressure_remaining>0 and pressure_remaining<interval: tactical_recovery=1.0
   var commitment=StrategyCatalog.ARCHETYPES[archetype].commit if archetype!="" and not transformed else 1.0
-  if boss_attack=="" and not archetype_primed and (target_time if difficulty=="standard" and not transformed else reassess_seconds)>maxf(profile.commit*commitment,Catalog.HUNTER_ESCALATION.minimum_commitment) and room.door_hp>damage*2:
+  if boss_attack=="" and not archetype_primed and reassess_seconds>maxf(profile.commit*commitment,Catalog.HUNTER_ESCALATION.minimum_commitment) and room.door_hp>damage*2:
    var alternative=choose_target(match_state.rooms,target)
    var stalled=room.door_hp>=siege_start_hp-damage*2
-   if alternative>=0 and alternative!=target and (stalled or target_score(match_state.rooms[alternative])<target_score(room)*(1-Catalog.HUNTER_ESCALATION.retarget_improvement)):
+   if archetype!="":target_history[target]=minf(900,float(target_history.get(target,0))+ (260 if stalled else 90))
+   if alternative>=0 and alternative!=target and (stalled or (archetype!="" and float(target_history.get(target,0))>=180) or target_score(match_state.rooms[alternative])<target_score(room)*(1-Catalog.HUNTER_ESCALATION.retarget_improvement)):
     cancel_boss_attack()
     surge_remaining=0
     avoid_target=target
@@ -427,6 +479,9 @@ func tick(delta: float, match_state):
     charged_ready=false
     windup_remaining=0
     room.repair_factor=1.0
+    if archetype=="stalker" and not transformed:
+     ability_counts.feint+=1
+     match_state.record_event("hunter_ability",target,{"ability":"feint","duration":1.0})
     state=State.SEEK
    else:
     # Reassess later; do not churn targets on every frame.
@@ -453,7 +508,7 @@ func tick(delta: float, match_state):
 func choose_target(rooms: Array, excluded: int = -1) -> int:
  decision_count+=1
  _route_costs.clear()
- if (difficulty!="standard" or transformed) and _model_ref!=null and _model_ref.get_ref()!=null:
+ if (difficulty!="standard" or transformed or archetype!="") and _model_ref!=null and _model_ref.get_ref()!=null:
   var model=_model_ref.get_ref()
   if model.map_id!="legacy": _route_costs=model.hunter_route_costs(position)
  var best = -1
@@ -461,6 +516,12 @@ func choose_target(rooms: Array, excluded: int = -1) -> int:
  for room in rooms:
   if room.owner >= 0 and room.alive and room.sleeping and room.index != excluded:
    var value = target_score(room)
+   if archetype!="":
+    value+=float(target_history.get(room.index,0))
+    var seed_value=17
+    if _model_ref!=null and _model_ref.get_ref()!=null:seed_value=int(_model_ref.get_ref().random.seed)
+    # Small stable tie variation only among tactically comparable candidates.
+    value*=.94+float(posmod(seed_value+decision_count*37+room.index*71,13))*.01
    if not _route_costs.is_empty():
     var travel=float(_route_costs.get(room.index,INF))
     if not is_finite(travel): continue

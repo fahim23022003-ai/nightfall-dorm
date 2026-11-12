@@ -1,5 +1,6 @@
 class_name BotAI
 extends RefCounted
+# Autonomous budgets retain original L4 machines/L5 structures; player late tiers are optional investments.
 
 static func tick(room: RoomState, delta: float):
  if not room.alive or not room.sleeping:
@@ -11,13 +12,13 @@ static func tick(room: RoomState, delta: float):
  room.bot_timer += profile.interval
  # Preserve income for upgrades unless the door is close to breaking.
  if room.door_hp < room.max_hp()*0.25:
-  if room.upgrade_door() or room.repair_door():
+  if room.specialize_structure("door","bulwark") if room.strategy_enabled and room.door_level==4 and room.door_branch=="" else room.upgrade_door() or room.repair_door():
    return
  if room.bed_level < 1:
-  room.upgrade_bed()
+  room.specialize_structure("bed","lucid") if room.strategy_enabled and room.bed_level==4 and room.bed_branch=="" else room.upgrade_bed()
   return
  if room.door_level < 1:
-  room.upgrade_door()
+  room.specialize_structure("door","bulwark") if room.strategy_enabled and room.door_level==4 and room.door_branch=="" else room.upgrade_door()
   return
  # A damage source and power supply are prerequisites for every strategy.
  for essential in ["turret","generator"]:
@@ -26,29 +27,29 @@ static func tick(room: RoomState, delta: float):
    return
  # Save deliberately; buying every cheaper utility would starve these goals.
  if room.bed_level < 2:
-  room.upgrade_bed()
+  room.specialize_structure("bed","lucid") if room.strategy_enabled and room.bed_level==4 and room.bed_branch=="" else room.upgrade_bed()
   return
  if room.door_level < 2:
-  room.upgrade_door()
+  room.specialize_structure("door","bulwark") if room.strategy_enabled and room.door_level==4 and room.door_branch=="" else room.upgrade_door()
   return
  # A repair station reduces manual gold drain before long-term investments.
  if not has_kind(room,"repair"):
   build_first_empty(room,"repair")
   return
  if room.profile == "guard" and room.door_level < profile.door_goal:
-  room.upgrade_door()
+  room.specialize_structure("door","bulwark") if room.strategy_enabled and room.door_level==4 and room.door_branch=="" else room.upgrade_door()
   return
  if room.bed_level < profile.bed_goal:
   if room.door_level < maxi(0,room.bed_level-1):
-   room.upgrade_door()
+   room.specialize_structure("door","bulwark") if room.strategy_enabled and room.door_level==4 and room.door_branch=="" else room.upgrade_door()
   else:
-   room.upgrade_bed()
+   room.specialize_structure("bed","lucid") if room.strategy_enabled and room.bed_level==4 and room.bed_branch=="" else room.upgrade_bed()
   return
  if room.door_level < profile.door_goal:
   if room.bed_level < maxi(0,room.door_level-1):
-   room.upgrade_bed()
+   room.specialize_structure("bed","lucid") if room.strategy_enabled and room.bed_level==4 and room.bed_branch=="" else room.upgrade_bed()
   else:
-   room.upgrade_door()
+   room.specialize_structure("door","bulwark") if room.strategy_enabled and room.door_level==4 and room.door_branch=="" else room.upgrade_door()
   return
  for kind in profile.priorities:
   if not has_kind(room,kind):
@@ -56,20 +57,20 @@ static func tick(room: RoomState, delta: float):
    return
  if room.profile == "gunner":
   for tile in room.buildings:
-   if room.buildings[tile].kind in ["turret","heavy"] and room.buildings[tile].level < Catalog.BUILDING_MAX_LEVEL:
+   if room.buildings[tile].kind in ["turret","heavy"] and room.buildings[tile].level < mini(4,Catalog.BUILDING_MAX_LEVEL):
     room.upgrade_building(tile)
     return
- if room.bed_level < Catalog.BED_INCOME.size()-1:
+ if room.bed_level < mini(4,Catalog.BED_INCOME.size()-1):
   if room.door_level < maxi(0,room.bed_level-1):
-   room.upgrade_door()
+   room.specialize_structure("door","bulwark") if room.strategy_enabled and room.door_level==4 and room.door_branch=="" else room.upgrade_door()
   else:
-   room.upgrade_bed()
+   room.specialize_structure("bed","lucid") if room.strategy_enabled and room.bed_level==4 and room.bed_branch=="" else room.upgrade_bed()
   return
- if room.door_level < Catalog.DOOR_HP.size()-1:
-  room.upgrade_door()
+ if room.door_level < mini(4,Catalog.DOOR_HP.size()-1):
+  room.specialize_structure("door","bulwark") if room.strategy_enabled and room.door_level==4 and room.door_branch=="" else room.upgrade_door()
   return
  for tile in room.buildings:
-  if room.buildings[tile].level < Catalog.BUILDING_MAX_LEVEL:
+  if room.buildings[tile].level < mini(4,Catalog.BUILDING_MAX_LEVEL):
    room.upgrade_building(tile)
    return
 

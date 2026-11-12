@@ -2,7 +2,7 @@ class_name AudioDirector
 extends Node
 
 const ROOT = "res://assets/audio/"
-const LOOP_NAMES = ["music_menu","music_calm","music_danger","ambient_dorm","proximity_loop","generator_loop","music_reaper","reaper_ambience"]
+const LOOP_NAMES = ["music_intro","music_approach","music_endless","music_menu","music_calm","music_danger","ambient_dorm","proximity_loop","generator_loop","music_reaper","reaper_ambience"]
 const EFFECT_NAMES = ["death_scream_1","death_scream_2","hunter_laugh","reaper_laugh","weather_thunder","weather_wind","weather_rain","prestige_upgrade","survivor_notice","intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","button","menu","match_start","purchase","failure","rank","reward","victory","defeat","shot_needle","shot_arc","impact","ghost_hurt","ghost_defeat","door_hit","door_crack","door_break","build","turret_upgrade","bed_upgrade","door_upgrade","repair","upgrade","income","electricity","footstep","danger","breach","hunter_spawn","hunter_level","elimination","scream_1","scream_2","scream_3","door_reaction","sale","refund","insufficient_gold","insufficient_power","eerie","reaper_transform","reaper_scythe","reaper_charge","reaper_surge","reaper_impact","reaper_hurt","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_end","item_explosion","item_shield_hit"]
 const CRITICAL_EVENTS = ["death_scream_1","death_scream_2","survivor_notice","prestige_upgrade","intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","victory","defeat","ghost_defeat","rank","reward","hunter_level","breach","door_break","match_start","door_reaction","sale","refund","reaper_transform","reaper_charge","reaper_surge","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_explosion"]
 const VOICE_LIMIT = 16
@@ -11,6 +11,10 @@ const EFFECT_COOLDOWNS = {"reaper_transform":4.0,"reaper_scythe":0.7,"reaper_cha
 var mobile_profile=false
 var suspended=false
 var event_counts: Dictionary = {}
+var preview_music=""
+var preview_effect_until=0.0
+var preview_effect_name=""
+var cinematic_music=false
 var music_start_count = 0
 var intensity = 0.0
 var proximity = 0.0
@@ -86,7 +90,7 @@ func setup():
    missing_assets.append(path)
    push_error("Nightfall audio could not decode: "+path)
    continue
-  if name in LOOP_NAMES:
+  if name in LOOP_NAMES and name!="music_intro":
    stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
    stream.loop_begin = 0
    stream.loop_end = roundi(stream.get_length()*stream.mix_rate)
@@ -115,6 +119,23 @@ func setup():
   add_child(voice)
   voices.append(voice)
  set_mix(mix)
+
+func begin_cinematic():
+ setup();cinematic_music=true
+ if loops.has("music_intro"):loops.music_intro.play(0)
+func end_cinematic():cinematic_music=false
+func preview_track(name: String):
+ preview_music=name if name in LOOP_NAMES and name.begins_with("music") else ""
+ if preview_music!="":loops[preview_music].play(0)
+func preview_effect(name: String):
+ stop_preview()
+ if not streams.has(name) or name not in EFFECT_NAMES:return
+ preview_effect_name=name;preview_effect_until=_clock+streams[name].get_length()+.2
+ event(name)
+func stop_preview():
+ preview_music=""
+ if preview_effect_name!="":stop_events([preview_effect_name])
+ preview_effect_name="";preview_effect_until=0.0
 
 func set_mix(settings: Dictionary):
  for key in ["music","effects","ambient"]:
@@ -239,9 +260,9 @@ func update_state(delta: float, model, mode: String):
  if mode in ["menu","intro"] or (model!=null and model.tutorial_mode):
   set_tension("quiet",0)
   pending_laughs.clear();pending_deaths.clear()
-  stop_events(["hunter_laugh","reaper_laugh","death_scream_1","death_scream_2","weather_thunder","weather_wind","weather_rain"])
+  if _clock>=preview_effect_until:stop_events(["hunter_laugh","reaper_laugh","death_scream_1","death_scream_2","weather_thunder","weather_wind","weather_rain"])
  for cue in pending_laughs.duplicate():
-  if _clock-cue.time>3:pending_laughs.erase(cue);continue
+  if _clock-cue.time>60:pending_laughs.erase(cue);continue
   var death_playing=voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"").begins_with("death_scream"))
   var laugh_playing=voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"") in ["hunter_laugh","reaper_laugh"])
   if _clock>=cue.time+.25 and not death_playing and not laugh_playing and event(cue.name,cue.position):pending_laughs.erase(cue)
@@ -298,16 +319,23 @@ func update_state(delta: float, model, mode: String):
  var music_active = mode=="match" and (model==null or model.result=="")
  var boss_active=active and model.hunter.transformed and model.hunter.hp>0
  var targets = {"music_menu":1.0 if mode=="menu" else 0.0,"music_calm":(1.0-intensity)*0.85 if music_active and not boss_active else 0.0,"music_danger":intensity*0.85 if music_active and not boss_active else 0.0,"ambient_dorm":0.35+proximity*0.30 if active else 0.15 if mode=="menu" else 0.0,"proximity_loop":proximity*intensity*0.65 if active else 0.0,"generator_loop":generator_weight if active else 0.0}
- targets["music_reaper"]=0.85 if boss_active else 0.0
- var critical_active=voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"") in CRITICAL_EVENTS)
+ targets["music_reaper"]=0.95 if boss_active else 0.0
+ targets.music_intro=1.0 if mode=="intro" and cinematic_music else 0.0
+ targets.music_approach=.75 if music_active and not boss_active and proximity>.12 and intensity<.65 else 0.0
+ targets.music_endless=.85 if music_active and model!=null and model.run_kind=="endless" and not boss_active and int(model.endless.wave)%2==0 else 0.0
+ if targets.music_approach>0:targets.music_calm*=.35
+ if targets.music_endless>0:targets.music_calm*=.25;targets.music_danger*=.5
+ if preview_music!="":
+  for key in targets:targets[key]=1.0 if key==preview_music else 0.0
+ var critical_active=voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"") in CRITICAL_EVENTS and _voice_names.get(v.get_instance_id(),"") not in ["intro_running","intro_breath"])
  music_duck=move_toward(music_duck,.48 if critical_active else 1.0,delta*3.0)
  targets["reaper_ambience"]=proximity*0.55 if boss_active else 0.0
  pacing_gain=move_toward(pacing_gain,1.0-.35*tension_weight,delta*.7)
  ambience_gain=move_toward(ambience_gain,1.0-.4*tension_weight,delta*.6)
  for name in loops:
   loop_weights[name] = move_toward(float(loop_weights[name]),float(targets[name]),delta*1.1)
-  var music_gain=(.55 if mode=="match" else .85)*music_duck*pacing_gain if name.begins_with("music") else ambience_gain if name in ["ambient_dorm","reaper_ambience"] else 1.0
-  loops[name].volume_db = linear_to_db(maxf(0.0001,loop_weights[name]*music_gain))-12.0
+  var music_gain=(.95 if mode=="match" else 1.0)*music_duck*maxf(.8,pacing_gain) if name.begins_with("music") else ambience_gain if name in ["ambient_dorm","reaper_ambience"] else 1.0
+  loops[name].volume_db = linear_to_db(maxf(0.0001,loop_weights[name]*music_gain))+(-3.0 if name.begins_with("music") else -15.0)
  # Outcomes may be supplied explicitly by the host, too; cooldown prevents repeats.
  if model != null and model.result != "" and _previous.get("result","") != model.result:
   _pending_critical=_pending_critical.filter(func(cue): return cue.name not in ["reaper_transform","reaper_charge","reaper_surge"])
@@ -446,8 +474,10 @@ func _observe_presentation(model):
       _scream_next=_clock+2.0
       for voice in voices:
        if voice.playing and voice.stream==streams["scream_"+str(1+(_scream_variation-1)%3)]: _scream_voice=voice
-   "charged_attack": event("danger",position)
-   "archetype_warning": event("danger",position)
+   "hunter_ability_warning": event("ghost_hurt",position);event("danger",position)
+   "hunter_ability": event("eerie",position)
+   "charged_attack": event("ghost_hurt",position);event("danger",position)
+   "archetype_warning": event("ghost_hurt",position);event("danger",position)
    "door_damage":
     event("door_hit",position)
     var hp=float(record.get("hp",0))
@@ -493,7 +523,7 @@ func update_environment(environment):
  for cue in environment.weather_events:
   if cue.id<=environment_serial:continue
   environment_serial=cue.id
-  var critical_playing=voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"") in CRITICAL_EVENTS)
+  var critical_playing=voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"") in CRITICAL_EVENTS and _voice_names.get(v.get_instance_id(),"") not in ["intro_running","intro_breath"])
   if not critical_playing and tension_state not in ["danger","elimination"]:event(cue.cue,listener_position)
 
 func _play_death_queue():

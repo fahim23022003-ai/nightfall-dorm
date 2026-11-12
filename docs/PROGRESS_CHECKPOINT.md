@@ -10,6 +10,21 @@ tacticalHunter abilities; allsix machines plusbed/door L10specializations;
 teammate status/safe camera. No main changes/publicrelease. NativeWindows
 and subjective scariness remainUNVERIFIED. Do not markpartial featurescomplete.
 
+
+Integrated milestone: allfourworkstreams implemented; originalsampledscore and
+licensedsource checkpoints3a64516/d05e3f4 pushed. C acceptance: audio271,
+machineeconomy1668/48scenarios, structures99, migration43, spectator1420,
+branchUI425, tactical60251 plus affectedRavager20076/finalcharged+codes4033.
+Dactualaudio156 and teamHUD293 checks pass; finalbranch/earnedrender pending.
+Originalintro music0target fixed; firstphrase raised withheadroom, genuine
+recordingsreplaceweaksyntheticvoices. OldsaveJSONversioncheck, longer-scream
+laughqueueexpiry, Ravagerarrivalrecovery, roster/inspector overlap, structural
+labels/couponpolicy and HellCrusher3-hitfrequency fixed and affectedretested.
+Sixmachines+bed/door now10; bed/door remainexistingunsellable full-price
+structures; sixmachinesretaincoupon/actualinvestment50%refunds. CodesRULESET2
+rejectoldplayconditionswhilepreservingarchivalrecords. Transientcameraunsaved.
+Full88-command immutable regression isrunning; finalcompletion/pushnotclaimed.
+
 ---
 
 # Phase 6 — audit complete; Windows validation pending (12 November 2026)

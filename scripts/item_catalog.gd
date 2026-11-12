@@ -17,7 +17,7 @@ const ITEMS={
  "feather":{"name":"Last Stand Feather","rarity":"Epic","color":"FFD97C","description":"Automatic once per match: crossing 25% intact door HP heals 15%."},
  "inferno":{"name":"Inferno Ammo","rarity":"Epic","color":"FF9255","description":"Owned turret hits ignite one 12 DPS burn for 4s, for 15s. Reaper resists 40%."},
  "pillow":{"name":"Golden Pillow","rarity":"Rare","color":"F9D269","description":"Occupied bed income +50% for 25s."},
- "coupon":{"name":"Construction Coupon","rarity":"Rare","color":"93E3CB","description":"Arm free: next building purchase/upgrade costs 40% less. Spent only on success."},
+ "coupon":{"name":"Construction Coupon","rarity":"Rare","color":"93E3CB","description":"Arm free: next placeable machine purchase/upgrade costs 40% less. Beds/doors excluded; spent only on success."},
  "decoy":{"name":"Ghost Decoy Doll","rarity":"Epic","color":"E2AAF2","description":"Distract Hunter at your doorway up to 8s (Reaper 4s). 20s recovery."},
  "rescue":{"name":"Team Rescue Signal","rarity":"Rare","color":"82F1D5","description":"Select a living teammate: restore 25% max intact door HP."},
  "smoke":{"name":"Shadow Smoke","rarity":"Epic","color":"C89AF4","description":"Lower your room priority for 6s (Reaper 3s). Hunter can still attack."},

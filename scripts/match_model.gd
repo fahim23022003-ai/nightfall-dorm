@@ -479,7 +479,7 @@ func _turrets(delta: float):
   var multiplier = 1.0
   for b in room.buildings.values():
    if b.kind == "enhancer":
-    multiplier += Catalog.BUILDINGS.enhancer.rate*b.level
+    multiplier += Catalog.support_output("enhancer",b.level)*StrategyCatalog.support(b).get("output",1.0)
   for tile in room.buildings:
    var b = room.buildings[tile]
    if b.kind != "turret" and b.kind != "heavy":
@@ -487,7 +487,7 @@ func _turrets(delta: float):
    b.cooldown = maxf(-delta,b.cooldown-delta)
    var data = Catalog.BUILDINGS[b.kind]
    var branch=StrategyCatalog.weapon(b)
-   if not hunter.shadow_active(room.index) and hunter.hp > 0 and hunter.state != HunterState.State.DORMANT and hunter.state != HunterState.State.DEAD and room.tile_position(tile).distance_to(hunter.position)<=data.range*branch.range and b.cooldown <= 0:
+   if not hunter.shadow_active(room.index) and hunter.hp > 0 and hunter.state != HunterState.State.DORMANT and hunter.state != HunterState.State.DEAD and room.tile_position(tile).distance_to(hunter.position)<=data.range*branch.range*room.special_factor("range",.8,1.0)*(.8 if hunter.conceal_remaining>0 else 1.0) and b.cooldown <= 0:
     var amount = Catalog.turret_damage(b.kind,b.level)*multiplier*room.turret_multiplier*branch.damage
     if projectiles.size() >= Catalog.PROJECTILES.max_active:
      continue
@@ -499,7 +499,7 @@ func _turrets(delta: float):
     shots += 1
     room.shots += 1
     b.flash = 0.15
-    b.cooldown += Catalog.turret_interval(b.kind,b.level)*branch.interval/(ItemCatalog.TUNING.overdrive_rate if room.owner==0 and float(items.timers.get("overdrive",0))>0 else 1.0)
+    b.cooldown += Catalog.turret_interval(b.kind,b.level)*branch.interval*room.special_factor("interval",.8,1.0)/(ItemCatalog.TUNING.overdrive_rate if room.owner==0 and float(items.timers.get("overdrive",0))>0 else 1.0)
 
 func _advance_projectiles(delta: float):
  if not running or result != "" or not is_finite(delta) or delta <= 0:

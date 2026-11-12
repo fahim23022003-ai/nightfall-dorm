@@ -22,7 +22,7 @@ func validation():
        check(code.length()<=128 and decoded.ok and Support.numeric_same(decoded.config,config),"all supported map/mode/archetype/resource/gear/extreme seed configurations roundtrip")
        check(Code.decode("  "+code.to_lower()+"\n").ok,"outer whitespace/case normalize canonically")
  var good=Code.encode({"map":MapCatalog.IDS[0],"difficulty":"standard","archetype":"crusher","preset":0,"gear":0,"seed":71})
- var malformed=["","NF2","not a challenge",good.left(-1),good+"garbage","x".repeat(129),good.replace("-71-","-72-"),signed("NF2-2-0-71-0-0-0-0"),signed("NF2-1-5-71-0-0-0-0"),signed("NF2-1-0-0-0-0-0-0"),signed("NF2-1-0-1000000-0-0-0-0"),signed("NF2-1-0-71-3-0-0-0"),signed("NF2-1-0-71-0-3-0-0"),signed("NF2-1-0-71-0-0-2-0"),signed("NF2-1-0-71-0-0-0-2"),signed("NF2-1-00-71-0-0-0-0"),signed("NF2-1-0-+71-0-0-0-0"),signed("NF2-1-0-71.5-0-0-0-0")]
+ var malformed=["","NF2","not a challenge",good.left(-1),good+"garbage","x".repeat(129),good.replace("-71-","-72-"),signed("NF2-3-0-71-0-0-0-0"),signed("NF2-2-5-71-0-0-0-0"),signed("NF2-2-0-0-0-0-0-0"),signed("NF2-2-0-1000000-0-0-0-0"),signed("NF2-2-0-71-3-0-0-0"),signed("NF2-2-0-71-0-3-0-0"),signed("NF2-2-0-71-0-0-2-0"),signed("NF2-2-0-71-0-0-0-2"),signed("NF2-2-00-71-0-0-0-0"),signed("NF2-2-0-+71-0-0-0-0"),signed("NF2-2-0-71.5-0-0-0-0")]
  for code in malformed:
   var result=Code.decode(code)
   check(not result.ok and result.get("error","")!="","tampered/malformed/future/noncanonical code rejected with useful error")

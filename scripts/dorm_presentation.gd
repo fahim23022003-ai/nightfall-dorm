@@ -294,10 +294,13 @@ func render(c):
     var v=Vector2.from_angle(i*TAU/6)*(8+(1-fraction)*15)
     c.draw_line(p+v,p+v*1.3,Color(color,fraction),2)
  for room in m.rooms:
+  if room.bed_level>=5:support_prestige(c,OFFSET+room.bed_position()+Vector2(0,34),room.bed_level+1,room.bed_branch)
+  if room.door_level>=5 and room.door_hp>0:support_prestige(c,OFFSET+room.door_position()+Vector2(0,-58),room.door_level+1,room.door_branch)
   for tile in room.buildings:
    var b=room.buildings[tile]
-   if b.kind in ["turret","heavy"] and b.level>=5:
-    prestige(c,OFFSET+room.tile_position(tile),b.level,b.kind)
+   if b.level>=5:
+    if b.kind in ["turret","heavy"]:prestige(c,OFFSET+room.tile_position(tile),b.level,b.kind)
+    else:support_prestige(c,OFFSET+room.tile_position(tile),b.level,b.get("specialization",""))
  if c.get("horror")!=null: c.horror.render_world(c)
  item_presentation.draw(c)
  for f in c.floating:
@@ -357,7 +360,7 @@ func door_scene(c, room):
  if room.door_hp>0:
   var tint = Color(1.65,0.65,0.65) if room.damage_flash>0 else Color.WHITE
   if room.closed:
-   c.draw_texture_rect(cartoon["door_%d" % (room.door_level+1)],Rect2(p+Vector2(-36,-41),Vector2(73,61)),false,tint)
+   c.draw_texture_rect(cartoon["door_%d" % mini(5,room.door_level+1)],Rect2(p+Vector2(-36,-41),Vector2(73,61)),false,tint)
   else:
    sprite(c,"door",p+Vector2(-31,-10),Vector2(40,50),Color("A3B8C0"),-0.95)
   if room.door_hp < room.max_hp()*0.55:
@@ -400,6 +403,7 @@ func hunter(c,h):
  var shape=Vector2(1.13,1.04) if archetype=="crusher" else Vector2(.9,1.08) if archetype=="stalker" else Vector2(1.03,.94) if archetype=="ravager" else Vector2.ONE
  var tint=Color("C9B5A0") if archetype=="crusher" else Color("B8B0D6") if archetype=="stalker" else Color("D3AAA3") if archetype=="ravager" else Color(.83,.88,.92)
  if archetype=="stalker" and h.state in [HunterState.State.MOVE,HunterState.State.SEEK] and h.position.distance_to(c.model.player_position)>300:alpha=.68
+ if h.conceal_remaining>0:alpha=.35
  if attack_pose>0:name="hunter_attack"
  if h.state==HunterState.State.DEAD:
   name="hunter_death"
@@ -482,7 +486,7 @@ func cartoon_room(c,room: RoomState,owned: bool):
  c.draw_line(Vector2(r.position.x,r.end.y),r.end,Color("263746"),5)
  c.draw_line(r.position-Vector2(5,9),r.position+Vector2(275,-9),Color("A6B9C1"),3)
  if room.index==3: c.draw_texture_rect(cartoon.rug,Rect2(OFFSET+room.bed_position()-Vector2(44,63),Vector2(88,126)),false)
- c.draw_texture_rect(cartoon["bed_%d" % (room.bed_level+1)],Rect2(OFFSET+room.bed_position()-Vector2(33,46),Vector2(66,92)),false)
+ c.draw_texture_rect(cartoon["bed_%d" % mini(5,room.bed_level+1)],Rect2(OFFSET+room.bed_position()-Vector2(33,46),Vector2(66,92)),false)
  var decor=["desk","desk","cabinet","cabinet","bookshelf","utility"][room.index]
  c.draw_texture_rect(cartoon[decor],Rect2(OFFSET+room.cabinet_position()-Vector2(23,27),Vector2(46,54)),false)
  c.draw_texture_rect(cartoon.plant,Rect2(OFFSET+room.plant_position()-Vector2(15,19),Vector2(30,38)),false)
@@ -560,3 +564,11 @@ func prestige(c,point: Vector2,level: int,kind="turret"):
   if not reduced:c.draw_arc(point,28,sin(clock)*.2,PI+sin(clock)*.2,24,Color(color,.4),2)
  c.draw_style_box(frame(Color("172338"),color,2),Rect2(point+Vector2(-22,14),Vector2(44,14)))
  text(c,"L%d%s" % [level," MAX" if level==10 else ""],point+Vector2(-18,24),8,color)
+
+func support_prestige(c,point: Vector2,level: int,branch: String=""):
+ var color=Color("E9B866") if level==10 else Color("9DD4C3")
+ c.draw_arc(point+Vector2(0,2),25,PI*.1,PI*.9,20,color,2)
+ for side in [-1,1]:c.draw_line(point+Vector2(side*20,-18),point+Vector2(side*27,-29),color,3)
+ if branch!="":c.draw_texture_rect(PremiumButton.texture(branch),Rect2(point+Vector2(13,-33),Vector2(19,19)),false)
+ c.draw_style_box(frame(Color("172338"),color,2),Rect2(point+Vector2(-23,18),Vector2(46,13)))
+ text(c,"L%d%s" % [level," MAX" if level==10 else ""],point+Vector2(-20,28),8,color)
