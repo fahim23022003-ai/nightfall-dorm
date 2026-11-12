@@ -1,3 +1,17 @@
+# Phase 5D-3 — owner-feedback improvements (12 November 2026)
+
+IN PROGRESS. Actual clean work/GitHub baseline
+3e6224e649ae7d30de0742e2dc58688a078f43a2 is newer than supplied5D2reference.
+Preserve existing Phase6 fixes/history; this task does not repeat/start Phase6.
+Recoverytag pre-phase5d3-3e6224e. Baseline9commands pass. B soleproduction;
+C independentQA; root docs/checkpoints/regressions; bounded genuineaudio source
+scout. Four workstreams: sampled musical score/genuinevocals and audio test UI;
+tacticalHunter abilities; allsix machines plusbed/door L10specializations;
+teammate status/safe camera. No main changes/publicrelease. NativeWindows
+and subjective scariness remainUNVERIFIED. Do not markpartial featurescomplete.
+
+---
+
 # Phase 6 — audit complete; Windows validation pending (12 November 2026)
 
 RELEASE CANDIDATE, PENDING WINDOWS VALIDATION. Godot4.6.3 Linux; version0.6.0-rc1.
