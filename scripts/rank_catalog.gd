@@ -5,9 +5,9 @@ extends RefCounted
 const VERSION=1
 const MAX_EQUIPPED=1
 const MAX_XP=100000000
-const NAMES=["Bronze","Silver","Gold","Platinum","Diamond","Master"]
-const THRESHOLDS=[0,250,700,1400,2400,3800]
-const COLORS=["B77A4A","BBCAD4","F4C542","75D5C7","70C8FF","B493F5"]
+const NAMES=["Bronze","Silver","Gold","Platinum","Diamond","Master","Mythic"]
+const THRESHOLDS=[0,250,700,1400,2400,3800,8000]
+const COLORS=["B77A4A","BBCAD4","F4C542","75D5C7","70C8FF","B493F5","E8BE61"]
 const PERKS=[
  {"id":"pocket","name":"Pocket change","description":"Start with 5 extra gold.","rank":0,"gold":5.0},
  {"id":"reinforced","name":"Reinforced frame","description":"Your door has 5% more maximum HP.","rank":1,"door":1.05},
@@ -30,7 +30,10 @@ const PRESSURE={
 static func pressure(mode: String) -> Dictionary:
  return PRESSURE.get(mode,PRESSURE.standard)
 const MIN_OCCUPIED_SECONDS=20.0
-const DEFEAT_CAP=80
+const DEFEAT_CAP=30
+const MYTHIC={"xp":8000,"advanced_wins":3,"reaper_defeats":3,"stage":"stage_5"}
+const STAGE_XP=10
+const REAPER_XP=40
 const VICTORY_BASE=120
 
 static func rank_for(xp: int) -> int:
@@ -38,6 +41,9 @@ static func rank_for(xp: int) -> int:
  for i in range(THRESHOLDS.size()):
   if xp>=THRESHOLDS[i]: rank=i
  return rank
+
+static func mythic_ready(stats: Dictionary,records: Dictionary) -> bool:
+ return int(stats.get("hard",0))+int(stats.get("hell",0))>=MYTHIC.advanced_wins and int(stats.get("reaper_defeats",0))>=MYTHIC.reaper_defeats and records.has(MYTHIC.stage)
 
 static func perk(id: String) -> Dictionary:
  for item in PERKS:
@@ -61,17 +67,21 @@ static func bonuses(equipped: Array) -> Dictionary:
 static func performance(model) -> Dictionary:
  var r=model.player()
  var eligible=model.result in ["victory","defeat"] and r!=null and r.occupied_seconds>=MIN_OCCUPIED_SECONDS and model.time>=model.preparation+10.0
- var result={"victory":0,"survival":0,"damage":0,"defense":0,"difficulty_bonus":0,"loss_adjustment":0,"ceiling_adjustment":0,"total":0,"eligible":eligible,"difficulty":model.difficulty}
+ var result={"victory":0,"survival":0,"damage":0,"defense":0,"difficulty_bonus":0,"loss_adjustment":0,"ceiling_adjustment":0,"total":0,"eligible":eligible,"difficulty":model.difficulty,"stage_bonus":0,"reaper_bonus":0}
  if not eligible: return result
  result.victory=VICTORY_BASE if model.result=="victory" else 0
  result.survival=mini(90,int(r.occupied_seconds/10.0)*3)
  result.damage=mini(100,int(r.damage_dealt/50.0))
  result.defense=mini(30,int(r.door_damage_taken/50.0)) if r.alive and r.door_hp>0 else 0
- var base=result.victory+result.survival+result.damage+result.defense
+ if model.result=="victory" and model.hunter.hp<=0:
+  result.stage_bonus=maxi(0,StageCatalog.index_of(model.stage_id)+1)*STAGE_XP
+  result.reaper_bonus=REAPER_XP if model.hunter.transformed else 0
+ var base=result.stage_bonus+result.reaper_bonus+result.victory+result.survival+result.damage+result.defense
  result.difficulty_bonus=int(floor(base*(DIFFICULTIES.get(model.difficulty,DIFFICULTIES.standard).xp-1.0)))
  result.total=base+result.difficulty_bonus
  if model.result=="defeat":
-  var partial=mini(DEFEAT_CAP,int(floor(result.total*0.35)))
-  result.loss_adjustment=partial-result.total
+  var partial=mini(mini(DEFEAT_CAP,int(r.occupied_seconds/30.0)),int(floor((result.survival+result.damage+result.defense)*0.2)))
+  result.difficulty_bonus=0
+  result.loss_adjustment=partial-base
   result.total=partial
  return result

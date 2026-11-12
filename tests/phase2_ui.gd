@@ -62,17 +62,20 @@ func run():
  check(game.profile.path==save_path,"scene uses isolated QA save override")
  check(has_label("Bronze") and has_label("0 XP"),"fresh menu displays rank and XP")
  await click_button("Ranks & rewards")
- check(has_label("BRONZE") and has_label("REWARDS"),"actual rank button opens rank/reward screen")
- check(has_label("Next: Reinforced frame"),"rank screen identifies next available reward")
+ check(has_label("BRONZE") and has_label("PERMANENT BOOSTS"),"actual rank button opens rank/reward screen")
+ check(has_label("250 XP to Silver") and has_label("Reinforced frame · Silver required"),"rank screen identifies next available reward")
  var badges=0
  for node in game.ui.panel.get_children():
   if node is TextureRect and not node.is_queued_for_deletion():
    check(node.texture!=null,"rank badge texture exists")
    badges+=1
- check(badges>=6,"all six rank badges rendered as real texture controls")
+ check(badges>=8,"all seven rank badges plus current rank rendered as real texture controls")
+ for rank_name in RankCatalog.NAMES:
+  check(has_label(rank_name),"rank screen names existing rank "+rank_name)
+ var rescue_description=false
  for node in game.ui.panel.get_children():
-  if node is Label and not node.is_queued_for_deletion() and "Cannot revive" in node.text:
-   check(node.size.x<=412,"long reward description stays within its column")
+  if node is Button and not node.is_queued_for_deletion() and "Cannot revive" in node.tooltip_text: rescue_description=true
+ check(rescue_description,"rank screen retains complete rescue description in perk tooltip")
  await click_button("Choose loadout")
  check(game.ui.current_screen=="loadout" and game.campaign_mode,"rank loadout opens current stage preparation")
  for node in game.ui.panel.get_children():
@@ -132,13 +135,17 @@ func run():
  game.model.player().occupied_seconds=30
  game.model.player().damage_dealt=100
  game.model.player().door_damage_taken=100
+ game.model.hunter.hp=0
+ game.model.hunter.state=HunterState.State.DEAD
  game.model.result="victory"
  # Exercise real controller terminal handling once; menu/fixtures remain otherwise frozen.
  game._process(0.01)
  await process_frame
  check(game.mode=="result" and not game.last_progression.is_empty(),"terminal controller produces actual progression summary")
- check(has_label("Victory 120") and has_label("Difficulty +"),"post-match points breakdown is transparent")
- check(game.last_progression.promoted and has_label("PROMOTED: Gold"),"real settlement drives visible rank promotion summary")
+ check(has_label("Base 120") and has_label("Difficulty +"),"post-match points breakdown is transparent")
+ check(game.last_progression.get("promoted",false) and has_label("PROMOTED") and has_label("Silver → Gold"),"real settlement drives visible old-to-new rank promotion summary")
+ await create_timer(1.7).timeout
+ check(has_label("690 → %d XP" % game.profile.xp),"animated result reaches exact saved old/new XP")
  var final_xp=game.profile.xp
  game._process(0.01)
  loaded=PlayerProfile.new(save_path)

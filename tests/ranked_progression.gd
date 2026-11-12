@@ -36,6 +36,8 @@ func eligible_model(mode="standard", equipped=[]):
  model.player().occupied_seconds=30
  model.player().damage_dealt=100
  model.player().door_damage_taken=100
+ model.hunter.hp=0
+ model.hunter.state=HunterState.State.DEAD
  model.result="victory"
  return model
 
@@ -266,9 +268,9 @@ func run():
  check(RankCatalog.performance(model).total==166,"hard difficulty adds floor25percent of known133XP base")
  model.result="defeat"
  model.player().alive=false
- check(RankCatalog.performance(model).total==4,"hard defeat receives floor35percent of legitimate13XP performance")
+ check(RankCatalog.performance(model).total==1,"hard defeat is limited to one XP per30occupiedseconds with no modebonus")
  model.difficulty="standard"
- check(RankCatalog.performance(model).total==3,"standard defeat receives floor35percent without victory bonus")
+ check(RankCatalog.performance(model).total==1,"standard defeat shares the same timebound without victory bonus")
  model=eligible_model()
  model.player().occupied_seconds=20
  model.time=model.preparation+9.99
@@ -286,7 +288,7 @@ func run():
  check(RankCatalog.performance(model).total<=425,"hard victory award upper bound")
  model.result="defeat"
  model.player().alive=false
- check(RankCatalog.performance(model).total<=80,"legitimate defeat partial progression capped at 80")
+ check(RankCatalog.performance(model).total<=30,"legitimate defeat partial progression capped at30")
  path=fresh_path("settle")
  profile=PlayerProfile.new(path)
  profile.xp=240

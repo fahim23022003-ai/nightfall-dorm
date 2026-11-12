@@ -23,14 +23,19 @@ func badge(rank: int,pos: Vector2,size=72):
 func menu_summary():
  var p=game.profile
  badge(p.rank_index(),Vector2(444,398),76)
- var next="MASTER RANK" if p.rank_index()==5 else "%d XP to %s" % [RankCatalog.THRESHOLDS[p.rank_index()+1]-p.xp,RankCatalog.NAMES[p.rank_index()+1]]
- ui.label_at("%s · %d XP\n%s" % [p.rank_name(),p.xp,next],Vector2(430,488),16,240)
+ var next=p.promotion_requirement()
+ ui.label_at("%s · %d XP" % [p.rank_name(),p.xp],Vector2(430,488),16,240)
+ var progress=ui.label_at(next,Vector2(430,519),13,224)
+ progress.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+ progress.size=Vector2(224,80)
+ progress.set_deferred("size",Vector2(224,80))
  ui.button("Ranks & rewards",Vector2(72,596),show_ranks,330,44)
  if p.warning!="":
-  var notice=ui.label_at(p.warning,Vector2(430,560),16,224)
+  var notice=ui.label_at(p.warning,Vector2(430,608),13,224)
   notice.clip_text=true
   notice.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
-  notice.size=Vector2(224,95)
+  notice.size=Vector2(224,62)
+  notice.set_deferred("size",Vector2(224,62))
   notice.modulate=Color("FFD27A")
 
 func show_ranks():
@@ -42,35 +47,45 @@ func show_ranks():
  game.audio_event("menu")
  ui.box(Rect2(60,40,1160,638))
  var p=game.profile
- badge(p.rank_index(),Vector2(86,62),90)
- ui.label_at("%s  ·  %d lifetime XP" % [p.rank_name().to_upper(),p.xp],Vector2(190,70),28,940,true)
+ var art=badge(p.rank_index(),Vector2(86,62),100)
+ var pulse=art.create_tween().set_loops()
+ pulse.tween_property(art,"modulate",Color(1.15,1.05,1.25),1.2)
+ pulse.tween_property(art,"modulate",Color.WHITE,1.2)
+ ui.label_at("%s · %d lifetime XP" % [p.rank_name().to_upper(),p.xp],Vector2(205,65),28,940,true)
+ ui.label_at("Highest: %s · %s" % [RankCatalog.NAMES[p.highest_rank],p.promotion_requirement()],Vector2(205,108),15,940)
  var rank=p.rank_index()
- var target=RankCatalog.THRESHOLDS[mini(5,rank+1)]
  var base=RankCatalog.THRESHOLDS[rank]
- ui.label_at("Master attained — all rewards unlocked." if rank==5 else "%d / %d rank XP · %d more XP for %s" % [p.xp-base,target-base,target-p.xp,RankCatalog.NAMES[rank+1]],Vector2(190,114),19,930)
+ var target=RankCatalog.THRESHOLDS[mini(6,rank+1)]
  var bar=ProgressBar.new()
- bar.position=Vector2(190,150)
- bar.size=Vector2(960,20)
- bar.max_value=1 if rank==5 else target-base
- bar.value=1 if rank==5 else p.xp-base
+ bar.position=Vector2(205,143)
+ bar.size=Vector2(930,18)
+ bar.max_value=1 if rank==6 else target-base
+ bar.value=1 if rank==6 else clampi(p.xp-base,0,target-base)
  ui.panel.add_child(bar)
- for i in range(6):
-  badge(i,Vector2(90+i*182,190),54)
-  ui.label_at("%s\n%d XP" % [RankCatalog.NAMES[i],RankCatalog.THRESHOLDS[i]],Vector2(148+i*182,193),16,122)
- ui.label_at("REWARDS · "+("All unlocked" if rank==5 else "Next: "+RankCatalog.PERKS[rank+1].name)+" · slots: %d" % RankCatalog.MAX_EQUIPPED,Vector2(92,268),22,1040,true)
+ for i in range(7):
+  badge(i,Vector2(90+i*157,180),58)
+  ui.label_at("%s\n%d XP" % [RankCatalog.NAMES[i],RankCatalog.THRESHOLDS[i]],Vector2(94+i*157,239),15,145)
+ var st=p.statistics
+ ui.label_at("RECORDS · %d matches · %d wins / %d defeats · Reapers %d · Stage %d/5" % [st.matches,st.victories,st.defeats,st.reaper_defeats,p.highest_completed_stage()],Vector2(92,292),19,1060,true)
+ ui.label_at("Tracked since this update · Normal %d · Long Night %d · Hell %d wins" % [st.standard,st.hard,st.hell],Vector2(92,323),17,1060)
+ var records=[]
+ for stage in StageCatalog.STAGES:
+  var record=p.stage_record(stage.id)
+  records.append("%d: uncleared" % stage.number if record.is_empty() else "%d: %.1fs / %dXP" % [stage.number,record.best_time,record.best_xp])
+ ui.label_at("Best stages · "+" · ".join(records),Vector2(92,352),15,1060)
+ ui.label_at("PERMANENT BOOSTS · one equipped · Mythic grants prestige, no extra gameplay perk",Vector2(92,389),18,1060,true)
  for i in range(6):
   var perk=RankCatalog.PERKS[i]
-  var pos=Vector2(92+(i%2)*544,312+int(i/2)*88)
+  var pos=Vector2(92+(i%2)*544,424+int(i/2)*51)
   var owned=perk.id in p.unlocked()
-  var text=ui.label_at(perk.name+"  ·  "+("Unlocked" if owned else RankCatalog.NAMES[i]+" required")+"\n"+perk.description,pos,16,412)
-  text.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
-  text.size=Vector2(412,76)
   var id=perk.id
-  var b=ui.button("Equipped" if id in p.equipped else "Equip",pos+Vector2(416,10),func():
+  ui.label_at(perk.name+" · "+("Unlocked" if owned else RankCatalog.NAMES[i]+" required"),pos,16,400)
+  var button=ui.button("Equipped" if id in p.equipped else "Equip",pos+Vector2(416,-5),func():
    if p.equip(id): game.audio_event("reward")
-   show_ranks(),106,40)
-  b.disabled=not owned or p.read_only
- ui.label_at("Wins: 120 base XP + capped performance. Losses: 35% performance, at most 80 XP.",Vector2(92,580),16,1050)
+   show_ranks(),106,36)
+  button.tooltip_text=perk.description
+  button.disabled=not owned or p.read_only
+ ui.label_at("Wins: 120 base + performance + stage/reaper bonuses, then difficulty. Losses: ≤1 XP/30s, cap30.",Vector2(92,584),14,1060)
  ui.button("Back",Vector2(92,622),ui.show_menu,180,40)
  ui.button("Choose loadout",Vector2(900,622),func(): ui.campaign.prepare(game.profile.selected_stage),270,40)
 
@@ -132,7 +147,7 @@ func result_summary():
  var b=report.breakdown
  var line="No XP: occupy a bed for 20s and survive 10s after the hunter arrives."
  if b.eligible:
-  line="Victory %d + Survival %d + Damage %d + Defense %d\nDifficulty +%d · Loss adjustment %d  =  +%d XP" % [b.victory,b.survival,b.damage,b.defense,b.difficulty_bonus,b.loss_adjustment,b.total]
+  line="Base %d · Survival %d · Damage %d · Defense %d\nStage +%d · Reaper +%d · Difficulty +%d · Loss %d = +%d XP" % [b.victory,b.survival,b.damage,b.defense,b.get("stage_bonus",0),b.get("reaper_bonus",0),b.difficulty_bonus,b.loss_adjustment,b.total]
  if game.campaign_mode:
   var campaign=report.get("campaign",{})
   line+="\nStage reward: +%d XP%s" % [campaign.get("reward_xp",0)," (already claimed)" if campaign.get("cleared",false) and not campaign.get("first_clear",false) else ""]
@@ -142,13 +157,34 @@ func result_summary():
  text.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  text.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  text.size.y=70
- badge(game.profile.rank_index(),Vector2(382,480),42)
- var rankline=ui.label_at("%s · %d XP" % [game.profile.rank_name(),game.profile.xp],Vector2(434,486),18,415)
+ var result_badge=badge(game.profile.rank_index(),Vector2(382,480),42)
+ var rankline=ui.label_at("%s → %s · %d → %d XP" % [RankCatalog.NAMES[report.old_rank],game.profile.rank_name(),report.get("old_xp",game.profile.xp),game.profile.xp],Vector2(434,482),15,415)
  if report.promoted:
-  rankline.text="PROMOTED: "+rankline.text
+  rankline.text=("MYTHIC ASCENSION\n" if game.profile.rank_index()==6 else "PROMOTED\n")+rankline.text
   rankline.modulate=Color("FFD27A")
   rankline.scale=Vector2(0.92,0.92)
-  rankline.create_tween().tween_property(rankline,"scale",Vector2.ONE,0.5).set_trans(Tween.TRANS_BACK)
+  var promotion=rankline.create_tween()
+  promotion.tween_interval(.95)
+  promotion.tween_property(rankline,"scale",Vector2.ONE,0.5).set_trans(Tween.TRANS_BACK)
+ if int(b.total)>0:
+  var old_points=int(report.get("old_xp",game.profile.xp-int(b.total)))
+  var new_points=game.profile.xp
+  var names="%s → %s" % [RankCatalog.NAMES[report.old_rank],game.profile.rank_name()]
+  var prefix=("MYTHIC ASCENSION\n" if report.new_rank==6 else "PROMOTED\n") if report.promoted else ""
+  rankline.text=prefix+"%s · %d → %d XP" % [names,old_points,old_points]
+  var counting=rankline.create_tween()
+  counting.tween_interval(.95)
+  counting.tween_method(func(value):
+   rankline.text=prefix+"%s · %d → %d XP" % [names,old_points,roundi(value)],float(old_points),float(new_points),0.65)
+ if report.promoted and report.new_rank==6:
+  result_badge.pivot_offset=result_badge.size*.5
+  result_badge.scale=Vector2(.7,.7)
+  var celebration=result_badge.create_tween()
+  celebration.tween_interval(.95)
+  celebration.tween_property(result_badge,"scale",Vector2(1.25,1.25),.35).set_trans(Tween.TRANS_BACK)
+  celebration.parallel().tween_property(result_badge,"modulate",Color(1.5,1.2,.75),.35)
+  celebration.tween_property(result_badge,"scale",Vector2.ONE,.4)
+  celebration.parallel().tween_property(result_badge,"modulate",Color.WHITE,.4)
  if not game.profile.save_ok:
   ui.button("Save failed — retry",Vector2(390 if game.campaign_mode else 650,580),func():
    game.profile.save_profile()

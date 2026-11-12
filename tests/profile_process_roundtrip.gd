@@ -30,6 +30,8 @@ func run():
   model.player().occupied_seconds=30
   model.player().damage_dealt=100
   model.player().door_damage_taken=100
+  model.hunter.hp=0
+  model.hunter.state=HunterState.State.DEAD
   model.result="victory"
   var award=p.settle_match(entry.id,model)
   ok=not award.is_empty() and p.xp==866 and p.save_ok

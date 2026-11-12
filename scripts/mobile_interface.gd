@@ -70,7 +70,7 @@ func show_rewards(ui,loadout: bool):
  game.audio_event("menu")
  var p=game.profile
  var rank=p.rank_index()
- var next="All rewards unlocked" if rank==5 else "Next: %s at %d XP" % [RankCatalog.PERKS[rank+1].name,RankCatalog.THRESHOLDS[rank+1]]
+ var next="All rewards unlocked" if rank>=5 else "Next: %s at %d XP" % [RankCatalog.PERKS[rank+1].name,RankCatalog.THRESHOLDS[rank+1]]
  heading(ui,"PREPARE FOR THE NIGHT" if loadout else "RANKS & REWARDS","%s · %d XP · %s · %d boost slot" % [p.rank_name(),p.xp,next,RankCatalog.MAX_EQUIPPED])
  var body=scroll(ui,Rect2(52,164,1176,328 if loadout else 420),6*132)
  for i in range(6):

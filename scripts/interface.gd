@@ -529,7 +529,7 @@ func show_result():
  if game.campaign_mode:
   var stage=StageCatalog.stage(game.model.stage_id)
   if not stage.is_empty():
-   var caption=label_at("Stage %d · %s" % [stage.number,stage.title],Vector2(390,284),16,500)
+   var caption=label_at("Stage %d · %s · %s" % [stage.number,stage.title,RankCatalog.DIFFICULTIES[game.model.difficulty].name],Vector2(390,284),16,500)
    caption.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  var m=game.model
  var r=m.player()

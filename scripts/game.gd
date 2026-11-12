@@ -184,7 +184,7 @@ func _process(delta: float):
    mode = "result"
    cancel_placement()
    if not last_progression.is_empty() and last_progression.promoted:
-    audio_event("rank")
+    audio_event("mythic_promotion" if last_progression.new_rank==6 else "rank")
     audio_event("reward")
    ui.show_result()
  audio_system.update_state(delta,model,mode)

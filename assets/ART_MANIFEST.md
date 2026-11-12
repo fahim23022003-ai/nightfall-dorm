@@ -13,3 +13,7 @@ Animation is deliberately lightweight: sprite pose swaps, breathing/walk bob, gh
 ## Phase 4B Grim Reaper
 
 `boss/` contains four original authored SVG robe animation frames and a separate scythe. `tools/art/generate_reaper.py` is the complete reproducible source, with no downloaded or traced assets. Layered hood, skull, red eyes, mantle folds, chain/clasp, skeletal hands and ragged hems are distinct from the original Hunter. `scripts/boss_presentation.gd` animates frame swaps, cloth breathing, hover, articulated scythe wind-up/sweep, deterministic smoke curls, charge rings, silence marks and hurt/death reactions. These are lightweight original 2D vector illustrations; no claim of fully rigged/high-frame hand-painted animation is made.
+
+## Phase 5A Mythic badge
+
+`ranks/mythic.svg` is an original authored purple/gold crown-and-crystal prestige badge extending the six existing rank badges. The runtime animates its color and promotion scale without blocking result actions. No external imagery or new gameplay perk is attached to Mythic.

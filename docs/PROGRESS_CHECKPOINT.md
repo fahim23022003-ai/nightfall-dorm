@@ -1,3 +1,39 @@
+# Phase 5A — Mythic and permanent progression (12 November 2026)
+
+Continued clean `work` at `be88734e89cf563e267991d1ee7c70759776ac44`.
+Recovery tag `pre-phase5a-be88734`. Existing six XP thresholds and six perks are
+preserved. Mythic adds8000XP plus stage5 cleared,3LongNight/Hell victories and
+3Reaper defeats. No Mythic gameplay perk or future reward-choice feature.
+
+Existing profile/settlement extended with optional progression.version1 counters,
+highest rank, genuine difficulty/Reaper records and integer migration. Old XP,
+loadouts/settings/campaign remain; old unavailable mode totals are not fabricated.
+Damaged optional records preserve base progression, future optional schema is
+read-only. Existing match-ID dedup, backup and save-retry paths retained.
+
+Victory XP adds10×stage and40Reaper before difficulty; existing first-clear XP
+remains once-only. Loss XP has no difficulty bonus, at most1/30occupied seconds
+and30/match. New ranking UI shows7original badges, saved records/gates and progress.
+AnimatedXP/results, visibleMythicbadgecelebration, originalpromotionWAV and menu
+prestige are integrated with existing NextStage/loadout and Retry flows.
+
+IndependentC200new checks,7exposed-defeat edge checks,350legacy rank and63UI checks passed. ActualLinuxrender40checks/13inspected screenshots pass. Regularregressions plus48rank/perk matches and separate-process profile/startup pass. Dactualrender audit
+and regulargameplayregression results are recorded in PHASE_5A_RANK_REPORT.md
+and docs/evidence/ranks/. No combat difficulty/economy/boss balance was changed.
+Finite pacing examples41ordinary/28Normalstage5Reaper/19Hellstage5Reaper wins
+reach8000XP; these are arithmetic policies, not human rates or mandatory grinds.
+
+Confirmed issues fixed: defeat-breakdown arithmetic, JSON counter integer types,
+future-schema/highest-rank validation, missing resultdifficulty, menutextwidth,
+and promotionanimation playing behind resultfade. Relevant checks rerun.
+
+Native Windows execution/FPS/input and subjective audio/appeal remain UNVERIFIED.
+See [PHASE_5A_RANK_REPORT.md](PHASE_5A_RANK_REPORT.md) for rules, migration,
+evidence and Windows checklist. Final response reports actual commit/push SHA.
+Stop after Phase5A; no Phase5B/6, new perks/maps/bosses or Android development.
+
+---
+
 # Phase 4B — Grim Reaper boss (12 November 2026)
 
 Continued clean `work` at `efb81cdb62c58bf11e612e112a5be34da74f4669`.

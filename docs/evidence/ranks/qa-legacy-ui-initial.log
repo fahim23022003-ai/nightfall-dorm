@@ -1,0 +1,30 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: PHASE2_UI_FAIL: actual rank button opens rank/reward screen
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase2_ui.gd:11)
+       [1] run (res://tests/phase2_ui.gd:65)
+       [2] click_button (res://tests/phase2_ui.gd:43)
+       [3] click (res://tests/phase2_ui.gd:38)
+ERROR: PHASE2_UI_FAIL: rank screen identifies next available reward
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase2_ui.gd:11)
+       [1] run (res://tests/phase2_ui.gd:66)
+       [2] click_button (res://tests/phase2_ui.gd:43)
+       [3] click (res://tests/phase2_ui.gd:38)
+ERROR: PHASE2_UI_FAIL: terminal controller produces actual progression summary
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase2_ui.gd:11)
+       [1] run (res://tests/phase2_ui.gd:139)
+ERROR: PHASE2_UI_FAIL: post-match points breakdown is transparent
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase2_ui.gd:11)
+       [1] run (res://tests/phase2_ui.gd:140)
+SCRIPT ERROR: Invalid access to property or key 'promoted' on a base object of type 'Dictionary'.
+          at: run (res://tests/phase2_ui.gd:141)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/phase2_ui.gd:141)

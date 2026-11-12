@@ -14,12 +14,25 @@ var save_ok=true
 var selected_stage="stage_1"
 var selected_difficulty="standard"
 var campaign_records: Dictionary={}
+var statistics={"matches":0,"victories":0,"defeats":0,"standard":0,"hard":0,"hell":0,"reaper_defeats":0}
+var highest_rank=0
 
 
 func _init(save_path: String="user://profile.json"):
  path=save_path
 
-func rank_index() -> int: return RankCatalog.rank_for(xp)
+func rank_index() -> int:
+ var rank=RankCatalog.rank_for(xp)
+ if rank==6 and not RankCatalog.mythic_ready(statistics,campaign_records): rank=5
+ return maxi(rank,highest_rank)
+func highest_completed_stage() -> int:
+ var number=0
+ for id in campaign_records: number=maxi(number,StageCatalog.index_of(id)+1)
+ return number
+func promotion_requirement() -> String:
+ if rank_index()==6: return "MYTHIC achieved · permanent prestige"
+ if rank_index()<5: return "%d XP to %s" % [RankCatalog.THRESHOLDS[rank_index()+1]-xp,RankCatalog.NAMES[rank_index()+1]]
+ return "Mythic: %d/8000 XP · Stage 5 %s · Advanced wins %d/3 · Reapers %d/3" % [xp,"cleared" if campaign_records.has("stage_5") else "needed",statistics.hard+statistics.hell,statistics.reaper_defeats]
 func rank_name() -> String: return RankCatalog.NAMES[rank_index()]
 func unlocked() -> Array: return RankCatalog.unlocked(xp)
 
@@ -149,6 +162,26 @@ func load_profile() -> bool:
  selected_difficulty=campaign.difficulty
  campaign_records=campaign.records.duplicate(true)
  xp=int(data.xp)
+ statistics={"matches":0,"victories":0,"defeats":0,"standard":0,"hard":0,"hell":0,"reaper_defeats":0}
+ highest_rank=mini(5,RankCatalog.rank_for(xp))
+ var progression=data.get("progression",{})
+ if progression is Dictionary and progression.get("version")==1:
+  var valid=progression.get("statistics") is Dictionary
+  if valid:
+   for key in statistics:
+    if not _whole(progression.statistics.get(key),0): valid=false
+  if valid:
+   var st=progression.statistics
+   valid=st.matches==st.victories+st.defeats and st.victories==st.standard+st.hard+st.hell and st.reaper_defeats<=st.victories
+  if valid:
+   for key in statistics: statistics[key]=int(progression.statistics[key])
+   if _whole(progression.get("highest_rank"),0,RankCatalog.rank_for(xp)) and (int(progression.highest_rank)<6 or RankCatalog.mythic_ready(statistics,campaign_records)):
+    highest_rank=maxi(highest_rank,int(progression.highest_rank))
+  else: warning="Optional statistics were damaged; existing XP, perks and campaign were preserved."
+ if progression is Dictionary and _whole(progression.get("version"),2):
+  read_only=true
+  warning="This progression belongs to a newer game version; saving disabled to preserve it."
+ highest_rank=maxi(highest_rank,rank_index())
  next_match_id=int(data.next_match_id)
  equipped=[]
  for id in data.equipped:
@@ -166,7 +199,7 @@ func save_profile() -> bool:
  if read_only:
   save_ok=false
   return false
- var data={"version":RankCatalog.VERSION,"xp":xp,"equipped":equipped,"settings":settings,"next_match_id":next_match_id,"active_match":active_match,"last_award":last_award,"campaign":{"selected_stage":selected_stage,"difficulty":selected_difficulty,"records":campaign_records}}
+ var data={"version":RankCatalog.VERSION,"progression":{"version":1,"statistics":statistics,"highest_rank":maxi(highest_rank,rank_index())},"xp":xp,"equipped":equipped,"settings":settings,"next_match_id":next_match_id,"active_match":active_match,"last_award":last_award,"campaign":{"selected_stage":selected_stage,"difficulty":selected_difficulty,"records":campaign_records}}
  var f=FileAccess.open(path+".tmp",FileAccess.WRITE)
  if f==null: return _write_failed()
  f.store_string(JSON.stringify(data," "))
@@ -229,6 +262,7 @@ func settle_match(id: int,model) -> Dictionary:
  if active_match.is_empty() or id!=int(active_match.id) or model.result not in ["victory","defeat"]: return {}
  if not last_award.is_empty() and id<=int(last_award.match_id): return {}
  if model.difficulty!=active_match.difficulty: return {}
+ if model.result=="victory" and (model.hunter.hp>0 or model.player()==null or not model.player().alive): return {}
  if not _valid_loadout(active_match.equipped,xp): return {}
  var expected=RankCatalog.bonuses(active_match.equipped)
  var neutral=RankCatalog.bonuses([])
@@ -237,6 +271,8 @@ func settle_match(id: int,model) -> Dictionary:
  var campaign_id=str(active_match.get("stage_id",""))
  if campaign_id!="" and (not stage_unlocked(campaign_id) or not "stage_id" in model or model.stage_id!=campaign_id): return {}
  var points=RankCatalog.performance(model)
+ var old_xp=xp
+ var old_rank=rank_index()
  var campaign_report={}
  if campaign_id!="":
   var definition=StageCatalog.stage(campaign_id)
@@ -255,12 +291,23 @@ func settle_match(id: int,model) -> Dictionary:
   campaign_report={"stage_id":campaign_id,"cleared":cleared,"first_clear":first,"reward_xp":reward,
    "next_stage":StageCatalog.next_stage(campaign_id) if cleared else ""}
 
- var before=rank_index()
+ var before=old_rank
+ var defeated=model.result=="defeat" and ((model.player()!=null and not model.player().alive) or (model.player()==null and model.eliminations>0))
+ var victorious=model.result=="victory" and model.player()!=null and model.hunter.hp<=0 and model.player().alive
+ var legitimate=model.time>=model.preparation and (defeated or victorious)
+ if legitimate and statistics.matches<1000000000000:
+  statistics.matches=mini(1000000000000,statistics.matches+1)
+  if model.result=="victory" and model.hunter.hp<=0 and model.player().alive:
+   statistics.victories=mini(1000000000000,statistics.victories+1)
+   statistics[model.difficulty]=mini(1000000000000,statistics[model.difficulty]+1)
+   if model.hunter.transformed: statistics.reaper_defeats=mini(1000000000000,statistics.reaper_defeats+1)
+  else: statistics.defeats=mini(1000000000000,statistics.defeats+1)
  points.ceiling_adjustment=-maxi(0,int(points.total)-(RankCatalog.MAX_XP-xp))
  points.total=mini(int(points.total),RankCatalog.MAX_XP-xp)
  xp+=int(points.total)
  var after=rank_index()
- last_award={"match_id":id,"breakdown":points,"old_rank":before,"new_rank":after,"promoted":after>before,"result":model.result}
+ highest_rank=maxi(highest_rank,after)
+ last_award={"match_id":id,"old_xp":old_xp,"new_xp":xp,"breakdown":points,"old_rank":before,"new_rank":after,"promoted":after>before,"result":model.result}
  if not campaign_report.is_empty(): last_award.campaign=campaign_report
  active_match={}
  save_profile()

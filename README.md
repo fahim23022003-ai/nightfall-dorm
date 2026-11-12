@@ -17,6 +17,10 @@ An original single-player Godot 4 dormitory survival defense game. Choose a room
 
 Full controls, ZIP/Git instructions and a practical test checklist: [Windows home testing](docs/HOME_TESTING_WINDOWS.md).
 
+## Mythic progression (Phase 5A)
+
+Bronze → Silver → Gold → Platinum → Diamond → Master → **Mythic** extends the existing profile. Mythic requires8,000XP, stage5 cleared, three Long Night/Hell victories and three Reaper defeats. Existing XP, six perks, loadouts, settings and campaign records survive migration. Ranks shows saved records and promotion requirements; results explain stage/Reaper/difficulty XP and animate promotions. New difficulty/Reaper records begin with this update because older saves did not store those totals. Loss XP is limited to1per30occupied seconds (cap30), with no difficulty bonus. See [rank report](docs/PHASE_5A_RANK_REPORT.md) for exact rules, migration tests and Windows checks.
+
 ## Grim Reaper boss (Phase 4B)
 
 Later stages now include a once-only, vulnerable Reaper transformation with no HP refill: Normal stages3–5 after90 active seconds, Long Night/Hell stages2–5 after80, at≤55% HP (or210 active seconds regardless of HP). Stage preparation shows the rule. The hooded/scythe boss has telegraphed Scythe Strike, Soul Siege and Shadow Surge, original animation and a crossfading boss score. Repair through Surge's2.5-second turret silence; existing shots and neighboring defenses still work. Introductory stages, saves and the building/refund economy remain intact. See [boss report and Windows checklist](docs/PHASE_4B_BOSS_REPORT.md).
