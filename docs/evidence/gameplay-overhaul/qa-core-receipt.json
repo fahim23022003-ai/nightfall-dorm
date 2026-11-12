@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "combat_checks": 522,
+  "combat_failures": 0,
+  "combat_exit": 0,
+  "challenge_checks": 40,
+  "challenge_failures": 0,
+  "challenge_exit": 0,
+  "fresh_challenge_workers": 12,
+  "source_head": "b317aac388312c0e07247f88645df0907d0a1445",
+  "current_source_sha256": {
+    "scripts/damage_rules.gd": "8f8450e44897d57a348827b58789d0782bcb555b6b5cfa522e3d6053cb0dd570",
+    "scripts/magic_defense.gd": "75c59ed6fc4076e0ac0b16ecdc580a5bf58ad0b29b2243b29ca38968a2f9c840",
+    "scripts/arcane_hunter.gd": "ac4fc230901ff65bf85ba8b180985c2fbfbc00caf6304d0f77e94899c6af5f32",
+    "scripts/match_model.gd": "ff2e10d62d0fc3c8a57aaf051fd7a71b672be84ac6e905e6c08acc98b2e99c7b",
+    "scripts/item_effects.gd": "2816d5cc1a5fa0e23341efd36f1340930736a24fd8a5f656bceccfd9b41fe374",
+    "scripts/replay_snapshot.gd": "4931660e5199ea34365fdae614ff5a725aa9ce298edfc4e75f5c4e869e87fb91",
+    "scripts/challenge_code.gd": "31d1a619176676f2fd5b7c6d073d7c46cee80c9da3fa48c5ddd6620a1517c74e",
+    "scripts/hunter_state.gd": "c7b18a1983da00264174dbd51f22ee9efb2f4d531a54fe17517492dd8dcc12ed",
+    "scripts/room_state.gd": "91ba63a2dd4ddbadf447a1ca82130bb9e58d44c580c35d3db67c6ea6dbb70363",
+    "scripts/strategy_catalog.gd": "8443a6b1f4ea077bb143a1a7b09d561ea549004b5c14566100c4ee7b99c31139",
+    "scripts/catalog.gd": "728511b5c39b37efd51d36782c8b2aff12cfeb44b63291d6ee31187d19cd636a",
+    "tests/overhaul_qa_combat.gd": "77e510801f8015ea22f4592b3b0876fa4e57d616c67b6a182bb9f5085badd18a",
+    "tests/overhaul_qa_codes.gd": "50f793a062457e2985c20608795ed57afe1433b2174c2e4855d2423e2f742277"
+  },
+  "accepted_artifact_sha256": {
+    "qa-combat-second.log": "5ff563c18fec1cac6c4f429223fdc607f527e5a1b43534f124c138017ffb3736",
+    "qa-codes-initial.log": "a55bafd8303e4ace61ab37a67b5476dcbe34a4a3dcd9d1710065a3b5525f86c5",
+    "qa-combat-result.json": "da9a1e2a260bcdf6e69f2894447ab3f4c04b2d8b5312e10c0e7548fb8f5211c4",
+    "qa-codes-result.json": "fdefd0046acaebcf3a7c717f8dfda29b916c7fb5441fdaaea4f955cf318f98e3"
+  },
+  "diagnostics": {
+    "qa-combat-initial.log": "C fixture attempted to reconfigure immutable archetype, used incorrect activation API, assumed Earth/Ice neutral and invented Reaper art filenames; fixture errors corrected. No confirmed product failure.",
+    "qa-combat-corrected.log": "C indentation parse error while repairing fixture; preserved, not accepted.",
+    "qa-combat-second.log": "Actual accepted522/0 completed execution.",
+    "qa-codes-initial.log": "Actual accepted40/0,12 fresh-engine comparison workers."
+  },
+  "limitations": [
+    "Controlled injected budgets isolate mechanical/economy contracts; not naturally earned balance proof.",
+    "Actual model full pipeline covers new Hunter abilities; final visual/audio and old full regressions are separate reviewers/gates.",
+    "Challenge equality is fixed-input Linux Godot4.6.3 engine evidence, not cross-platform human timing determinism.",
+    "Only repaired/refunded new machines and selected item interactions are in this new gate; existing20-item full regressions remain separate.",
+    "Native Windows and subjective human play quality remain unverified."
+  ]
+}

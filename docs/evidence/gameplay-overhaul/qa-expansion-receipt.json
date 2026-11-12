@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "checks": 31294,
+  "failures": 0,
+  "exit_code": 0,
+  "maps": 5,
+  "rooms_per_map": 6,
+  "fresh_tiers": [
+    3,
+    6,
+    8,
+    10,
+    11,
+    12,
+    14,
+    16
+  ],
+  "legacy_rulesets": [
+    1,
+    2,
+    3
+  ],
+  "source_manifest": "qa-expansion-source.json",
+  "source_changes_since_manifest": [],
+  "initial_confirmed_failure": {
+    "checks": 31145,
+    "failures": 7,
+    "cause": "New horizontal fresh Endless furniture rail put Laboratory resident footpoint eight pixels inside the top wall; navigation requires ten pixels. All seven paid tiers could leave the sleeping survivor unreachable after breach.",
+    "fix": "Fresh horizontal rail changed from -57 to -13; legacy coordinates and every pad prefix retained. All five route probes and all-six-room base/ultimate navigation pass."
+  },
+  "diagnostics": {
+    "qa-expansion-initial.log": "Transient unimported new typed classes during B live integration plus superseded fixture corridor/coupon assertions; not accepted.",
+    "qa-expansion-retest.log": "C fixture called nonexistent sell instead of sell_building; corrected and owned failed process stopped.",
+    "qa-expansion-navigation-failed.log": "Completed initial stable run,31145/7, real Laboratory navigation finding.",
+    "qa-expansion-route-finding.log": "Actual five-map route probe confirms missing Lab route.",
+    "qa-expansion-route-fixed.log": "Actual five-map route probe verifies fix.",
+    "qa-expansion-final.log": "Completed corrected test31294/0,exit0."
+  },
+  "scope": "Controlled-budget real model transactions, geometry/navigation, checkpoint encode/validate/JSON/restore. Does not claim naturally earned economy, actual input/render acceptance, full combat integration, native Windows or human testing."
+}
