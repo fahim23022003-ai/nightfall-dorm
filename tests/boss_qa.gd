@@ -295,6 +295,7 @@ func run():
   if FileAccess.file_exists(path+suffix): DirAccess.remove_absolute(path+suffix)
  var profile=PlayerProfile.new(path)
  for stage in StageCatalog.STAGES:
+  if not profile.pending_stage_bonus.is_empty() and profile.pending_stage_bonus.choice=="":check(profile.choose_stage_bonus("battle"),"choose earned bonus before next boss stage")
   var entry=profile.begin_match("standard",stage.id)
   var m=fixture("standard",stage.id)
   m.player().occupied_seconds=100

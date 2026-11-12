@@ -1,6 +1,6 @@
 # Original audio sources and implementation
 
-All 81 files under `assets/audio/` are original, locally generated PCM WAV assets. They contain no recordings, samples, commercial-game material, external music, paid assets, or downloaded sound libraries. Their reproducible generators are tracked under `tools/audio/`, including the base, boss, progression, item, advanced-item and Legendary sources described below. They use Python's standard library (`math`, `random`, `struct`, `wave`). No third-party audio license or attribution applies. These are original project assets; distribution follows the project owner's license.
+All 87 files under `assets/audio/` are original, locally generated PCM WAV assets. They contain no recordings, samples, commercial-game material, external music, paid assets, or downloaded sound libraries. Their reproducible generators are tracked under `tools/audio/`, including the base, boss, progression, item, advanced-item and Legendary sources described below. They use Python's standard library (`math`, `random`, `struct`, `wave`). No third-party audio license or attribution applies. These are original project assets; distribution follows the project owner's license.
 
 Run the matching generator under `tools/audio/` from the checkout to reproduce its asset group. Noise is deterministically seeded. Files are mono, signed 16-bit PCM; base assets use 22,050 Hz and later item groups include 44,100 Hz as documented below. Tracked Godot import settings disable compression, preserving these samples. Runtime loads through ResourceLoader (including packed-resource remaps) and falls back to a raw WAV only when an import is unavailable; no export was created during this task. Generation limits peaks to 0.62 full scale. The soundtrack uses an original eight-part minor/dissonant phrase over beating low drones; the danger arrangement adds a heartbeat-like pulse and unstable upper partials. Continuous drone frequencies fit integer cycles within each loop; transient phrases fade at the boundaries.
 
@@ -107,3 +107,12 @@ automatic Heart, and the fixed Legendary receipt selects its reveal cue.
 No music stems, voice limits or bus settings were replaced. Engine-output
 verification and subjective/native Windows limitations are recorded in
 `docs/PHASE_5B2B_LEGENDARY_REPORT.md`.
+
+
+## Phase 5B-3 reward feedback
+
+Six original generated PCM cues (`tools/audio/generate_rewards_audio.py`) cover
+perk unlock, achievement unlock/claim, difficult-stage completion, stage-bonus
+selection and Mythic perk unlock. New import settings explicitly retain lossless
+PCM. All are event-driven through the existing bounded audio architecture;
+actual playback and recording results are in the Phase 5B-3 report.

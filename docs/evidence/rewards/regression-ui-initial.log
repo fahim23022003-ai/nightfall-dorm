@@ -1,0 +1,10 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: PHASE2_UI_FAIL: actual rank button opens rank/reward screen
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase2_ui.gd:11)
+       [1] run (res://tests/phase2_ui.gd:65)
+       [2] click_button (res://tests/phase2_ui.gd:43)
+       [3] click (res://tests/phase2_ui.gd:38)
+PHASE2_UI_ASSERTIONS=70 FAILURES=1

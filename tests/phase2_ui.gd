@@ -62,7 +62,7 @@ func run():
  check(game.profile.path==save_path,"scene uses isolated QA save override")
  check(has_label("Bronze") and has_label("0 XP"),"fresh menu displays rank and XP")
  await click_button("Ranks & rewards")
- check(has_label("BRONZE") and has_label("PERMANENT BOOSTS"),"actual rank button opens rank/reward screen")
+ check(has_label("BRONZE") and has_label("PERMANENT PERKS"),"actual rank button opens rank/reward screen")
  check(has_label("250 XP to Silver") and has_label("Reinforced frame · Silver required"),"rank screen identifies next available reward")
  var badges=0
  for node in game.ui.panel.get_children():

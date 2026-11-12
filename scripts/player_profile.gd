@@ -360,6 +360,8 @@ func load_profile() -> bool:
    seen_items=rewards.seen_items.duplicate()
    pending_stage_bonus=rewards.stage_bonus.duplicate(true)
    stage_bonus_queue=rewards.get("stage_queue",[]).duplicate(true)
+   if not pending_stage_bonus.is_empty():pending_stage_bonus.match_id=int(pending_stage_bonus.match_id)
+   for offer in stage_bonus_queue:offer.match_id=int(offer.match_id)
  if not read_only:
   var before=_reward_snapshot()
   var earned=refresh_achievements()

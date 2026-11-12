@@ -17,6 +17,16 @@ An original single-player Godot 4 dormitory survival defense game. Choose a room
 
 Full controls, ZIP/Git instructions and a practical test checklist: [Windows home testing](docs/HOME_TESTING_WINDOWS.md).
 
+## Rank perks, achievements and stage choices (Phase 5B-3)
+
+Seven permanent perks retain the six existing options and add Mythic's Reaper
+Slayer. Master unlocks a second permanent perk slot; consumables retain two
+separate slots. Twelve persistent achievements offer visible, one-time XP/item
+claims. First stage clears offer a saved choice of door durability, starting
+Gold or a temporary turret bonus for the intended next stage. Unresolved offers
+are preserved, and replaying stages cannot stack additional offers.
+See the [progression rewards report](docs/PHASE_5B3_REWARDS_REPORT.md).
+
 ## Legendary items (Phase 5B-2B)
 
 The inventory now contains 20 functional items. Time Freeze stops Hunter actions

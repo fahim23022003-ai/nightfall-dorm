@@ -1,14 +1,42 @@
-# Phase 5B-3 — progression rewards (12 November 2026)
+# Phase 5B-3 — progression rewards complete (12 November 2026)
 
-IN PROGRESS. Started clean on `work` at
-`88a6821aaa3df885f2fcf954eb817b2961ffc6e6`, verified against GitHub.
-Recovery tag `pre-phase5b3-88a6821`. B owns production; C independently tests
-transactions/migration/balance; A performs a bounded review; D will inspect UI.
-Preserve existing perk IDs, all 20 items and Legendary limits. Extend achievements,
-one-time rewards and next-stage choices. Next: complete implementation, run
-focused QA and full regular/extended regressions, inspect actual UI/audio, finish
-`docs/PHASE_5B3_REWARDS_REPORT.md`, commit and verify private `work` push.
-Native Windows/subjective quality UNVERIFIED. Stop after 5B-3.
+Baseline `work` was clean at `88a6821aaa3df885f2fcf954eb817b2961ffc6e6`, verified
+against GitHub. Recovery tag `pre-phase5b3-88a6821`; mechanics milestone `b3fdb35`.
+B production, C independent QA, bounded A audit and actual D render/audio reviews
+are complete. Stop after Phase 5B-3; no Phase 6/Android/maps/boss additions.
+
+Preserved six perk IDs/unlocks/values; added Mythic Reaper Slayer (+6% owned
+projectile impact damage against transformed Reaper). Master unlocks two permanent
+slots; two consumable slots and Legendary limit unchanged. Twelve achievements
+use actual eligible match metrics or provable historical records. Saved claims
+grant one deterministic item plus XP once, with cap/failure handling. First-clear
+stage 1–4 offers saved FIFO choices: +5% door HP, +25 starting Gold, or +8% turret
+damage until 60s after Hunter arrival. Intended target only, no replay stacking.
+
+Fixed existing settlement failure confirmation through full rollback/RNG retry.
+Added original 7 perk/12 achievement SVGs and 6 PCM cues (87 streams), clear
+previews/progress/claim feedback, Hell Survivor title and Reduced Effects support.
+Fixed icon minimum-size overlap and description wrapping; stage titles displayed.
+
+C:342 checks +27 combination checks, 120 rank/build +40 Hell challenge simulations,
+all pass. Disclosed prepared budget: 4 Shields +1 Heart +25G. Seed11 balanced
+prepared Hell20/0 vs baseline4/16; seed47 reactive economy12/8 vs4/16. Diagnostic
+policies, not human rates or guaranteed wins. D:382 rendered checks,22 PNGs;
+9.474s actual engine audio, all6cues, no clipping/missing assets.
+
+Full regular+extended regressions pass in batches: originalitems11,203,
+advanced7,988, Legendary20,798; Mythic204+7/rank354; boss6,703;90difficulty
+outcomes unchanged; maps144matches79/65; campaign89profile+146flow; audio245;
+building314+421;20ktransactions/175,941invariants;27timesteps/144strategycases/
+48rankmatches22/26; separate-process profile round-trip/startup and final import.
+Old fixtures updated for required stage selection, Master capacity and UI heading;
+original gameplay assertions retained. Initial logs and passing reruns preserved.
+
+No known functional test failures. Native Windows and subjective audiovisual
+quality/human balance UNVERIFIED. Full definitions/rewards/evidence:
+[PHASE_5B3_REWARDS_REPORT.md](PHASE_5B3_REWARDS_REPORT.md),
+`docs/evidence/rewards/`. Final completion records actual commit and verified
+private GitHub `work` push. `main` unchanged.
 
 ---
 

@@ -1,0 +1,35 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+REWARDS_CAPTURE render-01-bronze-loadout
+REWARDS_CAPTURE render-02-master-two-perks
+REWARDS_CAPTURE render-03-perk-replacement
+REWARDS_CAPTURE render-04-mythic-requirements-locked
+ERROR: REWARDS RENDER: earned Mythic offense selection
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_rewards.gd:10)
+       [1] run (res://tools/capture_rewards.gd:112)
+       [2] capture (res://tools/capture_rewards.gd:31)
+REWARDS_CAPTURE render-05-mythic-offense
+REWARDS_CAPTURE render-06-mythic-loadout-small
+REWARDS_CAPTURE render-07-ranks-seven-perks
+REWARDS_CAPTURE render-08-legitimate-stage-results
+REWARDS_CAPTURE render-09-spin-preserved
+REWARDS_CAPTURE render-10-reward-reveal
+REWARDS_CAPTURE render-11-stage-reward-gate
+REWARDS_CAPTURE render-12-three-stage-choices
+REWARDS_CAPTURE render-13-stage-choices-small
+ERROR: REWARDS RENDER: exact three choices
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_rewards.gd:10)
+       [1] run (res://tools/capture_rewards.gd:128)
+       [2] capture (res://tools/capture_rewards.gd:31)
+SCRIPT ERROR: Invalid access of index '1' on a base object of type: 'Array'.
+          at: run (res://tools/capture_rewards.gd:129)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tools/capture_rewards.gd:129)
+              [1] capture (res://tools/capture_rewards.gd:31)

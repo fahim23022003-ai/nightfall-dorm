@@ -181,6 +181,16 @@ func run():
  var reserved=collision.pending_stage_bonus.duplicate(true)
  a=pair(collision,"standard","stage_3");victory(a.m)
  check(not collision.settle_match(a.entry.id,a.m).is_empty() and collision.pending_stage_bonus==reserved,"differentfirstclear preservesunresolvedbonus")
+ check(collision.stage_bonus_queue.size()==1 and collision.stage_bonus_queue[0].target=="stage_4","secondfirstclear queues intendedtarget")
+ check(collision.choose_stage_bonus("economic"),"chooseolderqueuedfront")
+ var collision_reload=PlayerProfile.new(collision.path)
+ var loaded_queue=collision_reload.load_profile()
+ print("QUEUE_DIAGNOSTIC ",loaded_queue," warning=",collision_reload.warning," read_only=",collision_reload.read_only," reloaded=",JSON.stringify(collision_reload.stage_bonus_queue)," expected=",JSON.stringify(collision.stage_bonus_queue))
+ check(loaded_queue and collision_reload.stage_bonus_queue.size()==1 and collision_reload.stage_bonus_queue[0].source=="stage_3" and collision_reload.stage_bonus_queue[0].target=="stage_4" and collision_reload.stage_bonus_queue[0].choice=="" and int(collision_reload.stage_bonus_queue[0].match_id)==int(collision.stage_bonus_queue[0].match_id),"queue reloadexact values")
+ var queued_before=collision._reward_snapshot();var originalpath=collision.path;collision.path+="/missing.json"
+ check(collision.begin_match("standard","stage_2").is_empty() and collision._reward_snapshot()==queued_before,"failedqueuepromotionrollsback")
+ collision.path=originalpath
+ check(collision.begin_match("standard","stage_2").stage_bonus=="economic" and collision.pending_stage_bonus.target=="stage_4" and collision.stage_bonus_queue.is_empty(),"consumeoldpromotesnextonce")
  # Battle bonus affects actual impacts only in its finite next-stage window.
  var battle_damage=[]
  for clock in [89.9,90.0]:
@@ -189,6 +199,11 @@ func run():
   m.projectiles=[{"id":1,"from":m.hunter.position,"position":m.hunter.position,"target_id":1,"damage":100.0,"speed":200.0,"kind":"turret","room":0,"level":1,"age":0.0}]
   m._advance_projectiles(.1);battle_damage.append(1000-m.hunter.hp)
  check(is_equal_approx(battle_damage[0],108) and is_equal_approx(battle_damage[1],100),"actualbattle8percent expiry exact")
+ # Full inventory cannot silently discard a deterministic achievement item.
+ var capped=fresh();capped.achievements.first_victory={"claimed":false};capped.inventory.repair=ItemCatalog.MAX_STOCK
+ check(not capped.claim_achievement("first_victory") and not capped.achievements.first_victory.claimed and capped.xp==0,"fullstockclaimno lossornoXPexploit")
+ capped.inventory.repair-=1
+ check(capped.claim_achievement("first_victory") and capped.inventory.repair==ItemCatalog.MAX_STOCK,"claimafterspaceexactcap")
  cleanup()
  print("REWARDS_QA_CHECKS=",checks," FAILURES=",failures)
  quit(0 if failures==0 else 1)

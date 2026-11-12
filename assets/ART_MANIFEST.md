@@ -36,3 +36,10 @@ coins and purple smoke. A brief item-name banner and gold Legendary reveal use
 the existing interface. Reduced Effects lowers ornament while retaining names,
 status, timers and gameplay feedback. No downloaded assets or external licenses.
 See the Legendary report for actual rendered inspection and its limitations.
+
+
+## Phase 5B-3 progression emblems
+
+`tools/art/generate_rewards.py` generates seven original perk emblems and twelve
+achievement emblems using local SVG geometry. Reward screens add brief panel
+flourishes, explicit values and saved status indicators. No external assets.

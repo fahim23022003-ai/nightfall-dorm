@@ -116,7 +116,7 @@ func run():
  data=base_data()
  data.xp=3800
  data.next_match_id=3
- data.active_match={"id":1,"difficulty":"standard","equipped":["pocket","reinforced"]}
+ data.active_match={"id":1,"difficulty":"standard","equipped":["pocket","reinforced","dreamer"]}
  malformed.append([data,"over-cap active loadout"])
  data=base_data()
  data.next_match_id=3

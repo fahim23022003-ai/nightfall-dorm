@@ -5,6 +5,7 @@ var ui
 var game
 var difficulty="standard"
 var achievement_page=0
+var last_claimed=""
 
 func _init(owner_ui):
  ui=owner_ui
@@ -53,7 +54,7 @@ func show_ranks():
  pulse.tween_property(art,"modulate",Color(1.15,1.05,1.25),1.2)
  pulse.tween_property(art,"modulate",Color.WHITE,1.2)
  ui.label_at("%s · %d lifetime XP" % [p.rank_name().to_upper(),p.xp],Vector2(205,65),28,940,true)
- ui.label_at("Highest: %s · %s" % [RankCatalog.NAMES[p.highest_rank],p.promotion_requirement()],Vector2(205,108),15,940)
+ ui.label_at("Highest: %s · %s" % [RankCatalog.NAMES[p.highest_rank],p.promotion_requirement()]+(" · Title: Hell Survivor" if p.achievements.get("hell_survivor",{}).get("claimed",false) else ""),Vector2(205,108),15,940)
  var rank=p.rank_index()
  var base=RankCatalog.THRESHOLDS[rank]
  var target=RankCatalog.THRESHOLDS[mini(6,rank+1)]
@@ -119,7 +120,7 @@ func show_loadout():
   perk_icon(id,at,40)
   var text=ui.label_at(item.name+"\n"+item.description,at+Vector2(48,0),14,325)
   text.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
-  text.size=Vector2(325,72)
+  text.set_deferred("size",Vector2(325,72))
   var b=ui.button("Equipped ✓" if id in game.profile.equipped else ("Equip" if owned else RankCatalog.NAMES[item.rank]),at+Vector2(378,10),func():
    if game.profile.equip(id): game.audio_event("reward")
    show_loadout(),120,44)
@@ -139,7 +140,9 @@ func show_loadout():
  ui.label_at("Preview: +%.0f Gold · Door +%.0f%% · Income +%.0f%% · Power +%.0f%% · Turrets +%.0f%% · Reaper +%.0f%%" % [bonus.gold,(bonus.door-1)*100,(bonus.income-1)*100,(bonus.power-1)*100,(bonus.damage-1)*100,(bonus.reaper-1)*100],Vector2(125,583),14,990)
  var names=PackedStringArray()
  for id in game.profile.equipped: names.append(RankCatalog.perk(id).name)
- ui.label_at("Perks %d/%d: " % [game.profile.equipped.size(),game.profile.perk_slots()]+("None" if names.is_empty() else ", ".join(names))+" · "+RankCatalog.DIFFICULTIES[difficulty].name,Vector2(125,554),18,980)
+ var reserved=game.profile.pending_stage_bonus
+ var stage_hint=" · Stage bonus: "+RewardCatalog.STAGE_BONUSES[reserved.choice].name if not reserved.is_empty() and reserved.target==game.profile.selected_stage and reserved.choice!="" else ""
+ ui.label_at("Perks %d/%d: " % [game.profile.equipped.size(),game.profile.perk_slots()]+("None" if names.is_empty() else ", ".join(names))+stage_hint,Vector2(125,554),16,980)
  ui.button("Back",Vector2(125,612),ui.campaign.show_stages if game.campaign_mode else ui.show_menu,180,44)
  ui.button("Ranks & rewards",Vector2(330,612),show_ranks,250,44)
  ui.button("Items · %d/2" % game.profile.item_loadout.size(),Vector2(605,612),ui.items_ui.inventory,230,44)
@@ -162,6 +165,16 @@ func result_summary():
   names.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;names.set_deferred("size",Vector2(274,70))
   ui.button("Review earned rewards",Vector2(42,338),show_achievements,274,32)
   flourish(celebration)
+ if report.promoted:
+  var unlocks=RankCatalog.PERKS.filter(func(perk):return perk.rank>report.old_rank and perk.rank<=report.new_rank)
+  var card=ui.box(Rect2(28,400,300,160),"203747","E8BE61")
+  ui.label_at("PERK UNLOCKED",Vector2(42,413),20,274,true)
+  var names=[]
+  for perk in unlocks:names.append(perk.name)
+  var label=ui.label_at(", ".join(names)+( " · Second slot unlocked" if report.old_rank<5 and report.new_rank>=5 else ""),Vector2(42,450),17,274)
+  label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;label.set_deferred("size",Vector2(274,70))
+  if not unlocks.is_empty():flourish(perk_icon(unlocks[-1].id,Vector2(260,505),44))
+  flourish(card)
  var b=report.breakdown
  var line="No XP: occupy a bed for 20s and survive 10s after the hunter arrives."
  if b.eligible:
@@ -212,8 +225,8 @@ func result_summary():
 func perk_icon(id: String,pos: Vector2,size=40):
  var icon=TextureRect.new()
  icon.texture=load("res://assets/perks/"+id+".svg")
- icon.position=pos;icon.size=Vector2(size,size)
  icon.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
+ icon.position=pos;icon.size=Vector2(size,size)
  icon.mouse_filter=Control.MOUSE_FILTER_IGNORE
  ui.panel.add_child(icon)
  return icon
@@ -233,7 +246,7 @@ func show_achievements():
   var earned=game.profile.achievements.has(data.id)
   var claimed=earned and game.profile.achievements[data.id].claimed
   var card=ui.box(Rect2(pos,Vector2(530,130)),"203747","FFD780" if earned else "607D8B")
-  var icon=TextureRect.new();icon.texture=load("res://assets/achievements/"+data.id+".svg");icon.position=pos+Vector2(8,14);icon.size=Vector2(52,52);icon.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;ui.panel.add_child(icon)
+  var icon=TextureRect.new();icon.texture=load("res://assets/achievements/"+data.id+".svg");icon.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;icon.position=pos+Vector2(8,14);icon.size=Vector2(52,52);ui.panel.add_child(icon)
   ui.label_at(data.name+(" · CLAIMED" if claimed else " · EARNED" if earned else " · LOCKED"),pos+Vector2(70,8),18,450,true)
   var desc=ui.label_at(data.description,pos+Vector2(70,35),14,440);desc.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;desc.set_deferred("size",Vector2(440,38))
   ui.label_at("Reward: up to +%d XP · 1 × %s" % [data.xp,ItemCatalog.ITEMS[data.item].name],pos+Vector2(70,77),13,440)
@@ -243,13 +256,14 @@ func show_achievements():
    var old_rank=game.profile.rank_index()
    var old_xp=game.profile.xp
    if game.profile.claim_achievement(id):
+    last_claimed=id
     game.audio_event("achievement_claim")
     if game.profile.rank_index()>old_rank:game.audio_event("mythic_perk" if game.profile.rank_index()==6 else "perk_unlocked")
     game.profile.warning="Claimed: +%d XP · 1 × %s" % [game.profile.xp-old_xp,ItemCatalog.ITEMS[RewardCatalog.achievement(id).item].name]
    else:game.audio_event("failure")
    show_achievements(),180,28)
   b.disabled=not earned or claimed or game.profile.read_only
-  if earned and not claimed:flourish(icon)
+  if (earned and not claimed) or last_claimed==id:flourish(icon)
  ui.button("Next achievements" if achievement_page==0 else "First achievements",Vector2(870,58),func():achievement_page=1-achievement_page;show_achievements(),290,36)
  ui.label_at(game.profile.warning,Vector2(92,578),14,1060)
  ui.button("Back to ranks",Vector2(92,620),show_ranks,240,42)
@@ -260,7 +274,10 @@ func show_stage_bonus():
  ui.clear();ui.current_screen="stage_bonus"
  ui.box(Rect2(80,90,1120,540))
  ui.label_at("CHOOSE ONE · NEXT STAGE PREPARATION",Vector2(115,115),28,1050,true)
- ui.label_at("Earned by clearing %s · Applies only to %s · Saved, finite and separate from perks/items." % [offer.source,offer.target],Vector2(115,166),16,1040)
+ var source=StageCatalog.stage(offer.source)
+ var target=StageCatalog.stage(offer.target)
+ ui.label_at("Earned: Stage %d · %s → Next: Stage %d · %s" % [source.number,source.title,target.number,target.title],Vector2(115,166),16,1040)
+ ui.label_at("Choose one. Saved for this stage only; separate from permanent perks and consumables.",Vector2(115,194),15,1040)
  var index=0
  for id in RewardCatalog.STAGE_BONUSES:
   var data=RewardCatalog.STAGE_BONUSES[id]
