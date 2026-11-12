@@ -1,0 +1,37 @@
+{
+  "seconds_per_case": 8,
+  "baseline_source": "f2f69f383e562c0ba8b6178bc3ba8d012da31024",
+  "scope": "Sequential prepared fixture on shared Linux llvmpipe; native Windows/hardware FPS unverified",
+  "comparison": [
+    {
+      "mode": "720-normal",
+      "baseline_mean_ms": 31.9249920318725,
+      "after_mean_ms": 31.27908203125,
+      "baseline_p95_ms": 43.625,
+      "after_p95_ms": 40.31,
+      "mean_change_percent": -2.023211156881899,
+      "baseline_frames": 251,
+      "after_frames": 256
+    },
+    {
+      "mode": "1080-normal",
+      "baseline_mean_ms": 48.0731736526946,
+      "after_mean_ms": 46.3649826589595,
+      "baseline_p95_ms": 55.009,
+      "after_p95_ms": 54.234,
+      "mean_change_percent": -3.5533143829362124,
+      "baseline_frames": 167,
+      "after_frames": 173
+    },
+    {
+      "mode": "720-reduced",
+      "baseline_mean_ms": 29.3132014652015,
+      "after_mean_ms": 28.2648591549296,
+      "baseline_p95_ms": 36.804,
+      "after_p95_ms": 34.047,
+      "mean_change_percent": -3.576348736648294,
+      "baseline_frames": 273,
+      "after_frames": 284
+    }
+  ]
+}

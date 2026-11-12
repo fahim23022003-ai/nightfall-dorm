@@ -62,3 +62,22 @@ silhouettes/eyes/crawlers/watchers/apparitions and weather over existing geometr
 for Needle/Arc Levels 5–10, layered with existing sprites, fins/crown/badges and
 bounded projectiles. Actual combat events drive fear, strike, collapse and corpse
 presentation. No external assets, playable map or extra combat enemy was added.
+
+
+## Phase 5C-3 Gothic industrial presentation
+
+`assets/visual_identity/` contains six original authored SVGs: a cracked Gothic
+menu facade and five map-specific floor surfaces (Dorm, Hospital, Hotel, Lab,
+Mansion). `tools/art/generate_visual_identity.py` reproduces their vector geometry;
+no external image was downloaded, traced or copied. `GothicTheme` creates cached
+256×128 original material textures at runtime, with weathered bevels, restrained
+grain, rivets, edge hatching and glass detail. These shared nine-slice surfaces
+replace flat panel/button fills without a runtime network or extra dependency.
+
+Local room/corridor props, door scratches, breach debris, scorch marks and Hunter
+motion use bounded procedural drawing alongside existing original artwork. The
+existing separately illustrated Reaper robe/scythe and Level 10 armor are reused.
+The licensed DejaVu Serif Bold display font is reused for the wordmark; existing
+DejaVu Sans remains the body font. Existing font attribution still applies.
+This is a layered 2D treatment, not a new fully rigged character animation set;
+retained survivor/bed sprites and simple exterior silhouettes remain art limits.

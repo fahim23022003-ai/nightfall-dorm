@@ -1,0 +1,60 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+VISUAL_CAPTURE after/01-main-menu-720
+VISUAL_CAPTURE after/02-stage-selection
+VISUAL_CAPTURE after/03-perk-difficulty-loadout
+VISUAL_CAPTURE after/04-common-shop
+VISUAL_CAPTURE after/05-inventory-page-1
+VISUAL_CAPTURE after/05-inventory-page-2
+VISUAL_CAPTURE after/05-inventory-page-3
+VISUAL_CAPTURE after/06-ranks
+VISUAL_CAPTURE after/07-achievements-page-1
+VISUAL_CAPTURE after/07-achievements-page-2
+VISUAL_CAPTURE after/08-settings
+VISUAL_CAPTURE after/09-quiet-preparation
+VISUAL_CAPTURE after/10-hunter-approaching
+VISUAL_CAPTURE after/11-door-siege
+VISUAL_CAPTURE after/12-player-danger
+VISUAL_CAPTURE after/13-pause
+VISUAL_CAPTURE after/14-survivor-eliminated
+VISUAL_CAPTURE after/15-world-abandoned_dorm
+VISUAL_CAPTURE after/15-world-haunted_hospital
+VISUAL_CAPTURE after/15-world-forgotten_hotel
+VISUAL_CAPTURE after/15-world-underground_lab
+VISUAL_CAPTURE after/15-world-cursed_mansion
+VISUAL_CAPTURE after/16-level-ten-firing
+VISUAL_CAPTURE after/17-match-results
+VISUAL_CAPTURE after/18-lucky-spin
+VISUAL_CAPTURE after/19-tutorial-panel
+VISUAL_CAPTURE after/20-opening-hunter
+VISUAL_CAPTURE after/21-title-story
+VISUAL_CAPTURE after/22-main-menu-1080
+VISUAL_CAPTURE after/23-shop-1080
+VISUAL_CAPTURE after/24-loadout-1080
+VISUAL_CAPTURE after/25-gameplay-1080
+VISUAL_CAPTURE after/26-reduced-gameplay
+VISUAL_CAPTURE after/extra-shop-success
+VISUAL_CAPTURE after/extra-hunter-direction-right
+VISUAL_DIRECTION right (0.999994, -0.00335)
+VISUAL_CAPTURE after/extra-hunter-direction-left
+VISUAL_DIRECTION left (-0.999982, -0.005992)
+VISUAL_CAPTURE after/extra-frozen-hunter
+VISUAL_CAPTURE after/extra-siege-focus-abandoned_dorm
+VISUAL_CAPTURE after/extra-siege-focus-haunted_hospital
+VISUAL_CAPTURE after/extra-siege-focus-forgotten_hotel
+VISUAL_CAPTURE after/extra-siege-focus-underground_lab
+VISUAL_CAPTURE after/extra-siege-focus-cursed_mansion
+VISUAL_CAPTURE after/extra-large-counts-and-active-slot
+VISUAL_CAPTURE after/extra-genuine-room-tutorial-panel
+VISUAL_CAPTURE after/extra-charged-windup
+VISUAL_CAPTURE after/extra-reaper-transform
+VISUAL_CAPTURE after/extra-reaper-windup
+VISUAL_CAPTURE after/extra-reaper-impact
+VISUAL_PERF {"approx_process_fps":26.2186924976403,"frames":66,"label":"720-normal","material_cache_after":27,"material_cache_before":27,"mean_frame_ms":38.1407272727273,"p95_frame_ms":48.647,"reduced":false,"renderer":"Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture","resolution":"(1280, 720)","root_children_after":1,"root_children_before":1,"source_phase":"after"}
+VISUAL_PERF {"approx_process_fps":17.5481767244972,"frames":44,"label":"1080-normal","material_cache_after":27,"material_cache_before":27,"mean_frame_ms":56.9859772727273,"p95_frame_ms":66.406,"reduced":false,"renderer":"Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture","resolution":"(1920, 1080)","root_children_after":1,"root_children_before":1,"source_phase":"after"}
+VISUAL_PERF {"approx_process_fps":28.2059655219812,"frames":71,"label":"720-reduced","material_cache_after":27,"material_cache_before":27,"mean_frame_ms":35.4534929577465,"p95_frame_ms":43.718,"reduced":true,"renderer":"Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture","resolution":"(1280, 720)","root_children_after":1,"root_children_before":1,"source_phase":"after"}
+VISUAL_AUDIO {"ambience_gain":1.0,"dropped_events":8,"event_counts":{"achievement_unlocked":1,"bed_upgrade":7,"breach":2,"build":1,"button":2,"danger":6,"death_scream_1":1,"difficult_stage":1,"door_break":2,"door_crack":7,"door_hit":9,"door_reaction":2,"electricity":1,"footstep":16,"hunter_level":4,"hunter_spawn":1,"income":5,"intro_whisper":1,"item_barricade":1,"item_end":1,"item_time_freeze":1,"match_start":23,"menu":3,"prestige_upgrade":1,"reaper_laugh":1,"reaper_scythe":1,"reaper_transform":1,"scream_1":1,"scream_2":1,"shop_purchase":2,"survivor_notice":1,"turret_upgrade":1,"victory":1,"weather_rain":6,"weather_wind":6},"frame_voice_limit":6,"intensity":0.0,"loop_weights":{"ambient_dorm":0.35,"generator_loop":0.0,"music_calm":0.85,"music_danger":0.0,"music_menu":0.0,"music_reaper":0.0,"proximity_loop":0.0,"reaper_ambience":0.0},"missing_assets":[],"mix":{"ambient":0.5,"effects":0.65,"music":0.5,"muted":false},"music_duck":1.0,"music_start_count":4,"pacing_gain":1.0,"pending_critical":0,"proximity":0.0,"stream_count":105,"tension_state":"quiet","tension_weight":0.0,"voice_limit":16,"voices":0}
+VISUAL_REVIEW_CHECKS=100 FAILURES=0

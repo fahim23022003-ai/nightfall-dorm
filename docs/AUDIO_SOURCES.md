@@ -139,3 +139,25 @@ lower gain; death/notification cues use Effects and bounded priority/serializati
 Per-room event guards prevent repeated screams/laughter, distant reactions retain
 controlled prominence, and menu/practice transitions clear owned queues.
 Actual engine playback and numerical mix evidence are in the Phase 5C-2 report.
+
+
+## Phase 5C-3 positional clarity and tension pacing
+
+No WAVs were added or replaced: all 105 existing original streams remain. World
+voices are now positioned around the actual listener through the inverse canvas
+transform, preserving left/right information after camera movement and zoom.
+Footsteps, door impacts and Reaper anticipation have stronger bounded panning;
+existing world-distance attenuation, voice budgets and critical priorities remain.
+
+Read-only actual-threat pacing smoothly reduces competing music/ambience during
+danger, restores it during relief and suppresses weather events during critical
+player danger or genuine elimination. Independent Music/Effects/Ambient settings
+and mute remain authoritative; menu/practice reset stale tension.
+
+Independent focused audio checks pass 103 assertions; the existing asset/event
+suite passes 281 assertions with 105 decoded streams. Actual Master-bus capture
+through Godot AudioEffectRecord is stored under `docs/evidence/visual-overhaul/`.
+Its 42.818-second stereo mix peaks at 0.03653 full scale, RMS 0.00415, with zero
+full-scale samples. This validates nonzero engine output and no clipping in that
+fixture, not perceived loudness, sound quality or physical Windows speakers.
+Native Windows and subjective human listening remain UNVERIFIED.

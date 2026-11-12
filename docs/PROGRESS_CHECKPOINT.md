@@ -1,18 +1,46 @@
-# Phase 5C-3 — visual identity and game feel (12 November 2026)
+# Phase 5C-3 — visual identity and game feel complete (12 November 2026)
 
-IN PROGRESS. Started clean `work` at
-`f2f69f383e562c0ba8b6178bc3ba8d012da31024`, verified against GitHub.
-Recovery tag `pre-phase5c3-f2f69f3`. D captured33 actual baseline PNGs/51checks
-before production edits. B owns production, C independent QA/navigation review,
-D paired render/audio review. Milestone: shared textured materials, menu/world/
-Hunter/combat/scars/tension and positional audio implemented. C186focused/1138UI/
-103audio checks pass;57,056baseline nav checks/90 approaches found no model defect.
-Final paired captures/performance/full regressions remain pending.
-Existing navigation is valid from initial review;
-no AI rewrite justified. Next: reusable gothic-industrial materials/UI, room/
-corridor/Hunter/combat/scar/tension polish, paired720p/1080p inspection, targeted
-and existing regressions, finalreport/commit/verified privateworkpush.
-Native Windows and subjective quality UNVERIFIED. Stop after5C-3, no5D/6.
+IMPLEMENTED / TESTED on Godot 4.6.3 Linux. Started clean `work` at
+`f2f69f383e562c0ba8b6178bc3ba8d012da31024`, matching GitHub.
+Recovery tag `pre-phase5c3-f2f69f3`; material/presence milestone `44445f1`.
+B production, C independent QA and D actual render/audio review complete.
+No model/AI/navigation/economy/save-format changes; no gameplay balance audit
+needed. `main` unchanged. No Phase 5D/6 features started.
+
+Cached original nine-slice metal/glass theme across HUD and menus; serif brand,
+haunted facade/fog, separate resources, legible item states and large values.
+Five original map floor surfaces, bounded local props, actual-vector Hunter/
+Reaper facing/anticipation, pause/freeze holds, max48 event-derived scars.
+Truthful quiet/distant/approach/siege/danger/elimination/relief pacing; actual
+camera-aware positional audio and critical-weather suppression; all105 cues reused.
+
+Fixed onboarding theme inheritance, focus-title/Lab HP clipping, Legendary/notice
+overlap, contradictory USED/READY and duplicate AUTO states. Independent review
+caught a missing-metadata startup error after the performance optimization;
+explicit guard fixed it and final engine logs are clean. Offscreen art culling
+and transition-only danger styling avoid unnecessary rendering/layout work.
+
+C final presentation186/UI1315/audio103/culling1116 checks, all0failures;
+baseline navigation57056 checks/90actual approaches confirms legal contact/
+breach and no wall/closed-door cheat. Full regular regression exit0, includes
+20items/Level10/economy/refunds/RMshop/rewards/profile/startup and simulations;
+affected suites rerun after late cosmetic fixes. No unchanged extended matrix
+rerun claimed. Five new visual suites registered in tools/check.sh.
+
+D33BEFORE/50AFTER actual PNGs; baseline51/final100/detail26/performance6 checks,
+all0failures, final logs no engine errors. Actual42.818s mixer capture,105streams,
+no missing assets, peak.03653/RMS.00415/0fullscale. Longer matched8s Linux
+llvmpipe mean frame times31.925→31.279ms720p,48.073→46.365ms1080p,
+29.313→28.265msReduced720p; warmcache18→18. Initial slower/failed runs retained.
+Comparable controlled fixture cost; no nativeWindowsFPS guarantee.
+
+No known functional failure remains in tested paths. Native Windows, hardware
+FPS/physical controls/speakers and human visual/horror/audio quality UNVERIFIED.
+Retained pad repetition/simple exterior silhouettes/colorful survivor sprites
+remain art limitations. Full changes, paired screenshots, tests and limits:
+[PHASE_5C3_VISUAL_OVERHAUL_REPORT.md](PHASE_5C3_VISUAL_OVERHAUL_REPORT.md),
+`docs/evidence/visual-overhaul/`. Final commit/push verification pending below;
+continue only final import, commit, push and exact remote SHA verification.
 
 ---
 

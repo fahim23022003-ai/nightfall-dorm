@@ -174,6 +174,12 @@ func frame(fill: Color, edge: Color, radius: int = 5) -> StyleBoxFlat:
  style.set_corner_radius_all(radius)
  return style
 
+func visible_world_rect(c,margin=140.0) -> Rect2:
+ var inverse=c.get_canvas_transform().affine_inverse()
+ var viewport=c.get_viewport_rect()
+ var a=inverse*viewport.position
+ return Rect2(a,inverse*viewport.end-a).abs().grow(margin)
+
 func render(c):
  c.draw_rect(Rect2(-3000,-3000,6000,6000),Color("11171E"))
  # Architectural surround, soft night haze and deliberate negative space.
@@ -188,6 +194,7 @@ func render(c):
   return
  # Coordinates are translated only here; model geometry is unchanged.
  var m = c.model
+ var visible=visible_world_rect(c)
  environment.reduced_effects=c.profile.settings.get("reduced_effects",false)
  if not m.tutorial_mode:environment.render(c,self)
  if m.map_id!="legacy": map_presentation.render_architecture(c,self)
@@ -208,6 +215,7 @@ func render(c):
   text(c,"SOUTH   •   KEEP THE LIGHTS ALIVE",OFFSET+Vector2(345,479),10,Color("b8b5a6"))
  render_scars(c)
  for room in m.rooms:
+  if not visible.intersects(Rect2(OFFSET+room.bounds().position,room.bounds().size)):continue
   if m.map_id!="legacy": map_presentation.render_door(c,self,room)
   else: door_scene(c,room)
   render_door_scars(c,room)

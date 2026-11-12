@@ -1,0 +1,9 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+VISUAL_PERF {"approx_process_fps":31.9702476882451,"frames":256,"label":"720-normal","material_cache_after":18,"material_cache_before":18,"mean_frame_ms":31.27908203125,"p95_frame_ms":40.31,"reduced":false,"renderer":"Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture","resolution":"(1280, 720)","root_children_after":1,"root_children_before":1,"sample_window_seconds":8.0,"source_phase":"perf-after-long"}
+VISUAL_PERF {"approx_process_fps":21.5680011649214,"frames":173,"label":"1080-normal","material_cache_after":18,"material_cache_before":18,"mean_frame_ms":46.3649826589595,"p95_frame_ms":54.234,"reduced":false,"renderer":"Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture","resolution":"(1920, 1080)","root_children_after":1,"root_children_before":1,"sample_window_seconds":8.0,"source_phase":"perf-after-long"}
+VISUAL_PERF {"approx_process_fps":35.3796208400916,"frames":284,"label":"720-reduced","material_cache_after":18,"material_cache_before":18,"mean_frame_ms":28.2648591549296,"p95_frame_ms":34.047,"reduced":true,"renderer":"Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture","resolution":"(1280, 720)","root_children_after":1,"root_children_before":1,"sample_window_seconds":8.0,"source_phase":"perf-after-long"}
+VISUAL_PERF_ONLY_CHECKS=6 FAILURES=0

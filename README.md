@@ -17,6 +17,20 @@ An original single-player Godot 4 dormitory survival defense game. Choose a room
 
 Full controls, ZIP/Git instructions and a practical test checklist: [Windows home testing](docs/HOME_TESTING_WINDOWS.md).
 
+## Gothic industrial presentation (Phase 5C-3)
+
+Menus and HUD now share layered weathered metal and glass materials, with a
+haunted facade, clearer action hierarchy and separate Gold/Electricity readouts.
+All five maps retain their layouts while gaining authored floor detail and local
+props. Actual Hunter motion drives facing and anticipation; real combat leaves
+bounded match-local scars. Threat pacing and camera-aware positional audio use
+actual events. Reduced Effects remains available in Settings.
+
+See the [visual overhaul report](docs/PHASE_5C3_VISUAL_OVERHAUL_REPORT.md) for
+paired before/after screenshots, automated and rendered checks, software-renderer
+measurements and remaining art limitations. Native Windows play and subjective
+visual/audio quality remain unverified.
+
 ## Haunted worlds and prestige defenses (Phase 5C-2)
 
 The five existing maps now have animated exterior scenery, noncombat ambient

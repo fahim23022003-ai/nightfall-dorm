@@ -131,9 +131,10 @@ func choose_teammate(slot: int):
   b.disabled=r.owner<=0 or not r.alive or not r.closed or r.door_hp<=0 or r.door_hp>=r.max_hp()
  ui.button("Cancel selection",Vector2(330,445),ui.show_match,300,44)
 func create_hotbar():
- legendary_banner=ui.box(Rect2(20,215,334,44),"172338","EAC979")
+ # Reserve the right status column: below the Reaper banner, above the build panel.
+ legendary_banner=ui.box(Rect2(920,180,334,44),"172338","EAC979")
  legendary_banner.mouse_filter=Control.MOUSE_FILTER_IGNORE
- legendary_name=ui.label_at("",Vector2(30,225),18,314,true)
+ legendary_name=ui.label_at("",Vector2(930,190),18,314,true)
  legendary_name.mouse_filter=Control.MOUSE_FILTER_IGNORE
  legendary_name.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  legendary_banner.visible=false
@@ -188,11 +189,18 @@ func update(delta):
   if id=="feather": special=" · USED" if fx.feather_used else " · AUTO at25%"
   if id=="coupon" and game.model.player()!=null and game.model.player().coupon_armed: special=" · ARMED40%"
   var state="ACTIVE %.1fs" % seconds if seconds>0 else "COOLDOWN %.1fs" % fx.cooldown if fx.cooldown>0 else "READY"
-  hotbar[i].text="[%d] %s\n%s · ×%d · %s%s" % [i+1,ItemCatalog.ITEMS[id].name,ItemCatalog.ITEMS[id].rarity.to_upper(),quantity,state,special]
   hotbar[i].self_modulate=Color(1.04,1.08,1.02) if seconds>0 else Color.WHITE
   var reason=fx.can_activate(id,game.model)
   if id=="rescue" and reason.begins_with("Select"):
    if game.model.rooms.any(func(r):return r.owner>0 and r.alive and r.closed and r.door_hp>0 and r.door_hp<r.max_hp()): reason=""
+  if seconds<=0:
+   if quantity<=0:state="EMPTY";special=""
+   elif (ItemCatalog.legendary(id) and fx.legendary_used>0) or (id=="feather" and fx.feather_used):state="USED";special=""
+   elif id in ["guardian_heart","feather"]:state="AUTO lethal" if id=="guardian_heart" else "AUTO at25%";special=""
+   elif id=="coupon" and game.model.player()!=null and game.model.player().coupon_armed:state="ARMED";special=" · 40% discount"
+   elif game.profile.read_only:state="UNAVAILABLE"
+   elif reason!="" and fx.cooldown<=0:state="UNAVAILABLE"
+  hotbar[i].text="[%d] %s\n%s · ×%d · %s%s" % [i+1,ItemCatalog.ITEMS[id].name,ItemCatalog.ITEMS[id].rarity.to_upper(),quantity,state,special]
   hotbar[i].disabled=quantity<=0 or reason!="" or game.profile.read_only
   hotbar[i].tooltip_text=ItemCatalog.ITEMS[id].description+"\n"+(reason if reason!="" else "Ready")
  if is_instance_valid(feedback_label):

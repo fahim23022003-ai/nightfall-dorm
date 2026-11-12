@@ -16,8 +16,10 @@ func render_architecture(c,p):
  var data=c.model.map_data
  var theme=str(data.get("theme","dorm"))
  var colors=PALETTES.get(theme,PALETTES.dorm)
+ var visible=p.visible_world_rect(c)
  for corridor in data.corridors:
   var rect=Rect2(OFFSET+corridor.position,corridor.size)
+  if not visible.intersects(rect):continue
   c.draw_style_box(p.frame(colors[2],colors[3],3),rect.grow(4))
   c.draw_texture_rect(floors[theme],rect,true,Color("737B7B"))
   # Metal service rails, rivets and warm wall lights anchor corridor depth.
@@ -42,7 +44,8 @@ func render_architecture(c,p):
      c.draw_rect(Rect2(rect.position+Vector2(x,y),Vector2(minf(31,rect.size.x-x),minf(31,rect.size.y-y))),Color("738D91") if (x/32+y/32)%2==0 else Color("617B81"))
   else:
    for y in range(0,int(rect.size.y),22): c.draw_line(rect.position+Vector2(0,y),rect.position+Vector2(rect.size.x,y),colors[3].darkened(0.5),1)
- for room in c.model.rooms: render_room(c,p,room,theme,colors)
+ for room in c.model.rooms:
+  if visible.intersects(Rect2(OFFSET+room.bounds().position,room.bounds().size)):render_room(c,p,room,theme,colors)
  var title=OFFSET+data.bounds.position+Vector2(10,-20)
  if c.full_map:p.text(c,str(data.title).to_upper(),title,18,colors[4])
 
@@ -196,5 +199,8 @@ func render_door(c,p,room):
  if room.owner>=0:
   var targeted=c.model.hunter.target==room.index and c.model.hunter.state in [HunterState.State.ATTACK,HunterState.State.BREACH]
   var where=point+Vector2(40,-25) if absf(normal.x)<0.5 else point+Vector2(-35,-65)
+  var label_screen=c.get_canvas_transform()*where
+  if label_screen.y>75 and label_screen.y<150:
+   where+=c.get_canvas_transform().basis_xform_inv(Vector2(0,155-label_screen.y))
   p.bar(c,where,70,room.door_hp/room.max_hp())
   if room.owner==0 or targeted: p.text(c,"%d/%d" % [room.door_hp,room.max_hp()],where+Vector2(0,-5),10,Color("F1D5C7"))

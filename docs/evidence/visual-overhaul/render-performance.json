@@ -1,0 +1,51 @@
+{
+ "before_quantitative_baseline": false,
+ "conditions": "Controlled Linux software-rendered observation only; no native Windows or hardware comparison",
+ "observations": [
+  {
+   "approx_process_fps": 26.2186924976403,
+   "frames": 66,
+   "label": "720-normal",
+   "material_cache_after": 27,
+   "material_cache_before": 27,
+   "mean_frame_ms": 38.1407272727273,
+   "p95_frame_ms": 48.647,
+   "reduced": false,
+   "renderer": "Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture",
+   "resolution": "(1280, 720)",
+   "root_children_after": 1,
+   "root_children_before": 1,
+   "source_phase": "after"
+  },
+  {
+   "approx_process_fps": 17.5481767244972,
+   "frames": 44,
+   "label": "1080-normal",
+   "material_cache_after": 27,
+   "material_cache_before": 27,
+   "mean_frame_ms": 56.9859772727273,
+   "p95_frame_ms": 66.406,
+   "reduced": false,
+   "renderer": "Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture",
+   "resolution": "(1920, 1080)",
+   "root_children_after": 1,
+   "root_children_before": 1,
+   "source_phase": "after"
+  },
+  {
+   "approx_process_fps": 28.2059655219812,
+   "frames": 71,
+   "label": "720-reduced",
+   "material_cache_after": 27,
+   "material_cache_before": 27,
+   "mean_frame_ms": 35.4534929577465,
+   "p95_frame_ms": 43.718,
+   "reduced": true,
+   "renderer": "Godot4.6.3 OpenGL/Mesa software display; controlled preparation fixture",
+   "resolution": "(1280, 720)",
+   "root_children_after": 1,
+   "root_children_before": 1,
+   "source_phase": "after"
+  }
+ ]
+}

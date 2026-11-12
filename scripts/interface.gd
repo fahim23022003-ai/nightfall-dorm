@@ -538,7 +538,10 @@ func update_match():
   else: actions.upgrade.text="Select a building to upgrade"
  actions.repair.text="Repair  ·  %d gold" % Catalog.REPAIR_COST
  var immediate=room!=null and room.alive and room.door_hp<room.max_hp()*.35 and game.model.hunter.target==room.index and game.model.hunter.state in [HunterState.State.ATTACK,HunterState.State.BREACH]
- room_door_summary.add_theme_stylebox_override("normal",GothicTheme.surface("583344" if immediate else "22292B","BC626B" if immediate else "938876","button_normal"))
+ # Theme overrides invalidate control layout: only change material on a real state transition.
+ if not room_door_summary.has_meta("danger_skin") or room_door_summary.get_meta("danger_skin")!=immediate:
+  room_door_summary.add_theme_stylebox_override("normal",GothicTheme.surface("583344" if immediate else "22292B","BC626B" if immediate else "938876","button_normal"))
+  room_door_summary.set_meta("danger_skin",immediate)
  room_door_summary.modulate=Color(1,.91+.09*sin(game.presentation.clock*3),.91+.09*sin(game.presentation.clock*3)) if immediate and not game.profile.settings.reduced_effects else Color.WHITE
  quick_repair.text="Repair %d G  [R]" % Catalog.REPAIR_COST
  quick_repair.disabled=action_reason("repair")!=""

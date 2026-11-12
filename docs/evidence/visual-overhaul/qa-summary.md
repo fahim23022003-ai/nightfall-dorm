@@ -56,7 +56,7 @@ the first executed focused file already passed.
 
 ## UI and resource ownership
 
-`visual_identity_ui.gd`: **1,138 checks, zero failures**. A prepared legitimate
+`visual_identity_ui.gd`: **1,315 checks, zero failures**. A prepared legitimate
 Mythic graduate profile is saved and reopened through the actual scene and opening
 skip API. At1280×720 and1920×1080, menu/stages/loadout/shop/ranks/achievements/
 settings and all three inventory pages retain functional buttons, shared material
@@ -91,3 +91,47 @@ D verifies actual mixed output/clipping; C's checks do not claim human listening
 No confirmed functional failure remains in C's tested paths. Native Windows
 import/input/hardware FPS/speakers, subjective excitement/fear/visual appeal and
 human gameplay balance remain UNVERIFIED. Future features remain out of scope.
+
+## Late viewport-culling revalidation
+
+After B added viewport culling, corrected the hotbar's unavailable/used text and
+adjusted a Laboratory HP label, C reran the affected suites: presentation **186/0**,
+UI **1,138/0**, positional audio **103/0**. Their earlier passing logs are preserved
+as `qa-before-culling.log`, `qa-ui-before-culling.log` and
+`qa-audio-before-culling.log`. Current reruns are `qa-qa-final.log`,
+`qa-ui-final.log` and `qa-audio-final.log`.
+
+New `visual_identity_culling.gd` passes **1,116 checks**, zero failures, and counts
+150 fully offscreen geometry cases that can be skipped. Five maps ×three camera
+centers ×three zooms verify that the actual viewport corners and every intersecting
+room/corridor remain inside the generous render envelope. On-screen decorative
+actors survive the exterior filter. Matched cosmetic updates with and without
+view queries retain identical creature state, clocks and cosmetic RNG; gameplay
+RNG remains untouched. This is envelope/state safety testing, not a substitute
+for D's raster inspection or a claim about native Windows performance.
+
+The unchanged 57,056-check navigation baseline was not needlessly repeated.
+No confirmed functional failure remains after this late presentation patch.
+
+## Final Legendary overlap correction
+
+D's actual raster inspection caught the existing Legendary activation banner
+overlapping left-side notices. B moved those same controls to the existing right
+status column at `(920,180,334,44)`, below the Reaper awakening banner and above
+the earliest build inspector. No model, item timing or notification rules changed.
+
+C added 177 UI assertions using an actual equipped Time Freeze activation and
+its real item event. At720p/1080p, ordinary/reduced effects and start/peak/end
+flourish phases, the banner and scaled name clear the maximum three-elimination
+notice region, danger ribbon, Reaper awakening banner, tutorial guide, top/bottom
+HUD and all five actual inspector modes. All four Legendary names fit, exactly
+one item is consumed by the real activation, and the flourish hides at1.6 seconds.
+These are rectangle/font and state assertions; D owns the final raster evidence.
+
+Final source reruns all exited0: presentation **186/0**, expanded UI **1,315/0**,
+positional audio **103/0**, culling **1,116/0** (150 offscreen regions). Logs are
+`qa-qa-final.log`, `qa-ui-final.log`, `qa-audio-final.log` and `qa-culling-final.log`;
+previous passes are retained as `qa-*-before-flourish.log`. No ERROR, SCRIPT ERROR
+or WARNING appeared in these four final logs. This run includes the transition-only
+danger material assignment, first-match metadata guard and concise automatic-item
+hotbar states. The unchanged navigation baseline was not repeated.

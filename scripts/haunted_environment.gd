@@ -82,10 +82,12 @@ func render(c,p):
  var m=c.model
  if observed_model!=m:configure(m)
  var palette=Color(THEMES[theme].color)
+ var visible=p.visible_world_rect(c,90)
  # Scenery is drawn beneath architecture. Every animated actor remains outside
  # the protected room/corridor union, including its complete bounding footprint.
  for entry in scenery:
   var q=OFFSET+entry.position
+  if not visible.has_point(q):continue
   var variant=entry.variant
   if theme in ["dorm","mansion"]:
    c.draw_line(q+Vector2(0,35),q+Vector2(-5,-44),Color("17202A"),8)
@@ -112,6 +114,7 @@ func render(c,p):
   var alpha=creature_alpha(creature)
   if alpha<=0:continue
   var q=OFFSET+creature.position
+  if not visible.has_point(q):continue
   var shade=Color(.08,.09,.15,alpha)
   match creature.kind:
    "shadow_walker":
