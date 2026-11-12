@@ -428,5 +428,15 @@ or Phase 6 feature was implemented.
 Implementation and verification are complete. The integrated source checkpoint
 `3cf3362f342eb410a0306b621bfcfad9aa660e0e` was successfully pushed and matched
 GitHub; final explicit Challenge result metadata is committed at
-`e2a75f8fa820372478d1895e63aa0aba418d24ba`. The complete source/evidence delivery
-receipt below is added only after its actual GitHub push and SHA comparison.
+`e2a75f8fa820372478d1895e63aa0aba418d24ba`.
+
+**GitHub push: VERIFIED SUCCEEDED.** Complete implementation, reports, regression
+logs, audio and all inspected screenshots are committed at
+`325874b6eee60e81a742f2f584d47331c9be6451`. After every bounded evidence push,
+`git ls-remote origin refs/heads/work` matched local HEAD; the final content
+checkpoint also had a clean working tree. No `main` update or force push occurred.
+[Machine-readable delivery receipt](evidence/replay/delivery-receipt.json) records
+those actual comparisons. This subsequent receipt commit changes documentation
+only; its own SHA is recorded in Git history and the final response. Download the
+current private repository's **work** branch ZIP to obtain all Phase 5D-2 changes.
+Native Windows/human testing remains required as described above. Stop at 5D-2.
