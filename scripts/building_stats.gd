@@ -40,6 +40,7 @@ static func weapon_stats(model,room,b: Dictionary) -> Dictionary:
    if model.time<model.preparation+model.stage_bonus.get("seconds",0.0):hit*=model.stage_bonus.get("damage",1.0)
  return {"damage":damage,"hit":hit,"interval":interval,"dps":hit/maxf(.01,interval),"range":range_value,"projectile_speed":Catalog.PROJECTILES[b.kind]*branch.speed,"slow":branch.slow}
 static func machine_stats(model,room,b: Dictionary) -> Dictionary:
+ if b.kind in MagicDefense.KINDS:return MagicDefense.stats(b)
  if b.kind in DefenseEffects.WEAPONS:return weapon_stats(model,room,b)
  if b.kind in ["auto_repair","shield","decoy"]:
   var special=DefenseEffects.new().stats(room,b)
@@ -55,6 +56,9 @@ static func frost_status(strength: float) -> Dictionary:
  return {"hunter_move":move,"hunter_interval":strength,"reaper_move":move*.5,"reaper_interval":strength*.5,"undead_move":minf(.35,strength)}
 static func format_machine(model,room,b: Dictionary) -> String:
  var stats=machine_stats(model,room,b)
+ if b.kind=="barrier":return "Reflect %.0f%% eligible Magic damage / %.1fs; Physical unaffected.\nReflection never blocks the original hit; no recursion." % [stats.reflect*100,stats.interval]
+ if b.kind=="plasma":return "Absorb %.0f%% Magic; storage %.0f / %.0fs.\nConvert %.0f%% stored energy to door HP every3s; no Electricity gain." % [stats.absorb*100,stats.capacity,stats.expiry,stats.heal*100]
+ if b.kind=="antenna":return "Magic shield %.0f HP / %.0fs recharge; cost %.1f E.\nHighest-level antenna only; Physical bypasses this shield." % [stats.capacity,stats.interval,stats.power]
  if b.kind=="auto_repair":return "Repair %.1f HP / %.1fs below %.0f%% HP\nUpkeep %.2f Gold + %.2f Electricity per burst" % [stats.heal,stats.interval,stats.threshold*100,stats.gold,stats.power]
  if b.kind=="shield":return "Barrier %.1f HP for %.1fs · room cooldown %.1fs\nUpkeep %.2f Electricity per activation" % [stats.capacity,stats.duration,stats.interval,stats.power]
  if b.kind=="decoy":return "Lure %.1fs · range %.0f · cooldown %.1fs\nUpkeep %.2f Electricity; Reaper duration halved" % [stats.duration,stats.range,stats.interval,stats.power]

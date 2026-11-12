@@ -643,15 +643,19 @@ func _wrath_presentation(type: String, record: Dictionary, model, position: Vect
   "undead_spawn","undead_attack","undead_death":
    event(type+"_enhanced" if type=="undead_spawn" and bool(record.get("enhanced",false)) else type,record.get("entity_position",position),{"important":false})
   "scythe_throw","scythe_embed","scythe_tick","scythe_end":event(type,position)
+  "magic_shield","magic_absorb":event("shield_absorb",position,{"important":false})
+  "magic_reflect":event("impact_shock",position,{"important":false})
+  "plasma_release":event("auto_repair_activate",position,{"important":false})
+  "arcane_impact":event("impact_frost" if record.get("element","")=="ice" else "impact_shock",position,{"important":false})
   "shield_absorb":event("shield_absorb",position,{"important":false})
   "defense_activate":
    var cue={"shield":"shield_activate","auto_repair":"auto_repair_activate","decoy":"decoy_activate","generator":"generator_activate"}.get(str(record.get("kind","")),"")
    if cue!="":event(cue,position,context)
   "hunter_ability_warning":
-   var cue={"pressure":"hunter_crusher_warning","conceal":"hunter_stalker_warning","dash":"hunter_ravager_warning"}.get(str(record.get("ability","")),"danger")
+   var cue={"pressure":"hunter_crusher_warning","conceal":"hunter_stalker_warning","dash":"hunter_ravager_warning","cursed_projectile":"hunter_stalker_warning","interference":"hunter_ravager_warning","chain_lightning":"hunter_crusher_warning","soul_drain":"reaper_charge","shadow_dash":"hunter_ravager_warning"}.get(str(record.get("ability","")),"danger")
    event(cue,position,{"expires_in":maxf(.03,float(record.get("delay",1.0)))})
   "hunter_ability":
-   var cue={"pressure":"hunter_crusher_pressure","conceal":"hunter_stalker_conceal","feint":"hunter_stalker_feint","dash":"hunter_ravager_dash"}.get(str(record.get("ability","")),"danger")
+   var cue={"pressure":"hunter_crusher_pressure","conceal":"hunter_stalker_conceal","feint":"hunter_stalker_feint","dash":"hunter_ravager_dash","cursed_projectile":"shot_frost","interference":"shot_shock","chain_lightning":"shot_arc","soul_drain":"reaper_surge","shadow_dash":"hunter_ravager_dash"}.get(str(record.get("ability","")),"danger")
    event(cue,position)
   "archetype_warning":
    var cue="hunter_"+str(record.get("archetype",model.hunter.archetype))+"_warning"

@@ -2,6 +2,7 @@ class_name HunterState
 extends RefCounted
 
 enum State {DORMANT, SEEK, MOVE, ATTACK, BREACH, EXIT, DEAD, TRANSFORM}
+var arcane=ArcaneHunter.new()
 var state = State.DORMANT
 var position = Vector2(960,410)
 var hp = Catalog.HUNTER.hp
@@ -358,6 +359,7 @@ func tick(delta: float, match_state):
  phase_guard_remaining=maxf(0,phase_guard_remaining-delta)
  if phase_guard_remaining>0:return
  if match_state.wrath.active():cooldown=maxf(0,cooldown-delta);return
+ if arcane.tick(self,match_state,delta):return
  if _tactics(delta,match_state):return
  var active_seconds=match_state.hunter_active_seconds()
  var next_level=1 if active_seconds<profile.opening else 2+int((active_seconds-profile.opening)/profile.growth_seconds)
@@ -383,6 +385,7 @@ func tick(delta: float, match_state):
  interval*=match_state.evolution.interval_factor(self)*(.82 if match_state.wrath.domain_active() else 1.0)
  tactical_cooldown=maxf(0,tactical_cooldown-delta*(match_state.evolution.cooldown_factor()-1))
  if pressure_remaining>0:damage*=1.2
+ if arcane.dash>0:speed*=1.4
  if dash_remaining>0:speed*=1.65
  if conceal_remaining>0:speed*=1.15
  if match_state.tutorial_mode:

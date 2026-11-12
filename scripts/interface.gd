@@ -339,7 +339,7 @@ func show_match():
  context_box.mouse_filter=Control.MOUSE_FILTER_STOP
  context_title=label_at("BUILD A DEFENSE",Vector2(14,12),18,304,true,context_box)
  button("×",Vector2(326,8),game.cancel_placement,28,28,context_box)
- var descs={"turret":"Auto fire","heavy":"Arc damage","generator":"Makes power","repair":"Mends door","economy":"More income","enhancer":"Boost guns","flame":"Burn / DoT","frost":"Slow enemies","shock":"Charged strike","auto_repair":"Paid repairs","shield":"Paid barrier","decoy":"Timed legal lure"}
+ var descs={"barrier":"Reflects magic","plasma":"Stores magic","antenna":"Magic shield","turret":"Auto fire","heavy":"Arc damage","generator":"Makes power","repair":"Mends door","economy":"More income","enhancer":"Boost guns","flame":"Burn / DoT","frost":"Slow enemies","shock":"Charged strike","auto_repair":"Paid repairs","shield":"Paid barrier","decoy":"Timed legal lure"}
  var n=0
  for kind in Catalog.BUILDINGS:
   var id=kind
@@ -701,6 +701,9 @@ func update_match():
    if room.strategy_enabled and b.level==4:actions.upgrade.text="Specialize → Level 5"
   else: actions.upgrade.text="Select a building to upgrade"
  actions.repair.text="Repair · %.1f gold" % (room.manual_repair_cost() if room!=null else Catalog.REPAIR_COST)
+ hunter_label.tooltip_text+="\nDamage: Physical claws; telegraphed Magic specials. Affinity: "+DamageRules.affinity(m.hunter.archetype).capitalize()+".\nFire > Ice > Earth > Electric > Fire: +15% strong, -10% weak; neutral unchanged."
+ if m.hunter.arcane.action!="":hunter_detail.text=m.hunter.arcane.action.replace("_"," ").to_upper()+" · %.1fs" % m.hunter.arcane.warning
+ if room!=null and room.magic_state.disrupt>0:warning_label.text="TURRET INTERFERENCE · %.1fs · Repair remains available" % room.magic_state.disrupt;warning_label.visible=true
  var immediate=room!=null and room.alive and room.door_hp<room.max_hp()*.35 and game.model.hunter.target==room.index and game.model.hunter.state in [HunterState.State.ATTACK,HunterState.State.BREACH]
  # Theme overrides invalidate control layout: only change material on a real state transition.
  if not room_door_summary.has_meta("danger_skin") or room_door_summary.get_meta("danger_skin")!=immediate:

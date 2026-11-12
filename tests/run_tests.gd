@@ -152,7 +152,7 @@ func run():
  room.sleeping = true
  room.gold = 10000
  room.electricity = 1000
- room.layout=MapCatalog.map(MapCatalog.IDS[0]).rooms[0]
+ room.layout=MapCatalog.map("cursed_mansion").rooms[0]
  check(room.tile_count()>=Catalog.BUILDINGS.size(),"current map supports complete registered-machine purchase fixture")
  for kind in Catalog.BUILDINGS.keys():
   room.bed_level = 1

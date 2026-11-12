@@ -1,6 +1,6 @@
 class_name ChallengeCode
 extends RefCounted
-const RULESET=3
+const RULESET=4
 const FIXED_STEP=1.0/30.0
 static func encode(config: Dictionary) -> String:
  for key in ["seed","preset","gear"]:
@@ -23,11 +23,11 @@ static func decode(raw: String,archive_only: bool=false) -> Dictionary:
  for i in range(1,8):
   if parts[i].length()>6:return {"ok":false,"error":"Code field is out of range."}
   numbers.append(int(parts[i]))
- if numbers[0]!=RULESET and not (archive_only and numbers[0] in [1,2]):return {"ok":false,"error":"Incompatible challenge ruleset."}
- if numbers[1] not in range(5) or numbers[2]<1 or numbers[2]>999999 or numbers[3] not in range(3) or numbers[4] not in range(3) or numbers[5] not in [0,1] or numbers[6] not in [0,1]:return {"ok":false,"error":"Unsupported map, mode, seed or normalized gear preset."}
+ if numbers[0]!=RULESET and not (archive_only and numbers[0] in [1,2,3]):return {"ok":false,"error":"Incompatible challenge ruleset."}
+ if numbers[1] not in range(5) or numbers[2]<1 or numbers[2]>999999 or numbers[3] not in range(StrategyCatalog.ARCHETYPE_IDS.size() if numbers[0]==4 else 3) or numbers[4] not in range(3) or numbers[5] not in [0,1] or numbers[6] not in [0,1]:return {"ok":false,"error":"Unsupported map, mode, seed or normalized gear preset."}
  var config={"map":MapCatalog.IDS[numbers[1]],"seed":numbers[2],"archetype":StrategyCatalog.ARCHETYPE_IDS[numbers[3]],"difficulty":["standard","hard","hell"][numbers[4]],"preset":numbers[5],"gear":numbers[6]}
  var canonical=encode(config)
- if archive_only and numbers[0] in [1,2]:
+ if archive_only and numbers[0] in [1,2,3]:
   var body=canonical.substr(0,canonical.rfind("-")).replace("NF2-%d-" % RULESET,"NF2-%d-" % numbers[0])
   canonical=body+"-"+body.sha256_text().left(8).to_upper()
  if canonical!=code:return {"ok":false,"error":"Checksum or canonical formatting mismatch."}

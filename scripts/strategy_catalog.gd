@@ -1,12 +1,21 @@
 class_name StrategyCatalog
 extends RefCounted
 
-const ARCHETYPE_IDS=["crusher","stalker","ravager"]
+const ARCHETYPE_IDS=["crusher","stalker","ravager","witch","electric","storm"]
 const ARCHETYPES={
  "crusher":{"name":"The Crusher","hp":1.15,"damage":1.2,"speed":.82,"windup":.65,"commit":1.4,"hint":"Heavy door blows, slow approach. Build concentrated fire; repair after its deliberate wind-up.","color":"C8A277"},
  "stalker":{"name":"The Stalker","hp":.92,"damage":.82,"speed":1.08,"windup":.55,"commit":.9,"hint":"Seeks isolated defenses; warns before its first strike. Cover exposed doors with ranged turrets.","color":"A39AC8"},
- "ravager":{"name":"The Ravager","hp":.88,"damage":.85,"speed":1.18,"windup":.3,"commit":.7,"hint":"Fast pressure, fragile body. Three strikes then a recovery window; invest in rapid fire.","color":"CA7872"}}
+ "ravager":{"name":"The Ravager","hp":.88,"damage":.85,"speed":1.18,"windup":.3,"commit":.7,"hint":"Fast pressure, fragile body. Three strikes then a recovery window; invest in rapid fire.","color":"CA7872"},
+ "witch":{"name":"Phantom Witch","hp":.88,"damage":.82,"speed":.94,"windup":.7,"commit":.9,"hint":"Ice curses travel along clear corridors. Reflect or absorb magic; fragile under focused fire.","color":"B898DF"},
+ "electric":{"name":"Electric Ghost","hp":.96,"damage":.88,"speed":1.04,"windup":.6,"commit":1.0,"hint":"Telegraphed interference locks room turrets3s, then18s immunity. Repairs and magic shields remain available.","color":"78DEEF"},
+ "storm":{"name":"Storm Wraith","hp":.92,"damage":.88,"speed":1.0,"windup":.65,"commit":1.1,"hint":"Lightning chains only to nearby doors along unobstructed corridors; max3 rooms, weaker secondary hits.","color":"DFC37D"}}
 const BRANCHES={
+ "mirror":{"kind":"barrier","name":"Deep Mirror","description":"20% stronger reflection, but5s recovery."},
+ "ward":{"kind":"barrier","name":"Quick Silver","description":"20% weaker reflection, but3s recovery."},
+ "reservoir":{"kind":"plasma","name":"Long Reservoir","description":"Stores for18s; absorbs20% rather than25%."},
+ "converter":{"kind":"plasma","name":"Vital Converter","description":"Absorbs30%; converts35% stored energy into healing, expires12s."},
+ "dome":{"kind":"antenna","name":"Fortress Dome","description":"35% more magic durability;12s recharge."},
+ "pulse":{"kind":"antenna","name":"Pulse Ward","description":"20% less magic durability;7s recharge."},
  "lucid":{"kind":"bed","name":"Lucid Dividend","income":1.25,"power":.9,"description":"25% more occupied bed income; generators produce 10% less electricity."},
  "conductor":{"kind":"bed","name":"Dream Conductor","income":.85,"power_rate":.04,"description":"15% less bed income; occupied bed converts 4% base income into Electricity/s."},
  "bulwark":{"kind":"door","name":"Cursed Bulwark","hp":1.2,"mitigation":.9,"repair":.8,"description":"20% more durability and10% mitigation; manual repairs20% weaker."},
@@ -47,9 +56,9 @@ const CONTRACTS={
  "iron_survivor":{"name":"Iron Survivor","objective":"Win without using manual door repair. Stations, upgrades and items remain valid.","cash":8}}
 static func choose_archetype(ordinal: int,stage: String,mode: String) -> String:
  # No gameplay/reward RNG consumption; aborts and reloads retain the same encounter.
- return ARCHETYPE_IDS[posmod(ordinal+StageCatalog.index_of(stage)*2+["standard","hard","hell"].find(mode),3)]
+ return ARCHETYPE_IDS[posmod(ordinal+StageCatalog.index_of(stage)*2+["standard","hard","hell"].find(mode),ARCHETYPE_IDS.size())]
 static func trait_for(room_index: int,map: String) -> String:
- return TRAIT_IDS[posmod(room_index+MapCatalog.IDS.find(map),3)]
+ return TRAIT_IDS[posmod(room_index+MapCatalog.IDS.find(map),TRAIT_IDS.size())]
 static func branches(kind: String) -> Array:
  var result=[]
  for id in BRANCHES:

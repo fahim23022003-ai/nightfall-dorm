@@ -72,15 +72,16 @@ func render_room(c,p,room,theme,colors):
    c.draw_line(doorway+along*33,finish,colors[2],9)
   else: c.draw_line(start,finish,colors[2],9)
   c.draw_line(start+Vector2(0,-3),finish+Vector2(0,-3),Color(colors[3],0.5),1)
+ var expanded_horizontal=c.model.run_kind=="endless" and c.model.expansion.initialized and not c.model.expansion.legacy and absf(room.door_normal().x)>0
  var owned=room.index==c.model.player_room
  if owned:
   c.draw_style_box(p.frame(Color.TRANSPARENT,Color("7BE3A1"),5),r.grow(11))
-  p.text(c,"YOUR ROOM",r.position+Vector2(10,r.size.y-12),11,Color("D4FFE1"))
- var plaque=r.position+Vector2(10,18)
+  if not expanded_horizontal:p.text(c,"YOUR ROOM",r.position+Vector2(10,r.size.y-12),11,Color("D4FFE1"))
+ var plaque=r.position+Vector2(10,r.size.y-58 if expanded_horizontal else 18)
  p.text(c,"%02d · %s" % [room.index+1,room.survivor_name() if room.owner>=0 else "VACANT"],plaque,11,Color("EDF4ED"))
  if room.trait_id!="":
   var room_trait=StrategyCatalog.TRAITS[room.trait_id]
-  var at=r.position+Vector2(r.size.x-193,4)
+  var at=r.position+Vector2(8,r.size.y-48) if expanded_horizontal else r.position+Vector2(r.size.x-193,4)
   c.draw_texture_rect(PremiumButton.texture(room_trait.icon),Rect2(at,Vector2(23,23)),false)
   p.text(c,room_trait.name,at+Vector2(28,13),11,Color("DDD3B9"))
   p.text(c,room_trait.benefit,at+Vector2(0,29),9,Color("B1C2AA"))

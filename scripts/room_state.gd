@@ -21,6 +21,7 @@ var buildings: Dictionary = {}
 var income_total = 0.0
 var main_damage_dealt=0.0
 var minion_damage_dealt=0.0
+var magic_state={"stored":0.0,"shield":0.0,"reflect_cd":0.0,"shield_cd":0.0,"storage_time":0.0,"heal_cd":0.0,"disrupt":0.0,"disrupt_guard":0.0}
 var barrier_hp=0.0
 var barrier_remaining=0.0
 var threat_income_factor=1.0

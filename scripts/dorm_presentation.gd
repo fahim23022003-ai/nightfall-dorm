@@ -2,6 +2,7 @@ extends RefCounted
 ## Illustration, animation and environment only. No economy/AI mutations.
 const OFFSET = Vector2(145,40)
 const ROOM_NAMES = ["WILLOW","WREN","ASTER","MOSS","CEDAR","FERN"]
+var hunter_art={}
 var textures: Dictionary = {}
 var cartoon: Dictionary = {}
 var prestige_art: Dictionary={}
@@ -37,6 +38,9 @@ var death_age = 0.0
 var font = preload("res://assets/fonts/Interface.ttf")
 
 func _init():
+ for element in ["fire","ice","electric","earth"]:hunter_art["element_"+element]=load("res://assets/hunters/element_"+element+".svg")
+ for kind in StrategyCatalog.ARCHETYPE_IDS:
+  for state in ["idle","walk","attack","hurt","defend","special","death"]:hunter_art[kind+"_"+state]=load("res://assets/hunters/"+kind+"_"+state+".svg")
  for kind in ["turret","heavy"]:
   for level in range(5,11):prestige_art["%s_%d" % [kind,level]]=load("res://assets/defenses/%s_%d.svg" % [kind,level])
  for name in ["bed","bed_upgraded","cabinet","plant","lantern","door","door_reinforced","survivor_idle","survivor_walk_a","survivor_walk_b","survivor_sleep","bot_idle","bot_walk","hunter_idle","hunter_move","hunter_attack","hunter_hurt","hunter_death","turret","heavy","generator","repair","economy","enhancer","floor_wood","corridor","coin","power","foundation","window","shadow","warm_glow"]:
@@ -61,7 +65,7 @@ func _init():
  for alias in {"bed":"bed_1","bed_upgraded":"bed_5","turret":"turret_1","heavy":"heavy_1","cabinet":"cabinet","plant":"plant","lantern":"lamp","window":"window","generator":"generator","repair":"repair","economy":"economy","enhancer":"enhancer","survivor_idle":"player_down_0","survivor_walk_a":"player_down_1","survivor_walk_b":"player_down_3","survivor_sleep":"player_sleep","bot_idle":"bot_0","bot_walk":"bot_0_walk_1"}:
   var mapping={"bed":"bed_1","bed_upgraded":"bed_5","turret":"turret_1","heavy":"heavy_1","cabinet":"cabinet","plant":"plant","lantern":"lamp","window":"window","generator":"generator","repair":"repair","economy":"economy","enhancer":"enhancer","survivor_idle":"player_down_0","survivor_walk_a":"player_down_1","survivor_walk_b":"player_down_3","survivor_sleep":"player_sleep","bot_idle":"bot_0","bot_walk":"bot_0_walk_1"}
   textures[alias]=cartoon[mapping[alias]]
- for kind in DefenseEffects.SPECIAL:
+ for kind in DefenseEffects.SPECIAL+MagicDefense.KINDS:
   cartoon[kind]=load("res://assets/wrath/"+kind+".svg");textures[kind]=cartoon[kind]
  textures.door=cartoon.door_1
  textures.door_reinforced=cartoon.door_4
@@ -422,6 +426,8 @@ func hunter(c,h):
   name="hunter_death"
   alpha=maxf(0,1-death_age/1.2)
  var p=OFFSET+h.position+Vector2(0,-18+sin(hunter_clock*3)*2)
+ var affinity=DamageRules.affinity(archetype)
+ if affinity!="neutral":c.draw_texture_rect(hunter_art["element_"+affinity],Rect2(p+Vector2(31,-64),Vector2(18,18)),false)
  c.draw_circle(p+Vector2(0,13),25+min(h.level,6)*2,Color(0.65,0.55,0.92,0.035*alpha))
  sprite(c,"shadow",OFFSET+h.position+Vector2(0,14),Vector2(59,27),Color(1,1,1,alpha))
  var facing=-1.0 if identity.heading.x<-.15 else 1.0
@@ -432,7 +438,9 @@ func hunter(c,h):
   name="hunter_target";lean-=identity.heading.x*.18
   c.draw_arc(p+Vector2(0,10),38,-PI*.9,PI*.1,24,Color(tint,.75),2)
  c.draw_set_transform(p,lean,Vector2(facing,1)*shape)
- c.draw_texture_rect(cartoon[name],Rect2(Vector2(-33,-42),Vector2(66,84)),false,Color(tint,alpha))
+ var pose="death" if h.state==HunterState.State.DEAD else "hurt" if h.hit_flash>0 else "special" if h.arcane.action!="" or h.tactical_action!="" or h.archetype_primed else "defend" if h.suppression_remaining>0 else "attack" if name=="hunter_attack" else "walk" if identity.velocity.length()>1 and int(hunter_clock*7)%2 else "idle"
+ var art=hunter_art.get(archetype+"_"+pose,cartoon[name])
+ c.draw_texture_rect(art,Rect2(Vector2(-39,-62),Vector2(78,100)),false,Color(1,1,1,alpha))
  if archetype=="crusher":
   for side in [-1,1]:c.draw_style_box(frame(Color("414444"),Color("A2987E"),2),Rect2(Vector2(side*27-9,-19),Vector2(18,21)))
  elif archetype=="stalker":

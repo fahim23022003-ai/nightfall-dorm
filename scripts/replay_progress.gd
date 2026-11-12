@@ -27,7 +27,7 @@ static func valid_active(entry: Dictionary) -> bool:
 static func begin_endless(profile,map: String,mode: String,seed_value: int) -> Dictionary:
  if profile.read_only or map not in MapCatalog.IDS or mode not in RankCatalog.DIFFICULTIES or seed_value<1 or seed_value>999999 or profile.next_match_id>=1000000000000:return {}
  var before=profile._reward_snapshot();var id=profile.next_match_id
- profile.active_match={"id":id,"run_id":id,"run_kind":"endless","difficulty":mode,"equipped":profile.equipped.duplicate(),"items":profile.item_loadout.duplicate(),"archetype":StrategyCatalog.ARCHETYPE_IDS[posmod(seed_value,3)],"contract":"","map":map,"seed":seed_value,"legendary_used":0,"feather_used":false,"rescue_used":false,"use_counts":{}}
+ profile.active_match={"id":id,"run_id":id,"run_kind":"endless","difficulty":mode,"equipped":profile.equipped.duplicate(),"items":profile.item_loadout.duplicate(),"archetype":StrategyCatalog.ARCHETYPE_IDS[posmod(seed_value,StrategyCatalog.ARCHETYPE_IDS.size())],"contract":"","map":map,"seed":seed_value,"legendary_used":0,"feather_used":false,"rescue_used":false,"use_counts":{}}
  profile.next_match_id+=1;profile.replay.run_serial+=1;profile.replay.checkpoint={}
  if not profile.save_profile():profile._restore_rewards(before);return {}
  return profile.active_match.duplicate(true)

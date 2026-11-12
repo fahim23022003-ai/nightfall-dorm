@@ -22,7 +22,10 @@ const BUILDINGS = {
  "shock":{"name":"Shock Trap","gold":65,"power":10,"damage":24.0,"range":155.0,"interval":3.6,"color":Color("c0a3fa")},
  "auto_repair":{"name":"Auto Repair Station","gold":85,"power":12,"rate":3.0,"color":Color("9dd6ad")},
  "shield":{"name":"Shield Generator","gold":100,"power":18,"rate":1.0,"color":Color("7abbee")},
- "decoy":{"name":"Decoy Beacon","gold":70,"power":10,"rate":1.0,"color":Color("d198be")}
+ "decoy":{"name":"Decoy Beacon","gold":70,"power":10,"rate":1.0,"color":Color("d198be")},
+ "barrier":{"name":"Mirror Barrier","gold":90,"power":15,"rate":1.0,"color":Color("dbabef")},
+ "plasma":{"name":"Plasma Capacitor","gold":100,"power":18,"rate":1.0,"color":Color("ed9dca")},
+ "antenna":{"name":"Ward Antenna","gold":85,"power":14,"rate":1.0,"color":Color("8fdde5")}
 }
 const BOT_PROFILES = ["guard", "engineer", "economist", "gunner", "balanced"]
 

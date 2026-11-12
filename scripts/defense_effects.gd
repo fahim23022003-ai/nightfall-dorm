@@ -26,7 +26,7 @@ func tick(delta: float,model):
  for key in burns.keys():
   var burn=burns[key];var target=model.target_by_id(int(key))
   if target==null:burns.erase(key);continue
-  var applied=model.apply_target_damage(int(key),burn.dps*minf(delta,burn.remaining),burn.room)
+  var applied=model.apply_target_damage(int(key),burn.dps*minf(delta,burn.remaining),burn.room,DamageRules.weapon("flame"))
   model.credit_damage(burn.room,applied,int(key));burn.remaining=maxf(0,burn.remaining-delta)
   if burn.remaining<=0:burns.erase(key)
  for key in repair_cooldowns:repair_cooldowns[key]=maxf(0,repair_cooldowns[key]-delta)

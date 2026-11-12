@@ -194,7 +194,7 @@ func tick(delta: float,model):
   var damage=minf(delta,burn_remaining)*maxf(0,dps-model.defenses.burn_dps(1))
   if model.wrath.domain_active() and model.wrath.domain_room!=model.player_room:damage=0
   var old=model.hunter.hp
-  model.hunter.hurt(damage)
+  model.apply_target_damage(1,damage,model.player_room,DamageRules.weapon("inferno"))
   var dealt=old-model.hunter.hp
   if model.player()!=null: model.player().damage_dealt+=dealt
   model.damage_dealt+=dealt
@@ -223,7 +223,7 @@ func trigger_segment(from: Vector2,to: Vector2,model):
  var point=trap.position
  trap.clear() # Remove before damage, so repeated ticks cannot retrigger.
  var hp=model.hunter.hp
- model.hunter.hurt(ItemCatalog.TUNING.trap_damage)
+ model.apply_target_damage(1,ItemCatalog.TUNING.trap_damage,model.player_room,DamageRules.weapon("trap"))
  var applied=hp-model.hunter.hp
  if model.player()!=null: model.player().damage_dealt+=applied
  model.damage_dealt+=applied

@@ -90,7 +90,7 @@ func show_intermission():
  var run=game.model.endless;var next=run.scaling(run.wave+1)
  page("WAVE %d CLEARED" % run.completed,"The world is paused: no passive income, cooldown recovery or repeated choice rewards. Choose one modest aid, then face one fresh Hunter.","intermission")
  ui.premium_icon("endless",Vector2(107,191),Vector2(110,110))
- ui.label_at("NEXT · WAVE %d · %s" % [run.wave+1,StrategyCatalog.ARCHETYPES[StrategyCatalog.ARCHETYPE_IDS[posmod(run.seed_value+run.wave,3)]].name],Vector2(245,193),30,900,true)
+ ui.label_at("NEXT · WAVE %d · %s" % [run.wave+1,StrategyCatalog.ARCHETYPES[StrategyCatalog.ARCHETYPE_IDS[posmod(run.seed_value+run.wave,StrategyCatalog.ARCHETYPE_IDS.size())]].name],Vector2(245,193),30,900,true)
  paragraph("HP ×%.2f · damage ×%.2f · contact repairs %.0f%% of mode value%s\nBest cleared: %d · Gold %.2f · Electricity %.2f" % [next.hunter_hp,next.hunter_damage,run.repair_effectiveness(run.wave+1)*100," · REAPER ENCOUNTER" if run.boss_wave(run.wave+1) else "",game.profile.replay.best_wave,game.model.player().gold,game.model.player().electricity],Vector2(245,245),900,70,18)
  ui.button("Prepare defenses · frozen economy",Vector2(107,329),func():preparing=true;game.ui.show_match(),1068,36)
  var choices=[{"id":"repair","name":"Reinforce","text":"Restore 10% maximum HP to your intact door."},{"id":"supply","name":"Salvage","text":"Carry 25 extra Gold into the next wave."},{"id":"power","name":"Recharge","text":"Carry 5 extra Electricity into the next wave."}]
@@ -113,7 +113,7 @@ func show_intermission():
 func show_codes():
  page("CHALLENGE CODES","Share a local ruleset with friends. Fixed 30 Hz simulation and normalized gear/perks; inputs, platform and Godot version can still affect results. No online verification or permanent rewards.","challenge_codes")
  option(["Dorm","Hospital","Hotel","Laboratory","Mansion"],MapCatalog.IDS.find(selected_map),Vector2(107,190),340,func(i):selected_map=MapCatalog.IDS[i])
- option(["Crusher","Stalker","Ravager"],StrategyCatalog.ARCHETYPE_IDS.find(practice_archetype),Vector2(477,190),340,func(i):practice_archetype=StrategyCatalog.ARCHETYPE_IDS[i])
+ option(["Crusher","Stalker","Ravager","Phantom Witch","Electric Ghost","Storm Wraith"],StrategyCatalog.ARCHETYPE_IDS.find(practice_archetype),Vector2(477,190),340,func(i):practice_archetype=StrategyCatalog.ARCHETYPE_IDS[i])
  option(["Normal","Long Night","Hell"],["standard","hard","hell"].find(difficulty),Vector2(847,190),328,func(i):difficulty=["standard","hard","hell"][i])
  var seed_field=input(seed_text,Vector2(107,260),340,func(text):seed_text=text);seed_field.max_length=6
  paragraph("Preset: 25G / 0E, no perks, room traits enabled. Loaned Shield + Repair Kit, two each. All 20 owned item stacks remain untouched.",Vector2(477,258),698,65,17)
@@ -143,7 +143,7 @@ func code_preview() -> String:
 func show_practice():
  page("PRACTICE ROOM","Real combat values, temporary 20,000 Gold / 5,000 Electricity and temporary item stock. No XP, RM, spins, achievements, records, pity or permanent inventory changes.","practice_setup")
  ui.premium_icon("practice",Vector2(107,185),Vector2(100,100))
- option(["Crusher","Stalker","Ravager"],StrategyCatalog.ARCHETYPE_IDS.find(practice_archetype),Vector2(245,190),420,func(i):practice_archetype=StrategyCatalog.ARCHETYPE_IDS[i])
+ option(["Crusher","Stalker","Ravager","Phantom Witch","Electric Ghost","Storm Wraith"],StrategyCatalog.ARCHETYPE_IDS.find(practice_archetype),Vector2(245,190),420,func(i):practice_archetype=StrategyCatalog.ARCHETYPE_IDS[i])
  var boss=CheckButton.new();boss.text="Train Grim Reaper telegraphs";boss.position=Vector2(710,190);boss.size=Vector2(450,44);boss.button_pressed=practice_boss;boss.toggled.connect(func(value):practice_boss=value);ui.panel.add_child(boss)
  option(["Dorm","Hospital","Hotel","Laboratory","Mansion"],MapCatalog.IDS.find(practice_map),Vector2(245,255),420,func(i):practice_map=MapCatalog.IDS[i])
  var names=[]

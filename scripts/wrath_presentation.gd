@@ -11,6 +11,7 @@ func reset():
 func draw(c,clock: float):
  var m=c.model;var w=m.wrath;var reduced=c.profile.settings.get("reduced_effects",false)
  draw_defense_feedback(c,clock,reduced)
+ draw_magic_feedback(c,clock,reduced)
  for u in m.minions:
   if u.hp<=0:continue
   var p=O+u.position;var stride=sin(clock*9+u.id)*3
@@ -129,3 +130,41 @@ func draw_defense_feedback(c,clock: float,reduced: bool):
   var label="+%.0f HP" % e.damage;var at=p+Vector2(-92,-40-age*8)
   c.draw_string_outline(font,at,label,HORIZONTAL_ALIGNMENT_LEFT,-1,14,3,Color(.03,.08,.05,alpha))
   c.draw_string(font,at,label,HORIZONTAL_ALIGNMENT_LEFT,-1,14,Color(.65,1,.75,alpha))
+
+func draw_magic_feedback(c,clock: float,reduced: bool):
+ var m=c.model
+ for room in m.rooms:
+  if not room.alive:continue
+  var state=room.magic_state;var door=O+room.door_position()
+  if state.shield>0:
+   c.draw_arc(door+Vector2(0,-20),37,-PI*.95,PI*.05,24,Color(.36,.8,.95,.65),2)
+   c.presentation.text(c,"MAGIC WARD %.0f" % state.shield,door+Vector2(-41,-63),9,Color("9CEBF2"))
+  for tile in room.buildings:
+   var b=room.buildings[tile];var p=O+room.tile_position(tile)
+   if b.kind=="plasma" and state.stored>0:
+    var fraction=clampf(state.stored/MagicDefense.stats(b).capacity,0,1)
+    c.draw_arc(p,24,-PI/2,-PI/2+TAU*fraction,24,Color("F6A9DD"),3)
+    c.presentation.text(c,"%.0f / %.0f" % [state.stored,MagicDefense.stats(b).capacity],p+Vector2(-27,33),9,Color("F6B9E3"))
+   if b.kind in DefenseEffects.WEAPONS and state.disrupt>0:
+    c.draw_line(p+Vector2(-12,-12),p+Vector2(12,12),Color("EAC5F7"),2)
+    c.presentation.text(c,"%.1fs" % state.disrupt,p+Vector2(-14,-26),10,Color("EAC5F7"))
+ var h=m.hunter
+ if not h.arcane.bolt.is_empty():
+  var p=O+h.arcane.bolt.point
+  c.draw_circle(p,7,Color("BA9AEC"));c.draw_arc(p,12,clock*4,clock*4+4.2,16,Color("DAD0FC"),2)
+ if h.arcane.action!="" and h.arcane.target>=0:
+  var p=O+m.rooms[h.arcane.target].door_position();var radius=32+(0 if reduced else sin(clock*7)*3)
+  c.draw_arc(p,radius,-PI,PI,24,Color("D3A3EF"),2)
+  c.presentation.text(c,h.arcane.action.replace("_"," ").to_upper(),p+Vector2(-65,-80),10,Color("EBC5F4"))
+ for event in m.presentation_events.slice(maxi(0,m.presentation_events.size()-6)):
+  var age=m.time-event.time
+  if age>.55 or event.room<0 or event.room>=m.rooms.size():continue
+  var p=O+m.rooms[event.room].door_position();var alpha=1-age/.55
+  if event.type=="magic_reflect" and not reduced:
+   c.draw_line(p,O+h.position,Color(.9,.57,.87,alpha),2)
+  elif event.type=="door_damage" and float(event.damage)>0:
+   var magic=event.get("damage_type","physical")=="magic"
+   var color=Color(.75,.57,1,alpha) if magic else Color(1,.7,.4,alpha)
+   if magic:c.draw_arc(p,17+(0 if reduced else age*25),0,TAU,20,color,2)
+   else:
+    for i in range(3):c.draw_line(p+Vector2(-12+i*8,-18),p+Vector2(-18+i*8,10),color,2)

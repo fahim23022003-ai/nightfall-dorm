@@ -29,6 +29,7 @@ static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  for room in model.rooms:
   var saved={"owner":room.owner,"profile":room.profile,"bed_branch":room.bed_branch,"door_branch":room.door_branch,"trait":room.trait_id,"position":pair(room.resident_position),"main_damage":room.main_damage_dealt,"minion_damage":room.minion_damage_dealt,"buildings":[]}
   for key in ROOM_NUMBERS+ROOM_FLAGS:saved[key]=room.get(key)
+  saved.magic_state=room.magic_state.duplicate(true)
   saved.bot_timer=maxf(0,saved.bot_timer)
   for tile in room.buildings:
    var b=room.buildings[tile]
@@ -89,6 +90,10 @@ static func valid(data) -> bool:
    var field={"door_multiplier":"door","income_multiplier":"income","power_multiplier":"power","turret_multiplier":"damage","rescue_fraction":"rescue"}[rule]
    var expected=float(data.boosts.get(field,0.0 if field=="rescue" else 1.0)) if room.owner==0 else 0.0 if field=="rescue" else 1.0
    if not is_equal_approx(float(room[rule]),expected):return false
+  if room.has("magic_state"):
+   if not room.magic_state is Dictionary or room.magic_state.size()!=8:return false
+   for key in ["stored","shield","reflect_cd","shield_cd","storage_time","heal_cd","disrupt","disrupt_guard"]:
+    if not number(room.magic_state.get(key),0,350 if key=="stored" else 250 if key=="shield" else 30):return false
   var tiles=[]
   for b in room.buildings:
    if not b is Dictionary or b.get("kind","") not in Catalog.BUILDINGS or not whole(b.get("tile"),0,map.rooms[i].tiles.size()-1) or b.tile in tiles or not whole(b.get("level"),1,Catalog.building_max_level(b.kind)) or not b.get("specialization","") is String:return false
@@ -100,6 +105,14 @@ static func valid(data) -> bool:
    for level in range(1,int(b.level)):ceiling+=Catalog.upgrade_cost(b.kind,level)
    if branch!="":ceiling+=StrategyCatalog.BRANCH_FEE
    if not number(b.get("invested_gold"),0,ceiling.x+.0001) or not number(b.get("invested_power"),0,ceiling.y+.0001) or not number(b.get("cooldown"),0,24 if b.kind=="decoy" else 12 if b.kind=="shield" else 10):return false
+  var has_magic=room.buildings.any(func(b):return b.kind in MagicDefense.KINDS)
+  if has_magic and not room.has("magic_state"):return false
+  if room.has("magic_state"):
+   var capacity=0.0;var shield_capacity=0.0
+   for b in room.buildings:
+    if b.kind=="plasma":capacity=maxf(capacity,MagicDefense.stats(b).capacity)
+    if b.kind=="antenna":shield_capacity=maxf(shield_capacity,MagicDefense.stats(b).capacity)
+   if room.magic_state.stored>capacity+.0001 or room.magic_state.shield>shield_capacity+.0001:return false
  if data.rooms[int(data.player_room)].owner!=0 or not data.rooms[int(data.player_room)].alive or not data.rooms[int(data.player_room)].sleeping:return false
  if owners.size()-1!=data.bot_claimed or not whole(data.eliminations,0,6) or not whole(data.shots):return false
  if int(data.ruleset)>=3 and not data.has("evolution"):return false
@@ -134,6 +147,7 @@ static func restore(data) -> MatchModel:
   room.main_damage_dealt=float(saved.get("main_damage",0));room.minion_damage_dealt=float(saved.get("minion_damage",0))
   room.owner=int(saved.owner);room.profile=saved.profile;room.resident_position=vec(saved.position)
   for key in ROOM_NUMBERS+ROOM_FLAGS:room.set(key,saved[key])
+  room.magic_state=saved.get("magic_state",room.magic_state).duplicate(true)
   for b in saved.buildings:
    var building=b.duplicate(true);building.erase("tile");building.flash=0.0
    room.buildings[int(b.tile)]=building

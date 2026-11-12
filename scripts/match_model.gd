@@ -259,7 +259,9 @@ func step_navigation(from: Vector2,to: Vector2,distance: float,key: String="") -
  return point
 
 func record_event(type: String, room_index: int, data: Dictionary={}):
- if type in ["sale","building_destroyed"]:defenses.removed(room_index,int(data.get("tile",-1)))
+ if type in ["sale","building_destroyed"]:
+  defenses.removed(room_index,int(data.get("tile",-1)))
+  if room_index>=0 and room_index<rooms.size():MagicDefense.removed(rooms[room_index])
  var global_event=type in ["boss_transform","boss_awakened","boss_death","boss_phase"]
  if (room_index<0 or room_index>=rooms.size()) and not global_event: return
  var event_position=hunter.position if global_event else rooms[room_index].door_position()
@@ -444,6 +446,8 @@ func _tick_sim(delta: float):
   if run_kind=="endless":
    room.gold=minf(1e12,room.gold);room.electricity=minf(1e12,room.electricity);room.income_total=minf(1e12,room.income_total)
   if room.owner > 0:
+   if run_kind=="endless" and expansion!=null and room.tile_count()<12 and room.buildings.size()>=room.tile_count()-1 and room.bot_timer<=delta:expansion.purchase(self,room.index,true)
+   if DamageRules.affinity(hunter.archetype)!="neutral" and room.bot_timer<=delta and room.door_hp>room.max_hp()*.4 and room.electricity>20 and room.buildings.size()<room.tile_count() and not BotAI.has_kind(room,"antenna") and hunter.archetype in ["witch","electric","storm"]:BotAI.build_first_empty(room,"antenna")
    BotAI.tick(room,delta)
  var exposed = time > preparation+25 and (player() == null or not player().sleeping)
  if exposed:
@@ -459,6 +463,7 @@ func _tick_sim(delta: float):
  for undead in minions:undead.tick(maxf(0,delta-items.frozen_delta),self)
  minions=minions.filter(func(u):return u.hp>0)
  defenses.tick(delta,self)
+ MagicDefense.tick(self,delta)
  # A breach resolves before pending teammate shots can revive a lost match.
  if player_room >= 0 and not rooms[player_room].alive:
   result = "defeat"
@@ -513,7 +518,7 @@ func clear_minions():
  for u in minions:u.despawn(self)
  minions.clear()
  for slot in range(10):_navigation_routes.erase("undead_slot%d" % slot)
-func apply_room_damage(index: int,amount: float,source: String="door strike",attacker_id: int=1,special: bool=false) -> float:
+func apply_room_damage(index: int,amount: float,source: String="door strike",attacker_id: int=1,special: bool=false,packet: Dictionary={}) -> float:
  if index<0 or index>=rooms.size() or not is_finite(amount) or amount<=0 or not running or result!="":return 0.0
  var room=rooms[index]
  var attacker=target_by_id(attacker_id)
@@ -522,9 +527,12 @@ func apply_room_damage(index: int,amount: float,source: String="door strike",att
  if attacker_id==1 and not special and (hunter.target!=index or hunter.position.distance_to(room.door_approach())>3):return 0.0
  if not room.alive or not room.closed or room.door_hp<=0:return 0.0
  if wrath.domain_active() and index!=wrath.domain_room:return 0.0
+ if packet.is_empty():packet=DamageRules.source(source)
+ if not DamageRules.valid(packet):return 0.0
  var old=room.door_hp
- amount*=StrategyCatalog.BRANCHES.get(room.door_branch,{}).get("mitigation",1.0)
  if attacker_id==1:amount*=evolution.damage_factor(special)
+ amount*=StrategyCatalog.BRANCHES.get(room.door_branch,{}).get("mitigation",1.0)
+ amount=MagicDefense.absorb(self,room,amount,attacker_id,packet)
  var blocked=minf(amount,room.barrier_hp) if room.barrier_remaining>0 else 0.0
  room.barrier_hp-=blocked;amount-=blocked
  if blocked>0:record_event("shield_absorb",index,{"damage":blocked,"amount":blocked})
@@ -532,7 +540,7 @@ func apply_room_damage(index: int,amount: float,source: String="door strike",att
  var rescued=items.guardian_intercept(amount,self,index)
  if not rescued:room.door_hp=maxf(0,room.door_hp-amount)
  var actual=maxf(0,old-room.door_hp);room.door_damage_taken+=actual;room.damage_flash=.25
- record_event("door_damage",index,{"damage":actual,"hp":room.door_hp,"max_hp":room.max_hp(),"source":source,"attacker_id":attacker_id})
+ record_event("door_damage",index,{"damage":actual,"hp":room.door_hp,"max_hp":room.max_hp(),"source":source,"attacker_id":attacker_id,"damage_type":packet.type,"element":packet.element})
  if old>0 and room.door_hp<=0:record_event("door_break",index)
  if index==player_room and not rescued:items.feather_cross(old,self)
  if not rescued:room.try_rescue()
@@ -553,10 +561,13 @@ func eliminate_resident(index: int,attacker_id: int=1,exposed: bool=false) -> bo
  _kill_credit_room=-1
  if wrath.domain_active() and wrath.domain_room==index:wrath.end_domain(self)
  return true
-func apply_target_damage(id: int,amount: float,room_index: int) -> float:
+func apply_target_damage(id: int,amount: float,room_index: int,packet: Dictionary={}) -> float:
  var actor=target_by_id(id)
  if actor==null or amount<=0 or not is_finite(amount):return 0.0
  if id==1 and wrath.domain_active() and room_index!=wrath.domain_room:return 0.0
+ if packet.is_empty():packet=DamageRules.weapon("turret")
+ if not DamageRules.valid(packet):return 0.0
+ amount*=DamageRules.multiplier(packet.element,DamageRules.affinity(hunter.archetype) if id==1 else "earth")
  var old=actor.hp
  if id==1:actor.hurt(amount)
  else:actor.hurt(amount,self)
@@ -569,7 +580,7 @@ func credit_damage(room_index: int,amount: float,id: int):
 func _turrets(delta: float):
  if not running or result!="" or wrath.rules_remaining>0:return
  for room in rooms:
-  if not room.alive:continue
+  if not room.alive or room.magic_state.disrupt>0:continue
   for tile in room.buildings:
    var b=room.buildings[tile]
    if b.kind not in DefenseEffects.WEAPONS:continue
@@ -603,7 +614,7 @@ func _advance_projectiles(delta: float):
    if shot.room==player_room:
     if hunter.transformed and shot.target_id==1:hit*=match_boosts.get("reaper",1.0)
     if time<preparation+stage_bonus.get("seconds",0):hit*=stage_bonus.get("damage",1.0)
-   var amount=apply_target_damage(shot.target_id,hit,shot.room)
+   var amount=apply_target_damage(shot.target_id,hit,shot.room,DamageRules.weapon(shot.kind))
    if shot.get("slow",0)>0:
     if shot.target_id==1:
      hunter.apply_suppression(float(shot.slow))
@@ -617,7 +628,7 @@ func _advance_projectiles(delta: float):
  projectiles=survivors
 
 func _combat_event(type: String, shot: Dictionary, position: Vector2, damage: float, reason: String = ""):
- combat_events.append({"id":next_combat_event_id,"type":type,"projectile_id":shot.id,"target_id":shot.get("target_id",1),"position":position,"room":shot.room,"kind":shot.kind,"level":shot.level,"specialization":shot.get("specialization",""),"damage":damage,"time":time,"remaining":Catalog.PROJECTILES.event_lifetime,"reason":reason})
+ combat_events.append({"id":next_combat_event_id,"type":type,"projectile_id":shot.id,"target_id":shot.get("target_id",1),"position":position,"room":shot.room,"kind":shot.kind,"level":shot.level,"specialization":shot.get("specialization",""),"damage":damage,"time":time,"remaining":Catalog.PROJECTILES.event_lifetime,"reason":reason,"damage_type":DamageRules.weapon(shot.kind).type,"element":DamageRules.weapon(shot.kind).element})
  next_combat_event_id += 1
  if combat_events.size() > Catalog.PROJECTILES.max_events:
   combat_events.pop_front()

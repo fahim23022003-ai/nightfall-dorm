@@ -56,7 +56,7 @@ static func geometry(id: String,index: int,tier: int,old_layout: bool=false) -> 
  elif normal.x>0:rect.position.x=door.x-depth;rect.size.x=depth
  else:rect.position.x=door.x;rect.size.x=depth
  data.bounds=rect
- var rail=-32.0 if vertical else -57.0
+ var rail=-32.0 if vertical else -13.0
  data.bed=door-normal*95+tangent*rail
  data.cabinet=door-normal*175+tangent*rail
  data.plant=door-normal*25+tangent*rail

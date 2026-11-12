@@ -13,7 +13,7 @@ var rescue_used=false
 func configure(model,map: String,mode: String,seed_number: int,id: int,boosts: Dictionary={}) -> bool:
  if map not in MapCatalog.IDS or mode not in RankCatalog.DIFFICULTIES or id<=0:return false
  model.reset(seed_number);model.run_kind="endless";model.configure_map(map);model.configure_match(mode,boosts)
- model.configure_strategy(seed_number,StrategyCatalog.ARCHETYPE_IDS[posmod(seed_number,3)])
+ model.configure_strategy(seed_number,StrategyCatalog.ARCHETYPE_IDS[posmod(seed_number,StrategyCatalog.ARCHETYPE_IDS.size())])
  model.expansion.configure(model)
  model.endless=self;run_id=id;seed_value=seed_number;_model=weakref(model)
  _prepare_hunter(model,false)
@@ -27,7 +27,7 @@ func repair_effectiveness(at_wave: int=-1) -> float:
 func boss_wave(value: int) -> bool:return value%5==0 or (value>=30 and value%3==0)
 func _prepare_hunter(model,new_wave: bool):
  var fresh=HunterState.new();fresh.stage_scaling=scaling();fresh.configure(model.difficulty)
- fresh.configure_archetype(StrategyCatalog.ARCHETYPE_IDS[posmod(seed_value+wave-1,3)])
+ fresh.configure_archetype(StrategyCatalog.ARCHETYPE_IDS[posmod(seed_value+wave-1,StrategyCatalog.ARCHETYPE_IDS.size())])
  fresh.position=model.map_data.hunter_spawn
  fresh.cooldown=1.5
  fresh.boss_policy={"enabled":boss_wave(wave),"opening":0.0,"hp_fraction":1.0,"deadline":0.0,"recovery":1.1}
