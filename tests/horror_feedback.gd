@@ -24,6 +24,9 @@ func run():
  for type in ["approach","encounter","door_damage","door_break","elimination"]:
   model.presentation_events.append({"id":next,"type":type,"room":2,"position":model.rooms[2].door_position(),"damage":12.5,"time":0.0})
   next+=1
+ model.rooms[2].door_hp=0
+ model.rooms[2].alive=false
+ model.rooms[2].sleeping=false
  feedback.update(0.01,model)
  check(feedback.damage_numbers.size()==1 and feedback.damage_numbers[0].damage==12.5,"damage number retains actual fractional HP lost")
  check(feedback.breaks.size()==1,"one destruction per real break event")
@@ -33,10 +36,15 @@ func run():
  feedback.alert("encounter:5","!!","Room6",1,5)
  check(feedback.notifications.size()==3,"simultaneous notifications bounded")
  check(feedback.notifications[0].priority==3 and feedback.notifications[0].text.contains("Mia"),"actual owner identity and elimination priority")
- check(feedback.notifications[0].text.contains("Room 3"),"actual model room ID")
+ check(feedback.notifications[0].text.contains("ROOM 03"),"actual model room ID")
  feedback.update(0.01,model)
  check(feedback.breaks.size()==1 and feedback.damage_numbers.size()==1,"observed events cannot repeat")
  check(feedback.observed_counts.encounter==1,"encounter processed exactly once")
+ var death_count=int(feedback.observed_counts.get("elimination",0))
+ model.presentation_events.append({"id":next,"type":"elimination","room":1,"position":model.rooms[1].door_position()});next+=1
+ model.presentation_events.append({"id":next,"type":"door_break","room":1,"position":model.rooms[1].door_position()});next+=1
+ feedback.update(.01,model)
+ check(int(feedback.observed_counts.get("elimination",0))==death_count and feedback.breaks.size()==1,"living survivor/intact door cannot fabricate deaths or breach")
  var notifications=feedback.notifications.size()
  feedback.alert("elimination:2","X","duplicate",3,30)
  check(feedback.notifications.size()==notifications,"duplicate notification suppressed")

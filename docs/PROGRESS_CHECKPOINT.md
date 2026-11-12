@@ -1,3 +1,20 @@
+# Phase 5C-2 — haunted world and Level 10 defenses (12 November 2026)
+
+IN PROGRESS. Baseline clean `work` at
+`48ecdae4bc77114108e6f5f2c123bf158c50d6ba`, verified against GitHub.
+Recovery tag `pre-phase5c2-48ecdae`. B production, C independent QA, bounded A
+fairness/balance audit and later D actual world/death/prestige/audio inspection.
+Milestone: core world/events/eligible L10 implemented; independent QA78,195 and
+focused audio281 checks pass. Needle and Arc L10 reached in live earned-resource
+scenarios; final matrix/render/full regressions remain in progress.
+Preserve 5C-1, maps/layouts, all20items and progression; eligible defenses only
+extend to L10 with actual-investment refunds. Next: implement, focused tests,
+earned-resource reachability/balance, full regressions, actual render/audio,
+report, commit and verified private `work` push. Stop after5C-2; noPhase6.
+Native Windows and subjective quality UNVERIFIED.
+
+---
+
 # Phase 5C-1 — opening, tutorial and RM shop complete (12 November 2026)
 
 Started clean `work` at `d8ac232cf40f785e9454222a1d204d2dfb6e5ab3`, verified

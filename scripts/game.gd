@@ -244,6 +244,7 @@ func _process(delta: float):
  audio_system.update_state(delta,model,mode)
  if ui.items_ui!=null: ui.items_ui.update(delta)
  presentation.update(delta,model)
+ if mode=="match" and not tutorial_active:audio_system.update_environment(presentation.environment)
  if is_instance_valid(ui.horror_layer): ui.horror_layer.queue_redraw()
  queue_redraw()
 

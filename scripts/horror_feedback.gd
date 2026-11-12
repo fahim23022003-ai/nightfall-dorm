@@ -64,6 +64,8 @@ func observe(event: Dictionary,model):
  var room=model.rooms[index]
  if room.owner<0: return
  var kind=event.type
+ if kind=="elimination" and room.alive:return
+ if kind=="door_break" and room.door_hp>0:return
  observed_counts[kind]=int(observed_counts.get(kind,0))+1
  var name=room.survivor_name()
  var room_name="Room %d" % (index+1)
@@ -108,9 +110,11 @@ func observe(event: Dictionary,model):
   breaks.append({"room":index,"position":event.position,"age":0.0,"life":1.0})
   if breaks.size()>6: breaks.pop_front()
   danger_rooms[index]=4.0
-  alert("break:%d" % index,"X","%s door destroyed!" % room_name,2,8.0)
+  alert("break:%d" % index,"X","%s door destroyed!" % room_name,4 if room.owner==0 else 2,8.0)
  elif kind=="elimination":
-  alert("elimination:%d" % index,"X","%s eliminated · %s" % ["You were" if room.owner==0 else name+" was",room_name],3,30.0)
+  danger_rooms[index]=4.0
+  var remaining=model.rooms.filter(func(r):return r.owner>=0 and r.alive).size()
+  alert("elimination:%d" % index,"X","SURVIVOR ELIMINATED — %s · ROOM %02d · %d SURVIVORS REMAIN" % [name,index+1,remaining],3,30.0)
 
 func alert(key: String,icon: String,message: String,priority: int,cooldown: float):
  if clock<float(cooldowns.get(key,-1)): return

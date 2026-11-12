@@ -132,13 +132,14 @@ func run():
  print("AUDIT regression: six building upgrade ceilings and effects")
  room = RoomState.new()
  room.sleeping = true
- room.bed_level = 1
+ room.bed_level = 4
+ room.door_level = 4
  room.gold = 100000
  room.electricity = 100000
  for kind in Catalog.BUILDINGS.keys():
   var tile = room.buildings.size()
   check(room.build(kind,tile), "construct " + kind)
-  for level in range(1,Catalog.BUILDING_MAX_LEVEL):
+  for level in range(1,Catalog.building_max_level(kind)):
    check(room.upgrade_building(tile), "upgrade " + kind + " to " + str(level+1))
   var before_gold = room.gold
   var before_power = room.electricity

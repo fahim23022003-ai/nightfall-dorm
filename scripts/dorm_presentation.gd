@@ -4,9 +4,13 @@ const OFFSET = Vector2(145,40)
 const ROOM_NAMES = ["WILLOW","WREN","ASTER","MOSS","CEDAR","FERN"]
 var textures: Dictionary = {}
 var cartoon: Dictionary = {}
+var prestige_art: Dictionary={}
 var all_rooms=true
 var item_presentation=preload("res://scripts/item_presentation.gd").new()
 var boss_presentation=preload("res://scripts/boss_presentation.gd").new()
+var environment=preload("res://scripts/haunted_environment.gd").new()
+var fear_rooms: Dictionary={}
+var seen_deaths: Dictionary={}
 var map_presentation=preload("res://scripts/map_presentation.gd").new()
 var previous_sleep: Dictionary={}
 var sleep_age: Dictionary={}
@@ -27,6 +31,8 @@ var death_age = 0.0
 var font = preload("res://assets/fonts/Interface.ttf")
 
 func _init():
+ for kind in ["turret","heavy"]:
+  for level in range(5,11):prestige_art["%s_%d" % [kind,level]]=load("res://assets/defenses/%s_%d.svg" % [kind,level])
  for name in ["bed","bed_upgraded","cabinet","plant","lantern","door","door_reinforced","survivor_idle","survivor_walk_a","survivor_walk_b","survivor_sleep","bot_idle","bot_walk","hunter_idle","hunter_move","hunter_attack","hunter_hurt","hunter_death","turret","heavy","generator","repair","economy","enhancer","floor_wood","corridor","coin","power","foundation","window","shadow","warm_glow"]:
   textures[name] = load("res://assets/art/"+name+".png")
 
@@ -56,6 +62,8 @@ func _init():
  for name in ["hunter_idle","hunter_move","hunter_attack","hunter_hurt","hunter_death"]: textures[name]=cartoon[name]
 
 func reset():
+ fear_rooms.clear();seen_deaths.clear()
+ environment.observed_model=null
  previous.clear()
  moving.clear()
  directions.clear()
@@ -77,6 +85,8 @@ func update(delta: float, model):
  last_model_time=model.time
  hunter_clock+=maxf(0,delta-model.items.frozen_delta) if model.running else delta
  clock+=delta
+ if not model.tutorial_mode:environment.update(delta,model)
+ for index in fear_rooms:fear_rooms[index]+=delta
  var old=previous.duplicate()
  var motion=model.player_position-old.get("player",model.player_position)
  moving.player=motion.length()>0.05
@@ -107,7 +117,7 @@ func update(delta: float, model):
    var b=room.buildings[tile]
    var id="%d:tile%d" % [room.index,tile]
    if not levels.has(id): effect("build",room.tile_position(tile),0.45)
-   elif b.level>levels[id]: effect("level",room.tile_position(tile),0.8)
+   elif b.level>levels[id]: effect("prestige" if b.level==10 else "level",room.tile_position(tile),1.2 if b.level==10 else 0.8)
    levels[id]=b.level
  for e in model.combat_events:
   if e.id>seen_event:
@@ -115,6 +125,10 @@ func update(delta: float, model):
    if e.type=="impact": effect("impact",e.position,0.3)
  for e in visual_events: e.life-=delta
  visual_events=visual_events.filter(func(e): return e.life>0)
+ for event in model.presentation_events:
+  if event.type=="survivor_fear" and not fear_rooms.has(event.room):fear_rooms[event.room]=0.0
+  if event.type=="elimination" and not seen_deaths.has(event.room) and not model.rooms[event.room].alive:
+   seen_deaths[event.room]=true;death_ages[event.room]=0.0
  if model.hunter.state==HunterState.State.DEAD: death_age+=delta
  else: death_age=0
 
@@ -123,7 +137,7 @@ func effect(kind: String,point: Vector2,life: float):
  if visual_events.size()>80: visual_events.pop_front()
 
 func building_key(kind: String,level: int) -> String:
- var key="%s_%d" % [kind,level]
+ var key="%s_%d" % [kind,mini(4,level)]
  return key if cartoon.has(key) else kind
 
 func sprite(c: Node2D, name: String, center: Vector2, size: Vector2, tint: Color = Color.WHITE, rotation: float = 0.0):
@@ -162,6 +176,8 @@ func render(c):
   return
  # Coordinates are translated only here; model geometry is unchanged.
  var m = c.model
+ environment.reduced_effects=c.profile.settings.get("reduced_effects",false)
+ if not m.tutorial_mode:environment.render(c,self)
  if m.map_id!="legacy": map_presentation.render_architecture(c,self)
  else:
   for room in m.rooms:
@@ -182,6 +198,11 @@ func render(c):
   if m.map_id!="legacy": map_presentation.render_door(c,self,room)
   else: door_scene(c,room)
   if room.sleeping:
+   if fear_rooms.has(room.index) and m.hunter.target==room.index and m.hunter.state==HunterState.State.BREACH and m.hunter.hp>0:
+    var q=OFFSET+room.bed_position()+Vector2(sin(clock*32)*2,-8)
+    sprite(c,"player_enter" if room.owner==0 else "bot_%d" % posmod(room.owner-1,5),q,Vector2(40,50))
+    text(c,"!",q+Vector2(-4,-35),22,Color("FFB0AC"))
+    continue
    var age=sleep_age.get(room.index,1.0)
    if age<0.35:
     var point=enter_from.get(room.index,room.bed_position()).lerp(room.bed_position(),age/0.35)
@@ -191,10 +212,17 @@ func render(c):
     c.draw_texture_rect(cartoon[key],Rect2(OFFSET+room.bed_position()+Vector2(-22,-30+sin(clock*1.7+room.index)*0.6),Vector2(44,46)),false)
     if room.owner>0: text(c,room.survivor_name(),OFFSET+room.bed_position()+Vector2(-17,-34),10,Color("E2D9C8"))
   elif room.owner>0 and room.alive: resident(c,room.resident_position,room.index,false)
-  elif not room.alive and death_ages.get(room.index,2.0)<0.9:
-   var age=death_ages[room.index]
+  elif not room.alive:
+   var age=float(death_ages.get(room.index,2.0))
    var key="player_eliminated" if room.owner==0 else "bot_%d" % posmod(room.owner-1,5)
-   c.draw_texture_rect(cartoon[key],Rect2(OFFSET+room.bed_position()+Vector2(-18,-35-age*12),Vector2(36,51)),false,Color(0.8,0.7,1,1-age/0.9))
+   var q=OFFSET+(room.eliminated_position if room.eliminated_position.is_finite() else room.bed_position())
+   c.draw_rect(Rect2(OFFSET+room.bounds().position,room.bounds().size),Color(.015,.02,.04,.35))
+   var collapse=clampf((age-.2)/1.2,0,1)
+   c.draw_set_transform(q+Vector2(0,collapse*9),collapse*PI*.5,Vector2.ONE)
+   c.draw_texture_rect(cartoon[key],Rect2(Vector2(-18,-28),Vector2(36,48)),false,Color(.55,.5,.65,1-collapse*.35))
+   c.draw_set_transform(Vector2.ZERO)
+   text(c,"ABANDONED",q+Vector2(-35,38),10,Color("9D879A"))
+
  if (m.player()==null or not m.player().sleeping) and (m.player()==null or m.player().alive):
   resident(c,m.player_position,-1,true)
  if m.hunter.state != HunterState.State.DORMANT:
@@ -202,6 +230,8 @@ func render(c):
  for shot in m.projectiles:
   var p=OFFSET+shot.position
   var direction=(m.hunter.position-shot.position).normalized()
+  if shot.level>=7:
+   c.draw_line(p-direction*18,p,Color("F3CB78") if shot.level==10 else Color("B2A3FA"),3)
   if shot.kind=="heavy":
    sprite(c,"projectile",p,Vector2(20+shot.level*2,12+shot.level),Color.WHITE,direction.angle())
   else:
@@ -215,14 +245,19 @@ func render(c):
   var fraction=e.life/e.total
   if e.kind in ["build","break"]:
    c.draw_texture_rect(cartoon.construction,Rect2(p-Vector2(31,31),Vector2(62,62)),false,Color(1,1,1,fraction))
-  elif e.kind=="level":
+  elif e.kind in ["level","prestige"]:
    c.draw_arc(p,20+(1-fraction)*18,0,TAU,32,Color(0.48,0.89,0.63,fraction),2)
-   text(c,"LEVEL UP",p+Vector2(-25,-20-(1-fraction)*15),11,Color(0.7,1,0.75,fraction))
+   text(c,"LEVEL 10 · PRESTIGE" if e.kind=="prestige" else "LEVEL UP",p+Vector2(-40,-20-(1-fraction)*15),12,Color(1,.85,.5,fraction) if e.kind=="prestige" else Color(0.7,1,0.75,fraction))
   else:
    var color=Color("7BE3A1") if e.kind=="repair" else Color("A88CEB")
    for i in range(6):
     var v=Vector2.from_angle(i*TAU/6)*(8+(1-fraction)*15)
     c.draw_line(p+v,p+v*1.3,Color(color,fraction),2)
+ for room in m.rooms:
+  for tile in room.buildings:
+   var b=room.buildings[tile]
+   if b.kind in ["turret","heavy"] and b.level>=5:
+    prestige(c,OFFSET+room.tile_position(tile),b.level,b.kind)
  if c.get("horror")!=null: c.horror.render_world(c)
  item_presentation.draw(c)
  for f in c.floating:
@@ -419,3 +454,15 @@ func cartoon_room(c,room: RoomState,owned: bool):
   c.draw_style_box(frame(Color(color,0.12),color,7),Rect2(p-Vector2(27,26),Vector2(54,52)))
   var name=c.pending_build+"_1" if c.pending_build in ["turret","heavy"] else c.pending_build
   c.draw_texture_rect(cartoon[name],Rect2(p-Vector2(27,34),Vector2(54,58)),false,Color(1,1,1,0.6))
+
+func prestige(c,point: Vector2,level: int,kind="turret"):
+ c.draw_texture_rect(prestige_art["%s_%d" % [kind,level]],Rect2(point-Vector2(32,39),Vector2(64,64)),false)
+ var reduced=c.profile.settings.get("reduced_effects",false)
+ var color=Color("E9B866") if level==10 else Color("A5C7ED")
+ c.draw_arc(point,23,0,TAU,24,Color(color,.6),2)
+ if level>=7:
+  for side in [-1,1]:c.draw_line(point+Vector2(side*19,-13),point+Vector2(side*27,-27),color,3)
+ if level==10:
+  c.draw_colored_polygon(PackedVector2Array([point+Vector2(-16,-28),point+Vector2(-18,-42),point+Vector2(-7,-34),point+Vector2(0,-45),point+Vector2(7,-34),point+Vector2(18,-42),point+Vector2(16,-28)]),Color(color,.85))
+  if not reduced:c.draw_arc(point,28,sin(clock)*.2,PI+sin(clock)*.2,24,Color(color,.4),2)
+ text(c,"L%d%s" % [level," MAX" if level==10 else ""],point+Vector2(-17,37),10,color)

@@ -236,7 +236,7 @@ func record_event(type: String, room_index: int, data: Dictionary={}):
  var event_position=hunter.position if global_event else rooms[room_index].door_position()
  var entry=data.duplicate(true)
  entry.merge({"id":next_presentation_event_id,"type":type,"room":room_index,
-  "position":event_position,"time":time,"damage":data.get("damage",0.0)},true)
+  "position":event_position,"time":time,"damage":data.get("damage",0.0),"transformed":hunter.transformed},true)
  next_presentation_event_id+=1
  presentation_events.append(entry)
  if presentation_events.size()>128: presentation_events.pop_front()
@@ -408,9 +408,10 @@ func tick(delta: float):
  # Contact with an exposed survivor has the same priority as a room breach.
  if exposed and hunter.state!=HunterState.State.TRANSFORM and hunter.hp > 0 and hunter.position.distance_to(player_position)<15:
   if player() != null:
+   player().eliminated_position=player_position
    player().alive = false
    player().sleeping = false
-   record_event("elimination",player_room)
+   record_event("elimination",player_room,{"survivor_position":player_position})
   eliminations += 1
   result = "defeat"
   items.clear(self)
@@ -445,7 +446,7 @@ func _turrets(delta: float):
    b.cooldown = maxf(-delta,b.cooldown-delta)
    var data = Catalog.BUILDINGS[b.kind]
    if not hunter.shadow_active(room.index) and hunter.hp > 0 and hunter.state != HunterState.State.DORMANT and hunter.state != HunterState.State.DEAD and room.tile_position(tile).distance_to(hunter.position)<=data.range and b.cooldown <= 0:
-    var amount = data.damage*b.level*multiplier*room.turret_multiplier
+    var amount = Catalog.turret_damage(b.kind,b.level)*multiplier*room.turret_multiplier
     if projectiles.size() >= Catalog.PROJECTILES.max_active:
      continue
     var origin = room.tile_position(tile)
@@ -456,7 +457,7 @@ func _turrets(delta: float):
     shots += 1
     room.shots += 1
     b.flash = 0.15
-    b.cooldown += data.interval/(1.0+(b.level-1)*0.12)/(ItemCatalog.TUNING.overdrive_rate if room.owner==0 and float(items.timers.get("overdrive",0))>0 else 1.0)
+    b.cooldown += Catalog.turret_interval(b.kind,b.level)/(ItemCatalog.TUNING.overdrive_rate if room.owner==0 and float(items.timers.get("overdrive",0))>0 else 1.0)
 
 func _advance_projectiles(delta: float):
  if not running or result != "" or not is_finite(delta) or delta <= 0:

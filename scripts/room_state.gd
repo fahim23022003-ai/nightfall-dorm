@@ -34,6 +34,8 @@ var rescue_fraction=0.0
 var rescue_used=false
 var construction_actions=0
 var repair_actions=0
+var breach_reacted=false
+var eliminated_position=Vector2.INF
 var repair_factor=1.0
 var temporary_income=1.0
 var item_bonus_income=0.0
@@ -222,21 +224,22 @@ func upgrade_building(tile: int) -> bool:
  if not buildings.has(tile):
   return reject("Select an existing building to upgrade.")
  var b = buildings[tile]
- if b.level >= Catalog.BUILDING_MAX_LEVEL:
-  return reject("Building is at maximum level.")
+ var requirement=Catalog.upgrade_requirement(b.kind,b.level,bed_level,door_level)
+ if requirement!="":return reject(requirement)
  var data = Catalog.BUILDINGS[b.kind]
- var price=building_price(data.gold*b.level,(data.power+3)*b.level)
+ var list_price=Catalog.upgrade_cost(b.kind,b.level)
+ var price=building_price(list_price.x,list_price.y)
  if not afford(price.x,price.y):
   return false
  var paid_gold=price.x
  var paid_power=price.y
- if not spend_coupon(Vector2(data.gold*b.level,(data.power+3)*b.level)-price): return false
+ if not spend_coupon(list_price-price): return false
  if not pay(paid_gold,paid_power): return reject("Upgrade could not be paid.")
  b.invested_gold=b.get("invested_gold",0.0)+paid_gold
  b.invested_power=b.get("invested_power",0.0)+paid_power
  b.level += 1
  construction_actions+=1
- presentation_action.emit("building_upgrade",{"kind":b.kind,"tile":tile})
+ presentation_action.emit("building_upgrade",{"kind":b.kind,"tile":tile,"level":b.level})
  return true
 
 # Record actual successful payments, never infer investment from level or prices.

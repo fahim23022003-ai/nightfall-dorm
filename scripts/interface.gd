@@ -342,7 +342,8 @@ func show_match():
  horror_layer.mouse_filter=Control.MOUSE_FILTER_IGNORE
  horror_layer.size=Vector2(1280,720)
  panel.add_child(horror_layer)
- horror_layer.draw.connect(func(): game.horror.render_notifications(horror_layer))
+ var draw_target=horror_layer
+ horror_layer.draw.connect(func(): game.horror.render_notifications(draw_target))
 
  items_ui.create_hotbar()
 
@@ -392,7 +393,8 @@ func refresh_context():
   var b=room.buildings[game.selected_tile]
   selected_icon.texture=game.presentation.cartoon[game.presentation.building_key(b.kind,b.level)]
   context_title.text=Catalog.BUILDINGS[b.kind].name.to_upper()
-  var quote=room.building_price(Catalog.BUILDINGS[b.kind].gold*b.level,(Catalog.BUILDINGS[b.kind].power+3)*b.level)
+  var list_price=Catalog.upgrade_cost(b.kind,b.level)
+  var quote=room.building_price(list_price.x,list_price.y)
   selected_details.text=selected_stats(b)+"\n"+action_reason("upgrade")+(" · COUPON %.1fG/%.1fE" % [quote.x,quote.y] if room.coupon_armed else "")
  elif context_mode=="bed":
   context_title.text="BED LEVEL %d / 5" % (room.bed_level+1)
@@ -413,7 +415,7 @@ func refresh_context():
 func selected_stats(b) -> String:
  var d=Catalog.BUILDINGS[b.kind]
  if b.kind in ["turret","heavy"]:
-  return "Level %d / 4\nDamage %.0f\nRange %.0f\nEvery %.2fs" % [b.level,d.damage*b.level*(game.model.player().turret_multiplier if game.model.player()!=null else 1),d.range,d.interval/(1+(b.level-1)*0.12)]
+  return "Level %d / 10%s\nDamage %.0f\nRange %.0f\nEvery %.2fs" % [b.level," · PRESTIGE MAX" if b.level==10 else "",Catalog.turret_damage(b.kind,b.level)*(game.model.player().turret_multiplier if game.model.player()!=null else 1),d.range,Catalog.turret_interval(b.kind,b.level)]
  if b.kind=="generator": return "Level %d / 4\n%.1f electricity/s" % [b.level,d.rate*b.level*(game.model.player().power_multiplier if game.model.player()!=null else 1)]
  if b.kind=="repair": return "Level %d / 4\n%.1f door HP/s" % [b.level,d.rate*b.level]
  return "Level %d / 4\n+%d%% %s" % [b.level,d.rate*b.level*100,"income" if b.kind=="economy" else "turret damage"]
@@ -473,7 +475,7 @@ func update_match():
  power_label.text=str(int(room.electricity)) if room!=null else "—"
  phase_label.text="%02d:%02d\n%s" % [int(m.time)/60,int(m.time)%60,"PREP %ds" % maxi(0,ceili(m.preparation-m.time)) if m.time<m.preparation else "SURVIVE"]
  hunter_label.text=("REAPER · %d/%d" % [m.hunter.hp,m.hunter.max_hp]) if m.hunter.transformed else "HUNTER L%d  ·  %d/%d" % [m.hunter.level,m.hunter.hp,m.hunter.max_hp]
- hunter_detail.text="%d ATK · %.2fs%s" % [m.hunter.damage,m.hunter.interval," · WINDUP!" if m.hunter.charged_ready else ""]
+ hunter_detail.text="%d ATK · %.2fs%s · TEAM %d" % [m.hunter.damage,m.hunter.interval," · WINDUP!" if m.hunter.charged_ready else "",m.rooms.filter(func(r):return r.owner>=0 and r.alive).size()]
  if m.hunter.state==HunterState.State.TRANSFORM: hunter_detail.text="AWAKENING · %.1fs · KEEP FIRING" % m.hunter.transform_remaining
  elif m.hunter.boss_attack!="": hunter_detail.text="%s · %.1fs" % [BossCatalog.ATTACKS[m.hunter.boss_attack].name,m.hunter.windup_remaining]
  elif m.hunter.surge_remaining>0: hunter_detail.text="SURGE · %.1fs · REAPER EXPOSED +20%%" % m.hunter.surge_remaining
@@ -520,7 +522,8 @@ func update_match():
    var d=Catalog.BUILDINGS[b.kind]
    var refund=room.building_refund(game.selected_tile)
    actions.sell.text="Sell · +%s G / +%s E (50%%)" % [str(refund.x),str(refund.y)]
-   actions.upgrade.text="MAX LEVEL" if b.level>=4 else "Upgrade  ·  %dG / %dE" % [d.gold*b.level,(d.power+3)*b.level]
+   var price=Catalog.upgrade_cost(b.kind,b.level)
+   actions.upgrade.text="MAX LEVEL" if b.level>=Catalog.building_max_level(b.kind) else "Upgrade  ·  %dG / %dE" % [price.x,price.y]
   else: actions.upgrade.text="Select a building to upgrade"
  actions.repair.text="Repair  ·  %d gold" % Catalog.REPAIR_COST
  quick_repair.text="Repair %d G  [R]" % Catalog.REPAIR_COST
@@ -617,9 +620,11 @@ func action_reason(action: String) -> String:
  elif action == "upgrade":
   if not room.buildings.has(game.selected_tile): return "Select an existing building."
   var b = room.buildings[game.selected_tile]
-  if b.level >= Catalog.BUILDING_MAX_LEVEL: return "Maximum building level."
-  gold = Catalog.BUILDINGS[b.kind].gold*b.level
-  power = (Catalog.BUILDINGS[b.kind].power+3)*b.level
+  var requirement=Catalog.upgrade_requirement(b.kind,b.level,room.bed_level,room.door_level)
+  if requirement!="":return requirement
+  var price=Catalog.upgrade_cost(b.kind,b.level)
+  gold=price.x
+  power=price.y
  if action.begins_with("build:") or action=="upgrade":
   var quoted=room.building_price(gold,power)
   gold=quoted.x; power=quoted.y
@@ -632,7 +637,7 @@ func tile_description(room: RoomState) -> String:
   return "Empty floor: choose a building"
  var b = room.buildings[game.selected_tile]
  var d = Catalog.BUILDINGS[b.kind]
- if b.level >= Catalog.BUILDING_MAX_LEVEL:
+ if b.level >= Catalog.building_max_level(b.kind):
   return "%s L%d · MAX" % [d.name,b.level]
  return "%s L%d" % [d.name,b.level]
 

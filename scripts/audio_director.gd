@@ -3,8 +3,8 @@ extends Node
 
 const ROOT = "res://assets/audio/"
 const LOOP_NAMES = ["music_menu","music_calm","music_danger","ambient_dorm","proximity_loop","generator_loop","music_reaper","reaper_ambience"]
-const EFFECT_NAMES = ["intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","button","menu","match_start","purchase","failure","rank","reward","victory","defeat","shot_needle","shot_arc","impact","ghost_hurt","ghost_defeat","door_hit","door_crack","door_break","build","turret_upgrade","bed_upgrade","door_upgrade","repair","upgrade","income","electricity","footstep","danger","breach","hunter_spawn","hunter_level","elimination","scream_1","scream_2","scream_3","door_reaction","sale","refund","insufficient_gold","insufficient_power","eerie","reaper_transform","reaper_scythe","reaper_charge","reaper_surge","reaper_impact","reaper_hurt","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_end","item_explosion","item_shield_hit"]
-const CRITICAL_EVENTS = ["intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","victory","defeat","ghost_defeat","rank","reward","hunter_level","breach","door_break","match_start","door_reaction","sale","refund","reaper_transform","reaper_charge","reaper_surge","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_explosion"]
+const EFFECT_NAMES = ["death_scream_1","death_scream_2","hunter_laugh","reaper_laugh","weather_thunder","weather_wind","weather_rain","prestige_upgrade","survivor_notice","intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","button","menu","match_start","purchase","failure","rank","reward","victory","defeat","shot_needle","shot_arc","impact","ghost_hurt","ghost_defeat","door_hit","door_crack","door_break","build","turret_upgrade","bed_upgrade","door_upgrade","repair","upgrade","income","electricity","footstep","danger","breach","hunter_spawn","hunter_level","elimination","scream_1","scream_2","scream_3","door_reaction","sale","refund","insufficient_gold","insufficient_power","eerie","reaper_transform","reaper_scythe","reaper_charge","reaper_surge","reaper_impact","reaper_hurt","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_end","item_explosion","item_shield_hit"]
+const CRITICAL_EVENTS = ["death_scream_1","death_scream_2","survivor_notice","prestige_upgrade","intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","victory","defeat","ghost_defeat","rank","reward","hunter_level","breach","door_break","match_start","door_reaction","sale","refund","reaper_transform","reaper_charge","reaper_surge","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_explosion"]
 const VOICE_LIMIT = 16
 const FRAME_VOICE_LIMIT = 6
 const EFFECT_COOLDOWNS = {"reaper_transform":4.0,"reaper_scythe":0.7,"reaper_charge":1.8,"reaper_surge":1.5,"reaper_impact":0.5,"reaper_hurt":0.35,"reaper_death":4.0,"scream_1":2.0,"scream_2":2.0,"scream_3":2.0,"door_reaction":2.0,"sale":0.15,"refund":0.15,"insufficient_gold":0.4,"insufficient_power":0.4,"eerie":12.0,"shot_needle":0.07,"shot_arc":0.11,"impact":0.09,"ghost_hurt":0.22,"door_hit":0.12,"door_crack":0.8,"door_break":1.0,"income":1.1,"electricity":1.0,"repair":1.0,"footstep":0.38,"danger":3.0,"build":0.15,"upgrade":0.18,"hunter_level":0.5,"hunter_spawn":1.0,"match_start":0.8,"victory":2.0,"defeat":2.0,"rank":0.8,"reward":0.4,"menu":0.2}
@@ -39,6 +39,13 @@ var _voice_names: Dictionary = {}
 var _last_presentation_event=0
 var _encounter_cooldowns: Dictionary={}
 var music_duck=1.0
+var death_rooms: Dictionary={}
+var laughed_rooms: Dictionary={}
+var pending_laughs: Array=[]
+var environment_serial=0
+var environment_ref
+var death_sequence=0
+var pending_deaths: Array=[]
 var _scream_voice
 var _scream_next=0.0
 var _scream_variation=0
@@ -138,11 +145,13 @@ func event(name: String, position: Vector2 = Vector2.INF) -> bool:
    dropped_events += 1
   return false
  var distance_gain = 1.0
+ var prominent=name in ["death_scream_1","death_scream_2","survivor_notice","hunter_laugh","reaper_laugh"]
  if position.is_finite():
   var distance = listener_position.distance_to(position)
-  if distance > hearing_radius:
+  if distance > hearing_radius and not prominent:
    return false
-  distance_gain = clampf(1.0-distance/(hearing_radius/0.85),0.15,1.0)
+  distance_gain = clampf(1.0-distance/(hearing_radius/0.85),0.3 if prominent else 0.15,1.0)
+  if prominent:position=listener_position+listener_position.direction_to(position)*minf(distance,600)
  var free_voice = null
  for voice in voices:
   if not voice.playing:
@@ -163,7 +172,8 @@ func event(name: String, position: Vector2 = Vector2.INF) -> bool:
  _voice_names[free_voice.get_instance_id()] = name
  free_voice.global_position=(position if position.is_finite() else listener_position)+Vector2(145,40)
  free_voice.stream = streams[name]
- free_voice.volume_db = linear_to_db(distance_gain)-20.0
+ free_voice.bus="Ambient" if name.begins_with("weather_") else "Effects"
+ free_voice.volume_db = linear_to_db(distance_gain)+(-29.0 if name.begins_with("weather_") else -17.0 if name.begins_with("death_scream") else -20.0)
  free_voice.pitch_scale = 1.0
  free_voice.play()
  _cooldowns[name] = _clock+float(EFFECT_COOLDOWNS.get(name,0.08))
@@ -177,6 +187,7 @@ func reset_match(model):
  _last_combat_event = 0
  _last_presentation_event=0
  _encounter_cooldowns.clear()
+ death_rooms.clear();laughed_rooms.clear();pending_laughs.clear();environment_serial=0;environment_ref=null;death_sequence=0;pending_deaths.clear()
  _scream_next=0
  _scream_voice=null
  _next_eerie=_clock+12
@@ -203,6 +214,13 @@ func update_state(delta: float, model, mode: String):
  _clock += delta
  _frame_voices = 0
  _mode = mode
+ if mode in ["menu","intro"] or (model!=null and model.tutorial_mode):
+  pending_laughs.clear();pending_deaths.clear()
+  stop_events(["hunter_laugh","reaper_laugh","death_scream_1","death_scream_2","weather_thunder","weather_wind","weather_rain"])
+ for cue in pending_laughs.duplicate():
+  if _clock-cue.time>3:pending_laughs.erase(cue);continue
+  var death_playing=voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"").begins_with("death_scream"))
+  if _clock>=cue.time+.25 and not death_playing and event(cue.name,cue.position):pending_laughs.erase(cue)
  var pending = _pending_critical.duplicate()
  _pending_critical.clear()
  for cue in pending:
@@ -229,6 +247,7 @@ func update_state(delta: float, model, mode: String):
   hearing_radius=maxf(850.0,model.map_bounds().size.length()) if model.map_id!="legacy" else 850.0
   if mode in ["match","result"]:
    _observe_presentation(model)
+   _play_death_queue()
   if active:
    _observe(model)
    if model.running and _clock>=_next_eerie:
@@ -410,18 +429,46 @@ func _observe_presentation(model):
     for fraction in [0.66,0.33]:
      if before/max_hp>fraction and hp/max_hp<=fraction: event("door_crack",position)
    "door_break":
+    if model.rooms[room].door_hp>0:continue
+    if model.rooms[room].door_hp<=0 and not laughed_rooms.has(room):
+     laughed_rooms[room]=true
+     pending_laughs.append({"name":"reaper_laugh" if record.get("transformed",model.hunter.transformed) else "hunter_laugh","position":position,"time":_clock})
     event("door_break",position)
     event("breach",position)
     # Door destruction gets its own reaction, but never stacks survivor screams.
     if is_instance_valid(_scream_voice): _scream_voice.stop()
     event("door_reaction",position)
     _scream_next=_clock+2
-   "elimination": event("elimination",position)
+   "elimination":
+    if model.rooms[room].alive or death_rooms.has(room):continue
+    if not model.rooms[room].alive and not death_rooms.has(room):
+     death_rooms[room]=true;death_sequence+=1
+     stop_events(["hunter_laugh","reaper_laugh"])
+     pending_deaths.append({"name":"death_scream_%d" % (1+(death_sequence-1)%2),"position":record.get("survivor_position",model.rooms[room].bed_position())})
+     event("survivor_notice")
+    event("elimination",position)
    "repair": event("repair",position)
    "build": event("build",position)
-   "building_upgrade": event("turret_upgrade" if record.get("kind","") in ["turret","heavy"] else "upgrade",position)
+   "building_upgrade": event("prestige_upgrade" if record.get("level",0)==10 else "turret_upgrade" if record.get("kind","") in ["turret","heavy"] else "upgrade",position)
    "bed_upgrade": event("bed_upgrade",position)
    "door_upgrade": event("door_upgrade",position)
    "sale":
     event("sale",position)
     event("refund",position)
+
+func update_environment(environment):
+ if environment!=environment_ref:
+  environment_ref=environment;environment_serial=0
+ for cue in environment.weather_events:
+  if cue.id<=environment_serial:continue
+  environment_serial=cue.id
+  var critical_playing=voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"") in CRITICAL_EVENTS)
+  if not critical_playing:event(cue.cue,listener_position)
+
+func _play_death_queue():
+ if pending_deaths.is_empty():return
+ if voices.any(func(v):return v.playing and _voice_names.get(v.get_instance_id(),"").begins_with("death_scream")):return
+ var cue=pending_deaths[0]
+ if _frame_voices>=FRAME_VOICE_LIMIT or _clock<float(_cooldowns.get(cue.name,-1)):return
+ if not voices.any(func(v):return not v.playing or _voice_names.get(v.get_instance_id(),"") not in CRITICAL_EVENTS):return
+ if event(cue.name,cue.position):pending_deaths.pop_front()

@@ -194,7 +194,7 @@ func target_score(room: RoomState) -> float:
   if b.kind in ["turret","heavy"]:
    var data=Catalog.BUILDINGS[b.kind]
    if room.tile_position(tile).distance_to(approach)<=data.range:
-    dps+=data.damage*b.level*relay*room.turret_multiplier/(data.interval/(1+(b.level-1)*0.12))
+    dps+=Catalog.turret_damage(b.kind,b.level)*relay*room.turret_multiplier/Catalog.turret_interval(b.kind,b.level)
   elif b.kind=="repair": repair+=Catalog.BUILDINGS.repair.rate*b.level
  if (difficulty!="standard" or transformed) and _model_ref!=null and _model_ref.get_ref()!=null:
   for other in _model_ref.get_ref().rooms:
@@ -378,14 +378,19 @@ func tick(delta: float, match_state):
     reassess_seconds=0
     siege_start_hp=room.door_hp
  elif state == State.BREACH:
+  if room.alive and room.door_hp<=0 and not room.breach_reacted:
+   room.breach_reacted=true
+   match_state.record_event("survivor_fear",target)
   if match_state.map_id=="legacy": navigate(room.bed_position(),delta)
   else: _advance_custom(room.bed_position(),delta,match_state,"hunter_breach")
   if hp<=0: return
-  if position.distance_to(room.bed_position()) < 12:
+  if room.alive and position.distance_to(room.bed_position()) < 12:
+   match_state.record_event("survivor_attack",target)
+   room.eliminated_position=room.bed_position()
    room.alive = false
    room.sleeping = false
    match_state.eliminations += 1
-   match_state.record_event("elimination",target)
+   match_state.record_event("elimination",target,{"survivor_position":room.eliminated_position})
    exit_corridor = false
    state = State.EXIT
 

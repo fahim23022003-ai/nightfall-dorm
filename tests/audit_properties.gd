@@ -49,7 +49,7 @@ func run():
    check(room.door_hp >= 0 and room.door_hp <= room.max_hp()+0.0001, "door HP remains bounded")
    check(room.bed_level >= 0 and room.bed_level < Catalog.BED_INCOME.size() and room.door_level >= 0 and room.door_level < Catalog.DOOR_HP.size(), "upgrade levels remain within catalog")
    for tile in room.buildings:
-    check(tile >= 0 and tile < 6 and room.buildings[tile].level >= 1 and room.buildings[tile].level <= Catalog.BUILDING_MAX_LEVEL, "building tiles and levels remain valid")
+    check(tile >= 0 and tile < 6 and room.buildings[tile].level >= 1 and room.buildings[tile].level <= Catalog.building_max_level(room.buildings[tile].kind), "building tiles and levels remain valid")
    if not room.alive:
     check(not accepted and room.income_rate() == 0,"dead resident cannot spend or earn")
  print("PROPERTY_TRANSACTIONS=",transactions," REJECTED=",rejected," CHECKS=",checks," FAILURES=",failures)

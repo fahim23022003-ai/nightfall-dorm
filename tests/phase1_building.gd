@@ -25,10 +25,11 @@ func click(button: Button, double_click: bool=false):
 
 func run():
  for kind in Catalog.BUILDINGS:
-  for level in range(1,Catalog.BUILDING_MAX_LEVEL+1):
+  for level in range(1,Catalog.building_max_level(kind)+1):
    var room=RoomState.new(0)
    room.sleeping=true
    room.bed_level=4
+   room.door_level=4
    room.gold=10000
    room.electricity=10000
    check(room.build(kind,0),"build "+kind)

@@ -37,3 +37,25 @@ const PROJECTILES = {"turret":480.0,"heavy":360.0,"max_age":5.0,"max_active":256
 
 # Preserve the first active phase; each later level ramps its stats over eight seconds.
 const HUNTER_ESCALATION={"ramp_seconds":8.0,"speed_growth":1.5,"speed_bonus_cap":8.0,"dps_weight":2.0,"dps_penalty_cap":90.0,"repair_penalty_cap":35.0,"retarget_improvement":0.12,"minimum_commitment":8.0,"stuck_seconds":4.0}
+
+# Only weapon defenses receive prestige tiers. Economy/support and autonomous
+# purchasing budgets retain the existing four-level progression.
+const DEFENSE_MAX_LEVEL=10
+const PRESTIGE_COST_FACTORS=[5,7,10,14,19,25]
+static func building_max_level(kind: String) -> int:
+ return DEFENSE_MAX_LEVEL if kind in ["turret","heavy"] else BUILDING_MAX_LEVEL
+static func upgrade_cost(kind: String,level: int) -> Vector2:
+ if not BUILDINGS.has(kind) or level<1 or level>=building_max_level(kind):return Vector2.ZERO
+ var factor=float(level) if level<4 else float(PRESTIGE_COST_FACTORS[level-4])
+ var data=BUILDINGS[kind]
+ return Vector2(data.gold*factor,(data.power+3)*factor)
+static func upgrade_requirement(kind: String,level: int,bed: int,door: int) -> String:
+ if level>=building_max_level(kind):return "Building is at maximum level."
+ if kind in ["turret","heavy"] and level>=4:
+  var required=2 if level<7 else 3
+  if bed<required or door<required:return "Prestige tier requires bed and door level %d." % (required+1)
+ return ""
+static func turret_damage(kind: String,level: int) -> float:
+ return BUILDINGS[kind].damage*clampi(level,1,DEFENSE_MAX_LEVEL)
+static func turret_interval(kind: String,level: int) -> float:
+ return BUILDINGS[kind].interval/(1.0+(clampi(level,1,DEFENSE_MAX_LEVEL)-1)*0.12)
