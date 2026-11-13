@@ -83,15 +83,17 @@ func observe(event: Dictionary,model):
  if kind=="door_damage":
   var damage=float(event.get("damage",0))
   if not is_finite(damage) or damage<=0: return
+  var damage_type=str(event.get("damage_type","physical"))
+  if damage_type not in ["physical","magic"]:damage_type="physical"
   var combined=false
   for n in damage_numbers:
-   if n.room==index:
+   if n.room==index and n.get("damage_type","physical")==damage_type:
     n.damage+=damage
     n.age=0.0
     combined=true
     break
   if not combined:
-   damage_numbers.append({"room":index,"position":event.position,"damage":damage,"age":0.0,"life":1.05})
+   damage_numbers.append({"room":index,"position":event.position,"damage":damage,"age":0.0,"life":1.05,"damage_type":damage_type})
    if damage_numbers.size()>MAX_NUMBERS: damage_numbers.pop_front()
   door_impacts[index]={"age":0.0,"strength":clampf(damage/maxf(1,room.max_hp())*25,1,5)}
   danger_rooms[index]=2.0
@@ -151,12 +153,16 @@ func render_world(c):
   # Also serves as a compact map indicator when the camera is zoomed out.
   c.draw_circle(OFFSET+room.center()+Vector2(100,-80),7,Color(1,0.2,0.16,alpha+0.2))
  for n in damage_numbers:
-  var alpha=clampf((n.life-n.age)/0.35,0,1)
-  var point=OFFSET+n.position+Vector2(-12,-43-n.age*30)
-  var value="-%s" % str(snappedf(n.damage,0.01))
-  var size=16 if n.damage<40 else 20
-  c.draw_string_outline(font,point,value,HORIZONTAL_ALIGNMENT_LEFT,-1,size,3,Color(0.08,0.04,0.08,alpha))
-  c.draw_string(font,point,value,HORIZONTAL_ALIGNMENT_LEFT,-1,size,Color(1,0.42,0.32,alpha))
+  var alpha=clampf((n.life-n.age)/.35,0,1)
+  var geometry=damage_number_geometry(c,n)
+  var point=geometry.point;var value=geometry.value;var caption=geometry.caption
+  var color=Color(.8,.65,1,alpha) if geometry.magic else Color(1,.76,.48,alpha)
+  var size=geometry.font_size;var width=geometry.width
+  c.draw_rect(Rect2(point+Vector2(-5,-27),Vector2(width,33)),Color(.05,.07,.1,.86*alpha))
+  c.draw_line(point+Vector2(-5,-27),point+Vector2(width-5,-27),color,1.5)
+  c.draw_string(font,point-Vector2(0,16),caption,HORIZONTAL_ALIGNMENT_LEFT,-1,8,color)
+  c.draw_string_outline(font,point,value,HORIZONTAL_ALIGNMENT_LEFT,-1,size,2,Color(.04,.04,.07,alpha))
+  c.draw_string(font,point,value,HORIZONTAL_ALIGNMENT_LEFT,-1,size,color)
  for n in breaks:
   var point=OFFSET+n.position
   var alpha=1-n.age/n.life
@@ -195,3 +201,23 @@ func render_notifications(c):
    c.draw_string(font,point+Vector2(40,43),parts[1] if parts.size()>1 else n.text,HORIZONTAL_ALIGNMENT_LEFT,370,12,Color(.96,.95,.92,alpha))
   else:c.draw_string(font,point+Vector2(40,22),n.text,HORIZONTAL_ALIGNMENT_LEFT,370,16,Color(.96,.95,.92,alpha))
   offset+=height+5
+
+func damage_number_geometry(c,n: Dictionary) -> Dictionary:
+ var magic=n.get("damage_type","physical")=="magic"
+ var value="-%s" % str(snappedf(n.damage,.01));var caption="MAGIC" if magic else "PHYSICAL"
+ var size=16 if n.damage<40 else 19
+ var width=maxf(font.get_string_size(caption,HORIZONTAL_ALIGNMENT_LEFT,-1,8).x,font.get_string_size(value,HORIZONTAL_ALIGNMENT_LEFT,-1,size).x)+10
+ var normal=c.model.rooms[n.room].door_normal()
+ var horizontal=absf(normal.x)>.5
+ var offset=Vector2(12 if magic else -68,-90 if magic else -64)
+ # Lab entrances face sideways near the upper wall: keep their two cues below
+ # the doorway, outside the room and beyond the attacker's silhouette.
+ if horizontal:offset=Vector2(80 if normal.x>0 else -75-width,52 if magic else 10)
+ var drift=0.0 if horizontal or c.profile.settings.reduced_effects else n.age*22
+ var point=OFFSET+n.position+offset-Vector2(0,drift)
+ var canvas=c.get_canvas_transform();var screen=canvas*(point+Vector2(-5,-27))
+ var span=Vector2(width,33)*canvas.get_scale();var shift=0.0
+ if screen.x<12:shift=12-screen.x
+ elif screen.x+span.x>1268:shift=1268-screen.x-span.x
+ point+=canvas.basis_xform_inv(Vector2(shift,0))
+ return {"point":point,"rect":Rect2(point+Vector2(-5,-27),Vector2(width,33)),"value":value,"caption":caption,"font_size":size,"width":width,"magic":magic}

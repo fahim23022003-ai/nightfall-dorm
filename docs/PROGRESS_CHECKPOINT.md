@@ -1,3 +1,15 @@
+# Gameplay visual audit and polish — complete
+
+Three presentation-only fixes: gold selection/upgrade feedback, compact late-room
+level/ward labels, and readable PHYSICAL/MAGIC damage cues. Existing menu and
+all gameplay rules are preserved; sideways Lab label layout corrected.
+Godot 4.6.3 focused checks **50/0**, independent capture checks **15/0**.
+Actual before/after PNGs include five 720p scenes, one 1080p view and upgrade pulse.
+See [report](GAMEPLAY_VISUAL_POLISH.md) for controlled setup disclosure and evidence.
+Native Windows/human usability unverified. No full suite or new build.
+
+---
+
 # Focused main-menu visual polish — complete
 
 The established layout, logo, haunted house and session-only Welcome are retained.

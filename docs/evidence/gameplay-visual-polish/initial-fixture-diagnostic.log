@@ -1,0 +1,19 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: GAMEPLAY VISUAL upgrade still spends exact existing resources
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/gameplay_visual_polish.gd:6)
+       [1] run (res://tests/gameplay_visual_polish.gd:29)
+       [2] click (res://tests/gameplay_visual_polish.gd:11)
+ERROR: GAMEPLAY VISUAL successful upgrade reuses one positive event
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/gameplay_visual_polish.gd:6)
+       [1] run (res://tests/gameplay_visual_polish.gd:31)
+       [2] click (res://tests/gameplay_visual_polish.gd:11)
+SCRIPT ERROR: Invalid access of index '0' on a base object of type: 'Array'.
+          at: run (res://tests/gameplay_visual_polish.gd:32)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/gameplay_visual_polish.gd:32)
+              [1] click (res://tests/gameplay_visual_polish.gd:11)

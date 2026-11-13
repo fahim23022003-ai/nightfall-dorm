@@ -302,8 +302,13 @@ func render(c):
   if e.kind in ["build","break"]:
    c.draw_texture_rect(cartoon.construction,Rect2(p-Vector2(31,31),Vector2(62,62)),false,Color(1,1,1,fraction))
   elif e.kind in ["level","prestige"]:
-   c.draw_arc(p,20+(1-fraction)*18,0,TAU,32,Color(0.48,0.89,0.63,fraction),2)
-   text(c,"LEVEL 10 · PRESTIGE" if e.kind=="prestige" else "LEVEL UP",p+Vector2(-40,-20-(1-fraction)*15),12,Color(1,.85,.5,fraction) if e.kind=="prestige" else Color(0.7,1,0.75,fraction))
+   var reduced=c.profile.settings.reduced_effects
+   var lift=0.0 if reduced else (1-fraction)*12
+   c.draw_arc(p,24+(0 if reduced else (1-fraction)*14),0,TAU,32,Color(.92,.77,.47,fraction),2.5)
+   var value="LEVEL 10 · PRESTIGE" if e.kind=="prestige" else "UPGRADED"
+   var at=p+Vector2(-36,-38-lift)
+   c.draw_string_outline(font,at,value,HORIZONTAL_ALIGNMENT_LEFT,-1,11,3,Color(.06,.08,.1,fraction))
+   text(c,value,at,11,Color(1,.88,.6,fraction))
   else:
    var color=Color("A8C9AE") if e.kind=="repair" else Color("C8AA79")
    if e.kind=="impact":c.draw_arc(p,5+(1-fraction)*13,0,TAU,20,Color(color,fraction*.65),1.5)
@@ -317,8 +322,9 @@ func render(c):
   for tile in room.buildings:
    var b=room.buildings[tile]
    if b.level>=5:
-    if b.kind in ["turret","heavy"]:prestige(c,OFFSET+room.tile_position(tile),b.level,b.kind)
-    else:support_prestige(c,OFFSET+room.tile_position(tile),b.level,b.get("specialization",""))
+    var selected=room.index==m.player_room and c.selected_tile==tile and c.ui.context_open and c.watched_room<0
+    if b.kind in ["turret","heavy"]:prestige(c,OFFSET+room.tile_position(tile),b.level,b.kind,selected)
+    else:support_prestige(c,OFFSET+room.tile_position(tile),b.level,b.get("specialization",""),selected,m.map_id=="legacy")
  if c.get("horror")!=null: c.horror.render_world(c)
  item_presentation.draw(c)
  for f in c.floating:
@@ -563,7 +569,7 @@ func cartoon_room(c,room: RoomState,owned: bool):
      c.draw_polyline(PackedVector2Array([p+Vector2(-12,-21),p+Vector2(-4+x,-26),p+Vector2(3,-19),p+Vector2(13,-24)]),Color("4DDDF3"),1.5)
    for pip in range(building.level): c.draw_circle(p+Vector2(-7+pip*5,24),1.6,Color("7BE3A1"))
   if owned and c.selected_tile==tile and c.ui.context_open:
-   c.draw_style_box(frame(Color.TRANSPARENT,Color("7BE3A1"),7),Rect2(p-Vector2(26,25),Vector2(52,50)))
+   selection_outline(c,p)
  if c.pending_build!="" and owned:
   var valid=c.placement_reason()==""
   var p=OFFSET+c.preview_position
@@ -572,7 +578,7 @@ func cartoon_room(c,room: RoomState,owned: bool):
   var name=c.pending_build+"_1" if c.pending_build in ["turret","heavy"] else c.pending_build
   c.draw_texture_rect(cartoon[name],Rect2(p-Vector2(27,34),Vector2(54,58)),false,Color(1,1,1,0.6))
 
-func prestige(c,point: Vector2,level: int,kind="turret"):
+func prestige(c,point: Vector2,level: int,kind="turret",detailed=false):
  c.draw_texture_rect(prestige_art["%s_%d" % [kind,level]],Rect2(point-Vector2(32,39),Vector2(64,64)),false)
  var reduced=c.profile.settings.get("reduced_effects",false)
  var color=Color("E9B866") if level==10 else Color("A5C7ED")
@@ -582,13 +588,24 @@ func prestige(c,point: Vector2,level: int,kind="turret"):
  if level==10:
   c.draw_colored_polygon(PackedVector2Array([point+Vector2(-16,-28),point+Vector2(-18,-42),point+Vector2(-7,-34),point+Vector2(0,-45),point+Vector2(7,-34),point+Vector2(18,-42),point+Vector2(16,-28)]),Color(color,.85))
   if not reduced:c.draw_arc(point,28,sin(clock)*.2,PI+sin(clock)*.2,24,Color(color,.4),2)
- c.draw_style_box(frame(Color("172338"),color,2),Rect2(point+Vector2(-22,14),Vector2(44,14)))
- text(c,"L%d%s" % [level," MAX" if level==10 else ""],point+Vector2(-18,24),8,color)
+ var width=44 if detailed else 24
+ c.draw_style_box(frame(Color("172338"),color,2),Rect2(point+Vector2(-width*.5,16),Vector2(width,12)))
+ text(c,"L%d%s" % [level," MAX" if level==10 else ""] if detailed else str(level),point+Vector2(-18 if detailed else -6,25),8,color)
 
-func support_prestige(c,point: Vector2,level: int,branch: String=""):
+func support_prestige(c,point: Vector2,level: int,branch: String="",detailed=false,show_branch=true):
  var color=Color("E9B866") if level==10 else Color("9DD4C3")
  c.draw_arc(point+Vector2(0,2),25,PI*.1,PI*.9,20,color,2)
  for side in [-1,1]:c.draw_line(point+Vector2(side*20,-18),point+Vector2(side*27,-29),color,3)
- if branch!="":c.draw_texture_rect(PremiumButton.texture(branch),Rect2(point+Vector2(13,-33),Vector2(19,19)),false)
- c.draw_style_box(frame(Color("172338"),color,2),Rect2(point+Vector2(-23,18),Vector2(46,13)))
- text(c,"L%d%s" % [level," MAX" if level==10 else ""],point+Vector2(-20,28),8,color)
+ if branch!="" and show_branch:c.draw_texture_rect(PremiumButton.texture(branch),Rect2(point+Vector2(13,-33),Vector2(19,19)),false)
+ var width=46 if detailed else 24
+ c.draw_style_box(frame(Color("172338"),color,2),Rect2(point+Vector2(-width*.5,18),Vector2(width,12)))
+ text(c,"L%d%s" % [level," MAX" if level==10 else ""] if detailed else str(level),point+Vector2(-20 if detailed else -6,27),8,color)
+
+func selection_outline(c,point: Vector2):
+ var color=Color("E2C68B")
+ c.draw_style_box(frame(Color(.85,.72,.43,.045),Color(.88,.76,.52,.75),5),Rect2(point-Vector2(26,25),Vector2(52,50)))
+ for x in [-1,1]:
+  for y in [-1,1]:
+   var corner=point+Vector2(x*27,y*26)
+   c.draw_line(corner,corner-Vector2(x*9,0),color,2.5)
+   c.draw_line(corner,corner-Vector2(0,y*9),color,2.5)

@@ -187,9 +187,10 @@ func render_tiles(c,p,room,owned):
     var flash=clampf(building.flash/.15,0,1)
     c.draw_colored_polygon(PackedVector2Array([muzzle-side*4,muzzle+direction*(7+flash*10),muzzle+side*4]),Color("E5C898") if building.kind=="heavy" else Color("A1E0DB"))
     if not c.profile.settings.reduced_effects:c.draw_circle(muzzle,9,Color(.8,.75,.45,.12*flash))
-   for pip in range(building.level): c.draw_circle(point+Vector2(-7+pip*5,24),1.5,Color("7BE3A1"))
+   if building.level<5:
+    for pip in range(building.level):c.draw_circle(point+Vector2(-(building.level-1)*2+pip*4,24),1.5,Color("BFCDB9"))
   if owned and c.selected_tile==tile and c.ui.context_open:
-   c.draw_style_box(p.frame(Color.TRANSPARENT,Color("7BE3A1"),6),Rect2(point-Vector2(26,25),Vector2(52,50)))
+   p.selection_outline(c,point)
  if owned and c.pending_build!="":
   var point=OFFSET+c.preview_position
   var color=Color("7BE3A1") if c.placement_reason()=="" else Color("F05467")
@@ -217,9 +218,13 @@ func render_door(c,p,room):
  c.draw_set_transform(Vector2.ZERO)
  if room.owner>=0:
   var targeted=c.model.hunter.target==room.index and c.model.hunter.state in [HunterState.State.ATTACK,HunterState.State.BREACH]
-  var where=point+Vector2(40,-25) if absf(normal.x)<0.5 else point+Vector2(-35,-65)
+  var where=point+Vector2(40,-25) if absf(normal.x)<0.5 else point+Vector2(-35,50)
   var label_screen=c.get_canvas_transform()*where
   if label_screen.y>75 and label_screen.y<150:
    where+=c.get_canvas_transform().basis_xform_inv(Vector2(0,155-label_screen.y))
+  if room.owner==0 or targeted:
+   var ward=room.magic_state.shield>0
+   c.draw_style_box(p.frame(Color("111B24"),Color("65736D"),3),Rect2(where+Vector2(-4,-20),Vector2(80,46 if ward else 33)))
+   p.text(c,"%d/%d" % [roundi(room.door_hp),roundi(room.max_hp())],where+Vector2(0,-6),11,Color("F1E3CA"))
+   if ward:p.text(c,"WARD %.0f" % room.magic_state.shield,where+Vector2(0,22),9,Color("9CEBF2"))
   p.bar(c,where,70,room.door_hp/room.max_hp())
-  if room.owner==0 or targeted: p.text(c,"%d/%d" % [roundi(room.door_hp),roundi(room.max_hp())],where+Vector2(0,-5),10,Color("F1D5C7"))

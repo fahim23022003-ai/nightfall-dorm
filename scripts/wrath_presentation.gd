@@ -138,7 +138,7 @@ func draw_magic_feedback(c,clock: float,reduced: bool):
   var state=room.magic_state;var door=O+room.door_position()
   if state.shield>0:
    c.draw_arc(door+Vector2(0,-20),37,-PI*.95,PI*.05,24,Color(.36,.8,.95,.65),2)
-   c.presentation.text(c,"MAGIC WARD %.0f" % state.shield,door+Vector2(-41,-63),9,Color("9CEBF2"))
+   if m.map_id=="legacy":c.presentation.text(c,"WARD %.0f" % state.shield,door+Vector2(40,3),9,Color("9CEBF2"))
   for tile in room.buildings:
    var b=room.buildings[tile];var p=O+room.tile_position(tile)
    if b.kind=="plasma" and state.stored>0:
