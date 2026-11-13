@@ -1,0 +1,13 @@
+extends "res://tools/capture_overhaul_combat.gd"
+func run():
+ output="/workspace/cinematic-nightmare/";phase="after";root.size=Vector2i(1280,720);await setup_game();game.onboarding.close_welcome()
+ var layer=CanvasLayer.new();layer.layer=100;root.add_child(layer);var sheet=preload("res://tools/nightmare_hunter_gallery.gd").new();sheet.game=game;sheet.profile=game.profile;sheet.silhouette=true;layer.add_child(sheet);await advance(.1);await capture("hunter-silhouette-inspection");layer.queue_free();await process_frame
+ var m=fixture_kind("crusher");m.run_kind="campaign";m.stage_id="stage_5";m.difficulty="hell";m.evolution.evolution_level=9;m.evolution.final_revealed=false;m.time=m.preparation+301;m.hunter.cooldown=60;m.hunter.arcane.cooldown=60;m.hunter.tactical_cooldown=60
+ game.ui.show_match();game.focus_camera(true)
+ game.profile.settings.music=0;game.profile.settings.ambient=0;game.profile.settings.effects=.7;game.audio_system.set_mix(game.profile.settings)
+ pcm_start();await drive(.05);check(m.evolution.rebirth_remaining>0,"real final transformation event")
+ for i in range(13):await drive(.27);await capture("rebirth-%02d" % i)
+ await advance(3.6);pcm_finish("rebirth-master")
+ pcm_start();m.hunter.hurt(m.hunter.hp*2);await drive(.05);await capture("true-form-defeat");await advance(3.3);pcm_finish("true-form-defeat-master")
+ print("FINAL_VISUAL_CHECKS=",checks," FAILURES=",failures)
+ game.audio_system.shutdown();game.queue_free();await create_timer(.3).timeout;quit(1 if failures else 0)

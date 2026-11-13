@@ -1,3 +1,26 @@
+# Phase 8 — Cinematic Nightmare implementation delivered
+
+Reauthored168 Hunter rig layers and68 role-specific building construction forms;
+read-only acceleration/cast/attack animation,12 distinct skill presentations,
+local level10 reveal, compact16-slot silhouettes and enlarged bottom-drawer
+inspection.18 recorded-source role cues, revised5s transformation/3s defeat,
+quality tiers and separately saved motion/flash preferences. No combat, economy,
+progression, Omen or checkpoint rule changes. Existing recorded scores preserved.
+Godot4.6.3:45 new focused checks and20 existing selected gates pass;234 main,
+93 dense-room,57 Omen,12 actual settings-input,23 final visual and61 earned/render
+checks pass. Real720p/1080p PNGs, uncut≈24fps normal-time video and separate actual
+Master WAV. Earned full-health Hell46 continuation still wins in42.8 simulated
+seconds; skill casts separately controlled. Linux mean frame wait lower but95th
+percentile higher than baseline; no across-the-board performance claim.
+Artistic acceptance remains PARTIAL (silhouette recognition, cutout/directional
+animation and emotional horror); Windows/human audio/gameplay approval unverified.
+See [report](PHASE_8_CINEMATIC_NIGHTMARE_REPORT.md),
+[evidence](evidence/cinematic-nightmare/INDEX.md) and
+[Windows checklist](PHASE_8_WINDOWS_PLAYTEST_CHECKLIST.md).
+No agents, main merge, release publication or later phase.
+
+---
+
 # Phase 7 — Nightmare Rebirth complete
 
 Separate bounded Hunter evolution1–10 preserves combat scaling and kill buffs;

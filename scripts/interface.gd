@@ -223,40 +223,26 @@ func show_settings():
   game.mobile_ui.show_settings(self)
   return
  game.audio_event("menu")
- box(Rect2(330,40,620,640))
- label_at("SETTINGS",Vector2(370,70),30,540,true)
+ box(Rect2(110,35,1060,650))
+ label_at("SOUND & CINEMATIC QUALITY",Vector2(145,62),30,990,true)
  for i in range(3):
   var key=["music","effects","ambient"][i]
-  label_at(key.capitalize()+" volume",Vector2(370,125+i*84),20,520)
-  var slider=HSlider.new()
-  slider.name=key+"_volume"
-  slider.position=Vector2(370,164+i*84)
-  slider.size=Vector2(530,28)
-  slider.step=0.01
-  slider.min_value=0
-  slider.max_value=1
-  slider.value=game.profile.settings[key]
-  var id=key
-  slider.value_changed.connect(func(value): game.change_setting(id,value))
-  panel.add_child(slider)
- var options=["muted","fullscreen","tutorial","reduced_effects"]
- var names=["Mute all audio","Fullscreen","First-night tutorial","Reduced visual effects"]
- for i in range(4):
-  var toggle=CheckButton.new()
-  toggle.name=options[i]
-  toggle.text=names[i]
-  toggle.position=Vector2(370,385+i*48)
-  toggle.button_pressed=game.profile.settings[options[i]]
-  var id=options[i]
-  toggle.toggled.connect(func(value): game.change_setting(id,value))
-  panel.add_child(toggle)
- button("Back",Vector2(370,590),show_menu,200,46)
- button("Audio listening room",Vector2(590,590),show_audio_test,310,46)
- if game.profile.warning!="":
-  var text=label_at(game.profile.warning,Vector2(590,585),16,310)
-  text.clip_text=true
-  text.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
-  text.size=Vector2(310,70)
+  label_at(key.capitalize()+" volume",Vector2(150,130+i*94),20,420)
+  var slider=HSlider.new();slider.name=key+"_volume";slider.position=Vector2(150,167+i*94);slider.size=Vector2(420,28);slider.step=.01;slider.min_value=0;slider.max_value=1;slider.value=game.profile.settings[key]
+  var id=key;slider.value_changed.connect(func(value):game.change_setting(id,value));panel.add_child(slider)
+ var quality=OptionButton.new();quality.name="graphics_quality";quality.position=Vector2(640,130);quality.size=Vector2(470,42)
+ for text in ["LOW · essential effects","MEDIUM · balanced cinema","HIGH · full atmosphere"]:quality.add_item(text)
+ quality.select(["low","medium","high"].find(game.profile.settings.get("graphics_quality","medium")))
+ quality.item_selected.connect(func(index):game.change_setting("graphics_quality",["low","medium","high"][index]));panel.add_child(quality)
+ var options=["reduced_motion","reduced_flashes","reduced_effects","muted","fullscreen","tutorial"]
+ var names=["Reduce motion / camera impulse","Reduce flashes / light response","Reduced effects (overrides quality)","Mute all audio","Fullscreen","First-night tutorial"]
+ for i in range(options.size()):
+  var toggle=CheckButton.new();toggle.name=options[i];toggle.text=names[i];toggle.position=Vector2(640,190+i*50);toggle.size.x=470;toggle.button_pressed=game.profile.settings.get(options[i],false)
+  var id=options[i];toggle.toggled.connect(func(value):game.change_setting(id,value));panel.add_child(toggle)
+ label_at("All quality levels preserve danger warnings and timing.\nPreferences affect presentation only.",Vector2(150,449),16,450)
+ button("Back",Vector2(150,592),show_menu,420,46)
+ button("Audio listening room",Vector2(640,592),show_audio_test,470,46)
+ if game.profile.warning!="":label_at(game.profile.warning,Vector2(150,540),14,960)
 
 func show_match():
  clear()
@@ -671,10 +657,17 @@ func update_match():
   hunter_detail.text=NightmareCombat.SKILLS[m.hunter.nightmare.action].name+" · %.1fs · INTERRUPT / DEFEND" % m.hunter.nightmare.warning
   hunter_detail.tooltip_text=NightmareCombat.SKILLS[m.hunter.nightmare.action].help
   if threat:warning_label.text=hunter_detail.text
- elif m.evolution.rebirth_remaining>0:hunter_detail.text="TRUE NIGHTMARE · REBIRTH %.1fs" % m.evolution.rebirth_remaining
+ elif m.evolution.rebirth_remaining>0:
+  hunter_detail.text="TRUE NIGHTMARE · REBIRTH %.1fs" % m.evolution.rebirth_remaining
+  warning_label.text=hunter_detail.text;warning_label.visible=true;warning_box.visible=true
  hunter_label.text=("REAPER" if m.hunter.transformed else "HUNTER")+" EVO %d · %d/%d" % [m.evolution.evolution_level,roundi(m.hunter.hp),roundi(m.hunter.max_hp)]
  hunter_label.tooltip_text+="\nEvolution %d/10: forms at4/7/10. Combat level %d is separate; no extra HP multiplier. Endless +1 per5 waves. Campaign: stage,75s survival steps,+1 Hell,one step per3 kill buffs. Skills at4; signature at10." % [m.evolution.evolution_level,m.hunter.level]
  if m.wrath.active():warning_label.text="%s · %.1fs · ROOM %d" % [ReaperWrath.ABILITIES[m.wrath.ability].name.to_upper(),m.wrath.warning,m.wrath.cast_target+1]
+ if warning_label.visible and (threat or m.hunter.nightmare.action!=""):
+  hunter_detail.tooltip_text+="\n"+hunter_detail.text
+  hunter_detail.text="[Hover for Hunter details]"
+  hunter_detail.modulate=Color(.72,.77,.82)
+ else:hunter_detail.modulate=Color.WHITE
  details.text="Choose a room" if room==null else "%s · %s" % [game.presentation.ROOM_NAMES[room.index].capitalize(),"sleeping" if room.sleeping else "awake"]
  for control in [room_bed_summary,room_door_summary,room_selected_summary]: control.disabled=room==null
  if room!=null:

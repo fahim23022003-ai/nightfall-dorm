@@ -213,7 +213,7 @@ func damage_number_geometry(c,n: Dictionary) -> Dictionary:
  # Lab entrances face sideways near the upper wall: keep their two cues below
  # the doorway, outside the room and beyond the attacker's silhouette.
  if horizontal:offset=Vector2(80 if normal.x>0 else -75-width,52 if magic else 10)
- var drift=0.0 if horizontal or c.profile.settings.reduced_effects else n.age*22
+ var drift=0.0 if horizontal or CinematicQuality.reduced_motion(c) else n.age*22
  var point=OFFSET+n.position+offset-Vector2(0,drift)
  var canvas=c.get_canvas_transform();var screen=canvas*(point+Vector2(-5,-27))
  var span=Vector2(width,33)*canvas.get_scale();var shift=0.0

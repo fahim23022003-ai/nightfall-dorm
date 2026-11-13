@@ -1,0 +1,18 @@
+extends "res://tools/capture_overhaul_combat.gd"
+var results=[]
+func sample(label: String,frames: int):
+ await advance(.5)
+ var durations=[];var nodes=Performance.get_monitor(Performance.OBJECT_NODE_COUNT)
+ for i in range(frames):
+  var now=Time.get_ticks_usec();update_model(.05);await RenderingServer.frame_post_draw;durations.append((Time.get_ticks_usec()-now)/1000.0)
+ durations.sort();var sum=0.0
+ for value in durations:sum+=value
+ results.append({"scene":label,"frames":durations.size(),"mean_frame_wait_ms":sum/durations.size(),"p95_frame_wait_ms":durations[int(durations.size()*.95)],"nodes_before":nodes,"nodes_after":Performance.get_monitor(Performance.OBJECT_NODE_COUNT)})
+func run():
+ output="/workspace/cinematic-nightmare/";phase="after";await setup_game();game.onboarding.close_welcome()
+ fixture_kind("crusher");game.model.hunter.state=HunterState.State.DORMANT;game.model.time=1;await sample("early preparation",60)
+ for kind in StrategyCatalog.ARCHETYPE_IDS:
+  var m=fixture_kind(kind);m.run_kind="campaign";m.tutorial_mode=false;m.evolution.evolution_level=7;m.evolution.final_revealed=true;m.hunter.nightmare.cooldown=0
+  await sample("midgame "+kind+" evolved warning/release",80)
+ var f=FileAccess.open(output+"profiles-performance.json",FileAccess.WRITE);f.store_string(JSON.stringify({"renderer":"Linux Mesa llvmpipe Godot4.6.3 1280x720, fixed .05 model step per rendered frame; samples include UI and audio. Updated-only scene coverage; paired dense baseline is separate.","results":results}," "))
+ game.audio_system.shutdown();game.queue_free();await create_timer(.3).timeout;quit(1 if failures else 0)

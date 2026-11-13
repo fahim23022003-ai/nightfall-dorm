@@ -1,0 +1,61 @@
+{
+ "renderer": "Linux Mesa llvmpipe Godot4.6.3 1280x720, fixed .05 model step per rendered frame; samples include UI and audio. Updated-only scene coverage; paired dense baseline is separate.",
+ "results": [
+  {
+   "frames": 60,
+   "mean_frame_wait_ms": 39.7302333333333,
+   "nodes_after": 186.0,
+   "nodes_before": 186.0,
+   "p95_frame_wait_ms": 49.947,
+   "scene": "early preparation"
+  },
+  {
+   "frames": 80,
+   "mean_frame_wait_ms": 40.2881625,
+   "nodes_after": 186.0,
+   "nodes_before": 186.0,
+   "p95_frame_wait_ms": 55.311,
+   "scene": "midgame crusher evolved warning/release"
+  },
+  {
+   "frames": 80,
+   "mean_frame_wait_ms": 41.76095,
+   "nodes_after": 186.0,
+   "nodes_before": 186.0,
+   "p95_frame_wait_ms": 54.081,
+   "scene": "midgame stalker evolved warning/release"
+  },
+  {
+   "frames": 80,
+   "mean_frame_wait_ms": 41.8238625,
+   "nodes_after": 186.0,
+   "nodes_before": 186.0,
+   "p95_frame_wait_ms": 54.521,
+   "scene": "midgame ravager evolved warning/release"
+  },
+  {
+   "frames": 80,
+   "mean_frame_wait_ms": 40.7322125,
+   "nodes_after": 186.0,
+   "nodes_before": 186.0,
+   "p95_frame_wait_ms": 52.064,
+   "scene": "midgame witch evolved warning/release"
+  },
+  {
+   "frames": 80,
+   "mean_frame_wait_ms": 39.453475,
+   "nodes_after": 186.0,
+   "nodes_before": 186.0,
+   "p95_frame_wait_ms": 49.102,
+   "scene": "midgame electric evolved warning/release"
+  },
+  {
+   "frames": 80,
+   "mean_frame_wait_ms": 37.796075,
+   "nodes_after": 186.0,
+   "nodes_before": 186.0,
+   "p95_frame_wait_ms": 46.597,
+   "scene": "midgame storm evolved warning/release"
+  }
+ ]
+}

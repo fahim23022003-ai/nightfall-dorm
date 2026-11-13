@@ -1,0 +1,50 @@
+[
+  {
+    "test": "replay_migration",
+    "exit": 0,
+    "errors": false,
+    "summary": [
+      "REPLAY_MIGRATION_CHECKS=190 FAILURES=0"
+    ]
+  },
+  {
+    "test": "overhaul_dev_hud",
+    "exit": 0,
+    "errors": false,
+    "summary": [
+      "OVERHAUL_DEV_HUD_CHECKS=130 FAILURES=0"
+    ]
+  },
+  {
+    "test": "phase5d3_qa_spectator",
+    "exit": 0,
+    "errors": false,
+    "summary": [
+      "PHASE5D3_SPECTATOR_QA_CHECKS=1650 MAPS=5 FAILURES=0"
+    ]
+  },
+  {
+    "test": "scene_smoke",
+    "exit": 0,
+    "errors": false,
+    "summary": [
+      "SCENE_CHECKS=33 FAILURES=0"
+    ]
+  },
+  {
+    "test": "phase5d4_audio",
+    "exit": 0,
+    "errors": false,
+    "summary": [
+      "WRATH_AUDIO_UNIT_CHECKS=782 FAILURES=0"
+    ]
+  },
+  {
+    "test": "cinematic_nightmare",
+    "exit": 0,
+    "errors": false,
+    "summary": [
+      "CINEMATIC_CHECKS=45 FAILURES=0"
+    ]
+  }
+]

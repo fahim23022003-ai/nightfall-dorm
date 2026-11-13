@@ -1,0 +1,134 @@
+extends RefCounted
+const O=Vector2(145,40)
+const GAIT={"crusher":6.0,"stalker":4.5,"ravager":12.0,"witch":3.0,"electric":8.0,"storm":3.5}
+const PARTS=["cloth","leg","arm","body","head","back","weapon"]
+var art: Dictionary={}
+var font=preload("res://assets/fonts/Interface.ttf")
+func _init():
+ for kind in StrategyCatalog.ARCHETYPE_IDS:
+  for tier in range(4):
+   for part in PARTS:art["%s_%d_%s" % [kind,tier,part]]=load("res://assets/nightmare/%s_%d_%s.svg" % [kind,tier,part])
+func tier_for(level: int) -> int:return 3 if level==10 else 2 if level>=7 else 1 if level>=4 else 0
+func part(c,key: String,name: String,at: Vector2,pivot: Vector2,angle: float,facing: float,tint: Color):
+ c.draw_set_transform(at,angle,Vector2(facing,1))
+ c.draw_texture_rect(art[key+"_"+name],Rect2(-pivot,Vector2(128,160)),false,tint)
+ c.draw_set_transform(Vector2.ZERO)
+func hunter(c,h,clock: float,death_age: float,identity):
+ var level=c.model.evolution.evolution_level;var tier=tier_for(level)
+ var rebirth=c.model.evolution.rebirth_remaining
+ if rebirth>1.8 or level==10 and not c.model.evolution.final_revealed:tier=2
+ var key="%s_%d" % [h.archetype,tier]
+ var moving=identity.velocity.length()>1 and h.state in [HunterState.State.MOVE,HunterState.State.EXIT,HunterState.State.SEEK]
+ var reduced=c.profile.settings.reduced_effects
+ var phase=clock*GAIT[h.archetype];var stride=1.0 if moving else 0.0
+ var dead=h.state==HunterState.State.DEAD
+ var alpha=clampf(1-death_age/1.5,0,1) if dead else .36 if h.conceal_remaining>0 else 1.0
+ if alpha<=0:return
+ var face=-1.0 if identity.heading.x<-.15 else 1.0
+ var p=O+h.position+Vector2(0,-17)
+ if h.archetype in ["witch","storm","stalker","electric"]:p.y+=sin(clock*2.2)*3
+ if h.archetype=="ravager" and moving:p.x+=face*3
+ var tint=Color(1.4,1.05,1.02,alpha) if h.hit_flash>0 else Color(1,1,1,alpha)
+ var color=Color(StrategyCatalog.ARCHETYPES[h.archetype].color)
+ c.draw_set_transform(O+h.position+Vector2(0,14),0,Vector2(1,.38));c.draw_circle(Vector2.ZERO,31,Color(.015,.02,.03,.55*alpha));c.draw_set_transform(Vector2.ZERO)
+ var windup=clampf(1-h.nightmare.warning/2.8,0,1) if h.nightmare.action!="" else clampf(1-h.arcane.warning/1.1,0,1) if h.arcane.action!="" else .5 if h.archetype_primed or h.charged_ready else 0.0
+ var guarding=h.suppression_remaining>0 or h.nightmare.remaining>0 and h.nightmare.effect in ["ossuary","overload","quills"]
+ if guarding:windup=maxf(windup,.28)
+ var slash=sin(clampf((h.interval-h.cooldown)/.35,0,1)*PI) if h.state==HunterState.State.ATTACK and h.cooldown>h.interval-.35 else 0.0
+ var bend=clampf(identity.velocity.x*.0005,-.12,.12)-face*windup*.12
+ var breath=sin(clock*2.5)*1.3
+ var recoil=Vector2(-face*h.hit_flash*12,0)
+ var fall=clampf(death_age,0,1) if dead else 0.0
+ p+=recoil+Vector2(0,fall*15)
+ var flutter=0 if reduced else sin(clock*3.5)*.07+stride*sin(phase)*.1
+ part(c,key,"cloth",p+Vector2(-2*face,-30),Vector2(64,65),flutter+bend+fall*.4,face,tint)
+ for side in [-1,1]:
+  var leg_phase=phase+(PI if side>0 else 0)
+  var step=sin(leg_phase)*.36*stride
+  part(c,key,"leg",p+Vector2(side*11,0)+Vector2(0,-maxf(0,sin(leg_phase))*7*stride),Vector2(52,111),step+side*fall*.5,side*face,tint)
+ part(c,key,"arm",p+Vector2(-24*face,-32),Vector2(34,70),-face*(.12+sin(phase)*.25*stride-windup*.5)+fall*.8,face,tint)
+ if moving and identity.heading.y<-.4:part(c,key,"weapon",p+Vector2(30*face,-7),Vector2(100,96),face*.12,face,tint)
+ part(c,key,"body",p+Vector2(0,-8+breath),Vector2(64,92),bend+fall*.7,face,tint)
+ part(c,key,"back" if moving and identity.heading.y<-.4 else "head",p+Vector2(face*windup*4,-35+breath*.5),Vector2(64,65),-bend*.5+sin(clock*1.7)*.035-fall*.4,face,tint)
+ var arm_angle=face*(windup*.8-slash*1.15+sin(phase+PI)*.2*stride)
+ part(c,key,"arm",p+Vector2(24*face,-32),Vector2(34,70),arm_angle-fall*.8,-face,tint)
+ if not moving or identity.heading.y>=-.4:part(c,key,"weapon",p+Vector2((30-slash*12)*face,-7-windup*17),Vector2(100,96),arm_angle+face*.12+fall*.9,face,tint)
+ # Physically attached identity growth between the four silhouette milestones.
+ for n in range(level):
+  var side=-1 if n%2==0 else 1;var q=p+Vector2(side*(16+(n/2)*3),-48+(n/2)*8)
+  if h.archetype in ["crusher","ravager","electric"]:c.draw_colored_polygon(PackedVector2Array([q,q+Vector2(side*(7+tier*2),-10-tier*2),q+Vector2(side*5,3)]),Color(color,.8*alpha))
+  else:c.draw_circle(q,2+tier*.4,Color(color,.8*alpha))
+ if level>=7 and not reduced:
+  for i in range(3):c.draw_arc(p+Vector2(0,-12),35+i*6,clock*.4+i,clock*.4+i+1.2,12,Color(color,.12*alpha),1)
+ if rebirth>0 and not dead:
+  var progress=1-rebirth/3.6
+  c.draw_arc(p,35+progress*37,-PI*.95,PI*.95,48,Color(color,.8),3)
+  for i in range(6 if reduced else 12):
+   var v=Vector2.from_angle(i*TAU/(6 if reduced else 12))
+   c.draw_line(p+v*(28+progress*15),p+v*(40+progress*45),Color(color,.6*(1-progress*.5)),2)
+func bolt(c,a: Vector2,b: Vector2,color: Color,width=5.0,seed_value=0):
+ var points=PackedVector2Array([a]);var delta=b-a;var normal=delta.orthogonal().normalized()
+ for i in range(1,8):points.append(a+delta*(i/8.0)+normal*sin(i*8.17+seed_value)*8)
+ points.append(b);c.draw_polyline(points,Color(color,.3),width+5);c.draw_polyline(points,color,width);c.draw_polyline(points,Color("F3E7FF"),1.4)
+ if not c.profile.settings.reduced_effects:
+  for i in [2,5]:c.draw_line(points[i],points[i]+normal*(18 if i%2 else -21),Color(color,.7),2)
+func sigil(c,p: Vector2,radius: float,color: Color,clock: float):
+ c.draw_arc(p,radius,0,TAU,36,color,2)
+ for i in range(6):
+  var v=Vector2.from_angle(i*TAU/6+clock*.25);var side=v.orthogonal()*5
+  c.draw_polyline(PackedVector2Array([p+v*(radius-8)+side,p+v*(radius+3),p+v*(radius-8)-side]),color,2)
+func effects(c,clock: float):
+ var m=c.model;var h=m.hunter;var n=h.nightmare;var reduced=c.profile.settings.reduced_effects
+ if m.run_kind=="endless" and m.endless.phase!="combat":return
+ var action=n.action if n.action!="" else h.arcane.action
+ var target=n.target if n.action!="" else h.arcane.target
+ if action!="" and target>=0 and target<m.rooms.size() and h.hp>0:
+  var q=O+m.rooms[target].door_approach();var delay=n.warning if n.action!="" else h.arcane.warning
+  var physical=action in ["faultline","ossuary","quills","rend"]
+  var color=Color("E8B17D") if physical else Color("8DEAF2") if action in ["cage","overload","convergence","chain_lightning","interference"] else Color("CAA0F5")
+  sigil(c,q,40+sin(clock*3)*2,color,0 if reduced else clock)
+  c.draw_line(O+h.position+Vector2(0,-34),q,Color(color,.45),2)
+  c.draw_string_outline(font,q+Vector2(-50,48),"%.1fs" % delay,HORIZONTAL_ALIGNMENT_LEFT,-1,13,3,Color("101621"))
+  c.draw_string(font,q+Vector2(-50,48),"%.1fs" % delay,HORIZONTAL_ALIGNMENT_LEFT,-1,13,color)
+ if not h.arcane.bolt.is_empty():
+  var point=O+h.arcane.bolt.point;var v=(point-(O+h.position)).normalized()
+  c.draw_line(point-v*28,point,Color("A77AD4"),5);c.draw_circle(point,8,Color("DDC7FF"))
+ # Every impact uses the actual affected room and actual positive damage event.
+ for event in m.presentation_events:
+  var age=m.time-float(event.time)
+  if age<0 or age>.8:continue
+  var special=event.type=="nightmare_impact" or event.type=="door_damage" and event.get("source","") in ["chain_lightning","cursed_projectile","interference","scythe","siege"]
+  if not special or float(event.get("amount",event.get("damage",0)))<=0:continue
+  var p=O+event.position;var physical=event.get("damage_type","magic")=="physical"
+  var color=Color("EAB57E") if physical else Color("8BE7F0") if event.get("element","")=="electric" else Color("C29DEE")
+  var alpha=1-age/.8
+  if not physical:bolt(c,O+event.get("origin",h.position)+Vector2(25,-70),p,Color(color,alpha),4 if reduced else 7,int(event.id))
+  c.draw_arc(p,28+age*72,0,TAU,36,Color(color,alpha*.85),3)
+  for i in range(4 if reduced else 8):
+   var v=Vector2.from_angle(i*TAU/(4 if reduced else 8));var point=p+v*(28+age*60)
+   if physical:c.draw_polyline(PackedVector2Array([p+v*12,point+v.orthogonal()*7,point+v*18]),Color(color,alpha*.8),3)
+   else:c.draw_line(point,point+v*10,Color(color,alpha),3)
+ if n.remaining>0 and h.hp>0:
+  var color=Color("E7B27D") if n.effect in ["faultline","ossuary","quills","rend"] else Color("9BE7ED") if n.effect in ["overload","cage","gust","convergence"] else Color("C5A0DD")
+  sigil(c,O+h.position,52,color,0 if reduced else clock)
+  if n.target>=0:sigil(c,O+m.rooms[n.target].door_position(),30,Color(color,.5),0)
+func omens(c,clock: float):
+ var m=c.model
+ if m.run_kind!="endless" or m.endless.omen.active=="":return
+ var id=m.endless.omen.active;var reduced=c.profile.settings.reduced_effects
+ if id=="blood":
+  var p=c.get_canvas_transform().affine_inverse()*Vector2(82,200)
+  c.draw_circle(p,32,Color("723047"));c.draw_arc(p,34,-PI*.8,PI*.8,40,Color("D88993"),2)
+  for i in range(4):c.draw_arc(p+Vector2(i*4-8,i*3-7),17+i*2,PI*.2,PI*1.2,20,Color(.15,.02,.05,.65),2)
+  c.draw_arc(O+m.hunter.position+Vector2(0,-35),41,0,TAU,36,Color(.8,.16,.27,.55),3)
+ elif id=="blackout":
+  c.draw_rect(c.presentation.visible_world_rect(c,0),Color(.005,.008,.035,.07 if reduced else .18))
+  for b in m.player().buildings:
+   if m.player().buildings[b].kind!="generator":continue
+   var p=O+m.player().tile_position(b)
+   for side in [-1,1]:c.draw_line(p+Vector2(side*17,-20),p+Vector2(side*26,-28),Color("D1D9A7"),2)
+ elif id=="walls":
+  var p=O+m.player().door_position();sigil(c,p+Vector2(0,-18),30,Color("BA80DA"),0)
+  for i in range(3):
+   var at=p+Vector2(-16+i*15,-28);c.draw_polyline(PackedVector2Array([at,at+Vector2(-3,-10),at+Vector2(7,-5),at+Vector2(3,6)]),Color("DB9EF0"),2)
+func camera_impulse() -> Vector2:return Vector2.ZERO

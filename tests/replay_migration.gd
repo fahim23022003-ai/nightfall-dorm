@@ -19,7 +19,10 @@ func preserved(p,source):
  check(Support.numeric_same(p.inventory,source.consumables.inventory) and p.inventory.size()==20 and p.item_loadout==source.consumables.loadout,"all20 nonuniform stacks and equipped items preserved")
  check(Support.numeric_same(p.statistics,source.progression.statistics) and Support.numeric_same(p.campaign_records,source.campaign.records),"statistics and all five stage records preserved")
  check(p.pending_spins==source.consumables.pending and p.pending_stage_bonus==source.rewards.stage_bonus,"already-rolled spin and stage choices preserved")
- check(p.rm_cash==84 and p.purchase_serial==5 and p.tutorial_completed and p.settings==source.settings,"real previous shop cash/token, tutorial and every setting preserved")
+ var settings_preserved=true
+ for key in source.settings:
+  if p.settings.get(key)!=source.settings[key]:settings_preserved=false
+ check(p.rm_cash==84 and p.purchase_serial==5 and p.tutorial_completed and settings_preserved and p.settings.get("graphics_quality")=="medium" and not p.settings.get("reduced_motion") and not p.settings.get("reduced_flashes"),"real previous shop cash/token, tutorial, every legacy setting and neutral new presentation defaults preserved")
  check(p.selected_contract=="iron_survivor" and Support.numeric_same(p.contract_claims,source.strategy.claims),"5D1 strategy selection and claim receipt preserved")
  check(p.achievements==source.rewards.achievements and Support.numeric_same(p.reward_counters,source.rewards.counters),"achievement unlock/claim/counter state preserved")
 func invalid_optional(source):

@@ -1,0 +1,22 @@
+extends "res://tools/capture_overhaul_combat.gd"
+func run():
+ output="/workspace/cinematic-nightmare/";phase="after";root.size=Vector2i(1280,720);await setup_game();game.onboarding.close_welcome()
+ # Same canonical checkpoint and genuine purchases for both renderers.
+ var data=JSON.parse_string(FileAccess.get_file_as_string("res://docs/evidence/gameplay-overhaul/balance/earned-cursed_mansion.json"));var p=PlayerProfile.new("user://cinematic-dense-"+str(Time.get_ticks_usec())+".json");p.tutorial_completed=true;p.next_match_id=int(data.run_id);p.begin_endless(data.map,data.difficulty,int(data.seed));p.replay.checkpoint=data;p.save_profile();game.profile=p;check(game.resume_endless(),"actual earned45 resume");game.set_process(false)
+ await click(find_button("Prepare defenses · frozen economy"));var m=game.model;var r=m.player()
+ for tile in range(r.tile_count()):
+  if not r.buildings.has(tile):check(m.buy("heavy",tile),"legitimate paid fill")
+  while r.buildings[tile].level<10:
+   if r.buildings[tile].level==4 and r.buildings[tile].get("specialization","")=="":check(m.specialize_building(tile,StrategyCatalog.branches(r.buildings[tile].kind)[0]),"actual paid branch")
+   else:check(m.upgrade_building(tile),"actual paid level")
+ check(r.buildings.size()==16,"all16 actual pads occupied")
+
+ check(m.continue_wave("repair"),"genuine wave46 starts");game.ui.show_match();m.time=m.preparation+.1;m.hunter.target=r.index;m.hunter.position=r.door_approach();m.hunter.state=HunterState.State.ATTACK
+ await advance(.6);var frames=[];var nodes=Performance.get_monitor(Performance.OBJECT_NODE_COUNT);var max_events=0;var max_voices=0
+ for i in range(200):
+  var at=Time.get_ticks_usec();update_model(.05);await RenderingServer.frame_post_draw;frames.append((Time.get_ticks_usec()-at)/1000.0);max_events=maxi(max_events,m.presentation_events.size());max_voices=maxi(max_voices,game.audio_system.voices.filter(func(v):return v.playing).size())
+ frames.sort();var sum=0.0
+ for v in frames:sum+=v
+ var f=FileAccess.open(output+"full16-performance.json",FileAccess.WRITE);f.store_string(JSON.stringify({"frames":frames.size(),"mean_frame_wait_ms":sum/frames.size(),"p95_frame_wait_ms":frames[int(frames.size()*.95)],"nodes_before":nodes,"nodes_after":Performance.get_monitor(Performance.OBJECT_NODE_COUNT),"max_events":max_events,"max_voices":max_voices,"scope":"Actual paid full16 L10 room, same canonical earned checkpoint, Linux Mesa software renderer, fixed .05 simulation steps,200 rendered frames, no concurrent test/recording process. Updated-only sample."}," "))
+ print("FULL16_BENCH_CHECKS=",checks," FAILURES=",failures)
+ game.audio_system.shutdown();game.queue_free();await create_timer(.3).timeout;quit(1 if failures else 0)

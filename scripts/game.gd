@@ -489,7 +489,7 @@ func focus_camera(snap: bool=false,delta: float=0.016):
  var weight=1.0 if snap else 1.0-exp(-delta*7)
  camera.position=camera.position.lerp(goal,weight)
  camera.zoom=camera.zoom.lerp(Vector2(zoom,zoom),weight)
- camera.offset=Vector2(sin(presentation.clock*63),cos(presentation.clock*51))*danger_time*1.5
+ camera.offset=Vector2.ZERO if CinematicQuality.reduced_motion(self) else Vector2(sin(presentation.clock*63),cos(presentation.clock*51))*danger_time*1.5+presentation.nightmare_visual.camera_impulse()
  camera.force_update_scroll()
 
 func world_to_screen(point: Vector2) -> Vector2:

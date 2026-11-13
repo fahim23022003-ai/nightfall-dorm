@@ -1,0 +1,25 @@
+extends "res://tools/capture_overhaul_combat.gd"
+func os_click(control):
+ var point=root.get_final_transform()*control.get_global_rect().get_center()
+ OS.execute("python",["/tmp/cinematic_xinput.py","click",str(roundi(point.x)),str(roundi(point.y))]);await advance(.15)
+func os_key(name: String):
+ OS.execute("python",["/tmp/cinematic_xinput.py","key",name]);await advance(.15)
+func run():
+ output="/workspace/cinematic-nightmare/";phase="after";await setup_game();game.onboarding.close_welcome();game.return_menu();game.ui.show_settings();OS.execute("python",["/tmp/cinematic_xinput.py","focus",str(DisplayServer.window_get_native_handle(DisplayServer.WINDOW_HANDLE))])
+ var select=game.ui.panel.find_child("graphics_quality",false,false)
+ check(select!=null,"actual graphics control exists")
+ await os_click(select);await advance(.2)
+ var popup=select.get_popup();print("POPUP_DEBUG pos=",popup.position," size=",popup.size," visible=",popup.visible," selected=",select.selected)
+ OS.execute("python",["/tmp/cinematic_xinput.py","click",str(popup.position.x+popup.size.x/2),str(popup.position.y+popup.size.y*5/6)]);await advance(.25)
+ print("POPUP_AFTER visible=",popup.visible," selected=",select.selected," settings=",game.profile.settings)
+ if popup.visible:popup.hide()
+ check(game.profile.settings.graphics_quality=="high","mouse-open and keyboard High selection updates saved option")
+ for name in ["reduced_motion","reduced_flashes"]:
+  var toggle=game.ui.panel.find_child(name,false,false);await os_click(toggle);await advance(.1);check(game.profile.settings[name],"actual accessibility click persists "+name)
+ var p=PlayerProfile.new(game.profile.path);check(p.load_profile() and p.settings.graphics_quality=="high" and p.settings.reduced_motion and p.settings.reduced_flashes,"UI choices survive actual reload")
+ await capture("quality-settings-input-verified")
+ # Refresh component-specific Hex marks after final review correction.
+ var m=fixture_kind("witch");m.run_kind="campaign";m.tutorial_mode=false;m.evolution.evolution_level=4;m.evolution.final_revealed=true;m.hunter.nightmare.cooldown=0
+ await drive(.05);await drive(2.65);check(m.hunter.nightmare.effect=="hex","actual Hex release for correct bed mark");await capture("skill-witch-E4-release");await drive(1.3);await capture("skill-witch-E4-aftermath")
+ print("CINEMATIC_INPUT_CHECKS=",checks," FAILURES=",failures)
+ game.audio_system.shutdown();game.queue_free();await create_timer(.3).timeout;quit(1 if failures else 0)

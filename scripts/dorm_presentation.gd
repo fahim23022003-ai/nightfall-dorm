@@ -81,7 +81,7 @@ func _init():
 func reset():
  ally_group.clear();ally_pending.clear();ally_pending_since=0.0
  wrath_presentation.reset()
- identity.reset()
+ identity.reset();nightmare_visual.reset()
  fear_rooms.clear();seen_deaths.clear();strike_events.clear();attack_pose=0
  environment.observed_model=null
  previous.clear()
@@ -100,6 +100,7 @@ func reset():
  hunter_clock=0
  last_model_time=0
 func new_encounter(model):
+ nightmare_visual.reset()
  # Preserve room aftermath, corpse ages, build levels and bounded scars.
  identity.heading=Vector2.RIGHT;identity.velocity=Vector2.ZERO;identity.last_hunter=model.hunter.position
  identity.previous_threat=false;identity.relief=0;identity.elimination_hold=0;identity.tension="quiet";identity.intensity=0
@@ -111,6 +112,7 @@ func update(delta: float, model):
  var action_delta=maxf(0,delta-model.items.frozen_delta) if model.running else 0.0
  hunter_clock+=action_delta
  identity.update(delta,model)
+ nightmare_visual.update(delta,model,identity)
  clock+=delta
  attack_pose=maxf(0,attack_pose-action_delta)
  if not model.tutorial_mode:environment.update(delta,model)
@@ -214,7 +216,7 @@ func render(c):
  # Coordinates are translated only here; model geometry is unchanged.
  var m = c.model
  var visible=visible_world_rect(c)
- environment.reduced_effects=c.profile.settings.get("reduced_effects",false)
+ environment.reduced_effects=CinematicQuality.reduced_flash(c) or CinematicQuality.detail(c)==0
  if not m.tutorial_mode:environment.render(c,self)
  if m.map_id!="legacy": map_presentation.render_architecture(c,self)
  else:
@@ -232,6 +234,7 @@ func render(c):
    sprite(c,"lantern",OFFSET+Vector2(x,481),Vector2(23,36))
   text(c,"NORTH   •   NIGHT WATCH",OFFSET+Vector2(363,353),10,Color("b8b5a6"))
   text(c,"SOUTH   •   KEEP THE LIGHTS ALIVE",OFFSET+Vector2(345,479),10,Color("b8b5a6"))
+ nightmare_visual.atmosphere(c,clock)
  render_scars(c)
  for room in m.rooms:
   if not visible.intersects(Rect2(OFFSET+room.bounds().position,room.bounds().size)):continue
@@ -592,25 +595,10 @@ func cartoon_room(c,room: RoomState,owned: bool):
   var name=c.pending_build+"_1" if c.pending_build in ["turret","heavy"] else c.pending_build
   c.draw_texture_rect(cartoon[name],Rect2(p-Vector2(27,34),Vector2(54,58)),false,Color(1,1,1,0.6))
 
-func prestige(c,point: Vector2,level: int,kind="turret",detailed=false):
- # Physical prestige architecture is now drawn once by BuildingEvolutionVisual.
- var reduced=c.profile.settings.get("reduced_effects",false)
- var color=Color("E9B866") if level==10 else Color("A5C7ED")
- var emphasis=1.0 if detailed else .28
- c.draw_arc(point,23,0,TAU,24,Color(color,.6*emphasis),2)
- if level>=7:
-  for side in [-1,1]:c.draw_line(point+Vector2(side*19,-13),point+Vector2(side*27,-27),Color(color,emphasis),3)
- if level==10:
-  c.draw_colored_polygon(PackedVector2Array([point+Vector2(-16,-28),point+Vector2(-18,-42),point+Vector2(-7,-34),point+Vector2(0,-45),point+Vector2(7,-34),point+Vector2(18,-42),point+Vector2(16,-28)]),Color(color,.85 if detailed else .55))
-  if not reduced and detailed:c.draw_arc(point,28,sin(clock)*.2,PI+sin(clock)*.2,24,Color(color,.4),2)
+func prestige(c,point: Vector2,level: int,_kind="turret",detailed=false):
  prestige_badge(c,point,level,detailed)
 
-func support_prestige(c,point: Vector2,level: int,branch: String="",detailed=false,show_branch=true):
- var color=Color("E9B866") if level==10 else Color("9DD4C3")
- var ornament=Color(color,1.0 if detailed else .28)
- c.draw_arc(point+Vector2(0,2),25,PI*.1,PI*.9,20,ornament,2)
- for side in [-1,1]:c.draw_line(point+Vector2(side*20,-18),point+Vector2(side*27,-29),ornament,3)
- if branch!="" and show_branch:c.draw_texture_rect(PremiumButton.texture(branch),Rect2(point+Vector2(13,-33),Vector2(19,19)),false)
+func support_prestige(c,point: Vector2,level: int,_branch: String="",detailed=false,_show_branch=true):
  prestige_badge(c,point,level,detailed)
 
 func prestige_badge(c,point: Vector2,level: int,detailed: bool):

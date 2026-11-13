@@ -11,6 +11,7 @@ var tween: Tween
 var expanded=false
 var transitioning=false
 var upgrade_shortcut: Button
+var inspection
 func _init(owner):ui=owner
 func place(node: Control,at: Vector2,size: Vector2):node.position=at;node.size=size
 func install():
@@ -56,6 +57,8 @@ func install():
  # GUI hit testing; z_index alone would not fix Control input ordering.
  for control in [ui.room_dock,ui.details,ui.room_selected_summary,ui.room_bed_summary,ui.room_door_summary,ui.quick_repair,upgrade_shortcut,ui.teammates.home]:
   if is_instance_valid(control) and control.get_parent()==ui.panel:ui.panel.move_child(control,-1)
+ inspection=preload("res://scripts/building_inspection_preview.gd").new();inspection.ui=ui;inspection.mouse_filter=Control.MOUSE_FILTER_IGNORE;inspection.position=Vector2(14,31);inspection.size=Vector2(178,154);ui.context_box.add_child(inspection)
+ for control in [ui.selected_details,ui.bed_details,ui.door_details]:place(control,Vector2(212,33),Vector2(602,143))
  refresh()
 func is_transitioning() -> bool:return transitioning
 func fit_action(button: Button):
@@ -72,6 +75,9 @@ func fit_action(button: Button):
 func refresh():
  if not is_instance_valid(ui.context_box):return
  ui.context_box.size=BODY.size
+ if is_instance_valid(inspection):inspection.queue_redraw()
+ if ui.context_mode in ["upgrade","bed","door"]:
+  ui.selected_icon.visible=false;ui.bed_items[0].visible=false;ui.door_items[0].visible=false
  for button in [ui.actions.upgrade,ui.bed_button,ui.door_button]:fit_action(button)
  if ui.context_open!=expanded:
   expanded=ui.context_open

@@ -1,0 +1,60 @@
+{
+ "after": {
+  "electricity": 3112.27383999769,
+  "gold": 1908380.36449915,
+  "hp": 6159.22047187197,
+  "hunter_hp": 0.0
+ },
+ "before_wave": {
+  "buildings": 16,
+  "electricity": 3076.92503999766,
+  "gold": 1887685.53949917,
+  "hp": 4565.93196429957
+ },
+ "checks": 54,
+ "elapsed_sim_seconds": 42.8000000001557,
+ "failures": 0,
+ "full_hunter_max_hp": 180600.0,
+ "new_skill_casts": {
+
+ },
+ "observations": [
+  {
+   "door_hp": 5276.03196429957,
+   "evo": 10,
+   "hunter_hp": 180600.0,
+   "power": 3077.07303999766,
+   "time": 0.100000000000364
+  },
+  {
+   "door_hp": 6912.0,
+   "evo": 10,
+   "hunter_hp": 180600.0,
+   "power": 3091.87303999767,
+   "time": 10.1000000000367
+  },
+  {
+   "door_hp": 6734.014434,
+   "evo": 10,
+   "hunter_hp": 146349.6,
+   "power": 3103.32935999768,
+   "time": 20.1000000000731
+  },
+  {
+   "door_hp": 6444.39785399999,
+   "evo": 10,
+   "hunter_hp": 89599.2000000002,
+   "power": 3110.35335999768,
+   "time": 30.1000000001095
+  },
+  {
+   "door_hp": 6278.84969587198,
+   "evo": 10,
+   "hunter_hp": 19074.3660833282,
+   "power": 3110.37735999769,
+   "time": 40.1000000001459
+  }
+ ],
+ "rebirth_seen": true,
+ "setup": "Canonical earned wave45 checkpoint, real paid upgrades/new Arcs using existing funds, ordinary Reinforce aid, fixed .1s model ticks. No Hunter HP edits, free resources, door healing injection or AI/path overrides. Automated strategy, not human playtest."
+}

@@ -25,7 +25,7 @@ func draw(c,h,clock: float,death_age: float,heading=Vector2.RIGHT,reduced=false)
    var q=p+Vector2.from_angle(i*TAU/7+clock)*42
    c.draw_line(q,q+Vector2(0,-15*sin(progress*PI)),Color(.66,.42,.86,.45),2)
  var stretch=1.0+sin(clock*3)*.018
- var tint=Color(1.7,1.1,1.4,alpha) if h.hit_flash>0 else Color(1,1,1,alpha)
+ var tint=Color(1.1 if CinematicQuality.reduced_flash(c) else 1.7,1.1,1.1 if CinematicQuality.reduced_flash(c) else 1.4,alpha) if h.hit_flash>0 else Color(1,1,1,alpha)
  var fall=Vector2(0,death_age*16) if dead else Vector2.ZERO
  c.draw_texture_rect(robes[int(clock*6)%4],Rect2(p+Vector2(-42,-76)+fall,Vector2(84,110*stretch)),false,tint)
  var handed=-1.0 if heading.x<-.15 else 1.0

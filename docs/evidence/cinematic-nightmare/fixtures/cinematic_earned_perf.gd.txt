@@ -1,0 +1,47 @@
+extends "res://tools/capture_overhaul_combat.gd"
+var observations=[]
+func run():
+ output="/workspace/cinematic-nightmare/";phase="after";root.size=Vector2i(1280,720)
+ await setup_game();game.onboarding.close_welcome()
+ var source="res://docs/evidence/gameplay-overhaul/balance/earned-cursed_mansion.json";var original=FileAccess.get_sha256(source)
+ var m=ReplaySnapshot.restore(JSON.parse_string(FileAccess.get_file_as_string(source)));var r=m.player()
+ for tile in r.buildings:
+  if r.buildings[tile].kind=="repair":
+   while r.buildings[tile].level<10:check(m.upgrade_building(tile),"earned funds pay repair upgrade")
+ for tile in range(r.tile_count()):
+  if r.buildings.has(tile):continue
+  check(m.buy("heavy",tile),"earned funds pay additional Arc")
+  while r.buildings[tile].level<10:
+   if r.buildings[tile].level==4:check(m.specialize_building(tile,"focus"),"earned funds pay exclusive branch")
+   else:check(m.upgrade_building(tile),"earned funds pay Arc level")
+ var before={"gold":r.gold,"electricity":r.electricity,"hp":r.door_hp,"buildings":r.buildings.size()}
+ check(m.continue_wave("repair"),"genuine checkpoint advances normally to wave46")
+ var start=m.time;var max_hp=m.hunter.max_hp;var casts=0
+ for i in range(6000):
+  m.tick(.1)
+  if i%100==0:observations.append({"time":m.time-start,"hunter_hp":m.hunter.hp,"door_hp":r.door_hp,"power":r.electricity,"evo":m.evolution.evolution_level})
+  if m.result!="" or m.endless.phase=="intermission":break
+ check(m.evolution.evolution_level==10,"real earned continuation reaches evolution10")
+ check(m.endless.phase=="intermission" and m.endless.completed==46 and r.alive,"legitimate full-HP wave46 victory without free resources or modified Hunter HP")
+ var earned={"checks":checks,"failures":failures,"elapsed_sim_seconds":m.time-start,"before_wave":before,"after":{"gold":r.gold,"electricity":r.electricity,"hp":r.door_hp,"hunter_hp":m.hunter.hp},"full_hunter_max_hp":max_hp,"rebirth_seen":m.evolution.final_revealed,"new_skill_casts":m.hunter.nightmare.casts,"observations":observations,"setup":"Canonical earned wave45 checkpoint, real paid upgrades/new Arcs using existing funds, ordinary Reinforce aid, fixed .1s model ticks. No Hunter HP edits, free resources, door healing injection or AI/path overrides. Automated strategy, not human playtest."}
+ var f=FileAccess.open(output+"earned-wave46.json",FileAccess.WRITE);f.store_string(JSON.stringify(earned," "))
+ if m.endless.phase=="intermission":
+  var snap=ReplaySnapshot.encode(m);f=FileAccess.open(output+"earned-wave46-checkpoint.json",FileAccess.WRITE);f.store_string(JSON.stringify(snap," "))
+ # Controlled real renderer stress, same earned setup, separate resumable copy.
+ var data=JSON.parse_string(FileAccess.get_file_as_string(source));var profile=PlayerProfile.new("user://nightmare-stress.json");profile.tutorial_completed=true;profile.next_match_id=int(data.run_id);profile.begin_endless(data.map,data.difficulty,int(data.seed));profile.replay.checkpoint=data;profile.save_profile();game.profile=profile
+ check(game.resume_endless(),"actual stress checkpoint resume");game.set_process(false);await click(find_button("Continue · Reinforce"));m=game.model;r=m.player();m.time=m.preparation+.1;m.hunter.target=r.index;m.hunter.position=r.door_approach();m.hunter.state=HunterState.State.ATTACK
+ var nodes=Performance.get_monitor(Performance.OBJECT_NODE_COUNT);var frames=[];var max_shots=0;var max_events=0;var max_voices=0
+ for i in range(400):
+  var at=Time.get_ticks_usec();update_model(.05);await RenderingServer.frame_post_draw;frames.append((Time.get_ticks_usec()-at)/1000.0)
+  max_shots=maxi(max_shots,m.projectiles.size());max_events=maxi(max_events,m.presentation_events.size());max_voices=maxi(max_voices,game.audio_system.voices.filter(func(v):return v.playing).size())
+  if m.result!="" or m.endless.phase=="intermission":break
+ frames.sort();var total=0.0
+ for value in frames:total+=value
+ check(game.presentation.nightmare_visual.art.size()==168,"rig cache remains bounded")
+ check(max_shots<=256 and max_events<=128 and max_voices<=16,"projectiles/events/audio bounded during live high-wave combat")
+ check(Performance.get_monitor(Performance.OBJECT_NODE_COUNT)<=nodes+2,"no growing visual node population")
+ await capture("advanced-wave46-live-combat")
+ f=FileAccess.open(output+"performance.json",FileAccess.WRITE);f.store_string(JSON.stringify({"frames":frames.size(),"mean_frame_wait_ms":total/frames.size(),"p95_frame_wait_ms":frames[int(frames.size()*.95)],"start_nodes":nodes,"end_nodes":Performance.get_monitor(Performance.OBJECT_NODE_COUNT),"max_projectiles":max_shots,"max_events":max_events,"max_effect_voices":max_voices,"scope":"Linux Godot4.6.3 Mesa llvmpipe software rendering, actual viewport plus simulation/audio update, fixed .05s simulation steps, 400 frame sample. Not Windows benchmark, long-session memory proof or human perceived FPS."}," "))
+ check(FileAccess.get_sha256(source)==original,"canonical earned checkpoint bytes preserved")
+ print("EARNED_AND_RENDER_CHECKS=",checks," FAILURES=",failures)
+ game.audio_system.shutdown();game.queue_free();await create_timer(.4).timeout;quit(1 if failures else 0)

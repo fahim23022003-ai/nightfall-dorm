@@ -4,7 +4,7 @@ extends RefCounted
 var path="user://profile.json"
 var xp=0
 var equipped: Array=[]
-var settings={"music":0.5,"effects":0.65,"ambient":0.5,"muted":false,"fullscreen":false,"tutorial":true,"battery_saver":false,"reduced_effects":false}
+var settings={"music":0.5,"effects":0.65,"ambient":0.5,"muted":false,"fullscreen":false,"tutorial":true,"battery_saver":false,"reduced_effects":false,"reduced_motion":false,"reduced_flashes":false,"graphics_quality":"medium"}
 var next_match_id=1
 var active_match: Dictionary={}
 var last_award: Dictionary={}
@@ -422,7 +422,8 @@ func load_profile() -> bool:
  for key in ["music","effects","ambient"]:
   var value=data.settings.get(key,settings[key])
   if (value is float or value is int) and is_finite(float(value)): settings[key]=clampf(float(value),0,1)
- for key in ["muted","fullscreen","tutorial","battery_saver","reduced_effects"]:
+ if data.settings.get("graphics_quality","") in ["low","medium","high"]:settings.graphics_quality=data.settings.graphics_quality
+ for key in ["muted","fullscreen","tutorial","battery_saver","reduced_effects","reduced_motion","reduced_flashes"]:
   if data.settings.get(key) is bool: settings[key]=data.settings[key]
  active_match=data.get("active_match",{}).duplicate(true)
  replay=ReplayProgress.defaults()
@@ -529,6 +530,8 @@ func update_setting(key: String,value) -> bool:
  if key in ["music","effects","ambient"]:
   if not (value is int or value is float) or not is_finite(float(value)): return false
   value=clampf(float(value),0,1)
+ elif key=="graphics_quality":
+  if value not in ["low","medium","high"]:return false
  elif not value is bool: return false
  settings[key]=value
  return save_profile()

@@ -1,0 +1,30 @@
+extends "res://tools/capture_overhaul_combat.gd"
+func run():
+ output="/workspace/cinematic-nightmare/";phase="after";root.size=Vector2i(1280,720);await setup_game();game.onboarding.close_welcome()
+ # Same canonical checkpoint and genuine purchases for both renderers.
+ var data=JSON.parse_string(FileAccess.get_file_as_string("res://docs/evidence/gameplay-overhaul/balance/earned-cursed_mansion.json"));var p=PlayerProfile.new("user://cinematic-dense-"+str(Time.get_ticks_usec())+".json");p.tutorial_completed=true;p.next_match_id=int(data.run_id);p.begin_endless(data.map,data.difficulty,int(data.seed));p.replay.checkpoint=data;p.save_profile();game.profile=p;check(game.resume_endless(),"actual earned45 resume");game.set_process(false)
+ await click(find_button("Prepare defenses · frozen economy"));var m=game.model;var r=m.player()
+ for tile in range(r.tile_count()):
+  if not r.buildings.has(tile):check(m.buy("heavy",tile),"legitimate paid fill")
+  while r.buildings[tile].level<10:
+   if r.buildings[tile].level==4 and r.buildings[tile].get("specialization","")=="":check(m.specialize_building(tile,StrategyCatalog.branches(r.buildings[tile].kind)[0]),"actual paid branch")
+   else:check(m.upgrade_building(tile),"actual paid level")
+ check(r.buildings.size()==16,"all16 actual pads occupied")
+ var production=game.presentation
+ game.presentation=load("/tmp/cinematic-baseline-dorm.gd").new();game.presentation.building_visual=load("/tmp/cinematic-baseline-building.gd").new();game.presentation.nightmare_visual=load("/tmp/cinematic-baseline-hunter.gd").new();game.presentation.map_presentation=load("/tmp/cinematic-baseline-map.gd").new()
+ # Baseline lacks update/atmosphere; its own update and renderer remain unchanged.
+ await advance(.8);await capture("full16-before")
+ game.presentation=production;game.presentation.reset();await advance(.8);await capture("full16-after")
+ await world_click(r.tile_position(0));await advance(.4);await capture("full16-selected-inspection");check(game.ui.context_open,"actual click opens inspection")
+ await key(KEY_ESCAPE);await advance(.3);check(not game.ui.context_open,"keyboard closes drawer")
+ check(m.continue_wave("repair"),"genuine wave46 starts");game.ui.show_match();m.time=m.preparation+.1;m.hunter.target=r.index;m.hunter.position=r.door_approach();m.hunter.state=HunterState.State.ATTACK
+ await drive(7);await capture("full16-combat-720");root.size=Vector2i(1920,1080);await advance(.2);await capture("full16-combat-1080");root.size=Vector2i(1280,720)
+ for quality in ["low","medium","high"]:
+  game.profile.settings.graphics_quality=quality;await advance(.1);await capture("quality-"+quality)
+ game.profile.settings.reduced_motion=true;game.profile.settings.reduced_flashes=true;await advance(.1);await capture("quality-accessible")
+ var saved={}
+ for tile in r.buildings:saved[tile]=r.buildings[tile].level;r.buildings[tile].level=7+tile%4
+ game.profile.settings.reduced_motion=false;game.profile.settings.reduced_flashes=false;await advance(.6);await capture("full16-mixed-7-10")
+ for tile in saved:r.buildings[tile].level=saved[tile]
+ print("DENSE_RENDER_CHECKS=",checks," FAILURES=",failures)
+ game.audio_system.shutdown();game.queue_free();await create_timer(.3).timeout;quit(1 if failures else 0)

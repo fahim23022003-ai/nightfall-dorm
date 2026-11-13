@@ -300,3 +300,32 @@ checked-in authoring script, with no third-party visual source.
 existing `reaper_laugh`, `ghost_defeat` and `weather_thunder`, with its recipe in
 the same authoring script. Evolved charge/release uses each archetype's existing
 voice/weapon family; Reaper's separate death cue is retained.
+
+## Phase 8 — Cinematic Nightmare recorded-source edits
+
+No third-party downloads or new licenses. `tools/compose_cinematic_audio.py`
+authors finite layered edits of the existing credited/redistributable source
+recordings below; upstream provenance and attribution earlier in this document
+remain applicable. The edits are original project arrangements, not new human
+performances or oscillator-generated voices.
+
+Role | Movement / charge / release source recordings
+---|---
+Crusher | door_hit / hunter_charged_warning / reaper_impact
+Stalker | footstep / hunter_stalker_warning / hunter_stalker_feint
+Ravager | hunter_ravager_dash / hunter_ravager_warning / door_crack
+Phantom Witch | intro_whisper / reaper_charge / impact_frost
+Electric Ghost | impact_shock / hunter_charged_warning / shot_shock
+Storm Wraith | weather_wind / reaper_charge / weather_thunder
+
+Each role has `cinematic_<role>_move` (0.8s), `_charge` (2.0s),
+`_release` (1.4s). Time-stretched layers, delayed doubles and finite envelopes
+vary by event; movement is rate-limited. Source sample peaks are controlled at
+0.28 /0.58 /0.60 respectively before existing distance/bus attenuation.
+Charge/release use existing critical-voice scheduling/ducking and expiry.
+The existing `nightmare_rebirth` arrangement is revised to5.0s with slowed
+hunter_evolve/reaper_laugh and delayed weather_thunder (peak0.70), and
+`nightmare_defeat` to3.0s using ghost_defeat/reaper_laugh (peak0.45).
+Existing seven recorded scores are unchanged. Saved audio controls still apply.
+Actual engine capture/mix evidence and subjective-listening limitations are
+listed in the Phase8 report; controlled source peaks alone do not prove audibility.

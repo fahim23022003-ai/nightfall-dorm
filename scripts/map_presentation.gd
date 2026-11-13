@@ -177,15 +177,8 @@ func render_tiles(c,p,room,owned):
    p.building_visual.draw(c,p,building.kind,building.level,point,building.get("specialization",""),activity,target,p.clock if owned or c.watched_room==room.index else 0.0)
    if owned and building.kind in ["turret","heavy"]:CosmeticPresentation.turret(c,point)
    var branch=str(building.get("specialization",""))
-   if branch!="":
-    var tint={"precision":Color("DDC68E"),"suppression":Color("9BD3B2"),"focus":Color("BFACE0"),"storm":Color("93DFDF")}.get(branch,Color("B7D2B4"))
-    var selected=owned and c.selected_tile==tile and c.ui.context_open
-    var accent=.32 if room.buildings.size()>=8 and not selected else .75
-    c.draw_arc(point+Vector2(0,7),23,.1,PI-.1,16,Color(tint,accent),2)
-    c.draw_texture_rect(PremiumButton.texture(branch),Rect2(point+Vector2(11,-32),Vector2(20,20)),false)
-    if branch=="precision":c.draw_line(point+Vector2(0,-15),point+target.normalized()*32-Vector2(0,15),tint,5)
-    elif branch=="storm":
-     for side in [-1,1]:c.draw_line(point+Vector2(side*17,-6),point+Vector2(side*22,-22),tint,3)
+   if branch!="" and owned and c.selected_tile==tile and c.ui.context_open:
+    c.draw_texture_rect(PremiumButton.texture(branch),Rect2(point+Vector2(15,-17),Vector2(12,12)),false)
    if building.kind in ["turret","heavy"] and building.flash>0:
     var direction=target.normalized()
     var muzzle=point+direction*21-Vector2(0,5)
@@ -206,7 +199,7 @@ func render_tiles(c,p,room,owned):
 
 func render_door(c,p,room):
  var point=OFFSET+room.door_position()
- if c.get("horror")!=null: point+=c.horror.door_shake(room.index)
+ if c.get("horror")!=null and not CinematicQuality.reduced_motion(c): point+=c.horror.door_shake(room.index)
  var normal=room.door_normal()
  var angle=PI/2 if absf(normal.x)>0.5 else 0.0
  c.draw_set_transform(point,angle)

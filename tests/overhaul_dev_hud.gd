@@ -7,7 +7,7 @@ func check(ok,label):
 func _initialize():call_deferred("run")
 func run():
  var path="user://overhaul-hud-"+str(Time.get_ticks_usec())+".json";var p=PlayerProfile.new(path);p.tutorial_completed=true;p.save_profile();OS.set_environment("NIGHTFALL_PROFILE_PATH",path)
- var game=load("res://scenes/main.tscn").instantiate();root.add_child(game);game.set_process(false);game.onboarding.skip();await process_frame
+ var game=load("res://scenes/main.tscn").instantiate();root.add_child(game);game.set_process(false);game.onboarding.skip();game.onboarding.close_welcome();await process_frame
  for map in MapCatalog.IDS:
   game.start_practice("crusher",false,["shield","repair"],map);await process_frame;game.focus_camera(true)
   var ui=game.ui;var room=game.model.player();var tile=0

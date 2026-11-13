@@ -10,4 +10,5 @@ static func prepare():
  profile.tutorial_completed=true
  if not profile.save_profile():push_error("Legacy graduate fixture could not be saved: "+path)
 static func skip(game):
- if game.onboarding!=null:game.onboarding.skip()
+ if game.onboarding!=null:
+  game.onboarding.skip();game.onboarding.close_welcome()

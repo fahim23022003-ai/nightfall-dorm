@@ -1,0 +1,9 @@
+import subprocess,os,json
+from pathlib import Path
+root=Path('/workspace/nightfall-dorm');out=Path('/workspace/cinematic-nightmare');env=dict(os.environ,DISPLAY=':97',XDG_DATA_HOME='/workspace/runtime-data',XDG_CONFIG_HOME='/workspace/runtime-config',XDG_CACHE_HOME='/workspace/runtime-cache')
+steps=[('capture','tools/capture_cinematic_nightmare.gd'),('dense','/tmp/cinematic_dense.gd'),('final-visual','/tmp/cinematic_final_visual.gd'),('paired-final','/tmp/cinematic_earned_perf.gd')];result=[]
+for name,script in steps:
+ with (out/'after'/f'{name}.log').open('w') as f:p=subprocess.run(['godot','--path',str(root),'--audio-driver','Dummy','--script',script],cwd=root,env=env,stdout=f,stderr=subprocess.STDOUT)
+ s=(out/'after'/f'{name}.log').read_text();entry={'step':name,'exit':p.returncode,'errors':'SCRIPT ERROR' in s or '\nERROR:' in s};result.append(entry);(out/'delivery-capture-results.json').write_text(json.dumps(result,indent=2));print(entry,flush=True)
+ if p.returncode or entry['errors']:raise SystemExit(1)
+p=subprocess.run(['python','/tmp/record_cinematic.py'],cwd=root,env=env);result.append({'step':'continuous-recording','exit':p.returncode});(out/'delivery-capture-results.json').write_text(json.dumps(result,indent=2))
