@@ -4,7 +4,7 @@ func run():
  var data=JSON.parse_string(FileAccess.get_file_as_string(output+phase+"/prepared-wave1-checkpoint.json"));var m=ReplaySnapshot.restore(data)
  check(m!=null,"real captured prepared checkpoint loads")
  if m==null:quit(1);return
- game.model=m;game.mode="match";game.watched_room=-1;game.construction.reset();game.ui.show_match();game.focus_camera(true);game.audio_system.reset_match(m)
+ game.model=m;game.mode="match";game.watched_room=-1;game.construction.reset();game.ui.show_match();game.focus_camera(true);game.audio_system.reset_match(m);game.presentation.environment.night_seed=417;game.presentation.environment.configure(m)
  game.selected_tile=16;game.ui.open_context();await advance(.5)
  var rows=[];game.construction.ranges=false;rows.append(await sample("full16 inspector, range off"))
  game.construction.ranges=true;rows.append(await sample("full16 inspector, actual range on"))

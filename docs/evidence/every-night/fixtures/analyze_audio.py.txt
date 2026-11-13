@@ -1,0 +1,12 @@
+import json,wave,numpy as np
+from pathlib import Path
+r=Path('/workspace/nightfall-dorm');paths=list((r/'assets/audio').glob('music_*.wav'));new=json.loads((r/'assets/audio/session-score-arrangements.json').read_text())
+results=[]
+for p in [r/'docs/evidence/every-night/audio/engine-crossfade-master.wav',r/'docs/evidence/every-night/screens/N-live-combat-master.wav',r/'docs/evidence/every-night/video/native-input-master.wav']+ [r/'assets/audio'/f'music_{s}.wav' for s in ['lantern','portrait','dust','siege','procession','opening_alt']]:
+ with wave.open(str(p)) as w:
+  rate=w.getframerate();channels=w.getnchannels();x=np.frombuffer(w.readframes(w.getnframes()),dtype='<i2').astype(float)/32768
+ results.append(dict(path=str(p.relative_to(r)),seconds=len(x)/channels/rate,peak=float(abs(x).max()),rms=float(np.sqrt(np.mean(x*x))),clipped_samples=int((abs(x)>=32767/32768).sum()),boundary_step=float(abs(x[0]-x[-channels]))))
+t=json.loads((r/'docs/evidence/every-night/audio/crossfade-timeline.json').read_text())['frames']
+launches=[json.loads(l.split('SESSION_SELECTION ')[1]) for l in (r/'docs/evidence/every-night/logs/independent-launches.log').read_text().splitlines() if 'SESSION_SELECTION ' in l]
+out=dict(audio=results,max_music_linear_gain_sum=max(f['sum_gain'] for f in t),simultaneous_tracks_crossfade_frames=sum(len(f['gains'])>1 for f in t),sessions=launches,independent_pids=len({l['pid'] for l in launches}),opening_no_adjacent_repeat=all(a['opening']!=b['opening'] for a,b in zip(launches,launches[1:])),menu_no_adjacent_repeat=all(a['menu']!=b['menu'] for a,b in zip(launches,launches[1:])))
+(r/'docs/evidence/every-night/audio/analysis.json').write_text(json.dumps(out,indent=2));print(json.dumps(out,indent=2)[:2200])

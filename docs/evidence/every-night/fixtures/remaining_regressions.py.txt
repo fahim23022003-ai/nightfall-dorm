@@ -1,0 +1,23 @@
+import os,subprocess,re,json,time
+from pathlib import Path
+r=Path('/workspace/nightfall-dorm');out=r/'docs/evidence/every-night/logs';out.mkdir(exist_ok=True)
+env=dict(os.environ,XDG_DATA_HOME='/workspace/runtime-data',XDG_CONFIG_HOME='/workspace/runtime-config',XDG_CACHE_HOME='/workspace/runtime-cache',NIGHTFALL_PROFILE_PATH='user://phase10-regular-isolated.json')
+suites=re.search(r'for suite in (.*?); do',(r/'tools/check.sh').read_text(),re.S)[1].split();suites=suites[suites.index('phase5d4_audio_targets'):]
+rows=[]
+for suite in suites:
+ start=time.monotonic();p=out/(suite+'.log')
+ with p.open('w') as f:
+  try: code=subprocess.run(['godot','--headless','--path',str(r),'--script',f'tests/{suite}.gd'],env=env,stdout=f,stderr=subprocess.STDOUT,timeout=600).returncode
+  except subprocess.TimeoutExpired:code=124
+ text=p.read_text();ok=code==0 and not re.search(r'SCRIPT ERROR|Parse Error|ERROR:|FAILURES=[1-9]',text)
+ rows.append(dict(suite=suite,code=code,passed=ok,seconds=round(time.monotonic()-start,3),summaries=[l for l in text.splitlines() if re.search(r'CHECKS=|ASSERTIONS=|FAILURES=|PASSED|SIMULAT',l)][-5:]))
+ (out/'remaining-results.json').write_text(json.dumps(rows,indent=2));print(suite,code,ok,flush=True)
+# Cross-process persistence and fresh startup, matching the normal gate tail.
+for stage in ['cleanup','write','read','cleanup']:
+ p=out/f'profile-process-{stage}.log'
+ with p.open('w') as f:code=subprocess.run(['godot','--headless','--path',str(r),'--script','tests/profile_process_roundtrip.gd','--',stage],env=env,stdout=f,stderr=subprocess.STDOUT,timeout=120).returncode
+ rows.append(dict(suite='profile-process-'+stage,code=code,passed=code==0,seconds=0))
+p=out/'startup.log'
+with p.open('w') as f:code=subprocess.run(['godot','--headless','--path',str(r),'--script','tests/startup_smoke.gd'],env=env,stdout=f,stderr=subprocess.STDOUT,timeout=120).returncode
+rows.append(dict(suite='startup_smoke',code=code,passed=code==0 and 'ERROR:' not in p.read_text(),seconds=0))
+(out/'remaining-results.json').write_text(json.dumps(rows,indent=2));print('TOTAL',len(rows),'FAILED',sum(not v['passed'] for v in rows),flush=True)

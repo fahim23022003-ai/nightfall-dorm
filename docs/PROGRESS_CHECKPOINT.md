@@ -1,3 +1,45 @@
+# Phase 10 — Every Night Feels Different delivered
+
+Verified baseline: `work` at `6f9e6536ff767598ba455fc27e5bf6377515eea8`.
+Recoverable implementation checkpoint: `fa2de9ae14de93dc44b3ed0d75f46a93608b0df3`.
+Verified production source: `1705ff6d9f51ef9023efd367a18483144ed14613`, pushed to
+GitHub work and independently matched by `git ls-remote`. The following final
+report/evidence commit and clean remote equality are recorded in the delivery reply.
+
+Implemented: persistent independent soundtrack shuffle bags; six new original
+CC0-sample musical arrangements; Shuffle/Classic/Manual/Off preferences, actual
+Music-bus Off mute and separate14-score listening previews; boss/Crimson priority,
+calm preparation, crossfades and pause/resume. Actual weapon range overlay [O],
+ROOM-WIDE support explanations; single-use same-phase move undo [Z], tighter core
+selection and visible used/capacity. Actual per-wave Endless performance reports
+with source DoT/impact attribution, measured production/healing, safe optional
+legacy checkpoint migration. Separately seeded restrained night atmosphere and
+existing quality/motion/flash settings. No AI/economy/damage/cost/range/odds retuning.
+
+Godot4.6.3 Linux verification: main136 assertions; all128 regular named gates;
+four cross-process persistence invocations and startup pass. Targeted suites:
+75 session features,18 audio,11 range/input,152 existing Omens. Additional real
+render216, native-input video48, report entry/back/tooltip6, performance5 checks
+pass.20 independent engine sessions have no adjacent opening/menu repeats and
+clean audio-drain exits. Actual Master captures have0 clipped PCM samples.
+
+18 real720p/1080p PNGs, retained Phase9 baseline, continuous native scripted-input
+video and separate actual PCM are indexed in docs/evidence/every-night/INDEX.md.
+Prepared wallets/poses/frozen showcase and actual live processing are disclosed;
+these are not human or naturally earned full16 playthroughs. Canonical earned45
+SHA256 remains `d20b729b9ccc804d0c1aa55874558da07c503d02cfa2455ee3a0f9b63f86eb1b`.
+44 regenerated historical outputs are archived separately and originals restored.
+
+No unresolved confirmed Phase10 test failure remains. Native Windows, human
+scariness/enjoyment, musical seam perception and hours-long hardware performance
+are UNVERIFIED. Transient simultaneous upgrade announcements can still overlap.
+Read docs/PHASE_10_EVERY_NIGHT_REPORT.md and the Windows playtest checklist.
+No agents, new future phase, main changes or release publication. Stop after Phase10.
+Older checkpoints are retained verbatim below; their earlier limitations are
+superseded by this completion record.
+
+---
+
 # Phase 8 — Cinematic Nightmare implementation delivered
 
 Reauthored168 Hunter rig layers and68 role-specific building construction forms;

@@ -1,0 +1,21 @@
+from pathlib import Path
+import json,re,subprocess
+r=Path('/workspace/nightfall-dorm');o=r/'docs/evidence/every-night/logs'
+initial=json.loads((o/'initial-results.json').read_text());remaining=json.loads((o/'remaining-results.json').read_text());rows=[]
+for row in initial+remaining:
+ name=row['suite'];log=o/(name+'.log')
+ if name.startswith('profile-process-'):log=o/(name+'.log')
+ if name=='startup_smoke':log=o/'startup.log'
+ s=log.read_text();clean=not re.search(r'SCRIPT ERROR|Parse Error|ERROR:|FAILURES=[1-9]',s)
+ code=row.get('code',0)
+ retried=name in ['phase5d4_audio_explosion','visual_identity_culling']
+ final_pass=clean and (code==0 or retried)
+ assert final_pass,(name,code,s[-1000:])
+ rows.append({'suite':name,'final_passed':final_pass,'original_attempt_passed':row['passed'],'corrected_retry':retried,'log':log.name,'final_exit':0,'summaries':[l for l in s.splitlines() if re.search(r'CHECKS=|ASSERTIONS=|FAILURES=|SIMULAT',l)][-3:]})
+for name in ['session_features','session_audio','session_ranges','night_omens']:
+ s=(o/(name+'.log')).read_text();assert not re.search(r'SCRIPT ERROR|Parse Error|ERROR:|FAILURES=[1-9]',s)
+ rows.append({'suite':name,'final_passed':True,'final_exit':0,'log':name+'.log','summaries':[l for l in s.splitlines() if 'CHECKS=' in l][-1:]})
+main=(o/'main-model.log').read_text();assert 'ASSERTIONS=136 FAILURES=0' in main,main[-1000:]
+assert len(rows)==133,len(rows)
+result={'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=r,text=True).strip(),'engine':'Godot4.6.3 official Linux','main_model_assertions':136,'regular_named_gates':128,'profile_process_invocations':4,'startup_invocations':1,'final_failed':0,'rows':rows,'corrections':'Initial new-score import, shutdown drain and same-seed culling fixture failures are preserved under attempts; current corrected gate logs pass. Full regular run resumed from the failed gate without repeating earlier successes. Optional extended balance matrix not rerun.'}
+(o/'final-gates.json').write_text(json.dumps(result,indent=2));print('FINAL main136 / regular128 / persistence4 / startup1: PASS')

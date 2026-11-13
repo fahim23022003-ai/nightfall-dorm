@@ -1,0 +1,28 @@
+{
+ "checks": 5,
+ "conditions": "Linux Godot4.6.3 Mesa llvmpipe shared CPU, 30 warmup and240 measured frames/state; full16 actual prepared checkpoint, range off/on within current executable. Not paired baseline executable, human FPS or Windows/hours-long evidence.",
+ "failures": 0,
+ "music_players": 14,
+ "rows": [
+  {
+   "active_projectiles": 0,
+   "frames": 240,
+   "label": "full16 inspector, range off",
+   "mean_ms": 38.2014416666667,
+   "nodes_after": 198.0,
+   "nodes_before": 198.0,
+   "objects": 2931.0,
+   "p95_ms": 48.955
+  },
+  {
+   "active_projectiles": 0,
+   "frames": 240,
+   "label": "full16 inspector, actual range on",
+   "mean_ms": 38.7291583333333,
+   "nodes_after": 198.0,
+   "nodes_before": 198.0,
+   "objects": 2929.0,
+   "p95_ms": 48.861
+  }
+ ]
+}

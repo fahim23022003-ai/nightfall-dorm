@@ -1,0 +1,16 @@
+import subprocess,json,gzip,hashlib
+from pathlib import Path
+r=Path('/workspace/nightfall-dorm');base='6f9e6536ff767598ba455fc27e5bf6377515eea8';out=r/'docs/evidence/every-night/regression-generated';out.mkdir(exist_ok=True);rows=[]
+tracked=subprocess.check_output(['git','diff','--name-only','-z'],cwd=r).decode().split('\0')
+untracked=subprocess.check_output(['git','ls-files','--others','--exclude-standard','-z'],cwd=r).decode().split('\0')
+for name,known in [(n,True) for n in tracked if n]+[(n,False) for n in untracked if n]:
+ if not name.startswith('docs/evidence/') or name.startswith('docs/evidence/every-night/'):continue
+ p=r/name;data=p.read_bytes();dest=out/(name.replace('/','__')+'.gz');dest.write_bytes(gzip.compress(data,mtime=0));row={'original':name,'sha256':hashlib.sha256(data).hexdigest(),'archive':dest.name,'previously_tracked':known}
+ if known:
+  original=subprocess.check_output(['git','show',base+':'+name],cwd=r);p.write_bytes(original);row['restored_sha256']=hashlib.sha256(original).hexdigest()
+ else:p.unlink();row['removed_generated_original']=True
+ rows.append(row)
+(out/'manifest.json').write_text(json.dumps(rows,indent=2));print('Preserved generated files and restored history:',len(rows))
+for n in ['adaptive_readability','gameplay_visual_polish','late_game_clarity','night_omens']:
+ p=r/'tests'/f'{n}.gd.uid'
+ if p.exists() and subprocess.run(['git','ls-files','--error-unmatch',str(p.relative_to(r))],cwd=r,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL).returncode!=0:p.unlink()

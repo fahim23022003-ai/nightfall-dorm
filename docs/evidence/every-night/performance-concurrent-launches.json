@@ -1,0 +1,29 @@
+{
+  "checks": 5,
+  "conditions": "Linux Godot4.6.3 Mesa llvmpipe shared CPU, 30 warmup and240 measured frames/state; full16 actual prepared checkpoint, range off/on within current executable. Not paired baseline executable, human FPS or Windows/hours-long evidence.",
+  "failures": 0,
+  "music_players": 14,
+  "rows": [
+    {
+      "active_projectiles": 0,
+      "frames": 240,
+      "label": "full16 inspector, range off",
+      "mean_ms": 39.8865708333333,
+      "nodes_after": 198.0,
+      "nodes_before": 198.0,
+      "objects": 2931.0,
+      "p95_ms": 58.883
+    },
+    {
+      "active_projectiles": 0,
+      "frames": 240,
+      "label": "full16 inspector, actual range on",
+      "mean_ms": 45.8759375,
+      "nodes_after": 198.0,
+      "nodes_before": 198.0,
+      "objects": 2929.0,
+      "p95_ms": 65.86
+    }
+  ],
+  "confound": "Independent Godot launch probes overlapped this measurement window; cannot attribute the difference to the range overlay alone."
+}

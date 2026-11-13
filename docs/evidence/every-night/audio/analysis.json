@@ -1,0 +1,203 @@
+{
+  "audio": [
+    {
+      "path": "docs/evidence/every-night/audio/engine-crossfade-master.wav",
+      "seconds": 24.79891156462585,
+      "peak": 0.16851806640625,
+      "rms": 0.027484394550657067,
+      "clipped_samples": 0,
+      "boundary_step": 0.029388427734375
+    },
+    {
+      "path": "docs/evidence/every-night/screens/N-live-combat-master.wav",
+      "seconds": 5.201269841269841,
+      "peak": 0.04913330078125,
+      "rms": 0.0097148797919551,
+      "clipped_samples": 0,
+      "boundary_step": 0.010955810546875
+    },
+    {
+      "path": "docs/evidence/every-night/video/native-input-master.wav",
+      "seconds": 36.96616780045351,
+      "peak": 0.075775146484375,
+      "rms": 0.01538903389341662,
+      "clipped_samples": 0,
+      "boundary_step": 0.000640869140625
+    },
+    {
+      "path": "assets/audio/music_lantern.wav",
+      "seconds": 60.0,
+      "peak": 0.5799560546875,
+      "rms": 0.09755434529125094,
+      "clipped_samples": 0,
+      "boundary_step": 0.0
+    },
+    {
+      "path": "assets/audio/music_portrait.wav",
+      "seconds": 64.0,
+      "peak": 0.5799560546875,
+      "rms": 0.11868632990833898,
+      "clipped_samples": 0,
+      "boundary_step": 0.0
+    },
+    {
+      "path": "assets/audio/music_dust.wav",
+      "seconds": 60.0,
+      "peak": 0.5799560546875,
+      "rms": 0.1121430212305862,
+      "clipped_samples": 0,
+      "boundary_step": 0.0
+    },
+    {
+      "path": "assets/audio/music_siege.wav",
+      "seconds": 48.0,
+      "peak": 0.5799560546875,
+      "rms": 0.10707670403769637,
+      "clipped_samples": 0,
+      "boundary_step": 0.0
+    },
+    {
+      "path": "assets/audio/music_procession.wav",
+      "seconds": 64.0,
+      "peak": 0.5799560546875,
+      "rms": 0.13082707042576341,
+      "clipped_samples": 0,
+      "boundary_step": 0.0
+    },
+    {
+      "path": "assets/audio/music_opening_alt.wav",
+      "seconds": 19.0,
+      "peak": 0.5799560546875,
+      "rms": 0.10041019439129072,
+      "clipped_samples": 0,
+      "boundary_step": 0.0
+    }
+  ],
+  "max_music_linear_gain_sum": 0.673468832601548,
+  "simultaneous_tracks_crossfade_frames": 596,
+  "sessions": [
+    {
+      "menu": "music_portrait",
+      "music_players": 14,
+      "opening": "music_intro",
+      "pid": 329868
+    },
+    {
+      "menu": "music_lantern",
+      "music_players": 14,
+      "opening": "music_opening_alt",
+      "pid": 329878
+    },
+    {
+      "menu": "music_menu",
+      "music_players": 14,
+      "opening": "music_intro",
+      "pid": 329888
+    },
+    {
+      "menu": "music_portrait",
+      "music_players": 14,
+      "opening": "music_opening_alt",
+      "pid": 329898
+    },
+    {
+      "menu": "music_lantern",
+      "music_players": 14,
+      "opening": "music_intro",
+      "pid": 329908
+    },
+    {
+      "menu": "music_menu",
+      "music_players": 14,
+      "opening": "music_opening_alt",
+      "pid": 329918
+    },
+    {
+      "menu": "music_lantern",
+      "music_players": 14,
+      "opening": "music_intro",
+      "pid": 329928
+    },
+    {
+      "menu": "music_portrait",
+      "music_players": 14,
+      "opening": "music_opening_alt",
+      "pid": 329938
+    },
+    {
+      "menu": "music_menu",
+      "music_players": 14,
+      "opening": "music_intro",
+      "pid": 329948
+    },
+    {
+      "menu": "music_lantern",
+      "music_players": 14,
+      "opening": "music_opening_alt",
+      "pid": 329958
+    },
+    {
+      "menu": "music_menu",
+      "music_players": 14,
+      "opening": "music_intro",
+      "pid": 329968
+    },
+    {
+      "menu": "music_portrait",
+      "music_players": 14,
+      "opening": "music_opening_alt",
+      "pid": 329978
+    },
+    {
+      "menu": "music_lantern",
+      "music_players": 14,
+      "opening": "music_intro",
+      "pid": 329988
+    },
+    {
+      "menu": "music_menu",
+      "music_players": 14,
+      "opening": "music_opening_alt",
+      "pid": 329998
+    },
+    {
+      "menu": "music_portrait",
+      "music_players": 14,
+      "opening": "music_intro",
+      "pid": 330008
+    },
+    {
+      "menu": "music_menu",
+      "music_players": 14,
+      "opening": "music_opening_alt",
+      "pid": 330018
+    },
+    {
+      "menu": "music_portrait",
+      "music_players": 14,
+      "opening": "music_intro",
+      "pid": 330028
+    },
+    {
+      "menu": "music_lantern",
+      "music_players": 14,
+      "opening": "music_opening_alt",
+      "pid": 330038
+    },
+    {
+      "menu": "music_menu",
+      "music_players": 14,
+      "opening": "music_intro",
+      "pid": 330048
+    },
+    {
+      "menu": "music_portrait",
+      "music_players": 14,
+      "opening": "music_opening_alt",
+      "pid": 330058
+    }
+  ],
+  "independent_pids": 20,
+  "opening_no_adjacent_repeat": true,
+  "menu_no_adjacent_repeat": true
+}

@@ -1,0 +1,62 @@
+{
+  "last_frame_per_segment": {
+    "menu shuffle family": {
+      "seconds": 4.002928,
+      "dominant": "music_portrait",
+      "gains": {
+        "music_portrait": 0.672548503081849
+      }
+    },
+    "manual lantern calm": {
+      "seconds": 8.004933,
+      "dominant": "music_lantern",
+      "gains": {
+        "music_lantern": 0.571666206341972
+      }
+    },
+    "crossfade into Broken Vespers": {
+      "seconds": 12.006942,
+      "dominant": "music_siege",
+      "gains": {
+        "music_siege": 0.571666206341972
+      }
+    },
+    "Reaper overrides manual": {
+      "seconds": 16.008929,
+      "dominant": "music_reaper",
+      "gains": {
+        "music_reaper": 0.638921067911113
+      }
+    },
+    "Crimson priority": {
+      "seconds": 20.010934,
+      "dominant": "music_crimson",
+      "gains": {
+        "music_crimson": 0.638921067911113
+      }
+    },
+    "suspended": {
+      "seconds": 21.01142,
+      "dominant": "music_crimson",
+      "gains": {
+        "music_crimson": 0.638921067911113
+      }
+    },
+    "settle after victory": {
+      "seconds": 25.013433,
+      "dominant": "music_menu",
+      "gains": {
+        "music_menu": 0.530959350737784
+      }
+    }
+  },
+  "captured_pause": {
+    "interval_seconds": [
+      20.2,
+      20.6
+    ],
+    "rms": 0.0,
+    "peak": 0.0,
+    "note": "Conservative central interval inside the actual captured pause; capture/wall clocks are not asserted sample synchronized."
+  }
+}
