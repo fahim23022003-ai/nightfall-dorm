@@ -56,6 +56,7 @@ func continue_wave(model,choice: String="repair") -> bool:
   elif choice=="supply":r.gold=minf(1e12,r.gold+25)
   elif choice=="power":r.electricity=minf(1e12,r.electricity+5)
   choice_used=true
+ model.wave_metrics.reset()
  omen.begin(model)
  model.combat_events.clear();model.presentation_events.clear()
  wave+=1;phase="combat";_prepare_hunter(model,true)

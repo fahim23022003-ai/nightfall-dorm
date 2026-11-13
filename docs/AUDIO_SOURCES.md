@@ -329,3 +329,31 @@ hunter_evolve/reaper_laugh and delayed weather_thunder (peak0.70), and
 Existing seven recorded scores are unchanged. Saved audio controls still apply.
 Actual engine capture/mix evidence and subjective-listening limitations are
 listed in the Phase8 report; controlled source peaks alone do not prove audibility.
+
+### Phase 10 — Every Night Feels Different
+
+Six new original sampled arrangements use the already-vendored VSCO 2 Community
+Edition orchestral recordings (CC0; see the Phase 5D-3 source/redistribution notes
+and `tools/audio/source/vsco/`). No commercial songs or new downloaded sources.
+Reproduce with `python tools/audio/compose_session_scores.py`. The generator
+writes note-level events, distinct motifs/harmonies/meters and SHA-256 values to
+`assets/audio/session-score-arrangements.json`; these are new compositions,
+not pitch-shifted copies of the previous scores.
+
+| Stream | Original title | Length | Musical role |
+| --- | --- | ---: | --- |
+| music_lantern | Lantern Lament | 60s | triple-meter menu lament |
+| music_portrait | Portraits at Midnight | 64s | slower chromatic menu theme |
+| music_dust | Dust Waltz | 60s | quiet preparation/ordinary Endless |
+| music_siege | Broken Vespers | 48s | fast danger/approach ostinato |
+| music_procession | The Last Procession | 64s | ordinary Endless march |
+| music_opening_alt | An Unwelcome Guest | 19s | alternate opening/title score |
+
+Stereo PCM16, 22,050 Hz, sampled strings/cello/piano/bells/timpani, circular
+sampled reverb and 30ms de-click boundaries. Peak 0.58; no source clipping.
+The opening is one-shot; the other five loop. Existing eight musical identities
+remain present, including Reaper and Crimson. Runtime has 14 bounded music
+players, created once, with shared crossfade headroom and existing warning
+ducking. Master captures and numerical analysis are in
+`docs/evidence/every-night/audio/`. These verify signal and transitions, not
+human scariness, musical enjoyment or seam quality on Windows headphones.

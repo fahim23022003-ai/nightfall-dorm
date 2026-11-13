@@ -29,6 +29,7 @@ static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  var run=model.endless
  if model.run_kind!="endless" or run==null or run.phase!="intermission" or run.completed!=run.sealed_wave or model.hunter.hp>0 or model.player()==null or not model.player().alive:return {}
  var data={"version":SCHEMA,"ruleset":RULESET,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"expansion":model.expansion.snapshot(model),"evolution":model.evolution.snapshot(),"defense_refractory":model.defenses.shield_cooldowns.duplicate(true),"repair_refractory":model.defenses.repair_cooldowns.duplicate(true),"lure_refractory":model.defenses.lure_cooldown,"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
+ data.wave_metrics=model.wave_metrics.data.duplicate(true)
  data.omen=run.omen.snapshot()
  for room in model.rooms:
   var saved={"owner":room.owner,"profile":room.profile,"bed_branch":room.bed_branch,"door_branch":room.door_branch,"trait":room.trait_id,"position":pair(room.resident_position),"main_damage":room.main_damage_dealt,"minion_damage":room.minion_damage_dealt,"buildings":[]}
@@ -54,6 +55,7 @@ static func valid(data) -> bool:
  if (data.version==1 and data.ruleset>LEGACY_RULESET_MAX) or (data.version==SCHEMA and data.ruleset!=RULESET):return false
  for key in ["run_id","seed","completed"]:
   if not whole(data.get(key),1):return false
+ if data.has("wave_metrics") and not WaveMetrics.valid(data.wave_metrics):return false
  if data.has("omen") and not NightOmens.valid(data.omen,int(data.completed)):return false
  for key in ["time","preparation","shots","damage","eliminations"]:
   if not number(data.get(key)):return false
@@ -170,6 +172,8 @@ static func restore(data) -> MatchModel:
    var building=b.duplicate(true);building.erase("tile");building.flash=0.0
    if saved.has("construction"):building.position=vec(b.position)
    room.buildings[int(b.tile)]=building
+ if data.has("wave_metrics"):model.wave_metrics.data=data.wave_metrics.duplicate(true)
+ else:model.wave_metrics.data.available=false
  var player=model.player()
  player.spatial=SpatialConstruction.new(player)
  if data.version==1:

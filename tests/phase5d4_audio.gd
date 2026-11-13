@@ -27,8 +27,8 @@ func run():
  audio=AudioDirector.new();root.add_child(audio);audio.setup()
  check(audio.missing_assets.is_empty(),"all registered audio decodes")
  check(audio.streams.size()==AudioDirector.LOOP_NAMES.size()+AudioDirector.EFFECT_NAMES.size(),"all stream identifiers unique")
- check(audio.voices.size()==16 and audio.loops.size()==12,"fixed pool plus eight scores/four ambience streams")
- check(audio.music_start_count==8,"eight music players created once")
+ check(audio.voices.size()==16 and audio.loops.size()==18,"fixed pool plus fourteen scores/four ambience streams")
+ check(audio.music_start_count==14,"fourteen music players created once")
  check(is_equal_approx(audio.streams.music_crimson.get_length(),48.0),"dedicated48-second score")
  var children=audio.get_child_count()
  for group in audio.sfx_preview_groups().values():

@@ -346,6 +346,7 @@ func _process(delta: float):
  if mode not in ["match","result"] or tutorial_active:audio_system.set_tension("quiet",0)
  if construction!=null:construction.update(delta)
  audio_system.update_state(delta,model,mode)
+ SessionInterface.refresh(ui)
  if ui.items_ui!=null: ui.items_ui.update(delta)
  presentation.update(delta,model)
  if mode in ["match","result"] and not tutorial_active:audio_system.set_tension(presentation.identity.tension,presentation.identity.intensity)

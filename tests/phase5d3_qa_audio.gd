@@ -8,6 +8,7 @@ func advance_intro(seconds):
 func run():
  profile_path="user://phase5d3-qa-audio-"+str(Time.get_ticks_usec())+".json"
  var p=PlayerProfile.new(profile_path);p.tutorial_completed=true
+ p.settings.music_mode="classic" # Verify the preserved Classic soundtrack explicitly.
  p.settings.music=.37;p.settings.effects=.41;p.settings.ambient=.22;p.settings.muted=true
  check(p.save_profile(),"prepared saved listening preferences persist")
  OS.set_environment("NIGHTFALL_PROFILE_PATH",profile_path)
@@ -17,7 +18,7 @@ func run():
  check(game.onboarding.is_welcome_open(),"returning graduate starts current manual welcome")
  game.onboarding.show_opening();a.update_state(.1,game.model,game.mode)
  check(game.mode=="intro" and a.cinematic_music,"actual app opens cinematic with score enabled")
- check(a.streams.size()==AudioDirector.LOOP_NAMES.size()+AudioDirector.EFFECT_NAMES.size() and a.music_start_count==8,"eight musical players and all declared streams decode once")
+ check(a.streams.size()==AudioDirector.LOOP_NAMES.size()+AudioDirector.EFFECT_NAMES.size() and a.music_start_count==14,"fourteen musical players and all declared streams decode once")
  check(a.streams.music_intro.loop_mode==AudioStreamWAV.LOOP_DISABLED and is_equal_approx(a.streams.music_intro.get_length(),19),"cinematic score is19seconds and never loops")
  for name in ["music_menu","music_calm","music_approach","music_danger","music_reaper","music_endless"]:
   check(a.streams[name].get_length()>=48 and a.streams[name].loop_mode==AudioStreamWAV.LOOP_FORWARD,"structured long musical loop "+name)
@@ -37,12 +38,12 @@ func run():
  check(game.mode=="menu" and not a.cinematic_music,"19second completion transitions to menu")
  check(game.onboarding.is_welcome_open(),"welcome remains until explicit close")
  game.onboarding.close_welcome();await settle()
- check(a.music_start_count==8,"minor states never instantiate duplicate music players")
+ check(a.music_start_count==14,"minor states never instantiate duplicate music players")
  game.ui.show_settings();await settle();await click(find("Audio listening room"));await settle();screen("audio listening room")
  for id in ["intro","menu","calm","approach","danger","reaper","endless","crimson"]:
   await click(find(id.capitalize()+" · score"));a.update_state(.5,game.model,game.mode)
   check(a.preview_music=="music_"+id and a.loop_weights["music_"+id]>.5,"actual track audition button selects "+id)
- check(a.music_start_count==8 and a.get_child_count()==AudioDirector.LOOP_NAMES.size()+AudioDirector.VOICE_LIMIT,"auditions reuse eight music plus ambience and16 voices")
+ check(a.music_start_count==14 and a.get_child_count()==AudioDirector.LOOP_NAMES.size()+AudioDirector.VOICE_LIMIT,"auditions reuse fourteen music plus ambience and16 voices")
  await click(find("Voices"));await settle()
  for label in ["Death Scream 1","Hunter Laugh","Reaper Laugh","Intro Breath","Reaper Charge"]:
   await click(find(label));a.update_state(.1,game.model,game.mode)
@@ -95,11 +96,11 @@ func run():
  game=load("res://scenes/main.tscn").instantiate();root.add_child(game);game.set_process(false);game.onboarding.set_process(false);await settle()
  a=game.audio_system;a.update_state(.3,game.model,game.mode)
  check(game.mode=="intro" and not game.profile.tutorial_completed and not a.mix.muted,"genuinely new profile starts scored opening with normal defaults")
- check(a.loop_weights.music_intro>0 and a.loops.music_intro.playing,"fresh cinematic produces actual enabled musical player")
+ check(a.soundtrack.current in Soundtrack.FAMILIES.music_intro and a.loop_weights[a.soundtrack.current]>0 and a.loops[a.soundtrack.current].playing,"fresh Shuffle cinematic produces actual selected opening player")
  game.onboarding.skip();check(game.onboarding.is_welcome_open(),"fresh skip preserves current explicit welcome")
  game.onboarding.close_welcome();game.enter_game();a.update_state(.3,game.model,game.mode)
  check(game.tutorial_active and game.mode=="match" and not a.cinematic_music,"fresh skip enters unchanged mandatory tutorial and ends cinematic intent")
- check(a.loop_weights.music_calm>0,"tutorial preparation keeps musical accompaniment")
+ check(a.soundtrack.current in Soundtrack.FAMILIES.music_calm and a.loop_weights[a.soundtrack.current]>0,"tutorial preparation keeps appropriate shuffled musical accompaniment")
  print("PHASE5D3_AUDIO_QA_CHECKS=",checks," FAILURES=",failures)
  a.shutdown();await create_timer(.6).timeout;game.queue_free();await create_timer(.2).timeout
  Support.cleanup(profile_path);quit(1 if failures else 0)

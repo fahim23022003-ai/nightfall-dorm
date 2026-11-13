@@ -90,6 +90,7 @@ func show_intermission():
   preparing=false;intermission_saved=game.profile.checkpoint_endless(game.model)
  var run=game.model.endless;var next=run.scaling(run.wave+1)
  page("WAVE %d CLEARED" % run.completed,"The world is paused: no passive income, cooldown recovery or repeated choice rewards. Choose one modest aid, then face one fresh Hunter.","intermission")
+ ui.button("Wave report",Vector2(940,69),func():SessionInterface.wave_report(ui),235,32)
  ui.premium_icon("endless",Vector2(107,191),Vector2(110,110))
  ui.label_at("NEXT · WAVE %d · %s" % [run.wave+1,StrategyCatalog.ARCHETYPES[StrategyCatalog.ARCHETYPE_IDS[posmod(run.seed_value+run.wave,StrategyCatalog.ARCHETYPE_IDS.size())]].name],Vector2(245,193),30,900,true)
  paragraph("HP ×%.2f · damage ×%.2f · contact repairs %.0f%% of mode value%s\nBest cleared: %d · Gold %.2f · Electricity %.2f" % [next.hunter_hp,next.hunter_damage,run.repair_effectiveness(run.wave+1)*100," · REAPER ENCOUNTER" if run.boss_wave(run.wave+1) else "",game.profile.replay.best_wave,game.model.player().gold,game.model.player().electricity],Vector2(245,245),900,70,18)

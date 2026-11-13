@@ -41,6 +41,7 @@ var difficulty="standard"
 var match_boosts: Dictionary={}
 var stage_bonus: Dictionary={}
 var strategy=MatchStrategy.new()
+var wave_metrics=WaveMetrics.new()
 var run_kind="campaign"
 var endless
 var challenge_code=""
@@ -84,6 +85,7 @@ func _init():
  reset()
 
 func reset(seed_value: int = 1):
+ wave_metrics=WaveMetrics.new()
  items=ItemEffects.new()
  evolution=HunterEvolution.new();expansion=RoomExpansion.new();wrath=ReaperWrath.new();defenses=DefenseEffects.new();minions=[];next_entity_id=2
  strategy=MatchStrategy.new()
@@ -259,6 +261,7 @@ func step_navigation(from: Vector2,to: Vector2,distance: float,key: String="") -
  return point
 
 func record_event(type: String, room_index: int, data: Dictionary={}):
+ if run_kind=="endless" and endless!=null and endless.phase=="combat":wave_metrics.event(type,room_index,player_room,data)
  if type in ["sale","building_destroyed"]:
   defenses.removed(room_index,int(data.get("tile",-1)))
   if room_index>=0 and room_index<rooms.size():MagicDefense.removed(rooms[room_index])
@@ -455,7 +458,11 @@ func _tick_sim(delta: float):
     room.sleeping = true
     room.closed = true
   if room.spatial!=null and room.spatial.moving_id>=0 and room.spatial.move_reason(self,room.spatial.moving_id)!="":room.spatial.cancel_move()
+  var measuring=run_kind=="endless" and room.index==player_room
+  var metrics_before=[room.income_total,room.generated_power,room.economy_repaired] if measuring else []
   room.tick_economy(delta,endless.omen.factor("blackout",difficulty) if run_kind=="endless" and endless!=null and room.index==player_room else 1.0,hunter.nightmare.income_factor(room.index))
+  if measuring:
+   wave_metrics.data.gold+=room.income_total-metrics_before[0];wave_metrics.data.power+=room.generated_power-metrics_before[1];wave_metrics.data.repair+=room.economy_repaired-metrics_before[2]
   if run_kind=="endless":
    room.gold=minf(1e12,room.gold);room.electricity=minf(1e12,room.electricity);room.income_total=minf(1e12,room.income_total)
   if room.owner > 0:
@@ -557,7 +564,10 @@ func apply_room_damage(index: int,amount: float,source: String="door strike",att
  record_event("door_damage",index,{"damage":actual,"hp":room.door_hp,"max_hp":room.max_hp(),"source":source,"attacker_id":attacker_id,"damage_type":packet.type,"element":packet.element})
  if old>0 and room.door_hp<=0:record_event("door_break",index)
  if index==player_room and not rescued:items.feather_cross(old,self)
- if not rescued:room.try_rescue()
+ if not rescued:
+  var before_rescue=room.door_hp
+  var did_rescue=room.try_rescue()
+  if did_rescue and run_kind=="endless":record_event("healing",index,{"amount":room.door_hp-before_rescue})
  return actual
 func eliminate_resident(index: int,attacker_id: int=1,exposed: bool=false) -> bool:
  if index<0 or index>=rooms.size() or not running or result!="":return false
@@ -590,6 +600,7 @@ func apply_target_damage(id: int,amount: float,room_index: int,packet: Dictionar
  return maxf(0,old-actor.hp)
 func credit_damage(room_index: int,amount: float,id: int):
  if room_index<0 or room_index>=rooms.size():return
+ if run_kind=="endless":wave_metrics.total(room_index,player_room,amount,id)
  damage_dealt+=amount;rooms[room_index].damage_dealt+=amount
  if id==1:rooms[room_index].main_damage_dealt+=amount
  else:rooms[room_index].minion_damage_dealt+=amount
@@ -612,7 +623,7 @@ func _turrets(delta: float):
    var count=mini(candidates.size(),int(resolved.get("targets",1)))
    for i in range(count):
     var entry=candidates[i];var origin=room.tile_position(tile)
-    var shot={"id":next_projectile_id,"from":origin,"position":origin,"target_id":entry.id,"damage":resolved.damage,"speed":resolved.projectile_speed,"kind":b.kind,"room":room.index,"level":b.level,"age":0.0,"specialization":b.get("specialization",""),"slow":resolved.get("slow",0.0),"burn":resolved.get("burn",0.0)}
+    var shot={"building_id":tile,"id":next_projectile_id,"from":origin,"position":origin,"target_id":entry.id,"damage":resolved.damage,"speed":resolved.projectile_speed,"kind":b.kind,"room":room.index,"level":b.level,"age":0.0,"specialization":b.get("specialization",""),"slow":resolved.get("slow",0.0),"burn":resolved.get("burn",0.0)}
     next_projectile_id+=1;projectiles.append(shot);_combat_event("launch",shot,origin,0);shots+=1;room.shots+=1
    b.flash=.15;b.cooldown+=resolved.interval
 func _advance_projectiles(delta: float):
@@ -636,9 +647,10 @@ func _advance_projectiles(delta: float):
      hunter.apply_suppression(float(shot.slow))
      if shot.kind=="frost":hunter.attack_slow_remaining=1.0;hunter.attack_slow_strength=float(shot.slow)
     else:actor.suppress(float(shot.slow))
-   if shot.get("burn",0)>0:defenses.ignite(shot.target_id,shot.burn,3.0,shot.room)
+   if shot.get("burn",0)>0:defenses.ignite(shot.target_id,shot.burn,3.0,shot.room,shot.get("building_id",-1),shot.kind,shot.level)
    if shot.target_id==1:items.ignite(self,shot.room)
    elif shot.room==player_room and float(items.timers.get("inferno",0))>0:defenses.ignite(shot.target_id,ItemCatalog.TUNING.burn_dps,ItemCatalog.TUNING.burn_seconds,shot.room)
+   if run_kind=="endless":wave_metrics.hit(shot.room,player_room,shot.get("building_id",-1),shot.kind,shot.level,amount,shot.target_id)
    credit_damage(shot.room,amount,shot.target_id);_combat_event("impact",shot,shot.position,amount)
   else:shot.position=shot.position.move_toward(actor.position,travel);survivors.append(shot)
  projectiles=survivors

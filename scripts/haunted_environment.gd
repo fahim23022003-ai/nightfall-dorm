@@ -16,6 +16,10 @@ var next_wind=3.0
 var observed_model
 var theme="dorm"
 var rng=RandomNumberGenerator.new()
+var night_seed=0
+var moonlight=.5
+var fog_drift=1.0
+var fog_phase=0.0
 var reduced_effects=false
 var bounds=Rect2()
 func is_exterior(point: Vector2,model,radius=26.0) -> bool:
@@ -30,7 +34,9 @@ func is_exterior(point: Vector2,model,radius=26.0) -> bool:
 func configure(model):
  observed_model=model;clock=0;flash=0;thunder_due=-1;serial=0;weather_events.clear();creatures.clear();anchors.clear();scenery.clear()
  theme=str(model.map_data.get("theme","dorm"));bounds=model.map_bounds().grow(180)
- rng.seed=7823+abs(hash(model.map_id))
+ var seed_value=night_seed if night_seed!=0 else int(Time.get_unix_time_from_system()*1000)^int(Time.get_ticks_usec())
+ rng.seed=seed_value+abs(hash(model.map_id))
+ moonlight=rng.randf_range(.35,.85);fog_drift=rng.randf_range(.6,1.25);fog_phase=rng.randf_range(0,900)
  for y in range(int(bounds.position.y),int(bounds.end.y),46):
   for x in range(int(bounds.position.x),int(bounds.end.x),46):
    var point=Vector2(x,y)
@@ -80,6 +86,7 @@ func creature_alpha(creature) -> float:
  return clampf(minf(creature.age,creature.life-creature.age),0,1)*.8
 func render(c,p):
  var m=c.model
+ var visual_clock=0.0 if CinematicQuality.reduced_motion(c) else clock
  if observed_model!=m:configure(m)
  var palette=Color(THEMES[theme].color)
  var visible=p.visible_world_rect(c,90)
@@ -98,7 +105,7 @@ func render(c,p):
     c.draw_line(q+Vector2(15,15),q+Vector2(27,15),Color("74717D"),2)
   elif theme=="hospital":
    c.draw_rect(Rect2(q-Vector2(29,30),Vector2(58,63)),Color("233B45"))
-   c.draw_line(q+Vector2(-22,-25),q+Vector2(20,-25),Color(palette,.35+.2*sin(clock*3+q.x)),3)
+   c.draw_line(q+Vector2(-22,-25),q+Vector2(20,-25),Color(palette,.35+.2*sin(visual_clock*3+q.x)),3)
    c.draw_line(q+Vector2(-8,10),q+Vector2(9,10),Color("765565"),3);c.draw_line(q+Vector2(0,2),q+Vector2(0,18),Color("765565"),3)
   elif theme=="hotel":
    c.draw_rect(Rect2(q-Vector2(29,34),Vector2(58,70)),Color("302737"))
@@ -109,23 +116,24 @@ func render(c,p):
    c.draw_style_box(p.frame(Color("162D35"),Color("47776F"),3),Rect2(q-Vector2(27,36),Vector2(54,75)))
    c.draw_rect(Rect2(q-Vector2(19,27),Vector2(38,47)),Color("1A4549"))
    c.draw_line(q-Vector2(14,24),q+Vector2(11,12),Color(.5,.9,.8,.25),2)
-   if sin(clock*4+q.x)>.94:c.draw_line(q+Vector2(22,-18),q+Vector2(29,-11),Color("B6EDD0"),2)
+   if sin(visual_clock*4+q.x)>.94:c.draw_line(q+Vector2(22,-18),q+Vector2(29,-11),Color("B6EDD0"),2)
  for creature in creatures:
+  if reduced_effects and creature.kind=="fog_apparition":continue
   var alpha=creature_alpha(creature)
   if alpha<=0:continue
-  var q=OFFSET+creature.position
+  var q=OFFSET+(creature.origin if CinematicQuality.reduced_motion(c) else creature.position)
   if not visible.has_point(q):continue
   var shade=Color(.08,.09,.15,alpha)
   match creature.kind:
    "shadow_walker":
     c.draw_circle(q+Vector2(0,-17),7,shade);c.draw_line(q+Vector2(0,-8),q+Vector2(0,11),shade,10)
-    for side in [-1,1]:c.draw_line(q+Vector2(0,8),q+Vector2(side*8*sin(clock*2),23),shade,4)
+    for side in [-1,1]:c.draw_line(q+Vector2(0,8),q+Vector2(side*8*sin(visual_clock*2),23),shade,4)
    "watching_eyes":
-    for side in [-1,1]:c.draw_circle(q+Vector2(side*6,0),2.4,Color(1,.45,.32,alpha*(.7+.3*sin(clock*2))))
+    for side in [-1,1]:c.draw_circle(q+Vector2(side*6,0),2.4,Color(1,.45,.32,alpha*(.7+.3*sin(visual_clock*2))))
    "crawling_shadow":
     c.draw_circle(q,9,shade)
     for i in range(4):
-     var leg=Vector2(-19+i*12,9+sin(clock*4+i)*5)
+     var leg=Vector2(-19+i*12,9+sin(visual_clock*4+i)*5)
      c.draw_line(q, q+leg,shade,3)
    "window_watcher":
     c.draw_rect(Rect2(q-Vector2(18,27),Vector2(36,49)),Color("334552"),false,3)
@@ -135,20 +143,25 @@ func render(c,p):
     c.draw_colored_polygon(PackedVector2Array([q+Vector2(-8,-5),q+Vector2(-17,22),q+Vector2(0,15),q+Vector2(16,23),q+Vector2(8,-5)]),Color(palette,alpha))
     if flash>0:c.draw_arc(q,27,0,TAU,24,Color(.7,.85,1,alpha*.3),2)
  for i in range(3):
-  ellipse(c,OFFSET+Vector2(bounds.position.x+fposmod(clock*6+i*410,bounds.size.x),bounds.position.y+25),Vector2(230,43),Color(.03,.05,.08,.6))
+  ellipse(c,OFFSET+Vector2(bounds.position.x+fposmod(visual_clock*6+i*410,bounds.size.x),bounds.position.y+25),Vector2(230,43),Color(.03,.05,.08,.6))
  # Fog, rain, clouds and birds remain beneath all gameplay geometry and actors.
+ var dangerous=c.model.hunter.state==HunterState.State.ATTACK or c.model.hunter.transformed
+ var omen=c.model.endless.omen.active if c.model.run_kind=="endless" else ""
+ if not reduced_effects:
+  var tint=Color(.12,.19,.28,.02+moonlight*.025) if omen=="" else Color(.4,.01,.04,.05) if omen=="blood" else Color(.015,.01,.08,.07) if omen=="blackout" else Color(.23,.09,.31,.045)
+  c.draw_rect(Rect2(OFFSET+bounds.position,bounds.size),tint)
  var fog_count=2 if reduced_effects else int(THEMES[theme].fog)
  for i in range(fog_count):
-  var q=Vector2(bounds.position.x+fposmod(i*311+clock*12,bounds.size.x),bounds.position.y+fposmod(i*193,bounds.size.y))
-  ellipse(c,OFFSET+q,Vector2(150,25),Color(palette,.075))
+  var q=Vector2(bounds.position.x+fposmod(i*311+visual_clock*12*fog_drift+fog_phase,bounds.size.x),bounds.position.y+fposmod(i*193+fog_phase*.43,bounds.size.y))
+  ellipse(c,OFFSET+q,Vector2(150,25),Color(palette,.075 if not dangerous else .095))
  var rain_count=3 if reduced_effects else int(THEMES[theme].rain)
  for i in range(rain_count):
-  var q=Vector2(bounds.position.x+fposmod(i*137+clock*24,bounds.size.x),bounds.position.y+fposmod(i*89+clock*180,bounds.size.y))
+  var q=Vector2(bounds.position.x+fposmod(i*137+visual_clock*24,bounds.size.x),bounds.position.y+fposmod(i*89+visual_clock*180,bounds.size.y))
   c.draw_line(OFFSET+q,OFFSET+q+Vector2(-8,23),Color(palette,.25),1)
  if theme in ["mansion","dorm"]:
   for i in range(3 if not reduced_effects else 1):
-   var q=OFFSET+Vector2(bounds.position.x+fposmod(clock*40+i*290,bounds.size.x),bounds.position.y+30+sin(clock+i)*10)
-   c.draw_polyline(PackedVector2Array([q+Vector2(-9,-sin(clock*8)*6),q,q+Vector2(9,-sin(clock*8)*6)]),Color("747484"),2)
+   var q=OFFSET+Vector2(bounds.position.x+fposmod(visual_clock*(25+20*moonlight)+i*290,bounds.size.x),bounds.position.y+30+sin(visual_clock+i)*10)
+   c.draw_polyline(PackedVector2Array([q+Vector2(-9,-sin(visual_clock*8)*6),q,q+Vector2(9,-sin(visual_clock*8)*6)]),Color("747484"),2)
  if flash>0 and not reduced_effects:c.draw_rect(Rect2(OFFSET+bounds.position,bounds.size),Color(.65,.76,.9,flash*.09))
 func ellipse(c,center: Vector2,radius: Vector2,color: Color):
  var points=PackedVector2Array()

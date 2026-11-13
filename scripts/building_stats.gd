@@ -111,6 +111,7 @@ static func next_machine(model,room,tile: int) -> String:
  var b=room.buildings[tile]
  var current=format_machine(model,room,b)
  var branch_name=StrategyCatalog.BRANCHES.get(b.get("specialization",""),{}).get("name","Unmodified")
+ if b.kind not in DefenseEffects.WEAPONS:current="ROOM-WIDE · "+current
  var heading="LEVEL %d · %s" % [b.level,branch_name]
  if b.level>=10:return heading+" · MAX\n"+current
  if b.level==4 and b.get("specialization","")=="":return heading+"\n"+current+"\nChoose and confirm one exclusive specialization."

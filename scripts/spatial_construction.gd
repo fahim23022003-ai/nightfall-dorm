@@ -7,6 +7,7 @@ const MAX_ID=1000000000
 var room_ref: WeakRef
 var next_id=16
 var used_legacy: Array=[]
+var undo_entry: Dictionary={}
 var moving_id=-1
 var moving_instance=-1
 var relocations: Array=[]
@@ -97,14 +98,31 @@ func move(model,point: Vector2) -> bool:
  if error=="":error=geometry_reason(point,id)
  if error!="":return r.reject(error)
  var previous: Vector2=r.buildings[id].position
+ undo_entry={"id":id,"uid":moving_instance,"from":previous,"to":point,"wave":model.endless.wave,"phase":model.endless.phase,"before_wave":model.time<model.preparation,"prep":model.preparation,"level":r.buildings[id].level,"branch":r.buildings[id].get("specialization","")}
  r.buildings[id].position=point;cancel_move()
  model.record_event("building_moved",r.index,{"tile":id,"from":previous,"to":point,"position":point,"instance_id":r.buildings[id].instance_id})
  return true
+func undo_reason(model) -> String:
+ var r=room()
+ if undo_entry.is_empty():return "No safe move to undo"
+ var d=undo_entry;var error=move_reason(model,int(d.id))
+ if error!="" or d.wave!=model.endless.wave or d.phase!=model.endless.phase or d.before_wave!=(model.time<model.preparation) or d.prep!=model.preparation or moving_id>=0:return "Undo is limited to the same preparation/intermission"
+ if not r.buildings.has(d.id):return "Building no longer exists"
+ var b=r.buildings[d.id]
+ if b.instance_id!=d.uid or b.level!=d.level or b.get("specialization","")!=d.branch or b.position!=d.to:return "Building state changed"
+ return geometry_reason(d.from,int(d.id))
+func undo(model) -> bool:
+ var error=undo_reason(model)
+ if error!="":undo_entry.clear();return room().reject(error)
+ var d=undo_entry.duplicate(true)
+ if not begin_move(model,int(d.id)):return false
+ var ok=move(model,d.from);undo_entry.clear();return ok
 func hit_test(point: Vector2) -> int:
  var r=room();var selected=-1;var distance=INF
- for id in r.buildings:
-  var at=r.tile_position(id)
-  if Rect2(at-Vector2(26,46),Vector2(52,62)).has_point(point) and at.distance_squared_to(point)<distance:selected=id;distance=at.distance_squared_to(point)
+ var ids=r.buildings.keys();ids.sort()
+ for id in ids:
+  var at=r.tile_position(id);var core=at-Vector2(0,12)
+  if Rect2(at-Vector2(22,38),Vector2(44,52)).has_point(point) and core.distance_squared_to(point)<distance:selected=id;distance=core.distance_squared_to(point)
  return selected
 func snapshot() -> Dictionary:return {"version":VERSION,"next_id":next_id,"used_legacy":used_legacy.duplicate()}
 func migrate() -> bool:

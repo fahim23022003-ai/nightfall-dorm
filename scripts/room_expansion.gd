@@ -108,6 +108,7 @@ func purchase(model,index: int=-1,npc: bool=false) -> bool:
    var layout_error=room.spatial.geometry_reason(room.tile_position(id),id,layout)
    if layout_error!="":return room.reject("Expansion would invalidate a structure: "+layout_error)
  if not room.pay(cost.x,cost.y):return false
+ if room.spatial!=null:room.spatial.undo_entry.clear()
  var before=room.bounds();room.expansion_tier=next;room.layout=layout;room.construction_actions+=1
  refresh_geometry(model)
  model.record_event("room_expanded",index,{"tier":next,"slots":room.tile_count(),"old_bounds":before,"bounds":room.bounds(),"gold":cost.x,"power":cost.y})

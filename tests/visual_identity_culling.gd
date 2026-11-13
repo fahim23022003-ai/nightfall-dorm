@@ -16,6 +16,7 @@ func run():
   var m=MatchModel.new();m.configure_stage(stage.id)
   var world_a=load("res://scripts/haunted_environment.gd").new()
   var world_b=load("res://scripts/haunted_environment.gd").new()
+  world_a.night_seed=417;world_b.night_seed=417 # Same cosmetic night; viewport is the only difference.
   world_a.configure(m);world_b.configure(m)
   var model_rng=m.random.state
   for center in [m.rooms[0].bounds().get_center(),m.rooms[5].bounds().get_center(),m.map_bounds().get_center()]:

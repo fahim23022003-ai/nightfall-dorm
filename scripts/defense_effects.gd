@@ -27,6 +27,7 @@ func tick(delta: float,model):
   var burn=burns[key];var target=model.target_by_id(int(key))
   if target==null:burns.erase(key);continue
   var applied=model.apply_target_damage(int(key),burn.dps*minf(delta,burn.remaining),burn.room,DamageRules.weapon("flame"))
+  if model.run_kind=="endless":model.wave_metrics.hit(burn.room,model.player_room,int(burn.get("building_id",-1)),burn.get("kind","flame"),int(burn.get("level",1)),applied,int(key),false)
   model.credit_damage(burn.room,applied,int(key));burn.remaining=maxf(0,burn.remaining-delta)
   if burn.remaining<=0:burns.erase(key)
  for key in repair_cooldowns:repair_cooldowns[key]=maxf(0,repair_cooldowns[key]-delta)
@@ -59,12 +60,12 @@ func lure_tick(delta: float,model) -> bool:
  h.cancel_boss_attack();h.state=HunterState.State.MOVE
  h.position=model.step_navigation(h.position,room.door_approach(),h.speed*delta,"building_decoy")
  return true
-func ignite(id: int,dps: float,seconds: float,room: int):
+func ignite(id: int,dps: float,seconds: float,room: int,building_id: int=-1,kind="flame",level=1):
  var key=str(id)
  if burns.has(key):
-  if dps>burns[key].dps:burns[key].dps=dps;burns[key].room=room
+  if dps>burns[key].dps:burns[key].dps=dps;burns[key].room=room;burns[key].building_id=building_id;burns[key].kind=kind;burns[key].level=level
   burns[key].remaining=maxf(burns[key].remaining,seconds);return
- burns[key]={"dps":dps,"remaining":seconds,"room":room}
+ burns[key]={"building_id":building_id,"kind":kind,"level":level,"dps":dps,"remaining":seconds,"room":room}
 func removed(room: int,tile: int):
  if lure_room==room and lure_tile==tile:lure_remaining=0;lure_instance=-1
 func burn_dps(id: int) -> float:return float(burns.get(str(id),{}).get("dps",0.0))

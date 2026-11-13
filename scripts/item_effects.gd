@@ -26,7 +26,9 @@ func guardian_intercept(amount: float,model,victim: int=-1) -> bool:
  if legendary_used>=ItemCatalog.TUNING.legendary_limit: return false
  if not consume("guardian_heart",model): return false
  legendary_used+=1
+ var before_recovery=r.door_hp
  r.door_hp=r.max_hp()*ItemCatalog.TUNING.heart_fraction
+ if model.run_kind=="endless":model.record_event("healing",r.index,{"amount":maxf(0,r.door_hp-before_recovery)})
  guardian_shield_hp=r.max_hp()*ItemCatalog.TUNING.heart_shield_fraction
  timers["guardian_heart"]=ItemCatalog.TUNING.heart_shield_seconds
  emit_item("guardian_heart",model,r.door_hp)
@@ -64,6 +66,8 @@ func decoy_tick(delta: float,model) -> bool:
  return true
 
 func emit_item(id: String,model,value=0.0,phase="activate"):
+ if model.run_kind=="endless" and phase=="activate" and id in ["shield","barricade","feather","guardian_heart","repair","rescue","reaper_seal"]:model.record_event("defense_item",model.player_room,{"item":id})
+ if model.run_kind=="endless" and id in ["repair","feather"] and phase=="activate":model.record_event("healing",model.player_room,{"amount":value})
  serial+=1
  events.append({"id":serial,"item":id,"phase":phase,"value":value,"age":0.0,"position":model.player().door_position() if model.player()!=null else model.hunter.position})
  if events.size()>24: events.pop_front()

@@ -38,6 +38,8 @@ var damage_flash = 0.0
 var resident_position = Vector2.ZERO
 var occupied_seconds=0.0
 var door_damage_taken=0.0
+var generated_power=0.0
+var economy_repaired=0.0
 var income_multiplier=1.0
 var power_multiplier=1.0
 var door_multiplier=1.0
@@ -209,8 +211,9 @@ func repair_door() -> bool:
   return false
  pay(manual_repair_cost())
  repair_actions+=1
+ var before_repair=door_hp
  door_hp = minf(max_hp(),door_hp+Catalog.REPAIR_HEAL*repair_factor*StrategyCatalog.BRANCHES.get(door_branch,{}).get("repair",1.0))
- presentation_action.emit("repair",{})
+ presentation_action.emit("repair",{"amount":door_hp-before_repair})
  return true
 
 func afford(g: float, e: float = 0) -> bool:
@@ -250,6 +253,7 @@ func _purchase_building(kind: String,tile: int,point: Vector2=Vector2.INF) -> bo
  buildings[tile] = {"instance_id":instance,"kind":kind,"level":1,"cooldown":0.0,"flash":0.0,
   "invested_gold":price.x,"invested_power":price.y}
  if point.is_finite():buildings[tile].position=point
+ if spatial!=null:spatial.undo_entry.clear()
  construction_actions+=1
  presentation_action.emit("build",{"kind":kind,"tile":tile,"position":tile_position(tile)})
  return true
@@ -287,6 +291,7 @@ func _upgrade_building(tile: int,branch: String) -> bool:
  b.invested_power=b.get("invested_power",0.0)+paid_power
  b.level += 1
  if branch!="":b.specialization=branch
+ if spatial!=null:spatial.undo_entry.clear()
  construction_actions+=1
  presentation_action.emit("building_upgrade",{"kind":b.kind,"tile":tile,"level":b.level,"specialization":b.get("specialization","")})
  return true
@@ -308,6 +313,7 @@ func sell_building(tile: int) -> bool:
  if not alive: return reject("Resident eliminated.")
  if not buildings.has(tile) or (spatial==null and (tile<0 or tile>=tile_count())): return reject("Select an existing building to sell.")
  var refund=building_refund(tile)
+ if spatial!=null:spatial.undo_entry.clear()
  buildings.erase(tile)
  gold+=refund.x
  electricity+=refund.y
@@ -325,17 +331,22 @@ func tick_economy(delta: float,dynamo_factor: float=1.0,bed_factor: float=1.0):
  damage_flash = maxf(0,damage_flash-delta)
  if not alive or not sleeping:
   return
- if not production_paused:electricity+=threat_power_factor*Catalog.BED_INCOME[bed_level]*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("power_rate",0.0)*delta
+ if not production_paused:
+  var produced=threat_power_factor*Catalog.BED_INCOME[bed_level]*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("power_rate",0.0)*delta
+  electricity+=produced;generated_power+=produced
  for b in buildings.values():
   b.flash = maxf(0,b.flash-delta)
   if b.kind == "generator" and not production_paused:
-   electricity += clampf(dynamo_factor,0.5,1.0)*threat_power_factor*Catalog.support_output("generator",b.level)*StrategyCatalog.support(b).get("output",1.0)*delta*power_multiplier*trait_modifiers.power*special_factor("power",.55,1.5)*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("power",1.0)
+   var produced=clampf(dynamo_factor,0.5,1.0)*threat_power_factor*Catalog.support_output("generator",b.level)*StrategyCatalog.support(b).get("output",1.0)*delta*power_multiplier*trait_modifiers.power*special_factor("power",.55,1.5)*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("power",1.0)
+   electricity+=produced;generated_power+=produced
   elif b.kind == "repair" and door_hp > 0:
    var branch=StrategyCatalog.support(b)
    var cost=branch.get("power_cost",0.0)*b.level*delta
    if electricity>=cost:
     electricity-=cost
+    var previous_hp=door_hp
     door_hp=minf(max_hp(),door_hp+Catalog.support_output("repair",b.level)*branch.get("output",1.0)*delta*repair_factor)
+    economy_repaired+=door_hp-previous_hp
 
 func special_factor(key: String,low: float,high: float) -> float:
  var value=1.0

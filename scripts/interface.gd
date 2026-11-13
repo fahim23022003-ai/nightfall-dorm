@@ -59,6 +59,7 @@ var audio_tab="Music"
 var audio_group="Weapons"
 var current_screen="menu"
 var horror_layer: Control
+var soundtrack_now: Label
 var feedback_text=""
 var feedback_until=0.0
 var specialization_items: Array=[]
@@ -240,6 +241,7 @@ func show_settings():
   var toggle=CheckButton.new();toggle.name=options[i];toggle.text=names[i];toggle.position=Vector2(640,190+i*50);toggle.size.x=470;toggle.button_pressed=game.profile.settings.get(options[i],false)
   var id=options[i];toggle.toggled.connect(func(value):game.change_setting(id,value));panel.add_child(toggle)
  label_at("All quality levels preserve danger warnings and timing.\nPreferences affect presentation only.",Vector2(150,449),16,450)
+ button("Soundtrack · playlist preferences",Vector2(150,503),func():SessionInterface.settings(self),420,40)
  button("Back",Vector2(150,592),show_menu,420,46)
  button("Audio listening room",Vector2(640,592),show_audio_test,470,46)
  if game.profile.warning!="":label_at(game.profile.warning,Vector2(150,540),14,960)
@@ -719,7 +721,7 @@ func update_match():
  if game.construction!=null:game.construction.refresh()
  if game.model.run_kind!="campaign":replay_ui.update_hud()
  if room!=null and room.spatial!=null:
-  room_selected_summary.text="Build [B] · free floor"
+  room_selected_summary.text="Build B · %d/%d" % [room.buildings.size(),room.tile_count()]
   room_selected_summary.tooltip_text="B opens buildings; click valid floor to buy. P shows room planning. V moves a selected machine during preparation/intermission. F toggles 8-unit snap; Shift positions finely. Right-click / Esc cancels."
  if not game.mobile_mode:teammates.update()
 
@@ -869,9 +871,11 @@ func show_audio_test():
   b.toggle_mode=true;b.button_pressed=audio_tab==tab
  if audio_tab=="Music":
   var names=["music_intro","music_menu","music_calm","music_approach","music_danger","music_reaper","music_endless","music_crimson"]
+  names.append_array(Soundtrack.EXTRA)
   for i in range(names.size()):
    var id=names[i]
-   button(id.trim_prefix("music_").capitalize()+" · score",Vector2(110+(i%2)*540,220+int(i/2)*72),func():game.audio_system.preview_track(id),510,54)
+   var title=Soundtrack.TITLES.get(id,"An Unwelcome Guest") if id in Soundtrack.EXTRA else id.trim_prefix("music_").capitalize()
+   button(title+" · score",Vector2(110+(i%2)*540,220+int(i/2)*50),func():game.audio_system.preview_track(id),510,42)
  elif audio_tab=="Voices":
   var voices=["death_scream_1","hunter_laugh","reaper_laugh","intro_breath","reaper_charge"]
   for i in range(voices.size()):
