@@ -49,12 +49,13 @@ func run():
  await native_click(game.ui.room_selected_summary);await native_click(game.ui.expansion_ui.shortcut);await advance(1);await native_click(game.ui.expansion_ui.purchase_button);check(r.tile_count()==6,"native expansion real action");await advance(1)
  tell("Place on NEW floor · old boundary rejected this area")
  game.ui.close_context();await advance(.4);await native_buy("generator",Vector2(280,20));check(r.buildings.size()==3,"native new floor purchase")
- tell("Live combat · relocated turrets use their stored positions")
+ tell("Preparation clock → live wave · posed doorway Hunter")
  var h=m.hunter;h.boss_policy.enabled=false;h.position=r.door_approach();h.target=0;h.state=HunterState.State.ATTACK;h.cooldown=1
  # Advance only through the ordinary preparation clock, no stat or HP reductions.
  var prep_start=Time.get_ticks_usec();var previous=prep_start
  while m.time<m.preparation+.05:
   await process_frame;var now=Time.get_ticks_usec();game._process((now-previous)/1e6);previous=now
+ tell("LIVE WAVE · relocated turrets use their stored positions")
  var combat_start=m.time;await live(9)
  check(r.shots>0 and m.hunter.hp<m.hunter.max_hp,"native layout fires and causes actual damage in live tick")
  tell("End of uncut native-input demonstration · no human playtest claim");await advance(1)

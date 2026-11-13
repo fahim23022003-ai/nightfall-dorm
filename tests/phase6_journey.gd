@@ -4,6 +4,7 @@ extends "res://tests/onboarding_flow.gd"
 # Tutorial and navigation use production input. Terminal and attack setup below
 # are disclosed controlled combat fixtures, not human/natural balance evidence.
 func find_button(text):
+ text={"Shop · Common supplies":"SHOP","Consumable inventory":"INVENTORY"}.get(text,text)
  for node in game.ui.panel.get_children():
   if node is Button and node.text==text and not node.is_queued_for_deletion():return node
  return null
@@ -15,7 +16,7 @@ func press(text):
   await mouse_button(b)
  await process_frame;await process_frame
 func run():
- await create(false);game.onboarding.skip();game.onboarding.set_process(false)
+ await create(false);game.onboarding.skip();game.onboarding.close_welcome();game.enter_game();game.onboarding.set_process(false)
  await graduate(false);game.onboarding.save_completion()
  check(game.profile.tutorial_completed and game.mode=="menu","fresh tutorial graduates into real main menu")
  await press("Start Game");await press("Prepare");await press("Start Match")

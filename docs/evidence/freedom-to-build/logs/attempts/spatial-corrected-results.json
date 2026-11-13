@@ -1,0 +1,29 @@
+[
+  {
+    "suite": "phase5d4_qa_final_delta",
+    "passed": true,
+    "exit": 0,
+    "seconds": 15.23,
+    "tail": [
+      "PHASE5D4_QA_FINAL_DELTA_CHECKS=347 CONTACT_SCENARIOS=15 PREVIEW_CONFIGS=45 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d4_audio_targets",
+    "passed": true,
+    "exit": 0,
+    "seconds": 1.38,
+    "tail": [
+      "WRATH_AUDIO_TARGET_CHECKS=229 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d4_audio_explosion",
+    "passed": true,
+    "exit": 0,
+    "seconds": 17.82,
+    "tail": [
+      "SAMPLED_EXPLOSION_GAME_CHECKS=9 FAILURES=0"
+    ]
+  }
+]

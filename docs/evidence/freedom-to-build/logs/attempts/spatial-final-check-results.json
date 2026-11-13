@@ -1,0 +1,72 @@
+[
+  {
+    "suite": "final_import",
+    "passed": true,
+    "exit": 0,
+    "seconds": 5.73,
+    "tail": [
+      "\u001b[92m[ DONE ]\u001b[39m \u001b[1mloading_editor_layout\u001b[22m",
+      "\u001b[0m"
+    ]
+  },
+  {
+    "suite": "run_tests",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.47,
+    "tail": [
+      "TEST 17 reset clears match",
+      "ASSERTIONS=136 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "profile_process_cleanup",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.47,
+    "tail": [
+      "",
+      "PROFILE_PROCESS_CLEANUP=PASS"
+    ]
+  },
+  {
+    "suite": "profile_process_write",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.47,
+    "tail": [
+      "",
+      "PROFILE_PROCESS_WRITE=PASS"
+    ]
+  },
+  {
+    "suite": "profile_process_read",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.47,
+    "tail": [
+      "",
+      "PROFILE_PROCESS_READ=PASS"
+    ]
+  },
+  {
+    "suite": "profile_process_cleanup",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.58,
+    "tail": [
+      "",
+      "PROFILE_PROCESS_CLEANUP=PASS"
+    ]
+  },
+  {
+    "suite": "startup",
+    "passed": false,
+    "exit": 1,
+    "seconds": 1.77,
+    "tail": [
+      "WARNING: ObjectDB instances leaked at exit (run with --verbose for details).",
+      "   at: cleanup (core/object/object.cpp:2663)"
+    ]
+  }
+]

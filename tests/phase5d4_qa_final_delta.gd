@@ -43,7 +43,7 @@ func preview():
     var text=ui.code_preview()
     check(text.contains(MapCatalog.map(map).title) and text.contains(StrategyCatalog.ARCHETYPES[archetype].name) and text.contains("55%HP") and not text.contains("55%%"),"actual dynamic preview formats literal percent and exact map/archetype safely")
  ui.show_codes();await settle()
- check(ui.notice_label.is_visible_in_tree() and ui.notice_label.text.contains("55%HP") and ui.notice_label.text.contains("ruleset 3"),"actual Challenge screen label displays formatted55% rules without formatting error")
+ check(ui.notice_label.is_visible_in_tree() and ui.notice_label.text.contains("55%HP") and ui.notice_label.text.contains("ruleset %d" % ChallengeCode.RULESET),"actual Challenge screen label displays formatted55% rules without formatting error")
  check(FileAccess.get_file_as_bytes(profile_path)==disk,"challenge preview never mutates permanent profile")
  game.audio_system.shutdown();await create_timer(.6).timeout;game.queue_free();await create_timer(.2).timeout
 func run():

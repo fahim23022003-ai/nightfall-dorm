@@ -26,7 +26,9 @@ func check_screen(name):
   if not b.is_visible_in_tree():continue
   check(inside(b.get_global_rect(),Rect2(0,0,1280,720)),name+" button inside logical viewport: "+b.text)
   for state in ["normal","hover","pressed","disabled","focus"]:
-   check(b.get_theme_stylebox(state) is StyleBoxTexture,name+" consistent material state "+state)
+   var style=b.get_theme_stylebox(state)
+   if game.ui.current_screen=="menu":check(style is StyleBoxEmpty if b is MenuDestination else style is StyleBoxFlat,name+" current bespoke main-menu material "+state)
+   else:check(style is StyleBoxTexture,name+" consistent material state "+state)
 func card_buttons(screen,selector,card_width):
  var cards=[]
  for node in controls(game.ui.panel,Panel):

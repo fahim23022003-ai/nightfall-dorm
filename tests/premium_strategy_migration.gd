@@ -36,7 +36,8 @@ func original(p,source):
  check(p.campaign_records==source.campaign.records and p.selected_stage==source.campaign.selected_stage and p.selected_difficulty==source.campaign.difficulty,"all five stage records/selections preserved")
  check(p.achievements==source.rewards.achievements and p.reward_counters==source.rewards.counters and p.seen_items==source.rewards.seen_items,"achievement receipts/counters preserved")
  check(p.rm_cash==102 and p.purchase_serial==4 and p.tutorial_completed,"actual old shop transaction/cash/tutorial preserved")
- check(p.next_match_id==7 and p.active_match.is_empty() and p.settings==source.settings,"match identity and every setting preserved")
+ var expected_settings=PlayerProfile.new().settings.duplicate(true);expected_settings.merge(source.settings,true)
+ check(p.next_match_id==7 and p.active_match.is_empty() and numeric_same(p.settings,expected_settings),"match identity and every saved setting preserved; new preferences get defaults")
 func run():
  var source=JSON.parse_string(FileAccess.get_file_as_string(LEGACY))
  check(source is Dictionary and not source.has("strategy"),"frozen real pre-strategy fixture has no new optional block")

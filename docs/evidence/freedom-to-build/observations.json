@@ -1,0 +1,196 @@
+{
+ "checks": 199,
+ "conditions": "Real production Godot Linux rendered fixtures, scripted actual InputEvent clicks; prepared budgets/levels/encounter position explicitly not human/natural progression.",
+ "failures": 0,
+ "observations": [
+  {
+   "buildings": {
+    "16": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 1,
+     "invested_gold": 1765.0,
+     "invested_power": 262.0,
+     "kind": "turret",
+     "level": 10,
+     "position": "(179.0, 88.0)",
+     "specialization": "precision"
+    },
+    "17": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 2,
+     "invested_gold": 8290.0,
+     "invested_power": 1306.0,
+     "kind": "heavy",
+     "level": 10,
+     "position": "(267.0, 112.0)",
+     "specialization": "focus"
+    },
+    "18": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 3,
+     "invested_gold": 2635.0,
+     "invested_power": 262.0,
+     "kind": "generator",
+     "level": 10,
+     "position": "(275.0, 176.0)",
+     "specialization": "regulated"
+    },
+    "19": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 5,
+     "invested_gold": 7855.0,
+     "invested_power": 1567.0,
+     "kind": "barrier",
+     "level": 10,
+     "position": "(35.375, 18.62498)",
+     "specialization": "mirror"
+    },
+    "20": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 6,
+     "invested_gold": 8725.0,
+     "invested_power": 1828.0,
+     "kind": "plasma",
+     "level": 10,
+     "position": "(88.37498, 18.625)",
+     "specialization": "reservoir"
+    },
+    "21": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 7,
+     "invested_gold": 7420.0,
+     "invested_power": 1480.0,
+     "kind": "antenna",
+     "level": 10,
+     "position": "(141.375, 18.625)",
+     "specialization": "dome"
+    },
+    "22": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 11,
+     "invested_gold": 6550.0,
+     "invested_power": 1132.0,
+     "kind": "flame",
+     "level": 10,
+     "position": "(35.375, -56.375)",
+     "specialization": "searing"
+    },
+    "23": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 12,
+     "invested_gold": 6985.0,
+     "invested_power": 1306.0,
+     "kind": "frost",
+     "level": 10,
+     "position": "(88.375, -56.375)",
+     "specialization": "deep_chill"
+    },
+    "24": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 13,
+     "invested_gold": 5680.0,
+     "invested_power": 1132.0,
+     "kind": "shock",
+     "level": 10,
+     "position": "(141.375, -56.375)",
+     "specialization": "capacitor_burst"
+    },
+    "25": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 14,
+     "invested_gold": 7420.0,
+     "invested_power": 1306.0,
+     "kind": "auto_repair",
+     "level": 10,
+     "position": "(194.375, -56.375)",
+     "specialization": "efficient_mending"
+    },
+    "26": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 15,
+     "invested_gold": 8725.0,
+     "invested_power": 1828.0,
+     "kind": "shield",
+     "level": 10,
+     "position": "(247.375, -56.375)",
+     "specialization": "aegis_burst"
+    },
+    "27": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 19,
+     "invested_gold": 6115.0,
+     "invested_power": 1132.0,
+     "kind": "decoy",
+     "level": 10,
+     "position": "(194.375, 174.625)",
+     "specialization": "force_lure"
+    },
+    "28": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 20,
+     "invested_gold": 3505.0,
+     "invested_power": 697.0,
+     "kind": "repair",
+     "level": 10,
+     "position": "(141.375, 174.625)",
+     "specialization": "sustain"
+    },
+    "29": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 21,
+     "invested_gold": 3940.0,
+     "invested_power": 610.0,
+     "kind": "economy",
+     "level": 10,
+     "position": "(88.375, 72.625)",
+     "specialization": "dividend"
+    },
+    "30": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 22,
+     "invested_gold": 5680.0,
+     "invested_power": 958.0,
+     "kind": "enhancer",
+     "level": 10,
+     "position": "(300.375, 21.625)",
+     "specialization": "ballistic"
+    },
+    "31": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 23,
+     "invested_gold": 1765.0,
+     "invested_power": 262.0,
+     "kind": "turret",
+     "level": 10,
+     "position": "(247.375, 21.625)",
+     "specialization": "precision"
+    }
+   },
+   "capacity": 16,
+   "layout": "prepared full16 all levels paid"
+  },
+  {
+   "buildings": 12,
+   "capacity": 16,
+   "layout": "canonical earned45 unchanged source",
+   "relocations": [],
+   "source_sha256": "d20b729b9ccc804d0c1aa55874558da07c503d02cfa2455ee3a0f9b63f86eb1b"
+  }
+ ]
+}

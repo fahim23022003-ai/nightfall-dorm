@@ -25,6 +25,7 @@ func settle():
  await process_frame
 func inside(a,b):return a.position.x>=b.position.x-.1 and a.position.y>=b.position.y-.1 and a.end.x<=b.end.x+.1 and a.end.y<=b.end.y+.1
 func find(text):
+ text={"Consumable inventory":"INVENTORY","Shop · Common supplies":"SHOP"}.get(text,text)
  for b in controls(game.ui.panel,Button):
   if b.text==text:return b
  return null
@@ -44,7 +45,12 @@ func screen(name):
   if not b.is_visible_in_tree():continue
   visible.append(b)
   check(inside(b.get_global_rect(),Rect2(0,0,1280,720)),name+" button fits logical viewport: "+b.text)
-  for state in ["normal","hover","pressed","disabled","focus"]:check(b.get_theme_stylebox(state) is StyleBoxTexture,name+" dimensional button material: "+state)
+  for state in ["normal","hover","pressed","disabled","focus"]:
+   var style=b.get_theme_stylebox(state)
+   if game.ui.current_screen=="menu":
+    check(style is StyleBoxEmpty if b is MenuDestination else style is StyleBoxFlat,name+" current bespoke main-menu silhouette/utility material: "+state)
+    if b is MenuDestination:check(b.silhouette in ["start","shop","rank","inventory"],"original destination silhouette remains defined")
+   else:check(style is StyleBoxTexture,name+" dimensional button material: "+state)
   check(b.focus_mode!=Control.FOCUS_NONE,name+" keyboard focus remains available")
  for i in range(visible.size()):
   for j in range(i):check(not visible[i].get_global_rect().intersects(visible[j].get_global_rect()),name+" interactive buttons do not overlap: "+visible[i].text+" "+str(visible[i].get_global_rect())+" / "+visible[j].text+" "+str(visible[j].get_global_rect()))
@@ -236,7 +242,7 @@ func run():
   game.profile.settings.reduced_effects=resolution.x>1280
   root.size=resolution;game.return_menu();await settle();screen("menu"+str(resolution))
   menu_text()
-  check(find("Start Game").icon!=null and find("Settings").icon!=null,"main actions include recognizable icons")
+  check(controls(find("Start Game"),TextureRect).any(func(art):return art.texture!=null) and find("Settings").text=="Settings","current main actions retain original Start art and clear Settings label")
   var settings=find("Settings");settings.grab_focus();await settle()
   check(settings.has_focus(),"Windows keyboard focus can reach Settings")
   await create_timer(.15).timeout

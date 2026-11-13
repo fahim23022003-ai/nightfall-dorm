@@ -11,14 +11,18 @@ func check(ok: bool,label: String):
   push_error("PHASE2_UI_FAIL: "+label)
 
 func button_named(text: String,min_x=-10000):
+ text={"Ranks & rewards":"RANK & REWARDS"}.get(text,text)
  for node in game.ui.panel.get_children():
   if node is Button and node.text==text and node.visible and not node.is_queued_for_deletion() and node.get_global_rect().position.x>=min_x:
    return node
  return null
 
-func has_label(fragment):
- for node in game.ui.panel.get_children():
-  if node is Label and not node.is_queued_for_deletion() and fragment in node.text: return true
+func has_label(fragment,parent=null):
+ if parent==null:parent=game.ui.panel
+ for node in parent.get_children():
+  if node.is_queued_for_deletion():continue
+  if node is Label and node.is_visible_in_tree() and fragment in node.text:return true
+  if has_label(fragment,node):return true
  return false
 
 func click(point):
@@ -62,7 +66,7 @@ func run():
  await process_frame
  game.set_process(false)
  check(game.profile.path==save_path,"scene uses isolated QA save override")
- check(has_label("Bronze") and has_label("0 XP"),"fresh menu displays rank and XP")
+ check(has_label("Bronze") and has_label("0 / 250 XP"),"fresh menu displays rank and XP")
  await click_button("Ranks & rewards")
  check(has_label("BRONZE") and has_label("PERMANENT PERKS"),"actual rank button opens rank/reward screen")
  check(has_label("250 XP to Silver") and has_label("Reinforced frame · Silver required"),"rank screen identifies next available reward")

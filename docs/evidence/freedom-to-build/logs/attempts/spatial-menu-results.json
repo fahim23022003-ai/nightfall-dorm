@@ -1,0 +1,38 @@
+[
+  {
+    "suite": "premium_strategy_migration",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.57,
+    "tail": [
+      "PREMIUM_MIGRATION_CHECKS=159 INVALID_BLOCKS=11 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "premium_strategy_ui",
+    "passed": true,
+    "exit": 0,
+    "seconds": 16.86,
+    "tail": [
+      "PREMIUM_UI_CHECKS=3717 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "visual_identity_ui",
+    "passed": true,
+    "exit": 0,
+    "seconds": 4.93,
+    "tail": [
+      "VISUAL_UI_CHECKS=1339 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "onboarding_flow",
+    "passed": true,
+    "exit": 0,
+    "seconds": 14.99,
+    "tail": [
+      "ONBOARDING_FLOW_CHECKS=99 FAILURES=0"
+    ]
+  }
+]

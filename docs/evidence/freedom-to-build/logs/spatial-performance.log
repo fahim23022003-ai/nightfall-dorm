@@ -1,0 +1,9 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+SPATIAL_PERF { "label": "full16 planning off", "frames": 240, "mean_ms": 39.1377291666666, "p95_ms": 53.233, "nodes_before": 190.0, "nodes_after": 190.0, "objects": 2894.0, "active_projectiles": 0 }
+SPATIAL_PERF { "label": "full16 planning footprints", "frames": 240, "mean_ms": 38.8227125, "p95_ms": 56.192, "nodes_before": 190.0, "nodes_after": 190.0, "objects": 2893.0, "active_projectiles": 0 }
+SPATIAL_PERF { "label": "full16 live mouse drag validation", "frames": 240, "mean_ms": 41.8332791666667, "p95_ms": 56.848, "nodes_before": 190.0, "nodes_after": 190.0, "objects": 2895.0, "active_projectiles": 0 }
+SPATIAL_PERFORMANCE_CHECKS=29 FAILURES=0

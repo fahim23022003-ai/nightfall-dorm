@@ -84,7 +84,7 @@ func reason(model,index: int) -> String:
  if index<0 or index>=model.rooms.size():return "Choose your occupied room."
  var room=model.rooms[index]
  if not model.running or model.result!="" or not room.alive or not room.sleeping:return "An active occupied room is required."
- if room.expansion_tier>=7:return "Ultimate room complete: sixteen usable positions."
+ if room.expansion_tier>=7:return "Ultimate room complete: capacity sixteen buildings."
  var next=room.expansion_tier+1;var required=1 if next==1 else 2 if next<4 else 3 if next<6 else 4
  if room.bed_level<required or room.door_level<required:return "Requires Bed and Door level %d." % (required+1)
  var cost=COSTS[next]

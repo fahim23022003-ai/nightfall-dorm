@@ -98,7 +98,7 @@ func move(model,point: Vector2) -> bool:
  if error!="":return r.reject(error)
  var previous: Vector2=r.buildings[id].position
  r.buildings[id].position=point;cancel_move()
- model.record_event("building_moved",r.index,{"tile":id,"from":previous,"to":point,"instance_id":r.buildings[id].instance_id})
+ model.record_event("building_moved",r.index,{"tile":id,"from":previous,"to":point,"position":point,"instance_id":r.buildings[id].instance_id})
  return true
 func hit_test(point: Vector2) -> int:
  var r=room();var selected=-1;var distance=INF

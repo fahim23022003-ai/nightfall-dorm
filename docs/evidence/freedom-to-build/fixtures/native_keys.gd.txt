@@ -1,0 +1,10 @@
+extends "res://tools/capture_spatial_construction.gd"
+func run():
+ root.size=Vector2i(1280,720);await setup_game();game.onboarding.close_welcome();var m=fresh();await advance(.4)
+ root.window_input.connect(func(e):
+  if e is InputEventKey:print("NATIVE_KEY code=",e.keycode," physical=",e.physical_keycode," pressed=",e.pressed))
+ var output=[];OS.execute("python",["/tmp/spatial_xinput.py","focus",str(DisplayServer.window_get_native_handle(DisplayServer.WINDOW_HANDLE))],output);await advance(.2)
+ OS.execute("python",["/tmp/spatial_xinput.py","key","b"],output);await advance(.4)
+ check(game.ui.context_open and game.ui.context_mode=="build","actual X11 B opens correct build panel")
+ print("NATIVE_KEYS_CHECKS=",checks," FAILURES=",failures," context=",game.ui.context_mode," open=",game.ui.context_open)
+ game.audio_system.shutdown();game.queue_free();await create_timer(.3).timeout;quit(1 if failures else 0)

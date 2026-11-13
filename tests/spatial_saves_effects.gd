@@ -70,6 +70,18 @@ func recovery_preserves_spent_stock():
  var loaded=PlayerProfile.new(p.path)
  check(loaded.load_profile() and not loaded.read_only and loaded.resume_endless()!=null,"checkpoint-only backup recovery ignores incomplete tmp")
  check(loaded.inventory==stock and Support.numeric_same(loaded.active_match,ledger) and loaded.rm_cash==cash and loaded.xp==xp,"recovery cannot rewind real consumed inventory, use ledger, cash or XP")
+ data.replay.checkpoint.ruleset=Snapshot.RULESET+1
+ f=FileAccess.open(p.path,FileAccess.WRITE);f.store_string(JSON.stringify(data));f.close();var future_bytes=FileAccess.get_file_as_string(p.path)
+ var future=PlayerProfile.new(p.path);future.load_profile()
+ check(future.read_only and future.resume_endless()==null and FileAccess.get_file_as_string(p.path)==future_bytes,"unknown future ruleset stays preserved read-only even with a valid older backup")
+func move_event_origin():
+ var a=fixture();var m=a.m;var r=m.player();m.time=0
+ check(m.place_building("turret",r.fixed_tile_position(0)+Vector2(3,-2)),"move-audio real paid source")
+ var before=r.tile_position(16);var to=r.fixed_tile_position(1)+Vector2(4,-3);var wallet=[r.gold,r.electricity]
+ check(m.begin_building_move(16) and m.move_building(to),"move-audio real commit")
+ var event=m.presentation_events.back()
+ check(event.type=="building_moved" and event.position==to and event.from==before and event.to==to and event.instance_id==r.buildings[16].instance_id,"production presentation/audio event uses actual destination and stable identity")
+ check([r.gold,r.electricity]==wallet,"move cue cannot charge resources")
 func run():
- legacy_layouts();recovery_and_effects();recovery_preserves_spent_stock();Support.cleanup(prefix)
+ legacy_layouts();recovery_and_effects();recovery_preserves_spent_stock();move_event_origin();Support.cleanup(prefix)
  print("SPATIAL_SAVES_EFFECTS_CHECKS=",checks," FAILURES=",failures);quit(1 if failures else 0)

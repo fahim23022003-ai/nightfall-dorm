@@ -1375,3 +1375,40 @@ are declared in evidence fixtures; these are not human or native Windows tests.
 Remaining before final delivery: complete ongoing regression run, inspect final
 screenshots after capture-timer correction, archive evidence/performance, write
 Phase 9 report and Windows checklist, final commit/push and remote verification.
+
+
+## Phase 9 — Freedom to Build delivery
+
+IMPLEMENTED and tested on Godot4.6.3 Linux: true player-Endless free coordinates,
+transactional direct-click previews, collision/access protection, same-instance
+prep/intermission moves, planning/snap/fine controls and unchanged paid
+3→6→8→10→11→12→14→16 expansion. All15 roles use the central position resolver;
+AI and other modes retain fixed placement. Schema2/ruleset5 snapshots read old
+schema1/rulesets1–4; checkpoint-only backup recovery retains current permanent
+stock/use/reward ledgers and preserves unknown future rulesets read-only.
+
+Final focused checks:1397 model,179 save/effects/event-origin,64 actual rendered
+UI plus64 headless UI,60 earned46 continuation,199 screenshot,82 uncut native
+input and29 short performance checks, all zero failures. All124 regular named
+gates and the main136 assertions pass after relevant fixture updates/corrections.
+Final import, scene33, startup and process profile persistence pass. Six newer
+retained phase gates also pass; optional extended gates were not rerun.
+
+The unchanged earned Hell45 source continues to a full180600HP Hell46 victory
+in42.8 simulated seconds after a legal move and genuine paid upgrades, with44
+launches from the relocated turret. No free resources or Hunter HP edits.
+
+Real evidence:19 original PNGs covering18 requested subjects, including paired
+move images,720p/1080p;88.208s/24fps continuous native scripted-input MP4, separate
+85.914s actual internal Master audio. Staged budgets/occupancy/contact and clocks
+are disclosed. The final move-cue origin correction is verified separately.
+No native Windows, human comfort, subjective sound, hours-long performance or
+paired old-executable performance claim. Full16 steady-state readability was
+inspected; transient simultaneous upgrade announcements can still overlap.
+Rotation/undo and mobile free-construction redesign were not implemented.
+
+Read docs/PHASE_9_FREEDOM_TO_BUILD_REPORT.md, the Windows checklist, and
+ docs/evidence/freedom-to-build/INDEX.md. Historical evidence and canonical source
+were preserved;32 rewritten test outputs were restored. The final delivery
+message supplies exact commit/push verification. Stop after Phase9; no release
+or main changes. Do not restart prior phases on the next task.

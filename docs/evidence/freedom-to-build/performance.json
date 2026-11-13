@@ -1,0 +1,39 @@
+{
+ "checks": 29,
+ "engine": "4.6.3-stable (official)",
+ "failures": 0,
+ "measurement": "render-wait/frame wall time, 30 warmup +240 frames per state; no Windows/FPS/hours-long claim; overlay off vs on measures incremental spatial workload, not a paired old executable benchmark",
+ "renderer": "Linux Mesa llvmpipe software GL, shared environment",
+ "rows": [
+  {
+   "active_projectiles": 0,
+   "frames": 240,
+   "label": "full16 planning off",
+   "mean_ms": 39.1377291666666,
+   "nodes_after": 190.0,
+   "nodes_before": 190.0,
+   "objects": 2894.0,
+   "p95_ms": 53.233
+  },
+  {
+   "active_projectiles": 0,
+   "frames": 240,
+   "label": "full16 planning footprints",
+   "mean_ms": 38.8227125,
+   "nodes_after": 190.0,
+   "nodes_before": 190.0,
+   "objects": 2893.0,
+   "p95_ms": 56.192
+  },
+  {
+   "active_projectiles": 0,
+   "frames": 240,
+   "label": "full16 live mouse drag validation",
+   "mean_ms": 41.8332791666667,
+   "nodes_after": 190.0,
+   "nodes_before": 190.0,
+   "objects": 2895.0,
+   "p95_ms": 56.848
+  }
+ ]
+}

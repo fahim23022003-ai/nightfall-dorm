@@ -1,0 +1,88 @@
+{
+ "buildings": {
+  "16": {
+   "cooldown": -0.034582,
+   "flash": 0.0,
+   "instance_id": 1,
+   "invested_gold": 20.0,
+   "invested_power": 0.0,
+   "kind": "turret",
+   "level": 1,
+   "position": "(179.0, 88.0)"
+  },
+  "17": {
+   "cooldown": -0.034582,
+   "flash": 0.0,
+   "instance_id": 2,
+   "invested_gold": 95.0,
+   "invested_power": 12.0,
+   "kind": "heavy",
+   "level": 1,
+   "position": "(267.0, 112.0)"
+  },
+  "18": {
+   "cooldown": 0.0,
+   "flash": 0.0,
+   "instance_id": 4,
+   "invested_gold": 30.0,
+   "invested_power": 0.0,
+   "kind": "generator",
+   "level": 1,
+   "position": "(283.0, 24.0)"
+  }
+ },
+ "checks": 82,
+ "combat_seconds": 8.94970600000002,
+ "conditions": "Native XTest mouse/keyboard, scripted driver, actual production GUI transactions. Prepared isolated wallet/occupied room and Hunter contact, normal stats/prices. Frozen prep during build showcase, then ordinary wall-time Game._process; no edits/cuts.",
+ "failures": 0,
+ "hunter_hp": 3622.0,
+ "hunter_max_hp": 4600.0,
+ "seconds": 87.518795,
+ "shots": 58,
+ "timeline": [
+  {
+   "seconds": 6.123283,
+   "text": "Prepared occupied room · 3000 Gold / 700 Electricity · real prices"
+  },
+  {
+   "seconds": 8.868753,
+   "text": "Preview follows native mouse · optional 8-unit snap, F toggles"
+  },
+  {
+   "seconds": 14.253909,
+   "text": "Invalid overlap: real click rejected, no resources deducted"
+  },
+  {
+   "seconds": 19.936836,
+   "text": "Second purchase · another freely chosen location"
+  },
+  {
+   "seconds": 25.43554,
+   "text": "Select same turret → Move [V] · no payment or cooldown reset"
+  },
+  {
+   "seconds": 30.25964,
+   "text": "Cancel a second move with Esc · original position retained"
+  },
+  {
+   "seconds": 34.582384,
+   "text": "Expansion pays existing 120 Gold / 15 Electricity · 3 → 6 capacity"
+  },
+  {
+   "seconds": 40.986473,
+   "text": "Place on NEW floor · old boundary rejected this area"
+  },
+  {
+   "seconds": 47.052452,
+   "text": "Preparation clock → live wave · posed doorway Hunter"
+  },
+  {
+   "seconds": 77.130281,
+   "text": "LIVE WAVE · relocated turrets use their stored positions"
+  },
+  {
+   "seconds": 86.130579,
+   "text": "End of uncut native-input demonstration · no human playtest claim"
+  }
+ ]
+}

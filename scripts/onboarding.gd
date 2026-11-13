@@ -39,7 +39,8 @@ func skip():
  if phase!="cinematic":return
  show_title()
 func show_title():
- if welcome_dismissed:return
+ if welcome_dismissed:
+  cancel_intro_audio();game.audio_system.end_cinematic();clean_controls();active=false;phase="idle";mouse_filter=Control.MOUSE_FILTER_IGNORE;game.return_menu();return
  phase="title";elapsed=0;active=true;cancel_intro_audio();game.audio_system.end_cinematic();game.mode="menu"
  clean_controls();mouse_filter=Control.MOUSE_FILTER_STOP
  var shade=ColorRect.new();shade.color=Color(.015,.02,.03,.82);shade.size=Vector2(1280,720);shade.mouse_filter=Control.MOUSE_FILTER_STOP;add_child(shade)

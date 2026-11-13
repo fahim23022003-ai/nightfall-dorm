@@ -1,0 +1,965 @@
+[
+  {
+    "suite": "overhaul_qa_expansion",
+    "passed": true,
+    "exit": 0,
+    "seconds": 109.32,
+    "tail": [
+      "OVERHAUL_QA_EXPANSION_CHECKS=31294 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d4_qa_evolution",
+    "passed": true,
+    "exit": 0,
+    "seconds": 89.03,
+    "tail": [
+      "PHASE5D4_QA_EVOLUTION_CHECKS=648 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d4_qa_boss",
+    "passed": true,
+    "exit": 0,
+    "seconds": 18.49,
+    "tail": [
+      "PHASE5D4_QA_BOSS_CHECKS=153 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d4_qa_combat",
+    "passed": true,
+    "exit": 0,
+    "seconds": 4.37,
+    "tail": [
+      "PHASE5D4_QA_INTEGRATED_COMBAT_CHECKS=2580 MAPS=5 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d4_qa_save",
+    "passed": false,
+    "exit": 1,
+    "seconds": 14.2,
+    "tail": [
+      "PHASE5D4_QA_SAVE_CHECKS=269 FAILURES=3"
+    ]
+  },
+  {
+    "suite": "phase5d4_qa_defenses",
+    "passed": true,
+    "exit": 0,
+    "seconds": 34.49,
+    "tail": [
+      "PHASE5D4_QA_DEFENSE_CHECKS=972 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d4_qa_challenge",
+    "passed": true,
+    "exit": 0,
+    "seconds": 32.02,
+    "tail": [
+      "PHASE5D4_QA_CHALLENGE_CHECKS=13 FRESH_WORKERS=6 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d4_qa_items",
+    "passed": true,
+    "exit": 0,
+    "seconds": 23.79,
+    "tail": [
+      "PHASE5D4_QA_ITEMS_CHECKS=208 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d4_qa_ui",
+    "passed": true,
+    "exit": 0,
+    "seconds": 64.92,
+    "tail": [
+      "PHASE5D4_UI_QA_CHECKS=848 MAPS=5 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d4_qa_ui_branches",
+    "passed": true,
+    "exit": 0,
+    "seconds": 149.49,
+    "tail": [
+      "PHASE5D4_QA_NEWBRANCH_UI_CHECKS=1625 SCENARIOS=60 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d4_qa_ui_threat",
+    "passed": true,
+    "exit": 0,
+    "seconds": 8.44,
+    "tail": [
+      "PHASE5D4_QA_MINION_UI_CHECKS=76 MAPS=5 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d4_qa_final_delta",
+    "passed": false,
+    "exit": 1,
+    "seconds": 14.32,
+    "tail": [
+      "PHASE5D4_QA_FINAL_DELTA_CHECKS=347 CONTACT_SCENARIOS=15 PREVIEW_CONFIGS=45 FAILURES=1"
+    ]
+  },
+  {
+    "suite": "phase5d4_dev_frost_preview",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.37,
+    "tail": [
+      "PHASE5D4_FROST_PREVIEW_CHECKS=30 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d4_dev_hp_display",
+    "passed": true,
+    "exit": 0,
+    "seconds": 3.28,
+    "tail": [
+      "PHASE5D4_HP_DISPLAY_CHECKS=6 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d4_audio",
+    "passed": true,
+    "exit": 0,
+    "seconds": 21.44,
+    "tail": [
+      "WRATH_AUDIO_UNIT_CHECKS=782 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d4_audio_reactions",
+    "passed": true,
+    "exit": 0,
+    "seconds": 1.22,
+    "tail": [
+      "WRATH_AUDIO_REACTION_CHECKS=5 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d4_audio_targets",
+    "passed": false,
+    "exit": 1,
+    "seconds": 1.22,
+    "tail": [
+      "WRATH_AUDIO_TARGET_CHECKS=229 FAILURES=20"
+    ]
+  },
+  {
+    "suite": "phase5d4_audio_lifecycle",
+    "passed": true,
+    "exit": 0,
+    "seconds": 1.23,
+    "tail": [
+      "WRATH_AUDIO_LIFECYCLE_CHECKS=13 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d4_audio_explosion",
+    "passed": false,
+    "exit": 1,
+    "seconds": 31.12,
+    "tail": [
+      "SAMPLED_EXPLOSION_GAME_CHECKS=9 FAILURES=3"
+    ]
+  },
+  {
+    "suite": "phase5d3_qa_support_roles",
+    "passed": true,
+    "exit": 0,
+    "seconds": 1.76,
+    "tail": [
+      "PHASE5D3_SUPPORT_ROLE_QA_CHECKS=400 WEAPON_BRANCHES=4 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d3_qa_contact_guards",
+    "passed": true,
+    "exit": 0,
+    "seconds": 68.21,
+    "tail": [
+      "PHASE5D3_CONTACT_QA_CHECKS=460 CASES=50 MAPS=5 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d3_qa_audio",
+    "passed": false,
+    "exit": 1,
+    "seconds": 5.54,
+    "tail": [
+      "PHASE5D3_AUDIO_QA_CHECKS=189 FAILURES=40"
+    ]
+  },
+  {
+    "suite": "phase5d3_qa_economy",
+    "passed": true,
+    "exit": 0,
+    "seconds": 40.77,
+    "tail": [
+      "PHASE5D3_ECONOMY_QA_CHECKS=4170 SCENARIOS=48 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d3_qa_structures",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.67,
+    "tail": [
+      "PHASE5D3_STRUCTURAL_QA_CHECKS=99 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d3_qa_migration",
+    "passed": false,
+    "exit": 1,
+    "seconds": 3.38,
+    "tail": [
+      "PHASE5D3_MIGRATION_QA_CHECKS=43 FAILURES=1"
+    ]
+  },
+  {
+    "suite": "phase5d3_qa_ai",
+    "passed": true,
+    "exit": 0,
+    "seconds": 46.54,
+    "tail": [
+      "PHASE5D3_TACTICAL_QA_CHECKS=60262 MAP_ARCHETYPES=15 FRESH_WORKERS=6 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d3_qa_spectator",
+    "passed": true,
+    "exit": 0,
+    "seconds": 13.82,
+    "tail": [
+      "PHASE5D3_SPECTATOR_QA_CHECKS=1650 MAPS=5 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase5d3_qa_branch_ui",
+    "passed": true,
+    "exit": 0,
+    "seconds": 6.04,
+    "tail": [
+      "PHASE5D3_BRANCH_UI_QA_CHECKS=564 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase6_journey",
+    "passed": false,
+    "exit": 1,
+    "seconds": 2.93,
+    "tail": [
+      "       [2] key (res://tests/onboarding_flow.gd:27)"
+    ]
+  },
+  {
+    "suite": "phase6_inputs",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.47,
+    "tail": [
+      "PHASE6_INPUT_CHECKS=4062 CASES=2009 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "spatial_construction",
+    "passed": true,
+    "exit": 0,
+    "seconds": 108.74,
+    "tail": [
+      "SPATIAL_CONSTRUCTION_CHECKS=1397 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "spatial_saves_effects",
+    "passed": true,
+    "exit": 0,
+    "seconds": 13.86,
+    "tail": [
+      "SPATIAL_SAVES_EFFECTS_CHECKS=172 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "spatial_construction_ui",
+    "passed": true,
+    "exit": 0,
+    "seconds": 13.0,
+    "tail": [
+      "SPATIAL_UI_CHECKS=41 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "replay_endless",
+    "passed": true,
+    "exit": 0,
+    "seconds": 41.93,
+    "tail": [
+      "REPLAY_ENDLESS_CHECKS=28426 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "replay_transactions",
+    "passed": true,
+    "exit": 0,
+    "seconds": 9.09,
+    "tail": [
+      "REPLAY_TRANSACTION_CHECKS=284 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "replay_codes",
+    "passed": true,
+    "exit": 0,
+    "seconds": 17.78,
+    "tail": [
+      "REPLAY_CODE_CHECKS=1490 FRESH_PROCESSES=6 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "replay_pity",
+    "passed": true,
+    "exit": 0,
+    "seconds": 1.87,
+    "tail": [
+      "REPLAY_PITY_CHECKS=20180 VICTORY_DRAWS=6000 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "replay_migration",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.47,
+    "tail": [
+      "REPLAY_MIGRATION_CHECKS=190 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "replay_practice",
+    "passed": true,
+    "exit": 0,
+    "seconds": 30.6,
+    "tail": [
+      "REPLAY_PRACTICE_CHECKS=7505 ITEMS=20 MAP_ARCHETYPES=30 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "replay_facts_cosmetics",
+    "passed": true,
+    "exit": 0,
+    "seconds": 1.27,
+    "tail": [
+      "REPLAY_FACTS_COSMETIC_CHECKS=25 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "replay_retirement",
+    "passed": true,
+    "exit": 0,
+    "seconds": 1.97,
+    "tail": [
+      "REPLAY_RETIREMENT_CHECKS=21 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "replay_ui",
+    "passed": false,
+    "exit": 1,
+    "seconds": 24.33,
+    "tail": [
+      "REPLAY_UI_CHECKS=1679 FAILURES=100"
+    ]
+  },
+  {
+    "suite": "premium_strategy_mechanics",
+    "passed": true,
+    "exit": 0,
+    "seconds": 242.9,
+    "tail": [
+      "PREMIUM_MECHANICS_CHECKS=354377 APPROACHES=540 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "premium_strategy_economy",
+    "passed": true,
+    "exit": 0,
+    "seconds": 5.69,
+    "tail": [
+      "PREMIUM_ECONOMY_CHECKS=556 SCENARIOS=16 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "premium_strategy_contracts",
+    "passed": true,
+    "exit": 0,
+    "seconds": 17.71,
+    "tail": [
+      "PREMIUM_CONTRACT_CHECKS=425 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "premium_strategy_migration",
+    "passed": false,
+    "exit": 1,
+    "seconds": 0.47,
+    "tail": [
+      "PREMIUM_MIGRATION_CHECKS=159 INVALID_BLOCKS=11 FAILURES=13"
+    ]
+  },
+  {
+    "suite": "premium_strategy_ui",
+    "passed": false,
+    "exit": 1,
+    "seconds": 16.26,
+    "tail": [
+      "PREMIUM_UI_CHECKS=3717 FAILURES=4"
+    ]
+  },
+  {
+    "suite": "visual_identity_qa",
+    "passed": true,
+    "exit": 0,
+    "seconds": 5.5,
+    "tail": [
+      "VISUAL_IDENTITY_CHECKS=186 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "visual_identity_ui",
+    "passed": false,
+    "exit": 1,
+    "seconds": 5.24,
+    "tail": [
+      "VISUAL_UI_CHECKS=1339 FAILURES=100"
+    ]
+  },
+  {
+    "suite": "visual_identity_audio",
+    "passed": true,
+    "exit": 0,
+    "seconds": 1.57,
+    "tail": [
+      "VISUAL_AUDIO_CHECKS=103 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "visual_identity_culling",
+    "passed": true,
+    "exit": 0,
+    "seconds": 2.77,
+    "tail": [
+      "VISUAL_CULL_CHECKS=1116 OFFSCREEN_REGIONS=150 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "visual_identity_navigation",
+    "passed": true,
+    "exit": 0,
+    "seconds": 33.41,
+    "tail": [
+      "VISUAL_NAV_CHECKS=57056 APPROACHES=90 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "haunted_qa",
+    "passed": true,
+    "exit": 0,
+    "seconds": 32.57,
+    "tail": [
+      "HAUNTED_QA_CHECKS=78783 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "haunted_economy",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.37,
+    "tail": [
+      "HAUNTED_ECONOMY_CHECKS=5382 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "haunted_balance",
+    "passed": true,
+    "exit": 0,
+    "seconds": 64.66,
+    "tail": [
+      "HAUNTED_BALANCE_MATCHES=60 SUMMARY={\"hard_heavy_cap10\":{\"losses\":0,\"maxlevel\":10,\"reached10\":1,\"wins\":5},\"hard_heavy_cap4\":{\"losses\":0,\"maxlevel\":4,\"reached10\":0,\"wins\":5},\"hard_turret_cap10\":{\"losses\":1,\"maxlevel\":0,\"reached10\":0,\"wins\":4},\"hard_turret_cap4\":{\"losses\":1,\"maxlevel\":0,\"reached10\":0,\"wins\":4},\"hell_heavy_cap10\":{\"losses\":5,\"maxlevel\":0,\"reached10\":0,\"wins\":0},\"hell_heavy_cap4\":{\"losses\":5,\"maxlevel\":0,\"reached10\":0,\"wins\":0},\"hell_turret_cap10\":{\"losses\":5,\"maxlevel\":0,\"reached10\":0,\"wins\":0},\"hell_turret_cap4\":{\"losses\":5,\"maxlevel\":0,\"reached10\":0,\"wins\":0},\"standard_heavy_cap10\":{\"losses\":0,\"maxlevel\":0,\"reached10\":0,\"wins\":5},\"standard_heavy_cap4\":{\"losses\":0,\"maxlevel\":4,\"reached10\":0,\"wins\":5},\"standard_turret_cap10\":{\"losses\":0,\"maxlevel\":0,\"reached10\":0,\"wins\":5},\"standard_turret_cap4\":{\"losses\":0,\"maxlevel\":0,\"reached10\":0,\"wins\":5}} FAILURES=0"
+    ]
+  },
+  {
+    "suite": "onboarding_qa",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.57,
+    "tail": [
+      "ONBOARDING_QA_CHECKS=164 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "onboarding_flow",
+    "passed": true,
+    "exit": 0,
+    "seconds": 15.27,
+    "tail": [
+      "ONBOARDING_FLOW_CHECKS=99 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "onboarding_economy",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.57,
+    "tail": [
+      "ONBOARDING_ECONOMY_CHECKS=57016 SCENARIOS=42 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "rewards_qa",
+    "passed": true,
+    "exit": 0,
+    "seconds": 8.0,
+    "tail": [
+      "REWARDS_QA_CHECKS=342 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "rewards_combos",
+    "passed": true,
+    "exit": 0,
+    "seconds": 2.77,
+    "tail": [
+      "REWARDS_COMBO_CHECKS=27 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "rewards_balance",
+    "passed": true,
+    "exit": 0,
+    "seconds": 142.75,
+    "tail": [
+      "REWARDS_BALANCE_MATCHES=120 SUMMARY={\"bronze_hard_perks\":{\"legendary\":0,\"losses\":2,\"wins\":3},\"bronze_hard_prepared\":{\"legendary\":0,\"losses\":0,\"wins\":5},\"bronze_hell_perks\":{\"legendary\":0,\"losses\":5,\"wins\":0},\"bronze_hell_prepared\":{\"legendary\":3,\"losses\":0,\"wins\":5},\"bronze_standard_perks\":{\"legendary\":0,\"losses\":0,\"wins\":5},\"bronze_standard_prepared\":{\"legendary\":0,\"losses\":0,\"wins\":5},\"diamond_hard_perks\":{\"legendary\":0,\"losses\":3,\"wins\":2},\"diamond_hard_prepared\":{\"legendary\":1,\"losses\":0,\"wins\":5},\"diamond_hell_perks\":{\"legendary\":0,\"losses\":5,\"wins\":0},\"diamond_hell_prepared\":{\"legendary\":3,\"losses\":0,\"wins\":5},\"diamond_standard_perks\":{\"legendary\":0,\"losses\":0,\"wins\":5},\"diamond_standard_prepared\":{\"legendary\":0,\"losses\":0,\"wins\":5},\"gold_hard_perks\":{\"legendary\":0,\"losses\":2,\"wins\":3},\"gold_hard_prepared\":{\"legendary\":0,\"losses\":0,\"wins\":5},\"gold_hell_perks\":{\"legendary\":0,\"losses\":5,\"wins\":0},\"gold_hell_prepared\":{\"legendary\":2,\"losses\":0,\"wins\":5},\"gold_standard_perks\":{\"legendary\":0,\"losses\":0,\"wins\":5},\"gold_standard_prepared\":{\"legendary\":0,\"losses\":0,\"wins\":5},\"mythic_hard_perks\":{\"legendary\":0,\"losses\":3,\"wins\":2},\"mythic_hard_prepared\":{\"legendary\":1,\"losses\":0,\"wins\":5},\"mythic_hell_perks\":{\"legendary\":0,\"losses\":5,\"wins\":0},\"mythic_hell_prepared\":{\"legendary\":3,\"losses\":0,\"wins\":5},\"mythic_standard_perks\":{\"legendary\":0,\"losses\":0,\"wins\":5},\"mythic_standard_prepared\":{\"legendary\":0,\"losses\":0,\"wins\":5}} FAILURES=0"
+    ]
+  },
+  {
+    "suite": "legendary_qa",
+    "passed": true,
+    "exit": 0,
+    "seconds": 39.03,
+    "tail": [
+      "LEGENDARY_QA_CHECKS=20798 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "legendary_combos",
+    "passed": true,
+    "exit": 0,
+    "seconds": 13.89,
+    "tail": [
+      "LEGENDARY_COMBO_CHECKS=140 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "legendary_balance",
+    "passed": true,
+    "exit": 0,
+    "seconds": 147.15,
+    "tail": [
+      "LEGENDARY_BALANCE_MATCHES=120 SUMMARY={\"hard_baseline\":{\"activations\":0,\"legendary_spent\":0,\"losses\":6,\"matches\":20,\"wins\":14},\"hard_items\":{\"activations\":35,\"legendary_spent\":10,\"losses\":3,\"matches\":20,\"wins\":17},\"hell_baseline\":{\"activations\":0,\"legendary_spent\":0,\"losses\":19,\"matches\":20,\"wins\":1},\"hell_items\":{\"activations\":59,\"legendary_spent\":16,\"losses\":12,\"matches\":20,\"wins\":8},\"standard_baseline\":{\"activations\":0,\"legendary_spent\":0,\"losses\":0,\"matches\":20,\"wins\":20},\"standard_items\":{\"activations\":15,\"legendary_spent\":8,\"losses\":0,\"matches\":20,\"wins\":20}} FAILURES=0"
+    ]
+  },
+  {
+    "suite": "advanced_items_qa",
+    "passed": true,
+    "exit": 0,
+    "seconds": 28.1,
+    "tail": [
+      "ADVANCED_QA_CHECKS=7988 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "advanced_item_combos",
+    "passed": true,
+    "exit": 0,
+    "seconds": 1.97,
+    "tail": [
+      "ADVANCED_COMBO_CHECKS=27 FAILURES=0 SHOTS=[9, 12]"
+    ]
+  },
+  {
+    "suite": "advanced_items_balance",
+    "passed": true,
+    "exit": 0,
+    "seconds": 77.32,
+    "tail": [
+      "ADVANCED_BALANCE_MATCHES=60 SUMMARY={\"hard_baseline\":{\"activations\":0,\"losses\":3,\"matches\":10,\"wins\":7},\"hard_items\":{\"activations\":45,\"losses\":1,\"matches\":10,\"wins\":9},\"hell_baseline\":{\"activations\":0,\"losses\":9,\"matches\":10,\"wins\":1},\"hell_items\":{\"activations\":39,\"losses\":8,\"matches\":10,\"wins\":2},\"standard_baseline\":{\"activations\":0,\"losses\":0,\"matches\":10,\"wins\":10},\"standard_items\":{\"activations\":28,\"losses\":0,\"matches\":10,\"wins\":10}} FAILURES=0"
+    ]
+  },
+  {
+    "suite": "items_qa",
+    "passed": true,
+    "exit": 0,
+    "seconds": 54.25,
+    "tail": [
+      "ITEM_QA_CHECKS=11203 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "items_activation_feedback",
+    "passed": true,
+    "exit": 0,
+    "seconds": 3.12,
+    "tail": [
+      "ITEM_FEEDBACK_CHECKS=13 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "items_balance",
+    "passed": true,
+    "exit": 0,
+    "seconds": 79.24,
+    "tail": [
+      "ITEM_BALANCE_MATCHES=60 SUMMARY={\"hard_baseline\":{\"activations\":0,\"losses\":3,\"matches\":10,\"wins\":7},\"hard_items\":{\"activations\":40,\"losses\":0,\"matches\":10,\"wins\":10},\"hell_baseline\":{\"activations\":0,\"losses\":9,\"matches\":10,\"wins\":1},\"hell_items\":{\"activations\":65,\"losses\":3,\"matches\":10,\"wins\":7},\"standard_baseline\":{\"activations\":0,\"losses\":0,\"matches\":10,\"wins\":10},\"standard_items\":{\"activations\":40,\"losses\":0,\"matches\":10,\"wins\":10}} FAILURES=0"
+    ]
+  },
+  {
+    "suite": "mythic_progression",
+    "passed": true,
+    "exit": 0,
+    "seconds": 4.23,
+    "tail": [
+      "MYTHIC_QA_CHECKS=204 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "mythic_edges",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.47,
+    "tail": [
+      "MYTHIC_EDGE_CHECKS=7 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "boss_architecture",
+    "passed": true,
+    "exit": 0,
+    "seconds": 2.18,
+    "tail": [
+      "BOSS_ARCHITECTURE_CHECKS=43 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "boss_qa",
+    "passed": true,
+    "exit": 0,
+    "seconds": 42.08,
+    "tail": [
+      "BOSS_QA_CHECKS=6880 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "boss_audio",
+    "passed": true,
+    "exit": 0,
+    "seconds": 2.37,
+    "tail": [
+      "BOSS_AUDIO_CHECKS=48 FAILURES=0 EVENTS={\"build\":1,\"danger\":1,\"door_hit\":2,\"hunter_evolve\":1,\"hunter_level\":1,\"impact\":1,\"match_start\":2,\"reaper_charge\":2,\"reaper_death\":1,\"reaper_hurt\":1,\"reaper_impact\":2,\"reaper_scythe\":1,\"reaper_surge\":2,\"reaper_transform\":1,\"scream_1\":1,\"victory\":1}"
+    ]
+  },
+  {
+    "suite": "boss_matrix",
+    "passed": true,
+    "exit": 0,
+    "seconds": 69.1,
+    "tail": [
+      "BOSS_MATRIX_MATCHES=60 SUMMARY={\"hard_baseline\":{\"boss_wins\":0,\"losses\":3,\"seconds\":1812.29999999994,\"transformed\":0,\"wins\":7},\"hard_boss\":{\"boss_wins\":6,\"losses\":3,\"seconds\":1800.59999999994,\"transformed\":6,\"wins\":7},\"hell_baseline\":{\"boss_wins\":0,\"losses\":9,\"seconds\":1295.09999999997,\"transformed\":0,\"wins\":1},\"hell_boss\":{\"boss_wins\":0,\"losses\":9,\"seconds\":1268.99999999997,\"transformed\":0,\"wins\":1},\"standard_baseline\":{\"boss_wins\":0,\"losses\":0,\"seconds\":1868.49999999994,\"transformed\":0,\"wins\":10},\"standard_boss\":{\"boss_wins\":6,\"losses\":0,\"seconds\":1948.09999999993,\"transformed\":6,\"wins\":10}} FAILURES=0"
+    ]
+  },
+  {
+    "suite": "difficulty_behavior",
+    "passed": true,
+    "exit": 0,
+    "seconds": 14.82,
+    "tail": [
+      "DIFFICULTY_BEHAVIOR_CHECKS=269 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "difficulty_matrix",
+    "passed": true,
+    "exit": 0,
+    "seconds": 103.06,
+    "tail": [
+      "DIFFICULTY_MATRIX_MATCHES=90 WINS={\"hard\":14,\"hell\":1,\"standard\":29} LOSSES={\"hard\":16,\"hell\":29,\"standard\":1} FAILURES=0"
+    ]
+  },
+  {
+    "suite": "maps_core",
+    "passed": true,
+    "exit": 0,
+    "seconds": 4.18,
+    "tail": [
+      "MAP_CORE_CHECKS=15348 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "maps_integration",
+    "passed": true,
+    "exit": 0,
+    "seconds": 235.79,
+    "tail": [
+      "MAP_INTEGRATION_CHECKS=5107 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "maps_ui",
+    "passed": true,
+    "exit": 0,
+    "seconds": 80.31,
+    "tail": [
+      "MAP_UI_CHECKS=1144 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "maps_simulations",
+    "passed": true,
+    "exit": 0,
+    "seconds": 155.8,
+    "tail": [
+      "MAP_SIMULATIONS=144 WINS=76 LOSSES=68 UNRESOLVED=0 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "campaign_profile",
+    "passed": true,
+    "exit": 0,
+    "seconds": 5.94,
+    "tail": [
+      "CAMPAIGN_PROFILE_CHECKS=89 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "campaign_flow",
+    "passed": true,
+    "exit": 0,
+    "seconds": 10.4,
+    "tail": [
+      "CAMPAIGN_FLOW_CHECKS=148 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "campaign_simulations",
+    "passed": true,
+    "exit": 0,
+    "seconds": 17.95,
+    "tail": [
+      "CAMPAIGN_SIMULATIONS=20 WINS=8 LOSSES=12 UNRESOLVED=0"
+    ]
+  },
+  {
+    "suite": "horror_events",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.92,
+    "tail": [
+      "HORROR_EVENT_CHECKS=319 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "horror_feedback",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.47,
+    "tail": [
+      "HORROR_FEEDBACK_CHECKS=22 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "horror_ui",
+    "passed": true,
+    "exit": 0,
+    "seconds": 3.38,
+    "tail": [
+      "HORROR_UI_CHECKS=5 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase1_building",
+    "passed": true,
+    "exit": 0,
+    "seconds": 4.03,
+    "tail": [
+      "PHASE1_BUILDING_CHECKS=2213 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase1_independent",
+    "passed": true,
+    "exit": 0,
+    "seconds": 3.18,
+    "tail": [
+      "PHASE1_INDEPENDENT_CHECKS=1024 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "mobile_controls",
+    "passed": true,
+    "exit": 0,
+    "seconds": 3.93,
+    "tail": [
+      "MOBILE_CONTROLS_CHECKS=58 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "mobile_layout",
+    "passed": true,
+    "exit": 0,
+    "seconds": 2.88,
+    "tail": [
+      "MOBILE_LAYOUT_CHECKS=196 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "audio_system",
+    "passed": false,
+    "exit": 1,
+    "seconds": 2.82,
+    "tail": [
+      "AUDIO_ASSERTIONS=531 FAILURES=20 STREAMS=224 MUSIC_STARTS=8"
+    ]
+  },
+  {
+    "suite": "ranked_progression",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.47,
+    "tail": [
+      "RANKED_PROGRESSION_ASSERTIONS=354 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "phase2_ui",
+    "passed": false,
+    "exit": 1,
+    "seconds": 6.64,
+    "tail": [
+      "PHASE2_UI_ASSERTIONS=60 FAILURES=25"
+    ]
+  },
+  {
+    "suite": "phase2_hunter",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.37,
+    "tail": [
+      "PHASE2_HUNTER_ASSERTIONS=39 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "projectiles",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.37,
+    "tail": [
+      "PROJECTILE_ASSERTIONS=22 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "redesign_projectile_edges",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.37,
+    "tail": [
+      "REDESIGN_PROJECTILE_EDGE_ASSERTIONS=12 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "redesign_ui",
+    "passed": true,
+    "exit": 0,
+    "seconds": 26.8,
+    "tail": [
+      "REDESIGN_UI_ASSERTIONS=293 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "scene_smoke",
+    "passed": true,
+    "exit": 0,
+    "seconds": 5.43,
+    "tail": [
+      "SCENE_CHECKS=33 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "overhaul_ui",
+    "passed": true,
+    "exit": 0,
+    "seconds": 5.33,
+    "tail": [
+      "OVERHAUL_UI_CHECKS=108 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "furniture_collision",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.37,
+    "tail": [
+      "FURNITURE_CHECKS=30 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "ui_availability",
+    "passed": true,
+    "exit": 0,
+    "seconds": 2.93,
+    "tail": [
+      "UI_AVAILABILITY_CHECKS=6089 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "simulate_matches",
+    "passed": true,
+    "exit": 0,
+    "seconds": 4.29,
+    "tail": [
+      "SIMULATIONS=12 WINS=9 LOSSES=3 UNRESOLVED=0"
+    ]
+  },
+  {
+    "suite": "audit_regressions",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.47,
+    "tail": [
+      "AUDIT_ASSERTIONS=227 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "audit_properties",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.92,
+    "tail": [
+      "PROPERTY_TRANSACTIONS=20000 REJECTED=17871 CHECKS=175767 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "audit_rates",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.47,
+    "tail": [
+      "RATE_SCENARIOS=6 FAILURES=0"
+    ]
+  }
+]

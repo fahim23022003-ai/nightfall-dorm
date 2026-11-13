@@ -365,7 +365,7 @@ func load_profile() -> bool:
  # A damaged spatial checkpoint may recover from the prior generation without
  # rewinding current inventory, consumed-item ledgers, rewards or other progress.
  var replay_data=data.get("replay",{})
- if replay_data is Dictionary and not ReplayProgress.valid(replay_data) and replay_data.get("version")==1 and replay_data.get("checkpoint") is Dictionary and replay_data.checkpoint.get("version")==2:
+ if replay_data is Dictionary and not ReplayProgress.valid(replay_data) and replay_data.get("version")==1 and replay_data.get("checkpoint") is Dictionary and replay_data.checkpoint.get("version")==ReplaySnapshot.SCHEMA and replay_data.checkpoint.get("ruleset")==ReplaySnapshot.RULESET:
   var previous=_decode(path+".bak")
   var prior=previous.get("replay",{})
   var active=data.get("active_match",{})

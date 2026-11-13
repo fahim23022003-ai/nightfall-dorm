@@ -1,0 +1,29 @@
+[
+  {
+    "suite": "phase5d3_qa_audio",
+    "passed": true,
+    "exit": 0,
+    "seconds": 6.88,
+    "tail": [
+      "PHASE5D3_AUDIO_QA_CHECKS=259 FAILURES=0"
+    ]
+  },
+  {
+    "suite": "onboarding_flow",
+    "passed": false,
+    "exit": 1,
+    "seconds": 12.46,
+    "tail": [
+      "ONBOARDING_FLOW_CHECKS=86 FAILURES=12"
+    ]
+  },
+  {
+    "suite": "onboarding_qa",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.47,
+    "tail": [
+      "ONBOARDING_QA_CHECKS=164 FAILURES=0"
+    ]
+  }
+]

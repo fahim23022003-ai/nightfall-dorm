@@ -13,6 +13,7 @@ func run():
  var before=FileAccess.get_file_as_bytes(path);OS.set_environment("NIGHTFALL_PROFILE_PATH",path)
  var game=load("res://scenes/main.tscn").instantiate();root.add_child(game);await process_frame;await process_frame
  if game.mode=="intro":key(KEY_SPACE,true);await process_frame;key(KEY_SPACE,false);await process_frame
+ preload("res://tests/onboarding_test_support.gd").skip(game)
  check(game.start_practice("crusher",false,["trap","repair"]),"real Practice session starts with temporary trap")
  game.audio_system.set_mix({"music":0.0,"effects":.65,"ambient":0.0,"muted":false});await process_frame
  var recorder=AudioEffectRecord.new();var slot=AudioServer.get_bus_effect_count(0);AudioServer.add_bus_effect(0,recorder);recorder.set_recording_active(true)

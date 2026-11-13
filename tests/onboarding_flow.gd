@@ -103,17 +103,22 @@ func run():
   check(game.mode=="intro" and game.onboarding.phase=="cinematic","fresh launch starts cinematic")
   game.onboarding.elapsed=elapsed
   await key(KEY_SPACE)
-  check(game.tutorial_active and game.onboarding.phase=="tutorial" and not game.profile.tutorial_completed,"skip safely routes fresh player to mandatory tutorial")
+  check(game.onboarding.is_welcome_open() and not game.tutorial_active,"skip opens explicit welcome without consuming input")
+  await mouse_button(game.onboarding.welcome_close);await mouse_button(game.ui.menu_start)
+  check(game.tutorial_active and game.onboarding.phase=="tutorial" and not game.profile.tutorial_completed,"actual welcome close and Start route fresh player to mandatory tutorial")
   check(game.profile.xp==0 and game.profile.rm_cash==0 and game.profile.pending_spins.is_empty(),"opening/skip cannot grant match rewards")
   await dispose()
  await create(true)
  var fx=game.onboarding
+ fx.show_opening()
  for i in range(60):fx._process(.25)
  check(fx.phase=="title","15 second real intro transitions to title")
  var source=FileAccess.get_file_as_string("res://scripts/onboarding.gd")
  check("Welcome to NightFall Dorm" in source and "Created by Fahim" in source,"exact welcome and creator text present")
  for i in range(16):fx._process(.25)
- check(game.mode=="menu" and fx.phase=="idle" and not fx.active,"complete opening <=19 seconds routes graduated player to menu")
+ check(game.mode=="menu" and fx.is_welcome_open(),"welcome does not auto-dismiss after19seconds")
+ await mouse_button(fx.welcome_close)
+ check(game.mode=="menu" and fx.phase=="idle" and not fx.active,"actual welcome X routes graduated player to menu")
  game.return_menu();check(fx.phase=="idle" and not fx.active,"return to menu never repeats intro")
  game.profile.inventory={"repair":3};game.profile.rm_cash=55;game.profile.xp=700;game.profile.save_profile()
  game.ui.shop.show_shop()
@@ -145,7 +150,7 @@ func run():
  check(after==before and game.mode=="menu" and not game.tutorial_active,"replay preserves all real progress, cash, inventory and rewards")
  await dispose()
  # Fresh graduation save failure leaves completion pending, retry is durable.
- await create(false);game.onboarding.skip();game.onboarding.set_process(false)
+ await create(false);game.onboarding.skip();game.onboarding.close_welcome();game.enter_game();game.onboarding.set_process(false)
  check(not game.start_match(),"normal matches blocked until fresh tutorial completed")
  game.onboarding.set_process(false)
  await graduate(false)
@@ -159,13 +164,13 @@ func run():
  await dispose()
  # A closed application restarts an unfinished practice; no campaign state was touched.
  await create(false);game.profile.save_profile();var interrupted_path=game.profile.path
- game.onboarding.skip();game.onboarding.set_process(false)
+ game.onboarding.skip();game.onboarding.close_welcome();game.enter_game();game.onboarding.set_process(false)
  game.model.move_player(Vector2.RIGHT,.25);game.model.move_player(Vector2.RIGHT,.1);game.onboarding.tutorial_tick(.1)
  check(game.onboarding.step==1,"unfinished tutorial reached real movement objective")
  await dispose()
  OS.set_environment("NIGHTFALL_PROFILE_PATH",interrupted_path)
  game=load("res://scenes/main.tscn").instantiate();root.add_child(game);await process_frame
- game.set_process(false);game.onboarding.set_process(false);game.onboarding.skip()
+ game.set_process(false);game.onboarding.set_process(false);game.onboarding.skip();game.onboarding.close_welcome();game.enter_game()
  check(game.tutorial_active and game.onboarding.step==0 and not game.profile.tutorial_completed and game.profile.xp==0,"mid-tutorial relaunch safely restarts mandatory practice")
  game.onboarding.set_process(false)
  # Deliberately fill every practice pad incorrectly; recovery frees an actual purchase pad.

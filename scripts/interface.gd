@@ -574,7 +574,7 @@ func purchase(success: bool):
 func tutorial_text() -> String:
  if game.mobile_mode: return game.mobile_ui.tutorial_text()
  var m=game.model
- if m.run_kind=="endless" and m.endless.phase=="intermission":return "INTERMISSION · NO INCOME\nBuild, upgrade or sell. WAVE / Esc saves and returns to your choice."
+ if m.run_kind=="endless" and m.endless.phase=="intermission":return "INTERMISSION · NO INCOME\nBuild freely; V moves selected machinery. P plans your floor. WAVE / Esc saves and returns to your choice."
  var room=m.player()
  if room==null:
   if m.strategy.enabled:
@@ -665,8 +665,9 @@ func update_match():
  elif m.evolution.rebirth_remaining>0:
   hunter_detail.text="TRUE NIGHTMARE · REBIRTH %.1fs" % m.evolution.rebirth_remaining
   warning_label.text=hunter_detail.text;warning_label.visible=true;warning_box.visible=true
- hunter_label.text=("REAPER" if m.hunter.transformed else "HUNTER")+" EVO %d · %d/%d" % [m.evolution.evolution_level,roundi(m.hunter.hp),roundi(m.hunter.max_hp)]
- hunter_label.tooltip_text+="\nEvolution %d/10: forms at4/7/10. Combat level %d is separate; no extra HP multiplier. Endless +1 per5 waves. Campaign: stage,75s survival steps,+1 Hell,one step per3 kill buffs. Skills at4; signature at10." % [m.evolution.evolution_level,m.hunter.level]
+ if not game.tutorial_active:
+  hunter_label.text=("REAPER" if m.hunter.transformed else "HUNTER")+" EVO %d · %d/%d" % [m.evolution.evolution_level,roundi(m.hunter.hp),roundi(m.hunter.max_hp)]
+  hunter_label.tooltip_text+="\nEvolution %d/10: forms at4/7/10. Combat level %d is separate; no extra HP multiplier. Endless +1 per5 waves. Campaign: stage,75s survival steps,+1 Hell,one step per3 kill buffs. Skills at4; signature at10." % [m.evolution.evolution_level,m.hunter.level]
  if m.wrath.active():warning_label.text="%s · %.1fs · ROOM %d" % [ReaperWrath.ABILITIES[m.wrath.ability].name.to_upper(),m.wrath.warning,m.wrath.cast_target+1]
  if warning_label.visible and (threat or m.hunter.nightmare.action!=""):
   hunter_detail.tooltip_text+="\n"+hunter_detail.text
@@ -717,8 +718,9 @@ func update_match():
  if bottom_context!=null:bottom_context.refresh()
  if game.construction!=null:game.construction.refresh()
  if game.model.run_kind!="campaign":replay_ui.update_hud()
- if room!=null and room.spatial!=null:room_selected_summary.text="Build [B] · free floor"
- if game.construction!=null:game.construction.refresh()
+ if room!=null and room.spatial!=null:
+  room_selected_summary.text="Build [B] · free floor"
+  room_selected_summary.tooltip_text="B opens buildings; click valid floor to buy. P shows room planning. V moves a selected machine during preparation/intermission. F toggles 8-unit snap; Shift positions finely. Right-click / Esc cancels."
  if not game.mobile_mode:teammates.update()
 
 func show_result():

@@ -137,7 +137,8 @@ func draw_floor(c,r):
   c.draw_rect(Rect2(offset+blocked.rect.position,blocked.rect.size),Color(.65,.28,.30,.13));c.draw_rect(Rect2(offset+blocked.rect.position,blocked.rect.size),Color(.70,.40,.38,.55),false,1)
  for id in r.buildings:
   var rect=SpatialConstruction.footprint(offset+r.tile_position(id));var selected=id==game.selected_tile or id==moving
-  c.draw_rect(rect,Color(.20,.65,.55,.12 if selected else .035));c.draw_rect(rect,Color(.52,.90,.77,.85 if selected else .4),false,2 if selected else 1)
+  var obstructing=active() and id!=moving and SpatialConstruction.footprint(offset+point).grow(2).intersects(rect)
+  c.draw_rect(rect,Color(.20,.65,.55,.12 if selected else .035));c.draw_rect(rect,Color("F08C95") if obstructing else Color(.52,.90,.77,.85 if selected else .4),false,2 if selected or obstructing else 1)
 func draw_preview(c):
  if not applicable() or not active():return
  var r=room();var b=r.buildings.get(moving,{})
@@ -147,6 +148,7 @@ func draw_preview(c):
  c.draw_set_transform(p+Vector2(0,8),0,Vector2(1,.3));c.draw_circle(Vector2.ZERO,26,Color(.015,.025,.035,.3));c.draw_set_transform(Vector2.ZERO)
  var rect=SpatialConstruction.footprint(p)
  c.draw_style_box(game.presentation.frame(Color(color,.10),color,5),rect)
+ c.draw_rect(rect.grow(2),Color(color,.95),false,2.5)
  game.presentation.building_visual.draw(c,game.presentation,id,level,p,branch,0,game.model.hunter.position-point,0,0,1.0,Color(1,1,1,.58))
  if moving>=0:
   c.draw_line(game.MAP_OFFSET+r.tile_position(moving),p,Color(color,.6),1.5)

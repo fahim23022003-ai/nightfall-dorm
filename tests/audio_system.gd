@@ -36,9 +36,13 @@ func run():
  check(audio.missing_assets.is_empty() and audio.streams.size()==AudioDirector.LOOP_NAMES.size()+AudioDirector.EFFECT_NAMES.size(),"all declared original audio assets decode")
  for name in audio.streams:
   var stream = audio.streams[name]
-  check(stream.get_length()>0.04 and stream.data.size()>100,"nonempty playable PCM: "+name)
+  check(stream.get_length()>0.04 and stream.data.size()>100,"nonempty playable asset: "+name)
   var peak = 0
   var pcm=stream.data # Cache PCM once; avoid repeated property reads for large sampled scores.
+  if stream.format!=AudioStreamWAV.FORMAT_16_BITS:
+   var source=AudioStreamWAV.load_from_file(ProjectSettings.globalize_path(AudioDirector.ROOT+name+".wav"))
+   check(source!=null and source.format==AudioStreamWAV.FORMAT_16_BITS,"compressed import retains a real PCM16 source: "+name)
+   pcm=source.data if source!=null else PackedByteArray()
   for i in range(0,pcm.size(),2):
    peak = maxi(peak,absi(pcm.decode_s16(i)))
   check(peak>100 and peak<=24575,"non-silent bounded waveform: "+name)

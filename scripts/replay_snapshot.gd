@@ -1,5 +1,8 @@
 class_name ReplaySnapshot
 extends RefCounted
+const SCHEMA=2
+const RULESET=5
+const LEGACY_RULESET_MAX=4
 const ROOM_NUMBERS=["gold","electricity","bed_level","door_level","door_hp","income_total","shots","damage_dealt","spent","occupied_seconds","door_damage_taken","income_multiplier","power_multiplier","door_multiplier","turret_multiplier","rescue_fraction","construction_actions","repair_actions","bot_timer","repair_factor","temporary_income"]
 const ROOM_FLAGS=["alive","sleeping","closed","rescue_used","coupon_armed","breach_reacted"]
 const ITEM_NUMBERS=["shield_hp","cooldown","burn_remaining","control_recovery","legendary_used","guardian_shield_hp"]
@@ -25,7 +28,7 @@ static func valid_boosts(boosts: Dictionary) -> bool:
 static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  var run=model.endless
  if model.run_kind!="endless" or run==null or run.phase!="intermission" or run.completed!=run.sealed_wave or model.hunter.hp>0 or model.player()==null or not model.player().alive:return {}
- var data={"version":2,"ruleset":5,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"expansion":model.expansion.snapshot(model),"evolution":model.evolution.snapshot(),"defense_refractory":model.defenses.shield_cooldowns.duplicate(true),"repair_refractory":model.defenses.repair_cooldowns.duplicate(true),"lure_refractory":model.defenses.lure_cooldown,"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
+ var data={"version":SCHEMA,"ruleset":RULESET,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"expansion":model.expansion.snapshot(model),"evolution":model.evolution.snapshot(),"defense_refractory":model.defenses.shield_cooldowns.duplicate(true),"repair_refractory":model.defenses.repair_cooldowns.duplicate(true),"lure_refractory":model.defenses.lure_cooldown,"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
  data.omen=run.omen.snapshot()
  for room in model.rooms:
   var saved={"owner":room.owner,"profile":room.profile,"bed_branch":room.bed_branch,"door_branch":room.door_branch,"trait":room.trait_id,"position":pair(room.resident_position),"main_damage":room.main_damage_dealt,"minion_damage":room.minion_damage_dealt,"buildings":[]}
@@ -47,8 +50,8 @@ static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  data.items.trap={"position":pair(fx.trap.position),"remaining":fx.trap.remaining} if not fx.trap.is_empty() else {}
  return data if valid(data) else {}
 static func valid(data) -> bool:
- if not data is Dictionary or not whole(data.get("version"),1,2) or not whole(data.get("ruleset"),1,5) or data.get("map","") not in MapCatalog.IDS or data.get("difficulty","") not in RankCatalog.DIFFICULTIES:return false
- if (data.version==1 and data.ruleset>4) or (data.version==2 and data.ruleset!=5):return false
+ if not data is Dictionary or not whole(data.get("version"),1,SCHEMA) or not whole(data.get("ruleset"),1,RULESET) or data.get("map","") not in MapCatalog.IDS or data.get("difficulty","") not in RankCatalog.DIFFICULTIES:return false
+ if (data.version==1 and data.ruleset>LEGACY_RULESET_MAX) or (data.version==SCHEMA and data.ruleset!=RULESET):return false
  for key in ["run_id","seed","completed"]:
   if not whole(data.get(key),1):return false
  if data.has("omen") and not NightOmens.valid(data.omen,int(data.completed)):return false

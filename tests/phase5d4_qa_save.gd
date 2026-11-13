@@ -16,7 +16,7 @@ func frozen():
     var actual=r.buildings[int(b.tile)]
     check(actual.kind==b.kind and actual.level==b.level and actual.get("specialization","")==b.specialization and actual.invested_gold==b.invested_gold and actual.invested_power==b.invested_power,"old individual machine actualspend and branch preserved")
   check(m.evolution.acquired.is_empty() and m.evolution.credited.is_empty(),"old save gains no invented evolution/death credits")
-  check(p.checkpoint_endless(m) and p.replay.checkpoint.ruleset==ChallengeCode.RULESET and ReplaySnapshot.valid(p.replay.checkpoint),"old migration writes valid advertised current ruleset through real transaction")
+  check(p.checkpoint_endless(m) and p.replay.checkpoint.ruleset==ReplaySnapshot.RULESET and ReplaySnapshot.valid(p.replay.checkpoint),"old migration writes valid advertised current ruleset through real transaction")
   var q=PlayerProfile.new(path);check(q.load_profile() and not q.read_only and q.inventory==stock and q.resume_endless()!=null,"migrated old save reload preserves inventory and resume "+name)
 func replay_atomicity():
  var path=prefix+"-atomic.json";DirAccess.copy_absolute("res://docs/evidence/phase5d4/qa-frozen-5d3-hell.json",path)
