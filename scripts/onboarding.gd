@@ -14,6 +14,8 @@ var objective
 var progress
 var continue_button
 var sounds_seen={}
+var welcome_dismissed=false
+var welcome_close: Button
 const TITLES=["MOVE","FIND A ROOM","SLEEP","GOLD ECONOMY","ELECTRICITY","BUILD A DEFENSE","UPGRADE AND REPAIR","SURVIVE A SIMPLE THREAT","TUTORIAL COMPLETE"]
 const NOTES=["WASD or arrow keys: move toward the glowing marker.","Walk into the highlighted empty room. Press E to claim it.","Walk to the glowing bed. Press E to sleep and lock your door.","Sleep to earn Gold. Use Gold to build and upgrade. Watch the Gold counter increase.","Click a floor pad, choose Dynamo, then BUILD. The Dynamo produces Electricity, separately from Gold.","Use the glowing pad near your door. Build a Needle turret in range. A distant turret cannot defend this door; sell and rebuild it, or use Recover.","Click your turret and upgrade it once. Then press R to repair the damaged door.","Your practice Hunter is weak. Watch the door take a hit and your turret fire. Your practice resources and stored items are separate.","You are ready. Claim a room, sleep, build defenses and survive the night."]
 func _init(owner):game=owner
@@ -21,7 +23,8 @@ func _ready():
  theme=GothicTheme.make_theme(game.ui.default_font)
  mouse_filter=Control.MOUSE_FILTER_IGNORE
  size=Vector2(1280,720)
- show_opening()
+ if game.profile.tutorial_completed:show_title()
+ else:show_opening()
 func primary_button(button: Button):
  for state in ["normal","hover","pressed","disabled","focus"]:button.add_theme_stylebox_override(state,GothicTheme.surface("22292B","B49C6E","primary_"+state))
 func clean_controls():
@@ -31,16 +34,28 @@ func show_opening():
  game.mode="intro"
  game.audio_system.begin_cinematic()
  var b=Button.new();b.text="Skip opening · Space / Enter / Esc";b.position=Vector2(800,645);b.size=Vector2(430,42);b.pressed.connect(skip);add_child(b)
+func is_welcome_open() -> bool:return active and phase=="title" and not welcome_dismissed
 func skip():
- if phase not in ["cinematic","title"]:return
- cancel_intro_audio();game.audio_system.end_cinematic();active=false;phase="idle";clean_controls();queue_redraw()
- if game.profile.tutorial_completed:game.return_menu()
- else:game.start_tutorial()
+ if phase!="cinematic":return
+ show_title()
 func show_title():
- phase="title";elapsed=0;cancel_intro_audio();game.audio_event("intro_whisper")
- clean_controls()
- var b=Button.new();b.text="Continue · Enter / Space";b.position=Vector2(420,605);b.size=Vector2(440,48);b.pressed.connect(skip);add_child(b)
- primary_button(b)
+ if welcome_dismissed:return
+ phase="title";elapsed=0;active=true;cancel_intro_audio();game.audio_system.end_cinematic();game.mode="menu"
+ clean_controls();mouse_filter=Control.MOUSE_FILTER_STOP
+ var shade=ColorRect.new();shade.color=Color(.015,.02,.03,.82);shade.size=Vector2(1280,720);shade.mouse_filter=Control.MOUSE_FILTER_STOP;add_child(shade)
+ var panel=Panel.new();panel.position=Vector2(260,128);panel.size=Vector2(760,472);panel.mouse_filter=Control.MOUSE_FILTER_STOP;panel.add_theme_stylebox_override("panel",game.ui.style("172839","B49C6E"));add_child(panel)
+ game.ui.label_at("Welcome to Nightfall Dorm",Vector2(305,177),36,620,true,self)
+ game.ui.label_at("Created by Fahim",Vector2(307,245),24,630,false,self).modulate=Color("E6CEAA")
+ var story=game.ui.label_at("You escaped the darkness...\nBut the nightmare followed you.\n\nFind a room. Lock the door.\nSurvive the night.",Vector2(308,308),23,650,false,self)
+ story.size.y=210
+ game.ui.label_at("Close this welcome to enter the dorm.",Vector2(308,549),16,630,false,self).modulate=Color("B7C6C7")
+ welcome_close=Button.new();welcome_close.name="WelcomeClose";welcome_close.text="×";welcome_close.position=Vector2(945,145);welcome_close.size=Vector2(56,56);welcome_close.add_theme_font_size_override("font_size",34);welcome_close.tooltip_text="Close welcome";welcome_close.pressed.connect(close_welcome);add_child(welcome_close)
+ for property in ["focus_next","focus_previous","focus_neighbor_left","focus_neighbor_right","focus_neighbor_top","focus_neighbor_bottom"]:welcome_close.set(property,NodePath("."))
+ primary_button(welcome_close);welcome_close.grab_focus();queue_redraw()
+func close_welcome():
+ if not is_welcome_open():return
+ welcome_dismissed=true;active=false;phase="idle";mouse_filter=Control.MOUSE_FILTER_IGNORE;clean_controls();game.mode="menu";game.ui.show_menu();queue_redraw()
+ if is_instance_valid(game.ui.menu_start):game.ui.menu_start.grab_focus()
 func cancel_intro_audio():
  if is_instance_valid(game.audio_system):game.audio_system.stop_events(["intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","door_break"])
 func begin_tutorial():
@@ -140,11 +155,17 @@ func _process(delta):
     var key=str(entry[0])+entry[1]
     if elapsed>=entry[0] and not sounds_seen.has(key):sounds_seen[key]=true;game.audio_event(entry[1])
    if elapsed>=15:show_title()
-  elif elapsed>=4:skip()
+  # Welcome deliberately has no timer dismissal. Only its X closes it.
  elif phase=="tutorial":tutorial_tick(delta)
  queue_redraw()
 func _input(event):
- if phase in ["cinematic","title"] and ((event is InputEventKey and event.pressed and not event.echo and event.keycode in [KEY_SPACE,KEY_ENTER,KEY_ESCAPE]) or (event is InputEventMouseButton and event.pressed and event.button_index==MOUSE_BUTTON_LEFT)):
+ if is_welcome_open():
+  if event is InputEventKey:
+   # Let the focused X handle its standard GUI accept action, including Space.
+   if event.keycode in [KEY_ENTER,KEY_KP_ENTER,KEY_SPACE,KEY_TAB] and get_viewport().gui_get_focus_owner()==welcome_close:return
+   get_viewport().set_input_as_handled()
+  return
+ if phase=="cinematic" and ((event is InputEventKey and event.pressed and not event.echo and event.keycode in [KEY_SPACE,KEY_ENTER,KEY_ESCAPE]) or (event is InputEventMouseButton and event.pressed and event.button_index==MOUSE_BUTTON_LEFT)):
   skip();get_viewport().set_input_as_handled()
 func text(value,pos,size,color=Color.WHITE):
  draw_string(game.ui.default_font,pos,value,HORIZONTAL_ALIGNMENT_CENTER,-1,size,color)
@@ -152,7 +173,7 @@ func heading(value,pos,size,color=Color.WHITE):
  var width=game.ui.horror_font.get_string_size(value,HORIZONTAL_ALIGNMENT_LEFT,-1,size).x
  draw_string(game.ui.horror_font,pos-Vector2(width*.5,0),value,HORIZONTAL_ALIGNMENT_LEFT,-1,size,color)
 func _draw():
- if not active:return
+ if not active or phase=="title":return
  if phase=="tutorial":
   var m=game.model;var r=m.player();var target=m.rooms[0].door_position() if r==null else r.bed_position() if step<=3 else r.door_position()
   if step in [4,5] and r!=null:

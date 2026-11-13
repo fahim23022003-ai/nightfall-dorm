@@ -2,6 +2,7 @@ class_name GameInterface
 extends CanvasLayer
 
 var game
+var menu_start: Button
 var panel: Control
 var message: Label
 var details: Label
@@ -163,6 +164,7 @@ func button(text: String,pos: Vector2,callback: Callable,width: float=240,height
  b.size=Vector2(width,height)
  b.pressed.connect(func(): game.audio_event("button"))
  b.pressed.connect(func():
+  if game.onboarding!=null and game.onboarding.is_welcome_open():return
   if game.cancelled_pointer:return
   if b.get_parent()==context_box and bottom_context!=null and (not context_open or bottom_context.is_transitioning()):return
   if bool(b.get_meta("ignore_double_release",false)):
@@ -201,30 +203,7 @@ func show_menu():
  if game.mobile_mode:
   game.mobile_ui.show_menu(self)
   return
- label_at("SMALL ROOMS. BIG NIGHTMARES.",Vector2(72,108),18,580).modulate=Color("7BE3A1")
- var wordmark=label_at("NIGHTFALL\nDORM",Vector2(66,157),58,600,true)
- wordmark.add_theme_font_override("font",horror_font)
- wordmark.add_theme_constant_override("line_spacing",-32)
- label_at("—  THE NIGHT WATCH  —",Vector2(74,284),13,560).modulate=Color("B8A478")
- label_at("Claim a bed. Build your defenses.\nMake it through the night.",Vector2(72,315),20,590)
- button("Start Game",Vector2(72,405),game.enter_game,330,54)
- button("How to Play",Vector2(72,477),show_help,160,46)
- button("Settings",Vector2(242,477),show_settings,160,46)
- button("Exit Game",Vector2(72,539),game.request_quit,330,44)
- progression.menu_summary()
- button("Consumable inventory",Vector2(72,644),items_ui.inventory,330,36)
- if not game.profile.pending_spins.is_empty(): button("Resume Lucky Spin",Vector2(430,644),items_ui.spin,240,36)
- if not game.mobile_mode:
-  var endless=button("Endless Siege",Vector2(735,405),replay_ui.show_endless,440,54)
-  endless.icon=PremiumButton.texture("endless")
-  for state in ["normal","hover","pressed","disabled","focus"]:endless.add_theme_stylebox_override(state,GothicTheme.surface("271D33","BF88B5","mode_endless_"+state))
-  var replay=button("Challenge · Practice · Cosmetics",Vector2(735,475),replay_ui.show_hub,440,40)
-  replay.icon=PremiumButton.texture("challenge")
-  premium_icon("cash",Vector2(735,549),Vector2(38,38))
-  label_at("RM Cash %d" % game.profile.rm_cash,Vector2(787,552),22,368)
-  button("Shop · Common supplies",Vector2(735,594),shop.show_shop,440,42)
-  button("Replay Tutorial",Vector2(735,644),func():game.start_tutorial(true),440,36)
- label_at("A cursed residence. A night without mercy.",Vector2(72,690),16,620).modulate=Color("9DB6C2")
+ MainMenu.new(self).create()
 
 func show_help():
  clear()

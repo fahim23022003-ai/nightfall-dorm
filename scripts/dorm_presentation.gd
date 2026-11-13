@@ -472,8 +472,6 @@ func menu_scene(c):
  for side in [-1,1]:c.draw_circle(q+Vector2(side*7,-27),2,Color(.65,.22,.28,.7))
  c.draw_line(Vector2(72,143),Vector2(391,143),Color("7D6854"),1)
  for x in [72,391]:c.draw_colored_polygon(PackedVector2Array([Vector2(x,139),Vector2(x+4,143),Vector2(x,147),Vector2(x-4,143)]),Color("B69A6A"))
- # A separate dark-glass wallet plinth gives the shop its own visual group.
- c.draw_style_box(GothicTheme.surface("181C22","A08B67"),Rect2(716,531,478,160))
 
 func render_door_scars(c,room):
  if not identity.scars.any(func(s):return s.kind=="door_damage" and s.room==room.index):return
