@@ -1,3 +1,17 @@
+# Phase 4 — Late-game visual clarity complete
+
+Two focused presentation changes: bounded backed NPC name lanes with protected
+combat/door/UI regions and existing Team fallback; quieter unselected prestige
+ornaments while retaining art, crowns, branches, badges and selected feedback.
+Godot 4.6.3: new label checks **30/0**, prior visual checks **50/0**, independent
+render capture checks **15/0**. Actual crowded before/after, genuine earned wave45,
+Team identification and 1080p gameplay are committed with hashes/timing evidence.
+See [report](LATE_GAME_VISUAL_CLARITY.md). Only dorm_presentation.gd changes
+production code; 127 other script/UID files unchanged from34bebd9.
+Native Windows/human usability unverified. No full suite, new build or next phase.
+
+---
+
 # Gameplay visual audit and polish — complete
 
 Three presentation-only fixes: gold selection/upgrade feedback, compact late-room

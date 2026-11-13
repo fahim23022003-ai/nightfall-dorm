@@ -245,7 +245,7 @@ func render(c):
    else:
     var key="player_sleep" if room.owner==0 else "bot_sleep_%d" % posmod(room.owner-1,5)
     c.draw_texture_rect(cartoon[key],Rect2(OFFSET+room.bed_position()+Vector2(-22,-30+sin(clock*1.7+room.index)*0.6),Vector2(44,46)),false)
-    if room.owner>0: text(c,room.survivor_name(),OFFSET+room.bed_position()+Vector2(-17,-34),10,Color("E2D9C8"))
+    # The room plaque and Team panel already identify sleeping residents.
   elif room.owner>0 and room.alive: resident(c,room.resident_position,room.index,false)
   elif not room.alive:
    var age=float(death_ages.get(room.index,2.0))
@@ -267,6 +267,7 @@ func render(c):
    var sweep=(1-attack_pose/.35)*PI
    c.draw_arc(q,32,sweep-PI*.7,sweep,24,Color(1,.55,.6,attack_pose/.35),3)
    if not c.profile.settings.get("reduced_effects",false):c.draw_line(q+Vector2(-20,-17),q+Vector2(18,15),Color(1,.7,.7,attack_pose/.35),2)
+ render_resident_labels(c)
  wrath_presentation.draw(c,clock)
  for shot in m.projectiles:
   var p=OFFSET+shot.position
@@ -411,7 +412,7 @@ func resident(c, pos: Vector2, index: int, player: bool):
  var bob=sin(clock*2)*0.4 if not walk else 0.0
  sprite(c,"shadow",OFFSET+pos+Vector2(0,12),Vector2(35,18))
  c.draw_texture_rect(texture,Rect2(OFFSET+pos+Vector2(-18,-40+bob),Vector2(36,52)),false)
- if not player: text(c,c.model.rooms[index].survivor_name(),OFFSET+pos+Vector2(-17,-44),10,Color("E2D9C8"))
+ # Names are laid out together so clustered arrivals cannot overprint each other.
 
 func hunter(c,h):
  if h.transformed:
@@ -582,20 +583,22 @@ func prestige(c,point: Vector2,level: int,kind="turret",detailed=false):
  c.draw_texture_rect(prestige_art["%s_%d" % [kind,level]],Rect2(point-Vector2(32,39),Vector2(64,64)),false)
  var reduced=c.profile.settings.get("reduced_effects",false)
  var color=Color("E9B866") if level==10 else Color("A5C7ED")
- c.draw_arc(point,23,0,TAU,24,Color(color,.6),2)
+ var emphasis=1.0 if detailed else .28
+ c.draw_arc(point,23,0,TAU,24,Color(color,.6*emphasis),2)
  if level>=7:
-  for side in [-1,1]:c.draw_line(point+Vector2(side*19,-13),point+Vector2(side*27,-27),color,3)
+  for side in [-1,1]:c.draw_line(point+Vector2(side*19,-13),point+Vector2(side*27,-27),Color(color,emphasis),3)
  if level==10:
-  c.draw_colored_polygon(PackedVector2Array([point+Vector2(-16,-28),point+Vector2(-18,-42),point+Vector2(-7,-34),point+Vector2(0,-45),point+Vector2(7,-34),point+Vector2(18,-42),point+Vector2(16,-28)]),Color(color,.85))
-  if not reduced:c.draw_arc(point,28,sin(clock)*.2,PI+sin(clock)*.2,24,Color(color,.4),2)
+  c.draw_colored_polygon(PackedVector2Array([point+Vector2(-16,-28),point+Vector2(-18,-42),point+Vector2(-7,-34),point+Vector2(0,-45),point+Vector2(7,-34),point+Vector2(18,-42),point+Vector2(16,-28)]),Color(color,.85 if detailed else .55))
+  if not reduced and detailed:c.draw_arc(point,28,sin(clock)*.2,PI+sin(clock)*.2,24,Color(color,.4),2)
  var width=44 if detailed else 24
  c.draw_style_box(frame(Color("172338"),color,2),Rect2(point+Vector2(-width*.5,16),Vector2(width,12)))
  text(c,"L%d%s" % [level," MAX" if level==10 else ""] if detailed else str(level),point+Vector2(-18 if detailed else -6,25),8,color)
 
 func support_prestige(c,point: Vector2,level: int,branch: String="",detailed=false,show_branch=true):
  var color=Color("E9B866") if level==10 else Color("9DD4C3")
- c.draw_arc(point+Vector2(0,2),25,PI*.1,PI*.9,20,color,2)
- for side in [-1,1]:c.draw_line(point+Vector2(side*20,-18),point+Vector2(side*27,-29),color,3)
+ var ornament=Color(color,1.0 if detailed else .28)
+ c.draw_arc(point+Vector2(0,2),25,PI*.1,PI*.9,20,ornament,2)
+ for side in [-1,1]:c.draw_line(point+Vector2(side*20,-18),point+Vector2(side*27,-29),ornament,3)
  if branch!="" and show_branch:c.draw_texture_rect(PremiumButton.texture(branch),Rect2(point+Vector2(13,-33),Vector2(19,19)),false)
  var width=46 if detailed else 24
  c.draw_style_box(frame(Color("172338"),color,2),Rect2(point+Vector2(-width*.5,18),Vector2(width,12)))
@@ -609,3 +612,54 @@ func selection_outline(c,point: Vector2):
    var corner=point+Vector2(x*27,y*26)
    c.draw_line(corner,corner-Vector2(x*9,0),color,2.5)
    c.draw_line(corner,corner-Vector2(0,y*9),color,2.5)
+
+
+func resident_label_layout(c) -> Array:
+ # At most five teammate labels; stable identity lanes, no random offsets,
+ # animation, timers or unbounded search. Full names remain in Team / plaques.
+ var m=c.model
+ var candidates=[]
+ var blockers=[]
+ var visible=visible_world_rect(c,0)
+ for room in m.rooms:
+  if room.owner>=0:
+   var door=OFFSET+room.door_position()
+   var normal=room.door_normal()
+   var hp_offset=Vector2(40,-25) if absf(normal.x)<.5 else Vector2(-35,50)
+   blockers.append(Rect2(door+hp_offset+Vector2(-8,-25),Vector2(105,80)))
+  if room.owner>0 and room.alive and not room.sleeping:
+   var at=OFFSET+room.resident_position
+   if visible.has_point(at):
+    var priority=0 if room.index==c.watched_room else 1 if room.index==m.hunter.target else 2
+    candidates.append({"index":room.index,"point":at,"name":"%02d · %s" % [room.index+1,room.survivor_name()],"priority":priority})
+ if m.hunter.state!=HunterState.State.DORMANT:
+  blockers.append(Rect2(OFFSET+m.hunter.position+Vector2(-45,-90),Vector2(90,120)))
+ if c.get("horror")!=null:
+  for number in c.horror.damage_numbers:blockers.append(c.horror.damage_number_geometry(c,number).rect.grow(4))
+ candidates.sort_custom(func(a,b):return a.priority<b.priority if a.priority!=b.priority else a.index<b.index)
+ var canvas=c.get_canvas_transform()
+ var viewport=c.get_viewport_rect().size
+ var safe=Rect2(12,150,viewport.x-24,viewport.y-225)
+ var labels=[]
+ for actor in candidates:
+  var width=font.get_string_size(actor.name,HORIZONTAL_ALIGNMENT_LEFT,-1,10).x+12
+  var lane=posmod(actor.index-1,5)
+  for side in [30.0,105.0,180.0,-width-30.0,-width-105.0,-width-180.0]:
+   var rect=Rect2(actor.point+Vector2(side,-47-lane*23),Vector2(width,16))
+   var screen=Rect2(canvas*rect.position,rect.size*canvas.get_scale())
+   if not safe.encloses(screen):continue
+   if c.ui.context_open and screen.end.y>430:continue
+   if c.ui.teammates.expanded and screen.end.x>915:continue
+   if blockers.any(func(block):return rect.grow(3).intersects(block)):continue
+   labels.append({"index":actor.index,"name":actor.name,"rect":rect,"point":actor.point,"priority":actor.priority})
+   blockers.append(rect.grow(3))
+   break
+ return labels
+
+func render_resident_labels(c):
+ for label in resident_label_layout(c):
+  var rect=label.rect
+  var anchor=Vector2(clampf(label.point.x,rect.position.x,rect.end.x),rect.end.y)
+  c.draw_line(label.point+Vector2(0,-38),anchor,Color(.7,.73,.7,.35),1)
+  c.draw_style_box(frame(Color("17212B"),Color("9C8A67") if label.priority<2 else Color("4D5B62"),3),rect)
+  text(c,label.name,rect.position+Vector2(6,11),10,Color("E8DEC9"))

@@ -1,0 +1,17 @@
+{
+ "rows": [
+  {
+   "frames": 90,
+   "mean_redraw_wait_ms": 32.7086222222222,
+   "p95_redraw_wait_ms": 38.69,
+   "source": "baseline_34bebd9"
+  },
+  {
+   "frames": 90,
+   "mean_redraw_wait_ms": 33.508,
+   "p95_redraw_wait_ms": 40.244,
+   "source": "after_two_visual_fixes"
+  }
+ ],
+ "scope": "Same frozen actual crowded combat snapshot;90 forced redraw waits per version plus20warmup; Linux Godot4.6.3 Mesa llvmpipe, audioDummy. Not whole-game FPS/CPU/Windows benchmark. Sequential order/noisy shared environment."
+}
