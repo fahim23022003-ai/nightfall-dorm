@@ -29,7 +29,7 @@ static func wave_report(ui):
  text+="\nAllied Hunter damage: %.1f · Other player damage: %.1f\nDoor damage received: %.1f · Actual repairs: %.1f HP\nGenerated: %.2f Gold / %.2f Electricity\nSuccessful support/defense activations: %d\nHunter skills: %s\n" % [data.allied,data.other,data.door,data.repair,data.gold,data.power,data.activations,", ".join(skills)]
  text+="\nDamage, production and support are separate. DoT is credited to its source;\nshared consumable damage remains Other. Purchases, sales, theft, aid and Omen\npayouts are not generation. Missing legacy telemetry is never fabricated."
  if not data.available:text="This legacy checkpoint predates wave telemetry.\nNo historical performance figures are inferred.\nContinue normally to collect the next wave report."
- var label=ui.label_at(text,Vector2(120,130),17,1020);label.tooltip_text="All encountered skills: "+", ".join(data.skills);label.size.y=460;label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+ var label=ui.label_at(text,Vector2(120,130),17,1020);label.mouse_filter=Control.MOUSE_FILTER_PASS;label.tooltip_text="All encountered skills: "+", ".join(data.skills);label.size.y=460;label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  ui.button("Back · wave choices and Omens",Vector2(120,612),ui.replay_ui.show_intermission,1020,42)
 
 static func refresh(ui):

@@ -27,7 +27,10 @@ func run():
  var sum=0.0
  for key in a.loops:
   if key.begins_with("music"):sum+=a.loop_weights[key]
- check(sum<.001,"Off silences all music including bosses")
+ check(sum<.001 and AudioServer.is_bus_mute(AudioServer.get_bus_index("Music")),"Off silences all music including bosses at the actual bus")
+ var off_history=a.soundtrack.history.duplicate(true);a.preview_track("music_dust");a.update_state(.1,null,"menu")
+ check(not AudioServer.is_bus_mute(AudioServer.get_bus_index("Music")) and a.soundtrack.history==off_history,"explicit audition bypasses playlist Off without consuming history")
+ a.stop_preview();check(AudioServer.is_bus_mute(AudioServer.get_bus_index("Music")),"ending audition restores actual Off bus mute")
  a.set_suspended(true);check(a.loops.music_siege.stream_paused,"pause all music");a.set_suspended(false)
  check(not a.loops.music_siege.stream_paused,"resume existing players")
  check(a.get_child_count()==nodes and a.music_start_count==starts,"stable player lifecycle")

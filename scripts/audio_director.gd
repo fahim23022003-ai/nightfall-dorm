@@ -143,6 +143,7 @@ func end_cinematic():cinematic_music=false
 func preview_track(name: String):
  preview_music=name if name in LOOP_NAMES and name.begins_with("music") else ""
  if preview_music!="":loops[preview_music].play(0)
+ _refresh_music_mute()
 func preview_effect(name: String):
  stop_preview()
  if not streams.has(name) or name not in EFFECT_NAMES:return
@@ -152,6 +153,7 @@ func stop_preview():
  preview_music=""
  if preview_effect_name!="":stop_events([preview_effect_name])
  preview_effect_name="";preview_effect_until=0.0
+ _refresh_music_mute()
 
 func set_mix(settings: Dictionary):
  soundtrack.settings(settings)
@@ -167,7 +169,11 @@ func set_mix(settings: Dictionary):
   var bus_name = {"music":"Music","effects":"Effects","ambient":"Ambient"}[key]
   var index = AudioServer.get_bus_index(bus_name)
   AudioServer.set_bus_volume_db(index,linear_to_db(maxf(0.0001,mix[key]))-5.0)
-  AudioServer.set_bus_mute(index,mix.muted or mix[key]<=0)
+  AudioServer.set_bus_mute(index,mix.muted or mix[key]<=0 or key=="music" and soundtrack.mode=="off" and preview_music=="")
+
+func _refresh_music_mute():
+ var index=AudioServer.get_bus_index("Music")
+ if index>=0:AudioServer.set_bus_mute(index,mix.muted or mix.music<=0 or soundtrack.mode=="off" and preview_music=="")
 
 func event(name: String, position: Vector2 = Vector2.INF, details: Dictionary = {}) -> bool:
  setup()
@@ -291,6 +297,7 @@ func update_state(delta: float, model, mode: String):
  if suspended: return
  setup()
  if streams.is_empty():return # Shutdown is terminal even if the host drains one more frame.
+ _refresh_music_mute()
  if not is_finite(delta) or delta < 0:
   return
  _clock += delta

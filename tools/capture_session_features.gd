@@ -3,6 +3,14 @@ var frame_times=[]
 var combat_captured=false
 func run():
  output="res://docs/evidence/every-night/";phase="screens";root.size=Vector2i(1280,720);await setup_game();game.onboarding.close_welcome();game.return_menu()
+ if "report-input" in OS.get_cmdline_user_args():
+  var saved=JSON.parse_string(FileAccess.get_file_as_string(output+phase+"/prepared-wave1-checkpoint.json"));game.model=ReplaySnapshot.restore(saved);game.mode="match";game.focus_camera(true)
+  game.ui.replay_ui.show_intermission();await advance(.4);await click(find_button("Wave report"));await advance(.4)
+  check(game.ui.current_screen=="wave_report","actual Wave report button opens collected report")
+  var motion=InputEventMouseMotion.new();motion.position=root.get_final_transform()*Vector2(250,230);motion.global_position=motion.position;Input.parse_input_event(motion);await advance(1)
+  await capture("G3-report-tooltip");await click(find_button("Back · wave choices and Omens"));await advance(.3)
+  check(game.ui.current_screen=="intermission","actual report Back restores wave choices")
+  print("REPORT_INPUT_CHECKS=",checks," FAILURES=",failures);game.audio_system.shutdown();game.queue_free();await create_timer(.5).timeout;quit(1 if failures else 0);return
  if "listening" in OS.get_cmdline_user_args():
   game.ui.show_audio_test();await advance(.5);await capture("B2-listening-all14")
   game.audio_system.shutdown();game.queue_free();await create_timer(.5).timeout;quit(1 if failures else 0);return
