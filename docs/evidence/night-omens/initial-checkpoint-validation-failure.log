@@ -1,0 +1,64 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: REPLAY ENDLESS: selected choice saves transactionally
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] start (res://tests/night_omens.gd:7)
+       [2] mechanics (res://tests/night_omens.gd:12)
+       [3] run (res://tests/night_omens.gd:72)
+ERROR: REPLAY ENDLESS: saved choice resumes unchanged
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] start (res://tests/night_omens.gd:8)
+       [2] mechanics (res://tests/night_omens.gd:12)
+       [3] run (res://tests/night_omens.gd:72)
+SCRIPT ERROR: Invalid call. Nonexistent function 'continue_wave' in base 'Nil'.
+          at: start (res://tests/night_omens.gd:9)
+          GDScript backtrace (most recent call first):
+              [0] start (res://tests/night_omens.gd:9)
+              [1] mechanics (res://tests/night_omens.gd:12)
+              [2] run (res://tests/night_omens.gd:72)
+SCRIPT ERROR: Invalid call. Nonexistent function 'tick' in base 'Nil'.
+          at: mechanics (res://tests/night_omens.gd:13)
+          GDScript backtrace (most recent call first):
+              [0] mechanics (res://tests/night_omens.gd:13)
+              [1] run (res://tests/night_omens.gd:72)
+ERROR: REPLAY ENDLESS: completed payout and checkpoint save together
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] safety (res://tests/night_omens.gd:35)
+       [2] run (res://tests/night_omens.gd:72)
+ERROR: REPLAY ENDLESS: completion reload preserves exact paid wallet
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] safety (res://tests/night_omens.gd:36)
+       [2] run (res://tests/night_omens.gd:72)
+ERROR: REPLAY ENDLESS: reload cannot duplicate Omen payout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] safety (res://tests/night_omens.gd:37)
+       [2] run (res://tests/night_omens.gd:72)
+ERROR: REPLAY ENDLESS: next ordinary wave has no inherited event
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] safety (res://tests/night_omens.gd:38)
+       [2] run (res://tests/night_omens.gd:72)
+ERROR: REPLAY ENDLESS: migrated checkpoint encodes valid optional state
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] compatibility (res://tests/night_omens.gd:57)
+       [2] run (res://tests/night_omens.gd:72)
+SCRIPT ERROR: Invalid access to property or key 'omen' on a base object of type 'Dictionary'.
+          at: compatibility (res://tests/night_omens.gd:58)
+          GDScript backtrace (most recent call first):
+              [0] compatibility (res://tests/night_omens.gd:58)
+              [1] run (res://tests/night_omens.gd:72)
+NIGHT_OMEN_OBSERVATIONS=[]
+NIGHT_OMEN_CHECKS=79 FAILURES=7

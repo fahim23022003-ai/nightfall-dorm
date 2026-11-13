@@ -442,7 +442,7 @@ func _tick_sim(delta: float):
    if room.resident_position.distance_to(room.bed_position())<2:
     room.sleeping = true
     room.closed = true
-  room.tick_economy(delta)
+  room.tick_economy(delta,endless.omen.factor("blackout",difficulty) if run_kind=="endless" and endless!=null and room.index==player_room else 1.0)
   if run_kind=="endless":
    room.gold=minf(1e12,room.gold);room.electricity=minf(1e12,room.electricity);room.income_total=minf(1e12,room.income_total)
   if room.owner > 0:
@@ -530,6 +530,7 @@ func apply_room_damage(index: int,amount: float,source: String="door strike",att
  if packet.is_empty():packet=DamageRules.source(source)
  if not DamageRules.valid(packet):return 0.0
  var old=room.door_hp
+ if run_kind=="endless" and endless!=null and index==player_room:amount*=endless.omen.factor("walls",difficulty)
  if attacker_id==1:amount*=evolution.damage_factor(special)
  amount*=StrategyCatalog.BRANCHES.get(room.door_branch,{}).get("mitigation",1.0)
  amount=MagicDefense.absorb(self,room,amount,attacker_id,packet)

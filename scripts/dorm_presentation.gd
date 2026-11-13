@@ -330,6 +330,10 @@ func render(c):
     var selected=room.index==m.player_room and c.selected_tile==tile and c.ui.context_open and c.watched_room<0
     if b.kind in ["turret","heavy"]:prestige(c,OFFSET+room.tile_position(tile),b.level,b.kind,selected)
     else:support_prestige(c,OFFSET+room.tile_position(tile),b.level,b.get("specialization",""),selected,m.map_id=="legacy")
+ if m.run_kind=="endless" and m.endless.omen.active in ["blood","blackout"]:
+  var tint=Color(.35,.01,.04,.045) if m.endless.omen.active=="blood" else Color(.01,.01,.07,.12)
+  if c.profile.settings.reduced_effects:tint.a*=.35
+  c.draw_rect(visible_world_rect(c,0),tint)
  if c.get("horror")!=null: c.horror.render_world(c)
  item_presentation.draw(c)
  for f in c.floating:

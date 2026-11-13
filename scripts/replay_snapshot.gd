@@ -26,6 +26,7 @@ static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  var run=model.endless
  if model.run_kind!="endless" or run==null or run.phase!="intermission" or run.completed!=run.sealed_wave or model.hunter.hp>0 or model.player()==null or not model.player().alive:return {}
  var data={"version":1,"ruleset":4,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"expansion":model.expansion.snapshot(model),"evolution":model.evolution.snapshot(),"defense_refractory":model.defenses.shield_cooldowns.duplicate(true),"repair_refractory":model.defenses.repair_cooldowns.duplicate(true),"lure_refractory":model.defenses.lure_cooldown,"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
+ data.omen=run.omen.snapshot()
  for room in model.rooms:
   var saved={"owner":room.owner,"profile":room.profile,"bed_branch":room.bed_branch,"door_branch":room.door_branch,"trait":room.trait_id,"position":pair(room.resident_position),"main_damage":room.main_damage_dealt,"minion_damage":room.minion_damage_dealt,"buildings":[]}
   for key in ROOM_NUMBERS+ROOM_FLAGS:saved[key]=room.get(key)
@@ -44,6 +45,7 @@ static func valid(data) -> bool:
  if not data is Dictionary or data.get("version")!=1 or not whole(data.get("ruleset"),1,4) or data.get("map","") not in MapCatalog.IDS or data.get("difficulty","") not in RankCatalog.DIFFICULTIES:return false
  for key in ["run_id","seed","completed"]:
   if not whole(data.get(key),1):return false
+ if data.has("omen") and not NightOmens.valid(data.omen,int(data.completed)):return false
  for key in ["time","preparation","shots","damage","eliminations"]:
   if not number(data.get(key)):return false
  if not whole(data.get("player_room"),0,5) or not whole(data.get("bot_claimed"),0,5) or not point(data.get("player_position")):return false
@@ -157,5 +159,6 @@ static func restore(data) -> MatchModel:
  model.defenses.repair_cooldowns=data.get("repair_refractory",{}).duplicate(true);model.defenses.shield_cooldowns=data.get("defense_refractory",{}).duplicate(true);model.defenses.lure_cooldown=float(data.get("lure_refractory",0))
  if not data.items.trap.is_empty():model.items.trap={"position":vec(data.items.trap.position),"remaining":data.items.trap.remaining}
  run.wave=int(data.completed);run.completed=int(data.completed);run.sealed_wave=run.completed;run.phase="intermission"
+ if data.has("omen"):run.omen.restore(data.omen)
  model.hunter.hp=0;model.hunter.state=HunterState.State.DEAD
  return model

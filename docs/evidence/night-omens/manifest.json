@@ -1,0 +1,74 @@
+{
+  "baseline": "245748af2fbb39a59733b1c5204381e3589a62a0",
+  "engine": "Godot4.6.3 Linux X11 Mesa llvmpipe, Dummy audio during captures",
+  "images": [
+    {
+      "path": "docs/evidence/night-omens/screens/A-intermission-1080.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "1cd06620691b98febeceac5346b5b1f8b23e39f04e6f59cb676d61c8e4312c65"
+    },
+    {
+      "path": "docs/evidence/night-omens/screens/A-intermission-720.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "e7755cd536f0cd16b9947702fd17ba838f7fd9899fdd36bba4a8ff3f803fb26a"
+    },
+    {
+      "path": "docs/evidence/night-omens/screens/B-blood-moon-combat.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "74d9b1a161c94cbde5eb81418d28bca66eb31ac66ffdd17fffb04bd1d2101cbc"
+    },
+    {
+      "path": "docs/evidence/night-omens/screens/C-blackout-combat.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "c931178c6b22c0df455c0e7ac16836de8d24ff98546198cdfdf02e3da28ed724"
+    },
+    {
+      "path": "docs/evidence/night-omens/screens/D-cursed-walls-combat.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a6d38a2bde86b0c07359f5b1816573b83dec8a8a67c592c67c09f20719c30b0a"
+    },
+    {
+      "path": "docs/evidence/night-omens/screens/E-completed-reward.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "a8f868f7f3101148ecad06316606e3fabb3dd935cb83f4767770a4f0be747edb"
+    },
+    {
+      "path": "docs/evidence/night-omens/screens/F-declined-combat.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "94c60c2a5165fd92c3e195b00dcc1c19bc06eaae1f12af2655af54c198e9ddc5"
+    }
+  ],
+  "setup": "Isolated profiles, temporary resources/door levels; low Hunter HP to reach choices and completion with actual turret shots. Actual wave2 damage; not uninterrupted natural/human playtesting or Windows evidence. Seven raw uncomposited PNGs.",
+  "production_hashes": {
+    "scripts/night_omens.gd": "140217ae898e61a61eb49d1e01e9f0c68ba9c30eaa4c8d6d926d4692b4e12bf6",
+    "scripts/endless_run.gd": "335a35855433114e8b8b2b3dbd8bcba1ea7a7df8757793f1e3787d1709186704",
+    "scripts/match_model.gd": "6a810b461907669352bae167871b5077fdb90d9cbde3aa1cd6810668a5bd9272",
+    "scripts/room_state.gd": "3656d0940f36a816c0ab4cb5e5762b021300990c867b9b1f7373801488b861d9",
+    "scripts/game.gd": "65b10df4e0f1a8b21b65678527a139023818fc9f64a77ee7762f7d505f5ab761",
+    "scripts/replay_snapshot.gd": "18be54f63173cd10d9217b0e4b0e69938b862384fe5cc88f0afdd4bbe76dcd85",
+    "scripts/replay_interface.gd": "c90429b3f5da64c93b7612f9c71914529ab676d70832ea9ece0e981f5d03797e",
+    "scripts/interface.gd": "1a2325fc55cf9bedfd2bb7b6deae4c17596ce646df975320789bd830fc0fd577",
+    "scripts/dorm_presentation.gd": "ff5670f3b6e49095d2c9a714600754041b612bced4c9333252df7879c246adb6"
+  }
+}

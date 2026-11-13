@@ -1,0 +1,38 @@
+[
+  {
+    "test": "replay_endless",
+    "exit": 0,
+    "errors": false,
+    "summary": "REPLAY_ENDLESS_CHECKS=28426 FAILURES=0"
+  },
+  {
+    "test": "replay_transactions",
+    "exit": 0,
+    "errors": false,
+    "summary": "REPLAY_TRANSACTION_CHECKS=284 FAILURES=0"
+  },
+  {
+    "test": "replay_migration",
+    "exit": 0,
+    "errors": false,
+    "summary": "REPLAY_MIGRATION_CHECKS=190 FAILURES=0"
+  },
+  {
+    "test": "replay_practice",
+    "exit": 0,
+    "errors": false,
+    "summary": "REPLAY_PRACTICE_CHECKS=7505 ITEMS=20 MAP_ARCHETYPES=30 FAILURES=0"
+  },
+  {
+    "test": "replay_codes",
+    "exit": 0,
+    "errors": false,
+    "summary": "REPLAY_CODE_CHECKS=1490 FRESH_PROCESSES=6 FAILURES=0"
+  },
+  {
+    "test": "gameplay_visual_polish",
+    "exit": 0,
+    "errors": false,
+    "summary": "GAMEPLAY_VISUAL_POLISH_CHECKS=50 FAILURES=0"
+  }
+]

@@ -10,6 +10,7 @@ var choice_used=false
 var _model: WeakRef
 var sealed_wave=0
 var rescue_used=false
+var omen=NightOmens.new()
 func configure(model,map: String,mode: String,seed_number: int,id: int,boosts: Dictionary={}) -> bool:
  if map not in MapCatalog.IDS or mode not in RankCatalog.DIFFICULTIES or id<=0:return false
  model.reset(seed_number);model.run_kind="endless";model.configure_map(map);model.configure_match(mode,boosts)
@@ -26,7 +27,7 @@ func repair_effectiveness(at_wave: int=-1) -> float:
  return 1.0-minf(.65,maxi(0,(wave if at_wave<0 else at_wave)-20)*.01625)
 func boss_wave(value: int) -> bool:return value%5==0 or (value>=30 and value%3==0)
 func _prepare_hunter(model,new_wave: bool):
- var fresh=HunterState.new();fresh.stage_scaling=scaling();fresh.configure(model.difficulty)
+ var fresh=HunterState.new();fresh.stage_scaling=scaling();fresh.stage_scaling.hunter_speed*=omen.factor("blood",model.difficulty);fresh.configure(model.difficulty)
  fresh.configure_archetype(StrategyCatalog.ARCHETYPE_IDS[posmod(seed_value+wave-1,StrategyCatalog.ARCHETYPE_IDS.size())])
  fresh.position=model.map_data.hunter_spawn
  fresh.cooldown=1.5
@@ -38,6 +39,7 @@ func _prepare_hunter(model,new_wave: bool):
  model._navigation_routes.clear()
 func finish_wave(model):
  if phase!="combat" or model.hunter.hp>0 or model.player()==null or not model.player().alive:return
+ omen.finish(model)
  completed=wave;sealed_wave=completed;phase="intermission";choice_used=false
  # These statuses belonged to the defeated entity. Paid room/weapon buffs carry
  # their remaining active-play durations; intermission does not advance them.
@@ -54,6 +56,7 @@ func continue_wave(model,choice: String="repair") -> bool:
   elif choice=="supply":r.gold=minf(1e12,r.gold+25)
   elif choice=="power":r.electricity=minf(1e12,r.electricity+5)
   choice_used=true
+ omen.begin(model)
  model.combat_events.clear();model.presentation_events.clear()
  wave+=1;phase="combat";_prepare_hunter(model,true)
  return true

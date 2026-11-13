@@ -13,6 +13,7 @@ var practice_items=["shield","repair"]
 var practice_map="abandoned_dorm"
 var intermission_saved=false
 var preparing=false
+var omen_icon
 var wave_label
 var notice_label
 var practice_start
@@ -92,19 +93,36 @@ func show_intermission():
  ui.premium_icon("endless",Vector2(107,191),Vector2(110,110))
  ui.label_at("NEXT · WAVE %d · %s" % [run.wave+1,StrategyCatalog.ARCHETYPES[StrategyCatalog.ARCHETYPE_IDS[posmod(run.seed_value+run.wave,StrategyCatalog.ARCHETYPE_IDS.size())]].name],Vector2(245,193),30,900,true)
  paragraph("HP ×%.2f · damage ×%.2f · contact repairs %.0f%% of mode value%s\nBest cleared: %d · Gold %.2f · Electricity %.2f" % [next.hunter_hp,next.hunter_damage,run.repair_effectiveness(run.wave+1)*100," · REAPER ENCOUNTER" if run.boss_wave(run.wave+1) else "",game.profile.replay.best_wave,game.model.player().gold,game.model.player().electricity],Vector2(245,245),900,70,18)
- ui.button("Prepare defenses · frozen economy",Vector2(107,329),func():preparing=true;game.ui.show_match(),1068,36)
+ var offered=NightOmens.offered(run.completed)
+ var completed_omen=run.omen.last
+ if not completed_omen.is_empty() and completed_omen.wave==run.completed:
+  paragraph("OMEN SURVIVED · "+NightOmens.DATA[completed_omen.id].name+" · "+NightOmens.payout_text(Vector2(completed_omen.gold,completed_omen.power)),Vector2(107,164),1068,25,15)
+ ui.button("Prepare defenses · frozen economy",Vector2(107,305 if offered else 329),func():preparing=true;game.ui.show_match(),1068,36)
+ if offered:
+  ui.label_at("NIGHT OMEN · optional · next wave only · choose one or decline",Vector2(107,348),15,1068,true)
+  for i in range(4):
+   var id=NightOmens.IDS[i] if i<3 else ""
+   var selected=run.omen.selected==id
+   var text=("SELECTED · " if selected else "")+(NightOmens.DATA[id].name if id!="" else "DECLINE")
+   if id!="":text+="\n"+NightOmens.risk(id,game.model.difficulty)+"\n"+NightOmens.payout_text(run.omen.reward if selected else NightOmens.quote(game.model,id))
+   else:text+="\nOrdinary next wave\nNo Omen bonus"
+   var button=ui.button(text,Vector2(107+i*270,376),func():game.choose_night_omen(id),258,80)
+   button.add_theme_font_size_override("font_size",13);button.disabled=not intermission_saved
+   button.tooltip_text="Paid only if you survive and clear the next wave. No permanent rewards."
+   if id!="":button.icon=PremiumButton.texture(NightOmens.DATA[id].icon);button.expand_icon=true;button.add_theme_constant_override("icon_max_width",22)
+   if selected:button.modulate=Color("EBCB9A")
  var choices=[{"id":"repair","name":"Reinforce","text":"Restore 10% maximum HP to your intact door."},{"id":"supply","name":"Salvage","text":"Carry 25 extra Gold into the next wave."},{"id":"power","name":"Recharge","text":"Carry 5 extra Electricity into the next wave."}]
  for i in range(3):
-  var data=choices[i];var choice=data.id;var at=Vector2(107+i*362,377)
-  ui.box(Rect2(at,Vector2(342,144)))
-  paragraph(data.text,at+Vector2(15,12),312,62,18)
-  ui.button("Continue · "+data.name,at+Vector2(15,91),func():game.continue_endless(choice),312,39).disabled=not intermission_saved
+  var data=choices[i];var choice=data.id;var at=Vector2(107+i*362,475 if offered else 377)
+  ui.box(Rect2(at,Vector2(342,78 if offered else 144)))
+  paragraph(data.text,at+Vector2(15,8 if offered else 12),312,28 if offered else 62,13 if offered else 18)
+  ui.button("Continue · "+data.name,at+Vector2(15,37 if offered else 91),func():game.continue_endless(choice),312,33 if offered else 39).disabled=not intermission_saved
  var claimed=int(game.profile.replay.milestone_wave);var eligible=mini(20,int(run.completed/5)*5)
  var eligible_text="none" if eligible==0 else "through wave %d" % eligible
  var claimed_text="none" if claimed==0 else "through wave %d" % claimed
  var upcoming="All four milestone bonuses claimed." if claimed>=20 else "Wave %d bonus eligible; awaiting wallet space." % (claimed+5) if eligible>=claimed+5 else "Next: wave %d, +8 RM / up to 20 XP." % (claimed+5)
- ui.label_at("THIS RUN ELIGIBLE: "+eligible_text+" · PROFILE CLAIMED: "+claimed_text+" · "+upcoming,Vector2(107,534),14,1060)
- paragraph("Checkpoint saved. Safe to exit; reload restores this intermission." if intermission_saved else "SAVE FAILED: remain here and retry. Continue is disabled until a safe save succeeds.",Vector2(107,571),1050,32,16)
+ ui.label_at("THIS RUN ELIGIBLE: "+eligible_text+" · PROFILE CLAIMED: "+claimed_text+" · "+upcoming,Vector2(107,558 if offered else 534),12 if offered else 14,1060)
+ paragraph("Checkpoint saved. Safe to exit; reload restores this intermission." if intermission_saved else "SAVE FAILED: remain here and retry. Continue is disabled until a safe save succeeds.",Vector2(107,583 if offered else 571),1050,25,13 if offered else 16)
  if intermission_saved:ui.button("End run here · keep earned records",Vector2(107,614),game.end_endless_here,518,42)
  ui.button("Save & exit to menu",Vector2(657,614),func():
   if game.profile.checkpoint_endless(game.model):game.return_menu()
@@ -222,3 +240,11 @@ func update_hud():
  if m.run_kind=="endless":
   var scale=m.endless.scaling();wave_label.text="BEST %d · HP×%.1f · DMG×%.1f · REPAIR %.0f%%" % [game.profile.replay.best_wave,scale.hunter_hp,scale.hunter_damage,m.endless.repair_effectiveness()*100]
   wave_label.tooltip_text="Wave factors; mode and archetype modifiers also apply. Contact repair multiplier composes with the selected mode. One fresh Hunter per wave; one Legendary for the entire run."
+
+  if m.endless.omen.active!="":
+   var omen=m.endless.omen;var id=omen.active
+   wave_label.position=Vector2(44,47);wave_label.size=Vector2(230,29)
+   wave_label.text=NightOmens.DATA[id].name+" · "+NightOmens.risk(id,m.difficulty)+"\nIf wave cleared: "+NightOmens.payout_text(omen.reward)
+   wave_label.add_theme_font_size_override("font_size",9)
+   wave_label.tooltip_text="This encounter only. "+NightOmens.risk(id,m.difficulty)+". "+NightOmens.payout_text(omen.reward)+" only if alive on clear."
+   if is_instance_valid(omen_icon):omen_icon.texture=PremiumButton.texture(NightOmens.DATA[id].icon);omen_icon.visible=true

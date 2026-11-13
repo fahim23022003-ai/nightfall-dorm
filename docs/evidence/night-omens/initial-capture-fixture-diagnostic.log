@@ -1,0 +1,102 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+VISUAL_CAPTURE screens/A-intermission-720
+VISUAL_CAPTURE screens/A-intermission-1080
+ERROR: VISUAL REVIEW: mouse/keyboard selected blood
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (/tmp/capture_omens.gd:34)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+ERROR: VISUAL REVIEW: selection checkpoint persisted blood
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (/tmp/capture_omens.gd:35)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+ERROR: VISUAL REVIEW: one Omen plus existing aid starts wave2
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (/tmp/capture_omens.gd:37)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+ERROR: VISUAL REVIEW: actual door combat blood
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (/tmp/capture_omens.gd:43)
+       [2] drive (res://tools/capture_phase5d4_core.gd:9)
+VISUAL_CAPTURE screens/B-blood-moon-combat
+ERROR: VISUAL REVIEW: mouse/keyboard selected blackout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (/tmp/capture_omens.gd:34)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+ERROR: VISUAL REVIEW: selection checkpoint persisted blackout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (/tmp/capture_omens.gd:35)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+ERROR: VISUAL REVIEW: one Omen plus existing aid starts wave2
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (/tmp/capture_omens.gd:37)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+ERROR: VISUAL REVIEW: actual door combat blackout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (/tmp/capture_omens.gd:43)
+       [2] drive (res://tools/capture_phase5d4_core.gd:9)
+VISUAL_CAPTURE screens/C-blackout-combat
+ERROR: VISUAL REVIEW: mouse/keyboard selected walls
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (/tmp/capture_omens.gd:34)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+ERROR: VISUAL REVIEW: selection checkpoint persisted walls
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (/tmp/capture_omens.gd:35)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+ERROR: VISUAL REVIEW: one Omen plus existing aid starts wave2
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (/tmp/capture_omens.gd:37)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+ERROR: VISUAL REVIEW: actual door combat walls
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (/tmp/capture_omens.gd:43)
+       [2] drive (res://tools/capture_phase5d4_core.gd:9)
+VISUAL_CAPTURE screens/D-cursed-walls-combat
+ERROR: VISUAL REVIEW: actual survival creates completion reward
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (/tmp/capture_omens.gd:50)
+       [2] drive (res://tools/capture_phase5d4_core.gd:9)
+VISUAL_CAPTURE screens/E-completed-reward
+ERROR: VISUAL REVIEW: one Omen plus existing aid starts wave2
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (/tmp/capture_omens.gd:37)
+       [2] advance (res://tools/capture_phase5d3_team.gd:15)
+ERROR: VISUAL REVIEW: actual door combat 
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] run (/tmp/capture_omens.gd:43)
+       [2] drive (res://tools/capture_phase5d4_core.gd:9)
+VISUAL_CAPTURE screens/F-declined-combat

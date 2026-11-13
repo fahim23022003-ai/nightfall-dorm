@@ -1,0 +1,16 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+DISK_WALLET 10316.42 BEFORE 10316.42 DIFF -0.00000000000182 WAVE 2 WARNING 
+ERROR: REPLAY ENDLESS: completion reload preserves exact paid wallet
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] safety (/tmp/omen_disk_debug.gd:39)
+       [2] run (/tmp/omen_disk_debug.gd:76)
+ERROR: REPLAY ENDLESS: reload cannot duplicate Omen payout
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] safety (/tmp/omen_disk_debug.gd:40)
+       [2] run (/tmp/omen_disk_debug.gd:76)
+DISK_DEBUG_CHECKS=56 FAILURES=2

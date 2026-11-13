@@ -62,10 +62,20 @@ func resume_endless() -> bool:
  match_id=int(profile.active_match.id);_adopt_session(next)
  ui.replay_ui.intermission_saved=true;ui.replay_ui.show_intermission()
  return true
-func continue_endless(choice: String) -> bool:
+func choose_night_omen(id: String) -> bool:
  if model.run_kind!="endless" or model.endless==null:return false
+ var old=model.endless.omen.snapshot()
+ if not model.endless.omen.select(model,id):return false
+ var saved=profile.checkpoint_endless(model)
+ if not saved:model.endless.omen.restore(old)
+ ui.replay_ui.intermission_saved=saved;ui.replay_ui.show_intermission()
+ audio_event("button_click" if saved else "failure")
+ return saved
+func continue_endless(choice: String) -> bool:
+ if model.run_kind!="endless" or model.endless==null or model.endless.phase!="intermission":return false
  if not profile.checkpoint_endless(model):ui.replay_ui.intermission_saved=false;ui.replay_ui.show_intermission();return false
  if not model.continue_wave(choice):return false
+ if model.endless.omen.active!="":audio_event("eerie")
  watched_room=-1
  presentation.new_encounter(model);horror.reset();audio_system.new_encounter(model)
  for room in model.rooms:

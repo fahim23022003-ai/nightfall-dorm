@@ -301,7 +301,7 @@ func sell_building(tile: int) -> bool:
  last_error=""
  return true
 
-func tick_economy(delta: float):
+func tick_economy(delta: float,dynamo_factor: float=1.0):
  if sleeping and alive: occupied_seconds+=delta
  var income = 0.0 if production_paused else income_rate()/temporary_income*delta+item_bonus_income
  item_bonus_income=0
@@ -314,7 +314,7 @@ func tick_economy(delta: float):
  for b in buildings.values():
   b.flash = maxf(0,b.flash-delta)
   if b.kind == "generator" and not production_paused:
-   electricity += threat_power_factor*Catalog.support_output("generator",b.level)*StrategyCatalog.support(b).get("output",1.0)*delta*power_multiplier*trait_modifiers.power*special_factor("power",.55,1.5)*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("power",1.0)
+   electricity += clampf(dynamo_factor,0.5,1.0)*threat_power_factor*Catalog.support_output("generator",b.level)*StrategyCatalog.support(b).get("output",1.0)*delta*power_multiplier*trait_modifiers.power*special_factor("power",.55,1.5)*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("power",1.0)
   elif b.kind == "repair" and door_hp > 0:
    var branch=StrategyCatalog.support(b)
    var cost=branch.get("power_cost",0.0)*b.level*delta

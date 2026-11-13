@@ -1,3 +1,19 @@
+# Phase 6A — Night Omens complete
+
+Endless intermissions now optionally offer Blood Moon, Blackout or Cursed Walls
+for exactly one non-Reaper next wave. Decline defaults safe; existing aid choices
+remain. Actual movement/production/door-damage risks have smaller hard/Hell bounds;
+quoted capped in-run rewards pay only after legitimate living-player clearance.
+Selections and paid state persist in optional existing checkpoints; old saves
+load without Omens. Failed save rollback and duplicate Continue/finish protection.
+Godot 4.6.3: **152 new checks/0**, **six existing relevant gates pass**, **57 actual
+runtime/input/capture checks/0**. Seven real PNGs including 1080p intermission.
+See [report](PHASE_6A_NIGHT_OMENS_REPORT.md) for values, prepared wave2/14/44 pressure,
+save safety, actual test logs and limitations. No agents/new dependencies/build.
+Windows, subjective sound/enjoyment and prolonged natural balance unverified.
+
+---
+
 # Phase 5 — Adaptive combat readability complete
 
 Preserved stable NPC lanes; sustained crowds use delayed ALLIES ×N with exit

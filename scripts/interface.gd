@@ -268,6 +268,8 @@ func show_match():
   brand.text="WAVE %d · ENDLESS" % game.model.endless.wave if game.model.run_kind=="endless" else "PRACTICE ROOM" if game.model.run_kind=="practice" else "CODE CHALLENGE"
   brand.add_theme_font_size_override("font_size",23);brand.position.y=17;brand.size.y=36
   replay_ui.wave_label=label_at("TEMPORARY · PAUSE TO RESET" if game.model.run_kind=="practice" else "NORMALIZED · FIXED 30Hz",Vector2(34,58),9,242)
+ if game.model.run_kind=="endless":
+  replay_ui.omen_icon=premium_icon("hell",Vector2(24,50),Vector2(15,15));replay_ui.omen_icon.visible=false
  if CosmeticPresentation.equipped(game,"badge"):premium_icon("reaper_crest",Vector2(242,27),Vector2(27,27))
  premium_icon("gold",Vector2(280,25),Vector2(32,32))
  label_at("GOLD",Vector2(320,14),11,126,true)
