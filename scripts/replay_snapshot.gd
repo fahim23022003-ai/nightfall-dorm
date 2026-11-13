@@ -25,16 +25,21 @@ static func valid_boosts(boosts: Dictionary) -> bool:
 static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  var run=model.endless
  if model.run_kind!="endless" or run==null or run.phase!="intermission" or run.completed!=run.sealed_wave or model.hunter.hp>0 or model.player()==null or not model.player().alive:return {}
- var data={"version":1,"ruleset":4,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"expansion":model.expansion.snapshot(model),"evolution":model.evolution.snapshot(),"defense_refractory":model.defenses.shield_cooldowns.duplicate(true),"repair_refractory":model.defenses.repair_cooldowns.duplicate(true),"lure_refractory":model.defenses.lure_cooldown,"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
+ var data={"version":2,"ruleset":5,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"expansion":model.expansion.snapshot(model),"evolution":model.evolution.snapshot(),"defense_refractory":model.defenses.shield_cooldowns.duplicate(true),"repair_refractory":model.defenses.repair_cooldowns.duplicate(true),"lure_refractory":model.defenses.lure_cooldown,"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
  data.omen=run.omen.snapshot()
  for room in model.rooms:
   var saved={"owner":room.owner,"profile":room.profile,"bed_branch":room.bed_branch,"door_branch":room.door_branch,"trait":room.trait_id,"position":pair(room.resident_position),"main_damage":room.main_damage_dealt,"minion_damage":room.minion_damage_dealt,"buildings":[]}
   for key in ROOM_NUMBERS+ROOM_FLAGS:saved[key]=room.get(key)
+  if room.spatial!=null:saved.construction=room.spatial.snapshot()
   saved.magic_state=room.magic_state.duplicate(true)
   saved.bot_timer=maxf(0,saved.bot_timer)
   for tile in room.buildings:
    var b=room.buildings[tile]
-   saved.buildings.append({"tile":tile,"kind":b.kind,"level":b.level,"specialization":b.get("specialization",""),"invested_gold":b.get("invested_gold",0.0),"invested_power":b.get("invested_power",0.0),"cooldown":maxf(0,b.cooldown)})
+   var encoded={"tile":tile,"instance_id":int(b.get("instance_id",int(tile)+1)),"kind":b.kind,"level":b.level,"specialization":b.get("specialization",""),"invested_gold":b.get("invested_gold",0.0),"invested_power":b.get("invested_power",0.0),"cooldown":maxf(0,b.cooldown)}
+   if room.spatial!=null:
+    if not b.get("position") is Vector2:return {}
+    encoded.position=pair(b.position)
+   saved.buildings.append(encoded)
   data.rooms.append(saved)
  var fx=model.items
  for key in ITEM_NUMBERS:data.items[key]=fx.get(key)
@@ -42,7 +47,8 @@ static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  data.items.trap={"position":pair(fx.trap.position),"remaining":fx.trap.remaining} if not fx.trap.is_empty() else {}
  return data if valid(data) else {}
 static func valid(data) -> bool:
- if not data is Dictionary or data.get("version")!=1 or not whole(data.get("ruleset"),1,4) or data.get("map","") not in MapCatalog.IDS or data.get("difficulty","") not in RankCatalog.DIFFICULTIES:return false
+ if not data is Dictionary or not whole(data.get("version"),1,2) or not whole(data.get("ruleset"),1,5) or data.get("map","") not in MapCatalog.IDS or data.get("difficulty","") not in RankCatalog.DIFFICULTIES:return false
+ if (data.version==1 and data.ruleset>4) or (data.version==2 and data.ruleset!=5):return false
  for key in ["run_id","seed","completed"]:
   if not whole(data.get(key),1):return false
  if data.has("omen") and not NightOmens.valid(data.omen,int(data.completed)):return false
@@ -96,10 +102,16 @@ static func valid(data) -> bool:
    if not room.magic_state is Dictionary or room.magic_state.size()!=8:return false
    for key in ["stored","shield","reflect_cd","shield_cd","storage_time","heal_cd","disrupt","disrupt_guard"]:
     if not number(room.magic_state.get(key),0,350 if key=="stored" else 250 if key=="shield" else 30):return false
-  var tiles=[]
+  var spatial=data.version==2 and i==int(data.player_room)
+  if spatial and not room.has("construction"):return false
+  if room.has("construction") and not spatial:return false
+  var tiles=[];var instances=[]
   for b in room.buildings:
-   if not b is Dictionary or b.get("kind","") not in Catalog.BUILDINGS or not whole(b.get("tile"),0,map.rooms[i].tiles.size()-1) or b.tile in tiles or not whole(b.get("level"),1,Catalog.building_max_level(b.kind)) or not b.get("specialization","") is String:return false
-   tiles.append(b.tile)
+   if not b is Dictionary or b.get("kind","") not in Catalog.BUILDINGS or not whole(b.get("tile"),0,SpatialConstruction.MAX_ID-1 if spatial else map.rooms[i].tiles.size()-1) or int(b.tile) in tiles or not whole(b.get("level"),1,Catalog.building_max_level(b.kind)) or not b.get("specialization","") is String:return false
+   tiles.append(int(b.tile))
+   if data.version==2 or b.has("instance_id"):
+    if not whole(b.get("instance_id"),1,1e12) or int(b.instance_id) in instances:return false
+    instances.append(int(b.instance_id))
    var branch=b.specialization
    if branch!="" and (branch not in StrategyCatalog.branches(b.kind) or b.level<5):return false
    if b.level>=5 and branch=="":return false
@@ -107,6 +119,7 @@ static func valid(data) -> bool:
    for level in range(1,int(b.level)):ceiling+=Catalog.upgrade_cost(b.kind,level)
    if branch!="":ceiling+=StrategyCatalog.BRANCH_FEE
    if not number(b.get("invested_gold"),0,ceiling.x+.0001) or not number(b.get("invested_power"),0,ceiling.y+.0001) or not number(b.get("cooldown"),0,24 if b.kind=="decoy" else 12 if b.kind=="shield" else 10):return false
+  if spatial and not SpatialConstruction.valid_room(room,map.rooms[i]):return false
   var has_magic=room.buildings.any(func(b):return b.kind in MagicDefense.KINDS)
   if has_magic and not room.has("magic_state"):return false
   if room.has("magic_state"):
@@ -152,7 +165,25 @@ static func restore(data) -> MatchModel:
   room.magic_state=saved.get("magic_state",room.magic_state).duplicate(true)
   for b in saved.buildings:
    var building=b.duplicate(true);building.erase("tile");building.flash=0.0
+   if saved.has("construction"):building.position=vec(b.position)
    room.buildings[int(b.tile)]=building
+ var player=model.player()
+ player.spatial=SpatialConstruction.new(player)
+ if data.version==1:
+  if not player.spatial.adopt_legacy():return null
+ else:
+  player.spatial.next_id=int(data.rooms[int(data.player_room)].construction.next_id)
+  player.spatial.used_legacy=data.rooms[int(data.player_room)].construction.used_legacy.map(func(id):return int(id))
+ # Fixed NPC rooms keep their historic placement and deterministic economy.
+ for room in model.rooms:
+  if room.owner==0:continue
+  var uid=1;var taken=[]
+  for b in room.buildings.values():
+   if b.has("instance_id"):taken.append(int(b.instance_id))
+  for b in room.buildings.values():
+   if not b.has("instance_id"):
+    while uid in taken:uid+=1
+    b.instance_id=uid;taken.append(uid)
  for key in ITEM_NUMBERS:model.items.set(key,data.items[key])
  model.items.feather_used=data.items.feather_used;model.items.timers=data.items.timers.duplicate(true);model.items.decoy_point=vec(data.items.decoy_point)
  if data.has("evolution"):model.evolution.restore(data.evolution)

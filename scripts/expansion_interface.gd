@@ -18,7 +18,7 @@ func open():
 func purchase():
  var m=ui.game.model
  var ok=m.expansion.purchase(m)
- if ok:ui.game.audio_event("prestige_upgrade")
+ if ok:ui.game.audio_event("prestige_upgrade");ui.game.focus_camera(false)
  ui.purchase(ok);refresh()
 func refresh():
  if not is_instance_valid(shortcut):return
@@ -29,7 +29,7 @@ func refresh():
  if not active:return
  ui.context_title.text="ENDLESS ROOM · PHYSICAL EXPANSION"
  var tier=r.expansion_tier;var next=mini(7,tier+1);var cost=RoomExpansion.COSTS[next];var reason=m.expansion.reason(m,r.index)
- info.text="%s · %d usable building positions\n%s\n%s\nExisting buildings, doorway and occupied bed stay in place.\nExpansion is permanent for this run; machine coupons stay armed." % [RoomExpansion.NAMES[tier],r.tile_count(),"ULTIMATE CAPACITY · 16 POSITIONS" if tier>=7 else "Next: %s · %d positions" % [RoomExpansion.NAMES[next],RoomExpansion.SLOTS[next]],reason if reason!="" else "Ready · %.0f Gold + %.0f Electricity" % [cost.x,cost.y]]
+ info.text="%s · capacity %d buildings\n%s\n%s\nExisting buildings, doorway and occupied bed stay in place.\nExpansion is permanent for this run; machine coupons stay armed." % [RoomExpansion.NAMES[tier],r.tile_count(),"ULTIMATE CAPACITY · 16 BUILDINGS" if tier>=7 else "Next: %s · capacity %d" % [RoomExpansion.NAMES[next],RoomExpansion.SLOTS[next]],reason if reason!="" else "Ready · %.0f Gold + %.0f Electricity" % [cost.x,cost.y]]
  purchase_button.text="MAXIMUM ROOM" if tier>=7 else "Expand — %.0f Gold / %.0f Electricity" % [cost.x,cost.y]
- purchase_button.disabled=reason!="";purchase_button.tooltip_text=reason if reason!="" else "Pay once to physically extend this room and unlock the displayed positions."
+ purchase_button.disabled=reason!="";purchase_button.tooltip_text=reason if reason!="" else "Pay once to physically extend this room and increase capacity and unlock the new floor."
  if ui.bottom_context!=null:ui.bottom_context.fit_action(purchase_button)

@@ -1355,3 +1355,23 @@ Do not run all four continuously. Give reviewers bounded independent questions, 
 4. For local cloud regressions use `bash tools/check.sh`; use `--extended` for balance milestones or release checkpoints. The wrapper configures writable XDG paths. Graphical procedures are in [GRAPHICAL_TESTING.md](GRAPHICAL_TESTING.md).
 5. On Windows import `project.godot`, press F5, move with WASD/arrows, press E inside a room, approach its cyan bed and press E again. Click distinct floor tiles, build a turret and Dynamo, watch both resources, upgrade/repair under attack, and verify result/restart/menu behavior. Record actual outcomes rather than assuming the Linux results transfer.
 6. Commit validated increments. Push only with authorization, then verify the remote SHA. Do not publicly deploy or publish the game.
+
+## Phase 9 — spatial construction implementation checkpoint
+
+Work branch, starting from `6dfbdce06e8a9c2f22c111fc272266c7be988e99`.
+Human Endless rooms now have independent stable selectors and physical positions,
+model-level footprint/access/capacity validation, same-instance prep/intermission
+moves, real art mouse previews, and B/V/P/F/Shift controls. M map and R repair are
+preserved. Expansion capacities, prices, requirements, AI and other mode geometry
+are unchanged. New Endless snapshot schema 2/ruleset 5 reads old schema 1;
+checkpoint-only backup recovery retains the current permanent transaction ledger.
+
+Verified so far: spatial model 1,397/0; actual rendered input 41/0 at both sizes;
+save/effects/recovery 172/0; rendered capture 199/0; native-input recording 82/0;
+existing expansion QA 31,294/0 and drawer/input QA 2,520/0. The old earned wave-45
+checkpoint migrates with zero relocation. Controlled wallets/encounter staging
+are declared in evidence fixtures; these are not human or native Windows tests.
+
+Remaining before final delivery: complete ongoing regression run, inspect final
+screenshots after capture-timer correction, archive evidence/performance, write
+Phase 9 report and Windows checklist, final commit/push and remote verification.

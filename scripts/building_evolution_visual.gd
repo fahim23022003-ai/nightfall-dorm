@@ -6,7 +6,7 @@ func _init():
  for kind in KINDS:
   for tier in range(4):art[kind+str(tier)]=load("res://assets/cinematic_buildings/%s_%d.svg" % [kind,tier])
 func tier_for(level: int) -> int:return 3 if level==10 else 2 if level>=7 else 1 if level>=4 else 0
-func draw(c,_p,kind: String,level: int,point: Vector2,branch: String="",activity: float=0,target: Vector2=Vector2.ZERO,clock: float=0,angle: float=0,render_scale: float=1.0):
+func draw(c,_p,kind: String,level: int,point: Vector2,branch: String="",activity: float=0,target: Vector2=Vector2.ZERO,clock: float=0,angle: float=0,render_scale: float=1.0,tint: Color=Color.WHITE):
  level=clampi(level,1,10)
  var tier=tier_for(level);var core=art.get(kind+str(tier))
  if core==null:return
@@ -17,7 +17,7 @@ func draw(c,_p,kind: String,level: int,point: Vector2,branch: String="",activity
  var size=Vector2(64,80) if special else Vector2(54,67.5)
  var pivot=Vector2(size.x*.5,size.y*.78)
  c.draw_set_transform(point,angle,Vector2.ONE*render_scale)
- c.draw_texture_rect(core,Rect2(-pivot,size),false)
+ c.draw_texture_rect(core,Rect2(-pivot,size),false,tint)
  # Within-tier structural additions make every purchased level physically distinct.
  var growth=level-([1,4,7,10][tier])
  for n in range(growth):

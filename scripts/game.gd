@@ -42,6 +42,7 @@ var mobile_mode=OS.get_name()=="Android" or "--mobile-test" in OS.get_cmdline_us
 var mobile_layout
 var mobile_ui
 var touch
+var construction
 var in_background=false
 var ui_clock=0.0
 var tutorial_active=false
@@ -108,6 +109,7 @@ func reset_practice():
  if model.run_kind!="practice":return
  start_practice(ui.replay_ui.practice_archetype,ui.replay_ui.practice_boss,ui.replay_ui.practice_items,ui.replay_ui.practice_map)
 func _adopt_session(next,wallet=null):
+ if construction!=null:construction.reset()
  watched_room=-1
  model=next;temporary_loadout=wallet;tutorial_active=false;campaign_mode=false;last_progression={};pending_build="";selected_tile=0
  ui.replay_ui.preparing=false
@@ -124,6 +126,7 @@ func _adopt_session(next,wallet=null):
  ui.show_match();focus_camera(true);audio_event("match_start")
 
 func _ready():
+ construction=ConstructionControls.new(self)
  var window = get_window()
  window.content_scale_size = Vector2i(1280,720)
  window.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
@@ -256,6 +259,7 @@ func activate_item(slot: int,target: int=-1) -> bool:
  return ok
 
 func return_menu():
+ if construction!=null:construction.reset()
  watched_room=-1
  if not mobile_mode and not profile.tutorial_completed:
   if onboarding!=null and onboarding.phase not in ["cinematic","title","tutorial"]:start_tutorial()
@@ -340,6 +344,7 @@ func _process(delta: float):
    if model.run_kind=="campaign":ui.show_result()
    else:ui.replay_ui.show_session_result()
  if mode not in ["match","result"] or tutorial_active:audio_system.set_tension("quiet",0)
+ if construction!=null:construction.update(delta)
  audio_system.update_state(delta,model,mode)
  if ui.items_ui!=null: ui.items_ui.update(delta)
  presentation.update(delta,model)
@@ -354,6 +359,7 @@ var suppress_double_click_release=false
 var cancelled_pointer=false
 
 func _input(event):
+ if construction!=null and construction.handle_cancel(event):get_viewport().set_input_as_handled();return
  # Cancel a held GUI press before BaseButton processes Escape/focus changes.
  if event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT and not event.pressed and cancelled_pointer:
   cancelled_pointer=false;get_viewport().set_input_as_handled();return
@@ -372,6 +378,7 @@ func _input(event):
 func _unhandled_input(event):
  if mode!="match" or in_background: return
  if model.run_kind=="endless" and model.endless!=null and model.endless.phase=="intermission" and not ui.replay_ui.preparing:return
+ if construction!=null and construction.handle(event):get_viewport().set_input_as_handled();return
  if mobile_mode and event is InputEventMouse: return
  if event is InputEventKey and event.pressed and not event.echo:
   if event.keycode==KEY_HOME:return_to_my_room()
@@ -438,6 +445,7 @@ func confirm_placement():
  return success
 
 func cancel_placement():
+ if construction!=null:construction.cancel()
  pending_build=""
  placement_on_tile=false
  ui.close_context()
@@ -609,6 +617,7 @@ func cycle_spectator(direction: int):
  spectate_room(valid[posmod(current+direction,valid.size())])
 
 func build_selected(kind: String) -> bool:
+ if construction!=null and construction.applicable():return construction.begin(kind)
  if mode!="match" or watched_room>=0:return false
  var ok=model.buy(kind,selected_tile)
  pending_build="";placement_on_tile=false

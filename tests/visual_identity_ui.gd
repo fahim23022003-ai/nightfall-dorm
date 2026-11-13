@@ -92,7 +92,7 @@ func run():
  for id in ItemCatalog.IDS:p.inventory[id]=3
  check(p.save_profile(),"prepared profile saves")
  game=load("res://scenes/main.tscn").instantiate();root.add_child(game);await settle()
- game.set_process(false);game.onboarding.skip();await settle()
+ game.set_process(false);preload("res://tests/onboarding_test_support.gd").skip(game);await settle()
  check(game.mode=="menu" and game.profile.rank_index()==6,"prepared qualified Mythic profile opens real menu after skip")
  var snapshot=game.profile._reward_snapshot()
  for resolution in [Vector2i(1280,720),Vector2i(1920,1080)]:

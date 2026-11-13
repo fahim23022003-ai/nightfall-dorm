@@ -191,7 +191,7 @@ func cosmetics_and_pity():
 func run():
  profile_path="user://replay-ui-"+str(Time.get_ticks_usec())+".json";OS.set_environment("NIGHTFALL_PROFILE_PATH",profile_path)
  var p=Support.profile(profile_path);p.pending_spins=[];p.item_loadout=[];p.equipped=["first_aid","reinforced"];check(p.save_profile(),"prepared real migrated profile saves")
- game=load("res://scenes/main.tscn").instantiate();root.add_child(game);await settle();game.set_process(false);game.onboarding.skip();await settle()
+ game=load("res://scenes/main.tscn").instantiate();root.add_child(game);await settle();game.set_process(false);preload("res://tests/onboarding_test_support.gd").skip(game);await settle()
  for resolution in [Vector2i(1280,720),Vector2i(1920,1080)]:
   root.size=resolution;game.profile.settings.reduced_effects=resolution.x>1280
   await endless_flow();await practice_flow();await challenge_flow();await cosmetics_and_pity()

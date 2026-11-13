@@ -97,7 +97,8 @@ func toolbar_during_slide():
  await click(ui.room_door_summary)
  check(pressed[0]>0 and ui.context_mode=="door","toolbar remains actual mouse target above moving drawer")
  check(wallet()==before and camera()==cam,"toolbar mode selection during overlap cannot charge or move camera")
- ui.bottom_context.tween.play();await await_drawer(true);ui.close_context();await await_drawer(false)
+ if ui.bottom_context.tween.is_valid():ui.bottom_context.tween.play()
+ await await_drawer(true);ui.close_context();await await_drawer(false)
 func reset_mid_tween(map):
  var ui=game.ui;ui.close_context();await await_drawer(false);ui.open_context();await create_timer(.07).timeout
  var old=weakref(ui.context_box);check(ui.bottom_context.is_transitioning(),"reset probe starts during actual active drawer tween")
@@ -106,7 +107,7 @@ func reset_mid_tween(map):
  check(game.model.map_id==map and game.model.run_kind=="practice" and game.model.player()!=null,"reset preserves selected actual practice map and valid player")
 func run():
  profile_path="user://overhaul-qa-hud-"+str(Time.get_ticks_usec())+".json";var p=PlayerProfile.new(profile_path);p.tutorial_completed=true;p.save_profile();OS.set_environment("NIGHTFALL_PROFILE_PATH",profile_path)
- game=load("res://scenes/main.tscn").instantiate();root.add_child(game);game.set_process(false);game.onboarding.set_process(false);game.onboarding.skip();await settle()
+ game=load("res://scenes/main.tscn").instantiate();root.add_child(game);game.set_process(false);game.onboarding.set_process(false);preload("res://tests/onboarding_test_support.gd").skip(game);await settle()
  var disk=FileAccess.get_file_as_bytes(profile_path);var sig=Support.profile_signature(game.profile);var scenarios=0
  for physical in [Vector2i(1280,720),Vector2i(1920,1080)]:
   root.size=physical;await settle()

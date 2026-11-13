@@ -20,7 +20,7 @@ func key(code):
 func run():
  profile_path="user://phase5d3-qa-branchui-"+str(Time.get_ticks_usec())+".json"
  var p=PlayerProfile.new(profile_path);p.tutorial_completed=true;p.save_profile();OS.set_environment("NIGHTFALL_PROFILE_PATH",profile_path)
- game=load("res://scenes/main.tscn").instantiate();root.add_child(game);game.set_process(false);game.onboarding.set_process(false);game.onboarding.skip();await settle()
+ game=load("res://scenes/main.tscn").instantiate();root.add_child(game);game.set_process(false);game.onboarding.set_process(false);preload("res://tests/onboarding_test_support.gd").skip(game);await settle()
  var before=Support.profile_signature(game.profile);var bytes=FileAccess.get_file_as_bytes(profile_path)
  game.start_practice("crusher",false,["coupon","repair"]);await settle();var r=game.model.player();var wallet=game.item_wallet();var stock=wallet.inventory.coupon
  await key(KEY_1);check(r.coupon_armed and wallet.inventory.coupon==stock,"actualcouponarmswithoutstockconsumption")

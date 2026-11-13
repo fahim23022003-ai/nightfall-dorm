@@ -287,6 +287,7 @@ func claim_room(index: int) -> bool:
   rooms[index].door_multiplier*=stage_bonus.get("door",1.0)
   rooms[index].door_hp+=rooms[index].max_hp()-old_max
  player_room = index
+ if run_kind=="endless":rooms[index].spatial=SpatialConstruction.new(rooms[index])
  # Bind callbacks to the newly occupied room as well as the pre-room loadout.
  # Automatic First Aid must persist even if no manual item is ever activated.
  if items.profile_ref!=null and items.profile_ref.get_ref()!=null:
@@ -322,6 +323,16 @@ func player() -> RoomState:
 
 func buy(kind: String, tile: int) -> bool:
  return player().build(kind,tile) if _can_purchase() else false
+
+func place_building(kind: String,point: Vector2) -> bool:
+ if not _can_purchase() or player().spatial==null:return false
+ return player().spatial.place(kind,point)
+func begin_building_move(id: int) -> bool:
+ return player().spatial.begin_move(self,id) if player()!=null and player().spatial!=null else false
+func move_building(point: Vector2) -> bool:
+ return player().spatial.move(self,point) if player()!=null and player().spatial!=null else false
+func cancel_building_move():
+ if player()!=null and player().spatial!=null:player().spatial.cancel_move()
 
 func upgrade_bed() -> bool:
  return player().upgrade_bed() if _can_purchase() else false
@@ -443,6 +454,7 @@ func _tick_sim(delta: float):
    if room.resident_position.distance_to(room.bed_position())<2:
     room.sleeping = true
     room.closed = true
+  if room.spatial!=null and room.spatial.moving_id>=0 and room.spatial.move_reason(self,room.spatial.moving_id)!="":room.spatial.cancel_move()
   room.tick_economy(delta,endless.omen.factor("blackout",difficulty) if run_kind=="endless" and endless!=null and room.index==player_room else 1.0,hunter.nightmare.income_factor(room.index))
   if run_kind=="endless":
    room.gold=minf(1e12,room.gold);room.electricity=minf(1e12,room.electricity);room.income_total=minf(1e12,room.income_total)

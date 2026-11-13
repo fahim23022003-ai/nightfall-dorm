@@ -650,6 +650,7 @@ func _wrath_presentation(type: String, record: Dictionary, model, position: Vect
   "magic_shield","magic_absorb":event("shield_absorb",position,{"important":false})
   "magic_reflect":event("impact_shock",position,{"important":false})
   "plasma_release":event("auto_repair_activate",position,{"important":false})
+  "building_moved":event("build",position)
   "nightmare_level":
    if int(record.get("level",1)) in [4,7]:event("hunter_evolve",position)
   "nightmare_rebirth":event("nightmare_rebirth",Vector2.INF,{"important":true})

@@ -34,7 +34,7 @@ func unclaimed():
    before=q._reward_snapshot();check(q.settle_endless(m).is_empty() and q._reward_snapshot()==before,"old terminal cannot close or pay against a newly registered run")
 func preview():
  profile_path=prefix+"-ui.json";var p=PlayerProfile.new(profile_path);p.tutorial_completed=true;p.save_profile();OS.set_environment("NIGHTFALL_PROFILE_PATH",profile_path)
- game=load("res://scenes/main.tscn").instantiate();root.add_child(game);game.set_process(false);game.onboarding.set_process(false);game.onboarding.skip();await settle()
+ game=load("res://scenes/main.tscn").instantiate();root.add_child(game);game.set_process(false);game.onboarding.set_process(false);preload("res://tests/onboarding_test_support.gd").skip(game);await settle()
  var disk=FileAccess.get_file_as_bytes(profile_path);var ui=game.ui.replay_ui
  for map in MapCatalog.IDS:
   for mode in ["standard","hard","hell"]:

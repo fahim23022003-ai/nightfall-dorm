@@ -2,7 +2,7 @@ extends "res://tests/phase5d4_qa_ui.gd"
 func run():
  profile_path="user://phase5d4-qa-ui-branches-"+str(Time.get_ticks_usec())+".json"
  var p=PlayerProfile.new(profile_path);p.tutorial_completed=true;p.save_profile();OS.set_environment("NIGHTFALL_PROFILE_PATH",profile_path)
- game=load("res://scenes/main.tscn").instantiate();root.add_child(game);game.set_process(false);game.onboarding.set_process(false);game.onboarding.skip();await settle()
+ game=load("res://scenes/main.tscn").instantiate();root.add_child(game);game.set_process(false);game.onboarding.set_process(false);preload("res://tests/onboarding_test_support.gd").skip(game);await settle()
  var permanent=Support.profile_signature(game.profile);var disk=FileAccess.get_file_as_bytes(profile_path);var scenarios=0
  for map in MapCatalog.IDS:
   game.start_practice("crusher",false,["repair","shield"],map);await settle();game.focus_camera(true)

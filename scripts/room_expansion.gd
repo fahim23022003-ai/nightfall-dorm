@@ -100,7 +100,14 @@ func purchase(model,index: int=-1,npc: bool=false) -> bool:
   return false
  var room=model.rooms[index];var next=room.expansion_tier+1;var cost=COSTS[next]
  var layout=geometry(model.map_id,index,next,legacy)
- if layout.is_empty() or not room.pay(cost.x,cost.y):return false
+ if layout.is_empty():return false
+ if room.spatial!=null:
+  # Keep occupied furniture anchors and every actual structure fixed.
+  for key in ["bed","cabinet","plant"]:layout[key]=room.layout[key]
+  for id in room.buildings:
+   var layout_error=room.spatial.geometry_reason(room.tile_position(id),id,layout)
+   if layout_error!="":return room.reject("Expansion would invalidate a structure: "+layout_error)
+ if not room.pay(cost.x,cost.y):return false
  var before=room.bounds();room.expansion_tier=next;room.layout=layout;room.construction_actions+=1
  refresh_geometry(model)
  model.record_event("room_expanded",index,{"tier":next,"slots":room.tile_count(),"old_bounds":before,"bounds":room.bounds(),"gold":cost.x,"power":cost.y})

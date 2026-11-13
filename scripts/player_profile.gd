@@ -362,6 +362,20 @@ func load_profile() -> bool:
    return not primary_exists
   data=recovered
   warning="Recovered previous profile backup; damaged primary was preserved."
+ # A damaged spatial checkpoint may recover from the prior generation without
+ # rewinding current inventory, consumed-item ledgers, rewards or other progress.
+ var replay_data=data.get("replay",{})
+ if replay_data is Dictionary and not ReplayProgress.valid(replay_data) and replay_data.get("version")==1 and replay_data.get("checkpoint") is Dictionary and replay_data.checkpoint.get("version")==2:
+  var previous=_decode(path+".bak")
+  var prior=previous.get("replay",{})
+  var active=data.get("active_match",{})
+  if prior is Dictionary and ReplayProgress.valid(prior) and not prior.checkpoint.is_empty() and active.get("run_kind","")=="endless" and int(prior.checkpoint.run_id)==int(active.get("run_id",-1)) and prior.checkpoint.map==active.get("map","") and prior.checkpoint.difficulty==active.get("difficulty","") and prior.checkpoint.seed==active.get("seed",0):
+   var candidate=replay_data.duplicate(true);candidate.checkpoint=prior.checkpoint.duplicate(true)
+   if ReplayProgress.valid(candidate):
+    var quarantine=path+".corrupt."+str(Time.get_ticks_usec())
+    if DirAccess.copy_absolute(path,quarantine)==OK:
+     data.replay=candidate
+     warning="Recovered spatial checkpoint from backup; current inventory and reward ledgers preserved. Damaged primary was preserved."
  var campaign=data.get("campaign",{"selected_stage":"stage_1","difficulty":"standard","records":{}})
  selected_stage=campaign.selected_stage
  selected_difficulty=campaign.difficulty

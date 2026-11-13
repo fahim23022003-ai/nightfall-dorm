@@ -5,6 +5,7 @@ signal presentation_action(type: String, data: Dictionary)
 
 var layout: Dictionary={}
 var expansion_tier=-1
+var spatial: SpatialConstruction
 var index: int
 var owner = -1
 var alive = true
@@ -123,6 +124,10 @@ func furniture_blocks(point: Vector2) -> bool:
  return Rect2(bed_position()-Vector2(27,45),Vector2(54,89)).has_point(point) or Rect2(cabinet_position()+Vector2(-18,5),Vector2(36,20)).has_point(point) or Rect2(plant_position()+Vector2(-10,7),Vector2(20,14)).has_point(point)
 
 func tile_position(tile: int) -> Vector2:
+ # Central compatibility resolver: opaque handle → actual physical coordinate.
+ if spatial!=null and buildings.has(tile) and buildings[tile].get("position") is Vector2:return buildings[tile].position
+ return fixed_tile_position(tile)
+func fixed_tile_position(tile: int) -> Vector2:
  if not layout.is_empty(): return layout.tiles[tile] if tile>=0 and tile<tile_count() else center()
  return center() + Vector2(-20 + (tile % 3) * 55, -20 + (tile / 3) * 65)
 
@@ -218,14 +223,18 @@ func afford(g: float, e: float = 0) -> bool:
  return true
 
 func build(kind: String, tile: int) -> bool:
+ if spatial!=null:return spatial.legacy_build(kind,tile)
+ if tile<0 or tile>=tile_count():return reject("Select a numbered floor tile in your room.")
+ return _purchase_building(kind,tile)
+
+func _purchase_building(kind: String,tile: int,point: Vector2=Vector2.INF) -> bool:
  if not alive:
   return reject("Resident eliminated.")
  if not sleeping:
   return reject("Sleep in your bed before building.")
  if not Catalog.BUILDINGS.has(kind):
   return reject("Unknown building.")
- if tile < 0 or tile >= tile_count():
-  return reject("Select a numbered floor tile in your room.")
+ if spatial!=null and spatial.moving_id>=0:return reject("Finish or cancel moving first")
  if buildings.has(tile):
   return reject("Tile occupied. Select an empty tile or upgrade this building.")
  var data = Catalog.BUILDINGS[kind]
@@ -236,10 +245,13 @@ func build(kind: String, tile: int) -> bool:
   return false
  if not spend_coupon(Vector2(data.gold,data.power)-price): return false
  if not pay(price.x,price.y): return reject("Purchase could not be paid.")
- buildings[tile] = {"instance_id":int(construction_actions)+1,"kind":kind,"level":1,"cooldown":0.0,"flash":0.0,
+ var instance=int(construction_actions)+1
+ for b in buildings.values():instance=maxi(instance,int(b.get("instance_id",0))+1)
+ buildings[tile] = {"instance_id":instance,"kind":kind,"level":1,"cooldown":0.0,"flash":0.0,
   "invested_gold":price.x,"invested_power":price.y}
+ if point.is_finite():buildings[tile].position=point
  construction_actions+=1
- presentation_action.emit("build",{"kind":kind,"tile":tile})
+ presentation_action.emit("build",{"kind":kind,"tile":tile,"position":tile_position(tile)})
  return true
 
 func upgrade_building(tile: int) -> bool:
@@ -252,6 +264,7 @@ func specialize_building(tile: int,branch: String) -> bool:
  return _upgrade_building(tile,branch)
 
 func _upgrade_building(tile: int,branch: String) -> bool:
+ if spatial!=null and spatial.moving_id==tile:return reject("Finish or cancel moving first")
  if not alive:
   return reject("Resident eliminated.")
  if not buildings.has(tile):
@@ -282,7 +295,7 @@ func _upgrade_building(tile: int,branch: String) -> bool:
 # Match buildings are transient, not part of profile saves. Unpaid fixtures have
 # no refundable investment. Fractional currency is retained without rounding.
 func building_refund(tile: int) -> Vector2:
- if tile<0 or tile>=tile_count() or not buildings.has(tile): return Vector2.ZERO
+ if not buildings.has(tile) or (spatial==null and (tile<0 or tile>=tile_count())): return Vector2.ZERO
  var building=buildings[tile]
  var gold_paid=float(building.get("invested_gold",0.0))
  var power_paid=float(building.get("invested_power",0.0))
@@ -291,8 +304,9 @@ func building_refund(tile: int) -> Vector2:
  return Vector2(gold_paid,power_paid)*Catalog.BUILDING_REFUND_FRACTION
 
 func sell_building(tile: int) -> bool:
+ if spatial!=null and spatial.moving_id==tile:return reject("Finish or cancel moving first")
  if not alive: return reject("Resident eliminated.")
- if tile<0 or tile>=tile_count() or not buildings.has(tile): return reject("Select an existing building to sell.")
+ if not buildings.has(tile) or (spatial==null and (tile<0 or tile>=tile_count())): return reject("Select an existing building to sell.")
  var refund=building_refund(tile)
  buildings.erase(tile)
  gold+=refund.x

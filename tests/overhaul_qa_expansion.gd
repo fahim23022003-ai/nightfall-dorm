@@ -132,7 +132,10 @@ func legacy_migration(id):
   ck(not data.is_empty(),"legacy-static v4 can encode")
   if data.is_empty():continue
   for rules in [1,2,3]:
-   var old=data.duplicate(true);old.ruleset=rules;old.erase("expansion")
+   var old=data.duplicate(true);old.version=1;old.ruleset=rules;old.erase("expansion")
+   for saved in old.rooms:
+    saved.erase("construction")
+    for b in saved.buildings:b.erase("position");b.erase("instance_id")
    ck(ReplaySnapshot.valid(old),"historical ruleset remains accepted")
    var restored=ReplaySnapshot.restore(roundtrip(old))
    ck(restored!=null,"historical checkpoint restores")

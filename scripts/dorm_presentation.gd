@@ -343,6 +343,7 @@ func render(c):
   if c.profile.settings.reduced_effects:tint.a*=.35
   c.draw_rect(visible_world_rect(c,0),tint)
  nightmare_visual.effects(c,clock);nightmare_visual.omens(c,clock)
+ if c.construction!=null:c.construction.draw_preview(c)
  if c.model.map_id!="legacy":
   for room in m.rooms:map_presentation.render_door_status(c,self,room)
  if c.get("horror")!=null: c.horror.render_world(c)

@@ -154,8 +154,10 @@ func render_decor(c,p,r,bed,cabinet,theme,colors):
  p.sprite(c,"lantern",glow,Vector2(17,28),colors[4])
 
 func render_tiles(c,p,room,owned):
- for tile in range(room.tile_count()):
-  var point=OFFSET+room.tile_position(tile)
+ if room.spatial!=null and c.construction!=null:c.construction.draw_floor(c,room)
+ var ids=room.buildings.keys() if room.spatial!=null else range(room.tile_count())
+ for tile in ids:
+  var point=OFFSET+(c.construction.rendered_position(room,tile) if room.spatial!=null and c.construction!=null else room.tile_position(tile))
   if not room.buildings.has(tile):
    c.draw_style_box(p.frame(Color("333E3E") if owned else Color("303839"),Color("7C8270") if owned else Color("414D4B"),4),Rect2(point-Vector2(22,21),Vector2(44,42)))
    c.draw_line(point+Vector2(-18,-17),point+Vector2(18,-17),Color("89917C") if owned else Color("4C5854"),1)
@@ -190,7 +192,7 @@ func render_tiles(c,p,room,owned):
     for pip in range(building.level):c.draw_circle(point+Vector2(-(building.level-1)*2+pip*4,24),1.5,Color("BFCDB9"))
   if owned and c.selected_tile==tile and c.ui.context_open:
    p.selection_outline(c,point)
- if owned and c.pending_build!="":
+ if owned and room.spatial==null and c.pending_build!="":
   var point=OFFSET+c.preview_position
   var color=Color("7BE3A1") if c.placement_reason()=="" else Color("F05467")
   c.draw_style_box(p.frame(Color(color,0.12),color,6),Rect2(point-Vector2(27,26),Vector2(54,52)))

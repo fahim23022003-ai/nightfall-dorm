@@ -394,10 +394,13 @@ func show_match():
   teammates.create()
   bottom_context=BottomContextPanel.new(self);bottom_context.install()
   expansion_ui=preload("res://scripts/expansion_interface.gd").new(self);expansion_ui.create()
+  game.construction.create()
 
 func open_build_menu():
  if game.watched_room>=0 or game.model.player()==null:return
  var room=game.model.player()
+ if room.spatial!=null and not game.mobile_mode:
+  open_context();context_mode="build";refresh_context();return
  if room.buildings.size()>=room.tile_count() and game.model.run_kind=="endless" and expansion_ui!=null:
   expansion_ui.open();return
  if game.selected_tile<0 or room.buildings.has(game.selected_tile):
@@ -444,6 +447,7 @@ func close_context():
   for node in build_items+upgrade_items+bed_items+door_items+confirmation_items+specialization_items:node.visible=false
  if expansion_ui!=null:expansion_ui.refresh()
  if bottom_context!=null:bottom_context.refresh()
+ if game.construction!=null:game.construction.refresh()
 
 func refresh_context():
  if not context_open or game.model.player()==null: close_context(); return
@@ -509,6 +513,7 @@ func refresh_context():
   branch_confirm.visible=true
   branch_confirm.text="Confirm "+StrategyCatalog.BRANCHES.get(pending_branch,{}).get("name","exclusive choice")
  if bottom_context!=null:bottom_context.refresh()
+ if game.construction!=null:game.construction.refresh()
  if game.mobile_mode: game.mobile_ui.context(self)
 
 func selected_stats(b) -> String:
@@ -710,7 +715,10 @@ func update_match():
  refresh_context()
  if game.mobile_mode: game.mobile_ui.update_match(self)
  if bottom_context!=null:bottom_context.refresh()
+ if game.construction!=null:game.construction.refresh()
  if game.model.run_kind!="campaign":replay_ui.update_hud()
+ if room!=null and room.spatial!=null:room_selected_summary.text="Build [B] · free floor"
+ if game.construction!=null:game.construction.refresh()
  if not game.mobile_mode:teammates.update()
 
 func show_result():
@@ -784,8 +792,11 @@ func action_reason(action: String) -> String:
   gold = room.manual_repair_cost()
  elif action.begins_with("build:"):
   if not room.sleeping: return "Sleep in your bed before building."
-  if game.selected_tile < 0 or game.selected_tile >= room.tile_count(): return "Select a numbered floor tile in your room."
-  if room.buildings.has(game.selected_tile): return "Tile occupied. Select an empty numbered tile."
+  if room.spatial!=null:
+   if room.buildings.size()>=room.tile_count():return "Capacity reached. Expand your room."
+  else:
+   if game.selected_tile < 0 or game.selected_tile >= room.tile_count(): return "Select a numbered floor tile in your room."
+   if room.buildings.has(game.selected_tile): return "Tile occupied. Select an empty numbered tile."
   var kind = action.trim_prefix("build:")
   if kind == "heavy" and room.bed_level < 1: return "Requires bed level 2."
   gold = Catalog.BUILDINGS[kind].gold

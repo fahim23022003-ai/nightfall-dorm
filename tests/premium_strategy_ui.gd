@@ -231,7 +231,7 @@ func run():
  var p=PlayerProfile.new(profile_path);check(p.load_profile(),"prepared real old profile loads")
  p.pending_spins=[];check(p.save_profile(),"fixture clears already-rolled notification before menu flow")
  game=load("res://scenes/main.tscn").instantiate();root.add_child(game);await settle()
- game.set_process(false);game.onboarding.skip();await settle();artwork()
+ game.set_process(false);preload("res://tests/onboarding_test_support.gd").skip(game);await settle();artwork()
  for resolution in [Vector2i(1280,720),Vector2i(1920,1080)]:
   game.profile.settings.reduced_effects=resolution.x>1280
   root.size=resolution;game.return_menu();await settle();screen("menu"+str(resolution))
