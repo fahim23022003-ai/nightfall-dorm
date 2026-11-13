@@ -4,8 +4,8 @@ extends Node
 const ROOT = "res://assets/audio/"
 const WrathAudio = preload("res://scripts/wrath_audio_catalog.gd")
 const LOOP_NAMES = ["music_crimson","music_intro","music_approach","music_endless","music_menu","music_calm","music_danger","ambient_dorm","proximity_loop","generator_loop","music_reaper","reaper_ambience"]
-const LEGACY_EFFECT_NAMES = ["death_scream_1","death_scream_2","hunter_laugh","reaper_laugh","weather_thunder","weather_wind","weather_rain","prestige_upgrade","survivor_notice","intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","button","menu","match_start","purchase","failure","rank","reward","victory","defeat","shot_needle","shot_arc","impact","ghost_hurt","ghost_defeat","door_hit","door_crack","door_break","build","turret_upgrade","bed_upgrade","door_upgrade","repair","upgrade","income","electricity","footstep","danger","breach","hunter_spawn","hunter_level","elimination","scream_1","scream_2","scream_3","door_reaction","sale","refund","insufficient_gold","insufficient_power","eerie","reaper_transform","reaper_scythe","reaper_charge","reaper_surge","reaper_impact","reaper_hurt","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_end","item_explosion","item_shield_hit"]
-const LEGACY_CRITICAL_EVENTS = ["death_scream_1","death_scream_2","survivor_notice","prestige_upgrade","intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","victory","defeat","ghost_defeat","rank","reward","hunter_level","breach","door_break","match_start","door_reaction","sale","refund","reaper_transform","reaper_charge","reaper_surge","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_explosion"]
+const LEGACY_EFFECT_NAMES = ["nightmare_defeat","nightmare_rebirth","death_scream_1","death_scream_2","hunter_laugh","reaper_laugh","weather_thunder","weather_wind","weather_rain","prestige_upgrade","survivor_notice","intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","button","menu","match_start","purchase","failure","rank","reward","victory","defeat","shot_needle","shot_arc","impact","ghost_hurt","ghost_defeat","door_hit","door_crack","door_break","build","turret_upgrade","bed_upgrade","door_upgrade","repair","upgrade","income","electricity","footstep","danger","breach","hunter_spawn","hunter_level","elimination","scream_1","scream_2","scream_3","door_reaction","sale","refund","insufficient_gold","insufficient_power","eerie","reaper_transform","reaper_scythe","reaper_charge","reaper_surge","reaper_impact","reaper_hurt","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_end","item_explosion","item_shield_hit"]
+const LEGACY_CRITICAL_EVENTS = ["nightmare_defeat","nightmare_rebirth","death_scream_1","death_scream_2","survivor_notice","prestige_upgrade","intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","victory","defeat","ghost_defeat","rank","reward","hunter_level","breach","door_break","match_start","door_reaction","sale","refund","reaper_transform","reaper_charge","reaper_surge","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_explosion"]
 const EFFECT_NAMES = LEGACY_EFFECT_NAMES + WrathAudio.NAMES
 const CRITICAL_EVENTS = LEGACY_CRITICAL_EVENTS + WrathAudio.CRITICAL_NAMES
 const VOICE_LIMIT = 16
@@ -322,7 +322,7 @@ func update_state(delta: float, model, mode: String):
  var active = model != null and mode == "match" and model.result == ""
  if model != null:
   if not _previous.is_empty() and _previous.state!=HunterState.State.DEAD and model.hunter.state==HunterState.State.DEAD and _previous.hp>0:
-   event("reaper_death" if model.hunter.transformed else "ghost_defeat")
+   event("reaper_death" if model.hunter.transformed else "nightmare_defeat" if model.evolution.evolution_level==10 else "ghost_defeat")
    _previous.state = HunterState.State.DEAD
    _previous.hp = model.hunter.hp
   var room = model.player()
@@ -646,6 +646,17 @@ func _wrath_presentation(type: String, record: Dictionary, model, position: Vect
   "magic_shield","magic_absorb":event("shield_absorb",position,{"important":false})
   "magic_reflect":event("impact_shock",position,{"important":false})
   "plasma_release":event("auto_repair_activate",position,{"important":false})
+  "nightmare_level":
+   if int(record.get("level",1)) in [4,7]:event("hunter_evolve",position)
+  "nightmare_rebirth":event("nightmare_rebirth",Vector2.INF,{"important":true})
+  "nightmare_warning":
+   var cue={"crusher":"hunter_charged_warning","stalker":"hunter_stalker_warning","ravager":"hunter_ravager_warning","witch":"reaper_charge","electric":"hunter_charged_warning","storm":"reaper_charge"}.get(model.hunter.archetype,"danger")
+   event(cue,position,{"expires_in":float(record.get("delay",2.0))})
+  "nightmare_release":
+   var cue={"crusher":"reaper_impact","stalker":"hunter_stalker_feint","ravager":"hunter_ravager_dash","witch":"shot_frost","electric":"shot_shock","storm":"weather_thunder"}.get(model.hunter.archetype,"impact")
+   event(cue,position)
+  "nightmare_impact":event("impact_shock" if record.get("element","")=="electric" else "impact_frost" if record.get("element","")=="ice" else "door_crack",position,{"important":false})
+  "nightmare_cancel":event("lock_release",position)
   "arcane_impact":event("impact_frost" if record.get("element","")=="ice" else "impact_shock",position,{"important":false})
   "shield_absorb":event("shield_absorb",position,{"important":false})
   "defense_activate":

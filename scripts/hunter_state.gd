@@ -3,6 +3,7 @@ extends RefCounted
 
 enum State {DORMANT, SEEK, MOVE, ATTACK, BREACH, EXIT, DEAD, TRANSFORM}
 var arcane=ArcaneHunter.new()
+var nightmare=NightmareCombat.new()
 var state = State.DORMANT
 var position = Vector2(960,410)
 var hp = Catalog.HUNTER.hp
@@ -128,7 +129,7 @@ func _tactics(delta: float,model) -> bool:
   elif action=="pressure":pressure_remaining=4.0
   model.record_event("hunter_ability",target,{"ability":action,"duration":dash_remaining if action=="dash" else conceal_remaining if action=="conceal" else pressure_remaining})
  if tactical_recovery>0:return true
- if tactical_cooldown<=0:
+ if tactical_cooldown<=0 and nightmare.remaining<=0:
   var selected="pressure" if archetype=="crusher" and state==State.ATTACK else "conceal" if archetype=="stalker" and state==State.MOVE else "dash" if archetype=="ravager" and state==State.MOVE else ""
   if selected!="":
    tactical_action=selected;tactical_windup=.9 if selected=="pressure" else .65
@@ -137,6 +138,7 @@ func _tactics(delta: float,model) -> bool:
    return true
  return false
 func _begin_transformation(model):
+ nightmare.clear()
  arcane.clear_transients()
  _clear_tactics()
  var normal_hp=archetype_factor("hp")
@@ -218,6 +220,7 @@ func _damage_door(room, model, amount: float,source: String="door strike"):
 
 
 func stop_combat(model):
+ nightmare.clear()
  arcane.clear_transients()
  _clear_tactics()
  _transform_exit_room=-1
@@ -353,6 +356,7 @@ func tick(delta: float, match_state):
   reassess_seconds+=delta
   match_state.rooms[target].repair_factor=lerpf(1.0,profile.repair_floor,clampf(minf(siege_seconds,maxf(0,match_state.time-match_state.preparation-profile.opening))/profile.siege_ramp,0,1))
   if match_state.run_kind=="endless" and match_state.endless!=null:match_state.rooms[target].repair_factor*=match_state.endless.repair_effectiveness()
+  match_state.rooms[target].repair_factor*=nightmare.repair_factor(target)
   _previous_siege_room=target
  windup_remaining=maxf(0,cooldown-delta) if charged_ready or archetype_primed or boss_attack!="" else 0.0
  if state == State.DEAD or match_state.time < match_state.preparation:
@@ -361,6 +365,7 @@ func tick(delta: float, match_state):
  phase_guard_remaining=maxf(0,phase_guard_remaining-delta)
  if phase_guard_remaining>0:return
  if match_state.wrath.active():cooldown=maxf(0,cooldown-delta);return
+ if nightmare.tick(delta,self,match_state):return
  if arcane.tick(self,match_state,delta):return
  if _tactics(delta,match_state):return
  var active_seconds=match_state.hunter_active_seconds()
@@ -571,6 +576,7 @@ func hurt(amount: float):
  if begin_transform:_begin_transformation(model)
  hit_flash = 0.15
  if hp <= 0:
+  nightmare.clear()
   arcane.clear_transients()
   state = State.DEAD
   transform_remaining=0

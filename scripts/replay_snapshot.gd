@@ -159,6 +159,7 @@ static func restore(data) -> MatchModel:
  model.defenses.repair_cooldowns=data.get("repair_refractory",{}).duplicate(true);model.defenses.shield_cooldowns=data.get("defense_refractory",{}).duplicate(true);model.defenses.lure_cooldown=float(data.get("lure_refractory",0))
  if not data.items.trap.is_empty():model.items.trap={"position":vec(data.items.trap.position),"remaining":data.items.trap.remaining}
  run.wave=int(data.completed);run.completed=int(data.completed);run.sealed_wave=run.completed;run.phase="intermission"
+ model.evolution.evolution_level=maxi(model.evolution.evolution_level,clampi(1+int((run.wave-1)/5),1,10))
  if data.has("omen"):run.omen.restore(data.omen)
  model.hunter.hp=0;model.hunter.state=HunterState.State.DEAD
  return model

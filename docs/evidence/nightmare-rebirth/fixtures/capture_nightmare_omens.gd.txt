@@ -1,0 +1,57 @@
+extends "res://tools/capture_overhaul_combat.gd"
+const Support=preload("res://tests/replay_test_support.gd")
+func omen_button(id):
+ var needle=NightOmens.DATA[id].name if id!="" else "DECLINE"
+ for child in game.ui.panel.get_children():
+  if child is Button and needle in child.text:return child
+ return null
+func seed_run():
+ game.return_menu();check(game.start_endless("abandoned_dorm","standard",71),"new isolated real Endless identity")
+ game.set_process(false);game.tutorial_enabled=false
+ var m=game.model;m.player_position=m.rooms[0].center();m.claim_room(0);m.player_position=m.player().bed_position();m.sleep_player()
+ var r=m.player();r.gold=1200;r.electricity=200;r.door_level=2;r.door_hp=r.max_hp()
+ check(m.buy("turret",Support.nearest_pad(r,r.door_approach())),"actual paid turret")
+ check(m.buy("generator",Support.nearest_pad(r,r.bed_position())),"actual paid Dynamo")
+ game.ui.close_context();game.focus_camera(true);m.time=m.preparation+.1
+ m.hunter.target=r.index;m.hunter.position=r.door_approach();m.hunter.state=HunterState.State.ATTACK;m.hunter.hp=20;m.hunter.cooldown=3;m.hunter.tactical_cooldown=60
+ for i in range(200):
+  await drive(.05)
+  if m.endless.phase=="intermission":break
+ check(m.endless.phase=="intermission","actual turret clears wave1")
+ game.ui.replay_ui.intermission_saved=game.profile.checkpoint_endless(m);game.ui.replay_ui.show_intermission();await advance(.25)
+ return m
+func run():
+ output="/workspace/nightmare-rebirth/omen-runtime/";phase="screens";root.size=Vector2i(1280,720)
+ await setup_game();game.onboarding.close_welcome()
+ var m=await seed_run()
+ var saved=m.endless.omen.snapshot();game.profile.read_only=true
+ check(not game.choose_night_omen("blood") and m.endless.omen.snapshot()==saved,"failed selection save restores Omen choice")
+ game.profile.read_only=false;game.ui.replay_ui.intermission_saved=game.profile.checkpoint_endless(m);game.ui.replay_ui.show_intermission()
+ await capture("A-intermission-720")
+ root.size=Vector2i(1920,1080);await advance(.1);await capture("A-intermission-1080");root.size=Vector2i(1280,720)
+ for id in ["blood","blackout","walls",""]:
+  if id!="blood":m=await seed_run()
+  var button=omen_button(id);check(button!=null,"real Omen or decline button")
+  if id=="blackout":button.grab_focus();await key(KEY_ENTER)
+  else:await click(button)
+  await advance(.1);check(m.endless.omen.selected==id,"mouse/keyboard selected "+id)
+  check(game.profile.replay.checkpoint.omen.selected==id,"selection checkpoint persisted "+id)
+  await click(find_button("Continue · Reinforce"));await advance(.15)
+  check(m.endless.wave==2 and m.endless.omen.active==id,"one Omen plus existing aid starts wave2")
+  check(not game.continue_endless("repair") and game.ui.current_screen=="match","repeat Continue cannot reopen intermission or add aid")
+  m.time=m.preparation+.1;m.hunter.target=m.player_room;m.hunter.position=m.player().door_approach();m.hunter.state=HunterState.State.ATTACK;m.hunter.cooldown=0;m.hunter.tactical_cooldown=60
+  var hp=m.player().door_hp
+  for i in range(60):
+   await drive(.05)
+   if m.player().door_hp<hp:break
+  check(m.player().door_hp<hp,"actual door combat "+id)
+  await capture({"blood":"B-blood-moon-combat","blackout":"C-blackout-combat","walls":"D-cursed-walls-combat","":"F-declined-combat"}[id])
+  if id=="walls":
+   m.hunter.hp=20
+   for i in range(200):
+    await drive(.05)
+    if m.endless.phase=="intermission":break
+   check(m.endless.omen.last.get("wave",0)==2,"actual survival creates completion reward")
+   game.ui.replay_ui.intermission_saved=game.profile.checkpoint_endless(m);game.ui.replay_ui.show_intermission();await advance(.15);await capture("E-completed-reward")
+ var f=FileAccess.open(output+"capture-result.json",FileAccess.WRITE);f.store_string(JSON.stringify({"checks":checks,"failures":failures,"setup":"Real Godot4.6.3 Linux engine, isolated profiles, temporary starting budgets/door level, low initial Hunter HP to reach intermission through actual paid turret shots. Controlled spawning/time/contact; actual next-wave damage and earned Omen payout via real combat. Not natural full playthrough or Windows/human enjoyment test."}," "))
+ game.audio_system.shutdown();game.queue_free();await create_timer(.3).timeout;quit(1 if failures else 0)

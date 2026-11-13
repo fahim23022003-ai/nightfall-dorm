@@ -1,0 +1,11 @@
+extends "res://tools/capture_overhaul_combat.gd"
+func run():
+ output="/workspace/nightmare-rebirth/";phase="before";root.size=Vector2i(1280,720)
+ await setup_game();game.onboarding.close_welcome()
+ for kind in StrategyCatalog.ARCHETYPE_IDS:
+  var m=fixture_kind(kind);var r=m.player();m.hunter.state=HunterState.State.ATTACK;m.hunter.target=r.index;m.hunter.position=r.door_approach();m.hunter.cooldown=.8
+  await advance(.15);await capture(kind+"-matched")
+ var source="res://docs/evidence/gameplay-overhaul/balance/earned-cursed_mansion.json";var data=JSON.parse_string(FileAccess.get_file_as_string(source))
+ game.return_menu();var p=PlayerProfile.new("user://nightmare-before-earned.json");p.tutorial_completed=true;p.next_match_id=int(data.run_id);p.begin_endless(data.map,data.difficulty,int(data.seed));p.replay.checkpoint=data.duplicate(true);p.save_profile();game.profile=p;check(game.resume_endless(),"genuine old earned checkpoint")
+ game.set_process(false);await click(find_button("Prepare defenses · frozen economy"));await advance(.2);await capture("earned-wave45-matched")
+ game.audio_system.shutdown();game.queue_free();await create_timer(.2).timeout;quit(1 if failures else 0)

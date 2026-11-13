@@ -1,0 +1,32 @@
+extends "res://tools/capture_overhaul_combat.gd"
+const Support=preload("res://tests/replay_test_support.gd")
+var captures=[]
+func capture(name):
+ await super.capture(name);captures.append(name)
+func posed(kind: String,level: int):
+ var m=fixture_kind(kind);var r=m.player();m.evolution.evolution_level=level;m.evolution.final_revealed=true
+ m.hunter.state=HunterState.State.ATTACK;m.hunter.target=r.index;m.hunter.position=r.door_approach();m.hunter.cooldown=.8;m.hunter.tactical_cooldown=60;m.hunter.arcane.cooldown=60
+ return m
+func gallery(mode: String,kinds: Array,level: int,name: String):
+ var g=preload("res://tools/nightmare_gallery.gd").new();g.game=game;g.profile=game.profile;g.mode=mode;g.kinds=kinds;g.level=level
+ game.visible=false;game.ui.panel.visible=false
+ if is_instance_valid(game.ui.horror_layer):game.ui.horror_layer.visible=false
+ var layer=CanvasLayer.new();layer.layer=100;root.add_child(layer);layer.add_child(g)
+ await process_frame;await process_frame;await capture(name);layer.queue_free();game.visible=true;game.ui.panel.visible=true;
+ if is_instance_valid(game.ui.horror_layer):game.ui.horror_layer.visible=true
+ await process_frame
+func run():
+ output="/workspace/nightmare-rebirth/";phase="after";root.size=Vector2i(1280,720)
+ await setup_game();game.onboarding.close_welcome()
+ for spec in [["crusher",10],["electric",10],["ravager",4]]:
+  var m=posed(spec[0],spec[1]);m.run_kind="campaign";m.stage_id="stage_1";game.ui.show_match();game.focus_camera(true);m.hunter.nightmare.cooldown=0
+  await drive(.05)
+  for i in range(75):
+   await drive(.05)
+   if m.hunter.nightmare.action=="" and m.hunter.nightmare.remaining>0:break
+  await drive(.65);await capture("skill-%s-E%d-release" % spec)
+ var m=posed("stalker",8);m.hunter.apply_suppression(.15);await advance(.15);await capture("state-defensive-reaction")
+ check(m.apply_target_damage(1,25,m.player_room)>0,"actual hit drives hurt pose");await advance(.02);await capture("state-hurt-reaction")
+ m.hunter.hurt(m.hunter.hp*2);await advance(.55);await capture("state-death-collapse")
+ print("STANCE_STATE_CHECKS=",checks," FAILURES=",failures)
+ game.audio_system.shutdown();game.queue_free();await create_timer(.3).timeout;quit(1 if failures else 0)

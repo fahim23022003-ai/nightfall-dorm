@@ -1,3 +1,22 @@
+# Phase 7 — Nightmare Rebirth complete
+
+Separate bounded Hunter evolution1–10 preserves combat scaling and kill buffs;
+Endless reaches10 at wave46. Six layered four-tier rigs, twelve finite evolved/
+signature skills, once-only3.6s reveal, typed actual-impact VFX and credited audio.
+All15 placeables plus bed/door have physical visual progression every level;
+Night Omen presentation enhanced without changing its mechanics.
+Godot4.6.3:132 new checks/0;14 existing focused gates pass;214 capture/input,
+57 Omen,16 reaction-state and61 earned/render checks pass. Genuine full-health
+Hell46 victory from earned45 in42.8 simulated seconds; no evolved cast completed
+in that run (separate controlled skill scenarios prove effects). Screenshots,
+170-appearance matrix, sampled motion videos and measured engine audio included.
+Linux software-rendering sample only; Windows, subjective horror/readability
+and extended natural balance remain unverified. Dense prestige rooms remain a
+visual weakness. See [report](PHASE_7_NIGHTMARE_REBIRTH_REPORT.md) and
+[evidence](evidence/nightmare-rebirth/INDEX.md). No agents/main merge/release.
+
+---
+
 # Phase 6A — Night Omens complete
 
 Endless intermissions now optionally offer Blood Moon, Blackout or Cursed Walls

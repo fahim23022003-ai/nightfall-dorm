@@ -667,6 +667,13 @@ func update_match():
    warning_label.text="%s %.1fs · REPAIR NOW" % [BossCatalog.ATTACKS[m.hunter.boss_attack].name,m.hunter.windup_remaining]
   elif m.hunter.shadow_active(room.index): warning_label.text="TURRETS SILENCED %.1fs · KEEP REPAIRING" % m.hunter.surge_remaining
   warning_box.modulate.a=0.75+game.danger_time*0.35
+ if m.hunter.nightmare.action!="":
+  hunter_detail.text=NightmareCombat.SKILLS[m.hunter.nightmare.action].name+" · %.1fs · INTERRUPT / DEFEND" % m.hunter.nightmare.warning
+  hunter_detail.tooltip_text=NightmareCombat.SKILLS[m.hunter.nightmare.action].help
+  if threat:warning_label.text=hunter_detail.text
+ elif m.evolution.rebirth_remaining>0:hunter_detail.text="TRUE NIGHTMARE · REBIRTH %.1fs" % m.evolution.rebirth_remaining
+ hunter_label.text=("REAPER" if m.hunter.transformed else "HUNTER")+" EVO %d · %d/%d" % [m.evolution.evolution_level,roundi(m.hunter.hp),roundi(m.hunter.max_hp)]
+ hunter_label.tooltip_text+="\nEvolution %d/10: forms at4/7/10. Combat level %d is separate; no extra HP multiplier. Endless +1 per5 waves. Campaign: stage,75s survival steps,+1 Hell,one step per3 kill buffs. Skills at4; signature at10." % [m.evolution.evolution_level,m.hunter.level]
  if m.wrath.active():warning_label.text="%s · %.1fs · ROOM %d" % [ReaperWrath.ABILITIES[m.wrath.ability].name.to_upper(),m.wrath.warning,m.wrath.cast_target+1]
  details.text="Choose a room" if room==null else "%s · %s" % [game.presentation.ROOM_NAMES[room.index].capitalize(),"sleeping" if room.sleeping else "awake"]
  for control in [room_bed_summary,room_door_summary,room_selected_summary]: control.disabled=room==null

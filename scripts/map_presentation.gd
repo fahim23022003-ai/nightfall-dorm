@@ -91,7 +91,7 @@ func render_room(c,p,room,theme,colors):
  if theme in ["hotel","mansion"]:
   c.draw_style_box(p.frame(Color("6B4053") if theme=="hotel" else Color("4F3540"),colors[3],5),Rect2(bed-Vector2(43,55),Vector2(86,116)))
  var bed_tint=Color("D7ECEB") if theme=="hospital" else Color("BACDD5") if theme=="lab" else Color.WHITE
- p.sprite(c,"bed_upgraded" if room.bed_level>=2 else "bed",bed,Vector2(66,92),bed_tint)
+ p.building_visual.draw(c,p,"bed",room.bed_level+1,bed,room.bed_branch,1.0 if room.sleeping and room.alive else 0.0,Vector2.ZERO,p.clock if owned else 0.0)
  if owned:CosmeticPresentation.bed(c,bed)
  var cabinet=OFFSET+room.cabinet_position()
  p.sprite(c,"cabinet" if theme not in ["lab","hotel"] else "utility" if theme=="lab" else "desk",cabinet,Vector2(38,48))
@@ -170,7 +170,11 @@ func render_tiles(c,p,room,owned):
    var size=Vector2(53,56)
    var target=c.model.hunter.position-room.tile_position(tile)
    var tilt=clampf(atan2(target.y,absf(target.x)),-0.4,0.4) if building.kind=="turret" else 0.0
-   p.sprite(c,name,point-Vector2(0,6),size,Color.WHITE,tilt)
+   var activity=building.flash
+   if building.kind=="generator":activity=1.0 if room.alive and room.sleeping and not room.production_paused else 0.0
+   if building.kind=="repair":activity=1.0 if room.alive and room.sleeping and room.door_hp>0 and room.door_hp<room.max_hp() and (StrategyCatalog.support(building).get("power_cost",0)==0 or room.electricity>0) else 0.0
+   if building.kind in ["auto_repair","shield","decoy"]:activity=1.0 if building.cooldown>0 else 0.0
+   p.building_visual.draw(c,p,building.kind,building.level,point,building.get("specialization",""),activity,target,p.clock if owned or c.watched_room==room.index else 0.0)
    if owned and building.kind in ["turret","heavy"]:CosmeticPresentation.turret(c,point)
    var branch=str(building.get("specialization",""))
    if branch!="":
@@ -210,7 +214,8 @@ func render_door(c,p,room):
  if room.door_hp>0:
   var color=Color(1.65,0.65,0.65) if room.damage_flash>0 else Color.WHITE
   if room.closed:
-   c.draw_texture_rect(p.cartoon["door_%d" % mini(5,room.door_level+1)],Rect2(Vector2(-36,-41),Vector2(73,61)),false,color)
+   p.building_visual.draw(c,p,"door",room.door_level+1,point,room.door_branch,room.damage_flash,Vector2.ZERO,p.clock,angle)
+   c.draw_set_transform(point,angle)
   else: c.draw_texture_rect(p.cartoon.door_1,Rect2(Vector2(-47,-20),Vector2(36,50)),false,Color("94AAB2"))
   if room.owner==0 and room.closed:CosmeticPresentation.door(c)
   if room.door_hp<room.max_hp()*0.55:
@@ -218,6 +223,9 @@ func render_door(c,p,room):
  else:
   for i in range(4): c.draw_line(Vector2(-25+i*14,-7),Vector2(-19+i*13,13),Color("88684E"),5)
  c.draw_set_transform(Vector2.ZERO)
+
+func render_door_status(c,p,room):
+ var point=OFFSET+room.door_position();var normal=room.door_normal()
  if room.owner>=0:
   var targeted=c.model.hunter.target==room.index and c.model.hunter.state in [HunterState.State.ATTACK,HunterState.State.BREACH]
   var where=point+Vector2(40,-25) if absf(normal.x)<0.5 else point+Vector2(-35,50)

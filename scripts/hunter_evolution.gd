@@ -17,6 +17,9 @@ const BUFFS={
  "soul_drain":{"name":"Soul Drain","effect":"Every 20s of door contact drains at most 8 Gold and 2 Electricity.","category":"resource"},
  "relentless_siege":{"name":"Relentless Siege","effect":"After 8s at a door, attacks recover a further 8% faster.","category":"offense"},
  "deaths_momentum":{"name":"Death's Momentum","effect":"For 8s after a genuine kill gain 15% movement and 10% attack recovery.","category":"movement"}}
+var evolution_level=1
+var final_revealed=false
+var rebirth_remaining=0.0
 var credited: Dictionary={}
 var acquired: Array=[]
 var shield=0.0
@@ -44,6 +47,15 @@ func award(model,room_index: int,source: String) -> String:
  model.record_event("hunter_evolved",room_index,data)
  return id
 func tick(delta: float,model):
+ rebirth_remaining=maxf(0,rebirth_remaining-delta)
+ if not model.tutorial_mode and model.run_kind in ["campaign","endless"]:
+  var wanted=1+int((model.endless.wave-1)/5) if model.run_kind=="endless" else 1+maxi(0,StageCatalog.index_of(model.stage_id))+int(model.hunter_active_seconds()/75)+int(acquired.size()/3)+(1 if model.difficulty=="hell" else 0)
+  wanted=clampi(wanted,1,10)
+  if wanted>evolution_level:
+   evolution_level=wanted;model.record_event("nightmare_level",model.hunter.target if model.hunter.target>=0 else model.player_room,{"level":evolution_level})
+  if evolution_level==10 and not final_revealed and not model.hunter.transformed and model.hunter.hp>0 and (model.hunter.state==HunterState.State.ATTACK or model.hunter.state==HunterState.State.MOVE and model.hunter.position.distance_to(model.player_position)<450):
+   final_revealed=true;rebirth_remaining=3.6
+   model.record_event("nightmare_rebirth",model.hunter.target if model.hunter.target>=0 else model.player_room,{"level":10,"duration":3.6,"origin":model.hunter.position})
  shield_remaining=maxf(0,shield_remaining-delta);momentum=maxf(0,momentum-delta);shadow_cooldown=maxf(0,shadow_cooldown-delta)
  if shield_remaining<=0:shield=0
  for r in model.rooms:r.threat_income_factor=1.0;r.threat_power_factor=1.0
@@ -69,9 +81,10 @@ func interval_factor(h) -> float:
  return (.9 if has("blood_frenzy") else 1.0)*(.92 if has("relentless_siege") and h.siege_seconds>=8 else 1.0)*(.9 if momentum>0 else 1.0)
 func damage_factor(special: bool=false) -> float:return (1.15 if has("door_crusher") else 1.0)*(1.12 if special and has("savage_strike") else 1.0)
 func cooldown_factor() -> float:return 1.0/.88 if has("rapid_recovery") else 1.0
-func snapshot() -> Dictionary:return {"credited":credited.duplicate(true),"acquired":acquired.duplicate(),"shield":shield,"shield_remaining":shield_remaining,"momentum":momentum,"shadow_cooldown":shadow_cooldown,"drain_clock":drain_clock}
+func snapshot() -> Dictionary:return {"evolution_level":evolution_level,"final_revealed":final_revealed,"credited":credited.duplicate(true),"acquired":acquired.duplicate(),"shield":shield,"shield_remaining":shield_remaining,"momentum":momentum,"shadow_cooldown":shadow_cooldown,"drain_clock":drain_clock}
 static func valid(data,rooms: Array) -> bool:
  if not data is Dictionary or not data.get("credited") is Dictionary or not data.get("acquired") is Array or data.credited.size()>6 or data.acquired.size()!=data.credited.size():return false
+ if not ReplaySnapshot.whole(data.get("evolution_level",1),1,10) or not data.get("final_revealed",false) is bool:return false
  var ids=[]
  for id in data.acquired:
   if id not in BUFFS or id in ids:return false
@@ -86,5 +99,6 @@ static func valid(data,rooms: Array) -> bool:
   if not ReplaySnapshot.number(data.get(key),0,1e12):return false
  return data.shield_remaining<=8 and data.momentum<=8 and data.shadow_cooldown<=12 and data.drain_clock<=20
 func restore(data: Dictionary):
+ evolution_level=int(data.get("evolution_level",1));final_revealed=data.get("final_revealed",false);rebirth_remaining=0
  credited=data.credited.duplicate(true);acquired=data.acquired.duplicate()
  for key in ["shield","shield_remaining","momentum","shadow_cooldown","drain_clock"]:set(key,float(data[key]))

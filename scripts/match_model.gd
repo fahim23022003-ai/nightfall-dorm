@@ -420,6 +420,7 @@ func _tick_sim(delta: float):
  wrath.tick(delta,self)
  for room in rooms:room.production_paused=wrath.production_remaining>0
  items.tick(delta,self)
+ hunter.nightmare.advance(delta,hunter,self)
  strategy.observe(self)
  if bot_claimed < 5 and time > 6+bot_claimed*1.7:
   var options: Array = []
@@ -442,7 +443,7 @@ func _tick_sim(delta: float):
    if room.resident_position.distance_to(room.bed_position())<2:
     room.sleeping = true
     room.closed = true
-  room.tick_economy(delta,endless.omen.factor("blackout",difficulty) if run_kind=="endless" and endless!=null and room.index==player_room else 1.0)
+  room.tick_economy(delta,endless.omen.factor("blackout",difficulty) if run_kind=="endless" and endless!=null and room.index==player_room else 1.0,hunter.nightmare.income_factor(room.index))
   if run_kind=="endless":
    room.gold=minf(1e12,room.gold);room.electricity=minf(1e12,room.electricity);room.income_total=minf(1e12,room.income_total)
   if room.owner > 0:
@@ -570,7 +571,9 @@ func apply_target_damage(id: int,amount: float,room_index: int,packet: Dictionar
  if not DamageRules.valid(packet):return 0.0
  amount*=DamageRules.multiplier(packet.element,DamageRules.affinity(hunter.archetype) if id==1 else "earth")
  var old=actor.hp
- if id==1:actor.hurt(amount)
+ if id==1:
+  amount*=hunter.nightmare.incoming_factor(packet) if not hunter.transformed else 1.0;actor.hurt(amount)
+  hunter.nightmare.retaliate(hunter,self,maxf(0,old-actor.hp),packet)
  else:actor.hurt(amount,self)
  return maxf(0,old-actor.hp)
 func credit_damage(room_index: int,amount: float,id: int):
@@ -591,7 +594,7 @@ func _turrets(delta: float):
    var candidates=[]
    for entry in attackable_targets():
     if entry.id==1 and (hunter.shadow_active(room.index) or wrath.domain_active() and room.index!=wrath.domain_room):continue
-    if room.tile_position(tile).distance_to(entry.actor.position)<=resolved.range:candidates.append(entry)
+    if room.tile_position(tile).distance_to(entry.actor.position)<=resolved.range*hunter.nightmare.range_factor(room.index):candidates.append(entry)
    if candidates.is_empty():continue
    candidates.sort_custom(func(a,b):return room.tile_position(tile).distance_squared_to(a.actor.position)<room.tile_position(tile).distance_squared_to(b.actor.position))
    var count=mini(candidates.size(),int(resolved.get("targets",1)))
@@ -609,7 +612,7 @@ func _advance_projectiles(delta: float):
    _combat_event("cancel",shot,shot.position,0,"invalid_target");continue
   shot.age+=delta
   if shot.age>Catalog.PROJECTILES.max_age:_combat_event("cancel",shot,shot.position,0,"expired");continue
-  var travel=shot.speed*delta
+  var travel=shot.speed*delta*hunter.nightmare.projectile_factor(shot.room,shot.position,hunter.position)
   if shot.position.distance_to(actor.position)<=travel:
    shot.position=actor.position;var hit=shot.damage
    if shot.room==player_room:

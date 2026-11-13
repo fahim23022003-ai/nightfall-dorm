@@ -301,10 +301,11 @@ func sell_building(tile: int) -> bool:
  last_error=""
  return true
 
-func tick_economy(delta: float,dynamo_factor: float=1.0):
+func tick_economy(delta: float,dynamo_factor: float=1.0,bed_factor: float=1.0):
  if sleeping and alive: occupied_seconds+=delta
  var income = 0.0 if production_paused else income_rate()/temporary_income*delta+item_bonus_income
  item_bonus_income=0
+ income*=clampf(bed_factor,.8,1.0)
  gold += income
  income_total += income
  damage_flash = maxf(0,damage_flash-delta)

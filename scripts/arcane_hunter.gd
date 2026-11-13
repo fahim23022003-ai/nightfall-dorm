@@ -33,7 +33,7 @@ func tick(h,model,delta: float) -> bool:
   elif h.position.distance_to(room.door_approach())<=3:impact(h,model,target,chosen)
   casts[chosen]=int(casts.get(chosen,0))+1
   model.record_event("hunter_ability",target,{"ability":chosen,"duration":1.2 if chosen=="shadow_dash" else 3.0})
- if cooldown>0 or h.target<0 or h.target>=model.rooms.size() or model.tutorial_mode or h.boss_attack!="":return false
+ if h.nightmare.remaining>0 or cooldown>0 or h.target<0 or h.target>=model.rooms.size() or model.tutorial_mode or h.boss_attack!="":return false
  var room=model.rooms[h.target]
  if not room.alive or not room.closed or room.door_hp<=0:return false
  var chosen=""

@@ -2,6 +2,8 @@ extends RefCounted
 ## Illustration, animation and environment only. No economy/AI mutations.
 const OFFSET = Vector2(145,40)
 const ROOM_NAMES = ["WILLOW","WREN","ASTER","MOSS","CEDAR","FERN"]
+var nightmare_visual=preload("res://scripts/nightmare_presentation.gd").new()
+var building_visual=preload("res://scripts/building_evolution_visual.gd").new()
 var hunter_art={}
 var textures: Dictionary = {}
 var cartoon: Dictionary = {}
@@ -310,6 +312,9 @@ func render(c):
    var reduced=c.profile.settings.reduced_effects
    var lift=0.0 if reduced else (1-fraction)*12
    c.draw_arc(p,24+(0 if reduced else (1-fraction)*14),0,TAU,32,Color(.92,.77,.47,fraction),2.5)
+   for i in range(4 if c.profile.settings.reduced_effects else 8):
+    var v=Vector2.from_angle(i*TAU/(4 if c.profile.settings.reduced_effects else 8));var at=p+v*(10+(1-fraction)*32)
+    c.draw_rect(Rect2(at,Vector2(3,5)),Color(1,.82,.5,fraction))
    var value="LEVEL 10 · PRESTIGE" if e.kind=="prestige" else "UPGRADED"
    var at=p+Vector2(-36,-38-lift)
    c.draw_string_outline(font,at,value,HORIZONTAL_ALIGNMENT_LEFT,-1,11,3,Color(.06,.08,.1,fraction))
@@ -334,6 +339,9 @@ func render(c):
   var tint=Color(.35,.01,.04,.045) if m.endless.omen.active=="blood" else Color(.01,.01,.07,.12)
   if c.profile.settings.reduced_effects:tint.a*=.35
   c.draw_rect(visible_world_rect(c,0),tint)
+ nightmare_visual.effects(c,clock);nightmare_visual.omens(c,clock)
+ if c.model.map_id!="legacy":
+  for room in m.rooms:map_presentation.render_door_status(c,self,room)
  if c.get("horror")!=null: c.horror.render_world(c)
  item_presentation.draw(c)
  for f in c.floating:
@@ -362,7 +370,7 @@ func room_scene(c, room: RoomState, owned: bool):
  sprite(c,"plant",OFFSET+room.plant_position(),Vector2(27,38))
  var bed = OFFSET+room.bed_position()
  sprite(c,"shadow",bed+Vector2(0,26),Vector2(76,51))
- sprite(c,"bed_upgraded" if room.bed_level>=2 else "bed",bed,Vector2(65,92))
+ building_visual.draw(c,self,"bed",room.bed_level+1,bed,room.bed_branch,1.0 if room.sleeping else 0.0,Vector2.ZERO,clock)
  sprite(c,"warm_glow",r.position+Vector2(25,48),Vector2(125,145),Color(1,1,1,0.55))
  sprite(c,"lantern",r.position+Vector2(22,24),Vector2(17,29))
  # Engraved room plaques replace debugging ownership labels.
@@ -393,7 +401,7 @@ func door_scene(c, room):
  if room.door_hp>0:
   var tint = Color(1.65,0.65,0.65) if room.damage_flash>0 else Color.WHITE
   if room.closed:
-   c.draw_texture_rect(cartoon["door_%d" % mini(5,room.door_level+1)],Rect2(p+Vector2(-36,-41),Vector2(73,61)),false,tint)
+   building_visual.draw(c,self,"door",room.door_level+1,p,room.door_branch,room.damage_flash,Vector2.ZERO,clock)
   else:
    sprite(c,"door",p+Vector2(-31,-10),Vector2(40,50),Color("A3B8C0"),-0.95)
   if room.door_hp < room.max_hp()*0.55:
@@ -426,6 +434,8 @@ func hunter(c,h):
  if h.transformed:
   boss_presentation.draw(c,h,hunter_clock,death_age,identity.heading,c.profile.settings.get("reduced_effects",false))
   return
+ if h.archetype in StrategyCatalog.ARCHETYPES:
+  nightmare_visual.hunter(c,h,hunter_clock,death_age,identity);return
  var name="hunter_move" if int(hunter_clock*4)%2 else "hunter_idle"
  if h.target_time<0.4 and h.target>=0: name="hunter_target"
  if h.state==HunterState.State.ATTACK and h.cooldown>h.interval-0.32:
@@ -521,7 +531,7 @@ func cartoon_room(c,room: RoomState,owned: bool):
  c.draw_line(Vector2(r.position.x,r.end.y),r.end,Color("263746"),5)
  c.draw_line(r.position-Vector2(5,9),r.position+Vector2(275,-9),Color("A6B9C1"),3)
  if room.index==3: c.draw_texture_rect(cartoon.rug,Rect2(OFFSET+room.bed_position()-Vector2(44,63),Vector2(88,126)),false)
- c.draw_texture_rect(cartoon["bed_%d" % mini(5,room.bed_level+1)],Rect2(OFFSET+room.bed_position()-Vector2(33,46),Vector2(66,92)),false)
+ building_visual.draw(c,self,"bed",room.bed_level+1,OFFSET+room.bed_position(),room.bed_branch,1.0 if room.sleeping else 0.0,Vector2.ZERO,clock)
  var decor=["desk","desk","cabinet","cabinet","bookshelf","utility"][room.index]
  c.draw_texture_rect(cartoon[decor],Rect2(OFFSET+room.cabinet_position()-Vector2(23,27),Vector2(46,54)),false)
  c.draw_texture_rect(cartoon.plant,Rect2(OFFSET+room.plant_position()-Vector2(15,19),Vector2(30,38)),false)
@@ -559,12 +569,7 @@ func cartoon_room(c,room: RoomState,owned: bool):
    var building=room.buildings[tile]
    var name=building_key(building.kind,building.level)
    var size=Vector2(53,56)*(1+0.04*(building.level-1))
-   if building.kind=="turret" and c.model.time>=c.model.preparation:
-    var target=c.model.hunter.position-room.tile_position(tile)
-    c.draw_set_transform(p-Vector2(0,6),clampf(atan2(target.y,absf(target.x)),-0.4,0.4),Vector2(-1,1) if target.x>0 else Vector2.ONE)
-    c.draw_texture_rect(cartoon[name],Rect2(-size/2,size),false)
-    c.draw_set_transform(Vector2.ZERO)
-   else: c.draw_texture_rect(cartoon[name],Rect2(p-size/2-Vector2(0,6),size),false)
+   building_visual.draw(c,self,building.kind,building.level,p,building.get("specialization",""),building.flash,c.model.hunter.position-room.tile_position(tile),clock)
    if room.sleeping and room.alive:
     if building.kind=="generator":
      var hub=p+Vector2(12,-4)
@@ -588,7 +593,7 @@ func cartoon_room(c,room: RoomState,owned: bool):
   c.draw_texture_rect(cartoon[name],Rect2(p-Vector2(27,34),Vector2(54,58)),false,Color(1,1,1,0.6))
 
 func prestige(c,point: Vector2,level: int,kind="turret",detailed=false):
- c.draw_texture_rect(prestige_art["%s_%d" % [kind,level]],Rect2(point-Vector2(32,39),Vector2(64,64)),false)
+ # Physical prestige architecture is now drawn once by BuildingEvolutionVisual.
  var reduced=c.profile.settings.get("reduced_effects",false)
  var color=Color("E9B866") if level==10 else Color("A5C7ED")
  var emphasis=1.0 if detailed else .28
