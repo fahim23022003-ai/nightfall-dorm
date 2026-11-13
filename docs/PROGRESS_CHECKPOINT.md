@@ -1,3 +1,18 @@
+# Focused main-menu visual polish — complete
+
+The established layout, logo, haunted house and session-only Welcome are retained.
+Menu-only polish unifies two original bag/case icons and rank bezel, cleans
+secondary controls, adds an accurate 8px rank meter with live XP/wallet/inventory
+updates, and uses restrained hover feedback. Existing atmosphere is reused.
+Godot 4.6.3 focused checks: **282/0**; independent visual/input checks: **12/0**.
+Actual screenshots at 1280×720 and 1920×1080, Shop hover and Welcome are in
+[the focused report](MAIN_MENU_VISUAL_POLISH.md). No gameplay, rank rules, economy,
+save format, in-game HUD or welcome logic changes in this polish. No new build or
+full regression run was performed. Native Windows/human usability unverified.
+The preceding completed menu redesign was preserved as checkpoint07c23a0.
+
+---
+
 # Gameplay, Hunter and HUD overhaul — IMPLEMENTED AND TESTED
 
 Version **0.7.0-overhaul**, Godot **4.6.3**, branch **work**. Started at

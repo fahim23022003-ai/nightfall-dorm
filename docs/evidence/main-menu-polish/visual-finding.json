@@ -1,0 +1,11 @@
+{
+  "status": "FIXED AND AFFECTED CAPTURES ACCEPTED",
+  "finding": "Rendered RankProgress track is substantially taller than requested 8px and overlaps the next-rank caption; meter still resembles a button.",
+  "evidence": [
+    "before-meter-fix/01-polished-main-1280x720.png",
+    "before-meter-fix/02-polished-main-1920x1080.png"
+  ],
+  "suspected_cause": "size assigned while default show_percentage=true, before disabling percentage; Godot minimum-size clamp may retain the larger actual height.",
+  "other_views": "Icon/secondary styling/Welcome and actual Shop hover inspected without further findings.",
+  "resolution": "B moved final size assignment after percentage/styles/parent setup; actual eight-pixel track independently asserted; all four final viewport captures inspected without caption overlap."
+}

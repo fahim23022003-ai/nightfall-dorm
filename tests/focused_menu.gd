@@ -15,7 +15,7 @@ func click(at):
   var event=InputEventMouseButton.new();event.position=at;event.global_position=at;event.button_index=MOUSE_BUTTON_LEFT;event.pressed=pressed;Input.parse_input_event(event);await process_frame
 func named(title):
  for node in game.ui.panel.get_children():
-  if node is Button and node.text==title:return node
+  if node is Button and not node.is_queued_for_deletion() and node.text==title:return node
  return null
 func fresh(path,returning):
  var profile=PlayerProfile.new(path);profile.tutorial_completed=returning;profile.xp=360;profile.rm_cash=123;profile.inventory={"shield":3,"repair":2};profile.save_profile()
@@ -39,6 +39,23 @@ func run():
   await click(close.get_global_rect().get_center());check(not game.onboarding.is_welcome_open(),"real X mouse closes")
   check(root.gui_get_focus_owner()==game.ui.menu_start,"focus returns Start")
   check(game.profile.xp==360 and game.profile.rm_cash==123 and game.profile.inventory.shield==3,"real profile data retained")
+  var rank_card=named("RANK & REWARDS");var shop_card=named("SHOP");var inv_card=named("INVENTORY")
+  var meter=rank_card.get_node("RankProgress");var labels=rank_card.get_children().filter(func(n):return n is Label)
+  var child_count=rank_card.get_child_count()
+  check(meter.mouse_filter==Control.MOUSE_FILTER_IGNORE and meter.focus_mode==Control.FOCUS_NONE,"XP meter is display-only")
+  check(meter.get_theme_stylebox("background") is StyleBoxFlat,"XP track uses clean progress material")
+  check(is_equal_approx(meter.size.y,8.0),"actual laid-out XP meter stays eight pixels tall")
+  for label in labels:check(not meter.get_global_rect().intersects(label.get_global_rect()),"actual meter stays clear of caption "+label.text)
+  game.profile.xp=400;game.profile.rm_cash=222;game.profile.inventory.shield=4
+  await create_timer(.25).timeout
+  check(is_equal_approx(meter.value,150.0/450.0) and labels.any(func(l):return l.text=="150 / 450 XP this rank"),"live XP numerator/denominator and fill agree")
+  check(shop_card.get_children().any(func(n):return n is Label and n.text=="222"),"wallet updates while menu visible")
+  check(inv_card.get_children().any(func(n):return n is Label and n.text=="6 items"),"owned inventory count updates while visible")
+  game.profile.xp=900;await create_timer(.25).timeout
+  check(is_equal_approx(meter.value,200.0/700.0) and labels.any(func(l):return l.text=="Gold"),"rank promotion uses existing real thresholds")
+  check(rank_card.get_child_count()==child_count,"data refresh creates no extra menu nodes")
+  game.profile.xp=360;game.profile.rm_cash=123;game.profile.inventory.shield=3
+  await create_timer(.25).timeout
   for title in ["Start Game","Endless Siege","SHOP","RANK & REWARDS","INVENTORY","How to Play","Settings","Extras · Challenge / Practice / Cosmetics"]:
    var b=named(title);check(b!=null and Rect2(Vector2.ZERO,Vector2(1280,720)).encloses(b.get_rect()),"visible clickable destination "+title)
    b.grab_focus();check(b.has_focus(),"keyboard focus "+title)
@@ -47,9 +64,12 @@ func run():
    if expected.has(title):check(game.ui.current_screen==expected[title],"actual destination "+title+" got "+game.ui.current_screen)
    else:check(game.ui.current_screen!="menu" or game.ui.panel.get_children().any(func(n):return n is Label and "lifetime XP" in n.text),"rank destination")
    game.ui.show_menu();await process_frame;check(not game.onboarding.is_welcome_open(),"same session menu no reopen")
+  rank_card=named("RANK & REWARDS");meter=rank_card.get_node("RankProgress");labels=rank_card.get_children().filter(func(n):return n is Label)
   game.profile.pending_spins=[{"match_id":1,"item":"shield","result":"victory","quantity":1}]
   game.profile.rm_cash=OnboardingCatalog.MAX_CASH;game.profile.xp=RankCatalog.MAX_XP;game.profile.highest_rank=6
   for id in ItemCatalog.IDS:game.profile.inventory[id]=ItemCatalog.MAX_STOCK
+  await create_timer(.25).timeout
+  check(meter.value==1.0 and labels.any(func(l):return "XP · MAX" in l.text),"live maximum rank remains accurate")
   game.ui.show_menu();await process_frame
   var controls=game.ui.panel.get_children().filter(func(node):return node is Button and not node.is_queued_for_deletion())
   for i in range(controls.size()):

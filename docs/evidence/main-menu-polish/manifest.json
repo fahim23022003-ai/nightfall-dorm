@@ -1,0 +1,51 @@
+{
+  "status": "ACCEPTED focused visual scope",
+  "checks": 12,
+  "failures": 0,
+  "screenshots": [
+    {
+      "path": "/workspace/main-menu-polish/01-polished-main-1280x720.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "34900ccb57295a7b734005032bd8bd29e700e928ca6162ed57c04c67815a4c18"
+    },
+    {
+      "path": "/workspace/main-menu-polish/02-polished-main-1920x1080.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "b467666051d61a2a7e51bbe97aae4f54bb3a87b46dd935be3d43d2f36b84f444"
+    },
+    {
+      "path": "/workspace/main-menu-polish/03-highlighted-shop-card.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "f4859f26dbeffddf82aea828bcceb56caa16e227cdc2ebc7dc8336307eaac4e9"
+    },
+    {
+      "path": "/workspace/main-menu-polish/04-welcome-open.png",
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "14c98ece8bcd48a58ded16367cee96a0e79b940ff4bca789fa96f21df54b44c6"
+    }
+  ],
+  "sources": {
+    "scripts/main_menu.gd": "24b0d9d8cab3b5a84b614a93f37dc3adb5900b5f7436a4c35cdeb7d2684f544c",
+    "scripts/menu_destination.gd": "fe25ce1ec1bd78ab60f6649af969ab5b116d6514b52b61d3260697945d8c9686",
+    "scripts/onboarding.gd": "57a103f0483a3d98b2e636ee8a9961a348b070893a7da6203813a3277935a648",
+    "scripts/dorm_presentation.gd": "8e6aa2ba3f6f543516678a8714156c2951f110dee5c2e145121a1faed5214d57",
+    "assets/menu/merchant_bag.svg": "ed02ea748fe4cc5f5bc66cc6961cba9e51081386d7bc89e81e67570153b5ef42",
+    "assets/menu/inventory_case.svg": "6331d301a1d161c673543649ce3fe8398172c7ce58c112943d4443091cc361b4"
+  },
+  "engine": "Godot4.6.3 Linux Mesa software renderer",
+  "base_commit": "07c23a0375d41c8e555965fbf0675a3c26da81b6",
+  "fixed_finding": "ProgressBar retained font-clampedheight from setting size before hiding percentage; after B movedsizeassignmentafter setup, actual8px height and readablecaption visuallyconfirmed at720/1080. Before-fix screenshots preserved separately.",
+  "limits": "Actual default test-profile values, not owner profile. Native Windows and subjective human usability unverified. No source/Git/export/full-suite actions by D."
+}

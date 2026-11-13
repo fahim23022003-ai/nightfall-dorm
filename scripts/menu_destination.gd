@@ -3,14 +3,37 @@ extends Button
 # Menu-only silhouettes, all children are non-interactive; the whole card is a button.
 var silhouette="plaque"
 var accent=Color("C8B686")
+var reduced=false
+var highlight=0.0:
+ set(value):highlight=value;queue_redraw()
+var highlight_tween: Tween
+var data_key: Callable
+var refresh_data: Callable
+var last_data=""
+var refresh_clock=0.0
+func bind_data(key: Callable,refresh: Callable):
+ data_key=key;refresh_data=refresh;last_data=str(data_key.call());refresh_data.call();set_process(true)
+func _process(delta):
+ if not data_key.is_valid():return
+ refresh_clock+=delta
+ if refresh_clock<.2:return
+ refresh_clock=0
+ var current=str(data_key.call())
+ if current!=last_data:last_data=current;refresh_data.call()
+func refresh_highlight():
+ var target=1.0 if is_hovered() or has_focus() else 0.0
+ if highlight_tween!=null and highlight_tween.is_valid():highlight_tween.kill()
+ if reduced:highlight=target
+ else:highlight_tween=create_tween();highlight_tween.tween_property(self,"highlight",target,.12)
+
 func _ready():
- mouse_entered.connect(queue_redraw);mouse_exited.connect(queue_redraw)
- focus_entered.connect(queue_redraw);focus_exited.connect(queue_redraw)
+ set_process(false)
+ mouse_entered.connect(refresh_highlight);mouse_exited.connect(refresh_highlight)
+ focus_entered.connect(refresh_highlight);focus_exited.connect(refresh_highlight)
  button_down.connect(queue_redraw);button_up.connect(queue_redraw)
 func _draw():
- var bright=is_hovered() or has_focus()
- var edge=accent.lightened(.24) if bright else accent
- var fill=Color("34362F") if bright else Color("20282B")
+ var edge=accent.lerp(accent.lightened(.24),highlight)
+ var fill=Color("20282B").lerp(Color("34362F"),highlight)
  if is_pressed():fill=Color("121C20")
  var box=StyleBoxFlat.new();box.bg_color=fill;box.border_color=edge;box.set_border_width_all(2)
  box.set_corner_radius_all(14)
@@ -21,6 +44,12 @@ func _draw():
   var points=PackedVector2Array([Vector2(3,2),Vector2(size.x-3,2),Vector2(size.x-3,size.y-26),Vector2(size.x*.5,size.y-2),Vector2(3,size.y-26)])
   draw_colored_polygon(points,fill);draw_polyline(points+PackedVector2Array([points[0]]),edge,2,true)
  if silhouette!="rank":draw_style_box(box,Rect2(Vector2(2,2),size-Vector2(4,4)))
+ if silhouette=="rank":
+  var center=Vector2(size.x*.5,54)
+  draw_circle(center+Vector2(0,3),39,Color("111821"))
+  draw_circle(center,37,Color("363443"))
+  draw_arc(center,37,-PI*.95,PI*.05,32,Color("D3C6D8"),2)
+  draw_arc(center,37,PI*.05,PI*1.05,32,Color("66556F"),2)
  if silhouette=="shop":
   for i in range(7):
    var width=(size.x-16)/7
