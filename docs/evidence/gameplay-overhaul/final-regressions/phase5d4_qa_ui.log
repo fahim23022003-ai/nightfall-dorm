@@ -1,0 +1,2183 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: PREMIUM UI: actual emptyfloor click abandoned_dorm useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:125)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_CARD_BEFORE abandoned_dorm repair at=(881.0, 554.686) rect=[P: (762.0, 528.686), S: (238.0, 52.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER repair mode=build selected=0 bought={  } last_error= hover=@Button@119:<Button#172939545136>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade repair
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:138)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:139)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:140)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_HELD_START repair actionmode=1 count=1 context=build
+QA_HELD_DOWN repair count=1 context=build visible=true pressed=true
+QA_HELD_ESCAPE repair context=false mode=build running=true count=1
+QA_HELD_RELEASE repair context=false mode=build running=true count=1 newtile={  }
+QA_CARD_BEFORE abandoned_dorm frost at=(637.0, 553.2433) rect=[P: (518.0, 527.2433), S: (238.0, 52.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER frost mode=build selected=0 bought={  } last_error= hover=@Button@114:<Button#172754995749>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade frost
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:138)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:139)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:140)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_HELD_START frost actionmode=1 count=1 context=build
+QA_HELD_DOWN frost count=1 context=build visible=true pressed=true
+QA_HELD_ESCAPE frost context=false mode=build running=true count=1
+QA_HELD_RELEASE frost context=false mode=build running=true count=1 newtile={  }
+QA_CARD_BEFORE abandoned_dorm decoy at=(393.0, 606.9919) rect=[P: (274.0, 580.9919), S: (238.0, 52.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER decoy mode=build selected=0 bought={  } last_error= hover=@Button@134:<Button#173493193297>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade decoy
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:138)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:139)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:140)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_HELD_START decoy actionmode=1 count=1 context=build
+QA_HELD_DOWN decoy count=1 context=build visible=true pressed=true
+QA_HELD_ESCAPE decoy context=false mode=build running=true count=1
+QA_HELD_RELEASE decoy context=false mode=build running=true count=1 newtile={  }
+ERROR: PREMIUM UI: machine inspector abandoned_dorm useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:154)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: machine inspector abandoned_dorm neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:154)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector bed useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: exclusivechoice startsunconfirmedanddisabled
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:65)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:66)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: ordinarychoicebuttonselectsreadablependingbranch
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:67)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: selectedbranchhasactualartandselectedstate
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:69)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:70)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:79)
+       [3] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: explicitbranchConfirmchargesquotedpriceonce turret
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:83)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: confirmedbranchadvancesexactlyonetier
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:84)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: exclusivechoice startsunconfirmedanddisabled
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:65)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:66)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: ordinarychoicebuttonselectsreadablependingbranch
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:67)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: selectedbranchhasactualartandselectedstate
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:69)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:70)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:79)
+       [3] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: explicitbranchConfirmchargesquotedpriceonce bed
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:83)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: confirmedbranchadvancesexactlyonetier
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:84)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: exclusivechoice startsunconfirmedanddisabled
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:65)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:66)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: ordinarychoicebuttonselectsreadablependingbranch
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:67)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: selectedbranchhasactualartandselectedstate
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:69)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:70)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:79)
+       [3] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: explicitbranchConfirmchargesquotedpriceonce door
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:83)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: confirmedbranchadvancesexactlyonetier
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:84)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: actual emptyfloor click haunted_hospital useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:125)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_CARD_BEFORE haunted_hospital repair at=(881.0, 547.3756) rect=[P: (762.0, 521.3756), S: (238.0, 52.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER repair mode=build selected=0 bought={  } last_error= hover=@Button@287:<Button#202769435170>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade repair
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:138)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:139)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:140)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_HELD_START repair actionmode=1 count=1 context=build
+QA_HELD_DOWN repair count=1 context=build visible=true pressed=true
+QA_HELD_ESCAPE repair context=false mode=build running=true count=1
+QA_HELD_RELEASE repair context=false mode=build running=true count=1 newtile={  }
+QA_CARD_BEFORE haunted_hospital frost at=(637.0, 552.9329) rect=[P: (518.0, 526.9329), S: (238.0, 52.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER frost mode=build selected=0 bought={  } last_error= hover=@Button@282:<Button#202584885783>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade frost
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:138)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:139)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:140)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_HELD_START frost actionmode=1 count=1 context=build
+QA_HELD_DOWN frost count=1 context=build visible=true pressed=true
+QA_HELD_ESCAPE frost context=false mode=build running=true count=1
+QA_HELD_RELEASE frost context=false mode=build running=true count=1 newtile={  }
+QA_CARD_BEFORE haunted_hospital decoy at=(393.0, 606.9861) rect=[P: (274.0, 580.9861), S: (238.0, 52.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER decoy mode=build selected=0 bought={  } last_error= hover=@Button@302:<Button#203323083329>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade decoy
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:138)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:139)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:140)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_HELD_START decoy actionmode=1 count=1 context=build
+QA_HELD_DOWN decoy count=1 context=build visible=true pressed=true
+QA_HELD_ESCAPE decoy context=false mode=build running=true count=1
+QA_HELD_RELEASE decoy context=false mode=build running=true count=1 newtile={  }
+ERROR: PREMIUM UI: machine inspector haunted_hospital useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:154)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: machine inspector haunted_hospital neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:154)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector bed useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: exclusivechoice startsunconfirmedanddisabled
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:65)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:66)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: ordinarychoicebuttonselectsreadablependingbranch
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:67)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: selectedbranchhasactualartandselectedstate
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:69)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:70)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:79)
+       [3] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: explicitbranchConfirmchargesquotedpriceonce turret
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:83)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: confirmedbranchadvancesexactlyonetier
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:84)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: exclusivechoice startsunconfirmedanddisabled
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:65)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:66)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: ordinarychoicebuttonselectsreadablependingbranch
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:67)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: selectedbranchhasactualartandselectedstate
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:69)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:70)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:79)
+       [3] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: explicitbranchConfirmchargesquotedpriceonce bed
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:83)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: confirmedbranchadvancesexactlyonetier
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:84)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: exclusivechoice startsunconfirmedanddisabled
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:65)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:66)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: ordinarychoicebuttonselectsreadablependingbranch
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:67)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: selectedbranchhasactualartandselectedstate
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:69)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:70)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:79)
+       [3] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: explicitbranchConfirmchargesquotedpriceonce door
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:83)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: confirmedbranchadvancesexactlyonetier
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:84)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: actual emptyfloor click forgotten_hotel useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:125)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_CARD_BEFORE forgotten_hotel repair at=(881.0, 545.7755) rect=[P: (762.0, 519.7755), S: (238.0, 52.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER repair mode=build selected=0 bought={  } last_error= hover=@Button@455:<Button#231290702357>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade repair
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:138)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:139)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:140)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_HELD_START repair actionmode=1 count=1 context=build
+QA_HELD_DOWN repair count=1 context=build visible=true pressed=true
+QA_HELD_ESCAPE repair context=false mode=build running=true count=1
+QA_HELD_RELEASE repair context=false mode=build running=true count=1 newtile={  }
+QA_CARD_BEFORE forgotten_hotel frost at=(637.0, 552.918) rect=[P: (518.0, 526.918), S: (238.0, 52.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER frost mode=build selected=0 bought={  } last_error= hover=@Button@450:<Button#231106152970>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade frost
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:138)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:139)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:140)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_HELD_START frost actionmode=1 count=1 context=build
+QA_HELD_DOWN frost count=1 context=build visible=true pressed=true
+QA_HELD_ESCAPE frost context=false mode=build running=true count=1
+QA_HELD_RELEASE frost context=false mode=build running=true count=1 newtile={  }
+QA_CARD_BEFORE forgotten_hotel decoy at=(393.0, 606.9883) rect=[P: (274.0, 580.9883), S: (238.0, 52.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER decoy mode=build selected=0 bought={  } last_error= hover=@Button@470:<Button#231844350514>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade decoy
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:138)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:139)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:140)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_HELD_START decoy actionmode=1 count=1 context=build
+QA_HELD_DOWN decoy count=1 context=build visible=true pressed=true
+QA_HELD_ESCAPE decoy context=false mode=build running=true count=1
+QA_HELD_RELEASE decoy context=false mode=build running=true count=1 newtile={  }
+ERROR: PREMIUM UI: machine inspector forgotten_hotel useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:154)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: machine inspector forgotten_hotel neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:154)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector bed useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: exclusivechoice startsunconfirmedanddisabled
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:65)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:66)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: ordinarychoicebuttonselectsreadablependingbranch
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:67)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: selectedbranchhasactualartandselectedstate
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:69)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:70)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:79)
+       [3] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: explicitbranchConfirmchargesquotedpriceonce turret
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:83)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: confirmedbranchadvancesexactlyonetier
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:84)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: exclusivechoice startsunconfirmedanddisabled
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:65)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:66)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: ordinarychoicebuttonselectsreadablependingbranch
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:67)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: selectedbranchhasactualartandselectedstate
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:69)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:70)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:79)
+       [3] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: explicitbranchConfirmchargesquotedpriceonce bed
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:83)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: confirmedbranchadvancesexactlyonetier
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:84)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: exclusivechoice startsunconfirmedanddisabled
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:65)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:66)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: ordinarychoicebuttonselectsreadablependingbranch
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:67)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: selectedbranchhasactualartandselectedstate
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:69)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:70)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:79)
+       [3] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: explicitbranchConfirmchargesquotedpriceonce door
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:83)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: confirmedbranchadvancesexactlyonetier
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:84)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: actual emptyfloor click underground_lab useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:125)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_CARD_BEFORE underground_lab repair at=(881.0, 549.1947) rect=[P: (762.0, 523.1947), S: (238.0, 52.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER repair mode=build selected=0 bought={  } last_error= hover=@Button@623:<Button#259828746760>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade repair
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:138)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:139)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:140)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_HELD_START repair actionmode=1 count=1 context=build
+QA_HELD_DOWN repair count=1 context=build visible=true pressed=true
+QA_HELD_ESCAPE repair context=false mode=build running=true count=1
+QA_HELD_RELEASE repair context=false mode=build running=true count=1 newtile={  }
+QA_CARD_BEFORE underground_lab frost at=(637.0, 552.8843) rect=[P: (518.0, 526.8843), S: (238.0, 52.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER frost mode=build selected=0 bought={  } last_error= hover=@Button@618:<Button#259644197373>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade frost
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:138)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:139)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:140)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_HELD_START frost actionmode=1 count=1 context=build
+QA_HELD_DOWN frost count=1 context=build visible=true pressed=true
+QA_HELD_ESCAPE frost context=false mode=build running=true count=1
+QA_HELD_RELEASE frost context=false mode=build running=true count=1 newtile={  }
+QA_CARD_BEFORE underground_lab decoy at=(393.0, 606.9871) rect=[P: (274.0, 580.9871), S: (238.0, 52.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER decoy mode=build selected=0 bought={  } last_error= hover=@Button@638:<Button#260382394917>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade decoy
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:138)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:139)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:140)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_HELD_START decoy actionmode=1 count=1 context=build
+QA_HELD_DOWN decoy count=1 context=build visible=true pressed=true
+QA_HELD_ESCAPE decoy context=false mode=build running=true count=1
+QA_HELD_RELEASE decoy context=false mode=build running=true count=1 newtile={  }
+ERROR: PREMIUM UI: machine inspector underground_lab useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:154)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: machine inspector underground_lab neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:154)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector bed useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: exclusivechoice startsunconfirmedanddisabled
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:65)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:66)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: ordinarychoicebuttonselectsreadablependingbranch
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:67)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: selectedbranchhasactualartandselectedstate
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:69)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:70)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:79)
+       [3] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: explicitbranchConfirmchargesquotedpriceonce turret
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:83)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: confirmedbranchadvancesexactlyonetier
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:84)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: exclusivechoice startsunconfirmedanddisabled
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:65)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:66)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: ordinarychoicebuttonselectsreadablependingbranch
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:67)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: selectedbranchhasactualartandselectedstate
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:69)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:70)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:79)
+       [3] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: explicitbranchConfirmchargesquotedpriceonce bed
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:83)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: confirmedbranchadvancesexactlyonetier
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:84)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: exclusivechoice startsunconfirmedanddisabled
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:65)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:66)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: ordinarychoicebuttonselectsreadablependingbranch
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:67)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: selectedbranchhasactualartandselectedstate
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:69)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:70)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:79)
+       [3] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: explicitbranchConfirmchargesquotedpriceonce door
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:83)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: confirmedbranchadvancesexactlyonetier
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:84)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: actual emptyfloor click cursed_mansion useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:125)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_CARD_BEFORE cursed_mansion repair at=(881.0, 545.7755) rect=[P: (762.0, 519.7755), S: (238.0, 52.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER repair mode=build selected=0 bought={  } last_error= hover=@Button@791:<Button#288316459515>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade repair
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:138)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:139)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:140)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_HELD_START repair actionmode=1 count=1 context=build
+QA_HELD_DOWN repair count=1 context=build visible=true pressed=true
+QA_HELD_ESCAPE repair context=false mode=build running=true count=1
+QA_HELD_RELEASE repair context=false mode=build running=true count=1 newtile={  }
+QA_CARD_BEFORE cursed_mansion frost at=(637.0, 552.9349) rect=[P: (518.0, 526.9349), S: (238.0, 52.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER frost mode=build selected=0 bought={  } last_error= hover=@Button@786:<Button#288131910129>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade frost
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:138)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:139)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:140)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_HELD_START frost actionmode=1 count=1 context=build
+QA_HELD_DOWN frost count=1 context=build visible=true pressed=true
+QA_HELD_ESCAPE frost context=false mode=build running=true count=1
+QA_HELD_RELEASE frost context=false mode=build running=true count=1 newtile={  }
+QA_CARD_BEFORE cursed_mansion decoy at=(393.0, 606.9967) rect=[P: (274.0, 580.9967), S: (238.0, 52.0)] disabled=false selected=0 mode=build
+QA_CARD_AFTER decoy mode=build selected=0 bought={  } last_error= hover=@Button@806:<Button#288870107961>
+ERROR: PREMIUM UI: rightcolumn realdoubleclickpurchasesoncewithoutaccidentalUpgrade decoy
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:138)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: doubleclickchargesonlyoneactualbaseprice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:139)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: directBuildhasnostuckmouse-followpreview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui.gd:140)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+QA_HELD_START decoy actionmode=1 count=1 context=build
+QA_HELD_DOWN decoy count=1 context=build visible=true pressed=true
+QA_HELD_ESCAPE decoy context=false mode=build running=true count=1
+QA_HELD_RELEASE decoy context=false mode=build running=true count=1 newtile={  }
+ERROR: PREMIUM UI: machine inspector cursed_mansion useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:154)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: machine inspector cursed_mansion neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:154)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector bed useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: structure inspector door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] run (res://tests/phase5d4_qa_ui.gd:157)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: exclusivechoice startsunconfirmedanddisabled
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:65)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:66)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: ordinarychoicebuttonselectsreadablependingbranch
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:67)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection turret neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: selectedbranchhasactualartandselectedstate
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:69)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:70)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:79)
+       [3] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: explicitbranchConfirmchargesquotedpriceonce turret
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:83)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: confirmedbranchadvancesexactlyonetier
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:84)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: exclusivechoice startsunconfirmedanddisabled
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:65)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:66)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: ordinarychoicebuttonselectsreadablependingbranch
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:67)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection bed neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: selectedbranchhasactualartandselectedstate
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:69)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:70)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:79)
+       [3] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: explicitbranchConfirmchargesquotedpriceonce bed
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:83)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: confirmedbranchadvancesexactlyonetier
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:84)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: exclusivechoice startsunconfirmedanddisabled
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:65)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:66)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: ordinarychoicebuttonselectsreadablependingbranch
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:67)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door useswidefixedbottomregion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:54)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: branch selection door neverchangescontextparentgeometry
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] stable_panel (res://tests/phase5d4_qa_ui.gd:55)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:68)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: selectedbranchhasactualartandselectedstate
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:69)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:70)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] branch_flow (res://tests/phase5d4_qa_ui.gd:79)
+       [3] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: explicitbranchConfirmchargesquotedpriceonce door
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:83)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: confirmedbranchadvancesexactlyonetier
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] branch_flow (res://tests/phase5d4_qa_ui.gd:84)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:41)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+PHASE5D4_UI_QA_CHECKS=813 MAPS=5 FAILURES=305

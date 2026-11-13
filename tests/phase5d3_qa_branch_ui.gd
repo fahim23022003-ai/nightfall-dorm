@@ -1,5 +1,18 @@
 extends "res://tests/premium_strategy_ui.gd"
 const Support=preload("res://tests/replay_test_support.gd")
+# Ordinary inspection waits for the new intentional .26s drawer slide.
+# Separate input QA checks behavior during the motion itself.
+func settle():
+ await process_frame
+ if game!=null and is_instance_valid(game) and game.mode=="match":
+  game.ui.update_match()
+  var deadline=Time.get_ticks_msec()+1500
+  while game.ui.bottom_context!=null and game.ui.bottom_context.is_transitioning() and Time.get_ticks_msec()<deadline:await process_frame
+ await process_frame
+func click(control,double_click=false):
+ await settle()
+ await super.click(control,double_click)
+ await settle()
 func key(code):
  for down in [true,false]:
   var e=InputEventKey.new();e.keycode=code;e.pressed=down;Input.parse_input_event(e);await process_frame

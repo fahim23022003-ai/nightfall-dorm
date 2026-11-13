@@ -1,0 +1,13 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: PHASE1: real confirmation builds once
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase1_building.gd:10)
+       [1] run (res://tests/phase1_building.gd:90)
+       [2] click (res://tests/phase1_building.gd:24)
+SCRIPT ERROR: Invalid access to property or key '0' on a base object of type 'Dictionary'.
+          at: run (res://tests/phase1_building.gd:96)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/phase1_building.gd:96)
+              [1] click (res://tests/phase1_building.gd:24)

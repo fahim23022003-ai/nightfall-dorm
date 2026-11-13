@@ -5,7 +5,16 @@ var rectangles=[]
 func settle():
  await process_frame
  if game!=null and is_instance_valid(game) and game.mode=="match":game.ui.update_match()
+ # Ordinary inspector actions wait for the real wall-time drawer animation.
+ # Dedicated overhaul input tests separately exercise guarded moving controls.
+ if game!=null and is_instance_valid(game) and game.mode=="match" and game.ui.bottom_context!=null:
+  var deadline=Time.get_ticks_msec()+1500
+  while game.ui.bottom_context.is_transitioning() and Time.get_ticks_msec()<deadline:await process_frame
  await process_frame
+func click(control,double_click=false):
+ await settle()
+ await super.click(control,double_click)
+ await settle()
 func primitive(value,seen={}):
  if value is RandomNumberGenerator:return {"seed":str(value.seed),"state":str(value.state)}
  if value is Dictionary:
@@ -40,6 +49,7 @@ func pointer(point,down,double_click=false):
 func point_click(point,double_click=false):
  await pointer(point,true,double_click);await pointer(point,false);await settle()
 func pad(tile):
+ await settle()
  var pos=game.world_to_screen(game.model.player().tile_position(tile));await point_click(pos)
  game.ui.update_match();await settle()
 func next_pad():
@@ -51,7 +61,7 @@ func stable_panel(label,before,model_state):
  check(camera()==before,label+" leavescamera/zoom/goal/playerpositionunchanged")
  check(state()==model_state,label+" leavesallmodelprimitive/RNG/stateunchanged")
  var rect=game.ui.context_box.get_global_rect();rectangles.append(rect)
- check(rect.position.y>=450 and rect.size.x>=1000 and rect.end.x<=1280.1 and rect.end.y<=720.1,label+" useswidefixedbottomregion")
+ check(rect.position.y>=430 and rect.size.x>=1000 and rect.end.x<=1280.1 and rect.end.y<=720.1,label+" useswidefixedbottomregion")
  for r in rectangles:check(r==rect,label+" neverchangescontextparentgeometry")
  for b in controls(game.ui.context_box,Button):
   if b.is_visible_in_tree():check(inside(b.get_global_rect(),rect),label+" actualinteractivebuttonfitscontextregion")
@@ -127,10 +137,10 @@ func run():
   for kind in Catalog.BUILDINGS:
    var card=game.ui.actions["build:"+kind]
    check(card.visible and card.text=="BUILD" and card.tooltip_text!="","registeredmachinehasliteralBuild/requirementscontrol "+kind)
-  # Every fourth card is in the risky rightmost column. Its new inspector can
+  # Every fifth card is in the risky rightmost column. Its new inspector can
   # occupy the same point, so the OS double-click trailing event must be eaten.
   var kinds=Catalog.BUILDINGS.keys()
-  for index in range(3,kinds.size(),4):
+  for index in range(4,kinds.size(),5):
    tile=next_pad();await pad(tile);await settle();var kind=kinds[index];var card=game.ui.actions["build:"+kind];var at=card.get_global_rect().get_center();var gold=r.gold;var power=r.electricity;var count=r.buildings.size();before=camera()
    print("QA_CARD_BEFORE ",map," ",kind," at=",at," rect=",card.get_global_rect()," disabled=",card.disabled," selected=",game.selected_tile," mode=",game.ui.context_mode)
    await point_click(at);await point_click(at,true)

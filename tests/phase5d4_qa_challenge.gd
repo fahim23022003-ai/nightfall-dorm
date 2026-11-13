@@ -48,18 +48,18 @@ func worker(args):
 func run():
  var args=OS.get_cmdline_user_args()
  if args.size()>0 and args[0]=="--worker":worker(args);return
- check(ChallengeCode.RULESET==3,"actual new combat advertises ruleset3")
+ check(ChallengeCode.RULESET==4,"actual typed combat advertises ruleset4")
  var runs=[]
  for index in [0,2,4]:
   var paths=[]
   for progressed in [0,20000]:
-   var path="res://docs/evidence/phase5d4/qa-code3-%d-%d.json" % [index,progressed];paths.append(path)
+   var path="res://docs/evidence/gameplay-overhaul/final-affected/qa-code-current-%d-%d.json" % [index,progressed];paths.append(path)
    var output=[];var result=OS.execute(OS.get_executable_path(),["--headless","--path",ProjectSettings.globalize_path("res://"),"--script","res://tests/phase5d4_qa_challenge.gd","--","--worker",str(index),str(progressed),path],output,true)
    var f=FileAccess.open(path.replace(".json",".log"),FileAccess.WRITE);f.store_string("".join(output));f.close()
    check(result==0 and not "SCRIPT ERROR" in "".join(output) and not "ERROR:" in "".join(output),"fresh actual scene challenge worker exits cleanly")
-  check(FileAccess.get_file_as_bytes(paths[0])==FileAccess.get_file_as_bytes(paths[1]),"ruleset3 full engine traces identical across fresh beginner/progressed profiles")
+  check(FileAccess.get_file_as_bytes(paths[0])==FileAccess.get_file_as_bytes(paths[1]),"current-ruleset full engine traces identical across fresh beginner/progressed profiles")
   var data=JSON.parse_string(FileAccess.get_file_as_string(paths[0]));runs.append({"map":MapCatalog.IDS[index],"outcome":data.outcome,"events":data.events,"abilities":data.abilities,"frames":data.elapsed_frames,"max_minions":data.max_minions,"max_routes":data.max_routes})
-  check(data.code.begins_with("NF2-3-") and data.trace.size()>10,"test uses actual ruleset3 extended gameplay, not seed-only function")
- var f=FileAccess.open("res://docs/evidence/phase5d4/qa-code3-summary.json",FileAccess.WRITE);f.store_string(JSON.stringify(runs," "));f.close()
+  check(data.code.begins_with("NF2-%d-" % ChallengeCode.RULESET) and data.trace.size()>10,"test uses actual current-ruleset extended gameplay, not seed-only function")
+ var f=FileAccess.open("res://docs/evidence/gameplay-overhaul/final-affected/qa-code-current-summary.json",FileAccess.WRITE);f.store_string(JSON.stringify(runs," "));f.close()
  print("PHASE5D4_QA_CHALLENGE_CHECKS=",checks," FRESH_WORKERS=6 FAILURES=",failures)
  quit(1 if failures else 0)

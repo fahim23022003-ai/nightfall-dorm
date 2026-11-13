@@ -16,7 +16,7 @@ func frozen():
     var actual=r.buildings[int(b.tile)]
     check(actual.kind==b.kind and actual.level==b.level and actual.get("specialization","")==b.specialization and actual.invested_gold==b.invested_gold and actual.invested_power==b.invested_power,"old individual machine actualspend and branch preserved")
   check(m.evolution.acquired.is_empty() and m.evolution.credited.is_empty(),"old save gains no invented evolution/death credits")
-  check(p.checkpoint_endless(m) and p.replay.checkpoint.ruleset==3 and ReplaySnapshot.valid(p.replay.checkpoint),"old migration writes valid current ruleset3 through real transaction")
+  check(p.checkpoint_endless(m) and p.replay.checkpoint.ruleset==ChallengeCode.RULESET and ReplaySnapshot.valid(p.replay.checkpoint),"old migration writes valid advertised current ruleset through real transaction")
   var q=PlayerProfile.new(path);check(q.load_profile() and not q.read_only and q.inventory==stock and q.resume_endless()!=null,"migrated old save reload preserves inventory and resume "+name)
 func replay_atomicity():
  var path=prefix+"-atomic.json";DirAccess.copy_absolute("res://docs/evidence/phase5d4/qa-frozen-5d3-hell.json",path)
@@ -56,7 +56,7 @@ func replay_atomicity():
    "alive_victim":bad.rooms[victim].alive=true
    "wrong_owner":bad.evolution.credited={"owner:0":victim}
    "extra_buff":bad.evolution.acquired.append("blood_frenzy")
-  check(not ReplaySnapshot.valid(bad),"ruleset3 rejects stripping/mismatching kill ledger "+corruption)
+  check(not ReplaySnapshot.valid(bad),"current ruleset rejects stripping/mismatching kill ledger "+corruption)
 func live_refractory():
  var p=PlayerProfile.new(prefix+"-cooldowns.json");var entry=p.begin_endless("cursed_mansion","hell",557)
  var m=MatchModel.new();check(m.configure_endless("cursed_mansion","hell",557,entry.id),"new current run configures")
@@ -65,6 +65,11 @@ func live_refractory():
   if r.index==0:continue
   r.owner=r.index;r.profile=Catalog.BOT_PROFILES[r.index-1];r.sleeping=true;r.closed=true;r.resident_position=r.bed_position()
  var r=m.player();r.gold=1000000;r.electricity=100000;r.bed_level=9;r.bed_branch="lucid";r.door_level=9;r.door_branch="renewal";r.door_hp=r.max_hp()*.3
+ # A fresh Endless run now starts with three pads. Pay for the six-pad
+ # tier before exercising all six old new-role machines; retain actual spend.
+ var expansion_wallet=Vector2(r.gold,r.electricity)
+ check(m.expansion.purchase(m) and r.tile_count()==6,"actual paid six-pad expansion permits six-machine checkpoint fixture")
+ check(Vector2(r.gold,r.electricity).is_equal_approx(expansion_wallet-RoomExpansion.COSTS[1]),"fixture expansion deducts exact separate actual resources")
  p.bind_items(m,entry.id)
  var tile=0
  for kind in DefenseEffects.SPECIAL:
@@ -92,7 +97,7 @@ func live_refractory():
   check(Support.numeric_same(paid,after),"all six L10 branches actual investment and live cooldowns survive JSON")
   check(Support.numeric_same(expected,[restored.defenses.shield_cooldowns,restored.defenses.repair_cooldowns,restored.defenses.lure_cooldown]),"shared operation refractory persists exactly and cannot be reset by reload")
 func archives():
- for ruleset in [1,2]:
+ for ruleset in [1,2,3]:
   var body="NF2-%d-0-17-1-0-0-0" % ruleset;var code=body+"-"+body.sha256_text().left(8).to_upper()
   check(not ChallengeCode.decode(code).ok and ChallengeCode.decode(code,true).ok,"old challenge ruleset archived not silently played "+str(ruleset))
   var p=PlayerProfile.new(prefix+"-archive"+str(ruleset));p.replay.challenge_best[code.sha256_text().left(16)]={"code":code,"time":90.0,"score":123.0,"plays":2,"outcome":"victory"}

@@ -1,0 +1,174 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+AUDIT regression: eliminated-room transactions
+AUDIT regression: invalid costs cannot create currency
+AUDIT regression: paused and terminal purchase guards
+AUDIT regression: stalled frames do not tunnel walls
+AUDIT regression: fifth bot uses last nonreserved room
+AUDIT regression: cannot sleep after hunter entered room
+AUDIT regression: going to sleep reroutes hunter out of a different room
+AUDIT regression: eliminated resident dominates simultaneous terminal events
+AUDIT regression: all registered building upgrade ceilings and effects
+ERROR: AUDIT FAIL: all-machine cap fixture has enough real map pads
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:135)
+ERROR: AUDIT FAIL: construct barrier
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:143)
+ERROR: AUDIT FAIL: upgrade barrier to 2
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade barrier to 3
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade barrier to 4
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade barrier to 5
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade barrier to 6
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade barrier to 7
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade barrier to 8
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade barrier to 9
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade barrier to 10
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: construct plasma
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:143)
+ERROR: AUDIT FAIL: upgrade plasma to 2
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade plasma to 3
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade plasma to 4
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade plasma to 5
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade plasma to 6
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade plasma to 7
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade plasma to 8
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade plasma to 9
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade plasma to 10
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: construct antenna
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:143)
+ERROR: AUDIT FAIL: upgrade antenna to 2
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade antenna to 3
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade antenna to 4
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade antenna to 5
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade antenna to 6
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade antenna to 7
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade antenna to 8
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade antenna to 9
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+ERROR: AUDIT FAIL: upgrade antenna to 10
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/audit_regressions.gd:9)
+       [1] run (res://tests/audit_regressions.gd:145)
+AUDIT regression: capped-level utility effects apply to actual resources and HP
+AUDIT regression: heavy turret and maximum-tier relay combat effects
+AUDIT regression: hunter growth and active retargeting
+AUDIT regression: idle turret cooldown cannot bank a burst
+AUDIT regression: idle hunter cannot bank door attacks
+AUDIT regression: exposed-player capture commits elimination exactly once
+AUDIT regression: overkill statistics use actual applied damage
+AUDIT_ASSERTIONS=227 FAILURES=31

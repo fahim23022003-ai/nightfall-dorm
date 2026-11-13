@@ -1,0 +1,55 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: PREMIUM UI: actual frozen preparation buys paid upgrade with correct ledger
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] endless_flow (res://tests/replay_ui.gd:52)
+       [2] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: actual Esc saves newest paid preparation before returning to wave choice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] endless_flow (res://tests/replay_ui.gd:56)
+       [2] key (res://tests/replay_ui.gd:7)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: actual Resume restores latest level/ledger, not stale pre-upgrade snapshot
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] endless_flow (res://tests/replay_ui.gd:63)
+       [2] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: generated-code preview visibly formats actual rules, HP threshold and selected difficulty
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] challenge_flow (res://tests/replay_ui.gd:118)
+       [2] settle (res://tests/premium_strategy_ui.gd:20)
+REPLAY_RESULT_METADATA=Long night / The Stalker / Underground Laboratory / ruleset 4
+ERROR: PREMIUM UI: actual frozen preparation buys paid upgrade with correct ledger
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] endless_flow (res://tests/replay_ui.gd:52)
+       [2] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: actual Esc saves newest paid preparation before returning to wave choice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] endless_flow (res://tests/replay_ui.gd:56)
+       [2] key (res://tests/replay_ui.gd:7)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: actual Resume restores latest level/ledger, not stale pre-upgrade snapshot
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] endless_flow (res://tests/replay_ui.gd:63)
+       [2] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: generated-code preview visibly formats actual rules, HP threshold and selected difficulty
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] challenge_flow (res://tests/replay_ui.gd:118)
+       [2] settle (res://tests/premium_strategy_ui.gd:20)
+REPLAY_RESULT_METADATA=HELL MODE / The Ravager / Underground Laboratory / ruleset 4
+REPLAY_UI_CHECKS=1541 FAILURES=8

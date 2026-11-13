@@ -17,6 +17,11 @@ func controls(node,type):
  return out
 func settle():
  await process_frame
+ # Ordinary screenshot/inspection actions wait for the new real drawer slide.
+ # Transition-time input safety has its own independent adversarial gate.
+ if game!=null and is_instance_valid(game) and game.mode=="match" and game.ui.bottom_context!=null:
+  var deadline=Time.get_ticks_msec()+1500
+  while game.ui.bottom_context.is_transitioning() and Time.get_ticks_msec()<deadline:await process_frame
  await process_frame
 func inside(a,b):return a.position.x>=b.position.x-.1 and a.position.y>=b.position.y-.1 and a.end.x<=b.end.x+.1 and a.end.y<=b.end.y+.1
 func find(text):
@@ -24,6 +29,7 @@ func find(text):
   if b.text==text:return b
  return null
 func click(b,double_click=false):
+ await settle()
  check(b!=null and b.is_visible_in_tree() and not b.disabled,"real mouse target is available")
  if b==null or not b.is_visible_in_tree() or b.disabled:return
  var point=root.get_final_transform()*b.get_global_rect().get_center()
@@ -31,6 +37,7 @@ func click(b,double_click=false):
  for pressed in [true,false]:
   var event=InputEventMouseButton.new();event.position=point;event.global_position=point;event.button_index=MOUSE_BUTTON_LEFT;event.pressed=pressed;event.double_click=double_click if pressed else false
   Input.parse_input_event(event);await process_frame
+ await settle()
 func screen(name):
  var visible=[]
  for b in controls(game.ui.panel,Button):

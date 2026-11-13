@@ -1,0 +1,259 @@
+{
+  "scope": "Only confirmed failed finished gates from original122-command sweep; fixture ports retain assertions; initial failures remain immutable.",
+  "rows": [
+    {
+      "name": "phase5d4_qa_save",
+      "status": "PASS",
+      "checks": 269,
+      "reason": "Current advertised ruleset and actual paid3\u21926 expansion; added archived3 code preservation; all atomicity/capital/refractory assertions retained.",
+      "log": "docs/evidence/gameplay-overhaul/final-affected/phase5d4_qa_save.log",
+      "log_sha256": "bd86b4dd5bba2450713781da06d33eb1cb0babb4ad76cd63acb9a606a00cb893",
+      "test_sha256": "8916ae9fec1fe74b218556e700277d8e1785e4201d58ab73a07e443144369c61",
+      "production_changes": false
+    },
+    {
+      "name": "phase5d4_qa_challenge",
+      "status": "PASS",
+      "checks": 13,
+      "reason": "Current-ruleset prefix/assertion and new output paths; six actual extended worker traces still compare exact bytes.",
+      "log": "docs/evidence/gameplay-overhaul/final-affected/phase5d4_qa_challenge.log",
+      "log_sha256": "fea0e7b6300baae4e041693e902cc0a6080cfd61aa0de80d3b50441b0c2a9371",
+      "test_sha256": "4ea37bccd65e918c065162c570220397e04b4a71ba3c1057a6be23348187e9da",
+      "production_changes": false
+    },
+    {
+      "name": "phase5d4_qa_ui",
+      "status": "PASS",
+      "checks": 848,
+      "reason": "Ordinary actions await actual .26s tween; parent click signature retained; drawerregion438 and five-column right-edge targets; heldcancel/doubleclick/stats/model/camera assertions retained.",
+      "log": "docs/evidence/gameplay-overhaul/final-affected/phase5d4_qa_ui.log",
+      "log_sha256": "e1c0dbff3ad7af14e313c6858a985f99e6139253a80cb10b6e7113a13d91b5a3",
+      "test_sha256": "675352deb9523783fd8494c30b83aa0d7683899384a3f727eac048d9f08e7dd8",
+      "production_changes": false
+    },
+    {
+      "name": "phase5d4_qa_ui_branches",
+      "status": "PASS",
+      "checks": 1625,
+      "reason": "Inherits corrected ordinary-action tween helper; no branch assertion removed.",
+      "log": "docs/evidence/gameplay-overhaul/final-affected/phase5d4_qa_ui_branches.log",
+      "log_sha256": "add671c5dcfe3ff915f9536ea93a2ee1944758f2b5eca69f19081c629ef00040",
+      "test_sha256": "9bde51fd0450623c272144556df3d627dd3bbff4b970659fbe74d5559b27550f",
+      "production_changes": false
+    },
+    {
+      "name": "phase5d3_qa_support_roles",
+      "status": "PASS",
+      "checks": 400,
+      "reason": "Independent combined-impact expectation includes Electric Arc0.9 against explicit EarthCrusher; raw launch/support/rate/range assertions unchanged.",
+      "log": "docs/evidence/gameplay-overhaul/final-affected/phase5d3_qa_support_roles.log",
+      "log_sha256": "27f335514778b527a02ccc38506ce8ffa5b9bbb4acef808bc19ebceb102a61fd",
+      "test_sha256": "20790576017736d2f22ca4292ebd7fd499cd8b5ee10c9299fd5b1576d4b682a3",
+      "production_changes": false
+    },
+    {
+      "name": "phase5d3_qa_migration",
+      "status": "PASS",
+      "reason": "New checkpoint compares advertised current ruleset; frozen legacy assertions retained.",
+      "production_changes": false,
+      "checks": 43,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/phase5d3_qa_migration.log",
+      "log_sha256": "855de68a9d962110fcf4d8d8e331be8f67c0d054beb9cd8249af19477f70645e",
+      "test_sha256": "52fd3b99a89cc5637f495fee74f156e92a431b29643356f42e8bf6380326a79b"
+    },
+    {
+      "name": "phase5d3_qa_spectator",
+      "status": "PASS",
+      "reason": "Expected visible Door HP uses actual display rounding rather than obsolete truncation; owner/room/health/camera assertions retained.",
+      "production_changes": false,
+      "checks": 1650,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/phase5d3_qa_spectator.log",
+      "log_sha256": "feaf6a72a387b4e8e6d7e0b6d1274787237027bbcf7a917237c6e786b1994f15",
+      "test_sha256": "bd80490bcbfd012cf8b6f6d470d70ce8cd5bd0ae308bd85ec0a27d36d46634a7"
+    },
+    {
+      "name": "phase5d3_qa_branch_ui",
+      "status": "PASS",
+      "reason": "Ordinary actions await actual drawer transition before inspector interactions; coupon exclusions and exact actual prices/stock retained.",
+      "production_changes": false,
+      "checks": 564,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/phase5d3_qa_branch_ui.log",
+      "log_sha256": "5d3609bbfbbfa27d531076ec813c164916e88d8c7218eafdd1bb8cb5a59dc52b",
+      "test_sha256": "53787aea648c692a149b5cc6566a4414d0aab55279139a467bb9432cc55b056e"
+    },
+    {
+      "name": "phase6_journey",
+      "reason": "Actual missing new Hunter menu artwork fixed by B; original journey assertions unchanged.",
+      "production_changes": true,
+      "status": "PASS",
+      "checks": 68,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/phase6_journey.log",
+      "log_sha256": "9e8dff747cd6cec35f0b87fd347bbb20cbcb5f55966f2e137d774369a4200abf",
+      "test_sha256": "b7a88d33f082921c32eb0c5167a13997bc6745f47864858a7916e6d423240c8e"
+    },
+    {
+      "name": "replay_endless",
+      "reason": "Future snapshot version=current+1, six-roster seed index; forbid closed-wall crossing/unwarned damage but allow ONLY declared warned visible legal-range Witch Magic projectile event.",
+      "production_changes": false,
+      "status": "PASS",
+      "checks": 28426,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/replay_endless.log",
+      "log_sha256": "710f5f615bf8798d61719feadbff64f70700d3f27f012e2433c38264815b8842",
+      "test_sha256": "31ce2553a7943578a55beef93b736a2a1d88f017b0e8360db031686add4e80b3"
+    },
+    {
+      "name": "replay_codes",
+      "reason": "Future code version=current+1; invalid fields now signed under current ruleset and invalid roster index=size; exact extended fresh traces retained; outputs use new evidence directory.",
+      "production_changes": false,
+      "status": "PASS",
+      "checks": 1490,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/replay_codes.log",
+      "log_sha256": "0b05bcd67e7de233602aba7e489418f30a44f54e842e031763039e54392c0448",
+      "test_sha256": "3129ff8d60fa0303b5977490a5a3e715d5b17fedefbd164aa964efdc5bbe30dc"
+    },
+    {
+      "name": "replay_ui",
+      "reason": "Ordinary actual preparation drawer actions await Tween. Current Challenge preview assertion retained; B production fix pending hardcoded preview ruleset3.",
+      "production_changes": true,
+      "status": "PASS",
+      "checks": 1541,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/replay_ui.log",
+      "log_sha256": "7facf5eff9a8d1b4a43664ed8e1f9edfc29b3db3e7df73de502d0509f25f71f9",
+      "test_sha256": "0527a42cfb761f99bd7e3ec00e6d9a58ad7628bd21588f184616e7738beb317d"
+    },
+    {
+      "name": "premium_strategy_mechanics",
+      "reason": "Actual new first-basic telegraph omission fixed by B. Keep first-strike/windup assertions intact; strict actual Witch warning/LOS/range allowance, actual arcane warning IDs and explicit ArcElectric\u2192Earth resistance only fixture ports.",
+      "production_changes": true,
+      "status": "PASS",
+      "checks": 354377,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/premium_strategy_mechanics.log",
+      "log_sha256": "78a0a10d7462c8f9de49ab479e610889e53729147301698df6792249a24aa2fc",
+      "test_sha256": "dafa1251ddf14f234903cf9e395098b007db1c3c2ded9e966c3d8a6c42ecc2ee"
+    },
+    {
+      "name": "premium_strategy_ui",
+      "reason": "Shared ordinary UI fixture settle/click waits actual0.26s Tween; all layout/control/cost/sale assertions retained.",
+      "production_changes": false,
+      "status": "PASS",
+      "checks": 3571,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/premium_strategy_ui.log",
+      "log_sha256": "a4f924adaac47e41f080de6ebf9ea36c3d8afba35125db55b6a46e10e254587b",
+      "test_sha256": "6f619e4436d5e9da93b11090ede43678887eee309a9ea606d94a999b53bb80d9"
+    },
+    {
+      "name": "overhaul_qa_contact",
+      "reason": "New independent full-model six-archetype \u00d7 three-mode harmless first contact, timed warning, subsequent strike and illegal-contact correction.",
+      "production_changes": false,
+      "status": "PASS",
+      "checks": 108,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/overhaul_qa_contact.log",
+      "log_sha256": "b54a8fbb9e74c592cbce87caad66a29d9b45fd2762b1db8cf4768ed7ebf29d73",
+      "test_sha256": "96805df578fb12eea8f75021157de71bb3033045552f16c410a205e3c76877f0"
+    },
+    {
+      "name": "overhaul_qa_combat",
+      "reason": "Affected original522 mechanical/economy model gate after first-contact production correction.",
+      "production_changes": false,
+      "status": "PASS",
+      "checks": 522,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/overhaul_qa_combat.log",
+      "log_sha256": "5ff563c18fec1cac6c4f429223fdc607f527e5a1b43534f124c138017ffb3736",
+      "test_sha256": "77e510801f8015ea22f4592b3b0876fa4e57d616c67b6a182bb9f5085badd18a"
+    },
+    {
+      "name": "overhaul_qa_codes",
+      "reason": "Affected original40 current-code checks/12 fresh-engine workers after first-contact production correction.",
+      "production_changes": false,
+      "status": "PASS",
+      "checks": 40,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/overhaul_qa_codes.log",
+      "log_sha256": "a55bafd8303e4ace61ab37a67b5476dcbe34a4a3dcd9d1710065a3b5525f86c5",
+      "test_sha256": "50f793a062457e2985c20608795ed57afe1433b2174c2e4855d2423e2f742277"
+    },
+    {
+      "name": "overhaul_qa_cleanup",
+      "status": "PASS",
+      "checks": 30,
+      "reason": "Actual stale in-flight Witch projectile after death confirmed by C and fixed by B. Real kill, terminal ticks, Endless checkpoint/nextwave, legal undead human defeat while projectile targets ally, guarded same-actor transformation and reflected lethal damage all clear transients while preserving cooldown/cast telemetry.",
+      "production_changes": true,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/overhaul_qa_cleanup.log",
+      "log_sha256": "1c46da12344bf83a7ae9cf604eb478e09ab16f68d332e563843ddf7935b2aac4",
+      "test_sha256": "64159884c4b90850c98414f14c9f8f620311726fbb90575c2bbd2ab8e0eb0c7d",
+      "production_source_sha256": {
+        "scripts/hunter_state.gd": "506f28699281c99bfc9335c2e3240417aef3138c8587ad29018351436944f421",
+        "scripts/arcane_hunter.gd": "1a8f82ec6aed58254a3630aacc390542444444a4e113cc2ebe27504d36120f0a"
+      }
+    },
+    {
+      "name": "maps_integration",
+      "reason": "Ordinary real pad/confirmation clicks await drawer; close intentionally open drawer before selecting next world pad. All navigation,geometry,30actualroom and high-pad purchase/duplicate assertions retained.",
+      "production_changes": false,
+      "status": "PASS",
+      "checks": 5107,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/maps_integration.log",
+      "log_sha256": "77a0bf790a289c3d41d4434e286eddfb09dcb05025324d86e0e926be8a6c8e22",
+      "test_sha256": "61a1fefaa606a277c21835d8c21dedd02391385c6833fb8c3279e0ac093927dc"
+    },
+    {
+      "name": "maps_ui",
+      "reason": "All30authored+6Legacy rooms verify pads visible in larger470px CLOSEDcompactfocusarea; close before world selection, openintentionallyforactualBUILD/sale, exactdebit/halffundretained.",
+      "production_changes": false,
+      "status": "PASS",
+      "checks": 1144,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/maps_ui.log",
+      "log_sha256": "a4f0e1349db777dc4ddc063a58d9d299e1165d721b2ddd517753cf6685c2a249",
+      "test_sha256": "d957f438d609146b940b9e9f798abffa8a123f6d6fa600e033a0890dadab61fd"
+    },
+    {
+      "name": "maps_simulations",
+      "reason": "Stronger bound compares each actual movement step to its own frame speed, rather than globalrunmaximum to final speed after temporary dash expires;144realearnedstrategy outcomes/resource/owners checksretained.",
+      "production_changes": false,
+      "status": "PASS",
+      "log": "docs/evidence/gameplay-overhaul/final-affected/maps_simulations.log",
+      "log_sha256": "7c54ab536bc56894ee4af2e04a00a67067ecdb8c40d49474029c4dba51e3c414",
+      "test_sha256": "aac0f8934070cbed5355c49489ab039513c50786451103fcff33c2f9299ed84b",
+      "game_cases": 144
+    },
+    {
+      "name": "phase1_building",
+      "reason": "Ordinary desktop confirmation/upgrade/sale waitsactualTween; switchtoexistingmobilelayoutthroughrealshow_matchcreationinsteadretainingdesktopdrawerwhileflippingmodeflag. All2213economy/input/touchassertsretained.",
+      "production_changes": false,
+      "status": "PASS",
+      "checks": 2213,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/phase1_building.log",
+      "log_sha256": "7d983f5eb4f9fa10d26b9ed8c288cde3dc837bcdd23ab67d0bc2192916dd937b",
+      "test_sha256": "b90a7b96498f0d952f0fd7f5f155c22c5a6d6bb6c4730e7aeb0e9e0b89d7cb43"
+    },
+    {
+      "name": "redesign_ui",
+      "reason": "Ordinary actualworld/action clicks waitTween; closedfocusheight470; invalidpreviewclickusesuncoveredworldoutsideownedroominsteadofclickingthroughtheintentionaldrawer. Allplacement/cancel/doubleclick/charges/overview/helpassertsretained.",
+      "production_changes": false,
+      "status": "PASS",
+      "checks": 293,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/redesign_ui.log",
+      "log_sha256": "9ff667b445d2ba27eede7d2acb8ed38e0d1e77d00e9008e51b35ceca6af57d31",
+      "test_sha256": "25a186a8d67cea2f1899ed13c8353b54c3c46663b9a6c18307c1d907fc2a1b09"
+    },
+    {
+      "name": "overhaul_ui",
+      "reason": "Ordinary input waitsTween; entirebedroom/sleepervisibilityassertedCLOSEDasnewrequestrequires;OPENdrawerboundedlowerregionintentionallyoverlaysmap. Actualbuilding/background/pause/result/inputassertsretained.",
+      "production_changes": false,
+      "status": "PASS",
+      "checks": 108,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/overhaul_ui.log",
+      "log_sha256": "7ceb9c93f1214f3c5a5996249a5ad714463d3d89a40c1e7316384981bb6c668e",
+      "test_sha256": "c150d76d9234f3e77acb438cf7abdbb4147606e2e3f18ada1c64ea866b1db026"
+    },
+    {
+      "name": "audit_regressions",
+      "reason": "All-machine15typecapfixtureusesauthored16-padMansionroominsteadof12-padDorm; allactualpayments/upgrades/caps/utility/resource/assertionsretained.",
+      "production_changes": false,
+      "status": "PASS",
+      "checks": 227,
+      "log": "docs/evidence/gameplay-overhaul/final-affected/audit_regressions.log",
+      "log_sha256": "d22b983c035df11cd26498b44e5f2f01c99aa6caff9fb7a6ecbcfc879212fbf1",
+      "test_sha256": "19a5cf59880ce1cc0816c4064a48c15021c7c80317cb1a7e6b5ba5fa32d03018"
+    }
+  ]
+}

@@ -29,7 +29,7 @@ func run():
   check(ui.body.visible and ui.indices==[1,2,3,4,5] and ui.toggle.text.contains("5/5"),"rosterusesactualroomowners/livecount")
   for i in range(5):
    var r=m.rooms[i+1]
-   check(ui.rows[i].text.contains(r.survivor_name()) and ui.rows[i].text.contains("Room %02d" % [r.index+1]) and ui.rows[i].text.contains("Door %d/%d" % [r.door_hp,r.max_hp()]),"actualnames/rooms/healthmapcorrectlywhenownerindicesdiffer")
+   check(ui.rows[i].text.contains(r.survivor_name()) and ui.rows[i].text.contains("Room %02d" % [r.index+1]) and ui.rows[i].text.contains("Door %d/%d" % [roundi(r.door_hp),roundi(r.max_hp())]),"actualnames/rooms/healthmapcorrectlywhenownerindicesdiffer")
   var stable=Support.model_signature(m)
   for i in range(5):
    await click(ui.rows[i]);await settle()

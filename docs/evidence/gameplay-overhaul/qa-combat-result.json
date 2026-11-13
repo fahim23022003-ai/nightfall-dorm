@@ -1,0 +1,36 @@
+{
+ "checks": 522,
+ "economy_cases": [
+  {
+   "branch": "mirror",
+   "kind": "barrier",
+   "paid": "(7629.0, 1523.4)"
+  },
+  {
+   "branch": "ward",
+   "kind": "barrier",
+   "paid": "(7629.0, 1523.4)"
+  },
+  {
+   "branch": "reservoir",
+   "kind": "plasma",
+   "paid": "(8475.0, 1777.2)"
+  },
+  {
+   "branch": "converter",
+   "kind": "plasma",
+   "paid": "(8475.0, 1777.2)"
+  },
+  {
+   "branch": "dome",
+   "kind": "antenna",
+   "paid": "(7206.0, 1438.8)"
+  },
+  {
+   "branch": "pulse",
+   "kind": "antenna",
+   "paid": "(7206.0, 1438.8)"
+  }
+ ],
+ "failures": 0
+}

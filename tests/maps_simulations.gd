@@ -56,6 +56,7 @@ func run():
      var max_buildings=0
      var peak_hunter=1
      var max_step=0.0
+     var illegal_steps=0
      var strategy_clock=0.0
      while model.result=="" and steps<18000:
       if strategy=="balanced": BotAI.tick(room,0.1)
@@ -66,7 +67,11 @@ func run():
         strategy_clock=0.45
       var previous=model.hunter.position
       model.tick(0.1)
-      max_step=maxf(max_step,previous.distance_to(model.hunter.position))
+      var moved=previous.distance_to(model.hunter.position)
+      max_step=maxf(max_step,moved)
+      # Temporary dash/concealment speeds may expire before terminal. Compare
+      # every actual move with that frame's speed, never a run max to final speed.
+      if moved>model.hunter.speed*0.1+0.1:illegal_steps+=1
       max_buildings=maxi(max_buildings,room.buildings.size())
       peak_hunter=maxi(peak_hunter,model.hunter.level)
       if room.gold< -0.0001 or room.electricity< -0.0001 or not is_finite(room.gold) or not is_finite(room.electricity):
@@ -88,7 +93,9 @@ func run():
      else:
       unresolved+=1
       failures+=1
-     if max_step>model.hunter.speed*0.1+0.1: failures+=1
+     if illegal_steps>0:
+      failures+=1
+      push_error("MAP SIM illegal movement steps %d for %s/%s/room%d/%s" % [illegal_steps,definition.id,difficulty,room_index,strategy])
      print("MAP_SIM stage=",definition.id," map=",model.map_id," difficulty=",difficulty," room=",room_index+1," strategy=",strategy," result=",model.result," time=",snappedf(model.time,0.1)," buildings=",max_buildings," shots=",model.shots," hunter_level=",peak_hunter," max_step=",snappedf(max_step,0.01))
   print("MAP_OUTCOMES stage=",definition.id," wins=",stage_wins," losses=",stage_losses)
   if stage_wins==0 or stage_losses==0:

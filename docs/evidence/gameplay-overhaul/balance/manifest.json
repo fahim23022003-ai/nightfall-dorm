@@ -1,0 +1,84 @@
+{
+  "status": "ACCEPTED final post-contact-telegraph mechanics within finite automated Linux scope",
+  "cases": 39,
+  "checks": 1369972,
+  "failures": 0,
+  "accepted_runs": [
+    {
+      "name": "campaign",
+      "cases": 27,
+      "checks": 248625,
+      "failures": 0,
+      "wall_seconds": 41.249
+    },
+    {
+      "name": "electric",
+      "cases": 8,
+      "checks": 74087,
+      "failures": 0,
+      "wall_seconds": 9.812
+    },
+    {
+      "name": "endless",
+      "cases": 3,
+      "checks": 750560,
+      "failures": 0,
+      "wall_seconds": 218.62
+    },
+    {
+      "name": "long",
+      "cases": 1,
+      "checks": 296700,
+      "failures": 0,
+      "wall_seconds": 84.296
+    }
+  ],
+  "start_head": "7158db6c588379b0d32525bb332149a5c502c1ab",
+  "end_head": "d32043c474559fb6c646c428e4a27531041c15a8",
+  "source_commit_semantics": "Actual runtime hash maps are authoritative; source HEAD can predate developer uncommitted changes at the stable gate.",
+  "changed_runtime_files": [
+    "scripts/audio_director.gd"
+  ],
+  "runtime_change_review": "Only audio_director.gd changed during final rerun; source-before hash matches its Git HEAD object, and the exact diff only maps witch/electric/storm warning events to valid existing sampled cues. No model mutation or gameplay script change.",
+  "previous_acceptance": "before-contact-telegraph-fix/manifest.json",
+  "harness": "tests/overhaul_balance_audit.gd",
+  "harness_sha256": "10b66c0eeeb20fb80e63245e543df17fd9d68beaed42f3bdbfa80030427b6a9b",
+  "method": "Legal actual navigation and paid APIs, starting25G/0E, no perks/items or live wallet/HP/position/time/wave injection; true intermission JSON restores.",
+  "long_outcome": {
+    "map": "cursed_mansion",
+    "mode": "hell",
+    "seed": 115,
+    "cleared": 45,
+    "wave": 46,
+    "seconds": 4487.49999999879,
+    "result": "defeat",
+    "alive_allies": 0
+  },
+  "unverified": [
+    "native Windows",
+    "human difficulty/usability/art/audio quality",
+    "exhaustive balance or unlimited session safety"
+  ],
+  "artifacts": {
+    "docs/evidence/gameplay-overhaul/balance/probe.json": "e135cf3d26d24d2325fdbedfefa1f0d62241038c5b67cacc180e73dd8bf8d8dc",
+    "docs/evidence/gameplay-overhaul/balance/source-after.json": "a311cf5b5f65f28be43a73b9d29b2527b85fe52b308f08412303332f0acb1dd6",
+    "docs/evidence/gameplay-overhaul/balance/long.json": "0dd6c6b6d9d51f2504cc746d566bfc6b3b78c255048bf085859d2aeebf15d61a",
+    "docs/evidence/gameplay-overhaul/balance/probe-fixture-initial.json": "20637af16b30e914de67c42408e564f249a69269883c8eacd16b6f5713ace68a",
+    "docs/evidence/gameplay-overhaul/balance/long.log": "7c59dd4563520ee77b9d53bb3d326ba9688796748bbf2dcce40e653f5804a833",
+    "docs/evidence/gameplay-overhaul/balance/campaign-policy-v1.json": "72d5a7ced6d6f322e321d0546a0a81a4ddeaa2f0b8949e99c21505a29966f1f3",
+    "docs/evidence/gameplay-overhaul/balance/campaign-policy-v1.log": "99022dca0e7a5880855e8aea692be7e9fc17c44014070c7f183e179bf7d3e992",
+    "docs/evidence/gameplay-overhaul/balance/REVIEW.md": "189164b1a11d747e0fb41f793e06eebd390bc7be1a8b6bfbfea4371260c16f7c",
+    "docs/evidence/gameplay-overhaul/balance/source-before.json": "7f8dc733c702aafed8da4aa66e9878b73444b07034671bb69f6b08aa5001891a",
+    "docs/evidence/gameplay-overhaul/balance/final-tail-exits.json": "fae3f90de59cfe796df3423a821f3eea7dbcc24a21d9c2b8d74cbb710f9e8f15",
+    "docs/evidence/gameplay-overhaul/balance/earned-cursed_mansion.json": "d20b729b9ccc804d0c1aa55874558da07c503d02cfa2455ee3a0f9b63f86eb1b",
+    "docs/evidence/gameplay-overhaul/balance/probe.log": "d963ce00cc033aadb8fd3d927a47cf708c03030225da1ddf0d67aa4fd84ba010",
+    "docs/evidence/gameplay-overhaul/balance/campaign.json": "ad3d9109be78f8ce0d44dd7d5ecff975c17d200e41f6cd06228b920ce8f5ee53",
+    "docs/evidence/gameplay-overhaul/balance/probe-fixture-initial.log": "631ebe3b01e0ff18e4d56e34c9eb97c75528abf790de2535ec5e2e8362641f1c",
+    "docs/evidence/gameplay-overhaul/balance/campaign.log": "1f0a6f002064d5ddd8741269b3c988ed561a11ba622e30d366d29d50a9347ba9",
+    "docs/evidence/gameplay-overhaul/balance/endless.log": "7bf39a705316ba67e8bdae300e47ee588b90c50900a77639cf2c0f0a63eb8a16",
+    "docs/evidence/gameplay-overhaul/balance/electric.log": "f22c9028ebc233dd11e1b0cfa3a327aba939b94818da2fb157bad372c9a21eb0",
+    "docs/evidence/gameplay-overhaul/balance/endless.json": "12b154a5d09ad60054cd0b5565b3ad8aa816472f00be0aba10831871ecf9b4d8",
+    "docs/evidence/gameplay-overhaul/balance/harness-policy-v1.gd.txt": "f970d5ceb080b714edcc7e20e0ca32625a515316712e2735eda2d8a9bb69a508",
+    "docs/evidence/gameplay-overhaul/balance/electric.json": "a00f40196da7e3ebd6892302f295dc4223e7ff81680906948801e80c73fbb4aa"
+  }
+}

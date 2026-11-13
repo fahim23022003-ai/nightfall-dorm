@@ -1,23 +1,46 @@
-# Gameplay, Hunter and HUD overhaul — IN PROGRESS
+# Gameplay, Hunter and HUD overhaul — IMPLEMENTED AND TESTED
 
-Current request extends the existing game; do not restart earlier phases. Started
-clean on `work` at457560d; recovery tag `pre-gameplay-overhaul-457560d`.
-Baseline model133/0, scene30/0 and real render16/0 passed. Recoverable checkpoints:
-7cbc337 compact bottom toolbar/0.26s sliding drawer;02736a1 toolbar draw/input
-layering correction;04ace21 physical Endless expansion and checkpoint migration.
-Expansion developer geometry/transactions/restore19201/0; initial real UI5/0.
-HUD actual independent rendered192/0 plus adversarial economic/input checks pass;
-original fixture failures and corrected affected runs are retained honestly.
+Version **0.7.0-overhaul**, Godot **4.6.3**, branch **work**. Started at
+457560d; recovery tag `pre-gameplay-overhaul-457560d`. Continue from this completed
+state rather than rebuilding prior phases.
 
-Remaining implementation: Physical/Magic routing, Barrier/Plasma/Antenna,
-small elemental counters, additional distinct magical Hunter behaviors and
-original animated visual overhaul, bot integration, independent balance/core QA,
-full regressions and final evidence/docs. Expansion independent save/geometry and
-rendered review is active. No claim of full completion yet. Existing Phase5D4
-history below is preserved. Main/release/Phase6 unchanged; native Windows and
-human usability/art/audio remain unverified. Latest scope and restart notes:
-`/tmp/hunter-hud-overhaul-brief.md`, `/tmp/gameplay-overhaul-root-state.md`.
-See [current report](GAMEPLAY_HUNTER_HUD_OVERHAUL_REPORT.md).
+Implemented: compact bottom toolbar with a guarded 0.26-second sliding drawer;
+visible Endless room growth 3→6→8→10→11→12→14→16; Physical/Magic damage and four
+small elemental affinities; Barrier/Plasma/Antenna with Level 10 progression,
+exclusive branches and actual-spend refunds; Phantom Witch, Electric Ghost and
+Storm Wraith; Reaper Soul Drain/Shadow Dash preserving the existing two-phase
+encounter; original state artwork, typed feedback, recorded cue routing, lawful
+bot expansion/magic response, Challenge ruleset 4 and safe older-save migration.
+
+All **132 registered regular/extended gates accepted**, including corrected
+affected runs. Original 122-command sweep: 2,565.154 seconds, 21 failed gates,
+zero warnings; raw failures and source changes remain preserved honestly.
+Independent core 522/0, fresh Challenge 40/0 with 12 engine workers, actual first
+contact 108/0, terminal cleanup 30/0. Expansion independent 31,294/0 and rendered
+3,084/0; final Hunter/defense render/audio 660/0 with 134 current PNGs and 13
+Master recordings, zero clipped samples. All eight existing music files unchanged.
+
+Final balance: 39 scenarios, 1,369,972 repeated invariant checks, zero failures.
+Three earned runs reached 16 slots and Level 10 Needle/Arc/Barrier/Plasma/Antenna.
+Final extended Hell run lost on wave 46 after 45 clears and 74.79 simulated minutes;
+all five NPC allies died. No live resource/HP/position/time/wave injection was used.
+
+Final implementation and Windows build-source commit:
+**9fc87e51daa86a61911405c0c895065da56096d8**. Windows x64 ZIP rebuilt after terminal
+spell cleanup: 77 Linux embedded-pack checks and all 17 ZIP-entry CRC checks pass.
+ZIP SHA256 `acd46995706a04182ab21fcf783af2403e7e08ebfda76204b82b26d887b9e420`.
+Documentation/evidence-only commits follow; final private work push/remote equality
+is verified in the delivery response. Main is unchanged; no release or Phase 6.
+
+No confirmed unresolved implementation failure remains in the tested scope.
+Native Windows hardware/input/performance and human usability/art/horror/audio
+quality remain **UNVERIFIED**. Electric Ghost on Underground Lab/Hell is a demanding
+case for owner/Adie testing; finite strategy results do not establish universal
+fairness. Earlier saves, campaign, rankings, items, rewards and music are retained.
+
+[Full report](GAMEPLAY_HUNTER_HUD_OVERHAUL_REPORT.md) ·
+[Changed files](GAMEPLAY_OVERHAUL_CHANGED_FILES.md) ·
+[Playtest guide](GAMEPLAY_HUNTER_HUD_PLAYTEST_GUIDE.md).
 
 ---
 

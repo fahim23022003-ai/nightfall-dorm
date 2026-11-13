@@ -1,0 +1,91 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: PREMIUM UI: actual newcard BUILD buys correctkind abandoned_dormflame
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui_branches.gd:14)
+       [2] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: actual newcard charges correctseparatebasecost
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui_branches.gd:15)
+       [2] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: paid branchfixture advances toL4
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui_branches.gd:16)
+       [2] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: paid branchfixture advances toL4
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui_branches.gd:16)
+       [2] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: paid branchfixture advances toL4
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui_branches.gd:16)
+       [2] click (res://tests/premium_strategy_ui.gd:33)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] run (res://tests/phase5d4_qa_ui_branches.gd:17)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: newrole exclusive choice requires confirmation flame
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui_branches.gd:18)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] run (res://tests/phase5d4_qa_ui_branches.gd:20)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: newrole chosenbranch has actual correctidentity/icon/selectedstate
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui_branches.gd:22)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: newrole preview displays computed actualnumericchange
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui_branches.gd:23)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] run (res://tests/phase5d4_qa_ui_branches.gd:27)
+       [3] pad (res://tests/phase5d4_qa_ui.gd:44)
+       [4] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] run (res://tests/phase5d4_qa_ui_branches.gd:27)
+       [3] pad (res://tests/phase5d4_qa_ui.gd:44)
+       [4] settle (res://tests/phase5d4_qa_ui.gd:8)
+ERROR: PREMIUM UI: cancelled exclusive Confirm reopens cleanly without stuck input latch
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d4_qa_ui_branches.gd:28)
+       [2] settle (res://tests/phase5d4_qa_ui.gd:8)
+SCRIPT ERROR: Invalid access to property or key '0' on a base object of type 'Dictionary'.
+          at: run (res://tests/phase5d4_qa_ui_branches.gd:31)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/phase5d4_qa_ui_branches.gd:31)
+              [1] settle (res://tests/phase5d4_qa_ui.gd:8)

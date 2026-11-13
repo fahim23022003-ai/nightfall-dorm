@@ -8,7 +8,14 @@ func check(ok,label):
   failures+=1
   push_error("MAP UI: "+label)
 func _initialize(): call_deferred("run")
+func settle_drawer():
+ await process_frame
+ if game!=null and is_instance_valid(game) and game.mode=="match" and game.ui.bottom_context!=null:
+  var deadline=Time.get_ticks_msec()+1500
+  while game.ui.bottom_context.is_transitioning() and Time.get_ticks_msec()<deadline:await process_frame
+ await process_frame
 func click(point,double_click=false):
+ await settle_drawer()
  point=root.get_final_transform()*point
  var motion=InputEventMouseMotion.new()
  motion.position=point
@@ -24,6 +31,7 @@ func click(point,double_click=false):
   e.double_click=pressed and double_click
   Input.parse_input_event(e)
   await process_frame
+ await settle_drawer()
 func run():
  OS.set_environment("NIGHTFALL_PROFILE_PATH","user://maps-ui-"+str(Time.get_ticks_usec())+".json")
  preload("res://tests/onboarding_test_support.gd").prepare()
@@ -56,16 +64,20 @@ func run():
    check(game.selected_tile==last and game.ui.context_open,"actual highest expanded pad selected")
    game.focus_camera(true)
    game.ui.update_match()
+   game.ui.close_context();await settle_drawer()
+   check(not game.ui.context_box.is_visible_in_tree(),"closed compact toolbar leaves the gameplay area clear")
    for tile in range(room.tile_count()):
     var screen=game.world_to_screen(room.tile_position(tile))
-    check(Rect2(60,135,1160,320).has_point(screen),"all pads visible in focused build area")
-    check(not game.ui.context_box.get_global_rect().has_point(screen),"inspector clears every pad: %s room%d tile%d at%s panel%s" % [stage.id,index,tile,screen,game.ui.context_box.get_global_rect()])
+    check(Rect2(60,135,1160,470).has_point(screen),"all pads visible in compact closed focused gameplay area")
+    check(not game.ui.context_box.get_global_rect().has_point(screen),"closed drawer clears every pad: %s room%d tile%d at%s panel%s" % [stage.id,index,tile,screen,game.ui.context_box.get_global_rect()])
+   await click(game.world_to_screen(room.tile_position(last)))
    var before=Vector2(room.gold,room.electricity)
    var card=game.ui.actions["build:repair"].get_global_rect().get_center()
    await click(card)
    await click(card,true)
    check(room.buildings.has(last) and room.buildings.size()==1,"direct BUILD plus duplicate click buys highest pad once")
    check(Vector2(room.gold,room.electricity)==before-Vector2(40,5),"highest pad charge exact")
+   game.ui.close_context();await settle_drawer()
    await click(game.world_to_screen(room.tile_position(last)))
    game.ui.update_match()
    await click(game.ui.actions.sell.get_global_rect().get_center())

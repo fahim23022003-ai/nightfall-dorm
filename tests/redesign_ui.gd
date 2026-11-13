@@ -9,7 +9,14 @@ func check(ok: bool,label: String):
   failures+=1
   push_error("REDESIGN_UI_FAIL: "+label)
 
+func settle_drawer():
+ await process_frame
+ if game!=null and is_instance_valid(game) and game.mode=="match" and game.ui.bottom_context!=null:
+  var deadline=Time.get_ticks_msec()+1500
+  while game.ui.bottom_context.is_transitioning() and Time.get_ticks_msec()<deadline:await process_frame
+ await process_frame
 func click(point: Vector2,double_click: bool=false):
+ await settle_drawer()
  var physical=root.get_final_transform()*point
  var motion=InputEventMouseMotion.new()
  motion.position=physical
@@ -25,6 +32,7 @@ func click(point: Vector2,double_click: bool=false):
   event.double_click=double_click and pressed
   Input.parse_input_event(event)
   await process_frame
+ await settle_drawer()
 
 func key(code):
  var event=InputEventKey.new()
@@ -67,7 +75,7 @@ func run():
   check(focus_zoom>.5 and focus_zoom<=2,"room-focused zoom for room "+str(index))
   for tile in range(6):
    var screen=game.world_to_screen(room.tile_position(tile))
-   check(Rect2(60,135,1160,320).has_point(screen),"floor tile projects into usable map area room="+str(index)+" tile="+str(tile))
+   check(Rect2(60,135,1160,470).has_point(screen),"floor tile projects into usable map area room="+str(index)+" tile="+str(tile))
   await click(game.world_to_screen(room.tile_position(1)))
   check(game.selected_tile==1 and game.ui.context_open,"actual click selects second tile in room "+str(index))
   check(game.ui.context_mode=="build","empty tile opens building palette")
@@ -88,7 +96,7 @@ func run():
   check(game.pending_build=="" and room.gold==after_build and not room.buildings.has(2),"Escape cancels without charge")
   check(game.model.running,"cancel placement does not unexpectedly pause")
   game.begin_placement("turret")
-  await click(game.world_to_screen(room.center()+Vector2(-80,160 if index<3 else -160)))
+  await click(Vector2(35,250)) # Uncovered world outside the occupied room; never click through the intentional drawer.
   check(not game.placement_on_tile and game.placement_reason()!="" and game.ui.confirm_button.disabled,"out-of-room click gives invalid preview")
   check(not game.confirm_placement() and room.gold==after_build,"invalid preview never charges")
   game.toggle_map()

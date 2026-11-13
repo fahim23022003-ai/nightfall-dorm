@@ -21,13 +21,21 @@ func navigation():
     for index in range(6):
      var m=fixture(stage.id,mode,id);var h=m.hunter;var r=m.rooms[index]
      h.state=HunterState.State.MOVE;h.target=index
-     var hp=r.door_hp
+     var hp=r.door_hp;var cursor=0;var ranged_warning=false
      for step in range(2000):
       var before=h.position;m.time+=.05;h.tick(.05,m)
       check(m.navigation_walkable(h.position),"actual archetype movement stays on valid floor")
       check(h.position.distance_to(before)<=h.speed*.05+.001,"archetype movement never teleports")
       check(not r.bounds().grow(-12).has_point(h.position),"intact target door blocks room entry")
-      check(r.door_hp==hp,"approach cannot damage door")
+      var legal_magic=false
+      for event in m.presentation_events:
+       if event.id<=cursor:continue
+       cursor=event.id
+       if event.type=="hunter_ability_warning" and event.get("ability","")=="cursed_projectile":ranged_warning=true
+       if event.type=="door_damage" and event.room==index:
+        legal_magic=id=="witch" and ranged_warning and event.get("source","")=="cursed_projectile" and event.get("damage_type","")=="magic" and h.position.distance_to(r.door_approach())<=150 and m._visible(h.position,r.door_approach())
+      check(r.door_hp==hp or legal_magic,"approach damage requires actual warned legal-range Witch magic projectile")
+      hp=r.door_hp
       if h.state==HunterState.State.ATTACK:break
      approaches+=1
      check(h.state==HunterState.State.ATTACK and h.position.distance_to(r.door_approach())<3,"all archetypes reach actual doors "+stage.id+mode+id+str(index))
@@ -39,7 +47,7 @@ func navigation():
       h.tick(.05,m)
       if r.door_hp<hp:break
      check(r.door_hp<hp and r.door_hp>0,"telegraphed contact eventually deals real damage")
-     check(m.presentation_events.any(func(e):return e.type=="archetype_warning"),"actual archetype attack emits fair warning")
+     check(m.presentation_events.any(func(e):return e.type in ["archetype_warning","hunter_ability_warning"] and e.get("delay",0)>0),"actual archetype attack emits fair warning")
      r.door_hp=0;h.state=HunterState.State.ATTACK;h.tick(.05,m)
      check(h.state==HunterState.State.BREACH,"real broken door permits breach")
      for step in range(900):
@@ -124,7 +132,7 @@ func weapons():
      check(is_equal_approx(shot.speed,Catalog.PROJECTILES[data.kind]*data.speed),"branch affects actual projectile speed")
      check(is_equal_approx(r.buildings[tile].cooldown+.01,Catalog.turret_interval(data.kind,level)*data.interval/(1.35 if overdrive else 1)),"branch and Overdrive affect actual firing interval once, carrying elapsed timestep")
      var hp=h.hp;m._advance_projectiles(2)
-     check(m.projectiles.is_empty() and is_equal_approx(hp-h.hp,shot.damage),"real impact deals measurable branch damage")
+     check(m.projectiles.is_empty() and is_equal_approx(hp-h.hp,shot.damage*(.9 if data.kind=="heavy" else 1.0)),"real impact deals measurable branch damage including Electric resistance of explicit EarthCrusher fixture")
      if branch=="suppression":
       check(h.suppression_remaining>0,"suppression exists only after real impact")
       h.tick(.01,m)

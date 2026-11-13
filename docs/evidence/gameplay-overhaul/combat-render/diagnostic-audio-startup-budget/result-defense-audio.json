@@ -1,0 +1,50 @@
+{
+ "checks": 19,
+ "failures": 3,
+ "fixture": "Actual isolated Practice/real gameplay methods/input and Master recordings; controlled legal Hunter positions/warnings,500000 temporaryGold/E. Paid machinelevels/branches. Not natural economy/humanquality/nativeWindows verification.",
+ "rows": [
+  {
+   "actual_audio_events": {
+    "bed_upgrade": 1,
+    "build": 1,
+    "danger": 3,
+    "door_upgrade": 1,
+    "income": 3,
+    "match_start": 1,
+    "refund": 1,
+    "sale": 1
+   },
+   "defense_audio": "barrier",
+   "expected": "impact_shock",
+   "hunter_reflected_damage": 17.25
+  },
+  {
+   "actual_audio_events": {
+    "bed_upgrade": 1,
+    "build": 1,
+    "door_upgrade": 1,
+    "income": 3,
+    "refund": 1,
+    "sale": 1,
+    "turret_upgrade": 1
+   },
+   "defense_audio": "plasma",
+   "expected": "auto_repair_activate",
+   "hunter_reflected_damage": 0.0
+  },
+  {
+   "actual_audio_events": {
+    "bed_upgrade": 1,
+    "build": 1,
+    "door_upgrade": 1,
+    "income": 3,
+    "refund": 1,
+    "sale": 1,
+    "turret_upgrade": 1
+   },
+   "defense_audio": "antenna",
+   "expected": "shield_absorb",
+   "hunter_reflected_damage": 0.0
+  }
+ ]
+}

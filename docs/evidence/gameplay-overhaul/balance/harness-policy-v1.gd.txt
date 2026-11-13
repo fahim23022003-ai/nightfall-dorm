@@ -1,0 +1,194 @@
+extends SceneTree
+# Independent, bounded strategy audit. Actual navigation and paid transactions;
+# never injects live resources, HP, positions, clocks, enemy deaths or wave indices.
+const DT=.1
+var rows=[]
+var failures=0
+var checks=0
+var started=0
+func _initialize():call_deferred("run")
+func count_check(ok: bool,message: String,issues: Array):
+ checks+=1
+ if not ok and message not in issues:issues.append(message)
+func tiles(room,kind: String) -> Array:
+ var found=[]
+ for tile in room.buildings:
+  if room.buildings[tile].kind==kind:found.append(tile)
+ return found
+func build(model,kind: String) -> bool:
+ var room=model.player();var available=[]
+ for tile in range(room.tile_count()):
+  if not room.buildings.has(tile):available.append(tile)
+ available.sort_custom(func(a,b):return room.tile_position(a).distance_squared_to(room.door_approach())<room.tile_position(b).distance_squared_to(room.door_approach()))
+ if kind not in DefenseEffects.WEAPONS:available.reverse()
+ for tile in available:
+  if kind not in DefenseEffects.WEAPONS or room.tile_position(tile).distance_to(room.door_approach())<Catalog.BUILDINGS[kind].range:return model.buy(kind,tile)
+ return false
+func machine(model,kind: String,goal: int=1,number: int=1) -> bool:
+ var room=model.player();var found=tiles(room,kind)
+ if found.size()<number:return build(model,kind)
+ for tile in found:
+  var b=room.buildings[tile]
+  if b.level<goal:
+   return model.specialize_building(tile,StrategyCatalog.branches(kind)[0]) if b.level==4 else model.upgrade_building(tile)
+ return false
+func machine_ready(room,kind: String,goal: int=1,number: int=1) -> bool:
+ var found=tiles(room,kind)
+ if found.size()<number:return false
+ for tile in found:
+  if room.buildings[tile].level<goal:return false
+ return true
+func structure(model,kind: String) -> bool:
+ var room=model.player();var level=room.bed_level if kind=="bed" else room.door_level
+ if level>=9:return false
+ if level==4:return room.specialize_structure(kind,"lucid" if kind=="bed" else "bulwark")
+ return model.upgrade_bed() if kind=="bed" else model.upgrade_door()
+func act(model,policy: String):
+ var room=model.player()
+ if policy=="idle":return
+ if room.door_hp<room.max_hp()*.6:
+  if structure(model,"door") or model.repair_door():return
+ if policy=="passive":
+  if room.bed_level<2:structure(model,"bed")
+  elif room.door_level<2:structure(model,"door")
+  return
+ if room.bed_level<1:structure(model,"bed");return
+ if room.door_level<1:structure(model,"door");return
+ if tiles(room,"turret").is_empty():build(model,"turret");return
+ if tiles(room,"generator").is_empty():build(model,"generator");return
+ if room.bed_level<2:structure(model,"bed");return
+ if room.door_level<2:structure(model,"door");return
+ if not machine_ready(room,"generator",2):machine(model,"generator",2);return
+ if model.run_kind=="endless" and room.expansion_tier==0:
+  model.expansion.purchase(model);return
+ if tiles(room,"repair").is_empty():build(model,"repair");return
+ if not machine_ready(room,"turret",3):machine(model,"turret",3);return
+ if room.bed_level<3:structure(model,"bed");return
+ if room.door_level<3:structure(model,"door");return
+ if not machine_ready(room,"generator",4):machine(model,"generator",4);return
+ if not machine_ready(room,"economy",3,2):machine(model,"economy",3,2);return
+ if not machine_ready(room,"repair",3):machine(model,"repair",3);return
+ if model.run_kind=="endless" and room.expansion_tier<2:model.expansion.purchase(model);return
+ if room.bed_level<4:structure(model,"bed");return
+ if room.door_level<4:structure(model,"door");return
+ if not machine_ready(room,"turret",5,2):machine(model,"turret",5,2);return
+ if room.bed_level<6:structure(model,"bed");return
+ if room.door_level<6:structure(model,"door");return
+ if model.run_kind=="endless" and room.expansion_tier<7:model.expansion.purchase(model);return
+ if policy=="magic":
+  for kind in MagicDefense.KINDS:
+   if not machine_ready(room,kind,4):machine(model,kind,4);return
+ if not machine_ready(room,"heavy",5):machine(model,"heavy",5);return
+ if not machine_ready(room,"enhancer",4):machine(model,"enhancer",4);return
+ if room.bed_level<9:structure(model,"bed");return
+ if room.door_level<9:structure(model,"door");return
+ if not machine_ready(room,"turret",10,2):machine(model,"turret",10,2);return
+ if not machine_ready(room,"heavy",10):machine(model,"heavy",10);return
+ if policy=="magic":
+  for kind in MagicDefense.KINDS:
+   if not machine_ready(room,kind,10):machine(model,kind,10);return
+ if not machine_ready(room,"repair",5,2):machine(model,"repair",5,2);return
+ if room.door_hp<room.max_hp()*.9:model.repair_door()
+func choose_room(model) -> int:
+ var best=-1;var best_score=INF
+ for room in model.rooms:
+  if room.owner>=0:continue
+  var path=model.player_navigation_path(model.player_position,room.bed_position()+Vector2(31,49))
+  if path.is_empty():continue
+  var score=0.0;var previous=model.player_position
+  for point in path:score+=previous.distance_to(point);previous=point
+  if room.trait_id=="fortified":score-=200
+  if score<best_score:best=room.index;best_score=score
+ return best
+func walk(model,path: Array):
+ while not path.is_empty() and model.player_position.distance_to(path[0])<2:path.pop_front()
+ if path.is_empty():return
+ var offset=path[0]-model.player_position
+ model.move_player(offset.normalized(),minf(DT,offset.length()/180.0))
+func simulate(config: Dictionary) -> Dictionary:
+ var model=MatchModel.new();var issues=[]
+ if config.endless:model.configure_endless(config.map,config.mode,config.seed,config.seed)
+ else:
+  model.reset(config.seed);model.configure_match(config.mode,{})
+  model.configure_stage(StageCatalog.STAGES[MapCatalog.IDS.find(config.map)].id)
+  model.configure_strategy(config.seed,config.archetype)
+ var target=choose_room(model);var path=[]
+ if target>=0:path=model.player_navigation_path(model.player_position,model.rooms[target].bed_position()+Vector2(31,49))
+ var steps=0;var last_event=0;var events={};var snapshots=0;var reaches=[];var max_minions=0;var max_projectiles=0;var max_routes=0;var peak_nodes=0;var supply=0.0;var drained=0.0;var expansions=[];var terminal_time=0.0
+ while model.result=="" and model.time<config.seconds:
+  if target<0:issues.append("no legally reachable vacant room");break
+  if model.player_room<0:
+   if model.rooms[target].owner>=0:
+    target=choose_room(model)
+    if target<0:continue
+    path=model.player_navigation_path(model.player_position,model.rooms[target].bed_position()+Vector2(31,49))
+   if model.rooms[target].bounds().has_point(model.player_position):model.interact()
+   else:walk(model,path)
+  elif not model.player().sleeping:
+   walk(model,path)
+   if model.player_position.distance_to(model.player().bed_position())<=60:model.sleep_player()
+  elif steps%2==0:act(model,config.policy)
+  if config.endless and model.endless.phase=="intermission":
+   var data=ReplaySnapshot.encode(model)
+   count_check(not data.is_empty(),"empty earned intermission checkpoint",issues)
+   if not data.is_empty():
+    var restored=ReplaySnapshot.restore(JSON.parse_string(JSON.stringify(data)))
+    count_check(restored!=null,"earned JSON checkpoint cannot resume",issues)
+    if restored!=null:
+     for tile in model.player().buildings:
+      for key in ["kind","level","specialization","invested_gold","invested_power"]:
+       count_check(restored.player().buildings.get(tile,{}).get(key,"" if key=="specialization" else null)==model.player().buildings[tile].get(key,"" if key=="specialization" else null),"restored building investment changed",issues)
+     count_check(restored.player().expansion_tier==model.player().expansion_tier,"restored expansion changed",issues)
+     snapshots+=1
+   if not model.continue_wave("repair"):issues.append("cannot continue legitimate completed wave");break
+  model.tick(DT);steps+=1
+  max_minions=maxi(max_minions,model.minions.size());max_projectiles=maxi(max_projectiles,model.projectiles.size());max_routes=maxi(max_routes,model._navigation_routes.size())
+  if model.wrath.domain_active() and not model.minions.is_empty():issues.append("domain retained combat minions");break
+  for event in model.presentation_events:
+   if event.id<=last_event:continue
+   last_event=event.id;events[event.type]=int(events.get(event.type,0))+1
+   if event.type=="room_expanded" and event.room==model.player_room:expansions.append({"tier":event.tier,"slots":event.slots,"time":model.time,"wave":model.endless.wave if config.endless else 0,"gold":event.gold,"power":event.power})
+   if event.type=="boss_resource_drain" and event.room==model.player_room:drained+=float(event.get("gold",0))
+  if steps%10==0:
+   for room in model.rooms:
+    count_check(is_finite(room.gold) and room.gold>=-.00001,"negative/nonfinite gold",issues)
+    count_check(is_finite(room.electricity) and room.electricity>=-.00001,"negative/nonfinite electricity",issues)
+    count_check(room.door_hp<=room.max_hp()+.0001,"door overhealing",issues)
+    count_check(room.buildings.size()<=room.tile_count() and room.tile_count()<=16,"building/slot cap",issues)
+    for building in room.buildings.values():count_check(building.level>=1 and building.level<=10,"invalid building level",issues)
+   count_check(max_minions<=10,"minion cap",issues)
+   count_check(max_projectiles<=Catalog.PROJECTILES.max_active,"projectile cap",issues)
+   if model.player()!=null:
+    var room=model.player()
+    if config.policy in ["idle","passive"]:count_check(room.shots==0 and room.damage_dealt==0,"passive policy caused offense",issues)
+    for kind in Catalog.BUILDINGS:
+     for tile in tiles(room,kind):
+      if room.buildings[tile].level==10 and kind not in reaches:reaches.append(kind)
+  if not issues.is_empty():break
+ var room=model.player()
+ var allies=[]
+ for other in model.rooms:
+  if other.owner>0:allies.append({"owner":other.owner,"alive":other.alive,"gold":other.gold,"power":other.electricity,"income":other.income_total,"spent":other.spent,"damage":other.damage_dealt,"slots":other.tile_count(),"tier":other.expansion_tier,"buildings":other.buildings})
+ var row={"config":config,"result":model.result,"seconds":model.time,"steps":steps,"wave":model.endless.wave if config.endless else 0,"cleared":model.endless.completed if config.endless else 0,"room":model.player_room,"tier":room.expansion_tier if room else -1,"slots":room.tile_count() if room else 0,"expansions":expansions,"player_damage":room.damage_dealt if room else 0,"player_gold":room.gold if room else 0,"player_power":room.electricity if room else 0,"player_income":room.income_total if room else 0,"player_spent":room.spent if room else 0,"door_level":room.door_level+1 if room else 0,"bed_level":room.bed_level+1 if room else 0,"level10":reaches,"buildings":room.buildings if room else {},"allies":allies,"events":events,"peak_minions":max_minions,"peak_projectiles":max_projectiles,"peak_routes":max_routes,"checkpoint_restores":snapshots,"issues":issues}
+ if not issues.is_empty():failures+=1
+ print("OVERHAUL_BALANCE_CASE ",JSON.stringify(row))
+ return row
+func run():
+ started=Time.get_ticks_msec()
+ var args=OS.get_cmdline_user_args()
+ if "--endless" in args:
+  for index in [0,3,4]:
+   rows.append(simulate({"endless":true,"map":MapCatalog.IDS[index],"mode":"standard" if index==0 else "hell","seed":47+index*17,"archetype":"","policy":"magic","seconds":3600.0}))
+ elif "--probe" in args:
+  rows.append(simulate({"endless":true,"map":"abandoned_dorm","mode":"standard","seed":47,"archetype":"","policy":"magic","seconds":1800.0}))
+ else:
+  for i in range(3):
+   for mode in ["standard","hard","hell"]:
+    for policy in ["passive","active","magic"]:
+     rows.append(simulate({"endless":false,"map":MapCatalog.IDS[[0,3,4][i]],"mode":mode,"seed":41+i*29,"archetype":["witch","electric","storm"][i],"policy":policy,"seconds":900.0}))
+ var output={"checks":checks,"failures":failures,"wall_seconds":(Time.get_ticks_msec()-started)/1000.0,"scope":"Finite real model simulations. Starting wallets25G/0E and no progression bonuses/items; no live resource/HP/position/wave injection. Checkpoint restore is verified separately; active run itself continues original model.","cases":rows}
+ var path="res://docs/evidence/gameplay-overhaul/balance/"+("endless" if "--endless" in args else "probe" if "--probe" in args else "campaign")+".json"
+ DirAccess.make_dir_recursive_absolute(path.get_base_dir())
+ var file=FileAccess.open(path,FileAccess.WRITE);file.store_string(JSON.stringify(output," "));file.close()
+ print("OVERHAUL_BALANCE_CHECKS=",checks," FAILURES=",failures," CASES=",rows.size())
+ quit(1 if failures>0 else 0)

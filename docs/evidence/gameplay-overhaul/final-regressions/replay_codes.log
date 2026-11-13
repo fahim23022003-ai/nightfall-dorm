@@ -1,0 +1,9 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: REPLAY CODE: tampered/malformed/future/noncanonical code rejected with useful error
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_codes.gd:11)
+       [1] validation (res://tests/replay_codes.gd:28)
+       [2] run (res://tests/replay_codes.gd:89)
+REPLAY_CODE_CHECKS=1490 FRESH_PROCESSES=6 FAILURES=1

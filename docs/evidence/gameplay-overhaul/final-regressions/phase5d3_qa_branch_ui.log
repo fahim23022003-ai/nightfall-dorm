@@ -1,0 +1,128 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: PREMIUM UI: structural choice bed interactive buttons do not overlap: Repair 12.0 G [R] [P: (1058.0, 658.0), S: (184.0, 38.0)] / Upgrade Bed — 650 Gold / 60 Electricity [P: (860.0, 632.6139), S: (370.0, 44.0)]
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] screen (res://tests/premium_strategy_ui.gd:43)
+       [2] run (res://tests/phase5d3_qa_branch_ui.gd:16)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: structural choice bed interactive buttons do not overlap: Upgrade selected [P: (824.0, 658.0), S: (220.0, 38.0)] / Upgrade Bed — 650 Gold / 60 Electricity [P: (860.0, 632.6139), S: (370.0, 44.0)]
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] screen (res://tests/premium_strategy_ui.gd:43)
+       [2] run (res://tests/phase5d3_qa_branch_ui.gd:16)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: structural choice bed label fits logical viewport: LEVEL 5 · Unmodified
+Current 23.40 
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] screen (res://tests/premium_strategy_ui.gd:45)
+       [2] run (res://tests/phase5d3_qa_branch_ui.gd:16)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: armedcouponstructuralcardshowsactualfullpricewithnoapplieddiscountclaim
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d3_qa_branch_ui.gd:18)
+       [2] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: structuraleligibilityexplainsexactcouponexclusion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d3_qa_branch_ui.gd:19)
+       [2] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] run (res://tests/phase5d3_qa_branch_ui.gd:20)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] run (res://tests/phase5d3_qa_branch_ui.gd:22)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: actualstructurechoicepaysquotedpriceandadvancesonce
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d3_qa_branch_ui.gd:23)
+       [2] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: armedcouponstructuralcardshowsactualfullpricewithnoapplieddiscountclaim
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d3_qa_branch_ui.gd:18)
+       [2] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: structuraleligibilityexplainsexactcouponexclusion
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d3_qa_branch_ui.gd:19)
+       [2] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] run (res://tests/phase5d3_qa_branch_ui.gd:20)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] run (res://tests/phase5d3_qa_branch_ui.gd:22)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: actualstructurechoicepaysquotedpriceandadvancesonce
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d3_qa_branch_ui.gd:23)
+       [2] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] run (res://tests/phase5d3_qa_branch_ui.gd:26)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: eligiblemachinecardshowsactualdiscountedupgradeplusbranchfee
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d3_qa_branch_ui.gd:28)
+       [2] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] run (res://tests/phase5d3_qa_branch_ui.gd:29)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:27)
+       [2] run (res://tests/phase5d3_qa_branch_ui.gd:31)
+       [3] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: samearmedcouponappliesexactlyoncetoactualeligiblepaidchoice
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d3_qa_branch_ui.gd:32)
+       [2] settle (res://tests/premium_strategy_ui.gd:20)
+ERROR: PREMIUM UI: successfulmachinebranchconsumesonecoupononly
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] run (res://tests/phase5d3_qa_branch_ui.gd:33)
+       [2] settle (res://tests/premium_strategy_ui.gd:20)
+PHASE5D3_BRANCH_UI_QA_CHECKS=455 FAILURES=19

@@ -1,0 +1,23 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: 5D4 EVOLUTION QA: actual new combat advertises ruleset3
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d4_qa_evolution.gd:10)
+       [1] run (res://tests/phase5d4_qa_challenge.gd:51)
+ERROR: 5D4 EVOLUTION QA: test uses actual ruleset3 extended gameplay, not seed-only function
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d4_qa_evolution.gd:10)
+       [1] run (res://tests/phase5d4_qa_challenge.gd:62)
+ERROR: 5D4 EVOLUTION QA: test uses actual ruleset3 extended gameplay, not seed-only function
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d4_qa_evolution.gd:10)
+       [1] run (res://tests/phase5d4_qa_challenge.gd:62)
+ERROR: 5D4 EVOLUTION QA: test uses actual ruleset3 extended gameplay, not seed-only function
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d4_qa_evolution.gd:10)
+       [1] run (res://tests/phase5d4_qa_challenge.gd:62)
+PHASE5D4_QA_CHALLENGE_CHECKS=13 FRESH_WORKERS=6 FAILURES=4

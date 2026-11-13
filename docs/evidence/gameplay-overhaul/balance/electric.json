@@ -1,0 +1,3688 @@
+{
+ "cases": [
+  {
+   "allies": [
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.447058823529412,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 595.0,
+       "invested_power": 116.0,
+       "kind": "antenna",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 160.0,
+       "invested_power": 29.0,
+       "kind": "repair",
+       "level": 3
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.3,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      },
+      "6": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 7,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      }
+     },
+     "damage": 874.800000000001,
+     "gold": 99.4239999999978,
+     "income": 2726.42400000006,
+     "owner": 3,
+     "power": 54.2000000000029,
+     "slots": 12,
+     "spent": 2644.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.4,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.7,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      },
+      "6": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 7,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      }
+     },
+     "damage": 716.850000000002,
+     "gold": 176.06,
+     "income": 1127.06000000001,
+     "owner": 5,
+     "power": 107.840000000003,
+     "slots": 12,
+     "spent": 976.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.3,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      }
+     },
+     "damage": 36.4499999999989,
+     "gold": 90.1920000000006,
+     "income": 752.191999999998,
+     "owner": 2,
+     "power": 74.635000000001,
+     "slots": 12,
+     "spent": 687.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.800000000000001,
+       "flash": 0.05,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.000000000000000138777878078145,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      },
+      "6": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 7,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      }
+     },
+     "damage": 820.449999999992,
+     "gold": 33.2599999999988,
+     "income": 1342.26000000003,
+     "owner": 1,
+     "power": 120.660000000005,
+     "slots": 12,
+     "spent": 1326.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.800000000000008,
+       "flash": 0.05,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.7,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      }
+     },
+     "damage": 892.15,
+     "gold": 22.2500000000008,
+     "income": 638.249999999997,
+     "owner": 4,
+     "power": 47.7999999999997,
+     "slots": 12,
+     "spent": 641.0,
+     "tier": -1
+    }
+   ],
+   "bed_level": 7,
+   "buildings": {
+    "0": {
+     "cooldown": 0.510810810810811,
+     "flash": 0.0,
+     "instance_id": 1,
+     "invested_gold": 265.0,
+     "invested_power": 37.0,
+     "kind": "turret",
+     "level": 5,
+     "specialization": "precision"
+    },
+    "1": {
+     "cooldown": -0.0405405405405402,
+     "flash": 0.0,
+     "instance_id": 17,
+     "invested_gold": 265.0,
+     "invested_power": 37.0,
+     "kind": "turret",
+     "level": 5,
+     "specialization": "precision"
+    },
+    "3": {
+     "cooldown": 0.176185958254271,
+     "flash": 0.0,
+     "instance_id": 24,
+     "invested_gold": 665.0,
+     "invested_power": 102.0,
+     "kind": "heavy",
+     "level": 4
+    },
+    "8": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 9,
+     "invested_gold": 180.0,
+     "invested_power": 25.0,
+     "kind": "economy",
+     "level": 3
+    },
+    "9": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 10,
+     "invested_gold": 180.0,
+     "invested_power": 25.0,
+     "kind": "economy",
+     "level": 3
+    },
+    "10": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 4,
+     "invested_gold": 160.0,
+     "invested_power": 29.0,
+     "kind": "repair",
+     "level": 3
+    },
+    "11": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 2,
+     "invested_gold": 210.0,
+     "invested_power": 18.0,
+     "kind": "generator",
+     "level": 4
+    }
+   },
+   "checkpoint_restores": 0,
+   "cleared": 0,
+   "config": {
+    "archetype": "electric",
+    "endless": false,
+    "map": "abandoned_dorm",
+    "mode": "hell",
+    "policy": "active",
+    "seconds": 900.0,
+    "seed": 127
+   },
+   "door_level": 7,
+   "events": {
+    "approach": 10,
+    "arcane_impact": 10,
+    "archetype_warning": 10,
+    "bed_upgrade": 21,
+    "build": 40,
+    "building_upgrade": 31,
+    "charged_attack": 21,
+    "door_break": 5,
+    "door_damage": 121,
+    "door_upgrade": 20,
+    "elimination": 5,
+    "encounter": 10,
+    "hunter_ability": 10,
+    "hunter_ability_warning": 10,
+    "hunter_evolved": 5,
+    "magic_absorb": 5,
+    "magic_shield": 9,
+    "repair": 52,
+    "soul_drain": 2,
+    "survivor_attack": 5,
+    "survivor_fear": 5
+   },
+   "expansions": [],
+   "issues": [],
+   "level10": [],
+   "peak_minions": 0,
+   "peak_projectiles": 3,
+   "peak_routes": 8,
+   "player_damage": 4052.63869374989,
+   "player_events": {
+    "approach": 2,
+    "arcane_impact": 2,
+    "archetype_warning": 2,
+    "bed_upgrade": 6,
+    "build": 7,
+    "building_upgrade": 20,
+    "charged_attack": 5,
+    "door_damage": 18,
+    "door_upgrade": 6,
+    "encounter": 2,
+    "hunter_ability": 2,
+    "hunter_ability_warning": 2,
+    "repair": 20
+   },
+   "player_gold": 2569.2015,
+   "player_income": 9469.20150000002,
+   "player_power": 43.6199999999995,
+   "player_spent": 6925.0,
+   "result": "victory",
+   "room": 3,
+   "seconds": 201.899999999993,
+   "slots": 12,
+   "steps": 2019,
+   "tier": -1,
+   "wave": 0
+  },
+  {
+   "allies": [
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.447058823529412,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 595.0,
+       "invested_power": 116.0,
+       "kind": "antenna",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "5": {
+       "cooldown": 0.5,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 190.0,
+       "invested_power": 27.0,
+       "kind": "heavy",
+       "level": 2
+      },
+      "6": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 7,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      }
+     },
+     "damage": 874.800000000003,
+     "gold": 176.659999999998,
+     "income": 3300.66000000007,
+     "owner": 3,
+     "power": 47.7000000000029,
+     "slots": 12,
+     "spent": 3141.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.4,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.7,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      },
+      "6": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 7,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      }
+     },
+     "damage": 716.850000000002,
+     "gold": 176.06,
+     "income": 1127.06000000001,
+     "owner": 5,
+     "power": 107.840000000003,
+     "slots": 12,
+     "spent": 976.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.3,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      }
+     },
+     "damage": 36.4499999999989,
+     "gold": 90.1920000000006,
+     "income": 752.191999999998,
+     "owner": 2,
+     "power": 74.635000000001,
+     "slots": 12,
+     "spent": 687.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.800000000000001,
+       "flash": 0.05,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.000000000000000138777878078145,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      },
+      "6": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 7,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      }
+     },
+     "damage": 820.449999999992,
+     "gold": 33.2599999999988,
+     "income": 1342.26000000003,
+     "owner": 1,
+     "power": 120.660000000005,
+     "slots": 12,
+     "spent": 1326.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.800000000000008,
+       "flash": 0.05,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.7,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      }
+     },
+     "damage": 892.15,
+     "gold": 22.2500000000008,
+     "income": 638.249999999997,
+     "owner": 4,
+     "power": 47.7999999999997,
+     "slots": 12,
+     "spent": 641.0,
+     "tier": -1
+    }
+   ],
+   "bed_level": 7,
+   "buildings": {
+    "0": {
+     "cooldown": 0.529729729729731,
+     "flash": 0.0,
+     "instance_id": 1,
+     "invested_gold": 265.0,
+     "invested_power": 37.0,
+     "kind": "turret",
+     "level": 5,
+     "specialization": "precision"
+    },
+    "1": {
+     "cooldown": -0.0216216216216207,
+     "flash": 0.0,
+     "instance_id": 20,
+     "invested_gold": 265.0,
+     "invested_power": 37.0,
+     "kind": "turret",
+     "level": 5,
+     "specialization": "precision"
+    },
+    "5": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 12,
+     "invested_gold": 180.0,
+     "invested_power": 25.0,
+     "kind": "economy",
+     "level": 3
+    },
+    "6": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 13,
+     "invested_gold": 180.0,
+     "invested_power": 25.0,
+     "kind": "economy",
+     "level": 3
+    },
+    "7": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 11,
+     "invested_gold": 85.0,
+     "invested_power": 14.0,
+     "kind": "antenna",
+     "level": 1
+    },
+    "8": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 9,
+     "invested_gold": 90.0,
+     "invested_power": 15.0,
+     "kind": "barrier",
+     "level": 1
+    },
+    "9": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 10,
+     "invested_gold": 100.0,
+     "invested_power": 18.0,
+     "kind": "plasma",
+     "level": 1
+    },
+    "10": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 4,
+     "invested_gold": 160.0,
+     "invested_power": 29.0,
+     "kind": "repair",
+     "level": 3
+    },
+    "11": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 2,
+     "invested_gold": 210.0,
+     "invested_power": 18.0,
+     "kind": "generator",
+     "level": 4
+    }
+   },
+   "checkpoint_restores": 0,
+   "cleared": 0,
+   "config": {
+    "archetype": "electric",
+    "endless": false,
+    "map": "abandoned_dorm",
+    "mode": "hell",
+    "policy": "magic",
+    "seconds": 900.0,
+    "seed": 127
+   },
+   "door_level": 7,
+   "events": {
+    "approach": 10,
+    "arcane_impact": 11,
+    "archetype_warning": 10,
+    "bed_upgrade": 21,
+    "build": 42,
+    "building_upgrade": 33,
+    "charged_attack": 29,
+    "door_break": 5,
+    "door_damage": 143,
+    "door_upgrade": 20,
+    "elimination": 5,
+    "encounter": 10,
+    "hunter_ability": 11,
+    "hunter_ability_warning": 12,
+    "hunter_evolved": 5,
+    "magic_absorb": 11,
+    "magic_reflect": 3,
+    "magic_shield": 13,
+    "plasma_release": 3,
+    "repair": 193,
+    "soul_drain": 4,
+    "survivor_attack": 5,
+    "survivor_fear": 5
+   },
+   "expansions": [],
+   "issues": [],
+   "level10": [],
+   "peak_minions": 0,
+   "peak_projectiles": 3,
+   "peak_routes": 8,
+   "player_damage": 4159.94439999993,
+   "player_events": {
+    "approach": 2,
+    "arcane_impact": 3,
+    "archetype_warning": 2,
+    "bed_upgrade": 6,
+    "build": 9,
+    "building_upgrade": 17,
+    "charged_attack": 13,
+    "door_damage": 40,
+    "door_upgrade": 6,
+    "encounter": 2,
+    "hunter_ability": 3,
+    "hunter_ability_warning": 4,
+    "magic_absorb": 6,
+    "magic_reflect": 3,
+    "magic_shield": 4,
+    "plasma_release": 3,
+    "repair": 160,
+    "soul_drain": 2
+   },
+   "player_gold": 707.010500000001,
+   "player_income": 8913.01049999998,
+   "player_power": 238.100000000019,
+   "player_spent": 8215.0,
+   "result": "victory",
+   "room": 3,
+   "seconds": 226.299999999991,
+   "slots": 12,
+   "steps": 2263,
+   "tier": -1,
+   "wave": 0
+  },
+  {
+   "allies": [
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.347058823529412,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.1,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      },
+      "6": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 7,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      }
+     },
+     "damage": 685.800000000004,
+     "gold": 76.7039200000006,
+     "income": 785.703919999992,
+     "owner": 4,
+     "power": 39.1325999999998,
+     "slots": 10,
+     "spent": 734.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.3,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      }
+     },
+     "damage": 27.0,
+     "gold": 52.0487999999997,
+     "income": 322.048800000005,
+     "owner": 1,
+     "power": 47.2559999999997,
+     "slots": 12,
+     "spent": 295.0,
+     "tier": -1
+    },
+    {
+     "alive": true,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 595.0,
+       "invested_power": 116.0,
+       "kind": "antenna",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "5": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 380.0,
+       "invested_power": 57.0,
+       "kind": "heavy",
+       "level": 3
+      },
+      "6": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 7,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      }
+     },
+     "damage": 3080.36931607175,
+     "gold": 19.594399999998,
+     "income": 3373.59440000004,
+     "owner": 3,
+     "power": 71.2312000000036,
+     "slots": 12,
+     "spent": 3379.0,
+     "tier": -1
+    },
+    {
+     "alive": true,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 595.0,
+       "invested_power": 116.0,
+       "kind": "antenna",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      },
+      "6": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "instance_id": 7,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      }
+     },
+     "damage": 1328.99,
+     "gold": 1142.96088000001,
+     "income": 4127.96088000006,
+     "owner": 2,
+     "power": 15.0211999999996,
+     "slots": 10,
+     "spent": 3010.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.700000000000003,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      }
+     },
+     "damage": 252.0,
+     "gold": 37.1399999999997,
+     "income": 283.140000000002,
+     "owner": 5,
+     "power": 55.6499999999997,
+     "slots": 12,
+     "spent": 271.0,
+     "tier": -1
+    }
+   ],
+   "bed_level": 7,
+   "buildings": {
+    "0": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 10,
+     "invested_gold": 180.0,
+     "invested_power": 25.0,
+     "kind": "economy",
+     "level": 3
+    },
+    "1": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 4,
+     "invested_gold": 160.0,
+     "invested_power": 29.0,
+     "kind": "repair",
+     "level": 3
+    },
+    "2": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 2,
+     "invested_gold": 210.0,
+     "invested_power": 18.0,
+     "kind": "generator",
+     "level": 4
+    },
+    "4": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 29,
+     "invested_gold": 260.0,
+     "invested_power": 41.0,
+     "kind": "enhancer",
+     "level": 3
+    },
+    "5": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 9,
+     "invested_gold": 180.0,
+     "invested_power": 25.0,
+     "kind": "economy",
+     "level": 3
+    },
+    "6": {
+     "cooldown": 0.571621621621622,
+     "flash": 0.0,
+     "instance_id": 24,
+     "invested_gold": 1165.0,
+     "invested_power": 181.0,
+     "kind": "heavy",
+     "level": 5,
+     "specialization": "focus"
+    },
+    "9": {
+     "cooldown": 0.402702702702703,
+     "flash": 0.0,
+     "instance_id": 1,
+     "invested_gold": 265.0,
+     "invested_power": 37.0,
+     "kind": "turret",
+     "level": 5,
+     "specialization": "precision"
+    },
+    "10": {
+     "cooldown": 0.702702702702703,
+     "flash": 0.05,
+     "instance_id": 17,
+     "invested_gold": 265.0,
+     "invested_power": 37.0,
+     "kind": "turret",
+     "level": 5,
+     "specialization": "precision"
+    }
+   },
+   "checkpoint_restores": 0,
+   "cleared": 0,
+   "config": {
+    "archetype": "electric",
+    "endless": false,
+    "map": "haunted_hospital",
+    "mode": "hell",
+    "policy": "active",
+    "seconds": 900.0,
+    "seed": 164
+   },
+   "door_level": 7,
+   "events": {
+    "approach": 10,
+    "arcane_impact": 8,
+    "archetype_warning": 7,
+    "bed_upgrade": 20,
+    "boss_ability_activate": 5,
+    "boss_ability_end": 4,
+    "boss_ability_warning": 8,
+    "boss_awakened": 1,
+    "boss_death": 1,
+    "boss_impact": 4,
+    "boss_phase": 2,
+    "boss_surge": 2,
+    "boss_transform": 1,
+    "boss_warning": 7,
+    "build": 33,
+    "building_upgrade": 58,
+    "charged_attack": 11,
+    "door_break": 3,
+    "door_damage": 115,
+    "door_upgrade": 18,
+    "elimination": 3,
+    "encounter": 9,
+    "hunter_ability": 8,
+    "hunter_ability_warning": 9,
+    "hunter_evolved": 3,
+    "magic_absorb": 4,
+    "magic_shield": 7,
+    "repair": 27,
+    "scythe_embed": 1,
+    "scythe_end": 1,
+    "scythe_throw": 1,
+    "survivor_attack": 3,
+    "survivor_fear": 3,
+    "undead_attack": 27,
+    "undead_death": 14,
+    "undead_spawn": 14
+   },
+   "expansions": [],
+   "issues": [],
+   "level10": [],
+   "peak_minions": 10,
+   "peak_projectiles": 4,
+   "peak_routes": 18,
+   "player_damage": 3203.41811631815,
+   "player_events": {
+    "approach": 2,
+    "arcane_impact": 1,
+    "archetype_warning": 1,
+    "bed_upgrade": 6,
+    "boss_ability_activate": 3,
+    "boss_ability_end": 2,
+    "boss_ability_warning": 4,
+    "boss_awakened": 1,
+    "boss_death": 1,
+    "boss_impact": 1,
+    "boss_phase": 2,
+    "boss_surge": 1,
+    "boss_transform": 1,
+    "boss_warning": 3,
+    "build": 8,
+    "building_upgrade": 23,
+    "door_damage": 3,
+    "door_upgrade": 6,
+    "encounter": 2,
+    "hunter_ability": 1,
+    "hunter_ability_warning": 2,
+    "scythe_embed": 1,
+    "scythe_end": 1,
+    "scythe_throw": 1,
+    "undead_attack": 1,
+    "undead_death": 2,
+    "undead_spawn": 2
+   },
+   "player_gold": 3239.65599999999,
+   "player_income": 10659.6560000001,
+   "player_power": 3.9552000000144,
+   "player_spent": 7445.0,
+   "result": "victory",
+   "room": 0,
+   "seconds": 194.199999999993,
+   "slots": 12,
+   "steps": 1942,
+   "tier": -1,
+   "wave": 0
+  },
+  {
+   "allies": [
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.347058823529412,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.1,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      },
+      "6": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 7,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      }
+     },
+     "damage": 685.800000000004,
+     "gold": 76.7039200000006,
+     "income": 785.703919999992,
+     "owner": 4,
+     "power": 39.1325999999998,
+     "slots": 10,
+     "spent": 734.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.3,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      }
+     },
+     "damage": 27.0,
+     "gold": 52.0487999999997,
+     "income": 322.048800000005,
+     "owner": 1,
+     "power": 47.2559999999997,
+     "slots": 12,
+     "spent": 295.0,
+     "tier": -1
+    },
+    {
+     "alive": true,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 595.0,
+       "invested_power": 116.0,
+       "kind": "antenna",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "5": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      },
+      "6": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 7,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      }
+     },
+     "damage": 2623.58380941129,
+     "gold": 240.558799999998,
+     "income": 4185.55880000002,
+     "owner": 3,
+     "power": 37.3320000000036,
+     "slots": 12,
+     "spent": 3970.0,
+     "tier": -1
+    },
+    {
+     "alive": true,
+     "buildings": {
+      "0": {
+       "cooldown": 0.332352941176472,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 595.0,
+       "invested_power": 116.0,
+       "kind": "antenna",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      },
+      "6": {
+       "cooldown": 0.1,
+       "flash": 0.0,
+       "instance_id": 7,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      }
+     },
+     "damage": 1207.9665,
+     "gold": 1570.91126,
+     "income": 4945.91126000009,
+     "owner": 2,
+     "power": 7.59639999999959,
+     "slots": 10,
+     "spent": 3400.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.700000000000003,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      }
+     },
+     "damage": 252.0,
+     "gold": 37.1399999999997,
+     "income": 283.140000000002,
+     "owner": 5,
+     "power": 55.6499999999997,
+     "slots": 12,
+     "spent": 271.0,
+     "tier": -1
+    }
+   ],
+   "bed_level": 7,
+   "buildings": {
+    "0": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 10,
+     "invested_gold": 700.0,
+     "invested_power": 144.0,
+     "kind": "plasma",
+     "level": 4
+    },
+    "1": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 4,
+     "invested_gold": 160.0,
+     "invested_power": 29.0,
+     "kind": "repair",
+     "level": 3
+    },
+    "2": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 2,
+     "invested_gold": 210.0,
+     "invested_power": 18.0,
+     "kind": "generator",
+     "level": 4
+    },
+    "3": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 13,
+     "invested_gold": 180.0,
+     "invested_power": 25.0,
+     "kind": "economy",
+     "level": 3
+    },
+    "4": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 11,
+     "invested_gold": 170.0,
+     "invested_power": 31.0,
+     "kind": "antenna",
+     "level": 2
+    },
+    "5": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 9,
+     "invested_gold": 630.0,
+     "invested_power": 123.0,
+     "kind": "barrier",
+     "level": 4
+    },
+    "8": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 12,
+     "invested_gold": 180.0,
+     "invested_power": 25.0,
+     "kind": "economy",
+     "level": 3
+    },
+    "9": {
+     "cooldown": -0.1,
+     "flash": 0.0,
+     "instance_id": 1,
+     "invested_gold": 265.0,
+     "invested_power": 37.0,
+     "kind": "turret",
+     "level": 5,
+     "specialization": "precision"
+    },
+    "10": {
+     "cooldown": -0.1,
+     "flash": 0.0,
+     "instance_id": 20,
+     "invested_gold": 265.0,
+     "invested_power": 37.0,
+     "kind": "turret",
+     "level": 5,
+     "specialization": "precision"
+    }
+   },
+   "checkpoint_restores": 0,
+   "cleared": 0,
+   "config": {
+    "archetype": "electric",
+    "endless": false,
+    "map": "haunted_hospital",
+    "mode": "hell",
+    "policy": "magic",
+    "seconds": 900.0,
+    "seed": 164
+   },
+   "door_level": 7,
+   "events": {
+    "approach": 9,
+    "arcane_impact": 9,
+    "archetype_warning": 7,
+    "bed_upgrade": 20,
+    "boss_ability_activate": 4,
+    "boss_ability_end": 5,
+    "boss_ability_warning": 8,
+    "boss_awakened": 1,
+    "boss_death": 1,
+    "boss_impact": 3,
+    "boss_phase": 2,
+    "boss_transform": 1,
+    "boss_warning": 7,
+    "build": 34,
+    "building_upgrade": 66,
+    "charged_attack": 13,
+    "door_break": 3,
+    "door_damage": 99,
+    "door_upgrade": 18,
+    "elimination": 3,
+    "encounter": 10,
+    "hunter_ability": 9,
+    "hunter_ability_warning": 9,
+    "hunter_evolved": 3,
+    "magic_absorb": 12,
+    "magic_reflect": 3,
+    "magic_shield": 13,
+    "plasma_release": 4,
+    "repair": 21,
+    "scythe_embed": 1,
+    "scythe_end": 1,
+    "scythe_throw": 1,
+    "scythe_tick": 2,
+    "survivor_attack": 3,
+    "survivor_fear": 3
+   },
+   "expansions": [],
+   "issues": [],
+   "level10": [],
+   "peak_minions": 0,
+   "peak_projectiles": 3,
+   "peak_routes": 8,
+   "player_damage": 1899.44775,
+   "player_events": {
+    "approach": 2,
+    "arcane_impact": 1,
+    "archetype_warning": 1,
+    "bed_upgrade": 6,
+    "boss_ability_activate": 1,
+    "boss_ability_end": 2,
+    "boss_ability_warning": 3,
+    "boss_awakened": 1,
+    "boss_impact": 2,
+    "boss_phase": 2,
+    "boss_transform": 1,
+    "boss_warning": 3,
+    "build": 9,
+    "building_upgrade": 24,
+    "charged_attack": 2,
+    "door_damage": 9,
+    "door_upgrade": 6,
+    "encounter": 2,
+    "hunter_ability": 1,
+    "hunter_ability_warning": 1,
+    "magic_absorb": 6,
+    "magic_reflect": 3,
+    "magic_shield": 4,
+    "plasma_release": 4,
+    "repair": 1
+   },
+   "player_gold": 1805.1576,
+   "player_income": 9312.15760000007,
+   "player_power": 4.41280000001566,
+   "player_spent": 7532.0,
+   "result": "victory",
+   "room": 0,
+   "seconds": 199.999999999993,
+   "slots": 12,
+   "steps": 2000,
+   "tier": -1,
+   "wave": 0
+  },
+  {
+   "allies": [
+    {
+     "alive": true,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "4": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 380.0,
+       "invested_power": 57.0,
+       "kind": "heavy",
+       "level": 3
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      },
+      "6": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 7,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      }
+     },
+     "damage": 0.0,
+     "gold": 220.0,
+     "income": 1190.00000000001,
+     "owner": 4,
+     "power": 119.740000000005,
+     "slots": 12,
+     "spent": 995.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.2,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      }
+     },
+     "damage": 27.0,
+     "gold": 25.7900000000002,
+     "income": 177.79,
+     "owner": 2,
+     "power": 27.8100000000001,
+     "slots": 12,
+     "spent": 177.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.500000000000002,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      }
+     },
+     "damage": 198.0,
+     "gold": 62.2625599999992,
+     "income": 717.262560000014,
+     "owner": 1,
+     "power": 99.1200000000014,
+     "slots": 12,
+     "spent": 680.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.300000000000002,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      }
+     },
+     "damage": 135.0,
+     "gold": 137.991999999999,
+     "income": 521.992000000005,
+     "owner": 3,
+     "power": 91.2432000000003,
+     "slots": 12,
+     "spent": 409.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.500000000000002,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      }
+     },
+     "damage": 153.0,
+     "gold": 93.0716000000006,
+     "income": 364.071599999997,
+     "owner": 5,
+     "power": 35.4048000000002,
+     "slots": 12,
+     "spent": 296.0,
+     "tier": -1
+    }
+   ],
+   "bed_level": 4,
+   "buildings": {
+    "0": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 10,
+     "invested_gold": 180.0,
+     "invested_power": 25.0,
+     "kind": "economy",
+     "level": 3
+    },
+    "1": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 4,
+     "invested_gold": 160.0,
+     "invested_power": 29.0,
+     "kind": "repair",
+     "level": 3
+    },
+    "2": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 2,
+     "invested_gold": 210.0,
+     "invested_power": 18.0,
+     "kind": "generator",
+     "level": 4
+    },
+    "5": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 9,
+     "invested_gold": 180.0,
+     "invested_power": 25.0,
+     "kind": "economy",
+     "level": 3
+    },
+    "9": {
+     "cooldown": 0.683870967741938,
+     "flash": 0.05,
+     "instance_id": 1,
+     "invested_gold": 80.0,
+     "invested_power": 9.0,
+     "kind": "turret",
+     "level": 3
+    }
+   },
+   "checkpoint_restores": 0,
+   "cleared": 0,
+   "config": {
+    "archetype": "electric",
+    "endless": false,
+    "map": "underground_lab",
+    "mode": "hell",
+    "policy": "active",
+    "seconds": 900.0,
+    "seed": 238
+   },
+   "door_level": 4,
+   "events": {
+    "approach": 5,
+    "arcane_impact": 8,
+    "archetype_warning": 5,
+    "bed_upgrade": 12,
+    "build": 26,
+    "building_upgrade": 16,
+    "charged_attack": 16,
+    "door_break": 5,
+    "door_damage": 87,
+    "door_upgrade": 12,
+    "elimination": 5,
+    "encounter": 5,
+    "hunter_ability": 8,
+    "hunter_ability_warning": 8,
+    "hunter_evolved": 5,
+    "magic_absorb": 4,
+    "magic_shield": 7,
+    "repair": 79,
+    "soul_drain": 1,
+    "survivor_attack": 5,
+    "survivor_fear": 5
+   },
+   "expansions": [],
+   "issues": [],
+   "level10": [],
+   "peak_minions": 0,
+   "peak_projectiles": 1,
+   "peak_routes": 8,
+   "player_damage": 1107.0,
+   "player_events": {
+    "approach": 1,
+    "arcane_impact": 2,
+    "archetype_warning": 1,
+    "bed_upgrade": 3,
+    "build": 5,
+    "building_upgrade": 11,
+    "charged_attack": 7,
+    "door_break": 1,
+    "door_damage": 24,
+    "door_upgrade": 3,
+    "elimination": 1,
+    "encounter": 1,
+    "hunter_ability": 2,
+    "hunter_ability_warning": 2,
+    "hunter_evolved": 1,
+    "repair": 63,
+    "soul_drain": 1,
+    "survivor_attack": 1,
+    "survivor_fear": 1
+   },
+   "player_gold": 139.030799999999,
+   "player_income": 2248.03080000003,
+   "player_power": 352.928000000003,
+   "player_spent": 2126.0,
+   "result": "defeat",
+   "room": 0,
+   "seconds": 164.399999999995,
+   "slots": 12,
+   "steps": 1644,
+   "tier": -1,
+   "wave": 0
+  },
+  {
+   "allies": [
+    {
+     "alive": true,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "4": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 380.0,
+       "invested_power": 57.0,
+       "kind": "heavy",
+       "level": 3
+      },
+      "5": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      },
+      "6": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 7,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      }
+     },
+     "damage": 0.0,
+     "gold": 95.7999999999994,
+     "income": 1065.80000000002,
+     "owner": 4,
+     "power": 99.0400000000045,
+     "slots": 12,
+     "spent": 995.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.2,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      }
+     },
+     "damage": 27.0,
+     "gold": 25.7900000000002,
+     "income": 177.79,
+     "owner": 2,
+     "power": 27.8100000000001,
+     "slots": 12,
+     "spent": 177.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.500000000000002,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      }
+     },
+     "damage": 198.0,
+     "gold": 62.2625599999992,
+     "income": 717.262560000014,
+     "owner": 1,
+     "power": 99.1200000000014,
+     "slots": 12,
+     "spent": 680.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.300000000000002,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      }
+     },
+     "damage": 135.0,
+     "gold": 137.991999999999,
+     "income": 521.992000000005,
+     "owner": 3,
+     "power": 91.2432000000003,
+     "slots": 12,
+     "spent": 409.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.500000000000002,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      }
+     },
+     "damage": 153.0,
+     "gold": 93.0716000000006,
+     "income": 364.071599999997,
+     "owner": 5,
+     "power": 35.4048000000002,
+     "slots": 12,
+     "spent": 296.0,
+     "tier": -1
+    }
+   ],
+   "bed_level": 4,
+   "buildings": {
+    "0": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 10,
+     "invested_gold": 100.0,
+     "invested_power": 18.0,
+     "kind": "plasma",
+     "level": 1
+    },
+    "1": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 4,
+     "invested_gold": 40.0,
+     "invested_power": 5.0,
+     "kind": "repair",
+     "level": 1
+    },
+    "2": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 2,
+     "invested_gold": 210.0,
+     "invested_power": 18.0,
+     "kind": "generator",
+     "level": 4
+    },
+    "5": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 9,
+     "invested_gold": 90.0,
+     "invested_power": 15.0,
+     "kind": "barrier",
+     "level": 1
+    },
+    "9": {
+     "cooldown": 0.570967741935486,
+     "flash": 0.0,
+     "instance_id": 1,
+     "invested_gold": 80.0,
+     "invested_power": 9.0,
+     "kind": "turret",
+     "level": 3
+    }
+   },
+   "checkpoint_restores": 0,
+   "cleared": 0,
+   "config": {
+    "archetype": "electric",
+    "endless": false,
+    "map": "underground_lab",
+    "mode": "hell",
+    "policy": "magic",
+    "seconds": 900.0,
+    "seed": 238
+   },
+   "door_level": 4,
+   "events": {
+    "approach": 5,
+    "arcane_impact": 7,
+    "archetype_warning": 5,
+    "bed_upgrade": 12,
+    "build": 26,
+    "building_upgrade": 10,
+    "charged_attack": 13,
+    "door_break": 5,
+    "door_damage": 77,
+    "door_upgrade": 12,
+    "elimination": 5,
+    "encounter": 5,
+    "hunter_ability": 7,
+    "hunter_ability_warning": 7,
+    "hunter_evolved": 5,
+    "magic_absorb": 5,
+    "magic_reflect": 1,
+    "magic_shield": 7,
+    "plasma_release": 1,
+    "repair": 29,
+    "survivor_attack": 5,
+    "survivor_fear": 5
+   },
+   "expansions": [],
+   "issues": [],
+   "level10": [],
+   "peak_minions": 0,
+   "peak_projectiles": 1,
+   "peak_routes": 8,
+   "player_damage": 682.3374048,
+   "player_events": {
+    "approach": 1,
+    "arcane_impact": 1,
+    "archetype_warning": 1,
+    "bed_upgrade": 3,
+    "build": 5,
+    "building_upgrade": 5,
+    "charged_attack": 4,
+    "door_break": 1,
+    "door_damage": 14,
+    "door_upgrade": 3,
+    "elimination": 1,
+    "encounter": 1,
+    "hunter_ability": 1,
+    "hunter_ability_warning": 1,
+    "hunter_evolved": 1,
+    "magic_absorb": 1,
+    "magic_reflect": 1,
+    "plasma_release": 1,
+    "repair": 13,
+    "survivor_attack": 1,
+    "survivor_fear": 1
+   },
+   "player_gold": 48.927999999999,
+   "player_income": 1259.92800000003,
+   "player_power": 335.208000000003,
+   "player_spent": 1236.0,
+   "result": "defeat",
+   "room": 0,
+   "seconds": 152.899999999996,
+   "slots": 12,
+   "steps": 1529,
+   "tier": -1,
+   "wave": 0
+  },
+  {
+   "allies": [
+    {
+     "alive": true,
+     "buildings": {
+      "0": {
+       "cooldown": -0.1,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      },
+      "5": {
+       "cooldown": 0.0676470588235302,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      },
+      "6": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 7,
+       "invested_gold": 170.0,
+       "invested_power": 31.0,
+       "kind": "antenna",
+       "level": 2
+      }
+     },
+     "damage": 1052.92472020311,
+     "gold": 1877.75649999999,
+     "income": 5469.75650000007,
+     "owner": 2,
+     "power": 2.6599999999989,
+     "slots": 10,
+     "spent": 3617.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.1,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      }
+     },
+     "damage": 27.0,
+     "gold": 26.4999999999999,
+     "income": 76.4999999999999,
+     "owner": 3,
+     "power": 0.0,
+     "slots": 16,
+     "spent": 75.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.600000000000002,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      }
+     },
+     "damage": 135.0,
+     "gold": 11.3199999999999,
+     "income": 630.32,
+     "owner": 1,
+     "power": 100.240000000002,
+     "slots": 16,
+     "spent": 644.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.100000000000002,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.2,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      }
+     },
+     "damage": 275.0,
+     "gold": 29.4100000000007,
+     "income": 544.410000000001,
+     "owner": 4,
+     "power": 42.03,
+     "slots": 10,
+     "spent": 540.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.400000000000001,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.4,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      },
+      "6": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 7,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      }
+     },
+     "damage": 336.149999999998,
+     "gold": 134.695999999999,
+     "income": 735.696,
+     "owner": 5,
+     "power": 84.4500000000006,
+     "slots": 16,
+     "spent": 626.0,
+     "tier": -1
+    }
+   ],
+   "bed_level": 7,
+   "buildings": {
+    "1": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 10,
+     "invested_gold": 180.0,
+     "invested_power": 25.0,
+     "kind": "economy",
+     "level": 3
+    },
+    "2": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 4,
+     "invested_gold": 160.0,
+     "invested_power": 29.0,
+     "kind": "repair",
+     "level": 3
+    },
+    "3": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 2,
+     "invested_gold": 210.0,
+     "invested_power": 18.0,
+     "kind": "generator",
+     "level": 4
+    },
+    "7": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 9,
+     "invested_gold": 180.0,
+     "invested_power": 25.0,
+     "kind": "economy",
+     "level": 3
+    },
+    "8": {
+     "cooldown": -0.1,
+     "flash": 0.0,
+     "instance_id": 24,
+     "invested_gold": 1165.0,
+     "invested_power": 181.0,
+     "kind": "heavy",
+     "level": 5,
+     "specialization": "focus"
+    },
+    "11": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 29,
+     "invested_gold": 455.0,
+     "invested_power": 74.0,
+     "kind": "enhancer",
+     "level": 4
+    },
+    "12": {
+     "cooldown": -0.1,
+     "flash": 0.0,
+     "instance_id": 1,
+     "invested_gold": 265.0,
+     "invested_power": 37.0,
+     "kind": "turret",
+     "level": 5,
+     "specialization": "precision"
+    },
+    "13": {
+     "cooldown": -0.1,
+     "flash": 0.0,
+     "instance_id": 17,
+     "invested_gold": 265.0,
+     "invested_power": 37.0,
+     "kind": "turret",
+     "level": 5,
+     "specialization": "precision"
+    }
+   },
+   "checkpoint_restores": 0,
+   "cleared": 0,
+   "config": {
+    "archetype": "electric",
+    "endless": false,
+    "map": "cursed_mansion",
+    "mode": "hell",
+    "policy": "active",
+    "seconds": 900.0,
+    "seed": 275
+   },
+   "door_level": 7,
+   "events": {
+    "approach": 9,
+    "arcane_impact": 9,
+    "archetype_warning": 7,
+    "bed_upgrade": 17,
+    "boss_ability_activate": 3,
+    "boss_ability_end": 2,
+    "boss_ability_warning": 4,
+    "boss_awakened": 1,
+    "boss_death": 1,
+    "boss_impact": 1,
+    "boss_phase": 2,
+    "boss_transform": 1,
+    "boss_warning": 3,
+    "build": 33,
+    "building_upgrade": 43,
+    "charged_attack": 15,
+    "door_break": 4,
+    "door_damage": 92,
+    "door_upgrade": 18,
+    "elimination": 4,
+    "encounter": 9,
+    "hunter_ability": 9,
+    "hunter_ability_warning": 9,
+    "hunter_evolved": 4,
+    "magic_absorb": 5,
+    "magic_shield": 9,
+    "repair": 42,
+    "scythe_embed": 1,
+    "scythe_end": 1,
+    "scythe_throw": 1,
+    "scythe_tick": 2,
+    "soul_drain": 1,
+    "survivor_attack": 4,
+    "survivor_fear": 4
+   },
+   "expansions": [],
+   "issues": [],
+   "level10": [],
+   "peak_minions": 0,
+   "peak_projectiles": 2,
+   "peak_routes": 8,
+   "player_damage": 6246.99587383676,
+   "player_events": {
+    "approach": 2,
+    "arcane_impact": 2,
+    "archetype_warning": 1,
+    "bed_upgrade": 6,
+    "boss_ability_activate": 2,
+    "boss_ability_warning": 2,
+    "boss_phase": 1,
+    "boss_warning": 2,
+    "build": 8,
+    "building_upgrade": 24,
+    "charged_attack": 3,
+    "door_damage": 13,
+    "door_upgrade": 6,
+    "encounter": 2,
+    "hunter_ability": 2,
+    "hunter_ability_warning": 2,
+    "repair": 26,
+    "soul_drain": 1
+   },
+   "player_gold": 5318.86,
+   "player_income": 13253.8600000001,
+   "player_power": 43.8640000000133,
+   "player_spent": 7952.0,
+   "result": "victory",
+   "room": 0,
+   "seconds": 197.999999999993,
+   "slots": 16,
+   "steps": 1980,
+   "tier": -1,
+   "wave": 0
+  },
+  {
+   "allies": [
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.570588235294118,
+       "flash": 0.05,
+       "instance_id": 1,
+       "invested_gold": 140.0,
+       "invested_power": 18.0,
+       "kind": "turret",
+       "level": 4
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 210.0,
+       "invested_power": 18.0,
+       "kind": "generator",
+       "level": 4
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 280.0,
+       "invested_power": 53.0,
+       "kind": "repair",
+       "level": 4
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 315.0,
+       "invested_power": 46.0,
+       "kind": "economy",
+       "level": 4
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 455.0,
+       "invested_power": 74.0,
+       "kind": "enhancer",
+       "level": 4
+      },
+      "5": {
+       "cooldown": 0.325121984277583,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 665.0,
+       "invested_power": 102.0,
+       "kind": "heavy",
+       "level": 4
+      },
+      "6": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 7,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      }
+     },
+     "damage": 2495.17448540801,
+     "gold": 1809.58849999999,
+     "income": 5340.58850000006,
+     "owner": 2,
+     "power": 9.93999999999891,
+     "slots": 10,
+     "spent": 3556.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.1,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      }
+     },
+     "damage": 27.0,
+     "gold": 26.4999999999999,
+     "income": 76.4999999999999,
+     "owner": 3,
+     "power": 0.0,
+     "slots": 16,
+     "spent": 75.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.600000000000002,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      }
+     },
+     "damage": 135.0,
+     "gold": 11.3199999999999,
+     "income": 630.32,
+     "owner": 1,
+     "power": 100.240000000002,
+     "slots": 16,
+     "spent": 644.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.100000000000002,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.2,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      }
+     },
+     "damage": 275.0,
+     "gold": 29.4100000000007,
+     "income": 544.410000000001,
+     "owner": 4,
+     "power": 42.03,
+     "slots": 10,
+     "spent": 540.0,
+     "tier": -1
+    },
+    {
+     "alive": false,
+     "buildings": {
+      "0": {
+       "cooldown": 0.400000000000001,
+       "flash": 0.0,
+       "instance_id": 1,
+       "invested_gold": 20.0,
+       "invested_power": 0.0,
+       "kind": "turret",
+       "level": 1
+      },
+      "1": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 2,
+       "invested_gold": 30.0,
+       "invested_power": 0.0,
+       "kind": "generator",
+       "level": 1
+      },
+      "2": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 3,
+       "invested_gold": 85.0,
+       "invested_power": 14.0,
+       "kind": "antenna",
+       "level": 1
+      },
+      "3": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 4,
+       "invested_gold": 40.0,
+       "invested_power": 5.0,
+       "kind": "repair",
+       "level": 1
+      },
+      "4": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 5,
+       "invested_gold": 45.0,
+       "invested_power": 4.0,
+       "kind": "economy",
+       "level": 1
+      },
+      "5": {
+       "cooldown": 0.4,
+       "flash": 0.0,
+       "instance_id": 6,
+       "invested_gold": 95.0,
+       "invested_power": 12.0,
+       "kind": "heavy",
+       "level": 1
+      },
+      "6": {
+       "cooldown": 0.0,
+       "flash": 0.0,
+       "instance_id": 7,
+       "invested_gold": 65.0,
+       "invested_power": 8.0,
+       "kind": "enhancer",
+       "level": 1
+      }
+     },
+     "damage": 336.149999999998,
+     "gold": 134.695999999999,
+     "income": 735.696,
+     "owner": 5,
+     "power": 84.4500000000006,
+     "slots": 16,
+     "spent": 626.0,
+     "tier": -1
+    }
+   ],
+   "bed_level": 7,
+   "buildings": {
+    "0": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 13,
+     "invested_gold": 180.0,
+     "invested_power": 25.0,
+     "kind": "economy",
+     "level": 3
+    },
+    "1": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 10,
+     "invested_gold": 700.0,
+     "invested_power": 144.0,
+     "kind": "plasma",
+     "level": 4
+    },
+    "2": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 4,
+     "invested_gold": 160.0,
+     "invested_power": 29.0,
+     "kind": "repair",
+     "level": 3
+    },
+    "3": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 2,
+     "invested_gold": 210.0,
+     "invested_power": 18.0,
+     "kind": "generator",
+     "level": 4
+    },
+    "6": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 12,
+     "invested_gold": 180.0,
+     "invested_power": 25.0,
+     "kind": "economy",
+     "level": 3
+    },
+    "7": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 9,
+     "invested_gold": 630.0,
+     "invested_power": 123.0,
+     "kind": "barrier",
+     "level": 4
+    },
+    "8": {
+     "cooldown": 0.436405529953918,
+     "flash": 0.0,
+     "instance_id": 36,
+     "invested_gold": 380.0,
+     "invested_power": 57.0,
+     "kind": "heavy",
+     "level": 3
+    },
+    "11": {
+     "cooldown": 0.0,
+     "flash": 0.0,
+     "instance_id": 11,
+     "invested_gold": 595.0,
+     "invested_power": 116.0,
+     "kind": "antenna",
+     "level": 4
+    },
+    "12": {
+     "cooldown": -0.0216216216216207,
+     "flash": 0.0,
+     "instance_id": 1,
+     "invested_gold": 265.0,
+     "invested_power": 37.0,
+     "kind": "turret",
+     "level": 5,
+     "specialization": "precision"
+    },
+    "13": {
+     "cooldown": 0.329729729729731,
+     "flash": 0.0,
+     "instance_id": 20,
+     "invested_gold": 265.0,
+     "invested_power": 37.0,
+     "kind": "turret",
+     "level": 5,
+     "specialization": "precision"
+    }
+   },
+   "checkpoint_restores": 0,
+   "cleared": 0,
+   "config": {
+    "archetype": "electric",
+    "endless": false,
+    "map": "cursed_mansion",
+    "mode": "hell",
+    "policy": "magic",
+    "seconds": 900.0,
+    "seed": 275
+   },
+   "door_level": 7,
+   "events": {
+    "approach": 10,
+    "arcane_impact": 9,
+    "archetype_warning": 8,
+    "bed_upgrade": 17,
+    "boss_ability_activate": 3,
+    "boss_ability_end": 3,
+    "boss_ability_warning": 5,
+    "boss_awakened": 1,
+    "boss_death": 1,
+    "boss_impact": 2,
+    "boss_phase": 2,
+    "boss_resource_drain": 1,
+    "boss_transform": 1,
+    "boss_warning": 4,
+    "build": 35,
+    "building_upgrade": 46,
+    "charged_attack": 17,
+    "door_break": 5,
+    "door_damage": 95,
+    "door_upgrade": 18,
+    "elimination": 5,
+    "encounter": 11,
+    "hunter_ability": 10,
+    "hunter_ability_warning": 10,
+    "hunter_evolved": 5,
+    "magic_absorb": 11,
+    "magic_reflect": 2,
+    "magic_shield": 13,
+    "plasma_release": 3,
+    "repair": 41,
+    "scythe_embed": 1,
+    "scythe_end": 1,
+    "scythe_throw": 1,
+    "soul_drain": 2,
+    "survivor_attack": 5,
+    "survivor_fear": 5
+   },
+   "expansions": [],
+   "issues": [],
+   "level10": [],
+   "peak_minions": 0,
+   "peak_projectiles": 2,
+   "peak_routes": 8,
+   "player_damage": 5149.291514592,
+   "player_events": {
+    "approach": 2,
+    "arcane_impact": 1,
+    "archetype_warning": 1,
+    "bed_upgrade": 6,
+    "boss_ability_activate": 3,
+    "boss_ability_end": 3,
+    "boss_ability_warning": 5,
+    "boss_death": 1,
+    "boss_impact": 2,
+    "boss_resource_drain": 1,
+    "boss_warning": 4,
+    "build": 10,
+    "building_upgrade": 28,
+    "charged_attack": 3,
+    "door_damage": 13,
+    "door_upgrade": 6,
+    "encounter": 3,
+    "hunter_ability": 2,
+    "hunter_ability_warning": 2,
+    "magic_absorb": 6,
+    "magic_reflect": 2,
+    "magic_shield": 4,
+    "plasma_release": 3,
+    "repair": 23,
+    "scythe_embed": 1,
+    "scythe_end": 1,
+    "scythe_throw": 1,
+    "soul_drain": 2
+   },
+   "player_gold": 5029.12,
+   "player_income": 14663.3900000002,
+   "player_power": 21.2600000000108,
+   "player_spent": 8601.0,
+   "result": "victory",
+   "room": 0,
+   "seconds": 223.799999999992,
+   "slots": 16,
+   "steps": 2238,
+   "tier": -1,
+   "wave": 0
+  }
+ ],
+ "checks": 74087,
+ "failures": 0,
+ "scope": "Finite real model simulations. Starting wallets25G/0E and no progression bonuses/items; no live resource/HP/position/wave injection. Checkpoint restore is verified separately; active run itself continues original model.",
+ "wall_seconds": 9.812
+}

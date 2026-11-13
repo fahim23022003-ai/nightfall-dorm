@@ -1,0 +1,272 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: REDESIGN_UI_FAIL: direct BUILD completes purchase without a preview room 0
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:76)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: new purchase remains in the same building inspector
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:77)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: actual confirmation builds on selected tile
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:78)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: confirmation charges exactly once
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:79)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: occupied tile rejects preview and confirmation
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:82)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: out-of-room click gives invalid preview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:92)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: invalid preview never charges
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:93)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: direct BUILD completes purchase without a preview room 1
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:76)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: new purchase remains in the same building inspector
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:77)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: actual confirmation builds on selected tile
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:78)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: confirmation charges exactly once
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:79)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: occupied tile rejects preview and confirmation
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:82)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: out-of-room click gives invalid preview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:92)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: invalid preview never charges
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:93)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: direct BUILD completes purchase without a preview room 2
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:76)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: new purchase remains in the same building inspector
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:77)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: actual confirmation builds on selected tile
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:78)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: confirmation charges exactly once
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:79)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: occupied tile rejects preview and confirmation
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:82)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: out-of-room click gives invalid preview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:92)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: invalid preview never charges
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:93)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: floor tile projects into usable map area room=3 tile=3
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:70)
+ERROR: REDESIGN_UI_FAIL: floor tile projects into usable map area room=3 tile=4
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:70)
+ERROR: REDESIGN_UI_FAIL: floor tile projects into usable map area room=3 tile=5
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:70)
+ERROR: REDESIGN_UI_FAIL: direct BUILD completes purchase without a preview room 3
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:76)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: new purchase remains in the same building inspector
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:77)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: actual confirmation builds on selected tile
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:78)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: confirmation charges exactly once
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:79)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: occupied tile rejects preview and confirmation
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:82)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: floor tile projects into usable map area room=4 tile=3
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:70)
+ERROR: REDESIGN_UI_FAIL: floor tile projects into usable map area room=4 tile=4
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:70)
+ERROR: REDESIGN_UI_FAIL: floor tile projects into usable map area room=4 tile=5
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:70)
+ERROR: REDESIGN_UI_FAIL: direct BUILD completes purchase without a preview room 4
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:76)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: new purchase remains in the same building inspector
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:77)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: actual confirmation builds on selected tile
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:78)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: confirmation charges exactly once
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:79)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: occupied tile rejects preview and confirmation
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:82)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: floor tile projects into usable map area room=5 tile=3
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:70)
+ERROR: REDESIGN_UI_FAIL: floor tile projects into usable map area room=5 tile=4
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:70)
+ERROR: REDESIGN_UI_FAIL: floor tile projects into usable map area room=5 tile=5
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:70)
+ERROR: REDESIGN_UI_FAIL: direct BUILD completes purchase without a preview room 5
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:76)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: new purchase remains in the same building inspector
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:77)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: actual confirmation builds on selected tile
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:78)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: confirmation charges exactly once
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:79)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: occupied tile rejects preview and confirmation
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:82)
+       [2] click (res://tests/redesign_ui.gd:27)
+ERROR: REDESIGN_UI_FAIL: mouse travel leaves purchased machine on its selected pad: turret
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/redesign_ui.gd:10)
+       [1] run (res://tests/redesign_ui.gd:122)
+SCRIPT ERROR: Invalid access to property or key '2' on a base object of type 'Dictionary'.
+          at: run (res://tests/redesign_ui.gd:123)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/redesign_ui.gd:123)

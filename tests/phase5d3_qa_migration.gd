@@ -28,7 +28,7 @@ func run():
   if b.kind in ["generator","repair","economy","enhancer"] and b.level==4:
    check(m.specialize_building(tile,StrategyCatalog.branches(b.kind)[0]),"existing support4 advanceswithnewpaidbranch "+b.kind)
  check(p.checkpoint_endless(m),"new branching state saves through realcheckpoint transaction")
- check(p.replay.checkpoint.ruleset==3 and ReplaySnapshot.valid(p.replay.checkpoint),"new saves upgrade ruleset with valid branch data and bounded evolution ledger")
+ check(p.replay.checkpoint.ruleset==ChallengeCode.RULESET and ReplaySnapshot.valid(p.replay.checkpoint),"new saves upgrade ruleset with valid branch data and bounded evolution ledger")
  var after=JSON.parse_string(JSON.stringify(ReplaySnapshot.encode(m,p.active_match.use_counts)))
  var q=PlayerProfile.new(path);check(q.load_profile() and not q.read_only,"newbranch profile reloads writable")
  var restored=q.resume_endless();check(restored!=null,"newstructural/support branches resume")

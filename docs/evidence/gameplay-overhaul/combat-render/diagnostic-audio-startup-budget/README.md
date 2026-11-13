@@ -1,0 +1,1 @@
+Fixture emitted new low-priority magic cues on the same initial Practice snapshot frame as setup/build/sale/door/bed events, saturating per-frame voice admission. Actual damage/absorption occurred; initial three cue assertions failed. Rerun settles real setup audio1.5seconds before recording effects; no production audio edits requested.

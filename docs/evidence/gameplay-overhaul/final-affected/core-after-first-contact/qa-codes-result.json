@@ -1,0 +1,141 @@
+{
+ "cases": [
+  {
+   "casts": {
+
+   },
+   "events": {
+    "approach": 1.0,
+    "archetype_warning": 19.0,
+    "bed_upgrade": 12.0,
+    "build": 16.0,
+    "charged_attack": 4.0,
+    "door_damage": 19.0,
+    "door_upgrade": 11.0,
+    "encounter": 1.0,
+    "hunter_ability": 2.0,
+    "hunter_ability_warning": 2.0,
+    "repair": 5.0
+   },
+   "kind": "crusher",
+   "map": "abandoned_dorm",
+   "result": "",
+   "trace_points": 70
+  },
+  {
+   "casts": {
+
+   },
+   "events": {
+    "approach": 1.0,
+    "archetype_warning": 1.0,
+    "bed_upgrade": 11.0,
+    "build": 17.0,
+    "door_damage": 36.0,
+    "door_upgrade": 10.0,
+    "encounter": 1.0,
+    "magic_shield": 1.0,
+    "repair": 6.0
+   },
+   "kind": "stalker",
+   "map": "haunted_hospital",
+   "result": "",
+   "trace_points": 70
+  },
+  {
+   "casts": {
+
+   },
+   "events": {
+    "approach": 2.0,
+    "archetype_warning": 9.0,
+    "bed_upgrade": 11.0,
+    "build": 15.0,
+    "door_damage": 25.0,
+    "door_upgrade": 9.0,
+    "encounter": 2.0,
+    "hunter_ability": 1.0,
+    "hunter_ability_warning": 1.0,
+    "magic_shield": 1.0,
+    "repair": 4.0
+   },
+   "kind": "ravager",
+   "map": "forgotten_hotel",
+   "result": "",
+   "trace_points": 70
+  },
+  {
+   "casts": {
+    "cursed_projectile": 3.0
+   },
+   "events": {
+    "approach": 1.0,
+    "arcane_impact": 3.0,
+    "archetype_warning": 1.0,
+    "bed_upgrade": 12.0,
+    "build": 17.0,
+    "door_damage": 34.0,
+    "door_upgrade": 8.0,
+    "encounter": 1.0,
+    "hunter_ability": 3.0,
+    "hunter_ability_warning": 3.0,
+    "magic_shield": 4.0,
+    "repair": 6.0
+   },
+   "kind": "witch",
+   "map": "underground_lab",
+   "result": "",
+   "trace_points": 70
+  },
+  {
+   "casts": {
+    "interference": 3.0
+   },
+   "events": {
+    "approach": 1.0,
+    "arcane_impact": 3.0,
+    "archetype_warning": 1.0,
+    "bed_upgrade": 11.0,
+    "build": 17.0,
+    "door_damage": 36.0,
+    "door_upgrade": 9.0,
+    "encounter": 1.0,
+    "hunter_ability": 3.0,
+    "hunter_ability_warning": 3.0,
+    "magic_shield": 4.0,
+    "repair": 6.0
+   },
+   "kind": "electric",
+   "map": "cursed_mansion",
+   "result": "",
+   "trace_points": 70
+  },
+  {
+   "casts": {
+    "chain_lightning": 3.0
+   },
+   "events": {
+    "approach": 1.0,
+    "arcane_impact": 3.0,
+    "archetype_warning": 1.0,
+    "bed_upgrade": 11.0,
+    "build": 17.0,
+    "door_damage": 39.0,
+    "door_upgrade": 8.0,
+    "encounter": 1.0,
+    "hunter_ability": 3.0,
+    "hunter_ability_warning": 3.0,
+    "magic_absorb": 1.0,
+    "magic_shield": 4.0,
+    "repair": 7.0
+   },
+   "kind": "storm",
+   "map": "abandoned_dorm",
+   "result": "",
+   "trace_points": 70
+  }
+ ],
+ "checks": 40,
+ "failures": 0,
+ "workers": 12
+}

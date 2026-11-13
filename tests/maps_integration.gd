@@ -8,7 +8,14 @@ func check(ok: bool,label: String):
   failures+=1
   push_error("MAP INTEGRATION: "+label)
 func _initialize(): call_deferred("run")
+func settle_drawer():
+ await process_frame
+ if game!=null and is_instance_valid(game) and game.mode=="match" and game.ui.bottom_context!=null:
+  var deadline=Time.get_ticks_msec()+1500
+  while game.ui.bottom_context.is_transitioning() and Time.get_ticks_msec()<deadline:await process_frame
+ await process_frame
 func click(point: Vector2,double_click=false):
+ await settle_drawer()
  point=root.get_final_transform()*point
  var motion=InputEventMouseMotion.new()
  motion.position=point
@@ -24,6 +31,7 @@ func click(point: Vector2,double_click=false):
   event.double_click=double_click and pressed
   Input.parse_input_event(event)
   await process_frame
+ await settle_drawer()
 func verify_navigation(definition):
  for index in range(6):
   var model=MatchModel.new()
@@ -186,6 +194,9 @@ func run():
    game.ui.update_match()
    await process_frame
    for tile in range(resident.tile_count()):
+    # The intentionally opened drawer may cover lower world pads. Close it
+    # before the next world selection; compact toolbar leaves all pads exposed.
+    game.ui.close_context();await settle_drawer()
     var screen=game.world_to_screen(resident.tile_position(tile))
     check(Rect2(0,76,900,562).has_point(screen),"all pads project into map area "+definition.id+" room"+str(index)+" tile"+str(tile))
     await click(screen)

@@ -1,0 +1,1 @@
+Ten real ability cases completed actual casts/damage/healing/navigation/audio. Two additional fixed-wall-time Witch in-flight snapshot assertions missed the projectile window. Original111checks/2failures retained, not relabeled successful. New fixture polls actual bolt state and final rerender also uses bounded nearby-caster camera fix.

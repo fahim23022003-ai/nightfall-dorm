@@ -11,7 +11,14 @@ func check(value: bool,label: String):
 
 func _initialize(): call_deferred("run")
 
+func settle_drawer():
+ await process_frame
+ if game!=null and is_instance_valid(game) and game.mode=="match" and game.ui.bottom_context!=null:
+  var deadline=Time.get_ticks_msec()+1500
+  while game.ui.bottom_context.is_transitioning() and Time.get_ticks_msec()<deadline:await process_frame
+ await process_frame
 func click_at(point: Vector2):
+ await settle_drawer()
  point=root.get_final_transform()*point
  var move=InputEventMouseMotion.new()
  move.position=point
@@ -26,6 +33,7 @@ func click_at(point: Vector2):
   event.pressed=pressed
   Input.parse_input_event(event)
   await process_frame
+ await settle_drawer()
 
 func escape():
  for pressed in [true,false]:
@@ -57,8 +65,11 @@ func run():
  await click_at(game.world_to_screen(room.tile_position(1)))
  check(game.selected_tile==1 and game.ui.context_open,"bottom-wing floor input selects correct model tile")
  var own_rect=Rect2(game.world_to_screen(room.bounds().position),room.bounds().size*game.camera.zoom)
- check(not game.ui.context_box.get_rect().intersects(own_rect),"context menu leaves own bedroom visible")
- check(not game.ui.context_box.get_global_rect().has_point(game.world_to_screen(room.bed_position())),"focused side inspector leaves sleeping character visible")
+ check(game.ui.context_box.position.y>=430 and game.ui.context_box.get_rect().end.y<=650,"intentional drawer occupies only its bounded lower-screen region")
+ game.ui.close_context();await settle_drawer()
+ check(not game.ui.context_box.is_visible_in_tree() and not game.ui.context_box.get_rect().intersects(own_rect),"closed compact toolbar leaves own bedroom visible")
+ check(not game.ui.context_box.get_global_rect().has_point(game.world_to_screen(room.bed_position())),"closed compact drawer leaves sleeping character visible")
+ await click_at(game.world_to_screen(room.tile_position(1)))
  for node in game.ui.build_items:
   check(node.visible,"all illustrated card components visible together")
   if node is TextureRect: check(node.size.x<=100 and node.size.y<=100,"card illustration size bounded")

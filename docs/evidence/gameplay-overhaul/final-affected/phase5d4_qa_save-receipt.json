@@ -1,0 +1,17 @@
+{
+  "suite": "tests/phase5d4_qa_save.gd",
+  "result": "PASS",
+  "exit": 0,
+  "checks": 269,
+  "failures": 0,
+  "changes": [
+    "Compare newly written checkpoint ruleset to ChallengeCode.RULESET instead of historical3.",
+    "Use actual paid six-pad expansion before placing six existing role machines; assert exact separate wallet debit.",
+    "Retain all existing ownership/capital/branch/inventory/atomicity/refractory assertions and frozen historical profiles; additionally preserve historical ruleset3 code archives."
+  ],
+  "source_sha256": "8916ae9fec1fe74b218556e700277d8e1785e4201d58ab73a07e443144369c61",
+  "accepted_log": "docs/evidence/gameplay-overhaul/final-affected/phase5d4_qa_save.log",
+  "log_sha256": "bd86b4dd5bba2450713781da06d33eb1cb0babb4ad76cd63acb9a606a00cb893",
+  "original_failure": "final-regressions/phase5d4_qa_save.log",
+  "production_changes": false
+}

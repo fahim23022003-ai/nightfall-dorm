@@ -11,7 +11,14 @@ func check(ok: bool, label: String):
 
 func _initialize(): call_deferred("run")
 
+func settle_drawer():
+ await process_frame
+ if game!=null and is_instance_valid(game) and game.mode=="match" and game.ui.bottom_context!=null:
+  var deadline=Time.get_ticks_msec()+1500
+  while game.ui.bottom_context.is_transitioning() and Time.get_ticks_msec()<deadline:await process_frame
+ await process_frame
 func click(button: Button, double_click: bool=false):
+ await settle_drawer()
  var point=root.get_final_transform()*button.get_global_rect().get_center()
  for pressed in [true,false]:
   var event=InputEventMouseButton.new()
@@ -22,6 +29,7 @@ func click(button: Button, double_click: bool=false):
   event.double_click=double_click and pressed
   Input.parse_input_event(event)
   await process_frame
+ await settle_drawer()
 
 func run():
  for kind in Catalog.BUILDINGS:
@@ -106,6 +114,10 @@ func run():
  await click(game.ui.actions.sell)
  check(not room.buildings.has(0) and not game.ui.context_open,"sell UI frees tile and closes inspector")
  game.mobile_mode=true
+ # Mode is selected before match UI creation in real startup. Rebuild that UI
+ # instead of retaining a desktop drawer while pretending it is touch layout.
+ game.ui.show_match()
+ await process_frame
  game.selected_tile=1
  check(room.build("generator",1),"mobile sale fixture")
  game.ui.open_context()

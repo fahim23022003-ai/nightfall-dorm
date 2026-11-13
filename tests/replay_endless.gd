@@ -69,7 +69,7 @@ func invalid_snapshots():
  var a=fixture();clear_wave(a)
  var good=Snapshot.encode(a.m)
  check(not good.is_empty(),"strict snapshot baseline comes from actual cleared wave")
- var edits=[[["version"],2],[["ruleset"],4],[["map"],"future_map"],[["difficulty"],"nightmare"],[["run_id"],0],[["completed"],1.5],[["player_room"],6],[["player_position"],[9999,9999]],[["rng"],"99999999999999999999"],[["rng"],"-9223372036854775809"],[["rng"],"+1"],[["rng"],"01"],[["rng"],"-0"],[["rng"],1],[["bot_claimed"],0],[["shots"],.5],[["rooms",0,"gold"],-1],[["rooms",0,"electricity"],INF],[["rooms",0,"door_hp"],1e9],[["rooms",0,"bed_level"],5],[["rooms",0,"door_level"],5],[["rooms",0,"closed"],false],[["rooms",0,"shots"],.5],[["rooms",0,"repair_actions"],.5],[["rooms",0,"trait"],"power"],[["rooms",1,"owner"],0],[["rooms",1,"position"],[9999,9999]],[["rooms",0,"income_multiplier"],10],[["rooms",0,"door_multiplier"],10],[["rooms",0,"power_multiplier"],10],[["rooms",0,"turret_multiplier"],10],[["rooms",0,"rescue_fraction"],.99],[["rooms",1,"income_multiplier"],10],[["items","legendary_used"],2],[["items","timers"],{"unknown_effect":1}],[["use_counts"],{"coupon":-1}]]
+ var edits=[[["version"],2],[["ruleset"],ChallengeCode.RULESET+1],[["map"],"future_map"],[["difficulty"],"nightmare"],[["run_id"],0],[["completed"],1.5],[["player_room"],6],[["player_position"],[9999,9999]],[["rng"],"99999999999999999999"],[["rng"],"-9223372036854775809"],[["rng"],"+1"],[["rng"],"01"],[["rng"],"-0"],[["rng"],1],[["bot_claimed"],0],[["shots"],.5],[["rooms",0,"gold"],-1],[["rooms",0,"electricity"],INF],[["rooms",0,"door_hp"],1e9],[["rooms",0,"bed_level"],5],[["rooms",0,"door_level"],5],[["rooms",0,"closed"],false],[["rooms",0,"shots"],.5],[["rooms",0,"repair_actions"],.5],[["rooms",0,"trait"],"power"],[["rooms",1,"owner"],0],[["rooms",1,"position"],[9999,9999]],[["rooms",0,"income_multiplier"],10],[["rooms",0,"door_multiplier"],10],[["rooms",0,"power_multiplier"],10],[["rooms",0,"turret_multiplier"],10],[["rooms",0,"rescue_fraction"],.99],[["rooms",1,"income_multiplier"],10],[["items","legendary_used"],2],[["items","timers"],{"unknown_effect":1}],[["use_counts"],{"coupon":-1}]]
  for edit in edits:
   var data=good.duplicate(true);var at=data;var path=edit[0]
   for i in range(path.size()-1):at=at[path[i]]
@@ -89,15 +89,25 @@ func navigation_and_reaper():
     var m=MatchModel.new();m.configure_endless(map,mode,seed_value,500+approaches)
     m.claim_room(0);m.player_position=m.player().bed_position();m.sleep_player();m.bot_claimed=5
     m.player().door_level=4;m.player().door_hp=m.player().max_hp();m.time=m.preparation+.1
-    var h=m.hunter;var door=m.player().door_hp
+    var h=m.hunter;var door=m.player().door_hp;var last_event=0;var warned_magic=false
     for step in range(1600):
      var previous=h.position;m.tick(.05)
      check(m.hunter==h and m.navigation_walkable(h.position),"one real Endless Hunter remains on authored floor")
      check(h.position.distance_to(previous)<=h.speed*.05+.001,"Endless movement has no teleport or late-growth burst")
-     check(not m.player().bounds().grow(-12).has_point(h.position) and m.player().door_hp==door,"approach respects intact door without remote damage")
+     # Witch deliberately attacks from legal visible range. All other approach
+     # damage remains forbidden; the room wall is never crossed while intact.
+     var legitimate_ranged=false
+     for event in m.presentation_events:
+      if event.id<=last_event:continue
+      last_event=event.id
+      if event.type=="hunter_ability_warning" and event.get("ability","")=="cursed_projectile":warned_magic=true
+      if event.type=="door_damage" and event.room==0:
+       legitimate_ranged=h.archetype=="witch" and warned_magic and event.get("source","")=="cursed_projectile" and event.get("damage_type","")=="magic" and h.position.distance_to(m.player().door_approach())<=150 and m._visible(h.position,m.player().door_approach())
+     check(not m.player().bounds().grow(-12).has_point(h.position) and (m.player().door_hp==door or legitimate_ranged),"approach respects intact walls; only warned visible Witch Magic can damage from range")
+     door=m.player().door_hp
      if h.state==HunterState.State.ATTACK:break
     check(h.state==HunterState.State.ATTACK and h.position.distance_to(m.player().door_approach())<3,"actual Endless archetype reaches legal contact on all maps/modes")
-    check(h.archetype==StrategyCatalog.ARCHETYPE_IDS[posmod(seed_value,3)],"reproducible wave1 archetype matches selected seed")
+    check(h.archetype==StrategyCatalog.ARCHETYPE_IDS[posmod(seed_value,StrategyCatalog.ARCHETYPE_IDS.size())],"reproducible wave1 archetype matches selected seed")
     approaches+=1
  for mode in ["standard","hard","hell"]:
   var a=fixture("underground_lab",mode,191);var m=a.m

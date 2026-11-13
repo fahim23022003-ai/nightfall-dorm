@@ -1,0 +1,84 @@
+{
+  "status": "ACCEPTED within finite automated Linux gameplay scope",
+  "cases": 39,
+  "checks": 1376476,
+  "failures": 0,
+  "accepted_runs": [
+    {
+      "name": "campaign",
+      "cases": 27,
+      "checks": 249685,
+      "failures": 0,
+      "wall_seconds": 39.909
+    },
+    {
+      "name": "endless",
+      "cases": 3,
+      "checks": 750202,
+      "failures": 0,
+      "wall_seconds": 217.599
+    },
+    {
+      "name": "electric",
+      "cases": 8,
+      "checks": 66422,
+      "failures": 0,
+      "wall_seconds": 8.609
+    },
+    {
+      "name": "long",
+      "cases": 1,
+      "checks": 310167,
+      "failures": 0,
+      "wall_seconds": 81.826
+    }
+  ],
+  "start_head": "b317aac388312c0e07247f88645df0907d0a1445",
+  "end_head": "abe391085606efebc32c867a7ea3297bf9dcd40e",
+  "changed_runtime_files": [
+    "scripts/game.gd",
+    "scripts/interface.gd",
+    "scripts/wrath_presentation.gd",
+    "scripts/building_stats.gd"
+  ],
+  "runtime_change_review": "Interface tooltips, branch-preview formatting and Plasma label positioning are presentation-only per parent confirmation. Independent final diff review confirms game.gd only adds local-Hunter camera framing. Actual resolver/economy/combat unchanged.",
+  "harness": "tests/overhaul_balance_audit.gd",
+  "harness_sha256": "10b66c0eeeb20fb80e63245e543df17fd9d68beaed42f3bdbfa80030427b6a9b",
+  "method": "No live resources/HP/position/time/wave injection; starting25G/0E; no perks or consumables. Legal actual player navigation and paid APIs. Earned intermission snapshots checked through JSON restores.",
+  "long_outcome": {
+    "map": "cursed_mansion",
+    "mode": "hell",
+    "seed": 115,
+    "cleared": 45,
+    "wave": 46,
+    "seconds": 4688.59999999953,
+    "result": "defeat",
+    "alive_allies": 0
+  },
+  "unverified": [
+    "native Windows",
+    "human difficulty/usability/art/audio quality",
+    "exhaustive balance or unlimited session safety"
+  ],
+  "artifacts": {
+    "docs/evidence/gameplay-overhaul/balance/probe.json": "e135cf3d26d24d2325fdbedfefa1f0d62241038c5b67cacc180e73dd8bf8d8dc",
+    "docs/evidence/gameplay-overhaul/balance/source-after.json": "08380182be1809ce8146bf5ec79fdf6fec27e240060581f7483e6640ade2140b",
+    "docs/evidence/gameplay-overhaul/balance/long.json": "2610787e2fe73e32e0e392121af8d62658b06ac3ee1a461360166638fdc5b33a",
+    "docs/evidence/gameplay-overhaul/balance/probe-fixture-initial.json": "20637af16b30e914de67c42408e564f249a69269883c8eacd16b6f5713ace68a",
+    "docs/evidence/gameplay-overhaul/balance/long.log": "716c23a03fe3633ec981d3314c2069c91e48440c3908749ae782c36ff2ea7477",
+    "docs/evidence/gameplay-overhaul/balance/campaign-policy-v1.json": "72d5a7ced6d6f322e321d0546a0a81a4ddeaa2f0b8949e99c21505a29966f1f3",
+    "docs/evidence/gameplay-overhaul/balance/campaign-policy-v1.log": "99022dca0e7a5880855e8aea692be7e9fc17c44014070c7f183e179bf7d3e992",
+    "docs/evidence/gameplay-overhaul/balance/REVIEW.md": "71f446814fb05ee5a89e3b7a7f6bf45378c3814b7b355b23e665710ca55a390b",
+    "docs/evidence/gameplay-overhaul/balance/source-before.json": "ba3fd907f1482a68c08f4af8e600d8992ffc008266c9b0dcf2b4f89c12e31a3a",
+    "docs/evidence/gameplay-overhaul/balance/earned-cursed_mansion.json": "2fa208c7dec0c64a425142121482673fd28db5cccd430e438f673c50d53328b5",
+    "docs/evidence/gameplay-overhaul/balance/probe.log": "d963ce00cc033aadb8fd3d927a47cf708c03030225da1ddf0d67aa4fd84ba010",
+    "docs/evidence/gameplay-overhaul/balance/campaign.json": "41f10ebf6c44aa149ce00614a973ccd62c018a12a2f3ddf3e8025db4b4410247",
+    "docs/evidence/gameplay-overhaul/balance/probe-fixture-initial.log": "631ebe3b01e0ff18e4d56e34c9eb97c75528abf790de2535ec5e2e8362641f1c",
+    "docs/evidence/gameplay-overhaul/balance/campaign.log": "c9a84f68cb1d54dcccaf79c20102f0bd570c8e81a90b4d8116e97751474868be",
+    "docs/evidence/gameplay-overhaul/balance/endless.log": "c17bc97a9f260261de0724e4493b71d1d057c814afa06ac0b24a933860ecfa5e",
+    "docs/evidence/gameplay-overhaul/balance/electric.log": "52cb83e2986e15510bf3e6640c125b476c6e4dca60ef4ee224834f84c8222c77",
+    "docs/evidence/gameplay-overhaul/balance/endless.json": "c8c9c48bb66831f206029f48ce5c7e5c60025cb772061079ce47771343824d43",
+    "docs/evidence/gameplay-overhaul/balance/harness-policy-v1.gd.txt": "f970d5ceb080b714edcc7e20e0ca32625a515316712e2735eda2d8a9bb69a508",
+    "docs/evidence/gameplay-overhaul/balance/electric.json": "069fdc836d42b0c61c2f4a2a29e831ddecbec7ac574ed014c371859374f2423e"
+  }
+}

@@ -1,0 +1,40 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+VISUAL_CAPTURE combat-render/cursed_projectile-warning-720
+ERROR: VISUAL REVIEW: actual ranged cursed bolt in flight
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] ability_case (res://tools/capture_overhaul_combat.gd:109)
+       [2] live (res://tools/capture_overhaul_combat.gd:15)
+VISUAL_CAPTURE combat-render/cursed_projectile-projectile-flight-720
+VISUAL_CAPTURE combat-render/cursed_projectile-active-720
+VISUAL_CAPTURE combat-render/interference-warning-720
+VISUAL_CAPTURE combat-render/interference-active-720
+VISUAL_CAPTURE combat-render/chain_lightning-warning-720
+VISUAL_CAPTURE combat-render/chain_lightning-active-720
+VISUAL_CAPTURE combat-render/soul_drain-warning-720
+VISUAL_CAPTURE combat-render/soul_drain-active-720
+VISUAL_CAPTURE combat-render/shadow_dash-warning-720
+VISUAL_CAPTURE combat-render/shadow_dash-active-720
+VISUAL_CAPTURE combat-render/cursed_projectile-warning-1080
+ERROR: VISUAL REVIEW: actual ranged cursed bolt in flight
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tools/capture_visual_overhaul.gd:14)
+       [1] ability_case (res://tools/capture_overhaul_combat.gd:109)
+       [2] live (res://tools/capture_overhaul_combat.gd:15)
+VISUAL_CAPTURE combat-render/cursed_projectile-projectile-flight-1080
+VISUAL_CAPTURE combat-render/cursed_projectile-active-1080
+VISUAL_CAPTURE combat-render/interference-warning-1080
+VISUAL_CAPTURE combat-render/interference-active-1080
+VISUAL_CAPTURE combat-render/chain_lightning-warning-1080
+VISUAL_CAPTURE combat-render/chain_lightning-active-1080
+VISUAL_CAPTURE combat-render/soul_drain-warning-1080
+VISUAL_CAPTURE combat-render/soul_drain-active-1080
+VISUAL_CAPTURE combat-render/shadow_dash-warning-1080
+VISUAL_CAPTURE combat-render/shadow_dash-active-1080
+OVERHAUL_COMBAT_RENDER_["abilities"] CHECKS=111 FAILURES=2

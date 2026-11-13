@@ -37,7 +37,10 @@ func sample(m,kind,branch,coolants,ballistics):
  check(is_equal_approx(r.buildings[0].cooldown,Catalog.turret_interval(kind,5)*data.interval*interval_factor),"specializedweaponsrateisbranchonceplussoleCoolingfactor")
  check(is_equal_approx(r.buildings[1].cooldown,.9*interval_factor),"neutralgunneverinheritsotherweaponsbranchrate")
  var hp=m.hunter.hp;m._advance_projectiles(1)
- check(m.projectiles.is_empty() and is_equal_approx(hp-m.hunter.hp,own_damage+neutral_damage),"actualimpactcreditsexactexpectedcombineddamage")
+ # Arc is Electric magic; the explicit Crusher fixture has Earth affinity.
+ # Its impact is resisted10%, while Needle remains neutral Physical.
+ var affinity_factor=.9 if kind=="heavy" else 1.0
+ check(m.projectiles.is_empty() and is_equal_approx(hp-m.hunter.hp,own_damage*affinity_factor+neutral_damage),"actualimpactcreditsexactexpectedcombineddamage")
  # Own branch range is applied once. Relay effects are the only global factor.
  var range_limit=Catalog.BUILDINGS[kind].range*data.range*range_factor
  for delta in [-1,1]:

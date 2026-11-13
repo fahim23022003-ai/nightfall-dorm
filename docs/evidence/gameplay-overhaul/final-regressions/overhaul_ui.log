@@ -1,0 +1,21 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: OVERHAUL UI: context BUILD purchases directly without a stuck preview
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/overhaul_ui.gd:10)
+       [1] run (res://tests/overhaul_ui.gd:66)
+       [2] click_at (res://tests/overhaul_ui.gd:28)
+ERROR: OVERHAUL UI: confirmed card purchases in actual selected bottom-wing room
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/overhaul_ui.gd:10)
+       [1] run (res://tests/overhaul_ui.gd:67)
+       [2] click_at (res://tests/overhaul_ui.gd:28)
+ERROR: OVERHAUL UI: built tile switches to focused upgrade panel
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/overhaul_ui.gd:10)
+       [1] run (res://tests/overhaul_ui.gd:69)
+       [2] click_at (res://tests/overhaul_ui.gd:28)
+OVERHAUL_UI_CHECKS=107 FAILURES=3

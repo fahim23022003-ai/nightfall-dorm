@@ -1,0 +1,66 @@
+[
+  {
+    "mode": "hunters",
+    "checks": 109,
+    "failures": 0,
+    "log": "hunters.log",
+    "result": "result-hunters.json",
+    "exit_code": 0
+  },
+  {
+    "mode": "buildings",
+    "checks": 309,
+    "failures": 0,
+    "log": "buildings.log",
+    "result": "result-buildings.json",
+    "exit_code": 0
+  },
+  {
+    "mode": "reaper",
+    "checks": 17,
+    "failures": 0,
+    "log": "reaper.log",
+    "result": "result-reaper.json",
+    "exit_code": 0
+  },
+  {
+    "mode": "abilities",
+    "checks": 111,
+    "failures": 0,
+    "log": "abilities.log",
+    "result": "result-abilities.json",
+    "exit_code": 0
+  },
+  {
+    "mode": "defense-audio",
+    "checks": 19,
+    "failures": 0,
+    "log": "defense-audio.log",
+    "result": "result-defense-audio.json",
+    "exit_code": 0
+  },
+  {
+    "mode": "plasma-readout",
+    "checks": 57,
+    "failures": 0,
+    "log": "plasma-readout.log",
+    "result": "result-plasma-readout.json",
+    "exit_code": 0
+  },
+  {
+    "mode": "earned",
+    "checks": 27,
+    "failures": 0,
+    "log": "earned.log",
+    "result": "result-earned.json",
+    "exit_code": 0
+  },
+  {
+    "mode": "info",
+    "checks": 11,
+    "failures": 0,
+    "log": "info.log",
+    "result": "result-info.json",
+    "exit_code": 0
+  }
+]

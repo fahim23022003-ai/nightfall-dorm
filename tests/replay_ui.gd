@@ -1,6 +1,19 @@
 extends "res://tests/premium_strategy_ui.gd"
 # Actual production scene/controls. D independently reviews raster/clipboard/audio.
 const Support=preload("res://tests/replay_test_support.gd")
+# Ordinary replay/preparation actions wait for the real sliding building drawer.
+# Dedicated overhaul input tests cover guarded transition-time actions.
+func settle():
+ await process_frame
+ if game!=null and is_instance_valid(game) and game.mode=="match":
+  game.ui.update_match()
+  var deadline=Time.get_ticks_msec()+1500
+  while game.ui.bottom_context!=null and game.ui.bottom_context.is_transitioning() and Time.get_ticks_msec()<deadline:await process_frame
+ await process_frame
+func click(control,double_click=false):
+ await settle()
+ await super.click(control,double_click)
+ await settle()
 func key(code):
  for pressed in [true,false]:
   var event=InputEventKey.new();event.keycode=code;event.pressed=pressed;Input.parse_input_event(event);await process_frame

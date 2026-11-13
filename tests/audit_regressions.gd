@@ -131,7 +131,7 @@ func run():
  check(g.shots == launched and g.projectiles.is_empty(), "terminal breach cancels pending shots and prevents further firing")
  print("AUDIT regression: all registered building upgrade ceilings and effects")
  room = RoomState.new()
- room.layout=MapCatalog.map(MapCatalog.IDS[0]).rooms[0]
+ room.layout=MapCatalog.map("cursed_mansion").rooms[0] # Authored16-pad room fits all15 registered machines.
  check(room.tile_count()>=Catalog.BUILDINGS.size(),"all-machine cap fixture has enough real map pads")
  room.sleeping = true
  room.bed_level = 4
