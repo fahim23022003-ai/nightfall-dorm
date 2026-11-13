@@ -1,3 +1,18 @@
+# Phase 5 — Adaptive combat readability complete
+
+Preserved stable NPC lanes; sustained crowds use delayed ALLIES ×N with exit
+hysteresis and threatened/observed identity priority. Shared prestige badges
+protect door HP; dense unselected specialization rings are quieter. Automatic
+positive messages yield to door warnings, while errors/Help remain accessible.
+Earned wave45 TEAM 0/5 is accurate: all five AI allies are eliminated, buildings
+remain. No gameplay/save/status-rule changes. Godot 4.6.3 checks: **19 new/0**,
+**50 prior visual/0**, **30 prior label/0**, **22 capture/input/0**.
+Six real PNGs, source hashes and bounded Linux timing evidence are in the
+[report](ADAPTIVE_COMBAT_READABILITY.md). No agents/full suite/new build.
+Native Windows, long-session and subjective human testing remain unverified.
+
+---
+
 # Phase 4 — Late-game visual clarity complete
 
 Two focused presentation changes: bounded backed NPC name lanes with protected

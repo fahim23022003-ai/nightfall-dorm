@@ -1,0 +1,57 @@
+extends "res://tools/capture_overhaul_combat.gd"
+func run():
+ output="/workspace/adaptive-clarity/";phase=OS.get_environment("NIGHTFALL_VISUAL_PHASE");root.size=Vector2i(1280,720)
+ await setup_game();game.onboarding.close_welcome();game.return_menu();game.start_stage("stage_1","standard");game.set_process(false);game.tutorial_enabled=false
+ var m=game.model;m.player_position=m.rooms[0].center();m.claim_room(0);m.player_position=m.player().bed_position();m.sleep_player()
+ var r=m.player();r.gold=200;r.electricity=30
+ r.build("turret",9);r.build("generator",0);r.build("repair",1)
+ game.ui.close_context();game.focus_camera(true);await drive(.65);await capture("01-early-normal-720")
+ root.size=Vector2i(1920,1080);await advance(.2);await capture("06-early-normal-1080");root.size=Vector2i(1280,720)
+ await world_click(r.tile_position(0));await advance(.35);await capture("02-selected-upgrade-720")
+ await click(game.ui.actions.upgrade);await capture("02b-successful-upgrade-720");game.ui.close_context();await advance(.35)
+ m.time=m.preparation+9;m.hunter.boss_policy.enabled=false;m.hunter.target=r.index;m.hunter.position=r.door_approach();m.hunter.state=HunterState.State.ATTACK;m.hunter.cooldown=0;m.hunter.tactical_cooldown=60;m.hunter.arcane.cooldown=60
+ var hp=r.door_hp
+ for i in range(40):
+  await drive(.05)
+  if r.door_hp<hp:break
+ await capture("03-physical-combat-720")
+ root.size=Vector2i(1920,1080);await advance(.1);await capture("07-crowded-combat-1080");root.size=Vector2i(1280,720);await advance(.1)
+ if phase=="after":
+  await key(KEY_T);check(game.ui.teammates.expanded,"keyboard T opens Team");await key(KEY_T);check(not game.ui.teammates.expanded,"keyboard T closes Team")
+ await click(game.ui.teammates.toggle);check(game.ui.teammates.expanded,"mouse opens existing Team");await capture("08-crowded-team-identification-720");await click(game.ui.teammates.toggle)
+
+ m=fixture_kind("witch");r=m.player();r.build("heavy",9);r.build("flame",10);r.build("plasma",0)
+ await drive(.7);m.hunter.state=HunterState.State.ATTACK;m.hunter.position=r.door_approach();m.hunter.cooldown=60;m.hunter.arcane.cooldown=0;m.hunter.target=r.index
+ var magic_hit=false
+ for i in range(200):
+  await drive(.05)
+  var found=false
+  for e in m.presentation_events:
+   if e.type=="door_damage" and e.get("damage_type","")=="magic" and float(e.get("damage",0))>0:found=true
+  if found:
+   magic_hit=true;break
+ check(magic_hit,"actual positive magical door impact captured")
+ await capture("05-magical-combat-720")
+ var source="res://docs/evidence/gameplay-overhaul/balance/earned-cursed_mansion.json";var hash_before=FileAccess.get_sha256(source);var data=JSON.parse_string(FileAccess.get_file_as_string(source))
+ game.return_menu();var profile=PlayerProfile.new("user://phase3-visual-earned-"+str(Time.get_ticks_usec())+".json");profile.tutorial_completed=true;profile.next_match_id=int(data.run_id)
+ profile.begin_endless(data.map,data.difficulty,int(data.seed));profile.replay.checkpoint=data.duplicate(true);profile.save_profile();game.profile=profile;check(game.resume_endless(),"actual legitimate checkpoint resume")
+ game.set_process(false);await click(find_button("Prepare defenses · frozen economy"));await advance(.3);game.ui.close_context();game.focus_camera(true);await advance(.3);await capture("04-earned-endless-sixteen-720")
+ m=game.model
+ var living=m.rooms.filter(func(room):return room.owner>0 and room.alive).size()
+ check(living==0,"earned checkpoint accurately has zero living AI teammates")
+ check(game.ui.teammates.toggle.text.contains("0/5"),"Team HUD matches real earned checkpoint")
+ print("WAVE45_STATE ",JSON.stringify({"living_teammates":living,"rooms":m.rooms.map(func(room):return {"owner":room.owner,"alive":room.alive,"door_hp":room.door_hp,"buildings":room.buildings.size()})}))
+ if phase=="after":
+  var high_tiles=m.player().buildings.keys()
+  high_tiles.sort_custom(func(a,b):return m.player().tile_position(a).y<m.player().tile_position(b).y)
+  for tile in high_tiles:
+   if m.player().buildings[tile].level==10:
+    await world_click(m.player().tile_position(tile));await advance(.35);check(game.ui.context_open and game.selected_tile==tile,"real high-level mouse selection");await capture("selected-high");await key(KEY_ESCAPE);check(not game.ui.context_open,"Escape closes high-level panel");break
+ check(FileAccess.get_sha256(source)==hash_before,"canonical checkpoint unchanged")
+ var f=FileAccess.open(output+phase+"/capture-notes.json",FileAccess.WRITE);f.store_string(JSON.stringify({"checks":checks,"failures":failures,"fixture":"Actual Godot4.6.3 c2d4a7a plus adaptive presentation pass. Early/upgrade/combat use controlled seating and temporary demonstration wallets; real build/upgrade/hit APIs. LateEndless resumes read-only genuine earned wave45 checkpoint, no canonical fields changed. Not human or native Windows testing."}," "))
+ game.audio_system.shutdown();await create_timer(.3).timeout;game.queue_free();await create_timer(.2).timeout;quit(1 if failures else 0)
+
+func capture(name):
+ if phase=="after" and name=="03-physical-combat-720":await advance(.45)
+ var names={"03-physical-combat-720":"A-before-crowded-720"} if phase=="before" else {"03-physical-combat-720":"B-after-crowded-720","07-crowded-combat-1080":"E-crowded-1080","08-crowded-team-identification-720":"F-team-cluster-720","04-earned-endless-sixteen-720":"C-endless-wave45-720","selected-high":"D-selected-high-720"}
+ if names.has(name):await super.capture(names[name])

@@ -648,6 +648,10 @@ func update_match():
  guide_label.visible=guide_box.visible
  if guide_label.visible: guide_label.text=feedback_text if game.presentation.clock<feedback_until else tutorial_text()
  var threat=room!=null and (m.hunter.target==room.index and m.hunter.state==HunterState.State.ATTACK or m.minions.any(func(u):return u.hp>0 and u.target==room.index and u.position.distance_to(room.door_approach())<=3))
+ # Routine positive feedback yields to real danger; errors and requested Help
+ # remain visible. Existing selection/upgrade pulse still confirms the action.
+ if threat and not help_open and feedback_text in ["Defense improved!","Building sold · 50% gold and electricity refunded."]:
+  guide_box.visible=false;guide_label.visible=false
  warning_box.visible=threat or game.level_warning_time>0 or m.wrath.active()
  warning_label.visible=warning_box.visible
  if not threat and game.level_warning_time>0: warning_label.text="THE HUNTER GROWS STRONGER · LEVEL %d" % m.hunter.level

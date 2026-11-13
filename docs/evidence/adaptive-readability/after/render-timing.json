@@ -1,0 +1,17 @@
+{
+ "rows": [
+  {
+   "frames": 40,
+   "mean_redraw_wait_ms": 36.149,
+   "p95_redraw_wait_ms": 44.302,
+   "source": "baseline_c2d4a7a"
+  },
+  {
+   "frames": 40,
+   "mean_redraw_wait_ms": 33.528675,
+   "p95_redraw_wait_ms": 38.797,
+   "source": "adaptive"
+  }
+ ],
+ "scope": "Same frozen crowded snapshot, DormPresentation before/after, 10 warmups +40 forced redraw waits each. Interface/map presentation shared. Linux Mesa llvmpipe, Dummy audio; sequential noisy shared machine; not whole-game FPS, Windows, long-run or statistical benchmark."
+}

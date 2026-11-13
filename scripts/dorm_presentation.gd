@@ -7,6 +7,9 @@ var textures: Dictionary = {}
 var cartoon: Dictionary = {}
 var prestige_art: Dictionary={}
 var all_rooms=true
+var ally_group: Array=[]
+var ally_pending: Array=[]
+var ally_pending_since=0.0
 var item_presentation=preload("res://scripts/item_presentation.gd").new()
 var wrath_presentation=preload("res://scripts/wrath_presentation.gd").new()
 var boss_presentation=preload("res://scripts/boss_presentation.gd").new()
@@ -74,6 +77,7 @@ func _init():
  for name in ["hunter_idle","hunter_move","hunter_attack","hunter_hurt","hunter_death"]: textures[name]=cartoon[name]
 
 func reset():
+ ally_group.clear();ally_pending.clear();ally_pending_since=0.0
  wrath_presentation.reset()
  identity.reset()
  fear_rooms.clear();seen_deaths.clear();strike_events.clear();attack_pose=0
@@ -590,9 +594,7 @@ func prestige(c,point: Vector2,level: int,kind="turret",detailed=false):
  if level==10:
   c.draw_colored_polygon(PackedVector2Array([point+Vector2(-16,-28),point+Vector2(-18,-42),point+Vector2(-7,-34),point+Vector2(0,-45),point+Vector2(7,-34),point+Vector2(18,-42),point+Vector2(16,-28)]),Color(color,.85 if detailed else .55))
   if not reduced and detailed:c.draw_arc(point,28,sin(clock)*.2,PI+sin(clock)*.2,24,Color(color,.4),2)
- var width=44 if detailed else 24
- c.draw_style_box(frame(Color("172338"),color,2),Rect2(point+Vector2(-width*.5,16),Vector2(width,12)))
- text(c,"L%d%s" % [level," MAX" if level==10 else ""] if detailed else str(level),point+Vector2(-18 if detailed else -6,25),8,color)
+ prestige_badge(c,point,level,detailed)
 
 func support_prestige(c,point: Vector2,level: int,branch: String="",detailed=false,show_branch=true):
  var color=Color("E9B866") if level==10 else Color("9DD4C3")
@@ -600,9 +602,21 @@ func support_prestige(c,point: Vector2,level: int,branch: String="",detailed=fal
  c.draw_arc(point+Vector2(0,2),25,PI*.1,PI*.9,20,ornament,2)
  for side in [-1,1]:c.draw_line(point+Vector2(side*20,-18),point+Vector2(side*27,-29),ornament,3)
  if branch!="" and show_branch:c.draw_texture_rect(PremiumButton.texture(branch),Rect2(point+Vector2(13,-33),Vector2(19,19)),false)
- var width=46 if detailed else 24
- c.draw_style_box(frame(Color("172338"),color,2),Rect2(point+Vector2(-width*.5,18),Vector2(width,12)))
- text(c,"L%d%s" % [level," MAX" if level==10 else ""] if detailed else str(level),point+Vector2(-20 if detailed else -6,27),8,color)
+ prestige_badge(c,point,level,detailed)
+
+func prestige_badge(c,point: Vector2,level: int,detailed: bool):
+ var value="L%d%s" % [level," MAX" if level==10 else ""] if detailed else str(level)
+ var color=Color("E9B866") if level==10 else Color("B6D5D2")
+ var width=font.get_string_size(value,HORIZONTAL_ALIGNMENT_LEFT,-1,8).x+12
+ var badge=Rect2(point+Vector2(-width/2,16),Vector2(width,12))
+ # Door HP outranks a prestige badge in tightly packed expanded rooms.
+ for room in c.model.rooms:
+  if room.owner<0:continue
+  var normal=room.door_normal()
+  var hp=OFFSET+room.door_position()+(Vector2(40,-25) if absf(normal.x)<.5 else Vector2(-35,50))
+  if badge.intersects(Rect2(hp+Vector2(-4,-20),Vector2(80,46))):badge.position.y-=18
+ c.draw_style_box(frame(Color("101A24"),color if detailed else Color("76867C"),3),badge)
+ text(c,value,badge.position+Vector2(6,9),8,color)
 
 func selection_outline(c,point: Vector2):
  var color=Color("E2C68B")
@@ -637,13 +651,14 @@ func resident_label_layout(c) -> Array:
  if c.get("horror")!=null:
   for number in c.horror.damage_numbers:blockers.append(c.horror.damage_number_geometry(c,number).rect.grow(4))
  candidates.sort_custom(func(a,b):return a.priority<b.priority if a.priority!=b.priority else a.index<b.index)
+ candidates=adaptive_allies(candidates)
  var canvas=c.get_canvas_transform()
  var viewport=c.get_viewport_rect().size
  var safe=Rect2(12,150,viewport.x-24,viewport.y-225)
  var labels=[]
  for actor in candidates:
   var width=font.get_string_size(actor.name,HORIZONTAL_ALIGNMENT_LEFT,-1,10).x+12
-  var lane=posmod(actor.index-1,5)
+  var lane=0 if actor.get("group",false) else posmod(actor.index-1,5)
   for side in [30.0,105.0,180.0,-width-30.0,-width-105.0,-width-180.0]:
    var rect=Rect2(actor.point+Vector2(side,-47-lane*23),Vector2(width,16))
    var screen=Rect2(canvas*rect.position,rect.size*canvas.get_scale())
@@ -651,7 +666,7 @@ func resident_label_layout(c) -> Array:
    if c.ui.context_open and screen.end.y>430:continue
    if c.ui.teammates.expanded and screen.end.x>915:continue
    if blockers.any(func(block):return rect.grow(3).intersects(block)):continue
-   labels.append({"index":actor.index,"name":actor.name,"rect":rect,"point":actor.point,"priority":actor.priority})
+   labels.append({"index":actor.index,"name":actor.name,"rect":rect,"point":actor.point,"priority":actor.priority,"group":actor.get("group",false)})
    blockers.append(rect.grow(3))
    break
  return labels
@@ -663,3 +678,33 @@ func render_resident_labels(c):
   c.draw_line(label.point+Vector2(0,-38),anchor,Color(.7,.73,.7,.35),1)
   c.draw_style_box(frame(Color("17212B"),Color("9C8A67") if label.priority<2 else Color("4D5B62"),3),rect)
   text(c,label.name,rect.position+Vector2(6,11),10,Color("E8DEC9"))
+
+
+func adaptive_allies(candidates: Array) -> Array:
+ # Only five teammates. Separate enter/leave radii plus time holds prevent
+ # mode chatter; identity lanes are unchanged outside genuinely dense groups.
+ var eligible=candidates.filter(func(a):return a.priority>=2)
+ eligible.sort_custom(func(a,b):return a.index<b.index)
+ var proposed=[]
+ for anchor in eligible:
+  var radius=96.0 if ally_group.has(anchor.index) else 58.0
+  var nearby=eligible.filter(func(a):return a.point.distance_to(anchor.point)<=radius)
+  var needed=2 if ally_group.has(anchor.index) else 3
+  if nearby.size()>=needed:
+   proposed=nearby.map(func(a):return a.index);break
+ # Long identity lanes in a two-actor cluster also warrant a compact label.
+ if proposed.is_empty():
+  for anchor in eligible:
+   var nearby=eligible.filter(func(a):return a.point.distance_to(anchor.point)<42)
+   if nearby.size()==2 and nearby.any(func(a):return posmod(a.index-1,5)>=3):
+    proposed=nearby.map(func(a):return a.index);break
+ if proposed!=ally_pending:ally_pending=proposed;ally_pending_since=clock
+ if clock-ally_pending_since>=(.8 if proposed.is_empty() else .35):ally_group=proposed.duplicate()
+ var members=eligible.filter(func(a):return ally_group.has(a.index))
+ if members.size()<2:return candidates
+ var center=Vector2.ZERO
+ for actor in members:center+=actor.point
+ center/=members.size()
+ var result=candidates.filter(func(a):return not members.any(func(b):return b.index==a.index))
+ result.append({"index":members[0].index,"point":center,"name":"ALLIES ×%d" % members.size(),"priority":2,"group":true})
+ return result

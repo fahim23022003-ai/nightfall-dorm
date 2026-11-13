@@ -1,0 +1,34 @@
+extends "res://tools/capture_overhaul_combat.gd"
+func run():
+ output="/workspace/adaptive-clarity/";phase="after";root.size=Vector2i(1280,720)
+ await setup_game();game.onboarding.close_welcome();game.return_menu();game.start_stage("stage_1","standard");game.set_process(false);game.tutorial_enabled=false
+ var m=game.model;m.player_position=m.rooms[0].center();m.claim_room(0);m.player_position=m.player().bed_position();m.sleep_player()
+ var r=m.player();r.gold=200;r.electricity=30
+ r.build("turret",9);r.build("generator",0);r.build("repair",1)
+ game.ui.close_context();game.focus_camera(true);await drive(.65)
+ m.time=m.preparation+9;m.hunter.boss_policy.enabled=false;m.hunter.target=r.index;m.hunter.position=r.door_approach();m.hunter.state=HunterState.State.ATTACK;m.hunter.cooldown=0;m.hunter.tactical_cooldown=60;m.hunter.arcane.cooldown=60
+ var hp=r.door_hp
+ for i in range(40):
+  await drive(.05)
+  if r.door_hp<hp:break
+
+ await advance(.45)
+ await probe()
+ game.audio_system.shutdown();game.queue_free();await create_timer(.2).timeout;quit()
+
+func probe():
+ var current=game.presentation;var prior=load("/tmp/adaptive_baseline_presentation.gd").new();var rows=[]
+ for label in ["baseline_c2d4a7a","adaptive"]:
+  game.presentation=prior if label=="baseline_c2d4a7a" else current
+  game.presentation.update(.01,game.model)
+  for i in range(10):game.queue_redraw();await RenderingServer.frame_post_draw
+  var samples=[]
+  for i in range(40):
+   var start=Time.get_ticks_usec();game.queue_redraw();await RenderingServer.frame_post_draw;samples.append((Time.get_ticks_usec()-start)/1000.0)
+  samples.sort();var total=0.0
+  for n in samples:total+=n
+  rows.append({"source":label,"frames":40,"mean_redraw_wait_ms":total/40,"p95_redraw_wait_ms":samples[37]})
+ game.presentation=current
+ var f=FileAccess.open("/workspace/adaptive-clarity/after/render-timing.json",FileAccess.WRITE)
+ f.store_string(JSON.stringify({"rows":rows,"scope":"Same frozen crowded snapshot, DormPresentation before/after, 10 warmups +40 forced redraw waits each. Interface/map presentation shared. Linux Mesa llvmpipe, Dummy audio; sequential noisy shared machine; not whole-game FPS, Windows, long-run or statistical benchmark."}," "))
+ print("RENDER_PROBE ",JSON.stringify(rows))
