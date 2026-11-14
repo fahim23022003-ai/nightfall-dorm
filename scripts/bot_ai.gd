@@ -3,6 +3,8 @@ extends RefCounted
 # Autonomous budgets retain original L4 machines/L5 structures; player late tiers are optional investments.
 
 static func tick(room: RoomState, delta: float):
+ if room.balance_version==2:
+  earned_tick(room,delta);return
  if not room.alive or not room.sleeping:
   return
  room.bot_timer = maxf(-delta,room.bot_timer-delta)
@@ -91,3 +93,27 @@ static func upgrade_structure(room,kind: String) -> bool:
  var branch=room.bed_branch if kind=="bed" else room.door_branch
  if room.strategy_enabled and level==4 and branch=="":return room.specialize_structure(kind,"lucid" if kind=="bed" else "bulwark")
  return room.upgrade_bed() if kind=="bed" else room.upgrade_door()
+
+static func earned_tick(r,delta):
+ if not r.alive or not r.sleeping:return
+ r.bot_timer-=delta
+ if r.bot_timer>0:return
+ r.bot_timer=1.2
+ if r.door_hp<r.max_hp()*.35:
+  if upgrade_structure(r,"door") or r.repair_door():return
+ if not has_kind(r,"turret") and build_first_empty(r,"turret"):return
+ if r.bed_level<1 and upgrade_structure(r,"bed"):return
+ if r.door_level<1 and upgrade_structure(r,"door"):return
+ if not has_kind(r,"generator"):
+  build_first_empty(r,"generator");return
+ var cap=mini(8,2+int(r.occupied_seconds/180))
+ if r.bed_level<cap and r.bed_level<=r.door_level+1 and upgrade_structure(r,"bed"):return
+ if r.door_level<cap and upgrade_structure(r,"door"):return
+ for kind in ["repair","heavy","economy","enhancer"]:
+  if not has_kind(r,kind) and build_first_empty(r,kind):return
+ for id in r.buildings:
+  var b=r.buildings[id]
+  if b.level>=mini(8,r.bed_level+2) or BalanceRules.requirement(b.kind,b.level,r.bed_level,r.door_level,2)!="":continue
+  if b.level==4:r.specialize_building(id,StrategyCatalog.branches(b.kind)[0])
+  else:r.upgrade_building(id)
+  return

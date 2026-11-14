@@ -53,7 +53,9 @@ func purchase_reason(kind: String,point: Vector2) -> String:
  var error=geometry_reason(point)
  if error!="":return error
  if kind=="heavy" and r.bed_level<1:return "Arc turret requires bed level 2"
- var price=r.building_price(Catalog.BUILDINGS[kind].gold,Catalog.BUILDINGS[kind].power)
+ var need=BalanceRules.build_requirement(kind,r)
+ if need!="":return need
+ var price=r.quote_build(kind)
  if r.gold+.00001<price.x:return "Insufficient Gold"
  if r.electricity+.00001<price.y:return "Insufficient Electricity"
  return ""

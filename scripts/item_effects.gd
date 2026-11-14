@@ -125,6 +125,7 @@ func apply(id: String,model):
    timers[id]=model.hunter.cooldown
   "cursed_fortune":
    room.gold+=ItemCatalog.TUNING.fortune_gold
+   room.ledger.note("other",[ItemCatalog.TUNING.fortune_gold,0],"Cursed Fortune item")
    value=ItemCatalog.TUNING.fortune_gold
    timers[id]=ItemCatalog.TUNING.curse_seconds
   "barricade": timers[id]=ItemCatalog.TUNING.barricade_seconds
@@ -152,8 +153,8 @@ func apply(id: String,model):
   "repair":
    value=minf(room.max_hp()-room.door_hp,room.max_hp()*ItemCatalog.TUNING.repair_fraction)
    room.door_hp+=value
-  "gold": room.gold+=ItemCatalog.TUNING.gold; value=ItemCatalog.TUNING.gold
-  "battery": room.electricity+=ItemCatalog.TUNING.battery; value=ItemCatalog.TUNING.battery
+  "gold": room.gold+=ItemCatalog.TUNING.gold; value=ItemCatalog.TUNING.gold;room.ledger.note("other",[value,0],"Gold item")
+  "battery": room.electricity+=ItemCatalog.TUNING.battery; value=ItemCatalog.TUNING.battery;room.ledger.note("other",[0,value],"Battery item")
   "radar": timers[id]=ItemCatalog.TUNING.radar_seconds
   "shield": timers[id]=ItemCatalog.TUNING.shield_seconds; shield_hp=room.max_hp()*ItemCatalog.TUNING.shield_fraction; value=shield_hp
   "overdrive": timers[id]=ItemCatalog.TUNING.overdrive_seconds

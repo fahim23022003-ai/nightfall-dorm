@@ -1,3 +1,38 @@
+# Phase 12 — Earned Power (implementation checkpoint; verification in progress)
+
+Started clean on work at `b2f78fa46ebdbe0a12f4e7a15f09ce1631d98e5f`.
+No main changes. Do not restart or overwrite Phase11/earned checkpoint evidence.
+
+Baseline120 actual-production cases (20seeds ×3strategies ×Campaign/Endless)
+complete: literal1B in5min NOT reproduced. Highest observed wallet through20min
+1,036,749.88G. All60 Campaign won; all60 Endless survived20min under these
+nonoptimal scripted strategies. First machine10 in Endless: greedy335–359s,
+balanced508–536s, defense597–651s. Dynamo23–29s. Raw baseline evidence preserved.
+
+Implemented for NEW runs: version2 connected bed/door/machine/Dynamo economy,
+stronger late prerequisites, bounded diminishing amplifier/relay stacking, paid
+repair upkeep with visible grid reserve. Legacy version1 retains existing owned
+wealth/buildings/rules. Optional12 curated run perks and three limited-stock
+merchant offers share intermission workflow. Separate deterministic drafts,
+current-run stock, transaction rollback and anti-reload activation journal.
+Bounded sustained-siege pressure independent of wallets; no new retreat/heal loop.
+Flow ledger separates actual production/other/spend/refund/loss; wave report tabs
+show flow accounting. New actual Game Campaign/Endless/tutorial/Practice selectv2;
+fixed Challenge rules remain legacy and separately identified.
+
+Core67 focused checks pass. First initial12 freshv2 simulations show earned
+Dynamo~105s, meaningful unmet infrastructure at10min. Final20seed principal
+strategy matrix, full regular/extended regressions, actual input/save-restart,
+rendered review,5–10min recording and Windows export are IN PROGRESS.
+Do not claim completion/push/native Windows/human enjoyment yet.
+
+Next: finish tests and repair confirmed issues; inspect real UI; collect matched
+fresh-v1/v2 and strong-pressure/counter evidence, run perk+merchant interactions;
+review balance distributions and legal top-tier reachability; update final report,
+export portable Windows, commit and verify authorized work push. No public release.
+
+---
+
 # Phase 11 — First Night Experience & Player-Ready Polish
 
 Baseline work: `a075a924a1514c0585b8a8ce30d002195f01dc28`.

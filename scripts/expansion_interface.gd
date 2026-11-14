@@ -28,7 +28,7 @@ func refresh():
  for control in controls:control.visible=active
  if not active:return
  ui.context_title.text="ENDLESS ROOM · PHYSICAL EXPANSION"
- var tier=r.expansion_tier;var next=mini(7,tier+1);var cost=RoomExpansion.COSTS[next];var reason=m.expansion.reason(m,r.index)
+ var tier=r.expansion_tier;var next=mini(7,tier+1);var cost=BalanceRules.expansion(next,r.balance_version);var reason=m.expansion.reason(m,r.index)
  info.text="%s · capacity %d buildings\n%s\n%s\nExisting buildings, doorway and occupied bed stay in place.\nExpansion is permanent for this run; machine coupons stay armed." % [RoomExpansion.NAMES[tier],r.tile_count(),"ULTIMATE CAPACITY · 16 BUILDINGS" if tier>=7 else "Next: %s · capacity %d" % [RoomExpansion.NAMES[next],RoomExpansion.SLOTS[next]],reason if reason!="" else "Ready · %.0f Gold + %.0f Electricity" % [cost.x,cost.y]]
  purchase_button.text="MAXIMUM ROOM" if tier>=7 else "Expand — %.0f Gold / %.0f Electricity" % [cost.x,cost.y]
  purchase_button.disabled=reason!="";purchase_button.tooltip_text=reason if reason!="" else "Pay once to physically extend this room and increase capacity and unlock the new floor."

@@ -3,6 +3,9 @@ extends RefCounted
 
 signal presentation_action(type: String, data: Dictionary)
 
+var balance_version=1
+var ledger=EconomyLedger.new()
+var run_effects={}
 var layout: Dictionary={}
 var expansion_tier=-1
 var spatial: SpatialConstruction
@@ -65,6 +68,10 @@ func apply_trait(id: String) -> bool:
  trait_id=id;trait_modifiers=StrategyCatalog.TRAITS[id]
  door_hp+=max_hp()-old_max
  return true
+func base_price(kind: String) -> Vector2:
+ return BalanceRules.price(kind,balance_version)*float(run_effects.get("infrastructure_discount",1.0) if kind in ["generator","economy"] else 1.0)
+func quote_build(kind: String) -> Vector2:
+ var value=base_price(kind);return building_price(value.x,value.y)
 func building_price(g: float,e: float) -> Vector2:
  return Vector2(g,e)*(ItemCatalog.TUNING.coupon_factor if coupon_armed else 1.0)
 func spend_coupon(saved: Vector2=Vector2.ZERO) -> bool:
@@ -76,6 +83,7 @@ func spend_coupon(saved: Vector2=Vector2.ZERO) -> bool:
 
 func apply_boosts(boosts: Dictionary):
  gold+=boosts.get("gold",0.0)
+ ledger.note("other",[boosts.get("gold",0.0),0],"permanent opening perk")
  var old_max=max_hp()
  door_multiplier=boosts.get("door",1.0)
  door_hp+=max_hp()-old_max
@@ -93,6 +101,7 @@ func try_rescue() -> bool:
 
 func _init(number: int = 0):
  index = number
+ ledger.owner=weakref(self)
 
 func survivor_name() -> String:
  return Catalog.SURVIVOR_NAMES[clampi(owner,0,Catalog.SURVIVOR_NAMES.size()-1)]
@@ -146,13 +155,13 @@ func max_hp() -> float:
  return Catalog.DOOR_HP[door_level]*door_multiplier*trait_modifiers.door*StrategyCatalog.BRANCHES.get(door_branch,{}).get("hp",1.0)
 
 func income_rate() -> float:
- var factor = 1.0
+ var raw = 0.0
  for building in buildings.values():
   if building.kind == "economy":
-   factor += Catalog.support_output("economy",building.level)*StrategyCatalog.support(building).get("output",1.0)
- return Catalog.BED_INCOME[bed_level] * factor * income_multiplier * trait_modifiers.income * temporary_income*threat_income_factor*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("income",1.0)*special_factor("income",.35,1.0) if sleeping and alive and not production_paused else 0.0
+   raw += BalanceRules.output("economy",building.level,balance_version)*StrategyCatalog.support(building).get("output",1.0)
+ return BalanceRules.income(bed_level,balance_version) * BalanceRules.amplifier(raw,balance_version) * float(run_effects.get("income",1.0)) * income_multiplier * trait_modifiers.income * temporary_income*threat_income_factor*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("income",1.0)*special_factor("income",.35,1.0) if sleeping and alive and not production_paused else 0.0
 
-func pay(g: float, e: float = 0.0) -> bool:
+func pay(g: float, e: float = 0.0,source: String="defense / infrastructure") -> bool:
  if not is_finite(g) or not is_finite(e) or g < 0 or e < 0:
   return false
  if gold + 0.00001 < g or electricity + 0.00001 < e:
@@ -160,6 +169,7 @@ func pay(g: float, e: float = 0.0) -> bool:
  gold -= g
  electricity -= e
  spent += g
+ ledger.note("spent",[g,e],source)
  return true
 
 func reject(reason: String) -> bool:
@@ -174,9 +184,9 @@ func upgrade_bed() -> bool:
   return reject("Bed is at maximum level.")
  if door_level < maxi(0,bed_level-1):
   return reject("Requires door level %d." % maxi(1,bed_level))
- if not afford(Catalog.BED_COST[bed_level],Catalog.BED_POWER[bed_level]):
+ if not afford(BalanceRules.structure("bed",bed_level,balance_version).x,BalanceRules.structure("bed",bed_level,balance_version).y):
   return false
- pay(Catalog.BED_COST[bed_level],Catalog.BED_POWER[bed_level])
+ pay(BalanceRules.structure("bed",bed_level,balance_version).x,BalanceRules.structure("bed",bed_level,balance_version).y)
  bed_level += 1
  presentation_action.emit("bed_upgrade",{})
  return true
@@ -191,9 +201,9 @@ func upgrade_door() -> bool:
   return reject("Door is at maximum level.")
  if bed_level < maxi(0,door_level-1):
   return reject("Requires bed level %d." % maxi(1,door_level))
- if not afford(Catalog.DOOR_COST[door_level],Catalog.DOOR_POWER[door_level]):
+ if not afford(BalanceRules.structure("door",door_level,balance_version).x,BalanceRules.structure("door",door_level,balance_version).y):
   return false
- pay(Catalog.DOOR_COST[door_level],Catalog.DOOR_POWER[door_level])
+ pay(BalanceRules.structure("door",door_level,balance_version).x,BalanceRules.structure("door",door_level,balance_version).y)
  var old_max = max_hp()
  door_level += 1
  door_hp += max_hp()-old_max
@@ -209,7 +219,7 @@ func repair_door() -> bool:
   return reject("Door already has full health.")
  if not afford(manual_repair_cost()):
   return false
- pay(manual_repair_cost())
+ pay(manual_repair_cost(),0,"manual repair");ledger.totals.repair_g+=manual_repair_cost()
  repair_actions+=1
  var before_repair=door_hp
  door_hp = minf(max_hp(),door_hp+Catalog.REPAIR_HEAL*repair_factor*StrategyCatalog.BRANCHES.get(door_branch,{}).get("repair",1.0))
@@ -241,12 +251,13 @@ func _purchase_building(kind: String,tile: int,point: Vector2=Vector2.INF) -> bo
  if buildings.has(tile):
   return reject("Tile occupied. Select an empty tile or upgrade this building.")
  var data = Catalog.BUILDINGS[kind]
- if kind == "heavy" and bed_level < 1:
-  return reject("Arc turret requires bed level 2.")
- var price=building_price(data.gold,data.power)
+ var needed=BalanceRules.build_requirement(kind,self)
+ if needed!="":return reject(needed)
+ var base_price=base_price(kind)
+ var price=building_price(base_price.x,base_price.y)
  if not afford(price.x,price.y):
   return false
- if not spend_coupon(Vector2(data.gold,data.power)-price): return false
+ if not spend_coupon(base_price-price): return false
  if not pay(price.x,price.y): return reject("Purchase could not be paid.")
  var instance=int(construction_actions)+1
  for b in buildings.values():instance=maxi(instance,int(b.get("instance_id",0))+1)
@@ -275,10 +286,10 @@ func _upgrade_building(tile: int,branch: String) -> bool:
   return reject("Select an existing building to upgrade.")
  var b = buildings[tile]
  if strategy_enabled and Catalog.BUILDINGS.has(b.kind) and b.level==4 and branch=="":return reject("Choose ONE specialization to advance to level5.")
- var requirement=Catalog.upgrade_requirement(b.kind,b.level,bed_level,door_level)
+ var requirement=BalanceRules.requirement(b.kind,b.level,bed_level,door_level,balance_version)
  if requirement!="":return reject(requirement)
  var data = Catalog.BUILDINGS[b.kind]
- var list_price=Catalog.upgrade_cost(b.kind,b.level)
+ var list_price=BalanceRules.upgrade(b.kind,b.level,balance_version)
  if branch!="":list_price+=StrategyCatalog.BRANCH_FEE
  var price=building_price(list_price.x,list_price.y)
  if not afford(price.x,price.y):
@@ -317,6 +328,7 @@ func sell_building(tile: int) -> bool:
  buildings.erase(tile)
  gold+=refund.x
  electricity+=refund.y
+ ledger.note("refund",refund,"sold actual paid building")
  presentation_action.emit("sale",{"gold":refund.x,"power":refund.y,"tile":tile})
  last_error=""
  return true
@@ -328,22 +340,32 @@ func tick_economy(delta: float,dynamo_factor: float=1.0,bed_factor: float=1.0):
  income*=clampf(bed_factor,.8,1.0)
  gold += income
  income_total += income
+ ledger.note("production",[income,0],"occupied bed and actual production modifiers")
  damage_flash = maxf(0,damage_flash-delta)
  if not alive or not sleeping:
   return
  if not production_paused:
-  var produced=threat_power_factor*Catalog.BED_INCOME[bed_level]*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("power_rate",0.0)*delta
+  var produced=threat_power_factor*BalanceRules.income(bed_level,balance_version)*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("power_rate",0.0)*delta
   electricity+=produced;generated_power+=produced
+  ledger.note("production",[0,produced],"bed / Dynamo")
  for b in buildings.values():
   b.flash = maxf(0,b.flash-delta)
   if b.kind == "generator" and not production_paused:
-   var produced=clampf(dynamo_factor,0.5,1.0)*threat_power_factor*Catalog.support_output("generator",b.level)*StrategyCatalog.support(b).get("output",1.0)*delta*power_multiplier*trait_modifiers.power*special_factor("power",.55,1.5)*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("power",1.0)
+   var produced=clampf(dynamo_factor,0.5,1.0)*threat_power_factor*BalanceRules.output("generator",b.level,balance_version)*StrategyCatalog.support(b).get("output",1.0)*delta*float(run_effects.get("power",1.0))*power_multiplier*trait_modifiers.power*special_factor("power",.55,1.5)*StrategyCatalog.BRANCHES.get(bed_branch,{}).get("power",1.0)
    electricity+=produced;generated_power+=produced
+   ledger.note("production",[0,produced],"Dynamo")
   elif b.kind == "repair" and door_hp > 0:
    var branch=StrategyCatalog.support(b)
-   var cost=branch.get("power_cost",0.0)*b.level*delta
-   if electricity>=cost:
+   var cost=maxf(.35 if balance_version==2 else 0,branch.get("power_cost",0.0))*b.level*delta
+   if balance_version==2 and door_hp>=max_hp():cost=0
+   var reserve=0.0
+   if balance_version==2:
+    reserve=8.0
+    for generator in buildings.values():
+     if generator.kind=="generator" and generator.level<10:reserve=maxf(reserve,minf(40,BalanceRules.upgrade("generator",generator.level,2).y))
+   if cost==0 or electricity>=cost+reserve:
     electricity-=cost
+    ledger.note("spent",[0,cost],"repair station upkeep")
     var previous_hp=door_hp
     door_hp=minf(max_hp(),door_hp+Catalog.support_output("repair",b.level)*branch.get("output",1.0)*delta*repair_factor)
     economy_repaired+=door_hp-previous_hp
@@ -354,7 +376,7 @@ func special_factor(key: String,low: float,high: float) -> float:
   if b.kind=={"income":"generator","power":"economy","range":"enhancer","interval":"enhancer","repair_cost":"repair"}.get(key,""):value+=float(StrategyCatalog.support(b).get(key,1.0))-1.0
  return clampf(value,low,high)
 func manual_repair_cost() -> float:
- return Catalog.REPAIR_COST*special_factor("repair_cost",.6,1.0)
+ return (12.0+door_level*2 if balance_version==2 else Catalog.REPAIR_COST)*(.85 if run_effects.get("rhythm",false) and door_hp<max_hp()*.5 else 1.0)*special_factor("repair_cost",.6,1.0)
 func specialize_structure(kind: String,id: String) -> bool:
  if kind not in ["bed","door"] or id not in StrategyCatalog.branches(kind) or not strategy_enabled or not alive:return reject("Choose an eligible structure branch.")
  if (bed_level if kind=="bed" else door_level)!=4 or (bed_branch if kind=="bed" else door_branch)!="":return reject("Choose once at structure level5.")

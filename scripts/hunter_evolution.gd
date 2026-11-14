@@ -70,6 +70,7 @@ func tick(delta: float,model):
    drain_clock+=delta
    if drain_clock>=20:
     drain_clock=fmod(drain_clock,20);var r=model.rooms[h.target];var g=minf(8,r.gold);var e=minf(2,r.electricity);r.gold-=g;r.electricity-=e
+    r.ledger.note("loss",[g,e],"Soul Drain evolution")
     model.record_event("soul_drain",h.target,{"gold":g,"power":e})
 func absorb(amount: float) -> float:
  amount*=.9 if has("iron_skin") else 1.0

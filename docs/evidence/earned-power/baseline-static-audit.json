@@ -1,0 +1,56 @@
+{
+  "source_commit": "b2f78fa46ebdbe0a12f4e7a15f09ce1631d98e5f",
+  "evidence_kind": "Read-only original-code audit before core edits; not a live human test",
+  "demonstrated": [
+    {
+      "location": "scripts/catalog.gd:16,72-75",
+      "fact": "Dynamo30Gold purchases1.5Electricity/s. Base economy amplifierL10 contributes2.45; Dividend1.3 multiplies contribution to3.185."
+    },
+    {
+      "location": "scripts/room_state.gd:148-153",
+      "fact": "Amplifier contributions add without diminishing returns, then multiply occupied bed base income and compatible independent modifiers. ThreeL10Dividend produce10.555x bed multiplier.",
+      "three_amp_multiplier": 10.555
+    },
+    {
+      "location": "scripts/catalog.gd:61-66",
+      "fact": "Advancing machinery to level10 requires bed/door only index3 (displayLevel4), not developed late infrastructure."
+    },
+    {
+      "location": "scripts/room_state.gd:324-340; scripts/item_effects.gd:188,215; scripts/match_model.gd:430",
+      "fact": "Production is delta-scaled, not wallet interest. Pillow bonus uses remaining-duration partial frame and expires. Endless intermission returns before time/economy tick."
+    },
+    {
+      "location": "scripts/bot_ai.gd",
+      "fact": "NPCs use actual room.pay economy, cap machines4/structures5, buy essentials then incremental goals. New dependency chains require updated shopping to avoid safe-failure deadlocks."
+    },
+    {
+      "location": "scripts/replay_snapshot.gd:123-126",
+      "fact": "Save validation computes invested-spend ceiling from currentCatalog. New-balance tuning must not validate legacy ledgers against new prices or silently convert old run outputs."
+    },
+    {
+      "location": "scripts/endless_run.gd:21-24; scripts/hunter_state.gd:375; scripts/hunter_evolution.gd:52",
+      "fact": "New wave resets combat actor, caps within-wave growth1/internal level2. Evolution persists separately, rises by waves to10. Wave HP\u2264100x/damage\u22649x/speed\u22641.25x plus difficulty/archetype; evolution does not add HP multiplier."
+    },
+    {
+      "location": "scripts/hunter_state.gd:404",
+      "fact": "EXIT is post-elimination navigation, not healing retreat. No current finite active recovery/retreat cycle exists."
+    }
+  ],
+  "relaxed_static_upper_bound": {
+    "all16_slots_fictionally_L10Dividend": true,
+    "all_other_max_income_modifiers_simultaneously": true,
+    "production_gold_per_second": 15578.988187499996,
+    "five_minute_production_gold": 4673696.456249999,
+    "limitations": "Not legal fresh build or observed result. Assumes instant max income, no cost/defense/generator slots, and permanent Pillow despite25s duration. Used only to show known ordinary production multipliers alone do not mathematically establish1B/5min; other transactions/bugs still need simulation."
+  },
+  "priority_tests": [
+    "all120 fresh strategy cases plus Strongest legal bonuses",
+    "delta/frame consistency inclPillow finalfraction; pause/intermission no production",
+    "no duplicate Coupon sale refund or undo investment",
+    "new ruleset vs legacy spent ledgers and outputs",
+    "same persisted three-option reward/merchant offers after reload and no gameplay RNG changes from music",
+    "one-charge protection genuine damage consumption, bounded retaliation no recursion",
+    "Hunter finite recovery cannot refill at transformations or become indefinite stalemate"
+  ],
+  "literal_five_minute_billion": "UNPROVEN pending production-code simulation; owner report remains a serious symptom, not assumed numerical fact"
+}

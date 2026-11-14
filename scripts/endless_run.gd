@@ -33,14 +33,19 @@ func _prepare_hunter(model,new_wave: bool):
  fresh.cooldown=1.5
  fresh.boss_policy={"enabled":boss_wave(wave),"opening":0.0,"hp_fraction":1.0,"deadline":0.0,"recovery":1.1}
  model.wrath=ReaperWrath.new();model.defenses.clear(model);model.clear_minions()
+ model.pressure=HunterPressure.new()
  model.hunter=fresh;model.strategy.archetype=fresh.archetype
  if new_wave:model.preparation=model.time+4
  wave_started_at=model.preparation
  model._navigation_routes.clear()
 func finish_wave(model):
  if phase!="combat" or model.hunter.hp>0 or model.player()==null or not model.player().alive:return
+ model.choices.finish(model)
  omen.finish(model)
  completed=wave;sealed_wave=completed;phase="intermission";choice_used=false
+ model.choices.prepare(model)
+ for r in model.rooms:r.ledger.reconcile(r,model.time)
+ if model.balance_version==2:model.wave_metrics.capture_flow(model.player())
  # These statuses belonged to the defeated entity. Paid room/weapon buffs carry
  # their remaining active-play durations; intermission does not advance them.
  for id in ["frost","time_freeze","decoy","smoke","reaper_seal"]:model.items.timers.erase(id)
@@ -53,10 +58,14 @@ func continue_wave(model,choice: String="repair") -> bool:
  if not choice_used:
   var r=model.player()
   if choice=="repair" and r.door_hp>0:r.door_hp=minf(r.max_hp(),r.door_hp+r.max_hp()*.1)
-  elif choice=="supply":r.gold=minf(1e12,r.gold+25)
-  elif choice=="power":r.electricity=minf(1e12,r.electricity+5)
+  elif choice=="supply":
+   var value=minf(25,1e12-r.gold);r.gold+=value;r.ledger.note("other",[value,0],"Salvage wave aid")
+  elif choice=="power":
+   var value=minf(5,1e12-r.electricity);r.electricity+=value;r.ledger.note("other",[0,value],"Recharge wave aid")
   choice_used=true
+ model.choices.draft=[]
  model.wave_metrics.reset()
+ if model.balance_version==2:model.wave_metrics.data.flow_start=model.player().ledger.totals.duplicate(true)
  omen.begin(model)
  model.combat_events.clear();model.presentation_events.clear()
  wave+=1;phase="combat";_prepare_hunter(model,true)

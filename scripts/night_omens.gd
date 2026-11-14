@@ -43,6 +43,7 @@ func finish(model):
  if active in IDS and active_wave==wave and paid_wave<wave and model.player()!=null and model.player().alive and model.hunter.hp<=0:
   var room=model.player();var gold=maxf(0,minf(reward.x,1e12-room.gold));var power=maxf(0,minf(reward.y,1e12-room.electricity))
   room.gold+=gold;room.electricity+=power;paid_wave=wave
+  room.ledger.note("other",[gold,power],"survived Omen: "+active)
   last={"id":active,"wave":wave,"gold":gold,"power":power}
  active="";selected="";reward=Vector2.ZERO
 func snapshot() -> Dictionary:return {"selected":selected,"reward":[reward.x,reward.y],"paid_wave":paid_wave,"last":last.duplicate(true)}

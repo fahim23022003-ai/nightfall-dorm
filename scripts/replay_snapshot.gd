@@ -29,10 +29,12 @@ static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  var run=model.endless
  if model.run_kind!="endless" or run==null or run.phase!="intermission" or run.completed!=run.sealed_wave or model.hunter.hp>0 or model.player()==null or not model.player().alive:return {}
  var data={"version":SCHEMA,"ruleset":RULESET,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"expansion":model.expansion.snapshot(model),"evolution":model.evolution.snapshot(),"defense_refractory":model.defenses.shield_cooldowns.duplicate(true),"repair_refractory":model.defenses.repair_cooldowns.duplicate(true),"lure_refractory":model.defenses.lure_cooldown,"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
+ data.balance_version=model.balance_version
+ if model.balance_version==2:data.run_choices=model.choices.snapshot()
  data.wave_metrics=model.wave_metrics.data.duplicate(true)
  data.omen=run.omen.snapshot()
  for room in model.rooms:
-  var saved={"owner":room.owner,"profile":room.profile,"bed_branch":room.bed_branch,"door_branch":room.door_branch,"trait":room.trait_id,"position":pair(room.resident_position),"main_damage":room.main_damage_dealt,"minion_damage":room.minion_damage_dealt,"buildings":[]}
+  var saved={"owner":room.owner,"profile":room.profile,"bed_branch":room.bed_branch,"door_branch":room.door_branch,"trait":room.trait_id,"position":pair(room.resident_position),"ledger":room.ledger.snapshot(),"main_damage":room.main_damage_dealt,"minion_damage":room.minion_damage_dealt,"buildings":[]}
   for key in ROOM_NUMBERS+ROOM_FLAGS:saved[key]=room.get(key)
   if room.spatial!=null:saved.construction=room.spatial.snapshot()
   saved.magic_state=room.magic_state.duplicate(true)
@@ -51,6 +53,8 @@ static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  data.items.trap={"position":pair(fx.trap.position),"remaining":fx.trap.remaining} if not fx.trap.is_empty() else {}
  return data if valid(data) else {}
 static func valid(data) -> bool:
+ if not data is Dictionary or not whole(data.get("balance_version",1),1,2):return false
+ if data.get("balance_version",1)==2 and not RunChoices.valid(data.get("run_choices"),int(data.get("completed",0))):return false
  if not data is Dictionary or not whole(data.get("version"),1,SCHEMA) or not whole(data.get("ruleset"),1,RULESET) or data.get("map","") not in MapCatalog.IDS or data.get("difficulty","") not in RankCatalog.DIFFICULTIES:return false
  if (data.version==1 and data.ruleset>LEGACY_RULESET_MAX) or (data.version==SCHEMA and data.ruleset!=RULESET):return false
  for key in ["run_id","seed","completed"]:
@@ -85,6 +89,7 @@ static func valid(data) -> bool:
   if room.owner>=0:
    if room.owner in owners:return false
    owners.append(room.owner)
+  if room.has("ledger") and not EconomyLedger.valid(room.ledger):return false
   if not number(room.get("main_damage",0)) or not number(room.get("minion_damage",0)):return false
   for key in ROOM_NUMBERS:
    if not number(room.get(key)):return false
@@ -120,8 +125,9 @@ static func valid(data) -> bool:
    var branch=b.specialization
    if branch!="" and (branch not in StrategyCatalog.branches(b.kind) or b.level<5):return false
    if b.level>=5 and branch=="":return false
-   var ceiling=Vector2(Catalog.BUILDINGS[b.kind].gold,Catalog.BUILDINGS[b.kind].power)
-   for level in range(1,int(b.level)):ceiling+=Catalog.upgrade_cost(b.kind,level)
+   if data.get("balance_version",1)==2 and (room.bed_level<maxi(0,int(b.level)-2) or room.door_level<maxi(0,int(b.level)-2)):return false
+   var ceiling=BalanceRules.price(b.kind,int(data.get("balance_version",1)))
+   for level in range(1,int(b.level)):ceiling+=BalanceRules.upgrade(b.kind,level,int(data.get("balance_version",1)))
    if branch!="":ceiling+=StrategyCatalog.BRANCH_FEE
    if not number(b.get("invested_gold"),0,ceiling.x+.0001) or not number(b.get("invested_power"),0,ceiling.y+.0001) or not number(b.get("cooldown"),0,24 if b.kind=="decoy" else 12 if b.kind=="shield" else 10):return false
   if spatial and not SpatialConstruction.valid_room(room,map.rooms[i]):return false
@@ -158,6 +164,8 @@ static func restore(data) -> MatchModel:
  if not run.configure(model,data.map,data.difficulty,int(data.seed),int(data.run_id),data.boosts):return null
  if data.has("expansion"):model.expansion.configure(model,data.expansion.legacy,data.expansion.levels)
  else:model.expansion.configure(model,true)
+ model.configure_balance(int(data.get("balance_version",1)))
+ if data.get("balance_version",1)==2:model.choices.restore(data.run_choices)
  model.random.state=int(data.rng);model.time=data.time;model.preparation=data.preparation
  model.player_room=int(data.player_room);model.player_position=vec(data.player_position);model.bot_claimed=int(data.bot_claimed)
  model.eliminations=int(data.eliminations);model.shots=int(data.shots);model.damage_dealt=data.damage
@@ -167,6 +175,8 @@ static func restore(data) -> MatchModel:
   room.main_damage_dealt=float(saved.get("main_damage",0));room.minion_damage_dealt=float(saved.get("minion_damage",0))
   room.owner=int(saved.owner);room.profile=saved.profile;room.resident_position=vec(saved.position)
   for key in ROOM_NUMBERS+ROOM_FLAGS:room.set(key,saved[key])
+  if saved.has("ledger"):room.ledger.restore(saved.ledger)
+  else:room.ledger.expected=[room.gold,room.electricity]
   room.magic_state=saved.get("magic_state",room.magic_state).duplicate(true)
   for b in saved.buildings:
    var building=b.duplicate(true);building.erase("tile");building.flash=0.0
@@ -199,5 +209,6 @@ static func restore(data) -> MatchModel:
  run.wave=int(data.completed);run.completed=int(data.completed);run.sealed_wave=run.completed;run.phase="intermission"
  model.evolution.evolution_level=maxi(model.evolution.evolution_level,clampi(1+int((run.wave-1)/5),1,10))
  if data.has("omen"):run.omen.restore(data.omen)
+ model.choices.apply(model)
  model.hunter.hp=0;model.hunter.state=HunterState.State.DEAD
  return model

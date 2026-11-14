@@ -3,17 +3,19 @@ extends RefCounted
 # The same resolver supplies actual launch stats and read-only UI previews.
 static func room_copy(room):
  var copy=RoomState.new(room.index)
- for key in ["layout","owner","alive","sleeping","closed","gold","electricity","bed_level","door_level","bed_branch","door_branch","door_hp","income_multiplier","power_multiplier","door_multiplier","turret_multiplier","trait_modifiers","trait_id","temporary_income","repair_factor","strategy_enabled","threat_income_factor","threat_power_factor","production_paused"]:
+ for key in ["balance_version","run_effects","layout","owner","alive","sleeping","closed","gold","electricity","bed_level","door_level","bed_branch","door_branch","door_hp","income_multiplier","power_multiplier","door_multiplier","turret_multiplier","trait_modifiers","trait_id","temporary_income","repair_factor","strategy_enabled","threat_income_factor","threat_power_factor","production_paused"]:
   var value=room.get(key);copy.set(key,value.duplicate(true) if value is Dictionary or value is Array else value)
  copy.buildings=room.buildings.duplicate(true)
  return copy
 static func weapon_stats(model,room,b: Dictionary) -> Dictionary:
  var data=Catalog.BUILDINGS[b.kind];var branch=StrategyCatalog.weapon(b)
  if b.kind in ["flame","frost","shock"]:
-  var special=DefenseEffects.new().stats(room,b);var relay=1.0
+  var special=DefenseEffects.new().stats(room,b);var relay=0.0
   for support in room.buildings.values():
    if support.kind=="enhancer":relay+=Catalog.support_output("enhancer",support.level)*StrategyCatalog.support(support).get("output",1.0)
-  special.damage*=relay*room.turret_multiplier
+  relay=BalanceRules.amplifier(relay,room.balance_version)
+  special.damage*=relay*room.turret_multiplier*float(room.run_effects.get("damage",1.0))
+  special.interval*=float(room.run_effects.get("interval",1.0));special.range*=float(room.run_effects.get("range",1.0))
   special.interval*=room.special_factor("interval",.8,1.0);special.range*=room.special_factor("range",.8,1.0)
   special.burn=float(special.get("burn",0.0))*relay*room.turret_multiplier
   special.hit=special.damage
@@ -25,12 +27,14 @@ static func weapon_stats(model,room,b: Dictionary) -> Dictionary:
     if model.time<model.preparation+model.stage_bonus.get("seconds",0.0):special.hit*=model.stage_bonus.get("damage",1.0)
   special.dps=special.hit/special.interval;special.projectile_speed=Catalog.PROJECTILES[b.kind]
   return special
- var relay=1.0
+ var relay=0.0
  for support in room.buildings.values():
   if support.kind=="enhancer":relay+=Catalog.support_output("enhancer",support.level)*StrategyCatalog.support(support).get("output",1.0)
+ relay=BalanceRules.amplifier(relay,room.balance_version)
  var damage=Catalog.turret_damage(b.kind,b.level)*relay*room.turret_multiplier*branch.damage
  var interval=Catalog.turret_interval(b.kind,b.level)*branch.interval*room.special_factor("interval",.8,1.0)
  var range_value=data.range*branch.range*room.special_factor("range",.8,1.0)
+ damage*=float(room.run_effects.get("damage",1.0));interval*=float(room.run_effects.get("interval",1.0));range_value*=float(room.run_effects.get("range",1.0))
  var hit=damage
  if model!=null:
   if model.hunter.conceal_remaining>0:range_value*=.8
@@ -46,10 +50,10 @@ static func machine_stats(model,room,b: Dictionary) -> Dictionary:
   var special=DefenseEffects.new().stats(room,b)
   if b.kind=="auto_repair":special.heal*=maxf(.65,room.repair_factor)
   return special
- var branch=StrategyCatalog.support(b);var rate=Catalog.support_output(b.kind,b.level)*branch.get("output",1.0)
- if b.kind=="generator":rate*=(0.0 if room.production_paused else room.threat_power_factor)*room.power_multiplier*room.trait_modifiers.power*room.special_factor("power",.55,1.5)*StrategyCatalog.BRANCHES.get(room.bed_branch,{}).get("power",1.0)
+ var branch=StrategyCatalog.support(b);var rate=BalanceRules.output(b.kind,b.level,room.balance_version)*branch.get("output",1.0)
+ if b.kind=="generator":rate*=float(room.run_effects.get("power",1.0))*(0.0 if room.production_paused else room.threat_power_factor)*room.power_multiplier*room.trait_modifiers.power*room.special_factor("power",.55,1.5)*StrategyCatalog.BRANCHES.get(room.bed_branch,{}).get("power",1.0)
  if b.kind=="repair":rate*=room.repair_factor
- return {"rate":rate,"operating_power":branch.get("power_cost",0.0)*b.level,"income":room.income_rate(),"repair_gold":room.manual_repair_cost()}
+ return {"rate":rate,"operating_power":maxf(.35 if room.balance_version==2 else 0,branch.get("power_cost",0.0))*b.level,"income":room.income_rate(),"repair_gold":room.manual_repair_cost()}
 static func frost_status(strength: float) -> Dictionary:
  # Match the existing actor-specific status application; preview does not alter it.
  var move=minf(.15,strength)
@@ -68,11 +72,11 @@ static func format_machine(model,room,b: Dictionary) -> String:
   return "Hit %.1f · %.2fs / shot · range %.0f · targets %d · Undead move -%.0f%%\nHunter move -%.0f%% / attack interval +%.0f%%; Reaper move -%.1f%% / interval +%.0f%%" % [stats.hit,stats.interval,stats.range,stats.targets,slow.undead_move*100,slow.hunter_move*100,slow.hunter_interval*100,slow.reaper_move*100,slow.reaper_interval*100]
  if b.kind in DefenseEffects.WEAPONS:return "Hit %.1f · %.2fs / shot · %.1f DPS\nRange %.0f · projectile %.0f /s" % [stats.hit,stats.interval,stats.dps,stats.range,stats.projectile_speed]
  if b.kind=="generator":return "Output %.2f Electricity/s\nRoom income %.2f Gold/s" % [stats.rate,stats.income]
- if b.kind=="repair":return "Healing %.2f HP/s · upkeep %.2f E/s\nManual repair %.2f Gold" % [stats.rate,stats.operating_power,stats.repair_gold]
- return "Additive %s bonus +%.1f%%\nRoom income %.2f Gold/s" % ["income" if b.kind=="economy" else "turret hit",stats.rate*100,stats.income]
+ if b.kind=="repair":return "Healing %.2f HP/s · upkeep %.2f E/s\nManual repair %.2f Gold%s" % [stats.rate,stats.operating_power,stats.repair_gold," · keeps8–40E grid reserve; idle when full" if room.balance_version==2 else ""]
+ return ("Raw support +%.1f%% · effective room amplifier %.3fx (diminishing returns)\nRoom income %.2f Gold/s" % [stats.rate*100,amplifier_bonus(room),stats.income]) if b.kind=="economy" and room.balance_version==2 else "Additive %s bonus +%.1f%%\nRoom income %.2f Gold/s" % ["income" if b.kind=="economy" else "turret hit",stats.rate*100,stats.income]
 static func room_power_rate(model,room) -> float:
  if room.production_paused:return 0.0
- var rate=room.threat_power_factor*Catalog.BED_INCOME[room.bed_level]*StrategyCatalog.BRANCHES.get(room.bed_branch,{}).get("power_rate",0.0)
+ var rate=room.threat_power_factor*BalanceRules.income(room.bed_level,room.balance_version)*StrategyCatalog.BRANCHES.get(room.bed_branch,{}).get("power_rate",0.0)
  for b in room.buildings.values():
   if b.kind=="generator":rate+=machine_stats(model,room,b).rate
  return rate if room.alive and room.sleeping else 0.0
@@ -128,3 +132,9 @@ static func structure_preview(model,room,kind: String) -> String:
   return "LEVEL %d · %s\nCurrent %.2f Gold/s · %.2f Electricity/s\n%s" % [level+1,name,room.income_rate(),room_power_rate(model,room),"MAXIMUM LEVEL10" if level>=9 else "Next tier %.2f Gold/s · %.2f Electricity/s%s" % [clone.income_rate(),room_power_rate(model,clone)," (before branch choice)" if level==4 and branch=="" else ""]]
  clone.door_level=mini(9,level+1)
  return "LEVEL %d · %s\nHP %.1f / %.1f · mitigation %.0f%%\nManual repair %.1f HP for %.2f Gold\n%s" % [level+1,name,room.door_hp,room.max_hp(),100*(1-StrategyCatalog.BRANCHES.get(branch,{}).get("mitigation",1.0)),Catalog.REPAIR_HEAL*room.repair_factor*StrategyCatalog.BRANCHES.get(branch,{}).get("repair",1.0),room.manual_repair_cost(),"MAXIMUM LEVEL10" if level>=9 else "Next maximum %.1f HP%s" % [clone.max_hp()," (before branch choice)" if level==4 and branch=="" else ""]]
+
+static func amplifier_bonus(room) -> float:
+ var raw=0.0
+ for b in room.buildings.values():
+  if b.kind=="economy":raw+=BalanceRules.output("economy",b.level,room.balance_version)*StrategyCatalog.support(b).get("output",1.0)
+ return BalanceRules.amplifier(raw,room.balance_version)

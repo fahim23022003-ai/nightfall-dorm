@@ -45,6 +45,7 @@ var touch
 var construction
 var in_background=false
 var ui_clock=0.0
+var new_balance_version=BalanceRules.CURRENT
 var guidance=PlayerGuidance.new()
 var tutorial_active=false
 var onboarding
@@ -56,12 +57,13 @@ func start_endless(map: String="abandoned_dorm",difficulty: String="standard",se
  if entry.is_empty():return false
  var next=MatchModel.new()
  if not next.configure_endless(map,difficulty,seed_value,int(entry.id),RankCatalog.bonuses(entry.equipped)):return false
- match_id=int(entry.id);_adopt_session(next)
+ next.configure_balance(new_balance_version)
+ match_id=int(entry.id);_adopt_session(next);bind_run_choices()
  return true
 func resume_endless() -> bool:
  var next=profile.resume_endless()
  if next==null:return false
- match_id=int(profile.active_match.id);_adopt_session(next)
+ match_id=int(profile.active_match.id);_adopt_session(next);bind_run_choices()
  ui.replay_ui.intermission_saved=true;ui.replay_ui.show_intermission()
  return true
 func choose_night_omen(id: String) -> bool:
@@ -87,6 +89,28 @@ func continue_endless(choice: String) -> bool:
  for room in model.rooms:last_income[room.index]=room.income_total
  ui.replay_ui.intermission_saved=false;ui.show_match();focus_camera(true);audio_event("match_start")
  return true
+func bind_run_choices():
+ model.choices.payment=func(id,value):
+  var before=profile.active_match.get("temporary_used",{}).duplicate(true)
+  var journal=before.duplicate(true);journal[id]=value;profile.active_match.temporary_used=journal
+  if not profile.save_profile():profile.active_match.temporary_used=before;return false
+  return true
+ var journal=profile.active_match.get("temporary_used",{})
+ for id in journal:
+  var delta=maxi(0,int(journal[id])-int(model.choices.used.get(id,0)))
+  if id in RunChoices.ITEMS:model.choices.stock[id]=maxi(0,int(model.choices.stock.get(id,0))-delta)
+  model.choices.used[id]=maxi(int(journal[id]),int(model.choices.used.get(id,0)))
+ model.choices.apply(model)
+func run_transaction(kind: String,id: String) -> bool:
+ if model.balance_version!=2 or model.run_kind!="endless" or model.endless.phase!="intermission":return false
+ var c=model.choices;var before=c.snapshot();var r=model.player();var wallet=[r.gold,r.electricity];var flow=r.ledger.snapshot();var trace=r.ledger.records.duplicate(true)
+ var ok=c.choose(model,id) if kind=="choose" else c.buy(model,id) if kind=="buy" else c.decline(model) if kind=="decline" else false
+ if ok:ok=profile.checkpoint_endless(model)
+ if not ok:
+  c.restore(before);r.gold=wallet[0];r.electricity=wallet[1];r.ledger.restore(flow);r.ledger.records=trace;c.apply(model)
+ audio_event("button_click" if ok else "failure");RunChoiceInterface.show(ui);return ok
+func use_run_stock(id: String) -> bool:
+ var ok=model.choices.activate(model,id);audio_event("button_click" if ok else "failure");return ok
 func end_endless_here() -> bool:
  last_progression=profile.end_endless_here(model)
  if last_progression.is_empty():ui.replay_ui.intermission_saved=false;ui.replay_ui.show_intermission();return false
@@ -103,7 +127,7 @@ func start_challenge(code: String) -> bool:
  match_id=1;_adopt_session(next,wallet)
  return true
 func start_practice(archetype="crusher",boss=false,selected: Array=["shield","repair"],map="abandoned_dorm") -> bool:
- var next=MatchModel.new();var wallet=PracticeRoom.configure(next,archetype,boss,selected,map)
+ var next=MatchModel.new();var wallet=PracticeRoom.configure(next,archetype,boss,selected,map,new_balance_version)
  match_id=1;_adopt_session(next,wallet);selected_tile=model.practice_tile
  return true
 func reset_practice():
@@ -170,7 +194,7 @@ func start_tutorial(replay=false):
  if mobile_mode:return false
  tutorial_active=true
  temporary_loadout=null
- model=MatchModel.new();model.tutorial_mode=true;model.reset(17);model.tutorial_mode=true;model.configure_stage("stage_1");model.preparation=10000;model.bot_claimed=5
+ model=MatchModel.new();model.tutorial_mode=true;model.reset(17);model.tutorial_mode=true;model.configure_stage("stage_1");model.configure_balance(new_balance_version);model.preparation=10000;model.bot_claimed=5
  model.feedback.connect(func(value):ui.feedback_text=value;ui.feedback_until=presentation.clock+2)
  match_id=0;campaign_mode=false;last_progression={};pending_build="";tutorial_enabled=false
  last_hunter_level=1;level_warning_time=0;danger_time=0;last_attacks=0;last_shots=0
@@ -215,6 +239,7 @@ func start_match(difficulty: String="") -> bool:
  model.reset(int(Time.get_ticks_msec()))
  model.configure_match(selected_difficulty,RankCatalog.bonuses(entry.get("equipped",[])))
  if requested!="": model.configure_stage(requested)
+ model.configure_balance(new_balance_version)
  model.configure_strategy(int(profile.statistics.matches),entry.archetype,entry.contract,match_id)
  profile.apply_stage_bonus(model,entry)
  audio_system.reset_match(model)
@@ -325,7 +350,7 @@ func _process(delta: float):
    ui_clock=0
    ui.update_match()
   horror.update(delta,model)
-  if model.run_kind=="endless" and model.endless!=null and model.endless.phase=="intermission" and ui.current_screen not in ["intermission","wave_report"] and not ui.replay_ui.preparing:
+  if model.run_kind=="endless" and model.endless!=null and model.endless.phase=="intermission" and ui.current_screen not in ["intermission","wave_report","run_choices"] and not ui.replay_ui.preparing:
    ui.replay_ui.intermission_saved=profile.checkpoint_endless(model)
    ui.replay_ui.show_intermission();audio_event("reward")
   if model.result != "" and not tutorial_active:
@@ -389,6 +414,7 @@ func _unhandled_input(event):
   elif event.keycode==KEY_T and not tutorial_active:ui.teammates.toggle_panel()
   elif event.keycode in [KEY_PAGEUP,KEY_PAGEDOWN] and not tutorial_active:cycle_spectator(-1 if event.keycode==KEY_PAGEUP else 1)
   elif event.keycode in [KEY_1,KEY_2] and model.running: activate_item(0 if event.keycode==KEY_1 else 1)
+  elif event.keycode==KEY_K and model.balance_version==2 and model.run_kind=="endless":RunChoiceInterface.show(ui)
   elif event.keycode==KEY_B and model.running and watched_room<0:
    if model.player()==null:ui.touch_notice("Claim an empty room first · E inside the room.")
    else:ui.open_build_menu()

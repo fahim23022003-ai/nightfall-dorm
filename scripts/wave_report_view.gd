@@ -32,6 +32,9 @@ static func show(ui,chosen="Damage"):
   var shown=0.0
   for row in rows:shown+=row.damage
   paragraph(ui,"%d shown · Your room %.1f · Allies %.1f · Unshown weapons %.1f · Other sources %.1f" % [rows.size(),d.total,d.allied,maxf(0,d.total-d.other-shown),d.other],Vector2(125,574),13,28)
+ elif chosen=="Economy" and d.has("flow"):
+  var f=d.flow
+  paragraph(ui,"PRODUCTION  %.1f Gold / %.1f Electricity\nOTHER EARNINGS  %.1f G / %.1f E · aid, loot, event payouts\nSPENDING  %.1f G / %.1f E · repairs %.1f G\nREFUNDS  %.1f G / %.1f E · actual-spend sales\nLOSSES  %.1f G / %.1f E · drains / direct effects\nNET CHANGE  %+.1f G / %+.1f E\n\nProduction is not wallet interest. Other earnings never recursively trigger production bonuses." % [f.production_g,f.production_e,f.other_g,f.other_e,f.spent_g,f.spent_e,f.repair_g,f.refund_g,f.refund_e,f.loss_g,f.loss_e,f.production_g+f.other_g+f.refund_g-f.spent_g-f.loss_g,f.production_e+f.other_e+f.refund_e-f.spent_e-f.loss_e],Vector2(125,280),18,310)
  elif chosen=="Economy":
   paragraph(ui,"%.2f Gold generated\n%.2f Electricity generated\n\nBeds and income supports generate Gold. Dynamos generate Electricity.\nThese are gross production totals—not wallet changes.\nPurchases, sales, theft, aid and Omen bonuses are excluded.")
  elif chosen=="Defense":

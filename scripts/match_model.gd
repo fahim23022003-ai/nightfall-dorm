@@ -2,6 +2,9 @@ class_name MatchModel
 extends RefCounted
 
 signal feedback(message: String)
+var balance_version=1
+var choices=RunChoices.new()
+var pressure=HunterPressure.new()
 var items=ItemEffects.new()
 var evolution=HunterEvolution.new()
 var expansion=RoomExpansion.new()
@@ -51,6 +54,12 @@ var challenge_recorded=false
 var terminal_recorded=false
 var defeat_facts=DefeatFacts.new()
 var practice_tile=0
+func configure_balance(version: int=BalanceRules.CURRENT) -> bool:
+ if version not in [1,2] or time>0 or player_room>=0:return false
+ balance_version=version
+ for room in rooms:room.balance_version=version
+ if version==2:preparation=maxf(preparation,40)
+ return true
 func configure_endless(map: String,mode: String,seed_value: int,run_id: int,boosts: Dictionary={}) -> bool:
  return EndlessRun.new().configure(self,map,mode,seed_value,run_id,boosts)
 func continue_wave(choice: String="repair") -> bool:
@@ -86,6 +95,7 @@ func _init():
 
 func reset(seed_value: int = 1):
  wave_metrics=WaveMetrics.new()
+ balance_version=1;choices=RunChoices.new();pressure=HunterPressure.new()
  items=ItemEffects.new()
  evolution=HunterEvolution.new();expansion=RoomExpansion.new();wrath=ReaperWrath.new();defenses=DefenseEffects.new();minions=[];next_entity_id=2
  strategy=MatchStrategy.new()
@@ -261,6 +271,8 @@ func step_navigation(from: Vector2,to: Vector2,distance: float,key: String="") -
  return point
 
 func record_event(type: String, room_index: int, data: Dictionary={}):
+ choices.event(self,type,room_index,data)
+
  if run_kind=="endless" and endless!=null and endless.phase=="combat":wave_metrics.event(type,room_index,player_room,data)
  if type in ["sale","building_destroyed"]:
   defenses.removed(room_index,int(data.get("tile",-1)))
@@ -286,6 +298,7 @@ func claim_room(index: int) -> bool:
  rooms[index].apply_boosts(match_boosts)
  if not stage_bonus.is_empty():
   rooms[index].gold+=stage_bonus.get("gold",0.0)
+  rooms[index].ledger.note("other",[stage_bonus.get("gold",0.0),0],"previous stage reward")
   var old_max=rooms[index].max_hp()
   rooms[index].door_multiplier*=stage_bonus.get("door",1.0)
   rooms[index].door_hp+=rooms[index].max_hp()-old_max
@@ -428,6 +441,7 @@ func _tick_sim(delta: float):
  if not running or result != "" or not is_finite(delta) or delta <= 0:
   return
  if run_kind=="endless" and endless!=null and endless.phase=="intermission":return
+ choices.tick(self,delta);pressure.tick(self,delta)
  _age_combat_events(delta)
  time += delta
  evolution.tick(delta,self)
@@ -460,6 +474,7 @@ func _tick_sim(delta: float):
   if room.spatial!=null and room.spatial.moving_id>=0 and room.spatial.move_reason(self,room.spatial.moving_id)!="":room.spatial.cancel_move()
   var measuring=run_kind=="endless" and room.index==player_room
   var metrics_before=[room.income_total,room.generated_power,room.economy_repaired] if measuring else []
+  room.ledger.reconcile(room,time)
   room.tick_economy(delta,endless.omen.factor("blackout",difficulty) if run_kind=="endless" and endless!=null and room.index==player_room else 1.0,hunter.nightmare.income_factor(room.index))
   if measuring:
    wave_metrics.data.gold+=room.income_total-metrics_before[0];wave_metrics.data.power+=room.generated_power-metrics_before[1];wave_metrics.data.repair+=room.economy_repaired-metrics_before[2]
@@ -501,6 +516,8 @@ func _tick_sim(delta: float):
   _finish_terminal()
   return
  _advance_projectiles(delta)
+ for r in rooms:r.ledger.reconcile(r,time)
+ if balance_version==2 and run_kind=="endless" and player()!=null:wave_metrics.capture_flow(player())
  if run_kind=="endless":WaveOpportunities.observe(self,delta)
  _turrets(delta)
  if player_room >= 0 and not rooms[player_room].alive:
@@ -552,7 +569,7 @@ func apply_room_damage(index: int,amount: float,source: String="door strike",att
  if not DamageRules.valid(packet):return 0.0
  var old=room.door_hp
  if run_kind=="endless" and endless!=null and index==player_room:amount*=endless.omen.factor("walls",difficulty)
- if attacker_id==1:amount*=evolution.damage_factor(special)
+ if attacker_id==1:amount*=evolution.damage_factor(special)*pressure.factor(self)
  amount*=StrategyCatalog.BRANCHES.get(room.door_branch,{}).get("mitigation",1.0)
  amount=MagicDefense.absorb(self,room,amount,attacker_id,packet)
  var blocked=minf(amount,room.barrier_hp) if room.barrier_remaining>0 else 0.0
@@ -560,8 +577,12 @@ func apply_room_damage(index: int,amount: float,source: String="door strike",att
  if blocked>0:record_event("shield_absorb",index,{"damage":blocked,"amount":blocked})
  amount=items.absorb(amount,self,index)
  var rescued=items.guardian_intercept(amount,self,index)
- if not rescued:room.door_hp=maxf(0,room.door_hp-amount)
+ if not rescued:
+  if index==player_room:amount=choices.incoming(self,amount)
+  room.door_hp=maxf(0,room.door_hp-amount)
  var actual=maxf(0,old-room.door_hp);room.door_damage_taken+=actual;room.damage_flash=.25
+ if actual>0 and attacker_id==1:pressure.hits+=1
+ if index==player_room and attacker_id==1:choices.retaliate(self,actual)
  record_event("door_damage",index,{"damage":actual,"hp":room.door_hp,"max_hp":room.max_hp(),"repair_affordable":room.door_hp>0 and room.gold>=room.manual_repair_cost(),"source":source,"attacker_id":attacker_id,"damage_type":packet.type,"element":packet.element})
  if old>0 and room.door_hp<=0:record_event("door_break",index)
  if index==player_room and not rescued:items.feather_cross(old,self)
@@ -652,6 +673,7 @@ func _advance_projectiles(delta: float):
    if shot.target_id==1:items.ignite(self,shot.room)
    elif shot.room==player_room and float(items.timers.get("inferno",0))>0:defenses.ignite(shot.target_id,ItemCatalog.TUNING.burn_dps,ItemCatalog.TUNING.burn_seconds,shot.room)
    if run_kind=="endless":wave_metrics.hit(shot.room,player_room,shot.get("building_id",-1),shot.kind,shot.level,amount,shot.target_id)
+   if shot.room==player_room and shot.target_id==1:choices.impact(self,amount)
    credit_damage(shot.room,amount,shot.target_id);_combat_event("impact",shot,shot.position,amount)
   else:shot.position=shot.position.move_toward(actor.position,travel);survivors.append(shot)
  projectiles=survivors

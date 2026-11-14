@@ -26,6 +26,10 @@ func event(type: String,room: int,player: int,payload: Dictionary):
  if type in ["defense_heal","item_rescue"]:data.repair+=payload.get("damage",0)
  if type in ["defense_activate","magic_shield","magic_reflect"]:data.activations+=1
  if type=="defense_item":data.activations+=1
+func capture_flow(room):
+ var open=data.get("flow_start",{})
+ data.flow={}
+ for key in room.ledger.totals:data.flow[key]=maxf(0,room.ledger.totals[key]-float(open.get(key,0)))
 func report() -> Dictionary:
  var result=data.duplicate(true);var top=data.buildings.values().duplicate(true);top.sort_custom(func(a,b):return a.damage>b.damage if a.damage!=b.damage else a.id<b.id)
  var attributed=0.0
@@ -33,6 +37,11 @@ func report() -> Dictionary:
  result.other=maxf(0,data.total-attributed);result.top=top.slice(0,6);return result
 static func valid(d) -> bool:
  if not d is Dictionary or d.get("version")!=1 or not d.get("available") is bool:return false
+ for field in ["flow","flow_start"]:
+  if d.has(field):
+   if not d[field] is Dictionary or d[field].size()>12:return false
+   for key in d[field]:
+    if key not in EconomyLedger.new().totals or not ReplaySnapshot.number(d[field][key]):return false
  if d.has("evidence_version") and d.evidence_version!=1:return false
  if d.has("observations") and not WaveOpportunities.valid(d.observations):return false
  for optional in ["magic_blocked","affordable_damage"]:

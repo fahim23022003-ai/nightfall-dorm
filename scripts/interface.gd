@@ -4,6 +4,7 @@ extends CanvasLayer
 var game
 var menu_start: Button
 var panel: Control
+var run_panel: Control
 var upgrade_notice: Label
 var message: Label
 var details: Label
@@ -252,7 +253,7 @@ func show_settings():
  if game.profile.warning!="":label_at(game.profile.warning,Vector2(150,540),14,960)
 
 func show_match():
- clear()
+ clear();run_panel=null
  current_screen="match"
  box(Rect2(18,12,1244,64),"203747","607D8B")
  var brand=label_at("NIGHTFALL DORM",Vector2(34,23),26,240,true)
@@ -302,6 +303,7 @@ func show_match():
  warning_label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  warning_box.visible=false
  warning_label.visible=false
+ RunChoiceInterface.attach(self)
  upgrade_notice=label_at("",Vector2(370,145),15,520)
  upgrade_notice.mouse_filter=Control.MOUSE_FILTER_PASS;upgrade_notice.clip_text=true
  room_dock=box(Rect2(20,638,1240,66),"203747","607D8B")
@@ -320,7 +322,7 @@ func show_match():
  var n=0
  for kind in Catalog.BUILDINGS:
   var id=kind
-  var data=Catalog.BUILDINGS[kind]
+  var data=Catalog.BUILDINGS[kind].duplicate(true);var actual=BalanceRules.price(kind,game.model.balance_version);data.gold=actual.x;data.power=actual.y
   var at=Vector2(12+(n%3)*114,42+(n/3)*152)
   var b=button("",at,func(): game.begin_placement(id) if game.mobile_mode else game.build_selected(id),108,142,context_box)
   var art=icon(kind,at+Vector2(29,5),Vector2(50,48),context_box)
@@ -478,7 +480,7 @@ func refresh_context():
   specialization_items[3].text="Back · keep level %d" % (5 if specialization_structure!="" else 4)
   var ids=StrategyCatalog.branches(b.kind)
   if ids.size()!=2:close_context();return
-  var price=Vector2(Catalog.BED_COST[4],Catalog.BED_POWER[4]) if specialization_structure=="bed" else Vector2(Catalog.DOOR_COST[4],Catalog.DOOR_POWER[4]) if specialization_structure=="door" else Catalog.upgrade_cost(b.kind,b.level)+StrategyCatalog.BRANCH_FEE
+  var price=Vector2(BalanceRules.structure("bed",4,game.model.balance_version).x,BalanceRules.structure("bed",4,game.model.balance_version).y) if specialization_structure=="bed" else Vector2(BalanceRules.structure("door",4,game.model.balance_version).x,BalanceRules.structure("door",4,game.model.balance_version).y) if specialization_structure=="door" else BalanceRules.upgrade(b.kind,b.level,game.model.balance_version)+StrategyCatalog.BRANCH_FEE
   var quote=price if specialization_structure!="" else room.building_price(price.x,price.y)
   for i in range(2):
    var button=specialization_items[i+1]
@@ -491,13 +493,13 @@ func refresh_context():
    button.icon=PremiumButton.texture(id);button.expand_icon=true;button.add_theme_constant_override("icon_max_width",36)
    button.add_theme_font_size_override("font_size",14)
    button.tooltip_text=data.description+"\n"+("Full-price level6 upgrade; coupon remains for a placeable machine." if specialization_structure!="" else "Price includes level5 upgrade and25G/4E branch fee.")+" One branch only; level10cap."
-   button.disabled=not game.model._can_purchase() or b.level!=4 or b.get("specialization","")!="" or room.bed_level<2 or room.door_level<2 or room.gold<quote.x or room.electricity<quote.y
-  branch_confirm.disabled=pending_branch not in ids or not game.model._can_purchase() or room.gold<quote.x or room.electricity<quote.y
+   button.disabled=not game.model._can_purchase() or b.level!=4 or b.get("specialization","")!="" or (BalanceRules.requirement(b.kind,b.level,room.bed_level,room.door_level,room.balance_version)!="" if specialization_structure=="" else room.bed_level<2 or room.door_level<2) or room.gold<quote.x or room.electricity<quote.y
+  branch_confirm.disabled=pending_branch not in ids or not game.model._can_purchase() or room.gold<quote.x or room.electricity<quote.y or (specialization_structure=="" and BalanceRules.requirement(b.kind,b.level,room.bed_level,room.door_level,room.balance_version)!="")
  elif context_mode=="upgrade" and room.buildings.has(game.selected_tile):
   var b=room.buildings[game.selected_tile]
   selected_icon.texture=game.presentation.cartoon[game.presentation.building_key(b.kind,b.level)]
   context_title.text=Catalog.BUILDINGS[b.kind].name.to_upper()
-  var list_price=Catalog.upgrade_cost(b.kind,b.level)
+  var list_price=BalanceRules.upgrade(b.kind,b.level,game.model.balance_version)
   var quote=room.building_price(list_price.x,list_price.y)
   selected_details.tooltip_text=StrategyCatalog.BRANCHES.get(b.get("specialization",""),{}).get("description","")
   selected_details.text=BuildingStats.next_machine(game.model,room,game.selected_tile)+"\n"+action_reason("upgrade")+(" · COUPON %.1fG/%.1fE" % [quote.x,quote.y] if room.coupon_armed else "")
@@ -509,11 +511,11 @@ func refresh_context():
   context_title.text="DOOR LEVEL %d / 10" % (room.door_level+1)
   door_details.text=BuildingStats.structure_preview(game.model,room,"door")+"\n"+action_reason("door")
  elif context_mode=="confirm" and game.pending_build!="":
-  var data=Catalog.BUILDINGS[game.pending_build]
+  var data=Catalog.BUILDINGS[game.pending_build].duplicate(true);var actual=BalanceRules.price(game.pending_build,game.model.balance_version);data.gold=actual.x;data.power=actual.y
   context_title.text="PLACE "+data.name.to_upper()
   confirmation_icon.texture=game.presentation.textures[game.pending_build]
   var reason=game.placement_reason()
-  var quoted=room.building_price(data.gold,data.power)
+  var quoted=room.quote_build(game.pending_build)
   confirmation_details.text="%.1f G / %.1f E%s\n%s" % [quoted.x,quoted.y," · COUPON40%" if room.coupon_armed else "",reason if reason!="" else "Pad locked. Confirm to buy, or click another pad."]
   confirm_button.disabled=reason!=""
  if expansion_ui!=null:expansion_ui.refresh()
@@ -694,8 +696,8 @@ func update_match():
   room_bed_summary.text="Bed L%d  ·  %.1f G/s" % [room.bed_level+1,room.income_rate()]
   room_door_summary.text="Door L%d  ·  %d/%d" % [room.door_level+1,roundi(room.door_hp),roundi(room.max_hp())]
   room_selected_summary.text="Build · choose pad"
-  var bed_cost="MAX" if room.bed_level>=9 else "%d Gold / %d Electricity" % [Catalog.BED_COST[room.bed_level],Catalog.BED_POWER[room.bed_level]]
-  var door_cost="MAX" if room.door_level>=9 else "%d Gold / %d Electricity" % [Catalog.DOOR_COST[room.door_level],Catalog.DOOR_POWER[room.door_level]]
+  var bed_cost="MAX" if room.bed_level>=9 else "%d Gold / %d Electricity" % [BalanceRules.structure("bed",room.bed_level,game.model.balance_version).x,BalanceRules.structure("bed",room.bed_level,game.model.balance_version).y]
+  var door_cost="MAX" if room.door_level>=9 else "%d Gold / %d Electricity" % [BalanceRules.structure("door",room.door_level,game.model.balance_version).x,BalanceRules.structure("door",room.door_level,game.model.balance_version).y]
   bed_button.text="Upgrade Bed — "+bed_cost
   door_button.text="Upgrade Door — "+door_cost
   if room.buildings.has(game.selected_tile):
@@ -703,14 +705,16 @@ func update_match():
    var d=Catalog.BUILDINGS[b.kind]
    var refund=room.building_refund(game.selected_tile)
    actions.sell.text="Sell · 50%% actual investment\n+%.2f Gold / +%.2f Electricity" % [refund.x,refund.y]
-   var price=Catalog.upgrade_cost(b.kind,b.level)
-   actions.upgrade.text="MAX LEVEL" if b.level>=Catalog.building_max_level(b.kind) else "Upgrade L%d — %d Gold / %d Electricity" % [b.level+1,price.x,price.y]
+   var value=BalanceRules.upgrade(b.kind,b.level,game.model.balance_version);var price=room.building_price(value.x,value.y)
+   actions.upgrade.text="MAX LEVEL" if b.level>=Catalog.building_max_level(b.kind) else "Upgrade L%d — %.1f Gold / %.1f Electricity" % [b.level+1,price.x,price.y]
    if room.strategy_enabled and b.level==4:actions.upgrade.text="Specialize → Level 5"
   else: actions.upgrade.text="Select a building to upgrade"
  actions.repair.text="Repair · %.1f gold" % (room.manual_repair_cost() if room!=null else Catalog.REPAIR_COST)
  hunter_label.tooltip_text+="\nDamage: Physical claws; telegraphed Magic specials. Affinity: "+DamageRules.affinity(m.hunter.archetype).capitalize()+".\nFire > Ice > Earth > Electric > Fire: +15% strong, -10% weak; neutral unchanged."
  if m.hunter.arcane.action!="":hunter_detail.text=m.hunter.arcane.action.replace("_"," ").to_upper()+" · %.1fs" % m.hunter.arcane.warning
  if room!=null and room.magic_state.disrupt>0:warning_label.text="TURRET INTERFERENCE · %.1fs · Repair remains available" % room.magic_state.disrupt;warning_label.visible=true
+ if m.balance_version==2 and m.pressure.warning>0:
+  warning_label.text="SIEGE RESOLVE · +8% pressure in %.1fs · repair or counter" % m.pressure.warning;warning_label.visible=true;warning_box.visible=true
  var immediate=room!=null and room.alive and room.door_hp<room.max_hp()*.35 and game.model.hunter.target==room.index and game.model.hunter.state in [HunterState.State.ATTACK,HunterState.State.BREACH]
  # Theme overrides invalidate control layout: only change material on a real state transition.
  if not room_door_summary.has_meta("danger_skin") or room_door_summary.get_meta("danger_skin")!=immediate:
@@ -725,6 +729,8 @@ func update_match():
   b.disabled=reason!=""
   if card_visuals.has(action):
    for node in card_visuals[action]: node.modulate.a=0.55 if b.disabled else 1.0
+   if room!=null:
+    var quote=room.quote_build(action.trim_prefix("build:"));card_visuals[action][2].text="%.1fG / %.1fE" % [quote.x,quote.y]
   if game.mobile_mode and action.begins_with("build:"): b.disabled=false
   b.tooltip_text=(building_effect(action.trim_prefix("build:"))+"\n" if action.begins_with("build:") else "")+(reason if reason!="" else "Ready")
  refresh_context()
@@ -737,6 +743,7 @@ func update_match():
   room_selected_summary.tooltip_text="B opens buildings; click valid floor to buy. P shows room planning. V moves a selected machine during preparation/intermission. F toggles 8-unit snap; Shift positions finely. Right-click / Esc cancels."
  if is_instance_valid(upgrade_notice):
   var q=game.presentation.notices;upgrade_notice.text=q.text();upgrade_notice.tooltip_text=q.details();upgrade_notice.visible=upgrade_notice.text!="" and not warning_box.visible and not game.construction.active() and not game.construction.planning
+ RunChoiceInterface.refresh(self)
  if not game.mobile_mode:teammates.update()
 
 func show_result():
@@ -796,14 +803,14 @@ func action_reason(action: String) -> String:
  if action == "bed":
   if room.bed_level >= Catalog.BED_COST.size(): return "Maximum bed level."
   if room.door_level < maxi(0,room.bed_level-1): return "Requires door level %d." % room.bed_level
-  gold = Catalog.BED_COST[room.bed_level]
-  power = Catalog.BED_POWER[room.bed_level]
+  gold = BalanceRules.structure("bed",room.bed_level,game.model.balance_version).x
+  power = BalanceRules.structure("bed",room.bed_level,game.model.balance_version).y
  elif action == "door":
   if room.door_hp <= 0: return "Door destroyed."
   if room.door_level >= Catalog.DOOR_COST.size(): return "Maximum door level."
   if room.bed_level < maxi(0,room.door_level-1): return "Requires bed level %d." % room.door_level
-  gold = Catalog.DOOR_COST[room.door_level]
-  power = Catalog.DOOR_POWER[room.door_level]
+  gold = BalanceRules.structure("door",room.door_level,game.model.balance_version).x
+  power = BalanceRules.structure("door",room.door_level,game.model.balance_version).y
  elif action == "repair":
   if room.door_hp <= 0: return "Destroyed doors cannot be repaired."
   if room.door_hp >= room.max_hp(): return "Door already at full health."
@@ -817,17 +824,19 @@ func action_reason(action: String) -> String:
    if room.buildings.has(game.selected_tile): return "Tile occupied. Select an empty numbered tile."
   var kind = action.trim_prefix("build:")
   if kind == "heavy" and room.bed_level < 1: return "Requires bed level 2."
-  gold = Catalog.BUILDINGS[kind].gold
-  power = Catalog.BUILDINGS[kind].power
+  var need=BalanceRules.build_requirement(kind,room)
+  if need!="":return need
+  gold = room.base_price(kind).x
+  power = room.base_price(kind).y
  elif action == "sell":
   if not room.buildings.has(game.selected_tile): return "Select an existing building."
  elif action == "upgrade":
   if not room.buildings.has(game.selected_tile): return "Select an existing building."
   var b = room.buildings[game.selected_tile]
-  if room.strategy_enabled and b.level==4:return ""
-  var requirement=Catalog.upgrade_requirement(b.kind,b.level,room.bed_level,room.door_level)
+  if room.strategy_enabled and b.level==4:return BalanceRules.requirement(b.kind,b.level,room.bed_level,room.door_level,room.balance_version)
+  var requirement=BalanceRules.requirement(b.kind,b.level,room.bed_level,room.door_level,room.balance_version)
   if requirement!="":return requirement
-  var price=Catalog.upgrade_cost(b.kind,b.level)
+  var price=BalanceRules.upgrade(b.kind,b.level,game.model.balance_version)
   gold=price.x
   power=price.y
  if action.begins_with("build:") or action=="upgrade":
@@ -848,7 +857,7 @@ func tile_description(room: RoomState) -> String:
 
 
 func building_effect(kind: String) -> String:
- var data = Catalog.BUILDINGS[kind]
+ var data = Catalog.BUILDINGS[kind].duplicate(true);var actual=BalanceRules.price(kind,game.model.balance_version);data.gold=actual.x;data.power=actual.y
  match kind:
   "barrier":return "Returns a bounded share of eligible Magic damage to its attacker with a shared cooldown. Original damage still reaches the door; no recursive reflection. Physical bypasses it. Highest-level unit per kind; equal levels use first placed."
   "plasma":return "Absorbs part of Magic damage into finite temporary storage. Spends stored energy on limited intact-door healing; never grants Gold or Electricity. Physical bypasses it. Highest-level unit per kind; equal levels use first placed."

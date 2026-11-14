@@ -1,8 +1,9 @@
 class_name PracticeRoom
 extends RefCounted
-static func configure(model,archetype="crusher",boss=false,selected: Array=["shield","repair"],map="abandoned_dorm") -> TemporaryLoadout:
+static func configure(model,archetype="crusher",boss=false,selected: Array=["shield","repair"],map="abandoned_dorm",version=1) -> TemporaryLoadout:
  model.reset(17);model.run_kind="practice";model.tutorial_mode=false
  model.configure_map(map);model.configure_match("standard",{});model.configure_strategy(17,archetype)
+ model.configure_balance(version)
  model.claim_room(0);model.player_position=model.player().bed_position();model.sleep_player()
  var room=model.player();room.gold=20000;room.electricity=5000
  for i in range(4):room.upgrade_bed();room.upgrade_door()

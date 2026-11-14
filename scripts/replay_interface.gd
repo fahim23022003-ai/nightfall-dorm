@@ -90,10 +90,13 @@ func show_intermission():
   preparing=false;intermission_saved=game.profile.checkpoint_endless(game.model)
  var run=game.model.endless;var next=run.scaling(run.wave+1)
  page("WAVE %d CLEARED" % run.completed,"1 REVIEW (optional) → 2 PREPARE (optional) → 3 CHOOSE AID + OMEN → 4 CONTINUE. Economy is frozen; one aid starts one next wave.","intermission")
+ if game.model.balance_version==2:
+  ui.button("Run perks / merchant",Vector2(650,69),func():RunChoiceInterface.show(ui),280,32)
  ui.button("Wave report",Vector2(940,69),func():SessionInterface.wave_report(ui),235,32)
  ui.premium_icon("endless",Vector2(107,191),Vector2(110,110))
  ui.label_at("NEXT · WAVE %d · %s" % [run.wave+1,StrategyCatalog.ARCHETYPES[StrategyCatalog.ARCHETYPE_IDS[posmod(run.seed_value+run.wave,StrategyCatalog.ARCHETYPE_IDS.size())]].name],Vector2(245,193),30,900,true)
  paragraph("HP ×%.2f · damage ×%.2f · contact repairs %.0f%% of mode value%s\nBest cleared: %d · Gold %.2f · Electricity %.2f" % [next.hunter_hp,next.hunter_damage,run.repair_effectiveness(run.wave+1)*100," · REAPER ENCOUNTER" if run.boss_wave(run.wave+1) else "",game.profile.replay.best_wave,game.model.player().gold,game.model.player().electricity],Vector2(245,245),900,70,18)
+ ui.label_at(BalanceRules.title(game.model.balance_version),Vector2(107,151),12,1050)
  var offered=NightOmens.offered(run.completed)
  var completed_omen=run.omen.last
  if not completed_omen.is_empty() and completed_omen.wave==run.completed:

@@ -21,6 +21,10 @@ static func valid(data) -> bool:
 static func valid_active(entry: Dictionary) -> bool:
  if not ReplaySnapshot.whole(entry.get("legendary_used"),0,1):return false
  if not ReplaySnapshot.whole(entry.get("run_id"),1) or entry.get("run_id")!=entry.get("id") or entry.get("map","") not in MapCatalog.IDS or not ReplaySnapshot.whole(entry.get("seed"),1,999999) or not entry.get("feather_used") is bool or not entry.get("rescue_used") is bool or not entry.get("use_counts") is Dictionary or entry.use_counts.size()>20:return false
+ if entry.has("temporary_used"):
+  if not entry.temporary_used is Dictionary or entry.temporary_used.size()>18:return false
+  for id in entry.temporary_used:
+   if id not in RunChoices.ITEMS+["latch","reserve","grid"] or not ReplaySnapshot.whole(entry.temporary_used[id],0,100000):return false
  for key in entry.use_counts:
   if key not in ItemCatalog.IDS or not ReplaySnapshot.whole(entry.use_counts[key],0,ItemCatalog.MAX_STOCK):return false
  return true

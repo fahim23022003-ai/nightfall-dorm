@@ -85,9 +85,9 @@ func reason(model,index: int) -> String:
  var room=model.rooms[index]
  if not model.running or model.result!="" or not room.alive or not room.sleeping:return "An active occupied room is required."
  if room.expansion_tier>=7:return "Ultimate room complete: capacity sixteen buildings."
- var next=room.expansion_tier+1;var required=1 if next==1 else 2 if next<4 else 3 if next<6 else 4
+ var next=room.expansion_tier+1;var required=next if room.balance_version==2 else 1 if next==1 else 2 if next<4 else 3 if next<6 else 4
  if room.bed_level<required or room.door_level<required:return "Requires Bed and Door level %d." % (required+1)
- var cost=COSTS[next]
+ var cost=BalanceRules.expansion(next,room.balance_version)
  if room.gold+0.00001<cost.x:return "Need %.1f more Gold." % (cost.x-room.gold)
  if room.electricity+0.00001<cost.y:return "Need %.1f more Electricity." % (cost.y-room.electricity)
  return ""
@@ -98,7 +98,7 @@ func purchase(model,index: int=-1,npc: bool=false) -> bool:
  if error!="":
   if index>=0 and index<model.rooms.size():model.rooms[index].last_error=error
   return false
- var room=model.rooms[index];var next=room.expansion_tier+1;var cost=COSTS[next]
+ var room=model.rooms[index];var next=room.expansion_tier+1;var cost=BalanceRules.expansion(next,room.balance_version)
  var layout=geometry(model.map_id,index,next,legacy)
  if layout.is_empty():return false
  if room.spatial!=null:

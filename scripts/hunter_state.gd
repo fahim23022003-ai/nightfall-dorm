@@ -253,9 +253,10 @@ func target_score(room: RoomState) -> float:
  var approach=room.door_approach()
  var dps=0.0
  var repair=0.0
- var relay=1.0
+ var relay=0.0
  for building in room.buildings.values():
   if building.kind=="enhancer": relay+=Catalog.support_output("enhancer",building.level)*StrategyCatalog.support(building).get("output",1.0)
+ relay=BalanceRules.amplifier(relay,room.balance_version)
  for tile in room.buildings:
   var b=room.buildings[tile]
   if b.kind in DefenseEffects.WEAPONS:

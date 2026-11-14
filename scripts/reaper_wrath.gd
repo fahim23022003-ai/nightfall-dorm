@@ -115,9 +115,11 @@ func complete(model):
   "enhanced_undead":model.spawn_undead(4,true)
   "soul_steal":
    var g=minf(room.gold,18.0);var e=minf(room.electricity,5.0);room.gold-=g;room.electricity-=e
+   room.ledger.note("loss",[g,e],"Reaper channel: "+id)
    model.record_event("boss_resource_drain",cast_target,{"gold":g,"power":e,"ability":id})
   "soul_reaper":
    var g=room.gold*.5;var e=room.electricity*.5;room.gold-=g;room.electricity-=e
+   room.ledger.note("loss",[g,e],"Reaper channel: "+id)
    model.record_event("boss_resource_drain",cast_target,{"gold":g,"power":e,"ability":id})
   "scythe_slash":
    if model.hunter.target==cast_target and model.hunter.position.distance_to(room.door_approach())<=3:model.apply_room_damage(cast_target,room.max_hp()*.25,"Scythe Slash",1,true)
