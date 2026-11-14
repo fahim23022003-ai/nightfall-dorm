@@ -1,3 +1,52 @@
+# Phase 11 — First Night Experience & Player-Ready Polish
+
+Baseline work: `a075a924a1514c0585b8a8ce30d002195f01dc28`.
+Recoverable implementation: `3748f646e6bedead1cb854981c0060d4df7b4ffa`.
+Final production / private Windows build source: `8a291761f40cf1d1f972481a7d04f228423ddd36`.
+Delivery verification: all52 selected invocations PASS after recorded reruns.
+Final evidence/report commit and verified remote equality are recorded in delivery.
+Production sources match the private Windows ZIP source stated above.
+
+Implemented: contextual guided first night, actual B shortcut in tutorial/Campaign,
+working recovery, explicit fresh Skip, saved completion and existing Replay. One
+optional objective/highlight, saved Show/Minimal/Off guidance with urgent warnings
+preserved. Visual Wave Report tiles, actual ranked bars and Economy/Defense/Skills,
+bounded factual optional insights. Live report remains open. Clear numbered
+intermission; bounded/coalesced upgrade notices with urgent priority, retained
+prestige effects. Advanced HP values fit their reserved HUD lane.
+
+Godot4.6.3 Linux: baseline136, new feature21, final UI28, actual-input journey152,
+earned twin continuation75, rendered earned16/46 path81, supplemental layouts10
+pass. Earned waves46–50 clear with identical Show/Off combat/economy/RNG results.
+52 relevant gate invocations PASS after three documented reruns: two old literal
+button locators updated; broad navigation required234.8s rather than the initial
+180s allowance (354,377 checks,540 approaches pass). Original failures retained.
+Final manifest: docs/evidence/first-night/verification-summary.json.
+Do not rerun already-passed unrelated gates without new changes.
+
+28 genuine720p/900p/1080p PNGs, uncut122.75s scripted engine video and separate
+actual Master PCM are indexed in docs/evidence/first-night/INDEX.md. Fresh tutorial
+and ordinary opening use default funds/unchanged temporary practice credits;
+explicitly separate earned45 copy uses only its original paid resources. No human
+playtest, natural1→46 claim or native Windows execution is inferred.
+
+Portable `/workspace/NightfallDorm-Windows.zip` exported from official matching
+4.6.3 templates, outside Git;77 embedded-pack launch/resource checks on Linux
+pass. No public release. Native Windows and owner/Adie approval are UNVERIFIED.
+Human checklist: docs/PHASE_11_HUMAN_PLAYTEST_CHECKLIST.md.
+Report: docs/PHASE_11_FIRST_NIGHT_REPORT.md.
+
+Canonical earned45 SHA256 still
+`d20b729b9ccc804d0c1aa55874558da07c503d02cfa2455ee3a0f9b63f86eb1b`.
+Seven regenerated historical result files archived in first-night and originals
+restored. All15 buildings, prices, AI/combat rules, Omens, progression and save
+resource ledgers preserved. Main untouched; no agents or future phase.
+
+Older checkpoints retained below. Phase11 supersedes Phase10's known upgrade
+announcement overlap limitation.
+
+---
+
 # Phase 10 — Every Night Feels Different delivered
 
 Verified baseline: `work` at `6f9e6536ff767598ba455fc27e5bf6377515eea8`.

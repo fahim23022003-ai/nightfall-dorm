@@ -1,0 +1,65 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:34)
+       [2] settle (res://tests/replay_ui.gd:12)
+ERROR: PREMIUM UI: actual intermission preparation exposes real building controls
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] endless_flow (res://tests/replay_ui.gd:58)
+       [2] settle (res://tests/replay_ui.gd:12)
+SCRIPT ERROR: Invalid assignment of property or key 'position' with value of type 'Vector2' on a base object of type 'previously freed'.
+          at: GameInterface.refresh_context (res://scripts/interface.gd:466)
+          GDScript backtrace (most recent call first):
+              [0] refresh_context (res://scripts/interface.gd:466)
+              [1] open_context (res://scripts/interface.gd:431)
+              [2] endless_flow (res://tests/replay_ui.gd:62)
+              [3] settle (res://tests/replay_ui.gd:12)
+SCRIPT ERROR: Invalid access to property or key 'upgrade' on a base object of type 'Dictionary'.
+          at: endless_flow (res://tests/replay_ui.gd:63)
+          GDScript backtrace (most recent call first):
+              [0] endless_flow (res://tests/replay_ui.gd:63)
+              [1] settle (res://tests/replay_ui.gd:12)
+REPLAY_RESULT_METADATA=Long night / The Stalker / Underground Laboratory / ruleset 4
+ERROR: PREMIUM UI: campaign preserved after all replay modes
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] cosmetics_and_pity (res://tests/replay_ui.gd:169)
+       [2] settle (res://tests/replay_ui.gd:12)
+ERROR: PREMIUM UI: real mouse target is available
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] click (res://tests/premium_strategy_ui.gd:34)
+       [2] settle (res://tests/replay_ui.gd:12)
+ERROR: PREMIUM UI: actual intermission preparation exposes real building controls
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] endless_flow (res://tests/replay_ui.gd:58)
+       [2] settle (res://tests/replay_ui.gd:12)
+SCRIPT ERROR: Invalid assignment of property or key 'position' with value of type 'Vector2' on a base object of type 'previously freed'.
+          at: GameInterface.refresh_context (res://scripts/interface.gd:466)
+          GDScript backtrace (most recent call first):
+              [0] refresh_context (res://scripts/interface.gd:466)
+              [1] open_context (res://scripts/interface.gd:431)
+              [2] endless_flow (res://tests/replay_ui.gd:62)
+              [3] settle (res://tests/replay_ui.gd:12)
+SCRIPT ERROR: Invalid access to property or key 'upgrade' on a base object of type 'Dictionary'.
+          at: endless_flow (res://tests/replay_ui.gd:63)
+          GDScript backtrace (most recent call first):
+              [0] endless_flow (res://tests/replay_ui.gd:63)
+              [1] settle (res://tests/replay_ui.gd:12)
+REPLAY_RESULT_METADATA=HELL MODE / The Ravager / Underground Laboratory / ruleset 4
+ERROR: PREMIUM UI: campaign preserved after all replay modes
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] cosmetics_and_pity (res://tests/replay_ui.gd:169)
+       [2] settle (res://tests/replay_ui.gd:12)
+REPLAY_UI_CHECKS=1593 FAILURES=6

@@ -1,0 +1,66 @@
+{
+  "sample_rate": 44100,
+  "channels": 2,
+  "seconds": 119.35056689342403,
+  "video_seconds": 122.75,
+  "clipped_samples": 0,
+  "segments": [
+    {
+      "label": "SCRIPTED REAL INPUT \u00b7 fresh profile \u00b7 standard built-in practice credits only",
+      "start": 0.0,
+      "end": 3.962815,
+      "rms_dbfs": -35.858809330996245,
+      "peak_dbfs": -21.811365966573018,
+      "clipped_samples": 0
+    },
+    {
+      "label": "Walk into the highlighted room \u00b7 genuine held WASD",
+      "start": 3.962815,
+      "end": 12.033315,
+      "rms_dbfs": -39.05024347897624,
+      "peak_dbfs": -24.816606317369597,
+      "clipped_samples": 0
+    },
+    {
+      "label": "Real practice combat \u00b7 actual Hunter strikes and automatic turret shots",
+      "start": 12.033315,
+      "end": 17.1238,
+      "rms_dbfs": -36.59312549821121,
+      "peak_dbfs": -22.766517852265235,
+      "clipped_samples": 0
+    },
+    {
+      "label": "First ordinary Campaign match \u00b7 default wallet / no injected progression",
+      "start": 17.1238,
+      "end": 41.630908,
+      "rms_dbfs": -34.70568726944108,
+      "peak_dbfs": -20.28781345483933,
+      "clipped_samples": 0
+    },
+    {
+      "label": "SEPARATE SCENARIO \u00b7 canonical earned45 copy \u00b7 original earned funds, no HP edits",
+      "start": 41.630908,
+      "end": 67.545135,
+      "rms_dbfs": -37.478386735992885,
+      "peak_dbfs": -18.793699088459974,
+      "clipped_samples": 0
+    },
+    {
+      "label": "Save & Continue \u00b7 actual checkpoint roundtrip, no altered Hunter HP",
+      "start": 67.545135,
+      "end": 71.156812,
+      "rms_dbfs": -37.41344079715673,
+      "peak_dbfs": -23.716973732063984,
+      "clipped_samples": 0
+    },
+    {
+      "label": "LIVE earned46 \u00b7 normal runtime until actual wave completion",
+      "start": 71.156812,
+      "end": 119.35056689342403,
+      "rms_dbfs": -35.8410656620176,
+      "peak_dbfs": -21.288629656085213,
+      "clipped_samples": 0
+    }
+  ],
+  "verification": "Actual engine Master PCM via Dummy driver; separate clocks are not synchronized. No human listening or native Windows audio-device verification."
+}

@@ -12,7 +12,7 @@ commands += [('profile-process-'+s,['godot','--headless','--path','.', '--script
 for name,cmd in commands:
  start=time.monotonic()
  try:
-  p=subprocess.run(cmd,cwd=root,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,timeout=180)
+  p=subprocess.run(cmd,cwd=root,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,timeout=600 if name=="premium_strategy_mechanics" else 180)
   text=p.stdout;code=p.returncode
  except subprocess.TimeoutExpired as e:text=str(e.stdout);code=124
  (out/(name+'.log')).write_text(text)

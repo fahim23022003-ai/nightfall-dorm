@@ -1,0 +1,214 @@
+{
+ "checks": 81,
+ "conditions": "Canonical earned45 state, actual paid repairs/four Arc10 from original funds, real full-health wave46 via normal live Game._process. No HP/Gold injections; scripted fixture, not human gameplay.",
+ "failures": 0,
+ "metrics": {
+  "activations": 2,
+  "affordable_damage": 3329.39951424001,
+  "allied": 0.0,
+  "available": true,
+  "buildings": {
+   "0": {
+    "damage": 14664.3660833281,
+    "hits": 44,
+    "id": 0,
+    "kind": "turret",
+    "level": 10
+   },
+   "1": {
+    "damage": 14731.1999999999,
+    "hits": 44,
+    "id": 1,
+    "kind": "turret",
+    "level": 10
+   },
+   "16": {
+    "damage": 32256.0,
+    "hits": 32,
+    "id": 16,
+    "kind": "heavy",
+    "level": 10
+   },
+   "17": {
+    "damage": 31248.0,
+    "hits": 31,
+    "id": 17,
+    "kind": "heavy",
+    "level": 10
+   },
+   "18": {
+    "damage": 28224.0,
+    "hits": 28,
+    "id": 18,
+    "kind": "heavy",
+    "level": 10
+   },
+   "19": {
+    "damage": 28224.0,
+    "hits": 28,
+    "id": 19,
+    "kind": "heavy",
+    "level": 10
+   },
+   "6": {
+    "damage": 31248.0,
+    "hits": 31,
+    "id": 6,
+    "kind": "heavy",
+    "level": 10
+   }
+  },
+  "door": 3329.39951424001,
+  "evidence_version": 1,
+  "gold": 20763.7025251519,
+  "magic_blocked": 206.19493056,
+  "observations": {
+   "0": {
+    "cooldown": 26.240728,
+    "disabled": 2.973656,
+    "door_out": 0.0,
+    "id": 0,
+    "kind": "turret",
+    "level": 10.0,
+    "no_target": 4.013656,
+    "out": 9.668746,
+    "power_low": 0.0,
+    "ready": 0.03896,
+    "seen": 42.9357459999999
+   },
+   "1": {
+    "cooldown": 26.715157,
+    "disabled": 2.973656,
+    "door_out": 0.0,
+    "id": 1,
+    "kind": "turret",
+    "level": 10.0,
+    "no_target": 4.013656,
+    "out": 9.200626,
+    "power_low": 0.0,
+    "ready": 0.032651,
+    "seen": 42.9357459999999
+   },
+   "16": {
+    "cooldown": 26.777655,
+    "disabled": 2.973656,
+    "door_out": 0.0,
+    "id": 16,
+    "kind": "heavy",
+    "level": 10,
+    "no_target": 4.013656,
+    "out": 9.13498,
+    "power_low": 0.0,
+    "ready": 0.035799,
+    "seen": 42.9357459999999
+   },
+   "17": {
+    "cooldown": 26.785215,
+    "disabled": 2.973656,
+    "door_out": 0.0,
+    "id": 17,
+    "kind": "heavy",
+    "level": 10,
+    "no_target": 4.013656,
+    "out": 9.084923,
+    "power_low": 0.0,
+    "ready": 0.078296,
+    "seen": 42.9357459999999
+   },
+   "18": {
+    "cooldown": 24.247112,
+    "disabled": 2.973656,
+    "door_out": 0.0,
+    "id": 18,
+    "kind": "heavy",
+    "level": 10,
+    "no_target": 4.013656,
+    "out": 11.662924,
+    "power_low": 0.0,
+    "ready": 0.038398,
+    "seen": 42.9357459999999
+   },
+   "19": {
+    "cooldown": 24.077252,
+    "disabled": 2.973656,
+    "door_out": 0.0,
+    "id": 19,
+    "kind": "heavy",
+    "level": 10,
+    "no_target": 4.013656,
+    "out": 11.830812,
+    "power_low": 0.0,
+    "ready": 0.04037,
+    "seen": 42.9357459999999
+   },
+   "6": {
+    "cooldown": 26.279688,
+    "disabled": 2.973656,
+    "door_out": 0.0,
+    "id": 6,
+    "kind": "heavy",
+    "level": 10.0,
+    "no_target": 4.013656,
+    "out": 9.626649,
+    "power_low": 0.0,
+    "ready": 0.042097,
+    "seen": 42.9357459999999
+   }
+  },
+  "other": 4.43391667172546,
+  "power": 257.2019925696,
+  "repair": 4269.29540604241,
+  "skills": [
+   "overload",
+   "interference",
+   "electric"
+  ],
+  "top": [
+   {
+    "damage": 32256.0,
+    "hits": 32,
+    "id": 16,
+    "kind": "heavy",
+    "level": 10
+   },
+   {
+    "damage": 31248.0,
+    "hits": 31,
+    "id": 6,
+    "kind": "heavy",
+    "level": 10
+   },
+   {
+    "damage": 31248.0,
+    "hits": 31,
+    "id": 17,
+    "kind": "heavy",
+    "level": 10
+   },
+   {
+    "damage": 28224.0,
+    "hits": 28,
+    "id": 18,
+    "kind": "heavy",
+    "level": 10
+   },
+   {
+    "damage": 28224.0,
+    "hits": 28,
+    "id": 19,
+    "kind": "heavy",
+    "level": 10
+   },
+   {
+    "damage": 14731.1999999999,
+    "hits": 44,
+    "id": 1,
+    "kind": "turret",
+    "level": 10
+   }
+  ],
+  "total": 180600.0,
+  "version": 1
+ },
+ "source_sha256": "d20b729b9ccc804d0c1aa55874558da07c503d02cfa2455ee3a0f9b63f86eb1b"
+}

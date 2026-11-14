@@ -1,0 +1,1320 @@
+{
+ "checkpoint": {
+  "boosts": {
+
+  },
+  "bot_claimed": 5,
+  "completed": 46,
+  "damage": 3387611.16437731,
+  "defense_refractory": {
+
+  },
+  "difficulty": "hell",
+  "eliminations": 5,
+  "evolution": {
+   "acquired": [
+    "door_crusher",
+    "dread_aura",
+    "deaths_momentum",
+    "cursed_armor",
+    "soul_hunger"
+   ],
+   "credited": {
+    "owner:1": 1.0,
+    "owner:2": 4.0,
+    "owner:3": 2.0,
+    "owner:4": 3.0,
+    "owner:5": 5.0
+   },
+   "drain_clock": 0.0,
+   "evolution_level": 10,
+   "final_revealed": true,
+   "momentum": 0.0,
+   "shadow_cooldown": 0.0,
+   "shield": 0.0,
+   "shield_remaining": 0.0
+  },
+  "expansion": {
+   "legacy": false,
+   "levels": [
+    7,
+    3,
+    3,
+    1,
+    1,
+    1
+   ],
+   "version": 1
+  },
+  "items": {
+   "burn_remaining": 0,
+   "control_recovery": 0.0,
+   "cooldown": 0.0,
+   "decoy_point": [
+    0.0,
+    0.0
+   ],
+   "feather_used": false,
+   "guardian_shield_hp": 0.0,
+   "legendary_used": 0,
+   "shield_hp": 0.0,
+   "timers": {
+
+   },
+   "trap": {
+
+   }
+  },
+  "lure_refractory": 0.0,
+  "map": "cursed_mansion",
+  "omen": {
+   "last": {
+
+   },
+   "paid_wave": 0,
+   "reward": [
+    0.0,
+    0.0
+   ],
+   "selected": ""
+  },
+  "player_position": [
+   58.0,
+   175.0
+  ],
+  "player_room": 0,
+  "preparation": 4396.39999999845,
+  "repair_refractory": {
+
+  },
+  "rng": "7545494456709103692",
+  "rooms": [
+   {
+    "alive": true,
+    "bed_branch": "lucid",
+    "bed_level": 9.0,
+    "bot_timer": 0.0,
+    "breach_reacted": false,
+    "buildings": [
+     {
+      "cooldown": 0.302117972027971,
+      "instance_id": 1,
+      "invested_gold": 1765.0,
+      "invested_power": 262.0,
+      "kind": "turret",
+      "level": 10.0,
+      "position": [
+       150.0,
+       205.0
+      ],
+      "specialization": "precision",
+      "tile": 0
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 3,
+      "invested_gold": 210.0,
+      "invested_power": 18.0,
+      "kind": "generator",
+      "level": 4.0,
+      "position": [
+       266.0,
+       205.0
+      ],
+      "specialization": "",
+      "tile": 2
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 6,
+      "invested_gold": 3505.0,
+      "invested_power": 697.0,
+      "kind": "repair",
+      "level": 10.0,
+      "position": [
+       266.0,
+       147.0
+      ],
+      "specialization": "sustain",
+      "tile": 5
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 5,
+      "invested_gold": 180.0,
+      "invested_power": 25.0,
+      "kind": "economy",
+      "level": 3.0,
+      "position": [
+       208.0,
+       147.0
+      ],
+      "specialization": "",
+      "tile": 4
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 4,
+      "invested_gold": 180.0,
+      "invested_power": 25.0,
+      "kind": "economy",
+      "level": 3.0,
+      "position": [
+       150.0,
+       147.0
+      ],
+      "specialization": "",
+      "tile": 3
+     },
+     {
+      "cooldown": 0.422219536130535,
+      "instance_id": 2,
+      "invested_gold": 1765.0,
+      "invested_power": 262.0,
+      "kind": "turret",
+      "level": 10.0,
+      "position": [
+       208.0,
+       205.0
+      ],
+      "specialization": "precision",
+      "tile": 1
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 12,
+      "invested_gold": 7855.0,
+      "invested_power": 1567.0,
+      "kind": "barrier",
+      "level": 10.0,
+      "position": [
+       150.0,
+       -85.0
+      ],
+      "specialization": "mirror",
+      "tile": 15
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 11,
+      "invested_gold": 8725.0,
+      "invested_power": 1828.0,
+      "kind": "plasma",
+      "level": 10.0,
+      "position": [
+       266.0,
+       -27.0
+      ],
+      "specialization": "reservoir",
+      "tile": 14
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 10,
+      "invested_gold": 7420.0,
+      "invested_power": 1480.0,
+      "kind": "antenna",
+      "level": 10.0,
+      "position": [
+       208.0,
+       -27.0
+      ],
+      "specialization": "dome",
+      "tile": 13
+     },
+     {
+      "cooldown": 0.600263818181818,
+      "instance_id": 7,
+      "invested_gold": 8290.0,
+      "invested_power": 1306.0,
+      "kind": "heavy",
+      "level": 10.0,
+      "position": [
+       150.0,
+       89.0
+      ],
+      "specialization": "focus",
+      "tile": 6
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 9,
+      "invested_gold": 455.0,
+      "invested_power": 74.0,
+      "kind": "enhancer",
+      "level": 4.0,
+      "position": [
+       150.0,
+       -27.0
+      ],
+      "specialization": "",
+      "tile": 12
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 8,
+      "invested_gold": 3505.0,
+      "invested_power": 697.0,
+      "kind": "repair",
+      "level": 10.0,
+      "position": [
+       266.0,
+       31.0
+      ],
+      "specialization": "sustain",
+      "tile": 11
+     },
+     {
+      "cooldown": 0.162604151515151,
+      "instance_id": 102,
+      "invested_gold": 8290.0,
+      "invested_power": 1306.0,
+      "kind": "heavy",
+      "level": 10,
+      "position": [
+       210.0,
+       86.0
+      ],
+      "specialization": "focus",
+      "tile": 16
+     },
+     {
+      "cooldown": 0.0711374848484836,
+      "instance_id": 112,
+      "invested_gold": 8290.0,
+      "invested_power": 1306.0,
+      "kind": "heavy",
+      "level": 10,
+      "position": [
+       266.0,
+       86.0
+      ],
+      "specialization": "focus",
+      "tile": 17
+     },
+     {
+      "cooldown": 0.121137484848484,
+      "instance_id": 122,
+      "invested_gold": 8290.0,
+      "invested_power": 1306.0,
+      "kind": "heavy",
+      "level": 10,
+      "position": [
+       154.0,
+       30.0
+      ],
+      "specialization": "focus",
+      "tile": 18
+     },
+     {
+      "cooldown": 0.25604481818182,
+      "instance_id": 132,
+      "invested_gold": 8290.0,
+      "invested_power": 1306.0,
+      "kind": "heavy",
+      "level": 10,
+      "position": [
+       210.0,
+       30.0
+      ],
+      "specialization": "focus",
+      "tile": 19
+     }
+    ],
+    "closed": true,
+    "construction": {
+     "next_id": 20,
+     "used_legacy": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      11,
+      12,
+      13,
+      14,
+      15
+     ],
+     "version": 1
+    },
+    "construction_actions": 141.0,
+    "coupon_armed": false,
+    "damage_dealt": 2401938.10552948,
+    "door_branch": "bulwark",
+    "door_damage_taken": 116178.302875962,
+    "door_hp": 6193.13724458703,
+    "door_level": 9.0,
+    "door_multiplier": 1.0,
+    "electricity": 3112.40964408485,
+    "gold": 1908439.57920809,
+    "income_multiplier": 1.0,
+    "income_total": 2032057.57920808,
+    "magic_state": {
+     "disrupt": 0.0,
+     "disrupt_guard": 0.0,
+     "heal_cd": 0.0,
+     "reflect_cd": 0.0,
+     "shield": 202.5,
+     "shield_cd": 3.48315515151513,
+     "storage_time": 9.43995348484844,
+     "stored": 0.0
+    },
+    "main_damage": 2387258.10552948,
+    "minion_damage": 14680.0,
+    "occupied_seconds": 4434.61953884706,
+    "owner": 0,
+    "position": [
+     0.0,
+     0.0
+    ],
+    "power_multiplier": 1.0,
+    "profile": "player",
+    "repair_actions": 1730.0,
+    "repair_factor": 1.0,
+    "rescue_fraction": 0.0,
+    "rescue_used": false,
+    "shots": 5039.0,
+    "sleeping": true,
+    "spent": 123445.0,
+    "temporary_income": 1.0,
+    "trait": "power",
+    "turret_multiplier": 1.0
+   },
+   {
+    "alive": false,
+    "bed_branch": "",
+    "bed_level": 4.0,
+    "bot_timer": 0.500000000000595,
+    "breach_reacted": true,
+    "buildings": [
+     {
+      "cooldown": 0.0529411764705921,
+      "instance_id": 1,
+      "invested_gold": 140.0,
+      "invested_power": 18.0,
+      "kind": "turret",
+      "level": 4.0,
+      "specialization": "",
+      "tile": 0
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 2,
+      "invested_gold": 210.0,
+      "invested_power": 18.0,
+      "kind": "generator",
+      "level": 4.0,
+      "specialization": "",
+      "tile": 1
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 3,
+      "invested_gold": 280.0,
+      "invested_power": 53.0,
+      "kind": "repair",
+      "level": 4.0,
+      "specialization": "",
+      "tile": 2
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 4,
+      "invested_gold": 315.0,
+      "invested_power": 46.0,
+      "kind": "economy",
+      "level": 4.0,
+      "specialization": "",
+      "tile": 3
+     },
+     {
+      "cooldown": 0.529411764705888,
+      "instance_id": 5,
+      "invested_gold": 665.0,
+      "invested_power": 102.0,
+      "kind": "heavy",
+      "level": 4.0,
+      "specialization": "",
+      "tile": 4
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 6,
+      "invested_gold": 455.0,
+      "invested_power": 74.0,
+      "kind": "enhancer",
+      "level": 4.0,
+      "specialization": "",
+      "tile": 5
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 7,
+      "invested_gold": 595.0,
+      "invested_power": 116.0,
+      "kind": "antenna",
+      "level": 4.0,
+      "specialization": "",
+      "tile": 6
+     }
+    ],
+    "closed": true,
+    "construction_actions": 31.0,
+    "coupon_armed": false,
+    "damage_dealt": 490111.622493621,
+    "door_branch": "bulwark",
+    "door_damage_taken": 61284.3257193313,
+    "door_hp": 0.0,
+    "door_level": 6.0,
+    "door_multiplier": 1.0,
+    "electricity": 13647.7098000082,
+    "gold": 185490.39397007,
+    "income_multiplier": 1.0,
+    "income_total": 193119.393970067,
+    "magic_state": {
+     "disrupt": 0.0,
+     "disrupt_guard": 0.0,
+     "heal_cd": 0.0,
+     "reflect_cd": 0.0,
+     "shield": 0.0,
+     "shield_cd": 0.0,
+     "storage_time": 0.0,
+     "stored": 0.0
+    },
+    "main_damage": 484051.622493621,
+    "minion_damage": 6060.0,
+    "occupied_seconds": 2949.69999999841,
+    "owner": 1,
+    "position": [
+     498.0,
+     140.0
+    ],
+    "power_multiplier": 1.0,
+    "profile": "guard",
+    "repair_actions": 88.0,
+    "repair_factor": 1.0,
+    "rescue_fraction": 0.0,
+    "rescue_used": false,
+    "shots": 3121.0,
+    "sleeping": false,
+    "spent": 7636.0,
+    "temporary_income": 1.0,
+    "trait": "economy",
+    "turret_multiplier": 1.0
+   },
+   {
+    "alive": false,
+    "bed_branch": "",
+    "bed_level": 4.0,
+    "bot_timer": 0.7,
+    "breach_reacted": true,
+    "buildings": [
+     {
+      "cooldown": 0.0382352941176513,
+      "instance_id": 1,
+      "invested_gold": 140.0,
+      "invested_power": 18.0,
+      "kind": "turret",
+      "level": 4.0,
+      "specialization": "",
+      "tile": 0
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 2,
+      "invested_gold": 210.0,
+      "invested_power": 18.0,
+      "kind": "generator",
+      "level": 4.0,
+      "specialization": "",
+      "tile": 1
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 3,
+      "invested_gold": 280.0,
+      "invested_power": 53.0,
+      "kind": "repair",
+      "level": 4.0,
+      "specialization": "",
+      "tile": 2
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 4,
+      "invested_gold": 315.0,
+      "invested_power": 46.0,
+      "kind": "economy",
+      "level": 4.0,
+      "specialization": "",
+      "tile": 3
+     },
+     {
+      "cooldown": 0.485294117647065,
+      "instance_id": 5,
+      "invested_gold": 665.0,
+      "invested_power": 102.0,
+      "kind": "heavy",
+      "level": 4.0,
+      "specialization": "",
+      "tile": 4
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 6,
+      "invested_gold": 455.0,
+      "invested_power": 74.0,
+      "kind": "enhancer",
+      "level": 4.0,
+      "specialization": "",
+      "tile": 5
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 7,
+      "invested_gold": 595.0,
+      "invested_power": 116.0,
+      "kind": "antenna",
+      "level": 4.0,
+      "specialization": "",
+      "tile": 6
+     }
+    ],
+    "closed": true,
+    "construction_actions": 31.0,
+    "coupon_armed": false,
+    "damage_dealt": 494202.786354377,
+    "door_branch": "bulwark",
+    "door_damage_taken": 71617.2441261792,
+    "door_hp": 0.0,
+    "door_level": 6.0,
+    "door_multiplier": 1.0,
+    "electricity": 15921.7680000063,
+    "gold": 150250.637519972,
+    "income_multiplier": 1.0,
+    "income_total": 158161.637519985,
+    "magic_state": {
+     "disrupt": 0.0,
+     "disrupt_guard": 0.0,
+     "heal_cd": 0.0,
+     "reflect_cd": 0.0,
+     "shield": 0.0,
+     "shield_cd": 0.0,
+     "storage_time": 0.0,
+     "stored": 0.0
+    },
+    "main_damage": 488662.786354377,
+    "minion_damage": 5540.0,
+    "occupied_seconds": 3134.89999999824,
+    "owner": 3,
+    "position": [
+     978.0,
+     175.0
+    ],
+    "power_multiplier": 1.0,
+    "profile": "economist",
+    "repair_actions": 113.0,
+    "repair_factor": 1.0,
+    "rescue_fraction": 0.0,
+    "rescue_used": false,
+    "shots": 3346.0,
+    "sleeping": false,
+    "spent": 7936.0,
+    "temporary_income": 1.0,
+    "trait": "fortified",
+    "turret_multiplier": 1.0
+   },
+   {
+    "alive": false,
+    "bed_branch": "",
+    "bed_level": 2.0,
+    "bot_timer": 0.200000000000012,
+    "breach_reacted": true,
+    "buildings": [
+     {
+      "cooldown": 0.700000000000002,
+      "instance_id": 1,
+      "invested_gold": 20.0,
+      "invested_power": 0.0,
+      "kind": "turret",
+      "level": 1.0,
+      "specialization": "",
+      "tile": 0
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 2,
+      "invested_gold": 30.0,
+      "invested_power": 0.0,
+      "kind": "generator",
+      "level": 1.0,
+      "specialization": "",
+      "tile": 1
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 3,
+      "invested_gold": 40.0,
+      "invested_power": 5.0,
+      "kind": "repair",
+      "level": 1.0,
+      "specialization": "",
+      "tile": 2
+     },
+     {
+      "cooldown": 0.7,
+      "instance_id": 4,
+      "invested_gold": 95.0,
+      "invested_power": 12.0,
+      "kind": "heavy",
+      "level": 1.0,
+      "specialization": "",
+      "tile": 3
+     }
+    ],
+    "closed": true,
+    "construction_actions": 5.0,
+    "coupon_armed": false,
+    "damage_dealt": 451.0,
+    "door_branch": "",
+    "door_damage_taken": 760.9235,
+    "door_hp": 0.0,
+    "door_level": 2.0,
+    "door_multiplier": 1.0,
+    "electricity": 98.6800000000022,
+    "gold": 45.3999999999989,
+    "income_multiplier": 1.0,
+    "income_total": 595.400000000001,
+    "magic_state": {
+     "disrupt": 0.0,
+     "disrupt_guard": 0.0,
+     "heal_cd": 0.0,
+     "reflect_cd": 0.0,
+     "shield": 0.0,
+     "shield_cd": 0.0,
+     "storage_time": 0.0,
+     "stored": 0.0
+    },
+    "main_damage": 451.0,
+    "minion_damage": 0.0,
+    "occupied_seconds": 93.399999999999,
+    "owner": 4,
+    "position": [
+     58.0,
+     685.0
+    ],
+    "power_multiplier": 1.0,
+    "profile": "gunner",
+    "repair_actions": 5.0,
+    "repair_factor": 1.0,
+    "rescue_fraction": 0.0,
+    "rescue_used": false,
+    "shots": 29.0,
+    "sleeping": false,
+    "spent": 575.0,
+    "temporary_income": 1.0,
+    "trait": "power",
+    "turret_multiplier": 1.0
+   },
+   {
+    "alive": false,
+    "bed_branch": "",
+    "bed_level": 2.0,
+    "bot_timer": 0.00000000000000879,
+    "breach_reacted": true,
+    "buildings": [
+     {
+      "cooldown": 0.00000000000000258,
+      "instance_id": 1,
+      "invested_gold": 20.0,
+      "invested_power": 0.0,
+      "kind": "turret",
+      "level": 1.0,
+      "specialization": "",
+      "tile": 0
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 2,
+      "invested_gold": 30.0,
+      "invested_power": 0.0,
+      "kind": "generator",
+      "level": 1.0,
+      "specialization": "",
+      "tile": 1
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 3,
+      "invested_gold": 40.0,
+      "invested_power": 5.0,
+      "kind": "repair",
+      "level": 1.0,
+      "specialization": "",
+      "tile": 2
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 4,
+      "invested_gold": 45.0,
+      "invested_power": 4.0,
+      "kind": "economy",
+      "level": 1.0,
+      "specialization": "",
+      "tile": 3
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 5,
+      "invested_gold": 65.0,
+      "invested_power": 8.0,
+      "kind": "enhancer",
+      "level": 1.0,
+      "specialization": "",
+      "tile": 4
+     }
+    ],
+    "closed": true,
+    "construction_actions": 6.0,
+    "coupon_armed": false,
+    "damage_dealt": 235.349999999997,
+    "door_branch": "",
+    "door_damage_taken": 819.730000000002,
+    "door_hp": 0.0,
+    "door_level": 2.0,
+    "door_multiplier": 1.0,
+    "electricity": 50.2149999999994,
+    "gold": 54.0680000000004,
+    "income_multiplier": 1.0,
+    "income_total": 619.067999999999,
+    "magic_state": {
+     "disrupt": 0.0,
+     "disrupt_guard": 0.0,
+     "heal_cd": 0.0,
+     "reflect_cd": 0.0,
+     "shield": 0.0,
+     "shield_cd": 0.0,
+     "storage_time": 0.0,
+     "stored": 0.0
+    },
+    "main_damage": 235.349999999997,
+    "minion_damage": 0.0,
+    "occupied_seconds": 78.9999999999998,
+    "owner": 2,
+    "position": [
+     498.0,
+     685.0
+    ],
+    "power_multiplier": 1.0,
+    "profile": "engineer",
+    "repair_actions": 5.0,
+    "repair_factor": 1.0,
+    "rescue_fraction": 0.0,
+    "rescue_used": false,
+    "shots": 23.0,
+    "sleeping": false,
+    "spent": 590.0,
+    "temporary_income": 1.0,
+    "trait": "economy",
+    "turret_multiplier": 1.0
+   },
+   {
+    "alive": false,
+    "bed_branch": "",
+    "bed_level": 2.0,
+    "bot_timer": 1.00000000000002,
+    "breach_reacted": true,
+    "buildings": [
+     {
+      "cooldown": 0.300000000000002,
+      "instance_id": 1,
+      "invested_gold": 20.0,
+      "invested_power": 0.0,
+      "kind": "turret",
+      "level": 1.0,
+      "specialization": "",
+      "tile": 0
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 2,
+      "invested_gold": 30.0,
+      "invested_power": 0.0,
+      "kind": "generator",
+      "level": 1.0,
+      "specialization": "",
+      "tile": 1
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 3,
+      "invested_gold": 40.0,
+      "invested_power": 5.0,
+      "kind": "repair",
+      "level": 1.0,
+      "specialization": "",
+      "tile": 2
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 4,
+      "invested_gold": 45.0,
+      "invested_power": 4.0,
+      "kind": "economy",
+      "level": 1.0,
+      "specialization": "",
+      "tile": 3
+     },
+     {
+      "cooldown": 0.00000000000000013,
+      "instance_id": 5,
+      "invested_gold": 95.0,
+      "invested_power": 12.0,
+      "kind": "heavy",
+      "level": 1.0,
+      "specialization": "",
+      "tile": 4
+     },
+     {
+      "cooldown": 0.0,
+      "instance_id": 6,
+      "invested_gold": 65.0,
+      "invested_power": 8.0,
+      "kind": "enhancer",
+      "level": 1.0,
+      "specialization": "",
+      "tile": 5
+     }
+    ],
+    "closed": true,
+    "construction_actions": 7.0,
+    "coupon_armed": false,
+    "damage_dealt": 672.299999999996,
+    "door_branch": "",
+    "door_damage_taken": 775.1235,
+    "door_hp": 0.0,
+    "door_level": 2.0,
+    "door_multiplier": 1.0,
+    "electricity": 95.578000000002,
+    "gold": 158.797439999999,
+    "income_multiplier": 1.0,
+    "income_total": 770.797440000006,
+    "magic_state": {
+     "disrupt": 0.0,
+     "disrupt_guard": 0.0,
+     "heal_cd": 0.0,
+     "reflect_cd": 0.0,
+     "shield": 0.0,
+     "shield_cd": 0.0,
+     "storage_time": 0.0,
+     "stored": 0.0
+    },
+    "main_damage": 672.299999999996,
+    "minion_damage": 0.0,
+    "occupied_seconds": 117.799999999998,
+    "owner": 5,
+    "position": [
+     978.0,
+     685.0
+    ],
+    "power_multiplier": 1.0,
+    "profile": "balanced",
+    "repair_actions": 1.0,
+    "repair_factor": 1.0,
+    "rescue_fraction": 0.0,
+    "rescue_used": false,
+    "shots": 30.0,
+    "sleeping": false,
+    "spent": 637.0,
+    "temporary_income": 1.0,
+    "trait": "fortified",
+    "turret_multiplier": 1.0
+   }
+  ],
+  "ruleset": 5,
+  "run_id": 1,
+  "seed": 115,
+  "shots": 11588,
+  "time": 4435.31953884706,
+  "use_counts": {
+
+  },
+  "version": 2,
+  "wave_metrics": {
+   "activations": 2,
+   "affordable_damage": 3329.39951424001,
+   "allied": 0.0,
+   "available": true,
+   "buildings": {
+    "0": {
+     "damage": 14731.1999999999,
+     "hits": 44,
+     "id": 0,
+     "kind": "turret",
+     "level": 10
+    },
+    "1": {
+     "damage": 14731.1999999999,
+     "hits": 44,
+     "id": 1,
+     "kind": "turret",
+     "level": 10
+    },
+    "16": {
+     "damage": 32189.1660833282,
+     "hits": 32,
+     "id": 16,
+     "kind": "heavy",
+     "level": 10
+    },
+    "17": {
+     "damage": 31248.0,
+     "hits": 31,
+     "id": 17,
+     "kind": "heavy",
+     "level": 10
+    },
+    "18": {
+     "damage": 28224.0,
+     "hits": 28,
+     "id": 18,
+     "kind": "heavy",
+     "level": 10
+    },
+    "19": {
+     "damage": 28224.0,
+     "hits": 28,
+     "id": 19,
+     "kind": "heavy",
+     "level": 10
+    },
+    "6": {
+     "damage": 31248.0,
+     "hits": 31,
+     "id": 6,
+     "kind": "heavy",
+     "level": 10
+    }
+   },
+   "door": 3329.39951424001,
+   "evidence_version": 1,
+   "gold": 20754.0397089182,
+   "magic_blocked": 206.19493056,
+   "observations": {
+    "0": {
+     "cooldown": 26.2637070909092,
+     "disabled": 2.95683366666667,
+     "door_out": 0.0,
+     "id": 0,
+     "kind": "turret",
+     "level": 10.0,
+     "no_target": 4.00757575757576,
+     "out": 9.64431033333332,
+     "power_low": 0.0,
+     "ready": 0.047112,
+     "seen": 42.9195388484848
+    },
+    "1": {
+     "cooldown": 26.7551294242425,
+     "disabled": 2.95683366666667,
+     "door_out": 0.0,
+     "id": 1,
+     "kind": "turret",
+     "level": 10.0,
+     "no_target": 4.00757575757576,
+     "out": 9.15864266666665,
+     "power_low": 0.0,
+     "ready": 0.0413573333333348,
+     "seen": 42.9195388484848
+    },
+    "16": {
+     "cooldown": 26.7551294242425,
+     "disabled": 2.95683366666667,
+     "door_out": 0.0,
+     "id": 16,
+     "kind": "heavy",
+     "level": 10,
+     "no_target": 4.00757575757576,
+     "out": 9.15864266666665,
+     "power_low": 0.0,
+     "ready": 0.0413573333333348,
+     "seen": 42.9195388484848
+    },
+    "17": {
+     "cooldown": 26.7077390909092,
+     "disabled": 2.95683366666667,
+     "door_out": 0.0,
+     "id": 17,
+     "kind": "heavy",
+     "level": 10,
+     "no_target": 4.00757575757576,
+     "out": 9.15572366666666,
+     "power_low": 0.0,
+     "ready": 0.0916666666666667,
+     "seen": 42.9195388484848
+    },
+    "18": {
+     "cooldown": 24.2567034242425,
+     "disabled": 2.95683366666667,
+     "door_out": 0.0,
+     "id": 18,
+     "kind": "heavy",
+     "level": 10,
+     "no_target": 4.00757575757576,
+     "out": 11.648426,
+     "power_low": 0.0,
+     "ready": 0.05,
+     "seen": 42.9195388484848
+    },
+    "19": {
+     "cooldown": 24.1217960909092,
+     "disabled": 2.95683366666667,
+     "door_out": 0.0,
+     "id": 19,
+     "kind": "heavy",
+     "level": 10,
+     "no_target": 4.00757575757576,
+     "out": 11.7833333333333,
+     "power_low": 0.0,
+     "ready": 0.05,
+     "seen": 42.9195388484848
+    },
+    "6": {
+     "cooldown": 26.3108190909092,
+     "disabled": 2.95683366666667,
+     "door_out": 0.0,
+     "id": 6,
+     "kind": "heavy",
+     "level": 10.0,
+     "no_target": 4.00757575757576,
+     "out": 9.59630233333332,
+     "power_low": 0.0,
+     "ready": 0.048008,
+     "seen": 42.9195388484848
+    }
+   },
+   "power": 257.082298329601,
+   "repair": 4265.40479452746,
+   "skills": [
+    "overload",
+    "interference",
+    "electric"
+   ],
+   "total": 180600.0,
+   "version": 1
+  }
+ },
+ "conditions": "Canonical earned45 copy. Disposable profile transaction ID rebound; actual paid upgrades and four Arc10 from canonical earnings. Scripted real UI input, actual save/resume and full-health wave46 through normal Game._process. No injected Gold/Electricity or HP edits.",
+ "metrics": {
+  "activations": 2,
+  "affordable_damage": 3329.39951424001,
+  "allied": 0.0,
+  "available": true,
+  "buildings": {
+   "0": {
+    "damage": 14731.1999999999,
+    "hits": 44,
+    "id": 0,
+    "kind": "turret",
+    "level": 10
+   },
+   "1": {
+    "damage": 14731.1999999999,
+    "hits": 44,
+    "id": 1,
+    "kind": "turret",
+    "level": 10
+   },
+   "16": {
+    "damage": 32189.1660833282,
+    "hits": 32,
+    "id": 16,
+    "kind": "heavy",
+    "level": 10
+   },
+   "17": {
+    "damage": 31248.0,
+    "hits": 31,
+    "id": 17,
+    "kind": "heavy",
+    "level": 10
+   },
+   "18": {
+    "damage": 28224.0,
+    "hits": 28,
+    "id": 18,
+    "kind": "heavy",
+    "level": 10
+   },
+   "19": {
+    "damage": 28224.0,
+    "hits": 28,
+    "id": 19,
+    "kind": "heavy",
+    "level": 10
+   },
+   "6": {
+    "damage": 31248.0,
+    "hits": 31,
+    "id": 6,
+    "kind": "heavy",
+    "level": 10
+   }
+  },
+  "door": 3329.39951424001,
+  "evidence_version": 1,
+  "gold": 20754.0397089182,
+  "magic_blocked": 206.19493056,
+  "observations": {
+   "0": {
+    "cooldown": 26.2637070909092,
+    "disabled": 2.95683366666667,
+    "door_out": 0.0,
+    "id": 0,
+    "kind": "turret",
+    "level": 10.0,
+    "no_target": 4.00757575757576,
+    "out": 9.64431033333332,
+    "power_low": 0.0,
+    "ready": 0.047112,
+    "seen": 42.9195388484848
+   },
+   "1": {
+    "cooldown": 26.7551294242425,
+    "disabled": 2.95683366666667,
+    "door_out": 0.0,
+    "id": 1,
+    "kind": "turret",
+    "level": 10.0,
+    "no_target": 4.00757575757576,
+    "out": 9.15864266666665,
+    "power_low": 0.0,
+    "ready": 0.0413573333333348,
+    "seen": 42.9195388484848
+   },
+   "16": {
+    "cooldown": 26.7551294242425,
+    "disabled": 2.95683366666667,
+    "door_out": 0.0,
+    "id": 16,
+    "kind": "heavy",
+    "level": 10,
+    "no_target": 4.00757575757576,
+    "out": 9.15864266666665,
+    "power_low": 0.0,
+    "ready": 0.0413573333333348,
+    "seen": 42.9195388484848
+   },
+   "17": {
+    "cooldown": 26.7077390909092,
+    "disabled": 2.95683366666667,
+    "door_out": 0.0,
+    "id": 17,
+    "kind": "heavy",
+    "level": 10,
+    "no_target": 4.00757575757576,
+    "out": 9.15572366666666,
+    "power_low": 0.0,
+    "ready": 0.0916666666666667,
+    "seen": 42.9195388484848
+   },
+   "18": {
+    "cooldown": 24.2567034242425,
+    "disabled": 2.95683366666667,
+    "door_out": 0.0,
+    "id": 18,
+    "kind": "heavy",
+    "level": 10,
+    "no_target": 4.00757575757576,
+    "out": 11.648426,
+    "power_low": 0.0,
+    "ready": 0.05,
+    "seen": 42.9195388484848
+   },
+   "19": {
+    "cooldown": 24.1217960909092,
+    "disabled": 2.95683366666667,
+    "door_out": 0.0,
+    "id": 19,
+    "kind": "heavy",
+    "level": 10,
+    "no_target": 4.00757575757576,
+    "out": 11.7833333333333,
+    "power_low": 0.0,
+    "ready": 0.05,
+    "seen": 42.9195388484848
+   },
+   "6": {
+    "cooldown": 26.3108190909092,
+    "disabled": 2.95683366666667,
+    "door_out": 0.0,
+    "id": 6,
+    "kind": "heavy",
+    "level": 10.0,
+    "no_target": 4.00757575757576,
+    "out": 9.59630233333332,
+    "power_low": 0.0,
+    "ready": 0.048008,
+    "seen": 42.9195388484848
+   }
+  },
+  "other": 4.43391667172546,
+  "power": 257.082298329601,
+  "repair": 4265.40479452746,
+  "skills": [
+   "overload",
+   "interference",
+   "electric"
+  ],
+  "top": [
+   {
+    "damage": 32189.1660833282,
+    "hits": 32,
+    "id": 16,
+    "kind": "heavy",
+    "level": 10
+   },
+   {
+    "damage": 31248.0,
+    "hits": 31,
+    "id": 6,
+    "kind": "heavy",
+    "level": 10
+   },
+   {
+    "damage": 31248.0,
+    "hits": 31,
+    "id": 17,
+    "kind": "heavy",
+    "level": 10
+   },
+   {
+    "damage": 28224.0,
+    "hits": 28,
+    "id": 18,
+    "kind": "heavy",
+    "level": 10
+   },
+   {
+    "damage": 28224.0,
+    "hits": 28,
+    "id": 19,
+    "kind": "heavy",
+    "level": 10
+   },
+   {
+    "damage": 14731.1999999999,
+    "hits": 44,
+    "id": 0,
+    "kind": "turret",
+    "level": 10
+   }
+  ],
+  "total": 180600.0,
+  "version": 1
+ },
+ "source_sha256": "d20b729b9ccc804d0c1aa55874558da07c503d02cfa2455ee3a0f9b63f86eb1b"
+}

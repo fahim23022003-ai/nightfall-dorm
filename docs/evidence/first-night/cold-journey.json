@@ -1,0 +1,44 @@
+{
+ "checks": 151,
+ "cold_rm_cash": 0,
+ "cold_xp": 0,
+ "conditions": "Actual production scene, fresh isolated profile, scripted InputEvent keyboard/mouse through normal controller and UI. No teleports, no manual wallet/stat/XP assignments. Existing tutorial's own temporary funding and weak encounter are unchanged. First ordinary match uses its default economy. Not human or native Windows testing.",
+ "failures": 0,
+ "profile_path": "user://phase11-cold-12689263.json",
+ "seconds": 121.343764,
+ "timeline": [
+  {
+   "seconds": 0.0,
+   "text": "SCRIPTED REAL INPUT · fresh profile · standard built-in practice credits only"
+  },
+  {
+   "seconds": 3.962815,
+   "text": "Walk into the highlighted room · genuine held WASD"
+  },
+  {
+   "seconds": 12.033315,
+   "text": "Real practice combat · actual Hunter strikes and automatic turret shots"
+  },
+  {
+   "seconds": 17.1238,
+   "text": "First ordinary Campaign match · default wallet / no injected progression"
+  },
+  {
+   "seconds": 41.630908,
+   "text": "SEPARATE SCENARIO · canonical earned45 copy · original earned funds, no HP edits"
+  },
+  {
+   "seconds": 67.545135,
+   "text": "Save & Continue · actual checkpoint roundtrip, no altered Hunter HP"
+  },
+  {
+   "seconds": 71.156812,
+   "text": "LIVE earned46 · normal runtime until actual wave completion"
+  },
+  {
+   "seconds": 119.355914,
+   "text": "NEXT WAVE · report complete, defenses/resources persist"
+  }
+ ],
+ "tutorial_completed": true
+}
