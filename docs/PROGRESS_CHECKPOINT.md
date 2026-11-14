@@ -1,7 +1,7 @@
 # Phase 12B — Fair Difficulty, Real Counters and Recovery
 
 Started clean on work at1b6d76e017e50c4b26ff0c73bb2ff279ef4721a5.
-Recoverable implementation35c813c; final source/export receipt follows in report.
+Recoverable implementation35c813c; final implemented source d1882972556ecf87b70a3cf10b4f01125e74882c.
 No main/public release, new mode, price/income changes or new progression lock.
 
 Implemented current2 hard Campaign half-speed post-opening growth clock/caps,
@@ -34,8 +34,10 @@ before restoration. Exact tests/failed experiments/denominators remain available
 
 Read docs/PHASE_12B_FAIR_DIFFICULTY_REPORT.md,
 docs/PHASE_12B_OWNER_PLAYTEST_CHECKLIST.md and docs/evidence/fair-difficulty/INDEX.md.
-Final Windows export, verified work push and clean-tree receipt are the remaining
-delivery actions. No unrelated next phase started.
+Windows ZIP113,661,407bytes exported from that source: embedded-pack Linux77/0
+plus current-economy17/0 and clean ZIP CRC, Phase12B checklist included. Receipt
+under docs/evidence/fair-difficulty/windows. Exact final work push/clean-tree
+verification is supplied with the delivery message. No unrelated phase started.
 
 ---
 

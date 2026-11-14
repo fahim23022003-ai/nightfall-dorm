@@ -52,3 +52,7 @@ Older iterations are retained separately under `screens-prior-iterations/`; they
 - [Independent audit](independent-audit.md), [independent frozen-checkpoint QA](independent-qa/QA.md), [final focused checks](final-focused.json), [full140 regressions](regressions/regular.json)
 
 All old failures and staged/controlled comparisons remain in this directory. No test strategy is asserted optimal. Detailed traces are complete for designated seeds1/2; other seeds have complete outcomes/final accounts, not invented per-hit histories. Final report explains the remaining allied-carry/Normal-greed limitations.
+
+## Private Windows build
+
+[Build receipt](windows/windows-artifact.json), [embedded pack Linux77 checks](windows/windows-pack-final.log), [current-economy17 checks](exported-economy-pack.log), [ZIP CRC validation](windows/zip-validation.json). Source `d1882972556ecf87b70a3cf10b4f01125e74882c`; native Windows UNVERIFIED. No public release.

@@ -2,7 +2,7 @@
 
 **IMPLEMENTED:** focused current-rule pressure/recovery, budgeted/range-aware bots, actual repair limitations and factual pre-breach defeat windows. **TESTED:** matched original-source comparisons, fresh Campaign strategies, independent correctness QA, normal-speed input victory and real720p/1080p rendering. **UNVERIFIED:** native Windows, human enjoyment/readability, optimal strategies and every possible build/seed. No new content/mode, price/income inflation or progression lock.
 
-Started clean on `work` at `1b6d76e017e50c4b26ff0c73bb2ff279ef4721a5`. Recoverable implementation `35c813c`; final implemented source: SOURCE_PENDING. Delivery HEAD/push verification is supplied with the final message and export receipt. Main is not modified; no release is published.
+Started clean on `work` at `1b6d76e017e50c4b26ff0c73bb2ff279ef4721a5`. Recoverable implementation `35c813c`; final implemented source: `d1882972556ecf87b70a3cf10b4f01125e74882c`. Delivery HEAD/push verification is supplied with the final message and export receipt. Main is not modified; no release is published.
 
 ## Entry conditions and methodology
 
@@ -117,7 +117,7 @@ Separate actual Master FLAC190.125s, RMS.01371/peak.11438, zero full-scale sampl
 
 Simulation screenshots use accelerated actual model ticks and frozen real Godot frames with captions; they are not human or normal-speed footage. The repair-inspector example uses an explicitly prepared budget/HP state solely for UI. Prior/stale iterations are kept in a separate folder and not labelled final. All final screenshots were inspected directly; no mockups or generated gameplay. Evolution announcements still temporarily occupy room space, but urgent door HP/recovery and actions remain readable. Human comfort/perceptual judgement remains unverified.
 
-Windows package: EXPORT_PENDING. No native Windows execution, human enjoyment, subjective sound quality, exhaustive maxed-room stalemate proof or hours-long hardware performance is claimed. Existing all-map/AI/Reaper/item regressions are distinct from full new2 strategy playthroughs of every later Campaign stage, which were not exhaustively sampled.
+Windows package: Exported private portable x64 ZIP113,661,407bytes from `d1882972556ecf87b70a3cf10b4f01125e74882c`; embedded-pack Linux77/0 plus current-economy17/0, ZIP CRC clean and Phase12B checklist included. [Receipt](evidence/fair-difficulty/windows/windows-artifact.json). Source SHA may precede final documentation-only delivery HEAD. No native Windows execution, human enjoyment, subjective sound quality, exhaustive maxed-room stalemate proof or hours-long hardware performance is claimed. Existing all-map/AI/Reaper/item regressions are distinct from full new2 strategy playthroughs of every later Campaign stage, which were not exhaustively sampled.
 
 ## Completion
 
