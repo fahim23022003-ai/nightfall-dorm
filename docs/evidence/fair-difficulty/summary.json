@@ -1,0 +1,2560 @@
+{
+  "before-disciplined-hard-bulwark": {
+    "groups": {
+      "all": {
+        "n": 20,
+        "outcomes": {
+          "defeat": 20
+        },
+        "victory_time": null,
+        "death_time": {
+          "n": 20,
+          "min": 177.299999999994,
+          "median": 188.499999999994,
+          "max": 238.999999999991
+        },
+        "breach_time": {
+          "n": 20,
+          "min": 174.399999999994,
+          "median": 185.799999999994,
+          "max": 236.399999999991
+        },
+        "repair_gold": {
+          "n": 20,
+          "min": 36.0,
+          "median": 126.0,
+          "max": 378.0
+        },
+        "player_damage": {
+          "n": 20,
+          "min": 450.0,
+          "median": 747.0,
+          "max": 1231.19999999999
+        },
+        "door_damage": {
+          "n": 2,
+          "min": 1566.3281250000011,
+          "median": 1958.1531249999998,
+          "max": 2349.9781249999987
+        },
+        "actual_paid_decision_gap": {
+          "n": 306,
+          "min": 0.999999999999943,
+          "median": 13.0000000000002,
+          "max": 37.9999999999979
+        },
+        "final_gold": {
+          "n": 20,
+          "min": 17.82,
+          "median": 26.9200000000004,
+          "max": 38.2900000000006
+        },
+        "final_income": {
+          "n": 20,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        }
+      },
+      "original1-5": {
+        "n": 5,
+        "outcomes": {
+          "defeat": 5
+        },
+        "victory_time": null,
+        "death_time": {
+          "n": 5,
+          "min": 181.599999999994,
+          "median": 188.799999999994,
+          "max": 220.799999999992
+        },
+        "breach_time": {
+          "n": 5,
+          "min": 178.299999999994,
+          "median": 185.999999999994,
+          "max": 218.499999999992
+        },
+        "repair_gold": {
+          "n": 5,
+          "min": 108.0,
+          "median": 126.0,
+          "max": 324.0
+        },
+        "player_damage": {
+          "n": 5,
+          "min": 450.0,
+          "median": 792.0,
+          "max": 1069.19999999999
+        },
+        "door_damage": {
+          "n": 2,
+          "min": 1566.3281250000011,
+          "median": 1958.1531249999998,
+          "max": 2349.9781249999987
+        },
+        "actual_paid_decision_gap": {
+          "n": 82,
+          "min": 0.999999999999943,
+          "median": 8.99999999999948,
+          "max": 37.9999999999979
+        },
+        "final_gold": {
+          "n": 5,
+          "min": 24.8700000000001,
+          "median": 29.1900000000001,
+          "max": 32.0700000000006
+        },
+        "final_income": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        }
+      },
+      "heldout6-20": {
+        "n": 15,
+        "outcomes": {
+          "defeat": 15
+        },
+        "victory_time": null,
+        "death_time": {
+          "n": 15,
+          "min": 177.299999999994,
+          "median": 188.499999999994,
+          "max": 238.999999999991
+        },
+        "breach_time": {
+          "n": 15,
+          "min": 174.399999999994,
+          "median": 185.699999999994,
+          "max": 236.399999999991
+        },
+        "repair_gold": {
+          "n": 15,
+          "min": 36.0,
+          "median": 126.0,
+          "max": 378.0
+        },
+        "player_damage": {
+          "n": 15,
+          "min": 594.0,
+          "median": 738.0,
+          "max": 1231.19999999999
+        },
+        "door_damage": null,
+        "actual_paid_decision_gap": {
+          "n": 224,
+          "min": 0.999999999999943,
+          "median": 13.0000000000002,
+          "max": 37.9999999999979
+        },
+        "final_gold": {
+          "n": 15,
+          "min": 17.82,
+          "median": 25.9300000000005,
+          "max": 38.2900000000006
+        },
+        "final_income": {
+          "n": 15,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        }
+      }
+    },
+    "by_archetype": {
+      "crusher": {
+        "defeat": 3
+      },
+      "electric": {
+        "defeat": 3
+      },
+      "ravager": {
+        "defeat": 4
+      },
+      "stalker": {
+        "defeat": 3
+      },
+      "storm": {
+        "defeat": 3
+      },
+      "witch": {
+        "defeat": 4
+      }
+    }
+  },
+  "before-disciplined-hard-assault": {
+    "groups": {
+      "all": {
+        "n": 20,
+        "outcomes": {
+          "defeat": 20
+        },
+        "victory_time": null,
+        "death_time": {
+          "n": 20,
+          "min": 175.199999999994,
+          "median": 186.149999999994,
+          "max": 212.899999999992
+        },
+        "breach_time": {
+          "n": 20,
+          "min": 171.799999999995,
+          "median": 183.049999999994,
+          "max": 208.799999999992
+        },
+        "repair_gold": {
+          "n": 20,
+          "min": 160.0,
+          "median": 184.0,
+          "max": 256.0
+        },
+        "player_damage": {
+          "n": 20,
+          "min": 685.740000000005,
+          "median": 1323.0,
+          "max": 2748.0
+        },
+        "door_damage": {
+          "n": 2,
+          "min": 1297.2499999999998,
+          "median": 1308.7343750000002,
+          "max": 1320.2187500000007
+        },
+        "actual_paid_decision_gap": {
+          "n": 426,
+          "min": 0.999999999999943,
+          "median": 0.999999999999943,
+          "max": 30.9999999999999
+        },
+        "final_gold": {
+          "n": 20,
+          "min": 23.2300000000022,
+          "median": 33.6800000000026,
+          "max": 143.309999999999
+        },
+        "final_income": {
+          "n": 20,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        }
+      },
+      "original1-5": {
+        "n": 5,
+        "outcomes": {
+          "defeat": 5
+        },
+        "victory_time": null,
+        "death_time": {
+          "n": 5,
+          "min": 182.099999999994,
+          "median": 186.799999999994,
+          "max": 209.399999999992
+        },
+        "breach_time": {
+          "n": 5,
+          "min": 178.399999999994,
+          "median": 183.699999999994,
+          "max": 205.199999999993
+        },
+        "repair_gold": {
+          "n": 5,
+          "min": 176.0,
+          "median": 192.0,
+          "max": 192.0
+        },
+        "player_damage": {
+          "n": 5,
+          "min": 685.740000000005,
+          "median": 1360.0,
+          "max": 2455.0
+        },
+        "door_damage": {
+          "n": 2,
+          "min": 1297.2499999999998,
+          "median": 1308.7343750000002,
+          "max": 1320.2187500000007
+        },
+        "actual_paid_decision_gap": {
+          "n": 108,
+          "min": 0.999999999999943,
+          "median": 0.999999999999943,
+          "max": 30.9999999999999
+        },
+        "final_gold": {
+          "n": 5,
+          "min": 23.2300000000022,
+          "median": 34.3700000000025,
+          "max": 78.6724000000016
+        },
+        "final_income": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        }
+      },
+      "heldout6-20": {
+        "n": 15,
+        "outcomes": {
+          "defeat": 15
+        },
+        "victory_time": null,
+        "death_time": {
+          "n": 15,
+          "min": 175.199999999994,
+          "median": 185.699999999994,
+          "max": 212.899999999992
+        },
+        "breach_time": {
+          "n": 15,
+          "min": 171.799999999995,
+          "median": 182.499999999994,
+          "max": 208.799999999992
+        },
+        "repair_gold": {
+          "n": 15,
+          "min": 160.0,
+          "median": 176.0,
+          "max": 256.0
+        },
+        "player_damage": {
+          "n": 15,
+          "min": 910.037421875002,
+          "median": 1286.0,
+          "max": 2748.0
+        },
+        "door_damage": null,
+        "actual_paid_decision_gap": {
+          "n": 318,
+          "min": 0.999999999999943,
+          "median": 0.999999999999943,
+          "max": 30.9999999999999
+        },
+        "final_gold": {
+          "n": 15,
+          "min": 23.4700000000025,
+          "median": 29.7100000000023,
+          "max": 143.309999999999
+        },
+        "final_income": {
+          "n": 15,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        }
+      }
+    },
+    "by_archetype": {
+      "crusher": {
+        "defeat": 3
+      },
+      "electric": {
+        "defeat": 3
+      },
+      "ravager": {
+        "defeat": 4
+      },
+      "stalker": {
+        "defeat": 3
+      },
+      "storm": {
+        "defeat": 3
+      },
+      "witch": {
+        "defeat": 4
+      }
+    }
+  },
+  "before-disciplined-hell-bulwark": {
+    "groups": {
+      "all": {
+        "n": 20,
+        "outcomes": {
+          "defeat": 20
+        },
+        "victory_time": null,
+        "death_time": {
+          "n": 20,
+          "min": 153.099999999996,
+          "median": 160.399999999995,
+          "max": 190.199999999993
+        },
+        "breach_time": {
+          "n": 20,
+          "min": 150.499999999996,
+          "median": 157.449999999995,
+          "max": 186.599999999994
+        },
+        "repair_gold": {
+          "n": 20,
+          "min": 36.0,
+          "median": 110.0,
+          "max": 176.0
+        },
+        "player_damage": {
+          "n": 20,
+          "min": 342.0,
+          "median": 576.0,
+          "max": 756.0
+        },
+        "door_damage": {
+          "n": 2,
+          "min": 1024.2499999999995,
+          "median": 1039.9999999999995,
+          "max": 1055.7499999999998
+        },
+        "actual_paid_decision_gap": {
+          "n": 251,
+          "min": 0.999999999999943,
+          "median": 13.0000000000002,
+          "max": 37.9999999999979
+        },
+        "final_gold": {
+          "n": 20,
+          "min": 23.3500000000001,
+          "median": 128.1840000000005,
+          "max": 203.478
+        },
+        "final_income": {
+          "n": 20,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        }
+      },
+      "original1-5": {
+        "n": 5,
+        "outcomes": {
+          "defeat": 5
+        },
+        "victory_time": null,
+        "death_time": {
+          "n": 5,
+          "min": 157.599999999995,
+          "median": 161.499999999995,
+          "max": 184.299999999994
+        },
+        "breach_time": {
+          "n": 5,
+          "min": 154.799999999995,
+          "median": 158.599999999995,
+          "max": 181.099999999994
+        },
+        "repair_gold": {
+          "n": 5,
+          "min": 36.0,
+          "median": 112.0,
+          "max": 128.0
+        },
+        "player_damage": {
+          "n": 5,
+          "min": 388.799999999996,
+          "median": 450.0,
+          "max": 612.0
+        },
+        "door_damage": {
+          "n": 2,
+          "min": 1024.2499999999995,
+          "median": 1039.9999999999995,
+          "max": 1055.7499999999998
+        },
+        "actual_paid_decision_gap": {
+          "n": 62,
+          "min": 0.999999999999943,
+          "median": 13.499999999999702,
+          "max": 37.9999999999979
+        },
+        "final_gold": {
+          "n": 5,
+          "min": 25.5900000000002,
+          "median": 125.098,
+          "max": 156.65
+        },
+        "final_income": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        }
+      },
+      "heldout6-20": {
+        "n": 15,
+        "outcomes": {
+          "defeat": 15
+        },
+        "victory_time": null,
+        "death_time": {
+          "n": 15,
+          "min": 153.099999999996,
+          "median": 159.299999999995,
+          "max": 190.199999999993
+        },
+        "breach_time": {
+          "n": 15,
+          "min": 150.499999999996,
+          "median": 156.399999999995,
+          "max": 186.599999999994
+        },
+        "repair_gold": {
+          "n": 15,
+          "min": 48.0,
+          "median": 108.0,
+          "max": 176.0
+        },
+        "player_damage": {
+          "n": 15,
+          "min": 342.0,
+          "median": 576.0,
+          "max": 756.0
+        },
+        "door_damage": null,
+        "actual_paid_decision_gap": {
+          "n": 189,
+          "min": 0.999999999999943,
+          "median": 13.0000000000002,
+          "max": 37.9999999999979
+        },
+        "final_gold": {
+          "n": 15,
+          "min": 23.3500000000001,
+          "median": 131.270000000001,
+          "max": 203.478
+        },
+        "final_income": {
+          "n": 15,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        }
+      }
+    },
+    "by_archetype": {
+      "crusher": {
+        "defeat": 3
+      },
+      "electric": {
+        "defeat": 4
+      },
+      "ravager": {
+        "defeat": 3
+      },
+      "stalker": {
+        "defeat": 3
+      },
+      "storm": {
+        "defeat": 3
+      },
+      "witch": {
+        "defeat": 4
+      }
+    }
+  },
+  "before-disciplined-hell-assault": {
+    "groups": {
+      "all": {
+        "n": 20,
+        "outcomes": {
+          "defeat": 20
+        },
+        "victory_time": null,
+        "death_time": {
+          "n": 20,
+          "min": 153.699999999996,
+          "median": 161.34999999999502,
+          "max": 182.499999999994
+        },
+        "breach_time": {
+          "n": 20,
+          "min": 150.799999999996,
+          "median": 157.949999999995,
+          "max": 178.499999999994
+        },
+        "repair_gold": {
+          "n": 20,
+          "min": 16.0,
+          "median": 104.0,
+          "max": 176.0
+        },
+        "player_damage": {
+          "n": 20,
+          "min": 358.0,
+          "median": 653.4500000000055,
+          "max": 1158.0
+        },
+        "door_damage": {
+          "n": 2,
+          "min": 924.4999999999994,
+          "median": 967.3749999999994,
+          "max": 1010.2499999999994
+        },
+        "actual_paid_decision_gap": {
+          "n": 290,
+          "min": 0.999999999999943,
+          "median": 8.00000000000011,
+          "max": 30.9999999999999
+        },
+        "final_gold": {
+          "n": 20,
+          "min": 26.6900000000021,
+          "median": 52.72800000000175,
+          "max": 143.610000000002
+        },
+        "final_income": {
+          "n": 20,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        }
+      },
+      "original1-5": {
+        "n": 5,
+        "outcomes": {
+          "defeat": 5
+        },
+        "victory_time": null,
+        "death_time": {
+          "n": 5,
+          "min": 159.399999999995,
+          "median": 160.899999999995,
+          "max": 177.399999999994
+        },
+        "breach_time": {
+          "n": 5,
+          "min": 156.299999999995,
+          "median": 157.699999999995,
+          "max": 173.899999999994
+        },
+        "repair_gold": {
+          "n": 5,
+          "min": 16.0,
+          "median": 80.0,
+          "max": 112.0
+        },
+        "player_damage": {
+          "n": 5,
+          "min": 378.90000000001,
+          "median": 518.0,
+          "max": 722.700000000004
+        },
+        "door_damage": {
+          "n": 2,
+          "min": 924.4999999999994,
+          "median": 967.3749999999994,
+          "max": 1010.2499999999994
+        },
+        "actual_paid_decision_gap": {
+          "n": 67,
+          "min": 0.999999999999943,
+          "median": 9.99999999999943,
+          "max": 30.9999999999999
+        },
+        "final_gold": {
+          "n": 5,
+          "min": 30.4100000000015,
+          "median": 67.0300000000022,
+          "max": 143.610000000002
+        },
+        "final_income": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        }
+      },
+      "heldout6-20": {
+        "n": 15,
+        "outcomes": {
+          "defeat": 15
+        },
+        "victory_time": null,
+        "death_time": {
+          "n": 15,
+          "min": 153.699999999996,
+          "median": 161.799999999995,
+          "max": 182.499999999994
+        },
+        "breach_time": {
+          "n": 15,
+          "min": 150.799999999996,
+          "median": 158.199999999995,
+          "max": 178.499999999994
+        },
+        "repair_gold": {
+          "n": 15,
+          "min": 16.0,
+          "median": 112.0,
+          "max": 176.0
+        },
+        "player_damage": {
+          "n": 15,
+          "min": 358.0,
+          "median": 658.0,
+          "max": 1158.0
+        },
+        "door_damage": null,
+        "actual_paid_decision_gap": {
+          "n": 223,
+          "min": 0.999999999999943,
+          "median": 8.00000000000011,
+          "max": 30.9999999999999
+        },
+        "final_gold": {
+          "n": 15,
+          "min": 26.6900000000021,
+          "median": 50.2980000000017,
+          "max": 127.950000000002
+        },
+        "final_income": {
+          "n": 15,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        }
+      }
+    },
+    "by_archetype": {
+      "crusher": {
+        "defeat": 3
+      },
+      "electric": {
+        "defeat": 4
+      },
+      "ravager": {
+        "defeat": 3
+      },
+      "stalker": {
+        "defeat": 3
+      },
+      "storm": {
+        "defeat": 3
+      },
+      "witch": {
+        "defeat": 4
+      }
+    }
+  },
+  "after-hard-bulwark": {
+    "groups": {
+      "all": {
+        "n": 20,
+        "outcomes": {
+          "victory": 20
+        },
+        "victory_time": {
+          "n": 20,
+          "min": 190.399999999993,
+          "median": 193.14999999999299,
+          "max": 231.499999999991
+        },
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": {
+          "n": 20,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "player_damage": {
+          "n": 20,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 796.643718749945
+        },
+        "door_damage": {
+          "n": 20,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 811.966314939014
+        },
+        "actual_paid_decision_gap": {
+          "n": 169,
+          "min": 13.0000000000002,
+          "median": 19.0999999999989,
+          "max": 37.9999999999979
+        },
+        "final_gold": {
+          "n": 20,
+          "min": 26.670000000001,
+          "median": 96.4800000000009,
+          "max": 201.15
+        },
+        "final_income": {
+          "n": 20,
+          "min": 5.4,
+          "median": 5.4,
+          "max": 5.4
+        }
+      },
+      "original1-5": {
+        "n": 5,
+        "outcomes": {
+          "victory": 5
+        },
+        "victory_time": {
+          "n": 5,
+          "min": 191.599999999993,
+          "median": 218.199999999992,
+          "max": 231.499999999991
+        },
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "player_damage": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 288.0
+        },
+        "door_damage": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 585.700908560301
+        },
+        "actual_paid_decision_gap": {
+          "n": 43,
+          "min": 13.0000000000002,
+          "median": 19.0999999999989,
+          "max": 37.9999999999979
+        },
+        "final_gold": {
+          "n": 5,
+          "min": 89.1900000000008,
+          "median": 136.830000000002,
+          "max": 201.15
+        },
+        "final_income": {
+          "n": 5,
+          "min": 5.4,
+          "median": 5.4,
+          "max": 5.4
+        }
+      },
+      "heldout6-20": {
+        "n": 15,
+        "outcomes": {
+          "victory": 15
+        },
+        "victory_time": {
+          "n": 15,
+          "min": 190.399999999993,
+          "median": 192.999999999993,
+          "max": 228.899999999991
+        },
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": {
+          "n": 15,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "player_damage": {
+          "n": 15,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 796.643718749945
+        },
+        "door_damage": {
+          "n": 15,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 811.966314939014
+        },
+        "actual_paid_decision_gap": {
+          "n": 126,
+          "min": 13.0000000000002,
+          "median": 19.0999999999989,
+          "max": 37.9999999999979
+        },
+        "final_gold": {
+          "n": 15,
+          "min": 26.670000000001,
+          "median": 92.4300000000008,
+          "max": 194.610000000001
+        },
+        "final_income": {
+          "n": 15,
+          "min": 5.4,
+          "median": 5.4,
+          "max": 5.4
+        }
+      }
+    },
+    "by_archetype": {
+      "crusher": {
+        "victory": 3
+      },
+      "electric": {
+        "victory": 3
+      },
+      "ravager": {
+        "victory": 4
+      },
+      "stalker": {
+        "victory": 3
+      },
+      "storm": {
+        "victory": 3
+      },
+      "witch": {
+        "victory": 4
+      }
+    }
+  },
+  "after-hard-assault": {
+    "groups": {
+      "all": {
+        "n": 20,
+        "outcomes": {
+          "victory": 20
+        },
+        "victory_time": {
+          "n": 20,
+          "min": 184.899999999994,
+          "median": 189.9499999999935,
+          "max": 222.699999999992
+        },
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": {
+          "n": 20,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "player_damage": {
+          "n": 20,
+          "min": 180.0,
+          "median": 391.5,
+          "max": 1317.432
+        },
+        "door_damage": {
+          "n": 20,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 612.09078597333
+        },
+        "actual_paid_decision_gap": {
+          "n": 228,
+          "min": 0.999999999999943,
+          "median": 13.0000000000002,
+          "max": 30.9999999999999
+        },
+        "final_gold": {
+          "n": 20,
+          "min": 5.96999999999997,
+          "median": 170.640000000001,
+          "max": 206.55
+        },
+        "final_income": {
+          "n": 20,
+          "min": 5.4,
+          "median": 5.4,
+          "max": 5.4
+        }
+      },
+      "original1-5": {
+        "n": 5,
+        "outcomes": {
+          "victory": 5
+        },
+        "victory_time": {
+          "n": 5,
+          "min": 186.599999999994,
+          "median": 209.799999999992,
+          "max": 221.899999999992
+        },
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "player_damage": {
+          "n": 5,
+          "min": 207.0,
+          "median": 473.464193749918,
+          "max": 610.8
+        },
+        "door_damage": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 115.780721333333
+        },
+        "actual_paid_decision_gap": {
+          "n": 58,
+          "min": 0.999999999999943,
+          "median": 13.0000000000002,
+          "max": 30.9999999999999
+        },
+        "final_gold": {
+          "n": 5,
+          "min": 54.5699999999999,
+          "median": 119.910000000001,
+          "max": 182.790000000001
+        },
+        "final_income": {
+          "n": 5,
+          "min": 5.4,
+          "median": 5.4,
+          "max": 5.4
+        }
+      },
+      "heldout6-20": {
+        "n": 15,
+        "outcomes": {
+          "victory": 15
+        },
+        "victory_time": {
+          "n": 15,
+          "min": 184.899999999994,
+          "median": 189.599999999994,
+          "max": 222.699999999992
+        },
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": {
+          "n": 15,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "player_damage": {
+          "n": 15,
+          "min": 180.0,
+          "median": 315.0,
+          "max": 1317.432
+        },
+        "door_damage": {
+          "n": 15,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 612.09078597333
+        },
+        "actual_paid_decision_gap": {
+          "n": 170,
+          "min": 0.999999999999943,
+          "median": 13.0000000000002,
+          "max": 30.9999999999999
+        },
+        "final_gold": {
+          "n": 15,
+          "min": 5.96999999999997,
+          "median": 176.310000000001,
+          "max": 206.55
+        },
+        "final_income": {
+          "n": 15,
+          "min": 5.4,
+          "median": 5.4,
+          "max": 5.4
+        }
+      }
+    },
+    "by_archetype": {
+      "crusher": {
+        "victory": 3
+      },
+      "electric": {
+        "victory": 3
+      },
+      "ravager": {
+        "victory": 4
+      },
+      "stalker": {
+        "victory": 3
+      },
+      "storm": {
+        "victory": 3
+      },
+      "witch": {
+        "victory": 4
+      }
+    }
+  },
+  "after-hell-bulwark": {
+    "groups": {
+      "all": {
+        "n": 20,
+        "outcomes": {
+          "victory": 11,
+          "defeat": 9
+        },
+        "victory_time": {
+          "n": 11,
+          "min": 209.299999999992,
+          "median": 220.999999999992,
+          "max": 241.699999999991
+        },
+        "death_time": {
+          "n": 9,
+          "min": 213.199999999992,
+          "median": 232.599999999991,
+          "max": 297.899999999999
+        },
+        "breach_time": {
+          "n": 10,
+          "min": 210.599999999992,
+          "median": 229.199999999991,
+          "max": 293.999999999998
+        },
+        "repair_gold": {
+          "n": 20,
+          "min": 0.0,
+          "median": 162.0,
+          "max": 400.0
+        },
+        "player_damage": {
+          "n": 20,
+          "min": 593.0,
+          "median": 1054.0,
+          "max": 1582.00000000001
+        },
+        "door_damage": {
+          "n": 20,
+          "min": 666.936200927996,
+          "median": 1800.89785042774,
+          "max": 2147.6
+        },
+        "actual_paid_decision_gap": {
+          "n": 367,
+          "min": 0.999999999999943,
+          "median": 13.0000000000002,
+          "max": 50.000000000004
+        },
+        "final_gold": {
+          "n": 20,
+          "min": 15.7700000000012,
+          "median": 26.8300000000017,
+          "max": 377.789999999993
+        },
+        "final_income": {
+          "n": 20,
+          "min": 0.0,
+          "median": 5.4,
+          "max": 5.4
+        }
+      },
+      "original1-5": {
+        "n": 5,
+        "outcomes": {
+          "victory": 2,
+          "defeat": 3
+        },
+        "victory_time": {
+          "n": 2,
+          "min": 211.999999999992,
+          "median": 221.94999999999152,
+          "max": 231.899999999991
+        },
+        "death_time": {
+          "n": 3,
+          "min": 232.599999999991,
+          "median": 234.799999999991,
+          "max": 248.29999999999
+        },
+        "breach_time": {
+          "n": 4,
+          "min": 229.099999999991,
+          "median": 230.399999999991,
+          "max": 244.69999999999
+        },
+        "repair_gold": {
+          "n": 5,
+          "min": 0.0,
+          "median": 162.0,
+          "max": 252.0
+        },
+        "player_damage": {
+          "n": 5,
+          "min": 593.0,
+          "median": 977.5,
+          "max": 1229.0
+        },
+        "door_damage": {
+          "n": 5,
+          "min": 666.936200927996,
+          "median": 1898.1,
+          "max": 2147.6
+        },
+        "actual_paid_decision_gap": {
+          "n": 87,
+          "min": 0.999999999999943,
+          "median": 13.9999999999992,
+          "max": 37.9999999999979
+        },
+        "final_gold": {
+          "n": 5,
+          "min": 24.8700000000008,
+          "median": 28.8100000000017,
+          "max": 95.8500000000013
+        },
+        "final_income": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 5.4
+        }
+      },
+      "heldout6-20": {
+        "n": 15,
+        "outcomes": {
+          "victory": 9,
+          "defeat": 6
+        },
+        "victory_time": {
+          "n": 9,
+          "min": 209.299999999992,
+          "median": 220.999999999992,
+          "max": 241.699999999991
+        },
+        "death_time": {
+          "n": 6,
+          "min": 213.199999999992,
+          "median": 232.049999999991,
+          "max": 297.899999999999
+        },
+        "breach_time": {
+          "n": 6,
+          "min": 210.599999999992,
+          "median": 228.699999999991,
+          "max": 293.999999999998
+        },
+        "repair_gold": {
+          "n": 15,
+          "min": 36.0,
+          "median": 162.0,
+          "max": 400.0
+        },
+        "player_damage": {
+          "n": 15,
+          "min": 766.999999999998,
+          "median": 1101.0,
+          "max": 1582.00000000001
+        },
+        "door_damage": {
+          "n": 15,
+          "min": 1030.57503305189,
+          "median": 1649.81632810513,
+          "max": 2056.6
+        },
+        "actual_paid_decision_gap": {
+          "n": 280,
+          "min": 0.999999999999943,
+          "median": 13.0000000000002,
+          "max": 50.000000000004
+        },
+        "final_gold": {
+          "n": 15,
+          "min": 15.7700000000012,
+          "median": 26.3300000000014,
+          "max": 377.789999999993
+        },
+        "final_income": {
+          "n": 15,
+          "min": 0.0,
+          "median": 5.4,
+          "max": 5.4
+        }
+      }
+    },
+    "by_archetype": {
+      "crusher": {
+        "defeat": 3
+      },
+      "electric": {
+        "defeat": 4
+      },
+      "ravager": {
+        "victory": 3
+      },
+      "stalker": {
+        "victory": 3
+      },
+      "storm": {
+        "defeat": 2,
+        "victory": 1
+      },
+      "witch": {
+        "victory": 4
+      }
+    }
+  },
+  "after-hell-assault": {
+    "groups": {
+      "all": {
+        "n": 20,
+        "outcomes": {
+          "victory": 14,
+          "defeat": 6
+        },
+        "victory_time": {
+          "n": 14,
+          "min": 196.299999999993,
+          "median": 207.44999999999249,
+          "max": 277.799999999995
+        },
+        "death_time": {
+          "n": 6,
+          "min": 189.099999999994,
+          "median": 206.44999999999249,
+          "max": 228.499999999991
+        },
+        "breach_time": {
+          "n": 6,
+          "min": 185.799999999994,
+          "median": 203.249999999993,
+          "max": 225.199999999991
+        },
+        "repair_gold": {
+          "n": 20,
+          "min": 0.0,
+          "median": 119.0,
+          "max": 240.0
+        },
+        "player_damage": {
+          "n": 20,
+          "min": 1111.55999999996,
+          "median": 1601.38232421874,
+          "max": 2398.0
+        },
+        "door_damage": {
+          "n": 20,
+          "min": 351.91683308683,
+          "median": 947.1665263695966,
+          "max": 1676.83675345471
+        },
+        "actual_paid_decision_gap": {
+          "n": 369,
+          "min": 0.999999999999943,
+          "median": 12.9999999999993,
+          "max": 36.9999999999979
+        },
+        "final_gold": {
+          "n": 20,
+          "min": 12.7900000000017,
+          "median": 51.0600000000003,
+          "max": 368.289999999998
+        },
+        "final_income": {
+          "n": 20,
+          "min": 0.0,
+          "median": 5.4,
+          "max": 9.0
+        }
+      },
+      "original1-5": {
+        "n": 5,
+        "outcomes": {
+          "victory": 3,
+          "defeat": 2
+        },
+        "victory_time": {
+          "n": 3,
+          "min": 197.799999999993,
+          "median": 215.799999999992,
+          "max": 233.799999999991
+        },
+        "death_time": {
+          "n": 2,
+          "min": 202.799999999993,
+          "median": 215.649999999992,
+          "max": 228.499999999991
+        },
+        "breach_time": {
+          "n": 2,
+          "min": 199.499999999993,
+          "median": 212.349999999992,
+          "max": 225.199999999991
+        },
+        "repair_gold": {
+          "n": 5,
+          "min": 16.0,
+          "median": 80.0,
+          "max": 144.0
+        },
+        "player_damage": {
+          "n": 5,
+          "min": 1111.55999999996,
+          "median": 1558.99999999999,
+          "max": 2398.0
+        },
+        "door_damage": {
+          "n": 5,
+          "min": 351.91683308683,
+          "median": 917.5,
+          "max": 1583.5
+        },
+        "actual_paid_decision_gap": {
+          "n": 82,
+          "min": 0.999999999999943,
+          "median": 12.9999999999993,
+          "max": 30.9999999999999
+        },
+        "final_gold": {
+          "n": 5,
+          "min": 29.5500000000001,
+          "median": 40.1700000000008,
+          "max": 209.558
+        },
+        "final_income": {
+          "n": 5,
+          "min": 0.0,
+          "median": 5.4,
+          "max": 5.4
+        }
+      },
+      "heldout6-20": {
+        "n": 15,
+        "outcomes": {
+          "victory": 11,
+          "defeat": 4
+        },
+        "victory_time": {
+          "n": 11,
+          "min": 196.299999999993,
+          "median": 204.799999999993,
+          "max": 277.799999999995
+        },
+        "death_time": {
+          "n": 4,
+          "min": 189.099999999994,
+          "median": 206.44999999999249,
+          "max": 209.199999999992
+        },
+        "breach_time": {
+          "n": 4,
+          "min": 185.799999999994,
+          "median": 203.249999999993,
+          "max": 205.499999999993
+        },
+        "repair_gold": {
+          "n": 15,
+          "min": 0.0,
+          "median": 144.0,
+          "max": 240.0
+        },
+        "player_damage": {
+          "n": 15,
+          "min": 1213.00000000001,
+          "median": 1643.76464843749,
+          "max": 2256.36409921875
+        },
+        "door_damage": {
+          "n": 15,
+          "min": 352.831717672958,
+          "median": 976.833052739193,
+          "max": 1676.83675345471
+        },
+        "actual_paid_decision_gap": {
+          "n": 287,
+          "min": 0.999999999999943,
+          "median": 8.00000000000125,
+          "max": 36.9999999999979
+        },
+        "final_gold": {
+          "n": 15,
+          "min": 12.7900000000017,
+          "median": 56.1899999999999,
+          "max": 368.289999999998
+        },
+        "final_income": {
+          "n": 15,
+          "min": 0.0,
+          "median": 5.4,
+          "max": 9.0
+        }
+      }
+    },
+    "by_archetype": {
+      "crusher": {
+        "victory": 2,
+        "defeat": 1
+      },
+      "electric": {
+        "defeat": 3,
+        "victory": 1
+      },
+      "ravager": {
+        "victory": 3
+      },
+      "stalker": {
+        "victory": 3
+      },
+      "storm": {
+        "defeat": 2,
+        "victory": 1
+      },
+      "witch": {
+        "victory": 4
+      }
+    }
+  },
+  "normal-greedy": {
+    "groups": {
+      "all": {
+        "n": 20,
+        "outcomes": {
+          "unfinished": 20
+        },
+        "victory_time": null,
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": {
+          "n": 20,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 48.0
+        },
+        "player_damage": {
+          "n": 20,
+          "min": 25.2,
+          "median": 2663.98638297873,
+          "max": 22858.7442553191
+        },
+        "door_damage": {
+          "n": 20,
+          "min": 0.0,
+          "median": 107.27199999999999,
+          "max": 2500.84629088261
+        },
+        "actual_paid_decision_gap": {
+          "n": 522,
+          "min": 1.00000000000023,
+          "median": 21.9999999999987,
+          "max": 46.0000000000104
+        },
+        "final_gold": {
+          "n": 20,
+          "min": 142.67176862504,
+          "median": 289.786939011823,
+          "max": 426.683980574696
+        },
+        "final_income": {
+          "n": 20,
+          "min": 10.0188679245283,
+          "median": 11.3478260869565,
+          "max": 11.9372384937239
+        }
+      },
+      "original1-5": {
+        "n": 5,
+        "outcomes": {
+          "unfinished": 5
+        },
+        "victory_time": null,
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "player_damage": {
+          "n": 5,
+          "min": 1365.83829787235,
+          "median": 4463.29255319151,
+          "max": 22858.7442553191
+        },
+        "door_damage": {
+          "n": 5,
+          "min": 0.0,
+          "median": 213.95968,
+          "max": 2500.84629088261
+        },
+        "actual_paid_decision_gap": {
+          "n": 128,
+          "min": 6.00000000000136,
+          "median": 21.9999999999987,
+          "max": 39.0000000000089
+        },
+        "final_gold": {
+          "n": 5,
+          "min": 268.420245000338,
+          "median": 289.786939011823,
+          "max": 426.683980574696
+        },
+        "final_income": {
+          "n": 5,
+          "min": 10.0188679245283,
+          "median": 11.3478260869565,
+          "max": 11.3478260869565
+        }
+      },
+      "heldout6-20": {
+        "n": 15,
+        "outcomes": {
+          "unfinished": 15
+        },
+        "victory_time": null,
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": {
+          "n": 15,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 48.0
+        },
+        "player_damage": {
+          "n": 15,
+          "min": 25.2,
+          "median": 1928.48723404255,
+          "max": 16144.4725372341
+        },
+        "door_damage": {
+          "n": 15,
+          "min": 0.0,
+          "median": 101.2,
+          "max": 2497.647694381
+        },
+        "actual_paid_decision_gap": {
+          "n": 394,
+          "min": 1.00000000000023,
+          "median": 21.9999999999987,
+          "max": 46.0000000000104
+        },
+        "final_gold": {
+          "n": 15,
+          "min": 142.67176862504,
+          "median": 289.786939011823,
+          "max": 293.914169253945
+        },
+        "final_income": {
+          "n": 15,
+          "min": 10.0188679245283,
+          "median": 11.3478260869565,
+          "max": 11.9372384937239
+        }
+      }
+    },
+    "by_archetype": {
+      "crusher": {
+        "unfinished": 3
+      },
+      "electric": {
+        "unfinished": 3
+      },
+      "ravager": {
+        "unfinished": 4
+      },
+      "stalker": {
+        "unfinished": 4
+      },
+      "storm": {
+        "unfinished": 3
+      },
+      "witch": {
+        "unfinished": 3
+      }
+    }
+  },
+  "normal-defense": {
+    "groups": {
+      "all": {
+        "n": 20,
+        "outcomes": {
+          "unfinished": 20
+        },
+        "victory_time": null,
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": {
+          "n": 20,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 256.0
+        },
+        "player_damage": {
+          "n": 20,
+          "min": 53.1063829787234,
+          "median": 2712.39361702128,
+          "max": 22908.8162030639
+        },
+        "door_damage": {
+          "n": 20,
+          "min": 0.0,
+          "median": 142.80906,
+          "max": 2727.80876396207
+        },
+        "actual_paid_decision_gap": {
+          "n": 482,
+          "min": 1.00000000000023,
+          "median": 23.9999999999986,
+          "max": 52.0000000000118
+        },
+        "final_gold": {
+          "n": 20,
+          "min": 106.880018310553,
+          "median": 146.780018310554,
+          "max": 234.480000000001
+        },
+        "final_income": {
+          "n": 20,
+          "min": 9.0,
+          "median": 9.0,
+          "max": 9.0
+        }
+      },
+      "original1-5": {
+        "n": 5,
+        "outcomes": {
+          "unfinished": 5
+        },
+        "victory_time": null,
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 128.0
+        },
+        "player_damage": {
+          "n": 5,
+          "min": 1319.11489361703,
+          "median": 5125.83085106383,
+          "max": 22908.8162030639
+        },
+        "door_damage": {
+          "n": 5,
+          "min": 0.0,
+          "median": 207.688,
+          "max": 2458.25043515728
+        },
+        "actual_paid_decision_gap": {
+          "n": 121,
+          "min": 2.00000000000045,
+          "median": 23.9999999999986,
+          "max": 45.0999999999997
+        },
+        "final_gold": {
+          "n": 5,
+          "min": 142.400018310548,
+          "median": 146.780018310553,
+          "max": 234.480000000001
+        },
+        "final_income": {
+          "n": 5,
+          "min": 9.0,
+          "median": 9.0,
+          "max": 9.0
+        }
+      },
+      "heldout6-20": {
+        "n": 15,
+        "outcomes": {
+          "unfinished": 15
+        },
+        "victory_time": null,
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": {
+          "n": 15,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 256.0
+        },
+        "player_damage": {
+          "n": 15,
+          "min": 53.1063829787234,
+          "median": 1978.27234042555,
+          "max": 12938.803175532
+        },
+        "door_damage": {
+          "n": 15,
+          "min": 0.0,
+          "median": 113.344,
+          "max": 2727.80876396207
+        },
+        "actual_paid_decision_gap": {
+          "n": 361,
+          "min": 1.00000000000023,
+          "median": 23.9999999999986,
+          "max": 52.0000000000118
+        },
+        "final_gold": {
+          "n": 15,
+          "min": 106.880018310553,
+          "median": 146.780018310554,
+          "max": 201.680018310553
+        },
+        "final_income": {
+          "n": 15,
+          "min": 9.0,
+          "median": 9.0,
+          "max": 9.0
+        }
+      }
+    },
+    "by_archetype": {
+      "crusher": {
+        "unfinished": 3
+      },
+      "electric": {
+        "unfinished": 3
+      },
+      "ravager": {
+        "unfinished": 4
+      },
+      "stalker": {
+        "unfinished": 4
+      },
+      "storm": {
+        "unfinished": 3
+      },
+      "witch": {
+        "unfinished": 3
+      }
+    }
+  },
+  "normal-balanced": {
+    "groups": {
+      "all": {
+        "n": 20,
+        "outcomes": {
+          "unfinished": 20
+        },
+        "victory_time": null,
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": {
+          "n": 20,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 112.0
+        },
+        "player_damage": {
+          "n": 20,
+          "min": 53.1063829787234,
+          "median": 2855.19361702128,
+          "max": 22695.619787234
+        },
+        "door_damage": {
+          "n": 20,
+          "min": 0.0,
+          "median": 107.27199999999999,
+          "max": 2551.13098484933
+        },
+        "actual_paid_decision_gap": {
+          "n": 484,
+          "min": 2.00000000000045,
+          "median": 24.9000000000057,
+          "max": 52.0000000000118
+        },
+        "final_gold": {
+          "n": 20,
+          "min": 12.3517164237588,
+          "median": 49.3649239709315,
+          "max": 429.495112650173
+        },
+        "final_income": {
+          "n": 20,
+          "min": 9.0,
+          "median": 10.0188679245283,
+          "max": 10.0188679245283
+        }
+      },
+      "original1-5": {
+        "n": 5,
+        "outcomes": {
+          "unfinished": 5
+        },
+        "victory_time": null,
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 48.0
+        },
+        "player_damage": {
+          "n": 5,
+          "min": 1319.11489361703,
+          "median": 6933.91531914891,
+          "max": 22695.619787234
+        },
+        "door_damage": {
+          "n": 5,
+          "min": 0.0,
+          "median": 206.54656,
+          "max": 2551.13098484933
+        },
+        "actual_paid_decision_gap": {
+          "n": 120,
+          "min": 3.00000000000068,
+          "median": 24.9000000000057,
+          "max": 47.0000000000106
+        },
+        "final_gold": {
+          "n": 5,
+          "min": 24.2894522728157,
+          "median": 52.8800183105502,
+          "max": 429.495112650173
+        },
+        "final_income": {
+          "n": 5,
+          "min": 9.0,
+          "median": 10.0188679245283,
+          "max": 10.0188679245283
+        }
+      },
+      "heldout6-20": {
+        "n": 15,
+        "outcomes": {
+          "unfinished": 15
+        },
+        "victory_time": null,
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": {
+          "n": 15,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 112.0
+        },
+        "player_damage": {
+          "n": 15,
+          "min": 53.1063829787234,
+          "median": 2168.07659574469,
+          "max": 12238.4767925532
+        },
+        "door_damage": {
+          "n": 15,
+          "min": 0.0,
+          "median": 101.2,
+          "max": 2092.0028564706
+        },
+        "actual_paid_decision_gap": {
+          "n": 364,
+          "min": 2.00000000000045,
+          "median": 24.9000000000057,
+          "max": 52.0000000000118
+        },
+        "final_gold": {
+          "n": 15,
+          "min": 12.3517164237588,
+          "median": 49.3649239709315,
+          "max": 424.251716423759
+        },
+        "final_income": {
+          "n": 15,
+          "min": 9.0,
+          "median": 10.0188679245283,
+          "max": 10.0188679245283
+        }
+      }
+    },
+    "by_archetype": {
+      "crusher": {
+        "unfinished": 3
+      },
+      "electric": {
+        "unfinished": 3
+      },
+      "ravager": {
+        "unfinished": 4
+      },
+      "stalker": {
+        "unfinished": 4
+      },
+      "storm": {
+        "unfinished": 3
+      },
+      "witch": {
+        "unfinished": 3
+      }
+    }
+  },
+  "recoverable-mistake": {
+    "groups": {
+      "all": {
+        "n": 3,
+        "outcomes": {
+          "victory": 3
+        },
+        "victory_time": {
+          "n": 3,
+          "min": 192.199999999993,
+          "median": 192.199999999993,
+          "max": 192.899999999993
+        },
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": {
+          "n": 3,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "player_damage": {
+          "n": 3,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 288.0
+        },
+        "door_damage": {
+          "n": 3,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "actual_paid_decision_gap": {
+          "n": 27,
+          "min": 11.0000000000002,
+          "median": 19.0,
+          "max": 37.9999999999979
+        },
+        "final_gold": {
+          "n": 3,
+          "min": 74.3300000000007,
+          "median": 74.3300000000007,
+          "max": 78.1100000000007
+        },
+        "final_income": {
+          "n": 3,
+          "min": 5.4,
+          "median": 5.4,
+          "max": 5.4
+        }
+      },
+      "original1-5": {
+        "n": 1,
+        "outcomes": {
+          "victory": 1
+        },
+        "victory_time": {
+          "n": 1,
+          "min": 192.899999999993,
+          "median": 192.899999999993,
+          "max": 192.899999999993
+        },
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": {
+          "n": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "player_damage": {
+          "n": 1,
+          "min": 288.0,
+          "median": 288.0,
+          "max": 288.0
+        },
+        "door_damage": {
+          "n": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "actual_paid_decision_gap": {
+          "n": 9,
+          "min": 11.0000000000002,
+          "median": 19.0,
+          "max": 37.9999999999979
+        },
+        "final_gold": {
+          "n": 1,
+          "min": 78.1100000000007,
+          "median": 78.1100000000007,
+          "max": 78.1100000000007
+        },
+        "final_income": {
+          "n": 1,
+          "min": 5.4,
+          "median": 5.4,
+          "max": 5.4
+        }
+      },
+      "heldout6-20": {
+        "n": 2,
+        "outcomes": {
+          "victory": 2
+        },
+        "victory_time": {
+          "n": 2,
+          "min": 192.199999999993,
+          "median": 192.199999999993,
+          "max": 192.199999999993
+        },
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": {
+          "n": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "player_damage": {
+          "n": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "door_damage": {
+          "n": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "actual_paid_decision_gap": {
+          "n": 18,
+          "min": 11.0000000000002,
+          "median": 19.0,
+          "max": 37.9999999999979
+        },
+        "final_gold": {
+          "n": 2,
+          "min": 74.3300000000007,
+          "median": 74.3300000000007,
+          "max": 74.3300000000007
+        },
+        "final_income": {
+          "n": 2,
+          "min": 5.4,
+          "median": 5.4,
+          "max": 5.4
+        }
+      }
+    },
+    "by_archetype": {
+      "ravager": {
+        "victory": 1
+      },
+      "stalker": {
+        "victory": 2
+      }
+    }
+  },
+  "passive-hell": {
+    "groups": {
+      "all": {
+        "n": 5,
+        "outcomes": {
+          "defeat": 5
+        },
+        "victory_time": null,
+        "death_time": {
+          "n": 5,
+          "min": 188.999999999994,
+          "median": 199.299999999993,
+          "max": 220.599999999992
+        },
+        "breach_time": {
+          "n": 5,
+          "min": 185.999999999994,
+          "median": 196.099999999993,
+          "max": 217.299999999992
+        },
+        "repair_gold": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "player_damage": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "door_damage": {
+          "n": 5,
+          "min": 172.5,
+          "median": 172.5,
+          "max": 172.5
+        },
+        "actual_paid_decision_gap": null,
+        "final_gold": {
+          "n": 5,
+          "min": 280.149999999992,
+          "median": 293.082999999991,
+          "max": 322.809999999989
+        },
+        "final_income": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        }
+      },
+      "original1-5": {
+        "n": 5,
+        "outcomes": {
+          "defeat": 5
+        },
+        "victory_time": null,
+        "death_time": {
+          "n": 5,
+          "min": 188.999999999994,
+          "median": 199.299999999993,
+          "max": 220.599999999992
+        },
+        "breach_time": {
+          "n": 5,
+          "min": 185.999999999994,
+          "median": 196.099999999993,
+          "max": 217.299999999992
+        },
+        "repair_gold": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "player_damage": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "door_damage": {
+          "n": 5,
+          "min": 172.5,
+          "median": 172.5,
+          "max": 172.5
+        },
+        "actual_paid_decision_gap": null,
+        "final_gold": {
+          "n": 5,
+          "min": 280.149999999992,
+          "median": 293.082999999991,
+          "max": 322.809999999989
+        },
+        "final_income": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        }
+      },
+      "heldout6-20": {
+        "n": 0,
+        "outcomes": {},
+        "victory_time": null,
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": null,
+        "player_damage": null,
+        "door_damage": null,
+        "actual_paid_decision_gap": null,
+        "final_gold": null,
+        "final_income": null
+      }
+    },
+    "by_archetype": {
+      "crusher": {
+        "defeat": 1
+      },
+      "electric": {
+        "defeat": 1
+      },
+      "stalker": {
+        "defeat": 1
+      },
+      "storm": {
+        "defeat": 1
+      },
+      "witch": {
+        "defeat": 1
+      }
+    }
+  },
+  "passive-hell-heldout": {
+    "groups": {
+      "all": {
+        "n": 15,
+        "outcomes": {
+          "defeat": 15
+        },
+        "victory_time": null,
+        "death_time": {
+          "n": 15,
+          "min": 149.599999999996,
+          "median": 182.499999999994,
+          "max": 257.59999999999
+        },
+        "breach_time": {
+          "n": 15,
+          "min": 146.999999999996,
+          "median": 179.399999999994,
+          "max": 254.09999999999
+        },
+        "repair_gold": {
+          "n": 15,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "player_damage": {
+          "n": 15,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "door_damage": {
+          "n": 15,
+          "min": 172.5,
+          "median": 172.5,
+          "max": 172.5
+        },
+        "actual_paid_decision_gap": null,
+        "final_gold": {
+          "n": 15,
+          "min": 226.959999999995,
+          "median": 271.374999999992,
+          "max": 372.759999999986
+        },
+        "final_income": {
+          "n": 15,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        }
+      },
+      "original1-5": {
+        "n": 0,
+        "outcomes": {},
+        "victory_time": null,
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": null,
+        "player_damage": null,
+        "door_damage": null,
+        "actual_paid_decision_gap": null,
+        "final_gold": null,
+        "final_income": null
+      },
+      "heldout6-20": {
+        "n": 15,
+        "outcomes": {
+          "defeat": 15
+        },
+        "victory_time": null,
+        "death_time": {
+          "n": 15,
+          "min": 149.599999999996,
+          "median": 182.499999999994,
+          "max": 257.59999999999
+        },
+        "breach_time": {
+          "n": 15,
+          "min": 146.999999999996,
+          "median": 179.399999999994,
+          "max": 254.09999999999
+        },
+        "repair_gold": {
+          "n": 15,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "player_damage": {
+          "n": 15,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "door_damage": {
+          "n": 15,
+          "min": 172.5,
+          "median": 172.5,
+          "max": 172.5
+        },
+        "actual_paid_decision_gap": null,
+        "final_gold": {
+          "n": 15,
+          "min": 226.959999999995,
+          "median": 271.374999999992,
+          "max": 372.759999999986
+        },
+        "final_income": {
+          "n": 15,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        }
+      }
+    },
+    "by_archetype": {
+      "crusher": {
+        "defeat": 2
+      },
+      "electric": {
+        "defeat": 3
+      },
+      "ravager": {
+        "defeat": 3
+      },
+      "stalker": {
+        "defeat": 2
+      },
+      "storm": {
+        "defeat": 2
+      },
+      "witch": {
+        "defeat": 3
+      }
+    }
+  },
+  "passive-hard": {
+    "groups": {
+      "all": {
+        "n": 5,
+        "outcomes": {
+          "defeat": 2,
+          "victory": 3
+        },
+        "victory_time": {
+          "n": 3,
+          "min": 191.599999999993,
+          "median": 218.199999999992,
+          "max": 219.599999999992
+        },
+        "death_time": {
+          "n": 2,
+          "min": 188.799999999994,
+          "median": 207.8499999999925,
+          "max": 226.899999999991
+        },
+        "breach_time": {
+          "n": 2,
+          "min": 186.099999999994,
+          "median": 205.099999999993,
+          "max": 224.099999999992
+        },
+        "repair_gold": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "player_damage": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "door_damage": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 172.5
+        },
+        "actual_paid_decision_gap": null,
+        "final_gold": {
+          "n": 5,
+          "min": 279.879999999992,
+          "median": 319.569999999989,
+          "max": 331.314999999988
+        },
+        "final_income": {
+          "n": 5,
+          "min": 0.0,
+          "median": 1.35,
+          "max": 1.35
+        }
+      },
+      "original1-5": {
+        "n": 5,
+        "outcomes": {
+          "defeat": 2,
+          "victory": 3
+        },
+        "victory_time": {
+          "n": 3,
+          "min": 191.599999999993,
+          "median": 218.199999999992,
+          "max": 219.599999999992
+        },
+        "death_time": {
+          "n": 2,
+          "min": 188.799999999994,
+          "median": 207.8499999999925,
+          "max": 226.899999999991
+        },
+        "breach_time": {
+          "n": 2,
+          "min": 186.099999999994,
+          "median": 205.099999999993,
+          "max": 224.099999999992
+        },
+        "repair_gold": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "player_damage": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 0.0
+        },
+        "door_damage": {
+          "n": 5,
+          "min": 0.0,
+          "median": 0.0,
+          "max": 172.5
+        },
+        "actual_paid_decision_gap": null,
+        "final_gold": {
+          "n": 5,
+          "min": 279.879999999992,
+          "median": 319.569999999989,
+          "max": 331.314999999988
+        },
+        "final_income": {
+          "n": 5,
+          "min": 0.0,
+          "median": 1.35,
+          "max": 1.35
+        }
+      },
+      "heldout6-20": {
+        "n": 0,
+        "outcomes": {},
+        "victory_time": null,
+        "death_time": null,
+        "breach_time": null,
+        "repair_gold": null,
+        "player_damage": null,
+        "door_damage": null,
+        "actual_paid_decision_gap": null,
+        "final_gold": null,
+        "final_income": null
+      }
+    },
+    "by_archetype": {
+      "crusher": {
+        "victory": 1
+      },
+      "electric": {
+        "victory": 1
+      },
+      "ravager": {
+        "defeat": 1
+      },
+      "storm": {
+        "defeat": 1
+      },
+      "witch": {
+        "victory": 1
+      }
+    }
+  }
+}

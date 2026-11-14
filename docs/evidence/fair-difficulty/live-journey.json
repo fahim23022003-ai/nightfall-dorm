@@ -1,0 +1,469 @@
+{
+ "actions": [
+  {
+   "action": "buy turret",
+   "electricity": 0.0,
+   "gold": 8.68109719999997,
+   "simulation": 6.63170399999999,
+   "wall": 15.895652
+  },
+  {
+   "action": "upgrade bed",
+   "electricity": 0.0,
+   "gold": 2.9050327999999,
+   "simulation": 23.9997650000001,
+   "wall": 34.062949
+  },
+  {
+   "action": "upgrade door",
+   "electricity": 0.0,
+   "gold": 5.3445819,
+   "simulation": 37.8662646666666,
+   "wall": 47.977546
+  },
+  {
+   "action": "upgrade bed",
+   "electricity": 0.0,
+   "gold": 7.06487300000052,
+   "simulation": 69.378065333332,
+   "wall": 79.487845
+  },
+  {
+   "action": "upgrade door",
+   "electricity": 0.0,
+   "gold": 12.1928128000004,
+   "simulation": 88.8462023333312,
+   "wall": 99.154545
+  },
+  {
+   "action": "buy generator",
+   "electricity": 0.4630416,
+   "gold": 13.0560988000001,
+   "simulation": 111.22829233333,
+   "wall": 122.861547
+  },
+  {
+   "action": "upgrade turret",
+   "electricity": 0.958461600000004,
+   "gold": 49.5148788000002,
+   "simulation": 125.387325666663,
+   "wall": 137.144137
+  },
+  {
+   "action": "upgrade door",
+   "electricity": 13.326432,
+   "gold": 10.8266124000029,
+   "simulation": 162.667276333335,
+   "wall": 174.45089
+  },
+  {
+   "action": "buy auto_repair",
+   "electricity": 6.68013980000022,
+   "gold": 11.0099826000027,
+   "simulation": 181.590122666671,
+   "wall": 193.402383
+  }
+ ],
+ "archetype": "stalker",
+ "checks": 40,
+ "conditions": "Actual production Game processing, native scripted InputEvents, fresh profile, menu-selected Long Night stage1, walking/claim/sleep, no model wallet/HP/position/time edits. One visible action decision at a time, UI animations and reaction delays. Not human/native Windows.",
+ "failures": 0,
+ "flows": {
+  "loss_e": 0.0,
+  "loss_g": 0.0,
+  "other_e": 0.0,
+  "other_g": 0.0,
+  "production_e": 47.2923762000007,
+  "production_g": 799.520110199973,
+  "refund_e": 0.0,
+  "refund_g": 0.0,
+  "repair_g": 0.0,
+  "spent_e": 36.0,
+  "spent_g": 772.0
+ },
+ "result": "victory",
+ "samples": [
+  {
+   "electricity": 0.0,
+   "gold": 26.0052541,
+   "hp": 172.5,
+   "hunter_hp": 5290.0,
+   "max_hp": 172.5,
+   "pressure": 0.783099732,
+   "repair_factor": 1.0,
+   "time": 4.64959799999999
+  },
+  {
+   "electricity": 0.0,
+   "gold": 9.85258399999998,
+   "hp": 172.5,
+   "hunter_hp": 5290.0,
+   "max_hp": 172.5,
+   "pressure": 0.784999648,
+   "repair_factor": 1.0,
+   "time": 7.49947199999999
+  },
+  {
+   "electricity": 0.0,
+   "gold": 13.3402541,
+   "hp": 172.5,
+   "hunter_hp": 5290.0,
+   "max_hp": 172.5,
+   "pressure": 0.786721954222222,
+   "repair_factor": 1.0,
+   "time": 10.0829313333333
+  },
+  {
+   "electricity": 0.0,
+   "gold": 20.35653575,
+   "hp": 172.5,
+   "hunter_hp": 5290.0,
+   "max_hp": 172.5,
+   "pressure": 0.790186784666667,
+   "repair_factor": 1.0,
+   "time": 15.2801770000001
+  },
+  {
+   "electricity": 0.0,
+   "gold": 27.1552540999999,
+   "hp": 172.5,
+   "hunter_hp": 5290.0,
+   "max_hp": 172.5,
+   "pressure": 0.793544176444445,
+   "repair_factor": 1.0,
+   "time": 20.3162646666668
+  },
+  {
+   "electricity": 0.0,
+   "gold": 7.3032247999999,
+   "hp": 172.5,
+   "hunter_hp": 5290.0,
+   "max_hp": 172.5,
+   "pressure": 0.797085816666667,
+   "repair_factor": 1.0,
+   "time": 25.6287250000002
+  },
+  {
+   "electricity": 0.0,
+   "gold": 20.7478630999999,
+   "hp": 172.5,
+   "hunter_hp": 5290.0,
+   "max_hp": 172.5,
+   "pressure": 0.800405480444445,
+   "repair_factor": 1.0,
+   "time": 30.6082206666668
+  },
+  {
+   "electricity": 0.0,
+   "gold": 34.2886664,
+   "hp": 172.5,
+   "hunter_hp": 5290.0,
+   "max_hp": 172.5,
+   "pressure": 0.803748888666667,
+   "repair_factor": 1.0,
+   "time": 35.623333
+  },
+  {
+   "electricity": 0.0,
+   "gold": 12.1675062,
+   "hp": 345.0,
+   "hunter_hp": 5281.0,
+   "max_hp": 345.0,
+   "pressure": 0.806928849111111,
+   "repair_factor": 1.0,
+   "time": 40.3932736666665
+  },
+  {
+   "electricity": 0.0,
+   "gold": 25.6915623000001,
+   "hp": 345.0,
+   "hunter_hp": 5182.0,
+   "max_hp": 345.0,
+   "pressure": 0.810268122222222,
+   "repair_factor": 1.0,
+   "time": 45.4021833333329
+  },
+  {
+   "electricity": 0.0,
+   "gold": 39.3076776000001,
+   "hp": 345.0,
+   "hunter_hp": 5074.0,
+   "max_hp": 345.0,
+   "pressure": 0.813630126,
+   "repair_factor": 1.0,
+   "time": 50.4451889999993
+  },
+  {
+   "electricity": 0.0,
+   "gold": 52.8329469,
+   "hp": 345.0,
+   "hunter_hp": 4984.0,
+   "max_hp": 345.0,
+   "pressure": 0.816969698666666,
+   "repair_factor": 1.0,
+   "time": 55.4545479999991
+  },
+  {
+   "electricity": 0.0,
+   "gold": 66.6501635999999,
+   "hp": 345.0,
+   "hunter_hp": 4876.0,
+   "max_hp": 345.0,
+   "pressure": 0.82038135711111,
+   "repair_factor": 1.0,
+   "time": 60.5720356666656
+  },
+  {
+   "electricity": 0.0,
+   "gold": 80.0583807000003,
+   "hp": 345.0,
+   "hunter_hp": 4777.0,
+   "max_hp": 345.0,
+   "pressure": 0.889587390239999,
+   "repair_factor": 1.0,
+   "time": 65.5380419999988
+  },
+  {
+   "electricity": 0.0,
+   "gold": 11.7929780000005,
+   "hp": 345.0,
+   "hunter_hp": 4678.0,
+   "max_hp": 345.0,
+   "pressure": 0.892982621039999,
+   "repair_factor": 1.0,
+   "time": 70.2536403333319
+  },
+  {
+   "electricity": 0.0,
+   "gold": 39.0795416000005,
+   "hp": 345.0,
+   "hunter_hp": 4588.0,
+   "max_hp": 345.0,
+   "pressure": 0.896620829519999,
+   "repair_factor": 1.0,
+   "time": 75.3067076666651
+  },
+  {
+   "electricity": 0.0,
+   "gold": 66.7986494000007,
+   "hp": 345.0,
+   "hunter_hp": 4480.0,
+   "max_hp": 345.0,
+   "pressure": 0.900316710559999,
+   "repair_factor": 1.0,
+   "time": 80.439875777776
+  },
+  {
+   "electricity": 0.0,
+   "gold": 94.2111494000005,
+   "hp": 345.0,
+   "hunter_hp": 4372.32334615287,
+   "max_hp": 345.0,
+   "pressure": 0.970932578008887,
+   "repair_factor": 1.0,
+   "time": 85.5162646666647
+  },
+  {
+   "electricity": 0.0,
+   "gold": 20.9868154000004,
+   "hp": 690.0,
+   "hunter_hp": 4310.68431620898,
+   "max_hp": 690.0,
+   "pressure": 0.974767117831109,
+   "repair_factor": 1.0,
+   "time": 90.4747213333311
+  },
+  {
+   "electricity": 0.0,
+   "gold": 49.8646564000005,
+   "hp": 690.0,
+   "hunter_hp": 4253.73380587902,
+   "max_hp": 690.0,
+   "pressure": 0.978902709875554,
+   "repair_factor": 1.0,
+   "time": 95.8224696666641
+  },
+  {
+   "electricity": 0.0,
+   "gold": 73.5778888000006,
+   "hp": 690.0,
+   "hunter_hp": 4189.058761006,
+   "max_hp": 690.0,
+   "pressure": 0.982298678959998,
+   "repair_factor": 1.0,
+   "time": 100.213808999997
+  },
+  {
+   "electricity": 0.0,
+   "gold": 100.6283104,
+   "hp": 690.0,
+   "hunter_hp": 4090.80000000001,
+   "max_hp": 690.0,
+   "pressure": 0.986172566497776,
+   "repair_factor": 1.0,
+   "time": 105.22314633333
+  },
+  {
+   "electricity": 1.0442794,
+   "gold": 18.2872390000001,
+   "hp": 690.0,
+   "hunter_hp": 3955.80000000001,
+   "max_hp": 690.0,
+   "pressure": 0.991565697013331,
+   "repair_factor": 1.0,
+   "time": 112.197021999997
+  },
+  {
+   "electricity": 3.10582499999999,
+   "gold": 36.8411494000002,
+   "hp": 690.0,
+   "hunter_hp": 3883.80000000001,
+   "max_hp": 690.0,
+   "pressure": 0.994222800231109,
+   "repair_factor": 1.0,
+   "time": 115.63293133333
+  },
+  {
+   "electricity": 6.1168254,
+   "gold": 63.9401530000004,
+   "hp": 690.0,
+   "hunter_hp": 3793.80000000001,
+   "max_hp": 690.0,
+   "pressure": 0.998103645191108,
+   "repair_factor": 1.0,
+   "time": 120.65126533333
+  },
+  {
+   "electricity": 1.459545,
+   "gold": 54.0246294000003,
+   "hp": 690.0,
+   "hunter_hp": 3541.80000000001,
+   "max_hp": 690.0,
+   "pressure": 1.00241203934222,
+   "repair_factor": 1.0,
+   "time": 126.222464666663
+  },
+  {
+   "electricity": 3.98202959999999,
+   "gold": 76.7269908000002,
+   "hp": 690.0,
+   "hunter_hp": 3361.80000000001,
+   "max_hp": 690.0,
+   "pressure": 1.00566324171555,
+   "repair_factor": 1.0,
+   "time": 130.426605666663
+  },
+  {
+   "electricity": 7.02847760000001,
+   "gold": 104.1450228,
+   "hp": 690.0,
+   "hunter_hp": 3145.80000000001,
+   "max_hp": 690.0,
+   "pressure": 1.00958977469333,
+   "repair_factor": 1.0,
+   "time": 135.504018999997
+  },
+  {
+   "electricity": 10.045825,
+   "gold": 131.3011494,
+   "hp": 690.0,
+   "hunter_hp": 2911.80000000001,
+   "max_hp": 690.0,
+   "pressure": 1.01347880023111,
+   "repair_factor": 1.0,
+   "time": 140.532931333332
+  },
+  {
+   "electricity": 13.0363955999999,
+   "gold": 158.216284800001,
+   "hp": 690.0,
+   "hunter_hp": 2677.80000000001,
+   "max_hp": 690.0,
+   "pressure": 1.01733331344889,
+   "repair_factor": 1.0,
+   "time": 145.517215666666
+  },
+  {
+   "electricity": 16.0675787999999,
+   "gold": 185.496933600001,
+   "hp": 690.0,
+   "hunter_hp": 2464.65332005799,
+   "max_hp": 690.0,
+   "pressure": 1.02124017179556,
+   "repair_factor": 1.0,
+   "time": 150.569187666666
+  },
+  {
+   "electricity": 19.0979446,
+   "gold": 212.770225800002,
+   "hp": 690.0,
+   "hunter_hp": 2285.14594123497,
+   "max_hp": 690.0,
+   "pressure": 1.02514597660444,
+   "repair_factor": 1.0,
+   "time": 155.619797333334
+  },
+  {
+   "electricity": 22.0221192,
+   "gold": 239.087797200003,
+   "hp": 690.0,
+   "hunter_hp": 2052.14791253482,
+   "max_hp": 690.0,
+   "pressure": 1.02891491275556,
+   "repair_factor": 1.0,
+   "time": 160.493421666668
+  },
+  {
+   "electricity": 14.875825,
+   "gold": 24.7711494000029,
+   "hp": 1265.0,
+   "hunter_hp": 1784.60000000001,
+   "max_hp": 1265.0,
+   "pressure": 1.03259302245333,
+   "repair_factor": 1.0,
+   "time": 165.249598000002
+  },
+  {
+   "electricity": 17.9458250000001,
+   "gold": 52.401149400003,
+   "hp": 1265.0,
+   "hunter_hp": 1406.60000000001,
+   "max_hp": 1265.0,
+   "pressure": 1.03654991134222,
+   "repair_factor": 1.0,
+   "time": 170.366264666669
+  },
+  {
+   "electricity": 21.0036370000001,
+   "gold": 79.921457400003,
+   "hp": 1265.0,
+   "hunter_hp": 1028.60000000001,
+   "max_hp": 1265.0,
+   "pressure": 1.04049109125334,
+   "repair_factor": 1.0,
+   "time": 175.462618000003
+  },
+  {
+   "electricity": 7.25173720000022,
+   "gold": 16.1543592000027,
+   "hp": 1265.0,
+   "hunter_hp": 488.60000000001,
+   "max_hp": 1265.0,
+   "pressure": 1.0459664204,
+   "repair_factor": 1.0,
+   "time": 182.542785000004
+  },
+  {
+   "electricity": 8.82929700000021,
+   "gold": 30.3523974000027,
+   "hp": 1265.0,
+   "hunter_hp": 272.60000000001,
+   "max_hp": 1265.0,
+   "pressure": 1.04799971969778,
+   "repair_factor": 1.0,
+   "time": 185.172051333338
+  }
+ ],
+ "simulation_seconds": 189.277183333339,
+ "wall_seconds": 202.571077
+}

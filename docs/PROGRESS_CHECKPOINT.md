@@ -1,23 +1,41 @@
-# Phase 12B — Fair Difficulty, Real Counters and Recovery (verification in progress)
+# Phase 12B — Fair Difficulty, Real Counters and Recovery
 
 Started clean on work at1b6d76e017e50c4b26ff0c73bb2ff279ef4721a5.
-Baseline recoverable local tag checkpoint-phase12b-start-1b6d76e. No main changes.
-See docs/evidence/fair-difficulty for retained failures, controlled ablations and
-original-source archive comparison. Do not overwrite Phase12 earned evidence.
+Recoverable implementation35c813c; final source/export receipt follows in report.
+No main/public release, new mode, price/income changes or new progression lock.
 
-Implemented current2 hard Campaign growth pacing, finite growth cap, post-charge
-recovery with ability spacing, actual-fund tactical bots, emergency reserve release,
-actual repair inspector state and pre-breach factual defeat windows. No income/
-price changes or Campaign perk/merchant expansion. Legacy1 unaffected. Current2
-saves keep wealth/buildings and receive revised pressure/reserve behavior on resume.
+Implemented current2 hard Campaign half-speed post-opening growth clock/caps,
+1s additional charged recovery with ability spacing, real-budget tactical bots
+and legal doorway-covering new weapon positions, continuous emergency reserve
+release, funded repair estimate and timestamped pre-breach factual defeat windows.
+Recovery remains visible during urgent HUD priority. No full-heal retreat.
+Legacy1 untouched; existing2 saves keep wealth/buildings/inventory and adopt the
+revised reserve/recovery/future NPC placement rules. Owned buildings not moved.
+Perks/merchant remain Endless2-only. Practice/Challenge isolation preserved.
 
-Current80-case original1-5 +held-out6-20 samples, one paid decision/second:
-LongNight bulwark19/20, assault20/20; Hell bulwark9/20, assault5/20. Both routes
-have multiple held-out wins and retained meaningful defeats, no prepared bonuses
-or items. Matched same-policy original-source baseline running/completing.
-Focused34 checks pass; full regression, normal-speed victory recording, rendered
-720/1080 defeat/repair review and Windows export/push are still IN PROGRESS.
-Do not claim human/native Windows approval or final delivery until verified.
+Matched unmodified1b6d76e archive and same final paid policies20seeds×2routes×
+2difficulties: original0/20 for each; final LongNight20/20 each, Hell11/20 Bulwark
+and14/20 Assault. Original1–5 and held-out6–20 all disclosed. Multiple routes,
+no items/permanent bonuses/funds/HP injection,1s decisions, real NPC resources.
+All20 passive Hell runs lost; passive LongNight3/5 won through ally carry.
+Normal60 cases alive10min; no consistent greed penalty proved. Do not claim
+universal human balance/optimality; LongNight allied carry remains a limitation.
+3/3 weak-placement sale/reinvestment recoveries; one Hell win after own breach.
+
+Full regular/extended140/140 passed. Independent QA6577/0 at35c813c; final
+94 core +13 UI +67 economy +31 transaction UI +21/28 Phase11 +60262 tactical
+assertions all pass after targeted changes. Final actual runtime render14/0,
+normal-speed native scripted InputEvents41/0, genuine LongNight victory189.28s.
+Uncut204.42s silent MP4, separate190.125s actual Master FLAC, unsynchronized.
+Final720/1080 frames inspected; repair clipping and hidden recovery cue fixed.
+No human/native Windows/subjective sound or exhaustive maxed-room stall claim.
+Canonical45/Phase12 evidence preserved; regenerated historical outputs archived
+before restoration. Exact tests/failed experiments/denominators remain available.
+
+Read docs/PHASE_12B_FAIR_DIFFICULTY_REPORT.md,
+docs/PHASE_12B_OWNER_PLAYTEST_CHECKLIST.md and docs/evidence/fair-difficulty/INDEX.md.
+Final Windows export, verified work push and clean-tree receipt are the remaining
+delivery actions. No unrelated next phase started.
 
 ---
 

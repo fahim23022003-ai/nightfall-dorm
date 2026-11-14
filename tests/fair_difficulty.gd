@@ -39,6 +39,14 @@ func run():
   var ally=RoomState.new(1);ally.balance_version=2;ally.owner=1;ally.sleeping=true;ally.closed=true;ally.gold=money;ally.door_hp=50
   BotAI.tick(ally,2,m)
   check(ally.gold>=0 and ally.electricity>=0 and ally.spent<=money,"tactical bot cannot exceed actual shared funds")
+ # An affordable weapon must cover its own doorway; old first-empty pad need not.
+ for map_id in MapCatalog.IDS:
+  var geo=MatchModel.new();geo.configure_map(map_id);geo.configure_balance(2)
+  for ally in geo.rooms:
+   ally.owner=1;ally.sleeping=true;ally.closed=true
+   var wallet=ally.gold;check(BotAI.tactical_build(ally,"turret"),"legal paid tactical weapon on "+map_id)
+   var tile=ally.buildings.keys()[0]
+   check(ally.tile_position(tile).distance_to(ally.door_approach())<=Catalog.BUILDINGS.turret.range and ally.gold==wallet-20,"actual placement covers the door without free resources")
  # Defeat advice uses an actual recorded pre-breach wallet, not death wealth.
  var lose=fresh();var lr=lose.player();lose.run_kind="campaign";lose.time=100;lose.hunter.state=HunterState.State.ATTACK;lose.hunter.target=0;lose.hunter.position=lr.door_approach();lr.gold=50;lr.door_hp=100;lose.apply_room_damage(0,10,"door strike")
  lose.time=104;lr.gold=0;lose.apply_room_damage(0,1000,"door strike");lose.hunter.position=lose.player_position;lose.hunter.target=0;lose.eliminate_resident(0);lose.result="defeat";lose._finish_terminal()

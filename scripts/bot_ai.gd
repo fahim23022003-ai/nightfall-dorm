@@ -126,18 +126,18 @@ static func tactical_earned(r,m):
  var threatened=m.hunter.target==r.index and m.hunter.state==HunterState.State.ATTACK
  if threatened and r.door_hp<r.max_hp()*.70 and upgrade_structure(r,"door"):return
  if threatened and r.door_hp<r.max_hp()*.60 and r.max_hp()-r.door_hp>=Catalog.REPAIR_HEAL*r.repair_factor and r.repair_door():return
- if not has_kind(r,"turret") and build_first_empty(r,"turret"):return
+ if not has_kind(r,"turret") and tactical_build(r,"turret"):return
  if r.bed_level<1 and upgrade_structure(r,"bed"):return
  if r.door_level<1 and upgrade_structure(r,"door"):return
  if r.bed_level<2 and upgrade_structure(r,"bed"):return
  if r.door_level<2 and upgrade_structure(r,"door"):return
  if not has_kind(r,"generator"):
-  build_first_empty(r,"generator");return
+  tactical_build(r,"generator");return
  for id in r.buildings:
   if r.buildings[id].kind=="turret" and r.buildings[id].level<2 and r.upgrade_building(id):return
- if not has_kind(r,"repair") and build_first_empty(r,"repair"):return
+ if not has_kind(r,"repair") and tactical_build(r,"repair"):return
  var counter="frost" if r.profile in ["guard","engineer"] else "flame" if r.profile=="gunner" else "heavy"
- if not has_kind(r,counter) and build_first_empty(r,counter):return
+ if not has_kind(r,counter) and tactical_build(r,counter):return
  var cap=mini(8,3+int(r.occupied_seconds/180))
  if r.bed_level<cap and upgrade_structure(r,"bed"):return
  if r.door_level<cap and upgrade_structure(r,"door"):return
@@ -147,3 +147,13 @@ static func tactical_earned(r,m):
   if b.level==4:
    if r.specialize_building(id,StrategyCatalog.branches(b.kind)[0]):return
   elif r.upgrade_building(id):return
+
+static func tactical_build(r,kind: String) -> bool:
+ if kind not in DefenseEffects.WEAPONS:return build_first_empty(r,kind)
+ var tiles=[]
+ for id in range(r.tile_count()):
+  if not r.buildings.has(id):tiles.append(id)
+ tiles.sort_custom(func(a,b):return r.tile_position(a).distance_to(r.door_approach())<r.tile_position(b).distance_to(r.door_approach()))
+ for id in tiles:
+  if r.build(kind,id):return true
+ return false

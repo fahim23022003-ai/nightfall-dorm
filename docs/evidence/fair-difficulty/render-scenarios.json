@@ -1,0 +1,267 @@
+{
+ "checks": 14,
+ "failures": 0,
+ "scenarios": [
+  {
+   "flows": {
+    "loss_e": 0.0,
+    "loss_g": 0.0,
+    "other_e": 0.0,
+    "other_g": 0.0,
+    "production_e": 64.1400000000009,
+    "production_g": 946.349999999979,
+    "refund_e": 0.0,
+    "refund_g": 0.0,
+    "repair_g": 0.0,
+    "spent_e": 57.6,
+    "spent_g": 875.5
+   },
+   "report": {
+
+   },
+   "result": "victory",
+   "seed": 1,
+   "time": 211.999999999992
+  },
+  {
+   "flows": {
+    "loss_e": 0.0,
+    "loss_g": 0.0,
+    "other_e": 0.0,
+    "other_g": 0.0,
+    "production_e": 77.8200000000014,
+    "production_g": 1069.46999999997,
+    "refund_e": 0.0,
+    "refund_g": 0.0,
+    "repair_g": 180.0,
+    "spent_e": 63.6,
+    "spent_g": 1068.0
+   },
+   "report": {
+    "archetype": "electric",
+    "breach_at": 231.499999999991,
+    "buildings": [
+     {
+      "branch": "",
+      "kind": "turret",
+      "level": 2,
+      "tile": 9
+     },
+     {
+      "branch": "",
+      "kind": "generator",
+      "level": 1,
+      "tile": 10
+     },
+     {
+      "branch": "",
+      "kind": "auto_repair",
+      "level": 1,
+      "tile": 6
+     },
+     {
+      "branch": "",
+      "kind": "frost",
+      "level": 1,
+      "tile": 7
+     }
+    ],
+    "counter_window": {
+     "door_affordable": false,
+     "door_hp": 169.195867392011,
+     "gold": 9.17000000000187,
+     "hunter_interval": 0.96795776,
+     "power": 11.2199999999998,
+     "pressure": 0.930165333333327,
+     "repair_affordable": false,
+     "repair_cost": 18.0,
+     "repair_factor": 0.65,
+     "repair_heal": 45.5,
+     "reserve": 0.0,
+     "time": 227.799999999991
+    },
+    "damage": 1942.8,
+    "door_history": [
+     {
+      "level": 3,
+      "time": 83.1,
+      "type": "door_upgrade"
+     },
+     {
+      "level": 4,
+      "time": 157.1,
+      "type": "door_upgrade"
+     },
+     {
+      "level": 4,
+      "time": 217.1,
+      "type": "repair"
+     },
+     {
+      "level": 4,
+      "time": 218.1,
+      "type": "repair"
+     },
+     {
+      "level": 4,
+      "time": 219.1,
+      "type": "repair"
+     },
+     {
+      "level": 4,
+      "time": 220.1,
+      "type": "repair"
+     },
+     {
+      "level": 4,
+      "time": 221.1,
+      "type": "repair"
+     },
+     {
+      "level": 4,
+      "time": 222.1,
+      "type": "repair"
+     },
+     {
+      "level": 4,
+      "time": 223.1,
+      "type": "repair"
+     },
+     {
+      "level": 4,
+      "time": 224.1,
+      "type": "repair"
+     },
+     {
+      "level": 4,
+      "time": 227.1,
+      "type": "repair"
+     },
+     {
+      "level": 4,
+      "time": 230.1,
+      "type": "repair"
+     }
+    ],
+    "door_level": 4,
+    "elapsed": 234.799999999991,
+    "gold": 26.4700000000018,
+    "power": 14.2199999999998,
+    "pressure_stacks": 2,
+    "reaper": false,
+    "repair_effectiveness": 0.65,
+    "repair_spend": 180.0,
+    "repairs": 10,
+    "sequence": [
+     {
+      "damage": 92.0573772799994,
+      "source": "Hunter door strike",
+      "time": 211.6,
+      "type": "door_damage"
+     },
+     {
+      "damage": 92.1271999999994,
+      "source": "Hunter door strike",
+      "time": 212.5,
+      "type": "door_damage"
+     },
+     {
+      "damage": 175.336487039999,
+      "source": "Hunter charged heavy strike",
+      "time": 214.5,
+      "type": "door_damage"
+     },
+     {
+      "damage": 92.4297651199994,
+      "source": "Hunter door strike",
+      "time": 216.4,
+      "type": "door_damage"
+     },
+     {
+      "damage": 92.5073459199994,
+      "source": "Hunter door strike",
+      "time": 217.4,
+      "type": "door_damage"
+     },
+     {
+      "damage": 74.0927672319995,
+      "source": "Hunter interference",
+      "time": 218.8,
+      "type": "door_damage"
+     },
+     {
+      "damage": 176.235648511999,
+      "source": "Hunter charged heavy strike",
+      "time": 220.6,
+      "type": "door_damage"
+     },
+     {
+      "damage": 92.8874918399994,
+      "source": "Hunter door strike",
+      "time": 222.3,
+      "type": "door_damage"
+     },
+     {
+      "damage": 92.9495564799994,
+      "source": "Hunter door strike",
+      "time": 223.1,
+      "type": "door_damage"
+     },
+     {
+      "damage": 176.898964351999,
+      "source": "Hunter charged heavy strike",
+      "time": 225.1,
+      "type": "door_damage"
+     },
+     {
+      "damage": 93.2521215999993,
+      "source": "Hunter door strike",
+      "time": 227.0,
+      "type": "door_damage"
+     },
+     {
+      "damage": 93.3141862399993,
+      "source": "Hunter door strike",
+      "time": 227.8,
+      "type": "door_damage"
+     },
+     {
+      "damage": 177.591760895999,
+      "source": "Hunter charged heavy strike",
+      "time": 229.8,
+      "type": "door_damage"
+     },
+     {
+      "damage": 63.1041064960128,
+      "source": "Hunter door strike",
+      "time": 231.5,
+      "type": "door_damage"
+     },
+     {
+      "damage": 0.0,
+      "source": "Hunter door strike",
+      "time": 231.5,
+      "type": "door_break"
+     },
+     {
+      "damage": 0.0,
+      "source": "Hunter door strike",
+      "time": 234.8,
+      "type": "elimination"
+     }
+    ],
+    "source": "Hunter door strike",
+    "tips": [
+     "At 227.8s (3.7s before breach), held 9.17G / 11.22E. No manual repair or next door upgrade was affordable in that recorded window.",
+     "This records available choices, not proof that one action would prevent defeat."
+    ],
+    "unused": {
+
+    }
+   },
+   "result": "defeat",
+   "seed": 2,
+   "time": 234.799999999991
+  }
+ ]
+}

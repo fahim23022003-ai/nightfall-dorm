@@ -672,6 +672,7 @@ func update_match():
   if m.hunter.tactical_action!="":warning_label.text="%s %.1fs · PREPARE DEFENSES" % [m.hunter.tactical_action.to_upper(),m.hunter.tactical_windup]
   elif m.hunter.charged_ready: warning_label.text="HEAVY STRIKE %.1fs · REPAIR / UPGRADE" % m.hunter.windup_remaining
   elif m.hunter.archetype_primed:warning_label.text="%s · STRIKE WARNING · REPAIR NOW" % StrategyCatalog.ARCHETYPES[m.hunter.archetype].name.to_upper()
+  elif m.hunter.recovery_remaining>0:warning_label.text="DOOR %d/%d · RECOVERY %.1fs" % [roundi(room.door_hp),roundi(room.max_hp()),m.hunter.recovery_remaining]
   elif room.repair_factor<0.99: warning_label.text="DOOR %d/%d · REPAIRS %d%%" % [roundi(room.door_hp),roundi(room.max_hp()),roundi(room.repair_factor*100)]
   if m.hunter.boss_attack!="":
    warning_label.text="%s %.1fs · REPAIR NOW" % [BossCatalog.ATTACKS[m.hunter.boss_attack].name,m.hunter.windup_remaining]
@@ -692,7 +693,7 @@ func update_match():
  while hp_size>12 and hp_font.get_string_size(hunter_label.text,HORIZONTAL_ALIGNMENT_LEFT,-1,hp_size).x>286:hp_size-=1
  hunter_label.add_theme_font_size_override("font_size",hp_size)
  hunter_label.tooltip_text=hunter_label.text+"\n"+hunter_label.tooltip_text
- if warning_label.visible and (threat or m.hunter.nightmare.action!=""):
+ if warning_label.visible and m.hunter.recovery_remaining<=0 and (threat or m.hunter.nightmare.action!=""):
   hunter_detail.tooltip_text+="\n"+hunter_detail.text
   hunter_detail.text="[Hover for Hunter details]"
   hunter_detail.modulate=Color(.72,.77,.82)

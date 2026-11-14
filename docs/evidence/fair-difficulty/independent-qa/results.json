@@ -1,0 +1,98 @@
+[
+  {
+    "test": "fair_difficulty",
+    "stage": null,
+    "exit": 0,
+    "seconds": 3.341,
+    "passed": true,
+    "counts": [
+      "FAIR_DIFFICULTY_CHECKS=34 FAILURES=0"
+    ]
+  },
+  {
+    "test": "earned_power",
+    "stage": null,
+    "exit": 0,
+    "seconds": 4.984,
+    "passed": true,
+    "counts": [
+      "EARNED_POWER_CHECKS=67 FAILURES=0"
+    ]
+  },
+  {
+    "test": "earned_power_combinations",
+    "stage": null,
+    "exit": 0,
+    "seconds": 3.78,
+    "passed": true,
+    "counts": [
+      "EARNED_COMBINATION_CHECKS=86 FAILURES=0"
+    ]
+  },
+  {
+    "test": "earned_power_accounting",
+    "stage": null,
+    "exit": 0,
+    "seconds": 11.044,
+    "passed": true,
+    "counts": [
+      "EARNED_ACCOUNTING_CHECKS=261 FAILURES=0"
+    ]
+  },
+  {
+    "test": "earned_power_ui",
+    "stage": null,
+    "exit": 0,
+    "seconds": 5.122,
+    "passed": true,
+    "counts": [
+      "EARNED_POWER_UI_CHECKS=31 FAILURES=0"
+    ]
+  },
+  {
+    "test": "earned_power_availability",
+    "stage": null,
+    "exit": 0,
+    "seconds": 3.186,
+    "passed": true,
+    "counts": [
+      "UI_AVAILABILITY_CHECKS=6089 FAILURES=0"
+    ]
+  },
+  {
+    "test": "earned_power_process",
+    "stage": "cleanup",
+    "exit": 0,
+    "seconds": 0.43,
+    "passed": true,
+    "counts": []
+  },
+  {
+    "test": "earned_power_process",
+    "stage": "write",
+    "exit": 0,
+    "seconds": 3.622,
+    "passed": true,
+    "counts": [
+      "EARNED_PROCESS_write CHECKS=5 FAILURES=0"
+    ]
+  },
+  {
+    "test": "earned_power_process",
+    "stage": "read",
+    "exit": 0,
+    "seconds": 1.458,
+    "passed": true,
+    "counts": [
+      "EARNED_PROCESS_read CHECKS=4 FAILURES=0"
+    ]
+  },
+  {
+    "test": "earned_power_process",
+    "stage": "cleanup",
+    "exit": 0,
+    "seconds": 0.451,
+    "passed": true,
+    "counts": []
+  }
+]
