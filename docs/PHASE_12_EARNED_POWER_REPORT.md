@@ -2,7 +2,7 @@
 
 **IMPLEMENTED:** connected version2 economy, bounded encounter pressure, twelve current-run perks, limited intermission supplies, durable transactions and flow accounting. **TESTED:** automated correctness, actual-model strategy samples, rendered Linux interaction and six-minute scripted-input recording. **UNVERIFIED:** native Windows, human enjoyment/readability, optimal strategies and hours-long sessions. Harder-difficulty balance remains a material qualification below. No new mode, proprietary assets, main changes or public release.
 
-Implemented source commit: SOURCE_CHECKPOINT_PENDING. Delivery HEAD and verified push are recorded in the final delivery message; source/build receipts distinguish later documentation commits.
+Implemented source commit: `51d4c320ed9d20d71900101b9c30abbc052301ab`. Delivery HEAD and verified push are recorded in the final delivery message; source/build receipts distinguish later documentation commits.
 
 ## Finding and before/after evidence
 
@@ -164,7 +164,7 @@ The original baseline120 was executed with original classes loaded before edits;
 
 [Evidence gallery/index](evidence/earned-power/INDEX.md) links genuine PNGs; all captured from Godot4.6.3 on Linux Xorg/Mesa llvmpipe. Same seed71/fresh25G/0E/paid policy at0/60/180/300s for baseline/current. Baseline v1 uses preserved legacy rules in the current renderer, not an old executable. Full16 room images are **prepared paid UI stress fixtures**, not earned progression proof. Screens at1280×720 and1920×1080 were inspected directly; no mockups/generated gameplay.
 
-Continuous MP4:362.96s,1280×720/24fps, uncut normal-speed actual Game processing and scripted InputEvents. Journey receipt360.69 wall seconds,329.84 simulation seconds (menus/intermissions freeze time),3 clears. Actual first Needle~3.24sim seconds, Bed21.39s, Door34.70s, Dynamo79.20s, perk Sixth Beat +merchant Repair around203.35s, paid expansion247.01s, Arc267.37s, saved/resumed checkpoint and later Pillow activation. No wallet/HP/position edits, prebuilt defenses or speedup in this recording. Auto-room positioning only occurs in separately labelled simulation captures.
+Continuous MP4:362.96s,1280×720/24fps, uncut normal-speed actual Game processing and scripted InputEvents. Journey receipt360.69 wall seconds,329.84 simulation seconds (menus/intermissions freeze time),3 clears. Actual first Needle~3.24sim seconds, Bed21.39s, Door34.70s, Dynamo79.20s, perk Sixth Beat +merchant Repair around203.35s, paid expansion247.01s, Arc267.37s, saved/resumed checkpoint and later Pillow activation. No wallet/HP/position edits, prebuilt defenses or speedup in this recording. It predates final wording/K-button clipping correction and the late-Pillow checkpoint validation boundary fix; core economy/combat numbers are unchanged. Auto-room positioning only occurs in separately labelled simulation captures.
 
 Separate actual internal Master FLAC355.08s; video is silent and clocks are **not synchronized**. Signal measured RMS.01393, peak.09488 (normalized), zero full-scale samples, with nonzero30-second segments. This proves meaningful engine signal, not subjective loudness/scariness or Windows output. Existing music/SFX settings and assets were preserved. Original WAV retained outside Git; lossless FLAC supplied.
 
@@ -172,6 +172,6 @@ Remaining visual weaknesses: the optional Run summary can cover part of left-sid
 
 ## Delivery and acceptance
 
-Windows ZIP is a portable private x64 export with embedded pack and license/checklist notices when export succeeds. Inspect its source commit/hash receipt and Linux pack-validation log; native Windows execution remains UNVERIFIED. No public release or main merge.
+Windows ZIP exported successfully:113,651,943 bytes; source `51d4c320ed9d20d71900101b9c30abbc052301ab`. Embedded pack Linux validation77/0 plus17 Phase12 exported-runtime checks, ZIP CRC clean with Phase12 checklist included. [Export receipt](evidence/earned-power/windows/windows-artifact.json). It is a portable private x64 export with embedded pack and license/checklist notices. Inspect its source commit/hash receipt and Linux pack-validation log; native Windows execution remains UNVERIFIED. No public release or main merge.
 
 Implementation is complete for this milestone and automated checks are green. **Human balance acceptance is incomplete**, especially fresh Long Night/Hell Campaign under tested policies and whether25–27min first prestige feels rewarding. No claim that tests prove fun, optimality, universally fair difficulty or native Windows stability. Owner/Adie should compare greed/defense/grid choices, repair timing and merchant opportunity costs using the playtest checklist. No future phase was started.

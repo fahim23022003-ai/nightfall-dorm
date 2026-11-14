@@ -1,7 +1,7 @@
 # Phase 12 — Earned Power
 
 Branch work; started clean at b2f78fa46ebdbe0a12f4e7a15f09ce1631d98e5f.
-Recoverable implementation checkpoint16099fd; final source receipt follows in
+Recoverable implementation checkpoint16099fd; final implemented source51d4c320ed9d20d71900101b9c30abbc052301ab in
 PHASE_12_EARNED_POWER_REPORT.md / Windows export receipt. No main/public release.
 Do not restart earlier phases or replace canonical earned checkpoints.
 
@@ -47,8 +47,10 @@ open. Canonical45 hash unchanged; historical regenerated outputs archived/restor
 
 Read docs/PHASE_12_EARNED_POWER_REPORT.md,
 docs/PHASE_12_HUMAN_PLAYTEST_CHECKLIST.md and docs/evidence/earned-power/INDEX.md.
-Final delivery step: portable Windows export, source/build hash receipt, verified
-work push and clean-tree confirmation. No future phase started.
+Windows portable ZIP exported113,651,943bytes; embedded pack Linux77/0 +Phase12 exported17/0 and ZIP
+CRC clean, Phase12 checklist included. Source/build hash receipt preserved under
+docs/evidence/earned-power/windows. Final work push verification and clean-tree
+confirmation are supplied in the delivery message. No future phase started.
 
 ---
 
