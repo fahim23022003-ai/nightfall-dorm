@@ -4,6 +4,7 @@ extends CanvasLayer
 var game
 var menu_start: Button
 var panel: Control
+var upgrade_notice: Label
 var message: Label
 var details: Label
 var status: Label
@@ -175,7 +176,7 @@ func button(text: String,pos: Vector2,callback: Callable,width: float=240,height
   if event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT and event.pressed:b.set_meta("ignore_double_release",event.double_click))
  b.mouse_entered.connect(func():
   if game.audio_system.streams.has("ui_hover"):game.audio_event("ui_hover"))
- var primary=text.begins_with("Start") or text.begins_with("Confirm") or text.begins_with("Continue") or text.begins_with("Claim reward") or text.begins_with("Buy")
+ var primary="Continue ·" in text or text.begins_with("Start") or text.begins_with("Confirm") or text.begins_with("Continue") or text.begins_with("Claim reward") or text.begins_with("Buy")
  b.set_meta("visual_role","primary" if primary else "secondary")
  # Disabled economic actions still explain an unaffordable attempt audibly.
  b.gui_input.connect(func(event):
@@ -241,6 +242,10 @@ func show_settings():
   var toggle=CheckButton.new();toggle.name=options[i];toggle.text=names[i];toggle.position=Vector2(640,190+i*50);toggle.size.x=470;toggle.button_pressed=game.profile.settings.get(options[i],false)
   var id=options[i];toggle.toggled.connect(func(value):game.change_setting(id,value));panel.add_child(toggle)
  label_at("All quality levels preserve danger warnings and timing.\nPreferences affect presentation only.",Vector2(150,449),16,450)
+ var guide=OptionButton.new();guide.name="guidance_mode";guide.position=Vector2(640,503);guide.size=Vector2(470,40)
+ for value in ["Show Guidance","Minimal Guidance","Guidance Off"]:guide.add_item(value)
+ var modes=["show","minimal","off"];guide.select(modes.find(game.profile.settings.guidance_mode));guide.item_selected.connect(func(i):game.change_setting("guidance_mode",modes[i]));panel.add_child(guide)
+ guide.tooltip_text="Contextual objectives only. Urgent combat warnings always stay on."
  button("Soundtrack · playlist preferences",Vector2(150,503),func():SessionInterface.settings(self),420,40)
  button("Back",Vector2(150,592),show_menu,420,46)
  button("Audio listening room",Vector2(640,592),show_audio_test,470,46)
@@ -296,6 +301,8 @@ func show_match():
  warning_label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  warning_box.visible=false
  warning_label.visible=false
+ upgrade_notice=label_at("",Vector2(370,145),15,520)
+ upgrade_notice.mouse_filter=Control.MOUSE_FILTER_PASS;upgrade_notice.clip_text=true
  room_dock=box(Rect2(20,638,1240,66),"203747","607D8B")
  details=label_at("Choose a room",Vector2(35,653),18,205,true)
  room_bed_summary=button("Bed",Vector2(250,649),func(): open_room_panel("bed"),226,44)
@@ -723,6 +730,8 @@ func update_match():
  if room!=null and room.spatial!=null:
   room_selected_summary.text="Build B · %d/%d" % [room.buildings.size(),room.tile_count()]
   room_selected_summary.tooltip_text="B opens buildings; click valid floor to buy. P shows room planning. V moves a selected machine during preparation/intermission. F toggles 8-unit snap; Shift positions finely. Right-click / Esc cancels."
+ if is_instance_valid(upgrade_notice):
+  var q=game.presentation.notices;upgrade_notice.text=q.text();upgrade_notice.tooltip_text=q.details();upgrade_notice.visible=upgrade_notice.text!="" and not warning_box.visible and not game.construction.active() and not game.construction.planning
  if not game.mobile_mode:teammates.update()
 
 func show_result():

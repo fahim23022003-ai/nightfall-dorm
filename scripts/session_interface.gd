@@ -19,18 +19,7 @@ static func settings(ui):
  ui.button("Back to settings",Vector2(150,592),ui.show_settings,460,44)
  ui.button("Listening room · audition only",Vector2(650,592),ui.show_audio_test,460,44)
 static func wave_report(ui):
- var m=ui.game.model;ui.clear();ui.current_screen="wave_report";ui.box(Rect2(90,35,1100,650))
- ui.label_at("WAVE %d · DEFENSE REPORT" % m.endless.completed,Vector2(120,65),30,1000,true)
- var data=m.wave_metrics.report();var skills=data.skills.slice(0,6).map(func(value):return str(value).replace("_"," ").capitalize())
- if data.skills.size()>6:skills.append("+%d more (hover)" % (data.skills.size()-6))
- var text="TOTAL HUNTER DAMAGE %.1f · Your room %.1f\nYOUR BUILDINGS · actual Hunter damage / successful impacts\n" % [data.total+data.allied,data.total]
- for row in data.top:text+="%s L%d · #%d · %.1f damage · %d hits%s\n" % [Catalog.BUILDINGS[row.kind].name,row.level,row.id,row.damage,row.hits," · sold/destroyed" if not m.player().buildings.has(int(row.id)) else ""]
- if data.top.is_empty():text+="No player building damage recorded.\n"
- text+="\nAllied Hunter damage: %.1f · Other player damage: %.1f\nDoor damage received: %.1f · Actual repairs: %.1f HP\nGenerated: %.2f Gold / %.2f Electricity\nSuccessful support/defense activations: %d\nHunter skills: %s\n" % [data.allied,data.other,data.door,data.repair,data.gold,data.power,data.activations,", ".join(skills)]
- text+="\nDamage, production and support are separate. DoT is credited to its source;\nshared consumable damage remains Other. Purchases, sales, theft, aid and Omen\npayouts are not generation. Missing legacy telemetry is never fabricated."
- if not data.available:text="This legacy checkpoint predates wave telemetry.\nNo historical performance figures are inferred.\nContinue normally to collect the next wave report."
- var label=ui.label_at(text,Vector2(120,130),17,1020);label.mouse_filter=Control.MOUSE_FILTER_PASS;label.tooltip_text="All encountered skills: "+", ".join(data.skills);label.size.y=460;label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
- ui.button("Back · wave choices and Omens",Vector2(120,612),ui.replay_ui.show_intermission,1020,42)
+ WaveReportView.show(ui)
 
 static func refresh(ui):
  if ui.current_screen=="soundtrack" and is_instance_valid(ui.soundtrack_now):

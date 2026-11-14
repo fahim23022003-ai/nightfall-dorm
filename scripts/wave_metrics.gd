@@ -1,7 +1,7 @@
 class_name WaveMetrics
 extends RefCounted
-var data={"version":1,"available":true,"total":0.0,"allied":0.0,"door":0.0,"repair":0.0,"gold":0.0,"power":0.0,"activations":0,"skills":[],"buildings":{}}
-func reset():data={"version":1,"available":true,"total":0.0,"allied":0.0,"door":0.0,"repair":0.0,"gold":0.0,"power":0.0,"activations":0,"skills":[],"buildings":{}}
+var data={"version":1,"available":true,"evidence_version":1,"observations":{},"magic_blocked":0.0,"affordable_damage":0.0,"total":0.0,"allied":0.0,"door":0.0,"repair":0.0,"gold":0.0,"power":0.0,"activations":0,"skills":[],"buildings":{}}
+func reset():data={"version":1,"available":true,"evidence_version":1,"observations":{},"magic_blocked":0.0,"affordable_damage":0.0,"total":0.0,"allied":0.0,"door":0.0,"repair":0.0,"gold":0.0,"power":0.0,"activations":0,"skills":[],"buildings":{}}
 func total(room: int,player: int,amount: float,target: int):
  if target!=1:return
  if room==player:data.total+=amount
@@ -18,7 +18,10 @@ func event(type: String,room: int,player: int,payload: Dictionary):
   var skill=str(payload.get("ability",payload.get("action",payload.get("skill",payload.get("archetype",type)))))
   if skill not in data.skills and data.skills.size()<32:data.skills.append(skill)
  if room!=player:return
- if type=="door_damage":data.door+=payload.get("damage",0)
+ if type=="door_damage":
+  data.door+=payload.get("damage",0)
+  if payload.get("repair_affordable",false):data.affordable_damage=float(data.get("affordable_damage",0))+payload.get("damage",0)
+ if type=="magic_absorb":data.magic_blocked=float(data.get("magic_blocked",0))+payload.get("amount",0)
  if type in ["repair","healing","plasma_release"]:data.repair+=payload.get("amount",0)
  if type in ["defense_heal","item_rescue"]:data.repair+=payload.get("damage",0)
  if type in ["defense_activate","magic_shield","magic_reflect"]:data.activations+=1
@@ -30,6 +33,10 @@ func report() -> Dictionary:
  result.other=maxf(0,data.total-attributed);result.top=top.slice(0,6);return result
 static func valid(d) -> bool:
  if not d is Dictionary or d.get("version")!=1 or not d.get("available") is bool:return false
+ if d.has("evidence_version") and d.evidence_version!=1:return false
+ if d.has("observations") and not WaveOpportunities.valid(d.observations):return false
+ for optional in ["magic_blocked","affordable_damage"]:
+  if d.has(optional) and not ReplaySnapshot.number(d[optional]):return false
  for key in ["total","allied","door","repair","gold","power"]:
   if not ReplaySnapshot.number(d.get(key)):return false
  if not ReplaySnapshot.whole(d.get("activations")) or not d.get("skills") is Array or d.skills.size()>32 or not d.get("buildings") is Dictionary or d.buildings.size()>256:return false

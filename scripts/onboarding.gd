@@ -6,18 +6,20 @@ var phase="cinematic"
 var step=0
 var active=true
 var start_position=Vector2.ZERO
+var repair_baseline=0
 var upgraded=false
 var damage_observed=false
 var threat_started=false
 var tutorial_finished=false
 var objective
+var action_feedback: Label
 var progress
 var continue_button
 var sounds_seen={}
 var welcome_dismissed=false
 var welcome_close: Button
 const TITLES=["MOVE","FIND A ROOM","SLEEP","GOLD ECONOMY","ELECTRICITY","BUILD A DEFENSE","UPGRADE AND REPAIR","SURVIVE A SIMPLE THREAT","TUTORIAL COMPLETE"]
-const NOTES=["WASD or arrow keys: move toward the glowing marker.","Walk into the highlighted empty room. Press E to claim it.","Walk to the glowing bed. Press E to sleep and lock your door.","Sleep to earn Gold. Use Gold to build and upgrade. Watch the Gold counter increase.","Click a floor pad, choose Dynamo, then BUILD. The Dynamo produces Electricity, separately from Gold.","Use the glowing pad near your door. Build a Needle turret in range. A distant turret cannot defend this door; sell and rebuild it, or use Recover.","Click your turret and upgrade it once. Then press R to repair the damaged door.","Your practice Hunter is weak. Watch the door take a hit and your turret fire. Your practice resources and stored items are separate.","You are ready. Claim a room, sleep, build defenses and survive the night."]
+const NOTES=["Move with WASD / arrows toward the glowing room.","Walk inside the glowing empty room. Press E to claim it.","Approach the glowing bed. Press E to sleep: the door locks and Gold starts.","Watch Gold rise while sleeping. Gold pays for buildings, upgrades and repairs.","Build [B] → Dynamo. It produces Electricity; it does not attack.","Build a Needle near the glowing door. Select it to see its real range [O]. Dynamos do not shoot.","Select your Needle. Upgrade once, then repair the damaged door [R].", "Survive the practice Hunter. Your turret attacks automatically; watch door HP.","Practice won! Next: Stage 1 on Normal. Real matches earn Rank XP and RM Cash; practice never does."]
 func _init(owner):game=owner
 func _ready():
  theme=GothicTheme.make_theme(game.ui.default_font)
@@ -61,17 +63,19 @@ func cancel_intro_audio():
  if is_instance_valid(game.audio_system):game.audio_system.stop_events(["intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","door_break"])
 func begin_tutorial():
  cancel_intro_audio()
- clean_controls();phase="tutorial";active=true;step=0;upgraded=false;damage_observed=false;threat_started=false;tutorial_finished=false
+ clean_controls();phase="tutorial";active=true;step=0;continue_button=null;repair_baseline=0;upgraded=false;damage_observed=false;threat_started=false;tutorial_finished=false
  start_position=game.model.player_position
- var panel=Panel.new();panel.position=Vector2(20,95);panel.size=Vector2(330,270);panel.add_theme_stylebox_override("panel",game.ui.style("172839","E5C77D"));panel.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(panel)
- progress=Label.new();progress.position=Vector2(36,111);progress.size=Vector2(298,30);add_child(progress)
- objective=Label.new();objective.position=Vector2(36,155);objective.size=Vector2(298,170);objective.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;objective.add_theme_font_size_override("font_size",17);add_child(objective)
- var b=Button.new();b.text="Recover / reopen build controls";b.position=Vector2(22,374);b.size=Vector2(325,38);b.pressed.connect(recover);add_child(b)
+ var panel=Panel.new();panel.position=Vector2(20,145);panel.size=Vector2(330,176);panel.add_theme_stylebox_override("panel",game.ui.style("172839","E5C77D"));panel.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(panel)
+ progress=Label.new();progress.position=Vector2(36,155);progress.size=Vector2(298,40);progress.add_theme_font_size_override("font_size",15);add_child(progress)
+ objective=Label.new();objective.position=Vector2(36,200);objective.size=Vector2(298,84);objective.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;objective.add_theme_font_size_override("font_size",17);add_child(objective)
+ var b=Button.new();b.text="Recover / reopen build controls";b.position=Vector2(22,330);b.size=Vector2(325,38);b.pressed.connect(recover);add_child(b)
+ action_feedback=game.ui.label_at("",Vector2(36,286),13,296,false,self);action_feedback.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;action_feedback.size.y=34;action_feedback.modulate=Color("EFADAE")
+ var skip_button=Button.new();skip_button.text="Skip practice · no rewards";skip_button.position=Vector2(22,372);skip_button.size=Vector2(325,34);skip_button.pressed.connect(skip_tutorial);add_child(skip_button)
  if game.profile.tutorial_completed:
-  var exit=Button.new();exit.text="Exit practice";exit.position=Vector2(22,420);exit.size=Vector2(325,36);exit.pressed.connect(finish_replay);add_child(exit)
+  var exit=Button.new();exit.text="Exit practice";exit.position=Vector2(22,414);exit.size=Vector2(325,36);exit.pressed.connect(finish_replay);add_child(exit)
  refresh_objective()
 func defense_ready(r) -> bool:
- return r!=null and r.buildings.keys().any(func(tile):return r.buildings[tile].kind in ["turret","heavy"] and r.tile_position(tile).distance_to(r.door_approach())<=Catalog.BUILDINGS[r.buildings[tile].kind].range)
+ return r!=null and r.buildings.keys().any(func(tile):return r.buildings[tile].kind in ["turret","heavy"] and r.tile_position(tile).distance_to(r.door_approach())<=BuildingStats.weapon_stats(game.model,r,r.buildings[tile]).range*game.model.hunter.nightmare.range_factor(r.index))
 func free_practice_pad(r):
  var nearest=0;var distance=1e20
  for tile in range(r.tile_count()):
@@ -94,13 +98,29 @@ func recover():
    if step>=7:
     step=5;threat_started=false;game.model.result="";game.model.hunter.state=HunterState.State.DORMANT;refresh_objective()
   elif step==4 and game.model.player().buildings.size()>=game.model.player().tile_count():free_practice_pad(game.model.player())
+ if step in [4,5]:
+  var room=game.model.player()
+  if room!=null:
+   var best=-1;var distance=1e20
+   for tile in range(room.tile_count()):
+    if room.buildings.has(tile):continue
+    var d=room.tile_position(tile).distance_to(room.door_approach())
+    if d<distance:best=tile;distance=d
+   if best>=0:game.selected_tile=best;game.ui.open_context()
+ elif step==6:
+  for tile in game.model.player().buildings:
+   if game.model.player().buildings[tile].kind in ["turret","heavy"]:game.selected_tile=tile;game.ui.open_context();break
+func skip_tutorial():
+ if phase!="tutorial":return
+ if game.profile.complete_tutorial():finish_replay()
+ elif is_instance_valid(objective):objective.text="Cannot save the skip choice. Retry or keep practicing."
 func finish_replay():
  active=false;phase="idle";game.tutorial_active=false;clean_controls();game.return_menu();queue_redraw()
 func next_step():
  step+=1;game.audio_event("tutorial_step");refresh_objective()
 func refresh_objective():
- if is_instance_valid(progress):progress.text="PRACTICE · %d / 9 · %s" % [step+1,TITLES[step]]
- if is_instance_valid(objective):objective.text=NOTES[step]
+ if is_instance_valid(progress):progress.text="FIRST NIGHT · %d / 9\n%s" % [step+1,TITLES[step]]
+ if is_instance_valid(objective):objective.text="Upgrade confirmed. Now repair the damaged door [R]." if step==6 and upgraded else NOTES[step]
 func save_completion():
  if step!=8:return
  if not game.profile.complete_tutorial():
@@ -130,11 +150,12 @@ func tutorial_tick(delta):
    if r!=null and r.buildings.values().any(func(b):return b.kind=="generator") and r.electricity>0:next_step()
   5:
    if defense_ready(r):
-    r.door_hp=r.max_hp()*.65;r.gold=maxf(r.gold,500);r.electricity=maxf(r.electricity,100);next_step()
+    r.door_hp=r.max_hp()*.65;r.gold=maxf(r.gold,500);r.electricity=maxf(r.electricity,100);repair_baseline=r.repair_actions;next_step()
   6:
    if r!=null:
-    upgraded=r.buildings.values().any(func(b):return b.kind in ["turret","heavy"] and b.level>=2)
-    if upgraded and r.repair_actions>0:next_step()
+    var before=upgraded;upgraded=r.buildings.values().any(func(b):return b.kind in ["turret","heavy"] and b.level>=2)
+    if before!=upgraded:refresh_objective()
+    if upgraded and r.repair_actions>repair_baseline:next_step()
   7:
    m.preparation=maxf(m.preparation,m.time-25)
    if not defense_ready(r):
@@ -146,7 +167,7 @@ func tutorial_tick(delta):
    if m.result=="victory" and r.shots>0 and damage_observed:
     m.result="";m.running=false;game.pending_build="";game.ui.close_context();next_step()
     var b=Button.new();b.text="Save completion & enter menu";b.position=Vector2(420,565);b.size=Vector2(440,48);b.pressed.connect(save_completion);add_child(b)
-    primary_button(b)
+    continue_button=b;primary_button(b)
 func _process(delta):
  if not active:return
  if phase in ["cinematic","title"]:
@@ -157,7 +178,9 @@ func _process(delta):
     if elapsed>=entry[0] and not sounds_seen.has(key):sounds_seen[key]=true;game.audio_event(entry[1])
    if elapsed>=15:show_title()
   # Welcome deliberately has no timer dismissal. Only its X closes it.
- elif phase=="tutorial":tutorial_tick(delta)
+ elif phase=="tutorial":
+  tutorial_tick(delta)
+  if is_instance_valid(action_feedback):action_feedback.text=game.ui.feedback_text if game.presentation.clock<game.ui.feedback_until and game.ui.feedback_text not in ["Defense improved!",""] else ""
  queue_redraw()
 func _input(event):
  if is_welcome_open():

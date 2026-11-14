@@ -45,6 +45,7 @@ var touch
 var construction
 var in_background=false
 var ui_clock=0.0
+var guidance=PlayerGuidance.new()
 var tutorial_active=false
 var onboarding
 var onboarding_layer
@@ -324,7 +325,7 @@ func _process(delta: float):
    ui_clock=0
    ui.update_match()
   horror.update(delta,model)
-  if model.run_kind=="endless" and model.endless!=null and model.endless.phase=="intermission" and ui.current_screen!="intermission" and not ui.replay_ui.preparing:
+  if model.run_kind=="endless" and model.endless!=null and model.endless.phase=="intermission" and ui.current_screen not in ["intermission","wave_report"] and not ui.replay_ui.preparing:
    ui.replay_ui.intermission_saved=profile.checkpoint_endless(model)
    ui.replay_ui.show_intermission();audio_event("reward")
   if model.result != "" and not tutorial_active:
@@ -347,7 +348,9 @@ func _process(delta: float):
  if construction!=null:construction.update(delta)
  audio_system.update_state(delta,model,mode)
  SessionInterface.refresh(ui)
+ guidance.refresh(self)
  if ui.items_ui!=null: ui.items_ui.update(delta)
+ presentation.notices_blocked=not model.running or ui.current_screen!="match" or is_instance_valid(ui.warning_box) and ui.warning_box.visible or construction.active() or construction.planning
  presentation.update(delta,model)
  if mode in ["match","result"] and not tutorial_active:audio_system.set_tension(presentation.identity.tension,presentation.identity.intensity)
  if mode=="match" and not tutorial_active:audio_system.update_environment(presentation.environment)
@@ -386,6 +389,9 @@ func _unhandled_input(event):
   elif event.keycode==KEY_T and not tutorial_active:ui.teammates.toggle_panel()
   elif event.keycode in [KEY_PAGEUP,KEY_PAGEDOWN] and not tutorial_active:cycle_spectator(-1 if event.keycode==KEY_PAGEUP else 1)
   elif event.keycode in [KEY_1,KEY_2] and model.running: activate_item(0 if event.keycode==KEY_1 else 1)
+  elif event.keycode==KEY_B and model.running and watched_room<0:
+   if model.player()==null:ui.touch_notice("Claim an empty room first · E inside the room.")
+   else:ui.open_build_menu()
   elif event.keycode==KEY_E and model.running and watched_room<0: model.interact()
   elif event.keycode==KEY_M: toggle_map()
   elif event.keycode==KEY_G: toggle_guide()

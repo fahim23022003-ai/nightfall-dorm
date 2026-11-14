@@ -40,7 +40,7 @@ func create():
  var logo=ui.label_at("NIGHTFALL\nDORM",Vector2(65,122),64,600,true);logo.add_theme_font_override("font",ui.horror_font);logo.add_theme_constant_override("line_spacing",-32)
  ui.label_at("—  THE NIGHT WATCH  —",Vector2(74,262),13,600).modulate=Color("B8A478")
  ui.label_at("Claim a bed. Build your defenses.\nMake it through the night.",Vector2(73,293),20,580)
- ui.menu_start=card("Start Game",Vector2(70,382),Vector2(480,98),"start",game.enter_game,"play","Prepare for your next night","D2BC83")
+ ui.menu_start=card("Start Game",Vector2(70,382),Vector2(480,98),"start",game.enter_game,"play","Next: Stage 1 · Normal" if profile.tutorial_completed and profile.statistics.matches==0 else "Prepare for your next night","D2BC83")
  var endless=ui.button("Endless Siege",Vector2(94,494),ui.replay_ui.show_endless,432,48);endless.icon=PremiumButton.texture("endless");secondary(endless,"play")
  ui.label_at("One room. Stronger waves. How long can you last?",Vector2(96,551),14,480).modulate=Color("BCA8C4")
  var shop=card("SHOP",Vector2(614,357),Vector2(190,220),"shop",ui.shop.show_shop,"shop","Buy supplies","BD9980")

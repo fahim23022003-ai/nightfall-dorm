@@ -89,7 +89,7 @@ func show_intermission():
  if preparing:
   preparing=false;intermission_saved=game.profile.checkpoint_endless(game.model)
  var run=game.model.endless;var next=run.scaling(run.wave+1)
- page("WAVE %d CLEARED" % run.completed,"The world is paused: no passive income, cooldown recovery or repeated choice rewards. Choose one modest aid, then face one fresh Hunter.","intermission")
+ page("WAVE %d CLEARED" % run.completed,"1 REVIEW (optional) → 2 PREPARE (optional) → 3 CHOOSE AID + OMEN → 4 CONTINUE. Economy is frozen; one aid starts one next wave.","intermission")
  ui.button("Wave report",Vector2(940,69),func():SessionInterface.wave_report(ui),235,32)
  ui.premium_icon("endless",Vector2(107,191),Vector2(110,110))
  ui.label_at("NEXT · WAVE %d · %s" % [run.wave+1,StrategyCatalog.ARCHETYPES[StrategyCatalog.ARCHETYPE_IDS[posmod(run.seed_value+run.wave,StrategyCatalog.ARCHETYPE_IDS.size())]].name],Vector2(245,193),30,900,true)
@@ -98,9 +98,9 @@ func show_intermission():
  var completed_omen=run.omen.last
  if not completed_omen.is_empty() and completed_omen.wave==run.completed:
   paragraph("OMEN SURVIVED · "+NightOmens.DATA[completed_omen.id].name+" · "+NightOmens.payout_text(Vector2(completed_omen.gold,completed_omen.power)),Vector2(107,164),1068,25,15)
- ui.button("Prepare defenses · frozen economy",Vector2(107,305 if offered else 329),func():preparing=true;game.ui.show_match(),1068,36)
+ ui.button("2 · Prepare / repair defenses · optional · frozen economy",Vector2(107,305 if offered else 329),func():preparing=true;game.ui.show_match(),1068,36)
  if offered:
-  ui.label_at("NIGHT OMEN · optional · next wave only · choose one or decline",Vector2(107,348),15,1068,true)
+  ui.label_at("3 · NIGHT OMEN · optional risk · next wave only · choose one or decline",Vector2(107,348),15,1068,true)
   for i in range(4):
    var id=NightOmens.IDS[i] if i<3 else ""
    var selected=run.omen.selected==id
@@ -117,7 +117,7 @@ func show_intermission():
   var data=choices[i];var choice=data.id;var at=Vector2(107+i*362,475 if offered else 377)
   ui.box(Rect2(at,Vector2(342,78 if offered else 144)))
   paragraph(data.text,at+Vector2(15,8 if offered else 12),312,28 if offered else 62,13 if offered else 18)
-  ui.button("Continue · "+data.name,at+Vector2(15,37 if offered else 91),func():game.continue_endless(choice),312,33 if offered else 39).disabled=not intermission_saved
+  ui.button("4 · Continue · "+data.name,at+Vector2(15,37 if offered else 91),func():game.continue_endless(choice),312,33 if offered else 39).disabled=not intermission_saved
  var claimed=int(game.profile.replay.milestone_wave);var eligible=mini(20,int(run.completed/5)*5)
  var eligible_text="none" if eligible==0 else "through wave %d" % eligible
  var claimed_text="none" if claimed==0 else "through wave %d" % claimed

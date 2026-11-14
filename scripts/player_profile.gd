@@ -4,7 +4,7 @@ extends RefCounted
 var path="user://profile.json"
 var xp=0
 var equipped: Array=[]
-var settings={"music_mode":"shuffle","manual_track":"music_calm","music":0.5,"effects":0.65,"ambient":0.5,"muted":false,"fullscreen":false,"tutorial":true,"battery_saver":false,"reduced_effects":false,"reduced_motion":false,"reduced_flashes":false,"graphics_quality":"medium"}
+var settings={"guidance_mode":"show","music_mode":"shuffle","manual_track":"music_calm","music":0.5,"effects":0.65,"ambient":0.5,"muted":false,"fullscreen":false,"tutorial":true,"battery_saver":false,"reduced_effects":false,"reduced_motion":false,"reduced_flashes":false,"graphics_quality":"medium"}
 var next_match_id=1
 var active_match: Dictionary={}
 var last_award: Dictionary={}
@@ -436,6 +436,7 @@ func load_profile() -> bool:
  for key in ["music","effects","ambient"]:
   var value=data.settings.get(key,settings[key])
   if (value is float or value is int) and is_finite(float(value)): settings[key]=clampf(float(value),0,1)
+ if data.settings.get("guidance_mode","") in ["show","minimal","off"]:settings.guidance_mode=data.settings.guidance_mode
  if data.settings.get("graphics_quality","") in ["low","medium","high"]:settings.graphics_quality=data.settings.graphics_quality
  for key in ["music_mode","manual_track"]:
   var value=data.settings.get(key,settings[key])
@@ -547,6 +548,8 @@ func update_setting(key: String,value) -> bool:
  if key in ["music","effects","ambient"]:
   if not (value is int or value is float) or not is_finite(float(value)): return false
   value=clampf(float(value),0,1)
+ elif key=="guidance_mode":
+  if value not in ["show","minimal","off"]:return false
  elif key=="music_mode":
   if value not in ["shuffle","classic","manual","off"]:return false
  elif key=="manual_track":

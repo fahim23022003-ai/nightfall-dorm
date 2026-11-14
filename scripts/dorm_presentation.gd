@@ -7,6 +7,8 @@ var building_visual=preload("res://scripts/building_evolution_visual.gd").new()
 var hunter_art={}
 var textures: Dictionary = {}
 var cartoon: Dictionary = {}
+var notices=UpgradeNotices.new()
+var notices_blocked=false
 var prestige_art: Dictionary={}
 var all_rooms=true
 var ally_group: Array=[]
@@ -95,6 +97,7 @@ func reset():
  previous_doors.clear()
  levels.clear()
  visual_events.clear()
+ notices=UpgradeNotices.new()
  seen_event=0
  death_age=0
  hunter_clock=0
@@ -107,6 +110,7 @@ func new_encounter(model):
  hunter_clock=0;death_age=0;attack_pose=0;visual_events.clear()
 
 func update(delta: float, model):
+ notices.update(delta,notices_blocked or model.hunter.state in [HunterState.State.ATTACK,HunterState.State.TRANSFORM] or model.wrath.active())
  if model.time<last_model_time: reset()
  last_model_time=model.time
  var action_delta=maxf(0,delta-model.items.frozen_delta) if model.running else 0.0
@@ -142,12 +146,14 @@ func update(delta: float, model):
    var value=room.bed_level if key=="bed" else room.door_level
    var id="%d:%s" % [room.index,key]
    if levels.has(id) and value>levels[id]: effect("level",room.bed_position() if key=="bed" else room.door_position(),0.8)
+   if room.owner==0 and levels.has(id) and value>levels[id]:notices.push(key.capitalize()+" L%d" % (value+1))
    levels[id]=value
   for tile in room.buildings:
    var b=room.buildings[tile]
    var id="%d:tile%d" % [room.index,tile]
    if not levels.has(id): effect("build",room.tile_position(tile),0.45)
    elif b.level>levels[id]: effect("prestige" if b.level==10 else "level",room.tile_position(tile),1.2 if b.level==10 else 0.8)
+   if room.owner==0 and levels.has(id) and b.level>levels[id]:notices.push(Catalog.BUILDINGS[b.kind].name+" L%d" % b.level)
    levels[id]=b.level
  for e in model.combat_events:
   if e.id>seen_event:
@@ -318,10 +324,6 @@ func render(c):
    for i in range(4 if c.profile.settings.reduced_effects else 8):
     var v=Vector2.from_angle(i*TAU/(4 if c.profile.settings.reduced_effects else 8));var at=p+v*(10+(1-fraction)*32)
     c.draw_rect(Rect2(at,Vector2(3,5)),Color(1,.82,.5,fraction))
-   var value="LEVEL 10 · PRESTIGE" if e.kind=="prestige" else "UPGRADED"
-   var at=p+Vector2(-36,-38-lift)
-   c.draw_string_outline(font,at,value,HORIZONTAL_ALIGNMENT_LEFT,-1,11,3,Color(.06,.08,.1,fraction))
-   text(c,value,at,11,Color(1,.88,.6,fraction))
   else:
    var color=Color("A8C9AE") if e.kind=="repair" else Color("C8AA79")
    if e.kind=="impact":c.draw_arc(p,5+(1-fraction)*13,0,TAU,20,Color(color,fraction*.65),1.5)

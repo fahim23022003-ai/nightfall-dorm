@@ -46,6 +46,7 @@ def main():
     notices.update({'MUSIC_AND_AUDIO_CREDITS.md': ROOT / 'docs/AUDIO_SOURCES.md', 'VSCO_CC0_LICENSE.txt': ROOT / 'tools/audio/source/vsco/LICENSE', 'RECORDED_VOCAL_CREDITS.md': ROOT / 'tools/audio/source/vocals/CREDITS-soundboard.md', 'RECORDED_VOCAL_SOURCES.json': ROOT / 'tools/audio/source/vocals/SOURCES.json', 'VERTIGO_VOCAL_CREDITS.md': ROOT / 'tools/audio/source/vocals/vertigo-CREDITS.md'})
     notices.update({
         'PHASE_5D4_HUMAN_PLAYTEST_GUIDE.md': ROOT / 'docs/PHASE_5D4_HUMAN_PLAYTEST_GUIDE.md',
+        'PHASE_11_HUMAN_PLAYTEST_CHECKLIST.md': ROOT / 'docs/PHASE_11_HUMAN_PLAYTEST_CHECKLIST.md',
         'REAPERS_WRATH_SFX_CREDITS.md': ROOT / 'tools/audio/source/wrath_sfx/CREDITS.md',
         'REAPERS_WRATH_SFX_SOURCES.json': ROOT / 'tools/audio/source/wrath_sfx/SOURCES.json',
         'REAPERS_WRATH_SFX_CC0.txt': ROOT / 'tools/audio/source/wrath_sfx/CC0-1.0.txt',

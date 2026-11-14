@@ -501,6 +501,7 @@ func _tick_sim(delta: float):
   _finish_terminal()
   return
  _advance_projectiles(delta)
+ if run_kind=="endless":WaveOpportunities.observe(self,delta)
  _turrets(delta)
  if player_room >= 0 and not rooms[player_room].alive:
   result = "defeat"
@@ -561,7 +562,7 @@ func apply_room_damage(index: int,amount: float,source: String="door strike",att
  var rescued=items.guardian_intercept(amount,self,index)
  if not rescued:room.door_hp=maxf(0,room.door_hp-amount)
  var actual=maxf(0,old-room.door_hp);room.door_damage_taken+=actual;room.damage_flash=.25
- record_event("door_damage",index,{"damage":actual,"hp":room.door_hp,"max_hp":room.max_hp(),"source":source,"attacker_id":attacker_id,"damage_type":packet.type,"element":packet.element})
+ record_event("door_damage",index,{"damage":actual,"hp":room.door_hp,"max_hp":room.max_hp(),"repair_affordable":room.door_hp>0 and room.gold>=room.manual_repair_cost(),"source":source,"attacker_id":attacker_id,"damage_type":packet.type,"element":packet.element})
  if old>0 and room.door_hp<=0:record_event("door_break",index)
  if index==player_room and not rescued:items.feather_cross(old,self)
  if not rescued:
