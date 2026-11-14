@@ -275,6 +275,7 @@ func show_match():
  phase_label=label_at("",Vector2(576,22),18,120)
  hunter_label=label_at("",Vector2(704,21),18,290)
  hunter_label.mouse_filter=Control.MOUSE_FILTER_PASS
+ hunter_label.clip_text=true
  hunter_bar=ProgressBar.new()
  hunter_bar.position=Vector2(704,46)
  hunter_bar.size=Vector2(286,8)
@@ -678,6 +679,10 @@ func update_match():
   hunter_label.text=("REAPER" if m.hunter.transformed else "HUNTER")+" EVO %d · %d/%d" % [m.evolution.evolution_level,roundi(m.hunter.hp),roundi(m.hunter.max_hp)]
   hunter_label.tooltip_text+="\nEvolution %d/10: forms at4/7/10. Combat level %d is separate; no extra HP multiplier. Endless +1 per5 waves. Campaign: stage,75s survival steps,+1 Hell,one step per3 kill buffs. Skills at4; signature at10." % [m.evolution.evolution_level,m.hunter.level]
  if m.wrath.active():warning_label.text="%s · %.1fs · ROOM %d" % [ReaperWrath.ABILITIES[m.wrath.ability].name.to_upper(),m.wrath.warning,m.wrath.cast_target+1]
+ var hp_font=hunter_label.get_theme_font("font");var hp_size=18
+ while hp_size>12 and hp_font.get_string_size(hunter_label.text,HORIZONTAL_ALIGNMENT_LEFT,-1,hp_size).x>286:hp_size-=1
+ hunter_label.add_theme_font_size_override("font_size",hp_size)
+ hunter_label.tooltip_text=hunter_label.text+"\n"+hunter_label.tooltip_text
  if warning_label.visible and (threat or m.hunter.nightmare.action!=""):
   hunter_detail.tooltip_text+="\n"+hunter_detail.text
   hunter_detail.text="[Hover for Hunter details]"

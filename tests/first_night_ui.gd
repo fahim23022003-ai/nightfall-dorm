@@ -36,6 +36,7 @@ func run():
  check(wallet==[game.model.player().gold,game.model.player().electricity,game.model.random.state],"report navigation cannot change wallet/RNG")
  await mouse_button(find_text("Back · wave choices and Omens"));check(game.ui.current_screen=="intermission","actual report back")
  game.ui.show_match();game.ui.replay_ui.preparing=true;game.model.hunter.state=HunterState.State.ATTACK;game.model.hunter.target=game.model.player_room;game.model.hunter.position=game.model.player().door_approach()
- game.profile.settings.guidance_mode="off";game.ui.update_match();game.guidance.refresh(game)
+ game.profile.settings.guidance_mode="off";game.model.hunter.max_hp=100000000;game.model.hunter.hp=100000000;game.ui.update_match();game.guidance.refresh(game)
+ var hp=game.ui.hunter_label;check(hp.get_theme_font("font").get_string_size(hp.text,HORIZONTAL_ALIGNMENT_LEFT,-1,hp.get_theme_font_size("font_size")).x<=286,"large Hunter HP cannot overlap Map button")
  check(game.ui.warning_box.visible and not game.ui.guide_box.visible,"Guidance Off preserves urgent warnings")
  print("FIRST_NIGHT_UI_CHECKS=",checks," FAILURES=",failures);await dispose();quit(1 if failures else 0)

@@ -54,7 +54,7 @@ func endless_flow():
  await terminal(true)
  check(game.ui.current_screen=="intermission" and game.profile.replay.checkpoint.completed==1,"real wave completion opens saved intermission")
  screen("saved intermission")
- await click(find("Prepare defenses · frozen economy"));await settle()
+ await click(find("2 · Prepare / repair defenses · optional · frozen economy"));await settle()
  check(game.ui.replay_ui.preparing and game.ui.current_screen=="match","actual intermission preparation exposes real building controls")
  var r=game.model.player();var time=game.model.time;var gold=r.gold
  game._process(.2);await settle()
@@ -76,7 +76,7 @@ func endless_flow():
  check(game.ui.current_screen=="intermission" and game.model.player().buildings[tile].level==2,"actual Resume restores latest level/ledger, not stale pre-upgrade snapshot")
  check(is_equal_approx(float(game.last_income[0]),game.model.player().income_total) and game.floating.is_empty(),"resume does not replay historical income as new floating Gold")
  var old_hunter=game.model.hunter;var electricity=game.model.player().electricity
- await click(find("Continue · Recharge"));await settle()
+ await click(find("4 · Continue · Recharge"));await settle()
  check(game.ui.current_screen=="match" and game.model.endless.wave==2 and game.model.hunter!=old_hunter and game.model.player().electricity==electricity+5,"actual Continue applies one aid and replaces one Hunter")
  check(is_equal_approx(float(game.last_income[0]),game.model.player().income_total) and game.floating.is_empty(),"carried-wave HUD cannot emit fake whole-run income feedback")
  await terminal(true)

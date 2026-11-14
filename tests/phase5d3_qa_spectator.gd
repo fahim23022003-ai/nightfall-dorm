@@ -100,10 +100,10 @@ func run():
  DirAccess.copy_absolute("res://docs/evidence/phase5d3/qa-pre5d3-endless-profile.json",profile_path)
  var q=PlayerProfile.new(profile_path);q.load_profile();q.tutorial_completed=true;game.profile=q
  check(game.resume_endless(),"actuallegacypaidcheckpointresumesinGame")
- await click(find("Prepare defenses · frozen economy"));await settle()
+ await click(find("2 · Prepare / repair defenses · optional · frozen economy"));await settle()
  game.ui.teammates.expanded=false;game.ui.teammates.update();await click(game.ui.teammates.toggle);await settle();await click(game.ui.teammates.rows[0]);await settle()
  check(game.watched_room>=0,"actualfrozenpreparationallowsobservationwithoutincome")
- await click(game.ui.pause_button);await settle();await click(find("Continue · Reinforce"));await settle()
+ await click(game.ui.pause_button);await settle();await click(find("4 · Continue · Reinforce"));await settle()
  check(game.watched_room==-1 and game.model.endless.wave==5 and game.mode=="match","realwaveContinuerebindsowncameraandcontrols")
  print("PHASE5D3_SPECTATOR_QA_CHECKS=",checks," MAPS=5 FAILURES=",failures)
  game.audio_system.shutdown();await create_timer(.6).timeout;game.queue_free();await create_timer(.2).timeout

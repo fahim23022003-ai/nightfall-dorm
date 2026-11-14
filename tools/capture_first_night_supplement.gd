@@ -7,7 +7,7 @@ func run():
  var actual=JSON.parse_string(FileAccess.get_file_as_string("res://docs/evidence/first-night/earned46-live.json"));game.model=ReplaySnapshot.restore(actual.checkpoint);check(game.model!=null,"live recorded wave46 checkpoint restored")
  game.mode="match";game.ui.replay_ui.preparing=true;game.ui.show_match();game.focus_camera(true);game.ui.update_match();await wait(.4)
  SessionInterface.wave_report(game.ui);await wait(.4);await capture("18-wave-report-1080")
- game.ui.show_match();check(game.model.continue_wave("power"),"normal next wave for1080 gameplay");game.audio_system.reset_match(game.model);game.set_process(true);await wait(2);await capture("18-gameplay-1080");game.set_process(false)
+ check(game.model.continue_wave("power"),"normal next wave for1080 gameplay");game.ui.show_match();game.audio_system.reset_match(game.model);game.set_process(true);await wait(2);await capture("18-gameplay-1080");game.set_process(false)
  for size in [Vector2i(1280,720),Vector2i(1600,900),Vector2i(1920,1080)]:
   root.size=size;game.focus_camera(true);game.ui.update_match();game.guidance.refresh(game);await wait(.3);await capture("layout-"+str(size.y))
  root.size=Vector2i(1280,720)

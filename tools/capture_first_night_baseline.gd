@@ -1,5 +1,8 @@
 extends "res://tools/capture_spatial_construction.gd"
 func run():
+ # Historical-only capture: refuse to overwrite BEFORE evidence with current presentation.
+ if "var notices=UpgradeNotices.new()" in FileAccess.get_file_as_string("res://scripts/dorm_presentation.gd"):
+  push_error("Run this historical capture against the Phase11 baseline presentation only.");quit(1);return
  output="res://docs/evidence/first-night/";phase="screens";root.size=Vector2i(1280,720);await setup_game();game.onboarding.close_welcome();var m=fresh();var r=m.player()
  for at in [Vector2(175,151),Vector2(230,151),Vector2(285,151)]:check(m.place_building("turret",at),"paid baseline body")
  await advance(.3)
