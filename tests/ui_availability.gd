@@ -15,6 +15,7 @@ func _initialize():
 func run():
  preload("res://tests/onboarding_test_support.gd").prepare()
  var game = load("res://scenes/main.tscn").instantiate()
+ game.new_balance_version=1
  root.add_child(game)
  preload("res://tests/onboarding_test_support.gd").skip(game)
  await process_frame

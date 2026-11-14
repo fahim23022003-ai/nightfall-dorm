@@ -47,6 +47,7 @@ def main():
     notices.update({
         'PHASE_5D4_HUMAN_PLAYTEST_GUIDE.md': ROOT / 'docs/PHASE_5D4_HUMAN_PLAYTEST_GUIDE.md',
         'PHASE_11_HUMAN_PLAYTEST_CHECKLIST.md': ROOT / 'docs/PHASE_11_HUMAN_PLAYTEST_CHECKLIST.md',
+        'PHASE_12_HUMAN_PLAYTEST_CHECKLIST.md': ROOT / 'docs/PHASE_12_HUMAN_PLAYTEST_CHECKLIST.md',
         'REAPERS_WRATH_SFX_CREDITS.md': ROOT / 'tools/audio/source/wrath_sfx/CREDITS.md',
         'REAPERS_WRATH_SFX_SOURCES.json': ROOT / 'tools/audio/source/wrath_sfx/SOURCES.json',
         'REAPERS_WRATH_SFX_CC0.txt': ROOT / 'tools/audio/source/wrath_sfx/CC0-1.0.txt',

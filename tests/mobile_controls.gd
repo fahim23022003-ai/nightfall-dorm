@@ -59,6 +59,7 @@ func run():
  Input.emulate_mouse_from_touch=true
  preload("res://tests/onboarding_test_support.gd").prepare()
  game=load("res://scenes/main.tscn").instantiate()
+ game.new_balance_version=1 # original prepared legacy-price input fixture
  game.mobile_mode=true
  root.add_child(game)
  preload("res://tests/onboarding_test_support.gd").skip(game)

@@ -502,6 +502,10 @@ func refresh_context():
   var list_price=BalanceRules.upgrade(b.kind,b.level,game.model.balance_version)
   var quote=room.building_price(list_price.x,list_price.y)
   selected_details.tooltip_text=StrategyCatalog.BRANCHES.get(b.get("specialization",""),{}).get("description","")
+  if b.kind=="economy" and room.balance_version==2 and b.level<10:
+   var clone=BuildingStats.room_copy(room);clone.buildings[game.selected_tile].level+=1
+   var gain=clone.income_rate()-room.income_rate()
+   selected_details.tooltip_text+="\n"+("Marginal +%.3f Gold/s. Gold-only payback ~%.0fs; additional%.1fE is NOT converted to Gold. Concurrent boosts/spending alter this." % [gain,quote.x/maxf(.0001,gain),quote.y] if gain>0 else "Production currently inactive; future benefit depends on resuming it.")
   selected_details.text=BuildingStats.next_machine(game.model,room,game.selected_tile)+"\n"+action_reason("upgrade")+(" · COUPON %.1fG/%.1fE" % [quote.x,quote.y] if room.coupon_armed else "")
   if room.strategy_enabled and b.level==4:actions.upgrade.text="Specialize → Level 5"
  elif context_mode=="bed":
@@ -706,7 +710,7 @@ func update_match():
    var refund=room.building_refund(game.selected_tile)
    actions.sell.text="Sell · 50%% actual investment\n+%.2f Gold / +%.2f Electricity" % [refund.x,refund.y]
    var value=BalanceRules.upgrade(b.kind,b.level,game.model.balance_version);var price=room.building_price(value.x,value.y)
-   actions.upgrade.text="MAX LEVEL" if b.level>=Catalog.building_max_level(b.kind) else "Upgrade L%d — %.1f Gold / %.1f Electricity" % [b.level+1,price.x,price.y]
+   actions.upgrade.text="MAX LEVEL" if b.level>=Catalog.building_max_level(b.kind) else ("Upgrade L%d — %d Gold / %d Electricity" if room.balance_version==1 and not room.coupon_armed else "Upgrade L%d — %.1f Gold / %.1f Electricity") % [b.level+1,price.x,price.y]
    if room.strategy_enabled and b.level==4:actions.upgrade.text="Specialize → Level 5"
   else: actions.upgrade.text="Select a building to upgrade"
  actions.repair.text="Repair · %.1f gold" % (room.manual_repair_cost() if room!=null else Catalog.REPAIR_COST)
@@ -714,7 +718,7 @@ func update_match():
  if m.hunter.arcane.action!="":hunter_detail.text=m.hunter.arcane.action.replace("_"," ").to_upper()+" · %.1fs" % m.hunter.arcane.warning
  if room!=null and room.magic_state.disrupt>0:warning_label.text="TURRET INTERFERENCE · %.1fs · Repair remains available" % room.magic_state.disrupt;warning_label.visible=true
  if m.balance_version==2 and m.pressure.warning>0:
-  warning_label.text="SIEGE RESOLVE · +8% pressure in %.1fs · repair or counter" % m.pressure.warning;warning_label.visible=true;warning_box.visible=true
+  warning_label.text="SIEGE RESOLVE · +8%% pressure in %.1fs · repair or counter" % m.pressure.warning;warning_label.visible=true;warning_box.visible=true
  var immediate=room!=null and room.alive and room.door_hp<room.max_hp()*.35 and game.model.hunter.target==room.index and game.model.hunter.state in [HunterState.State.ATTACK,HunterState.State.BREACH]
  # Theme overrides invalidate control layout: only change material on a real state transition.
  if not room_door_summary.has_meta("danger_skin") or room_door_summary.get_meta("danger_skin")!=immediate:
@@ -733,6 +737,7 @@ func update_match():
     var quote=room.quote_build(action.trim_prefix("build:"));card_visuals[action][2].text="%.1fG / %.1fE" % [quote.x,quote.y]
   if game.mobile_mode and action.begins_with("build:"): b.disabled=false
   b.tooltip_text=(building_effect(action.trim_prefix("build:"))+"\n" if action.begins_with("build:") else "")+(reason if reason!="" else "Ready")
+  if room!=null and action.begins_with("build:"):b.tooltip_text+="\n"+BuildingStats.afford_hint(m,room,room.quote_build(action.trim_prefix("build:")))
  refresh_context()
  if game.mobile_mode: game.mobile_ui.update_match(self)
  if bottom_context!=null:bottom_context.refresh()

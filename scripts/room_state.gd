@@ -186,7 +186,7 @@ func upgrade_bed() -> bool:
   return reject("Requires door level %d." % maxi(1,bed_level))
  if not afford(BalanceRules.structure("bed",bed_level,balance_version).x,BalanceRules.structure("bed",bed_level,balance_version).y):
   return false
- pay(BalanceRules.structure("bed",bed_level,balance_version).x,BalanceRules.structure("bed",bed_level,balance_version).y)
+ pay(BalanceRules.structure("bed",bed_level,balance_version).x,BalanceRules.structure("bed",bed_level,balance_version).y,"bed upgrade")
  bed_level += 1
  presentation_action.emit("bed_upgrade",{})
  return true
@@ -203,7 +203,7 @@ func upgrade_door() -> bool:
   return reject("Requires bed level %d." % maxi(1,door_level))
  if not afford(BalanceRules.structure("door",door_level,balance_version).x,BalanceRules.structure("door",door_level,balance_version).y):
   return false
- pay(BalanceRules.structure("door",door_level,balance_version).x,BalanceRules.structure("door",door_level,balance_version).y)
+ pay(BalanceRules.structure("door",door_level,balance_version).x,BalanceRules.structure("door",door_level,balance_version).y,"door upgrade")
  var old_max = max_hp()
  door_level += 1
  door_hp += max_hp()-old_max
@@ -258,7 +258,7 @@ func _purchase_building(kind: String,tile: int,point: Vector2=Vector2.INF) -> bo
  if not afford(price.x,price.y):
   return false
  if not spend_coupon(base_price-price): return false
- if not pay(price.x,price.y): return reject("Purchase could not be paid.")
+ if not pay(price.x,price.y,"building purchase: "+kind): return reject("Purchase could not be paid.")
  var instance=int(construction_actions)+1
  for b in buildings.values():instance=maxi(instance,int(b.get("instance_id",0))+1)
  buildings[tile] = {"instance_id":instance,"kind":kind,"level":1,"cooldown":0.0,"flash":0.0,
@@ -297,7 +297,7 @@ func _upgrade_building(tile: int,branch: String) -> bool:
  var paid_gold=price.x
  var paid_power=price.y
  if not spend_coupon(list_price-price): return false
- if not pay(paid_gold,paid_power): return reject("Upgrade could not be paid.")
+ if not pay(paid_gold,paid_power,"building upgrade: "+b.kind): return reject("Upgrade could not be paid.")
  b.invested_gold=b.get("invested_gold",0.0)+paid_gold
  b.invested_power=b.get("invested_power",0.0)+paid_power
  b.level += 1
@@ -356,7 +356,7 @@ func tick_economy(delta: float,dynamo_factor: float=1.0,bed_factor: float=1.0):
    ledger.note("production",[0,produced],"Dynamo")
   elif b.kind == "repair" and door_hp > 0:
    var branch=StrategyCatalog.support(b)
-   var cost=maxf(.35 if balance_version==2 else 0,branch.get("power_cost",0.0))*b.level*delta
+   var cost=maxf(BalanceRules.REPAIR_UPKEEP if balance_version==2 else 0,branch.get("power_cost",0.0))*b.level*delta
    if balance_version==2 and door_hp>=max_hp():cost=0
    var reserve=0.0
    if balance_version==2:

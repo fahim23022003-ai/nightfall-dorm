@@ -1,0 +1,21 @@
+# Phase 12 — private Windows playtest
+
+Native Windows and human enjoyment/readability are UNVERIFIED by the Linux cloud checks.
+Extract the entire ZIP and run NightfallDorm.exe. Keep its notices. No installation or online account is required. Back up your existing profile before testing; do not delete it to reset a run. A new Endless run uses Earned Power v2; resuming an old checkpoint keeps labelled Legacy v1 rules and earned wealth.
+
+1. Confirm music, SFX, Reduced Effects and saved volume settings after a fresh launch. Video evidence has separate unsynchronized audio; listen to the actual Windows game.
+2. Start Normal with an isolated fresh profile if desired. Walk to a room, claim/sleep; skip or replay the existing practice tutorial normally. Starting wallet should be25G/0E, with no tutorial credit carried into the match.
+3. Buy your first Needle, upgrade Bed and Door, then deliberately save for a Dynamo. Check current→next stats, exact prices and visible prerequisites. Record when the first generator becomes affordable; scripted strategies observed77–105s, not a human guarantee.
+4. Compare three runs: greedy economy-first, defense-first and mixed/grid investment. At5min, note actual wallets, infrastructure and danger. Does saving feel like a decision or idle waiting? Normal simulations all survived; human feedback is needed to expose whether greed is too safe.
+5. During a real siege, watch door HP/repair effectiveness and the2.5s sustained-pressure warning. Try a paid manual repair[R], control turret or existing consumable. Verify warnings remain visible while inspecting a building.
+6. After first wave clear, open **Run perks / merchant**. Read all three actual eligible perks, choose one, and check it appears under **Run supplies[K]**. Continue without choosing in another run to decline. Keep existing aid/Omens usable.
+7. Buy one available merchant item. Confirm both currencies decrease once, stock becomes sold, and double-click does not buy twice. Check whether that purchase meaningfully delayed a generator/door upgrade.
+8. Activate the supply only when valid. Full-HP Repair must consume nothing. Pillow should raise occupied-bed production temporarily and expire. Empty stocks are disabled. Permanent owned inventory must not gain merchant stock.
+9. Save &exit at intermission, relaunch/resume. Offers, chosen perks, stock and balances should persist. If you used a supply after that checkpoint and quit mid-wave, resume may replay the wave but must not restore the already-used supply. Do not expect unsupported mid-wave resumption.
+10. Inspect amplifier raw versus effective room bonus. Three units maximum in v2; a fourth purchase must explain the limit without spending. Level10 machinery requires advanced Bed/Door9; Level11 is impossible. Sale returns50% actual eligible Gold and Electricity paid after discounts.
+11. Test1280×720 and1920×1080; keyboard B/K/Escape/R and normal mouse controls. Open/close supplies in a16-capacity room, spectate teammates and return. Note any unreadable badge, obstructed target or tooltip.
+12. Try Long Night/Hell only after learning the loop. Important: tested fresh Campaign strategies all failed and some Endless counter strategies survived; these modes may need further tuning. Record seed/map/archetype, purchase order, actual breach time, repair opportunities and whether you understood the defeat. Do not interpret a failed scripted strategy as proof no human counter exists.
+13. Continue a genuine old high-wave checkpoint. Verify its level, wealth, capacity, branches, permanent progress and inventory. It should say Legacy v1 rather than silently adopt new prices.
+14. Run Practice and fixed-rules Challenge Codes. Practice must grant no permanent rewards; Challenge preset clearly states fixed legacy economy and normalized loadout, not new-balance equivalence.
+
+For Fahim and Adie: report whether Electricity feels valuable, whether one sequence is always best, which perk/shop choice changed your decisions, whether harder modes allow readable counterplay, and whether the first prestige machine feels earned. Include screenshots or a short recording and version/source SHA from VERSION.txt. This checklist is not a claim that those human checks already passed.

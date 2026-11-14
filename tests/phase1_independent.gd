@@ -81,6 +81,7 @@ func run():
   check(r.building_refund(0)==original,"failed upgrade not refundable "+kind)
  preload("res://tests/onboarding_test_support.gd").prepare()
  game=load("res://scenes/main.tscn").instantiate()
+ game.new_balance_version=1 # original prepared legacy-price input fixture
  root.add_child(game)
  preload("res://tests/onboarding_test_support.gd").skip(game)
  await process_frame

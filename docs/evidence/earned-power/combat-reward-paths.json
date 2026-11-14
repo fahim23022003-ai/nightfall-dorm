@@ -1,0 +1,357 @@
+{
+ "description": "Fresh seed1 actual production rules; balanced paid policy one decision/s, 900s horizon, actual NPCs. First/last deterministic draft options compare reward paths, not promised best/worst optimal picks. No wallet/HP injection or manual kills. State3=ATTACK,5=EXIT (post-elimination travel, not healing retreat). Missing breach means no observed player breach, not infinite durability.",
+ "rows": [
+  {
+   "actual_all_room_door_damage": 15479.5008322929,
+   "actual_player_door_damage": 101.2,
+   "clears": [
+    {
+     "allied_main_hunter_damage": 4692.0,
+     "encounter_seconds_including_preparation": 178.599999999998,
+     "main_hunter_damage": 0.0,
+     "time": 178.599999999998,
+     "wave": 1
+    },
+    {
+     "allied_main_hunter_damage": 5834.40000000001,
+     "encounter_seconds_including_preparation": 85.1999999999952,
+     "main_hunter_damage": 0.0,
+     "time": 263.799999999994,
+     "wave": 2
+    },
+    {
+     "allied_main_hunter_damage": 6760.0,
+     "encounter_seconds_including_preparation": 48.3999999999972,
+     "main_hunter_damage": 280.0,
+     "time": 312.199999999991,
+     "wave": 3
+    },
+    {
+     "allied_main_hunter_damage": 8770.4,
+     "encounter_seconds_including_preparation": 61.7999999999965,
+     "main_hunter_damage": 532.0,
+     "time": 373.999999999987,
+     "wave": 4
+    },
+    {
+     "allied_main_hunter_damage": 9726.96933999999,
+     "encounter_seconds_including_preparation": 123.599999999993,
+     "main_hunter_damage": 397.6,
+     "time": 497.59999999998,
+     "wave": 5
+    },
+    {
+     "allied_main_hunter_damage": 14662.5,
+     "encounter_seconds_including_preparation": 131.000000000026,
+     "main_hunter_damage": 0.0,
+     "time": 628.600000000006,
+     "wave": 6
+    },
+    {
+     "allied_main_hunter_damage": 13137.6,
+     "encounter_seconds_including_preparation": 129.80000000003,
+     "main_hunter_damage": 0.0,
+     "time": 758.400000000035,
+     "wave": 7
+    },
+    {
+     "allied_main_hunter_damage": 13912.8,
+     "encounter_seconds_including_preparation": 106.800000000024,
+     "main_hunter_damage": 0.0,
+     "time": 865.20000000006,
+     "wave": 8
+    }
+   ],
+   "completed": 8,
+   "difficulty": "standard",
+   "duration": 900.000000000068,
+   "first_player_hit": 471.799999999982,
+   "manual_repair_gold": 0.0,
+   "player_breach_time": -1.0,
+   "player_flow": {
+    "loss_e": 5.0,
+    "loss_g": 18.0,
+    "other_e": 0.0,
+    "other_g": 0.0,
+    "production_e": 1258.62749999999,
+    "production_g": 10445.6923471701,
+    "refund_e": 0.0,
+    "refund_g": 0.0,
+    "repair_g": 0.0,
+    "spent_e": 1081.45000076294,
+    "spent_g": 9985.69998168945
+   },
+   "player_positive_damage_events": 1,
+   "result": "ongoing_at_horizon",
+   "reward_path": "first",
+   "seed": 1,
+   "selected_perks": [
+    "ledger",
+    "rhythm",
+    "reserve"
+   ],
+   "states_seconds": {
+    "0": 73.0000000000005,
+    "1": 6.4,
+    "2": 84.8000000000007,
+    "3": 729.800000000029,
+    "4": 1.4,
+    "5": 2.0,
+    "7": 2.6
+   },
+   "time_first_hit_to_breach_with_defenses_and_repairs": null
+  },
+  {
+   "actual_all_room_door_damage": 15502.8806722929,
+   "actual_player_door_damage": 101.2,
+   "clears": [
+    {
+     "allied_main_hunter_damage": 4692.0,
+     "encounter_seconds_including_preparation": 178.599999999998,
+     "main_hunter_damage": 0.0,
+     "time": 178.599999999998,
+     "wave": 1
+    },
+    {
+     "allied_main_hunter_damage": 5834.40000000001,
+     "encounter_seconds_including_preparation": 85.1999999999952,
+     "main_hunter_damage": 0.0,
+     "time": 263.799999999994,
+     "wave": 2
+    },
+    {
+     "allied_main_hunter_damage": 6732.0,
+     "encounter_seconds_including_preparation": 48.3999999999972,
+     "main_hunter_damage": 308.0,
+     "time": 312.199999999991,
+     "wave": 3
+    },
+    {
+     "allied_main_hunter_damage": 8714.4,
+     "encounter_seconds_including_preparation": 61.3999999999965,
+     "main_hunter_damage": 588.0,
+     "time": 373.599999999987,
+     "wave": 4
+    },
+    {
+     "allied_main_hunter_damage": 9726.96933999999,
+     "encounter_seconds_including_preparation": 123.599999999993,
+     "main_hunter_damage": 397.6,
+     "time": 497.19999999998,
+     "wave": 5
+    },
+    {
+     "allied_main_hunter_damage": 14662.5,
+     "encounter_seconds_including_preparation": 131.000000000026,
+     "main_hunter_damage": 0.0,
+     "time": 628.200000000006,
+     "wave": 6
+    },
+    {
+     "allied_main_hunter_damage": 13137.6,
+     "encounter_seconds_including_preparation": 129.80000000003,
+     "main_hunter_damage": 0.0,
+     "time": 758.000000000035,
+     "wave": 7
+    },
+    {
+     "allied_main_hunter_damage": 13912.8,
+     "encounter_seconds_including_preparation": 106.800000000024,
+     "main_hunter_damage": 0.0,
+     "time": 864.80000000006,
+     "wave": 8
+    }
+   ],
+   "completed": 8,
+   "difficulty": "standard",
+   "duration": 900.000000000068,
+   "first_player_hit": 471.399999999982,
+   "manual_repair_gold": 0.0,
+   "player_breach_time": -1.0,
+   "player_flow": {
+    "loss_e": 5.0,
+    "loss_g": 18.0,
+    "other_e": 0.0,
+    "other_g": 0.0,
+    "production_e": 1228.41,
+    "production_g": 9320.09705660391,
+    "refund_e": 0.0,
+    "refund_g": 0.0,
+    "repair_g": 0.0,
+    "spent_e": 920.380000762939,
+    "spent_g": 8555.69998168945
+   },
+   "player_positive_damage_events": 1,
+   "result": "ongoing_at_horizon",
+   "reward_path": "last",
+   "seed": 1,
+   "selected_perks": [
+    "reserve",
+    "ledger",
+    "beat"
+   ],
+   "states_seconds": {
+    "0": 73.0000000000005,
+    "1": 6.4,
+    "2": 84.8000000000007,
+    "3": 729.800000000029,
+    "4": 1.4,
+    "5": 2.0,
+    "7": 2.6
+   },
+   "time_first_hit_to_breach_with_defenses_and_repairs": null
+  },
+  {
+   "actual_all_room_door_damage": 3398.47882105868,
+   "actual_player_door_damage": 776.8755,
+   "clears": [],
+   "completed": 0,
+   "difficulty": "hard",
+   "duration": 178.599999999998,
+   "first_player_hit": 158.0,
+   "manual_repair_gold": 84.0,
+   "player_breach_time": 177.199999999998,
+   "player_flow": {
+    "loss_e": 0.0,
+    "loss_g": 0.0,
+    "other_e": 0.0,
+    "other_g": 0.0,
+    "production_e": 60.9599999999995,
+    "production_g": 456.300000000006,
+    "refund_e": 0.0,
+    "refund_g": 0.0,
+    "repair_g": 84.0,
+    "spent_e": 40.72,
+    "spent_g": 464.0
+   },
+   "player_positive_damage_events": 17,
+   "result": "defeat",
+   "reward_path": "first",
+   "seed": 1,
+   "selected_perks": [],
+   "states_seconds": {
+    "0": 40.0,
+    "1": 1.2,
+    "2": 15.8,
+    "3": 111.600000000001,
+    "4": 4.8,
+    "5": 5.2
+   },
+   "time_first_hit_to_breach_with_defenses_and_repairs": 19.1999999999989
+  },
+  {
+   "actual_all_room_door_damage": 3398.47882105868,
+   "actual_player_door_damage": 776.8755,
+   "clears": [],
+   "completed": 0,
+   "difficulty": "hard",
+   "duration": 178.599999999998,
+   "first_player_hit": 158.0,
+   "manual_repair_gold": 84.0,
+   "player_breach_time": 177.199999999998,
+   "player_flow": {
+    "loss_e": 0.0,
+    "loss_g": 0.0,
+    "other_e": 0.0,
+    "other_g": 0.0,
+    "production_e": 60.9599999999995,
+    "production_g": 456.300000000006,
+    "refund_e": 0.0,
+    "refund_g": 0.0,
+    "repair_g": 84.0,
+    "spent_e": 40.72,
+    "spent_g": 464.0
+   },
+   "player_positive_damage_events": 17,
+   "result": "defeat",
+   "reward_path": "last",
+   "seed": 1,
+   "selected_perks": [],
+   "states_seconds": {
+    "0": 40.0,
+    "1": 1.2,
+    "2": 15.8,
+    "3": 111.600000000001,
+    "4": 4.8,
+    "5": 5.2
+   },
+   "time_first_hit_to_breach_with_defenses_and_repairs": 19.1999999999989
+  },
+  {
+   "actual_all_room_door_damage": 2799.81339380325,
+   "actual_player_door_damage": 474.654,
+   "clears": [],
+   "completed": 0,
+   "difficulty": "hell",
+   "duration": 155.0,
+   "first_player_hit": 143.0,
+   "manual_repair_gold": 28.0,
+   "player_breach_time": 153.6,
+   "player_flow": {
+    "loss_e": 0.0,
+    "loss_g": 0.0,
+    "other_e": 0.0,
+    "other_g": 0.0,
+    "production_e": 46.7999999999998,
+    "production_g": 392.580000000004,
+    "refund_e": 0.0,
+    "refund_g": 0.0,
+    "repair_g": 28.0,
+    "spent_e": 36.31,
+    "spent_g": 408.0
+   },
+   "player_positive_damage_events": 9,
+   "result": "defeat",
+   "reward_path": "first",
+   "seed": 1,
+   "selected_perks": [],
+   "states_seconds": {
+    "0": 40.0,
+    "1": 1.2,
+    "2": 16.0,
+    "3": 90.8000000000008,
+    "4": 3.6,
+    "5": 3.4
+   },
+   "time_first_hit_to_breach_with_defenses_and_repairs": 10.5999999999994
+  },
+  {
+   "actual_all_room_door_damage": 2799.81339380325,
+   "actual_player_door_damage": 474.654,
+   "clears": [],
+   "completed": 0,
+   "difficulty": "hell",
+   "duration": 155.0,
+   "first_player_hit": 143.0,
+   "manual_repair_gold": 28.0,
+   "player_breach_time": 153.6,
+   "player_flow": {
+    "loss_e": 0.0,
+    "loss_g": 0.0,
+    "other_e": 0.0,
+    "other_g": 0.0,
+    "production_e": 46.7999999999998,
+    "production_g": 392.580000000004,
+    "refund_e": 0.0,
+    "refund_g": 0.0,
+    "repair_g": 28.0,
+    "spent_e": 36.31,
+    "spent_g": 408.0
+   },
+   "player_positive_damage_events": 9,
+   "result": "defeat",
+   "reward_path": "last",
+   "seed": 1,
+   "selected_perks": [],
+   "states_seconds": {
+    "0": 40.0,
+    "1": 1.2,
+    "2": 16.0,
+    "3": 90.8000000000008,
+    "4": 3.6,
+    "5": 3.4
+   },
+   "time_first_hit_to_breach_with_defenses_and_repairs": 10.5999999999994
+  }
+ ]
+}

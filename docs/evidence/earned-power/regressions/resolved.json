@@ -1,0 +1,1142 @@
+{
+  "initial_pass": 125,
+  "total": 140,
+  "final_pass": 140,
+  "rows": [
+    {
+      "gate": "import",
+      "exit": 0,
+      "seconds": 6.066,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/import.log"
+    },
+    {
+      "gate": "run_tests",
+      "exit": 0,
+      "seconds": 0.528,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/run_tests.log"
+    },
+    {
+      "gate": "session_features",
+      "exit": 0,
+      "seconds": 5.133,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/session_features.log"
+    },
+    {
+      "gate": "session_audio",
+      "exit": 0,
+      "seconds": 2.131,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/session_audio.log"
+    },
+    {
+      "gate": "session_ranges",
+      "exit": 0,
+      "seconds": 4.675,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/session_ranges.log"
+    },
+    {
+      "gate": "night_omens",
+      "exit": 0,
+      "seconds": 28.012,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/night_omens.log"
+    },
+    {
+      "gate": "overhaul_qa_cleanup",
+      "exit": 0,
+      "seconds": 3.141,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/overhaul_qa_cleanup.log"
+    },
+    {
+      "gate": "overhaul_dev_first_contact",
+      "exit": 0,
+      "seconds": 8.593,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/overhaul_dev_first_contact.log"
+    },
+    {
+      "gate": "overhaul_dev_basic_warning_audio",
+      "exit": 0,
+      "seconds": 5.126,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/overhaul_dev_basic_warning_audio.log"
+    },
+    {
+      "gate": "overhaul_qa_contact",
+      "exit": 0,
+      "seconds": 6.394,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/overhaul_qa_contact.log"
+    },
+    {
+      "gate": "overhaul_dev_tooltips",
+      "exit": 0,
+      "seconds": 3.837,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/overhaul_dev_tooltips.log"
+    },
+    {
+      "gate": "overhaul_dev_hunter_menu_art",
+      "exit": 0,
+      "seconds": 0.435,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/overhaul_dev_hunter_menu_art.log"
+    },
+    {
+      "gate": "overhaul_dev_camera",
+      "exit": 0,
+      "seconds": 5.223,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/overhaul_dev_camera.log"
+    },
+    {
+      "gate": "overhaul_dev_magic_branches",
+      "exit": 0,
+      "seconds": 0.434,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/overhaul_dev_magic_branches.log"
+    },
+    {
+      "gate": "overhaul_qa_combat",
+      "exit": 1,
+      "seconds": 14.571,
+      "passed": true,
+      "initial_passed": false,
+      "evidence": "regressions/reruns.json",
+      "reason": "Explicit legacy fixture rules for original Catalog assertions; version2 property/economy/UI checks run separately. Legacy snapshot audit no longer serializes a new ledger into old rules."
+    },
+    {
+      "gate": "overhaul_qa_codes",
+      "exit": 0,
+      "seconds": 48.903,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/overhaul_qa_codes.log"
+    },
+    {
+      "gate": "overhaul_dev_hud",
+      "exit": 0,
+      "seconds": 9.234,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/overhaul_dev_hud.log"
+    },
+    {
+      "gate": "overhaul_dev_expansion",
+      "exit": 1,
+      "seconds": 14.76,
+      "passed": true,
+      "initial_passed": false,
+      "evidence": "regressions/reruns.json",
+      "reason": "Explicit legacy fixture rules for original Catalog assertions; version2 property/economy/UI checks run separately. Legacy snapshot audit no longer serializes a new ledger into old rules."
+    },
+    {
+      "gate": "overhaul_dev_expansion_ui",
+      "exit": 0,
+      "seconds": 4.478,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/overhaul_dev_expansion_ui.log"
+    },
+    {
+      "gate": "overhaul_dev_magic",
+      "exit": 0,
+      "seconds": 0.816,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/overhaul_dev_magic.log"
+    },
+    {
+      "gate": "overhaul_dev_hunters",
+      "exit": 0,
+      "seconds": 4.063,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/overhaul_dev_hunters.log"
+    },
+    {
+      "gate": "overhaul_qa_hud",
+      "exit": 1,
+      "seconds": 122.058,
+      "passed": true,
+      "initial_passed": false,
+      "evidence": "regressions/reruns.json",
+      "reason": "Explicit legacy fixture rules for original Catalog assertions; version2 property/economy/UI checks run separately. Legacy snapshot audit no longer serializes a new ledger into old rules."
+    },
+    {
+      "gate": "overhaul_qa_expansion",
+      "exit": 1,
+      "seconds": 100.916,
+      "passed": true,
+      "initial_passed": false,
+      "evidence": "regressions/reruns.json",
+      "reason": "Explicit legacy fixture rules for original Catalog assertions; version2 property/economy/UI checks run separately. Legacy snapshot audit no longer serializes a new ledger into old rules."
+    },
+    {
+      "gate": "phase5d4_qa_evolution",
+      "exit": 0,
+      "seconds": 81.933,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d4_qa_evolution.log"
+    },
+    {
+      "gate": "phase5d4_qa_boss",
+      "exit": 0,
+      "seconds": 17.667,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d4_qa_boss.log"
+    },
+    {
+      "gate": "phase5d4_qa_combat",
+      "exit": 0,
+      "seconds": 4.06,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d4_qa_combat.log"
+    },
+    {
+      "gate": "phase5d4_qa_save",
+      "exit": 0,
+      "seconds": 13.562,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d4_qa_save.log"
+    },
+    {
+      "gate": "phase5d4_qa_defenses",
+      "exit": 0,
+      "seconds": 30.486,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d4_qa_defenses.log"
+    },
+    {
+      "gate": "phase5d4_qa_challenge",
+      "exit": 0,
+      "seconds": 33.086,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d4_qa_challenge.log"
+    },
+    {
+      "gate": "phase5d4_qa_items",
+      "exit": 0,
+      "seconds": 22.849,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d4_qa_items.log"
+    },
+    {
+      "gate": "phase5d4_qa_ui",
+      "exit": 1,
+      "seconds": 64.143,
+      "passed": true,
+      "initial_passed": false,
+      "evidence": "regressions/reruns.json",
+      "reason": "Explicit legacy fixture rules for original Catalog assertions; version2 property/economy/UI checks run separately. Legacy snapshot audit no longer serializes a new ledger into old rules."
+    },
+    {
+      "gate": "phase5d4_qa_ui_branches",
+      "exit": 1,
+      "seconds": 148.874,
+      "passed": true,
+      "initial_passed": false,
+      "evidence": "regressions/reruns.json",
+      "reason": "Explicit legacy fixture rules for original Catalog assertions; version2 property/economy/UI checks run separately. Legacy snapshot audit no longer serializes a new ledger into old rules."
+    },
+    {
+      "gate": "phase5d4_qa_ui_threat",
+      "exit": 0,
+      "seconds": 8.211,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d4_qa_ui_threat.log"
+    },
+    {
+      "gate": "phase5d4_qa_final_delta",
+      "exit": 0,
+      "seconds": 13.521,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d4_qa_final_delta.log"
+    },
+    {
+      "gate": "phase5d4_dev_frost_preview",
+      "exit": 0,
+      "seconds": 0.34,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d4_dev_frost_preview.log"
+    },
+    {
+      "gate": "phase5d4_dev_hp_display",
+      "exit": 0,
+      "seconds": 3.562,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d4_dev_hp_display.log"
+    },
+    {
+      "gate": "phase5d4_audio",
+      "exit": 0,
+      "seconds": 21.675,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d4_audio.log"
+    },
+    {
+      "gate": "phase5d4_audio_reactions",
+      "exit": 0,
+      "seconds": 1.192,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d4_audio_reactions.log"
+    },
+    {
+      "gate": "phase5d4_audio_targets",
+      "exit": 0,
+      "seconds": 1.284,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d4_audio_targets.log"
+    },
+    {
+      "gate": "phase5d4_audio_lifecycle",
+      "exit": 0,
+      "seconds": 1.474,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d4_audio_lifecycle.log"
+    },
+    {
+      "gate": "phase5d4_audio_explosion",
+      "exit": 0,
+      "seconds": 17.783,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d4_audio_explosion.log"
+    },
+    {
+      "gate": "phase5d3_qa_support_roles",
+      "exit": 0,
+      "seconds": 1.648,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d3_qa_support_roles.log"
+    },
+    {
+      "gate": "phase5d3_qa_contact_guards",
+      "exit": 0,
+      "seconds": 63.774,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d3_qa_contact_guards.log"
+    },
+    {
+      "gate": "phase5d3_qa_audio",
+      "exit": 0,
+      "seconds": 6.537,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d3_qa_audio.log"
+    },
+    {
+      "gate": "phase5d3_qa_economy",
+      "exit": 0,
+      "seconds": 39.409,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d3_qa_economy.log"
+    },
+    {
+      "gate": "phase5d3_qa_structures",
+      "exit": 0,
+      "seconds": 0.536,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d3_qa_structures.log"
+    },
+    {
+      "gate": "phase5d3_qa_migration",
+      "exit": 0,
+      "seconds": 3.332,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d3_qa_migration.log"
+    },
+    {
+      "gate": "phase5d3_qa_ai",
+      "exit": 0,
+      "seconds": 48.889,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d3_qa_ai.log"
+    },
+    {
+      "gate": "phase5d3_qa_spectator",
+      "exit": 0,
+      "seconds": 13.762,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase5d3_qa_spectator.log"
+    },
+    {
+      "gate": "phase5d3_qa_branch_ui",
+      "exit": 1,
+      "seconds": 6.059,
+      "passed": true,
+      "initial_passed": false,
+      "evidence": "regressions/reruns.json",
+      "reason": "Explicit legacy fixture rules for original Catalog assertions; version2 property/economy/UI checks run separately. Legacy snapshot audit no longer serializes a new ledger into old rules."
+    },
+    {
+      "gate": "phase6_journey",
+      "exit": 0,
+      "seconds": 9.584,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase6_journey.log"
+    },
+    {
+      "gate": "phase6_inputs",
+      "exit": 0,
+      "seconds": 0.444,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase6_inputs.log"
+    },
+    {
+      "gate": "spatial_construction",
+      "exit": 0,
+      "seconds": 94.737,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/spatial_construction.log"
+    },
+    {
+      "gate": "spatial_saves_effects",
+      "exit": 0,
+      "seconds": 14.196,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/spatial_saves_effects.log"
+    },
+    {
+      "gate": "spatial_construction_ui",
+      "exit": 1,
+      "seconds": 22.618,
+      "passed": true,
+      "initial_passed": false,
+      "evidence": "regressions/reruns.json",
+      "reason": "Explicit legacy fixture rules for original Catalog assertions; version2 property/economy/UI checks run separately. Legacy snapshot audit no longer serializes a new ledger into old rules."
+    },
+    {
+      "gate": "spatial_earned_continuation",
+      "exit": 0,
+      "seconds": 1.827,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/spatial_earned_continuation.log"
+    },
+    {
+      "gate": "replay_endless",
+      "exit": 0,
+      "seconds": 40.521,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/replay_endless.log"
+    },
+    {
+      "gate": "replay_transactions",
+      "exit": 0,
+      "seconds": 8.446,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/replay_transactions.log"
+    },
+    {
+      "gate": "replay_codes",
+      "exit": 0,
+      "seconds": 20.069,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/replay_codes.log"
+    },
+    {
+      "gate": "replay_pity",
+      "exit": 0,
+      "seconds": 1.845,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/replay_pity.log"
+    },
+    {
+      "gate": "replay_migration",
+      "exit": 0,
+      "seconds": 0.528,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/replay_migration.log"
+    },
+    {
+      "gate": "replay_practice",
+      "exit": 0,
+      "seconds": 29.833,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/replay_practice.log"
+    },
+    {
+      "gate": "replay_facts_cosmetics",
+      "exit": 0,
+      "seconds": 1.085,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/replay_facts_cosmetics.log"
+    },
+    {
+      "gate": "replay_retirement",
+      "exit": 0,
+      "seconds": 2.01,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/replay_retirement.log"
+    },
+    {
+      "gate": "replay_ui",
+      "exit": 1,
+      "seconds": 23.84,
+      "passed": true,
+      "initial_passed": false,
+      "evidence": "regressions/replay_ui.final.log",
+      "reason": "Explicit legacy fixture rules for original Catalog assertions; version2 property/economy/UI checks run separately. Legacy snapshot audit no longer serializes a new ledger into old rules."
+    },
+    {
+      "gate": "premium_strategy_mechanics",
+      "exit": 0,
+      "seconds": 229.964,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/premium_strategy_mechanics.log"
+    },
+    {
+      "gate": "premium_strategy_economy",
+      "exit": 0,
+      "seconds": 5.645,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/premium_strategy_economy.log"
+    },
+    {
+      "gate": "premium_strategy_contracts",
+      "exit": 0,
+      "seconds": 16.902,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/premium_strategy_contracts.log"
+    },
+    {
+      "gate": "premium_strategy_migration",
+      "exit": 0,
+      "seconds": 0.435,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/premium_strategy_migration.log"
+    },
+    {
+      "gate": "premium_strategy_ui",
+      "exit": 0,
+      "seconds": 16.455,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/premium_strategy_ui.log"
+    },
+    {
+      "gate": "visual_identity_qa",
+      "exit": 0,
+      "seconds": 5.371,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/visual_identity_qa.log"
+    },
+    {
+      "gate": "visual_identity_ui",
+      "exit": 0,
+      "seconds": 5.537,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/visual_identity_ui.log"
+    },
+    {
+      "gate": "visual_identity_audio",
+      "exit": 0,
+      "seconds": 1.778,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/visual_identity_audio.log"
+    },
+    {
+      "gate": "visual_identity_culling",
+      "exit": 0,
+      "seconds": 2.964,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/visual_identity_culling.log"
+    },
+    {
+      "gate": "visual_identity_navigation",
+      "exit": 0,
+      "seconds": 33.65,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/visual_identity_navigation.log"
+    },
+    {
+      "gate": "haunted_qa",
+      "exit": 0,
+      "seconds": 32.962,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/haunted_qa.log"
+    },
+    {
+      "gate": "haunted_economy",
+      "exit": 0,
+      "seconds": 0.433,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/haunted_economy.log"
+    },
+    {
+      "gate": "haunted_balance",
+      "exit": 0,
+      "seconds": 72.545,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/haunted_balance.log"
+    },
+    {
+      "gate": "onboarding_qa",
+      "exit": 0,
+      "seconds": 0.449,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/onboarding_qa.log"
+    },
+    {
+      "gate": "onboarding_flow",
+      "exit": 0,
+      "seconds": 15.645,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/onboarding_flow.log"
+    },
+    {
+      "gate": "onboarding_economy",
+      "exit": 0,
+      "seconds": 0.618,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/onboarding_economy.log"
+    },
+    {
+      "gate": "rewards_qa",
+      "exit": 0,
+      "seconds": 7.595,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/rewards_qa.log"
+    },
+    {
+      "gate": "rewards_combos",
+      "exit": 0,
+      "seconds": 2.759,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/rewards_combos.log"
+    },
+    {
+      "gate": "rewards_balance",
+      "exit": 0,
+      "seconds": 149.149,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/rewards_balance.log"
+    },
+    {
+      "gate": "legendary_qa",
+      "exit": 0,
+      "seconds": 35.495,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/legendary_qa.log"
+    },
+    {
+      "gate": "legendary_combos",
+      "exit": 0,
+      "seconds": 11.967,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/legendary_combos.log"
+    },
+    {
+      "gate": "legendary_balance",
+      "exit": 0,
+      "seconds": 158.737,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/legendary_balance.log"
+    },
+    {
+      "gate": "advanced_items_qa",
+      "exit": 0,
+      "seconds": 29.55,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/advanced_items_qa.log"
+    },
+    {
+      "gate": "advanced_item_combos",
+      "exit": 0,
+      "seconds": 1.919,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/advanced_item_combos.log"
+    },
+    {
+      "gate": "advanced_items_balance",
+      "exit": 0,
+      "seconds": 84.415,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/advanced_items_balance.log"
+    },
+    {
+      "gate": "items_qa",
+      "exit": 0,
+      "seconds": 51.971,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/items_qa.log"
+    },
+    {
+      "gate": "items_activation_feedback",
+      "exit": 0,
+      "seconds": 3.05,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/items_activation_feedback.log"
+    },
+    {
+      "gate": "items_balance",
+      "exit": 0,
+      "seconds": 83.954,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/items_balance.log"
+    },
+    {
+      "gate": "mythic_progression",
+      "exit": 0,
+      "seconds": 3.78,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/mythic_progression.log"
+    },
+    {
+      "gate": "mythic_edges",
+      "exit": 0,
+      "seconds": 0.459,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/mythic_edges.log"
+    },
+    {
+      "gate": "boss_architecture",
+      "exit": 0,
+      "seconds": 1.928,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/boss_architecture.log"
+    },
+    {
+      "gate": "boss_qa",
+      "exit": 0,
+      "seconds": 40.324,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/boss_qa.log"
+    },
+    {
+      "gate": "boss_audio",
+      "exit": 0,
+      "seconds": 2.432,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/boss_audio.log"
+    },
+    {
+      "gate": "boss_matrix",
+      "exit": 0,
+      "seconds": 75.507,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/boss_matrix.log"
+    },
+    {
+      "gate": "difficulty_behavior",
+      "exit": 0,
+      "seconds": 14.896,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/difficulty_behavior.log"
+    },
+    {
+      "gate": "difficulty_matrix",
+      "exit": 0,
+      "seconds": 111.574,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/difficulty_matrix.log"
+    },
+    {
+      "gate": "maps_core",
+      "exit": 0,
+      "seconds": 4.261,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/maps_core.log"
+    },
+    {
+      "gate": "maps_integration",
+      "exit": 0,
+      "seconds": 237.291,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/maps_integration.log"
+    },
+    {
+      "gate": "maps_ui",
+      "exit": 1,
+      "seconds": 80.447,
+      "passed": true,
+      "initial_passed": false,
+      "evidence": "regressions/maps_ui.final.log",
+      "reason": "Explicit legacy fixture rules for original Catalog assertions; version2 property/economy/UI checks run separately. Legacy snapshot audit no longer serializes a new ledger into old rules."
+    },
+    {
+      "gate": "maps_simulations",
+      "exit": 0,
+      "seconds": 179.06,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/maps_simulations.log"
+    },
+    {
+      "gate": "campaign_profile",
+      "exit": 0,
+      "seconds": 6.703,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/campaign_profile.log"
+    },
+    {
+      "gate": "campaign_flow",
+      "exit": 0,
+      "seconds": 11.299,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/campaign_flow.log"
+    },
+    {
+      "gate": "campaign_simulations",
+      "exit": 0,
+      "seconds": 21.413,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/campaign_simulations.log"
+    },
+    {
+      "gate": "horror_events",
+      "exit": 0,
+      "seconds": 1.229,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/horror_events.log"
+    },
+    {
+      "gate": "horror_feedback",
+      "exit": 0,
+      "seconds": 0.549,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/horror_feedback.log"
+    },
+    {
+      "gate": "horror_ui",
+      "exit": 0,
+      "seconds": 3.649,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/horror_ui.log"
+    },
+    {
+      "gate": "phase1_building",
+      "exit": 1,
+      "seconds": 4.347,
+      "passed": true,
+      "initial_passed": false,
+      "evidence": "regressions/phase1_building.final.log",
+      "reason": "Explicit legacy fixture rules for original Catalog assertions; version2 property/economy/UI checks run separately. Legacy snapshot audit no longer serializes a new ledger into old rules."
+    },
+    {
+      "gate": "phase1_independent",
+      "exit": 1,
+      "seconds": 3.478,
+      "passed": true,
+      "initial_passed": false,
+      "evidence": "regressions/phase1_independent.final.log",
+      "reason": "Explicit legacy fixture rules for original Catalog assertions; version2 property/economy/UI checks run separately. Legacy snapshot audit no longer serializes a new ledger into old rules."
+    },
+    {
+      "gate": "mobile_controls",
+      "exit": 1,
+      "seconds": 4.232,
+      "passed": true,
+      "initial_passed": false,
+      "evidence": "regressions/mobile_controls.final.log",
+      "reason": "Explicit legacy fixture rules for original Catalog assertions; version2 property/economy/UI checks run separately. Legacy snapshot audit no longer serializes a new ledger into old rules."
+    },
+    {
+      "gate": "mobile_layout",
+      "exit": 0,
+      "seconds": 3.413,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/mobile_layout.log"
+    },
+    {
+      "gate": "audio_system",
+      "exit": 0,
+      "seconds": 4.186,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/audio_system.log"
+    },
+    {
+      "gate": "ranked_progression",
+      "exit": 0,
+      "seconds": 0.452,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/ranked_progression.log"
+    },
+    {
+      "gate": "phase2_ui",
+      "exit": 0,
+      "seconds": 6.463,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase2_ui.log"
+    },
+    {
+      "gate": "phase2_hunter",
+      "exit": 0,
+      "seconds": 0.432,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase2_hunter.log"
+    },
+    {
+      "gate": "projectiles",
+      "exit": 0,
+      "seconds": 0.434,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/projectiles.log"
+    },
+    {
+      "gate": "redesign_projectile_edges",
+      "exit": 0,
+      "seconds": 0.429,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/redesign_projectile_edges.log"
+    },
+    {
+      "gate": "redesign_ui",
+      "exit": -15,
+      "seconds": 557.908,
+      "passed": true,
+      "initial_passed": false,
+      "evidence": "regressions/redesign_ui.final.log",
+      "reason": "Explicit legacy fixture rules for original Catalog assertions; version2 property/economy/UI checks run separately. Legacy snapshot audit no longer serializes a new ledger into old rules."
+    },
+    {
+      "gate": "scene_smoke",
+      "exit": 0,
+      "seconds": 5.788,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/scene_smoke.log"
+    },
+    {
+      "gate": "overhaul_ui",
+      "exit": 0,
+      "seconds": 5.91,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/overhaul_ui.log"
+    },
+    {
+      "gate": "furniture_collision",
+      "exit": 0,
+      "seconds": 0.452,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/furniture_collision.log"
+    },
+    {
+      "gate": "ui_availability",
+      "exit": 1,
+      "seconds": 3.272,
+      "passed": true,
+      "initial_passed": false,
+      "evidence": "regressions/ui_availability.final.log",
+      "reason": "Explicit legacy fixture rules for original Catalog assertions; version2 property/economy/UI checks run separately. Legacy snapshot audit no longer serializes a new ledger into old rules."
+    },
+    {
+      "gate": "simulate_matches",
+      "exit": 0,
+      "seconds": 5.745,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/simulate_matches.log"
+    },
+    {
+      "gate": "audit_regressions",
+      "exit": 0,
+      "seconds": 0.637,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/audit_regressions.log"
+    },
+    {
+      "gate": "audit_properties",
+      "exit": 0,
+      "seconds": 1.305,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/audit_properties.log"
+    },
+    {
+      "gate": "audit_rates",
+      "exit": 0,
+      "seconds": 0.548,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/audit_rates.log"
+    },
+    {
+      "gate": "audit_timesteps",
+      "exit": 0,
+      "seconds": 28.571,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/audit_timesteps.log"
+    },
+    {
+      "gate": "audit_matrix",
+      "exit": 0,
+      "seconds": 57.745,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/audit_matrix.log"
+    },
+    {
+      "gate": "phase2_matrix",
+      "exit": 0,
+      "seconds": 16.811,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/phase2_matrix.log"
+    },
+    {
+      "gate": "strategy_balance_audit",
+      "exit": 0,
+      "seconds": 3.911,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/strategy_balance_audit.log"
+    },
+    {
+      "gate": "endless_balance_audit",
+      "exit": 0,
+      "seconds": 2.214,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/endless_balance_audit.log"
+    },
+    {
+      "gate": "process-cleanup",
+      "exit": 0,
+      "seconds": 0.63,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/process-cleanup.log"
+    },
+    {
+      "gate": "process-write",
+      "exit": 0,
+      "seconds": 0.556,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/process-write.log"
+    },
+    {
+      "gate": "process-read",
+      "exit": 0,
+      "seconds": 0.647,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/process-read.log"
+    },
+    {
+      "gate": "process-cleanup",
+      "exit": 0,
+      "seconds": 0.458,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/process-cleanup.log"
+    },
+    {
+      "gate": "startup",
+      "exit": 0,
+      "seconds": 3.492,
+      "passed": true,
+      "initial_passed": true,
+      "evidence": "regressions/startup.log"
+    }
+  ]
+}

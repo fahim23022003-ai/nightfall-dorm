@@ -1,0 +1,17 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: PREMIUM UI: actual frozen preparation buys paid upgrade with correct ledger
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] endless_flow (res://tests/replay_ui.gd:65)
+       [2] settle (res://tests/replay_ui.gd:12)
+REPLAY_RESULT_METADATA=Long night / The Stalker / Underground Laboratory / ruleset 4
+ERROR: PREMIUM UI: actual frozen preparation buys paid upgrade with correct ledger
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] endless_flow (res://tests/replay_ui.gd:65)
+       [2] settle (res://tests/replay_ui.gd:12)
+REPLAY_RESULT_METADATA=HELL MODE / The Ravager / Underground Laboratory / ruleset 4
+REPLAY_UI_CHECKS=1791 FAILURES=2

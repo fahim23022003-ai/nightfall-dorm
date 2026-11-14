@@ -356,6 +356,7 @@ func tick(delta: float, match_state):
   siege_seconds+=delta
   reassess_seconds+=delta
   match_state.rooms[target].repair_factor=lerpf(1.0,profile.repair_floor,clampf(minf(siege_seconds,maxf(0,match_state.time-match_state.preparation-profile.opening))/profile.siege_ramp,0,1))
+  if match_state.balance_version==2 and difficulty!="standard":match_state.rooms[target].repair_factor=maxf(.65,match_state.rooms[target].repair_factor)
   if match_state.run_kind=="endless" and match_state.endless!=null:match_state.rooms[target].repair_factor*=match_state.endless.repair_effectiveness()
   match_state.rooms[target].repair_factor*=nightmare.repair_factor(target)
   _previous_siege_room=target

@@ -35,7 +35,7 @@ func click(point,double_click=false):
 func run():
  OS.set_environment("NIGHTFALL_PROFILE_PATH","user://maps-ui-"+str(Time.get_ticks_usec())+".json")
  preload("res://tests/onboarding_test_support.gd").prepare()
- game=load("res://scenes/main.tscn").instantiate()
+ game=load("res://scenes/main.tscn").instantiate();game.new_balance_version=1
  root.add_child(game)
  preload("res://tests/onboarding_test_support.gd").skip(game)
  await process_frame

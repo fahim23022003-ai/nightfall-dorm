@@ -1,0 +1,6942 @@
+{
+ "actions": [
+  {
+   "action": "buy turret",
+   "electricity": 0.0,
+   "gold": 7.32861259999999,
+   "simulation": 3.23660988888889,
+   "wall": 7.96719
+  },
+  {
+   "action": "upgrade bed",
+   "electricity": 0.0,
+   "gold": 2.56019180000012,
+   "simulation": 21.3918064444445,
+   "wall": 26.11193
+  },
+  {
+   "action": "upgrade door",
+   "electricity": 0.0,
+   "gold": 3.50447070000014,
+   "simulation": 34.7045023333335,
+   "wall": 39.423507
+  },
+  {
+   "action": "buy generator",
+   "electricity": 0.2382346,
+   "gold": 3.63905730000061,
+   "simulation": 79.1987936666664,
+   "wall": 83.926673
+  },
+  {
+   "action": "upgrade turret",
+   "electricity": 1.2702148,
+   "gold": 4.28296820000061,
+   "simulation": 94.2520939999997,
+   "wall": 98.985471
+  },
+  {
+   "action": "buy repair",
+   "electricity": 3.91625239999999,
+   "gold": 5.19013740000063,
+   "simulation": 118.662156666666,
+   "wall": 123.399166
+  },
+  {
+   "action": "upgrade turret",
+   "electricity": 5.32259099999998,
+   "gold": 4.51866110000052,
+   "simulation": 144.339387666667,
+   "wall": 149.068763
+  },
+  {
+   "action": "perk beat",
+   "electricity": 40.7268634000002,
+   "gold": 163.8378869,
+   "simulation": 203.346508333334,
+   "wall": 213.229951
+  },
+  {
+   "action": "merchant repair",
+   "electricity": 37.7268634000002,
+   "gold": 86.8378869000005,
+   "simulation": 203.346508333334,
+   "wall": 213.696497
+  },
+  {
+   "action": "continued next wave",
+   "electricity": 38.0403846666669,
+   "gold": 88.2487326000005,
+   "simulation": 203.869043777778,
+   "wall": 217.326775
+  },
+  {
+   "action": "upgrade bed",
+   "electricity": 39.1154160000003,
+   "gold": 9.49091390000055,
+   "simulation": 205.660762666667,
+   "wall": 219.114356
+  },
+  {
+   "action": "upgrade door",
+   "electricity": 50.0725882000007,
+   "gold": 8.10546370000026,
+   "simulation": 223.922716333334,
+   "wall": 237.774912
+  },
+  {
+   "action": "paid room expansion",
+   "electricity": 48.9252314000008,
+   "gold": 12.7792525,
+   "simulation": 247.010455000001,
+   "wall": 260.997593
+  },
+  {
+   "action": "buy heavy",
+   "electricity": 43.1415446545462,
+   "gold": 8.72607179090882,
+   "simulation": 267.370977090911,
+   "wall": 281.36742
+  },
+  {
+   "action": "continued next wave",
+   "electricity": 49.0575728000009,
+   "gold": 61.9703250999998,
+   "simulation": 277.231024000003,
+   "wall": 299.224098
+  },
+  {
+   "action": "upgrade repair",
+   "electricity": 37.6132723454556,
+   "gold": 8.97162100909022,
+   "simulation": 291.490523242429,
+   "wall": 313.500318
+  },
+  {
+   "action": "merchant pillow",
+   "electricity": 54.3105114666683,
+   "gold": 142.246773099999,
+   "simulation": 324.319255111122,
+   "wall": 351.949708
+  },
+  {
+   "action": "continued next wave",
+   "electricity": 54.613078533335,
+   "gold": 144.969876699999,
+   "simulation": 324.823533555566,
+   "wall": 355.574777
+  },
+  {
+   "action": "activate supply pillow",
+   "electricity": 55.488488933335,
+   "gold": 153.452925699999,
+   "simulation": 326.2825508889,
+   "wall": 357.038072
+  }
+ ],
+ "checks": 85,
+ "completed": 3,
+ "conditions": "Actual running production scene, scripted InputEvent keyboard/mouse, fresh profile, explicit practice Skip. No assigned wallet/HP/position/stats, no time acceleration. Menu save/resume uses actual safe checkpoint. Not human or native Windows testing.",
+ "failures": 0,
+ "flows": {
+  "loss_e": 0.0,
+  "loss_g": 0.0,
+  "other_e": 0.0,
+  "other_g": 0.0,
+  "production_e": 150.620458952384,
+  "production_g": 1207.23452095716,
+  "refund_e": 0.0,
+  "refund_g": 0.0,
+  "repair_g": 0.0,
+  "spent_e": 93.0,
+  "spent_g": 1050.0
+ },
+ "simulation_seconds": 329.83583425398,
+ "trace": [
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.289285714285714,
+   "simulation_time": 327.515784349217,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 4.640418
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0214285714285714,
+   "gold": 0.0,
+   "simulation_time": 327.515784349217,
+   "source": "Dynamo",
+   "wall_seconds": 4.640506
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.289285714285714,
+   "simulation_time": 327.551498634932,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 4.679169
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0214285714285714,
+   "gold": 0.0,
+   "simulation_time": 327.551498634932,
+   "source": "Dynamo",
+   "wall_seconds": 4.679263
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.286875,
+   "simulation_time": 327.586915301598,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 4.70943
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.02125,
+   "gold": 0.0,
+   "simulation_time": 327.586915301598,
+   "source": "Dynamo",
+   "wall_seconds": 4.709505
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.267571157142857,
+   "simulation_time": 327.619948777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 4.741282
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0198200857142857,
+   "gold": 0.0,
+   "simulation_time": 327.619948777789,
+   "source": "Dynamo",
+   "wall_seconds": 4.741355
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.2616138,
+   "simulation_time": 327.652246777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 4.773594
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0193788,
+   "gold": 0.0,
+   "simulation_time": 327.652246777789,
+   "source": "Dynamo",
+   "wall_seconds": 4.773668
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.2659149,
+   "simulation_time": 327.685075777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 4.806483
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0196974,
+   "gold": 0.0,
+   "simulation_time": 327.685075777789,
+   "source": "Dynamo",
+   "wall_seconds": 4.806579
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.28125,
+   "simulation_time": 327.719798000011,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 4.847161
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0208333333333333,
+   "gold": 0.0,
+   "simulation_time": 327.719798000011,
+   "source": "Dynamo",
+   "wall_seconds": 4.847249
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.323798400000016,
+   "simulation_time": 327.759773111122,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 4.886043
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0239850666666678,
+   "gold": 0.0,
+   "simulation_time": 327.759773111122,
+   "source": "Dynamo",
+   "wall_seconds": 4.886148
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.28125,
+   "simulation_time": 327.794495333344,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 4.916658
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0208333333333333,
+   "gold": 0.0,
+   "simulation_time": 327.794495333344,
+   "source": "Dynamo",
+   "wall_seconds": 4.916733
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.28125,
+   "simulation_time": 327.829217555567,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 4.957643
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0208333333333333,
+   "gold": 0.0,
+   "simulation_time": 327.829217555567,
+   "source": "Dynamo",
+   "wall_seconds": 4.957739
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.28125,
+   "simulation_time": 327.863939777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 4.992573
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0208333333333333,
+   "gold": 0.0,
+   "simulation_time": 327.863939777789,
+   "source": "Dynamo",
+   "wall_seconds": 4.992648
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.28125,
+   "simulation_time": 327.898662000011,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.027863
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0208333333333333,
+   "gold": 0.0,
+   "simulation_time": 327.898662000011,
+   "source": "Dynamo",
+   "wall_seconds": 5.027938
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.282272727272727,
+   "simulation_time": 327.93351048486,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.070165
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0209090909090909,
+   "gold": 0.0,
+   "simulation_time": 327.93351048486,
+   "source": "Dynamo",
+   "wall_seconds": 5.070253
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.363273872727257,
+   "simulation_time": 327.978359111122,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.117077
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0269091757575746,
+   "gold": 0.0,
+   "simulation_time": 327.978359111122,
+   "source": "Dynamo",
+   "wall_seconds": 5.117172
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.3219831,
+   "simulation_time": 328.018110111122,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.156232
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0238506,
+   "gold": 0.0,
+   "simulation_time": 328.018110111122,
+   "source": "Dynamo",
+   "wall_seconds": 5.156308
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.2925,
+   "simulation_time": 328.054221222233,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.191422
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0216666666666667,
+   "gold": 0.0,
+   "simulation_time": 328.054221222233,
+   "source": "Dynamo",
+   "wall_seconds": 5.191499
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.2925,
+   "simulation_time": 328.090332333344,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.223074
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0216666666666667,
+   "gold": 0.0,
+   "simulation_time": 328.090332333344,
+   "source": "Dynamo",
+   "wall_seconds": 5.223158
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.289285714285714,
+   "simulation_time": 328.126046619059,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.252164
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0214285714285714,
+   "gold": 0.0,
+   "simulation_time": 328.126046619059,
+   "source": "Dynamo",
+   "wall_seconds": 5.252235
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.273184585714302,
+   "simulation_time": 328.159773111122,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.283697
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0202358952380964,
+   "gold": 0.0,
+   "simulation_time": 328.159773111122,
+   "source": "Dynamo",
+   "wall_seconds": 5.283778
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.27,
+   "simulation_time": 328.193106444456,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.318885
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.02,
+   "gold": 0.0,
+   "simulation_time": 328.193106444456,
+   "source": "Dynamo",
+   "wall_seconds": 5.318966
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.289285714285714,
+   "simulation_time": 328.22882073017,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.358598
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0214285714285714,
+   "gold": 0.0,
+   "simulation_time": 328.22882073017,
+   "source": "Dynamo",
+   "wall_seconds": 5.358681
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.29158958571427,
+   "simulation_time": 328.264819444456,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.3946
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0215992285714274,
+   "gold": 0.0,
+   "simulation_time": 328.264819444456,
+   "source": "Dynamo",
+   "wall_seconds": 5.394686
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.289285714285714,
+   "simulation_time": 328.30053373017,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.428774
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0214285714285714,
+   "gold": 0.0,
+   "simulation_time": 328.30053373017,
+   "source": "Dynamo",
+   "wall_seconds": 5.428854
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.289285714285714,
+   "simulation_time": 328.336248015884,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.461558
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0214285714285714,
+   "gold": 0.0,
+   "simulation_time": 328.336248015884,
+   "source": "Dynamo",
+   "wall_seconds": 5.46163
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.350989971428572,
+   "simulation_time": 328.379580111122,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.517762
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0259992571428571,
+   "gold": 0.0,
+   "simulation_time": 328.379580111122,
+   "source": "Dynamo",
+   "wall_seconds": 5.517836
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.3242106,
+   "simulation_time": 328.419606111122,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.557669
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0240156,
+   "gold": 0.0,
+   "simulation_time": 328.419606111122,
+   "source": "Dynamo",
+   "wall_seconds": 5.557748
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.297,
+   "simulation_time": 328.456272777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.593554
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.022,
+   "gold": 0.0,
+   "simulation_time": 328.456272777789,
+   "source": "Dynamo",
+   "wall_seconds": 5.593643
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.297,
+   "simulation_time": 328.492939444456,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.626265
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.022,
+   "gold": 0.0,
+   "simulation_time": 328.492939444456,
+   "source": "Dynamo",
+   "wall_seconds": 5.626347
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.271352700000016,
+   "simulation_time": 328.526439777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.662708
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0201002000000012,
+   "gold": 0.0,
+   "simulation_time": 328.526439777789,
+   "source": "Dynamo",
+   "wall_seconds": 5.66279
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.294545454545455,
+   "simulation_time": 328.562803414153,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.697735
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0218181818181818,
+   "gold": 0.0,
+   "simulation_time": 328.562803414153,
+   "source": "Dynamo",
+   "wall_seconds": 5.697823
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.380454545454545,
+   "simulation_time": 328.609773111122,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.733569
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0281818181818182,
+   "gold": 0.0,
+   "simulation_time": 328.609773111122,
+   "source": "Dynamo",
+   "wall_seconds": 5.733678
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.294545454545455,
+   "simulation_time": 328.646136747486,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.770619
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0218181818181818,
+   "gold": 0.0,
+   "simulation_time": 328.646136747486,
+   "source": "Dynamo",
+   "wall_seconds": 5.770705
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.297,
+   "simulation_time": 328.682803414153,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.823086
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.022,
+   "gold": 0.0,
+   "simulation_time": 328.682803414153,
+   "source": "Dynamo",
+   "wall_seconds": 5.823164
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.31567074545453,
+   "simulation_time": 328.721775111122,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.859815
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.023383018181817,
+   "gold": 0.0,
+   "simulation_time": 328.721775111122,
+   "source": "Dynamo",
+   "wall_seconds": 5.859892
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.297,
+   "simulation_time": 328.758441777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.896156
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.022,
+   "gold": 0.0,
+   "simulation_time": 328.758441777789,
+   "source": "Dynamo",
+   "wall_seconds": 5.896238
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.297,
+   "simulation_time": 328.795108444456,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.933131
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.022,
+   "gold": 0.0,
+   "simulation_time": 328.795108444456,
+   "source": "Dynamo",
+   "wall_seconds": 5.933207
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.3485241,
+   "simulation_time": 328.838136111122,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 5.976227
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0258166,
+   "gold": 0.0,
+   "simulation_time": 328.838136111122,
+   "source": "Dynamo",
+   "wall_seconds": 5.976301
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.4022784,
+   "simulation_time": 328.887800111122,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.026166
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0297984,
+   "gold": 0.0,
+   "simulation_time": 328.887800111122,
+   "source": "Dynamo",
+   "wall_seconds": 6.026248
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.3408723,
+   "simulation_time": 328.929883111122,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.068034
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0252498,
+   "gold": 0.0,
+   "simulation_time": 328.929883111122,
+   "source": "Dynamo",
+   "wall_seconds": 6.068116
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.3375,
+   "simulation_time": 328.971549777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.105327
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.025,
+   "gold": 0.0,
+   "simulation_time": 328.971549777789,
+   "source": "Dynamo",
+   "wall_seconds": 6.105417
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.3375,
+   "simulation_time": 329.013216444456,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.142384
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.025,
+   "gold": 0.0,
+   "simulation_time": 329.013216444456,
+   "source": "Dynamo",
+   "wall_seconds": 6.142575
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.3375,
+   "simulation_time": 329.054883111122,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.183436
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.025,
+   "gold": 0.0,
+   "simulation_time": 329.054883111122,
+   "source": "Dynamo",
+   "wall_seconds": 6.183551
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.3375,
+   "simulation_time": 329.096549777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.219705
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.025,
+   "gold": 0.0,
+   "simulation_time": 329.096549777789,
+   "source": "Dynamo",
+   "wall_seconds": 6.219812
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.2854683,
+   "simulation_time": 329.131792777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.253155
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0211458,
+   "gold": 0.0,
+   "simulation_time": 329.131792777789,
+   "source": "Dynamo",
+   "wall_seconds": 6.253243
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.2884005,
+   "simulation_time": 329.167397777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.28881
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.021363,
+   "gold": 0.0,
+   "simulation_time": 329.167397777789,
+   "source": "Dynamo",
+   "wall_seconds": 6.288888
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.2842857,
+   "simulation_time": 329.202494777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.324186
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0210582,
+   "gold": 0.0,
+   "simulation_time": 329.202494777789,
+   "source": "Dynamo",
+   "wall_seconds": 6.324297
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.272079,
+   "simulation_time": 329.236084777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.357441
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.020154,
+   "gold": 0.0,
+   "simulation_time": 329.236084777789,
+   "source": "Dynamo",
+   "wall_seconds": 6.357563
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.2860758,
+   "simulation_time": 329.271402777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.392903
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0211908,
+   "gold": 0.0,
+   "simulation_time": 329.271402777789,
+   "source": "Dynamo",
+   "wall_seconds": 6.39302
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.2761776,
+   "simulation_time": 329.305498777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.426989
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0204576,
+   "gold": 0.0,
+   "simulation_time": 329.305498777789,
+   "source": "Dynamo",
+   "wall_seconds": 6.427074
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.237087,
+   "simulation_time": 329.334768777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.456142
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.017562,
+   "gold": 0.0,
+   "simulation_time": 329.334768777789,
+   "source": "Dynamo",
+   "wall_seconds": 6.456224
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.285,
+   "simulation_time": 329.369953962974,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.493204
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0211111111111111,
+   "gold": 0.0,
+   "simulation_time": 329.369953962974,
+   "source": "Dynamo",
+   "wall_seconds": 6.493331
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.2830773,
+   "simulation_time": 329.404901777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.526406
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0209686888888889,
+   "gold": 0.0,
+   "simulation_time": 329.404901777789,
+   "source": "Dynamo",
+   "wall_seconds": 6.526504
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.282272727272727,
+   "simulation_time": 329.439750262638,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.561802
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0209090909090909,
+   "gold": 0.0,
+   "simulation_time": 329.439750262638,
+   "source": "Dynamo",
+   "wall_seconds": 6.561905
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.297185072727289,
+   "simulation_time": 329.476439777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.601179
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0220137090909103,
+   "gold": 0.0,
+   "simulation_time": 329.476439777789,
+   "source": "Dynamo",
+   "wall_seconds": 6.601281
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.2835,
+   "simulation_time": 329.511439777789,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.641494
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.021,
+   "gold": 0.0,
+   "simulation_time": 329.511439777789,
+   "source": "Dynamo",
+   "wall_seconds": 6.641609
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.282272727272727,
+   "simulation_time": 329.546288262638,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.675694
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0209090909090909,
+   "gold": 0.0,
+   "simulation_time": 329.546288262638,
+   "source": "Dynamo",
+   "wall_seconds": 6.675791
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.2835,
+   "simulation_time": 329.581288262638,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.717377
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.021,
+   "gold": 0.0,
+   "simulation_time": 329.581288262638,
+   "source": "Dynamo",
+   "wall_seconds": 6.717457
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.2835,
+   "simulation_time": 329.616288262638,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.748894
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.021,
+   "gold": 0.0,
+   "simulation_time": 329.616288262638,
+   "source": "Dynamo",
+   "wall_seconds": 6.749001
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.2835,
+   "simulation_time": 329.651288262638,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.785974
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.021,
+   "gold": 0.0,
+   "simulation_time": 329.651288262638,
+   "source": "Dynamo",
+   "wall_seconds": 6.786074
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.337679672727257,
+   "simulation_time": 329.692977111123,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.831055
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0250133090909079,
+   "gold": 0.0,
+   "simulation_time": 329.692977111123,
+   "source": "Dynamo",
+   "wall_seconds": 6.831165
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.289285714285714,
+   "simulation_time": 329.728691396837,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.864931
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0214285714285714,
+   "gold": 0.0,
+   "simulation_time": 329.728691396837,
+   "source": "Dynamo",
+   "wall_seconds": 6.865003
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.289285714285714,
+   "simulation_time": 329.764405682551,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.896162
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0214285714285714,
+   "gold": 0.0,
+   "simulation_time": 329.764405682551,
+   "source": "Dynamo",
+   "wall_seconds": 6.896267
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.289285714285714,
+   "simulation_time": 329.800119968265,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.930124
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0214285714285714,
+   "gold": 0.0,
+   "simulation_time": 329.800119968265,
+   "source": "Dynamo",
+   "wall_seconds": 6.930225
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0,
+   "gold": 0.289285714285714,
+   "simulation_time": 329.83583425398,
+   "source": "occupied bed and actual production modifiers",
+   "wall_seconds": 6.96708
+  },
+  {
+   "context": {
+    "bed": 3,
+    "bed_branch": "",
+    "door": 3,
+    "door_branch": "",
+    "electricity_rate": 0.6,
+    "gold_rate": 8.1,
+    "machines": {
+     "16": {
+      "branch": "",
+      "kind": "turret",
+      "level": 3
+     },
+     "17": {
+      "branch": "",
+      "kind": "generator",
+      "level": 1
+     },
+     "18": {
+      "branch": "",
+      "kind": "repair",
+      "level": 2
+     },
+     "19": {
+      "branch": "",
+      "kind": "heavy",
+      "level": 1
+     }
+    },
+    "permanent_income": 1.0,
+    "permanent_power": 1.0,
+    "production_paused": false,
+    "run_perks": {
+     "damage": 1.0,
+     "income": 1.0,
+     "infrastructure_discount": 1.0,
+     "interval": 1.0,
+     "power": 1.0,
+     "range": 1.0,
+     "rhythm": false
+    },
+    "temporary_income": 1.5,
+    "threat_income": 1.0,
+    "trait": "fortified"
+   },
+   "destination": "production",
+   "electricity": 0.0214285714285714,
+   "gold": 0.0,
+   "simulation_time": 329.83583425398,
+   "source": "Dynamo",
+   "wall_seconds": 6.967182
+  }
+ ],
+ "wall_seconds": 360.689869
+}

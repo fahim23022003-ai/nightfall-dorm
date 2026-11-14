@@ -1,35 +1,54 @@
-# Phase 12 — Earned Power (implementation checkpoint; verification in progress)
+# Phase 12 — Earned Power
 
-Started clean on work at `b2f78fa46ebdbe0a12f4e7a15f09ce1631d98e5f`.
-No main changes. Do not restart or overwrite Phase11/earned checkpoint evidence.
+Branch work; started clean at b2f78fa46ebdbe0a12f4e7a15f09ce1631d98e5f.
+Recoverable implementation checkpoint16099fd; final source receipt follows in
+PHASE_12_EARNED_POWER_REPORT.md / Windows export receipt. No main/public release.
+Do not restart earlier phases or replace canonical earned checkpoints.
 
-Baseline120 actual-production cases (20seeds ×3strategies ×Campaign/Endless)
-complete: literal1B in5min NOT reproduced. Highest observed wallet through20min
-1,036,749.88G. All60 Campaign won; all60 Endless survived20min under these
-nonoptimal scripted strategies. First machine10 in Endless: greedy335–359s,
-balanced508–536s, defense597–651s. Dynamo23–29s. Raw baseline evidence preserved.
+IMPLEMENTED: immutable new-run balance2 connected economy, visible advanced
+prerequisites, diminishing amplifier/relay stacking (max3 amplifiers), paid repair
+upkeep/grid reserve, capped genuine-contact Hunter pressure, actual-resource bots,
+12 run perks, sparse3-option drafts,3 limited merchant offers, durable current-run
+activation journal, rollback and float64 flow ledger/wave reporting. Existing
+legacy1 checkpoints preserve wealth, upgrades and rules; fixed Challenge rules4
+remain separately labelled legacy. Existing systems retained.
 
-Implemented for NEW runs: version2 connected bed/door/machine/Dynamo economy,
-stronger late prerequisites, bounded diminishing amplifier/relay stacking, paid
-repair upkeep with visible grid reserve. Legacy version1 retains existing owned
-wealth/buildings/rules. Optional12 curated run perks and three limited-stock
-merchant offers share intermission workflow. Separate deterministic drafts,
-current-run stock, transaction rollback and anti-reload activation journal.
-Bounded sustained-siege pressure independent of wallets; no new retreat/heal loop.
-Flow ledger separates actual production/other/spend/refund/loss; wave report tabs
-show flow accounting. New actual Game Campaign/Endless/tutorial/Practice selectv2;
-fixed Challenge rules remain legacy and separately identified.
+Literal five-minute1B NOT reproduced. Original120 fresh strategy cases showed
+cheap power/additive support/low prerequisites/rapid prestige. New120 cases
+(20seeds×3policies×Normal Campaign/Endless): all60 Campaign won, all60 Endless
+survived20min. First Dynamo77–105s instead23–29s; no machine10 within20min under
+these policies. Separate grid-first three-seed paid strategy reached machine10
+24.8–26.8min. Strongest prepared legal combination408.95G/s steady,613.43 with
+real expiring Pillow; this is not earned affordability evidence.
 
-Core67 focused checks pass. First initial12 freshv2 simulations show earned
-Dynamo~105s, meaningful unmet infrastructure at10min. Final20seed principal
-strategy matrix, full regular/extended regressions, actual input/save-restart,
-rendered review,5–10min recording and Windows export are IN PROGRESS.
-Do not claim completion/push/native Windows/human enjoyment yet.
+BALANCE QUALIFICATION: supplemental Long Night lost15/15 Campaign and12/15
+Endless; Hell counter lost5/5 Campaign, one of five Endless survived15min.
+Prepared limited saved items and another siege-first policy did not rescue the
+tested Hell Campaigns. Human/optimal counter-build viability remains unproven;
+do not claim universally fair difficulty from correctness tests. Normal all-win
+samples also do not prove greed has enough risk. Owner/Adie review required.
 
-Next: finish tests and repair confirmed issues; inspect real UI; collect matched
-fresh-v1/v2 and strong-pressure/counter evidence, run perk+merchant interactions;
-review balance distributions and legal top-tier reachability; update final report,
-export portable Windows, commit and verify authorized work push. No public release.
+TESTED: existing140 regular/extended invocations resolved140/140 (125 initial,
+15 investigated); historical prepared UI assertions explicitly pin legacy1,
+separate current2 core67/combinations86/accounting261/UI31/availability6089 pass.
+Actual process restart5+4; Phase11 feature21/UI28/Endless75 and Challenge UI1755
+pass. Runtime capture188, real pressure/counter5, normal-speed live input86 pass.
+Fresh saved offers/stock/fractional rollback and legal late Pillow price boundary
+verified. No assertions disabled to obtain green counts. Failed experiments kept.
+
+Real evidence includes matched seed71 fresh0/60/180/300s, actual earned first
+choice/merchant, genuine paid Hell repair and prepared full16 UI at720/1080.
+Uncut362.96s silent MP4; separate355.08s actual internal Master FLAC, unsynchronized.
+Normal-speed scripted InputEvents (not human): fresh25G/0E,3clears, purchases,
+perk, merchant and save/resume, no assigned wallet/HP/position/stat/time boost.
+No native Windows, human enjoyment, subjective sound or hours-long performance
+claim. Dense combat remains busy; optional supplies panel covers left floor while
+open. Canonical45 hash unchanged; historical regenerated outputs archived/restored.
+
+Read docs/PHASE_12_EARNED_POWER_REPORT.md,
+docs/PHASE_12_HUMAN_PLAYTEST_CHECKLIST.md and docs/evidence/earned-power/INDEX.md.
+Final delivery step: portable Windows export, source/build hash receipt, verified
+work push and clean-tree confirmation. No future phase started.
 
 ---
 

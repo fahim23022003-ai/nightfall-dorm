@@ -34,7 +34,9 @@ static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  data.wave_metrics=model.wave_metrics.data.duplicate(true)
  data.omen=run.omen.snapshot()
  for room in model.rooms:
-  var saved={"owner":room.owner,"profile":room.profile,"bed_branch":room.bed_branch,"door_branch":room.door_branch,"trait":room.trait_id,"position":pair(room.resident_position),"ledger":room.ledger.snapshot(),"main_damage":room.main_damage_dealt,"minion_damage":room.minion_damage_dealt,"buildings":[]}
+  var saved={"owner":room.owner,"profile":room.profile,"bed_branch":room.bed_branch,"door_branch":room.door_branch,"trait":room.trait_id,"position":pair(room.resident_position),"main_damage":room.main_damage_dealt,"minion_damage":room.minion_damage_dealt,"buildings":[]}
+  if model.balance_version==2:
+   room.ledger.reconcile(room,model.time);saved.ledger=room.ledger.snapshot()
   for key in ROOM_NUMBERS+ROOM_FLAGS:saved[key]=room.get(key)
   if room.spatial!=null:saved.construction=room.spatial.snapshot()
   saved.magic_state=room.magic_state.duplicate(true)
@@ -131,6 +133,7 @@ static func valid(data) -> bool:
    if branch!="":ceiling+=StrategyCatalog.BRANCH_FEE
    if not number(b.get("invested_gold"),0,ceiling.x+.0001) or not number(b.get("invested_power"),0,ceiling.y+.0001) or not number(b.get("cooldown"),0,24 if b.kind=="decoy" else 12 if b.kind=="shield" else 10):return false
   if spatial and not SpatialConstruction.valid_room(room,map.rooms[i]):return false
+  if data.get("balance_version",1)==2 and room.buildings.filter(func(b):return b.kind=="economy").size()>BalanceRules.AMPLIFIER_LIMIT:return false
   var has_magic=room.buildings.any(func(b):return b.kind in MagicDefense.KINDS)
   if has_magic and not room.has("magic_state"):return false
   if room.has("magic_state"):

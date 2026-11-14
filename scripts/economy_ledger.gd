@@ -21,7 +21,7 @@ func note(group: String,value,label: String):
   var machines={}
   for id in r.buildings:machines[str(id)]={"kind":r.buildings[id].kind,"level":r.buildings[id].level,"branch":r.buildings[id].get("specialization","")}
   context={"bed":r.bed_level+1,"door":r.door_level+1,"machines":machines,"gold_rate":r.income_rate(),"electricity_rate":BuildingStats.room_power_rate(null,r),"trait":r.trait_id,"bed_branch":r.bed_branch,"door_branch":r.door_branch,"permanent_income":r.income_multiplier,"permanent_power":r.power_multiplier,"temporary_income":r.temporary_income,"run_perks":r.run_effects.duplicate(true),"threat_income":r.threat_income_factor,"production_paused":r.production_paused}
- records.append({"context":context,"simulation_time":clock,"wall_seconds":(Time.get_ticks_usec()-wall_started)/1e6,"source":label,"destination":group,"gold":g,"electricity":e})
+ records.append({"context":context,"simulation_time":clock,"wall_seconds":(Time.get_ticks_usec()-wall_started)/1e6,"source":"room wallet" if group in ["spent","loss"] else label,"destination":label if group in ["spent","loss"] else "room wallet","category":group,"gold":g,"electricity":e})
  if records.size()>128:records.pop_front()
 func reconcile(room,time: float):
  clock=time

@@ -2,15 +2,15 @@ class_name RunChoices
 extends RefCounted
 # Independent deterministic reward stream; no global/audio/gameplay RNG draws.
 const CATALOG={
- "ledger":{"name":"Night Ledger","icon":"economy","text":"Run: +12% occupied-bed production; weapons fire8% slower. One selection."},
+ "ledger":{"name":"Night Ledger","icon":"economy","text":"Run: +12% occupied-bed production; weapons fire 8% slower. One selection."},
  "grid":{"name":"Thrifty Grid","icon":"generator","text":"Next3 Dynamo/amplifier purchases cost20% less. Actual spend governs refunds. One selection."},
  "discipline":{"name":"Clean Defenses","icon":"door","text":"Clear with intact door ≥80% HP: earn3s current income,10–80Gold, once per wave. No recursive income."},
  "latch":{"name":"Last Latch","icon":"shield","text":"One charge/run: prevent one lethal intact-door strike, leave up to10% HP (max150). Does not revive a breached door."},
  "rhythm":{"name":"Repair Rhythm","icon":"repair","text":"Manual repairs15% cheaper below50% door HP; Dynamos produce5% less. Run duration."},
- "thorns":{"name":"Thorn Debt","icon":"barrier","text":"Retaliate5% actual Hunter door damage, 12HP burst /12HP per second refill. No reflected damage triggers. Run duration."},
+ "thorns":{"name":"Thorn Debt","icon":"barrier","text":"Retaliate 5% actual Hunter door damage, 12HP burst /12HP per second refill. No reflected damage triggers. Run duration."},
  "cadence":{"name":"Heavy Cadence","icon":"turret","text":"Owned weapon hits+20%; firing interval+15%. Burn unchanged. Run duration."},
  "beat":{"name":"Sixth Beat","icon":"frost","text":"Every6 actual Hunter projectile hits: brief12% suppression; ≥6s proc gap, shares existing control limits."},
- "mercy":{"name":"Mercy Spark","icon":"auto_repair","text":"Actual weapon hits restore1.5% damage to an intact door, 6HP burst /6HP per second refill. No overheal or revival."},
+ "mercy":{"name":"Mercy Spark","icon":"auto_repair","text":"Actual weapon hits restore 1.5% damage to an intact door, 6HP burst /6HP per second refill. No overheal or revival."},
  "mixed":{"name":"Mixed Circuit","icon":"heavy","text":"While owning Physical and Magic weapons: +8% hit damage. Floor-space tradeoff; run duration."},
  "workshop":{"name":"Working Dorm","icon":"enhancer","text":"With3 different permanent support types: +8% bed output; weapon range−5%. Run duration."},
  "reserve":{"name":"Reserve Cell","icon":"power","text":"One emergency action/run: +20Electricity only below40% intact-door HP. Use in Run Supplies; cannot sell the charge."}}
@@ -57,9 +57,9 @@ func prepare(m):
   var rng=RandomNumberGenerator.new();rng.seed=m.endless.seed_value*7919+wave*104729+222
   while draft.size()<3 and not choices.is_empty():draft.append(choices.pop_at(rng.randi_range(0,choices.size()-1)))
  if offer_wave!=wave:
-  offer_wave=wave;offers=[];var pool=ITEMS.duplicate();var rng=RandomNumberGenerator.new();rng.seed=m.endless.seed_value*6151+wave*421+19
+  offer_wave=wave;offers=[];var pool=ITEMS.filter(func(id):return id!="pillow" or m.player().bed_level>=1);var rng=RandomNumberGenerator.new();rng.seed=m.endless.seed_value*6151+wave*421+19
   while offers.size()<3 and not pool.is_empty():
-   var id=pool.pop_at(rng.randi_range(0,pool.size()-1));offers.append({"id":id,"gold":(65 if id=="repair" else 85)+m.player().bed_level*12,"power":3 if id in ["repair","pillow"] else 6,"left":1})
+   var id=pool.pop_at(rng.randi_range(0,pool.size()-1));var price=BalanceRules.merchant_price(m.player(),id);offers.append({"id":id,"gold":price.x,"power":price.y,"left":1})
 func choose(m,id: String) -> bool:
  if not enabled(m) or m.endless.phase!="intermission" or id not in draft or not available(id,m):return false
  selected.append(id);draft=[];apply(m);return true
@@ -126,7 +126,7 @@ func finish(m):
  if not enabled(m) or paid_wave>=m.endless.wave:return
  paid_wave=m.endless.wave
  if has("discipline") and m.player().door_hp>=m.player().max_hp()*.8:
-  var value=clampf(m.player().income_rate()*3,10,80);m.player().gold+=value;m.player().ledger.note("other",[value,0],"Clean Defenses cleared wave")
+  var value=clampf(m.player().income_rate()*3,10,BalanceRules.DISCIPLINE_MAX);m.player().gold+=value;m.player().ledger.note("other",[value,0],"Clean Defenses cleared wave")
 func snapshot() -> Dictionary:return {"selected":selected.duplicate(),"draft":draft.duplicate(),"draft_wave":draft_wave,"offers":offers.duplicate(true),"offer_wave":offer_wave,"used":used.duplicate(true),"stock":stock.duplicate(true),"paid_wave":paid_wave,"hits":hits,"last_proc":last_proc,"heal_tokens":heal_tokens,"thorn_tokens":thorn_tokens}
 func restore(data):
  for key in snapshot():set(key,data[key].duplicate(true) if data[key] is Dictionary or data[key] is Array else data[key])
@@ -148,6 +148,12 @@ static func valid(data,completed: int) -> bool:
  if not data.get("offers") is Array or data.offers.size()>3:return false
  var seen=[]
  for row in data.offers:
-  if not row is Dictionary or row.get("id") not in ITEMS or row.id in seen or not ReplaySnapshot.whole(row.get("left"),0,1) or not ReplaySnapshot.number(row.get("gold"),1,1000) or not ReplaySnapshot.number(row.get("power"),1,100):return false
+  if not row is Dictionary or row.get("id") not in ITEMS or row.id in seen or not ReplaySnapshot.whole(row.get("left"),0,1) or not ReplaySnapshot.number(row.get("gold"),1,4000) or not ReplaySnapshot.number(row.get("power"),1,100):return false
   seen.append(row.id)
  return ReplaySnapshot.number(data.get("last_proc"),-100,1e12) and ReplaySnapshot.number(data.get("heal_tokens"),0,6) and ReplaySnapshot.number(data.get("thorn_tokens"),0,12)
+
+func apply_journal(journal: Dictionary):
+ for id in journal:
+  var delta=maxi(0,int(journal[id])-int(used.get(id,0)))
+  if id in ITEMS:stock[id]=maxi(0,int(stock.get(id,0))-delta)
+  used[id]=maxi(int(journal[id]),int(used.get(id,0)))

@@ -14,6 +14,8 @@ func advance(seconds):
 func point_mouse(world: Vector2):
  var e=InputEventMouseMotion.new();e.position=root.get_final_transform()*game.world_to_screen(world);e.global_position=e.position;Input.parse_input_event(e);await process_frame;await advance(.08)
 func fresh():
+ # Historical fixed-price fixture, explicitly legacy. New balance has separate evidence.
+ game.new_balance_version=1
  game.return_menu();check(game.start_endless("abandoned_dorm","standard",71),"actual Endless session")
  game.set_process(false);game.tutorial_enabled=false;var m=game.model;m.claim_room(0);m.player_position=m.player().bed_position();m.sleep_player();m.bot_claimed=5
  for i in range(1,6):

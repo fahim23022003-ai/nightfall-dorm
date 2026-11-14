@@ -1,0 +1,62 @@
+[
+  {
+    "gate": "overhaul_qa_combat",
+    "exit": 0,
+    "seconds": 18.347268048999467,
+    "passed": true
+  },
+  {
+    "gate": "overhaul_dev_expansion",
+    "exit": 0,
+    "seconds": 21.800003423999442,
+    "passed": true
+  },
+  {
+    "gate": "overhaul_qa_expansion",
+    "exit": 0,
+    "seconds": 106.60378528000001,
+    "passed": true
+  },
+  {
+    "gate": "overhaul_qa_hud",
+    "exit": 0,
+    "seconds": 137.92338624100012,
+    "passed": true
+  },
+  {
+    "gate": "phase5d4_qa_ui",
+    "exit": 0,
+    "seconds": 64.98868250799933,
+    "passed": true
+  },
+  {
+    "gate": "phase5d4_qa_ui_branches",
+    "exit": 0,
+    "seconds": 148.78092658400055,
+    "passed": true
+  },
+  {
+    "gate": "phase5d3_qa_branch_ui",
+    "exit": 0,
+    "seconds": 6.544801661999372,
+    "passed": true
+  },
+  {
+    "gate": "spatial_construction_ui",
+    "exit": 0,
+    "seconds": 22.90535514200019,
+    "passed": true
+  },
+  {
+    "gate": "replay_ui",
+    "exit": 1,
+    "seconds": 23.66300572399996,
+    "passed": false
+  },
+  {
+    "gate": "maps_ui",
+    "exit": 1,
+    "seconds": 80.38956361199962,
+    "passed": false
+  }
+]

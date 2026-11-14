@@ -1,0 +1,6350 @@
+{
+ "balance": 2,
+ "engine": "4.6.3-stable (official)",
+ "mode": "hell",
+ "permanent_loadout": [
+  "reinforced",
+  "marksman"
+ ],
+ "prepared_supplies": true,
+ "profile_context": "Prepared progressed fixture with compatible permanent loadout/limited stock",
+ "rows": [
+  {
+   "actions": 15,
+   "archetype": "witch",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 25.74,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 55.6799999999996,
+     "production_g": 430.758000000005,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 126.0,
+     "spent_e": 29.94,
+     "spent_g": 436.0
+    },
+    "gold": 19.7580000000003,
+    "gold_rate": 0.0,
+    "gross_electricity": 55.6799999999996,
+    "gross_gold": 430.758000000005,
+    "hunter_hp": 3371.13,
+    "spent_gold": 436.0,
+    "survival": false,
+    "survivor_eliminations": 4,
+    "time": 169.799999999999,
+    "wave": 0
+   },
+   "fresh_inventory": 2,
+   "fresh_xp": 8000,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "npc_flows": [
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 19.072,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 27.0719999999999,
+      "production_g": 293.7,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 42.0,
+      "spent_e": 8.0,
+      "spent_g": 287.0
+     },
+     "gold": 31.6999999999999,
+     "room": 1
+    },
+    {
+     "alive": true,
+     "bed": 2,
+     "door": 3,
+     "electricity": 9.06399999999999,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 17.064,
+      "production_g": 488.519999999999,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 96.0,
+      "spent_e": 8.0,
+      "spent_g": 441.0
+     },
+     "gold": 72.5199999999992,
+     "room": 2
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 8.96999999999992,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 43.3199999999998,
+      "production_g": 376.650000000003,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 14.0,
+      "spent_e": 34.35,
+      "spent_g": 394.0
+     },
+     "gold": 7.65000000000038,
+     "room": 3
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 13.448,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 34.8479999999998,
+      "production_g": 326.100000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 21.4,
+      "spent_g": 310.0
+     },
+     "gold": 41.0999999999999,
+     "room": 4
+    },
+    {
+     "alive": true,
+     "bed": 3,
+     "door": 2,
+     "electricity": 8.88400000000002,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 30.5640000000001,
+      "production_g": 557.519999999998,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 112.0,
+      "spent_e": 21.68,
+      "spent_g": 507.0
+     },
+     "gold": 75.5199999999993,
+     "room": 5
+    }
+   ],
+   "observations": [
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 1,
+     "door": 1,
+     "time": 0,
+     "wallet": [
+      5.0,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -30.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 1,
+     "time": 19.0,
+     "wallet": [
+      0.649999999999959,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -35.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 31.9999999999999,
+     "wallet": [
+      0.749999999999922,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -120.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 77.0000000000006,
+     "wallet": [
+      2.25000000000051,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -40.0,
+     "action_power": -8.0,
+     "bed": 2,
+     "door": 2,
+     "time": 91.0000000000008,
+     "wallet": [
+      0.0500000000004661,
+      0.400000000000004
+     ]
+    },
+    {
+     "action_gold": -65.0,
+     "action_power": -12.0,
+     "bed": 2,
+     "door": 2,
+     "time": 116.000000000001,
+     "wallet": [
+      2.55000000000042,
+      3.39999999999996
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 140.000000000001,
+     "wallet": [
+      53.3500000000004,
+      17.2399999999999
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 142.0,
+     "wallet": [
+      44.7500000000004,
+      17.7399999999999
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 143.0,
+     "wallet": [
+      33.4500000000004,
+      17.9899999999999
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 145.0,
+     "wallet": [
+      24.8500000000004,
+      18.4899999999999
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 146.0,
+     "wallet": [
+      13.5500000000004,
+      18.7399999999999
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 147.0,
+     "wallet": [
+      2.25000000000035,
+      18.9899999999999
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 162.999999999999,
+     "wallet": [
+      30.3700000000003,
+      22.99
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 163.999999999999,
+     "wallet": [
+      18.5300000000003,
+      23.24
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 164.999999999999,
+     "wallet": [
+      6.79800000000031,
+      23.49
+     ]
+    }
+   ],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000505906427861191,
+   "repair_spent": 126.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 362.25,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5293.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 1,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 0.797461
+  },
+  {
+   "actions": 11,
+   "archetype": "electric",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      3
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 17.9599999999999,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 55.3199999999996,
+     "production_g": 431.190000000005,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 56.0,
+     "spent_e": 37.36,
+     "spent_g": 436.0
+    },
+    "gold": 20.1900000000003,
+    "gold_rate": 0.0,
+    "gross_electricity": 55.3199999999996,
+    "gross_gold": 431.190000000005,
+    "hunter_hp": 5493.35999999999,
+    "spent_gold": 436.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 169.199999999999,
+    "wave": 0
+   },
+   "fresh_inventory": 2,
+   "fresh_xp": 8000,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "npc_flows": [
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 12.794,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 33.9839999999998,
+      "production_g": 322.500000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 21.19,
+      "spent_g": 310.0
+     },
+     "gold": 37.4999999999999,
+     "room": 1
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 3,
+     "electricity": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 292.559999999999,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 118.0,
+      "spent_e": 0.0,
+      "spent_g": 303.0
+     },
+     "gold": 14.5599999999995,
+     "room": 2
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 16.8999999999999,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 38.16,
+      "production_g": 353.430000000002,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 21.26,
+      "spent_g": 310.0
+     },
+     "gold": 68.4300000000004,
+     "room": 3
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 17.64,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 39.5999999999997,
+      "production_g": 345.900000000002,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 14.0,
+      "spent_e": 21.96,
+      "spent_g": 324.0
+     },
+     "gold": 46.8999999999999,
+     "room": 4
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 6.69599999999999,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 6.69599999999999,
+      "production_g": 238.739999999999,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 42.0,
+      "spent_e": 0.0,
+      "spent_g": 247.0
+     },
+     "gold": 16.7399999999997,
+     "room": 5
+    }
+   ],
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000505906427861191,
+   "repair_spent": 56.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 362.25,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5829.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 2,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 1.564631
+  },
+  {
+   "actions": 12,
+   "archetype": "storm",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      3
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 16.5299999999998,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 55.9199999999996,
+     "production_g": 433.890000000006,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 70.0,
+     "spent_e": 39.39,
+     "spent_g": 450.0
+    },
+    "gold": 8.89000000000031,
+    "gold_rate": 0.0,
+    "gross_electricity": 55.9199999999996,
+    "gross_gold": 433.890000000006,
+    "hunter_hp": 4523.26499999999,
+    "spent_gold": 450.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 170.199999999999,
+    "wave": 0
+   },
+   "fresh_inventory": 2,
+   "fresh_xp": 8000,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "npc_flows": [
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 12.164,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 33.9839999999998,
+      "production_g": 322.500000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 14.0,
+      "spent_e": 21.82,
+      "spent_g": 324.0
+     },
+     "gold": 23.4999999999998,
+     "room": 1
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 3,
+     "electricity": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 253.229999999999,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 72.0,
+      "spent_e": 0.0,
+      "spent_g": 257.0
+     },
+     "gold": 21.2299999999998,
+     "room": 2
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 7.63999999999993,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 41.6399999999999,
+      "production_g": 369.090000000003,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 34.0,
+      "spent_g": 380.0
+     },
+     "gold": 14.0900000000004,
+     "room": 3
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 5.88599999999995,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 42.3359999999997,
+      "production_g": 357.300000000002,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 36.45,
+      "spent_g": 380.0
+     },
+     "gold": 2.29999999999984,
+     "room": 4
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 8.85599999999999,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 8.85599999999999,
+      "production_g": 324.989999999999,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 126.0,
+      "spent_e": 0.0,
+      "spent_g": 331.0
+     },
+     "gold": 18.9899999999994,
+     "room": 5
+    }
+   ],
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000517275111633353,
+   "repair_spent": 70.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 362.25,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5543.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 3,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 2.337602
+  },
+  {
+   "actions": 8,
+   "archetype": "crusher",
+   "final": {
+    "bed": 3,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      3
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 26.59,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 61.9199999999994,
+     "production_g": 480.330000000005,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 0.0,
+     "spent_e": 35.33,
+     "spent_g": 465.0
+    },
+    "gold": 40.3300000000006,
+    "gold_rate": 0.0,
+    "gross_electricity": 61.9199999999994,
+    "gross_gold": 480.330000000005,
+    "hunter_hp": 5967.53999999999,
+    "spent_gold": 465.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 180.199999999998,
+    "wave": 0
+   },
+   "fresh_inventory": 2,
+   "fresh_xp": 8000,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "npc_flows": [
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 12.4479999999999,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 49.2479999999996,
+      "production_g": 386.100000000003,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 14.0,
+      "spent_e": 36.8,
+      "spent_g": 394.0
+     },
+     "gold": 17.0999999999998,
+     "room": 1
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 3,
+     "electricity": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 258.749999999999,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 78.0,
+      "spent_e": 0.0,
+      "spent_g": 263.0
+     },
+     "gold": 20.7499999999998,
+     "room": 2
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 15.8499999999999,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 51.5999999999997,
+      "production_g": 413.910000000005,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 28.0,
+      "spent_e": 35.75,
+      "spent_g": 408.0
+     },
+     "gold": 30.9100000000003,
+     "room": 3
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 13.608,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 35.5679999999998,
+      "production_g": 329.100000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 21.96,
+      "spent_g": 310.0
+     },
+     "gold": 44.0999999999999,
+     "room": 4
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 3,
+     "electricity": 8.20799999999999,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 8.20799999999999,
+      "production_g": 335.339999999999,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 32.0,
+      "spent_e": 0.0,
+      "spent_g": 337.0
+     },
+     "gold": 23.3399999999995,
+     "room": 5
+    }
+   ],
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000466116034658626,
+   "repair_spent": 0.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 362.25,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 6980.5,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 0
+    },
+    {
+     "bed": 3,
+     "buildings": {
+      "generator": [
+       1
+      ],
+      "repair": [
+       1
+      ],
+      "turret": [
+       3
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 0.0,
+     "electricity": 26.47,
+     "electricity_rate": 0.6,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 61.7999999999995,
+      "production_g": 479.250000000005,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 35.33,
+      "spent_g": 465.0
+     },
+     "gold": 39.2500000000006,
+     "gold_rate": 5.4,
+     "gross_electricity": 61.7999999999995,
+     "gross_gold": 479.250000000005,
+     "hunter_hp": 5967.53999999999,
+     "spent_gold": 465.0,
+     "survival": true,
+     "survivor_eliminations": 5,
+     "time": 179.999999999998,
+     "wave": 0
+    }
+   ],
+   "seed": 4,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 3.143184
+  },
+  {
+   "actions": 12,
+   "archetype": "stalker",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 20.66,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 44.9999999999998,
+     "production_g": 384.750000000004,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 84.0,
+     "spent_e": 24.34,
+     "spent_g": 394.0
+    },
+    "gold": 15.7500000000003,
+    "gold_rate": 0.0,
+    "gross_electricity": 44.9999999999998,
+    "gross_gold": 384.750000000004,
+    "hunter_hp": 4282.04,
+    "spent_gold": 394.0,
+    "survival": false,
+    "survivor_eliminations": 3,
+    "time": 152.0,
+    "wave": 0
+   },
+   "fresh_inventory": 2,
+   "fresh_xp": 8000,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "npc_flows": [
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 9.80800000000001,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 29.8079999999999,
+      "production_g": 305.1,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 20.0,
+      "spent_g": 310.0
+     },
+     "gold": 20.0999999999998,
+     "room": 1
+    },
+    {
+     "alive": true,
+     "bed": 2,
+     "door": 3,
+     "electricity": 1.50399999999999,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 9.504,
+      "production_g": 445.049999999999,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 104.0,
+      "spent_e": 8.0,
+      "spent_g": 449.0
+     },
+     "gold": 21.0499999999992,
+     "room": 2
+    },
+    {
+     "alive": true,
+     "bed": 2,
+     "door": 2,
+     "electricity": 5.59999999999993,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 39.5999999999999,
+      "production_g": 359.910000000003,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 34.0,
+      "spent_g": 380.0
+     },
+     "gold": 4.91000000000039,
+     "room": 3
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 14.176,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 22.1759999999999,
+      "production_g": 273.299999999999,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 42.0,
+      "spent_e": 8.0,
+      "spent_g": 287.0
+     },
+     "gold": 11.2999999999998,
+     "room": 4
+    },
+    {
+     "alive": true,
+     "bed": 3,
+     "door": 3,
+     "electricity": 14.032,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 22.0320000000001,
+      "production_g": 453.329999999999,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 14.0,
+      "spent_e": 8.0,
+      "spent_g": 444.0
+     },
+     "gold": 34.3299999999992,
+     "room": 5
+    }
+   ],
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000329691829392686,
+   "repair_spent": 84.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 362.25,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5552.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 5,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 3.897646
+  },
+  {
+   "actions": 335,
+   "archetype": "stalker",
+   "final": {
+    "bed": 3,
+    "buildings": {
+     "turret": [
+      1,
+      1
+     ]
+    },
+    "capacity": 3,
+    "completed": 2,
+    "door": 3,
+    "door_hp": 495.78306341124,
+    "electricity": 0.0,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 0.0,
+     "production_g": 2921.12999999989,
+     "refund_e": 0.0,
+     "refund_g": 1250.0,
+     "repair_g": 1264.0,
+     "spent_e": 0.0,
+     "spent_g": 4054.0
+    },
+    "gold": 142.130000000008,
+    "gold_rate": 5.4,
+    "gross_electricity": 0.0,
+    "gross_gold": 2921.12999999989,
+    "hunter_hp": 6052.89900000003,
+    "spent_gold": 4054.0,
+    "survival": true,
+    "survivor_eliminations": 4,
+    "time": 600.199999999999,
+    "wave": 3
+   },
+   "fresh_inventory": 2,
+   "fresh_xp": 8000,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+
+   },
+   "npc_flows": [
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 20.08,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 28.0799999999999,
+      "production_g": 297.9,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 70.0,
+      "spent_e": 8.0,
+      "spent_g": 315.0
+     },
+     "gold": 7.89999999999983,
+     "room": 1
+    },
+    {
+     "alive": false,
+     "bed": 3,
+     "door": 3,
+     "electricity": 10.59,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 34.0200000000001,
+      "production_g": 693.449999999998,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 200.0,
+      "spent_e": 23.43,
+      "spent_g": 695.0
+     },
+     "gold": 23.4499999999991,
+     "room": 2
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 5.12999999999991,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 41.1599999999999,
+      "production_g": 366.930000000003,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 36.03,
+      "spent_g": 380.0
+     },
+     "gold": 11.9300000000004,
+     "room": 3
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 14.594,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 38.3039999999998,
+      "production_g": 340.500000000002,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 42.0,
+      "spent_e": 23.71,
+      "spent_g": 352.0
+     },
+     "gold": 13.4999999999999,
+     "room": 4
+    },
+    {
+     "alive": true,
+     "bed": 4,
+     "door": 4,
+     "electricity": 20.8440000000004,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 256.824000000006,
+      "production_g": 4638.18000000025,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 822.0,
+      "spent_e": 235.97999999999,
+      "spent_g": 2181.0
+     },
+     "gold": 2482.17999999999,
+     "room": 5
+    }
+   ],
+   "observations": [
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 1,
+     "door": 1,
+     "time": 0,
+     "wallet": [
+      5.0,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 1,
+     "door": 1,
+     "time": 12.0,
+     "wallet": [
+      1.19999999999997,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 1,
+     "door": 1,
+     "time": 25.9999999999999,
+     "wallet": [
+      0.0999999999999517,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -30.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 1,
+     "time": 49.0000000000002,
+     "wallet": [
+      1.14999999999991,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -35.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 62.0000000000003,
+     "wallet": [
+      1.24999999999986,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -85.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 2,
+     "time": 94.0000000000008,
+     "wallet": [
+      2.65000000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -100.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 113.000000000001,
+     "wallet": [
+      5.24999999999991,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 135.000000000001,
+     "wallet": [
+      134.05,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 136.000000000001,
+     "wallet": [
+      119.45,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 9.99999999999999,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 137.000000000001,
+     "wallet": [
+      134.85,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 138.000000000001,
+     "wallet": [
+      120.25,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 139.000000000001,
+     "wallet": [
+      135.65,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 140.000000000001,
+     "wallet": [
+      121.05,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 141.000000000001,
+     "wallet": [
+      136.45,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 142.0,
+     "wallet": [
+      121.85,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 143.0,
+     "wallet": [
+      137.25,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 144.0,
+     "wallet": [
+      122.65,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 145.0,
+     "wallet": [
+      138.05,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 146.0,
+     "wallet": [
+      123.45,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 147.0,
+     "wallet": [
+      138.85,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 148.0,
+     "wallet": [
+      124.25,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 149.0,
+     "wallet": [
+      139.65,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 150.0,
+     "wallet": [
+      125.05,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 151.0,
+     "wallet": [
+      140.45,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 152.0,
+     "wallet": [
+      125.85,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 153.0,
+     "wallet": [
+      141.25,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 154.0,
+     "wallet": [
+      126.65,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 155.0,
+     "wallet": [
+      142.05,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 156.0,
+     "wallet": [
+      127.450000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 157.0,
+     "wallet": [
+      142.850000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 158.0,
+     "wallet": [
+      128.250000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 159.0,
+     "wallet": [
+      143.650000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 159.999999999999,
+     "wallet": [
+      129.050000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 160.999999999999,
+     "wallet": [
+      144.450000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 161.999999999999,
+     "wallet": [
+      133.850000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 162.999999999999,
+     "wallet": [
+      119.250000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 163.999999999999,
+     "wallet": [
+      108.650000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 164.999999999999,
+     "wallet": [
+      98.050000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 165.999999999999,
+     "wallet": [
+      87.450000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 172.999999999999,
+     "wallet": [
+      135.250000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 173.999999999999,
+     "wallet": [
+      120.650000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 174.999999999999,
+     "wallet": [
+      110.050000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 175.999999999999,
+     "wallet": [
+      99.450000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 176.999999999998,
+     "wallet": [
+      88.8500000000009,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 182.999999999998,
+     "wallet": [
+      131.250000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 183.999999999998,
+     "wallet": [
+      116.650000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 184.999999999998,
+     "wallet": [
+      132.050000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 185.999999999998,
+     "wallet": [
+      117.450000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 186.999999999998,
+     "wallet": [
+      132.850000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 187.999999999998,
+     "wallet": [
+      118.250000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 188.999999999998,
+     "wallet": [
+      133.650000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 189.999999999998,
+     "wallet": [
+      119.050000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 190.999999999998,
+     "wallet": [
+      134.450000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 191.999999999998,
+     "wallet": [
+      119.850000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 192.999999999998,
+     "wallet": [
+      135.250000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 193.999999999998,
+     "wallet": [
+      120.650000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 194.999999999997,
+     "wallet": [
+      136.050000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 195.999999999997,
+     "wallet": [
+      121.450000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 196.999999999997,
+     "wallet": [
+      136.850000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 197.999999999997,
+     "wallet": [
+      122.250000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 198.999999999997,
+     "wallet": [
+      137.650000000001,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 199.999999999997,
+     "wallet": [
+      123.050000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 200.999999999997,
+     "wallet": [
+      138.450000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 201.999999999997,
+     "wallet": [
+      123.850000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 202.999999999997,
+     "wallet": [
+      139.250000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 203.999999999997,
+     "wallet": [
+      124.650000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 204.999999999997,
+     "wallet": [
+      140.050000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 205.999999999997,
+     "wallet": [
+      125.450000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 206.999999999997,
+     "wallet": [
+      140.850000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 207.999999999997,
+     "wallet": [
+      126.250000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 208.999999999997,
+     "wallet": [
+      141.650000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 209.999999999997,
+     "wallet": [
+      127.050000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 210.999999999997,
+     "wallet": [
+      142.450000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 211.999999999997,
+     "wallet": [
+      127.850000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 212.999999999996,
+     "wallet": [
+      143.250000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 213.999999999996,
+     "wallet": [
+      128.650000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 214.999999999996,
+     "wallet": [
+      144.050000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 215.999999999996,
+     "wallet": [
+      129.450000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 216.999999999996,
+     "wallet": [
+      144.850000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 217.999999999996,
+     "wallet": [
+      130.250000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 218.999999999996,
+     "wallet": [
+      145.650000000002,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 219.999999999996,
+     "wallet": [
+      131.050000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 220.999999999996,
+     "wallet": [
+      146.450000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 221.999999999996,
+     "wallet": [
+      131.850000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 222.999999999996,
+     "wallet": [
+      147.250000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 223.999999999996,
+     "wallet": [
+      132.650000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 224.999999999996,
+     "wallet": [
+      122.050000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 9.99999999999999,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 225.999999999996,
+     "wallet": [
+      137.450000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 226.999999999996,
+     "wallet": [
+      122.850000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 227.999999999996,
+     "wallet": [
+      138.250000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 228.999999999996,
+     "wallet": [
+      123.650000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 229.999999999995,
+     "wallet": [
+      139.050000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 230.999999999995,
+     "wallet": [
+      128.450000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 231.999999999995,
+     "wallet": [
+      117.850000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 232.999999999995,
+     "wallet": [
+      107.250000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 233.999999999995,
+     "wallet": [
+      96.6500000000031,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 234.999999999995,
+     "wallet": [
+      86.0500000000031,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 235.999999999995,
+     "wallet": [
+      71.4500000000031,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 9.99999999999999,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 244.999999999995,
+     "wallet": [
+      130.050000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 245.999999999995,
+     "wallet": [
+      115.450000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 246.999999999995,
+     "wallet": [
+      130.850000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 247.999999999994,
+     "wallet": [
+      116.250000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 248.999999999994,
+     "wallet": [
+      131.650000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 249.999999999994,
+     "wallet": [
+      117.050000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 250.999999999994,
+     "wallet": [
+      132.450000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 251.999999999994,
+     "wallet": [
+      117.850000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 252.999999999994,
+     "wallet": [
+      133.250000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 253.999999999994,
+     "wallet": [
+      118.650000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 254.999999999994,
+     "wallet": [
+      134.050000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 255.999999999994,
+     "wallet": [
+      119.450000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 256.999999999994,
+     "wallet": [
+      134.850000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 257.999999999994,
+     "wallet": [
+      120.250000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 258.999999999994,
+     "wallet": [
+      135.650000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 259.999999999994,
+     "wallet": [
+      121.050000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 260.999999999994,
+     "wallet": [
+      136.450000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 261.999999999994,
+     "wallet": [
+      121.850000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 262.999999999994,
+     "wallet": [
+      137.250000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 263.999999999994,
+     "wallet": [
+      126.650000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 264.999999999994,
+     "wallet": [
+      116.050000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 265.999999999993,
+     "wallet": [
+      101.450000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 266.999999999993,
+     "wallet": [
+      90.8500000000037,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 267.999999999993,
+     "wallet": [
+      80.2500000000037,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 268.999999999993,
+     "wallet": [
+      69.6500000000036,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 270.999999999993,
+     "wallet": [
+      64.4500000000036,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 271.999999999993,
+     "wallet": [
+      53.8500000000036,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 272.999999999993,
+     "wallet": [
+      43.2500000000036,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 9.99999999999999,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 287.999999999992,
+     "wallet": [
+      134.250000000003,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 288.999999999992,
+     "wallet": [
+      119.650000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 289.999999999992,
+     "wallet": [
+      135.050000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 290.999999999992,
+     "wallet": [
+      120.450000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 291.999999999992,
+     "wallet": [
+      135.850000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 292.999999999992,
+     "wallet": [
+      121.250000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 293.999999999992,
+     "wallet": [
+      136.650000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 294.999999999992,
+     "wallet": [
+      122.050000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 295.999999999992,
+     "wallet": [
+      137.450000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 296.999999999992,
+     "wallet": [
+      122.850000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 297.999999999992,
+     "wallet": [
+      138.250000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 298.999999999992,
+     "wallet": [
+      123.650000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 299.999999999992,
+     "wallet": [
+      139.050000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 300.999999999991,
+     "wallet": [
+      124.450000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 301.999999999991,
+     "wallet": [
+      139.850000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 302.999999999991,
+     "wallet": [
+      125.250000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 303.999999999991,
+     "wallet": [
+      140.650000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 304.999999999991,
+     "wallet": [
+      130.050000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 305.999999999991,
+     "wallet": [
+      115.450000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 306.999999999991,
+     "wallet": [
+      130.850000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 307.999999999991,
+     "wallet": [
+      116.250000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 308.999999999991,
+     "wallet": [
+      105.650000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 311.999999999991,
+     "wallet": [
+      105.850000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 9.99999999999999,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 314.999999999991,
+     "wallet": [
+      132.050000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 315.999999999991,
+     "wallet": [
+      117.450000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 316.999999999991,
+     "wallet": [
+      132.850000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 317.999999999991,
+     "wallet": [
+      118.250000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 318.99999999999,
+     "wallet": [
+      133.650000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 319.99999999999,
+     "wallet": [
+      119.050000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 320.99999999999,
+     "wallet": [
+      134.450000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 321.99999999999,
+     "wallet": [
+      119.850000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 322.99999999999,
+     "wallet": [
+      135.250000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 323.99999999999,
+     "wallet": [
+      120.650000000004,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 324.99999999999,
+     "wallet": [
+      136.050000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 325.99999999999,
+     "wallet": [
+      121.450000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 326.99999999999,
+     "wallet": [
+      136.850000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 327.99999999999,
+     "wallet": [
+      122.250000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 328.99999999999,
+     "wallet": [
+      137.650000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 329.99999999999,
+     "wallet": [
+      123.050000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 330.99999999999,
+     "wallet": [
+      138.450000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 331.99999999999,
+     "wallet": [
+      123.850000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 332.99999999999,
+     "wallet": [
+      139.250000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 333.99999999999,
+     "wallet": [
+      124.650000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 334.99999999999,
+     "wallet": [
+      140.050000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 335.999999999989,
+     "wallet": [
+      125.450000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 336.999999999989,
+     "wallet": [
+      140.850000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 337.999999999989,
+     "wallet": [
+      130.250000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 338.999999999989,
+     "wallet": [
+      115.650000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 339.999999999989,
+     "wallet": [
+      105.050000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 340.999999999989,
+     "wallet": [
+      94.450000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 342.999999999989,
+     "wallet": [
+      89.250000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 343.999999999989,
+     "wallet": [
+      78.650000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 344.999999999989,
+     "wallet": [
+      68.050000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 354.999999999988,
+     "wallet": [
+      132.050000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 355.999999999988,
+     "wallet": [
+      117.450000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 9.99999999999999,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 356.999999999988,
+     "wallet": [
+      132.850000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 357.999999999988,
+     "wallet": [
+      118.250000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 358.999999999988,
+     "wallet": [
+      133.650000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 359.999999999988,
+     "wallet": [
+      119.050000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 360.999999999988,
+     "wallet": [
+      134.450000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 361.999999999988,
+     "wallet": [
+      119.850000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 362.999999999988,
+     "wallet": [
+      135.250000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 363.999999999988,
+     "wallet": [
+      120.650000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 364.999999999988,
+     "wallet": [
+      136.050000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 365.999999999988,
+     "wallet": [
+      121.450000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 366.999999999988,
+     "wallet": [
+      136.850000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 367.999999999988,
+     "wallet": [
+      122.250000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 368.999999999988,
+     "wallet": [
+      137.650000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 369.999999999988,
+     "wallet": [
+      127.050000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 370.999999999987,
+     "wallet": [
+      116.450000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 371.999999999987,
+     "wallet": [
+      101.850000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 372.999999999987,
+     "wallet": [
+      91.2500000000055,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 373.999999999987,
+     "wallet": [
+      80.6500000000055,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 374.999999999987,
+     "wallet": [
+      70.0500000000055,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 375.999999999987,
+     "wallet": [
+      59.4500000000055,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 376.999999999987,
+     "wallet": [
+      48.8500000000055,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 377.999999999987,
+     "wallet": [
+      38.2500000000054,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 393.999999999986,
+     "wallet": [
+      134.650000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 394.999999999986,
+     "wallet": [
+      120.050000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 395.999999999986,
+     "wallet": [
+      135.450000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 396.999999999986,
+     "wallet": [
+      120.850000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 397.999999999986,
+     "wallet": [
+      136.250000000005,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 398.999999999986,
+     "wallet": [
+      121.650000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 399.999999999986,
+     "wallet": [
+      137.050000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 400.999999999986,
+     "wallet": [
+      122.450000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 401.999999999986,
+     "wallet": [
+      137.850000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 402.999999999986,
+     "wallet": [
+      127.250000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 403.999999999986,
+     "wallet": [
+      116.650000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 404.999999999986,
+     "wallet": [
+      106.050000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 405.999999999986,
+     "wallet": [
+      91.4500000000057,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 406.999999999985,
+     "wallet": [
+      80.8500000000057,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 407.999999999985,
+     "wallet": [
+      70.2500000000057,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 408.999999999985,
+     "wallet": [
+      59.6500000000057,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 409.999999999985,
+     "wallet": [
+      49.0500000000057,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 410.999999999985,
+     "wallet": [
+      38.4500000000057,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 426.999999999984,
+     "wallet": [
+      134.850000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 427.999999999984,
+     "wallet": [
+      120.250000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 428.999999999984,
+     "wallet": [
+      135.650000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 429.999999999984,
+     "wallet": [
+      121.050000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 430.999999999984,
+     "wallet": [
+      136.450000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 431.999999999984,
+     "wallet": [
+      121.850000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 432.999999999984,
+     "wallet": [
+      137.250000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 433.999999999984,
+     "wallet": [
+      122.650000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 434.999999999984,
+     "wallet": [
+      138.050000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 435.999999999984,
+     "wallet": [
+      127.450000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 436.999999999984,
+     "wallet": [
+      112.850000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 437.999999999984,
+     "wallet": [
+      102.250000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 438.999999999984,
+     "wallet": [
+      91.6500000000059,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 439.999999999984,
+     "wallet": [
+      81.0500000000059,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 440.999999999984,
+     "wallet": [
+      70.4500000000059,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 441.999999999983,
+     "wallet": [
+      59.8500000000059,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 442.999999999983,
+     "wallet": [
+      49.2500000000059,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 443.999999999983,
+     "wallet": [
+      38.6500000000059,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 459.999999999982,
+     "wallet": [
+      135.050000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 460.999999999982,
+     "wallet": [
+      120.450000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 461.999999999982,
+     "wallet": [
+      135.850000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 462.999999999982,
+     "wallet": [
+      121.250000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 463.999999999982,
+     "wallet": [
+      136.650000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 464.999999999982,
+     "wallet": [
+      122.050000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 465.999999999982,
+     "wallet": [
+      137.450000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 466.999999999982,
+     "wallet": [
+      122.850000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 467.999999999982,
+     "wallet": [
+      138.250000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 468.999999999982,
+     "wallet": [
+      127.650000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 469.999999999982,
+     "wallet": [
+      113.050000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 470.999999999982,
+     "wallet": [
+      102.450000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 471.999999999982,
+     "wallet": [
+      91.8500000000061,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 472.999999999982,
+     "wallet": [
+      81.2500000000061,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 473.999999999982,
+     "wallet": [
+      70.6500000000061,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 474.999999999982,
+     "wallet": [
+      60.0500000000061,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 475.999999999982,
+     "wallet": [
+      49.4500000000061,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 489.999999999981,
+     "wallet": [
+      135.050000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 490.999999999981,
+     "wallet": [
+      120.450000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 491.999999999981,
+     "wallet": [
+      135.850000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 492.999999999981,
+     "wallet": [
+      121.250000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 493.999999999981,
+     "wallet": [
+      136.650000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 494.99999999998,
+     "wallet": [
+      122.050000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 495.99999999998,
+     "wallet": [
+      137.450000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 496.99999999998,
+     "wallet": [
+      122.850000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 497.99999999998,
+     "wallet": [
+      138.250000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 498.99999999998,
+     "wallet": [
+      123.650000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 499.99999999998,
+     "wallet": [
+      139.050000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 500.99999999998,
+     "wallet": [
+      128.450000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 501.99999999998,
+     "wallet": [
+      117.850000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 502.99999999998,
+     "wallet": [
+      103.250000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 503.99999999998,
+     "wallet": [
+      92.6500000000064,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 504.99999999998,
+     "wallet": [
+      82.0500000000064,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 505.99999999998,
+     "wallet": [
+      71.4500000000064,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 506.99999999998,
+     "wallet": [
+      60.8500000000064,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 507.99999999998,
+     "wallet": [
+      50.2500000000064,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 508.99999999998,
+     "wallet": [
+      39.6500000000064,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 509.99999999998,
+     "wallet": [
+      29.0500000000064,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 9.99999999999999,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 526.999999999983,
+     "wallet": [
+      130.850000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 527.999999999983,
+     "wallet": [
+      116.250000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 528.999999999983,
+     "wallet": [
+      131.650000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 529.999999999984,
+     "wallet": [
+      117.050000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 530.999999999984,
+     "wallet": [
+      132.450000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 531.999999999984,
+     "wallet": [
+      117.850000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 532.999999999984,
+     "wallet": [
+      133.250000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 533.999999999984,
+     "wallet": [
+      118.650000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 534.999999999985,
+     "wallet": [
+      134.050000000006,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 535.999999999985,
+     "wallet": [
+      119.450000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 536.999999999985,
+     "wallet": [
+      134.850000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 537.999999999985,
+     "wallet": [
+      120.250000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 538.999999999986,
+     "wallet": [
+      135.650000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 539.999999999986,
+     "wallet": [
+      121.050000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 540.999999999986,
+     "wallet": [
+      136.450000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 541.999999999986,
+     "wallet": [
+      121.850000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 542.999999999986,
+     "wallet": [
+      137.250000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 543.999999999987,
+     "wallet": [
+      122.650000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 544.999999999987,
+     "wallet": [
+      138.050000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 545.999999999987,
+     "wallet": [
+      123.450000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 546.999999999987,
+     "wallet": [
+      138.850000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 547.999999999988,
+     "wallet": [
+      124.250000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 548.999999999988,
+     "wallet": [
+      139.650000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 549.999999999988,
+     "wallet": [
+      125.050000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 550.999999999988,
+     "wallet": [
+      140.450000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 551.999999999989,
+     "wallet": [
+      125.850000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 552.999999999989,
+     "wallet": [
+      141.250000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 553.999999999989,
+     "wallet": [
+      130.650000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 554.999999999989,
+     "wallet": [
+      116.050000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 555.999999999989,
+     "wallet": [
+      105.450000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 557.99999999999,
+     "wallet": [
+      100.250000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 559.99999999999,
+     "wallet": [
+      95.0500000000072,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 561.999999999991,
+     "wallet": [
+      89.8500000000072,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 563.999999999991,
+     "wallet": [
+      84.6500000000072,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 565.999999999992,
+     "wallet": [
+      79.4500000000072,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 567.999999999992,
+     "wallet": [
+      74.2500000000072,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 569.999999999993,
+     "wallet": [
+      69.0500000000072,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 9.99999999999999,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 579.999999999995,
+     "wallet": [
+      133.050000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 580.999999999995,
+     "wallet": [
+      118.450000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 581.999999999995,
+     "wallet": [
+      133.850000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 582.999999999996,
+     "wallet": [
+      119.250000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 583.999999999996,
+     "wallet": [
+      134.650000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 584.999999999996,
+     "wallet": [
+      120.050000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 585.999999999996,
+     "wallet": [
+      135.450000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 586.999999999996,
+     "wallet": [
+      120.850000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 587.999999999997,
+     "wallet": [
+      136.250000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 588.999999999997,
+     "wallet": [
+      121.650000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 589.999999999997,
+     "wallet": [
+      137.050000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 590.999999999997,
+     "wallet": [
+      122.450000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 591.999999999998,
+     "wallet": [
+      137.850000000007,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 592.999999999998,
+     "wallet": [
+      123.250000000008,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 593.999999999998,
+     "wallet": [
+      138.650000000008,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 594.999999999998,
+     "wallet": [
+      124.050000000008,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 595.999999999999,
+     "wallet": [
+      139.450000000008,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 596.999999999999,
+     "wallet": [
+      124.850000000008,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 597.999999999999,
+     "wallet": [
+      140.250000000008,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 598.999999999999,
+     "wallet": [
+      125.650000000008,
+      0.0
+     ]
+    },
+    {
+     "action_gold": 10.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 599.999999999999,
+     "wallet": [
+      141.050000000008,
+      0.0
+     ]
+    }
+   ],
+   "peak_gold": 152.650000000003,
+   "reconciled_gold_residual": 1250.00000000012,
+   "repair_spent": 1264.0,
+   "result": "ongoing_at_horizon",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1,
+       1,
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 1,
+     "door_hp": 181.125,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 95.8500000000006,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 90.0
+     },
+     "gold": 30.8499999999999,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 95.8500000000006,
+     "hunter_hp": 5345.0,
+     "spent_gold": 90.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 1
+    },
+    {
+     "bed": 3,
+     "buildings": {
+      "turret": [
+       1,
+       1,
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 3,
+     "door_hp": 474.466140800001,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 652.050000000002,
+      "refund_e": 0.0,
+      "refund_g": 150.0,
+      "repair_g": 112.0,
+      "spent_e": 0.0,
+      "spent_g": 722.0
+     },
+     "gold": 105.050000000001,
+     "gold_rate": 5.4,
+     "gross_electricity": 0.0,
+     "gross_gold": 652.050000000002,
+     "hunter_hp": 2237.84700000001,
+     "spent_gold": 722.0,
+     "survival": true,
+     "survivor_eliminations": 3,
+     "time": 179.999999999998,
+     "wave": 1
+    },
+    {
+     "bed": 3,
+     "buildings": {
+      "turret": [
+       1,
+       1,
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 1,
+     "door": 3,
+     "door_hp": 505.759059840005,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 1300.05,
+      "refund_e": 0.0,
+      "refund_g": 550.0,
+      "repair_g": 336.0,
+      "spent_e": 0.0,
+      "spent_g": 1746.0
+     },
+     "gold": 129.050000000004,
+     "gold_rate": 5.4,
+     "gross_electricity": 0.0,
+     "gross_gold": 1300.05,
+     "hunter_hp": 6493.9,
+     "spent_gold": 1746.0,
+     "survival": true,
+     "survivor_eliminations": 4,
+     "time": 299.999999999992,
+     "wave": 2
+    },
+    {
+     "bed": 3,
+     "buildings": {
+      "turret": [
+       1,
+       1,
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 2,
+     "door": 3,
+     "door_hp": 495.78306341124,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 2920.04999999989,
+      "refund_e": 0.0,
+      "refund_g": 1240.0,
+      "repair_g": 1264.0,
+      "spent_e": 0.0,
+      "spent_g": 4054.0
+     },
+     "gold": 131.050000000008,
+     "gold_rate": 5.4,
+     "gross_electricity": 0.0,
+     "gross_gold": 2920.04999999989,
+     "hunter_hp": 6061.24200000003,
+     "spent_gold": 4054.0,
+     "survival": true,
+     "survivor_eliminations": 4,
+     "time": 599.999999999999,
+     "wave": 3
+    }
+   ],
+   "seed": 1,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 6.524943
+  },
+  {
+   "actions": 449,
+   "archetype": "ravager",
+   "final": {
+    "bed": 3,
+    "buildings": {
+     "turret": [
+      1,
+      1,
+      1
+     ]
+    },
+    "capacity": 3,
+    "completed": 3,
+    "door": 3,
+    "door_hp": 0.0,
+    "electricity": 0.0,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 0.0,
+     "production_g": 2805.5699999999,
+     "refund_e": 0.0,
+     "refund_g": 2110.0,
+     "repair_g": 320.0,
+     "spent_e": 0.0,
+     "spent_g": 4850.0
+    },
+    "gold": 90.5700000000127,
+    "gold_rate": 0.0,
+    "gross_electricity": 0.0,
+    "gross_gold": 2805.5699999999,
+    "hunter_hp": 1509.43599999999,
+    "spent_gold": 4850.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 578.799999999995,
+    "wave": 4
+   },
+   "fresh_inventory": 2,
+   "fresh_xp": 8000,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+
+   },
+   "npc_flows": [
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 8.41600000000001,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 16.416,
+      "production_g": 249.299999999998,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 14.0,
+      "spent_e": 8.0,
+      "spent_g": 259.0
+     },
+     "gold": 15.2999999999997,
+     "room": 1
+    },
+    {
+     "alive": false,
+     "bed": 4,
+     "door": 4,
+     "electricity": 9.37400000000033,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 230.904000000006,
+      "production_g": 4033.05000000021,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 1472.0,
+      "spent_e": 221.529999999992,
+      "spent_g": 2813.0
+     },
+     "gold": 1245.04999999996,
+     "room": 2
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 8.84999999999995,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 28.9200000000001,
+      "production_g": 311.850000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 14.0,
+      "spent_e": 20.07,
+      "spent_g": 324.0
+     },
+     "gold": 12.8500000000004,
+     "room": 3
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 15.328,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 23.3279999999999,
+      "production_g": 278.099999999999,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 42.0,
+      "spent_e": 8.0,
+      "spent_g": 287.0
+     },
+     "gold": 16.0999999999998,
+     "room": 4
+    },
+    {
+     "alive": false,
+     "bed": 4,
+     "door": 4,
+     "electricity": 9.41200000000031,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 223.452000000005,
+      "production_g": 3930.70000000019,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 1108.0,
+      "spent_e": 214.039999999993,
+      "spent_g": 2449.0
+     },
+     "gold": 1506.69999999996,
+     "room": 5
+    }
+   ],
+   "observations": [],
+   "peak_gold": 300.650000000012,
+   "reconciled_gold_residual": 2110.00000000012,
+   "repair_spent": 320.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1,
+       1,
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 1,
+     "door_hp": 181.125,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 95.8500000000006,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 90.0
+     },
+     "gold": 30.8499999999999,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 95.8500000000006,
+     "hunter_hp": 5095.0,
+     "spent_gold": 90.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 1
+    },
+    {
+     "bed": 3,
+     "buildings": {
+      "turret": [
+       1,
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 3,
+     "door_hp": 524.5040528,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 652.050000000002,
+      "refund_e": 0.0,
+      "refund_g": 220.0,
+      "repair_g": 16.0,
+      "spent_e": 0.0,
+      "spent_g": 746.0
+     },
+     "gold": 151.050000000002,
+     "gold_rate": 5.4,
+     "gross_electricity": 0.0,
+     "gross_gold": 652.050000000002,
+     "hunter_hp": 2061.24,
+     "spent_gold": 746.0,
+     "survival": true,
+     "survivor_eliminations": 3,
+     "time": 179.999999999998,
+     "wave": 1
+    },
+    {
+     "bed": 3,
+     "buildings": {
+      "turret": [
+       1,
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 1,
+     "door": 3,
+     "door_hp": 596.9540528,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 1300.05,
+      "refund_e": 0.0,
+      "refund_g": 820.0,
+      "repair_g": 16.0,
+      "spent_e": 0.0,
+      "spent_g": 1946.0
+     },
+     "gold": 199.050000000009,
+     "gold_rate": 5.4,
+     "gross_electricity": 0.0,
+     "gross_gold": 1300.05,
+     "hunter_hp": 1164.0,
+     "spent_gold": 1946.0,
+     "survival": true,
+     "survivor_eliminations": 3,
+     "time": 299.999999999992,
+     "wave": 2
+    }
+   ],
+   "seed": 2,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 9.283026
+  },
+  {
+   "actions": 348,
+   "archetype": "witch",
+   "final": {
+    "bed": 3,
+    "buildings": {
+     "turret": [
+      1,
+      1,
+      1
+     ]
+    },
+    "capacity": 3,
+    "completed": 2,
+    "door": 3,
+    "door_hp": 0.0,
+    "electricity": 0.0,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 0.0,
+     "production_g": 2309.84999999993,
+     "refund_e": 0.0,
+     "refund_g": 1570.0,
+     "repair_g": 432.0,
+     "spent_e": 0.0,
+     "spent_g": 3882.0
+    },
+    "gold": 22.8500000000186,
+    "gold_rate": 0.0,
+    "gross_electricity": 0.0,
+    "gross_gold": 2309.84999999993,
+    "hunter_hp": 2377.89240000001,
+    "spent_gold": 3882.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 486.999999999981,
+    "wave": 3
+   },
+   "fresh_inventory": 2,
+   "fresh_xp": 8000,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+
+   },
+   "npc_flows": [
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 16.048,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 24.0479999999999,
+      "production_g": 281.099999999999,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 28.0,
+      "spent_e": 8.0,
+      "spent_g": 273.0
+     },
+     "gold": 33.0999999999998,
+     "room": 1
+    },
+    {
+     "alive": false,
+     "bed": 4,
+     "door": 4,
+     "electricity": 7.85000000000021,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 167.400000000003,
+      "production_g": 2398.90000000011,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 1134.0,
+      "spent_e": 159.549999999996,
+      "spent_g": 2373.0
+     },
+     "gold": 50.8999999999951,
+     "room": 2
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 16.0299999999999,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 41.2799999999999,
+      "production_g": 367.470000000003,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 70.0,
+      "spent_e": 25.25,
+      "spent_g": 380.0
+     },
+     "gold": 12.4700000000003,
+     "room": 3
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 10.868,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 32.6879999999998,
+      "production_g": 317.100000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 14.0,
+      "spent_e": 21.82,
+      "spent_g": 324.0
+     },
+     "gold": 18.0999999999998,
+     "room": 4
+    },
+    {
+     "alive": false,
+     "bed": 4,
+     "door": 4,
+     "electricity": 9.25800000000021,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 166.428000000003,
+      "production_g": 2793.58000000012,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 1128.0,
+      "spent_e": 157.169999999996,
+      "spent_g": 2367.0
+     },
+     "gold": 451.579999999999,
+     "room": 5
+    }
+   ],
+   "observations": [],
+   "peak_gold": 248.650000000018,
+   "reconciled_gold_residual": 1570.00000000009,
+   "repair_spent": 432.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1,
+       1,
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 1,
+     "door_hp": 181.125,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 95.8500000000006,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 90.0
+     },
+     "gold": 30.8499999999999,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 95.8500000000006,
+     "hunter_hp": 5095.0,
+     "spent_gold": 90.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 1
+    },
+    {
+     "bed": 3,
+     "buildings": {
+      "turret": [
+       1,
+       1,
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 3,
+     "door_hp": 438.605469424001,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 652.050000000002,
+      "refund_e": 0.0,
+      "refund_g": 170.0,
+      "repair_g": 96.0,
+      "spent_e": 0.0,
+      "spent_g": 746.0
+     },
+     "gold": 101.050000000001,
+     "gold_rate": 5.4,
+     "gross_electricity": 0.0,
+     "gross_gold": 652.050000000002,
+     "hunter_hp": 2005.94100000003,
+     "spent_gold": 746.0,
+     "survival": true,
+     "survivor_eliminations": 3,
+     "time": 179.999999999998,
+     "wave": 1
+    },
+    {
+     "bed": 3,
+     "buildings": {
+      "turret": [
+       1,
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 1,
+     "door": 3,
+     "door_hp": 581.055469424001,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 1300.05,
+      "refund_e": 0.0,
+      "refund_g": 740.0,
+      "repair_g": 112.0,
+      "spent_e": 0.0,
+      "spent_g": 1882.0
+     },
+     "gold": 183.050000000008,
+     "gold_rate": 5.4,
+     "gross_electricity": 0.0,
+     "gross_gold": 1300.05,
+     "hunter_hp": 3703.49999999997,
+     "spent_gold": 1882.0,
+     "survival": true,
+     "survivor_eliminations": 3,
+     "time": 299.999999999992,
+     "wave": 2
+    }
+   ],
+   "seed": 3,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 11.858325
+  },
+  {
+   "actions": 71,
+   "archetype": "electric",
+   "final": {
+    "bed": 3,
+    "buildings": {
+     "turret": [
+      1,
+      1,
+      1
+     ]
+    },
+    "capacity": 3,
+    "completed": 0,
+    "door": 3,
+    "door_hp": 0.0,
+    "electricity": 0.0,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 0.0,
+     "production_g": 839.97000000001,
+     "refund_e": 0.0,
+     "refund_g": 220.0,
+     "repair_g": 320.0,
+     "spent_e": 0.0,
+     "spent_g": 1070.0
+    },
+    "gold": 14.9700000000016,
+    "gold_rate": 0.0,
+    "gross_electricity": 0.0,
+    "gross_gold": 839.97000000001,
+    "hunter_hp": 2799.98999999999,
+    "spent_gold": 1070.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 214.799999999996,
+    "wave": 1
+   },
+   "fresh_inventory": 2,
+   "fresh_xp": 8000,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+
+   },
+   "npc_flows": [
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 12.994,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 36.1439999999998,
+      "production_g": 331.500000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 28.0,
+      "spent_e": 23.15,
+      "spent_g": 338.0
+     },
+     "gold": 18.4999999999998,
+     "room": 1
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 233.219999999999,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 154.0,
+      "spent_e": 0.0,
+      "spent_g": 239.0
+     },
+     "gold": 19.2199999999998,
+     "room": 2
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 10.9899999999999,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 47.9999999999997,
+      "production_g": 397.710000000004,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 28.0,
+      "spent_e": 37.01,
+      "spent_g": 408.0
+     },
+     "gold": 14.7100000000003,
+     "room": 3
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 20.1899999999999,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 43.1999999999997,
+      "production_g": 360.900000000002,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 42.0,
+      "spent_e": 23.01,
+      "spent_g": 352.0
+     },
+     "gold": 33.8999999999999,
+     "room": 4
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 3,
+     "electricity": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 318.779999999999,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 144.0,
+      "spent_e": 0.0,
+      "spent_g": 329.0
+     },
+     "gold": 14.7799999999993,
+     "room": 5
+    }
+   ],
+   "observations": [],
+   "peak_gold": 153.850000000002,
+   "reconciled_gold_residual": 219.999999999992,
+   "repair_spent": 320.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1,
+       1,
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 1,
+     "door_hp": 181.125,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 95.8500000000006,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 90.0
+     },
+     "gold": 30.8499999999999,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 95.8500000000006,
+     "hunter_hp": 5631.0,
+     "spent_gold": 90.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 1
+    },
+    {
+     "bed": 3,
+     "buildings": {
+      "turret": [
+       1,
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 3,
+     "door_hp": 555.472490265601,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 652.050000000002,
+      "refund_e": 0.0,
+      "refund_g": 200.0,
+      "repair_g": 48.0,
+      "spent_e": 0.0,
+      "spent_g": 738.0
+     },
+     "gold": 139.050000000002,
+     "gold_rate": 5.4,
+     "gross_electricity": 0.0,
+     "gross_gold": 652.050000000002,
+     "hunter_hp": 3773.33999999999,
+     "spent_gold": 738.0,
+     "survival": true,
+     "survivor_eliminations": 5,
+     "time": 179.999999999998,
+     "wave": 1
+    }
+   ],
+   "seed": 4,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 13.032156
+  },
+  {
+   "actions": 60,
+   "archetype": "storm",
+   "final": {
+    "bed": 3,
+    "buildings": {
+     "turret": [
+      1,
+      1,
+      1
+     ]
+    },
+    "capacity": 3,
+    "completed": 0,
+    "door": 3,
+    "door_hp": 0.0,
+    "electricity": 0.0,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 16.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 0.0,
+     "production_g": 755.513999999987,
+     "refund_e": 0.0,
+     "refund_g": 190.0,
+     "repair_g": 240.0,
+     "spent_e": 0.0,
+     "spent_g": 930.0
+    },
+    "gold": 24.5140000000012,
+    "gold_rate": 0.0,
+    "gross_electricity": 0.0,
+    "gross_gold": 755.513999999987,
+    "hunter_hp": 1665.78,
+    "spent_gold": 930.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 204.199999999997,
+    "wave": 1
+   },
+   "fresh_inventory": 2,
+   "fresh_xp": 8000,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+
+   },
+   "npc_flows": [
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 14.096,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 38.0159999999998,
+      "production_g": 339.300000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 28.0,
+      "spent_e": 23.92,
+      "spent_g": 338.0
+     },
+     "gold": 26.2999999999999,
+     "room": 1
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 3,
+     "electricity": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 291.179999999999,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 116.0,
+      "spent_e": 0.0,
+      "spent_g": 301.0
+     },
+     "gold": 15.1799999999994,
+     "room": 2
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 16.9799999999999,
+     "flows": {
+      "loss_e": 2.0,
+      "loss_g": 8.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 43.3199999999998,
+      "production_g": 376.650000000003,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 70.0,
+      "spent_e": 24.34,
+      "spent_g": 380.0
+     },
+     "gold": 13.6500000000003,
+     "room": 3
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 19.072,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 27.0719999999999,
+      "production_g": 293.7,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 42.0,
+      "spent_e": 8.0,
+      "spent_g": 287.0
+     },
+     "gold": 31.6999999999999,
+     "room": 4
+    },
+    {
+     "alive": false,
+     "bed": 2,
+     "door": 2,
+     "electricity": 3.996,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 3.996,
+      "production_g": 221.489999999999,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 28.0,
+      "spent_e": 0.0,
+      "spent_g": 233.0
+     },
+     "gold": 13.4899999999997,
+     "room": 5
+    }
+   ],
+   "observations": [],
+   "peak_gold": 149.072400000001,
+   "reconciled_gold_residual": 174.000000000014,
+   "repair_spent": 240.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1,
+       1,
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 1,
+     "door_hp": 181.125,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 95.8500000000006,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 90.0
+     },
+     "gold": 30.8499999999999,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 95.8500000000006,
+     "hunter_hp": 5345.0,
+     "spent_gold": 90.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 1
+    },
+    {
+     "bed": 3,
+     "buildings": {
+      "turret": [
+       1,
+       1,
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 3,
+     "door_hp": 457.867179520001,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 8.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 639.608399999993,
+      "refund_e": 0.0,
+      "refund_g": 190.0,
+      "repair_g": 32.0,
+      "spent_e": 0.0,
+      "spent_g": 722.0
+     },
+     "gold": 124.608400000001,
+     "gold_rate": 4.752,
+     "gross_electricity": 0.0,
+     "gross_gold": 639.608399999993,
+     "hunter_hp": 2416.65,
+     "spent_gold": 722.0,
+     "survival": true,
+     "survivor_eliminations": 5,
+     "time": 179.999999999998,
+     "wave": 1
+    }
+   ],
+   "seed": 5,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 14.182468
+  }
+ ],
+ "seeds_per_strategy": 5,
+ "simulation_horizon": 600.0,
+ "source_commit": "Phase12-Hell-progressed-counter",
+ "step": 0.2,
+ "strategies": "Greedy buys beds/amplifiers first; defense upgrades its weapon/door before economy; balanced grows both and buys Arc. One decision/s, paid model APIs, auto-claim/sleep at t0, actual NPCs, normal Reinforce each intermission. Not optimal/human. No injected resources, no HP edits, no manual kill or stock.",
+ "wall_seconds": 14.187648
+}

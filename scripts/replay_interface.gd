@@ -138,7 +138,7 @@ func show_codes():
  option(["Crusher","Stalker","Ravager","Phantom Witch","Electric Ghost","Storm Wraith"],StrategyCatalog.ARCHETYPE_IDS.find(practice_archetype),Vector2(477,190),340,func(i):practice_archetype=StrategyCatalog.ARCHETYPE_IDS[i])
  option(["Normal","Long Night","Hell"],["standard","hard","hell"].find(difficulty),Vector2(847,190),328,func(i):difficulty=["standard","hard","hell"][i])
  var seed_field=input(seed_text,Vector2(107,260),340,func(text):seed_text=text);seed_field.max_length=6
- paragraph("Preset: 25G / 0E, no perks, room traits enabled. Loaned Shield + Repair Kit, two each. All 20 owned item stacks remain untouched.",Vector2(477,258),698,65,17)
+ paragraph("Fixed legacy economy v1 (ruleset 4): 25G / 0E, no perks, room traits enabled. Loaned Shield + Repair Kit, two each. All 20 owned item stacks remain untouched.",Vector2(477,258),698,65,17)
  ui.button("Generate code",Vector2(107,339),func():
   code_text=ChallengeCode.encode({"map":selected_map,"archetype":practice_archetype,"difficulty":difficulty,"seed":seed_number(),"preset":0,"gear":0})
   notice="Generated normalized ruleset %d." % ChallengeCode.RULESET if code_text!="" else "Seed must be 1–999999."

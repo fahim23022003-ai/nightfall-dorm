@@ -1,0 +1,3739 @@
+{
+ "balance": 2,
+ "engine": "4.6.3-stable (official)",
+ "mode": "hell",
+ "permanent_loadout": [],
+ "rows": [
+  {
+   "actions": 7,
+   "archetype": "witch",
+   "final": {
+    "bed": 3,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 3,
+    "door_hp": 0.0,
+    "electricity": 11.8,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 19.8,
+     "production_g": 546.749999999999,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 0.0,
+     "spent_e": 8.0,
+     "spent_g": 430.0
+    },
+    "gold": 141.75,
+    "gold_rate": 0.0,
+    "gross_electricity": 19.8,
+    "gross_gold": 546.749999999999,
+    "hunter_hp": 4976.99687500002,
+    "spent_gold": 430.0,
+    "survival": false,
+    "survivor_eliminations": 5,
+    "time": 138.000000000001,
+    "wave": 0
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 105.200000000001
+   },
+   "observations": [
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 1,
+     "door": 1,
+     "time": 0,
+     "wallet": [
+      5.0,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -30.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 1,
+     "time": 19.0,
+     "wallet": [
+      0.649999999999959,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -35.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 31.9999999999999,
+     "wallet": [
+      0.749999999999922,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -85.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 2,
+     "time": 64.0000000000004,
+     "wallet": [
+      2.15000000000011,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -100.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 83.0000000000006,
+     "wallet": [
+      4.74999999999997,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -120.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 105.000000000001,
+     "wallet": [
+      3.54999999999981,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -40.0,
+     "action_power": -8.0,
+     "bed": 3,
+     "door": 3,
+     "time": 119.000000000001,
+     "wallet": [
+      39.1499999999997,
+      0.400000000000004
+     ]
+    }
+   ],
+   "peak_gold": 141.75,
+   "reconciled_gold_residual": 0.00000000000056843418860808,
+   "repair_spent": 0.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5311.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 1,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 1,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "greedy",
+   "wall_seconds": 0.795342
+  },
+  {
+   "actions": 8,
+   "archetype": "electric",
+   "final": {
+    "bed": 3,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 3,
+    "door_hp": 0.0,
+    "electricity": 11.5299999999999,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 33.0000000000001,
+     "production_g": 665.550000000004,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 0.0,
+     "spent_e": 21.47,
+     "spent_g": 495.0
+    },
+    "gold": 195.550000000001,
+    "gold_rate": 0.0,
+    "gross_electricity": 33.0000000000001,
+    "gross_gold": 665.550000000004,
+    "hunter_hp": 5803.03680000001,
+    "spent_gold": 495.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 159.999999999999,
+    "wave": 0
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 105.200000000001
+   },
+   "observations": [],
+   "peak_gold": 195.550000000001,
+   "reconciled_gold_residual": -0.00000000000318323145620525,
+   "repair_spent": 0.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5829.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 2,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "greedy",
+   "wall_seconds": 1.629005
+  },
+  {
+   "actions": 9,
+   "archetype": "storm",
+   "final": {
+    "bed": 3,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 3,
+    "door_hp": 0.0,
+    "electricity": 2.91999999999998,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 22.92,
+     "production_g": 574.83,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 16.0,
+     "spent_e": 20.0,
+     "spent_g": 511.0
+    },
+    "gold": 88.8299999999998,
+    "gold_rate": 0.0,
+    "gross_electricity": 22.92,
+    "gross_gold": 574.83,
+    "hunter_hp": 4996.09999999999,
+    "spent_gold": 511.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 143.2,
+    "wave": 0
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 105.200000000001
+   },
+   "observations": [],
+   "peak_gold": 147.15,
+   "reconciled_gold_residual": -0.000000000000454747350886464,
+   "repair_spent": 16.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5543.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 3,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "greedy",
+   "wall_seconds": 2.362662
+  },
+  {
+   "actions": 9,
+   "archetype": "crusher",
+   "final": {
+    "bed": 3,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      3
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 3,
+    "door_hp": 0.0,
+    "electricity": 1.24999999999993,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 36.72,
+     "production_g": 699.030000000005,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 0.0,
+     "spent_e": 35.47,
+     "spent_g": 565.0
+    },
+    "gold": 159.030000000001,
+    "gold_rate": 0.0,
+    "gross_electricity": 36.72,
+    "gross_gold": 699.030000000005,
+    "hunter_hp": 6492.94277343748,
+    "spent_gold": 565.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 166.199999999999,
+    "wave": 0
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 105.200000000001
+   },
+   "observations": [],
+   "peak_gold": 222.550000000001,
+   "reconciled_gold_residual": -0.00000000000409272615797818,
+   "repair_spent": 0.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 6980.5,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 4,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "greedy",
+   "wall_seconds": 3.160562
+  },
+  {
+   "actions": 11,
+   "archetype": "stalker",
+   "final": {
+    "bed": 3,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 3,
+    "door_hp": 0.0,
+    "electricity": 7.11999999999999,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 27.12,
+     "production_g": 612.630000000002,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 48.0,
+     "spent_e": 20.0,
+     "spent_g": 543.0
+    },
+    "gold": 94.6299999999997,
+    "gold_rate": 0.0,
+    "gross_electricity": 27.12,
+    "gross_gold": 612.630000000002,
+    "hunter_hp": 4538.0,
+    "spent_gold": 543.0,
+    "survival": false,
+    "survivor_eliminations": 5,
+    "time": 150.2,
+    "wave": 0
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 105.200000000001
+   },
+   "observations": [],
+   "peak_gold": 147.15,
+   "reconciled_gold_residual": -0.00000000000204636307898909,
+   "repair_spent": 48.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5552.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 5,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "greedy",
+   "wall_seconds": 3.891268
+  },
+  {
+   "actions": 9,
+   "archetype": "witch",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 13.9599999999999,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 36.48,
+     "production_g": 346.410000000002,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 42.0,
+     "spent_e": 22.52,
+     "spent_g": 352.0
+    },
+    "gold": 19.4100000000004,
+    "gold_rate": 0.0,
+    "gross_electricity": 36.48,
+    "gross_gold": 346.410000000002,
+    "hunter_hp": 4908.23220000002,
+    "spent_gold": 352.0,
+    "survival": false,
+    "survivor_eliminations": 5,
+    "time": 137.800000000001,
+    "wave": 0
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 1,
+     "door": 1,
+     "time": 0,
+     "wallet": [
+      5.0,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -30.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 1,
+     "time": 19.0,
+     "wallet": [
+      0.649999999999959,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -35.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 31.9999999999999,
+     "wallet": [
+      0.749999999999922,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -120.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 77.0000000000006,
+     "wallet": [
+      2.25000000000051,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -40.0,
+     "action_power": -8.0,
+     "bed": 2,
+     "door": 2,
+     "time": 91.0000000000008,
+     "wallet": [
+      0.0500000000004661,
+      0.400000000000004
+     ]
+    },
+    {
+     "action_gold": -65.0,
+     "action_power": -12.0,
+     "bed": 2,
+     "door": 2,
+     "time": 116.000000000001,
+     "wallet": [
+      2.55000000000042,
+      3.39999999999996
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 128.000000000001,
+     "wallet": [
+      20.9500000000004,
+      10.5299999999999
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 129.000000000001,
+     "wallet": [
+      9.65000000000038,
+      10.7799999999999
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 131.000000000001,
+     "wallet": [
+      1.05000000000037,
+      11.2799999999999
+     ]
+    }
+   ],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000181898940354586,
+   "repair_spent": 42.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5311.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 1,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 1,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 4.551416
+  },
+  {
+   "actions": 9,
+   "archetype": "electric",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      3
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 14.1299999999999,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 49.3199999999997,
+     "production_g": 404.190000000004,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 28.0,
+     "spent_e": 35.19,
+     "spent_g": 408.0
+    },
+    "gold": 21.1900000000003,
+    "gold_rate": 0.0,
+    "gross_electricity": 49.3199999999997,
+    "gross_gold": 404.190000000004,
+    "hunter_hp": 5578.03680000001,
+    "spent_gold": 408.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 159.2,
+    "wave": 0
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000403588273911737,
+   "repair_spent": 28.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5829.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 2,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 5.341528
+  },
+  {
+   "actions": 9,
+   "archetype": "storm",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 13.4799999999999,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 35.16,
+     "production_g": 340.470000000002,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 42.0,
+     "spent_e": 21.68,
+     "spent_g": 352.0
+    },
+    "gold": 13.4700000000004,
+    "gold_rate": 0.0,
+    "gross_electricity": 35.16,
+    "gross_gold": 340.470000000002,
+    "hunter_hp": 4834.34359375,
+    "spent_gold": 352.0,
+    "survival": false,
+    "survivor_eliminations": 5,
+    "time": 135.600000000001,
+    "wave": 0
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000159161572810262,
+   "repair_spent": 42.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5543.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 3,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 6.030618
+  },
+  {
+   "actions": 11,
+   "archetype": "crusher",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      3
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 18.0499999999999,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 53.5199999999996,
+     "production_g": 423.090000000005,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 56.0,
+     "spent_e": 35.47,
+     "spent_g": 436.0
+    },
+    "gold": 12.0900000000003,
+    "gold_rate": 0.0,
+    "gross_electricity": 53.5199999999996,
+    "gross_gold": 423.090000000005,
+    "hunter_hp": 6357.94277343748,
+    "spent_gold": 436.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 166.199999999999,
+    "wave": 0
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000477484718430787,
+   "repair_spent": 56.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 6980.5,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 4,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 6.765845
+  },
+  {
+   "actions": 7,
+   "archetype": "stalker",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      3
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 7.87999999999993,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 41.8799999999999,
+     "production_g": 370.710000000003,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 0.0,
+     "spent_e": 34.0,
+     "spent_g": 380.0
+    },
+    "gold": 15.7100000000004,
+    "gold_rate": 0.0,
+    "gross_electricity": 41.8799999999999,
+    "gross_gold": 370.710000000003,
+    "hunter_hp": 4547.0,
+    "spent_gold": 380.0,
+    "survival": false,
+    "survivor_eliminations": 5,
+    "time": 146.8,
+    "wave": 0
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000272848410531878,
+   "repair_spent": 0.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5552.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 5,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 7.459173
+  },
+  {
+   "actions": 8,
+   "archetype": "witch",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 13.3299999999999,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 34.8,
+     "production_g": 338.850000000002,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 28.0,
+     "spent_e": 21.47,
+     "spent_g": 338.0
+    },
+    "gold": 25.8500000000004,
+    "gold_rate": 0.0,
+    "gross_electricity": 34.8,
+    "gross_gold": 338.850000000002,
+    "hunter_hp": 4924.60000000001,
+    "spent_gold": 338.0,
+    "survival": false,
+    "survivor_eliminations": 5,
+    "time": 135.000000000001,
+    "wave": 0
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 1,
+     "door": 1,
+     "time": 0,
+     "wallet": [
+      5.0,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -30.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 1,
+     "time": 19.0,
+     "wallet": [
+      0.649999999999959,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -35.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 31.9999999999999,
+     "wallet": [
+      0.749999999999922,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -120.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 77.0000000000006,
+     "wallet": [
+      2.25000000000051,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -40.0,
+     "action_power": -8.0,
+     "bed": 2,
+     "door": 2,
+     "time": 91.0000000000008,
+     "wallet": [
+      0.0500000000004661,
+      0.400000000000004
+     ]
+    },
+    {
+     "action_gold": -65.0,
+     "action_power": -12.0,
+     "bed": 2,
+     "door": 2,
+     "time": 116.000000000001,
+     "wallet": [
+      2.55000000000042,
+      3.39999999999996
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 129.000000000001,
+     "wallet": [
+      23.6500000000004,
+      10.7799999999999
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 131.000000000001,
+     "wallet": [
+      15.0500000000004,
+      11.2799999999999
+     ]
+    }
+   ],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000153477230924182,
+   "repair_spent": 28.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5311.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 1,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 1,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "balanced",
+   "wall_seconds": 8.136497
+  },
+  {
+   "actions": 9,
+   "archetype": "electric",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      3
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 14.1299999999999,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 49.3199999999997,
+     "production_g": 404.190000000004,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 28.0,
+     "spent_e": 35.19,
+     "spent_g": 408.0
+    },
+    "gold": 21.1900000000003,
+    "gold_rate": 0.0,
+    "gross_electricity": 49.3199999999997,
+    "gross_gold": 404.190000000004,
+    "hunter_hp": 5578.03680000001,
+    "spent_gold": 408.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 159.2,
+    "wave": 0
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000403588273911737,
+   "repair_spent": 28.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5829.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 2,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "balanced",
+   "wall_seconds": 8.944548
+  },
+  {
+   "actions": 8,
+   "archetype": "storm",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 13.2099999999999,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 34.68,
+     "production_g": 338.310000000002,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 28.0,
+     "spent_e": 21.47,
+     "spent_g": 338.0
+    },
+    "gold": 25.3100000000004,
+    "gold_rate": 0.0,
+    "gross_electricity": 34.68,
+    "gross_gold": 338.310000000002,
+    "hunter_hp": 4864.9,
+    "spent_gold": 338.0,
+    "survival": false,
+    "survivor_eliminations": 5,
+    "time": 134.800000000001,
+    "wave": 0
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000153477230924182,
+   "repair_spent": 28.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5543.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 3,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "balanced",
+   "wall_seconds": 9.651073
+  },
+  {
+   "actions": 10,
+   "archetype": "crusher",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      3
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 18.0499999999999,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 53.5199999999996,
+     "production_g": 423.090000000005,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 42.0,
+     "spent_e": 35.47,
+     "spent_g": 422.0
+    },
+    "gold": 26.0900000000003,
+    "gold_rate": 0.0,
+    "gross_electricity": 53.5199999999996,
+    "gross_gold": 423.090000000005,
+    "hunter_hp": 6357.94277343748,
+    "spent_gold": 422.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 166.199999999999,
+    "wave": 0
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000477484718430787,
+   "repair_spent": 42.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 6980.5,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 4,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "balanced",
+   "wall_seconds": 10.440978
+  },
+  {
+   "actions": 7,
+   "archetype": "stalker",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      3
+     ]
+    },
+    "capacity": 12,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 7.87999999999993,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 41.8799999999999,
+     "production_g": 370.710000000003,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 0.0,
+     "spent_e": 34.0,
+     "spent_g": 380.0
+    },
+    "gold": 15.7100000000004,
+    "gold_rate": 0.0,
+    "gross_electricity": 41.8799999999999,
+    "gross_gold": 370.710000000003,
+    "hunter_hp": 4547.0,
+    "spent_gold": 380.0,
+    "survival": false,
+    "survivor_eliminations": 5,
+    "time": 146.8,
+    "wave": 0
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "campaign",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000272848410531878,
+   "repair_spent": 0.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 12,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5552.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 0
+    }
+   ],
+   "seed": 5,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "balanced",
+   "wall_seconds": 11.221698
+  },
+  {
+   "actions": 14,
+   "archetype": "stalker",
+   "final": {
+    "bed": 3,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 3,
+    "completed": 0,
+    "door": 3,
+    "door_hp": 0.0,
+    "electricity": 9.74999999999996,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 31.0800000000001,
+     "production_g": 648.270000000003,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 96.0,
+     "spent_e": 21.33,
+     "spent_g": 591.0
+    },
+    "gold": 82.2699999999998,
+    "gold_rate": 0.0,
+    "gross_electricity": 31.0800000000001,
+    "gross_gold": 648.270000000003,
+    "hunter_hp": 3763.80000000001,
+    "spent_gold": 591.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 156.8,
+    "wave": 1
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 105.200000000001
+   },
+   "observations": [
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 1,
+     "door": 1,
+     "time": 0,
+     "wallet": [
+      5.0,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -30.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 1,
+     "time": 19.0,
+     "wallet": [
+      0.649999999999959,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -35.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 31.9999999999999,
+     "wallet": [
+      0.749999999999922,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -85.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 2,
+     "time": 64.0000000000004,
+     "wallet": [
+      2.15000000000011,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -100.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 83.0000000000006,
+     "wallet": [
+      4.74999999999997,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -120.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 105.000000000001,
+     "wallet": [
+      3.54999999999981,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -40.0,
+     "action_power": -8.0,
+     "bed": 3,
+     "door": 3,
+     "time": 119.000000000001,
+     "wallet": [
+      39.1499999999997,
+      0.400000000000004
+     ]
+    },
+    {
+     "action_gold": -65.0,
+     "action_power": -12.0,
+     "bed": 3,
+     "door": 3,
+     "time": 139.000000000001,
+     "wallet": [
+      82.1499999999998,
+      0.399999999999981
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 149.0,
+     "wallet": [
+      120.15,
+      6.39999999999999
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 150.0,
+     "wallet": [
+      109.55,
+      6.99999999999999
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 152.0,
+     "wallet": [
+      104.35,
+      8.05999999999998
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 153.0,
+     "wallet": [
+      93.7499999999998,
+      8.30999999999998
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 154.0,
+     "wallet": [
+      83.1499999999998,
+      8.55999999999997
+     ]
+    },
+    {
+     "action_gold": -16.0,
+     "action_power": 0.0,
+     "bed": 3,
+     "door": 3,
+     "time": 155.0,
+     "wallet": [
+      72.5499999999998,
+      8.80999999999997
+     ]
+    }
+   ],
+   "peak_gold": 147.15,
+   "reconciled_gold_residual": -0.00000000000329691829392686,
+   "repair_spent": 96.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5345.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 1
+    }
+   ],
+   "seed": 1,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "greedy",
+   "wall_seconds": 12.268832
+  },
+  {
+   "actions": 13,
+   "archetype": "ravager",
+   "final": {
+    "bed": 3,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 3,
+    "completed": 0,
+    "door": 3,
+    "door_hp": 0.0,
+    "electricity": 8.89999999999998,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 29.0400000000001,
+     "production_g": 629.910000000002,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 80.0,
+     "spent_e": 20.14,
+     "spent_g": 575.0
+    },
+    "gold": 79.9099999999997,
+    "gold_rate": 0.0,
+    "gross_electricity": 29.0400000000001,
+    "gross_gold": 629.910000000002,
+    "hunter_hp": 3358.8,
+    "spent_gold": 575.0,
+    "survival": false,
+    "survivor_eliminations": 4,
+    "time": 153.4,
+    "wave": 1
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 105.200000000001
+   },
+   "observations": [],
+   "peak_gold": 147.15,
+   "reconciled_gold_residual": -0.00000000000272848410531878,
+   "repair_spent": 80.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5095.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 1
+    }
+   ],
+   "seed": 2,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "greedy",
+   "wall_seconds": 13.333106
+  },
+  {
+   "actions": 13,
+   "archetype": "witch",
+   "final": {
+    "bed": 3,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 3,
+    "completed": 0,
+    "door": 3,
+    "door_hp": 0.0,
+    "electricity": 8.84999999999998,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 28.9200000000001,
+     "production_g": 628.830000000002,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 80.0,
+     "spent_e": 20.07,
+     "spent_g": 575.0
+    },
+    "gold": 78.8299999999997,
+    "gold_rate": 0.0,
+    "gross_electricity": 28.9200000000001,
+    "gross_gold": 628.830000000002,
+    "hunter_hp": 3504.00000000001,
+    "spent_gold": 575.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 153.2,
+    "wave": 1
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 105.200000000001
+   },
+   "observations": [],
+   "peak_gold": 147.15,
+   "reconciled_gold_residual": -0.00000000000261479726759717,
+   "repair_spent": 80.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5095.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 1
+    }
+   ],
+   "seed": 3,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "greedy",
+   "wall_seconds": 14.352756
+  },
+  {
+   "actions": 10,
+   "archetype": "electric",
+   "final": {
+    "bed": 3,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 3,
+    "completed": 0,
+    "door": 3,
+    "door_hp": 0.0,
+    "electricity": 11.32,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 19.32,
+     "production_g": 542.429999999999,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 48.0,
+     "spent_e": 8.0,
+     "spent_g": 478.0
+    },
+    "gold": 89.4299999999996,
+    "gold_rate": 0.0,
+    "gross_electricity": 19.32,
+    "gross_gold": 542.429999999999,
+    "hunter_hp": 5211.0,
+    "spent_gold": 478.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 137.200000000001,
+    "wave": 1
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 105.200000000001
+   },
+   "observations": [],
+   "peak_gold": 123.55,
+   "reconciled_gold_residual": 0.000000000000511590769747272,
+   "repair_spent": 48.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5667.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 1,
+     "time": 60.0000000000003,
+     "wave": 1
+    }
+   ],
+   "seed": 4,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "greedy",
+   "wall_seconds": 15.310131
+  },
+  {
+   "actions": 11,
+   "archetype": "storm",
+   "final": {
+    "bed": 3,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 3,
+    "completed": 0,
+    "door": 3,
+    "door_hp": 0.0,
+    "electricity": 8.49919999999998,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 2.0,
+     "loss_g": 8.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 30.4992,
+     "production_g": 643.042799999998,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 48.0,
+     "spent_e": 20.0,
+     "spent_g": 543.0
+    },
+    "gold": 117.0428,
+    "gold_rate": 0.0,
+    "gross_electricity": 30.4992,
+    "gross_gold": 643.042799999998,
+    "hunter_hp": 3201.0,
+    "spent_gold": 543.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 157.2,
+    "wave": 1
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 105.200000000001
+   },
+   "observations": [],
+   "peak_gold": 149.326,
+   "reconciled_gold_residual": -7.99999999999784,
+   "repair_spent": 48.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5345.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 1
+    }
+   ],
+   "seed": 5,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "greedy",
+   "wall_seconds": 16.368578
+  },
+  {
+   "actions": 10,
+   "archetype": "stalker",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 3,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 14.7799999999999,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 38.28,
+     "production_g": 354.510000000002,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 56.0,
+     "spent_e": 23.5,
+     "spent_g": 366.0
+    },
+    "gold": 13.5100000000003,
+    "gold_rate": 0.0,
+    "gross_electricity": 38.28,
+    "gross_gold": 354.510000000002,
+    "hunter_hp": 3788.40000000001,
+    "spent_gold": 366.0,
+    "survival": false,
+    "survivor_eliminations": 5,
+    "time": 140.800000000001,
+    "wave": 1
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 1,
+     "door": 1,
+     "time": 0,
+     "wallet": [
+      5.0,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -30.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 1,
+     "time": 19.0,
+     "wallet": [
+      0.649999999999959,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -35.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 31.9999999999999,
+     "wallet": [
+      0.749999999999922,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -120.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 77.0000000000006,
+     "wallet": [
+      2.25000000000051,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -40.0,
+     "action_power": -8.0,
+     "bed": 2,
+     "door": 2,
+     "time": 91.0000000000008,
+     "wallet": [
+      0.0500000000004661,
+      0.400000000000004
+     ]
+    },
+    {
+     "action_gold": -65.0,
+     "action_power": -12.0,
+     "bed": 2,
+     "door": 2,
+     "time": 116.000000000001,
+     "wallet": [
+      2.55000000000042,
+      3.39999999999996
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 131.000000000001,
+     "wallet": [
+      29.0500000000004,
+      11.8399999999999
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 133.000000000001,
+     "wallet": [
+      20.4500000000004,
+      12.3399999999999
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 134.000000000001,
+     "wallet": [
+      9.15000000000036,
+      12.5899999999999
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 136.000000000001,
+     "wallet": [
+      0.550000000000352,
+      13.0899999999999
+     ]
+    }
+   ],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.0000000000021600499167107,
+   "repair_spent": 56.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5345.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 1
+    }
+   ],
+   "seed": 1,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 17.363153
+  },
+  {
+   "actions": 8,
+   "archetype": "ravager",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 3,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 10.6499999999999,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 33.2400000000001,
+     "production_g": 331.830000000002,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 28.0,
+     "spent_e": 22.59,
+     "spent_g": 338.0
+    },
+    "gold": 18.8300000000004,
+    "gold_rate": 0.0,
+    "gross_electricity": 33.2400000000001,
+    "gross_gold": 331.830000000002,
+    "hunter_hp": 3557.4,
+    "spent_gold": 338.0,
+    "survival": false,
+    "survivor_eliminations": 3,
+    "time": 132.400000000001,
+    "wave": 1
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000125055521493778,
+   "repair_spent": 28.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5095.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 1
+    }
+   ],
+   "seed": 2,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 18.591751
+  },
+  {
+   "actions": 7,
+   "archetype": "witch",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      3
+     ]
+    },
+    "capacity": 3,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 7.30999999999993,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 41.5199999999999,
+     "production_g": 369.090000000003,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 0.0,
+     "spent_e": 34.21,
+     "spent_g": 380.0
+    },
+    "gold": 14.0900000000004,
+    "gold_rate": 0.0,
+    "gross_electricity": 41.5199999999999,
+    "gross_gold": 369.090000000003,
+    "hunter_hp": 3617.40000000001,
+    "spent_gold": 380.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 146.2,
+    "wave": 1
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000261479726759717,
+   "repair_spent": 0.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5095.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 1
+    }
+   ],
+   "seed": 3,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 19.631505
+  },
+  {
+   "actions": 10,
+   "archetype": "electric",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 3,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 20.44,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 28.4400000000001,
+     "production_g": 310.230000000001,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 70.0,
+     "spent_e": 8.0,
+     "spent_g": 315.0
+    },
+    "gold": 20.2300000000004,
+    "gold_rate": 0.0,
+    "gross_electricity": 28.4400000000001,
+    "gross_gold": 310.230000000001,
+    "hunter_hp": 5148.0,
+    "spent_gold": 315.0,
+    "survival": false,
+    "survivor_eliminations": 5,
+    "time": 124.400000000001,
+    "wave": 1
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.000000000000454747350886464,
+   "repair_spent": 70.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5667.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 1,
+     "time": 60.0000000000003,
+     "wave": 1
+    }
+   ],
+   "seed": 4,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 20.548745
+  },
+  {
+   "actions": 8,
+   "archetype": "storm",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      3
+     ]
+    },
+    "capacity": 3,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 9.15719999999991,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 45.1872,
+     "production_g": 385.592400000002,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 14.0,
+     "spent_e": 36.03,
+     "spent_g": 394.0
+    },
+    "gold": 16.5924000000004,
+    "gold_rate": 0.0,
+    "gross_electricity": 45.1872,
+    "gross_gold": 385.592400000002,
+    "hunter_hp": 3147.0,
+    "spent_gold": 394.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 153.2,
+    "wave": 1
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000159161572810262,
+   "repair_spent": 14.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5345.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 1
+    }
+   ],
+   "seed": 5,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "defense",
+   "wall_seconds": 21.694023
+  },
+  {
+   "actions": 10,
+   "archetype": "stalker",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 3,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 14.7799999999999,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 38.28,
+     "production_g": 354.510000000002,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 56.0,
+     "spent_e": 23.5,
+     "spent_g": 366.0
+    },
+    "gold": 13.5100000000003,
+    "gold_rate": 0.0,
+    "gross_electricity": 38.28,
+    "gross_gold": 354.510000000002,
+    "hunter_hp": 3788.40000000001,
+    "spent_gold": 366.0,
+    "survival": false,
+    "survivor_eliminations": 5,
+    "time": 140.800000000001,
+    "wave": 1
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [
+    {
+     "action_gold": -20.0,
+     "action_power": 0.0,
+     "bed": 1,
+     "door": 1,
+     "time": 0,
+     "wallet": [
+      5.0,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -30.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 1,
+     "time": 19.0,
+     "wallet": [
+      0.649999999999959,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -35.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 31.9999999999999,
+     "wallet": [
+      0.749999999999922,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -120.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 77.0000000000006,
+     "wallet": [
+      2.25000000000051,
+      0.0
+     ]
+    },
+    {
+     "action_gold": -40.0,
+     "action_power": -8.0,
+     "bed": 2,
+     "door": 2,
+     "time": 91.0000000000008,
+     "wallet": [
+      0.0500000000004661,
+      0.400000000000004
+     ]
+    },
+    {
+     "action_gold": -65.0,
+     "action_power": -12.0,
+     "bed": 2,
+     "door": 2,
+     "time": 116.000000000001,
+     "wallet": [
+      2.55000000000042,
+      3.39999999999996
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 133.000000000001,
+     "wallet": [
+      34.4500000000004,
+      12.3399999999999
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 134.000000000001,
+     "wallet": [
+      23.1500000000004,
+      12.5899999999999
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 135.000000000001,
+     "wallet": [
+      11.8500000000004,
+      12.8399999999999
+     ]
+    },
+    {
+     "action_gold": -14.0,
+     "action_power": 0.0,
+     "bed": 2,
+     "door": 2,
+     "time": 136.000000000001,
+     "wallet": [
+      0.550000000000352,
+      13.0899999999999
+     ]
+    }
+   ],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.0000000000021600499167107,
+   "repair_spent": 56.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5345.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 1
+    }
+   ],
+   "seed": 1,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "balanced",
+   "wall_seconds": 22.790104
+  },
+  {
+   "actions": 8,
+   "archetype": "ravager",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 3,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 10.1499999999999,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 32.0400000000001,
+     "production_g": 326.430000000001,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 28.0,
+     "spent_e": 21.89,
+     "spent_g": 338.0
+    },
+    "gold": 13.4300000000004,
+    "gold_rate": 0.0,
+    "gross_electricity": 32.0400000000001,
+    "gross_gold": 326.430000000001,
+    "hunter_hp": 3647.4,
+    "spent_gold": 338.0,
+    "survival": false,
+    "survivor_eliminations": 3,
+    "time": 130.400000000001,
+    "wave": 1
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000102318153949454,
+   "repair_spent": 28.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5095.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 1
+    }
+   ],
+   "seed": 2,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "balanced",
+   "wall_seconds": 23.773547
+  },
+  {
+   "actions": 7,
+   "archetype": "witch",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      3
+     ]
+    },
+    "capacity": 3,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 7.30999999999993,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 41.5199999999999,
+     "production_g": 369.090000000003,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 0.0,
+     "spent_e": 34.21,
+     "spent_g": 380.0
+    },
+    "gold": 14.0900000000004,
+    "gold_rate": 0.0,
+    "gross_electricity": 41.5199999999999,
+    "gross_gold": 369.090000000003,
+    "hunter_hp": 3617.40000000001,
+    "spent_gold": 380.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 146.2,
+    "wave": 1
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000261479726759717,
+   "repair_spent": 0.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5095.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 1
+    }
+   ],
+   "seed": 3,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "balanced",
+   "wall_seconds": 24.731158
+  },
+  {
+   "actions": 6,
+   "archetype": "electric",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      2
+     ]
+    },
+    "capacity": 3,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 6.27999999999996,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 26.28,
+     "production_g": 300.51,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 0.0,
+     "spent_e": 20.0,
+     "spent_g": 310.0
+    },
+    "gold": 15.5100000000004,
+    "gold_rate": 0.0,
+    "gross_electricity": 26.28,
+    "gross_gold": 300.51,
+    "hunter_hp": 5310.0,
+    "spent_gold": 310.0,
+    "survival": false,
+    "survivor_eliminations": 5,
+    "time": 120.800000000001,
+    "wave": 1
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.000000000000056843418860808,
+   "repair_spent": 0.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5667.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 1,
+     "time": 60.0000000000003,
+     "wave": 1
+    }
+   ],
+   "seed": 4,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "balanced",
+   "wall_seconds": 25.645987
+  },
+  {
+   "actions": 8,
+   "archetype": "storm",
+   "final": {
+    "bed": 2,
+    "buildings": {
+     "generator": [
+      1
+     ],
+     "repair": [
+      1
+     ],
+     "turret": [
+      3
+     ]
+    },
+    "capacity": 3,
+    "completed": 0,
+    "door": 2,
+    "door_hp": 0.0,
+    "electricity": 9.15719999999991,
+    "electricity_rate": 0.0,
+    "flows": {
+     "loss_e": 0.0,
+     "loss_g": 0.0,
+     "other_e": 0.0,
+     "other_g": 0.0,
+     "production_e": 45.1872,
+     "production_g": 385.592400000002,
+     "refund_e": 0.0,
+     "refund_g": 0.0,
+     "repair_g": 14.0,
+     "spent_e": 36.03,
+     "spent_g": 394.0
+    },
+    "gold": 16.5924000000004,
+    "gold_rate": 0.0,
+    "gross_electricity": 45.1872,
+    "gross_gold": 385.592400000002,
+    "hunter_hp": 3147.0,
+    "spent_gold": 394.0,
+    "survival": false,
+    "survivor_eliminations": 6,
+    "time": 153.2,
+    "wave": 1
+   },
+   "fresh_inventory": 0,
+   "fresh_xp": 0,
+   "kind": "endless",
+   "literal_five_minute_billion": false,
+   "milestones": {
+    "first_generator": 77.2000000000006
+   },
+   "observations": [],
+   "peak_gold": 122.250000000001,
+   "reconciled_gold_residual": -0.00000000000153477230924182,
+   "repair_spent": 14.0,
+   "result": "defeat",
+   "samples": [
+    {
+     "bed": 2,
+     "buildings": {
+      "turret": [
+       1
+      ]
+     },
+     "capacity": 3,
+     "completed": 0,
+     "door": 2,
+     "door_hp": 345.0,
+     "electricity": 0.0,
+     "electricity_rate": 0.0,
+     "flows": {
+      "loss_e": 0.0,
+      "loss_g": 0.0,
+      "other_e": 0.0,
+      "other_g": 0.0,
+      "production_e": 0.0,
+      "production_g": 136.350000000001,
+      "refund_e": 0.0,
+      "refund_g": 0.0,
+      "repair_g": 0.0,
+      "spent_e": 0.0,
+      "spent_g": 85.0
+     },
+     "gold": 76.35,
+     "gold_rate": 2.7,
+     "gross_electricity": 0.0,
+     "gross_gold": 136.350000000001,
+     "hunter_hp": 5345.0,
+     "spent_gold": 85.0,
+     "survival": true,
+     "survivor_eliminations": 0,
+     "time": 60.0000000000003,
+     "wave": 1
+    }
+   ],
+   "seed": 5,
+   "starting_electricity": 0.0,
+   "starting_gold": 25.0,
+   "strategy": "balanced",
+   "wall_seconds": 26.6685
+  }
+ ],
+ "seeds_per_strategy": 5,
+ "simulation_horizon": 600.0,
+ "source_commit": "Phase12-Hell-pressure",
+ "step": 0.2,
+ "strategies": "Greedy buys beds/amplifiers first; defense upgrades its weapon/door before economy; balanced grows both and buys Arc. One decision/s, paid model APIs, auto-claim/sleep at t0, actual NPCs, normal Reinforce each intermission. Not optimal/human. No injected resources, no HP edits, no manual kill or stock.",
+ "wall_seconds": 26.672297
+}

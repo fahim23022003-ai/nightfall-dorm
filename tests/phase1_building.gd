@@ -81,6 +81,7 @@ func run():
  check(Vector2(ledger.gold,ledger.electricity).is_equal_approx(start-Vector2(400,50)),"repeated cycles lose exactly half the payments")
  preload("res://tests/onboarding_test_support.gd").prepare()
  game=load("res://scenes/main.tscn").instantiate()
+ game.new_balance_version=1 # original prepared legacy-price input fixture
  root.add_child(game)
  preload("res://tests/onboarding_test_support.gd").skip(game)
  await process_frame

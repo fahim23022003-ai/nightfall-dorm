@@ -3,6 +3,8 @@ const Support=preload("res://tests/replay_test_support.gd")
 var rectangles=[]
 # Freeze simulation, but preserve real frame-driven enabled/reason updates.
 func settle():
+ # Historical prepared fixture: preserve v1 prices; Phase12 tests exercise default v2.
+ if game!=null and is_instance_valid(game):game.new_balance_version=1
  await process_frame
  if game!=null and is_instance_valid(game) and game.mode=="match":game.ui.update_match()
  # Ordinary inspector actions wait for the real wall-time drawer animation.

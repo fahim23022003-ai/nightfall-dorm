@@ -95,11 +95,7 @@ func bind_run_choices():
   var journal=before.duplicate(true);journal[id]=value;profile.active_match.temporary_used=journal
   if not profile.save_profile():profile.active_match.temporary_used=before;return false
   return true
- var journal=profile.active_match.get("temporary_used",{})
- for id in journal:
-  var delta=maxi(0,int(journal[id])-int(model.choices.used.get(id,0)))
-  if id in RunChoices.ITEMS:model.choices.stock[id]=maxi(0,int(model.choices.stock.get(id,0))-delta)
-  model.choices.used[id]=maxi(int(journal[id]),int(model.choices.used.get(id,0)))
+ model.choices.apply_journal(profile.active_match.get("temporary_used",{}))
  model.choices.apply(model)
 func run_transaction(kind: String,id: String) -> bool:
  if model.balance_version!=2 or model.run_kind!="endless" or model.endless.phase!="intermission":return false
@@ -388,6 +384,8 @@ var suppress_double_click_release=false
 var cancelled_pointer=false
 
 func _input(event):
+ if event is InputEventKey and event.keycode==KEY_ESCAPE and event.pressed and is_instance_valid(ui.run_panel) and ui.run_panel.visible:
+  ui.run_panel.visible=false;get_viewport().set_input_as_handled();return
  if construction!=null and construction.handle_cancel(event):get_viewport().set_input_as_handled();return
  # Cancel a held GUI press before BaseButton processes Escape/focus changes.
  if event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT and not event.pressed and cancelled_pointer:

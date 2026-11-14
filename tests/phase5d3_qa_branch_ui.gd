@@ -3,6 +3,8 @@ const Support=preload("res://tests/replay_test_support.gd")
 # Ordinary inspection waits for the new intentional .26s drawer slide.
 # Separate input QA checks behavior during the motion itself.
 func settle():
+ # Retain original v1 prepared branch-price fixtures; v2 has dedicated input tests.
+ if game!=null and is_instance_valid(game):game.new_balance_version=1
  await process_frame
  if game!=null and is_instance_valid(game) and game.mode=="match":
   game.ui.update_match()

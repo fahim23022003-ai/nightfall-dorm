@@ -16,6 +16,8 @@ func controls(node,type):
   out.append_array(controls(child,type))
  return out
 func settle():
+ # Historical prepared fixture: preserve v1 prices; Phase12 tests exercise default v2.
+ if game!=null and is_instance_valid(game):game.new_balance_version=1
  await process_frame
  # Ordinary screenshot/inspection actions wait for the new real drawer slide.
  # Transition-time input safety has its own independent adversarial gate.

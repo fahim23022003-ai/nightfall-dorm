@@ -1,0 +1,413 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: real rapid BUILD buys one L1 despite inspector control replacing same position
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:62)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: rapid BUILD charges exactly one separate Gold/Electricity price
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:63)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: new drawer leaves no stuck mouse-follow placement
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:64)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+SCRIPT ERROR: Invalid access to property or key '0' on a base object of type 'Dictionary'.
+          at: economic_flow (res://tests/overhaul_qa_hud.gd:66)
+          GDScript backtrace (most recent call first):
+              [0] economic_flow (res://tests/overhaul_qa_hud.gd:66)
+              [1] point_click (res://tests/phase5d4_qa_ui.gd:50)
+              [2] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: real rapid BUILD buys one L1 despite inspector control replacing same position
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:62)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: rapid BUILD charges exactly one separate Gold/Electricity price
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:63)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: new drawer leaves no stuck mouse-follow placement
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:64)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+SCRIPT ERROR: Invalid access to property or key '0' on a base object of type 'Dictionary'.
+          at: economic_flow (res://tests/overhaul_qa_hud.gd:66)
+          GDScript backtrace (most recent call first):
+              [0] economic_flow (res://tests/overhaul_qa_hud.gd:66)
+              [1] point_click (res://tests/phase5d4_qa_ui.gd:50)
+              [2] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: real rapid BUILD buys one L1 despite inspector control replacing same position
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:62)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: rapid BUILD charges exactly one separate Gold/Electricity price
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:63)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: new drawer leaves no stuck mouse-follow placement
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:64)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+SCRIPT ERROR: Invalid access to property or key '0' on a base object of type 'Dictionary'.
+          at: economic_flow (res://tests/overhaul_qa_hud.gd:66)
+          GDScript backtrace (most recent call first):
+              [0] economic_flow (res://tests/overhaul_qa_hud.gd:66)
+              [1] point_click (res://tests/phase5d4_qa_ui.gd:50)
+              [2] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: real rapid BUILD buys one L1 despite inspector control replacing same position
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:62)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: rapid BUILD charges exactly one separate Gold/Electricity price
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:63)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: new drawer leaves no stuck mouse-follow placement
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:64)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+SCRIPT ERROR: Invalid access to property or key '0' on a base object of type 'Dictionary'.
+          at: economic_flow (res://tests/overhaul_qa_hud.gd:66)
+          GDScript backtrace (most recent call first):
+              [0] economic_flow (res://tests/overhaul_qa_hud.gd:66)
+              [1] point_click (res://tests/phase5d4_qa_ui.gd:50)
+              [2] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: real rapid BUILD buys one L1 despite inspector control replacing same position
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:62)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: rapid BUILD charges exactly one separate Gold/Electricity price
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:63)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: new drawer leaves no stuck mouse-follow placement
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:64)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+SCRIPT ERROR: Invalid access to property or key '0' on a base object of type 'Dictionary'.
+          at: economic_flow (res://tests/overhaul_qa_hud.gd:66)
+          GDScript backtrace (most recent call first):
+              [0] economic_flow (res://tests/overhaul_qa_hud.gd:66)
+              [1] point_click (res://tests/phase5d4_qa_ui.gd:50)
+              [2] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: real rapid BUILD buys one L1 despite inspector control replacing same position
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:62)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: rapid BUILD charges exactly one separate Gold/Electricity price
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:63)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: new drawer leaves no stuck mouse-follow placement
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:64)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+SCRIPT ERROR: Invalid access to property or key '0' on a base object of type 'Dictionary'.
+          at: economic_flow (res://tests/overhaul_qa_hud.gd:66)
+          GDScript backtrace (most recent call first):
+              [0] economic_flow (res://tests/overhaul_qa_hud.gd:66)
+              [1] point_click (res://tests/phase5d4_qa_ui.gd:50)
+              [2] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: real rapid BUILD buys one L1 despite inspector control replacing same position
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:62)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: rapid BUILD charges exactly one separate Gold/Electricity price
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:63)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: new drawer leaves no stuck mouse-follow placement
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:64)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+SCRIPT ERROR: Invalid access to property or key '0' on a base object of type 'Dictionary'.
+          at: economic_flow (res://tests/overhaul_qa_hud.gd:66)
+          GDScript backtrace (most recent call first):
+              [0] economic_flow (res://tests/overhaul_qa_hud.gd:66)
+              [1] point_click (res://tests/phase5d4_qa_ui.gd:50)
+              [2] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: real rapid BUILD buys one L1 despite inspector control replacing same position
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:62)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: rapid BUILD charges exactly one separate Gold/Electricity price
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:63)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: new drawer leaves no stuck mouse-follow placement
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:64)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+SCRIPT ERROR: Invalid access to property or key '0' on a base object of type 'Dictionary'.
+          at: economic_flow (res://tests/overhaul_qa_hud.gd:66)
+          GDScript backtrace (most recent call first):
+              [0] economic_flow (res://tests/overhaul_qa_hud.gd:66)
+              [1] point_click (res://tests/phase5d4_qa_ui.gd:50)
+              [2] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: real rapid BUILD buys one L1 despite inspector control replacing same position
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:62)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: rapid BUILD charges exactly one separate Gold/Electricity price
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:63)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: new drawer leaves no stuck mouse-follow placement
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:64)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+SCRIPT ERROR: Invalid access to property or key '0' on a base object of type 'Dictionary'.
+          at: economic_flow (res://tests/overhaul_qa_hud.gd:66)
+          GDScript backtrace (most recent call first):
+              [0] economic_flow (res://tests/overhaul_qa_hud.gd:66)
+              [1] point_click (res://tests/phase5d4_qa_ui.gd:50)
+              [2] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: moving-drawer guard probe reaches actual BaseButton pressed signal
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] moving_click (res://tests/overhaul_qa_hud.gd:42)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: real rapid BUILD buys one L1 despite inspector control replacing same position
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:62)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: rapid BUILD charges exactly one separate Gold/Electricity price
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:63)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+ERROR: PREMIUM UI: new drawer leaves no stuck mouse-follow placement
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/premium_strategy_ui.gd:10)
+       [1] economic_flow (res://tests/overhaul_qa_hud.gd:64)
+       [2] point_click (res://tests/phase5d4_qa_ui.gd:50)
+       [3] settle (res://tests/phase5d4_qa_ui.gd:13)
+SCRIPT ERROR: Invalid access to property or key '0' on a base object of type 'Dictionary'.
+          at: economic_flow (res://tests/overhaul_qa_hud.gd:66)
+          GDScript backtrace (most recent call first):
+              [0] economic_flow (res://tests/overhaul_qa_hud.gd:66)
+              [1] point_click (res://tests/phase5d4_qa_ui.gd:50)
+              [2] settle (res://tests/phase5d4_qa_ui.gd:13)
+OVERHAUL_QA_HUD_CHECKS=2392 SCENARIOS=10 REGISTERED_BUILDINGS=15 FAILURES=50

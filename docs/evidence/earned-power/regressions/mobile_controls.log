@@ -1,0 +1,9 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: MOBILE QA: single tap deducts exactly one purchase
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/mobile_controls.gd:11)
+       [1] run (res://tests/mobile_controls.gd:126)
+       [2] tap (res://tests/mobile_controls.gd:32)
+MOBILE_CONTROLS_CHECKS=64 FAILURES=1

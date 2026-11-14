@@ -22,7 +22,8 @@ static func show(ui):
   var offer=c.offers[i];var id=offer.id;var d=ItemCatalog.ITEMS[id];var x=107+i*362
   ui.box(Rect2(x,373,342,145));ui.label_at(d.name,Vector2(x+12,383),20,316,true)
   var l=ui.label_at("",Vector2(x+12,414),13,316);l.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;l.text=d.get("description",d.get("effect","Existing consumable · activate during combat from Run Supplies [K]."));l.set_deferred("size",Vector2(316,42))
-  var b=ui.button("Buy · %.0fG / %.0fE · stock%d" % [offer.gold,offer.power,offer.left],Vector2(x+12,473),func():ui.game.run_transaction("buy",id),316,32)
+  var b=ui.button("Buy %s · %.0fG / %.0fE · ×%d" % [id.capitalize(),offer.gold,offer.power,offer.left],Vector2(x+12,473),func():ui.game.run_transaction("buy",id),316,32)
+  b.add_theme_font_size_override("font_size",13)
   b.disabled=offer.left==0 or m.player().gold<offer.gold or m.player().electricity<offer.power or int(c.stock.get(id,0))>=3
   b.tooltip_text="Maximum3 carried per item; actual existing item restrictions apply. Temporary supplies never enter permanent inventory."
  ui.label_at("Active: "+summary(c),Vector2(107,539),13,1060)
@@ -36,7 +37,7 @@ static func summary(c) -> String:
 static func attach(ui):
  var m=ui.game.model
  if m.balance_version!=2 or m.run_kind!="endless":return
- var open=ui.button("Run · perks / supplies [K]",Vector2(20,92),func():show(ui),160,34);open.add_theme_font_size_override("font_size",12)
+ var open=ui.button("Run supplies [K]",Vector2(20,92),func():show(ui),160,34);open.add_theme_font_size_override("font_size",12)
  ui.run_panel=ui.box(Rect2(20,260,330,330));ui.run_panel.mouse_filter=Control.MOUSE_FILTER_STOP;ui.run_panel.visible=false
  ui.label_at("CURRENT RUN · temporary",Vector2(12,8),16,275,true,ui.run_panel)
  ui.button("×",Vector2(294,5),func():ui.run_panel.visible=false,28,28,ui.run_panel)

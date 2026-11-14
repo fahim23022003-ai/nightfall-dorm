@@ -20,6 +20,6 @@ func tick(m,delta):
 func factor(m) -> float:
  if m.balance_version!=2:return 1.0
  var elapsed=m.time
- var opening=.72 if m.difficulty=="standard" else .85 if m.difficulty=="hard" else .95
- var mature=1.0 if m.difficulty=="standard" else 1.08 if m.difficulty=="hard" else 1.15
- return lerpf(opening,mature,clampf(elapsed/300,0,1))*(1+stacks*.08)
+ var opening=.72 if m.difficulty=="standard" else .78 if m.difficulty=="hard" else .65
+ var mature=1.0 if m.difficulty=="standard" else 1.08 if m.difficulty=="hard" else 1.05
+ return lerpf(opening,mature,clampf(elapsed/(300.0 if m.difficulty=="standard" else 450.0 if m.difficulty=="hard" else 600.0),0,1))*(1+stacks*.08)

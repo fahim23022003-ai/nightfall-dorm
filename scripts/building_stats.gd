@@ -53,7 +53,7 @@ static func machine_stats(model,room,b: Dictionary) -> Dictionary:
  var branch=StrategyCatalog.support(b);var rate=BalanceRules.output(b.kind,b.level,room.balance_version)*branch.get("output",1.0)
  if b.kind=="generator":rate*=float(room.run_effects.get("power",1.0))*(0.0 if room.production_paused else room.threat_power_factor)*room.power_multiplier*room.trait_modifiers.power*room.special_factor("power",.55,1.5)*StrategyCatalog.BRANCHES.get(room.bed_branch,{}).get("power",1.0)
  if b.kind=="repair":rate*=room.repair_factor
- return {"rate":rate,"operating_power":maxf(.35 if room.balance_version==2 else 0,branch.get("power_cost",0.0))*b.level,"income":room.income_rate(),"repair_gold":room.manual_repair_cost()}
+ return {"rate":rate,"operating_power":maxf(BalanceRules.REPAIR_UPKEEP if room.balance_version==2 else 0,branch.get("power_cost",0.0))*b.level,"income":room.income_rate(),"repair_gold":room.manual_repair_cost()}
 static func frost_status(strength: float) -> Dictionary:
  # Match the existing actor-specific status application; preview does not alter it.
  var move=minf(.15,strength)
@@ -138,3 +138,14 @@ static func amplifier_bonus(room) -> float:
  for b in room.buildings.values():
   if b.kind=="economy":raw+=BalanceRules.output("economy",b.level,room.balance_version)*StrategyCatalog.support(b).get("output",1.0)
  return BalanceRules.amplifier(raw,room.balance_version)
+
+static func afford_hint(model,room,price: Vector2) -> String:
+ if room.balance_version!=2:return ""
+ if not model.running or model.run_kind=="endless" and model.endless.phase=="intermission":return "Production is frozen now; prepare with existing funds."
+ if room.production_paused:return "Production temporarily locked; wait for the curse to clear."
+ var g=maxf(0,price.x-room.gold);var e=maxf(0,price.y-room.electricity)
+ var gold=room.income_rate();var power=room_power_rate(model,room)
+ if g==0 and e==0:return "Affordable now. Spending here delays other infrastructure."
+ if g>0 and gold<=0 or e>0 and power<=0:return "Missing active production. Beds earn Gold; Dynamos earn Electricity."
+ var seconds=maxf(g/maxf(.001,gold),e/maxf(.001,power))
+ return "Earliest ~%.0fs at current gross rates, ignoring upkeep/spending. Temporary boosts may expire; this is not a guarantee." % ceil(seconds)

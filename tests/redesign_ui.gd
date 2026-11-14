@@ -63,6 +63,7 @@ func _initialize(): call_deferred("run")
 func run():
  preload("res://tests/onboarding_test_support.gd").prepare()
  game=load("res://scenes/main.tscn").instantiate()
+ game.new_balance_version=1
  root.add_child(game)
  preload("res://tests/onboarding_test_support.gd").skip(game)
  await process_frame

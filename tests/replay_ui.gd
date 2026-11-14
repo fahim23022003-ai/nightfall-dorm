@@ -4,6 +4,8 @@ const Support=preload("res://tests/replay_test_support.gd")
 # Ordinary replay/preparation actions wait for the real sliding building drawer.
 # Dedicated overhaul input tests cover guarded transition-time actions.
 func settle():
+ # This suite intentionally verifies the legacy price/receipt continuation path.
+ if game!=null and is_instance_valid(game):game.new_balance_version=1
  await process_frame
  if game!=null and is_instance_valid(game) and game.mode=="match":
   game.ui.update_match()

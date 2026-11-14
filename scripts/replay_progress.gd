@@ -69,6 +69,7 @@ static func resume(profile):
  var old=profile.replay.checkpoint.get("use_counts",{})
  if int(profile.active_match.get("use_counts",{}).get("coupon",0))>int(old.get("coupon",0)):model.player().coupon_armed=false
  profile.bind_items(model,int(profile.active_match.id))
+ if model.balance_version==2:model.choices.apply_journal(profile.active_match.get("temporary_used",{}));model.choices.apply(model)
  return model
 static func finish(profile,model) -> Dictionary:
  if profile.read_only or not matches(profile,model) or model.result!="defeat" or not model.terminal_recorded or model.eliminations<=0 or (model.player()!=null and model.player().alive):return {}
