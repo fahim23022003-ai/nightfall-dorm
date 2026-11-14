@@ -483,7 +483,7 @@ func _tick_sim(delta: float):
   if room.owner > 0:
    if run_kind=="endless" and expansion!=null and room.tile_count()<12 and room.buildings.size()>=room.tile_count()-1 and room.bot_timer<=delta:expansion.purchase(self,room.index,true)
    if DamageRules.affinity(hunter.archetype)!="neutral" and room.bot_timer<=delta and room.door_hp>room.max_hp()*.4 and room.electricity>20 and room.buildings.size()<room.tile_count() and not BotAI.has_kind(room,"antenna") and hunter.archetype in ["witch","electric","storm"]:BotAI.build_first_empty(room,"antenna")
-   BotAI.tick(room,delta)
+   BotAI.tick(room,delta,self)
  var exposed = time > preparation+25 and (player() == null or not player().sleeping)
  if exposed:
   hunter.tick(delta if hunter.state==HunterState.State.TRANSFORM else 0.0,self)

@@ -225,6 +225,7 @@ func show_defeat_analysis():
  if facts.is_empty():paragraph("No eligible defeat telemetry is available.",Vector2(107,210),1050,80)
  else:
   paragraph("Final recorded source: %s · %s%s\nElapsed %.1fs · Gold %.2f · Electricity %.2f\nDoor level %d · manual repairs %d · recorded door damage %.1f" % [facts.source,StrategyCatalog.ARCHETYPES.get(facts.archetype,{}).get("name","Hunter")," / Reaper" if facts.reaper else "",facts.elapsed,facts.gold,facts.power,facts.door_level,facts.repairs,facts.damage],Vector2(107,191),1050,135,20)
+  if facts.has("repair_spend"):paragraph("Manual repair spend %.2fG · last recorded repair effectiveness %.0f%% · contact pressure %d/2 stacks" % [facts.repair_spend,facts.repair_effectiveness*100,facts.pressure_stacks],Vector2(107,307),1050,28,13)
   var buildings=[]
   for b in facts.buildings:buildings.append(Catalog.BUILDINGS[b.kind].name+" L%d" % b.level+(" / "+b.branch if b.branch!="" else ""))
   paragraph("Final buildings: "+(", ".join(buildings) if not buildings.is_empty() else "none"),Vector2(107,340),1050,65,16)

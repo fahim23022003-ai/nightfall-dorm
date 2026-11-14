@@ -621,7 +621,8 @@ func update_match():
  phase_label.text="%02d:%02d\n%s" % [int(m.time)/60,int(m.time)%60,"PREP %ds" % maxi(0,ceili(m.preparation-m.time)) if m.time<m.preparation else "SURVIVE"]
  hunter_label.text=("REAPER · %d/%d" % [roundi(m.hunter.hp),roundi(m.hunter.max_hp)]) if m.hunter.transformed else "HUNTER L%d  ·  %d/%d" % [m.hunter.level,roundi(m.hunter.hp),roundi(m.hunter.max_hp)]
  hunter_detail.text="%d ATK · %.2fs%s · TEAM %d" % [m.hunter.damage,m.hunter.interval," · WINDUP!" if m.hunter.charged_ready else "",m.rooms.filter(func(r):return r.owner>=0 and r.alive).size()]
- if m.hunter.state==HunterState.State.TRANSFORM: hunter_detail.text="AWAKENING · %.1fs · TRANSITION GUARD" % m.hunter.transform_remaining
+ if m.hunter.recovery_remaining>0:hunter_detail.text="RECOVERY %.1fs · COUNTER WINDOW" % m.hunter.recovery_remaining
+ elif m.hunter.state==HunterState.State.TRANSFORM: hunter_detail.text="AWAKENING · %.1fs · TRANSITION GUARD" % m.hunter.transform_remaining
  elif m.hunter.tactical_action!="":hunter_detail.text="%s · %.1fs · WATCH THE DOOR" % [m.hunter.tactical_action.to_upper(),m.hunter.tactical_windup]
  elif m.hunter.boss_attack!="": hunter_detail.text="%s · %.1fs" % [BossCatalog.ATTACKS[m.hunter.boss_attack].name,m.hunter.windup_remaining]
  elif m.hunter.surge_remaining>0: hunter_detail.text="SURGE · %.1fs · REAPER EXPOSED +20%%" % m.hunter.surge_remaining
@@ -632,10 +633,12 @@ func update_match():
  hunter_detail.tooltip_text=""
  if m.strategy.enabled:
   hunter_label.tooltip_text=StrategyCatalog.ARCHETYPES[m.strategy.archetype].name+"\n"+StrategyCatalog.ARCHETYPES[m.strategy.archetype].hint
-  if m.hunter.state!=HunterState.State.TRANSFORM and m.hunter.boss_attack=="" and m.hunter.surge_remaining<=0 and m.hunter.tactical_action=="":
+  if m.hunter.state!=HunterState.State.TRANSFORM and m.hunter.recovery_remaining<=0 and m.hunter.boss_attack=="" and m.hunter.surge_remaining<=0 and m.hunter.tactical_action=="":
    var contract_state="No contract" if m.strategy.contract=="" else "CONTRACT FAILED" if m.strategy.failed else "CONTRACT ACTIVE"
    hunter_detail.text=StrategyCatalog.ARCHETYPES[m.strategy.archetype].name+" · TEAM %d · " % m.rooms.filter(func(r):return r.owner>=0 and r.alive).size()+contract_state
   hunter_detail.clip_text=true;hunter_detail.tooltip_text=StrategyCatalog.ARCHETYPES[m.strategy.archetype].hint+"\n"+m.strategy.status()
+ if m.balance_version==2:
+  hunter_detail.tooltip_text+="\nPressure ×%.2f (includes capped contact); ordinary hit before door mitigation %.1f. Hard Campaign growth clock ×%.2f after opening. No wealth trigger." % [m.pressure.factor(m),m.hunter.damage*m.pressure.factor(m)*m.evolution.damage_factor(false),BalanceRules.CAMPAIGN_GROWTH_CLOCK if m.run_kind=="campaign" and m.difficulty!="standard" else 1.0]
  if not m.evolution.acquired.is_empty():
   hunter_label.text+=" · ↑%d" % m.evolution.acquired.size()
   hunter_label.tooltip_text="ACQUIRED EVOLUTIONS (this run)"

@@ -358,11 +358,7 @@ func tick_economy(delta: float,dynamo_factor: float=1.0,bed_factor: float=1.0):
    var branch=StrategyCatalog.support(b)
    var cost=maxf(BalanceRules.REPAIR_UPKEEP if balance_version==2 else 0,branch.get("power_cost",0.0))*b.level*delta
    if balance_version==2 and door_hp>=max_hp():cost=0
-   var reserve=0.0
-   if balance_version==2:
-    reserve=8.0
-    for generator in buildings.values():
-     if generator.kind=="generator" and generator.level<10:reserve=maxf(reserve,minf(40,BalanceRules.upgrade("generator",generator.level,2).y))
+   var reserve=repair_reserve()
    if cost==0 or electricity>=cost+reserve:
     electricity-=cost
     ledger.note("spent",[0,cost],"repair station upkeep")
@@ -389,3 +385,21 @@ func specialize_structure(kind: String,id: String) -> bool:
   if kind=="bed":bed_branch=""
   else:door_branch="";door_hp=max_hp()*current
  return ok
+
+func repair_reserve() -> float:
+ if balance_version!=2:return 0.0
+ var reserve=8.0
+ for generator in buildings.values():
+  if generator.kind=="generator" and generator.level<10:reserve=maxf(reserve,minf(40,BalanceRules.upgrade("generator",generator.level,2).y))
+ # Stored power remains strategic, but emergencies release it continuously:
+ # full grid reserve at70% door HP, zero at30%, no hysteresis/save state.
+ return reserve*clampf((door_hp/maxf(1,max_hp())-.30)/.40,0,1)
+func repair_status(b: Dictionary) -> Dictionary:
+ var branch=StrategyCatalog.support(b)
+ var upkeep=maxf(BalanceRules.REPAIR_UPKEEP if balance_version==2 else 0,branch.get("power_cost",0.0))*b.level
+ var nominal=Catalog.support_output("repair",b.level)*branch.get("output",1.0)*repair_factor
+ var reason=""
+ if not alive or not sleeping or door_hp<=0:reason="inactive or breached door"
+ elif door_hp>=max_hp():reason="door full"
+ elif electricity<=repair_reserve()+.000001 and upkeep>0:reason="Electricity at reserve"
+ return {"nominal":nominal,"actual":nominal if reason=="" else 0.0,"upkeep":upkeep,"reserve":repair_reserve(),"reason":reason}

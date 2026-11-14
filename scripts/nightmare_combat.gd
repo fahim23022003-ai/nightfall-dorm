@@ -61,7 +61,7 @@ func tick(delta: float,h,m) -> bool:
   m.record_event("nightmare_release",target,{"skill":chosen,"duration":4.0,"origin":h.position})
   return true
  if remaining>0:return effect in ["faultline","ritual","convergence"] # persistent channels hold movement; finite stances permit ordinary strikes
- if cooldown>0 or m.evolution.evolution_level<4 or h.state!=HunterState.State.ATTACK or h.arcane.action!="" or not h.arcane.bolt.is_empty() or h.tactical_action!="" or h.boss_attack!="" or m.wrath.active():return false
+ if h.recovery_remaining>0 or cooldown>0 or m.evolution.evolution_level<4 or h.state!=HunterState.State.ATTACK or h.arcane.action!="" or not h.arcane.bolt.is_empty() or h.tactical_action!="" or h.boss_attack!="" or m.wrath.active():return false
  target=h.target
  if not valid_target(h,m):return false
  var signature=m.evolution.evolution_level==10 and sequence%2==0

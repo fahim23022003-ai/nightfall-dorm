@@ -52,7 +52,13 @@ static func machine_stats(model,room,b: Dictionary) -> Dictionary:
   return special
  var branch=StrategyCatalog.support(b);var rate=BalanceRules.output(b.kind,b.level,room.balance_version)*branch.get("output",1.0)
  if b.kind=="generator":rate*=float(room.run_effects.get("power",1.0))*(0.0 if room.production_paused else room.threat_power_factor)*room.power_multiplier*room.trait_modifiers.power*room.special_factor("power",.55,1.5)*StrategyCatalog.BRANCHES.get(room.bed_branch,{}).get("power",1.0)
- if b.kind=="repair":rate*=room.repair_factor
+ if b.kind=="repair":
+  rate*=room.repair_factor
+  if room.balance_version==2:
+   var status=room.repair_status(b)
+   if model!=null and (not model.running or model.run_kind=="endless" and model.endless!=null and model.endless.phase!="combat"):
+    status.actual=0.0;status.reason="paused / intermission"
+   return {"rate":status.actual,"nominal_rate":status.nominal,"reserve":status.reserve,"reason":status.reason,"operating_power":status.upkeep,"repair_gold":room.manual_repair_cost()}
  return {"rate":rate,"operating_power":maxf(BalanceRules.REPAIR_UPKEEP if room.balance_version==2 else 0,branch.get("power_cost",0.0))*b.level,"income":room.income_rate(),"repair_gold":room.manual_repair_cost()}
 static func frost_status(strength: float) -> Dictionary:
  # Match the existing actor-specific status application; preview does not alter it.
@@ -72,6 +78,7 @@ static func format_machine(model,room,b: Dictionary) -> String:
   return "Hit %.1f · %.2fs / shot · range %.0f · targets %d · Undead move -%.0f%%\nHunter move -%.0f%% / attack interval +%.0f%%; Reaper move -%.1f%% / interval +%.0f%%" % [stats.hit,stats.interval,stats.range,stats.targets,slow.undead_move*100,slow.hunter_move*100,slow.hunter_interval*100,slow.reaper_move*100,slow.reaper_interval*100]
  if b.kind in DefenseEffects.WEAPONS:return "Hit %.1f · %.2fs / shot · %.1f DPS\nRange %.0f · projectile %.0f /s" % [stats.hit,stats.interval,stats.dps,stats.range,stats.projectile_speed]
  if b.kind=="generator":return "Output %.2f Electricity/s\nRoom income %.2f Gold/s" % [stats.rate,stats.income]
+ if b.kind=="repair" and room.balance_version==2:return "Healing %.2f HP/s now / %.2f possible\nUpkeep %.2f E/s · reserve %.2f E · stored %.2f E\n%s · reserve releases below70%% HP, zero at30%%" % [stats.rate,stats.nominal_rate,stats.operating_power,stats.reserve,room.electricity,stats.reason if stats.reason!="" else "Repair funded"]
  if b.kind=="repair":return "Healing %.2f HP/s · upkeep %.2f E/s\nManual repair %.2f Gold%s" % [stats.rate,stats.operating_power,stats.repair_gold," · keeps8–40E grid reserve; idle when full" if room.balance_version==2 else ""]
  return ("Raw support +%.1f%% · effective room amplifier %.3fx (diminishing returns)\nRoom income %.2f Gold/s" % [stats.rate*100,amplifier_bonus(room),stats.income]) if b.kind=="economy" and room.balance_version==2 else "Additive %s bonus +%.1f%%\nRoom income %.2f Gold/s" % ["income" if b.kind=="economy" else "turret hit",stats.rate*100,stats.income]
 static func room_power_rate(model,room) -> float:

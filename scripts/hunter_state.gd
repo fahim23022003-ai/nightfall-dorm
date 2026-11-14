@@ -59,6 +59,7 @@ var conceal_remaining=0.0
 var dash_remaining=0.0
 var pressure_remaining=0.0
 var tactical_recovery=0.0
+var recovery_remaining=0.0
 var ability_counts={"pressure":0,"conceal":0,"feint":0,"dash":0}
 var archetype=""
 var archetype_primed=false
@@ -129,7 +130,7 @@ func _tactics(delta: float,model) -> bool:
   elif action=="pressure":pressure_remaining=4.0
   model.record_event("hunter_ability",target,{"ability":action,"duration":dash_remaining if action=="dash" else conceal_remaining if action=="conceal" else pressure_remaining})
  if tactical_recovery>0:return true
- if tactical_cooldown<=0 and nightmare.remaining<=0:
+ if tactical_cooldown<=0 and nightmare.remaining<=0 and recovery_remaining<=0:
   var selected="pressure" if archetype=="crusher" and state==State.ATTACK else "conceal" if archetype=="stalker" and state==State.MOVE else "dash" if archetype=="ravager" and state==State.MOVE else ""
   if selected!="":
    tactical_action=selected;tactical_windup=.9 if selected=="pressure" else .65
@@ -142,7 +143,7 @@ func _begin_transformation(model):
  arcane.clear_transients()
  _clear_tactics()
  var normal_hp=archetype_factor("hp")
- transformed=true
+ transformed=true;recovery_remaining=0.0
  # Boss replaces normal archetype tuning. It never receives transformation healing.
  max_hp*=archetype_factor("hp")/normal_hp
  hp=minf(hp,max_hp)
@@ -334,6 +335,7 @@ func tick(delta: float, match_state):
  delta=maxf(0,delta-match_state.items.frozen_delta)
  if delta<=0 and match_state.items.frozen_delta>0: return
  hit_flash = maxf(0,hit_flash-delta)
+ recovery_remaining=maxf(0,recovery_remaining-delta)
  attack_slow_remaining=maxf(0,attack_slow_remaining-delta)
  suppression_remaining=maxf(0,suppression_remaining-delta)
  if suppression_remaining<=0:suppression_strength=0
@@ -371,9 +373,11 @@ func tick(delta: float, match_state):
  if arcane.tick(self,match_state,delta):return
  if _tactics(delta,match_state):return
  var active_seconds=match_state.hunter_active_seconds()
- var next_level=1 if active_seconds<profile.opening else 2+int((active_seconds-profile.opening)/profile.growth_seconds)
+ var growth_seconds=HunterPressure.growth_clock(match_state,active_seconds)
+ var next_level=1 if growth_seconds<profile.opening else 2+int((growth_seconds-profile.opening)/profile.growth_seconds)
  level=maxi(level,next_level)
- var growth=growth_at(active_seconds)
+ var growth=growth_at(growth_seconds)
+ if match_state.balance_version==2:level=mini(level,10);growth=minf(9,growth)
  if match_state.run_kind=="endless":growth=minf(1.0,growth);level=mini(level,2)
  var tuning=_tuning()
  if growth>applied_growth and not transformed:
@@ -490,6 +494,9 @@ func tick(delta: float, match_state):
     encounter_attacks+=1
     _damage_door(room,match_state,damage*strike_scale,"charged heavy strike" if strike_scale>1.0 else "door strike")
     cooldown += interval
+    if match_state.balance_version==2 and difficulty!="standard" and strike_scale>1.0:
+     cooldown+=BalanceRules.CHARGED_RECOVERY;recovery_remaining=cooldown
+     match_state.record_event("hunter_recovery",target,{"duration":interval+BalanceRules.CHARGED_RECOVERY,"source":"charged heavy strike"})
     archetype_primed=false
     if archetype=="ravager" and encounter_attacks%3==0:cooldown+=.8
     if archetype=="crusher" and pressure_remaining>0:cooldown+=.35

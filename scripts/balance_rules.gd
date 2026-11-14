@@ -7,6 +7,9 @@ const PREPARATION=40.0
 const AMP_BUDGET=2.0
 const AMPLIFIER_LIMIT=3
 const REPAIR_UPKEEP=.35
+# Earned Power hard Campaign pacing; no wealth trigger or change to legacy/Endless.
+const CAMPAIGN_GROWTH_CLOCK=.5
+const CHARGED_RECOVERY=1.0
 const MERCHANT_GOLD={"repair":65,"shield":85,"frost":85,"barricade":85}
 const MERCHANT_POWER={"repair":3,"pillow":3,"shield":6,"frost":6,"barricade":6}
 const DISCIPLINE_MAX=80.0

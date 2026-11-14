@@ -1,3 +1,26 @@
+# Phase 12B — Fair Difficulty, Real Counters and Recovery (verification in progress)
+
+Started clean on work at1b6d76e017e50c4b26ff0c73bb2ff279ef4721a5.
+Baseline recoverable local tag checkpoint-phase12b-start-1b6d76e. No main changes.
+See docs/evidence/fair-difficulty for retained failures, controlled ablations and
+original-source archive comparison. Do not overwrite Phase12 earned evidence.
+
+Implemented current2 hard Campaign growth pacing, finite growth cap, post-charge
+recovery with ability spacing, actual-fund tactical bots, emergency reserve release,
+actual repair inspector state and pre-breach factual defeat windows. No income/
+price changes or Campaign perk/merchant expansion. Legacy1 unaffected. Current2
+saves keep wealth/buildings and receive revised pressure/reserve behavior on resume.
+
+Current80-case original1-5 +held-out6-20 samples, one paid decision/second:
+LongNight bulwark19/20, assault20/20; Hell bulwark9/20, assault5/20. Both routes
+have multiple held-out wins and retained meaningful defeats, no prepared bonuses
+or items. Matched same-policy original-source baseline running/completing.
+Focused34 checks pass; full regression, normal-speed victory recording, rendered
+720/1080 defeat/repair review and Windows export/push are still IN PROGRESS.
+Do not claim human/native Windows approval or final delivery until verified.
+
+---
+
 # Phase 12 — Earned Power
 
 Branch work; started clean at b2f78fa46ebdbe0a12f4e7a15f09ce1631d98e5f.

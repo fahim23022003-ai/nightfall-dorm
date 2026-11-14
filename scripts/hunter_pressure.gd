@@ -23,3 +23,8 @@ func factor(m) -> float:
  var opening=.72 if m.difficulty=="standard" else .78 if m.difficulty=="hard" else .65
  var mature=1.0 if m.difficulty=="standard" else 1.08 if m.difficulty=="hard" else 1.05
  return lerpf(opening,mature,clampf(elapsed/(300.0 if m.difficulty=="standard" else 450.0 if m.difficulty=="hard" else 600.0),0,1))*(1+stacks*.08)
+
+static func growth_clock(m,active: float) -> float:
+ if m.balance_version!=2 or m.run_kind!="campaign" or m.tutorial_mode or m.difficulty=="standard":return active
+ var opening=RankCatalog.pressure(m.difficulty).opening
+ return minf(active,opening)+maxf(0,active-opening)*BalanceRules.CAMPAIGN_GROWTH_CLOCK

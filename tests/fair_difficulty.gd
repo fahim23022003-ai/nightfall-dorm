@@ -1,0 +1,50 @@
+extends "res://tests/earned_power.gd"
+func run():
+ for mode in ["hard","hell"]:
+  var p=PlayerProfile.new("user://phase12b-entry-"+mode+str(Time.get_ticks_usec())+".json")
+  var entry=p.begin_match(mode,"stage_1",true)
+  check(not entry.is_empty() and p.xp==0 and p.inventory.is_empty() and entry.equipped.is_empty(),"hard entry genuinely permits fresh zero-bonus profile")
+  var m=MatchModel.new();m.configure_stage("stage_1");m.configure_match(mode);m.configure_balance(2)
+  check(HunterPressure.growth_clock(m,45)==45 and HunterPressure.growth_clock(m,145)==95,"opening retained then hard Campaign growth clock paced")
+  m.balance_version=1;check(HunterPressure.growth_clock(m,145)==145,"legacy pressure unchanged")
+  m.balance_version=2;m.run_kind="endless";check(HunterPressure.growth_clock(m,145)==145,"Endless wave clock unchanged")
+  m.run_kind="practice";check(HunterPressure.growth_clock(m,145)==145,"Practice isolation unaffected")
+ var m=fresh();var r=m.player();var old=r.income_rate()
+ check(BalanceRules.price("generator",2)==Vector2(120,0) and r.gold==25 and old<2,"no income or starting-funds escape hatch")
+ r.gold=10000;r.electricity=1000;var id=add(m,"repair");var b=r.buildings[id];r.gold=0;r.electricity=3;r.door_hp=r.max_hp()*.2;r.repair_factor=.65
+ var hp=r.door_hp;var e=r.electricity;r.tick_economy(1)
+ check(absf(r.door_hp-hp-4.55)<.0001 and absf(e-r.electricity-.35)<.0001,"critical station really releases reserve and pays for actual mitigated healing")
+ check(r.repair_reserve()==0,"zero reserve at critically low HP")
+ r.electricity=0;hp=r.door_hp;r.tick_economy(1);check(r.door_hp==hp and r.electricity==0,"empty grid cannot repair for free")
+ var stats=BuildingStats.machine_stats(m,r,b)
+ check(stats.rate==0 and stats.reason!="" and stats.reserve==0,"zero funded output is visible, not nominal heal promise")
+ r.door_hp=r.max_hp()*.5;var middle=r.repair_reserve();r.door_hp=r.max_hp()*.7
+ check(middle>0 and r.repair_reserve()>middle,"reserve releases continuously rather than fixed emergency flicker")
+ r.door_hp=r.max_hp();r.electricity=10;e=r.electricity;r.tick_economy(1)
+ check(r.electricity==e and r.door_hp==r.max_hp(),"full door does not burn repair upkeep")
+ check(BuildingStats.format_machine(m,r,b).contains("now") and BuildingStats.format_machine(m,r,b).contains("reserve"),"inspector explains actual output and current reserve")
+ # Controlled live actor strike fixture, no manual call to a fake attack formula.
+ var h=m.hunter;m.run_kind="campaign";m.difficulty="hell";h.configure("hell");h.configure_archetype("crusher");m.time=140;h.state=HunterState.State.ATTACK;h.target=r.index;h.position=r.door_approach();h.cooldown=0;h.charged_ready=true;h.archetype_primed=false;h.arcane.cooldown=999;h.nightmare.cooldown=999;h.tactical_cooldown=999;r.door_level=9;r.door_hp=r.max_hp();h.tick(.1,m)
+ check(h.recovery_remaining>1 and h.cooldown>=h.recovery_remaining,"real charged hit has an explicit recovery window")
+ check(m.presentation_events.any(func(ev):return ev.type=="hunter_recovery"),"recovery is an actual recorded event")
+ h.arcane.cooldown=0;h.archetype="electric";h.arcane.tick(h,m,.1)
+ check(h.arcane.action=="","new arcane warning cannot erase charged recovery")
+ h.nightmare.cooldown=0;m.evolution.evolution_level=4;h.nightmare.tick(.1,h,m)
+ check(h.nightmare.action=="","new signature cannot erase charged recovery")
+ h.recovery_remaining=0;h.arcane.tick(h,m,.1)
+ check(h.arcane.action=="interference","existing archetype skill returns after recovery")
+ h.arcane.clear_transients();h.arcane.cooldown=999;h.nightmare.cooldown=999;m.time=100000;h.state=HunterState.State.SEEK;h.tick(.1,m)
+ check(h.level<=10 and h.applied_growth<=9,"current combat levels and growth remain capped under long elapsed time")
+ for money in [0,25,100]:
+  var ally=RoomState.new(1);ally.balance_version=2;ally.owner=1;ally.sleeping=true;ally.closed=true;ally.gold=money;ally.door_hp=50
+  BotAI.tick(ally,2,m)
+  check(ally.gold>=0 and ally.electricity>=0 and ally.spent<=money,"tactical bot cannot exceed actual shared funds")
+ # Defeat advice uses an actual recorded pre-breach wallet, not death wealth.
+ var lose=fresh();var lr=lose.player();lose.run_kind="campaign";lose.time=100;lose.hunter.state=HunterState.State.ATTACK;lose.hunter.target=0;lose.hunter.position=lr.door_approach();lr.gold=50;lr.door_hp=100;lose.apply_room_damage(0,10,"door strike")
+ lose.time=104;lr.gold=0;lose.apply_room_damage(0,1000,"door strike");lose.hunter.position=lose.player_position;lose.hunter.target=0;lose.eliminate_resident(0);lose.result="defeat";lose._finish_terminal()
+ check(not lose.defeat_facts.report.is_empty() and lose.defeat_facts.report.counter_window.gold==50,"pre-breach wallet preserved separately from death wallet")
+ check(lose.defeat_facts.report.counter_window.repair_affordable and lose.defeat_facts.report.tips[0].contains("100.0s"),"factual advice identifies affordable response at the relevant time")
+ check(lose.defeat_facts.report.tips[-1].contains("not proof"),"no speculative guaranteed-save advice")
+ var none=fresh();none.run_kind="campaign";none.time=100;none.hunter.state=HunterState.State.ATTACK;none.hunter.target=0;none.hunter.position=none.player().door_approach();none.player().gold=0;none.apply_room_damage(0,5,"door strike");none.time=104;none.apply_room_damage(0,10000,"door strike");none.hunter.position=none.player_position;none.hunter.target=0;none.eliminate_resident(0);none.result="defeat";none._finish_terminal()
+ check(not none.defeat_facts.report.counter_window.repair_affordable and none.defeat_facts.report.tips[0].contains("No manual repair"),"unaffordable counter is not recommended")
+ print("FAIR_DIFFICULTY_CHECKS=",checks," FAILURES=",failures);quit(1 if failures else 0)

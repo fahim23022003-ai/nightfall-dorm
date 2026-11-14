@@ -1,0 +1,11 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: EARNED POWER: pre-breach wallet preserved separately from death wallet
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/earned_power.gd:6)
+       [1] run (res://tests/fair_difficulty.gd:45)
+SCRIPT ERROR: Invalid access to property or key 'counter_window' on a base object of type 'Dictionary'.
+          at: run (res://tests/fair_difficulty.gd:46)
+          GDScript backtrace (most recent call first):
+              [0] run (res://tests/fair_difficulty.gd:46)

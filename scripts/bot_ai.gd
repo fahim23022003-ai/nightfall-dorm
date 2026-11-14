@@ -2,9 +2,9 @@ class_name BotAI
 extends RefCounted
 # Autonomous budgets retain original L4 machines/L5 structures; player late tiers are optional investments.
 
-static func tick(room: RoomState, delta: float):
+static func tick(room: RoomState, delta: float,model=null):
  if room.balance_version==2:
-  earned_tick(room,delta);return
+  earned_tick(room,delta,model);return
  if not room.alive or not room.sleeping:
   return
  room.bot_timer = maxf(-delta,room.bot_timer-delta)
@@ -94,11 +94,13 @@ static func upgrade_structure(room,kind: String) -> bool:
  if room.strategy_enabled and level==4 and branch=="":return room.specialize_structure(kind,"lucid" if kind=="bed" else "bulwark")
  return room.upgrade_bed() if kind=="bed" else room.upgrade_door()
 
-static func earned_tick(r,delta):
+static func earned_tick(r,delta,model=null):
  if not r.alive or not r.sleeping:return
  r.bot_timer-=delta
  if r.bot_timer>0:return
  r.bot_timer=1.2
+ if model!=null and model.difficulty!="standard" and model.run_kind in ["campaign","endless"]:
+  tactical_earned(r,model);return
  if r.door_hp<r.max_hp()*.35:
   if upgrade_structure(r,"door") or r.repair_door():return
  if not has_kind(r,"turret") and build_first_empty(r,"turret"):return
@@ -117,3 +119,31 @@ static func earned_tick(r,delta):
   if b.level==4:r.specialize_building(id,StrategyCatalog.branches(b.kind)[0])
   else:r.upgrade_building(id)
   return
+
+# Hard-mode allies use the same funds/prerequisites; react to visible siege rather
+# than buying all four support types before upgrading their only weapon.
+static func tactical_earned(r,m):
+ var threatened=m.hunter.target==r.index and m.hunter.state==HunterState.State.ATTACK
+ if threatened and r.door_hp<r.max_hp()*.70 and upgrade_structure(r,"door"):return
+ if threatened and r.door_hp<r.max_hp()*.60 and r.max_hp()-r.door_hp>=Catalog.REPAIR_HEAL*r.repair_factor and r.repair_door():return
+ if not has_kind(r,"turret") and build_first_empty(r,"turret"):return
+ if r.bed_level<1 and upgrade_structure(r,"bed"):return
+ if r.door_level<1 and upgrade_structure(r,"door"):return
+ if r.bed_level<2 and upgrade_structure(r,"bed"):return
+ if r.door_level<2 and upgrade_structure(r,"door"):return
+ if not has_kind(r,"generator"):
+  build_first_empty(r,"generator");return
+ for id in r.buildings:
+  if r.buildings[id].kind=="turret" and r.buildings[id].level<2 and r.upgrade_building(id):return
+ if not has_kind(r,"repair") and build_first_empty(r,"repair"):return
+ var counter="frost" if r.profile in ["guard","engineer"] else "flame" if r.profile=="gunner" else "heavy"
+ if not has_kind(r,counter) and build_first_empty(r,counter):return
+ var cap=mini(8,3+int(r.occupied_seconds/180))
+ if r.bed_level<cap and upgrade_structure(r,"bed"):return
+ if r.door_level<cap and upgrade_structure(r,"door"):return
+ for id in r.buildings:
+  var b=r.buildings[id]
+  if b.level>=mini(8,r.bed_level+2) or BalanceRules.requirement(b.kind,b.level,r.bed_level,r.door_level,2)!="":continue
+  if b.level==4:
+   if r.specialize_building(id,StrategyCatalog.branches(b.kind)[0]):return
+  elif r.upgrade_building(id):return
