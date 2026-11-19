@@ -30,7 +30,10 @@ static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  if model.run_kind!="endless" or run==null or run.phase!="intermission" or run.completed!=run.sealed_wave or model.hunter.hp>0 or model.player()==null or not model.player().alive:return {}
  var data={"version":SCHEMA,"ruleset":RULESET,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"expansion":model.expansion.snapshot(model),"evolution":model.evolution.snapshot(),"defense_refractory":model.defenses.shield_cooldowns.duplicate(true),"repair_refractory":model.defenses.repair_cooldowns.duplicate(true),"lure_refractory":model.defenses.lure_cooldown,"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
  data.balance_version=model.balance_version
- if model.balance_version==2:data.run_choices=model.choices.snapshot()
+ if model.balance_version==2:
+  data.run_choices=model.choices.snapshot()
+  data.ward={"active":maxf(0,model.ward_until-model.time),"cooldown":maxf(0,model.ward_ready_at-model.time),"capacity":model.ward_capacity}
+  data.contribution=model.contribution.duplicate()
  data.wave_metrics=model.wave_metrics.data.duplicate(true)
  data.omen=run.omen.snapshot()
  for room in model.rooms:
@@ -56,6 +59,15 @@ static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  return data if valid(data) else {}
 static func valid(data) -> bool:
  if not data is Dictionary or not whole(data.get("balance_version",1),1,2):return false
+ if data.has("ward"):
+  var ward=data.ward
+  if data.get("balance_version",1)!=2 or not ward is Dictionary:return false
+  if not number(ward.get("active"),0,MatchModel.WARD_DURATION) or not number(ward.get("cooldown"),0,MatchModel.WARD_COOLDOWN) or not number(ward.get("capacity"),0,MatchModel.WARD_CAPACITY):return false
+  if ward.active>ward.cooldown:return false
+ if data.has("contribution"):
+  if not data.contribution is Dictionary or data.contribution.size()>9:return false
+  for value in data.contribution.values():
+   if not number(value):return false
  if data.get("balance_version",1)==2 and not RunChoices.valid(data.get("run_choices"),int(data.get("completed",0))):return false
  if not data is Dictionary or not whole(data.get("version"),1,SCHEMA) or not whole(data.get("ruleset"),1,RULESET) or data.get("map","") not in MapCatalog.IDS or data.get("difficulty","") not in RankCatalog.DIFFICULTIES:return false
  if (data.version==1 and data.ruleset>LEGACY_RULESET_MAX) or (data.version==SCHEMA and data.ruleset!=RULESET):return false
@@ -170,6 +182,12 @@ static func restore(data) -> MatchModel:
  model.configure_balance(int(data.get("balance_version",1)))
  if data.get("balance_version",1)==2:model.choices.restore(data.run_choices)
  model.random.state=int(data.rng);model.time=data.time;model.preparation=data.preparation
+ if data.has("ward"):
+  model.ward_until=model.time+data.ward.active
+  model.ward_ready_at=model.time+data.ward.cooldown
+  model.ward_capacity=data.ward.capacity
+ for key in model.contribution:
+  model.contribution[key]=data.get("contribution",{}).get(key,0)
  model.player_room=int(data.player_room);model.player_position=vec(data.player_position);model.bot_claimed=int(data.bot_claimed)
  model.eliminations=int(data.eliminations);model.shots=int(data.shots);model.damage_dealt=data.damage
  for i in range(6):

@@ -2,6 +2,14 @@ class_name MatchModel
 extends RefCounted
 
 signal feedback(message: String)
+const WARD_COST=6.0
+const WARD_DURATION=4.0
+const WARD_COOLDOWN=24.0
+const WARD_CAPACITY=60.0
+var ward_until=0.0
+var ward_ready_at=0.0
+var ward_capacity=0.0
+var contribution={}
 var balance_version=1
 var choices=RunChoices.new()
 var pressure=HunterPressure.new()
@@ -94,6 +102,10 @@ func _init():
  reset()
 
 func reset(seed_value: int = 1):
+ ward_until=0.0
+ ward_ready_at=0.0
+ ward_capacity=0.0
+ contribution={"ward_blocked":0.0,"door_blocked":0.0,"repair_hp":0.0,"control_hits":0,"exposure":0.0,"defense_gold":0.0,"defense_power":0.0,"infrastructure_gold":0.0,"infrastructure_power":0.0}
  wave_metrics=WaveMetrics.new()
  balance_version=1;choices=RunChoices.new();pressure=HunterPressure.new()
  items=ItemEffects.new()
@@ -272,6 +284,14 @@ func step_navigation(from: Vector2,to: Vector2,distance: float,key: String="") -
 
 func record_event(type: String, room_index: int, data: Dictionary={}):
  choices.event(self,type,room_index,data)
+ if room_index==player_room:
+  if type=="repair":contribution.repair_hp+=data.get("amount",0)
+  if type in ["defense_heal","item_rescue"]:contribution.repair_hp+=data.get("damage",0)
+  if type=="plasma_release":contribution.repair_hp+=data.get("amount",0)
+  if type in ["build","building_upgrade","bed_upgrade","door_upgrade","repair"] and data.has("spent_gold"):
+   var group="defense" if type in ["door_upgrade","repair"] or data.get("kind","") in DefenseEffects.WEAPONS or data.get("kind","") in ["repair","auto_repair","shield","barrier","plasma","antenna"] else "infrastructure"
+   contribution[group+"_gold"]+=data.spent_gold
+   contribution[group+"_power"]+=data.spent_power
 
  if run_kind=="endless" and endless!=null and endless.phase=="combat":wave_metrics.event(type,room_index,player_room,data)
  if type in ["sale","building_destroyed"]:
@@ -367,6 +387,32 @@ func specialize_building(tile: int,branch: String) -> bool:
 
 func sell_building(tile: int) -> bool:
  return player().sell_building(tile) if _can_purchase() else false
+
+func ward_reason() -> String:
+ if balance_version!=2 or tutorial_mode or run_kind not in ["campaign","endless"]:return "Available in Earned Power Campaign and Endless."
+ if not _can_purchase() or not player().sleeping or not player().closed or player().door_hp<=0:return "Requires an occupied room with an intact closed door."
+ if time<preparation or (endless!=null and endless.phase!="combat"):return "Available during combat."
+ if wrath.rules_remaining>0:return "Rules Judgement blocks the command."
+ if time<ward_ready_at:return "Ready in %.1fs" % (ward_ready_at-time)
+ if player().electricity<WARD_COST:return "Needs 6 Electricity."
+ return ""
+
+func route_defense_power() -> bool:
+ if ward_reason()!="" or not player().pay(0,WARD_COST,"emergency ward"):return false
+ ward_until=time+WARD_DURATION
+ ward_ready_at=time+WARD_COOLDOWN
+ ward_capacity=WARD_CAPACITY
+ contribution.defense_power+=WARD_COST
+ record_event("emergency_ward",player_room)
+ return true
+
+func contribution_summary() -> String:
+ var r=player()
+ if r==null:return ""
+ var ally_damage=0.0
+ for ally in rooms:
+  if ally.owner>0:ally_damage+=ally.damage_dealt
+ return "Damage · you %.0f / allies %.0f\nDoor · repaired %.0f HP / blocked %.0f HP\nFrost hits %d · besieged %.1fs\nDefense %.0fG / %.0fE · infrastructure %.0fG / %.0fE" % [r.damage_dealt,ally_damage,contribution.repair_hp+r.economy_repaired,contribution.door_blocked,contribution.control_hits,contribution.exposure,contribution.defense_gold,contribution.defense_power,contribution.infrastructure_gold,contribution.infrastructure_power]
 
 func _can_purchase() -> bool:
  return running and result == "" and player() != null and player().alive
@@ -495,6 +541,8 @@ func _tick_sim(delta: float):
    items.trigger_segment(previous,hunter.position,self)
  else:
   hunter.tick(delta,self)
+ if player_room>=0 and hunter.target==player_room and hunter.state==HunterState.State.ATTACK:
+  contribution.exposure+=delta
  for undead in minions:undead.tick(maxf(0,delta-items.frozen_delta),self)
  minions=minions.filter(func(u):return u.hp>0)
  defenses.tick(delta,self)
@@ -571,11 +619,23 @@ func apply_room_damage(index: int,amount: float,source: String="door strike",att
  if run_kind=="endless" and endless!=null and index==player_room:amount*=endless.omen.factor("walls",difficulty)
  if attacker_id==1:amount*=evolution.damage_factor(special)*pressure.factor(self)
  amount*=StrategyCatalog.BRANCHES.get(room.door_branch,{}).get("mitigation",1.0)
+ var before_magic=amount
  amount=MagicDefense.absorb(self,room,amount,attacker_id,packet)
+ var magic_blocked=before_magic-amount
+ if index==player_room and time<ward_until and ward_capacity>0:
+  var ward_block=minf(amount*.5,ward_capacity)
+  amount-=ward_block
+  ward_capacity-=ward_block
+  contribution.ward_blocked+=ward_block
+  contribution.door_blocked+=ward_block
+  if ward_block>0:record_event("emergency_ward_hit",index,{"amount":ward_block})
+ if index==player_room:contribution.door_blocked+=magic_blocked
  var blocked=minf(amount,room.barrier_hp) if room.barrier_remaining>0 else 0.0
  room.barrier_hp-=blocked;amount-=blocked
  if blocked>0:record_event("shield_absorb",index,{"damage":blocked,"amount":blocked})
+ var before_items=amount
  amount=items.absorb(amount,self,index)
+ if index==player_room:contribution.door_blocked+=blocked+before_items-amount
  var rescued=items.guardian_intercept(amount,self,index)
  if not rescued:
   if index==player_room:amount=choices.incoming(self,amount)
@@ -669,6 +729,7 @@ func _advance_projectiles(delta: float):
      hunter.apply_suppression(float(shot.slow))
      if shot.kind=="frost":hunter.attack_slow_remaining=1.0;hunter.attack_slow_strength=float(shot.slow)
     else:actor.suppress(float(shot.slow))
+   if shot.room==player_room and shot.kind=="frost" and amount>0:contribution.control_hits+=1
    if shot.get("burn",0)>0:defenses.ignite(shot.target_id,shot.burn,3.0,shot.room,shot.get("building_id",-1),shot.kind,shot.level)
    if shot.target_id==1:items.ignite(self,shot.room)
    elif shot.room==player_room and float(items.timers.get("inferno",0))>0:defenses.ignite(shot.target_id,ItemCatalog.TUNING.burn_dps,ItemCatalog.TUNING.burn_seconds,shot.room)

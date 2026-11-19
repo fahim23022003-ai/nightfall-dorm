@@ -5,6 +5,7 @@ var game
 var menu_start: Button
 var panel: Control
 var run_panel: Control
+var ward_button: Button
 var upgrade_notice: Label
 var message: Label
 var details: Label
@@ -402,6 +403,10 @@ func show_match():
  horror_layer.draw.connect(func(): game.horror.render_notifications(draw_target);game.presentation.wrath_presentation.overlay(draw_target,game.model))
 
  items_ui.create_hotbar()
+ ward_button=null
+ if game.model.balance_version==2 and game.model.run_kind in ["campaign","endless"] and not game.model.tutorial_mode:
+  ward_button=button("Ward [F] · 6E",Vector2(350,92),func():game.command_ward(),165,34)
+  ward_button.add_theme_font_size_override("font_size",13)
  if not game.mobile_mode:
   teammates.create()
   bottom_context=BottomContextPanel.new(self);bottom_context.install()
@@ -612,6 +617,11 @@ func update_match():
  if not is_instance_valid(gold_label) or game.mode!="match": return
  var m=game.model
  var room=m.player()
+ if is_instance_valid(ward_button):
+  var reason=m.ward_reason()
+  ward_button.disabled=reason!="" or game.watched_room>=0 or game.pending_build!=""
+  ward_button.text="Ward %.1fs · %.0f HP" % [m.ward_until-m.time,m.ward_capacity] if m.time<m.ward_until and m.ward_capacity>0 else "Ward [F] · 6E"
+  ward_button.tooltip_text="Block half of incoming damage, up to 60 HP for 4s. Costs 6 Electricity. 24s cooldown. "+reason
  if m.strategy.enabled:
   guide_label.tooltip_text=StrategyCatalog.ARCHETYPES[m.strategy.archetype].hint+"\n"+m.strategy.status()
  gold_label.text=resource_text(room.gold) if room!=null else "—"
@@ -672,6 +682,7 @@ func update_match():
   if m.hunter.tactical_action!="":warning_label.text="%s %.1fs · PREPARE DEFENSES" % [m.hunter.tactical_action.to_upper(),m.hunter.tactical_windup]
   elif m.hunter.charged_ready: warning_label.text="HEAVY STRIKE %.1fs · REPAIR / UPGRADE" % m.hunter.windup_remaining
   elif m.hunter.archetype_primed:warning_label.text="%s · STRIKE WARNING · REPAIR NOW" % StrategyCatalog.ARCHETYPES[m.hunter.archetype].name.to_upper()
+  elif m.time<m.ward_until and m.ward_capacity>0:warning_label.text="DOOR %d/%d · WARD %.0f HP" % [roundi(room.door_hp),roundi(room.max_hp()),m.ward_capacity]
   elif m.hunter.recovery_remaining>0:warning_label.text="DOOR %d/%d · RECOVERY %.1fs" % [roundi(room.door_hp),roundi(room.max_hp()),m.hunter.recovery_remaining]
   elif room.repair_factor<0.99: warning_label.text="DOOR %d/%d · REPAIRS %d%%" % [roundi(room.door_hp),roundi(room.max_hp()),roundi(room.repair_factor*100)]
   if m.hunter.boss_attack!="":
@@ -777,6 +788,9 @@ func show_result():
  var r=m.player()
  var l=label_at("%ds survived  ·  Hunter level %d\n%d shots  ·  %d damage\n%d gold earned  ·  %d residents lost" % [m.time,m.hunter.level,r.shots if r!=null else 0,r.damage_dealt if r!=null else 0,r.income_total if r!=null else 0,m.eliminations],Vector2(390,312),20,500)
  l.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+ if m.result=="victory" and m.balance_version==2 and r!=null:
+  var report=label_at(m.contribution_summary(),Vector2(26,345),13,300)
+  report.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  progression.result_summary()
  if game.model.result=="defeat" and not game.model.defeat_facts.report.is_empty():button("Why did I lose?",Vector2(945,440),replay_ui.show_defeat_analysis,300,44)
  if items_ui.result_gate(): pass

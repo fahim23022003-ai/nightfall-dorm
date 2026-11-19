@@ -39,6 +39,8 @@ static func show(ui,chosen="Damage"):
   paragraph(ui,"%.2f Gold generated\n%.2f Electricity generated\n\nBeds and income supports generate Gold. Dynamos generate Electricity.\nThese are gross production totals—not wallet changes.\nPurchases, sales, theft, aid and Omen bonuses are excluded.")
  elif chosen=="Defense":
   paragraph(ui,"Door damage received: %.1f HP\nActual repair applied: %.1f HP\nSuccessful defense activations: %d\nMagic damage absorbed: %s\n\nRepair and support are separate from weapon damage.\nExisting statistics without absorption observations remain unknown." % [d.door,d.repair,d.activations,"%.1f HP" % d.magic_blocked if d.has("magic_blocked") else "not recorded"])
+  if m.balance_version==2:
+   paragraph(ui,"RUN CONTRIBUTION\n"+m.contribution_summary(),Vector2(125,465),13,120)
  elif chosen=="Hunter Skills":
   var text="No Hunter skill warnings recorded." if d.skills.is_empty() else "Encountered warnings / skills\n\n"+"\n".join(d.skills.map(func(v):return "• "+str(v).replace("_"," ").capitalize()))
   var scroll=ScrollContainer.new();scroll.position=Vector2(125,278);scroll.size=Vector2(1010,307);ui.panel.add_child(scroll)

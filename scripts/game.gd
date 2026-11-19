@@ -413,6 +413,7 @@ func _unhandled_input(event):
   elif event.keycode in [KEY_PAGEUP,KEY_PAGEDOWN] and not tutorial_active:cycle_spectator(-1 if event.keycode==KEY_PAGEUP else 1)
   elif event.keycode in [KEY_1,KEY_2] and model.running: activate_item(0 if event.keycode==KEY_1 else 1)
   elif event.keycode==KEY_K and model.balance_version==2 and model.run_kind=="endless":RunChoiceInterface.show(ui)
+  elif event.keycode==KEY_F and not tutorial_active:command_ward()
   elif event.keycode==KEY_B and model.running and watched_room<0:
    if model.player()==null:ui.touch_notice("Claim an empty room first · E inside the room.")
    else:ui.open_build_menu()
@@ -449,6 +450,10 @@ func _unhandled_input(event):
     ui.open_confirmation()
  # Placement is selected by floor-pad clicks, not mouse motion. Keep the
  # preview anchored while the pointer travels to Confirm or Cancel.
+
+func command_ward():
+ if mode!="match" or in_background or watched_room>=0 or pending_build!="":return
+ if not model.route_defense_power():ui.touch_notice(model.ward_reason())
 
 func begin_placement(kind: String):
  if watched_room>=0:return

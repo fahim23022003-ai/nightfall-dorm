@@ -186,9 +186,10 @@ func upgrade_bed() -> bool:
   return reject("Requires door level %d." % maxi(1,bed_level))
  if not afford(BalanceRules.structure("bed",bed_level,balance_version).x,BalanceRules.structure("bed",bed_level,balance_version).y):
   return false
- pay(BalanceRules.structure("bed",bed_level,balance_version).x,BalanceRules.structure("bed",bed_level,balance_version).y,"bed upgrade")
+ var cost=BalanceRules.structure("bed",bed_level,balance_version)
+ pay(cost.x,cost.y,"bed upgrade")
  bed_level += 1
- presentation_action.emit("bed_upgrade",{})
+ presentation_action.emit("bed_upgrade",{"spent_gold":cost.x,"spent_power":cost.y})
  return true
 
 func upgrade_door() -> bool:
@@ -203,11 +204,12 @@ func upgrade_door() -> bool:
   return reject("Requires bed level %d." % maxi(1,door_level))
  if not afford(BalanceRules.structure("door",door_level,balance_version).x,BalanceRules.structure("door",door_level,balance_version).y):
   return false
- pay(BalanceRules.structure("door",door_level,balance_version).x,BalanceRules.structure("door",door_level,balance_version).y,"door upgrade")
+ var cost=BalanceRules.structure("door",door_level,balance_version)
+ pay(cost.x,cost.y,"door upgrade")
  var old_max = max_hp()
  door_level += 1
  door_hp += max_hp()-old_max
- presentation_action.emit("door_upgrade",{})
+ presentation_action.emit("door_upgrade",{"spent_gold":cost.x,"spent_power":cost.y})
  return true
 
 func repair_door() -> bool:
@@ -223,7 +225,7 @@ func repair_door() -> bool:
  repair_actions+=1
  var before_repair=door_hp
  door_hp = minf(max_hp(),door_hp+Catalog.REPAIR_HEAL*repair_factor*StrategyCatalog.BRANCHES.get(door_branch,{}).get("repair",1.0))
- presentation_action.emit("repair",{"amount":door_hp-before_repair})
+ presentation_action.emit("repair",{"amount":door_hp-before_repair,"spent_gold":manual_repair_cost(),"spent_power":0})
  return true
 
 func afford(g: float, e: float = 0) -> bool:
@@ -266,7 +268,7 @@ func _purchase_building(kind: String,tile: int,point: Vector2=Vector2.INF) -> bo
  if point.is_finite():buildings[tile].position=point
  if spatial!=null:spatial.undo_entry.clear()
  construction_actions+=1
- presentation_action.emit("build",{"kind":kind,"tile":tile,"position":tile_position(tile)})
+ presentation_action.emit("build",{"kind":kind,"tile":tile,"position":tile_position(tile),"spent_gold":price.x,"spent_power":price.y})
  return true
 
 func upgrade_building(tile: int) -> bool:
@@ -304,7 +306,7 @@ func _upgrade_building(tile: int,branch: String) -> bool:
  if branch!="":b.specialization=branch
  if spatial!=null:spatial.undo_entry.clear()
  construction_actions+=1
- presentation_action.emit("building_upgrade",{"kind":b.kind,"tile":tile,"level":b.level,"specialization":b.get("specialization","")})
+ presentation_action.emit("building_upgrade",{"kind":b.kind,"tile":tile,"level":b.level,"specialization":b.get("specialization",""),"spent_gold":paid_gold,"spent_power":paid_power})
  return true
 
 # Record actual successful payments, never infer investment from level or prices.

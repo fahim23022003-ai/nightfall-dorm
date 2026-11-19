@@ -650,6 +650,10 @@ func _wrath_presentation(type: String, record: Dictionary, model, position: Vect
  var important=int(record.get("room",-1))==model.player_room
  var context={"important":important,"expires_in":1.0}
  match type:
+  "emergency_ward":event("shield_activate",position,context)
+  "emergency_ward_hit":event("shield_absorb",position,context)
+  "hunter_recovery":event("door_reaction",position,context)
+  "hunter_reassess":event("danger",position,context)
   "hunter_evolved":
    var victim=int(record.get("victim_room",record.get("room",-1)))
    if victim<0 or victim>=Catalog.SURVIVOR_NAMES.size() or _evolved_rooms.has(victim):return true

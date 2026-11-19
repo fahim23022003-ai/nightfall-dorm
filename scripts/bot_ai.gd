@@ -136,7 +136,7 @@ static func tactical_earned(r,m):
  for id in r.buildings:
   if r.buildings[id].kind=="turret" and r.buildings[id].level<2 and r.upgrade_building(id):return
  if not has_kind(r,"repair") and tactical_build(r,"repair"):return
- var counter="frost" if r.profile in ["guard","engineer"] else "flame" if r.profile=="gunner" else "heavy"
+ var counter="frost" if m.hunter.archetype=="crusher" or r.profile in ["guard","engineer"] else "flame" if r.profile=="gunner" else "heavy"
  if not has_kind(r,counter) and tactical_build(r,counter):return
  var cap=mini(8,3+int(r.occupied_seconds/180))
  if r.bed_level<cap and upgrade_structure(r,"bed"):return

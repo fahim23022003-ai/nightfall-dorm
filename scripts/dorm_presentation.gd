@@ -247,6 +247,8 @@ func render(c):
   if m.map_id!="legacy": map_presentation.render_door(c,self,room)
   else: door_scene(c,room)
   render_door_scars(c,room)
+  if room.index==c.model.player_room and room.door_hp>0 and c.model.time<c.model.ward_until and c.model.ward_capacity>0:
+   c.draw_arc(OFFSET+room.door_position(),35,0,TAU,24,Color(.37,.83,1,.75),2,true)
   if room.sleeping:
    if fear_rooms.has(room.index) and m.hunter.target==room.index and m.hunter.state==HunterState.State.BREACH and m.hunter.hp>0:
     var q=OFFSET+room.bed_position()+Vector2(sin(clock*32)*2,-8)

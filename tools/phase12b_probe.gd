@@ -3,8 +3,12 @@ var output="res://docs/evidence/fair-difficulty/baseline.json"
 var policy_id="principal"
 var kind="campaign"
 var mistake=false
+var requested_stage="stage_1"
+var requested_map="abandoned_dorm"
+var ward_policy=false
 var mode="hard"
 var seeds=[1,2,3,4,5]
+var first_seed=0
 var duration=900.0
 var label="Phase12 delivery actual rules"
 var ablation="none"
@@ -22,8 +26,8 @@ func state(m):
 func simulate(seed_number):
  var m=MatchModel.new();m.reset(seed_number);
  if ablation=="slow-growth":m.hunter=preload("res://tools/phase12b_diagnostic_hunter.gd").new()
- if kind=="endless":m.configure_endless("abandoned_dorm",mode,seed_number,seed_number)
- else:m.configure_stage("stage_1");m.configure_match(mode);m.configure_strategy(seed_number)
+ if kind=="endless":m.configure_endless(requested_map,mode,seed_number,seed_number)
+ else:m.configure_stage(requested_stage);m.configure_match(mode);m.configure_strategy(seed_number)
  m.configure_balance(2);m.claim_room(0);m.player_position=m.player().bed_position();m.sleep_player()
  var policy=preload("res://tools/phase12_test_policy.gd").new() if policy_id.begins_with("principal") else preload("res://tools/phase12b_policy.gd").new()
  policy.balance=2
@@ -36,6 +40,7 @@ func simulate(seed_number):
    if mistake and m.time<.01:m.buy("turret",0)
    elif mistake and not corrected and m.time>m.preparation+2 and m.player().buildings.has(0):
     corrected=m.sell_building(0);row.correction_time=m.time
+   elif ward_policy and m.hunter.target==m.player_room and m.hunter.charged_ready and m.route_defense_power():pass
    elif policy_id!="passive":policy.act(m,policy_id.trim_prefix("principal-") if policy_id.contains("-") else "balanced")
    decision+=1.0
    if spend!=m.player().spent:
@@ -57,6 +62,8 @@ func simulate(seed_number):
   if ablation=="no-contact":m.pressure.stacks=0;m.pressure.warning=9999
   if ablation=="no-repair-suppression":m.player().repair_factor=1.0
  row.result=m.result if m.result!="" else "unfinished";row.final=state(m);row.first_player_hit=first_player_hit;row.breach_time=breach;row.eliminations=m.eliminations;row.damage=m.player().damage_dealt;row.automatic_repair=m.player().economy_repaired;row.flow=m.player().ledger.totals.duplicate(true);row.player_door_damage=m.player().door_damage_taken;row.kind=kind;row.completed=m.endless.completed if kind=="endless" else int(m.result=="victory")
+ row["contribution"]=m.get("contribution")
+ row["retargets_current_actor"]=m.hunter.retargets
  row.npcs=[]
  for r in m.rooms:
   if r.owner>0:row.npcs.append({"owner":r.owner,"room":r.index,"alive":r.alive,"income":r.income_total,"spent":r.spent,"damage":r.damage_dealt,"door":r.door_level+1,"bed":r.bed_level+1,"wallet":[r.gold,r.electricity],"buildings":r.buildings.values()})
@@ -71,11 +78,15 @@ func run():
   if args[i]=="--label":label=args[i+1]
   if args[i]=="--policy":policy_id=args[i+1]
   if args[i]=="--mode":mode=args[i+1]
+  if args[i]=="--ward":ward_policy=args[i+1]=="yes"
+  if args[i]=="--stage":requested_stage=args[i+1]
+  if args[i]=="--map":requested_map=args[i+1]
   if args[i]=="--kind":kind=args[i+1]
   if args[i]=="--mistake":mistake=args[i+1]=="yes"
   if args[i]=="--duration":duration=float(args[i+1])
   if args[i]=="--ablation":ablation=args[i+1]
+  if args[i]=="--first":first_seed=int(args[i+1])
   if args[i]=="--seeds":seeds=Array(args[i+1].split(",")).map(func(s):return int(s))
- for seed_number in seeds:
+ for seed_number in ([first_seed] if first_seed>0 else seeds):
   var row=simulate(seed_number);rows.append(row);print("CASE ",policy_id," ",mode," seed=",seed_number," ",row.result," time=",row.final.time)
- var f=FileAccess.open(output,FileAccess.WRITE);f.store_string(JSON.stringify({"engine":Engine.get_version_info().string,"label":label,"entry":"Fresh stage1; no difficulty progression lock, permanent bonuses, inventory or injected resources. Existing auto claim/sleep at t0 for simulation only. One paid action/second, .1 model ticks; accelerated execution, normal gameplay clock, not a human/input recording.","ablation":ablation,"mistake_fixture":mistake,"policy":policy_id,"rows":rows}," "));quit()
+ var f=FileAccess.open(output,FileAccess.WRITE);f.store_string(JSON.stringify({"engine":Engine.get_version_info().string,"label":label,"entry":"Fresh starting wallet, selected stage/map via QA harness; no difficulty progression lock, permanent bonuses, inventory or injected resources. Existing auto claim/sleep at t0 for simulation only. One paid action/second, .1 model ticks; accelerated execution, normal gameplay clock, not a human/input recording.","ablation":ablation,"mistake_fixture":mistake,"policy":policy_id,"rows":rows}," "));quit()

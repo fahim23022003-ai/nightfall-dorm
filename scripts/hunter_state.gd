@@ -502,7 +502,7 @@ func tick(delta: float, match_state):
     if archetype=="crusher" and pressure_remaining>0:cooldown+=.35
     if pressure_remaining>0 and pressure_remaining<interval: tactical_recovery=1.0
   var commitment=StrategyCatalog.ARCHETYPES[archetype].commit if archetype!="" and not transformed else 1.0
-  if not match_state.wrath.domain_active() and boss_attack=="" and not archetype_primed and reassess_seconds>maxf(profile.commit*commitment,Catalog.HUNTER_ESCALATION.minimum_commitment) and room.door_hp>damage*2:
+  if not match_state.wrath.domain_active() and boss_attack=="" and not archetype_primed and (match_state.balance_version!=2 or (not charged_ready and recovery_remaining<=0 and arcane.action=="" and nightmare.action=="")) and reassess_seconds>maxf(profile.commit*commitment,Catalog.HUNTER_ESCALATION.minimum_commitment) and room.door_hp>damage*2:
    var alternative=choose_target(match_state.rooms,target)
    var stalled=room.door_hp>=siege_start_hp-damage*2
    if archetype!="":target_history[target]=minf(900,float(target_history.get(target,0))+ (260 if stalled else 90))
@@ -511,6 +511,8 @@ func tick(delta: float, match_state):
     surge_remaining=0
     avoid_target=target
     retargets+=1
+    if match_state.balance_version==2 and not transformed:
+     match_state.record_event("hunter_reassess",target,{"next_room":alternative,"stalled":stalled})
     charged_ready=false
     windup_remaining=0
     room.repair_factor=1.0

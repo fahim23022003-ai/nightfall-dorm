@@ -1,3 +1,14 @@
+# Phase 13 — Nightmare Hunt
+
+Implemented paid Emergency Ward, contribution reporting, Hunter commitment and
+turn/recovery presentation, and threat-aware Frost purchases. See
+[the report](PHASE_13_NIGHTMARE_HUNT_REPORT.md) and
+[model outcomes](evidence/nightmare-hunt/summary.json). Long Night ally carry
+remains observable. Hell defensive wins fell by one in the six paired seeds.
+Native Windows, human approval and comparative late-game performance remain open.
+
+---
+
 # Phase 12B — Fair Difficulty, Real Counters and Recovery
 
 Started clean on work at1b6d76e017e50c4b26ff0c73bb2ff279ef4721a5.

@@ -12,6 +12,7 @@ var pose=0.0
 var last_attack=0
 var last_event=0
 var cast_blend=0.0
+var facing_blend=1.0
 func reset():
  observed_model=null;smooth_speed=0;lean=0;gait_clock=0;impact=0;pose=0;last_attack=0;last_event=0;cast_blend=0
 func update(delta: float,m,identity):
@@ -19,6 +20,8 @@ func update(delta: float,m,identity):
  var h=m.hunter
  var charge=clampf(1-h.nightmare.warning/2.8,0,1) if h.nightmare.action!="" else clampf(1-h.arcane.warning/1.1,0,1) if h.arcane.action!="" else .5 if h.archetype_primed or h.charged_ready else 0.0
  cast_blend=lerpf(cast_blend,charge,1-exp(-delta*9))
+ if absf(identity.heading.x)>.15:
+  facing_blend=move_toward(facing_blend,signf(identity.heading.x),delta*8)
  var goal=clampf(identity.velocity.length()/maxf(1,h.speed),0,1) if h.state in [HunterState.State.MOVE,HunterState.State.EXIT,HunterState.State.SEEK] else 0.0
  smooth_speed=lerpf(smooth_speed,goal,1-exp(-delta*8));lean=lerpf(lean,clampf(identity.velocity.x*.001,-.16,.16),1-exp(-delta*6))
  gait_clock+=delta*GAIT.get(h.archetype,6.0)*maxf(.15,smooth_speed)
@@ -57,6 +60,9 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
  if alpha<=0:return
  var face=-1.0 if identity.heading.x<-.15 else 1.0
  var p=O+h.position+Vector2(0,-17)
+ if not reduced and observed_model==c.model:
+  face=signf(facing_blend)*maxf(.68,absf(facing_blend)) if facing_blend!=0 else .68
+  p.y+=minf(1.5,h.recovery_remaining)*2
  if h.archetype in ["witch","storm","stalker","electric"]:p.y+=sin(clock*2.2)*(.4 if reduced else 3)
  if h.archetype=="ravager" and moving:p.x+=face*3
  var tint=Color(1.12 if CinematicQuality.reduced_flash(c) else 1.4,1.05,1.02,alpha) if h.hit_flash>0 else Color(1,1,1,alpha)
