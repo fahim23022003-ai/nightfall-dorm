@@ -1,0 +1,36 @@
+{
+  "untrimmed": {
+    "checks": 168,
+    "failures": 0,
+    "frame_time": {
+      "max_ms": 115.344,
+      "median_ms": 60.2825,
+      "p95_ms": 74.188,
+      "render_video_memory_bytes": 147610619,
+      "sample_frames": 240,
+      "static_memory_bytes": 136944751,
+      "warmup_frames": 30
+    },
+    "model_sha256": "dcfc1db0e0f6ce800c30b0d86382b37b936bab1d84976443e773ae1a0e8ae02b",
+    "gallery_checks": 35
+  },
+  "trimmed": {
+    "checks": 168,
+    "failures": 0,
+    "frame_time": {
+      "max_ms": 83.554,
+      "median_ms": 40.766,
+      "p95_ms": 50.448,
+      "render_video_memory_bytes": 154098503,
+      "sample_frames": 240,
+      "static_memory_bytes": 136980065,
+      "warmup_frames": 30
+    },
+    "model_sha256": "dcfc1db0e0f6ce800c30b0d86382b37b936bab1d84976443e773ae1a0e8ae02b",
+    "gallery_checks": 35
+  },
+  "untrimmed_commit": "9aa6b2b26f1796afcd955dd52f299a85c9e9fd47",
+  "trimmed_renderer_sha256": "816519b76f38ba994b9b6c131aa1366f99198e25e2fad88829db87c4a53ec747",
+  "conditions": "One serial A/B comparison on AMD EPYC 9V74, Godot 4.6.3, Mesa llvmpipe and identical medium 1280x720 16-slot fixtures with the pilot enabled. Separate equal-scale all-17-role matrices compare exact RGB channels. Native Windows/Intel UHD not exercised.",
+  "trimmed_commit": "12ebb57803c6a30db005cdc9de75c175e919c6f2"
+}
