@@ -28,10 +28,10 @@ def silhouette_change(previous, current):
     return round(len(previous ^ current) / max(1, len(previous | current)), 4)
 
 
-def measure(sheet):
+def measure(sheet, first_branch_level=5):
     rows = {}
     for row in range(3):
-        first_level = 1 if row == 0 else 5
+        first_level = 1 if row == 0 else first_branch_level
         levels = list(range(first_level, 11))
         masks = [building_mask(sheet, level, row) for level in levels]
         rows[str(row)] = {
@@ -40,7 +40,7 @@ def measure(sheet):
         }
     branches = {
         str(level): silhouette_change(building_mask(sheet, level, 1), building_mask(sheet, level, 2))
-        for level in range(5, 11)
+        for level in range(first_branch_level, 11)
     }
     return {"adjacent": rows, "branch_pair": branches}
 
@@ -57,7 +57,7 @@ def main():
         output[kind] = {}
         for mode, parent in (("before", args.before), ("after", args.after)):
             image = Image.open(parent / f"{kind}-adjacent-levels-720.png").convert("RGB")
-            output[kind][mode] = measure(image)
+            output[kind][mode] = measure(image, 6 if kind in ("bed", "door") else 5)
     args.output.write_text(json.dumps(output, indent=2) + "\n")
 
 

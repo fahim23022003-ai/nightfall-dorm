@@ -7,7 +7,23 @@ const ARC_CELL = 96
 const WEAPON_BEARINGS = 12
 const WEAPON_CANVAS_SIZE = 99.0
 const WEAPON_UNIT = WEAPON_CANVAS_SIZE / 3.75
-const SUPPORT_BRANCHES = {"generator":["regulated","overcharge"],"repair":["sustain","conservation"]}
+const SUPPORT_BRANCHES = {
+ "generator":["regulated","overcharge"],
+ "repair":["sustain","conservation"],
+ "economy":["dividend","capacitive"],
+ "enhancer":["ballistic","coolant"],
+ "shock":["capacitor_burst","rapid_discharge"],
+ "auto_repair":["efficient_mending","emergency_protocol"],
+ "shield":["aegis_burst","steady_veil"],
+}
+const SUPPORT_CLOCK_RATES = {"generator":14.0, "repair":9.0, "economy":8.0, "enhancer":11.0, "auto_repair":12.0, "shield":8.0}
+const CORE_BRANCHES = {"bed":["lucid","conductor"],"door":["bulwark","renewal"]}
+const WEAPON_BRANCHES = {
+ "turret":["precision","suppression"],
+ "heavy":["focus","storm"],
+ "flame":["searing","wildfire"],
+ "frost":["deep_chill","rime_field"],
+}
 var rebirth_enabled := OS.get_environment("NIGHTFALL_VISUAL_REBIRTH") == "1"
 var rebirth_atlases: Dictionary = {}
 const KINDS=["turret","heavy","generator","repair","economy","enhancer","flame","frost","shock","auto_repair","shield","decoy","barrier","plasma","antenna","bed","door"]
@@ -17,8 +33,15 @@ func _init():
 func tier_for(level: int) -> int:return 3 if level==10 else 2 if level>=7 else 1 if level>=4 else 0
 func draw(c,_p,kind: String,level: int,point: Vector2,branch: String="",activity: float=0,target: Vector2=Vector2.ZERO,clock: float=0,angle: float=0,render_scale: float=1.0,tint: Color=Color.WHITE):
  level=clampi(level,1,10)
+ if CORE_BRANCHES.has(kind) and load_rebirth_atlas(kind,""):
+  var state := rebirth_state(level,branch,CORE_BRANCHES[kind],6)
+  draw_rebirth_base(c,kind,state,point,angle,render_scale,tint)
+  return
  if support_rebirth_active(kind):
   draw_rebirth_support(c, kind, level, point, branch, activity, clock, angle, render_scale, tint)
+  return
+ if kind == "frost" and weapon_rebirth_active(kind):
+  draw_rebirth_frost(c,level,point,branch,activity,angle,render_scale,tint)
   return
  if weapon_rebirth_active(kind):
   draw_rebirth_weapon(c, kind, level, point, branch, activity, target, angle, render_scale, tint)
@@ -72,11 +95,14 @@ func load_rebirth_atlas(kind: String, moving_layer: String) -> bool:
   var base_path := WEAPON_ART_DIR + kind + "/base.png"
   var moving_path := WEAPON_ART_DIR + kind + "/" + moving_layer + ".png"
   var textures := []
-  if ResourceLoader.exists(base_path) and ResourceLoader.exists(moving_path):
+  if ResourceLoader.exists(base_path) and (moving_layer.is_empty() or ResourceLoader.exists(moving_path)):
    var base := load(base_path) as Texture2D
-   var moving := load(moving_path) as Texture2D
-   if base != null and moving != null:
-    textures = [base, moving]
+   if base != null:
+    if moving_layer.is_empty():
+     textures = [base]
+    else:
+     var moving := load(moving_path) as Texture2D
+     if moving != null:textures = [base, moving]
   rebirth_atlases[kind] = textures
  return not rebirth_atlases[kind].is_empty()
 
@@ -90,12 +116,29 @@ func support_rebirth_active(kind: String) -> bool:
  return SUPPORT_BRANCHES.has(kind) and load_rebirth_atlas(kind, "motion")
 
 func support_activity(room, building: Dictionary) -> float:
- if building.kind == "generator":
-  return 1.0 if room.alive and room.sleeping and not room.production_paused else 0.0
- return 1.0 if room.repair_status(building).actual > 0.0 else 0.0
+ match building.kind:
+  "repair":
+   return 1.0 if room.repair_status(building).actual > 0.0 else 0.0
+  "shock":
+   return building.flash
+  "auto_repair":
+   var interval := 5.0 if building.get("specialization","") == "emergency_protocol" else 3.0
+   return 1.0 if room.alive and building.cooldown > interval-.67 else 0.0
+  "shield":
+   var branch: String = building.get("specialization","")
+   var duration := 2.0 if branch == "aegis_burst" else 4.0 if branch == "steady_veil" else 3.0
+   return 1.0 if room.alive and room.barrier_hp > 0.0 and room.barrier_remaining > 0.0 and building.cooldown > 12.0-duration else 0.0
+  "enhancer":
+   if room.alive:
+    for weapon in room.buildings.values():
+     if weapon.kind in DefenseEffects.WEAPONS and weapon.flash > 0.0:
+      return 1.0
+   return 0.0
+  _:
+   return 1.0 if room.alive and room.sleeping and not room.production_paused else 0.0
 
 func weapon_rebirth_active(kind: String) -> bool:
- return kind == "turret" and needle_rebirth_active() or kind == "heavy" and arc_rebirth_active()
+ return WEAPON_BRANCHES.has(kind) and load_rebirth_atlas(kind, "" if kind == "frost" else "launcher")
 
 # Aim at the most recent real shot while the launcher is active. When a shot
 # already landed, use its matching launch event without altering the model.
@@ -146,16 +189,27 @@ func arc_muzzle(projected: Vector2, recoil: Vector2) -> Vector2:
  # Midpoint between the two baked electrode terminals.
  return projected * (0.68 * WEAPON_UNIT) - Vector2(0, 1.77 * WEAPON_UNIT / sqrt(2.0)) - recoil
 
-func draw_rebirth_support(c, kind: String, level: int, point: Vector2, branch: String, activity: float, clock: float, angle: float, render_scale: float, tint: Color):
+func elemental_recoil(c, projected: Vector2, fire: float) -> Vector2:
+ return Vector2.ZERO if CinematicQuality.reduced_motion(c) else projected.normalized() * fire
+
+func elemental_muzzle(kind: String, projected: Vector2, recoil: Vector2) -> Vector2:
+ var socket := Vector2(.68, 1.56) if kind == "flame" else Vector2(0.0, 1.46)
+ return projected * (socket.x * WEAPON_UNIT) - Vector2(0, socket.y * WEAPON_UNIT / sqrt(2.0)) - recoil
+
+func rebirth_state(level: int, branch: String, branches: Array, branch_level: int = 5) -> int:
  var state := level - 1
- if level >= 5:
-  if branch == SUPPORT_BRANCHES[kind][0]:
-   state = level + 5
-  elif branch == SUPPORT_BRANCHES[kind][1]:
-   state = level + 11
+ if level >= branch_level:
+  if branch == branches[0]:
+   state = 10 + level - branch_level
+  elif branch == branches[1]:
+   state = 21 + level - 2 * branch_level
+ return state
+
+func draw_rebirth_support(c, kind: String, level: int, point: Vector2, branch: String, activity: float, clock: float, angle: float, render_scale: float, tint: Color):
+ var state := rebirth_state(level, branch, SUPPORT_BRANCHES[kind])
  var phase := 0
  if activity > 0.0 and not CinematicQuality.reduced_motion(c):
-  phase = posmod(floori(clock * (14.0 if kind == "generator" else 9.0)), 8)
+  phase = clampi(ceili(activity / .15 * 7.0),1,7) if kind == "shock" else posmod(floori(clock * SUPPORT_CLOCK_RATES[kind]), 8)
  var cell := 96
  var rect := Rect2(Vector2(-WEAPON_CANVAS_SIZE * 0.5, -WEAPON_CANVAS_SIZE * 0.5 - 0.87 * WEAPON_UNIT), Vector2.ONE * WEAPON_CANVAS_SIZE)
  var atlas: Array = rebirth_atlases[kind]
@@ -164,28 +218,36 @@ func draw_rebirth_support(c, kind: String, level: int, point: Vector2, branch: S
  c.draw_texture_rect_region(atlas[1], rect, Rect2(phase * cell, state * cell, cell, cell), tint)
  c.draw_set_transform(Vector2.ZERO)
 
+func draw_rebirth_base(c,kind: String,state: int,point: Vector2,angle: float,render_scale: float,tint: Color):
+ var rect := Rect2(Vector2(-WEAPON_CANVAS_SIZE * .5,-WEAPON_CANVAS_SIZE * .5-.87*WEAPON_UNIT),Vector2.ONE*WEAPON_CANVAS_SIZE)
+ c.draw_set_transform(point,angle,Vector2.ONE*render_scale)
+ c.draw_texture_rect_region(rebirth_atlases[kind][0],rect,Rect2((state%6)*ARC_CELL,floori(state/6.0)*ARC_CELL,ARC_CELL,ARC_CELL),tint)
+ c.draw_set_transform(Vector2.ZERO)
+
+func draw_rebirth_frost(c, level: int, point: Vector2, branch: String, activity: float, angle: float, render_scale: float, tint: Color):
+ var state := rebirth_state(level,branch,WEAPON_BRANCHES["frost"])
+ draw_rebirth_base(c,"frost",state,point,angle,render_scale,tint)
+ if activity > 0.0:
+  c.draw_set_transform(point,angle,Vector2.ONE*render_scale)
+  draw_elemental_discharge(c,"frost",elemental_muzzle("frost",Vector2.ZERO,Vector2.ZERO),Vector2.UP,clampf(activity/.15,0,1))
+  c.draw_set_transform(Vector2.ZERO)
+
 func draw_rebirth_weapon(c, kind: String, level: int, point: Vector2, branch: String, activity: float, target: Vector2, angle: float, render_scale: float, tint: Color):
- var arc := kind == "heavy"
- var state := level - 1
- if level >= 5:
-  if branch in ["precision", "focus"]:
-   state = level + 5
-  elif branch in ["suppression", "storm"]:
-   state = level + 11
+ var state := rebirth_state(level, branch, WEAPON_BRANCHES[kind])
  var heading := weapon_heading(target)
  var projected := weapon_projection(heading)
  var fire := clampf(activity / 0.15, 0.0, 1.0)
- var recoil := arc_recoil(c, projected, fire) if arc else needle_recoil(c, projected, fire)
- var cell := ARC_CELL if arc else NEEDLE_CELL
+ var recoil := needle_recoil(c, projected, fire) if kind == "turret" else arc_recoil(c, projected, fire) if kind == "heavy" else elemental_recoil(c, projected, fire)
+ var cell := NEEDLE_CELL if kind == "turret" else ARC_CELL
  var rect := Rect2(Vector2(-WEAPON_CANVAS_SIZE * 0.5, -WEAPON_CANVAS_SIZE * 0.5 - 0.87 * WEAPON_UNIT), Vector2.ONE * WEAPON_CANVAS_SIZE)
  c.draw_set_transform(point, angle, Vector2.ONE * render_scale)
  var atlas: Array = rebirth_atlases[kind]
  c.draw_texture_rect_region(atlas[0], rect, Rect2((state % 6) * cell, floori(state / 6.0) * cell, cell, cell), tint)
  c.draw_texture_rect_region(atlas[1], Rect2(rect.position - recoil, rect.size), Rect2(heading * cell, state * cell, cell, cell), tint)
  if fire > 0:
-  if arc:
+  if kind == "heavy":
    draw_arc_discharge(c, heading, arc_muzzle(projected, recoil), branch, fire)
-  else:
+  elif kind == "turret":
    var muzzle := needle_muzzle(projected, recoil)
    var direction := projected.normalized()
    var side := direction.orthogonal()
@@ -194,7 +256,19 @@ func draw_rebirth_weapon(c, kind: String, level: int, point: Vector2, branch: St
     c.draw_circle(muzzle, 1.6, Color(0.63, 0.86, 0.88, alpha))
    else:
     c.draw_colored_polygon(PackedVector2Array([muzzle - side * 2.0, muzzle + direction * (3.0 + 5.0 * fire), muzzle + side * 2.0]), Color(0.69, 0.93, 0.91, alpha))
+  else:
+   draw_elemental_discharge(c, kind, elemental_muzzle(kind, projected, recoil), projected.normalized(), fire)
  c.draw_set_transform(Vector2.ZERO)
+
+func draw_elemental_discharge(c, kind: String, muzzle: Vector2, direction: Vector2, fire: float):
+ var tint := Color("F39B60") if kind == "flame" else Color("A5D7ED")
+ tint.a = fire * .85
+ if CinematicQuality.reduced_flash(c):
+  c.draw_circle(muzzle, 1.5, tint)
+  return
+ var across := direction.orthogonal()
+ c.draw_colored_polygon(PackedVector2Array([muzzle - across * 2.1, muzzle + direction * (4.0 + fire * 5.0), muzzle + across * 2.1]), tint)
+ c.draw_circle(muzzle, 1.2, Color(1.0, .91, .78, tint.a))
 
 func draw_arc_discharge(c, heading: int, center: Vector2, branch: String, fire: float):
  var yaw := heading * TAU / WEAPON_BEARINGS

@@ -54,7 +54,7 @@ func _draw_sheet(sheet: Gallery, kind: String):
     sheet.draw_string(FONT, Vector2(24, y - 31), label, HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color("e9d5af"))
    var origin := Vector2(x, y)
    sheet.draw_rect(Rect2(origin - Vector2(48, 98), Vector2(96, 133)), Color("283542"))
-   if row > 0 and level < 5:
+   if row > 0 and level < (6 if kind in ["bed", "door"] else 5):
     sheet.draw_string(FONT, origin + Vector2(-4, -11), "–", HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color("b2b7bc"))
    else:
     visual.draw(sheet, game.presentation, kind, level, origin, branch, 0.0, Vector2(1, -.35), 0.0)

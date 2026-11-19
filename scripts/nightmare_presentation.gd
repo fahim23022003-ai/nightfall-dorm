@@ -17,9 +17,10 @@ var cast_blend=0.0
 var facing_blend=1.0
 var stalker_heading=Vector2.ZERO
 var stalker_turn=0.0
+var stalker_cast_release=0.0
 func reset():
  observed_model=null;smooth_speed=0;lean=0;gait_clock=0;impact=0;pose=0;last_attack=0;last_event=0;cast_blend=0
- stalker_heading=Vector2.ZERO;stalker_turn=0.0
+ stalker_heading=Vector2.ZERO;stalker_turn=0.0;stalker_cast_release=0.0
  stalker_preview.reset_pose()
 func update(delta: float,m,identity):
  if observed_model!=m:reset();observed_model=m;last_attack=m.hunter.attacks
@@ -38,6 +39,7 @@ func update(delta: float,m,identity):
  smooth_speed=lerpf(smooth_speed,goal,1-exp(-delta*8));lean=lerpf(lean,clampf(identity.velocity.x*.001,-.16,.16),1-exp(-delta*6))
  gait_clock+=delta*GAIT.get(h.archetype,6.0)*maxf(.15,smooth_speed)
  pose=maxf(0,pose-delta);impact=maxf(0,impact-delta*3)
+ stalker_cast_release=maxf(0,stalker_cast_release-delta)
  if h.attacks>last_attack:pose=.42;last_attack=h.attacks
  for e in m.presentation_events:
   if e.id<=last_event:continue
@@ -45,6 +47,8 @@ func update(delta: float,m,identity):
   if m.time-float(e.time)>.3:continue
   if e.type=="nightmare_impact" and e.get("damage_type","")=="physical":impact=.45
   elif e.type=="nightmare_rebirth":impact=.25
+  elif h.archetype=="stalker" and e.type=="nightmare_release" and e.get("skill","") in ["drag","oath"]:
+   stalker_cast_release=maxf(0,.42-(m.time-float(e.time)))
 func camera_impulse() -> Vector2:
  return Vector2(sin(gait_clock*51),cos(gait_clock*37))*impact*2.2
 var font=preload("res://assets/fonts/Interface.ttf")
@@ -80,7 +84,8 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
  var tint=Color(1.12 if CinematicQuality.reduced_flash(c) else 1.4,1.05,1.02,alpha) if h.hit_flash>0 else Color(1,1,1,alpha)
  if silhouette:tint=Color(0,0,0,alpha)
  var color=Color(0,0,0,alpha) if silhouette else Color(StrategyCatalog.ARCHETYPES[h.archetype].color)
- var preview_supported=h.archetype=="stalker" and stalker_preview.supports(level,identity.heading)
+ var stalker_level=9 if level==10 and tier==2 else level
+ var preview_supported=h.archetype=="stalker" and stalker_preview.supports(stalker_level,identity.heading)
  var shadow_radius=25.0 if preview_supported else 34.0+tier*2
  c.draw_set_transform(O+h.position+Vector2(0,14),0,Vector2(1,.38));c.draw_circle(Vector2.ZERO,shadow_radius,Color(.008,.012,.025,.18*alpha));c.draw_circle(Vector2.ZERO,shadow_radius-9,Color(.008,.012,.02,.4*alpha));c.draw_set_transform(Vector2.ZERO)
  var windup=clampf(1-h.nightmare.warning/2.8,0,1) if h.nightmare.action!="" else clampf(1-h.arcane.warning/1.1,0,1) if h.arcane.action!="" else .5 if h.archetype_primed or h.charged_ready else 0.0
@@ -106,7 +111,7 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
  var flutter=0 if reduced else sin(clock*3.5)*.07+stride*sin(phase)*.1
  var preview_drawn=false
  if preview_supported:
-  preview_drawn=draw_stalker_preview(c,h,p,tint,reduced,phase,stride,clock,fall,windup,bend)
+  preview_drawn=draw_stalker_preview(c,h,p,tint,stalker_level,reduced,phase,stride,clock,fall,windup,bend)
  elif h.archetype=="witch":
   var witch_level=9 if level==10 and tier==2 else level
   if witch_preview.supports(witch_level):
@@ -152,22 +157,26 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
   for i in range(6 if reduced else 12):
    var v=Vector2.from_angle(i*TAU/(6 if reduced else 12))
    c.draw_line(p+v*(28+progress*15),p+v*(40+progress*45),Color(color,.6*(1-progress*.5)),2)
-func draw_stalker_preview(c,h,p: Vector2,tint: Color,reduced: bool,phase: float,stride: float,clock: float,fall: float,windup: float,bend: float) -> bool:
+func draw_stalker_preview(c,h,p: Vector2,tint: Color,level: int,reduced: bool,phase: float,stride: float,clock: float,fall: float,windup: float,bend: float) -> bool:
  var motion="idle"
  var progress=fposmod(clock*.37,1.0)
  if h.state==HunterState.State.DEAD:
   motion="vanish";progress=fall
+ elif level>1 and c.model.evolution.rebirth_remaining>0.0:
+  motion="evolve";progress=1.0-c.model.evolution.rebirth_remaining/3.6
  elif h.nightmare.action!="" or h.tactical_action=="conceal" or h.windup_remaining>0:
   motion="tell";progress=windup
   if h.tactical_action=="conceal":
    progress=1.0-h.tactical_windup/.65
+  elif h.nightmare.action!="":
+   progress=1.0-h.nightmare.warning/(2.8 if h.nightmare.action=="oath" else 2.0)
   elif h.windup_remaining>0:
    var duration=float(StrategyCatalog.ARCHETYPES.stalker.windup)
    if h.charged_ready:
     duration=float(RankCatalog.pressure(h.difficulty).windup)
    progress=1.0-h.windup_remaining/maxf(.01,duration)
- elif observed_model==c.model and pose>0:
-  motion="strike";progress=pose/.42
+ elif observed_model==c.model and (pose>0 or stalker_cast_release>0):
+  motion="strike";progress=maxf(pose,stalker_cast_release)/.42
  elif h.hit_flash>0:
   motion="hit";progress=clampf(h.hit_flash*2.0,0.0,1.0)
  elif h.recovery_remaining>0:
@@ -176,12 +185,12 @@ func draw_stalker_preview(c,h,p: Vector2,tint: Color,reduced: bool,phase: float,
   motion="turn";progress=stalker_turn
  elif stride>.12 and h.state in [HunterState.State.MOVE,HunterState.State.EXIT,HunterState.State.SEEK]:
   motion="stalk";progress=fposmod(phase/TAU,1.0)
- if reduced and motion in ["idle","stalk"]:
+ if reduced and motion in ["idle","stalk","evolve"]:
   progress=0.0
  var floor=p+Vector2(0,30)
- if not stalker_preview.draw(c,floor,tint,motion,progress,bend*.22,clock,reduced):
+ if not stalker_preview.draw(c,floor,tint,motion,progress,bend*.22,clock,reduced,level):
   return false
- if motion=="tell" and h.charged_ready and CinematicQuality.detail(c)>0 and tint.r>0:
+ if motion=="tell" and (h.charged_ready or h.nightmare.action in ["drag","oath"]) and CinematicQuality.detail(c)>0 and tint.r>0:
   var fingertip=stalker_preview.socket_position("near_fingertips")
   var glow=.2*maxf(.0,progress)
   c.draw_arc(fingertip,3.4,-1.9,1.3,8,Color(.71,.62,.81,glow),1.0,true)

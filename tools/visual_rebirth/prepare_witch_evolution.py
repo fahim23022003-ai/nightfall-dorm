@@ -26,7 +26,7 @@ SHEETS = {
 }
 
 
-def position_component(image, labels, component, matte_cutoff, foot_x):
+def position_component(image, labels, component, matte_cutoff, foot_x, size, pivot):
     component_mask = Image.fromarray(
         (labels == component).astype(np.uint8) * 255
     ).filter(ImageFilter.MaxFilter(7))
@@ -36,28 +36,28 @@ def position_component(image, labels, component, matte_cutoff, foot_x):
     alpha = ImageChops.multiply(alpha, component_mask)
     bounds = alpha.getbbox()
     if bounds is None:
-        raise ValueError("Missing Witch sprite alpha")
+        raise ValueError("Missing sprite alpha")
 
     image = image.copy()
     image.putalpha(alpha)
     sprite = image.crop(bounds)
     scale = HEIGHT / sprite.height
     sprite = sprite.resize((round(sprite.width * scale), HEIGHT), Image.Resampling.LANCZOS)
-    left = PIVOT[0] - round((foot_x - bounds[0]) * scale)
-    if left < 0 or left + sprite.width > SIZE[0]:
-        raise ValueError("Witch sprite does not fit the floor-centered canvas")
+    left = pivot[0] - round((foot_x - bounds[0]) * scale)
+    if left < 0 or left + sprite.width > size[0]:
+        raise ValueError("Sprite does not fit the floor-centered canvas")
 
-    canvas = Image.new("RGBA", SIZE)
-    canvas.alpha_composite(sprite, (left, PIVOT[1] - HEIGHT))
+    canvas = Image.new("RGBA", size)
+    canvas.alpha_composite(sprite, (left, pivot[1] - HEIGHT))
     return canvas
 
 
-def main():
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+def pack_evolution(source_dir, output_dir, sheets, size, pivot):
+    output_dir.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as temporary:
         label_path = Path(temporary) / "components.png"
-        for sheet, (threshold, matte_cutoff, views) in SHEETS.items():
-            source = SOURCE_DIR / f"{sheet}-source.png"
+        for sheet, (threshold, matte_cutoff, views) in sheets.items():
+            source = source_dir / f"{sheet}-source.png"
             subprocess.run(
                 ["magick", str(source), "-alpha", "extract", "-threshold", f"{threshold}%",
                  "-define", "connected-components:mean-color=false", "-connected-components",
@@ -68,14 +68,16 @@ def main():
                 labels = np.asarray(component_image)
             areas = Counter(labels.ravel())
             del areas[0]
-            components = [component for component, _ in areas.most_common(3)]
+            components = [component for component, _ in areas.most_common(len(views))]
             components.sort(key=lambda component: np.nonzero(labels == component)[1].min())
             if len(components) != len(views):
-                raise ValueError(f"Expected three Witch sprites in {source}")
+                raise ValueError(f"Expected {len(views)} sprites in {source}")
             for (level, foot_x), component in zip(views, components):
-                sprite = position_component(image, labels, component, matte_cutoff, foot_x)
-                sprite.save(OUTPUT_DIR / f"level_{level:02d}_oblique.png", optimize=True)
+                if level is None:
+                    continue
+                sprite = position_component(image, labels, component, matte_cutoff, foot_x, size, pivot)
+                sprite.save(output_dir / f"level_{level:02d}_oblique.png", optimize=True)
 
 
 if __name__ == "__main__":
-    main()
+    pack_evolution(SOURCE_DIR, OUTPUT_DIR, SHEETS, SIZE, PIVOT)

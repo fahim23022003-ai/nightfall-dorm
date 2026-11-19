@@ -163,7 +163,7 @@ func update(delta: float, model):
    if e.type=="impact":
     var kind="impact"
     if building_visual.weapon_rebirth_active(e.kind):
-     kind="arc_impact" if e.kind=="heavy" else "needle_impact"
+     kind={"heavy":"arc_impact","turret":"needle_impact","flame":"flame_impact","frost":"frost_impact"}.get(e.kind,"impact")
     effect(kind,e.position,0.3)
  for e in visual_events: e.life-=delta
  visual_events=visual_events.filter(func(e): return e.life>0)
@@ -341,6 +341,15 @@ func render(c):
     direction=(actor.position+OFFSET-p).normalized()
    draw_arc_bolt(c,p,direction,branch,shot.id,shot.age)
    continue
+  if shot.kind in ["flame","frost"] and building_visual.weapon_rebirth_active(shot.kind):
+   if actor!=null and shot.age<.10:
+    var projected=building_visual.weapon_projection(building_visual.weapon_heading(actor.position-shot.from))
+    var recoil=building_visual.elemental_recoil(c,projected,clampf(1-shot.age/.15,0,1))
+    var muzzle: Vector2=shot.from+building_visual.elemental_muzzle(shot.kind,projected,recoil)
+    p=OFFSET+muzzle.lerp(shot.position,smoothstep(0.0,.10,shot.age))
+    direction=(actor.position+OFFSET-p).normalized()
+   draw_elemental_shot(c,p,direction,shot.kind,branch)
+   continue
   if branch!="":
    var tint={"precision":Color("E6C48D"),"suppression":Color("9EC7A4"),"focus":Color("C1A6DF"),"storm":Color("83DFDA")}.get(branch,Catalog.BUILDINGS[shot.kind].color)
    c.draw_line(p-direction*(24 if branch=="precision" else 13),p,tint,4 if branch=="precision" else 2)
@@ -381,6 +390,8 @@ func render(c):
    draw_needle_impact(c,p,fraction)
   elif e.kind=="arc_impact":
    draw_arc_impact(c,p,fraction)
+  elif e.kind in ["flame_impact","frost_impact"]:
+   draw_elemental_impact(c,p,e.kind=="flame_impact",fraction)
   else:
    var color=Color("A8C9AE") if e.kind=="repair" else Color("C8AA79")
    if e.kind=="impact":c.draw_arc(p,5+(1-fraction)*13,0,TAU,20,Color(color,fraction*.65),1.5)
@@ -586,6 +597,31 @@ func draw_arc_impact(c, point: Vector2, fraction: float):
   var direction := Vector2.from_angle(TAU * ray / 5.0 + 0.3)
   var offset := (1.0 - fraction) * 7.0
   c.draw_polyline(PackedVector2Array([point + direction * offset, point + direction * (offset + 3) + direction.orthogonal() * 2.0, point + direction * (offset + 8)]), tint, 1.25, true)
+
+func draw_elemental_shot(c, point: Vector2, heading: Vector2, kind: String, branch: String):
+ var flame := kind == "flame"
+ var direction := heading if heading.length_squared() > .01 else Vector2.RIGHT
+ var across := direction.orthogonal()
+ var tint := Color("D26E42") if flame else Color("78B9DE")
+ var concentrated := branch in ["searing", "deep_chill"]
+ var length := 14.0 if concentrated else 9.0
+ var tail := point - direction * length
+ if not CinematicQuality.reduced_flash(c):
+  c.draw_line(tail-direction*4.0,point,Color(tint,.30),4.0,true)
+ c.draw_colored_polygon(PackedVector2Array([tail, point+across*2.1, point+direction*3.0, point-across*2.1]),tint)
+ c.draw_line(tail.lerp(point,.42),point,Color("F9CB97") if flame else Color("D9F3FA"),1.0,true)
+
+func draw_elemental_impact(c, point: Vector2, flame: bool, fraction: float):
+ var tint := Color(.91,.43,.22,fraction*.75) if flame else Color(.62,.82,.97,fraction*.75)
+ if CinematicQuality.reduced_flash(c):
+  c.draw_circle(point,2.5,tint,false,1.1)
+  return
+ var radius := 3.0 + (1.0-fraction)*8.0
+ for index in range(4 if flame else 6):
+  var ray := Vector2.from_angle(index*TAU/(4.0 if flame else 6.0))
+  var end := point+ray*(radius+4.0)
+  c.draw_line(point+ray*radius,end,tint,1.25,true)
+  if not flame:c.draw_line(end,end-ray*2.4+ray.orthogonal()*1.4,tint,1.0,true)
 
 func draw_needle_dart(c, point: Vector2, direction: Vector2, branch: String):
  var axis := direction if direction.length_squared() > 0.01 else Vector2.RIGHT
