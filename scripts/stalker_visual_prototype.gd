@@ -5,8 +5,8 @@ extends RefCounted
 const TEXTURE_PATH = "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
 const DRAW_SIZE = Vector2(48.4, 140.8)
 const FLOOR_PIVOT = Vector2(23.5, 140.0)
-## About 11% taller than the standing survivor's 52-pixel draw box.
-const DISPLAY_SCALE = 0.41
+## Twice the standing survivor's 52-pixel draw height, with a fuller silhouette.
+const DISPLAY_SCALE = Vector2(0.90, 104.0 / DRAW_SIZE.y)
 const GRID = Vector2i(12, 22)
 const STEPS = 16
 const POSES = ["idle", "stalk", "tell", "strike", "hit", "vanish"]
@@ -29,7 +29,7 @@ func draw(canvas: CanvasItem, floor: Vector2, tint: Color, state: String, progre
  var key := Vector2i(POSES.find(state), frame)
  if not frames.has(key):
   frames[key] = _mesh(state, float(frame) / STEPS)
- canvas.draw_mesh(frames[key], texture, Transform2D(angle, Vector2.ONE * DISPLAY_SCALE, 0.0, floor), tint)
+ canvas.draw_mesh(frames[key], texture, Transform2D(angle, DISPLAY_SCALE, 0.0, floor), tint)
  return true
 
 func _mesh(state: String, progress: float) -> ArrayMesh:

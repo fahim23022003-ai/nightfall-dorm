@@ -70,7 +70,7 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
  if silhouette:tint=Color(0,0,0,alpha)
  var color=Color(0,0,0,alpha) if silhouette else Color(StrategyCatalog.ARCHETYPES[h.archetype].color)
  var preview_supported=h.archetype=="stalker" and stalker_preview.supports(level,identity.heading)
- var shadow_radius=20.0 if preview_supported else 34.0+tier*2
+ var shadow_radius=25.0 if preview_supported else 34.0+tier*2
  c.draw_set_transform(O+h.position+Vector2(0,14),0,Vector2(1,.38));c.draw_circle(Vector2.ZERO,shadow_radius,Color(.008,.012,.025,.18*alpha));c.draw_circle(Vector2.ZERO,shadow_radius-9,Color(.008,.012,.02,.4*alpha));c.draw_set_transform(Vector2.ZERO)
  var windup=clampf(1-h.nightmare.warning/2.8,0,1) if h.nightmare.action!="" else clampf(1-h.arcane.warning/1.1,0,1) if h.arcane.action!="" else .5 if h.archetype_primed or h.charged_ready else 0.0
  var guarding=h.suppression_remaining>0 or h.nightmare.remaining>0 and h.nightmare.effect in ["ossuary","overload","quills"]
