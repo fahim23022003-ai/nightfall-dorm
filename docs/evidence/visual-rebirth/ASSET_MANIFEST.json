@@ -20,7 +20,7 @@
     }
   },
   "reference_status": "decoded_and_matched_to_handoff",
-  "production_status": "continuous_verified_implementation_in_progress",
+  "production_status": "entire_reachable_catalog_integrated_and_rendered",
   "assets": {
     "crusher": {
       "group": "hunters",
@@ -66,7 +66,7 @@
               "sha256": "e6ed1b20395cae10565cc6093fc31a9ae09e4758b559aafe3876efc766c5c140"
             }
           },
-          "source_tool": "tools/visual_rebirth/prepare_crusher_evolution.py",
+          "source_tool": "tools/visual_rebirth/prepare_hunter_reference.py",
           "renderer": "scripts/crusher_visual.gd",
           "qa_status": "exact_level_bound_and_rendered_in_godot"
         },
@@ -811,126 +811,317 @@
         "right",
         "gameplay"
       ],
-      "verified_outputs": [],
+      "verified_outputs": [
+        {
+          "level": 1,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/ravager/level_01_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "d7c0c5c86346b4ac977cdb17ecd7d71fc9a28cbf6c7ada32249422c45657a32d"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_ravager_evolution.py",
+          "renderer": "scripts/ravager_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 2,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/ravager/level_02_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "c8d1393bd65b6d42794c9908e22efec658d7add5211ba004ac06eb446a9025bf"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_ravager_evolution.py",
+          "renderer": "scripts/ravager_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 3,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/ravager/level_03_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "bbe141a91321fc015be9416ce983ec3f5da29d464c03167a2aecc958ebf4a9a4"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_ravager_evolution.py",
+          "renderer": "scripts/ravager_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 4,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/ravager/level_04_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "35e99d9f56e19633ee52559a84b003a0c63b2ba7fb49594337ef3bc81fc5e5bc"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_ravager_evolution.py",
+          "renderer": "scripts/ravager_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 5,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/ravager/level_05_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "d83aa1483ea1107abfcad5e6a7f42db12ede122e26edad24abb621847e419472"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_ravager_evolution.py",
+          "renderer": "scripts/ravager_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 6,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/ravager/level_06_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "cb6b58b18180876fbabffdf22ccfc32645c9120346f95814ffd0b4a71960e225"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_ravager_evolution.py",
+          "renderer": "scripts/ravager_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 7,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/ravager/level_07_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "e1fdcc0f2e071828043d618cf9133f5286ff6d9bf8901806fade31723eaa01a3"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_ravager_evolution.py",
+          "renderer": "scripts/ravager_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 8,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/ravager/level_08_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "27ea52e214119bd1840127953e8c66f962269fb332cb6fbcc2e8a726c2048fe7"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_ravager_evolution.py",
+          "renderer": "scripts/ravager_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 9,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/ravager/level_09_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "5dc390987229205944b620fe0ee391ef9bf52181b417e9f3016324ad760c2568"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_ravager_evolution.py",
+          "renderer": "scripts/ravager_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 10,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/ravager/level_10_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "6f671841c80f35fd1699344917e544de99caf7df8f54471cb5dc0d381be6c59c"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_ravager_evolution.py",
+          "renderer": "scripts/ravager_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        }
+      ],
       "state_tracking": [
         {
           "level": 1,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_at_gameplay_scale",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 2,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 3,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 4,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 5,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 6,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 7,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 8,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 9,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 10,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         }
       ]
@@ -1484,7 +1675,7 @@
               "sha256": "6410eaeea227e62f42e5895e16017e14d9aa889ba7c5f73018856dbdc7750c49"
             }
           },
-          "source_tool": "tools/visual_rebirth/prepare_electric_evolution.py",
+          "source_tool": "tools/visual_rebirth/prepare_hunter_reference.py",
           "renderer": "scripts/electric_ghost_visual.gd",
           "qa_status": "exact_level_bound_and_rendered_in_godot"
         },
@@ -1813,126 +2004,317 @@
         "right",
         "gameplay"
       ],
-      "verified_outputs": [],
+      "verified_outputs": [
+        {
+          "level": 1,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/storm/level_01_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "35dc952e9ae0b25c76d673742e2ed9376a17406714b88d23bbff6cf8403a3629"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_hunter_reference.py",
+          "renderer": "scripts/storm_wraith_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 2,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/storm/level_02_oblique.png",
+              "dimensions_px": [
+                432,
+                264
+              ],
+              "sha256": "b737da011971685504fb8bbdb9b695c48b0589658580ec38bbebddcd66ba0a6a"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_storm_evolution.py",
+          "renderer": "scripts/storm_wraith_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 3,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/storm/level_03_oblique.png",
+              "dimensions_px": [
+                432,
+                264
+              ],
+              "sha256": "90982ad345e66387d492b93bc31d7e6dd7db7538149b8ed04cb5b1932c2ed5fa"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_storm_evolution.py",
+          "renderer": "scripts/storm_wraith_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 4,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/storm/level_04_oblique.png",
+              "dimensions_px": [
+                432,
+                264
+              ],
+              "sha256": "210d47b8bc9113558d21d785d91acc56a27326900e371ee8779468336c9545f7"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_storm_evolution.py",
+          "renderer": "scripts/storm_wraith_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 5,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/storm/level_05_oblique.png",
+              "dimensions_px": [
+                432,
+                264
+              ],
+              "sha256": "77b64071fff1f3a8c794415544cb3399890a2b0b7e064e8acc1c1e0ed140d59e"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_storm_evolution.py",
+          "renderer": "scripts/storm_wraith_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 6,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/storm/level_06_oblique.png",
+              "dimensions_px": [
+                432,
+                264
+              ],
+              "sha256": "fefe74c1c00564e74068830a689ea675c8b0e41bfbc044eb6ebfbbccffa3ae54"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_storm_evolution.py",
+          "renderer": "scripts/storm_wraith_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 7,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/storm/level_07_oblique.png",
+              "dimensions_px": [
+                432,
+                264
+              ],
+              "sha256": "6689fbddce902251b2f63351406f8c1847c9cb9a33ca20a163a9aced57955466"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_storm_evolution.py",
+          "renderer": "scripts/storm_wraith_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 8,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/storm/level_08_oblique.png",
+              "dimensions_px": [
+                432,
+                264
+              ],
+              "sha256": "18fea10e3489dc0cb506de47532d93164f74cd7c66d0ebde8e678654548a3fa6"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_storm_evolution.py",
+          "renderer": "scripts/storm_wraith_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 9,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/storm/level_09_oblique.png",
+              "dimensions_px": [
+                432,
+                264
+              ],
+              "sha256": "ac5f2fa3b3f12120e98a793301a678969f005a2b617a4b7110b2a594ef44f329"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_storm_evolution.py",
+          "renderer": "scripts/storm_wraith_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 10,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/storm/level_10_oblique.png",
+              "dimensions_px": [
+                432,
+                264
+              ],
+              "sha256": "f0e2f29cf0d729e16b5ab3e1dd1b0dc9b4b165f2891c0ceeabb1c10fb0259f99"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_storm_evolution.py",
+          "renderer": "scripts/storm_wraith_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        }
+      ],
       "state_tracking": [
         {
           "level": 1,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_at_gameplay_scale",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 2,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 3,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 4,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 5,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 6,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 7,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 8,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 9,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 10,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         }
       ]
@@ -8548,7 +8930,7 @@
   },
   "progress_summary": {
     "ordinary_hunters": {
-      "integrated_rendered": 40,
+      "integrated_rendered": 60,
       "target": 60
     },
     "grim_reaper": {
@@ -8560,7 +8942,7 @@
       "target": 170
     },
     "baseline": {
-      "integrated_rendered": 212,
+      "integrated_rendered": 232,
       "target": 232
     },
     "specializations": {
@@ -8569,8 +8951,5 @@
     }
   },
   "branch_count_note": "Thirty placed-building branches use L5\u201310. Four Bed/Door branches use L6\u201310, giving 200 reachable variants.",
-  "next_incomplete_assets": [
-    "ravager",
-    "storm"
-  ]
+  "next_incomplete_assets": []
 }

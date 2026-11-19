@@ -23,3 +23,13 @@ The verified level inventory advanced to **212/232 baseline states**, including 
 - Reaper uses one oblique 2D body per form. The approach begins under the existing boss policy. The transformed sprite uses the same attack warning, scythe and domain effects. Both stances rendered from an actual triggered transformation and boss tell in a prepared 16-slot fixture without granting current HP. The pre-existing campaign render fixture has outdated unlock assumptions, so the new focused fixture uses an isolated prepared encounter. Both focused render modes passed 172 checks.
 
 [Batch 2 Godot evidence](evidence/visual-rebirth/continuous-02/) · [Batch 3 Godot evidence](evidence/visual-rebirth/continuous-03/) · [Actual Reaper form and tell capture](evidence/visual-rebirth/reaper-forms/pilot-reaper-awakened-tell-720.png)
+
+## Final catalog checkpoint
+
+All **232 baseline states** now exist in the opt-in preview and have been rendered in Godot. Coverage is **60 ordinary Hunter levels, two Grim Reaper forms and 170 building and core levels**. All **200 reachable specialization states** are integrated and rendered. Phase 14 added 181 baseline states after the 51-state starting checkpoint.
+
+Ravager and Storm Wraith each have ten distinct oblique sprites. Ravager's shorter stance preserves the crouched form. Storm keeps the 104-pixel body height and uses extra transparent canvas for the moving cloak. The live E7 matched combat fixtures passed 206 checks per pilot and 180 per fallback. Ravager and Storm each matched their fallback's nine shots, six door strikes and 81 Hunter HP lost, with respectively 112.2 and 135.52 door HP lost. A separate 13-check prepared encounter suite rendered the real Ravager Dash, Blood Quills guard and Storm Pressure Front guard cues through their model timers.
+
+The existing core, scene, spatial-save, cinematic, Nightmare Hunt, boss QA and boss-architecture checks passed **7,326 assertions**. The final Low/Reduced 16-slot interaction fixture passed 184 checks and selected all 16 buildings without changing its sampled match snapshot. Character direction coverage is still oblique for the evolved sprites. Witch L1 has multiple independently drawn directions. Fighter contours and building models may need further readability polish at crowded zoom. These results verify catalog coverage, gameplay-view animation and parity on sampled encounters. Native hardware and visual sign-off remain separate checks.
+
+[Final Hunter Godot matrices and attack images](evidence/visual-rebirth/continuous-final/) · [Actual special ability captures](evidence/visual-rebirth/continuous-final/special-abilities/)

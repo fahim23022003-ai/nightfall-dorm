@@ -4,6 +4,15 @@ extends "res://scripts/stalker_visual_prototype.gd"
 const STORM_TEXTURE = "res://assets/visual_rebirth/storm/level_%02d_oblique.png"
 const LANDMARKS = {
  1: [Vector2(114, 147), Vector2(235, 137), Vector2(167, 29), Vector2(174, 81)],
+ 2: [Vector2(130, 156), Vector2(205, 103), Vector2(208, 31), Vector2(221, 66)],
+ 3: [Vector2(122, 173), Vector2(288, 163), Vector2(198, 33), Vector2(231, 67)],
+ 4: [Vector2(134, 58), Vector2(320, 72), Vector2(220, 27), Vector2(231, 66)],
+ 5: [Vector2(193, 152), Vector2(321, 25), Vector2(191, 27), Vector2(211, 66)],
+ 6: [Vector2(125, 211), Vector2(297, 142), Vector2(176, 42), Vector2(207, 76)],
+ 7: [Vector2(139, 149), Vector2(283, 163), Vector2(192, 30), Vector2(207, 61)],
+ 8: [Vector2(130, 188), Vector2(352, 102), Vector2(190, 32), Vector2(209, 88)],
+ 9: [Vector2(117, 208), Vector2(313, 111), Vector2(193, 31), Vector2(221, 80)],
+ 10: [Vector2(152, 164), Vector2(314, 151), Vector2(224, 29), Vector2(234, 62)],
 }
 
 func supports(level: int, heading: Vector2) -> bool:
