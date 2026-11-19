@@ -405,7 +405,7 @@ func show_match():
  items_ui.create_hotbar()
  ward_button=null
  if game.model.balance_version==2 and game.model.run_kind in ["campaign","endless"] and not game.model.tutorial_mode:
-  ward_button=button("Ward [F] · 6E",Vector2(350,92),func():game.command_ward(),165,34)
+  ward_button=button("Ward [F] · 6E",Vector2(20,126),func():game.command_ward(),165,20)
   ward_button.add_theme_font_size_override("font_size",13)
  if not game.mobile_mode:
   teammates.create()
