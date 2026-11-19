@@ -52,7 +52,7 @@ func _paid_core(kind: String, branch: String):
    await capture(kind + "-" + branch + "-paid-level-%02d-720" % level)
    model.running = true
  var visual = game.presentation.building_visual
- check((visual.CORE_BRANCHES.has(kind) and visual.load_rebirth_atlas(kind, "")) == (OS.get_environment("NIGHTFALL_VISUAL_REBIRTH") == "1"), "core renderer follows launch switch")
+ check((visual.STATIC_BRANCHES.has(kind) and visual.load_rebirth_atlas(kind, "")) == (OS.get_environment("NIGHTFALL_VISUAL_REBIRTH") == "1"), "core renderer follows launch switch")
  check(room.bed_position() == initial_bed and room.door_position() == initial_door, "existing gameplay anchors unchanged")
  check(room.sleeping and room.alive and room.income_rate() > base_income and room.door_hp > base_hp, "actual core upgrades retain benefits and occupied behavior")
  print("ROOM_CORE ", kind, " ", branch, " level=", room.bed_level + 1 if kind == "bed" else room.door_level + 1, " income=", room.income_rate(), " door_hp=", room.door_hp)

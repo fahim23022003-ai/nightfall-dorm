@@ -510,6 +510,7 @@ func hunter(c,h):
  if h.transformed:
   boss_presentation.draw(c,h,hunter_clock,death_age,identity.heading,c.profile.settings.get("reduced_effects",false))
   return
+ if boss_presentation.draw_approach(c,h,hunter_clock,death_age):return
  if h.archetype in StrategyCatalog.ARCHETYPES:
   nightmare_visual.hunter(c,h,hunter_clock,death_age,identity);return
  var name="hunter_move" if int(hunter_clock*4)%2 else "hunter_idle"
@@ -722,7 +723,7 @@ func cartoon_room(c,room: RoomState,owned: bool):
    var target=building_visual.weapon_target(c.model,room,tile,building.kind,building.flash)
    var activity=building.flash
    if building_visual.support_rebirth_active(building.kind):
-    activity=building_visual.support_activity(room,building)
+    activity=building_visual.support_activity(room,building,c.model)
    building_visual.draw(c,self,building.kind,building.level,p,building.get("specialization",""),activity,target,clock)
    if room.sleeping and room.alive:
     if building.kind=="generator":

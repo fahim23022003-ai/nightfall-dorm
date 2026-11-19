@@ -27,6 +27,7 @@ const SOCKET_LAYOUT = ["near_fingertips", "far_fingertips", "mouth"]
 const GRID = Vector2i(12, 22)
 const STEPS = 16
 const POSES = ["idle", "stalk", "turn", "tell", "strike", "hit", "recover", "vanish"]
+const EXTRA_POSES = ["evolve", "guard", "dash"]
 const SOCKETS = {
  "near_fingertips": Vector2(.55, .602),
  "far_fingertips": Vector2(.282, .628),
@@ -112,8 +113,7 @@ func _draw_size() -> Vector2:
 func _update_pose(state: String, progress: float, clock: float, reduced: bool) -> void:
  var frame := roundi(clampf(progress, 0.0, 1.0) * STEPS)
  var pose_index := POSES.find(state)
- if state == "evolve":pose_index = POSES.size()
- elif state == "guard":pose_index = POSES.size() + 1
+ if pose_index < 0:pose_index = POSES.size() + EXTRA_POSES.find(state)
  var key := Vector2i(pose_index, frame)
  if not frames.has(key):
   frames[key] = _pose_vertices(state, float(frame) / STEPS)
@@ -150,7 +150,7 @@ func _update_pose(state: String, progress: float, clock: float, reduced: bool) -
  uploaded_weight = weight
 
 func socket_position(name: String) -> Vector2:
- var point: Vector2 = SOCKETS[name] if active_level == 1 else _evolved_socket(name)
+ var point := _socket_uv(name)
  var vertices := current_vertices
  var cell := point * Vector2(GRID)
  var cell_left := floori(cell.x)
@@ -168,6 +168,9 @@ func socket_position(name: String) -> Vector2:
   var c := vertices[bottom_left + 1]
   result = c + (a - c) * (1.0 - fraction.y) + (b - c) * (1.0 - fraction.x)
  return transform * result
+
+func _socket_uv(name: String) -> Vector2:
+ return SOCKETS[name] if active_level == 1 else _evolved_socket(name)
 
 func _mesh(state: String, progress: float) -> ArrayMesh:
  return _surface(_surface_arrays(_pose_vertices(state, progress)))

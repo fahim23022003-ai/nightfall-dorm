@@ -13,3 +13,13 @@ Integrated **69 additional baseline states** and **70 additional reachable speci
 [Actual staged Godot building level matrices](evidence/visual-rebirth/continuous-01/gallery/) · [Stalker progression and combat](evidence/visual-rebirth/continuous-01/stalker/) · [Paid branches and role behavior](evidence/visual-rebirth/continuous-01/effects/)
 
 The Stalker E7 matched encounter produced seven shots and five door strikes in both modes with the same Hunter and door losses. Opt-in and fallback fixtures matched Flame burn, Frost and Shock control/impacts, Dream income, Relay support and Bed income. Shape checks and real renders are separate from animation and gameplay assertions.
+
+## Batches 2 and 3
+
+The verified level inventory advanced to **212/232 baseline states**, including **170/170 building levels**, **2/2 Grim Reaper forms** and **200/200 reachable specialization variants**. The ordinary Hunter count is 40/60 at this checkpoint.
+
+- Crusher and Electric Ghost received complete L1–L10 art and model-driven animation. Crusher uses a heavy gait with rising forearms. Electric retains the technician face and uses hand and coat deformation for existing Interference, Static Cage and Grounded Overload states. Both use one oblique cutout per level.
+- Auto Repair, Shield, Door, Decoy, Mirror Barrier, Plasma and Ward Antenna completed the structure catalog. Their clocks and cues use real repairs, paid barrier activation, lure ownership and stored charge where applicable. The core branch fixture used actual L6 purchases. Some intermediate structure changes remain subtle at normal zoom. Room-state effects, including repair cost, barrier capacity and magic reflection, matched the fallback runs.
+- Reaper uses one oblique 2D body per form. The approach begins under the existing boss policy. The transformed sprite uses the same attack warning, scythe and domain effects. Both stances rendered from an actual triggered transformation and boss tell in a prepared 16-slot fixture without granting current HP. The pre-existing campaign render fixture has outdated unlock assumptions, so the new focused fixture uses an isolated prepared encounter. Both focused render modes passed 172 checks.
+
+[Batch 2 Godot evidence](evidence/visual-rebirth/continuous-02/) · [Batch 3 Godot evidence](evidence/visual-rebirth/continuous-03/) · [Actual Reaper form and tell capture](evidence/visual-rebirth/reaper-forms/pilot-reaper-awakened-tell-720.png)

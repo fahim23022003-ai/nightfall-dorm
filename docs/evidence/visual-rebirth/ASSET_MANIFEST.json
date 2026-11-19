@@ -51,126 +51,317 @@
         "right",
         "gameplay"
       ],
-      "verified_outputs": [],
+      "verified_outputs": [
+        {
+          "level": 1,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/crusher/level_01_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "e6ed1b20395cae10565cc6093fc31a9ae09e4758b559aafe3876efc766c5c140"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_crusher_evolution.py",
+          "renderer": "scripts/crusher_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 2,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/crusher/level_02_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "4e377e9bd002ea67c2d2a5aa8d4702a91bbbc2fde0e2ccf7cc437da4f44ba16f"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_crusher_evolution.py",
+          "renderer": "scripts/crusher_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 3,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/crusher/level_03_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "d7c72d2ca282147d47639a249d5c0304919ebd8cc6b7ba21fb97783d427f52f9"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_crusher_evolution.py",
+          "renderer": "scripts/crusher_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 4,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/crusher/level_04_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "80dce0db2c0cc8368ceac5283db35429eba3278587af985b0272a184f06b490b"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_crusher_evolution.py",
+          "renderer": "scripts/crusher_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 5,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/crusher/level_05_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "c167a39e57d8dea0cccd3dc76c4adcbd4d7aa43354bd871b64717593341e2598"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_crusher_evolution.py",
+          "renderer": "scripts/crusher_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 6,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/crusher/level_06_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "d0223e0a5fa56a207ac7cf150d883dbd54b124bbf2f1a7926dcb8dc6a5c0f80f"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_crusher_evolution.py",
+          "renderer": "scripts/crusher_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 7,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/crusher/level_07_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "66858ea846455a165a0ec0ae82980771cfd45e6530e22346555e3196d733bc75"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_crusher_evolution.py",
+          "renderer": "scripts/crusher_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 8,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/crusher/level_08_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "f2a4544c822a71990f61315b55de1f78249a584f6b93c9f35ad69674b28258ae"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_crusher_evolution.py",
+          "renderer": "scripts/crusher_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 9,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/crusher/level_09_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "c54720111762a10f4af0f7f33df297878785d9e51d5e221f576c0e03a6f4fd9b"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_crusher_evolution.py",
+          "renderer": "scripts/crusher_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 10,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/crusher/level_10_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "b0dd6d93edc4110aeff21ea0d2719829b3666f8de7c75ea7a3eca5161681b740"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_crusher_evolution.py",
+          "renderer": "scripts/crusher_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        }
+      ],
       "state_tracking": [
         {
           "level": 1,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_at_gameplay_scale",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 2,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 3,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 4,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 5,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 6,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 7,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 8,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 9,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 10,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         }
       ]
@@ -1278,126 +1469,317 @@
         "right",
         "gameplay"
       ],
-      "verified_outputs": [],
+      "verified_outputs": [
+        {
+          "level": 1,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/electric/level_01_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "6410eaeea227e62f42e5895e16017e14d9aa889ba7c5f73018856dbdc7750c49"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_electric_evolution.py",
+          "renderer": "scripts/electric_ghost_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 2,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/electric/level_02_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "0b43b778ea0d38fae7ffca1b9434fe5f08b87c9abe304a78f952a6e6920d3ba9"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_electric_evolution.py",
+          "renderer": "scripts/electric_ghost_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 3,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/electric/level_03_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "0068e33d42663ec45f5533eae4e2446cb52a27be56c8f819d135107ab7ebcec4"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_electric_evolution.py",
+          "renderer": "scripts/electric_ghost_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 4,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/electric/level_04_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "fea8571baaaf81bf71c7efa5b73414f152cd2da2e45c9864d4bac6cc20595c20"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_electric_evolution.py",
+          "renderer": "scripts/electric_ghost_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 5,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/electric/level_05_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "4ddb16190bd39b12bc7703a37c6825525869cf07cd76b51f50e7ed3b0d8869cf"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_electric_evolution.py",
+          "renderer": "scripts/electric_ghost_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 6,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/electric/level_06_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "69a1ae237f27317a28a6ac3f5e81fbc0fa88a0ce027c057896b5f7870f70416f"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_electric_evolution.py",
+          "renderer": "scripts/electric_ghost_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 7,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/electric/level_07_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "c6dc4dd3d4634e54a261c42e5db0f57cedd315c93008d1313b8f737655f93abb"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_electric_evolution.py",
+          "renderer": "scripts/electric_ghost_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 8,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/electric/level_08_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "8d65ca2b89320b10bc1af91ca06f386aba90a1099bfd9b95b7adcdd4798e75ce"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_electric_evolution.py",
+          "renderer": "scripts/electric_ghost_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 9,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/electric/level_09_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "3d3ecdfca3b534ce8b16d41cb400a3cffcffa9fddcc6774f29b54884ce40e6df"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_electric_evolution.py",
+          "renderer": "scripts/electric_ghost_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 10,
+          "variant": "baseline",
+          "format": "2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/electric/level_10_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "2c20923c8219926734f71789420fe1d90c1d3280efbe43c79de61f6b5108a405"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_electric_evolution.py",
+          "renderer": "scripts/electric_ghost_visual.gd",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        }
+      ],
       "state_tracking": [
         {
           "level": 1,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_at_gameplay_scale",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 2,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 3,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 4,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 5,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 6,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 7,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 8,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 9,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         },
         {
           "level": 10,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Independent directions remain open"
           ]
         }
       ]
@@ -1576,30 +1958,67 @@
         "right",
         "gameplay"
       ],
-      "verified_outputs": [],
+      "verified_outputs": [
+        {
+          "form": 1,
+          "variant": "baseline",
+          "format": "2d_textured_cloak_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/grim_reaper/approach.png",
+              "dimensions_px": [
+                224,
+                264
+              ],
+              "sha256": "4cde93b6a4945bccbf5ee830350aad7159cf7ce55ae8cb4be89882f9a92da7d9"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_reaper_forms.py",
+          "renderer": "scripts/boss_presentation.gd",
+          "qa_status": "real_authoritative_transform_and_tell_rendered_in_godot"
+        },
+        {
+          "form": 2,
+          "variant": "baseline",
+          "format": "2d_textured_cloak_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/grim_reaper/transformed.png",
+              "dimensions_px": [
+                224,
+                264
+              ],
+              "sha256": "d99fe36910b3ddbf53ad37c298b4067b41c879ecb8fe1d2e68777cb5f2ebf664"
+            }
+          },
+          "source_tool": "tools/visual_rebirth/prepare_reaper_forms.py",
+          "renderer": "scripts/boss_presentation.gd",
+          "qa_status": "real_authoritative_transform_and_tell_rendered_in_godot"
+        }
+      ],
       "state_tracking": [
         {
           "form": 1,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_at_gameplay_scale",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset"
           ]
         },
         {
           "form": 2,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset"
           ]
         }
       ]
@@ -5136,270 +5555,364 @@
         "emergency_protocol"
       ],
       "required_character_views": [],
-      "verified_outputs": [],
+      "verified_outputs": [
+        {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "format": "blender_baked_2d_atlas",
+          "variants": {
+            "baseline": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "efficient_mending": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "emergency_protocol": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          },
+          "layers": [
+            {
+              "path": "assets/visual_rebirth/buildings/auto_repair/base.png",
+              "dimensions_px": [
+                576,
+                384
+              ],
+              "sha256": "d7857ed06186cb3c865ee0a911c3b006f156d3328e28a5101df053e7aa937369"
+            },
+            {
+              "path": "assets/visual_rebirth/buildings/auto_repair/motion.png",
+              "dimensions_px": [
+                768,
+                2112
+              ],
+              "sha256": "a6b58ece209da092d97f1317ada282aa089b47c34ba25c32d94b623ad2b8caf2"
+            }
+          ],
+          "source_tool": "tools/visual_rebirth/bake_auto_repair.py",
+          "renderer": "scripts/building_evolution_visual.gd",
+          "tile_dimensions_px": [
+            96,
+            96
+          ],
+          "moving_frames_per_state": 8,
+          "qa_status": "exact_states_rendered_model_behaviors_checked_at_representative_levels"
+        }
+      ],
       "state_tracking": [
         {
           "level": 1,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 2,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 3,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 4,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "efficient_mending",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "efficient_mending",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "efficient_mending",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "efficient_mending",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "efficient_mending",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "efficient_mending",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "emergency_protocol",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "emergency_protocol",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "emergency_protocol",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "emergency_protocol",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "emergency_protocol",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "emergency_protocol",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         }
       ]
@@ -5430,270 +5943,364 @@
         "steady_veil"
       ],
       "required_character_views": [],
-      "verified_outputs": [],
+      "verified_outputs": [
+        {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "format": "blender_baked_2d_atlas",
+          "variants": {
+            "baseline": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "aegis_burst": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "steady_veil": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          },
+          "layers": [
+            {
+              "path": "assets/visual_rebirth/buildings/shield/base.png",
+              "dimensions_px": [
+                576,
+                384
+              ],
+              "sha256": "9da480e96f029df4b73726015ebf13bbdaa8ad64ba68770ed6298a547b4353b1"
+            },
+            {
+              "path": "assets/visual_rebirth/buildings/shield/motion.png",
+              "dimensions_px": [
+                768,
+                2112
+              ],
+              "sha256": "d6143f055195f736c32b734c7ce60fbbd0444e1a5c475e5f9e72137baee9dd80"
+            }
+          ],
+          "source_tool": "tools/visual_rebirth/bake_shield.py",
+          "renderer": "scripts/building_evolution_visual.gd",
+          "tile_dimensions_px": [
+            96,
+            96
+          ],
+          "moving_frames_per_state": 8,
+          "qa_status": "exact_states_rendered_model_behaviors_checked_at_representative_levels"
+        }
+      ],
       "state_tracking": [
         {
           "level": 1,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 2,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 3,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 4,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "aegis_burst",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "aegis_burst",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "aegis_burst",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "aegis_burst",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "aegis_burst",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "aegis_burst",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "steady_veil",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "steady_veil",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "steady_veil",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "steady_veil",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "steady_veil",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "steady_veil",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         }
       ]
@@ -5724,270 +6331,364 @@
         "faint_echo"
       ],
       "required_character_views": [],
-      "verified_outputs": [],
+      "verified_outputs": [
+        {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "format": "blender_baked_2d_atlas",
+          "variants": {
+            "baseline": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "force_lure": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "faint_echo": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          },
+          "layers": [
+            {
+              "path": "assets/visual_rebirth/buildings/decoy/base.png",
+              "dimensions_px": [
+                576,
+                384
+              ],
+              "sha256": "bdc6d908c7f748b2974156a7e5dfaec3b81ebb1a640b8b44751960a9d8e58618"
+            },
+            {
+              "path": "assets/visual_rebirth/buildings/decoy/motion.png",
+              "dimensions_px": [
+                768,
+                2112
+              ],
+              "sha256": "4d98da4564bee3e441f53063b1fc591f5196c398db5a893c7bb81a76491af09e"
+            }
+          ],
+          "source_tool": "tools/visual_rebirth/bake_decoy.py",
+          "renderer": "scripts/building_evolution_visual.gd",
+          "tile_dimensions_px": [
+            96,
+            96
+          ],
+          "moving_frames_per_state": 8,
+          "qa_status": "exact_states_rendered_model_behaviors_checked_at_representative_levels"
+        }
+      ],
       "state_tracking": [
         {
           "level": 1,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 2,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 3,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 4,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "force_lure",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "force_lure",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "force_lure",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "force_lure",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "force_lure",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "force_lure",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "faint_echo",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "faint_echo",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "faint_echo",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "faint_echo",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "faint_echo",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "faint_echo",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         }
       ]
@@ -6018,270 +6719,356 @@
         "ward"
       ],
       "required_character_views": [],
-      "verified_outputs": [],
+      "verified_outputs": [
+        {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "format": "blender_baked_2d_atlas",
+          "variants": {
+            "baseline": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "mirror": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "ward": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          },
+          "layers": [
+            {
+              "path": "assets/visual_rebirth/buildings/barrier/base.png",
+              "dimensions_px": [
+                576,
+                384
+              ],
+              "sha256": "fe022e417e24c112d19f152d96ce15e512d2f02ae805b3463ce49cc36e20d065"
+            }
+          ],
+          "source_tool": "tools/visual_rebirth/bake_mirror.py",
+          "renderer": "scripts/building_evolution_visual.gd",
+          "tile_dimensions_px": [
+            96,
+            96
+          ],
+          "moving_frames_per_state": 0,
+          "qa_status": "exact_states_rendered_model_behaviors_checked_at_representative_levels"
+        }
+      ],
       "state_tracking": [
         {
           "level": 1,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 2,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 3,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 4,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "mirror",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "mirror",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "mirror",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "mirror",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "mirror",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "mirror",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "ward",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "ward",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "ward",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "ward",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "ward",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "ward",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         }
       ]
@@ -6312,270 +7099,364 @@
         "converter"
       ],
       "required_character_views": [],
-      "verified_outputs": [],
+      "verified_outputs": [
+        {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "format": "blender_baked_2d_atlas",
+          "variants": {
+            "baseline": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "reservoir": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "converter": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          },
+          "layers": [
+            {
+              "path": "assets/visual_rebirth/buildings/plasma/base.png",
+              "dimensions_px": [
+                576,
+                384
+              ],
+              "sha256": "56a48931e740213fbed0bf06bebee4d7b8d123a2665d0bc355b390d5cdde8fc6"
+            },
+            {
+              "path": "assets/visual_rebirth/buildings/plasma/motion.png",
+              "dimensions_px": [
+                768,
+                2112
+              ],
+              "sha256": "373d3d62c1d54370fd0ad61776ef9808fc14e80a8a04673df5047038514f560c"
+            }
+          ],
+          "source_tool": "tools/visual_rebirth/bake_plasma.py",
+          "renderer": "scripts/building_evolution_visual.gd",
+          "tile_dimensions_px": [
+            96,
+            96
+          ],
+          "moving_frames_per_state": 8,
+          "qa_status": "exact_states_rendered_model_behaviors_checked_at_representative_levels"
+        }
+      ],
       "state_tracking": [
         {
           "level": 1,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 2,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 3,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 4,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "reservoir",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "reservoir",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "reservoir",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "reservoir",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "reservoir",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "reservoir",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "converter",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "converter",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "converter",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "converter",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "converter",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "converter",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         }
       ]
@@ -6606,270 +7487,356 @@
         "pulse"
       ],
       "required_character_views": [],
-      "verified_outputs": [],
+      "verified_outputs": [
+        {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "format": "blender_baked_2d_atlas",
+          "variants": {
+            "baseline": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "dome": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "pulse": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          },
+          "layers": [
+            {
+              "path": "assets/visual_rebirth/buildings/antenna/base.png",
+              "dimensions_px": [
+                576,
+                384
+              ],
+              "sha256": "687f889c28cedcdd1d2025d34507165cf497def9423df59c797e64cea945d90d"
+            }
+          ],
+          "source_tool": "tools/visual_rebirth/bake_antenna.py",
+          "renderer": "scripts/building_evolution_visual.gd",
+          "tile_dimensions_px": [
+            96,
+            96
+          ],
+          "moving_frames_per_state": 0,
+          "qa_status": "exact_states_rendered_model_behaviors_checked_at_representative_levels"
+        }
+      ],
       "state_tracking": [
         {
           "level": 1,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 2,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 3,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 4,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "dome",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "dome",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "dome",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "dome",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "dome",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "dome",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "pulse",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "pulse",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "pulse",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "pulse",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "pulse",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "pulse",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         }
       ]
@@ -7252,246 +8219,328 @@
         "renewal"
       ],
       "required_character_views": [],
-      "verified_outputs": [],
+      "verified_outputs": [
+        {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "format": "blender_baked_2d_atlas",
+          "variants": {
+            "baseline": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "bulwark": [
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "renewal": [
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          },
+          "layers": [
+            {
+              "path": "assets/visual_rebirth/buildings/door/base.png",
+              "dimensions_px": [
+                576,
+                384
+              ],
+              "sha256": "367e6c4ae9e060429b625847f50aec9b69986f8b17f502d9c485770eb618f069"
+            }
+          ],
+          "source_tool": "tools/visual_rebirth/bake_door.py",
+          "renderer": "scripts/building_evolution_visual.gd",
+          "tile_dimensions_px": [
+            96,
+            96
+          ],
+          "moving_frames_per_state": 0,
+          "qa_status": "exact_states_rendered_model_behaviors_checked_at_representative_levels"
+        }
+      ],
       "state_tracking": [
         {
           "level": 1,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 2,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 3,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 4,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 5,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "baseline",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "bulwark",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "bulwark",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "bulwark",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "bulwark",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "bulwark",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 6,
           "variant": "renewal",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 7,
           "variant": "renewal",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 8,
           "variant": "renewal",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 9,
           "variant": "renewal",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         },
         {
           "level": 10,
           "variant": "renewal",
-          "generation": "pending_phase14",
-          "integration": "legacy_fallback",
-          "distinctness": "pending",
-          "animation": "legacy_only",
-          "performance": "unmeasured",
+          "generation": "usable_phase14_asset",
+          "integration": "actual_godot_preview",
+          "distinctness": "compared_in_level_gallery",
+          "animation": "representative_state_or_role_tested",
+          "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Phase 14 asset generation and actual Godot verification"
+            "Native Intel UHD performance unverified per asset",
+            "Fine or low-contrast distinctions may need art polish at crowded zoom"
           ]
         }
       ]
@@ -7499,39 +8548,29 @@
   },
   "progress_summary": {
     "ordinary_hunters": {
-      "integrated_rendered": 20,
+      "integrated_rendered": 40,
       "target": 60
     },
     "grim_reaper": {
-      "integrated_rendered": 0,
+      "integrated_rendered": 2,
       "target": 2
     },
     "buildings": {
-      "integrated_rendered": 100,
+      "integrated_rendered": 170,
       "target": 170
     },
     "baseline": {
-      "integrated_rendered": 120,
+      "integrated_rendered": 212,
       "target": 232
     },
     "specializations": {
-      "integrated_rendered": 118,
+      "integrated_rendered": 200,
       "target": 200
     }
   },
   "branch_count_note": "Thirty placed-building branches use L5\u201310. Four Bed/Door branches use L6\u201310, giving 200 reachable variants.",
   "next_incomplete_assets": [
-    "crusher",
     "ravager",
-    "electric",
-    "storm",
-    "grim_reaper",
-    "auto_repair",
-    "shield",
-    "decoy",
-    "barrier",
-    "plasma",
-    "antenna",
-    "door"
+    "storm"
   ]
 }

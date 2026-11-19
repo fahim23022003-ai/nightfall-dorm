@@ -15,9 +15,16 @@ const SUPPORT_BRANCHES = {
  "shock":["capacitor_burst","rapid_discharge"],
  "auto_repair":["efficient_mending","emergency_protocol"],
  "shield":["aegis_burst","steady_veil"],
+ "decoy":["force_lure","faint_echo"],
+ "plasma":["reservoir","converter"],
 }
-const SUPPORT_CLOCK_RATES = {"generator":14.0, "repair":9.0, "economy":8.0, "enhancer":11.0, "auto_repair":12.0, "shield":8.0}
-const CORE_BRANCHES = {"bed":["lucid","conductor"],"door":["bulwark","renewal"]}
+const SUPPORT_CLOCK_RATES = {"generator":14.0, "repair":9.0, "economy":8.0, "enhancer":11.0, "auto_repair":12.0, "shield":8.0, "decoy":10.0, "plasma":9.0}
+const STATIC_BRANCHES = {
+ "bed":["lucid","conductor"],
+ "door":["bulwark","renewal"],
+ "barrier":["mirror","ward"],
+ "antenna":["dome","pulse"],
+}
 const WEAPON_BRANCHES = {
  "turret":["precision","suppression"],
  "heavy":["focus","storm"],
@@ -33,8 +40,8 @@ func _init():
 func tier_for(level: int) -> int:return 3 if level==10 else 2 if level>=7 else 1 if level>=4 else 0
 func draw(c,_p,kind: String,level: int,point: Vector2,branch: String="",activity: float=0,target: Vector2=Vector2.ZERO,clock: float=0,angle: float=0,render_scale: float=1.0,tint: Color=Color.WHITE):
  level=clampi(level,1,10)
- if CORE_BRANCHES.has(kind) and load_rebirth_atlas(kind,""):
-  var state := rebirth_state(level,branch,CORE_BRANCHES[kind],6)
+ if STATIC_BRANCHES.has(kind) and load_rebirth_atlas(kind,""):
+  var state := rebirth_state(level,branch,STATIC_BRANCHES[kind],6 if kind in ["bed","door"] else 5)
   draw_rebirth_base(c,kind,state,point,angle,render_scale,tint)
   return
  if support_rebirth_active(kind):
@@ -115,7 +122,7 @@ func arc_rebirth_active() -> bool:
 func support_rebirth_active(kind: String) -> bool:
  return SUPPORT_BRANCHES.has(kind) and load_rebirth_atlas(kind, "motion")
 
-func support_activity(room, building: Dictionary) -> float:
+func support_activity(room, building: Dictionary, model = null) -> float:
  match building.kind:
   "repair":
    return 1.0 if room.repair_status(building).actual > 0.0 else 0.0
@@ -128,6 +135,12 @@ func support_activity(room, building: Dictionary) -> float:
    var branch: String = building.get("specialization","")
    var duration := 2.0 if branch == "aegis_burst" else 4.0 if branch == "steady_veil" else 3.0
    return 1.0 if room.alive and room.barrier_hp > 0.0 and room.barrier_remaining > 0.0 and building.cooldown > 12.0-duration else 0.0
+  "decoy":
+   if model == null:return 0.0
+   var lure = model.defenses
+   return 1.0 if lure.lure_room == room.index and lure.lure_remaining > 0.0 and lure.lure_instance == building.get("instance_id",0) else 0.0
+  "plasma":
+   return 1.0 if (room.magic_state.stored > 0.0 and room.magic_state.storage_time > 0.0) and building == MagicDefense.best(room,"plasma") else 0.0
   "enhancer":
    if room.alive:
     for weapon in room.buildings.values():

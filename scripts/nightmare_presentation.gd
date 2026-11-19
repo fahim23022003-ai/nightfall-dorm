@@ -4,6 +4,11 @@ const GAIT={"crusher":6.0,"stalker":4.5,"ravager":12.0,"witch":3.0,"electric":8.
 const PARTS=["cloth","leg","arm","body","head","back","weapon"]
 var art: Dictionary={}
 var stalker_preview=preload("res://scripts/stalker_visual_prototype.gd").new()
+var crusher_preview=preload("res://scripts/crusher_visual.gd").new()
+var electric_preview=preload("res://scripts/electric_ghost_visual.gd").new()
+var ravager_preview=preload("res://scripts/ravager_visual.gd").new()
+var storm_preview=preload("res://scripts/storm_wraith_visual.gd").new()
+var oblique_previews={"crusher":crusher_preview,"electric":electric_preview,"ravager":ravager_preview,"storm":storm_preview}
 var witch_preview=preload("res://scripts/phantom_witch_visual.gd").new()
 var observed_model
 var smooth_speed=0.0
@@ -15,22 +20,25 @@ var last_attack=0
 var last_event=0
 var cast_blend=0.0
 var facing_blend=1.0
-var stalker_heading=Vector2.ZERO
-var stalker_turn=0.0
+var preview_heading=Vector2.ZERO
+var preview_turn=0.0
 var stalker_cast_release=0.0
+var oblique_cast_impact=0.0
 func reset():
  observed_model=null;smooth_speed=0;lean=0;gait_clock=0;impact=0;pose=0;last_attack=0;last_event=0;cast_blend=0
- stalker_heading=Vector2.ZERO;stalker_turn=0.0;stalker_cast_release=0.0
+ preview_heading=Vector2.ZERO;preview_turn=0.0;stalker_cast_release=0.0
  stalker_preview.reset_pose()
+ for preview in oblique_previews.values():preview.reset_pose()
+ oblique_cast_impact=0.0
 func update(delta: float,m,identity):
  if observed_model!=m:reset();observed_model=m;last_attack=m.hunter.attacks
  var h=m.hunter
- if h.archetype=="stalker" and stalker_preview.enabled:
-  stalker_turn=move_toward(stalker_turn,0.0,delta*2.6)
-  if not stalker_heading.is_zero_approx():
-   var turn_speed=absf(stalker_heading.angle_to(identity.heading))/maxf(.001,delta)
-   stalker_turn=maxf(stalker_turn,smoothstep(.9,4.6,turn_speed))
-  stalker_heading=identity.heading
+ if stalker_preview.enabled and (h.archetype=="stalker" or oblique_previews.has(h.archetype)):
+  preview_turn=move_toward(preview_turn,0.0,delta*2.6)
+  if not preview_heading.is_zero_approx():
+   var turn_speed=absf(preview_heading.angle_to(identity.heading))/maxf(.001,delta)
+   preview_turn=maxf(preview_turn,smoothstep(.9,4.6,turn_speed))
+  preview_heading=identity.heading
  var charge=clampf(1-h.nightmare.warning/2.8,0,1) if h.nightmare.action!="" else clampf(1-h.arcane.warning/1.1,0,1) if h.arcane.action!="" else .5 if h.archetype_primed or h.charged_ready else 0.0
  cast_blend=lerpf(cast_blend,charge,1-exp(-delta*9))
  if absf(identity.heading.x)>.15:
@@ -40,12 +48,18 @@ func update(delta: float,m,identity):
  gait_clock+=delta*GAIT.get(h.archetype,6.0)*maxf(.15,smooth_speed)
  pose=maxf(0,pose-delta);impact=maxf(0,impact-delta*3)
  stalker_cast_release=maxf(0,stalker_cast_release-delta)
+ oblique_cast_impact=maxf(0,oblique_cast_impact-delta)
  if h.attacks>last_attack:pose=.42;last_attack=h.attacks
  for e in m.presentation_events:
   if e.id<=last_event:continue
   last_event=e.id
   if m.time-float(e.time)>.3:continue
-  if e.type=="nightmare_impact" and e.get("damage_type","")=="physical":impact=.45
+  if e.type=="nightmare_impact" and e.get("damage_type","")=="physical":
+   impact=.45
+   if oblique_previews.has(h.archetype) and e.get("skill","") in ["faultline","ossuary","quills","rend"]:
+    oblique_cast_impact=maxf(0,.42-(m.time-float(e.time)))
+  elif oblique_previews.has(h.archetype) and (e.type=="nightmare_release" and e.get("skill","") in ["cage","overload","gust","convergence"] or e.type=="arcane_impact" and e.get("ability","") in ["interference","chain_lightning"]):
+   oblique_cast_impact=maxf(0,.42-(m.time-float(e.time)))
   elif e.type=="nightmare_rebirth":impact=.25
   elif h.archetype=="stalker" and e.type=="nightmare_release" and e.get("skill","") in ["drag","oath"]:
    stalker_cast_release=maxf(0,.42-(m.time-float(e.time)))
@@ -84,9 +98,11 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
  var tint=Color(1.12 if CinematicQuality.reduced_flash(c) else 1.4,1.05,1.02,alpha) if h.hit_flash>0 else Color(1,1,1,alpha)
  if silhouette:tint=Color(0,0,0,alpha)
  var color=Color(0,0,0,alpha) if silhouette else Color(StrategyCatalog.ARCHETYPES[h.archetype].color)
- var stalker_level=9 if level==10 and tier==2 else level
- var preview_supported=h.archetype=="stalker" and stalker_preview.supports(stalker_level,identity.heading)
- var shadow_radius=25.0 if preview_supported else 34.0+tier*2
+ var preview_level=9 if level==10 and tier==2 else level
+ var stalker_supported=h.archetype=="stalker" and stalker_preview.supports(preview_level,identity.heading)
+ var other_preview=oblique_previews.get(h.archetype)
+ var oblique_supported=other_preview!=null and other_preview.supports(preview_level,identity.heading)
+ var shadow_radius=25.0 if stalker_supported or (oblique_supported and h.archetype in ["electric","storm"]) else 34.0+tier*2
  c.draw_set_transform(O+h.position+Vector2(0,14),0,Vector2(1,.38));c.draw_circle(Vector2.ZERO,shadow_radius,Color(.008,.012,.025,.18*alpha));c.draw_circle(Vector2.ZERO,shadow_radius-9,Color(.008,.012,.02,.4*alpha));c.draw_set_transform(Vector2.ZERO)
  var windup=clampf(1-h.nightmare.warning/2.8,0,1) if h.nightmare.action!="" else clampf(1-h.arcane.warning/1.1,0,1) if h.arcane.action!="" else .5 if h.archetype_primed or h.charged_ready else 0.0
  var guarding=h.suppression_remaining>0 or h.nightmare.remaining>0 and h.nightmare.effect in ["ossuary","overload","quills"]
@@ -110,14 +126,15 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
    c.draw_circle(at,5,Color(color,.08));c.draw_line(at,at+Vector2(6,-9),Color(color,.4),2)
  var flutter=0 if reduced else sin(clock*3.5)*.07+stride*sin(phase)*.1
  var preview_drawn=false
- if preview_supported:
-  preview_drawn=draw_stalker_preview(c,h,p,tint,stalker_level,reduced,phase,stride,clock,fall,windup,bend)
- elif h.archetype=="witch":
-  var witch_level=9 if level==10 and tier==2 else level
-  if witch_preview.supports(witch_level):
-   preview_drawn=draw_witch_preview(c,h,p,tint,witch_level,identity.heading,reduced,clock,fall,windup,slash)
+ if stalker_supported:
+  preview_drawn=draw_stalker_preview(c,h,p,tint,preview_level,reduced,phase,stride,clock,fall,windup,bend)
+ elif oblique_supported:
+  preview_drawn=draw_oblique_preview(c,h,other_preview,p,tint,preview_level,reduced,phase,stride,clock,fall,bend)
+ elif h.archetype=="witch" and witch_preview.supports(preview_level):
+  preview_drawn=draw_witch_preview(c,h,p,tint,preview_level,identity.heading,reduced,clock,fall,windup,slash)
  if not preview_drawn:
-  if stalker_preview.enabled:stalker_preview.reset_pose()
+  if h.archetype=="stalker" and stalker_preview.enabled:stalker_preview.reset_pose()
+  elif other_preview!=null and other_preview.enabled:other_preview.reset_pose()
   part(c,key,"cloth",p+Vector2(-2*face,-30),Vector2(64,65),flutter+bend+fall*.4,face,tint)
   for side in [-1,1]:
    var leg_phase=phase+(PI if side>0 else 0)
@@ -181,8 +198,8 @@ func draw_stalker_preview(c,h,p: Vector2,tint: Color,level: int,reduced: bool,ph
   motion="hit";progress=clampf(h.hit_flash*2.0,0.0,1.0)
  elif h.recovery_remaining>0:
   motion="recover";progress=clampf(h.recovery_remaining/.6,0.0,1.0)
- elif stalker_turn>.18 and not reduced:
-  motion="turn";progress=stalker_turn
+ elif preview_turn>.18 and not reduced:
+  motion="turn";progress=preview_turn
  elif stride>.12 and h.state in [HunterState.State.MOVE,HunterState.State.EXIT,HunterState.State.SEEK]:
   motion="stalk";progress=fposmod(phase/TAU,1.0)
  if reduced and motion in ["idle","stalk","evolve"]:
@@ -201,6 +218,52 @@ func draw_stalker_preview(c,h,p: Vector2,tint: Color,level: int,reduced: bool,ph
    var strands=PackedVector2Array([floor+Vector2(side*9,-14),floor+Vector2(side*17+drift,-21),floor+Vector2(side*24+drift,-21)])
    c.draw_polyline(strands,Color(.57,.53,.64,fade),1.5,true)
  return true
+func draw_oblique_preview(c,h,preview,p: Vector2,tint: Color,level: int,reduced: bool,phase: float,stride: float,clock: float,fall: float,bend: float) -> bool:
+ var motion="idle"
+ var progress=fposmod(clock*.31,1.0)
+ if h.state==HunterState.State.DEAD:
+  motion="vanish";progress=fall
+ elif level>1 and c.model.evolution.rebirth_remaining>0.0:
+  motion="evolve";progress=1.0-c.model.evolution.rebirth_remaining/3.6
+ elif h.tactical_action in ["pressure","dash"]:
+  motion="tell";progress=1.0-h.tactical_windup/(.9 if h.tactical_action=="pressure" else .65)
+ elif h.nightmare.action!="":
+  motion="tell"
+  var signature=NightmareCombat.KITS[h.archetype][1]
+  progress=1.0-h.nightmare.warning/(2.8 if h.nightmare.action==signature else 2.0)
+ elif h.arcane.action in ["interference","chain_lightning"]:
+  motion="tell";progress=1.0-h.arcane.warning/1.1
+ elif h.windup_remaining>0.0:
+  motion="tell"
+  var duration=float(StrategyCatalog.ARCHETYPES[h.archetype].windup)
+  if h.charged_ready:
+   duration=float(RankCatalog.pressure(h.difficulty).windup)
+   if h.archetype=="crusher":duration=maxf(.9,duration)
+  progress=1.0-h.windup_remaining/maxf(.01,duration)
+ elif observed_model==c.model and (pose>0 or oblique_cast_impact>0):
+  motion="strike";progress=maxf(pose,oblique_cast_impact)/.42
+ elif h.hit_flash>0.0:
+  motion="hit";progress=clampf(h.hit_flash*2.0,0.0,1.0)
+ elif h.recovery_remaining>0.0 or h.tactical_recovery>0.0:
+  motion="recover";progress=clampf(maxf(h.recovery_remaining,h.tactical_recovery)/.65,0.0,1.0)
+ elif h.nightmare.effect in ["ossuary","overload","quills","gust"] and h.nightmare.remaining>0.0:
+  motion="guard";progress=minf(1.0,h.nightmare.remaining*2.0)
+ elif h.dash_remaining>0.0:
+  motion="dash";progress=1.0-h.dash_remaining/1.35
+ elif preview_turn>.18 and not reduced:
+  motion="turn";progress=preview_turn
+ elif stride>.12:
+  motion="stalk";progress=fposmod(phase/TAU,1.0)
+ if reduced and motion in ["idle","stalk","dash","evolve"]:progress=0.0
+ if not preview.draw(c,p+Vector2(0,30),tint,motion,progress,bend*.22,clock,reduced,level):
+  return false
+ if h.archetype in ["electric","storm"] and motion=="tell" and (h.arcane.action!="" or h.nightmare.action!="") and not reduced and CinematicQuality.detail(c)>0 and tint.r>0:
+  var socket: Vector2=preview.socket_position("near_fingertips")
+  var points=PackedVector2Array([socket+Vector2(-3,-1),socket+Vector2(0,-3),socket+Vector2(2,-1),socket+Vector2(4,-2.5)])
+  var hand_tint=Color(.5,.81,.95) if h.archetype=="electric" else Color(.63,.77,.83)
+  c.draw_polyline(points,Color(hand_tint,.35*clampf(progress,0,1)),1.2,true)
+ return true
+
 func draw_witch_preview(c,h,p: Vector2,tint: Color,level: int,heading: Vector2,reduced: bool,clock: float,fall: float,windup: float,slash: float) -> bool:
  var motion="hover"
  var progress=fposmod(clock*.53,1.0)
