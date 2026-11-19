@@ -1,3 +1,16 @@
+# Phase 14B–14D — Witch evolution, support buildings and rendering costs
+
+Source `23d002d8351bc1a6e9b404369b0a8f1f470ac98b` expands the opt-in preview
+to 51 baseline level states and 48 specialization variants. Phantom Witch has
+ten gameplay-view levels, Dynamo and Repair Station have ten baked levels with
+separate moving mechanisms, and Needle and Arc intermediate/branch geometry
+is stronger. Weapon and support atlases use VRAM compression and load on use.
+The Stalker keeps its approved size and pose art, with retained mesh streaming.
+Continue from the [Phase 14B–14D report](PHASE_14BD_PROGRESS.md) for evidence,
+performance, remaining catalog states and the private Windows package.
+
+---
+
 # Phase 14 — Directional Witch, Arc Turret and Hunter audio
 
 The preview covers 22 of the 232 baseline visual states and 24 building

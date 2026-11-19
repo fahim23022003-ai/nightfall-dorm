@@ -1,0 +1,102 @@
+{
+  "baseline_commit": "4eb28c48ab7cc76e6d00fe48b47f57977769a8e9",
+  "candidate_commit": "23d002d8351bc1a6e9b404369b0a8f1f470ac98b",
+  "fixture_sha256": "976523543230e46e08abc87fdcd88dc419a35affa762d5de68b7d59836cc894e",
+  "test_cpu": "AMD EPYC 9V74 80-Core Processor",
+  "operating_system": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "conditions": "Same Godot 4.6.3 binary, X11 display and software OpenGL driver. Both builds use the opt-in visual pilot, medium quality, fresh isolated profiles, and a prepared seed-67 legacy Endless fixture. Baseline was exported with git archive. Thirty warmup and 240 timed frames of the frozen full 16-slot 1280x720 view per build. One serial pair. Native Windows and Intel UHD performance remain unverified.",
+  "before": {
+    "checks": 185,
+    "combat": {
+      "door_hp": 1979.8,
+      "electricity": 0.0,
+      "gold": 620.400000000003,
+      "hunter_attacks": 5,
+      "hunter_hp": 4537.0,
+      "sampled_state_sha256": "5f5d131398440ec2200f552b3115b3665148df0a7da2b7635f975886ce529971",
+      "shots": 7
+    },
+    "events": {
+      "needle_impact": 7,
+      "needle_launch": 7,
+      "stalker_door_damage": 5,
+      "stalker_warning": 1
+    },
+    "failures": 0,
+    "frame_time": {
+      "max_ms": 72.694,
+      "median_ms": 32.19,
+      "p95_ms": 38.835,
+      "render_video_memory_bytes": 145327999,
+      "sample_frames": 240,
+      "static_memory_bytes": 136237090,
+      "warmup_frames": 30
+    },
+    "presentation": {
+      "needle_atlas_bound": true,
+      "stalker_breaths": 1,
+      "stalker_mesh_frames": 50
+    },
+    "settings": {
+      "baseline": false,
+      "clip_fps": 24,
+      "clip_frames": 144,
+      "quality": "medium",
+      "seed": 67
+    },
+    "staging": {
+      "placed_at_door_on_frame_24": false
+    },
+    "capture_wall_seconds": 37.824309480999545,
+    "renderer": "OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)"
+  },
+  "after": {
+    "checks": 185,
+    "combat": {
+      "door_hp": 1979.8,
+      "electricity": 0.0,
+      "gold": 620.400000000003,
+      "hunter_attacks": 5,
+      "hunter_hp": 4537.0,
+      "sampled_state_sha256": "5f5d131398440ec2200f552b3115b3665148df0a7da2b7635f975886ce529971",
+      "shots": 7
+    },
+    "events": {
+      "needle_impact": 7,
+      "needle_launch": 7,
+      "stalker_door_damage": 5,
+      "stalker_warning": 1
+    },
+    "failures": 0,
+    "frame_time": {
+      "max_ms": 102.813,
+      "median_ms": 39.868,
+      "p95_ms": 53.088,
+      "render_video_memory_bytes": 125450891,
+      "sample_frames": 240,
+      "static_memory_bytes": 136284107,
+      "warmup_frames": 30
+    },
+    "presentation": {
+      "needle_atlas_bound": true,
+      "stalker_breaths": 1,
+      "stalker_mesh_frames": 50
+    },
+    "settings": {
+      "baseline": false,
+      "clip_fps": 24,
+      "clip_frames": 144,
+      "quality": "medium",
+      "seed": 67
+    },
+    "staging": {
+      "placed_at_door_on_frame_24": false
+    },
+    "capture_wall_seconds": 38.9638643899998,
+    "renderer": "OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)"
+  },
+  "capture_order": [
+    "before",
+    "after"
+  ]
+}
