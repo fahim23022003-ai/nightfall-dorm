@@ -23,3 +23,11 @@ The 232-state batch remains incomplete. The Stalker turnaround, independently ar
 ## Verification
 
 Godot rendered a staged 16-slot view at 1280×720 with the five Witch directions exercised through the production draw path. It passed 175 fixture checks versus 168 fallback checks. The sampled Witch poses retained positive triangle areas across 65,280 triangles. Six ordinary archetype approach cues passed 24 opt-in, attenuation and cooldown checks. The existing core, scene, audio, visual audio, cinematic, Nightmare Hunt and spatial-save suites passed 1,105 assertions. No game model, prices, difficulty, damage, save schema or balance files changed.
+
+The paired Arc captures passed 44 checks per mode. Both legal paid branch paths reached L10 from a prepared Legacy Endless fixture. The actual projectile launch and impact matched between builds, including projectile ID, model origin, target and 28 dealt damage. [Arc Godot renderer matrix](evidence/visual-rebirth/arc-pilot/pilot-arc-production-renderer-matrix.png) · [Atlas level gallery](evidence/visual-rebirth/arc/arc-atlas-level-gallery.png)
+
+The final serial 720p pair passed 185 checks per mode and retained the same combat event counts and sampled game-state digest. The rendered workload used 240 samples per mode after 30 warmup frames on Linux Mesa llvmpipe. Fallback and preview medians were 35.94 and 33.43 ms, with p95 of 52.18 and 45.88 ms. Both medians exceed the 16.7 ms budget. Reported render memory was 105.7 and 138.6 MiB. The short software-rendered pair includes run variation and cannot establish a speedup or target-device performance. [Raw comparison](evidence/visual-rebirth/current-sample/comparison.json)
+
+## Windows playtest package
+
+The private Windows x64 ZIP was exported with verified Godot 4.6.3 templates from `60a9f347f2e3405c69e38b77c1567a46964ab013`. It contains separate launchers for the Phase 14 preview and fallback. Both commands use the same isolated playtest profile. ZIP CRC and executable headers passed. The embedded project passed 77 standard Linux checks and 23 additional asset, boot and toggle checks per mode. Native Windows execution and Intel UHD performance remain unverified. [Export receipt](evidence/visual-rebirth/windows/windows-artifact.json)

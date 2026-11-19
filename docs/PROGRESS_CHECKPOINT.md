@@ -1,3 +1,20 @@
+# Phase 14 — Directional Witch, Arc Turret and Hunter audio
+
+The preview covers 22 of the 232 baseline visual states and 24 building
+specialization states. Phantom Witch Level 1 has five in-game 2D views. Arc
+Turret covers ten levels and both branches. Six ordinary Hunter approach cues
+use the existing positional Effects bus. The approved Stalker preview remains
+the 104-pixel oblique sprite. A real four-view Blender study is retained for
+art review and excluded from the runtime.
+
+The Windows export uses source commit `60a9f347f2e3405c69e38b77c1567a46964ab013`.
+See [the coverage and verification report](PHASE_14_HORROR_REBIRTH_PROGRESS.md)
+for actual Godot captures, performance and the Windows build receipt. Native
+Windows and Intel UHD checks remain open. The 232-state rollout remains
+incomplete while Stalker direction and anatomy quality gates are open.
+
+---
+
 # Phase 14A — Stalker and Needle visual pilots
 
 Phase 13 is the gameplay baseline. The test build enables the visual pilots with
