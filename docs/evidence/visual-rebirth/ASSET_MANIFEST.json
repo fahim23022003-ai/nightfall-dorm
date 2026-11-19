@@ -20,7 +20,7 @@
     }
   },
   "reference_status": "decoded_and_matched_to_handoff",
-  "production_status": "pilot_pending",
+  "production_status": "opt_in_prototypes_batch_gate_pending",
   "assets": {
     "crusher": {
       "group": "hunters",
@@ -82,7 +82,34 @@
         "right",
         "gameplay"
       ],
-      "verified_outputs": []
+      "verified_outputs": [
+        {
+          "level": 1,
+          "variant": "baseline",
+          "orientation": "single_oblique_reference",
+          "format": "textured_2d_deformation_mesh",
+          "motions": [
+            "idle",
+            "stalk",
+            "tell",
+            "strike",
+            "hit",
+            "vanish"
+          ],
+          "art": {
+            "path": "assets/visual_rebirth/stalker/level_01_left_prototype.png",
+            "dimensions_px": [
+              264,
+              768
+            ],
+            "sha256": "91a8eb353cb668e2d7849982431765398784cf21d63c4f9e11d382a69385165a"
+          },
+          "source_tool": "tools/visual_rebirth/prepare_stalker_reference.py",
+          "renderer": "scripts/stalker_visual_prototype.gd",
+          "audio": "assets/audio/cinematic_stalker_breath.wav",
+          "qa_status": "level_1_prototype_only"
+        }
+      ]
     },
     "ravager": {
       "group": "hunters",
@@ -257,7 +284,84 @@
         "suppression"
       ],
       "required_character_views": [],
-      "verified_outputs": []
+      "verified_outputs": [
+        {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "variants": {
+            "baseline": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "precision": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "suppression": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          },
+          "format": "blender_baked_2d_atlases",
+          "yaw_samples": 12,
+          "tile_dimensions_px": [
+            112,
+            112
+          ],
+          "layers": [
+            {
+              "path": "assets/visual_rebirth/buildings/turret/base.png",
+              "dimensions_px": [
+                672,
+                448
+              ],
+              "sha256": "9e838d172f8d7c7d8e434b3ce3fd225363fabb00d0624db3d52338b6e603f157"
+            },
+            {
+              "path": "assets/visual_rebirth/buildings/turret/launcher.png",
+              "dimensions_px": [
+                1344,
+                2464
+              ],
+              "sha256": "a65589fe8a9c02eb194cbb2374bb766061db9dfe137424d13cb41305ac654b57"
+            }
+          ],
+          "source_tool": "tools/visual_rebirth/bake_needle.py",
+          "renderer": "scripts/building_evolution_visual.gd",
+          "qa_status": "structural_tier_distinction_below_art_bible_target",
+          "anchor_silhouette_xor_over_union_mean": {
+            "1_to_4": 0.235,
+            "4_to_7": 0.223,
+            "7_to_10": 0.157
+          }
+        }
+      ]
     },
     "heavy": {
       "group": "buildings_and_core",

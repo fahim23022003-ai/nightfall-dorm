@@ -3,6 +3,7 @@ const O=Vector2(145,40)
 const GAIT={"crusher":6.0,"stalker":4.5,"ravager":12.0,"witch":3.0,"electric":8.0,"storm":3.5}
 const PARTS=["cloth","leg","arm","body","head","back","weapon"]
 var art: Dictionary={}
+var stalker_preview=preload("res://scripts/stalker_visual_prototype.gd").new()
 var observed_model
 var smooth_speed=0.0
 var lean=0.0
@@ -90,20 +91,24 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
    var at=p+Vector2.from_angle(clock*.6+i*TAU/3)*Vector2(38,25)-Vector2(0,25)
    c.draw_circle(at,5,Color(color,.08));c.draw_line(at,at+Vector2(6,-9),Color(color,.4),2)
  var flutter=0 if reduced else sin(clock*3.5)*.07+stride*sin(phase)*.1
- part(c,key,"cloth",p+Vector2(-2*face,-30),Vector2(64,65),flutter+bend+fall*.4,face,tint)
- for side in [-1,1]:
-  var leg_phase=phase+(PI if side>0 else 0)
-  var step=sin(leg_phase)*.36*stride
-  part(c,key,"leg",p+Vector2(side*11,0)+Vector2(0,-maxf(0,sin(leg_phase))*7*stride),Vector2(52,111),step+side*fall*.5,side*face,tint)
- part(c,key,"arm",p+Vector2(-24*face,-32),Vector2(34,70),-face*(.12+sin(phase)*.25*stride-windup*.5)+fall*.8,face,tint)
- if moving and identity.heading.y<-.4:part(c,key,"weapon",p+Vector2(30*face,-7),Vector2(100,96),face*.12,face,tint)
- part(c,key,"body",p+Vector2(0,-8+breath),Vector2(64,92),bend+fall*.7,face,tint)
- part(c,key,"back" if moving and identity.heading.y<-.4 else "head",p+Vector2(face*windup*4+(face*12 if h.archetype=="ravager" else 0),(-25 if h.archetype=="ravager" else -35)+breath*.5),Vector2(64,65),-bend*.5+sin(clock*1.7)*.035-fall*.4,face,tint)
- var arm_angle=face*(windup*.8-slash*1.15+sin(phase+PI)*.2*stride)
- part(c,key,"arm",p+Vector2(24*face,-32),Vector2(34,70),arm_angle-fall*.8,-face,tint,Vector2(1+tier*.14,1+tier*.06) if h.archetype=="crusher" else Vector2(1,1+tier*.10) if h.archetype=="stalker" else Vector2.ONE)
- if not moving or identity.heading.y>=-.4:part(c,key,"weapon",p+Vector2((45-slash*12)*face,9-windup*8),Vector2(100,96),arm_angle+face*.12+fall*.9,face,tint,Vector2(.82,.82))
+ var preview_drawn=false
+ if h.archetype=="stalker" and stalker_preview.supports(level,identity.heading):
+  preview_drawn=draw_stalker_preview(c,h,p,tint,reduced,phase,stride,clock,fall,windup,bend)
+ if not preview_drawn:
+  part(c,key,"cloth",p+Vector2(-2*face,-30),Vector2(64,65),flutter+bend+fall*.4,face,tint)
+  for side in [-1,1]:
+   var leg_phase=phase+(PI if side>0 else 0)
+   var step=sin(leg_phase)*.36*stride
+   part(c,key,"leg",p+Vector2(side*11,0)+Vector2(0,-maxf(0,sin(leg_phase))*7*stride),Vector2(52,111),step+side*fall*.5,side*face,tint)
+  part(c,key,"arm",p+Vector2(-24*face,-32),Vector2(34,70),-face*(.12+sin(phase)*.25*stride-windup*.5)+fall*.8,face,tint)
+  if moving and identity.heading.y<-.4:part(c,key,"weapon",p+Vector2(30*face,-7),Vector2(100,96),face*.12,face,tint)
+  part(c,key,"body",p+Vector2(0,-8+breath),Vector2(64,92),bend+fall*.7,face,tint)
+  part(c,key,"back" if moving and identity.heading.y<-.4 else "head",p+Vector2(face*windup*4+(face*12 if h.archetype=="ravager" else 0),(-25 if h.archetype=="ravager" else -35)+breath*.5),Vector2(64,65),-bend*.5+sin(clock*1.7)*.035-fall*.4,face,tint)
+  var arm_angle=face*(windup*.8-slash*1.15+sin(phase+PI)*.2*stride)
+  part(c,key,"arm",p+Vector2(24*face,-32),Vector2(34,70),arm_angle-fall*.8,-face,tint,Vector2(1+tier*.14,1+tier*.06) if h.archetype=="crusher" else Vector2(1,1+tier*.10) if h.archetype=="stalker" else Vector2.ONE)
+  if not moving or identity.heading.y>=-.4:part(c,key,"weapon",p+Vector2((45-slash*12)*face,9-windup*8),Vector2(100,96),arm_angle+face*.12+fall*.9,face,tint,Vector2(.82,.82))
  # Scars/veins, not identical gold ornaments, fill intermediate evolution levels.
- for n in range(level%3):
+ for n in range(0 if preview_drawn else level%3):
   var q=p+Vector2(-8+n*9,-35+n*7)
   c.draw_line(q,q+Vector2(4,11),Color(color,.55*alpha),1.6)
  if level>=7 and not reduced and h.archetype in ["stalker","witch"]:
@@ -129,6 +134,38 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
   for i in range(6 if reduced else 12):
    var v=Vector2.from_angle(i*TAU/(6 if reduced else 12))
    c.draw_line(p+v*(28+progress*15),p+v*(40+progress*45),Color(color,.6*(1-progress*.5)),2)
+func draw_stalker_preview(c,h,p: Vector2,tint: Color,reduced: bool,phase: float,stride: float,clock: float,fall: float,windup: float,bend: float) -> bool:
+ var motion="idle"
+ var progress=fposmod(clock*.37,1.0)
+ if h.state==HunterState.State.DEAD:
+  motion="vanish";progress=fall
+ elif h.hit_flash>0:
+  motion="hit";progress=clampf(h.hit_flash*2.0,0.0,1.0)
+ elif h.nightmare.action!="" or h.tactical_action=="conceal" or h.windup_remaining>0:
+  motion="tell";progress=windup
+  if h.tactical_action=="conceal":
+   progress=1.0-h.tactical_windup/.65
+  elif h.windup_remaining>0:
+   var duration=float(StrategyCatalog.ARCHETYPES.stalker.windup)
+   if h.charged_ready:
+    duration=float(RankCatalog.pressure(h.difficulty).windup)
+   progress=1.0-h.windup_remaining/maxf(.01,duration)
+ elif observed_model==c.model and pose>0:
+  motion="strike";progress=pose/.42
+ elif stride>.12 and h.state in [HunterState.State.MOVE,HunterState.State.EXIT,HunterState.State.SEEK]:
+  motion="stalk";progress=fposmod(phase/TAU,1.0)
+ if reduced and motion in ["idle","stalk"]:
+  progress=0.0
+ var floor=p+Vector2(0,30)
+ if not stalker_preview.draw(c,floor,tint,motion,progress,bend*.22):
+  return false
+ if h.conceal_remaining>0 and not reduced and CinematicQuality.detail(c)>0 and tint.r>0:
+  var fade=.16*minf(1.0,h.conceal_remaining)
+  for side in [-1,1]:
+   var drift=sin(clock*1.9+side)*2.0
+   var strands=PackedVector2Array([floor+Vector2(side*9,-14),floor+Vector2(side*17+drift,-21),floor+Vector2(side*24+drift,-21)])
+   c.draw_polyline(strands,Color(.57,.53,.64,fade),1.5,true)
+ return true
 func bolt(c,a: Vector2,b: Vector2,color: Color,width=5.0,seed_value=0):
  var points=PackedVector2Array([a]);var delta=b-a;var normal=delta.orthogonal().normalized()
  for i in range(1,8):points.append(a+delta*(i/8.0)+normal*sin(i*8.17+seed_value)*8)

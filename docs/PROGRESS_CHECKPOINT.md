@@ -1,3 +1,15 @@
+# Phase 14A — Stalker and Needle visual pilots
+
+Phase 13 is the gameplay baseline. The test build enables the visual pilots with
+`NIGHTFALL_VISUAL_REBIRTH=1`. The Stalker uses a one-view Level 1 deformation mesh
+and original approach audio. The Needle uses separate rendered base and aiming
+layers, covering ten levels and both specializations. See the
+[pilot report](PHASE_14A_PILOT_REPORT.md) for captured gameplay and performance.
+Directional and upgrade-art acceptance remains open, so bulk production has
+not started.
+
+---
+
 # Phase 13 — Nightmare Hunt
 
 Implemented paid Emergency Ward, contribution reporting, Hunter commitment and

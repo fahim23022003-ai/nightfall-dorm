@@ -158,7 +158,9 @@ func update(delta: float, model):
  for e in model.combat_events:
   if e.id>seen_event:
    seen_event=e.id
-   if e.type=="impact": effect("impact",e.position,0.3)
+   if e.type=="impact":
+    var kind="needle_impact" if e.kind=="turret" and building_visual.needle_rebirth_active() else "impact"
+    effect(kind,e.position,0.3)
  for e in visual_events: e.life-=delta
  visual_events=visual_events.filter(func(e): return e.life>0)
  for event in model.presentation_events:
@@ -291,6 +293,9 @@ func render(c):
   var actor=m.target_by_id(int(shot.target_id))
   var direction=((actor.position if actor!=null else shot.position+Vector2.RIGHT)-shot.position).normalized()
   var branch=str(shot.get("specialization",""))
+  if shot.kind=="turret" and building_visual.needle_rebirth_active():
+   draw_needle_dart(c,p,direction,branch)
+   continue
   if branch!="":
    var tint={"precision":Color("E6C48D"),"suppression":Color("9EC7A4"),"focus":Color("C1A6DF"),"storm":Color("83DFDA")}.get(branch,Catalog.BUILDINGS[shot.kind].color)
    c.draw_line(p-direction*(24 if branch=="precision" else 13),p,tint,4 if branch=="precision" else 2)
@@ -326,6 +331,8 @@ func render(c):
    for i in range(4 if c.profile.settings.reduced_effects else 8):
     var v=Vector2.from_angle(i*TAU/(4 if c.profile.settings.reduced_effects else 8));var at=p+v*(10+(1-fraction)*32)
     c.draw_rect(Rect2(at,Vector2(3,5)),Color(1,.82,.5,fraction))
+  elif e.kind=="needle_impact":
+   draw_needle_impact(c,p,fraction)
   else:
    var color=Color("A8C9AE") if e.kind=="repair" else Color("C8AA79")
    if e.kind=="impact":c.draw_arc(p,5+(1-fraction)*13,0,TAU,20,Color(color,fraction*.65),1.5)
@@ -506,6 +513,31 @@ func menu_scene(c):
  c.draw_line(Vector2(72,143),Vector2(391,143),Color("7D6854"),1)
  for x in [72,391]:c.draw_colored_polygon(PackedVector2Array([Vector2(x,139),Vector2(x+4,143),Vector2(x,147),Vector2(x-4,143)]),Color("B69A6A"))
 
+func draw_needle_dart(c, point: Vector2, direction: Vector2, branch: String):
+ var axis := direction if direction.length_squared() > 0.01 else Vector2.RIGHT
+ var side := axis.orthogonal()
+ var tint := Color("E6C48D") if branch == "precision" else Color("B9DAD9")
+ var length := 13.0 if branch == "precision" else 9.0
+ var tail := point - axis * length
+ if not c.profile.settings.reduced_effects:
+  c.draw_line(tail - axis * 5.0, point, Color(tint, 0.18), 3.0, true)
+ c.draw_colored_polygon(PackedVector2Array([
+  point + axis * 3.0, tail + side * 1.25, tail - side * 1.25
+ ]), tint)
+ c.draw_line(tail, point + axis * 2.0, Color("F2F4EB"), 1.0, true)
+
+func draw_needle_impact(c, point: Vector2, fraction: float):
+ var reduced: bool = c.profile.settings.reduced_effects
+ var age := 1.0 - fraction
+ var tint := Color(0.69, 0.87, 0.83, fraction * 0.72)
+ c.draw_arc(point, 4.0 if reduced else 4.0 + age * 9.0, 0.0, TAU, 16, tint, 1.0, true)
+ if reduced:
+  return
+ for index in range(4):
+  var ray := Vector2.from_angle(index * TAU / 4.0 + 0.35)
+  var spark := point + ray * (2.0 + age * 12.0)
+  c.draw_line(spark, spark + ray * (2.0 + fraction * 3.0), tint, 1.0, true)
+
 func render_door_scars(c,room):
  if not identity.scars.any(func(s):return s.kind=="door_damage" and s.room==room.index):return
  var q=OFFSET+room.door_position()
@@ -577,7 +609,8 @@ func cartoon_room(c,room: RoomState,owned: bool):
    var building=room.buildings[tile]
    var name=building_key(building.kind,building.level)
    var size=Vector2(53,56)*(1+0.04*(building.level-1))
-   building_visual.draw(c,self,building.kind,building.level,p,building.get("specialization",""),building.flash,c.model.hunter.position-room.tile_position(tile),clock)
+   var target=building_visual.needle_target(c.model,room,tile,building.flash) if building.kind=="turret" else c.model.hunter.position-room.tile_position(tile)
+   building_visual.draw(c,self,building.kind,building.level,p,building.get("specialization",""),building.flash,target,clock)
    if room.sleeping and room.alive:
     if building.kind=="generator":
      var hub=p+Vector2(12,-4)

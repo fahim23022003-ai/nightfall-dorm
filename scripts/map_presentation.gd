@@ -170,7 +170,7 @@ func render_tiles(c,p,room,owned):
    var name=p.building_key(building.kind,building.level)
    # Fixed dimensions preserve character/building scale as capacities expand.
    var size=Vector2(53,56)
-   var target=c.model.hunter.position-room.tile_position(tile)
+   var target=p.building_visual.needle_target(c.model,room,tile,building.flash) if building.kind=="turret" else c.model.hunter.position-room.tile_position(tile)
    var tilt=clampf(atan2(target.y,absf(target.x)),-0.4,0.4) if building.kind=="turret" else 0.0
    var activity=building.flash
    if building.kind=="generator":activity=1.0 if room.alive and room.sleeping and not room.production_paused else 0.0
@@ -181,7 +181,7 @@ func render_tiles(c,p,room,owned):
    var branch=str(building.get("specialization",""))
    if branch!="" and owned and c.selected_tile==tile and c.ui.context_open:
     c.draw_texture_rect(PremiumButton.texture(branch),Rect2(point+Vector2(15,-17),Vector2(12,12)),false)
-   if building.kind in ["turret","heavy"] and building.flash>0:
+   if building.kind in ["turret","heavy"] and building.flash>0 and not (building.kind=="turret" and p.building_visual.needle_rebirth_active()):
     var direction=target.normalized()
     var muzzle=point+direction*21-Vector2(0,5)
     var side=Vector2(-direction.y,direction.x)
