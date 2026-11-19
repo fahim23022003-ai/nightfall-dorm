@@ -5,6 +5,9 @@ Phase 13 is the gameplay baseline. The test build enables the visual pilots with
 and original approach audio. The Needle uses separate rendered base and aiming
 layers, covering ten levels and both specializations. See the
 [pilot report](PHASE_14A_PILOT_REPORT.md) for captured gameplay and performance.
+The approved Hunter scale reference is the Stalker at 104 game pixels tall,
+twice the standing survivor's draw height, with its wider silhouette and fixed
+foot pivot. See the [art progression](PHASE_14A_ART_PROGRESSION.md).
 Directional and upgrade-art acceptance remains open, so bulk production has
 not started.
 

@@ -4,6 +4,8 @@ This plan translates the Visual Rebirth Art Bible into Stalker and Needle Turret
 
 ## Camera and scale
 
+The approved Phase 14 Hunter scale reference is the current Stalker pilot. Its neutral draw height is **104 game pixels**, twice the standing survivor's 52-pixel draw height, with a roughly 44-pixel-wide draw box and a fixed foot pivot. Use this scale when reviewing future Hunter art at the same camera zoom. [Approved in-game comparison](evidence/visual-rebirth/pilot/stalker-survivor-scale.png)
+
 Use one orthographic render at 42.5° elevation, centered on the feet or base. Render Stalker yaw at quarter turns from a single coherent source, preserving asymmetrical hair and garment details. Keep her visible eye, bare shoulder, ragged dress and extended hands recognizable across the anchor forms. Reserve the dark floor-contact shadow for Godot compositing so it does not contaminate the art alpha.
 
 The prepared Phase 13 Godot baseline at 1280×720 shows 16 tightly packed pads, the Hunter immediately below the selected room and the door HP just above the Hunter's right shoulder. It ran on Linux llvmpipe. The renderer's nominal building box is 54×67.5 with a pivot at 78% of height, before zoom or presentation scaling. Review alternate compositions inside this box and at actual zoom. Use slim pale or brass edge contrast where the dark room consumes material detail. Keep attack motion bounded around the door and preserve the existing warning overlays.
