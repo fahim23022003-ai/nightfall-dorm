@@ -69,7 +69,9 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
  var tint=Color(1.12 if CinematicQuality.reduced_flash(c) else 1.4,1.05,1.02,alpha) if h.hit_flash>0 else Color(1,1,1,alpha)
  if silhouette:tint=Color(0,0,0,alpha)
  var color=Color(0,0,0,alpha) if silhouette else Color(StrategyCatalog.ARCHETYPES[h.archetype].color)
- c.draw_set_transform(O+h.position+Vector2(0,14),0,Vector2(1,.38));c.draw_circle(Vector2.ZERO,34+tier*2,Color(.008,.012,.025,.18*alpha));c.draw_circle(Vector2.ZERO,25+tier*2,Color(.008,.012,.02,.4*alpha));c.draw_set_transform(Vector2.ZERO)
+ var preview_supported=h.archetype=="stalker" and stalker_preview.supports(level,identity.heading)
+ var shadow_radius=20.0 if preview_supported else 34.0+tier*2
+ c.draw_set_transform(O+h.position+Vector2(0,14),0,Vector2(1,.38));c.draw_circle(Vector2.ZERO,shadow_radius,Color(.008,.012,.025,.18*alpha));c.draw_circle(Vector2.ZERO,shadow_radius-9,Color(.008,.012,.02,.4*alpha));c.draw_set_transform(Vector2.ZERO)
  var windup=clampf(1-h.nightmare.warning/2.8,0,1) if h.nightmare.action!="" else clampf(1-h.arcane.warning/1.1,0,1) if h.arcane.action!="" else .5 if h.archetype_primed or h.charged_ready else 0.0
  var guarding=h.suppression_remaining>0 or h.nightmare.remaining>0 and h.nightmare.effect in ["ossuary","overload","quills"]
  if observed_model==c.model:windup=cast_blend
@@ -92,7 +94,7 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
    c.draw_circle(at,5,Color(color,.08));c.draw_line(at,at+Vector2(6,-9),Color(color,.4),2)
  var flutter=0 if reduced else sin(clock*3.5)*.07+stride*sin(phase)*.1
  var preview_drawn=false
- if h.archetype=="stalker" and stalker_preview.supports(level,identity.heading):
+ if preview_supported:
   preview_drawn=draw_stalker_preview(c,h,p,tint,reduced,phase,stride,clock,fall,windup,bend)
  if not preview_drawn:
   part(c,key,"cloth",p+Vector2(-2*face,-30),Vector2(64,65),flutter+bend+fall*.4,face,tint)
