@@ -1,0 +1,711 @@
+{
+  "schema_version": 1,
+  "checkpoint": "36b771f3819d1a978833e19088b575a4bb360d66",
+  "handoff_files": {
+    "NIGHTFALL_PHASE14_MASTER_PROMPT.md": {
+      "bytes": 14570,
+      "sha256": "839c726c2a87598619924f88bfbf8a8d00b7b6a4f3d927314d079da29dd791cd"
+    },
+    "NIGHTFALL_PHASE14_ASSET_MANIFEST.json": {
+      "bytes": 5335,
+      "sha256": "d65dc37d2053e6a60a22fe0a17f3bf98c5c4fcab579020f1fe1aaa97d26aae4c"
+    },
+    "NightfallDorm_Phase14_Hunters_References.zip": {
+      "bytes": 15339857,
+      "sha256": "015dd4f7935f3cba8f195f59eb21d0d12946c7c339e27057feb28c82e9b700ac"
+    },
+    "NightfallDorm_Phase14_Buildings_References.zip": {
+      "bytes": 30028310,
+      "sha256": "f0e7799d4a1036f6e3f77bdfcc778319b7c75d205aa30ab25b3df9a9bb62035e"
+    }
+  },
+  "reference_status": "decoded_and_matched_to_handoff",
+  "production_status": "pilot_pending",
+  "assets": {
+    "crusher": {
+      "group": "hunters",
+      "reference_path": "NightfallDorm_Visual_References_V1/Hunters/01_Crusher_L1.png",
+      "reference_size_px": [
+        1173,
+        1341
+      ],
+      "reference_sha256": "e14fd958dacc3b675a7162ef63529373472e1cf02e2ea16f03ebe1266da4f3ab",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [],
+      "required_character_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "gameplay"
+      ],
+      "verified_outputs": []
+    },
+    "stalker": {
+      "group": "hunters",
+      "reference_path": "NightfallDorm_Visual_References_V1/Hunters/02_Stalker_L1.png",
+      "reference_size_px": [
+        1024,
+        1536
+      ],
+      "reference_sha256": "381381ab5f720bb9572a1286dec1abb3a9492e0b4003619f4526898b328f3c31",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [],
+      "required_character_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "gameplay"
+      ],
+      "verified_outputs": []
+    },
+    "ravager": {
+      "group": "hunters",
+      "reference_path": "NightfallDorm_Visual_References_V1/Hunters/03_Ravager_L1.png",
+      "reference_size_px": [
+        1366,
+        1152
+      ],
+      "reference_sha256": "bf4fbe0f0776f152ea2c87cbe5ffd69ec274817fc3cf28afae94291d461a3e18",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [],
+      "required_character_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "gameplay"
+      ],
+      "verified_outputs": []
+    },
+    "witch": {
+      "group": "hunters",
+      "reference_path": "NightfallDorm_Visual_References_V1/Hunters/04_Phantom_Witch_L1.png",
+      "reference_size_px": [
+        1024,
+        1536
+      ],
+      "reference_sha256": "9ea511c0610c622658272fad34255b5dd512256192bc972d7611a8e5b4081b69",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [],
+      "required_character_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "gameplay"
+      ],
+      "verified_outputs": []
+    },
+    "electric": {
+      "group": "hunters",
+      "reference_path": "NightfallDorm_Visual_References_V1/Hunters/05_Electric_Ghost_L1.png",
+      "reference_size_px": [
+        1024,
+        1536
+      ],
+      "reference_sha256": "4f3e9ca4cd988788a6703ba87e41acd5c804d8f5dff0396918576c137e8f8eb7",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [],
+      "required_character_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "gameplay"
+      ],
+      "verified_outputs": []
+    },
+    "storm": {
+      "group": "hunters",
+      "reference_path": "NightfallDorm_Visual_References_V1/Hunters/06_Storm_Wraith_L1.png",
+      "reference_size_px": [
+        1024,
+        1536
+      ],
+      "reference_sha256": "1442390bc4283da629bfb0be6b8cb5eeeb2817167616d3230adf5e23778405c9",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [],
+      "required_character_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "gameplay"
+      ],
+      "verified_outputs": []
+    },
+    "grim_reaper": {
+      "group": "bosses",
+      "reference_path": "NightfallDorm_Visual_References_V1/Hunters/07_Grim_Reaper_Boss_Form1.png",
+      "reference_size_px": [
+        1024,
+        1536
+      ],
+      "reference_sha256": "dd78dd7b25cf7c748299a446136ad923727227ad7c88e758a3d8d6212d407902",
+      "state_field": "form",
+      "baseline_states": [
+        1,
+        2
+      ],
+      "branch_ids": [],
+      "required_character_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "gameplay"
+      ],
+      "verified_outputs": []
+    },
+    "turret": {
+      "group": "buildings_and_core",
+      "reference_path": "NightfallDorm_Visual_References_V1/Buildings/01_Needle_Turret_L1.png",
+      "reference_size_px": [
+        1216,
+        1293
+      ],
+      "reference_sha256": "2cca407dc22648f8cbb23ae50e9fbe5e014921937fdc06f1521032b5b4738a46",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [
+        "precision",
+        "suppression"
+      ],
+      "required_character_views": [],
+      "verified_outputs": []
+    },
+    "heavy": {
+      "group": "buildings_and_core",
+      "reference_path": "NightfallDorm_Visual_References_V1/Buildings/02_Arc_Turret_L1.png",
+      "reference_size_px": [
+        1312,
+        1199
+      ],
+      "reference_sha256": "b875ddb222eb230f801e1ab6e2e2d05599759e9d84267c3efdd2aa93e5454b62",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [
+        "focus",
+        "storm"
+      ],
+      "required_character_views": [],
+      "verified_outputs": []
+    },
+    "generator": {
+      "group": "buildings_and_core",
+      "reference_path": "NightfallDorm_Visual_References_V1/Buildings/03_Dynamo_L1.png",
+      "reference_size_px": [
+        1312,
+        1199
+      ],
+      "reference_sha256": "e2a9a5df55f18affbe848811b2bcb38ef4114a90b9af9ad9d16372f5844fc5e0",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [
+        "regulated",
+        "overcharge"
+      ],
+      "required_character_views": [],
+      "verified_outputs": []
+    },
+    "repair": {
+      "group": "buildings_and_core",
+      "reference_path": "NightfallDorm_Visual_References_V1/Buildings/04_Repair_Station_L1.png",
+      "reference_size_px": [
+        1312,
+        1199
+      ],
+      "reference_sha256": "6640a3f7b508675b9d857852999d35d01cf6654ab41786bb550f43fe6ffdfca8",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [
+        "sustain",
+        "conservation"
+      ],
+      "required_character_views": [],
+      "verified_outputs": []
+    },
+    "economy": {
+      "group": "buildings_and_core",
+      "reference_path": "NightfallDorm_Visual_References_V1/Buildings/05_Dream_Amplifier_L1.png",
+      "reference_size_px": [
+        1302,
+        1208
+      ],
+      "reference_sha256": "758785e4aeea7db7228fe0057a99a1cf561998ea3960a578736f9736866ec0f1",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [
+        "dividend",
+        "capacitive"
+      ],
+      "required_character_views": [],
+      "verified_outputs": []
+    },
+    "enhancer": {
+      "group": "buildings_and_core",
+      "reference_path": "NightfallDorm_Visual_References_V1/Buildings/06_Target_Relay_L1.png",
+      "reference_size_px": [
+        1312,
+        1199
+      ],
+      "reference_sha256": "6a04d2822204b15fd770a992d826f9e708f63694627d8eaae434dd2a4bc3f666",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [
+        "ballistic",
+        "coolant"
+      ],
+      "required_character_views": [],
+      "verified_outputs": []
+    },
+    "flame": {
+      "group": "buildings_and_core",
+      "reference_path": "NightfallDorm_Visual_References_V1/Buildings/07_Flame_Turret_L1.png",
+      "reference_size_px": [
+        1263,
+        1246
+      ],
+      "reference_sha256": "39241042e2a21c3d21e8c0cb377a5b4156d5d0e1e6960cb32dbf707c15678d8a",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [
+        "searing",
+        "wildfire"
+      ],
+      "required_character_views": [],
+      "verified_outputs": []
+    },
+    "frost": {
+      "group": "buildings_and_core",
+      "reference_path": "NightfallDorm_Visual_References_V1/Buildings/08_Frost_Tower_L1.png",
+      "reference_size_px": [
+        1199,
+        1312
+      ],
+      "reference_sha256": "dce94d283758c7f068594db830e2f8c4936b76b0c9ecf0d600d207384e5323b2",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [
+        "deep_chill",
+        "rime_field"
+      ],
+      "required_character_views": [],
+      "verified_outputs": []
+    },
+    "shock": {
+      "group": "buildings_and_core",
+      "reference_path": "NightfallDorm_Visual_References_V1/Buildings/09_Shock_Trap_L1.png",
+      "reference_size_px": [
+        1536,
+        1024
+      ],
+      "reference_sha256": "c789c012eccff3f489d6a1fc3f14132a3d725079a07ba8ab3fc5655d3d465a73",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [
+        "capacitor_burst",
+        "rapid_discharge"
+      ],
+      "required_character_views": [],
+      "verified_outputs": []
+    },
+    "auto_repair": {
+      "group": "buildings_and_core",
+      "reference_path": "NightfallDorm_Visual_References_V1/Buildings/10_Auto_Repair_Station_L1.png",
+      "reference_size_px": [
+        1312,
+        1199
+      ],
+      "reference_sha256": "d44c0b5fb42349ca05c8bed0e7bbb28f1fd2d514995b00ec798b6acd184105b1",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [
+        "efficient_mending",
+        "emergency_protocol"
+      ],
+      "required_character_views": [],
+      "verified_outputs": []
+    },
+    "shield": {
+      "group": "buildings_and_core",
+      "reference_path": "NightfallDorm_Visual_References_V1/Buildings/11_Shield_Generator_L1.png",
+      "reference_size_px": [
+        1312,
+        1199
+      ],
+      "reference_sha256": "c97391c713454c903060b2513b4d18821b2e63551ecf4b38b7de41320d604a56",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [
+        "aegis_burst",
+        "steady_veil"
+      ],
+      "required_character_views": [],
+      "verified_outputs": []
+    },
+    "decoy": {
+      "group": "buildings_and_core",
+      "reference_path": "NightfallDorm_Visual_References_V1/Buildings/12_Decoy_Beacon_L1.png",
+      "reference_size_px": [
+        1230,
+        1278
+      ],
+      "reference_sha256": "047908eadcfc0712df3a685e00d7168a80cdb45275147b749cf5d875c53524f1",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [
+        "force_lure",
+        "faint_echo"
+      ],
+      "required_character_views": [],
+      "verified_outputs": []
+    },
+    "barrier": {
+      "group": "buildings_and_core",
+      "reference_path": "NightfallDorm_Visual_References_V1/Buildings/13_Mirror_Barrier_L1.png",
+      "reference_size_px": [
+        1203,
+        1307
+      ],
+      "reference_sha256": "0632beb91270ac9d713bbffaf7641f3889739a79e3cd54d19efc5d994fe9cc9a",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [
+        "mirror",
+        "ward"
+      ],
+      "required_character_views": [],
+      "verified_outputs": []
+    },
+    "plasma": {
+      "group": "buildings_and_core",
+      "reference_path": "NightfallDorm_Visual_References_V1/Buildings/14_Plasma_Capacitor_L1.png",
+      "reference_size_px": [
+        1312,
+        1199
+      ],
+      "reference_sha256": "e61e0c757b0cb70437a760086eaa62e5335daa9b9d2464f76220547b91946ac2",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [
+        "reservoir",
+        "converter"
+      ],
+      "required_character_views": [],
+      "verified_outputs": []
+    },
+    "antenna": {
+      "group": "buildings_and_core",
+      "reference_path": "NightfallDorm_Visual_References_V1/Buildings/15_Ward_Antenna_L1.png",
+      "reference_size_px": [
+        1111,
+        1416
+      ],
+      "reference_sha256": "033a4900a72c126df2f6dbb42a5eaaafb17d0c72899071a28838bdb45a544a9d",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [
+        "dome",
+        "pulse"
+      ],
+      "required_character_views": [],
+      "verified_outputs": []
+    },
+    "bed": {
+      "group": "buildings_and_core",
+      "reference_path": "NightfallDorm_Visual_References_V1/Buildings/16_Bed_L1.png",
+      "reference_size_px": [
+        1312,
+        1199
+      ],
+      "reference_sha256": "502d2224eeffb79fb9da1b7c316db5bc8e56ce22fcfdad2c8828655c9c17459d",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [
+        "lucid",
+        "conductor"
+      ],
+      "required_character_views": [],
+      "verified_outputs": []
+    },
+    "door": {
+      "group": "buildings_and_core",
+      "reference_path": "NightfallDorm_Visual_References_V1/Buildings/17_Door_L1.png",
+      "reference_size_px": [
+        1254,
+        1254
+      ],
+      "reference_sha256": "76ac9623608e40c02f4411e5bd3277fb07f001df2c45ce0fd5b1760131f2518e",
+      "state_field": "level",
+      "baseline_states": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "branch_ids": [
+        "bulwark",
+        "renewal"
+      ],
+      "required_character_views": [],
+      "verified_outputs": []
+    }
+  }
+}
