@@ -7,22 +7,19 @@ const ARC_CELL = 96
 const WEAPON_BEARINGS = 12
 const WEAPON_CANVAS_SIZE = 99.0
 const WEAPON_UNIT = WEAPON_CANVAS_SIZE / 3.75
-var needle_base: Texture2D
-var needle_launcher: Texture2D
-var arc_base: Texture2D
-var arc_launcher: Texture2D
+const SUPPORT_BRANCHES = {"generator":["regulated","overcharge"],"repair":["sustain","conservation"]}
+var rebirth_enabled := OS.get_environment("NIGHTFALL_VISUAL_REBIRTH") == "1"
+var rebirth_atlases: Dictionary = {}
 const KINDS=["turret","heavy","generator","repair","economy","enhancer","flame","frost","shock","auto_repair","shield","decoy","barrier","plasma","antenna","bed","door"]
 func _init():
- if OS.get_environment("NIGHTFALL_VISUAL_REBIRTH") == "1":
-  needle_base = load(WEAPON_ART_DIR + "turret/base.png")
-  needle_launcher = load(WEAPON_ART_DIR + "turret/launcher.png")
-  arc_base = load(WEAPON_ART_DIR + "heavy/base.png")
-  arc_launcher = load(WEAPON_ART_DIR + "heavy/launcher.png")
  for kind in KINDS:
   for tier in range(4):art[kind+str(tier)]=load("res://assets/cinematic_buildings/%s_%d.svg" % [kind,tier])
 func tier_for(level: int) -> int:return 3 if level==10 else 2 if level>=7 else 1 if level>=4 else 0
 func draw(c,_p,kind: String,level: int,point: Vector2,branch: String="",activity: float=0,target: Vector2=Vector2.ZERO,clock: float=0,angle: float=0,render_scale: float=1.0,tint: Color=Color.WHITE):
  level=clampi(level,1,10)
+ if support_rebirth_active(kind):
+  draw_rebirth_support(c, kind, level, point, branch, activity, clock, angle, render_scale, tint)
+  return
  if weapon_rebirth_active(kind):
   draw_rebirth_weapon(c, kind, level, point, branch, activity, target, angle, render_scale, tint)
   return
@@ -68,11 +65,34 @@ func draw(c,_p,kind: String,level: int,point: Vector2,branch: String="",activity
   # Role-colored inlaid lights replace identical crowns and giant gold rings.
   for side in [-1,1]:c.draw_circle(Vector2(side*16,5),1.5,color)
  c.draw_set_transform(Vector2.ZERO)
+func load_rebirth_atlas(kind: String, moving_layer: String) -> bool:
+ if not rebirth_enabled:
+  return false
+ if not rebirth_atlases.has(kind):
+  var base_path := WEAPON_ART_DIR + kind + "/base.png"
+  var moving_path := WEAPON_ART_DIR + kind + "/" + moving_layer + ".png"
+  var textures := []
+  if ResourceLoader.exists(base_path) and ResourceLoader.exists(moving_path):
+   var base := load(base_path) as Texture2D
+   var moving := load(moving_path) as Texture2D
+   if base != null and moving != null:
+    textures = [base, moving]
+  rebirth_atlases[kind] = textures
+ return not rebirth_atlases[kind].is_empty()
+
 func needle_rebirth_active() -> bool:
- return needle_base != null and needle_launcher != null
+ return load_rebirth_atlas("turret", "launcher")
 
 func arc_rebirth_active() -> bool:
- return arc_base != null and arc_launcher != null
+ return load_rebirth_atlas("heavy", "launcher")
+
+func support_rebirth_active(kind: String) -> bool:
+ return SUPPORT_BRANCHES.has(kind) and load_rebirth_atlas(kind, "motion")
+
+func support_activity(room, building: Dictionary) -> float:
+ if building.kind == "generator":
+  return 1.0 if room.alive and room.sleeping and not room.production_paused else 0.0
+ return 1.0 if room.repair_status(building).actual > 0.0 else 0.0
 
 func weapon_rebirth_active(kind: String) -> bool:
  return kind == "turret" and needle_rebirth_active() or kind == "heavy" and arc_rebirth_active()
@@ -126,6 +146,24 @@ func arc_muzzle(projected: Vector2, recoil: Vector2) -> Vector2:
  # Midpoint between the two baked electrode terminals.
  return projected * (0.68 * WEAPON_UNIT) - Vector2(0, 1.77 * WEAPON_UNIT / sqrt(2.0)) - recoil
 
+func draw_rebirth_support(c, kind: String, level: int, point: Vector2, branch: String, activity: float, clock: float, angle: float, render_scale: float, tint: Color):
+ var state := level - 1
+ if level >= 5:
+  if branch == SUPPORT_BRANCHES[kind][0]:
+   state = level + 5
+  elif branch == SUPPORT_BRANCHES[kind][1]:
+   state = level + 11
+ var phase := 0
+ if activity > 0.0 and not CinematicQuality.reduced_motion(c):
+  phase = posmod(floori(clock * (14.0 if kind == "generator" else 9.0)), 8)
+ var cell := 96
+ var rect := Rect2(Vector2(-WEAPON_CANVAS_SIZE * 0.5, -WEAPON_CANVAS_SIZE * 0.5 - 0.87 * WEAPON_UNIT), Vector2.ONE * WEAPON_CANVAS_SIZE)
+ var atlas: Array = rebirth_atlases[kind]
+ c.draw_set_transform(point, angle, Vector2.ONE * render_scale)
+ c.draw_texture_rect_region(atlas[0], rect, Rect2((state % 6) * cell, floori(state / 6.0) * cell, cell, cell), tint)
+ c.draw_texture_rect_region(atlas[1], rect, Rect2(phase * cell, state * cell, cell, cell), tint)
+ c.draw_set_transform(Vector2.ZERO)
+
 func draw_rebirth_weapon(c, kind: String, level: int, point: Vector2, branch: String, activity: float, target: Vector2, angle: float, render_scale: float, tint: Color):
  var arc := kind == "heavy"
  var state := level - 1
@@ -141,8 +179,9 @@ func draw_rebirth_weapon(c, kind: String, level: int, point: Vector2, branch: St
  var cell := ARC_CELL if arc else NEEDLE_CELL
  var rect := Rect2(Vector2(-WEAPON_CANVAS_SIZE * 0.5, -WEAPON_CANVAS_SIZE * 0.5 - 0.87 * WEAPON_UNIT), Vector2.ONE * WEAPON_CANVAS_SIZE)
  c.draw_set_transform(point, angle, Vector2.ONE * render_scale)
- c.draw_texture_rect_region(arc_base if arc else needle_base, rect, Rect2((state % 6) * cell, floori(state / 6.0) * cell, cell, cell), tint)
- c.draw_texture_rect_region(arc_launcher if arc else needle_launcher, Rect2(rect.position - recoil, rect.size), Rect2(heading * cell, state * cell, cell, cell), tint)
+ var atlas: Array = rebirth_atlases[kind]
+ c.draw_texture_rect_region(atlas[0], rect, Rect2((state % 6) * cell, floori(state / 6.0) * cell, cell, cell), tint)
+ c.draw_texture_rect_region(atlas[1], Rect2(rect.position - recoil, rect.size), Rect2(heading * cell, state * cell, cell, cell), tint)
  if fire > 0:
   if arc:
    draw_arc_discharge(c, heading, arc_muzzle(projected, recoil), branch, fire)

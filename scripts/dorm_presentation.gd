@@ -39,12 +39,14 @@ var last_model_time=0.0
 var hunter_clock=0.0
 var levels: Dictionary={}
 var clock = 0.0
+var hall_haze: GradientTexture2D
 var previous: Dictionary = {}
 var moving: Dictionary = {}
 var death_age = 0.0
 var font = preload("res://assets/fonts/Interface.ttf")
 
 func _init():
+ hall_haze = make_hall_haze()
  for element in ["fire","ice","electric","earth"]:hunter_art["element_"+element]=load("res://assets/hunters/element_"+element+".svg")
  for kind in StrategyCatalog.ARCHETYPE_IDS:
   for state in ["idle","walk","attack","hurt","defend","special","death"]:hunter_art[kind+"_"+state]=load("res://assets/hunters/"+kind+"_"+state+".svg")
@@ -211,26 +213,50 @@ func visible_world_rect(c,margin=140.0) -> Rect2:
  var a=inverse*viewport.position
  return Rect2(a,inverse*viewport.end-a).abs().grow(margin)
 
+func make_hall_haze() -> GradientTexture2D:
+ var ramp := Gradient.new()
+ var offsets := PackedFloat32Array([0.0])
+ var colors := PackedColorArray([Color(.22,.29,.39,1.0-pow(.975,8))])
+ for band in range(7):
+  offsets.append((210.0+band*30.0)/420.0)
+  colors.append(Color(.22,.29,.39,1.0-pow(.975,7-band)))
+ offsets.append(1.0)
+ colors.append(Color(.22,.29,.39,0.0))
+ ramp.offsets = offsets
+ ramp.colors = colors
+ ramp.interpolation_mode = Gradient.GRADIENT_INTERPOLATE_CONSTANT
+ var texture := GradientTexture2D.new()
+ texture.gradient = ramp
+ texture.width = 256
+ texture.height = 256
+ texture.fill = GradientTexture2D.FILL_RADIAL
+ texture.fill_from = Vector2(.5,.5)
+ texture.fill_to = Vector2(1.0,.5)
+ return texture
+
 func render(c):
  c.draw_rect(Rect2(-3000,-3000,6000,6000),Color("11171E"))
+ var visible=visible_world_rect(c)
  # Architectural surround, soft night haze and deliberate negative space.
- for i in range(8):
-  c.draw_circle(Vector2(1050,170),420-i*30,Color(0.22,0.29,0.39,0.025))
+ var haze_bounds := Rect2(630,-250,840,840)
+ if visible.intersects(haze_bounds):
+  c.draw_texture_rect(hall_haze,haze_bounds,false)
  for i in range(60):
   var x = fmod(i*173.71,1260)+10
   var y = fmod(i*83.13,880)+10
-  c.draw_circle(Vector2(x,y),0.8,Color(0.8,0.78,0.65,0.08+sin(clock+i)*0.035))
+  var point := Vector2(x,y)
+  if visible.has_point(point):c.draw_circle(point,0.8,Color(0.8,0.78,0.65,0.08+sin(clock+i)*0.035))
  if c.mode == "menu":
   menu_scene(c)
   return
  # Coordinates are translated only here; model geometry is unchanged.
  var m = c.model
- var visible=visible_world_rect(c)
  environment.reduced_effects=CinematicQuality.reduced_flash(c) or CinematicQuality.detail(c)==0
  if not m.tutorial_mode:environment.render(c,self)
  if m.map_id!="legacy": map_presentation.render_architecture(c,self)
  else:
   for room in m.rooms:
+   if not visible.intersects(Rect2(OFFSET+room.bounds().position,room.bounds().size)):continue
    if all_rooms or room.index==1: cartoon_room(c,room,room.index==m.player_room)
    else: room_scene(c,room,room.index==m.player_room)
   c.draw_texture_rect(textures.corridor,Rect2(OFFSET+Vector2(35,330),Vector2(900,160)),false)
@@ -282,7 +308,7 @@ func render(c):
  if (m.player()==null or not m.player().sleeping) and (m.player()==null or m.player().alive):
   resident(c,m.player_position,-1,true)
  if m.hunter.state != HunterState.State.DORMANT:
-  hunter(c,m.hunter)
+  if visible.grow(80).has_point(OFFSET+m.hunter.position):hunter(c,m.hunter)
   if attack_pose>0:
    var q=OFFSET+strike_position
    var sweep=(1-attack_pose/.35)*PI
@@ -292,6 +318,7 @@ func render(c):
  wrath_presentation.draw(c,clock)
  for shot in m.projectiles:
   var p=OFFSET+shot.position
+  if not visible.has_point(p):continue
   var actor=m.target_by_id(int(shot.target_id))
   var direction=((actor.position if actor!=null else shot.position+Vector2.RIGHT)-shot.position).normalized()
   var branch=str(shot.get("specialization",""))
@@ -339,6 +366,7 @@ func render(c):
     c.draw_line(start-direction*4,start+direction*5,Color("DDF9FF"),1)
  for e in visual_events:
   var p=OFFSET+e.position
+  if not visible.has_point(p):continue
   var fraction=e.life/e.total
   if e.kind in ["build","break"]:
    c.draw_texture_rect(cartoon.construction,Rect2(p-Vector2(31,31),Vector2(62,62)),false,Color(1,1,1,fraction))
@@ -360,6 +388,7 @@ func render(c):
     var v=Vector2.from_angle(i*TAU/6)*(8+(1-fraction)*15)
     c.draw_line(p+v,p+v*1.3,Color(color,fraction),2)
  for room in m.rooms:
+  if not visible.intersects(Rect2(OFFSET+room.bounds().position,room.bounds().size)):continue
   var bed_badge_offset=Vector2(40,-17) if m.run_kind=="endless" and m.expansion.initialized and not m.expansion.legacy else Vector2(0,34)
   if room.bed_level>=5:support_prestige(c,OFFSET+room.bed_position()+bed_badge_offset,room.bed_level+1,room.bed_branch)
   if room.door_level>=5 and room.door_hp>0:support_prestige(c,OFFSET+room.door_position()+Vector2(0,-58),room.door_level+1,room.door_branch)
@@ -376,7 +405,8 @@ func render(c):
  nightmare_visual.effects(c,clock);nightmare_visual.omens(c,clock)
  if c.construction!=null:c.construction.draw_range(c);c.construction.draw_preview(c)
  if c.model.map_id!="legacy":
-  for room in m.rooms:map_presentation.render_door_status(c,self,room)
+  for room in m.rooms:
+   if visible.has_point(OFFSET+room.door_position()):map_presentation.render_door_status(c,self,room)
  if c.get("horror")!=null: c.horror.render_world(c)
  item_presentation.draw(c)
  for f in c.floating:
@@ -654,7 +684,10 @@ func cartoon_room(c,room: RoomState,owned: bool):
    var name=building_key(building.kind,building.level)
    var size=Vector2(53,56)*(1+0.04*(building.level-1))
    var target=building_visual.weapon_target(c.model,room,tile,building.kind,building.flash)
-   building_visual.draw(c,self,building.kind,building.level,p,building.get("specialization",""),building.flash,target,clock)
+   var activity=building.flash
+   if building_visual.support_rebirth_active(building.kind):
+    activity=building_visual.support_activity(room,building)
+   building_visual.draw(c,self,building.kind,building.level,p,building.get("specialization",""),activity,target,clock)
    if room.sleeping and room.alive:
     if building.kind=="generator":
      var hub=p+Vector2(12,-4)

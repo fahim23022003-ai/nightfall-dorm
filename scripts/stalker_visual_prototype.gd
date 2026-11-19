@@ -20,17 +20,24 @@ const STRIKE_TRANSITION_TIME = .06
 
 var enabled := OS.get_environment("NIGHTFALL_VISUAL_REBIRTH") == "1"
 var texture: Texture2D
-var frames: Dictionary = {}
+var frames: Dictionary[Vector2i, PackedVector2Array] = {}
 var pose_name: String
 var pose_started := 0.0
 var current_mesh: ArrayMesh
+var current_vertices := PackedVector2Array()
 var previous_vertices := PackedVector2Array()
+var blend_vertices := PackedVector2Array()
+var uploaded_frame := Vector2i(-1, -1)
+var uploaded_weight := -1.0
+var topology: Array = []
 var transform := Transform2D.IDENTITY
 
 func reset_pose() -> void:
  pose_name = ""
- current_mesh = null
- previous_vertices.clear()
+ current_vertices = PackedVector2Array()
+ previous_vertices = PackedVector2Array()
+ uploaded_frame = Vector2i(-1, -1)
+ uploaded_weight = -1.0
 
 func supports(level: int, heading: Vector2) -> bool:
  if not enabled or level != 1:
@@ -46,29 +53,49 @@ func draw(canvas: CanvasItem, floor: Vector2, tint: Color, state: String, progre
   if texture == null:
    enabled = false
    return false
- var frame := roundi(clampf(progress, 0.0, 1.0) * STEPS)
- var key := Vector2i(POSES.find(state), frame)
- if not frames.has(key):
-  frames[key] = _mesh(state, float(frame) / STEPS)
- var target: ArrayMesh = frames[key]
- if pose_name != state:
-  previous_vertices = _vertices(current_mesh) if current_mesh != null and not reduced else PackedVector2Array()
-  pose_name = state
-  pose_started = clock
- var duration := STRIKE_TRANSITION_TIME if state == "strike" else TRANSITION_TIME
- var weight := smoothstep(0.0, duration, clampf(clock - pose_started, 0.0, duration))
- current_mesh = target
- if not previous_vertices.is_empty() and weight < 1.0:
-  current_mesh = _blend_mesh(previous_vertices, target.surface_get_arrays(0), weight)
- else:
-  previous_vertices.clear()
+ _update_pose(state, progress, clock, reduced)
  transform = Transform2D(angle, DISPLAY_SCALE, 0.0, floor)
  canvas.draw_mesh(current_mesh, texture, transform, tint)
  return true
 
+func _update_pose(state: String, progress: float, clock: float, reduced: bool) -> void:
+ var frame := roundi(clampf(progress, 0.0, 1.0) * STEPS)
+ var key := Vector2i(POSES.find(state), frame)
+ if not frames.has(key):
+  frames[key] = _pose_vertices(state, float(frame) / STEPS)
+ if pose_name != state:
+  # A live blend owns a mutable buffer. Snapshot it only if interrupted.
+  previous_vertices = PackedVector2Array()
+  if not reduced:
+   previous_vertices = current_vertices.duplicate() if uploaded_weight < 1.0 else current_vertices
+  pose_name = state
+  pose_started = clock
+ var duration := STRIKE_TRANSITION_TIME if state == "strike" else TRANSITION_TIME
+ var weight := smoothstep(0.0, duration, clampf(clock - pose_started, 0.0, duration)) if not previous_vertices.is_empty() else 1.0
+ if key == uploaded_frame and weight == uploaded_weight:
+  return
+ var target := frames[key]
+ if weight < 1.0:
+  blend_vertices.resize(target.size())
+  for i in range(target.size()):
+   blend_vertices[i] = previous_vertices[i].lerp(target[i], weight)
+  current_vertices = blend_vertices
+ else:
+  previous_vertices = PackedVector2Array()
+  current_vertices = target
+ if current_mesh == null:
+  current_mesh = _surface(_surface_arrays(current_vertices), true)
+  current_mesh.custom_aabb = AABB(Vector3(-FLOOR_PIVOT.x - 16, -FLOOR_PIVOT.y - 16, 0), Vector3(DRAW_SIZE.x + 32, DRAW_SIZE.y + 32, 1))
+ else:
+  # The dynamic surface uses only 2D float positions in its vertex stream.
+  # UVs and indices remain resident while we replace that stream.
+  current_mesh.surface_update_vertex_region(0, 0, current_vertices.to_byte_array())
+ uploaded_frame = key
+ uploaded_weight = weight
+
 func socket_position(name: String) -> Vector2:
  var point: Vector2 = SOCKETS[name]
- var vertices := _vertices(current_mesh)
+ var vertices := current_vertices
  var cell := point * Vector2(GRID)
  var cell_left := floori(cell.x)
  var cell_top := floori(cell.y)
@@ -86,40 +113,47 @@ func socket_position(name: String) -> Vector2:
   result = c + (a - c) * (1.0 - fraction.y) + (b - c) * (1.0 - fraction.x)
  return transform * result
 
-func _vertices(mesh: ArrayMesh) -> PackedVector2Array:
- return mesh.surface_get_arrays(0)[Mesh.ARRAY_VERTEX]
-
-func _blend_mesh(from: PackedVector2Array, to: Array, weight: float) -> ArrayMesh:
- var destination: PackedVector2Array = to[Mesh.ARRAY_VERTEX]
- for vertex in range(destination.size()):
-  destination[vertex] = from[vertex].lerp(destination[vertex], weight)
- to[Mesh.ARRAY_VERTEX] = destination
- return _surface(to)
-
 func _mesh(state: String, progress: float) -> ArrayMesh:
+ return _surface(_surface_arrays(_pose_vertices(state, progress)))
+
+func _pose_vertices(state: String, progress: float) -> PackedVector2Array:
+ _prepare_topology()
  var vertices := PackedVector2Array()
+ var uvs: PackedVector2Array = topology[Mesh.ARRAY_TEX_UV]
+ vertices.resize(uvs.size())
+ for i in range(uvs.size()):
+  var uv := uvs[i]
+  vertices[i] = uv * DRAW_SIZE - FLOOR_PIVOT + _offset(uv, state, progress)
+ return vertices
+
+func _prepare_topology() -> void:
+ if not topology.is_empty():
+  return
  var uvs := PackedVector2Array()
  var indices := PackedInt32Array()
  for y in range(GRID.y + 1):
   for x in range(GRID.x + 1):
-   var uv := Vector2(float(x) / GRID.x, float(y) / GRID.y)
-   uvs.append(uv)
-   vertices.append(uv * DRAW_SIZE - FLOOR_PIVOT + _offset(uv, state, progress))
+   uvs.append(Vector2(float(x) / GRID.x, float(y) / GRID.y))
    if x == GRID.x or y == GRID.y:
     continue
    var top_left := y * (GRID.x + 1) + x
    var bottom_left := top_left + GRID.x + 1
    indices.append_array([top_left, top_left + 1, bottom_left, top_left + 1, bottom_left + 1, bottom_left])
- var surface := []
- surface.resize(Mesh.ARRAY_MAX)
- surface[Mesh.ARRAY_VERTEX] = vertices
- surface[Mesh.ARRAY_TEX_UV] = uvs
- surface[Mesh.ARRAY_INDEX] = indices
- return _surface(surface)
+ topology.resize(Mesh.ARRAY_MAX)
+ topology[Mesh.ARRAY_TEX_UV] = uvs
+ topology[Mesh.ARRAY_INDEX] = indices
 
-func _surface(surface: Array) -> ArrayMesh:
+func _surface_arrays(vertices: PackedVector2Array) -> Array:
+ var arrays := topology.duplicate()
+ arrays[Mesh.ARRAY_VERTEX] = vertices
+ return arrays
+
+func _surface(surface: Array, dynamic := false) -> ArrayMesh:
  var mesh := ArrayMesh.new()
- mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, surface, [], {}, Mesh.ARRAY_FLAG_USE_2D_VERTICES)
+ var flags := Mesh.ARRAY_FLAG_USE_2D_VERTICES
+ if dynamic:
+  flags |= Mesh.ARRAY_FLAG_USE_DYNAMIC_UPDATE
+ mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, surface, [], {}, flags)
  return mesh
 
 func _offset(uv: Vector2, state: String, progress: float) -> Vector2:

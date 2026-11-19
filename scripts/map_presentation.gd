@@ -175,6 +175,7 @@ func render_tiles(c,p,room,owned):
    var activity=building.flash
    if building.kind=="generator":activity=1.0 if room.alive and room.sleeping and not room.production_paused else 0.0
    if building.kind=="repair":activity=1.0 if room.alive and room.sleeping and room.door_hp>0 and room.door_hp<room.max_hp() and (StrategyCatalog.support(building).get("power_cost",0)==0 or room.electricity>0) else 0.0
+   if p.building_visual.support_rebirth_active(building.kind):activity=p.building_visual.support_activity(room,building)
    if building.kind in ["auto_repair","shield","decoy"]:activity=1.0 if building.cooldown>0 else 0.0
    p.building_visual.draw(c,p,building.kind,building.level,point,building.get("specialization",""),activity,target,p.clock if owned or c.watched_room==room.index else 0.0)
    if owned and building.kind in ["turret","heavy"]:CosmeticPresentation.turret(c,point)

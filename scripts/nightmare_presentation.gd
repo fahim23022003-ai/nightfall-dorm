@@ -107,8 +107,10 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
  var preview_drawn=false
  if preview_supported:
   preview_drawn=draw_stalker_preview(c,h,p,tint,reduced,phase,stride,clock,fall,windup,bend)
- elif h.archetype=="witch" and witch_preview.supports(level):
-  preview_drawn=draw_witch_preview(c,h,p,tint,identity.heading,reduced,clock,fall,windup,slash)
+ elif h.archetype=="witch":
+  var witch_level=9 if level==10 and tier==2 else level
+  if witch_preview.supports(witch_level):
+   preview_drawn=draw_witch_preview(c,h,p,tint,witch_level,identity.heading,reduced,clock,fall,windup,slash)
  if not preview_drawn:
   if stalker_preview.enabled:stalker_preview.reset_pose()
   part(c,key,"cloth",p+Vector2(-2*face,-30),Vector2(64,65),flutter+bend+fall*.4,face,tint)
@@ -190,18 +192,20 @@ func draw_stalker_preview(c,h,p: Vector2,tint: Color,reduced: bool,phase: float,
    var strands=PackedVector2Array([floor+Vector2(side*9,-14),floor+Vector2(side*17+drift,-21),floor+Vector2(side*24+drift,-21)])
    c.draw_polyline(strands,Color(.57,.53,.64,fade),1.5,true)
  return true
-func draw_witch_preview(c,h,p: Vector2,tint: Color,heading: Vector2,reduced: bool,clock: float,fall: float,windup: float,slash: float) -> bool:
+func draw_witch_preview(c,h,p: Vector2,tint: Color,level: int,heading: Vector2,reduced: bool,clock: float,fall: float,windup: float,slash: float) -> bool:
  var motion="hover"
  var progress=fposmod(clock*.53,1.0)
  if h.state==HunterState.State.DEAD:
   motion="vanish";progress=fall
+ elif c.model.evolution.rebirth_remaining>0.0:
+  motion="evolve";progress=1.0-c.model.evolution.rebirth_remaining/3.6
  elif h.nightmare.action!="" or h.arcane.action!="" or h.windup_remaining>0:
   motion="tell";progress=windup
  elif slash>0:
   motion="release";progress=(.42-pose)/.42 if pose>0 else slash*.5
  elif h.hit_flash>0:
   motion="hit";progress=clampf(h.hit_flash*2.0,0.0,1.0)
- return witch_preview.draw(c,p+Vector2(0,21),tint,heading,motion,progress,reduced)
+ return witch_preview.draw(c,p+Vector2(0,21),tint,level,heading,motion,progress,reduced)
 
 func bolt(c,a: Vector2,b: Vector2,color: Color,width=5.0,seed_value=0):
  var points=PackedVector2Array([a]);var delta=b-a;var normal=delta.orthogonal().normalized()

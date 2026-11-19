@@ -89,14 +89,19 @@ def build_base(m, level, branch):
     m.cosine, m.sine = 1, 0
     if level in (2, 3):
         for side in (-1, 1):
-            m.cylinder((side*.55,-.17,.31),(side*.72,-.11,.55),.084,.065,"iron")
-            m.cylinder((side*.72,-.11,.55),(side*.77,-.10,.79),.066,.036,"bronze")
-            m.cylinder((side*.77,-.10,.79),(side*.65,-.09,.87),.039,.018,"copper")
+            # The wider brace assemblies visibly project above the old plinth.
+            m.box(side*.64,-.19,.46,.22,.33,.21,"iron")
+            m.box(side*.67,-.37,.57,.25,.09,.30,"edge")
+            m.cylinder((side*.60,-.19,.45),(side*.81,-.12,.69),.109,.084,"iron")
+            m.cylinder((side*.81,-.12,.69),(side*.68,-.12,.97),.086,.047,"bronze")
+            m.cylinder((side*.70,-.12,.92),(side*.66,-.10,1.04),.063,.030,"copper")
     if level == 3:
         for side in (-1, 1):
-            m.cylinder((side*.60,-.24,.64),(side*.63,-.24,1.04),.093,.060,"ion")
-            m.cylinder((side*.63,-.24,1.04),(side*.61,-.22,1.14),.069,.037,"bronze")
-            m.ring((side*.62,-.24,.86),.091,.021,"edge")
+            m.cylinder((side*.61,-.25,.58),(side*.73,-.23,1.20),.149,.110,"ion")
+            m.cylinder((side*.73,-.23,1.20),(side*.72,-.22,1.37),.113,.055,"bronze")
+            for z, x in ((.70, .60),(.92, .64),(1.08, .68)):
+                m.ring((side*x,-.24,z),.112,.027,"copper")
+            m.cylinder((side*.60,-.33,.68),(side*.71,-.33,1.07),.039,.028,"iron")
     if 4 <= level < 7:
         m.cylinder((0,0,.46),(0,0,.75),.59,.53,"iron",24)
         m.cylinder((0,0,.73),(0,0,.79),.55,.51,"bronze",24)
@@ -110,15 +115,17 @@ def build_base(m, level, branch):
             m.cylinder((x*.53,y*.53,.53),(x*.52,y*.52,.88),.125,.105,"iron")
             m.cylinder((x*.52,y*.52,.86),(x*.48,y*.48,.975),.115,.069,"copper")
             m.ring((x*.53,y*.53,.77),.113,.025,"edge")
-    if level == 5 and not branch:
+    if 5 <= level < 7 and not branch:
         m.ring((0,0,.90),.38,.034,"copper")
-        m.cylinder((-.67,-.34,.55),(-.71,-.32,.91),.073,.048,"ion")
-        m.cylinder((-.71,-.32,.91),(-.58,-.32,.93),.063,.031,"copper")
+        m.box(-.64,-.30,.69,.30,.32,.32,"iron")
+        m.cylinder((-.75,-.36,.75),(-.79,-.34,1.04),.103,.075,"ion")
+        m.cylinder((-.79,-.34,1.04),(-.64,-.32,1.16),.082,.044,"copper")
     if level == 6:
-        m.ring((0,0,.94),.43,.035,"bronze")
+        m.ring((0,0,.94),.45,.049,"bronze")
         for side in (-1, 1):
-            m.cylinder((side*.53,-.31,.50),(side*.62,-.35,.94),.057,.042,"copper")
-            m.cylinder((side*.62,-.35,.94),(side*.56,-.32,1.03),.044,.020,"silver")
+            m.cylinder((side*.58,-.18,.48),(side*.77,-.19,.88),.137,.109,"iron")
+            m.cylinder((side*.77,-.19,.88),(side*.81,-.17,1.31),.105,.067,"copper")
+            m.cylinder((side*.81,-.17,1.31),(side*.66,-.15,1.47),.073,.034,"silver")
     if 7 <= level < 10:
         for side in (-1, 1):
             m.box(side*.60,0,.28,.38,.78,.28,"stone")
@@ -135,13 +142,15 @@ def build_base(m, level, branch):
             m.cylinder((side*.62,-.31,.47),(side*.62,-.39,.96),.086,.049,"ion")
             m.cylinder((side*.62,-.39,.96),(side*.51,-.42,1.18),.057,.023,"copper")
     if 8 <= level < 10:
-        m.cylinder((-.82,-.20,.64),(-.86,-.18,.92),.105,.058,"bronze")
-        m.ring((-.86,-.17,.91),.059,.021,"copper")
+        m.cylinder((-.73,-.21,.52),(-.91,-.19,.82),.104,.069,"bronze")
+        m.ring((-.87,-.26,.86),.149,.044,"copper",(0,1,0))
+        m.cylinder((-.87,-.28,.72),(-.87,-.28,1.00),.041,.041,"iron")
     if level == 9:
         for side in (-1, 1):
-            m.cylinder((side*.54,-.31,.48),(side*.85,-.34,1.02),.119,.062,"iron")
-            m.cylinder((side*.85,-.34,1.02),(side*.91,-.24,1.42),.065,.025,"copper")
-            m.cylinder((side*.91,-.24,1.42),(side*.91,-.20,1.53),.033,.012,"silver")
+            m.box(side*.73,-.34,.77,.29,.23,.43,"iron")
+            m.cylinder((side*.58,-.29,.55),(side*.86,-.33,1.07),.123,.081,"iron")
+            m.cylinder((side*.86,-.33,1.07),(side*.91,-.21,1.48),.085,.042,"copper")
+            m.cylinder((side*.91,-.21,1.48),(side*.89,-.18,1.65),.047,.017,"silver")
     if level == 10:
         m.cylinder((0,0,.53),(0,0,.66),.525,.45,"bronze",24)
         m.ring((0,0,.81),.433,.039,"iron")
@@ -152,15 +161,17 @@ def build_base(m, level, branch):
                 m.cylinder((x*.65,y,.52),(x*.67,y,.85),.062,.051,"ion")
                 m.ring((x*.65,y,.53),.057,.019,"bronze")
     if branch == "focus":
-        m.box(.10,-.50,.59,.25,.19,.26,"iron")
-        m.box(.10,-.606,.63,.20,.035,.10,"ion")
+        # Focus channels through one conspicuous forward load cell.
+        m.box(.12,-.52,.64,.40,.37,.35,"iron")
+        m.box(.12,-.716,.69,.28,.061,.18,"ion")
         for side in (-1, 1):
-            m.cylinder((side*.11,-.57,.52),(side*.27,-.61,1.02),.063,.034,"edge")
+            m.cylinder((.12+side*.13,-.61,.57),(.12+side*.20,-.66,1.10),.073,.043,"silver")
     elif branch == "storm":
         for side in (-1, 1):
-            m.cylinder((side*.64,-.36,.46),(side*.65,-.33,.98),.128,.096,"ion")
-            m.ring((side*.65,-.33,.95),.10,.029,"copper")
-            m.cylinder((side*.65,-.33,.98),(side*.63,-.33,1.15),.086,.039,"bronze")
+            m.cylinder((side*.72,-.37,.49),(side*.78,-.34,1.06),.158,.120,"ion")
+            m.ring((side*.77,-.34,1.02),.122,.042,"copper")
+            m.cylinder((side*.78,-.34,1.06),(side*.71,-.32,1.25),.123,.064,"bronze")
+            m.cylinder((side*.71,-.32,1.25),(side*.58,-.29,1.35),.066,.030,"iron")
 
 
 def tier(level):
@@ -204,18 +215,29 @@ def build_head(m, level, branch):
         for side in (-1, 1):
             m.cylinder((-.40,side*.46,1.28),(-.63,side*.46,1.68),.082,.057,"iron")
             m.cylinder((-.63,side*.46,1.68),(-.60,side*.39,1.91),.057,.024,"bronze")
+    if 5 <= level < 7 and not branch:
+        m.box(-.47,0,1.77,.36,.72,.18,"iron")
+        m.cylinder((-.53,0,1.68),(-.62,0,2.02),.132,.091,"copper")
+        for side in (-1, 1):
+            m.cylinder((-.50,side*.23,1.74),(-.47,side*.26,1.99),.091,.057,"ion")
+            m.cylinder((-.47,side*.26,1.99),(-.42,side*.26,2.08),.061,.036,"bronze")
     if 7 <= level < 10:
         for side in (-1, 1):
             horn = ((-.40,side*.35,1.18),(-.39,side*.73,1.54),(.09,side*.79,1.75),(.54,side*.62,1.73))
             curved_electrode(m, horn, (.108,.054), "copper")
             m.cylinder((.46,side*.66,1.74),(.61,side*.58,1.72),.073,.033,"silver")
             m.cylinder((-.28,side*.39,1.33),(-.23,side*.68,1.61),.059,.034,"edge")
-    if level >= 8:
-        m.cylinder((-.37,0,1.34),(-.72,0,1.40),.113,.069,"bronze")
-        m.cylinder((-.69,-.19,1.48),(-.69,.19,1.48),.076,.076,"copper")
+    if 8 <= level < 10:
+        m.cylinder((-.38,0,1.29),(-.71,0,1.45),.165,.129,"bronze")
+        m.cylinder((-.71,-.37,1.51),(-.71,.37,1.51),.130,.130,"copper")
+        for side in (-1, 1):
+            m.ring((-.71,side*.38,1.51),.144,.035,"iron",(0,1,0))
     if level == 9:
         m.cylinder((-.37,0,1.31),(-.67,0,1.44),.128,.075,"bronze")
         m.cylinder((-.62,-.28,1.54),(-.62,.28,1.54),.085,.085,"iron")
+        for side in (-1, 1):
+            m.cylinder((-.54,side*.30,1.58),(-.69,side*.34,1.89),.100,.069,"iron")
+            m.cylinder((-.69,side*.34,1.89),(-.59,side*.29,2.09),.070,.034,"copper")
     if level == 10:
         # High copper arches and a second pair of voltaged vaulted conductors.
         for side in (-1, 1):
@@ -227,15 +249,17 @@ def build_head(m, level, branch):
     if branch == "focus":
         m.cylinder((.02,0,1.27),(.48,0,1.68),.166,.103,"iron")
         m.cylinder((.37,0,1.59),(.53,0,1.75),.104,.073,"silver")
-        m.cylinder((-.12,0,1.49),(-.18,0,2.15),.075,.048,"bronze")
-        m.cylinder((-.19,0,2.15),(.40,0,2.22),.064,.039,"silver")
-        m.cylinder((.12,0,2.13),(.39,0,2.22),.081,.048,"bronze")
+        m.cylinder((-.22,0,1.36),(-.25,0,2.20),.136,.080,"bronze")
+        m.cylinder((-.52,0,2.16),(.47,0,2.26),.121,.061,"silver")
+        m.cylinder((.04,0,1.82),(.42,0,2.24),.106,.069,"iron")
+        m.cylinder((-.57,0,2.11),(-.33,0,2.18),.089,.108,"copper")
     elif branch == "storm":
         for side in (-1, 1):
             m.cylinder((-.15,side*.19,1.31),(-.40,side*.52,1.43),.074,.060,"copper")
             m.cylinder((-.39,side*.53,1.43),(-.31,side*.63,1.72),.078,.048,"ion")
-            m.cylinder((-.31,side*.63,1.72),(-.33,side*.68,1.91),.069,.025,"copper")
-            m.cylinder((-.31,side*.65,1.69),(.04,side*.73,1.82),.058,.019,"silver")
+            m.cylinder((-.31,side*.63,1.72),(-.36,side*.75,1.94),.106,.050,"copper")
+            m.cylinder((-.32,side*.64,1.66),(.18,side*.75,1.86),.103,.052,"silver")
+            m.cylinder((.05,side*.70,1.61),(.35,side*.70,1.74),.093,.050,"bronze")
 
 
 if __name__ == "__main__":

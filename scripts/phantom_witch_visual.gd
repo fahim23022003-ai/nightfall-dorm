@@ -1,10 +1,12 @@
 extends RefCounted
-## Level 1 turnaround sprites with a shared floor pivot and deformation grid.
+## Witch turnaround and evolution sprites share a floor pivot and deformation grid.
 
-const ART_PATH = "res://assets/visual_rebirth/witch/level_01_%s.png"
+const ART_PATH = "res://assets/visual_rebirth/witch/level_%02d_%s.png"
 const ART_SCALE = 104.0 / 256.0
-const ART_SIZE = Vector2(216, 264)
-const ART_PIVOT = Vector2(108, 260)
+const BASE_WIDTH = 216.0
+const EVOLVED_WIDTH = 328.0
+const ART_HEIGHT = 264.0
+const FOOT = 260.0
 const GRID = Vector2i(12, 16)
 const FRAME_COUNT = 16
 
@@ -13,7 +15,13 @@ var textures: Dictionary = {}
 var poses: Dictionary = {}
 
 func supports(level: int) -> bool:
- return enabled and level == 1
+ return enabled and texture_for(level, "oblique") != null
+
+func texture_for(level: int, direction: String) -> Texture2D:
+ var path := ART_PATH % [level, direction]
+ if not textures.has(path):
+  textures[path] = load(path) as Texture2D if ResourceLoader.exists(path) else null
+ return textures[path]
 
 func facing(heading: Vector2) -> String:
  if heading.x < -.45 and heading.y > .45:
@@ -22,23 +30,21 @@ func facing(heading: Vector2) -> String:
   return "left" if heading.x < 0 else "right"
  return "back" if heading.y < 0 else "front"
 
-func draw(canvas: CanvasItem, floor: Vector2, tint: Color, heading: Vector2, state: String, progress: float, reduced: bool) -> bool:
- var direction := facing(heading)
- if not textures.has(direction):
-  var texture := load(ART_PATH % direction) as Texture2D
-  if texture == null:
-   enabled = false
-   return false
-  textures[direction] = texture
+func draw(canvas: CanvasItem, floor: Vector2, tint: Color, level: int, heading: Vector2, state: String, progress: float, reduced: bool) -> bool:
+ var direction := facing(heading) if level == 1 else "oblique"
+ var texture := texture_for(level, direction)
+ if texture == null:
+  return false
  var step := 0 if reduced else roundi(clampf(progress, 0.0, 1.0) * FRAME_COUNT)
  var gesture_side := -1 if direction == "right" else 1
- var key := "%s:%d:%d" % [state, step, gesture_side]
+ var width := BASE_WIDTH if level == 1 else EVOLVED_WIDTH
+ var key := "%s:%d:%d:%d" % [state, step, gesture_side, int(width)]
  if not poses.has(key):
-  poses[key] = build_pose(state, float(step) / FRAME_COUNT, gesture_side)
- canvas.draw_mesh(poses[key], textures[direction], Transform2D(0.0, floor), tint)
+  poses[key] = build_pose(state, float(step) / FRAME_COUNT, gesture_side, width)
+ canvas.draw_mesh(poses[key], texture, Transform2D(0.0, floor), tint)
  return true
 
-func build_pose(state: String, progress: float, gesture_side: int) -> ArrayMesh:
+func build_pose(state: String, progress: float, gesture_side: int, width: float = BASE_WIDTH) -> ArrayMesh:
  var vertices := PackedVector2Array()
  var uvs := PackedVector2Array()
  var triangles := PackedInt32Array()
@@ -46,7 +52,7 @@ func build_pose(state: String, progress: float, gesture_side: int) -> ArrayMesh:
   for column in range(GRID.x + 1):
    var uv := Vector2(float(column) / GRID.x, float(row) / GRID.y)
    uvs.append(uv)
-   var anchor := (uv * ART_SIZE - ART_PIVOT) * ART_SCALE
+   var anchor := (uv * Vector2(width, ART_HEIGHT) - Vector2(width * .5, FOOT)) * ART_SCALE
    var part_uv := uv if gesture_side > 0 else Vector2(1.0 - uv.x, uv.y)
    var offset := deformation(part_uv, state, progress)
    vertices.append(anchor + Vector2(offset.x * gesture_side, offset.y))
@@ -77,6 +83,9 @@ func deformation(uv: Vector2, state: String, progress: float) -> Vector2:
    return Vector2((-8.0 * gesture + 2.5 * veil + skirt) * impulse, (-3.0 * crown - 2.0 * gesture) * impulse)
   "hit":
    return Vector2(4.0 * crown * progress, 2.0 * crown * progress)
+  "evolve":
+   var pulse := sin(progress * PI)
+   return Vector2((uv.x - .5) * (2.0 * skirt + 4.0 * veil) * pulse, -4.0 * crown * pulse)
   "vanish":
    return Vector2((uv.x - .5) * -7 * progress, crown * 9.0 * progress)
   _:

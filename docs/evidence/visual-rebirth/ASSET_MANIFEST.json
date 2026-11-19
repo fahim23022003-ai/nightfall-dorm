@@ -20,7 +20,7 @@
     }
   },
   "reference_status": "decoded_and_matched_to_handoff",
-  "production_status": "incremental_opt_in_art_stalker_gate_open",
+  "production_status": "opt_in_expanded_catalog_target_pending",
   "assets": {
     "crusher": {
       "group": "hunters",
@@ -252,6 +252,285 @@
           "source_tool": "tools/visual_rebirth/prepare_witch_turnaround.sh",
           "renderer": "scripts/phantom_witch_visual.gd",
           "qa_status": "five_views_rendered_in_game_L1_only"
+        },
+        {
+          "level": 2,
+          "variant": "baseline",
+          "format": "generated_2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/witch/level_02_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "0bc9465cce48cec9eb398f44ea3dbad5ab8ceef52b3ad3865f0bff819b6c3d34"
+            }
+          },
+          "pivot_px": [
+            164,
+            260
+          ],
+          "neutral_body_height_game_px": 104,
+          "motions": [
+            "hover",
+            "tell",
+            "release",
+            "hit",
+            "evolve",
+            "vanish"
+          ],
+          "renderer": "scripts/phantom_witch_visual.gd",
+          "source_tool": "tools/visual_rebirth/prepare_witch_evolution.py",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 3,
+          "variant": "baseline",
+          "format": "generated_2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/witch/level_03_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "4553e80df1dc8b1a3511798bdedb5c8a9144e6ecb4368289e1c31cab9a207fa6"
+            }
+          },
+          "pivot_px": [
+            164,
+            260
+          ],
+          "neutral_body_height_game_px": 104,
+          "motions": [
+            "hover",
+            "tell",
+            "release",
+            "hit",
+            "evolve",
+            "vanish"
+          ],
+          "renderer": "scripts/phantom_witch_visual.gd",
+          "source_tool": "tools/visual_rebirth/prepare_witch_evolution.py",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 4,
+          "variant": "baseline",
+          "format": "generated_2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/witch/level_04_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "ccb629be131258378d935034bcdc267416f4182aed73d7e3e768fd427cfd9a29"
+            }
+          },
+          "pivot_px": [
+            164,
+            260
+          ],
+          "neutral_body_height_game_px": 104,
+          "motions": [
+            "hover",
+            "tell",
+            "release",
+            "hit",
+            "evolve",
+            "vanish"
+          ],
+          "renderer": "scripts/phantom_witch_visual.gd",
+          "source_tool": "tools/visual_rebirth/prepare_witch_evolution.py",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 5,
+          "variant": "baseline",
+          "format": "generated_2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/witch/level_05_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "d2e2ae88ba99862a254615b3eb1637bb1febca3a299d4bfb6e36b1a0c6709efa"
+            }
+          },
+          "pivot_px": [
+            164,
+            260
+          ],
+          "neutral_body_height_game_px": 104,
+          "motions": [
+            "hover",
+            "tell",
+            "release",
+            "hit",
+            "evolve",
+            "vanish"
+          ],
+          "renderer": "scripts/phantom_witch_visual.gd",
+          "source_tool": "tools/visual_rebirth/prepare_witch_evolution.py",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 6,
+          "variant": "baseline",
+          "format": "generated_2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/witch/level_06_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "44b4b14124980074bdb0167f28d5bbf4967ac39f6f3063feeb1be46f226e2080"
+            }
+          },
+          "pivot_px": [
+            164,
+            260
+          ],
+          "neutral_body_height_game_px": 104,
+          "motions": [
+            "hover",
+            "tell",
+            "release",
+            "hit",
+            "evolve",
+            "vanish"
+          ],
+          "renderer": "scripts/phantom_witch_visual.gd",
+          "source_tool": "tools/visual_rebirth/prepare_witch_evolution.py",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 7,
+          "variant": "baseline",
+          "format": "generated_2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/witch/level_07_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "36c9db1dc750f6ebe8ae869ea2cc8004d8aeeb44a4f6f9197bf586a7de469c16"
+            }
+          },
+          "pivot_px": [
+            164,
+            260
+          ],
+          "neutral_body_height_game_px": 104,
+          "motions": [
+            "hover",
+            "tell",
+            "release",
+            "hit",
+            "evolve",
+            "vanish"
+          ],
+          "renderer": "scripts/phantom_witch_visual.gd",
+          "source_tool": "tools/visual_rebirth/prepare_witch_evolution.py",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 8,
+          "variant": "baseline",
+          "format": "generated_2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/witch/level_08_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "af83e5700a0a791598c6fdeda62cf3a39d5a1c7028e847a52617a6ca295e3d56"
+            }
+          },
+          "pivot_px": [
+            164,
+            260
+          ],
+          "neutral_body_height_game_px": 104,
+          "motions": [
+            "hover",
+            "tell",
+            "release",
+            "hit",
+            "evolve",
+            "vanish"
+          ],
+          "renderer": "scripts/phantom_witch_visual.gd",
+          "source_tool": "tools/visual_rebirth/prepare_witch_evolution.py",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 9,
+          "variant": "baseline",
+          "format": "generated_2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/witch/level_09_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "a17518035e255c0b29378c20f6e563f656fd733f939695382c994b4329f61cf8"
+            }
+          },
+          "pivot_px": [
+            164,
+            260
+          ],
+          "neutral_body_height_game_px": 104,
+          "motions": [
+            "hover",
+            "tell",
+            "release",
+            "hit",
+            "evolve",
+            "vanish"
+          ],
+          "renderer": "scripts/phantom_witch_visual.gd",
+          "source_tool": "tools/visual_rebirth/prepare_witch_evolution.py",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
+        },
+        {
+          "level": 10,
+          "variant": "baseline",
+          "format": "generated_2d_textured_deformation_mesh",
+          "orientations": {
+            "oblique": {
+              "path": "assets/visual_rebirth/witch/level_10_oblique.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "f98940daed83bdf013f24a0627cced2867a28524332fe4b80309edc31ad78069"
+            }
+          },
+          "pivot_px": [
+            164,
+            260
+          ],
+          "neutral_body_height_game_px": 104,
+          "motions": [
+            "hover",
+            "tell",
+            "release",
+            "hit",
+            "evolve",
+            "vanish"
+          ],
+          "renderer": "scripts/phantom_witch_visual.gd",
+          "source_tool": "tools/visual_rebirth/prepare_witch_evolution.py",
+          "qa_status": "exact_level_bound_and_rendered_in_godot"
         }
       ]
     },
@@ -423,7 +702,7 @@
                 672,
                 448
               ],
-              "sha256": "3eddaaca96b945c11c518e81feb5e66a89806e5e64d7243c9c00163de61ab209"
+              "sha256": "724cdf3a9318451bf0552a2b7e984d1043048690c5814a88aa3a2f7cda3461b8"
             },
             {
               "path": "assets/visual_rebirth/buildings/turret/launcher.png",
@@ -431,21 +710,22 @@
                 1344,
                 2464
               ],
-              "sha256": "815af919578562521ff029484d22503fef4ce5b45df79305c83a0d963f295d42"
+              "sha256": "41ae84729b899e073971cc1307c774a69bc4d27a6039154b7fd6ead62f4bcecd"
             }
           ],
           "source_tool": "tools/visual_rebirth/bake_needle.py",
           "renderer": "scripts/building_evolution_visual.gd",
-          "qa_status": "major_anchors_read_at_gameplay_scale_adjacent_and_branch_review_open",
+          "qa_status": "strengthened_levels_and_branches_rendered_in_godot",
           "anchor_silhouette_xor_over_union_mean": {
             "1_to_4": 0.26,
             "4_to_7": 0.281,
-            "7_to_10": 0.354
+            "7_to_10": 0.355
           },
           "adjacent_silhouette_pairs_distinct": {
-            "count": 103,
+            "count": 108,
             "total": 108
-          }
+          },
+          "runtime_storage": "vram_bptc_desktop_astc_mobile"
         }
       ]
     },
@@ -532,7 +812,7 @@
                 576,
                 384
               ],
-              "sha256": "6edb934a09e87695d42ee7d533c8e31f57884375acb156ae4a508b92b446cf39"
+              "sha256": "74894a33c681cfa8dcdc601d9194c3a1e78e222d272c69e64e00bfd2a932b17c"
             },
             {
               "path": "assets/visual_rebirth/buildings/heavy/launcher.png",
@@ -540,7 +820,7 @@
                 1152,
                 2112
               ],
-              "sha256": "1c1bb8ba1ca048e117cd97d8dbd81bdecbea7902d4b078146ed37112ff5544a5"
+              "sha256": "c5d7b8b22128ad0ea6fb87f0d2250cea952f3dcc2ba6e11c4b1bf868b6ac593c"
             }
           ],
           "source_tool": "tools/visual_rebirth/bake_arc.py",
@@ -548,9 +828,14 @@
           "anchor_silhouette_xor_over_union_mean": {
             "1_to_4": 0.253,
             "4_to_7": 0.271,
-            "7_to_10": 0.317
+            "7_to_10": 0.316
           },
-          "qa_status": "major_anchors_and_paid_branch_paths_verified_in_game"
+          "qa_status": "strengthened_levels_and_branches_rendered_in_godot",
+          "runtime_storage": "vram_bptc_desktop_astc_mobile",
+          "adjacent_silhouette_pairs_distinct": {
+            "count": 108,
+            "total": 108
+          }
         }
       ]
     },
@@ -580,7 +865,80 @@
         "overcharge"
       ],
       "required_character_views": [],
-      "verified_outputs": []
+      "verified_outputs": [
+        {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "variants": {
+            "baseline": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "regulated": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "overcharge": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          },
+          "format": "blender_baked_2d_atlases",
+          "tile_dimensions_px": [
+            96,
+            96
+          ],
+          "moving_frames_per_state": 8,
+          "runtime_storage": "vram_bptc_desktop_astc_mobile",
+          "layers": [
+            {
+              "path": "assets/visual_rebirth/buildings/generator/base.png",
+              "dimensions_px": [
+                576,
+                384
+              ],
+              "sha256": "e8775d5c92f1a85871a624e8354aceab40bb998f7e9439ceeed9f78d05cf58ae"
+            },
+            {
+              "path": "assets/visual_rebirth/buildings/generator/motion.png",
+              "dimensions_px": [
+                768,
+                2112
+              ],
+              "sha256": "c4bb3cf9f4ea13b26f70b6f74ef09c48527dbf893cdb7cbdef31574a6c629433"
+            }
+          ],
+          "source_tool": "tools/visual_rebirth/bake_dynamo.py",
+          "renderer": "scripts/building_evolution_visual.gd",
+          "qa_status": "integrated_baked_atlas"
+        }
+      ]
     },
     "repair": {
       "group": "buildings_and_core",
@@ -608,7 +966,80 @@
         "conservation"
       ],
       "required_character_views": [],
-      "verified_outputs": []
+      "verified_outputs": [
+        {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "variants": {
+            "baseline": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "sustain": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "conservation": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          },
+          "format": "blender_baked_2d_atlases",
+          "tile_dimensions_px": [
+            96,
+            96
+          ],
+          "moving_frames_per_state": 8,
+          "runtime_storage": "vram_bptc_desktop_astc_mobile",
+          "layers": [
+            {
+              "path": "assets/visual_rebirth/buildings/repair/base.png",
+              "dimensions_px": [
+                576,
+                384
+              ],
+              "sha256": "a3fac047dbd3ddba8e96473be11a8729eda6b13d1c2ce1137892bfa0e52f76e2"
+            },
+            {
+              "path": "assets/visual_rebirth/buildings/repair/motion.png",
+              "dimensions_px": [
+                768,
+                2112
+              ],
+              "sha256": "b2d49817be348da323dcdb514062d834d4f0c6e813a3320be52e14303b7f1f1c"
+            }
+          ],
+          "source_tool": "tools/visual_rebirth/bake_repair.py",
+          "renderer": "scripts/building_evolution_visual.gd",
+          "qa_status": "integrated_baked_atlas"
+        }
+      ]
     },
     "economy": {
       "group": "buildings_and_core",
