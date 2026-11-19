@@ -1,0 +1,9 @@
+# Phantom Witch Level 1 directional art
+
+The canonical Level 1 concept supplied by the owner was the visual reference for `witch-oblique-source.png`. Its open face, flowing ash-black hair, brooch, dark mourning gown, lace and floating feet define the identity. The oblique concept was generated first in ImageGen. `witch-turnaround-source.png` was generated in one additional reference-conditioned ImageGen call with separate front, rear and side poses. Neither external 3D production nor purchased credits were used.
+
+The four turnaround sprites have different perspective and silhouette information. They are rendered 2D illustrations with small inconsistencies in the hand poses, garment folds and individual hair locks. The angle is a generated approximation of the intended 42° elevated orthographic camera. The directional pack contains no underlying sculpt, skeletal animation or articulated part atlas.
+
+Run `bash tools/visual_rebirth/prepare_witch_turnaround.sh` from the repository root with ImageMagick 7 to reproduce the five packed PNGs in `assets/visual_rebirth/witch/`. The saved generated sources reproduce the packed sprites exactly. Repeating the stochastic generation step may create a different concept. All sprite canvases are 216 × 264 with a 256 px subject height and common floor pivot of (108, 260). At alpha ≥24 all occupied bounds run from y=4 to y=260 exclusive. Near the feet at alpha ≥128 the horizontal centroid is within 0.8 px of the common pivot. A second packing run reproduced all five SHA-256 hashes.
+
+The two galleries are composited art inspection images. The daytime-gray and room-gray swatches expose obvious matte and alpha artifacts. The 104 px row approximates the target display height. Actual Godot presentation and runtime state tests are tracked in the pilot report.

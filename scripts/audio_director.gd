@@ -5,9 +5,10 @@ const ROOT = "res://assets/audio/"
 const WrathAudio = preload("res://scripts/wrath_audio_catalog.gd")
 const LOOP_NAMES = ["music_crimson","music_intro","music_approach","music_endless","music_menu","music_calm","music_danger","ambient_dorm","proximity_loop","generator_loop","music_reaper","reaper_ambience","music_lantern","music_portrait","music_dust","music_siege","music_procession","music_opening_alt"]
 const STALKER_BREATH = "cinematic_stalker_breath"
+const APPROACH_EFFECTS = ["cinematic_crusher_approach","cinematic_ravager_approach","cinematic_witch_approach","cinematic_electric_approach","cinematic_storm_approach"]
 const LEGACY_EFFECT_NAMES = ["cinematic_crusher_move","cinematic_crusher_charge","cinematic_crusher_release","cinematic_stalker_move","cinematic_stalker_charge","cinematic_stalker_release","cinematic_ravager_move","cinematic_ravager_charge","cinematic_ravager_release","cinematic_witch_move","cinematic_witch_charge","cinematic_witch_release","cinematic_electric_move","cinematic_electric_charge","cinematic_electric_release","cinematic_storm_move","cinematic_storm_charge","cinematic_storm_release","nightmare_defeat","nightmare_rebirth","death_scream_1","death_scream_2","hunter_laugh","reaper_laugh","weather_thunder","weather_wind","weather_rain","prestige_upgrade","survivor_notice","intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","button","menu","match_start","purchase","failure","rank","reward","victory","defeat","shot_needle","shot_arc","impact","ghost_hurt","ghost_defeat","door_hit","door_crack","door_break","build","turret_upgrade","bed_upgrade","door_upgrade","repair","upgrade","income","electricity","footstep","danger","breach","hunter_spawn","hunter_level","elimination","scream_1","scream_2","scream_3","door_reaction","sale","refund","insufficient_gold","insufficient_power","eerie","reaper_transform","reaper_scythe","reaper_charge","reaper_surge","reaper_impact","reaper_hurt","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_end","item_explosion","item_shield_hit",STALKER_BREATH]
 const LEGACY_CRITICAL_EVENTS = ["cinematic_crusher_charge","cinematic_crusher_release","cinematic_stalker_charge","cinematic_stalker_release","cinematic_ravager_charge","cinematic_ravager_release","cinematic_witch_charge","cinematic_witch_release","cinematic_electric_charge","cinematic_electric_release","cinematic_storm_charge","cinematic_storm_release","nightmare_defeat","nightmare_rebirth","death_scream_1","death_scream_2","survivor_notice","prestige_upgrade","intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","victory","defeat","ghost_defeat","rank","reward","hunter_level","breach","door_break","match_start","door_reaction","sale","refund","reaper_transform","reaper_charge","reaper_surge","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_explosion"]
-const EFFECT_NAMES = LEGACY_EFFECT_NAMES + WrathAudio.NAMES
+const EFFECT_NAMES = LEGACY_EFFECT_NAMES + WrathAudio.NAMES + APPROACH_EFFECTS
 const CRITICAL_EVENTS = LEGACY_CRITICAL_EVENTS + WrathAudio.CRITICAL_NAMES
 const VOICE_LIMIT = 16
 const MAX_PENDING_CRITICAL = 24
@@ -234,13 +235,14 @@ func event(name: String, position: Vector2 = Vector2.INF, details: Dictionary = 
  free_voice.bus="Ambient" if name.begins_with("weather_") else "Effects"
  var design_gain=WrathAudio.gain_db(name)
  if name==STALKER_BREATH:design_gain=-17.0
+ elif name in APPROACH_EFFECTS:design_gain=-20.0
  elif name.begins_with("cinematic_"):design_gain=-22.0 if name.ends_with("_move") else -11.0 if name.ends_with("_charge") else -12.0
  elif name=="nightmare_rebirth":design_gain=-10.0
  elif name=="nightmare_defeat":design_gain=-13.0
  free_voice.volume_db = linear_to_db(distance_gain*(ambience_gain if name.begins_with("weather_") else 1.0))+design_gain
  free_voice.pitch_scale = 1.0
  free_voice.play()
- var cooldown = 12.0 if name==STALKER_BREATH else EFFECT_COOLDOWNS.get(name,0.08)
+ var cooldown = 12.0 if name==STALKER_BREATH else 15.0 if name in APPROACH_EFFECTS else EFFECT_COOLDOWNS.get(name,0.08)
  _cooldowns[name] = _clock+float(WrathAudio.cooldown(name,cooldown))
  if family!="":_family_cooldowns[family]=_cooldowns[name]
  event_counts[name] = int(event_counts.get(name,0))+1
@@ -288,8 +290,10 @@ func _stop_battle_cues():
 func new_encounter(model):
  # Same run and rooms, intentionally fresh Hunter. Valid screams/laughs and
  # their serialized queues continue; only the defeated Hunter's warnings stop.
- stop_events(["reaper_transform","reaper_charge","reaper_surge","reaper_scythe",STALKER_BREATH]+WrathAudio.COMBAT_WARNINGS)
- _cooldowns.erase(STALKER_BREATH)
+ var approach_cues = APPROACH_EFFECTS + [STALKER_BREATH]
+ stop_events(["reaper_transform","reaper_charge","reaper_surge","reaper_scythe"]+approach_cues+WrathAudio.COMBAT_WARNINGS)
+ for cue in approach_cues:
+  _cooldowns.erase(cue)
  _domain_music_active=false
  _observed_model=model;_previous_time=model.time
  _previous_hunter_position=model.hunter.position;_previous=_snapshot(model)
@@ -364,9 +368,10 @@ func update_state(delta: float, model, mode: String):
     if target_proximity>0.45 and model.hunter.position.distance_to(_previous_hunter_position)>0.25:
      event("cinematic_"+model.hunter.archetype+"_move" if model.hunter.archetype in StrategyCatalog.ARCHETYPE_IDS and not model.hunter.transformed else "footstep",model.hunter.position)
     if (target_proximity>0.1 and model.running and not model.tutorial_mode
-      and model.hunter.archetype=="stalker" and model.hunter.state==HunterState.State.MOVE
+      and model.hunter.state==HunterState.State.MOVE
       and not model.hunter.transformed and OS.get_environment("NIGHTFALL_VISUAL_REBIRTH")=="1"):
-     event(STALKER_BREATH,model.hunter.position)
+     var cue=STALKER_BREATH if model.hunter.archetype=="stalker" else "cinematic_"+model.hunter.archetype+"_approach"
+     if cue in EFFECT_NAMES:event(cue,model.hunter.position)
     if target_intensity>0.75 and intensity<=0.75:
      event("danger",listener_position)
    if room != null and room.alive:

@@ -1,25 +1,30 @@
 extends RefCounted
 # Cached original shaded machinery, compact on pads; full detail in inspection.
 var art: Dictionary={}
-const NEEDLE_ART_DIR = "res://assets/visual_rebirth/buildings/turret/"
+const WEAPON_ART_DIR = "res://assets/visual_rebirth/buildings/"
 const NEEDLE_CELL = 112
-const NEEDLE_BEARINGS = 12
-const NEEDLE_CANVAS_SIZE = 99.0
-const NEEDLE_UNIT = NEEDLE_CANVAS_SIZE / 3.75
+const ARC_CELL = 96
+const WEAPON_BEARINGS = 12
+const WEAPON_CANVAS_SIZE = 99.0
+const WEAPON_UNIT = WEAPON_CANVAS_SIZE / 3.75
 var needle_base: Texture2D
 var needle_launcher: Texture2D
+var arc_base: Texture2D
+var arc_launcher: Texture2D
 const KINDS=["turret","heavy","generator","repair","economy","enhancer","flame","frost","shock","auto_repair","shield","decoy","barrier","plasma","antenna","bed","door"]
 func _init():
  if OS.get_environment("NIGHTFALL_VISUAL_REBIRTH") == "1":
-  needle_base = load(NEEDLE_ART_DIR + "base.png")
-  needle_launcher = load(NEEDLE_ART_DIR + "launcher.png")
+  needle_base = load(WEAPON_ART_DIR + "turret/base.png")
+  needle_launcher = load(WEAPON_ART_DIR + "turret/launcher.png")
+  arc_base = load(WEAPON_ART_DIR + "heavy/base.png")
+  arc_launcher = load(WEAPON_ART_DIR + "heavy/launcher.png")
  for kind in KINDS:
   for tier in range(4):art[kind+str(tier)]=load("res://assets/cinematic_buildings/%s_%d.svg" % [kind,tier])
 func tier_for(level: int) -> int:return 3 if level==10 else 2 if level>=7 else 1 if level>=4 else 0
 func draw(c,_p,kind: String,level: int,point: Vector2,branch: String="",activity: float=0,target: Vector2=Vector2.ZERO,clock: float=0,angle: float=0,render_scale: float=1.0,tint: Color=Color.WHITE):
  level=clampi(level,1,10)
- if kind == "turret" and needle_rebirth_active():
-  draw_rebirth_needle(c, level, point, branch, activity, target, angle, render_scale, tint)
+ if weapon_rebirth_active(kind):
+  draw_rebirth_weapon(c, kind, level, point, branch, activity, target, angle, render_scale, tint)
   return
  var tier=tier_for(level);var core=art.get(kind+str(tier))
  if core==null:return
@@ -66,11 +71,17 @@ func draw(c,_p,kind: String,level: int,point: Vector2,branch: String="",activity
 func needle_rebirth_active() -> bool:
  return needle_base != null and needle_launcher != null
 
+func arc_rebirth_active() -> bool:
+ return arc_base != null and arc_launcher != null
+
+func weapon_rebirth_active(kind: String) -> bool:
+ return kind == "turret" and needle_rebirth_active() or kind == "heavy" and arc_rebirth_active()
+
 # Aim at the most recent real shot while the launcher is active. When a shot
 # already landed, use its matching launch event without altering the model.
-func needle_target(model, room, tile: int, activity: float) -> Vector2:
+func weapon_target(model, room, tile: int, kind: String, activity: float) -> Vector2:
  var origin: Vector2 = room.tile_position(tile)
- if needle_rebirth_active() and activity > 0:
+ if weapon_rebirth_active(kind) and activity > 0:
   for i in range(model.projectiles.size() - 1, -1, -1):
    var shot: Dictionary = model.projectiles[i]
    if shot.room != room.index or shot.get("building_id", -1) != tile:
@@ -79,7 +90,7 @@ func needle_target(model, room, tile: int, activity: float) -> Vector2:
    return (actor.position if actor != null else shot.position) - origin
   for i in range(model.combat_events.size() - 1, -1, -1):
    var event: Dictionary = model.combat_events[i]
-   if event.type != "launch" or event.kind != "turret" or event.room != room.index or event.position != origin:
+   if event.type != "launch" or event.kind != kind or event.room != room.index or event.position != origin:
     continue
    for impact_index in range(i + 1, model.combat_events.size()):
     var impact: Dictionary = model.combat_events[impact_index]
@@ -91,14 +102,14 @@ func needle_target(model, room, tile: int, activity: float) -> Vector2:
    break
  return model.hunter.position - origin
 
-func needle_heading(target: Vector2) -> int:
+func weapon_heading(target: Vector2) -> int:
  if target.length_squared() <= 0.001:
   return 0
  var bearing := atan2(-target.y * sqrt(2.0), target.x)
- return posmod(roundi(bearing * NEEDLE_BEARINGS / TAU), NEEDLE_BEARINGS)
+ return posmod(roundi(bearing * WEAPON_BEARINGS / TAU), WEAPON_BEARINGS)
 
-func needle_projection(heading: int) -> Vector2:
- var yaw := heading * TAU / NEEDLE_BEARINGS
+func weapon_projection(heading: int) -> Vector2:
+ var yaw := heading * TAU / WEAPON_BEARINGS
  return Vector2(cos(yaw), -sin(yaw) / sqrt(2.0))
 
 func needle_recoil(c, projected: Vector2, fire: float) -> Vector2:
@@ -106,33 +117,59 @@ func needle_recoil(c, projected: Vector2, fire: float) -> Vector2:
 
 func needle_muzzle(projected: Vector2, recoil: Vector2) -> Vector2:
  # Project the primary dart point (0.91, 0, 1.59) through the bake camera.
- return projected * (0.91 * NEEDLE_UNIT) - Vector2(0, 1.59 * NEEDLE_UNIT / sqrt(2.0)) - recoil
+ return projected * (0.91 * WEAPON_UNIT) - Vector2(0, 1.59 * WEAPON_UNIT / sqrt(2.0)) - recoil
 
-func draw_rebirth_needle(c, level: int, point: Vector2, branch: String, activity: float, target: Vector2, angle: float, render_scale: float, tint: Color):
+func arc_recoil(c, projected: Vector2, fire: float) -> Vector2:
+ return Vector2.ZERO if CinematicQuality.reduced_motion(c) else projected.normalized() * (1.4 * fire)
+
+func arc_muzzle(projected: Vector2, recoil: Vector2) -> Vector2:
+ # Midpoint between the two baked electrode terminals.
+ return projected * (0.68 * WEAPON_UNIT) - Vector2(0, 1.77 * WEAPON_UNIT / sqrt(2.0)) - recoil
+
+func draw_rebirth_weapon(c, kind: String, level: int, point: Vector2, branch: String, activity: float, target: Vector2, angle: float, render_scale: float, tint: Color):
+ var arc := kind == "heavy"
  var state := level - 1
  if level >= 5:
-  if branch == "precision":
+  if branch in ["precision", "focus"]:
    state = level + 5
-  elif branch == "suppression":
+  elif branch in ["suppression", "storm"]:
    state = level + 11
- var heading := needle_heading(target)
- var projected := needle_projection(heading)
+ var heading := weapon_heading(target)
+ var projected := weapon_projection(heading)
  var fire := clampf(activity / 0.15, 0.0, 1.0)
- var recoil := needle_recoil(c, projected, fire)
- var rect := Rect2(Vector2(-NEEDLE_CANVAS_SIZE * 0.5, -NEEDLE_CANVAS_SIZE * 0.5 - 0.87 * NEEDLE_UNIT), Vector2.ONE * NEEDLE_CANVAS_SIZE)
+ var recoil := arc_recoil(c, projected, fire) if arc else needle_recoil(c, projected, fire)
+ var cell := ARC_CELL if arc else NEEDLE_CELL
+ var rect := Rect2(Vector2(-WEAPON_CANVAS_SIZE * 0.5, -WEAPON_CANVAS_SIZE * 0.5 - 0.87 * WEAPON_UNIT), Vector2.ONE * WEAPON_CANVAS_SIZE)
  c.draw_set_transform(point, angle, Vector2.ONE * render_scale)
- c.draw_texture_rect_region(needle_base, rect, Rect2((state % 6) * NEEDLE_CELL, floori(state / 6.0) * NEEDLE_CELL, NEEDLE_CELL, NEEDLE_CELL), tint)
- c.draw_texture_rect_region(needle_launcher, Rect2(rect.position - recoil, rect.size), Rect2(heading * NEEDLE_CELL, state * NEEDLE_CELL, NEEDLE_CELL, NEEDLE_CELL), tint)
+ c.draw_texture_rect_region(arc_base if arc else needle_base, rect, Rect2((state % 6) * cell, floori(state / 6.0) * cell, cell, cell), tint)
+ c.draw_texture_rect_region(arc_launcher if arc else needle_launcher, Rect2(rect.position - recoil, rect.size), Rect2(heading * cell, state * cell, cell, cell), tint)
  if fire > 0:
-  var muzzle := needle_muzzle(projected, recoil)
-  var direction := projected.normalized()
-  var side := direction.orthogonal()
-  var alpha := fire * 0.85
-  if CinematicQuality.reduced_flash(c):
-   c.draw_circle(muzzle, 1.6, Color(0.63, 0.86, 0.88, alpha))
+  if arc:
+   draw_arc_discharge(c, heading, arc_muzzle(projected, recoil), branch, fire)
   else:
-   c.draw_colored_polygon(PackedVector2Array([muzzle - side * 2.0, muzzle + direction * (3.0 + 5.0 * fire), muzzle + side * 2.0]), Color(0.69, 0.93, 0.91, alpha))
+   var muzzle := needle_muzzle(projected, recoil)
+   var direction := projected.normalized()
+   var side := direction.orthogonal()
+   var alpha := fire * 0.85
+   if CinematicQuality.reduced_flash(c):
+    c.draw_circle(muzzle, 1.6, Color(0.63, 0.86, 0.88, alpha))
+   else:
+    c.draw_colored_polygon(PackedVector2Array([muzzle - side * 2.0, muzzle + direction * (3.0 + 5.0 * fire), muzzle + side * 2.0]), Color(0.69, 0.93, 0.91, alpha))
  c.draw_set_transform(Vector2.ZERO)
+
+func draw_arc_discharge(c, heading: int, center: Vector2, branch: String, fire: float):
+ var yaw := heading * TAU / WEAPON_BEARINGS
+ var lateral := Vector2(-sin(yaw), -cos(yaw) / sqrt(2.0)) * (0.103 * WEAPON_UNIT)
+ var direction := weapon_projection(heading).normalized()
+ var color := Color("B9A6E9") if branch == "focus" else Color("86CCE2")
+ color.a = fire * 0.83
+ if CinematicQuality.reduced_flash(c):
+  c.draw_line(center - lateral, center + lateral, color, 1.15)
+  return
+ var path := PackedVector2Array([center - lateral, center - lateral * 0.37 + direction * 1.15, center + lateral * 0.23 - direction, center + lateral])
+ c.draw_polyline(path, Color(color, color.a * 0.34), 3.8, true)
+ c.draw_polyline(path, color, 1.15, true)
+ c.draw_circle(center, 1.8 + fire * 1.3, Color(color, color.a * 0.43))
 
 var ribs: Dictionary={}
 func _rib(color: Color):

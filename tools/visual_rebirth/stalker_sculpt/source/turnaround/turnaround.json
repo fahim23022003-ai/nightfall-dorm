@@ -1,0 +1,200 @@
+{
+  "size": 512,
+  "projection": "Orthographic",
+  "elevation_degrees": 42,
+  "policy": "Side and rear authored interpretations from an oblique concept",
+  "views": {
+    "front": {
+      "file": "front.png",
+      "camera": [
+        0.0,
+        -6.0,
+        5.402424
+      ],
+      "sockets": {
+        "ground": [
+          0.5,
+          0.789214
+        ],
+        "head": [
+          0.528351,
+          0.244515
+        ],
+        "mouth": [
+          0.528351,
+          0.334173
+        ],
+        "left_shoulder": [
+          0.579897,
+          0.334993
+        ],
+        "right_shoulder": [
+          0.446392,
+          0.343231
+        ],
+        "left_hand": [
+          0.574742,
+          0.591556
+        ],
+        "right_hand": [
+          0.451031,
+          0.59723
+        ],
+        "hem": [
+          0.5,
+          0.811076
+        ]
+      },
+      "silhouette_bounds_px": [
+        160,
+        90,
+        355,
+        437
+      ]
+    },
+    "rear": {
+      "file": "rear.png",
+      "camera": [
+        0.0,
+        6.0,
+        5.402424
+      ],
+      "sockets": {
+        "ground": [
+          0.5,
+          0.789214
+        ],
+        "head": [
+          0.471649,
+          0.161736
+        ],
+        "mouth": [
+          0.471649,
+          0.154819
+        ],
+        "left_shoulder": [
+          0.420103,
+          0.260492
+        ],
+        "right_shoulder": [
+          0.553608,
+          0.258382
+        ],
+        "left_hand": [
+          0.425257,
+          0.404613
+        ],
+        "right_hand": [
+          0.548969,
+          0.388213
+        ],
+        "hem": [
+          0.5,
+          0.686908
+        ]
+      },
+      "silhouette_bounds_px": [
+        157,
+        50,
+        352,
+        438
+      ]
+    },
+    "left": {
+      "file": "left.png",
+      "camera": [
+        -6.0,
+        0.0,
+        5.402424
+      ],
+      "sockets": {
+        "ground": [
+          0.499999,
+          0.789214
+        ],
+        "head": [
+          0.561855,
+          0.184155
+        ],
+        "mouth": [
+          0.63402,
+          0.225526
+        ],
+        "left_shoulder": [
+          0.55567,
+          0.244281
+        ],
+        "right_shoulder": [
+          0.563402,
+          0.336678
+        ],
+        "left_hand": [
+          0.63969,
+          0.448072
+        ],
+        "right_hand": [
+          0.656185,
+          0.525489
+        ],
+        "hem": [
+          0.592783,
+          0.748992
+        ]
+      },
+      "silhouette_bounds_px": [
+        181,
+        63,
+        351,
+        461
+      ]
+    },
+    "right": {
+      "file": "right.png",
+      "camera": [
+        6.0,
+        0.0,
+        5.402424
+      ],
+      "sockets": {
+        "ground": [
+          0.5,
+          0.789214
+        ],
+        "head": [
+          0.438145,
+          0.222095
+        ],
+        "mouth": [
+          0.36598,
+          0.263466
+        ],
+        "left_shoulder": [
+          0.44433,
+          0.351204
+        ],
+        "right_shoulder": [
+          0.436598,
+          0.264936
+        ],
+        "left_hand": [
+          0.36031,
+          0.548097
+        ],
+        "right_hand": [
+          0.343815,
+          0.459955
+        ],
+        "hem": [
+          0.407217,
+          0.748992
+        ]
+      },
+      "silhouette_bounds_px": [
+        161,
+        81,
+        331,
+        457
+      ]
+    }
+  }
+}

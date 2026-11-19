@@ -20,7 +20,7 @@
     }
   },
   "reference_status": "decoded_and_matched_to_handoff",
-  "production_status": "opt_in_prototypes_batch_gate_pending",
+  "production_status": "incremental_opt_in_art_stalker_gate_open",
   "assets": {
     "crusher": {
       "group": "hunters",
@@ -115,7 +115,20 @@
             104
           ]
         }
-      ]
+      ],
+      "source_study": {
+        "level": 1,
+        "format": "editable_blender_geometry",
+        "integrated": false,
+        "views": [
+          "front",
+          "back",
+          "left",
+          "right"
+        ],
+        "source": "tools/visual_rebirth/stalker_sculpt/source/stalker_l1.blend",
+        "qa_status": "face_and_cloth_quality_gate_open"
+      }
     },
     "ravager": {
       "group": "hunters",
@@ -177,7 +190,70 @@
         "right",
         "gameplay"
       ],
-      "verified_outputs": []
+      "verified_outputs": [
+        {
+          "level": 1,
+          "variant": "baseline",
+          "format": "generated_2d_textured_deformation_mesh",
+          "orientations": {
+            "front": {
+              "path": "assets/visual_rebirth/witch/level_01_front.png",
+              "dimensions_px": [
+                216,
+                264
+              ],
+              "sha256": "b5dac0ebe1ffb5a2cee2d915775664a866c25cae38d124088c500ee6706ce26e"
+            },
+            "back": {
+              "path": "assets/visual_rebirth/witch/level_01_back.png",
+              "dimensions_px": [
+                216,
+                264
+              ],
+              "sha256": "1ed56bb48f444e2fdf601d6d1d6a355f976ea01a9dbd9fe18f278124e571e4c4"
+            },
+            "left": {
+              "path": "assets/visual_rebirth/witch/level_01_left.png",
+              "dimensions_px": [
+                216,
+                264
+              ],
+              "sha256": "a583a624c61fea387a905caa2cfff80b0bf04e20c11b083745028d68d350caa0"
+            },
+            "right": {
+              "path": "assets/visual_rebirth/witch/level_01_right.png",
+              "dimensions_px": [
+                216,
+                264
+              ],
+              "sha256": "0c4a3c3c486615b541027803f9ed514cd484af477665dcc65bcfc261cbe10db2"
+            },
+            "oblique": {
+              "path": "assets/visual_rebirth/witch/level_01_oblique.png",
+              "dimensions_px": [
+                216,
+                264
+              ],
+              "sha256": "91f9ebd63597270b248b80cf751fab7c171c6d9dd55bef00200e32a3baceb3fc"
+            }
+          },
+          "pivot_px": [
+            108,
+            260
+          ],
+          "neutral_body_height_game_px": 104,
+          "motions": [
+            "hover",
+            "tell",
+            "release",
+            "hit",
+            "vanish"
+          ],
+          "source_tool": "tools/visual_rebirth/prepare_witch_turnaround.sh",
+          "renderer": "scripts/phantom_witch_visual.gd",
+          "qa_status": "five_views_rendered_in_game_L1_only"
+        }
+      ]
     },
     "electric": {
       "group": "hunters",
@@ -399,7 +475,84 @@
         "storm"
       ],
       "required_character_views": [],
-      "verified_outputs": []
+      "verified_outputs": [
+        {
+          "levels": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "variants": {
+            "baseline": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "focus": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "storm": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          },
+          "format": "blender_baked_2d_atlases",
+          "yaw_samples": 12,
+          "tile_dimensions_px": [
+            96,
+            96
+          ],
+          "layers": [
+            {
+              "path": "assets/visual_rebirth/buildings/heavy/base.png",
+              "dimensions_px": [
+                576,
+                384
+              ],
+              "sha256": "6edb934a09e87695d42ee7d533c8e31f57884375acb156ae4a508b92b446cf39"
+            },
+            {
+              "path": "assets/visual_rebirth/buildings/heavy/launcher.png",
+              "dimensions_px": [
+                1152,
+                2112
+              ],
+              "sha256": "1c1bb8ba1ca048e117cd97d8dbd81bdecbea7902d4b078146ed37112ff5544a5"
+            }
+          ],
+          "source_tool": "tools/visual_rebirth/bake_arc.py",
+          "renderer": "scripts/building_evolution_visual.gd",
+          "anchor_silhouette_xor_over_union_mean": {
+            "1_to_4": 0.253,
+            "4_to_7": 0.271,
+            "7_to_10": 0.317
+          },
+          "qa_status": "major_anchors_and_paid_branch_paths_verified_in_game"
+        }
+      ]
     },
     "generator": {
       "group": "buildings_and_core",

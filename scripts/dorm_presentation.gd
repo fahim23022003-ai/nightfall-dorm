@@ -159,7 +159,9 @@ func update(delta: float, model):
   if e.id>seen_event:
    seen_event=e.id
    if e.type=="impact":
-    var kind="needle_impact" if e.kind=="turret" and building_visual.needle_rebirth_active() else "impact"
+    var kind="impact"
+    if building_visual.weapon_rebirth_active(e.kind):
+     kind="arc_impact" if e.kind=="heavy" else "needle_impact"
     effect(kind,e.position,0.3)
  for e in visual_events: e.life-=delta
  visual_events=visual_events.filter(func(e): return e.life>0)
@@ -296,12 +298,21 @@ func render(c):
   if shot.kind=="turret" and building_visual.needle_rebirth_active():
    if actor!=null and shot.age<.10:
     # Start at the painted muzzle, then rejoin the authoritative flight path.
-    var projected=building_visual.needle_projection(building_visual.needle_heading(actor.position-shot.from))
+    var projected=building_visual.weapon_projection(building_visual.weapon_heading(actor.position-shot.from))
     var recoil=building_visual.needle_recoil(c,projected,clampf(1-shot.age/.15,0,1))
     var muzzle: Vector2=shot.from+building_visual.needle_muzzle(projected,recoil)
     p=OFFSET+muzzle.lerp(shot.position,smoothstep(0.0,.10,shot.age))
     direction=(actor.position+OFFSET-p).normalized()
    draw_needle_dart(c,p,direction,branch)
+   continue
+  if shot.kind=="heavy" and building_visual.arc_rebirth_active():
+   if actor!=null and shot.age<.10:
+    var projected=building_visual.weapon_projection(building_visual.weapon_heading(actor.position-shot.from))
+    var recoil=building_visual.arc_recoil(c,projected,clampf(1-shot.age/.15,0,1))
+    var muzzle: Vector2=shot.from+building_visual.arc_muzzle(projected,recoil)
+    p=OFFSET+muzzle.lerp(shot.position,smoothstep(0.0,.10,shot.age))
+    direction=(actor.position+OFFSET-p).normalized()
+   draw_arc_bolt(c,p,direction,branch,shot.id,shot.age)
    continue
   if branch!="":
    var tint={"precision":Color("E6C48D"),"suppression":Color("9EC7A4"),"focus":Color("C1A6DF"),"storm":Color("83DFDA")}.get(branch,Catalog.BUILDINGS[shot.kind].color)
@@ -340,6 +351,8 @@ func render(c):
     c.draw_rect(Rect2(at,Vector2(3,5)),Color(1,.82,.5,fraction))
   elif e.kind=="needle_impact":
    draw_needle_impact(c,p,fraction)
+  elif e.kind=="arc_impact":
+   draw_arc_impact(c,p,fraction)
   else:
    var color=Color("A8C9AE") if e.kind=="repair" else Color("C8AA79")
    if e.kind=="impact":c.draw_arc(p,5+(1-fraction)*13,0,TAU,20,Color(color,fraction*.65),1.5)
@@ -520,6 +533,30 @@ func menu_scene(c):
  c.draw_line(Vector2(72,143),Vector2(391,143),Color("7D6854"),1)
  for x in [72,391]:c.draw_colored_polygon(PackedVector2Array([Vector2(x,139),Vector2(x+4,143),Vector2(x,147),Vector2(x-4,143)]),Color("B69A6A"))
 
+func draw_arc_bolt(c, point: Vector2, direction: Vector2, branch: String, shot_id: int, age: float):
+ var side := direction.orthogonal()
+ var color := Color("BBA8EC") if branch == "focus" else Color("8EDAE8")
+ var length := 16.0 if branch == "focus" else 12.0
+ var phase := shot_id * 0.45 + age * 12.0
+ var zigzag := sin(phase) * (1.65 if branch == "storm" else 1.1)
+ if CinematicQuality.reduced_flash(c):
+  c.draw_line(point - direction * length, point, color, 1.6, true)
+ else:
+  var path := PackedVector2Array([point - direction * length, point - direction * (length * .62) + side * zigzag, point - direction * (length * .27) - side * zigzag, point])
+  c.draw_polyline(path, Color(color, .27), 5.0, true)
+  c.draw_polyline(path, color, 1.65, true)
+ c.draw_circle(point, 2.2, Color("CEE9FB"))
+
+func draw_arc_impact(c, point: Vector2, fraction: float):
+ var tint := Color(0.46, 0.73, 0.95, fraction * 0.69)
+ if CinematicQuality.reduced_flash(c):
+  c.draw_circle(point, 2.3, tint, false, 1.2)
+  return
+ for ray in range(5):
+  var direction := Vector2.from_angle(TAU * ray / 5.0 + 0.3)
+  var offset := (1.0 - fraction) * 7.0
+  c.draw_polyline(PackedVector2Array([point + direction * offset, point + direction * (offset + 3) + direction.orthogonal() * 2.0, point + direction * (offset + 8)]), tint, 1.25, true)
+
 func draw_needle_dart(c, point: Vector2, direction: Vector2, branch: String):
  var axis := direction if direction.length_squared() > 0.01 else Vector2.RIGHT
  var side := axis.orthogonal()
@@ -616,7 +653,7 @@ func cartoon_room(c,room: RoomState,owned: bool):
    var building=room.buildings[tile]
    var name=building_key(building.kind,building.level)
    var size=Vector2(53,56)*(1+0.04*(building.level-1))
-   var target=building_visual.needle_target(c.model,room,tile,building.flash) if building.kind=="turret" else c.model.hunter.position-room.tile_position(tile)
+   var target=building_visual.weapon_target(c.model,room,tile,building.kind,building.flash)
    building_visual.draw(c,self,building.kind,building.level,p,building.get("specialization",""),building.flash,target,clock)
    if room.sleeping and room.alive:
     if building.kind=="generator":
