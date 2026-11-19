@@ -1,0 +1,93 @@
+{
+  "before": {
+    "checks": 185,
+    "combat": {
+      "door_hp": 1979.8,
+      "electricity": 0.0,
+      "gold": 620.400000000003,
+      "hunter_attacks": 5,
+      "hunter_hp": 4537.0,
+      "sampled_state_sha256": "5f5d131398440ec2200f552b3115b3665148df0a7da2b7635f975886ce529971",
+      "shots": 7
+    },
+    "events": {
+      "needle_impact": 7,
+      "needle_launch": 7,
+      "stalker_door_damage": 5,
+      "stalker_warning": 1
+    },
+    "failures": 0,
+    "frame_time": {
+      "max_ms": 75.089,
+      "median_ms": 33.816,
+      "p95_ms": 45.026,
+      "render_video_memory_bytes": 110789559,
+      "sample_frames": 240,
+      "static_memory_bytes": 135813006,
+      "warmup_frames": 30
+    },
+    "presentation": {
+      "needle_atlas_bound": false,
+      "stalker_breaths": 0,
+      "stalker_mesh_frames": 0
+    },
+    "settings": {
+      "baseline": true,
+      "clip_fps": 24,
+      "clip_frames": 144,
+      "quality": "medium",
+      "seed": 67
+    },
+    "staging": {
+      "placed_at_door_on_frame_24": false
+    },
+    "capture_wall_seconds": 38.300418702000115,
+    "renderer": "OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)"
+  },
+  "pilot": {
+    "checks": 185,
+    "combat": {
+      "door_hp": 1979.8,
+      "electricity": 0.0,
+      "gold": 620.400000000003,
+      "hunter_attacks": 5,
+      "hunter_hp": 4537.0,
+      "sampled_state_sha256": "5f5d131398440ec2200f552b3115b3665148df0a7da2b7635f975886ce529971",
+      "shots": 7
+    },
+    "events": {
+      "needle_impact": 7,
+      "needle_launch": 7,
+      "stalker_door_damage": 5,
+      "stalker_warning": 1
+    },
+    "failures": 0,
+    "frame_time": {
+      "max_ms": 48.67,
+      "median_ms": 32.32,
+      "p95_ms": 39.848,
+      "render_video_memory_bytes": 131175111,
+      "sample_frames": 240,
+      "static_memory_bytes": 135893646,
+      "warmup_frames": 30
+    },
+    "presentation": {
+      "needle_atlas_bound": true,
+      "stalker_breaths": 1,
+      "stalker_mesh_frames": 50
+    },
+    "settings": {
+      "baseline": false,
+      "clip_fps": 24,
+      "clip_frames": 144,
+      "quality": "medium",
+      "seed": 67
+    },
+    "staging": {
+      "placed_at_door_on_frame_24": false
+    },
+    "capture_wall_seconds": 35.662191678,
+    "renderer": "OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)"
+  },
+  "conditions": "Same Godot executable and driver, fallback then pilot in fresh processes. Prepared legacy Endless seed 67, frozen full16 timing sample, separate staged room 4 approach with ordinary model ticks at fixed 1/24 second. A fixture-only door placement on frame 24 may occur if pathfinding has yet to reach it. Frames are captured directly from the game viewport. Video shows fallback on the left and pilot on the right, without audio. The separate Master recording follows actual mixer wall time and is not synchronized."
+}

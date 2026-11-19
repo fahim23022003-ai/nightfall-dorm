@@ -294,6 +294,13 @@ func render(c):
   var direction=((actor.position if actor!=null else shot.position+Vector2.RIGHT)-shot.position).normalized()
   var branch=str(shot.get("specialization",""))
   if shot.kind=="turret" and building_visual.needle_rebirth_active():
+   if actor!=null and shot.age<.10:
+    # Start at the painted muzzle, then rejoin the authoritative flight path.
+    var projected=building_visual.needle_projection(building_visual.needle_heading(actor.position-shot.from))
+    var recoil=building_visual.needle_recoil(c,projected,clampf(1-shot.age/.15,0,1))
+    var muzzle: Vector2=shot.from+building_visual.needle_muzzle(projected,recoil)
+    p=OFFSET+muzzle.lerp(shot.position,smoothstep(0.0,.10,shot.age))
+    direction=(actor.position+OFFSET-p).normalized()
    draw_needle_dart(c,p,direction,branch)
    continue
   if branch!="":

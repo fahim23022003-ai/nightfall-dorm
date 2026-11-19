@@ -35,3 +35,40 @@ Each run captured 240 samples after 30 warmup frames on Linux Mesa llvmpipe with
 - [Paired event and performance measurements](evidence/visual-rebirth/pilot/comparison.json)
 
 To reproduce the comparison on a Linux X11 display, run `LIBGL_ALWAYS_SOFTWARE=1 python tools/record_visual_rebirth.py /absolute/output/path`. The MP4 uses the actual Godot viewport at a fixed simulation step and is silent. The separate Master FLAC follows wall time.
+
+## Pilot refinement
+
+The Stalker keeps the approved 104-pixel draw height and foot pivot. The current
+renderer blends between eight poses from the same reference view, with separate
+turn and recovery motions and a charged tell anchored to the deformed hand.
+Attack warnings and strikes retain priority over incidental hit flashes.
+The topology check covers every sampled pose and pairwise transition.
+Independent Stalker views, body-part textures and the L2–L10 art remain open.
+A heavy-damage popup briefly obscures the face in one recovery capture. The
+door HP and urgent warning stay readable. The mesh check passed 71,808 sampled
+pose triangles and 4,847,040 blend intervals with a minimum signed area of
+1.860 px² before display scaling.
+
+Needle darts now visually depart the projected muzzle and join the existing
+projectile path over the first 100 ms. The muzzle, recoil and dart offset share
+the same projection. Existing projectile state supplies the impact location and
+combat timing.
+
+The refined 22-state Needle bake has 264 checked, unclipped poses. Mean
+silhouette differences across 12 bearings are 26.0% from L1 to L4, 28.1% from
+L4 to L7 and 35.4% from L7 to L10. L1 to L2 and L8 to L9 average 0.9% and
+3.2%. The L5 Precision and Suppression branches differ by 8.6% on average.
+The minor changes still require scrutiny at normal game zoom. [Needle atlas gallery](evidence/visual-rebirth/pilot-refinement/needle-level-gallery.png)
+
+Scene, spatial-save, cinematic and Nightmare Hunt checks passed all 267
+assertions. No gameplay model, difficulty, economy or save files changed.
+
+The refreshed six-second Godot pair passed 185 checks per mode. Both runs
+produced seven Needle launches and impacts, five Stalker door strikes and the
+same sampled model-state checksum. In a separate staged Hard encounter, the
+model emitted a charged tell and a recovery event following the actual attack.
+At 720p, the single llvmpipe comparison measured median frame times of 33.82 ms
+with legacy visuals and 32.32 ms with the pilot. The 95th percentiles were
+45.03 ms and 39.85 ms. Render memory increased from 105.7 MiB to 125.1 MiB.
+These measurements cover software rendering. Native Windows and Intel UHD
+performance remain open. [Refined capture data](evidence/visual-rebirth/pilot-refinement/comparison.json)

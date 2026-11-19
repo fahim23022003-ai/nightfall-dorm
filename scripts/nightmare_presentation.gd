@@ -14,11 +14,21 @@ var last_attack=0
 var last_event=0
 var cast_blend=0.0
 var facing_blend=1.0
+var stalker_heading=Vector2.ZERO
+var stalker_turn=0.0
 func reset():
  observed_model=null;smooth_speed=0;lean=0;gait_clock=0;impact=0;pose=0;last_attack=0;last_event=0;cast_blend=0
+ stalker_heading=Vector2.ZERO;stalker_turn=0.0
+ stalker_preview.reset_pose()
 func update(delta: float,m,identity):
  if observed_model!=m:reset();observed_model=m;last_attack=m.hunter.attacks
  var h=m.hunter
+ if h.archetype=="stalker" and stalker_preview.enabled:
+  stalker_turn=move_toward(stalker_turn,0.0,delta*2.6)
+  if not stalker_heading.is_zero_approx():
+   var turn_speed=absf(stalker_heading.angle_to(identity.heading))/maxf(.001,delta)
+   stalker_turn=maxf(stalker_turn,smoothstep(.9,4.6,turn_speed))
+  stalker_heading=identity.heading
  var charge=clampf(1-h.nightmare.warning/2.8,0,1) if h.nightmare.action!="" else clampf(1-h.arcane.warning/1.1,0,1) if h.arcane.action!="" else .5 if h.archetype_primed or h.charged_ready else 0.0
  cast_blend=lerpf(cast_blend,charge,1-exp(-delta*9))
  if absf(identity.heading.x)>.15:
@@ -97,6 +107,7 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
  if preview_supported:
   preview_drawn=draw_stalker_preview(c,h,p,tint,reduced,phase,stride,clock,fall,windup,bend)
  if not preview_drawn:
+  if stalker_preview.enabled:stalker_preview.reset_pose()
   part(c,key,"cloth",p+Vector2(-2*face,-30),Vector2(64,65),flutter+bend+fall*.4,face,tint)
   for side in [-1,1]:
    var leg_phase=phase+(PI if side>0 else 0)
@@ -141,8 +152,6 @@ func draw_stalker_preview(c,h,p: Vector2,tint: Color,reduced: bool,phase: float,
  var progress=fposmod(clock*.37,1.0)
  if h.state==HunterState.State.DEAD:
   motion="vanish";progress=fall
- elif h.hit_flash>0:
-  motion="hit";progress=clampf(h.hit_flash*2.0,0.0,1.0)
  elif h.nightmare.action!="" or h.tactical_action=="conceal" or h.windup_remaining>0:
   motion="tell";progress=windup
   if h.tactical_action=="conceal":
@@ -154,13 +163,23 @@ func draw_stalker_preview(c,h,p: Vector2,tint: Color,reduced: bool,phase: float,
    progress=1.0-h.windup_remaining/maxf(.01,duration)
  elif observed_model==c.model and pose>0:
   motion="strike";progress=pose/.42
+ elif h.hit_flash>0:
+  motion="hit";progress=clampf(h.hit_flash*2.0,0.0,1.0)
+ elif h.recovery_remaining>0:
+  motion="recover";progress=clampf(h.recovery_remaining/.6,0.0,1.0)
+ elif stalker_turn>.18 and not reduced:
+  motion="turn";progress=stalker_turn
  elif stride>.12 and h.state in [HunterState.State.MOVE,HunterState.State.EXIT,HunterState.State.SEEK]:
   motion="stalk";progress=fposmod(phase/TAU,1.0)
  if reduced and motion in ["idle","stalk"]:
   progress=0.0
  var floor=p+Vector2(0,30)
- if not stalker_preview.draw(c,floor,tint,motion,progress,bend*.22):
+ if not stalker_preview.draw(c,floor,tint,motion,progress,bend*.22,clock,reduced):
   return false
+ if motion=="tell" and h.charged_ready and CinematicQuality.detail(c)>0 and tint.r>0:
+  var fingertip=stalker_preview.socket_position("near_fingertips")
+  var glow=.2*maxf(.0,progress)
+  c.draw_arc(fingertip,3.4,-1.9,1.3,8,Color(.71,.62,.81,glow),1.0,true)
  if h.conceal_remaining>0 and not reduced and CinematicQuality.detail(c)>0 and tint.r>0:
   var fade=.16*minf(1.0,h.conceal_remaining)
   for side in [-1,1]:

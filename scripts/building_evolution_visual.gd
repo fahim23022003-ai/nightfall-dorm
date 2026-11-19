@@ -91,6 +91,23 @@ func needle_target(model, room, tile: int, activity: float) -> Vector2:
    break
  return model.hunter.position - origin
 
+func needle_heading(target: Vector2) -> int:
+ if target.length_squared() <= 0.001:
+  return 0
+ var bearing := atan2(-target.y * sqrt(2.0), target.x)
+ return posmod(roundi(bearing * NEEDLE_BEARINGS / TAU), NEEDLE_BEARINGS)
+
+func needle_projection(heading: int) -> Vector2:
+ var yaw := heading * TAU / NEEDLE_BEARINGS
+ return Vector2(cos(yaw), -sin(yaw) / sqrt(2.0))
+
+func needle_recoil(c, projected: Vector2, fire: float) -> Vector2:
+ return Vector2.ZERO if CinematicQuality.reduced_motion(c) else projected.normalized() * (2.5 * fire)
+
+func needle_muzzle(projected: Vector2, recoil: Vector2) -> Vector2:
+ # Project the primary dart point (0.91, 0, 1.59) through the bake camera.
+ return projected * (0.91 * NEEDLE_UNIT) - Vector2(0, 1.59 * NEEDLE_UNIT / sqrt(2.0)) - recoil
+
 func draw_rebirth_needle(c, level: int, point: Vector2, branch: String, activity: float, target: Vector2, angle: float, render_scale: float, tint: Color):
  var state := level - 1
  if level >= 5:
@@ -98,20 +115,16 @@ func draw_rebirth_needle(c, level: int, point: Vector2, branch: String, activity
    state = level + 5
   elif branch == "suppression":
    state = level + 11
- var aim := target if target.length_squared() > 0.001 else Vector2.RIGHT
- var bearing := atan2(-aim.y * sqrt(2.0), aim.x)
- var heading := posmod(roundi(bearing * NEEDLE_BEARINGS / TAU), NEEDLE_BEARINGS)
- var yaw := heading * TAU / NEEDLE_BEARINGS
- var projected := Vector2(cos(yaw), -sin(yaw) / sqrt(2.0))
+ var heading := needle_heading(target)
+ var projected := needle_projection(heading)
  var fire := clampf(activity / 0.15, 0.0, 1.0)
- var recoil := projected.normalized() * (2.5 * fire) if fire > 0 and not CinematicQuality.reduced_motion(c) else Vector2.ZERO
+ var recoil := needle_recoil(c, projected, fire)
  var rect := Rect2(Vector2(-NEEDLE_CANVAS_SIZE * 0.5, -NEEDLE_CANVAS_SIZE * 0.5 - 0.87 * NEEDLE_UNIT), Vector2.ONE * NEEDLE_CANVAS_SIZE)
  c.draw_set_transform(point, angle, Vector2.ONE * render_scale)
  c.draw_texture_rect_region(needle_base, rect, Rect2((state % 6) * NEEDLE_CELL, floori(state / 6.0) * NEEDLE_CELL, NEEDLE_CELL, NEEDLE_CELL), tint)
  c.draw_texture_rect_region(needle_launcher, Rect2(rect.position - recoil, rect.size), Rect2(heading * NEEDLE_CELL, state * NEEDLE_CELL, NEEDLE_CELL, NEEDLE_CELL), tint)
  if fire > 0:
-  # Project the primary dart point (0.91, 0, 1.59) through the bake camera.
-  var muzzle := projected * (0.91 * NEEDLE_UNIT) - Vector2(0, 1.59 * NEEDLE_UNIT / sqrt(2.0)) - recoil
+  var muzzle := needle_muzzle(projected, recoil)
   var direction := projected.normalized()
   var side := direction.orthogonal()
   var alpha := fire * 0.85

@@ -101,7 +101,7 @@ class Model:
 
 
 def build_base(m, level, branch):
-    width = .53 + (.105 if level >= 4 else 0) + (.085 if level >= 7 else 0)
+    width = .56 if level == 10 else .72 if level >= 7 else .635 if level >= 4 else .53
     m.box(0, 0, .08, 1.24*width/.57, 1.11, .16, "shadow")
     m.box(0, 0, .20, 1.16*width/.57, 1.04, .16, "stone")
     m.box(0, 0, .30, 1.08*width/.57, .94, .10, "edge")
@@ -121,7 +121,7 @@ def build_base(m, level, branch):
     m.cylinder((0,0,.96),(0,0,1.14),.18,.17,"iron")
     for z in (.44, .52, .89, .99):
         m.ring((0,0,z), .153, .024, "gold")
-    legs = 4 if level >= 7 else 3
+    legs = 4 if 7 <= level < 10 else 3
     for n in range(legs):
         angle = math.tau * n / legs + .5
         x, y = math.cos(angle), math.sin(angle)
@@ -141,6 +141,16 @@ def build_base(m, level, branch):
     m.cylinder((0,0,1.09),(0,0,1.21),.28,.28,"iron",24)
     m.cylinder((0,0,1.21),(0,0,1.31),.25,.19,"bronze",24)
     m.ring((0,0,.69),.142,.018,"bronze")
+    if 2 <= level < 4:
+        # Riveted reinforcement frames the visible ampoule without hiding it.
+        for side in (-1, 1):
+            m.cylinder((side*.44,-.30,.36),(side*.50,-.29,.66),.054,.047,"iron")
+            m.cylinder((side*.50,-.29,.66),(side*.32,-.24,.83),.047,.028,"bronze")
+            m.cylinder((side*.44,-.25,.42),(side*.59,-.25,.66),.060,.048,"iron")
+            m.cylinder((side*.59,-.25,.66),(side*.55,-.23,.77),.049,.015,"gold")
+    if level == 3:
+        m.cylinder((-.43,-.22,.52),(-.55,-.23,.57),.048,.036,"iron")
+        m.ring((-.53,-.27,.60),.117,.025,"gold",(0,1,0))
     if 4 <= level < 7:
         m.ring((0,0,.77),.48,.062,"bronze")
         m.ring((0,0,.85),.445,.026,"gold")
@@ -149,7 +159,7 @@ def build_base(m, level, branch):
             m.cylinder((side*.46,.08,.69),(side*.26,.07,1.10),.052,.046,"bronze")
             m.cylinder((side*.40,.18,.51),(side*.57,.18,1.05),.067,.038,"iron")
             m.cylinder((side*.57,.18,1.05),(side*.51,.18,1.16),.039,.007,"gold")
-    if level >= 7:
+    if 7 <= level < 10:
         m.ring((0,0,1.03),.42,.059,"iron")
         m.ring((0,0,1.067),.417,.023,"gold")
         for side in (-1, 1):
@@ -165,22 +175,41 @@ def build_base(m, level, branch):
             m.cylinder((side*.76,.28,1.52),(side*.48,.28,1.82),.068,.023,"bronze")
             m.cylinder((side*.48,.28,1.82),(side*.37,.28,1.84),.033,.004,"gold")
             m.cylinder((side*.53,.27,1.08),(side*.76,.28,1.52),.048,.034,"edge")
+            m.cylinder((side*.70,-.24,.46),(side*.91,-.19,.76),.088,.052,"iron")
+            m.cylinder((side*.91,-.19,.76),(side*.87,-.16,1.13),.052,.022,"bronze")
     if level == 10:
         m.ring((0,0,.52),.49,.047,"bronze")
-        for side in (-1,1):
-            m.cylinder((side*.70,.38,.40),(side*.75,.35,1.07),.112,.063,"iron")
-            m.cylinder((side*.75,.35,1.07),(side*.67,.34,1.48),.068,.025,"bronze")
-            m.cylinder((side*.67,.34,1.48),(side*.63,.34,1.63),.032,.006,"gold")
-            m.cylinder((side*.46,.30,1.00),(side*.67,.34,1.48),.055,.027,"edge")
+        # Slender masterwork plinth with a pointed, load-bearing gothic arch.
+        for side in (-1, 1):
+            m.cylinder((side*.51,.16,.35),(side*.42,.16,.98),.097,.069,"iron")
+            m.cylinder((side*.42,.16,.98),(side*.25,.16,1.21),.075,.045,"bronze")
+            m.cylinder((side*.25,.16,1.21),(0,.16,1.33),.045,.039,"bronze")
+            m.cylinder((side*.41,-.19,.39),(side*.35,-.14,.75),.061,.044,"glass")
+            m.box(side*.43,.09,.40,.21,.21,.14,"edge")
+    if 5 <= level < 7 and not branch:
+        m.box(-.52,-.36,.62,.25,.15,.14,"iron")
+        m.cylinder((-.50,-.37,.54),(-.66,-.36,.82),.051,.036,"gold")
+        m.cylinder((-.66,-.36,.82),(-.63,-.35,.92),.043,.018,"bronze")
+    if 6 <= level < 7:
+        m.ring((0,0,1.00),.38,.031,"gold")
+    if level == 9:
+        # Double the outer support against the vertically lifted masterwork.
+        for side in (-1, 1):
+            m.cylinder((side*.67,-.23,.55),(side*.84,-.23,.92),.101,.060,"iron")
+            m.cylinder((side*.84,-.23,.92),(side*.79,-.19,1.33),.061,.019,"edge")
+            m.cylinder((side*.67,-.25,1.04),(side*.89,-.25,1.19),.054,.037,"iron")
+            m.cylinder((side*.89,-.25,1.19),(side*.91,-.23,1.41),.039,.012,"silver")
     if branch == "precision":
         m.box(.33,-.07,.56,.29,.46,.39,"iron")
         m.box(.37,-.30,.56,.27,.051,.30,"silver")
         m.box(.50,-.11,.71,.12,.29,.15,"edge")
+        m.cylinder((.45,-.25,.41),(.53,-.25,1.02),.070,.037,"silver")
     elif branch == "suppression":
-        for x in (-.22,.22):
-            m.cylinder((x,-.35,.35),(x,-.35,.73),.106,.083,"glass")
-            m.cylinder((x,-.35,.73),(x,-.35,.81),.094,.073,"bronze")
-            m.ring((x,-.35,.64),.097,.025,"gold")
+        for x in (-.33,.33):
+            m.cylinder((x,-.44,.35),(x,-.44,.73),.113,.094,"glass")
+            m.cylinder((x,-.44,.73),(x,-.44,.84),.106,.078,"bronze")
+            m.ring((x,-.44,.64),.103,.025,"gold")
+            m.cylinder((x,-.44,.82),(.55*x,-.40,1.03),.034,.028,"iron")
 
 
 def build_head(m, level, branch):
@@ -199,27 +228,35 @@ def build_head(m, level, branch):
 
     # The dart cluster remains a single visual launch, even with multiple rails.
     lanes = [(0, 0, 1.0), (.089, .092, .82), (-.089, -.092, .82)]
-    if level >= 4:
-        lanes.extend([(.143,-.14,.94),(-.143,.14,.98)])
-        m.cylinder((-.18,-.23,z+.15),(.52,-.23,z+.15),.083,.052,"bronze")
-        m.ring((-.10,.19,1.78), .58, .038, "iron", (0,1,0), 1.56, 4.55, tip=.020)
-    if level >= 7:
-        lanes.extend([(.35,.18,.87),(-.35,.18,.87),(.23,-.19,.72),(-.23,-.19,.72)])
+    if 4 <= level < 7:
+        lanes.extend([(.145,-.20,.95),(-.145,.20,.98)])
+        m.cylinder((-.32,-.23,z+.20),(.59,-.23,z+.20),.098,.058,"bronze")
+        m.cylinder((-.44,.10,z-.08),(-.53,.10,z+.20),.105,.066,"iron")
+        m.ring((-.24,.19,1.81), .60, .049, "iron", (0,1,0), 1.49, 4.81, tip=.026)
+    if 7 <= level < 10:
+        lanes.extend([(.35,.15,.87),(-.35,.15,.87),(.23,-.19,.72),(-.23,-.19,.72)])
+        for side in (-1, 1):
+            m.cylinder((-.02,side*.15,z),(.30,side*.52,z+.28),.059,.036,"bronze")
+            m.cylinder((.30,side*.52,z+.28),(.66,side*.60,z+.44),.041,.006,"silver")
+            m.cylinder((-.13,side*.11,z),(.32,side*.40,z-.22),.051,.015,"edge")
     if level == 10:
-        lanes.extend([(.24,.33,.79),(-.24,.33,.79), (0,.42,.84)])
+        lanes.extend([(.25,.39,.80),(-.25,.39,.80),(0,.47,.93),(.34,.21,.88),(-.34,.21,.88)])
     if branch == "precision":
         lanes = [(y*.82,h, length) for y,h,length in lanes]
         m.cylinder((.07,0,z),(.57,0,z),.159,.113,"iron")
         m.cylinder((.53,0,z),(.68,0,z),.121,.098,"bronze")
         m.cylinder((.67,0,z),(.83,0,z),.098,.063,"edge")
-        m.cylinder((-.16,0,z+.03),(-.16,0,z+.39),.035,.026,"iron")
-        m.cylinder((-.21,0,z+.38),(.43,0,z+.38),.038,.024,"silver")
+        m.cylinder((-.16,0,z+.03),(-.16,0,z+.52),.054,.037,"iron")
+        m.cylinder((-.24,0,z+.51),(.58,0,z+.51),.072,.037,"silver")
+        m.cylinder((.34,0,z+.42),(.52,0,z+.51),.044,.037,"gold")
     if branch == "suppression":
         lanes = [(y*1.12,h, length) for y,h,length in lanes]
         for side in (-1, 1):
             m.cylinder((-.10,side*.20,z+.02),(.43,side*.39,z+.14),.081,.055,"bronze")
             m.cylinder((.43,side*.39,z+.14),(.68,side*.59,z+.18),.054,.012,"silver")
-            m.cylinder((.09,side*.25,z-.08),(.35,side*.60,z-.16),.042,.022,"bronze")
+            m.cylinder((.09,side*.25,z-.08),(.35,side*.60,z-.16),.053,.031,"bronze")
+            m.cylinder((-.12,side*.20,z-.02),(-.19,side*.63,z+.09),.086,.061,"iron")
+            m.cylinder((-.19,side*.63,z+.09),(.02,side*.64,z+.26),.067,.021,"bronze")
     for i, (y, height, length) in enumerate(lanes):
         bore = .064 if i == 0 else .039
         if branch == "precision" and i == 0:
@@ -240,23 +277,28 @@ def build_head(m, level, branch):
         m.cylinder((.02,-.24,z-.16),(.47,-.24,z-.16),.056,.038,"edge")
     if level >= 6:
         m.cylinder((-.23,-.24,z-.18),(.49,-.24,z-.18),.056,.027,"bronze")
-    if level >= 7:
+    if 7 <= level < 10:
         for sign in (-1,1):
             m.cylinder((0,sign*.14,z+.01),(.39,sign*.40,z+.19),.066,.042,"bronze")
             m.cylinder((.39,sign*.40,z+.19),(.72,sign*.45,z+.23),.045,.014,"silver")
     if level >= 8:
         m.ring((.38,-.04,z),.253,.036,"gold",(0,1,0))
         m.cylinder((.37,-.40,z-.08),(.37,.40,z-.08),.062,.062,"iron")
+        m.ring((.36,-.47,z-.08),.125,.034,"bronze",(0,1,0))
+        m.cylinder((.36,-.47,z-.17),(.43,-.47,z-.31),.037,.020,"silver")
     if level >= 9:
         for sign in (-1,1):
             m.cylinder((-.18,sign*.16,z-.075),(.52,sign*.31,z-.055),.038,.032,"iron")
     if level == 10:
-        for side in (-1,1):
-            m.ring((.02,side*.34,1.91),.64,.061,"iron",(0,1,0),1.78,4.62,tip=.019)
-            m.ring((.02,side*.40,1.91),.640,.029,"gold",(0,1,0),1.78,4.62,tip=.015)
-            m.cylinder((-.20,side*.34,2.53),(.21,side*.34,2.62),.041,.012,"silver")
-            m.cylinder((-.26,side*.32,2.28),(.58,side*.36,2.32),.035,.011,"silver")
+        for side in (-1, 1):
+            m.ring((.02,side*.39,1.89),.67,.066,"iron",(0,1,0),1.72,4.58,tip=.028)
+            m.ring((.02,side*.445,1.89),.673,.026,"gold",(0,1,0),1.72,4.58,tip=.021)
+            m.cylinder((-.20,side*.39,2.54),(.29,side*.40,2.63),.048,.013,"silver")
+            m.cylinder((-.26,side*.37,2.30),(.64,side*.43,2.35),.037,.011,"silver")
+            m.cylinder((-.48,side*.38,1.9),(-.32,side*.41,2.29),.048,.032,"bronze")
         m.cylinder((-.16,0,2.1),(.69,0,2.19),.086,.019,"bronze")
+        m.cylinder((-.44,0,2.18),(-.32,0,2.55),.053,.026,"iron")
+        m.cylinder((-.32,0,2.55),(.49,0,2.60),.044,.007,"gold")
 
 
 def bake(name, columns, rows, build):

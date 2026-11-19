@@ -91,9 +91,11 @@
           "motions": [
             "idle",
             "stalk",
+            "turn",
             "tell",
             "strike",
             "hit",
+            "recover",
             "vanish"
           ],
           "art": {
@@ -107,7 +109,11 @@
           "source_tool": "tools/visual_rebirth/prepare_stalker_reference.py",
           "renderer": "scripts/stalker_visual_prototype.gd",
           "audio": "assets/audio/cinematic_stalker_breath.wav",
-          "qa_status": "level_1_prototype_only"
+          "qa_status": "level_1_prototype_only",
+          "neutral_draw_size_px": [
+            43.56,
+            104
+          ]
         }
       ]
     },
@@ -341,7 +347,7 @@
                 672,
                 448
               ],
-              "sha256": "9e838d172f8d7c7d8e434b3ce3fd225363fabb00d0624db3d52338b6e603f157"
+              "sha256": "3eddaaca96b945c11c518e81feb5e66a89806e5e64d7243c9c00163de61ab209"
             },
             {
               "path": "assets/visual_rebirth/buildings/turret/launcher.png",
@@ -349,16 +355,20 @@
                 1344,
                 2464
               ],
-              "sha256": "a65589fe8a9c02eb194cbb2374bb766061db9dfe137424d13cb41305ac654b57"
+              "sha256": "815af919578562521ff029484d22503fef4ce5b45df79305c83a0d963f295d42"
             }
           ],
           "source_tool": "tools/visual_rebirth/bake_needle.py",
           "renderer": "scripts/building_evolution_visual.gd",
-          "qa_status": "structural_tier_distinction_below_art_bible_target",
+          "qa_status": "major_anchors_read_at_gameplay_scale_adjacent_and_branch_review_open",
           "anchor_silhouette_xor_over_union_mean": {
-            "1_to_4": 0.235,
-            "4_to_7": 0.223,
-            "7_to_10": 0.157
+            "1_to_4": 0.26,
+            "4_to_7": 0.281,
+            "7_to_10": 0.354
+          },
+          "adjacent_silhouette_pairs_distinct": {
+            "count": 103,
+            "total": 108
           }
         }
       ]
