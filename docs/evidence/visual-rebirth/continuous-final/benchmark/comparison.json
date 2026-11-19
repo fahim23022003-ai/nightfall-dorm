@@ -1,0 +1,35 @@
+{
+  "prior": {
+    "checks": 168,
+    "failures": 0,
+    "frame_time": {
+      "max_ms": 100.433,
+      "median_ms": 40.393,
+      "p95_ms": 56.005,
+      "render_video_memory_bytes": 125450891,
+      "sample_frames": 240,
+      "static_memory_bytes": 136308197,
+      "warmup_frames": 30
+    },
+    "model_sha256": "dcfc1db0e0f6ce800c30b0d86382b37b936bab1d84976443e773ae1a0e8ae02b"
+  },
+  "current": {
+    "checks": 168,
+    "failures": 0,
+    "frame_time": {
+      "max_ms": 102.681,
+      "median_ms": 58.2565,
+      "p95_ms": 75.402,
+      "render_video_memory_bytes": 154098503,
+      "sample_frames": 240,
+      "static_memory_bytes": 136944480,
+      "warmup_frames": 30
+    },
+    "model_sha256": "dcfc1db0e0f6ce800c30b0d86382b37b936bab1d84976443e773ae1a0e8ae02b"
+  },
+  "prior_source": "09d3708b0defdfdbd1940cad82a6794e18c3a410",
+  "current_source": "9aa6b2b26f1796afcd955dd52f299a85c9e9fd47",
+  "cpu": "AMD EPYC 9V74 80-Core Processor",
+  "fixture_sha256": "976523543230e46e08abc87fdcd88dc419a35affa762d5de68b7d59836cc894e",
+  "conditions": "Enabled previews, serial prior then current, Godot 4.6.3 and the same Mesa llvmpipe display, medium 1280x720, frozen full 16-slot model. Native Windows and Intel UHD unverified."
+}

@@ -1,0 +1,32 @@
+{
+  "full": {
+    "estimated_render_memory_bytes": 154098503,
+    "median_ms": 65.0095,
+    "p95_ms": 82.836,
+    "samples": 120,
+    "warmup": 24
+  },
+  "masked": {
+    "estimated_render_memory_bytes": 125450891,
+    "median_ms": 38.9655,
+    "p95_ms": 47.774,
+    "samples": 120,
+    "warmup": 24
+  },
+  "masked_atlas_families": [
+    "flame",
+    "frost",
+    "shock",
+    "economy",
+    "enhancer",
+    "bed",
+    "auto_repair",
+    "shield",
+    "door",
+    "decoy",
+    "barrier",
+    "plasma",
+    "antenna"
+  ],
+  "model_digest": "dcfc1db0e0f6ce800c30b0d86382b37b936bab1d84976443e773ae1a0e8ae02b"
+}

@@ -33,3 +33,13 @@ Ravager and Storm Wraith each have ten distinct oblique sprites. Ravager's short
 The existing core, scene, spatial-save, cinematic, Nightmare Hunt, boss QA and boss-architecture checks passed **7,326 assertions**. The final Low/Reduced 16-slot interaction fixture passed 184 checks and selected all 16 buildings without changing its sampled match snapshot. Character direction coverage is still oblique for the evolved sprites. Witch L1 has multiple independently drawn directions. Fighter contours and building models may need further readability polish at crowded zoom. These results verify catalog coverage, gameplay-view animation and parity on sampled encounters. Native hardware and visual sign-off remain separate checks.
 
 [Final Hunter Godot matrices and attack images](evidence/visual-rebirth/continuous-final/) · [Actual special ability captures](evidence/visual-rebirth/continuous-final/special-abilities/)
+
+## Performance and delivery
+
+The identical 720p dense fixture (30 warmup frames, 240 samples, Godot 4.6.3 on Linux Mesa llvmpipe) matched the sampled game-state checksum with 168 checks per build. From `09d3708` to the first full-catalog source `9aa6b2b`, median/p95 rose from 40.39/56.01 ms to 58.26/75.40 ms, and Godot estimated render memory rose from 119.6 to 147.0 MiB.
+
+An isolated same-process diagnostic enabled the full catalog and temporarily masked the 13 newly active structure atlas families in the fixture. The median dropped from 65.01 ms to 38.97 ms with identical frozen model state. This identifies the new structure rendering workload as a contributor on llvmpipe. It does not assign cost to a particular building or predict Intel UHD results. [Matched full room](evidence/visual-rebirth/continuous-final/benchmark/) · [Atlas workload diagnostic](evidence/visual-rebirth/continuous-final/atlas-diagnostic/)
+
+[Storm Wraith combat demonstration](evidence/visual-rebirth/continuous-final/storm-combat.mp4) uses 192 actual Godot frames at 24 fps from the prepared E7 combat fixture.
+
+The final atlas trim retains source artwork and padded overdraw bounds for each layer. The generated rectangles cover 63.1% less atlas-cell area summed across the catalog. A direct 720p comparison against `9aa6b2b` measured **60.28 → 40.77 ms median** and **74.19 → 50.45 ms p95** on the same Linux software renderer. Both modes matched the model digest. All 17 ladder galleries rendered and passed 35 checks apiece. Sixteen galleries differed by at most one RGB channel value, and Shock Trap showed minor edge tone differences with no visible clipping. This recovers most of the catalog's software-rendering slowdown in the sampled room. Renderer memory estimates varied across runs, so the crop makes no tested memory reduction claim.

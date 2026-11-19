@@ -7,6 +7,7 @@ const ARC_CELL = 96
 const WEAPON_BEARINGS = 12
 const WEAPON_CANVAS_SIZE = 99.0
 const WEAPON_UNIT = WEAPON_CANVAS_SIZE / 3.75
+const ATLAS_BOUNDS = preload("res://scripts/rebirth_atlas_bounds.gd")
 const SUPPORT_BRANCHES = {
  "generator":["regulated","overcharge"],
  "repair":["sustain","conservation"],
@@ -218,6 +219,15 @@ func rebirth_state(level: int, branch: String, branches: Array, branch_level: in
    state = 21 + level - 2 * branch_level
  return state
 
+func draw_atlas_layer(c,kind: String,layer: int,destination: Rect2,column: int,row: int,cell: int,tint: Color):
+ var source := Rect2(Vector2(column,row)*cell,Vector2.ONE*cell)
+ if ATLAS_BOUNDS.LAYERS.has(kind):
+  var trim: Rect2 = ATLAS_BOUNDS.LAYERS[kind][layer]
+  var scale := destination.size / source.size
+  destination = Rect2(destination.position+trim.position*scale,trim.size*scale)
+  source = Rect2(source.position+trim.position,trim.size)
+ c.draw_texture_rect_region(rebirth_atlases[kind][layer],destination,source,tint)
+
 func draw_rebirth_support(c, kind: String, level: int, point: Vector2, branch: String, activity: float, clock: float, angle: float, render_scale: float, tint: Color):
  var state := rebirth_state(level, branch, SUPPORT_BRANCHES[kind])
  var phase := 0
@@ -225,16 +235,15 @@ func draw_rebirth_support(c, kind: String, level: int, point: Vector2, branch: S
   phase = clampi(ceili(activity / .15 * 7.0),1,7) if kind == "shock" else posmod(floori(clock * SUPPORT_CLOCK_RATES[kind]), 8)
  var cell := 96
  var rect := Rect2(Vector2(-WEAPON_CANVAS_SIZE * 0.5, -WEAPON_CANVAS_SIZE * 0.5 - 0.87 * WEAPON_UNIT), Vector2.ONE * WEAPON_CANVAS_SIZE)
- var atlas: Array = rebirth_atlases[kind]
  c.draw_set_transform(point, angle, Vector2.ONE * render_scale)
- c.draw_texture_rect_region(atlas[0], rect, Rect2((state % 6) * cell, floori(state / 6.0) * cell, cell, cell), tint)
- c.draw_texture_rect_region(atlas[1], rect, Rect2(phase * cell, state * cell, cell, cell), tint)
+ draw_atlas_layer(c,kind,0,rect,state%6,floori(state/6.0),cell,tint)
+ draw_atlas_layer(c,kind,1,rect,phase,state,cell,tint)
  c.draw_set_transform(Vector2.ZERO)
 
 func draw_rebirth_base(c,kind: String,state: int,point: Vector2,angle: float,render_scale: float,tint: Color):
  var rect := Rect2(Vector2(-WEAPON_CANVAS_SIZE * .5,-WEAPON_CANVAS_SIZE * .5-.87*WEAPON_UNIT),Vector2.ONE*WEAPON_CANVAS_SIZE)
  c.draw_set_transform(point,angle,Vector2.ONE*render_scale)
- c.draw_texture_rect_region(rebirth_atlases[kind][0],rect,Rect2((state%6)*ARC_CELL,floori(state/6.0)*ARC_CELL,ARC_CELL,ARC_CELL),tint)
+ draw_atlas_layer(c,kind,0,rect,state%6,floori(state/6.0),ARC_CELL,tint)
  c.draw_set_transform(Vector2.ZERO)
 
 func draw_rebirth_frost(c, level: int, point: Vector2, branch: String, activity: float, angle: float, render_scale: float, tint: Color):
@@ -254,9 +263,8 @@ func draw_rebirth_weapon(c, kind: String, level: int, point: Vector2, branch: St
  var cell := NEEDLE_CELL if kind == "turret" else ARC_CELL
  var rect := Rect2(Vector2(-WEAPON_CANVAS_SIZE * 0.5, -WEAPON_CANVAS_SIZE * 0.5 - 0.87 * WEAPON_UNIT), Vector2.ONE * WEAPON_CANVAS_SIZE)
  c.draw_set_transform(point, angle, Vector2.ONE * render_scale)
- var atlas: Array = rebirth_atlases[kind]
- c.draw_texture_rect_region(atlas[0], rect, Rect2((state % 6) * cell, floori(state / 6.0) * cell, cell, cell), tint)
- c.draw_texture_rect_region(atlas[1], Rect2(rect.position - recoil, rect.size), Rect2(heading * cell, state * cell, cell, cell), tint)
+ draw_atlas_layer(c,kind,0,rect,state%6,floori(state/6.0),cell,tint)
+ draw_atlas_layer(c,kind,1,Rect2(rect.position-recoil,rect.size),heading,state,cell,tint)
  if fire > 0:
   if kind == "heavy":
    draw_arc_discharge(c, heading, arc_muzzle(projected, recoil), branch, fire)

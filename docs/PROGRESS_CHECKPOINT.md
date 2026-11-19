@@ -1,3 +1,19 @@
+# Phase 14 — Full projected catalog
+
+The opt-in visual preview now covers all 232 baseline states and all 200
+reachable specialization variants. All six ordinary Hunters have ten
+gameplay-view evolutions, both Reaper forms are present, and all 17 building
+and core families have ten levels. Bed and Door branches begin at displayed
+L6. Each state is recorded in the [asset manifest](evidence/visual-rebirth/ASSET_MANIFEST.json).
+
+See [continuous production and verification](PHASE_14_CONTINUOUS_PROGRESS.md)
+for level galleries, actual combat, performance, and the latest source and
+Windows package receipts. Evolved Hunter art uses an oblique view. Native
+Windows and Intel UHD performance remain open. Continue from this catalog
+instead of recreating completed levels.
+
+---
+
 # Phase 14B–14D — Witch evolution, support buildings and rendering costs
 
 Source `23d002d8351bc1a6e9b404369b0a8f1f470ac98b` expands the opt-in preview
