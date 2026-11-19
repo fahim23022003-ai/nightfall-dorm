@@ -18,7 +18,7 @@ Godot 4.6.3 production-model cases used paid decisions once per simulated second
 
 Phase 12B Long Night active routes were also 6/6 each. Median endpoint time moved from 205.5 to 215.3 seconds for defense and from 199.5 to 206.1 for offense. Hell defense moved from 3/6 to 2/6 and offense stayed 4/6. This small sample does not establish a net difficulty improvement. In the current Hell samples, the routes absorbed 300 and 360 HP respectively using Ward. Their credited player damage totaled 5,995 and 9,373.9 HP. Passive Hell ran out of room survival in all six cases. Long Night allies can still carry a run, while active offense recorded zero breaches and contributed 2,090 damage across the six runs. Rewards still follow ordinary match outcome and progression.
 
-The offensive policy on Long Night stages 2, 3, 4 and 5 won 6/6, 6/6, 6/6 and 5/6 respectively. These later-stage model probes select stages directly to cover geometry and archetypes without a prepared progression advantage. This is not a matched passive comparison on every map. Raw files record breach times, repair spending, participant damage and Hunter retargets. Earlier Phase 12B evidence remains separate.
+The offensive policy on Long Night stages 2, 3, 4 and 5 won 6/6, 6/6, 6/6 and 5/6 respectively. These later-stage model probes select stages directly to cover geometry and archetypes without a prepared progression advantage. Matching passive Long Night seeds on stages 2–5 lost all 24 cases. On the same Phase 13 build without Ward activation, the Hell routes still won 2/6 and 4/6. The Ward absorbed real damage in the active runs, but the sample did not show a higher win count. Raw files record breach times, repair spending, participant damage and Hunter retargets. Earlier Phase 12B evidence remains separate.
 
 ## Runtime evidence
 
@@ -30,3 +30,9 @@ The screenshot and continuous clip use a genuine Hell encounter reached through 
 - [Balance results](evidence/nightmare-hunt/summary.json)
 
 Extended stress and human testing remain limited. There is no new comparative frame-time benchmark, perceptual audio review, or exhaustive late-wave strategy matrix. Phase 13 delivers the tactical and diagnostic core with the audiovisual and coverage limits above.
+
+## Verification and build
+
+Godot model 136, fair difficulty 94, Earned Power 67, Earned Power UI 31, Replay UI 1755, spatial expansion 31294, earned late Endless 75, new Ward checkpoint 10 and rendered tactical response 6 checks passed. The main scene startup check passed. Historical suites exercise their configured fixture versions. The portable Windows ZIP passed CRC and its embedded pack passed 77 checks on Linux. Native Windows execution, human game feel and comparative rendering performance remain unverified.
+
+[Build receipt](evidence/nightmare-hunt/windows-artifact.json)
