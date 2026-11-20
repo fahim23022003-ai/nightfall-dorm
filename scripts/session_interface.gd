@@ -14,7 +14,7 @@ static func settings(ui):
  track.select(tracks.find(ui.game.profile.settings.manual_track));track.item_selected.connect(func(i):ui.game.change_setting("manual_track",tracks[i]));ui.panel.add_child(track)
  ui.label_at("Manual selection · ordinary gameplay only; boss music keeps priority",Vector2(150,245),17,960)
  var director=ui.game.audio_system
- ui.soundtrack_now=ui.label_at("Playing: "+Soundtrack.TITLES.get(director.soundtrack.current,director.soundtrack.current),Vector2(150,370),20,960)
+ ui.soundtrack_now=ui.label_at("Playing: "+Soundtrack.title(director.soundtrack.current),Vector2(150,370),20,960)
  ui.label_at("Shuffle bags remember recent tracks across launches.\nReaper and Crimson encounters retain their dedicated scores.\nOff silences music only; volume/mute and important warnings still work.\nListening previews do not change this preference or consume the playlist.",Vector2(150,420),18,950)
  ui.button("Back to settings",Vector2(150,592),ui.show_settings,460,44)
  ui.button("Listening room · audition only",Vector2(650,592),ui.show_audio_test,460,44)
@@ -28,4 +28,4 @@ static func refresh(ui):
    var weight=0.0
    for key in a.loop_weights:
     if key.begins_with("music") and a.loop_weights[key]>weight:current=key;weight=a.loop_weights[key]
-  ui.soundtrack_now.text="Music OFF" if a.soundtrack.mode=="off" else "Playing: "+Soundtrack.TITLES.get(current,current)+" · "+a.soundtrack.mode
+  ui.soundtrack_now.text="Music OFF" if a.soundtrack.mode=="off" else "Playing: "+Soundtrack.title(current)+" · "+a.soundtrack.mode

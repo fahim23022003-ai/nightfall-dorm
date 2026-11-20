@@ -3,6 +3,10 @@ extends Node
 
 const ROOT = "res://assets/audio/"
 const WrathAudio = preload("res://scripts/wrath_audio_catalog.gd")
+const SiegeHeartbeat = preload("res://scripts/siege_heartbeat.gd")
+const HEARTBEAT_CUE = "siege_heartbeat"
+const URGENT_SCORES = ["music_menu","music_intro","music_danger","music_siege","music_hall","music_reaper","music_crimson","music_victory","music_defeat"]
+const OUTCOME_SCORES = ["music_victory","music_defeat"]
 const LOOP_NAMES = ["music_crimson","music_intro","music_approach","music_endless","music_menu","music_calm","music_danger","ambient_dorm","proximity_loop","generator_loop","music_reaper","reaper_ambience","music_lantern","music_portrait","music_dust","music_siege","music_procession","music_opening_alt"]
 const STALKER_BREATH = "cinematic_stalker_breath"
 const APPROACH_EFFECTS = ["cinematic_crusher_approach","cinematic_ravager_approach","cinematic_witch_approach","cinematic_electric_approach","cinematic_storm_approach"]
@@ -15,11 +19,15 @@ const VOICE_LIMIT = 16
 const MAX_PENDING_CRITICAL = 24
 const FRAME_VOICE_LIMIT = 6
 const EFFECT_COOLDOWNS = {"cinematic_crusher_move":1.1,"cinematic_stalker_move":0.65,"cinematic_ravager_move":0.65,"cinematic_witch_move":1.1,"cinematic_electric_move":1.1,"cinematic_storm_move":1.1,"reaper_transform":4.0,"reaper_scythe":0.7,"reaper_charge":1.8,"reaper_surge":1.5,"reaper_impact":0.5,"reaper_hurt":0.35,"reaper_death":4.0,"scream_1":2.0,"scream_2":2.0,"scream_3":2.0,"door_reaction":2.0,"sale":0.15,"refund":0.15,"insufficient_gold":0.4,"insufficient_power":0.4,"eerie":12.0,"shot_needle":0.07,"shot_arc":0.11,"impact":0.09,"ghost_hurt":0.22,"door_hit":0.12,"door_crack":0.8,"door_break":1.0,"income":1.1,"electricity":1.0,"repair":1.0,"footstep":0.38,"danger":3.0,"build":0.15,"upgrade":0.18,"hunter_level":0.5,"hunter_spawn":1.0,"match_start":0.8,"victory":2.0,"defeat":2.0,"rank":0.8,"reward":0.4,"menu":0.2}
-var soundtrack=Soundtrack.new()
+var living_nightmare_audio:=OS.get_environment("NIGHTFALL_LIVING_NIGHTMARE")=="1"
+var soundtrack=Soundtrack.new("",living_nightmare_audio)
+var heartbeat: SiegeHeartbeat
+var _active_score:=""
+var _match_score_started:=false
 var mobile_profile=false
 var suspended=false
 var event_counts: Dictionary = {}
-var preview_music=""
+var preview_music: String=""
 var preview_effect_until=0.0
 var preview_effect_name=""
 var cinematic_music=false
@@ -91,7 +99,12 @@ func setup():
    AudioServer.add_bus()
    AudioServer.set_bus_name(AudioServer.bus_count-1,bus_name)
   # Keep substantial headroom across up to sixteen simultaneous sound voices.
- for name in LOOP_NAMES+EFFECT_NAMES:
+ var score_names: Array=LOOP_NAMES
+ var cue_names: Array=EFFECT_NAMES
+ if living_nightmare_audio:
+  score_names=LOOP_NAMES+Soundtrack.ADAPTIVE_TRACKS
+  cue_names=EFFECT_NAMES+[HEARTBEAT_CUE]
+ for name in score_names+cue_names:
   var path = ROOT+name+".wav"
   if not ResourceLoader.exists(path) and not FileAccess.file_exists(path):
    missing_assets.append(path)
@@ -108,12 +121,12 @@ func setup():
    missing_assets.append(path)
    push_error("Nightfall audio could not decode: "+path)
    continue
-  if name in LOOP_NAMES and name not in ["music_intro","music_opening_alt"]:
+  if name in score_names and name not in Soundtrack.ADAPTIVE_ONE_SHOTS:
    stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
    stream.loop_begin = 0
    stream.loop_end = roundi(stream.get_length()*stream.mix_rate)
   streams[name] = stream
- for name in LOOP_NAMES:
+ for name in score_names:
   if not streams.has(name):
    continue
   var player = AudioStreamPlayer.new()
@@ -124,9 +137,17 @@ func setup():
   add_child(player)
   loops[name] = player
   loop_weights[name] = 0.0
-  player.play()
-  if name.begins_with("music"):
-   music_start_count += 1
+  if not living_nightmare_audio or player.bus=="Ambient":
+   player.play()
+   if player.bus=="Music":
+    music_start_count+=1
+ if living_nightmare_audio:
+  heartbeat=SiegeHeartbeat.new()
+  heartbeat.name="SiegeHeartbeat"
+  heartbeat.stream=streams.get(HEARTBEAT_CUE)
+  heartbeat.bus="Effects"
+  heartbeat.volume_db=-10.0
+  add_child(heartbeat)
  for i in range(10 if mobile_profile else VOICE_LIMIT):
   var voice = AudioStreamPlayer2D.new()
   voice.max_distance=2000
@@ -140,11 +161,12 @@ func setup():
 
 func begin_cinematic():
  setup();cinematic_music=true
+ if living_nightmare_audio:return
  if loops.has("music_intro"):loops.music_intro.play(0)
  if loops.has("music_opening_alt"):loops.music_opening_alt.play(0)
 func end_cinematic():cinematic_music=false
 func preview_track(name: String):
- preview_music=name if name in LOOP_NAMES and name.begins_with("music") else ""
+ preview_music=name if loops.has(name) and name.begins_with("music") else ""
  if preview_music!="":loops[preview_music].play(0)
  _refresh_music_mute()
 func preview_effect(name: String):
@@ -182,7 +204,7 @@ func event(name: String, position: Vector2 = Vector2.INF, details: Dictionary = 
  setup()
  var aliases = {"menu_open":"menu","menu_navigation":"menu","button_click":"button","rank_promotion":"rank","reward_unlock":"reward","insufficient":"failure","outcome":"victory","generator":"electricity"}
  name = aliases.get(name,name)
- if not streams.has(name) or name in LOOP_NAMES:
+ if not streams.has(name) or name not in EFFECT_NAMES:
   if not EFFECT_NAMES.has(name):
    push_warning("Unknown Nightfall audio event: "+name)
   return false
@@ -257,6 +279,9 @@ func reset_match(model):
  _domain_music_active=false
  tension_state="quiet";tension_weight=0;pacing_gain=1;ambience_gain=1
  setup()
+ if heartbeat!=null:
+  heartbeat.reset()
+ _match_score_started=false
  _observed_model = model
  _last_combat_event = 0
  _last_presentation_event=0
@@ -290,6 +315,7 @@ func _stop_battle_cues():
  stop_events(names)
 
 func new_encounter(model):
+ if heartbeat!=null:heartbeat.end()
  # Same run and rooms, intentionally fresh Hunter. Valid screams/laughs and
  # their serialized queues continue; only the defeated Hunter's warnings stop.
  var approach_cues = APPROACH_EFFECTS + [STALKER_BREATH]
@@ -389,7 +415,7 @@ func update_state(delta: float, model, mode: String, watching_hunter: bool=false
  var music_active = mode=="match" and (model==null or model.result=="")
  var boss_active=active and model.hunter.transformed and model.hunter.hp>0
  var domain=active and model.has_method("domain_music_active") and model.domain_music_active()
- if domain and not _domain_music_active:
+ if domain and not _domain_music_active and not living_nightmare_audio:
   loops.music_crimson.play(0);crimson_music_starts+=1
  _domain_music_active=domain
  var targets = {"music_menu":1.0 if mode=="menu" else 0.0,"music_calm":(1.0-intensity)*0.85 if music_active and not boss_active else 0.0,"music_danger":intensity*0.85 if music_active and not boss_active else 0.0,"ambient_dorm":0.35+proximity*0.30 if active else 0.15 if mode=="menu" else 0.0,"proximity_loop":proximity*intensity*0.65 if active else 0.0,"generator_loop":generator_weight if active else 0.0}
@@ -404,14 +430,33 @@ func update_state(delta: float, model, mode: String, watching_hunter: bool=false
  if targets.music_endless>0:
   if soundtrack.mode!="classic" and (intensity>=.65 or model.time<model.preparation):targets.music_endless=0.0
   else:targets.music_calm*=.25;targets.music_danger*=.5
- if mode=="result":targets.music_menu=.6
- if preview_music=="":soundtrack.route(targets,0.0 if suspended or mode=="match" and model!=null and not model.running else delta,streams)
- for key in LOOP_NAMES:
+ var music_delta=0.0 if mode=="match" and model!=null and not model.running else delta
+ if living_nightmare_audio:
+  if heartbeat.update(delta,model,active,not mix.muted and mix.effects>0.0):
+   event_counts[HEARTBEAT_CUE]=int(event_counts.get(HEARTBEAT_CUE,0))+1
+  var score:=preview_music
+  if score.is_empty():
+   var requested:=_living_music_state(model,mode,music_active,boss_active,domain)
+   var urgent: bool=mode!="match" or not _match_score_started or requested in URGENT_SCORES and soundtrack.family!=requested
+   score=soundtrack.adaptive_score(requested,music_delta,urgent,streams)
+  _match_score_started=mode=="match" and music_active
+  for key in targets:
+   if key.begins_with("music"):targets[key]=0.0
+  if not score.is_empty():
+   targets[score]=1.0 if preview_music!="" else .85 if score not in OUTCOME_SCORES else .75
+  _set_adaptive_score(score)
+ else:
+  if mode=="result":targets.music_menu=.6
+  if preview_music=="":soundtrack.route(targets,music_delta,streams)
+ for key in loops:
   if not targets.has(key):targets[key]=0.0
  if preview_music!="":
   for key in targets:targets[key]=1.0 if key==preview_music else 0.0
  var critical_active=voices.any(func(v):return v.playing and bool(_voice_priority.get(v.get_instance_id(),false)) and _voice_names.get(v.get_instance_id(),"") not in ["intro_running","intro_breath"])
- music_duck=move_toward(music_duck,.48 if critical_active else 1.0,delta*3.0)
+ var music_duck_target:=.48 if critical_active else 1.0
+ if heartbeat!=null and heartbeat.remaining>0.0:
+  music_duck_target=minf(music_duck_target,.55)
+ music_duck=move_toward(music_duck,music_duck_target,delta*3.0)
  targets["reaper_ambience"]=proximity*0.55 if boss_active else 0.0
  pacing_gain=move_toward(pacing_gain,1.0-.35*tension_weight,delta*.7)
  ambience_gain=move_toward(ambience_gain,1.0-.4*tension_weight,delta*.6)
@@ -419,7 +464,7 @@ func update_state(delta: float, model, mode: String, watching_hunter: bool=false
   loop_weights[name] = move_toward(float(loop_weights[name]),float(targets[name]),delta*1.1)
   var music_gain=(.95 if mode=="match" else 1.0)*music_duck*maxf(.8,pacing_gain) if name.begins_with("music") else ambience_gain if name in ["ambient_dorm","reaper_ambience"] else 1.0
   loops[name].volume_db = linear_to_db(maxf(0.0001,loop_weights[name]*music_gain))+(-3.0 if name.begins_with("music") else -15.0)
- if soundtrack.mode!="classic" and preview_music=="":
+ if (living_nightmare_audio or soundtrack.mode!="classic") and preview_music=="":
   var total=0.0
   for name in loops:
    if name.begins_with("music"):total+=loop_weights[name]
@@ -435,6 +480,50 @@ func update_state(delta: float, model, mode: String, watching_hunter: bool=false
   event("reward" if model.result=="retired" else "victory" if model.result=="victory" else "defeat")
   _previous.result = model.result
  if mode=="result" or (model!=null and model.result!=""):_stop_battle_cues()
+
+func _living_music_state(model, mode: String, active: bool, boss: bool, domain: bool) -> String:
+ if mode=="intro":
+  return "music_intro" if cinematic_music else ""
+ if mode=="menu":
+  return "music_menu"
+ if model!=null and model.result!="":
+  if model.result=="retired":return "music_victory"
+  return "music_victory" if model.result=="victory" else "music_defeat"
+ if domain:return "music_crimson"
+ if boss:return "music_reaper"
+ if not active or model==null or model.tutorial_mode or model.time<model.preparation:
+  return "music_calm" if mode=="match" else ""
+ if model.hunter.state in [HunterState.State.RETREAT,HunterState.State.RECOVER]:
+  return "music_hall"
+ if heartbeat.live:
+  return "music_siege" if heartbeat.desperate else "music_danger"
+ if model.hunter.state in [HunterState.State.MOVE,HunterState.State.SEEK] and proximity>.10:
+  return "music_approach"
+ if model.run_kind=="endless":
+  return "music_endless"
+ return "music_hell" if model.difficulty=="hell" else "music_calm"
+
+func _set_adaptive_score(score: String) -> void:
+ if score!=_active_score:
+  # At most one previous score can occupy the outgoing side of a crossfade.
+  var outgoing: String=""
+  var gain:=0.0
+  for key in loops:
+   if key.begins_with("music") and key!=score and loops[key].playing and loop_weights[key]>gain:
+    outgoing=key
+    gain=loop_weights[key]
+  for key in loops:
+   if key.begins_with("music") and key!=score and key!=outgoing:
+    loops[key].stop()
+    loop_weights[key]=0.0
+  _active_score=score
+  if loops.has(score) and not loops[score].playing:
+   loops[score].play()
+   music_start_count+=1
+   if score=="music_crimson":crimson_music_starts+=1
+ for key in loops:
+  if key.begins_with("music") and key!=score and loops[key].playing and loop_weights[key]<=0.0:
+   loops[key].stop()
 
 func _snapshot(model) -> Dictionary:
  var rooms: Dictionary = {}
@@ -512,9 +601,12 @@ func get_diagnostics() -> Dictionary:
  for voice in voices:
   if voice.playing:
    count += 1
- return {"pacing_gain":pacing_gain,"ambience_gain":ambience_gain,"tension_state":tension_state,"tension_weight":tension_weight,"music_duck":music_duck,"event_counts":event_counts.duplicate(),"music_start_count":music_start_count,"intensity":intensity,"proximity":proximity,"loop_weights":loop_weights.duplicate(),"voices":count,"voice_limit":voices.size(),"frame_voice_limit":FRAME_VOICE_LIMIT,"dropped_events":dropped_events,"mix":mix.duplicate(),"missing_assets":missing_assets.duplicate(),"stream_count":streams.size(),"pending_critical":_pending_critical.size(),"expired_events":expired_events,"crimson_music_starts":crimson_music_starts,"domain_music":_domain_music_active,"pending_evolutions":pending_evolutions.size(),"evolution_cues_played":evolution_cues_played}
+ return {"pacing_gain":pacing_gain,"ambience_gain":ambience_gain,"tension_state":tension_state,"tension_weight":tension_weight,"music_duck":music_duck,"event_counts":event_counts.duplicate(),"music_start_count":music_start_count,"intensity":intensity,"proximity":proximity,"loop_weights":loop_weights.duplicate(),"voices":count,"voice_limit":voices.size(),"frame_voice_limit":FRAME_VOICE_LIMIT,"dropped_events":dropped_events,"mix":mix.duplicate(),"missing_assets":missing_assets.duplicate(),"stream_count":streams.size(),"pending_critical":_pending_critical.size(),"expired_events":expired_events,"crimson_music_starts":crimson_music_starts,"domain_music":_domain_music_active,"pending_evolutions":pending_evolutions.size(),"evolution_cues_played":evolution_cues_played,"active_score":_active_score,"heartbeat_remaining":heartbeat.remaining if heartbeat!=null else 0.0}
 
 func shutdown():
+ if heartbeat!=null:
+  heartbeat.end()
+  heartbeat.stream=null
  for player in loops.values()+voices:
   if is_instance_valid(player):
    player.stop()
@@ -542,6 +634,7 @@ func _queue_critical(name: String, position: Vector2, details: Dictionary = {}):
 
 func set_suspended(value: bool):
  suspended=value
+ if heartbeat!=null:heartbeat.stream_paused=value
  for player in loops.values()+voices:
   if is_instance_valid(player): player.stream_paused=value
 
@@ -591,6 +684,13 @@ func _observe_presentation(model):
    "archetype_warning": event("ghost_hurt",position);event("danger",position)
    "door_damage":
     event("door_hit",position)
+    if living_nightmare_audio and record.get("attacker_id",0)==1 and record.get("damage",0.0)>0.0:
+     if record.get("attack_boss",model.hunter.transformed):
+      event("reaper_impact",position)
+     else:
+      var attacker: String=record.get("attack_archetype",model.hunter.archetype)
+      if attacker in StrategyCatalog.ARCHETYPE_IDS:
+       event("cinematic_"+attacker+"_release",position,{"important":true,"expires_in":.15})
     var hp=float(record.get("hp",0))
     var max_hp=maxf(1,float(record.get("max_hp",1)))
     var before=hp+float(record.get("damage",0))

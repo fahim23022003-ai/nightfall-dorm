@@ -3,6 +3,32 @@ extends RefCounted
 const EXTRA=["music_lantern","music_portrait","music_dust","music_siege","music_procession","music_opening_alt"]
 const TITLES={"music_menu":"The Night Watch","music_lantern":"Lantern Lament","music_portrait":"Portraits at Midnight","music_calm":"Sleeping Halls","music_dust":"Dust Waltz","music_approach":"Footsteps Below","music_danger":"Door Siege","music_siege":"Broken Vespers","music_endless":"Endless Watch","music_procession":"The Last Procession"}
 const FAMILIES={"music_intro":["music_intro","music_opening_alt"],"music_menu":["music_menu","music_lantern","music_portrait"],"music_calm":["music_calm","music_dust"],"music_approach":["music_approach","music_siege"],"music_danger":["music_danger","music_siege"],"music_endless":["music_endless","music_procession","music_dust"]}
+const ADAPTIVE_TRACKS=["music_hall","music_hell","music_victory","music_defeat"]
+const ADAPTIVE_FAMILIES={
+ "music_intro":["music_intro","music_opening_alt"],
+ "music_menu":["music_menu","music_lantern","music_portrait"],
+ "music_calm":["music_calm","music_dust"],
+ "music_approach":["music_approach"],
+ "music_danger":["music_danger"],
+ "music_siege":["music_siege"],
+ "music_hall":["music_hall"],
+ "music_hell":["music_hell"],
+ "music_endless":["music_endless","music_procession"],
+ "music_reaper":["music_reaper"],
+ "music_crimson":["music_crimson"],
+ "music_victory":["music_victory"],
+ "music_defeat":["music_defeat"],
+}
+const ADAPTIVE_ONE_SHOTS=["music_intro","music_opening_alt","music_victory","music_defeat"]
+const ADAPTIVE_MANUAL=["music_calm","music_dust","music_approach","music_danger","music_siege","music_endless","music_procession"]
+const ADAPTIVE_TITLES={"music_hall":"Below the Chapel","music_hell":"The Lowest Stair","music_victory":"A Moment at Dawn","music_defeat":"No Morning Bell","music_crimson":"Crimson Execution","music_reaper":"Grim Reaper","music_intro":"Through the Gate","music_opening_alt":"An Unwelcome Guest"}
+const ADAPTIVE_ORDINARY=["music_calm","music_hell","music_endless"]
+const ADAPTIVE_MINIMUM_STATE:=4.0
+const ADAPTIVE_RELEASE_DELAY:=2.0
+var families=FAMILIES
+var _requested_family=""
+var _requested_age=0.0
+var _family_age=0.0
 var rng=RandomNumberGenerator.new()
 var history={"version":1,"bags":{},"last":{}}
 var path=""
@@ -11,31 +37,32 @@ var manual="music_calm"
 var family=""
 var current=""
 var elapsed=0.0
-func _init(file=""):
+func _init(file="",adaptive: bool=false):
  rng.randomize();path=file
+ if adaptive:families=ADAPTIVE_FAMILIES
  if path=="":
   path=OS.get_environment("NIGHTFALL_PROFILE_PATH")
   if path=="":path="user://profile.json"
-  path+=".soundtrack.json"
+  path+=".living-soundtrack.json" if adaptive else ".soundtrack.json"
  for candidate in [path,path+".bak"]:
   if not FileAccess.file_exists(candidate):continue
   var parsed=JSON.parse_string(FileAccess.get_file_as_string(candidate))
-  if valid(parsed):history=parsed;break
-static func valid(d) -> bool:
+  if valid(parsed,families):history=parsed;break
+static func valid(d,allowed: Dictionary=FAMILIES) -> bool:
  if not d is Dictionary or d.get("version")!=1 or not d.get("bags") is Dictionary or not d.get("last") is Dictionary:return false
  for key in d.bags:
-  if not FAMILIES.has(key) or not d.bags[key] is Array or d.bags[key].size()>FAMILIES[key].size():return false
+  if not allowed.has(key) or not d.bags[key] is Array or d.bags[key].size()>allowed[key].size():return false
   var seen=[]
   for id in d.bags[key]:
-   if id not in FAMILIES[key] or id in seen:return false
+   if id not in allowed[key] or id in seen:return false
    seen.append(id)
  for key in d.last:
-  if not FAMILIES.has(key) or d.last[key] not in FAMILIES[key]:return false
+  if not allowed.has(key) or d.last[key] not in allowed[key]:return false
  return true
 func draw(key: String) -> String:
  var bag=history.bags.get(key,[]).duplicate()
  if bag.is_empty():
-  bag=FAMILIES[key].duplicate()
+  bag=families[key].duplicate()
   for i in range(bag.size()-1,0,-1):
    var j=rng.randi_range(0,i);var value=bag[i];bag[i]=bag[j];bag[j]=value
  if bag.size()>1 and bag.back()==history.last.get(key,""):
@@ -46,7 +73,7 @@ func save():
  var f=FileAccess.open(path+".tmp",FileAccess.WRITE)
  if f==null:return
  f.store_string(JSON.stringify(history));f.flush();f.close()
- if FileAccess.file_exists(path) and valid(JSON.parse_string(FileAccess.get_file_as_string(path))):DirAccess.copy_absolute(path,path+".bak")
+ if FileAccess.file_exists(path) and valid(JSON.parse_string(FileAccess.get_file_as_string(path)),families):DirAccess.copy_absolute(path,path+".bak")
  DirAccess.rename_absolute(path+".tmp",path)
 func settings(values):
  var next=values.get("music_mode",mode);var track=values.get("manual_track",manual)
@@ -73,3 +100,32 @@ func route(targets: Dictionary,delta: float,streams: Dictionary):
  for key in targets:
   if key.begins_with("music"):targets[key]=0.0
  targets[current]=minf(.95,maxf(.75,weight))
+
+static func title(track: String) -> String:
+ return TITLES.get(track,ADAPTIVE_TITLES.get(track,track))
+
+func adaptive_score(requested: String, delta: float, immediate: bool, streams: Dictionary) -> String:
+ if mode=="off" or requested.is_empty():
+  family=""
+  current=""
+  elapsed=0.0
+  return ""
+ if requested!=_requested_family:
+  _requested_family=requested
+  _requested_age=0.0
+ _requested_age+=delta
+ _family_age+=delta
+ if family.is_empty() or (requested!=family and (immediate or (_family_age>=ADAPTIVE_MINIMUM_STATE and _requested_age>=ADAPTIVE_RELEASE_DELAY))):
+  family=requested
+  current=""
+  _family_age=0.0
+ if current.is_empty() or (mode=="shuffle" and families[family].size()>1 and current not in ADAPTIVE_ONE_SHOTS and elapsed>=streams[current].get_length()):
+  elapsed=0.0
+  if mode=="manual" and family in ADAPTIVE_ORDINARY and manual in ADAPTIVE_MANUAL:
+   current=manual
+  elif mode=="classic" or families[family].size()==1:
+   current=families[family][0]
+  else:
+   current=draw(family)
+ elapsed+=delta
+ return current
