@@ -61,6 +61,9 @@ static func encode(model,use_counts: Dictionary={}) -> Dictionary:
   for tile in room.buildings:
    var b=room.buildings[tile]
    var encoded={"tile":tile,"instance_id":int(b.get("instance_id",int(tile)+1)),"kind":b.kind,"level":b.level,"specialization":b.get("specialization",""),"invested_gold":b.get("invested_gold",0.0),"invested_power":b.get("invested_power",0.0),"cooldown":maxf(0,b.cooldown)}
+   var combat: Dictionary=model.weapon_feedback.machine(room,tile)
+   if combat.get("damage",0.0)>0.0:
+    encoded.weapon_record={"damage":combat.damage,"burn":combat.burn,"hits":combat.hits,"last_damage":combat.last_damage}
    if room.spatial!=null:
     if not b.get("position") is Vector2:return {}
     encoded.position=pair(b.position)
@@ -170,6 +173,9 @@ static func valid(data) -> bool:
    var branch=b.specialization
    if branch!="" and (branch not in StrategyCatalog.branches(b.kind) or b.level<5):return false
    if b.level>=5 and branch=="":return false
+   if b.has("weapon_record"):
+    var combat=b.weapon_record
+    if not combat is Dictionary or combat.size()!=4 or not number(combat.get("damage"),0,1e12) or not number(combat.get("burn"),0,combat.damage) or not whole(combat.get("hits"),0,1e12) or not number(combat.get("last_damage"),0,combat.damage):return false
    if data.get("balance_version",1)==2 and (room.bed_level<maxi(0,int(b.level)-2) or room.door_level<maxi(0,int(b.level)-2)):return false
    var ceiling=BalanceRules.price(b.kind,int(data.get("balance_version",1)))
    for level in range(1,int(b.level)):ceiling+=BalanceRules.upgrade(b.kind,level,int(data.get("balance_version",1)))
@@ -254,6 +260,10 @@ static func restore(data) -> MatchModel:
   room.magic_state=saved.get("magic_state",room.magic_state).duplicate(true)
   for b in saved.buildings:
    var building=b.duplicate(true);building.erase("tile");building.flash=0.0
+   if b.has("weapon_record"):
+    var key:=WeaponFeedback.key_for(i,int(b.tile),int(b.instance_id))
+    model.weapon_feedback.totals[key]=building.weapon_record
+    building.erase("weapon_record")
    if saved.has("construction"):building.position=vec(b.position)
    if data.version>=GRID_SCHEMA and i==int(data.player_room):building.rotation=int(b.rotation)
    room.buildings[int(b.tile)]=building

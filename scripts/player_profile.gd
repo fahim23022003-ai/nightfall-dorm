@@ -4,7 +4,7 @@ extends RefCounted
 var path="user://profile.json"
 var xp=0
 var equipped: Array=[]
-var settings={"guidance_mode":"show","music_mode":"shuffle","manual_track":"music_calm","music":0.5,"effects":0.65,"ambient":0.5,"muted":false,"fullscreen":false,"tutorial":true,"battery_saver":false,"reduced_effects":false,"reduced_motion":false,"reduced_flashes":false,"graphics_quality":"medium"}
+var settings={"guidance_mode":"show","music_mode":"shuffle","manual_track":"music_calm","music":0.5,"effects":0.65,"ambient":0.5,"muted":false,"fullscreen":false,"tutorial":true,"battery_saver":false,"reduced_effects":false,"reduced_motion":false,"reduced_flashes":false,"graphics_quality":"medium","damage_numbers":"all"}
 var next_match_id=1
 var active_match: Dictionary={}
 var last_award: Dictionary={}
@@ -439,6 +439,7 @@ func load_profile(story_preview: bool=false) -> bool:
   if (value is float or value is int) and is_finite(float(value)): settings[key]=clampf(float(value),0,1)
  if data.settings.get("guidance_mode","") in ["show","minimal","off"]:settings.guidance_mode=data.settings.guidance_mode
  if data.settings.get("graphics_quality","") in ["low","medium","high"]:settings.graphics_quality=data.settings.graphics_quality
+ if data.settings.get("damage_numbers","") in WeaponFeedback.NUMBER_MODES:settings.damage_numbers=data.settings.damage_numbers
  for key in ["music_mode","manual_track"]:
   var value=data.settings.get(key,settings[key])
   if key=="music_mode" and value in ["shuffle","classic","manual","off"] or key=="manual_track" and value in Soundtrack.TITLES:settings[key]=value
@@ -604,6 +605,8 @@ func update_setting(key: String,value) -> bool:
   if value not in Soundtrack.TITLES:return false
  elif key=="graphics_quality":
   if value not in ["low","medium","high"]:return false
+ elif key=="damage_numbers":
+  if value not in WeaponFeedback.NUMBER_MODES:return false
  elif not value is bool: return false
  settings[key]=value
  return save_profile()

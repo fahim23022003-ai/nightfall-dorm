@@ -41,6 +41,7 @@ var random = RandomNumberGenerator.new()
 # Presentation reads these model-owned records; damage occurs only on impact.
 var projectiles: Array = []
 var combat_events: Array = []
+var weapon_feedback := WeaponFeedback.new()
 var presentation_events: Array = []
 var next_presentation_event_id=1
 var next_projectile_id = 1
@@ -141,7 +142,9 @@ func reset(seed_value: int = 1):
   var room_index=i
   room.presentation_action.connect(func(type, data):
    var model=receiver.get_ref()
-   if model!=null: model.record_event(type,room_index,data))
+   if model!=null:
+    if type=="sale":model.weapon_feedback.remove(room_index,data.tile,data.get("instance_id",0))
+    model.record_event(type,room_index,data))
   rooms.append(room)
  hunter = HunterState.new()
  difficulty="standard"
@@ -161,6 +164,7 @@ func reset(seed_value: int = 1):
  room_rush=ROOM_RUSH.new()
  projectiles.clear()
  combat_events.clear()
+ weapon_feedback.totals.clear()
  presentation_events.clear()
  next_presentation_event_id=1
  next_projectile_id = 1
@@ -877,6 +881,11 @@ func _turrets(delta: float):
    for i in range(count):
     var entry=candidates[i];var origin=room.tile_position(tile)
     var shot={"building_id":tile,"id":next_projectile_id,"from":origin,"position":origin,"target_id":entry.id,"damage":resolved.damage,"speed":resolved.projectile_speed,"kind":b.kind,"room":room.index,"level":b.level,"age":0.0,"specialization":b.get("specialization",""),"slow":resolved.get("slow",0.0),"burn":resolved.get("burn",0.0)}
+    if weapon_feedback.enabled:
+     shot.building_instance_id=int(b.get("instance_id",0))
+     shot.launch_target=entry.actor.position
+     shot.grid=room.spatial!=null and room.spatial.grid
+     shot.rotation=int(b.get("rotation",0))
     next_projectile_id+=1;projectiles.append(shot);_combat_event("launch",shot,origin,0);shots+=1;room.shots+=1
    b.flash=.15;b.cooldown+=resolved.interval
 func _advance_projectiles(delta: float):
@@ -894,6 +903,8 @@ func _advance_projectiles(delta: float):
    if shot.room==player_room:
     if hunter.transformed and shot.target_id==1:hit*=match_boosts.get("reaper",1.0)
     if time<preparation+stage_bonus.get("seconds",0):hit*=stage_bonus.get("damage",1.0)
+   var hp_before: float=actor.hp
+   var had_guard: bool=shot.target_id==1 and (hunter.phase_guard_remaining>0 or hunter.state==HunterState.State.TRANSFORM)
    var amount=apply_target_damage(shot.target_id,hit,shot.room,DamageRules.weapon(shot.kind))
    if shot.get("slow",0)>0:
     if shot.target_id==1:
@@ -901,20 +912,34 @@ func _advance_projectiles(delta: float):
      if shot.kind=="frost":hunter.attack_slow_remaining=1.0;hunter.attack_slow_strength=float(shot.slow)
     else:actor.suppress(float(shot.slow))
    if shot.room==player_room and shot.kind=="frost" and amount>0:contribution.control_hits+=1
-   if shot.get("burn",0)>0:defenses.ignite(shot.target_id,shot.burn,3.0,shot.room,shot.get("building_id",-1),shot.kind,shot.level)
+   if shot.get("burn",0)>0:defenses.ignite(shot.target_id,shot.burn,3.0,shot.room,shot.get("building_id",-1),shot.kind,shot.level,shot)
    if shot.target_id==1:items.ignite(self,shot.room)
    elif shot.room==player_room and float(items.timers.get("inferno",0))>0:defenses.ignite(shot.target_id,ItemCatalog.TUNING.burn_dps,ItemCatalog.TUNING.burn_seconds,shot.room)
    if run_kind=="endless":wave_metrics.hit(shot.room,player_room,shot.get("building_id",-1),shot.kind,shot.level,amount,shot.target_id)
    if shot.room==player_room and shot.target_id==1:choices.impact(self,amount)
-   credit_damage(shot.room,amount,shot.target_id);_combat_event("impact",shot,shot.position,amount)
+   credit_damage(shot.room,amount,shot.target_id)
+   var outcome := "immune" if had_guard else "blocked"
+   _combat_event("impact",shot,shot.position,amount,outcome if amount<=0 and weapon_feedback.enabled else "",hp_before,actor.hp)
   else:shot.position=shot.position.move_toward(actor.position,travel);survivors.append(shot)
  projectiles=survivors
 
-func _combat_event(type: String, shot: Dictionary, position: Vector2, damage: float, reason: String = ""):
- combat_events.append({"id":next_combat_event_id,"type":type,"projectile_id":shot.id,"target_id":shot.get("target_id",1),"position":position,"room":shot.room,"kind":shot.kind,"level":shot.level,"specialization":shot.get("specialization",""),"damage":damage,"time":time,"remaining":Catalog.PROJECTILES.event_lifetime,"reason":reason,"damage_type":DamageRules.weapon(shot.kind).type,"element":DamageRules.weapon(shot.kind).element})
+func _combat_event(type: String, shot: Dictionary, position: Vector2, damage: float, reason: String = "", hp_before: float = 0.0, hp_after: float = 0.0):
+ var packet := DamageRules.weapon(shot.kind)
+ var event := {"id":next_combat_event_id,"type":type,"projectile_id":shot.id,"target_id":shot.get("target_id",1),"position":position,"room":shot.room,"kind":shot.kind,"level":shot.level,"specialization":shot.get("specialization",""),"damage":damage,"time":time,"remaining":Catalog.PROJECTILES.event_lifetime,"reason":reason,"damage_type":packet.type,"element":packet.element}
+ if weapon_feedback.enabled:
+  event.merge({"building_id":shot.get("building_id",-1),"building_instance_id":shot.get("building_instance_id",0),"origin":shot.from,"target_position":shot.get("launch_target",position),"rotation":shot.get("rotation",0),"grid":shot.get("grid",false),"flight_age":shot.age,"hp_before":hp_before,"hp_after":hp_after,"slow":type=="impact" and shot.get("slow",0)>0,"reaper":shot.get("target_id",1)==1 and hunter.transformed})
+  weapon_feedback.send(event)
+ combat_events.append(event)
  next_combat_event_id += 1
  if combat_events.size() > Catalog.PROJECTILES.max_events:
   combat_events.pop_front()
+
+func record_secondary_damage(type: String, room_index: int, target_id: int, point: Vector2, before: float, after: float, source: Dictionary) -> void:
+ if not weapon_feedback.enabled or before<=after:
+  return
+ var kind: String = source.get("kind", "flame")
+ var packet: Dictionary = source.get("packet",DamageRules.weapon(kind))
+ weapon_feedback.send({"type":type,"projectile_id":source.get("id",0),"target_id":target_id,"position":point,"origin":source.get("origin",point),"room":room_index,"kind":kind,"level":source.get("level",1),"specialization":source.get("specialization",""),"building_id":source.get("building_id",-1),"building_instance_id":source.get("building_instance_id",0),"damage":before-after,"damage_type":packet.type,"element":packet.element,"hp_before":before,"hp_after":after,"time":time,"reason":"","slow":false,"reaper":target_id==1 and hunter.transformed})
 
 func _age_combat_events(delta: float):
  for event in combat_events:

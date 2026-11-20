@@ -7,6 +7,7 @@ const ROOM_NAMES = ["WILLOW","WREN","ASTER","MOSS","CEDAR","FERN"]
 var hunter_combat=preload("res://scripts/hunter_combat_visual.gd").new()
 var nightmare_visual=preload("res://scripts/nightmare_presentation.gd").new()
 var building_visual=preload("res://scripts/building_evolution_visual.gd").new()
+var weapons=preload("res://scripts/weapon_presentation.gd").new()
 var hunter_art={}
 var textures: Dictionary = {}
 var cartoon: Dictionary = {}
@@ -87,6 +88,7 @@ func _init():
 
 func reset():
  hunter_combat.reset()
+ weapons.reset()
  ally_group.clear();ally_pending.clear();ally_pending_since=0.0
  wrath_presentation.reset()
  identity.reset();nightmare_visual.reset()
@@ -166,7 +168,7 @@ func update(delta: float, model):
  for e in model.combat_events:
   if e.id>seen_event:
    seen_event=e.id
-   if e.type=="impact":
+   if e.type=="impact" and not model.weapon_feedback.enabled:
     var kind="impact"
     if building_visual.weapon_rebirth_active(e.kind):
      kind={"heavy":"arc_impact","turret":"needle_impact","flame":"flame_impact","frost":"frost_impact"}.get(e.kind,"impact")
@@ -330,7 +332,8 @@ func render(c):
  render_hunter_combat(c,m,visible,hunter_in_view)
  render_resident_labels(c)
  wrath_presentation.draw(c,clock)
- for shot in m.projectiles:
+ if m.weapon_feedback.enabled:weapons.draw_combat(c,building_visual,m,visible,OFFSET)
+ for shot in m.projectiles if not m.weapon_feedback.enabled else []:
   var p=OFFSET+shot.position
   if not visible.has_point(p):continue
   var actor=m.target_by_id(int(shot.target_id))
@@ -438,6 +441,7 @@ func render(c):
    if visible.has_point(OFFSET+room.door_position()):map_presentation.render_door_status(c,self,room)
  if c.get("horror")!=null: c.horror.render_world(c)
  item_presentation.draw(c)
+ if m.weapon_feedback.enabled:weapons.draw_numbers(c,font,visible,OFFSET)
  for f in c.floating:
   sprite(c,"coin",OFFSET+f.position+Vector2(-12,-5),Vector2(13,13),Color(1,1,1,f.life))
   text(c,f.text,OFFSET+f.position,14,Color(0.96,0.77,0.26,f.life))

@@ -66,13 +66,20 @@ PHASE16_MODES = {
     ),
     **SURVIVOR_REBIRTH_MODES,
 }
+WEAPON_FEEDBACK_MODES = {
+    "weapon-feedback": (
+        "Play Weapon Feedback Preview.cmd", "user://nightfall-living-nightmare-preview.json", (1, 1, 0, 1),
+    ),
+    **PHASE16_MODES,
+}
 
 
 def mode_environment(profile: str, switches: tuple[int, ...], living: bool = False,
-                     survivor: bool = False, phase16: bool = False) -> dict[str, str]:
+                     survivor: bool = False, phase16: bool = False, weapons: bool = False) -> dict[str, str]:
     settings = {key: str(value) for key, value in zip(MODE_SWITCHES, switches, strict=True)}
     return {"NIGHTFALL_PROFILE_PATH": profile, "NIGHTFALL_LIVING_NIGHTMARE": str(int(living)),
-            "NIGHTFALL_SURVIVOR_REBIRTH": str(int(survivor)), "NIGHTFALL_PHASE16": str(int(phase16)), **settings}
+            "NIGHTFALL_SURVIVOR_REBIRTH": str(int(survivor)), "NIGHTFALL_PHASE16": str(int(phase16)),
+            "NIGHTFALL_WEAPON_FEEDBACK": str(int(weapons)), **settings}
 
 
 def launcher(environment: dict[str, str]) -> bytes:
@@ -98,8 +105,9 @@ def verify_modes(
     empty.mkdir()
     environments = {}
     for label, (_, profile, switches) in modes.items():
-        environment = mode_environment(profile, switches, label in ("living-nightmare", "survivor-rebirth", "phase16"),
-                                       label in ("survivor-rebirth", "phase16"), label == "phase16")
+        phase16 = label in ("phase16", "weapon-feedback")
+        environment = mode_environment(profile, switches, phase16 or label in ("living-nightmare", "survivor-rebirth"),
+                                       phase16 or label == "survivor-rebirth", phase16, label == "weapon-feedback")
         environments[label] = environment
         env = os.environ | environment | {"XDG_DATA_HOME": str(working / ("data-" + label))}
         log = evidence / f"windows-pack-{label}.log"
@@ -143,6 +151,16 @@ def verify_modes(
             if "SURVIVOR_REBIRTH_PACK_CHECKS=" not in log.read_text() or "FAILURES=0" not in log.read_text():
                 raise RuntimeError(f"Story lobby pack verification did not complete. Inspect {log}.")
 
+    if "weapon-feedback" in modes:
+        env = os.environ | environments["weapon-feedback"] | {"XDG_DATA_HOME": str(working / "weapon-feedback-data")}
+        log = evidence / "windows-pack-weapon-feedback-shot.log"
+        run([
+            godot, "--headless", "--quit-after", "1200", "--path", str(empty), "--main-pack", str(executable),
+            "--script", str(ROOT / "tools/windows/verify_weapon_feedback_pack.gd"),
+        ], log, env)
+        if "WEAPON_FEEDBACK_PACK_CHECKS=" not in log.read_text() or "FAILURES=0" not in log.read_text():
+            raise RuntimeError(f"Weapon feedback pack verification did not complete. Inspect {log}.")
+
     # Exercise the exact Phase 14F assets and reach the original construction
     # comparison fixture without replacing its room layout with either preview.
     for visual in ("0", "1"):
@@ -151,6 +169,7 @@ def verify_modes(
             "NIGHTFALL_PROFILE_PATH": "user://nightfall-v21-pack-art.json",
             **dict.fromkeys(MODE_SWITCHES, "0"),
             "NIGHTFALL_LIVING_NIGHTMARE": "0",
+            "NIGHTFALL_WEAPON_FEEDBACK": "0",
             "NIGHTFALL_VISUAL_REBIRTH": visual,
             "NIGHTFALL_FULL_ROOM_GRID": visual,
         }
@@ -184,6 +203,7 @@ def main() -> None:
     preview.add_argument("--living-nightmare", action="store_true", help="Use the Living Nightmare guide and isolated profiles.")
     preview.add_argument("--survivor-rebirth", action="store_true", help="Add the offline Story lobby and Room Rush preview.")
     preview.add_argument("--phase16", action="store_true", help="Include the Phase 16 preview and prior launchers.")
+    preview.add_argument("--weapon-feedback", action="store_true", help="Enable weapon feedback with the Phase 16 preview and prior launchers.")
     parser.add_argument("--source-commit", required=True)
     parser.add_argument("--zip", required=True, type=Path)
     parser.add_argument("--evidence-dir", required=True, type=Path)
@@ -209,6 +229,9 @@ def main() -> None:
     elif args.phase16:
         modes = PHASE16_MODES
         guide_name = "PHASE16_WINDOWS_PLAYTEST.md"
+    elif args.weapon_feedback:
+        modes = WEAPON_FEEDBACK_MODES
+        guide_name = "WEAPON_FEEDBACK_WINDOWS_PLAYTEST.md"
     guide = ROOT / "docs" / guide_name
     archive = args.zip.resolve()
     evidence = args.evidence_dir.resolve()

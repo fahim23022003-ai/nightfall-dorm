@@ -363,6 +363,18 @@ func show_settings():
  if living:
   theme_button(guide,"settings")
   guide.get_popup().add_theme_stylebox_override("panel",GothicTheme.living_surface("frame"))
+ if game.model.weapon_feedback.enabled:
+  var numbers:=OptionButton.new()
+  numbers.name="damage_numbers"
+  numbers.position=Vector2(632,498) if living else Vector2(150,410)
+  numbers.size=Vector2(485 if living else 420,38)
+  for entry in ["Damage numbers · All","Damage numbers · My weapons","Damage numbers · Combined","Damage numbers · Off"]:
+   numbers.add_item(entry)
+  numbers.select(WeaponFeedback.NUMBER_MODES.find(game.profile.settings.damage_numbers))
+  numbers.item_selected.connect(func(i):game.change_setting("damage_numbers",WeaponFeedback.NUMBER_MODES[i]))
+  numbers.tooltip_text="Combined groups nearby hits into one true total. Burn damage stays separate."
+  panel.add_child(numbers)
+  if living:theme_button(numbers,"settings")
  var playlist:=button("Soundtrack · playlist preferences",Vector2(158,433) if living else Vector2(150,503),func():SessionInterface.settings(self),410 if living else 420,40)
  var back:=button("Back",Vector2(140,598) if living else Vector2(150,592),show_menu,220 if living else 420,46)
  var listening:=button("Audio listening room",Vector2(158,484) if living else Vector2(640,592),show_audio_test,410 if living else 470,40 if living else 46)
@@ -682,6 +694,9 @@ func refresh_context():
    var gain=clone.income_rate()-room.income_rate()
    selected_details.tooltip_text+="\n"+("Marginal +%.3f Gold/s. Gold-only payback ~%.0fs; additional%.1fE is NOT converted to Gold. Concurrent boosts/spending alter this." % [gain,quote.x/maxf(.0001,gain),quote.y] if gain>0 else "Production currently inactive; future benefit depends on resuming it.")
   selected_details.text=BuildingStats.next_machine(game.model,room,game.selected_tile)+"\n"+action_reason("upgrade")+(" · COUPON %.1fG/%.1fE" % [quote.x,quote.y] if room.coupon_armed else "")
+  if game.model.weapon_feedback.enabled and (b.kind in DefenseEffects.WEAPONS or b.kind=="barrier"):
+   selected_details.tooltip_text=selected_details.text+"\n"+selected_details.tooltip_text
+   selected_details.text=BuildingStats.combat_readout(game.model,room,game.selected_tile)
   if room.strategy_enabled and b.level==4:actions.upgrade.text="Specialize → Level 5"
  elif context_mode=="bed":
   context_title.text="BED LEVEL %d / 10" % (room.bed_level+1)
@@ -877,6 +892,8 @@ func update_match():
   warning_label.text=hunter_detail.text;warning_label.visible=true;warning_box.visible=true
  if not game.tutorial_active:
   hunter_label.text=("REAPER" if m.hunter.transformed else "HUNTER")+" EVO %d · %d/%d" % [m.evolution.evolution_level,roundi(m.hunter.hp),roundi(m.hunter.max_hp)]
+  if m.weapon_feedback.enabled:
+   hunter_label.text=("REAPER" if m.hunter.transformed else "HUNTER")+" EVO %d · %s/%s" % [m.evolution.evolution_level,WeaponFeedback.format_damage(m.hunter.hp),WeaponFeedback.format_damage(m.hunter.max_hp)]
   hunter_label.tooltip_text+="\nEvolution %d/10: forms at4/7/10. Combat level %d is separate; no extra HP multiplier. Endless +1 per5 waves. Campaign: stage,75s survival steps,+1 Hell,one step per3 kill buffs. Skills at4; signature at10." % [m.evolution.evolution_level,m.hunter.level]
  if m.wrath.active():warning_label.text="%s · %.1fs · ROOM %d" % [ReaperWrath.ABILITIES[m.wrath.ability].name.to_upper(),m.wrath.warning,m.wrath.cast_target+1]
  if not phase16_hud or hunter_label.get_meta("fit_text","")!=hunter_label.text:

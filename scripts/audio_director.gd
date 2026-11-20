@@ -635,9 +635,9 @@ func _observe(model):
    var shot_cue=WrathAudio.shot_event(str(combat.kind),int(combat.get("level",1)),str(combat.get("specialization","")))
    if shot_cue!="":event(shot_cue,combat.position)
   elif combat.type=="impact":
-   event(WrathAudio.impact_event(str(combat.kind)),combat.position)
+   event("item_shield_hit" if combat.get("reason","") in ["blocked","immune"] else WrathAudio.impact_event(str(combat.kind)),combat.position)
    if combat.damage>0:
-    event("undead_hurt" if int(combat.get("target_id",1))>1 else "reaper_hurt" if model.hunter.transformed else "ghost_hurt",combat.position)
+    event("undead_hurt" if int(combat.get("target_id",1))>1 else "reaper_hurt" if combat.get("reaper",model.hunter.transformed) else "ghost_hurt",combat.position)
  _previous = _snapshot(model)
 
 func get_diagnostics() -> Dictionary:

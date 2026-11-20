@@ -676,7 +676,7 @@ func hurt(amount: float):
  if model!=null:model.wrath.channel_damage+=previous_hp-hp
  if begin_transform:_begin_transformation(model)
  if model!=null:model.haunt_recovery.note_damage(previous_hp-hp,model)
- hit_flash = 0.15
+ if hp<previous_hp:hit_flash = 0.15
  if hp <= 0:
   nightmare.clear()
   arcane.clear_transients()

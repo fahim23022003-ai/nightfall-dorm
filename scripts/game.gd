@@ -421,6 +421,7 @@ func _process(delta: float):
  level_warning_time=maxf(0,level_warning_time-delta)
  danger_time=maxf(0,danger_time-delta)
  if mode == "match":
+  presentation.weapons.begin_frame(self,model,delta)
   var direction = Vector2(float(Input.is_physical_key_pressed(KEY_D) or Input.is_physical_key_pressed(KEY_RIGHT))-float(Input.is_physical_key_pressed(KEY_A) or Input.is_physical_key_pressed(KEY_LEFT)),float(Input.is_physical_key_pressed(KEY_S) or Input.is_physical_key_pressed(KEY_DOWN))-float(Input.is_physical_key_pressed(KEY_W) or Input.is_physical_key_pressed(KEY_UP)))
   if mobile_mode: direction=touch.movement(delta)
   if model.running:

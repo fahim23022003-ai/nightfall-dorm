@@ -26,7 +26,9 @@ func tick(delta: float,model):
  for key in burns.keys():
   var burn=burns[key];var target=model.target_by_id(int(key))
   if target==null:burns.erase(key);continue
+  var before: float=target.hp
   var applied=model.apply_target_damage(int(key),burn.dps*minf(delta,burn.remaining),burn.room,DamageRules.weapon("flame"))
+  model.record_secondary_damage("burn",burn.room,int(key),target.position,before,target.hp,burn)
   if model.run_kind=="endless":model.wave_metrics.hit(burn.room,model.player_room,int(burn.get("building_id",-1)),burn.get("kind","flame"),int(burn.get("level",1)),applied,int(key),false)
   model.credit_damage(burn.room,applied,int(key));burn.remaining=maxf(0,burn.remaining-delta)
   if burn.remaining<=0:burns.erase(key)
@@ -60,12 +62,14 @@ func lure_tick(delta: float,model) -> bool:
  h.cancel_boss_attack();h.state=HunterState.State.MOVE
  h.position=model.step_navigation(h.position,room.door_approach(),h.speed*delta,"building_decoy")
  return true
-func ignite(id: int,dps: float,seconds: float,room: int,building_id: int=-1,kind="flame",level=1):
+func ignite(id: int,dps: float,seconds: float,room: int,building_id: int=-1,kind="flame",level=1,shot: Dictionary={}):
  var key=str(id)
  if burns.has(key):
-  if dps>burns[key].dps:burns[key].dps=dps;burns[key].room=room;burns[key].building_id=building_id;burns[key].kind=kind;burns[key].level=level
+  if dps>burns[key].dps:
+   var burn: Dictionary=burns[key]
+   burn.merge({"building_id":building_id,"kind":kind,"level":level,"dps":dps,"room":room,"building_instance_id":shot.get("building_instance_id",0),"id":shot.get("id",0),"specialization":shot.get("specialization","")},true)
   burns[key].remaining=maxf(burns[key].remaining,seconds);return
- burns[key]={"building_id":building_id,"kind":kind,"level":level,"dps":dps,"remaining":seconds,"room":room}
+ burns[key]={"building_id":building_id,"kind":kind,"level":level,"dps":dps,"remaining":seconds,"room":room,"building_instance_id":shot.get("building_instance_id",0),"id":shot.get("id",0),"specialization":shot.get("specialization","")}
 func removed(room: int,tile: int):
  if lure_room==room and lure_tile==tile:lure_remaining=0;lure_instance=-1
 func burn_dps(id: int) -> float:return float(burns.get(str(id),{}).get("dps",0.0))

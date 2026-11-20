@@ -181,6 +181,17 @@ func weapon_rebirth_active(kind: String) -> bool:
 # already landed, use its matching launch event without altering the model.
 func weapon_target(model, room, tile: int, kind: String, activity: float) -> Vector2:
  var origin: Vector2 = room.tile_position(tile)
+ if model.weapon_feedback.enabled:
+  if kind not in DefenseEffects.WEAPONS:
+   return Vector2.ZERO
+  var recent: Dictionary = model.weapon_feedback.machine(room,tile)
+  if activity>0.0 and recent.has("aim"):
+   return recent.aim
+  if recent.has("target_id"):
+   var target=model.target_by_id(int(recent.target_id))
+   if target!=null:
+    return target.position-origin
+  return model.hunter.position-origin
  if weapon_rebirth_active(kind) and activity > 0:
   for i in range(model.projectiles.size() - 1, -1, -1):
    var shot: Dictionary = model.projectiles[i]
@@ -201,6 +212,19 @@ func weapon_target(model, room, tile: int, kind: String, activity: float) -> Vec
     return actor.position - origin
    break
  return model.hunter.position - origin
+
+func discharge_socket(c, kind: String, level: int, target: Vector2, scale: float, flash: float) -> Vector2:
+ var bearing := target.normalized() if target.length_squared()>.001 else Vector2.UP
+ if kind == "shock":
+  return (Vector2(0,-9) + bearing*9.0)*scale
+ if weapon_rebirth_active(kind):
+  var projected := weapon_projection(weapon_heading(target))
+  match kind:
+   "turret": return needle_muzzle(projected,needle_recoil(c,projected,flash))*scale
+   "heavy": return arc_muzzle(projected,arc_recoil(c,projected,flash))*scale
+   "flame": return elemental_muzzle(kind,projected,elemental_recoil(c,projected,flash))*scale
+   "frost": return elemental_muzzle(kind,Vector2.ZERO,Vector2.ZERO)*scale
+ return (Vector2(0,-11)+bearing*(14+level*.25-flash*.3))*scale if kind!="frost" else Vector2(0,-26)*scale
 
 func weapon_heading(target: Vector2) -> int:
  if target.length_squared() <= 0.001:

@@ -41,7 +41,14 @@ static func absorb(model,room,amount: float,attacker_id: int,packet: Dictionary)
  var barrier=best(room,"barrier")
  if not barrier.is_empty() and state.reflect_cd<=0 and not packet.get("reflected",false) and amount>0:
   var s=stats(barrier);state.reflect_cd=s.interval
+  var target = model.target_by_id(attacker_id)
+  var before: float=target.hp if target!=null else 0.0
   var reflected=model.apply_target_damage(attacker_id,amount*s.reflect,room.index,{"type":DamageRules.MAGIC,"element":packet.element,"reflected":true})
+  if reflected>0 and model.weapon_feedback.enabled:
+   for tile in room.buildings:
+    if is_same(room.buildings[tile],barrier):
+     model.record_secondary_damage("reflect",room.index,attacker_id,target.position,before,target.hp,{"kind":"barrier","packet":packet,"building_id":tile,"building_instance_id":barrier.get("instance_id",0),"level":barrier.level,"specialization":barrier.get("specialization",""),"origin":room.tile_position(tile)})
+     break
   model.credit_damage(room.index,reflected,attacker_id);model.record_event("magic_reflect",room.index,{"amount":reflected,"attacker_id":attacker_id})
  return amount
 

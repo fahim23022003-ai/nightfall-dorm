@@ -337,12 +337,13 @@ func sell_building(tile: int) -> bool:
  if not alive: return reject("Resident eliminated.")
  if not buildings.has(tile) or (spatial==null and (tile<0 or tile>=tile_count())): return reject("Select an existing building to sell.")
  var refund=building_refund(tile)
+ var instance: int=int(buildings[tile].get("instance_id",0))
  if spatial!=null:spatial.undo_entry.clear()
  buildings.erase(tile)
  gold+=refund.x
  electricity+=refund.y
  ledger.note("refund",refund,"sold actual paid building")
- presentation_action.emit("sale",{"gold":refund.x,"power":refund.y,"tile":tile})
+ presentation_action.emit("sale",{"gold":refund.x,"power":refund.y,"tile":tile,"instance_id":instance})
  last_error=""
  return true
 

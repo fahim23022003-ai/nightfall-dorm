@@ -122,6 +122,7 @@ func retaliate(m,amount: float):
  var value=minf(thorn_tokens,amount*.05);thorn_tokens-=value
  if value>0:
   var hp=m.hunter.hp;m.hunter.hurt(value);m.credit_damage(m.player_room,maxf(0,hp-m.hunter.hp),1)
+  m.record_secondary_damage("contact",m.player_room,1,m.hunter.position,hp,m.hunter.hp,{"kind":"thorns","packet":{"type":"physical","element":"earth"}})
 func finish(m):
  if not enabled(m) or paid_wave>=m.endless.wave:return
  paid_wave=m.endless.wave

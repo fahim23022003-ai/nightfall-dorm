@@ -132,6 +132,43 @@ static func next_machine(model,room,tile: int) -> String:
   return heading+" · CURRENT\n"+current+"\nNEXT L%d · nominal %.2f HP/s · upkeep %.2f E/s" % [b.level+1,next.nominal_rate,next.operating_power]
  return heading+" · CURRENT\n"+current+"\nNEXT LEVEL %d\n" % (b.level+1)+format_machine(model,clone,clone.buildings[tile])
 
+static func combat_readout(model,room,tile: int) -> String:
+ var building: Dictionary=room.buildings[tile]
+ var info: Dictionary=model.weapon_feedback.machine(room,tile)
+ var branch: String=StrategyCatalog.BRANCHES.get(building.get("specialization",""),{}).get("name","Unmodified")
+ var status := "Waiting for a target"
+ var profile: String
+ if building.kind=="barrier":
+  var stats:=MagicDefense.stats(building)
+  profile="Reflects %.0f%% Magic · %.2fs cooldown" % [stats.reflect*100,stats.interval]
+  status="Armed · reacts to incoming Magic" if is_same(MagicDefense.best(room,"barrier"),building) else "Idle · another mirror is active"
+ else:
+  var stats:=weapon_stats(model,room,building)
+  var reach: float=stats.range*model.hunter.nightmare.range_factor(room.index)
+  profile="Interval %.2fs · range %.0f" % [stats.interval,reach]
+  if not model.running or not room.alive or room.magic_state.disrupt>0 or model.wrath.rules_remaining>0:
+   status="Disabled · combat paused or disrupted"
+  else:
+   var origin: Vector2=room.tile_position(tile)
+   var target_id:=0
+   var nearest:=reach*reach
+   for target: Dictionary in model.attackable_targets():
+    if target.id==1 and (model.hunter.shadow_active(room.index) or model.wrath.domain_active() and room.index!=model.wrath.domain_room):continue
+    var distance:=origin.distance_squared_to(target.actor.position)
+    if distance<=nearest:
+     target_id=target.id
+     nearest=distance
+   if building.flash>0 and info.has("target_id") and model.target_by_id(int(info.target_id))!=null:
+    target_id=int(info.target_id)
+   if target_id>0:
+    var name: String=("Grim Reaper" if model.hunter.transformed else "Hunter") if target_id==1 else "Undead %d" % target_id
+    status=("Firing" if building.flash>0 else "Tracking")+" · "+name
+ var last := WeaponFeedback.format_damage(info.last_damage) if info.get("hits",0)>0 else "—"
+ var latest := "Last hit %s HP" % last if last!="—" else "Last hit —"
+ var total := "%s HP · %d hits" % [WeaponFeedback.format_damage(info.get("damage",0.0)),info.get("hits",0)]
+ var ongoing := " · burn %s" % WeaponFeedback.format_damage(info.burn) if info.get("burn",0.0)>0 else ""
+ return "LEVEL %d · %s\n%s\n%s\n%s\nTotal %s%s" % [building.level,branch,profile,status,latest,total,ongoing]
+
 static func structure_preview(model,room,kind: String) -> String:
  var level=room.bed_level if kind=="bed" else room.door_level
  var branch=room.bed_branch if kind=="bed" else room.door_branch

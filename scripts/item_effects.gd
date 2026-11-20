@@ -201,6 +201,7 @@ func tick(delta: float,model):
   var old=model.hunter.hp
   model.apply_target_damage(1,damage,model.player_room,DamageRules.weapon("inferno"))
   var dealt=old-model.hunter.hp
+  model.record_secondary_damage("burn",model.player_room,1,model.hunter.position,old,model.hunter.hp,{"kind":"inferno"})
   if model.player()!=null: model.player().damage_dealt+=dealt
   model.damage_dealt+=dealt
   burn_remaining=maxf(0,burn_remaining-delta)
@@ -230,6 +231,7 @@ func trigger_segment(from: Vector2,to: Vector2,model):
  var hp=model.hunter.hp
  model.apply_target_damage(1,ItemCatalog.TUNING.trap_damage,model.player_room,DamageRules.weapon("trap"))
  var applied=hp-model.hunter.hp
+ model.record_secondary_damage("contact",model.player_room,1,model.hunter.position,hp,model.hunter.hp,{"kind":"trap"})
  if model.player()!=null: model.player().damage_dealt+=applied
  model.damage_dealt+=applied
  emit_item("trap",model,applied,"explode")
