@@ -1,6 +1,5 @@
 extends RefCounted
-## Oblique Stalker sprites share a world-space floor anchor. Other directions
-## retain their existing renderer until independently authored views are ready.
+## Projected Hunter sprites share a world-space floor anchor across headings.
 
 const TEXTURE_PATH = "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
 const EVOLVED_TEXTURE_PATH = "res://assets/visual_rebirth/stalker/level_%02d_oblique.png"
@@ -11,6 +10,7 @@ const DISPLAY_SCALE = Vector2(0.90, 104.0 / DRAW_SIZE.y)
 const EVOLVED_SIZE = Vector2(328, 264)
 const EVOLVED_FLOOR = Vector2(164, 260)
 const EVOLVED_SCALE = Vector2.ONE * (104.0 / 256.0)
+const STARTER_CARDINAL_WIDTH = 216.0
 # Marked on the assembled pixels: near fingertip, far fingertip, mouth, shoulder.
 const EVOLVED_LANDMARKS = {
  2: [Vector2(171, 168), Vector2(83, 143), Vector2(132, 35), Vector2(165, 49)],
@@ -22,6 +22,20 @@ const EVOLVED_LANDMARKS = {
  8: [Vector2(119, 245), Vector2(168, 188), Vector2(117, 70), Vector2(155, 61)],
  9: [Vector2(182, 185), Vector2(57, 178), Vector2(150, 41), Vector2(177, 52)],
  10: [Vector2(225, 174), Vector2(96, 166), Vector2(169, 27), Vector2(183, 48)],
+}
+const CARDINAL_LANDMARKS = {
+ 1: {
+  "front": [Vector2(123, 156), Vector2(92, 157), Vector2(103, 38), Vector2(126, 52)],
+  "left": [Vector2(89, 156), Vector2(81, 146), Vector2(73, 34), Vector2(107, 59)],
+  "back": [Vector2(141, 147), Vector2(77, 149), Vector2(109, 33), Vector2(89, 52)],
+  "right": [Vector2(125, 157), Vector2(140, 142), Vector2(150, 33), Vector2(125, 54)],
+ },
+ 10: {
+  "front": [Vector2(218, 157), Vector2(94, 155), Vector2(162, 27), Vector2(174, 44)],
+  "left": [Vector2(159, 158), Vector2(169, 145), Vector2(157, 26), Vector2(177, 48)],
+  "back": [Vector2(225, 156), Vector2(105, 155), Vector2(160, 29), Vector2(149, 44)],
+  "right": [Vector2(172, 158), Vector2(156, 139), Vector2(166, 26), Vector2(150, 51)],
+ },
 }
 const SOCKET_LAYOUT = ["near_fingertips", "far_fingertips", "mouth"]
 const GRID = Vector2i(12, 22)
@@ -35,10 +49,13 @@ const SOCKETS = {
 }
 const TRANSITION_TIME = .13
 const STRIKE_TRANSITION_TIME = .06
+const FACING_DEADBAND = .18
 
 var enabled := OS.get_environment("NIGHTFALL_VISUAL_REBIRTH") == "1"
 var texture: Texture2D
 var active_level := 1
+var active_view := ""
+var cardinal_textures: Dictionary[String, Texture2D] = {}
 var available_levels: Dictionary[int, bool] = {}
 var frames: Dictionary[Vector2i, PackedVector2Array] = {}
 var pose_name: String
@@ -51,6 +68,7 @@ var uploaded_frame := Vector2i(-1, -1)
 var uploaded_weight := -1.0
 var topology: Array = []
 var transform := Transform2D.IDENTITY
+var projection_sign := 1.0
 
 func reset_pose() -> void:
  pose_name = ""
@@ -59,20 +77,20 @@ func reset_pose() -> void:
  uploaded_frame = Vector2i(-1, -1)
  uploaded_weight = -1.0
 
-func supports(level: int, heading: Vector2) -> bool:
+func supports(level: int, _heading: Vector2) -> bool:
  if not enabled or level < 1 or level > 10:
-  return false
- # Let the same oblique pose settle before switching at the boundary
- # between it and an orientation handled by the existing renderer.
- var allowance := .1 if not pose_name.is_empty() else 0.0
- if not (heading.x <= -.55 + allowance or (heading.x <= .15 + allowance and heading.y > .55 - allowance)):
   return false
  if not available_levels.has(level):
   available_levels[level] = ResourceLoader.exists(_texture_path(level), "Texture2D")
  return available_levels[level]
 
-func texture_for(level: int) -> Texture2D:
- if level == active_level and texture != null:
+func texture_for(level: int, view := "") -> Texture2D:
+ if view != "":
+  var cardinal_path := _texture_path(level).get_base_dir().path_join("level_%02d_%s.png" % [level, view])
+  if not cardinal_textures.has(cardinal_path):
+   cardinal_textures[cardinal_path] = load(cardinal_path) as Texture2D if ResourceLoader.exists(cardinal_path, "Texture2D") else null
+  return cardinal_textures[cardinal_path]
+ if level == active_level and active_view == "" and texture != null:
   return texture
  var path := _texture_path(level)
  return load(path) as Texture2D if ResourceLoader.exists(path, "Texture2D") else null
@@ -80,34 +98,64 @@ func texture_for(level: int) -> Texture2D:
 func _texture_path(level: int) -> String:
  return TEXTURE_PATH if level == 1 else EVOLVED_TEXTURE_PATH % level
 
-func _set_geometry_level(level: int) -> void:
- if active_level == level:
+func _set_geometry_level(level: int, view := "") -> void:
+ if active_level == level and active_view == view:
   return
  active_level = level
+ active_view = view
  texture = null
  frames.clear()
  current_mesh = null
  reset_pose()
 
-func draw(canvas: CanvasItem, floor: Vector2, tint: Color, state: String, progress: float, angle: float, clock: float, reduced: bool, level := 1) -> bool:
- var next_texture := texture_for(level)
+func _cardinal_view(level: int, heading: Vector2) -> String:
+ if _cardinal_landmarks(level).is_empty():
+  return ""
+ if heading.is_zero_approx():
+  return active_view if level == active_level else ""
+ if heading.x < -.45 and heading.y > .45:
+  return ""
+ if absf(heading.x) > absf(heading.y):
+  return "left" if heading.x < 0 else "right"
+ return "back" if heading.y < 0 else "front"
+
+func _cardinal_landmarks(level: int) -> Dictionary:
+ return CARDINAL_LANDMARKS.get(level, {})
+
+func draw(canvas: CanvasItem, floor: Vector2, tint: Color, state: String, progress: float, angle: float, clock: float, reduced: bool, level := 1, heading := Vector2.LEFT, authored_views := false) -> bool:
+ var view := _cardinal_view(level, heading) if authored_views else ""
+ var next_texture := texture_for(level, view)
+ if next_texture == null and view != "":
+  view = ""
+  next_texture = texture_for(level)
  if next_texture == null:
   available_levels[level] = false
   return false
- _set_geometry_level(level)
+ _set_geometry_level(level, view)
  texture = next_texture
  _update_pose(state, progress, clock, reduced)
- transform = Transform2D(angle, _display_scale(), 0.0, floor)
+ # Reflect the published oblique art for rightward motion. Near-vertical
+ # headings keep the prior projection so small steering changes do not flip it.
+ if absf(heading.x) > FACING_DEADBAND:
+  projection_sign = -signf(heading.x)
+ var scale := _display_scale()
+ if view == "":
+  scale.x *= projection_sign
+ transform = Transform2D(angle, scale, 0.0, floor)
  canvas.draw_mesh(current_mesh, texture, transform, tint)
  return true
 
 func _display_scale() -> Vector2:
- return DISPLAY_SCALE if active_level == 1 else EVOLVED_SCALE
+ return DISPLAY_SCALE if active_level == 1 and active_view == "" else EVOLVED_SCALE
 
 func _floor_pivot() -> Vector2:
+ if active_view != "":
+  return Vector2(_draw_size().x * .5, EVOLVED_FLOOR.y)
  return FLOOR_PIVOT if active_level == 1 else EVOLVED_FLOOR
 
 func _draw_size() -> Vector2:
+ if active_view != "":
+  return Vector2(STARTER_CARDINAL_WIDTH, EVOLVED_SIZE.y) if active_level == 1 else EVOLVED_SIZE
  return DRAW_SIZE if active_level == 1 else EVOLVED_SIZE
 
 func _update_pose(state: String, progress: float, clock: float, reduced: bool) -> void:
@@ -170,7 +218,7 @@ func socket_position(name: String) -> Vector2:
  return transform * result
 
 func _socket_uv(name: String) -> Vector2:
- return SOCKETS[name] if active_level == 1 else _evolved_socket(name)
+ return SOCKETS[name] if active_level == 1 and active_view == "" else _evolved_socket(name)
 
 func _mesh(state: String, progress: float) -> ArrayMesh:
  return _surface(_surface_arrays(_pose_vertices(state, progress)))
@@ -180,12 +228,16 @@ func _pose_vertices(state: String, progress: float) -> PackedVector2Array:
  var vertices := PackedVector2Array()
  var uvs: PackedVector2Array = topology[Mesh.ARRAY_TEX_UV]
  vertices.resize(uvs.size())
+ var draw_size := _draw_size()
+ var floor_pivot := _floor_pivot()
+ var starter := active_level == 1 and active_view == ""
+ var marks := [] if starter else _evolved_layout()
  for i in range(uvs.size()):
   var uv := uvs[i]
-  if active_level == 1:
-   vertices[i] = uv * DRAW_SIZE - FLOOR_PIVOT + _offset(uv, state, progress)
+  if starter:
+   vertices[i] = uv * draw_size - floor_pivot + _offset(uv, state, progress)
   else:
-   vertices[i] = uv * EVOLVED_SIZE - EVOLVED_FLOOR + _evolved_offset(uv, state, progress)
+   vertices[i] = uv * draw_size - floor_pivot + _evolved_offset(uv, state, progress, marks, draw_size)
  return vertices
 
 func _prepare_topology() -> void:
@@ -250,19 +302,23 @@ func _offset(uv: Vector2, state: String, progress: float) -> Vector2:
    return Vector2(upper * sin(phase) + 1.8 * hair * sin(phase - .7) + 1.2 * hem * sin(phase - 1.0), -1.3 * upper * cos(phase) - 1.0 * exposed_shoulder * sin(phase))
 
 func _evolved_socket(name: String) -> Vector2:
- var point: Vector2 = EVOLVED_LANDMARKS[active_level][SOCKET_LAYOUT.find(name)]
- return point / EVOLVED_SIZE
+ var point: Vector2 = _evolved_layout()[SOCKET_LAYOUT.find(name)]
+ return point / _draw_size()
 
-func _evolved_offset(uv: Vector2, state: String, progress: float) -> Vector2:
+func _evolved_layout() -> Array:
+ if active_view != "":
+  return _cardinal_landmarks(active_level)[active_view]
+ return EVOLVED_LANDMARKS[active_level]
+
+func _evolved_offset(uv: Vector2, state: String, progress: float, marks: Array, draw_size: Vector2) -> Vector2:
  # Evolved artwork can widen beyond the starter. Screen-sized deformation
  # regions keep the limbs and face joined across different body silhouettes.
- var marks: Array = EVOLVED_LANDMARKS[active_level]
- var mouth: Vector2 = marks[2] / EVOLVED_SIZE
- var shoulder: Vector2 = marks[3] / EVOLVED_SIZE
+ var mouth: Vector2 = marks[2] / draw_size
+ var shoulder: Vector2 = marks[3] / draw_size
  var head := _weight(uv, mouth - Vector2(0, .055), Vector2(.18, .2))
  var shoulders := _weight(uv, shoulder, Vector2(.19, .245))
- var near_hand := _weight(uv, marks[0] / EVOLVED_SIZE - Vector2(0, .045), Vector2(.21, .255))
- var far_hand := _weight(uv, marks[1] / EVOLVED_SIZE - Vector2(0, .055), Vector2(.18, .23))
+ var near_hand := _weight(uv, marks[0] / draw_size - Vector2(0, .045), Vector2(.21, .255))
+ var far_hand := _weight(uv, marks[1] / draw_size - Vector2(0, .055), Vector2(.18, .23))
  var face_lock := _weight(uv, mouth + Vector2(-.035, .23), Vector2(.15, .38))
  var swept_lock := _weight(uv, shoulder + Vector2(.10, .03), Vector2(.29, .29))
  var hair := maxf(face_lock, swept_lock * .8)

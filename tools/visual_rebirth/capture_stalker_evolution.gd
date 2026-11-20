@@ -38,7 +38,7 @@ func run():
   await capture("stalker-level-%02d-720" % level)
  check(not pilot or paths.size() == 10, "ten distinct Stalker textures reached production")
  if pilot:
-  check(not preview.supports(10, Vector2.RIGHT), "unsupported rightward view keeps fallback")
+  check(preview.supports(10, Vector2.RIGHT), "rightward heading preserves the modern evolution art")
  await _combat_sample(pilot)
  await _finish()
 

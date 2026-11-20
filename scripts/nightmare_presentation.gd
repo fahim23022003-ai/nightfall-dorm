@@ -120,17 +120,24 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
  var recoil=Vector2(-face*h.hit_flash*12,0)
  var fall=clampf(death_age,0,1) if dead else 0.0
  p+=recoil+Vector2(0,fall*15)
- if h.archetype in ["electric","storm"] and tier>=2 and not reduced:
+ var witch_supported=h.archetype=="witch" and witch_preview.supports(preview_level)
+ var enhanced=not silhouette and (stalker_supported or oblique_supported or witch_supported)
+ if enhanced:
+  CinematicQuality.draw_hunter_backlight(c,p+Vector2(0,30),color,alpha,h.archetype in ["storm","ravager","crusher"] or level>=7)
+  var lift=Color(1.13,1.17,1.22,1) if h.hit_flash<=0 else Color.WHITE
+  tint*=lift
+ var secondary_detail=not enhanced or CinematicQuality.detail(c)>0
+ if h.archetype in ["electric","storm"] and tier>=2 and not reduced and secondary_detail:
   for i in range(3):
    var at=p+Vector2.from_angle(clock*.6+i*TAU/3)*Vector2(38,25)-Vector2(0,25)
    c.draw_circle(at,5,Color(color,.08));c.draw_line(at,at+Vector2(6,-9),Color(color,.4),2)
  var flutter=0 if reduced else sin(clock*3.5)*.07+stride*sin(phase)*.1
  var preview_drawn=false
  if stalker_supported:
-  preview_drawn=draw_stalker_preview(c,h,p,tint,preview_level,reduced,phase,stride,clock,fall,windup,bend)
+  preview_drawn=draw_stalker_preview(c,h,p,tint,preview_level,reduced,phase,stride,clock,fall,windup,bend,identity.heading)
  elif oblique_supported:
-  preview_drawn=draw_oblique_preview(c,h,other_preview,p,tint,preview_level,reduced,phase,stride,clock,fall,bend)
- elif h.archetype=="witch" and witch_preview.supports(preview_level):
+  preview_drawn=draw_oblique_preview(c,h,other_preview,p,tint,preview_level,reduced,phase,stride,clock,fall,bend,identity.heading)
+ elif witch_supported:
   preview_drawn=draw_witch_preview(c,h,p,tint,preview_level,identity.heading,reduced,clock,fall,windup,slash)
  if not preview_drawn:
   if h.archetype=="stalker" and stalker_preview.enabled:stalker_preview.reset_pose()
@@ -151,7 +158,7 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
  for n in range(0 if preview_drawn else level%3):
   var q=p+Vector2(-8+n*9,-35+n*7)
   c.draw_line(q,q+Vector2(4,11),Color(color,.55*alpha),1.6)
- if level>=7 and not reduced and h.archetype in ["stalker","witch"]:
+ if level>=7 and not reduced and secondary_detail and h.archetype in ["stalker","witch"]:
   for side in [-1,1]:
    var tail=PackedVector2Array([p+Vector2(side*20,-44),p+Vector2(side*(44+sin(clock*2+side)*4),-21),p+Vector2(side*34,18),p+Vector2(side*49,29)])
    c.draw_polyline(tail,Color(color,.18*alpha),5)
@@ -174,7 +181,7 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
   for i in range(6 if reduced else 12):
    var v=Vector2.from_angle(i*TAU/(6 if reduced else 12))
    c.draw_line(p+v*(28+progress*15),p+v*(40+progress*45),Color(color,.6*(1-progress*.5)),2)
-func draw_stalker_preview(c,h,p: Vector2,tint: Color,level: int,reduced: bool,phase: float,stride: float,clock: float,fall: float,windup: float,bend: float) -> bool:
+func draw_stalker_preview(c,h,p: Vector2,tint: Color,level: int,reduced: bool,phase: float,stride: float,clock: float,fall: float,windup: float,bend: float,heading: Vector2) -> bool:
  var motion="idle"
  var progress=fposmod(clock*.37,1.0)
  if h.state==HunterState.State.DEAD:
@@ -205,7 +212,7 @@ func draw_stalker_preview(c,h,p: Vector2,tint: Color,level: int,reduced: bool,ph
  if reduced and motion in ["idle","stalk","evolve"]:
   progress=0.0
  var floor=p+Vector2(0,30)
- if not stalker_preview.draw(c,floor,tint,motion,progress,bend*.22,clock,reduced,level):
+ if not stalker_preview.draw(c,floor,tint,motion,progress,bend*.22,clock,reduced,level,heading,true):
   return false
  if motion=="tell" and (h.charged_ready or h.nightmare.action in ["drag","oath"]) and CinematicQuality.detail(c)>0 and tint.r>0:
   var fingertip=stalker_preview.socket_position("near_fingertips")
@@ -218,7 +225,7 @@ func draw_stalker_preview(c,h,p: Vector2,tint: Color,level: int,reduced: bool,ph
    var strands=PackedVector2Array([floor+Vector2(side*9,-14),floor+Vector2(side*17+drift,-21),floor+Vector2(side*24+drift,-21)])
    c.draw_polyline(strands,Color(.57,.53,.64,fade),1.5,true)
  return true
-func draw_oblique_preview(c,h,preview,p: Vector2,tint: Color,level: int,reduced: bool,phase: float,stride: float,clock: float,fall: float,bend: float) -> bool:
+func draw_oblique_preview(c,h,preview,p: Vector2,tint: Color,level: int,reduced: bool,phase: float,stride: float,clock: float,fall: float,bend: float,heading: Vector2) -> bool:
  var motion="idle"
  var progress=fposmod(clock*.31,1.0)
  if h.state==HunterState.State.DEAD:
@@ -255,7 +262,7 @@ func draw_oblique_preview(c,h,preview,p: Vector2,tint: Color,level: int,reduced:
  elif stride>.12:
   motion="stalk";progress=fposmod(phase/TAU,1.0)
  if reduced and motion in ["idle","stalk","dash","evolve"]:progress=0.0
- if not preview.draw(c,p+Vector2(0,30),tint,motion,progress,bend*.22,clock,reduced,level):
+ if not preview.draw(c,p+Vector2(0,30),tint,motion,progress,bend*.22,clock,reduced,level,heading,h.archetype=="storm"):
   return false
  if h.archetype in ["electric","storm"] and motion=="tell" and (h.arcane.action!="" or h.nightmare.action!="") and not reduced and CinematicQuality.detail(c)>0 and tint.r>0:
   var socket: Vector2=preview.socket_position("near_fingertips")

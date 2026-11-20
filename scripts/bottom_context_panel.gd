@@ -1,9 +1,11 @@
 class_name BottomContextPanel
 extends RefCounted
-# One sliding drawer above a genuinely bottom-aligned compact toolbar.
+# A compact toolbar and a sliding inspector.
 const HEADER=Rect2(20,650,1240,54)
 const BODY=Rect2(20,438,1240,204)
 const CLOSED=Vector2(20,724)
+const SIDE_BODY=Rect2(900,154,364,488)
+const SIDE_CLOSED=Vector2(1284,154)
 const SLIDE_SECONDS=.26
 var ui
 var idle_hint: Label
@@ -12,6 +14,8 @@ var expanded=false
 var transitioning=false
 var upgrade_shortcut: Button
 var inspection
+var body := BODY
+var closed_position := CLOSED
 func _init(owner):ui=owner
 func place(node: Control,at: Vector2,size: Vector2):node.position=at;node.size=size
 func install():
@@ -59,7 +63,49 @@ func install():
   if is_instance_valid(control) and control.get_parent()==ui.panel:ui.panel.move_child(control,-1)
  inspection=preload("res://scripts/building_inspection_preview.gd").new();inspection.ui=ui;inspection.mouse_filter=Control.MOUSE_FILTER_IGNORE;inspection.position=Vector2(14,31);inspection.size=Vector2(178,154);ui.context_box.add_child(inspection)
  for control in [ui.selected_details,ui.bed_details,ui.door_details]:place(control,Vector2(212,33),Vector2(602,143))
+ if ui.game.rebirth_framing and not ui.game.model.tutorial_mode:
+  install_side()
  refresh()
+
+func install_side():
+ body=SIDE_BODY
+ closed_position=SIDE_CLOSED
+ place(ui.context_box,closed_position,body.size)
+ place(ui.context_title,Vector2(14,8),Vector2(295,27))
+ ui.context_title.clip_text=true
+ for child in ui.context_box.get_children():
+  if child is Button and child.text=="×":place(child,Vector2(320,6),Vector2(32,28))
+ for index in range(ui.build_items.size()/5):
+  var first=index*5
+  var at=Vector2(10+(index%3)*116,43+floori(index/3.0)*86)
+  var card: Button=ui.build_items[first]
+  place(card,at,Vector2(112,81))
+  card.text=""
+  place(ui.build_items[first+1],at+Vector2(4,13),Vector2(29,35))
+  var name_label: Label=ui.build_items[first+2]
+  place(name_label,at+Vector2(35,6),Vector2(73,33))
+  name_label.add_theme_font_size_override("font_size",12)
+  var cost_label: Label=ui.build_items[first+3]
+  place(cost_label,at+Vector2(6,59),Vector2(100,17))
+  cost_label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+  var role_label: Label=ui.build_items[first+4]
+  place(role_label,at+Vector2(35,41),Vector2(73,16))
+  role_label.add_theme_font_size_override("font_size",10)
+  role_label.clip_text=true
+ inspection.position=Vector2(93,46)
+ for details in [ui.selected_details,ui.bed_details,ui.door_details,ui.confirmation_details]:
+  place(details,Vector2(15,215),Vector2(334,135))
+  details.add_theme_font_size_override("font_size",14)
+ place(ui.confirmation_icon,Vector2(132,58),Vector2(100,130))
+ for action in [ui.actions.upgrade,ui.bed_button,ui.door_button,ui.confirm_button]:
+  place(action,Vector2(14,361),Vector2(336,47))
+ for action in [ui.actions.sell,ui.actions.repair,ui.confirmation_items[-1]]:
+  place(action,Vector2(14,421),Vector2(336,47))
+ for index in range(2):
+  place(ui.specialization_items[index+1],Vector2(14,55+index*144),Vector2(336,135))
+ place(ui.specialization_items[3],Vector2(14,353),Vector2(336,46))
+ place(ui.branch_confirm,Vector2(14,418),Vector2(336,47))
+
 func is_transitioning() -> bool:return transitioning
 func fit_action(button: Button):
  if not is_instance_valid(button):return
@@ -74,7 +120,7 @@ func fit_action(button: Button):
  button.add_theme_font_size_override("font_size",selected)
 func refresh():
  if not is_instance_valid(ui.context_box):return
- ui.context_box.size=BODY.size
+ ui.context_box.size=body.size
  if is_instance_valid(inspection):inspection.queue_redraw()
  if ui.context_mode in ["upgrade","bed","door"]:
   ui.selected_icon.visible=false;ui.bed_items[0].visible=false;ui.door_items[0].visible=false
@@ -84,7 +130,7 @@ func refresh():
   if tween!=null and tween.is_valid():tween.kill()
   transitioning=true;ui.context_box.visible=true
   tween=ui.context_box.create_tween();tween.set_trans(Tween.TRANS_CUBIC);tween.set_ease(Tween.EASE_OUT if expanded else Tween.EASE_IN)
-  tween.tween_property(ui.context_box,"position",BODY.position if expanded else CLOSED,SLIDE_SECONDS)
+  tween.tween_property(ui.context_box,"position",body.position if expanded else closed_position,SLIDE_SECONDS)
   tween.tween_callback(func():transitioning=false;ui.context_box.visible=expanded)
  elif not expanded and not transitioning:ui.context_box.visible=false
  if ui.context_mode=="specialize":ui.specialization_items[0].visible=false

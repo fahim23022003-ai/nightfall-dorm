@@ -4,6 +4,7 @@ const FIXED := ["bed","door","frost","barrier","antenna"]
 const WEAPON_ATLASES := ["turret","heavy","flame"]
 const MOTION_ATLASES := ["generator","repair","economy","enhancer","shock","auto_repair","shield","decoy","plasma"]
 const WITCH_VIEWS := ["oblique","front","back","left","right"]
+const CARDINAL_VIEWS := ["front","back","left","right"]
 var checks := 0
 var failures := 0
 
@@ -42,6 +43,12 @@ func run():
     require_texture("res://assets/visual_rebirth/%s/level_%02d_oblique.png" % [kind,level])
  for form in ["approach","transformed"]:
   require_texture("res://assets/visual_rebirth/grim_reaper/" + form + ".png")
+ require_texture("res://assets/visual_rebirth/buildings/masterwork_details.svg")
+ for view in CARDINAL_VIEWS:
+  require_texture("res://assets/visual_rebirth/stalker/level_01_%s.png" % view)
+  require_texture("res://assets/visual_rebirth/stalker/level_10_%s.png" % view)
+  require_texture("res://assets/visual_rebirth/witch/level_10_%s.png" % view)
+  require_texture("res://assets/visual_rebirth/storm/level_10_%s.png" % view)
  var game = load("res://scenes/main.tscn").instantiate()
  root.add_child(game)
  await process_frame

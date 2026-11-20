@@ -17,6 +17,8 @@ func draw_preview_body(c, form: String, floor: Vector2, tint: Color, motion: Str
   preview_textures[form] = load(path) as Texture2D if ResourceLoader.exists(path) else null
  var texture: Texture2D = preview_textures[form]
  if texture == null:return false
+ CinematicQuality.draw_hunter_backlight(c,floor,Color("a97499"),tint.a,true)
+ if tint.r<=1.0:tint*=Color(1.15,1.15,1.2,1)
  var frame := 0 if reduced else roundi(clampf(progress,0.0,1.0)*16.0)
  var key := Vector2i(["hover","tell","release","hit","evolve","vanish"].find(motion),frame)
  if not preview_poses.has(key):
@@ -52,7 +54,7 @@ func draw(c,h,clock: float,death_age: float,heading=Vector2.RIGHT,reduced=false)
  var p=OFFSET+h.position+Vector2(0,-14+sin(clock*3)*3)
  if dead and death_age>1.8: return
  # Smoke wreath curls with time, expanding through the transformation and death.
- for i in range(7 if reduced else 18):
+ for i in range(7 if reduced or (preview_enabled and CinematicQuality.detail(c)==0) else 18):
   var angle=i*TAU/18+clock*(0.6 if i%2 else -0.45)
   var radius=24+sin(clock*2+i)*8+(30*sin(progress*PI) if changing else 0)+(death_age*60 if dead else 0)
   var q=p+Vector2(cos(angle)*radius,sin(angle)*radius*.55+12-i%3*8)

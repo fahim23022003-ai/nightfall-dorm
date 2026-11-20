@@ -399,7 +399,7 @@
         {
           "level": 1,
           "variant": "baseline",
-          "orientation": "single_oblique_reference",
+          "orientation": "checkpoint_oblique_with_four_independent_cardinal_views",
           "format": "textured_2d_deformation_mesh",
           "motions": [
             "idle",
@@ -422,11 +422,45 @@
           "source_tool": "tools/visual_rebirth/prepare_stalker_reference.py",
           "renderer": "scripts/stalker_visual_prototype.gd",
           "audio": "assets/audio/cinematic_stalker_breath.wav",
-          "qa_status": "level_1_prototype_only",
+          "qa_status": "four_independent_cardinals_and_checkpoint_oblique_bound_in_godot",
           "neutral_draw_size_px": [
             43.56,
             104
-          ]
+          ],
+          "orientations": {
+            "front": {
+              "path": "assets/visual_rebirth/stalker/level_01_front.png",
+              "dimensions_px": [
+                216,
+                264
+              ],
+              "sha256": "23fe1d4855bd586563c2a431435351ea79369f09dfcf453f2cbdac85132a64c3"
+            },
+            "back": {
+              "path": "assets/visual_rebirth/stalker/level_01_back.png",
+              "dimensions_px": [
+                216,
+                264
+              ],
+              "sha256": "51b49e7e0ab3eb33d1c9a7ce116ff838c9f4e0e408eaf462bdfac163efff27ca"
+            },
+            "left": {
+              "path": "assets/visual_rebirth/stalker/level_01_left.png",
+              "dimensions_px": [
+                216,
+                264
+              ],
+              "sha256": "00064ff6e516c1be474b4c958580e46383a6257bfe900f266d34cf95a4c3493f"
+            },
+            "right": {
+              "path": "assets/visual_rebirth/stalker/level_01_right.png",
+              "dimensions_px": [
+                216,
+                264
+              ],
+              "sha256": "25ad1e676055953accb61637347d30f72e22ded53ce246ff177f75d48bfe0d8f"
+            }
+          }
         },
         {
           "level": 2,
@@ -624,6 +658,38 @@
                 264
               ],
               "sha256": "7c6433c424ec2667a3198900c0b2cfe19804b1db1cc39e3837bdb03d7093280f"
+            },
+            "front": {
+              "path": "assets/visual_rebirth/stalker/level_10_front.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "8e41c1b8868046bf027b8ab3cff397c9f6215191e08b5b95a593cb97b01b0605"
+            },
+            "back": {
+              "path": "assets/visual_rebirth/stalker/level_10_back.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "515d811c78f56bd9d4cd2e34ddb0a97f8d61f67d64904ce2c93082db5bb87264"
+            },
+            "left": {
+              "path": "assets/visual_rebirth/stalker/level_10_left.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "ac4a828e1ffee9a8e9c8853a71c3b3cc015b152258f10f0c9e0776b6ebe7c4d0"
+            },
+            "right": {
+              "path": "assets/visual_rebirth/stalker/level_10_right.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "d7e035af65d1af287d73241f5bdd9a48cf2243f5ba02bd117d1a3bbca5626dd3"
             }
           },
           "pivot_px": [
@@ -633,7 +699,7 @@
           "neutral_body_height_game_px": 104,
           "source_tool": "tools/visual_rebirth/prepare_stalker_evolution.py",
           "renderer": "scripts/stalker_visual_prototype.gd",
-          "qa_status": "exact_level_bound_and_rendered_in_godot"
+          "qa_status": "four_independent_cardinals_and_checkpoint_oblique_bound_in_godot"
         }
       ],
       "source_study": {
@@ -659,8 +725,7 @@
           "animation": "representative_state_or_role_tested",
           "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Native Intel UHD performance unverified per asset",
-            "Independent directions remain open"
+            "Native Intel UHD performance unverified per asset"
           ]
         },
         {
@@ -776,8 +841,7 @@
           "animation": "representative_state_or_role_tested",
           "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Native Intel UHD performance unverified per asset",
-            "Independent directions remain open"
+            "Native Intel UHD performance unverified per asset"
           ]
         }
       ]
@@ -1478,6 +1542,38 @@
                 264
               ],
               "sha256": "f98940daed83bdf013f24a0627cced2867a28524332fe4b80309edc31ad78069"
+            },
+            "front": {
+              "path": "assets/visual_rebirth/witch/level_10_front.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "c9de42e4a8cedf255f9140da18a3f4c5921494bc55b7f4e56db28509475b8859"
+            },
+            "back": {
+              "path": "assets/visual_rebirth/witch/level_10_back.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "ebc10d5b1f17fd124e943371957f276977e848aa032bbb02ef55d5b449dc1061"
+            },
+            "left": {
+              "path": "assets/visual_rebirth/witch/level_10_left.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "26a3c354b605cba135562de0f28c3781cd2970485a3bc56d634abfe9dca73849"
+            },
+            "right": {
+              "path": "assets/visual_rebirth/witch/level_10_right.png",
+              "dimensions_px": [
+                328,
+                264
+              ],
+              "sha256": "5bdcd1103d86d1f96fec5d3e95b14fdea68ee3aa66fa6c620013f2ac08940e0a"
             }
           },
           "pivot_px": [
@@ -1495,7 +1591,7 @@
           ],
           "renderer": "scripts/phantom_witch_visual.gd",
           "source_tool": "tools/visual_rebirth/prepare_witch_evolution.py",
-          "qa_status": "exact_level_bound_and_rendered_in_godot"
+          "qa_status": "four_independent_cardinals_and_checkpoint_oblique_bound_in_godot"
         }
       ],
       "state_tracking": [
@@ -1625,8 +1721,7 @@
           "animation": "representative_state_or_role_tested",
           "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Native Intel UHD performance unverified per asset",
-            "Independent directions remain open"
+            "Native Intel UHD performance unverified per asset"
           ]
         }
       ]
@@ -2179,11 +2274,43 @@
                 264
               ],
               "sha256": "f0e2f29cf0d729e16b5ab3e1dd1b0dc9b4b165f2891c0ceeabb1c10fb0259f99"
+            },
+            "front": {
+              "path": "assets/visual_rebirth/storm/level_10_front.png",
+              "dimensions_px": [
+                432,
+                264
+              ],
+              "sha256": "cff7e6bfcd545d114bdcfa4809f3c1e8ceb1ebe2828eae9027ea666c90220558"
+            },
+            "back": {
+              "path": "assets/visual_rebirth/storm/level_10_back.png",
+              "dimensions_px": [
+                432,
+                264
+              ],
+              "sha256": "c37f07c0e4ed6e3ded49b337f23dd2cb354d08e67e0a4f690e5e0c7018097d5f"
+            },
+            "left": {
+              "path": "assets/visual_rebirth/storm/level_10_left.png",
+              "dimensions_px": [
+                432,
+                264
+              ],
+              "sha256": "a55c275df65cbc20d4b4224a19656e399b79af7352bd1b44a40814b9398a11aa"
+            },
+            "right": {
+              "path": "assets/visual_rebirth/storm/level_10_right.png",
+              "dimensions_px": [
+                432,
+                264
+              ],
+              "sha256": "30d49f7f01af6c3f255eabd1087d8b07eacc3254cb059b347ce9a221c782c1c1"
             }
           },
           "source_tool": "tools/visual_rebirth/prepare_storm_evolution.py",
           "renderer": "scripts/storm_wraith_visual.gd",
-          "qa_status": "exact_level_bound_and_rendered_in_godot"
+          "qa_status": "four_independent_cardinals_and_checkpoint_oblique_bound_in_godot"
         }
       ],
       "state_tracking": [
@@ -2313,8 +2440,7 @@
           "animation": "representative_state_or_role_tested",
           "performance": "individual_cost_not_isolated",
           "remaining_issues": [
-            "Native Intel UHD performance unverified per asset",
-            "Independent directions remain open"
+            "Native Intel UHD performance unverified per asset"
           ]
         }
       ]
@@ -8951,5 +9077,25 @@
     }
   },
   "branch_count_note": "Thirty placed-building branches use L5\u201310. Four Bed/Door branches use L6\u201310, giving 200 reachable variants.",
-  "next_incomplete_assets": []
+  "next_incomplete_assets": [],
+  "phase_14e_polish": {
+    "base_checkpoint": "deda9449ed107fd1637a309dd7f7fb7636606041",
+    "report": "docs/PHASE_14E_FINAL_VISUAL_POLISH.md",
+    "opt_in": "NIGHTFALL_VISUAL_REBIRTH=1",
+    "independent_cardinal_art_added": {
+      "stalker": [
+        1,
+        10
+      ],
+      "witch": [
+        10
+      ],
+      "storm": [
+        10
+      ]
+    },
+    "remaining_ordinary_states": "Correct-level oblique retained across headings, with reflection for lateral movement where no independent cardinal art exists",
+    "level_10_placeable_detail_atlas": "assets/visual_rebirth/buildings/masterwork_details.svg",
+    "level_10_placeable_families": 15
+  }
 }

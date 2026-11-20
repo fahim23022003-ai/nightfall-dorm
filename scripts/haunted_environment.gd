@@ -90,6 +90,7 @@ func render(c,p):
  if observed_model!=m:configure(m)
  var palette=Color(THEMES[theme].color)
  var visible=p.visible_world_rect(c,90)
+ var cull_weather: bool=c.rebirth_framing
  # Scenery is drawn beneath architecture. Every animated actor remains outside
  # the protected room/corridor union, including its complete bounding footprint.
  for entry in scenery:
@@ -143,7 +144,10 @@ func render(c,p):
     c.draw_colored_polygon(PackedVector2Array([q+Vector2(-8,-5),q+Vector2(-17,22),q+Vector2(0,15),q+Vector2(16,23),q+Vector2(8,-5)]),Color(palette,alpha))
     if flash>0:c.draw_arc(q,27,0,TAU,24,Color(.7,.85,1,alpha*.3),2)
  for i in range(3):
-  ellipse(c,OFFSET+Vector2(bounds.position.x+fposmod(visual_clock*6+i*410,bounds.size.x),bounds.position.y+25),Vector2(230,43),Color(.03,.05,.08,.6))
+  var center=OFFSET+Vector2(bounds.position.x+fposmod(visual_clock*6+i*410,bounds.size.x),bounds.position.y+25)
+  var radius=Vector2(230,43)
+  if not cull_weather or visible.intersects(Rect2(center-radius,radius*2)):
+   ellipse(c,center,radius,Color(.03,.05,.08,.6))
  # Fog, rain, clouds and birds remain beneath all gameplay geometry and actors.
  var dangerous=c.model.hunter.state==HunterState.State.ATTACK or c.model.hunter.transformed
  var omen=c.model.endless.omen.active if c.model.run_kind=="endless" else ""
@@ -152,16 +156,20 @@ func render(c,p):
   c.draw_rect(Rect2(OFFSET+bounds.position,bounds.size),tint)
  var fog_count=2 if reduced_effects else int(THEMES[theme].fog)
  for i in range(fog_count):
-  var q=Vector2(bounds.position.x+fposmod(i*311+visual_clock*12*fog_drift+fog_phase,bounds.size.x),bounds.position.y+fposmod(i*193+fog_phase*.43,bounds.size.y))
-  ellipse(c,OFFSET+q,Vector2(150,25),Color(palette,.075 if not dangerous else .095))
+  var center=OFFSET+Vector2(bounds.position.x+fposmod(i*311+visual_clock*12*fog_drift+fog_phase,bounds.size.x),bounds.position.y+fposmod(i*193+fog_phase*.43,bounds.size.y))
+  var radius=Vector2(150,25)
+  if not cull_weather or visible.intersects(Rect2(center-radius,radius*2)):
+   ellipse(c,center,radius,Color(palette,.075 if not dangerous else .095))
  var rain_count=3 if reduced_effects else int(THEMES[theme].rain)
  for i in range(rain_count):
-  var q=Vector2(bounds.position.x+fposmod(i*137+visual_clock*24,bounds.size.x),bounds.position.y+fposmod(i*89+visual_clock*180,bounds.size.y))
-  c.draw_line(OFFSET+q,OFFSET+q+Vector2(-8,23),Color(palette,.25),1)
+  var q=OFFSET+Vector2(bounds.position.x+fposmod(i*137+visual_clock*24,bounds.size.x),bounds.position.y+fposmod(i*89+visual_clock*180,bounds.size.y))
+  if not cull_weather or visible.has_point(q):
+   c.draw_line(q,q+Vector2(-8,23),Color(palette,.25),1)
  if theme in ["mansion","dorm"]:
   for i in range(3 if not reduced_effects else 1):
    var q=OFFSET+Vector2(bounds.position.x+fposmod(visual_clock*(25+20*moonlight)+i*290,bounds.size.x),bounds.position.y+30+sin(visual_clock+i)*10)
-   c.draw_polyline(PackedVector2Array([q+Vector2(-9,-sin(visual_clock*8)*6),q,q+Vector2(9,-sin(visual_clock*8)*6)]),Color("747484"),2)
+   if not cull_weather or visible.has_point(q):
+    c.draw_polyline(PackedVector2Array([q+Vector2(-9,-sin(visual_clock*8)*6),q,q+Vector2(9,-sin(visual_clock*8)*6)]),Color("747484"),2)
  if flash>0 and not reduced_effects:c.draw_rect(Rect2(OFFSET+bounds.position,bounds.size),Color(.65,.76,.9,flash*.09))
 func ellipse(c,center: Vector2,radius: Vector2,color: Color):
  var points=PackedVector2Array()

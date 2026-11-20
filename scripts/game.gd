@@ -37,6 +37,7 @@ var tutorial_enabled=true
 var danger_time=0.0
 var last_income: Dictionary={}
 var camera_target=Vector2.ZERO
+var rebirth_framing := CinematicQuality.rebirth_preview()
 var closing=false
 var mobile_mode=OS.get_name()=="Android" or "--mobile-test" in OS.get_cmdline_user_args()
 var mobile_layout
@@ -512,19 +513,26 @@ func focus_camera(snap: bool=false,delta: float=0.016):
    goal=extent.get_center()+MAP_OFFSET+Vector2(0,10)/zoom
   elif model.player()!=null or watched_room>=0:
    var observed=model.rooms[watched_room] if watched_room>=0 else model.player()
-   var extent=observed.bounds().grow(35)
-   # Fixed room framing includes heads/scythe above upward-facing doors.
-   extent=extent.expand(observed.door_approach()+Vector2(0,-100))
-   extent=extent.expand(observed.door_approach()+Vector2(0,40))
-   # Include a live local attacker as it approaches; drawer state is never a
-   # framing input. Distant Hunters cannot zoom another room out.
-   var local_hunter=model.hunter
-   if local_hunter.hp>0 and local_hunter.target==observed.index and local_hunter.state in [HunterState.State.MOVE,HunterState.State.ATTACK,HunterState.State.BREACH,HunterState.State.TRANSFORM] and local_hunter.position.distance_to(observed.door_approach())<=150:
-    extent=extent.expand(local_hunter.position+Vector2(-50,-105))
-    extent=extent.expand(local_hunter.position+Vector2(50,45))
+   var extent: Rect2
    var available=Vector2(1160,470)
-   zoom=minf(available.x/extent.size.x,available.y/extent.size.y)*zoom_factor
    var desired=Vector2(640,385)
+   if rebirth_framing and not mobile_mode and not model.tutorial_mode:
+    extent=_preview_room_extent(observed)
+    # One stable composition with space reserved for warnings, the dock and
+    # the side inspector. Opening a panel never recenters the playing field.
+    available=Vector2(486,464)
+    desired=Vector2(642,388)
+   else:
+    extent=observed.bounds().grow(35)
+    # Fixed room framing includes heads/scythe above upward-facing doors.
+    extent=extent.expand(observed.door_approach()+Vector2(0,-100))
+    extent=extent.expand(observed.door_approach()+Vector2(0,40))
+    # Distant Hunters cannot zoom another room out.
+    var local_hunter=model.hunter
+    if local_hunter.hp>0 and local_hunter.target==observed.index and local_hunter.state in [HunterState.State.MOVE,HunterState.State.ATTACK,HunterState.State.BREACH,HunterState.State.TRANSFORM] and local_hunter.position.distance_to(observed.door_approach())<=150:
+     extent=extent.expand(local_hunter.position+Vector2(-50,-105))
+     extent=extent.expand(local_hunter.position+Vector2(50,45))
+   zoom=minf(available.x/extent.size.x,available.y/extent.size.y)*zoom_factor
    goal=extent.get_center()+MAP_OFFSET+(get_viewport_rect().size/2-desired)/zoom
  if mobile_mode and not full_map:
   var desired=Vector2(470 if ui.context_open and model.player()!=null and model.player().sleeping else 640,340)
@@ -535,6 +543,21 @@ func focus_camera(snap: bool=false,delta: float=0.016):
  camera.zoom=camera.zoom.lerp(Vector2(zoom,zoom),weight)
  camera.offset=Vector2.ZERO if CinematicQuality.reduced_motion(self) else Vector2(sin(presentation.clock*63),cos(presentation.clock*51))*danger_time*1.5+presentation.nightmare_visual.camera_impulse()
  camera.force_update_scroll()
+
+func _preview_room_extent(room: RoomState) -> Rect2:
+ var extent := room.bounds().grow_individual(13, 17, 13, 17)
+ var door := room.door_position()
+ var approach := room.door_approach()
+ extent = extent.expand(door + Vector2(104, 20))
+ extent = extent.expand(approach + Vector2(0, -109))
+ extent = extent.expand(approach + Vector2(0, 25))
+ var hunter := model.hunter
+ if hunter.hp <= 0 or hunter.target != room.index or hunter.state not in [HunterState.State.MOVE, HunterState.State.ATTACK, HunterState.State.BREACH, HunterState.State.TRANSFORM]:
+  return extent
+ var distance := hunter.position.distance_to(approach)
+ var weight := 1.0 - smoothstep(90.0, 150.0, distance)
+ var with_hunter := extent.expand(hunter.position + Vector2(-103, -110)).expand(hunter.position + Vector2(103, 46))
+ return Rect2(extent.position.lerp(with_hunter.position, weight), extent.size.lerp(with_hunter.size, weight))
 
 func world_to_screen(point: Vector2) -> Vector2:
  return get_viewport().get_canvas_transform()*(point+MAP_OFFSET)

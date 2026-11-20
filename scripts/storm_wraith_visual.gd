@@ -14,12 +14,24 @@ const LANDMARKS = {
  9: [Vector2(117, 208), Vector2(313, 111), Vector2(193, 31), Vector2(221, 80)],
  10: [Vector2(152, 164), Vector2(314, 151), Vector2(224, 29), Vector2(234, 62)],
 }
+const APEX_LANDMARKS = {
+ "front": [Vector2(156, 150), Vector2(297, 141), Vector2(221, 31), Vector2(238, 65)],
+ "left": [Vector2(201, 153), Vector2(223, 126), Vector2(204, 27), Vector2(219, 68)],
+ "back": [Vector2(122, 141), Vector2(288, 141), Vector2(215, 32), Vector2(223, 68)],
+ "right": [Vector2(232, 150), Vector2(184, 128), Vector2(228, 29), Vector2(212, 63)],
+}
 
 func supports(level: int, heading: Vector2) -> bool:
  return LANDMARKS.has(level) and super.supports(level, heading)
 
 func _texture_path(level: int) -> String:
  return STORM_TEXTURE % level
+
+func _cardinal_landmarks(level: int) -> Dictionary:
+ return APEX_LANDMARKS if level == 10 else {}
+
+func _evolved_layout() -> Array:
+ return APEX_LANDMARKS[active_view] if active_view != "" else LANDMARKS[active_level]
 
 func _display_scale() -> Vector2:
  return EVOLVED_SCALE
@@ -31,13 +43,13 @@ func _draw_size() -> Vector2:
  return EVOLVED_SIZE if active_level == 1 else Vector2(432, 264)
 
 func _socket_uv(name: String) -> Vector2:
- var point: Vector2 = LANDMARKS[active_level][SOCKET_LAYOUT.find(name)]
+ var point: Vector2 = _evolved_layout()[SOCKET_LAYOUT.find(name)]
  return point / _draw_size()
 
 func _pose_vertices(state: String, progress: float) -> PackedVector2Array:
  _prepare_topology()
  var points: PackedVector2Array = topology[Mesh.ARRAY_TEX_UV]
- var marks: Array = LANDMARKS[active_level]
+ var marks := _evolved_layout()
  var size := _draw_size()
  var pivot := _floor_pivot()
  var near: Vector2 = marks[0] / size

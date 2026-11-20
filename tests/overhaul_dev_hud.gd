@@ -19,12 +19,16 @@ func run():
   ui.open_context();check(ui.bottom_context.is_transitioning(),"opening creates real transition")
   ui.actions["build:turret"].pressed.emit();check(room.gold==stock and room.electricity==power and not room.buildings.has(tile),"moving controls cannot charge resources")
   await create_timer(.31).timeout
-  check(ui.context_box.position.is_equal_approx(BottomContextPanel.BODY.position) and ui.context_box.visible and not ui.bottom_context.is_transitioning(),"drawer reaches final lower-middle location")
+  var expected_body=BottomContextPanel.SIDE_BODY if game.rebirth_framing else BottomContextPanel.BODY
+  check(ui.context_box.get_rect().is_equal_approx(expected_body) and ui.context_box.visible and not ui.bottom_context.is_transitioning(),"drawer reaches final location")
+  if game.rebirth_framing:
+   var room_bounds: Rect2=room.bounds()
+   check(not expected_body.intersects(Rect2(game.world_to_screen(room_bounds.position),room_bounds.size*game.camera.zoom)),"side inspector leaves focus room visible")
   check(game.camera.position==camera and game.model.player_position==position,"drawer animation changes neither camera nor character")
   for id in Catalog.BUILDINGS:
-   var button=ui.actions["build:"+id];check(button.get_rect().end.y<=BottomContextPanel.BODY.size.y and button.get_rect().end.x<=BottomContextPanel.BODY.size.x,"all registered cards remain inside accessible drawer "+id)
+   var button=ui.actions["build:"+id];check(button.get_rect().end.y<=expected_body.size.y and button.get_rect().end.x<=expected_body.size.x,"all registered cards remain inside accessible drawer "+id)
   ui.actions["build:turret"].pressed.emit();check(room.buildings.has(tile) and room.gold<stock,"settled drawer executes real purchase once")
-  ui.close_context();check(ui.context_box.visible and ui.bottom_context.is_transitioning(),"close slides existing drawer downward")
+  ui.close_context();check(ui.context_box.visible and ui.bottom_context.is_transitioning(),"close slides existing drawer out")
   await create_timer(.31).timeout;check(not ui.context_box.visible and ui.room_dock.visible,"compact toolbar restored after slide")
   for i in range(5):ui.open_context();ui.close_context()
   await create_timer(.31).timeout;check(not ui.context_box.visible and not ui.bottom_context.is_transitioning(),"rapid repeated open/close leaves no stranded drawer")

@@ -9,10 +9,12 @@ const ART_HEIGHT = 264.0
 const FOOT = 260.0
 const GRID = Vector2i(12, 16)
 const FRAME_COUNT = 16
+const FACING_DEADBAND = .18
 
 var enabled := OS.get_environment("NIGHTFALL_VISUAL_REBIRTH") == "1"
 var textures: Dictionary = {}
 var poses: Dictionary = {}
+var projection_sign := 1.0
 
 func supports(level: int) -> bool:
  return enabled and texture_for(level, "oblique") != null
@@ -31,8 +33,15 @@ func facing(heading: Vector2) -> String:
  return "back" if heading.y < 0 else "front"
 
 func draw(canvas: CanvasItem, floor: Vector2, tint: Color, level: int, heading: Vector2, state: String, progress: float, reduced: bool) -> bool:
- var direction := facing(heading) if level == 1 else "oblique"
+ var direction := facing(heading)
  var texture := texture_for(level, direction)
+ var projection := 1.0
+ if texture == null:
+  direction = "oblique"
+  texture = texture_for(level, direction)
+  if absf(heading.x) > FACING_DEADBAND:
+   projection_sign = -signf(heading.x)
+  projection = projection_sign
  if texture == null:
   return false
  var step := 0 if reduced else roundi(clampf(progress, 0.0, 1.0) * FRAME_COUNT)
@@ -41,7 +50,7 @@ func draw(canvas: CanvasItem, floor: Vector2, tint: Color, level: int, heading: 
  var key := "%s:%d:%d:%d" % [state, step, gesture_side, int(width)]
  if not poses.has(key):
   poses[key] = build_pose(state, float(step) / FRAME_COUNT, gesture_side, width)
- canvas.draw_mesh(poses[key], texture, Transform2D(0.0, floor), tint)
+ canvas.draw_mesh(poses[key], texture, Transform2D(0.0, Vector2(projection, 1.0), 0.0, floor), tint)
  return true
 
 func build_pose(state: String, progress: float, gesture_side: int, width: float = BASE_WIDTH) -> ArrayMesh:

@@ -1,0 +1,185 @@
+{
+  "checkpoint_git": "deda9449ed107fd1637a309dd7f7fb7636606041",
+  "current_source": "Phase 14E frozen camera, lighting, building, inspector, quality and Stalker sources. Final Storm L10 direction assets were added after this Stalker fixture.",
+  "engine": "Godot 4.6.3 Compatibility, Mesa OpenGL 4.5 / llvmpipe (LLVM 19.1.7, 256 bits), Linux Xorg dummy virtual display",
+  "host_cpu": "AMD EPYC 9V74 80-Core Processor",
+  "method": "One trace each, same paid Legacy Endless room fixture and unchanged capture parent, seed 67, 16 occupied slots. Freeze simulation, update presentation only; opt-in for all three cases. Checkpoint was captured earlier. Final Standard and Low ran serially while other local graphics workloads were paused. Accessibility switches default for timing, enabled separately for the 16-click test.",
+  "frame_times": "Wall-clock intervals between rendered frames, including scheduled presentation updates. Memory values from Godot rendering monitors.",
+  "render_cases": {
+    "checkpoint-standard": {
+      "captured_resolutions": [
+        [
+          1280,
+          720
+        ],
+        [
+          1920,
+          1080
+        ]
+      ],
+      "checks": 174,
+      "extra_buildings": [
+        {
+          "kind": "turret",
+          "level": 1
+        }
+      ],
+      "failures": 0,
+      "frame_time": {
+        "max_ms": 78.616,
+        "median_ms": 40.464,
+        "p95_ms": 55.98,
+        "render_video_memory_bytes": 147610619,
+        "sample_frames": 240,
+        "static_memory_bytes": 136992755,
+        "warmup_frames": 30
+      },
+      "level_10_families": [
+        "antenna",
+        "auto_repair",
+        "barrier",
+        "decoy",
+        "economy",
+        "enhancer",
+        "flame",
+        "frost",
+        "generator",
+        "heavy",
+        "plasma",
+        "repair",
+        "shield",
+        "shock",
+        "turret"
+      ],
+      "model_sha256": "dcfc1db0e0f6ce800c30b0d86382b37b936bab1d84976443e773ae1a0e8ae02b",
+      "quality": "medium",
+      "sample_resolution": [
+        1280,
+        720
+      ],
+      "seed": 67
+    },
+    "final-standard": {
+      "captured_resolutions": [
+        [
+          1280,
+          720
+        ],
+        [
+          1920,
+          1080
+        ]
+      ],
+      "checks": 174,
+      "extra_buildings": [
+        {
+          "kind": "turret",
+          "level": 1
+        }
+      ],
+      "failures": 0,
+      "frame_time": {
+        "max_ms": 100.415,
+        "median_ms": 42.688,
+        "p95_ms": 49.212,
+        "render_video_memory_bytes": 153526819,
+        "sample_frames": 240,
+        "static_memory_bytes": 137263018,
+        "warmup_frames": 30
+      },
+      "level_10_families": [
+        "antenna",
+        "auto_repair",
+        "barrier",
+        "decoy",
+        "economy",
+        "enhancer",
+        "flame",
+        "frost",
+        "generator",
+        "heavy",
+        "plasma",
+        "repair",
+        "shield",
+        "shock",
+        "turret"
+      ],
+      "model_sha256": "dcfc1db0e0f6ce800c30b0d86382b37b936bab1d84976443e773ae1a0e8ae02b",
+      "quality": "medium",
+      "sample_resolution": [
+        1280,
+        720
+      ],
+      "seed": 67
+    },
+    "final-low": {
+      "captured_resolutions": [
+        [
+          1280,
+          720
+        ],
+        [
+          1920,
+          1080
+        ]
+      ],
+      "checks": 174,
+      "extra_buildings": [
+        {
+          "kind": "turret",
+          "level": 1
+        }
+      ],
+      "failures": 0,
+      "frame_time": {
+        "max_ms": 74.108,
+        "median_ms": 41.5795,
+        "p95_ms": 47.764,
+        "render_video_memory_bytes": 153523891,
+        "sample_frames": 240,
+        "static_memory_bytes": 137262198,
+        "warmup_frames": 30
+      },
+      "level_10_families": [
+        "antenna",
+        "auto_repair",
+        "barrier",
+        "decoy",
+        "economy",
+        "enhancer",
+        "flame",
+        "frost",
+        "generator",
+        "heavy",
+        "plasma",
+        "repair",
+        "shield",
+        "shock",
+        "turret"
+      ],
+      "model_sha256": "dcfc1db0e0f6ce800c30b0d86382b37b936bab1d84976443e773ae1a0e8ae02b",
+      "quality": "low",
+      "sample_resolution": [
+        1280,
+        720
+      ],
+      "seed": 67
+    }
+  },
+  "preview_off_pixel_comparison": {
+    "720": {
+      "pixels": 921600,
+      "pixels_changed": 84921,
+      "mean_max_rgb_channel_delta": 0.19796549479166667,
+      "peak_channel_delta": 105,
+      "pixels_with_channel_delta_over_9": 2
+    },
+    "1080": {
+      "pixels": 2073600,
+      "pixels_changed": 190472,
+      "mean_max_rgb_channel_delta": 0.19782648533950617,
+      "peak_channel_delta": 105,
+      "pixels_with_channel_delta_over_9": 7
+    }
+  }
+}

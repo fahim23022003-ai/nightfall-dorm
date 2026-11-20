@@ -21,5 +21,16 @@ func run():
   game.ui.close_context();game.focus_camera(true);check(position.is_equal_approx(game.camera.position),"close drawer does not reframe "+map)
   h.position=room.door_approach()+room.door_normal()*300;game.focus_camera(true);check(baseline.is_equal_approx(game.camera.position) and zoom.is_equal_approx(game.camera.zoom),"distant Hunter does not expand view "+map)
   h.position=room.door_approach()+room.door_normal()*65;h.target=(room.index+1)%6;game.focus_camera(true);check(baseline.is_equal_approx(game.camera.position),"other room target does not expand view "+map)
+  if game.rebirth_framing:
+   var playfield=Rect2(370,151,523,478)
+   for observed in m.rooms:
+    game.watched_room=observed.index
+    h.target=observed.index
+    h.position=observed.door_approach()+observed.door_normal()*65
+    game.focus_camera(true)
+    var room_bounds: Rect2=observed.bounds()
+    check(playfield.has_point(game.world_to_screen(room_bounds.position)) and playfield.has_point(game.world_to_screen(room_bounds.end)),"preview room avoids HUD and inspector "+map)
+    check(playfield.has_point(game.world_to_screen(h.position+Vector2(-102,-109))) and playfield.has_point(game.world_to_screen(h.position+Vector2(102,45))),"wide preview Hunter avoids HUD and inspector "+map)
+   game.watched_room=-1
  game.audio_system.shutdown();await create_timer(.6).timeout;game.queue_free();await process_frame
  print("OVERHAUL_CAMERA_CHECKS=%d FAILURES=%d" % [checks,failures]);quit(1 if failures else 0)

@@ -8,6 +8,27 @@ const WEAPON_BEARINGS = 12
 const WEAPON_CANVAS_SIZE = 99.0
 const WEAPON_UNIT = WEAPON_CANVAS_SIZE / 3.75
 const ATLAS_BOUNDS = preload("res://scripts/rebirth_atlas_bounds.gd")
+const MASTERWORK_DETAILS = "res://assets/visual_rebirth/buildings/masterwork_details.svg"
+# Atlas cell and material grade for each finished housing. Details are drawn
+# below each operating assembly so recoil and actual effect sockets stay clear.
+const MASTERWORK = {
+ "turret": [0,Color(.87,.97,1.09)],
+ "heavy": [1,Color(1.12,.91,.91)],
+ "generator": [2,Color(.91,1.04,1.11)],
+ "repair": [3,Color(1.14,1.02,.86)],
+ "economy": [4,Color(1.08,.96,1.14)],
+ "enhancer": [5,Color(.88,1.00,1.13)],
+ "flame": [6,Color(1.18,.87,.80)],
+ "frost": [7,Color(.83,1.04,1.18)],
+ "shock": [8,Color(1.08,1.02,.90)],
+ "auto_repair": [9,Color(.91,1.10,.99)],
+ "shield": [10,Color(.88,1.12,.91)],
+ "decoy": [11,Color(1.10,.91,.99)],
+ "barrier": [12,Color(.91,.94,1.16)],
+ "plasma": [13,Color(1.08,.92,1.13)],
+ "antenna": [14,Color(.83,1.12,1.05)],
+}
+var masterwork_details: Texture2D
 const SUPPORT_BRANCHES = {
  "generator":["regulated","overcharge"],
  "repair":["sustain","conservation"],
@@ -43,7 +64,7 @@ func draw(c,_p,kind: String,level: int,point: Vector2,branch: String="",activity
  level=clampi(level,1,10)
  if STATIC_BRANCHES.has(kind) and load_rebirth_atlas(kind,""):
   var state := rebirth_state(level,branch,STATIC_BRANCHES[kind],6 if kind in ["bed","door"] else 5)
-  draw_rebirth_base(c,kind,state,point,angle,render_scale,tint)
+  draw_rebirth_base(c,kind,state,point,angle,render_scale,tint,level==10)
   return
  if support_rebirth_active(kind):
   draw_rebirth_support(c, kind, level, point, branch, activity, clock, angle, render_scale, tint)
@@ -228,6 +249,21 @@ func draw_atlas_layer(c,kind: String,layer: int,destination: Rect2,column: int,r
   source = Rect2(source.position+trim.position,trim.size)
  c.draw_texture_rect_region(rebirth_atlases[kind][layer],destination,source,tint)
 
+func draw_masterwork_detail(c, kind: String, tint: Color):
+ if not MASTERWORK.has(kind):
+  return
+ if masterwork_details == null:
+  masterwork_details = load(MASTERWORK_DETAILS) as Texture2D
+ if masterwork_details == null:
+  return
+ var index: int = MASTERWORK[kind][0]
+ var atlas_position := Vector2((index % 5) * 48, floori(index / 5.0) * 48)
+ var area := Rect2(-19,-23,38,24)
+ c.draw_texture_rect_region(masterwork_details,area,Rect2(atlas_position+Vector2(5,13),area.size),tint)
+
+func masterwork_tint(kind: String, tint: Color, is_masterwork: bool) -> Color:
+ return tint * MASTERWORK[kind][1] if is_masterwork and MASTERWORK.has(kind) else tint
+
 func draw_rebirth_support(c, kind: String, level: int, point: Vector2, branch: String, activity: float, clock: float, angle: float, render_scale: float, tint: Color):
  var state := rebirth_state(level, branch, SUPPORT_BRANCHES[kind])
  var phase := 0
@@ -236,19 +272,23 @@ func draw_rebirth_support(c, kind: String, level: int, point: Vector2, branch: S
  var cell := 96
  var rect := Rect2(Vector2(-WEAPON_CANVAS_SIZE * 0.5, -WEAPON_CANVAS_SIZE * 0.5 - 0.87 * WEAPON_UNIT), Vector2.ONE * WEAPON_CANVAS_SIZE)
  c.draw_set_transform(point, angle, Vector2.ONE * render_scale)
- draw_atlas_layer(c,kind,0,rect,state%6,floori(state/6.0),cell,tint)
+ draw_atlas_layer(c,kind,0,rect,state%6,floori(state/6.0),cell,masterwork_tint(kind,tint,level==10))
+ if level == 10:
+  draw_masterwork_detail(c,kind,tint)
  draw_atlas_layer(c,kind,1,rect,phase,state,cell,tint)
  c.draw_set_transform(Vector2.ZERO)
 
-func draw_rebirth_base(c,kind: String,state: int,point: Vector2,angle: float,render_scale: float,tint: Color):
+func draw_rebirth_base(c,kind: String,state: int,point: Vector2,angle: float,render_scale: float,tint: Color,is_masterwork: bool = false):
  var rect := Rect2(Vector2(-WEAPON_CANVAS_SIZE * .5,-WEAPON_CANVAS_SIZE * .5-.87*WEAPON_UNIT),Vector2.ONE*WEAPON_CANVAS_SIZE)
  c.draw_set_transform(point,angle,Vector2.ONE*render_scale)
- draw_atlas_layer(c,kind,0,rect,state%6,floori(state/6.0),ARC_CELL,tint)
+ draw_atlas_layer(c,kind,0,rect,state%6,floori(state/6.0),ARC_CELL,masterwork_tint(kind,tint,is_masterwork))
+ if is_masterwork:
+  draw_masterwork_detail(c,kind,tint)
  c.draw_set_transform(Vector2.ZERO)
 
 func draw_rebirth_frost(c, level: int, point: Vector2, branch: String, activity: float, angle: float, render_scale: float, tint: Color):
  var state := rebirth_state(level,branch,WEAPON_BRANCHES["frost"])
- draw_rebirth_base(c,"frost",state,point,angle,render_scale,tint)
+ draw_rebirth_base(c,"frost",state,point,angle,render_scale,tint,level==10)
  if activity > 0.0:
   c.draw_set_transform(point,angle,Vector2.ONE*render_scale)
   draw_elemental_discharge(c,"frost",elemental_muzzle("frost",Vector2.ZERO,Vector2.ZERO),Vector2.UP,clampf(activity/.15,0,1))
@@ -263,7 +303,9 @@ func draw_rebirth_weapon(c, kind: String, level: int, point: Vector2, branch: St
  var cell := NEEDLE_CELL if kind == "turret" else ARC_CELL
  var rect := Rect2(Vector2(-WEAPON_CANVAS_SIZE * 0.5, -WEAPON_CANVAS_SIZE * 0.5 - 0.87 * WEAPON_UNIT), Vector2.ONE * WEAPON_CANVAS_SIZE)
  c.draw_set_transform(point, angle, Vector2.ONE * render_scale)
- draw_atlas_layer(c,kind,0,rect,state%6,floori(state/6.0),cell,tint)
+ draw_atlas_layer(c,kind,0,rect,state%6,floori(state/6.0),cell,masterwork_tint(kind,tint,level==10))
+ if level == 10:
+  draw_masterwork_detail(c,kind,tint)
  draw_atlas_layer(c,kind,1,Rect2(rect.position-recoil,rect.size),heading,state,cell,tint)
  if fire > 0:
   if kind == "heavy":

@@ -235,7 +235,10 @@ func show_settings():
   var slider=HSlider.new();slider.name=key+"_volume";slider.position=Vector2(150,167+i*94);slider.size=Vector2(420,28);slider.step=.01;slider.min_value=0;slider.max_value=1;slider.value=game.profile.settings[key]
   var id=key;slider.value_changed.connect(func(value):game.change_setting(id,value));panel.add_child(slider)
  var quality=OptionButton.new();quality.name="graphics_quality";quality.position=Vector2(640,130);quality.size=Vector2(470,42)
- for text in ["LOW · essential effects","MEDIUM · balanced cinema","HIGH · full atmosphere"]:quality.add_item(text)
+ var standard_label="STANDARD · balanced cinema" if CinematicQuality.rebirth_preview() else "MEDIUM · balanced cinema"
+ for text in ["LOW · essential effects",standard_label,"HIGH · full atmosphere"]:quality.add_item(text)
+ if CinematicQuality.rebirth_preview():
+  quality.tooltip_text="Low reduces ambient effects. Hunter contrast, direction art and combat warnings stay visible."
  quality.select(["low","medium","high"].find(game.profile.settings.get("graphics_quality","medium")))
  quality.item_selected.connect(func(index):game.change_setting("graphics_quality",["low","medium","high"][index]));panel.add_child(quality)
  var options=["reduced_motion","reduced_flashes","reduced_effects","muted","fullscreen","tutorial"]

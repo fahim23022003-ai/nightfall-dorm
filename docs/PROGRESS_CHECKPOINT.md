@@ -1,3 +1,17 @@
+# Phase 14E — Final visual polish preview
+
+The opt-in preview adds local Hunter silhouette lighting, specific finishes
+for all 15 Level 10 placeable machines, desktop room framing and a side
+inspector. Stalker L1/L10, Witch L10 and Storm Wraith L10 have independent
+cardinal sprite art.
+Other single-view evolutions retain their correct art while turning. The
+232 baseline states and 200 reachable specializations remain available.
+See the [Phase 14E report](PHASE_14E_FINAL_VISUAL_POLISH.md) for matched
+Godot captures, animation, performance and remaining direction coverage.
+The regular launch keeps the existing fallback.
+
+---
+
 # Phase 14 — Full projected catalog
 
 The opt-in visual preview now covers all 232 baseline states and all 200
