@@ -43,6 +43,12 @@ func run():
   await process_frame
   check(game.mode=="match" and game.model.story_level==1,"Story launches from the ready state")
   check(game.model.room_rush_active() and game.model.room_rush_runners().size()==5,"Pack initializes five physical runners")
+  if OS.get_environment("NIGHTFALL_PHASE16")=="1":
+   check(game.model.room_rush.planned_pacing,"Phase 16 launcher enables the advisory room-race planner")
+   check(game.model.preparation>=float(StoryCatalog.mission(1).encounter.preparation),"The real Story launch applies the authored opening")
+   for kind: String in ["auto_repair","decoy","economy","enhancer","generator","plasma","repair","shield","shock"]:
+    var idle:=load("res://assets/visual_rebirth/buildings/%s/idle_support.png" % kind) as Texture2D
+    check(idle!=null and idle.get_size()==Vector2(576,384),"Pack contains the resting atlas for "+kind)
   for runner in game.model.room_rush_runners():
    check(runner.position==game.model.player_position,"NPC appears at the shared spawn")
   check(game.model.rooms.all(func(room):return room.owner<0),"No room was preassigned")

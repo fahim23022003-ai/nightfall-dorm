@@ -16,6 +16,7 @@ var door_button: Button
 var pause_button: Button
 var map_button: Button
 var context_open=false
+var phase16_hud := OS.get_environment("NIGHTFALL_PHASE16")=="1"
 var context_mode="build"
 var context_box: Panel
 var context_title: Label
@@ -552,7 +553,7 @@ func show_match():
  horror_layer.size=Vector2(1280,720)
  panel.add_child(horror_layer)
  var draw_target=horror_layer
- horror_layer.draw.connect(func(): game.horror.render_notifications(draw_target);game.presentation.wrath_presentation.overlay(draw_target,game.model))
+ horror_layer.draw.connect(func(): game.horror.render_notifications(draw_target,self);game.presentation.wrath_presentation.overlay(draw_target,game.model))
 
  items_ui.create_hotbar()
  ward_button=null
@@ -629,7 +630,10 @@ func close_context(explicit: bool=false):
  if game.construction!=null:game.construction.refresh()
 
 func refresh_context():
- if not context_open or game.model.player()==null: close_context(); return
+ if not context_open:
+  if not phase16_hud:close_context()
+  return
+ if game.model.player()==null:close_context(); return
  var room=game.model.player()
  var heights={"build":382,"upgrade":300,"bed":250,"door":300,"confirm":272,"specialize":344}
  if not game.mobile_mode and bottom_context==null:
@@ -639,7 +643,11 @@ func refresh_context():
  for group in {"build":build_items,"upgrade":upgrade_items,"bed":bed_items,"door":door_items,"confirm":confirmation_items,"specialize":specialization_items}:
   var list={"build":build_items,"upgrade":upgrade_items,"bed":bed_items,"door":door_items,"confirm":confirmation_items,"specialize":specialization_items}[group]
   for node in list: node.visible=group==context_mode
- if context_mode=="build": context_title.text="BUILD A DEFENSE"
+ if context_mode=="build":
+  context_title.text="BUILD A DEFENSE"
+  if phase16_hud:
+   for action in actions:
+    if action.begins_with("build:"):_refresh_match_action(action,room)
  elif context_mode=="specialize" and (specialization_structure!="" or room.buildings.has(game.selected_tile)):
   var b={"kind":specialization_structure,"level":4,"specialization":""} if specialization_structure!="" else room.buildings[game.selected_tile]
   context_title.text="CHOOSE SPECIALIZATION"
@@ -871,9 +879,12 @@ func update_match():
   hunter_label.text=("REAPER" if m.hunter.transformed else "HUNTER")+" EVO %d · %d/%d" % [m.evolution.evolution_level,roundi(m.hunter.hp),roundi(m.hunter.max_hp)]
   hunter_label.tooltip_text+="\nEvolution %d/10: forms at4/7/10. Combat level %d is separate; no extra HP multiplier. Endless +1 per5 waves. Campaign: stage,75s survival steps,+1 Hell,one step per3 kill buffs. Skills at4; signature at10." % [m.evolution.evolution_level,m.hunter.level]
  if m.wrath.active():warning_label.text="%s · %.1fs · ROOM %d" % [ReaperWrath.ABILITIES[m.wrath.ability].name.to_upper(),m.wrath.warning,m.wrath.cast_target+1]
- var hp_font=hunter_label.get_theme_font("font");var hp_size=18
- while hp_size>12 and hp_font.get_string_size(hunter_label.text,HORIZONTAL_ALIGNMENT_LEFT,-1,hp_size).x>286:hp_size-=1
- hunter_label.add_theme_font_size_override("font_size",hp_size)
+ if not phase16_hud or hunter_label.get_meta("fit_text","")!=hunter_label.text:
+  var hp_font:=hunter_label.get_theme_font("font")
+  var hp_size:=18
+  while hp_size>12 and hp_font.get_string_size(hunter_label.text,HORIZONTAL_ALIGNMENT_LEFT,-1,hp_size).x>286:hp_size-=1
+  hunter_label.add_theme_font_size_override("font_size",hp_size)
+  if phase16_hud:hunter_label.set_meta("fit_text",hunter_label.text)
  hunter_label.tooltip_text=hunter_label.text+"\n"+hunter_label.tooltip_text
  if warning_label.visible and m.hunter.recovery_remaining<=0 and (threat or m.hunter.nightmare.action!=""):
   hunter_detail.tooltip_text+="\n"+hunter_detail.text
@@ -914,28 +925,8 @@ func update_match():
  quick_repair.text="Repair %.1f G [R]" % (room.manual_repair_cost() if room!=null else Catalog.REPAIR_COST)
  quick_repair.disabled=action_reason("repair")!=""
  for action in actions:
-  var b=actions[action]
-  var reason=action_reason(action)
-  b.disabled=reason!=""
-  if card_visuals.has(action):
-   var dim := (0.83 if use_living_ui() else 0.55) if b.disabled else 1.0
-   for node in card_visuals[action]: node.modulate.a=dim
-   if use_living_ui():
-    var kind := str(action).trim_prefix("build:")
-    var focused: bool = game.pending_build==kind or game.construction!=null and game.construction.kind==kind
-    theme_button(b,"selected" if focused else "card")
-   if room!=null:
-    var quote=room.quote_build(action.trim_prefix("build:"))
-    if use_living_ui():
-     var cost: String=_price_amount(quote.x)+" G"
-     if quote.y>0.0:
-      cost+=" · "+_price_amount(quote.y)+" E"
-     card_visuals[action][2].text=cost
-    else:
-     card_visuals[action][2].text="%.1fG / %.1fE" % [quote.x,quote.y]
-  if game.mobile_mode and action.begins_with("build:"): b.disabled=false
-  b.tooltip_text=(building_effect(action.trim_prefix("build:"))+"\n" if action.begins_with("build:") else "")+(reason if reason!="" else "Ready")
-  if room!=null and action.begins_with("build:"):b.tooltip_text+="\n"+BuildingStats.afford_hint(m,room,room.quote_build(action.trim_prefix("build:")))
+  if not phase16_hud or not action.begins_with("build:"):
+   _refresh_match_action(action,room)
  refresh_context()
  if game.mobile_mode: game.mobile_ui.update_match(self)
  if bottom_context!=null:bottom_context.refresh()
@@ -962,6 +953,31 @@ func update_match():
  RunChoiceInterface.refresh(self)
  if not game.mobile_mode:teammates.update()
  if haunted_hud!=null:haunted_hud.update()
+
+func _refresh_match_action(action: String, room: RoomState):
+ var button: Button=actions[action]
+ var reason:=action_reason(action)
+ button.disabled=reason!=""
+ if not action.begins_with("build:"):
+  button.tooltip_text=reason if reason!="" else "Ready"
+  return
+ var kind:=action.trim_prefix("build:")
+ var hint:=building_effect(kind)+"\n"+(reason if reason!="" else "Ready")
+ var quote:=room.quote_build(kind) if room!=null else Vector2.ZERO
+ if card_visuals.has(action):
+  var themed:=use_living_ui()
+  var dim: float=(0.83 if themed else 0.55) if button.disabled else 1.0
+  for node in card_visuals[action]:node.modulate.a=dim
+  if themed:
+   var focused: bool=game.pending_build==kind or game.construction!=null and game.construction.kind==kind
+   theme_button(button,"selected" if focused else "card")
+  if room!=null:
+   var cost: String=_price_amount(quote.x)+" G" if themed else "%.1fG / %.1fE" % [quote.x,quote.y]
+   if themed and quote.y>0.0:cost+=" · "+_price_amount(quote.y)+" E"
+   card_visuals[action][2].text=cost
+ if game.mobile_mode:button.disabled=false
+ if room!=null:hint+="\n"+BuildingStats.afford_hint(game.model,room,quote)
+ button.tooltip_text=hint
 
 func show_result():
  if game.model.story_level>0:

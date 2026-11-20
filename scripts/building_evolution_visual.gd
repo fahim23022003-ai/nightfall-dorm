@@ -54,7 +54,9 @@ const WEAPON_BRANCHES = {
  "frost":["deep_chill","rime_field"],
 }
 var rebirth_enabled := OS.get_environment("NIGHTFALL_VISUAL_REBIRTH") == "1"
+var phase16_enabled := OS.get_environment("NIGHTFALL_PHASE16") == "1"
 var rebirth_atlases: Dictionary = {}
+var idle_support_atlases: Dictionary[String,Texture2D] = {}
 const KINDS=["turret","heavy","generator","repair","economy","enhancer","flame","frost","shock","auto_repair","shield","decoy","barrier","plasma","antenna","bed","door"]
 func _init():
  for kind in KINDS:
@@ -266,6 +268,9 @@ func masterwork_tint(kind: String, tint: Color, is_masterwork: bool) -> Color:
 
 func draw_rebirth_support(c, kind: String, level: int, point: Vector2, branch: String, activity: float, clock: float, angle: float, render_scale: float, tint: Color):
  var state := rebirth_state(level, branch, SUPPORT_BRANCHES[kind])
+ if phase16_enabled and level<10 and activity<=0.0 and tint==Color.WHITE and CinematicQuality.detail(c)==0:
+  if draw_idle_support(c,kind,state,point,angle,render_scale):
+   return
  var phase := 0
  if activity > 0.0 and not CinematicQuality.reduced_motion(c):
   phase = clampi(ceili(activity / .15 * 7.0),1,7) if kind == "shock" else posmod(floori(clock * SUPPORT_CLOCK_RATES[kind]), 8)
@@ -277,6 +282,23 @@ func draw_rebirth_support(c, kind: String, level: int, point: Vector2, branch: S
   draw_masterwork_detail(c,kind,tint)
  draw_atlas_layer(c,kind,1,rect,phase,state,cell,tint)
  c.draw_set_transform(Vector2.ZERO)
+
+func draw_idle_support(c,kind: String,state: int,point: Vector2,angle: float,render_scale: float) -> bool:
+ if not idle_support_atlases.has(kind):
+  var path:=WEAPON_ART_DIR+kind+"/idle_support.png"
+  idle_support_atlases[kind]=load(path) as Texture2D if ResourceLoader.exists(path,"Texture2D") else null
+ var texture:=idle_support_atlases[kind]
+ if texture==null:
+  return false
+ var trim: Rect2=ATLAS_BOUNDS.LAYERS[kind][0].merge(ATLAS_BOUNDS.LAYERS[kind][1])
+ var cell_scale:=WEAPON_CANVAS_SIZE/ARC_CELL
+ var origin:=Vector2(-WEAPON_CANVAS_SIZE*.5,-WEAPON_CANVAS_SIZE*.5-.87*WEAPON_UNIT)
+ var source:=Rect2(Vector2(state%6,floori(state/6.0))*ARC_CELL+trim.position,trim.size)
+ var destination:=Rect2(origin+trim.position*cell_scale,trim.size*cell_scale)
+ c.draw_set_transform(point,angle,Vector2.ONE*render_scale)
+ c.draw_texture_rect_region(texture,destination,source)
+ c.draw_set_transform(Vector2.ZERO)
+ return true
 
 func draw_rebirth_base(c,kind: String,state: int,point: Vector2,angle: float,render_scale: float,tint: Color,is_masterwork: bool = false):
  var rect := Rect2(Vector2(-WEAPON_CANVAS_SIZE * .5,-WEAPON_CANVAS_SIZE * .5-.87*WEAPON_UNIT),Vector2.ONE*WEAPON_CANVAS_SIZE)

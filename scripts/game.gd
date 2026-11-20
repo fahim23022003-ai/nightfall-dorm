@@ -338,6 +338,8 @@ func start_match(difficulty: String="",story_level: int=0) -> bool:
   model.story_level=story_level
   model.preparation=maxf(model.preparation,float(mission.get("preparation",0.0)))
  model.configure_strategy(seed_value if story_level>0 else int(profile.statistics.matches),entry.archetype,entry.contract,match_id)
+ if story_level>0:
+  StoryCatalog.apply_encounter(model)
  profile.apply_stage_bonus(model,entry)
  if survivor_preview_enabled and not model.begin_room_rush(match_id):
   ui.campaign.story_ui.notice="This layout could not provide a shared route to all rooms."

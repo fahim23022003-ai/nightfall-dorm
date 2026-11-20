@@ -154,8 +154,8 @@ static func afford_hint(model,room,price: Vector2) -> String:
  if not model.running or model.run_kind=="endless" and model.endless.phase=="intermission":return "Production is frozen now; prepare with existing funds."
  if room.production_paused:return "Production temporarily locked; wait for the curse to clear."
  var g=maxf(0,price.x-room.gold);var e=maxf(0,price.y-room.electricity)
- var gold=room.income_rate();var power=room_power_rate(model,room)
  if g==0 and e==0:return "Affordable now. Spending here delays other infrastructure."
+ var gold=room.income_rate();var power=room_power_rate(model,room)
  if g>0 and gold<=0 or e>0 and power<=0:return "Missing active production. Beds earn Gold; Dynamos earn Electricity."
  var seconds=maxf(g/maxf(.001,gold),e/maxf(.001,power))
  return "Earliest ~%.0fs at current gross rates, ignoring upkeep/spending. Temporary boosts may expire; this is not a guarantee." % ceil(seconds)
