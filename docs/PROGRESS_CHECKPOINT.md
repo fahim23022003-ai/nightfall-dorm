@@ -1,3 +1,14 @@
+# Procedural Nightmare Maps V2 preview
+
+A separate opt-in generator draws ten different room and corridor families
+across the five existing themes. V2 keeps exact geometry in saves and leaves
+fixed and V1 layouts available. New matches can pick a fresh seed while
+explicit seeds still reproduce the same family and map.
+
+[Preview controls and verification](PROCEDURAL_NIGHTMARE_MAPS_V2.md)
+
+---
+
 # Procedural Nightmare Maps preview
 
 New opt-in Campaign and Endless matches can generate six irregular rooms
