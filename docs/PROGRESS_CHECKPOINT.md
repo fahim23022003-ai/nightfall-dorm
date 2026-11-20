@@ -1,3 +1,20 @@
+# Phase 14F — Hunter animation and direction catalog
+
+The opt-in preview now has independent cardinal art for all 60 ordinary
+Hunter states and both Reaper forms, alongside the preserved original
+projections. Six chaptered Godot films cover motion, turns and combat at
+L1/L4/L7/L10, with separate Reaper and Stalker transformation evidence.
+The 17 building and core families retain all 170 baseline and 200
+specialization states. Machine activity follows the real support effects.
+See the [Phase 14F report](PHASE_14F_HUNTER_ANIMATION.md) for checks, footage
+and the matched turning benchmark. Artistic review and native Windows
+measurements remain open.
+
+The [owner-approved roadmap](MASTER_ROADMAP.md) records full-room grid
+building after visual and animation approval.
+
+---
+
 # Phase 14E — Final visual polish preview
 
 The opt-in preview adds local Hunter silhouette lighting, specific finishes

@@ -1,6 +1,12 @@
 extends RefCounted
 # Original layered vector animation; purely visual, bounded deterministic particles.
 const OFFSET=Vector2(145,40)
+const SCYTHE_GRIPS={
+ "oblique": Vector2(166,126),
+ "front": Vector2(164,128),
+ "left": Vector2(104,127),
+ "right": Vector2(132,129)
+}
 var robes=[]
 var weapon=preload("res://assets/boss/scythe.svg")
 var preview_enabled := OS.get_environment("NIGHTFALL_VISUAL_REBIRTH") == "1"
@@ -10,6 +16,9 @@ var cloak_geometry = preload("res://scripts/phantom_witch_visual.gd").new()
 var preview_projection := 1.0
 var preview_texture_path := ""
 var preview_pose_name := ""
+var preview_grip := Vector2.ZERO
+var preview_grip_side := 1.0
+var preview_has_grip := false
 func _init():
  for i in range(4): robes.append(load("res://assets/boss/reaper_%d.svg" % i))
 
@@ -29,16 +38,26 @@ func draw_preview_body(c, form: String, floor: Vector2, tint: Color, motion: Str
  if texture == null:
   texture = preview_texture(form)
   projection = preview_projection
+  view = "oblique"
  if texture == null:return false
  preview_texture_path = texture.resource_path
  preview_pose_name = motion
  CinematicQuality.draw_hunter_backlight(c,floor,Color("a97499"),tint.a,true)
  if tint.r<=1.0:tint*=Color(1.15,1.15,1.2,1)
  var frame := 0 if reduced and motion in ["hover","glide","turn"] else roundi(clampf(progress,0.0,1.0)*16.0)
+ var sample := float(frame)/16.0
  var key := Vector2i(["hover","glide","turn","tell","release","hit","recover","evolve","vanish"].find(motion),frame)
  if not preview_poses.has(key):
-  preview_poses[key] = cloak_geometry.build_pose(motion,float(frame)/16.0,1,224.0)
- c.draw_mesh(preview_poses[key],texture,Transform2D(0.0,Vector2(projection,1.0),0.0,floor),tint)
+  preview_poses[key] = cloak_geometry.build_pose(motion,sample,1,224.0)
+ var pose_transform := Transform2D(0.0,Vector2(projection,1.0),0.0,floor)
+ c.draw_mesh(preview_poses[key],texture,pose_transform,tint)
+ # The rear illustration shows the occluding mantle, without a visible hand.
+ preview_has_grip = form == "transformed" and SCYTHE_GRIPS.has(view)
+ if preview_has_grip:
+  var grip: Vector2 = SCYTHE_GRIPS[view]
+  var offset: Vector2 = cloak_geometry.deformation(grip/Vector2(224,264),motion,sample)
+  preview_grip = pose_transform * ((grip-Vector2(112,260))*(104.0/256.0)+offset)
+  preview_grip_side = -1.0 if view == "left" else projection
  return true
 
 func draw_approach(c,h,clock: float,death_age: float,heading: Vector2, moving: bool, turn: float, release: float) -> bool:
@@ -126,7 +145,7 @@ func draw(c,h,clock: float,death_age: float,heading=Vector2.RIGHT,reduced=false,
  var drawn := draw_preview_body(c,"transformed",p+Vector2(0,34)+fall,tint,preview_motion,preview_progress,reduced or (preview_enabled and CinematicQuality.reduced_motion(c)),heading)
  if not drawn:
   c.draw_texture_rect(robes[int(clock*6)%4],Rect2(p+Vector2(-42,-76)+fall,Vector2(84,110*stretch)),false,tint)
- var handed=preview_projection if drawn else -1.0 if heading.x<-.15 else 1.0
+ var handed=preview_grip_side if drawn and preview_has_grip else -1.0 if heading.x<-.15 else 1.0
  var angle=(-.18+sin(clock*2)*.05)*handed
  if h.boss_attack!="":
   var data=BossCatalog.ATTACKS[h.boss_attack]
@@ -144,9 +163,10 @@ func draw(c,h,clock: float,death_age: float,heading=Vector2.RIGHT,reduced=false,
  elif drawn and c.model.wrath.ability=="scythe_slash":
   var charge:=1.0-float(c.model.wrath.warning)/float(ReaperWrath.ABILITIES.scythe_slash.warning)
   angle=(-.28-1.13*charge)*handed
- if not drawn or c.model.wrath.scythe.is_empty():
-  c.draw_set_transform(p+Vector2(23*handed,-23)+fall,angle,Vector2(handed,1))
-  c.draw_texture_rect(weapon,Rect2(-20,-61,62,105),false,tint)
+ if not drawn or (preview_has_grip and c.model.wrath.scythe.is_empty()):
+  var grip=preview_grip if drawn else p+Vector2(23*handed,-23)+fall
+  c.draw_set_transform(grip,angle,Vector2(handed,1))
+  c.draw_texture_rect(weapon,Rect2(-19,-67,62,105) if drawn else Rect2(-20,-61,62,105),false,tint)
   c.draw_set_transform(Vector2.ZERO)
  # Eyes pulse separately from cloth motion.
  if not drawn:

@@ -1,0 +1,25 @@
+{
+  "audio_cues": {
+    "scythe_embed": 93,
+    "scythe_throw": 73,
+    "wrath_activate_crimson_execution": 73,
+    "wrath_warning_crimson_execution": 0
+  },
+  "events": {
+    "boss_ability_activate": 73,
+    "boss_ability_warning": 0,
+    "scythe_embed": 93,
+    "scythe_throw": 73
+  },
+  "fixture": "Seeded Endless room, existing boss deadline, then set transformed HP to 9% to exercise the real low-health trigger. Advance the Hunter and Wrath ticks at 24 Hz.",
+  "fps": 24,
+  "frame_count": 113,
+  "poses": {
+    "release": 73,
+    "tell": 0
+  },
+  "viewport": [
+    1280,
+    720
+  ]
+}

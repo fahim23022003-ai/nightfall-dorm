@@ -14,11 +14,67 @@ const LANDMARKS = {
  9: [Vector2(117, 208), Vector2(313, 111), Vector2(193, 31), Vector2(221, 80)],
  10: [Vector2(152, 164), Vector2(314, 151), Vector2(224, 29), Vector2(234, 62)],
 }
-const APEX_LANDMARKS = {
- "front": [Vector2(156, 150), Vector2(297, 141), Vector2(221, 31), Vector2(238, 65)],
- "left": [Vector2(201, 153), Vector2(223, 126), Vector2(204, 27), Vector2(219, 68)],
- "back": [Vector2(122, 141), Vector2(288, 141), Vector2(215, 32), Vector2(223, 68)],
- "right": [Vector2(232, 150), Vector2(184, 128), Vector2(228, 29), Vector2(212, 63)],
+const CARDINAL_VIEWS = {
+ 1: {
+  "front": [Vector2(109, 145), Vector2(235, 141), Vector2(172, 30), Vector2(174, 77)],
+  "right": [Vector2(162, 144), Vector2(153, 124), Vector2(177, 34), Vector2(163, 76)],
+  "back": [Vector2(222, 144), Vector2(96, 143), Vector2(163, 37), Vector2(164, 74)],
+  "left": [Vector2(148, 151), Vector2(153, 128), Vector2(145, 28), Vector2(158, 74)],
+ },
+ 2: {
+  "front": [Vector2(140, 153), Vector2(210, 107), Vector2(213, 29), Vector2(222, 73)],
+  "right": [Vector2(228, 143), Vector2(233, 97), Vector2(226, 28), Vector2(211, 79)],
+  "back": [Vector2(298, 144), Vector2(174, 109), Vector2(220, 36), Vector2(212, 80)],
+  "left": [Vector2(187, 101), Vector2(150, 148), Vector2(197, 29), Vector2(217, 69)],
+ },
+ 3: {
+  "front": [Vector2(129, 157), Vector2(272, 158), Vector2(207, 33), Vector2(219, 78)],
+  "right": [Vector2(292, 161), Vector2(151, 143), Vector2(268, 27), Vector2(236, 79)],
+  "back": [Vector2(312, 161), Vector2(145, 128), Vector2(226, 38), Vector2(210, 86)],
+  "left": [Vector2(222, 155), Vector2(140, 159), Vector2(172, 31), Vector2(194, 78)],
+ },
+ 4: {
+  "front": [Vector2(138, 69), Vector2(300, 70), Vector2(216, 31), Vector2(219, 75)],
+  "right": [Vector2(271, 69), Vector2(177, 86), Vector2(215, 34), Vector2(206, 74)],
+  "back": [Vector2(295, 69), Vector2(136, 71), Vector2(211, 36), Vector2(213, 77)],
+  "left": [Vector2(175, 72), Vector2(262, 87), Vector2(223, 34), Vector2(222, 74)],
+ },
+ 5: {
+  "front": [Vector2(196, 149), Vector2(320, 26), Vector2(212, 30), Vector2(220, 79)],
+  "right": [Vector2(228, 148), Vector2(303, 35), Vector2(218, 25), Vector2(216, 76)],
+  "back": [Vector2(252, 146), Vector2(101, 28), Vector2(218, 41), Vector2(220, 81)],
+  "left": [Vector2(192, 144), Vector2(128, 45), Vector2(196, 28), Vector2(209, 74)],
+ },
+ 6: {
+  "front": [Vector2(145, 190), Vector2(307, 144), Vector2(208, 37), Vector2(220, 83)],
+  "right": [Vector2(289, 181), Vector2(150, 136), Vector2(276, 32), Vector2(245, 80)],
+  "back": [Vector2(321, 173), Vector2(146, 153), Vector2(244, 35), Vector2(220, 82)],
+  "left": [Vector2(252, 161), Vector2(140, 188), Vector2(170, 33), Vector2(197, 89)],
+ },
+ 7: {
+  "front": [Vector2(161, 140), Vector2(270, 146), Vector2(221, 34), Vector2(222, 74)],
+  "right": [Vector2(223, 137), Vector2(207, 118), Vector2(203, 33), Vector2(183, 76)],
+  "back": [Vector2(286, 129), Vector2(144, 128), Vector2(218, 37), Vector2(218, 73)],
+  "left": [Vector2(253, 151), Vector2(211, 137), Vector2(244, 33), Vector2(247, 78)],
+ },
+ 8: {
+  "front": [Vector2(135, 185), Vector2(328, 114), Vector2(206, 33), Vector2(203, 91)],
+  "right": [Vector2(282, 179), Vector2(298, 104), Vector2(268, 32), Vector2(238, 85)],
+  "back": [Vector2(331, 163), Vector2(115, 120), Vector2(252, 29), Vector2(236, 83)],
+  "left": [Vector2(277, 114), Vector2(120, 185), Vector2(148, 34), Vector2(190, 81)],
+ },
+ 9: {
+  "front": [Vector2(130, 190), Vector2(309, 107), Vector2(203, 30), Vector2(217, 80)],
+  "right": [Vector2(222, 181), Vector2(289, 102), Vector2(245, 30), Vector2(220, 72)],
+  "back": [Vector2(332, 178), Vector2(159, 106), Vector2(235, 31), Vector2(242, 88)],
+  "left": [Vector2(282, 119), Vector2(145, 164), Vector2(186, 30), Vector2(209, 79)],
+ },
+ 10: {
+  "front": [Vector2(156, 150), Vector2(297, 141), Vector2(221, 31), Vector2(238, 65)],
+  "left": [Vector2(201, 153), Vector2(223, 126), Vector2(204, 27), Vector2(219, 68)],
+  "back": [Vector2(122, 141), Vector2(288, 141), Vector2(215, 32), Vector2(223, 68)],
+  "right": [Vector2(232, 150), Vector2(184, 128), Vector2(228, 29), Vector2(212, 63)],
+ },
 }
 
 func supports(level: int, heading: Vector2) -> bool:
@@ -28,10 +84,10 @@ func _texture_path(level: int) -> String:
  return STORM_TEXTURE % level
 
 func _cardinal_landmarks(level: int) -> Dictionary:
- return APEX_LANDMARKS if level == 10 else {}
+ return CARDINAL_VIEWS.get(level, {})
 
 func _evolved_layout() -> Array:
- return APEX_LANDMARKS[active_view] if active_view != "" else LANDMARKS[active_level]
+ return _cardinal_landmarks(active_level)[active_view] if active_view != "" else LANDMARKS[active_level]
 
 func _display_scale() -> Vector2:
  return EVOLVED_SCALE
@@ -72,7 +128,8 @@ func _pose_vertices(state: String, progress: float) -> PackedVector2Array:
 func _storm_offset(uv: Vector2, state: String, progress: float, phase: float, arms: float, head: float, hair: float, coat: float) -> Vector2:
  match state:
   "stalk":
-   return Vector2(3.7 * coat * sin(phase - 1.1) + 2.8 * hair * sin(phase - .65) - arms * sin(phase), -1.1 * head * cos(phase))
+   var gust := sin(phase - .9 - uv.y * 1.75)
+   return Vector2(4.1 * coat * gust + 2.9 * hair * sin(phase - .55 - uv.x) - arms * sin(phase), -1.2 * head * cos(phase) - 1.3 * coat * sin(phase-1.8))
   "turn":
    return Vector2(2.0 * head - 3.6 * coat + 3.1 * hair, -.85 * head) * progress
   "tell":

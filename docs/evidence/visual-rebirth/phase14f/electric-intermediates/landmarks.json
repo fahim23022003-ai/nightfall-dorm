@@ -1,0 +1,752 @@
+{
+  "2": {
+    "source": "electric-l02-source.png",
+    "size": [
+      328,
+      264
+    ],
+    "pivot": [
+      164,
+      260
+    ],
+    "views": {
+      "front": {
+        "texture": "level_02_front.png",
+        "socket_pixels": {
+          "near": [
+            115,
+            180
+          ],
+          "far": [
+            174,
+            117
+          ],
+          "face": [
+            159,
+            38
+          ],
+          "chest": [
+            164,
+            76
+          ]
+        },
+        "alpha_bbox": [
+          106,
+          4,
+          221,
+          260
+        ],
+        "foot_anchor_x_in_source": 321
+      },
+      "left": {
+        "texture": "level_02_left.png",
+        "socket_pixels": {
+          "near": [
+            110,
+            175
+          ],
+          "far": [
+            128,
+            118
+          ],
+          "face": [
+            112,
+            39
+          ],
+          "chest": [
+            155,
+            78
+          ]
+        },
+        "alpha_bbox": [
+          102,
+          4,
+          230,
+          260
+        ],
+        "foot_anchor_x_in_source": 909
+      },
+      "back": {
+        "texture": "level_02_back.png",
+        "socket_pixels": {
+          "near": [
+            215,
+            165
+          ],
+          "far": [
+            119,
+            98
+          ],
+          "face": [
+            171,
+            27
+          ],
+          "chest": [
+            160,
+            67
+          ]
+        },
+        "alpha_bbox": [
+          109,
+          4,
+          222,
+          260
+        ],
+        "foot_anchor_x_in_source": 318
+      },
+      "right": {
+        "texture": "level_02_right.png",
+        "socket_pixels": {
+          "near": [
+            211,
+            172
+          ],
+          "far": [
+            207,
+            117
+          ],
+          "face": [
+            213,
+            37
+          ],
+          "chest": [
+            187,
+            66
+          ]
+        },
+        "alpha_bbox": [
+          95,
+          4,
+          221,
+          260
+        ],
+        "foot_anchor_x_in_source": 905
+      }
+    }
+  },
+  "3": {
+    "source": "electric-l03-source.png",
+    "size": [
+      328,
+      264
+    ],
+    "pivot": [
+      164,
+      260
+    ],
+    "views": {
+      "front": {
+        "texture": "level_03_front.png",
+        "socket_pixels": {
+          "near": [
+            75,
+            165
+          ],
+          "far": [
+            219,
+            115
+          ],
+          "face": [
+            168,
+            37
+          ],
+          "chest": [
+            170,
+            77
+          ]
+        },
+        "alpha_bbox": [
+          68,
+          4,
+          255,
+          260
+        ],
+        "foot_anchor_x_in_source": 337
+      },
+      "left": {
+        "texture": "level_03_left.png",
+        "socket_pixels": {
+          "near": [
+            56,
+            162
+          ],
+          "far": [
+            137,
+            119
+          ],
+          "face": [
+            121,
+            35
+          ],
+          "chest": [
+            148,
+            74
+          ]
+        },
+        "alpha_bbox": [
+          49,
+          4,
+          264,
+          260
+        ],
+        "foot_anchor_x_in_source": 958
+      },
+      "back": {
+        "texture": "level_03_back.png",
+        "socket_pixels": {
+          "near": [
+            252,
+            151
+          ],
+          "far": [
+            115,
+            110
+          ],
+          "face": [
+            172,
+            24
+          ],
+          "chest": [
+            164,
+            70
+          ]
+        },
+        "alpha_bbox": [
+          79,
+          4,
+          260,
+          260
+        ],
+        "foot_anchor_x_in_source": 337
+      },
+      "right": {
+        "texture": "level_03_right.png",
+        "socket_pixels": {
+          "near": [
+            226,
+            166
+          ],
+          "far": [
+            215,
+            109
+          ],
+          "face": [
+            210,
+            36
+          ],
+          "chest": [
+            183,
+            76
+          ]
+        },
+        "alpha_bbox": [
+          70,
+          4,
+          242,
+          260
+        ],
+        "foot_anchor_x_in_source": 933
+      }
+    }
+  },
+  "5": {
+    "source": "electric-l05-source.png",
+    "size": [
+      328,
+      264
+    ],
+    "pivot": [
+      164,
+      260
+    ],
+    "views": {
+      "front": {
+        "texture": "level_05_front.png",
+        "socket_pixels": {
+          "near": [
+            102,
+            180
+          ],
+          "far": [
+            263,
+            56
+          ],
+          "face": [
+            162,
+            38
+          ],
+          "chest": [
+            164,
+            78
+          ]
+        },
+        "alpha_bbox": [
+          80,
+          4,
+          274,
+          260
+        ],
+        "foot_anchor_x_in_source": 319
+      },
+      "left": {
+        "texture": "level_05_left.png",
+        "socket_pixels": {
+          "near": [
+            83,
+            180
+          ],
+          "far": [
+            225,
+            65
+          ],
+          "face": [
+            114,
+            32
+          ],
+          "chest": [
+            146,
+            77
+          ]
+        },
+        "alpha_bbox": [
+          75,
+          4,
+          269,
+          260
+        ],
+        "foot_anchor_x_in_source": 930
+      },
+      "back": {
+        "texture": "level_05_back.png",
+        "socket_pixels": {
+          "near": [
+            233,
+            175
+          ],
+          "far": [
+            64,
+            53
+          ],
+          "face": [
+            177,
+            28
+          ],
+          "chest": [
+            164,
+            66
+          ]
+        },
+        "alpha_bbox": [
+          58,
+          4,
+          251,
+          260
+        ],
+        "foot_anchor_x_in_source": 333
+      },
+      "right": {
+        "texture": "level_05_right.png",
+        "socket_pixels": {
+          "near": [
+            186,
+            181
+          ],
+          "far": [
+            256,
+            61
+          ],
+          "face": [
+            202,
+            32
+          ],
+          "chest": [
+            183,
+            71
+          ]
+        },
+        "alpha_bbox": [
+          51,
+          4,
+          265,
+          260
+        ],
+        "foot_anchor_x_in_source": 964
+      }
+    }
+  },
+  "6": {
+    "source": "electric-l06-source.png",
+    "size": [
+      328,
+      264
+    ],
+    "pivot": [
+      164,
+      260
+    ],
+    "views": {
+      "front": {
+        "texture": "level_06_front.png",
+        "socket_pixels": {
+          "near": [
+            92,
+            186
+          ],
+          "far": [
+            214,
+            161
+          ],
+          "face": [
+            169,
+            36
+          ],
+          "chest": [
+            168,
+            77
+          ]
+        },
+        "alpha_bbox": [
+          85,
+          4,
+          225,
+          260
+        ],
+        "foot_anchor_x_in_source": 341
+      },
+      "left": {
+        "texture": "level_06_left.png",
+        "socket_pixels": {
+          "near": [
+            167,
+            174
+          ],
+          "far": [
+            163,
+            164
+          ],
+          "face": [
+            139,
+            37
+          ],
+          "chest": [
+            163,
+            76
+          ]
+        },
+        "alpha_bbox": [
+          126,
+          4,
+          212,
+          260
+        ],
+        "foot_anchor_x_in_source": 915
+      },
+      "back": {
+        "texture": "level_06_back.png",
+        "socket_pixels": {
+          "near": [
+            231,
+            181
+          ],
+          "far": [
+            105,
+            170
+          ],
+          "face": [
+            169,
+            29
+          ],
+          "chest": [
+            163,
+            72
+          ]
+        },
+        "alpha_bbox": [
+          102,
+          4,
+          240,
+          260
+        ],
+        "foot_anchor_x_in_source": 336
+      },
+      "right": {
+        "texture": "level_06_right.png",
+        "socket_pixels": {
+          "near": [
+            132,
+            186
+          ],
+          "far": [
+            144,
+            169
+          ],
+          "face": [
+            182,
+            35
+          ],
+          "chest": [
+            157,
+            72
+          ]
+        },
+        "alpha_bbox": [
+          107,
+          4,
+          192,
+          260
+        ],
+        "foot_anchor_x_in_source": 941
+      }
+    }
+  },
+  "8": {
+    "source": "electric-l08-source.png",
+    "size": [
+      432,
+      264
+    ],
+    "pivot": [
+      216,
+      260
+    ],
+    "views": {
+      "front": {
+        "texture": "level_08_front.png",
+        "socket_pixels": {
+          "near": [
+            155,
+            175
+          ],
+          "far": [
+            340,
+            122
+          ],
+          "face": [
+            222,
+            40
+          ],
+          "chest": [
+            221,
+            81
+          ]
+        },
+        "alpha_bbox": [
+          151,
+          4,
+          401,
+          260
+        ],
+        "foot_anchor_x_in_source": 228
+      },
+      "left": {
+        "texture": "level_08_left.png",
+        "socket_pixels": {
+          "near": [
+            257,
+            125
+          ],
+          "far": [
+            171,
+            160
+          ],
+          "face": [
+            177,
+            39
+          ],
+          "chest": [
+            209,
+            78
+          ]
+        },
+        "alpha_bbox": [
+          168,
+          4,
+          380,
+          260
+        ],
+        "foot_anchor_x_in_source": 854
+      },
+      "back": {
+        "texture": "level_08_back.png",
+        "socket_pixels": {
+          "near": [
+            281,
+            169
+          ],
+          "far": [
+            99,
+            117
+          ],
+          "face": [
+            234,
+            30
+          ],
+          "chest": [
+            223,
+            69
+          ]
+        },
+        "alpha_bbox": [
+          40,
+          4,
+          288,
+          260
+        ],
+        "foot_anchor_x_in_source": 416
+      },
+      "right": {
+        "texture": "level_08_right.png",
+        "socket_pixels": {
+          "near": [
+            219,
+            174
+          ],
+          "far": [
+            314,
+            118
+          ],
+          "face": [
+            262,
+            37
+          ],
+          "chest": [
+            235,
+            78
+          ]
+        },
+        "alpha_bbox": [
+          70,
+          4,
+          325,
+          260
+        ],
+        "foot_anchor_x_in_source": 972
+      }
+    }
+  },
+  "9": {
+    "source": "electric-l09-source.png",
+    "size": [
+      328,
+      264
+    ],
+    "pivot": [
+      164,
+      260
+    ],
+    "views": {
+      "front": {
+        "texture": "level_09_front.png",
+        "socket_pixels": {
+          "near": [
+            90,
+            166
+          ],
+          "far": [
+            243,
+            163
+          ],
+          "face": [
+            172,
+            32
+          ],
+          "chest": [
+            170,
+            74
+          ]
+        },
+        "alpha_bbox": [
+          88,
+          4,
+          247,
+          260
+        ],
+        "foot_anchor_x_in_source": 320
+      },
+      "left": {
+        "texture": "level_09_left.png",
+        "socket_pixels": {
+          "near": [
+            147,
+            158
+          ],
+          "far": [
+            124,
+            162
+          ],
+          "face": [
+            140,
+            35
+          ],
+          "chest": [
+            160,
+            78
+          ]
+        },
+        "alpha_bbox": [
+          122,
+          4,
+          216,
+          260
+        ],
+        "foot_anchor_x_in_source": 928
+      },
+      "back": {
+        "texture": "level_09_back.png",
+        "socket_pixels": {
+          "near": [
+            240,
+            163
+          ],
+          "far": [
+            96,
+            163
+          ],
+          "face": [
+            178,
+            28
+          ],
+          "chest": [
+            166,
+            69
+          ]
+        },
+        "alpha_bbox": [
+          92,
+          4,
+          246,
+          260
+        ],
+        "foot_anchor_x_in_source": 319
+      },
+      "right": {
+        "texture": "level_09_right.png",
+        "socket_pixels": {
+          "near": [
+            195,
+            157
+          ],
+          "far": [
+            187,
+            150
+          ],
+          "face": [
+            185,
+            36
+          ],
+          "chest": [
+            165,
+            75
+          ]
+        },
+        "alpha_bbox": [
+          120,
+          4,
+          199,
+          260
+        ],
+        "foot_anchor_x_in_source": 930
+      }
+    }
+  }
+}

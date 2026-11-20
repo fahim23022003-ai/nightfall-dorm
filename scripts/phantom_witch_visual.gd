@@ -10,6 +10,7 @@ const FOOT = 260.0
 const GRID = Vector2i(12, 16)
 const FRAME_COUNT = 16
 const FACING_DEADBAND = .18
+static var pose_grid: Array
 
 var enabled := OS.get_environment("NIGHTFALL_VISUAL_REBIRTH") == "1"
 var textures: Dictionary = {}
@@ -57,29 +58,40 @@ func draw(canvas: CanvasItem, floor: Vector2, tint: Color, level: int, heading: 
  return true
 
 func build_pose(state: String, progress: float, gesture_side: int, width: float = BASE_WIDTH) -> ArrayMesh:
+ if pose_grid.is_empty():
+  pose_grid = _build_pose_grid()
+ var uvs: PackedVector2Array = pose_grid[Mesh.ARRAY_TEX_UV]
  var vertices := PackedVector2Array()
+ vertices.resize(uvs.size())
+ var size := Vector2(width, ART_HEIGHT)
+ var floor_pivot := Vector2(width * .5, FOOT)
+ for index in range(uvs.size()):
+  var uv := uvs[index]
+  var anchor := (uv * size - floor_pivot) * ART_SCALE
+  var part_uv := uv if gesture_side > 0 else Vector2(1.0 - uv.x, uv.y)
+  var offset := deformation(part_uv, state, progress)
+  vertices[index] = anchor + Vector2(offset.x * gesture_side, offset.y)
+ var surface := pose_grid.duplicate()
+ surface[Mesh.ARRAY_VERTEX] = vertices
+ var pose := ArrayMesh.new()
+ pose.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, surface, [], {}, Mesh.ARRAY_FLAG_USE_2D_VERTICES)
+ return pose
+
+func _build_pose_grid() -> Array:
  var uvs := PackedVector2Array()
  var triangles := PackedInt32Array()
  for row in range(GRID.y + 1):
   for column in range(GRID.x + 1):
-   var uv := Vector2(float(column) / GRID.x, float(row) / GRID.y)
-   uvs.append(uv)
-   var anchor := (uv * Vector2(width, ART_HEIGHT) - Vector2(width * .5, FOOT)) * ART_SCALE
-   var part_uv := uv if gesture_side > 0 else Vector2(1.0 - uv.x, uv.y)
-   var offset := deformation(part_uv, state, progress)
-   vertices.append(anchor + Vector2(offset.x * gesture_side, offset.y))
+   uvs.append(Vector2(float(column) / GRID.x, float(row) / GRID.y))
    if column < GRID.x and row < GRID.y:
     var first := row * (GRID.x + 1) + column
     var lower := first + GRID.x + 1
     triangles.append_array([first, first + 1, lower, first + 1, lower + 1, lower])
  var surface := []
  surface.resize(Mesh.ARRAY_MAX)
- surface[Mesh.ARRAY_VERTEX] = vertices
  surface[Mesh.ARRAY_TEX_UV] = uvs
  surface[Mesh.ARRAY_INDEX] = triangles
- var pose := ArrayMesh.new()
- pose.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, surface, [], {}, Mesh.ARRAY_FLAG_USE_2D_VERTICES)
- return pose
+ return surface
 
 func deformation(uv: Vector2, state: String, progress: float) -> Vector2:
  var veil := smoothstep(.48, .94, uv.x) * (1.0 - smoothstep(.15, .46, uv.y))
