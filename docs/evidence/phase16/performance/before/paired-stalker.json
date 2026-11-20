@@ -1,0 +1,158 @@
+{
+  "source_revision": "07b459be3ed0e9b0721464e73c2927f77e8cd9cd",
+  "phase16_enabled": false,
+  "affinity_cpus": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "llvmpipe_workers_override": "2",
+  "scenes": [
+    {
+      "scene": "stalker-24-medium",
+      "checks": 102,
+      "frame_ms": {
+        "max": 91.439,
+        "median": 61.156499999999994,
+        "p95": 80.674
+      },
+      "update_ms": {
+        "max": 18.448,
+        "median": 5.33,
+        "p95": 7.719
+      },
+      "draw_calls": {
+        "max": 585,
+        "median": 548.0,
+        "p95": 579
+      },
+      "geometry_sha256": "cb803d4db4e62886df06a11b39967860c1959784dba48974f1948ae6a60ddbf7",
+      "gameplay_initial_sha256": "43a00e8435180621f43dc80b4d397ace395e064220923b506d89ebdee96a9918",
+      "gameplay_final_sha256": "ec1af139c503e115c04c3f71b55d8720cbbfd1ff18e1c01396c013baaf2766cf",
+      "visual_initial_sha256": "798823606f032fe6347796ad8c046a6095670d7cd1b958f0840a483ab5765cf1",
+      "visual_final_sha256": "194c66f28f5e5bb351c897c0ecf303ace66b78a6837fba6ec22f35eb59f4b0fc"
+    },
+    {
+      "scene": "stalker-24-low",
+      "checks": 102,
+      "frame_ms": {
+        "max": 76.516,
+        "median": 50.3705,
+        "p95": 60.443
+      },
+      "update_ms": {
+        "max": 30.323,
+        "median": 5.2365,
+        "p95": 6.773
+      },
+      "draw_calls": {
+        "max": 561,
+        "median": 541.0,
+        "p95": 556
+      },
+      "geometry_sha256": "cb803d4db4e62886df06a11b39967860c1959784dba48974f1948ae6a60ddbf7",
+      "gameplay_initial_sha256": "43a00e8435180621f43dc80b4d397ace395e064220923b506d89ebdee96a9918",
+      "gameplay_final_sha256": "ec1af139c503e115c04c3f71b55d8720cbbfd1ff18e1c01396c013baaf2766cf",
+      "visual_initial_sha256": "eb781aa806fed14b06fed29cb333d4ba3c748e90a6963750427e4aef7775114e",
+      "visual_final_sha256": "13f509ecdbf6b94a0ff2c8a6e84c985a955101be1a08ed0312c7e4e508457330"
+    },
+    {
+      "scene": "stalker-40-medium",
+      "checks": 118,
+      "frame_ms": {
+        "max": 89.453,
+        "median": 67.582,
+        "p95": 79.917
+      },
+      "update_ms": {
+        "max": 14.925,
+        "median": 6.263,
+        "p95": 7.947
+      },
+      "draw_calls": {
+        "max": 617,
+        "median": 580.0,
+        "p95": 611
+      },
+      "geometry_sha256": "cb803d4db4e62886df06a11b39967860c1959784dba48974f1948ae6a60ddbf7",
+      "gameplay_initial_sha256": "d16e99a829c9f22df3c6fab03e195f665f9984c04143813d919c573d272848cb",
+      "gameplay_final_sha256": "fa5c5d74c9317a679c41474f82187aa29b919fc852990d86a2745471ae9d5551",
+      "visual_initial_sha256": "710378bcb98d917d94a50b9d886ed52b3444606a60bb91adbbb0419fb04cf734",
+      "visual_final_sha256": "9a5e509396ac2073fa3ed28d6cf6a5ac52775d9ffd44c08ee6bef2cafe4f3744"
+    },
+    {
+      "scene": "stalker-40-low",
+      "checks": 118,
+      "frame_ms": {
+        "max": 115.728,
+        "median": 63.38849999999999,
+        "p95": 85.115
+      },
+      "update_ms": {
+        "max": 23.649,
+        "median": 6.4665,
+        "p95": 10.42
+      },
+      "draw_calls": {
+        "max": 593,
+        "median": 573.0,
+        "p95": 588
+      },
+      "geometry_sha256": "cb803d4db4e62886df06a11b39967860c1959784dba48974f1948ae6a60ddbf7",
+      "gameplay_initial_sha256": "d16e99a829c9f22df3c6fab03e195f665f9984c04143813d919c573d272848cb",
+      "gameplay_final_sha256": "fa5c5d74c9317a679c41474f82187aa29b919fc852990d86a2745471ae9d5551",
+      "visual_initial_sha256": "aa0d433276be019b8e6824d1335d03ebd4b3426e573d02d1d4c39c4c639d1902",
+      "visual_final_sha256": "68d435ecd358cc94cb02663a932db8a1e2dccd9d3dcf94a78140c85b035064e6"
+    },
+    {
+      "scene": "stalker-60-medium",
+      "checks": 138,
+      "frame_ms": {
+        "max": 121.278,
+        "median": 81.6975,
+        "p95": 100.538
+      },
+      "update_ms": {
+        "max": 19.268,
+        "median": 7.725,
+        "p95": 10.33
+      },
+      "draw_calls": {
+        "max": 657,
+        "median": 620.0,
+        "p95": 651
+      },
+      "geometry_sha256": "cb803d4db4e62886df06a11b39967860c1959784dba48974f1948ae6a60ddbf7",
+      "gameplay_initial_sha256": "d035217c57e897108a64cdcfcd5e19ed13ce642b9e5c0dcf141aa1d763c4725b",
+      "gameplay_final_sha256": "205199ec167d247d4c772541987d1af443085ca499fe89a198ff56ffb73aa5f4",
+      "visual_initial_sha256": "06b393cfe5159e29b38482a8b6813cd7bc479b4487c941e02c3683a595e1d088",
+      "visual_final_sha256": "edd79f7828d72e701e9216777e35d78c6c391115134453db89bd896ce8e5eaf5"
+    },
+    {
+      "scene": "stalker-60-low",
+      "checks": 138,
+      "frame_ms": {
+        "max": 120.74,
+        "median": 74.13050000000001,
+        "p95": 97.386
+      },
+      "update_ms": {
+        "max": 17.299,
+        "median": 7.66,
+        "p95": 9.488
+      },
+      "draw_calls": {
+        "max": 633,
+        "median": 613.0,
+        "p95": 628
+      },
+      "geometry_sha256": "cb803d4db4e62886df06a11b39967860c1959784dba48974f1948ae6a60ddbf7",
+      "gameplay_initial_sha256": "d035217c57e897108a64cdcfcd5e19ed13ce642b9e5c0dcf141aa1d763c4725b",
+      "gameplay_final_sha256": "205199ec167d247d4c772541987d1af443085ca499fe89a198ff56ffb73aa5f4",
+      "visual_initial_sha256": "d5a296ec207b4f7bc34568f73c0db065cae76966a2329ad71cb6ad878d597b0b",
+      "visual_final_sha256": "77ff719c1ca3cb618f308fbce427624ff3aaea9e462402fb65248030ab087dfc"
+    }
+  ],
+  "failures": []
+}

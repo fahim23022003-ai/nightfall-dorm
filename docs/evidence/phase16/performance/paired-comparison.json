@@ -1,0 +1,410 @@
+[
+  {
+    "scene": "stalker-24-medium",
+    "exact_geometry": true,
+    "exact_gameplay": true,
+    "exact_pixels": false,
+    "frame_ms": {
+      "median": -8.126,
+      "p95": -2.686,
+      "max": 38.827
+    },
+    "frame_ms_before": {
+      "max": 91.439,
+      "median": 61.156499999999994,
+      "p95": 80.674
+    },
+    "frame_ms_after": {
+      "max": 130.266,
+      "median": 53.03,
+      "p95": 77.988
+    },
+    "update_ms": {
+      "median": -2.155,
+      "p95": -2.541,
+      "max": 18.967
+    },
+    "update_ms_before": {
+      "max": 18.448,
+      "median": 5.33,
+      "p95": 7.719
+    },
+    "update_ms_after": {
+      "max": 37.415,
+      "median": 3.175,
+      "p95": 5.178
+    },
+    "draw_calls": {
+      "median": 2.0,
+      "p95": 3,
+      "max": 3
+    },
+    "draw_calls_before": {
+      "max": 585,
+      "median": 548.0,
+      "p95": 579
+    },
+    "draw_calls_after": {
+      "max": 588,
+      "median": 550.0,
+      "p95": 582
+    }
+  },
+  {
+    "scene": "stalker-24-low",
+    "exact_geometry": true,
+    "exact_gameplay": true,
+    "exact_pixels": false,
+    "frame_ms": {
+      "median": -10.949,
+      "p95": -17.624,
+      "max": -21.192
+    },
+    "frame_ms_before": {
+      "max": 76.516,
+      "median": 50.3705,
+      "p95": 60.443
+    },
+    "frame_ms_after": {
+      "max": 55.324,
+      "median": 39.4215,
+      "p95": 42.819
+    },
+    "update_ms": {
+      "median": -2.163,
+      "p95": -3.085,
+      "max": -25.496
+    },
+    "update_ms_before": {
+      "max": 30.323,
+      "median": 5.2365,
+      "p95": 6.773
+    },
+    "update_ms_after": {
+      "max": 4.827,
+      "median": 3.0735,
+      "p95": 3.688
+    },
+    "draw_calls": {
+      "median": -17.0,
+      "p95": -17,
+      "max": -15
+    },
+    "draw_calls_before": {
+      "max": 561,
+      "median": 541.0,
+      "p95": 556
+    },
+    "draw_calls_after": {
+      "max": 546,
+      "median": 524.0,
+      "p95": 539
+    }
+  },
+  {
+    "scene": "stalker-40-medium",
+    "exact_geometry": true,
+    "exact_gameplay": true,
+    "exact_pixels": false,
+    "frame_ms": {
+      "median": -6.791,
+      "p95": 1.767,
+      "max": 6.254
+    },
+    "frame_ms_before": {
+      "max": 89.453,
+      "median": 67.582,
+      "p95": 79.917
+    },
+    "frame_ms_after": {
+      "max": 95.707,
+      "median": 60.7905,
+      "p95": 81.684
+    },
+    "update_ms": {
+      "median": -2.686,
+      "p95": -3.211,
+      "max": -6.547
+    },
+    "update_ms_before": {
+      "max": 14.925,
+      "median": 6.263,
+      "p95": 7.947
+    },
+    "update_ms_after": {
+      "max": 8.378,
+      "median": 3.577,
+      "p95": 4.736
+    },
+    "draw_calls": {
+      "median": 2.0,
+      "p95": 3,
+      "max": 3
+    },
+    "draw_calls_before": {
+      "max": 617,
+      "median": 580.0,
+      "p95": 611
+    },
+    "draw_calls_after": {
+      "max": 620,
+      "median": 582.0,
+      "p95": 614
+    }
+  },
+  {
+    "scene": "stalker-40-low",
+    "exact_geometry": true,
+    "exact_gameplay": true,
+    "exact_pixels": false,
+    "frame_ms": {
+      "median": -21.317,
+      "p95": -32.333,
+      "max": -59.233
+    },
+    "frame_ms_before": {
+      "max": 115.728,
+      "median": 63.38849999999999,
+      "p95": 85.115
+    },
+    "frame_ms_after": {
+      "max": 56.495,
+      "median": 42.071,
+      "p95": 52.782
+    },
+    "update_ms": {
+      "median": -2.625,
+      "p95": -5.363,
+      "max": -17.561
+    },
+    "update_ms_before": {
+      "max": 23.649,
+      "median": 6.4665,
+      "p95": 10.42
+    },
+    "update_ms_after": {
+      "max": 6.088,
+      "median": 3.841,
+      "p95": 5.057
+    },
+    "draw_calls": {
+      "median": -48.0,
+      "p95": -48,
+      "max": -46
+    },
+    "draw_calls_before": {
+      "max": 593,
+      "median": 573.0,
+      "p95": 588
+    },
+    "draw_calls_after": {
+      "max": 547,
+      "median": 525.0,
+      "p95": 540
+    }
+  },
+  {
+    "scene": "stalker-60-medium",
+    "exact_geometry": true,
+    "exact_gameplay": true,
+    "exact_pixels": false,
+    "frame_ms": {
+      "median": -2.261,
+      "p95": 9.964,
+      "max": 11.82
+    },
+    "frame_ms_before": {
+      "max": 121.278,
+      "median": 81.6975,
+      "p95": 100.538
+    },
+    "frame_ms_after": {
+      "max": 133.098,
+      "median": 79.4365,
+      "p95": 110.502
+    },
+    "update_ms": {
+      "median": -2.917,
+      "p95": -3.236,
+      "max": 21.445
+    },
+    "update_ms_before": {
+      "max": 19.268,
+      "median": 7.725,
+      "p95": 10.33
+    },
+    "update_ms_after": {
+      "max": 40.713,
+      "median": 4.8075,
+      "p95": 7.094
+    },
+    "draw_calls": {
+      "median": 2.0,
+      "p95": 3,
+      "max": 3
+    },
+    "draw_calls_before": {
+      "max": 657,
+      "median": 620.0,
+      "p95": 651
+    },
+    "draw_calls_after": {
+      "max": 660,
+      "median": 622.0,
+      "p95": 654
+    }
+  },
+  {
+    "scene": "stalker-60-low",
+    "exact_geometry": true,
+    "exact_gameplay": true,
+    "exact_pixels": false,
+    "frame_ms": {
+      "median": -30.949,
+      "p95": -43.263,
+      "max": -53.611
+    },
+    "frame_ms_before": {
+      "max": 120.74,
+      "median": 74.13050000000001,
+      "p95": 97.386
+    },
+    "frame_ms_after": {
+      "max": 67.129,
+      "median": 43.1815,
+      "p95": 54.123
+    },
+    "update_ms": {
+      "median": -3.262,
+      "p95": -3.915,
+      "max": -6.688
+    },
+    "update_ms_before": {
+      "max": 17.299,
+      "median": 7.66,
+      "p95": 9.488
+    },
+    "update_ms_after": {
+      "max": 10.611,
+      "median": 4.398,
+      "p95": 5.573
+    },
+    "draw_calls": {
+      "median": -88.0,
+      "p95": -88,
+      "max": -86
+    },
+    "draw_calls_before": {
+      "max": 633,
+      "median": 613.0,
+      "p95": 628
+    },
+    "draw_calls_after": {
+      "max": 547,
+      "median": 525.0,
+      "p95": 540
+    }
+  },
+  {
+    "scene": "reaper-60-medium",
+    "exact_geometry": true,
+    "exact_gameplay": true,
+    "exact_pixels": false,
+    "frame_ms": {
+      "median": -0.593,
+      "p95": -1.36,
+      "max": -0.463
+    },
+    "frame_ms_before": {
+      "max": 117.147,
+      "median": 80.5145,
+      "p95": 109.812
+    },
+    "frame_ms_after": {
+      "max": 116.684,
+      "median": 79.9215,
+      "p95": 108.452
+    },
+    "update_ms": {
+      "median": -3.385,
+      "p95": -3.514,
+      "max": -8.972
+    },
+    "update_ms_before": {
+      "max": 25.147,
+      "median": 7.714,
+      "p95": 9.278
+    },
+    "update_ms_after": {
+      "max": 16.175,
+      "median": 4.3294999999999995,
+      "p95": 5.764
+    },
+    "draw_calls": {
+      "median": 1.0,
+      "p95": 0,
+      "max": 2
+    },
+    "draw_calls_before": {
+      "max": 679,
+      "median": 660.0,
+      "p95": 675
+    },
+    "draw_calls_after": {
+      "max": 681,
+      "median": 661.0,
+      "p95": 675
+    }
+  },
+  {
+    "scene": "reaper-60-low",
+    "exact_geometry": true,
+    "exact_gameplay": true,
+    "exact_pixels": false,
+    "frame_ms": {
+      "median": -32.3,
+      "p95": -51.055,
+      "max": -31.0
+    },
+    "frame_ms_before": {
+      "max": 108.0,
+      "median": 74.0075,
+      "p95": 103.12
+    },
+    "frame_ms_after": {
+      "max": 77.0,
+      "median": 41.707,
+      "p95": 52.065
+    },
+    "update_ms": {
+      "median": -3.47,
+      "p95": -3.877,
+      "max": -9.719
+    },
+    "update_ms_before": {
+      "max": 19.376,
+      "median": 7.759,
+      "p95": 9.516
+    },
+    "update_ms_after": {
+      "max": 9.657,
+      "median": 4.289,
+      "p95": 5.639
+    },
+    "draw_calls": {
+      "median": -90.5,
+      "p95": -88,
+      "max": -89
+    },
+    "draw_calls_before": {
+      "max": 633,
+      "median": 618.0,
+      "p95": 630
+    },
+    "draw_calls_after": {
+      "max": 544,
+      "median": 527.5,
+      "p95": 542
+    }
+  }
+]

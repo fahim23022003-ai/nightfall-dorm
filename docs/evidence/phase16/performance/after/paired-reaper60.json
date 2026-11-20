@@ -1,0 +1,62 @@
+{
+  "source_revision": "3615dcd2d33799d59d55753d0b6264385c4c1c49",
+  "phase16_enabled": true,
+  "affinity_cpus": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "llvmpipe_workers_override": "2",
+  "scenes": [
+    {
+      "scene": "reaper-60-medium",
+      "checks": 141,
+      "frame_ms": {
+        "max": 116.684,
+        "median": 79.9215,
+        "p95": 108.452
+      },
+      "update_ms": {
+        "max": 16.175,
+        "median": 4.3294999999999995,
+        "p95": 5.764
+      },
+      "draw_calls": {
+        "max": 681,
+        "median": 661.0,
+        "p95": 675
+      },
+      "geometry_sha256": "cb803d4db4e62886df06a11b39967860c1959784dba48974f1948ae6a60ddbf7",
+      "gameplay_initial_sha256": "514188524f8704cb038de08a74ad658ebb56f04fc523cd190bfcb378fa6f3058",
+      "gameplay_final_sha256": "badfbb12f4bb830da4d57a85608d68269e41ccd37b8c745e9c35c8948ec58f9c",
+      "visual_initial_sha256": "4e9f9aaf932858a8ddc92970d54b21b68c34ffc429955a9fd16d10dcf56a821a",
+      "visual_final_sha256": "735dbe8f7269603e6a8565fdc56c5b24dd984564991b4e5a9aab576ba87e5472"
+    },
+    {
+      "scene": "reaper-60-low",
+      "checks": 141,
+      "frame_ms": {
+        "max": 77.0,
+        "median": 41.707,
+        "p95": 52.065
+      },
+      "update_ms": {
+        "max": 9.657,
+        "median": 4.289,
+        "p95": 5.639
+      },
+      "draw_calls": {
+        "max": 544,
+        "median": 527.5,
+        "p95": 542
+      },
+      "geometry_sha256": "cb803d4db4e62886df06a11b39967860c1959784dba48974f1948ae6a60ddbf7",
+      "gameplay_initial_sha256": "514188524f8704cb038de08a74ad658ebb56f04fc523cd190bfcb378fa6f3058",
+      "gameplay_final_sha256": "badfbb12f4bb830da4d57a85608d68269e41ccd37b8c745e9c35c8948ec58f9c",
+      "visual_initial_sha256": "72bb686248bc655413a3a73eb35f4bd7a000c4ecd2b6041cebf07236a6d6c1a0",
+      "visual_final_sha256": "c55149531616b0be761f984ffe12434f0dd48b73350c0b4ff8eaf520cd738b2c"
+    }
+  ],
+  "failures": []
+}

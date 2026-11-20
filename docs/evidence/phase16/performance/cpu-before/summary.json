@@ -1,0 +1,36 @@
+{
+  "source_revision": "07b459be3ed0e9b0721464e73c2927f77e8cd9cd",
+  "affinity_cpus": [
+    0,
+    1,
+    2
+  ],
+  "llvmpipe_workers_override": "2",
+  "scenes": [
+    {
+      "scene": "stalker-60-low",
+      "checks": 138,
+      "frame_ms": {
+        "max": 158.18,
+        "median": 73.987,
+        "p95": 117.18
+      },
+      "update_ms": {
+        "max": 20.603,
+        "median": 7.482,
+        "p95": 11.809
+      },
+      "draw_calls": {
+        "max": 633,
+        "median": 613.0,
+        "p95": 628
+      },
+      "geometry_sha256": "cb803d4db4e62886df06a11b39967860c1959784dba48974f1948ae6a60ddbf7",
+      "gameplay_initial_sha256": "d035217c57e897108a64cdcfcd5e19ed13ce642b9e5c0dcf141aa1d763c4725b",
+      "gameplay_final_sha256": "205199ec167d247d4c772541987d1af443085ca499fe89a198ff56ffb73aa5f4",
+      "visual_initial_sha256": "d5a296ec207b4f7bc34568f73c0db065cae76966a2329ad71cb6ad878d597b0b",
+      "visual_final_sha256": "77ff719c1ca3cb618f308fbce427624ff3aaea9e462402fb65248030ab087dfc"
+    }
+  ],
+  "failures": []
+}

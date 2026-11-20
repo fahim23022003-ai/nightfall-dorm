@@ -1,0 +1,38 @@
+{
+  "source_revision": "3615dcd2d33799d59d55753d0b6264385c4c1c49",
+  "phase16_enabled": true,
+  "affinity_cpus": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "llvmpipe_workers_override": "2",
+  "scenes": [
+    {
+      "scene": "stalker-60-low",
+      "checks": 138,
+      "frame_ms": {
+        "max": 73.964,
+        "median": 42.019999999999996,
+        "p95": 48.48
+      },
+      "update_ms": {
+        "max": 9.337,
+        "median": 4.3365,
+        "p95": 5.886
+      },
+      "draw_calls": {
+        "max": 547,
+        "median": 525.0,
+        "p95": 540
+      },
+      "geometry_sha256": "cb803d4db4e62886df06a11b39967860c1959784dba48974f1948ae6a60ddbf7",
+      "gameplay_initial_sha256": "d035217c57e897108a64cdcfcd5e19ed13ce642b9e5c0dcf141aa1d763c4725b",
+      "gameplay_final_sha256": "205199ec167d247d4c772541987d1af443085ca499fe89a198ff56ffb73aa5f4",
+      "visual_initial_sha256": "1d12374dc1ad859dabf117a24a93ed9a65e57ca6f37232c9dfd9ef50a03cb4a5",
+      "visual_final_sha256": "a1f680e6263eab326c4356c53b823834ae49c46db30dd5360511e51a5451adf0"
+    }
+  ],
+  "failures": []
+}
