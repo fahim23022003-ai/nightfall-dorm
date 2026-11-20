@@ -174,8 +174,10 @@ func _film(model: MatchModel,destination: String,fixture: String) -> Dictionary:
   await RenderingServer.frame_post_draw
   for shot: Dictionary in model.projectiles:
    if not game.presentation.weapons.flight_seen.has(shot.id):continue
+   var actor=model.target_by_id(shot.target_id)
+   if actor==null:continue
    if not flight_frames.has(shot.id):flight_frames[shot.id]=[]
-   flight_frames[shot.id].append({"frame":frame,"model":shot.position,"visual":game.presentation.weapons.projectile_point(game,game.presentation.building_visual,shot,model.target_by_id(shot.target_id).position)})
+   flight_frames[shot.id].append({"frame":frame,"model":shot.position,"visual":game.presentation.weapons.projectile_point(game,game.presentation.building_visual,shot,actor.position)})
    if not flight_frame:
     _save_view(destination,"flight")
     flight_frame=true

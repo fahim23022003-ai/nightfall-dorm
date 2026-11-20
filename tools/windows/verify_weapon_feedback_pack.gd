@@ -18,13 +18,17 @@ func run() -> void:
  root.add_child(game)
  await process_frame
  game.set_process(false)
+ game.profile.complete_tutorial()
+ game.onboarding.skip()
+ game.onboarding.close_welcome()
  check(game.model.weapon_feedback.enabled and game.story_preview_enabled and game.survivor_preview_enabled,"Preview uses the expected launcher flags")
  check(ResourceLoader.exists("res://scripts/weapon_presentation.gd"),"Weapon renderer is in the embedded PCK")
  game.ui.show_settings()
  var option: OptionButton=game.ui.panel.find_child("damage_numbers",true,false)
  check(option!=null and option.item_count==4 and option.selected==0,"Default On and all four options are present in the packed scene")
  var model:=MatchModel.new()
- model.weapon_feedback.received.connect(func(event: Dictionary):events.append(event))
+ var sink:=func(event: Dictionary):events.append(event)
+ model.weapon_feedback.received.connect(sink)
  check(model.claim_room(0),"Claim model room")
  var room:=model.player()
  model.player_position=room.bed_position()
@@ -42,8 +46,13 @@ func run() -> void:
   check(hit.damage==hp-model.hunter.hp and hit.damage>0 and hit.projectile_id==events[0].projectile_id,"Exact paid damage reaches the packed presentation feed")
   check(model.weapon_feedback.machine(room,0).last_damage==hit.damage,"Packed inspector uses the same amount")
  else:check(false,"A launch and one matching impact")
+ model.weapon_feedback.received.disconnect(sink)
+ room=null
+ model=null
+ game.return_menu()
  game.audio_system.shutdown()
+ await create_timer(.5).timeout
  game.queue_free()
- await process_frame
+ await create_timer(.2).timeout
  print("WEAPON_FEEDBACK_PACK_CHECKS=",checks," FAILURES=",failures," NATIVE_WINDOWS=UNVERIFIED")
  quit(int(failures>0))
