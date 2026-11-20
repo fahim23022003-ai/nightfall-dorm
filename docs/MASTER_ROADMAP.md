@@ -10,20 +10,21 @@ V1 and fixed launch modes and the original profile backup.
 
 ## Mandatory remaining milestone — Hunter articulation and performance
 
-The verified Living Nightmare baseline is `62ecf7a` on `work`. The new
-articulated renderer covers Stalker L1, Ravager L1 and both Grim Reaper
-forms. The Reaper's rear scythe motion and other movement coverage still
-need work. Keep the established art and renderer available for the other
-58 ordinary Hunter evolution states until their articulated replacements
-have been verified in gameplay.
+The initial Living Nightmare baseline is `62ecf7a` on `work`. The
+follow-up verifies the articulated renderer on **16 ordinary Hunter
+states** and both Grim Reaper forms, including the transformed rear
+scythe strike. **44 ordinary states remain.** Keep the established art
+and renderer available until the remaining replacements have been
+verified in gameplay.
 
-Use the pilots as the starting point. Verify the L4, L7 and L10 Stalker
-and Ravager anchors, then author Crusher, Witch, Electric Ghost and Storm
-Wraith anchors before filling the intervening levels. Check locomotion,
-turning, attack contact at the actual damage frame, reactions and special
-motions at gameplay zoom. Benchmark dense combat at 1280×720 on Standard
-and Low, with native Windows and Intel UHD results recorded when available.
-[Pilot evidence and remaining acceptance checks](LIVING_NIGHTMARE.md#performance-and-remaining-delivery)
+Use the completed L1 and L4 rigs from all six Hunters and the L7 and
+L10 Stalker and Ravager rigs as reference anchors. Verify the L7 and
+L10 anchors for Crusher, Witch, Electric Ghost and Storm Wraith before
+filling the intervening levels. Continue checking turning, contact,
+evolution, special motions and Reaper directions at gameplay zoom.
+Benchmark dense 1280×720 combat on Standard and Low with native Windows
+and Intel UHD measurements when available.
+[Verified coverage and performance](HUNTER_ARTICULATION.md)
 
 ## Upcoming survivor and UI work
 

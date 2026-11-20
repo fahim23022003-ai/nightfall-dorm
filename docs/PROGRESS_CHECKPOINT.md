@@ -1,3 +1,15 @@
+# Hunter articulation and performance checkpoint
+
+Sixteen ordinary Hunter states now have articulated rigs verified in
+gameplay. This includes all six at L1 and L4 plus Stalker and Ravager at L7
+and L10. Both Reaper forms remain and the rear scythe swing now lands in
+the tested fixture. Presentation-side batching reduces dense Stalker
+render costs on Linux. Mandatory follow-up covers 44 ordinary state
+rigs, remaining Reaper motions and native Windows performance.
+[Rig coverage, gameplay footage and bench results](HUNTER_ARTICULATION.md)
+
+---
+
 # Living Nightmare preview
 
 The preview adds the 50-level Story flow and an additive versioned profile
@@ -7,10 +19,10 @@ pilot assets. See [the implementation report](LIVING_NIGHTMARE.md) for
 exact art coverage, verification and the next animation work.
 The existing V2.3, V1 and fixed preview paths remain available.
 
-**Continuation baseline `62ecf7a`.** The articulated pilots cover Stalker
-L1, Ravager L1 and both Grim Reaper forms. The remaining **58 ordinary
-evolution states** and unfinished Reaper movements are a mandatory
-milestone. The survivor and UI work will have separate checkpoints so
+**Initial continuation baseline `62ecf7a`.** The original articulated pilots covered Stalker
+L1, Ravager L1 and both Grim Reaper forms. That left **58 ordinary
+evolution states** and unfinished Reaper movements. See the latest
+checkpoint above for the current scope. The survivor and UI work will have separate checkpoints so
 its results can be reviewed alongside animation and performance evidence.
 [Roadmap](MASTER_ROADMAP.md)
 

@@ -1,0 +1,7566 @@
+{
+  "archetype": "electric",
+  "combat_staging": "Ordinary attacks are isolated by postponing special-ability cooldowns. A higher door level extends the comparison. The initial countdown leaves time for a paid Needle to land before the first Hunter windup. Windup durations, damage, and projectiles remain in the model.",
+  "fixture": "Prepared seeded Endless. The chosen level, starting player wallet and Hunter route are staged. Each path is checked before the production movement primitive and heading tracker run. Live ordinary combat uses normal MatchModel ticks and one legally paid Needle.",
+  "fps": 24,
+  "segments": [
+    {
+      "approach_frames": 109,
+      "bound_hit_pose": true,
+      "bound_release_pose": true,
+      "bound_tell_pose": true,
+      "door_damage": 19.3600000000001,
+      "events": {
+        "door_strike": 142,
+        "impact": 120,
+        "launch": 109,
+        "ordinary_warning": 127
+      },
+      "first_hunter_damage_frame": 120,
+      "frame_count": 156,
+      "frames": [
+        {
+          "actual_contact_error": -1.0,
+          "frame": 0,
+          "joint_points": [
+            [
+              237.5625,
+              278.794372558594
+            ],
+            [
+              239.1875,
+              294.638122558594
+            ],
+            [
+              251.375,
+              304.388122558594
+            ],
+            [
+              258.914978027344,
+              312.527191162109
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 1,
+          "joint_points": [
+            [
+              237.5625,
+              279.209991455078
+            ],
+            [
+              239.1875,
+              295.053741455078
+            ],
+            [
+              251.375,
+              304.803741455078
+            ],
+            [
+              259.58154296875,
+              311.447814941406
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 2,
+          "joint_points": [
+            [
+              237.5625,
+              279.618133544922
+            ],
+            [
+              239.1875,
+              295.461883544922
+            ],
+            [
+              251.375,
+              305.211883544922
+            ],
+            [
+              259.204040527344,
+              310.984893798828
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 3,
+          "joint_points": [
+            [
+              237.5625,
+              280.015197753906
+            ],
+            [
+              239.1875,
+              295.858947753906
+            ],
+            [
+              251.375,
+              305.608947753906
+            ],
+            [
+              258.204986572266,
+              311.947967529297
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 4,
+          "joint_points": [
+            [
+              237.5625,
+              280.397521972656
+            ],
+            [
+              239.1875,
+              296.241271972656
+            ],
+            [
+              251.375,
+              305.991271972656
+            ],
+            [
+              257.406829833984,
+              313.804992675781
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 5,
+          "joint_points": [
+            [
+              237.5625,
+              280.761779785156
+            ],
+            [
+              239.1875,
+              296.605529785156
+            ],
+            [
+              251.375,
+              306.355529785156
+            ],
+            [
+              257.478820800781,
+              315.176086425781
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 6,
+          "joint_points": [
+            [
+              241.192764282227,
+              280.694061279297
+            ],
+            [
+              242.745254516602,
+              296.545074462891
+            ],
+            [
+              254.888000488281,
+              306.350738525391
+            ],
+            [
+              262.375061035156,
+              314.225494384766
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 7,
+          "joint_points": [
+            [
+              244.881866455078,
+              280.721130371094
+            ],
+            [
+              246.335693359375,
+              296.581512451172
+            ],
+            [
+              258.417205810547,
+              306.462524414062
+            ],
+            [
+              267.805419921875,
+              312.454559326172
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 8,
+          "joint_points": [
+            [
+              248.621398925781,
+              280.843841552734
+            ],
+            [
+              249.9541015625,
+              296.71484375
+            ],
+            [
+              261.959838867188,
+              306.687835693359
+            ],
+            [
+              272.436370849609,
+              311.652282714844
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 9,
+          "joint_points": [
+            [
+              252.367080688477,
+              281.075256347656
+            ],
+            [
+              253.57585144043,
+              296.956176757812
+            ],
+            [
+              265.503356933594,
+              307.022583007812
+            ],
+            [
+              275.387176513672,
+              313.109954833984
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 10,
+          "joint_points": [
+            [
+              256.063537597656,
+              281.419525146484
+            ],
+            [
+              257.170166015625,
+              297.307891845703
+            ],
+            [
+              269.03271484375,
+              307.450775146484
+            ],
+            [
+              277.259552001953,
+              315.641418457031
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 11,
+          "joint_points": [
+            [
+              259.660491943359,
+              281.862335205078
+            ],
+            [
+              260.709167480469,
+              297.754638671875
+            ],
+            [
+              272.534637451172,
+              307.940704345703
+            ],
+            [
+              279.617156982422,
+              316.826080322266
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 12,
+          "joint_points": [
+            [
+              263.12353515625,
+              282.370880126953
+            ],
+            [
+              264.173828125,
+              298.263092041016
+            ],
+            [
+              276.000305175781,
+              308.447937011719
+            ],
+            [
+              283.290283203125,
+              315.678039550781
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 13,
+          "joint_points": [
+            [
+              266.439361572266,
+              282.898803710938
+            ],
+            [
+              267.556732177734,
+              298.786437988281
+            ],
+            [
+              279.426147460938,
+              308.921264648438
+            ],
+            [
+              287.397186279297,
+              314.884094238281
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 14,
+          "joint_points": [
+            [
+              269.617004394531,
+              283.393524169922
+            ],
+            [
+              270.862854003906,
+              299.271575927734
+            ],
+            [
+              282.813812255859,
+              309.310119628906
+            ],
+            [
+              290.322448730469,
+              316.156311035156
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 15,
+          "joint_points": [
+            [
+              272.685699462891,
+              283.803100585938
+            ],
+            [
+              274.108245849609,
+              299.666320800781
+            ],
+            [
+              286.170227050781,
+              309.571136474609
+            ],
+            [
+              291.641418457031,
+              318.150970458984
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 16,
+          "joint_points": [
+            [
+              275.68994140625,
+              284.076873779297
+            ],
+            [
+              277.317565917969,
+              299.920349121094
+            ],
+            [
+              289.506683349609,
+              309.668334960938
+            ],
+            [
+              292.779571533203,
+              318.269744873047
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 17,
+          "joint_points": [
+            [
+              278.683074951172,
+              283.780181884766
+            ],
+            [
+              280.520385742188,
+              299.600708007812
+            ],
+            [
+              292.837524414062,
+              309.186401367188
+            ],
+            [
+              295.562072753906,
+              315.954772949219
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 18,
+          "joint_points": [
+            [
+              281.720489501953,
+              283.334899902344
+            ],
+            [
+              283.747680664062,
+              299.132232666016
+            ],
+            [
+              296.179046630859,
+              308.569305419922
+            ],
+            [
+              300.234191894531,
+              314.174835205078
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 19,
+          "joint_points": [
+            [
+              284.852233886719,
+              282.780029296875
+            ],
+            [
+              287.027374267578,
+              298.557678222656
+            ],
+            [
+              299.546661376953,
+              307.877807617188
+            ],
+            [
+              305.198059082031,
+              314.570556640625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 20,
+          "joint_points": [
+            [
+              288.117584228516,
+              282.162536621094
+            ],
+            [
+              290.381591796875,
+              297.927673339844
+            ],
+            [
+              302.953216552734,
+              307.177124023438
+            ],
+            [
+              308.794097900391,
+              315.563110351562
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 21,
+          "joint_points": [
+            [
+              291.129425048828,
+              281.575561523438
+            ],
+            [
+              293.388244628906,
+              297.341430664062
+            ],
+            [
+              305.956787109375,
+              306.595062255859
+            ],
+            [
+              310.782012939453,
+              314.676300048828
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 22,
+          "joint_points": [
+            [
+              291.218383789062,
+              284.460845947266
+            ],
+            [
+              293.437927246094,
+              300.232299804688
+            ],
+            [
+              305.983367919922,
+              309.517181396484
+            ],
+            [
+              309.994934082031,
+              315.188629150391
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 23,
+          "joint_points": [
+            [
+              281.675109863281,
+              285.723205566406
+            ],
+            [
+              278.522857666016,
+              302.078460693359
+            ],
+            [
+              279.318145751953,
+              314.653625488281
+            ],
+            [
+              279.660522460938,
+              319.093597412109
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 24,
+          "joint_points": [
+            [
+              282.050323486328,
+              288.672149658203
+            ],
+            [
+              278.730895996094,
+              304.994293212891
+            ],
+            [
+              279.397491455078,
+              317.576934814453
+            ],
+            [
+              281.566223144531,
+              322.952758789062
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 25,
+          "joint_points": [
+            [
+              282.516296386719,
+              291.724884033203
+            ],
+            [
+              278.990539550781,
+              308.003692626953
+            ],
+            [
+              279.497802734375,
+              320.593780517578
+            ],
+            [
+              282.698333740234,
+              327.374145507812
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 26,
+          "joint_points": [
+            [
+              283.021789550781,
+              294.725250244141
+            ],
+            [
+              279.273681640625,
+              310.954315185547
+            ],
+            [
+              279.608673095703,
+              323.550140380859
+            ],
+            [
+              282.046356201172,
+              329.895751953125
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 27,
+          "joint_points": [
+            [
+              283.510192871094,
+              297.615966796875
+            ],
+            [
+              279.548767089844,
+              313.794281005859
+            ],
+            [
+              279.717926025391,
+              326.393432617188
+            ],
+            [
+              280.597534179688,
+              331.088470458984
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 28,
+          "joint_points": [
+            [
+              283.925964355469,
+              300.672607421875
+            ],
+            [
+              279.784088134766,
+              316.8056640625
+            ],
+            [
+              279.812530517578,
+              329.405944824219
+            ],
+            [
+              280.257568359375,
+              333.902801513672
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 29,
+          "joint_points": [
+            [
+              284.221374511719,
+              303.900207519531
+            ],
+            [
+              279.951934814453,
+              319.999969482422
+            ],
+            [
+              279.880645751953,
+              332.600067138672
+            ],
+            [
+              281.715545654297,
+              339.178466796875
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 30,
+          "joint_points": [
+            [
+              284.362182617188,
+              307.283020019531
+            ],
+            [
+              280.032104492188,
+              323.366577148438
+            ],
+            [
+              279.913330078125,
+              335.966339111328
+            ],
+            [
+              283.66552734375,
+              344.632873535156
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 31,
+          "joint_points": [
+            [
+              284.331939697266,
+              310.787994384766
+            ],
+            [
+              280.014892578125,
+              326.875061035156
+            ],
+            [
+              279.906311035156,
+              339.474884033203
+            ],
+            [
+              284.267395019531,
+              347.621490478516
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 32,
+          "joint_points": [
+            [
+              284.133636474609,
+              314.369812011719
+            ],
+            [
+              279.902008056641,
+              330.479553222656
+            ],
+            [
+              279.860321044922,
+              343.079803466797
+            ],
+            [
+              283.186950683594,
+              349.368011474609
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 33,
+          "joint_points": [
+            [
+              283.646911621094,
+              315.211242675781
+            ],
+            [
+              279.626037597656,
+              331.374877929688
+            ],
+            [
+              279.748870849609,
+              343.974578857422
+            ],
+            [
+              281.562561035156,
+              349.905426025391
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 34,
+          "joint_points": [
+            [
+              279.939025878906,
+              315.199829101562
+            ],
+            [
+              276.023101806641,
+              331.389221191406
+            ],
+            [
+              276.227691650391,
+              343.987854003906
+            ],
+            [
+              278.310180664062,
+              351.461975097656
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 35,
+          "joint_points": [
+            [
+              293.180511474609,
+              316.115966796875
+            ],
+            [
+              294.304168701172,
+              331.154632568359
+            ],
+            [
+              282.849761962891,
+              343.676177978516
+            ],
+            [
+              280.216094970703,
+              352.470336914062
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 36,
+          "joint_points": [
+            [
+              289.27490234375,
+              315.725036621094
+            ],
+            [
+              290.573211669922,
+              330.749633789062
+            ],
+            [
+              279.265075683594,
+              343.403442382812
+            ],
+            [
+              277.579040527344,
+              351.526733398438
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 37,
+          "joint_points": [
+            [
+              285.353820800781,
+              315.020904541016
+            ],
+            [
+              286.83251953125,
+              330.02880859375
+            ],
+            [
+              275.677154541016,
+              342.817535400391
+            ],
+            [
+              273.059997558594,
+              349.160919189453
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 38,
+          "joint_points": [
+            [
+              281.477905273438,
+              314.236145019531
+            ],
+            [
+              283.118621826172,
+              329.227203369141
+            ],
+            [
+              272.102081298828,
+              342.135681152344
+            ],
+            [
+              266.980255126953,
+              348.173583984375
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 39,
+          "joint_points": [
+            [
+              277.702026367188,
+              313.419647216797
+            ],
+            [
+              279.464965820312,
+              328.396820068359
+            ],
+            [
+              268.554046630859,
+              341.394714355469
+            ],
+            [
+              261.209503173828,
+              349.109619140625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 40,
+          "joint_points": [
+            [
+              274.067993164062,
+              312.627014160156
+            ],
+            [
+              275.89697265625,
+              327.596282958984
+            ],
+            [
+              265.043487548828,
+              340.642150878906
+            ],
+            [
+              257.232208251953,
+              349.667816162109
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 41,
+          "joint_points": [
+            [
+              270.599945068359,
+              311.914794921875
+            ],
+            [
+              272.429473876953,
+              326.883972167969
+            ],
+            [
+              261.576477050781,
+              339.930267333984
+            ],
+            [
+              254.633926391602,
+              347.6865234375
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 42,
+          "joint_points": [
+            [
+              267.301391601562,
+              311.335083007812
+            ],
+            [
+              269.064575195312,
+              326.312225341797
+            ],
+            [
+              258.153869628906,
+              339.310302734375
+            ],
+            [
+              251.726409912109,
+              344.623840332031
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 43,
+          "joint_points": [
+            [
+              264.155609130859,
+              310.929748535156
+            ],
+            [
+              265.7919921875,
+              325.921295166016
+            ],
+            [
+              254.771682739258,
+              338.826568603516
+            ],
+            [
+              247.601638793945,
+              343.499084472656
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 44,
+          "joint_points": [
+            [
+              261.127624511719,
+              310.724975585938
+            ],
+            [
+              262.590270996094,
+              325.734466552734
+            ],
+            [
+              251.421234130859,
+              338.51123046875
+            ],
+            [
+              243.257019042969,
+              344.541778564453
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 45,
+          "joint_points": [
+            [
+              258.168884277344,
+              310.727478027344
+            ],
+            [
+              259.429870605469,
+              325.755249023438
+            ],
+            [
+              248.090286254883,
+              338.380889892578
+            ],
+            [
+              240.478866577148,
+              345.267364501953
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 46,
+          "joint_points": [
+            [
+              255.222808837891,
+              310.582794189453
+            ],
+            [
+              256.276489257812,
+              325.626525878906
+            ],
+            [
+              244.763931274414,
+              338.094635009766
+            ],
+            [
+              239.734725952148,
+              343.810791015625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 47,
+          "joint_points": [
+            [
+              252.707901000977,
+              310.596618652344
+            ],
+            [
+              253.594512939453,
+              325.651123046875
+            ],
+            [
+              241.944259643555,
+              337.990661621094
+            ],
+            [
+              239.863952636719,
+              342.280578613281
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 48,
+          "joint_points": [
+            [
+              253.080154418945,
+              307.2421875
+            ],
+            [
+              253.817825317383,
+              322.304718017578
+            ],
+            [
+              242.046081542969,
+              334.528442382812
+            ],
+            [
+              241.546142578125,
+              339.356109619141
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 49,
+          "joint_points": [
+            [
+              236.578430175781,
+              303.812927246094
+            ],
+            [
+              231.433731079102,
+              319.571166992188
+            ],
+            [
+              226.638793945312,
+              329.821960449219
+            ],
+            [
+              230.721084594727,
+              336.76708984375
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 50,
+          "joint_points": [
+            [
+              236.671035766602,
+              300.711517333984
+            ],
+            [
+              231.485107421875,
+              316.456237792969
+            ],
+            [
+              226.663360595703,
+              326.694458007812
+            ],
+            [
+              229.905563354492,
+              335.116485595703
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 51,
+          "joint_points": [
+            [
+              236.604797363281,
+              297.773010253906
+            ],
+            [
+              231.448364257812,
+              313.527404785156
+            ],
+            [
+              226.645782470703,
+              323.774627685547
+            ],
+            [
+              230.002517700195,
+              330.868743896484
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 52,
+          "joint_points": [
+            [
+              236.384857177734,
+              294.946594238281
+            ],
+            [
+              231.326553344727,
+              310.732788085938
+            ],
+            [
+              226.587829589844,
+              321.009704589844
+            ],
+            [
+              230.850524902344,
+              326.495941162109
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 53,
+          "joint_points": [
+            [
+              236.035034179688,
+              292.173797607422
+            ],
+            [
+              231.133605957031,
+              308.009399414062
+            ],
+            [
+              226.497100830078,
+              318.332824707031
+            ],
+            [
+              230.801498413086,
+              324.274688720703
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 54,
+          "joint_points": [
+            [
+              235.594482421875,
+              289.394195556641
+            ],
+            [
+              230.892013549805,
+              305.290008544922
+            ],
+            [
+              226.385314941406,
+              315.670745849609
+            ],
+            [
+              228.677703857422,
+              323.471984863281
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 55,
+          "joint_points": [
+            [
+              235.112655639648,
+              286.457061767578
+            ],
+            [
+              230.629577636719,
+              302.416137695312
+            ],
+            [
+              226.26628112793,
+              312.857971191406
+            ],
+            [
+              225.291381835938,
+              321.228179931641
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 56,
+          "joint_points": [
+            [
+              234.64323425293,
+              283.085266113281
+            ],
+            [
+              230.375686645508,
+              299.103332519531
+            ],
+            [
+              226.153549194336,
+              309.60302734375
+            ],
+            [
+              222.762832641602,
+              316.420532226562
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 57,
+          "joint_points": [
+            [
+              234.237915039062,
+              279.623138427734
+            ],
+            [
+              230.157943725586,
+              295.690002441406
+            ],
+            [
+              226.058868408203,
+              306.238372802734
+            ],
+            [
+              222.366577148438,
+              311.620269775391
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 58,
+          "joint_points": [
+            [
+              233.940673828125,
+              276.094482421875
+            ],
+            [
+              229.999145507812,
+              292.195861816406
+            ],
+            [
+              225.990997314453,
+              302.779113769531
+            ],
+            [
+              223.312423706055,
+              308.913330078125
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 59,
+          "joint_points": [
+            [
+              234.103286743164,
+              275.180786132812
+            ],
+            [
+              230.0859375,
+              291.263397216797
+            ],
+            [
+              226.027969360352,
+              301.82763671875
+            ],
+            [
+              224.42106628418,
+              309.73193359375
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 60,
+          "joint_points": [
+            [
+              237.451416015625,
+              275.226715087891
+            ],
+            [
+              233.489318847656,
+              291.323028564453
+            ],
+            [
+              229.467666625977,
+              301.901153564453
+            ],
+            [
+              227.091156005859,
+              310.150299072266
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 61,
+          "joint_points": [
+            [
+              250.236343383789,
+              275.650115966797
+            ],
+            [
+              252.418518066406,
+              291.426788330078
+            ],
+            [
+              264.941955566406,
+              300.741363525391
+            ],
+            [
+              267.340423583984,
+              307.133056640625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 62,
+          "joint_points": [
+            [
+              253.860076904297,
+              275.755584716797
+            ],
+            [
+              255.972869873047,
+              291.541687011719
+            ],
+            [
+              268.455230712891,
+              300.911224365234
+            ],
+            [
+              271.395690917969,
+              305.412475585938
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 63,
+          "joint_points": [
+            [
+              257.620300292969,
+              275.981903076172
+            ],
+            [
+              259.603363037109,
+              291.784820556641
+            ],
+            [
+              272.008331298828,
+              301.256591796875
+            ],
+            [
+              277.339050292969,
+              306.089019775391
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 64,
+          "joint_points": [
+            [
+              261.487030029297,
+              276.358459472656
+            ],
+            [
+              263.293090820312,
+              292.182586669922
+            ],
+            [
+              275.59130859375,
+              301.792572021484
+            ],
+            [
+              283.682067871094,
+              308.242919921875
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 65,
+          "joint_points": [
+            [
+              265.415008544922,
+              276.849151611328
+            ],
+            [
+              267.016723632812,
+              292.695281982422
+            ],
+            [
+              279.189880371094,
+              302.463165283203
+            ],
+            [
+              288.508056640625,
+              309.236480712891
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 66,
+          "joint_points": [
+            [
+              269.350524902344,
+              277.126647949219
+            ],
+            [
+              270.744293212891,
+              292.992401123047
+            ],
+            [
+              282.788299560547,
+              302.919128417969
+            ],
+            [
+              291.444610595703,
+              308.228973388672
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 67,
+          "joint_points": [
+            [
+              273.23828125,
+              277.559265136719
+            ],
+            [
+              274.445037841797,
+              293.440338134766
+            ],
+            [
+              286.371276855469,
+              303.508239746094
+            ],
+            [
+              293.953460693359,
+              307.920715332031
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 68,
+          "joint_points": [
+            [
+              277.028594970703,
+              278.140899658203
+            ],
+            [
+              278.091461181641,
+              294.032257080078
+            ],
+            [
+              289.926025390625,
+              304.207763671875
+            ],
+            [
+              297.592590332031,
+              310.095367431641
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 69,
+          "joint_points": [
+            [
+              280.68310546875,
+              278.846130371094
+            ],
+            [
+              281.662384033203,
+              294.742858886719
+            ],
+            [
+              293.443267822266,
+              304.98046875
+            ],
+            [
+              302.217864990234,
+              313.307861328125
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 70,
+          "joint_points": [
+            [
+              284.179290771484,
+              279.634857177734
+            ],
+            [
+              285.145446777344,
+              295.532379150391
+            ],
+            [
+              296.917846679688,
+              305.779724121094
+            ],
+            [
+              306.176788330078,
+              314.609619140625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 71,
+          "joint_points": [
+            [
+              287.512634277344,
+              280.457794189453
+            ],
+            [
+              288.538116455078,
+              296.351623535156
+            ],
+            [
+              300.348693847656,
+              306.554931640625
+            ],
+            [
+              308.275939941406,
+              313.591339111328
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 72,
+          "joint_points": [
+            [
+              290.697021484375,
+              281.261962890625
+            ],
+            [
+              291.848022460938,
+              297.147186279297
+            ],
+            [
+              303.738861083984,
+              307.256866455078
+            ],
+            [
+              309.266845703125,
+              313.200012207031
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 73,
+          "joint_points": [
+            [
+              293.763061523438,
+              281.995758056641
+            ],
+            [
+              295.092041015625,
+              297.867065429688
+            ],
+            [
+              307.095458984375,
+              307.842864990234
+            ],
+            [
+              311.128143310547,
+              314.913391113281
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 74,
+          "joint_points": [
+            [
+              296.754852294922,
+              282.613342285156
+            ],
+            [
+              298.294555664062,
+              298.465606689453
+            ],
+            [
+              310.429412841797,
+              308.281066894531
+            ],
+            [
+              314.930023193359,
+              316.978759765625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 75,
+          "joint_points": [
+            [
+              299.724792480469,
+              282.814208984375
+            ],
+            [
+              301.484588623047,
+              298.6435546875
+            ],
+            [
+              313.754638671875,
+              308.289459228516
+            ],
+            [
+              319.691833496094,
+              316.650634765625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 76,
+          "joint_points": [
+            [
+              300.058929443359,
+              282.578552246094
+            ],
+            [
+              301.906951904297,
+              298.397827148438
+            ],
+            [
+              314.230560302734,
+              307.975189208984
+            ],
+            [
+              321.013580322266,
+              314.566741943359
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 77,
+          "joint_points": [
+            [
+              287.277709960938,
+              282.984558105469
+            ],
+            [
+              284.00048828125,
+              299.315216064453
+            ],
+            [
+              284.699584960938,
+              311.896118164062
+            ],
+            [
+              286.112426757812,
+              317.624420166016
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 78,
+          "joint_points": [
+            [
+              284.299163818359,
+              285.117980957031
+            ],
+            [
+              281.156066894531,
+              301.474975585938
+            ],
+            [
+              281.958404541016,
+              314.049713134766
+            ],
+            [
+              281.876220703125,
+              320.946228027344
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 79,
+          "joint_points": [
+            [
+              281.412994384766,
+              287.127136230469
+            ],
+            [
+              278.363159179688,
+              303.501800537109
+            ],
+            [
+              279.237152099609,
+              316.071746826172
+            ],
+            [
+              278.722137451172,
+              324.645141601562
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 80,
+          "joint_points": [
+            [
+              278.659790039062,
+              289.050506591797
+            ],
+            [
+              275.643798828125,
+              305.431427001953
+            ],
+            [
+              276.543762207031,
+              317.999542236328
+            ],
+            [
+              277.168518066406,
+              326.268829345703
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 81,
+          "joint_points": [
+            [
+              276.060211181641,
+              290.934814453125
+            ],
+            [
+              273.009185791016,
+              307.309234619141
+            ],
+            [
+              273.882232666016,
+              319.879272460938
+            ],
+            [
+              275.942016601562,
+              325.753112792969
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 82,
+          "joint_points": [
+            [
+              273.613647460938,
+              292.829620361328
+            ],
+            [
+              270.459197998047,
+              309.184448242188
+            ],
+            [
+              271.252807617188,
+              321.759735107422
+            ],
+            [
+              273.364532470703,
+              326.221221923828
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 83,
+          "joint_points": [
+            [
+              271.299102783203,
+              294.780242919922
+            ],
+            [
+              267.982818603516,
+              311.10302734375
+            ],
+            [
+              268.65185546875,
+              323.685546875
+            ],
+            [
+              269.275665283203,
+              329.057830810547
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 84,
+          "joint_points": [
+            [
+              269.078552246094,
+              296.8212890625
+            ],
+            [
+              265.559783935547,
+              313.101623535156
+            ],
+            [
+              266.072479248047,
+              325.691467285156
+            ],
+            [
+              265.292510986328,
+              332.474487304688
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 85,
+          "joint_points": [
+            [
+              266.901580810547,
+              298.813507080078
+            ],
+            [
+              263.162506103516,
+              315.044647216797
+            ],
+            [
+              263.504516601562,
+              327.640319824219
+            ],
+            [
+              263.052734375,
+              334.013000488281
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 86,
+          "joint_points": [
+            [
+              264.711608886719,
+              300.665130615234
+            ],
+            [
+              260.759429931641,
+              316.845703125
+            ],
+            [
+              260.935791015625,
+              329.444763183594
+            ],
+            [
+              262.398468017578,
+              334.158569335938
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 87,
+          "joint_points": [
+            [
+              262.452728271484,
+              302.664825439453
+            ],
+            [
+              258.318725585938,
+              318.799896240234
+            ],
+            [
+              258.353302001953,
+              331.400146484375
+            ],
+            [
+              261.559417724609,
+              335.868377685547
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 88,
+          "joint_points": [
+            [
+              260.076385498047,
+              304.817443847656
+            ],
+            [
+              255.812194824219,
+              320.918609619141
+            ],
+            [
+              255.744995117188,
+              333.518737792969
+            ],
+            [
+              259.133422851562,
+              340.036682128906
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 89,
+          "joint_points": [
+            [
+              257.547302246094,
+              307.106872558594
+            ],
+            [
+              253.219085693359,
+              323.190948486328
+            ],
+            [
+              253.101776123047,
+              335.790710449219
+            ],
+            [
+              255.614440917969,
+              344.418090820312
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 90,
+          "joint_points": [
+            [
+              254.847854614258,
+              309.499450683594
+            ],
+            [
+              250.528991699219,
+              325.586029052734
+            ],
+            [
+              250.419006347656,
+              338.185852050781
+            ],
+            [
+              252.729766845703,
+              346.362823486328
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 91,
+          "joint_points": [
+            [
+              251.979904174805,
+              311.949096679688
+            ],
+            [
+              247.74299621582,
+              328.057464599609
+            ],
+            [
+              247.697143554688,
+              340.657684326172
+            ],
+            [
+              251.347839355469,
+              346.972045898438
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 92,
+          "joint_points": [
+            [
+              248.964721679688,
+              314.402496337891
+            ],
+            [
+              244.873718261719,
+              330.548522949219
+            ],
+            [
+              244.941879272461,
+              343.148651123047
+            ],
+            [
+              250.359176635742,
+              349.117584228516
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 93,
+          "joint_points": [
+            [
+              246.356643676758,
+              316.304046630859
+            ],
+            [
+              242.462127685547,
+              332.498596191406
+            ],
+            [
+              242.683364868164,
+              345.096954345703
+            ],
+            [
+              248.337036132812,
+              352.692352294922
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 94,
+          "joint_points": [
+            [
+              243.317749023438,
+              318.698699951172
+            ],
+            [
+              239.622512817383,
+              334.939880371094
+            ],
+            [
+              239.99853515625,
+              347.534576416016
+            ],
+            [
+              243.903656005859,
+              356.389038085938
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 95,
+          "joint_points": [
+            [
+              240.252349853516,
+              320.641723632812
+            ],
+            [
+              236.769393920898,
+              336.929748535156
+            ],
+            [
+              237.309753417969,
+              349.518463134766
+            ],
+            [
+              238.657806396484,
+              357.43505859375
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 96,
+          "joint_points": [
+            [
+              237.218078613281,
+              322.372955322266
+            ],
+            [
+              233.934997558594,
+              338.702453613281
+            ],
+            [
+              234.629608154297,
+              351.283569335938
+            ],
+            [
+              234.492141723633,
+              357.370239257812
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 97,
+          "joint_points": [
+            [
+              234.268447875977,
+              323.988891601562
+            ],
+            [
+              231.148666381836,
+              340.350372314453
+            ],
+            [
+              231.968933105469,
+              352.923919677734
+            ],
+            [
+              231.875671386719,
+              358.889282226562
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 98,
+          "joint_points": [
+            [
+              231.446563720703,
+              325.524078369141
+            ],
+            [
+              228.433563232422,
+              341.905548095703
+            ],
+            [
+              229.335830688477,
+              354.473510742188
+            ],
+            [
+              229.49267578125,
+              362.18212890625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 99,
+          "joint_points": [
+            [
+              228.78059387207,
+              327.022705078125
+            ],
+            [
+              225.804626464844,
+              343.410949707031
+            ],
+            [
+              226.735275268555,
+              355.976837158203
+            ],
+            [
+              225.932540893555,
+              364.747253417969
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 100,
+          "joint_points": [
+            [
+              226.281188964844,
+              328.534759521484
+            ],
+            [
+              223.267456054688,
+              344.916076660156
+            ],
+            [
+              224.169143676758,
+              357.484100341797
+            ],
+            [
+              221.490798950195,
+              364.457366943359
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 101,
+          "joint_points": [
+            [
+              223.94059753418,
+              330.111083984375
+            ],
+            [
+              220.818069458008,
+              346.472015380859
+            ],
+            [
+              221.636199951172,
+              359.045745849609
+            ],
+            [
+              217.991470336914,
+              363.72900390625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 102,
+          "joint_points": [
+            [
+              221.733520507812,
+              331.797760009766
+            ],
+            [
+              218.443130493164,
+              348.125762939453
+            ],
+            [
+              219.132095336914,
+              360.707214355469
+            ],
+            [
+              216.792984008789,
+              365.167022705078
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 103,
+          "joint_points": [
+            [
+              219.619720458984,
+              333.629760742188
+            ],
+            [
+              216.121109008789,
+              349.914428710938
+            ],
+            [
+              216.649383544922,
+              362.503662109375
+            ],
+            [
+              217.224395751953,
+              368.564514160156
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 104,
+          "joint_points": [
+            [
+              217.548141479492,
+              335.497009277344
+            ],
+            [
+              213.824188232422,
+              351.731628417969
+            ],
+            [
+              214.177947998047,
+              364.326965332031
+            ],
+            [
+              217.233169555664,
+              371.179992675781
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 105,
+          "joint_points": [
+            [
+              215.462295532227,
+              337.242645263672
+            ],
+            [
+              211.52082824707,
+              353.425842285156
+            ],
+            [
+              211.705535888672,
+              366.024780273438
+            ],
+            [
+              215.527069091797,
+              371.683746337891
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 106,
+          "joint_points": [
+            [
+              213.306655883789,
+              339.194183349609
+            ],
+            [
+              209.179397583008,
+              355.330993652344
+            ],
+            [
+              209.219253540039,
+              367.931213378906
+            ],
+            [
+              212.803802490234,
+              372.399322509766
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 107,
+          "joint_points": [
+            [
+              211.032989501953,
+              341.356994628906
+            ],
+            [
+              206.771881103516,
+              357.458984375
+            ],
+            [
+              206.707107543945,
+              370.059112548828
+            ],
+            [
+              210.706146240234,
+              375.587036132812
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 108,
+          "joint_points": [
+            [
+              209.224319458008,
+              343.1142578125
+            ],
+            [
+              204.953598022461,
+              359.213684082031
+            ],
+            [
+              204.881301879883,
+              371.813781738281
+            ],
+            [
+              210.188827514648,
+              379.778961181641
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 109,
+          "joint_points": [
+            [
+              208.835388183594,
+              343.388092041016
+            ],
+            [
+              204.73274230957,
+              359.531158447266
+            ],
+            [
+              204.791793823242,
+              372.131317138672
+            ],
+            [
+              210.826675415039,
+              380.996429443359
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 110,
+          "joint_points": [
+            [
+              208.529556274414,
+              343.479034423828
+            ],
+            [
+              204.559707641602,
+              359.6552734375
+            ],
+            [
+              204.722305297852,
+              372.254547119141
+            ],
+            [
+              210.530868530273,
+              379.94970703125
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 111,
+          "joint_points": [
+            [
+              208.310363769531,
+              343.472991943359
+            ],
+            [
+              204.43603515625,
+              359.672393798828
+            ],
+            [
+              204.672988891602,
+              372.270446777344
+            ],
+            [
+              209.124114990234,
+              378.448608398438
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 112,
+          "joint_points": [
+            [
+              208.158294677734,
+              343.426971435547
+            ],
+            [
+              204.35041809082,
+              359.642120361328
+            ],
+            [
+              204.639022827148,
+              372.239105224609
+            ],
+            [
+              207.261184692383,
+              378.090057373047
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 113,
+          "joint_points": [
+            [
+              208.053665161133,
+              343.374725341797
+            ],
+            [
+              204.291595458984,
+              359.600555419922
+            ],
+            [
+              204.615753173828,
+              372.196685791016
+            ],
+            [
+              205.856704711914,
+              379.143157958984
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 114,
+          "joint_points": [
+            [
+              207.980758666992,
+              343.337036132812
+            ],
+            [
+              204.250640869141,
+              359.570251464844
+            ],
+            [
+              204.599609375,
+              372.165710449219
+            ],
+            [
+              205.471862792969,
+              380.556732177734
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 115,
+          "joint_points": [
+            [
+              207.929504394531,
+              343.323303222656
+            ],
+            [
+              204.221862792969,
+              359.561645507812
+            ],
+            [
+              204.588272094727,
+              372.156616210938
+            ],
+            [
+              206.051361083984,
+              380.9931640625
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 116,
+          "joint_points": [
+            [
+              207.893600463867,
+              343.337615966797
+            ],
+            [
+              204.201721191406,
+              359.579559326172
+            ],
+            [
+              204.580352783203,
+              372.174163818359
+            ],
+            [
+              206.946868896484,
+              380.039001464844
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 117,
+          "joint_points": [
+            [
+              207.868499755859,
+              343.382415771484
+            ],
+            [
+              204.187637329102,
+              359.626861572266
+            ],
+            [
+              204.574829101562,
+              372.221221923828
+            ],
+            [
+              207.320510864258,
+              378.602569580078
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 118,
+          "joint_points": [
+            [
+              207.851013183594,
+              343.459075927734
+            ],
+            [
+              204.177841186523,
+              359.705261230469
+            ],
+            [
+              204.57096862793,
+              372.299438476562
+            ],
+            [
+              206.702728271484,
+              378.069061279297
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 119,
+          "joint_points": [
+            [
+              207.8388671875,
+              343.567901611328
+            ],
+            [
+              204.171020507812,
+              359.815277099609
+            ],
+            [
+              204.568298339844,
+              372.409332275391
+            ],
+            [
+              205.305999755859,
+              379.00927734375
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 120,
+          "joint_points": [
+            [
+              209.89697265625,
+              343.630676269531
+            ],
+            [
+              206.115936279297,
+              359.852081298828
+            ],
+            [
+              206.425369262695,
+              372.448608398438
+            ],
+            [
+              205.690734863281,
+              380.556701660156
+            ]
+          ],
+          "pose": "hit",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 121,
+          "joint_points": [
+            [
+              209.124694824219,
+              343.720306396484
+            ],
+            [
+              202.896728515625,
+              359.168365478516
+            ],
+            [
+              206.258285522461,
+              371.31201171875
+            ],
+            [
+              205.332260131836,
+              380.225830078125
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 122,
+          "joint_points": [
+            [
+              208.620712280273,
+              343.371490478516
+            ],
+            [
+              199.746780395508,
+              357.467010498047
+            ],
+            [
+              208.166030883789,
+              366.841644287109
+            ],
+            [
+              208.006576538086,
+              375.072052001953
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 123,
+          "joint_points": [
+            [
+              208.11799621582,
+              342.927917480469
+            ],
+            [
+              199.194351196289,
+              356.992034912109
+            ],
+            [
+              210.969665527344,
+              361.476409912109
+            ],
+            [
+              211.986801147461,
+              368.09228515625
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 124,
+          "joint_points": [
+            [
+              207.816146850586,
+              342.673583984375
+            ],
+            [
+              200.613983154297,
+              357.692230224609
+            ],
+            [
+              213.213592529297,
+              357.558044433594
+            ],
+            [
+              215.226257324219,
+              363.108337402344
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 125,
+          "joint_points": [
+            [
+              208.812408447266,
+              353.498626708984
+            ],
+            [
+              205.91748046875,
+              369.9013671875
+            ],
+            [
+              214.568267822266,
+              379.062774658203
+            ],
+            [
+              215.984558105469,
+              385.353118896484
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 126,
+          "joint_points": [
+            [
+              212.612930297852,
+              389.128845214844
+            ],
+            [
+              211.613830566406,
+              405.755096435547
+            ],
+            [
+              218.385971069336,
+              416.380828857422
+            ],
+            [
+              220.0,
+              424.0
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 127,
+          "joint_points": [
+            [
+              207.813507080078,
+              345.460693359375
+            ],
+            [
+              204.303131103516,
+              361.742828369141
+            ],
+            [
+              204.870986938477,
+              374.330322265625
+            ],
+            [
+              203.975875854492,
+              383.112426757812
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 128,
+          "joint_points": [
+            [
+              207.813140869141,
+              345.74658203125
+            ],
+            [
+              202.966903686523,
+              361.682220458984
+            ],
+            [
+              204.470321655273,
+              374.192504882812
+            ],
+            [
+              203.47151184082,
+              382.691955566406
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 129,
+          "joint_points": [
+            [
+              207.812896728516,
+              345.962921142578
+            ],
+            [
+              201.48681640625,
+              361.37109375
+            ],
+            [
+              205.094665527344,
+              373.443817138672
+            ],
+            [
+              204.394561767578,
+              380.521820068359
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 130,
+          "joint_points": [
+            [
+              207.812744140625,
+              346.124877929688
+            ],
+            [
+              200.698272705078,
+              361.185241699219
+            ],
+            [
+              206.804824829102,
+              372.206939697266
+            ],
+            [
+              206.577880859375,
+              378.07958984375
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 131,
+          "joint_points": [
+            [
+              207.812637329102,
+              346.24755859375
+            ],
+            [
+              200.338775634766,
+              361.132873535156
+            ],
+            [
+              208.952041625977,
+              370.329559326172
+            ],
+            [
+              209.248764038086,
+              376.600952148438
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 132,
+          "joint_points": [
+            [
+              207.812576293945,
+              346.346038818359
+            ],
+            [
+              200.146423339844,
+              361.133239746094
+            ],
+            [
+              210.519577026367,
+              368.286224365234
+            ],
+            [
+              211.479766845703,
+              376.068572998047
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 133,
+          "joint_points": [
+            [
+              207.812530517578,
+              346.435424804688
+            ],
+            [
+              199.851943969727,
+              361.066223144531
+            ],
+            [
+              211.228317260742,
+              366.483367919922
+            ],
+            [
+              212.742523193359,
+              375.370513916016
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 134,
+          "joint_points": [
+            [
+              207.812515258789,
+              346.530853271484
+            ],
+            [
+              199.482849121094,
+              360.954711914062
+            ],
+            [
+              211.469055175781,
+              364.840362548828
+            ],
+            [
+              213.194564819336,
+              373.480590820312
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 135,
+          "joint_points": [
+            [
+              207.8125,
+              346.647399902344
+            ],
+            [
+              199.399124145508,
+              361.022583007812
+            ],
+            [
+              211.786331176758,
+              363.330108642578
+            ],
+            [
+              213.508117675781,
+              370.558380126953
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 136,
+          "joint_points": [
+            [
+              207.8125,
+              346.80029296875
+            ],
+            [
+              199.973724365234,
+              361.496704101562
+            ],
+            [
+              212.557846069336,
+              362.135070800781
+            ],
+            [
+              214.355041503906,
+              367.942810058594
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 137,
+          "joint_points": [
+            [
+              207.8125,
+              347.0048828125
+            ],
+            [
+              201.045318603516,
+              362.224487304688
+            ],
+            [
+              213.619064331055,
+              361.406860351562
+            ],
+            [
+              215.892105102539,
+              367.044677734375
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 138,
+          "joint_points": [
+            [
+              207.816635131836,
+              347.320739746094
+            ],
+            [
+              201.840789794922,
+              362.868072509766
+            ],
+            [
+              214.345153808594,
+              361.316162109375
+            ],
+            [
+              217.589080810547,
+              368.270294189453
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 139,
+          "joint_points": [
+            [
+              209.091491699219,
+              360.249633789062
+            ],
+            [
+              206.59831237793,
+              376.718231201172
+            ],
+            [
+              215.865493774414,
+              385.255615234375
+            ],
+            [
+              218.342910766602,
+              394.400939941406
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 140,
+          "joint_points": [
+            [
+              211.160949707031,
+              379.608703613281
+            ],
+            [
+              213.498611450195,
+              396.990631103516
+            ],
+            [
+              216.765167236328,
+              409.849853515625
+            ],
+            [
+              218.570281982422,
+              419.590484619141
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 141,
+          "joint_points": [
+            [
+              213.065567016602,
+              388.325714111328
+            ],
+            [
+              211.409240722656,
+              404.8994140625
+            ],
+            [
+              218.181045532227,
+              415.525329589844
+            ],
+            [
+              219.777420043945,
+              424.013488769531
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": 0.0,
+          "frame": 142,
+          "joint_points": [
+            [
+              212.741760253906,
+              389.101806640625
+            ],
+            [
+              213.666397094727,
+              405.732360839844
+            ],
+            [
+              218.611068725586,
+              417.321929931641
+            ],
+            [
+              220.0,
+              424.0
+            ]
+          ],
+          "pose": "contact",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": 0.0500092804431915,
+          "frame": 143,
+          "joint_points": [
+            [
+              212.395690917969,
+              389.175598144531
+            ],
+            [
+              215.150527954102,
+              405.780792236328
+            ],
+            [
+              218.692367553711,
+              418.011627197266
+            ],
+            [
+              219.989334106445,
+              423.951141357422
+            ]
+          ],
+          "pose": "contact",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": 4.03122329711914,
+          "frame": 144,
+          "joint_points": [
+            [
+              211.520950317383,
+              382.697418212891
+            ],
+            [
+              212.809753417969,
+              401.641754150391
+            ],
+            [
+              215.36051940918,
+              415.777801513672
+            ],
+            [
+              216.169158935547,
+              422.744842529297
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": 6.36168146133423,
+          "frame": 145,
+          "joint_points": [
+            [
+              210.830596923828,
+              378.309753417969
+            ],
+            [
+              211.778274536133,
+              397.274230957031
+            ],
+            [
+              214.074234008789,
+              411.453887939453
+            ],
+            [
+              214.926452636719,
+              420.162017822266
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": 9.92179870605469,
+          "frame": 146,
+          "joint_points": [
+            [
+              210.246887207031,
+              373.116607666016
+            ],
+            [
+              211.022262573242,
+              392.088897705078
+            ],
+            [
+              213.189315795898,
+              406.288818359375
+            ],
+            [
+              214.055679321289,
+              416.055999755859
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": 16.3348865509033,
+          "frame": 147,
+          "joint_points": [
+            [
+              209.572235107422,
+              367.126708984375
+            ],
+            [
+              210.087692260742,
+              385.955291748047
+            ],
+            [
+              212.053634643555,
+              400.067993164062
+            ],
+            [
+              212.753616333008,
+              409.360382080078
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": 29.0288066864014,
+          "frame": 148,
+          "joint_points": [
+            [
+              208.792770385742,
+              360.190765380859
+            ],
+            [
+              207.020248413086,
+              376.75244140625
+            ],
+            [
+              209.706298828125,
+              389.063110351562
+            ],
+            [
+              209.95002746582,
+              396.766387939453
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": 38.9224586486816,
+          "frame": 149,
+          "joint_points": [
+            [
+              207.969390869141,
+              352.588470458984
+            ],
+            [
+              203.974029541016,
+              368.758422851562
+            ],
+            [
+              207.443374633789,
+              380.871704101562
+            ],
+            [
+              207.325698852539,
+              387.198913574219
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": 40.3063087463379,
+          "frame": 150,
+          "joint_points": [
+            [
+              207.8125,
+              351.041961669922
+            ],
+            [
+              204.281784057617,
+              367.319702148438
+            ],
+            [
+              206.172271728516,
+              379.777374267578
+            ],
+            [
+              205.801254272461,
+              386.277404785156
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": 39.1865539550781,
+          "frame": 151,
+          "joint_points": [
+            [
+              207.8125,
+              350.986938476562
+            ],
+            [
+              204.425704956055,
+              367.295227050781
+            ],
+            [
+              205.777984619141,
+              379.82275390625
+            ],
+            [
+              205.221725463867,
+              387.706909179688
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": 38.2193412780762,
+          "frame": 152,
+          "joint_points": [
+            [
+              207.8125,
+              350.900177001953
+            ],
+            [
+              204.434768676758,
+              367.210357666016
+            ],
+            [
+              206.157073974609,
+              379.6923828125
+            ],
+            [
+              205.64616394043,
+              388.578460693359
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": 38.4108581542969,
+          "frame": 153,
+          "joint_points": [
+            [
+              207.8125,
+              350.782623291016
+            ],
+            [
+              204.2724609375,
+              367.058349609375
+            ],
+            [
+              206.888565063477,
+              379.384063720703
+            ],
+            [
+              206.610290527344,
+              387.998474121094
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 154,
+          "joint_points": [
+            [
+              207.8125,
+              350.635528564453
+            ],
+            [
+              204.15625,
+              366.885528564453
+            ],
+            [
+              204.5625,
+              379.479278564453
+            ],
+            [
+              207.284652709961,
+              386.399841308594
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 155,
+          "joint_points": [
+            [
+              207.8125,
+              350.460327148438
+            ],
+            [
+              204.15625,
+              366.710327148438
+            ],
+            [
+              204.5625,
+              379.304077148438
+            ],
+            [
+              207.033416748047,
+              385.138977050781
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l01_front.png"
+        }
+      ],
+      "hunter_damage": 18.0,
+      "level": 1,
+      "poses": [
+        "idle",
+        "move",
+        "hit",
+        "windup",
+        "contact",
+        "follow"
+      ],
+      "textures": {
+        "res://assets/visual_rebirth/articulated/electric_l01_back.png": true,
+        "res://assets/visual_rebirth/articulated/electric_l01_front.png": true,
+        "res://assets/visual_rebirth/articulated/electric_l01_left.png": true,
+        "res://assets/visual_rebirth/articulated/electric_l01_right.png": true
+      }
+    },
+    {
+      "approach_frames": 109,
+      "bound_hit_pose": true,
+      "bound_release_pose": true,
+      "bound_tell_pose": true,
+      "door_damage": 19.3600000000001,
+      "events": {
+        "door_strike": 142,
+        "impact": 120,
+        "launch": 109,
+        "ordinary_warning": 127
+      },
+      "first_hunter_damage_frame": 120,
+      "frame_count": 156,
+      "frames": [
+        {
+          "actual_contact_error": -1.0,
+          "frame": 0,
+          "joint_points": [
+            [
+              239.59375,
+              275.544372558594
+            ],
+            [
+              242.4375,
+              293.013122558594
+            ],
+            [
+              252.59375,
+              306.825622558594
+            ],
+            [
+              258.914978027344,
+              315.777191162109
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 1,
+          "joint_points": [
+            [
+              239.59375,
+              275.959991455078
+            ],
+            [
+              242.4375,
+              293.428741455078
+            ],
+            [
+              252.59375,
+              307.241241455078
+            ],
+            [
+              259.58154296875,
+              314.697814941406
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 2,
+          "joint_points": [
+            [
+              239.59375,
+              276.368133544922
+            ],
+            [
+              242.4375,
+              293.836883544922
+            ],
+            [
+              252.59375,
+              307.649383544922
+            ],
+            [
+              259.204040527344,
+              314.234893798828
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 3,
+          "joint_points": [
+            [
+              239.59375,
+              276.765197753906
+            ],
+            [
+              242.4375,
+              294.233947753906
+            ],
+            [
+              252.59375,
+              308.046447753906
+            ],
+            [
+              258.204986572266,
+              315.197967529297
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 4,
+          "joint_points": [
+            [
+              239.59375,
+              277.147521972656
+            ],
+            [
+              242.4375,
+              294.616271972656
+            ],
+            [
+              252.59375,
+              308.428771972656
+            ],
+            [
+              257.406829833984,
+              317.054992675781
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 5,
+          "joint_points": [
+            [
+              239.59375,
+              277.511779785156
+            ],
+            [
+              242.4375,
+              294.980529785156
+            ],
+            [
+              252.59375,
+              308.793029785156
+            ],
+            [
+              257.478820800781,
+              318.426086425781
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 6,
+          "joint_points": [
+            [
+              243.235168457031,
+              277.442230224609
+            ],
+            [
+              245.998962402344,
+              294.923797607422
+            ],
+            [
+              256.091888427734,
+              308.782623291016
+            ],
+            [
+              262.356475830078,
+              317.464324951172
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 7,
+          "joint_points": [
+            [
+              246.939453125,
+              277.466888427734
+            ],
+            [
+              249.59440612793,
+              294.96533203125
+            ],
+            [
+              259.600921630859,
+              308.886688232422
+            ],
+            [
+              267.761688232422,
+              315.678009033203
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 8,
+          "joint_points": [
+            [
+              250.697647094727,
+              277.586761474609
+            ],
+            [
+              253.218948364258,
+              295.104949951172
+            ],
+            [
+              263.118896484375,
+              309.102294921875
+            ],
+            [
+              272.361907958984,
+              314.856658935547
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 9,
+          "joint_points": [
+            [
+              254.462432861328,
+              277.8154296875
+            ],
+            [
+              256.846893310547,
+              295.352783203125
+            ],
+            [
+              266.637268066406,
+              309.426971435547
+            ],
+            [
+              275.281433105469,
+              316.294586181641
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 10,
+          "joint_points": [
+            [
+              258.174621582031,
+              278.157562255859
+            ],
+            [
+              260.4462890625,
+              295.709869384766
+            ],
+            [
+              270.145965576172,
+              309.846740722656
+            ],
+            [
+              277.128173828125,
+              318.809631347656
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 11,
+          "joint_points": [
+            [
+              261.780517578125,
+              278.599212646484
+            ],
+            [
+              263.988128662109,
+              296.159698486328
+            ],
+            [
+              273.636199951172,
+              310.331848144531
+            ],
+            [
+              279.471282958984,
+              319.984924316406
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 12,
+          "joint_points": [
+            [
+              265.243316650391,
+              279.107757568359
+            ],
+            [
+              267.452728271484,
+              296.668029785156
+            ],
+            [
+              277.102203369141,
+              310.839172363281
+            ],
+            [
+              283.144805908203,
+              318.837127685547
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 13,
+          "joint_points": [
+            [
+              268.548767089844,
+              279.637023925781
+            ],
+            [
+              270.832305908203,
+              297.187805175781
+            ],
+            [
+              280.541534423828,
+              311.318084716797
+            ],
+            [
+              287.268463134766,
+              318.054016113281
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 14,
+          "joint_points": [
+            [
+              271.706634521484,
+              280.134490966797
+            ],
+            [
+              274.132019042969,
+              297.666229248047
+            ],
+            [
+              283.955230712891,
+              311.717529296875
+            ],
+            [
+              290.226043701172,
+              319.346862792969
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 15,
+          "joint_points": [
+            [
+              274.748138427734,
+              280.548126220703
+            ],
+            [
+              277.368591308594,
+              298.0517578125
+            ],
+            [
+              287.347625732422,
+              311.992828369141
+            ],
+            [
+              291.589782714844,
+              321.369537353516
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 16,
+          "joint_points": [
+            [
+              277.720764160156,
+              280.826934814453
+            ],
+            [
+              280.567413330078,
+              298.295227050781
+            ],
+            [
+              290.725921630859,
+              312.106048583984
+            ],
+            [
+              292.780212402344,
+              321.520141601562
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 17,
+          "joint_points": [
+            [
+              280.681701660156,
+              280.535858154297
+            ],
+            [
+              283.759429931641,
+              297.964904785156
+            ],
+            [
+              294.100006103516,
+              311.639984130859
+            ],
+            [
+              295.616790771484,
+              319.237121582031
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 18,
+          "joint_points": [
+            [
+              283.689910888672,
+              280.096038818359
+            ],
+            [
+              286.976745605469,
+              297.486877441406
+            ],
+            [
+              297.480804443359,
+              311.036743164062
+            ],
+            [
+              300.338226318359,
+              317.485504150391
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 19,
+          "joint_points": [
+            [
+              286.798950195312,
+              279.545654296875
+            ],
+            [
+              290.248626708984,
+              296.904907226562
+            ],
+            [
+              300.879211425781,
+              310.355773925781
+            ],
+            [
+              305.340881347656,
+              317.902923583984
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 20,
+          "joint_points": [
+            [
+              290.050659179688,
+              278.930938720703
+            ],
+            [
+              293.598114013672,
+              296.270477294922
+            ],
+            [
+              304.304321289062,
+              309.661224365234
+            ],
+            [
+              308.960296630859,
+              318.908294677734
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 21,
+          "joint_points": [
+            [
+              293.063293457031,
+              278.343780517578
+            ],
+            [
+              296.605010986328,
+              295.684509277344
+            ],
+            [
+              307.306793212891,
+              309.078765869141
+            ],
+            [
+              310.946838378906,
+              318.020721435547
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 22,
+          "joint_points": [
+            [
+              293.158264160156,
+              281.227844238281
+            ],
+            [
+              296.656799316406,
+              298.577331542969
+            ],
+            [
+              307.325164794922,
+              311.998199462891
+            ],
+            [
+              310.149383544922,
+              318.527404785156
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 23,
+          "joint_points": [
+            [
+              283.71875,
+              283.67919921875
+            ],
+            [
+              277.222869873047,
+              303.723114013672
+            ],
+            [
+              274.221557617188,
+              318.094360351562
+            ],
+            [
+              270.222839355469,
+              326.733001708984
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 24,
+          "joint_points": [
+            [
+              284.089904785156,
+              286.632415771484
+            ],
+            [
+              277.389282226562,
+              306.608795166016
+            ],
+            [
+              274.241058349609,
+              320.948638916016
+            ],
+            [
+              272.026031494141,
+              330.478485107422
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 25,
+          "joint_points": [
+            [
+              284.55078125,
+              289.690368652344
+            ],
+            [
+              277.597839355469,
+              309.580352783203
+            ],
+            [
+              274.268371582031,
+              323.879150390625
+            ],
+            [
+              273.032897949219,
+              334.757720947266
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 26,
+          "joint_points": [
+            [
+              285.050750732422,
+              292.6962890625
+            ],
+            [
+              277.826385498047,
+              312.489288330078
+            ],
+            [
+              274.301635742188,
+              326.7412109375
+            ],
+            [
+              272.247650146484,
+              337.123962402344
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 27,
+          "joint_points": [
+            [
+              285.533721923828,
+              295.59228515625
+            ],
+            [
+              278.049407958984,
+              315.288452148438
+            ],
+            [
+              274.337341308594,
+              329.492767333984
+            ],
+            [
+              270.672546386719,
+              338.165466308594
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 28,
+          "joint_points": [
+            [
+              285.944854736328,
+              298.653350830078
+            ],
+            [
+              278.241027832031,
+              318.264739990234
+            ],
+            [
+              274.370544433594,
+              332.426666259766
+            ],
+            [
+              270.22705078125,
+              340.850189208984
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 29,
+          "joint_points": [
+            [
+              286.236938476562,
+              301.884063720703
+            ],
+            [
+              278.378143310547,
+              321.433837890625
+            ],
+            [
+              274.395690917969,
+              335.564697265625
+            ],
+            [
+              271.611083984375,
+              346.033325195312
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 30,
+          "joint_points": [
+            [
+              286.376159667969,
+              305.268341064453
+            ],
+            [
+              278.443725585938,
+              324.788360595703
+            ],
+            [
+              274.408081054688,
+              338.904144287109
+            ],
+            [
+              273.526153564453,
+              351.443481445312
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 31,
+          "joint_points": [
+            [
+              286.346252441406,
+              308.773010253906
+            ],
+            [
+              278.429626464844,
+              328.299438476562
+            ],
+            [
+              274.405395507812,
+              342.418487548828
+            ],
+            [
+              274.135498046875,
+              354.441650390625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 32,
+          "joint_points": [
+            [
+              286.150207519531,
+              312.352752685547
+            ],
+            [
+              278.337341308594,
+              331.920959472656
+            ],
+            [
+              274.388092041016,
+              346.061126708984
+            ],
+            [
+              273.104400634766,
+              356.250427246094
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 33,
+          "joint_points": [
+            [
+              285.668914794922,
+              313.189025878906
+            ],
+            [
+              278.112243652344,
+              332.857574462891
+            ],
+            [
+              274.347991943359,
+              347.048126220703
+            ],
+            [
+              271.602661132812,
+              356.939910888672
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 34,
+          "joint_points": [
+            [
+              281.963745117188,
+              313.175048828125
+            ],
+            [
+              274.534851074219,
+              332.892211914062
+            ],
+            [
+              270.862762451172,
+              347.106872558594
+            ],
+            [
+              268.412017822266,
+              358.571411132812
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 35,
+          "joint_points": [
+            [
+              289.519256591797,
+              314.858673095703
+            ],
+            [
+              287.377563476562,
+              332.314239501953
+            ],
+            [
+              279.183349609375,
+              343.231384277344
+            ],
+            [
+              277.755584716797,
+              354.064453125
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 36,
+          "joint_points": [
+            [
+              285.623046875,
+              314.538513183594
+            ],
+            [
+              283.684326171875,
+              332.017761230469
+            ],
+            [
+              275.617523193359,
+              343.029388427734
+            ],
+            [
+              275.160949707031,
+              353.177459716797
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 37,
+          "joint_points": [
+            [
+              281.712554931641,
+              313.907470703125
+            ],
+            [
+              279.983917236328,
+              331.408752441406
+            ],
+            [
+              272.049957275391,
+              342.516479492188
+            ],
+            [
+              270.6865234375,
+              350.869720458984
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 38,
+          "joint_points": [
+            [
+              277.846893310547,
+              313.188354492188
+            ],
+            [
+              276.307403564453,
+              330.707305908203
+            ],
+            [
+              268.493896484375,
+              341.900054931641
+            ],
+            [
+              264.647430419922,
+              349.934173583984
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 39,
+          "joint_points": [
+            [
+              274.079223632812,
+              312.421325683594
+            ],
+            [
+              272.682678222656,
+              329.952239990234
+            ],
+            [
+              264.960693359375,
+              341.208374023438
+            ],
+            [
+              258.907745361328,
+              350.908996582031
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 40,
+          "joint_points": [
+            [
+              270.449829101562,
+              311.655395507812
+            ],
+            [
+              269.130615234375,
+              329.192291259766
+            ],
+            [
+              261.458374023438,
+              340.482360839844
+            ],
+            [
+              254.947387695312,
+              351.488037109375
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 41,
+          "joint_points": [
+            [
+              266.981811523438,
+              310.943389892578
+            ],
+            [
+              265.663238525391,
+              328.480346679688
+            ],
+            [
+              257.991424560547,
+              339.770690917969
+            ],
+            [
+              252.349304199219,
+              349.506896972656
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 42,
+          "joint_points": [
+            [
+              263.678619384766,
+              310.336853027344
+            ],
+            [
+              262.282348632812,
+              327.867797851562
+            ],
+            [
+              254.560562133789,
+              339.1240234375
+            ],
+            [
+              249.424728393555,
+              346.423278808594
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 43,
+          "joint_points": [
+            [
+              260.524322509766,
+              309.880187988281
+            ],
+            [
+              258.979736328125,
+              327.398681640625
+            ],
+            [
+              251.162994384766,
+              338.589172363281
+            ],
+            [
+              245.267730712891,
+              345.258270263672
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 44,
+          "joint_points": [
+            [
+              257.485382080078,
+              309.605072021484
+            ],
+            [
+              255.738021850586,
+              327.1044921875
+            ],
+            [
+              247.792190551758,
+              338.203735351562
+            ],
+            [
+              240.879531860352,
+              346.245452880859
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 45,
+          "joint_points": [
+            [
+              254.514938354492,
+              309.525848388672
+            ],
+            [
+              252.532775878906,
+              327.000244140625
+            ],
+            [
+              244.438629150391,
+              337.991760253906
+            ],
+            [
+              238.051666259766,
+              346.906036376953
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 46,
+          "joint_points": [
+            [
+              251.558013916016,
+              309.297119140625
+            ],
+            [
+              249.33512878418,
+              326.742523193359
+            ],
+            [
+              241.090209960938,
+              337.621429443359
+            ],
+            [
+              237.257385253906,
+              345.382049560547
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 47,
+          "joint_points": [
+            [
+              249.035186767578,
+              309.2431640625
+            ],
+            [
+              246.618774414062,
+              326.662811279297
+            ],
+            [
+              238.253601074219,
+              337.449523925781
+            ],
+            [
+              237.346908569336,
+              343.797088623047
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 48,
+          "joint_points": [
+            [
+              249.40104675293,
+              305.828247070312
+            ],
+            [
+              246.812469482422,
+              323.22314453125
+            ],
+            [
+              238.341003417969,
+              333.926574707031
+            ],
+            [
+              238.994262695312,
+              340.823425292969
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 49,
+          "joint_points": [
+            [
+              238.749542236328,
+              301.050476074219
+            ],
+            [
+              227.971405029297,
+              317.482849121094
+            ],
+            [
+              223.556549072266,
+              326.447113037109
+            ],
+            [
+              223.516540527344,
+              334.858917236328
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 50,
+          "joint_points": [
+            [
+              238.851486206055,
+              297.954711914062
+            ],
+            [
+              228.030364990234,
+              314.358825683594
+            ],
+            [
+              223.592086791992,
+              323.311492919922
+            ],
+            [
+              222.70817565918,
+              333.189453125
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 51,
+          "joint_points": [
+            [
+              238.778564453125,
+              295.012145996094
+            ],
+            [
+              227.988174438477,
+              311.436492919922
+            ],
+            [
+              223.566665649414,
+              320.397430419922
+            ],
+            [
+              222.800018310547,
+              328.955169677734
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 52,
+          "joint_points": [
+            [
+              238.536346435547,
+              292.172302246094
+            ],
+            [
+              227.848373413086,
+              308.663482666016
+            ],
+            [
+              223.482711791992,
+              317.651763916016
+            ],
+            [
+              223.631195068359,
+              324.627288818359
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 53,
+          "joint_points": [
+            [
+              238.150833129883,
+              289.378295898438
+            ],
+            [
+              227.627029418945,
+              305.974700927734
+            ],
+            [
+              223.350738525391,
+              315.005889892578
+            ],
+            [
+              223.555923461914,
+              322.477783203125
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 54,
+          "joint_points": [
+            [
+              237.664855957031,
+              286.572448730469
+            ],
+            [
+              227.349975585938,
+              303.299499511719
+            ],
+            [
+              223.187286376953,
+              312.383605957031
+            ],
+            [
+              221.399963378906,
+              321.766143798828
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 55,
+          "joint_points": [
+            [
+              237.132781982422,
+              283.607177734375
+            ],
+            [
+              227.049270629883,
+              300.474731445312
+            ],
+            [
+              223.012084960938,
+              309.615295410156
+            ],
+            [
+              217.979644775391,
+              319.622833251953
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 56,
+          "joint_points": [
+            [
+              236.613815307617,
+              280.208465576172
+            ],
+            [
+              226.758605957031,
+              297.210418701172
+            ],
+            [
+              222.845016479492,
+              306.404571533203
+            ],
+            [
+              215.419189453125,
+              314.913970947266
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 57,
+          "joint_points": [
+            [
+              236.16520690918,
+              276.723571777344
+            ],
+            [
+              226.509460449219,
+              293.839599609375
+            ],
+            [
+              222.703643798828,
+              303.078887939453
+            ],
+            [
+              214.996307373047,
+              310.199737548828
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 58,
+          "joint_points": [
+            [
+              235.835968017578,
+              273.178436279297
+            ],
+            [
+              226.327896118164,
+              290.376922607422
+            ],
+            [
+              222.601715087891,
+              299.648620605469
+            ],
+            [
+              215.923202514648,
+              307.556274414062
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 59,
+          "joint_points": [
+            [
+              236.01611328125,
+              272.273712158203
+            ],
+            [
+              226.427093505859,
+              289.427215576172
+            ],
+            [
+              222.657287597656,
+              298.681213378906
+            ],
+            [
+              217.042129516602,
+              308.340087890625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 60,
+          "joint_points": [
+            [
+              239.351455688477,
+              272.313079833984
+            ],
+            [
+              229.821411132812,
+              289.499389648438
+            ],
+            [
+              226.083389282227,
+              298.766326904297
+            ],
+            [
+              219.704696655273,
+              308.783782958984
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 61,
+          "joint_points": [
+            [
+              252.18196105957,
+              272.415954589844
+            ],
+            [
+              255.639373779297,
+              289.773681640625
+            ],
+            [
+              266.275939941406,
+              303.219787597656
+            ],
+            [
+              267.485046386719,
+              310.466430664062
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 62,
+          "joint_points": [
+            [
+              255.816360473633,
+              272.519287109375
+            ],
+            [
+              259.197448730469,
+              289.892028808594
+            ],
+            [
+              269.774780273438,
+              303.384796142578
+            ],
+            [
+              271.522125244141,
+              308.735717773438
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 63,
+          "joint_points": [
+            [
+              259.596496582031,
+              272.741729736328
+            ],
+            [
+              262.834747314453,
+              290.141662597656
+            ],
+            [
+              273.300933837891,
+              303.720825195312
+            ],
+            [
+              277.431579589844,
+              309.393127441406
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 64,
+          "joint_points": [
+            [
+              263.490417480469,
+              273.113250732422
+            ],
+            [
+              266.533752441406,
+              290.54833984375
+            ],
+            [
+              276.847290039062,
+              304.243804931641
+            ],
+            [
+              283.728668212891,
+              311.5205078125
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 65,
+          "joint_points": [
+            [
+              267.449859619141,
+              273.598571777344
+            ],
+            [
+              270.267944335938,
+              291.071472167969
+            ],
+            [
+              280.403869628906,
+              304.898895263672
+            ],
+            [
+              288.502105712891,
+              312.48291015625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 66,
+          "joint_points": [
+            [
+              271.417388916016,
+              273.870971679688
+            ],
+            [
+              274.006072998047,
+              291.379333496094
+            ],
+            [
+              283.959808349609,
+              305.338470458984
+            ],
+            [
+              291.385650634766,
+              311.442993164062
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 67,
+          "joint_points": [
+            [
+              275.333953857422,
+              274.299407958984
+            ],
+            [
+              277.716186523438,
+              291.837066650391
+            ],
+            [
+              287.504791259766,
+              305.912506103516
+            ],
+            [
+              293.847259521484,
+              311.105072021484
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 68,
+          "joint_points": [
+            [
+              279.146423339844,
+              274.878021240234
+            ],
+            [
+              281.369720458984,
+              292.4365234375
+            ],
+            [
+              291.030456542969,
+              306.600036621094
+            ],
+            [
+              297.450256347656,
+              313.256469726562
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 69,
+          "joint_points": [
+            [
+              282.813842773438,
+              275.581634521484
+            ],
+            [
+              284.944793701172,
+              293.151580810547
+            ],
+            [
+              294.530883789062,
+              307.36572265625
+            ],
+            [
+              302.054656982422,
+              316.455352783203
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 70,
+          "joint_points": [
+            [
+              286.312042236328,
+              276.3701171875
+            ],
+            [
+              288.428466796875,
+              293.941833496094
+            ],
+            [
+              298.002777099609,
+              308.163879394531
+            ],
+            [
+              306.010314941406,
+              317.754974365234
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 71,
+          "joint_points": [
+            [
+              289.63623046875,
+              277.194183349609
+            ],
+            [
+              291.818206787109,
+              294.757873535156
+            ],
+            [
+              301.445556640625,
+              308.944091796875
+            ],
+            [
+              308.124237060547,
+              316.746368408203
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 72,
+          "joint_points": [
+            [
+              292.80126953125,
+              278.000915527344
+            ],
+            [
+              295.121948242188,
+              295.546813964844
+            ],
+            [
+              304.861083984375,
+              309.656524658203
+            ],
+            [
+              309.146606445312,
+              316.375396728516
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 73,
+          "joint_points": [
+            [
+              295.839904785156,
+              278.738586425781
+            ],
+            [
+              298.357116699219,
+              296.257385253906
+            ],
+            [
+              308.253784179688,
+              310.257019042969
+            ],
+            [
+              311.052764892578,
+              318.1171875
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 74,
+          "joint_points": [
+            [
+              298.799224853516,
+              279.361206054688
+            ],
+            [
+              301.548919677734,
+              296.845001220703
+            ],
+            [
+              311.630676269531,
+              310.711975097656
+            ],
+            [
+              314.908203125,
+              320.215606689453
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 75,
+          "joint_points": [
+            [
+              301.735321044922,
+              279.567749023438
+            ],
+            [
+              304.727661132812,
+              297.011657714844
+            ],
+            [
+              315.001129150391,
+              310.737213134766
+            ],
+            [
+              319.726501464844,
+              319.921234130859
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 76,
+          "joint_points": [
+            [
+              302.055877685547,
+              279.334533691406
+            ],
+            [
+              305.145416259766,
+              296.761505126953
+            ],
+            [
+              315.495208740234,
+              310.429565429688
+            ],
+            [
+              321.071044921875,
+              317.850677490234
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 77,
+          "joint_points": [
+            [
+              289.318298339844,
+              280.943756103516
+            ],
+            [
+              282.669311523438,
+              300.937408447266
+            ],
+            [
+              279.558197021484,
+              315.285278320312
+            ],
+            [
+              276.597991943359,
+              325.178955078125
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 78,
+          "joint_points": [
+            [
+              286.342987060547,
+              283.07373046875
+            ],
+            [
+              279.858306884766,
+              303.121276855469
+            ],
+            [
+              276.865020751953,
+              317.494232177734
+            ],
+            [
+              272.444152832031,
+              328.591827392578
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 79,
+          "joint_points": [
+            [
+              283.459075927734,
+              285.080505371094
+            ],
+            [
+              277.088745117188,
+              305.164703369141
+            ],
+            [
+              274.177459716797,
+              319.554443359375
+            ],
+            [
+              269.347747802734,
+              332.353637695312
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 80,
+          "joint_points": [
+            [
+              280.706665039062,
+              287.002990722656
+            ],
+            [
+              274.377868652344,
+              307.100280761719
+            ],
+            [
+              271.496276855469,
+              321.496032714844
+            ],
+            [
+              267.815093994141,
+              334.0
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 81,
+          "joint_points": [
+            [
+              278.106262207031,
+              288.888244628906
+            ],
+            [
+              271.734466552734,
+              308.971954345703
+            ],
+            [
+              268.822113037109,
+              323.361511230469
+            ],
+            [
+              266.56689453125,
+              333.460784912109
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 82,
+          "joint_points": [
+            [
+              275.657196044922,
+              290.785675048828
+            ],
+            [
+              269.158599853516,
+              310.828704833984
+            ],
+            [
+              266.155364990234,
+              325.199554443359
+            ],
+            [
+              263.925476074219,
+              333.859191894531
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 83,
+          "joint_points": [
+            [
+              273.338745117188,
+              292.740417480469
+            ],
+            [
+              266.641967773438,
+              312.718139648438
+            ],
+            [
+              263.496551513672,
+              327.058532714844
+            ],
+            [
+              259.737365722656,
+              336.585723876953
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 84,
+          "joint_points": [
+            [
+              271.113220214844,
+              294.786590576172
+            ],
+            [
+              264.168823242188,
+              314.679565429688
+            ],
+            [
+              260.845489501953,
+              328.979797363281
+            ],
+            [
+              255.631301879883,
+              339.862915039062
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 85,
+          "joint_points": [
+            [
+              268.930755615234,
+              296.784301757812
+            ],
+            [
+              261.717407226562,
+              316.581329345703
+            ],
+            [
+              258.200592041016,
+              330.835205078125
+            ],
+            [
+              253.259384155273,
+              341.24755859375
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 86,
+          "joint_points": [
+            [
+              266.735382080078,
+              298.641204833984
+            ],
+            [
+              259.262329101562,
+              318.341705322266
+            ],
+            [
+              255.558395385742,
+              332.548095703125
+            ],
+            [
+              252.478958129883,
+              341.242156982422
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 87,
+          "joint_points": [
+            [
+              264.471801757812,
+              300.645385742188
+            ],
+            [
+              256.777526855469,
+              320.260498046875
+            ],
+            [
+              252.913970947266,
+              334.424346923828
+            ],
+            [
+              251.533447265625,
+              342.821441650391
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 88,
+          "joint_points": [
+            [
+              262.092071533203,
+              302.801177978516
+            ],
+            [
+              254.239639282227,
+              322.353515625
+            ],
+            [
+              250.261795043945,
+              336.485687255859
+            ],
+            [
+              249.031967163086,
+              346.895385742188
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 89,
+          "joint_points": [
+            [
+              259.561340332031,
+              305.092163085938
+            ],
+            [
+              251.63117980957,
+              324.613128662109
+            ],
+            [
+              247.597152709961,
+              338.729339599609
+            ],
+            [
+              245.476150512695,
+              351.230072021484
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 90,
+          "joint_points": [
+            [
+              256.862121582031,
+              307.484497070312
+            ],
+            [
+              248.943313598633,
+              327.010070800781
+            ],
+            [
+              244.917495727539,
+              341.128631591797
+            ],
+            [
+              242.59684753418,
+              353.181640625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 91,
+          "joint_points": [
+            [
+              253.996322631836,
+              309.932159423828
+            ],
+            [
+              246.177017211914,
+              329.497802734375
+            ],
+            [
+              242.223129272461,
+              343.636657714844
+            ],
+            [
+              241.262191772461,
+              353.8505859375
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 92,
+          "joint_points": [
+            [
+              250.984924316406,
+              312.382019042969
+            ],
+            [
+              243.342956542969,
+              332.017578125
+            ],
+            [
+              239.517150878906,
+              346.191650390625
+            ],
+            [
+              240.358291625977,
+              356.101715087891
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 93,
+          "joint_points": [
+            [
+              248.381896972656,
+              314.278717041016
+            ],
+            [
+              240.979064941406,
+              334.005676269531
+            ],
+            [
+              237.325759887695,
+              348.225189208984
+            ],
+            [
+              238.45149230957,
+              359.817016601562
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 94,
+          "joint_points": [
+            [
+              245.348022460938,
+              316.668426513672
+            ],
+            [
+              238.188140869141,
+              336.48486328125
+            ],
+            [
+              234.709838867188,
+              350.748168945312
+            ],
+            [
+              234.136459350586,
+              363.654388427734
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 95,
+          "joint_points": [
+            [
+              242.287902832031,
+              318.606140136719
+            ],
+            [
+              235.387268066406,
+              338.514312744141
+            ],
+            [
+              232.095397949219,
+              352.821838378906
+            ],
+            [
+              229.018218994141,
+              364.848297119141
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 96,
+          "joint_points": [
+            [
+              239.258529663086,
+              320.332275390625
+            ],
+            [
+              232.602386474609,
+              340.323547363281
+            ],
+            [
+              229.486114501953,
+              354.670318603516
+            ],
+            [
+              224.97412109375,
+              364.920776367188
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 97,
+          "joint_points": [
+            [
+              236.312835693359,
+              321.944030761719
+            ],
+            [
+              229.856735229492,
+              342.000793457031
+            ],
+            [
+              226.88395690918,
+              356.377990722656
+            ],
+            [
+              222.457992553711,
+              366.550628662109
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 98,
+          "joint_points": [
+            [
+              233.493515014648,
+              323.476501464844
+            ],
+            [
+              227.168380737305,
+              343.574951171875
+            ],
+            [
+              224.289428710938,
+              357.971252441406
+            ],
+            [
+              220.141098022461,
+              369.915313720703
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 99,
+          "joint_points": [
+            [
+              230.828430175781,
+              324.974151611328
+            ],
+            [
+              224.548736572266,
+              345.086853027344
+            ],
+            [
+              221.70231628418,
+              359.489593505859
+            ],
+            [
+              216.603988647461,
+              372.505187988281
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 100,
+          "joint_points": [
+            [
+              228.328125,
+              326.487182617188
+            ],
+            [
+              222.002090454102,
+              346.585357666016
+            ],
+            [
+              219.122482299805,
+              360.981506347656
+            ],
+            [
+              212.138778686523,
+              372.190032958984
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 101,
+          "joint_points": [
+            [
+              225.984924316406,
+              328.066345214844
+            ],
+            [
+              219.525451660156,
+              348.122009277344
+            ],
+            [
+              216.550247192383,
+              362.498718261719
+            ],
+            [
+              208.572082519531,
+              371.388549804688
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 102,
+          "joint_points": [
+            [
+              223.773788452148,
+              329.757293701172
+            ],
+            [
+              217.108688354492,
+              349.74560546875
+            ],
+            [
+              213.985977172852,
+              364.090972900391
+            ],
+            [
+              207.270492553711,
+              372.712585449219
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 103,
+          "joint_points": [
+            [
+              221.654891967773,
+              331.594543457031
+            ],
+            [
+              214.735137939453,
+              351.49609375
+            ],
+            [
+              211.42951965332,
+              365.800445556641
+            ],
+            [
+              207.57536315918,
+              375.966918945312
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 104,
+          "joint_points": [
+            [
+              219.577697753906,
+              333.467468261719
+            ],
+            [
+              212.382781982422,
+              353.271209716797
+            ],
+            [
+              208.879257202148,
+              367.528381347656
+            ],
+            [
+              207.448852539062,
+              378.425231933594
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 105,
+          "joint_points": [
+            [
+              217.486343383789,
+              335.218475341797
+            ],
+            [
+              210.026336669922,
+              354.923889160156
+            ],
+            [
+              206.331817626953,
+              369.132751464844
+            ],
+            [
+              205.613845825195,
+              378.775024414062
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 106,
+          "joint_points": [
+            [
+              215.325912475586,
+              337.174591064453
+            ],
+            [
+              207.639862060547,
+              356.792938232422
+            ],
+            [
+              203.7822265625,
+              370.958374023438
+            ],
+            [
+              202.781768798828,
+              379.357299804688
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 107,
+          "joint_points": [
+            [
+              213.048767089844,
+              339.340637207031
+            ],
+            [
+              205.200073242188,
+              358.894500732422
+            ],
+            [
+              201.224960327148,
+              373.027404785156
+            ],
+            [
+              200.606521606445,
+              382.447967529297
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 108,
+          "joint_points": [
+            [
+              211.239852905273,
+              341.09814453125
+            ],
+            [
+              203.379486083984,
+              360.647308349609
+            ],
+            [
+              199.395935058594,
+              374.777862548828
+            ],
+            [
+              200.083648681641,
+              386.632904052734
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 109,
+          "joint_points": [
+            [
+              210.855285644531,
+              341.367858886719
+            ],
+            [
+              203.199157714844,
+              360.997894287109
+            ],
+            [
+              199.36311340332,
+              375.169219970703
+            ],
+            [
+              200.818984985352,
+              387.972106933594
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 110,
+          "joint_points": [
+            [
+              210.552871704102,
+              341.45556640625
+            ],
+            [
+              203.058303833008,
+              361.147857666016
+            ],
+            [
+              199.3388671875,
+              375.350219726562
+            ],
+            [
+              200.600952148438,
+              387.020690917969
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 111,
+          "joint_points": [
+            [
+              210.33610534668,
+              341.447143554688
+            ],
+            [
+              202.957870483398,
+              361.183349609375
+            ],
+            [
+              199.322311401367,
+              375.407379150391
+            ],
+            [
+              199.250473022461,
+              385.587615966797
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 112,
+          "joint_points": [
+            [
+              210.185729980469,
+              341.399475097656
+            ],
+            [
+              202.888473510742,
+              361.165740966797
+            ],
+            [
+              199.311264038086,
+              375.404571533203
+            ],
+            [
+              197.42692565918,
+              385.276123046875
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 113,
+          "joint_points": [
+            [
+              210.082260131836,
+              341.346130371094
+            ],
+            [
+              202.840866088867,
+              361.132904052734
+            ],
+            [
+              199.303848266602,
+              375.381805419922
+            ],
+            [
+              196.049652099609,
+              386.361541748047
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 114,
+          "joint_points": [
+            [
+              210.010147094727,
+              341.3076171875
+            ],
+            [
+              202.807708740234,
+              361.108642578125
+            ],
+            [
+              199.298782348633,
+              375.364440917969
+            ],
+            [
+              195.683853149414,
+              387.797576904297
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 115,
+          "joint_points": [
+            [
+              209.95947265625,
+              341.293334960938
+            ],
+            [
+              202.784454345703,
+              361.104309082031
+            ],
+            [
+              199.295257568359,
+              375.364959716797
+            ],
+            [
+              196.276779174805,
+              388.249847412109
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 116,
+          "joint_points": [
+            [
+              209.923950195312,
+              341.307250976562
+            ],
+            [
+              202.768173217773,
+              361.125152587891
+            ],
+            [
+              199.292816162109,
+              375.389221191406
+            ],
+            [
+              197.181686401367,
+              387.306762695312
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 117,
+          "joint_points": [
+            [
+              209.899139404297,
+              341.351776123047
+            ],
+            [
+              202.756805419922,
+              361.174560546875
+            ],
+            [
+              199.291137695312,
+              375.440948486328
+            ],
+            [
+              197.561920166016,
+              385.878021240234
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 118,
+          "joint_points": [
+            [
+              209.8818359375,
+              341.428253173828
+            ],
+            [
+              202.748886108398,
+              361.25439453125
+            ],
+            [
+              199.289947509766,
+              375.522430419922
+            ],
+            [
+              196.948715209961,
+              385.349914550781
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 119,
+          "joint_points": [
+            [
+              209.869842529297,
+              341.536926269531
+            ],
+            [
+              202.743408203125,
+              361.365386962891
+            ],
+            [
+              199.289154052734,
+              375.634582519531
+            ],
+            [
+              195.555206298828,
+              386.293823242188
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 120,
+          "joint_points": [
+            [
+              211.925094604492,
+              341.6025390625
+            ],
+            [
+              204.660568237305,
+              361.380828857422
+            ],
+            [
+              201.106903076172,
+              375.625610351562
+            ],
+            [
+              195.872421264648,
+              387.76171875
+            ]
+          ],
+          "pose": "hit",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 121,
+          "joint_points": [
+            [
+              211.155807495117,
+              341.689178466797
+            ],
+            [
+              199.809951782227,
+              359.443786621094
+            ],
+            [
+              200.136367797852,
+              374.121490478516
+            ],
+            [
+              195.579040527344,
+              387.534576416016
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 122,
+          "joint_points": [
+            [
+              210.651870727539,
+              341.34033203125
+            ],
+            [
+              195.830230712891,
+              356.316131591797
+            ],
+            [
+              202.121109008789,
+              369.581329345703
+            ],
+            [
+              198.25439453125,
+              382.382019042969
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 123,
+          "joint_points": [
+            [
+              210.149185180664,
+              340.896728515625
+            ],
+            [
+              193.903594970703,
+              354.314453125
+            ],
+            [
+              204.820587158203,
+              364.130767822266
+            ],
+            [
+              202.235336303711,
+              375.403106689453
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 124,
+          "joint_points": [
+            [
+              209.847366333008,
+              340.642364501953
+            ],
+            [
+              193.618453979492,
+              354.080291748047
+            ],
+            [
+              206.981643676758,
+              360.160247802734
+            ],
+            [
+              205.475296020508,
+              370.419708251953
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 125,
+          "joint_points": [
+            [
+              210.645751953125,
+              351.366088867188
+            ],
+            [
+              199.284774780273,
+              369.111022949219
+            ],
+            [
+              208.642501831055,
+              380.423614501953
+            ],
+            [
+              207.898635864258,
+              391.213562011719
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 126,
+          "joint_points": [
+            [
+              212.275756835938,
+              378.600067138672
+            ],
+            [
+              209.760208129883,
+              399.519592285156
+            ],
+            [
+              217.912338256836,
+              411.729583740234
+            ],
+            [
+              220.0,
+              424.0
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 127,
+          "joint_points": [
+            [
+              209.844741821289,
+              343.429443359375
+            ],
+            [
+              202.267608642578,
+              363.090118408203
+            ],
+            [
+              198.586822509766,
+              377.302520751953
+            ],
+            [
+              194.225616455078,
+              390.424621582031
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 128,
+          "joint_points": [
+            [
+              209.844375610352,
+              343.71533203125
+            ],
+            [
+              205.828689575195,
+              364.399353027344
+            ],
+            [
+              198.258407592773,
+              376.978393554688
+            ],
+            [
+              193.721328735352,
+              390.004241943359
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 129,
+          "joint_points": [
+            [
+              209.844146728516,
+              343.931671142578
+            ],
+            [
+              198.140518188477,
+              361.452514648438
+            ],
+            [
+              198.698974609375,
+              376.123199462891
+            ],
+            [
+              194.644454956055,
+              387.834197998047
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 130,
+          "joint_points": [
+            [
+              209.843994140625,
+              344.093627929688
+            ],
+            [
+              196.915466308594,
+              360.731201171875
+            ],
+            [
+              200.082000732422,
+              375.066955566406
+            ],
+            [
+              196.827819824219,
+              385.391998291016
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 131,
+          "joint_points": [
+            [
+              209.843887329102,
+              344.21630859375
+            ],
+            [
+              196.242614746094,
+              360.308532714844
+            ],
+            [
+              202.147308349609,
+              373.750122070312
+            ],
+            [
+              199.498733520508,
+              383.913391113281
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 132,
+          "joint_points": [
+            [
+              209.843826293945,
+              344.314788818359
+            ],
+            [
+              195.710525512695,
+              359.941864013672
+            ],
+            [
+              204.094940185547,
+              371.993499755859
+            ],
+            [
+              201.729751586914,
+              383.381042480469
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 133,
+          "joint_points": [
+            [
+              209.843780517578,
+              344.404174804688
+            ],
+            [
+              195.069396972656,
+              359.426574707031
+            ],
+            [
+              205.26416015625,
+              369.991058349609
+            ],
+            [
+              202.99250793457,
+              382.683013916016
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 134,
+          "joint_points": [
+            [
+              209.843765258789,
+              344.499603271484
+            ],
+            [
+              194.29118347168,
+              358.714813232422
+            ],
+            [
+              205.710433959961,
+              367.942047119141
+            ],
+            [
+              203.444564819336,
+              380.793090820312
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 135,
+          "joint_points": [
+            [
+              209.84375,
+              344.616149902344
+            ],
+            [
+              193.602157592773,
+              358.038726806641
+            ],
+            [
+              205.927749633789,
+              366.014984130859
+            ],
+            [
+              203.758117675781,
+              377.870880126953
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 136,
+          "joint_points": [
+            [
+              209.84375,
+              344.76904296875
+            ],
+            [
+              193.369171142578,
+              357.904602050781
+            ],
+            [
+              206.436599731445,
+              364.596649169922
+            ],
+            [
+              204.605041503906,
+              375.255310058594
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 137,
+          "joint_points": [
+            [
+              209.84375,
+              344.9736328125
+            ],
+            [
+              193.801239013672,
+              358.633544921875
+            ],
+            [
+              207.43766784668,
+              364.073089599609
+            ],
+            [
+              206.142105102539,
+              374.357177734375
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 138,
+          "joint_points": [
+            [
+              209.847061157227,
+              345.289001464844
+            ],
+            [
+              194.622817993164,
+              359.855316162109
+            ],
+            [
+              208.584671020508,
+              364.394866943359
+            ],
+            [
+              207.845855712891,
+              375.576599121094
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 139,
+          "joint_points": [
+            [
+              210.698974609375,
+              356.885955810547
+            ],
+            [
+              200.81787109375,
+              375.49560546875
+            ],
+            [
+              210.515747070312,
+              386.517944335938
+            ],
+            [
+              210.438262939453,
+              399.047241210938
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 140,
+          "joint_points": [
+            [
+              211.678024291992,
+              372.114013671875
+            ],
+            [
+              210.487884521484,
+              393.150604248047
+            ],
+            [
+              213.771057128906,
+              407.460113525391
+            ],
+            [
+              214.531616210938,
+              420.304107666016
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 141,
+          "joint_points": [
+            [
+              213.098922729492,
+              378.086334228516
+            ],
+            [
+              211.278381347656,
+              399.077789306641
+            ],
+            [
+              217.7470703125,
+              412.257202148438
+            ],
+            [
+              219.341720581055,
+              423.980255126953
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": 0.0,
+          "frame": 142,
+          "joint_points": [
+            [
+              212.614593505859,
+              378.543701171875
+            ],
+            [
+              214.102996826172,
+              399.561309814453
+            ],
+            [
+              218.314453125,
+              413.625610351562
+            ],
+            [
+              220.0,
+              424.0
+            ]
+          ],
+          "pose": "contact",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": 0.0500107519328594,
+          "frame": 143,
+          "joint_points": [
+            [
+              212.181655883789,
+              378.616180419922
+            ],
+            [
+              214.849502563477,
+              399.588623046875
+            ],
+            [
+              218.263259887695,
+              413.918548583984
+            ],
+            [
+              219.991516113281,
+              423.950714111328
+            ]
+          ],
+          "pose": "contact",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": 7.19541168212891,
+          "frame": 144,
+          "joint_points": [
+            [
+              211.873443603516,
+              374.504211425781
+            ],
+            [
+              211.476959228516,
+              398.521026611328
+            ],
+            [
+              212.884399414062,
+              415.198425292969
+            ],
+            [
+              213.158416748047,
+              426.228607177734
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": 9.78492736816406,
+          "frame": 145,
+          "joint_points": [
+            [
+              211.481826782227,
+              371.298583984375
+            ],
+            [
+              209.91862487793,
+              395.267730712891
+            ],
+            [
+              210.513900756836,
+              411.993835449219
+            ],
+            [
+              210.220550537109,
+              424.327362060547
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": 12.9080371856689,
+          "frame": 146,
+          "joint_points": [
+            [
+              211.229522705078,
+              367.287780761719
+            ],
+            [
+              208.568984985352,
+              391.160064697266
+            ],
+            [
+              208.396759033203,
+              407.895874023438
+            ],
+            [
+              207.497222900391,
+              420.790954589844
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": 19.0363693237305,
+          "frame": 147,
+          "joint_points": [
+            [
+              210.884506225586,
+              362.48193359375
+            ],
+            [
+              206.996780395508,
+              385.114440917969
+            ],
+            [
+              205.92350769043,
+              401.079254150391
+            ],
+            [
+              204.375137329102,
+              413.125854492188
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": 29.2034702301025,
+          "frame": 148,
+          "joint_points": [
+            [
+              210.456207275391,
+              356.864837646484
+            ],
+            [
+              204.889221191406,
+              377.437652587891
+            ],
+            [
+              202.561950683594,
+              392.104431152344
+            ],
+            [
+              200.232299804688,
+              402.503936767578
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": 37.1837959289551,
+          "frame": 149,
+          "joint_points": [
+            [
+              209.952789306641,
+              350.420867919922
+            ],
+            [
+              203.10514831543,
+              370.347351074219
+            ],
+            [
+              200.249160766602,
+              384.748199462891
+            ],
+            [
+              197.527847290039,
+              394.375061035156
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": 38.7198677062988,
+          "frame": 150,
+          "joint_points": [
+            [
+              209.84375,
+              349.010711669922
+            ],
+            [
+              202.733810424805,
+              368.845123291016
+            ],
+            [
+              199.291442871094,
+              383.117156982422
+            ],
+            [
+              196.057373046875,
+              393.570098876953
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": 37.9781761169434,
+          "frame": 151,
+          "joint_points": [
+            [
+              209.84375,
+              348.955688476562
+            ],
+            [
+              202.686630249023,
+              368.773132324219
+            ],
+            [
+              199.210296630859,
+              383.036926269531
+            ],
+            [
+              195.477798461914,
+              394.999938964844
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": 37.0348167419434,
+          "frame": 152,
+          "joint_points": [
+            [
+              209.84375,
+              348.868927001953
+            ],
+            [
+              202.966369628906,
+              368.78515625
+            ],
+            [
+              199.691223144531,
+              383.096496582031
+            ],
+            [
+              195.899444580078,
+              395.8798828125
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": 36.8579216003418,
+          "frame": 153,
+          "joint_points": [
+            [
+              209.84375,
+              348.751373291016
+            ],
+            [
+              203.035140991211,
+              368.691223144531
+            ],
+            [
+              200.263046264648,
+              383.108459472656
+            ],
+            [
+              196.860290527344,
+              395.310974121094
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 154,
+          "joint_points": [
+            [
+              209.84375,
+              348.604278564453
+            ],
+            [
+              202.7314453125,
+              368.437835693359
+            ],
+            [
+              199.287384033203,
+              382.70947265625
+            ],
+            [
+              197.540786743164,
+              393.692535400391
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 155,
+          "joint_points": [
+            [
+              209.84375,
+              348.429077148438
+            ],
+            [
+              202.7314453125,
+              368.262634277344
+            ],
+            [
+              199.287384033203,
+              382.534271240234
+            ],
+            [
+              197.28955078125,
+              392.431671142578
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/electric_l04_front.png"
+        }
+      ],
+      "hunter_damage": 18.0,
+      "level": 4,
+      "poses": [
+        "idle",
+        "move",
+        "hit",
+        "windup",
+        "contact",
+        "follow"
+      ],
+      "textures": {
+        "res://assets/visual_rebirth/articulated/electric_l04_back.png": true,
+        "res://assets/visual_rebirth/articulated/electric_l04_front.png": true,
+        "res://assets/visual_rebirth/articulated/electric_l04_left.png": true,
+        "res://assets/visual_rebirth/articulated/electric_l04_right.png": true
+      }
+    }
+  ],
+  "viewport": [
+    1280,
+    720
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "version": "0.7.0-overhaul",
+  "source_commit": "4a412192394fa2358c7eba1ca08632bdd90cdf1b",
+  "engine": "4.6.3.stable.official.7d41c59c4",
+  "executable_bytes": 249131304,
+  "executable_sha256": "e4ba7faf44902c94553190bce34624dc23178e6957c42aba157b74b8e440846e",
+  "embedded_pack_bytes": 144530716,
+  "archive": "NightfallDorm-Articulated-Hunters-Windows-x64.zip",
+  "archive_bytes": 149820224,
+  "archive_sha256": "40accafe21686b61a90fe98dbb152418cbbf1859232757bb18743977b14f14ee",
+  "native_windows": "UNVERIFIED",
+  "public_release": false,
+  "launcher_environments": {
+    "living-nightmare": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-living-nightmare-preview.json",
+      "NIGHTFALL_LIVING_NIGHTMARE": "1",
+      "NIGHTFALL_VISUAL_REBIRTH": "1",
+      "NIGHTFALL_FULL_ROOM_GRID": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "1"
+    },
+    "v1-fallback": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-v23-v1-playtest.json",
+      "NIGHTFALL_LIVING_NIGHTMARE": "0",
+      "NIGHTFALL_VISUAL_REBIRTH": "1",
+      "NIGHTFALL_FULL_ROOM_GRID": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "0"
+    },
+    "fixed-reference": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-v23-fixed-reference.json",
+      "NIGHTFALL_LIVING_NIGHTMARE": "0",
+      "NIGHTFALL_VISUAL_REBIRTH": "0",
+      "NIGHTFALL_FULL_ROOM_GRID": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "0"
+    },
+    "fair-start-preview": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-v23-playtest.json",
+      "NIGHTFALL_LIVING_NIGHTMARE": "0",
+      "NIGHTFALL_VISUAL_REBIRTH": "1",
+      "NIGHTFALL_FULL_ROOM_GRID": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "1"
+    }
+  }
+}
