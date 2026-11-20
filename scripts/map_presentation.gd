@@ -59,7 +59,7 @@ func render_architecture(c,p):
    label+=" · SEED "+str(data.seed)
    title_size=roundi(14.0/maxf(c.camera.zoom.x,.12))
    var width: float=p.font.get_string_size(label,HORIZONTAL_ALIGNMENT_LEFT,-1,title_size).x
-   title=OFFSET+Vector2(data.bounds.get_center().x-width*.5,data.bounds.end.y-3)
+   title=OFFSET+Vector2(data.bounds.get_center().x-width*.5,data.bounds.end.y+85)
   p.text(c,label,title,title_size,colors[4])
 
 func render_room(c,p,room,theme,colors):

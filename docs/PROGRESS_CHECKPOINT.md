@@ -1,3 +1,15 @@
+# Procedural Nightmare Maps preview
+
+New opt-in Campaign and Endless matches can generate six irregular rooms
+and four Haunted Halls from a seed. Construction follows the actual floor.
+The Hunter uses exterior routes, may retreat to recover, and can be
+observed without losing a pending construction action. Endless checkpoints
+retain their map and recovery budget across reloads and wave transitions.
+
+[Preview controls and verification](PROCEDURAL_NIGHTMARE_MAPS.md)
+
+---
+
 # Full Room Grid polish
 
 The opt-in grid preview moves room traits and interaction hints to the HUD,

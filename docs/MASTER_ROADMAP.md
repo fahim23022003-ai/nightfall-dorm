@@ -24,3 +24,11 @@ the [Full Room Grid preview](FULL_ROOM_GRID_PREVIEW.md).
 - Design and verify save migration for existing buildings, ownership and
   progression. Handle layouts that do not fit the grid without deleting
   saved investments.
+
+
+## Owner-approved project — Procedural Nightmare Maps
+
+The opt-in preview adds seeded irregular rooms across the five themes,
+alternative exterior Hunter routes, four Haunted Halls and optional
+recovery spectating. Keep fixed maps and both checkpoint formats
+available while the preview is reviewed. [Project and evidence](PROCEDURAL_NIGHTMARE_MAPS.md)

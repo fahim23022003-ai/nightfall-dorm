@@ -1,0 +1,663 @@
+{
+  "cases": [
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_1",
+        "standard",
+        37,
+        0,
+        "needle_defense"
+      ],
+      "door_damage": 114.89392608,
+      "hunter_attacks": 138,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 3,
+      "invalid": [],
+      "map": "abandoned_dorm",
+      "max_ledger_error": 0.0000152587890625,
+      "npc_peak": 5,
+      "outcome": "victory",
+      "peak_buildings": 7,
+      "player_damage": 609.03999999999,
+      "procedural": true,
+      "recovery_attempts": 1,
+      "recovery_events": [
+        {
+          "amount": 0.0,
+          "event": "hunter_retreat",
+          "hall": "north",
+          "reason": "",
+          "time": 209.250000000005
+        },
+        {
+          "amount": 0.0,
+          "event": "hunter_recovering",
+          "hall": "north",
+          "reason": "",
+          "time": 218.400000000005
+        },
+        {
+          "amount": 877.679999999999,
+          "event": "hunter_recovery_ended",
+          "hall": "north",
+          "reason": "completed",
+          "time": 226.500000000006
+        }
+      ],
+      "recovery_visits": 1,
+      "seconds": 273.45,
+      "shape": "rectangle",
+      "shots": 292,
+      "speed_budget_violations": 0,
+      "steps": 1823
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_1",
+        "hard",
+        44,
+        2,
+        "needle_defense"
+      ],
+      "door_damage": 1541.5578125,
+      "hunter_attacks": 102,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 5,
+      "invalid": [],
+      "map": "abandoned_dorm",
+      "max_ledger_error": 0.000030517578125,
+      "npc_peak": 5,
+      "outcome": "defeat",
+      "peak_buildings": 6,
+      "player_damage": 3114.0,
+      "procedural": true,
+      "recovery_attempts": 0,
+      "recovery_events": [],
+      "recovery_visits": 0,
+      "seconds": 253.2,
+      "shape": "rectangle",
+      "shots": 270,
+      "speed_budget_violations": 0,
+      "steps": 1688
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_1",
+        "hell",
+        51,
+        4,
+        "needle_defense"
+      ],
+      "door_damage": 1418.42940087072,
+      "hunter_attacks": 102,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 3,
+      "invalid": [],
+      "map": "abandoned_dorm",
+      "max_ledger_error": 0.00000095367431640625,
+      "npc_peak": 5,
+      "outcome": "victory",
+      "peak_buildings": 7,
+      "player_damage": 4486.7429177368,
+      "procedural": true,
+      "recovery_attempts": 2,
+      "recovery_events": [
+        {
+          "amount": 0.0,
+          "event": "hunter_retreat",
+          "hall": "north",
+          "reason": "",
+          "time": 217.200000000005
+        },
+        {
+          "amount": 0.0,
+          "event": "hunter_recovering",
+          "hall": "north",
+          "reason": "",
+          "time": 225.150000000006
+        },
+        {
+          "amount": 1097.1,
+          "event": "hunter_recovery_ended",
+          "hall": "north",
+          "reason": "completed",
+          "time": 233.250000000006
+        },
+        {
+          "amount": 0.0,
+          "event": "hunter_retreat",
+          "hall": "south",
+          "reason": "",
+          "time": 308.399999999999
+        },
+        {
+          "amount": 0.0,
+          "event": "hunter_recovering",
+          "hall": "south",
+          "reason": "",
+          "time": 316.649999999998
+        },
+        {
+          "amount": 1127.37439687499,
+          "event": "hunter_recovery_ended",
+          "hall": "south",
+          "reason": "completed",
+          "time": 324.749999999996
+        }
+      ],
+      "recovery_visits": 2,
+      "seconds": 348.6,
+      "shape": "u",
+      "shots": 473,
+      "speed_budget_violations": 0,
+      "steps": 2324
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_2",
+        "standard",
+        48,
+        1,
+        "needle_defense"
+      ],
+      "door_damage": 1230.699539352,
+      "hunter_attacks": 82,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 5,
+      "invalid": [],
+      "map": "haunted_hospital",
+      "max_ledger_error": 0.0000152587890625,
+      "npc_peak": 5,
+      "outcome": "victory",
+      "peak_buildings": 6,
+      "player_damage": 4203.31039999999,
+      "procedural": true,
+      "recovery_attempts": 1,
+      "recovery_events": [
+        {
+          "amount": 0.0,
+          "event": "hunter_retreat",
+          "hall": "east",
+          "reason": "",
+          "time": 141.900000000003
+        },
+        {
+          "amount": 0.0,
+          "event": "hunter_recovering",
+          "hall": "east",
+          "reason": "",
+          "time": 147.150000000003
+        },
+        {
+          "amount": 848.3904,
+          "event": "hunter_recovery_ended",
+          "hall": "east",
+          "reason": "completed",
+          "time": 155.250000000003
+        }
+      ],
+      "recovery_visits": 1,
+      "seconds": 213.9,
+      "shape": "long",
+      "shots": 506,
+      "speed_budget_violations": 0,
+      "steps": 1426
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_2",
+        "hard",
+        55,
+        3,
+        "needle_defense"
+      ],
+      "door_damage": 847.828125,
+      "hunter_attacks": 55,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 2,
+      "invalid": [],
+      "map": "haunted_hospital",
+      "max_ledger_error": 0.00000095367431640625,
+      "npc_peak": 5,
+      "outcome": "defeat",
+      "peak_buildings": 5,
+      "player_damage": 1296.0,
+      "procedural": true,
+      "recovery_attempts": 0,
+      "recovery_events": [],
+      "recovery_visits": 0,
+      "seconds": 139.35,
+      "shape": "long",
+      "shots": 184,
+      "speed_budget_violations": 0,
+      "steps": 929
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_2",
+        "hell",
+        62,
+        5,
+        "needle_defense"
+      ],
+      "door_damage": 481.5,
+      "hunter_attacks": 20,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 2,
+      "invalid": [],
+      "map": "haunted_hospital",
+      "max_ledger_error": 0.00000762939453125,
+      "npc_peak": 5,
+      "outcome": "defeat",
+      "peak_buildings": 5,
+      "player_damage": 1350.0,
+      "procedural": true,
+      "recovery_attempts": 0,
+      "recovery_events": [],
+      "recovery_visits": 0,
+      "seconds": 136.95,
+      "shape": "long",
+      "shots": 210,
+      "speed_budget_violations": 0,
+      "steps": 913
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_3",
+        "standard",
+        59,
+        2,
+        "needle_defense"
+      ],
+      "door_damage": 322.091051792,
+      "hunter_attacks": 20,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 0,
+      "invalid": [],
+      "map": "forgotten_hotel",
+      "max_ledger_error": 0.00000095367431640625,
+      "npc_peak": 5,
+      "outcome": "defeat",
+      "peak_buildings": 4,
+      "player_damage": 1242.0,
+      "procedural": true,
+      "recovery_attempts": 0,
+      "recovery_events": [],
+      "recovery_visits": 0,
+      "seconds": 71.4,
+      "shape": "zigzag",
+      "shots": 140,
+      "speed_budget_violations": 0,
+      "steps": 476
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_3",
+        "hard",
+        66,
+        4,
+        "needle_defense"
+      ],
+      "door_damage": 242.5,
+      "hunter_attacks": 11,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 0,
+      "invalid": [],
+      "map": "forgotten_hotel",
+      "max_ledger_error": 0.0000019073486328125,
+      "npc_peak": 5,
+      "outcome": "defeat",
+      "peak_buildings": 4,
+      "player_damage": 702.0,
+      "procedural": true,
+      "recovery_attempts": 0,
+      "recovery_events": [],
+      "recovery_visits": 0,
+      "seconds": 59.7,
+      "shape": "long",
+      "shots": 78,
+      "speed_budget_violations": 0,
+      "steps": 398
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_3",
+        "hell",
+        73,
+        0,
+        "needle_defense"
+      ],
+      "door_damage": 1334.045238079,
+      "hunter_attacks": 83,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 8,
+      "invalid": [],
+      "map": "forgotten_hotel",
+      "max_ledger_error": 0.000030517578125,
+      "npc_peak": 5,
+      "outcome": "victory",
+      "peak_buildings": 7,
+      "player_damage": 4808.60578257802,
+      "procedural": true,
+      "recovery_attempts": 1,
+      "recovery_events": [
+        {
+          "amount": 0.0,
+          "event": "hunter_retreat",
+          "hall": "north",
+          "reason": "",
+          "time": 220.050000000005
+        },
+        {
+          "amount": 0.0,
+          "event": "hunter_recovering",
+          "hall": "north",
+          "reason": "",
+          "time": 229.500000000006
+        },
+        {
+          "amount": 1162.926,
+          "event": "hunter_recovery_ended",
+          "hall": "north",
+          "reason": "completed",
+          "time": 237.600000000006
+        }
+      ],
+      "recovery_visits": 1,
+      "seconds": 323.4,
+      "shape": "l",
+      "shots": 536,
+      "speed_budget_violations": 0,
+      "steps": 2156
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_4",
+        "standard",
+        70,
+        3,
+        "needle_defense"
+      ],
+      "door_damage": 942.676109344122,
+      "hunter_attacks": 99,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 3,
+      "invalid": [],
+      "map": "underground_lab",
+      "max_ledger_error": 0.0000152587890625,
+      "npc_peak": 5,
+      "outcome": "victory",
+      "peak_buildings": 7,
+      "player_damage": 3805.04970703708,
+      "procedural": true,
+      "recovery_attempts": 1,
+      "recovery_events": [
+        {
+          "amount": 0.0,
+          "event": "hunter_retreat",
+          "hall": "west",
+          "reason": "",
+          "time": 199.650000000005
+        },
+        {
+          "amount": 0.0,
+          "event": "hunter_recovering",
+          "hall": "west",
+          "reason": "",
+          "time": 206.850000000005
+        },
+        {
+          "amount": 998.2656,
+          "event": "hunter_recovery_ended",
+          "hall": "west",
+          "reason": "completed",
+          "time": 214.950000000005
+        }
+      ],
+      "recovery_visits": 1,
+      "seconds": 286.65,
+      "shape": "zigzag",
+      "shots": 458,
+      "speed_budget_violations": 0,
+      "steps": 1911
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_4",
+        "hard",
+        77,
+        5,
+        "needle_defense"
+      ],
+      "door_damage": 285.921422599997,
+      "hunter_attacks": 59,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 4,
+      "invalid": [],
+      "map": "underground_lab",
+      "max_ledger_error": 0.000030517578125,
+      "npc_peak": 5,
+      "outcome": "victory",
+      "peak_buildings": 7,
+      "player_damage": 1240.7336375,
+      "procedural": true,
+      "recovery_attempts": 1,
+      "recovery_events": [
+        {
+          "amount": 0.0,
+          "event": "hunter_retreat",
+          "hall": "east",
+          "reason": "",
+          "time": 225.750000000006
+        },
+        {
+          "amount": 0.0,
+          "event": "hunter_recovering",
+          "hall": "east",
+          "reason": "",
+          "time": 232.350000000006
+        },
+        {
+          "amount": 1372.67016280028,
+          "event": "hunter_recovery_ended",
+          "hall": "east",
+          "reason": "completed",
+          "time": 240.450000000006
+        }
+      ],
+      "recovery_visits": 1,
+      "seconds": 426.15,
+      "shape": "zigzag",
+      "shots": 559,
+      "speed_budget_violations": 0,
+      "steps": 2841
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_4",
+        "hell",
+        84,
+        1,
+        "needle_defense"
+      ],
+      "door_damage": 43.4922047999999,
+      "hunter_attacks": 84,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 13,
+      "invalid": [],
+      "map": "underground_lab",
+      "max_ledger_error": 0.00000095367431640625,
+      "npc_peak": 5,
+      "outcome": "victory",
+      "peak_buildings": 7,
+      "player_damage": 194.028219656075,
+      "procedural": true,
+      "recovery_attempts": 1,
+      "recovery_events": [
+        {
+          "amount": 0.0,
+          "event": "hunter_retreat",
+          "hall": "east",
+          "reason": "",
+          "time": 191.700000000004
+        },
+        {
+          "amount": 0.0,
+          "event": "hunter_recovering",
+          "hall": "east",
+          "reason": "",
+          "time": 196.500000000005
+        },
+        {
+          "amount": 1130.74421773646,
+          "event": "hunter_recovery_ended",
+          "hall": "east",
+          "reason": "completed",
+          "time": 204.600000000005
+        }
+      ],
+      "recovery_visits": 1,
+      "seconds": 380.85,
+      "shape": "long",
+      "shots": 470,
+      "speed_budget_violations": 0,
+      "steps": 2539
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_5",
+        "standard",
+        81,
+        4,
+        "needle_defense"
+      ],
+      "door_damage": 1387.25371694199,
+      "hunter_attacks": 79,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 3,
+      "invalid": [],
+      "map": "cursed_mansion",
+      "max_ledger_error": 0.000030517578125,
+      "npc_peak": 5,
+      "outcome": "victory",
+      "peak_buildings": 7,
+      "player_damage": 5007.67462921923,
+      "procedural": true,
+      "recovery_attempts": 1,
+      "recovery_events": [
+        {
+          "amount": 0.0,
+          "event": "hunter_retreat",
+          "hall": "south",
+          "reason": "",
+          "time": 113.100000000001
+        },
+        {
+          "amount": 0.0,
+          "event": "hunter_recovering",
+          "hall": "south",
+          "reason": "",
+          "time": 123.450000000002
+        },
+        {
+          "amount": 945.9072,
+          "event": "hunter_recovery_ended",
+          "hall": "south",
+          "reason": "completed",
+          "time": 131.550000000002
+        }
+      ],
+      "recovery_visits": 1,
+      "seconds": 309.9,
+      "shape": "zigzag",
+      "shots": 653,
+      "speed_budget_violations": 0,
+      "steps": 2066
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_5",
+        "hard",
+        88,
+        0,
+        "needle_defense"
+      ],
+      "door_damage": 1131.52049527735,
+      "hunter_attacks": 115,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 7,
+      "invalid": [],
+      "map": "cursed_mansion",
+      "max_ledger_error": 0.00000095367431640625,
+      "npc_peak": 5,
+      "outcome": "victory",
+      "peak_buildings": 7,
+      "player_damage": 4107.1117638458,
+      "procedural": true,
+      "recovery_attempts": 0,
+      "recovery_events": [],
+      "recovery_visits": 0,
+      "seconds": 404.85,
+      "shape": "rectangle",
+      "shots": 490,
+      "speed_budget_violations": 0,
+      "steps": 2699
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_5",
+        "hell",
+        95,
+        2,
+        "needle_defense"
+      ],
+      "door_damage": 738.4,
+      "hunter_attacks": 46,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 3,
+      "invalid": [],
+      "map": "cursed_mansion",
+      "max_ledger_error": 0.00000762939453125,
+      "npc_peak": 5,
+      "outcome": "defeat",
+      "peak_buildings": 5,
+      "player_damage": 1116.0,
+      "procedural": true,
+      "recovery_attempts": 0,
+      "recovery_events": [],
+      "recovery_visits": 0,
+      "seconds": 148.65,
+      "shape": "zigzag",
+      "shots": 208,
+      "speed_budget_violations": 0,
+      "steps": 991
+    }
+  ],
+  "failures": 0,
+  "fixture": "All themes and difficulty modes, deterministic seed and repeated room/difficulty pair for passive and earned defensive policies. Starts with normal opening wages; survivor is initially staged at the bed before normal sleep interaction.",
+  "limit_seconds": 600.0,
+  "outcomes": {
+    "hard/needle_defense/defeat": 3,
+    "hard/needle_defense/victory": 2,
+    "hell/needle_defense/defeat": 2,
+    "hell/needle_defense/victory": 3,
+    "standard/needle_defense/defeat": 1,
+    "standard/needle_defense/victory": 4
+  },
+  "step": 0.15
+}
