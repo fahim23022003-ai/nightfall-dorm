@@ -1,3 +1,12 @@
+# Procedural Nightmare Maps V2.2
+
+The Hard/Hell V2 Campaign Hunter can recognize a defense that
+has absorbed most of a productive siege, then take a better route
+when one is reachable. The map gives opening travel estimates before
+the player claims a room. [Fairness audit and playtest evidence](PROCEDURAL_NIGHTMARE_MAPS_V22.md)
+
+---
+
 # Procedural Nightmare Maps V2.1
 
 Hard and Hell V2 Campaign matches use a revised first-form Hunter

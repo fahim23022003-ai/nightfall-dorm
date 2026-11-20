@@ -1,0 +1,4781 @@
+{
+  "paired_matches": 270,
+  "standard_exact_matches": 90,
+  "broad": {
+    "standard": {
+      "outcomes": [
+        {
+          "defeat": 28,
+          "victory": 62
+        },
+        {
+          "defeat": 28,
+          "victory": 62
+        }
+      ],
+      "by_policy": {
+        "passive": "4/30 \u2192 4/30",
+        "balanced": "30/30 \u2192 30/30",
+        "needle_defense": "28/30 \u2192 28/30"
+      },
+      "defense_delays_breach": 0,
+      "team_retarget_median": [
+        2.0,
+        2.0
+      ],
+      "player_exposure_median": [
+        10.2,
+        10.2
+      ],
+      "elapsed_median": [
+        303.375,
+        303.375
+      ]
+    },
+    "hard": {
+      "outcomes": [
+        {
+          "defeat": 54,
+          "victory": 36
+        },
+        {
+          "defeat": 49,
+          "victory": 41
+        }
+      ],
+      "by_policy": {
+        "passive": "1/30 \u2192 4/30",
+        "balanced": "18/30 \u2192 19/30",
+        "needle_defense": "17/30 \u2192 18/30"
+      },
+      "defense_delays_breach": 70,
+      "team_retarget_median": [
+        0.0,
+        1.0
+      ],
+      "player_exposure_median": [
+        11.325,
+        9.6
+      ],
+      "elapsed_median": [
+        273.07500000000005,
+        292.79999999999995
+      ]
+    },
+    "hell": {
+      "outcomes": [
+        {
+          "defeat": 77,
+          "victory": 13
+        },
+        {
+          "defeat": 76,
+          "victory": 14
+        }
+      ],
+      "by_policy": {
+        "passive": "0/30 \u2192 0/30",
+        "balanced": "4/30 \u2192 4/30",
+        "needle_defense": "9/30 \u2192 10/30"
+      },
+      "defense_delays_breach": 22,
+      "team_retarget_median": [
+        0.0,
+        0.0
+      ],
+      "player_exposure_median": [
+        17.1,
+        16.275
+      ],
+      "elapsed_median": [
+        194.02499999999998,
+        194.02499999999998
+      ]
+    }
+  },
+  "focused": {
+    "('stage_2', 'hell', 10358, 1, 'passive')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          107.800000000001,
+          0.0
+        ],
+        "machines": {},
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          107.800000000001,
+          0.0
+        ],
+        "machines": {},
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      }
+    ],
+    "('stage_2', 'hell', 10358, 1, 'balanced')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          40.5774999999997,
+          0.0
+        ],
+        "machines": {
+          "turret": 2
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          40.5774999999997,
+          0.0
+        ],
+        "machines": {
+          "turret": 2,
+          "generator": 1,
+          "repair": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [
+          {
+            "damage": 0.0,
+            "next_room": 5,
+            "reason": "defense_delays_breach",
+            "room": 2,
+            "time": 62.9999999999996,
+            "type": "hunter_reassess"
+          }
+        ],
+        "control_hits": 0
+      }
+    ],
+    "('stage_2', 'hell', 10358, 1, 'needle_defense')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          7.79999999999984,
+          0.0
+        ],
+        "machines": {
+          "turret": 5
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          7.79999999999984,
+          0.0
+        ],
+        "machines": {
+          "turret": 5
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      }
+    ],
+    "('stage_2', 'hell', 10358, 1, 'survival_transition')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          35.3949999999998,
+          0.0
+        ],
+        "machines": {
+          "turret": 3
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          35.3949999999998,
+          0.0
+        ],
+        "machines": {
+          "turret": 3
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      }
+    ],
+    "('stage_2', 'hell', 10358, 1, 'economic_rush')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          35.3949999999998,
+          0.0
+        ],
+        "machines": {
+          "turret": 3
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          35.3949999999998,
+          0.0
+        ],
+        "machines": {
+          "turret": 3
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      }
+    ],
+    "('stage_2', 'hell', 10358, 1, 'door_reserve')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          35.3949999999998,
+          0.0
+        ],
+        "machines": {
+          "turret": 3
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          35.3949999999998,
+          0.0
+        ],
+        "machines": {
+          "turret": 3
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      }
+    ],
+    "('stage_2', 'hell', 10358, 1, 'frost_arc')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          35.3949999999998,
+          0.0
+        ],
+        "machines": {
+          "turret": 3
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          35.3949999999998,
+          0.0
+        ],
+        "machines": {
+          "turret": 3
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      }
+    ],
+    "('stage_2', 'hell', 10358, 1, 'precision_layout')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          35.3949999999998,
+          0.0
+        ],
+        "machines": {
+          "turret": 3
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [
+          {
+            "id": 16,
+            "preserved_investment": true,
+            "range_distance_after": 93.2952270507812,
+            "range_distance_before": 135.764495849609,
+            "time": 25.1999999999999,
+            "type": "reposition"
+          }
+        ],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          35.3949999999998,
+          0.0
+        ],
+        "machines": {
+          "turret": 3
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [
+          {
+            "id": 16,
+            "preserved_investment": true,
+            "range_distance_after": 93.2952270507812,
+            "range_distance_before": 135.764495849609,
+            "time": 25.1999999999999,
+            "type": "reposition"
+          }
+        ],
+        "counterplay": [],
+        "control_hits": 0
+      }
+    ],
+    "('stage_2', 'hell', 10358, 1, 'earned_repair')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          35.3949999999998,
+          0.0
+        ],
+        "machines": {
+          "turret": 3
+        },
+        "paid_wards": 0,
+        "uses": [
+          {
+            "inventory_left": 0,
+            "item": "repair",
+            "time": 53.0999999999997
+          }
+        ],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          35.3949999999998,
+          0.0
+        ],
+        "machines": {
+          "turret": 3
+        },
+        "paid_wards": 0,
+        "uses": [
+          {
+            "inventory_left": 0,
+            "item": "repair",
+            "time": 53.0999999999997
+          }
+        ],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      }
+    ],
+    "('stage_4', 'hell', 12336, 3, 'passive')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 138.3,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          211.704999999995,
+          0.0
+        ],
+        "machines": {},
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 138.3,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          211.704999999995,
+          0.0
+        ],
+        "machines": {},
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      }
+    ],
+    "('stage_4', 'hell', 12336, 3, 'balanced')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 138.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          62.6200000000009,
+          2.97999999999999
+        ],
+        "machines": {
+          "turret": 2,
+          "generator": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 138.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          62.6200000000009,
+          2.97999999999999
+        ],
+        "machines": {
+          "turret": 2,
+          "generator": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      }
+    ],
+    "('stage_4', 'hell', 12336, 3, 'needle_defense')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 137.85,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          80.7750000000005,
+          0.0
+        ],
+        "machines": {
+          "turret": 5
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 137.85,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          80.7750000000005,
+          0.0
+        ],
+        "machines": {
+          "turret": 5
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      }
+    ],
+    "('stage_4', 'hell', 12336, 3, 'survival_transition')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 138.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          21.8700000000008,
+          2.34
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1
+        },
+        "paid_wards": 1,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "victory",
+        "first_hit": 138.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          21.8700000000008,
+          2.34
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "repair": 1
+        },
+        "paid_wards": 1,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [
+          {
+            "damage": 0.0,
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 4,
+            "time": 154.650000000003,
+            "type": "hunter_reassess"
+          }
+        ],
+        "control_hits": 0
+      }
+    ],
+    "('stage_4', 'hell', 12336, 3, 'economic_rush')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 138.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          21.8700000000008,
+          2.34
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1
+        },
+        "paid_wards": 1,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "victory",
+        "first_hit": 138.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          21.8700000000008,
+          2.34
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "repair": 1
+        },
+        "paid_wards": 1,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [
+          {
+            "damage": 0.0,
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 4,
+            "time": 154.650000000003,
+            "type": "hunter_reassess"
+          }
+        ],
+        "control_hits": 0
+      }
+    ],
+    "('stage_4', 'hell', 12336, 3, 'door_reserve')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 138.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          21.8700000000008,
+          2.34
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1
+        },
+        "paid_wards": 1,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "victory",
+        "first_hit": 138.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          21.8700000000008,
+          2.34
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "repair": 1
+        },
+        "paid_wards": 1,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [
+          {
+            "damage": 0.0,
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 4,
+            "time": 154.650000000003,
+            "type": "hunter_reassess"
+          }
+        ],
+        "control_hits": 0
+      }
+    ],
+    "('stage_4', 'hell', 12336, 3, 'frost_arc')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 138.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          21.8700000000008,
+          2.34
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1
+        },
+        "paid_wards": 1,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "victory",
+        "first_hit": 138.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          21.8700000000008,
+          2.34
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "repair": 1,
+          "shock": 1
+        },
+        "paid_wards": 1,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [
+          {
+            "damage": 0.0,
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 4,
+            "time": 154.650000000003,
+            "type": "hunter_reassess"
+          }
+        ],
+        "control_hits": 0
+      }
+    ],
+    "('stage_4', 'hell', 12336, 3, 'precision_layout')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 138.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          21.8700000000008,
+          2.34
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1
+        },
+        "paid_wards": 1,
+        "uses": [],
+        "specializations": [],
+        "repositions": [
+          {
+            "id": 16,
+            "preserved_investment": true,
+            "range_distance_after": 67.8822479248047,
+            "range_distance_before": 135.764495849609,
+            "time": 25.1999999999999,
+            "type": "reposition"
+          }
+        ],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "victory",
+        "first_hit": 138.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          21.8700000000008,
+          2.34
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "repair": 2
+        },
+        "paid_wards": 2,
+        "uses": [],
+        "specializations": [],
+        "repositions": [
+          {
+            "id": 16,
+            "preserved_investment": true,
+            "range_distance_after": 67.8822479248047,
+            "range_distance_before": 135.764495849609,
+            "time": 25.1999999999999,
+            "type": "reposition"
+          }
+        ],
+        "counterplay": [
+          {
+            "damage": 0.0,
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 4,
+            "time": 154.650000000003,
+            "type": "hunter_reassess"
+          }
+        ],
+        "control_hits": 0
+      }
+    ],
+    "('stage_4', 'hell', 12336, 3, 'earned_repair')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 138.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          21.8700000000008,
+          2.34
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1
+        },
+        "paid_wards": 1,
+        "uses": [
+          {
+            "inventory_left": 0,
+            "item": "repair",
+            "time": 144.900000000003
+          }
+        ],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 138.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          21.8700000000008,
+          2.34
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1
+        },
+        "paid_wards": 1,
+        "uses": [
+          {
+            "inventory_left": 0,
+            "item": "repair",
+            "time": 144.900000000003
+          }
+        ],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      }
+    ],
+    "('stage_2', 'hell', 10358, 1, 'approach_fire')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          7.79999999999984,
+          0.0
+        ],
+        "machines": {
+          "turret": 5
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 48.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          7.79999999999984,
+          0.0
+        ],
+        "machines": {
+          "turret": 5
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      }
+    ],
+    "('stage_2', 'hell', 10358, 1, 'earned_control')": [
+      {
+        "outcome": "victory",
+        "first_hit": 48.45,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          9.5999999999998,
+          40.0
+        ],
+        "machines": {
+          "frost": 1,
+          "turret": 4,
+          "generator": 1,
+          "repair": 1,
+          "shock": 1,
+          "heavy": 1
+        },
+        "paid_wards": 3,
+        "uses": [
+          {
+            "inventory_left": 0,
+            "item": "gold",
+            "time": 0
+          },
+          {
+            "inventory_left": 0,
+            "item": "battery",
+            "time": 1.8
+          }
+        ],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 53
+      },
+      {
+        "outcome": "victory",
+        "first_hit": 48.45,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          9.5999999999998,
+          40.0
+        ],
+        "machines": {
+          "frost": 1,
+          "turret": 4,
+          "generator": 1,
+          "repair": 1,
+          "shock": 1,
+          "heavy": 1
+        },
+        "paid_wards": 3,
+        "uses": [
+          {
+            "inventory_left": 0,
+            "item": "gold",
+            "time": 0
+          },
+          {
+            "inventory_left": 0,
+            "item": "battery",
+            "time": 1.8
+          }
+        ],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 53
+      }
+    ],
+    "('stage_4', 'hell', 12336, 3, 'approach_fire')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 138.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          81.5850000000005,
+          0.0
+        ],
+        "machines": {
+          "turret": 5
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 138.0,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          81.5850000000005,
+          0.0
+        ],
+        "machines": {
+          "turret": 5
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      }
+    ],
+    "('stage_4', 'hell', 12336, 3, 'earned_control')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 138.45,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          66.6000000000005,
+          10.0
+        ],
+        "machines": {
+          "frost": 1,
+          "turret": 3
+        },
+        "paid_wards": 1,
+        "uses": [
+          {
+            "inventory_left": 0,
+            "item": "gold",
+            "time": 0
+          },
+          {
+            "inventory_left": 0,
+            "item": "battery",
+            "time": 1.8
+          }
+        ],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 17
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 138.45,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          66.6000000000005,
+          10.0
+        ],
+        "machines": {
+          "frost": 1,
+          "turret": 3
+        },
+        "paid_wards": 1,
+        "uses": [
+          {
+            "inventory_left": 0,
+            "item": "gold",
+            "time": 0
+          },
+          {
+            "inventory_left": 0,
+            "item": "battery",
+            "time": 1.8
+          }
+        ],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 17
+      }
+    ],
+    "('stage_5', 'standard', 37719, 2, 'frost_arc')": [
+      {
+        "outcome": "victory",
+        "first_hit": 284.1,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          175.810000000003,
+          1.99999999999989
+        ],
+        "machines": {
+          "turret": 4,
+          "generator": 1,
+          "repair": 1,
+          "shock": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "victory",
+        "first_hit": 284.1,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          175.810000000003,
+          1.99999999999989
+        ],
+        "machines": {
+          "turret": 4,
+          "generator": 1,
+          "repair": 1,
+          "shock": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      }
+    ],
+    "('stage_5', 'standard', 37719, 2, 'branch_focus')": [
+      {
+        "outcome": "victory",
+        "first_hit": 284.1,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          361.250000000004,
+          0.99999999999988
+        ],
+        "machines": {
+          "turret": 4,
+          "generator": 1,
+          "frost": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 3
+      },
+      {
+        "outcome": "victory",
+        "first_hit": 284.1,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          361.250000000004,
+          0.99999999999988
+        ],
+        "machines": {
+          "turret": 4,
+          "generator": 1,
+          "frost": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 3
+      }
+    ],
+    "('stage_2', 'hard', 63906, 4, 'frost_arc')": [
+      {
+        "outcome": "victory",
+        "first_hit": 365.85,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          1000.625,
+          12.96
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "repair": 1,
+          "shock": 1,
+          "frost": 1,
+          "heavy": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 10
+      },
+      {
+        "outcome": "victory",
+        "first_hit": 365.85,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          1000.625,
+          12.96
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "repair": 1,
+          "shock": 1,
+          "frost": 1,
+          "heavy": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 10
+      }
+    ],
+    "('stage_2', 'hard', 63906, 4, 'branch_focus')": [
+      {
+        "outcome": "victory",
+        "first_hit": 365.85,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          1687.60499999997,
+          19.8179999999999
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "frost": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 11
+      },
+      {
+        "outcome": "victory",
+        "first_hit": 365.85,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          1687.60499999997,
+          19.8179999999999
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "frost": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 11
+      }
+    ],
+    "('stage_4', 'hard', 60899, 1, 'frost_arc')": [
+      {
+        "outcome": "victory",
+        "first_hit": 428.1,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          1048.25000000001,
+          18.6995000000004
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "repair": 1,
+          "shock": 1,
+          "frost": 1,
+          "heavy": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 2
+      },
+      {
+        "outcome": "victory",
+        "first_hit": 396.6,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          793.250000000005,
+          15.6995000000003
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "repair": 1,
+          "shock": 1,
+          "frost": 1,
+          "heavy": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [
+          {
+            "alternative_cost": 13.4064869082299,
+            "current_cost": 44.9739654933161,
+            "damage": 0.0,
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 6,
+            "time": 98.7000000000009,
+            "type": "hunter_reassess"
+          },
+          {
+            "alternative_cost": 17.8270957958059,
+            "current_cost": 34.6417937119638,
+            "damage": 0.0,
+            "next_room": 5,
+            "reason": "defense_delays_breach",
+            "room": 5,
+            "time": 134.400000000002,
+            "type": "hunter_reassess"
+          },
+          {
+            "alternative_cost": 12.5075305155548,
+            "current_cost": 22.8420585347851,
+            "damage": 0.0,
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 6,
+            "time": 166.500000000003,
+            "type": "hunter_reassess"
+          },
+          {
+            "alternative_cost": 15.4977164335262,
+            "current_cost": 31.3738165122258,
+            "damage": 0.0,
+            "next_room": 5,
+            "reason": "defense_delays_breach",
+            "room": 5,
+            "time": 202.500000000005,
+            "type": "hunter_reassess"
+          }
+        ],
+        "control_hits": 0
+      }
+    ],
+    "('stage_4', 'hard', 60899, 1, 'branch_focus')": [
+      {
+        "outcome": "victory",
+        "first_hit": 428.1,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          1135.25,
+          9.75200000000046
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "frost": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 5
+      },
+      {
+        "outcome": "victory",
+        "first_hit": 396.6,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          1260.25,
+          12.7520000000004
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "frost": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [
+          {
+            "alternative_cost": 13.4064869082299,
+            "current_cost": 44.9739654933161,
+            "damage": 0.0,
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 6,
+            "time": 98.7000000000009,
+            "type": "hunter_reassess"
+          },
+          {
+            "alternative_cost": 17.8270957958059,
+            "current_cost": 34.6417937119638,
+            "damage": 0.0,
+            "next_room": 5,
+            "reason": "defense_delays_breach",
+            "room": 5,
+            "time": 134.400000000002,
+            "type": "hunter_reassess"
+          },
+          {
+            "alternative_cost": 12.5075305155548,
+            "current_cost": 22.8420585347851,
+            "damage": 0.0,
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 6,
+            "time": 166.500000000003,
+            "type": "hunter_reassess"
+          },
+          {
+            "alternative_cost": 15.4977164335262,
+            "current_cost": 31.3738165122258,
+            "damage": 0.0,
+            "next_room": 5,
+            "reason": "defense_delays_breach",
+            "room": 5,
+            "time": 202.500000000005,
+            "type": "hunter_reassess"
+          }
+        ],
+        "control_hits": 0
+      }
+    ],
+    "('stage_3', 'hell', 37278, 1, 'frost_arc')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 201.6,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          190.310000000002,
+          6.49999999999995
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "repair": 1
+        },
+        "paid_wards": 1,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 201.6,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          190.310000000002,
+          6.49999999999995
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "repair": 1
+        },
+        "paid_wards": 1,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      }
+    ],
+    "('stage_3', 'hell', 37278, 1, 'branch_focus')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 201.6,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          74.7500000000016,
+          3.49999999999995
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 201.6,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          74.7500000000016,
+          3.49999999999995
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      }
+    ],
+    "('stage_5', 'hell', 70169, 1, 'frost_arc')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 303.45,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          719.094999999998,
+          14.001
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "repair": 1,
+          "shock": 1
+        },
+        "paid_wards": 1,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "victory",
+        "first_hit": 303.45,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          719.094999999998,
+          14.0009999999999
+        ],
+        "machines": {
+          "turret": 4,
+          "generator": 1,
+          "repair": 1,
+          "shock": 1
+        },
+        "paid_wards": 3,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [
+          {
+            "alternative_cost": 27.1789893854632,
+            "current_cost": 46.7183340257791,
+            "damage": 0.0,
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 3,
+            "time": 55.4999999999997,
+            "type": "hunter_reassess"
+          }
+        ],
+        "control_hits": 0
+      }
+    ],
+    "('stage_5', 'hell', 70169, 1, 'branch_focus')": [
+      {
+        "outcome": "defeat",
+        "first_hit": 303.45,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          1058.00500000001,
+          6.72300000000001
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "frost": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 27
+      },
+      {
+        "outcome": "victory",
+        "first_hit": 303.45,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          1058.00500000001,
+          5.83200000000001
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "frost": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [
+          {
+            "alternative_cost": 27.1789893854632,
+            "current_cost": 46.7183340257791,
+            "damage": 0.0,
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 3,
+            "time": 55.4999999999997,
+            "type": "hunter_reassess"
+          }
+        ],
+        "control_hits": 34
+      }
+    ],
+    "('stage_2', 'hell', 10358, 0, 'needle_defense')": [
+      {
+        "outcome": "victory",
+        "first_hit": 177.15,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          100.500000000001,
+          5.27599999999998
+        ],
+        "machines": {
+          "turret": 5,
+          "generator": 1,
+          "repair": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 192.15,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          150.500000000002,
+          8.07599999999996
+        ],
+        "machines": {
+          "turret": 5,
+          "generator": 1,
+          "repair": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [
+          {
+            "alternative_cost": 19.2011785361645,
+            "current_cost": 26.9262788884542,
+            "damage": 0.0,
+            "next_room": 5,
+            "reason": "defense_delays_breach",
+            "room": 2,
+            "time": 62.9999999999996,
+            "type": "hunter_reassess"
+          }
+        ],
+        "control_hits": 0
+      }
+    ],
+    "('stage_2', 'hell', 10358, 3, 'balanced')": [
+      {
+        "outcome": "victory",
+        "first_hit": 212.1,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          42.2000000000028,
+          8.05200000000008
+        ],
+        "machines": {
+          "turret": 2,
+          "generator": 1,
+          "repair": 1,
+          "heavy": 1,
+          "enhancer": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 0
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 223.5,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          156.200000000003,
+          22.4160000000001
+        ],
+        "machines": {
+          "turret": 2,
+          "generator": 1,
+          "repair": 1,
+          "heavy": 1,
+          "enhancer": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [
+          {
+            "alternative_cost": 19.2011785361645,
+            "current_cost": 26.9262788884542,
+            "damage": 0.0,
+            "next_room": 5,
+            "reason": "defense_delays_breach",
+            "room": 2,
+            "time": 62.9999999999996,
+            "type": "hunter_reassess"
+          }
+        ],
+        "control_hits": 0
+      }
+    ],
+    "('stage_4', 'hell', 12336, 2, 'survival_transition')": [
+      {
+        "outcome": "victory",
+        "first_hit": 307.95,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          622.655000000001,
+          6.43099999999998
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "repair": 1,
+          "frost": 1
+        },
+        "paid_wards": 2,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 2
+      },
+      {
+        "outcome": "defeat",
+        "first_hit": 349.8,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          549.677500000004,
+          7.66149999999999
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "repair": 1,
+          "frost": 1
+        },
+        "paid_wards": 0,
+        "uses": [],
+        "specializations": [],
+        "repositions": [],
+        "counterplay": [
+          {
+            "alternative_cost": 13.2732855483799,
+            "current_cost": 22.8887148155882,
+            "damage": 0.0,
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 4,
+            "time": 154.650000000003,
+            "type": "hunter_reassess"
+          }
+        ],
+        "control_hits": 12
+      }
+    ],
+    "('stage_5', 'hell', 70169, 1, 'staged_precision')": [
+      {
+        "outcome": "victory",
+        "first_hit": 351.75,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          5829.47249999979,
+          36.6549999999998
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "frost": 1,
+          "repair": 1,
+          "heavy": 1
+        },
+        "paid_wards": 1,
+        "uses": [],
+        "specializations": [
+          {
+            "branch": "precision",
+            "id": 16,
+            "level": 5,
+            "paid_gold": 225.000030517578,
+            "paid_power": 44.0,
+            "time": 10.8,
+            "type": "specialized"
+          }
+        ],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 14
+      },
+      {
+        "outcome": "victory",
+        "first_hit": 303.45,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          4885.20749999983,
+          10.5729999999997
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "frost": 1,
+          "repair": 1,
+          "heavy": 1
+        },
+        "paid_wards": 1,
+        "uses": [],
+        "specializations": [
+          {
+            "branch": "precision",
+            "id": 16,
+            "level": 5,
+            "paid_gold": 225.000030517578,
+            "paid_power": 44.0,
+            "time": 10.8,
+            "type": "specialized"
+          }
+        ],
+        "repositions": [],
+        "counterplay": [
+          {
+            "alternative_cost": 27.1789893854632,
+            "current_cost": 46.7183340257791,
+            "damage": 0.0,
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 3,
+            "time": 55.4999999999997,
+            "type": "hunter_reassess"
+          }
+        ],
+        "control_hits": 13
+      }
+    ],
+    "('stage_5', 'hell', 70169, 1, 'staged_suppression')": [
+      {
+        "outcome": "victory",
+        "first_hit": 351.75,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          5829.47249999979,
+          36.6549999999998
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "frost": 1,
+          "repair": 1,
+          "heavy": 1
+        },
+        "paid_wards": 1,
+        "uses": [],
+        "specializations": [
+          {
+            "branch": "suppression",
+            "id": 16,
+            "level": 5,
+            "paid_gold": 225.000030517578,
+            "paid_power": 44.0,
+            "time": 10.8,
+            "type": "specialized"
+          }
+        ],
+        "repositions": [],
+        "counterplay": [],
+        "control_hits": 14
+      },
+      {
+        "outcome": "victory",
+        "first_hit": 303.45,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "first_hit_wallet": [
+          4885.20749999983,
+          10.5729999999997
+        ],
+        "machines": {
+          "turret": 3,
+          "generator": 1,
+          "frost": 1,
+          "repair": 1,
+          "heavy": 1
+        },
+        "paid_wards": 1,
+        "uses": [],
+        "specializations": [
+          {
+            "branch": "suppression",
+            "id": 16,
+            "level": 5,
+            "paid_gold": 225.000030517578,
+            "paid_power": 44.0,
+            "time": 10.8,
+            "type": "specialized"
+          }
+        ],
+        "repositions": [],
+        "counterplay": [
+          {
+            "alternative_cost": 27.1789893854632,
+            "current_cost": 46.7183340257791,
+            "damage": 0.0,
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 3,
+            "time": 55.4999999999997,
+            "type": "hunter_reassess"
+          }
+        ],
+        "control_hits": 11
+      }
+    ]
+  },
+  "hard_passive_flips": [
+    {
+      "case": [
+        "stage_2",
+        "hard",
+        12077,
+        0,
+        "passive"
+      ],
+      "family": "hybrid",
+      "before": {
+        "all_npcs_slept": true,
+        "blocked_motion_steps": 0,
+        "case": [
+          "stage_2",
+          "hard",
+          12077,
+          0,
+          "passive"
+        ],
+        "eliminations": 4,
+        "event_counts": {
+          "approach": 4,
+          "archetype_warning": 26,
+          "bed_upgrade": 9,
+          "build": 12,
+          "building_upgrade": 7,
+          "charged_attack": 11,
+          "door_break": 4,
+          "door_damage": 73,
+          "door_upgrade": 7,
+          "elimination": 4,
+          "encounter": 4,
+          "hunter_ability": 4,
+          "hunter_ability_warning": 6,
+          "hunter_commit": 3,
+          "hunter_evolved": 4,
+          "hunter_recovery": 11,
+          "nightmare_level": 4,
+          "nightmare_release": 1,
+          "nightmare_warning": 1,
+          "repair": 37,
+          "survivor_attack": 4,
+          "survivor_fear": 4
+        },
+        "events": [
+          {
+            "level": 2,
+            "room": 0,
+            "time": 0.15,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 2,
+            "room": 1,
+            "time": 0.15,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 6,
+            "time": 40.05,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 42.9,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 6,
+            "time": 54.15,
+            "type": "hunter_commit"
+          },
+          {
+            "room": 6,
+            "time": 73.8,
+            "type": "door_break"
+          },
+          {
+            "room": 6,
+            "time": 76.5,
+            "type": "elimination"
+          },
+          {
+            "room": 6,
+            "source": "Hunter",
+            "time": 76.5,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 4,
+            "time": 80.25,
+            "type": "approach"
+          },
+          {
+            "room": 4,
+            "time": 88.5,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 4,
+            "time": 99.75,
+            "type": "hunter_commit"
+          },
+          {
+            "level": 3,
+            "room": 4,
+            "time": 115.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 3,
+            "room": 4,
+            "time": 115.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 4,
+            "time": 134.25,
+            "type": "door_break"
+          },
+          {
+            "room": 4,
+            "time": 136.8,
+            "type": "elimination"
+          },
+          {
+            "room": 4,
+            "source": "Hunter",
+            "time": 136.8,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 3,
+            "time": 140.25,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 144.75,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 3,
+            "time": 156.0,
+            "type": "hunter_commit"
+          },
+          {
+            "room": 3,
+            "time": 183.75,
+            "type": "door_break"
+          },
+          {
+            "room": 3,
+            "time": 186.15,
+            "type": "elimination"
+          },
+          {
+            "room": 3,
+            "source": "Hunter",
+            "time": 186.15,
+            "type": "hunter_evolved"
+          },
+          {
+            "level": 4,
+            "room": 3,
+            "time": 186.3,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 4,
+            "room": 3,
+            "time": 186.3,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 1,
+            "time": 189.15,
+            "type": "approach"
+          },
+          {
+            "level": 5,
+            "room": 1,
+            "time": 190.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 5,
+            "room": 1,
+            "time": 190.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 1,
+            "time": 217.35,
+            "type": "encounter"
+          },
+          {
+            "room": 1,
+            "time": 221.1,
+            "type": "door_break"
+          },
+          {
+            "room": 1,
+            "time": 223.35,
+            "type": "elimination"
+          },
+          {
+            "room": 1,
+            "source": "Hunter",
+            "time": 223.35,
+            "type": "hunter_evolved"
+          }
+        ],
+        "evolution_buffs": [
+          "cursed_armor",
+          "predator_rush",
+          "savage_strike",
+          "rapid_recovery"
+        ],
+        "evolution_level": 5,
+        "family": "hybrid",
+        "first_encounter": 42.9,
+        "first_player_encounter": 217.35,
+        "first_player_strike": 220.05,
+        "hunter_archetype": "ravager",
+        "hunter_attacks": 73,
+        "hunter_max_hp": 5494.69396553789,
+        "hunter_remaining_hp": 3721.69396553789,
+        "hunter_retargets": 0,
+        "hunter_transformed": false,
+        "invalid": [],
+        "map_sha256": "f675b7655d9dd123710aabf2b26474c0c8a0367a6c5005133537fd2e952bcb2d",
+        "max_ledger_error": 0.0,
+        "npc_damage": 1773.0,
+        "npc_hunter_damage": 1773.0,
+        "outcome": "defeat",
+        "peak_player_buildings": 0,
+        "peak_player_exposure": 3.9,
+        "peak_sleeping_npcs": 5,
+        "player_damage": 0.0,
+        "player_door_damage": 135.0,
+        "player_hunter_damage": 0.0,
+        "prior_passive_win": true,
+        "recovery_attempts": 0,
+        "recovery_visits": 0,
+        "repetition": 0,
+        "rooms": [
+          {
+            "alive": false,
+            "attack_seconds": 6.0,
+            "door_damage": 135.0,
+            "door_strikes": 2,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 0,
+            "room": 1,
+            "shape": "long",
+            "shots": 0,
+            "target_seconds": 34.35,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 0.0,
+            "door_strikes": 0,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 5,
+            "room": 2,
+            "shape": "zigzag",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "economy"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 41.4,
+            "door_damage": 1390.56875,
+            "door_strikes": 23,
+            "enemy_damage": 918.0,
+            "hunter_damage": 918.0,
+            "owner": 2,
+            "room": 3,
+            "shape": "u",
+            "shots": 55,
+            "target_seconds": 48.9,
+            "trait": "fortified"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 48.3,
+            "door_damage": 1128.353125,
+            "door_strikes": 26,
+            "enemy_damage": 495.0,
+            "hunter_damage": 495.0,
+            "owner": 4,
+            "room": 4,
+            "shape": "u",
+            "shots": 55,
+            "target_seconds": 60.0,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 0.0,
+            "door_strikes": 0,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 3,
+            "room": 5,
+            "shape": "rectangle",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "economy"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 33.6,
+            "door_damage": 452.5,
+            "door_strikes": 22,
+            "enemy_damage": 360.0,
+            "hunter_damage": 360.0,
+            "owner": 1,
+            "room": 6,
+            "shape": "l",
+            "shots": 40,
+            "target_seconds": 40.2,
+            "trait": "fortified"
+          }
+        ],
+        "simulated_seconds": 223.35,
+        "speed_budget_violations": 0,
+        "steps": 1489
+      },
+      "after": {
+        "all_npcs_slept": true,
+        "blocked_motion_steps": 0,
+        "case": [
+          "stage_2",
+          "hard",
+          12077,
+          0,
+          "passive"
+        ],
+        "eliminations": 1,
+        "event_counts": {
+          "approach": 10,
+          "arcane_impact": 4,
+          "archetype_warning": 31,
+          "bed_upgrade": 13,
+          "boss_ability_activate": 12,
+          "boss_ability_end": 3,
+          "boss_ability_warning": 14,
+          "boss_awakened": 1,
+          "boss_death": 1,
+          "boss_impact": 15,
+          "boss_phase": 2,
+          "boss_resource_drain": 1,
+          "boss_surge": 2,
+          "boss_transform": 1,
+          "boss_warning": 24,
+          "build": 18,
+          "building_upgrade": 24,
+          "charged_attack": 14,
+          "door_break": 1,
+          "door_damage": 148,
+          "door_upgrade": 13,
+          "elimination": 1,
+          "encounter": 11,
+          "hunter_ability": 11,
+          "hunter_ability_warning": 13,
+          "hunter_commit": 3,
+          "hunter_evolved": 1,
+          "hunter_reassess": 4,
+          "hunter_recovering": 1,
+          "hunter_recovery": 14,
+          "hunter_recovery_ended": 1,
+          "hunter_retreat": 1,
+          "nightmare_impact": 5,
+          "nightmare_level": 5,
+          "nightmare_release": 1,
+          "nightmare_warning": 2,
+          "repair": 86,
+          "scythe_embed": 1,
+          "scythe_end": 1,
+          "scythe_throw": 1,
+          "scythe_tick": 6,
+          "survivor_attack": 1,
+          "survivor_fear": 1,
+          "undead_attack": 22,
+          "undead_death": 5,
+          "undead_spawn": 14
+        },
+        "events": [
+          {
+            "level": 2,
+            "room": 0,
+            "time": 0.15,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 2,
+            "room": 1,
+            "time": 0.15,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 6,
+            "time": 40.05,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 42.9,
+            "type": "encounter"
+          },
+          {
+            "next_room": 3,
+            "reason": "defense_delays_breach",
+            "room": 6,
+            "time": 54.15,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 4,
+            "time": 54.15,
+            "type": "approach"
+          },
+          {
+            "room": 4,
+            "time": 63.45,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 4,
+            "time": 74.7,
+            "type": "hunter_commit"
+          },
+          {
+            "next_room": 2,
+            "reason": "defense_delays_breach",
+            "room": 4,
+            "time": 102.6,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 3,
+            "time": 102.6,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 108.9,
+            "type": "encounter"
+          },
+          {
+            "level": 3,
+            "room": 3,
+            "time": 115.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 3,
+            "room": 3,
+            "time": 115.05,
+            "type": "nightmare_level"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 3,
+            "time": 120.15,
+            "type": "hunter_commit"
+          },
+          {
+            "next_room": 3,
+            "reason": "defense_delays_breach",
+            "room": 3,
+            "time": 145.35,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 4,
+            "time": 145.35,
+            "type": "approach"
+          },
+          {
+            "room": 4,
+            "time": 151.65,
+            "type": "encounter"
+          },
+          {
+            "next_room": 2,
+            "reason": "defense_delays_breach",
+            "room": 4,
+            "time": 162.9,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 3,
+            "time": 162.9,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 169.2,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 3,
+            "time": 180.45,
+            "type": "hunter_commit"
+          },
+          {
+            "room": 3,
+            "time": 185.4,
+            "type": "door_break"
+          },
+          {
+            "room": 3,
+            "time": 187.95,
+            "type": "elimination"
+          },
+          {
+            "room": 3,
+            "source": "Hunter",
+            "time": 187.95,
+            "type": "hunter_evolved"
+          },
+          {
+            "level": 4,
+            "room": 3,
+            "time": 190.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 4,
+            "room": 3,
+            "time": 190.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 4,
+            "time": 191.1,
+            "type": "approach"
+          },
+          {
+            "room": 4,
+            "time": 196.65,
+            "type": "encounter"
+          },
+          {
+            "budget": 0.0,
+            "hall": "north",
+            "healed": 0.0,
+            "reason": "",
+            "room": 4,
+            "time": 215.4,
+            "type": "hunter_retreat"
+          },
+          {
+            "budget": 976.926774898437,
+            "hall": "north",
+            "healed": 0.0,
+            "reason": "",
+            "room": 4,
+            "time": 220.05,
+            "type": "hunter_recovering"
+          },
+          {
+            "budget": 976.926774898437,
+            "hall": "north",
+            "healed": 976.926774898437,
+            "reason": "completed",
+            "room": 4,
+            "time": 228.15,
+            "type": "hunter_recovery_ended"
+          },
+          {
+            "room": 6,
+            "time": 228.3,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 239.4,
+            "type": "encounter"
+          },
+          {
+            "room": 6,
+            "time": 250.05,
+            "type": "boss_transform"
+          },
+          {
+            "room": 6,
+            "time": 252.75,
+            "type": "boss_phase"
+          },
+          {
+            "room": 6,
+            "time": 255.9,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 255.9,
+            "type": "encounter"
+          },
+          {
+            "room": 4,
+            "time": 276.0,
+            "type": "approach"
+          },
+          {
+            "level": 5,
+            "room": 4,
+            "time": 277.65,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 5,
+            "room": 4,
+            "time": 277.65,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 4,
+            "time": 288.3,
+            "type": "encounter"
+          },
+          {
+            "room": 4,
+            "time": 311.85,
+            "type": "boss_phase"
+          },
+          {
+            "room": 6,
+            "time": 326.55,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 338.1,
+            "type": "encounter"
+          },
+          {
+            "level": 6,
+            "room": 6,
+            "time": 352.8,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 6,
+            "room": 6,
+            "time": 352.8,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 4,
+            "time": 366.0,
+            "type": "encounter"
+          },
+          {
+            "room": 4,
+            "time": 378.45,
+            "type": "boss_death"
+          }
+        ],
+        "evolution_buffs": [
+          "cursed_armor"
+        ],
+        "evolution_level": 6,
+        "family": "hybrid",
+        "first_encounter": 42.9,
+        "first_player_encounter": -1.0,
+        "first_player_strike": 325.35,
+        "hunter_archetype": "ravager",
+        "hunter_attacks": 102,
+        "hunter_max_hp": 6014.18029999999,
+        "hunter_remaining_hp": 0.0,
+        "hunter_retargets": 6,
+        "hunter_transformed": true,
+        "invalid": [],
+        "map_sha256": "f675b7655d9dd123710aabf2b26474c0c8a0367a6c5005133537fd2e952bcb2d",
+        "max_ledger_error": 0.0,
+        "npc_damage": 7285.21778732531,
+        "npc_hunter_damage": 6615.21778732531,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "outcome": "victory",
+        "peak_player_buildings": 0,
+        "peak_player_exposure": 0.0,
+        "peak_sleeping_npcs": 5,
+        "player_damage": 0.0,
+        "player_door_damage": 67.4891632,
+        "player_hunter_damage": 0.0,
+        "prior_passive_win": true,
+        "recovery_attempts": 1,
+        "recovery_visits": 1,
+        "repetition": 0,
+        "rooms": [
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 67.4891632,
+            "door_strikes": 5,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 0,
+            "room": 1,
+            "shape": "long",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 101.763552,
+            "door_strikes": 1,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 5,
+            "room": 2,
+            "shape": "zigzag",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "economy"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 55.2,
+            "door_damage": 1609.14375,
+            "door_strikes": 31,
+            "enemy_damage": 621.0,
+            "hunter_damage": 621.0,
+            "owner": 2,
+            "room": 3,
+            "shape": "u",
+            "shots": 70,
+            "target_seconds": 70.95,
+            "trait": "fortified"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 119.7,
+            "door_damage": 4193.760312619,
+            "door_strikes": 80,
+            "enemy_damage": 3947.16344475302,
+            "hunter_damage": 3707.16344475302,
+            "owner": 4,
+            "room": 4,
+            "shape": "u",
+            "shots": 202,
+            "target_seconds": 175.5,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 101.763552,
+            "door_strikes": 1,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 3,
+            "room": 5,
+            "shape": "rectangle",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "economy"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 60.6,
+            "door_damage": 2078.82355728007,
+            "door_strikes": 30,
+            "enemy_damage": 2717.05434257229,
+            "hunter_damage": 2287.05434257229,
+            "owner": 1,
+            "room": 6,
+            "shape": "l",
+            "shots": 130,
+            "target_seconds": 92.1,
+            "trait": "fortified"
+          }
+        ],
+        "simulated_seconds": 378.45,
+        "speed_budget_violations": 0,
+        "steps": 2523,
+        "tactical_breaks": [
+          {
+            "damage": 0.0,
+            "next_room": 3,
+            "reason": "defense_delays_breach",
+            "room": 6,
+            "time": 54.1499999999997,
+            "type": "hunter_reassess"
+          },
+          {
+            "damage": 0.0,
+            "next_room": 2,
+            "reason": "defense_delays_breach",
+            "room": 4,
+            "time": 102.600000000001,
+            "type": "hunter_reassess"
+          },
+          {
+            "damage": 0.0,
+            "next_room": 3,
+            "reason": "defense_delays_breach",
+            "room": 3,
+            "time": 145.350000000003,
+            "type": "hunter_reassess"
+          },
+          {
+            "damage": 0.0,
+            "next_room": 2,
+            "reason": "defense_delays_breach",
+            "room": 4,
+            "time": 162.900000000003,
+            "type": "hunter_reassess"
+          }
+        ]
+      }
+    },
+    {
+      "case": [
+        "stage_4",
+        "hard",
+        60899,
+        1,
+        "passive"
+      ],
+      "family": "ring",
+      "before": {
+        "all_npcs_slept": true,
+        "blocked_motion_steps": 0,
+        "case": [
+          "stage_4",
+          "hard",
+          60899,
+          1,
+          "passive"
+        ],
+        "eliminations": 3,
+        "event_counts": {
+          "approach": 7,
+          "arcane_impact": 4,
+          "archetype_warning": 44,
+          "bed_upgrade": 15,
+          "boss_ability_activate": 22,
+          "boss_ability_end": 2,
+          "boss_ability_warning": 24,
+          "boss_awakened": 1,
+          "boss_impact": 21,
+          "boss_phase": 2,
+          "boss_resource_drain": 4,
+          "boss_surge": 5,
+          "boss_transform": 1,
+          "boss_warning": 30,
+          "build": 17,
+          "building_upgrade": 30,
+          "charged_attack": 10,
+          "door_break": 4,
+          "door_damage": 203,
+          "door_upgrade": 14,
+          "elimination": 3,
+          "encounter": 6,
+          "hunter_ability": 14,
+          "hunter_ability_warning": 16,
+          "hunter_commit": 2,
+          "hunter_evolved": 3,
+          "hunter_recovering": 1,
+          "hunter_recovery": 10,
+          "hunter_recovery_ended": 1,
+          "hunter_retreat": 1,
+          "nightmare_impact": 12,
+          "nightmare_level": 6,
+          "nightmare_release": 3,
+          "nightmare_warning": 3,
+          "repair": 110,
+          "survivor_attack": 3,
+          "survivor_fear": 3,
+          "undead_attack": 116,
+          "undead_death": 20,
+          "undead_spawn": 40
+        },
+        "events": [
+          {
+            "level": 4,
+            "room": 0,
+            "time": 0.15,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 4,
+            "room": 2,
+            "time": 0.15,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 6,
+            "time": 40.05,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 69.75,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 6,
+            "time": 98.7,
+            "type": "hunter_commit"
+          },
+          {
+            "level": 5,
+            "room": 6,
+            "time": 115.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 5,
+            "room": 6,
+            "time": 115.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 6,
+            "time": 156.75,
+            "type": "door_break"
+          },
+          {
+            "room": 6,
+            "time": 159.0,
+            "type": "elimination"
+          },
+          {
+            "room": 6,
+            "source": "Hunter",
+            "time": 159.0,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 5,
+            "time": 163.35,
+            "type": "approach"
+          },
+          {
+            "room": 5,
+            "time": 170.4,
+            "type": "encounter"
+          },
+          {
+            "level": 6,
+            "room": 5,
+            "time": 190.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 6,
+            "room": 5,
+            "time": 190.05,
+            "type": "nightmare_level"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 5,
+            "time": 197.55,
+            "type": "hunter_commit"
+          },
+          {
+            "budget": 0.0,
+            "hall": "north",
+            "healed": 0.0,
+            "reason": "",
+            "room": 5,
+            "time": 207.6,
+            "type": "hunter_retreat"
+          },
+          {
+            "budget": 1349.2674,
+            "hall": "north",
+            "healed": 0.0,
+            "reason": "",
+            "room": 5,
+            "time": 216.3,
+            "type": "hunter_recovering"
+          },
+          {
+            "budget": 1349.2674,
+            "hall": "north",
+            "healed": 1349.2674,
+            "reason": "completed",
+            "room": 5,
+            "time": 224.4,
+            "type": "hunter_recovery_ended"
+          },
+          {
+            "room": 3,
+            "time": 224.55,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 250.05,
+            "type": "boss_transform"
+          },
+          {
+            "room": 3,
+            "time": 252.75,
+            "type": "boss_phase"
+          },
+          {
+            "room": 3,
+            "time": 255.9,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 265.05,
+            "type": "encounter"
+          },
+          {
+            "level": 7,
+            "room": 3,
+            "time": 281.7,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 7,
+            "room": 3,
+            "time": 281.7,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 5,
+            "time": 299.25,
+            "type": "approach"
+          },
+          {
+            "room": 5,
+            "time": 330.3,
+            "type": "encounter"
+          },
+          {
+            "level": 8,
+            "room": 5,
+            "time": 356.85,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 8,
+            "room": 5,
+            "time": 356.85,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 5,
+            "time": 367.05,
+            "type": "door_break"
+          },
+          {
+            "room": 5,
+            "time": 369.9,
+            "type": "elimination"
+          },
+          {
+            "room": 5,
+            "source": "Hunter",
+            "time": 369.9,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 3,
+            "time": 373.65,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 403.5,
+            "type": "encounter"
+          },
+          {
+            "room": 4,
+            "time": 419.7,
+            "type": "approach"
+          },
+          {
+            "level": 9,
+            "room": 4,
+            "time": 431.85,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 9,
+            "room": 4,
+            "time": 431.85,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 4,
+            "time": 451.05,
+            "type": "encounter"
+          },
+          {
+            "room": 4,
+            "time": 460.8,
+            "type": "boss_phase"
+          },
+          {
+            "room": 2,
+            "time": 468.75,
+            "type": "door_break"
+          },
+          {
+            "room": 4,
+            "time": 470.7,
+            "type": "door_break"
+          },
+          {
+            "room": 2,
+            "time": 472.5,
+            "type": "elimination"
+          },
+          {
+            "room": 2,
+            "source": "Undead",
+            "time": 472.5,
+            "type": "hunter_evolved"
+          }
+        ],
+        "evolution_buffs": [
+          "rapid_recovery",
+          "dread_aura",
+          "undead_commander"
+        ],
+        "evolution_level": 9,
+        "family": "ring",
+        "first_encounter": 69.75,
+        "first_player_encounter": -1.0,
+        "first_player_strike": 320.55,
+        "hunter_archetype": "crusher",
+        "hunter_attacks": 65,
+        "hunter_max_hp": 6992.336375,
+        "hunter_remaining_hp": 1550.25822837465,
+        "hunter_retargets": 2,
+        "hunter_transformed": true,
+        "invalid": [],
+        "map_sha256": "5add745760e48e3b14b757e12f6b7b05fc07c58ba35d56a557b43495411a8a55",
+        "max_ledger_error": 0.0,
+        "npc_damage": 10277.7531323441,
+        "npc_hunter_damage": 7584.25313234412,
+        "outcome": "defeat",
+        "peak_player_buildings": 0,
+        "peak_player_exposure": 0.0,
+        "peak_sleeping_npcs": 5,
+        "player_damage": 0.0,
+        "player_door_damage": 135.0,
+        "player_hunter_damage": 0.0,
+        "prior_passive_win": false,
+        "recovery_attempts": 1,
+        "recovery_visits": 1,
+        "repetition": 2,
+        "rooms": [
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 11.0,
+            "door_strikes": 1,
+            "enemy_damage": 360.0,
+            "hunter_damage": 0.0,
+            "owner": 2,
+            "room": 1,
+            "shape": "u",
+            "shots": 14,
+            "target_seconds": 0.0,
+            "trait": "fortified"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 0.0,
+            "door_damage": 135.0,
+            "door_strikes": 13,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 0,
+            "room": 2,
+            "shape": "l",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 50.1,
+            "door_damage": 2949.01547517708,
+            "door_strikes": 28,
+            "enemy_damage": 3024.5,
+            "hunter_damage": 2304.5,
+            "owner": 4,
+            "room": 3,
+            "shape": "l",
+            "shots": 118,
+            "target_seconds": 120.75,
+            "trait": "economy"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 21.6,
+            "door_damage": 2224.268015625,
+            "door_strikes": 59,
+            "enemy_damage": 2459.30313234412,
+            "hunter_damage": 1336.80313234412,
+            "owner": 3,
+            "room": 4,
+            "shape": "zigzag",
+            "shots": 71,
+            "target_seconds": 52.95,
+            "trait": "fortified"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 76.8,
+            "door_damage": 3922.37257904501,
+            "door_strikes": 63,
+            "enemy_damage": 3488.95,
+            "hunter_damage": 2997.95,
+            "owner": 1,
+            "room": 5,
+            "shape": "rectangle",
+            "shots": 158,
+            "target_seconds": 135.6,
+            "trait": "power"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 89.25,
+            "door_damage": 2014.40937499999,
+            "door_strikes": 39,
+            "enemy_damage": 945.0,
+            "hunter_damage": 945.0,
+            "owner": 5,
+            "room": 6,
+            "shape": "long",
+            "shots": 105,
+            "target_seconds": 123.3,
+            "trait": "economy"
+          }
+        ],
+        "simulated_seconds": 472.5,
+        "speed_budget_violations": 0,
+        "steps": 3150
+      },
+      "after": {
+        "all_npcs_slept": true,
+        "blocked_motion_steps": 0,
+        "case": [
+          "stage_4",
+          "hard",
+          60899,
+          1,
+          "passive"
+        ],
+        "eliminations": 0,
+        "event_counts": {
+          "approach": 12,
+          "arcane_impact": 5,
+          "archetype_warning": 41,
+          "bed_upgrade": 16,
+          "boss_ability_activate": 21,
+          "boss_ability_end": 2,
+          "boss_ability_warning": 22,
+          "boss_awakened": 1,
+          "boss_death": 1,
+          "boss_impact": 19,
+          "boss_phase": 2,
+          "boss_resource_drain": 3,
+          "boss_surge": 4,
+          "boss_transform": 1,
+          "boss_warning": 29,
+          "build": 20,
+          "building_upgrade": 42,
+          "charged_attack": 9,
+          "door_damage": 121,
+          "door_upgrade": 16,
+          "encounter": 12,
+          "hunter_ability": 14,
+          "hunter_ability_warning": 16,
+          "hunter_reassess": 4,
+          "hunter_recovering": 1,
+          "hunter_recovery": 9,
+          "hunter_recovery_ended": 1,
+          "hunter_retreat": 1,
+          "nightmare_impact": 12,
+          "nightmare_level": 6,
+          "nightmare_release": 3,
+          "nightmare_warning": 3,
+          "repair": 92,
+          "scythe_embed": 1,
+          "scythe_end": 1,
+          "scythe_throw": 1,
+          "scythe_tick": 9,
+          "undead_attack": 19,
+          "undead_death": 21,
+          "undead_spawn": 33
+        },
+        "events": [
+          {
+            "level": 4,
+            "room": 0,
+            "time": 0.15,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 4,
+            "room": 2,
+            "time": 0.15,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 6,
+            "time": 40.05,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 69.75,
+            "type": "encounter"
+          },
+          {
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 6,
+            "time": 98.7,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 5,
+            "time": 98.7,
+            "type": "approach"
+          },
+          {
+            "room": 5,
+            "time": 108.15,
+            "type": "encounter"
+          },
+          {
+            "level": 5,
+            "room": 5,
+            "time": 115.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 5,
+            "room": 5,
+            "time": 115.05,
+            "type": "nightmare_level"
+          },
+          {
+            "next_room": 5,
+            "reason": "defense_delays_breach",
+            "room": 5,
+            "time": 134.4,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 6,
+            "time": 134.4,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 143.85,
+            "type": "encounter"
+          },
+          {
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 6,
+            "time": 166.5,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 5,
+            "time": 166.5,
+            "type": "approach"
+          },
+          {
+            "room": 5,
+            "time": 175.8,
+            "type": "encounter"
+          },
+          {
+            "level": 6,
+            "room": 5,
+            "time": 190.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 6,
+            "room": 5,
+            "time": 190.05,
+            "type": "nightmare_level"
+          },
+          {
+            "next_room": 5,
+            "reason": "defense_delays_breach",
+            "room": 5,
+            "time": 202.5,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 6,
+            "time": 202.5,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 211.8,
+            "type": "encounter"
+          },
+          {
+            "budget": 0.0,
+            "hall": "east",
+            "healed": 0.0,
+            "reason": "",
+            "room": 6,
+            "time": 222.3,
+            "type": "hunter_retreat"
+          },
+          {
+            "budget": 1365.72973146253,
+            "hall": "east",
+            "healed": 0.0,
+            "reason": "",
+            "room": 6,
+            "time": 230.4,
+            "type": "hunter_recovering"
+          },
+          {
+            "budget": 1365.72973146253,
+            "hall": "east",
+            "healed": 1365.72973146253,
+            "reason": "completed",
+            "room": 6,
+            "time": 238.5,
+            "type": "hunter_recovery_ended"
+          },
+          {
+            "room": 5,
+            "time": 238.65,
+            "type": "approach"
+          },
+          {
+            "room": 5,
+            "time": 250.05,
+            "type": "boss_transform"
+          },
+          {
+            "room": 5,
+            "time": 252.75,
+            "type": "boss_phase"
+          },
+          {
+            "room": 5,
+            "time": 254.4,
+            "type": "approach"
+          },
+          {
+            "room": 5,
+            "time": 256.2,
+            "type": "encounter"
+          },
+          {
+            "room": 6,
+            "time": 272.4,
+            "type": "approach"
+          },
+          {
+            "level": 7,
+            "room": 6,
+            "time": 281.1,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 7,
+            "room": 6,
+            "time": 281.1,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 6,
+            "time": 282.9,
+            "type": "encounter"
+          },
+          {
+            "room": 5,
+            "time": 299.1,
+            "type": "approach"
+          },
+          {
+            "room": 5,
+            "time": 310.05,
+            "type": "encounter"
+          },
+          {
+            "room": 6,
+            "time": 326.4,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 336.3,
+            "type": "encounter"
+          },
+          {
+            "level": 8,
+            "room": 6,
+            "time": 356.25,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 8,
+            "room": 6,
+            "time": 356.25,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 5,
+            "time": 356.55,
+            "type": "approach"
+          },
+          {
+            "room": 5,
+            "time": 364.35,
+            "type": "encounter"
+          },
+          {
+            "room": 5,
+            "time": 367.35,
+            "type": "boss_phase"
+          },
+          {
+            "room": 6,
+            "time": 382.8,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 394.2,
+            "type": "encounter"
+          },
+          {
+            "level": 9,
+            "room": 4,
+            "time": 431.25,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 9,
+            "room": 4,
+            "time": 431.25,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 4,
+            "time": 449.85,
+            "type": "encounter"
+          },
+          {
+            "room": 4,
+            "time": 455.85,
+            "type": "boss_death"
+          }
+        ],
+        "evolution_buffs": [],
+        "evolution_level": 9,
+        "family": "ring",
+        "first_encounter": 69.75,
+        "first_player_encounter": -1.0,
+        "first_player_strike": 396.6,
+        "hunter_archetype": "crusher",
+        "hunter_attacks": 60,
+        "hunter_max_hp": 6992.336375,
+        "hunter_remaining_hp": 0.0,
+        "hunter_retargets": 9,
+        "hunter_transformed": true,
+        "invalid": [],
+        "map_sha256": "5add745760e48e3b14b757e12f6b7b05fc07c58ba35d56a557b43495411a8a55",
+        "max_ledger_error": 0.0,
+        "npc_damage": 12230.8642161801,
+        "npc_hunter_damage": 9139.86421618009,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "outcome": "victory",
+        "peak_player_buildings": 0,
+        "peak_player_exposure": 0.0,
+        "peak_sleeping_npcs": 5,
+        "player_damage": 0.0,
+        "player_door_damage": 26.6144831999999,
+        "player_hunter_damage": 0.0,
+        "prior_passive_win": false,
+        "recovery_attempts": 1,
+        "recovery_visits": 1,
+        "repetition": 2,
+        "rooms": [
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 249.387564799999,
+            "door_strikes": 2,
+            "enemy_damage": 279.75,
+            "hunter_damage": 0.0,
+            "owner": 2,
+            "room": 1,
+            "shape": "u",
+            "shots": 9,
+            "target_seconds": 0.0,
+            "trait": "fortified"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 26.6144831999999,
+            "door_strikes": 2,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 0,
+            "room": 2,
+            "shape": "l",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 364.015551999999,
+            "door_strikes": 9,
+            "enemy_damage": 480.0,
+            "hunter_damage": 0.0,
+            "owner": 4,
+            "room": 3,
+            "shape": "l",
+            "shots": 19,
+            "target_seconds": 0.0,
+            "trait": "economy"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 6.0,
+            "door_damage": 1107.84641476479,
+            "door_strikes": 16,
+            "enemy_damage": 1529.7336375,
+            "hunter_damage": 699.2336375,
+            "owner": 3,
+            "room": 4,
+            "shape": "zigzag",
+            "shots": 52,
+            "target_seconds": 42.45,
+            "trait": "fortified"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 103.5,
+            "door_damage": 4502.40517592896,
+            "door_strikes": 45,
+            "enemy_damage": 5347.59004927129,
+            "hunter_damage": 4374.34004927129,
+            "owner": 1,
+            "room": 5,
+            "shape": "rectangle",
+            "shots": 262,
+            "target_seconds": 159.0,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 117.6,
+            "door_damage": 4479.90054201657,
+            "door_strikes": 47,
+            "enemy_damage": 4593.7905294088,
+            "hunter_damage": 4066.2905294088,
+            "owner": 5,
+            "room": 6,
+            "shape": "long",
+            "shots": 253,
+            "target_seconds": 214.5,
+            "trait": "economy"
+          }
+        ],
+        "simulated_seconds": 455.85,
+        "speed_budget_violations": 0,
+        "steps": 3039,
+        "tactical_breaks": [
+          {
+            "damage": 0.0,
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 6,
+            "time": 98.7000000000009,
+            "type": "hunter_reassess"
+          },
+          {
+            "damage": 0.0,
+            "next_room": 5,
+            "reason": "defense_delays_breach",
+            "room": 5,
+            "time": 134.400000000002,
+            "type": "hunter_reassess"
+          },
+          {
+            "damage": 0.0,
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 6,
+            "time": 166.500000000003,
+            "type": "hunter_reassess"
+          },
+          {
+            "damage": 0.0,
+            "next_room": 5,
+            "reason": "defense_delays_breach",
+            "room": 5,
+            "time": 202.500000000005,
+            "type": "hunter_reassess"
+          }
+        ]
+      }
+    },
+    {
+      "case": [
+        "stage_1",
+        "hard",
+        62900,
+        3,
+        "passive"
+      ],
+      "family": "scattered",
+      "before": {
+        "all_npcs_slept": true,
+        "blocked_motion_steps": 0,
+        "case": [
+          "stage_1",
+          "hard",
+          62900,
+          3,
+          "passive"
+        ],
+        "eliminations": 4,
+        "event_counts": {
+          "approach": 5,
+          "arcane_impact": 11,
+          "archetype_warning": 4,
+          "bed_upgrade": 12,
+          "build": 15,
+          "building_upgrade": 12,
+          "charged_attack": 15,
+          "door_break": 4,
+          "door_damage": 104,
+          "door_upgrade": 11,
+          "elimination": 4,
+          "encounter": 4,
+          "hunter_ability": 11,
+          "hunter_ability_warning": 13,
+          "hunter_commit": 3,
+          "hunter_evolved": 4,
+          "hunter_recovering": 1,
+          "hunter_recovery": 15,
+          "hunter_recovery_ended": 1,
+          "hunter_retreat": 1,
+          "magic_shield": 1,
+          "nightmare_impact": 1,
+          "nightmare_level": 4,
+          "nightmare_release": 1,
+          "nightmare_warning": 1,
+          "repair": 52,
+          "survivor_attack": 4,
+          "survivor_fear": 4
+        },
+        "events": [
+          {
+            "room": 3,
+            "time": 40.05,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 50.85,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 3,
+            "time": 79.95,
+            "type": "hunter_commit"
+          },
+          {
+            "room": 3,
+            "time": 100.05,
+            "type": "door_break"
+          },
+          {
+            "room": 3,
+            "time": 103.2,
+            "type": "elimination"
+          },
+          {
+            "room": 3,
+            "source": "Hunter",
+            "time": 103.2,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 5,
+            "time": 107.4,
+            "type": "approach"
+          },
+          {
+            "level": 2,
+            "room": 5,
+            "time": 115.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 2,
+            "room": 5,
+            "time": 115.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 5,
+            "time": 125.1,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 5,
+            "time": 139.8,
+            "type": "hunter_commit"
+          },
+          {
+            "room": 5,
+            "time": 161.25,
+            "type": "door_break"
+          },
+          {
+            "room": 5,
+            "time": 164.4,
+            "type": "elimination"
+          },
+          {
+            "room": 5,
+            "source": "Hunter",
+            "time": 164.4,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 2,
+            "time": 168.9,
+            "type": "approach"
+          },
+          {
+            "room": 2,
+            "time": 189.6,
+            "type": "encounter"
+          },
+          {
+            "level": 3,
+            "room": 2,
+            "time": 190.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 3,
+            "room": 2,
+            "time": 190.05,
+            "type": "nightmare_level"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 2,
+            "time": 204.0,
+            "type": "hunter_commit"
+          },
+          {
+            "room": 2,
+            "time": 226.05,
+            "type": "door_break"
+          },
+          {
+            "room": 2,
+            "time": 228.9,
+            "type": "elimination"
+          },
+          {
+            "room": 2,
+            "source": "Hunter",
+            "time": 228.9,
+            "type": "hunter_evolved"
+          },
+          {
+            "level": 4,
+            "room": 2,
+            "time": 229.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 4,
+            "room": 2,
+            "time": 229.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 6,
+            "time": 232.65,
+            "type": "approach"
+          },
+          {
+            "budget": 0.0,
+            "hall": "west",
+            "healed": 0.0,
+            "reason": "",
+            "room": 6,
+            "time": 232.8,
+            "type": "hunter_retreat"
+          },
+          {
+            "budget": 965.448,
+            "hall": "west",
+            "healed": 0.0,
+            "reason": "",
+            "room": 6,
+            "time": 240.15,
+            "type": "hunter_recovering"
+          },
+          {
+            "budget": 965.448,
+            "hall": "west",
+            "healed": 965.447999999997,
+            "reason": "completed",
+            "room": 6,
+            "time": 248.25,
+            "type": "hunter_recovery_ended"
+          },
+          {
+            "room": 4,
+            "time": 248.4,
+            "type": "approach"
+          },
+          {
+            "level": 5,
+            "room": 4,
+            "time": 280.35,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 5,
+            "room": 4,
+            "time": 280.35,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 4,
+            "time": 303.15,
+            "type": "encounter"
+          },
+          {
+            "room": 4,
+            "time": 306.3,
+            "type": "door_break"
+          },
+          {
+            "room": 4,
+            "time": 309.45,
+            "type": "elimination"
+          },
+          {
+            "room": 4,
+            "source": "Hunter",
+            "time": 309.45,
+            "type": "hunter_evolved"
+          }
+        ],
+        "evolution_buffs": [
+          "rapid_recovery",
+          "blood_frenzy",
+          "dread_aura",
+          "iron_skin"
+        ],
+        "evolution_level": 5,
+        "family": "scattered",
+        "first_encounter": 50.85,
+        "first_player_encounter": 303.15,
+        "first_player_strike": 302.4,
+        "hunter_archetype": "witch",
+        "hunter_attacks": 92,
+        "hunter_max_hp": 5464.79999999999,
+        "hunter_remaining_hp": 3133.248,
+        "hunter_retargets": 0,
+        "hunter_transformed": false,
+        "invalid": [],
+        "map_sha256": "10b591fae987e4f5c1859500f1309de3d2fdbfea7a7237752e3ce535f2fb6548",
+        "max_ledger_error": 3.0517578125e-05,
+        "npc_damage": 3297.0,
+        "npc_hunter_damage": 3297.0,
+        "outcome": "defeat",
+        "peak_player_buildings": 0,
+        "peak_player_exposure": 3.3,
+        "peak_sleeping_npcs": 5,
+        "player_damage": 0.0,
+        "player_door_damage": 172.5,
+        "player_hunter_damage": 0.0,
+        "prior_passive_win": false,
+        "recovery_attempts": 1,
+        "recovery_visits": 1,
+        "repetition": 2,
+        "rooms": [
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 0.0,
+            "door_strikes": 0,
+            "enemy_damage": 165.0,
+            "hunter_damage": 165.0,
+            "owner": 3,
+            "room": 1,
+            "shape": "zigzag",
+            "shots": 6,
+            "target_seconds": 0.0,
+            "trait": "fortified"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 39.3,
+            "door_damage": 2022.185796875,
+            "door_strikes": 30,
+            "enemy_damage": 1620.0,
+            "hunter_damage": 1620.0,
+            "owner": 5,
+            "room": 2,
+            "shape": "long",
+            "shots": 60,
+            "target_seconds": 63.75,
+            "trait": "power"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 52.35,
+            "door_damage": 1040.6,
+            "door_strikes": 44,
+            "enemy_damage": 603.0,
+            "hunter_damage": 603.0,
+            "owner": 1,
+            "room": 3,
+            "shape": "rectangle",
+            "shots": 67,
+            "target_seconds": 67.35,
+            "trait": "economy"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 6.3,
+            "door_damage": 172.5,
+            "door_strikes": 3,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 0,
+            "room": 4,
+            "shape": "u",
+            "shots": 0,
+            "target_seconds": 61.2,
+            "trait": "fortified"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 39.3,
+            "door_damage": 1224.621875,
+            "door_strikes": 27,
+            "enemy_damage": 909.0,
+            "hunter_damage": 909.0,
+            "owner": 4,
+            "room": 5,
+            "shape": "rectangle",
+            "shots": 55,
+            "target_seconds": 61.5,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 0.0,
+            "door_strikes": 0,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 2,
+            "room": 6,
+            "shape": "l",
+            "shots": 0,
+            "target_seconds": 15.75,
+            "trait": "economy"
+          }
+        ],
+        "simulated_seconds": 309.45,
+        "speed_budget_violations": 0,
+        "steps": 2063
+      },
+      "after": {
+        "all_npcs_slept": true,
+        "blocked_motion_steps": 0,
+        "case": [
+          "stage_1",
+          "hard",
+          62900,
+          3,
+          "passive"
+        ],
+        "eliminations": 4,
+        "event_counts": {
+          "approach": 7,
+          "arcane_impact": 14,
+          "archetype_warning": 6,
+          "bed_upgrade": 13,
+          "build": 18,
+          "building_upgrade": 21,
+          "charged_attack": 22,
+          "door_break": 4,
+          "door_damage": 143,
+          "door_upgrade": 13,
+          "elimination": 4,
+          "encounter": 6,
+          "hunter_ability": 14,
+          "hunter_ability_warning": 16,
+          "hunter_commit": 5,
+          "hunter_evolved": 4,
+          "hunter_reassess": 1,
+          "hunter_recovering": 2,
+          "hunter_recovery": 22,
+          "hunter_recovery_ended": 2,
+          "hunter_retreat": 2,
+          "magic_absorb": 6,
+          "magic_shield": 9,
+          "nightmare_impact": 2,
+          "nightmare_level": 5,
+          "nightmare_release": 2,
+          "nightmare_warning": 2,
+          "repair": 87,
+          "survivor_attack": 4,
+          "survivor_fear": 4
+        },
+        "events": [
+          {
+            "room": 3,
+            "time": 40.05,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 50.85,
+            "type": "encounter"
+          },
+          {
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 3,
+            "time": 79.95,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 5,
+            "time": 79.95,
+            "type": "approach"
+          },
+          {
+            "room": 5,
+            "time": 98.85,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 5,
+            "time": 113.55,
+            "type": "hunter_commit"
+          },
+          {
+            "level": 2,
+            "room": 5,
+            "time": 115.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 2,
+            "room": 5,
+            "time": 115.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 5,
+            "time": 144.0,
+            "type": "door_break"
+          },
+          {
+            "room": 5,
+            "time": 147.3,
+            "type": "elimination"
+          },
+          {
+            "room": 5,
+            "source": "Hunter",
+            "time": 147.3,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 3,
+            "time": 151.8,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 169.2,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 3,
+            "time": 183.9,
+            "type": "hunter_commit"
+          },
+          {
+            "level": 3,
+            "room": 3,
+            "time": 190.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 3,
+            "room": 3,
+            "time": 190.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 3,
+            "time": 208.5,
+            "type": "door_break"
+          },
+          {
+            "room": 3,
+            "time": 211.5,
+            "type": "elimination"
+          },
+          {
+            "room": 3,
+            "source": "Hunter",
+            "time": 211.5,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 2,
+            "time": 215.55,
+            "type": "approach"
+          },
+          {
+            "room": 2,
+            "time": 250.95,
+            "type": "encounter"
+          },
+          {
+            "level": 4,
+            "room": 2,
+            "time": 265.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 4,
+            "room": 2,
+            "time": 265.05,
+            "type": "nightmare_level"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 2,
+            "time": 265.5,
+            "type": "hunter_commit"
+          },
+          {
+            "budget": 0.0,
+            "hall": "west",
+            "healed": 0.0,
+            "reason": "",
+            "room": 2,
+            "time": 265.65,
+            "type": "hunter_retreat"
+          },
+          {
+            "budget": 965.448,
+            "hall": "west",
+            "healed": 0.0,
+            "reason": "",
+            "room": 2,
+            "time": 273.6,
+            "type": "hunter_recovering"
+          },
+          {
+            "budget": 965.448,
+            "hall": "west",
+            "healed": 965.448,
+            "reason": "completed",
+            "room": 2,
+            "time": 281.7,
+            "type": "hunter_recovery_ended"
+          },
+          {
+            "room": 6,
+            "time": 281.85,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 314.85,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 6,
+            "time": 329.25,
+            "type": "hunter_commit"
+          },
+          {
+            "room": 6,
+            "time": 342.0,
+            "type": "door_break"
+          },
+          {
+            "room": 6,
+            "time": 345.45,
+            "type": "elimination"
+          },
+          {
+            "room": 6,
+            "source": "Hunter",
+            "time": 345.45,
+            "type": "hunter_evolved"
+          },
+          {
+            "level": 5,
+            "room": 6,
+            "time": 345.6,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 5,
+            "room": 6,
+            "time": 345.6,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 4,
+            "time": 350.7,
+            "type": "approach"
+          },
+          {
+            "level": 6,
+            "room": 4,
+            "time": 356.1,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 6,
+            "room": 4,
+            "time": 356.1,
+            "type": "nightmare_level"
+          },
+          {
+            "budget": 0.0,
+            "hall": "north",
+            "healed": 0.0,
+            "reason": "",
+            "room": 4,
+            "time": 356.85,
+            "type": "hunter_retreat"
+          },
+          {
+            "budget": 983.664532560058,
+            "hall": "north",
+            "healed": 0.0,
+            "reason": "",
+            "room": 4,
+            "time": 364.65,
+            "type": "hunter_recovering"
+          },
+          {
+            "budget": 983.664532560058,
+            "hall": "north",
+            "healed": 983.664532560056,
+            "reason": "completed",
+            "room": 4,
+            "time": 372.75,
+            "type": "hunter_recovery_ended"
+          },
+          {
+            "room": 1,
+            "time": 372.9,
+            "type": "approach"
+          },
+          {
+            "room": 1,
+            "time": 380.7,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 1,
+            "time": 395.1,
+            "type": "hunter_commit"
+          },
+          {
+            "room": 1,
+            "time": 400.35,
+            "type": "door_break"
+          },
+          {
+            "room": 1,
+            "time": 402.9,
+            "type": "elimination"
+          },
+          {
+            "room": 1,
+            "source": "Hunter",
+            "time": 402.9,
+            "type": "hunter_evolved"
+          }
+        ],
+        "evolution_buffs": [
+          "rapid_recovery",
+          "blood_frenzy",
+          "dread_aura",
+          "iron_skin"
+        ],
+        "evolution_level": 6,
+        "family": "scattered",
+        "first_encounter": 50.85,
+        "first_player_encounter": -1.0,
+        "first_player_strike": -1.0,
+        "hunter_archetype": "witch",
+        "hunter_attacks": 127,
+        "hunter_max_hp": 5566.0,
+        "hunter_remaining_hp": 0.0,
+        "hunter_retargets": 1,
+        "hunter_transformed": false,
+        "invalid": [],
+        "map_sha256": "10b591fae987e4f5c1859500f1309de3d2fdbfea7a7237752e3ce535f2fb6548",
+        "max_ledger_error": 6.103515625e-05,
+        "npc_damage": 7515.11253256006,
+        "npc_hunter_damage": 7515.11253256006,
+        "opening_wallet": [
+          25.0,
+          0.0
+        ],
+        "outcome": "victory",
+        "peak_player_buildings": 0,
+        "peak_player_exposure": 0.0,
+        "peak_sleeping_npcs": 5,
+        "player_damage": 0.0,
+        "player_door_damage": 0.0,
+        "player_hunter_damage": 0.0,
+        "prior_passive_win": false,
+        "recovery_attempts": 2,
+        "recovery_visits": 2,
+        "repetition": 2,
+        "rooms": [
+          {
+            "alive": false,
+            "attack_seconds": 22.2,
+            "door_damage": 2057.033265625,
+            "door_strikes": 17,
+            "enemy_damage": 1806.11253256006,
+            "hunter_damage": 1806.11253256006,
+            "owner": 3,
+            "room": 1,
+            "shape": "zigzag",
+            "shots": 55,
+            "target_seconds": 30.3,
+            "trait": "fortified"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 14.7,
+            "door_damage": 1099.8376167168,
+            "door_strikes": 13,
+            "enemy_damage": 1670.0,
+            "hunter_damage": 1670.0,
+            "owner": 5,
+            "room": 2,
+            "shape": "long",
+            "shots": 61,
+            "target_seconds": 66.3,
+            "trait": "power"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 71.4,
+            "door_damage": 2481.90625,
+            "door_strikes": 59,
+            "enemy_damage": 1440.0,
+            "hunter_damage": 1440.0,
+            "owner": 1,
+            "room": 3,
+            "shape": "rectangle",
+            "shots": 102,
+            "target_seconds": 103.65,
+            "trait": "economy"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 0.0,
+            "door_strikes": 0,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 0,
+            "room": 4,
+            "shape": "u",
+            "shots": 0,
+            "target_seconds": 22.2,
+            "trait": "fortified"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 48.45,
+            "door_damage": 1396.7453125,
+            "door_strikes": 33,
+            "enemy_damage": 540.0,
+            "hunter_damage": 540.0,
+            "owner": 4,
+            "room": 5,
+            "shape": "rectangle",
+            "shots": 60,
+            "target_seconds": 71.85,
+            "trait": "power"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 30.6,
+            "door_damage": 2143.4081875,
+            "door_strikes": 21,
+            "enemy_damage": 2059.0,
+            "hunter_damage": 2059.0,
+            "owner": 2,
+            "room": 6,
+            "shape": "l",
+            "shots": 77,
+            "target_seconds": 68.85,
+            "trait": "economy"
+          }
+        ],
+        "simulated_seconds": 403.05,
+        "speed_budget_violations": 0,
+        "steps": 2687,
+        "tactical_breaks": [
+          {
+            "damage": 0.0,
+            "next_room": 4,
+            "reason": "defense_delays_breach",
+            "room": 3,
+            "time": 79.9500000000002,
+            "type": "hunter_reassess"
+          }
+        ]
+      }
+    }
+  ]
+}
