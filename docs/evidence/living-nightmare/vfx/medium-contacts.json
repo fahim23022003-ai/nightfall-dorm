@@ -1,0 +1,142 @@
+{
+  "errors": [],
+  "fixtures": {
+    "crusher": {
+      "damage": 20.1373333333333,
+      "evolution_level": 1,
+      "frame": 24,
+      "hp": 114.862666666667,
+      "material": "wood",
+      "origin": [
+        2248.0,
+        2536.0
+      ],
+      "socket": [
+        2248.0,
+        2510.0
+      ],
+      "source": "door strike",
+      "stage": "stage_1",
+      "style": "heavy",
+      "time": 45.8333333333333
+    },
+    "electric": {
+      "damage": 14.7667754666667,
+      "evolution_level": 1,
+      "frame": 23,
+      "hp": 120.233224533333,
+      "material": "",
+      "origin": [
+        2248.0,
+        2536.0
+      ],
+      "socket": [
+        2248.0,
+        2510.0
+      ],
+      "source": "door strike",
+      "stage": "stage_1",
+      "style": "electric",
+      "time": 45.8
+    },
+    "ravager": {
+      "damage": 14.2581266666667,
+      "evolution_level": 1,
+      "frame": 14,
+      "hp": 120.741873333333,
+      "material": "wood",
+      "origin": [
+        2248.0,
+        2536.0
+      ],
+      "rig_tip_distance": 0.0,
+      "socket": [
+        2248.0,
+        2510.0
+      ],
+      "source": "door strike",
+      "stage": "stage_1",
+      "style": "swipe",
+      "time": 45.5
+    },
+    "reaper": {
+      "damage": 30.8166301872,
+      "evolution_level": 5,
+      "frame": 35,
+      "hp": 119.1833698128,
+      "material": "wood",
+      "origin": [
+        1160.0,
+        4104.0
+      ],
+      "rig_tip_distance": 0.0,
+      "socket": [
+        1143.0,
+        4095.0
+      ],
+      "source": "scythe",
+      "stage": "stage_5",
+      "style": "scythe",
+      "time": 46.1999999999999
+    },
+    "stalker": {
+      "damage": 13.7588273777778,
+      "evolution_level": 1,
+      "frame": 21,
+      "hp": 121.241172622222,
+      "material": "wood",
+      "origin": [
+        2248.0,
+        2536.0
+      ],
+      "rig_tip_distance": 0.0,
+      "socket": [
+        2248.0,
+        2510.0
+      ],
+      "source": "door strike",
+      "stage": "stage_1",
+      "style": "claw",
+      "time": 45.7333333333333
+    },
+    "storm": {
+      "damage": 14.7673777777778,
+      "evolution_level": 1,
+      "frame": 24,
+      "hp": 120.232622222222,
+      "material": "",
+      "origin": [
+        2248.0,
+        2536.0
+      ],
+      "socket": [
+        2248.0,
+        2510.0
+      ],
+      "source": "door strike",
+      "stage": "stage_1",
+      "style": "storm",
+      "time": 45.8333333333333
+    },
+    "witch": {
+      "damage": 13.7616336,
+      "evolution_level": 1,
+      "frame": 26,
+      "hp": 121.2383664,
+      "material": "",
+      "origin": [
+        2248.0,
+        2536.0
+      ],
+      "socket": [
+        2248.0,
+        2510.0
+      ],
+      "source": "door strike",
+      "stage": "stage_1",
+      "style": "cast",
+      "time": 45.8999999999999
+    }
+  },
+  "graphics": "medium"
+}

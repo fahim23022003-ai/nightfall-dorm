@@ -1,0 +1,428 @@
+{
+  "battle": {
+    "bed_level": 4,
+    "door_level": 4,
+    "first_player_strike": 47.9999999999997,
+    "frames": 700,
+    "item_uses": 0,
+    "ledger_checks": 2884,
+    "outcome": "victory",
+    "paid_buildings": 7,
+    "repair_actions": 31,
+    "sim_seconds": 435.59999999998,
+    "total_door_damage": 2396.93935967216
+  },
+  "difficulty": "hell",
+  "early_events": [
+    {
+      "damage": 0.0,
+      "gold_after_tick": 1.72749999999998,
+      "id": 1,
+      "position": "(1920.0, 904.0)",
+      "power_after_tick": 0.0,
+      "room": 1,
+      "spent_gold": 30.0,
+      "spent_power": 0.0,
+      "time": 6.6,
+      "transformed": false,
+      "type": "bed_upgrade"
+    },
+    {
+      "damage": 0.0,
+      "gold_after_tick": 1.07999999999976,
+      "id": 7,
+      "position": "(1920.0, 904.0)",
+      "power_after_tick": 0.0,
+      "room": 1,
+      "spent_gold": 85.0,
+      "spent_power": 0.0,
+      "time": 30.8999999999999,
+      "transformed": false,
+      "type": "bed_upgrade"
+    },
+    {
+      "damage": 0.0,
+      "gold_after_tick": 3.33999999999974,
+      "id": 9,
+      "position": "(1920.0, 904.0)",
+      "power_after_tick": 0.0,
+      "room": 1,
+      "spent_gold": 35.0,
+      "spent_power": 0.0,
+      "time": 36.2999999999998,
+      "transformed": false,
+      "type": "door_upgrade"
+    },
+    {
+      "damage": 0.0,
+      "gold_after_tick": 1.96999999999975,
+      "id": 10,
+      "kind": "turret",
+      "position": "(1944.0, 1048.0)",
+      "power_after_tick": 0.0,
+      "room": 1,
+      "spent_gold": 20.0,
+      "spent_power": 0.0,
+      "tile": 16,
+      "time": 38.9999999999998,
+      "transformed": false,
+      "type": "build"
+    },
+    {
+      "damage": 0.0,
+      "gold_after_tick": 6.80999999999975,
+      "id": 14,
+      "kind": "turret",
+      "position": "(1976.0, 1048.0)",
+      "power_after_tick": 0.0,
+      "room": 1,
+      "spent_gold": 20.0,
+      "spent_power": 0.0,
+      "tile": 17,
+      "time": 42.5999999999998,
+      "transformed": false,
+      "type": "build"
+    },
+    {
+      "damage": 0.0,
+      "gold_after_tick": 5.43999999999975,
+      "id": 17,
+      "kind": "turret",
+      "position": "(1944.0, 1000.0)",
+      "power_after_tick": 0.0,
+      "room": 1,
+      "spent_gold": 20.0,
+      "spent_power": 0.0,
+      "tile": 18,
+      "time": 45.2999999999997,
+      "transformed": false,
+      "type": "build"
+    },
+    {
+      "damage": 0.0,
+      "gold_after_tick": 10.6149999999997,
+      "id": 18,
+      "position": "(1920.0, 904.0)",
+      "power_after_tick": 0.0,
+      "room": 1,
+      "time": 46.1999999999997,
+      "transformed": false,
+      "type": "encounter"
+    },
+    {
+      "attacker_id": 1,
+      "damage": 33.0568128,
+      "damage_type": "physical",
+      "element": "neutral",
+      "gold_after_tick": 23.0349999999998,
+      "hp": 266.9431872,
+      "id": 23,
+      "max_hp": 300.0,
+      "position": "(1920.0, 904.0)",
+      "power_after_tick": 0.0,
+      "repair_affordable": true,
+      "room": 1,
+      "source": "door strike",
+      "time": 47.9999999999997,
+      "transformed": false,
+      "type": "door_damage"
+    },
+    {
+      "attacker_id": 1,
+      "damage": 33.12467136,
+      "damage_type": "physical",
+      "element": "neutral",
+      "gold_after_tick": 37.5249999999997,
+      "hp": 233.81851584,
+      "id": 25,
+      "max_hp": 300.0,
+      "position": "(1920.0, 904.0)",
+      "power_after_tick": 0.0,
+      "repair_affordable": true,
+      "room": 1,
+      "source": "door strike",
+      "time": 50.0999999999997,
+      "transformed": false,
+      "type": "door_damage"
+    },
+    {
+      "amount": 66.18148416,
+      "damage": 0.0,
+      "gold_after_tick": 28.6999999999997,
+      "id": 26,
+      "position": "(1920.0, 904.0)",
+      "power_after_tick": 0.0,
+      "room": 1,
+      "spent_gold": 14.0,
+      "spent_power": 0,
+      "time": 50.6999999999997,
+      "transformed": false,
+      "type": "repair"
+    },
+    {
+      "attacker_id": 1,
+      "damage": 52.60088592,
+      "damage_type": "physical",
+      "element": "earth",
+      "gold_after_tick": 44.2249999999997,
+      "hp": 247.39911408,
+      "id": 30,
+      "max_hp": 300.0,
+      "position": "(1920.0, 904.0)",
+      "power_after_tick": 0.0,
+      "repair_affordable": true,
+      "room": 1,
+      "source": "charged heavy strike",
+      "time": 53.0999999999997,
+      "transformed": false,
+      "type": "door_damage"
+    },
+    {
+      "attacker_id": 1,
+      "damage": 27.7614216,
+      "damage_type": "physical",
+      "element": "neutral",
+      "gold_after_tick": 63.8899999999996,
+      "hp": 219.63769248,
+      "id": 35,
+      "max_hp": 300.0,
+      "position": "(1920.0, 904.0)",
+      "power_after_tick": 0.0,
+      "repair_affordable": true,
+      "room": 1,
+      "source": "door strike",
+      "time": 55.9499999999996,
+      "transformed": false,
+      "type": "door_damage"
+    },
+    {
+      "amount": 70.0,
+      "damage": 0.0,
+      "gold_after_tick": 51.9599999999996,
+      "id": 36,
+      "position": "(1920.0, 904.0)",
+      "power_after_tick": 0.0,
+      "room": 1,
+      "spent_gold": 14.0,
+      "spent_power": 0,
+      "time": 56.0999999999996,
+      "transformed": false,
+      "type": "repair"
+    },
+    {
+      "attacker_id": 1,
+      "damage": 27.8058528,
+      "damage_type": "physical",
+      "element": "neutral",
+      "gold_after_tick": 61.2749999999996,
+      "hp": 261.83183968,
+      "id": 38,
+      "max_hp": 300.0,
+      "position": "(1920.0, 904.0)",
+      "power_after_tick": 0.0,
+      "repair_affordable": true,
+      "room": 1,
+      "source": "door strike",
+      "time": 57.5999999999996,
+      "transformed": false,
+      "type": "door_damage"
+    },
+    {
+      "attacker_id": 1,
+      "damage": 52.96158648,
+      "damage_type": "physical",
+      "element": "earth",
+      "gold_after_tick": 78.8699999999995,
+      "hp": 208.8702532,
+      "id": 41,
+      "max_hp": 300.0,
+      "position": "(1920.0, 904.0)",
+      "power_after_tick": 0.0,
+      "repair_affordable": true,
+      "room": 1,
+      "source": "charged heavy strike",
+      "time": 60.1499999999996,
+      "transformed": false,
+      "type": "door_damage"
+    },
+    {
+      "amount": 70.0,
+      "damage": 0.0,
+      "gold_after_tick": 69.0099999999995,
+      "id": 44,
+      "position": "(1920.0, 904.0)",
+      "power_after_tick": 0.0,
+      "room": 1,
+      "spent_gold": 14.0,
+      "spent_power": 0,
+      "time": 60.5999999999996,
+      "transformed": false,
+      "type": "repair"
+    },
+    {
+      "attacker_id": 1,
+      "damage": 27.951264,
+      "damage_type": "physical",
+      "element": "neutral",
+      "gold_after_tick": 84.5349999999995,
+      "hp": 250.9189892,
+      "id": 46,
+      "max_hp": 300.0,
+      "position": "(1920.0, 904.0)",
+      "power_after_tick": 0.0,
+      "repair_affordable": true,
+      "room": 1,
+      "source": "door strike",
+      "time": 62.9999999999996,
+      "transformed": false,
+      "type": "door_damage"
+    },
+    {
+      "alternative_cost": 19.2226443489012,
+      "current_cost": 55.0,
+      "damage": 0.0,
+      "gold_after_tick": 84.5349999999995,
+      "id": 47,
+      "next_room": 5,
+      "position": "(1920.0, 904.0)",
+      "power_after_tick": 0.0,
+      "reason": "defense_delays_breach",
+      "room": 1,
+      "stalled": false,
+      "time": 62.9999999999996,
+      "transformed": false,
+      "type": "hunter_reassess"
+    },
+    {
+      "damage": 0.0,
+      "gold_after_tick": 6.26999999999939,
+      "id": 49,
+      "position": "(1920.0, 904.0)",
+      "power_after_tick": 0.0,
+      "room": 1,
+      "spent_gold": 100.0,
+      "spent_power": 0.0,
+      "time": 65.9999999999996,
+      "transformed": false,
+      "type": "door_upgrade"
+    },
+    {
+      "damage": 0.0,
+      "gold_after_tick": 4.2599999999991,
+      "id": 67,
+      "kind": "generator",
+      "position": "(2296.0, 784.0)",
+      "power_after_tick": 0.081,
+      "room": 1,
+      "spent_gold": 120.0,
+      "spent_power": 0.0,
+      "tile": 19,
+      "time": 83.1000000000003,
+      "transformed": false,
+      "type": "build"
+    }
+  ],
+  "errors": [],
+  "family": "labyrinth",
+  "room": 2,
+  "scout": {
+    "early_siege_risk": true,
+    "entry_seconds": 3,
+    "hunter_seconds": 7
+  },
+  "seed": 10358,
+  "stage": "stage_2",
+  "walk": {
+    "claimed_at": 2.4,
+    "frames": 20,
+    "positions": [
+      [
+        1824.0,
+        640.0
+      ],
+      [
+        1824.0,
+        666.999816894531
+      ],
+      [
+        1824.0,
+        693.999633789062
+      ],
+      [
+        1824.0,
+        720.999450683594
+      ],
+      [
+        1824.0,
+        747.999267578125
+      ],
+      [
+        1824.0,
+        774.999084472656
+      ],
+      [
+        1824.0,
+        801.998901367188
+      ],
+      [
+        1824.0,
+        828.998718261719
+      ],
+      [
+        1824.0,
+        855.99853515625
+      ],
+      [
+        1824.0,
+        882.998352050781
+      ],
+      [
+        1824.0,
+        904.000061035156
+      ],
+      [
+        1850.99987792969,
+        904.000061035156
+      ],
+      [
+        1877.99975585938,
+        904.000061035156
+      ],
+      [
+        1896.0,
+        904.000061035156
+      ],
+      [
+        1922.99987792969,
+        904.000061035156
+      ],
+      [
+        1949.99975585938,
+        904.000061035156
+      ],
+      [
+        1955.00036621094,
+        904.000061035156
+      ],
+      [
+        1982.00024414062,
+        904.000061035156
+      ],
+      [
+        2009.00012207031,
+        904.000061035156
+      ],
+      [
+        2036.0,
+        904.000061035156
+      ],
+      [
+        2061.99975585938,
+        904.000061035156
+      ]
+    ],
+    "slept_at": 3.0,
+    "start_gold": 25.0,
+    "start_power": 0.0
+  }
+}

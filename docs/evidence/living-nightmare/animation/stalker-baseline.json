@@ -1,0 +1,2022 @@
+{
+  "archetype": "stalker",
+  "combat_staging": "Ordinary attacks are isolated by postponing special-ability cooldowns. A higher door level extends the comparison. The initial countdown leaves time for a paid Needle to land before the first Hunter windup. Windup durations, damage, and projectiles remain in the model.",
+  "fixture": "Prepared seeded Endless. The chosen level, starting player wallet and Hunter route are staged. Each path is checked before the production movement primitive and heading tracker run. Live ordinary combat uses normal MatchModel ticks and one legally paid Needle.",
+  "fps": 24,
+  "segments": [
+    {
+      "approach_frames": 106,
+      "bound_hit_pose": true,
+      "bound_release_pose": true,
+      "bound_tell_pose": true,
+      "door_damage": 18.04,
+      "events": {
+        "door_strike": 138,
+        "impact": 110,
+        "launch": 106,
+        "ordinary_warning": 124
+      },
+      "first_hunter_damage_frame": 110,
+      "frame_count": 152,
+      "frames": [
+        {
+          "frame": 0,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "idle",
+          "position": [
+            95.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 1,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "idle",
+          "position": [
+            95.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 2,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "idle",
+          "position": [
+            95.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 3,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "idle",
+          "position": [
+            95.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 4,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "idle",
+          "position": [
+            95.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 5,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "idle",
+          "position": [
+            95.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 6,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            98.5999984741211,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 7,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            102.199996948242,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 8,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            105.799995422363,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 9,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            109.399993896484,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 10,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            112.999992370605,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 11,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            116.599990844727,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 12,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            120.199989318848,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 13,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            123.799987792969,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 14,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            127.39998626709,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 15,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            130.999984741211,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 16,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            134.599990844727,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 17,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            138.199996948242,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 18,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            141.800003051758,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 19,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            145.400009155273,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 20,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            149.000015258789,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 21,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            150.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 22,
+          "heading": [
+            0.793353319168091,
+            0.608761429786682
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            308.600006103516
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 23,
+          "heading": [
+            0.509416937828064,
+            0.860519826412201
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            312.200012207031
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 24,
+          "heading": [
+            0.306768357753754,
+            0.951784253120422
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            315.800018310547
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 25,
+          "heading": [
+            0.18087974190712,
+            0.983505249023438
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            319.400024414062
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 26,
+          "heading": [
+            0.10589823871851,
+            0.994377017021179
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            323.000030517578
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 27,
+          "heading": [
+            0.0618505217134953,
+            0.99808543920517
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            326.600036621094
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 28,
+          "heading": [
+            0.0360946729779243,
+            0.999348402023315
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            330.200042724609
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 29,
+          "heading": [
+            0.0210582446306944,
+            0.999778270721436
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            333.800048828125
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 30,
+          "heading": [
+            0.0122845750302076,
+            0.999924540519714
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            337.400054931641
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 31,
+          "heading": [
+            0.00716612068936229,
+            0.999974310398102
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            341.000061035156
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 32,
+          "heading": [
+            0.00418026093393564,
+            0.999991297721863
+          ],
+          "pose": "stalk",
+          "position": [
+            150.0,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 33,
+          "heading": [
+            -0.606825053691864,
+            0.794835448265076
+          ],
+          "pose": "turn",
+          "position": [
+            146.399993896484,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 34,
+          "heading": [
+            -0.85979437828064,
+            0.510640501976013
+          ],
+          "pose": "turn",
+          "position": [
+            142.799987792969,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 35,
+          "heading": [
+            -0.951529383659363,
+            0.307558000087738
+          ],
+          "pose": "turn",
+          "position": [
+            139.199981689453,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left.png"
+        },
+        {
+          "frame": 36,
+          "heading": [
+            -0.983417570590973,
+            0.181355774402618
+          ],
+          "pose": "turn",
+          "position": [
+            135.599975585938,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left.png"
+        },
+        {
+          "frame": 37,
+          "heading": [
+            -0.994347035884857,
+            0.106179006397724
+          ],
+          "pose": "turn",
+          "position": [
+            131.999969482422,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left.png"
+        },
+        {
+          "frame": 38,
+          "heading": [
+            -0.998075246810913,
+            0.0620149150490761
+          ],
+          "pose": "turn",
+          "position": [
+            128.399963378906,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left.png"
+        },
+        {
+          "frame": 39,
+          "heading": [
+            -0.999344944953918,
+            0.0361906923353672
+          ],
+          "pose": "turn",
+          "position": [
+            124.799964904785,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left.png"
+        },
+        {
+          "frame": 40,
+          "heading": [
+            -0.999777138233185,
+            0.0211142785847187
+          ],
+          "pose": "turn",
+          "position": [
+            121.199966430664,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left.png"
+        },
+        {
+          "frame": 41,
+          "heading": [
+            -0.999924123287201,
+            0.0123172635212541
+          ],
+          "pose": "turn",
+          "position": [
+            117.599967956543,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left.png"
+        },
+        {
+          "frame": 42,
+          "heading": [
+            -0.999974191188812,
+            0.00718518998473883
+          ],
+          "pose": "turn",
+          "position": [
+            113.999969482422,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left.png"
+        },
+        {
+          "frame": 43,
+          "heading": [
+            -0.999991238117218,
+            0.00419138465076685
+          ],
+          "pose": "stalk",
+          "position": [
+            110.399971008301,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left.png"
+        },
+        {
+          "frame": 44,
+          "heading": [
+            -0.999997019767761,
+            0.00244497903622687
+          ],
+          "pose": "stalk",
+          "position": [
+            106.79997253418,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left.png"
+        },
+        {
+          "frame": 45,
+          "heading": [
+            -0.999998986721039,
+            0.00142623868305236
+          ],
+          "pose": "stalk",
+          "position": [
+            103.199974060059,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left.png"
+        },
+        {
+          "frame": 46,
+          "heading": [
+            -0.999999642372131,
+            0.000831972807645798
+          ],
+          "pose": "stalk",
+          "position": [
+            102.0,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left.png"
+        },
+        {
+          "frame": 47,
+          "heading": [
+            -0.793648719787598,
+            -0.608376324176788
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            340.399993896484
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left.png"
+        },
+        {
+          "frame": 48,
+          "heading": [
+            -0.509660542011261,
+            -0.8603755235672
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            336.799987792969
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_back.png"
+        },
+        {
+          "frame": 49,
+          "heading": [
+            -0.306925565004349,
+            -0.951733529567719
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            333.199981689453
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_back.png"
+        },
+        {
+          "frame": 50,
+          "heading": [
+            -0.180974543094635,
+            -0.983487784862518
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            329.599975585938
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_back.png"
+        },
+        {
+          "frame": 51,
+          "heading": [
+            -0.105954147875309,
+            -0.994371056556702
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            325.999969482422
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_back.png"
+        },
+        {
+          "frame": 52,
+          "heading": [
+            -0.0618832558393478,
+            -0.998083412647247
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            322.399963378906
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_back.png"
+        },
+        {
+          "frame": 53,
+          "heading": [
+            -0.0361137911677361,
+            -0.999347746372223
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            318.799957275391
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_back.png"
+        },
+        {
+          "frame": 54,
+          "heading": [
+            -0.0210694000124931,
+            -0.999778091907501
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            315.199951171875
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_back.png"
+        },
+        {
+          "frame": 55,
+          "heading": [
+            -0.0122910840436816,
+            -0.99992448091507
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            311.599945068359
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_back.png"
+        },
+        {
+          "frame": 56,
+          "heading": [
+            -0.00716991862282157,
+            -0.999974310398102
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            307.999938964844
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_back.png"
+        },
+        {
+          "frame": 57,
+          "heading": [
+            -0.00418247655034065,
+            -0.999991297721863
+          ],
+          "pose": "stalk",
+          "position": [
+            102.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_back.png"
+        },
+        {
+          "frame": 58,
+          "heading": [
+            0.606824040412903,
+            -0.794836223125458
+          ],
+          "pose": "turn",
+          "position": [
+            105.599998474121,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_back.png"
+        },
+        {
+          "frame": 59,
+          "heading": [
+            0.859793961048126,
+            -0.510641157627106
+          ],
+          "pose": "turn",
+          "position": [
+            109.199996948242,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 60,
+          "heading": [
+            0.951529204845428,
+            -0.307558447122574
+          ],
+          "pose": "turn",
+          "position": [
+            112.799995422363,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 61,
+          "heading": [
+            0.983417510986328,
+            -0.181356072425842
+          ],
+          "pose": "turn",
+          "position": [
+            116.399993896484,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 62,
+          "heading": [
+            0.994347035884857,
+            -0.106179170310497
+          ],
+          "pose": "turn",
+          "position": [
+            119.999992370605,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 63,
+          "heading": [
+            0.998075246810913,
+            -0.0620150119066238
+          ],
+          "pose": "turn",
+          "position": [
+            123.599990844727,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 64,
+          "heading": [
+            0.999344944953918,
+            -0.0361907482147217
+          ],
+          "pose": "turn",
+          "position": [
+            127.199989318848,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 65,
+          "heading": [
+            0.999777138233185,
+            -0.0211143121123314
+          ],
+          "pose": "turn",
+          "position": [
+            130.799987792969,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 66,
+          "heading": [
+            0.999924123287201,
+            -0.0123172830790281
+          ],
+          "pose": "turn",
+          "position": [
+            134.399993896484,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 67,
+          "heading": [
+            0.999974191188812,
+            -0.00718520162627101
+          ],
+          "pose": "turn",
+          "position": [
+            138.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 68,
+          "heading": [
+            0.999991238117218,
+            -0.00419139117002487
+          ],
+          "pose": "stalk",
+          "position": [
+            141.600006103516,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 69,
+          "heading": [
+            0.999997019767761,
+            -0.00244498299434781
+          ],
+          "pose": "stalk",
+          "position": [
+            145.200012207031,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 70,
+          "heading": [
+            0.999998986721039,
+            -0.0014262410113588
+          ],
+          "pose": "stalk",
+          "position": [
+            148.800018310547,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 71,
+          "heading": [
+            0.999999642372131,
+            -0.000831974146421999
+          ],
+          "pose": "stalk",
+          "position": [
+            152.400024414062,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 72,
+          "heading": [
+            0.99999988079071,
+            -0.000485318276332691
+          ],
+          "pose": "stalk",
+          "position": [
+            156.000030517578,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 73,
+          "heading": [
+            1.0,
+            -0.000283102330286056
+          ],
+          "pose": "stalk",
+          "position": [
+            158.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_right.png"
+        },
+        {
+          "frame": 74,
+          "heading": [
+            0.521571218967438,
+            0.85320782661438
+          ],
+          "pose": "turn",
+          "position": [
+            155.219268798828,
+            307.286376953125
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 75,
+          "heading": [
+            -0.0476835370063782,
+            0.998862564563751
+          ],
+          "pose": "turn",
+          "position": [
+            152.438537597656,
+            309.57275390625
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 76,
+          "heading": [
+            -0.385359615087509,
+            0.922766447067261
+          ],
+          "pose": "turn",
+          "position": [
+            149.657806396484,
+            311.859130859375
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 77,
+          "heading": [
+            -0.563434243202209,
+            0.826160907745361
+          ],
+          "pose": "turn",
+          "position": [
+            146.877075195312,
+            314.1455078125
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 78,
+          "heading": [
+            -0.657064497470856,
+            0.753834366798401
+          ],
+          "pose": "turn",
+          "position": [
+            144.096343994141,
+            316.431884765625
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 79,
+          "heading": [
+            -0.707513749599457,
+            0.706699669361115
+          ],
+          "pose": "turn",
+          "position": [
+            141.315612792969,
+            318.71826171875
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 80,
+          "heading": [
+            -0.735399663448334,
+            0.67763364315033
+          ],
+          "pose": "turn",
+          "position": [
+            138.534881591797,
+            321.004638671875
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 81,
+          "heading": [
+            -0.751118302345276,
+            0.660167634487152
+          ],
+          "pose": "turn",
+          "position": [
+            135.754150390625,
+            323.291015625
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 82,
+          "heading": [
+            -0.760096549987793,
+            0.649810194969177
+          ],
+          "pose": "turn",
+          "position": [
+            132.973419189453,
+            325.577392578125
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 83,
+          "heading": [
+            -0.76526802778244,
+            0.643711864948273
+          ],
+          "pose": "turn",
+          "position": [
+            130.192687988281,
+            327.86376953125
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 84,
+          "heading": [
+            -0.768262088298798,
+            0.640135407447815
+          ],
+          "pose": "turn",
+          "position": [
+            127.411956787109,
+            330.150146484375
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 85,
+          "heading": [
+            -0.770000994205475,
+            0.638042747974396
+          ],
+          "pose": "stalk",
+          "position": [
+            124.631225585938,
+            332.4365234375
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 86,
+          "heading": [
+            -0.771012604236603,
+            0.636819839477539
+          ],
+          "pose": "stalk",
+          "position": [
+            121.850494384766,
+            334.722900390625
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 87,
+          "heading": [
+            -0.771601915359497,
+            0.63610577583313
+          ],
+          "pose": "stalk",
+          "position": [
+            119.069763183594,
+            337.00927734375
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 88,
+          "heading": [
+            -0.771944880485535,
+            0.635689377784729
+          ],
+          "pose": "stalk",
+          "position": [
+            116.289039611816,
+            339.295654296875
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 89,
+          "heading": [
+            -0.77214503288269,
+            0.635446429252625
+          ],
+          "pose": "stalk",
+          "position": [
+            113.508316040039,
+            341.58203125
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 90,
+          "heading": [
+            -0.772255599498749,
+            0.635311901569366
+          ],
+          "pose": "stalk",
+          "position": [
+            113.0,
+            342.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 91,
+          "heading": [
+            -0.761159121990204,
+            0.648565173149109
+          ],
+          "pose": "stalk",
+          "position": [
+            110.31713104248,
+            344.400451660156
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 92,
+          "heading": [
+            -0.754580914974213,
+            0.656207025051117
+          ],
+          "pose": "stalk",
+          "position": [
+            107.634262084961,
+            346.800903320312
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 93,
+          "heading": [
+            -0.750708162784576,
+            0.66063404083252
+          ],
+          "pose": "stalk",
+          "position": [
+            104.951393127441,
+            349.201354980469
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 94,
+          "heading": [
+            -0.7484370470047,
+            0.663205921649933
+          ],
+          "pose": "stalk",
+          "position": [
+            102.268524169922,
+            351.601806640625
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 95,
+          "heading": [
+            -0.747108161449432,
+            0.664702534675598
+          ],
+          "pose": "stalk",
+          "position": [
+            99.5856552124023,
+            354.002258300781
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 96,
+          "heading": [
+            -0.746331632137299,
+            0.665574371814728
+          ],
+          "pose": "stalk",
+          "position": [
+            96.9027862548828,
+            356.402709960938
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 97,
+          "heading": [
+            -0.745877742767334,
+            0.666082859039307
+          ],
+          "pose": "stalk",
+          "position": [
+            94.2199249267578,
+            358.803161621094
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 98,
+          "heading": [
+            -0.745612859725952,
+            0.666379451751709
+          ],
+          "pose": "stalk",
+          "position": [
+            91.5370635986328,
+            361.20361328125
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 99,
+          "heading": [
+            -0.745456516742706,
+            0.66655433177948
+          ],
+          "pose": "stalk",
+          "position": [
+            88.8542022705078,
+            363.604095458984
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 100,
+          "heading": [
+            -0.745367050170898,
+            0.666654348373413
+          ],
+          "pose": "stalk",
+          "position": [
+            86.1713409423828,
+            366.004547119141
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 101,
+          "heading": [
+            -0.745313107967377,
+            0.666714668273926
+          ],
+          "pose": "stalk",
+          "position": [
+            83.4884796142578,
+            368.405029296875
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 102,
+          "heading": [
+            -0.745283782482147,
+            0.666747450828552
+          ],
+          "pose": "stalk",
+          "position": [
+            80.8056106567383,
+            370.805480957031
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 103,
+          "heading": [
+            -0.745264530181885,
+            0.666768968105316
+          ],
+          "pose": "stalk",
+          "position": [
+            78.1227493286133,
+            373.205963134766
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 104,
+          "heading": [
+            -0.745255410671234,
+            0.666779100894928
+          ],
+          "pose": "stalk",
+          "position": [
+            75.4398803710938,
+            375.606414794922
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 105,
+          "heading": [
+            -0.745246708393097,
+            0.666788816452026
+          ],
+          "pose": "stalk",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 106,
+          "heading": [
+            -0.531697154045105,
+            0.84693455696106
+          ],
+          "pose": "turn",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_left_prototype.png"
+        },
+        {
+          "frame": 107,
+          "heading": [
+            -0.365095585584641,
+            0.930970072746277
+          ],
+          "pose": "turn",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 108,
+          "heading": [
+            -0.246587067842484,
+            0.969120681285858
+          ],
+          "pose": "turn",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 109,
+          "heading": [
+            -0.16534186899662,
+            0.986236333847046
+          ],
+          "pose": "turn",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 110,
+          "heading": [
+            -0.110510244965553,
+            0.993875026702881
+          ],
+          "pose": "hit",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 111,
+          "heading": [
+            -0.0737572461366653,
+            0.997276306152344
+          ],
+          "pose": "hit",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 112,
+          "heading": [
+            -0.0491963252425194,
+            0.998789191246033
+          ],
+          "pose": "hit",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 113,
+          "heading": [
+            -0.0328049063682556,
+            0.999461829662323
+          ],
+          "pose": "hit",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 114,
+          "heading": [
+            -0.0218721181154251,
+            0.999760746955872
+          ],
+          "pose": "turn",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 115,
+          "heading": [
+            -0.0145820593461394,
+            0.999893724918365
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 116,
+          "heading": [
+            -0.00972156412899494,
+            0.999952793121338
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 117,
+          "heading": [
+            -0.00648109894245863,
+            0.999979078769684
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 118,
+          "heading": [
+            -0.00432074908167124,
+            0.99999064207077
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 119,
+          "heading": [
+            -0.00288050482049584,
+            0.99999588727951
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 120,
+          "heading": [
+            -0.00192033802159131,
+            0.999998152256012
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 121,
+          "heading": [
+            -0.00128022581338882,
+            0.999999225139618
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 122,
+          "heading": [
+            -0.000853483914397657,
+            0.999999642372131
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 123,
+          "heading": [
+            -0.000568989315070212,
+            0.99999988079071
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 124,
+          "heading": [
+            -0.000379326229449362,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 125,
+          "heading": [
+            -0.000252884172368795,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 126,
+          "heading": [
+            -0.000168589438544586,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 127,
+          "heading": [
+            -0.000112392954179086,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 128,
+          "heading": [
+            -0.0000749286336940713,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 129,
+          "heading": [
+            -0.0000499524212500546,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 130,
+          "heading": [
+            -0.0000333016141667031,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 131,
+          "heading": [
+            -0.0000222010748984758,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 132,
+          "heading": [
+            -0.0000148007165989839,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 133,
+          "heading": [
+            -0.00000986714439932257,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 134,
+          "heading": [
+            -0.00000657809596305015,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 135,
+          "heading": [
+            -0.0000043853970055352,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 136,
+          "heading": [
+            -0.00000292359800369013,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 137,
+          "heading": [
+            -0.00000194906533579342,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 138,
+          "heading": [
+            -0.00000129937689052895,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 139,
+          "heading": [
+            -0.000000866251241404825,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 140,
+          "heading": [
+            -0.000000577500827603217,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 141,
+          "heading": [
+            -0.000000385000532787672,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 142,
+          "heading": [
+            -0.000000256667021858448,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 143,
+          "heading": [
+            -0.000000171111338431729,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 144,
+          "heading": [
+            -0.000000114074225621152,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 145,
+          "heading": [
+            -0.0000000760494813789592,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 146,
+          "heading": [
+            -0.0000000506996542526394,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 147,
+          "heading": [
+            -0.0000000337997683175217,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 148,
+          "heading": [
+            -0.0000000225331788783478,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 149,
+          "heading": [
+            -0.0000000150221186601129,
+            1.0
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 150,
+          "heading": [
+            -0.0000000100147454773492,
+            1.0
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        },
+        {
+          "frame": 151,
+          "heading": [
+            -0.00000000667649668883996,
+            1.0
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/stalker/level_01_front.png"
+        }
+      ],
+      "hunter_damage": 18.0,
+      "level": 1,
+      "poses": [
+        "idle",
+        "stalk",
+        "turn",
+        "hit",
+        "tell",
+        "strike"
+      ],
+      "textures": {
+        "res://assets/visual_rebirth/stalker/level_01_back.png": 11,
+        "res://assets/visual_rebirth/stalker/level_01_front.png": 58,
+        "res://assets/visual_rebirth/stalker/level_01_left.png": 13,
+        "res://assets/visual_rebirth/stalker/level_01_left_prototype.png": 32,
+        "res://assets/visual_rebirth/stalker/level_01_right.png": 38
+      }
+    }
+  ],
+  "viewport": [
+    1280,
+    720
+  ]
+}

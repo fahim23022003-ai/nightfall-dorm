@@ -40,8 +40,10 @@ func run():
  check(game.model.claim_room(0),"regular room claim")
  check(game.model.player().spatial!=null and game.model.player().spatial.grid,"real Full Room Grid")
  check(entry_count==50 and not game.model.hunter.transformed,"valid intro and final task catalog")
+ game.return_menu()
  game.audio_system.shutdown()
+ await create_timer(.5).timeout
  game.queue_free()
- await process_frame
+ await create_timer(.2).timeout
  print("LIVING_NIGHTMARE_PACK_CHECKS=",checks," FAILURES=",failures," NATIVE_WINDOWS=UNVERIFIED")
  quit(int(failures>0))

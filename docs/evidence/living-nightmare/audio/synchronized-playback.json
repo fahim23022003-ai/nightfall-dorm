@@ -1,0 +1,70 @@
+{
+  "fps": 24,
+  "heartbeat_starts": 1,
+  "staged": true,
+  "transitions": [
+    {
+      "end": 3.99999999999999,
+      "heartbeat_starts": 0,
+      "scene": "Main menu",
+      "score": "music_menu",
+      "start": 0.0
+    },
+    {
+      "end": 8.00000000000002,
+      "heartbeat_starts": 0,
+      "scene": "Quiet preparation",
+      "score": "music_calm",
+      "start": 3.99999999999999
+    },
+    {
+      "end": 12.5,
+      "heartbeat_starts": 0,
+      "scene": "Hunter approach",
+      "score": "music_approach",
+      "start": 8.00000000000002
+    },
+    {
+      "end": 18.5,
+      "heartbeat_starts": 1,
+      "scene": "Door siege · five-second heartbeat",
+      "score": "music_danger",
+      "start": 12.5
+    },
+    {
+      "end": 23.0000000000001,
+      "heartbeat_starts": 1,
+      "scene": "Desperate defense",
+      "score": "music_siege",
+      "start": 18.5
+    },
+    {
+      "end": 27.5000000000002,
+      "heartbeat_starts": 1,
+      "scene": "Haunted Hall",
+      "score": "music_hall",
+      "start": 23.0000000000001
+    },
+    {
+      "end": 32.0000000000004,
+      "heartbeat_starts": 1,
+      "scene": "Reaper transformation",
+      "score": "music_reaper",
+      "start": 27.5000000000002
+    },
+    {
+      "end": 36.5000000000001,
+      "heartbeat_starts": 1,
+      "scene": "Crimson Domain",
+      "score": "music_crimson",
+      "start": 32.0000000000004
+    },
+    {
+      "end": 40.4999999999999,
+      "heartbeat_starts": 1,
+      "scene": "Victory",
+      "score": "music_victory",
+      "start": 36.5000000000001
+    }
+  ]
+}

@@ -1,0 +1,1814 @@
+{
+  "archetype": "ravager",
+  "combat_staging": "Ordinary attacks are isolated by postponing special-ability cooldowns. A higher door level extends the comparison. The initial countdown leaves time for a paid Needle to land before the first Hunter windup. Windup durations, damage, and projectiles remain in the model.",
+  "fixture": "Prepared seeded Endless. The chosen level, starting player wallet and Hunter route are staged. Each path is checked before the production movement primitive and heading tracker run. Live ordinary combat uses normal MatchModel ticks and one legally paid Needle.",
+  "fps": 24,
+  "segments": [
+    {
+      "approach_frames": 96,
+      "bound_hit_pose": true,
+      "bound_release_pose": true,
+      "bound_tell_pose": true,
+      "door_damage": 18.6999999999998,
+      "events": {
+        "door_strike": 122,
+        "impact": 100,
+        "launch": 96,
+        "ordinary_warning": 114
+      },
+      "first_hunter_damage_frame": 100,
+      "frame_count": 136,
+      "frames": [
+        {
+          "frame": 0,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "idle",
+          "position": [
+            95.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 1,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "idle",
+          "position": [
+            95.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 2,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "idle",
+          "position": [
+            95.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 3,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "idle",
+          "position": [
+            95.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 4,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "idle",
+          "position": [
+            95.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 5,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "idle",
+          "position": [
+            95.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 6,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            98.9333343505859,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 7,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            102.866668701172,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 8,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            106.800003051758,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 9,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            110.733337402344,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 10,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            114.66667175293,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 11,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            118.600006103516,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 12,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            122.533340454102,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 13,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            126.466674804688,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 14,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            130.400009155273,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 15,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            134.333343505859,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 16,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            138.266677856445,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 17,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            142.200012207031,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 18,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            146.133346557617,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 19,
+          "heading": [
+            1.0,
+            0.0
+          ],
+          "pose": "stalk",
+          "position": [
+            150.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 20,
+          "heading": [
+            0.793353319168091,
+            0.608761429786682
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            308.933319091797
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 21,
+          "heading": [
+            0.509416937828064,
+            0.860519826412201
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            312.866638183594
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 22,
+          "heading": [
+            0.306768357753754,
+            0.951784253120422
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            316.799957275391
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 23,
+          "heading": [
+            0.18087974190712,
+            0.983505249023438
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            320.733276367188
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 24,
+          "heading": [
+            0.10589823871851,
+            0.994377017021179
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            324.666595458984
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 25,
+          "heading": [
+            0.0618505217134953,
+            0.99808543920517
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            328.599914550781
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 26,
+          "heading": [
+            0.0360946729779243,
+            0.999348402023315
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            332.533233642578
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 27,
+          "heading": [
+            0.0210582446306944,
+            0.999778270721436
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            336.466552734375
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 28,
+          "heading": [
+            0.0122845750302076,
+            0.999924540519714
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            340.399871826172
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 29,
+          "heading": [
+            0.00716612068936229,
+            0.999974310398102
+          ],
+          "pose": "turn",
+          "position": [
+            150.0,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 30,
+          "heading": [
+            -0.605439722537994,
+            0.795891225337982
+          ],
+          "pose": "turn",
+          "position": [
+            146.066665649414,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 31,
+          "heading": [
+            -0.859275102615356,
+            0.511513829231262
+          ],
+          "pose": "turn",
+          "position": [
+            142.133331298828,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 32,
+          "heading": [
+            -0.951346933841705,
+            0.308121919631958
+          ],
+          "pose": "turn",
+          "position": [
+            138.199996948242,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_left.png"
+        },
+        {
+          "frame": 33,
+          "heading": [
+            -0.983354866504669,
+            0.18169578909874
+          ],
+          "pose": "turn",
+          "position": [
+            134.266662597656,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_left.png"
+        },
+        {
+          "frame": 34,
+          "heading": [
+            -0.994325578212738,
+            0.10637953877449
+          ],
+          "pose": "turn",
+          "position": [
+            130.33332824707,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_left.png"
+        },
+        {
+          "frame": 35,
+          "heading": [
+            -0.998067915439606,
+            0.062132328748703
+          ],
+          "pose": "turn",
+          "position": [
+            126.399993896484,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_left.png"
+        },
+        {
+          "frame": 36,
+          "heading": [
+            -0.999342441558838,
+            0.0362592674791813
+          ],
+          "pose": "turn",
+          "position": [
+            122.466659545898,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_left.png"
+        },
+        {
+          "frame": 37,
+          "heading": [
+            -0.999776244163513,
+            0.0211542975157499
+          ],
+          "pose": "turn",
+          "position": [
+            118.533325195312,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_left.png"
+        },
+        {
+          "frame": 38,
+          "heading": [
+            -0.999923884868622,
+            0.0123406164348125
+          ],
+          "pose": "turn",
+          "position": [
+            114.599990844727,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_left.png"
+        },
+        {
+          "frame": 39,
+          "heading": [
+            -0.999974131584167,
+            0.00719881383702159
+          ],
+          "pose": "turn",
+          "position": [
+            110.666656494141,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_left.png"
+        },
+        {
+          "frame": 40,
+          "heading": [
+            -0.999991238117218,
+            0.00419933209195733
+          ],
+          "pose": "stalk",
+          "position": [
+            106.733322143555,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_left.png"
+        },
+        {
+          "frame": 41,
+          "heading": [
+            -0.999997019767761,
+            0.0024496151600033
+          ],
+          "pose": "stalk",
+          "position": [
+            102.799987792969,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_left.png"
+        },
+        {
+          "frame": 42,
+          "heading": [
+            -0.999998986721039,
+            0.00142894312739372
+          ],
+          "pose": "stalk",
+          "position": [
+            102.0,
+            344.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_left.png"
+        },
+        {
+          "frame": 43,
+          "heading": [
+            -0.793860554695129,
+            -0.608099937438965
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            340.066680908203
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_left.png"
+        },
+        {
+          "frame": 44,
+          "heading": [
+            -0.509835362434387,
+            -0.86027204990387
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            336.133361816406
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_back.png"
+        },
+        {
+          "frame": 45,
+          "heading": [
+            -0.307038336992264,
+            -0.951697170734406
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            332.200042724609
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_back.png"
+        },
+        {
+          "frame": 46,
+          "heading": [
+            -0.181042492389679,
+            -0.98347532749176
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            328.266723632812
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_back.png"
+        },
+        {
+          "frame": 47,
+          "heading": [
+            -0.10599423199892,
+            -0.994366765022278
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            324.333404541016
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_back.png"
+        },
+        {
+          "frame": 48,
+          "heading": [
+            -0.0619067177176476,
+            -0.998081982135773
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            320.400085449219
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_back.png"
+        },
+        {
+          "frame": 49,
+          "heading": [
+            -0.0361274965107441,
+            -0.999347269535065
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            316.466766357422
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_back.png"
+        },
+        {
+          "frame": 50,
+          "heading": [
+            -0.0210774000734091,
+            -0.999777913093567
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            312.533447265625
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_back.png"
+        },
+        {
+          "frame": 51,
+          "heading": [
+            -0.0122957518324256,
+            -0.99992448091507
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            308.600128173828
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_back.png"
+        },
+        {
+          "frame": 52,
+          "heading": [
+            -0.00717264041304588,
+            -0.999974250793457
+          ],
+          "pose": "turn",
+          "position": [
+            102.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_back.png"
+        },
+        {
+          "frame": 53,
+          "heading": [
+            0.605436742305756,
+            -0.795893490314484
+          ],
+          "pose": "turn",
+          "position": [
+            105.933334350586,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_back.png"
+        },
+        {
+          "frame": 54,
+          "heading": [
+            0.859273910522461,
+            -0.511515617370605
+          ],
+          "pose": "turn",
+          "position": [
+            109.866668701172,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 55,
+          "heading": [
+            0.951346516609192,
+            -0.308123141527176
+          ],
+          "pose": "turn",
+          "position": [
+            113.800003051758,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 56,
+          "heading": [
+            0.98335474729538,
+            -0.181696519255638
+          ],
+          "pose": "turn",
+          "position": [
+            117.733337402344,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 57,
+          "heading": [
+            0.994325637817383,
+            -0.106379985809326
+          ],
+          "pose": "turn",
+          "position": [
+            121.66667175293,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 58,
+          "heading": [
+            0.99806797504425,
+            -0.0621325895190239
+          ],
+          "pose": "turn",
+          "position": [
+            125.600006103516,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 59,
+          "heading": [
+            0.999342501163483,
+            -0.0362594202160835
+          ],
+          "pose": "turn",
+          "position": [
+            129.533340454102,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 60,
+          "heading": [
+            0.999776244163513,
+            -0.0211543850600719
+          ],
+          "pose": "turn",
+          "position": [
+            133.466674804688,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 61,
+          "heading": [
+            0.999923884868622,
+            -0.0123406667262316
+          ],
+          "pose": "turn",
+          "position": [
+            137.400009155273,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 62,
+          "heading": [
+            0.999974131584167,
+            -0.00719884317368269
+          ],
+          "pose": "turn",
+          "position": [
+            141.333343505859,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 63,
+          "heading": [
+            0.999991238117218,
+            -0.00419934932142496
+          ],
+          "pose": "stalk",
+          "position": [
+            145.266677856445,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 64,
+          "heading": [
+            0.999997019767761,
+            -0.00244962517172098
+          ],
+          "pose": "stalk",
+          "position": [
+            149.200012207031,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 65,
+          "heading": [
+            0.999998986721039,
+            -0.00142894894815981
+          ],
+          "pose": "stalk",
+          "position": [
+            153.133346557617,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 66,
+          "heading": [
+            0.999999642372131,
+            -0.000833553785923868
+          ],
+          "pose": "stalk",
+          "position": [
+            157.066680908203,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 67,
+          "heading": [
+            0.99999988079071,
+            -0.000486239732708782
+          ],
+          "pose": "stalk",
+          "position": [
+            158.0,
+            305.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_right.png"
+        },
+        {
+          "frame": 68,
+          "heading": [
+            0.521672129631042,
+            0.853146076202393
+          ],
+          "pose": "turn",
+          "position": [
+            154.961791992188,
+            307.498077392578
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 69,
+          "heading": [
+            -0.0476147532463074,
+            0.998865842819214
+          ],
+          "pose": "turn",
+          "position": [
+            151.923583984375,
+            309.996154785156
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 70,
+          "heading": [
+            -0.385322779417038,
+            0.922781884670258
+          ],
+          "pose": "turn",
+          "position": [
+            148.885375976562,
+            312.494232177734
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 71,
+          "heading": [
+            -0.563415169715881,
+            0.826173961162567
+          ],
+          "pose": "turn",
+          "position": [
+            145.84716796875,
+            314.992309570312
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 72,
+          "heading": [
+            -0.657054543495178,
+            0.753843069076538
+          ],
+          "pose": "turn",
+          "position": [
+            142.808959960938,
+            317.490386962891
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 73,
+          "heading": [
+            -0.707508385181427,
+            0.706705033779144
+          ],
+          "pose": "turn",
+          "position": [
+            139.770751953125,
+            319.988464355469
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 74,
+          "heading": [
+            -0.735396862030029,
+            0.677636742591858
+          ],
+          "pose": "turn",
+          "position": [
+            136.732543945312,
+            322.486541748047
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 75,
+          "heading": [
+            -0.751116871833801,
+            0.660169363021851
+          ],
+          "pose": "turn",
+          "position": [
+            133.6943359375,
+            324.984619140625
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 76,
+          "heading": [
+            -0.760095775127411,
+            0.649811029434204
+          ],
+          "pose": "turn",
+          "position": [
+            130.656127929688,
+            327.482696533203
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 77,
+          "heading": [
+            -0.765267372131348,
+            0.64371258020401
+          ],
+          "pose": "turn",
+          "position": [
+            127.61792755127,
+            329.980773925781
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 78,
+          "heading": [
+            -0.768261551856995,
+            0.640136063098907
+          ],
+          "pose": "turn",
+          "position": [
+            124.579727172852,
+            332.478851318359
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 79,
+          "heading": [
+            -0.770000457763672,
+            0.638043403625488
+          ],
+          "pose": "stalk",
+          "position": [
+            121.541526794434,
+            334.976928710938
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 80,
+          "heading": [
+            -0.771012187004089,
+            0.636820495128632
+          ],
+          "pose": "stalk",
+          "position": [
+            118.503326416016,
+            337.475006103516
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 81,
+          "heading": [
+            -0.771599769592285,
+            0.63610827922821
+          ],
+          "pose": "stalk",
+          "position": [
+            115.465126037598,
+            339.973114013672
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 82,
+          "heading": [
+            -0.771943688392639,
+            0.635690927505493
+          ],
+          "pose": "stalk",
+          "position": [
+            113.0,
+            342.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 83,
+          "heading": [
+            -0.760972023010254,
+            0.648784697055817
+          ],
+          "pose": "stalk",
+          "position": [
+            110.068717956543,
+            344.622741699219
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 84,
+          "heading": [
+            -0.754470705986023,
+            0.656333744525909
+          ],
+          "pose": "stalk",
+          "position": [
+            107.137435913086,
+            347.245452880859
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 85,
+          "heading": [
+            -0.750643610954285,
+            0.660707294940948
+          ],
+          "pose": "stalk",
+          "position": [
+            104.206153869629,
+            349.8681640625
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 86,
+          "heading": [
+            -0.748397886753082,
+            0.663250088691711
+          ],
+          "pose": "stalk",
+          "position": [
+            101.274871826172,
+            352.490905761719
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 87,
+          "heading": [
+            -0.747083842754364,
+            0.664729833602905
+          ],
+          "pose": "stalk",
+          "position": [
+            98.3435897827148,
+            355.113647460938
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 88,
+          "heading": [
+            -0.746317625045776,
+            0.665590047836304
+          ],
+          "pose": "stalk",
+          "position": [
+            95.4123077392578,
+            357.736358642578
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 89,
+          "heading": [
+            -0.745870172977448,
+            0.66609138250351
+          ],
+          "pose": "stalk",
+          "position": [
+            92.4810256958008,
+            360.359069824219
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 90,
+          "heading": [
+            -0.745607435703278,
+            0.666385471820831
+          ],
+          "pose": "stalk",
+          "position": [
+            89.5497436523438,
+            362.981811523438
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 91,
+          "heading": [
+            -0.745455741882324,
+            0.666555225849152
+          ],
+          "pose": "stalk",
+          "position": [
+            86.6184616088867,
+            365.604522705078
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 92,
+          "heading": [
+            -0.745365619659424,
+            0.666656017303467
+          ],
+          "pose": "stalk",
+          "position": [
+            83.6871795654297,
+            368.227264404297
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 93,
+          "heading": [
+            -0.745314598083496,
+            0.666712939739227
+          ],
+          "pose": "stalk",
+          "position": [
+            80.7558975219727,
+            370.849975585938
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 94,
+          "heading": [
+            -0.745283246040344,
+            0.666747987270355
+          ],
+          "pose": "stalk",
+          "position": [
+            77.8246154785156,
+            373.472717285156
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 95,
+          "heading": [
+            -0.745266020298004,
+            0.666767239570618
+          ],
+          "pose": "stalk",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 96,
+          "heading": [
+            -0.531713485717773,
+            0.846924304962158
+          ],
+          "pose": "turn",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_oblique.png"
+        },
+        {
+          "frame": 97,
+          "heading": [
+            -0.365107536315918,
+            0.93096536397934
+          ],
+          "pose": "turn",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 98,
+          "heading": [
+            -0.246595352888107,
+            0.969118595123291
+          ],
+          "pose": "turn",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 99,
+          "heading": [
+            -0.165347516536713,
+            0.986235439777374
+          ],
+          "pose": "turn",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 100,
+          "heading": [
+            -0.110514029860497,
+            0.993874609470367
+          ],
+          "pose": "hit",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 101,
+          "heading": [
+            -0.0737597718834877,
+            0.997276067733765
+          ],
+          "pose": "hit",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 102,
+          "heading": [
+            -0.049198005348444,
+            0.998789072036743
+          ],
+          "pose": "hit",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 103,
+          "heading": [
+            -0.0328060276806355,
+            0.999461770057678
+          ],
+          "pose": "hit",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 104,
+          "heading": [
+            -0.02187286503613,
+            0.999760746955872
+          ],
+          "pose": "turn",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 105,
+          "heading": [
+            -0.0145825557410717,
+            0.999893665313721
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 106,
+          "heading": [
+            -0.0097218956798315,
+            0.999952733516693
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 107,
+          "heading": [
+            -0.0064813201315701,
+            0.999979019165039
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 108,
+          "heading": [
+            -0.0043208971619606,
+            0.999990701675415
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 109,
+          "heading": [
+            -0.00288060307502747,
+            0.99999588727951
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 110,
+          "heading": [
+            -0.00192040344700217,
+            0.999998152256012
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 111,
+          "heading": [
+            -0.00128026935271919,
+            0.999999225139618
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 112,
+          "heading": [
+            -0.000853513018228114,
+            0.999999642372131
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 113,
+          "heading": [
+            -0.000569008698221296,
+            0.99999988079071
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 114,
+          "heading": [
+            -0.000379339151550084,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 115,
+          "heading": [
+            -0.00025289278710261,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 116,
+          "heading": [
+            -0.000168595186551102,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 117,
+          "heading": [
+            -0.000112396788608748,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 118,
+          "heading": [
+            -0.0000749311875551939,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 119,
+          "heading": [
+            -0.0000499541238241363,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 120,
+          "heading": [
+            -0.0000333027492160909,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 121,
+          "heading": [
+            -0.0000222018315980677,
+            1.0
+          ],
+          "pose": "tell",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 122,
+          "heading": [
+            -0.0000148012204590486,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 123,
+          "heading": [
+            -0.00000986748000286752,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 124,
+          "heading": [
+            -0.00000657831969874678,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 125,
+          "heading": [
+            -0.00000438554616266629,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 126,
+          "heading": [
+            -0.0000029236973659863,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 127,
+          "heading": [
+            -0.00000194913150153297,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 128,
+          "heading": [
+            -0.00000129942100102198,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 129,
+          "heading": [
+            -0.000000866280629452376,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 130,
+          "heading": [
+            -0.000000577520381739305,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 131,
+          "heading": [
+            -0.0000003850135783523,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 132,
+          "heading": [
+            -0.000000256675718901533,
+            1.0
+          ],
+          "pose": "strike",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 133,
+          "heading": [
+            -0.000000171117136460452,
+            1.0
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 134,
+          "heading": [
+            -0.000000114078090973635,
+            1.0
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        },
+        {
+          "frame": 135,
+          "heading": [
+            -0.00000007605206064909,
+            1.0
+          ],
+          "pose": "idle",
+          "position": [
+            75.0,
+            376.0
+          ],
+          "texture": "res://assets/visual_rebirth/ravager/level_01_front.png"
+        }
+      ],
+      "hunter_damage": 18.0,
+      "level": 1,
+      "poses": [
+        "idle",
+        "stalk",
+        "turn",
+        "hit",
+        "tell",
+        "strike"
+      ],
+      "textures": {
+        "res://assets/visual_rebirth/ravager/level_01_back.png": 10,
+        "res://assets/visual_rebirth/ravager/level_01_front.png": 51,
+        "res://assets/visual_rebirth/ravager/level_01_left.png": 12,
+        "res://assets/visual_rebirth/ravager/level_01_oblique.png": 28,
+        "res://assets/visual_rebirth/ravager/level_01_right.png": 35
+      }
+    }
+  ],
+  "viewport": [
+    1280,
+    720
+  ]
+}

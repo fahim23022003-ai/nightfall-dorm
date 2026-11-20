@@ -1,0 +1,3693 @@
+{
+  "archetype": "stalker",
+  "combat_staging": "Ordinary attacks are isolated by postponing special-ability cooldowns. A higher door level extends the comparison. The initial countdown leaves time for a paid Needle to land before the first Hunter windup. Windup durations, damage, and projectiles remain in the model.",
+  "fixture": "Prepared seeded Endless. The chosen level, starting player wallet and Hunter route are staged. Each path is checked before the production movement primitive and heading tracker run. Live ordinary combat uses normal MatchModel ticks and one legally paid Needle.",
+  "fps": 24,
+  "segments": [
+    {
+      "approach_frames": 106,
+      "bound_hit_pose": true,
+      "bound_release_pose": true,
+      "bound_tell_pose": true,
+      "door_damage": 18.04,
+      "events": {
+        "door_strike": 138,
+        "impact": 110,
+        "launch": 106,
+        "ordinary_warning": 124
+      },
+      "first_hunter_damage_frame": 110,
+      "frame_count": 152,
+      "frames": [
+        {
+          "actual_contact_error": -1.0,
+          "frame": 0,
+          "joint_points": [
+            [
+              239.59375,
+              286.513122558594
+            ],
+            [
+              241.21875,
+              300.731872558594
+            ],
+            [
+              245.6875,
+              311.700622558594
+            ],
+            [
+              247.565002441406,
+              316.575622558594
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 1,
+          "joint_points": [
+            [
+              239.59375,
+              286.928741455078
+            ],
+            [
+              241.21875,
+              301.147491455078
+            ],
+            [
+              245.6875,
+              312.116241455078
+            ],
+            [
+              247.812210083008,
+              316.991241455078
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 2,
+          "joint_points": [
+            [
+              239.59375,
+              287.336883544922
+            ],
+            [
+              241.21875,
+              301.555633544922
+            ],
+            [
+              245.6875,
+              312.524383544922
+            ],
+            [
+              248.048980712891,
+              317.399383544922
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 3,
+          "joint_points": [
+            [
+              239.59375,
+              287.733947753906
+            ],
+            [
+              241.21875,
+              301.952697753906
+            ],
+            [
+              245.6875,
+              312.921447753906
+            ],
+            [
+              248.270324707031,
+              317.796447753906
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 4,
+          "joint_points": [
+            [
+              239.59375,
+              288.116271972656
+            ],
+            [
+              241.21875,
+              302.335021972656
+            ],
+            [
+              245.6875,
+              313.303771972656
+            ],
+            [
+              248.471618652344,
+              318.178771972656
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 5,
+          "joint_points": [
+            [
+              239.59375,
+              288.480529785156
+            ],
+            [
+              241.21875,
+              302.699279785156
+            ],
+            [
+              245.6875,
+              313.668029785156
+            ],
+            [
+              248.648666381836,
+              318.543029785156
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 6,
+          "joint_points": [
+            [
+              243.39729309082,
+              288.647125244141
+            ],
+            [
+              244.985046386719,
+              302.870086669922
+            ],
+            [
+              249.425018310547,
+              313.850494384766
+            ],
+            [
+              252.872711181641,
+              317.554534912109
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 7,
+          "joint_points": [
+            [
+              247.068511962891,
+              288.772979736328
+            ],
+            [
+              248.603973388672,
+              303.001678466797
+            ],
+            [
+              253.00358581543,
+              313.998352050781
+            ],
+            [
+              257.043518066406,
+              316.916076660156
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 8,
+          "joint_points": [
+            [
+              250.664489746094,
+              288.848419189453
+            ],
+            [
+              252.131454467773,
+              303.084350585938
+            ],
+            [
+              256.478088378906,
+              314.10205078125
+            ],
+            [
+              261.180328369141,
+              316.554718017578
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 9,
+          "joint_points": [
+            [
+              254.239074707031,
+              288.883117675781
+            ],
+            [
+              255.626647949219,
+              303.126983642578
+            ],
+            [
+              259.911773681641,
+              314.168762207031
+            ],
+            [
+              265.266693115234,
+              316.434844970703
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 10,
+          "joint_points": [
+            [
+              257.838562011719,
+              288.892547607422
+            ],
+            [
+              259.143127441406,
+              303.144256591797
+            ],
+            [
+              263.363861083984,
+              314.210815429688
+            ],
+            [
+              269.279968261719,
+              316.533599853516
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 11,
+          "joint_points": [
+            [
+              261.496246337891,
+              288.891845703125
+            ],
+            [
+              262.721374511719,
+              303.150604248047
+            ],
+            [
+              266.880401611328,
+              314.240509033203
+            ],
+            [
+              273.201568603516,
+              316.828979492188
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 12,
+          "joint_points": [
+            [
+              265.229095458984,
+              288.893524169922
+            ],
+            [
+              266.384643554688,
+              303.158111572266
+            ],
+            [
+              270.489501953125,
+              314.268157958984
+            ],
+            [
+              277.019805908203,
+              317.295318603516
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 13,
+          "joint_points": [
+            [
+              269.036041259766,
+              288.906280517578
+            ],
+            [
+              270.136749267578,
+              303.175201416016
+            ],
+            [
+              274.198852539062,
+              314.300964355469
+            ],
+            [
+              280.728424072266,
+              317.902191162109
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 14,
+          "joint_points": [
+            [
+              272.899383544922,
+              288.935424804688
+            ],
+            [
+              273.963500976562,
+              303.207122802734
+            ],
+            [
+              277.997100830078,
+              314.343231201172
+            ],
+            [
+              284.324920654297,
+              318.615509033203
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 15,
+          "joint_points": [
+            [
+              276.787994384766,
+              288.983245849609
+            ],
+            [
+              277.835998535156,
+              303.256134033203
+            ],
+            [
+              281.857025146484,
+              314.396789550781
+            ],
+            [
+              287.808563232422,
+              319.333587646484
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 16,
+          "joint_points": [
+            [
+              280.661987304688,
+              289.049468994141
+            ],
+            [
+              281.715362548828,
+              303.321960449219
+            ],
+            [
+              285.740539550781,
+              314.461120605469
+            ],
+            [
+              291.179748535156,
+              319.397369384766
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 17,
+          "joint_points": [
+            [
+              284.479034423828,
+              289.131774902344
+            ],
+            [
+              285.559143066406,
+              303.402252197266
+            ],
+            [
+              289.605194091797,
+              314.533874511719
+            ],
+            [
+              294.43994140625,
+              319.467437744141
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 18,
+          "joint_points": [
+            [
+              288.199798583984,
+              289.226043701172
+            ],
+            [
+              289.326995849609,
+              303.492889404297
+            ],
+            [
+              293.409790039062,
+              314.611083984375
+            ],
+            [
+              297.592254638672,
+              319.539886474609
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 19,
+          "joint_points": [
+            [
+              291.794464111328,
+              289.326812744141
+            ],
+            [
+              292.987335205078,
+              303.588317871094
+            ],
+            [
+              297.121246337891,
+              314.687591552734
+            ],
+            [
+              300.643157958984,
+              319.609649658203
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 20,
+          "joint_points": [
+            [
+              295.246337890625,
+              289.427551269531
+            ],
+            [
+              296.520904541016,
+              303.681976318359
+            ],
+            [
+              300.718322753906,
+              314.757385253906
+            ],
+            [
+              303.603240966797,
+              319.670928955078
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 21,
+          "joint_points": [
+            [
+              295.715026855469,
+              289.565338134766
+            ],
+            [
+              297.120666503906,
+              303.807434082031
+            ],
+            [
+              301.419799804688,
+              314.843780517578
+            ],
+            [
+              303.371643066406,
+              319.743255615234
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 22,
+          "joint_points": [
+            [
+              295.477447509766,
+              293.129425048828
+            ],
+            [
+              296.940979003906,
+              307.365692138672
+            ],
+            [
+              301.284973144531,
+              318.384460449219
+            ],
+            [
+              303.040069580078,
+              323.277587890625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 23,
+          "joint_points": [
+            [
+              304.104888916016,
+              285.344329833984
+            ],
+            [
+              305.599578857422,
+              307.697174072266
+            ],
+            [
+              302.677673339844,
+              321.086608886719
+            ],
+            [
+              300.908111572266,
+              327.577026367188
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 24,
+          "joint_points": [
+            [
+              303.536712646484,
+              288.892822265625
+            ],
+            [
+              305.176300048828,
+              311.235504150391
+            ],
+            [
+              302.341278076172,
+              324.643615722656
+            ],
+            [
+              300.277435302734,
+              331.144653320312
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 25,
+          "joint_points": [
+            [
+              302.922912597656,
+              292.228790283203
+            ],
+            [
+              304.71875,
+              314.559448242188
+            ],
+            [
+              301.977630615234,
+              327.987060546875
+            ],
+            [
+              299.596130371094,
+              334.499298095703
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 26,
+          "joint_points": [
+            [
+              302.328826904297,
+              295.532928466797
+            ],
+            [
+              304.282958984375,
+              317.850311279297
+            ],
+            [
+              301.637115478516,
+              331.296997070312
+            ],
+            [
+              298.918853759766,
+              337.820251464844
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 27,
+          "joint_points": [
+            [
+              301.812927246094,
+              298.805908203125
+            ],
+            [
+              303.9189453125,
+              321.109466552734
+            ],
+            [
+              301.364685058594,
+              334.573852539062
+            ],
+            [
+              298.288970947266,
+              341.107360839844
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 28,
+          "joint_points": [
+            [
+              301.420654296875,
+              302.049102783203
+            ],
+            [
+              303.664825439453,
+              324.339172363281
+            ],
+            [
+              301.194030761719,
+              337.819152832031
+            ],
+            [
+              297.737182617188,
+              344.361724853516
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 29,
+          "joint_points": [
+            [
+              301.180419921875,
+              305.26416015625
+            ],
+            [
+              303.542755126953,
+              327.542022705078
+            ],
+            [
+              301.143524169922,
+              341.034912109375
+            ],
+            [
+              297.281494140625,
+              347.585052490234
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 30,
+          "joint_points": [
+            [
+              301.101867675781,
+              308.453491210938
+            ],
+            [
+              303.557434082031,
+              330.721282958984
+            ],
+            [
+              301.214660644531,
+              344.224090576172
+            ],
+            [
+              296.928649902344,
+              350.780059814453
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 31,
+          "joint_points": [
+            [
+              301.176300048828,
+              311.620269775391
+            ],
+            [
+              303.696319580078,
+              333.880859375
+            ],
+            [
+              301.392639160156,
+              347.390380859375
+            ],
+            [
+              296.676635742188,
+              353.950347900391
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 32,
+          "joint_points": [
+            [
+              301.483337402344,
+              314.152770996094
+            ],
+            [
+              303.991729736328,
+              336.414672851562
+            ],
+            [
+              301.681030273438,
+              349.923004150391
+            ],
+            [
+              296.796936035156,
+              356.482238769531
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 33,
+          "joint_points": [
+            [
+              298.135681152344,
+              313.695983886719
+            ],
+            [
+              300.659027099609,
+              335.956176757812
+            ],
+            [
+              298.357391357422,
+              349.466064453125
+            ],
+            [
+              293.036834716797,
+              355.684692382812
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 34,
+          "joint_points": [
+            [
+              285.628875732422,
+              315.053833007812
+            ],
+            [
+              287.599304199219,
+              334.084716796875
+            ],
+            [
+              281.306945800781,
+              349.782440185547
+            ],
+            [
+              274.772399902344,
+              354.068450927734
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 35,
+          "joint_points": [
+            [
+              282.351593017578,
+              314.546722412109
+            ],
+            [
+              284.277496337891,
+              333.582153320312
+            ],
+            [
+              277.948425292969,
+              349.265106201172
+            ],
+            [
+              271.181640625,
+              352.820617675781
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 36,
+          "joint_points": [
+            [
+              279.050415039062,
+              314.020904541016
+            ],
+            [
+              280.905120849609,
+              333.063415527344
+            ],
+            [
+              274.517425537109,
+              348.722595214844
+            ],
+            [
+              267.674377441406,
+              351.596771240234
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 37,
+          "joint_points": [
+            [
+              275.699310302734,
+              313.485778808594
+            ],
+            [
+              277.458892822266,
+              332.537292480469
+            ],
+            [
+              270.993103027344,
+              348.164398193359
+            ],
+            [
+              264.260101318359,
+              350.434844970703
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 38,
+          "joint_points": [
+            [
+              272.285705566406,
+              312.951446533203
+            ],
+            [
+              273.929870605469,
+              332.013275146484
+            ],
+            [
+              267.369537353516,
+              347.600921630859
+            ],
+            [
+              260.955047607422,
+              349.369415283203
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 39,
+          "joint_points": [
+            [
+              268.811248779297,
+              312.428314208984
+            ],
+            [
+              270.324035644531,
+              331.501007080078
+            ],
+            [
+              263.656433105469,
+              347.043090820312
+            ],
+            [
+              257.779174804688,
+              348.430877685547
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 40,
+          "joint_points": [
+            [
+              265.290344238281,
+              311.926788330078
+            ],
+            [
+              266.660614013672,
+              331.01025390625
+            ],
+            [
+              259.877105712891,
+              346.502075195312
+            ],
+            [
+              254.752029418945,
+              347.644927978516
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 41,
+          "joint_points": [
+            [
+              261.746734619141,
+              311.456787109375
+            ],
+            [
+              262.968536376953,
+              330.550354003906
+            ],
+            [
+              256.064758300781,
+              345.988952636719
+            ],
+            [
+              251.887603759766,
+              347.03173828125
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 42,
+          "joint_points": [
+            [
+              258.208923339844,
+              310.790832519531
+            ],
+            [
+              259.281707763672,
+              329.893341064453
+            ],
+            [
+              252.257690429688,
+              345.277618408203
+            ],
+            [
+              249.189163208008,
+              346.369140625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 43,
+          "joint_points": [
+            [
+              254.704696655273,
+              310.176666259766
+            ],
+            [
+              255.633285522461,
+              329.286712646484
+            ],
+            [
+              248.49333190918,
+              344.617553710938
+            ],
+            [
+              246.644836425781,
+              345.904968261719
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 44,
+          "joint_points": [
+            [
+              251.256118774414,
+              309.634368896484
+            ],
+            [
+              252.05046081543,
+              328.75048828125
+            ],
+            [
+              244.803024291992,
+              344.03076171875
+            ],
+            [
+              244.224731445312,
+              345.654510498047
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 45,
+          "joint_points": [
+            [
+              247.875015258789,
+              309.177185058594
+            ],
+            [
+              248.549865722656,
+              328.297882080078
+            ],
+            [
+              241.207077026367,
+              343.532592773438
+            ],
+            [
+              241.879974365234,
+              345.621124267578
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 46,
+          "joint_points": [
+            [
+              246.780136108398,
+              309.205810546875
+            ],
+            [
+              247.490478515625,
+              328.325225830078
+            ],
+            [
+              240.175964355469,
+              343.573516845703
+            ],
+            [
+              241.094940185547,
+              346.639343261719
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 47,
+          "joint_points": [
+            [
+              247.099411010742,
+              305.277709960938
+            ],
+            [
+              247.713302612305,
+              324.400451660156
+            ],
+            [
+              240.321960449219,
+              339.611663818359
+            ],
+            [
+              242.317825317383,
+              343.015228271484
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 48,
+          "joint_points": [
+            [
+              238.362533569336,
+              296.912292480469
+            ],
+            [
+              236.936050415039,
+              316.783966064453
+            ],
+            [
+              234.28874206543,
+              331.310119628906
+            ],
+            [
+              238.451370239258,
+              334.444946289062
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 49,
+          "joint_points": [
+            [
+              238.764389038086,
+              293.189910888672
+            ],
+            [
+              237.282104492188,
+              313.057525634766
+            ],
+            [
+              234.594009399414,
+              327.576171875
+            ],
+            [
+              239.446136474609,
+              331.334259033203
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 50,
+          "joint_points": [
+            [
+              239.116592407227,
+              289.5869140625
+            ],
+            [
+              237.606964111328,
+              309.452453613281
+            ],
+            [
+              234.898880004883,
+              323.967376708984
+            ],
+            [
+              240.149932861328,
+              328.383972167969
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 51,
+          "joint_points": [
+            [
+              239.369689941406,
+              286.104736328125
+            ],
+            [
+              237.862854003906,
+              305.970489501953
+            ],
+            [
+              235.156799316406,
+              320.485809326172
+            ],
+            [
+              240.480773925781,
+              324.902587890625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 52,
+          "joint_points": [
+            [
+              239.482635498047,
+              282.740570068359
+            ],
+            [
+              238.008819580078,
+              302.608825683594
+            ],
+            [
+              235.326919555664,
+              317.128601074219
+            ],
+            [
+              240.385726928711,
+              321.547668457031
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 53,
+          "joint_points": [
+            [
+              239.428176879883,
+              279.488342285156
+            ],
+            [
+              238.016342163086,
+              299.361083984375
+            ],
+            [
+              235.379745483398,
+              313.88916015625
+            ],
+            [
+              239.846588134766,
+              318.312561035156
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 54,
+          "joint_points": [
+            [
+              239.196212768555,
+              276.338714599609
+            ],
+            [
+              237.872863769531,
+              296.217529296875
+            ],
+            [
+              235.30094909668,
+              310.757202148438
+            ],
+            [
+              238.882095336914,
+              315.186645507812
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 55,
+          "joint_points": [
+            [
+              238.79541015625,
+              273.280120849609
+            ],
+            [
+              237.583572387695,
+              293.166046142578
+            ],
+            [
+              235.093246459961,
+              307.719909667969
+            ],
+            [
+              237.546920776367,
+              312.156921386719
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 56,
+          "joint_points": [
+            [
+              238.252288818359,
+              270.298583984375
+            ],
+            [
+              237.170715332031,
+              290.192016601562
+            ],
+            [
+              234.775772094727,
+              304.761901855469
+            ],
+            [
+              235.926940917969,
+              309.207489013672
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 57,
+          "joint_points": [
+            [
+              237.589569091797,
+              267.975982666016
+            ],
+            [
+              236.65592956543,
+              287.876922607422
+            ],
+            [
+              234.369369506836,
+              302.464172363281
+            ],
+            [
+              234.111862182617,
+              306.919342041016
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 58,
+          "joint_points": [
+            [
+              240.544555664062,
+              268.666625976562
+            ],
+            [
+              239.750030517578,
+              288.573608398438
+            ],
+            [
+              237.565475463867,
+              303.176513671875
+            ],
+            [
+              235.979431152344,
+              307.640411376953
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 59,
+          "joint_points": [
+            [
+              253.293472290039,
+              283.860900878906
+            ],
+            [
+              254.967681884766,
+              298.073944091797
+            ],
+            [
+              259.474365234375,
+              309.027160644531
+            ],
+            [
+              259.42626953125,
+              313.896514892578
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 60,
+          "joint_points": [
+            [
+              256.404663085938,
+              284.260375976562
+            ],
+            [
+              258.18505859375,
+              298.460510253906
+            ],
+            [
+              262.773498535156,
+              309.379730224609
+            ],
+            [
+              261.5234375,
+              314.236663818359
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 61,
+          "joint_points": [
+            [
+              259.607696533203,
+              284.668914794922
+            ],
+            [
+              261.490509033203,
+              298.855834960938
+            ],
+            [
+              266.157623291016,
+              309.741668701172
+            ],
+            [
+              263.876190185547,
+              314.586364746094
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 62,
+          "joint_points": [
+            [
+              262.934692382812,
+              285.080902099609
+            ],
+            [
+              264.911926269531,
+              299.254974365234
+            ],
+            [
+              269.651428222656,
+              310.109466552734
+            ],
+            [
+              266.561492919922,
+              314.942657470703
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 63,
+          "joint_points": [
+            [
+              266.401184082031,
+              285.491119384766
+            ],
+            [
+              268.461090087891,
+              299.653411865234
+            ],
+            [
+              273.263854980469,
+              310.480072021484
+            ],
+            [
+              269.621978759766,
+              315.302978515625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 64,
+          "joint_points": [
+            [
+              270.005462646484,
+              285.894683837891
+            ],
+            [
+              272.133117675781,
+              300.046936035156
+            ],
+            [
+              276.987640380859,
+              310.850524902344
+            ],
+            [
+              273.064636230469,
+              315.664886474609
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 65,
+          "joint_points": [
+            [
+              273.72998046875,
+              286.287170410156
+            ],
+            [
+              275.907928466797,
+              300.431793212891
+            ],
+            [
+              280.800811767578,
+              311.218017578125
+            ],
+            [
+              276.86279296875,
+              316.025970458984
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 66,
+          "joint_points": [
+            [
+              277.544555664062,
+              286.6650390625
+            ],
+            [
+              279.753479003906,
+              300.804840087891
+            ],
+            [
+              284.669982910156,
+              311.580352783203
+            ],
+            [
+              280.96142578125,
+              316.384307861328
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 67,
+          "joint_points": [
+            [
+              281.411254882812,
+              287.025115966797
+            ],
+            [
+              283.630737304688,
+              301.163269042969
+            ],
+            [
+              288.555236816406,
+              311.935089111328
+            ],
+            [
+              285.285400390625,
+              316.728454589844
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 68,
+          "joint_points": [
+            [
+              285.290161132812,
+              287.365386962891
+            ],
+            [
+              287.499328613281,
+              301.505157470703
+            ],
+            [
+              292.416015625,
+              312.280578613281
+            ],
+            [
+              289.749114990234,
+              316.285278320312
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 69,
+          "joint_points": [
+            [
+              289.145080566406,
+              287.684448242188
+            ],
+            [
+              291.323486328125,
+              301.828979492188
+            ],
+            [
+              296.216674804688,
+              312.615081787109
+            ],
+            [
+              294.266662597656,
+              315.860870361328
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 70,
+          "joint_points": [
+            [
+              292.948272705078,
+              287.981414794922
+            ],
+            [
+              295.076446533203,
+              302.133605957031
+            ],
+            [
+              299.931365966797,
+              312.936981201172
+            ],
+            [
+              298.761047363281,
+              315.48046875
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 71,
+          "joint_points": [
+            [
+              296.684417724609,
+              288.256469726562
+            ],
+            [
+              298.744689941406,
+              302.418701171875
+            ],
+            [
+              303.547729492188,
+              313.245239257812
+            ],
+            [
+              303.172546386719,
+              315.167816162109
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 72,
+          "joint_points": [
+            [
+              300.351867675781,
+              288.509826660156
+            ],
+            [
+              302.328918457031,
+              302.683898925781
+            ],
+            [
+              307.068267822266,
+              313.538482666016
+            ],
+            [
+              307.463134765625,
+              314.943389892578
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 73,
+          "joint_points": [
+            [
+              302.364562988281,
+              288.762359619141
+            ],
+            [
+              304.224700927734,
+              302.952270507812
+            ],
+            [
+              308.874420166016,
+              313.845520019531
+            ],
+            [
+              310.176452636719,
+              315.378784179688
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 74,
+          "joint_points": [
+            [
+              308.321594238281,
+              279.878784179688
+            ],
+            [
+              310.196655273438,
+              302.202941894531
+            ],
+            [
+              307.503173828125,
+              315.640197753906
+            ],
+            [
+              305.997253417969,
+              318.462158203125
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 75,
+          "joint_points": [
+            [
+              305.572967529297,
+              282.370513916016
+            ],
+            [
+              307.304840087891,
+              304.706237792969
+            ],
+            [
+              304.525268554688,
+              318.125946044922
+            ],
+            [
+              303.434051513672,
+              320.688690185547
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 76,
+          "joint_points": [
+            [
+              302.866638183594,
+              284.769348144531
+            ],
+            [
+              304.440948486328,
+              307.116729736328
+            ],
+            [
+              301.566772460938,
+              320.516479492188
+            ],
+            [
+              300.867492675781,
+              322.966674804688
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 77,
+          "joint_points": [
+            [
+              300.226348876953,
+              286.991241455078
+            ],
+            [
+              301.637451171875,
+              309.349517822266
+            ],
+            [
+              298.66552734375,
+              322.727935791016
+            ],
+            [
+              298.326416015625,
+              325.219268798828
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 78,
+          "joint_points": [
+            [
+              297.667572021484,
+              289.195983886719
+            ],
+            [
+              298.918029785156,
+              311.563812255859
+            ],
+            [
+              295.850067138672,
+              324.920562744141
+            ],
+            [
+              295.840942382812,
+              327.605926513672
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 79,
+          "joint_points": [
+            [
+              295.193817138672,
+              291.393493652344
+            ],
+            [
+              296.293579101562,
+              313.769256591797
+            ],
+            [
+              293.1357421875,
+              327.105010986328
+            ],
+            [
+              293.434509277344,
+              330.129791259766
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 80,
+          "joint_points": [
+            [
+              292.794250488281,
+              293.591827392578
+            ],
+            [
+              293.759857177734,
+              315.973754882812
+            ],
+            [
+              290.522155761719,
+              329.290374755859
+            ],
+            [
+              291.117309570312,
+              332.786315917969
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 81,
+          "joint_points": [
+            [
+              290.444152832031,
+              295.797302246094
+            ],
+            [
+              291.297729492188,
+              318.183807373047
+            ],
+            [
+              287.993377685547,
+              331.484008789062
+            ],
+            [
+              288.882568359375,
+              335.564727783203
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 82,
+          "joint_points": [
+            [
+              288.107208251953,
+              298.014221191406
+            ],
+            [
+              288.875274658203,
+              320.40380859375
+            ],
+            [
+              285.520202636719,
+              333.691314697266
+            ],
+            [
+              286.705413818359,
+              338.448059082031
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 83,
+          "joint_points": [
+            [
+              285.739532470703,
+              300.245666503906
+            ],
+            [
+              286.452056884766,
+              322.637084960938
+            ],
+            [
+              283.06396484375,
+              335.916229248047
+            ],
+            [
+              284.544555664062,
+              341.415100097656
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 84,
+          "joint_points": [
+            [
+              283.295257568359,
+              302.492797851562
+            ],
+            [
+              283.984252929688,
+              324.884948730469
+            ],
+            [
+              280.582244873047,
+              338.160522460938
+            ],
+            [
+              282.346527099609,
+              344.440338134766
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 85,
+          "joint_points": [
+            [
+              280.732208251953,
+              304.755828857422
+            ],
+            [
+              281.4306640625,
+              327.147705078125
+            ],
+            [
+              278.034271240234,
+              340.424713134766
+            ],
+            [
+              280.051391601562,
+              346.851867675781
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 86,
+          "joint_points": [
+            [
+              278.017730712891,
+              307.033294677734
+            ],
+            [
+              278.758331298828,
+              329.423828125
+            ],
+            [
+              275.386932373047,
+              342.707183837891
+            ],
+            [
+              277.600067138672,
+              349.137878417969
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 87,
+          "joint_points": [
+            [
+              275.132995605469,
+              309.32275390625
+            ],
+            [
+              275.946929931641,
+              331.710723876953
+            ],
+            [
+              272.619049072266,
+              345.005065917969
+            ],
+            [
+              274.94091796875,
+              351.44189453125
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 88,
+          "joint_points": [
+            [
+              272.076110839844,
+              311.62060546875
+            ],
+            [
+              272.991973876953,
+              334.004638671875
+            ],
+            [
+              269.724639892578,
+              347.313995361328
+            ],
+            [
+              272.036010742188,
+              353.759216308594
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 89,
+          "joint_points": [
+            [
+              268.86279296875,
+              313.922271728516
+            ],
+            [
+              269.905548095703,
+              336.300750732422
+            ],
+            [
+              266.713745117188,
+              349.62841796875
+            ],
+            [
+              268.865997314453,
+              356.083923339844
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 90,
+          "joint_points": [
+            [
+              267.562896728516,
+              314.413726806641
+            ],
+            [
+              268.826416015625,
+              336.780822753906
+            ],
+            [
+              265.766265869141,
+              350.139343261719
+            ],
+            [
+              267.139831542969,
+              356.612213134766
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 91,
+          "joint_points": [
+            [
+              264.491271972656,
+              316.695159912109
+            ],
+            [
+              265.834075927734,
+              339.057647705078
+            ],
+            [
+              262.821319580078,
+              352.426940917969
+            ],
+            [
+              264.105346679688,
+              358.905883789062
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 92,
+          "joint_points": [
+            [
+              261.304046630859,
+              319.004180908203
+            ],
+            [
+              262.761810302734,
+              341.359466552734
+            ],
+            [
+              259.817810058594,
+              354.744049072266
+            ],
+            [
+              260.723968505859,
+              361.231719970703
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 93,
+          "joint_points": [
+            [
+              258.074737548828,
+              321.325012207031
+            ],
+            [
+              259.672119140625,
+              343.670745849609
+            ],
+            [
+              256.811798095703,
+              357.073486328125
+            ],
+            [
+              257.080017089844,
+              363.571472167969
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 94,
+          "joint_points": [
+            [
+              254.870788574219,
+              323.468566894531
+            ],
+            [
+              256.622039794922,
+              345.802764892578
+            ],
+            [
+              253.854125976562,
+              359.224884033203
+            ],
+            [
+              253.262634277344,
+              365.733978271484
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 95,
+          "joint_points": [
+            [
+              251.74641418457,
+              325.551940917969
+            ],
+            [
+              253.656204223633,
+              347.873168945312
+            ],
+            [
+              250.983627319336,
+              361.314575195312
+            ],
+            [
+              249.359741210938,
+              367.834777832031
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 96,
+          "joint_points": [
+            [
+              248.738220214844,
+              327.614501953125
+            ],
+            [
+              250.802429199219,
+              349.921966552734
+            ],
+            [
+              248.222946166992,
+              363.381561279297
+            ],
+            [
+              245.453506469727,
+              369.912261962891
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 97,
+          "joint_points": [
+            [
+              245.863418579102,
+              329.657379150391
+            ],
+            [
+              248.070297241211,
+              351.951171875
+            ],
+            [
+              245.57698059082,
+              365.427001953125
+            ],
+            [
+              241.616561889648,
+              371.967163085938
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 98,
+          "joint_points": [
+            [
+              243.120208740234,
+              331.682312011719
+            ],
+            [
+              245.451461791992,
+              353.963439941406
+            ],
+            [
+              243.033386230469,
+              367.452972412109
+            ],
+            [
+              237.909530639648,
+              374.001129150391
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 99,
+          "joint_points": [
+            [
+              240.490676879883,
+              333.691436767578
+            ],
+            [
+              242.922622680664,
+              355.961791992188
+            ],
+            [
+              240.565567016602,
+              369.462127685547
+            ],
+            [
+              234.37971496582,
+              376.016632080078
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 100,
+          "joint_points": [
+            [
+              237.945343017578,
+              335.687530517578
+            ],
+            [
+              240.4501953125,
+              357.949829101562
+            ],
+            [
+              238.137329101562,
+              371.457794189453
+            ],
+            [
+              231.061264038086,
+              378.016815185547
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 101,
+          "joint_points": [
+            [
+              235.448654174805,
+              337.674072265625
+            ],
+            [
+              237.995666503906,
+              359.931579589844
+            ],
+            [
+              235.708374023438,
+              373.443908691406
+            ],
+            [
+              227.975677490234,
+              380.005493164062
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 102,
+          "joint_points": [
+            [
+              232.964981079102,
+              339.655212402344
+            ],
+            [
+              235.521743774414,
+              361.911590576172
+            ],
+            [
+              233.240386962891,
+              375.424926757812
+            ],
+            [
+              225.133453369141,
+              381.792236328125
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 103,
+          "joint_points": [
+            [
+              230.464157104492,
+              341.635833740234
+            ],
+            [
+              232.997848510742,
+              363.894866943359
+            ],
+            [
+              230.702499389648,
+              377.405822753906
+            ],
+            [
+              222.535903930664,
+              382.988311767578
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 104,
+          "joint_points": [
+            [
+              227.925765991211,
+              343.621429443359
+            ],
+            [
+              230.404342651367,
+              365.886657714844
+            ],
+            [
+              228.075531005859,
+              379.391876220703
+            ],
+            [
+              220.176712036133,
+              384.219757080078
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 105,
+          "joint_points": [
+            [
+              227.7724609375,
+              343.597320556641
+            ],
+            [
+              230.001129150391,
+              365.888946533203
+            ],
+            [
+              227.520980834961,
+              379.3671875
+            ],
+            [
+              221.055587768555,
+              384.181976318359
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 106,
+          "joint_points": [
+            [
+              227.952178955078,
+              342.368133544922
+            ],
+            [
+              229.979751586914,
+              364.678955078125
+            ],
+            [
+              227.378173828125,
+              378.134307861328
+            ],
+            [
+              222.155075073242,
+              383.231414794922
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 107,
+          "joint_points": [
+            [
+              228.053161621094,
+              342.308471679688
+            ],
+            [
+              229.949340820312,
+              364.630828857422
+            ],
+            [
+              227.268585205078,
+              378.070617675781
+            ],
+            [
+              222.951034545898,
+              383.471435546875
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 108,
+          "joint_points": [
+            [
+              228.126739501953,
+              342.218566894531
+            ],
+            [
+              229.9365234375,
+              364.548095703125
+            ],
+            [
+              227.203765869141,
+              377.977416992188
+            ],
+            [
+              223.56819152832,
+              383.644165039062
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 109,
+          "joint_points": [
+            [
+              228.194091796875,
+              342.111419677734
+            ],
+            [
+              229.946380615234,
+              364.445556640625
+            ],
+            [
+              227.179061889648,
+              377.867797851562
+            ],
+            [
+              224.078201293945,
+              383.748260498047
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 110,
+          "joint_points": [
+            [
+              230.405456542969,
+              342.052703857422
+            ],
+            [
+              231.957962036133,
+              364.401611328125
+            ],
+            [
+              229.070739746094,
+              377.798553466797
+            ],
+            [
+              226.362365722656,
+              383.831359863281
+            ]
+          ],
+          "pose": "hit",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 111,
+          "joint_points": [
+            [
+              229.87353515625,
+              341.933288574219
+            ],
+            [
+              231.443603515625,
+              364.280975341797
+            ],
+            [
+              228.56689453125,
+              377.68017578125
+            ],
+            [
+              226.260223388672,
+              383.837280273438
+            ]
+          ],
+          "pose": "hit",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 112,
+          "joint_points": [
+            [
+              229.334716796875,
+              341.828460693359
+            ],
+            [
+              230.930587768555,
+              364.17431640625
+            ],
+            [
+              228.069351196289,
+              377.576843261719
+            ],
+            [
+              226.127426147461,
+              383.826385498047
+            ]
+          ],
+          "pose": "hit",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 113,
+          "joint_points": [
+            [
+              228.7861328125,
+              341.744598388672
+            ],
+            [
+              230.413558959961,
+              364.088165283203
+            ],
+            [
+              227.571258544922,
+              377.494720458984
+            ],
+            [
+              225.964981079102,
+              383.813171386719
+            ]
+          ],
+          "pose": "hit",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 114,
+          "joint_points": [
+            [
+              228.465118408203,
+              341.691986083984
+            ],
+            [
+              230.110244750977,
+              364.034271240234
+            ],
+            [
+              227.278579711914,
+              377.443054199219
+            ],
+            [
+              225.977615356445,
+              383.811676025391
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 115,
+          "joint_points": [
+            [
+              228.491485595703,
+              341.676544189453
+            ],
+            [
+              230.130310058594,
+              364.019287109375
+            ],
+            [
+              227.294860839844,
+              377.427307128906
+            ],
+            [
+              226.267562866211,
+              383.831298828125
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 116,
+          "joint_points": [
+            [
+              228.509262084961,
+              341.691772460938
+            ],
+            [
+              230.143737792969,
+              364.034820556641
+            ],
+            [
+              227.3056640625,
+              377.442291259766
+            ],
+            [
+              226.527648925781,
+              383.872253417969
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 117,
+          "joint_points": [
+            [
+              228.520309448242,
+              341.738677978516
+            ],
+            [
+              230.151779174805,
+              364.081970214844
+            ],
+            [
+              227.311920166016,
+              377.489013671875
+            ],
+            [
+              226.757202148438,
+              383.93798828125
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 118,
+          "joint_points": [
+            [
+              228.526596069336,
+              341.657989501953
+            ],
+            [
+              233.194137573242,
+              363.569122314453
+            ],
+            [
+              227.876754760742,
+              376.200042724609
+            ],
+            [
+              227.755004882812,
+              382.671691894531
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 119,
+          "joint_points": [
+            [
+              228.529708862305,
+              341.219451904297
+            ],
+            [
+              238.96794128418,
+              361.041839599609
+            ],
+            [
+              230.295486450195,
+              371.653289794922
+            ],
+            [
+              230.670593261719,
+              378.118347167969
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 120,
+          "joint_points": [
+            [
+              228.530960083008,
+              340.689910888672
+            ],
+            [
+              220.163162231445,
+              361.471221923828
+            ],
+            [
+              233.037185668945,
+              366.169555664062
+            ],
+            [
+              234.165802001953,
+              372.551147460938
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 121,
+          "joint_points": [
+            [
+              228.531219482422,
+              340.354461669922
+            ],
+            [
+              221.28288269043,
+              361.55224609375
+            ],
+            [
+              234.972961425781,
+              362.181121826172
+            ],
+            [
+              236.808853149414,
+              368.401702880859
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 122,
+          "joint_points": [
+            [
+              228.53125,
+              347.000122070312
+            ],
+            [
+              223.27099609375,
+              368.776580810547
+            ],
+            [
+              231.948272705078,
+              379.384094238281
+            ],
+            [
+              232.629333496094,
+              385.838653564453
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 123,
+          "joint_points": [
+            [
+              228.531478881836,
+              375.669250488281
+            ],
+            [
+              225.064361572266,
+              400.971984863281
+            ],
+            [
+              221.384704589844,
+              416.155639648438
+            ],
+            [
+              220.255889892578,
+              422.550415039062
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 124,
+          "joint_points": [
+            [
+              228.530654907227,
+              342.93603515625
+            ],
+            [
+              230.355545043945,
+              365.264343261719
+            ],
+            [
+              227.592056274414,
+              378.687377929688
+            ],
+            [
+              227.421585083008,
+              385.180633544922
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 125,
+          "joint_points": [
+            [
+              228.53059387207,
+              343.159759521484
+            ],
+            [
+              231.649154663086,
+              365.344390869141
+            ],
+            [
+              227.787109375,
+              378.493530273438
+            ],
+            [
+              227.650436401367,
+              384.988433837891
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 126,
+          "joint_points": [
+            [
+              228.530624389648,
+              343.308776855469
+            ],
+            [
+              234.01904296875,
+              365.028839111328
+            ],
+            [
+              228.354705810547,
+              377.507995605469
+            ],
+            [
+              228.3212890625,
+              384.005157470703
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 127,
+          "joint_points": [
+            [
+              228.530715942383,
+              343.404174804688
+            ],
+            [
+              236.499252319336,
+              364.341857910156
+            ],
+            [
+              229.186080932617,
+              375.932006835938
+            ],
+            [
+              229.317001342773,
+              382.430206298828
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 128,
+          "joint_points": [
+            [
+              228.530822753906,
+              343.466796875
+            ],
+            [
+              238.84326171875,
+              363.354919433594
+            ],
+            [
+              230.171783447266,
+              373.967163085938
+            ],
+            [
+              230.521255493164,
+              380.462860107422
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 129,
+          "joint_points": [
+            [
+              228.530960083008,
+              343.517578125
+            ],
+            [
+              219.835571289062,
+              364.164001464844
+            ],
+            [
+              231.205276489258,
+              371.815399169922
+            ],
+            [
+              231.818328857422,
+              378.302398681641
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 130,
+          "joint_points": [
+            [
+              228.531051635742,
+              343.576995849609
+            ],
+            [
+              219.648880004883,
+              364.143737792969
+            ],
+            [
+              232.186752319336,
+              369.676910400391
+            ],
+            [
+              233.093078613281,
+              376.147613525391
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 131,
+          "joint_points": [
+            [
+              230.331146240234,
+              343.665802001953
+            ],
+            [
+              221.567687988281,
+              364.283416748047
+            ],
+            [
+              234.826950073242,
+              367.748413085938
+            ],
+            [
+              236.030899047852,
+              374.197540283203
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 132,
+          "joint_points": [
+            [
+              229.831207275391,
+              343.804443359375
+            ],
+            [
+              221.347915649414,
+              364.538909912109
+            ],
+            [
+              234.949035644531,
+              366.219329833984
+            ],
+            [
+              236.417526245117,
+              372.650970458984
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 133,
+          "joint_points": [
+            [
+              229.331237792969,
+              344.013519287109
+            ],
+            [
+              221.089431762695,
+              364.845123291016
+            ],
+            [
+              234.787338256836,
+              365.271270751953
+            ],
+            [
+              236.439117431641,
+              371.706787109375
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 134,
+          "joint_points": [
+            [
+              228.831268310547,
+              344.313629150391
+            ],
+            [
+              220.576721191406,
+              365.140197753906
+            ],
+            [
+              234.281143188477,
+              365.082214355469
+            ],
+            [
+              235.981994628906,
+              371.563873291016
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 135,
+          "joint_points": [
+            [
+              228.531265258789,
+              352.469787597656
+            ],
+            [
+              236.518798828125,
+              373.400238037109
+            ],
+            [
+              229.96208190918,
+              385.434509277344
+            ],
+            [
+              230.255523681641,
+              392.195159912109
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 136,
+          "joint_points": [
+            [
+              228.531265258789,
+              368.740020751953
+            ],
+            [
+              226.525634765625,
+              394.200286865234
+            ],
+            [
+              223.725616455078,
+              409.570526123047
+            ],
+            [
+              222.926086425781,
+              416.363555908203
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 137,
+          "joint_points": [
+            [
+              228.531265258789,
+              379.926330566406
+            ],
+            [
+              225.01611328125,
+              403.202972412109
+            ],
+            [
+              221.374008178711,
+              417.135345458984
+            ],
+            [
+              220.067413330078,
+              423.928039550781
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": 0.0499838553369045,
+          "frame": 138,
+          "joint_points": [
+            [
+              228.531265258789,
+              380.640716552734
+            ],
+            [
+              224.997589111328,
+              403.446014404297
+            ],
+            [
+              221.360260009766,
+              417.086669921875
+            ],
+            [
+              220.009658813477,
+              423.950958251953
+            ]
+          ],
+          "pose": "contact",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": 0.0499956831336021,
+          "frame": 139,
+          "joint_points": [
+            [
+              228.53125,
+              380.935913085938
+            ],
+            [
+              225.007614135742,
+              403.512725830078
+            ],
+            [
+              221.384140014648,
+              417.013122558594
+            ],
+            [
+              220.009719848633,
+              423.950958251953
+            ]
+          ],
+          "pose": "contact",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": 4.74126100540161,
+          "frame": 140,
+          "joint_points": [
+            [
+              228.53125,
+              372.046356201172
+            ],
+            [
+              226.265701293945,
+              397.484832763672
+            ],
+            [
+              223.308883666992,
+              412.825653076172
+            ],
+            [
+              222.401397705078,
+              419.911865234375
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": 8.79261875152588,
+          "frame": 141,
+          "joint_points": [
+            [
+              228.53125,
+              367.715393066406
+            ],
+            [
+              226.548202514648,
+              393.177429199219
+            ],
+            [
+              223.761840820312,
+              408.550140380859
+            ],
+            [
+              222.925765991211,
+              415.708435058594
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": 12.9579658508301,
+          "frame": 142,
+          "joint_points": [
+            [
+              228.53125,
+              363.358978271484
+            ],
+            [
+              226.665405273438,
+              388.829864501953
+            ],
+            [
+              223.949798583984,
+              404.215240478516
+            ],
+            [
+              223.140930175781,
+              411.428466796875
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": 17.2116355895996,
+          "frame": 143,
+          "joint_points": [
+            [
+              228.53125,
+              358.975250244141
+            ],
+            [
+              226.704147338867,
+              384.448974609375
+            ],
+            [
+              224.011947631836,
+              399.838439941406
+            ],
+            [
+              223.209915161133,
+              407.09033203125
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": 26.4110889434814,
+          "frame": 144,
+          "joint_points": [
+            [
+              228.53125,
+              354.562652587891
+            ],
+            [
+              227.008056640625,
+              377.027618408203
+            ],
+            [
+              224.597839355469,
+              390.589263916016
+            ],
+            [
+              223.803558349609,
+              397.864227294922
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": 31.8743953704834,
+          "frame": 145,
+          "joint_points": [
+            [
+              228.53125,
+              350.119812011719
+            ],
+            [
+              230.073791503906,
+              372.469421386719
+            ],
+            [
+              224.729583740234,
+              385.088989257812
+            ],
+            [
+              223.938049316406,
+              392.369812011719
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": 32.6800689697266,
+          "frame": 146,
+          "joint_points": [
+            [
+              228.53125,
+              349.311065673828
+            ],
+            [
+              230.068359375,
+              371.661041259766
+            ],
+            [
+              224.748764038086,
+              384.291015625
+            ],
+            [
+              223.962631225586,
+              391.561065673828
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": 32.6124954223633,
+          "frame": 147,
+          "joint_points": [
+            [
+              228.53125,
+              349.386627197266
+            ],
+            [
+              230.05500793457,
+              371.737518310547
+            ],
+            [
+              224.796188354492,
+              384.392913818359
+            ],
+            [
+              224.023315429688,
+              391.636627197266
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": 32.5818557739258,
+          "frame": 148,
+          "joint_points": [
+            [
+              228.53125,
+              349.429534912109
+            ],
+            [
+              230.034362792969,
+              371.781829833984
+            ],
+            [
+              224.87109375,
+              384.476501464844
+            ],
+            [
+              224.118835449219,
+              391.679534912109
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": 32.5883102416992,
+          "frame": 149,
+          "joint_points": [
+            [
+              228.53125,
+              349.439636230469
+            ],
+            [
+              230.00732421875,
+              371.793731689453
+            ],
+            [
+              224.97216796875,
+              384.539764404297
+            ],
+            [
+              224.247177124023,
+              391.689636230469
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 150,
+          "joint_points": [
+            [
+              228.53125,
+              349.416961669922
+            ],
+            [
+              230.15625,
+              371.760711669922
+            ],
+            [
+              227.3125,
+              385.166961669922
+            ],
+            [
+              224.405670166016,
+              391.666961669922
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 151,
+          "joint_points": [
+            [
+              228.53125,
+              349.361938476562
+            ],
+            [
+              230.15625,
+              371.705688476562
+            ],
+            [
+              227.3125,
+              385.111938476562
+            ],
+            [
+              224.59098815918,
+              391.611938476562
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/stalker_front.png"
+        }
+      ],
+      "hunter_damage": 18.0,
+      "level": 1,
+      "poses": [
+        "idle",
+        "move",
+        "hit",
+        "windup",
+        "contact",
+        "follow"
+      ],
+      "textures": {
+        "res://assets/visual_rebirth/articulated/stalker_back.png": true,
+        "res://assets/visual_rebirth/articulated/stalker_front.png": true,
+        "res://assets/visual_rebirth/articulated/stalker_left.png": true,
+        "res://assets/visual_rebirth/articulated/stalker_right.png": true
+      }
+    }
+  ],
+  "viewport": [
+    1280,
+    720
+  ]
+}

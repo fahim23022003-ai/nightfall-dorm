@@ -1,5 +1,13 @@
 # Nightfall Dorm master roadmap
 
+## Owner-approved project — Living Nightmare
+
+The opt-in preview combines articulated Hunter pilots, event-driven combat
+feedback, adaptive horror audio, and a linear 50-level Story campaign.
+Each verified pilot gates further character coverage. Preserve the V2.3,
+V1 and fixed launch modes and the original profile backup.
+[Implementation and QA](LIVING_NIGHTMARE.md)
+
 ## Phase 14F — Hunter animation and directional art
 
 Continue the opt-in visual preview. Verify character motion and direction,

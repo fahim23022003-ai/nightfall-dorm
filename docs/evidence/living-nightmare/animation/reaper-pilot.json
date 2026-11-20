@@ -1,0 +1,37 @@
+{
+  "blade_errors": [
+    0.0,
+    0.0
+  ],
+  "door_damage": 34.4816000000001,
+  "events": {
+    "boss_awakened": 84,
+    "boss_impact": 134,
+    "boss_transform": 26,
+    "boss_warning": 109
+  },
+  "fixture": "Prepared seeded Endless room, using the game's enabled Stage 5 Hell encounter policy. Set time just before the existing transformation deadline. Advance HunterState.tick directly at 24 Hz, not a full world tick.",
+  "fps": 24,
+  "frame_count": 152,
+  "hunter_hp_at_transform": 4692.0,
+  "hunter_hp_before_transform": 4692.0,
+  "isolate_scythe": true,
+  "last_boss_attack": "scythe",
+  "poses": [
+    "move",
+    "idle",
+    "windup",
+    "evolve",
+    "contact",
+    "follow"
+  ],
+  "textures": [
+    "res://assets/visual_rebirth/articulated/reaper_approach_right.png",
+    "res://assets/visual_rebirth/articulated/reaper_approach_front.png",
+    "res://assets/visual_rebirth/articulated/reaper_transformed_front.png"
+  ],
+  "viewport": [
+    1280,
+    720
+  ]
+}

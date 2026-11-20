@@ -1,0 +1,3309 @@
+{
+  "archetype": "ravager",
+  "combat_staging": "Ordinary attacks are isolated by postponing special-ability cooldowns. A higher door level extends the comparison. The initial countdown leaves time for a paid Needle to land before the first Hunter windup. Windup durations, damage, and projectiles remain in the model.",
+  "fixture": "Prepared seeded Endless. The chosen level, starting player wallet and Hunter route are staged. Each path is checked before the production movement primitive and heading tracker run. Live ordinary combat uses normal MatchModel ticks and one legally paid Needle.",
+  "fps": 24,
+  "segments": [
+    {
+      "approach_frames": 96,
+      "bound_hit_pose": true,
+      "bound_release_pose": true,
+      "bound_tell_pose": true,
+      "door_damage": 18.6999999999998,
+      "events": {
+        "door_strike": 122,
+        "impact": 100,
+        "launch": 96,
+        "ordinary_warning": 114
+      },
+      "first_hunter_damage_frame": 100,
+      "frame_count": 136,
+      "frames": [
+        {
+          "actual_contact_error": -1.0,
+          "frame": 0,
+          "joint_points": [
+            [
+              264.78125,
+              298.019744873047
+            ],
+            [
+              254.625,
+              316.300994873047
+            ],
+            [
+              279.8125,
+              346.363494873047
+            ],
+            [
+              295.25,
+              354.488494873047
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 1,
+          "joint_points": [
+            [
+              264.78125,
+              298.163055419922
+            ],
+            [
+              254.625,
+              316.444305419922
+            ],
+            [
+              279.8125,
+              346.506805419922
+            ],
+            [
+              295.25,
+              354.631805419922
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 2,
+          "joint_points": [
+            [
+              264.78125,
+              298.303497314453
+            ],
+            [
+              254.625,
+              316.584747314453
+            ],
+            [
+              279.8125,
+              346.647247314453
+            ],
+            [
+              295.25,
+              354.772247314453
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 3,
+          "joint_points": [
+            [
+              264.78125,
+              298.439666748047
+            ],
+            [
+              254.625,
+              316.720916748047
+            ],
+            [
+              279.8125,
+              346.783416748047
+            ],
+            [
+              295.25,
+              354.908416748047
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 4,
+          "joint_points": [
+            [
+              264.78125,
+              298.570159912109
+            ],
+            [
+              254.625,
+              316.851409912109
+            ],
+            [
+              279.8125,
+              346.913909912109
+            ],
+            [
+              295.25,
+              355.038909912109
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 5,
+          "joint_points": [
+            [
+              264.78125,
+              298.693725585938
+            ],
+            [
+              254.625,
+              316.974975585938
+            ],
+            [
+              279.8125,
+              347.037475585938
+            ],
+            [
+              295.25,
+              355.162475585938
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 6,
+          "joint_points": [
+            [
+              272.094024658203,
+              298.086303710938
+            ],
+            [
+              261.692993164062,
+              316.229400634766
+            ],
+            [
+              286.474182128906,
+              346.627716064453
+            ],
+            [
+              303.540405273438,
+              352.371459960938
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 7,
+          "joint_points": [
+            [
+              276.50537109375,
+              297.672973632812
+            ],
+            [
+              265.79345703125,
+              315.63427734375
+            ],
+            [
+              290.047546386719,
+              346.454803466797
+            ],
+            [
+              309.196533203125,
+              351.456909179688
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 8,
+          "joint_points": [
+            [
+              280.939361572266,
+              297.538970947266
+            ],
+            [
+              269.898681640625,
+              315.300079345703
+            ],
+            [
+              293.581390380859,
+              346.561767578125
+            ],
+            [
+              314.951629638672,
+              352.600708007812
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 9,
+          "joint_points": [
+            [
+              285.231567382812,
+              297.782958984375
+            ],
+            [
+              273.953125,
+              315.39404296875
+            ],
+            [
+              297.213409423828,
+              346.971282958984
+            ],
+            [
+              320.202850341797,
+              355.627746582031
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 10,
+          "joint_points": [
+            [
+              289.221984863281,
+              298.420501708984
+            ],
+            [
+              277.905548095703,
+              316.007202148438
+            ],
+            [
+              301.097625732422,
+              347.634582519531
+            ],
+            [
+              324.346740722656,
+              356.740234375
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 11,
+          "joint_points": [
+            [
+              292.815979003906,
+              299.351776123047
+            ],
+            [
+              281.724700927734,
+              317.081329345703
+            ],
+            [
+              305.318176269531,
+              348.410430908203
+            ],
+            [
+              327.032073974609,
+              357.325622558594
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 12,
+          "joint_points": [
+            [
+              296.018218994141,
+              300.383148193359
+            ],
+            [
+              285.406677246094,
+              318.403930664062
+            ],
+            [
+              309.832275390625,
+              349.088684082031
+            ],
+            [
+              328.307159423828,
+              357.598297119141
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 13,
+          "joint_points": [
+            [
+              298.949432373047,
+              300.942535400391
+            ],
+            [
+              288.984558105469,
+              319.328796386719
+            ],
+            [
+              314.484497070312,
+              349.126770019531
+            ],
+            [
+              328.655090332031,
+              357.090179443359
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 14,
+          "joint_points": [
+            [
+              301.838348388672,
+              300.32470703125
+            ],
+            [
+              292.535400390625,
+              319.054595947266
+            ],
+            [
+              319.081573486328,
+              347.924377441406
+            ],
+            [
+              328.911010742188,
+              355.329284667969
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 15,
+          "joint_points": [
+            [
+              304.9697265625,
+              299.445922851562
+            ],
+            [
+              296.167449951172,
+              318.416259765625
+            ],
+            [
+              323.470916748047,
+              346.570892333984
+            ],
+            [
+              330.054351806641,
+              353.553741455078
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 16,
+          "joint_points": [
+            [
+              308.590789794922,
+              298.486267089844
+            ],
+            [
+              299.981781005859,
+              317.545074462891
+            ],
+            [
+              327.570037841797,
+              345.420745849609
+            ],
+            [
+              332.908172607422,
+              352.175842285156
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 17,
+          "joint_points": [
+            [
+              312.815246582031,
+              297.665374755859
+            ],
+            [
+              304.026062011719,
+              316.641784667969
+            ],
+            [
+              331.348999023438,
+              344.777526855469
+            ],
+            [
+              337.847839355469,
+              346.601684570312
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 18,
+          "joint_points": [
+            [
+              317.574615478516,
+              297.201110839844
+            ],
+            [
+              308.269805908203,
+              315.930084228516
+            ],
+            [
+              334.813140869141,
+              344.802459716797
+            ],
+            [
+              344.654602050781,
+              343.131378173828
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 19,
+          "joint_points": [
+            [
+              322.572052001953,
+              297.247406005859
+            ],
+            [
+              312.550048828125,
+              315.602600097656
+            ],
+            [
+              337.957153320312,
+              345.479705810547
+            ],
+            [
+              352.505462646484,
+              342.689208984375
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 20,
+          "joint_points": [
+            [
+              323.712005615234,
+              300.658569335938
+            ],
+            [
+              312.952178955078,
+              318.591217041016
+            ],
+            [
+              337.123840332031,
+              349.476379394531
+            ],
+            [
+              356.595489501953,
+              348.114227294922
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 21,
+          "joint_points": [
+            [
+              315.993103027344,
+              301.377807617188
+            ],
+            [
+              311.655914306641,
+              325.487365722656
+            ],
+            [
+              309.524017333984,
+              349.782562255859
+            ],
+            [
+              322.236694335938,
+              352.995483398438
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 22,
+          "joint_points": [
+            [
+              316.429809570312,
+              305.484985351562
+            ],
+            [
+              311.682189941406,
+              329.51708984375
+            ],
+            [
+              309.136383056641,
+              353.772399902344
+            ],
+            [
+              322.604553222656,
+              362.047119140625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 23,
+          "joint_points": [
+            [
+              316.348602294922,
+              310.3544921875
+            ],
+            [
+              311.677551269531,
+              334.401611328125
+            ],
+            [
+              309.209014892578,
+              358.664886474609
+            ],
+            [
+              322.536254882812,
+              368.759307861328
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 24,
+          "joint_points": [
+            [
+              315.763275146484,
+              315.741821289062
+            ],
+            [
+              311.640777587891,
+              339.889007568359
+            ],
+            [
+              309.72509765625,
+              364.202209472656
+            ],
+            [
+              322.042572021484,
+              374.08984375
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 25,
+          "joint_points": [
+            [
+              314.7978515625,
+              321.293792724609
+            ],
+            [
+              311.567535400391,
+              345.576446533203
+            ],
+            [
+              310.548706054688,
+              369.943695068359
+            ],
+            [
+              321.221710205078,
+              379.48583984375
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 26,
+          "joint_points": [
+            [
+              313.673370361328,
+              325.932678222656
+            ],
+            [
+              311.463806152344,
+              350.329406738281
+            ],
+            [
+              311.467315673828,
+              374.717956542969
+            ],
+            [
+              320.252807617188,
+              383.851135253906
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 27,
+          "joint_points": [
+            [
+              312.666687011719,
+              329.47998046875
+            ],
+            [
+              311.355194091797,
+              353.941436767578
+            ],
+            [
+              312.254974365234,
+              378.313354492188
+            ],
+            [
+              319.371459960938,
+              387.074798583984
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 28,
+          "joint_points": [
+            [
+              312.039489746094,
+              332.624572753906
+            ],
+            [
+              311.280364990234,
+              357.109375
+            ],
+            [
+              312.729919433594,
+              381.454803466797
+            ],
+            [
+              318.814819335938,
+              389.982086181641
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 29,
+          "joint_points": [
+            [
+              312.011413574219,
+              335.182250976562
+            ],
+            [
+              311.276885986328,
+              359.667816162109
+            ],
+            [
+              312.750885009766,
+              384.011749267578
+            ],
+            [
+              318.789794921875,
+              390.705688476562
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 30,
+          "joint_points": [
+            [
+              307.559173583984,
+              334.104187011719
+            ],
+            [
+              306.436889648438,
+              358.575042724609
+            ],
+            [
+              307.525146484375,
+              382.939300537109
+            ],
+            [
+              314.288726806641,
+              384.978820800781
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 31,
+          "joint_points": [
+            [
+              274.683837890625,
+              332.676940917969
+            ],
+            [
+              277.889953613281,
+              355.331420898438
+            ],
+            [
+              261.015197753906,
+              385.169647216797
+            ],
+            [
+              245.329010009766,
+              382.820678710938
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 32,
+          "joint_points": [
+            [
+              272.054077148438,
+              330.164184570312
+            ],
+            [
+              274.337768554688,
+              352.930145263672
+            ],
+            [
+              256.265502929688,
+              382.058654785156
+            ],
+            [
+              235.032196044922,
+              377.961853027344
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 33,
+          "joint_points": [
+            [
+              265.348358154297,
+              327.189300537109
+            ],
+            [
+              266.735443115234,
+              350.027435302734
+            ],
+            [
+              247.532196044922,
+              378.423095703125
+            ],
+            [
+              220.960510253906,
+              375.227416992188
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 34,
+          "joint_points": [
+            [
+              262.384063720703,
+              325.51123046875
+            ],
+            [
+              263.123565673828,
+              348.379486083984
+            ],
+            [
+              243.123550415039,
+              376.219696044922
+            ],
+            [
+              212.724349975586,
+              376.385772705078
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 35,
+          "joint_points": [
+            [
+              257.848693847656,
+              325.481231689453
+            ],
+            [
+              258.352416992188,
+              348.355895996094
+            ],
+            [
+              238.066513061523,
+              375.988464355469
+            ],
+            [
+              206.279006958008,
+              381.151184082031
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 36,
+          "joint_points": [
+            [
+              253.556121826172,
+              327.065277099609
+            ],
+            [
+              254.296493530273,
+              349.933502197266
+            ],
+            [
+              234.297546386719,
+              377.774475097656
+            ],
+            [
+              203.903518676758,
+              383.152374267578
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 37,
+          "joint_points": [
+            [
+              248.646667480469,
+              329.870483398438
+            ],
+            [
+              250.03938293457,
+              352.708251953125
+            ],
+            [
+              230.843170166016,
+              381.108673095703
+            ],
+            [
+              204.304931640625,
+              387.077117919922
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 38,
+          "joint_points": [
+            [
+              243.390350341797,
+              333.223449707031
+            ],
+            [
+              245.690536499023,
+              355.987731933594
+            ],
+            [
+              227.639373779297,
+              385.129364013672
+            ],
+            [
+              206.504730224609,
+              391.912933349609
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 39,
+          "joint_points": [
+            [
+              238.132186889648,
+              335.178771972656
+            ],
+            [
+              241.370666503906,
+              357.828643798828
+            ],
+            [
+              224.53857421875,
+              387.690948486328
+            ],
+            [
+              209.048187255859,
+              395.309417724609
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 40,
+          "joint_points": [
+            [
+              233.186416625977,
+              336.146575927734
+            ],
+            [
+              237.164077758789,
+              358.678375244141
+            ],
+            [
+              221.317825317383,
+              389.075317382812
+            ],
+            [
+              210.321426391602,
+              397.345794677734
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 41,
+          "joint_points": [
+            [
+              228.767211914062,
+              336.023376464844
+            ],
+            [
+              233.107025146484,
+              358.488250732422
+            ],
+            [
+              217.752090454102,
+              389.136322021484
+            ],
+            [
+              208.974456787109,
+              397.724334716797
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 42,
+          "joint_points": [
+            [
+              228.580261230469,
+              334.299774169922
+            ],
+            [
+              232.463928222656,
+              356.847961425781
+            ],
+            [
+              216.491088867188,
+              387.178588867188
+            ],
+            [
+              204.920761108398,
+              393.309692382812
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 43,
+          "joint_points": [
+            [
+              228.816329956055,
+              329.301483154297
+            ],
+            [
+              232.526443481445,
+              351.878875732422
+            ],
+            [
+              216.320739746094,
+              382.085723876953
+            ],
+            [
+              203.692535400391,
+              384.447418212891
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_left.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 44,
+          "joint_points": [
+            [
+              261.465118408203,
+              327.539337158203
+            ],
+            [
+              279.093597412109,
+              344.016418457031
+            ],
+            [
+              278.766510009766,
+              370.448760986328
+            ],
+            [
+              285.58203125,
+              365.128265380859
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 45,
+          "joint_points": [
+            [
+              262.267364501953,
+              323.11474609375
+            ],
+            [
+              279.339752197266,
+              340.167358398438
+            ],
+            [
+              278.136291503906,
+              366.574310302734
+            ],
+            [
+              286.63818359375,
+              360.141021728516
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 46,
+          "joint_points": [
+            [
+              263.128082275391,
+              317.964630126953
+            ],
+            [
+              279.570983886719,
+              335.625
+            ],
+            [
+              277.410949707031,
+              361.970947265625
+            ],
+            [
+              287.745849609375,
+              356.672912597656
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 47,
+          "joint_points": [
+            [
+              263.82861328125,
+              313.452087402344
+            ],
+            [
+              279.732696533203,
+              331.599212646484
+            ],
+            [
+              276.780883789062,
+              357.868255615234
+            ],
+            [
+              288.628570556641,
+              355.878723144531
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 48,
+          "joint_points": [
+            [
+              264.190246582031,
+              309.769348144531
+            ],
+            [
+              279.806365966797,
+              328.164855957031
+            ],
+            [
+              276.440948486328,
+              354.384094238281
+            ],
+            [
+              289.077880859375,
+              357.185455322266
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 49,
+          "joint_points": [
+            [
+              264.115234375,
+              306.882171630859
+            ],
+            [
+              279.791625976562,
+              325.226318359375
+            ],
+            [
+              276.512298583984,
+              351.456481933594
+            ],
+            [
+              288.985015869141,
+              355.768493652344
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 50,
+          "joint_points": [
+            [
+              263.603851318359,
+              304.570007324219
+            ],
+            [
+              279.683502197266,
+              322.561767578125
+            ],
+            [
+              276.987060546875,
+              348.858215332031
+            ],
+            [
+              288.347137451172,
+              352.986755371094
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 51,
+          "joint_points": [
+            [
+              262.757354736328,
+              302.479888916016
+            ],
+            [
+              279.475677490234,
+              319.879760742188
+            ],
+            [
+              277.729797363281,
+              346.256408691406
+            ],
+            [
+              287.271911621094,
+              350.082305908203
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 52,
+          "joint_points": [
+            [
+              261.802307128906,
+              299.803771972656
+            ],
+            [
+              279.200561523438,
+              316.523773193359
+            ],
+            [
+              278.506896972656,
+              342.949035644531
+            ],
+            [
+              286.028778076172,
+              346.434997558594
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 53,
+          "joint_points": [
+            [
+              265.824096679688,
+              299.746826171875
+            ],
+            [
+              283.807403564453,
+              315.835906982422
+            ],
+            [
+              284.056274414062,
+              342.269104003906
+            ],
+            [
+              289.758758544922,
+              345.446166992188
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_back.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 54,
+          "joint_points": [
+            [
+              275.280029296875,
+              296.707550048828
+            ],
+            [
+              266.591156005859,
+              315.730102539062
+            ],
+            [
+              294.062225341797,
+              343.721221923828
+            ],
+            [
+              299.914489746094,
+              350.608520507812
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 55,
+          "joint_points": [
+            [
+              279.076141357422,
+              295.865936279297
+            ],
+            [
+              270.472045898438,
+              314.926971435547
+            ],
+            [
+              298.067504882812,
+              342.795501708984
+            ],
+            [
+              303.3740234375,
+              348.012939453125
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 56,
+          "joint_points": [
+            [
+              287.569183349609,
+              295.266967773438
+            ],
+            [
+              278.667846679688,
+              314.191009521484
+            ],
+            [
+              305.82373046875,
+              342.488037109375
+            ],
+            [
+              313.047058105469,
+              343.011474609375
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 57,
+          "joint_points": [
+            [
+              292.466644287109,
+              295.113220214844
+            ],
+            [
+              282.961090087891,
+              313.741088867188
+            ],
+            [
+              309.192596435547,
+              342.897094726562
+            ],
+            [
+              320.344390869141,
+              340.537017822266
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 58,
+          "joint_points": [
+            [
+              298.542724609375,
+              295.327941894531
+            ],
+            [
+              288.282501220703,
+              313.551055908203
+            ],
+            [
+              313.298370361328,
+              343.756530761719
+            ],
+            [
+              329.426452636719,
+              341.041931152344
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 59,
+          "joint_points": [
+            [
+              303.574493408203,
+              294.959136962891
+            ],
+            [
+              292.598571777344,
+              312.760314941406
+            ],
+            [
+              316.394927978516,
+              343.935607910156
+            ],
+            [
+              337.326202392578,
+              343.496368408203
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 60,
+          "joint_points": [
+            [
+              308.271636962891,
+              295.231872558594
+            ],
+            [
+              296.788482666016,
+              312.710174560547
+            ],
+            [
+              319.678771972656,
+              344.556640625
+            ],
+            [
+              344.071228027344,
+              348.482666015625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 61,
+          "joint_points": [
+            [
+              312.481994628906,
+              296.083343505859
+            ],
+            [
+              300.812774658203,
+              313.437957763672
+            ],
+            [
+              323.361511230469,
+              345.527160644531
+            ],
+            [
+              349.036956787109,
+              354.855529785156
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 62,
+          "joint_points": [
+            [
+              316.154846191406,
+              297.325012207031
+            ],
+            [
+              304.66064453125,
+              314.796020507812
+            ],
+            [
+              327.53076171875,
+              346.657012939453
+            ],
+            [
+              351.999298095703,
+              355.913116455078
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 63,
+          "joint_points": [
+            [
+              319.335510253906,
+              298.701629638672
+            ],
+            [
+              308.341339111328,
+              316.491577148438
+            ],
+            [
+              332.105743408203,
+              347.691192626953
+            ],
+            [
+              353.160583496094,
+              356.524261474609
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 64,
+          "joint_points": [
+            [
+              322.171173095703,
+              299.941741943359
+            ],
+            [
+              311.892608642578,
+              318.154510498047
+            ],
+            [
+              336.878051757812,
+              348.385162353516
+            ],
+            [
+              353.128143310547,
+              356.613433837891
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 65,
+          "joint_points": [
+            [
+              324.909454345703,
+              299.693817138672
+            ],
+            [
+              315.393676757812,
+              318.316497802734
+            ],
+            [
+              341.609222412109,
+              347.486846923828
+            ],
+            [
+              352.827789306641,
+              355.0712890625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 66,
+          "joint_points": [
+            [
+              327.856231689453,
+              298.930450439453
+            ],
+            [
+              318.958801269531,
+              317.856323242188
+            ],
+            [
+              346.120574951172,
+              346.147735595703
+            ],
+            [
+              353.318542480469,
+              353.210754394531
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 67,
+          "joint_points": [
+            [
+              328.88818359375,
+              298.320098876953
+            ],
+            [
+              319.929382324219,
+              317.217010498047
+            ],
+            [
+              346.999145507812,
+              345.596405029297
+            ],
+            [
+              354.594177246094,
+              352.711181640625
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_right.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 68,
+          "joint_points": [
+            [
+              317.275909423828,
+              299.296813964844
+            ],
+            [
+              316.275573730469,
+              323.77294921875
+            ],
+            [
+              317.485198974609,
+              348.131469726562
+            ],
+            [
+              324.021118164062,
+              355.243103027344
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 69,
+          "joint_points": [
+            [
+              314.483642578125,
+              301.150695800781
+            ],
+            [
+              313.266418457031,
+              325.617004394531
+            ],
+            [
+              314.260101318359,
+              349.985290527344
+            ],
+            [
+              321.200836181641,
+              353.117309570312
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 70,
+          "joint_points": [
+            [
+              311.155548095703,
+              303.046112060547
+            ],
+            [
+              309.343170166016,
+              327.475524902344
+            ],
+            [
+              309.743408203125,
+              351.860809326172
+            ],
+            [
+              317.791931152344,
+              351.956085205078
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 71,
+          "joint_points": [
+            [
+              309.071441650391,
+              305.206939697266
+            ],
+            [
+              306.400512695312,
+              329.557464599609
+            ],
+            [
+              305.9423828125,
+              353.941711425781
+            ],
+            [
+              315.582092285156,
+              352.893951416016
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 72,
+          "joint_points": [
+            [
+              307.038146972656,
+              306.663208007812
+            ],
+            [
+              303.447998046875,
+              330.895263671875
+            ],
+            [
+              302.067810058594,
+              355.244720458984
+            ],
+            [
+              313.404479980469,
+              355.422912597656
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 73,
+          "joint_points": [
+            [
+              300.725524902344,
+              308.699005126953
+            ],
+            [
+              296.386779785156,
+              332.808288574219
+            ],
+            [
+              294.253265380859,
+              357.103332519531
+            ],
+            [
+              306.968902587891,
+              360.726654052734
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 74,
+          "joint_points": [
+            [
+              298.096313476562,
+              311.531951904297
+            ],
+            [
+              293.373260498047,
+              335.568908691406
+            ],
+            [
+              290.852203369141,
+              359.826782226562
+            ],
+            [
+              304.275177001953,
+              368.36376953125
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 75,
+          "joint_points": [
+            [
+              294.007659912109,
+              315.100341796875
+            ],
+            [
+              289.369873046875,
+              339.153900146484
+            ],
+            [
+              286.934875488281,
+              363.420562744141
+            ],
+            [
+              300.200897216797,
+              373.502593994141
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 76,
+          "joint_points": [
+            [
+              290.38623046875,
+              319.172546386719
+            ],
+            [
+              286.294616699219,
+              343.324981689453
+            ],
+            [
+              284.410064697266,
+              367.640625
+            ],
+            [
+              296.670623779297,
+              377.516479492188
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 77,
+          "joint_points": [
+            [
+              286.390502929688,
+              323.402862548828
+            ],
+            [
+              283.183349609375,
+              347.688568115234
+            ],
+            [
+              282.187713623047,
+              372.056793212891
+            ],
+            [
+              292.817993164062,
+              381.58984375
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 78,
+          "joint_points": [
+            [
+              282.237518310547,
+              326.698394775391
+            ],
+            [
+              280.041961669922,
+              351.096374511719
+            ],
+            [
+              280.059478759766,
+              375.484924316406
+            ],
+            [
+              288.819030761719,
+              384.612396240234
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 79,
+          "joint_points": [
+            [
+              278.201751708984,
+              328.927886962891
+            ],
+            [
+              276.89599609375,
+              353.389617919922
+            ],
+            [
+              277.801452636719,
+              377.761352539062
+            ],
+            [
+              284.907287597656,
+              386.520385742188
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 80,
+          "joint_points": [
+            [
+              274.543548583984,
+              330.747680664062
+            ],
+            [
+              273.783782958984,
+              355.232482910156
+            ],
+            [
+              275.232666015625,
+              379.577911376953
+            ],
+            [
+              281.318786621094,
+              388.105499267578
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 81,
+          "joint_points": [
+            [
+              271.430969238281,
+              332.287048339844
+            ],
+            [
+              270.736328125,
+              356.773773193359
+            ],
+            [
+              272.249969482422,
+              381.115295410156
+            ],
+            [
+              278.214172363281,
+              387.568695068359
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 82,
+          "joint_points": [
+            [
+              269.519378662109,
+              333.383514404297
+            ],
+            [
+              268.338073730469,
+              357.8515625
+            ],
+            [
+              269.367523193359,
+              382.218383789062
+            ],
+            [
+              276.241271972656,
+              384.550872802734
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 83,
+          "joint_points": [
+            [
+              267.396636962891,
+              335.211853027344
+            ],
+            [
+              265.496917724609,
+              359.634643554688
+            ],
+            [
+              265.809967041016,
+              384.021179199219
+            ],
+            [
+              274.020690917969,
+              383.424194335938
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 84,
+          "joint_points": [
+            [
+              265.510040283203,
+              337.238220214844
+            ],
+            [
+              262.667999267578,
+              361.569366455078
+            ],
+            [
+              262.038482666016,
+              385.949798583984
+            ],
+            [
+              271.994476318359,
+              384.664733886719
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 85,
+          "joint_points": [
+            [
+              263.600067138672,
+              338.648559570312
+            ],
+            [
+              259.820678710938,
+              362.851806640625
+            ],
+            [
+              258.250244140625,
+              387.189727783203
+            ],
+            [
+              269.935729980469,
+              387.731536865234
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 86,
+          "joint_points": [
+            [
+              261.4189453125,
+              340.805511474609
+            ],
+            [
+              256.940246582031,
+              364.88916015625
+            ],
+            [
+              254.66569519043,
+              389.171417236328
+            ],
+            [
+              267.638916015625,
+              393.688446044922
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 87,
+          "joint_points": [
+            [
+              258.791687011719,
+              343.789276123047
+            ],
+            [
+              254.02685546875,
+              367.817962646484
+            ],
+            [
+              251.463638305664,
+              392.071472167969
+            ],
+            [
+              264.963500976562,
+              401.788696289062
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 88,
+          "joint_points": [
+            [
+              255.645935058594,
+              347.482086181641
+            ],
+            [
+              251.083114624023,
+              371.549957275391
+            ],
+            [
+              248.723739624023,
+              395.824127197266
+            ],
+            [
+              261.851806640625,
+              405.878082275391
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 89,
+          "joint_points": [
+            [
+              252.020614624023,
+              351.612243652344
+            ],
+            [
+              248.106170654297,
+              375.794036865234
+            ],
+            [
+              246.39990234375,
+              400.122802734375
+            ],
+            [
+              258.334167480469,
+              409.930908203125
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 90,
+          "joint_points": [
+            [
+              248.063919067383,
+              355.812225341797
+            ],
+            [
+              245.092926025391,
+              380.127960205078
+            ],
+            [
+              244.334182739258,
+              404.504699707031
+            ],
+            [
+              254.528427124023,
+              413.944305419922
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 91,
+          "joint_points": [
+            [
+              244.014541625977,
+              358.681671142578
+            ],
+            [
+              242.053817749023,
+              383.099639892578
+            ],
+            [
+              242.305953979492,
+              407.486877441406
+            ],
+            [
+              250.629913330078,
+              416.518157958984
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 92,
+          "joint_points": [
+            [
+              240.152145385742,
+              360.803314208984
+            ],
+            [
+              239.018890380859,
+              385.273651123047
+            ],
+            [
+              240.09619140625,
+              409.638397216797
+            ],
+            [
+              246.880279541016,
+              418.324737548828
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 93,
+          "joint_points": [
+            [
+              236.721740722656,
+              362.549041748047
+            ],
+            [
+              236.027099609375,
+              387.035766601562
+            ],
+            [
+              237.540771484375,
+              411.377288818359
+            ],
+            [
+              243.504959106445,
+              419.876983642578
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 94,
+          "joint_points": [
+            [
+              233.858673095703,
+              364.074249267578
+            ],
+            [
+              233.104293823242,
+              388.559204101562
+            ],
+            [
+              234.558563232422,
+              412.904327392578
+            ],
+            [
+              240.634582519531,
+              418.090972900391
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 95,
+          "joint_points": [
+            [
+              231.660125732422,
+              365.540771484375
+            ],
+            [
+              230.354431152344,
+              390.002502441406
+            ],
+            [
+              231.259979248047,
+              414.374237060547
+            ],
+            [
+              238.365676879883,
+              415.305358886719
+            ]
+          ],
+          "pose": "move",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 96,
+          "joint_points": [
+            [
+              235.597015380859,
+              365.330535888672
+            ],
+            [
+              233.456085205078,
+              389.733367919922
+            ],
+            [
+              233.528182983398,
+              414.121826171875
+            ],
+            [
+              242.186462402344,
+              416.088470458984
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 97,
+          "joint_points": [
+            [
+              236.065933227539,
+              365.390502929688
+            ],
+            [
+              233.502197265625,
+              389.752532958984
+            ],
+            [
+              233.151397705078,
+              414.138549804688
+            ],
+            [
+              242.592788696289,
+              417.900848388672
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 98,
+          "joint_points": [
+            [
+              236.268630981445,
+              365.464111328125
+            ],
+            [
+              233.521118164062,
+              389.806091308594
+            ],
+            [
+              232.986297607422,
+              414.188812255859
+            ],
+            [
+              242.767593383789,
+              419.538330078125
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 99,
+          "joint_points": [
+            [
+              236.340362548828,
+              365.443634033203
+            ],
+            [
+              233.52766418457,
+              389.778198242188
+            ],
+            [
+              232.927551269531,
+              414.159362792969
+            ],
+            [
+              242.829315185547,
+              420.701812744141
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 100,
+          "joint_points": [
+            [
+              238.345886230469,
+              365.563171386719
+            ],
+            [
+              235.345977783203,
+              389.875366210938
+            ],
+            [
+              234.558227539062,
+              414.251159667969
+            ],
+            [
+              244.414535522461,
+              421.709533691406
+            ]
+          ],
+          "pose": "hit",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 101,
+          "joint_points": [
+            [
+              237.78515625,
+              365.537017822266
+            ],
+            [
+              234.840637207031,
+              389.855987548828
+            ],
+            [
+              234.108428955078,
+              414.233520507812
+            ],
+            [
+              243.971115112305,
+              422.265686035156
+            ]
+          ],
+          "pose": "hit",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 102,
+          "joint_points": [
+            [
+              237.219848632812,
+              365.497436523438
+            ],
+            [
+              234.334823608398,
+              389.823516845703
+            ],
+            [
+              233.662231445312,
+              414.202789306641
+            ],
+            [
+              243.523727416992,
+              422.635009765625
+            ]
+          ],
+          "pose": "hit",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 103,
+          "joint_points": [
+            [
+              236.653167724609,
+              365.449462890625
+            ],
+            [
+              233.828826904297,
+              389.782653808594
+            ],
+            [
+              233.217056274414,
+              414.163543701172
+            ],
+            [
+              243.075119018555,
+              422.871276855469
+            ]
+          ],
+          "pose": "hit",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 104,
+          "joint_points": [
+            [
+              236.308258056641,
+              365.409759521484
+            ],
+            [
+              233.524749755859,
+              389.747680664062
+            ],
+            [
+              232.953872680664,
+              414.129547119141
+            ],
+            [
+              242.801696777344,
+              423.031677246094
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 105,
+          "joint_points": [
+            [
+              236.296783447266,
+              365.388153076172
+            ],
+            [
+              233.523712158203,
+              389.727233886719
+            ],
+            [
+              232.963272094727,
+              414.109375
+            ],
+            [
+              242.791809082031,
+              423.154541015625
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 106,
+          "joint_points": [
+            [
+              236.286926269531,
+              365.369995117188
+            ],
+            [
+              233.522796630859,
+              389.710113525391
+            ],
+            [
+              232.971328735352,
+              414.092437744141
+            ],
+            [
+              242.783340454102,
+              423.236267089844
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 107,
+          "joint_points": [
+            [
+              236.278762817383,
+              365.357940673828
+            ],
+            [
+              233.522048950195,
+              389.698913574219
+            ],
+            [
+              232.978012084961,
+              414.081390380859
+            ],
+            [
+              242.776306152344,
+              423.292694091797
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 108,
+          "joint_points": [
+            [
+              236.27214050293,
+              365.194274902344
+            ],
+            [
+              227.834747314453,
+              388.191955566406
+            ],
+            [
+              241.837951660156,
+              408.15966796875
+            ],
+            [
+              243.568618774414,
+              421.519622802734
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 109,
+          "joint_points": [
+            [
+              236.266876220703,
+              364.650421142578
+            ],
+            [
+              224.959274291992,
+              386.381072998047
+            ],
+            [
+              243.686538696289,
+              402.004455566406
+            ],
+            [
+              246.314010620117,
+              415.232421875
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 110,
+          "joint_points": [
+            [
+              236.262741088867,
+              363.995025634766
+            ],
+            [
+              223.373138427734,
+              384.826263427734
+            ],
+            [
+              245.701126098633,
+              394.637542724609
+            ],
+            [
+              249.673782348633,
+              407.535125732422
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 111,
+          "joint_points": [
+            [
+              236.259552001953,
+              363.514953613281
+            ],
+            [
+              223.154541015625,
+              384.211364746094
+            ],
+            [
+              247.013977050781,
+              389.263854980469
+            ],
+            [
+              252.217269897461,
+              401.721893310547
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 112,
+          "joint_points": [
+            [
+              236.257110595703,
+              365.601257324219
+            ],
+            [
+              221.100784301758,
+              384.84619140625
+            ],
+            [
+              242.455871582031,
+              396.625885009766
+            ],
+            [
+              245.101699829102,
+              409.868194580078
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 113,
+          "joint_points": [
+            [
+              236.255249023438,
+              375.002044677734
+            ],
+            [
+              244.756820678711,
+              397.976043701172
+            ],
+            [
+              224.252639770508,
+              411.181335449219
+            ],
+            [
+              220.0,
+              424.0
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 114,
+          "joint_points": [
+            [
+              236.253845214844,
+              365.568237304688
+            ],
+            [
+              229.205642700195,
+              389.028930664062
+            ],
+            [
+              241.251495361328,
+              410.235046386719
+            ],
+            [
+              242.753311157227,
+              423.657684326172
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 115,
+          "joint_points": [
+            [
+              236.252807617188,
+              365.470428466797
+            ],
+            [
+              227.747207641602,
+              388.442962646484
+            ],
+            [
+              241.875213623047,
+              408.322601318359
+            ],
+            [
+              243.632278442383,
+              421.714416503906
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 116,
+          "joint_points": [
+            [
+              236.252044677734,
+              365.129669189453
+            ],
+            [
+              225.372650146484,
+              387.077819824219
+            ],
+            [
+              243.335494995117,
+              403.574401855469
+            ],
+            [
+              245.78288269043,
+              416.857330322266
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 117,
+          "joint_points": [
+            [
+              236.25146484375,
+              364.691802978516
+            ],
+            [
+              223.753082275391,
+              385.760101318359
+            ],
+            [
+              245.010208129883,
+              397.715637207031
+            ],
+            [
+              248.472686767578,
+              410.770538330078
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 118,
+          "joint_points": [
+            [
+              236.251052856445,
+              364.302368164062
+            ],
+            [
+              223.158950805664,
+              385.006927490234
+            ],
+            [
+              246.389755249023,
+              392.431915283203
+            ],
+            [
+              250.969299316406,
+              405.137725830078
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 119,
+          "joint_points": [
+            [
+              236.250747680664,
+              364.106842041016
+            ],
+            [
+              223.180557250977,
+              384.825256347656
+            ],
+            [
+              247.163711547852,
+              389.25341796875
+            ],
+            [
+              252.540267944336,
+              401.642547607422
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 120,
+          "joint_points": [
+            [
+              236.250534057617,
+              366.756072998047
+            ],
+            [
+              220.80810546875,
+              385.772186279297
+            ],
+            [
+              241.514389038086,
+              398.658294677734
+            ],
+            [
+              243.712997436523,
+              411.983276367188
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 121,
+          "joint_points": [
+            [
+              238.050384521484,
+              375.397399902344
+            ],
+            [
+              246.012969970703,
+              398.563751220703
+            ],
+            [
+              225.386108398438,
+              411.576538085938
+            ],
+            [
+              220.924255371094,
+              424.323120117188
+            ]
+          ],
+          "pose": "windup",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": 0.0,
+          "frame": 122,
+          "joint_points": [
+            [
+              237.550262451172,
+              375.961791992188
+            ],
+            [
+              245.718002319336,
+              399.056579589844
+            ],
+            [
+              224.634231567383,
+              411.315277099609
+            ],
+            [
+              220.0,
+              424.0
+            ]
+          ],
+          "pose": "contact",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": 0.0,
+          "frame": 123,
+          "joint_points": [
+            [
+              237.050186157227,
+              376.103424072266
+            ],
+            [
+              245.629928588867,
+              399.04833984375
+            ],
+            [
+              224.52897644043,
+              411.277435302734
+            ],
+            [
+              220.0,
+              424.0
+            ]
+          ],
+          "pose": "contact",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": 11.9245538711548,
+          "frame": 124,
+          "joint_points": [
+            [
+              236.55012512207,
+              373.608581542969
+            ],
+            [
+              239.721923828125,
+              397.898956298828
+            ],
+            [
+              229.434707641602,
+              420.01171875
+            ],
+            [
+              227.38786315918,
+              433.360260009766
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": 14.3943777084351,
+          "frame": 125,
+          "joint_points": [
+            [
+              236.250091552734,
+              372.43408203125
+            ],
+            [
+              228.737380981445,
+              395.750213623047
+            ],
+            [
+              232.110687255859,
+              419.904327392578
+            ],
+            [
+              230.937545776367,
+              433.357788085938
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": 16.318775177002,
+          "frame": 126,
+          "joint_points": [
+            [
+              236.250061035156,
+              371.259094238281
+            ],
+            [
+              228.192291259766,
+              394.392517089844
+            ],
+            [
+              234.957962036133,
+              417.823822021484
+            ],
+            [
+              234.583374023438,
+              431.323089599609
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": 18.8353519439697,
+          "frame": 127,
+          "joint_points": [
+            [
+              236.250045776367,
+              370.082183837891
+            ],
+            [
+              227.693023681641,
+              393.035614013672
+            ],
+            [
+              237.773803710938,
+              415.243225097656
+            ],
+            [
+              238.229187011719,
+              428.739959716797
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": 22.071195602417,
+          "frame": 128,
+          "joint_points": [
+            [
+              236.250030517578,
+              368.901916503906
+            ],
+            [
+              228.682922363281,
+              392.200439453125
+            ],
+            [
+              240.572219848633,
+              413.494689941406
+            ],
+            [
+              241.875030517578,
+              426.936096191406
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": 22.8219375610352,
+          "frame": 129,
+          "joint_points": [
+            [
+              236.250015258789,
+              367.716857910156
+            ],
+            [
+              229.209548950195,
+              391.179901123047
+            ],
+            [
+              241.248397827148,
+              412.389953613281
+            ],
+            [
+              242.75,
+              425.810607910156
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": 22.8115978240967,
+          "frame": 130,
+          "joint_points": [
+            [
+              236.250015258789,
+              367.581298828125
+            ],
+            [
+              229.209548950195,
+              391.044342041016
+            ],
+            [
+              241.248397827148,
+              412.25439453125
+            ],
+            [
+              242.750015258789,
+              425.675048828125
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": 22.8207836151123,
+          "frame": 131,
+          "joint_points": [
+            [
+              236.25,
+              367.702270507812
+            ],
+            [
+              229.209533691406,
+              391.165313720703
+            ],
+            [
+              241.248382568359,
+              412.375366210938
+            ],
+            [
+              242.75,
+              425.796020507812
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": 22.8299026489258,
+          "frame": 132,
+          "joint_points": [
+            [
+              236.25,
+              367.814636230469
+            ],
+            [
+              229.209533691406,
+              391.277679443359
+            ],
+            [
+              241.248382568359,
+              412.487731933594
+            ],
+            [
+              242.75,
+              425.908386230469
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": 22.8387126922607,
+          "frame": 133,
+          "joint_points": [
+            [
+              236.25,
+              367.917297363281
+            ],
+            [
+              229.209579467773,
+              391.380340576172
+            ],
+            [
+              241.248397827148,
+              412.590423583984
+            ],
+            [
+              242.75,
+              426.011047363281
+            ]
+          ],
+          "pose": "follow",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 134,
+          "joint_points": [
+            [
+              236.25,
+              368.009246826172
+            ],
+            [
+              233.519409179688,
+              392.353149414062
+            ],
+            [
+              233.001541137695,
+              416.736206054688
+            ],
+            [
+              242.751541137695,
+              426.079956054688
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        },
+        {
+          "actual_contact_error": -1.0,
+          "frame": 135,
+          "joint_points": [
+            [
+              236.25,
+              368.089538574219
+            ],
+            [
+              233.519409179688,
+              392.433441162109
+            ],
+            [
+              233.001541137695,
+              416.816497802734
+            ],
+            [
+              242.751541137695,
+              426.160247802734
+            ]
+          ],
+          "pose": "idle",
+          "texture": "res://assets/visual_rebirth/articulated/ravager_front.png"
+        }
+      ],
+      "hunter_damage": 18.0,
+      "level": 1,
+      "poses": [
+        "idle",
+        "move",
+        "hit",
+        "windup",
+        "contact",
+        "follow"
+      ],
+      "textures": {
+        "res://assets/visual_rebirth/articulated/ravager_back.png": true,
+        "res://assets/visual_rebirth/articulated/ravager_front.png": true,
+        "res://assets/visual_rebirth/articulated/ravager_left.png": true,
+        "res://assets/visual_rebirth/articulated/ravager_right.png": true
+      }
+    }
+  ],
+  "viewport": [
+    1280,
+    720
+  ]
+}

@@ -1,3 +1,14 @@
+# Living Nightmare preview
+
+The preview adds the 50-level Story flow and an additive versioned profile
+record alongside the original Campaign, adaptive audio and first-siege
+heartbeat, event-driven combat effects, and the initial articulated Hunter
+pilot assets. See [the implementation report](LIVING_NIGHTMARE.md) for
+exact art coverage, verification and the next animation work.
+The existing V2.3, V1 and fixed preview paths remain available.
+
+---
+
 # Procedural Nightmare Maps V2.3
 
 The opt-in Hard/Hell V2 Campaign highlights fast opening routes and
