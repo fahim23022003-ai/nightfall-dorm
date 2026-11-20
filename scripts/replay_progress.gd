@@ -74,7 +74,9 @@ static func resume(profile):
 static func finish(profile,model) -> Dictionary:
  if profile.read_only or not matches(profile,model) or model.result!="defeat" or not model.terminal_recorded or model.eliminations<=0 or (model.player()!=null and model.player().alive):return {}
  var before=profile._reward_snapshot()
- var report={"run_id":model.endless.run_id,"completed":model.endless.completed,"best":profile.replay.best_wave,"rm_cash":0,"xp":0}
+ var cash:=mini(OnboardingCatalog.cash_reward(model,profile.reward_rng),OnboardingCatalog.MAX_CASH-profile.rm_cash)
+ profile.rm_cash+=cash
+ var report={"run_id":model.endless.run_id,"completed":model.endless.completed,"best":profile.replay.best_wave,"rm_cash":cash,"rm_balance":profile.rm_cash,"xp":0}
  profile.active_match={};profile.replay.checkpoint={};profile.replay.last_award=report
  if not profile.save_profile():profile._restore_rewards(before);return {}
  return report
