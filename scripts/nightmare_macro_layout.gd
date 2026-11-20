@@ -16,7 +16,7 @@ static func family_for(id: String, seed: int) -> String:
  rng.seed = seed ^ hash(id + "/macro-family")
  return FAMILY_IDS[rng.randi_range(0, FAMILY_IDS.size()-1)]
 
-static func generate(id: String, seed: int, family_override: String="") -> Dictionary:
+static func generate(id: String, seed: int, family_override: String="", close_quarters: bool=false) -> Dictionary:
  var theme := MapCatalog.map(id)
  if theme.is_empty() or (not family_override.is_empty() and family_override not in FAMILY_IDS):
   return {}
@@ -87,12 +87,14 @@ static func generate(id: String, seed: int, family_override: String="") -> Dicti
  var room_order: Array[int] = [0,1,2,3,4,5]
  _shuffle(room_order,rng)
  var road_anchors := {}
+ var lots: Array[Rect2] = []
  for index in room_order:
   var site: Vector2i = sites[index]
   var corner := _world(site,x_axis,y_axis)
   var opposite := _world(site+Vector2i.ONE,x_axis,y_axis)
   var side: int = door_streets[index]
   var room := NightmareMap._room(rng,shapes[index],Rect2(corner,opposite-corner),side)
+  lots.append(Rect2(corner,opposite-corner))
   result.rooms.append(room)
   var a: Vector2i = site+EDGE_ENDS[side][0]
   var b: Vector2i = site+EDGE_ENDS[side][1]
@@ -134,8 +136,75 @@ static func generate(id: String, seed: int, family_override: String="") -> Dicti
  var access:=_hall_access(result,points.size())
  for hall in HALLS:
   _add_hall(result,hall,HALLS[hall],extent,access,coverage,rng)
+ if close_quarters:
+  _add_local_passages(result,lots)
  result.bounds=_extent(result).grow(24)
  return result
+
+# A 72-unit hallway leaves 48 units clear after the 12-unit survivor
+# clearance on both sides. Its walkable center stays 44 units off the
+# room; the floor starts eight units beyond the exterior wall.
+const LOCAL_WIDTH := 72.0
+const LOCAL_OFFSET := 44.0
+
+static func _add_local_passages(data: Dictionary,lots: Array[Rect2]) -> void:
+ data.version=NightmareMap.CLOSE_QUARTERS_VERSION
+ # Preserve the original Room Rush choice set. New corner nodes are
+ # useful for routing, but must not shift the seed/attempt spawn index.
+ data.staging_points=data.nodes.duplicate()
+ for rect: Rect2 in data.corridors:data.staging_points.append(rect.get_center())
+ for i in range(data.rooms.size()):
+  var room: Dictionary=data.rooms[i]
+  var outer: Rect2=room.bounds.grow(LOCAL_OFFSET)
+  var corners: Array[Vector2]=[outer.position,Vector2(outer.end.x,outer.position.y),outer.end,Vector2(outer.position.x,outer.end.y)]
+  var normal: Vector2=room.door_normal
+  var door_side: int=DIRECTIONS.find(Vector2i(normal))
+  var threshold: Vector2=room.door+normal*LOCAL_OFFSET
+  var junction:=_split_lane(data,threshold)
+  for side in range(4):
+   var start:=NightmareMap._node(data,corners[side])
+   var finish:=NightmareMap._node(data,corners[(side+1)%4])
+   if side==door_side:
+    _link(data,start,junction,LOCAL_WIDTH)
+    _link(data,junction,finish,LOCAL_WIDTH)
+   else:
+    _link(data,start,finish,LOCAL_WIDTH)
+  # Both ends meet the existing street at real junctions. The original
+  # doorway spur remains, including its route length from the street.
+  for end in [corners[door_side],corners[(door_side+1)%4]]:
+   var street: Vector2=end+(room.anchor-threshold)
+   var connection:=_split_lane(data,street)
+   if connection>=0:_link(data,NightmareMap._node(data,end),connection,LOCAL_WIDTH)
+  # An existing street on the opposite lot edge provides a cross-route.
+  # A branch without that street keeps the original macro topology.
+  var opposite:=posmod(door_side+2,4)
+  var across:=corners[opposite].lerp(corners[(opposite+1)%4],.5)
+  var boundary: Vector2=lots[i].get_center()-normal*lots[i].size*.5
+  var other_street:=across+normal*(boundary-across).dot(normal)
+  var other_connection:=_split_lane(data,other_street)
+  if other_connection>=0:
+   _link(data,_split_lane(data,across),other_connection,LOCAL_WIDTH)
+ # The encoded surfaces always agree exactly with their AStar links.
+ data.corridors.clear()
+ for i in range(data.lane_links.size()):
+  var edge: Array=data.lane_links[i]
+  data.corridors.append(NightmareMap._segment(data.nodes[edge[0]],data.nodes[edge[1]],data.lane_widths[i]))
+ for hall in data.halls.values():data.corridors.append(hall.bounds)
+
+static func _split_lane(data: Dictionary,point: Vector2) -> int:
+ var existing: int=data.nodes.find(point)
+ if existing>=0:return existing
+ for i in range(data.lane_links.size()):
+  var pair: Array=data.lane_links[i]
+  var start: Vector2=data.nodes[pair[0]]
+  var finish: Vector2=data.nodes[pair[1]]
+  if Geometry2D.get_closest_point_to_segment(point,start,finish).distance_squared_to(point)>.0001:continue
+  var middle:=NightmareMap._node(data,point)
+  data.lane_links[i]=[pair[0],middle]
+  data.lane_links.append([middle,pair[1]])
+  data.lane_widths.append(data.lane_widths[i])
+  return middle
+ return -1
 
 static func _design(rng: RandomNumberGenerator,family: String) -> Dictionary:
  match family:

@@ -30,7 +30,9 @@ func render_architecture(c,p):
  if c.macro_overview():
   render_macro_overview(c,p,data,theme,colors,visible)
   return
- for corridor in data.corridors:
+ var close_quarters: bool=data.get("version")==NightmareMap.CLOSE_QUARTERS_VERSION
+ if close_quarters:render_close_passages(c,p,data,theme,colors,visible)
+ for corridor in data.corridors if not close_quarters else []:
   var rect=Rect2(OFFSET+corridor.position,corridor.size)
   if not visible.intersects(rect):continue
   if not generated:c.draw_style_box(p.frame(colors[2],colors[3],3),rect.grow(4))
@@ -72,6 +74,31 @@ func render_architecture(c,p):
    var width: float=p.font.get_string_size(label,HORIZONTAL_ALIGNMENT_LEFT,-1,title_size).x
    title=OFFSET+Vector2(data.bounds.get_center().x-width*.5,data.bounds.end.y+85)
   p.text(c,label,title,title_size,colors[4])
+
+func render_close_passages(c,p,data: Dictionary,theme: String,colors: Array,visible: Rect2) -> void:
+ var surfaces: Array[Rect2]=[]
+ for corridor: Rect2 in data.corridors:
+  var rect:=Rect2(corridor.position+OFFSET,corridor.size)
+  if visible.intersects(rect):surfaces.append(rect)
+ # Lay masonry borders before the continuous floors to keep junctions open.
+ for rect in surfaces:c.draw_rect(rect.grow(3),colors[2].darkened(.18))
+ for rect in surfaces:
+  c.draw_rect(rect,colors[0])
+  c.draw_texture_rect(floors[theme],rect,true,Color(colors[1].lightened(.3),.48))
+ var detail: int=CinematicQuality.detail(c)
+ for i in range(data.lane_links.size()):
+  var edge: Array=data.lane_links[i]
+  var a: Vector2=OFFSET+data.nodes[edge[0]]
+  var b: Vector2=OFFSET+data.nodes[edge[1]]
+  var direction:=a.direction_to(b)
+  var length:=a.distance_to(b)
+  var half_width: float=data.lane_widths[i]*.5
+  if length<85 or not visible.intersects(Rect2(a.min(b),(a-b).abs()).grow(half_width)):continue
+  for distance in range(52,int(length)-25,136 if detail>0 else 216):
+   var lamp:=a+direction*distance+direction.orthogonal()*(half_width-9.0)
+   if not visible.has_point(lamp):continue
+   if detail>0:c.draw_circle(lamp,15,Color(colors[4],.07))
+   c.draw_line(lamp-direction*4,lamp+direction*4,Color(colors[4],.65),2)
 
 func render_macro_overview(c,p,data: Dictionary,theme: String,colors: Array,visible: Rect2):
  # Use the physical lane surfaces. Painting borders first keeps overlaps

@@ -50,6 +50,7 @@ var map_id="legacy"
 var map_data: Dictionary={}
 var procedural_requested := OS.get_environment("NIGHTFALL_PROCEDURAL_MAPS") == "1"
 var procedural_v2_requested := OS.get_environment("NIGHTFALL_PROCEDURAL_MAPS_V2") == "1"
+var close_quarters_requested := OS.get_environment("NIGHTFALL_CLOSE_QUARTERS") == "1"
 var hard_tactics_enabled := true
 var fair_siege_enabled := true
 var starting_room_review_enabled := true
@@ -177,7 +178,7 @@ func is_procedural() -> bool:
  return map_data.has("halls")
 
 func uses_tactical_sieges() -> bool:
- return hard_tactics_enabled and run_kind=="campaign" and map_data.get("version")==NightmareMap.MACRO_VERSION and difficulty in ["hard","hell"] and not hunter.transformed
+ return hard_tactics_enabled and run_kind=="campaign" and map_data.get("version") in [NightmareMap.MACRO_VERSION,NightmareMap.CLOSE_QUARTERS_VERSION] and difficulty in ["hard","hell"] and not hunter.transformed
 
 func configure_map(id: String, stored_layout: Dictionary={}) -> bool:
  if time>0 or player_room>=0: return false
@@ -186,7 +187,7 @@ func configure_map(id: String, stored_layout: Dictionary={}) -> bool:
   data=NightmareMap.unpack(stored_layout,id)
   if data.get("seed")!=map_seed:return false
  elif (procedural_requested or procedural_v2_requested) and not tutorial_mode and run_kind in ["campaign","endless"]:
-  data=NightmareMacroLayout.generate(id,map_seed) if procedural_v2_requested else NightmareMap.generate(id,map_seed)
+  data=NightmareMacroLayout.generate(id,map_seed,"",close_quarters_requested) if procedural_v2_requested else NightmareMap.generate(id,map_seed)
  else:
   data=MapCatalog.map(id)
  if data.is_empty(): return false

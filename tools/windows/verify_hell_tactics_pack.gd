@@ -15,6 +15,7 @@ func check(condition: bool, message: String):
 
 func run():
  var expected_map := 2 if OS.get_environment("NIGHTFALL_PROCEDURAL_MAPS_V2") == "1" else 1 if OS.get_environment("NIGHTFALL_PROCEDURAL_MAPS") == "1" else 0
+ if expected_map==2 and OS.get_environment("NIGHTFALL_CLOSE_QUARTERS")=="1":expected_map=NightmareMap.CLOSE_QUARTERS_VERSION
  for difficulty in ["standard", "hard", "hell"]:
   var model := MatchModel.new()
   model.reset(73)
@@ -24,7 +25,7 @@ func run():
   check(model.configure_strategy(73, "crusher"), "packaged Crusher configured")
   check(model.map_data.get("version", 0) == expected_map, "launcher selects the expected generator")
   check(model.rooms.size() == 6, "six actual packaged campaign rooms")
-  check(model.uses_tactical_sieges() == (expected_map == 2 and difficulty != "standard"), "packaged tactics gating")
+  check(model.uses_tactical_sieges() == (expected_map >= 2 and difficulty != "standard"), "packaged tactics gating")
   if expected_map > 0:
    check(model.map_data.halls.size() == 4, "generated packed map has four Halls")
    for hall: Dictionary in model.map_data.halls.values():

@@ -56,6 +56,8 @@ func spawn_candidates(model) -> Array[Vector2]:
  if model.map_id=="legacy":
   for x in [105.0,200.0,315.0,420.0,500.0,585.0,710.0,830.0,900.0]:
    candidates.append(Vector2(x,410.0))
+ elif model.map_data.has("staging_points"):
+  candidates.assign(model.map_data.staging_points)
  else:
   for node: Vector2 in model.map_data.nodes:
    candidates.append(node)

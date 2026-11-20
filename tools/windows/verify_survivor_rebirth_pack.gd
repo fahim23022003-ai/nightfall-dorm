@@ -42,6 +42,8 @@ func run():
   await process_frame
   await process_frame
   check(game.mode=="match" and game.model.story_level==1,"Story launches from the ready state")
+  if OS.get_environment("NIGHTFALL_CLOSE_QUARTERS")=="1":
+   check(game.model.map_data.get("version")==NightmareMap.CLOSE_QUARTERS_VERSION,"Fresh Story launches the packed close-quarters geometry")
   check(game.model.room_rush_active() and game.model.room_rush_runners().size()==5,"Pack initializes five physical runners")
   if OS.get_environment("NIGHTFALL_PHASE16")=="1":
    check(game.model.room_rush.planned_pacing,"Phase 16 launcher enables the advisory room-race planner")
