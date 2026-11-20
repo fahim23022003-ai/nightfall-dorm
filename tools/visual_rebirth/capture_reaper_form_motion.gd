@@ -3,10 +3,12 @@ extends "res://tools/capture_visual_rebirth.gd"
 
 func run():
  var args := OS.get_cmdline_user_args()
- if args.size()!=1 or not args[0].is_absolute_path():
-  push_error("Pass an absolute evidence directory after --.")
+ if args.size() not in [1,2] or not args[0].is_absolute_path() or (args.size()==2 and args[1]!="--scythe"):
+  push_error("Pass an absolute evidence directory and optionally --scythe after --.")
   quit(2)
   return
+ var scythe:=args.size()==2
+ var pilot:=OS.get_environment("NIGHTFALL_LIVING_NIGHTMARE")=="1"
  var destination := args[0].trim_suffix("/")
  output = destination.get_base_dir()+"/"
  phase = destination.get_file()
@@ -33,6 +35,9 @@ func run():
  hunter.tactical_cooldown = 999
  model.time = model.preparation+float(hunter.boss_policy.deadline)-1.1
  model.running=true
+ if scythe:
+  hunter.boss_cooldowns.siege=999.0
+  hunter.boss_cooldowns.surge=999.0
  game.ui.show_match()
  game.focus_camera(true)
  game.presentation.identity.reset()
@@ -44,6 +49,7 @@ func run():
  var poses := {}
  var textures := {}
  var presentation = game.presentation.boss_presentation
+ var blade_errors:=[]
  var before_door: float = room.door_hp
  var hp_before_transform := -1.0
  var hp_at_transform := -1.0
@@ -62,9 +68,13 @@ func run():
   count += 1
   var expected := "transformed" if hunter.transformed else "approach"
   var selected: String = presentation.preview_texture_path
-  if selected.get_file().begins_with(expected):
+  if selected.get_file().begins_with(("reaper_" if pilot else "")+expected):
    textures[selected] = true
   poses[presentation.preview_pose_name] = true
+  var contact: Dictionary=game.presentation.hunter_combat.latest_body_contact(model)
+  var blade: Vector2=presentation.articulated_contact()
+  if pilot and presentation.preview_pose_name=="contact" and not contact.is_empty() and blade.is_finite():
+   blade_errors.append(blade.distance_to(Vector2(contact.point)+Vector2(145,40)))
   for event in model.presentation_events:
    if event.type in ["boss_transform","boss_awakened","boss_warning","boss_impact"] and not events.has(event.type):
     events[event.type]=frame
@@ -76,12 +86,16 @@ func run():
 
  var forms := {}
  for path in textures:
-  forms["approach" if path.get_file().begins_with("approach") else "transformed"] = true
+  forms["approach" if path.get_file().begins_with("reaper_approach" if pilot else "approach") else "transformed"] = true
  check(forms.size() == 2, "both exact boss forms reached production draw")
- check(poses.has("evolve") and poses.has("tell") and poses.has("release"), "actual boss pose sequence reached production draw")
+ if pilot:
+  check(poses.has("evolve") and poses.has("windup") and poses.has("contact"), "actual boss pose sequence reached production draw")
+  check(not blade_errors.is_empty() and blade_errors.max()<=2.0, "blade edge aligns with the authoritative door impact in the pilot")
+ else:
+  check(poses.has("evolve") and poses.has("tell") and poses.has("release"), "actual boss pose sequence reached production draw")
  check(events.size()==4, "actual transformation, awakening, boss warning, and boss impact occurred")
  check(hp_at_transform>0 and hp_at_transform<=hp_before_transform, "existing transformation did not grant HP")
- check(room.door_hp<before_door and hunter.last_boss_attack!="", "actual selected boss attack damaged the door")
+ check(room.door_hp<before_door and (hunter.last_boss_attack=="scythe" if scythe else hunter.last_boss_attack!=""), "actual selected boss attack damaged the door")
  var metadata := FileAccess.open(destination.path_join("reaper-motion.json"),FileAccess.WRITE)
  check(metadata!=null, "Reaper recording metadata writable")
  if metadata!=null:
@@ -89,7 +103,7 @@ func run():
    "fps":24, "viewport":[1280,720], "frame_count":count,
    "fixture":"Prepared seeded Endless room, using the game's enabled Stage 5 Hell encounter policy. Set time just before the existing transformation deadline. Advance HunterState.tick directly at 24 Hz, not a full world tick.",
    "events":events, "last_boss_attack":hunter.last_boss_attack,
-   "poses":poses.keys(), "textures":textures.keys(),
+   "poses":poses.keys(), "textures":textures.keys(), "blade_errors":blade_errors, "isolate_scythe":scythe,
    "door_damage":before_door-room.door_hp,
    "hunter_hp_before_transform":hp_before_transform, "hunter_hp_at_transform":hp_at_transform,
   },"  ")+"\n")

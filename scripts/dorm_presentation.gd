@@ -2,6 +2,7 @@ extends RefCounted
 ## Illustration, animation and environment only. No economy/AI mutations.
 const OFFSET = Vector2(145,40)
 const ROOM_NAMES = ["WILLOW","WREN","ASTER","MOSS","CEDAR","FERN"]
+var hunter_combat=preload("res://scripts/hunter_combat_visual.gd").new()
 var nightmare_visual=preload("res://scripts/nightmare_presentation.gd").new()
 var building_visual=preload("res://scripts/building_evolution_visual.gd").new()
 var hunter_art={}
@@ -83,6 +84,7 @@ func _init():
  for name in ["hunter_idle","hunter_move","hunter_attack","hunter_hurt","hunter_death"]: textures[name]=cartoon[name]
 
 func reset():
+ hunter_combat.reset()
  ally_group.clear();ally_pending.clear();ally_pending_since=0.0
  wrath_presentation.reset()
  identity.reset();nightmare_visual.reset()
@@ -105,6 +107,7 @@ func reset():
  hunter_clock=0
  last_model_time=0
 func new_encounter(model):
+ hunter_combat.new_encounter()
  nightmare_visual.reset()
  # Preserve room aftermath, corpse ages, build levels and bounded scars.
  identity.heading=Vector2.RIGHT;identity.velocity=Vector2.ZERO;identity.last_hunter=model.hunter.position
@@ -118,6 +121,7 @@ func update(delta: float, model):
  var action_delta=maxf(0,delta-model.items.frozen_delta) if model.running else 0.0
  hunter_clock+=action_delta
  identity.update(delta,model)
+ hunter_combat.observe(model)
  nightmare_visual.update(delta,model,identity)
  clock+=delta
  attack_pose=maxf(0,attack_pose-action_delta)
@@ -317,6 +321,7 @@ func render(c):
    var sweep=(1-attack_pose/.35)*PI
    c.draw_arc(q,32,sweep-PI*.7,sweep,24,Color(1,.55,.6,attack_pose/.35),3)
    if not c.profile.settings.get("reduced_effects",false):c.draw_line(q+Vector2(-20,-17),q+Vector2(18,15),Color(1,.7,.7,attack_pose/.35),2)
+ render_hunter_combat(c,m,visible)
  render_resident_labels(c)
  wrath_presentation.draw(c,clock)
  for shot in m.projectiles:
@@ -481,10 +486,21 @@ func room_scene(c, room: RoomState, owned: bool):
   if owned and c.selected_tile == tile and c.ui.context_open:
    c.draw_arc(p,28,0,TAU,40,Color("f6d78f"),2)
 
+func render_hunter_combat(c, model, visible: Rect2):
+ if not hunter_combat.has_contacts():
+  return
+ var rig_point := Vector2.INF
+ var controller = boss_presentation if model.hunter.transformed or boss_presentation.approach_visible(model) else nightmare_visual
+ if controller.has_method("articulated_contact") and visible.grow(80).has_point(OFFSET+model.hunter.position):
+  rig_point=controller.articulated_contact()
+ hunter_combat.draw(c,model,visible,CinematicQuality.detail(c),CinematicQuality.reduced_motion(c),CinematicQuality.reduced_flash(c),rig_point)
+
 func door_scene(c, room):
  var p = OFFSET+room.door_position()
- if c.get("horror")!=null: p+=c.horror.door_shake(room.index)
- elif room.damage_flash>0: p+=Vector2(sin(clock*90),cos(clock*73))*room.damage_flash*6
+ if hunter_combat.enabled and not CinematicQuality.reduced_motion(c):
+  p+=hunter_combat.door_kick(c.model,room.index)
+ if c.get("horror")!=null and (not hunter_combat.enabled or not CinematicQuality.reduced_motion(c)): p+=c.horror.door_shake(room.index)
+ elif room.damage_flash>0 and not hunter_combat.enabled: p+=Vector2(sin(clock*90),cos(clock*73))*room.damage_flash*6
  c.draw_style_box(frame(Color("607D8B"),Color("263746"),4),Rect2(p-Vector2(32,10),Vector2(64,36)))
  sprite(c,"shadow",p+Vector2(0,13),Vector2(83,39))
  if room.door_hp>0:
@@ -664,6 +680,9 @@ func draw_needle_impact(c, point: Vector2, fraction: float):
   c.draw_line(spark, spark + ray * (2.0 + fraction * 3.0), tint, 1.0, true)
 
 func render_door_scars(c,room):
+ if hunter_combat.enabled:
+  hunter_combat.draw_mark(c,room)
+  return
  if not identity.scars.any(func(s):return s.kind=="door_damage" and s.room==room.index):return
  var q=OFFSET+room.door_position()
  var angle=PI/2 if absf(room.door_normal().x)>.5 else 0.0

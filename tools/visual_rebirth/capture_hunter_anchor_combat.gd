@@ -1,11 +1,15 @@
 extends "res://tools/visual_rebirth/capture_hunter_direction_motion.gd"
 ## Each anchored cut reports rendered directions and a live Needle/door exchange.
 
+const PILOT_IDS := ["stalker","ravager"]
 const ANCHORS := [1, 4, 7, 10]
 const LOOK_ROUTE := [
  Vector2(95, 305), Vector2(150, 305), Vector2(150, 344),
  Vector2(102, 344), Vector2(102, 305), Vector2(158, 305), Vector2(113, 342),
 ]
+
+func is_articulated_pilot(archetype: String, level: int) -> bool:
+ return OS.get_environment("NIGHTFALL_LIVING_NIGHTMARE")=="1" and archetype in PILOT_IDS and level==1
 
 func run():
  var args := OS.get_cmdline_user_args()
@@ -68,6 +72,7 @@ func _capture_segment(archetype: String, level: int, frames: String) -> Dictiona
  await _walk(frames, model, door, archetype, level)
  var approach_frames := frame_number
 
+ var pilot:=is_articulated_pilot(archetype, level)
  var initial_door: float = model.player().door_hp
  var initial_hunter: float = model.hunter.hp
  var events := {}
@@ -89,8 +94,8 @@ func _capture_segment(archetype: String, level: int, frames: String) -> Dictiona
    first_live_hit = frame_number - 1
   var rendered_pose: String = frame_records.back()["pose"]
   seen_hit_pose = seen_hit_pose or rendered_pose == "hit"
-  seen_tell_pose = seen_tell_pose or rendered_pose == "tell"
-  seen_release_pose = seen_release_pose or rendered_pose in ["strike", "release"]
+  seen_tell_pose = seen_tell_pose or rendered_pose == ("windup" if pilot else "tell")
+  seen_release_pose = seen_release_pose or rendered_pose in (["contact","follow"] if pilot else ["strike","release"])
   if first_live_hit >= 0 and seen_hit_pose and seen_tell_pose and seen_release_pose and events.size() == 4 and frame_number > int(events["door_strike"]) + 13:
    break
 
@@ -102,7 +107,13 @@ func _capture_segment(archetype: String, level: int, frames: String) -> Dictiona
  var poses := {}
  for record in frame_records:
   poses[record["pose"]] = true
- check(poses.has("turn") and (poses.has("stalk") or poses.has("glide")), "%s L%d movement and turn poses reached canvas" % [archetype, level])
+ if pilot:
+  var contact_frame: Dictionary=frame_records[int(events.get("door_strike",0))]
+  check(poses.has("move") and observed_textures.size()==4, "%s covers physical locomotion in each authored direction" % archetype)
+  var error: float=contact_frame.actual_contact_error
+  check(contact_frame.pose=="contact" and error>=0.0 and error<=2.0, "%s claw lands on the damage-event socket" % archetype)
+ else:
+  check(poses.has("turn") and (poses.has("stalk") or poses.has("glide")), "%s L%d movement and turn poses reached canvas" % [archetype, level])
  check(missing_view_frames == 0, "%s L%d modern renderer bound every frame" % [archetype, level])
  var frames_used := frame_records.duplicate()
  var result := {
@@ -124,9 +135,32 @@ func _capture_segment(archetype: String, level: int, frames: String) -> Dictiona
  return result
 
 func _record(directory: String, model, archetype: String, level: int) -> void:
+ if is_articulated_pilot(archetype,level):
+  await record_articulated(directory,model)
+  return
  await super._record(directory, model, archetype, level)
  if archetype == "witch":
   frame_records.back()["pose"] = game.presentation.nightmare_visual.witch_preview.pose_name
+
+func record_articulated(directory: String, model: MatchModel) -> void:
+ await _render_frame()
+ var image := root.get_texture().get_image()
+ var rig=game.presentation.nightmare_visual.articulated
+ var socket: Vector2=game.presentation.nightmare_visual.articulated_contact()
+ var event: Dictionary=game.presentation.hunter_combat.latest_body_contact(model)
+ var measured: float=socket.distance_to(Vector2(event.point)+Vector2(145,40)) if not event.is_empty() and socket.is_finite() else -1.0
+ if rig.last_asset.is_empty():
+  missing_view_frames+=1
+ else:
+  observed_textures[rig.last_asset]=true
+ frame_records.append({
+  "frame":frame_number,"pose":rig.pose_name,"texture":rig.last_asset,
+  "joint_points":Array(rig.joint_points).map(func(point):return [point.x,point.y]),
+  "actual_contact_error":measured,
+ })
+ if image.get_size()!=Vector2i(1280,720) or image.save_png(directory.path_join("%04d.png" % frame_number))!=OK:
+  check(false,"save native 720p frame")
+ frame_number+=1
 
 func _setup_anchor_combat(archetype: String, level: int):
  game.new_balance_version = 1

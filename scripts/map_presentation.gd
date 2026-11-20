@@ -396,7 +396,9 @@ func render_tiles(c,p,room,owned):
 
 func render_door(c,p,room):
  var point=OFFSET+room.door_position()
- if c.get("horror")!=null and not CinematicQuality.reduced_motion(c): point+=c.horror.door_shake(room.index)
+ if not CinematicQuality.reduced_motion(c):
+  if c.get("horror")!=null:point+=c.horror.door_shake(room.index)
+  if p.hunter_combat.enabled:point+=p.hunter_combat.door_kick(c.model,room.index)
  var normal=room.door_normal()
  var angle=PI/2 if absf(normal.x)>0.5 else 0.0
  c.draw_set_transform(point,angle)

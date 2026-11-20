@@ -162,7 +162,7 @@ func draw_magic_feedback(c,clock: float,reduced: bool):
   var p=O+m.rooms[event.room].door_position();var alpha=1-age/.55
   if event.type=="magic_reflect" and not reduced:
    c.draw_line(p,O+h.position,Color(.9,.57,.87,alpha),2)
-  elif event.type=="door_damage" and float(event.damage)>0:
+  elif event.type=="door_damage" and float(event.damage)>0 and not (c.presentation.hunter_combat.enabled and HunterCombatVisual.consumes(event)):
    var magic=event.get("damage_type","physical")=="magic"
    var color=Color(.75,.57,1,alpha) if magic else Color(1,.7,.4,alpha)
    if magic:c.draw_arc(p,17+(0 if reduced else age*25),0,TAU,20,color,2)

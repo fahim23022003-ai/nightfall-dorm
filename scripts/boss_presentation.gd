@@ -1,6 +1,9 @@
 extends RefCounted
 # Original layered vector animation; purely visual, bounded deterministic particles.
 const OFFSET=Vector2(145,40)
+const Articulation=preload("res://scripts/articulated_hunter.gd")
+const NightmareVisual=preload("res://scripts/nightmare_presentation.gd")
+var articulated=Articulation.new()
 const SCYTHE_GRIPS={
  "oblique": Vector2(166,126),
  "front": Vector2(164,128),
@@ -61,7 +64,8 @@ func draw_preview_body(c, form: String, floor: Vector2, tint: Color, motion: Str
  return true
 
 func draw_approach(c,h,clock: float,death_age: float,heading: Vector2, moving: bool, turn: float, release: float) -> bool:
- if not preview_enabled or not h.boss_policy.get("enabled",false):return false
+ articulated.clear_frame()
+ if not approach_visible(c.model):return false
  var reduced := CinematicQuality.reduced_motion(c)
  var floor := OFFSET + Vector2(h.position) + Vector2(0,13.0)
  var motion := "hover"
@@ -93,9 +97,12 @@ func draw_approach(c,h,clock: float,death_age: float,heading: Vector2, moving: b
   motion = "glide"
   progress = fposmod(clock*.57,1.0)
  var tint := Color(1.1,1,1,alpha) if h.hit_flash > 0.0 else Color(1,1,1,alpha)
+ if articulated.enabled and draw_articulation(c,h,"approach",floor,tint,heading,clock,moving,death_age,progress,reduced):
+  return true
  return draw_preview_body(c,"approach",floor,tint,motion,progress,reduced,heading)
 
 func draw(c,h,clock: float,death_age: float,heading=Vector2.RIGHT,reduced=false,moving=false,turn=0.0,release=0.0):
+ articulated.clear_frame()
  var changing=h.state==HunterState.State.TRANSFORM
  var progress=1.0-h.transform_remaining/BossCatalog.TRANSFORM_SECONDS if changing else 1.0
  var dead=h.state==HunterState.State.DEAD
@@ -142,7 +149,11 @@ func draw(c,h,clock: float,death_age: float,heading=Vector2.RIGHT,reduced=false,
  elif h.last_boss_attack!="" and h.boss_action_age<.92:
   preview_motion="recover"
   preview_progress=1.0-clampf((h.boss_action_age-.42)/.5,0,1)
- var drawn := draw_preview_body(c,"transformed",p+Vector2(0,34)+fall,tint,preview_motion,preview_progress,reduced or (preview_enabled and CinematicQuality.reduced_motion(c)),heading)
+ var lower: Vector2=p+Vector2(0,34)+fall
+ var reduce_motion: bool=reduced or (preview_enabled and CinematicQuality.reduced_motion(c))
+ var drawn: bool=preview_enabled and articulated.enabled and draw_articulation(c,h,"transformed",lower,tint,heading,clock,moving,death_age,preview_progress,reduce_motion)
+ if not drawn:
+  drawn=draw_preview_body(c,"transformed",lower,tint,preview_motion,preview_progress,reduce_motion,heading)
  if not drawn:
   c.draw_texture_rect(robes[int(clock*6)%4],Rect2(p+Vector2(-42,-76)+fall,Vector2(84,110*stretch)),false,tint)
  var handed=preview_grip_side if drawn and preview_has_grip else -1.0 if heading.x<-.15 else 1.0
@@ -159,7 +170,7 @@ func draw(c,h,clock: float,death_age: float,heading=Vector2.RIGHT,reduced=false,
    c.draw_arc(door,28+charge*8,0,TAU,32,color,2)
  elif h.boss_action_age<.4 and h.last_boss_attack in ["scythe","siege"]:
   angle=lerpf(-1.5,1.2,h.boss_action_age/.4)*(handed if drawn else 1.0)
-  c.draw_arc(p,53,-1.9,angle,32,Color(1,.57,.66,(1-h.boss_action_age/.4)*alpha),4)
+  if articulated.last_asset.is_empty():c.draw_arc(p,53,-1.9,angle,32,Color(1,.57,.66,(1-h.boss_action_age/.4)*alpha),4)
  elif drawn and c.model.wrath.ability=="scythe_slash":
   var charge:=1.0-float(c.model.wrath.warning)/float(ReaperWrath.ABILITIES.scythe_slash.warning)
   angle=(-.28-1.13*charge)*handed
@@ -178,3 +189,30 @@ func draw(c,h,clock: float,death_age: float,heading=Vector2.RIGHT,reduced=false,
    var q=OFFSET+room.tile_position(tile)
    c.draw_arc(q,24,clock,clock+TAU*.85,24,Color(.73,.39,.95,.8),2)
    c.draw_line(q+Vector2(-7,-7),q+Vector2(7,7),Color(.9,.65,1,.9),2)
+
+
+func articulated_contact() -> Vector2:
+ return articulated.contact
+
+func draw_articulation(c,h,form: String,floor: Vector2,tint: Color,heading: Vector2,clock: float,moving: bool,death_age: float,windup: float,reduced: bool) -> bool:
+ var timing:=NightmareVisual.articulation_timing(c,h,clock,windup,moving,clampf(death_age,0.0,1.0))
+ if timing.aim.is_finite():
+  heading=(Vector2(timing.aim)-OFFSET-Vector2(h.position)+Vector2(0,9)).normalized()
+ CinematicQuality.draw_hunter_backlight(c,floor,Color("a97499"),tint.a,true)
+ if tint.r<=1.0:tint*=Color(1.15,1.15,1.2,1)
+ var shown:=articulated.draw(c,"reaper_"+form,floor,tint,heading,clock,clock*3.8,1.0 if moving else 0.0,timing.motion,timing.progress,timing.aim,reduced,c.model.wrath.scythe.is_empty())
+ if shown:
+  preview_texture_path=articulated.last_asset
+  preview_pose_name=articulated.pose_name
+  preview_has_grip=false
+ return shown
+
+
+func approach_visible(model: MatchModel) -> bool:
+ if not preview_enabled or not model.hunter.boss_policy.get("enabled",false):
+  return false
+ if not articulated.enabled:
+  return true
+ if model.story_level>0:
+  return model.story_level in [39,40,45,50]
+ return model.run_kind in ["practice","endless"] or model.stage_id=="stage_5"

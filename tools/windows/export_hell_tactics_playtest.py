@@ -46,10 +46,18 @@ FAIR_START_MODES = {
     ),
 }
 
+LIVING_NIGHTMARE_MODES = {
+    "living-nightmare": (
+        "Play Living Nightmare Preview.cmd", "user://nightfall-living-nightmare-preview.json", (1, 1, 0, 1),
+    ),
+    **{label: mode for label, mode in FAIR_START_MODES.items() if label != "fair-start-preview"},
+    "fair-start-preview": FAIR_START_MODES["fair-start-preview"],
+}
 
-def mode_environment(profile: str, switches: tuple[int, ...]) -> dict[str, str]:
+
+def mode_environment(profile: str, switches: tuple[int, ...], living: bool = False) -> dict[str, str]:
     settings = {key: str(value) for key, value in zip(MODE_SWITCHES, switches, strict=True)}
-    return {"NIGHTFALL_PROFILE_PATH": profile, **settings}
+    return {"NIGHTFALL_PROFILE_PATH": profile, "NIGHTFALL_LIVING_NIGHTMARE": "1" if living else "0", **settings}
 
 
 def launcher(environment: dict[str, str]) -> bytes:
@@ -75,7 +83,7 @@ def verify_modes(
     empty.mkdir()
     environments = {}
     for label, (_, profile, switches) in modes.items():
-        environment = mode_environment(profile, switches)
+        environment = mode_environment(profile, switches, label == "living-nightmare")
         environments[label] = environment
         env = os.environ | environment | {"XDG_DATA_HOME": str(working / ("data-" + label))}
         log = evidence / f"windows-pack-{label}.log"
@@ -86,7 +94,7 @@ def verify_modes(
         if "HELL_TACTICS_WINDOWS_PACK_CHECKS=" not in log.read_text() or "FAILURES=0" not in log.read_text():
             raise RuntimeError(f"Tactics pack verification did not complete. Inspect {log}.")
 
-    if modes is FAIR_START_MODES:
+    if modes is FAIR_START_MODES or modes is LIVING_NIGHTMARE_MODES:
         log = evidence / "windows-pack-fair-start-probe.log"
         env = os.environ | environments["fair-start-preview"] | {
             "XDG_DATA_HOME": str(working / "data-fair-start-probe"),
@@ -99,6 +107,16 @@ def verify_modes(
         if "FAIR_START_PACK_CHECKED=true" not in log.read_text() or "FAILURES=0" not in log.read_text():
             raise RuntimeError(f"Fair start pack verification did not complete. Inspect {log}.")
 
+    if modes is LIVING_NIGHTMARE_MODES:
+        env = os.environ | environments["living-nightmare"] | {"XDG_DATA_HOME": str(working / "living-package-data")}
+        log = evidence / "windows-pack-living-nightmare-story.log"
+        run([
+            godot, "--headless", "--quit-after", "1200", "--path", str(empty), "--main-pack", str(executable),
+            "--script", str(ROOT / "tools/windows/verify_living_nightmare_pack.gd"),
+        ], log, env)
+        if "LIVING_NIGHTMARE_PACK_CHECKS=" not in log.read_text() or "FAILURES=0" not in log.read_text():
+            raise RuntimeError(f"Living Nightmare pack verification did not complete. Inspect {log}.")
+
     # Exercise the exact Phase 14F assets and reach the original construction
     # comparison fixture without replacing its room layout with either preview.
     for visual in ("0", "1"):
@@ -106,6 +124,7 @@ def verify_modes(
             "XDG_DATA_HOME": str(working / ("art-data-" + visual)),
             "NIGHTFALL_PROFILE_PATH": "user://nightfall-v21-pack-art.json",
             **dict.fromkeys(MODE_SWITCHES, "0"),
+            "NIGHTFALL_LIVING_NIGHTMARE": "0",
             "NIGHTFALL_VISUAL_REBIRTH": visual,
             "NIGHTFALL_FULL_ROOM_GRID": visual,
         }
@@ -134,7 +153,9 @@ def add_playtest_files(
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--godot", default="godot")
-    parser.add_argument("--fair-start", action="store_true", help="Use the V2.3 guide and isolated profiles.")
+    preview = parser.add_mutually_exclusive_group()
+    preview.add_argument("--fair-start", action="store_true", help="Use the V2.3 guide and isolated profiles.")
+    preview.add_argument("--living-nightmare", action="store_true", help="Use the Living Nightmare guide and isolated profiles.")
     parser.add_argument("--source-commit", required=True)
     parser.add_argument("--zip", required=True, type=Path)
     parser.add_argument("--evidence-dir", required=True, type=Path)
@@ -146,8 +167,15 @@ def main() -> None:
     ).strip()
     if branch != "work" or commit != source:
         raise RuntimeError("Check out the verified source commit on branch work before exporting.")
-    modes = FAIR_START_MODES if args.fair_start else MODES
-    guide = ROOT / "docs" / ("FAIR_START_WINDOWS_PLAYTEST.md" if args.fair_start else "HELL_TACTICS_WINDOWS_PLAYTEST.md")
+    modes = MODES
+    guide_name = "HELL_TACTICS_WINDOWS_PLAYTEST.md"
+    if args.fair_start:
+        modes = FAIR_START_MODES
+        guide_name = "FAIR_START_WINDOWS_PLAYTEST.md"
+    elif args.living_nightmare:
+        modes = LIVING_NIGHTMARE_MODES
+        guide_name = "LIVING_NIGHTMARE_WINDOWS_PLAYTEST.md"
+    guide = ROOT / "docs" / guide_name
     archive = args.zip.resolve()
     evidence = args.evidence_dir.resolve()
     archive.parent.mkdir(parents=True, exist_ok=True)

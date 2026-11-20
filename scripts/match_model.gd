@@ -736,6 +736,8 @@ func apply_room_damage(index: int,amount: float,source: String="door strike",att
  if packet.is_empty():packet=DamageRules.source(source)
  if not DamageRules.valid(packet):return 0.0
  var old=room.door_hp
+ var attack_origin: Vector2=attacker.position
+ var attack_boss: bool=attacker_id==1 and hunter.transformed
  if run_kind=="endless" and endless!=null and index==player_room:amount*=endless.omen.factor("walls",difficulty)
  if attacker_id==1:amount*=evolution.damage_factor(special)*pressure.factor(self)
  amount*=StrategyCatalog.BRANCHES.get(room.door_branch,{}).get("mitigation",1.0)
@@ -763,7 +765,7 @@ func apply_room_damage(index: int,amount: float,source: String="door strike",att
  var actual=maxf(0,old-room.door_hp);room.door_damage_taken+=actual;room.damage_flash=.25
  if actual>0 and attacker_id==1:pressure.hits+=1
  if index==player_room and attacker_id==1:choices.retaliate(self,actual)
- record_event("door_damage",index,{"damage":actual,"hp":room.door_hp,"max_hp":room.max_hp(),"repair_affordable":room.door_hp>0 and room.gold>=room.manual_repair_cost(),"source":source,"attacker_id":attacker_id,"damage_type":packet.type,"element":packet.element})
+ record_event("door_damage",index,{"damage":actual,"hp":room.door_hp,"max_hp":room.max_hp(),"repair_affordable":room.door_hp>0 and room.gold>=room.manual_repair_cost(),"source":source,"attacker_id":attacker_id,"damage_type":packet.type,"element":packet.element,"attack_origin":attack_origin,"attack_boss":attack_boss,"attack_archetype":hunter.archetype if attacker_id==1 else "undead","door_level":room.door_level+1})
  if old>0 and room.door_hp<=0:record_event("door_break",index)
  if index==player_room and not rescued:items.feather_cross(old,self)
  if not rescued:
