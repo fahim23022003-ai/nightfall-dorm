@@ -10,6 +10,8 @@ var lobby_active := false
 var lobby_cue_counts: Dictionary = {}
 const URGENT_SCORES = ["music_menu","music_intro","music_danger","music_siege","music_hall","music_reaper","music_crimson","music_victory","music_defeat"]
 const OUTCOME_SCORES = ["music_victory","music_defeat"]
+const STORY_CALM_SCORES = ["music_lantern","music_portrait","music_dust","music_portrait","music_dust",
+ "music_lantern","music_procession","music_portrait","music_dust","music_procession"]
 const LOOP_NAMES = ["music_crimson","music_intro","music_approach","music_endless","music_menu","music_calm","music_danger","ambient_dorm","proximity_loop","generator_loop","music_reaper","reaper_ambience","music_lantern","music_portrait","music_dust","music_siege","music_procession","music_opening_alt"]
 const STALKER_BREATH = "cinematic_stalker_breath"
 const APPROACH_EFFECTS = ["cinematic_crusher_approach","cinematic_ravager_approach","cinematic_witch_approach","cinematic_electric_approach","cinematic_storm_approach"]
@@ -23,6 +25,7 @@ const MAX_PENDING_CRITICAL = 24
 const FRAME_VOICE_LIMIT = 6
 const EFFECT_COOLDOWNS = {"cinematic_crusher_move":1.1,"cinematic_stalker_move":0.65,"cinematic_ravager_move":0.65,"cinematic_witch_move":1.1,"cinematic_electric_move":1.1,"cinematic_storm_move":1.1,"reaper_transform":4.0,"reaper_scythe":0.7,"reaper_charge":1.8,"reaper_surge":1.5,"reaper_impact":0.5,"reaper_hurt":0.35,"reaper_death":4.0,"scream_1":2.0,"scream_2":2.0,"scream_3":2.0,"door_reaction":2.0,"sale":0.15,"refund":0.15,"insufficient_gold":0.4,"insufficient_power":0.4,"eerie":12.0,"shot_needle":0.07,"shot_arc":0.11,"impact":0.09,"ghost_hurt":0.22,"door_hit":0.12,"door_crack":0.8,"door_break":1.0,"income":1.1,"electricity":1.0,"repair":1.0,"footstep":0.38,"danger":3.0,"build":0.15,"upgrade":0.18,"hunter_level":0.5,"hunter_spawn":1.0,"match_start":0.8,"victory":2.0,"defeat":2.0,"rank":0.8,"reward":0.4,"menu":0.2}
 var living_nightmare_audio:=OS.get_environment("NIGHTFALL_LIVING_NIGHTMARE")=="1"
+var story_chapter_audio:=OS.get_environment("NIGHTFALL_PHASE16")=="1"
 var soundtrack=Soundtrack.new("",living_nightmare_audio)
 var heartbeat: SiegeHeartbeat
 var _active_score:=""
@@ -107,6 +110,10 @@ func setup():
  if living_nightmare_audio:
   score_names=LOOP_NAMES+Soundtrack.ADAPTIVE_TRACKS
   cue_names=EFFECT_NAMES+[HEARTBEAT_CUE]
+  if story_chapter_audio:
+   soundtrack.families=soundtrack.families.duplicate()
+   for score in STORY_CALM_SCORES:
+    soundtrack.families[score]=[score]
  for name in score_names+cue_names:
   var path = ROOT+name+".wav"
   if not ResourceLoader.exists(path) and not FileAccess.file_exists(path):
@@ -525,7 +532,11 @@ func _living_music_state(model, mode: String, active: bool, boss: bool, domain: 
  if domain:return "music_crimson"
  if boss:return "music_reaper"
  if not active or model==null or model.tutorial_mode or model.time<model.preparation:
-  return "music_calm" if mode=="match" else ""
+  if mode!="match":return ""
+  if active and model!=null and not model.tutorial_mode and story_chapter_audio and model.story_level>0 and soundtrack.mode!="manual":
+   var chapter:=clampi(ceili(float(model.story_level)/StoryCatalog.CHAPTER_LENGTH),1,STORY_CALM_SCORES.size())
+   return STORY_CALM_SCORES[chapter-1]
+  return "music_calm"
  if model.hunter.state in [HunterState.State.RETREAT,HunterState.State.RECOVER]:
   return "music_hall"
  if heartbeat.live:

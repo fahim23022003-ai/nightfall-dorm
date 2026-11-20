@@ -4,6 +4,10 @@ var heading_font=preload("res://assets/fonts/GrenzeGotisch-SemiBold.ttf")
 const OFFSET=Vector2(145,40)
 const MAX_ALERTS=3
 const MAX_NUMBERS=12
+const HUD_LANES := [Rect2(920,155,330,481),Rect2(20,218,320,418)]
+const HUD_FALLBACK := Rect2(389,141,506,57)
+const HUD_SPACING := 6.0
+var phase16 := OS.get_environment("NIGHTFALL_PHASE16")=="1"
 var notifications: Array=[]
 var damage_numbers: Array=[]
 var door_impacts: Dictionary={}
@@ -95,7 +99,7 @@ func observe(event: Dictionary,model):
   if not combined:
    damage_numbers.append({"room":index,"position":event.position,"damage":damage,"age":0.0,"life":1.05,"damage_type":damage_type})
    if damage_numbers.size()>MAX_NUMBERS: damage_numbers.pop_front()
-  door_impacts[index]={"age":0.0,"strength":clampf(damage/maxf(1,room.max_hp())*25,1,5)}
+  door_impacts[index]={"age":0.0,"strength":clampf(damage/maxf(1,room.max_hp())*25,1,5),"damage_type":damage_type}
   danger_rooms[index]=2.0
  elif kind=="approach":
   alert("approach:%d" % index,"!","Hunter approaching %s!" % room_name,0,5.0)
@@ -146,12 +150,24 @@ func door_shake(index: int) -> Vector2:
  return Vector2(sin(hit.age*95),cos(hit.age*73))*gain
 
 func render_world(c):
+ if phase16:
+  var visible: Rect2=c.presentation.visible_world_rect(c,75)
+  draw_siege_marks(c,visible)
+  if c.full_map:return
+ else:
+  draw_legacy_danger(c)
+ draw_damage_numbers(c)
+ if phase16:draw_breach_draft(c)
+ else:draw_legacy_breaks(c)
+
+func draw_legacy_danger(c):
  for index in danger_rooms:
   var room=c.model.rooms[index]
   var alpha=minf(1,danger_rooms[index])*0.3
   c.draw_arc(OFFSET+room.door_position()+Vector2(0,-10),42+sin(clock*7)*2,0,TAU,32,Color(1,0.25,0.2,alpha),2)
   # Also serves as a compact map indicator when the camera is zoomed out.
   c.draw_circle(OFFSET+room.center()+Vector2(100,-80),7,Color(1,0.2,0.16,alpha+0.2))
+func draw_damage_numbers(c):
  for n in damage_numbers:
   var alpha=clampf((n.life-n.age)/.35,0,1)
   var geometry=damage_number_geometry(c,n)
@@ -163,6 +179,7 @@ func render_world(c):
   c.draw_string(font,point-Vector2(0,16),caption,HORIZONTAL_ALIGNMENT_LEFT,-1,8,color)
   c.draw_string_outline(font,point,value,HORIZONTAL_ALIGNMENT_LEFT,-1,size,2,Color(.04,.04,.07,alpha))
   c.draw_string(font,point,value,HORIZONTAL_ALIGNMENT_LEFT,-1,size,color)
+func draw_legacy_breaks(c):
  for n in breaks:
   var point=OFFSET+n.position
   var alpha=1-n.age/n.life
@@ -172,16 +189,72 @@ func render_world(c):
    var shard=point+direction*(8+n.age*65)+Vector2(0,n.age*n.age*38)
    c.draw_line(shard,shard+direction*8,Color(0.75,0.45,0.28,alpha),4*alpha)
 
-func render_notifications(c):
+func draw_siege_marks(c,visible: Rect2):
+ var reduced_motion := CinematicQuality.reduced_motion(c) or CinematicQuality.detail(c)==0
+ var reduced_flash := CinematicQuality.reduced_flash(c)
+ for index in danger_rooms:
+  var room=c.model.rooms[index]
+  var door: Vector2=OFFSET+room.door_position()
+  if not visible.has_point(door):continue
+  var normal: Vector2=room.door_normal()
+  var tangent := normal.orthogonal()
+  var fade:= minf(1.0,float(danger_rooms[index]))
+  var amber:=Color("E69A71") if room.door_hp>room.max_hp()*.34 else Color("F39F9D")
+  if c.full_map:
+   var marker := door+normal*29
+   c.draw_circle(marker,12,Color("1A1722"))
+   c.draw_circle(marker,8,Color(amber,.8*fade))
+   continue
+  # Two jamb marks face the actual exterior without filling the doorway.
+  for side in [-1,1]:
+   var outer: Vector2=door+normal*12+tangent*side*32
+   var edge := PackedVector2Array([outer-tangent*side*7,outer,outer+normal*17])
+   c.draw_polyline(edge,Color("171821"),4)
+   c.draw_polyline(edge,Color(amber,.64*fade),2)
+  if not door_impacts.has(index) or reduced_flash:continue
+  var hit: Dictionary=door_impacts[index]
+  var age:=float(hit.age)
+  var strength:=clampf(float(hit.strength)*.26,.28,1)
+  var impact_color:=Color("D7B7EF") if hit.damage_type=="magic" else Color("EDC196")
+  var reach := 0.0 if reduced_motion else 70.0*age
+  for i in range(3):
+   var head := door+normal*(12+reach)+tangent*(i-1)*(8.0+reach*.3)
+   c.draw_line(head,head+normal*(5+i),Color(impact_color,(1-age/.32)*strength*.8),1.5)
+
+func draw_breach_draft(c):
+ var reduced := CinematicQuality.reduced_motion(c) or CinematicQuality.detail(c)==0
+ var visible: Rect2=c.presentation.visible_world_rect(c,75)
+ for event in breaks:
+  var door := OFFSET+Vector2(event.position)
+  if not visible.has_point(door):continue
+  var normal: Vector2=c.model.rooms[event.room].door_normal()
+  var tangent := normal.orthogonal()
+  var age := clampf(float(event.age)/float(event.life),0,1)
+  var fade := 1.0-age
+  # A brief draft leaves the broken threshold. It is keyed to the break, not a
+  # weather clock, and never fills the room or flashes the screen.
+  for i in range(3 if reduced else 7):
+   var side := float(i-1) if reduced else float(i-3)
+   var distance := 10.0 if reduced else 14.0+age*(42.0+absf(side)*4.0)
+   var q := door+normal*distance+tangent*side*(8.0+age*4.0)
+   c.draw_line(q,q+normal*9+tangent*side,Color(.53,.42,.46,.67*fade),2)
+
+func boss_awaken_visible() -> bool:
+ return boss_banner>0 and (last_model==null or (last_model.hunter.boss_attack=="" and last_model.hunter.surge_remaining<=0))
+
+func render_notifications(c, ui=null):
+ if phase16 and ui!=null:
+  draw_contextual_alerts(c,ui)
+  return
  # Active counterplay warnings take priority over the decorative awakening.
- if boss_banner>0 and (last_model==null or (last_model.hunter.boss_attack=="" and last_model.hunter.surge_remaining<=0)):
+ if boss_awaken_visible():
   var alpha=minf(1,boss_banner/.5)
   var box=GothicTheme.surface("583344","A28EB2").duplicate()
   box.modulate_color=Color(1,1,1,.94*alpha)
   c.draw_style_box(box,Rect2(350,139,710,75))
   c.draw_string(heading_font,Vector2(382,170),"THE GRIM REAPER HAS AWAKENED",HORIZONTAL_ALIGNMENT_LEFT,-1,28,Color(1,.72,.84,alpha))
   c.draw_string(font,Vector2(384,196),"Watch the scythe. Repair during warnings. Keep your defenses firing.",HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color(.88,.82,.96,alpha))
- # Screen-space, left of build controls and below the tutorial panel. No input capture.
+ # Legacy screen-space notification lane.
  var offset=0.0
  for i in range(notifications.size()):
   var n=notifications[i]
@@ -221,3 +294,96 @@ func damage_number_geometry(c,n: Dictionary) -> Dictionary:
  elif screen.x+span.x>1268:shift=1268-screen.x-span.x
  point+=canvas.basis_xform_inv(Vector2(shift,0))
  return {"point":point,"rect":Rect2(point+Vector2(-5,-27),Vector2(width,33)),"value":value,"caption":caption,"font_size":size,"width":width,"magic":magic}
+
+func notification_placements(ui) -> Array[Dictionary]:
+ var placements: Array[Dictionary]=[]
+ if ui.current_screen!="match" or not ui.pause_items.is_empty():
+  return placements
+ var occupied:=visible_hud(ui)
+ var candidates:=notifications.duplicate()
+ if boss_awaken_visible():
+  var index := 0
+  while index<candidates.size() and candidates[index].priority>=3:
+   index+=1
+  candidates.insert(index,{"key":"awakening","icon":"!","text":"GRIM REAPER AWAKENED — Watch the scythe. Repair during warnings.",
+   "priority":3,"age":3.4-boss_banner,"life":3.4})
+ for notification in candidates:
+  if placements.size()>=MAX_ALERTS:break
+  if _summary_duplicates(notification,ui):continue
+  var is_loss: bool=notification.key.begins_with("elimination:")
+  var two_lines: bool=is_loss or notification.key=="awakening"
+  var card_height:=50.0 if two_lines else 31.0
+  var lanes := HUD_LANES + [HUD_FALLBACK] if notification.priority>=1 else HUD_LANES
+  for lane in lanes:
+   var box:=Rect2(lane.position,Vector2(lane.size.x,card_height))
+   var moved:=true
+   while moved and box.end.y<=lane.end.y:
+    moved=false
+    for reserved in occupied:
+     if reserved.intersects(box):
+      box.position.y=reserved.end.y+HUD_SPACING
+      moved=true
+   if box.end.y>lane.end.y:continue
+   placements.append({"box":box,"notification":notification,"loss":is_loss,"two_lines":two_lines})
+   occupied.append(box)
+   break
+ return placements
+
+func visible_hud(ui) -> Array[Rect2]:
+ var reserved: Array[Rect2]=[]
+ var controls: Array=[ui.guide_box,ui.warning_box,ui.context_box,ui.run_panel,
+  ui.grid_placement_banner,ui.ward_button,ui.upgrade_notice]
+ if ui.teammates!=null:
+  controls.append_array([ui.teammates.body,ui.teammates.watching])
+ if ui.haunted_hud!=null:controls.append(ui.haunted_hud.banner)
+ if ui.items_ui!=null:
+  controls.append_array(ui.items_ui.hotbar)
+  controls.append(ui.items_ui.legendary_banner)
+  for label in [ui.items_ui.radar_label,ui.items_ui.feedback_label]:
+   if is_instance_valid(label) and label.text!="":controls.append(label)
+ var wrath=ui.game.model.wrath
+ if wrath.rules_remaining>0 or wrath.production_remaining>0:
+  reserved.append(Rect2(414,112,570,48))
+ if not ui.game.presentation.wrath_presentation.evolution_queue.is_empty():
+  reserved.append(Rect2(454,180,724,100).grow(3))
+ var construction=ui.game.construction
+ if construction!=null:
+  controls.append_array([construction.hint,construction.status,construction.room_card,
+   construction.machine_button,construction.machine_list,construction.plan_button,construction.rotate_button])
+ for control in controls:
+  if is_instance_valid(control) and control.is_visible_in_tree():
+   reserved.append(control.get_global_rect().grow(3))
+ if ui.context_open and ui.bottom_context!=null:
+  # Reserve the drawer's eventual resting place while its tween is in flight.
+  reserved.append(ui.bottom_context.body.grow(3))
+ return reserved
+
+func _summary_duplicates(entry: Dictionary,ui) -> bool:
+ if not is_instance_valid(ui.warning_box) or not ui.warning_box.visible:return false
+ var hunter=ui.game.model.hunter
+ if hunter.target!=ui.game.model.player_room or hunter.state not in [HunterState.State.ATTACK,HunterState.State.BREACH]:
+  return false
+ return entry.key.ends_with(":"+str(hunter.target)) and entry.key.get_slice(":",0) in ["approach","encounter","charged","boss","surge"]
+
+func draw_contextual_alerts(c,ui):
+ if notifications.is_empty() and not boss_awaken_visible():return
+ for placement in notification_placements(ui):
+  var n: Dictionary=placement.notification
+  var entering:=clampf(float(n.age)/.16,0,1)
+  var alpha:=minf(entering,clampf((float(n.life)-float(n.age))/.45,0,1))
+  var box: Rect2=placement.box
+  var urgent: bool=placement.loss or n.priority>=4
+  var color: Color=Color("F3A3A7") if urgent else [Color("E2C185"),Color("E9A991"),Color("F2B0AA"),Color("C5ADEB")][clampi(n.priority,0,3)]
+  c.draw_rect(box,Color(.065,.084,.112,.93*alpha))
+  c.draw_rect(box,Color(color,.43*alpha),false,1)
+  c.draw_line(box.position,box.position+Vector2(0,box.size.y),Color(color,.95*alpha),2)
+  c.draw_string(font,box.position+Vector2(13,21),n.icon,HORIZONTAL_ALIGNMENT_LEFT,-1,14,Color(color,alpha))
+  var text_width:=box.size.x-46
+  if placement.two_lines:
+   var parts: PackedStringArray=n.text.split(" — ",true,1)
+   c.draw_string(font,box.position+Vector2(36,20),parts[0],HORIZONTAL_ALIGNMENT_LEFT,text_width,14,Color(color,alpha))
+   if parts.size()>1:
+    c.draw_string(font,box.position+Vector2(36,39),parts[1],HORIZONTAL_ALIGNMENT_LEFT,text_width,12,Color(.97,.93,.90,alpha))
+  else:
+   var size:=14 if font.get_string_size(n.text,HORIZONTAL_ALIGNMENT_LEFT,-1,14).x<=text_width else 12
+   c.draw_string(font,box.position+Vector2(36,21),n.text,HORIZONTAL_ALIGNMENT_LEFT,text_width,size,Color(.97,.93,.90,alpha))

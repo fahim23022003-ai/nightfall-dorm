@@ -1,0 +1,86 @@
+{
+  "audio_bytes": 1851392,
+  "driver": "Dummy",
+  "errors": [],
+  "event_counts": {
+    "breach": 1,
+    "build": 1,
+    "cinematic_stalker_move": 3,
+    "cinematic_stalker_release": 7,
+    "danger": 3,
+    "door_break": 1,
+    "door_crack": 1,
+    "door_hit": 9,
+    "door_reaction": 1,
+    "electricity": 1,
+    "hunter_laugh": 1,
+    "hunter_spawn": 1,
+    "hunter_stalker_warning": 2,
+    "income": 11,
+    "match_start": 1,
+    "scream_1": 1,
+    "siege_heartbeat": 1
+  },
+  "fps": 20,
+  "frames": 212,
+  "phase16": true,
+  "timeline": [
+    {
+      "door_normal": [
+        0.0,
+        1.0
+      ],
+      "event": "approach staged at legal threshold",
+      "room": 2,
+      "wall_seconds": 0.000042
+    },
+    {
+      "event": "ally-warning-720",
+      "frame": 14,
+      "heart_seconds": 0.0,
+      "own_door_hp": 2070.0,
+      "wall_seconds": 0.892742
+    },
+    {
+      "door_normal": [
+        1.0,
+        0.0
+      ],
+      "event": "approach staged at legal threshold",
+      "room": 4,
+      "wall_seconds": 2.497949
+    },
+    {
+      "event": "first-heartbeat-720",
+      "frame": 57,
+      "heart_seconds": 4.662195,
+      "own_door_hp": 683.1,
+      "wall_seconds": 3.013592
+    },
+    {
+      "event": "door-contact-720",
+      "frame": 102,
+      "heart_seconds": 2.474069,
+      "own_door_hp": 664.70030736736,
+      "wall_seconds": 5.252783
+    },
+    {
+      "event": "heartbeat stopped",
+      "hunter_attacks": 6,
+      "wall_seconds": 8.757893
+    },
+    {
+      "event": "door-breach-720",
+      "frame": 183,
+      "heart_seconds": 0.0,
+      "own_door_hp": 0.0,
+      "wall_seconds": 9.266859
+    },
+    {
+      "door_hp": 0.0,
+      "event": "breach draft expired",
+      "wall_seconds": 10.602062
+    }
+  ],
+  "wall_duration": 10.60207
+}
