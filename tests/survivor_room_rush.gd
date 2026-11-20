@@ -29,6 +29,7 @@ func run() -> void:
  verify_race("legacy",0,147)
  verify_tie_and_egress()
  verify_snapshot()
+ if OS.get_environment("NIGHTFALL_PHASE16")=="1":verify_eta_planning()
  var original:=fresh("forgotten_hotel",2,52)
  var retry:=fresh("forgotten_hotel",2,52)
  var reproduced:=fresh("forgotten_hotel",2,52)
@@ -150,3 +151,33 @@ func verify_snapshot() -> void:
  var malformed:=snapshot.duplicate(true)
  malformed.room_rush.runners[0].owner=malformed.room_rush.runners[1].owner
  check(not ReplaySnapshot.valid(malformed),"duplicate pending NPC identities rejected")
+
+
+func verify_eta_planning() -> void:
+ var model:=fresh("abandoned_dorm",2,8649)
+ var replay:=fresh("abandoned_dorm",2,8649)
+ check(model.begin_room_rush(41) and replay.begin_room_rush(41),"deterministic Spine starts")
+ if not model.room_rush_active() or not replay.room_rush_active():return
+ var origin:=model.room_rush_spawn()
+ var targets:=model.room_rush_runners().map(func(runner):return runner.target)
+ check(targets==replay.room_rush_runners().map(func(runner):return runner.target),"same seed and nonce repeat advised destinations")
+ var unique: Dictionary={}
+ for target: int in targets:unique[target]=true
+ check(unique.size()==5 and model.rooms.all(func(room):return room.owner<0),"separate intents create no room ownership")
+ var runner: Dictionary=model.room_rush_runners()[0]
+ var lost_target: int=runner.target
+ var before: Vector2=runner.position
+ # A corrupted or newly blocked path cannot make an actor move through a wall.
+ runner.route=[before+Vector2(0.0,-200000.0)]
+ for i in range(20):
+  if runner.has("failed_room"):break
+  model.time+=.25
+  model.room_rush.tick(model,.25)
+ check(runner.has("failed_room") and runner.failed_room==lost_target,"invalid route is detected as a failed approach")
+ if runner.has("failed_room"):
+  var stalled: Vector2=runner.position
+  model.time+=.25
+  model.room_rush.tick(model,.25)
+  check(not runner.has("failed_room") and runner.target>=0 and runner.target!=lost_target,"failed approach offers another reachable route")
+  check(runner.position.distance_to(stalled)<=22.502,"replan does not reset or boost the actor")
+ check(model.can_walk(origin) and model.rooms.all(func(room):return room.owner<0),"an advisory plan cannot create a distant claim")

@@ -7,11 +7,14 @@ const BED_REACH:=60.0
 const RETRY_SECONDS:=.35
 const MAX_NEAREST_SECONDS:=12.0
 const APPROACH_TRAFFIC_COST:=220.0
+const INTENT_CHANGE_COST:=24.0
+const STALL_SECONDS:=.55
 
 var attempt_id:=0
 var spawn:=Vector2.INF
 var runners: Array[Dictionary]=[]
 var bed_routes: Dictionary={}
+var planned_pacing:=OS.get_environment("NIGHTFALL_PHASE16")=="1"
 
 static func preview_requested() -> bool:
  var value:=OS.get_environment("NIGHTFALL_SURVIVOR_REBIRTH")
@@ -43,8 +46,9 @@ func start(model, nonce: int) -> bool:
  model.player_position=spawn
  for id in range(1,BOT_COUNT+1):
   var runner: Dictionary={"owner":id,"position":spawn,"target":-1,"route":[],"retry_at":0.0}
-  select_target(model,runner,routes)
+  if not planned_pacing:select_target(model,runner,routes)
   runners.append(runner)
+ if planned_pacing:plan_intents(model,routes)
  return true
 
 func spawn_candidates(model) -> Array[Vector2]:
@@ -157,6 +161,106 @@ func select_target(model, runner: Dictionary, paths: Dictionary) -> void:
  runner.route=paths[best].duplicate() if best>=0 else []
  runner.retry_at=model.time+RETRY_SECONDS
 
+func needs_intents(model) -> bool:
+ for runner: Dictionary in runners:
+  var target: int=runner.get("target",-1)
+  if target>=0 and model.rooms[target].owner>=0:return true
+  if runner.route.is_empty() and model.time>=runner.retry_at:return true
+ return false
+
+func plan_intents(model, shared_routes: Dictionary={}) -> void:
+ if shared_routes.is_empty() and match_intents(model,shared_routes,true):return
+ match_intents(model,shared_routes,false)
+
+func match_intents(model, shared_routes: Dictionary, keep_usable_routes: bool) -> bool:
+ var hunter_spawn: Vector2=model.map_data.get("hunter_spawn",model.hunter.position)
+ var routes: Array[Dictionary]=[]
+ var costs: Array[Dictionary]=[]
+ for runner: Dictionary in runners:
+  var target: int=runner.target
+  var paths:=shared_routes
+  if paths.is_empty():
+   # A single lost destination need not recalculate every live path.
+   if keep_usable_routes and target>=0 and not runner.route.is_empty() and can_continue_intent(model,target):
+    paths={target:runner.route}
+   else:
+    paths=routes_to_vacant_rooms(model,runner.position,runner.owner)
+  var avoid: int=runner.get("failed_room",-1)
+  if paths.size()>1 and paths.has(avoid):
+   paths=paths.duplicate()
+   paths.erase(avoid)
+  var options: Dictionary={}
+  for index: int in paths:
+   var room: RoomState=model.rooms[index]
+   var distance:=route_length(runner.position,paths[index])
+   var exposed:=maxf(0.0,330.0-hunter_spawn.distance_to(room.door_approach()))*.25
+   var personal:=float(posmod(attempt_id%131*43+int(runner.owner)*67+index*(31+int(runner.owner)*29),131))
+   var desirability: float=(float(room.trait_modifiers.get("door",1.0))-1.0)*90.0+(float(room.trait_modifiers.get("income",1.0))-1.0)*80.0
+   var change:=INTENT_CHANGE_COST if runner.target>=0 and runner.target!=index else 0.0
+   options[index]=Vector2(distance,distance+exposed+personal-desirability+change)
+  routes.append(paths)
+  costs.append(options)
+ var best: Dictionary={"result":[],"arrival":INF,"cost":INF}
+ rank_intents(costs,0,0,[],0.0,0.0,model.SURVIVOR_SPEED*.25,best)
+ var assignment: Array=best.result
+ if assignment.is_empty() and keep_usable_routes:return false
+ for i in range(runners.size()):
+  var runner:=runners[i]
+  if assignment.is_empty():
+   # Unexpected geometry may leave some actors with only overlapping viable
+   # routes. They retain the ability to race for a shared destination.
+   select_target(model,runner,routes[i])
+  else:
+   var target: int=assignment[i]
+   runner.target=target
+   runner.route=routes[i][target].duplicate()
+   runner.retry_at=model.time+RETRY_SECONDS
+  runner.erase("failed_room")
+  runner.stalled=0.0
+ return true
+
+func can_continue_intent(model, target: int) -> bool:
+ var room: RoomState=model.rooms[target]
+ return room.owner<0 and room.alive and not room.closed
+
+func rank_intents(costs: Array[Dictionary], slot: int, chosen_mask: int, selected: Array, distance: float, total: float, eta_band_distance: float, best: Dictionary) -> void:
+ # Shorter worst predicted elapsed distance wins, at half-second resolution.
+ # Prefer efficient, safe and attractive routes among the same ETA band.
+ var arrival:=ceilf(distance/eta_band_distance)
+ if arrival>best.arrival:return
+ if slot==costs.size():
+  if arrival<best.arrival or (arrival==best.arrival and total<best.cost):
+   best.result=selected.duplicate()
+   best.arrival=arrival
+   best.cost=total
+  return
+ for index: int in costs[slot]:
+  var bit:=1<<index
+  if chosen_mask&bit:continue
+  var option: Vector2=costs[slot][index]
+  selected.append(index)
+  rank_intents(costs,slot+1,chosen_mask|bit,selected,maxf(distance,option.x),total+option.y,eta_band_distance,best)
+  selected.pop_back()
+
+func follow_intent(model, runner: Dictionary, distance: float) -> bool:
+ var target: int=runner.target
+ if target<0 or model.rooms[target].owner>=0 or runner.route.is_empty():return false
+ var before: Vector2=runner.position
+ runner.position=advance(model,before,runner.route,distance,egress_room(model,before,runner.owner))
+ if runner.route.is_empty():
+  if model.try_claim_survivor(target,runner.owner,runner.position):return true
+  runner.failed_room=target
+  runner.retry_at=0.0
+ elif before.distance_to(runner.position)<minf(.25,distance*.25):
+  runner.stalled=float(runner.get("stalled",0.0))+distance/(model.SURVIVOR_SPEED*.5)
+  if runner.stalled>=STALL_SECONDS:
+   runner.route.clear()
+   runner.failed_room=target
+   runner.retry_at=0.0
+ else:
+  runner.stalled=0.0
+ return false
+
 func tick(model, delta: float) -> void:
  var distance: float=model.SURVIVOR_SPEED*.5*delta
  # Already-owned actors walk first. A newly claimed runner cannot receive a
@@ -164,9 +268,11 @@ func tick(model, delta: float) -> void:
  for room: RoomState in model.rooms:
   if room.owner>0 and room.alive and not room.sleeping:
    approach_bed(model,room,distance)
+ if planned_pacing and needs_intents(model):plan_intents(model)
  for index in range(runners.size()):
   var runner:=runners[index]
-  if route_runner(model,runner,distance):
+  var arrived:=follow_intent(model,runner,distance) if planned_pacing else route_runner(model,runner,distance)
+  if arrived:
    runners[index]={}
  runners=runners.filter(func(runner):return not runner.is_empty())
 
