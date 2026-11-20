@@ -17,7 +17,13 @@ func run():
  model.procedural_v2_requested=true
  check(model.configure_match("hell") and model.configure_stage("stage_2"),"configure V2 Hell")
  check(model.configure_strategy(54) and model.configure_balance(),"configure normal match rules")
+ var forecast:=model.opening_room_forecast(0)
+ check(forecast.get("hunter_seconds",0)>0 and forecast.get("entry_seconds",0)>0,"unclaimed Hard/Hell room shows legal opening estimates")
+ model.difficulty="standard"
+ check(model.opening_room_forecast(0).is_empty(),"Standard presentation remains identical")
+ model.difficulty="hell"
  check(model.claim_room(0),"claim real room")
+ check(model.opening_room_forecast(0).is_empty(),"scouting estimate applies before claiming")
  var room: RoomState=model.player()
  model.player_position=room.bed_position()
  check(model.sleep_player(),"lock owned door")
@@ -83,6 +89,26 @@ func run():
   if gun.is_finite():break
  check(gun.is_finite() and model.place_building("turret",gun),"a legal paid machine covers the approach")
  check(HunterSiegeStrategy.assess(model,hunter)[room.index]>before_coverage,"the actual firing lane increases estimated exposure")
+ hunter.target=room.index
+ hunter.state=HunterState.State.ATTACK
+ hunter.position=room.door_approach()
+ hunter.damage=10.0
+ hunter._damage_door(room,model,10.0)
+ check(hunter.siege_landed_damage>0.0,"real landed strike contributes to reassessment window")
+ hunter.siege_start_hp=room.door_hp+15.0
+ hunter.siege_landed_damage=75.0
+ hunter.reassess_seconds=12.0
+ model.fair_siege_enabled=false
+ hunter._reassess_tactical_siege(room,model)
+ check(hunter.target==room.index,"prior productive behavior stays even through heavy mitigation")
+ hunter.siege_start_hp=room.door_hp+15.0
+ hunter.siege_landed_damage=75.0
+ hunter.reassess_seconds=12.0
+ model.fair_siege_enabled=true
+ hunter._reassess_tactical_siege(room,model)
+ check(hunter.target==other.index and hunter.siege_notice_defender==room.index,"measured repairs can earn visible relief when another route is worth it")
+ check(HunterSiegeStrategy.defended_breach_estimate(100.0,18.0,30.0,10.0,12.0)==0.0,"small repairs cannot force new reassessment")
+ check(HunterSiegeStrategy.defended_breach_estimate(100.0,18.0,45.0,10.0,12.0)==55.0,"observed delay remains bounded")
  var fixed:=MatchModel.new()
  fixed.procedural_v2_requested=false
  fixed.procedural_requested=false

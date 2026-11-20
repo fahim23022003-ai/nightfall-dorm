@@ -685,10 +685,12 @@ func update_match():
   guide_box.visible=false;guide_label.visible=false
  var siege_notice: bool=room!=null and m.hunter.target==room.index and m.hunter.siege_notice_room==room.index and m.time<m.hunter.siege_notice_until
  var switching: bool=siege_notice and m.hunter.siege_notice=="switch" and m.hunter.state==HunterState.State.MOVE
- warning_box.visible=threat or switching or game.level_warning_time>0 or m.wrath.active()
+ var held: bool=room!=null and m.hunter.siege_notice_defender==room.index and m.time<m.hunter.siege_notice_until and m.hunter.state==HunterState.State.MOVE
+ warning_box.visible=threat or switching or held or game.level_warning_time>0 or m.wrath.active()
  warning_label.visible=warning_box.visible
  if not threat and game.level_warning_time>0: warning_label.text="THE HUNTER GROWS STRONGER · LEVEL %d" % m.hunter.level
  if switching:warning_label.text="HUNTER CHANGES APPROACH · YOUR ROOM"
+ if held:warning_label.text="DEFENSE HELD · HUNTER REROUTING"
  if threat:
   warning_label.text="DOOR %d/%d · UNDER ATTACK" % [roundi(room.door_hp),roundi(room.max_hp())]
   if m.hunter.tactical_action!="":warning_label.text="%s %.1fs · PREPARE DEFENSES" % [m.hunter.tactical_action.to_upper(),m.hunter.tactical_windup]

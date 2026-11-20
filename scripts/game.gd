@@ -34,6 +34,7 @@ var zoom_factor=1.0
 var overview_zoom := 1.0
 var overview_pan := Vector2.ZERO
 var overview_room := -1
+var overview_opening: Dictionary={}
 var pending_build=""
 var preview_position=Vector2.ZERO
 var placement_on_tile=true
@@ -522,6 +523,7 @@ func reset_overview():
  overview_zoom=1.0
  overview_pan=Vector2.ZERO
  overview_room=-1
+ overview_opening.clear()
 
 func overview_frame() -> Rect2:
  var size:=get_viewport_rect().size
@@ -535,9 +537,11 @@ func overview_fit() -> float:
 func _select_overview_room(screen: Vector2):
  var at:=get_viewport().get_canvas_transform().affine_inverse()*screen-MAP_OFFSET
  overview_room=-1
+ overview_opening.clear()
  for room in model.rooms:
   if room.floor_has_point(at):
    overview_room=room.index
+   overview_opening=model.opening_room_forecast(room.index)
    break
  queue_redraw()
 

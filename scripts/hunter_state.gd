@@ -37,8 +37,10 @@ var decision_count=0
 var _route_costs: Dictionary={}
 var siege_notice_until := 0.0
 var siege_notice_room := -1
+var siege_notice_defender := -1
 var siege_notice := ""
 var siege_commit_announced := false
+var siege_landed_damage := 0.0
 # One entity, one identity, and one irreversible transformation per match.
 var boss_policy: Dictionary={"enabled":false}
 var transformed=false
@@ -221,7 +223,9 @@ func _boss_strike(room, model):
  cooldown=interval*data.recovery*float(boss_policy.get("recovery",1.0))
 
 func _damage_door(room, model, amount: float,source: String="door strike"):
- model.apply_room_damage(room.index,amount,source,1,source!="door strike")
+ var landed: float=model.apply_room_damage(room.index,amount,source,1,source!="door strike")
+ if model.fair_siege_enabled and model.uses_tactical_sieges() and state==State.ATTACK and room.index==target:
+  siege_landed_damage+=landed
  attacks+=1
 
 
@@ -467,6 +471,7 @@ func tick(delta: float, match_state):
    reassess_seconds=0
    encounter_attacks=0
    siege_commit_announced=false
+   siege_landed_damage=0.0
    if match_state.uses_tactical_sieges():siege_start_hp=room.door_hp
    archetype_primed=false
    charged_ready=false
@@ -556,19 +561,23 @@ func tick(delta: float, match_state):
 
 func _reassess_tactical_siege(room: RoomState, model):
  var start_hp: float=siege_start_hp
+ var net_loss: float=start_hp-room.door_hp
+ var defended_estimate:=0.0
+ if model.fair_siege_enabled:
+  defended_estimate=HunterSiegeStrategy.defended_breach_estimate(room.door_hp,net_loss,siege_landed_damage,damage,reassess_seconds)
  siege_start_hp=room.door_hp
  reassess_seconds=0.0
- if HunterSiegeStrategy.productive_progress(start_hp,room.door_hp,damage):
-  if not siege_commit_announced:
-   siege_commit_announced=true
-   _siege_notice(model,room.index,"commit")
-   model.record_event("hunter_commit",room.index,{"reason":"breach_progress","progress":start_hp-room.door_hp})
+ siege_landed_damage=0.0
+ var productive:=HunterSiegeStrategy.productive_progress(start_hp,room.door_hp,damage)
+ if productive and defended_estimate<=0.0:
+  _announce_commit(model,room,net_loss)
   return
  var scores:=HunterSiegeStrategy.assess(model,self)
  var alternative:=HunterSiegeStrategy.best_room(scores,room.index)
- var current_cost: float=scores.get(room.index,INF)
+ var current_cost:=maxf(scores.get(room.index,INF),defended_estimate) if productive else float(scores.get(room.index,INF))
  var alternative_cost: float=scores.get(alternative,INF)
  if not HunterSiegeStrategy.worth_switching(current_cost,alternative_cost):
+  if productive:_announce_commit(model,room,net_loss)
   return
  cancel_boss_attack()
  surge_remaining=0
@@ -576,7 +585,8 @@ func _reassess_tactical_siege(room: RoomState, model):
  retargets+=1
  decision_count+=1
  _siege_notice(model,alternative,"switch")
- model.record_event("hunter_reassess",room.index,{"next_room":alternative,"reason":"better_breach_route","stalled":true,"current_cost":current_cost,"alternative_cost":alternative_cost})
+ if productive:siege_notice_defender=room.index
+ model.record_event("hunter_reassess",room.index,{"next_room":alternative,"reason":"defense_delays_breach" if productive else "better_breach_route","stalled":not productive,"current_cost":current_cost,"alternative_cost":alternative_cost})
  if archetype=="stalker":
   ability_counts.feint+=1
   model.record_event("hunter_ability",room.index,{"ability":"feint","duration":1.0})
@@ -585,9 +595,16 @@ func _reassess_tactical_siege(room: RoomState, model):
  state=State.MOVE
  model.record_event("approach",target)
 
+func _announce_commit(model, room: RoomState, progress: float):
+ if siege_commit_announced:return
+ siege_commit_announced=true
+ _siege_notice(model,room.index,"commit")
+ model.record_event("hunter_commit",room.index,{"reason":"breach_progress","progress":progress})
+
 func _siege_notice(model, room: int, intent: String):
  siege_notice_until=model.time+4.0
  siege_notice_room=room
+ siege_notice_defender=-1
  siege_notice=intent
 
 func choose_target(rooms: Array, excluded: int = -1) -> int:

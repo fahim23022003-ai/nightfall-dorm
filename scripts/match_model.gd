@@ -47,6 +47,7 @@ var map_data: Dictionary={}
 var procedural_requested := OS.get_environment("NIGHTFALL_PROCEDURAL_MAPS") == "1"
 var procedural_v2_requested := OS.get_environment("NIGHTFALL_PROCEDURAL_MAPS_V2") == "1"
 var hard_tactics_enabled := true
+var fair_siege_enabled := true
 var map_seed: int=1
 var haunt_recovery := HauntedRecovery.new()
 var _navigation=AStar2D.new()
@@ -246,6 +247,24 @@ func _build_navigation():
 
 func player_navigation_path(from: Vector2,to: Vector2) -> Array:
  return navigation_path(from,to,true)
+
+func opening_room_forecast(index: int) -> Dictionary:
+ if not uses_tactical_sieges() or player_room>=0 or time>=preparation or index<0 or index>=rooms.size():
+  return {}
+ var room: RoomState=rooms[index]
+ if room.owner>=0:
+  return {}
+ var distance: float=hunter_route_costs(map_data.hunter_spawn).get(index,INF)
+ var inside: Vector2=room.door_position()-room.door_normal()*35.0
+ var walk: Array=player_navigation_path(map_data.spawn,inside)
+ if not is_finite(distance) or walk.is_empty() or not Vector2(walk.back()).is_equal_approx(inside):
+  return {}
+ var previous: Vector2=map_data.spawn
+ var walk_distance:=0.0
+ for point: Vector2 in walk:
+  walk_distance+=previous.distance_to(point)
+  previous=point
+ return {"hunter_seconds":ceili(distance/maxf(1.0,hunter.speed)),"entry_seconds":ceili(walk_distance/180.0)}
 
 # Static corridor graph estimates for all candidate rooms in one decision.
 # Only the nearest visible start needs testing; doorway endpoints already exist.

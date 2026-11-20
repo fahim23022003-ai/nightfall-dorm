@@ -6,6 +6,13 @@ const MAX_BREACH_ESTIMATE := 55.0
 const MIN_SWITCH_GAIN := 5.0
 const MAX_EXPOSURE_COST := 38.0
 
+## A defender must erase at least half the landed damage, including one
+## ordinary strike's worth, before a productive siege is reconsidered.
+static func defended_breach_estimate(door_hp: float, net_loss: float, landed_damage: float, strike: float, elapsed: float) -> float:
+ if elapsed<=0.0 or net_loss<=0.0 or landed_damage-net_loss<maxf(strike,landed_damage*.5):
+  return 0.0
+ return minf(MAX_BREACH_ESTIMATE,door_hp*elapsed/net_loss)
+
 static func assess(model, hunter) -> Dictionary:
  var travel: Dictionary = model.hunter_route_costs(hunter.position)
  var fire := []
