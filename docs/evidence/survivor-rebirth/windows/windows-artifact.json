@@ -1,0 +1,60 @@
+{
+  "version": "0.7.0-overhaul",
+  "source_commit": "af59104dbb2184d94197a88bfa6cdf27f2e60c81",
+  "engine": "4.6.3.stable.official.7d41c59c4",
+  "executable_bytes": 272656832,
+  "executable_sha256": "e8bfd4740595f0b138e2042c2f45842f6705aba4752c1bbc1187ff0fc0573e84",
+  "embedded_pack_bytes": 168056244,
+  "archive": "NightfallDorm-Nightmare-Lobby-Final-Windows-x64.zip",
+  "archive_bytes": 173279373,
+  "archive_sha256": "c7d0a520ce3e99d8f0adcd1f8f8c7a8a78133d62027c60cd3fe6b2cbc3018a0f",
+  "native_windows": "UNVERIFIED",
+  "public_release": false,
+  "launcher_environments": {
+    "survivor-rebirth": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-living-nightmare-preview.json",
+      "NIGHTFALL_LIVING_NIGHTMARE": "1",
+      "NIGHTFALL_SURVIVOR_REBIRTH": "1",
+      "NIGHTFALL_VISUAL_REBIRTH": "1",
+      "NIGHTFALL_FULL_ROOM_GRID": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "1"
+    },
+    "living-nightmare": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-living-nightmare-preview.json",
+      "NIGHTFALL_LIVING_NIGHTMARE": "1",
+      "NIGHTFALL_SURVIVOR_REBIRTH": "0",
+      "NIGHTFALL_VISUAL_REBIRTH": "1",
+      "NIGHTFALL_FULL_ROOM_GRID": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "1"
+    },
+    "v1-fallback": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-v23-v1-playtest.json",
+      "NIGHTFALL_LIVING_NIGHTMARE": "0",
+      "NIGHTFALL_SURVIVOR_REBIRTH": "0",
+      "NIGHTFALL_VISUAL_REBIRTH": "1",
+      "NIGHTFALL_FULL_ROOM_GRID": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "0"
+    },
+    "fixed-reference": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-v23-fixed-reference.json",
+      "NIGHTFALL_LIVING_NIGHTMARE": "0",
+      "NIGHTFALL_SURVIVOR_REBIRTH": "0",
+      "NIGHTFALL_VISUAL_REBIRTH": "0",
+      "NIGHTFALL_FULL_ROOM_GRID": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "0"
+    },
+    "fair-start-preview": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-v23-playtest.json",
+      "NIGHTFALL_LIVING_NIGHTMARE": "0",
+      "NIGHTFALL_SURVIVOR_REBIRTH": "0",
+      "NIGHTFALL_VISUAL_REBIRTH": "1",
+      "NIGHTFALL_FULL_ROOM_GRID": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "1"
+    }
+  }
+}

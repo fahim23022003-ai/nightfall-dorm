@@ -1,0 +1,130 @@
+{
+  "lessons": [
+    {
+      "name": "Survive the night",
+      "step": 1
+    },
+    {
+      "name": "Move around",
+      "step": 2
+    },
+    {
+      "name": "Shared spawn",
+      "step": 3
+    },
+    {
+      "name": "Find a vacant room",
+      "step": 4
+    },
+    {
+      "name": "Claim your room",
+      "step": 5
+    },
+    {
+      "name": "Reach the bed",
+      "step": 6
+    },
+    {
+      "name": "Sleep and earn Gold",
+      "step": 7
+    },
+    {
+      "name": "Open Build",
+      "step": 8
+    },
+    {
+      "name": "Select Needle Turret",
+      "step": 9
+    },
+    {
+      "name": "Place the Needle Turret",
+      "step": 10
+    },
+    {
+      "name": "Cancel placement",
+      "step": 11
+    },
+    {
+      "name": "Open Build again",
+      "step": 12
+    },
+    {
+      "name": "Select Dynamo",
+      "step": 13
+    },
+    {
+      "name": "Place the Dynamo",
+      "step": 14
+    },
+    {
+      "name": "Upgrade a machine",
+      "step": 15
+    },
+    {
+      "name": "Repair the door",
+      "step": 16
+    },
+    {
+      "name": "Close the machine panel",
+      "step": 17
+    },
+    {
+      "name": "Face the Hunter",
+      "step": 18
+    },
+    {
+      "name": "Tutorial complete",
+      "step": 19
+    }
+  ],
+  "transactions": [
+    {
+      "event": "build",
+      "kind": "turret",
+      "position": "(120.0, 216.0)",
+      "spent_gold": 20.0,
+      "spent_power": 0.0,
+      "tile": 16
+    },
+    {
+      "event": "explicit_placement_cancel",
+      "kind": "turret"
+    },
+    {
+      "event": "build",
+      "kind": "generator",
+      "position": "(152.0, 208.0)",
+      "spent_gold": 120.0,
+      "spent_power": 0.0,
+      "tile": 17
+    },
+    {
+      "event": "building_upgrade",
+      "kind": "turret",
+      "level": 2,
+      "specialization": "",
+      "spent_gold": 40.0,
+      "spent_power": 8.0,
+      "tile": 16
+    },
+    {
+      "amount": 29.4464119115111,
+      "event": "repair",
+      "spent_gold": 12.0,
+      "spent_power": 0
+    },
+    {
+      "event": "panel_closed"
+    },
+    {
+      "attacks": 2,
+      "damage": 2.67341205532838,
+      "event": "practice_combat",
+      "shots": 5
+    }
+  ],
+  "viewport": [
+    1280.0,
+    720.0
+  ]
+}

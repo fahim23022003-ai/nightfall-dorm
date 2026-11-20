@@ -24,3 +24,9 @@ NIGHTFALL_LIVING_NIGHTMARE=1 NIGHTFALL_SURVIVOR_REBIRTH=0 NIGHTFALL_VISUAL_REBIR
   godot --path . --resolution 1280x720 --audio-driver Dummy \
   --script res://tools/capture_survivor_premium_ui.gd -- /tmp/nightfall-fallback-ui fallback
 ```
+
+## Final compact retake
+
+A final 960×540 run checks the shortened Story loadout label, all
+desktop panels and the keyboard guide's return to Settings. It passed
+46 native checks. [Story preparation](compact/story-preparation.png) · [Settings](compact/settings.png) · [Build](compact/build.png) · [Log](compact/native.log)

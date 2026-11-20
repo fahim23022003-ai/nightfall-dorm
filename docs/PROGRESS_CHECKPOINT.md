@@ -1,3 +1,14 @@
+# Survivor & UX Rebirth
+
+Fresh preview matches use a shared exterior spawn and physical
+first-arrival claims. Story starts through a local Ready lobby with
+five AI teammates. Legitimate defeats pay permanent RM Cash. The
+19-step tutorial and desktop menus have native Godot evidence.
+The original launch modes remain available.
+[Implementation, verification and playtest](SURVIVOR_REBIRTH.md)
+
+---
+
 # Living Nightmare Hunter articulation
 
 The opt-in preview renders articulated rigs for all 60 ordinary

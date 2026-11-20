@@ -43,3 +43,8 @@ XDG_DATA_HOME=/tmp/nightfall-lobby-qa godot --path . --resolution 1280x720 \
   --audio-driver Dummy --write-movie /tmp/nightfall-lobby.avi --fixed-fps 24 \
   --script tools/visual_rebirth/record_nightmare_lobby.gd -- /tmp/nightfall-lobby auto
 ```
+
+A separate uncut 720p24 recording continues from preparation through
+early Ready, both lobby and gameplay audio, shared spawn, a legal
+physical walk and E to claim the room. The fixture drives movement along
+a real room path. [Lobby to room claim](lobby-to-room-claim.mp4) · [Receipt](room-claim-receipt.json)

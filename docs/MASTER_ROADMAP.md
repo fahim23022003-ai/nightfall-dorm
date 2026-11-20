@@ -17,15 +17,13 @@ The Linux performance measurements, Windows x64 pack verification
 and owner playtest checklist accompany the report.
 [Coverage and playtest evidence](HUNTER_ARTICULATION.md)
 
-## Upcoming survivor and UI work
+## Survivor & UX Rebirth
 
-The next directive covers shared survivor spawning, first-arrival room
-claiming, half-speed NPC movement, fair defeat rewards, interactive
-tutorials and a premium UI redesign. Develop and verify those changes in
-separate checkpoints from the animation work so changes to room starts or
-rendering costs can be traced. Retain the 50-level Story, adaptive score,
-heartbeat, combat VFX and verified rigs. Preserve maps, saved progress,
-fallback modes and unrelated gameplay.
+The Windows preview contains shared survivor spawning, physical room
+competition at half player speed, defeat payouts, an event-driven
+tutorial, premium desktop menus and the offline Story Ready lobby.
+Owner playtesting and Intel UHD performance review remain pending.
+[Implementation and verification](SURVIVOR_REBIRTH.md)
 
 ## Phase 14F — Hunter animation and directional art
 
