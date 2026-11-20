@@ -18,6 +18,17 @@ The mission briefing lists the selected map and route family, preparation time, 
 
 The encounter fixtures stage Hunter position and time to exercise specific production branches. The result fixture stages low Hunter HP before settling through production damage and payout. The receipts establish live rule differences and state compatibility for the sampled situations.
 
+The three desktop gameplay clips use the production Story match and game
+render loop. The staged setups start just before each event. Playback
+advances at normal gameplay speed at 1280×720 and 24 fps with the Godot
+Master audio mix. All event assertions passed.
+
+| Encounter | Actual combat capture | Engine receipt |
+| --- | --- | --- |
+| Level 4, Blackout Protocol | [Static Cage warning and impact](story-level-04-encounter.mp4) · [still](story-level-04-encounter.png) | [Log](story-level-04-encounter.log) |
+| Level 29, Echoes of the Lost | [Retreat, Watch Hunter and completed Hall recovery](story-level-29-encounter.mp4) · [still](story-level-29-encounter.png) | [Log](story-level-29-encounter.log) |
+| Level 36, The Funeral Bell | [Reaper transformation and awakening](story-level-36-encounter.mp4) · [still](story-level-36-encounter.png) | [Log](story-level-36-encounter.log) |
+
 Reproduction from the project directory
 
 ```sh
@@ -26,4 +37,11 @@ godot --headless --path . --script res://tests/phase16_story_encounters.gd
 # Run with a graphics display available.
 godot --path . --resolution 1280x720 --audio-driver Dummy \
   --script res://tools/capture_phase16_story.gd -- /tmp/nightfall-phase16-story
+
+# Use 4, 29 or 36 in the final argument.
+NIGHTFALL_PHASE16=1 NIGHTFALL_LIVING_NIGHTMARE=1 NIGHTFALL_SURVIVOR_REBIRTH=1 \
+  NIGHTFALL_VISUAL_REBIRTH=1 NIGHTFALL_FULL_ROOM_GRID=1 NIGHTFALL_PROCEDURAL_MAPS_V2=1 \
+  godot --path . --resolution 1280x720 --audio-driver Dummy --fixed-fps 24 \
+  --write-movie /tmp/nightfall-encounter.avi \
+  --script res://tools/phase16/capture_story_encounter.gd -- /tmp/nightfall-phase16-film 29
 ```
