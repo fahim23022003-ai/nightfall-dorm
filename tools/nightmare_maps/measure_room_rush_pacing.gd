@@ -4,6 +4,20 @@ extends SceneTree
 const STEP:=.25
 const LIMIT:=240.0
 
+class CountedMatch extends MatchModel:
+ var npc_attempts:=0
+ var npc_denied:=0
+ var human_denied:=0
+
+ func try_claim_survivor(index: int,owner: int,position: Vector2) -> bool:
+  var claimed:=super.try_claim_survivor(index,owner,position)
+  if owner>0:
+   npc_attempts+=1
+   if not claimed:npc_denied+=1
+  elif not claimed:
+   human_denied+=1
+  return claimed
+
 class RushTrace extends RoomRush:
  var active_owner:=0
  var traveled: Dictionary={}
@@ -98,7 +112,7 @@ func run() -> void:
  quit(int(failures>0))
 
 func measure(theme: String,seed: int,nonce: int,active: bool) -> Dictionary:
- var model:=MatchModel.new()
+ var model:=CountedMatch.new()
  model.procedural_v2_requested=true
  model.reset(seed)
  var ready:=model.configure_map(theme)
@@ -147,6 +161,7 @@ func measure(theme: String,seed: int,nonce: int,active: bool) -> Dictionary:
  result.plan_calls=trace.plans
  result.max_replan_ms=trace.max_replan_ms
  result.reassignments=trace.reassignments
+ result.claim_attempts={"npc":model.npc_attempts,"npc_denied":model.npc_denied,"human_denied":model.human_denied}
  result.peak_budget_error=trace.peak_budget_error
  result.ok=ownership_clear and shared_origin and available.size()==6 and model.bot_claimed==5 and result.nearest_seconds<=12.0 and trace.peak_budget_error<.002 and (not active or human_claim>=0.0)
  if seed==8649 or (active and nonce%7==0):result.timeline=trace.timeline

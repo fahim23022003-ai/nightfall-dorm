@@ -1,5 +1,13 @@
 # Nightfall Dorm master roadmap
 
+## Phase 16 — Nightmare polish and performance
+
+The dedicated preview improves Room Rush destination decisions, reduces
+hidden Build UI work, and distinguishes the ten Story chapters through
+existing encounter systems. Prior launch modes and save schemas remain
+available. Review the matched room races, combat timings, recordings and
+target-device checklist. [Phase 16 implementation and evidence](PHASE16.md)
+
 ## Owner-approved project — Living Nightmare
 
 The opt-in preview combines articulated Hunter rigs, event-driven combat

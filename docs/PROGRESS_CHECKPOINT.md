@@ -1,3 +1,15 @@
+# Phase 16 · Nightmare polish and performance
+
+The Phase 16 preview starts from `07b459b`. It adds advisory Room Rush
+routing, chapter-specific encounter rules and siege feedback, and reduces
+renderer work in dense defenses. The original Spine replay fell from
+156.25 to 50.00 seconds for the fifth physical claim. The Windows preview
+uses the existing save formats and retains prior launchers. Native Windows
+and Intel UHD performance remain pending.
+[Implementation, package and evidence](PHASE16.md)
+
+---
+
 # Survivor & UX Rebirth
 
 Fresh preview matches use a shared exterior spawn and physical

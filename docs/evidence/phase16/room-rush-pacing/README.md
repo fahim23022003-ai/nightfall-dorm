@@ -22,6 +22,21 @@ Each policy ran 125 fixed-step opening simulations. These reuse the original 35 
 
 The fifth claim was quicker in all 125 pairs. Median combined NPC travel fell from 17,843 to 11,103 world units on the original 35, from 14,372 to 10,127 on longer idle routes and from 20,213 to 13,519 on contested routes. The focused regression suite completed 516 checks with Phase 16 and 507 with the previous policy, with zero failures in both runs. The suite covers deterministic decisions, no inferred reservation, displaced rivals, saved positions, traversal speed and a blocked approach that triggers local recovery.
 
+The table below also reports nearest-rank p95. The opening conflict count
+counts additional runners sharing another runner's initial destination.
+
+| Fixtures | Opening conflicts before → after | Fifth claim p95 before → after | Redirects before → after |
+| --- | ---: | ---: | ---: |
+| Original 35 | 131 → 0 | 114.50 → 60.25 s | 283 → 0 |
+| Longer routes, idle | 169 → 0 | 113.00 → 63.00 s | 353 → 0 |
+| Longer routes, contested | 169 → 0 | 144.00 → 72.00 s | 519 → 45 |
+
+An instrumented repeat counted 625 physical NPC claim transactions
+per policy. Both arms recorded zero denied NPC claims and zero denied
+human claims on their prescribed valid routes. Opening-direction
+conflicts show up as later redirects in the previous policy.
+[Per-case claim transaction counts](claim-attempts.json)
+
 ## Native Godot evidence and performance limits
 
 The nine-second, 1280×720, 24 FPS Godot clips show the same active human route in the Linux Compatibility renderer using llvmpipe, with no soundtrack. The human reaches and legally claims room 02 at 5.0 seconds in both versions. The companion map screenshots show the opening immediately after the claim. The headless logs follow the full opening past the short video.
