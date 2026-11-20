@@ -35,6 +35,10 @@ var _previous_siege_room=-1
 var _model_ref: WeakRef
 var decision_count=0
 var _route_costs: Dictionary={}
+var siege_notice_until := 0.0
+var siege_notice_room := -1
+var siege_notice := ""
+var siege_commit_announced := false
 # One entity, one identity, and one irreversible transformation per match.
 var boss_policy: Dictionary={"enabled":false}
 var transformed=false
@@ -462,6 +466,8 @@ func tick(delta: float, match_state):
    siege_seconds=0
    reassess_seconds=0
    encounter_attacks=0
+   siege_commit_announced=false
+   if match_state.uses_tactical_sieges():siege_start_hp=room.door_hp
    archetype_primed=false
    charged_ready=false
    if delta>0: match_state.record_event("encounter",target)
@@ -511,6 +517,9 @@ func tick(delta: float, match_state):
     if pressure_remaining>0 and pressure_remaining<interval: tactical_recovery=1.0
   var commitment=StrategyCatalog.ARCHETYPES[archetype].commit if archetype!="" and not transformed else 1.0
   if not match_state.wrath.domain_active() and boss_attack=="" and not archetype_primed and (match_state.balance_version!=2 or (not charged_ready and recovery_remaining<=0 and arcane.action=="" and nightmare.action=="")) and reassess_seconds>maxf(profile.commit*commitment,Catalog.HUNTER_ESCALATION.minimum_commitment) and room.door_hp>damage*2:
+   if match_state.uses_tactical_sieges():
+    _reassess_tactical_siege(room,match_state)
+    return
    var alternative=choose_target(match_state.rooms,target)
    var stalled=room.door_hp>=siege_start_hp-damage*2
    if archetype!="":target_history[target]=minf(900,float(target_history.get(target,0))+ (260 if stalled else 90))
@@ -545,10 +554,50 @@ func tick(delta: float, match_state):
    exit_corridor = false
    state = State.EXIT
 
+func _reassess_tactical_siege(room: RoomState, model):
+ var start_hp: float=siege_start_hp
+ siege_start_hp=room.door_hp
+ reassess_seconds=0.0
+ if HunterSiegeStrategy.productive_progress(start_hp,room.door_hp,damage):
+  if not siege_commit_announced:
+   siege_commit_announced=true
+   _siege_notice(model,room.index,"commit")
+   model.record_event("hunter_commit",room.index,{"reason":"breach_progress","progress":start_hp-room.door_hp})
+  return
+ var scores:=HunterSiegeStrategy.assess(model,self)
+ var alternative:=HunterSiegeStrategy.best_room(scores,room.index)
+ var current_cost: float=scores.get(room.index,INF)
+ var alternative_cost: float=scores.get(alternative,INF)
+ if not HunterSiegeStrategy.worth_switching(current_cost,alternative_cost):
+  return
+ cancel_boss_attack()
+ surge_remaining=0
+ room.repair_factor=1.0
+ retargets+=1
+ decision_count+=1
+ _siege_notice(model,alternative,"switch")
+ model.record_event("hunter_reassess",room.index,{"next_room":alternative,"reason":"better_breach_route","stalled":true,"current_cost":current_cost,"alternative_cost":alternative_cost})
+ if archetype=="stalker":
+  ability_counts.feint+=1
+  model.record_event("hunter_ability",room.index,{"ability":"feint","duration":1.0})
+ target=alternative
+ target_time=0
+ state=State.MOVE
+ model.record_event("approach",target)
+
+func _siege_notice(model, room: int, intent: String):
+ siege_notice_until=model.time+4.0
+ siege_notice_room=room
+ siege_notice=intent
+
 func choose_target(rooms: Array, excluded: int = -1) -> int:
  if _model_ref!=null and _model_ref.get_ref()!=null and _model_ref.get_ref().wrath.domain_active():return _model_ref.get_ref().wrath.domain_room
  decision_count+=1
  _route_costs.clear()
+ if _model_ref!=null and _model_ref.get_ref()!=null and _model_ref.get_ref().uses_tactical_sieges():
+  var candidates:=HunterSiegeStrategy.assess(_model_ref.get_ref(),self)
+  var choice:=HunterSiegeStrategy.best_room(candidates,excluded)
+  return HunterSiegeStrategy.best_room(candidates) if choice<0 and excluded>=0 else choice
  if (difficulty!="standard" or transformed or archetype!="") and _model_ref!=null and _model_ref.get_ref()!=null:
   var model=_model_ref.get_ref()
   if model.map_id!="legacy": _route_costs=model.hunter_route_costs(position)

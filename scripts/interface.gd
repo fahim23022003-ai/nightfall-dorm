@@ -683,9 +683,12 @@ func update_match():
  # remain visible. Existing selection/upgrade pulse still confirms the action.
  if threat and not help_open and feedback_text in ["Defense improved!","Building sold · 50% gold and electricity refunded."]:
   guide_box.visible=false;guide_label.visible=false
- warning_box.visible=threat or game.level_warning_time>0 or m.wrath.active()
+ var siege_notice: bool=room!=null and m.hunter.target==room.index and m.hunter.siege_notice_room==room.index and m.time<m.hunter.siege_notice_until
+ var switching: bool=siege_notice and m.hunter.siege_notice=="switch" and m.hunter.state==HunterState.State.MOVE
+ warning_box.visible=threat or switching or game.level_warning_time>0 or m.wrath.active()
  warning_label.visible=warning_box.visible
  if not threat and game.level_warning_time>0: warning_label.text="THE HUNTER GROWS STRONGER · LEVEL %d" % m.hunter.level
+ if switching:warning_label.text="HUNTER CHANGES APPROACH · YOUR ROOM"
  if threat:
   warning_label.text="DOOR %d/%d · UNDER ATTACK" % [roundi(room.door_hp),roundi(room.max_hp())]
   if m.hunter.tactical_action!="":warning_label.text="%s %.1fs · PREPARE DEFENSES" % [m.hunter.tactical_action.to_upper(),m.hunter.tactical_windup]
@@ -693,6 +696,7 @@ func update_match():
   elif m.hunter.archetype_primed:warning_label.text="%s · STRIKE WARNING · REPAIR NOW" % StrategyCatalog.ARCHETYPES[m.hunter.archetype].name.to_upper()
   elif m.time<m.ward_until and m.ward_capacity>0:warning_label.text="DOOR %d/%d · WARD %.0f HP" % [roundi(room.door_hp),roundi(room.max_hp()),m.ward_capacity]
   elif m.hunter.recovery_remaining>0:warning_label.text="DOOR %d/%d · RECOVERY %.1fs" % [roundi(room.door_hp),roundi(room.max_hp()),m.hunter.recovery_remaining]
+  elif siege_notice and m.hunter.siege_notice=="commit":warning_label.text="HUNTER COMMITS · HOLD THE DOOR"
   elif room.repair_factor<0.99: warning_label.text="DOOR %d/%d · REPAIRS %d%%" % [roundi(room.door_hp),roundi(room.max_hp()),roundi(room.repair_factor*100)]
   if m.hunter.boss_attack!="":
    warning_label.text="%s %.1fs · REPAIR NOW" % [BossCatalog.ATTACKS[m.hunter.boss_attack].name,m.hunter.windup_remaining]

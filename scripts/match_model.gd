@@ -46,6 +46,7 @@ var map_id="legacy"
 var map_data: Dictionary={}
 var procedural_requested := OS.get_environment("NIGHTFALL_PROCEDURAL_MAPS") == "1"
 var procedural_v2_requested := OS.get_environment("NIGHTFALL_PROCEDURAL_MAPS_V2") == "1"
+var hard_tactics_enabled := true
 var map_seed: int=1
 var haunt_recovery := HauntedRecovery.new()
 var _navigation=AStar2D.new()
@@ -162,6 +163,9 @@ func map_bounds() -> Rect2:
 
 func is_procedural() -> bool:
  return map_data.has("halls")
+
+func uses_tactical_sieges() -> bool:
+ return hard_tactics_enabled and run_kind=="campaign" and map_data.get("version")==NightmareMap.MACRO_VERSION and difficulty in ["hard","hell"] and not hunter.transformed
 
 func configure_map(id: String, stored_layout: Dictionary={}) -> bool:
  if time>0 or player_room>=0: return false
