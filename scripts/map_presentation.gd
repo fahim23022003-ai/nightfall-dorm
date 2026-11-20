@@ -118,7 +118,8 @@ func render_overview_room(c,p,room: RoomState,theme: String,colors: Array):
  c.draw_multiline(walls,tint.darkened(.38), (2.2 if selected or owned else 1.2)/c.camera.zoom.x)
  var tag: String="%02d" % [room.index+1]
  if c.camera.zoom.x>=.20:
-  tag+="  "+("YOU" if owned else room.survivor_name().split(" ")[0] if room.owner>=0 else "VACANT")
+  var state: String=c.model.room_rush_status(room.index)
+  tag+="  "+("YOU" if owned else room.survivor_name().split(" ")[0] if room.owner>=0 else "OPEN · NPC EN ROUTE" if state=="approaching" else "VACANT")
  draw_overview_label(c,p,tag,room.bed_position()+OFFSET,tint)
 
 func draw_overview_label(c,p,label: String,at: Vector2,tint: Color):
@@ -145,12 +146,14 @@ func draw_overview_footer(c,p,data: Dictionary,tint: Color):
  var detail_tint:=Color("BBC8C7")
  if c.overview_room>=0:
   var room: RoomState=c.model.rooms[c.overview_room]
-  var resident: String=room.survivor_name() if room.owner>=0 else "Vacant"
+  var resident: String=c.room_ownership_label(room) if c.model.room_rush_active() else room.survivor_name() if room.owner>=0 else "Vacant"
+  if c.model.room_rush_status(room.index)=="approaching":
+   resident+=" · Still vacant"
   var trait_name: String=StrategyCatalog.TRAITS.get(room.trait_id,{}).get("name","")
   detail="%02d  %s" % [room.index+1,resident]
   if not trait_name.is_empty():detail+="  ·  "+trait_name
   if c.model.player_room<0 and c.model.time<c.model.preparation and room.owner<0 and not c.overview_opening.is_empty():
-   detail+="  ·  Walk ~%ds from spawn  ·  Hunter ~%ds if targeted first" % [c.overview_opening.entry_seconds,c.overview_opening.hunter_seconds]
+   detail+="  ·  Walk ~%ds  ·  Hunter ~%ds if targeted first" % [c.overview_opening.entry_seconds,c.overview_opening.hunter_seconds]
    if c.overview_opening.get("early_siege_risk",false):
     detail+="  ·  FAST HUNTER ROUTE"
     detail_tint=Color("EDBA78")
@@ -202,7 +205,8 @@ func render_room(c,p,room,theme,colors):
   var plaque_size := 11
   if generated and c.full_map:
    plaque_size=roundi(10.0/maxf(c.camera.zoom.x,.12))
-  p.text(c,"%02d · %s" % [room.index+1,room.survivor_name() if room.owner>=0 else "VACANT"],plaque,plaque_size,Color("EDF4ED"))
+  var occupant: String=c.room_ownership_label(room) if c.model.room_rush_active() else room.survivor_name() if room.owner>=0 else "VACANT"
+  p.text(c,"%02d · %s" % [room.index+1,occupant],plaque,plaque_size,Color("EDF4ED"))
  if room.trait_id!="" and not focused_grid and not generated:
   var room_trait=StrategyCatalog.TRAITS[room.trait_id]
   var at=r.position+Vector2(8,r.size.y-48) if expanded_horizontal else r.position+Vector2(r.size.x-193,4)

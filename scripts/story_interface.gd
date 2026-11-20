@@ -1,9 +1,9 @@
 extends RefCounted
 ## Story screens reuse the regular Inventory and permanent-perk editors.
 const MODES := ["standard","hard","hell"]
-const GOLD := "D9BC83"
-const BODY := "C0CBCD"
-const QUIET := "8EAAAB"
+const GOLD := "D2B47B"
+const BODY := "BAC8D6"
+const QUIET := "BAC8D6"
 
 var ui
 var game
@@ -23,7 +23,10 @@ func show_prepare():
  var mission:=StoryCatalog.mission(track.position)
  _begin_screen("story_prepare")
  game.audio_event("menu")
- ui.box(Rect2(83,46,1114,628),"192631","748691")
+ if game.survivor_preview_enabled and not game.mobile_mode and ui.has_method("theme_panel"):
+  _show_preparation(p,mode,track,mission)
+  return
+ ui.box(Rect2(83,46,1114,628),"192631",GOLD)
  _line("STORY MODE     /     CHAPTER %02d  ·  %s" % [mission.chapter,mission.chapter_title.to_upper()],Vector2(123,76),15,935,GOLD)
  _line("LEVEL %02d     %s" % [mission.level,mission.title],Vector2(120,108),40,968,"E6DBBF",true)
  ui.progression.badge(p.rank_index(),Vector2(1092,80),66)
@@ -47,7 +50,7 @@ func show_prepare():
   button.icon=PremiumButton.texture(picked)
   button.expand_icon=true
   button.add_theme_constant_override("icon_max_width",25)
- ui.box(Rect2(124,381,1030,119),"22333B","566D72")
+ ui.box(Rect2(124,381,1030,119),"2D3D4C","66788A")
  if track.finished:
   _line("DAWN HAS RETURNED",Vector2(143,398),23,970,GOLD,true)
   _line("This difficulty track is complete. Its chapters are available in the Story Archive.",Vector2(145,446),17,970,BODY)
@@ -62,16 +65,63 @@ func show_prepare():
  _line(slots,Vector2(125,515),16,1023,BODY)
  var support: String=notice if not notice.is_empty() else p.warning if p.warning!="" else "First-clear XP is shared across modes. A loss drops one level, down to your checkpoint."
  _line(support,Vector2(125,553),15,1022,"E3AE8D" if not notice.is_empty() or p.warning!="" else QUIET)
- ui.button("Main menu",Vector2(123,605),game.return_menu,170,40)
- ui.button("Items",Vector2(309,605),ui.items_ui.inventory,151,40)
+ ui.button("‹ Main menu",Vector2(123,605),game.return_menu,170,40)
+ ui.button("Item loadout",Vector2(309,605),ui.items_ui.inventory,151,40)
  ui.button("Perks",Vector2(475,605),ui.progression.show_perk_loadout,148,40)
- var launch: Button=ui.button("STORY ARCHIVE" if track.finished else "START MISSION",Vector2(828,595),func():
-  if track.finished:show_archive()
-  elif not game.start_story(mode) and ui.current_screen=="story_prepare":
-   notice=p.warning if p.warning!="" else "Mission could not start. Confirm that the profile can be saved."
-   show_prepare(),326,52)
+ var launch: Button=ui.button("STORY ARCHIVE" if track.finished else "START MISSION",Vector2(828,595),func():_launch(mode,track.finished),326,52)
  launch.name="StartStoryMission"
  launch.disabled=p.read_only and not track.finished
+
+func _show_preparation(profile: PlayerProfile, mode: String, track: Dictionary, mission: Dictionary):
+ ui.theme_backdrop()
+ ui.theme_panel(Rect2(72,46,1136,628),"frame")
+ _line("STORY PREPARATION   ·   CHAPTER %02d  /  %s" % [mission.chapter,mission.chapter_title.to_upper()],Vector2(110,78),15,986,GOLD)
+ _line("LEVEL %02d   %s" % [mission.level,mission.title],Vector2(106,104),42,1010,"F4F0E8",true)
+ ui.progression.badge(profile.rank_index(),Vector2(1106,72),58)
+ _line("%02d of 50 cleared   ·   Checkpoint %02d" % [track.highest,track.checkpoint],Vector2(110,164),16,800,BODY)
+ _progress(track.highest,Vector2(110,193),1060)
+ for i in range(MODES.size()):
+  var picked: String=MODES[i]
+  var difficulty: Dictionary=StoryProgress.summary(profile.story,picked)
+  var text: String=RankCatalog.DIFFICULTIES[picked].name+"  ·  "+("Complete" if difficulty.finished else "Level %02d" % difficulty.position)
+  var choice: Button=ui.button(text,Vector2(110+i*359,225),func():_select(picked),341,47)
+  choice.name="StoryDifficulty_"+picked
+  choice.toggle_mode=true
+  choice.button_pressed=mode==picked
+  choice.disabled=profile.read_only
+  ui.theme_button(choice,"selected" if mode==picked else "secondary",picked)
+ ui.theme_panel(Rect2(110,294,652,260),"card")
+ _line("MISSION BRIEFING",Vector2(131,314),15,610,GOLD)
+ var caption: String=StoryCatalog.ENDING if track.finished else mission.briefing
+ _paragraph(caption,Rect2(131,353,609,91),20,"F4F0E8")
+ if not track.finished:
+  ui.premium_icon(mission.archetype,Vector2(132,459),Vector2(53,53))
+  _line(mission.objective,Vector2(199,451),19,535,"F4F0E8",true)
+  _paragraph("%s · %s" % [MapCatalog.map(mission.theme).title,StrategyCatalog.ARCHETYPES[mission.archetype].hint],Rect2(200,483,537,59),14,BODY)
+ ui.theme_panel(Rect2(782,294,388,260),"card")
+ _line("YOUR LOADOUT",Vector2(802,314),15,350,GOLD)
+ var names:=PackedStringArray()
+ for id in profile.item_loadout:names.append(ItemCatalog.ITEMS[id].name)
+ _line("Consumables   %d / %d" % [names.size(),ItemCatalog.SLOTS],Vector2(802,349),18,343,"F4F0E8")
+ _paragraph(", ".join(names) if not names.is_empty() else "No consumables equipped",Rect2(802,378,341,59),15,BODY)
+ _line("%s rank   ·   %d / %d perks" % [profile.rank_name(),profile.equipped.size(),profile.perk_slots()],Vector2(802,441),16,340,BODY)
+ ui.theme_button(ui.button("Prepare items",Vector2(802,488),ui.items_ui.inventory,170,42),"inventory","inventory")
+ ui.theme_button(ui.button("Rank perks",Vector2(987,488),ui.progression.show_perk_loadout,161,42),"secondary","rank")
+ var support: String=notice if notice!="" else profile.warning if profile.warning!="" else "A lost night drops one level, down to the earned checkpoint."
+ _line(support,Vector2(110,571),15,1059,BODY)
+ ui.theme_button(ui.button("‹ Main menu",Vector2(110,609),game.return_menu,180,40),"quiet")
+ var launch: Button=ui.button("STORY ARCHIVE" if track.finished else "START MATCH",Vector2(832,600),func():_launch(mode,track.finished),338,49)
+ launch.name="StartStoryMission"
+ launch.disabled=profile.read_only and not track.finished
+ ui.theme_button(launch,"primary","play")
+ launch.grab_focus()
+
+func _launch(mode: String, finished: bool):
+ if finished:
+  show_archive()
+ elif not game.open_story_lobby(mode) and ui.current_screen=="story_prepare":
+  notice=game.profile.warning if game.profile.warning!="" else "Mission could not start. Confirm that the profile can be saved."
+  show_prepare()
 
 func _select(mode: String):
  if game.profile.select_difficulty(mode):
@@ -141,15 +191,26 @@ func show_result():
    badge.scale=Vector2(.65,.65)
    badge.create_tween().tween_property(badge,"scale",Vector2.ONE,.55).set_trans(Tween.TRANS_BACK)
  var reveal: bool=not game.profile.pending_spins.is_empty()
- if reveal:_line("Your saved item reward opens first.",Vector2(280,517),14,715,QUIET)
- var next: Button=ui.button("STORY ARCHIVE" if completed else "CONTINUE STORY" if won else "TRY AGAIN",Vector2(278,565),func():
+ if game.survivor_preview_enabled:
+  _line("RM CASH EARNED  +%d    ·    CURRENT BALANCE  %d RM" % [
+   int(game.last_progression.get("rm_cash",0)),int(game.last_progression.get("rm_balance",game.profile.rm_cash))],Vector2(280,515),17,715,GOLD,true)
+ elif reveal:
+  _line("Your saved item reward opens first.",Vector2(280,517),14,715,QUIET)
+ var next: Button=ui.button("STORY ARCHIVE" if completed else "CONTINUE STORY",Vector2(278,565),func():
   if reveal:ui.items_ui.spin()
   elif completed:
    game.return_menu()
    show_archive()
-  else:show_prepare(),432,52)
+  else:show_prepare(),272,52)
  next.name="ContinueStoryResult"
- ui.button("Main menu",Vector2(744,567),game.return_menu,254,48)
+ if ui.has_method("theme_button"):ui.theme_button(next,"primary","play")
+ if game.survivor_preview_enabled:
+  ui.button("Prepare items",Vector2(562,569),func():
+   game.return_menu()
+   show_prepare()
+   ui.items_ui.inventory(),144,44)
+  ui.button("Shop",Vector2(717,569),ui.shop.show_shop,109,44).name="StoryResultShop"
+ ui.button("Main menu",Vector2(835,569),game.return_menu,165,44)
  if not bool(options.get("reduced_effects",false)):
   card.modulate.a=.35
   card.create_tween().tween_property(card,"modulate",Color.WHITE,.34)

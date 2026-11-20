@@ -312,6 +312,8 @@ func render(c):
    c.draw_set_transform(Vector2.ZERO)
    text(c,"ABANDONED",q+Vector2(-35,38),10,Color("9D879A"))
 
+ if m.room_rush_active():
+  render_room_runners(c,visible)
  if (m.player()==null or not m.player().sleeping) and (m.player()==null or m.player().alive):
   resident(c,m.player_position,-1,true)
  var hunter_margin:=RIG_VIEW_MARGIN-WORLD_VIEW_MARGIN if hunter_combat.enabled else 80.0
@@ -540,6 +542,22 @@ func resident(c, pos: Vector2, index: int, player: bool):
  c.draw_texture_rect(texture,Rect2(OFFSET+pos+Vector2(-18,-40+bob),Vector2(36,52)),false)
  # Names are laid out together so clustered arrivals cannot overprint each other.
 
+func render_room_runners(c,visible: Rect2):
+ for runner: Dictionary in c.model.room_rush_runners():
+  var at: Vector2=OFFSET+Vector2(runner.position)
+  if not visible.grow(24).has_point(at):
+   continue
+  var id:=int(runner.get("id",runner.get("owner",1)))
+  if c.macro_overview():
+   c.draw_circle(at,3.5/c.camera.zoom.x,Color("D2B47B"))
+   continue
+  var formation: float=1.0-smoothstep(0.0,.8,float(c.model.time))
+  at+=Vector2.from_angle(float(id)*TAU/5.0)*19.0*formation
+  var frame_index:=int(clock*7.0+id)%4 if int(runner.get("target",-1))>=0 else 0
+  sprite(c,"shadow",at+Vector2(0,11),Vector2(32,16))
+  var key:="bot_%d_walk_%d" % [posmod(id-1,5),frame_index]
+  c.draw_texture_rect(cartoon[key],Rect2(at+Vector2(-17,-37),Vector2(34,49)),false)
+
 func hunter(c,h):
  if h.transformed:
   boss_presentation.draw(c,h,hunter_clock,death_age,identity.heading,c.profile.settings.get("reduced_effects",false),identity.velocity.length()>1,nightmare_visual.preview_turn,nightmare_visual.preview_release)
@@ -742,7 +760,9 @@ func cartoon_room(c,room: RoomState,owned: bool):
  sprite(c,"warm_glow",r.position+Vector2(30,40),Vector2(160,180),Color(1,1,1,0.45))
  c.draw_texture_rect(cartoon.lamp,Rect2(r.position+Vector2(8,15),Vector2(23,33)),false)
  var themes=["STANDARD","STUDENT","MESSY","COZY","OLD DORM","MAINTENANCE"]
- if not focused_grid:text(c,"%02d  %s" % [room.index+1,themes[room.index]],r.position+Vector2(15,14),9 if room.index==5 else 11,Color("E6EDF1"))
+ if not focused_grid:
+  var title: String=c.room_ownership_label(room) if c.model.room_rush_active() else themes[room.index]
+  text(c,"%02d  %s" % [room.index+1,title],r.position+Vector2(15,14),9 if room.index==5 else 11,Color("E6EDF1"))
  if owned:
   c.draw_style_box(frame(Color.TRANSPARENT,Color("7BE3A1"),6),r.grow(9))
   if not focused_grid:text(c,"YOUR ROOM",r.position+Vector2(10,210 if room.index<3 else 71),11,Color("D4FFE1"))

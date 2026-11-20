@@ -435,7 +435,7 @@ func show_match():
  context_box=box(Rect2(900,246,364,382),"263E50","7F9DAA")
  context_box.mouse_filter=Control.MOUSE_FILTER_STOP
  context_title=label_at("BUILD A DEFENSE",Vector2(14,12),18,304,true,context_box)
- build_cancel_button=button("Cancel" if use_living_ui() else "×",Vector2(326,8),game.cancel_placement,28,28,context_box)
+ build_cancel_button=button("Cancel" if use_living_ui() else "×",Vector2(326,8),func():game.cancel_placement(true),28,28,context_box)
  build_cancel_button.name="build_cancel"
  if use_living_ui():
   context_box.add_theme_stylebox_override("panel",GothicTheme.living_surface("frame"))
@@ -609,12 +609,12 @@ func open_confirmation():
  context_mode="confirm"
  refresh_context()
 
-func close_context():
+func close_context(explicit: bool=false):
  var was_open: bool = context_open
  game.pending_build=""
  game.placement_on_tile=false
  context_open=false;pending_branch=""
- if was_open and use_living_ui() and game.tutorial_active and is_instance_valid(game.onboarding) and game.onboarding.has_method("note_panel_closed"):
+ if explicit and was_open and use_living_ui() and game.tutorial_active and is_instance_valid(game.onboarding) and game.onboarding.has_method("note_panel_closed"):
   game.onboarding.note_panel_closed()
  if bottom_context==null:
   if is_instance_valid(context_box):context_box.visible=false
@@ -736,6 +736,7 @@ func show_pause(open: bool):
   pause_items.append(reset)
 
 func sell_selected():
+ if game.tutorial_active and game.survivor_preview_enabled:return
  var success=game.model.sell_building(game.selected_tile)
  if success: close_context()
  purchase(success)
@@ -1005,6 +1006,8 @@ func show_result():
    if is_instance_valid(item): item.disabled=false)
 func action_reason(action: String) -> String:
  # Read-only presentation query: never spend resources or change last_error.
+ if action=="sell" and game.tutorial_active and game.survivor_preview_enabled:
+  return "Keep your practice machines for the remaining lessons."
  var m = game.model
  if not m.running:
   return "Paused. Resume to purchase."

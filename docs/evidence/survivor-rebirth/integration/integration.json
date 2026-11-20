@@ -1,0 +1,38 @@
+{
+  "checks": 105,
+  "display": "X11",
+  "engine": "4.6.3-stable (official)",
+  "failures": 0,
+  "measurements": {
+    "cancel": {
+      "elapsed": 2.4,
+      "profile_bytes_unchanged": true
+    },
+    "cancel_loading": {
+      "profile_bytes_unchanged": true
+    },
+    "early": {
+      "initial_time": 0,
+      "seconds": 10.75,
+      "serial_increment": 1
+    },
+    "timeout": {
+      "initial_time": 0,
+      "ready_at": 15.0,
+      "serial_increment": 1
+    },
+    "walk": {
+      "claim_seconds": 5.89999999999999,
+      "distance": 1051.0,
+      "income_after_tick": 0.278099999999998,
+      "max_bot_speed": 90.0,
+      "max_player_speed": 180.0048828125,
+      "room": 0,
+      "slept_at": 6.64999999999998,
+      "spawn": [
+        2624.0,
+        336.0
+      ]
+    }
+  }
+}

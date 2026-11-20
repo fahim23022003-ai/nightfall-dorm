@@ -142,6 +142,7 @@ func refresh_machines(r,show: bool):
 
 func toggle_range():ranges=not ranges;refresh();game.queue_redraw()
 func undo():
+ if game.tutorial_active and game.survivor_preview_enabled:return
  if not applicable():return
  var ok=room().spatial.undo(game.model)
  if ok:last_visual.clear()
@@ -159,8 +160,11 @@ func begin(building_kind: String) -> bool:
  cursor_world=from_screen(game.get_viewport().get_mouse_position())
  if r.spatial.grid and not r.spatial.grid_bounds().has_point(cursor_world):cursor_world=r.spatial.grid_bounds().get_center()
  point=aligned(cursor_world,Input.is_physical_key_pressed(KEY_SHIFT));refresh()
+ if game.tutorial_active and game.survivor_preview_enabled and game.onboarding.has_method("note_build_selected"):
+  game.onboarding.note_build_selected(kind)
  return true
 func begin_move() -> bool:
+ if game.tutorial_active and game.survivor_preview_enabled:return false
  if not applicable():return false
  var id=game.selected_tile;var r=room();var error=r.spatial.move_reason(game.model,id)
  if error!="":r.reject(error);game.ui.purchase(false);return false
@@ -177,14 +181,19 @@ func reason() -> String:
  return r.spatial.purchase_reason(kind,point,rotation) if kind!="" else "Choose a building"
 func confirm(at: Vector2,fine=false) -> bool:
  if not applicable() or not active():return false
+ var lesson: bool=game.tutorial_active and game.survivor_preview_enabled
  cursor_world=at;point=aligned(at,fine);var r=room();var error=reason()
+ if lesson and game.onboarding.has_method("permits_place") and not game.onboarding.permits_place(kind,point):
+  refresh();game.queue_redraw();return false
  if error!="":r.reject(error);game.ui.purchase(false);refresh();return false
  var id=moving;var before=r.tile_position(id) if id>=0 else Vector2.ZERO
  var ok=game.model.move_building(point,rotation if r.spatial.grid else -1) if moving>=0 else game.model.place_building(kind,point,rotation)
  if ok:
   if id<0:id=r.spatial.next_id-1
   else:last_visual={"id":id,"instance":int(r.buildings[id].instance_id),"from":before,"to":point,"life":.22}
-  game.selected_tile=id;kind="";moving=-1;rotation=0
+  game.selected_tile=id
+  if not lesson or kind!="turret":kind=""
+  moving=-1;rotation=0
  game.ui.purchase(ok);refresh();game.queue_redraw();return ok
 func handle_cancel(event) -> bool:
  if not applicable():return false
@@ -192,6 +201,11 @@ func handle_cancel(event) -> bool:
  var right=event is InputEventMouseButton and event.pressed and event.button_index==MOUSE_BUTTON_RIGHT
  if (escape or right) and (active() or planning):
   game.cancelled_pointer=Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+  if right and game.tutorial_active and game.survivor_preview_enabled and kind!="":
+   return true
+  if escape:
+   game.cancel_placement(true)
+   planning=false;refresh();game.queue_redraw();return true
   cancel();planning=false;game.ui.close_context();refresh();game.queue_redraw();return true
  return false
 func handle(event) -> bool:
@@ -285,6 +299,8 @@ func refresh():
    elif error=="Outside unlocked room":error="Footprint extends past the usable floor"
    elif error=="":error="Valid floor · cell %d, %d" % [cell.x,cell.y]
   var controls=("Click to place · " if current_preview_error=="" else "")+"Q / Shift+Q rotate\nEsc / right-click cancels" if grid else "Click place · Esc / right cancel · Shift fine · F snap · O range"
+  if grid and game.tutorial_active and game.survivor_preview_enabled:
+   controls=("Click to place · " if current_preview_error=="" else "")+"Q rotates · Cancel / Esc closes"
   hint.position=Vector2(20,349) if grid else Vector2(355,600)
   hint.size=Vector2(320,108) if grid else Vector2(550,42)
   hint.text=title+"\n"+("Valid floor" if error=="" else error)+"\n"+controls

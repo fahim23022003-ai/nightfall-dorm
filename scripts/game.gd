@@ -13,6 +13,9 @@ var last_progression: Dictionary={}
 var selected_difficulty="standard"
 var campaign_mode=false
 var story_preview_enabled:=OS.get_environment("NIGHTFALL_LIVING_NIGHTMARE")=="1"
+var survivor_preview_enabled:=OS.get_environment("NIGHTFALL_SURVIVOR_REBIRTH")=="1" or (story_preview_enabled and OS.get_environment("NIGHTFALL_SURVIVOR_REBIRTH")=="")
+var story_lobby: Control
+var story_lobby_request: Dictionary={}
 var _stage_request=""
 var last_hunter_level=1
 var level_warning_time=0.0
@@ -65,6 +68,10 @@ func start_endless(map: String="abandoned_dorm",difficulty: String="standard",se
  var next=MatchModel.new()
  if not next.configure_endless(map,difficulty,seed_value,int(entry.id),RankCatalog.bonuses(entry.equipped)):return false
  next.configure_balance(new_balance_version)
+ if survivor_preview_enabled and not next.begin_room_rush(int(entry.id)):
+  profile.forfeit_endless()
+  ui.replay_ui.notice="This layout could not provide a shared route to all rooms. Choose another seed."
+  return false
  match_id=int(entry.id);_adopt_session(next);bind_run_choices()
  ui.replay_ui.remember_macro_layout(model)
  return true
@@ -199,6 +206,7 @@ func start_tutorial(replay=false):
  hunter_spectating=false
  watched_room=-1
  if mobile_mode:return false
+ construction.reset()
  tutorial_active=true
  temporary_loadout=null
  model=MatchModel.new();model.tutorial_mode=true;model.reset(17);model.tutorial_mode=true;model.configure_stage("stage_1");model.configure_balance(new_balance_version);model.preparation=10000;model.bot_claimed=5
@@ -207,7 +215,7 @@ func start_tutorial(replay=false):
  last_hunter_level=1;level_warning_time=0;danger_time=0;last_attacks=0;last_shots=0
  floating.clear();last_income.clear();income_clock=0;ui_clock=0
  audio_system.reset_match(model);presentation.reset();horror.reset();mode="match";full_map=false;zoom_factor=1
- ui.show_match();focus_camera(true);onboarding.begin_tutorial()
+ ui.show_match();focus_camera(true);onboarding.begin_tutorial(replay)
  return true
 
 func enter_game():
@@ -219,6 +227,72 @@ func start_story(difficulty: String) -> bool:
  if not story_preview_enabled or not difficulty in RankCatalog.DIFFICULTIES or not profile.enable_story():return false
  if profile.selected_difficulty!=difficulty and not profile.select_difficulty(difficulty):return false
  return start_match(difficulty,StoryProgress.position(profile.story,difficulty))
+
+func open_story_lobby(difficulty: String) -> bool:
+ if not survivor_preview_enabled or mobile_mode:
+  return start_story(difficulty)
+ if is_instance_valid(story_lobby) or mode!="menu" or ui.current_screen!="story_prepare":
+  return false
+ if not story_preview_enabled or profile.read_only or difficulty!=profile.selected_difficulty:
+  return false
+ if not profile.pending_spins.is_empty() or profile.active_match.get("run_kind","")=="endless":
+  return start_story(difficulty)
+ var track:=StoryProgress.summary(profile.story,difficulty)
+ if track.finished:
+  return false
+ var mission:=StoryCatalog.mission(track.position)
+ if mission.is_empty():
+  return false
+ var seed:=StoryProgress.seed_for(profile.story,track.position)
+ var lobby_script:=load("res://scripts/nightmare_lobby.gd") as Script
+ if lobby_script==null:
+  return false
+ var lobby=lobby_script.new()
+ story_lobby=lobby
+ story_lobby_request={"level":track.position,"difficulty":difficulty,
+  "items":profile.item_loadout.duplicate(),"perks":profile.equipped.duplicate()}
+ ui.clear()
+ ui.current_screen="story_lobby"
+ mode="story_lobby"
+ lobby.start_requested.connect(func(): _launch_story_from_lobby.call_deferred(lobby))
+ lobby.cancel_requested.connect(func(): _cancel_story_lobby(lobby))
+ lobby.cue_requested.connect(func(cue: String): audio_system.lobby_cue(cue))
+ ui.panel.add_child(lobby)
+ lobby.configure(mission,difficulty,mission.archetype,seed)
+ audio_system.set_lobby_active(true)
+ return true
+
+func _close_story_lobby():
+ if not is_instance_valid(story_lobby):
+  return
+ var lobby=story_lobby
+ story_lobby=null
+ story_lobby_request.clear()
+ lobby.close()
+ lobby.queue_free()
+ audio_system.set_lobby_active(false)
+
+func _cancel_story_lobby(lobby: Control):
+ if lobby!=story_lobby:
+  return
+ _close_story_lobby()
+ mode="menu"
+ ui.campaign.story_ui.show_prepare()
+
+func _launch_story_from_lobby(lobby: Control):
+ if lobby!=story_lobby:
+  return
+ var request:=story_lobby_request.duplicate(true)
+ _close_story_lobby()
+ mode="menu"
+ var difficulty: String=request.difficulty
+ if difficulty==profile.selected_difficulty and StoryProgress.position(profile.story,difficulty)==request.level and profile.item_loadout==request.items and profile.equipped==request.perks:
+  if start_story(difficulty):
+   return
+ if ui.current_screen=="story_lobby":
+  if ui.campaign.story_ui.notice=="":
+   ui.campaign.story_ui.notice=profile.warning if profile.warning!="" else "This session could not start. Review your loadout and try again."
+  ui.campaign.story_ui.show_prepare()
 
 func start_stage(id: String, difficulty: String="standard") -> bool:
  if not RankCatalog.DIFFICULTIES.has(difficulty) or not profile.stage_unlocked(id): return false
@@ -265,6 +339,9 @@ func start_match(difficulty: String="",story_level: int=0) -> bool:
   model.preparation=maxf(model.preparation,float(mission.get("preparation",0.0)))
  model.configure_strategy(seed_value if story_level>0 else int(profile.statistics.matches),entry.archetype,entry.contract,match_id)
  profile.apply_stage_bonus(model,entry)
+ if survivor_preview_enabled and not model.begin_room_rush(match_id):
+  ui.campaign.story_ui.notice="This layout could not provide a shared route to all rooms."
+  return false
  audio_system.reset_match(model)
  audio_event("match_start")
  last_progression={}
@@ -308,6 +385,7 @@ func activate_item(slot: int,target: int=-1) -> bool:
  return ok
 
 func return_menu():
+ _close_story_lobby()
  if construction!=null:construction.reset()
  hunter_spectating=false
  watched_room=-1
@@ -334,6 +412,9 @@ func toggle_pause():
 
 func _process(delta: float):
  if in_background: return
+ if mode=="story_lobby":
+  audio_system.update_state(delta,model,"lobby")
+  return
  if ui.shop!=null:ui.shop.update()
  level_warning_time=maxf(0,level_warning_time-delta)
  danger_time=maxf(0,danger_time-delta)
@@ -396,7 +477,8 @@ func _process(delta: float):
    else:ui.replay_ui.show_session_result()
  if mode not in ["match","result"] or tutorial_active:audio_system.set_tension("quiet",0)
  if construction!=null:construction.update(delta)
- audio_system.update_state(delta,model,mode,hunter_spectating)
+ var score_context: String="story_prepare" if mode=="menu" and ui.current_screen=="story_prepare" and survivor_preview_enabled else mode
+ audio_system.update_state(delta,model,score_context,hunter_spectating)
  SessionInterface.refresh(ui)
  guidance.refresh(self)
  if ui.items_ui!=null: ui.items_ui.update(delta)
@@ -413,6 +495,8 @@ var suppress_double_click_release=false
 var cancelled_pointer=false
 
 func _input(event):
+ if mode=="story_lobby":
+  return
  if hunter_spectating:
   if event is InputEventKey and event.pressed and not event.echo:
    if event.keycode in [KEY_HOME,KEY_ESCAPE]:return_from_hunter()
@@ -426,7 +510,7 @@ func _input(event):
   cancelled_pointer=false;get_viewport().set_input_as_handled();return
  if mode=="match" and event is InputEventKey and event.keycode==KEY_ESCAPE and event.pressed and not event.echo and ui.context_open:
   cancelled_pointer=Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
-  ui.close_context();get_viewport().set_input_as_handled();return
+  ui.close_context(true);get_viewport().set_input_as_handled();return
  if (mode!="match" and ui.current_screen!="shop") or not event is InputEventMouseButton: return
  if event.button_index!=MOUSE_BUTTON_LEFT: return
  if event.pressed:
@@ -454,15 +538,16 @@ func _unhandled_input(event):
   elif event.keycode==KEY_B and model.running and watched_room<0:
    if model.player()==null:ui.touch_notice("Claim an empty room first · E inside the room.")
    else:ui.open_build_menu()
-  elif event.keycode==KEY_E and model.running and watched_room<0: model.interact()
+  elif event.keycode==KEY_E and model.running and watched_room<0:
+   interact_survivor()
   elif event.keycode==KEY_M: toggle_map()
   elif event.keycode==KEY_G: toggle_guide()
   elif event.keycode==KEY_I and not tutorial_active:ui.items_ui.toggle_expanded()
   elif event.keycode==KEY_R and model.running: ui.purchase(model.repair_door())
   elif event.keycode==KEY_ESCAPE:
-   if pending_build!="": cancel_placement()
+   if pending_build!="": cancel_placement(true)
    elif watched_room>=0:return_to_my_room()
-   elif ui.context_open: ui.close_context()
+   elif ui.context_open: ui.close_context(true)
    elif ui.replay_ui.preparing:ui.replay_ui.show_intermission()
    else: toggle_pause()
  if event is InputEventMouseButton and event.pressed:
@@ -517,11 +602,23 @@ func confirm_placement():
  ui.purchase(success)
  return success
 
-func cancel_placement():
+func cancel_placement(explicit: bool=false):
+ var previous_kind: String=construction.kind if construction!=null and construction.kind!="" else pending_build
  if construction!=null:construction.cancel()
  pending_build=""
  placement_on_tile=false
- ui.close_context()
+ ui.close_context(explicit)
+ if explicit and previous_kind!="" and tutorial_active and survivor_preview_enabled and is_instance_valid(onboarding) and onboarding.has_method("note_placement_cancelled"):
+  onboarding.note_placement_cancelled(previous_kind)
+
+func interact_survivor():
+ if tutorial_active and survivor_preview_enabled and is_instance_valid(onboarding) and onboarding.has_method("permits_interact") and not onboarding.permits_interact():
+  return
+ var before: int=model.player_room
+ model.interact()
+ if tutorial_active and survivor_preview_enabled and before<0 and model.player_room>=0:
+  model.enable_player_grid(true)
+  ui.update_match()
 
 func toggle_map():
  cancel_placement()
@@ -676,8 +773,16 @@ func _preview_room_extent(room: RoomState) -> Rect2:
 func world_to_screen(point: Vector2) -> Vector2:
  return get_viewport().get_canvas_transform()*(point+MAP_OFFSET)
 
+func room_ownership_label(room: RoomState) -> String:
+ match model.room_rush_status(room.index):
+  "player": return "YOUR ROOM"
+  "npc": return "NPC CLAIMED"
+  "approaching": return "NPC APPROACHING"
+  _: return "VACANT"
+
 func _draw():
- presentation.render(self)
+ if mode!="story_lobby":
+  presentation.render(self)
 
 func audio_event(name: String):
  if is_instance_valid(audio_system): audio_system.event(name)

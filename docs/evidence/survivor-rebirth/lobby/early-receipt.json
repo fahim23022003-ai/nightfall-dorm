@@ -1,0 +1,64 @@
+{
+  "ai_ready_times": [
+    1.66666666666667,
+    2.95833333333333,
+    3.91666666666666,
+    5.0,
+    6.29166666666668
+  ],
+  "announced_match_id": 2,
+  "audio_cues": {
+    "join": 5,
+    "open": 1,
+    "ready": 1
+  },
+  "branch": "early",
+  "checks": 15,
+  "failures": 0,
+  "fps": 24,
+  "gameplay_score": "music_calm",
+  "human_ready_time": 1.875,
+  "initial_roster": [
+    {
+      "human": true,
+      "name": "You",
+      "phase": "waiting"
+    },
+    {
+      "human": false,
+      "name": "Alex",
+      "phase": "standby"
+    },
+    {
+      "human": false,
+      "name": "Mia",
+      "phase": "standby"
+    },
+    {
+      "human": false,
+      "name": "Rowan",
+      "phase": "standby"
+    },
+    {
+      "human": false,
+      "name": "Kai",
+      "phase": "standby"
+    },
+    {
+      "human": false,
+      "name": "Nora",
+      "phase": "standby"
+    }
+  ],
+  "launched_story_level": 1,
+  "loading_started_at": 6.29166666666668,
+  "next_match_id": 3,
+  "settled_active_match_id": 2,
+  "staged_focus": false,
+  "unchanged_while_waiting": true,
+  "viewport": [
+    1280,
+    720
+  ],
+  "waiting_frames": 154
+}

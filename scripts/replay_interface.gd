@@ -228,6 +228,8 @@ func show_session_result():
  page(("ENDLESS RUN ENDED" if model.run_kind=="endless" else "CHALLENGE "+model.result.to_upper() if model.run_kind=="challenge" else "PRACTICE "+model.result.to_upper()),"Actual local results. Challenge summaries are self-reported, not an online leaderboard. Practice has no permanent rewards.","replay_result")
  var line="Time %.1fs · Damage %.1f" % [model.time,model.damage_dealt]
  if model.run_kind=="endless":line+="\nCompleted wave %d · Best %d · Run %d" % [model.endless.completed,game.profile.replay.best_wave,model.endless.run_id]
+ if model.run_kind=="endless" and model.result=="defeat" and game.last_progression.has("rm_cash"):
+  line+="\nRM Cash earned +%d · Current balance %d RM" % [game.last_progression.rm_cash,game.last_progression.rm_balance]
  if model.run_kind=="challenge":
   var mode_name=RankCatalog.DIFFICULTIES[model.difficulty].name
   var archetype_name=StrategyCatalog.ARCHETYPES[model.hunter.archetype].name

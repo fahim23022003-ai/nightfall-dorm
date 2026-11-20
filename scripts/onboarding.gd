@@ -5,6 +5,8 @@ var elapsed=0.0
 var phase="cinematic"
 var step=0
 var active=true
+var course
+const LivingTutorial=preload("res://scripts/living_tutorial.gd")
 var start_position=Vector2.ZERO
 var repair_baseline=0
 var upgraded=false
@@ -61,8 +63,18 @@ func close_welcome():
  if is_instance_valid(game.ui.menu_start):game.ui.menu_start.grab_focus()
 func cancel_intro_audio():
  if is_instance_valid(game.audio_system):game.audio_system.stop_events(["intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","door_break"])
-func begin_tutorial():
+func begin_tutorial(replay: bool=false):
  cancel_intro_audio()
+ if course!=null:
+  course.dispose()
+  course=null
+ if game.survivor_preview_enabled:
+  clean_controls()
+  phase="tutorial";active=true;step=0;continue_button=null;tutorial_finished=false
+  mouse_filter=Control.MOUSE_FILTER_IGNORE
+  course=LivingTutorial.new(self,game,replay)
+  course.begin()
+  return
  clean_controls();phase="tutorial";active=true;step=0;continue_button=null;repair_baseline=0;upgraded=false;damage_observed=false;threat_started=false;tutorial_finished=false
  start_position=game.model.player_position
  var panel=Panel.new();panel.position=Vector2(20,145);panel.size=Vector2(330,176);panel.add_theme_stylebox_override("panel",game.ui.style("172839","E5C77D"));panel.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(panel)
@@ -86,6 +98,9 @@ func free_practice_pad(r):
  objective.text="A practice pad near the door is ready. Click its glow, then BUILD a Needle turret in the bottom panel."
 func recover():
  if phase!="tutorial":return
+ if course!=null:
+  course.recover()
+  return
  game.model.running=true
  game.pending_build=""
  game.ui.show_match()
@@ -112,22 +127,61 @@ func recover():
    if game.model.player().buildings[tile].kind in ["turret","heavy"]:game.selected_tile=tile;game.ui.open_context();break
 func skip_tutorial():
  if phase!="tutorial":return
+ if course!=null and course.story_replay:
+  finish_replay()
+  return
  if game.profile.complete_tutorial():finish_replay()
  elif is_instance_valid(objective):objective.text="Cannot save the skip choice. Retry or keep practicing."
 func finish_replay():
+ if course!=null:
+  course.dispose()
+  course=null
  active=false;phase="idle";game.tutorial_active=false;clean_controls();game.return_menu();queue_redraw()
+
+func tutorial_step_count() -> int:
+ return LivingTutorial.TITLES.size() if course!=null else TITLES.size()
+
+func tutorial_danger_active() -> bool:
+ return step>=LivingTutorial.Lesson.HUNTER_DANGER if course!=null else step>=7
+
+func permits_interact() -> bool:
+ return course==null or course.permits_interact()
+
+func permits_place(kind: String,point: Vector2=Vector2.INF) -> bool:
+ return course==null or course.permits_place(kind,point)
+
+func note_build_open():
+ if course!=null:course.note_build_open()
+
+func note_build_selected(kind: String):
+ if course!=null:course.note_build_selected(kind)
+
+func note_placement_cancelled(kind: String):
+ if course!=null:course.note_placement_cancelled(kind)
+
+func note_panel_closed():
+ if course!=null:course.note_panel_closed()
+
+func audio_event_for_practice_step():
+ game.audio_event("tutorial_step")
 func next_step():
  step+=1;game.audio_event("tutorial_step");refresh_objective()
 func refresh_objective():
  if is_instance_valid(progress):progress.text="FIRST NIGHT · %d / 9\n%s" % [step+1,TITLES[step]]
  if is_instance_valid(objective):objective.text="Upgrade confirmed. Now repair the damaged door [R]." if step==6 and upgraded else NOTES[step]
 func save_completion():
+ if course!=null:
+  course.complete(false)
+  return
  if step!=8:return
  if not game.profile.complete_tutorial():
   objective.text="Tutorial complete. Saving failed; keep this window open and press Save completion to retry."
   return
  tutorial_finished=true;game.audio_event("tutorial_complete");finish_replay()
 func tutorial_tick(delta):
+ if course!=null:
+  course.tick()
+  return
  var m=game.model;var r=m.player()
  if step<7:
   m.preparation=m.time+10000
@@ -199,6 +253,9 @@ func heading(value,pos,size,color=Color.WHITE):
 func _draw():
  if not active or phase=="title":return
  if phase=="tutorial":
+  if course!=null:
+   course.draw()
+   return
   var m=game.model;var r=m.player();var target=m.rooms[0].door_position() if r==null else r.bed_position() if step<=3 else r.door_position()
   if step in [4,5] and r!=null:
    var nearest=-1;var distance=1e20

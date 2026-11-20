@@ -54,10 +54,19 @@ LIVING_NIGHTMARE_MODES = {
     "fair-start-preview": FAIR_START_MODES["fair-start-preview"],
 }
 
+SURVIVOR_REBIRTH_MODES = {
+    "survivor-rebirth": (
+        "Play Nightmare Lobby Preview.cmd", "user://nightfall-living-nightmare-preview.json", (1, 1, 0, 1),
+    ),
+    **LIVING_NIGHTMARE_MODES,
+}
 
-def mode_environment(profile: str, switches: tuple[int, ...], living: bool = False) -> dict[str, str]:
+
+def mode_environment(profile: str, switches: tuple[int, ...], living: bool = False,
+                     survivor: bool = False) -> dict[str, str]:
     settings = {key: str(value) for key, value in zip(MODE_SWITCHES, switches, strict=True)}
-    return {"NIGHTFALL_PROFILE_PATH": profile, "NIGHTFALL_LIVING_NIGHTMARE": "1" if living else "0", **settings}
+    return {"NIGHTFALL_PROFILE_PATH": profile, "NIGHTFALL_LIVING_NIGHTMARE": str(int(living)),
+            "NIGHTFALL_SURVIVOR_REBIRTH": str(int(survivor)), **settings}
 
 
 def launcher(environment: dict[str, str]) -> bytes:
@@ -83,7 +92,8 @@ def verify_modes(
     empty.mkdir()
     environments = {}
     for label, (_, profile, switches) in modes.items():
-        environment = mode_environment(profile, switches, label == "living-nightmare")
+        environment = mode_environment(profile, switches, label in ("living-nightmare", "survivor-rebirth"),
+                                       label == "survivor-rebirth")
         environments[label] = environment
         env = os.environ | environment | {"XDG_DATA_HOME": str(working / ("data-" + label))}
         log = evidence / f"windows-pack-{label}.log"
@@ -94,7 +104,7 @@ def verify_modes(
         if "HELL_TACTICS_WINDOWS_PACK_CHECKS=" not in log.read_text() or "FAILURES=0" not in log.read_text():
             raise RuntimeError(f"Tactics pack verification did not complete. Inspect {log}.")
 
-    if modes is FAIR_START_MODES or modes is LIVING_NIGHTMARE_MODES:
+    if modes is FAIR_START_MODES or "living-nightmare" in modes:
         log = evidence / "windows-pack-fair-start-probe.log"
         env = os.environ | environments["fair-start-preview"] | {
             "XDG_DATA_HOME": str(working / "data-fair-start-probe"),
@@ -107,7 +117,7 @@ def verify_modes(
         if "FAIR_START_PACK_CHECKED=true" not in log.read_text() or "FAILURES=0" not in log.read_text():
             raise RuntimeError(f"Fair start pack verification did not complete. Inspect {log}.")
 
-    if modes is LIVING_NIGHTMARE_MODES:
+    if "living-nightmare" in modes:
         env = os.environ | environments["living-nightmare"] | {"XDG_DATA_HOME": str(working / "living-package-data")}
         log = evidence / "windows-pack-living-nightmare-story.log"
         run([
@@ -116,6 +126,15 @@ def verify_modes(
         ], log, env)
         if "LIVING_NIGHTMARE_PACK_CHECKS=" not in log.read_text() or "FAILURES=0" not in log.read_text():
             raise RuntimeError(f"Living Nightmare pack verification did not complete. Inspect {log}.")
+    if "survivor-rebirth" in modes:
+        env = os.environ | environments["survivor-rebirth"] | {"XDG_DATA_HOME": str(working / "lobby-package-data")}
+        log = evidence / "windows-pack-survivor-lobby.log"
+        run([
+            godot, "--headless", "--quit-after", "1200", "--path", str(empty), "--main-pack", str(executable),
+            "--script", str(ROOT / "tools/windows/verify_survivor_rebirth_pack.gd"),
+        ], log, env)
+        if "SURVIVOR_REBIRTH_PACK_CHECKS=" not in log.read_text() or "FAILURES=0" not in log.read_text():
+            raise RuntimeError(f"Survivor Rebirth pack verification did not complete. Inspect {log}.")
 
     # Exercise the exact Phase 14F assets and reach the original construction
     # comparison fixture without replacing its room layout with either preview.
@@ -156,6 +175,7 @@ def main() -> None:
     preview = parser.add_mutually_exclusive_group()
     preview.add_argument("--fair-start", action="store_true", help="Use the V2.3 guide and isolated profiles.")
     preview.add_argument("--living-nightmare", action="store_true", help="Use the Living Nightmare guide and isolated profiles.")
+    preview.add_argument("--survivor-rebirth", action="store_true", help="Add the offline Story lobby and Room Rush preview.")
     parser.add_argument("--source-commit", required=True)
     parser.add_argument("--zip", required=True, type=Path)
     parser.add_argument("--evidence-dir", required=True, type=Path)
@@ -175,6 +195,9 @@ def main() -> None:
     elif args.living_nightmare:
         modes = LIVING_NIGHTMARE_MODES
         guide_name = "LIVING_NIGHTMARE_WINDOWS_PLAYTEST.md"
+    elif args.survivor_rebirth:
+        modes = SURVIVOR_REBIRTH_MODES
+        guide_name = "SURVIVOR_REBIRTH_WINDOWS_PLAYTEST.md"
     guide = ROOT / "docs" / guide_name
     archive = args.zip.resolve()
     evidence = args.evidence_dir.resolve()

@@ -1,0 +1,66 @@
+extends SceneTree
+
+var game
+var errors: Array[String] = []
+var destination: String
+
+func _initialize():
+ call_deferred("run")
+
+func check(condition: bool, label: String):
+ if not condition:
+  errors.append(label)
+  push_error(label)
+
+func image(name: String):
+ game.queue_redraw()
+ game.onboarding.queue_redraw()
+ await process_frame
+ await RenderingServer.frame_post_draw
+ var shot := root.get_texture().get_image()
+ check(shot.get_size() == Vector2i(1280,720) and shot.save_png(destination.path_join(name + ".png")) == OK, "native raster " + name)
+
+func run():
+ destination = OS.get_cmdline_user_args()[0]
+ DirAccess.make_dir_recursive_absolute(destination)
+ OS.set_environment("NIGHTFALL_PROFILE_PATH", "user://pre-change-tutorial-shop.json")
+ root.size = Vector2i(1280,720)
+ game = load("res://scenes/main.tscn").instantiate()
+ root.add_child(game)
+ await process_frame
+ check(game.mode == "intro" and not game.profile.tutorial_completed, "new profile launches the old opening")
+ game.onboarding.skip()
+ check(game.onboarding.is_welcome_open(), "old welcome waits for acknowledgement")
+ await image("old-welcome")
+ game.onboarding.close_welcome()
+ await process_frame
+ check(game.ui.menu_start != null, "old menu form initializes")
+ game.ui.menu_start.pressed.emit()
+ await process_frame
+ check(game.tutorial_active and game.model.tutorial_mode, "old actual main action begins tutorial")
+ await image("old-tutorial")
+ var snapshot := {"tutorial_phase": game.onboarding.phase, "tutorial_step": game.onboarding.step}
+ game.onboarding.skip_tutorial()
+ await process_frame
+ check(game.mode == "menu" and game.profile.tutorial_completed, "old skip action saves only completion")
+ game.profile.rm_cash = 100
+ check(game.profile.save_profile(), "isolated prepared RM balance saved")
+ game.ui.shop.show_shop()
+ await image("old-shop")
+ var button: Button = game.ui.shop.buttons[0].button
+ check(not button.disabled, "shop purchase action is available")
+ var previous: int = int(game.profile.inventory.get("repair",0))
+ button.pressed.emit()
+ await image("old-shop-purchase")
+ check(game.profile.rm_cash == 82 and int(game.profile.inventory.get("repair",0)) == previous+1, "real 18 RM purchase awards one Repair Kit")
+ var reread := PlayerProfile.new(game.profile.path)
+ check(reread.load_profile() and reread.rm_cash == game.profile.rm_cash and reread.inventory == game.profile.inventory, "shop transaction survives reload")
+ snapshot.merge({"rm_before":100,"rm_after":game.profile.rm_cash,"stock_before":previous,"stock_after":game.profile.inventory.get("repair",0),"errors":errors})
+ var result := FileAccess.open(destination.path_join("capture.json"), FileAccess.WRITE)
+ result.store_string(JSON.stringify(snapshot,"  ")+"\n")
+ result.close()
+ game.audio_system.shutdown()
+ game.queue_free()
+ await process_frame
+ print("OLD_TUTORIAL_SHOP_FAILURES=", errors.size())
+ quit(int(not errors.is_empty()))

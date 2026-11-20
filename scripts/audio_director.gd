@@ -5,6 +5,9 @@ const ROOT = "res://assets/audio/"
 const WrathAudio = preload("res://scripts/wrath_audio_catalog.gd")
 const SiegeHeartbeat = preload("res://scripts/siege_heartbeat.gd")
 const HEARTBEAT_CUE = "siege_heartbeat"
+const LOBBY_EFFECTS = {"open":"intro_whisper","join":"button","ready":"intro_impact","back":"menu"}
+var lobby_active := false
+var lobby_cue_counts: Dictionary = {}
 const URGENT_SCORES = ["music_menu","music_intro","music_danger","music_siege","music_hall","music_reaper","music_crimson","music_victory","music_defeat"]
 const OUTCOME_SCORES = ["music_victory","music_defeat"]
 const LOOP_NAMES = ["music_crimson","music_intro","music_approach","music_endless","music_menu","music_calm","music_danger","ambient_dorm","proximity_loop","generator_loop","music_reaper","reaper_ambience","music_lantern","music_portrait","music_dust","music_siege","music_procession","music_opening_alt"]
@@ -263,7 +266,7 @@ func event(name: String, position: Vector2 = Vector2.INF, details: Dictionary = 
  elif name=="nightmare_rebirth":design_gain=-10.0
  elif name=="nightmare_defeat":design_gain=-13.0
  elif name in HALL_CUES:design_gain=-11.0 if name=="haunted_hall_retreat" else -13.0
- free_voice.volume_db = linear_to_db(distance_gain*(ambience_gain if name.begins_with("weather_") else 1.0))+design_gain
+ free_voice.volume_db = linear_to_db(distance_gain*(ambience_gain if name.begins_with("weather_") else 1.0))+design_gain+clampf(float(details.get("gain_db",0.0)),-24.0,0.0)
  free_voice.pitch_scale = 1.0
  free_voice.play()
  var cooldown = 12.0 if name==STALKER_BREATH else 15.0 if name in APPROACH_EFFECTS else EFFECT_COOLDOWNS.get(name,0.08)
@@ -329,8 +332,30 @@ func new_encounter(model):
  _last_presentation_event=model.next_presentation_event_id-1
  set_tension("quiet",0)
 
+func set_lobby_active(value: bool):
+ if lobby_active==value:
+  return
+ lobby_active=value
+ if value:
+  stop_preview()
+  _pending_critical.clear()
+
+func lobby_cue(cue: String) -> bool:
+ if not lobby_active or suspended or mix.muted or mix.effects<=0.0 or not LOBBY_EFFECTS.has(cue):
+  return false
+ var gain: float=-12.0 if cue=="join" else -8.0
+ if not event(LOBBY_EFFECTS[cue],Vector2.INF,{"important":false,"gain_db":gain}):
+  return false
+ lobby_cue_counts[cue]=int(lobby_cue_counts.get(cue,0))+1
+ return true
+
 func update_state(delta: float, model, mode: String, watching_hunter: bool=false):
  if suspended: return
+ if lobby_active and mode in ["menu","lobby","story_lobby"]:
+  mode="lobby"
+  model=null
+ elif mode=="story_prepare":
+  model=null
  setup()
  if streams.is_empty():return # Shutdown is terminal even if the host drains one more frame.
  _refresh_music_mute()
@@ -339,12 +364,12 @@ func update_state(delta: float, model, mode: String, watching_hunter: bool=false
  _clock += delta
  _frame_voices = 0
  _mode = mode
- if mode in ["menu","intro"] and mode!=_last_mode:
+ if mode in ["menu","intro","lobby","story_prepare"] and mode!=_last_mode:
   # A menu can retain the previous model for its result summary. It must not
   # retain combat players or delayed cues; listening-room previews remain valid.
   var cancelled=EFFECT_NAMES.filter(func(name):return name!=preview_effect_name or _clock>=preview_effect_until)
   stop_events(cancelled)
- if mode in ["menu","intro"] or (model!=null and model.tutorial_mode):
+ if mode in ["menu","intro","lobby","story_prepare"] or (model!=null and model.tutorial_mode):
   set_tension("quiet",0)
   pending_laughs.clear();pending_deaths.clear();pending_evolutions.clear();_last_death_room=-1;_evolution_busy_until=0
   if _clock>=preview_effect_until:stop_events(["hunter_laugh","reaper_laugh","death_scream_1","death_scream_2","weather_thunder","weather_wind","weather_rain","hunter_evolve","buff_offense","buff_armor","buff_speed","buff_resource","buff_command"])
@@ -423,7 +448,11 @@ func update_state(delta: float, model, mode: String, watching_hunter: bool=false
  targets.music_crimson=.95 if music_active and domain else 0.0
  if domain:
   targets.music_calm=0;targets.music_danger=0
- targets.music_intro=1.0 if mode=="intro" and cinematic_music else 0.0
+ targets.music_intro=1.0 if mode=="intro" and cinematic_music else .56 if mode=="lobby" else 0.0
+ if mode=="lobby":targets.ambient_dorm=.30
+ if mode=="story_prepare":
+  targets.ambient_dorm=.14
+  targets.music_calm=.53
  targets.music_approach=.75 if music_active and not boss_active and proximity>.12 and intensity<.65 else 0.0
  targets.music_endless=.85 if music_active and model!=null and model.run_kind=="endless" and not boss_active and int(model.endless.wave)%2==0 else 0.0
  if targets.music_approach>0:targets.music_calm*=.35
@@ -443,7 +472,7 @@ func update_state(delta: float, model, mode: String, watching_hunter: bool=false
   for key in targets:
    if key.begins_with("music"):targets[key]=0.0
   if not score.is_empty():
-   targets[score]=1.0 if preview_music!="" else .85 if score not in OUTCOME_SCORES else .75
+   targets[score]=1.0 if preview_music!="" else .58 if mode in ["lobby","story_prepare"] else .85 if score not in OUTCOME_SCORES else .75
   _set_adaptive_score(score)
  else:
   if mode=="result":targets.music_menu=.6
@@ -482,6 +511,10 @@ func update_state(delta: float, model, mode: String, watching_hunter: bool=false
  if mode=="result" or (model!=null and model.result!=""):_stop_battle_cues()
 
 func _living_music_state(model, mode: String, active: bool, boss: bool, domain: bool) -> String:
+ if mode=="lobby":
+  return "music_intro"
+ if mode=="story_prepare":
+  return "music_calm"
  if mode=="intro":
   return "music_intro" if cinematic_music else ""
  if mode=="menu":

@@ -33,17 +33,28 @@ func update():
  if not is_instance_valid(toggle):return
  var m=game.model
  var roster=m.rooms.filter(func(r):return r.owner>0)
- var alive=roster.filter(func(r):return r.alive).size()
+ var runners: Array=m.room_rush_runners() if m.room_rush_active() else []
+ var alive=roster.filter(func(r):return r.alive).size()+runners.size()
  toggle.visible=not game.tutorial_active
  body.visible=expanded and toggle.visible
- toggle.text="TEAM %d/%d ALIVE · %s [T]" % [alive,roster.size(),"Close" if expanded else "View"]
+ toggle.text="TEAM %d/%d ALIVE · %s [T]" % [alive,roster.size()+runners.size(),"Close" if expanded else "View"]
  indices.clear()
  for r in roster:indices.append(r.index)
- empty.visible=roster.is_empty()
+ empty.visible=roster.is_empty() and runners.is_empty()
  for i in range(rows.size()):
-  rows[i].visible=i<roster.size()
-  if i>=roster.size():continue
+  rows[i].visible=i<roster.size()+runners.size()
+  if i>=roster.size():
+   var pending: int=i-roster.size()
+   if pending>=runners.size():continue
+   var runner: Dictionary=runners[pending]
+   indices.append(-1)
+   rows[i].disabled=true
+   var destination: String="Approaching Room %02d · still vacant" % (int(runner.target)+1) if int(runner.target)>=0 else "Looking for a vacant room"
+   rows[i].text=Catalog.SURVIVOR_NAMES[int(runner.owner)]+" · AI\n"+destination
+   rows[i].tooltip_text="Available to spectate after claiming"
+   continue
   var r=roster[i]
+  rows[i].disabled=false
   var threat=m.hunter.target==r.index and m.hunter.state in [HunterState.State.ATTACK,HunterState.State.BREACH]
   threat=threat or m.minions.any(func(u):return u.hp>0 and u.target==r.index and u.position.distance_to(r.door_approach())<=3)
   var approaching=m.hunter.target==r.index and m.hunter.state==HunterState.State.MOVE
