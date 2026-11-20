@@ -4,6 +4,7 @@ extends RefCounted
 var ui
 var game
 var difficulty="standard"
+var story_context:=false
 var achievement_page=0
 var last_claimed=""
 
@@ -91,9 +92,12 @@ func show_ranks():
  ui.label_at("Wins: 120 base + performance + stage/reaper bonuses, then difficulty. Losses: ≤1 XP/30s, cap30.",Vector2(92,584),14,1060)
  ui.button("Achievements",Vector2(400,622),show_achievements,260,40)
  ui.button("Back",Vector2(92,622),ui.show_menu,180,40)
- ui.button("Choose loadout",Vector2(900,622),func(): ui.campaign.prepare(game.profile.selected_stage),270,40)
+ ui.button("Choose loadout",Vector2(900,622),ui.campaign.show_story if game.story_preview_enabled else func(): ui.campaign.prepare(game.profile.selected_stage),270,40)
 
 func show_loadout():
+ if story_context:
+  ui.campaign.show_story()
+  return
  if game.mode=="result":game.return_menu()
  if game.mobile_mode:game.mobile_ui.show_rewards(ui,true);return
  ui.clear();ui.current_screen="loadout";game.audio_event("menu")

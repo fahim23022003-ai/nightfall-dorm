@@ -78,6 +78,7 @@ func show_hub():
  paragraph("LUCKY SPIN · Next Victory odds: "+SpinPity.summary("victory",pity)+"\nEpic+ guaranteed by qualifying Victory 8; Legendary by 40. Current dry streaks %d / %d. Consolation does not advance/reset." % [pity.epic_dry,pity.legendary_dry],Vector2(107,523),1050,69,16)
  ui.button("Main menu",Vector2(107,622),game.return_menu,320,42)
  ui.button("Endless Siege",Vector2(855,622),show_endless,320,42)
+ if game.story_preview_enabled:ui.button("Story archive",Vector2(480,622),ui.campaign.story_ui.show_archive,320,42)
 func show_endless():
  page("ENDLESS SIEGE","One Hunter each wave. Rooms, actual paid investments and resources carry. Save only BETWEEN waves; consumed items and the run-wide Legendary limit never rewind.","endless_setup")
  for i in range(5):

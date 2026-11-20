@@ -2,11 +2,17 @@ extends RefCounted
 ## Campaign navigation reuses the existing ranked loadout and profile.
 var ui
 var game
+var story_ui
 func _init(owner_ui):
  ui=owner_ui
  game=ui.game
+ story_ui=preload("res://scripts/story_interface.gd").new(ui)
+
+func show_story():
+ story_ui.show_prepare()
 
 func show_stages():
+ ui.progression.story_context=false
  if game.mode=="result": game.return_menu()
  game.campaign_mode=true
  ui.clear()
@@ -39,6 +45,7 @@ func show_stages():
  ui.button("Ranks & rewards",Vector2(360,628),ui.progression.show_ranks,260,42)
 
 func prepare(id: String):
+ ui.progression.story_context=false
  if not game.profile.pending_stage_bonus.is_empty() and game.profile.pending_stage_bonus.target==id and game.profile.pending_stage_bonus.choice=="":
   ui.progression.show_stage_bonus();return false
  if not game.profile.stage_unlocked(id): return false

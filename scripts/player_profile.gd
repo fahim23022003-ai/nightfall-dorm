@@ -14,6 +14,7 @@ var save_ok=true
 var selected_stage="stage_1"
 var selected_difficulty="standard"
 var campaign_records: Dictionary={}
+var story: Dictionary={}
 var statistics={"matches":0,"victories":0,"defeats":0,"standard":0,"hard":0,"hell":0,"reaper_defeats":0}
 var highest_rank=0
 var inventory: Dictionary={}
@@ -97,7 +98,7 @@ func buy_common(id: String,token) -> bool:
 func perk_slots() -> int: return 2 if rank_index()>=5 else 1
 func _reward_snapshot() -> Dictionary:
  var out={}
- for key in ["xp","equipped","highest_rank","statistics","campaign_records","inventory","item_loadout","pending_spins","active_match","last_award","achievements","reward_counters","seen_items","pending_stage_bonus","stage_bonus_queue","next_match_id","tutorial_completed","rm_cash","purchase_serial","selected_contract","contract_claims","replay"]:
+ for key in ["xp","equipped","highest_rank","statistics","campaign_records","inventory","item_loadout","pending_spins","active_match","last_award","achievements","reward_counters","seen_items","pending_stage_bonus","stage_bonus_queue","next_match_id","tutorial_completed","rm_cash","purchase_serial","selected_contract","contract_claims","replay","story"]:
   var v=get(key)
   out[key]=v.duplicate(true) if v is Dictionary or v is Array else v
  return out
@@ -331,7 +332,7 @@ func _decode(file_path: String) -> Dictionary:
   if active.has("stage_id"):
    if not active.stage_id is String or StageCatalog.stage(active.stage_id).is_empty() or not value.has("campaign"): return {}
    var definition=StageCatalog.stage(active.stage_id)
-   if definition.requires!="" and not value.campaign.records.has(definition.requires): return {}
+   if not active.has("story") and definition.requires!="" and not value.campaign.records.has(definition.requires): return {}
  var previous=value.get("last_award",{})
  if not previous.is_empty():
   if not _whole(previous.get("match_id"),1,int(value.next_match_id)-1): return {}
@@ -339,7 +340,7 @@ func _decode(file_path: String) -> Dictionary:
   if not active.is_empty() and int(active.id)<=int(previous.match_id): return {}
  return value
 
-func load_profile() -> bool:
+func load_profile(story_preview: bool=false) -> bool:
  var primary_exists=FileAccess.file_exists(path)
  var data=_decode(path)
  if data.is_empty():
@@ -359,7 +360,7 @@ func load_profile() -> bool:
     return false
   if recovered.is_empty():
    warning="Damaged save preserved. A new profile is available." if primary_exists else ""
-   return not primary_exists
+   return (enable_story() if story_preview else true) if not primary_exists else false
   data=recovered
   warning="Recovered previous profile backup; damaged primary was preserved."
  # A damaged spatial checkpoint may recover from the prior generation without
@@ -497,20 +498,67 @@ func load_profile() -> bool:
    read_only=true;warning="Onboarding/currency data damaged or newer; original progress preserved read-only."
   else:
    tutorial_completed=onboarding.tutorial_completed;rm_cash=int(onboarding.rm_cash);purchase_serial=int(onboarding.purchase_serial)
+ story={}
+ if data.has("story"):
+  if not StoryProgress.valid(data.story):
+   read_only=true
+   warning="Story records are damaged or newer; original progress preserved read-only."
+  else:
+   story=data.story.duplicate(true)
+ if active_match.has("story") and not _valid_story_match(active_match):
+  read_only=true
+  warning="Active Story mission is invalid; original progress preserved read-only."
+ if not read_only and story_preview and story.is_empty():
+  enable_story()
  if not read_only:
   var before=_reward_snapshot()
   var earned=refresh_achievements()
   if not earned.is_empty() and not save_profile():_restore_rewards(before)
  return true
 
+func enable_story() -> bool:
+ if read_only:return false
+ if not story.is_empty():return StoryProgress.valid(story)
+ var original: String=path if FileAccess.file_exists(path) else path+".bak"
+ var seed_base:=randi_range(1,2147483646)
+ if FileAccess.file_exists(original):
+  var preserved: String=path+".before-story-v1.bak"
+  if not FileAccess.file_exists(preserved):
+   var temporary:=preserved+".tmp"
+   if DirAccess.copy_absolute(original,temporary)!=OK or DirAccess.rename_absolute(temporary,preserved)!=OK:
+    warning="The original profile could not be backed up. Story migration is paused."
+    return false
+  # A stable seed also keeps the opening layout reproducible if migration is retried.
+  seed_base=1+posmod(hash(FileAccess.get_file_as_string(preserved)),2147483646)
+ story=StoryProgress.migrate(campaign_records,seed_base)
+ if not save_profile():
+  story={}
+  return false
+ return true
+
+func _valid_story_match(entry: Dictionary) -> bool:
+ var mission=entry.get("story")
+ if not mission is Dictionary or not _whole(mission.get("level"),1,50) or not _whole(mission.get("seed"),1,2147483647):
+  return false
+ if story.is_empty() or not entry.get("difficulty") in RankCatalog.DIFFICULTIES:
+  return false
+ var level:=int(mission.level)
+ var definition:=StoryCatalog.mission(level)
+ return (entry.get("stage_id")==definition.stage_id and entry.get("archetype")==definition.archetype
+  and level==StoryProgress.position(story,entry.difficulty) and not StoryProgress.summary(story,entry.difficulty).finished
+  and int(mission.seed)==StoryProgress.seed_for(story,level))
+
 func save_profile() -> bool:
  if read_only:
   save_ok=false
   return false
  if not ReplayProgress.valid(replay):return _write_failed()
+ if (not story.is_empty() and not StoryProgress.valid(story)) or (active_match.has("story") and not _valid_story_match(active_match)):
+  return _write_failed()
  var data={"onboarding":{"version":1,"tutorial_completed":tutorial_completed,"rm_cash":rm_cash,"purchase_serial":purchase_serial},"rewards":{"version":1,"achievements":achievements,"counters":reward_counters,"seen_items":seen_items,"stage_bonus":pending_stage_bonus,"stage_queue":stage_bonus_queue},"consumables":{"version":1,"inventory":inventory,"loadout":item_loadout,"pending":pending_spins},"version":RankCatalog.VERSION,"progression":{"version":1,"statistics":statistics,"highest_rank":maxi(highest_rank,rank_index())},"xp":xp,"equipped":equipped,"settings":settings,"next_match_id":next_match_id,"active_match":active_match,"last_award":last_award,"campaign":{"selected_stage":selected_stage,"difficulty":selected_difficulty,"records":campaign_records}}
  data.strategy={"version":1,"selected":selected_contract,"claims":contract_claims}
  data.replay=replay
+ if not story.is_empty():data.story=story
  var f=FileAccess.open(path+".tmp",FileAccess.WRITE)
  if f==null: return _write_failed()
  f.store_string(JSON.stringify(data," "))
@@ -560,9 +608,18 @@ func update_setting(key: String,value) -> bool:
  settings[key]=value
  return save_profile()
 
-func begin_match(difficulty: String="standard",stage_id: String="",strategic: bool=false) -> Dictionary:
+func begin_match(difficulty: String="standard",stage_id: String="",strategic: bool=false,story_level: int=0) -> Dictionary:
  if active_match.get("run_kind","")=="endless":warning="Resume or explicitly forfeit your Endless run before starting a campaign match.";return {}
- if read_only or pending_spins.size()>=128 or (stage_id!="" and not stage_unlocked(stage_id)): return {}
+ if read_only or pending_spins.size()>=128: return {}
+ var is_story:=story_level>0
+ var mission: Dictionary={}
+ if is_story:
+  if not difficulty in RankCatalog.DIFFICULTIES or not StoryProgress.valid(story):return {}
+  var track:=StoryProgress.summary(story,difficulty)
+  if track.get("finished",false) or story_level!=StoryProgress.position(story,difficulty):return {}
+  mission=StoryCatalog.mission(story_level)
+  if mission.is_empty() or stage_id!=mission.stage_id or not strategic:return {}
+ elif stage_id!="" and not stage_unlocked(stage_id):return {}
  if next_match_id>=1000000000000:
   warning="Match counter limit reached; progress saving disabled."
   read_only=true
@@ -570,14 +627,15 @@ func begin_match(difficulty: String="standard",stage_id: String="",strategic: bo
  if not RankCatalog.DIFFICULTIES.has(difficulty): difficulty="standard"
  var old_bonus=pending_stage_bonus.duplicate(true)
  var old_queue=stage_bonus_queue.duplicate(true)
- if not pending_stage_bonus.is_empty() and pending_stage_bonus.target==stage_id and pending_stage_bonus.choice=="":return {}
+ if not is_story and not pending_stage_bonus.is_empty() and pending_stage_bonus.target==stage_id and pending_stage_bonus.choice=="":return {}
  var before=active_match.duplicate(true)
  active_match={"id":next_match_id,"difficulty":difficulty,"equipped":equipped.duplicate(),"items":item_loadout.duplicate()}
  if strategic:
-  active_match.archetype=next_archetype(stage_id,difficulty)
-  active_match.contract=selected_contract if stage_id!="" else ""
+  active_match.archetype=mission.archetype if is_story else next_archetype(stage_id,difficulty)
+  active_match.contract=selected_contract if stage_id!="" and not is_story else ""
  if stage_id!="": active_match.stage_id=stage_id
- if not pending_stage_bonus.is_empty() and pending_stage_bonus.target==stage_id:
+ if is_story:active_match.story={"level":story_level,"seed":StoryProgress.seed_for(story,story_level)}
+ if not is_story and not pending_stage_bonus.is_empty() and pending_stage_bonus.target==stage_id:
   active_match.stage_bonus=pending_stage_bonus.choice
   pending_stage_bonus=stage_bonus_queue.pop_front() if not stage_bonus_queue.is_empty() else {}
  next_match_id+=1
@@ -601,7 +659,12 @@ func settle_match(id: int,model) -> Dictionary:
  for key in expected:
   if model.match_boosts.get(key,neutral[key])!=expected[key]: return {}
  var campaign_id=str(active_match.get("stage_id",""))
- if campaign_id!="" and (not stage_unlocked(campaign_id) or not "stage_id" in model or model.stage_id!=campaign_id): return {}
+ var is_story:=active_match.has("story")
+ if is_story and not _valid_story_match(active_match):return {}
+ var story_level:=int(active_match.story.level) if is_story else 0
+ if campaign_id!="" and (not "stage_id" in model or model.stage_id!=campaign_id or (not is_story and not stage_unlocked(campaign_id))):return {}
+ if is_story and (model.story_level!=story_level or model.map_seed!=int(active_match.story.seed)):
+  return {}
  if active_match.has("archetype") and not model.strategy.verified(model,active_match):return {}
  var transaction_before=_reward_snapshot()
  var rng_before=reward_rng.state
@@ -609,11 +672,21 @@ func settle_match(id: int,model) -> Dictionary:
  var old_xp=xp
  var old_rank=rank_index()
  var campaign_report={}
- if campaign_id!="":
+ var story_report: Dictionary={}
+ var defeated=model.result=="defeat" and ((model.player()!=null and not model.player().alive) or (model.player()==null and model.eliminations>0))
+ var victorious=model.result=="victory" and model.player()!=null and model.hunter.hp<=0 and model.player().alive
+ var legitimate=model.time>=model.preparation and (defeated or victorious)
+ if is_story:
+  if not legitimate:return {}
+  story_report=StoryProgress.settle(story,model.difficulty,story_level,victorious,id)
+  if story_report.is_empty():return {}
+  points["story_reward"]=int(story_report.get("reward_xp",0))
+  points.total+=points.story_reward
+ if campaign_id!="" and (not is_story or story_level<=5):
   var definition=StageCatalog.stage(campaign_id)
-  var cleared=model.result=="victory" and points.eligible and model.hunter.hp<=0 and model.player()!=null and model.player().alive
+  var cleared=victorious and (legitimate if is_story else points.eligible)
   var first=cleared and not campaign_records.has(campaign_id)
-  var reward=int(definition.first_clear_xp) if first else 0
+  var reward=int(definition.first_clear_xp) if first and not is_story else 0
   points["stage_reward"]=reward
   points.total+=reward
   if cleared:
@@ -623,7 +696,8 @@ func settle_match(id: int,model) -> Dictionary:
     "best_damage":maxf(float(old.get("best_damage",0)),model.player().damage_dealt),
     "best_xp":maxi(int(old.get("best_xp",0)),mini(int(points.total),RankCatalog.MAX_XP-xp)),
     "difficulty":active_match.difficulty,"first_match_id":old.get("first_match_id",id)}
-  if first and StageCatalog.next_stage(campaign_id)!="":
+  if first and not is_story and not story.is_empty():StoryProgress.credit_legacy_reward(story,int(definition.number))
+  if first and not is_story and StageCatalog.next_stage(campaign_id)!="":
    var offer={"source":campaign_id,"target":StageCatalog.next_stage(campaign_id),"choice":"","match_id":id}
    if pending_stage_bonus.is_empty():pending_stage_bonus=offer
    else:stage_bonus_queue.append(offer)
@@ -631,9 +705,6 @@ func settle_match(id: int,model) -> Dictionary:
    "next_stage":StageCatalog.next_stage(campaign_id) if cleared else ""}
 
  var before=old_rank
- var defeated=model.result=="defeat" and ((model.player()!=null and not model.player().alive) or (model.player()==null and model.eliminations>0))
- var victorious=model.result=="victory" and model.player()!=null and model.hunter.hp<=0 and model.player().alive
- var legitimate=model.time>=model.preparation and (defeated or victorious)
  if legitimate and statistics.matches<1000000000000:
   statistics.matches=mini(1000000000000,statistics.matches+1)
   if model.result=="victory" and model.hunter.hp<=0 and model.player().alive:
@@ -647,7 +718,8 @@ func settle_match(id: int,model) -> Dictionary:
  var after=rank_index()
  highest_rank=maxi(highest_rank,after)
  last_award={"match_id":id,"old_xp":old_xp,"new_xp":xp,"breakdown":points,"old_rank":before,"new_rank":after,"promoted":after>before,"result":model.result}
- if not campaign_report.is_empty(): last_award.campaign=campaign_report
+ if not campaign_report.is_empty() and not is_story:last_award.campaign=campaign_report
+ if is_story:last_award.story=story_report
  if ItemCatalog.reward_eligible(model):
   var pity_before=replay.pity.duplicate(true)
   var actual_odds=SpinPity.summary(model.result,pity_before)

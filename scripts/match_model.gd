@@ -56,6 +56,7 @@ var _player_navigation=AStar2D.new()
 var _nightmare_navigation: NightmareNavigation
 var _navigation_routes: Dictionary={}
 var stage_id=""
+var story_level:=0
 var difficulty="standard"
 var match_boosts: Dictionary={}
 var stage_bonus: Dictionary={}
@@ -112,6 +113,7 @@ func _init():
 
 func reset(seed_value: int = 1):
  map_seed=seed_value
+ story_level=0
  haunt_recovery=HauntedRecovery.new()
  ward_until=0.0
  ward_ready_at=0.0

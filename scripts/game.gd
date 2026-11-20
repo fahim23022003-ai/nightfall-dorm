@@ -12,6 +12,7 @@ var match_id=0
 var last_progression: Dictionary={}
 var selected_difficulty="standard"
 var campaign_mode=false
+var story_preview_enabled:=OS.get_environment("NIGHTFALL_LIVING_NIGHTMARE")=="1"
 var _stage_request=""
 var last_hunter_level=1
 var level_warning_time=0.0
@@ -165,7 +166,7 @@ func _ready():
  get_tree().auto_accept_quit=false
  var save_path=OS.get_environment("NIGHTFALL_PROFILE_PATH")
  profile=PlayerProfile.new(save_path if save_path!="" else "user://profile.json")
- profile.load_profile()
+ profile.load_profile(story_preview_enabled)
  tutorial_enabled=profile.settings.tutorial
  if not mobile_mode and profile.settings.fullscreen: window.mode=Window.MODE_FULLSCREEN
  if mobile_mode:
@@ -211,7 +212,13 @@ func start_tutorial(replay=false):
 
 func enter_game():
  if not profile.tutorial_completed:start_tutorial();return
- ui.campaign.show_stages()
+ if story_preview_enabled:ui.campaign.show_story()
+ else:ui.campaign.show_stages()
+
+func start_story(difficulty: String) -> bool:
+ if not story_preview_enabled or not difficulty in RankCatalog.DIFFICULTIES or not profile.enable_story():return false
+ if profile.selected_difficulty!=difficulty and not profile.select_difficulty(difficulty):return false
+ return start_match(difficulty,StoryProgress.position(profile.story,difficulty))
 
 func start_stage(id: String, difficulty: String="standard") -> bool:
  if not RankCatalog.DIFFICULTIES.has(difficulty) or not profile.stage_unlocked(id): return false
@@ -220,7 +227,8 @@ func start_stage(id: String, difficulty: String="standard") -> bool:
  _stage_request=id
  return start_match(difficulty)
 
-func start_match(difficulty: String="") -> bool:
+func start_match(difficulty: String="",story_level: int=0) -> bool:
+ if story_level>0 and not story_preview_enabled:return false
  hunter_spectating=false
  watched_room=-1
  if not mobile_mode and not profile.tutorial_completed:
@@ -237,20 +245,25 @@ func start_match(difficulty: String="") -> bool:
   ui.items_ui.spin()
   return false
  if difficulty!="": selected_difficulty=difficulty
- var requested=_stage_request
+ var mission:=StoryCatalog.mission(story_level) if story_level>0 else {}
+ var requested: String=mission.get("stage_id",_stage_request)
  _stage_request=""
  campaign_mode=requested!=""
- var entry=profile.begin_match(selected_difficulty,requested,true)
+ var entry=profile.begin_match(selected_difficulty,requested,true,story_level)
  if entry.is_empty(): return false
  match_id=int(entry.get("id",0))
- var seed_value: int=ui.replay_ui.fresh_macro_seed(StageCatalog.stage(requested).get("map","")) if model.procedural_v2_requested else int(Time.get_ticks_msec())
+ var seed_value: int=int(entry.story.seed) if story_level>0 else int(Time.get_ticks_msec())
+ if story_level==0 and model.procedural_v2_requested:seed_value=ui.replay_ui.fresh_macro_seed(StageCatalog.stage(requested).get("map",""))
  model.reset(seed_value)
  model.configure_match(selected_difficulty,RankCatalog.bonuses(entry.get("equipped",[])))
  if requested!="": model.configure_stage(requested)
  elif model.procedural_requested or model.procedural_v2_requested:model.configure_map(MapCatalog.IDS[posmod(model.map_seed,MapCatalog.IDS.size())])
  ui.replay_ui.remember_macro_layout(model)
  model.configure_balance(new_balance_version)
- model.configure_strategy(int(profile.statistics.matches),entry.archetype,entry.contract,match_id)
+ if story_level>0:
+  model.story_level=story_level
+  model.preparation=maxf(model.preparation,float(mission.get("preparation",0.0)))
+ model.configure_strategy(seed_value if story_level>0 else int(profile.statistics.matches),entry.archetype,entry.contract,match_id)
  profile.apply_stage_bonus(model,entry)
  audio_system.reset_match(model)
  audio_event("match_start")

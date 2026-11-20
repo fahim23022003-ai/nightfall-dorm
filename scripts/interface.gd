@@ -203,6 +203,7 @@ func button(text: String,pos: Vector2,callback: Callable,width: float=240,height
  return b
 
 func show_menu():
+ progression.story_context=false
  game.audio_system.stop_preview()
  clear()
  current_screen="menu"
@@ -787,6 +788,9 @@ func update_match():
  if haunted_hud!=null:haunted_hud.update()
 
 func show_result():
+ if game.model.story_level>0:
+  campaign.story_ui.show_result()
+  return
  clear()
  var veil=ColorRect.new()
  veil.size=Vector2(1280,720)

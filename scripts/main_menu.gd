@@ -1,5 +1,6 @@
 class_name MainMenu
 extends RefCounted
+const GOLD_EDGE := "D2BC83"
 var ui
 func _init(owner):ui=owner
 func card(title: String,at: Vector2,size: Vector2,shape: String,callback: Callable,icon: String,subtitle: String,color: String) -> MenuDestination:
@@ -40,9 +41,20 @@ func create():
  var logo=ui.label_at("NIGHTFALL\nDORM",Vector2(65,122),64,600,true);logo.add_theme_font_override("font",ui.horror_font);logo.add_theme_constant_override("line_spacing",-32)
  ui.label_at("—  THE NIGHT WATCH  —",Vector2(74,262),13,600).modulate=Color("B8A478")
  ui.label_at("Claim a bed. Build your defenses.\nMake it through the night.",Vector2(73,293),20,580)
- ui.menu_start=card("Start Game",Vector2(70,382),Vector2(480,98),"start",game.enter_game,"play","Next: Stage 1 · Normal" if profile.tutorial_completed and profile.statistics.matches==0 else "Prepare for your next night","D2BC83")
- var endless=ui.button("Endless Siege",Vector2(94,494),ui.replay_ui.show_endless,432,48);endless.icon=PremiumButton.texture("endless");secondary(endless,"play")
- ui.label_at("One room. Stronger waves. How long can you last?",Vector2(96,551),14,480).modulate=Color("BCA8C4")
+ if game.story_preview_enabled:
+  var mode: String=profile.selected_difficulty
+  var track:=StoryProgress.summary(profile.story,mode)
+  var mission:=StoryCatalog.mission(track.position)
+  var subtitle: String="All 50 levels cleared" if track.finished else "Level %02d / 50   ·   %s" % [track.position,mission.title]
+  ui.menu_start=card("CONTINUE STORY",Vector2(70,367),Vector2(514,108),"start",game.enter_game,"play",subtitle,GOLD_EDGE)
+  ui.label_at("%s   ·   %d / 50 cleared" % [RankCatalog.DIFFICULTIES[mode].name,track.highest],Vector2(161,447),13,405).modulate=Color("B9B09A")
+  var objective: String="Revisit your chapters or choose another difficulty." if track.finished else mission.objective
+  ui.label_at(objective,Vector2(94,485),15,481).modulate=Color("C9C0AC")
+ else:
+  ui.menu_start=card("Start Game",Vector2(70,382),Vector2(480,98),"start",game.enter_game,"play","Next: Stage 1 · Normal" if profile.tutorial_completed and profile.statistics.matches==0 else "Prepare for your next night","D2BC83")
+ var y:=524 if game.story_preview_enabled else 494
+ var endless=ui.button("ENDLESS MODE" if game.story_preview_enabled else "Endless Siege",Vector2(94,y),ui.replay_ui.show_endless,432,48);endless.icon=PremiumButton.texture("endless");secondary(endless,"play")
+ ui.label_at("One room. Stronger waves. How long can you last?",Vector2(96,y+56),14,480).modulate=Color("BCA8C4")
  var shop=card("SHOP",Vector2(614,357),Vector2(190,220),"shop",ui.shop.show_shop,"shop","Buy supplies","BD9980")
  ui.label_at("WALLET · RM CASH",Vector2(14,170),12,162,true,shop).horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  var balance=ui.label_at("",Vector2(14,189),19,162,false,shop);balance.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
@@ -83,7 +95,7 @@ func create():
  ui.button("Settings",Vector2(410,footer_y),ui.show_settings,140,38)
  ui.button("Exit",Vector2(566,footer_y),game.request_quit,100,38)
  if not profile.pending_spins.is_empty():ui.button("Resume Lucky Spin",Vector2(690,footer_y),ui.items_ui.spin,230,38)
- if profile.warning!="":ui.label_at(profile.warning,Vector2(74,594),13,510).modulate=Color("EDBD8A")
+ if profile.warning!="":ui.label_at(profile.warning,Vector2(74,611 if game.story_preview_enabled else 594),13,510).modulate=Color("EDBD8A")
  for node in ui.panel.get_children():
   if node is Button and not node is MenuDestination and node!=endless:secondary(node)
  ui.menu_start.grab_focus()

@@ -52,9 +52,15 @@ func verified(model,entry: Dictionary) -> bool:
  if not enabled or _model==null or _model.get_ref()!=model or _sealed.is_empty():return false
  if archetype!=_sealed.archetype or contract!=_sealed.contract or match_id!=_sealed.match_id:return false
  if model.stage_id!=_sealed.stage or model.difficulty!=_sealed.difficulty or model.hunter.archetype!=archetype:return false
- if model.result!=_sealed.result or model.time!=_sealed.time or model.hunter.hp!=_sealed.hunter_hp or model.player()==null or model.player().alive!=_sealed.player_alive:return false
+ if model.result!=_sealed.result or model.time!=_sealed.time or model.hunter.hp!=_sealed.hunter_hp:return false
+ var room=model.player()
+ if room==null:
+  return entry.has("story") and model.result=="defeat" and model.eliminations>0 and not _sealed.player_alive and _sealed.occupied==0.0 and _identity_verified(entry)
+ if room.alive!=_sealed.player_alive:return false
  if failed!=_sealed.failed or max_offense!=_sealed.max_offense or legendary_uses!=_sealed.legendary or manual_repairs!=_sealed.repairs:return false
  if model.items.legendary_used!=_sealed.legendary or model.player().repair_actions!=_sealed.repairs or model.player().occupied_seconds!=_sealed.occupied:return false
+ return _identity_verified(entry)
+func _identity_verified(entry: Dictionary) -> bool:
  return int(entry.get("id",-1))==match_id and entry.get("archetype","")==archetype and entry.get("contract","")==contract
 func reward_eligible(model,entry: Dictionary) -> bool:
  if not verified(model,entry) or contract=="" or failed:return false
