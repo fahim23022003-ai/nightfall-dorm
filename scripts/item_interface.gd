@@ -27,28 +27,51 @@ func art(id,pos,size=52):
  return icon
 func inventory():
  ui.clear(); ui.current_screen="inventory"
- ui.box(Rect2(60,35,1160,650))
- ui.label_at("CONSUMABLE INVENTORY",Vector2(90,55),30,1000,true)
+ var living: bool=ui.use_living_ui()
+ if living:
+  ui.theme_backdrop()
+  ui.theme_panel(Rect2(60,35,1160,650))
+  ui.theme_label("CONSUMABLE INVENTORY",Vector2(90,55),30,790,"text",true)
+ else:
+  ui.box(Rect2(60,35,1160,650))
+  ui.label_at("CONSUMABLE INVENTORY",Vector2(90,55),30,1000,true)
  ui.label_at("Choose up to TWO item types. Equip is free; only a valid activation spends one. Permanent perks are separate.",Vector2(92,100),16,1090)
  for i in range(mini(8,ItemCatalog.IDS.size()-inventory_page*8)):
   var id=ItemCatalog.IDS[i+inventory_page*8]
   var data=ItemCatalog.ITEMS[id]
   var pos=Vector2(90+(i%2)*560,144+int(i/2)*112)
-  ui.box(Rect2(pos,Vector2(540,109)),"203747",{"Common":"92B39A","Rare":"8FAFB9","Epic":"A28EB2","Legendary":"C5A56A"}[data.rarity])
+  if living:
+   ui.theme_panel(Rect2(pos,Vector2(540,109)),"card")
+  else:
+   ui.box(Rect2(pos,Vector2(540,109)),"203747",{"Common":"92B39A","Rare":"8FAFB9","Epic":"A28EB2","Legendary":"C5A56A"}[data.rarity])
   art(id,pos+Vector2(10,18),62)
   ui.label_at(data.name+" · ×%d" % int(game.profile.inventory.get(id,0)),pos+Vector2(82,8),19,440,true)
-  var description=ui.label_at(data.rarity+" · "+data.description,pos+Vector2(82,34),12,432)
+  var description=ui.label_at(data.rarity+" · "+data.description,pos+Vector2(82,34),14 if living else 12,432)
   description.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
   description.set_deferred("size",Vector2(432,42))
   description.tooltip_text=data.description
-  var button=ui.button("Equipped ✓" if id in game.profile.item_loadout else "Equip",pos+Vector2(82,78),func():
+  var equipped: bool=id in game.profile.item_loadout
+  var button=ui.button("Equipped ✓" if equipped else "Equip",pos+Vector2(82,78),func():
    if not game.profile.equip_item(id): game.audio_event("failure")
-   inventory(),140,22)
+   inventory(),140,27 if living else 22)
+  button.name="inventory_equip_"+id
+  if living:
+   ui.theme_button(button,"selected" if equipped else "inventory")
+   button.add_theme_font_size_override("font_size",14)
   button.disabled=game.profile.read_only or (id not in game.profile.item_loadout and (int(game.profile.inventory.get(id,0))<=0 or game.profile.item_loadout.size()>=ItemCatalog.SLOTS))
- ui.button(["Advanced items →","Legendary items →","← Original items"][inventory_page],Vector2(900,55),func(): inventory_page=(inventory_page+1)%3; inventory(),270,36)
- ui.label_at("Selected: "+", ".join(game.profile.item_loadout)+" · Stock persists; unused items stay yours.",Vector2(92,600),16,1080)
- ui.button("Back to loadout",Vector2(92,638),ui.progression.show_loadout,250,36)
- ui.button("Main menu",Vector2(360,638),game.return_menu,220,36)
+ var page=ui.button(["Advanced items →","Legendary items →","← Original items"][inventory_page],Vector2(900,55),func(): inventory_page=(inventory_page+1)%3; inventory(),270,36)
+ page.name="inventory_page"
+ var equipped_names: PackedStringArray=[]
+ for id in game.profile.item_loadout:
+  equipped_names.append(ItemCatalog.ITEMS[id].name if living else id)
+ ui.label_at("Equipped: %s · %d/%d types" % [", ".join(equipped_names) if not equipped_names.is_empty() else "None",equipped_names.size(),ItemCatalog.SLOTS] if living else "Selected: "+", ".join(equipped_names)+" · Stock persists; unused items stay yours.",Vector2(92,600),16,1080)
+ var loadout=ui.button("Back to loadout",Vector2(92,638),ui.progression.show_loadout,250,36)
+ var back=ui.button("Main menu",Vector2(360,638),game.return_menu,220,36)
+ back.name="inventory_back"
+ if living:
+  ui.theme_button(page,"inventory")
+  ui.theme_button(loadout,"quiet")
+  ui.theme_button(back,"quiet")
  if not game.profile.pending_spins.is_empty(): ui.button("Resume reward",Vector2(890,638),spin,280,36)
 func spin():
  if not game.profile.save_ok and not game.profile.save_profile():

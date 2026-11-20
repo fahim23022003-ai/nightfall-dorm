@@ -33,8 +33,7 @@ func install():
  upgrade_shortcut.tooltip_text="Select a machine to inspect its current level and upgrades."
  place(ui.context_box,CLOSED,BODY.size);ui.context_box.visible=false
  place(ui.context_title,Vector2(14,4),Vector2(1130,24))
- for child in ui.context_box.get_children():
-  if child is Button and child.text=="×":place(child,Vector2(1190,2),Vector2(32,26))
+ place(ui.build_cancel_button,Vector2(1128,2) if ui.use_living_ui() else Vector2(1190,2),Vector2(94,26) if ui.use_living_ui() else Vector2(32,26))
  var count=int(ui.build_items.size()/5)
  for i in range(count):
   var base=i*5;var at=Vector2(10+(i%5)*244,32+int(i/5)*55)
@@ -71,10 +70,9 @@ func install_side():
  body=SIDE_BODY
  closed_position=SIDE_CLOSED
  place(ui.context_box,closed_position,body.size)
- place(ui.context_title,Vector2(14,8),Vector2(295,27))
+ place(ui.context_title,Vector2(14,8),Vector2(250 if ui.use_living_ui() else 295,27))
  ui.context_title.clip_text=true
- for child in ui.context_box.get_children():
-  if child is Button and child.text=="×":place(child,Vector2(320,6),Vector2(32,28))
+ place(ui.build_cancel_button,Vector2(269,6) if ui.use_living_ui() else Vector2(320,6),Vector2(83,28) if ui.use_living_ui() else Vector2(32,28))
  for index in range(ui.build_items.size()/5):
   var first=index*5
   var at=Vector2(10+(index%3)*116,43+floori(index/3.0)*86)

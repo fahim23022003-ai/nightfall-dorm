@@ -33,6 +33,11 @@ var door_details: Label
 var confirmation_details: Label
 var confirmation_icon: TextureRect
 var confirm_button: Button
+var placement_cancel_button: Button
+var build_cancel_button: Button
+var grid_placement_cancel_button: Button
+var grid_placement_banner: Panel
+var grid_placement_label: Label
 var gold_label: Label
 var power_label: Label
 var phase_label: Label
@@ -92,7 +97,9 @@ func _ready():
 
 func clear():
  haunted_hud=null
- for child in panel.get_children(): child.queue_free()
+ for child in panel.get_children():
+  panel.remove_child(child)
+  child.queue_free()
  actions.clear()
  build_items.clear()
  upgrade_items.clear()
@@ -202,6 +209,47 @@ func button(text: String,pos: Vector2,callback: Callable,width: float=240,height
  PremiumButton.decorate(b,game.profile.settings.get("reduced_effects",false))
  return b
 
+func use_living_ui() -> bool:
+ return game.survivor_preview_enabled and not game.mobile_mode
+
+func theme_button(control: Button, role: String = "secondary", icon_id: String = "") -> void:
+ if not use_living_ui() or control.get_meta("living_role","") == role and icon_id.is_empty():
+  return
+ for state in ["normal","hover","pressed","hover_pressed","disabled","focus"]:
+  control.add_theme_stylebox_override(state,GothicTheme.living_surface(role,"pressed" if state == "hover_pressed" else state))
+ for state in ["font_color","font_hover_color","font_pressed_color","font_focus_color","font_hover_pressed_color"]:
+  control.add_theme_color_override(state,GothicTheme.LIVING_COLORS.text)
+ control.add_theme_color_override("font_disabled_color",GothicTheme.LIVING_COLORS.muted)
+ control.set_meta("living_role",role)
+ if not icon_id.is_empty():
+  control.icon = PremiumButton.texture(icon_id)
+  control.expand_icon = true
+  control.add_theme_constant_override("icon_max_width",24)
+  control.add_theme_constant_override("h_separation",8)
+  control.clip_text = true
+
+func theme_panel(rect: Rect2, role: String = "frame", parent: Control = null) -> Panel:
+ var frame := box(rect,"263E50","607D8B",parent)
+ if use_living_ui():
+  frame.add_theme_stylebox_override("panel",GothicTheme.living_surface(role))
+ return frame
+
+func theme_label(text: String, at: Vector2, size: int, width: float, tone: String = "text", heading: bool = false, parent: Control = null) -> Label:
+ var label := label_at(text,at,size,width,heading,parent)
+ label.add_theme_color_override("font_color",GothicTheme.LIVING_COLORS.get(tone,GothicTheme.LIVING_COLORS.text))
+ return label
+
+func _price_amount(value: float) -> String:
+ return str(roundi(value)) if is_equal_approx(value,roundf(value)) else "%.1f" % value
+
+func theme_backdrop() -> void:
+ var scrim := ColorRect.new()
+ scrim.color = GothicTheme.LIVING_COLORS.overlay
+ scrim.color.a = 0.78
+ scrim.size = Vector2(1280,720)
+ scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
+ attach(scrim)
+
 func show_menu():
  progression.story_context=false
  game.audio_system.stop_preview()
@@ -230,34 +278,95 @@ func show_settings():
   game.mobile_ui.show_settings(self)
   return
  game.audio_event("menu")
- box(Rect2(110,35,1060,650))
- label_at("SOUND & CINEMATIC QUALITY",Vector2(145,62),30,990,true)
+ var living := use_living_ui()
+ if living:
+  theme_backdrop()
+  theme_panel(Rect2(110,35,1060,650))
+  theme_label("SETTINGS",Vector2(145,61),34,990,"text",true)
+  theme_panel(Rect2(140,126,452,411),"card")
+  theme_panel(Rect2(612,126,525,411),"card")
+  theme_label("AUDIO",Vector2(158,139),20,390,"gold",true)
+  theme_label("DISPLAY & GUIDANCE",Vector2(632,139),20,470,"gold",true)
+ else:
+  box(Rect2(110,35,1060,650))
+  label_at("SOUND & CINEMATIC QUALITY",Vector2(145,62),30,990,true)
  for i in range(3):
-  var key=["music","effects","ambient"][i]
-  label_at(key.capitalize()+" volume",Vector2(150,130+i*94),20,420)
-  var slider=HSlider.new();slider.name=key+"_volume";slider.position=Vector2(150,167+i*94);slider.size=Vector2(420,28);slider.step=.01;slider.min_value=0;slider.max_value=1;slider.value=game.profile.settings[key]
-  var id=key;slider.value_changed.connect(func(value):game.change_setting(id,value));panel.add_child(slider)
- var quality=OptionButton.new();quality.name="graphics_quality";quality.position=Vector2(640,130);quality.size=Vector2(470,42)
+  var key: String=["music","effects","ambient"][i]
+  var y: int=183+i*74 if living else 130+i*94
+  label_at(key.capitalize()+" volume",Vector2(158 if living else 150,y),19 if living else 20,385)
+  var slider:=HSlider.new()
+  slider.name=key+"_volume"
+  slider.position=Vector2(158 if living else 150,y+36)
+  slider.size=Vector2(410 if living else 420,28)
+  slider.step=.01
+  slider.min_value=0
+  slider.max_value=1
+  slider.value=game.profile.settings[key]
+  slider.value_changed.connect(func(value):game.change_setting(key,value))
+  panel.add_child(slider)
+  if living:
+   var value_label:=theme_label("%d%%" % roundi(slider.value*100),Vector2(506,y),16,62,"muted")
+   value_label.horizontal_alignment=HORIZONTAL_ALIGNMENT_RIGHT
+   slider.value_changed.connect(func(value: float):value_label.text="%d%%" % roundi(value*100))
+ var quality:=OptionButton.new()
+ quality.name="graphics_quality"
+ quality.position=Vector2(632,179) if living else Vector2(640,130)
+ quality.size=Vector2(485 if living else 470,42)
  var standard_label="STANDARD · balanced cinema" if CinematicQuality.rebirth_preview() else "MEDIUM · balanced cinema"
- for text in ["LOW · essential effects",standard_label,"HIGH · full atmosphere"]:quality.add_item(text)
+ for text in ["LOW · essential effects",standard_label,"HIGH · full atmosphere"]:
+  quality.add_item(text)
  if CinematicQuality.rebirth_preview():
   quality.tooltip_text="Low reduces ambient effects. Hunter contrast, direction art and combat warnings stay visible."
- quality.select(["low","medium","high"].find(game.profile.settings.get("graphics_quality","medium")))
- quality.item_selected.connect(func(index):game.change_setting("graphics_quality",["low","medium","high"][index]));panel.add_child(quality)
+ var quality_values := ["low","medium","high"]
+ quality.select(quality_values.find(game.profile.settings.get("graphics_quality","medium")))
+ quality.item_selected.connect(func(index):game.change_setting("graphics_quality",quality_values[index]))
+ panel.add_child(quality)
+ if living:
+  theme_button(quality,"settings")
+  quality.get_popup().add_theme_stylebox_override("panel",GothicTheme.living_surface("frame"))
  var options=["reduced_motion","reduced_flashes","reduced_effects","muted","fullscreen","tutorial"]
  var names=["Reduce motion / camera impulse","Reduce flashes / light response","Reduced effects (overrides quality)","Mute all audio","Fullscreen","First-night tutorial"]
  for i in range(options.size()):
-  var toggle=CheckButton.new();toggle.name=options[i];toggle.text=names[i];toggle.position=Vector2(640,190+i*50);toggle.size.x=470;toggle.button_pressed=game.profile.settings.get(options[i],false)
-  var id=options[i];toggle.toggled.connect(func(value):game.change_setting(id,value));panel.add_child(toggle)
- label_at("All quality levels preserve danger warnings and timing.\nPreferences affect presentation only.",Vector2(150,449),16,450)
- var guide=OptionButton.new();guide.name="guidance_mode";guide.position=Vector2(640,503);guide.size=Vector2(470,40)
- for value in ["Show Guidance","Minimal Guidance","Guidance Off"]:guide.add_item(value)
- var modes=["show","minimal","off"];guide.select(modes.find(game.profile.settings.guidance_mode));guide.item_selected.connect(func(i):game.change_setting("guidance_mode",modes[i]));panel.add_child(guide)
+  var toggle:=CheckButton.new()
+  var id: String=options[i]
+  toggle.name=id
+  toggle.text=names[i]
+  toggle.position=Vector2(632,231+i*38) if living else Vector2(640,190+i*50)
+  toggle.size=Vector2(485,34) if living else Vector2(470,0)
+  toggle.button_pressed=game.profile.settings.get(id,false)
+  toggle.toggled.connect(func(value):game.change_setting(id,value))
+  panel.add_child(toggle)
+  if living:
+   toggle.add_theme_font_size_override("font_size",16)
+   theme_button(toggle,"quiet")
+ if living:
+  theme_label("Combat warnings remain visible at every quality level.",Vector2(632,548),15,500,"muted")
+ else:
+  label_at("All quality levels preserve danger warnings and timing.\nPreferences affect presentation only.",Vector2(150,449),16,450)
+ var guide:=OptionButton.new()
+ guide.name="guidance_mode"
+ guide.position=Vector2(632,477) if living else Vector2(640,503)
+ guide.size=Vector2(485 if living else 470,40)
+ for value in ["Show Guidance","Minimal Guidance","Guidance Off"]:
+  guide.add_item(value)
+ var modes=["show","minimal","off"]
+ guide.select(modes.find(game.profile.settings.guidance_mode))
+ guide.item_selected.connect(func(i):game.change_setting("guidance_mode",modes[i]))
  guide.tooltip_text="Contextual objectives only. Urgent combat warnings always stay on."
- button("Soundtrack · playlist preferences",Vector2(150,503),func():SessionInterface.settings(self),420,40)
- button("Back",Vector2(150,592),show_menu,420,46)
- button("Audio listening room",Vector2(640,592),show_audio_test,470,46)
- if game.profile.warning!="":label_at(game.profile.warning,Vector2(150,540),14,960)
+ panel.add_child(guide)
+ if living:
+  theme_button(guide,"settings")
+  guide.get_popup().add_theme_stylebox_override("panel",GothicTheme.living_surface("frame"))
+ var playlist:=button("Soundtrack · playlist preferences",Vector2(158,409) if living else Vector2(150,503),func():SessionInterface.settings(self),410 if living else 420,40)
+ var back:=button("Back",Vector2(140,598) if living else Vector2(150,592),show_menu,220 if living else 420,46)
+ var listening:=button("Audio listening room",Vector2(158,468) if living else Vector2(640,592),show_audio_test,410 if living else 470,46)
+ back.name="settings_back"
+ if living:
+  theme_button(playlist,"settings")
+  theme_button(back,"quiet")
+  theme_button(listening,"quiet")
+ if game.profile.warning!="":
+  label_at(game.profile.warning,Vector2(376,605) if living else Vector2(150,540),14,740 if living else 960)
 
 func show_match():
  clear();run_panel=null
@@ -318,22 +427,37 @@ func show_match():
  room_bed_summary=button("Bed",Vector2(250,649),func(): open_room_panel("bed"),226,44)
  room_door_summary=button("Door",Vector2(490,649),func(): open_room_panel("door"),266,44)
  room_selected_summary=button("Build",Vector2(770,649),open_build_menu,263,44)
+ room_selected_summary.name="build_menu"
  quick_repair=button("Repair",Vector2(1047,649),func(): purchase(game.model.repair_door()),196,44)
+ quick_repair.name="repair_door"
  quick_repair.tooltip_text="Repair your door quickly [R]"
  # Side inspector lies beyond the focused bedroom's playable bounds.
  context_box=box(Rect2(900,246,364,382),"263E50","7F9DAA")
  context_box.mouse_filter=Control.MOUSE_FILTER_STOP
  context_title=label_at("BUILD A DEFENSE",Vector2(14,12),18,304,true,context_box)
- button("×",Vector2(326,8),game.cancel_placement,28,28,context_box)
+ build_cancel_button=button("Cancel" if use_living_ui() else "×",Vector2(326,8),game.cancel_placement,28,28,context_box)
+ build_cancel_button.name="build_cancel"
+ if use_living_ui():
+  context_box.add_theme_stylebox_override("panel",GothicTheme.living_surface("frame"))
+  theme_button(build_cancel_button,"danger")
+  build_cancel_button.add_theme_font_size_override("font_size",14)
  var descs={"barrier":"Reflects magic","plasma":"Stores magic","antenna":"Magic shield","turret":"Auto fire","heavy":"Arc damage","generator":"Makes power","repair":"Mends door","economy":"More income","enhancer":"Boost guns","flame":"Burn / DoT","frost":"Slow enemies","shock":"Charged strike","auto_repair":"Paid repairs","shield":"Paid barrier","decoy":"Timed legal lure"}
  var n=0
- for kind in Catalog.BUILDINGS:
+ var build_order: Array = Catalog.BUILDINGS.keys()
+ if use_living_ui():
+  build_order.erase("generator")
+  build_order.insert(1,"generator")
+ for kind in build_order:
   var id=kind
   var data=Catalog.BUILDINGS[kind].duplicate(true);var actual=BalanceRules.price(kind,game.model.balance_version);data.gold=actual.x;data.power=actual.y
   var at=Vector2(12+(n%3)*114,42+(n/3)*152)
   var b=button("",at,func(): game.begin_placement(id) if game.mobile_mode else game.build_selected(id),108,142,context_box)
+  b.name="build_"+id
+  if use_living_ui():theme_button(b,"card")
   var art=icon(kind,at+Vector2(29,5),Vector2(50,48),context_box)
   var display_names={"turret":"Needle\nturret","heavy":"Arc\nturret","generator":"Dynamo","repair":"Repair\nstation","economy":"Dream\namplifier","enhancer":"Target\nrelay"}
+  if use_living_ui():
+   display_names["auto_repair"]="Auto repair"
   var name=label_at(display_names.get(kind,data.name),at+Vector2(3,53),16,102,false,context_box)
   name.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
   name.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
@@ -352,6 +476,7 @@ func show_match():
  selected_details.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  selected_details.size.y=126
  actions.upgrade=button("Upgrade",Vector2(14,190),upgrade_selected,336,44,context_box)
+ actions.upgrade.name="upgrade_building"
  actions.sell=button("Sell · 50% refund",Vector2(14,240),sell_selected,336,44,context_box)
  actions.sell.add_theme_font_size_override("font_size",16)
  actions.sell.add_theme_constant_override("icon_max_width",22)
@@ -393,10 +518,26 @@ func show_match():
  confirmation_details.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  confirmation_details.size.y=120
  confirm_button=button("Confirm placement",Vector2(14,180),func(): game.confirm_placement(),336,40,context_box)
- var cancel=button("Cancel · no charge",Vector2(14,228),game.cancel_placement,336,30,context_box)
- confirmation_items=[confirmation_icon,confirmation_details,confirm_button,cancel]
+ confirm_button.name="placement_confirm"
+ placement_cancel_button=button("Cancel · no charge",Vector2(14,228),func():game.cancel_placement(true),336,30,context_box)
+ placement_cancel_button.name="placement_cancel"
+ confirmation_items=[confirmation_icon,confirmation_details,confirm_button,placement_cancel_button]
+ if use_living_ui():
+  theme_button(room_selected_summary,"primary","build")
+  theme_button(confirm_button,"primary","play")
+  theme_button(placement_cancel_button,"danger")
+  theme_button(actions.upgrade,"primary","upgrade")
  message=guide_label
  status=phase_label
+ if use_living_ui():
+  grid_placement_banner=theme_panel(Rect2(908,547,342,96),"frame")
+  grid_placement_banner.visible=false
+  grid_placement_label=theme_label("",Vector2(12,7),18,318,"text",false,grid_placement_banner)
+  grid_placement_label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+  grid_placement_cancel_button=button("Cancel placement",Vector2(12,46),func():game.cancel_placement(true),318,38,grid_placement_banner)
+  grid_placement_cancel_button.name="grid_placement_cancel"
+  grid_placement_cancel_button.visible=false
+  theme_button(grid_placement_cancel_button,"danger")
  close_context()
  if game.mobile_mode: game.mobile_ui.match_layout(self)
  update_match()
@@ -425,14 +566,19 @@ func open_build_menu():
  if game.watched_room>=0 or game.model.player()==null:return
  var room=game.model.player()
  if room.spatial!=null and not game.mobile_mode:
-  open_context();context_mode="build";refresh_context();return
+  open_context();context_mode="build";refresh_context();_note_build_open();return
  if room.buildings.size()>=room.tile_count() and game.model.run_kind=="endless" and expansion_ui!=null:
   expansion_ui.open();return
  if game.selected_tile<0 or room.buildings.has(game.selected_tile):
   for tile in range(room.tile_count()):
    if not room.buildings.has(tile):game.selected_tile=tile;break
  open_context()
- if not room.buildings.has(game.selected_tile):context_mode="build";refresh_context()
+ if not room.buildings.has(game.selected_tile):
+  context_mode="build";refresh_context();_note_build_open()
+
+func _note_build_open() -> void:
+ if use_living_ui() and game.tutorial_active and is_instance_valid(game.onboarding) and game.onboarding.has_method("note_build_open"):
+  game.onboarding.note_build_open()
 
 func open_context():
  if game.watched_room>=0:return
@@ -464,9 +610,12 @@ func open_confirmation():
  refresh_context()
 
 func close_context():
+ var was_open: bool = context_open
  game.pending_build=""
  game.placement_on_tile=false
  context_open=false;pending_branch=""
+ if was_open and use_living_ui() and game.tutorial_active and is_instance_valid(game.onboarding) and game.onboarding.has_method("note_panel_closed"):
+  game.onboarding.note_panel_closed()
  if bottom_context==null:
   if is_instance_valid(context_box):context_box.visible=false
   for node in build_items+upgrade_items+bed_items+door_items+confirmation_items+specialization_items:node.visible=false
@@ -667,8 +816,8 @@ func update_match():
  elif m.hunter.phase_guard_remaining>0:hunter_detail.text="PHASE TRANSITION GUARD · %.1fs" % m.hunter.phase_guard_remaining
  elif m.hunter.transformed and m.hunter.state!=HunterState.State.TRANSFORM and m.hunter.boss_attack=="" and m.hunter.surge_remaining<=0:hunter_detail.text="PHASE %s · %d UNDEAD · POWER %d" % ["II" if m.wrath.phase==2 else "I",m.minions.size(),m.evolution.acquired.size()]
  if game.tutorial_active:
-  phase_label.text="PRACTICE\nSTEP %d / 9" % [game.onboarding.step+1]
-  if game.onboarding.step<7:
+  phase_label.text="PRACTICE\nSTEP %d / %d" % [game.onboarding.step+1,game.onboarding.tutorial_step_count()]
+  if not game.onboarding.tutorial_danger_active():
    hunter_label.text="SAFE PRACTICE · NO ENEMY YET"
    hunter_detail.text="Learn at your own pace"
    hunter_bar.value=0
@@ -763,9 +912,21 @@ func update_match():
   var reason=action_reason(action)
   b.disabled=reason!=""
   if card_visuals.has(action):
-   for node in card_visuals[action]: node.modulate.a=0.55 if b.disabled else 1.0
+   var dim := (0.83 if use_living_ui() else 0.55) if b.disabled else 1.0
+   for node in card_visuals[action]: node.modulate.a=dim
+   if use_living_ui():
+    var kind := str(action).trim_prefix("build:")
+    var focused: bool = game.pending_build==kind or game.construction!=null and game.construction.kind==kind
+    theme_button(b,"selected" if focused else "card")
    if room!=null:
-    var quote=room.quote_build(action.trim_prefix("build:"));card_visuals[action][2].text="%.1fG / %.1fE" % [quote.x,quote.y]
+    var quote=room.quote_build(action.trim_prefix("build:"))
+    if use_living_ui():
+     var cost: String=_price_amount(quote.x)+" G"
+     if quote.y>0.0:
+      cost+=" · "+_price_amount(quote.y)+" E"
+     card_visuals[action][2].text=cost
+    else:
+     card_visuals[action][2].text="%.1fG / %.1fE" % [quote.x,quote.y]
   if game.mobile_mode and action.begins_with("build:"): b.disabled=false
   b.tooltip_text=(building_effect(action.trim_prefix("build:"))+"\n" if action.begins_with("build:") else "")+(reason if reason!="" else "Ready")
   if room!=null and action.begins_with("build:"):b.tooltip_text+="\n"+BuildingStats.afford_hint(m,room,room.quote_build(action.trim_prefix("build:")))
@@ -773,6 +934,15 @@ func update_match():
  if game.mobile_mode: game.mobile_ui.update_match(self)
  if bottom_context!=null:bottom_context.refresh()
  if game.construction!=null:game.construction.refresh()
+ if is_instance_valid(grid_placement_banner):
+  var placement: bool=game.construction!=null and game.construction.active() and not context_open and not game.full_map
+  grid_placement_banner.visible=placement
+  grid_placement_cancel_button.visible=placement
+  if placement:
+   var active_kind: String=game.construction.active_kind()
+   var moving: bool=game.construction.moving>=0
+   grid_placement_label.text=("Moving " if moving else "Placing ")+Catalog.BUILDINGS.get(active_kind,{}).get("name","machine")
+   grid_placement_cancel_button.text="Cancel move" if moving else "Cancel placement"
  if game.model.run_kind!="campaign":replay_ui.update_hud()
  if room!=null and room.spatial!=null:
   if room.spatial.grid and not game.mobile_mode:

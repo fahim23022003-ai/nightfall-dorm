@@ -101,3 +101,67 @@ static func make_theme(font: Font) -> Theme:
   theme.set_icon("checked" if checked else "unchecked","CheckButton",tex)
   theme.set_icon("checked_disabled" if checked else "unchecked_disabled","CheckButton",tex)
  return theme
+
+const LIVING_COLORS := {
+ "background": Color("#101722"),
+ "overlay": Color("#080D16"),
+ "panel": Color("#202C3B"),
+ "card": Color("#2D3D4C"),
+ "text": Color("#F4F0E8"),
+ "muted": Color("#BAC8D6"),
+ "gold": Color("#D2B47B"),
+ "story": Color("#218A78"),
+ "shop": Color("#BA8743"),
+ "settings": Color("#487EAD"),
+ "inventory": Color("#7668A3"),
+ "danger": Color("#B94C61"),
+ "success": Color("#50C7A8"),
+ "disabled": Color("#596473"),
+}
+static var living_styles: Dictionary = {}
+
+
+static func living_surface(role: String, state: String = "normal") -> StyleBoxFlat:
+ var key := role + ":" + state
+ if living_styles.has(key):
+  return living_styles[key]
+ var style := StyleBoxFlat.new()
+ var colors := LIVING_COLORS
+ var accents := {"primary":"story", "selected":"success", "danger":"danger", "shop":"shop",
+  "settings":"settings", "inventory":"inventory", "accent":"gold"}
+ var accent: Color = colors[accents.get(role,"disabled")]
+ style.bg_color = colors.card if role == "card" or role in accents else colors.panel
+ if role == "inset" or role == "quiet":
+  style.bg_color = colors.background
+ if role == "overlay":
+  style.bg_color = colors.overlay
+ if role == "primary" or role == "danger" or role == "selected":
+  style.bg_color = style.bg_color.lerp(accent,0.34)
+ if state == "hover":
+  style.bg_color = style.bg_color.lightened(0.11)
+ elif state == "pressed":
+  style.bg_color = style.bg_color.darkened(0.17)
+ elif state == "disabled":
+  style.bg_color = colors.panel.darkened(0.15)
+  accent = colors.disabled.darkened(0.25)
+ if state == "focus":
+  style.bg_color = Color.TRANSPARENT
+  accent = colors.gold
+ style.border_color = accent
+ style.set_border_width_all(2 if state == "focus" else 1)
+ if state == "normal" and role in accents:
+  style.border_width_left = 3
+ style.set_corner_radius_all(8 if role == "frame" else 6)
+ if role in ["frame","card"]:
+  style.shadow_color = Color(0.02,0.03,0.06,0.55)
+  style.shadow_size = 3
+  style.shadow_offset = Vector2(0,2)
+ for side in [SIDE_LEFT,SIDE_RIGHT]:
+  style.set_content_margin(side,12)
+ for side in [SIDE_TOP,SIDE_BOTTOM]:
+  style.set_content_margin(side,4)
+ if state == "pressed":
+  style.content_margin_top = 6
+  style.content_margin_bottom = 2
+ living_styles[key] = style
+ return style

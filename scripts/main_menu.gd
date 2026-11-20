@@ -36,6 +36,9 @@ func secondary(button: Button,role="utility"):
   button.add_theme_stylebox_override(state,style)
  button.add_theme_font_size_override("font_size",17 if role=="play" else 15)
 func create():
+ if ui.use_living_ui():
+  _create_living()
+  return
  var game=ui.game;var profile=game.profile
  ui.label_at("SMALL ROOMS. BIG NIGHTMARES.",Vector2(70,87),17,600).modulate=Color("ACBDAD")
  var logo=ui.label_at("NIGHTFALL\nDORM",Vector2(65,122),64,600,true);logo.add_theme_font_override("font",ui.horror_font);logo.add_theme_constant_override("line_spacing",-32)
@@ -98,4 +101,67 @@ func create():
  if profile.warning!="":ui.label_at(profile.warning,Vector2(74,611 if game.story_preview_enabled else 594),13,510).modulate=Color("EDBD8A")
  for node in ui.panel.get_children():
   if node is Button and not node is MenuDestination and node!=endless:secondary(node)
+ ui.menu_start.grab_focus()
+
+
+func _destination(id: String, title: String, subtitle: String, at: Vector2, width: float, callback: Callable, role: String, icon: String) -> Button:
+ var control: Button = ui.button(title,at,callback,width,68)
+ control.name=id
+ ui.theme_button(control,role,icon)
+ control.alignment=HORIZONTAL_ALIGNMENT_LEFT
+ control.add_theme_font_size_override("font_size",19)
+ control.add_theme_constant_override("icon_max_width",30)
+ control.add_theme_stylebox_override("normal",GothicTheme.living_surface(role))
+ control.tooltip_text=subtitle
+ return control
+
+
+func _create_living() -> void:
+ var game=ui.game
+ var profile=game.profile
+ ui.theme_panel(Rect2(65,62,1150,596),"overlay")
+ ui.theme_label("NIGHTFALL DORM",Vector2(104,91),51,900,"text",true)
+ ui.theme_label("Claim a bed. Build defenses. Survive the night.",Vector2(108,153),19,765,"muted")
+ ui.theme_panel(Rect2(104,208,525,369),"frame")
+ ui.theme_panel(Rect2(650,208,525,369),"frame")
+ ui.theme_label("CHOOSE A MODE",Vector2(124,222),20,480,"gold",true)
+ ui.theme_label("SUPPLIES & PROFILE",Vector2(674,222),20,480,"gold",true)
+ if game.story_preview_enabled:
+  var mode: String=profile.selected_difficulty
+  var track:=StoryProgress.summary(profile.story,mode)
+  var mission:=StoryCatalog.mission(track.position)
+  var story_label: String="Continue Story" if track.highest > 0 else "Start Story"
+  if track.finished:
+   story_label="Story Archive"
+  var subtitle: String="All 50 levels cleared" if track.finished else "Level %02d / 50 · %s" % [track.position,mission.title]
+  ui.menu_start=_destination("mode_story",story_label,subtitle,Vector2(124,268),485,game.enter_game,"primary","play")
+  ui.theme_label(subtitle,Vector2(180,337),15,423,"muted")
+  _destination("mode_endless","Endless","Defend the same room through escalating waves.",Vector2(124,375),485,ui.replay_ui.show_endless,"secondary","endless")
+  _destination("mode_campaign","Campaign","Choose a stage and difficulty.",Vector2(124,459),485,ui.campaign.show_stages,"secondary","next")
+ else:
+  ui.menu_start=_destination("mode_campaign","Campaign","Choose a stage and difficulty.",Vector2(124,268),485,game.enter_game,"primary","play")
+  _destination("mode_endless","Endless","Defend the same room through escalating waves.",Vector2(124,375),485,ui.replay_ui.show_endless,"secondary","endless")
+ _destination("menu_shop","Shop","Buy common supplies with in-game RM Cash.",Vector2(674,268),226,ui.shop.show_shop,"shop","shop")
+ _destination("menu_inventory","Inventory","View owned supplies and equip up to two types.",Vector2(924,268),226,ui.items_ui.inventory,"inventory","inventory")
+ _destination("menu_ranks","Rank & Rewards","View rank progress and claim rewards.",Vector2(674,355),226,ui.progression.show_ranks,"accent","rank")
+ _destination("menu_settings","Settings","Adjust graphics, audio and guidance.",Vector2(924,355),226,ui.show_settings,"settings","settings")
+ ui.theme_label("Wallet · %d RM Cash" % profile.rm_cash,Vector2(678,435),17,224,"gold")
+ ui.theme_label("%s · %d XP" % [profile.rank_name(),profile.xp],Vector2(926,435),16,224,"muted")
+ var extras: Button=ui.button("Challenge, Practice & Cosmetics",Vector2(674,502),ui.replay_ui.show_hub,476,44)
+ extras.name="menu_extras"
+ ui.theme_button(extras,"quiet")
+ var utilities: Array = [
+  ["How to Play",ui.show_help],
+  ["Replay Tutorial",func():game.start_tutorial(true)],
+  ["Exit",game.request_quit],
+ ]
+ for i in range(utilities.size()):
+  var utility: Button=ui.button(utilities[i][0],Vector2(104+i*194,600),utilities[i][1],180,38)
+  ui.theme_button(utility,"quiet")
+ if not profile.pending_spins.is_empty():
+  var spin: Button=ui.button("Resume Lucky Spin",Vector2(924,600),ui.items_ui.spin,226,38)
+  ui.theme_button(spin,"accent")
+ elif not profile.warning.is_empty():
+  var warning: Label=ui.theme_label(profile.warning,Vector2(653,586),13,492,"danger")
+  warning.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  ui.menu_start.grab_focus()
