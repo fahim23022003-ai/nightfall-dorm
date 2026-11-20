@@ -2,6 +2,8 @@ class_name ReplaySnapshot
 extends RefCounted
 const SCHEMA=2
 const RULESET=5
+const GRID_SCHEMA=3
+const GRID_RULESET=6
 const LEGACY_RULESET_MAX=4
 const ROOM_NUMBERS=["gold","electricity","bed_level","door_level","door_hp","income_total","shots","damage_dealt","spent","occupied_seconds","door_damage_taken","income_multiplier","power_multiplier","door_multiplier","turret_multiplier","rescue_fraction","construction_actions","repair_actions","bot_timer","repair_factor","temporary_income"]
 const ROOM_FLAGS=["alive","sleeping","closed","rescue_used","coupon_armed","breach_reacted"]
@@ -14,6 +16,8 @@ static func point(value) -> bool:
  return value is Array and value.size()==2 and number(value[0],-10000,10000) and number(value[1],-10000,10000)
 static func vec(value) -> Vector2:return Vector2(value[0],value[1])
 static func pair(value: Vector2) -> Array:return [value.x,value.y]
+static func known_spatial_format(data: Dictionary) -> bool:
+ return (data.get("version")==SCHEMA and data.get("ruleset")==RULESET) or (data.get("version")==GRID_SCHEMA and data.get("ruleset")==GRID_RULESET)
 static func valid_boosts(boosts: Dictionary) -> bool:
  var candidates=[[]];var ids=[]
  for perk in RankCatalog.PERKS:ids.append(perk.id);candidates.append([perk.id])
@@ -28,7 +32,9 @@ static func valid_boosts(boosts: Dictionary) -> bool:
 static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  var run=model.endless
  if model.run_kind!="endless" or run==null or run.phase!="intermission" or run.completed!=run.sealed_wave or model.hunter.hp>0 or model.player()==null or not model.player().alive:return {}
- var data={"version":SCHEMA,"ruleset":RULESET,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"expansion":model.expansion.snapshot(model),"evolution":model.evolution.snapshot(),"defense_refractory":model.defenses.shield_cooldowns.duplicate(true),"repair_refractory":model.defenses.repair_cooldowns.duplicate(true),"lure_refractory":model.defenses.lure_cooldown,"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
+ var player_spatial: SpatialConstruction=model.player().spatial
+ var grid: bool=player_spatial!=null and player_spatial.grid
+ var data={"version":GRID_SCHEMA if grid else SCHEMA,"ruleset":GRID_RULESET if grid else RULESET,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"expansion":model.expansion.snapshot(model),"evolution":model.evolution.snapshot(),"defense_refractory":model.defenses.shield_cooldowns.duplicate(true),"repair_refractory":model.defenses.repair_cooldowns.duplicate(true),"lure_refractory":model.defenses.lure_cooldown,"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
  data.balance_version=model.balance_version
  if model.balance_version==2:
   data.run_choices=model.choices.snapshot()
@@ -50,6 +56,7 @@ static func encode(model,use_counts: Dictionary={}) -> Dictionary:
    if room.spatial!=null:
     if not b.get("position") is Vector2:return {}
     encoded.position=pair(b.position)
+    if room.spatial.grid:encoded.rotation=b.get("rotation",0)
    saved.buildings.append(encoded)
   data.rooms.append(saved)
  var fx=model.items
@@ -69,8 +76,8 @@ static func valid(data) -> bool:
   for value in data.contribution.values():
    if not number(value):return false
  if data.get("balance_version",1)==2 and not RunChoices.valid(data.get("run_choices"),int(data.get("completed",0))):return false
- if not data is Dictionary or not whole(data.get("version"),1,SCHEMA) or not whole(data.get("ruleset"),1,RULESET) or data.get("map","") not in MapCatalog.IDS or data.get("difficulty","") not in RankCatalog.DIFFICULTIES:return false
- if (data.version==1 and data.ruleset>LEGACY_RULESET_MAX) or (data.version==SCHEMA and data.ruleset!=RULESET):return false
+ if not whole(data.get("version"),1,GRID_SCHEMA) or not whole(data.get("ruleset"),1,GRID_RULESET) or data.get("map","") not in MapCatalog.IDS or data.get("difficulty","") not in RankCatalog.DIFFICULTIES:return false
+ if (data.version==1 and data.ruleset>LEGACY_RULESET_MAX) or (data.version>=SCHEMA and not known_spatial_format(data)):return false
  for key in ["run_id","seed","completed"]:
   if not whole(data.get(key),1):return false
  if data.has("wave_metrics") and not WaveMetrics.valid(data.wave_metrics):return false
@@ -99,7 +106,15 @@ static func valid(data) -> bool:
  if vec(data.player_position).distance_to(map.rooms[int(data.player_room)].bed)>1:return false
  for i in range(6):
   var room=data.rooms[i]
-  if not room is Dictionary or not whole(room.get("owner"),-1,5) or room.get("profile","") not in ["player"]+Catalog.BOT_PROFILES or room.get("trait","")!=StrategyCatalog.trait_for(i,data.map) or not point(room.get("position")) or not room.get("buildings") is Array or room.buildings.size()>map.rooms[i].tiles.size():return false
+  if not room is Dictionary or not whole(room.get("owner"),-1,5) or room.get("profile","") not in ["player"]+Catalog.BOT_PROFILES or room.get("trait","")!=StrategyCatalog.trait_for(i,data.map) or not point(room.get("position")) or not room.get("buildings") is Array:return false
+  var spatial=data.version>=SCHEMA and i==int(data.player_room)
+  var grid_room=data.version==GRID_SCHEMA and spatial
+  var building_limit=SpatialConstruction.max_grid_buildings(map.rooms[i].bounds) if grid_room else map.rooms[i].tiles.size()
+  if room.buildings.size()>building_limit:return false
+  if room.has("construction")!=spatial:return false
+  if spatial:
+   if not room.construction is Dictionary or room.construction.get("grid",false)!=grid_room:return false
+   if grid_room and int(data.expansion.levels[i])!=RoomExpansion.SLOTS.size()-1:return false
   if room.owner>=0:
    if room.owner in owners:return false
    owners.append(room.owner)
@@ -126,14 +141,11 @@ static func valid(data) -> bool:
    if not room.magic_state is Dictionary or room.magic_state.size()!=8:return false
    for key in ["stored","shield","reflect_cd","shield_cd","storage_time","heal_cd","disrupt","disrupt_guard"]:
     if not number(room.magic_state.get(key),0,350 if key=="stored" else 250 if key=="shield" else 30):return false
-  var spatial=data.version==2 and i==int(data.player_room)
-  if spatial and not room.has("construction"):return false
-  if room.has("construction") and not spatial:return false
   var tiles=[];var instances=[]
   for b in room.buildings:
    if not b is Dictionary or b.get("kind","") not in Catalog.BUILDINGS or not whole(b.get("tile"),0,SpatialConstruction.MAX_ID-1 if spatial else map.rooms[i].tiles.size()-1) or int(b.tile) in tiles or not whole(b.get("level"),1,Catalog.building_max_level(b.kind)) or not b.get("specialization","") is String:return false
    tiles.append(int(b.tile))
-   if data.version==2 or b.has("instance_id"):
+   if data.version>=SCHEMA or b.has("instance_id"):
     if not whole(b.get("instance_id"),1,1e12) or int(b.instance_id) in instances:return false
     instances.append(int(b.instance_id))
    var branch=b.specialization
@@ -144,7 +156,7 @@ static func valid(data) -> bool:
    for level in range(1,int(b.level)):ceiling+=BalanceRules.upgrade(b.kind,level,int(data.get("balance_version",1)))
    if branch!="":ceiling+=StrategyCatalog.BRANCH_FEE
    if not number(b.get("invested_gold"),0,ceiling.x+.0001) or not number(b.get("invested_power"),0,ceiling.y+.0001) or not number(b.get("cooldown"),0,24 if b.kind=="decoy" else 12 if b.kind=="shield" else 10):return false
-  if spatial and not SpatialConstruction.valid_room(room,map.rooms[i]):return false
+  if spatial and not SpatialConstruction.valid_room(room,map.rooms[i],i):return false
   if data.get("balance_version",1)==2 and room.buildings.filter(func(b):return b.kind=="economy").size()>BalanceRules.AMPLIFIER_LIMIT:return false
   var has_magic=room.buildings.any(func(b):return b.kind in MagicDefense.KINDS)
   if has_magic and not room.has("magic_state"):return false
@@ -202,6 +214,7 @@ static func restore(data) -> MatchModel:
   for b in saved.buildings:
    var building=b.duplicate(true);building.erase("tile");building.flash=0.0
    if saved.has("construction"):building.position=vec(b.position)
+   if data.version==GRID_SCHEMA and i==int(data.player_room):building.rotation=int(b.rotation)
    room.buildings[int(b.tile)]=building
  if data.has("wave_metrics"):model.wave_metrics.data=data.wave_metrics.duplicate(true)
  else:model.wave_metrics.data.available=false
@@ -210,8 +223,7 @@ static func restore(data) -> MatchModel:
  if data.version==1:
   if not player.spatial.adopt_legacy():return null
  else:
-  player.spatial.next_id=int(data.rooms[int(data.player_room)].construction.next_id)
-  player.spatial.used_legacy=data.rooms[int(data.player_room)].construction.used_legacy.map(func(id):return int(id))
+  player.spatial.restore_metadata(data.rooms[int(data.player_room)].construction)
  # Fixed NPC rooms keep their historic placement and deterministic economy.
  for room in model.rooms:
   if room.owner==0:continue
@@ -232,4 +244,6 @@ static func restore(data) -> MatchModel:
  if data.has("omen"):run.omen.restore(data.omen)
  model.choices.apply(model)
  model.hunter.hp=0;model.hunter.state=HunterState.State.DEAD
+ if player.spatial.grid:model.bind_player_grid()
+ elif model.full_grid_requested:model.enable_player_grid()
  return model

@@ -35,7 +35,7 @@ func available(id,m) -> bool:
  if id in selected:return false
  if id in ["cadence","beat","mercy","mixed"] and not r.buildings.values().any(func(b):return b.kind in DefenseEffects.WEAPONS):return false
  if id in ["grid","rhythm"] and not r.buildings.values().any(func(b):return b.kind=="generator"):return false
- if id=="grid" and r.buildings.size()>=r.tile_count():return false
+ if id=="grid" and (r.spatial==null or not r.spatial.grid) and r.buildings.size()>=r.tile_count():return false
  if id=="workshop":
   var kinds=[]
   for b in r.buildings.values():

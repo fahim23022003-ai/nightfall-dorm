@@ -54,6 +54,7 @@ var stage_bonus: Dictionary={}
 var strategy=MatchStrategy.new()
 var wave_metrics=WaveMetrics.new()
 var run_kind="campaign"
+var full_grid_requested := OS.get_environment("NIGHTFALL_FULL_ROOM_GRID") == "1"
 var endless
 var challenge_code=""
 var challenge_config: Dictionary={}
@@ -324,6 +325,8 @@ func claim_room(index: int) -> bool:
   rooms[index].door_hp+=rooms[index].max_hp()-old_max
  player_room = index
  if run_kind=="endless":rooms[index].spatial=SpatialConstruction.new(rooms[index])
+ if full_grid_requested and not tutorial_mode and run_kind in ["campaign","endless"]:
+  enable_player_grid()
  # Bind callbacks to the newly occupied room as well as the pre-room loadout.
  # Automatic First Aid must persist even if no manual item is ever activated.
  if items.profile_ref!=null and items.profile_ref.get_ref()!=null:
@@ -331,6 +334,57 @@ func claim_room(index: int) -> bool:
   if wallet.has_method("bind_items"):wallet.bind_items(self,items.match_id)
  feedback.emit("Room claimed. Approach the bed and press E to sleep.")
  return true
+
+func enable_player_grid() -> bool:
+ var room := player()
+ if room == null or room.owner != 0 or tutorial_mode or run_kind not in ["campaign","endless"]:
+  return false
+ if room.spatial != null and room.spatial.grid:
+  bind_player_grid()
+  return true
+ var created := room.spatial == null
+ if created:
+  room.spatial = SpatialConstruction.new(room)
+ var old_layout := room.layout
+ var old_tier: int = room.expansion_tier
+ var expands: bool = run_kind == "endless" and expansion.initialized and old_tier < RoomExpansion.SLOTS.size() - 1
+ if expands:
+  var full_tier := RoomExpansion.SLOTS.size() - 1
+  var layout := RoomExpansion.geometry(map_id,room.index,full_tier,expansion.legacy)
+  # The buildable area grows toward the back. Door and fixture coordinates
+  # already used by the current room must stay anchored.
+  for fixture in ["bed","cabinet","plant"]:
+   layout[fixture] = old_layout[fixture]
+  room.layout = layout
+  room.expansion_tier = full_tier
+ if not room.spatial.enable_grid():
+  room.layout = old_layout
+  room.expansion_tier = old_tier
+  if created:
+   room.spatial = null
+  return false
+ if expands:
+  expansion.refresh_geometry(self)
+ bind_player_grid()
+ return true
+
+func bind_player_grid() -> void:
+ var room := player()
+ if room == null or room.spatial == null or not room.spatial.grid:
+  return
+ var reference: WeakRef = weakref(self)
+ room.spatial.actor_points_provider = func() -> PackedVector2Array:
+  var model = reference.get_ref()
+  var points := PackedVector2Array()
+  if model == null:
+   return points
+  points.append(model.player_position)
+  if model.target_by_id(1) != null:
+   points.append(model.hunter.position)
+  for actor in model.minions:
+   if actor.hp > 0:
+    points.append(actor.position)
+  return points
 
 func sleep_player() -> bool:
  if not running or result != "" or player_room < 0:
@@ -351,7 +405,7 @@ func sleep_player() -> bool:
  room.closed = true
  room.sleeping = true
  player_position = room.bed_position()
- feedback.emit("Door locked. Build defenses on the marked floor pads.")
+ feedback.emit("Door locked. Press B to build on the room grid." if room.spatial != null and room.spatial.grid else "Door locked. Build defenses on the marked floor pads.")
  return true
 
 func player() -> RoomState:
@@ -360,13 +414,13 @@ func player() -> RoomState:
 func buy(kind: String, tile: int) -> bool:
  return player().build(kind,tile) if _can_purchase() else false
 
-func place_building(kind: String,point: Vector2) -> bool:
+func place_building(kind: String,point: Vector2,rotation: int=0) -> bool:
  if not _can_purchase() or player().spatial==null:return false
- return player().spatial.place(kind,point)
+ return player().spatial.place(kind,point,rotation)
 func begin_building_move(id: int) -> bool:
  return player().spatial.begin_move(self,id) if player()!=null and player().spatial!=null else false
-func move_building(point: Vector2) -> bool:
- return player().spatial.move(self,point) if player()!=null and player().spatial!=null else false
+func move_building(point: Vector2,rotation: int=-1) -> bool:
+ return player().spatial.move(self,point,rotation) if player()!=null and player().spatial!=null else false
 func cancel_building_move():
  if player()!=null and player().spatial!=null:player().spatial.cancel_move()
 
