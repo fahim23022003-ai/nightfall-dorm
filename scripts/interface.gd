@@ -260,7 +260,7 @@ func show_menu():
   return
  MainMenu.new(self).create()
 
-func show_help():
+func show_help(from_settings: bool=false):
  clear()
  current_screen="help"
  if game.mobile_mode:
@@ -269,7 +269,7 @@ func show_help():
  box(Rect2(90,65,1100,590))
  label_at("SURVIVAL HANDBOOK",Vector2(125,92),30,950,true)
  label_at("WASD / arrows: move     E: room / bed     M: map     Wheel: zoom     R: repair\n\nFind a vacant bedroom, press E inside, then E near its bed to sleep.\nGold starts while sleeping. You cannot leave the bed afterward.\n\nPress B, choose a machine, then click valid floor. Q rotates on the grid.\nIn rooms with numbered pads, select a pad before choosing a machine.\nDisabled cards explain missing resources. Escape closes without spending.\nClick a machine for its upgrades. The bottom bed and door summaries open\nupgrades and repair. A Dynamo produces electricity for advanced purchases.\n\nThe hunter arrives after 30 seconds. Your turrets fire real projectiles.\nDefeat the hunter to win; your elimination loses. Doors need bed progression.\nM switches between focused play and the strategic overview.\nEscape closes cards first, then pauses. Help/G toggles the short guide.",Vector2(125,156),19,1020)
- button("Back",Vector2(125,585),show_menu,180,46)
+ button("Back",Vector2(125,585),show_settings if from_settings else show_menu,180,46).name="help_back"
 
 func show_settings():
  clear()
@@ -286,7 +286,8 @@ func show_settings():
   theme_panel(Rect2(140,126,452,411),"card")
   theme_panel(Rect2(612,126,525,411),"card")
   theme_label("AUDIO",Vector2(158,139),20,390,"gold",true)
-  theme_label("DISPLAY & GUIDANCE",Vector2(632,139),20,470,"gold",true)
+  theme_label("GRAPHICS",Vector2(632,139),20,470,"gold",true)
+  theme_label("ACCESSIBILITY",Vector2(632,252),18,470,"gold",true)
  else:
   box(Rect2(110,35,1060,650))
   label_at("SOUND & CINEMATIC QUALITY",Vector2(145,62),30,990,true)
@@ -310,8 +311,8 @@ func show_settings():
    slider.value_changed.connect(func(value: float):value_label.text="%d%%" % roundi(value*100))
  var quality:=OptionButton.new()
  quality.name="graphics_quality"
- quality.position=Vector2(632,179) if living else Vector2(640,130)
- quality.size=Vector2(485 if living else 470,42)
+ quality.position=Vector2(632,170) if living else Vector2(640,130)
+ quality.size=Vector2(485 if living else 470,38 if living else 42)
  var standard_label="STANDARD · balanced cinema" if CinematicQuality.rebirth_preview() else "MEDIUM · balanced cinema"
  for text in ["LOW · essential effects",standard_label,"HIGH · full atmosphere"]:
   quality.add_item(text)
@@ -326,13 +327,14 @@ func show_settings():
   quality.get_popup().add_theme_stylebox_override("panel",GothicTheme.living_surface("frame"))
  var options=["reduced_motion","reduced_flashes","reduced_effects","muted","fullscreen","tutorial"]
  var names=["Reduce motion / camera impulse","Reduce flashes / light response","Reduced effects (overrides quality)","Mute all audio","Fullscreen","First-night tutorial"]
+ var premium_positions: Array[Vector2]=[Vector2(632,282),Vector2(632,322),Vector2(632,362),Vector2(158,388),Vector2(632,215),Vector2(632,402)]
  for i in range(options.size()):
   var toggle:=CheckButton.new()
   var id: String=options[i]
   toggle.name=id
   toggle.text=names[i]
-  toggle.position=Vector2(632,231+i*38) if living else Vector2(640,190+i*50)
-  toggle.size=Vector2(485,34) if living else Vector2(470,0)
+  toggle.position=premium_positions[i] if living else Vector2(640,190+i*50)
+  toggle.size=Vector2(410 if id=="muted" else 485,34) if living else Vector2(470,0)
   toggle.button_pressed=game.profile.settings.get(id,false)
   toggle.toggled.connect(func(value):game.change_setting(id,value))
   panel.add_child(toggle)
@@ -340,12 +342,15 @@ func show_settings():
    toggle.add_theme_font_size_override("font_size",16)
    theme_button(toggle,"quiet")
  if living:
-  theme_label("Combat warnings remain visible at every quality level.",Vector2(632,548),15,500,"muted")
+  theme_label("CONTROLS",Vector2(632,550),18,147,"gold",true)
+  var controls:=button("Keyboard controls",Vector2(795,544),func():show_help(true),322,39)
+  controls.name="settings_controls"
+  theme_button(controls,"settings")
  else:
   label_at("All quality levels preserve danger warnings and timing.\nPreferences affect presentation only.",Vector2(150,449),16,450)
  var guide:=OptionButton.new()
  guide.name="guidance_mode"
- guide.position=Vector2(632,477) if living else Vector2(640,503)
+ guide.position=Vector2(632,453) if living else Vector2(640,503)
  guide.size=Vector2(485 if living else 470,40)
  for value in ["Show Guidance","Minimal Guidance","Guidance Off"]:
   guide.add_item(value)
@@ -357,9 +362,9 @@ func show_settings():
  if living:
   theme_button(guide,"settings")
   guide.get_popup().add_theme_stylebox_override("panel",GothicTheme.living_surface("frame"))
- var playlist:=button("Soundtrack · playlist preferences",Vector2(158,409) if living else Vector2(150,503),func():SessionInterface.settings(self),410 if living else 420,40)
+ var playlist:=button("Soundtrack · playlist preferences",Vector2(158,433) if living else Vector2(150,503),func():SessionInterface.settings(self),410 if living else 420,40)
  var back:=button("Back",Vector2(140,598) if living else Vector2(150,592),show_menu,220 if living else 420,46)
- var listening:=button("Audio listening room",Vector2(158,468) if living else Vector2(640,592),show_audio_test,410 if living else 470,46)
+ var listening:=button("Audio listening room",Vector2(158,484) if living else Vector2(640,592),show_audio_test,410 if living else 470,40 if living else 46)
  back.name="settings_back"
  if living:
   theme_button(playlist,"settings")

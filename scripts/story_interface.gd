@@ -105,7 +105,7 @@ func _show_preparation(profile: PlayerProfile, mode: String, track: Dictionary, 
  _line("Consumables   %d / %d" % [names.size(),ItemCatalog.SLOTS],Vector2(802,349),18,343,"F4F0E8")
  _paragraph(", ".join(names) if not names.is_empty() else "No consumables equipped",Rect2(802,378,341,59),15,BODY)
  _line("%s rank   ·   %d / %d perks" % [profile.rank_name(),profile.equipped.size(),profile.perk_slots()],Vector2(802,441),16,340,BODY)
- ui.theme_button(ui.button("Prepare items",Vector2(802,488),ui.items_ui.inventory,170,42),"inventory","inventory")
+ ui.theme_button(ui.button("Edit items",Vector2(802,488),ui.items_ui.inventory,170,42),"inventory","inventory")
  ui.theme_button(ui.button("Rank perks",Vector2(987,488),ui.progression.show_perk_loadout,161,42),"secondary","rank")
  var support: String=notice if notice!="" else profile.warning if profile.warning!="" else "A lost night drops one level, down to the earned checkpoint."
  _line(support,Vector2(110,571),15,1059,BODY)

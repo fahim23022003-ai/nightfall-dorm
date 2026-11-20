@@ -6,20 +6,28 @@ func control(id: String) -> Button:
 
 func run():
  var args:=OS.get_cmdline_user_args()
- if args.is_empty() or args.size()>2 or not args[0].is_absolute_path() or (args.size()==2 and args[1]!="fallback"):
-  push_error("Pass an absolute evidence directory and optionally fallback after --.")
+ if args.is_empty() or args.size()>2 or not args[0].is_absolute_path() or (args.size()==2 and args[1] not in ["fallback","compact"]):
+  push_error("Pass an absolute evidence directory and optionally fallback or compact after --.")
   quit(2)
   return
  var destination:=args[0].trim_suffix("/")
  DirAccess.make_dir_recursive_absolute(destination)
  phase=destination.get_file()
  output=destination.get_base_dir()+"/"
- root.size=Vector2i(1280,720)
+ var compact:=args.size()==2 and args[1]=="compact"
+ root.size=Vector2i(960,540) if compact else Vector2i(1280,720)
  await setup_game()
  game.onboarding.close_welcome()
- if args.size()==2:
+ if args.size()==2 and not compact:
   await _fallback()
   return
+ if compact:
+  check(root.get_texture().get_image().get_size()==Vector2i(960,540),"native compact viewport")
+  await click(control("mode_story"))
+  await _render_frame()
+  check(game.ui.current_screen=="story_prepare","compact Story Preparation remains clickable")
+  await capture("compact-story-preparation")
+  game.return_menu()
  check(game.ui.use_living_ui(),"Survivor preview uses the premium desktop menu")
  game.profile.rm_cash=40
  game.ui.show_menu()
@@ -55,6 +63,10 @@ func run():
  quality.select(0)
  quality.item_selected.emit(0)
  check(game.profile.settings.graphics_quality=="low","Graphics setting changed through native option callback")
+ await click(control("settings_controls"))
+ check(game.ui.current_screen=="help","keyboard controls open from Settings")
+ await click(control("help_back"))
+ check(game.ui.current_screen=="settings","control guide returns to Settings")
  await click(control("settings_back"))
  await _render_frame()
  game.new_balance_version=1
