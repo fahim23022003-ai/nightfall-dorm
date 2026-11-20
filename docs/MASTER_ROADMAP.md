@@ -6,10 +6,11 @@ Continue the opt-in visual preview. Verify character motion and direction,
 building function cues, and render performance against the Phase 14E
 checkpoint. Owner review gates the visual preview rollout.
 
-## Owner-approved next project — Full room grid building
+## Owner-approved project — Full room grid building
 
-Start after the owner approves the visual and animation work. Phase 14F
-records this direction for future implementation.
+The owner authorized the grid preview while artistic review and native
+Windows testing of Phase 14F are pending. Review the combined build through
+the [Full Room Grid preview](FULL_ROOM_GRID_PREVIEW.md).
 
 - Divide the entire usable room floor into buildable grid cells. Allow
   placement anywhere a building footprint fits on valid tiles.

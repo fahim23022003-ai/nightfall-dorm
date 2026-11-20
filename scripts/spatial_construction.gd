@@ -86,29 +86,49 @@ static func grid_blocks_for(layout: Dictionary) -> Array:
  var bed: Vector2=layout.bed
  # Begin inside the reserved doorway approach, beyond any adjacent cabinet.
  var begin:=door-normal*64
- var finish:=bed+normal*48
- var first:=Vector2(begin.x,finish.y) if normal.y!=0.0 else Vector2(finish.x,begin.y)
- var second:=begin+finish-first
- var route:=fixture_clear_route([begin,first,finish],obstacles)
- if route.is_empty():route=fixture_clear_route([begin,second,finish],obstacles)
+ var vertical:=normal.y!=0.0
+ var normal_reach:=56.0 if vertical else 38.0
+ var tangent_reach:=38.0 if vertical else 56.0
+ var side:=normal.orthogonal()
+ var bounds: Rect2=layout.bounds
+ var route: Array=[]
+ var finishes: Array[Vector2]=[
+  bed+normal*normal_reach,bed+side*tangent_reach,
+  bed-side*tangent_reach,bed-normal*normal_reach]
+ for finish in finishes:
+  if not bounds.grow(-14).has_point(finish):continue
+  route=route_to_bed(begin,finish,vertical,bounds,obstacles)
+  if not route.is_empty():break
  if route.is_empty():
-  # Try a short orthogonal detour when an authored cabinet or plant blocks an elbow.
-  var interior: Rect2=layout.bounds.grow(-26)
-  var midpoint: Vector2=(begin+finish)*0.5
-  for delta in [0,16,-16,32,-32,48,-48,64,-64,80,-80,96,-96,112,-112,128,-128]:
-   var x:=clampf(midpoint.x+delta,interior.position.x,interior.end.x)
-   var y:=clampf(midpoint.y+delta,interior.position.y,interior.end.y)
-   route=fixture_clear_route([begin,Vector2(x,begin.y),Vector2(x,finish.y),finish],obstacles)
-   if route.is_empty():route=fixture_clear_route([begin,Vector2(begin.x,y),Vector2(finish.x,y),finish],obstacles)
-   if not route.is_empty():break
- if route.is_empty():
-  route=[segment_box(begin,finish,14)]
+  # Keep additional structures out of the historical approach if fixtures
+  # supplied by an unknown layout admit no wider orthogonal corridor.
+  route=[segment_box(begin,finishes[0],14)]
  for rect in route:obstacles.append({"rect":rect,"reason":"Door-to-bed route must remain clear"})
  return obstacles
 
+static func route_to_bed(begin: Vector2,finish: Vector2,vertical: bool,bounds: Rect2,obstacles: Array) -> Array:
+ var first:=Vector2(begin.x,finish.y) if vertical else Vector2(finish.x,begin.y)
+ var second:=begin+finish-first
+ var route:=fixture_clear_route([begin,first,finish],obstacles)
+ if route.is_empty():route=fixture_clear_route([begin,second,finish],obstacles)
+ if not route.is_empty():return route
+ # Try a short orthogonal detour around cabinets or plants before changing the
+ # side of the bed the route serves.
+ var interior:=bounds.grow(-26)
+ var midpoint:=(begin+finish)*0.5
+ for delta in [0,16,-16,32,-32,48,-48,64,-64,80,-80,96,-96,112,-112,128,-128]:
+  var x:=clampf(midpoint.x+delta,interior.position.x,interior.end.x)
+  var y:=clampf(midpoint.y+delta,interior.position.y,interior.end.y)
+  route=fixture_clear_route([begin,Vector2(x,begin.y),Vector2(x,finish.y),finish],obstacles)
+  if route.is_empty():route=fixture_clear_route([begin,Vector2(begin.x,y),Vector2(finish.x,y),finish],obstacles)
+  if not route.is_empty():return route
+ return []
+
 static func fixture_clear_route(points: Array,obstacles: Array) -> Array:
  var route: Array=[]
+ var bed_collision: Rect2=obstacles[0].rect.grow(-4)
  for index in range(points.size()-1):
+  if segment_box(points[index],points[index+1],1).intersects(bed_collision):return []
   var rect:=segment_box(points[index],points[index+1],14)
   if rect.intersects(obstacles[1].rect) or rect.intersects(obstacles[2].rect):return []
   route.append(rect)

@@ -153,11 +153,29 @@ func render_decor(c,p,r,bed,cabinet,theme,colors):
  p.sprite(c,"warm_glow",glow,Vector2(145,145),Color(colors[4],0.3))
  p.sprite(c,"lantern",glow,Vector2(17,28),colors[4])
 
+static func grid_scale(rect: Rect2) -> float:
+ return clampf(minf(rect.size.x,rect.size.y)/44.0,.65,1.0)
+
+static func draw_grid_facing(c,rect: Rect2,rotation: int,color: Color):
+ var toward := Vector2.DOWN.rotated(rotation*PI/2)
+ var side := toward.orthogonal()
+ var tip := rect.get_center()+toward*(absf(toward.x)*rect.size.x+absf(toward.y)*rect.size.y)*.5
+ c.draw_colored_polygon(PackedVector2Array([tip,tip-toward*6.0-side*4.0,tip-toward*6.0+side*4.0]),color)
+
 func render_tiles(c,p,room,owned):
  if room.spatial!=null and c.construction!=null:c.construction.draw_floor(c,room)
  var ids=room.buildings.keys() if room.spatial!=null else range(room.tile_count())
+ var grid: bool=room.spatial!=null and room.spatial.grid
+ var visible := Rect2()
+ if grid:
+  visible=p.visible_world_rect(c,70)
+  ids.sort_custom(func(a,b):
+   var first: Vector2=room.tile_position(a)
+   var second: Vector2=room.tile_position(b)
+   return a<b if first.y==second.y else first.y<second.y)
  for tile in ids:
   var point=OFFSET+(c.construction.rendered_position(room,tile) if room.spatial!=null and c.construction!=null else room.tile_position(tile))
+  if grid and not visible.has_point(point):continue
   if not room.buildings.has(tile):
    c.draw_style_box(p.frame(Color("333E3E") if owned else Color("303839"),Color("7C8270") if owned else Color("414D4B"),4),Rect2(point-Vector2(22,21),Vector2(44,42)))
    c.draw_line(point+Vector2(-18,-17),point+Vector2(18,-17),Color("89917C") if owned else Color("4C5854"),1)
@@ -167,18 +185,20 @@ func render_tiles(c,p,room,owned):
    p.text(c,str(tile+1),point+Vector2(-17,16),8,Color("C3D5D2"))
   else:
    var building=room.buildings[tile]
-   var name=p.building_key(building.kind,building.level)
-   # Fixed dimensions preserve character/building scale as capacities expand.
-   var size=Vector2(53,56)
    var target=p.building_visual.weapon_target(c.model,room,tile,building.kind,building.flash)
-   var tilt=clampf(atan2(target.y,absf(target.x)),-0.4,0.4) if building.kind=="turret" else 0.0
    var activity=building.flash
    if p.building_visual.support_rebirth_active(building.kind):
     activity=p.building_visual.support_activity(room,building,c.model)
    elif building.kind=="generator":activity=1.0 if room.alive and room.sleeping and not room.production_paused else 0.0
    elif building.kind=="repair":activity=1.0 if room.alive and room.sleeping and room.door_hp>0 and room.door_hp<room.max_hp() and (StrategyCatalog.support(building).get("power_cost",0)==0 or room.electricity>0) else 0.0
    elif building.kind in ["auto_repair","shield","decoy"]:activity=1.0 if building.cooldown>0 else 0.0
-   p.building_visual.draw(c,p,building.kind,building.level,point,building.get("specialization",""),activity,target,p.clock if owned or c.watched_room==room.index else 0.0)
+   var scale := 1.0
+   if grid:
+    var rotation := int(building.get("rotation",0))
+    var footprint: Rect2=room.spatial.footprint_for(point,building.kind,rotation)
+    scale=grid_scale(footprint)
+    if rotation!=0:draw_grid_facing(c,footprint,rotation,Color("c3aa79"))
+   p.building_visual.draw(c,p,building.kind,building.level,point,building.get("specialization",""),activity,target,p.clock if owned or c.watched_room==room.index else 0.0,0.0,scale)
    if owned and building.kind in ["turret","heavy"]:CosmeticPresentation.turret(c,point)
    var branch=str(building.get("specialization",""))
    if branch!="" and owned and c.selected_tile==tile and c.ui.context_open:

@@ -24,7 +24,7 @@ func objective(game) -> Dictionary:
   var wallet=game.item_wallet();var loadout=wallet.active_match.get("items",[])
   if "repair" in loadout and int(wallet.inventory.get("repair",0))>0 and m.items.can_activate("repair",m)=="":return {"text":"Repair kit equipped · use [%d] if needed. One stock is spent only on success." % (loadout.find("repair")+1),"key":"item","slot":loadout.find("repair")}
  if r.door_hp>0 and r.door_hp<r.max_hp()*.65 and r.gold>=r.manual_repair_cost():return {"text":"Your door needs attention · repair [R] when safe. Watch the danger warning.","key":"repair"}
- if m.run_kind=="endless" and r.buildings.size()>=r.tile_count() and r.tile_count()<16:return {"text":"Room full · inspect Expand room for more usable floor. Move [V] / undo [Z] during preparation.","key":"expand"}
+ if m.run_kind=="endless" and (r.spatial==null or not r.spatial.grid) and r.buildings.size()>=r.tile_count() and r.tile_count()<16:return {"text":"Room full · inspect Expand room for more usable floor. Move [V] / undo [Z] during preparation.","key":"expand"}
  return {}
 func tutorial_target(game):
  var fx=game.onboarding;var ui=game.ui

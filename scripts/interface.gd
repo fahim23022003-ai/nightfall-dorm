@@ -217,7 +217,7 @@ func show_help():
   return
  box(Rect2(90,65,1100,590))
  label_at("SURVIVAL HANDBOOK",Vector2(125,92),30,950,true)
- label_at("WASD / arrows: move     E: room / bed     M: map     Wheel: zoom     R: repair\n\nFind a vacant bedroom, press E inside, then E near its bed to sleep.\nGold starts while sleeping. You cannot leave the bed afterward.\n\nClick a floor pad, then BUILD on a machine card in the bottom panel.\nDisabled cards explain missing resources. Escape closes without spending.\nClick a machine for its upgrade panel. Click the bottom bed/door summaries\nfor upgrades and repair. A Dynamo produces electricity for advanced purchases.\n\nThe hunter arrives after 30 seconds. Your turrets fire real projectiles.\nDefeat the hunter to win; your elimination loses. Doors need bed progression.\nM switches between focused play and the strategic overview.\nEscape closes cards first, then pauses. Help/G toggles the short guide.",Vector2(125,156),19,1020)
+ label_at("WASD / arrows: move     E: room / bed     M: map     Wheel: zoom     R: repair\n\nFind a vacant bedroom, press E inside, then E near its bed to sleep.\nGold starts while sleeping. You cannot leave the bed afterward.\n\nPress B, choose a machine, then click valid floor. Q rotates on the grid.\nIn rooms with numbered pads, select a pad before choosing a machine.\nDisabled cards explain missing resources. Escape closes without spending.\nClick a machine for its upgrades. The bottom bed and door summaries open\nupgrades and repair. A Dynamo produces electricity for advanced purchases.\n\nThe hunter arrives after 30 seconds. Your turrets fire real projectiles.\nDefeat the hunter to win; your elimination loses. Doors need bed progression.\nM switches between focused play and the strategic overview.\nEscape closes cards first, then pauses. Help/G toggles the short guide.",Vector2(125,156),19,1020)
  button("Back",Vector2(125,585),show_menu,180,46)
 
 func show_settings():
@@ -614,6 +614,8 @@ func tutorial_text() -> String:
  if room.bed_level==0 and room.door_level==0: return "4 / 5  UPGRADE\nClick the bed or door summary below."
  for b in room.buildings.values():
   if b.kind in ["turret","heavy"]: return "NIGHTWATCH READY\nSave for power and stronger defenses. Help/G hides this guide."
+ if room.spatial!=null and room.spatial.grid and not game.mobile_mode:
+  return "5 / 5  FIRST DEFENSE\nPress B, choose a turret, then click valid floor. Q rotates."
  return "5 / 5  FIRST DEFENSE\nClick a floor pad, then BUILD a turret in the bottom panel."
 
 func update_match():
@@ -762,8 +764,12 @@ func update_match():
  if game.construction!=null:game.construction.refresh()
  if game.model.run_kind!="campaign":replay_ui.update_hud()
  if room!=null and room.spatial!=null:
-  room_selected_summary.text="Build B · %d/%d" % [room.buildings.size(),room.tile_count()]
-  room_selected_summary.tooltip_text="B opens buildings; click valid floor to buy. P shows room planning. V moves a selected machine during preparation/intermission. F toggles 8-unit snap; Shift positions finely. Right-click / Esc cancels."
+  if room.spatial.grid and not game.mobile_mode:
+   room_selected_summary.text="Build [B]"
+   room_selected_summary.tooltip_text="B opens buildings. Click valid grid cells to buy. Q rotates the preview. P shows room planning. V starts a legal move. Right-click or Esc cancels."
+  else:
+   room_selected_summary.text="Build B · %d/%d" % [room.buildings.size(),room.tile_count()]
+   room_selected_summary.tooltip_text="B opens buildings; click valid floor to buy. P shows room planning. V moves a selected machine during preparation/intermission. F toggles 8-unit snap; Shift positions finely. Right-click / Esc cancels."
  if is_instance_valid(upgrade_notice):
   var q=game.presentation.notices;upgrade_notice.text=q.text();upgrade_notice.tooltip_text=q.details();upgrade_notice.visible=upgrade_notice.text!="" and not warning_box.visible and not game.construction.active() and not game.construction.planning
  RunChoiceInterface.refresh(self)
@@ -844,7 +850,7 @@ func action_reason(action: String) -> String:
  elif action.begins_with("build:"):
   if not room.sleeping: return "Sleep in your bed before building."
   if room.spatial!=null:
-   if room.buildings.size()>=room.tile_count():return "Capacity reached. Expand your room."
+   if not room.spatial.grid and room.buildings.size()>=room.tile_count():return "Capacity reached. Expand your room."
   else:
    if game.selected_tile < 0 or game.selected_tile >= room.tile_count(): return "Select a numbered floor tile in your room."
    if room.buildings.has(game.selected_tile): return "Tile occupied. Select an empty numbered tile."

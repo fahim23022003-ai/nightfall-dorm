@@ -92,10 +92,11 @@ func install_side():
   place(role_label,at+Vector2(35,41),Vector2(73,16))
   role_label.add_theme_font_size_override("font_size",10)
   role_label.clip_text=true
- inspection.position=Vector2(93,46)
+ inspection.position=Vector2(93,38)
  for details in [ui.selected_details,ui.bed_details,ui.door_details,ui.confirmation_details]:
   place(details,Vector2(15,215),Vector2(334,135))
   details.add_theme_font_size_override("font_size",14)
+ place(ui.selected_details,Vector2(15,230),Vector2(334,120))
  place(ui.confirmation_icon,Vector2(132,58),Vector2(100,130))
  for action in [ui.actions.upgrade,ui.bed_button,ui.door_button,ui.confirm_button]:
   place(action,Vector2(14,361),Vector2(336,47))

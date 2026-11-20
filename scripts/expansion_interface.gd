@@ -11,19 +11,32 @@ func create():
  info=ui.label_at("",Vector2(140,40),17,660,false,ui.context_box);info.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;info.size.y=145;controls.append(info)
  purchase_button=ui.button("Purchase expansion",Vector2(840,40),purchase,370,44,ui.context_box);controls.append(purchase_button)
  controls.append(ui.button("Back to buildings",Vector2(840,100),ui.open_build_menu,370,42,ui.context_box))
+ if ui.bottom_context!=null and ui.bottom_context.body==BottomContextPanel.SIDE_BODY:
+  ui.bottom_context.place(shortcut,Vector2(168,6),Vector2(145,28))
+  ui.bottom_context.place(controls[0],Vector2(132,44),Vector2(88,105))
+  ui.bottom_context.place(info,Vector2(14,156),Vector2(336,190))
+  ui.bottom_context.place(purchase_button,Vector2(14,360),Vector2(336,44))
+  ui.bottom_context.place(controls[-1],Vector2(14,420),Vector2(336,42))
+  info.add_theme_font_size_override("font_size",15)
  refresh()
+func available() -> bool:
+ var m=ui.game.model;var r=m.player()
+ return m.run_kind=="endless" and r!=null and (r.spatial==null or not r.spatial.grid)
 func open():
- if ui.game.watched_room>=0 or ui.game.model.run_kind!="endless" or ui.game.model.player()==null:return
+ if ui.game.watched_room>=0 or not available():return
  ui.context_open=true;ui.context_mode="expansion";ui.refresh_context()
 func purchase():
+ if not available():return
  var m=ui.game.model
  var ok=m.expansion.purchase(m)
  if ok:ui.game.audio_event("prestige_upgrade");ui.game.focus_camera(false)
  ui.purchase(ok);refresh()
 func refresh():
  if not is_instance_valid(shortcut):return
- var m=ui.game.model;var r=m.player();var applicable=m.run_kind=="endless" and r!=null
+ var m=ui.game.model;var r=m.player();var applicable=available()
  shortcut.visible=applicable and ui.context_open and ui.context_mode!="expansion"
+ if ui.bottom_context!=null and ui.bottom_context.body==BottomContextPanel.SIDE_BODY:
+  ui.context_title.size.x=149 if shortcut.visible else 295
  var active=applicable and ui.context_open and ui.context_mode=="expansion"
  for control in controls:control.visible=active
  if not active:return

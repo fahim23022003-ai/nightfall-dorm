@@ -453,6 +453,9 @@ func room_scene(c, room: RoomState, owned: bool):
  var plaque = Rect2(r.position+Vector2(8,1),Vector2(103,18))
  c.draw_style_box(frame(Color("273440"),Color("9c8466"),4),plaque)
  text(c,"%02d  %s" % [room.index+1,ROOM_NAMES[room.index]],plaque.position+Vector2(10,13),10)
+ if room.spatial!=null and room.spatial.grid:
+  map_presentation.render_tiles(c,self,room,owned)
+  return
  for tile in range(6):
   var p = OFFSET+room.tile_position(tile)
   if not room.buildings.has(tile):
@@ -708,6 +711,9 @@ func cartoon_room(c,room: RoomState,owned: bool):
  if owned:
   c.draw_style_box(frame(Color.TRANSPARENT,Color("7BE3A1"),6),r.grow(9))
   text(c,"YOUR ROOM",r.position+Vector2(10,210 if room.index<3 else 71),11,Color("D4FFE1"))
+ if room.spatial!=null and room.spatial.grid:
+  map_presentation.render_tiles(c,self,room,owned)
+  return
  for tile in range(6):
   var p=OFFSET+room.tile_position(tile)
   if not room.buildings.has(tile):
