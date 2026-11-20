@@ -1,0 +1,94 @@
+{
+  "quality": "medium",
+  "states_expected": 60,
+  "states_observed": 60,
+  "directional_atlases_observed": 240,
+  "rendered_frames": 1798,
+  "checks": 2095,
+  "maximum_contact_error_px": 0.05,
+  "minimum_relative_limb_motion_px": 3.779,
+  "missing": [],
+  "sources": [
+    {
+      "file": "standard-main.json",
+      "sha256": "bf6f87c94e9022943609545aa992a129cf139e16767c126692073007ffe65e1b",
+      "replacement": false,
+      "frames_rendered": 1340,
+      "checks": 1577,
+      "failures": 0
+    },
+    {
+      "file": "standard-witch.json",
+      "sha256": "906d92ed72299b04db386cbc1e25315adfd0c37c67fc9fd57ca24c49670138ad",
+      "replacement": false,
+      "frames_rendered": 224,
+      "checks": 244,
+      "failures": 0
+    },
+    {
+      "file": "standard-retakes.json",
+      "sha256": "5ad02ac92ed57a4633ff4298e94283775c826f13cca46a4f8c46579e30673569",
+      "replacement": true,
+      "frames_rendered": 234,
+      "checks": 274,
+      "failures": 0
+    }
+  ],
+  "superseded_states": [
+    {
+      "hunter": "crusher",
+      "level": 6,
+      "earlier_receipt": "standard-main.json",
+      "retake_receipt": "standard-retakes.json"
+    },
+    {
+      "hunter": "crusher",
+      "level": 7,
+      "earlier_receipt": "standard-main.json",
+      "retake_receipt": "standard-retakes.json"
+    },
+    {
+      "hunter": "crusher",
+      "level": 8,
+      "earlier_receipt": "standard-main.json",
+      "retake_receipt": "standard-retakes.json"
+    },
+    {
+      "hunter": "electric",
+      "level": 2,
+      "earlier_receipt": "standard-main.json",
+      "retake_receipt": "standard-retakes.json"
+    },
+    {
+      "hunter": "storm",
+      "level": 7,
+      "earlier_receipt": "standard-main.json",
+      "retake_receipt": "standard-retakes.json"
+    },
+    {
+      "hunter": "storm",
+      "level": 10,
+      "earlier_receipt": "standard-main.json",
+      "retake_receipt": "standard-retakes.json"
+    },
+    {
+      "hunter": "ravager",
+      "level": 2,
+      "earlier_receipt": "standard-main.json",
+      "retake_receipt": "standard-retakes.json"
+    },
+    {
+      "hunter": "ravager",
+      "level": 3,
+      "earlier_receipt": "standard-main.json",
+      "retake_receipt": "standard-retakes.json"
+    },
+    {
+      "hunter": "ravager",
+      "level": 9,
+      "earlier_receipt": "standard-main.json",
+      "retake_receipt": "standard-retakes.json"
+    }
+  ],
+  "issues": []
+}

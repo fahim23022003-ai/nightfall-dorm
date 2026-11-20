@@ -1,12 +1,12 @@
-# Hunter articulation and performance checkpoint
+# Living Nightmare Hunter articulation
 
-Sixteen ordinary Hunter states now have articulated rigs verified in
-gameplay. This includes all six at L1 and L4 plus Stalker and Ravager at L7
-and L10. Both Reaper forms remain and the rear scythe swing now lands in
-the tested fixture. Presentation-side batching reduces dense Stalker
-render costs on Linux. Mandatory follow-up covers 44 ordinary state
-rigs, remaining Reaper motions and native Windows performance.
-[Rig coverage, gameplay footage and bench results](HUNTER_ARTICULATION.md)
+The opt-in preview renders articulated rigs for all 60 ordinary
+evolution states and both Grim Reaper forms. The ordinary catalog
+passed real movement and door combat checks on Standard and Low
+at 1280×720. The Reaper passed directional, transformation and
+scythe combat checks. Owner visual review and native Windows and
+Intel UHD playtesting remain pending.
+[Coverage, gameplay footage and verification](HUNTER_ARTICULATION.md)
 
 ---
 

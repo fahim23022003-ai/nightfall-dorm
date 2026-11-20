@@ -1,0 +1,95 @@
+{
+  "checks": 267,
+  "failures": 0,
+  "fixture": {
+    "approach_death": {
+      "frame_count": 39,
+      "lethal_damage": 8050.0,
+      "samples": [
+        {
+          "frame": 0,
+          "pose": {
+            "art": "res://assets/visual_rebirth/articulated/reaper_approach_front.png",
+            "pose": "vanish",
+            "view": "front",
+            "weapon": false
+          }
+        },
+        {
+          "frame": 18,
+          "pose": {
+            "art": "res://assets/visual_rebirth/articulated/reaper_approach_front.png",
+            "pose": "vanish",
+            "view": "front",
+            "weapon": false
+          }
+        },
+        {
+          "frame": 37,
+          "pose": {
+            "art": "",
+            "pose": "",
+            "view": "front",
+            "weapon": false
+          }
+        }
+      ]
+    },
+    "shadow_dash": {
+      "blade_error": -1.0,
+      "frame_count": 33,
+      "poses": [
+        "cast",
+        "cast_release",
+        "move",
+        "windup"
+      ],
+      "release_frame": 17,
+      "shadow_suppression": false,
+      "warning_frame": 0
+    },
+    "siege": {
+      "blade_error": 0.0,
+      "frame_count": 60,
+      "poses": [
+        "windup",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "release_frame": 44,
+      "shadow_suppression": false,
+      "warning_frame": 0
+    },
+    "soul_drain": {
+      "blade_error": -1.0,
+      "frame_count": 43,
+      "poses": [
+        "cast",
+        "cast_release",
+        "windup"
+      ],
+      "release_frame": 27,
+      "shadow_suppression": false,
+      "warning_frame": 0
+    },
+    "surge": {
+      "blade_error": -1.0,
+      "frame_count": 52,
+      "poses": [
+        "cast",
+        "cast_release",
+        "recover"
+      ],
+      "release_frame": 36,
+      "shadow_suppression": true,
+      "warning_frame": 0
+    }
+  },
+  "fps": 24,
+  "quality": "low",
+  "viewport": [
+    1280,
+    720
+  ]
+}

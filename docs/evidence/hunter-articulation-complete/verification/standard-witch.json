@@ -1,0 +1,532 @@
+{
+  "adapter": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "available_only": false,
+  "checks": 244,
+  "display": "X11",
+  "engine": "4.6.3-stable (official)",
+  "expected_states": 8,
+  "failures": 0,
+  "fixture": "Prepared seeded Endless room and Hunter evolution. Validated corridor routes use the ordinary navigation primitive. Combat advances through normal gameplay ticks, a paid Needle, existing Hunter windup and real doorstep damage. Render samples are sparse. Graphics validation checks atlas binding and event contact, not artistic approval.",
+  "frame_step": 0.0416666666666667,
+  "frames_rendered": 224,
+  "lifecycle": {
+
+  },
+  "quality": "medium",
+  "rendered_states": 8,
+  "selected_family": "witch",
+  "selected_level": "2,3,5,6,7,8,9,10",
+  "states": [
+    {
+      "contact_error_px": 0.0,
+      "directions": {
+        "back": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l02_back.png",
+          "poses": 5,
+          "relative_tip_motion_px": 5.286
+        },
+        "front": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l02_front.png",
+          "poses": 5,
+          "relative_tip_motion_px": 4.488
+        },
+        "left": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l02_left.png",
+          "poses": 6,
+          "relative_tip_motion_px": 8.035
+        },
+        "right": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l02_right.png",
+          "poses": 6,
+          "relative_tip_motion_px": 6.44
+        }
+      },
+      "door_damage": 18.04,
+      "event": {
+        "door_socket": [
+          220.0,
+          424.0
+        ],
+        "id": 4,
+        "limb_tip": [
+          220.0,
+          424.0
+        ],
+        "room": 3,
+        "source": "door strike",
+        "style": "cast",
+        "time": 31.6
+      },
+      "failures": 0,
+      "hunter": "witch",
+      "joint_range_px": 8.035,
+      "key": "witch_l02",
+      "level": 2,
+      "minimum_joint_span_px": 22.389,
+      "needle_damage": 27.0,
+      "poses": [
+        "hit",
+        "windup",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "post_strike_pose": "hit",
+      "textures": [
+        "res://assets/visual_rebirth/articulated/witch_l02_right.png",
+        "res://assets/visual_rebirth/articulated/witch_l02_front.png",
+        "res://assets/visual_rebirth/articulated/witch_l02_left.png",
+        "res://assets/visual_rebirth/articulated/witch_l02_back.png"
+      ],
+      "turn_samples": 9
+    },
+    {
+      "contact_error_px": 0.0,
+      "directions": {
+        "back": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l03_back.png",
+          "poses": 5,
+          "relative_tip_motion_px": 5.221
+        },
+        "front": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l03_front.png",
+          "poses": 5,
+          "relative_tip_motion_px": 4.506
+        },
+        "left": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l03_left.png",
+          "poses": 6,
+          "relative_tip_motion_px": 8.092
+        },
+        "right": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l03_right.png",
+          "poses": 6,
+          "relative_tip_motion_px": 6.769
+        }
+      },
+      "door_damage": 18.04,
+      "event": {
+        "door_socket": [
+          220.0,
+          424.0
+        ],
+        "id": 4,
+        "limb_tip": [
+          220.0,
+          424.0
+        ],
+        "room": 3,
+        "source": "door strike",
+        "style": "cast",
+        "time": 31.6
+      },
+      "failures": 0,
+      "hunter": "witch",
+      "joint_range_px": 8.092,
+      "key": "witch_l03",
+      "level": 3,
+      "minimum_joint_span_px": 22.095,
+      "needle_damage": 27.0,
+      "poses": [
+        "hit",
+        "windup",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "post_strike_pose": "hit",
+      "textures": [
+        "res://assets/visual_rebirth/articulated/witch_l03_right.png",
+        "res://assets/visual_rebirth/articulated/witch_l03_front.png",
+        "res://assets/visual_rebirth/articulated/witch_l03_left.png",
+        "res://assets/visual_rebirth/articulated/witch_l03_back.png"
+      ],
+      "turn_samples": 9
+    },
+    {
+      "contact_error_px": 0.0,
+      "directions": {
+        "back": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l05_back.png",
+          "poses": 5,
+          "relative_tip_motion_px": 5.399
+        },
+        "front": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l05_front.png",
+          "poses": 5,
+          "relative_tip_motion_px": 4.49
+        },
+        "left": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l05_left.png",
+          "poses": 6,
+          "relative_tip_motion_px": 8.208
+        },
+        "right": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l05_right.png",
+          "poses": 6,
+          "relative_tip_motion_px": 6.646
+        }
+      },
+      "door_damage": 18.04,
+      "event": {
+        "door_socket": [
+          220.0,
+          424.0
+        ],
+        "id": 4,
+        "limb_tip": [
+          220.0,
+          424.0
+        ],
+        "room": 3,
+        "source": "door strike",
+        "style": "cast",
+        "time": 31.6
+      },
+      "failures": 0,
+      "hunter": "witch",
+      "joint_range_px": 8.208,
+      "key": "witch_l05",
+      "level": 5,
+      "minimum_joint_span_px": 24.057,
+      "needle_damage": 27.0,
+      "poses": [
+        "hit",
+        "windup",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "post_strike_pose": "hit",
+      "textures": [
+        "res://assets/visual_rebirth/articulated/witch_l05_right.png",
+        "res://assets/visual_rebirth/articulated/witch_l05_front.png",
+        "res://assets/visual_rebirth/articulated/witch_l05_left.png",
+        "res://assets/visual_rebirth/articulated/witch_l05_back.png"
+      ],
+      "turn_samples": 9
+    },
+    {
+      "contact_error_px": 0.0,
+      "directions": {
+        "back": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l06_back.png",
+          "poses": 5,
+          "relative_tip_motion_px": 5.274
+        },
+        "front": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l06_front.png",
+          "poses": 5,
+          "relative_tip_motion_px": 4.371
+        },
+        "left": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l06_left.png",
+          "poses": 6,
+          "relative_tip_motion_px": 8.068
+        },
+        "right": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l06_right.png",
+          "poses": 6,
+          "relative_tip_motion_px": 6.588
+        }
+      },
+      "door_damage": 18.04,
+      "event": {
+        "door_socket": [
+          220.0,
+          424.0
+        ],
+        "id": 4,
+        "limb_tip": [
+          220.0,
+          424.0
+        ],
+        "room": 3,
+        "source": "door strike",
+        "style": "cast",
+        "time": 31.6
+      },
+      "failures": 0,
+      "hunter": "witch",
+      "joint_range_px": 8.068,
+      "key": "witch_l06",
+      "level": 6,
+      "minimum_joint_span_px": 20.098,
+      "needle_damage": 27.0,
+      "poses": [
+        "hit",
+        "windup",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "post_strike_pose": "hit",
+      "textures": [
+        "res://assets/visual_rebirth/articulated/witch_l06_right.png",
+        "res://assets/visual_rebirth/articulated/witch_l06_front.png",
+        "res://assets/visual_rebirth/articulated/witch_l06_left.png",
+        "res://assets/visual_rebirth/articulated/witch_l06_back.png"
+      ],
+      "turn_samples": 9
+    },
+    {
+      "contact_error_px": 0.0,
+      "directions": {
+        "back": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l07_back.png",
+          "poses": 5,
+          "relative_tip_motion_px": 6.927
+        },
+        "front": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l07_front.png",
+          "poses": 5,
+          "relative_tip_motion_px": 4.323
+        },
+        "left": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l07_left.png",
+          "poses": 6,
+          "relative_tip_motion_px": 7.765
+        },
+        "right": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l07_right.png",
+          "poses": 6,
+          "relative_tip_motion_px": 7.691
+        }
+      },
+      "door_damage": 18.04,
+      "event": {
+        "door_socket": [
+          220.0,
+          424.0
+        ],
+        "id": 4,
+        "limb_tip": [
+          220.0,
+          424.0
+        ],
+        "room": 3,
+        "source": "door strike",
+        "style": "cast",
+        "time": 31.6
+      },
+      "failures": 0,
+      "hunter": "witch",
+      "joint_range_px": 7.765,
+      "key": "witch_l07",
+      "level": 7,
+      "minimum_joint_span_px": 17.364,
+      "needle_damage": 27.0,
+      "poses": [
+        "hit",
+        "windup",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "post_strike_pose": "hit",
+      "textures": [
+        "res://assets/visual_rebirth/articulated/witch_l07_right.png",
+        "res://assets/visual_rebirth/articulated/witch_l07_front.png",
+        "res://assets/visual_rebirth/articulated/witch_l07_left.png",
+        "res://assets/visual_rebirth/articulated/witch_l07_back.png"
+      ],
+      "turn_samples": 9
+    },
+    {
+      "contact_error_px": 0.0,
+      "directions": {
+        "back": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l08_back.png",
+          "poses": 5,
+          "relative_tip_motion_px": 5.073
+        },
+        "front": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l08_front.png",
+          "poses": 5,
+          "relative_tip_motion_px": 4.392
+        },
+        "left": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l08_left.png",
+          "poses": 6,
+          "relative_tip_motion_px": 7.956
+        },
+        "right": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l08_right.png",
+          "poses": 6,
+          "relative_tip_motion_px": 6.88
+        }
+      },
+      "door_damage": 18.04,
+      "event": {
+        "door_socket": [
+          220.0,
+          424.0
+        ],
+        "id": 4,
+        "limb_tip": [
+          220.0,
+          424.0
+        ],
+        "room": 3,
+        "source": "door strike",
+        "style": "cast",
+        "time": 31.6
+      },
+      "failures": 0,
+      "hunter": "witch",
+      "joint_range_px": 7.956,
+      "key": "witch_l08",
+      "level": 8,
+      "minimum_joint_span_px": 27.31,
+      "needle_damage": 27.0,
+      "poses": [
+        "hit",
+        "windup",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "post_strike_pose": "hit",
+      "textures": [
+        "res://assets/visual_rebirth/articulated/witch_l08_right.png",
+        "res://assets/visual_rebirth/articulated/witch_l08_front.png",
+        "res://assets/visual_rebirth/articulated/witch_l08_left.png",
+        "res://assets/visual_rebirth/articulated/witch_l08_back.png"
+      ],
+      "turn_samples": 9
+    },
+    {
+      "contact_error_px": 0.0,
+      "directions": {
+        "back": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l09_back.png",
+          "poses": 5,
+          "relative_tip_motion_px": 5.192
+        },
+        "front": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l09_front.png",
+          "poses": 5,
+          "relative_tip_motion_px": 4.488
+        },
+        "left": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l09_left.png",
+          "poses": 6,
+          "relative_tip_motion_px": 7.591
+        },
+        "right": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l09_right.png",
+          "poses": 6,
+          "relative_tip_motion_px": 7.692
+        }
+      },
+      "door_damage": 18.04,
+      "event": {
+        "door_socket": [
+          220.0,
+          424.0
+        ],
+        "id": 4,
+        "limb_tip": [
+          220.0,
+          424.0
+        ],
+        "room": 3,
+        "source": "door strike",
+        "style": "cast",
+        "time": 31.6
+      },
+      "failures": 0,
+      "hunter": "witch",
+      "joint_range_px": 7.692,
+      "key": "witch_l09",
+      "level": 9,
+      "minimum_joint_span_px": 23.639,
+      "needle_damage": 27.0,
+      "poses": [
+        "hit",
+        "windup",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "post_strike_pose": "hit",
+      "textures": [
+        "res://assets/visual_rebirth/articulated/witch_l09_right.png",
+        "res://assets/visual_rebirth/articulated/witch_l09_front.png",
+        "res://assets/visual_rebirth/articulated/witch_l09_left.png",
+        "res://assets/visual_rebirth/articulated/witch_l09_back.png"
+      ],
+      "turn_samples": 9
+    },
+    {
+      "contact_error_px": 0.0,
+      "directions": {
+        "back": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l10_back.png",
+          "poses": 5,
+          "relative_tip_motion_px": 5.235
+        },
+        "front": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l10_front.png",
+          "poses": 5,
+          "relative_tip_motion_px": 4.653
+        },
+        "left": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l10_left.png",
+          "poses": 6,
+          "relative_tip_motion_px": 7.263
+        },
+        "right": {
+          "path": "res://assets/visual_rebirth/articulated/witch_l10_right.png",
+          "poses": 6,
+          "relative_tip_motion_px": 7.281
+        }
+      },
+      "door_damage": 18.04,
+      "event": {
+        "door_socket": [
+          220.0,
+          424.0
+        ],
+        "id": 4,
+        "limb_tip": [
+          220.0,
+          424.0
+        ],
+        "room": 3,
+        "source": "door strike",
+        "style": "cast",
+        "time": 31.6
+      },
+      "failures": 0,
+      "hunter": "witch",
+      "joint_range_px": 7.281,
+      "key": "witch_l10",
+      "level": 10,
+      "minimum_joint_span_px": 24.129,
+      "needle_damage": 27.0,
+      "poses": [
+        "hit",
+        "windup",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "post_strike_pose": "hit",
+      "textures": [
+        "res://assets/visual_rebirth/articulated/witch_l10_right.png",
+        "res://assets/visual_rebirth/articulated/witch_l10_front.png",
+        "res://assets/visual_rebirth/articulated/witch_l10_left.png",
+        "res://assets/visual_rebirth/articulated/witch_l10_back.png"
+      ],
+      "turn_samples": 9
+    }
+  ],
+  "turn_samples": 72,
+  "unavailable": [],
+  "verified_states": 8,
+  "viewport": [
+    1280,
+    720
+  ]
+}

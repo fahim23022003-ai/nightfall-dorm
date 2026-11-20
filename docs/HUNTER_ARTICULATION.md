@@ -1,85 +1,97 @@
-# Hunter articulation and performance checkpoint
+# Living Nightmare Hunter articulation
 
-This pass starts from the verified `a71f3e3` Living Nightmare release.
-Fourteen more ordinary evolution states have authored anatomical cutouts
-and have been verified in game. Each uses the approved direction painting
-with its own limb outline and joint anchors. The layered renderer solves
-the shoulder, elbow and wrist or the hip, knee and ankle. The belly,
-coat or dress follows the pose separately. The original artwork remains
-the fallback when a corresponding rig is absent.
+All 60 ordinary Hunter evolution states have level-specific articulated
+rigs in the opt-in preview. Each of the six Hunters has ten states and
+four separately authored direction paintings per state. The two Grim
+Reaper forms add eight direction atlases. The verified starting point
+`da4ef63` covered 16 ordinary states.
 
-| Hunter | Verified articulated evolution levels | Pending levels |
-| --- | --- | --- |
-| Stalker | 1, 4, 7, 10 | 2, 3, 5, 6, 8, 9 |
-| Ravager | 1, 4, 7, 10 | 2, 3, 5, 6, 8, 9 |
-| Crusher | 1, 4 | 2, 3, 5, 6, 7, 8, 9, 10 |
-| Phantom Witch | 1, 4 | 2, 3, 5, 6, 7, 8, 9, 10 |
-| Electric Ghost | 1, 4 | 2, 3, 5, 6, 7, 8, 9, 10 |
-| Storm Wraith | 1, 4 | 2, 3, 5, 6, 7, 8, 9, 10 |
+## Coverage and implementation
 
-Six native 720p films cover all **16 ordinary verified states**.
-Each includes four cardinal directions, limb-driven locomotion, a Needle
-hit reaction, an ordinary windup, the damage frame, and follow-through.
-The level, route and starting room were prepared. Production movement,
-weapons, hits and combat timing drive the rendered action. The contact
-check measures the pose at one live door orientation per ordinary state.
-The level-specific cutouts retain the discrete views of the original
-illustrations. [Films and source events](evidence/hunter-articulation/footage/)
+| Hunter | Articulated levels | Direction atlases |
+| --- | --- | ---: |
+| Crusher | 1–10 | 40 |
+| Stalker | 1–10 | 40 |
+| Ravager | 1–10 | 40 |
+| Phantom Witch | 1–10 | 40 |
+| Electric Ghost | 1–10 | 40 |
+| Storm Wraith | 1–10 | 40 |
+| Grim Reaper | Approach and transformed | 8 |
 
-The transformed Reaper now swings its scythe from the rear as well.
-The rear painting conceals the weapon arm. The swing uses the same
-character's sleeve and gauntlet art emerging beside the mantle, then
-returns to the original rear silhouette. The front and rear fixtures
-show the existing transformation and real Scythe Strike. The blade
-reaches the door during the authoritative damage frame in both views.
-Other boss skills and all combinations of direction and movement still
-require acceptance footage.
+The bake starts from the approved paintings. Each new recipe follows
+visible anatomy in the corresponding level and direction. It defines
+the shoulder, elbow and wrist or the hip, knee and ankle, with
+overlapping painted texels at the joints. The runtime solves those
+chains separately from the head, torso and garment hem. It uses the
+Hunter's gameplay heading, movement and combat events to pose them.
+Substantially occluded limbs stay painted into the underlying garment
+or body. The Reaper's rear swing uses its own sleeve and gauntlet art
+as the weapon arm emerges from behind the mantle.
 
-An additional 39-second Godot Movie Maker capture records live Master
-audio and gameplay. It shows Stalker L10's rebirth and Hollow Oath,
-Ravager's quills, Crusher's pressure, Witch's cursed projectile,
-Electric Ghost's interference and Storm Wraith's chain lightning.
-Verified gameplay events drive the casting poses, impact VFX and door
-audio. The fixture prepares the current level and ability cooldowns.
-[Live audio and ability evidence](evidence/hunter-articulation/footage/specials-with-game-audio.mp4)
+The ordinary rig blends a body turn into the gait, follows a real
+door strike through contact and recovery, and poses when the model
+emits an evolution event. The event-driven, L10 rebirth reveal still
+controls when the final painting becomes visible. Reaper warning,
+release and recovery follow the existing boss
+sequencers. Both forms overlap briefly during the transformation.
+The held scythe is hidden throughout Crimson Execution flight and
+embedding. Damage, the contact effect and impact sound still come from
+the gameplay event.
 
-## Rendering improvement
+## What Godot verified
 
-The previous dense Stalker benchmark advanced to L6, which uses a
-fallback. The corrected fixture requires the L1 atlas to appear in the
-same rendered 24-building room on both arms. It uses the identical
-seed, camera, settings, starting state and active strikes. Both arms
-retained matching final gameplay digests.
+Standard and Low each covered 60/60 ordinary states and 240 distinct
+direction atlas hashes at 1280×720. Every state rendered articulated
+motion in all four cardinal views and landed a real strike against a
+door after taking a hit from a purchased Needle. The checks cover
+idle, distinct limb motion, windup, contact, follow-through and
+recovery. The greatest measured hand-to-socket distance was 0.05 world
+pixels on the damage frame. Each preset also verified a real Stalker
+evolution, a west Haunted Hall recovery and a lethal hit followed by
+a fade. [State matrix and raw receipts](evidence/hunter-articulation-complete/verification/)
 
-The cutout renderer now submits its atlas quads as an ordered indexed
-batch, with a separate submission where weapon layering requires it.
-Atlas regions are cached on first use, and the ordinary renderer retains
-a bounded atlas cache. The room renderer caches packed static wall
-geometry, submits strokes in batches, and skips offscreen corridor
-details. Hunter drawing uses a tighter camera margin on the preview.
-All of these changes are on the presentation side.
+The Reaper native fixture exercised both forms in every cardinal
+direction, AStar turns, approach, transformation, real scythe hits
+and fade. The blade was checked in all four views against door
+damage and gameplay audio. The receipts cover the ten executable
+Wrath skills plus the legacy Soul Siege, Shadow Surge, Shadow Dash
+and Soul Drain pathways. See the recorded fixtures for the visual
+checks that apply to each skill. [Reaper evidence and receipts](evidence/hunter-articulation-complete/reaper/)
 
-| 720p fixture | Before median / p95 ms | After median / p95 ms | Median draw calls |
-| --- | ---: | ---: | ---: |
-| Stalker Standard | 39.02 / 46.39 | 36.52 / 45.02 | 404 → 384 |
-| Stalker Low | 34.10 / 41.98 | 32.63 / 39.32 | 399 → 379 |
-| Reaper Standard | 38.39 / 48.52 | 39.27 / 49.31 | 638.5 → 584.5 |
-| Reaper Low | 37.36 / 50.77 | 37.09 / 57.46 | 609.5 → 555.5 |
+The six ordinary clips are normal-speed, staged Endless encounters
+at early, middle and late levels. The ordinary ability and Reaper
+clips include live game audio. The comparison shows the same Stalker
+L2 route and door exchange on `da4ef63` and the new renderer with the
+same damage frames. [Footage and screenshots](evidence/hunter-articulation-complete/footage/)
 
-Stalker improved on both tested presets. Reaper draw calls dropped. Its p95 frame time increased,
-particularly on Low.
-The sampling platform is Linux Mesa llvmpipe GL Compatibility. Native
-Windows and Intel UHD performance remain unmeasured. [Raw timings and frames](evidence/hunter-articulation/performance/)
+## Active-combat performance
 
-## Preservation and remaining work
+Three matched Low Reaper pairs moved the median frame time from
+54.01 to 53.19 ms and p95 from 76.42 to 73.26 ms. Draw calls dropped
+from 555.5 to 542.5 in every pair. One of the three pairs had a worse
+tail. The single Standard Reaper pair moved from 58.31 to 59.64 ms
+median and 82.73 to 86.76 ms p95. All gameplay digests matched in the
+24-building fixtures. These are Linux software-renderer measurements.
+[Both presets, raw samples and crowded-room stills](evidence/hunter-articulation-complete/performance/)
 
-Core combat, Story, audio, contact attribution, boss rules, Full Room
-Grid and V2 persistence passed headless regression tests. The update
-uses the existing preview switch and a separate preview profile. No
-model, combat value, AI, map generation or save schema changes are in
-this checkpoint. [Regressions](evidence/hunter-articulation/regressions/)
+## Regression and playtest
 
-The remaining milestone is **44 ordinary evolution state rigs**, continued
-Reaper motion verification, more door-facing contact checks, and native
-performance tuning and owner review. The survivor, defeat, tutorial and
-UI workstreams remain separate. [Windows export verification](evidence/hunter-articulation/windows/)
+The gameplay model, save schema, 50-level Story, map generation,
+construction and economy files were left intact by the source
+changes. Tests cover story, grid, V2 saves and match flow, audio,
+combat and bosses. One older visual-polish suite reports six
+hard-coded balance expectations that fail identically on the starting
+commit. [Regression receipts](evidence/hunter-articulation-complete/verification/regressions/)
+
+The atlas renderer is layered 2.5D. It switches between four painted
+perspectives, so some silhouettes change sharply during turns.
+Details obscured by clothes in a painting cannot articulate
+independently in that view. Ordinary contact tests cover one
+representative door orientation per state. Reaper contact is
+verified in all four view fixtures. Frame checks and footage provide
+technical coverage. Artistic acceptance and native Windows and
+Intel UHD results are pending.
+
+The Windows x64 preview uses its existing isolated profile and
+includes the reference launchers. The embedded resources were
+checked with Linux Godot. [Windows playtest instructions](LIVING_NIGHTMARE_WINDOWS_PLAYTEST.md)

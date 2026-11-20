@@ -1,0 +1,90 @@
+{
+  "baseline": "da4ef63700c3eabc5c2e2198841852a50d58b1f6",
+  "candidate": "2b302a0e53fe909b169086199dd78f88f41037d7",
+  "engine": "Godot 4.6.3",
+  "native_windows": false,
+  "native_intel_uhd": false,
+  "llvmpipe_worker_limit": 2,
+  "viewport": [
+    1280,
+    720
+  ],
+  "cases": {
+    "reaper-low": {
+      "paired_runs": 3,
+      "samples_per_arm_per_run": 150,
+      "identical_gameplay_digests": true,
+      "before": {
+        "median_ms": 54.008,
+        "p95_ms": 76.422,
+        "median_draw_calls": 555.5,
+        "cpu_update_p95_ms": 7.206,
+        "reported_video_memory_bytes": 156291821.0
+      },
+      "after": {
+        "median_ms": 53.1865,
+        "p95_ms": 73.257,
+        "median_draw_calls": 542.5,
+        "cpu_update_p95_ms": 8.384,
+        "reported_video_memory_bytes": 137936561.0
+      }
+    },
+    "reaper-medium": {
+      "paired_runs": 1,
+      "samples_per_arm_per_run": 150,
+      "identical_gameplay_digests": true,
+      "before": {
+        "median_ms": 58.3125,
+        "p95_ms": 82.73,
+        "median_draw_calls": 584.5,
+        "cpu_update_p95_ms": 7.251,
+        "reported_video_memory_bytes": 156313557.0
+      },
+      "after": {
+        "median_ms": 59.641,
+        "p95_ms": 86.764,
+        "median_draw_calls": 585.5,
+        "cpu_update_p95_ms": 8.751,
+        "reported_video_memory_bytes": 137965213.0
+      }
+    },
+    "stalker-low": {
+      "paired_runs": 1,
+      "samples_per_arm_per_run": 150,
+      "identical_gameplay_digests": true,
+      "before": {
+        "median_ms": 50.7955,
+        "p95_ms": 76.938,
+        "median_draw_calls": 379.0,
+        "cpu_update_p95_ms": 7.57,
+        "reported_video_memory_bytes": 156020011.0
+      },
+      "after": {
+        "median_ms": 51.1235,
+        "p95_ms": 72.482,
+        "median_draw_calls": 379.0,
+        "cpu_update_p95_ms": 6.709,
+        "reported_video_memory_bytes": 137671051.0
+      }
+    },
+    "stalker-medium": {
+      "paired_runs": 1,
+      "samples_per_arm_per_run": 150,
+      "identical_gameplay_digests": true,
+      "before": {
+        "median_ms": 58.3725,
+        "p95_ms": 77.066,
+        "median_draw_calls": 384.0,
+        "cpu_update_p95_ms": 7.182,
+        "reported_video_memory_bytes": 156021419.0
+      },
+      "after": {
+        "median_ms": 56.803,
+        "p95_ms": 77.075,
+        "median_draw_calls": 384.0,
+        "cpu_update_p95_ms": 7.813,
+        "reported_video_memory_bytes": 137672459.0
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "quality": "low",
+  "states_expected": 60,
+  "states_observed": 60,
+  "directional_atlases_observed": 240,
+  "rendered_frames": 1798,
+  "checks": 2087,
+  "maximum_contact_error_px": 0.05,
+  "minimum_relative_limb_motion_px": 3.779,
+  "missing": [],
+  "sources": [
+    {
+      "file": "low-main.json",
+      "sha256": "dd4529a0ccb62230ffdceac419e8dbec68bdf04d76af2c3ffed552cd601ab0a0",
+      "replacement": false,
+      "frames_rendered": 1564,
+      "checks": 1813,
+      "failures": 0
+    },
+    {
+      "file": "low-retakes.json",
+      "sha256": "9c80e22ab6963564ab5ab3132d0f910665d81b5ecb7b1efd7c8740bde6f9bfb3",
+      "replacement": true,
+      "frames_rendered": 234,
+      "checks": 274,
+      "failures": 0
+    }
+  ],
+  "superseded_states": [
+    {
+      "hunter": "crusher",
+      "level": 6,
+      "earlier_receipt": "low-main.json",
+      "retake_receipt": "low-retakes.json"
+    },
+    {
+      "hunter": "crusher",
+      "level": 7,
+      "earlier_receipt": "low-main.json",
+      "retake_receipt": "low-retakes.json"
+    },
+    {
+      "hunter": "crusher",
+      "level": 8,
+      "earlier_receipt": "low-main.json",
+      "retake_receipt": "low-retakes.json"
+    },
+    {
+      "hunter": "electric",
+      "level": 2,
+      "earlier_receipt": "low-main.json",
+      "retake_receipt": "low-retakes.json"
+    },
+    {
+      "hunter": "storm",
+      "level": 7,
+      "earlier_receipt": "low-main.json",
+      "retake_receipt": "low-retakes.json"
+    },
+    {
+      "hunter": "storm",
+      "level": 10,
+      "earlier_receipt": "low-main.json",
+      "retake_receipt": "low-retakes.json"
+    },
+    {
+      "hunter": "ravager",
+      "level": 2,
+      "earlier_receipt": "low-main.json",
+      "retake_receipt": "low-retakes.json"
+    },
+    {
+      "hunter": "ravager",
+      "level": 3,
+      "earlier_receipt": "low-main.json",
+      "retake_receipt": "low-retakes.json"
+    },
+    {
+      "hunter": "ravager",
+      "level": 9,
+      "earlier_receipt": "low-main.json",
+      "retake_receipt": "low-retakes.json"
+    }
+  ],
+  "issues": []
+}

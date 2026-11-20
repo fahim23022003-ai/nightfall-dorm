@@ -1,0 +1,504 @@
+{
+  "checks": 327,
+  "failures": 0,
+  "fixture": {
+    "assault": {
+      "boss_phase": 1,
+      "embed_frame": -1,
+      "empty_hand_during_throw": true,
+      "frame_count": 76,
+      "poses": [
+        "cast",
+        "cast_release",
+        "windup"
+      ],
+      "release_cue_frame": 62,
+      "release_frame": 62,
+      "slash": {
+
+      },
+      "throw_frame": -1,
+      "warning_cue_frame": 0,
+      "warning_frame": 0
+    },
+    "back": {
+      "death": {
+        "event_id": 11,
+        "frames": 39,
+        "sequence": [
+          {
+            "frame": 149,
+            "pose": {
+              "art": "res://assets/visual_rebirth/articulated/reaper_transformed_back.png",
+              "pose": "vanish",
+              "view": "back",
+              "weapon": false
+            }
+          },
+          {
+            "frame": 167,
+            "pose": {
+              "art": "res://assets/visual_rebirth/articulated/reaper_transformed_back.png",
+              "pose": "vanish",
+              "view": "back",
+              "weapon": false
+            }
+          },
+          {
+            "frame": 186,
+            "pose": {
+              "art": "",
+              "pose": "",
+              "view": "back",
+              "weapon": false
+            }
+          }
+        ]
+      },
+      "first_form_frames": 23,
+      "follow_frame": 134,
+      "frame_count": 188,
+      "layer_overlap_frames": 24,
+      "move_frames": 26,
+      "poses": [
+        "evolve",
+        "move",
+        "windup",
+        "idle",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "recover_frame": 143,
+      "room": 0,
+      "seed": 67,
+      "strike": {
+        "art": "res://assets/visual_rebirth/articulated/reaper_transformed_back.png",
+        "audio_event_delta": 1,
+        "blade_error": 0.0500108525156975,
+        "damage": 30.3050370149999,
+        "event_id": 9,
+        "frame": 132,
+        "grip": true
+      },
+      "transform_frames": 57
+    },
+    "crimson_execution": {
+      "boss_phase": 2,
+      "embed_frame": 93,
+      "empty_hand_during_throw": true,
+      "frame_count": 104,
+      "poses": [
+        "cast",
+        "cast_release",
+        "windup"
+      ],
+      "release_cue_frame": 73,
+      "release_frame": 73,
+      "slash": {
+
+      },
+      "throw_frame": 73,
+      "warning_cue_frame": 0,
+      "warning_frame": 0
+    },
+    "enhanced_undead": {
+      "boss_phase": 2,
+      "embed_frame": -1,
+      "empty_hand_during_throw": true,
+      "frame_count": 61,
+      "poses": [
+        "cast",
+        "cast_release",
+        "windup"
+      ],
+      "release_cue_frame": 47,
+      "release_frame": 47,
+      "slash": {
+
+      },
+      "throw_frame": -1,
+      "warning_cue_frame": 0,
+      "warning_frame": 0
+    },
+    "final_judgement": {
+      "boss_phase": 2,
+      "embed_frame": -1,
+      "empty_hand_during_throw": true,
+      "frame_count": 74,
+      "poses": [
+        "cast",
+        "cast_release",
+        "windup"
+      ],
+      "release_cue_frame": 60,
+      "release_frame": 60,
+      "slash": {
+
+      },
+      "throw_frame": -1,
+      "warning_cue_frame": 0,
+      "warning_frame": 0
+    },
+    "front": {
+      "death": {
+        "event_id": 11,
+        "frames": 39,
+        "sequence": [
+          {
+            "frame": 149,
+            "pose": {
+              "art": "res://assets/visual_rebirth/articulated/reaper_transformed_front.png",
+              "pose": "vanish",
+              "view": "front",
+              "weapon": true
+            }
+          },
+          {
+            "frame": 167,
+            "pose": {
+              "art": "res://assets/visual_rebirth/articulated/reaper_transformed_front.png",
+              "pose": "vanish",
+              "view": "front",
+              "weapon": true
+            }
+          },
+          {
+            "frame": 186,
+            "pose": {
+              "art": "",
+              "pose": "",
+              "view": "front",
+              "weapon": false
+            }
+          }
+        ]
+      },
+      "first_form_frames": 23,
+      "follow_frame": 134,
+      "frame_count": 188,
+      "layer_overlap_frames": 24,
+      "move_frames": 26,
+      "poses": [
+        "evolve",
+        "move",
+        "windup",
+        "idle",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "recover_frame": 143,
+      "room": 2,
+      "seed": 67,
+      "strike": {
+        "art": "res://assets/visual_rebirth/articulated/reaper_transformed_front.png",
+        "audio_event_delta": 1,
+        "blade_error": 0.0,
+        "damage": 30.3050370149999,
+        "event_id": 9,
+        "frame": 132,
+        "grip": true
+      },
+      "transform_frames": 57
+    },
+    "left": {
+      "death": {
+        "event_id": 11,
+        "frames": 39,
+        "sequence": [
+          {
+            "frame": 149,
+            "pose": {
+              "art": "res://assets/visual_rebirth/articulated/reaper_transformed_left.png",
+              "pose": "vanish",
+              "view": "left",
+              "weapon": true
+            }
+          },
+          {
+            "frame": 167,
+            "pose": {
+              "art": "res://assets/visual_rebirth/articulated/reaper_transformed_left.png",
+              "pose": "vanish",
+              "view": "left",
+              "weapon": true
+            }
+          },
+          {
+            "frame": 186,
+            "pose": {
+              "art": "",
+              "pose": "",
+              "view": "left",
+              "weapon": false
+            }
+          }
+        ]
+      },
+      "first_form_frames": 22,
+      "follow_frame": 134,
+      "frame_count": 188,
+      "layer_overlap_frames": 24,
+      "move_frames": 26,
+      "poses": [
+        "evolve",
+        "move",
+        "windup",
+        "idle",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "recover_frame": 143,
+      "room": 1,
+      "seed": 67,
+      "strike": {
+        "art": "res://assets/visual_rebirth/articulated/reaper_transformed_left.png",
+        "audio_event_delta": 1,
+        "blade_error": 0.0,
+        "damage": 30.3050370149999,
+        "event_id": 9,
+        "frame": 132,
+        "grip": true
+      },
+      "transform_frames": 57
+    },
+    "phantom_scream": {
+      "boss_phase": 2,
+      "embed_frame": -1,
+      "empty_hand_during_throw": true,
+      "frame_count": 66,
+      "poses": [
+        "cast",
+        "cast_release",
+        "windup"
+      ],
+      "release_cue_frame": 52,
+      "release_frame": 52,
+      "slash": {
+
+      },
+      "throw_frame": -1,
+      "warning_cue_frame": 0,
+      "warning_frame": 0
+    },
+    "right": {
+      "death": {
+        "event_id": 11,
+        "frames": 39,
+        "sequence": [
+          {
+            "frame": 149,
+            "pose": {
+              "art": "res://assets/visual_rebirth/articulated/reaper_transformed_right.png",
+              "pose": "vanish",
+              "view": "right",
+              "weapon": true
+            }
+          },
+          {
+            "frame": 167,
+            "pose": {
+              "art": "res://assets/visual_rebirth/articulated/reaper_transformed_right.png",
+              "pose": "vanish",
+              "view": "right",
+              "weapon": true
+            }
+          },
+          {
+            "frame": 186,
+            "pose": {
+              "art": "",
+              "pose": "",
+              "view": "right",
+              "weapon": false
+            }
+          }
+        ]
+      },
+      "first_form_frames": 25,
+      "follow_frame": 134,
+      "frame_count": 188,
+      "layer_overlap_frames": 24,
+      "move_frames": 26,
+      "poses": [
+        "evolve",
+        "move",
+        "windup",
+        "idle",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "recover_frame": 143,
+      "room": 3,
+      "seed": 10358,
+      "strike": {
+        "art": "res://assets/visual_rebirth/articulated/reaper_transformed_right.png",
+        "audio_event_delta": 1,
+        "blade_error": 0.0500465966761112,
+        "damage": 30.3050370149999,
+        "event_id": 9,
+        "frame": 132,
+        "grip": true
+      },
+      "transform_frames": 57
+    },
+    "rules_judgement": {
+      "boss_phase": 1,
+      "embed_frame": -1,
+      "empty_hand_during_throw": true,
+      "frame_count": 61,
+      "poses": [
+        "cast",
+        "cast_release",
+        "windup"
+      ],
+      "release_cue_frame": 47,
+      "release_frame": 47,
+      "slash": {
+
+      },
+      "throw_frame": -1,
+      "warning_cue_frame": 0,
+      "warning_frame": 0
+    },
+    "scythe_slash": {
+      "boss_phase": 1,
+      "embed_frame": -1,
+      "empty_hand_during_throw": true,
+      "frame_count": 57,
+      "poses": [
+        "windup",
+        "contact",
+        "follow"
+      ],
+      "release_cue_frame": 43,
+      "release_frame": 43,
+      "slash": {
+        "damage": 496.137152777778,
+        "error": 0.0,
+        "grip": true
+      },
+      "throw_frame": -1,
+      "warning_cue_frame": 0,
+      "warning_frame": 0
+    },
+    "soul_reaper": {
+      "boss_phase": 2,
+      "embed_frame": -1,
+      "empty_hand_during_throw": true,
+      "frame_count": 98,
+      "poses": [
+        "cast",
+        "cast_release",
+        "windup"
+      ],
+      "release_cue_frame": 84,
+      "release_frame": 84,
+      "slash": {
+
+      },
+      "throw_frame": -1,
+      "warning_cue_frame": 0,
+      "warning_frame": 0
+    },
+    "soul_steal": {
+      "boss_phase": 1,
+      "embed_frame": -1,
+      "empty_hand_during_throw": true,
+      "frame_count": 86,
+      "poses": [
+        "cast",
+        "cast_release",
+        "windup"
+      ],
+      "release_cue_frame": 72,
+      "release_frame": 72,
+      "slash": {
+
+      },
+      "throw_frame": -1,
+      "warning_cue_frame": 0,
+      "warning_frame": 0
+    },
+    "summon": {
+      "boss_phase": 1,
+      "embed_frame": -1,
+      "empty_hand_during_throw": true,
+      "frame_count": 49,
+      "poses": [
+        "cast",
+        "cast_release",
+        "windup"
+      ],
+      "release_cue_frame": 35,
+      "release_frame": 35,
+      "slash": {
+
+      },
+      "throw_frame": -1,
+      "warning_cue_frame": 0,
+      "warning_frame": 0
+    },
+    "turn_approach": {
+      "frame_count": 67,
+      "path_points": 2,
+      "room": 2,
+      "seed": 67,
+      "turns": [
+        {
+          "atlas": "res://assets/visual_rebirth/articulated/reaper_approach_left.png",
+          "frame": 16,
+          "path": [
+            2441.87475585938,
+            3904.0
+          ],
+          "view": "left"
+        },
+        {
+          "atlas": "res://assets/visual_rebirth/articulated/reaper_approach_front.png",
+          "frame": 50,
+          "path": [
+            2368.0,
+            3938.37573242188
+          ],
+          "view": "front"
+        }
+      ]
+    },
+    "turn_transformed": {
+      "frame_count": 59,
+      "path_points": 2,
+      "room": 2,
+      "seed": 67,
+      "turns": [
+        {
+          "atlas": "res://assets/visual_rebirth/articulated/reaper_transformed_left.png",
+          "frame": 11,
+          "path": [
+            2452.3447265625,
+            3904.0
+          ],
+          "view": "left"
+        },
+        {
+          "atlas": "res://assets/visual_rebirth/articulated/reaper_transformed_front.png",
+          "frame": 45,
+          "path": [
+            2368.0,
+            3943.34521484375
+          ],
+          "view": "front"
+        }
+      ]
+    }
+  },
+  "fps": 24,
+  "quality": "medium",
+  "viewport": [
+    1280,
+    720
+  ]
+}

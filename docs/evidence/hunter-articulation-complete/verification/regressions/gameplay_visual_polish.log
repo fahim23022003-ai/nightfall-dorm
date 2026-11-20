@@ -1,0 +1,39 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: GAMEPLAY VISUAL upgrade still spends exact existing resources
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/gameplay_visual_polish.gd:6)
+       [1] run (res://tests/gameplay_visual_polish.gd:30)
+       [2] click (res://tests/gameplay_visual_polish.gd:11)
+ERROR: GAMEPLAY VISUAL physical aggregation remains type-consistent
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/gameplay_visual_polish.gd:6)
+       [1] run (res://tests/gameplay_visual_polish.gd:44)
+       [2] click (res://tests/gameplay_visual_polish.gd:11)
+ERROR: GAMEPLAY VISUAL magic aggregation remains type-consistent
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/gameplay_visual_polish.gd:6)
+       [1] run (res://tests/gameplay_visual_polish.gd:45)
+       [2] click (res://tests/gameplay_visual_polish.gd:11)
+ERROR: GAMEPLAY VISUAL upgrade still spends exact existing resources
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/gameplay_visual_polish.gd:6)
+       [1] run (res://tests/gameplay_visual_polish.gd:30)
+       [2] click (res://tests/gameplay_visual_polish.gd:11)
+ERROR: GAMEPLAY VISUAL physical aggregation remains type-consistent
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/gameplay_visual_polish.gd:6)
+       [1] run (res://tests/gameplay_visual_polish.gd:44)
+       [2] click (res://tests/gameplay_visual_polish.gd:11)
+ERROR: GAMEPLAY VISUAL magic aggregation remains type-consistent
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/gameplay_visual_polish.gd:6)
+       [1] run (res://tests/gameplay_visual_polish.gd:45)
+       [2] click (res://tests/gameplay_visual_polish.gd:11)
+GAMEPLAY_VISUAL_POLISH_CHECKS=50 FAILURES=6

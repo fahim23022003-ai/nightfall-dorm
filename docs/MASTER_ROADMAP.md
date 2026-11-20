@@ -2,29 +2,20 @@
 
 ## Owner-approved project — Living Nightmare
 
-The opt-in preview combines articulated Hunter pilots, event-driven combat
+The opt-in preview combines articulated Hunter rigs, event-driven combat
 feedback, adaptive horror audio, and a linear 50-level Story campaign.
-Each verified pilot gates further character coverage. Preserve the V2.3,
-V1 and fixed launch modes and the original profile backup.
+Preserve the V2.3, V1 and fixed launch modes and the original profile backup.
 [Implementation and QA](LIVING_NIGHTMARE.md)
 
-## Mandatory remaining milestone — Hunter articulation and performance
+## Hunter articulation and performance
 
-The initial Living Nightmare baseline is `62ecf7a` on `work`. The
-follow-up verifies the articulated renderer on **16 ordinary Hunter
-states** and both Grim Reaper forms, including the transformed rear
-scythe strike. **44 ordinary states remain.** Keep the established art
-and renderer available until the remaining replacements have been
-verified in gameplay.
-
-Use the completed L1 and L4 rigs from all six Hunters and the L7 and
-L10 Stalker and Ravager rigs as reference anchors. Verify the L7 and
-L10 anchors for Crusher, Witch, Electric Ghost and Storm Wraith before
-filling the intervening levels. Continue checking turning, contact,
-evolution, special motions and Reaper directions at gameplay zoom.
-Benchmark dense 1280×720 combat on Standard and Low with native Windows
-and Intel UHD measurements when available.
-[Verified coverage and performance](HUNTER_ARTICULATION.md)
+All 60 ordinary evolution levels and both Reaper forms have native
+Godot articulation receipts on the opt-in Living Nightmare path.
+Standard and Low verification covers ordinary movement and door
+combat. The broader lifecycle and boss checks are recorded separately.
+The Linux performance measurements, Windows x64 pack verification
+and owner playtest checklist accompany the report.
+[Coverage and playtest evidence](HUNTER_ARTICULATION.md)
 
 ## Upcoming survivor and UI work
 

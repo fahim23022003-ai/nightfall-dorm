@@ -1,0 +1,669 @@
+{
+  "adapter": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "available_only": false,
+  "checks": 274,
+  "display": "X11",
+  "engine": "4.6.3-stable (official)",
+  "expected_states": 9,
+  "failures": 0,
+  "fixture": "Prepared seeded Endless room and Hunter evolution. Validated corridor routes use the ordinary navigation primitive. Combat advances through normal gameplay ticks, a paid Needle, existing Hunter windup and real doorstep damage. Render samples are sparse. Graphics validation checks atlas binding and event contact, not artistic approval.",
+  "frame_step": 0.0416666666666667,
+  "frames_rendered": 234,
+  "lifecycle": {
+
+  },
+  "quality": "low",
+  "rendered_states": 9,
+  "selected_cases": [
+    [
+      "crusher",
+      6
+    ],
+    [
+      "crusher",
+      7
+    ],
+    [
+      "crusher",
+      8
+    ],
+    [
+      "electric",
+      2
+    ],
+    [
+      "storm",
+      7
+    ],
+    [
+      "storm",
+      10
+    ],
+    [
+      "ravager",
+      2
+    ],
+    [
+      "ravager",
+      3
+    ],
+    [
+      "ravager",
+      9
+    ]
+  ],
+  "selected_family": "all",
+  "selected_level": "all",
+  "states": [
+    {
+      "contact_error_px": 0.0,
+      "directions": {
+        "back": {
+          "atlas_sha256": "07f8e3ad5bc7acbe4df47a53a298d0e7f5e990c362803153ff9b6c48b54d9c07",
+          "path": "res://assets/visual_rebirth/articulated/crusher_l06_back.png",
+          "poses": 5,
+          "relative_tip_motion_px": 4.352
+        },
+        "front": {
+          "atlas_sha256": "4e0056196f0b6fd0afebbaee70f0f9022a0a94731b76c5917c42d83f6f0c6e25",
+          "path": "res://assets/visual_rebirth/articulated/crusher_l06_front.png",
+          "poses": 5,
+          "relative_tip_motion_px": 3.136
+        },
+        "left": {
+          "atlas_sha256": "773e93df248fe43f4c46ae2424ec16619ab9b48db853a16f5e6a6cf0ee2cfcdc",
+          "path": "res://assets/visual_rebirth/articulated/crusher_l06_left.png",
+          "poses": 6,
+          "relative_tip_motion_px": 7.617
+        },
+        "right": {
+          "atlas_sha256": "e88f80b9f274c3d11b7447ed232eebf42c42c40a4758ec6e24f5c478a27b4582",
+          "path": "res://assets/visual_rebirth/articulated/crusher_l06_right.png",
+          "poses": 7,
+          "relative_tip_motion_px": 3.243
+        }
+      },
+      "door_damage": 26.4000000000001,
+      "event": {
+        "door_socket": [
+          220.0,
+          424.0
+        ],
+        "id": 4,
+        "limb_tip": [
+          220.0,
+          424.0
+        ],
+        "room": 3,
+        "source": "door strike",
+        "style": "heavy",
+        "time": 31.5583333333334
+      },
+      "failures": 0,
+      "hunter": "crusher",
+      "joint_range_px": 7.617,
+      "key": "crusher_l06",
+      "level": 6,
+      "minimum_joint_span_px": 39.083,
+      "needle_damage": 18.0,
+      "poses": [
+        "hit",
+        "windup",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "post_strike_pose": "idle",
+      "textures": [
+        "res://assets/visual_rebirth/articulated/crusher_l06_right.png",
+        "res://assets/visual_rebirth/articulated/crusher_l06_front.png",
+        "res://assets/visual_rebirth/articulated/crusher_l06_left.png",
+        "res://assets/visual_rebirth/articulated/crusher_l06_back.png"
+      ],
+      "turn_samples": 9
+    },
+    {
+      "contact_error_px": 0.0,
+      "directions": {
+        "back": {
+          "atlas_sha256": "f975317e0a6eb3a38cf0c3b63d75e04f7bc226b1072ae29bbc716575f0071748",
+          "path": "res://assets/visual_rebirth/articulated/crusher_l07_back.png",
+          "poses": 5,
+          "relative_tip_motion_px": 3.665
+        },
+        "front": {
+          "atlas_sha256": "52edb9f177def1f0ce0bf2fb4dbe03a10081de263482ebdfd9649772526d9dfc",
+          "path": "res://assets/visual_rebirth/articulated/crusher_l07_front.png",
+          "poses": 5,
+          "relative_tip_motion_px": 2.706
+        },
+        "left": {
+          "atlas_sha256": "9e281292f59836a3c56fd334fc55f3c596eb60bee258f686dabebb160c050217",
+          "path": "res://assets/visual_rebirth/articulated/crusher_l07_left.png",
+          "poses": 6,
+          "relative_tip_motion_px": 7.852
+        },
+        "right": {
+          "atlas_sha256": "016f77fe03503153386955c46ce6dd61bc8c4960b242425cfaff13bf118c0441",
+          "path": "res://assets/visual_rebirth/articulated/crusher_l07_right.png",
+          "poses": 7,
+          "relative_tip_motion_px": 3.271
+        }
+      },
+      "door_damage": 26.4000000000001,
+      "event": {
+        "door_socket": [
+          220.0,
+          424.0
+        ],
+        "id": 4,
+        "limb_tip": [
+          220.0,
+          424.0
+        ],
+        "room": 3,
+        "source": "door strike",
+        "style": "heavy",
+        "time": 31.5583333333334
+      },
+      "failures": 0,
+      "hunter": "crusher",
+      "joint_range_px": 7.852,
+      "key": "crusher_l07",
+      "level": 7,
+      "minimum_joint_span_px": 54.369,
+      "needle_damage": 18.0,
+      "poses": [
+        "hit",
+        "windup",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "post_strike_pose": "idle",
+      "textures": [
+        "res://assets/visual_rebirth/articulated/crusher_l07_right.png",
+        "res://assets/visual_rebirth/articulated/crusher_l07_front.png",
+        "res://assets/visual_rebirth/articulated/crusher_l07_left.png",
+        "res://assets/visual_rebirth/articulated/crusher_l07_back.png"
+      ],
+      "turn_samples": 9
+    },
+    {
+      "contact_error_px": 0.0,
+      "directions": {
+        "back": {
+          "atlas_sha256": "059cad2a802c227879e017a8bc1362947082f88fddd169e423a1e46b72e083c4",
+          "path": "res://assets/visual_rebirth/articulated/crusher_l08_back.png",
+          "poses": 5,
+          "relative_tip_motion_px": 4.218
+        },
+        "front": {
+          "atlas_sha256": "47658c82925976c46c103c4a7a8e6e3eb628e79b54c61777b06f5756c4b9b0dd",
+          "path": "res://assets/visual_rebirth/articulated/crusher_l08_front.png",
+          "poses": 5,
+          "relative_tip_motion_px": 4.22
+        },
+        "left": {
+          "atlas_sha256": "ef9475e1a3aa4194d31206e6cde6855933bc1e7b8cf66dd9df09a8f7b078e318",
+          "path": "res://assets/visual_rebirth/articulated/crusher_l08_left.png",
+          "poses": 6,
+          "relative_tip_motion_px": 8.09
+        },
+        "right": {
+          "atlas_sha256": "50fbbc6ef1f1131b4f05e36caf29d8844f94031cb0715e31f6d72028d06770d1",
+          "path": "res://assets/visual_rebirth/articulated/crusher_l08_right.png",
+          "poses": 7,
+          "relative_tip_motion_px": 3.135
+        }
+      },
+      "door_damage": 26.4000000000001,
+      "event": {
+        "door_socket": [
+          220.0,
+          424.0
+        ],
+        "id": 4,
+        "limb_tip": [
+          220.0,
+          424.0
+        ],
+        "room": 3,
+        "source": "door strike",
+        "style": "heavy",
+        "time": 31.5583333333334
+      },
+      "failures": 0,
+      "hunter": "crusher",
+      "joint_range_px": 8.09,
+      "key": "crusher_l08",
+      "level": 8,
+      "minimum_joint_span_px": 64.374,
+      "needle_damage": 18.0,
+      "poses": [
+        "hit",
+        "windup",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "post_strike_pose": "idle",
+      "textures": [
+        "res://assets/visual_rebirth/articulated/crusher_l08_right.png",
+        "res://assets/visual_rebirth/articulated/crusher_l08_front.png",
+        "res://assets/visual_rebirth/articulated/crusher_l08_left.png",
+        "res://assets/visual_rebirth/articulated/crusher_l08_back.png"
+      ],
+      "turn_samples": 9
+    },
+    {
+      "contact_error_px": 0.0,
+      "directions": {
+        "back": {
+          "atlas_sha256": "aa9180400cb006c38576755373af62c6ed25181002f730900192298832033bef",
+          "path": "res://assets/visual_rebirth/articulated/electric_l02_back.png",
+          "poses": 4,
+          "relative_tip_motion_px": 5.086
+        },
+        "front": {
+          "atlas_sha256": "3462838b283d9fe5d56a2f61af9fb144a30c5aeda01457d4cb002db16cd72852",
+          "path": "res://assets/visual_rebirth/articulated/electric_l02_front.png",
+          "poses": 4,
+          "relative_tip_motion_px": 4.333
+        },
+        "left": {
+          "atlas_sha256": "d06ad95fc77e17c2a0cba3a83d504adb4329f660c57b81c0e8d912d457e1ba91",
+          "path": "res://assets/visual_rebirth/articulated/electric_l02_left.png",
+          "poses": 5,
+          "relative_tip_motion_px": 5.256
+        },
+        "right": {
+          "atlas_sha256": "53e33e0b6b53014ef2b38d508a1f67fc12a9d008ee285fc417cdb70738924e17",
+          "path": "res://assets/visual_rebirth/articulated/electric_l02_right.png",
+          "poses": 6,
+          "relative_tip_motion_px": 4.28
+        }
+      },
+      "door_damage": 19.3600000000001,
+      "event": {
+        "door_socket": [
+          220.0,
+          424.0
+        ],
+        "id": 4,
+        "limb_tip": [
+          220.0,
+          424.0
+        ],
+        "room": 3,
+        "source": "door strike",
+        "style": "electric",
+        "time": 31.5166666666667
+      },
+      "failures": 0,
+      "hunter": "electric",
+      "joint_range_px": 5.256,
+      "key": "electric_l02",
+      "level": 2,
+      "minimum_joint_span_px": 39.644,
+      "needle_damage": 18.0,
+      "poses": [
+        "hit",
+        "windup",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "post_strike_pose": "idle",
+      "textures": [
+        "res://assets/visual_rebirth/articulated/electric_l02_right.png",
+        "res://assets/visual_rebirth/articulated/electric_l02_front.png",
+        "res://assets/visual_rebirth/articulated/electric_l02_left.png",
+        "res://assets/visual_rebirth/articulated/electric_l02_back.png"
+      ],
+      "turn_samples": 9
+    },
+    {
+      "contact_error_px": 0.0,
+      "directions": {
+        "back": {
+          "atlas_sha256": "c80af82bbbb740d733cced9f01c3a5130e1fdc6b5df67625ec596f520ef8b0a1",
+          "path": "res://assets/visual_rebirth/articulated/storm_l07_back.png",
+          "poses": 4,
+          "relative_tip_motion_px": 7.712
+        },
+        "front": {
+          "atlas_sha256": "801c26048ed871437b1cabb25d7b0029674356d10ce29190fcd94b28ab956ac3",
+          "path": "res://assets/visual_rebirth/articulated/storm_l07_front.png",
+          "poses": 4,
+          "relative_tip_motion_px": 4.809
+        },
+        "left": {
+          "atlas_sha256": "eba6b01a9e2f8adcd129824551e55cbb75babc96c843770b9a7a22c0a1e76eac",
+          "path": "res://assets/visual_rebirth/articulated/storm_l07_left.png",
+          "poses": 5,
+          "relative_tip_motion_px": 7.397
+        },
+        "right": {
+          "atlas_sha256": "ddca272dddccaed23303bcb1fab5ef425ac4d49ee28d3883c356f41e124e0913",
+          "path": "res://assets/visual_rebirth/articulated/storm_l07_right.png",
+          "poses": 6,
+          "relative_tip_motion_px": 7.898
+        }
+      },
+      "door_damage": 19.3600000000001,
+      "event": {
+        "door_socket": [
+          220.0,
+          424.0
+        ],
+        "id": 4,
+        "limb_tip": [
+          220.0,
+          424.0
+        ],
+        "room": 3,
+        "source": "door strike",
+        "style": "storm",
+        "time": 31.5583333333334
+      },
+      "failures": 0,
+      "hunter": "storm",
+      "joint_range_px": 7.898,
+      "key": "storm_l07",
+      "level": 7,
+      "minimum_joint_span_px": 27.043,
+      "needle_damage": 18.0,
+      "poses": [
+        "hit",
+        "windup",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "post_strike_pose": "idle",
+      "textures": [
+        "res://assets/visual_rebirth/articulated/storm_l07_right.png",
+        "res://assets/visual_rebirth/articulated/storm_l07_front.png",
+        "res://assets/visual_rebirth/articulated/storm_l07_left.png",
+        "res://assets/visual_rebirth/articulated/storm_l07_back.png"
+      ],
+      "turn_samples": 9
+    },
+    {
+      "contact_error_px": 0.0,
+      "directions": {
+        "back": {
+          "atlas_sha256": "d8c6c7eb94e44c990858e969859311d1fc1ddb21edbd92f4a6b78d9c908fe738",
+          "path": "res://assets/visual_rebirth/articulated/storm_l10_back.png",
+          "poses": 4,
+          "relative_tip_motion_px": 6.157
+        },
+        "front": {
+          "atlas_sha256": "07f95f0f1ec038b83cbf416c75c906fc64b4ca1327ee61e7a5e17f743d7d1a59",
+          "path": "res://assets/visual_rebirth/articulated/storm_l10_front.png",
+          "poses": 4,
+          "relative_tip_motion_px": 5.087
+        },
+        "left": {
+          "atlas_sha256": "a122871130a2dad85ebc331dbc453cd577d6e7d3aaf953c43fd399463f5221bd",
+          "path": "res://assets/visual_rebirth/articulated/storm_l10_left.png",
+          "poses": 5,
+          "relative_tip_motion_px": 7.804
+        },
+        "right": {
+          "atlas_sha256": "38e522251fe6d69de540130e2469fa2e95bdb10ed5dc0fc42a99c691722d78b3",
+          "path": "res://assets/visual_rebirth/articulated/storm_l10_right.png",
+          "poses": 6,
+          "relative_tip_motion_px": 7.743
+        }
+      },
+      "door_damage": 19.3600000000001,
+      "event": {
+        "door_socket": [
+          220.0,
+          424.0
+        ],
+        "id": 4,
+        "limb_tip": [
+          220.0,
+          424.0
+        ],
+        "room": 3,
+        "source": "door strike",
+        "style": "storm",
+        "time": 31.5583333333334
+      },
+      "failures": 0,
+      "hunter": "storm",
+      "joint_range_px": 7.804,
+      "key": "storm_l10",
+      "level": 10,
+      "minimum_joint_span_px": 31.917,
+      "needle_damage": 18.0,
+      "poses": [
+        "hit",
+        "windup",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "post_strike_pose": "idle",
+      "textures": [
+        "res://assets/visual_rebirth/articulated/storm_l10_right.png",
+        "res://assets/visual_rebirth/articulated/storm_l10_front.png",
+        "res://assets/visual_rebirth/articulated/storm_l10_left.png",
+        "res://assets/visual_rebirth/articulated/storm_l10_back.png"
+      ],
+      "turn_samples": 9
+    },
+    {
+      "contact_error_px": 0.0,
+      "directions": {
+        "back": {
+          "atlas_sha256": "2d69fc41002ec30541be16e8cdfd72fbd85fc003d5144bf32a771e2aae6101a9",
+          "path": "res://assets/visual_rebirth/articulated/ravager_l02_back.png",
+          "poses": 4,
+          "relative_tip_motion_px": 12.061
+        },
+        "front": {
+          "atlas_sha256": "1da84044b1f026888e2d91eff35268ca24b54ca1f3066aaba3ef4507cb614bbb",
+          "path": "res://assets/visual_rebirth/articulated/ravager_l02_front.png",
+          "poses": 4,
+          "relative_tip_motion_px": 9.26
+        },
+        "left": {
+          "atlas_sha256": "b4c2fe4ba1c73dec094b0779396d3438affa2db681dd7f2a5190dfae48484cff",
+          "path": "res://assets/visual_rebirth/articulated/ravager_l02_left.png",
+          "poses": 5,
+          "relative_tip_motion_px": 21.757
+        },
+        "right": {
+          "atlas_sha256": "b4347e067af776ae4fe015342e2c42a68ebb02160013cb573ae7707a013d54a3",
+          "path": "res://assets/visual_rebirth/articulated/ravager_l02_right.png",
+          "poses": 5,
+          "relative_tip_motion_px": 10.109
+        }
+      },
+      "door_damage": 18.6999999999998,
+      "event": {
+        "door_socket": [
+          220.0,
+          424.0
+        ],
+        "id": 4,
+        "limb_tip": [
+          220.0,
+          424.0
+        ],
+        "room": 3,
+        "source": "door strike",
+        "style": "swipe",
+        "time": 31.225
+      },
+      "failures": 0,
+      "hunter": "ravager",
+      "joint_range_px": 21.757,
+      "key": "ravager_l02",
+      "level": 2,
+      "minimum_joint_span_px": 49.471,
+      "needle_damage": 18.0,
+      "poses": [
+        "hit",
+        "windup",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "post_strike_pose": "idle",
+      "textures": [
+        "res://assets/visual_rebirth/articulated/ravager_l02_right.png",
+        "res://assets/visual_rebirth/articulated/ravager_l02_front.png",
+        "res://assets/visual_rebirth/articulated/ravager_l02_left.png",
+        "res://assets/visual_rebirth/articulated/ravager_l02_back.png"
+      ],
+      "turn_samples": 11
+    },
+    {
+      "contact_error_px": 0.0,
+      "directions": {
+        "back": {
+          "atlas_sha256": "84191e05e44b1ea4d6038d1d2d7b90c42e9047b8e550dc39f2c6a2b10d7f665d",
+          "path": "res://assets/visual_rebirth/articulated/ravager_l03_back.png",
+          "poses": 4,
+          "relative_tip_motion_px": 11.248
+        },
+        "front": {
+          "atlas_sha256": "be0ff7c4d745dcdca37446a0040a4539832e4929a1dbf52f7ab2f3a9dfeb1fdf",
+          "path": "res://assets/visual_rebirth/articulated/ravager_l03_front.png",
+          "poses": 4,
+          "relative_tip_motion_px": 9.061
+        },
+        "left": {
+          "atlas_sha256": "f47a0b6b7e82534c59e3eb066590b915fb8ba221919cace7047ff19e96715585",
+          "path": "res://assets/visual_rebirth/articulated/ravager_l03_left.png",
+          "poses": 5,
+          "relative_tip_motion_px": 21.017
+        },
+        "right": {
+          "atlas_sha256": "58fe6b6b0d21b96570eaca53d7f8238506718a39cb9f0870acb40cd4c5353377",
+          "path": "res://assets/visual_rebirth/articulated/ravager_l03_right.png",
+          "poses": 5,
+          "relative_tip_motion_px": 9.467
+        }
+      },
+      "door_damage": 18.6999999999998,
+      "event": {
+        "door_socket": [
+          220.0,
+          424.0
+        ],
+        "id": 4,
+        "limb_tip": [
+          220.0,
+          424.0
+        ],
+        "room": 3,
+        "source": "door strike",
+        "style": "swipe",
+        "time": 31.225
+      },
+      "failures": 0,
+      "hunter": "ravager",
+      "joint_range_px": 21.017,
+      "key": "ravager_l03",
+      "level": 3,
+      "minimum_joint_span_px": 45.787,
+      "needle_damage": 18.0,
+      "poses": [
+        "hit",
+        "windup",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "post_strike_pose": "idle",
+      "textures": [
+        "res://assets/visual_rebirth/articulated/ravager_l03_right.png",
+        "res://assets/visual_rebirth/articulated/ravager_l03_front.png",
+        "res://assets/visual_rebirth/articulated/ravager_l03_left.png",
+        "res://assets/visual_rebirth/articulated/ravager_l03_back.png"
+      ],
+      "turn_samples": 11
+    },
+    {
+      "contact_error_px": 0.0,
+      "directions": {
+        "back": {
+          "atlas_sha256": "909f52295f45b636beefdb7439177db2e48a3b276654e1605b80dad4faf01287",
+          "path": "res://assets/visual_rebirth/articulated/ravager_l09_back.png",
+          "poses": 4,
+          "relative_tip_motion_px": 11.381
+        },
+        "front": {
+          "atlas_sha256": "47f29ff1d135d1945e1391feae4bf28bbfdc6d30b2c62dc11a32f5e10c420e45",
+          "path": "res://assets/visual_rebirth/articulated/ravager_l09_front.png",
+          "poses": 4,
+          "relative_tip_motion_px": 7.955
+        },
+        "left": {
+          "atlas_sha256": "8f05b6315b1737ce3912c8d89a41c6a0430902945f7fe1fd97cff94a9a756b2d",
+          "path": "res://assets/visual_rebirth/articulated/ravager_l09_left.png",
+          "poses": 5,
+          "relative_tip_motion_px": 21.167
+        },
+        "right": {
+          "atlas_sha256": "ee718bf6bfd753d17dd2910f355ab2d4de30fb8d5cd086185c3023740b1c0b0b",
+          "path": "res://assets/visual_rebirth/articulated/ravager_l09_right.png",
+          "poses": 5,
+          "relative_tip_motion_px": 8.969
+        }
+      },
+      "door_damage": 18.6999999999998,
+      "event": {
+        "door_socket": [
+          220.0,
+          424.0
+        ],
+        "id": 4,
+        "limb_tip": [
+          220.0,
+          424.0
+        ],
+        "room": 3,
+        "source": "door strike",
+        "style": "swipe",
+        "time": 31.225
+      },
+      "failures": 0,
+      "hunter": "ravager",
+      "joint_range_px": 21.167,
+      "key": "ravager_l09",
+      "level": 9,
+      "minimum_joint_span_px": 45.313,
+      "needle_damage": 18.0,
+      "poses": [
+        "hit",
+        "windup",
+        "contact",
+        "follow",
+        "recover"
+      ],
+      "post_strike_pose": "idle",
+      "textures": [
+        "res://assets/visual_rebirth/articulated/ravager_l09_right.png",
+        "res://assets/visual_rebirth/articulated/ravager_l09_front.png",
+        "res://assets/visual_rebirth/articulated/ravager_l09_left.png",
+        "res://assets/visual_rebirth/articulated/ravager_l09_back.png"
+      ],
+      "turn_samples": 11
+    }
+  ],
+  "turn_samples": 87,
+  "unavailable": [],
+  "verified_states": 9,
+  "viewport": [
+    1280,
+    720
+  ]
+}

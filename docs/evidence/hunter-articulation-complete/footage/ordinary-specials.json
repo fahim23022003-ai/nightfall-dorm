@@ -1,0 +1,123 @@
+{
+  "failures": 0,
+  "fixtures": [
+    {
+      "archetype": "stalker",
+      "door_hit": true,
+      "events": {
+        "nightmare_rebirth": "",
+        "nightmare_release": "oath",
+        "nightmare_warning": "oath"
+      },
+      "level": 10,
+      "poses": [
+        "evolve",
+        "cast",
+        "cast_release",
+        "windup",
+        "contact",
+        "follow",
+        "recover",
+        "idle"
+      ]
+    },
+    {
+      "archetype": "ravager",
+      "door_hit": true,
+      "events": {
+        "nightmare_release": "quills",
+        "nightmare_warning": "quills"
+      },
+      "level": 7,
+      "poses": [
+        "cast",
+        "cast_release",
+        "windup",
+        "contact",
+        "follow",
+        "hit",
+        "idle",
+        "recover"
+      ]
+    },
+    {
+      "archetype": "crusher",
+      "door_hit": true,
+      "events": {
+        "hunter_ability": "pressure",
+        "hunter_ability_warning": "pressure"
+      },
+      "level": 1,
+      "poses": [
+        "cast",
+        "cast_release",
+        "windup",
+        "contact",
+        "follow",
+        "hit",
+        "idle",
+        "recover"
+      ]
+    },
+    {
+      "archetype": "witch",
+      "door_hit": true,
+      "events": {
+        "arcane_impact": "cursed_projectile",
+        "hunter_ability": "cursed_projectile",
+        "hunter_ability_warning": "cursed_projectile"
+      },
+      "level": 1,
+      "poses": [
+        "cast",
+        "cast_release",
+        "windup",
+        "contact",
+        "follow",
+        "recover",
+        "idle",
+        "hit"
+      ]
+    },
+    {
+      "archetype": "electric",
+      "door_hit": true,
+      "events": {
+        "arcane_impact": "interference",
+        "hunter_ability": "interference",
+        "hunter_ability_warning": "interference"
+      },
+      "level": 1,
+      "poses": [
+        "cast",
+        "cast_release",
+        "windup",
+        "contact",
+        "follow",
+        "recover",
+        "idle"
+      ]
+    },
+    {
+      "archetype": "storm",
+      "door_hit": true,
+      "events": {
+        "arcane_impact": "chain_lightning",
+        "hunter_ability": "chain_lightning",
+        "hunter_ability_warning": "chain_lightning"
+      },
+      "level": 1,
+      "poses": [
+        "cast",
+        "cast_release",
+        "windup",
+        "contact",
+        "follow",
+        "recover",
+        "idle",
+        "hit"
+      ]
+    }
+  ],
+  "fps": 24
+}
