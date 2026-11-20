@@ -22,6 +22,9 @@ var preview_pose_name := ""
 var preview_grip := Vector2.ZERO
 var preview_grip_side := 1.0
 var preview_has_grip := false
+var transition_previous_texture := ""
+var low_haze: GradientTexture2D
+
 func _init():
  for i in range(4): robes.append(load("res://assets/boss/reaper_%d.svg" % i))
 
@@ -65,6 +68,7 @@ func draw_preview_body(c, form: String, floor: Vector2, tint: Color, motion: Str
 
 func draw_approach(c,h,clock: float,death_age: float,heading: Vector2, moving: bool, turn: float, release: float) -> bool:
  articulated.clear_frame()
+ transition_previous_texture=""
  if not approach_visible(c.model):return false
  var reduced := CinematicQuality.reduced_motion(c)
  var floor := OFFSET + Vector2(h.position) + Vector2(0,13.0)
@@ -75,6 +79,10 @@ func draw_approach(c,h,clock: float,death_age: float,heading: Vector2, moving: b
   motion = "vanish"
   progress = clampf(death_age,0.0,1.0)
   alpha = clampf(1.0-death_age/1.5,0.0,1.0)
+  if articulated.enabled and alpha<=0.0:
+   preview_texture_path=""
+   preview_pose_name=""
+   return true
  elif h.windup_remaining > 0.0:
   motion = "tell"
   var duration := float(RankCatalog.pressure(h.difficulty).windup) if h.charged_ready else float(StrategyCatalog.ARCHETYPES.get(h.archetype, {}).get("windup", 1.0))
@@ -103,19 +111,29 @@ func draw_approach(c,h,clock: float,death_age: float,heading: Vector2, moving: b
 
 func draw(c,h,clock: float,death_age: float,heading=Vector2.RIGHT,reduced=false,moving=false,turn=0.0,release=0.0):
  articulated.clear_frame()
- var changing=h.state==HunterState.State.TRANSFORM
- var progress=1.0-h.transform_remaining/BossCatalog.TRANSFORM_SECONDS if changing else 1.0
- var dead=h.state==HunterState.State.DEAD
- var alpha=clampf(1.0-death_age/1.5,0,1) if dead else clampf(progress*2,0,1)
- var p=OFFSET+h.position+Vector2(0,-14+sin(clock*3)*3)
- if dead and death_age>1.8: return
- # Smoke wreath curls with time, expanding through the transformation and death.
- for i in range(7 if reduced or (preview_enabled and CinematicQuality.detail(c)==0) else 18):
-  var angle=i*TAU/18+clock*(0.6 if i%2 else -0.45)
-  var radius=24+sin(clock*2+i)*8+(30*sin(progress*PI) if changing else 0)+(death_age*60 if dead else 0)
-  var q=p+Vector2(cos(angle)*radius,sin(angle)*radius*.55+12-i%3*8)
-  c.draw_circle(q,8+i%4,Color(.07,.045,.12,.5*alpha))
-  c.draw_arc(q,9+i%4,angle,angle+1.7,8,Color(.54,.28,.68,.22*alpha),1.2)
+ transition_previous_texture=""
+ var active_rig: bool = preview_enabled and articulated.enabled
+ var low_detail:=CinematicQuality.detail(c)==0
+ var changing: bool = h.state==HunterState.State.TRANSFORM
+ var progress:=clampf(1.0-float(h.transform_remaining)/BossCatalog.TRANSFORM_SECONDS,0.0,1.0) if changing else 1.0
+ var dead: bool = h.state==HunterState.State.DEAD
+ var alpha:=clampf(1.0-death_age/1.5,0.0,1.0) if dead else clampf(progress*2.0,0.0,1.0)
+ var p: Vector2=OFFSET+h.position+Vector2(0,-14+sin(clock*3)*3)
+ if dead and death_age>(1.5 if active_rig else 1.8):
+  if active_rig:
+   preview_texture_path=""
+   preview_pose_name=""
+  return
+ if active_rig and low_detail:
+  draw_low_haze(c,p,0.0 if CinematicQuality.reduced_motion(c) else clock,progress,death_age,alpha)
+ else:
+  # Smoke wreath curls with time through the transformation and death.
+  for i in range(7 if reduced or (preview_enabled and low_detail) else 18):
+   var angle=i*TAU/18+clock*(0.6 if i%2 else -0.45)
+   var radius=24+sin(clock*2+i)*8+(30*sin(progress*PI) if changing else 0)+(death_age*60 if dead else 0)
+   var q=p+Vector2(cos(angle)*radius,sin(angle)*radius*.55+12-i%3*8)
+   c.draw_circle(q,8+i%4,Color(.07,.045,.12,.5*alpha))
+   c.draw_arc(q,9+i%4,angle,angle+1.7,8,Color(.54,.28,.68,.22*alpha),1.2)
  if changing:
   c.draw_arc(p,28+progress*45,-PI/2,-PI/2+TAU*progress,64,Color(.85,.35,.7,.8*alpha),2.5)
   for i in range(7):
@@ -151,7 +169,12 @@ func draw(c,h,clock: float,death_age: float,heading=Vector2.RIGHT,reduced=false,
   preview_progress=1.0-clampf((h.boss_action_age-.42)/.5,0,1)
  var lower: Vector2=p+Vector2(0,34)+fall
  var reduce_motion: bool=reduced or (preview_enabled and CinematicQuality.reduced_motion(c))
- var drawn: bool=preview_enabled and articulated.enabled and draw_articulation(c,h,"transformed",lower,tint,heading,clock,moving,death_age,preview_progress,reduce_motion)
+ if active_rig and changing:
+  var departing:=1.0-smoothstep(.04,.42,progress)
+  if departing>0.0 and draw_articulation(c,h,"approach",lower,Color(.93,.88,.96,departing),heading,clock,false,0.0,progress,reduce_motion):
+   transition_previous_texture=articulated.last_asset
+  tint.a=smoothstep(.04,.48,progress)
+ var drawn: bool=active_rig and draw_articulation(c,h,"transformed",lower,tint,heading,clock,moving,death_age,preview_progress,reduce_motion)
  if not drawn:
   drawn=draw_preview_body(c,"transformed",lower,tint,preview_motion,preview_progress,reduce_motion,heading)
  if not drawn:
@@ -174,7 +197,7 @@ func draw(c,h,clock: float,death_age: float,heading=Vector2.RIGHT,reduced=false,
  elif drawn and c.model.wrath.ability=="scythe_slash":
   var charge:=1.0-float(c.model.wrath.warning)/float(ReaperWrath.ABILITIES.scythe_slash.warning)
   angle=(-.28-1.13*charge)*handed
- if not drawn or (preview_has_grip and c.model.wrath.scythe.is_empty()):
+ if (not drawn and (not active_rig or c.model.wrath.scythe.is_empty())) or (preview_has_grip and c.model.wrath.scythe.is_empty()):
   var grip=preview_grip if drawn else p+Vector2(23*handed,-23)+fall
   c.draw_set_transform(grip,angle,Vector2(handed,1))
   c.draw_texture_rect(weapon,Rect2(-19,-67,62,105) if drawn else Rect2(-20,-61,62,105),false,tint)
@@ -191,11 +214,32 @@ func draw(c,h,clock: float,death_age: float,heading=Vector2.RIGHT,reduced=false,
    c.draw_line(q+Vector2(-7,-7),q+Vector2(7,7),Color(.9,.65,1,.9),2)
 
 
+func draw_low_haze(c: CanvasItem, at: Vector2, clock: float, progress: float, death_age: float, alpha: float):
+ if low_haze==null:
+  var ramp:=Gradient.new()
+  ramp.offsets=PackedFloat32Array([0.0,.43,1.0])
+  ramp.colors=PackedColorArray([Color.WHITE,Color(1,1,1,.37),Color(1,1,1,0)])
+  low_haze=GradientTexture2D.new()
+  low_haze.gradient=ramp
+  low_haze.width=32
+  low_haze.height=32
+  low_haze.fill=GradientTexture2D.FILL_RADIAL
+  low_haze.fill_from=Vector2(.5,.5)
+  low_haze.fill_to=Vector2(1,.5)
+ var spread:=25.0+21.0*sin(progress*PI)+death_age*44.0
+ for curl in range(3):
+  var angle:=clock*.65+curl*TAU/3.0
+  var center:=at+Vector2.from_angle(angle)*Vector2(spread,spread*.5)+Vector2(0,8)
+  var size:=Vector2(31,24)*(1.0+death_age*.30)
+  c.draw_texture_rect(low_haze,Rect2(center-size*.5,size),false,Color(.43,.24,.56,.32*alpha))
+
 func articulated_contact() -> Vector2:
  return articulated.contact
 
 func draw_articulation(c,h,form: String,floor: Vector2,tint: Color,heading: Vector2,clock: float,moving: bool,death_age: float,windup: float,reduced: bool) -> bool:
  var timing:=NightmareVisual.articulation_timing(c,h,clock,windup,moving,clampf(death_age,0.0,1.0))
+ if form=="transformed":
+  timing=transformed_timing(c.model,h,timing)
  if timing.aim.is_finite():
   heading=(Vector2(timing.aim)-OFFSET-Vector2(h.position)+Vector2(0,9)).normalized()
  CinematicQuality.draw_hunter_backlight(c,floor,Color("a97499"),tint.a,true)
@@ -206,6 +250,25 @@ func draw_articulation(c,h,form: String,floor: Vector2,tint: Color,heading: Vect
   preview_pose_name=articulated.pose_name
   preview_has_grip=false
  return shown
+
+
+func transformed_timing(model: MatchModel, h: HunterState, ordinary: Dictionary) -> Dictionary:
+ if ordinary.motion in ["vanish","evolve","contact","follow"]:
+  return ordinary
+ var wrath: ReaperWrath=model.wrath
+ if wrath.active():
+  var charge:=clampf(1.0-float(wrath.warning)/float(ReaperWrath.ABILITIES[wrath.ability].warning),0.0,1.0)
+  if wrath.ability=="scythe_slash" and wrath.cast_target>=0 and wrath.cast_target<model.rooms.size():
+   return {"motion":"windup","progress":charge,"aim":OFFSET+HunterCombatVisual.door_socket(model.rooms[wrath.cast_target])}
+  return {"motion":"cast","progress":charge,"aim":Vector2.INF}
+ if h.boss_attack=="surge":
+  var charge:=clampf(1.0-float(h.windup_remaining)/float(BossCatalog.ATTACKS.surge.windup),0.0,1.0)
+  return {"motion":"cast","progress":charge,"aim":Vector2.INF}
+ if not wrath.scythe.is_empty() and float(wrath.scythe.flight)>0.0:
+  return {"motion":"cast_release","progress":clampf(1.0-float(wrath.scythe.flight)/.8,0.0,1.0),"aim":Vector2.INF}
+ if h.last_boss_attack!="" and h.boss_action_age<.92 and ordinary.motion=="idle":
+  return {"motion":"recover","progress":1.0-clampf((float(h.boss_action_age)-.42)/.50,0.0,1.0),"aim":Vector2.INF}
+ return ordinary
 
 
 func approach_visible(model: MatchModel) -> bool:
