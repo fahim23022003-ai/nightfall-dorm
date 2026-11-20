@@ -1,3 +1,13 @@
+# Procedural Nightmare Maps V2.1
+
+Hard and Hell V2 Campaign matches use a revised first-form Hunter
+siege policy. The Hunter maintains a productive breach and compares
+reachable alternatives using travel, repair and weapon exposure.
+Existing maps, balance tables, Phase 14F visuals and checkpoint formats
+are retained. [Balance analysis and playtest evidence](PROCEDURAL_NIGHTMARE_MAPS_V21.md)
+
+---
+
 # Procedural Nightmare Maps V2 preview
 
 A separate opt-in generator draws ten different room and corridor families

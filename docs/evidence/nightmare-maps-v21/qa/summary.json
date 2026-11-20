@@ -1,0 +1,5255 @@
+{
+  "matched_fixtures": 270,
+  "geometry_hashes_matched": 270,
+  "exact_standard_traces": 90,
+  "standard_trials": 90,
+  "difficulty_and_strategy": {
+    "standard/passive": [
+      {
+        "count": 30,
+        "wins": 4,
+        "player_under_attack": 27,
+        "median_player_first_strike": 193.2,
+        "median_player_exposure_seconds": 5.4,
+        "median_match_seconds": 219.975,
+        "median_player_hunter_damage": 0.0,
+        "median_npc_hunter_damage": 1867.5,
+        "median_retargets": 1.0,
+        "median_evolution_level": 5.0,
+        "successful_hall_visits": 15,
+        "hall_attempts": 16,
+        "breach_commitments": 0,
+        "eliminations": 57,
+        "median_surviving_npcs": 4.0,
+        "shots_into_player_door": 147
+      },
+      {
+        "count": 30,
+        "wins": 4,
+        "player_under_attack": 27,
+        "median_player_first_strike": 193.2,
+        "median_player_exposure_seconds": 5.4,
+        "median_match_seconds": 219.975,
+        "median_player_hunter_damage": 0.0,
+        "median_npc_hunter_damage": 1867.5,
+        "median_retargets": 1.0,
+        "median_evolution_level": 5.0,
+        "successful_hall_visits": 15,
+        "hall_attempts": 16,
+        "breach_commitments": 0,
+        "eliminations": 57,
+        "median_surviving_npcs": 4.0,
+        "shots_into_player_door": 147
+      }
+    ],
+    "standard/balanced": [
+      {
+        "count": 30,
+        "wins": 30,
+        "player_under_attack": 24,
+        "median_player_first_strike": 227.7,
+        "median_player_exposure_seconds": 24.674999999999997,
+        "median_match_seconds": 324.45,
+        "median_player_hunter_damage": 2042.113191489365,
+        "median_npc_hunter_damage": 4042.4369261698603,
+        "median_retargets": 3.0,
+        "median_evolution_level": 6.0,
+        "successful_hall_visits": 28,
+        "hall_attempts": 31,
+        "breach_commitments": 0,
+        "eliminations": 45,
+        "median_surviving_npcs": 3.5,
+        "shots_into_player_door": 582
+      },
+      {
+        "count": 30,
+        "wins": 30,
+        "player_under_attack": 24,
+        "median_player_first_strike": 227.7,
+        "median_player_exposure_seconds": 24.674999999999997,
+        "median_match_seconds": 324.45,
+        "median_player_hunter_damage": 2042.113191489365,
+        "median_npc_hunter_damage": 4042.4369261698603,
+        "median_retargets": 3.0,
+        "median_evolution_level": 6.0,
+        "successful_hall_visits": 28,
+        "hall_attempts": 31,
+        "breach_commitments": 0,
+        "eliminations": 45,
+        "median_surviving_npcs": 3.5,
+        "shots_into_player_door": 582
+      }
+    ],
+    "standard/needle_defense": [
+      {
+        "count": 30,
+        "wins": 28,
+        "player_under_attack": 24,
+        "median_player_first_strike": 211.425,
+        "median_player_exposure_seconds": 21.375,
+        "median_match_seconds": 314.025,
+        "median_player_hunter_damage": 2674.579600000005,
+        "median_npc_hunter_damage": 3200.500000000005,
+        "median_retargets": 2.0,
+        "median_evolution_level": 6.0,
+        "successful_hall_visits": 28,
+        "hall_attempts": 29,
+        "breach_commitments": 0,
+        "eliminations": 40,
+        "median_surviving_npcs": 4.0,
+        "shots_into_player_door": 490
+      },
+      {
+        "count": 30,
+        "wins": 28,
+        "player_under_attack": 24,
+        "median_player_first_strike": 211.425,
+        "median_player_exposure_seconds": 21.375,
+        "median_match_seconds": 314.025,
+        "median_player_hunter_damage": 2674.579600000005,
+        "median_npc_hunter_damage": 3200.500000000005,
+        "median_retargets": 2.0,
+        "median_evolution_level": 6.0,
+        "successful_hall_visits": 28,
+        "hall_attempts": 29,
+        "breach_commitments": 0,
+        "eliminations": 40,
+        "median_surviving_npcs": 4.0,
+        "shots_into_player_door": 490
+      }
+    ],
+    "hard/passive": [
+      {
+        "count": 30,
+        "wins": 4,
+        "player_under_attack": 29,
+        "median_player_first_strike": 198.3,
+        "median_player_exposure_seconds": 3.3,
+        "median_match_seconds": 207.9,
+        "median_player_hunter_damage": 0.0,
+        "median_npc_hunter_damage": 1300.5,
+        "median_retargets": 1.5,
+        "median_evolution_level": 5.0,
+        "successful_hall_visits": 4,
+        "hall_attempts": 4,
+        "breach_commitments": 0,
+        "eliminations": 56,
+        "median_surviving_npcs": 4.5,
+        "shots_into_player_door": 180
+      },
+      {
+        "count": 30,
+        "wins": 1,
+        "player_under_attack": 30,
+        "median_player_first_strike": 151.95,
+        "median_player_exposure_seconds": 4.275,
+        "median_match_seconds": 158.475,
+        "median_player_hunter_damage": 0.0,
+        "median_npc_hunter_damage": 688.5,
+        "median_retargets": 0.0,
+        "median_evolution_level": 5.0,
+        "successful_hall_visits": 6,
+        "hall_attempts": 6,
+        "breach_commitments": 43,
+        "eliminations": 79,
+        "median_surviving_npcs": 3.5,
+        "shots_into_player_door": 173
+      }
+    ],
+    "hard/balanced": [
+      {
+        "count": 30,
+        "wins": 26,
+        "player_under_attack": 29,
+        "median_player_first_strike": 206.1,
+        "median_player_exposure_seconds": 18.675,
+        "median_match_seconds": 369.975,
+        "median_player_hunter_damage": 1593.3650699999998,
+        "median_npc_hunter_damage": 4504.04870347541,
+        "median_retargets": 5.0,
+        "median_evolution_level": 6.5,
+        "successful_hall_visits": 19,
+        "hall_attempts": 19,
+        "breach_commitments": 0,
+        "eliminations": 44,
+        "median_surviving_npcs": 4.0,
+        "shots_into_player_door": 591
+      },
+      {
+        "count": 30,
+        "wins": 18,
+        "player_under_attack": 29,
+        "median_player_first_strike": 222.3,
+        "median_player_exposure_seconds": 26.925,
+        "median_match_seconds": 314.70000000000005,
+        "median_player_hunter_damage": 1743.51738791266,
+        "median_npc_hunter_damage": 3151.371113656855,
+        "median_retargets": 0.5,
+        "median_evolution_level": 6.0,
+        "successful_hall_visits": 12,
+        "hall_attempts": 12,
+        "breach_commitments": 77,
+        "eliminations": 76,
+        "median_surviving_npcs": 3.0,
+        "shots_into_player_door": 636
+      }
+    ],
+    "hard/needle_defense": [
+      {
+        "count": 30,
+        "wins": 16,
+        "player_under_attack": 29,
+        "median_player_first_strike": 206.1,
+        "median_player_exposure_seconds": 16.425,
+        "median_match_seconds": 324.29999999999995,
+        "median_player_hunter_damage": 1492.5713,
+        "median_npc_hunter_damage": 2782.5299999999897,
+        "median_retargets": 2.0,
+        "median_evolution_level": 6.0,
+        "successful_hall_visits": 11,
+        "hall_attempts": 11,
+        "breach_commitments": 0,
+        "eliminations": 48,
+        "median_surviving_npcs": 4.5,
+        "shots_into_player_door": 388
+      },
+      {
+        "count": 30,
+        "wins": 17,
+        "player_under_attack": 29,
+        "median_player_first_strike": 222.3,
+        "median_player_exposure_seconds": 21.675,
+        "median_match_seconds": 311.1,
+        "median_player_hunter_damage": 2389.5,
+        "median_npc_hunter_damage": 3473.1219699999847,
+        "median_retargets": 0.0,
+        "median_evolution_level": 6.0,
+        "successful_hall_visits": 13,
+        "hall_attempts": 13,
+        "breach_commitments": 73,
+        "eliminations": 78,
+        "median_surviving_npcs": 2.5,
+        "shots_into_player_door": 453
+      }
+    ],
+    "hell/passive": [
+      {
+        "count": 30,
+        "wins": 2,
+        "player_under_attack": 30,
+        "median_player_first_strike": 145.425,
+        "median_player_exposure_seconds": 3.675,
+        "median_match_seconds": 150.525,
+        "median_player_hunter_damage": 0.0,
+        "median_npc_hunter_damage": 576.0,
+        "median_retargets": 1.0,
+        "median_evolution_level": 5.0,
+        "successful_hall_visits": 4,
+        "hall_attempts": 4,
+        "breach_commitments": 0,
+        "eliminations": 64,
+        "median_surviving_npcs": 5.0,
+        "shots_into_player_door": 150
+      },
+      {
+        "count": 30,
+        "wins": 0,
+        "player_under_attack": 30,
+        "median_player_first_strike": 162.0,
+        "median_player_exposure_seconds": 5.7,
+        "median_match_seconds": 167.55,
+        "median_player_hunter_damage": 0.0,
+        "median_npc_hunter_damage": 667.3500000000085,
+        "median_retargets": 0.0,
+        "median_evolution_level": 5.5,
+        "successful_hall_visits": 2,
+        "hall_attempts": 2,
+        "breach_commitments": 44,
+        "eliminations": 84,
+        "median_surviving_npcs": 3.0,
+        "shots_into_player_door": 126
+      }
+    ],
+    "hell/balanced": [
+      {
+        "count": 30,
+        "wins": 18,
+        "player_under_attack": 29,
+        "median_player_first_strike": 166.8,
+        "median_player_exposure_seconds": 28.799999999999997,
+        "median_match_seconds": 339.975,
+        "median_player_hunter_damage": 2521.666432492165,
+        "median_npc_hunter_damage": 3018.897875,
+        "median_retargets": 4.0,
+        "median_evolution_level": 7.5,
+        "successful_hall_visits": 11,
+        "hall_attempts": 11,
+        "breach_commitments": 0,
+        "eliminations": 72,
+        "median_surviving_npcs": 3.5,
+        "shots_into_player_door": 663
+      },
+      {
+        "count": 30,
+        "wins": 4,
+        "player_under_attack": 30,
+        "median_player_first_strike": 181.2,
+        "median_player_exposure_seconds": 26.25,
+        "median_match_seconds": 208.5,
+        "median_player_hunter_damage": 1350.0,
+        "median_npc_hunter_damage": 985.5,
+        "median_retargets": 0.0,
+        "median_evolution_level": 6.5,
+        "successful_hall_visits": 5,
+        "hall_attempts": 5,
+        "breach_commitments": 69,
+        "eliminations": 94,
+        "median_surviving_npcs": 3.0,
+        "shots_into_player_door": 685
+      }
+    ],
+    "hell/needle_defense": [
+      {
+        "count": 30,
+        "wins": 13,
+        "player_under_attack": 29,
+        "median_player_first_strike": 166.8,
+        "median_player_exposure_seconds": 20.625,
+        "median_match_seconds": 319.875,
+        "median_player_hunter_damage": 2556.008932492165,
+        "median_npc_hunter_damage": 2378.6324999999897,
+        "median_retargets": 4.0,
+        "median_evolution_level": 7.0,
+        "successful_hall_visits": 16,
+        "hall_attempts": 16,
+        "breach_commitments": 0,
+        "eliminations": 67,
+        "median_surviving_npcs": 4.0,
+        "shots_into_player_door": 578
+      },
+      {
+        "count": 30,
+        "wins": 9,
+        "player_under_attack": 30,
+        "median_player_first_strike": 171.0,
+        "median_player_exposure_seconds": 23.1,
+        "median_match_seconds": 208.95,
+        "median_player_hunter_damage": 1624.5,
+        "median_npc_hunter_damage": 1059.750000000005,
+        "median_retargets": 0.0,
+        "median_evolution_level": 6.0,
+        "successful_hall_visits": 8,
+        "hall_attempts": 8,
+        "breach_commitments": 66,
+        "eliminations": 95,
+        "median_surviving_npcs": 3.0,
+        "shots_into_player_door": 594
+      }
+    ]
+  },
+  "by_difficulty": {
+    "standard": [
+      {
+        "count": 90,
+        "wins": 62,
+        "player_under_attack": 75,
+        "median_player_first_strike": 220.65,
+        "median_player_exposure_seconds": 10.2,
+        "median_match_seconds": 303.375,
+        "median_player_hunter_damage": 1244.71167021276,
+        "median_npc_hunter_damage": 3060.33165488089,
+        "median_retargets": 2.0,
+        "median_evolution_level": 6.0,
+        "successful_hall_visits": 71,
+        "hall_attempts": 76,
+        "breach_commitments": 0,
+        "eliminations": 142,
+        "median_surviving_npcs": 4.0,
+        "shots_into_player_door": 1219
+      },
+      {
+        "count": 90,
+        "wins": 62,
+        "player_under_attack": 75,
+        "median_player_first_strike": 220.65,
+        "median_player_exposure_seconds": 10.2,
+        "median_match_seconds": 303.375,
+        "median_player_hunter_damage": 1244.71167021276,
+        "median_npc_hunter_damage": 3060.33165488089,
+        "median_retargets": 2.0,
+        "median_evolution_level": 6.0,
+        "successful_hall_visits": 71,
+        "hall_attempts": 76,
+        "breach_commitments": 0,
+        "eliminations": 142,
+        "median_surviving_npcs": 4.0,
+        "shots_into_player_door": 1219
+      }
+    ],
+    "hard": [
+      {
+        "count": 90,
+        "wins": 46,
+        "player_under_attack": 87,
+        "median_player_first_strike": 206.1,
+        "median_player_exposure_seconds": 9.3,
+        "median_match_seconds": 318.45000000000005,
+        "median_player_hunter_damage": 751.490024999998,
+        "median_npc_hunter_damage": 3019.8538,
+        "median_retargets": 3.0,
+        "median_evolution_level": 6.0,
+        "successful_hall_visits": 34,
+        "hall_attempts": 34,
+        "breach_commitments": 0,
+        "eliminations": 148,
+        "median_surviving_npcs": 4.0,
+        "shots_into_player_door": 1159
+      },
+      {
+        "count": 90,
+        "wins": 36,
+        "player_under_attack": 88,
+        "median_player_first_strike": 195.6,
+        "median_player_exposure_seconds": 11.325,
+        "median_match_seconds": 273.07500000000005,
+        "median_player_hunter_damage": 1039.5,
+        "median_npc_hunter_damage": 1989.587529847555,
+        "median_retargets": 0.0,
+        "median_evolution_level": 5.5,
+        "successful_hall_visits": 31,
+        "hall_attempts": 31,
+        "breach_commitments": 193,
+        "eliminations": 233,
+        "median_surviving_npcs": 3.0,
+        "shots_into_player_door": 1262
+      }
+    ],
+    "hell": [
+      {
+        "count": 90,
+        "wins": 33,
+        "player_under_attack": 88,
+        "median_player_first_strike": 159.45,
+        "median_player_exposure_seconds": 14.25,
+        "median_match_seconds": 283.35,
+        "median_player_hunter_damage": 1228.5,
+        "median_npc_hunter_damage": 2200.70896534656,
+        "median_retargets": 3.0,
+        "median_evolution_level": 7.0,
+        "successful_hall_visits": 31,
+        "hall_attempts": 31,
+        "breach_commitments": 0,
+        "eliminations": 203,
+        "median_surviving_npcs": 4.0,
+        "shots_into_player_door": 1391
+      },
+      {
+        "count": 90,
+        "wins": 13,
+        "player_under_attack": 90,
+        "median_player_first_strike": 171.0,
+        "median_player_exposure_seconds": 17.1,
+        "median_match_seconds": 194.02499999999998,
+        "median_player_hunter_damage": 1246.5,
+        "median_npc_hunter_damage": 855.0,
+        "median_retargets": 0.0,
+        "median_evolution_level": 6.0,
+        "successful_hall_visits": 15,
+        "hall_attempts": 15,
+        "breach_commitments": 179,
+        "eliminations": 273,
+        "median_surviving_npcs": 3.0,
+        "shots_into_player_door": 1405
+      }
+    ]
+  },
+  "outcome_transitions": {
+    "standard": {
+      "defeat \u2192 defeat": 28,
+      "victory \u2192 victory": 62
+    },
+    "hard": {
+      "defeat \u2192 defeat": 41,
+      "victory \u2192 victory": 33,
+      "victory \u2192 defeat": 13,
+      "defeat \u2192 victory": 3
+    },
+    "hell": {
+      "defeat \u2192 defeat": 54,
+      "victory \u2192 defeat": 23,
+      "defeat \u2192 victory": 3,
+      "victory \u2192 victory": 10
+    }
+  },
+  "active_results_by_family": {
+    "ring": {
+      "hard": [
+        {
+          "count": 6,
+          "wins": 4,
+          "player_under_attack": 6,
+          "median_player_first_strike": 79.95,
+          "median_player_exposure_seconds": 28.5,
+          "median_match_seconds": 331.275,
+          "median_player_hunter_damage": 1854.0,
+          "median_npc_hunter_damage": 2914.44851232,
+          "median_retargets": 6.0,
+          "median_evolution_level": 5.0,
+          "successful_hall_visits": 5,
+          "hall_attempts": 5,
+          "breach_commitments": 0,
+          "eliminations": 4,
+          "median_surviving_npcs": 5.0,
+          "shots_into_player_door": 160
+        },
+        {
+          "count": 6,
+          "wins": 4,
+          "player_under_attack": 6,
+          "median_player_first_strike": 116.7,
+          "median_player_exposure_seconds": 28.425,
+          "median_match_seconds": 328.04999999999995,
+          "median_player_hunter_damage": 1453.5,
+          "median_npc_hunter_damage": 4363.65477415596,
+          "median_retargets": 1.0,
+          "median_evolution_level": 5.5,
+          "successful_hall_visits": 4,
+          "hall_attempts": 4,
+          "breach_commitments": 14,
+          "eliminations": 8,
+          "median_surviving_npcs": 4.0,
+          "shots_into_player_door": 114
+        }
+      ],
+      "hell": [
+        {
+          "count": 6,
+          "wins": 3,
+          "player_under_attack": 6,
+          "median_player_first_strike": 207.3,
+          "median_player_exposure_seconds": 19.5,
+          "median_match_seconds": 355.95000000000005,
+          "median_player_hunter_damage": 4117.238535834625,
+          "median_npc_hunter_damage": 2885.504741235485,
+          "median_retargets": 6.0,
+          "median_evolution_level": 7.5,
+          "successful_hall_visits": 6,
+          "hall_attempts": 6,
+          "breach_commitments": 0,
+          "eliminations": 15,
+          "median_surviving_npcs": 4.0,
+          "shots_into_player_door": 165
+        },
+        {
+          "count": 6,
+          "wins": 2,
+          "player_under_attack": 6,
+          "median_player_first_strike": 201.15,
+          "median_player_exposure_seconds": 16.35,
+          "median_match_seconds": 314.4,
+          "median_player_hunter_damage": 2521.330368963905,
+          "median_npc_hunter_damage": 2565.0,
+          "median_retargets": 0.0,
+          "median_evolution_level": 7.5,
+          "successful_hall_visits": 4,
+          "hall_attempts": 4,
+          "breach_commitments": 11,
+          "eliminations": 27,
+          "median_surviving_npcs": 0.5,
+          "shots_into_player_door": 97
+        }
+      ]
+    },
+    "branching": {
+      "hard": [
+        {
+          "count": 6,
+          "wins": 6,
+          "player_under_attack": 6,
+          "median_player_first_strike": 321.375,
+          "median_player_exposure_seconds": 2.025,
+          "median_match_seconds": 391.95000000000005,
+          "median_player_hunter_damage": 751.490024999998,
+          "median_npc_hunter_damage": 5293.7945139056,
+          "median_retargets": 5.0,
+          "median_evolution_level": 7.5,
+          "successful_hall_visits": 0,
+          "hall_attempts": 0,
+          "breach_commitments": 0,
+          "eliminations": 14,
+          "median_surviving_npcs": 4.0,
+          "shots_into_player_door": 16
+        },
+        {
+          "count": 6,
+          "wins": 6,
+          "player_under_attack": 6,
+          "median_player_first_strike": 262.35,
+          "median_player_exposure_seconds": 18.75,
+          "median_match_seconds": 368.25,
+          "median_player_hunter_damage": 2796.697087500005,
+          "median_npc_hunter_damage": 4152.690154589325,
+          "median_retargets": 1.0,
+          "median_evolution_level": 7.5,
+          "successful_hall_visits": 2,
+          "hall_attempts": 2,
+          "breach_commitments": 14,
+          "eliminations": 16,
+          "median_surviving_npcs": 2.0,
+          "shots_into_player_door": 33
+        }
+      ],
+      "hell": [
+        {
+          "count": 6,
+          "wins": 2,
+          "player_under_attack": 6,
+          "median_player_first_strike": 166.8,
+          "median_player_exposure_seconds": 35.775,
+          "median_match_seconds": 256.8,
+          "median_player_hunter_damage": 2781.9849091451397,
+          "median_npc_hunter_damage": 1404.0,
+          "median_retargets": 3.0,
+          "median_evolution_level": 5.5,
+          "successful_hall_visits": 1,
+          "hall_attempts": 1,
+          "breach_commitments": 0,
+          "eliminations": 13,
+          "median_surviving_npcs": 3.0,
+          "shots_into_player_door": 126
+        },
+        {
+          "count": 6,
+          "wins": 0,
+          "player_under_attack": 6,
+          "median_player_first_strike": 168.6,
+          "median_player_exposure_seconds": 20.25,
+          "median_match_seconds": 194.55,
+          "median_player_hunter_damage": 1327.5,
+          "median_npc_hunter_damage": 702.0,
+          "median_retargets": 0.0,
+          "median_evolution_level": 5.0,
+          "successful_hall_visits": 0,
+          "hall_attempts": 0,
+          "breach_commitments": 11,
+          "eliminations": 18,
+          "median_surviving_npcs": 3.0,
+          "shots_into_player_door": 95
+        }
+      ]
+    },
+    "scattered": {
+      "hard": [
+        {
+          "count": 6,
+          "wins": 6,
+          "player_under_attack": 4,
+          "median_player_first_strike": 295.5,
+          "median_player_exposure_seconds": 0.0,
+          "median_match_seconds": 373.8,
+          "median_player_hunter_damage": 0.0,
+          "median_npc_hunter_damage": 6084.42321536579,
+          "median_retargets": 8.0,
+          "median_evolution_level": 6.0,
+          "successful_hall_visits": 2,
+          "hall_attempts": 2,
+          "breach_commitments": 0,
+          "eliminations": 6,
+          "median_surviving_npcs": 4.0,
+          "shots_into_player_door": 15
+        },
+        {
+          "count": 6,
+          "wins": 6,
+          "player_under_attack": 4,
+          "median_player_first_strike": 308.475,
+          "median_player_exposure_seconds": 0.0,
+          "median_match_seconds": 355.8,
+          "median_player_hunter_damage": 0.0,
+          "median_npc_hunter_damage": 6441.69944338374,
+          "median_retargets": 1.0,
+          "median_evolution_level": 8.0,
+          "successful_hall_visits": 4,
+          "hall_attempts": 4,
+          "breach_commitments": 24,
+          "eliminations": 20,
+          "median_surviving_npcs": 2.0,
+          "shots_into_player_door": 6
+        }
+      ],
+      "hell": [
+        {
+          "count": 6,
+          "wins": 4,
+          "player_under_attack": 6,
+          "median_player_first_strike": 74.55,
+          "median_player_exposure_seconds": 29.625,
+          "median_match_seconds": 391.5,
+          "median_player_hunter_damage": 1882.6575,
+          "median_npc_hunter_damage": 3229.857931601515,
+          "median_retargets": 2.0,
+          "median_evolution_level": 8.0,
+          "successful_hall_visits": 1,
+          "hall_attempts": 1,
+          "breach_commitments": 0,
+          "eliminations": 17,
+          "median_surviving_npcs": 2.5,
+          "shots_into_player_door": 139
+        },
+        {
+          "count": 6,
+          "wins": 1,
+          "player_under_attack": 6,
+          "median_player_first_strike": 192.97500000000002,
+          "median_player_exposure_seconds": 28.5,
+          "median_match_seconds": 220.35,
+          "median_player_hunter_damage": 2027.0,
+          "median_npc_hunter_damage": 1209.0,
+          "median_retargets": 0.0,
+          "median_evolution_level": 7.0,
+          "successful_hall_visits": 2,
+          "hall_attempts": 2,
+          "breach_commitments": 13,
+          "eliminations": 16,
+          "median_surviving_npcs": 3.0,
+          "shots_into_player_door": 130
+        }
+      ]
+    },
+    "spine": {
+      "hard": [
+        {
+          "count": 6,
+          "wins": 4,
+          "player_under_attack": 6,
+          "median_player_first_strike": 306.3,
+          "median_player_exposure_seconds": 14.325,
+          "median_match_seconds": 350.4,
+          "median_player_hunter_damage": 1291.5,
+          "median_npc_hunter_damage": 4504.04870347541,
+          "median_retargets": 2.5,
+          "median_evolution_level": 5.0,
+          "successful_hall_visits": 2,
+          "hall_attempts": 2,
+          "breach_commitments": 0,
+          "eliminations": 13,
+          "median_surviving_npcs": 3.0,
+          "shots_into_player_door": 76
+        },
+        {
+          "count": 6,
+          "wins": 3,
+          "player_under_attack": 6,
+          "median_player_first_strike": 294.375,
+          "median_player_exposure_seconds": 9.3,
+          "median_match_seconds": 340.875,
+          "median_player_hunter_damage": 1702.01223832532,
+          "median_npc_hunter_damage": 4706.97090998286,
+          "median_retargets": 0.0,
+          "median_evolution_level": 5.0,
+          "successful_hall_visits": 4,
+          "hall_attempts": 4,
+          "breach_commitments": 14,
+          "eliminations": 16,
+          "median_surviving_npcs": 2.0,
+          "shots_into_player_door": 78
+        }
+      ],
+      "hell": [
+        {
+          "count": 6,
+          "wins": 6,
+          "player_under_attack": 6,
+          "median_player_first_strike": 201.75,
+          "median_player_exposure_seconds": 20.85,
+          "median_match_seconds": 338.25,
+          "median_player_hunter_damage": 2689.817461853045,
+          "median_npc_hunter_damage": 3267.0,
+          "median_retargets": 8.0,
+          "median_evolution_level": 7.0,
+          "successful_hall_visits": 3,
+          "hall_attempts": 3,
+          "breach_commitments": 0,
+          "eliminations": 8,
+          "median_surviving_npcs": 4.0,
+          "shots_into_player_door": 100
+        },
+        {
+          "count": 6,
+          "wins": 2,
+          "player_under_attack": 6,
+          "median_player_first_strike": 182.7,
+          "median_player_exposure_seconds": 29.1,
+          "median_match_seconds": 209.7,
+          "median_player_hunter_damage": 2419.7,
+          "median_npc_hunter_damage": 1701.0,
+          "median_retargets": 0.0,
+          "median_evolution_level": 6.0,
+          "successful_hall_visits": 2,
+          "hall_attempts": 2,
+          "breach_commitments": 17,
+          "eliminations": 16,
+          "median_surviving_npcs": 3.0,
+          "shots_into_player_door": 158
+        }
+      ]
+    },
+    "zigzag": {
+      "hard": [
+        {
+          "count": 6,
+          "wins": 3,
+          "player_under_attack": 6,
+          "median_player_first_strike": 101.4,
+          "median_player_exposure_seconds": 40.05,
+          "median_match_seconds": 239.4,
+          "median_player_hunter_damage": 2088.2115491311097,
+          "median_npc_hunter_damage": 1191.684657483875,
+          "median_retargets": 3.0,
+          "median_evolution_level": 5.0,
+          "successful_hall_visits": 2,
+          "hall_attempts": 2,
+          "breach_commitments": 0,
+          "eliminations": 7,
+          "median_surviving_npcs": 5.0,
+          "shots_into_player_door": 203
+        },
+        {
+          "count": 6,
+          "wins": 3,
+          "player_under_attack": 6,
+          "median_player_first_strike": 137.4,
+          "median_player_exposure_seconds": 30.450000000000003,
+          "median_match_seconds": 231.82500000000002,
+          "median_player_hunter_damage": 2071.76910800001,
+          "median_npc_hunter_damage": 1176.85178121273,
+          "median_retargets": 0.5,
+          "median_evolution_level": 5.5,
+          "successful_hall_visits": 0,
+          "hall_attempts": 0,
+          "breach_commitments": 11,
+          "eliminations": 13,
+          "median_surviving_npcs": 3.5,
+          "shots_into_player_door": 132
+        }
+      ],
+      "hell": [
+        {
+          "count": 6,
+          "wins": 6,
+          "player_under_attack": 4,
+          "median_player_first_strike": 368.7,
+          "median_player_exposure_seconds": 0.0,
+          "median_match_seconds": 423.3,
+          "median_player_hunter_damage": 0.0,
+          "median_npc_hunter_damage": 7577.23278144468,
+          "median_retargets": 5.0,
+          "median_evolution_level": 9.0,
+          "successful_hall_visits": 4,
+          "hall_attempts": 4,
+          "breach_commitments": 0,
+          "eliminations": 16,
+          "median_surviving_npcs": 2.0,
+          "shots_into_player_door": 4
+        },
+        {
+          "count": 6,
+          "wins": 3,
+          "player_under_attack": 6,
+          "median_player_first_strike": 285.0,
+          "median_player_exposure_seconds": 13.8,
+          "median_match_seconds": 359.25,
+          "median_player_hunter_damage": 2539.657845385695,
+          "median_npc_hunter_damage": 2889.0,
+          "median_retargets": 0.0,
+          "median_evolution_level": 9.5,
+          "successful_hall_visits": 2,
+          "hall_attempts": 2,
+          "breach_commitments": 17,
+          "eliminations": 30,
+          "median_surviving_npcs": 0.5,
+          "shots_into_player_door": 78
+        }
+      ]
+    },
+    "radial": {
+      "hard": [
+        {
+          "count": 6,
+          "wins": 3,
+          "player_under_attack": 6,
+          "median_player_first_strike": 99.0,
+          "median_player_exposure_seconds": 39.225,
+          "median_match_seconds": 281.025,
+          "median_player_hunter_damage": 2668.5,
+          "median_npc_hunter_damage": 1809.7,
+          "median_retargets": 5.5,
+          "median_evolution_level": 4.5,
+          "successful_hall_visits": 5,
+          "hall_attempts": 5,
+          "breach_commitments": 0,
+          "eliminations": 5,
+          "median_surviving_npcs": 5.0,
+          "shots_into_player_door": 160
+        },
+        {
+          "count": 6,
+          "wins": 2,
+          "player_under_attack": 6,
+          "median_player_first_strike": 145.8,
+          "median_player_exposure_seconds": 33.75,
+          "median_match_seconds": 179.55,
+          "median_player_hunter_damage": 1768.5,
+          "median_npc_hunter_damage": 567.0,
+          "median_retargets": 0.0,
+          "median_evolution_level": 4.0,
+          "successful_hall_visits": 2,
+          "hall_attempts": 2,
+          "breach_commitments": 11,
+          "eliminations": 10,
+          "median_surviving_npcs": 4.0,
+          "shots_into_player_door": 126
+        }
+      ],
+      "hell": [
+        {
+          "count": 6,
+          "wins": 3,
+          "player_under_attack": 6,
+          "median_player_first_strike": 242.85,
+          "median_player_exposure_seconds": 19.95,
+          "median_match_seconds": 336.75,
+          "median_player_hunter_damage": 2675.299573828015,
+          "median_npc_hunter_damage": 2934.0,
+          "median_retargets": 10.0,
+          "median_evolution_level": 6.5,
+          "successful_hall_visits": 5,
+          "hall_attempts": 5,
+          "breach_commitments": 0,
+          "eliminations": 7,
+          "median_surviving_npcs": 4.5,
+          "shots_into_player_door": 79
+        },
+        {
+          "count": 6,
+          "wins": 2,
+          "player_under_attack": 6,
+          "median_player_first_strike": 216.89999999999998,
+          "median_player_exposure_seconds": 25.725,
+          "median_match_seconds": 236.775,
+          "median_player_hunter_damage": 1579.5,
+          "median_npc_hunter_damage": 1970.000000000005,
+          "median_retargets": 0.0,
+          "median_evolution_level": 7.0,
+          "successful_hall_visits": 2,
+          "hall_attempts": 2,
+          "breach_commitments": 19,
+          "eliminations": 19,
+          "median_surviving_npcs": 3.0,
+          "shots_into_player_door": 156
+        }
+      ]
+    },
+    "twin_wings": {
+      "hard": [
+        {
+          "count": 6,
+          "wins": 2,
+          "player_under_attack": 6,
+          "median_player_first_strike": 158.4,
+          "median_player_exposure_seconds": 24.375,
+          "median_match_seconds": 194.925,
+          "median_player_hunter_damage": 1332.0,
+          "median_npc_hunter_damage": 661.5,
+          "median_retargets": 2.0,
+          "median_evolution_level": 6.5,
+          "successful_hall_visits": 0,
+          "hall_attempts": 0,
+          "breach_commitments": 0,
+          "eliminations": 8,
+          "median_surviving_npcs": 5.0,
+          "shots_into_player_door": 105
+        },
+        {
+          "count": 6,
+          "wins": 2,
+          "player_under_attack": 6,
+          "median_player_first_strike": 158.4,
+          "median_player_exposure_seconds": 27.375,
+          "median_match_seconds": 189.525,
+          "median_player_hunter_damage": 2553.6816,
+          "median_npc_hunter_damage": 720.0,
+          "median_retargets": 0.0,
+          "median_evolution_level": 6.5,
+          "successful_hall_visits": 2,
+          "hall_attempts": 2,
+          "breach_commitments": 12,
+          "eliminations": 16,
+          "median_surviving_npcs": 3.0,
+          "shots_into_player_door": 145
+        }
+      ],
+      "hell": [
+        {
+          "count": 6,
+          "wins": 2,
+          "player_under_attack": 6,
+          "median_player_first_strike": 62.325,
+          "median_player_exposure_seconds": 34.575,
+          "median_match_seconds": 263.925,
+          "median_player_hunter_damage": 2450.244680851065,
+          "median_npc_hunter_damage": 715.5,
+          "median_retargets": 3.5,
+          "median_evolution_level": 5.0,
+          "successful_hall_visits": 2,
+          "hall_attempts": 2,
+          "breach_commitments": 0,
+          "eliminations": 13,
+          "median_surviving_npcs": 3.0,
+          "shots_into_player_door": 198
+        },
+        {
+          "count": 6,
+          "wins": 1,
+          "player_under_attack": 6,
+          "median_player_first_strike": 62.325,
+          "median_player_exposure_seconds": 43.275,
+          "median_match_seconds": 111.15,
+          "median_player_hunter_damage": 1201.5,
+          "median_npc_hunter_damage": 0.0,
+          "median_retargets": 0.0,
+          "median_evolution_level": 3.0,
+          "successful_hall_visits": 1,
+          "hall_attempts": 1,
+          "breach_commitments": 8,
+          "eliminations": 7,
+          "median_surviving_npcs": 5.0,
+          "shots_into_player_door": 223
+        }
+      ]
+    },
+    "labyrinth": {
+      "hard": [
+        {
+          "count": 6,
+          "wins": 6,
+          "player_under_attack": 6,
+          "median_player_first_strike": 301.95,
+          "median_player_exposure_seconds": 21.675,
+          "median_match_seconds": 376.04999999999995,
+          "median_player_hunter_damage": 4939.762028282625,
+          "median_npc_hunter_damage": 3918.21999999999,
+          "median_retargets": 5.0,
+          "median_evolution_level": 7.0,
+          "successful_hall_visits": 8,
+          "hall_attempts": 8,
+          "breach_commitments": 0,
+          "eliminations": 18,
+          "median_surviving_npcs": 2.0,
+          "shots_into_player_door": 73
+        },
+        {
+          "count": 6,
+          "wins": 4,
+          "player_under_attack": 6,
+          "median_player_first_strike": 236.925,
+          "median_player_exposure_seconds": 26.4,
+          "median_match_seconds": 325.425,
+          "median_player_hunter_damage": 3870.11068559528,
+          "median_npc_hunter_damage": 3136.4448016740253,
+          "median_retargets": 1.0,
+          "median_evolution_level": 6.0,
+          "successful_hall_visits": 5,
+          "hall_attempts": 5,
+          "breach_commitments": 22,
+          "eliminations": 21,
+          "median_surviving_npcs": 2.0,
+          "shots_into_player_door": 157
+        }
+      ],
+      "hell": [
+        {
+          "count": 6,
+          "wins": 3,
+          "player_under_attack": 6,
+          "median_player_first_strike": 125.25,
+          "median_player_exposure_seconds": 30.75,
+          "median_match_seconds": 237.225,
+          "median_player_hunter_damage": 2668.56133071354,
+          "median_npc_hunter_damage": 2012.817500000005,
+          "median_retargets": 1.5,
+          "median_evolution_level": 7.5,
+          "successful_hall_visits": 3,
+          "hall_attempts": 3,
+          "breach_commitments": 0,
+          "eliminations": 17,
+          "median_surviving_npcs": 3.0,
+          "shots_into_player_door": 160
+        },
+        {
+          "count": 6,
+          "wins": 0,
+          "player_under_attack": 6,
+          "median_player_first_strike": 142.8,
+          "median_player_exposure_seconds": 24.375,
+          "median_match_seconds": 162.75,
+          "median_player_hunter_damage": 1408.5,
+          "median_npc_hunter_damage": 693.0,
+          "median_retargets": 0.0,
+          "median_evolution_level": 6.0,
+          "successful_hall_visits": 0,
+          "hall_attempts": 0,
+          "breach_commitments": 10,
+          "eliminations": 14,
+          "median_surviving_npcs": 3.5,
+          "shots_into_player_door": 86
+        }
+      ]
+    },
+    "courtyards": {
+      "hard": [
+        {
+          "count": 6,
+          "wins": 4,
+          "player_under_attack": 6,
+          "median_player_first_strike": 206.1,
+          "median_player_exposure_seconds": 16.8,
+          "median_match_seconds": 385.275,
+          "median_player_hunter_damage": 1448.545075,
+          "median_npc_hunter_damage": 3414.26271873604,
+          "median_retargets": 4.5,
+          "median_evolution_level": 5.5,
+          "successful_hall_visits": 4,
+          "hall_attempts": 4,
+          "breach_commitments": 0,
+          "eliminations": 7,
+          "median_surviving_npcs": 4.5,
+          "shots_into_player_door": 98
+        },
+        {
+          "count": 6,
+          "wins": 2,
+          "player_under_attack": 6,
+          "median_player_first_strike": 195.6,
+          "median_player_exposure_seconds": 31.200000000000003,
+          "median_match_seconds": 251.625,
+          "median_player_hunter_damage": 2984.0,
+          "median_npc_hunter_damage": 1215.0,
+          "median_retargets": 0.0,
+          "median_evolution_level": 4.0,
+          "successful_hall_visits": 0,
+          "hall_attempts": 0,
+          "breach_commitments": 10,
+          "eliminations": 15,
+          "median_surviving_npcs": 2.5,
+          "shots_into_player_door": 150
+        }
+      ],
+      "hell": [
+        {
+          "count": 6,
+          "wins": 0,
+          "player_under_attack": 6,
+          "median_player_first_strike": 194.85,
+          "median_player_exposure_seconds": 16.725,
+          "median_match_seconds": 210.825,
+          "median_player_hunter_damage": 1237.5,
+          "median_npc_hunter_damage": 918.9000000000025,
+          "median_retargets": 1.0,
+          "median_evolution_level": 7.0,
+          "successful_hall_visits": 0,
+          "hall_attempts": 0,
+          "breach_commitments": 0,
+          "eliminations": 18,
+          "median_surviving_npcs": 2.0,
+          "shots_into_player_door": 75
+        },
+        {
+          "count": 6,
+          "wins": 0,
+          "player_under_attack": 6,
+          "median_player_first_strike": 194.85,
+          "median_player_exposure_seconds": 14.774999999999999,
+          "median_match_seconds": 210.825,
+          "median_player_hunter_damage": 1219.5,
+          "median_npc_hunter_damage": 972.0,
+          "median_retargets": 0.0,
+          "median_evolution_level": 7.0,
+          "successful_hall_visits": 0,
+          "hall_attempts": 0,
+          "breach_commitments": 15,
+          "eliminations": 22,
+          "median_surviving_npcs": 2.0,
+          "shots_into_player_door": 72
+        }
+      ]
+    },
+    "hybrid": {
+      "hard": [
+        {
+          "count": 6,
+          "wins": 4,
+          "player_under_attack": 6,
+          "median_player_first_strike": 299.55,
+          "median_player_exposure_seconds": 26.55,
+          "median_match_seconds": 355.35,
+          "median_player_hunter_damage": 1269.0,
+          "median_npc_hunter_damage": 2919.05999999998,
+          "median_retargets": 3.0,
+          "median_evolution_level": 6.0,
+          "successful_hall_visits": 2,
+          "hall_attempts": 2,
+          "breach_commitments": 0,
+          "eliminations": 10,
+          "median_surviving_npcs": 4.0,
+          "shots_into_player_door": 73
+        },
+        {
+          "count": 6,
+          "wins": 3,
+          "player_under_attack": 6,
+          "median_player_first_strike": 290.17499999999995,
+          "median_player_exposure_seconds": 17.625,
+          "median_match_seconds": 306.15,
+          "median_player_hunter_damage": 2027.650925507665,
+          "median_npc_hunter_damage": 3540.31379999998,
+          "median_retargets": 1.0,
+          "median_evolution_level": 7.0,
+          "successful_hall_visits": 2,
+          "hall_attempts": 2,
+          "breach_commitments": 18,
+          "eliminations": 19,
+          "median_surviving_npcs": 2.0,
+          "shots_into_player_door": 148
+        }
+      ],
+      "hell": [
+        {
+          "count": 6,
+          "wins": 2,
+          "player_under_attack": 6,
+          "median_player_first_strike": 135.9,
+          "median_player_exposure_seconds": 27.825,
+          "median_match_seconds": 318.225,
+          "median_player_hunter_damage": 3133.08887042509,
+          "median_npc_hunter_damage": 2775.587375,
+          "median_retargets": 4.0,
+          "median_evolution_level": 7.5,
+          "successful_hall_visits": 2,
+          "hall_attempts": 2,
+          "breach_commitments": 0,
+          "eliminations": 15,
+          "median_surviving_npcs": 4.5,
+          "shots_into_player_door": 195
+        },
+        {
+          "count": 6,
+          "wins": 2,
+          "player_under_attack": 6,
+          "median_player_first_strike": 156.9,
+          "median_player_exposure_seconds": 23.7,
+          "median_match_seconds": 183.97500000000002,
+          "median_player_hunter_damage": 1395.0,
+          "median_npc_hunter_damage": 702.0,
+          "median_retargets": 0.0,
+          "median_evolution_level": 6.0,
+          "successful_hall_visits": 0,
+          "hall_attempts": 0,
+          "breach_commitments": 14,
+          "eliminations": 20,
+          "median_surviving_npcs": 3.0,
+          "shots_into_player_door": 184
+        }
+      ]
+    }
+  },
+  "five_passive_wins": [
+    {
+      "fixture": [
+        "stage_2",
+        "standard",
+        3802,
+        1,
+        "passive"
+      ],
+      "before": {
+        "blocked_motion_steps": 0,
+        "case": [
+          "stage_2",
+          "standard",
+          3802,
+          1,
+          "passive"
+        ],
+        "eliminations": 0,
+        "event_counts": {
+          "approach": 5,
+          "archetype_warning": 59,
+          "bed_upgrade": 15,
+          "build": 24,
+          "building_upgrade": 17,
+          "charged_attack": 13,
+          "door_damage": 75,
+          "door_upgrade": 15,
+          "encounter": 5,
+          "hunter_ability": 10,
+          "hunter_ability_warning": 12,
+          "hunter_reassess": 3,
+          "hunter_recovering": 1,
+          "hunter_recovery_ended": 2,
+          "hunter_retreat": 2,
+          "nightmare_impact": 16,
+          "nightmare_level": 5,
+          "nightmare_release": 4,
+          "nightmare_warning": 4,
+          "repair": 29
+        },
+        "events": [
+          {
+            "level": 2,
+            "room": 0,
+            "time": 0.15,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 2,
+            "room": 2,
+            "time": 0.15,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 3,
+            "time": 40.05,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 60.75,
+            "type": "encounter"
+          },
+          {
+            "next_room": 4,
+            "room": 3,
+            "time": 95.25,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 5,
+            "time": 95.4,
+            "type": "approach"
+          },
+          {
+            "level": 3,
+            "room": 5,
+            "time": 115.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 3,
+            "room": 5,
+            "time": 115.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 5,
+            "time": 130.35,
+            "type": "encounter"
+          },
+          {
+            "level": 4,
+            "room": 5,
+            "time": 190.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 4,
+            "room": 5,
+            "time": 190.05,
+            "type": "nightmare_level"
+          },
+          {
+            "next_room": 2,
+            "room": 5,
+            "time": 198.75,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 3,
+            "time": 198.9,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 232.5,
+            "type": "encounter"
+          },
+          {
+            "budget": 0.0,
+            "hall": "west",
+            "healed": 0.0,
+            "reason": "",
+            "room": 3,
+            "time": 242.55,
+            "type": "hunter_retreat"
+          },
+          {
+            "budget": 1151.334,
+            "hall": "west",
+            "healed": 0.0,
+            "reason": "",
+            "room": 3,
+            "time": 253.65,
+            "type": "hunter_recovering"
+          },
+          {
+            "budget": 1151.334,
+            "hall": "west",
+            "healed": 1151.334,
+            "reason": "completed",
+            "room": 3,
+            "time": 261.75,
+            "type": "hunter_recovery_ended"
+          },
+          {
+            "room": 5,
+            "time": 261.9,
+            "type": "approach"
+          },
+          {
+            "level": 5,
+            "room": 5,
+            "time": 284.1,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 5,
+            "room": 5,
+            "time": 284.1,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 5,
+            "time": 303.15,
+            "type": "encounter"
+          },
+          {
+            "next_room": 2,
+            "room": 5,
+            "time": 337.05,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 3,
+            "time": 337.2,
+            "type": "approach"
+          },
+          {
+            "level": 6,
+            "room": 3,
+            "time": 359.25,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 6,
+            "room": 3,
+            "time": 359.25,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 3,
+            "time": 369.6,
+            "type": "encounter"
+          },
+          {
+            "budget": 0.0,
+            "hall": "west",
+            "healed": 0.0,
+            "reason": "",
+            "room": 3,
+            "time": 376.8,
+            "type": "hunter_retreat"
+          },
+          {
+            "budget": 0.0,
+            "hall": "west",
+            "healed": 0.0,
+            "reason": "hunter defeated",
+            "room": 3,
+            "time": 378.45,
+            "type": "hunter_recovery_ended"
+          }
+        ],
+        "evolution_buffs": [],
+        "evolution_level": 6,
+        "family": "branching",
+        "first_encounter": 60.75,
+        "first_player_encounter": -1.0,
+        "first_player_strike": -1.0,
+        "hunter_archetype": "crusher",
+        "hunter_attacks": 59,
+        "hunter_max_hp": 6667.58792048316,
+        "hunter_remaining_hp": 0.0,
+        "hunter_retargets": 3,
+        "hunter_transformed": false,
+        "invalid": [],
+        "map_sha256": "257da9b9455aa65d569234811d9378ae0346d3a02f3399f6ccd30162b87de19a",
+        "max_ledger_error": 6.103515625e-05,
+        "npc_damage": 7818.92192048317,
+        "npc_hunter_damage": 7818.92192048317,
+        "outcome": "victory",
+        "peak_player_buildings": 0,
+        "peak_player_exposure": 0.0,
+        "peak_sleeping_npcs": 5,
+        "player_damage": 0.0,
+        "player_door_damage": 0.0,
+        "player_hunter_damage": 0.0,
+        "prior_passive_win": true,
+        "recovery_attempts": 2,
+        "recovery_visits": 1,
+        "repetition": 0,
+        "rooms": [
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 0.0,
+            "door_strikes": 0,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 2,
+            "room": 1,
+            "shape": "l",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 0.0,
+            "door_strikes": 0,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 0,
+            "room": 2,
+            "shape": "long",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "economy"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 51.75,
+            "door_damage": 827.743399998204,
+            "door_strikes": 25,
+            "enemy_damage": 2037.32192048318,
+            "hunter_damage": 2037.32192048318,
+            "owner": 1,
+            "room": 3,
+            "shape": "zigzag",
+            "shots": 97,
+            "target_seconds": 159.75,
+            "trait": "fortified"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 0.0,
+            "door_strikes": 0,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 5,
+            "room": 4,
+            "shape": "l",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 102.3,
+            "door_damage": 3497.14181480286,
+            "door_strikes": 50,
+            "enemy_damage": 5781.59999999999,
+            "hunter_damage": 5781.59999999999,
+            "owner": 3,
+            "room": 5,
+            "shape": "rectangle",
+            "shots": 228,
+            "target_seconds": 178.8,
+            "trait": "economy"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 0.0,
+            "door_strikes": 0,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 4,
+            "room": 6,
+            "shape": "u",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "fortified"
+          }
+        ],
+        "simulated_seconds": 378.45,
+        "speed_budget_violations": 0,
+        "steps": 2523
+      },
+      "after": {
+        "blocked_motion_steps": 0,
+        "case": [
+          "stage_2",
+          "standard",
+          3802,
+          1,
+          "passive"
+        ],
+        "eliminations": 0,
+        "event_counts": {
+          "approach": 5,
+          "archetype_warning": 59,
+          "bed_upgrade": 15,
+          "build": 24,
+          "building_upgrade": 17,
+          "charged_attack": 13,
+          "door_damage": 75,
+          "door_upgrade": 15,
+          "encounter": 5,
+          "hunter_ability": 10,
+          "hunter_ability_warning": 12,
+          "hunter_reassess": 3,
+          "hunter_recovering": 1,
+          "hunter_recovery_ended": 2,
+          "hunter_retreat": 2,
+          "nightmare_impact": 16,
+          "nightmare_level": 5,
+          "nightmare_release": 4,
+          "nightmare_warning": 4,
+          "repair": 29
+        },
+        "events": [
+          {
+            "level": 2,
+            "room": 0,
+            "time": 0.15,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 2,
+            "room": 2,
+            "time": 0.15,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 3,
+            "time": 40.05,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 60.75,
+            "type": "encounter"
+          },
+          {
+            "next_room": 4,
+            "room": 3,
+            "time": 95.25,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 5,
+            "time": 95.4,
+            "type": "approach"
+          },
+          {
+            "level": 3,
+            "room": 5,
+            "time": 115.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 3,
+            "room": 5,
+            "time": 115.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 5,
+            "time": 130.35,
+            "type": "encounter"
+          },
+          {
+            "level": 4,
+            "room": 5,
+            "time": 190.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 4,
+            "room": 5,
+            "time": 190.05,
+            "type": "nightmare_level"
+          },
+          {
+            "next_room": 2,
+            "room": 5,
+            "time": 198.75,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 3,
+            "time": 198.9,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 232.5,
+            "type": "encounter"
+          },
+          {
+            "budget": 0.0,
+            "hall": "west",
+            "healed": 0.0,
+            "reason": "",
+            "room": 3,
+            "time": 242.55,
+            "type": "hunter_retreat"
+          },
+          {
+            "budget": 1151.334,
+            "hall": "west",
+            "healed": 0.0,
+            "reason": "",
+            "room": 3,
+            "time": 253.65,
+            "type": "hunter_recovering"
+          },
+          {
+            "budget": 1151.334,
+            "hall": "west",
+            "healed": 1151.334,
+            "reason": "completed",
+            "room": 3,
+            "time": 261.75,
+            "type": "hunter_recovery_ended"
+          },
+          {
+            "room": 5,
+            "time": 261.9,
+            "type": "approach"
+          },
+          {
+            "level": 5,
+            "room": 5,
+            "time": 284.1,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 5,
+            "room": 5,
+            "time": 284.1,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 5,
+            "time": 303.15,
+            "type": "encounter"
+          },
+          {
+            "next_room": 2,
+            "room": 5,
+            "time": 337.05,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 3,
+            "time": 337.2,
+            "type": "approach"
+          },
+          {
+            "level": 6,
+            "room": 3,
+            "time": 359.25,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 6,
+            "room": 3,
+            "time": 359.25,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 3,
+            "time": 369.6,
+            "type": "encounter"
+          },
+          {
+            "budget": 0.0,
+            "hall": "west",
+            "healed": 0.0,
+            "reason": "",
+            "room": 3,
+            "time": 376.8,
+            "type": "hunter_retreat"
+          },
+          {
+            "budget": 0.0,
+            "hall": "west",
+            "healed": 0.0,
+            "reason": "hunter defeated",
+            "room": 3,
+            "time": 378.45,
+            "type": "hunter_recovery_ended"
+          }
+        ],
+        "evolution_buffs": [],
+        "evolution_level": 6,
+        "family": "branching",
+        "first_encounter": 60.75,
+        "first_player_encounter": -1.0,
+        "first_player_strike": -1.0,
+        "hunter_archetype": "crusher",
+        "hunter_attacks": 59,
+        "hunter_max_hp": 6667.58792048316,
+        "hunter_remaining_hp": 0.0,
+        "hunter_retargets": 3,
+        "hunter_transformed": false,
+        "invalid": [],
+        "map_sha256": "257da9b9455aa65d569234811d9378ae0346d3a02f3399f6ccd30162b87de19a",
+        "max_ledger_error": 6.103515625e-05,
+        "npc_damage": 7818.92192048317,
+        "npc_hunter_damage": 7818.92192048317,
+        "outcome": "victory",
+        "peak_player_buildings": 0,
+        "peak_player_exposure": 0.0,
+        "peak_sleeping_npcs": 5,
+        "player_damage": 0.0,
+        "player_door_damage": 0.0,
+        "player_hunter_damage": 0.0,
+        "prior_passive_win": true,
+        "recovery_attempts": 2,
+        "recovery_visits": 1,
+        "repetition": 0,
+        "rooms": [
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 0.0,
+            "door_strikes": 0,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 2,
+            "room": 1,
+            "shape": "l",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 0.0,
+            "door_strikes": 0,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 0,
+            "room": 2,
+            "shape": "long",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "economy"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 51.75,
+            "door_damage": 827.743399998204,
+            "door_strikes": 25,
+            "enemy_damage": 2037.32192048318,
+            "hunter_damage": 2037.32192048318,
+            "owner": 1,
+            "room": 3,
+            "shape": "zigzag",
+            "shots": 97,
+            "target_seconds": 159.75,
+            "trait": "fortified"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 0.0,
+            "door_strikes": 0,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 5,
+            "room": 4,
+            "shape": "l",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 102.3,
+            "door_damage": 3497.14181480286,
+            "door_strikes": 50,
+            "enemy_damage": 5781.59999999999,
+            "hunter_damage": 5781.59999999999,
+            "owner": 3,
+            "room": 5,
+            "shape": "rectangle",
+            "shots": 228,
+            "target_seconds": 178.8,
+            "trait": "economy"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 0.0,
+            "door_strikes": 0,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 4,
+            "room": 6,
+            "shape": "u",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "fortified"
+          }
+        ],
+        "simulated_seconds": 378.45,
+        "speed_budget_violations": 0,
+        "steps": 2523
+      }
+    },
+    {
+      "fixture": [
+        "stage_5",
+        "hard",
+        5076,
+        5,
+        "passive"
+      ],
+      "before": {
+        "blocked_motion_steps": 0,
+        "case": [
+          "stage_5",
+          "hard",
+          5076,
+          5,
+          "passive"
+        ],
+        "eliminations": 0,
+        "event_counts": {
+          "approach": 10,
+          "arcane_impact": 12,
+          "archetype_warning": 6,
+          "bed_upgrade": 15,
+          "boss_ability_activate": 16,
+          "boss_ability_end": 2,
+          "boss_ability_warning": 17,
+          "boss_awakened": 1,
+          "boss_death": 1,
+          "boss_impact": 15,
+          "boss_phase": 2,
+          "boss_resource_drain": 2,
+          "boss_surge": 5,
+          "boss_transform": 1,
+          "boss_warning": 23,
+          "build": 25,
+          "building_upgrade": 36,
+          "charged_attack": 10,
+          "door_damage": 143,
+          "door_upgrade": 16,
+          "encounter": 10,
+          "hunter_ability": 15,
+          "hunter_ability_warning": 17,
+          "hunter_reassess": 6,
+          "hunter_recovery": 10,
+          "magic_absorb": 11,
+          "magic_shield": 16,
+          "nightmare_impact": 3,
+          "nightmare_level": 6,
+          "nightmare_release": 3,
+          "nightmare_warning": 3,
+          "repair": 75,
+          "scythe_embed": 1,
+          "scythe_end": 1,
+          "scythe_throw": 1,
+          "scythe_tick": 9,
+          "undead_attack": 38,
+          "undead_death": 13,
+          "undead_spawn": 28
+        },
+        "events": [
+          {
+            "level": 5,
+            "room": 0,
+            "time": 0.15,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 5,
+            "room": 6,
+            "time": 0.15,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 1,
+            "time": 40.05,
+            "type": "approach"
+          },
+          {
+            "room": 1,
+            "time": 48.9,
+            "type": "encounter"
+          },
+          {
+            "next_room": 4,
+            "room": 1,
+            "time": 63.3,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 5,
+            "time": 63.45,
+            "type": "approach"
+          },
+          {
+            "room": 5,
+            "time": 83.85,
+            "type": "encounter"
+          },
+          {
+            "next_room": 0,
+            "room": 5,
+            "time": 98.25,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 1,
+            "time": 98.4,
+            "type": "approach"
+          },
+          {
+            "level": 6,
+            "room": 1,
+            "time": 115.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 6,
+            "room": 1,
+            "time": 115.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 1,
+            "time": 118.5,
+            "type": "encounter"
+          },
+          {
+            "next_room": 4,
+            "room": 1,
+            "time": 133.35,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 5,
+            "time": 133.5,
+            "type": "approach"
+          },
+          {
+            "room": 5,
+            "time": 153.6,
+            "type": "encounter"
+          },
+          {
+            "next_room": 0,
+            "room": 5,
+            "time": 168.0,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 1,
+            "time": 168.15,
+            "type": "approach"
+          },
+          {
+            "room": 1,
+            "time": 187.8,
+            "type": "encounter"
+          },
+          {
+            "level": 7,
+            "room": 1,
+            "time": 190.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 7,
+            "room": 1,
+            "time": 190.05,
+            "type": "nightmare_level"
+          },
+          {
+            "next_room": 4,
+            "room": 1,
+            "time": 202.35,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 5,
+            "time": 202.5,
+            "type": "approach"
+          },
+          {
+            "room": 5,
+            "time": 222.15,
+            "type": "encounter"
+          },
+          {
+            "next_room": 1,
+            "room": 5,
+            "time": 236.55,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 2,
+            "time": 236.7,
+            "type": "approach"
+          },
+          {
+            "room": 2,
+            "time": 250.05,
+            "type": "boss_transform"
+          },
+          {
+            "room": 2,
+            "time": 252.75,
+            "type": "boss_phase"
+          },
+          {
+            "room": 2,
+            "time": 254.4,
+            "type": "approach"
+          },
+          {
+            "level": 8,
+            "room": 2,
+            "time": 265.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 8,
+            "room": 2,
+            "time": 265.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 2,
+            "time": 266.7,
+            "type": "encounter"
+          },
+          {
+            "room": 3,
+            "time": 304.8,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 327.0,
+            "type": "encounter"
+          },
+          {
+            "room": 3,
+            "time": 337.2,
+            "type": "boss_phase"
+          },
+          {
+            "level": 9,
+            "room": 3,
+            "time": 340.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 9,
+            "room": 3,
+            "time": 340.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 4,
+            "time": 363.6,
+            "type": "approach"
+          },
+          {
+            "room": 4,
+            "time": 375.9,
+            "type": "encounter"
+          },
+          {
+            "level": 10,
+            "room": 5,
+            "time": 415.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 10,
+            "room": 5,
+            "time": 415.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 5,
+            "time": 420.15,
+            "type": "encounter"
+          },
+          {
+            "room": 5,
+            "time": 421.95,
+            "type": "boss_death"
+          }
+        ],
+        "evolution_buffs": [],
+        "evolution_level": 10,
+        "family": "scattered",
+        "first_encounter": 48.9,
+        "first_player_encounter": -1.0,
+        "first_player_strike": 333.75,
+        "hunter_archetype": "witch",
+        "hunter_attacks": 72,
+        "hunter_max_hp": 6539.6912,
+        "hunter_remaining_hp": 0.0,
+        "hunter_retargets": 8,
+        "hunter_transformed": true,
+        "invalid": [],
+        "map_sha256": "b74cd5873048ed91562b872ec7e8d374332115f551e28d1e2758dd1953e9a3d1",
+        "max_ledger_error": 6.103515625e-05,
+        "npc_damage": 7740.17321536579,
+        "npc_hunter_damage": 6084.42321536579,
+        "outcome": "victory",
+        "peak_player_buildings": 0,
+        "peak_player_exposure": 0.0,
+        "peak_sleeping_npcs": 5,
+        "player_damage": 0.0,
+        "player_door_damage": 115.2673296,
+        "player_hunter_damage": 0.0,
+        "prior_passive_win": true,
+        "recovery_attempts": 0,
+        "recovery_visits": 0,
+        "repetition": 0,
+        "rooms": [
+          {
+            "alive": true,
+            "attack_seconds": 43.8,
+            "door_damage": 1541.87862190304,
+            "door_strikes": 37,
+            "enemy_damage": 1233.0,
+            "hunter_damage": 873.0,
+            "owner": 5,
+            "room": 1,
+            "shape": "long",
+            "shots": 87,
+            "target_seconds": 92.85,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 37.95,
+            "door_damage": 1829.22930401476,
+            "door_strikes": 16,
+            "enemy_damage": 1496.0,
+            "hunter_damage": 1256.0,
+            "owner": 2,
+            "room": 2,
+            "shape": "zigzag",
+            "shots": 78,
+            "target_seconds": 68.1,
+            "trait": "economy"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 36.45,
+            "door_damage": 1897.96876152635,
+            "door_strikes": 31,
+            "enemy_damage": 1715.59005758389,
+            "hunter_damage": 1295.84005758389,
+            "owner": 1,
+            "room": 3,
+            "shape": "l",
+            "shots": 92,
+            "target_seconds": 58.8,
+            "trait": "fortified"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 10.65,
+            "door_damage": 168.349246208318,
+            "door_strikes": 3,
+            "enemy_damage": 967.614037781901,
+            "hunter_damage": 691.614037781901,
+            "owner": 4,
+            "room": 4,
+            "shape": "l",
+            "shots": 33,
+            "target_seconds": 22.95,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 45.0,
+            "door_damage": 2595.11786868226,
+            "door_strikes": 47,
+            "enemy_damage": 2327.96912,
+            "hunter_damage": 1967.96912,
+            "owner": 3,
+            "room": 5,
+            "shape": "u",
+            "shots": 107,
+            "target_seconds": 139.35,
+            "trait": "economy"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 115.2673296,
+            "door_strikes": 9,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 0,
+            "room": 6,
+            "shape": "rectangle",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "fortified"
+          }
+        ],
+        "simulated_seconds": 421.95,
+        "speed_budget_violations": 0,
+        "steps": 2813
+      },
+      "after": {
+        "blocked_motion_steps": 0,
+        "case": [
+          "stage_5",
+          "hard",
+          5076,
+          5,
+          "passive"
+        ],
+        "eliminations": 3,
+        "event_counts": {
+          "approach": 6,
+          "arcane_impact": 10,
+          "archetype_warning": 3,
+          "bed_upgrade": 10,
+          "boss_ability_activate": 13,
+          "boss_ability_end": 4,
+          "boss_ability_warning": 16,
+          "boss_awakened": 1,
+          "boss_death": 1,
+          "boss_impact": 12,
+          "boss_phase": 2,
+          "boss_resource_drain": 1,
+          "boss_surge": 2,
+          "boss_transform": 1,
+          "boss_warning": 18,
+          "build": 17,
+          "building_upgrade": 10,
+          "charged_attack": 12,
+          "door_break": 3,
+          "door_damage": 158,
+          "door_upgrade": 11,
+          "elimination": 3,
+          "encounter": 7,
+          "hunter_ability": 12,
+          "hunter_ability_warning": 14,
+          "hunter_commit": 3,
+          "hunter_evolved": 3,
+          "hunter_recovery": 12,
+          "magic_absorb": 1,
+          "magic_shield": 4,
+          "nightmare_impact": 3,
+          "nightmare_level": 6,
+          "nightmare_release": 3,
+          "nightmare_warning": 3,
+          "repair": 72,
+          "scythe_embed": 1,
+          "scythe_end": 1,
+          "scythe_throw": 1,
+          "scythe_tick": 3,
+          "survivor_attack": 3,
+          "survivor_fear": 3,
+          "undead_attack": 43,
+          "undead_death": 5,
+          "undead_spawn": 17
+        },
+        "events": [
+          {
+            "level": 5,
+            "room": 0,
+            "time": 0.15,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 5,
+            "room": 6,
+            "time": 0.15,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 1,
+            "time": 40.05,
+            "type": "approach"
+          },
+          {
+            "room": 1,
+            "time": 48.9,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 1,
+            "time": 63.3,
+            "type": "hunter_commit"
+          },
+          {
+            "room": 1,
+            "time": 93.3,
+            "type": "door_break"
+          },
+          {
+            "room": 1,
+            "time": 96.15,
+            "type": "elimination"
+          },
+          {
+            "room": 1,
+            "source": "Hunter",
+            "time": 96.15,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 5,
+            "time": 101.55,
+            "type": "approach"
+          },
+          {
+            "level": 6,
+            "room": 5,
+            "time": 115.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 6,
+            "room": 5,
+            "time": 115.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 5,
+            "time": 119.1,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 5,
+            "time": 133.95,
+            "type": "hunter_commit"
+          },
+          {
+            "room": 5,
+            "time": 161.55,
+            "type": "door_break"
+          },
+          {
+            "room": 5,
+            "time": 164.4,
+            "type": "elimination"
+          },
+          {
+            "room": 5,
+            "source": "Hunter",
+            "time": 164.4,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 2,
+            "time": 167.85,
+            "type": "approach"
+          },
+          {
+            "level": 7,
+            "room": 2,
+            "time": 190.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 7,
+            "room": 2,
+            "time": 190.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 2,
+            "time": 191.7,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 2,
+            "time": 206.25,
+            "type": "hunter_commit"
+          },
+          {
+            "room": 2,
+            "time": 216.75,
+            "type": "door_break"
+          },
+          {
+            "room": 2,
+            "time": 217.05,
+            "type": "boss_transform"
+          },
+          {
+            "room": 2,
+            "time": 219.75,
+            "type": "boss_phase"
+          },
+          {
+            "room": 2,
+            "time": 221.4,
+            "type": "approach"
+          },
+          {
+            "room": 2,
+            "time": 221.4,
+            "type": "encounter"
+          },
+          {
+            "room": 2,
+            "time": 224.25,
+            "type": "elimination"
+          },
+          {
+            "room": 2,
+            "source": "Hunter",
+            "time": 224.25,
+            "type": "hunter_evolved"
+          },
+          {
+            "level": 8,
+            "room": 2,
+            "time": 224.4,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 8,
+            "room": 2,
+            "time": 224.4,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 3,
+            "time": 230.55,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 255.75,
+            "type": "encounter"
+          },
+          {
+            "level": 9,
+            "room": 3,
+            "time": 265.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 9,
+            "room": 3,
+            "time": 265.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 3,
+            "time": 286.95,
+            "type": "boss_phase"
+          },
+          {
+            "room": 4,
+            "time": 288.15,
+            "type": "approach"
+          },
+          {
+            "room": 4,
+            "time": 308.1,
+            "type": "encounter"
+          },
+          {
+            "room": 4,
+            "time": 334.5,
+            "type": "encounter"
+          },
+          {
+            "level": 10,
+            "room": 4,
+            "time": 340.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 10,
+            "room": 4,
+            "time": 340.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 4,
+            "time": 345.45,
+            "type": "boss_death"
+          }
+        ],
+        "evolution_buffs": [
+          "dread_aura",
+          "cursed_armor",
+          "savage_strike"
+        ],
+        "evolution_level": 10,
+        "family": "scattered",
+        "first_encounter": 48.9,
+        "first_player_encounter": -1.0,
+        "first_player_strike": 268.95,
+        "hunter_archetype": "witch",
+        "hunter_attacks": 91,
+        "hunter_max_hp": 6436.01614432046,
+        "hunter_remaining_hp": 0.0,
+        "hunter_retargets": 1,
+        "hunter_transformed": true,
+        "invalid": [],
+        "map_sha256": "b74cd5873048ed91562b872ec7e8d374332115f551e28d1e2758dd1953e9a3d1",
+        "max_ledger_error": 3.0517578125e-05,
+        "npc_damage": 6782.02905979271,
+        "npc_hunter_damage": 5971.27905979271,
+        "outcome": "victory",
+        "peak_player_buildings": 0,
+        "peak_player_exposure": 0.0,
+        "peak_sleeping_npcs": 5,
+        "player_damage": 0.0,
+        "player_door_damage": 134.366666496,
+        "player_hunter_damage": 0.0,
+        "prior_passive_win": true,
+        "recovery_attempts": 0,
+        "recovery_visits": 0,
+        "repetition": 0,
+        "rooms": [
+          {
+            "alive": false,
+            "attack_seconds": 47.25,
+            "door_damage": 891.118749999999,
+            "door_strikes": 40,
+            "enemy_damage": 513.0,
+            "hunter_damage": 513.0,
+            "owner": 5,
+            "room": 1,
+            "shape": "long",
+            "shots": 57,
+            "target_seconds": 61.5,
+            "trait": "power"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 28.2,
+            "door_damage": 1326.8256953125,
+            "door_strikes": 19,
+            "enemy_damage": 1292.39915777756,
+            "hunter_damage": 1211.39915777756,
+            "owner": 2,
+            "room": 2,
+            "shape": "zigzag",
+            "shots": 51,
+            "target_seconds": 62.7,
+            "trait": "economy"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 32.25,
+            "door_damage": 1756.24555136994,
+            "door_strikes": 40,
+            "enemy_damage": 1487.84561103841,
+            "hunter_damage": 998.095611038412,
+            "owner": 1,
+            "room": 3,
+            "shape": "l",
+            "shots": 80,
+            "target_seconds": 57.6,
+            "trait": "fortified"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 37.2,
+            "door_damage": 2019.8205134438,
+            "door_strikes": 17,
+            "enemy_damage": 2444.78429097674,
+            "hunter_damage": 2204.78429097674,
+            "owner": 4,
+            "room": 4,
+            "shape": "l",
+            "shots": 101,
+            "target_seconds": 57.45,
+            "trait": "power"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 45.3,
+            "door_damage": 1544.5296875,
+            "door_strikes": 31,
+            "enemy_damage": 1044.0,
+            "hunter_damage": 1044.0,
+            "owner": 3,
+            "room": 5,
+            "shape": "u",
+            "shots": 61,
+            "target_seconds": 66.3,
+            "trait": "economy"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 134.366666496,
+            "door_strikes": 11,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 0,
+            "room": 6,
+            "shape": "rectangle",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "fortified"
+          }
+        ],
+        "simulated_seconds": 345.45,
+        "speed_budget_violations": 0,
+        "steps": 2303
+      }
+    },
+    {
+      "fixture": [
+        "stage_4",
+        "hell",
+        7338,
+        4,
+        "passive"
+      ],
+      "before": {
+        "blocked_motion_steps": 0,
+        "case": [
+          "stage_4",
+          "hell",
+          7338,
+          4,
+          "passive"
+        ],
+        "eliminations": 0,
+        "event_counts": {
+          "approach": 15,
+          "arcane_impact": 2,
+          "archetype_warning": 20,
+          "bed_upgrade": 16,
+          "boss_ability_activate": 14,
+          "boss_ability_end": 4,
+          "boss_ability_warning": 17,
+          "boss_awakened": 1,
+          "boss_death": 1,
+          "boss_impact": 12,
+          "boss_phase": 2,
+          "boss_resource_drain": 2,
+          "boss_surge": 5,
+          "boss_transform": 1,
+          "boss_warning": 21,
+          "build": 20,
+          "building_upgrade": 37,
+          "charged_attack": 11,
+          "door_damage": 108,
+          "door_upgrade": 16,
+          "encounter": 15,
+          "hunter_ability": 16,
+          "hunter_ability_warning": 18,
+          "hunter_reassess": 8,
+          "hunter_recovering": 1,
+          "hunter_recovery": 11,
+          "hunter_recovery_ended": 1,
+          "hunter_retreat": 1,
+          "nightmare_impact": 20,
+          "nightmare_level": 5,
+          "nightmare_release": 4,
+          "nightmare_warning": 4,
+          "repair": 55,
+          "scythe_embed": 1,
+          "scythe_end": 1,
+          "scythe_throw": 1,
+          "scythe_tick": 8,
+          "undead_attack": 4,
+          "undead_death": 12,
+          "undead_spawn": 21
+        },
+        "events": [
+          {
+            "level": 5,
+            "room": 0,
+            "time": 0.15,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 5,
+            "room": 5,
+            "time": 0.15,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 2,
+            "time": 40.05,
+            "type": "approach"
+          },
+          {
+            "room": 2,
+            "time": 46.5,
+            "type": "encounter"
+          },
+          {
+            "next_room": 5,
+            "room": 2,
+            "time": 54.9,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 6,
+            "time": 55.05,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 64.35,
+            "type": "encounter"
+          },
+          {
+            "next_room": 1,
+            "room": 6,
+            "time": 81.3,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 2,
+            "time": 81.45,
+            "type": "approach"
+          },
+          {
+            "room": 2,
+            "time": 90.6,
+            "type": "encounter"
+          },
+          {
+            "next_room": 5,
+            "room": 2,
+            "time": 101.85,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 6,
+            "time": 102.0,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 111.0,
+            "type": "encounter"
+          },
+          {
+            "level": 6,
+            "room": 6,
+            "time": 115.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 6,
+            "room": 6,
+            "time": 115.05,
+            "type": "nightmare_level"
+          },
+          {
+            "next_room": 1,
+            "room": 6,
+            "time": 119.7,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 2,
+            "time": 119.85,
+            "type": "approach"
+          },
+          {
+            "room": 2,
+            "time": 128.85,
+            "type": "encounter"
+          },
+          {
+            "next_room": 5,
+            "room": 2,
+            "time": 140.1,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 6,
+            "time": 140.25,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 149.25,
+            "type": "encounter"
+          },
+          {
+            "next_room": 1,
+            "room": 6,
+            "time": 160.05,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 2,
+            "time": 160.2,
+            "type": "approach"
+          },
+          {
+            "room": 2,
+            "time": 169.05,
+            "type": "encounter"
+          },
+          {
+            "next_room": 2,
+            "room": 2,
+            "time": 177.45,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 1,
+            "time": 177.6,
+            "type": "approach"
+          },
+          {
+            "level": 7,
+            "room": 1,
+            "time": 190.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 7,
+            "room": 1,
+            "time": 190.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 1,
+            "time": 191.85,
+            "type": "encounter"
+          },
+          {
+            "next_room": 4,
+            "room": 1,
+            "time": 202.65,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 2,
+            "time": 202.8,
+            "type": "approach"
+          },
+          {
+            "budget": 0.0,
+            "hall": "north",
+            "healed": 0.0,
+            "reason": "",
+            "room": 2,
+            "time": 216.45,
+            "type": "hunter_retreat"
+          },
+          {
+            "budget": 1143.846,
+            "hall": "north",
+            "healed": 0.0,
+            "reason": "",
+            "room": 2,
+            "time": 221.1,
+            "type": "hunter_recovering"
+          },
+          {
+            "budget": 1143.846,
+            "hall": "north",
+            "healed": 1143.846,
+            "reason": "completed",
+            "room": 2,
+            "time": 229.2,
+            "type": "hunter_recovery_ended"
+          },
+          {
+            "room": 3,
+            "time": 229.35,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 241.95,
+            "type": "encounter"
+          },
+          {
+            "room": 3,
+            "time": 250.05,
+            "type": "boss_transform"
+          },
+          {
+            "room": 3,
+            "time": 252.75,
+            "type": "boss_phase"
+          },
+          {
+            "room": 3,
+            "time": 255.45,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 255.45,
+            "type": "encounter"
+          },
+          {
+            "room": 6,
+            "time": 267.6,
+            "type": "approach"
+          },
+          {
+            "level": 8,
+            "room": 6,
+            "time": 277.65,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 8,
+            "room": 6,
+            "time": 277.65,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 6,
+            "time": 287.1,
+            "type": "encounter"
+          },
+          {
+            "room": 2,
+            "time": 299.25,
+            "type": "approach"
+          },
+          {
+            "room": 2,
+            "time": 310.05,
+            "type": "encounter"
+          },
+          {
+            "room": 2,
+            "time": 330.45,
+            "type": "boss_phase"
+          },
+          {
+            "room": 3,
+            "time": 337.95,
+            "type": "approach"
+          },
+          {
+            "level": 9,
+            "room": 3,
+            "time": 352.8,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 9,
+            "room": 3,
+            "time": 352.8,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 3,
+            "time": 361.95,
+            "type": "encounter"
+          },
+          {
+            "room": 2,
+            "time": 374.1,
+            "type": "approach"
+          },
+          {
+            "room": 2,
+            "time": 389.7,
+            "type": "encounter"
+          },
+          {
+            "room": 3,
+            "time": 411.3,
+            "type": "encounter"
+          },
+          {
+            "room": 3,
+            "time": 423.3,
+            "type": "boss_death"
+          }
+        ],
+        "evolution_buffs": [],
+        "evolution_level": 9,
+        "family": "zigzag",
+        "first_encounter": 46.5,
+        "first_player_encounter": -1.0,
+        "first_player_strike": 359.7,
+        "hunter_archetype": "ravager",
+        "hunter_attacks": 65,
+        "hunter_max_hp": 6924.97522531513,
+        "hunter_remaining_hp": 0.0,
+        "hunter_retargets": 12,
+        "hunter_transformed": true,
+        "invalid": [],
+        "map_sha256": "4bb267b0bee0a0627975963a4bd8c3b2b4f81bcba0a2cbd48e8f6bff0f10e7f4",
+        "max_ledger_error": 0.0,
+        "npc_damage": 9583.63278144468,
+        "npc_hunter_damage": 7577.23278144468,
+        "outcome": "victory",
+        "peak_player_buildings": 0,
+        "peak_player_exposure": 0.0,
+        "peak_sleeping_npcs": 5,
+        "player_damage": 0.0,
+        "player_door_damage": 11.1474143999999,
+        "player_hunter_damage": 0.0,
+        "prior_passive_win": true,
+        "recovery_attempts": 1,
+        "recovery_visits": 1,
+        "repetition": 0,
+        "rooms": [
+          {
+            "alive": true,
+            "attack_seconds": 10.8,
+            "door_damage": 835.055802158154,
+            "door_strikes": 11,
+            "enemy_damage": 1897.4,
+            "hunter_damage": 675.0,
+            "owner": 3,
+            "room": 1,
+            "shape": "zigzag",
+            "shots": 76,
+            "target_seconds": 25.2,
+            "trait": "fortified"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 72.9,
+            "door_damage": 2731.34965756834,
+            "door_strikes": 39,
+            "enemy_damage": 2912.33525891317,
+            "hunter_damage": 2684.33525891317,
+            "owner": 4,
+            "room": 2,
+            "shape": "long",
+            "shots": 153,
+            "target_seconds": 160.05,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 44.1,
+            "door_damage": 2922.34354193549,
+            "door_strikes": 25,
+            "enemy_damage": 2581.89752253151,
+            "hunter_damage": 2461.89752253151,
+            "owner": 1,
+            "room": 3,
+            "shape": "long",
+            "shots": 116,
+            "target_seconds": 102.3,
+            "trait": "economy"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 104.455401599999,
+            "door_strikes": 1,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 2,
+            "room": 4,
+            "shape": "rectangle",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "fortified"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 11.1474143999999,
+            "door_strikes": 1,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 0,
+            "room": 5,
+            "shape": "l",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 48.45,
+            "door_damage": 1764.34805565678,
+            "door_strikes": 31,
+            "enemy_damage": 2192.0,
+            "hunter_damage": 1756.0,
+            "owner": 5,
+            "room": 6,
+            "shape": "u",
+            "shots": 115,
+            "target_seconds": 95.85,
+            "trait": "economy"
+          }
+        ],
+        "simulated_seconds": 423.3,
+        "speed_budget_violations": 0,
+        "steps": 2822
+      },
+      "after": {
+        "blocked_motion_steps": 0,
+        "case": [
+          "stage_4",
+          "hell",
+          7338,
+          4,
+          "passive"
+        ],
+        "eliminations": 5,
+        "event_counts": {
+          "approach": 6,
+          "archetype_warning": 27,
+          "bed_upgrade": 9,
+          "boss_ability_activate": 4,
+          "boss_ability_warning": 4,
+          "boss_awakened": 1,
+          "boss_impact": 1,
+          "boss_phase": 1,
+          "boss_resource_drain": 1,
+          "boss_transform": 1,
+          "boss_warning": 1,
+          "build": 13,
+          "building_upgrade": 7,
+          "charged_attack": 15,
+          "door_break": 5,
+          "door_damage": 99,
+          "door_upgrade": 11,
+          "elimination": 5,
+          "encounter": 5,
+          "hunter_ability": 10,
+          "hunter_ability_warning": 9,
+          "hunter_commit": 4,
+          "hunter_evolved": 5,
+          "hunter_recovery": 15,
+          "nightmare_impact": 20,
+          "nightmare_level": 5,
+          "nightmare_release": 4,
+          "nightmare_warning": 4,
+          "repair": 48,
+          "survivor_attack": 5,
+          "survivor_fear": 5,
+          "undead_spawn": 10
+        },
+        "events": [
+          {
+            "level": 5,
+            "room": 0,
+            "time": 0.15,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 5,
+            "room": 5,
+            "time": 0.15,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 2,
+            "time": 40.05,
+            "type": "approach"
+          },
+          {
+            "room": 2,
+            "time": 46.5,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 2,
+            "time": 90.6,
+            "type": "hunter_commit"
+          },
+          {
+            "room": 2,
+            "time": 98.7,
+            "type": "door_break"
+          },
+          {
+            "room": 2,
+            "time": 100.95,
+            "type": "elimination"
+          },
+          {
+            "room": 2,
+            "source": "Hunter",
+            "time": 100.95,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 6,
+            "time": 105.45,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 112.35,
+            "type": "encounter"
+          },
+          {
+            "level": 6,
+            "room": 6,
+            "time": 115.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 6,
+            "room": 6,
+            "time": 115.05,
+            "type": "nightmare_level"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 6,
+            "time": 121.05,
+            "type": "hunter_commit"
+          },
+          {
+            "room": 6,
+            "time": 151.95,
+            "type": "door_break"
+          },
+          {
+            "room": 6,
+            "time": 154.05,
+            "type": "elimination"
+          },
+          {
+            "room": 6,
+            "source": "Hunter",
+            "time": 154.05,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 3,
+            "time": 157.8,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 172.65,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 3,
+            "time": 181.05,
+            "type": "hunter_commit"
+          },
+          {
+            "room": 3,
+            "time": 189.45,
+            "type": "door_break"
+          },
+          {
+            "level": 7,
+            "room": 3,
+            "time": 190.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 7,
+            "room": 3,
+            "time": 190.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 3,
+            "time": 191.55,
+            "type": "elimination"
+          },
+          {
+            "room": 3,
+            "source": "Hunter",
+            "time": 191.55,
+            "type": "hunter_evolved"
+          },
+          {
+            "level": 8,
+            "room": 3,
+            "time": 191.7,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 8,
+            "room": 3,
+            "time": 191.7,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 1,
+            "time": 195.15,
+            "type": "approach"
+          },
+          {
+            "room": 1,
+            "time": 217.8,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 1,
+            "time": 228.6,
+            "type": "hunter_commit"
+          },
+          {
+            "room": 1,
+            "time": 244.2,
+            "type": "door_break"
+          },
+          {
+            "room": 1,
+            "time": 246.15,
+            "type": "elimination"
+          },
+          {
+            "room": 1,
+            "source": "Hunter",
+            "time": 246.15,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 5,
+            "time": 248.25,
+            "type": "approach"
+          },
+          {
+            "room": 5,
+            "time": 250.05,
+            "type": "boss_transform"
+          },
+          {
+            "room": 5,
+            "time": 252.75,
+            "type": "boss_phase"
+          },
+          {
+            "room": 5,
+            "time": 255.9,
+            "type": "approach"
+          },
+          {
+            "level": 9,
+            "room": 5,
+            "time": 265.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 9,
+            "room": 5,
+            "time": 265.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 5,
+            "time": 282.45,
+            "type": "encounter"
+          },
+          {
+            "room": 5,
+            "time": 283.65,
+            "type": "door_break"
+          },
+          {
+            "room": 5,
+            "time": 286.35,
+            "type": "elimination"
+          },
+          {
+            "room": 5,
+            "source": "Hunter",
+            "time": 286.35,
+            "type": "hunter_evolved"
+          }
+        ],
+        "evolution_buffs": [
+          "savage_strike",
+          "door_crusher",
+          "shadow_step",
+          "deaths_momentum",
+          "iron_skin"
+        ],
+        "evolution_level": 9,
+        "family": "zigzag",
+        "first_encounter": 46.5,
+        "first_player_encounter": 282.45,
+        "first_player_strike": 283.65,
+        "hunter_archetype": "ravager",
+        "hunter_attacks": 79,
+        "hunter_max_hp": 7046.71899096804,
+        "hunter_remaining_hp": 3583.97777875979,
+        "hunter_retargets": 0,
+        "hunter_transformed": true,
+        "invalid": [],
+        "map_sha256": "4bb267b0bee0a0627975963a4bd8c3b2b4f81bcba0a2cbd48e8f6bff0f10e7f4",
+        "max_ledger_error": 0.0,
+        "npc_damage": 2889.0,
+        "npc_hunter_damage": 2889.0,
+        "outcome": "defeat",
+        "peak_player_buildings": 0,
+        "peak_player_exposure": 1.35,
+        "peak_sleeping_npcs": 5,
+        "player_damage": 0.0,
+        "player_door_damage": 135.0,
+        "player_hunter_damage": 0.0,
+        "prior_passive_win": true,
+        "recovery_attempts": 0,
+        "recovery_visits": 0,
+        "repetition": 0,
+        "rooms": [
+          {
+            "alive": false,
+            "attack_seconds": 28.35,
+            "door_damage": 2028.10325,
+            "door_strikes": 20,
+            "enemy_damage": 1188.0,
+            "hunter_damage": 1188.0,
+            "owner": 3,
+            "room": 1,
+            "shape": "zigzag",
+            "shots": 44,
+            "target_seconds": 53.1,
+            "trait": "fortified"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 54.45,
+            "door_damage": 860.099999999998,
+            "door_strikes": 40,
+            "enemy_damage": 567.0,
+            "hunter_damage": 567.0,
+            "owner": 4,
+            "room": 2,
+            "shape": "long",
+            "shots": 63,
+            "target_seconds": 65.4,
+            "trait": "power"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 18.9,
+            "door_damage": 997.7645,
+            "door_strikes": 14,
+            "enemy_damage": 684.0,
+            "hunter_damage": 684.0,
+            "owner": 1,
+            "room": 3,
+            "shape": "long",
+            "shots": 28,
+            "target_seconds": 37.35,
+            "trait": "economy"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 0.0,
+            "door_strikes": 0,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 2,
+            "room": 4,
+            "shape": "rectangle",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "fortified"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 3.9,
+            "door_damage": 135.0,
+            "door_strikes": 1,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 0,
+            "room": 5,
+            "shape": "l",
+            "shots": 0,
+            "target_seconds": 38.25,
+            "trait": "power"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 41.7,
+            "door_damage": 1373.5,
+            "door_strikes": 24,
+            "enemy_damage": 450.0,
+            "hunter_damage": 450.0,
+            "owner": 5,
+            "room": 6,
+            "shape": "u",
+            "shots": 50,
+            "target_seconds": 52.35,
+            "trait": "economy"
+          }
+        ],
+        "simulated_seconds": 286.35,
+        "speed_budget_violations": 0,
+        "steps": 1909
+      }
+    },
+    {
+      "fixture": [
+        "stage_1",
+        "standard",
+        7839,
+        5,
+        "passive"
+      ],
+      "before": {
+        "blocked_motion_steps": 0,
+        "case": [
+          "stage_1",
+          "standard",
+          7839,
+          5,
+          "passive"
+        ],
+        "eliminations": 3,
+        "event_counts": {
+          "approach": 6,
+          "arcane_impact": 11,
+          "archetype_warning": 5,
+          "bed_upgrade": 10,
+          "build": 20,
+          "building_upgrade": 10,
+          "door_break": 3,
+          "door_damage": 132,
+          "door_upgrade": 10,
+          "elimination": 3,
+          "encounter": 5,
+          "hunter_ability": 12,
+          "hunter_ability_warning": 14,
+          "hunter_evolved": 3,
+          "hunter_reassess": 1,
+          "hunter_recovering": 1,
+          "hunter_recovery_ended": 1,
+          "hunter_retreat": 1,
+          "magic_absorb": 2,
+          "magic_shield": 4,
+          "nightmare_impact": 1,
+          "nightmare_level": 5,
+          "nightmare_release": 1,
+          "nightmare_warning": 1,
+          "repair": 31,
+          "survivor_attack": 3,
+          "survivor_fear": 3
+        },
+        "events": [
+          {
+            "room": 4,
+            "time": 40.05,
+            "type": "approach"
+          },
+          {
+            "room": 4,
+            "time": 52.8,
+            "type": "encounter"
+          },
+          {
+            "next_room": 1,
+            "room": 4,
+            "time": 96.3,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 2,
+            "time": 96.45,
+            "type": "approach"
+          },
+          {
+            "level": 2,
+            "room": 2,
+            "time": 115.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 2,
+            "room": 2,
+            "time": 115.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 2,
+            "time": 117.45,
+            "type": "encounter"
+          },
+          {
+            "room": 2,
+            "time": 133.35,
+            "type": "door_break"
+          },
+          {
+            "room": 2,
+            "time": 136.8,
+            "type": "elimination"
+          },
+          {
+            "room": 2,
+            "source": "Hunter",
+            "time": 136.8,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 4,
+            "time": 141.9,
+            "type": "approach"
+          },
+          {
+            "room": 4,
+            "time": 161.4,
+            "type": "encounter"
+          },
+          {
+            "room": 4,
+            "time": 173.4,
+            "type": "door_break"
+          },
+          {
+            "room": 4,
+            "time": 176.7,
+            "type": "elimination"
+          },
+          {
+            "room": 4,
+            "source": "Hunter",
+            "time": 176.7,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 3,
+            "time": 180.75,
+            "type": "approach"
+          },
+          {
+            "level": 3,
+            "room": 3,
+            "time": 190.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 3,
+            "room": 3,
+            "time": 190.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 3,
+            "time": 202.2,
+            "type": "encounter"
+          },
+          {
+            "room": 3,
+            "time": 238.5,
+            "type": "door_break"
+          },
+          {
+            "room": 3,
+            "time": 241.65,
+            "type": "elimination"
+          },
+          {
+            "room": 3,
+            "source": "Hunter",
+            "time": 241.65,
+            "type": "hunter_evolved"
+          },
+          {
+            "level": 4,
+            "room": 3,
+            "time": 241.8,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 4,
+            "room": 3,
+            "time": 241.8,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 6,
+            "time": 246.6,
+            "type": "approach"
+          },
+          {
+            "level": 5,
+            "room": 6,
+            "time": 265.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 5,
+            "room": 6,
+            "time": 265.05,
+            "type": "nightmare_level"
+          },
+          {
+            "budget": 0.0,
+            "hall": "south",
+            "healed": 0.0,
+            "reason": "",
+            "room": 6,
+            "time": 279.9,
+            "type": "hunter_retreat"
+          },
+          {
+            "budget": 871.200000000001,
+            "hall": "south",
+            "healed": 0.0,
+            "reason": "",
+            "room": 6,
+            "time": 285.3,
+            "type": "hunter_recovering"
+          },
+          {
+            "budget": 871.200000000001,
+            "hall": "south",
+            "healed": 871.200000000001,
+            "reason": "completed",
+            "room": 6,
+            "time": 293.4,
+            "type": "hunter_recovery_ended"
+          },
+          {
+            "room": 5,
+            "time": 293.55,
+            "type": "approach"
+          },
+          {
+            "room": 5,
+            "time": 339.45,
+            "type": "encounter"
+          },
+          {
+            "level": 6,
+            "room": 5,
+            "time": 353.55,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 6,
+            "room": 5,
+            "time": 353.55,
+            "type": "nightmare_level"
+          }
+        ],
+        "evolution_buffs": [
+          "blood_frenzy",
+          "rapid_recovery",
+          "savage_strike"
+        ],
+        "evolution_level": 6,
+        "family": "radial",
+        "first_encounter": 52.8,
+        "first_player_encounter": -1.0,
+        "first_player_strike": 279.9,
+        "hunter_archetype": "witch",
+        "hunter_attacks": 120,
+        "hunter_max_hp": 4928.00000000001,
+        "hunter_remaining_hp": 0.0,
+        "hunter_retargets": 1,
+        "hunter_transformed": false,
+        "invalid": [],
+        "map_sha256": "0d7d6e525a52e3cab52b35a8aafb274bfb4b4fdd87c1b02c7fbd6f749df112eb",
+        "max_ledger_error": 6.103515625e-05,
+        "npc_damage": 5799.2,
+        "npc_hunter_damage": 5799.2,
+        "outcome": "victory",
+        "peak_player_buildings": 0,
+        "peak_player_exposure": 0.0,
+        "peak_sleeping_npcs": 5,
+        "player_damage": 0.0,
+        "player_door_damage": 86.5556545351683,
+        "player_hunter_damage": 0.0,
+        "prior_passive_win": true,
+        "recovery_attempts": 1,
+        "recovery_visits": 1,
+        "repetition": 0,
+        "rooms": [
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 0.0,
+            "door_strikes": 0,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 4,
+            "room": 1,
+            "shape": "rectangle",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "fortified"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 19.35,
+            "door_damage": 410.0,
+            "door_strikes": 16,
+            "enemy_damage": 414.0,
+            "hunter_damage": 414.0,
+            "owner": 5,
+            "room": 2,
+            "shape": "u",
+            "shots": 29,
+            "target_seconds": 45.45,
+            "trait": "power"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 39.45,
+            "door_damage": 2093.65,
+            "door_strikes": 42,
+            "enemy_damage": 2435.0,
+            "hunter_damage": 2435.0,
+            "owner": 3,
+            "room": 3,
+            "shape": "l",
+            "shots": 89,
+            "target_seconds": 65.85,
+            "trait": "economy"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 58.8,
+            "door_damage": 1115.0,
+            "door_strikes": 54,
+            "enemy_damage": 927.0,
+            "hunter_damage": 927.0,
+            "owner": 1,
+            "room": 4,
+            "shape": "zigzag",
+            "shots": 79,
+            "target_seconds": 95.25,
+            "trait": "fortified"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 16.8,
+            "door_damage": 1412.3213056,
+            "door_strikes": 19,
+            "enemy_damage": 2023.2,
+            "hunter_damage": 2023.2,
+            "owner": 2,
+            "room": 5,
+            "shape": "l",
+            "shots": 48,
+            "target_seconds": 62.85,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 86.5556545351683,
+            "door_strikes": 1,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 0,
+            "room": 6,
+            "shape": "long",
+            "shots": 0,
+            "target_seconds": 46.95,
+            "trait": "economy"
+          }
+        ],
+        "simulated_seconds": 356.25,
+        "speed_budget_violations": 0,
+        "steps": 2375
+      },
+      "after": {
+        "blocked_motion_steps": 0,
+        "case": [
+          "stage_1",
+          "standard",
+          7839,
+          5,
+          "passive"
+        ],
+        "eliminations": 3,
+        "event_counts": {
+          "approach": 6,
+          "arcane_impact": 11,
+          "archetype_warning": 5,
+          "bed_upgrade": 10,
+          "build": 20,
+          "building_upgrade": 10,
+          "door_break": 3,
+          "door_damage": 132,
+          "door_upgrade": 10,
+          "elimination": 3,
+          "encounter": 5,
+          "hunter_ability": 12,
+          "hunter_ability_warning": 14,
+          "hunter_evolved": 3,
+          "hunter_reassess": 1,
+          "hunter_recovering": 1,
+          "hunter_recovery_ended": 1,
+          "hunter_retreat": 1,
+          "magic_absorb": 2,
+          "magic_shield": 4,
+          "nightmare_impact": 1,
+          "nightmare_level": 5,
+          "nightmare_release": 1,
+          "nightmare_warning": 1,
+          "repair": 31,
+          "survivor_attack": 3,
+          "survivor_fear": 3
+        },
+        "events": [
+          {
+            "room": 4,
+            "time": 40.05,
+            "type": "approach"
+          },
+          {
+            "room": 4,
+            "time": 52.8,
+            "type": "encounter"
+          },
+          {
+            "next_room": 1,
+            "room": 4,
+            "time": 96.3,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 2,
+            "time": 96.45,
+            "type": "approach"
+          },
+          {
+            "level": 2,
+            "room": 2,
+            "time": 115.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 2,
+            "room": 2,
+            "time": 115.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 2,
+            "time": 117.45,
+            "type": "encounter"
+          },
+          {
+            "room": 2,
+            "time": 133.35,
+            "type": "door_break"
+          },
+          {
+            "room": 2,
+            "time": 136.8,
+            "type": "elimination"
+          },
+          {
+            "room": 2,
+            "source": "Hunter",
+            "time": 136.8,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 4,
+            "time": 141.9,
+            "type": "approach"
+          },
+          {
+            "room": 4,
+            "time": 161.4,
+            "type": "encounter"
+          },
+          {
+            "room": 4,
+            "time": 173.4,
+            "type": "door_break"
+          },
+          {
+            "room": 4,
+            "time": 176.7,
+            "type": "elimination"
+          },
+          {
+            "room": 4,
+            "source": "Hunter",
+            "time": 176.7,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 3,
+            "time": 180.75,
+            "type": "approach"
+          },
+          {
+            "level": 3,
+            "room": 3,
+            "time": 190.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 3,
+            "room": 3,
+            "time": 190.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 3,
+            "time": 202.2,
+            "type": "encounter"
+          },
+          {
+            "room": 3,
+            "time": 238.5,
+            "type": "door_break"
+          },
+          {
+            "room": 3,
+            "time": 241.65,
+            "type": "elimination"
+          },
+          {
+            "room": 3,
+            "source": "Hunter",
+            "time": 241.65,
+            "type": "hunter_evolved"
+          },
+          {
+            "level": 4,
+            "room": 3,
+            "time": 241.8,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 4,
+            "room": 3,
+            "time": 241.8,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 6,
+            "time": 246.6,
+            "type": "approach"
+          },
+          {
+            "level": 5,
+            "room": 6,
+            "time": 265.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 5,
+            "room": 6,
+            "time": 265.05,
+            "type": "nightmare_level"
+          },
+          {
+            "budget": 0.0,
+            "hall": "south",
+            "healed": 0.0,
+            "reason": "",
+            "room": 6,
+            "time": 279.9,
+            "type": "hunter_retreat"
+          },
+          {
+            "budget": 871.200000000001,
+            "hall": "south",
+            "healed": 0.0,
+            "reason": "",
+            "room": 6,
+            "time": 285.3,
+            "type": "hunter_recovering"
+          },
+          {
+            "budget": 871.200000000001,
+            "hall": "south",
+            "healed": 871.200000000001,
+            "reason": "completed",
+            "room": 6,
+            "time": 293.4,
+            "type": "hunter_recovery_ended"
+          },
+          {
+            "room": 5,
+            "time": 293.55,
+            "type": "approach"
+          },
+          {
+            "room": 5,
+            "time": 339.45,
+            "type": "encounter"
+          },
+          {
+            "level": 6,
+            "room": 5,
+            "time": 353.55,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 6,
+            "room": 5,
+            "time": 353.55,
+            "type": "nightmare_level"
+          }
+        ],
+        "evolution_buffs": [
+          "blood_frenzy",
+          "rapid_recovery",
+          "savage_strike"
+        ],
+        "evolution_level": 6,
+        "family": "radial",
+        "first_encounter": 52.8,
+        "first_player_encounter": -1.0,
+        "first_player_strike": 279.9,
+        "hunter_archetype": "witch",
+        "hunter_attacks": 120,
+        "hunter_max_hp": 4928.00000000001,
+        "hunter_remaining_hp": 0.0,
+        "hunter_retargets": 1,
+        "hunter_transformed": false,
+        "invalid": [],
+        "map_sha256": "0d7d6e525a52e3cab52b35a8aafb274bfb4b4fdd87c1b02c7fbd6f749df112eb",
+        "max_ledger_error": 6.103515625e-05,
+        "npc_damage": 5799.2,
+        "npc_hunter_damage": 5799.2,
+        "outcome": "victory",
+        "peak_player_buildings": 0,
+        "peak_player_exposure": 0.0,
+        "peak_sleeping_npcs": 5,
+        "player_damage": 0.0,
+        "player_door_damage": 86.5556545351683,
+        "player_hunter_damage": 0.0,
+        "prior_passive_win": true,
+        "recovery_attempts": 1,
+        "recovery_visits": 1,
+        "repetition": 0,
+        "rooms": [
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 0.0,
+            "door_strikes": 0,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 4,
+            "room": 1,
+            "shape": "rectangle",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "fortified"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 19.35,
+            "door_damage": 410.0,
+            "door_strikes": 16,
+            "enemy_damage": 414.0,
+            "hunter_damage": 414.0,
+            "owner": 5,
+            "room": 2,
+            "shape": "u",
+            "shots": 29,
+            "target_seconds": 45.45,
+            "trait": "power"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 39.45,
+            "door_damage": 2093.65,
+            "door_strikes": 42,
+            "enemy_damage": 2435.0,
+            "hunter_damage": 2435.0,
+            "owner": 3,
+            "room": 3,
+            "shape": "l",
+            "shots": 89,
+            "target_seconds": 65.85,
+            "trait": "economy"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 58.8,
+            "door_damage": 1115.0,
+            "door_strikes": 54,
+            "enemy_damage": 927.0,
+            "hunter_damage": 927.0,
+            "owner": 1,
+            "room": 4,
+            "shape": "zigzag",
+            "shots": 79,
+            "target_seconds": 95.25,
+            "trait": "fortified"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 16.8,
+            "door_damage": 1412.3213056,
+            "door_strikes": 19,
+            "enemy_damage": 2023.2,
+            "hunter_damage": 2023.2,
+            "owner": 2,
+            "room": 5,
+            "shape": "l",
+            "shots": 48,
+            "target_seconds": 62.85,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 86.5556545351683,
+            "door_strikes": 1,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 0,
+            "room": 6,
+            "shape": "long",
+            "shots": 0,
+            "target_seconds": 46.95,
+            "trait": "economy"
+          }
+        ],
+        "simulated_seconds": 356.25,
+        "speed_budget_violations": 0,
+        "steps": 2375
+      }
+    },
+    {
+      "fixture": [
+        "stage_2",
+        "hard",
+        12077,
+        0,
+        "passive"
+      ],
+      "before": {
+        "blocked_motion_steps": 0,
+        "case": [
+          "stage_2",
+          "hard",
+          12077,
+          0,
+          "passive"
+        ],
+        "eliminations": 0,
+        "event_counts": {
+          "approach": 16,
+          "arcane_impact": 2,
+          "archetype_warning": 30,
+          "bed_upgrade": 14,
+          "boss_ability_activate": 11,
+          "boss_ability_end": 4,
+          "boss_ability_warning": 14,
+          "boss_awakened": 1,
+          "boss_death": 1,
+          "boss_impact": 15,
+          "boss_phase": 2,
+          "boss_resource_drain": 1,
+          "boss_surge": 3,
+          "boss_transform": 1,
+          "boss_warning": 22,
+          "build": 20,
+          "building_upgrade": 31,
+          "charged_attack": 11,
+          "door_damage": 139,
+          "door_upgrade": 15,
+          "encounter": 15,
+          "hunter_ability": 15,
+          "hunter_ability_warning": 17,
+          "hunter_reassess": 9,
+          "hunter_recovering": 1,
+          "hunter_recovery": 11,
+          "hunter_recovery_ended": 1,
+          "hunter_retreat": 1,
+          "nightmare_impact": 5,
+          "nightmare_level": 5,
+          "nightmare_release": 2,
+          "nightmare_warning": 2,
+          "repair": 64,
+          "scythe_embed": 1,
+          "scythe_end": 1,
+          "scythe_throw": 1,
+          "scythe_tick": 4,
+          "undead_attack": 26,
+          "undead_death": 4,
+          "undead_spawn": 14
+        },
+        "events": [
+          {
+            "level": 2,
+            "room": 0,
+            "time": 0.15,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 2,
+            "room": 1,
+            "time": 0.15,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 6,
+            "time": 40.05,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 42.9,
+            "type": "encounter"
+          },
+          {
+            "next_room": 3,
+            "room": 6,
+            "time": 54.15,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 4,
+            "time": 54.3,
+            "type": "approach"
+          },
+          {
+            "room": 4,
+            "time": 63.45,
+            "type": "encounter"
+          },
+          {
+            "next_room": 2,
+            "room": 4,
+            "time": 74.7,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 3,
+            "time": 74.85,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 81.15,
+            "type": "encounter"
+          },
+          {
+            "next_room": 3,
+            "room": 3,
+            "time": 103.95,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 4,
+            "time": 104.1,
+            "type": "approach"
+          },
+          {
+            "room": 4,
+            "time": 110.25,
+            "type": "encounter"
+          },
+          {
+            "level": 3,
+            "room": 4,
+            "time": 115.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 3,
+            "room": 4,
+            "time": 115.05,
+            "type": "nightmare_level"
+          },
+          {
+            "next_room": 2,
+            "room": 4,
+            "time": 121.5,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 3,
+            "time": 121.65,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 127.8,
+            "type": "encounter"
+          },
+          {
+            "next_room": 3,
+            "room": 3,
+            "time": 139.05,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 4,
+            "time": 139.2,
+            "type": "approach"
+          },
+          {
+            "room": 4,
+            "time": 145.35,
+            "type": "encounter"
+          },
+          {
+            "next_room": 5,
+            "room": 4,
+            "time": 156.6,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 6,
+            "time": 156.75,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 165.6,
+            "type": "encounter"
+          },
+          {
+            "next_room": 3,
+            "room": 6,
+            "time": 176.85,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 4,
+            "time": 177.0,
+            "type": "approach"
+          },
+          {
+            "room": 4,
+            "time": 185.85,
+            "type": "encounter"
+          },
+          {
+            "level": 4,
+            "room": 4,
+            "time": 190.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 4,
+            "room": 4,
+            "time": 190.05,
+            "type": "nightmare_level"
+          },
+          {
+            "next_room": 2,
+            "room": 4,
+            "time": 197.1,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 3,
+            "time": 197.25,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 203.4,
+            "type": "encounter"
+          },
+          {
+            "budget": 0.0,
+            "hall": "north",
+            "healed": 0.0,
+            "reason": "",
+            "room": 3,
+            "time": 210.75,
+            "type": "hunter_retreat"
+          },
+          {
+            "budget": 975.64896,
+            "hall": "north",
+            "healed": 0.0,
+            "reason": "",
+            "room": 3,
+            "time": 215.25,
+            "type": "hunter_recovering"
+          },
+          {
+            "budget": 975.64896,
+            "hall": "north",
+            "healed": 975.648959999998,
+            "reason": "completed",
+            "room": 3,
+            "time": 223.35,
+            "type": "hunter_recovery_ended"
+          },
+          {
+            "room": 4,
+            "time": 223.5,
+            "type": "approach"
+          },
+          {
+            "room": 4,
+            "time": 228.3,
+            "type": "encounter"
+          },
+          {
+            "next_room": 2,
+            "room": 4,
+            "time": 244.5,
+            "type": "hunter_reassess"
+          },
+          {
+            "room": 6,
+            "time": 244.65,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 250.05,
+            "type": "boss_transform"
+          },
+          {
+            "room": 6,
+            "time": 252.75,
+            "type": "boss_phase"
+          },
+          {
+            "room": 6,
+            "time": 254.85,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 258.75,
+            "type": "encounter"
+          },
+          {
+            "room": 4,
+            "time": 275.1,
+            "type": "approach"
+          },
+          {
+            "level": 5,
+            "room": 4,
+            "time": 277.5,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 5,
+            "room": 4,
+            "time": 277.5,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 4,
+            "time": 287.7,
+            "type": "encounter"
+          },
+          {
+            "room": 6,
+            "time": 303.9,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 316.35,
+            "type": "encounter"
+          },
+          {
+            "room": 6,
+            "time": 321.15,
+            "type": "boss_phase"
+          },
+          {
+            "room": 4,
+            "time": 332.55,
+            "type": "approach"
+          },
+          {
+            "room": 4,
+            "time": 344.25,
+            "type": "encounter"
+          },
+          {
+            "level": 6,
+            "room": 4,
+            "time": 352.65,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 6,
+            "room": 4,
+            "time": 352.65,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 3,
+            "time": 360.9,
+            "type": "approach"
+          },
+          {
+            "room": 4,
+            "time": 366.15,
+            "type": "encounter"
+          },
+          {
+            "room": 4,
+            "time": 378.45,
+            "type": "boss_death"
+          }
+        ],
+        "evolution_buffs": [],
+        "evolution_level": 6,
+        "family": "hybrid",
+        "first_encounter": 42.9,
+        "first_player_encounter": -1.0,
+        "first_player_strike": 331.2,
+        "hunter_archetype": "ravager",
+        "hunter_attacks": 93,
+        "hunter_max_hp": 6014.1803,
+        "hunter_remaining_hp": 0.0,
+        "hunter_retargets": 13,
+        "hunter_transformed": true,
+        "invalid": [],
+        "map_sha256": "f675b7655d9dd123710aabf2b26474c0c8a0367a6c5005133537fd2e952bcb2d",
+        "max_ledger_error": 0.0,
+        "npc_damage": 7043.54970200992,
+        "npc_hunter_damage": 6563.54970200991,
+        "outcome": "victory",
+        "peak_player_buildings": 0,
+        "peak_player_exposure": 0.0,
+        "peak_sleeping_npcs": 5,
+        "player_damage": 0.0,
+        "player_door_damage": 12.5380224,
+        "player_hunter_damage": 0.0,
+        "prior_passive_win": true,
+        "recovery_attempts": 1,
+        "recovery_visits": 1,
+        "repetition": 0,
+        "rooms": [
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 12.5380224,
+            "door_strikes": 1,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 0,
+            "room": 1,
+            "shape": "long",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 102.161664,
+            "door_strikes": 1,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 5,
+            "room": 2,
+            "shape": "zigzag",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "economy"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 41.4,
+            "door_damage": 1150.00506896838,
+            "door_strikes": 25,
+            "enemy_damage": 702.0,
+            "hunter_damage": 702.0,
+            "owner": 2,
+            "room": 3,
+            "shape": "u",
+            "shots": 63,
+            "target_seconds": 77.25,
+            "trait": "fortified"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 106.05,
+            "door_damage": 4590.29293053331,
+            "door_strikes": 87,
+            "enemy_damage": 4429.17584700994,
+            "hunter_damage": 3949.17584700993,
+            "owner": 4,
+            "room": 4,
+            "shape": "u",
+            "shots": 207,
+            "target_seconds": 167.7,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 102.161664,
+            "door_strikes": 1,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 3,
+            "room": 5,
+            "shape": "rectangle",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "economy"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 54.75,
+            "door_damage": 1809.73705342003,
+            "door_strikes": 24,
+            "enemy_damage": 1912.37385499998,
+            "hunter_damage": 1912.37385499998,
+            "owner": 1,
+            "room": 6,
+            "shape": "l",
+            "shots": 103,
+            "target_seconds": 93.6,
+            "trait": "fortified"
+          }
+        ],
+        "simulated_seconds": 378.45,
+        "speed_budget_violations": 0,
+        "steps": 2523
+      },
+      "after": {
+        "blocked_motion_steps": 0,
+        "case": [
+          "stage_2",
+          "hard",
+          12077,
+          0,
+          "passive"
+        ],
+        "eliminations": 4,
+        "event_counts": {
+          "approach": 4,
+          "archetype_warning": 26,
+          "bed_upgrade": 9,
+          "build": 12,
+          "building_upgrade": 7,
+          "charged_attack": 11,
+          "door_break": 4,
+          "door_damage": 73,
+          "door_upgrade": 7,
+          "elimination": 4,
+          "encounter": 4,
+          "hunter_ability": 4,
+          "hunter_ability_warning": 6,
+          "hunter_commit": 3,
+          "hunter_evolved": 4,
+          "hunter_recovery": 11,
+          "nightmare_level": 4,
+          "nightmare_release": 1,
+          "nightmare_warning": 1,
+          "repair": 37,
+          "survivor_attack": 4,
+          "survivor_fear": 4
+        },
+        "events": [
+          {
+            "level": 2,
+            "room": 0,
+            "time": 0.15,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 2,
+            "room": 1,
+            "time": 0.15,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 6,
+            "time": 40.05,
+            "type": "approach"
+          },
+          {
+            "room": 6,
+            "time": 42.9,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 6,
+            "time": 54.15,
+            "type": "hunter_commit"
+          },
+          {
+            "room": 6,
+            "time": 73.8,
+            "type": "door_break"
+          },
+          {
+            "room": 6,
+            "time": 76.5,
+            "type": "elimination"
+          },
+          {
+            "room": 6,
+            "source": "Hunter",
+            "time": 76.5,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 4,
+            "time": 80.25,
+            "type": "approach"
+          },
+          {
+            "room": 4,
+            "time": 88.5,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 4,
+            "time": 99.75,
+            "type": "hunter_commit"
+          },
+          {
+            "level": 3,
+            "room": 4,
+            "time": 115.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 3,
+            "room": 4,
+            "time": 115.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 4,
+            "time": 134.25,
+            "type": "door_break"
+          },
+          {
+            "room": 4,
+            "time": 136.8,
+            "type": "elimination"
+          },
+          {
+            "room": 4,
+            "source": "Hunter",
+            "time": 136.8,
+            "type": "hunter_evolved"
+          },
+          {
+            "room": 3,
+            "time": 140.25,
+            "type": "approach"
+          },
+          {
+            "room": 3,
+            "time": 144.75,
+            "type": "encounter"
+          },
+          {
+            "reason": "breach_progress",
+            "room": 3,
+            "time": 156.0,
+            "type": "hunter_commit"
+          },
+          {
+            "room": 3,
+            "time": 183.75,
+            "type": "door_break"
+          },
+          {
+            "room": 3,
+            "time": 186.15,
+            "type": "elimination"
+          },
+          {
+            "room": 3,
+            "source": "Hunter",
+            "time": 186.15,
+            "type": "hunter_evolved"
+          },
+          {
+            "level": 4,
+            "room": 3,
+            "time": 186.3,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 4,
+            "room": 3,
+            "time": 186.3,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 1,
+            "time": 189.15,
+            "type": "approach"
+          },
+          {
+            "level": 5,
+            "room": 1,
+            "time": 190.05,
+            "type": "observed_evolution_level"
+          },
+          {
+            "level": 5,
+            "room": 1,
+            "time": 190.05,
+            "type": "nightmare_level"
+          },
+          {
+            "room": 1,
+            "time": 217.35,
+            "type": "encounter"
+          },
+          {
+            "room": 1,
+            "time": 221.1,
+            "type": "door_break"
+          },
+          {
+            "room": 1,
+            "time": 223.35,
+            "type": "elimination"
+          },
+          {
+            "room": 1,
+            "source": "Hunter",
+            "time": 223.35,
+            "type": "hunter_evolved"
+          }
+        ],
+        "evolution_buffs": [
+          "cursed_armor",
+          "predator_rush",
+          "savage_strike",
+          "rapid_recovery"
+        ],
+        "evolution_level": 5,
+        "family": "hybrid",
+        "first_encounter": 42.9,
+        "first_player_encounter": 217.35,
+        "first_player_strike": 220.05,
+        "hunter_archetype": "ravager",
+        "hunter_attacks": 73,
+        "hunter_max_hp": 5494.69396553789,
+        "hunter_remaining_hp": 3721.69396553789,
+        "hunter_retargets": 0,
+        "hunter_transformed": false,
+        "invalid": [],
+        "map_sha256": "f675b7655d9dd123710aabf2b26474c0c8a0367a6c5005133537fd2e952bcb2d",
+        "max_ledger_error": 0.0,
+        "npc_damage": 1773.0,
+        "npc_hunter_damage": 1773.0,
+        "outcome": "defeat",
+        "peak_player_buildings": 0,
+        "peak_player_exposure": 3.9,
+        "peak_sleeping_npcs": 5,
+        "player_damage": 0.0,
+        "player_door_damage": 135.0,
+        "player_hunter_damage": 0.0,
+        "prior_passive_win": true,
+        "recovery_attempts": 0,
+        "recovery_visits": 0,
+        "repetition": 0,
+        "rooms": [
+          {
+            "alive": false,
+            "attack_seconds": 6.0,
+            "door_damage": 135.0,
+            "door_strikes": 2,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 0,
+            "room": 1,
+            "shape": "long",
+            "shots": 0,
+            "target_seconds": 34.35,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 0.0,
+            "door_strikes": 0,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 5,
+            "room": 2,
+            "shape": "zigzag",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "economy"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 41.4,
+            "door_damage": 1390.56875,
+            "door_strikes": 23,
+            "enemy_damage": 918.0,
+            "hunter_damage": 918.0,
+            "owner": 2,
+            "room": 3,
+            "shape": "u",
+            "shots": 55,
+            "target_seconds": 48.9,
+            "trait": "fortified"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 48.3,
+            "door_damage": 1128.353125,
+            "door_strikes": 26,
+            "enemy_damage": 495.0,
+            "hunter_damage": 495.0,
+            "owner": 4,
+            "room": 4,
+            "shape": "u",
+            "shots": 55,
+            "target_seconds": 60.0,
+            "trait": "power"
+          },
+          {
+            "alive": true,
+            "attack_seconds": 0.0,
+            "door_damage": 0.0,
+            "door_strikes": 0,
+            "enemy_damage": 0.0,
+            "hunter_damage": 0.0,
+            "owner": 3,
+            "room": 5,
+            "shape": "rectangle",
+            "shots": 0,
+            "target_seconds": 0.0,
+            "trait": "economy"
+          },
+          {
+            "alive": false,
+            "attack_seconds": 33.6,
+            "door_damage": 452.5,
+            "door_strikes": 22,
+            "enemy_damage": 360.0,
+            "hunter_damage": 360.0,
+            "owner": 1,
+            "room": 6,
+            "shape": "l",
+            "shots": 40,
+            "target_seconds": 40.2,
+            "trait": "fortified"
+          }
+        ],
+        "simulated_seconds": 223.35,
+        "speed_budget_violations": 0,
+        "steps": 1489
+      }
+    }
+  ],
+  "focused_hell_fixtures": [
+    [
+      "stage_2",
+      "hell",
+      10358,
+      1,
+      "balanced"
+    ],
+    [
+      "stage_4",
+      "hell",
+      12336,
+      3,
+      "balanced"
+    ],
+    [
+      "stage_5",
+      "hell",
+      3341,
+      0,
+      "balanced"
+    ],
+    [
+      "stage_5",
+      "hell",
+      8332,
+      5,
+      "balanced"
+    ],
+    [
+      "stage_2",
+      "hell",
+      5335,
+      2,
+      "balanced"
+    ]
+  ],
+  "same_map_alternate_rooms": {
+    "10358": {
+      "family": "labyrinth",
+      "original_room": 2,
+      "trials": 15,
+      "wins": 2,
+      "wins_by_room": {
+        "1": [
+          "needle_defense"
+        ],
+        "3": [],
+        "4": [
+          "balanced"
+        ],
+        "5": [],
+        "6": []
+      }
+    },
+    "12336": {
+      "family": "hybrid",
+      "original_room": 4,
+      "trials": 15,
+      "wins": 7,
+      "wins_by_room": {
+        "1": [],
+        "2": [],
+        "3": [
+          "balanced",
+          "needle_defense",
+          "survival_transition"
+        ],
+        "5": [
+          "balanced",
+          "survival_transition"
+        ],
+        "6": [
+          "balanced",
+          "needle_defense"
+        ]
+      }
+    }
+  }
+}

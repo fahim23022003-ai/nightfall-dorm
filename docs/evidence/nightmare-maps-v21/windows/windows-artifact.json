@@ -1,0 +1,36 @@
+{
+  "version": "0.7.0-overhaul",
+  "source_commit": "9bc53ea0b7eb4ec5f8c12162d8bfdbcf6cba47a1",
+  "engine": "4.6.3.stable.official.7d41c59c4",
+  "executable_bytes": 239685408,
+  "executable_sha256": "f52dc1284cb76cc26ae396b55925735228cd0e7416ca77bcb280f02c0e3647cf",
+  "embedded_pack_bytes": 135084820,
+  "archive": "NightfallDorm-HellTactics-Windows-x64.zip",
+  "archive_bytes": 140494458,
+  "archive_sha256": "6b8256a67025ff4a4c16942b28da961c5355d68ac58cd023984d0e473df99548",
+  "native_windows": "UNVERIFIED",
+  "public_release": false,
+  "launcher_environments": {
+    "hell-preview": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-v21-playtest.json",
+      "NIGHTFALL_VISUAL_REBIRTH": "1",
+      "NIGHTFALL_FULL_ROOM_GRID": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "1"
+    },
+    "v1-fallback": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-v21-v1-playtest.json",
+      "NIGHTFALL_VISUAL_REBIRTH": "1",
+      "NIGHTFALL_FULL_ROOM_GRID": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "0"
+    },
+    "fixed-reference": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-v21-fixed-reference.json",
+      "NIGHTFALL_VISUAL_REBIRTH": "0",
+      "NIGHTFALL_FULL_ROOM_GRID": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "0"
+    }
+  }
+}
