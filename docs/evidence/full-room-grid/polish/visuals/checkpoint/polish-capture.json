@@ -1,0 +1,373 @@
+{
+  "checks": 219,
+  "dense_buildings": [
+    {
+      "center": [
+        176.0,
+        35.0
+      ],
+      "id": 16,
+      "kind": "generator",
+      "level": 10,
+      "rotation": 1
+    },
+    {
+      "center": [
+        120.0,
+        179.0
+      ],
+      "id": 17,
+      "kind": "turret",
+      "level": 10,
+      "rotation": 0
+    },
+    {
+      "center": [
+        64.0,
+        -101.0
+      ],
+      "id": 18,
+      "kind": "shock",
+      "level": 4,
+      "rotation": 0
+    },
+    {
+      "center": [
+        120.0,
+        -101.0
+      ],
+      "id": 19,
+      "kind": "heavy",
+      "level": 10,
+      "rotation": 1
+    },
+    {
+      "center": [
+        176.0,
+        -109.0
+      ],
+      "id": 20,
+      "kind": "repair",
+      "level": 4,
+      "rotation": 0
+    },
+    {
+      "center": [
+        232.0,
+        -101.0
+      ],
+      "id": 21,
+      "kind": "auto_repair",
+      "level": 4,
+      "rotation": 1
+    },
+    {
+      "center": [
+        280.0,
+        -109.0
+      ],
+      "id": 22,
+      "kind": "frost",
+      "level": 10,
+      "rotation": 0
+    },
+    {
+      "center": [
+        56.0,
+        -53.0
+      ],
+      "id": 23,
+      "kind": "flame",
+      "level": 4,
+      "rotation": 1
+    },
+    {
+      "center": [
+        112.0,
+        -45.0
+      ],
+      "id": 24,
+      "kind": "shield",
+      "level": 4,
+      "rotation": 0
+    },
+    {
+      "center": [
+        168.0,
+        -45.0
+      ],
+      "id": 25,
+      "kind": "plasma",
+      "level": 4,
+      "rotation": 1
+    },
+    {
+      "center": [
+        232.0,
+        -45.0
+      ],
+      "id": 26,
+      "kind": "economy",
+      "level": 4,
+      "rotation": 0
+    },
+    {
+      "center": [
+        280.0,
+        -45.0
+      ],
+      "id": 27,
+      "kind": "enhancer",
+      "level": 4,
+      "rotation": 1
+    },
+    {
+      "center": [
+        56.0,
+        3.0
+      ],
+      "id": 28,
+      "kind": "decoy",
+      "level": 4,
+      "rotation": 0
+    },
+    {
+      "center": [
+        112.0,
+        3.0
+      ],
+      "id": 29,
+      "kind": "antenna",
+      "level": 4,
+      "rotation": 1
+    },
+    {
+      "center": [
+        176.0,
+        11.0
+      ],
+      "id": 30,
+      "kind": "barrier",
+      "level": 4,
+      "rotation": 0
+    },
+    {
+      "center": [
+        232.0,
+        3.0
+      ],
+      "id": 31,
+      "kind": "turret",
+      "level": 10,
+      "rotation": 0
+    },
+    {
+      "center": [
+        280.0,
+        3.0
+      ],
+      "id": 32,
+      "kind": "turret",
+      "level": 10,
+      "rotation": 0
+    },
+    {
+      "center": [
+        88.0,
+        67.0
+      ],
+      "id": 33,
+      "kind": "turret",
+      "level": 10,
+      "rotation": 0
+    },
+    {
+      "center": [
+        120.0,
+        67.0
+      ],
+      "id": 34,
+      "kind": "turret",
+      "level": 10,
+      "rotation": 0
+    },
+    {
+      "center": [
+        168.0,
+        67.0
+      ],
+      "id": 35,
+      "kind": "turret",
+      "level": 10,
+      "rotation": 0
+    },
+    {
+      "center": [
+        232.0,
+        67.0
+      ],
+      "id": 36,
+      "kind": "turret",
+      "level": 10,
+      "rotation": 0
+    },
+    {
+      "center": [
+        280.0,
+        67.0
+      ],
+      "id": 37,
+      "kind": "turret",
+      "level": 10,
+      "rotation": 0
+    },
+    {
+      "center": [
+        104.0,
+        115.0
+      ],
+      "id": 38,
+      "kind": "turret",
+      "level": 10,
+      "rotation": 0
+    },
+    {
+      "center": [
+        136.0,
+        115.0
+      ],
+      "id": 39,
+      "kind": "turret",
+      "level": 10,
+      "rotation": 0
+    }
+  ],
+  "ending_wallet": [
+    458782.251,
+    493457.55
+  ],
+  "failures": 0,
+  "fixture": "Prepared seeded legacy-balance Endless room. Scripted native input handles preview, placement, rejected clicks, rotate, move, undo and selection. Paid dense layout and room levels staged between chapters; final combat advances normal match ticks.",
+  "fps": 24,
+  "frame_count": 0,
+  "observations": {
+    "00-unturned-valid-preview-720": {
+      "center": [
+        184.0,
+        43.0
+      ],
+      "footprint": [
+        32.0,
+        48.0
+      ],
+      "frame": -1
+    },
+    "01-rotated-preview-720": {
+      "footprint_height": 32.0,
+      "footprint_width": 48.0,
+      "frame": -1
+    },
+    "02-blocked-door-720": {
+      "frame": -1,
+      "reason": "Door access must remain clear"
+    },
+    "03-rotated-placement-720": {
+      "center": [
+        176.0,
+        35.0
+      ],
+      "frame": -1,
+      "instance_id": 1,
+      "rotation": 1
+    },
+    "04-blocked-overlap-720": {
+      "frame": -1,
+      "reason": "Building overlaps another structure"
+    },
+    "05-safe-move-720": {
+      "center": [
+        248.0,
+        -21.0
+      ],
+      "frame": -1,
+      "instance_id": 1,
+      "rotation": 2
+    },
+    "05a-safe-move-preview-720": {
+      "frame": -1,
+      "from": [
+        176.0,
+        35.0
+      ],
+      "instance_id": 1,
+      "rotation": 2,
+      "to": [
+        248.0,
+        -21.0
+      ]
+    },
+    "06-undo-720": {
+      "center": [
+        176.0,
+        35.0
+      ],
+      "frame": -1,
+      "instance_id": 1,
+      "rotation": 1
+    },
+    "07-dense-grid-720": {
+      "building_count": 24,
+      "frame": -1
+    },
+    "08a-crowded-selection-720": {
+      "center": [
+        176.0,
+        35.0
+      ],
+      "frame": -1,
+      "id": 16,
+      "kind": "generator",
+      "separation": 24.0
+    },
+    "08b-neighbor-selection-720": {
+      "center": [
+        176.0,
+        11.0
+      ],
+      "frame": -1,
+      "id": 30,
+      "kind": "barrier",
+      "separation": 24.0
+    },
+    "09-door-hp-and-room-trait-720": {
+      "door_hp": 2068.29333333333,
+      "door_max": 2070.0,
+      "frame": -1,
+      "shots": 15
+    },
+    "combat": {
+      "attacks": 1,
+      "door_hp": 2068.29333333333,
+      "door_max": 2070.0,
+      "shots": 15,
+      "texture": "res://assets/visual_rebirth/stalker/level_10_back.png",
+      "total_door_damage": 18.04
+    },
+    "dense_segment_first_frame": 0,
+    "purchase": {
+      "cost": [
+        30.0,
+        0.0
+      ],
+      "instance_id": 1,
+      "wallet_before": [
+        500000.0,
+        500000.0
+      ]
+    }
+  },
+  "viewport": [
+    1280,
+    720
+  ]
+}

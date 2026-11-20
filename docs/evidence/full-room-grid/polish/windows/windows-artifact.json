@@ -1,0 +1,23 @@
+{
+  "version": "0.7.0-overhaul",
+  "source_commit": "c460b71259969571158b0b6e1cccec22afc0e991",
+  "engine": "4.6.3.stable.official.7d41c59c4",
+  "executable_bytes": 239330336,
+  "executable_sha256": "f1ce75b278f000bab95276ddc2bb48361f1a4a0761859a2912a644a8a7b2a9ed",
+  "embedded_pack_bytes": 134729748,
+  "archive": "NightfallDorm-FullGrid-Polish-Windows-x64.zip",
+  "archive_bytes": 140146786,
+  "archive_sha256": "8cc8affec678d837f334590d68d78974876354190126a2756da2474a79612f3c",
+  "native_windows": "UNVERIFIED",
+  "public_release": false,
+  "preview_profile": "user://phase14-full-room-grid-playtest.json",
+  "reference_profile": "user://phase14-windows-playtest.json",
+  "preview_environment": {
+    "NIGHTFALL_VISUAL_REBIRTH": "1",
+    "NIGHTFALL_FULL_ROOM_GRID": "1"
+  },
+  "reference_environment": {
+    "NIGHTFALL_VISUAL_REBIRTH": "0",
+    "NIGHTFALL_FULL_ROOM_GRID": "0"
+  }
+}

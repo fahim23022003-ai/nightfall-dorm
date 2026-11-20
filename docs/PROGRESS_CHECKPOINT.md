@@ -7,7 +7,8 @@ The 24, 40, 60 and 82 machine layouts were tested before and after with matched
 game state at 1280×720. Low improved at all four densities. Standard improved
 at 40 and 60, with slightly higher timings at 82 despite fewer draw calls.
 [Godot evidence](evidence/full-room-grid/polish/visuals/README.md) ·
-[Performance traces](evidence/full-room-grid/polish/performance/README.md)
+[Performance traces](evidence/full-room-grid/polish/performance/README.md) ·
+[Regressions and Windows export](evidence/full-room-grid/polish/README.md)
 
 ---
 
