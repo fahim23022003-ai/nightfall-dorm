@@ -1,0 +1,36 @@
+{
+  "version": "0.7.0-overhaul",
+  "source_commit": "f44a8354d6797050ca282d2d16cc2bea4d3b6df2",
+  "engine": "4.6.3.stable.official.7d41c59c4",
+  "executable_bytes": 239688976,
+  "executable_sha256": "15ddcb367358a23a186ad6c35797c1534d52e5a155277a750ff20b1564acbe85",
+  "embedded_pack_bytes": 135088388,
+  "archive": "NightfallDorm-V2.3-Windows-x64.zip",
+  "archive_bytes": 140497950,
+  "archive_sha256": "c19c7d41b3c223a63ae46d4699998301c3690031aa99b1af5b65bc6991bcf342",
+  "native_windows": "UNVERIFIED",
+  "public_release": false,
+  "launcher_environments": {
+    "fair-start-preview": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-v23-playtest.json",
+      "NIGHTFALL_VISUAL_REBIRTH": "1",
+      "NIGHTFALL_FULL_ROOM_GRID": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "1"
+    },
+    "v1-fallback": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-v23-v1-playtest.json",
+      "NIGHTFALL_VISUAL_REBIRTH": "1",
+      "NIGHTFALL_FULL_ROOM_GRID": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "0"
+    },
+    "fixed-reference": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-v23-fixed-reference.json",
+      "NIGHTFALL_VISUAL_REBIRTH": "0",
+      "NIGHTFALL_FULL_ROOM_GRID": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "0"
+    }
+  }
+}

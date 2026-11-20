@@ -1,3 +1,13 @@
+# Procedural Nightmare Maps V2.3
+
+The opt-in Hard/Hell V2 Campaign highlights fast opening routes and
+remembers the most recently abandoned defended door when evaluating
+another siege. Two item-free plans won the exact Hell Labyrinth Room 2
+replay after walking there from spawn. Its layout and opening rules
+are retained. [Fair start review and Windows instructions](PROCEDURAL_NIGHTMARE_MAPS_V23.md)
+
+---
+
 # Procedural Nightmare Maps V2.2
 
 The Hard/Hell V2 Campaign Hunter can recognize a defense that
