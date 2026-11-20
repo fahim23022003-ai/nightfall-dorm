@@ -45,6 +45,7 @@ var next_combat_event_id = 1
 var map_id="legacy"
 var map_data: Dictionary={}
 var procedural_requested := OS.get_environment("NIGHTFALL_PROCEDURAL_MAPS") == "1"
+var procedural_v2_requested := OS.get_environment("NIGHTFALL_PROCEDURAL_MAPS_V2") == "1"
 var map_seed: int=1
 var haunt_recovery := HauntedRecovery.new()
 var _navigation=AStar2D.new()
@@ -168,8 +169,8 @@ func configure_map(id: String, stored_layout: Dictionary={}) -> bool:
  if not stored_layout.is_empty():
   data=NightmareMap.unpack(stored_layout,id)
   if data.get("seed")!=map_seed:return false
- elif procedural_requested and not tutorial_mode and run_kind in ["campaign","endless"]:
-  data=NightmareMap.generate(id,map_seed)
+ elif (procedural_requested or procedural_v2_requested) and not tutorial_mode and run_kind in ["campaign","endless"]:
+  data=NightmareMacroLayout.generate(id,map_seed) if procedural_v2_requested else NightmareMap.generate(id,map_seed)
  else:
   data=MapCatalog.map(id)
  if data.is_empty(): return false

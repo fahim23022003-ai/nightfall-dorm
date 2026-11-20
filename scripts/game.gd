@@ -31,6 +31,9 @@ var presentation = preload("res://scripts/dorm_presentation.gd").new()
 const MAP_OFFSET = Vector2(145,40)
 var full_map=false
 var zoom_factor=1.0
+var overview_zoom := 1.0
+var overview_pan := Vector2.ZERO
+var overview_room := -1
 var pending_build=""
 var preview_position=Vector2.ZERO
 var placement_on_tile=true
@@ -61,6 +64,7 @@ func start_endless(map: String="abandoned_dorm",difficulty: String="standard",se
  if not next.configure_endless(map,difficulty,seed_value,int(entry.id),RankCatalog.bonuses(entry.equipped)):return false
  next.configure_balance(new_balance_version)
  match_id=int(entry.id);_adopt_session(next);bind_run_choices()
+ ui.replay_ui.remember_macro_layout(model)
  return true
 func resume_endless() -> bool:
  var next=profile.resume_endless()
@@ -238,10 +242,12 @@ func start_match(difficulty: String="") -> bool:
  var entry=profile.begin_match(selected_difficulty,requested,true)
  if entry.is_empty(): return false
  match_id=int(entry.get("id",0))
- model.reset(int(Time.get_ticks_msec()))
+ var seed_value: int=ui.replay_ui.fresh_macro_seed(StageCatalog.stage(requested).get("map","")) if model.procedural_v2_requested else int(Time.get_ticks_msec())
+ model.reset(seed_value)
  model.configure_match(selected_difficulty,RankCatalog.bonuses(entry.get("equipped",[])))
  if requested!="": model.configure_stage(requested)
- elif model.procedural_requested:model.configure_map(MapCatalog.IDS[posmod(model.map_seed,MapCatalog.IDS.size())])
+ elif model.procedural_requested or model.procedural_v2_requested:model.configure_map(MapCatalog.IDS[posmod(model.map_seed,MapCatalog.IDS.size())])
+ ui.replay_ui.remember_macro_layout(model)
  model.configure_balance(new_balance_version)
  model.configure_strategy(int(profile.statistics.matches),entry.archetype,entry.contract,match_id)
  profile.apply_stage_bonus(model,entry)
@@ -419,6 +425,9 @@ func _input(event):
 func _unhandled_input(event):
  if mode!="match" or in_background or hunter_spectating: return
  if model.run_kind=="endless" and model.endless!=null and model.endless.phase=="intermission" and not ui.replay_ui.preparing:return
+ if macro_overview() and not mobile_mode and _handle_macro_overview(event):
+  get_viewport().set_input_as_handled()
+  return
  if construction!=null and construction.handle(event):get_viewport().set_input_as_handled();return
  if mobile_mode and event is InputEventMouse: return
  if event is InputEventKey and event.pressed and not event.echo:
@@ -503,6 +512,63 @@ func cancel_placement():
 func toggle_map():
  cancel_placement()
  full_map=not full_map
+ if macro_overview():
+  reset_overview()
+
+func macro_overview() -> bool:
+ return full_map and model.is_procedural() and model.map_data.has("family") and not hunter_spectating
+
+func reset_overview():
+ overview_zoom=1.0
+ overview_pan=Vector2.ZERO
+ overview_room=-1
+
+func overview_frame() -> Rect2:
+ var size:=get_viewport_rect().size
+ return Rect2(Vector2(size.x*.035,size.y*.196),Vector2(size.x*.93,size.y*.62))
+
+func overview_fit() -> float:
+ var world:=model.map_bounds().size
+ var available:=overview_frame().size
+ return minf(available.x/world.x,available.y/world.y)
+
+func _select_overview_room(screen: Vector2):
+ var at:=get_viewport().get_canvas_transform().affine_inverse()*screen-MAP_OFFSET
+ overview_room=-1
+ for room in model.rooms:
+  if room.floor_has_point(at):
+   overview_room=room.index
+   break
+ queue_redraw()
+
+func _overview_zoom_at(screen: Vector2, multiplier: float):
+ var before:=overview_fit()*overview_zoom
+ overview_zoom=clampf(overview_zoom*multiplier,1.0,3.0)
+ var after:=overview_fit()*overview_zoom
+ overview_pan+=(screen-overview_frame().get_center())*(1.0/before-1.0/after)
+ focus_camera(true)
+ queue_redraw()
+
+func _handle_macro_overview(event: InputEvent) -> bool:
+ if event is InputEventMouseButton and event.pressed:
+  match event.button_index:
+   MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN:
+    _overview_zoom_at(event.position,1.25 if event.button_index==MOUSE_BUTTON_WHEEL_UP else .8)
+    return true
+   MOUSE_BUTTON_LEFT:
+    _select_overview_room(event.position)
+    return true
+ if event is InputEventMouseMotion and event.button_mask & MOUSE_BUTTON_MASK_MIDDLE:
+  overview_pan-=event.relative/camera.zoom.x
+  focus_camera(true)
+  queue_redraw()
+  return true
+ if event is InputEventKey and event.pressed and not event.echo and event.keycode==KEY_0:
+  reset_overview()
+  focus_camera(true)
+  queue_redraw()
+  return true
+ return false
 
 func focus_camera(snap: bool=false,delta: float=0.016):
  if mode!="match": return
@@ -521,9 +587,17 @@ func focus_camera(snap: bool=false,delta: float=0.016):
  # Legacy desktop rooms share the same panel-independent safe framing.
  if model.map_id!="legacy" or (not mobile_mode and not full_map):
   if full_map:
-   var extent=model.map_bounds().grow(35)
-   zoom=minf(1220.0/extent.size.x,500.0/extent.size.y)
-   goal=extent.get_center()+MAP_OFFSET+Vector2(0,10)/zoom
+   if macro_overview():
+    var extent:=model.map_bounds()
+    var frame:=overview_frame()
+    zoom=overview_fit()*overview_zoom
+    var limit: Vector2=((extent.size-frame.size/zoom)*.5).max(Vector2.ZERO)
+    overview_pan=overview_pan.clamp(-limit,limit)
+    goal=extent.get_center()+MAP_OFFSET+overview_pan+(get_viewport_rect().get_center()-frame.get_center())/zoom
+   else:
+    var extent=model.map_bounds().grow(35)
+    zoom=minf(1220.0/extent.size.x,500.0/extent.size.y)
+    goal=extent.get_center()+MAP_OFFSET+Vector2(0,10)/zoom
   elif model.player()!=null or watched_room>=0:
    var observed=model.rooms[watched_room] if watched_room>=0 else model.player()
    var extent: Rect2
@@ -564,7 +638,7 @@ func focus_camera(snap: bool=false,delta: float=0.016):
  var weight=1.0 if snap else 1.0-exp(-delta*7)
  camera.position=camera.position.lerp(goal,weight)
  camera.zoom=camera.zoom.lerp(Vector2(zoom,zoom),weight)
- camera.offset=Vector2.ZERO if CinematicQuality.reduced_motion(self) else Vector2(sin(presentation.clock*63),cos(presentation.clock*51))*danger_time*1.5+presentation.nightmare_visual.camera_impulse()
+ camera.offset=Vector2.ZERO if macro_overview() or CinematicQuality.reduced_motion(self) else Vector2(sin(presentation.clock*63),cos(presentation.clock*51))*danger_time*1.5+presentation.nightmare_visual.camera_impulse()
  camera.force_update_scroll()
 
 func _preview_room_extent(room: RoomState) -> Rect2:
@@ -647,6 +721,9 @@ func mobile_back():
 
 func handle_touch_tap(screen: Vector2):
  if mode!="match" or not model.running or in_background or hunter_spectating: return
+ if macro_overview():
+  _select_overview_room(screen)
+  return
  var point=get_viewport().get_canvas_transform().affine_inverse()*screen-MAP_OFFSET
  var room=model.player()
  if room!=null and room.sleeping:

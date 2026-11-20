@@ -6,6 +6,8 @@ var notice=""
 var selected_map="abandoned_dorm"
 var difficulty="standard"
 var seed_text="17"
+var macro_seed_text=""
+var recent_macro_families: Array[String]=[]
 var code_text=""
 var practice_archetype="crusher"
 var practice_boss=false
@@ -41,9 +43,27 @@ func input(text: String,at: Vector2,width: float,callback: Callable):
  var box=LineEdit.new();box.position=at;box.size=Vector2(width,44);box.text=text;box.text_changed.connect(callback)
  box.add_theme_stylebox_override("normal",GothicTheme.surface("171C22","938876"));ui.panel.add_child(box);return box
 func seed_number() -> int:
- if seed_text.length()>6 or not seed_text.is_valid_int():return 0
- var value=int(seed_text)
+ return parse_seed(seed_text)
+
+func parse_seed(text: String) -> int:
+ if text.length()>6 or not text.is_valid_int():return 0
+ var value=int(text)
  return value if value>=1 and value<=999999 else 0
+
+func fresh_macro_seed(theme: String="") -> int:
+ var first := randi_range(1,999999)
+ for attempt in range(48):
+  var seed_value := posmod(first-1+attempt,999999)+1
+  var map_id: String=theme if not theme.is_empty() else MapCatalog.IDS[posmod(seed_value,MapCatalog.IDS.size())]
+  if NightmareMacroLayout.family_for(map_id,seed_value) not in recent_macro_families:return seed_value
+ return first
+
+func remember_macro_layout(model: MatchModel):
+ var family: String=model.map_data.get("family","")
+ if family.is_empty():return
+ recent_macro_families.erase(family)
+ recent_macro_families.push_back(family)
+ if recent_macro_families.size()>3:recent_macro_families.pop_front()
 func show_hub():
  page("THE REPLAY CHAMBER","Independent challenges, advanced training and earned appearances. Campaign progress and the original tutorial remain available.","replay_hub")
  var cards=[{"icon":"challenge","name":"Challenge Codes","text":"Share a fixed map, seed, Hunter and normalized gear. No rank or permanent item advantage.","call":show_codes},{"icon":"practice","name":"Practice Room","text":"Real combat, temporary funds and items. Train repair, branches and Reaper warnings safely.","call":show_practice},{"icon":"cosmetic","name":"Earned Cosmetics","text":"Four original appearances unlocked through real accomplishments. No stat advantage.","call":show_cosmetics}]
@@ -70,15 +90,22 @@ func show_endless():
   var key=["standard","hard","hell"][i];var chosen=key
   var b=ui.button(("✓ " if difficulty==key else "")+RankCatalog.DIFFICULTIES[key].name,Vector2(107+i*362,330),func():difficulty=chosen;show_endless(),342,55)
   b.icon=PremiumButton.texture(key);b.expand_icon=true;b.add_theme_constant_override("icon_max_width",32)
- ui.label_at("Seed (1–999999)",Vector2(107,414),17,300)
- var seed_field=input(seed_text,Vector2(107,450),320,func(text):seed_text=text);seed_field.max_length=6
+ var macro: bool=game.model.procedural_v2_requested
+ ui.label_at("Seed (blank for a new layout)" if macro else "Seed (1–999999)",Vector2(107,414),17,320)
+ var seed_field=input(macro_seed_text if macro else seed_text,Vector2(107,450),320,func(text):
+  if macro:macro_seed_text=text
+  else:seed_text=text)
+ seed_field.max_length=6
+ if macro:seed_field.placeholder_text="Random seed"
  paragraph("Best cleared wave: %d · Milestones 5/10/15/20 award 8 RM +20 XP each, once per profile. No campaign spins, contract bonuses or loss statistics. Late waves reduce repairs during contact and add Reaper encounters." % game.profile.replay.best_wave,Vector2(467,415),708,96,16)
  paragraph(notice if notice!="" else "NEW replaces the previous run explicitly. Returning mid-wave keeps only the last safe checkpoint; spent permanent items stay spent.",Vector2(107,527),1060,45,15)
  var resume=ui.button("Resume saved checkpoint",Vector2(107,590),func():
   if not game.resume_endless():notice="No compatible checkpoint is available.";show_endless(),515,42)
  resume.disabled=game.profile.replay.checkpoint.is_empty() or game.profile.read_only
  var start=ui.button("New Endless run",Vector2(647,590),func():
-  if seed_number()==0 or not game.start_endless(selected_map,difficulty,seed_number()):notice="Choose a valid seed and writable profile.";show_endless(),528,42)
+  var seed_value:=seed_number()
+  if macro:seed_value=fresh_macro_seed(selected_map) if macro_seed_text.is_empty() else parse_seed(macro_seed_text)
+  if seed_value==0 or not game.start_endless(selected_map,difficulty,seed_value):notice="Choose a valid seed and writable profile.";show_endless(),528,42)
  start.icon=PremiumButton.texture("endless");start.disabled=game.profile.read_only
  ui.button("Back",Vector2(107,645),game.return_menu,220,28)
  var forfeit=ui.button("Forfeit saved run",Vector2(845,645),func():

@@ -3,6 +3,9 @@ extends RefCounted
 ## Stable seeded geometry. Checkpoints store the generated topology and
 ## coordinates so a resumed match never depends on the generator's RNG.
 const VERSION := 1
+const MACRO_VERSION := 2
+const MAX_MACRO_NODES := 160
+const MAX_MACRO_LANES := 224
 const DOOR_HALF_WIDTH := 36.0
 const SHAPES := ["rectangle", "long", "l", "u", "zigzag"]
 const MASKS := [511, 511, 7 | (7 << 3) | (1 << 6), 5 | (7 << 3) | (7 << 6), 3 | (7 << 3) | (6 << 6)]
@@ -87,7 +90,7 @@ static func generate(id: String, seed: int) -> Dictionary:
  data.bounds = Rect2(-282.0, -282.0, east + 564.0, south + 564.0)
  return data
 
-static func _room(rng: RandomNumberGenerator, shape_index: int, lot: Rect2) -> Dictionary:
+static func _room(rng: RandomNumberGenerator, shape_index: int, lot: Rect2, facing: int=-1) -> Dictionary:
  var mask: int = MASKS[shape_index]
  var turn := rng.randi_range(0, 3)
  for i in range(turn):
@@ -115,7 +118,7 @@ static func _room(rng: RandomNumberGenerator, shape_index: int, lot: Rect2) -> D
  var bounds := Rect2(start, size)
  var xs := [start.x, start.x + w[0], start.x + w[0] + w[1], bounds.end.x]
  var ys := [start.y, start.y + h[0], start.y + h[0] + h[1], bounds.end.y]
- var normal: Vector2i = DIRECTIONS[rng.randi_range(0, 3)]
+ var normal: Vector2i = DIRECTIONS[rng.randi_range(0, 3) if facing<0 else facing]
  var choices: Array[Vector2i] = []
  for y in range(3):
   for x in range(3):
@@ -320,7 +323,8 @@ static func _hall(data: Dictionary, id: String, from: Vector2, normal: Vector2, 
  }
 
 static func pack(data: Dictionary) -> Dictionary:
- if data.get("version", 0) != VERSION:
+ var version: int = data.get("version", 0)
+ if version not in [VERSION, MACRO_VERSION]:
   return {}
  var rooms: Array = []
  for room in data.rooms:
@@ -339,16 +343,28 @@ static func pack(data: Dictionary) -> Dictionary:
    "bounds": _rect_data(hall.bounds), "center": _point_data(hall.center),
    "entrance": _point_data(hall.entrance),
   }
- return {
-  "version": VERSION, "seed": str(data.seed), "map": data.id,
+ var saved := {
+  "version": version, "seed": str(data.seed), "map": data.id,
   "bounds": _rect_data(data.bounds), "rooms": rooms, "halls": halls,
   "spawn": _point_data(data.spawn), "hunter_spawn": _point_data(data.hunter_spawn),
   "nodes": _encode_points(data.nodes), "links": data.lane_links.duplicate(true),
   "corridors": _encode_rects(data.corridors),
  }
+ if version == MACRO_VERSION:
+  saved.family = data.family
+  saved.lane_widths = data.lane_widths.duplicate()
+ return saved
 
 static func unpack(saved: Variant, expected_id: String) -> Dictionary:
- if not saved is Dictionary or saved.get("version") != VERSION or saved.get("map") != expected_id:
+ if not saved is Dictionary or saved.get("map") != expected_id:
+  return {}
+ # Godot's JSON reader returns numbers as floats. Compare numerical values
+ # directly so checkpoint versions survive the wire format.
+ var raw_version = saved.get("version")
+ if raw_version != VERSION and raw_version != MACRO_VERSION:
+  return {}
+ var macro: bool = saved.version == MACRO_VERSION
+ if macro and saved.get("family") not in NightmareMacroLayout.FAMILY_IDS:
   return {}
  var theme := MapCatalog.map(expected_id)
  var seed = saved.get("seed")
@@ -359,12 +375,21 @@ static func unpack(saved: Variant, expected_id: String) -> Dictionary:
  var hunter_spawn := _decode_point(saved.get("hunter_spawn"))
  if not bounds.has_area() or not bounds.has_point(spawn) or not bounds.has_point(hunter_spawn):
   return {}
- var nodes := _decode_points(saved.get("nodes"), 64)
- var corridors := _decode_rects(saved.get("corridors"), 96)
+ var nodes := _decode_points(saved.get("nodes"), MAX_MACRO_NODES if macro else 64)
+ var corridors := _decode_rects(saved.get("corridors"), MAX_MACRO_LANES + HALL_IDS.size() if macro else 96)
  if nodes.size() < 8 or corridors.is_empty() or not nodes.has(spawn) or not nodes.has(hunter_spawn):
   return {}
  var link_data = saved.get("links")
- var links := _decode_links(link_data, nodes, corridors)
+ var widths: Array = []
+ if macro:
+  var encoded = saved.get("lane_widths")
+  if not encoded is Array or not link_data is Array or encoded.size() != link_data.size() or encoded.size() > MAX_MACRO_LANES:
+   return {}
+  for width in encoded:
+   if not _numeric(width, 224.0) or width < 64.0:
+    return {}
+   widths.append(float(width))
+ var links := _decode_links(link_data, nodes, corridors, widths)
  if links.is_empty() or not _connected(links, nodes.size()):
   return {}
  for corridor in corridors:
@@ -389,11 +414,26 @@ static func unpack(saved: Variant, expected_id: String) -> Dictionary:
   for hall in halls.values():
    if hall.bounds.intersects(room.bounds):
     return {}
- return {
-  "version": VERSION, "seed": int(seed), "id": expected_id, "title": theme.title, "theme": theme.theme,
+ var result := {
+  "version": int(saved.version), "seed": int(seed), "id": expected_id, "title": theme.title, "theme": theme.theme,
   "bounds": bounds, "spawn": spawn, "hunter_spawn": hunter_spawn,
   "rooms": rooms, "nodes": nodes, "lane_links": links, "corridors": corridors, "halls": halls,
  }
+ if macro:
+  # Only links and the four hall interiors grant exterior walkability.
+  # Reject save entries that add walkable shortcuts outside this topology.
+  var used_corridors: Dictionary = {}
+  for i in range(links.size()):
+   var link: Array = links[i]
+   used_corridors[_segment(nodes[link[0]], nodes[link[1]], widths[i])] = true
+  for hall in halls.values():
+   used_corridors[hall.bounds] = true
+  for corridor in corridors:
+   if not used_corridors.has(corridor):
+    return {}
+  result.family = saved.family
+  result.lane_widths = widths
+ return result
 
 static func _decode_room(entry: Variant) -> Dictionary:
  if not entry is Dictionary or entry.get("shape") not in SHAPES:
@@ -499,8 +539,8 @@ static func _decode_halls(saved: Variant, bounds: Rect2, nodes: Array, corridors
   }
  return decoded
 
-static func _decode_links(raw: Variant, nodes: Array, corridors: Array) -> Array:
- if not raw is Array or raw.is_empty() or raw.size() > 96:
+static func _decode_links(raw: Variant, nodes: Array, corridors: Array, widths: Array = []) -> Array:
+ if not raw is Array or raw.is_empty() or raw.size() > (96 if widths.is_empty() else MAX_MACRO_LANES):
   return []
  var links: Array = []
  for pair in raw:
@@ -516,7 +556,8 @@ static func _decode_links(raw: Variant, nodes: Array, corridors: Array) -> Array
   var finish: Vector2 = nodes[second]
   if start.x != finish.x and start.y != finish.y:
    return []
-  if not corridors.has(_segment(start, finish, LANE_WIDTH)):
+  var width: float = LANE_WIDTH if widths.is_empty() else widths[links.size()]
+  if not corridors.has(_segment(start, finish, width)):
    return []
   links.append([first, second])
  return links

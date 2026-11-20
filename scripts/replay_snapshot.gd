@@ -207,10 +207,13 @@ static func restore(data) -> MatchModel:
  if not valid(data):return null
  var model=MatchModel.new();var run=EndlessRun.new()
  var preview: bool=model.procedural_requested
+ var macro_preview: bool=model.procedural_v2_requested
  # All saves use their own map format regardless of the current opt-in flag.
  model.procedural_requested=false
+ model.procedural_v2_requested=false
  if not run.configure(model,data.map,data.difficulty,int(data.seed),int(data.run_id),data.boosts,data.get("generated_map",{})):return null
  model.procedural_requested=preview
+ model.procedural_v2_requested=macro_preview
  if data.has("expansion"):model.expansion.configure(model,data.expansion.legacy,data.expansion.levels)
  else:model.expansion.configure(model,true)
  model.configure_balance(int(data.get("balance_version",1)))

@@ -2,6 +2,11 @@ extends RefCounted
 ## Original procedural environments over shared model geometry and existing art.
 ## Decorations are presentation only; collision remains entirely map-owned.
 const OFFSET=Vector2(145,40)
+const FAMILY_NAMES={
+ "ring":"RING COURTYARD","branching":"BRANCHING FORK","scattered":"SCATTERED ASYMMETRIC","spine":"LONG SPINE",
+ "zigzag":"ZIGZAG STAIRCASE","radial":"RADIAL SPOKES","twin_wings":"TWIN WINGS","labyrinth":"LABYRINTH",
+ "courtyards":"ASYMMETRIC COURTYARDS","hybrid":"MIXED HYBRID"
+}
 var halls_visual=preload("res://scripts/haunted_hall_presentation.gd").new()
 var floors={}
 var grid_layouts: Dictionary={}
@@ -20,6 +25,9 @@ func render_architecture(c,p):
  var colors=PALETTES.get(theme,PALETTES.dorm)
  var visible=p.visible_world_rect(c)
  var generated: bool=c.model.is_procedural()
+ if c.macro_overview():
+  render_macro_overview(c,p,data,theme,colors,visible)
+  return
  for corridor in data.corridors:
   var rect=Rect2(OFFSET+corridor.position,corridor.size)
   if not visible.intersects(rect):continue
@@ -61,6 +69,88 @@ func render_architecture(c,p):
    var width: float=p.font.get_string_size(label,HORIZONTAL_ALIGNMENT_LEFT,-1,title_size).x
    title=OFFSET+Vector2(data.bounds.get_center().x-width*.5,data.bounds.end.y+85)
   p.text(c,label,title,title_size,colors[4])
+
+func render_macro_overview(c,p,data: Dictionary,theme: String,colors: Array,visible: Rect2):
+ # Use the physical lane surfaces. Painting borders first keeps overlaps
+ # readable as junctions instead of looking like closed junction lines.
+ var stroke: float=2.0/c.camera.zoom.x
+ var surface: Color=colors[1].lerp(Color("41464B"),.42)
+ for corridor: Rect2 in data.corridors:
+  var rect:=Rect2(corridor.position+OFFSET,corridor.size)
+  if visible.intersects(rect):c.draw_rect(rect.grow(stroke),Color("252D35"))
+ for corridor: Rect2 in data.corridors:
+  var rect:=Rect2(corridor.position+OFFSET,corridor.size)
+  if visible.intersects(rect):c.draw_rect(rect,surface)
+ for room: RoomState in c.model.rooms:
+  if not visible.intersects(Rect2(room.bounds().position+OFFSET,room.bounds().size)):continue
+  render_overview_room(c,p,room,theme,colors)
+ for id in data.halls:
+  var hall: Dictionary=data.halls[id]
+  var rect:=Rect2(hall.bounds.position+OFFSET,hall.bounds.size)
+  if not visible.intersects(rect):continue
+  var tint: Color=halls_visual.TINTS[id]
+  c.draw_rect(rect.grow(stroke),tint.darkened(.39))
+  c.draw_rect(rect,tint.darkened(.72))
+  var label: String=str(id).substr(0,1).to_upper()
+  if c.camera.zoom.x>=.20:label+=" · HALL"
+  draw_overview_label(c,p,label,hall.center+OFFSET,tint)
+ draw_overview_footer(c,p,data,colors[4])
+
+func render_overview_room(c,p,room: RoomState,theme: String,colors: Array):
+ var selected: bool=room.index==c.overview_room
+ var owned: bool=room.index==c.model.player_room
+ var tint:=Color("E4BE83") if selected else Color("A8D0B5") if owned else Color("CED2CD")
+ var floor_tint: Color=colors[0].lightened(.13)
+ if owned:floor_tint=floor_tint.lerp(Color("375952"),.64)
+ if not room.alive:floor_tint=floor_tint.darkened(.24)
+ for part: Rect2 in room.layout.floor:
+  var surface:=Rect2(OFFSET+part.position,part.size)
+  c.draw_rect(surface,floor_tint)
+  if CinematicQuality.detail(c)>0:
+   c.draw_texture_rect(floors[theme],surface,true,Color(1,1,1,.17))
+ var walls:=PackedVector2Array()
+ for edge in room.layout.walls:
+  walls.append(edge[0]+OFFSET)
+  walls.append(edge[1]+OFFSET)
+ c.draw_multiline(walls,tint.darkened(.38), (2.2 if selected or owned else 1.2)/c.camera.zoom.x)
+ var tag: String="%02d" % [room.index+1]
+ if c.camera.zoom.x>=.20:
+  tag+="  "+("YOU" if owned else room.survivor_name().split(" ")[0] if room.owner>=0 else "VACANT")
+ draw_overview_label(c,p,tag,room.bed_position()+OFFSET,tint)
+
+func draw_overview_label(c,p,label: String,at: Vector2,tint: Color):
+ var zoom: float=c.camera.zoom.x
+ var size:=roundi(11.0/zoom)
+ var width: float=p.font.get_string_size(label,HORIZONTAL_ALIGNMENT_LEFT,-1,size).x
+ var box:=Rect2(at-Vector2(width*.5+3.0/zoom,6.0/zoom),Vector2(width+6.0/zoom,13.0/zoom))
+ c.draw_rect(box,Color("141B23"))
+ p.text(c,label,box.position+Vector2(3.0/zoom,10.0/zoom),size,tint)
+
+func draw_overview_footer(c,p,data: Dictionary,tint: Color):
+ var view: Vector2=c.get_viewport_rect().size
+ var top:=view.y*.838
+ var left:=view.x*.035
+ var label: String=FAMILY_NAMES.get(data.family,str(data.family).replace("_"," ").to_upper())
+ c.draw_set_transform_matrix(c.get_canvas_transform().affine_inverse())
+ c.draw_rect(Rect2(Vector2(left,top),Vector2(view.x-2*left,39)),Color("172028"))
+ c.draw_line(Vector2(left,top),Vector2(view.x-left,top),Color("5A6667"),1)
+ p.text(c,label+"  ·  "+str(data.title).to_upper()+"  ·  SEED "+str(data.seed),Vector2(left+12,top+15),13,tint)
+ var hall_key: String="N / S / W / E   HAUNTED HALLS"
+ var hall_key_width: float=p.font.get_string_size(hall_key,HORIZONTAL_ALIGNMENT_LEFT,-1,11).x
+ p.text(c,hall_key,Vector2(view.x-left-hall_key_width-12,top+15),11,tint)
+ var detail: String="Click a room to inspect" if not c.mobile_mode else "Tap a room to inspect"
+ if c.overview_room>=0:
+  var room: RoomState=c.model.rooms[c.overview_room]
+  var resident: String=room.survivor_name() if room.owner>=0 else "Vacant"
+  var trait_name: String=StrategyCatalog.TRAITS.get(room.trait_id,{}).get("name","")
+  detail="%02d  %s" % [room.index+1,resident]
+  if not trait_name.is_empty():detail+="  ·  "+trait_name
+ p.text(c,detail,Vector2(left+12,top+31),11,Color("BBC8C7"))
+ if not c.mobile_mode:
+  var controls: String="Wheel zoom  ·  Middle drag  ·  0 reset  ·  M focus"
+  var width: float=p.font.get_string_size(controls,HORIZONTAL_ALIGNMENT_LEFT,-1,11).x
+  p.text(c,controls,Vector2(view.x-left-width-12,top+31),11,Color("BBC8C7"))
+ c.draw_set_transform(Vector2.ZERO)
 
 func render_room(c,p,room,theme,colors):
  var r=Rect2(OFFSET+room.bounds().position,room.bounds().size)
