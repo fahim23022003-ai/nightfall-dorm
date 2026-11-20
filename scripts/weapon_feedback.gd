@@ -20,9 +20,10 @@ func send(event: Dictionary) -> void:
    if not totals.has(key):
     totals[key] = {"damage":0.0,"burn":0.0,"hits":0,"last_damage":0.0}
    var info: Dictionary = totals[key]
-   info.launch_time = event.time
-   info.target_id = event.target_id
-   info.aim = event.get("target_position",event.position) - event.origin
+   if not info.has("launch_time") or info.launch_time!=event.time:
+    info.launch_time = event.time
+    info.target_id = event.target_id
+    info.aim = event.get("aim_position",event.position) - event.origin
   if type != "launch" and totals.has(key):
    var info: Dictionary = totals[key]
    info.damage += event.damage

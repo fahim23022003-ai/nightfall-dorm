@@ -27,7 +27,9 @@ func tick(delta: float,model):
   var burn=burns[key];var target=model.target_by_id(int(key))
   if target==null:burns.erase(key);continue
   var before: float=target.hp
-  var applied=model.apply_target_damage(int(key),burn.dps*minf(delta,burn.remaining),burn.room,DamageRules.weapon("flame"))
+  var packet:=DamageRules.weapon("flame")
+  packet.ongoing=true
+  var applied=model.apply_target_damage(int(key),burn.dps*minf(delta,burn.remaining),burn.room,packet)
   model.record_secondary_damage("burn",burn.room,int(key),target.position,before,target.hp,burn)
   if model.run_kind=="endless":model.wave_metrics.hit(burn.room,model.player_room,int(burn.get("building_id",-1)),burn.get("kind","flame"),int(burn.get("level",1)),applied,int(key),false)
   model.credit_damage(burn.room,applied,int(key));burn.remaining=maxf(0,burn.remaining-delta)

@@ -75,17 +75,30 @@ func _add_number(event: Dictionary) -> void:
  var element: String=event.element if event.element!="neutral" else event.damage_type
  var group: String="combined" if number_mode=="combined" and marker=="hit" else element
  var window := .55 if marker=="burn" else .28 if number_mode=="combined" else .19 if low else .13
- var active := 0
+ var occupied := 0
+ var near_oldest := -1
+ var same_group := -1
  for index in range(numbers.size()-1,-1,-1):
   var entry: Dictionary=numbers[index]
-  if entry.target!=event.target_id:continue
-  active+=1
-  if entry.marker!=marker or entry.group!=group or clock-entry.born>window:continue
-  entry.amount+=event.damage
-  entry.count+=1
-  entry.last=clock
-  entry.dirty=true
+  if entry.target==event.target_id or Vector2(entry.position).distance_squared_to(event.position)<2500.0:
+   occupied|=1<<int(entry.lane)
+   near_oldest=index
+  if entry.target!=event.target_id or entry.marker!=marker or entry.group!=group:continue
+  if same_group<0:same_group=index
+  if clock-entry.born>window:continue
+  _accumulate(entry,event.damage)
   return
+ var base_lane:=posmod(event.target_id*3,5) if event.target_id>1 else 0
+ var lane:=base_lane
+ for step in range(8):
+  lane=posmod(base_lane+step,8)
+  if (occupied&(1<<lane))==0:break
+ if occupied==255:
+  if same_group>=0:
+   _accumulate(numbers[same_group],event.damage)
+   return
+  lane=numbers[near_oldest].lane
+  numbers.remove_at(near_oldest)
  if numbers.size()>=MAX_NUMBERS:
   # Bound the number of visible labels during dense summons. Prefer returning
   # space from the oldest label; the combat ledger still contains every hit.
@@ -93,8 +106,13 @@ func _add_number(event: Dictionary) -> void:
  var tint: Color=ELEMENT_COLORS.get(element,Color("E4C9FF") if event.damage_type=="magic" else Color("FFF1D6"))
  if group=="combined":tint=Color("FFF1D6")
  if event.damage<=0:tint=Color("CEDDF1")
- var base_lane:=posmod(event.target_id*3,5) if event.target_id>1 else 0
- numbers.append({"target":event.target_id,"marker":marker,"group":group,"amount":event.damage,"count":1,"position":event.position,"born":clock,"last":clock,"tint":tint,"lane":posmod(base_lane+active,8),"dirty":true})
+ numbers.append({"target":event.target_id,"marker":marker,"group":group,"amount":event.damage,"count":1,"position":event.position,"born":clock,"last":clock,"tint":tint,"lane":lane,"dirty":true})
+
+func _accumulate(entry: Dictionary, damage: float) -> void:
+ entry.amount+=damage
+ entry.count+=1
+ entry.last=clock
+ entry.dirty=true
 
 func muzzle(c, visuals, event: Dictionary) -> Vector2:
  var origin: Vector2=event.origin
@@ -102,12 +120,12 @@ func muzzle(c, visuals, event: Dictionary) -> Vector2:
  if event.grid:
   var footprint := SpatialConstruction.grid_footprint(origin,event.kind,event.rotation)
   scale=clampf(minf(footprint.size.x,footprint.size.y)/44.0,.65,1.0)
- return origin+visuals.discharge_socket(c,event.kind,event.level,event.target_position-origin,scale,1.0)
+ return origin+visuals.discharge_socket(c,event.kind,event.level,event.get("aim_position",event.target_position)-origin,scale,1.0)
 
 func projectile_point(c, visuals, shot: Dictionary, target: Vector2) -> Vector2:
  var point: Vector2=shot.position
  if shot.age<.12:
-  var given={"origin":shot.from,"target_position":shot.get("launch_target",target),"rotation":shot.get("rotation",0),"grid":shot.get("grid",false),"kind":shot.kind,"level":shot.level}
+  var given={"origin":shot.from,"target_position":shot.get("launch_target",target),"aim_position":shot.get("launch_aim",target),"rotation":shot.get("rotation",0),"grid":shot.get("grid",false),"kind":shot.kind,"level":shot.level}
   var offset:=muzzle(c,visuals,given)-Vector2(shot.from)
   var muzzle_weight:=1.0-smoothstep(0.0,.12,shot.age)
   point+=offset*muzzle_weight+CONTACT_HEIGHT*(1.0-muzzle_weight)
@@ -122,7 +140,7 @@ func draw_combat(c, visuals, model, visible: Rect2, world_offset: Vector2) -> vo
   var event: Dictionary=value.event
   if not visible.has_point(world_offset+Vector2(event.origin)):continue
   var point:=world_offset+muzzle(c,visuals,event)
-  var direction: Vector2=(event.target_position-event.origin).normalized()
+  var direction: Vector2=(event.get("aim_position",event.target_position)-event.origin).normalized()
   var tint:=_color(event)
   var fade:=clampf(1.0-(clock-value.born)/.15,0,1)
   c.draw_circle(point,(3.1+fade)*scale,Color(tint,fade*.87))
@@ -217,8 +235,8 @@ func draw_numbers(c, font: Font, visible: Rect2, world_offset: Vector2) -> void:
   var side: float=-1.0 if entry.lane%2==0 else 1.0
   if screen.x<170:side=1.0
   if screen.x>viewport.size.x-170:side=-1.0
-  var x: float=side*(30.0+floorf(entry.lane/4.0)*76.0+entry.width/2.0)
-  var y := (-22.0 if screen.y>204 else 22.0)-floorf(entry.lane%4/2.0)*23.0-(minf(lived,.8)*27.0 if motion else 0.0)
+  var x: float=side*(30.0+floorf(entry.lane/4.0)*102.0+entry.width/2.0)
+  var y := (-22.0 if screen.y>204 else 24.0)-floorf(entry.lane%4/2.0)*37.0-(minf(lived,.8)*15.0 if motion else 0.0)
   var pos:=point+Vector2(x,y)*unit
   var pop := 1.0+(.18*(1.0-smoothstep(.03,.18,lived)) if motion else 0.0)
   c.draw_set_transform(pos,0.0,Vector2.ONE*unit*pop)

@@ -656,7 +656,7 @@ func choose_target(rooms: Array, excluded: int = -1) -> int:
   return choose_target(rooms)
  return best
 
-func hurt(amount: float):
+func hurt(amount: float, show_hit: bool=true):
  if not is_finite(amount) or amount<=0 or state == State.DORMANT or state == State.DEAD:
   return
  var model=_model_ref.get_ref() if _model_ref!=null else null
@@ -676,7 +676,7 @@ func hurt(amount: float):
  if model!=null:model.wrath.channel_damage+=previous_hp-hp
  if begin_transform:_begin_transformation(model)
  if model!=null:model.haunt_recovery.note_damage(previous_hp-hp,model)
- if hp<previous_hp:hit_flash = 0.15
+ if show_hit and hp<previous_hp:hit_flash = 0.15
  if hp <= 0:
   nightmare.clear()
   arcane.clear_transients()

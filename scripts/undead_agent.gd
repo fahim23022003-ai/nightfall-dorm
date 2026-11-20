@@ -46,9 +46,10 @@ func tick(delta: float,model):
   model.apply_room_damage(target,damage,"undead strike",id)
   model.record_event("undead_attack",target,{"entity_id":id,"entity_position":position,"enhanced":enhanced})
   cooldown=1.7 if enhanced else 2.0
-func hurt(amount: float,model):
+func hurt(amount: float,model,show_hit: bool=true):
  if hp<=0 or not is_finite(amount) or amount<=0:return
- hit_flash=.2;hp=maxf(0,hp-amount)
+ if show_hit:hit_flash=.2
+ hp=maxf(0,hp-amount)
  if hp<=0:
   model.record_event("undead_death",target,{"entity_id":id,"entity_position":position,"enhanced":enhanced})
   model._navigation_routes.erase("undead_slot%d" % slot)

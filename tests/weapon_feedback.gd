@@ -169,9 +169,26 @@ func test_specialization_targets() -> void:
  model._turrets(.016)
  var targets: Array=records.map(func(event):return event.target_id)
  check(model.projectiles.size()==3 and targets.has(1) and targets.has(model.minions[0].id) and targets.has(model.minions[1].id),"Wildfire fires at three genuine targets with separate IDs")
+ check(records.all(func(event):return event.aim_position==records[0].aim_position),"Multi-target volley shares one physical muzzle aim")
  model._advance_projectiles(.8)
  var hits:=records.filter(func(event):return event.type=="impact" and event.damage>0)
  check(hits.size()==3 and model.weapon_feedback.machine(model.player(),0).hits==3,"Three actual contacts credit one source machine")
+
+func test_lane_reuse() -> void:
+ var model:=setup_weapon("turret")
+ fire(model)
+ model._advance_projectiles(.8)
+ var view:=preload("res://scripts/weapon_presentation.gd").new()
+ for index in range(8):
+  view.clock+=.135
+  view._receive(records.back())
+ view.numbers.remove_at(0)
+ view.numbers.remove_at(2)
+ view.clock+=.135
+ view._receive(records.back())
+ var used: Dictionary={}
+ for entry in view.numbers:used[entry.lane]=true
+ check(used.size()==view.numbers.size(),"An expired number leaves a free slot without overlapping a visible label")
 
 func test_profile() -> void:
  var path:="user://weapon-feedback-%d.json" % OS.get_process_id()
@@ -191,6 +208,7 @@ func run() -> void:
  test_ally_and_reflection()
  test_endless_checkpoint()
  test_specialization_targets()
+ test_lane_reuse()
  for mode: String in WeaponFeedback.NUMBER_MODES:test_group(mode)
  test_profile()
  print("WEAPON_FEEDBACK_CHECKS=",assertions," FAILURES=",failures)

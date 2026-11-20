@@ -199,7 +199,9 @@ func tick(delta: float,model):
   var damage=minf(delta,burn_remaining)*maxf(0,dps-model.defenses.burn_dps(1))
   if model.wrath.domain_active() and model.wrath.domain_room!=model.player_room:damage=0
   var old=model.hunter.hp
-  model.apply_target_damage(1,damage,model.player_room,DamageRules.weapon("inferno"))
+  var packet:=DamageRules.weapon("inferno")
+  packet.ongoing=true
+  model.apply_target_damage(1,damage,model.player_room,packet)
   var dealt=old-model.hunter.hp
   model.record_secondary_damage("burn",model.player_room,1,model.hunter.position,old,model.hunter.hp,{"kind":"inferno"})
   if model.player()!=null: model.player().damage_dealt+=dealt

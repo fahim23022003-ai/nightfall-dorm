@@ -850,10 +850,11 @@ func apply_target_damage(id: int,amount: float,room_index: int,packet: Dictionar
  if not DamageRules.valid(packet):return 0.0
  amount*=DamageRules.multiplier(packet.element,DamageRules.affinity(hunter.archetype) if id==1 else "earth")
  var old=actor.hp
+ var show_hit: bool=not weapon_feedback.enabled or not packet.get("ongoing",false)
  if id==1:
-  amount*=hunter.nightmare.incoming_factor(packet) if not hunter.transformed else 1.0;actor.hurt(amount)
+  amount*=hunter.nightmare.incoming_factor(packet) if not hunter.transformed else 1.0;actor.hurt(amount,show_hit)
   hunter.nightmare.retaliate(hunter,self,maxf(0,old-actor.hp),packet)
- else:actor.hurt(amount,self)
+ else:actor.hurt(amount,self,show_hit)
  return maxf(0,old-actor.hp)
 func credit_damage(room_index: int,amount: float,id: int):
  if room_index<0 or room_index>=rooms.size():return
@@ -884,6 +885,7 @@ func _turrets(delta: float):
     if weapon_feedback.enabled:
      shot.building_instance_id=int(b.get("instance_id",0))
      shot.launch_target=entry.actor.position
+     shot.launch_aim=candidates[0].actor.position
      shot.grid=room.spatial!=null and room.spatial.grid
      shot.rotation=int(b.get("rotation",0))
     next_projectile_id+=1;projectiles.append(shot);_combat_event("launch",shot,origin,0);shots+=1;room.shots+=1
@@ -927,7 +929,7 @@ func _combat_event(type: String, shot: Dictionary, position: Vector2, damage: fl
  var packet := DamageRules.weapon(shot.kind)
  var event := {"id":next_combat_event_id,"type":type,"projectile_id":shot.id,"target_id":shot.get("target_id",1),"position":position,"room":shot.room,"kind":shot.kind,"level":shot.level,"specialization":shot.get("specialization",""),"damage":damage,"time":time,"remaining":Catalog.PROJECTILES.event_lifetime,"reason":reason,"damage_type":packet.type,"element":packet.element}
  if weapon_feedback.enabled:
-  event.merge({"building_id":shot.get("building_id",-1),"building_instance_id":shot.get("building_instance_id",0),"origin":shot.from,"target_position":shot.get("launch_target",position),"rotation":shot.get("rotation",0),"grid":shot.get("grid",false),"flight_age":shot.age,"hp_before":hp_before,"hp_after":hp_after,"slow":type=="impact" and shot.get("slow",0)>0,"reaper":shot.get("target_id",1)==1 and hunter.transformed})
+  event.merge({"building_id":shot.get("building_id",-1),"building_instance_id":shot.get("building_instance_id",0),"origin":shot.from,"target_position":shot.get("launch_target",position),"aim_position":shot.get("launch_aim",position),"rotation":shot.get("rotation",0),"grid":shot.get("grid",false),"flight_age":shot.age,"hp_before":hp_before,"hp_after":hp_after,"slow":type=="impact" and shot.get("slow",0)>0,"reaper":shot.get("target_id",1)==1 and hunter.transformed})
   weapon_feedback.send(event)
  combat_events.append(event)
  next_combat_event_id += 1
