@@ -53,6 +53,10 @@ func _operation(kind: String, branch: String):
  check(absf(previous_gold - room.gold - stats.get("gold", 0.0)) < .001 and absf(previous_electricity - room.electricity - stats.power) < .001, "actual operation spends exactly recipe resources")
  if pilot:
   check(visual.support_activity(room, building, model) > 0.0, "real activation drives mechanism")
+  # Sample the first non-resting motion cell at fixed camera and render time.
+  game.presentation.clock = 1.5 / visual.SUPPORT_CLOCK_RATES[kind]
+ await _render_frame()
+ var active_pixels := _building_pixels(room.tile_position(id))
  await capture(kind + "-" + branch + "-active-720")
  var active := 0.0
  var stop_after := .75
@@ -74,5 +78,14 @@ func _operation(kind: String, branch: String):
  check(gold == room.gold and electricity == room.electricity, "expiry does not repeat the purchase")
  if pilot:
   check(visual.support_activity(room, building, model) == 0.0, "mechanism rests when the real activation ends")
+ await _render_frame()
+ if pilot:
+  check(active_pixels != _building_pixels(room.tile_position(id)), "local viewport pixels follow activation and expiry")
  await capture(kind + "-" + branch + "-expired-720")
  print("OPERATED_ROLE ", kind, " ", branch, " output=", active, " gold_cost=", previous_gold - gold, " power_cost=", previous_electricity - electricity)
+
+func _building_pixels(point: Vector2) -> PackedByteArray:
+ var center: Vector2 = root.get_final_transform() * game.world_to_screen(point)
+ var frame := root.get_texture().get_image()
+ var region := Rect2i(Vector2i(center) + Vector2i(-30,-61),Vector2i(60,74))
+ return frame.get_region(region).get_data()

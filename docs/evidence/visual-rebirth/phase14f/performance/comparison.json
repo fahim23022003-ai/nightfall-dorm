@@ -1,0 +1,327 @@
+{
+  "checkpoint_sha": "0fce84063ab94d7bf36efea1165670f57425e8da",
+  "final_stalker_source_sha": "2542e931af9fd533a749b760d86eb2759788aaa7",
+  "render_environment": "Godot 4.6.3 Compatibility / Mesa 25.0.7 / llvmpipe LLVM 19.1.7 / Xorg dummy / Linux / AMD EPYC 9V74",
+  "cpu_quota_usec_per_period": [
+    400000,
+    100000
+  ],
+  "run_order": [
+    "final Standard",
+    "checkpoint Standard",
+    "checkpoint Low",
+    "final Low"
+  ],
+  "cgroup_cpu_counter_deltas": {
+    "checkpoint-medium": {
+      "usage_usec": 64852020,
+      "user_usec": 61777826,
+      "system_usec": 3074193,
+      "nice_usec": 0,
+      "nr_periods": 234,
+      "nr_throttled": 3,
+      "throttled_usec": 2715,
+      "nr_bursts": 0,
+      "burst_usec": 0
+    },
+    "checkpoint-low": {
+      "usage_usec": 57073296,
+      "user_usec": 54748505,
+      "system_usec": 2324790,
+      "nice_usec": 0,
+      "nr_periods": 215,
+      "nr_throttled": 0,
+      "throttled_usec": 0,
+      "nr_bursts": 0,
+      "burst_usec": 0
+    },
+    "final-medium": {
+      "usage_usec": 63621990,
+      "user_usec": 60426086,
+      "system_usec": 3195905,
+      "nice_usec": 0,
+      "nr_periods": 241,
+      "nr_throttled": 0,
+      "throttled_usec": 0,
+      "nr_bursts": 0,
+      "burst_usec": 0
+    },
+    "final-low": {
+      "usage_usec": 57168757,
+      "user_usec": 54122322,
+      "system_usec": 3046435,
+      "nice_usec": 0,
+      "nr_periods": 222,
+      "nr_throttled": 0,
+      "throttled_usec": 0,
+      "nr_bursts": 0,
+      "burst_usec": 0
+    }
+  },
+  "cases": {
+    "checkpoint_standard": {
+      "all_frames": {
+        "frames": 348,
+        "median_ms": 42.084,
+        "p95_ms": 55.116,
+        "p99_ms": 72.459,
+        "max_ms": 122.489,
+        "frames_over_33_3_ms": 340
+      },
+      "all_turn_windows": {
+        "frames": 63,
+        "median_ms": 42.268,
+        "p95_ms": 58.322,
+        "p99_ms": 122.489,
+        "max_ms": 122.489,
+        "frames_over_33_3_ms": 60
+      },
+      "first_route_turn_windows": {
+        "frames": 21,
+        "median_ms": 49.607,
+        "p95_ms": 72.459,
+        "p99_ms": 122.489,
+        "max_ms": 122.489,
+        "frames_over_33_3_ms": 21
+      },
+      "warmed_turn_windows": {
+        "frames": 42,
+        "median_ms": 40.978,
+        "p95_ms": 51.484,
+        "p99_ms": 72.794,
+        "max_ms": 72.794,
+        "frames_over_33_3_ms": 39
+      },
+      "steady_frames": {
+        "frames": 285,
+        "median_ms": 42.059,
+        "p95_ms": 55.019,
+        "p99_ms": 66.205,
+        "max_ms": 112.134,
+        "frames_over_33_3_ms": 280
+      },
+      "bound_texture_change_frames": {
+        "frames": 29,
+        "median_ms": 42.327,
+        "p95_ms": 72.459,
+        "p99_ms": 122.489,
+        "max_ms": 122.489,
+        "frames_over_33_3_ms": 28
+      },
+      "observed_mesh_instances": 30,
+      "observed_texture_names": [
+        "res://assets/visual_rebirth/stalker/level_10_back.png",
+        "res://assets/visual_rebirth/stalker/level_10_front.png",
+        "res://assets/visual_rebirth/stalker/level_10_left.png",
+        "res://assets/visual_rebirth/stalker/level_10_oblique.png",
+        "res://assets/visual_rebirth/stalker/level_10_right.png"
+      ],
+      "estimated_render_memory_bytes": 148583095,
+      "model_hashes": [
+        "d0ed8b17957c70aa4b84b08c8c5673635748e01fcdc683de2540e3a96abd2b5c",
+        "d0ed8b17957c70aa4b84b08c8c5673635748e01fcdc683de2540e3a96abd2b5c",
+        "d0ed8b17957c70aa4b84b08c8c5673635748e01fcdc683de2540e3a96abd2b5c"
+      ],
+      "checks": 215,
+      "failures": 0
+    },
+    "checkpoint_low": {
+      "all_frames": {
+        "frames": 348,
+        "median_ms": 40.002,
+        "p95_ms": 48.022,
+        "p99_ms": 59.978,
+        "max_ms": 71.511,
+        "frames_over_33_3_ms": 343
+      },
+      "all_turn_windows": {
+        "frames": 63,
+        "median_ms": 40.426,
+        "p95_ms": 47.75,
+        "p99_ms": 52.902,
+        "max_ms": 52.902,
+        "frames_over_33_3_ms": 63
+      },
+      "first_route_turn_windows": {
+        "frames": 21,
+        "median_ms": 43.017,
+        "p95_ms": 48.401,
+        "p99_ms": 52.902,
+        "max_ms": 52.902,
+        "frames_over_33_3_ms": 21
+      },
+      "warmed_turn_windows": {
+        "frames": 42,
+        "median_ms": 38.934,
+        "p95_ms": 47.089,
+        "p99_ms": 48.968,
+        "max_ms": 48.968,
+        "frames_over_33_3_ms": 42
+      },
+      "steady_frames": {
+        "frames": 285,
+        "median_ms": 39.968,
+        "p95_ms": 48.022,
+        "p99_ms": 61.142,
+        "max_ms": 71.511,
+        "frames_over_33_3_ms": 280
+      },
+      "bound_texture_change_frames": {
+        "frames": 29,
+        "median_ms": 39.849,
+        "p95_ms": 48.401,
+        "p99_ms": 50.899,
+        "max_ms": 50.899,
+        "frames_over_33_3_ms": 29
+      },
+      "observed_mesh_instances": 30,
+      "observed_texture_names": [
+        "res://assets/visual_rebirth/stalker/level_10_back.png",
+        "res://assets/visual_rebirth/stalker/level_10_front.png",
+        "res://assets/visual_rebirth/stalker/level_10_left.png",
+        "res://assets/visual_rebirth/stalker/level_10_oblique.png",
+        "res://assets/visual_rebirth/stalker/level_10_right.png"
+      ],
+      "estimated_render_memory_bytes": 148580399,
+      "model_hashes": [
+        "d0ed8b17957c70aa4b84b08c8c5673635748e01fcdc683de2540e3a96abd2b5c",
+        "d0ed8b17957c70aa4b84b08c8c5673635748e01fcdc683de2540e3a96abd2b5c",
+        "d0ed8b17957c70aa4b84b08c8c5673635748e01fcdc683de2540e3a96abd2b5c"
+      ],
+      "checks": 215,
+      "failures": 0
+    },
+    "final_standard": {
+      "all_frames": {
+        "frames": 348,
+        "median_ms": 43.588,
+        "p95_ms": 55.65,
+        "p99_ms": 75.381,
+        "max_ms": 93.449,
+        "frames_over_33_3_ms": 348
+      },
+      "all_turn_windows": {
+        "frames": 63,
+        "median_ms": 43.568,
+        "p95_ms": 55.65,
+        "p99_ms": 75.381,
+        "max_ms": 75.381,
+        "frames_over_33_3_ms": 63
+      },
+      "first_route_turn_windows": {
+        "frames": 21,
+        "median_ms": 42.757,
+        "p95_ms": 52.517,
+        "p99_ms": 57.322,
+        "max_ms": 57.322,
+        "frames_over_33_3_ms": 21
+      },
+      "warmed_turn_windows": {
+        "frames": 42,
+        "median_ms": 44.53,
+        "p95_ms": 55.65,
+        "p99_ms": 75.381,
+        "max_ms": 75.381,
+        "frames_over_33_3_ms": 42
+      },
+      "steady_frames": {
+        "frames": 285,
+        "median_ms": 43.598,
+        "p95_ms": 55.577,
+        "p99_ms": 76.316,
+        "max_ms": 93.449,
+        "frames_over_33_3_ms": 285
+      },
+      "bound_texture_change_frames": {
+        "frames": 29,
+        "median_ms": 44.651,
+        "p95_ms": 55.65,
+        "p99_ms": 73.484,
+        "max_ms": 73.484,
+        "frames_over_33_3_ms": 29
+      },
+      "observed_mesh_instances": 1,
+      "observed_texture_names": [
+        "res://assets/visual_rebirth/stalker/level_10_back.png",
+        "res://assets/visual_rebirth/stalker/level_10_front.png",
+        "res://assets/visual_rebirth/stalker/level_10_left.png",
+        "res://assets/visual_rebirth/stalker/level_10_oblique.png",
+        "res://assets/visual_rebirth/stalker/level_10_right.png"
+      ],
+      "estimated_render_memory_bytes": 148582951,
+      "model_hashes": [
+        "d0ed8b17957c70aa4b84b08c8c5673635748e01fcdc683de2540e3a96abd2b5c",
+        "d0ed8b17957c70aa4b84b08c8c5673635748e01fcdc683de2540e3a96abd2b5c",
+        "d0ed8b17957c70aa4b84b08c8c5673635748e01fcdc683de2540e3a96abd2b5c"
+      ],
+      "checks": 215,
+      "failures": 0
+    },
+    "final_low": {
+      "all_frames": {
+        "frames": 348,
+        "median_ms": 40.364,
+        "p95_ms": 50.737,
+        "p99_ms": 65.742,
+        "max_ms": 78.173,
+        "frames_over_33_3_ms": 339
+      },
+      "all_turn_windows": {
+        "frames": 63,
+        "median_ms": 39.827,
+        "p95_ms": 55.182,
+        "p99_ms": 78.173,
+        "max_ms": 78.173,
+        "frames_over_33_3_ms": 61
+      },
+      "first_route_turn_windows": {
+        "frames": 21,
+        "median_ms": 39.448,
+        "p95_ms": 53.721,
+        "p99_ms": 78.173,
+        "max_ms": 78.173,
+        "frames_over_33_3_ms": 21
+      },
+      "warmed_turn_windows": {
+        "frames": 42,
+        "median_ms": 40.401,
+        "p95_ms": 55.182,
+        "p99_ms": 58.249,
+        "max_ms": 58.249,
+        "frames_over_33_3_ms": 40
+      },
+      "steady_frames": {
+        "frames": 285,
+        "median_ms": 40.458,
+        "p95_ms": 50.263,
+        "p99_ms": 65.742,
+        "max_ms": 74.167,
+        "frames_over_33_3_ms": 278
+      },
+      "bound_texture_change_frames": {
+        "frames": 29,
+        "median_ms": 41.824,
+        "p95_ms": 58.249,
+        "p99_ms": 78.173,
+        "max_ms": 78.173,
+        "frames_over_33_3_ms": 29
+      },
+      "observed_mesh_instances": 1,
+      "observed_texture_names": [
+        "res://assets/visual_rebirth/stalker/level_10_back.png",
+        "res://assets/visual_rebirth/stalker/level_10_front.png",
+        "res://assets/visual_rebirth/stalker/level_10_left.png",
+        "res://assets/visual_rebirth/stalker/level_10_oblique.png",
+        "res://assets/visual_rebirth/stalker/level_10_right.png"
+      ],
+      "estimated_render_memory_bytes": 148580399,
+      "model_hashes": [
+        "d0ed8b17957c70aa4b84b08c8c5673635748e01fcdc683de2540e3a96abd2b5c",
+        "d0ed8b17957c70aa4b84b08c8c5673635748e01fcdc683de2540e3a96abd2b5c",
+        "d0ed8b17957c70aa4b84b08c8c5673635748e01fcdc683de2540e3a96abd2b5c"
+      ],
+      "checks": 215,
+      "failures": 0
+    }
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "building_families": 17,
+  "failures": 0,
+  "families": {
+    "antenna": {
+      "baseline": 10,
+      "changed_sample_count": 0,
+      "distinct_idle_states": 22,
+      "minimum_unique_rendered_poses": 1,
+      "reduced_motion_checks": 0,
+      "specializations": 12,
+      "staged_pose_samples_per_state": 2
+    },
+    "auto_repair": {
+      "baseline": 10,
+      "changed_sample_count": 154,
+      "distinct_idle_states": 22,
+      "minimum_unique_rendered_poses": 8,
+      "reduced_motion_checks": 22,
+      "specializations": 12,
+      "staged_pose_samples_per_state": 8
+    },
+    "barrier": {
+      "baseline": 10,
+      "changed_sample_count": 0,
+      "distinct_idle_states": 22,
+      "minimum_unique_rendered_poses": 1,
+      "reduced_motion_checks": 0,
+      "specializations": 12,
+      "staged_pose_samples_per_state": 2
+    },
+    "bed": {
+      "baseline": 10,
+      "changed_sample_count": 0,
+      "distinct_idle_states": 20,
+      "minimum_unique_rendered_poses": 1,
+      "reduced_motion_checks": 0,
+      "specializations": 10,
+      "staged_pose_samples_per_state": 2
+    },
+    "decoy": {
+      "baseline": 10,
+      "changed_sample_count": 154,
+      "distinct_idle_states": 22,
+      "minimum_unique_rendered_poses": 8,
+      "reduced_motion_checks": 22,
+      "specializations": 12,
+      "staged_pose_samples_per_state": 8
+    },
+    "door": {
+      "baseline": 10,
+      "changed_sample_count": 0,
+      "distinct_idle_states": 20,
+      "minimum_unique_rendered_poses": 1,
+      "reduced_motion_checks": 0,
+      "specializations": 10,
+      "staged_pose_samples_per_state": 2
+    },
+    "economy": {
+      "baseline": 10,
+      "changed_sample_count": 154,
+      "distinct_idle_states": 22,
+      "minimum_unique_rendered_poses": 8,
+      "reduced_motion_checks": 22,
+      "specializations": 12,
+      "staged_pose_samples_per_state": 8
+    },
+    "enhancer": {
+      "baseline": 10,
+      "changed_sample_count": 154,
+      "distinct_idle_states": 22,
+      "minimum_unique_rendered_poses": 8,
+      "reduced_motion_checks": 22,
+      "specializations": 12,
+      "staged_pose_samples_per_state": 8
+    },
+    "flame": {
+      "baseline": 10,
+      "changed_sample_count": 264,
+      "distinct_idle_states": 22,
+      "minimum_unique_rendered_poses": 13,
+      "reduced_motion_checks": 0,
+      "specializations": 12,
+      "staged_pose_samples_per_state": 13
+    },
+    "frost": {
+      "baseline": 10,
+      "changed_sample_count": 22,
+      "distinct_idle_states": 22,
+      "minimum_unique_rendered_poses": 2,
+      "reduced_motion_checks": 0,
+      "specializations": 12,
+      "staged_pose_samples_per_state": 2
+    },
+    "generator": {
+      "baseline": 10,
+      "changed_sample_count": 154,
+      "distinct_idle_states": 22,
+      "minimum_unique_rendered_poses": 8,
+      "reduced_motion_checks": 22,
+      "specializations": 12,
+      "staged_pose_samples_per_state": 8
+    },
+    "heavy": {
+      "baseline": 10,
+      "changed_sample_count": 264,
+      "distinct_idle_states": 22,
+      "minimum_unique_rendered_poses": 13,
+      "reduced_motion_checks": 0,
+      "specializations": 12,
+      "staged_pose_samples_per_state": 13
+    },
+    "plasma": {
+      "baseline": 10,
+      "changed_sample_count": 154,
+      "distinct_idle_states": 22,
+      "minimum_unique_rendered_poses": 8,
+      "reduced_motion_checks": 22,
+      "specializations": 12,
+      "staged_pose_samples_per_state": 8
+    },
+    "repair": {
+      "baseline": 10,
+      "changed_sample_count": 154,
+      "distinct_idle_states": 22,
+      "minimum_unique_rendered_poses": 8,
+      "reduced_motion_checks": 22,
+      "specializations": 12,
+      "staged_pose_samples_per_state": 8
+    },
+    "shield": {
+      "baseline": 10,
+      "changed_sample_count": 154,
+      "distinct_idle_states": 22,
+      "minimum_unique_rendered_poses": 8,
+      "reduced_motion_checks": 22,
+      "specializations": 12,
+      "staged_pose_samples_per_state": 8
+    },
+    "shock": {
+      "baseline": 10,
+      "changed_sample_count": 154,
+      "distinct_idle_states": 22,
+      "minimum_unique_rendered_poses": 8,
+      "reduced_motion_checks": 22,
+      "specializations": 12,
+      "staged_pose_samples_per_state": 8
+    },
+    "turret": {
+      "baseline": 10,
+      "changed_sample_count": 264,
+      "distinct_idle_states": 22,
+      "minimum_unique_rendered_poses": 13,
+      "reduced_motion_checks": 0,
+      "specializations": 12,
+      "staged_pose_samples_per_state": 13
+    }
+  },
+  "staging": "Isolated production CanvasItem renderer; positions and activity staged. No matches simulated.",
+  "totals": {
+    "baseline": 170,
+    "moving_states": 286,
+    "reduced_motion_checks": 198,
+    "specializations": 200,
+    "staged_variation_checks": 2284,
+    "static_states": 84
+  },
+  "viewport": [
+    1280,
+    720
+  ]
+}

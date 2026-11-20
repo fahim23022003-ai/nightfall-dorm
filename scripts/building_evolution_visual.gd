@@ -152,7 +152,7 @@ func support_activity(room, building: Dictionary, model = null) -> float:
    return building.flash
   "auto_repair":
    var interval := 5.0 if building.get("specialization","") == "emergency_protocol" else 3.0
-   return 1.0 if room.alive and building.cooldown > interval-.67 else 0.0
+   return 1.0 if room.alive and room.sleeping and building.cooldown > interval-.67 else 0.0
   "shield":
    var branch: String = building.get("specialization","")
    var duration := 2.0 if branch == "aegis_burst" else 4.0 if branch == "steady_veil" else 3.0
@@ -182,7 +182,7 @@ func weapon_target(model, room, tile: int, kind: String, activity: float) -> Vec
  if weapon_rebirth_active(kind) and activity > 0:
   for i in range(model.projectiles.size() - 1, -1, -1):
    var shot: Dictionary = model.projectiles[i]
-   if shot.room != room.index or shot.get("building_id", -1) != tile:
+   if shot.room != room.index or shot.kind != kind or shot.get("building_id", -1) != tile:
     continue
    var actor = model.target_by_id(int(shot.target_id))
    return (actor.position if actor != null else shot.position) - origin

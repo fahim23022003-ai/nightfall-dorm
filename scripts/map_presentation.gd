@@ -173,10 +173,11 @@ func render_tiles(c,p,room,owned):
    var target=p.building_visual.weapon_target(c.model,room,tile,building.kind,building.flash)
    var tilt=clampf(atan2(target.y,absf(target.x)),-0.4,0.4) if building.kind=="turret" else 0.0
    var activity=building.flash
-   if building.kind=="generator":activity=1.0 if room.alive and room.sleeping and not room.production_paused else 0.0
-   if building.kind=="repair":activity=1.0 if room.alive and room.sleeping and room.door_hp>0 and room.door_hp<room.max_hp() and (StrategyCatalog.support(building).get("power_cost",0)==0 or room.electricity>0) else 0.0
-   if p.building_visual.support_rebirth_active(building.kind):activity=p.building_visual.support_activity(room,building,c.model)
-   if building.kind in ["auto_repair","shield","decoy"]:activity=1.0 if building.cooldown>0 else 0.0
+   if p.building_visual.support_rebirth_active(building.kind):
+    activity=p.building_visual.support_activity(room,building,c.model)
+   elif building.kind=="generator":activity=1.0 if room.alive and room.sleeping and not room.production_paused else 0.0
+   elif building.kind=="repair":activity=1.0 if room.alive and room.sleeping and room.door_hp>0 and room.door_hp<room.max_hp() and (StrategyCatalog.support(building).get("power_cost",0)==0 or room.electricity>0) else 0.0
+   elif building.kind in ["auto_repair","shield","decoy"]:activity=1.0 if building.cooldown>0 else 0.0
    p.building_visual.draw(c,p,building.kind,building.level,point,building.get("specialization",""),activity,target,p.clock if owned or c.watched_room==room.index else 0.0)
    if owned and building.kind in ["turret","heavy"]:CosmeticPresentation.turret(c,point)
    var branch=str(building.get("specialization",""))
