@@ -95,7 +95,8 @@ def main() -> None:
     parser.add_argument("output_directory", type=Path)
     args = parser.parse_args()
     args.output_directory.mkdir(parents=True, exist_ok=True)
-    clips = {name: read_json(args.run_directory / f"final-{name}" / "receipt.json") for name in ("needle", "mixed", "shield", "cancel", "reaper", "ally")}
+    names = ("needle", "mixed", "shield", "cancel", "reaper", "ally", "dense-standard", "dense-low")
+    clips = {name: read_json(args.run_directory / f"final-{name}" / "receipt.json") for name in names}
     for receipt in clips.values():
         validate_clip(receipt)
     for name, value in (("needle-shot.json", needle_trace(clips["needle"])), ("paired-performance.json", compare(args.run_directory))):

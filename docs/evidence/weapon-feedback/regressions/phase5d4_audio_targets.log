@@ -1,0 +1,33 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: WRATH AUDIO TARGET: declared original/Phase8 QOA import and nonempty playback haunted_hall_retreat
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d4_audio_targets.gd:6)
+       [1] run (res://tests/phase5d4_audio_targets.gd:23)
+ERROR: WRATH AUDIO TARGET: declared original/Phase8 QOA import and nonempty playback haunted_hall_north
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d4_audio_targets.gd:6)
+       [1] run (res://tests/phase5d4_audio_targets.gd:23)
+ERROR: WRATH AUDIO TARGET: declared original/Phase8 QOA import and nonempty playback haunted_hall_south
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d4_audio_targets.gd:6)
+       [1] run (res://tests/phase5d4_audio_targets.gd:23)
+ERROR: WRATH AUDIO TARGET: declared original/Phase8 QOA import and nonempty playback haunted_hall_west
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d4_audio_targets.gd:6)
+       [1] run (res://tests/phase5d4_audio_targets.gd:23)
+ERROR: WRATH AUDIO TARGET: declared original/Phase8 QOA import and nonempty playback haunted_hall_east
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d4_audio_targets.gd:6)
+       [1] run (res://tests/phase5d4_audio_targets.gd:23)
+ERROR: WRATH AUDIO TARGET: declared original/Phase8 QOA import and nonempty playback haunted_hall_release
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/phase5d4_audio_targets.gd:6)
+       [1] run (res://tests/phase5d4_audio_targets.gd:23)
+WRATH_AUDIO_TARGET_CHECKS=247 FAILURES=6

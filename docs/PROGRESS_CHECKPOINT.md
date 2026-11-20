@@ -1,3 +1,15 @@
+# Weapon Impact & Damage Feedback
+
+The latest preview connects rendered weapon fire to the actual launch,
+contact and effective HP loss. It adds damage numbers and per-machine
+contribution, and preserves the Phase 16 launcher for comparison.
+Desktop Godot evidence covers Needle, mixed weapons, shields, canceled
+targets, allied fire, Reaper and 60-machine rooms on both presets. The
+Windows x64 pack passed Linux verification. Native Windows remains pending.
+[Implementation, recordings and benchmarks](WEAPON_FEEDBACK.md)
+
+---
+
 # Phase 16 · Nightmare polish and performance
 
 The Phase 16 preview starts from `07b459b`. It adds advisory Room Rush

@@ -1,0 +1,92 @@
+{
+  "version": "0.7.0-overhaul",
+  "source_commit": "7f62713c58b5e8590db6ba9045edcf4752235618",
+  "engine": "4.6.3.stable.official.7d41c59c4",
+  "executable_bytes": 274141584,
+  "executable_sha256": "511d90b9a9b7420e5e2883ee8a626aa7dd8dc709bc6cecd5c4b0275b31b14b45",
+  "embedded_pack_bytes": 169540996,
+  "archive": "NightfallDorm-Weapon-Feedback-Windows-x64.zip",
+  "archive_bytes": 174767731,
+  "archive_sha256": "c514ddc5fe790d2a1a9251da69a11ba078f6bbc8053382e4eb8cb5085a55bafc",
+  "native_windows": "UNVERIFIED",
+  "public_release": false,
+  "launcher_environments": {
+    "weapon-feedback": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-living-nightmare-preview.json",
+      "NIGHTFALL_LIVING_NIGHTMARE": "1",
+      "NIGHTFALL_SURVIVOR_REBIRTH": "1",
+      "NIGHTFALL_PHASE16": "1",
+      "NIGHTFALL_WEAPON_FEEDBACK": "1",
+      "NIGHTFALL_VISUAL_REBIRTH": "1",
+      "NIGHTFALL_FULL_ROOM_GRID": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "1"
+    },
+    "phase16": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-living-nightmare-preview.json",
+      "NIGHTFALL_LIVING_NIGHTMARE": "1",
+      "NIGHTFALL_SURVIVOR_REBIRTH": "1",
+      "NIGHTFALL_PHASE16": "1",
+      "NIGHTFALL_WEAPON_FEEDBACK": "0",
+      "NIGHTFALL_VISUAL_REBIRTH": "1",
+      "NIGHTFALL_FULL_ROOM_GRID": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "1"
+    },
+    "survivor-rebirth": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-living-nightmare-preview.json",
+      "NIGHTFALL_LIVING_NIGHTMARE": "1",
+      "NIGHTFALL_SURVIVOR_REBIRTH": "1",
+      "NIGHTFALL_PHASE16": "0",
+      "NIGHTFALL_WEAPON_FEEDBACK": "0",
+      "NIGHTFALL_VISUAL_REBIRTH": "1",
+      "NIGHTFALL_FULL_ROOM_GRID": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "1"
+    },
+    "living-nightmare": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-living-nightmare-preview.json",
+      "NIGHTFALL_LIVING_NIGHTMARE": "1",
+      "NIGHTFALL_SURVIVOR_REBIRTH": "0",
+      "NIGHTFALL_PHASE16": "0",
+      "NIGHTFALL_WEAPON_FEEDBACK": "0",
+      "NIGHTFALL_VISUAL_REBIRTH": "1",
+      "NIGHTFALL_FULL_ROOM_GRID": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "1"
+    },
+    "v1-fallback": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-v23-v1-playtest.json",
+      "NIGHTFALL_LIVING_NIGHTMARE": "0",
+      "NIGHTFALL_SURVIVOR_REBIRTH": "0",
+      "NIGHTFALL_PHASE16": "0",
+      "NIGHTFALL_WEAPON_FEEDBACK": "0",
+      "NIGHTFALL_VISUAL_REBIRTH": "1",
+      "NIGHTFALL_FULL_ROOM_GRID": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "0"
+    },
+    "fixed-reference": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-v23-fixed-reference.json",
+      "NIGHTFALL_LIVING_NIGHTMARE": "0",
+      "NIGHTFALL_SURVIVOR_REBIRTH": "0",
+      "NIGHTFALL_PHASE16": "0",
+      "NIGHTFALL_WEAPON_FEEDBACK": "0",
+      "NIGHTFALL_VISUAL_REBIRTH": "0",
+      "NIGHTFALL_FULL_ROOM_GRID": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "0"
+    },
+    "fair-start-preview": {
+      "NIGHTFALL_PROFILE_PATH": "user://nightfall-v23-playtest.json",
+      "NIGHTFALL_LIVING_NIGHTMARE": "0",
+      "NIGHTFALL_SURVIVOR_REBIRTH": "0",
+      "NIGHTFALL_PHASE16": "0",
+      "NIGHTFALL_WEAPON_FEEDBACK": "0",
+      "NIGHTFALL_VISUAL_REBIRTH": "1",
+      "NIGHTFALL_FULL_ROOM_GRID": "1",
+      "NIGHTFALL_PROCEDURAL_MAPS": "0",
+      "NIGHTFALL_PROCEDURAL_MAPS_V2": "1"
+    }
+  }
+}

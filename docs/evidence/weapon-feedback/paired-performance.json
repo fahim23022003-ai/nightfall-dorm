@@ -1,0 +1,370 @@
+[
+  {
+    "buildings": 10,
+    "quality": "medium",
+    "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+    "matched_gameplay_sha256": "3fbc8efa261bdf9294ebe8a9110609346043de9eb496bdc3369f39dfce903dcf",
+    "shots": 37,
+    "peak_concurrent_projectiles": 7,
+    "before": {
+      "frame_ms": {
+        "max": 85.756,
+        "median": 43.498000000000005,
+        "p95": 55.204
+      },
+      "update_ms": {
+        "max": 7.283,
+        "median": 2.466,
+        "p95": 3.18
+      },
+      "draw_calls": {
+        "max": 596,
+        "median": 552.0,
+        "p95": 578
+      },
+      "static_memory_bytes": 154609681,
+      "video_memory_bytes": 117956799
+    },
+    "after": {
+      "frame_ms": {
+        "max": 76.015,
+        "median": 43.176,
+        "p95": 55.413
+      },
+      "update_ms": {
+        "max": 8.872,
+        "median": 2.4455,
+        "p95": 3.169
+      },
+      "draw_calls": {
+        "max": 580,
+        "median": 542.0,
+        "p95": 567
+      },
+      "static_memory_bytes": 154893811,
+      "video_memory_bytes": 118214107
+    }
+  },
+  {
+    "buildings": 10,
+    "quality": "low",
+    "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+    "matched_gameplay_sha256": "3fbc8efa261bdf9294ebe8a9110609346043de9eb496bdc3369f39dfce903dcf",
+    "shots": 37,
+    "peak_concurrent_projectiles": 7,
+    "before": {
+      "frame_ms": {
+        "max": 75.842,
+        "median": 38.3215,
+        "p95": 47.718
+      },
+      "update_ms": {
+        "max": 22.645,
+        "median": 2.407,
+        "p95": 2.967
+      },
+      "draw_calls": {
+        "max": 571,
+        "median": 534.0,
+        "p95": 555
+      },
+      "static_memory_bytes": 154630581,
+      "video_memory_bytes": 119117195
+    },
+    "after": {
+      "frame_ms": {
+        "max": 112.816,
+        "median": 35.695,
+        "p95": 46.949
+      },
+      "update_ms": {
+        "max": 7.921,
+        "median": 2.464,
+        "p95": 2.976
+      },
+      "draw_calls": {
+        "max": 557,
+        "median": 530.0,
+        "p95": 544
+      },
+      "static_memory_bytes": 154891999,
+      "video_memory_bytes": 119374503
+    }
+  },
+  {
+    "buildings": 24,
+    "quality": "medium",
+    "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+    "matched_gameplay_sha256": "610ca623d8cd6a4515e898c51a3a1c70b919a8c7a1fa75c0c405b88edd06a4ea",
+    "shots": 42,
+    "peak_concurrent_projectiles": 8,
+    "before": {
+      "frame_ms": {
+        "max": 81.783,
+        "median": 54.047,
+        "p95": 65.221
+      },
+      "update_ms": {
+        "max": 7.734,
+        "median": 3.2714999999999996,
+        "p95": 4.29
+      },
+      "draw_calls": {
+        "max": 621,
+        "median": 576.5,
+        "p95": 602
+      },
+      "static_memory_bytes": 155979513,
+      "video_memory_bytes": 117959103
+    },
+    "after": {
+      "frame_ms": {
+        "max": 123.633,
+        "median": 52.809,
+        "p95": 69.165
+      },
+      "update_ms": {
+        "max": 31.6,
+        "median": 3.447,
+        "p95": 4.762
+      },
+      "draw_calls": {
+        "max": 603,
+        "median": 568.0,
+        "p95": 592
+      },
+      "static_memory_bytes": 156238399,
+      "video_memory_bytes": 118214723
+    }
+  },
+  {
+    "buildings": 24,
+    "quality": "low",
+    "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+    "matched_gameplay_sha256": "610ca623d8cd6a4515e898c51a3a1c70b919a8c7a1fa75c0c405b88edd06a4ea",
+    "shots": 42,
+    "peak_concurrent_projectiles": 8,
+    "before": {
+      "frame_ms": {
+        "max": 75.424,
+        "median": 46.156,
+        "p95": 60.244
+      },
+      "update_ms": {
+        "max": 6.825,
+        "median": 3.2535,
+        "p95": 4.695
+      },
+      "draw_calls": {
+        "max": 597,
+        "median": 558.0,
+        "p95": 579
+      },
+      "static_memory_bytes": 155978053,
+      "video_memory_bytes": 119119499
+    },
+    "after": {
+      "frame_ms": {
+        "max": 88.596,
+        "median": 47.1215,
+        "p95": 67.032
+      },
+      "update_ms": {
+        "max": 8.982,
+        "median": 3.241,
+        "p95": 4.62
+      },
+      "draw_calls": {
+        "max": 579,
+        "median": 552.0,
+        "p95": 568
+      },
+      "static_memory_bytes": 156234899,
+      "video_memory_bytes": 119374503
+    }
+  },
+  {
+    "buildings": 40,
+    "quality": "medium",
+    "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+    "matched_gameplay_sha256": "ef8e9bb3865d245850f278ee3adbf67e388da37e5764dff7100b27de3277185f",
+    "shots": 42,
+    "peak_concurrent_projectiles": 8,
+    "before": {
+      "frame_ms": {
+        "max": 81.521,
+        "median": 61.403,
+        "p95": 73.107
+      },
+      "update_ms": {
+        "max": 16.03,
+        "median": 4.9105,
+        "p95": 6.471
+      },
+      "draw_calls": {
+        "max": 646,
+        "median": 600.5,
+        "p95": 626
+      },
+      "static_memory_bytes": 157567321,
+      "video_memory_bytes": 117959719
+    },
+    "after": {
+      "frame_ms": {
+        "max": 88.222,
+        "median": 62.196,
+        "p95": 75.526
+      },
+      "update_ms": {
+        "max": 24.039,
+        "median": 4.879,
+        "p95": 6.712
+      },
+      "draw_calls": {
+        "max": 625,
+        "median": 590.0,
+        "p95": 614
+      },
+      "static_memory_bytes": 157823111,
+      "video_memory_bytes": 118214107
+    }
+  },
+  {
+    "buildings": 40,
+    "quality": "low",
+    "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+    "matched_gameplay_sha256": "ef8e9bb3865d245850f278ee3adbf67e388da37e5764dff7100b27de3277185f",
+    "shots": 42,
+    "peak_concurrent_projectiles": 8,
+    "before": {
+      "frame_ms": {
+        "max": 91.483,
+        "median": 51.991,
+        "p95": 61.974
+      },
+      "update_ms": {
+        "max": 21.77,
+        "median": 4.749,
+        "p95": 6.666
+      },
+      "draw_calls": {
+        "max": 620,
+        "median": 581.0,
+        "p95": 602
+      },
+      "static_memory_bytes": 157564437,
+      "video_memory_bytes": 119119499
+    },
+    "after": {
+      "frame_ms": {
+        "max": 79.953,
+        "median": 52.391999999999996,
+        "p95": 69.476
+      },
+      "update_ms": {
+        "max": 15.41,
+        "median": 4.9665,
+        "p95": 6.849
+      },
+      "draw_calls": {
+        "max": 602,
+        "median": 575.0,
+        "p95": 591
+      },
+      "static_memory_bytes": 157823531,
+      "video_memory_bytes": 119374503
+    }
+  },
+  {
+    "buildings": 60,
+    "quality": "medium",
+    "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+    "matched_gameplay_sha256": "d4c6acfd0f794f5de784091a48a84ae9b8ab3ecd7f556ecda0a9180960d6769c",
+    "shots": 42,
+    "peak_concurrent_projectiles": 8,
+    "before": {
+      "frame_ms": {
+        "max": 140.003,
+        "median": 82.6805,
+        "p95": 105.754
+      },
+      "update_ms": {
+        "max": 28.332,
+        "median": 6.3705,
+        "p95": 9.678
+      },
+      "draw_calls": {
+        "max": 685,
+        "median": 639.5,
+        "p95": 665
+      },
+      "static_memory_bytes": 159455869,
+      "video_memory_bytes": 120416959
+    },
+    "after": {
+      "frame_ms": {
+        "max": 111.946,
+        "median": 77.209,
+        "p95": 103.526
+      },
+      "update_ms": {
+        "max": 26.054,
+        "median": 6.4655000000000005,
+        "p95": 8.777
+      },
+      "draw_calls": {
+        "max": 665,
+        "median": 630.0,
+        "p95": 654
+      },
+      "static_memory_bytes": 159715635,
+      "video_memory_bytes": 120671963
+    }
+  },
+  {
+    "buildings": 60,
+    "quality": "low",
+    "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+    "matched_gameplay_sha256": "d4c6acfd0f794f5de784091a48a84ae9b8ab3ecd7f556ecda0a9180960d6769c",
+    "shots": 42,
+    "peak_concurrent_projectiles": 8,
+    "before": {
+      "frame_ms": {
+        "max": 81.762,
+        "median": 59.189499999999995,
+        "p95": 73.226
+      },
+      "update_ms": {
+        "max": 11.098,
+        "median": 6.2395,
+        "p95": 7.723
+      },
+      "draw_calls": {
+        "max": 626,
+        "median": 587.0,
+        "p95": 608
+      },
+      "static_memory_bytes": 159456917,
+      "video_memory_bytes": 122756991
+    },
+    "after": {
+      "frame_ms": {
+        "max": 121.106,
+        "median": 57.9695,
+        "p95": 75.232
+      },
+      "update_ms": {
+        "max": 50.589,
+        "median": 6.2645,
+        "p95": 9.478
+      },
+      "draw_calls": {
+        "max": 608,
+        "median": 581.0,
+        "p95": 597
+      },
+      "static_memory_bytes": 159711955,
+      "video_memory_bytes": 123011995
+    }
+  }
+]

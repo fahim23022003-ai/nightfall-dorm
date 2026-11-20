@@ -1,0 +1,64 @@
+{
+  "source": {
+    "kind": "turret",
+    "level": 1,
+    "specialization": "",
+    "room": 1,
+    "building_id": 16,
+    "building_instance_id": 1
+  },
+  "projectile_id": 1,
+  "physical_origin": "(2440.0, 776.0)",
+  "visible_muzzle": "(2440.0, 743.8771)",
+  "launch_time": 64.04166666666667,
+  "target_id": 1,
+  "flight_frames": [
+    {
+      "frame": 0,
+      "model": "(2440.0, 776.0)",
+      "visual": "(2440.0, 743.8771)"
+    },
+    {
+      "frame": 1,
+      "model": "(2435.149, 756.5972)",
+      "visual": "(2435.149, 730.9016)"
+    },
+    {
+      "frame": 2,
+      "model": "(2430.299, 737.1943)",
+      "visual": "(2430.299, 723.037)"
+    },
+    {
+      "frame": 3,
+      "model": "(2425.448, 717.7915)",
+      "visual": "(2425.448, 708.7915)"
+    },
+    {
+      "frame": 4,
+      "model": "(2420.597, 698.3887)",
+      "visual": "(2420.597, 689.3887)"
+    },
+    {
+      "frame": 5,
+      "model": "(2415.746, 678.9858)",
+      "visual": "(2415.746, 669.9858)"
+    },
+    {
+      "frame": 6,
+      "model": "(2410.896, 659.5829)",
+      "visual": "(2410.896, 650.5829)"
+    }
+  ],
+  "impact_time": 64.33333333333337,
+  "impact_point": "(2408.0, 648.0)",
+  "actual_damage": 9.0,
+  "hp_before": 6440.000000000001,
+  "hp_after": 6431.000000000001,
+  "visible_label": {
+    "frame": 7,
+    "hud": "HUNTER EVO 6 \u00b7 6431/6440",
+    "hunter_hp": 6431.000000000001,
+    "label": "9",
+    "raw_total": 9.0
+  }
+}
