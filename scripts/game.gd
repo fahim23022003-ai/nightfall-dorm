@@ -516,7 +516,7 @@ func focus_camera(snap: bool=false,delta: float=0.016):
    var extent: Rect2
    var available=Vector2(1160,470)
    var desired=Vector2(640,385)
-   if rebirth_framing and not mobile_mode and not model.tutorial_mode:
+   if (rebirth_framing or observed.spatial!=null and observed.spatial.grid) and not mobile_mode and not model.tutorial_mode:
     extent=_preview_room_extent(observed)
     # One stable composition with space reserved for warnings, the dock and
     # the side inspector. Opening a panel never recenters the playing field.

@@ -63,7 +63,7 @@ func install():
   if is_instance_valid(control) and control.get_parent()==ui.panel:ui.panel.move_child(control,-1)
  inspection=preload("res://scripts/building_inspection_preview.gd").new();inspection.ui=ui;inspection.mouse_filter=Control.MOUSE_FILTER_IGNORE;inspection.position=Vector2(14,31);inspection.size=Vector2(178,154);ui.context_box.add_child(inspection)
  for control in [ui.selected_details,ui.bed_details,ui.door_details]:place(control,Vector2(212,33),Vector2(602,143))
- if ui.game.rebirth_framing and not ui.game.model.tutorial_mode:
+ if (ui.game.rebirth_framing or ui.game.model.full_grid_requested or ui.game.model.player()!=null and ui.game.model.player().spatial!=null and ui.game.model.player().spatial.grid) and not ui.game.model.tutorial_mode:
   install_side()
  refresh()
 

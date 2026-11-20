@@ -1,3 +1,16 @@
+# Full Room Grid polish
+
+The opt-in grid preview moves room traits and interaction hints to the HUD,
+keeps door HP in the toolbar, and adds a machine list with exact footprint
+highlighting. Placement explains obstructions and supports reverse rotation.
+The 24, 40, 60 and 82 machine layouts were tested before and after with matched
+game state at 1280×720. Low improved at all four densities. Standard improved
+at 40 and 60, with slightly higher timings at 82 despite fewer draw calls.
+[Godot evidence](evidence/full-room-grid/polish/visuals/README.md) ·
+[Performance traces](evidence/full-room-grid/polish/performance/README.md)
+
+---
+
 # Full Room Grid — combined owner playtest
 
 Desktop Campaign and Endless now have an opt-in full-floor construction

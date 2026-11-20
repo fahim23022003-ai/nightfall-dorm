@@ -3,6 +3,7 @@ extends RefCounted
 ## Decorations are presentation only; collision remains entirely map-owned.
 const OFFSET=Vector2(145,40)
 var floors={}
+var grid_layouts: Dictionary={}
 func _init():
  for theme in ["dorm","hospital","hotel","lab","mansion"]:floors[theme]=load("res://assets/visual_identity/"+theme+"_floor.svg")
 const PALETTES={
@@ -74,12 +75,13 @@ func render_room(c,p,room,theme,colors):
   c.draw_line(start+Vector2(0,-3),finish+Vector2(0,-3),Color(colors[3],0.5),1)
  var expanded_horizontal=c.model.run_kind=="endless" and c.model.expansion.initialized and not c.model.expansion.legacy and absf(room.door_normal().x)>0
  var owned=room.index==c.model.player_room
+ var focused_grid: bool=c.construction!=null and c.construction.focused_grid(room)
  if owned:
   c.draw_style_box(p.frame(Color.TRANSPARENT,Color("7BE3A1"),5),r.grow(11))
-  if not expanded_horizontal:p.text(c,"YOUR ROOM",r.position+Vector2(10,r.size.y-12),11,Color("D4FFE1"))
+  if not expanded_horizontal and not focused_grid:p.text(c,"YOUR ROOM",r.position+Vector2(10,r.size.y-12),11,Color("D4FFE1"))
  var plaque=r.position+Vector2(10,r.size.y-58 if expanded_horizontal else 18)
- p.text(c,"%02d · %s" % [room.index+1,room.survivor_name() if room.owner>=0 else "VACANT"],plaque,11,Color("EDF4ED"))
- if room.trait_id!="":
+ if not focused_grid:p.text(c,"%02d · %s" % [room.index+1,room.survivor_name() if room.owner>=0 else "VACANT"],plaque,11,Color("EDF4ED"))
+ if room.trait_id!="" and not focused_grid:
   var room_trait=StrategyCatalog.TRAITS[room.trait_id]
   var at=r.position+Vector2(8,r.size.y-48) if expanded_horizontal else r.position+Vector2(r.size.x-193,4)
   c.draw_texture_rect(PremiumButton.texture(room_trait.icon),Rect2(at,Vector2(23,23)),false)
@@ -162,19 +164,52 @@ static func draw_grid_facing(c,rect: Rect2,rotation: int,color: Color):
  var tip := rect.get_center()+toward*(absf(toward.x)*rect.size.x+absf(toward.y)*rect.size.y)*.5
  c.draw_colored_polygon(PackedVector2Array([tip,tip-toward*6.0-side*4.0,tip-toward*6.0+side*4.0]),color)
 
+# Rendering-only cache. A layout can be replaced by loading or replay, and
+# machine state can mutate in place, so compare the actual geometry.
+func grid_layout(room) -> Dictionary:
+ var cached: Dictionary=grid_layouts.get(room.index,{})
+ if not cached.is_empty() and cached.room.get_ref()==room and cached.entries.size()==room.buildings.size():
+  var matches:=true
+  for id in room.buildings:
+   var building: Dictionary=room.buildings[id]
+   var entry: Dictionary=cached.entries.get(id,{})
+   if entry.is_empty() or entry.center!=building.position or entry.kind!=building.kind or entry.rotation!=building.get("rotation",0):
+    matches=false
+    break
+  if matches:return cached
+ var entries: Dictionary={}
+ var outlines:=PackedVector2Array()
+ var ids: Array=room.buildings.keys()
+ for id in ids:
+  var building: Dictionary=room.buildings[id]
+  var center: Vector2=room.tile_position(id)
+  var rotation:=int(building.get("rotation",0))
+  var rect:=SpatialConstruction.grid_footprint(center,building.kind,rotation)
+  entries[id]={"center":center,"kind":building.kind,"rotation":rotation,"rect":rect,"scale":grid_scale(rect)}
+  var a:=OFFSET+rect.position
+  var b:=a+Vector2(rect.size.x,0)
+  var d:=a+Vector2(0,rect.size.y)
+  var c:=OFFSET+rect.end
+  outlines.append_array(PackedVector2Array([a,b,b,c,c,d,d,a]))
+ ids.sort_custom(func(a,b):
+  var first: Vector2=entries[a].center
+  var second: Vector2=entries[b].center
+  return a<b if first.y==second.y else first.y<second.y)
+ cached={"room":weakref(room),"entries":entries,"ids":ids,"outlines":outlines}
+ grid_layouts[room.index]=cached
+ return cached
+
 func render_tiles(c,p,room,owned):
- if room.spatial!=null and c.construction!=null:c.construction.draw_floor(c,room)
- var ids=room.buildings.keys() if room.spatial!=null else range(room.tile_count())
  var grid: bool=room.spatial!=null and room.spatial.grid
- var visible := Rect2()
- if grid:
-  visible=p.visible_world_rect(c,70)
-  ids.sort_custom(func(a,b):
-   var first: Vector2=room.tile_position(a)
-   var second: Vector2=room.tile_position(b)
-   return a<b if first.y==second.y else first.y<second.y)
+ var layout:=grid_layout(room) if grid else {}
+ if room.spatial!=null and c.construction!=null:c.construction.draw_floor(c,room,layout)
+ var ids=layout.ids if grid else room.buildings.keys() if room.spatial!=null else range(room.tile_count())
+ var visible: Rect2=p.visible_world_rect(c,70) if grid else Rect2()
  for tile in ids:
-  var point=OFFSET+(c.construction.rendered_position(room,tile) if room.spatial!=null and c.construction!=null else room.tile_position(tile))
+  var center: Vector2=layout.entries[tile].center if grid else room.tile_position(tile)
+  if room.spatial!=null and c.construction!=null and c.construction.last_visual.get("id",-1)==tile:
+   center=c.construction.rendered_position(room,tile)
+  var point:=OFFSET+center
   if grid and not visible.has_point(point):continue
   if not room.buildings.has(tile):
    c.draw_style_box(p.frame(Color("333E3E") if owned else Color("303839"),Color("7C8270") if owned else Color("414D4B"),4),Rect2(point-Vector2(22,21),Vector2(44,42)))
@@ -185,7 +220,7 @@ func render_tiles(c,p,room,owned):
    p.text(c,str(tile+1),point+Vector2(-17,16),8,Color("C3D5D2"))
   else:
    var building=room.buildings[tile]
-   var target=p.building_visual.weapon_target(c.model,room,tile,building.kind,building.flash)
+   var target=p.building_visual.weapon_target(c.model,room,tile,building.kind,building.flash) if building.kind in DefenseEffects.WEAPONS else Vector2.ZERO
    var activity=building.flash
    if p.building_visual.support_rebirth_active(building.kind):
     activity=p.building_visual.support_activity(room,building,c.model)
@@ -194,10 +229,12 @@ func render_tiles(c,p,room,owned):
    elif building.kind in ["auto_repair","shield","decoy"]:activity=1.0 if building.cooldown>0 else 0.0
    var scale := 1.0
    if grid:
-    var rotation := int(building.get("rotation",0))
-    var footprint: Rect2=room.spatial.footprint_for(point,building.kind,rotation)
-    scale=grid_scale(footprint)
-    if rotation!=0:draw_grid_facing(c,footprint,rotation,Color("c3aa79"))
+    var entry: Dictionary=layout.entries[tile]
+    scale=entry.scale
+    if entry.rotation!=0:
+     var footprint: Rect2=entry.rect
+     footprint.position+=point-entry.center
+     draw_grid_facing(c,footprint,entry.rotation,Color("c3aa79"))
    p.building_visual.draw(c,p,building.kind,building.level,point,building.get("specialization",""),activity,target,p.clock if owned or c.watched_room==room.index else 0.0,0.0,scale)
    if owned and building.kind in ["turret","heavy"]:CosmeticPresentation.turret(c,point)
    var branch=str(building.get("specialization",""))
@@ -210,9 +247,9 @@ func render_tiles(c,p,room,owned):
     var flash=clampf(building.flash/.15,0,1)
     c.draw_colored_polygon(PackedVector2Array([muzzle-side*4,muzzle+direction*(7+flash*10),muzzle+side*4]),Color("E5C898") if building.kind=="heavy" else Color("A1E0DB"))
     if not c.profile.settings.reduced_effects:c.draw_circle(muzzle,9,Color(.8,.75,.45,.12*flash))
-   if building.level<5:
+   if building.level<5 and not grid:
     for pip in range(building.level):c.draw_circle(point+Vector2(-(building.level-1)*2+pip*4,24),1.5,Color("BFCDB9"))
-  if owned and c.selected_tile==tile and c.ui.context_open:
+  if not grid and owned and c.selected_tile==tile and c.ui.context_open:
    p.selection_outline(c,point)
  if owned and room.spatial==null and c.pending_build!="":
   var point=OFFSET+c.preview_position
@@ -242,6 +279,7 @@ func render_door(c,p,room):
  c.draw_set_transform(Vector2.ZERO)
 
 func render_door_status(c,p,room):
+ if c.construction!=null and c.construction.focused_grid(room):return
  var point=OFFSET+room.door_position();var normal=room.door_normal()
  if room.owner>=0:
   var targeted=c.model.hunter.target==room.index and c.model.hunter.state in [HunterState.State.ATTACK,HunterState.State.BREACH]

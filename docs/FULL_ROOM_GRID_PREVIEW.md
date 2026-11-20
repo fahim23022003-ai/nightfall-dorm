@@ -10,11 +10,13 @@ visuals and placement flow with the previous test profile.
 Claim an empty room, then use **E** at the bed. Press **B**, choose a machine,
 and point inside your room. The mouse snaps to a 16-unit floor grid. Green
 marks a legal placement and red shows the blocking reason. Press **Q** to
-turn the footprint clockwise, or **Esc** to cancel. **P** shows the floor plan.
+turn the footprint clockwise, **Shift+Q** to turn it back, or **Esc** to cancel. **P** shows the floor plan.
 Select an installed machine and press **V** to reposition it during
 preparation or Endless intermission. **Z** undoes the last safe move within
 the same window. A move keeps the machine’s identity, upgrades, paid
-investment and cooldown.
+investment and cooldown. Use **Find machines** to choose a specific machine
+by level and footprint coordinates. Room traits and interaction hints are in
+the left HUD, and door HP stays in the bottom toolbar.
 
 In the desktop preview, player Campaign and Endless rooms use all available
 floor from the start. Endless starts with the former full-size player floor
@@ -46,7 +48,11 @@ profile into the grid test profile with the game closed and keep the original.
 
 [Windows playtest checklist](PHASE_14_FULL_ROOM_GRID_WINDOWS_CHECKLIST.md)
 
-## Verification
+## Grid polish verification
+
+[Godot screenshots and gameplay video](evidence/full-room-grid/polish/visuals/README.md) · [Matched 24–82-building benchmarks](evidence/full-room-grid/polish/performance/README.md)
+
+## Initial grid verification
 
 - **11,274 geometry checks** cover all 30 authored rooms, six legacy rooms,
   342 expanded layouts, typed footprints, turns and path clearance. **727

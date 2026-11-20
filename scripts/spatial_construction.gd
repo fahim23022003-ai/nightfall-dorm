@@ -166,10 +166,15 @@ func geometry_reason(point: Vector2,ignore_id: int=-1,layout: Dictionary={},kind
  var error:=blocked_reason(rect,bounds,obstacles)
  if not error.is_empty():return error
  var clearance:=rect if grid else rect.grow(2)
+ # All grid footprints fit in three cells on either axis. Exclude distant
+ # centers before resolving the neighbor's exact shape and orientation.
+ var nearby:=rect.grow(1.5*CELL_SIZE)
  for id in r.buildings:
   if id==ignore_id:continue
   var building: Dictionary=r.buildings[id]
-  if clearance.intersects(footprint_for(r.tile_position(id),building.get("kind",""),int(building.get("rotation",0)))):return "Building overlaps another structure"
+  var center: Vector2=r.tile_position(id)
+  if grid and not nearby.has_point(center):continue
+  if clearance.intersects(footprint_for(center,building.get("kind",""),int(building.get("rotation",0)))):return "Building overlaps another structure"
  if grid and actor_points_provider.is_valid():
   var actor_zone:=rect.grow(ACTOR_CLEARANCE)
   for actor in actor_points_provider.call():
@@ -279,16 +284,22 @@ func undo(model) -> bool:
  if not begin_move(model,int(d.id)):return false
  var ok=move(model,d.from,int(d.get("from_rotation",-1)));undo_entry.clear();return ok
 func hit_test(point: Vector2) -> int:
- var r=room();var selected=-1;var distance=INF
- var ids=r.buildings.keys();ids.sort()
- for id in ids:
+ var r=room()
+ var selected: int=-1
+ var distance:=INF
+ var footprint_candidate: int=-1
+ for id in r.buildings:
   var at: Vector2=r.tile_position(id)
-  if grid and footprint_for(at,r.buildings[id].kind,int(r.buildings[id].get("rotation",0))).has_point(point):return id
-  var core:=at-Vector2(0,12)
-  if Rect2(at-Vector2(22,38),Vector2(44,52)).has_point(point) and core.distance_squared_to(point)<distance:
-   selected=id
-   distance=core.distance_squared_to(point)
- return selected
+  if grid and absf(at.x-point.x)<=1.5*CELL_SIZE and absf(at.y-point.y)<=1.5*CELL_SIZE:
+   var b: Dictionary=r.buildings[id]
+   if grid_footprint(at,b.kind,int(b.get("rotation",0))).has_point(point):
+    if footprint_candidate<0 or id<footprint_candidate:footprint_candidate=id
+  if Rect2(at-Vector2(22,38),Vector2(44,52)).has_point(point):
+   var next_distance: float=(at-Vector2(0,12)).distance_squared_to(point)
+   if next_distance<distance or next_distance==distance and id<selected:
+    selected=id
+    distance=next_distance
+ return footprint_candidate if footprint_candidate>=0 else selected
 
 func snapshot() -> Dictionary:
  var data={"version":VERSION,"next_id":next_id,"used_legacy":used_legacy.duplicate()}

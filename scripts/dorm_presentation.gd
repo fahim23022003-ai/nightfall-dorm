@@ -403,7 +403,8 @@ func render(c):
   var bed_badge_offset=Vector2(40,-17) if m.run_kind=="endless" and m.expansion.initialized and not m.expansion.legacy else Vector2(0,34)
   if room.bed_level>=5:support_prestige(c,OFFSET+room.bed_position()+bed_badge_offset,room.bed_level+1,room.bed_branch)
   if room.door_level>=5 and room.door_hp>0:support_prestige(c,OFFSET+room.door_position()+Vector2(0,-58),room.door_level+1,room.door_branch)
-  for tile in room.buildings:
+  var grid: bool=room.spatial!=null and room.spatial.grid
+  for tile in room.buildings if not grid else []:
    var b=room.buildings[tile]
    if b.level>=5:
     var selected=room.index==m.player_room and c.selected_tile==tile and c.ui.context_open and c.watched_room<0
@@ -414,7 +415,10 @@ func render(c):
   if c.profile.settings.reduced_effects:tint.a*=.35
   c.draw_rect(visible_world_rect(c,0),tint)
  nightmare_visual.effects(c,clock);nightmare_visual.omens(c,clock)
- if c.construction!=null:c.construction.draw_range(c);c.construction.draw_preview(c)
+ if c.construction!=null:
+  c.construction.draw_range(c)
+  c.construction.draw_machine_focus(c)
+  c.construction.draw_preview(c)
  if c.model.map_id!="legacy":
   for room in m.rooms:
    if visible.has_point(OFFSET+room.door_position()):map_presentation.render_door_status(c,self,room)
@@ -425,6 +429,7 @@ func render(c):
   text(c,f.text,OFFSET+f.position,14,Color(0.96,0.77,0.26,f.life))
 
 func room_scene(c, room: RoomState, owned: bool):
+ var focused_grid: bool=c.construction!=null and c.construction.focused_grid(room)
  var r = Rect2(OFFSET+room.bounds().position,room.bounds().size)
  c.draw_style_box(frame(Color("080f1c"),Color("0a1221"),9),Rect2(r.position-Vector2(7,3),r.size+Vector2(24,24)))
  c.draw_texture_rect(textures.floor_wood,r,false,Color("d9d2c5") if room.alive else Color("8a7790"))
@@ -438,9 +443,10 @@ func room_scene(c, room: RoomState, owned: bool):
  c.draw_line(Vector2(r.position.x,r.end.y),r.end,Color("b59b78"),5)
  if owned:
   c.draw_style_box(frame(Color.TRANSPARENT,Color("e0bf7e"),5),r.grow(10))
-  var badge=Rect2(r.position+Vector2(8,r.size.y-22 if room.index<3 else 75),Vector2(87,17))
-  c.draw_style_box(frame(Color("2c3f46"),Color("e6c68b"),3),badge)
-  text(c,"YOUR ROOM",badge.position+Vector2(8,12),10,Color("ffe6af"))
+  if not focused_grid:
+   var badge=Rect2(r.position+Vector2(8,r.size.y-22 if room.index<3 else 75),Vector2(87,17))
+   c.draw_style_box(frame(Color("2c3f46"),Color("e6c68b"),3),badge)
+   text(c,"YOUR ROOM",badge.position+Vector2(8,12),10,Color("ffe6af"))
  sprite(c,"window",Vector2(r.position.x+145,r.position.y+24) if room.index<3 else Vector2(r.get_center().x,r.end.y-7),Vector2(57,36))
  sprite(c,"cabinet",OFFSET+room.cabinet_position(),Vector2(38,48))
  sprite(c,"plant",OFFSET+room.plant_position(),Vector2(27,38))
@@ -450,9 +456,10 @@ func room_scene(c, room: RoomState, owned: bool):
  sprite(c,"warm_glow",r.position+Vector2(25,48),Vector2(125,145),Color(1,1,1,0.55))
  sprite(c,"lantern",r.position+Vector2(22,24),Vector2(17,29))
  # Engraved room plaques replace debugging ownership labels.
- var plaque = Rect2(r.position+Vector2(8,1),Vector2(103,18))
- c.draw_style_box(frame(Color("273440"),Color("9c8466"),4),plaque)
- text(c,"%02d  %s" % [room.index+1,ROOM_NAMES[room.index]],plaque.position+Vector2(10,13),10)
+ if not focused_grid:
+  var plaque = Rect2(r.position+Vector2(8,1),Vector2(103,18))
+  c.draw_style_box(frame(Color("273440"),Color("9c8466"),4),plaque)
+  text(c,"%02d  %s" % [room.index+1,ROOM_NAMES[room.index]],plaque.position+Vector2(10,13),10)
  if room.spatial!=null and room.spatial.grid:
   map_presentation.render_tiles(c,self,room,owned)
   return
@@ -490,6 +497,7 @@ func door_scene(c, room):
    c.draw_line(p+Vector2(-25+i*14,-7),p+Vector2(-19+i*13,13),Color("88684e"),5)
  if room.owner>=0:
   var targeted=c.model.hunter.target==room.index and c.model.hunter.state in [HunterState.State.ATTACK,HunterState.State.BREACH]
+  if c.construction!=null and c.construction.focused_grid(room):return
   if room.index==c.model.player_room or targeted:
    var hp_box=Rect2(p+Vector2(43,-21),Vector2(79,17))
    c.draw_style_box(frame(Color("263746"),Color("de8b79") if targeted else Color("7BE3A1"),4),hp_box)
@@ -675,6 +683,7 @@ func render_scars(c):
    c.draw_arc(q+Vector2(13,17),25,.2,2.8,16,Color(.1,.08,.13,.35),4)
 
 func cartoon_room(c,room: RoomState,owned: bool):
+ var focused_grid: bool=c.construction!=null and c.construction.focused_grid(room)
  var r=Rect2(OFFSET+room.bounds().position,room.bounds().size)
  c.draw_style_box(frame(Color("152635"),Color("172B3A"),8),r.grow(7))
  c.draw_texture_rect(cartoon["floor_%d" % room.index],r,false)
@@ -707,10 +716,10 @@ func cartoon_room(c,room: RoomState,owned: bool):
  sprite(c,"warm_glow",r.position+Vector2(30,40),Vector2(160,180),Color(1,1,1,0.45))
  c.draw_texture_rect(cartoon.lamp,Rect2(r.position+Vector2(8,15),Vector2(23,33)),false)
  var themes=["STANDARD","STUDENT","MESSY","COZY","OLD DORM","MAINTENANCE"]
- text(c,"%02d  %s" % [room.index+1,themes[room.index]],r.position+Vector2(15,14),9 if room.index==5 else 11,Color("E6EDF1"))
+ if not focused_grid:text(c,"%02d  %s" % [room.index+1,themes[room.index]],r.position+Vector2(15,14),9 if room.index==5 else 11,Color("E6EDF1"))
  if owned:
   c.draw_style_box(frame(Color.TRANSPARENT,Color("7BE3A1"),6),r.grow(9))
-  text(c,"YOUR ROOM",r.position+Vector2(10,210 if room.index<3 else 71),11,Color("D4FFE1"))
+  if not focused_grid:text(c,"YOUR ROOM",r.position+Vector2(10,210 if room.index<3 else 71),11,Color("D4FFE1"))
  if room.spatial!=null and room.spatial.grid:
   map_presentation.render_tiles(c,self,room,owned)
   return
