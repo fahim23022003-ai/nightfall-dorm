@@ -60,7 +60,11 @@ func show_prepare():
   _line(mission.objective,Vector2(224,392),22,900,"E6DBBF",true)
   var setting: String=MapCatalog.map(mission.theme).title
   if game.model.procedural_v2_requested:setting+="  /  "+mission.topology.replace("_"," ").capitalize()
-  _paragraph("%s   ·   %s" % [setting,enemy.hint],Rect2(225,426,886,58),16,BODY)
+  if StoryCatalog.phase16_enabled():
+   _paragraph("%s   ·   %s" % [setting,enemy.hint],Rect2(225,423,886,44),15,BODY)
+   _line(_encounter_summary(mission,mode),Vector2(225,467),14,895,GOLD).name="StoryEncounterTiming"
+  else:
+   _paragraph("%s   ·   %s" % [setting,enemy.hint],Rect2(225,426,886,58),16,BODY)
  var slots:=_loadout_text(p)
  _line(slots,Vector2(125,515),16,1023,BODY)
  var support: String=notice if not notice.is_empty() else p.warning if p.warning!="" else "First-clear XP is shared across modes. A loss drops one level, down to your checkpoint."
@@ -92,12 +96,25 @@ func _show_preparation(profile: PlayerProfile, mode: String, track: Dictionary, 
   ui.theme_button(choice,"selected" if mode==picked else "secondary",picked)
  ui.theme_panel(Rect2(110,294,652,260),"card")
  _line("MISSION BRIEFING",Vector2(131,314),15,610,GOLD)
+ var chapter_rules := StoryCatalog.phase16_enabled()
  var caption: String=StoryCatalog.ENDING if track.finished else mission.briefing
- _paragraph(caption,Rect2(131,353,609,91),20,"F4F0E8")
- if not track.finished:
-  ui.premium_icon(mission.archetype,Vector2(132,459),Vector2(53,53))
-  _line(mission.objective,Vector2(199,451),19,535,"F4F0E8",true)
-  _paragraph("%s · %s" % [MapCatalog.map(mission.theme).title,StrategyCatalog.ARCHETYPES[mission.archetype].hint],Rect2(200,483,537,59),14,BODY)
+ if chapter_rules and not track.finished:
+  if mission.chapter_start:
+   caption=mission.chapter_opening+"\n"+caption
+  _paragraph(caption,Rect2(131,337,609,68),15 if mission.chapter_start else 19,"F4F0E8").name="StoryBriefing"
+  var route: String=MapCatalog.map(mission.theme).title
+  if game.model.procedural_v2_requested:route+=" · "+mission.topology.replace("_"," ").capitalize()
+  _line(route,Vector2(131,403),15,610,BODY).name="StoryRoutePreview"
+  _line(_encounter_summary(mission,mode),Vector2(131,426),14,614,GOLD).name="StoryEncounterTiming"
+  ui.premium_icon(mission.archetype,Vector2(132,465),Vector2(48,48))
+  _line(mission.objective,Vector2(194,453),19,548,"F4F0E8",true)
+  _paragraph(StrategyCatalog.ARCHETYPES[mission.archetype].hint,Rect2(195,483,545,59),14,BODY)
+ else:
+  _paragraph(caption,Rect2(131,353,609,91),20,"F4F0E8")
+  if not track.finished:
+   ui.premium_icon(mission.archetype,Vector2(132,459),Vector2(53,53))
+   _line(mission.objective,Vector2(199,451),19,535,"F4F0E8",true)
+   _paragraph("%s · %s" % [MapCatalog.map(mission.theme).title,StrategyCatalog.ARCHETYPES[mission.archetype].hint],Rect2(200,483,537,59),14,BODY)
  ui.theme_panel(Rect2(782,294,388,260),"card")
  _line("YOUR LOADOUT",Vector2(802,314),15,350,GOLD)
  var names:=PackedStringArray()
@@ -115,6 +132,14 @@ func _show_preparation(profile: PlayerProfile, mode: String, track: Dictionary, 
  launch.disabled=profile.read_only and not track.finished
  ui.theme_button(launch,"primary","play")
  launch.grab_focus()
+
+func _encounter_summary(mission: Dictionary, mode: String) -> String:
+ var encounter: Dictionary=mission.encounter
+ var parts: PackedStringArray=["%ds to prepare" % encounter.preparation]
+ if game.model.procedural_v2_requested:
+  parts.append("Hall recovery %ds after arrival" % encounter.hall)
+ parts.append("Reaper can awaken" if StoryCatalog.reaper_policy(mission,mode).enabled else "First form only")
+ return " · ".join(parts)
 
 func _launch(mode: String, finished: bool):
  if finished:
@@ -149,6 +174,9 @@ func show_result():
  var mode: String=game.model.difficulty
  var won: bool=game.model.result=="victory"
  var completed: bool=result.get("finished",false)
+ if StoryCatalog.phase16_enabled() and not result.is_empty():
+  _show_chapter_result(mission,result,mode,won)
+  return
  var veil:=ColorRect.new()
  veil.color=Color("10171E")
  veil.color.a=.88
@@ -215,6 +243,53 @@ func show_result():
   card.modulate.a=.35
   card.create_tween().tween_property(card,"modulate",Color.WHITE,.34)
 
+func _show_chapter_result(mission: Dictionary, result: Dictionary, mode: String, won: bool) -> void:
+ ui.theme_backdrop()
+ ui.theme_panel(Rect2(203,51,874,618),"frame")
+ var completed: bool=result.finished
+ _line("CHAPTER %02d  /  %s  ·  %s" % [mission.chapter,mission.chapter_title.to_upper(),RankCatalog.DIFFICULTIES[mode].name],Vector2(244,74),16,797,GOLD)
+ _line("DAWN SURVIVED" if completed else "MISSION CLEARED" if won else "NIGHT LOST",Vector2(239,103),47,804,"F4F0E8" if won else "FFD9DE",true)
+ _line("LEVEL %02d · %s" % [mission.level,mission.title],Vector2(244,170),25,785,"F4F0E8",true).name="StoryResultMission"
+ var next_position: int=result.position
+ var next_level: String="Story complete · Level 50" if completed else ("%s Level %02d · %s" % ["Next" if won else "Retry",next_position,result.next_title])
+ _line(next_level,Vector2(247,226),19,787,"F4F0E8").name="StoryResultNextMission"
+ _line("Checkpoint %02d  ·  Highest clear %02d" % [result.checkpoint,result.highest],Vector2(247,261),16,786,BODY).name="StoryResultCheckpoint"
+ if won:
+  ui.theme_panel(Rect2(242,308,796,124),"card")
+  _line("LORE REVEALED",Vector2(261,325),16,755,GOLD)
+  _paragraph(StoryCatalog.ENDING if completed else mission.discovery,Rect2(261,360,755,55),19,"F4F0E8").name="StoryResultDiscovery"
+ else:
+  _paragraph("You will resume at the current checkpoint." if next_position==result.checkpoint else "Prepare your loadout before the next attempt.",Rect2(247,314,787,56),18,BODY)
+ var award: Dictionary=game.last_progression
+ var growth: int=int(award.get("new_xp",0))-int(award.get("old_xp",0))
+ var first_clear: String=" · includes %d first-clear XP" % result.reward_xp if result.first_clear else ""
+ _line("+%d XP%s  ·  %s rank" % [growth,first_clear,game.profile.rank_name()],Vector2(247,459),17,788,GOLD).name="StoryResultReward"
+ if game.survivor_preview_enabled:
+  _line("+%d RM Cash  ·  Wallet %d RM" % [int(award.get("rm_cash",0)),int(award.get("rm_balance",game.profile.rm_cash))],Vector2(247,494),17,788,BODY)
+ var reveal: bool=not game.profile.pending_spins.is_empty()
+ if reveal:
+  _line("A saved item reward opens before the next mission.",Vector2(247,530),15,786,BODY)
+ var continue_button: Button=ui.button("Story Archive" if completed else "Continue Story",Vector2(245,581),func():
+  if reveal:
+   ui.items_ui.spin()
+  elif completed:
+   show_archive()
+  else:
+   show_prepare(),248,49)
+ continue_button.name="ContinueStoryResult"
+ ui.theme_button(continue_button,"primary","play")
+ if game.survivor_preview_enabled:
+  ui.theme_button(ui.button("Items",Vector2(507,583),func():
+   game.return_menu()
+   show_prepare()
+   ui.items_ui.inventory(),164,46),"inventory","inventory")
+  var shop: Button=ui.button("Shop",Vector2(684,583),ui.shop.show_shop,132,46)
+  shop.name="StoryResultShop"
+  ui.theme_button(shop,"shop","shop")
+ ui.theme_button(ui.button("Main menu",Vector2(829,583),game.return_menu,205,46),"quiet")
+ if bool(award.get("promoted",false)):
+  game.audio_event("perk_unlocked")
+
 func _position_text(label: Label, report: Dictionary, current: int):
  label.text="STORY COMPLETE   ·   LEVEL 50" if report.finished else "STORY %s   ·   %02d → %02d" % ["LEVEL" if report.cleared else "POSITION",report.level,current]
 
@@ -225,7 +300,7 @@ func show_archive():
  game.audio_event("menu")
  ui.box(Rect2(94,48,1092,620),"1B2934","778690")
  _line("STORY ARCHIVE",Vector2(135,75),40,978,"E6DBBF",true)
- _line("Revisit chapter openings and the final ending after reaching them.",Vector2(138,135),17,960,BODY)
+ _line("Revisit chapter openings, discoveries and the final ending." if StoryCatalog.phase16_enabled() else "Revisit chapter openings and the final ending after reaching them.",Vector2(138,135),17,960,BODY)
  var highest:=0
  for mode: String in MODES:
   highest=maxi(highest,int(StoryProgress.summary(game.profile.story,mode).highest))
@@ -235,6 +310,7 @@ func show_archive():
   var selected:=chapter
   var at:=Vector2(139+(chapter-1)%2*507,187+floori(float(chapter-1)/2.0)*65)
   var button: Button=ui.button("%02d   ·   %s%s" % [chapter,title,"   ·   Locked" if not visited else ""],at,func():_archive_page(selected),477,47)
+  button.name="StoryArchiveChapter_%02d" % chapter
   button.disabled=not visited
  ui.button("Extras",Vector2(139,588),ui.replay_ui.show_hub,175,44)
  ui.button("Classic Campaign",Vector2(337,588),ui.campaign.show_stages,270,44)
@@ -247,7 +323,16 @@ func _archive_page(chapter: int):
  var clue: String=StoryCatalog.CHAPTERS[chapter-1][1] if chapter>0 else StoryCatalog.ENDING
  _line("CHAPTER %02d" % chapter if chapter>0 else "THE END",Vector2(220,149),17,828,GOLD)
  _line(title,Vector2(216,191),46,833,"E6DBBF",true)
- _paragraph(clue,Rect2(220,279,819,127),26,BODY)
+ if StoryCatalog.phase16_enabled() and chapter>0:
+  _paragraph(clue,Rect2(220,250,819,75),20,BODY)
+  var highest:=0
+  for mode: String in MODES:
+   highest=maxi(highest,int(StoryProgress.summary(game.profile.story,mode).highest))
+  var first_level: int=(chapter-1)*StoryCatalog.CHAPTER_LENGTH+1
+  for level in range(first_level,mini(highest,first_level+StoryCatalog.CHAPTER_LENGTH-1)+1):
+   _paragraph("%02d  ·  %s" % [level,StoryCatalog.mission(level).discovery],Rect2(225,329+(level-first_level)*31,805,30),15,BODY).name="StoryArchiveDiscovery_%02d" % level
+ else:
+  _paragraph(clue,Rect2(220,279,819,127),26,BODY)
  ui.button("Return to archive",Vector2(220,526),show_archive,316,54)
 
 func _line(value: String, at: Vector2, font_size: int, width: float, tint: String, heading: bool=false) -> Label:
