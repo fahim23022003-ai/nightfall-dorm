@@ -1,0 +1,1561 @@
+{
+  "checkpoint": {
+    "planned": 35,
+    "completed": 35,
+    "audit_failures": {
+      "hell-scattered-item-free-twin": [
+        "all five NPCs did not reach beds"
+      ],
+      "hell-courtyards-item-free-twin": [
+        "all five NPCs did not reach beds"
+      ]
+    },
+    "outcomes": {
+      "victory": 17,
+      "defeat": 18
+    },
+    "by_group": {
+      "difficulty": {
+        "standard": {
+          "victory": 9,
+          "defeat": 2
+        },
+        "hard": {
+          "victory": 7,
+          "defeat": 5
+        },
+        "hell": {
+          "defeat": 11,
+          "victory": 1
+        }
+      },
+      "archetype": {
+        "crusher": {
+          "victory": 2,
+          "defeat": 4
+        },
+        "witch": {
+          "defeat": 4,
+          "victory": 2
+        },
+        "stalker": {
+          "victory": 2,
+          "defeat": 4
+        },
+        "ravager": {
+          "victory": 5,
+          "defeat": 2
+        },
+        "electric": {
+          "victory": 3,
+          "defeat": 3
+        },
+        "storm": {
+          "victory": 3,
+          "defeat": 1
+        }
+      },
+      "family": {
+        "ring": {
+          "victory": 3,
+          "defeat": 1
+        },
+        "branching": {
+          "defeat": 1,
+          "victory": 2
+        },
+        "scattered": {
+          "defeat": 3,
+          "victory": 1
+        },
+        "spine": {
+          "victory": 1,
+          "defeat": 2
+        },
+        "zigzag": {
+          "victory": 3,
+          "defeat": 1
+        },
+        "radial": {
+          "victory": 2,
+          "defeat": 1
+        },
+        "twin_wings": {
+          "victory": 2,
+          "defeat": 2
+        },
+        "labyrinth": {
+          "victory": 1,
+          "defeat": 2
+        },
+        "courtyards": {
+          "victory": 1,
+          "defeat": 3
+        },
+        "hybrid": {
+          "victory": 1,
+          "defeat": 2
+        }
+      },
+      "policy": {
+        "balanced": {
+          "victory": 3,
+          "defeat": 2
+        },
+        "early_turret": {
+          "defeat": 4,
+          "victory": 1
+        },
+        "economics": {
+          "defeat": 3,
+          "victory": 2
+        },
+        "repair_heavy": {
+          "victory": 4,
+          "defeat": 1
+        },
+        "item_assisted": {
+          "victory": 3,
+          "defeat": 2
+        },
+        "item_free": {
+          "victory": 2,
+          "defeat": 3
+        },
+        "assisted_without_items": {
+          "victory": 2,
+          "defeat": 3
+        }
+      },
+      "story_range": {
+        "early": {
+          "victory": 7,
+          "defeat": 2
+        },
+        "mid": {
+          "defeat": 9,
+          "victory": 6
+        },
+        "late": {
+          "defeat": 7,
+          "victory": 4
+        }
+      }
+    },
+    "median_match_seconds": 269.100000000005,
+    "reaper_matches": 14,
+    "hall_matches": 11,
+    "hall_visits": 12,
+    "item_assisted_completed": 5,
+    "saved_complete_results": 33,
+    "max_ledger_error": 0.0001220703125
+  },
+  "candidate": {
+    "planned": 35,
+    "completed": 35,
+    "audit_failures": {},
+    "outcomes": {
+      "victory": 23,
+      "defeat": 12
+    },
+    "by_group": {
+      "difficulty": {
+        "standard": {
+          "victory": 11
+        },
+        "hard": {
+          "victory": 8,
+          "defeat": 4
+        },
+        "hell": {
+          "defeat": 8,
+          "victory": 4
+        }
+      },
+      "archetype": {
+        "crusher": {
+          "victory": 3,
+          "defeat": 3
+        },
+        "witch": {
+          "victory": 5,
+          "defeat": 1
+        },
+        "stalker": {
+          "victory": 2,
+          "defeat": 4
+        },
+        "ravager": {
+          "victory": 6,
+          "defeat": 1
+        },
+        "electric": {
+          "victory": 3,
+          "defeat": 3
+        },
+        "storm": {
+          "victory": 4
+        }
+      },
+      "family": {
+        "ring": {
+          "victory": 3,
+          "defeat": 1
+        },
+        "branching": {
+          "victory": 3
+        },
+        "scattered": {
+          "victory": 2,
+          "defeat": 2
+        },
+        "spine": {
+          "victory": 2,
+          "defeat": 1
+        },
+        "zigzag": {
+          "victory": 3,
+          "defeat": 1
+        },
+        "radial": {
+          "victory": 3
+        },
+        "twin_wings": {
+          "victory": 1,
+          "defeat": 3
+        },
+        "labyrinth": {
+          "victory": 2,
+          "defeat": 1
+        },
+        "courtyards": {
+          "victory": 3,
+          "defeat": 1
+        },
+        "hybrid": {
+          "victory": 1,
+          "defeat": 2
+        }
+      },
+      "policy": {
+        "balanced": {
+          "victory": 4,
+          "defeat": 1
+        },
+        "early_turret": {
+          "victory": 4,
+          "defeat": 1
+        },
+        "economics": {
+          "victory": 3,
+          "defeat": 2
+        },
+        "repair_heavy": {
+          "victory": 5
+        },
+        "item_assisted": {
+          "victory": 3,
+          "defeat": 2
+        },
+        "item_free": {
+          "victory": 2,
+          "defeat": 3
+        },
+        "assisted_without_items": {
+          "victory": 2,
+          "defeat": 3
+        }
+      },
+      "story_range": {
+        "early": {
+          "victory": 8,
+          "defeat": 1
+        },
+        "mid": {
+          "victory": 9,
+          "defeat": 6
+        },
+        "late": {
+          "victory": 6,
+          "defeat": 5
+        }
+      }
+    },
+    "median_match_seconds": 307.949999999999,
+    "reaper_matches": 17,
+    "hall_matches": 13,
+    "hall_visits": 16,
+    "item_assisted_completed": 5,
+    "saved_complete_results": 35,
+    "max_ledger_error": 0.0001220703125
+  },
+  "matched": 35,
+  "outcome_changes": {
+    "victory\u2192victory": 16,
+    "defeat\u2192victory": 7,
+    "victory\u2192defeat": 1,
+    "defeat\u2192defeat": 11
+  },
+  "pairs": [
+    {
+      "fixture": "standard-ring",
+      "opening_drift": [],
+      "outcome": [
+        "victory",
+        "victory"
+      ],
+      "seconds": [
+        295.500000000001,
+        432.89999999998
+      ],
+      "player_door_damage": [
+        2012.79468326401,
+        343.331078162401
+      ],
+      "non_player_doors_struck": [
+        2,
+        4
+      ],
+      "multi_room_pressure": [
+        3,
+        5
+      ],
+      "evolution": [
+        4,
+        5
+      ],
+      "hall_visits": [
+        0,
+        1
+      ],
+      "reaper": [
+        false,
+        false
+      ]
+    },
+    {
+      "fixture": "standard-branching",
+      "opening_drift": [],
+      "outcome": [
+        "defeat",
+        "victory"
+      ],
+      "seconds": [
+        185.100000000004,
+        234.150000000006
+      ],
+      "player_door_damage": [
+        1100.0,
+        1133.51591758484
+      ],
+      "non_player_doors_struck": [
+        2,
+        3
+      ],
+      "multi_room_pressure": [
+        3,
+        4
+      ],
+      "evolution": [
+        3,
+        4
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        false,
+        false
+      ]
+    },
+    {
+      "fixture": "standard-scattered",
+      "opening_drift": [],
+      "outcome": [
+        "defeat",
+        "victory"
+      ],
+      "seconds": [
+        105.600000000001,
+        329.849999999996
+      ],
+      "player_door_damage": [
+        592.5,
+        951.709178261939
+      ],
+      "non_player_doors_struck": [
+        0,
+        3
+      ],
+      "multi_room_pressure": [
+        1,
+        4
+      ],
+      "evolution": [
+        1,
+        4
+      ],
+      "hall_visits": [
+        0,
+        2
+      ],
+      "reaper": [
+        false,
+        false
+      ]
+    },
+    {
+      "fixture": "standard-spine",
+      "opening_drift": [],
+      "outcome": [
+        "victory",
+        "victory"
+      ],
+      "seconds": [
+        435.74999999998,
+        384.149999999987
+      ],
+      "player_door_damage": [
+        0.0,
+        397.79184
+      ],
+      "non_player_doors_struck": [
+        4,
+        3
+      ],
+      "multi_room_pressure": [
+        4,
+        4
+      ],
+      "evolution": [
+        8,
+        6
+      ],
+      "hall_visits": [
+        1,
+        2
+      ],
+      "reaper": [
+        false,
+        false
+      ]
+    },
+    {
+      "fixture": "standard-zigzag",
+      "opening_drift": [],
+      "outcome": [
+        "victory",
+        "victory"
+      ],
+      "seconds": [
+        232.950000000006,
+        398.699999999985
+      ],
+      "player_door_damage": [
+        345.811721980019,
+        545.49
+      ],
+      "non_player_doors_struck": [
+        2,
+        5
+      ],
+      "multi_room_pressure": [
+        3,
+        6
+      ],
+      "evolution": [
+        5,
+        7
+      ],
+      "hall_visits": [
+        1,
+        1
+      ],
+      "reaper": [
+        true,
+        true
+      ]
+    },
+    {
+      "fixture": "standard-radial",
+      "opening_drift": [],
+      "outcome": [
+        "victory",
+        "victory"
+      ],
+      "seconds": [
+        293.700000000001,
+        312.749999999998
+      ],
+      "player_door_damage": [
+        1871.08556997793,
+        1160.74349825373
+      ],
+      "non_player_doors_struck": [
+        5,
+        5
+      ],
+      "multi_room_pressure": [
+        6,
+        6
+      ],
+      "evolution": [
+        6,
+        6
+      ],
+      "hall_visits": [
+        1,
+        1
+      ],
+      "reaper": [
+        true,
+        true
+      ]
+    },
+    {
+      "fixture": "standard-twin_wings",
+      "opening_drift": [],
+      "outcome": [
+        "victory",
+        "victory"
+      ],
+      "seconds": [
+        360.899999999991,
+        455.399999999977
+      ],
+      "player_door_damage": [
+        2562.5341059011,
+        1190.58315962415
+      ],
+      "non_player_doors_struck": [
+        5,
+        5
+      ],
+      "multi_room_pressure": [
+        6,
+        6
+      ],
+      "evolution": [
+        8,
+        10
+      ],
+      "hall_visits": [
+        1,
+        2
+      ],
+      "reaper": [
+        true,
+        false
+      ]
+    },
+    {
+      "fixture": "standard-labyrinth",
+      "opening_drift": [],
+      "outcome": [
+        "victory",
+        "victory"
+      ],
+      "seconds": [
+        279.600000000003,
+        277.200000000004
+      ],
+      "player_door_damage": [
+        541.705303762486,
+        515.962391339482
+      ],
+      "non_player_doors_struck": [
+        5,
+        5
+      ],
+      "multi_room_pressure": [
+        6,
+        6
+      ],
+      "evolution": [
+        5,
+        7
+      ],
+      "hall_visits": [
+        1,
+        0
+      ],
+      "reaper": [
+        true,
+        true
+      ]
+    },
+    {
+      "fixture": "standard-courtyards",
+      "opening_drift": [],
+      "outcome": [
+        "victory",
+        "victory"
+      ],
+      "seconds": [
+        452.549999999977,
+        307.949999999999
+      ],
+      "player_door_damage": [
+        306.24,
+        2607.55454934975
+      ],
+      "non_player_doors_struck": [
+        5,
+        5
+      ],
+      "multi_room_pressure": [
+        6,
+        6
+      ],
+      "evolution": [
+        10,
+        8
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        true,
+        true
+      ]
+    },
+    {
+      "fixture": "standard-hybrid",
+      "opening_drift": [],
+      "outcome": [
+        "victory",
+        "victory"
+      ],
+      "seconds": [
+        342.449999999994,
+        307.199999999999
+      ],
+      "player_door_damage": [
+        1781.24287351167,
+        1271.77772080958
+      ],
+      "non_player_doors_struck": [
+        5,
+        5
+      ],
+      "multi_room_pressure": [
+        6,
+        6
+      ],
+      "evolution": [
+        8,
+        7
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        true,
+        true
+      ]
+    },
+    {
+      "fixture": "hard-ring",
+      "opening_drift": [],
+      "outcome": [
+        "victory",
+        "victory"
+      ],
+      "seconds": [
+        356.099999999992,
+        299.7
+      ],
+      "player_door_damage": [
+        0.0,
+        0.0
+      ],
+      "non_player_doors_struck": [
+        3,
+        3
+      ],
+      "multi_room_pressure": [
+        3,
+        3
+      ],
+      "evolution": [
+        6,
+        5
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        false,
+        false
+      ]
+    },
+    {
+      "fixture": "hard-branching",
+      "opening_drift": [],
+      "outcome": [
+        "victory",
+        "victory"
+      ],
+      "seconds": [
+        320.849999999997,
+        290.250000000002
+      ],
+      "player_door_damage": [
+        1587.21378621452,
+        1443.16763458283
+      ],
+      "non_player_doors_struck": [
+        5,
+        5
+      ],
+      "multi_room_pressure": [
+        6,
+        6
+      ],
+      "evolution": [
+        6,
+        6
+      ],
+      "hall_visits": [
+        1,
+        1
+      ],
+      "reaper": [
+        true,
+        true
+      ]
+    },
+    {
+      "fixture": "hard-scattered",
+      "opening_drift": [],
+      "outcome": [
+        "victory",
+        "victory"
+      ],
+      "seconds": [
+        490.499999999971,
+        334.799999999995
+      ],
+      "player_door_damage": [
+        1135.34825632371,
+        1333.07057914848
+      ],
+      "non_player_doors_struck": [
+        5,
+        4
+      ],
+      "multi_room_pressure": [
+        6,
+        5
+      ],
+      "evolution": [
+        7,
+        5
+      ],
+      "hall_visits": [
+        2,
+        1
+      ],
+      "reaper": [
+        false,
+        false
+      ]
+    },
+    {
+      "fixture": "hard-spine",
+      "opening_drift": [],
+      "outcome": [
+        "defeat",
+        "victory"
+      ],
+      "seconds": [
+        127.500000000002,
+        379.199999999988
+      ],
+      "player_door_damage": [
+        717.2875,
+        2201.30673856505
+      ],
+      "non_player_doors_struck": [
+        1,
+        5
+      ],
+      "multi_room_pressure": [
+        2,
+        6
+      ],
+      "evolution": [
+        3,
+        6
+      ],
+      "hall_visits": [
+        0,
+        1
+      ],
+      "reaper": [
+        false,
+        true
+      ]
+    },
+    {
+      "fixture": "hard-zigzag",
+      "opening_drift": [],
+      "outcome": [
+        "victory",
+        "victory"
+      ],
+      "seconds": [
+        394.349999999986,
+        404.399999999984
+      ],
+      "player_door_damage": [
+        1440.28353348432,
+        1458.32525451536
+      ],
+      "non_player_doors_struck": [
+        5,
+        5
+      ],
+      "multi_room_pressure": [
+        6,
+        6
+      ],
+      "evolution": [
+        6,
+        6
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        true,
+        true
+      ]
+    },
+    {
+      "fixture": "hard-radial",
+      "opening_drift": [],
+      "outcome": [
+        "victory",
+        "victory"
+      ],
+      "seconds": [
+        285.750000000002,
+        369.29999999999
+      ],
+      "player_door_damage": [
+        2178.12008516858,
+        123.343327799999
+      ],
+      "non_player_doors_struck": [
+        5,
+        5
+      ],
+      "multi_room_pressure": [
+        6,
+        6
+      ],
+      "evolution": [
+        8,
+        10
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        true,
+        true
+      ]
+    },
+    {
+      "fixture": "hard-twin_wings",
+      "opening_drift": [],
+      "outcome": [
+        "victory",
+        "defeat"
+      ],
+      "seconds": [
+        386.849999999987,
+        242.100000000006
+      ],
+      "player_door_damage": [
+        207.216943359999,
+        950.0688671875
+      ],
+      "non_player_doors_struck": [
+        5,
+        2
+      ],
+      "multi_room_pressure": [
+        6,
+        3
+      ],
+      "evolution": [
+        8,
+        6
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        true,
+        false
+      ]
+    },
+    {
+      "fixture": "hard-labyrinth",
+      "opening_drift": [],
+      "outcome": [
+        "defeat",
+        "defeat"
+      ],
+      "seconds": [
+        61.0499999999996,
+        70.1999999999998
+      ],
+      "player_door_damage": [
+        312.5,
+        382.5
+      ],
+      "non_player_doors_struck": [
+        0,
+        0
+      ],
+      "multi_room_pressure": [
+        1,
+        1
+      ],
+      "evolution": [
+        5,
+        5
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        false,
+        false
+      ]
+    },
+    {
+      "fixture": "hard-courtyards",
+      "opening_drift": [],
+      "outcome": [
+        "defeat",
+        "victory"
+      ],
+      "seconds": [
+        167.850000000003,
+        358.499999999991
+      ],
+      "player_door_damage": [
+        1028.9421875,
+        503.765650868353
+      ],
+      "non_player_doors_struck": [
+        1,
+        5
+      ],
+      "multi_room_pressure": [
+        2,
+        6
+      ],
+      "evolution": [
+        6,
+        10
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        false,
+        true
+      ]
+    },
+    {
+      "fixture": "hard-hybrid",
+      "opening_drift": [],
+      "outcome": [
+        "defeat",
+        "defeat"
+      ],
+      "seconds": [
+        105.900000000001,
+        114.150000000001
+      ],
+      "player_door_damage": [
+        599.162499999996,
+        710.604687499994
+      ],
+      "non_player_doors_struck": [
+        0,
+        0
+      ],
+      "multi_room_pressure": [
+        1,
+        1
+      ],
+      "evolution": [
+        4,
+        4
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        false,
+        false
+      ]
+    },
+    {
+      "fixture": "hell-ring",
+      "opening_drift": [],
+      "outcome": [
+        "defeat",
+        "defeat"
+      ],
+      "seconds": [
+        144.900000000003,
+        151.950000000003
+      ],
+      "player_door_damage": [
+        1040.5,
+        767.5
+      ],
+      "non_player_doors_struck": [
+        1,
+        1
+      ],
+      "multi_room_pressure": [
+        2,
+        2
+      ],
+      "evolution": [
+        3,
+        3
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        false,
+        false
+      ]
+    },
+    {
+      "fixture": "hell-branching",
+      "opening_drift": [],
+      "outcome": [
+        "victory",
+        "victory"
+      ],
+      "seconds": [
+        403.649999999984,
+        355.199999999992
+      ],
+      "player_door_damage": [
+        1790.32844048203,
+        2467.48908267166
+      ],
+      "non_player_doors_struck": [
+        5,
+        5
+      ],
+      "multi_room_pressure": [
+        6,
+        6
+      ],
+      "evolution": [
+        7,
+        7
+      ],
+      "hall_visits": [
+        1,
+        1
+      ],
+      "reaper": [
+        true,
+        true
+      ]
+    },
+    {
+      "fixture": "hell-scattered",
+      "opening_drift": [],
+      "outcome": [
+        "defeat",
+        "defeat"
+      ],
+      "seconds": [
+        158.100000000003,
+        174.150000000004
+      ],
+      "player_door_damage": [
+        971.799375,
+        1308.814375
+      ],
+      "non_player_doors_struck": [
+        1,
+        1
+      ],
+      "multi_room_pressure": [
+        2,
+        2
+      ],
+      "evolution": [
+        3,
+        3
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        false,
+        false
+      ]
+    },
+    {
+      "fixture": "hell-spine",
+      "opening_drift": [],
+      "outcome": [
+        "defeat",
+        "defeat"
+      ],
+      "seconds": [
+        100.950000000001,
+        153.150000000003
+      ],
+      "player_door_damage": [
+        871.899999999998,
+        1601.0
+      ],
+      "non_player_doors_struck": [
+        0,
+        1
+      ],
+      "multi_room_pressure": [
+        1,
+        2
+      ],
+      "evolution": [
+        3,
+        4
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        false,
+        false
+      ]
+    },
+    {
+      "fixture": "hell-zigzag",
+      "opening_drift": [],
+      "outcome": [
+        "defeat",
+        "defeat"
+      ],
+      "seconds": [
+        214.200000000005,
+        249.300000000007
+      ],
+      "player_door_damage": [
+        1468.498375,
+        994.230875
+      ],
+      "non_player_doors_struck": [
+        2,
+        2
+      ],
+      "multi_room_pressure": [
+        3,
+        3
+      ],
+      "evolution": [
+        4,
+        4
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        false,
+        false
+      ]
+    },
+    {
+      "fixture": "hell-radial",
+      "opening_drift": [],
+      "outcome": [
+        "defeat",
+        "victory"
+      ],
+      "seconds": [
+        358.499999999991,
+        400.049999999985
+      ],
+      "player_door_damage": [
+        711.761625,
+        0.0
+      ],
+      "non_player_doors_struck": [
+        5,
+        5
+      ],
+      "multi_room_pressure": [
+        6,
+        5
+      ],
+      "evolution": [
+        9,
+        9
+      ],
+      "hall_visits": [
+        0,
+        1
+      ],
+      "reaper": [
+        true,
+        true
+      ]
+    },
+    {
+      "fixture": "hell-twin_wings",
+      "opening_drift": [],
+      "outcome": [
+        "defeat",
+        "defeat"
+      ],
+      "seconds": [
+        196.950000000005,
+        334.949999999995
+      ],
+      "player_door_damage": [
+        1291.5275,
+        2016.4325
+      ],
+      "non_player_doors_struck": [
+        1,
+        5
+      ],
+      "multi_room_pressure": [
+        2,
+        6
+      ],
+      "evolution": [
+        7,
+        9
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        false,
+        true
+      ]
+    },
+    {
+      "fixture": "hell-labyrinth",
+      "opening_drift": [],
+      "outcome": [
+        "defeat",
+        "victory"
+      ],
+      "seconds": [
+        323.699999999997,
+        382.049999999988
+      ],
+      "player_door_damage": [
+        3007.32937499999,
+        2821.87062646021
+      ],
+      "non_player_doors_struck": [
+        5,
+        5
+      ],
+      "multi_room_pressure": [
+        6,
+        6
+      ],
+      "evolution": [
+        10,
+        10
+      ],
+      "hall_visits": [
+        1,
+        1
+      ],
+      "reaper": [
+        true,
+        true
+      ]
+    },
+    {
+      "fixture": "hell-courtyards",
+      "opening_drift": [],
+      "outcome": [
+        "defeat",
+        "victory"
+      ],
+      "seconds": [
+        184.200000000004,
+        288.900000000002
+      ],
+      "player_door_damage": [
+        2365.539125,
+        3128.62589786043
+      ],
+      "non_player_doors_struck": [
+        0,
+        5
+      ],
+      "multi_room_pressure": [
+        1,
+        6
+      ],
+      "evolution": [
+        7,
+        9
+      ],
+      "hall_visits": [
+        1,
+        0
+      ],
+      "reaper": [
+        false,
+        true
+      ]
+    },
+    {
+      "fixture": "hell-hybrid",
+      "opening_drift": [],
+      "outcome": [
+        "defeat",
+        "defeat"
+      ],
+      "seconds": [
+        129.000000000002,
+        327.149999999996
+      ],
+      "player_door_damage": [
+        709.0,
+        2167.4225
+      ],
+      "non_player_doors_struck": [
+        0,
+        4
+      ],
+      "multi_room_pressure": [
+        1,
+        5
+      ],
+      "evolution": [
+        7,
+        10
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        false,
+        true
+      ]
+    },
+    {
+      "fixture": "standard-zigzag-item-free-twin",
+      "opening_drift": [],
+      "outcome": [
+        "victory",
+        "victory"
+      ],
+      "seconds": [
+        269.100000000005,
+        398.699999999985
+      ],
+      "player_door_damage": [
+        1004.35965384149,
+        545.49
+      ],
+      "non_player_doors_struck": [
+        5,
+        5
+      ],
+      "multi_room_pressure": [
+        6,
+        6
+      ],
+      "evolution": [
+        5,
+        7
+      ],
+      "hall_visits": [
+        1,
+        1
+      ],
+      "reaper": [
+        true,
+        true
+      ]
+    },
+    {
+      "fixture": "hard-ring-item-free-twin",
+      "opening_drift": [],
+      "outcome": [
+        "victory",
+        "victory"
+      ],
+      "seconds": [
+        357.449999999991,
+        299.7
+      ],
+      "player_door_damage": [
+        0.0,
+        0.0
+      ],
+      "non_player_doors_struck": [
+        3,
+        3
+      ],
+      "multi_room_pressure": [
+        3,
+        3
+      ],
+      "evolution": [
+        6,
+        5
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        false,
+        false
+      ]
+    },
+    {
+      "fixture": "hard-twin_wings-item-free-twin",
+      "opening_drift": [],
+      "outcome": [
+        "defeat",
+        "defeat"
+      ],
+      "seconds": [
+        217.200000000005,
+        246.000000000006
+      ],
+      "player_door_damage": [
+        1697.8152109375,
+        1200.7396875
+      ],
+      "non_player_doors_struck": [
+        2,
+        2
+      ],
+      "multi_room_pressure": [
+        3,
+        3
+      ],
+      "evolution": [
+        6,
+        6
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        false,
+        false
+      ]
+    },
+    {
+      "fixture": "hell-scattered-item-free-twin",
+      "opening_drift": [],
+      "outcome": [
+        "defeat",
+        "defeat"
+      ],
+      "seconds": [
+        100.800000000001,
+        198.600000000005
+      ],
+      "player_door_damage": [
+        922.049999999996,
+        1767.669625
+      ],
+      "non_player_doors_struck": [
+        0,
+        1
+      ],
+      "multi_room_pressure": [
+        1,
+        2
+      ],
+      "evolution": [
+        2,
+        4
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        false,
+        false
+      ]
+    },
+    {
+      "fixture": "hell-courtyards-item-free-twin",
+      "opening_drift": [],
+      "outcome": [
+        "defeat",
+        "defeat"
+      ],
+      "seconds": [
+        115.650000000002,
+        152.250000000003
+      ],
+      "player_door_damage": [
+        1261.1,
+        2215.2
+      ],
+      "non_player_doors_struck": [
+        0,
+        0
+      ],
+      "multi_room_pressure": [
+        1,
+        1
+      ],
+      "evolution": [
+        7,
+        7
+      ],
+      "hall_visits": [
+        0,
+        0
+      ],
+      "reaper": [
+        false,
+        false
+      ]
+    }
+  ]
+}

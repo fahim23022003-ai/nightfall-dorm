@@ -1,0 +1,357 @@
+[
+  {
+    "id": "standard-ring",
+    "level": 1,
+    "difficulty": "standard",
+    "policy": "balanced",
+    "room_preference": 0,
+    "seed_base": 104084,
+    "family": "ring",
+    "archetype": "crusher"
+  },
+  {
+    "id": "standard-branching",
+    "level": 33,
+    "difficulty": "standard",
+    "policy": "early_turret",
+    "room_preference": 1,
+    "seed_base": 116431,
+    "family": "branching",
+    "archetype": "witch"
+  },
+  {
+    "id": "standard-scattered",
+    "level": 37,
+    "difficulty": "standard",
+    "policy": "economics",
+    "room_preference": 2,
+    "seed_base": 128778,
+    "family": "scattered",
+    "archetype": "crusher"
+  },
+  {
+    "id": "standard-spine",
+    "level": 2,
+    "difficulty": "standard",
+    "policy": "repair_heavy",
+    "room_preference": 0,
+    "seed_base": 141125,
+    "family": "spine",
+    "archetype": "stalker"
+  },
+  {
+    "id": "standard-zigzag",
+    "level": 27,
+    "difficulty": "standard",
+    "policy": "item_assisted",
+    "room_preference": 1,
+    "seed_base": 153472,
+    "family": "zigzag",
+    "archetype": "ravager"
+  },
+  {
+    "id": "standard-radial",
+    "level": 48,
+    "difficulty": "standard",
+    "policy": "item_free",
+    "room_preference": 2,
+    "seed_base": 165819,
+    "family": "radial",
+    "archetype": "witch"
+  },
+  {
+    "id": "standard-twin_wings",
+    "level": 4,
+    "difficulty": "standard",
+    "policy": "balanced",
+    "room_preference": 0,
+    "seed_base": 178166,
+    "family": "twin_wings",
+    "archetype": "electric"
+  },
+  {
+    "id": "standard-labyrinth",
+    "level": 32,
+    "difficulty": "standard",
+    "policy": "early_turret",
+    "room_preference": 1,
+    "seed_base": 190513,
+    "family": "labyrinth",
+    "archetype": "stalker"
+  },
+  {
+    "id": "standard-courtyards",
+    "level": 35,
+    "difficulty": "standard",
+    "policy": "economics",
+    "room_preference": 2,
+    "seed_base": 202860,
+    "family": "courtyards",
+    "archetype": "storm"
+  },
+  {
+    "id": "standard-hybrid",
+    "level": 13,
+    "difficulty": "standard",
+    "policy": "repair_heavy",
+    "room_preference": 0,
+    "seed_base": 215207,
+    "family": "hybrid",
+    "archetype": "electric"
+  },
+  {
+    "id": "hard-ring",
+    "level": 31,
+    "difficulty": "hard",
+    "policy": "item_assisted",
+    "room_preference": 2,
+    "seed_base": 127815,
+    "family": "ring",
+    "archetype": "ravager"
+  },
+  {
+    "id": "hard-branching",
+    "level": 43,
+    "difficulty": "hard",
+    "policy": "item_free",
+    "room_preference": 0,
+    "seed_base": 140162,
+    "family": "branching",
+    "archetype": "storm"
+  },
+  {
+    "id": "hard-scattered",
+    "level": 11,
+    "difficulty": "hard",
+    "policy": "balanced",
+    "room_preference": 1,
+    "seed_base": 152509,
+    "family": "scattered",
+    "archetype": "ravager"
+  },
+  {
+    "id": "hard-spine",
+    "level": 22,
+    "difficulty": "hard",
+    "policy": "early_turret",
+    "room_preference": 2,
+    "seed_base": 164856,
+    "family": "spine",
+    "archetype": "witch"
+  },
+  {
+    "id": "hard-zigzag",
+    "level": 42,
+    "difficulty": "hard",
+    "policy": "economics",
+    "room_preference": 0,
+    "seed_base": 177203,
+    "family": "zigzag",
+    "archetype": "crusher"
+  },
+  {
+    "id": "hard-radial",
+    "level": 10,
+    "difficulty": "hard",
+    "policy": "repair_heavy",
+    "room_preference": 1,
+    "seed_base": 189550,
+    "family": "radial",
+    "archetype": "storm"
+  },
+  {
+    "id": "hard-twin_wings",
+    "level": 29,
+    "difficulty": "hard",
+    "policy": "item_assisted",
+    "room_preference": 2,
+    "seed_base": 201897,
+    "family": "twin_wings",
+    "archetype": "electric"
+  },
+  {
+    "id": "hard-labyrinth",
+    "level": 40,
+    "difficulty": "hard",
+    "policy": "item_free",
+    "room_preference": 0,
+    "seed_base": 214244,
+    "family": "labyrinth",
+    "archetype": "electric"
+  },
+  {
+    "id": "hard-courtyards",
+    "level": 5,
+    "difficulty": "hard",
+    "policy": "balanced",
+    "room_preference": 1,
+    "seed_base": 226591,
+    "family": "courtyards",
+    "archetype": "witch"
+  },
+  {
+    "id": "hard-hybrid",
+    "level": 24,
+    "difficulty": "hard",
+    "policy": "early_turret",
+    "room_preference": 2,
+    "seed_base": 238938,
+    "family": "hybrid",
+    "archetype": "stalker"
+  },
+  {
+    "id": "hell-ring",
+    "level": 41,
+    "difficulty": "hell",
+    "policy": "economics",
+    "room_preference": 1,
+    "seed_base": 151546,
+    "family": "ring",
+    "archetype": "witch"
+  },
+  {
+    "id": "hell-branching",
+    "level": 7,
+    "difficulty": "hell",
+    "policy": "repair_heavy",
+    "room_preference": 2,
+    "seed_base": 163893,
+    "family": "branching",
+    "archetype": "witch"
+  },
+  {
+    "id": "hell-scattered",
+    "level": 18,
+    "difficulty": "hell",
+    "policy": "item_assisted",
+    "room_preference": 0,
+    "seed_base": 176240,
+    "family": "scattered",
+    "archetype": "crusher"
+  },
+  {
+    "id": "hell-spine",
+    "level": 46,
+    "difficulty": "hell",
+    "policy": "item_free",
+    "room_preference": 1,
+    "seed_base": 188587,
+    "family": "spine",
+    "archetype": "stalker"
+  },
+  {
+    "id": "hell-zigzag",
+    "level": 6,
+    "difficulty": "hell",
+    "policy": "balanced",
+    "room_preference": 2,
+    "seed_base": 200934,
+    "family": "zigzag",
+    "archetype": "stalker"
+  },
+  {
+    "id": "hell-radial",
+    "level": 23,
+    "difficulty": "hell",
+    "policy": "early_turret",
+    "room_preference": 0,
+    "seed_base": 213281,
+    "family": "radial",
+    "archetype": "storm"
+  },
+  {
+    "id": "hell-twin_wings",
+    "level": 39,
+    "difficulty": "hell",
+    "policy": "economics",
+    "room_preference": 1,
+    "seed_base": 225628,
+    "family": "twin_wings",
+    "archetype": "stalker"
+  },
+  {
+    "id": "hell-labyrinth",
+    "level": 40,
+    "difficulty": "hell",
+    "policy": "repair_heavy",
+    "room_preference": 2,
+    "seed_base": 237975,
+    "family": "labyrinth",
+    "archetype": "electric"
+  },
+  {
+    "id": "hell-courtyards",
+    "level": 20,
+    "difficulty": "hell",
+    "policy": "item_assisted",
+    "room_preference": 0,
+    "seed_base": 250322,
+    "family": "courtyards",
+    "archetype": "ravager"
+  },
+  {
+    "id": "hell-hybrid",
+    "level": 50,
+    "difficulty": "hell",
+    "policy": "item_free",
+    "room_preference": 1,
+    "seed_base": 262669,
+    "family": "hybrid",
+    "archetype": "crusher"
+  },
+  {
+    "id": "standard-zigzag-item-free-twin",
+    "level": 27,
+    "difficulty": "standard",
+    "policy": "assisted_without_items",
+    "room_preference": 1,
+    "seed_base": 153472,
+    "family": "zigzag",
+    "archetype": "ravager",
+    "twin": "standard-zigzag"
+  },
+  {
+    "id": "hard-ring-item-free-twin",
+    "level": 31,
+    "difficulty": "hard",
+    "policy": "assisted_without_items",
+    "room_preference": 2,
+    "seed_base": 127815,
+    "family": "ring",
+    "archetype": "ravager",
+    "twin": "hard-ring"
+  },
+  {
+    "id": "hard-twin_wings-item-free-twin",
+    "level": 29,
+    "difficulty": "hard",
+    "policy": "assisted_without_items",
+    "room_preference": 2,
+    "seed_base": 201897,
+    "family": "twin_wings",
+    "archetype": "electric",
+    "twin": "hard-twin_wings"
+  },
+  {
+    "id": "hell-scattered-item-free-twin",
+    "level": 18,
+    "difficulty": "hell",
+    "policy": "assisted_without_items",
+    "room_preference": 0,
+    "seed_base": 176240,
+    "family": "scattered",
+    "archetype": "crusher",
+    "twin": "hell-scattered"
+  },
+  {
+    "id": "hell-courtyards-item-free-twin",
+    "level": 20,
+    "difficulty": "hell",
+    "policy": "assisted_without_items",
+    "room_preference": 0,
+    "seed_base": 250322,
+    "family": "courtyards",
+    "archetype": "ravager",
+    "twin": "hell-courtyards"
+  }
+]
