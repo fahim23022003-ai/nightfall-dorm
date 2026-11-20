@@ -508,9 +508,9 @@ func resident(c, pos: Vector2, index: int, player: bool):
 
 func hunter(c,h):
  if h.transformed:
-  boss_presentation.draw(c,h,hunter_clock,death_age,identity.heading,c.profile.settings.get("reduced_effects",false))
+  boss_presentation.draw(c,h,hunter_clock,death_age,identity.heading,c.profile.settings.get("reduced_effects",false),identity.velocity.length()>1,nightmare_visual.preview_turn,nightmare_visual.preview_release)
   return
- if boss_presentation.draw_approach(c,h,hunter_clock,death_age):return
+ if boss_presentation.draw_approach(c,h,hunter_clock,death_age,identity.heading,identity.velocity.length()>1,nightmare_visual.preview_turn,nightmare_visual.preview_release):return
  if h.archetype in StrategyCatalog.ARCHETYPES:
   nightmare_visual.hunter(c,h,hunter_clock,death_age,identity);return
  var name="hunter_move" if int(hunter_clock*4)%2 else "hunter_idle"

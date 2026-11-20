@@ -58,6 +58,7 @@ var active_view := ""
 var cardinal_textures: Dictionary[String, Texture2D] = {}
 var available_levels: Dictionary[int, bool] = {}
 var frames: Dictionary[Vector2i, PackedVector2Array] = {}
+var direction_frames: Dictionary[String, Dictionary] = {}
 var pose_name: String
 var pose_started := 0.0
 var current_mesh: ArrayMesh
@@ -99,14 +100,24 @@ func _texture_path(level: int) -> String:
  return TEXTURE_PATH if level == 1 else EVOLVED_TEXTURE_PATH % level
 
 func _set_geometry_level(level: int, view := "") -> void:
+ if direction_frames.is_empty():
+  direction_frames[active_view] = frames
  if active_level == level and active_view == view:
   return
+ if active_level != level:
+  direction_frames.clear()
+ # Keep sampled poses for the current evolution only. Direction changes
+ # can reuse both the UV/index surface and already sampled rig poses.
+ if not direction_frames.has(view):
+  var view_frames: Dictionary[Vector2i, PackedVector2Array] = {}
+  direction_frames[view] = view_frames
+ frames = direction_frames[view]
  active_level = level
  active_view = view
  texture = null
- frames.clear()
- current_mesh = null
  reset_pose()
+ if current_mesh != null:
+  _update_mesh_bounds()
 
 func _cardinal_view(level: int, heading: Vector2) -> String:
  if _cardinal_landmarks(level).is_empty():
@@ -187,15 +198,18 @@ func _update_pose(state: String, progress: float, clock: float, reduced: bool) -
   current_vertices = target
  if current_mesh == null:
   current_mesh = _surface(_surface_arrays(current_vertices), true)
-  var floor_pivot := _floor_pivot()
-  var size := _draw_size()
-  current_mesh.custom_aabb = AABB(Vector3(-floor_pivot.x - 22, -floor_pivot.y - 22, 0), Vector3(size.x + 44, size.y + 44, 1))
+  _update_mesh_bounds()
  else:
   # The dynamic surface uses only 2D float positions in its vertex stream.
   # UVs and indices remain resident while we replace that stream.
   current_mesh.surface_update_vertex_region(0, 0, current_vertices.to_byte_array())
  uploaded_frame = key
  uploaded_weight = weight
+
+func _update_mesh_bounds() -> void:
+ var floor_pivot := _floor_pivot()
+ var size := _draw_size()
+ current_mesh.custom_aabb = AABB(Vector3(-floor_pivot.x - 22, -floor_pivot.y - 22, 0), Vector3(size.x + 44, size.y + 44, 1))
 
 func socket_position(name: String) -> Vector2:
  var point := _socket_uv(name)
@@ -285,7 +299,8 @@ func _offset(uv: Vector2, state: String, progress: float) -> Vector2:
   "stalk":
    var step := sin(phase)
    var next_step := cos(phase)
-   return Vector2(-2.0 * upper + 1.4 * hair * next_step + 2.5 * hem * step + 2.4 * (near_hand - far_hand) * step, -1.7 * upper * next_step)
+   var trailing_hair := sin(phase - uv.y * 2.6)
+   return Vector2(-2.0 * upper + 1.6 * hair * trailing_hair + 2.4 * hem * sin(phase-.85) + 2.4 * (near_hand - far_hand) * step, -1.5 * upper * next_step)
   "turn":
    return Vector2((3.2 * head - 1.3 * exposed_shoulder + 2.0 * hair - 1.2 * hem) * progress, (-1.1 * head + .8 * exposed_shoulder) * progress)
   "tell":
@@ -328,7 +343,8 @@ func _evolved_offset(uv: Vector2, state: String, progress: float, marks: Array, 
  var shift := Vector2.ZERO
  match state:
   "stalk":
-   shift = Vector2(-1.7 * upper + 1.4 * hair * cos(phase) + (near_hand - far_hand) * 1.9 * sin(phase) + hem * 1.8 * sin(phase - .7), -1.3 * shoulders * cos(phase))
+   var hair_drag := face_lock * sin(phase-.6-uv.y*1.8) + swept_lock * sin(phase-1.35)
+   shift = Vector2(-1.7 * upper + 1.5 * hair_drag + (near_hand - far_hand) * 1.9 * sin(phase) + hem * 2.3 * sin(phase - 1.1), -1.3 * shoulders * cos(phase))
   "turn":
    shift = Vector2(3.1 * head - 1.2 * shoulders + 1.4 * hair - 1.2 * hem, -1.3 * head) * progress
   "tell":
@@ -345,7 +361,10 @@ func _evolved_offset(uv: Vector2, state: String, progress: float, marks: Array, 
   "vanish":
    shift = Vector2(2.1 * upper - 1.2 * hair - 1.6 * hem, 6.9 * upper + 1.2 * hem) * progress
   _:
-   shift = Vector2(1.25 * hair * sin(phase - .7) + .9 * hem * sin(phase - 1.1), -.8 * upper * cos(phase) - .55 * shoulders * sin(phase))
+   shift = Vector2(1.1 * face_lock * sin(phase-.7) + 1.2 * swept_lock * sin(phase-1.4) + .9 * hem * sin(phase - 1.1), -.8 * upper * cos(phase) - .55 * shoulders * sin(phase))
+ if state in ["tell","strike","recover"]:
+  if active_view == "right":shift.x = -shift.x
+  elif active_view in ["front","back"]:shift.x *= .52
  return shift / EVOLVED_SCALE
 
 func _weight(uv: Vector2, center: Vector2, radius: Vector2) -> float:
