@@ -1,0 +1,23 @@
+{
+  "version": "0.7.0-overhaul",
+  "source_commit": "90d4748b52f6a626b5cdab032083c9c9c6ddcc7d",
+  "engine": "4.6.3.stable.official.7d41c59c4",
+  "executable_bytes": 239322064,
+  "executable_sha256": "ad18c4916b99e58a1ca7290764ce90a02dbacac7304b58a0520a7146940404a6",
+  "embedded_pack_bytes": 134721476,
+  "archive": "/workspace/NightfallDorm-Phase14F-FullGrid-Windows-x64.zip",
+  "archive_bytes": 140140193,
+  "archive_sha256": "5b43b29f8b843b83f57a09d5472643dfa51969150f32431437f56041dd918a0d",
+  "native_windows": "UNVERIFIED",
+  "public_release": false,
+  "preview_profile": "user://phase14-full-room-grid-playtest.json",
+  "reference_profile": "user://phase14-windows-playtest.json",
+  "preview_environment": {
+    "NIGHTFALL_VISUAL_REBIRTH": "1",
+    "NIGHTFALL_FULL_ROOM_GRID": "1"
+  },
+  "reference_environment": {
+    "NIGHTFALL_VISUAL_REBIRTH": "0",
+    "NIGHTFALL_FULL_ROOM_GRID": "0"
+  }
+}

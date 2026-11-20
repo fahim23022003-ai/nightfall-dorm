@@ -1,3 +1,17 @@
+# Full Room Grid — combined owner playtest
+
+Desktop Campaign and Endless now have an opt-in full-floor construction
+grid with typed footprints, turns, and same-instance moves and undo.
+The original placement mode remains available. Older Endless checkpoints
+migrate only when every investment fits, and the earned wave-45 migration
+and follow-on wave passed. The Phase 14F art is retained. The combined
+Windows x64 export uses source `90d4748` and passed Linux embedded-pack
+verification. See the [grid report](FULL_ROOM_GRID_PREVIEW.md) and
+[Windows checklist](PHASE_14_FULL_ROOM_GRID_WINDOWS_CHECKLIST.md).
+Native Windows, Intel UHD and owner playtesting remain open.
+
+---
+
 # Phase 14F — Hunter animation and direction catalog
 
 The opt-in preview now has independent cardinal art for all 60 ordinary

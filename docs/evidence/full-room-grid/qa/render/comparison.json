@@ -1,0 +1,457 @@
+{
+  "checkpoint_git": "6d96a5f2254f788641f5bc100ca63520adf2a362",
+  "grid_game_script_diff_sha256": "5960216a70f825a77a9827c021dda2a42cfe88294e663ad84b932b6e19e0271a",
+  "grid_game_script_diff_matches_at_completion": true,
+  "renderer": "Godot 4.6.3 / Linux Xorg dummy / Compatibility llvmpipe, Mesa 25.0.7 / 1280x720",
+  "order": [
+    "grid-16-standard",
+    "checkpoint-standard",
+    "checkpoint-low",
+    "grid-16-low",
+    "grid-stress-standard",
+    "grid-stress-low"
+  ],
+  "method": "Matched builds contain all 15 roles at L10 and a L1 Needle; legal new grid positions differ. Stress adds 2x2 decoys and renders the grid planning overlay. Prepared resources; model frozen; one trace each, serial.",
+  "cases": {
+    "grid-16-standard": {
+      "buildings": 16,
+      "checks": 165,
+      "counts": {
+        "antenna L10": 1,
+        "auto_repair L10": 1,
+        "barrier L10": 1,
+        "decoy L10": 1,
+        "economy L10": 1,
+        "enhancer L10": 1,
+        "flame L10": 1,
+        "frost L10": 1,
+        "generator L10": 1,
+        "heavy L10": 1,
+        "plasma L10": 1,
+        "repair L10": 1,
+        "shield L10": 1,
+        "shock L10": 1,
+        "turret L1": 1,
+        "turret L10": 1
+      },
+      "failures": 0,
+      "floor_bounds": "[P: (0.0, -165.0), S: (360.0, 405.0)]",
+      "frame_time": {
+        "max_ms": 105.697,
+        "median_ms": 41.5575,
+        "p95_ms": 56.571,
+        "render_video_memory_bytes": 153526203,
+        "sample_frames": 240,
+        "static_memory_bytes": 137933823,
+        "warmup_frames": 30
+      },
+      "grid": true,
+      "planning_overlay": false,
+      "quality": "medium",
+      "sampled_state_sha256": "b9fa4697e056d27f299cc3fcb1dc4355d7db4f8eb11695d2fdf8ecda3353e137",
+      "seed": 67,
+      "size": [
+        1280,
+        720
+      ],
+      "stress": false
+    },
+    "checkpoint-standard": {
+      "buildings": 16,
+      "checks": 170,
+      "counts": {
+        "antenna L10": 1,
+        "auto_repair L10": 1,
+        "barrier L10": 1,
+        "decoy L10": 1,
+        "economy L10": 1,
+        "enhancer L10": 1,
+        "flame L10": 1,
+        "frost L10": 1,
+        "generator L10": 1,
+        "heavy L10": 1,
+        "plasma L10": 1,
+        "repair L10": 1,
+        "shield L10": 1,
+        "shock L10": 1,
+        "turret L1": 1,
+        "turret L10": 1
+      },
+      "failures": 0,
+      "floor_bounds": "[P: (0.0, -165.0), S: (360.0, 405.0)]",
+      "frame_time": {
+        "max_ms": 88.896,
+        "median_ms": 43.8245,
+        "p95_ms": 54.734,
+        "render_video_memory_bytes": 147038935,
+        "sample_frames": 240,
+        "static_memory_bytes": 137609076,
+        "warmup_frames": 30
+      },
+      "grid": false,
+      "planning_overlay": false,
+      "quality": "medium",
+      "sampled_state_sha256": "dcfc1db0e0f6ce800c30b0d86382b37b936bab1d84976443e773ae1a0e8ae02b",
+      "seed": 67,
+      "size": [
+        1280,
+        720
+      ],
+      "stress": false
+    },
+    "checkpoint-low": {
+      "buildings": 16,
+      "checks": 170,
+      "counts": {
+        "antenna L10": 1,
+        "auto_repair L10": 1,
+        "barrier L10": 1,
+        "decoy L10": 1,
+        "economy L10": 1,
+        "enhancer L10": 1,
+        "flame L10": 1,
+        "frost L10": 1,
+        "generator L10": 1,
+        "heavy L10": 1,
+        "plasma L10": 1,
+        "repair L10": 1,
+        "shield L10": 1,
+        "shock L10": 1,
+        "turret L1": 1,
+        "turret L10": 1
+      },
+      "failures": 0,
+      "floor_bounds": "[P: (0.0, -165.0), S: (360.0, 405.0)]",
+      "frame_time": {
+        "max_ms": 88.378,
+        "median_ms": 39.164,
+        "p95_ms": 47.776,
+        "render_video_memory_bytes": 147036007,
+        "sample_frames": 240,
+        "static_memory_bytes": 137608292,
+        "warmup_frames": 30
+      },
+      "grid": false,
+      "planning_overlay": false,
+      "quality": "low",
+      "sampled_state_sha256": "dcfc1db0e0f6ce800c30b0d86382b37b936bab1d84976443e773ae1a0e8ae02b",
+      "seed": 67,
+      "size": [
+        1280,
+        720
+      ],
+      "stress": false
+    },
+    "grid-16-low": {
+      "buildings": 16,
+      "checks": 165,
+      "counts": {
+        "antenna L10": 1,
+        "auto_repair L10": 1,
+        "barrier L10": 1,
+        "decoy L10": 1,
+        "economy L10": 1,
+        "enhancer L10": 1,
+        "flame L10": 1,
+        "frost L10": 1,
+        "generator L10": 1,
+        "heavy L10": 1,
+        "plasma L10": 1,
+        "repair L10": 1,
+        "shield L10": 1,
+        "shock L10": 1,
+        "turret L1": 1,
+        "turret L10": 1
+      },
+      "failures": 0,
+      "floor_bounds": "[P: (0.0, -165.0), S: (360.0, 405.0)]",
+      "frame_time": {
+        "max_ms": 84.11,
+        "median_ms": 37.5115,
+        "p95_ms": 46.797,
+        "render_video_memory_bytes": 153523891,
+        "sample_frames": 240,
+        "static_memory_bytes": 137933139,
+        "warmup_frames": 30
+      },
+      "grid": true,
+      "planning_overlay": false,
+      "quality": "low",
+      "sampled_state_sha256": "b9fa4697e056d27f299cc3fcb1dc4355d7db4f8eb11695d2fdf8ecda3353e137",
+      "seed": 67,
+      "size": [
+        1280,
+        720
+      ],
+      "stress": false
+    },
+    "grid-stress-standard": {
+      "buildings": 82,
+      "checks": 165,
+      "counts": {
+        "antenna L10": 1,
+        "auto_repair L10": 1,
+        "barrier L10": 1,
+        "decoy L1": 66,
+        "decoy L10": 1,
+        "economy L10": 1,
+        "enhancer L10": 1,
+        "flame L10": 1,
+        "frost L10": 1,
+        "generator L10": 1,
+        "heavy L10": 1,
+        "plasma L10": 1,
+        "repair L10": 1,
+        "shield L10": 1,
+        "shock L10": 1,
+        "turret L1": 1,
+        "turret L10": 1
+      },
+      "failures": 0,
+      "floor_bounds": "[P: (0.0, -165.0), S: (360.0, 405.0)]",
+      "frame_time": {
+        "max_ms": 103.862,
+        "median_ms": 67.3605,
+        "p95_ms": 78.458,
+        "render_video_memory_bytes": 153633715,
+        "sample_frames": 240,
+        "static_memory_bytes": 138179167,
+        "warmup_frames": 30
+      },
+      "grid": true,
+      "planning_overlay": true,
+      "quality": "medium",
+      "sampled_state_sha256": "4bbb3bdba7f0ba4fbb4fa2edf4dada343578455f8ffb8d0c9714e9ae343c24e7",
+      "seed": 67,
+      "size": [
+        1280,
+        720
+      ],
+      "stress": true
+    },
+    "grid-stress-low": {
+      "buildings": 82,
+      "checks": 165,
+      "counts": {
+        "antenna L10": 1,
+        "auto_repair L10": 1,
+        "barrier L10": 1,
+        "decoy L1": 66,
+        "decoy L10": 1,
+        "economy L10": 1,
+        "enhancer L10": 1,
+        "flame L10": 1,
+        "frost L10": 1,
+        "generator L10": 1,
+        "heavy L10": 1,
+        "plasma L10": 1,
+        "repair L10": 1,
+        "shield L10": 1,
+        "shock L10": 1,
+        "turret L1": 1,
+        "turret L10": 1
+      },
+      "failures": 0,
+      "floor_bounds": "[P: (0.0, -165.0), S: (360.0, 405.0)]",
+      "frame_time": {
+        "max_ms": 115.636,
+        "median_ms": 65.304,
+        "p95_ms": 80.359,
+        "render_video_memory_bytes": 153630787,
+        "sample_frames": 240,
+        "static_memory_bytes": 138113475,
+        "warmup_frames": 30
+      },
+      "grid": true,
+      "planning_overlay": true,
+      "quality": "low",
+      "sampled_state_sha256": "4bbb3bdba7f0ba4fbb4fa2edf4dada343578455f8ffb8d0c9714e9ae343c24e7",
+      "seed": 67,
+      "size": [
+        1280,
+        720
+      ],
+      "stress": true
+    }
+  },
+  "exploratory_concurrent_run": {
+    "reason": "Other headless suites contended for CPU and approach geometry/inspector code changed during the earlier series.",
+    "cases": {
+      "final-matched-low": {
+        "buildings": 16,
+        "checks": 165,
+        "counts": {
+          "antenna L10": 1,
+          "auto_repair L10": 1,
+          "barrier L10": 1,
+          "decoy L10": 1,
+          "economy L10": 1,
+          "enhancer L10": 1,
+          "flame L10": 1,
+          "frost L10": 1,
+          "generator L10": 1,
+          "heavy L10": 1,
+          "plasma L10": 1,
+          "repair L10": 1,
+          "shield L10": 1,
+          "shock L10": 1,
+          "turret L1": 1,
+          "turret L10": 1
+        },
+        "failures": 0,
+        "floor_bounds": "[P: (0.0, -165.0), S: (360.0, 405.0)]",
+        "frame_time": {
+          "max_ms": 136.658,
+          "median_ms": 57.864,
+          "p95_ms": 73.129,
+          "render_video_memory_bytes": 153523891,
+          "sample_frames": 240,
+          "static_memory_bytes": 137924194,
+          "warmup_frames": 30
+        },
+        "grid": true,
+        "planning_overlay": false,
+        "quality": "low",
+        "sampled_state_sha256": "b9fa4697e056d27f299cc3fcb1dc4355d7db4f8eb11695d2fdf8ecda3353e137",
+        "seed": 67,
+        "size": [
+          1280,
+          720
+        ],
+        "stress": false
+      },
+      "final-matched-medium": {
+        "buildings": 16,
+        "checks": 165,
+        "counts": {
+          "antenna L10": 1,
+          "auto_repair L10": 1,
+          "barrier L10": 1,
+          "decoy L10": 1,
+          "economy L10": 1,
+          "enhancer L10": 1,
+          "flame L10": 1,
+          "frost L10": 1,
+          "generator L10": 1,
+          "heavy L10": 1,
+          "plasma L10": 1,
+          "repair L10": 1,
+          "shield L10": 1,
+          "shock L10": 1,
+          "turret L1": 1,
+          "turret L10": 1
+        },
+        "failures": 0,
+        "floor_bounds": "[P: (0.0, -165.0), S: (360.0, 405.0)]",
+        "frame_time": {
+          "max_ms": 136.38,
+          "median_ms": 64.26,
+          "p95_ms": 101.336,
+          "render_video_memory_bytes": 153527435,
+          "sample_frames": 240,
+          "static_memory_bytes": 137921006,
+          "warmup_frames": 30
+        },
+        "grid": true,
+        "planning_overlay": false,
+        "quality": "medium",
+        "sampled_state_sha256": "b9fa4697e056d27f299cc3fcb1dc4355d7db4f8eb11695d2fdf8ecda3353e137",
+        "seed": 67,
+        "size": [
+          1280,
+          720
+        ],
+        "stress": false
+      },
+      "final-stress-low": {
+        "buildings": 82,
+        "checks": 165,
+        "counts": {
+          "antenna L10": 1,
+          "auto_repair L10": 1,
+          "barrier L10": 1,
+          "decoy L1": 66,
+          "decoy L10": 1,
+          "economy L10": 1,
+          "enhancer L10": 1,
+          "flame L10": 1,
+          "frost L10": 1,
+          "generator L10": 1,
+          "heavy L10": 1,
+          "plasma L10": 1,
+          "repair L10": 1,
+          "shield L10": 1,
+          "shock L10": 1,
+          "turret L1": 1,
+          "turret L10": 1
+        },
+        "failures": 0,
+        "floor_bounds": "[P: (0.0, -165.0), S: (360.0, 405.0)]",
+        "frame_time": {
+          "max_ms": 121.682,
+          "median_ms": 68.1755,
+          "p95_ms": 80.485,
+          "render_video_memory_bytes": 153630787,
+          "sample_frames": 240,
+          "static_memory_bytes": 138104506,
+          "warmup_frames": 30
+        },
+        "grid": true,
+        "planning_overlay": true,
+        "quality": "low",
+        "sampled_state_sha256": "4bbb3bdba7f0ba4fbb4fa2edf4dada343578455f8ffb8d0c9714e9ae343c24e7",
+        "seed": 67,
+        "size": [
+          1280,
+          720
+        ],
+        "stress": true
+      },
+      "final-stress-medium": {
+        "buildings": 82,
+        "checks": 165,
+        "counts": {
+          "antenna L10": 1,
+          "auto_repair L10": 1,
+          "barrier L10": 1,
+          "decoy L1": 66,
+          "decoy L10": 1,
+          "economy L10": 1,
+          "enhancer L10": 1,
+          "flame L10": 1,
+          "frost L10": 1,
+          "generator L10": 1,
+          "heavy L10": 1,
+          "plasma L10": 1,
+          "repair L10": 1,
+          "shield L10": 1,
+          "shock L10": 1,
+          "turret L1": 1,
+          "turret L10": 1
+        },
+        "failures": 0,
+        "floor_bounds": "[P: (0.0, -165.0), S: (360.0, 405.0)]",
+        "frame_time": {
+          "max_ms": 184.928,
+          "median_ms": 74.853,
+          "p95_ms": 141.817,
+          "render_video_memory_bytes": 153633099,
+          "sample_frames": 240,
+          "static_memory_bytes": 138170074,
+          "warmup_frames": 30
+        },
+        "grid": true,
+        "planning_overlay": true,
+        "quality": "medium",
+        "sampled_state_sha256": "4bbb3bdba7f0ba4fbb4fa2edf4dada343578455f8ffb8d0c9714e9ae343c24e7",
+        "seed": 67,
+        "size": [
+          1280,
+          720
+        ],
+        "stress": true
+      }
+    }
+  },
+  "grid_production_script_commit": "90d4748b52f6a626b5cdab032083c9c9c6ddcc7d"
+}

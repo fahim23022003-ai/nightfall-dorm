@@ -1,0 +1,43 @@
+{
+  "buildings": 16,
+  "checks": 170,
+  "counts": {
+    "antenna L10": 1,
+    "auto_repair L10": 1,
+    "barrier L10": 1,
+    "decoy L10": 1,
+    "economy L10": 1,
+    "enhancer L10": 1,
+    "flame L10": 1,
+    "frost L10": 1,
+    "generator L10": 1,
+    "heavy L10": 1,
+    "plasma L10": 1,
+    "repair L10": 1,
+    "shield L10": 1,
+    "shock L10": 1,
+    "turret L1": 1,
+    "turret L10": 1
+  },
+  "failures": 0,
+  "floor_bounds": "[P: (0.0, -165.0), S: (360.0, 405.0)]",
+  "frame_time": {
+    "max_ms": 88.896,
+    "median_ms": 43.8245,
+    "p95_ms": 54.734,
+    "render_video_memory_bytes": 147038935,
+    "sample_frames": 240,
+    "static_memory_bytes": 137609076,
+    "warmup_frames": 30
+  },
+  "grid": false,
+  "planning_overlay": false,
+  "quality": "medium",
+  "sampled_state_sha256": "dcfc1db0e0f6ce800c30b0d86382b37b936bab1d84976443e773ae1a0e8ae02b",
+  "seed": 67,
+  "size": [
+    1280,
+    720
+  ],
+  "stress": false
+}
