@@ -11,8 +11,8 @@ def encode(captures, destination):
     metadata = captures / "anchor-motion.json"
     record = json.loads(metadata.read_text(encoding="utf-8"))
     levels = [segment["level"] for segment in record["segments"]]
-    if not levels or levels != sorted(set(levels)) or any(level not in {1, 4, 7, 10} for level in levels):
-        raise ValueError("Capture must contain a nonempty, sorted set of anchor levels")
+    if not levels or levels != sorted(set(levels)) or any(not 1 <= level <= 10 for level in levels):
+        raise ValueError("Capture must contain a nonempty, sorted set of evolution levels")
     fps = record["fps"]
     destination.mkdir(parents=True, exist_ok=True)
     chapter_path = captures / "chapters.ffmeta"

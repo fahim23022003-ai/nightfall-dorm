@@ -13,19 +13,24 @@ func is_articulated_pilot(archetype: String, level: int) -> bool:
 
 func run():
  var args := OS.get_cmdline_user_args()
- if args.size() not in [2, 3] or not args[0].is_absolute_path() or args[1] not in StrategyCatalog.ARCHETYPE_IDS:
-  push_error("Pass an absolute evidence root, a Hunter ID, and optionally one anchor level after --.")
+ if args.size()<2 or not args[0].is_absolute_path() or args[1] not in StrategyCatalog.ARCHETYPE_IDS:
+  push_error("Pass an absolute evidence root, a Hunter ID, and optionally ascending levels after --.")
   quit(2)
   return
  if OS.get_environment("NIGHTFALL_VISUAL_REBIRTH") != "1":
   push_error("Enable the production visual preview before recording.")
   quit(2)
   return
- var levels := [int(args[2])] if args.size() == 3 else ANCHORS
- if levels[0] not in ANCHORS:
-  push_error("Anchor must be 1, 4, 7, or 10.")
-  quit(2)
-  return
+ var levels := ANCHORS
+ if args.size()>2:
+  levels=[]
+  for raw in args.slice(2):
+   var level:=int(raw)
+   if not raw.is_valid_int() or level<1 or level>10 or (not levels.is_empty() and level<=int(levels.back())):
+    push_error("Levels must be unique, ascending integers between 1 and 10.")
+    quit(2)
+    return
+   levels.append(level)
  var destination := args[0].trim_suffix("/")
  var archetype := args[1]
  output = destination.get_base_dir() + "/"

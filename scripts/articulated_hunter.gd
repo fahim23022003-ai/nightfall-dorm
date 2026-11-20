@@ -18,10 +18,11 @@ var regions_by_pose: Dictionary = {}
 var _regions: Dictionary
 var _vertices := PackedVector2Array()
 var _uvs := PackedVector2Array()
-var _indices := PackedInt32Array()
+var _batch_indices: Dictionary[int,PackedInt32Array] = {}
 var _tint := PackedColorArray([Color.WHITE])
 var contact := Vector2.INF
 var wrist := Vector2.INF
+var weapon_grip := Vector2.INF
 var pose_name := ""
 var view_name := ""
 var last_asset := ""
@@ -45,6 +46,7 @@ static func catalog_key(family: String, level: int) -> String:
 func clear_frame() -> void:
  contact=Vector2.INF
  wrist=Vector2.INF
+ weapon_grip=Vector2.INF
  pose_name=""
  last_asset=""
  joint_points.clear()
@@ -73,7 +75,10 @@ func draw(c: CanvasItem, family: String, floor: Vector2, tint: Color, heading: V
    var packed: Array=Atlas.POSES[key].regions[id]
    var rect: Array=packed[0]
    var source_rect:=Rect2(rect[0],rect[1],rect[2],rect[3])
-   regions[id]=[point(packed[1]),source_rect.size,source_rect.position/atlas_size,source_rect.end/atlas_size]
+   var uv_start:=source_rect.position/atlas_size
+   var uv_end:=source_rect.end/atlas_size
+   var uvs:=PackedVector2Array([uv_start,Vector2(uv_end.x,uv_start.y),uv_end,Vector2(uv_start.x,uv_end.y)])
+   regions[id]=[point(packed[1]),source_rect.size,uvs]
   regions_by_pose[key]=regions
  var atlas:=textures[key]
  _regions=regions_by_pose[key]
@@ -97,6 +102,7 @@ func draw(c: CanvasItem, family: String, floor: Vector2, tint: Color, heading: V
  var coil:=smoothstep(0.0,.76,progress)*(1.0-transfer) if motion=="windup" else 0.0
  var hit:=progress if motion=="hit" else 0.0
  var recover:=progress if motion=="recover" else 0.0
+ var turn:=progress if motion=="turn" else 0.0
  var vanish:=progress if motion=="vanish" else 0.0
  var swell:=sin(progress*PI) if motion in ["evolve","heal"] else 0.0
  var breathe:=sin(clock*2.4)*(.85 if reduced else 1.45)
@@ -108,7 +114,7 @@ func draw(c: CanvasItem, family: String, floor: Vector2, tint: Color, heading: V
   if absf(root_delta.x)>5.0:
    shoulder_direction.x=signf(root_delta.x)
  var attack_lean:=(.20*effort-.19*coil)*shoulder_direction.x
- var weight_roll:=step*amplitude*(.085 if crawl else .042)
+ var weight_roll:=step*amplitude*(.085 if crawl else .042)+turn*facing*(.10 if crawl else .07)
  if motion=="lunge":weight_roll+=facing*.12*sin(progress*PI)
  var torso_angle:=attack_lean+weight_roll+hit*.12*maxf(.2,facing)+vanish*.28*facing
  var lift_distance:=1.35 if crawl else 2.1 if heavy else .65
@@ -117,7 +123,7 @@ func draw(c: CanvasItem, family: String, floor: Vector2, tint: Color, heading: V
   lower_at.y-=sin(clock*(2.1 if witch else 1.7))*2.8
  var spine:=lower_at+Vector2(shoulder_direction.x*(6.0*effort-3.0*coil),breathe-(1.9 if crawl else 1.3)*amplitude*cos(gait)+9.5*effort-2.0*coil+vanish*6.5-3.0*swell+3.0*recover)
  var hem_pivot:=point(art.hem)
- var garment_angle:=-torso_angle*.4+sin(gait-1.03)*amplitude*(.08 if spectral else .062)+.13*swell
+ var garment_angle:=-torso_angle*.4+sin(gait-1.03)*amplitude*(.08 if spectral else .062)+.13*swell-turn*facing*.05
  if witch or gale:
   garment_angle+=sin(clock*2.5+(1.0 if gale else .1))*(.10 if gale else .064)
  var hem_world:=lower_at+(hem_pivot-pivot)*SCALE
@@ -145,6 +151,10 @@ func draw(c: CanvasItem, family: String, floor: Vector2, tint: Color, heading: V
  var neck:=point(art.neck)
  var neck_world:=world_point(neck,hem_pivot,spine,pivot,torso_angle,fold)
  var lead: Dictionary={}
+ var weapon_side:=-1.0 if view_name=="left" else 1.0
+ var blade_axis:=SCYTHE_EDGE*Vector2(weapon_side,1.0) if armed else Vector2.ZERO
+ var weapon_idle:=-.45*weapon_side
+ var striking_angle:=blade_axis.angle_to(Vector2(shoulder_direction.x,-1.0 if rear_scythe else 1.0)) if armed else 0.0
  pose_name=motion
  last_asset=atlas.resource_path
 
@@ -155,10 +165,9 @@ func draw(c: CanvasItem, family: String, floor: Vector2, tint: Color, heading: V
   if rear_scythe and name=="near" and not armed:continue
   var bones: Array=chains[name]
   var is_leg: bool=name.ends_with("foot")
-  var root:=world_point(point(bones[0]),hem_pivot,lower_at if is_leg else spine,pivot,torso_angle*.4 if is_leg else torso_angle)
-  if not is_leg:root=world_point(point(bones[0]),hem_pivot,spine,pivot,torso_angle,fold)
   var rotation:=torso_angle*.4 if is_leg else torso_angle
   var start:=point(bones[0])
+  var root:=world_point(start,hem_pivot,lower_at if is_leg else spine,pivot,rotation,1.0 if is_leg else fold)
   var joint:=root+((point(bones[1])-start)*SCALE).rotated(rotation)
   var bend:=root+((point(bones[2])-start)*SCALE).rotated(rotation)
   var tip:=root+((point(bones[3])-start)*SCALE).rotated(rotation)
@@ -176,12 +185,7 @@ func draw(c: CanvasItem, family: String, floor: Vector2, tint: Color, heading: V
     tip+=Vector2(sin(clock*3.8+offset_phase)*2.4,-cos(clock*3.2+offset_phase)*3.1)
    tip+=Vector2(cycle*(5.25 if spectral else 2.9),-lift*(4.25 if spectral else 2.0))*amplitude
    tip+=Vector2(sin(clock*2.8+offset_phase)*1.75,-2.0*swell)
-  var weapon_side:=-1.0 if view_name=="left" else 1.0
-  var blade_axis:=SCYTHE_EDGE*Vector2(weapon_side,1.0)
-  var weapon_idle:=-.45*weapon_side
   var weapon_angle:=weapon_idle-.98*coil*weapon_side
-  var attack_direction:=Vector2(shoulder_direction.x,-1.0 if rear_scythe else 1.0).normalized()
-  var striking_angle:=blade_axis.angle_to(attack_direction)
   var rest_tip:=tip
   if (arm_attack or motion=="windup") and name=="near":
    if motion=="windup":
@@ -224,7 +228,7 @@ func draw(c: CanvasItem, family: String, floor: Vector2, tint: Color, heading: V
   draw_chain(art,"far",angles.far)
  var torso_at:=world_point(hem_pivot,hem_pivot,spine,pivot,torso_angle)
  draw_piece("torso",torso_at,hem_pivot,torso_angle,1.0,fold)
- var nod:=sin(clock*2.0-.4)*(.045 if reduced else .073)+.12*coil-.16*effort-.15*hit
+ var nod:=sin(clock*2.0-.4)*(.045 if reduced else .073)+.12*coil-.16*effort-.15*hit+turn*facing*.045
  draw_piece("head",neck_world,neck,torso_angle+nod)
  if not lead.is_empty():
   draw_chain(art,"near",lead,false)
@@ -233,6 +237,7 @@ func draw(c: CanvasItem, family: String, floor: Vector2, tint: Color, heading: V
    c.draw_set_transform(Vector2.ZERO)
    flush_layers(c,atlas)
    var grip: Vector2=lead.tip
+   weapon_grip=grip
    var blade_transform:=Transform2D(lead.weapon_angle,Vector2(lead.weapon_sign,1.0),0.0,grip)
    c.draw_set_transform_matrix(blade_transform)
    c.draw_texture_rect(SCYTHE,Rect2(-SCYTHE_GRIP,SCYTHE_SIZE),false,tint)
@@ -299,24 +304,25 @@ func draw_piece(id: String, world: Vector2, local: Vector2, rotation: float, len
   return
  var region: Array=_regions[id]
  var top_left: Vector2=region[0]-local
- var bottom_right: Vector2=top_left+region[1]
- var uv_left: Vector2=region[2]
- var uv_right: Vector2=region[3]
+ var size: Vector2=region[1]
  var transform:=Transform2D(rotation,Vector2(1.0,vertical_scale)*SCALE*length_scale,0.0,world)
- var base:=_vertices.size()
- _vertices.append(transform*top_left)
- _vertices.append(transform*Vector2(bottom_right.x,top_left.y))
- _vertices.append(transform*bottom_right)
- _vertices.append(transform*Vector2(top_left.x,bottom_right.y))
- _uvs.append(uv_left)
- _uvs.append(Vector2(uv_right.x,uv_left.y))
- _uvs.append(uv_right)
- _uvs.append(Vector2(uv_left.x,uv_right.y))
- _indices.append_array(PackedInt32Array([base,base+1,base+2,base,base+2,base+3]))
+ var corner:=transform*top_left
+ var across:=transform.x*size.x
+ var down:=transform.y*size.y
+ _vertices.append(corner)
+ _vertices.append(corner+across)
+ _vertices.append(corner+across+down)
+ _vertices.append(corner+down)
+ _uvs.append_array(region[2])
 
 func flush_layers(canvas: CanvasItem, atlas: Texture2D) -> void:
  if _vertices.is_empty():return
- RenderingServer.canvas_item_add_triangle_array(canvas.get_canvas_item(),_indices,_vertices,_tint,_uvs,PackedInt32Array(),PackedFloat32Array(),atlas.get_rid())
+ var size:=_vertices.size()
+ if not _batch_indices.has(size):
+  var indices:=PackedInt32Array()
+  for base in range(0,size,4):
+   indices.append_array(PackedInt32Array([base,base+1,base+2,base,base+2,base+3]))
+  _batch_indices[size]=indices
+ RenderingServer.canvas_item_add_triangle_array(canvas.get_canvas_item(),_batch_indices[size],_vertices,_tint,_uvs,PackedInt32Array(),PackedFloat32Array(),atlas.get_rid())
  _vertices.clear()
  _uvs.clear()
- _indices.clear()

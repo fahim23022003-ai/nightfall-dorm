@@ -5,9 +5,9 @@ const CombatVisual=preload("res://scripts/hunter_combat_visual.gd")
 var articulated=Articulation.new()
 const GAIT={"crusher":6.0,"stalker":4.5,"ravager":12.0,"witch":3.0,"electric":8.0,"storm":3.5}
 const RELEASE_SECONDS=.42
+const EVOLUTION_POSE_SECONDS:=.66
 const ARCANE_RELEASES=["cursed_projectile","interference","chain_lightning","shadow_dash","soul_drain"]
-const PARTS=["cloth","leg","arm","body","head","back","weapon"]
-var art: Dictionary={}
+var art: Dictionary[String,Texture2D]={}
 var stalker_preview=preload("res://scripts/stalker_visual_prototype.gd").new()
 var crusher_preview=preload("res://scripts/crusher_visual.gd").new()
 var electric_preview=preload("res://scripts/electric_ghost_visual.gd").new()
@@ -29,9 +29,11 @@ var preview_heading=Vector2.ZERO
 var preview_turn=0.0
 var preview_release=0.0
 var special_release_remaining:=0.0
+var evolution_pose_remaining:=0.0
 func reset():
  observed_model=null;smooth_speed=0;lean=0;gait_clock=0;impact=0;pose=0;last_attack=0;last_event=0;cast_blend=0
  preview_heading=Vector2.ZERO;preview_turn=0.0;preview_release=0.0;special_release_remaining=0.0
+ evolution_pose_remaining=0.0
  stalker_preview.reset_pose()
  for preview in oblique_previews.values():preview.reset_pose()
 func update(delta: float,m,identity):
@@ -55,6 +57,7 @@ func update(delta: float,m,identity):
  pose=maxf(0,pose-delta);impact=maxf(0,impact-delta*3)
  preview_release=maxf(0,preview_release-action_delta)
  special_release_remaining=maxf(0.0,special_release_remaining-action_delta)
+ evolution_pose_remaining=maxf(0.0,evolution_pose_remaining-action_delta)
  if h.attacks>last_attack:
   pose=RELEASE_SECONDS;last_attack=h.attacks
   preview_release=RELEASE_SECONDS
@@ -66,6 +69,8 @@ func update(delta: float,m,identity):
   if e.type=="nightmare_impact" and e.get("damage_type","")=="physical":
    impact=.45
   elif e.type=="nightmare_rebirth":impact=.25
+  elif e.type=="nightmare_level" and int(e.get("level",1))<10:
+   evolution_pose_remaining=EVOLUTION_POSE_SECONDS-age
   # Channel pulses and projectile impacts occur after the actual release.
   if e.type in ["nightmare_release","boss_ability_activate","boss_surge"] or (e.type=="hunter_ability" and e.get("ability","") in ARCANE_RELEASES):
    preview_release=RELEASE_SECONDS-age
@@ -75,14 +80,13 @@ func update(delta: float,m,identity):
 func camera_impulse() -> Vector2:
  return Vector2(sin(gait_clock*51),cos(gait_clock*37))*impact*2.2
 var font=preload("res://assets/fonts/Interface.ttf")
-func _init():
- for kind in StrategyCatalog.ARCHETYPE_IDS:
-  for tier in range(4):
-   for part in PARTS:art["%s_%d_%s" % [kind,tier,part]]=load("res://assets/nightmare/%s_%d_%s.svg" % [kind,tier,part])
 func tier_for(level: int) -> int:return 3 if level==10 else 2 if level>=7 else 1 if level>=4 else 0
 func part(c,key: String,name: String,at: Vector2,pivot: Vector2,angle: float,facing: float,tint: Color,shape: Vector2=Vector2.ONE):
+ var asset:=key+"_"+name
+ if not art.has(asset):
+  art[asset]=load("res://assets/nightmare/%s.svg" % asset) as Texture2D
  c.draw_set_transform(at,angle,Vector2(facing,1)*shape)
- c.draw_texture_rect(art[key+"_"+name],Rect2(-pivot,Vector2(128,160)),false,tint)
+ c.draw_texture_rect(art[asset],Rect2(-pivot,Vector2(128,160)),false,tint)
  c.draw_set_transform(Vector2.ZERO)
 func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
  articulated.clear_frame()
@@ -135,8 +139,9 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
  var recoil=Vector2(-face*h.hit_flash*12,0)
  var fall=clampf(death_age,0,1) if dead else 0.0
  p+=recoil+Vector2(0,fall*15)
- var witch_supported=h.archetype=="witch" and witch_preview.supports(preview_level)
- var enhanced=not silhouette and (stalker_supported or oblique_supported or witch_supported)
+ var rig_key:=Articulation.catalog_key(h.archetype,preview_level) if articulated.enabled and CinematicQuality.rebirth_preview() and not silhouette else ""
+ var witch_supported=h.archetype=="witch" and (not rig_key.is_empty() or witch_preview.supports(preview_level))
+ var enhanced=not silhouette and (not rig_key.is_empty() or stalker_supported or oblique_supported or witch_supported)
  if enhanced:
   if not reduced and moving:
    # Small asymmetric weight shifts are in local sprite space. The contact
@@ -157,7 +162,6 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
    c.draw_circle(at,5,Color(color,.08));c.draw_line(at,at+Vector2(6,-9),Color(color,.4),2)
  var flutter=0 if reduced else sin(clock*3.5)*.07+stride*sin(phase)*.1
  var preview_drawn=false
- var rig_key:=Articulation.catalog_key(h.archetype,preview_level) if articulated.enabled and enhanced else ""
  if rig_key!="":
   var timing:=articulation_timing(c,h,clock,windup,moving,fall)
   var facing: Vector2=identity.heading
@@ -226,7 +230,8 @@ static func articulation_timing(c,h,clock: float,windup: float,moving: bool,fall
  var hit: Dictionary=c.presentation.hunter_combat.latest_body_contact(c.model)
  if not hit.is_empty() and (h.state==HunterState.State.ATTACK or hit.age<=Articulation.CONTACT_HOLD):
   var age: float=hit.age
-  return {"motion":"contact" if age<=Articulation.CONTACT_HOLD else "follow","progress":age,"aim":O+Vector2(hit.point)}
+  if age<=Articulation.STRIKE_RECOVERY:
+   return {"motion":"contact" if age<=Articulation.CONTACT_HOLD else "follow","progress":age,"aim":O+Vector2(hit.point)}
  if h.nightmare.action!="" or h.arcane.action!="" or h.tactical_action!="":
   var charge: float=1.0-clampf(h.tactical_windup/.9,0.0,1.0) if h.tactical_action!="" else windup
   return {"motion":"cast","progress":charge,"aim":Vector2.INF}
@@ -248,6 +253,12 @@ static func articulation_timing(c,h,clock: float,windup: float,moving: bool,fall
   return {"motion":"hit","progress":clampf(h.hit_flash*2.0,0.0,1.0),"aim":Vector2.INF}
  if h.recovery_remaining>0.0:
   return {"motion":"recover","progress":clampf(h.recovery_remaining,0.0,1.0),"aim":Vector2.INF}
+ if not hit.is_empty() and h.state==HunterState.State.ATTACK:
+  return {"motion":"recover","progress":1.0-smoothstep(Articulation.STRIKE_RECOVERY,CombatVisual.IMPACT_AGE,float(hit.age)),"aim":Vector2.INF}
+ if visual.evolution_pose_remaining>0.0 and not h.transformed:
+  return {"motion":"evolve","progress":1.0-visual.evolution_pose_remaining/EVOLUTION_POSE_SECONDS,"aim":Vector2.INF}
+ if moving and visual.preview_turn>.18:
+  return {"motion":"turn","progress":visual.preview_turn,"aim":Vector2.INF}
  return {"motion":"move" if moving else "idle","progress":0.0,"aim":Vector2.INF}
 
 func draw_stalker_preview(c,h,p: Vector2,tint: Color,level: int,reduced: bool,phase: float,stride: float,clock: float,fall: float,windup: float,bend: float,heading: Vector2) -> bool:

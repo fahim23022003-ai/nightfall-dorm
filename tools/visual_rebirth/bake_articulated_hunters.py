@@ -13,6 +13,9 @@ from PIL import Image, ImageDraw, ImageFilter
 from scipy.ndimage import distance_transform_edt
 
 from articulated_anchor_traces import STROKED_TRACE, TRACE
+from articulation_crusher_witch import STROKED_TRACE as CRUSHER_WITCH
+from articulation_electric_storm import STROKED_TRACE as ELECTRIC_STORM
+from articulation_stalker_ravager import STROKED_TRACE as STALKER_RAVAGER
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -151,7 +154,7 @@ def make_outline(points, widths):
     return [(round(x), round(y)) for x, y in np.concatenate((joints + normals, (joints - normals)[::-1]))]
 
 
-for hunter, views in STROKED_TRACE.items():
+for hunter, views in (STROKED_TRACE | STALKER_RAVAGER | CRUSHER_WITCH | ELECTRIC_STORM).items():
     TRACE[hunter] = {
         view: (pivot, head, hem, {part: (make_outline(joints, widths), joints)
                                   for part, (joints, widths) in paths.items()})
