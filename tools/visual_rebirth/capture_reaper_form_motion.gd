@@ -3,11 +3,12 @@ extends "res://tools/capture_visual_rebirth.gd"
 
 func run():
  var args := OS.get_cmdline_user_args()
- if args.size() not in [1,2] or not args[0].is_absolute_path() or (args.size()==2 and args[1]!="--scythe"):
-  push_error("Pass an absolute evidence directory and optionally --scythe after --.")
+ if args.size() not in [1,2] or not args[0].is_absolute_path() or (args.size()==2 and args[1] not in ["--scythe","--scythe-rear"]):
+  push_error("Pass an absolute evidence directory and optionally --scythe or --scythe-rear after --.")
   quit(2)
   return
  var scythe:=args.size()==2
+ var rear:=args.size()==2 and args[1]=="--scythe-rear"
  var pilot:=OS.get_environment("NIGHTFALL_LIVING_NIGHTMARE")=="1"
  var destination := args[0].trim_suffix("/")
  output = destination.get_base_dir()+"/"
@@ -18,16 +19,21 @@ func run():
  await setup_game()
  game.onboarding.close_welcome()
 
- var model = _fresh_room(3)
+ var model = _fresh_room(0 if rear else 3)
  var hunter = model.hunter
  var room = model.player()
+ if rear:
+  for other: RoomState in model.rooms:
+   if other!=room:
+    other.sleeping=false
+    other.closed=false
  hunter.boss_policy = BossCatalog.encounter("stage_5", "hell")
  check(hunter.boss_policy.get("enabled", false), "configured an existing enabled boss encounter")
  room.door_level = 5
  room.door_hp = room.max_hp()
  var door: Vector2 = room.door_approach()
  hunter.state = HunterState.State.MOVE
- hunter.position = door+Vector2(0,-65)
+ hunter.position = door+Vector2(0,65 if rear else -65)
  hunter.target = room.index
  hunter.cooldown = 1.0
  hunter.nightmare.cooldown = 999
@@ -50,6 +56,7 @@ func run():
  var textures := {}
  var presentation = game.presentation.boss_presentation
  var blade_errors:=[]
+ var used_rear_at_impact:=false
  var before_door: float = room.door_hp
  var hp_before_transform := -1.0
  var hp_at_transform := -1.0
@@ -75,6 +82,7 @@ func run():
   var blade: Vector2=presentation.articulated_contact()
   if pilot and presentation.preview_pose_name=="contact" and not contact.is_empty() and blade.is_finite():
    blade_errors.append(blade.distance_to(Vector2(contact.point)+Vector2(145,40)))
+   used_rear_at_impact=used_rear_at_impact or selected.ends_with("transformed_back.png")
   for event in model.presentation_events:
    if event.type in ["boss_transform","boss_awakened","boss_warning","boss_impact"] and not events.has(event.type):
     events[event.type]=frame
@@ -90,6 +98,7 @@ func run():
  check(forms.size() == 2, "both exact boss forms reached production draw")
  if pilot:
   check(poses.has("evolve") and poses.has("windup") and poses.has("contact"), "actual boss pose sequence reached production draw")
+  if rear:check(used_rear_at_impact,"rear scythe artwork bound at authoritative impact")
   check(not blade_errors.is_empty() and blade_errors.max()<=2.0, "blade edge aligns with the authoritative door impact in the pilot")
  else:
   check(poses.has("evolve") and poses.has("tell") and poses.has("release"), "actual boss pose sequence reached production draw")
@@ -103,7 +112,7 @@ func run():
    "fps":24, "viewport":[1280,720], "frame_count":count,
    "fixture":"Prepared seeded Endless room, using the game's enabled Stage 5 Hell encounter policy. Set time just before the existing transformation deadline. Advance HunterState.tick directly at 24 Hz, not a full world tick.",
    "events":events, "last_boss_attack":hunter.last_boss_attack,
-   "poses":poses.keys(), "textures":textures.keys(), "blade_errors":blade_errors, "isolate_scythe":scythe,
+   "poses":poses.keys(), "textures":textures.keys(), "blade_errors":blade_errors, "isolate_scythe":scythe,"rear_at_impact":used_rear_at_impact,
    "door_damage":before_door-room.door_hp,
    "hunter_hp_before_transform":hp_before_transform, "hunter_hp_at_transform":hp_at_transform,
   },"  ")+"\n")

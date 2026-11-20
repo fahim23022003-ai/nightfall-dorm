@@ -5,6 +5,11 @@ Preview.cmd**. It starts a separate profile and enables the Living Nightmare
 work alongside Phase 14F visuals, Full Room Grid and Procedural Maps V2.
 The V2.3, V1 and fixed reference launchers are available for comparison.
 
+For the articulation checkpoint, all six Hunters have articulated L1 and L4
+rigs. Stalker and Ravager also have L7 and L10 rigs. The two Grim Reaper
+forms are retained and the transformed form shows a rear scythe swing.
+Other evolution levels keep their prior renderer.
+
 - Open **Continue Story**, choose a difficulty track, review the mission and
   loadout, then start. Complete a mission and confirm the result names the next
   level. Lose after advancing and check the displayed checkpoint and setback.

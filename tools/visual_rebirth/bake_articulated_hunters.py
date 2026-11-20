@@ -12,6 +12,8 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 from scipy.ndimage import distance_transform_edt
 
+from articulated_anchor_traces import STROKED_TRACE, TRACE
+
 
 ROOT = Path(__file__).resolve().parents[2]
 ASSETS = ROOT / "assets/visual_rebirth"
@@ -136,6 +138,37 @@ for form, directions in REAPER_CHAINS.items():
 RECIPES["reaper_transformed"]["back"] = recipe((112,260), (109,56,106,51,64,147), (112,166))
 
 
+def make_outline(points, widths):
+    joints = np.asarray(points, dtype=float)
+    axes = np.diff(joints, axis=0)
+    axes /= np.linalg.norm(axes, axis=1)[:, None]
+    before, middle, after = axes
+    normals = np.array([before, before + middle, middle + after, after])
+    normals = np.column_stack((-normals[:, 1], normals[:, 0]))
+    normals *= (np.asarray(widths) / np.linalg.norm(normals, axis=1))[:, None]
+    joints[0] -= before * 6
+    joints[-1] += after * 4
+    return [(round(x), round(y)) for x, y in np.concatenate((joints + normals, (joints - normals)[::-1]))]
+
+
+for hunter, views in STROKED_TRACE.items():
+    TRACE[hunter] = {
+        view: (pivot, head, hem, {part: (make_outline(joints, widths), joints)
+                                  for part, (joints, widths) in paths.items()})
+        for view, (pivot, head, hem, paths) in views.items()
+    }
+
+for hunter, views in TRACE.items():
+    RECIPES[hunter] = {}
+    for view, (pivot, head, hem, paths) in views.items():
+        data = recipe(pivot, head, hem)
+        for name, (outline, points) in paths.items():
+            x, y = points[0]
+            join = [(x-15,y-9),(x+15,y-9),(x+15,y+15),(x-15,y+15)] if not name.endswith("foot") else None
+            data["chains"][name] = limb(outline, *points, join)
+        RECIPES[hunter][view] = data
+
+
 def polygon_mask(size, polygon):
     scale = 3
     mask = Image.new("L", (size[0] * scale, size[1] * scale))
@@ -232,10 +265,27 @@ def main():
     catalog = {}
     for hunter, views in RECIPES.items():
         for view, recipe_data in views.items():
-            source = (ASSETS / "grim_reaper" / f"{hunter.removeprefix('reaper_')}_{view}.png"
-                      if hunter.startswith("reaper_") else ASSETS / hunter / f"level_01_{view}.png")
+            if hunter.startswith("reaper_"):
+                source = ASSETS / "grim_reaper" / f"{hunter.removeprefix('reaper_')}_{view}.png"
+            else:
+                family, _, level = hunter.partition("_l")
+                source = ASSETS / family / f"level_{level or '01'}_{view}.png"
             with Image.open(source) as image:
                 layers, rig = layers_for(image, recipe_data)
+            if hunter == "reaper_transformed" and view == "back":
+                # The approved back painting occludes the weapon arm. Reuse
+                # the model's own right-facing sleeve/gauntlet underneath
+                # the rear mantle as it appears during a committed swing.
+                dx, dy = 24, -6
+                donor = RECIPES[hunter]["right"]
+                with Image.open(source.with_name("transformed_right.png")) as image:
+                    donor_layers, donor_rig = layers_for(image, donor)
+                    for part in ("upper", "lower", "end"):
+                        key = f"near_{part}"
+                        layer = Image.new("RGBA", image.size)
+                        layer.paste(donor_layers[key], (dx, dy))
+                        layers[key] = layer
+                rig["chains"]["near"] = [(x + dx, y + dy) for x, y in donor_rig["chains"]["near"]]
             atlas, rig["regions"] = pack(layers)
             name = f"{hunter}_{view}"
             atlas.save(DEST / f"{name}.png", optimize=True)

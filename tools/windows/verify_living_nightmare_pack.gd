@@ -1,6 +1,8 @@
 extends SceneTree
 ## Boot an isolated embedded pack and prove the preview enters a real Story match.
 
+const RigAtlas=preload("res://scripts/articulated_hunter_atlas.gd")
+
 var checks := 0
 var failures := 0
 
@@ -19,10 +21,9 @@ func run():
   var mission:=StoryCatalog.mission(level)
   check(mission.get("level")==level and not StageCatalog.stage(mission.stage_id).is_empty(),"embedded mission %d" % level)
   if not mission.is_empty():entry_count+=1
- for type in ["stalker","ravager","reaper_approach","reaper_transformed"]:
-  for view in ["front","back","left","right"]:
-   var atlas:=load("res://assets/visual_rebirth/articulated/%s_%s.png" % [type,view]) as Texture2D
-   check(atlas!=null and atlas.get_width()>0,"embedded %s %s atlas" % [type,view])
+ for key: String in RigAtlas.POSES:
+  var atlas:=load("res://assets/visual_rebirth/articulated/%s.png" % key) as Texture2D
+  check(atlas!=null and atlas.get_width()>0,"embedded rig atlas "+key)
  for score in ["music_hall","music_hell","music_victory","music_defeat","siege_heartbeat"]:
   var stream:=load("res://assets/audio/%s.wav" % score) as AudioStreamWAV
   check(stream!=null and stream.get_length()>0.0,"embedded "+score)

@@ -10,8 +10,9 @@ import subprocess
 def encode(captures, destination):
     metadata = captures / "anchor-motion.json"
     record = json.loads(metadata.read_text(encoding="utf-8"))
-    if [segment["level"] for segment in record["segments"]] != [1, 4, 7, 10]:
-        raise ValueError("Capture must include L1, L4, L7, and L10 in order")
+    levels = [segment["level"] for segment in record["segments"]]
+    if not levels or levels != sorted(set(levels)) or any(level not in {1, 4, 7, 10} for level in levels):
+        raise ValueError("Capture must contain a nonempty, sorted set of anchor levels")
     fps = record["fps"]
     destination.mkdir(parents=True, exist_ok=True)
     chapter_path = captures / "chapters.ffmeta"

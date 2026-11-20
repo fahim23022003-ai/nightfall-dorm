@@ -28,9 +28,10 @@ var facing_blend=1.0
 var preview_heading=Vector2.ZERO
 var preview_turn=0.0
 var preview_release=0.0
+var special_release_remaining:=0.0
 func reset():
  observed_model=null;smooth_speed=0;lean=0;gait_clock=0;impact=0;pose=0;last_attack=0;last_event=0;cast_blend=0
- preview_heading=Vector2.ZERO;preview_turn=0.0;preview_release=0.0
+ preview_heading=Vector2.ZERO;preview_turn=0.0;preview_release=0.0;special_release_remaining=0.0
  stalker_preview.reset_pose()
  for preview in oblique_previews.values():preview.reset_pose()
 func update(delta: float,m,identity):
@@ -53,6 +54,7 @@ func update(delta: float,m,identity):
  gait_clock+=gait_delta*GAIT.get(h.archetype,6.0)*maxf(.15,smooth_speed)
  pose=maxf(0,pose-delta);impact=maxf(0,impact-delta*3)
  preview_release=maxf(0,preview_release-action_delta)
+ special_release_remaining=maxf(0.0,special_release_remaining-action_delta)
  if h.attacks>last_attack:
   pose=RELEASE_SECONDS;last_attack=h.attacks
   preview_release=RELEASE_SECONDS
@@ -67,6 +69,9 @@ func update(delta: float,m,identity):
   # Channel pulses and projectile impacts occur after the actual release.
   if e.type in ["nightmare_release","boss_ability_activate","boss_surge"] or (e.type=="hunter_ability" and e.get("ability","") in ARCANE_RELEASES):
    preview_release=RELEASE_SECONDS-age
+   special_release_remaining=preview_release
+  elif e.type=="hunter_ability" and e.get("ability","") in ["pressure","conceal","dash"]:
+   special_release_remaining=RELEASE_SECONDS-age
 func camera_impulse() -> Vector2:
  return Vector2(sin(gait_clock*51),cos(gait_clock*37))*impact*2.2
 var font=preload("res://assets/fonts/Interface.ttf")
@@ -152,11 +157,12 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
    c.draw_circle(at,5,Color(color,.08));c.draw_line(at,at+Vector2(6,-9),Color(color,.4),2)
  var flutter=0 if reduced else sin(clock*3.5)*.07+stride*sin(phase)*.1
  var preview_drawn=false
- if articulated.enabled and enhanced and preview_level==1 and h.archetype in ["stalker","ravager"]:
+ var rig_key:=Articulation.catalog_key(h.archetype,preview_level) if articulated.enabled and enhanced else ""
+ if rig_key!="":
   var timing:=articulation_timing(c,h,clock,windup,moving,fall)
   var facing: Vector2=identity.heading
   if timing.aim.is_finite():facing=(Vector2(timing.aim)-O-Vector2(h.position)+Vector2(0,9)).normalized()
-  preview_drawn=articulated.draw(c,h.archetype,p+Vector2(0,30),tint,facing,clock,phase,stride,timing.motion,timing.progress,timing.aim,reduced)
+  preview_drawn=articulated.draw(c,rig_key,p+Vector2(0,30),tint,facing,clock,phase,stride,timing.motion,timing.progress,timing.aim,reduced)
  if not preview_drawn and stalker_supported:
   preview_drawn=draw_stalker_preview(c,h,p,tint,preview_level,reduced,phase,stride,clock,fall,windup,bend,identity.heading)
  elif not preview_drawn and oblique_supported:
@@ -213,12 +219,22 @@ static func articulation_timing(c,h,clock: float,windup: float,moving: bool,fall
   return {"motion":"vanish","progress":fall,"aim":Vector2.INF}
  if h.state==HunterState.State.TRANSFORM:
   return {"motion":"evolve","progress":1.0-h.transform_remaining/BossCatalog.TRANSFORM_SECONDS,"aim":Vector2.INF}
+ if c.model.evolution.rebirth_remaining>0.0 and not h.transformed:
+  return {"motion":"evolve","progress":1.0-c.model.evolution.rebirth_remaining/3.6,"aim":Vector2.INF}
  if h.state==HunterState.State.RECOVER:
   return {"motion":"heal","progress":fposmod(clock*.48,1.0),"aim":Vector2.INF}
  var hit: Dictionary=c.presentation.hunter_combat.latest_body_contact(c.model)
  if not hit.is_empty() and (h.state==HunterState.State.ATTACK or hit.age<=Articulation.CONTACT_HOLD):
   var age: float=hit.age
   return {"motion":"contact" if age<=Articulation.CONTACT_HOLD else "follow","progress":age,"aim":O+Vector2(hit.point)}
+ if h.nightmare.action!="" or h.arcane.action!="" or h.tactical_action!="":
+  var charge: float=1.0-clampf(h.tactical_windup/.9,0.0,1.0) if h.tactical_action!="" else windup
+  return {"motion":"cast","progress":charge,"aim":Vector2.INF}
+ if h.archetype=="ravager" and h.dash_remaining>0.0:
+  return {"motion":"lunge","progress":clampf(1.0-h.dash_remaining/1.2,0.0,1.0),"aim":Vector2.INF}
+ var visual=c.presentation.nightmare_visual
+ if visual.special_release_remaining>0.0:
+  return {"motion":"cast_release","progress":1.0-visual.special_release_remaining/RELEASE_SECONDS,"aim":Vector2.INF}
  if h.state==HunterState.State.ATTACK and h.target>=0 and h.target<c.model.rooms.size():
   var room: RoomState=c.model.rooms[h.target]
   if room.closed and room.door_hp>0.0:
@@ -230,8 +246,8 @@ static func articulation_timing(c,h,clock: float,windup: float,moving: bool,fall
     return {"motion":"windup","progress":progress,"aim":O+CombatVisual.door_socket(room)}
  if h.hit_flash>0.0:
   return {"motion":"hit","progress":clampf(h.hit_flash*2.0,0.0,1.0),"aim":Vector2.INF}
- if h.nightmare.action!="" or h.arcane.action!="":
-  return {"motion":"windup","progress":windup,"aim":Vector2.INF}
+ if h.recovery_remaining>0.0:
+  return {"motion":"recover","progress":clampf(h.recovery_remaining,0.0,1.0),"aim":Vector2.INF}
  return {"motion":"move" if moving else "idle","progress":0.0,"aim":Vector2.INF}
 
 func draw_stalker_preview(c,h,p: Vector2,tint: Color,level: int,reduced: bool,phase: float,stride: float,clock: float,fall: float,windup: float,bend: float,heading: Vector2) -> bool:

@@ -1,7 +1,7 @@
 extends "res://tools/visual_rebirth/capture_hunter_direction_motion.gd"
 ## Each anchored cut reports rendered directions and a live Needle/door exchange.
 
-const PILOT_IDS := ["stalker","ravager"]
+const Articulation=preload("res://scripts/articulated_hunter.gd")
 const ANCHORS := [1, 4, 7, 10]
 const LOOK_ROUTE := [
  Vector2(95, 305), Vector2(150, 305), Vector2(150, 344),
@@ -9,7 +9,7 @@ const LOOK_ROUTE := [
 ]
 
 func is_articulated_pilot(archetype: String, level: int) -> bool:
- return OS.get_environment("NIGHTFALL_LIVING_NIGHTMARE")=="1" and archetype in PILOT_IDS and level==1
+ return OS.get_environment("NIGHTFALL_LIVING_NIGHTMARE")=="1" and not Articulation.catalog_key(archetype,level).is_empty()
 
 func run():
  var args := OS.get_cmdline_user_args()
