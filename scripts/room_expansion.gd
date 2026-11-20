@@ -66,6 +66,12 @@ static func geometry(id: String,index: int,tier: int,old_layout: bool=false) -> 
 func configure(model,old_layout: bool=false,levels: Array=[]) -> bool:
  if model.run_kind!="endless" or model.map_id not in MapCatalog.IDS:return false
  legacy=old_layout;initialized=true
+ if model.is_procedural():
+  for i in range(6):
+   var tier: int=int(levels[i]) if levels.size()==6 else 0
+   model.rooms[i].expansion_tier=tier
+   model.rooms[i].layout=generated_tier(model.map_data.rooms[i],tier)
+  return true
  var source=MapCatalog.map(model.map_id)
  for i in range(6):
   var tier=int(levels[i]) if levels.size()==6 else legacy_tier(source.rooms[i].tiles.size()) if legacy else 0
@@ -73,6 +79,10 @@ func configure(model,old_layout: bool=false,levels: Array=[]) -> bool:
   model.rooms[i].layout=geometry(model.map_id,i,tier,legacy)
  refresh_geometry(model)
  return true
+static func generated_tier(layout: Dictionary,tier: int) -> Dictionary:
+ var result:=layout.duplicate(true)
+ result.tiles=result.tiles.slice(0,SLOTS[tier])
+ return result
 func refresh_geometry(model):
  model.map_data.rooms=[]
  var bounds: Rect2=model.rooms[0].bounds()
@@ -87,6 +97,7 @@ func reason(model,index: int) -> String:
  if not model.running or model.result!="" or not room.alive or not room.sleeping:return "An active occupied room is required."
  if room.expansion_tier>=7:return "Ultimate room complete: capacity sixteen buildings."
  var next=room.expansion_tier+1;var required=next if room.balance_version==2 else 1 if next==1 else 2 if next<4 else 3 if next<6 else 4
+ if model.is_procedural() and mini(SLOTS[next],model.map_data.rooms[index].tiles.size())<=room.tile_count():return "The room has no additional pads."
  if room.bed_level<required or room.door_level<required:return "Requires Bed and Door level %d." % (required+1)
  var cost=BalanceRules.expansion(next,room.balance_version)
  if room.gold+0.00001<cost.x:return "Need %.1f more Gold." % (cost.x-room.gold)
@@ -100,7 +111,7 @@ func purchase(model,index: int=-1,npc: bool=false) -> bool:
   if index>=0 and index<model.rooms.size():model.rooms[index].last_error=error
   return false
  var room=model.rooms[index];var next=room.expansion_tier+1;var cost=BalanceRules.expansion(next,room.balance_version)
- var layout=geometry(model.map_id,index,next,legacy)
+ var layout: Dictionary=generated_tier(model.map_data.rooms[index],next) if model.is_procedural() else geometry(model.map_id,index,next,legacy)
  if layout.is_empty():return false
  if room.spatial!=null:
   # Keep occupied furniture anchors and every actual structure fixed.
@@ -111,7 +122,7 @@ func purchase(model,index: int=-1,npc: bool=false) -> bool:
  if not room.pay(cost.x,cost.y,"physical room expansion"):return false
  if room.spatial!=null:room.spatial.undo_entry.clear()
  var before=room.bounds();room.expansion_tier=next;room.layout=layout;room.construction_actions+=1
- refresh_geometry(model)
+ if not model.is_procedural():refresh_geometry(model)
  model.record_event("room_expanded",index,{"tier":next,"slots":room.tile_count(),"old_bounds":before,"bounds":room.bounds(),"gold":cost.x,"power":cost.y})
  return true
 func snapshot(model) -> Dictionary:

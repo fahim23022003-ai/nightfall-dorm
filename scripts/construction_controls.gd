@@ -29,13 +29,14 @@ var machine_rows: Array=[]
 var machines_open=false
 var grid_floor := Rect2()
 var grid_lines := PackedVector2Array()
+var grid_floor_parts: Array=[]
 var current_preview_error=""
 func _init(owner):game=owner
 func room():
  var r=game.model.player() if game.model!=null else null
  if r==null or r.spatial==null:return null
  return r if r.spatial.grid or game.model.run_kind=="endless" else null
-func applicable() -> bool:return game.mode=="match" and room()!=null and game.watched_room<0 and not game.mobile_mode
+func applicable() -> bool:return game.mode=="match" and room()!=null and game.watched_room<0 and not game.hunter_spectating and not game.mobile_mode
 func focused_grid(r) -> bool:
  return r!=null and r.spatial!=null and r.spatial.grid and applicable() and not game.full_map and r==room()
 func active() -> bool:return kind!="" or moving>=0
@@ -215,11 +216,14 @@ func handle(event) -> bool:
   if active():confirm(at,event.shift_pressed);return true
   var id=room().spatial.hit_test(at)
   if id>=0:game.selected_tile=id;game.ui.open_context()
-  elif room().bounds().has_point(at):game.ui.open_build_menu()
+  elif room().floor_has_point(at):game.ui.open_build_menu()
   else:return false
   return true
  return false
 func update(delta: float):
+ if game.hunter_spectating:
+  refresh()
+  return
  if not last_visual.is_empty():
   last_visual.life=maxf(0,last_visual.life-delta)
   if last_visual.life<=0:last_visual.clear()
@@ -295,9 +299,13 @@ func draw_floor(c,r,grid_layout: Dictionary={}):
  if not showing:return
  var offset=game.MAP_OFFSET
  var floor: Rect2=r.spatial.grid_bounds() if grid else r.bounds().grow(-8)
- floor.position+=offset
- c.draw_rect(floor,Color(.15,.42,.35,.07));c.draw_rect(floor,Color(.40,.75,.66,.65),false,2)
- if grid:draw_grid_lines(c,floor)
+ if grid and r.layout.has("floor"):
+  draw_irregular_grid(c,r,floor)
+ else:
+  floor.position+=offset
+  c.draw_rect(floor,Color(.15,.42,.35,.07))
+  c.draw_rect(floor,Color(.40,.75,.66,.65),false,2)
+  if grid:draw_grid_lines(c,floor)
  for blocked in r.spatial.blocks():
   c.draw_rect(Rect2(offset+blocked.rect.position,blocked.rect.size),Color(.65,.28,.30,.13));c.draw_rect(Rect2(offset+blocked.rect.position,blocked.rect.size),Color(.70,.40,.38,.55),false,1)
  var preview: Rect2=r.spatial.footprint_for(point,active_kind(),rotation) if active() else Rect2()
@@ -321,10 +329,11 @@ func draw_floor(c,r,grid_layout: Dictionary={}):
   var obstructing=active() and id!=moving and preview.intersects(rect)
   c.draw_rect(rect,Color(.20,.65,.55,.12 if selected else .035));c.draw_rect(rect,Color("F08C95") if obstructing else Color(.52,.90,.77,.85 if selected else .4),false,2 if selected or obstructing else 1)
 func draw_grid_lines(c,floor: Rect2):
- if grid_floor==floor:
+ if grid_floor==floor and grid_floor_parts.is_empty():
   if not grid_lines.is_empty():c.draw_multiline(grid_lines,Color(.52,.81,.73,.46),1.0)
   return
  grid_floor=floor
+ grid_floor_parts=[]
  var lines=PackedVector2Array()
  for x in range(SpatialConstruction.CELL_SIZE,int(floor.size.x),SpatialConstruction.CELL_SIZE):
   lines.append(floor.position+Vector2(x,0));lines.append(Vector2(floor.position.x+x,floor.end.y))
@@ -332,6 +341,35 @@ func draw_grid_lines(c,floor: Rect2):
   lines.append(floor.position+Vector2(0,y));lines.append(Vector2(floor.end.x,floor.position.y+y))
  grid_lines=lines
  if not lines.is_empty():c.draw_multiline(lines,Color(.52,.81,.73,.46),1.0)
+func draw_irregular_grid(c,r,floor: Rect2):
+ var parts: Array=r.layout.floor
+ for part in parts:
+  var shade: Rect2=floor.intersection(part)
+  if not shade.has_area():continue
+  shade.position+=game.MAP_OFFSET
+  c.draw_rect(shade,Color(.15,.42,.35,.15))
+ if grid_floor!=floor or grid_floor_parts!=parts:
+  grid_floor=floor
+  grid_floor_parts=parts.duplicate()
+  var step := SpatialConstruction.CELL_SIZE
+  var segments: Dictionary={}
+  for y in range(0,int(floor.size.y),step):
+   for x in range(0,int(floor.size.x),step):
+    var corner := floor.position+Vector2(x,y)
+    if not r.spatial.grid_cell_walkable(Rect2(corner,Vector2.ONE*step)):continue
+    # Deduplicate joined cell edges. Both orientations share the same integral key.
+    segments[Vector3i(x,y,0)]=true
+    segments[Vector3i(x,y+step,0)]=true
+    segments[Vector3i(x,y,1)]=true
+    segments[Vector3i(x+step,y,1)]=true
+  grid_lines=PackedVector2Array()
+  for key in segments:
+   var corner: Vector2=game.MAP_OFFSET+floor.position+Vector2(key.x,key.y)
+   grid_lines.append(corner)
+   grid_lines.append(corner+(Vector2.RIGHT if key.z==0 else Vector2.DOWN)*step)
+ if not grid_lines.is_empty():
+  c.draw_multiline(grid_lines,Color(.49,.87,.75,.54),1.0)
+
 func draw_machine_focus(c):
  var r=room()
  if not focused_grid(r) or active():return
@@ -363,7 +401,7 @@ func draw_preview(c):
   c.draw_line(game.MAP_OFFSET+r.tile_position(moving),p,Color(color,.6),1.5)
 
 func draw_range(c):
- if game.mode!="match" or game.watched_room>=0 or not ranges:return
+ if game.mode!="match" or game.watched_room>=0 or game.hunter_spectating or not ranges:return
  var r=game.model.player();var b={};var at=point
  if r==null:return
  if active():b=r.buildings.get(moving,{"kind":kind,"level":1,"specialization":""})

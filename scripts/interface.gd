@@ -62,6 +62,7 @@ var audio_tab="Music"
 var audio_group="Weapons"
 var current_screen="menu"
 var horror_layer: Control
+var haunted_hud
 var soundtrack_now: Label
 var feedback_text=""
 var feedback_until=0.0
@@ -90,6 +91,7 @@ func _ready():
  show_menu()
 
 func clear():
+ haunted_hud=null
  for child in panel.get_children(): child.queue_free()
  actions.clear()
  build_items.clear()
@@ -415,6 +417,8 @@ func show_match():
   bottom_context=BottomContextPanel.new(self);bottom_context.install()
   expansion_ui=preload("res://scripts/expansion_interface.gd").new(self);expansion_ui.create()
   game.construction.create()
+ if game.model.map_data.has("halls"):
+  haunted_hud=preload("res://scripts/haunted_hall_hud.gd").new(self)
 
 func open_build_menu():
  if game.watched_room>=0 or game.model.player()==null:return
@@ -774,6 +778,7 @@ func update_match():
   var q=game.presentation.notices;upgrade_notice.text=q.text();upgrade_notice.tooltip_text=q.details();upgrade_notice.visible=upgrade_notice.text!="" and not warning_box.visible and not game.construction.active() and not game.construction.planning
  RunChoiceInterface.refresh(self)
  if not game.mobile_mode:teammates.update()
+ if haunted_hud!=null:haunted_hud.update()
 
 func show_result():
  clear()

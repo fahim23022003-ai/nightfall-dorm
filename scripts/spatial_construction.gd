@@ -54,6 +54,10 @@ static func grid_area(bounds: Rect2) -> Rect2:
 func grid_bounds() -> Rect2:return grid_area(room().bounds())
 func grid_origin() -> Vector2:return grid_bounds().position
 
+func grid_cell_walkable(rect: Rect2) -> bool:
+ var layout:=effective_layout()
+ return grid_area(layout.bounds).encloses(rect) and (not layout.has("voids") or NightmareMap.contains_rect(layout,rect,WALL_MARGIN))
+
 static func max_grid_buildings(bounds: Rect2) -> int:
  # The smallest typed footprint covers three cells. Real fixtures further reduce room.
  var cells:=Vector2i(grid_area(bounds).size/CELL_SIZE)
@@ -81,6 +85,14 @@ static func grid_footprint(point: Vector2,kind: String,rotation: int) -> Rect2:
 static func grid_blocks_for(layout: Dictionary) -> Array:
  var obstacles:=blocked_for(layout)
  obstacles.pop_back()
+ if layout.has("access_route"):
+  for rect in layout.access_route:
+   obstacles.append({"rect":rect,"reason":"Door-to-bed route must remain clear"})
+  # Grow only the missing floor strips. Adjacent occupied strips share usable
+  # cells and do not introduce a false seam in the placement mask.
+  for hole: Rect2 in layout.voids:
+   obstacles.append({"rect":hole.grow(WALL_MARGIN),"reason":"Footprint crosses a wall or missing floor"})
+  return obstacles
  var door: Vector2=layout.door
  var normal: Vector2=layout.door_normal
  var bed: Vector2=layout.bed

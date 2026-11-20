@@ -1,7 +1,7 @@
 class_name HunterState
 extends RefCounted
 
-enum State {DORMANT, SEEK, MOVE, ATTACK, BREACH, EXIT, DEAD, TRANSFORM}
+enum State {DORMANT, SEEK, MOVE, ATTACK, BREACH, EXIT, DEAD, TRANSFORM, RETREAT, RECOVER}
 var arcane=ArcaneHunter.new()
 var nightmare=NightmareCombat.new()
 var state = State.DORMANT
@@ -139,6 +139,7 @@ func _tactics(delta: float,model) -> bool:
    return true
  return false
 func _begin_transformation(model):
+ model.haunt_recovery.cancel(model, "boss transformation")
  nightmare.clear()
  arcane.clear_transients()
  _clear_tactics()
@@ -221,6 +222,7 @@ func _damage_door(room, model, amount: float,source: String="door strike"):
 
 
 func stop_combat(model):
+ model.haunt_recovery.cancel(model, "combat ended")
  nightmare.clear()
  arcane.clear_transients()
  _clear_tactics()
@@ -369,10 +371,12 @@ func tick(delta: float, match_state):
  phase_guard_remaining=maxf(0,phase_guard_remaining-delta)
  if phase_guard_remaining>0:return
  if match_state.wrath.active():cooldown=maxf(0,cooldown-delta);return
- if nightmare.tick(delta,self,match_state):return
- if arcane.tick(self,match_state,delta):return
- if _tactics(delta,match_state):return
- var active_seconds=match_state.hunter_active_seconds()
+ var retreating: bool=match_state.haunt_recovery.is_active()
+ if not retreating:
+  if nightmare.tick(delta,self,match_state):return
+  if arcane.tick(self,match_state,delta):return
+  if _tactics(delta,match_state):return
+ var active_seconds=match_state.haunt_recovery.active_seconds(match_state)
  var growth_seconds=HunterPressure.growth_clock(match_state,active_seconds)
  var next_level=1 if growth_seconds<profile.opening else 2+int((growth_seconds-profile.opening)/profile.growth_seconds)
  level=maxi(level,next_level)
@@ -403,8 +407,12 @@ func tick(delta: float, match_state):
  if conceal_remaining>0:speed*=1.15
  if match_state.tutorial_mode:
   damage*=0.08;interval=maxf(interval,2.0);speed*=0.65
+ if retreating:
+  match_state.haunt_recovery.tick(delta,self,match_state)
+  return
  if not match_state.wrath.domain_active() and match_state.items.decoy_tick(delta,match_state): return
  if match_state.defenses.lure_tick(delta,match_state):return
+ if delta>0 and match_state.haunt_recovery.try_retreat(self,match_state):return
  cooldown = maxf(-delta,cooldown-delta)
  target_time += delta
  if state == State.EXIT:
@@ -585,11 +593,13 @@ func hurt(amount: float):
  hp = maxf(0,hp-amount)
  if model!=null:model.wrath.channel_damage+=previous_hp-hp
  if begin_transform:_begin_transformation(model)
+ if model!=null:model.haunt_recovery.note_damage(previous_hp-hp,model)
  hit_flash = 0.15
  if hp <= 0:
   nightmare.clear()
   arcane.clear_transients()
   state = State.DEAD
+  if model!=null:model.haunt_recovery.cancel(model, "hunter defeated")
   transform_remaining=0
   _transform_exit_room=-1
   surge_remaining=0

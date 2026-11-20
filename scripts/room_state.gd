@@ -114,6 +114,10 @@ func bounds() -> Rect2:
  if not layout.is_empty(): return layout.bounds
  return Rect2(center() - Vector2(135,110), Vector2(270,220))
 
+func floor_has_point(point: Vector2, margin: float=0.0) -> bool:
+ if layout.has("voids"):return NightmareMap.contains_point(layout,point,margin)
+ return bounds().grow(-margin).has_point(point)
+
 func door_position() -> Vector2:
  if not layout.is_empty(): return layout.door
  return center() + Vector2(0,110 if index < 3 else -110)
@@ -130,9 +134,16 @@ func plant_position() -> Vector2:
  if not layout.is_empty(): return layout.plant
  return bounds().position+Vector2(23,179 if index<3 else 37)
 
-func furniture_blocks(point: Vector2) -> bool:
- # Foot-point collision: illustrated furniture must not be walk-through scenery.
- return Rect2(bed_position()-Vector2(27,45),Vector2(54,89)).has_point(point) or Rect2(cabinet_position()+Vector2(-18,5),Vector2(36,20)).has_point(point) or Rect2(plant_position()+Vector2(-10,7),Vector2(20,14)).has_point(point)
+func furniture_bounds(kind: String) -> Rect2:
+ match kind:
+  "bed": return Rect2(bed_position()-Vector2(27,45),Vector2(54,89))
+  "cabinet": return Rect2(cabinet_position()-Vector2(18,-5),Vector2(36,20))
+  "plant": return Rect2(plant_position()-Vector2(10,-7),Vector2(20,14))
+ return Rect2()
+
+func furniture_blocks(point: Vector2, include_bed: bool = true) -> bool:
+ # Hunters and NPC residents can reach the bed after passing the door.
+ return (include_bed and furniture_bounds("bed").has_point(point)) or furniture_bounds("cabinet").has_point(point) or furniture_bounds("plant").has_point(point)
 
 func tile_position(tile: int) -> Vector2:
  # Central compatibility resolver: opaque handle → actual physical coordinate.

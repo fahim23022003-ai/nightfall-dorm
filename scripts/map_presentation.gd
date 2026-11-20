@@ -2,6 +2,7 @@ extends RefCounted
 ## Original procedural environments over shared model geometry and existing art.
 ## Decorations are presentation only; collision remains entirely map-owned.
 const OFFSET=Vector2(145,40)
+var halls_visual=preload("res://scripts/haunted_hall_presentation.gd").new()
 var floors={}
 var grid_layouts: Dictionary={}
 func _init():
@@ -18,10 +19,11 @@ func render_architecture(c,p):
  var theme=str(data.get("theme","dorm"))
  var colors=PALETTES.get(theme,PALETTES.dorm)
  var visible=p.visible_world_rect(c)
+ var generated: bool=c.model.is_procedural()
  for corridor in data.corridors:
   var rect=Rect2(OFFSET+corridor.position,corridor.size)
   if not visible.intersects(rect):continue
-  c.draw_style_box(p.frame(colors[2],colors[3],3),rect.grow(4))
+  if not generated:c.draw_style_box(p.frame(colors[2],colors[3],3),rect.grow(4))
   c.draw_texture_rect(floors[theme],rect,true,Color("737B7B"))
   # Metal service rails, rivets and warm wall lights anchor corridor depth.
   for i in range(0,int(rect.size.x),64):
@@ -45,43 +47,64 @@ func render_architecture(c,p):
      c.draw_rect(Rect2(rect.position+Vector2(x,y),Vector2(minf(31,rect.size.x-x),minf(31,rect.size.y-y))),Color("738D91") if (x/32+y/32)%2==0 else Color("617B81"))
   else:
    for y in range(0,int(rect.size.y),22): c.draw_line(rect.position+Vector2(0,y),rect.position+Vector2(rect.size.x,y),colors[3].darkened(0.5),1)
+ var halls: Dictionary=data.get("halls",{})
+ if not halls.is_empty():halls_visual.render(c,p,halls,floors[theme],visible)
  for room in c.model.rooms:
   if visible.intersects(Rect2(OFFSET+room.bounds().position,room.bounds().size)):render_room(c,p,room,theme,colors)
  var title=OFFSET+data.bounds.position+Vector2(10,-20)
- if c.full_map:p.text(c,str(data.title).to_upper(),title,18,colors[4])
+ if c.full_map:
+  var label := str(data.title).to_upper()
+  var title_size := 18
+  if generated:
+   label+=" · SEED "+str(data.seed)
+   title_size=roundi(14.0/maxf(c.camera.zoom.x,.12))
+   var width: float=p.font.get_string_size(label,HORIZONTAL_ALIGNMENT_LEFT,-1,title_size).x
+   title=OFFSET+Vector2(data.bounds.get_center().x-width*.5,data.bounds.end.y-3)
+  p.text(c,label,title,title_size,colors[4])
 
 func render_room(c,p,room,theme,colors):
  var r=Rect2(OFFSET+room.bounds().position,room.bounds().size)
- c.draw_style_box(p.frame(Color("14232D"),Color("111E26"),7),r.grow(9))
- c.draw_rect(r,colors[0])
- c.draw_texture_rect(floors[theme],r,true,Color.WHITE if room.alive else Color("85818C"))
- # Quiet seams and water stains replace a uniform checkerboard.
- for i in range(4):
-  var q=r.position+Vector2(18+i*23,45+i*31)
-  c.draw_arc(q,12+i*3,.3,2.2,12,Color(.08,.09,.11,.15),2)
- # Wall surfaces follow actual room size; entrances are cut from the right edge.
- var normal=room.door_normal()
- var doorway=OFFSET+room.door_position()
- for edge in range(4):
-  var horizontal=edge<2
-  var start=Vector2(r.position.x,r.position.y if edge==0 else r.end.y) if horizontal else Vector2(r.position.x if edge==2 else r.end.x,r.position.y)
-  var finish=Vector2(r.end.x,start.y) if horizontal else Vector2(start.x,r.end.y)
-  var door_edge=(edge==0 and normal.y<0) or (edge==1 and normal.y>0) or (edge==2 and normal.x<0) or (edge==3 and normal.x>0)
-  if door_edge:
-   var along=Vector2.RIGHT if horizontal else Vector2.DOWN
-   c.draw_line(start,doorway-along*33,colors[2],9)
-   c.draw_line(doorway+along*33,finish,colors[2],9)
-  else: c.draw_line(start,finish,colors[2],9)
-  c.draw_line(start+Vector2(0,-3),finish+Vector2(0,-3),Color(colors[3],0.5),1)
+ var generated: bool=room.layout.has("floor")
+ if generated:
+  render_generated_room_floor(c,p,room,theme,colors)
+ else:
+  c.draw_style_box(p.frame(Color("14232D"),Color("111E26"),7),r.grow(9))
+  c.draw_rect(r,colors[0])
+  c.draw_texture_rect(floors[theme],r,true,Color.WHITE if room.alive else Color("85818C"))
+  # Quiet seams and water stains replace a uniform checkerboard.
+  for i in range(4):
+   var q=r.position+Vector2(18+i*23,45+i*31)
+   c.draw_arc(q,12+i*3,.3,2.2,12,Color(.08,.09,.11,.15),2)
+  # Wall surfaces follow actual room size; entrances are cut from the right edge.
+  var normal=room.door_normal()
+  var doorway=OFFSET+room.door_position()
+  for edge in range(4):
+   var horizontal=edge<2
+   var start=Vector2(r.position.x,r.position.y if edge==0 else r.end.y) if horizontal else Vector2(r.position.x if edge==2 else r.end.x,r.position.y)
+   var finish=Vector2(r.end.x,start.y) if horizontal else Vector2(start.x,r.end.y)
+   var door_edge=(edge==0 and normal.y<0) or (edge==1 and normal.y>0) or (edge==2 and normal.x<0) or (edge==3 and normal.x>0)
+   if door_edge:
+    var along=Vector2.RIGHT if horizontal else Vector2.DOWN
+    c.draw_line(start,doorway-along*33,colors[2],9)
+    c.draw_line(doorway+along*33,finish,colors[2],9)
+   else: c.draw_line(start,finish,colors[2],9)
+   c.draw_line(start+Vector2(0,-3),finish+Vector2(0,-3),Color(colors[3],0.5),1)
  var expanded_horizontal=c.model.run_kind=="endless" and c.model.expansion.initialized and not c.model.expansion.legacy and absf(room.door_normal().x)>0
  var owned=room.index==c.model.player_room
  var focused_grid: bool=c.construction!=null and c.construction.focused_grid(room)
  if owned:
-  c.draw_style_box(p.frame(Color.TRANSPARENT,Color("7BE3A1"),5),r.grow(11))
-  if not expanded_horizontal and not focused_grid:p.text(c,"YOUR ROOM",r.position+Vector2(10,r.size.y-12),11,Color("D4FFE1"))
+  if not generated:c.draw_style_box(p.frame(Color.TRANSPARENT,Color("7BE3A1"),5),r.grow(11))
+  if not generated and not expanded_horizontal and not focused_grid:p.text(c,"YOUR ROOM",r.position+Vector2(10,r.size.y-12),11,Color("D4FFE1"))
  var plaque=r.position+Vector2(10,r.size.y-58 if expanded_horizontal else 18)
- if not focused_grid:p.text(c,"%02d · %s" % [room.index+1,room.survivor_name() if room.owner>=0 else "VACANT"],plaque,11,Color("EDF4ED"))
- if room.trait_id!="" and not focused_grid:
+ if generated:
+  var strip: Rect2=room.layout.floor[0]
+  plaque=strip.position+OFFSET+Vector2(12,19)
+ if not focused_grid:
+  var plaque_size := 11
+  if generated and c.full_map:
+   plaque_size=roundi(10.0/maxf(c.camera.zoom.x,.12))
+  p.text(c,"%02d · %s" % [room.index+1,room.survivor_name() if room.owner>=0 else "VACANT"],plaque,plaque_size,Color("EDF4ED"))
+ if room.trait_id!="" and not focused_grid and not generated:
   var room_trait=StrategyCatalog.TRAITS[room.trait_id]
   var at=r.position+Vector2(8,r.size.y-48) if expanded_horizontal else r.position+Vector2(r.size.x-193,4)
   c.draw_texture_rect(PremiumButton.texture(room_trait.icon),Rect2(at,Vector2(23,23)),false)
@@ -98,8 +121,25 @@ func render_room(c,p,room,theme,colors):
  var cabinet=OFFSET+room.cabinet_position()
  p.sprite(c,"cabinet" if theme not in ["lab","hotel"] else "utility" if theme=="lab" else "desk",cabinet,Vector2(38,48))
  p.sprite(c,"plant",OFFSET+room.plant_position(),Vector2(25,34),Color("A5C6A0") if theme=="hospital" else Color.WHITE)
- render_decor(c,p,r,bed,cabinet,theme,colors)
+ if not generated:render_decor(c,p,r,bed,cabinet,theme,colors)
  render_tiles(c,p,room,owned)
+
+func render_generated_room_floor(c,p,room,theme,colors):
+ for part in room.layout.floor:
+  var surface := Rect2(OFFSET+part.position,part.size)
+  c.draw_rect(surface,colors[0])
+  c.draw_texture_rect(floors[theme],surface,true,Color.WHITE if room.alive else Color("85818C"))
+ var player_owned: bool=room.index==c.model.player_room
+ var trim: Color=Color("739B87") if player_owned else colors[3]
+ for segment in room.layout.walls:
+  var start: Vector2=OFFSET+segment[0]
+  var finish: Vector2=OFFSET+segment[1]
+  c.draw_line(start,finish,Color("11171E"),15)
+  c.draw_line(start,finish,colors[2],9)
+  c.draw_line(start+Vector2(0,-3),finish+Vector2(0,-3),Color(trim,.80),2)
+  if start.distance_squared_to(finish)>44*44:
+   var center:=start.lerp(finish,.5)
+   c.draw_circle(center,2.4,Color(trim,.74))
 
 func render_decor(c,p,r,bed,cabinet,theme,colors):
  var wall=r.position+Vector2(r.size.x-66,20)

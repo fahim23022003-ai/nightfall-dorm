@@ -44,7 +44,7 @@ func update(delta: float,m,identity):
  cast_blend=lerpf(cast_blend,charge,1-exp(-delta*9))
  if absf(identity.heading.x)>.15:
   facing_blend=move_toward(facing_blend,signf(identity.heading.x),delta*8)
- var goal=clampf(identity.velocity.length()/maxf(1,h.speed),0,1) if h.state in [HunterState.State.MOVE,HunterState.State.EXIT,HunterState.State.SEEK] else 0.0
+ var goal=clampf(identity.velocity.length()/maxf(1,h.speed),0,1) if h.state in [HunterState.State.MOVE,HunterState.State.EXIT,HunterState.State.SEEK,HunterState.State.RETREAT] else 0.0
  smooth_speed=lerpf(smooth_speed,goal,1-exp(-delta*8));lean=lerpf(lean,clampf(identity.velocity.x*.001,-.16,.16),1-exp(-delta*6))
  var gait_delta=action_delta if stalker_preview.enabled else delta
  gait_clock+=gait_delta*GAIT.get(h.archetype,6.0)*maxf(.15,smooth_speed)
@@ -81,7 +81,7 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
  var rebirth=c.model.evolution.rebirth_remaining
  if rebirth>1.8 or level==10 and not c.model.evolution.final_revealed:tier=2
  var key="%s_%d" % [h.archetype,tier]
- var moving=identity.velocity.length()>1 and h.state in [HunterState.State.MOVE,HunterState.State.EXIT,HunterState.State.SEEK]
+ var moving=identity.velocity.length()>1 and h.state in [HunterState.State.MOVE,HunterState.State.EXIT,HunterState.State.SEEK,HunterState.State.RETREAT]
  var reduced=CinematicQuality.reduced_motion(c)
  var phase=gait_clock if observed_model==c.model else clock*GAIT[h.archetype]
  var stride=smooth_speed if observed_model==c.model else 1.0 if moving else 0.0
@@ -97,6 +97,11 @@ func hunter(c,h,clock: float,death_age: float,identity,silhouette=false):
  if h.archetype in ["witch","storm","stalker","electric"]:p.y+=sin(clock*2.2)*(.4 if reduced else 3)
  if h.archetype=="ravager" and moving:p.x+=face*3
  var tint=Color(1.12 if CinematicQuality.reduced_flash(c) else 1.4,1.05,1.02,alpha) if h.hit_flash>0 else Color(1,1,1,alpha)
+ var recovery=c.model.get("haunt_recovery")
+ if recovery!=null and recovery.phase=="recover" and not dead and h.hit_flash<=0:
+  var breath_lift := .5+.5*sin(float(recovery.recovery_elapsed)*3)
+  if not reduced:p.y-=5.0+7.0*breath_lift
+  tint=tint.lerp(Color(.76,.92,.93,alpha),.22 if reduced else .22+.20*breath_lift)
  if silhouette:tint=Color(0,0,0,alpha)
  var color=Color(0,0,0,alpha) if silhouette else Color(StrategyCatalog.ARCHETYPES[h.archetype].color)
  var preview_level=9 if level==10 and tier==2 else level
@@ -217,7 +222,7 @@ func draw_stalker_preview(c,h,p: Vector2,tint: Color,level: int,reduced: bool,ph
   motion="recover";progress=clampf(h.recovery_remaining/.6,0.0,1.0)
  elif preview_turn>.18 and not reduced:
   motion="turn";progress=preview_turn
- elif stride>.12 and h.state in [HunterState.State.MOVE,HunterState.State.EXIT,HunterState.State.SEEK]:
+ elif stride>.12 and h.state in [HunterState.State.MOVE,HunterState.State.EXIT,HunterState.State.SEEK,HunterState.State.RETREAT]:
   motion="stalk";progress=fposmod(phase/TAU,1.0)
  if reduced and motion in ["idle","stalk","evolve"]:
   progress=0.0

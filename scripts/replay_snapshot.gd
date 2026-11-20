@@ -4,6 +4,8 @@ const SCHEMA=2
 const RULESET=5
 const GRID_SCHEMA=3
 const GRID_RULESET=6
+const NIGHTMARE_SCHEMA=4
+const NIGHTMARE_RULESET=7
 const LEGACY_RULESET_MAX=4
 const ROOM_NUMBERS=["gold","electricity","bed_level","door_level","door_hp","income_total","shots","damage_dealt","spent","occupied_seconds","door_damage_taken","income_multiplier","power_multiplier","door_multiplier","turret_multiplier","rescue_fraction","construction_actions","repair_actions","bot_timer","repair_factor","temporary_income"]
 const ROOM_FLAGS=["alive","sleeping","closed","rescue_used","coupon_armed","breach_reacted"]
@@ -17,7 +19,7 @@ static func point(value) -> bool:
 static func vec(value) -> Vector2:return Vector2(value[0],value[1])
 static func pair(value: Vector2) -> Array:return [value.x,value.y]
 static func known_spatial_format(data: Dictionary) -> bool:
- return (data.get("version")==SCHEMA and data.get("ruleset")==RULESET) or (data.get("version")==GRID_SCHEMA and data.get("ruleset")==GRID_RULESET)
+ return (data.get("version")==SCHEMA and data.get("ruleset")==RULESET) or (data.get("version")==GRID_SCHEMA and data.get("ruleset")==GRID_RULESET) or (data.get("version")==NIGHTMARE_SCHEMA and data.get("ruleset")==NIGHTMARE_RULESET)
 static func valid_boosts(boosts: Dictionary) -> bool:
  var candidates=[[]];var ids=[]
  for perk in RankCatalog.PERKS:ids.append(perk.id);candidates.append([perk.id])
@@ -36,6 +38,11 @@ static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  var grid: bool=player_spatial!=null and player_spatial.grid
  var data={"version":GRID_SCHEMA if grid else SCHEMA,"ruleset":GRID_RULESET if grid else RULESET,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"expansion":model.expansion.snapshot(model),"evolution":model.evolution.snapshot(),"defense_refractory":model.defenses.shield_cooldowns.duplicate(true),"repair_refractory":model.defenses.repair_cooldowns.duplicate(true),"lure_refractory":model.defenses.lure_cooldown,"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
  data.balance_version=model.balance_version
+ if model.is_procedural():
+  data.version=NIGHTMARE_SCHEMA
+  data.ruleset=NIGHTMARE_RULESET
+  data.generated_map=NightmareMap.pack(model.map_data)
+  data.haunted_recovery=model.haunt_recovery.snapshot()
  if model.balance_version==2:
   data.run_choices=model.choices.snapshot()
   data.ward={"active":maxf(0,model.ward_until-model.time),"cooldown":maxf(0,model.ward_ready_at-model.time),"capacity":model.ward_capacity}
@@ -76,7 +83,7 @@ static func valid(data) -> bool:
   for value in data.contribution.values():
    if not number(value):return false
  if data.get("balance_version",1)==2 and not RunChoices.valid(data.get("run_choices"),int(data.get("completed",0))):return false
- if not whole(data.get("version"),1,GRID_SCHEMA) or not whole(data.get("ruleset"),1,GRID_RULESET) or data.get("map","") not in MapCatalog.IDS or data.get("difficulty","") not in RankCatalog.DIFFICULTIES:return false
+ if not whole(data.get("version"),1,NIGHTMARE_SCHEMA) or not whole(data.get("ruleset"),1,NIGHTMARE_RULESET) or data.get("map","") not in MapCatalog.IDS or data.get("difficulty","") not in RankCatalog.DIFFICULTIES:return false
  if (data.version==1 and data.ruleset>LEGACY_RULESET_MAX) or (data.version>=SCHEMA and not known_spatial_format(data)):return false
  for key in ["run_id","seed","completed"]:
   if not whole(data.get(key),1):return false
@@ -100,15 +107,26 @@ static func valid(data) -> bool:
   if key not in ItemCatalog.IDS or not whole(data.use_counts[key],0,ItemCatalog.MAX_STOCK):return false
  if int(data.ruleset)>=4 and not data.has("expansion"):return false
  if data.has("expansion") and not RoomExpansion.valid(data.expansion,data.map):return false
- var owners=[];var map=MapCatalog.map(data.map)
+ var procedural: bool=data.version==NIGHTMARE_SCHEMA
+ var owners=[]
+ var map: Dictionary
+ if procedural:
+  if not HauntedRecovery.valid(data.get("haunted_recovery")) or data.haunted_recovery.phase!="idle" or data.expansion.legacy:return false
+  map=NightmareMap.unpack(data.get("generated_map"),data.map)
+  if map.is_empty() or map.seed!=int(data.seed):return false
+ else:
+  if data.has("generated_map") or data.has("haunted_recovery"):return false
+  map=MapCatalog.map(data.map)
  if data.has("expansion"):
-  for i in range(6):map.rooms[i]=RoomExpansion.geometry(data.map,i,int(data.expansion.levels[i]),data.expansion.legacy)
+  for i in range(6):
+   var tier:=int(data.expansion.levels[i])
+   map.rooms[i]=RoomExpansion.generated_tier(map.rooms[i],tier) if procedural else RoomExpansion.geometry(data.map,i,tier,data.expansion.legacy)
  if vec(data.player_position).distance_to(map.rooms[int(data.player_room)].bed)>1:return false
  for i in range(6):
   var room=data.rooms[i]
   if not room is Dictionary or not whole(room.get("owner"),-1,5) or room.get("profile","") not in ["player"]+Catalog.BOT_PROFILES or room.get("trait","")!=StrategyCatalog.trait_for(i,data.map) or not point(room.get("position")) or not room.get("buildings") is Array:return false
   var spatial=data.version>=SCHEMA and i==int(data.player_room)
-  var grid_room=data.version==GRID_SCHEMA and spatial
+  var grid_room=data.version>=GRID_SCHEMA and spatial
   var building_limit=SpatialConstruction.max_grid_buildings(map.rooms[i].bounds) if grid_room else map.rooms[i].tiles.size()
   if room.buildings.size()>building_limit:return false
   if room.has("construction")!=spatial:return false
@@ -188,7 +206,11 @@ static func valid(data) -> bool:
 static func restore(data) -> MatchModel:
  if not valid(data):return null
  var model=MatchModel.new();var run=EndlessRun.new()
- if not run.configure(model,data.map,data.difficulty,int(data.seed),int(data.run_id),data.boosts):return null
+ var preview: bool=model.procedural_requested
+ # All saves use their own map format regardless of the current opt-in flag.
+ model.procedural_requested=false
+ if not run.configure(model,data.map,data.difficulty,int(data.seed),int(data.run_id),data.boosts,data.get("generated_map",{})):return null
+ model.procedural_requested=preview
  if data.has("expansion"):model.expansion.configure(model,data.expansion.legacy,data.expansion.levels)
  else:model.expansion.configure(model,true)
  model.configure_balance(int(data.get("balance_version",1)))
@@ -214,7 +236,7 @@ static func restore(data) -> MatchModel:
   for b in saved.buildings:
    var building=b.duplicate(true);building.erase("tile");building.flash=0.0
    if saved.has("construction"):building.position=vec(b.position)
-   if data.version==GRID_SCHEMA and i==int(data.player_room):building.rotation=int(b.rotation)
+   if data.version>=GRID_SCHEMA and i==int(data.player_room):building.rotation=int(b.rotation)
    room.buildings[int(b.tile)]=building
  if data.has("wave_metrics"):model.wave_metrics.data=data.wave_metrics.duplicate(true)
  else:model.wave_metrics.data.available=false
@@ -244,6 +266,7 @@ static func restore(data) -> MatchModel:
  if data.has("omen"):run.omen.restore(data.omen)
  model.choices.apply(model)
  model.hunter.hp=0;model.hunter.state=HunterState.State.DEAD
+ if data.version==NIGHTMARE_SCHEMA and not model.haunt_recovery.restore(data.haunted_recovery):return null
  if player.spatial.grid:model.bind_player_grid()
  elif model.full_grid_requested:model.enable_player_grid()
  return model

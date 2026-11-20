@@ -235,8 +235,9 @@ func make_hall_haze() -> GradientTexture2D:
  return texture
 
 func render(c):
- c.draw_rect(Rect2(-3000,-3000,6000,6000),Color("11171E"))
  var visible=visible_world_rect(c)
+ var background: Rect2=visible if c.mode=="match" and c.model.is_procedural() else Rect2(-3000,-3000,6000,6000)
+ c.draw_rect(background,Color("11171E"))
  # Architectural surround, soft night haze and deliberate negative space.
  var haze_bounds := Rect2(630,-250,840,840)
  if visible.intersects(haze_bounds):
@@ -308,7 +309,9 @@ func render(c):
  if (m.player()==null or not m.player().sleeping) and (m.player()==null or m.player().alive):
   resident(c,m.player_position,-1,true)
  if m.hunter.state != HunterState.State.DORMANT:
-  if visible.grow(80).has_point(OFFSET+m.hunter.position):hunter(c,m.hunter)
+  if visible.grow(80).has_point(OFFSET+m.hunter.position):
+   hunter(c,m.hunter)
+   if m.map_data.has("halls"):map_presentation.halls_visual.draw_hunter_recovery(c,self,m.hunter.position)
   if attack_pose>0:
    var q=OFFSET+strike_position
    var sweep=(1-attack_pose/.35)*PI

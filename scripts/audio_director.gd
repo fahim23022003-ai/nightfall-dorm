@@ -8,8 +8,9 @@ const STALKER_BREATH = "cinematic_stalker_breath"
 const APPROACH_EFFECTS = ["cinematic_crusher_approach","cinematic_ravager_approach","cinematic_witch_approach","cinematic_electric_approach","cinematic_storm_approach"]
 const LEGACY_EFFECT_NAMES = ["cinematic_crusher_move","cinematic_crusher_charge","cinematic_crusher_release","cinematic_stalker_move","cinematic_stalker_charge","cinematic_stalker_release","cinematic_ravager_move","cinematic_ravager_charge","cinematic_ravager_release","cinematic_witch_move","cinematic_witch_charge","cinematic_witch_release","cinematic_electric_move","cinematic_electric_charge","cinematic_electric_release","cinematic_storm_move","cinematic_storm_charge","cinematic_storm_release","nightmare_defeat","nightmare_rebirth","death_scream_1","death_scream_2","hunter_laugh","reaper_laugh","weather_thunder","weather_wind","weather_rain","prestige_upgrade","survivor_notice","intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","button","menu","match_start","purchase","failure","rank","reward","victory","defeat","shot_needle","shot_arc","impact","ghost_hurt","ghost_defeat","door_hit","door_crack","door_break","build","turret_upgrade","bed_upgrade","door_upgrade","repair","upgrade","income","electricity","footstep","danger","breach","hunter_spawn","hunter_level","elimination","scream_1","scream_2","scream_3","door_reaction","sale","refund","insufficient_gold","insufficient_power","eerie","reaper_transform","reaper_scythe","reaper_charge","reaper_surge","reaper_impact","reaper_hurt","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_end","item_explosion","item_shield_hit",STALKER_BREATH]
 const LEGACY_CRITICAL_EVENTS = ["cinematic_crusher_charge","cinematic_crusher_release","cinematic_stalker_charge","cinematic_stalker_release","cinematic_ravager_charge","cinematic_ravager_release","cinematic_witch_charge","cinematic_witch_release","cinematic_electric_charge","cinematic_electric_release","cinematic_storm_charge","cinematic_storm_release","nightmare_defeat","nightmare_rebirth","death_scream_1","death_scream_2","survivor_notice","prestige_upgrade","intro_running","intro_breath","intro_lightning","intro_impact","intro_shriek","intro_whisper","tutorial_step","tutorial_complete","shop_purchase","perk_unlocked","achievement_unlocked","achievement_claim","difficult_stage","stage_bonus_selected","mythic_perk","victory","defeat","ghost_defeat","rank","reward","hunter_level","breach","door_break","match_start","door_reaction","sale","refund","reaper_transform","reaper_charge","reaper_surge","reaper_death","mythic_promotion","item_time_freeze","item_reaper_seal","item_guardian_heart","item_cursed_fortune","item_legendary_reveal","item_barricade","item_feather","item_inferno","item_pillow","item_coupon","item_decoy","item_rescue","item_smoke","item_repair","item_gold","item_battery","item_radar","item_shield","item_overdrive","item_frost","item_trap","item_reveal","item_explosion"]
-const EFFECT_NAMES = LEGACY_EFFECT_NAMES + WrathAudio.NAMES + APPROACH_EFFECTS
-const CRITICAL_EVENTS = LEGACY_CRITICAL_EVENTS + WrathAudio.CRITICAL_NAMES
+const HALL_CUES = ["haunted_hall_retreat","haunted_hall_north","haunted_hall_south","haunted_hall_west","haunted_hall_east","haunted_hall_release"]
+const EFFECT_NAMES = LEGACY_EFFECT_NAMES + WrathAudio.NAMES + APPROACH_EFFECTS + HALL_CUES
+const CRITICAL_EVENTS = LEGACY_CRITICAL_EVENTS + WrathAudio.CRITICAL_NAMES + HALL_CUES
 const VOICE_LIMIT = 16
 const MAX_PENDING_CRITICAL = 24
 const FRAME_VOICE_LIMIT = 6
@@ -239,6 +240,7 @@ func event(name: String, position: Vector2 = Vector2.INF, details: Dictionary = 
  elif name.begins_with("cinematic_"):design_gain=-22.0 if name.ends_with("_move") else -11.0 if name.ends_with("_charge") else -12.0
  elif name=="nightmare_rebirth":design_gain=-10.0
  elif name=="nightmare_defeat":design_gain=-13.0
+ elif name in HALL_CUES:design_gain=-11.0 if name=="haunted_hall_retreat" else -13.0
  free_voice.volume_db = linear_to_db(distance_gain*(ambience_gain if name.begins_with("weather_") else 1.0))+design_gain
  free_voice.pitch_scale = 1.0
  free_voice.play()
@@ -291,7 +293,7 @@ func new_encounter(model):
  # Same run and rooms, intentionally fresh Hunter. Valid screams/laughs and
  # their serialized queues continue; only the defeated Hunter's warnings stop.
  var approach_cues = APPROACH_EFFECTS + [STALKER_BREATH]
- stop_events(["reaper_transform","reaper_charge","reaper_surge","reaper_scythe"]+approach_cues+WrathAudio.COMBAT_WARNINGS)
+ stop_events(["reaper_transform","reaper_charge","reaper_surge","reaper_scythe"]+approach_cues+WrathAudio.COMBAT_WARNINGS+HALL_CUES)
  for cue in approach_cues:
   _cooldowns.erase(cue)
  _domain_music_active=false
@@ -301,7 +303,7 @@ func new_encounter(model):
  _last_presentation_event=model.next_presentation_event_id-1
  set_tension("quiet",0)
 
-func update_state(delta: float, model, mode: String):
+func update_state(delta: float, model, mode: String, watching_hunter: bool=false):
  if suspended: return
  setup()
  if streams.is_empty():return # Shutdown is terminal even if the host drains one more frame.
@@ -349,7 +351,7 @@ func update_state(delta: float, model, mode: String):
    _previous.state = HunterState.State.DEAD
    _previous.hp = model.hunter.hp
   var room = model.player()
-  listener_position = room.bed_position() if room != null else model.player_position
+  listener_position = model.hunter.position if watching_hunter else room.bed_position() if room != null else model.player_position
   hearing_radius=maxf(850.0,model.map_bounds().size.length()) if model.map_id!="legacy" else 850.0
   if mode in ["match","result"]:
    _observe_presentation(model)
@@ -560,6 +562,15 @@ func _observe_presentation(model):
   if model.result!="" and type in ["boss_transform","boss_warning","boss_surge","boss_ability_warning","boss_ability_activate","boss_phase"]: continue
   if _wrath_presentation(type,record,model,position):continue
   match type:
+   "hunter_retreat":
+    if model.result=="":event("haunted_hall_retreat")
+   "hunter_recovering":
+    var cue: String="haunted_hall_"+str(record.get("hall",""))
+    if model.result=="" and cue in HALL_CUES:event(cue,position)
+   "hunter_recovery_ended":
+    if model.result=="":
+     stop_events(HALL_CUES.slice(1,5))
+     event("haunted_hall_release",position)
    "boss_transform": event("reaper_transform")
    "boss_death":
     stop_events(WrathAudio.COMBAT_WARNINGS);event("reaper_death")

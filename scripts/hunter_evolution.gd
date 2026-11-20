@@ -49,7 +49,7 @@ func award(model,room_index: int,source: String) -> String:
 func tick(delta: float,model):
  rebirth_remaining=maxf(0,rebirth_remaining-delta)
  if not model.tutorial_mode and model.run_kind in ["campaign","endless"]:
-  var wanted=1+int((model.endless.wave-1)/5) if model.run_kind=="endless" else 1+maxi(0,StageCatalog.index_of(model.stage_id))+int(model.hunter_active_seconds()/75)+int(acquired.size()/3)+(1 if model.difficulty=="hell" else 0)
+  var wanted=1+int((model.endless.wave-1)/5) if model.run_kind=="endless" else 1+maxi(0,StageCatalog.index_of(model.stage_id))+int(model.haunt_recovery.active_seconds(model)/75)+int(acquired.size()/3)+(1 if model.difficulty=="hell" else 0)
   wanted=clampi(wanted,1,10)
   if wanted>evolution_level:
    evolution_level=wanted;model.record_event("nightmare_level",model.hunter.target if model.hunter.target>=0 else model.player_room,{"level":evolution_level})

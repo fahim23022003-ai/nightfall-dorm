@@ -44,8 +44,12 @@ var next_projectile_id = 1
 var next_combat_event_id = 1
 var map_id="legacy"
 var map_data: Dictionary={}
+var procedural_requested := OS.get_environment("NIGHTFALL_PROCEDURAL_MAPS") == "1"
+var map_seed: int=1
+var haunt_recovery := HauntedRecovery.new()
 var _navigation=AStar2D.new()
 var _player_navigation=AStar2D.new()
+var _nightmare_navigation: NightmareNavigation
 var _navigation_routes: Dictionary={}
 var stage_id=""
 var difficulty="standard"
@@ -103,6 +107,8 @@ func _init():
  reset()
 
 func reset(seed_value: int = 1):
+ map_seed=seed_value
+ haunt_recovery=HauntedRecovery.new()
  ward_until=0.0
  ward_ready_at=0.0
  ward_capacity=0.0
@@ -153,9 +159,19 @@ func reset(seed_value: int = 1):
 func map_bounds() -> Rect2:
  return map_data.bounds if not map_data.is_empty() else Rect2(35,100,900,620)
 
-func configure_map(id: String) -> bool:
+func is_procedural() -> bool:
+ return map_data.has("halls")
+
+func configure_map(id: String, stored_layout: Dictionary={}) -> bool:
  if time>0 or player_room>=0: return false
- var data=MapCatalog.map(id)
+ var data: Dictionary
+ if not stored_layout.is_empty():
+  data=NightmareMap.unpack(stored_layout,id)
+  if data.get("seed")!=map_seed:return false
+ elif procedural_requested and not tutorial_mode and run_kind in ["campaign","endless"]:
+  data=NightmareMap.generate(id,map_seed)
+ else:
+  data=MapCatalog.map(id)
  if data.is_empty(): return false
  map_id=id
  map_data=data
@@ -167,6 +183,7 @@ func configure_map(id: String) -> bool:
  return true
 
 func navigation_walkable(point: Vector2) -> bool:
+ if is_procedural(): return NightmareNavigation.walkable(self,point)
  if map_id=="legacy":
   if Rect2(35,320,930,180).has_point(point): return true
   for room in rooms:
@@ -184,6 +201,7 @@ func navigation_walkable(point: Vector2) -> bool:
  return false
 
 func _visible(a: Vector2,b: Vector2,player: bool=false) -> bool:
+ if is_procedural(): return NightmareNavigation.visible(self,a,b,player)
  var count=maxi(1,ceili(a.distance_to(b)/2.0))
  for i in range(count+1):
   var point=a.lerp(b,float(i)/count)
@@ -193,6 +211,11 @@ func _visible(a: Vector2,b: Vector2,player: bool=false) -> bool:
 func _build_navigation():
  _navigation.clear()
  _player_navigation.clear()
+ if is_procedural():
+  _nightmare_navigation=NightmareNavigation.new()
+  _nightmare_navigation.rebuild(self)
+  return
+ _nightmare_navigation=null
  var points: Array=map_data.nodes.duplicate()
  for room in rooms:
   points.append(room.door_approach())
@@ -222,6 +245,7 @@ func player_navigation_path(from: Vector2,to: Vector2) -> Array:
 # Static corridor graph estimates for all candidate rooms in one decision.
 # Only the nearest visible start needs testing; doorway endpoints already exist.
 func hunter_route_costs(from: Vector2) -> Dictionary:
+ if is_procedural(): return _nightmare_navigation.costs(self,from)
  var ids=Array(_navigation.get_point_ids())
  ids.sort_custom(func(a,b): return from.distance_squared_to(_navigation.get_point_position(a))<from.distance_squared_to(_navigation.get_point_position(b)))
  var start=-1
@@ -242,7 +266,8 @@ func hunter_route_costs(from: Vector2) -> Dictionary:
   result[room.index]=length
  return result
 
-func navigation_path(from: Vector2,to: Vector2,player: bool=false) -> Array:
+func navigation_path(from: Vector2,to: Vector2,player: bool=false,route_variant: int=0) -> Array:
+ if is_procedural(): return _nightmare_navigation.path(self,from,to,player,route_variant)
  if from.distance_to(to)<0.1: return []
  if _visible(from,to,player): return [to]
  if map_id=="legacy": return [to]
@@ -267,8 +292,13 @@ func step_navigation(from: Vector2,to: Vector2,distance: float,key: String="") -
  var route: Array=[]
  if key!="" and _navigation_routes.has(key):
   var saved=_navigation_routes[key]
-  if saved.goal==to and saved.last.distance_to(from)<1: route=saved.route
- if route.is_empty(): route=navigation_path(from,to)
+  if saved.goal==to:
+   if is_procedural():
+    if saved.last==from and NightmareNavigation.permits_hunter_entry(self,from,to): route=saved.route
+   elif saved.last.distance_to(from)<1: route=saved.route
+ if route.is_empty():
+  var variant := posmod(hunter.decision_count + hunter.target, 2) if is_procedural() and key == "hunter_move" else 0
+  route=navigation_path(from,to,false,variant)
  var point=from
  var remaining=distance
  while not route.is_empty():
@@ -298,7 +328,7 @@ func record_event(type: String, room_index: int, data: Dictionary={}):
  if type in ["sale","building_destroyed"]:
   defenses.removed(room_index,int(data.get("tile",-1)))
   if room_index>=0 and room_index<rooms.size():MagicDefense.removed(rooms[room_index])
- var global_event=type in ["boss_transform","boss_awakened","boss_death","boss_phase"]
+ var global_event=type in ["boss_transform","boss_awakened","boss_death","boss_phase","hunter_retreat","hunter_recovering","hunter_recovery_ended"]
  if (room_index<0 or room_index>=rooms.size()) and not global_event: return
  var event_position=hunter.position if global_event else rooms[room_index].door_position()
  if data.get("position") is Vector2 and data.position.is_finite():event_position=data.position
@@ -325,7 +355,7 @@ func claim_room(index: int) -> bool:
   rooms[index].door_hp+=rooms[index].max_hp()-old_max
  player_room = index
  if run_kind=="endless":rooms[index].spatial=SpatialConstruction.new(rooms[index])
- if full_grid_requested and not tutorial_mode and run_kind in ["campaign","endless"]:
+ if (full_grid_requested or is_procedural()) and not tutorial_mode and run_kind in ["campaign","endless"]:
   enable_player_grid()
  # Bind callbacks to the newly occupied room as well as the pre-room loadout.
  # Automatic First Aid must persist even if no manual item is ever activated.
@@ -347,7 +377,7 @@ func enable_player_grid() -> bool:
   room.spatial = SpatialConstruction.new(room)
  var old_layout := room.layout
  var old_tier: int = room.expansion_tier
- var expands: bool = run_kind == "endless" and expansion.initialized and old_tier < RoomExpansion.SLOTS.size() - 1
+ var expands: bool = not is_procedural() and run_kind == "endless" and expansion.initialized and old_tier < RoomExpansion.SLOTS.size() - 1
  if expands:
   var full_tier := RoomExpansion.SLOTS.size() - 1
   var layout := RoomExpansion.geometry(map_id,room.index,full_tier,expansion.legacy)
@@ -365,6 +395,9 @@ func enable_player_grid() -> bool:
   return false
  if expands:
   expansion.refresh_geometry(self)
+ elif is_procedural():
+  room.expansion_tier=RoomExpansion.SLOTS.size()-1
+  if run_kind=="endless":room.layout=map_data.rooms[room.index].duplicate(true)
  bind_player_grid()
  return true
 
@@ -390,7 +423,7 @@ func sleep_player() -> bool:
  if not running or result != "" or player_room < 0:
   return false
  var room = rooms[player_room]
- if hunter.state != HunterState.State.DORMANT and room.bounds().has_point(hunter.position):
+ if hunter.state != HunterState.State.DORMANT and room.floor_has_point(hunter.position):
   feedback.emit("The hunter is already inside. You cannot lock it out now.")
   return false
  if not room.alive:
@@ -400,7 +433,7 @@ func sleep_player() -> bool:
   feedback.emit("Move closer to your bed, then press E.")
   return false
  for occupied in rooms:
-  if hunter.state != HunterState.State.DORMANT and occupied.bounds().has_point(hunter.position):
+  if hunter.state != HunterState.State.DORMANT and occupied.floor_has_point(hunter.position):
    hunter.request_exit(occupied.index)
  room.closed = true
  room.sleeping = true
@@ -496,6 +529,7 @@ func move_player(direction: Vector2, delta: float):
   remaining -= step
 
 func can_walk(point: Vector2) -> bool:
+ if is_procedural(): return NightmareNavigation.walkable(self,point,true)
  if map_id!="legacy":
   for room in rooms:
    if room.bounds().has_point(point):
@@ -520,7 +554,7 @@ func can_walk(point: Vector2) -> bool:
 func interact():
  if player_room < 0:
   for room in rooms:
-   if room.bounds().has_point(player_position):
+   if room.floor_has_point(player_position):
     claim_room(room.index)
     return
   feedback.emit("Enter an unclaimed room, then press E.")
@@ -553,11 +587,11 @@ func _tick_sim(delta: float):
  if bot_claimed < 5 and time > 6+bot_claimed*1.7:
   var options: Array = []
   for room in rooms:
-   if room.owner < 0 and not room.bounds().has_point(player_position):
+   if room.owner < 0 and not room.floor_has_point(player_position):
     options.append(room)
   var physically_reserved = false
   for candidate in rooms:
-   if candidate.owner < 0 and candidate.bounds().has_point(player_position):
+   if candidate.owner < 0 and candidate.floor_has_point(player_position):
     physically_reserved = true
   if not options.is_empty() and (options.size()>1 or player_room>=0 or physically_reserved):
    var room = options[random.randi_range(0,options.size()-1)]
@@ -586,6 +620,7 @@ func _tick_sim(delta: float):
    BotAI.tick(room,delta,self)
  var exposed = time > preparation+25 and (player() == null or not player().sleeping)
  if exposed:
+  haunt_recovery.cancel(self,"survivor exposed")
   hunter.tick(delta if hunter.state==HunterState.State.TRANSFORM else 0.0,self)
   if hunter.state not in [HunterState.State.TRANSFORM,HunterState.State.DEAD] and delta>items.frozen_delta:
    hunter.cancel_boss_attack()

@@ -4,6 +4,7 @@ var model: MatchModel
 var ui: GameInterface
 var mode = "menu"
 var watched_room=-1
+var hunter_spectating := false
 var selected_tile = 0
 var profile: PlayerProfile
 var audio_system
@@ -81,6 +82,7 @@ func continue_endless(choice: String) -> bool:
  if not profile.checkpoint_endless(model):ui.replay_ui.intermission_saved=false;ui.replay_ui.show_intermission();return false
  if not model.continue_wave(choice):return false
  if model.endless.omen.active!="":audio_event("eerie")
+ hunter_spectating=false
  watched_room=-1
  presentation.new_encounter(model);horror.reset();audio_system.new_encounter(model)
  for room in model.rooms:
@@ -132,6 +134,7 @@ func reset_practice():
  start_practice(ui.replay_ui.practice_archetype,ui.replay_ui.practice_boss,ui.replay_ui.practice_items,ui.replay_ui.practice_map)
 func _adopt_session(next,wallet=null):
  if construction!=null:construction.reset()
+ hunter_spectating=false
  watched_room=-1
  model=next;temporary_loadout=wallet;tutorial_active=false;campaign_mode=false;last_progression={};pending_build="";selected_tile=0
  ui.replay_ui.preparing=false
@@ -187,6 +190,7 @@ func _ready():
   onboarding=preload("res://scripts/onboarding.gd").new(self);onboarding_layer.add_child(onboarding)
 
 func start_tutorial(replay=false):
+ hunter_spectating=false
  watched_room=-1
  if mobile_mode:return false
  tutorial_active=true
@@ -212,6 +216,7 @@ func start_stage(id: String, difficulty: String="standard") -> bool:
  return start_match(difficulty)
 
 func start_match(difficulty: String="") -> bool:
+ hunter_spectating=false
  watched_room=-1
  if not mobile_mode and not profile.tutorial_completed:
   start_tutorial();return false
@@ -236,6 +241,7 @@ func start_match(difficulty: String="") -> bool:
  model.reset(int(Time.get_ticks_msec()))
  model.configure_match(selected_difficulty,RankCatalog.bonuses(entry.get("equipped",[])))
  if requested!="": model.configure_stage(requested)
+ elif model.procedural_requested:model.configure_map(MapCatalog.IDS[posmod(model.map_seed,MapCatalog.IDS.size())])
  model.configure_balance(new_balance_version)
  model.configure_strategy(int(profile.statistics.matches),entry.archetype,entry.contract,match_id)
  profile.apply_stage_bonus(model,entry)
@@ -283,6 +289,7 @@ func activate_item(slot: int,target: int=-1) -> bool:
 
 func return_menu():
  if construction!=null:construction.reset()
+ hunter_spectating=false
  watched_room=-1
  if not mobile_mode and not profile.tutorial_completed:
   if onboarding!=null and onboarding.phase not in ["cinematic","title","tutorial"]:start_tutorial()
@@ -314,7 +321,7 @@ func _process(delta: float):
   var direction = Vector2(float(Input.is_physical_key_pressed(KEY_D) or Input.is_physical_key_pressed(KEY_RIGHT))-float(Input.is_physical_key_pressed(KEY_A) or Input.is_physical_key_pressed(KEY_LEFT)),float(Input.is_physical_key_pressed(KEY_S) or Input.is_physical_key_pressed(KEY_DOWN))-float(Input.is_physical_key_pressed(KEY_W) or Input.is_physical_key_pressed(KEY_UP)))
   if mobile_mode: direction=touch.movement(delta)
   if model.running:
-   model.move_player(direction if watched_room<0 else Vector2.ZERO,delta)
+   model.move_player(direction if watched_room<0 and not hunter_spectating else Vector2.ZERO,delta)
   # Fixed simulation substeps avoid attack tunneling during slow rendered frames.
   var remaining = minf(delta,0.25)
   while remaining > 0:
@@ -348,6 +355,7 @@ func _process(delta: float):
    ui.update_match()
   horror.update(delta,model)
   if model.run_kind=="endless" and model.endless!=null and model.endless.phase=="intermission" and ui.current_screen not in ["intermission","wave_report","run_choices"] and not ui.replay_ui.preparing:
+   return_from_hunter()
    ui.replay_ui.intermission_saved=profile.checkpoint_endless(model)
    ui.replay_ui.show_intermission();audio_event("reward")
   if model.result != "" and not tutorial_active:
@@ -368,7 +376,7 @@ func _process(delta: float):
    else:ui.replay_ui.show_session_result()
  if mode not in ["match","result"] or tutorial_active:audio_system.set_tension("quiet",0)
  if construction!=null:construction.update(delta)
- audio_system.update_state(delta,model,mode)
+ audio_system.update_state(delta,model,mode,hunter_spectating)
  SessionInterface.refresh(ui)
  guidance.refresh(self)
  if ui.items_ui!=null: ui.items_ui.update(delta)
@@ -385,6 +393,11 @@ var suppress_double_click_release=false
 var cancelled_pointer=false
 
 func _input(event):
+ if hunter_spectating:
+  if event is InputEventKey and event.pressed and not event.echo:
+   if event.keycode in [KEY_HOME,KEY_ESCAPE]:return_from_hunter()
+   get_viewport().set_input_as_handled()
+  return
  if event is InputEventKey and event.keycode==KEY_ESCAPE and event.pressed and is_instance_valid(ui.run_panel) and ui.run_panel.visible:
   ui.run_panel.visible=false;get_viewport().set_input_as_handled();return
  if construction!=null and construction.handle_cancel(event):get_viewport().set_input_as_handled();return
@@ -404,7 +417,7 @@ func _input(event):
   get_viewport().set_input_as_handled()
 
 func _unhandled_input(event):
- if mode!="match" or in_background: return
+ if mode!="match" or in_background or hunter_spectating: return
  if model.run_kind=="endless" and model.endless!=null and model.endless.phase=="intermission" and not ui.replay_ui.preparing:return
  if construction!=null and construction.handle(event):get_viewport().set_input_as_handled();return
  if mobile_mode and event is InputEventMouse: return
@@ -534,7 +547,17 @@ func focus_camera(snap: bool=false,delta: float=0.016):
      extent=extent.expand(local_hunter.position+Vector2(50,45))
    zoom=minf(available.x/extent.size.x,available.y/extent.size.y)*zoom_factor
    goal=extent.get_center()+MAP_OFFSET+(get_viewport_rect().size/2-desired)/zoom
- if mobile_mode and not full_map:
+ if hunter_spectating:
+  zoom=1.40
+  var recovery=model.get("haunt_recovery")
+  if recovery!=null and recovery.phase=="recover":
+   var hall: Dictionary=model.map_data.get("halls",{}).get(recovery.hall_id,{})
+   if not hall.is_empty():
+    var extent: Rect2=hall.bounds.grow(32)
+    zoom=clampf(minf(700/extent.size.x,418/extent.size.y),.70,1.65)
+  # World-space follow uses the real actor. Map mode and construction are restored on return.
+  goal=model.hunter.position+MAP_OFFSET-Vector2(0,30)
+ if mobile_mode and not full_map and not hunter_spectating:
   var desired=Vector2(470 if ui.context_open and model.player()!=null and model.player().sleeping else 640,340)
   goal+=(get_viewport_rect().size/2-mobile_layout.screen_point(desired))/zoom
  camera_target=goal
@@ -616,13 +639,14 @@ func resume_mobile():
 
 func mobile_back():
  if mode=="match":
-  if pending_build!="": cancel_placement()
+  if hunter_spectating:return_from_hunter()
+  elif pending_build!="": cancel_placement()
   elif ui.context_open: ui.close_context()
   else: toggle_pause()
  else: return_menu()
 
 func handle_touch_tap(screen: Vector2):
- if mode!="match" or not model.running or in_background: return
+ if mode!="match" or not model.running or in_background or hunter_spectating: return
  var point=get_viewport().get_canvas_transform().affine_inverse()*screen-MAP_OFFSET
  var room=model.player()
  if room!=null and room.sleeping:
@@ -649,7 +673,7 @@ func handle_touch_tap(screen: Vector2):
   ui.open_room_panel("door")
  else:
   for candidate in model.rooms:
-   if candidate.owner<0 and (candidate.bounds().has_point(point) or point.distance_to(candidate.door_position())<40):
+   if candidate.owner<0 and (candidate.floor_has_point(point) or point.distance_to(candidate.door_position())<40):
     touch.navigate_room(candidate)
     ui.touch_notice("Walking to the room. Then tap its bed to sleep.")
     return
@@ -658,12 +682,33 @@ func retry_settlement():
  if model.run_kind=="endless":last_progression=profile.settle_endless(model);ui.replay_ui.show_session_result()
  else:last_progression=profile.settle_match(match_id,model);ui.show_result()
 
+func watch_hunter() -> bool:
+ if mode!="match" or hunter_spectating or not model.running or model.result!="" or ui.current_screen!="match":return false
+ var recovery=model.get("haunt_recovery")
+ if recovery==null or recovery.phase not in ["retreat","recover"]:return false
+ if is_instance_valid(touch):touch.reset()
+ full_map=false
+ hunter_spectating=true
+ focus_camera(true)
+ ui.update_match()
+ return true
+
+func return_from_hunter():
+ if not hunter_spectating:return
+ hunter_spectating=false
+ full_map=false
+ watched_room=-1
+ if is_instance_valid(ui.context_box):ui.context_box.visible=ui.context_open
+ focus_camera(true)
+ ui.update_match()
+
 func spectate_room(index: int) -> bool:
- if mode!="match" or tutorial_active or model.result!="" or index<0 or index>=model.rooms.size() or model.rooms[index].owner<=0:return false
+ if mode!="match" or hunter_spectating or tutorial_active or model.result!="" or index<0 or index>=model.rooms.size() or model.rooms[index].owner<=0:return false
  cancel_placement();ui.close_context();watched_room=index;full_map=false;zoom_factor=1
  focus_camera();ui.teammates.update()
  return true
 func return_to_my_room():
+ hunter_spectating=false
  watched_room=-1;full_map=false;zoom_factor=1
  if mode=="match":focus_camera(true)
  if ui!=null and ui.teammates!=null:ui.teammates.update()
