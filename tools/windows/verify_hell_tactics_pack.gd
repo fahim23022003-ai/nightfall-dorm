@@ -45,6 +45,14 @@ func run():
   var endless := MatchModel.new()
   check(endless.configure_endless("cursed_mansion", difficulty, 73, 1), "launch packed Endless")
   check(not endless.uses_tactical_sieges(), "Endless retains its reviewed rules")
+ if OS.get_environment("NIGHTFALL_CHECK_FAIR_START")=="1":
+  var opening:=MatchModel.new()
+  opening.reset(10358)
+  check(opening.configure_match("hell") and opening.configure_stage("stage_2"),"configure packaged Hell Labyrinth start")
+  check(opening.configure_strategy(10358) and opening.configure_balance(),"configure ordinary opening without a loadout")
+  check(opening.opening_room_forecast(1).get("early_siege_risk",false),"packaged Room 2 reports the fast Hunter route")
+  check(opening.claim_room(1) and opening.player().gold==25.0 and opening.player().electricity==0.0,"packaged ordinary starting wallet")
+  print("FAIR_START_PACK_CHECKED=true")
  print("HELL_TACTICS_WINDOWS_PACK_CHECKS=", checks, " FAILURES=", failures, " MAP_VERSION=", expected_map, " NATIVE_WINDOWS=UNVERIFIED")
  quit(1 if failures else 0)
 

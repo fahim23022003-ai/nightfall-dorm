@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export an isolated Windows Hell tactics playtest and verify the embedded pack."""
+"""Export an isolated Windows Campaign playtest and verify the embedded pack."""
 
 import argparse
 import hashlib
@@ -34,6 +34,18 @@ MODES = {
     ),
 }
 
+FAIR_START_MODES = {
+    "fair-start-preview": (
+        "Play Fair Starting Rooms Preview.cmd", "user://nightfall-v23-playtest.json", (1, 1, 0, 1),
+    ),
+    "v1-fallback": (
+        "Play Procedural V1 Fallback.cmd", "user://nightfall-v23-v1-playtest.json", (1, 1, 1, 0),
+    ),
+    "fixed-reference": (
+        "Play Fixed Reference.cmd", "user://nightfall-v23-fixed-reference.json", (0, 0, 0, 0),
+    ),
+}
+
 
 def mode_environment(profile: str, switches: tuple[int, ...]) -> dict[str, str]:
     settings = {key: str(value) for key, value in zip(MODE_SWITCHES, switches, strict=True)}
@@ -57,11 +69,12 @@ def verify_modes(
     executable: Path,
     working: Path,
     evidence: Path,
+    modes: dict,
 ) -> dict[str, dict[str, str]]:
     empty = working / "empty"
     empty.mkdir()
     environments = {}
-    for label, (_, profile, switches) in MODES.items():
+    for label, (_, profile, switches) in modes.items():
         environment = mode_environment(profile, switches)
         environments[label] = environment
         env = os.environ | environment | {"XDG_DATA_HOME": str(working / ("data-" + label))}
@@ -72,6 +85,19 @@ def verify_modes(
         ], log, env)
         if "HELL_TACTICS_WINDOWS_PACK_CHECKS=" not in log.read_text() or "FAILURES=0" not in log.read_text():
             raise RuntimeError(f"Tactics pack verification did not complete. Inspect {log}.")
+
+    if modes is FAIR_START_MODES:
+        log = evidence / "windows-pack-fair-start-probe.log"
+        env = os.environ | environments["fair-start-preview"] | {
+            "XDG_DATA_HOME": str(working / "data-fair-start-probe"),
+            "NIGHTFALL_CHECK_FAIR_START": "1",
+        }
+        run([
+            godot, "--headless", "--quit-after", "1200", "--path", str(empty), "--main-pack", str(executable),
+            "--script", str(ROOT / "tools/windows/verify_hell_tactics_pack.gd"),
+        ], log, env)
+        if "FAIR_START_PACK_CHECKED=true" not in log.read_text() or "FAILURES=0" not in log.read_text():
+            raise RuntimeError(f"Fair start pack verification did not complete. Inspect {log}.")
 
     # Exercise the exact Phase 14F assets and reach the original construction
     # comparison fixture without replacing its room layout with either preview.
@@ -93,20 +119,22 @@ def verify_modes(
     return environments
 
 
-def add_playtest_files(base: Path, output: Path, environments: dict[str, dict[str, str]]) -> None:
+def add_playtest_files(
+    base: Path, output: Path, environments: dict[str, dict[str, str]], modes: dict, guide: Path,
+) -> None:
     with ZipFile(base) as source, ZipFile(output, "w", ZIP_DEFLATED) as target:
         for entry in source.infolist():
             with source.open(entry) as body, target.open(entry, "w") as copy:
                 shutil.copyfileobj(body, copy)
-        for label, (name, _, _) in MODES.items():
+        for label, (name, _, _) in modes.items():
             target.writestr(name, launcher(environments[label]))
-        guide = ROOT / "docs/HELL_TACTICS_WINDOWS_PLAYTEST.md"
         target.write(guide, guide.name)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--godot", default="godot")
+    parser.add_argument("--fair-start", action="store_true", help="Use the V2.3 guide and isolated profiles.")
     parser.add_argument("--source-commit", required=True)
     parser.add_argument("--zip", required=True, type=Path)
     parser.add_argument("--evidence-dir", required=True, type=Path)
@@ -118,12 +146,14 @@ def main() -> None:
     ).strip()
     if branch != "work" or commit != source:
         raise RuntimeError("Check out the verified source commit on branch work before exporting.")
+    modes = FAIR_START_MODES if args.fair_start else MODES
+    guide = ROOT / "docs" / ("FAIR_START_WINDOWS_PLAYTEST.md" if args.fair_start else "HELL_TACTICS_WINDOWS_PLAYTEST.md")
     archive = args.zip.resolve()
     evidence = args.evidence_dir.resolve()
     archive.parent.mkdir(parents=True, exist_ok=True)
     evidence.mkdir(parents=True, exist_ok=True)
 
-    with tempfile.TemporaryDirectory(prefix="nightfall-v21-", dir=archive.parent) as scratch:
+    with tempfile.TemporaryDirectory(prefix="nightfall-playtest-", dir=archive.parent) as scratch:
         working = Path(scratch)
         base = working / "base.zip"
         subprocess.run([
@@ -132,14 +162,14 @@ def main() -> None:
         ], cwd=ROOT, env=os.environ | dict.fromkeys(MODE_SWITCHES, "0"), check=True)
         with ZipFile(base) as exported:
             executable = Path(exported.extract("NightfallDorm.exe", working))
-        environments = verify_modes(args.godot, executable, working, evidence)
+        environments = verify_modes(args.godot, executable, working, evidence, modes)
 
         receipt_path = evidence / "windows-artifact.json"
         receipt = json.loads(receipt_path.read_text())
         if receipt["source_commit"] != source:
             raise RuntimeError("The export receipt points to a different source commit.")
         combined = working / "playtest.zip"
-        add_playtest_files(base, combined, environments)
+        add_playtest_files(base, combined, environments, modes, guide)
         with ZipFile(combined) as packaged:
             bad_entry = packaged.testzip()
             if bad_entry is not None:

@@ -13,7 +13,7 @@ static func defended_breach_estimate(door_hp: float, net_loss: float, landed_dam
   return 0.0
  return minf(MAX_BREACH_ESTIMATE,door_hp*elapsed/net_loss)
 
-static func assess(model, hunter) -> Dictionary:
+static func assess(model, hunter, defended_door: int=-1, defended_breach: float=0.0) -> Dictionary:
  var travel: Dictionary = model.hunter_route_costs(hunter.position)
  var fire := []
  for room in model.rooms:
@@ -45,6 +45,8 @@ static func assess(model, hunter) -> Dictionary:
    if building.kind=="repair":
     repairs+=room.repair_status(building).actual
   var breach := minf(MAX_BREACH_ESTIMATE,room.door_hp/maxf(attack_rate*.24,attack_rate-repairs))
+  if room.index==defended_door:
+   breach=maxf(breach,defended_breach)
   var exposure := dps*minf(breach,ATTACK_WINDOW)
   var risk := minf(MAX_EXPOSURE_COST,exposure*32.0/maxf(hunter.hp,1.0))
   var smoke := 5000.0 if room.index==model.player_room and float(model.items.timers.get("smoke",0.0))>0.0 else 0.0

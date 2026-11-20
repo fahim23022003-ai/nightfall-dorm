@@ -82,6 +82,12 @@ func observe(model: MatchModel, stats: Dictionary, previous: Vector2, wallet: Ve
    stats.events.append(details)
  return model.hunter.position.is_finite() and is_finite(room.gold) and is_finite(room.electricity) and room.gold >= -.002 and room.electricity >= -.002 and stats.max_ledger_error <= .011
 
+func occupy_player_room(model: MatchModel, room_index: int, _policy: String) -> bool:
+ if not model.claim_room(room_index):
+  return false
+ model.player_position=model.player().bed_position()
+ return model.sleep_player()
+
 func run_match(stage: String, difficulty: String, seed: int, room_index: int, policy: String, family: String, repetition: int) -> Dictionary:
  cached_candidates.clear()
  var invalid: Array[String] = []
@@ -103,14 +109,10 @@ func run_match(stage: String, difficulty: String, seed: int, room_index: int, po
   return row
  row.map_sha256 = JSON.stringify(NightmareMap.pack(model.map_data), "", true, true).sha256_text()
  row.prior_passive_win = policy == "passive" and prior_passive_wins.has(fixture_key(row.case))
- if not model.claim_room(room_index):
-  invalid.append("room claim failed")
+ if not occupy_player_room(model,room_index,policy):
+  invalid.append("room claim or sleep failed")
   return row
  var room := model.player()
- model.player_position = room.bed_position()
- if not model.sleep_player():
-  invalid.append("bed placement invalid")
-  return row
  var wallet := Vector2(room.gold, room.electricity)
  var stats := new_statistics()
  var steps := 0

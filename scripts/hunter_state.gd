@@ -41,6 +41,9 @@ var siege_notice_defender := -1
 var siege_notice := ""
 var siege_commit_announced := false
 var siege_landed_damage := 0.0
+var last_defended_door := -1
+var last_defended_hp := 0.0
+var last_defended_breach := 0.0
 # One entity, one identity, and one irreversible transformation per match.
 var boss_policy: Dictionary={"enabled":false}
 var transformed=false
@@ -572,7 +575,14 @@ func _reassess_tactical_siege(room: RoomState, model):
  if productive and defended_estimate<=0.0:
   _announce_commit(model,room,net_loss)
   return
- var scores:=HunterSiegeStrategy.assess(model,self)
+ # Carry the observed breach time into the next siege decision while the
+ # departed door remains intact. The route still incurs travel and fire.
+ var defended_door:=-1
+ if model.starting_room_review_enabled and last_defended_door>=0 and last_defended_door!=room.index:
+  var defended_room: RoomState=model.rooms[last_defended_door]
+  if defended_room.door_hp>last_defended_hp-damage:
+   defended_door=last_defended_door
+ var scores:=HunterSiegeStrategy.assess(model,self,defended_door,last_defended_breach)
  var alternative:=HunterSiegeStrategy.best_room(scores,room.index)
  var current_cost:=maxf(scores.get(room.index,INF),defended_estimate) if productive else float(scores.get(room.index,INF))
  var alternative_cost: float=scores.get(alternative,INF)
@@ -586,6 +596,12 @@ func _reassess_tactical_siege(room: RoomState, model):
  decision_count+=1
  _siege_notice(model,alternative,"switch")
  if productive:siege_notice_defender=room.index
+ if defended_estimate>0.0:
+  last_defended_door=room.index
+  last_defended_hp=room.door_hp
+  last_defended_breach=defended_estimate
+ else:
+  last_defended_door=-1
  model.record_event("hunter_reassess",room.index,{"next_room":alternative,"reason":"defense_delays_breach" if productive else "better_breach_route","stalled":not productive,"current_cost":current_cost,"alternative_cost":alternative_cost})
  if archetype=="stalker":
   ability_counts.feint+=1

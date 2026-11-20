@@ -48,6 +48,7 @@ var procedural_requested := OS.get_environment("NIGHTFALL_PROCEDURAL_MAPS") == "
 var procedural_v2_requested := OS.get_environment("NIGHTFALL_PROCEDURAL_MAPS_V2") == "1"
 var hard_tactics_enabled := true
 var fair_siege_enabled := true
+var starting_room_review_enabled := true
 var map_seed: int=1
 var haunt_recovery := HauntedRecovery.new()
 var _navigation=AStar2D.new()
@@ -264,7 +265,11 @@ func opening_room_forecast(index: int) -> Dictionary:
  for point: Vector2 in walk:
   walk_distance+=previous.distance_to(point)
   previous=point
- return {"hunter_seconds":ceili(distance/maxf(1.0,hunter.speed)),"entry_seconds":ceili(walk_distance/180.0)}
+ var hunter_seconds:=ceili(distance/maxf(1.0,hunter.speed))
+ var forecast:={"hunter_seconds":hunter_seconds,"entry_seconds":ceili(walk_distance/180.0)}
+ if starting_room_review_enabled:
+  forecast.early_siege_risk=hunter_seconds<=HunterSiegeStrategy.ATTACK_WINDOW
+ return forecast
 
 # Static corridor graph estimates for all candidate rooms in one decision.
 # Only the nearest visible start needs testing; doorway endpoints already exist.

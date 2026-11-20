@@ -139,6 +139,7 @@ func draw_overview_footer(c,p,data: Dictionary,tint: Color):
  var hall_key_width: float=p.font.get_string_size(hall_key,HORIZONTAL_ALIGNMENT_LEFT,-1,11).x
  p.text(c,hall_key,Vector2(view.x-left-hall_key_width-12,top+15),11,tint)
  var detail: String="Click a room to inspect" if not c.mobile_mode else "Tap a room to inspect"
+ var detail_tint:=Color("BBC8C7")
  if c.overview_room>=0:
   var room: RoomState=c.model.rooms[c.overview_room]
   var resident: String=room.survivor_name() if room.owner>=0 else "Vacant"
@@ -147,7 +148,10 @@ func draw_overview_footer(c,p,data: Dictionary,tint: Color):
   if not trait_name.is_empty():detail+="  ·  "+trait_name
   if c.model.player_room<0 and c.model.time<c.model.preparation and room.owner<0 and not c.overview_opening.is_empty():
    detail+="  ·  Walk ~%ds from spawn  ·  Hunter ~%ds if targeted first" % [c.overview_opening.entry_seconds,c.overview_opening.hunter_seconds]
- p.text(c,detail,Vector2(left+12,top+31),11,Color("BBC8C7"))
+   if c.overview_opening.get("early_siege_risk",false):
+    detail+="  ·  FAST HUNTER ROUTE"
+    detail_tint=Color("EDBA78")
+ p.text(c,detail,Vector2(left+12,top+31),11,detail_tint)
  if not c.mobile_mode:
   var controls: String="Wheel zoom  ·  Middle drag  ·  0 reset  ·  M focus"
   var width: float=p.font.get_string_size(controls,HORIZONTAL_ALIGNMENT_LEFT,-1,11).x

@@ -19,6 +19,17 @@ func run():
  check(model.configure_strategy(54) and model.configure_balance(),"configure normal match rules")
  var forecast:=model.opening_room_forecast(0)
  check(forecast.get("hunter_seconds",0)>0 and forecast.get("entry_seconds",0)>0,"unclaimed Hard/Hell room shows legal opening estimates")
+ var short_start:=MatchModel.new()
+ short_start.procedural_v2_requested=true
+ short_start.reset(10358)
+ short_start.configure_match("hell")
+ short_start.configure_stage("stage_2")
+ short_start.configure_strategy(10358)
+ short_start.configure_balance()
+ var short_forecast:=short_start.opening_room_forecast(1)
+ check(short_forecast.get("early_siege_risk",false),"Labyrinth Room 2 warns before claim")
+ short_start.starting_room_review_enabled=false
+ check(not short_start.opening_room_forecast(1).has("early_siege_risk"),"comparison retains V2.2 travel estimates")
  model.difficulty="standard"
  check(model.opening_room_forecast(0).is_empty(),"Standard presentation remains identical")
  model.difficulty="hell"
@@ -107,6 +118,24 @@ func run():
  model.fair_siege_enabled=true
  hunter._reassess_tactical_siege(room,model)
  check(hunter.target==other.index and hunter.siege_notice_defender==room.index,"measured repairs can earn visible relief when another route is worth it")
+ check(hunter.last_defended_door==room.index and hunter.last_defended_breach==55.0,"real defense-aware departure records the observed breach estimate")
+ hunter.position=other.door_approach()
+ hunter.state=HunterState.State.ATTACK
+ other.door_hp=125.0
+ hunter.siege_start_hp=140.0
+ hunter.siege_landed_damage=75.0
+ hunter.reassess_seconds=12.0
+ var ordinary_cost: float=HunterSiegeStrategy.assess(model,hunter)[room.index]
+ var defended_cost: float=HunterSiegeStrategy.assess(model,hunter,room.index,hunter.last_defended_breach)[room.index]
+ check(HunterSiegeStrategy.worth_switching(55.0,ordinary_cost) and defended_cost>55.0,"observed siege plus travel rejects the optimistic return")
+ hunter._reassess_tactical_siege(other,model)
+ check(hunter.target==other.index,"real next siege avoids immediate return to intact defense")
+ room.door_hp=1.0
+ hunter.siege_start_hp=140.0
+ hunter.siege_landed_damage=75.0
+ hunter.reassess_seconds=12.0
+ hunter._reassess_tactical_siege(other,model)
+ check(hunter.target==room.index,"materially weakened previous door is eligible again")
  check(HunterSiegeStrategy.defended_breach_estimate(100.0,18.0,30.0,10.0,12.0)==0.0,"small repairs cannot force new reassessment")
  check(HunterSiegeStrategy.defended_breach_estimate(100.0,18.0,45.0,10.0,12.0)==55.0,"observed delay remains bounded")
  var fixed:=MatchModel.new()
