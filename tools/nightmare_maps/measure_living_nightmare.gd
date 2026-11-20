@@ -23,7 +23,10 @@ func run():
  game.set_process(false)
  var model:=MatchModel.new()
  model.reset(MATCH_SEED)
- check(model.configure_match("hell") and model.configure_stage(CAMPAIGN_STAGE) and model.configure_balance(),"configure same Hell match")
+ # Campaign L6 previously bypassed the Stalker pilot for the entire run.
+ var stage: String="stage_1" if encounter=="stalker" else CAMPAIGN_STAGE
+ var difficulty: String="standard" if encounter=="stalker" else "hell"
+ check(model.configure_match(difficulty) and model.configure_stage(stage) and model.configure_balance(),"configure the matched Campaign fixture")
  check(model.configure_strategy(MATCH_SEED,"stalker"),"configure authored Stalker")
  game._adopt_session(model)
  var room:=make_room_fixture(model)
@@ -69,13 +72,19 @@ func run():
  check(root.get_texture().get_image().get_size()==Vector2i(1280,720),"native viewport at 1280×720")
  var initial:=_state_digest(model)
  var combat:=await measure_active_siege(model)
+ var rig=game.presentation.boss_presentation.articulated if encounter=="reaper" else game.presentation.nightmare_visual.articulated
+ var atlas: String=rig.last_asset
+ if preview:
+  check(not atlas.is_empty(),"verified articulated atlas on the final active frame")
+ if encounter=="stalker":
+  check(model.evolution.evolution_level==1,"L1 fixture remains on the articulated pilot")
  await capture("active-combat-720")
  var f:=FileAccess.open(destination.path_join("benchmark.json"),FileAccess.WRITE)
  check(f!=null,"write benchmark")
  if f!=null:
   f.store_string(JSON.stringify({
    "preview":preview,"encounter":encounter,"quality":quality,"renderer":RenderingServer.get_video_adapter_name(),
-   "seed":MATCH_SEED,"room":room.index,"buildings":room.buildings.size(),"initial_sha256":initial,
+   "seed":MATCH_SEED,"stage":stage,"evolution":model.evolution.evolution_level,"atlas":atlas,"room":room.index,"buildings":room.buildings.size(),"initial_sha256":initial,
    "combat":combat,"scene_setup_ms":scene_load_ms,"memory_static_bytes":Performance.get_monitor(Performance.MEMORY_STATIC),
    "video_memory_bytes":Performance.get_monitor(Performance.RENDER_VIDEO_MEM_USED),"checks":checks,"failures":failures,
   },"  ")+"\n")

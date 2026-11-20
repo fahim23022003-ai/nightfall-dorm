@@ -1,6 +1,8 @@
 extends RefCounted
 ## Illustration, animation and environment only. No economy/AI mutations.
 const OFFSET = Vector2(145,40)
+const WORLD_VIEW_MARGIN := 140.0
+const RIG_VIEW_MARGIN := 120.0
 const ROOM_NAMES = ["WILLOW","WREN","ASTER","MOSS","CEDAR","FERN"]
 var hunter_combat=preload("res://scripts/hunter_combat_visual.gd").new()
 var nightmare_visual=preload("res://scripts/nightmare_presentation.gd").new()
@@ -211,7 +213,7 @@ func frame(fill: Color, edge: Color, radius: int = 5) -> StyleBoxFlat:
  style.set_corner_radius_all(radius)
  return style
 
-func visible_world_rect(c,margin=140.0) -> Rect2:
+func visible_world_rect(c,margin=WORLD_VIEW_MARGIN) -> Rect2:
  var inverse=c.get_canvas_transform().affine_inverse()
  var viewport=c.get_viewport_rect()
  var a=inverse*viewport.position
@@ -312,8 +314,10 @@ func render(c):
 
  if (m.player()==null or not m.player().sleeping) and (m.player()==null or m.player().alive):
   resident(c,m.player_position,-1,true)
+ var hunter_margin:=RIG_VIEW_MARGIN-WORLD_VIEW_MARGIN if hunter_combat.enabled else 80.0
+ var hunter_in_view:=visible.grow(hunter_margin).has_point(OFFSET+m.hunter.position)
  if m.hunter.state != HunterState.State.DORMANT:
-  if visible.grow(80).has_point(OFFSET+m.hunter.position):
+  if hunter_in_view:
    hunter(c,m.hunter)
    if m.map_data.has("halls"):map_presentation.halls_visual.draw_hunter_recovery(c,self,m.hunter.position)
   if attack_pose>0:
@@ -321,7 +325,7 @@ func render(c):
    var sweep=(1-attack_pose/.35)*PI
    c.draw_arc(q,32,sweep-PI*.7,sweep,24,Color(1,.55,.6,attack_pose/.35),3)
    if not c.profile.settings.get("reduced_effects",false):c.draw_line(q+Vector2(-20,-17),q+Vector2(18,15),Color(1,.7,.7,attack_pose/.35),2)
- render_hunter_combat(c,m,visible)
+ render_hunter_combat(c,m,visible,hunter_in_view)
  render_resident_labels(c)
  wrath_presentation.draw(c,clock)
  for shot in m.projectiles:
@@ -486,12 +490,12 @@ func room_scene(c, room: RoomState, owned: bool):
   if owned and c.selected_tile == tile and c.ui.context_open:
    c.draw_arc(p,28,0,TAU,40,Color("f6d78f"),2)
 
-func render_hunter_combat(c, model, visible: Rect2):
+func render_hunter_combat(c, model, visible: Rect2,hunter_in_view: bool):
  if not hunter_combat.has_contacts():
   return
  var rig_point := Vector2.INF
  var controller = boss_presentation if model.hunter.transformed or boss_presentation.approach_visible(model) else nightmare_visual
- if controller.has_method("articulated_contact") and visible.grow(80).has_point(OFFSET+model.hunter.position):
+ if controller.has_method("articulated_contact") and hunter_in_view:
   rig_point=controller.articulated_contact()
  hunter_combat.draw(c,model,visible,CinematicQuality.detail(c),CinematicQuality.reduced_motion(c),CinematicQuality.reduced_flash(c),rig_point)
 

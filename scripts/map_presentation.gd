@@ -10,6 +10,8 @@ const FAMILY_NAMES={
 var halls_visual=preload("res://scripts/haunted_hall_presentation.gd").new()
 var floors={}
 var grid_layouts: Dictionary={}
+var wall_layouts: Dictionary={}
+var batched_walls:=OS.get_environment("NIGHTFALL_LIVING_NIGHTMARE")=="1"
 func _init():
  for theme in ["dorm","hospital","hotel","lab","mansion"]:floors[theme]=load("res://assets/visual_identity/"+theme+"_floor.svg")
 const PALETTES={
@@ -36,6 +38,7 @@ func render_architecture(c,p):
   # Metal service rails, rivets and warm wall lights anchor corridor depth.
   for i in range(0,int(rect.size.x),64):
    var q=rect.position+Vector2(i+8,8)
+   if batched_walls and not visible.grow(24).has_point(q):continue
    c.draw_circle(q,2,colors[3].darkened(.1))
    c.draw_line(q+Vector2(0,12),q+Vector2(7,22),Color(.08,.09,.12,.5),2)
   var light=rect.position+Vector2(15,15)
@@ -227,6 +230,9 @@ func render_generated_room_floor(c,p,room,theme,colors):
   c.draw_texture_rect(floors[theme],surface,true,Color.WHITE if room.alive else Color("85818C"))
  var player_owned: bool=room.index==c.model.player_room
  var trim: Color=Color("739B87") if player_owned else colors[3]
+ if batched_walls:
+  render_batched_room_walls(c,room,colors[2],trim)
+  return
  for segment in room.layout.walls:
   var start: Vector2=OFFSET+segment[0]
   var finish: Vector2=OFFSET+segment[1]
@@ -236,6 +242,32 @@ func render_generated_room_floor(c,p,room,theme,colors):
   if start.distance_squared_to(finish)>44*44:
    var center:=start.lerp(finish,.5)
    c.draw_circle(center,2.4,Color(trim,.74))
+
+func render_batched_room_walls(c, room: RoomState, edge: Color, trim: Color):
+ # The wall segments are identical across frames. Draw the same layered
+ # strokes as packed line batches, while the room and door remain dynamic.
+ var cached: Dictionary=wall_layouts.get(room.index,{})
+ var walls: Array=room.layout.walls
+ if cached.is_empty() or cached.source!=walls:
+  var points:=PackedVector2Array()
+  var border:=PackedVector2Array()
+  var studs:=PackedVector2Array()
+  for segment in walls:
+   var first: Vector2=segment[0]+OFFSET
+   var last: Vector2=segment[1]+OFFSET
+   points.append(first)
+   points.append(last)
+   border.append(first+Vector2(0,-3))
+   border.append(last+Vector2(0,-3))
+   if first.distance_squared_to(last)>44.0*44.0:studs.append(first.lerp(last,.5))
+  cached={"source":walls.duplicate(true),"points":points,"border":border,"studs":studs}
+  wall_layouts[room.index]=cached
+ if cached.points.is_empty():return
+ c.draw_multiline(cached.points,Color("11171E"),15)
+ c.draw_multiline(cached.points,edge,9)
+ c.draw_multiline(cached.border,Color(trim,.80),2)
+ for center: Vector2 in cached.studs:
+  c.draw_circle(center,2.4,Color(trim,.74))
 
 func render_decor(c,p,r,bed,cabinet,theme,colors):
  var wall=r.position+Vector2(r.size.x-66,20)
