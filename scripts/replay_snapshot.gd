@@ -38,6 +38,7 @@ static func encode(model,use_counts: Dictionary={}) -> Dictionary:
  var grid: bool=player_spatial!=null and player_spatial.grid
  var data={"version":GRID_SCHEMA if grid else SCHEMA,"ruleset":GRID_RULESET if grid else RULESET,"run_id":run.run_id,"map":model.map_id,"difficulty":model.difficulty,"seed":run.seed_value,"rng":str(model.random.state),"completed":run.completed,"time":model.time,"preparation":model.preparation,"player_room":model.player_room,"player_position":pair(model.player_position),"bot_claimed":model.bot_claimed,"eliminations":model.eliminations,"shots":model.shots,"damage":model.damage_dealt,"boosts":model.match_boosts.duplicate(true),"expansion":model.expansion.snapshot(model),"evolution":model.evolution.snapshot(),"defense_refractory":model.defenses.shield_cooldowns.duplicate(true),"repair_refractory":model.defenses.repair_cooldowns.duplicate(true),"lure_refractory":model.defenses.lure_cooldown,"rooms":[],"items":{},"use_counts":use_counts.duplicate(true)}
  data.balance_version=model.balance_version
+ if model.room_rush_active():data.room_rush=model.room_rush.snapshot()
  if model.is_procedural():
   data.version=NIGHTMARE_SCHEMA
   data.ruleset=NIGHTMARE_RULESET
@@ -186,6 +187,7 @@ static func valid(data) -> bool:
    if room.magic_state.stored>capacity+.0001 or room.magic_state.shield>shield_capacity+.0001:return false
  if data.rooms[int(data.player_room)].owner!=0 or not data.rooms[int(data.player_room)].alive or not data.rooms[int(data.player_room)].sleeping:return false
  if owners.size()-1!=data.bot_claimed or not whole(data.eliminations,0,6) or not whole(data.shots):return false
+ if data.has("room_rush") and not valid_room_rush(data.room_rush,int(data.run_id),owners):return false
  if int(data.ruleset)>=3 and not data.has("evolution"):return false
  if data.has("evolution") and not HunterEvolution.valid(data.evolution,data.rooms):return false
  if not data.get("defense_refractory",{}) is Dictionary or data.get("defense_refractory",{}).size()>6:return false
@@ -203,6 +205,20 @@ static func valid(data) -> bool:
   if key not in ItemCatalog.IDS or not number(fx.timers[key],0,60):return false
  if not fx.trap.is_empty() and (not point(fx.trap.get("position")) or not number(fx.trap.get("remaining"),0,45)):return false
  return true
+static func valid_room_rush(race, run_id: int, owners: Array) -> bool:
+ if not race is Dictionary or race.size()!=3 or not whole(race.get("attempt_id"),1) or int(race.attempt_id)!=run_id or not point(race.get("spawn")):
+  return false
+ if not race.get("runners") is Array or race.runners.size()!=6-owners.size():
+  return false
+ var recorded:=owners.duplicate()
+ for runner in race.runners:
+  if not runner is Dictionary or runner.size()!=3 or not whole(runner.get("owner"),1,5) or not point(runner.get("position")) or not whole(runner.get("target"),-1,5):
+   return false
+  var owner:=int(runner.owner)
+  if owner in recorded:return false
+  recorded.append(owner)
+ return true
+
 static func restore(data) -> MatchModel:
  if not valid(data):return null
  var model=MatchModel.new();var run=EndlessRun.new()
@@ -241,6 +257,7 @@ static func restore(data) -> MatchModel:
    if saved.has("construction"):building.position=vec(b.position)
    if data.version>=GRID_SCHEMA and i==int(data.player_room):building.rotation=int(b.rotation)
    room.buildings[int(b.tile)]=building
+ if data.has("room_rush"):model.room_rush.restore(data.room_rush)
  if data.has("wave_metrics"):model.wave_metrics.data=data.wave_metrics.duplicate(true)
  else:model.wave_metrics.data.available=false
  var player=model.player()

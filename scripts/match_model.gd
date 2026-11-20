@@ -6,6 +6,8 @@ const WARD_COST=6.0
 const WARD_DURATION=4.0
 const WARD_COOLDOWN=24.0
 const WARD_CAPACITY=60.0
+const SURVIVOR_SPEED:=180.0
+const ROOM_RUSH=preload("res://scripts/room_rush.gd")
 var ward_until=0.0
 var ward_ready_at=0.0
 var ward_capacity=0.0
@@ -34,6 +36,7 @@ var eliminations = 0
 var shots = 0
 var damage_dealt = 0.0
 var bot_claimed = 0
+var room_rush=ROOM_RUSH.new()
 var random = RandomNumberGenerator.new()
 # Presentation reads these model-owned records; damage occurs only on impact.
 var projectiles: Array = []
@@ -155,6 +158,7 @@ func reset(seed_value: int = 1):
  shots = 0
  damage_dealt = 0
  bot_claimed = 0
+ room_rush=ROOM_RUSH.new()
  projectiles.clear()
  combat_events.clear()
  presentation_events.clear()
@@ -209,12 +213,12 @@ func navigation_walkable(point: Vector2) -> bool:
   if corridor.grow(-8).has_point(point): return true
  return false
 
-func _visible(a: Vector2,b: Vector2,player: bool=false) -> bool:
- if is_procedural(): return NightmareNavigation.visible(self,a,b,player)
+func _visible(a: Vector2,b: Vector2,player: bool=false,access_room: int=-1) -> bool:
+ if is_procedural(): return NightmareNavigation.visible(self,a,b,player,false,access_room)
  var count=maxi(1,ceili(a.distance_to(b)/2.0))
  for i in range(count+1):
   var point=a.lerp(b,float(i)/count)
-  if not (can_walk(point) if player else navigation_walkable(point)): return false
+  if not (can_walk(point,access_room) if player else navigation_walkable(point)): return false
  return true
 
 func _build_navigation():
@@ -225,9 +229,10 @@ func _build_navigation():
   _nightmare_navigation.rebuild(self)
   return
  _nightmare_navigation=null
- var points: Array=map_data.nodes.duplicate()
+ var points: Array=map_data.get("nodes",[]).duplicate()
  for room in rooms:
   points.append(room.door_approach())
+  if map_id=="legacy":points.append(Vector2(room.door_position().x,410.0))
   points.append(room.door_position())
   points.append(room.door_position()-room.door_normal()*35)
   points.append(room.bed_position())
@@ -259,10 +264,10 @@ func opening_room_forecast(index: int) -> Dictionary:
   return {}
  var distance: float=hunter_route_costs(map_data.hunter_spawn).get(index,INF)
  var inside: Vector2=room.door_position()-room.door_normal()*35.0
- var walk: Array=player_navigation_path(map_data.spawn,inside)
+ var walk: Array=player_navigation_path(player_position if room_rush_active() else map_data.spawn,inside)
  if not is_finite(distance) or walk.is_empty() or not Vector2(walk.back()).is_equal_approx(inside):
   return {}
- var previous: Vector2=map_data.spawn
+ var previous: Vector2=player_position if room_rush_active() else map_data.spawn
  var walk_distance:=0.0
  for point: Vector2 in walk:
   walk_distance+=previous.distance_to(point)
@@ -297,11 +302,11 @@ func hunter_route_costs(from: Vector2) -> Dictionary:
   result[room.index]=length
  return result
 
-func navigation_path(from: Vector2,to: Vector2,player: bool=false,route_variant: int=0) -> Array:
- if is_procedural(): return _nightmare_navigation.path(self,from,to,player,route_variant)
+func navigation_path(from: Vector2,to: Vector2,player: bool=false,route_variant: int=0,access_room: int=-1) -> Array:
+ if is_procedural(): return _nightmare_navigation.path(self,from,to,player,route_variant,access_room)
  if from.distance_to(to)<0.1: return []
- if _visible(from,to,player): return [to]
- if map_id=="legacy": return [to]
+ if _visible(from,to,player,access_room): return [to]
+ if map_id=="legacy" and not (player and room_rush_active()): return [to]
  var graph=_player_navigation if player else _navigation
  var start=9000
  var end=9001
@@ -310,8 +315,8 @@ func navigation_path(from: Vector2,to: Vector2,player: bool=false,route_variant:
  for id in graph.get_point_ids():
   if id>=start: continue
   var point=graph.get_point_position(id)
-  if _visible(from,point,player): graph.connect_points(start,id)
-  if _visible(to,point,player): graph.connect_points(end,id)
+  if _visible(from,point,player,access_room): graph.connect_points(start,id)
+  if _visible(to,point,player,access_room): graph.connect_points(end,id)
  var points=graph.get_point_path(start,end)
  graph.remove_point(start)
  graph.remove_point(end)
@@ -373,11 +378,51 @@ func record_event(type: String, room_index: int, data: Dictionary={}):
  strategy.event(type,room_index,self)
  defeat_facts.event(type,room_index,self,data)
 
-func claim_room(index: int) -> bool:
- if not running or result != "" or index < 0 or index >= rooms.size() or player_room >= 0 or rooms[index].owner >= 0:
+func begin_room_rush(attempt_id: int) -> bool:
+ if tutorial_mode or run_kind not in ["campaign","endless"] or not ROOM_RUSH.preview_requested():
   return false
- rooms[index].owner = 0
- rooms[index].apply_boosts(match_boosts)
+ return room_rush.start(self,attempt_id)
+
+func room_rush_active() -> bool:
+ return room_rush.attempt_id>0
+
+func room_rush_spawn() -> Vector2:
+ return room_rush.spawn
+
+func room_rush_runners() -> Array:
+ return room_rush.runners
+
+func room_rush_status(index: int) -> String:
+ if index<0 or index>=rooms.size():return "vacant"
+ var room: RoomState=rooms[index]
+ if room.owner==0:return "player"
+ if room.owner>0:return "npc"
+ for runner in room_rush.runners:
+  if runner.target==index:return "approaching"
+ return "vacant"
+
+func claim_room(index: int) -> bool:
+ return try_claim_survivor(index,0,player_position)
+
+func try_claim_survivor(index: int, owner: int, position: Vector2) -> bool:
+ if not running or result!="" or index<0 or index>=rooms.size() or owner<0 or owner>ROOM_RUSH.BOT_COUNT:
+  return false
+ var room: RoomState=rooms[index]
+ if room.owner>=0 or not room.alive or room.closed:
+  return false
+ if owner==0 and (player_room>=0 or position!=player_position):
+  return false
+ if owner>0 and (not room_rush_active() or position!=room_rush.position_for(owner)):
+  return false
+ if room_rush_active() and not room_rush.can_claim(self,index,position):
+  return false
+ room.owner=owner
+ if owner>0:
+  room.profile=Catalog.BOT_PROFILES[owner-1]
+  room.resident_position=position
+  bot_claimed+=1
+  return true
+ room.apply_boosts(match_boosts)
  if not stage_bonus.is_empty():
   rooms[index].gold+=stage_bonus.get("gold",0.0)
   rooms[index].ledger.note("other",[stage_bonus.get("gold",0.0),0],"previous stage reward")
@@ -396,9 +441,9 @@ func claim_room(index: int) -> bool:
  feedback.emit("Room claimed. Approach the bed and press E to sleep.")
  return true
 
-func enable_player_grid() -> bool:
+func enable_player_grid(educational: bool=false) -> bool:
  var room := player()
- if room == null or room.owner != 0 or tutorial_mode or run_kind not in ["campaign","endless"]:
+ if room == null or room.owner != 0 or (tutorial_mode and not (educational and ROOM_RUSH.preview_requested())) or run_kind not in ["campaign","endless"]:
   return false
  if room.spatial != null and room.spatial.grid:
   bind_player_grid()
@@ -547,24 +592,25 @@ func purchase_error() -> String:
 func move_player(direction: Vector2, delta: float):
  if not running or result != "" or (player() != null and player().sleeping):
   return
- if not is_finite(delta):
+ if not is_finite(delta) or not direction.is_finite() or direction.is_zero_approx():
   return
  var remaining = clampf(delta,0,0.25)
  while remaining > 0:
   var step = minf(remaining,0.02)
-  var destination = player_position + direction.limit_length()*180.0*step
-  if can_walk(Vector2(destination.x,player_position.y)):
+  var destination = player_position + direction.limit_length()*SURVIVOR_SPEED*step
+  var access_room: int=room_rush.egress_room(self,player_position) if room_rush_active() else -1
+  if can_walk(Vector2(destination.x,player_position.y),access_room):
    player_position.x = destination.x
-  if can_walk(Vector2(player_position.x,destination.y)):
+  if can_walk(Vector2(player_position.x,destination.y),access_room):
    player_position.y = destination.y
   remaining -= step
 
-func can_walk(point: Vector2) -> bool:
- if is_procedural(): return NightmareNavigation.walkable(self,point,true)
+func can_walk(point: Vector2,access_room: int=-1) -> bool:
+ if is_procedural(): return NightmareNavigation.walkable(self,point,true,access_room)
  if map_id!="legacy":
   for room in rooms:
    if room.bounds().has_point(point):
-    if room.closed or (room.owner>=0 and room.owner!=0): return false
+    if room.index!=access_room and (room.closed or (room.owner>=0 and room.owner!=0)): return false
     if room.furniture_blocks(point): return false
     if room.bounds().grow(-12).has_point(point): return true
     if absf(room.door_normal().y)>0:
@@ -576,9 +622,10 @@ func can_walk(point: Vector2) -> bool:
  if Rect2(35,335,900,150).has_point(point):
   return true
  for room in rooms:
-  if room.bounds().grow(-12).has_point(point) and (room.owner < 0 or room.owner == 0) and not room.closed:
+  var accessible: bool=room.index==access_room or ((room.owner < 0 or room.owner == 0) and not room.closed)
+  if room.bounds().grow(-12).has_point(point) and accessible:
    return not room.furniture_blocks(point)
-  if absf(point.x-room.center().x)<26 and point.y>300 and point.y<520 and not room.closed and (room.owner < 0 or room.owner == 0):
+  if absf(point.x-room.center().x)<26 and point.y>300 and point.y<520 and accessible:
    return true
  return false
 
@@ -586,8 +633,8 @@ func interact():
  if player_room < 0:
   for room in rooms:
    if room.floor_has_point(player_position):
-    claim_room(room.index)
-    return
+    if claim_room(room.index) or not room_rush_active():return
+    break
   feedback.emit("Enter an unclaimed room, then press E.")
  else:
   sleep_player()
@@ -615,7 +662,9 @@ func _tick_sim(delta: float):
  items.tick(delta,self)
  hunter.nightmare.advance(delta,hunter,self)
  strategy.observe(self)
- if bot_claimed < 5 and time > 6+bot_claimed*1.7:
+ if room_rush_active():
+  room_rush.tick(self,delta)
+ elif bot_claimed < 5 and time > 6+bot_claimed*1.7:
   var options: Array = []
   for room in rooms:
    if room.owner < 0 and not room.floor_has_point(player_position):
@@ -631,7 +680,7 @@ func _tick_sim(delta: float):
    room.resident_position = room.door_position()+Vector2(0,22 if room.index<3 else -22) if map_id=="legacy" else map_data.spawn
    bot_claimed += 1
  for room in rooms:
-  if room.owner > 0 and room.alive and not room.sleeping:
+  if room.owner > 0 and room.alive and not room.sleeping and not room_rush_active():
    room.resident_position = room.resident_position.move_toward(room.bed_position(),120*delta) if map_id=="legacy" else step_navigation(room.resident_position,room.bed_position(),120*delta,"bot_"+str(room.index))
    if room.resident_position.distance_to(room.bed_position())<2:
     room.sleeping = true

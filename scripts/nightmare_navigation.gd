@@ -34,8 +34,8 @@ static func _room_at(model, point: Vector2) -> int:
    return room.index
  return -1
 
-static func _player_allowed(room) -> bool:
- return not room.closed and (room.owner < 0 or room.owner == 0)
+static func _player_allowed(room, access_room: int = -1) -> bool:
+ return room.index == access_room or (not room.closed and (room.owner < 0 or room.owner == 0))
 
 static func permits_hunter_entry(model, from: Vector2, to: Vector2) -> bool:
  var target := _room_at(model, to)
@@ -44,7 +44,7 @@ static func permits_hunter_entry(model, from: Vector2, to: Vector2) -> bool:
  var room = model.rooms[target]
  return not room.closed or room.door_hp <= 0 or _room_at(model, from) == target
 
-static func _walkable(model, point: Vector2, player: bool, static_pass: bool) -> bool:
+static func _walkable(model, point: Vector2, player: bool, static_pass: bool, access_room: int = -1) -> bool:
  var clearance := PLAYER_CLEARANCE if player else HUNTER_CLEARANCE
  for room in model.rooms:
   var layout: Dictionary = room.layout
@@ -55,9 +55,9 @@ static func _walkable(model, point: Vector2, player: bool, static_pass: bool) ->
   var normal: Vector2 = layout.door_normal
   var depth := relative.dot(normal)
   if absf(depth) <= clearance and absf(relative.dot(normal.orthogonal())) < NightmareMap.DOOR_HALF_WIDTH - clearance:
-   return depth > 0.0 or not player or static_pass or _player_allowed(room)
+   return depth > 0.0 or not player or static_pass or _player_allowed(room, access_room)
   if NightmareMap.contains_point(layout, point, clearance):
-   if player and not static_pass and not _player_allowed(room):
+   if player and not static_pass and not _player_allowed(room, access_room):
     return false
    return not room.furniture_blocks(point, player)
   for floor: Rect2 in layout.floor:
@@ -68,8 +68,8 @@ static func _walkable(model, point: Vector2, player: bool, static_pass: bool) ->
    return true
  return false
 
-static func walkable(model, point: Vector2, player: bool = false) -> bool:
- return point.is_finite() and _walkable(model, point, player, false)
+static func walkable(model, point: Vector2, player: bool = false, access_room: int = -1) -> bool:
+ return point.is_finite() and _walkable(model, point, player, false, access_room)
 
 # A point changes walkability only at one of these rectangle boundaries.
 # Testing each interval avoids a sampled ray cutting a narrow corridor corner.
@@ -96,10 +96,10 @@ static func _collect_segment_cuts(cuts: Array[float], rect: Rect2, from: Vector2
  if far > 0.0 and far < 1.0:
   cuts.append(far)
 
-static func visible(model, from: Vector2, to: Vector2, player: bool = false, static_pass: bool = false) -> bool:
+static func visible(model, from: Vector2, to: Vector2, player: bool = false, static_pass: bool = false, access_room: int = -1) -> bool:
  if not from.is_finite() or not to.is_finite():
   return false
- if not _walkable(model, from, player, static_pass) or not _walkable(model, to, player, static_pass):
+ if not _walkable(model, from, player, static_pass, access_room) or not _walkable(model, to, player, static_pass, access_room):
   return false
  var clearance := PLAYER_CLEARANCE if player else HUNTER_CLEARANCE
  var direction := to - from
@@ -119,7 +119,7 @@ static func visible(model, from: Vector2, to: Vector2, player: bool = false, sta
   var normal: Vector2 = layout.door_normal
   var extent := normal.abs() * clearance + normal.orthogonal().abs() * (NightmareMap.DOOR_HALF_WIDTH - clearance)
   _collect_segment_cuts(cuts, Rect2(layout.door - extent, extent * 2.0), from, direction)
-  if player and not static_pass and not _player_allowed(room):
+  if player and not static_pass and not _player_allowed(room, access_room):
    var a: Vector2 = layout.door + normal * clearance - normal.orthogonal().abs() * (NightmareMap.DOOR_HALF_WIDTH - clearance)
    var b: Vector2 = layout.door + normal.orthogonal().abs() * (NightmareMap.DOOR_HALF_WIDTH - clearance)
    _collect_segment_cuts(cuts, Rect2(a.min(b), (a - b).abs()), from, direction)
@@ -137,7 +137,7 @@ static func visible(model, from: Vector2, to: Vector2, player: bool = false, sta
   var last := cuts[i]
   if first == last:
    continue
-  if not _walkable(model, from + direction * ((first + last) * 0.5), player, static_pass):
+  if not _walkable(model, from + direction * ((first + last) * 0.5), player, static_pass, access_room):
    return false
  return true
 
@@ -255,14 +255,14 @@ func costs(model, from: Vector2) -> Dictionary:
    result[i] = INF
  return result
 
-func path(model, from: Vector2, to: Vector2, player: bool = false, route_variant: int = 0) -> Array:
- if from.distance_squared_to(to) < 0.01 or not walkable(model, from, player) or not walkable(model, to, player):
+func path(model, from: Vector2, to: Vector2, player: bool = false, route_variant: int = 0, access_room: int = -1) -> Array:
+ if from.distance_squared_to(to) < 0.01 or not walkable(model, from, player, access_room) or not walkable(model, to, player, access_room):
   return []
  var start_room := _room_at(model, from)
  var finish_room := _room_at(model, to)
  if not player and not permits_hunter_entry(model, from, to):
   return []
- if visible(model, from, to, player):
+ if visible(model, from, to, player, false, access_room):
   return [to]
  var graph := player_graph if player else hunter_graph
  var start := _next_id
