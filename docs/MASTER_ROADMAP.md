@@ -8,6 +8,33 @@ Each verified pilot gates further character coverage. Preserve the V2.3,
 V1 and fixed launch modes and the original profile backup.
 [Implementation and QA](LIVING_NIGHTMARE.md)
 
+## Mandatory remaining milestone — Hunter articulation and performance
+
+The verified Living Nightmare baseline is `62ecf7a` on `work`. The new
+articulated renderer covers Stalker L1, Ravager L1 and both Grim Reaper
+forms. The Reaper's rear scythe motion and other movement coverage still
+need work. Keep the established art and renderer available for the other
+58 ordinary Hunter evolution states until their articulated replacements
+have been verified in gameplay.
+
+Use the pilots as the starting point. Verify the L4, L7 and L10 Stalker
+and Ravager anchors, then author Crusher, Witch, Electric Ghost and Storm
+Wraith anchors before filling the intervening levels. Check locomotion,
+turning, attack contact at the actual damage frame, reactions and special
+motions at gameplay zoom. Benchmark dense combat at 1280×720 on Standard
+and Low, with native Windows and Intel UHD results recorded when available.
+[Pilot evidence and remaining acceptance checks](LIVING_NIGHTMARE.md#performance-and-remaining-delivery)
+
+## Upcoming survivor and UI work
+
+The next directive covers shared survivor spawning, first-arrival room
+claiming, half-speed NPC movement, fair defeat rewards, interactive
+tutorials and a premium UI redesign. Develop and verify those changes in
+separate checkpoints from the animation work so changes to room starts or
+rendering costs can be traced. Retain the 50-level Story, adaptive score,
+heartbeat, combat VFX and verified rigs. Preserve maps, saved progress,
+fallback modes and unrelated gameplay.
+
 ## Phase 14F — Hunter animation and directional art
 
 Continue the opt-in visual preview. Verify character motion and direction,

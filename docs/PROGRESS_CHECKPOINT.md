@@ -7,6 +7,13 @@ pilot assets. See [the implementation report](LIVING_NIGHTMARE.md) for
 exact art coverage, verification and the next animation work.
 The existing V2.3, V1 and fixed preview paths remain available.
 
+**Continuation baseline `62ecf7a`.** The articulated pilots cover Stalker
+L1, Ravager L1 and both Grim Reaper forms. The remaining **58 ordinary
+evolution states** and unfinished Reaper movements are a mandatory
+milestone. The survivor and UI work will have separate checkpoints so
+its results can be reviewed alongside animation and performance evidence.
+[Roadmap](MASTER_ROADMAP.md)
+
 ---
 
 # Procedural Nightmare Maps V2.3
