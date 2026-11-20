@@ -61,10 +61,17 @@ func skills():
  a=prepare("crusher",10);h=a.m.hunter;h.nightmare.tick(.01,h,a.m);a.m.items.timers.frost=2
  check(not h.nightmare.tick(.1,h,a.m) and h.nightmare.action=="","existing Frost counter interrupts wind-up")
 func visual_inventory():
- var rig=load("res://scripts/nightmare_presentation.gd").new()
- check(rig.art.size()==168,"all six four-tier rigs have seven independent original layers")
+ var total_layers:=0
  for kind in StrategyCatalog.ARCHETYPE_IDS:
-  check(rig.art.has(kind+"_0_body") and rig.art.has(kind+"_3_head"),"complete base/final assets "+kind)
+  var loaded_layers:=0
+  for tier in range(4):
+   for part in ["cloth","leg","arm","body","head","back","weapon"]:
+    var path: String="res://assets/nightmare/%s_%d_%s.svg" % [kind,tier,part]
+    if ResourceLoader.exists(path,"Texture2D") and ResourceLoader.load(path,"Texture2D") is Texture2D:
+     loaded_layers+=1
+  total_layers+=loaded_layers
+  check(loaded_layers==28,"all four fallback tiers have their seven loadable layers for "+kind)
+ check(total_layers==168,"all six four-tier rigs retain the 168 fallback layers")
  check(Catalog.BUILDINGS.size()==15 and Catalog.BUILDING_MAX_LEVEL==10,"all fifteen registered kinds retain cap and economy")
  check(AudioDirector.EFFECT_NAMES.has("nightmare_rebirth"),"finite transformation cue is routed")
  var stream=load("res://assets/audio/nightmare_rebirth.wav");check(stream!=null and stream.get_length()>4 and stream.get_length()<6,"sustained recorded-layer cue duration")

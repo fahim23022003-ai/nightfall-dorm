@@ -1,6 +1,6 @@
 # Phase 16 complete Story match matrix
 
-The checkpoint is `07b459be3ed0e9b0721464e73c2927f77e8cd9cd`. Each arm runs 35 matches. The 30 primary fixtures cross all ten topology families with Normal, Hard and Hell. Each difficulty covers all six ordinary Hunter archetypes. The full matrix has nine early levels (1–16), 15 mid levels (17–34), and 11 late levels (35–50). Five exact seed-and-policy twins run the assisted defense with an empty item loadout.
+The checkpoint is `07b459be3ed0e9b0721464e73c2927f77e8cd9cd`. The candidate game source is `5fe436d032d414992d440313fb61c228cd95297e`. Each arm runs 35 matches. The 30 primary fixtures cross all ten topology families with Normal, Hard and Hell. Each difficulty covers all six ordinary Hunter archetypes. The full matrix has nine early levels (1–16), 15 mid levels (17–34), and 11 late levels (35–50). Five exact seed-and-policy twins run the assisted defense with an empty item loadout.
 
 A disposable profile stages the Story position and the corresponding prerequisite records. Every measured match uses the real Story entry, deterministic match attempt 100, ordinary settings, production map generation, shared exterior spawn, legal walking, a contested claim, and real sleep. The launch config mirrors real Story initialization, including the candidate encounter hook. Bots use production AI. After the start there are no injected wallets, upgrades, moves, HP, damage or terminal outcomes.
 
@@ -24,6 +24,16 @@ The mean number of rooms struck rose from 3.63 to 4.40 per match. Successful Hal
 The single win-to-loss change was the Hard Level 29 Electric Ghost in Twin Wings. Both runs claimed Room 4 and spent the same earned Gold item at 20.70 seconds. The checkpoint never directly targeted Room 4 and allied fire killed the Reaper. Phase 16 broke Rooms 3 and 6 before attacking Room 4 at 223.65 seconds. It broke the player's door at 239.85 seconds and defeated the player at 242.10 seconds. The player dealt 2,576 Hunter damage and paid for four manual repairs. The longer preparation and different NPC assignments make this a comparison of the complete encounter, with no isolated causal claim for an individual change.
 
 [Per-map, per-Hunter and per-policy totals](comparison.json)
+
+## Finale follow-up
+
+An extra repair-heavy attempt used the same Hell Level 50 seed, Hybrid layout, and Room 3 opening. The player spent no items, paid for 17 repairs, and dealt 2,057.4 Hunter damage. The Reaper transformed at 270 seconds and defeated the player at 324.60 seconds. Story and the defeat reward saved and reloaded. This one follow-up and the original mixed-defense loss document two legitimate attempts. The complete-matrix denominator remains 35. [Exact fixture and receipt](finale/)
+
+## Regression coverage
+
+The final headless pass ran 15 suites, with the Living Story scene suite covering two settings. All 2,941 checks passed. The Story scene test uses `NIGHTFALL_SURVIVOR_REBIRTH=0` to target the original Story entry and its prepared finale. The complete-match matrix, Room Rush, Lobby and Defeat Cash suites separately cover the Survivor path.
+
+The original Nightmare art audit expected the entire fallback catalog to be loaded before the first draw. The same seven assertions failed on the checkpoint because its fallback loads textures on demand. The test now checks all 168 installed layers are loadable and retains its progression, combat and audio assertions. The all-pass logs and the original diagnostic receipts are both preserved. [Regression logs](regressions/)
 
 ## Reproduce
 
