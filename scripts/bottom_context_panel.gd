@@ -141,10 +141,16 @@ func refresh():
  if ui.context_open!=expanded:
   expanded=ui.context_open
   if tween!=null and tween.is_valid():tween.kill()
-  transitioning=true;ui.context_box.visible=true
-  tween=ui.context_box.create_tween();tween.set_trans(Tween.TRANS_CUBIC);tween.set_ease(Tween.EASE_OUT if expanded else Tween.EASE_IN)
-  tween.tween_property(ui.context_box,"position",body.position if expanded else closed_position,SLIDE_SECONDS)
-  tween.tween_callback(func():transitioning=false;ui.context_box.visible=expanded)
+  var destination:=body.position if expanded else closed_position
+  if ui.tactical_hud!=null and (not expanded or CinematicQuality.reduced_motion(ui.game)):
+   transitioning=false
+   ui.context_box.position=destination
+   ui.context_box.visible=expanded
+  else:
+   transitioning=true;ui.context_box.visible=true
+   tween=ui.context_box.create_tween();tween.set_trans(Tween.TRANS_CUBIC);tween.set_ease(Tween.EASE_OUT if expanded else Tween.EASE_IN)
+   tween.tween_property(ui.context_box,"position",destination,SLIDE_SECONDS)
+   tween.tween_callback(func():transitioning=false;ui.context_box.visible=expanded)
  elif not expanded and not transitioning:ui.context_box.visible=false
  if ui.context_mode=="specialize":ui.specialization_items[0].visible=false
  if is_instance_valid(upgrade_shortcut):

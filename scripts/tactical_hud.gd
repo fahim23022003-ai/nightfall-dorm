@@ -81,7 +81,7 @@ func install_menu() -> void:
  ui.theme_button(ui.button("Close",Vector2(320,8),toggle_more,86,34,menu),"quiet")
  var entries: Array=[
   ["Map [M]",game.toggle_map,"settings"],["Spectate [T]",ui.teammates.toggle_panel,"secondary"],
-  ["Free look",free_look,"secondary"],["Lock my room [Home]",game.return_to_my_room,"secondary"],
+  ["Free look",free_look,"secondary"],["Lock my room",game.return_to_my_room,"secondary"],
   ["Find machines",game.construction.toggle_machines,"secondary"],["Bed & income",func():ui.open_room_panel("bed"),"secondary"],
   ["Room effects",toggle_room_info,"secondary"],["Help [G]",game.toggle_guide,"settings"],
   ["Settings",ui.open_match_settings,"settings"],
@@ -95,6 +95,9 @@ func install_menu() -> void:
   var control: Button=ui.button(entry[0],Vector2(15+(i%2)*200,54+floori(float(i)/2)*56),callback,193,46,menu)
   control.name=["utility_map","utility_spectate","utility_camera","utility_lock","utility_machines","utility_bed","utility_room","utility_help","utility_settings"][i]
   ui.theme_button(control,entry[2])
+  control.clip_text=true
+  control.set_deferred("size",Vector2(193,46))
+  if i==3:control.tooltip_text="Return and lock the camera to your room [Home]."
  if is_instance_valid(ui.ward_button):
   ui.ward_button.reparent(menu,false)
   arrange(ui.ward_button,Vector2(215,278),Vector2(193,46))

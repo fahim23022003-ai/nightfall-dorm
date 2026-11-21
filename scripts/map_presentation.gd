@@ -486,6 +486,7 @@ func render_door(c,p,room):
 
 func render_door_status(c,p,room):
  if c.construction!=null and c.construction.focused_grid(room):return
+ if room.owner==0 and c.ui.tactical_hud!=null and not c.tutorial_active:return
  var point=OFFSET+room.door_position();var normal=room.door_normal()
  if room.owner>=0:
   var targeted=c.model.hunter.target==room.index and c.model.hunter.state in [HunterState.State.ATTACK,HunterState.State.BREACH]

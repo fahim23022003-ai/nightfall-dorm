@@ -148,7 +148,7 @@ func run():
   await still("12-machine-inspector")
  await key(KEY_I)
  check(game.ui.items_ui.expanded,"I opened items")
- if tactical:check(not game.ui.context_open,"Items replaces machine inspector")
+ if tactical:check(not game.ui.context_open and not game.ui.context_box.visible,"Items replaces machine inspector immediately")
  await key(KEY_1)
  await still("13-items")
  if bench:await collect_frames("items")
