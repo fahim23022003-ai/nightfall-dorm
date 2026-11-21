@@ -1,3 +1,13 @@
+# Building Scale Preview
+
+Phase 18.1 gives all 15 placeable families larger physical footprints and
+proportional artwork. Existing saves retain their original construction
+rules. Cached Close Quarters surfaces improve most matched combat frame
+times on Linux software rendering. The Windows launcher uses a separate
+test profile. [Playtest instructions, measurements and evidence](BUILDING_SCALE.md)
+
+---
+
 # Close Quarters Preview
 
 Phase 18 adds version 3 wall-adjacent corridors on an opt-in launcher.

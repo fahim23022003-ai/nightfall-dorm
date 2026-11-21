@@ -1,5 +1,12 @@
 # Nightfall Dorm master roadmap
 
+## Phase 18.1 — Building Scale and Close Quarters performance
+
+The opt-in preview uses larger physical footprints and scaled artwork for
+all 15 placeable building types. Original construction rules remain with
+their saved layouts. Close Quarters floor, wall trim and lights use a
+camera-culled tile cache. [Playtest guide and evidence](BUILDING_SCALE.md)
+
 ## Phase 16 — Nightmare polish and performance
 
 The dedicated preview improves Room Rush destination decisions, reduces
