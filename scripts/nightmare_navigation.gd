@@ -242,13 +242,14 @@ static func _length(points: PackedVector2Array) -> float:
   length += points[i - 1].distance_to(points[i])
  return length
 
-func costs(model, from: Vector2) -> Dictionary:
+func costs(model, from: Vector2, paths: Variant=null) -> Dictionary:
  var result: Dictionary = {}
  if walkable(model, from):
   _attach(model, hunter_graph, _next_id, from, _room_at(model, from), false)
   for i in range(_approaches.size()):
    var route := hunter_graph.get_point_path(_next_id, _approaches[i])
    result[i] = INF if route.is_empty() else _length(route)
+   if paths!=null:paths[i]=route
   hunter_graph.remove_point(_next_id)
  else:
   for i in range(_approaches.size()):

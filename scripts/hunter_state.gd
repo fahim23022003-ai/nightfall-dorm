@@ -229,7 +229,7 @@ func _boss_strike(room, model):
 
 func _damage_door(room, model, amount: float,source: String="door strike"):
  var landed: float=model.apply_room_damage(room.index,amount,source,1,source!="door strike")
- if model.fair_siege_enabled and model.uses_tactical_sieges() and state==State.ATTACK and room.index==target:
+ if model.fair_siege_enabled and model.uses_tactical_sieges() and not model.uses_story_intelligence() and state==State.ATTACK and room.index==target:
   siege_landed_damage+=landed
  attacks+=1
 
@@ -571,11 +571,17 @@ func _reassess_tactical_siege(room: RoomState, model):
  var net_loss: float=start_hp-room.door_hp
  var defended_estimate:=0.0
  if model.fair_siege_enabled:
-  defended_estimate=HunterSiegeStrategy.defended_breach_estimate(room.door_hp,net_loss,siege_landed_damage,damage,reassess_seconds)
+  if model.uses_story_intelligence() and net_loss<=0.0 and siege_landed_damage>=maxf(1.0,damage):
+   defended_estimate=HunterSiegeStrategy.MAX_BREACH_ESTIMATE
+  else:
+   defended_estimate=HunterSiegeStrategy.defended_breach_estimate(room.door_hp,net_loss,siege_landed_damage,damage,reassess_seconds)
  siege_start_hp=room.door_hp
  reassess_seconds=0.0
  siege_landed_damage=0.0
  var productive:=HunterSiegeStrategy.productive_progress(start_hp,room.door_hp,damage)
+ if model.uses_story_intelligence() and net_loss>0.0 and room.door_hp<=damage*2.0:
+  _announce_commit(model,room,net_loss)
+  return
  if productive and defended_estimate<=0.0:
   _announce_commit(model,room,net_loss)
   return
@@ -588,7 +594,7 @@ func _reassess_tactical_siege(room: RoomState, model):
    defended_door=last_defended_door
  var scores:=HunterSiegeStrategy.assess(model,self,defended_door,last_defended_breach)
  var alternative:=HunterSiegeStrategy.best_room(scores,room.index)
- var current_cost:=maxf(scores.get(room.index,INF),defended_estimate) if productive else float(scores.get(room.index,INF))
+ var current_cost:=maxf(scores.get(room.index,INF),defended_estimate) if productive or model.uses_story_intelligence() else float(scores.get(room.index,INF))
  var alternative_cost: float=scores.get(alternative,INF)
  if model.living_dorm_tactics() and not transformed:
   var eligible: Dictionary={}
@@ -606,14 +612,14 @@ func _reassess_tactical_siege(room: RoomState, model):
  retargets+=1
  decision_count+=1
  _siege_notice(model,alternative,"switch")
- if productive:siege_notice_defender=room.index
+ if productive or defended_estimate>0.0:siege_notice_defender=room.index
  if defended_estimate>0.0:
   last_defended_door=room.index
   last_defended_hp=room.door_hp
   last_defended_breach=defended_estimate
  else:
   last_defended_door=-1
- model.record_event("hunter_reassess",room.index,{"next_room":alternative,"reason":"defense_delays_breach" if productive else "better_breach_route","stalled":not productive,"current_cost":current_cost,"alternative_cost":alternative_cost})
+ model.record_event("hunter_reassess",room.index,{"next_room":alternative,"reason":"defense_delays_breach" if defended_estimate>0.0 else "better_breach_route","stalled":not productive,"current_cost":current_cost,"alternative_cost":alternative_cost})
  if archetype=="stalker":
   ability_counts.feint+=1
   model.record_event("hunter_ability",room.index,{"ability":"feint","duration":1.0})

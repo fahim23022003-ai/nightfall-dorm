@@ -78,6 +78,7 @@ var run_kind="campaign"
 var player_first_requested := OS.get_environment("NIGHTFALL_PLAYER_FIRST")=="1"
 var door_survival:=PlayerDoorSurvival.new()
 var chronicle:=MatchChronicle.new()
+var hunter_intelligence_requested := OS.get_environment("NIGHTFALL_HUNTER_INTELLIGENCE")=="1"
 var living_dorm_requested := OS.get_environment("NIGHTFALL_LIVING_DORM") == "1"
 var substantial_grid_requested := OS.get_environment("NIGHTFALL_BUILDING_SCALE") == "1"
 var full_grid_requested := OS.get_environment("NIGHTFALL_FULL_ROOM_GRID") == "1"
@@ -195,6 +196,9 @@ func is_procedural() -> bool:
 func living_dorm_tactics() -> bool:
  return living_dorm_requested and not tutorial_mode and run_kind=="campaign" and is_procedural()
 
+func uses_story_intelligence() -> bool:
+ return hunter_intelligence_requested and story_level>0 and living_dorm_tactics() and not hunter.transformed
+
 func uses_tactical_sieges() -> bool:
  return hard_tactics_enabled and run_kind=="campaign" and map_data.get("version") in [NightmareMap.MACRO_VERSION,NightmareMap.CLOSE_QUARTERS_VERSION] and difficulty in ["hard","hell"] and not hunter.transformed
 
@@ -305,8 +309,8 @@ func opening_room_forecast(index: int) -> Dictionary:
 
 # Static corridor graph estimates for all candidate rooms in one decision.
 # Only the nearest visible start needs testing; doorway endpoints already exist.
-func hunter_route_costs(from: Vector2) -> Dictionary:
- if is_procedural(): return _nightmare_navigation.costs(self,from)
+func hunter_route_costs(from: Vector2, paths: Variant=null) -> Dictionary:
+ if is_procedural(): return _nightmare_navigation.costs(self,from,paths)
  var ids=Array(_navigation.get_point_ids())
  ids.sort_custom(func(a,b): return from.distance_squared_to(_navigation.get_point_position(a))<from.distance_squared_to(_navigation.get_point_position(b)))
  var start=-1
@@ -897,7 +901,10 @@ func apply_room_damage(index: int,amount: float,source: String="door strike",att
   if index==player_room:amount=choices.incoming(self,amount)
   room.door_hp=maxf(0,room.door_hp-amount)
  var actual=maxf(0,old-room.door_hp);room.door_damage_taken+=actual;room.damage_flash=.25
- if actual>0 and attacker_id==1:pressure.hits+=1
+ if actual>0 and attacker_id==1:
+  pressure.hits+=1
+  if fair_siege_enabled and uses_story_intelligence() and hunter.state==HunterState.State.ATTACK and hunter.target==index:
+   hunter.siege_landed_damage+=actual
  if index==player_room and attacker_id==1:choices.retaliate(self,actual)
  record_event("door_damage",index,{"damage":actual,"hp":room.door_hp,"max_hp":room.max_hp(),"repair_affordable":room.door_hp>0 and room.gold>=(door_survival.price(room) if uses_player_door_survival() and index==player_room else room.manual_repair_cost()) and (not uses_player_door_survival() or index!=player_room or time>=door_survival.ready_at),"source":source,"attacker_id":attacker_id,"damage_type":packet.type,"element":packet.element,"attack_origin":attack_origin,"attack_boss":attack_boss,"attack_archetype":hunter.archetype if attacker_id==1 else "undead","door_level":room.door_level+1})
  if old>0 and room.door_hp<=0:record_event("door_break",index)
