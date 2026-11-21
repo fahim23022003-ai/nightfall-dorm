@@ -384,7 +384,7 @@ func record_event(type: String, room_index: int, data: Dictionary={}):
  if type in ["sale","building_destroyed"]:
   defenses.removed(room_index,int(data.get("tile",-1)))
   if room_index>=0 and room_index<rooms.size():MagicDefense.removed(rooms[room_index])
- var global_event=type in ["boss_transform","boss_awakened","boss_death","boss_phase","hunter_retreat","hunter_recovering","hunter_recovery_ended"]
+ var global_event=type in ["boss_transform","boss_awakened","boss_death","boss_phase","hunter_retreat","hunter_recovering","hunter_recovery_ended","mini_hunter_warning","mini_hunter_spawn","mini_hunter_killed"]
  if (room_index<0 or room_index>=rooms.size()) and not global_event: return
  var event_position=hunter.position if global_event else rooms[room_index].door_position()
  if data.get("position") is Vector2 and data.position.is_finite():event_position=data.position

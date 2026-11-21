@@ -78,7 +78,7 @@ func show_prepare():
 
 func _show_preparation(profile: PlayerProfile, mode: String, track: Dictionary, mission: Dictionary):
  ui.theme_backdrop()
- ui.theme_panel(Rect2(72,46,1136,628),"frame")
+ ui.theme_panel(Rect2(72,46,1136,628),"story" if ui.use_living_dorm() else "frame")
  _line("STORY PREPARATION   ·   CHAPTER %02d  /  %s" % [mission.chapter,mission.chapter_title.to_upper()],Vector2(110,78),15,986,GOLD)
  _line("LEVEL %02d   %s" % [mission.level,mission.title],Vector2(106,104),42,1010,"F4F0E8",true)
  ui.progression.badge(profile.rank_index(),Vector2(1106,72),58)

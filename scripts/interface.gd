@@ -1051,7 +1051,8 @@ func show_result():
    caption.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  var m=game.model
  var r=m.player()
- var l=label_at("%ds survived  ·  Hunter level %d\n%d shots  ·  %d damage\n%d gold earned  ·  %d residents lost" % [m.time,m.hunter.level,r.shots if r!=null else 0,r.damage_dealt if r!=null else 0,r.income_total if r!=null else 0,m.eliminations],Vector2(390,312),20,500)
+ var encounter: String=HunterIdentity.display(m.hunter.archetype,m.hunter.transformed) if use_living_dorm() else "Hunter level %d" % m.hunter.level
+ var l=label_at("%ds survived  ·  %s\n%d shots  ·  %d damage\n%d gold earned  ·  %d residents lost" % [m.time,encounter,r.shots if r!=null else 0,r.damage_dealt if r!=null else 0,r.income_total if r!=null else 0,m.eliminations],Vector2(390,312),20,500)
  l.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
  if m.result=="victory" and m.balance_version==2 and r!=null:
   var report=label_at(m.contribution_summary(),Vector2(26,345),13,300)

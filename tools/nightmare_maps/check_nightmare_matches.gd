@@ -65,6 +65,10 @@ func simulate(stage: String, difficulty: String, seed: int, room_index: int, pol
  var latest_event := 0
  var npc_peak := 0
  var steps := 0
+ var trace: Array=[]
+ var room_pressure: Dictionary={}
+ var travelled:=0.0
+ var track_decisions:=OS.get_environment("NIGHTFALL_TRACE_TARGETING")=="1"
  while model.result.is_empty() and model.time < LIMIT:
   if steps % 6 == 0:
    if policy == "balanced":
@@ -78,6 +82,11 @@ func simulate(stage: String, difficulty: String, seed: int, room_index: int, pol
    invalid.append("nonfinite Hunter position")
    break
   var displacement: float = previous.distance_to(model.hunter.position)
+  if track_decisions:
+   travelled+=displacement
+   if model.hunter.state==HunterState.State.ATTACK and model.hunter.target>=0:
+    var target: int=model.hunter.target
+    room_pressure[target]=room_pressure.get(target,0.0)+MODEL_STEP
   if procedural and displacement > .005 and not model.navigation_walkable(model.hunter.position):
    blocked_steps += 1
   if displacement > model.hunter.speed * MODEL_STEP + .2:
@@ -101,6 +110,9 @@ func simulate(stage: String, difficulty: String, seed: int, room_index: int, pol
    if int(event.id) <= latest_event:
     continue
    latest_event = int(event.id)
+   if track_decisions and event.type in ["approach","encounter","hunter_target_choice","hunter_commit","hunter_reassess","resident_defeat","elimination"]:
+    trace.append({"type":event.type,"room":event.room,"time":event.time,"reason":event.get("reason",""),
+     "next":event.get("next_room",-1),"progress":event.get("progress",0.0)})
    if event.type in ["hunter_retreat", "hunter_recovering", "hunter_recovery_ended"]:
     recoveries.append({"event": event.type, "hall": event.get("hall", ""), "time": event.time, "amount": event.get("healed", 0.0), "reason": event.get("reason", "")})
  if model.result.is_empty():
@@ -131,6 +143,8 @@ func simulate(stage: String, difficulty: String, seed: int, room_index: int, pol
   "hunter_attacks": model.hunter.attacks, "hunter_retargets": model.hunter.retargets,
   "hunter_navigation_recoveries": model.hunter.navigation_recoveries, "recovery_attempts": attempts,
   "recovery_visits": visits, "recovery_events": recoveries, "max_ledger_error": max_drift,
+  "targeting_trace":trace,"seconds_by_siege_room":room_pressure,
+  "hunter_travel_world_units":travelled,"room_eliminations":model.eliminations,
   "blocked_motion_steps": blocked_steps, "speed_budget_violations": speed_violations, "invalid": invalid
  }
 

@@ -64,6 +64,8 @@ func run() -> void:
  model.time=model.preparation+60.0
  model._tick_mini_hunters(.05)
  check(model.mini_hunters.size()==1,"first Shadowling spawns")
+ check(model.presentation_events.any(func(event):return event.type=="mini_hunter_warning"),"world telegraph emitted without a room")
+ check(model.presentation_events.any(func(event):return event.type=="mini_hunter_spawn"),"physical spawn event registered")
  if not model.mini_hunters.is_empty():
   var mini:=model.mini_hunters[0]
   check(mini.position==model.map_data.hunter_spawn and model.navigation_walkable(mini.position),"physical exterior spawn")
