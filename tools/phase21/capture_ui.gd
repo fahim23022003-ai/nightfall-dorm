@@ -4,6 +4,7 @@ extends "res://tests/survivor_lobby_integration.gd"
 var viewport_size:=Vector2i(960,540)
 var presets: Dictionary={}
 var quality: String
+var record_walkthrough:=false
 
 func image(label: String,expected: Vector2i):
  if not destination.is_empty():await super.image(label,expected)
@@ -17,8 +18,15 @@ func key(code: Key) -> void:
   Input.parse_input_event(event)
   await process_frame
 
+func click(button: Button):
+ if record_walkthrough:
+  Input.warp_mouse(root.get_final_transform()*button.get_global_rect().get_center())
+  await create_timer(.12).timeout
+ await super.click(button)
+
 func still(name: String) -> void:
  await image(name,viewport_size)
+ if record_walkthrough:await create_timer(1.15).timeout
 
 func collect_frames(name: String, count: int=45) -> void:
  var frames: Array[float]=[]
@@ -47,6 +55,7 @@ func run():
  destination=args[0]
  quality=args[1]
  var bench: bool="bench" in args
+ record_walkthrough="record" in args
  if quality!="low":viewport_size=Vector2i(1280,720)
  DirAccess.make_dir_recursive_absolute(destination)
  root.size=viewport_size
@@ -58,16 +67,19 @@ func run():
  game.onboarding.skip()
  game.onboarding.close_welcome()
  game.profile.complete_tutorial()
+ game.profile.story.seed_base=1527205665
  game.change_setting("graphics_quality",quality)
  game.change_setting("adaptive_performance",false)
  game.profile.inventory.radar=1
  game.profile.equip_item("radar")
  game.ui.show_menu()
+ if record_walkthrough:await create_timer(1.1).timeout
  var tactical: bool=game.ui.has_method("use_tactical_ui") and game.ui.use_tactical_ui()
  await still("01-main-menu")
  if bench:await collect_frames("main_menu")
  await press("menu_settings",game.ui.panel)
  await still("02-graphics")
+ if bench:await collect_frames("settings_graphics")
  if tactical:
   for index in range(1,6):
    await press("settings_page_"+str(index),game.ui.panel)
@@ -188,6 +200,7 @@ func run():
  game._process(.05)
  await still("17-hunter-attacking")
  if bench:await collect_frames("active_combat")
+ presets["fixture"]={"seed":model.map_seed,"room":model.player_room,"shots":model.shots,"quality":quality}
  room.door_hp=room.max_hp()*.27
  game._process(.05)
  await still("18-critical-door")

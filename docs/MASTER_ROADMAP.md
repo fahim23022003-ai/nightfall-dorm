@@ -1,5 +1,13 @@
 # Nightfall Dorm master roadmap
 
+## Phase 21 — Tactical Interface
+
+The desktop preview combines one status bar, a four-action dock, one
+placement tool, categorized settings and a lighter three-lesson practice
+flow. Phase 20 remains the owner-played reference. Review the recorded
+comparisons and native performance limits before promoting the preview.
+[Visual and performance evidence](evidence/phase21/README.md)
+
 ## Phase 19 — The Living Dorm
 
 The opt-in preview is ready for the next owner frame-pacing and fairness

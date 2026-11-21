@@ -1,3 +1,14 @@
+# Phase 21 · Tactical Interface preview
+
+The opt-in Windows preview starts on Low at 960×540 with a separate profile.
+The placement tool, four-action dock, menus and three-lesson practice use
+the existing Phase 20 rules. The Phase 20 and Performance builds remain
+available. Both desktop sizes were tested in Linux Godot. Native Phase 21
+Windows performance remains unverified.
+[Playtest controls](TACTICAL_UI.md) · [Evidence](evidence/phase21/README.md)
+
+---
+
 # Phase 20 · Player-First preview
 
 The opt-in preview adds three-lesson Practice, pausing Help, physical door armor,
