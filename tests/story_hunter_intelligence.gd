@@ -78,11 +78,37 @@ func _initialize():
  h.reassess_seconds=16
  h._reassess_tactical_siege(r,m)
  expect(h.target==0 and h.state==HunterState.State.ATTACK,"finish near-breached door with positive progress")
+ # One paid tier adds capacity once. The same landed strikes still made
+ # progress against the larger door, with no evidence of recurring healing.
+ h.siege_start_hp=r.max_hp()-50
+ r.door_hp=h.siege_start_hp
+ h.siege_start_capacity=r.max_hp()
+ r.gold=200
+ expect(r.upgrade_door(),"fixture buys an ordinary door tier")
+ r.door_hp-=40
+ h.siege_landed_damage=40
+ h.reassess_seconds=17
+ h._reassess_tactical_siege(r,m)
+ expect(h.target==0 and h.state==HunterState.State.ATTACK,"one-off capacity is not sustained repair")
  h.siege_landed_damage=0
  var previous:float=r.door_hp
  m.difficulty="hell"
  h._damage_door(r,m,10)
  expect(is_equal_approx(h.siege_landed_damage,previous-r.door_hp),"overlapping Hell and Story gates count overkill-limited damage once")
+ # Start a legitimate Hall visit in transit. Complete the existing channel
+ # and verify that the interrupted room can compete in the next assessment.
+ h.target=nearby
+ h.state=HunterState.State.MOVE
+ m.time=m.preparation+70
+ h.hp=h.max_hp*.3
+ h.boss_policy.enabled=false
+ h.position=m.map_data.halls.west.entrance
+ m.haunt_recovery.available_at=0
+ expect(m.haunt_recovery.try_retreat(h,m),"a wounded ordinary Hunter takes a reachable Hall")
+ for step in range(260):
+  if not m.haunt_recovery.is_active():break
+  m.haunt_recovery.tick(.1,h,m)
+ expect(m.haunt_recovery.visits==1 and h.state==HunterState.State.SEEK and h.avoid_target==-1,"return from actual recovery keeps the interrupted approach eligible")
  other.sleeping=false
  expect(not HunterSiegeStrategy.assess(m,h).has(nearby),"awake or vacant room is not an eligible target")
  for mode:String in ["endless","campaign"]:

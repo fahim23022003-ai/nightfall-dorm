@@ -139,12 +139,17 @@ func apply(id: String,model):
   "smoke":
    timers[id]=ItemCatalog.TUNING.boss_smoke_seconds if model.hunter.transformed else ItemCatalog.TUNING.smoke_seconds
    control_recovery=ItemCatalog.TUNING.control_refractory
-   if model.hunter.target==model.player_room:
+   # Smoke discourages a room at the next choice. Decoy owns active Hall diversions.
+   if model.hunter.target==model.player_room and not (model.uses_story_intelligence() and model.haunt_recovery.is_active()):
     var alternative=model.hunter.choose_target(model.rooms,model.player_room)
     if alternative>=0 and alternative!=model.player_room:
      model.hunter.cancel_boss_attack()
      model.hunter.target=alternative
      model.hunter.state=HunterState.State.MOVE
+     if model.uses_story_intelligence():
+      model.hunter.target_time=0.0
+      model.hunter._remember_living_target(model,alternative,"smoke")
+      model.record_event("approach",alternative)
   "rescue":
    var teammate=model.rooms[rescue_target]
    value=minf(teammate.max_hp()-teammate.door_hp,teammate.max_hp()*ItemCatalog.TUNING.rescue_fraction)

@@ -54,5 +54,5 @@ func run():
  check(lose.defeat_facts.report.counter_window.repair_affordable and lose.defeat_facts.report.tips[0].contains("100.0s"),"factual advice identifies affordable response at the relevant time")
  check(lose.defeat_facts.report.tips[-1].contains("not proof"),"no speculative guaranteed-save advice")
  var none=fresh();none.run_kind="campaign";none.time=100;none.hunter.state=HunterState.State.ATTACK;none.hunter.target=0;none.hunter.position=none.player().door_approach();none.player().gold=0;none.apply_room_damage(0,5,"door strike");none.time=104;none.apply_room_damage(0,10000,"door strike");none.hunter.position=none.player_position;none.hunter.target=0;none.eliminate_resident(0);none.result="defeat";none._finish_terminal()
- check(not none.defeat_facts.report.counter_window.repair_affordable and none.defeat_facts.report.tips[0].contains("No manual repair"),"unaffordable counter is not recommended")
+ check(not none.defeat_facts.report.counter_window.repair_affordable and not none.defeat_facts.report.counter_window.door_affordable and none.defeat_facts.report.tips[0].contains("Neither manual repair nor the next door upgrade was available"),"unaffordable counter is not recommended")
  print("FAIR_DIFFICULTY_CHECKS=",checks," FAILURES=",failures);quit(1 if failures else 0)

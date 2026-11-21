@@ -27,7 +27,9 @@ var navigation_recoveries=0
 var retargets=0
 var recent_living_rooms: Array[int]=[]
 var living_choices:=0
+var _choice_evidence: Dictionary={}
 var siege_start_hp=0.0
+var siege_start_capacity:=0.0
 var siege_seconds=0.0
 var reassess_seconds=0.0
 var encounter_attacks=0
@@ -479,7 +481,9 @@ func tick(delta: float, match_state):
    encounter_attacks=0
    siege_commit_announced=false
    siege_landed_damage=0.0
-   if match_state.uses_tactical_sieges():siege_start_hp=room.door_hp
+   if match_state.uses_tactical_sieges() or match_state.uses_story_intelligence():
+    siege_start_hp=room.door_hp
+    siege_start_capacity=room.max_hp()
    archetype_primed=false
    charged_ready=false
    if delta>0: match_state.record_event("encounter",target)
@@ -568,6 +572,10 @@ func tick(delta: float, match_state):
 
 func _reassess_tactical_siege(room: RoomState, model):
  var start_hp: float=siege_start_hp
+ # An upgrade adds the new capacity to current HP once. It changes the door
+ # being attacked, but cannot erase damage again in every future window.
+ if model.uses_story_intelligence() and siege_start_capacity>0.0:
+  start_hp+=maxf(0.0,room.max_hp()-siege_start_capacity)
  var net_loss: float=start_hp-room.door_hp
  var defended_estimate:=0.0
  if model.fair_siege_enabled:
@@ -576,6 +584,7 @@ func _reassess_tactical_siege(room: RoomState, model):
   else:
    defended_estimate=HunterSiegeStrategy.defended_breach_estimate(room.door_hp,net_loss,siege_landed_damage,damage,reassess_seconds)
  siege_start_hp=room.door_hp
+ siege_start_capacity=room.max_hp()
  reassess_seconds=0.0
  siege_landed_damage=0.0
  var productive:=HunterSiegeStrategy.productive_progress(start_hp,room.door_hp,damage)
@@ -612,14 +621,15 @@ func _reassess_tactical_siege(room: RoomState, model):
  retargets+=1
  decision_count+=1
  _siege_notice(model,alternative,"switch")
- if productive or defended_estimate>0.0:siege_notice_defender=room.index
+ var defense_earned: bool=productive or (model.uses_story_intelligence() and defended_estimate>0.0)
+ if defense_earned:siege_notice_defender=room.index
  if defended_estimate>0.0:
   last_defended_door=room.index
   last_defended_hp=room.door_hp
   last_defended_breach=defended_estimate
  else:
   last_defended_door=-1
- model.record_event("hunter_reassess",room.index,{"next_room":alternative,"reason":"defense_delays_breach" if defended_estimate>0.0 else "better_breach_route","stalled":not productive,"current_cost":current_cost,"alternative_cost":alternative_cost})
+ model.record_event("hunter_reassess",room.index,{"next_room":alternative,"reason":"defense_delays_breach" if defense_earned else "better_breach_route","stalled":not productive,"current_cost":current_cost,"alternative_cost":alternative_cost})
  if archetype=="stalker":
   ability_counts.feint+=1
   model.record_event("hunter_ability",room.index,{"ability":"feint","duration":1.0})
@@ -648,6 +658,7 @@ func choose_target(rooms: Array, excluded: int = -1) -> int:
  _route_costs.clear()
  var owner=_model_ref.get_ref() if _model_ref!=null else null
  if owner!=null and owner.living_dorm_tactics() and not transformed:
+  _choice_evidence={}
   if not rooms.any(func(room):return room.owner>=0 and room.alive and room.sleeping):return -1
   var scores:=HunterSiegeStrategy.assess(owner,self)
   var saved_cost: float=scores.get(excluded,INF)
@@ -706,14 +717,21 @@ func _living_choice(model, scores: Dictionary) -> int:
  var ticket:=float(posmod(hash([model.random.seed,model.map_seed,living_choices]),1000003))/1000003.0*total
  for index in weights:
   ticket-=weights[index]
-  if ticket<0.0:return index
+  if ticket<0.0:
+   if model.uses_story_intelligence():
+    _choice_evidence={"estimated_cost":scores[index],"best_cost":shortest,"comparable_doors":weights.size(),"reachable_options":scores.size(),"recent_selections":recent_living_rooms.count(index)}
+   return index
  return best
 
 func _remember_living_target(model, selected: int, reason: String) -> void:
  living_choices+=1
  recent_living_rooms.append(selected)
  if recent_living_rooms.size()>3:recent_living_rooms.pop_front()
- model.record_event("hunter_target_choice",selected,{"reason":reason,"choice":living_choices})
+ var event:={"reason":reason,"choice":living_choices}
+ if model.uses_story_intelligence():
+  event.merge(_choice_evidence)
+  _choice_evidence={}
+ model.record_event("hunter_target_choice",selected,event)
 
 func hurt(amount: float, show_hit: bool=true):
  if not is_finite(amount) or amount<=0 or state == State.DORMANT or state == State.DEAD:

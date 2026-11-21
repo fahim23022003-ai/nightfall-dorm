@@ -23,6 +23,7 @@ var budget := 0.0
 var healed := 0.0
 var channel_damage := 0.0
 var passed_entrance := false
+var _interrupted_story_approach := false
 var stalled := 0.0
 
 func is_active() -> bool:
@@ -65,6 +66,7 @@ func try_retreat(hunter, model) -> bool:
   available_at = model.time + 8.0
   return false
  attempts += 1
+ _interrupted_story_approach = model.uses_story_intelligence() and hunter.state == HunterState.State.MOVE
  phase = "retreat"
  hall_id = desired
  hunter.state = HunterState.State.RETREAT
@@ -164,13 +166,16 @@ func cancel(model, reason: String):
  var hunter = model.hunter
  if hunter.state in [HunterState.State.RETREAT, HunterState.State.RECOVER] and hunter.hp > 0:
   hunter.state = HunterState.State.SEEK
-  hunter.avoid_target = hunter.target
+  # A visit interrupted in transit says nothing about the door's strength.
+  # After healing, score that room alongside the other reachable doors.
+  hunter.avoid_target = -1 if _interrupted_story_approach and reason == "completed" else hunter.target
   hunter.target_time = 0.0
   hunter.siege_seconds = 0.0
   hunter.reassess_seconds = 0.0
   hunter.stalled_seconds = 0.0
   hunter.cooldown = maxf(hunter.cooldown, 1.0)
  model._navigation_routes.erase(MOVE_KEY)
+ _interrupted_story_approach = false
  phase = "idle"
  hall_id = ""
  available_at = model.time + RETREAT_GAP
