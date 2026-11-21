@@ -242,6 +242,9 @@ func _process(delta):
   quick_redraw_wait-=delta
   if quick_redraw_wait>0.0:return
   quick_redraw_wait=.05
+  if game.ui.use_tactical_ui() and course!=null:
+   course.update_cue()
+   return
  queue_redraw()
 func _input(event):
  if is_welcome_open():

@@ -128,13 +128,27 @@ const DORM_COLORS := {
  "success": Color("#64C98F"), "disabled": Color("#596473"),
 }
 static func palette() -> Dictionary:
+ if tactical_enabled():return TACTICAL_COLORS
  return DORM_COLORS if OS.get_environment("NIGHTFALL_LIVING_DORM")=="1" else LIVING_COLORS
+
+const TACTICAL_COLORS := {
+ "background":Color("111923"),"overlay":Color("111923"),
+ "panel":Color("273846"),"card":Color("344A57"),"section":Color("405564"),
+ "text":Color("F7F2E9"),"muted":Color("D1DCE3"),"gold":Color("E0B96D"),
+ "story":Color("238E75"),"shop":Color("E0B96D"),"settings":Color("558FC2"),
+ "inventory":Color("8C70B8"),"protection":Color("368E97"),
+ "warning":Color("E5AA56"),"danger":Color("CB5A67"),"success":Color("60C795"),
+ "disabled":Color("647482"),
+}
+
+static func tactical_enabled() -> bool:
+ return OS.get_environment("NIGHTFALL_TACTICAL_UI")=="1" and not OS.has_feature("android")
 
 static var living_styles: Dictionary = {}
 
 
 static func living_surface(role: String, state: String = "normal") -> StyleBoxFlat:
- var key := role + ":" + state
+ var key := str(int(tactical_enabled()))+":"+role+":"+state
  if living_styles.has(key):
   return living_styles[key]
  var style := StyleBoxFlat.new()
@@ -151,6 +165,10 @@ static func living_surface(role: String, state: String = "normal") -> StyleBoxFl
   style.bg_color = style.bg_color.lerp(accent,0.34)
  if colors==DORM_COLORS and role in accents and role not in ["primary","danger","selected"]:
   style.bg_color=style.bg_color.lerp(accent,.21)
+ if colors==TACTICAL_COLORS:
+  style.bg_color=colors.background if role=="quiet" else colors.panel if role in ["frame","secondary"] else colors.card
+  accent=colors.section if role not in accents else colors[accents[role]]
+  if role in accents:style.bg_color=style.bg_color.lerp(accent,.27)
  if state == "hover":
   style.bg_color = style.bg_color.lightened(0.11)
  elif state == "pressed":
@@ -166,7 +184,7 @@ static func living_surface(role: String, state: String = "normal") -> StyleBoxFl
  if state == "normal" and role in accents:
   style.border_width_left = 3
  style.set_corner_radius_all(8 if role == "frame" else 6)
- if role in ["frame","card"]:
+ if role in ["frame","card"] and colors!=TACTICAL_COLORS:
   style.shadow_color = Color(0.02,0.03,0.06,0.55)
   style.shadow_size = 3
   style.shadow_offset = Vector2(0,2)

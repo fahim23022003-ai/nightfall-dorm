@@ -420,6 +420,7 @@ func return_menu():
 
 func toggle_pause():
  if in_background: return
+ if ui.tactical_hud!=null:ui.tactical_hud.dismiss()
  if is_instance_valid(touch): touch.reset()
  model.running = not model.running
  if not model.running: pending_build=""
@@ -460,6 +461,7 @@ func phase20_adapt(delta: float) -> void:
 
 func open_pausing_help() -> void:
  if phase20_help_open:return
+ if ui.tactical_hud!=null:ui.tactical_hud.dismiss()
  if is_instance_valid(touch):touch.reset()
  phase20_was_running=model.running
  model.running=false
@@ -495,7 +497,7 @@ func _phase20_camera_input(event: InputEvent) -> bool:
  return false
 
 func _process(delta: float):
- if in_background or phase20_help_open:return
+ if in_background or phase20_help_open or ui.tactical_settings!=null and mode=="match":return
  if mode=="story_lobby":
   audio_system.update_state(delta,model,"lobby")
   return
@@ -538,7 +540,8 @@ func _process(delta: float):
   focus_camera(false,delta)
   ui_clock+=delta
   var quick_practice: bool=model.player_first_requested and tutorial_active
-  if (not quick_practice and not mobile_mode and CinematicQuality.detail(self)>0) or ui_clock>=(.10 if quick_practice else .05):
+  var tactical: bool=ui.tactical_hud!=null
+  if (not tactical and not quick_practice and not mobile_mode and CinematicQuality.detail(self)>0) or ui_clock>=(.10 if quick_practice else .05):
    ui_clock=0
    ui.update_match()
   horror.update(delta,model)
@@ -572,7 +575,7 @@ func _process(delta: float):
  var score_context: String="story_prepare" if mode=="menu" and ui.current_screen=="story_prepare" and survivor_preview_enabled else mode
  audio_system.update_state(delta,model,score_context,hunter_spectating)
  SessionInterface.refresh(ui)
- guidance.refresh(self)
+ if ui.tactical_hud==null:guidance.refresh(self)
  if ui.items_ui!=null: ui.items_ui.update(delta)
  presentation.notices_blocked=not model.running or ui.current_screen!="match" or is_instance_valid(ui.warning_box) and ui.warning_box.visible or construction.active() or construction.planning
  presentation.update(delta,model)
@@ -587,6 +590,11 @@ var suppress_double_click_release=false
 var cancelled_pointer=false
 
 func _input(event):
+ if event is InputEventKey and event.pressed and not event.echo and event.keycode==KEY_ESCAPE and ui.close_tactical_page():
+  cancelled_pointer=Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+  get_viewport().set_input_as_handled()
+  return
+ if mode=="match" and ui.tactical_settings!=null:return
  if phase20_help_open:
   if event is InputEventKey and event.pressed and not event.echo and event.keycode in [KEY_ESCAPE,KEY_G]:
    close_pausing_help()
@@ -602,6 +610,10 @@ func _input(event):
  if event is InputEventKey and event.keycode==KEY_ESCAPE and event.pressed and is_instance_valid(ui.run_panel) and ui.run_panel.visible:
   ui.run_panel.visible=false;get_viewport().set_input_as_handled();return
  if construction!=null and construction.handle_cancel(event):get_viewport().set_input_as_handled();return
+ if mode=="match" and ui.tactical_hud!=null and event is InputEventKey and event.pressed and not event.echo and event.keycode==KEY_ESCAPE and ui.tactical_hud.dismiss_escape():
+  cancelled_pointer=Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+  get_viewport().set_input_as_handled()
+  return
  # Cancel a held GUI press before BaseButton processes Escape/focus changes.
  if event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT and not event.pressed and cancelled_pointer:
   cancelled_pointer=false;get_viewport().set_input_as_handled();return
@@ -618,7 +630,7 @@ func _input(event):
   get_viewport().set_input_as_handled()
 
 func _unhandled_input(event):
- if mode!="match" or in_background or hunter_spectating or phase20_help_open:return
+ if mode!="match" or in_background or hunter_spectating or phase20_help_open or ui.tactical_settings!=null:return
  if model.run_kind=="endless" and model.endless!=null and model.endless.phase=="intermission" and not ui.replay_ui.preparing:return
  if macro_overview() and not mobile_mode and _handle_macro_overview(event):
   get_viewport().set_input_as_handled()
@@ -723,6 +735,7 @@ func interact_survivor():
   ui.update_match()
 
 func toggle_map():
+ if ui.tactical_hud!=null:ui.tactical_hud.dismiss()
  if phase20_free_camera:phase20_free_camera=false;zoom_factor=1.0
  cancel_placement()
  full_map=not full_map

@@ -398,7 +398,7 @@ func render_tiles(c,p,room,owned):
  if room.spatial!=null and c.construction!=null:c.construction.draw_floor(c,room,layout)
  var ids=layout.ids if grid else room.buildings.keys() if room.spatial!=null else range(room.tile_count())
  var low_detail := CinematicQuality.detail(c)==0
- var hide_empty_pads: bool = low_detail and not owned and c.model.is_procedural() and c.model.full_grid_requested
+ var hide_empty_pads: bool = not owned and (low_detail and c.model.is_procedural() and c.model.full_grid_requested or c.tutorial_active and c.ui.tactical_hud!=null)
  var visible: Rect2=p.visible_world_rect(c,110)
  var decoration_view := visible.grow(-40)
  for tile in ids:

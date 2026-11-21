@@ -487,6 +487,7 @@ func room_scene(c, room: RoomState, owned: bool):
  for tile in range(6):
   var p = OFFSET+room.tile_position(tile)
   if not room.buildings.has(tile):
+   if not owned and c.tutorial_active and c.ui.tactical_hud!=null:continue
    sprite(c,"foundation",p,Vector2(49,49),Color(1.5,1.35,1.1,1.0) if owned else Color(1,1,1,0.25))
   else:
    var b = room.buildings[tile]
@@ -779,6 +780,7 @@ func cartoon_room(c,room: RoomState,owned: bool):
  for tile in range(6):
   var p=OFFSET+room.tile_position(tile)
   if not room.buildings.has(tile):
+   if not owned and c.tutorial_active and c.ui.tactical_hud!=null:continue
    var pad=frame(Color("6F8991"),Color("425C6D"),7)
    pad.set_border_width_all(2)
    c.draw_style_box(pad,Rect2(p-Vector2(22,21),Vector2(44,42)))

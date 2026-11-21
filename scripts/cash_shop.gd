@@ -6,9 +6,13 @@ var feedback=""
 var buttons: Array=[]
 var purchased_id=""
 var paid=0
+var tactical_back:=Callable()
 func _init(owner):ui=owner;game=ui.game
 func show_shop():
+ if ui.use_tactical_ui() and ui.current_screen!="shop":
+  tactical_back=ui.show_result if game.mode=="result" else game.return_menu
  ui.clear();ui.current_screen="shop";buttons.clear()
+ if ui.use_tactical_ui():ui.tactical_back=tactical_back
  var living: bool=ui.use_living_ui()
  if living:
   ui.theme_backdrop()
@@ -51,7 +55,7 @@ func show_shop():
   ui.theme_label(feedback,Vector2(140,555),17,990,"danger" if feedback.begins_with("Purchase failed") else "success")
  else:
   ui.label_at(feedback,Vector2(140,565),17,990)
- var back=ui.button("Back to main menu",Vector2(140,607),game.return_menu,360,38)
+ var back=ui.button("Back [Esc]" if ui.use_tactical_ui() else "Back to main menu",Vector2(140,607),tactical_back if ui.use_tactical_ui() else game.return_menu,360,38)
  back.name="shop_back"
  if living:
   ui.theme_button(back,"quiet")
@@ -69,6 +73,7 @@ func purchase(id,token):
   game.audio_event("failure")
  show_shop()
 func update():
+ if ui.current_screen!="shop":return
  for entry in buttons:
   if not is_instance_valid(entry.button):
    continue

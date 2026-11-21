@@ -54,7 +54,7 @@ func show_ranks():
  else:ui.box(Rect2(60,40,1160,638))
  var p=game.profile
  var art=badge(p.rank_index(),Vector2(86,62),100)
- if CinematicQuality.detail(game)>0:
+ if CinematicQuality.detail(game)>0 and not ui.use_tactical_ui():
   var pulse=art.create_tween().set_loops()
   pulse.tween_property(art,"modulate",Color(1.15,1.05,1.25),1.2)
   pulse.tween_property(art,"modulate",Color.WHITE,1.2)

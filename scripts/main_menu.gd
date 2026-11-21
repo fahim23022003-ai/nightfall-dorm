@@ -36,6 +36,9 @@ func secondary(button: Button,role="utility"):
   button.add_theme_stylebox_override(state,style)
  button.add_theme_font_size_override("font_size",17 if role=="play" else 15)
 func create():
+ if ui.use_tactical_ui():
+  _create_tactical()
+  return
  if ui.use_living_ui():
   _create_living()
   return
@@ -101,6 +104,41 @@ func create():
  if profile.warning!="":ui.label_at(profile.warning,Vector2(74,611 if game.story_preview_enabled else 594),13,510).modulate=Color("EDBD8A")
  for node in ui.panel.get_children():
   if node is Button and not node is MenuDestination and node!=endless:secondary(node)
+ ui.menu_start.grab_focus()
+
+func _create_tactical() -> void:
+ var game=ui.game
+ var profile: PlayerProfile=game.profile
+ var track:=StoryProgress.summary(profile.story,profile.selected_difficulty)
+ var mission:=StoryCatalog.mission(track.position)
+ ui.theme_panel(Rect2(76,85,1128,552),"overlay")
+ ui.theme_label("Nightfall Dorm",Vector2(116,127),70,622,"text",true)
+ ui.theme_label("Chapter %02d · %s" % [mission.chapter,mission.chapter_title],Vector2(121,227),20,610,"gold")
+ ui.theme_label("Level %02d / 50 · %s" % [mission.level,mission.title],Vector2(121,264),24,610,"text")
+ ui.menu_start=_destination("mode_story","Story Archive" if track.finished else "Continue Story","Open the current mission and loadout.",Vector2(118,323),546,game.enter_game,"primary","play")
+ ui.menu_start.add_theme_font_size_override("font_size",24)
+ _destination("mode_endless","Endless","Play escalating waves.",Vector2(118,412),263,ui.replay_ui.show_endless,"secondary","endless")
+ _destination("mode_campaign","Classic Campaign","Choose a stage and difficulty.",Vector2(391,412),273,ui.campaign.show_stages,"secondary","next")
+ _destination("menu_extras","Extra modes","Challenge, Practice and cosmetics.",Vector2(118,495),546,ui.replay_ui.show_hub,"quiet","practice")
+ ui.theme_panel(Rect2(695,146,473,419),"frame")
+ ui.theme_label("%d RM Cash" % profile.rm_cash,Vector2(719,165),20,216,"gold")
+ ui.theme_label("%s · %d XP" % [profile.rank_name(),profile.xp],Vector2(943,165),18,207,"muted")
+ var actions: Array=[
+  ["menu_shop","Shop",ui.shop.show_shop,"shop","shop"],
+  ["menu_inventory","Inventory",ui.items_ui.inventory,"inventory","inventory"],
+  ["menu_ranks","Rank & Rewards",ui.progression.show_ranks,"accent","rank"],
+  ["menu_settings","Settings",ui.show_settings,"settings","settings"],
+  ["menu_help","Help",ui.show_help,"secondary","tutorial"],
+  ["menu_replay","Replay Tutorial",func():game.start_tutorial(true),"secondary","retry"],
+ ]
+ for i in range(actions.size()):
+  var entry: Array=actions[i]
+  _destination(entry[0],entry[1],"",Vector2(714+(i%2)*222,220+floori(float(i)/2)*83),215,entry[2],entry[3],entry[4])
+ ui.theme_button(ui.button("Exit",Vector2(1018,581),game.request_quit,150,39),"quiet")
+ if not profile.pending_spins.is_empty():
+  ui.theme_button(ui.button("Resume saved reward",Vector2(714,581),ui.items_ui.spin,282,39),"accent")
+ elif not profile.warning.is_empty():
+  ui.theme_label(profile.warning,Vector2(119,581),14,575,"danger").clip_text=true
  ui.menu_start.grab_focus()
 
 

@@ -6,6 +6,10 @@ var menu_start: Button
 var panel: Control
 var run_panel: Control
 var ward_button: Button
+var tactical_hud
+var tactical_settings
+var tactical_help
+var tactical_back:=Callable()
 var upgrade_notice: Label
 var message: Label
 var details: Label
@@ -98,6 +102,10 @@ func _ready():
  show_menu()
 
 func clear():
+ tactical_hud=null
+ tactical_settings=null
+ tactical_help=null
+ tactical_back=Callable()
  living_dorm_hud=null
  haunted_hud=null
  for child in panel.get_children():
@@ -135,7 +143,7 @@ func box(rect: Rect2,fill: String="263E50",edge: String="607D8B",parent: Control
  p.position=rect.position
  p.size=rect.size
  p.mouse_filter=Control.MOUSE_FILTER_IGNORE
- p.add_theme_stylebox_override("panel",style(fill,edge))
+ p.add_theme_stylebox_override("panel",GothicTheme.living_surface("frame") if use_tactical_ui() else style(fill,edge))
  attach(p,parent)
  return p
 
@@ -205,7 +213,7 @@ func button(text: String,pos: Vector2,callback: Callable,width: float=240,height
  for state in ["normal","hover","pressed","disabled","focus"]:
   var fill="3F6675" if state=="hover" else "304D61"
   if state=="disabled": fill="263746"
-  b.add_theme_stylebox_override(state,GothicTheme.surface(fill,"7BE3A1" if state in ["hover","focus"] else "938876",("primary_" if primary else "button_")+state))
+  b.add_theme_stylebox_override(state,GothicTheme.living_surface("primary" if primary else "secondary",state) if use_tactical_ui() else GothicTheme.surface(fill,"7BE3A1" if state in ["hover","focus"] else "938876",("primary_" if primary else "button_")+state))
  b.add_theme_color_override("font_color",Color("EDF5F7"))
  b.add_theme_color_override("font_disabled_color",Color("889CA8"))
  attach(b,parent)
@@ -217,6 +225,9 @@ func use_living_dorm() -> bool:
 
 func use_living_ui() -> bool:
  return game.survivor_preview_enabled and not game.mobile_mode
+
+func use_tactical_ui() -> bool:
+ return use_living_dorm() and game.model.player_first_requested and GothicTheme.tactical_enabled()
 
 func theme_button(control: Button, role: String = "secondary", icon_id: String = "") -> void:
  if not use_living_ui() or control.get_meta("living_role","") == role and icon_id.is_empty():
@@ -272,6 +283,10 @@ func show_help(from_settings: bool=false):
  if game.mobile_mode:
   game.mobile_ui.show_help(self)
   return
+ if use_tactical_ui():
+  tactical_help=preload("res://scripts/pausing_help.gd").new(game)
+  tactical_help.open(false,show_settings if from_settings else show_menu)
+  return
  box(Rect2(90,65,1100,590))
  label_at("SURVIVAL HANDBOOK",Vector2(125,92),30,950,true)
  label_at("WASD / arrows: move     E: room / bed     M: map     Wheel: zoom     R: repair\n\nFind a vacant bedroom, press E inside, then E near its bed to sleep.\nGold starts while sleeping. You cannot leave the bed afterward.\n\nPress B, choose a machine, then click valid floor. Q rotates on the grid.\nIn rooms with numbered pads, select a pad before choosing a machine.\nDisabled cards explain missing resources. Escape closes without spending.\nClick a machine for its upgrades. The bottom bed and door summaries open\nupgrades and repair. A Dynamo produces electricity for advanced purchases.\n\nThe hunter arrives after 30 seconds. Your turrets fire real projectiles.\nDefeat the hunter to win; your elimination loses. Doors need bed progression.\nM switches between focused play and the strategic overview.\nEscape closes cards first, then pauses. Help/G toggles the short guide.",Vector2(125,156),19,1020)
@@ -282,6 +297,10 @@ func show_settings():
  current_screen="settings"
  if game.mobile_mode:
   game.mobile_ui.show_settings(self)
+  return
+ if use_tactical_ui():
+  tactical_settings=preload("res://scripts/tactical_settings.gd").new(self)
+  tactical_settings.open(show_menu)
   return
  game.audio_event("menu")
  var living := use_living_ui()
@@ -412,10 +431,35 @@ func show_settings():
  if game.profile.warning!="":
   label_at(game.profile.warning,Vector2(376,605) if living else Vector2(150,540),14,740 if living else 960)
 
+func open_match_settings() -> void:
+ if tactical_hud==null or tactical_settings!=null:return
+ tactical_hud.dismiss()
+ if game.construction.active():game.cancel_placement()
+ var resume: bool=game.model.running
+ game.model.running=false
+ tactical_settings=preload("res://scripts/tactical_settings.gd").new(self)
+ tactical_settings.open(func():
+  tactical_settings=null
+  game.model.running=resume and game.model.result.is_empty()
+  tactical_hud.more.grab_focus()
+  update_match())
+
+func close_tactical_page() -> bool:
+ if tactical_settings!=null:
+  tactical_settings.close()
+  return true
+ if tactical_help!=null:
+  tactical_help.leave()
+  return true
+ if tactical_back.is_valid():
+  tactical_back.call()
+  return true
+ return false
+
 func show_match():
  clear();run_panel=null
  current_screen="match"
- box(Rect2(18,12,1244,64),"203747","607D8B")
+ var top:=box(Rect2(18,12,1244,64),"203747","607D8B")
  var brand=label_at("NIGHTFALL DORM",Vector2(34,23),26,240,true)
  brand.add_theme_font_override("font",horror_font)
  if game.model.run_kind!="campaign":
@@ -425,12 +469,12 @@ func show_match():
  if game.model.run_kind=="endless":
   replay_ui.omen_icon=premium_icon("hell",Vector2(24,50),Vector2(15,15));replay_ui.omen_icon.visible=false
  if CosmeticPresentation.equipped(game,"badge"):premium_icon("reaper_crest",Vector2(242,27),Vector2(27,27))
- premium_icon("gold",Vector2(280,25),Vector2(32,32))
- label_at("GOLD",Vector2(320,14),11,126,true)
+ var gold_icon:=premium_icon("gold",Vector2(280,25),Vector2(32,32))
+ var gold_caption:=label_at("GOLD",Vector2(320,14),11,126,true)
  gold_label=label_at("—",Vector2(320,32),22,126)
  gold_label.modulate=Color("DFC48B")
- premium_icon("power",Vector2(429,23),Vector2(30,36))
- label_at("ELECTRICITY",Vector2(468,14),11,106,true)
+ var power_icon:=premium_icon("power",Vector2(429,23),Vector2(30,36))
+ var power_caption:=label_at("ELECTRICITY",Vector2(468,14),11,106,true)
  power_label=label_at("—",Vector2(468,32),22,106)
  power_label.modulate=Color("8CD6DA")
  phase_label=label_at("",Vector2(576,22),18,120)
@@ -451,7 +495,7 @@ func show_match():
  hunter_detail=label_at("",Vector2(704,58),11,290)
  map_button=button("Map",Vector2(1010,24),game.toggle_map,78,36)
  map_button.tooltip_text="Strategic map / focused room [M]"
- button("Help",Vector2(1098,24),game.toggle_guide,62,36)
+ var help_button:=button("Help",Vector2(1098,24),game.toggle_guide,62,36)
  pause_button=button("Wave" if replay_ui.preparing else "Ⅱ",Vector2(1174,24),replay_ui.show_intermission if replay_ui.preparing else game.toggle_pause,62,36)
  pause_button.tooltip_text="Pause / resume [Esc]"
  guide_box=box(Rect2(20,92,334,112),"294957","7BE3A1")
@@ -610,9 +654,14 @@ func show_match():
    living_dorm_hud.refresh(game.model.player(),action_reason("repair"))
  if game.model.map_data.has("halls"):
   haunted_hud=preload("res://scripts/haunted_hall_hud.gd").new(self)
+ if use_tactical_ui():
+  tactical_hud=preload("res://scripts/tactical_hud.gd").new(self)
+  tactical_hud.install(top,brand,help_button,gold_icon,gold_caption,power_icon,power_caption)
+  tactical_hud.refresh(game.model.player())
 
 func open_build_menu():
  if game.watched_room>=0 or game.model.player()==null:return
+ if tactical_hud!=null:tactical_hud.dismiss("context")
  var room=game.model.player()
  if room.spatial!=null and not game.mobile_mode:
   open_context();context_mode="build";refresh_context();_note_build_open();return
@@ -631,6 +680,7 @@ func _note_build_open() -> void:
 
 func open_context():
  if game.watched_room>=0:return
+ if tactical_hud!=null:tactical_hud.dismiss("context")
  teammates.expanded=false;teammates.update()
  items_ui.expanded=false;help_open=false
  game.cancel_placement()
@@ -643,6 +693,7 @@ func open_context():
 
 func open_room_panel(kind: String):
  if game.watched_room>=0:return
+ if tactical_hud!=null:tactical_hud.dismiss("context")
  teammates.expanded=false;teammates.update()
  if game.model.player()==null: return
  game.cancel_placement()
@@ -795,6 +846,9 @@ func show_pause(open: bool):
  var resume=button("Resume",Vector2(450,329),game.toggle_pause,380,48)
  var menu=button("Return to main menu",Vector2(450,397),game.return_menu,380,48)
  pause_items=[veil,bg,title,subtitle,resume,menu]
+ if tactical_hud!=null:
+  var settings:=button("Settings",Vector2(450,461),open_match_settings,380,44)
+  pause_items.append(settings)
  if game.model.run_kind=="practice":
   var reset=button("Reset Practice",Vector2(450,465),game.reset_practice,380,44)
   pause_items.append(reset)
@@ -1043,6 +1097,7 @@ func update_match():
  RunChoiceInterface.refresh(self)
  if not game.mobile_mode:teammates.update()
  if haunted_hud!=null:haunted_hud.update()
+ if tactical_hud!=null:tactical_hud.refresh(room)
 
 func _refresh_match_action(action: String, room: RoomState):
  var button: Button=actions[action]

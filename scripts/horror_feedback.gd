@@ -333,6 +333,8 @@ func visible_hud(ui) -> Array[Rect2]:
  var reserved: Array[Rect2]=[]
  var controls: Array=[ui.guide_box,ui.warning_box,ui.context_box,ui.run_panel,
   ui.grid_placement_banner,ui.ward_button,ui.upgrade_notice]
+ if ui.tactical_hud!=null:
+  controls.append_array([ui.tactical_hud.menu,ui.tactical_hud.objective,ui.items_ui.drawer,ui.room_door_summary])
  if ui.teammates!=null:
   controls.append_array([ui.teammates.body,ui.teammates.watching])
  if ui.haunted_hud!=null:controls.append(ui.haunted_hud.banner)

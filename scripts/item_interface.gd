@@ -20,6 +20,7 @@ var inspected_slot:=-1
 var legendary_banner
 var legendary_name
 var observed_effects
+var inventory_menu
 func _init(owner): ui=owner; game=ui.game
 func art(id,pos,size=52):
  var icon=TextureRect.new()
@@ -31,6 +32,10 @@ func art(id,pos,size=52):
  ui.panel.add_child(icon)
  return icon
 func inventory():
+ if ui.use_tactical_ui():
+  inventory_menu=preload("res://scripts/tactical_inventory.gd").new(ui)
+  inventory_menu.open()
+  return
  ui.clear(); ui.current_screen="inventory"
  var living: bool=ui.use_living_ui()
  if living:
@@ -258,8 +263,9 @@ func update(delta):
    elif reason!="" and fx.cooldown<=0:state="UNAVAILABLE"
   if drawer!=null:
    hotbar[i].text="%s  ×%d" % [ItemCatalog.ITEMS[id].name,quantity]
-   hotbar[i].position=Vector2(12+i*148,39)
-   hotbar[i].size=Vector2(144,42)
+   var step:=189 if ui.use_tactical_ui() else 148
+   hotbar[i].position=Vector2(12+i*step,44 if ui.use_tactical_ui() else 39)
+   hotbar[i].size=Vector2(step-4,44)
    hotbar[i].clip_text=true
    if i==inspected_slot:
     drawer_description.text=ItemCatalog.ITEMS[id].name+"\n"+ItemCatalog.ITEMS[id].description
@@ -290,7 +296,7 @@ func update(delta):
 Target %s · Map / M to locate" % [fx.timers.radar,game.model.hunter.level,game.model.hunter.position.x,game.model.hunter.position.y,"Room %d" % (game.model.hunter.target+1) if game.model.hunter.target>=0 else "seeking"] if float(fx.timers.get("radar",0))>0 else ""
 
 func create_drawer() -> void:
- drawer=ui.theme_panel(Rect2(20,145,320,211),"inventory")
+ drawer=ui.theme_panel(Rect2(841,369,407,266) if ui.use_tactical_ui() else Rect2(20,145,320,211),"inventory")
  drawer.visible=false
  drawer.mouse_filter=Control.MOUSE_FILTER_STOP
  ui.theme_label("EQUIPPED ITEMS",Vector2(12,8),15,238,"text",true,drawer)
@@ -304,6 +310,12 @@ func create_drawer() -> void:
  drawer_use.name="use_selected_item"
  drawer_use.disabled=true
  ui.theme_button(drawer_use,"primary")
+ if ui.use_tactical_ui():
+  close.position=Vector2(312,8);close.size=Vector2(81,37);close.add_theme_font_size_override("font_size",16)
+  drawer_description.position=Vector2(15,106);drawer_description.size=Vector2(376,75)
+  drawer_description.add_theme_font_size_override("font_size",18)
+  drawer_status.position=Vector2(15,179);drawer_status.size.x=376
+  drawer_use.position=Vector2(15,215);drawer_use.size=Vector2(376,38)
 
 func select_slot(slot: int) -> void:
  if not is_instance_valid(drawer) or slot<0 or slot>=hotbar.size():return
@@ -321,6 +333,9 @@ func activate_selected() -> void:
  if not targeting:update(0)
 
 func toggle_expanded():
+ if not expanded and ui.tactical_hud!=null:
+  ui.tactical_hud.dismiss("items")
+  if game.construction.active():game.cancel_placement()
  expanded=not expanded
  if is_instance_valid(drawer):
   drawer.visible=expanded

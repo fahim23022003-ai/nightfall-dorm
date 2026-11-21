@@ -14,12 +14,15 @@ var game
 var root: Control
 var title: Label
 var copy: Label
+var exit_action: Callable
+var navigation: Array[Button]=[]
 
 func _init(owner) -> void:
  game=owner
 
-func open() -> void:
+func open(pausing: bool=true,on_exit: Callable=Callable()) -> void:
  var ui=game.ui
+ exit_action=game.close_pausing_help if pausing else on_exit
  root=Control.new()
  root.name="PausingHelp"
  root.size=Vector2(1280,720)
@@ -29,19 +32,25 @@ func open() -> void:
  ui.box(Rect2(0,0,1280,720),"111722","111722",root).mouse_filter=Control.MOUSE_FILTER_STOP
  ui.theme_panel(Rect2(117,75,1046,568),"settings",root)
  ui.theme_label("SURVIVAL GUIDE",Vector2(153,104),34,845,"text",true,root)
- ui.theme_label("MATCH PAUSED",Vector2(153,151),16,845,"gold",true,root)
+ if pausing:ui.theme_label("MATCH PAUSED",Vector2(153,151),16,845,"gold",true,root)
  for index in range(PAGES.size()):
   var tab: Button=ui.button(PAGES[index][0],Vector2(154,196+index*49),func():select(index),275,43,root)
   ui.theme_button(tab,"settings")
+  navigation.append(tab)
  title=ui.theme_label("",Vector2(462,198),25,650,"text",true,root)
  copy=ui.theme_label("",Vector2(462,243),19,640,"text",false,root)
  copy.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
- var resume: Button=ui.button("Resume game  ·  Esc",Vector2(849,562),game.close_pausing_help,273,48,root)
+ if ui.use_tactical_ui():
+  copy.add_theme_font_size_override("font_size",20)
+  for tab in navigation:tab.alignment=HORIZONTAL_ALIGNMENT_LEFT
+ var resume: Button=ui.button("Resume game [Esc]" if pausing else "Back [Esc]",Vector2(849,562),leave,273,48,root)
  ui.theme_button(resume,"primary")
  resume.grab_focus()
  select(0)
 
 func select(index: int) -> void:
+ if game.ui.use_tactical_ui():
+  for i in range(navigation.size()):game.ui.theme_button(navigation[i],"settings" if i==index else "secondary")
  title.text=PAGES[index][0]
  copy.text=PAGES[index][1]
  if index==4:
@@ -53,6 +62,9 @@ func select(index: int) -> void:
     if DamageRules.multiplier(element,affinity)>1.0:counters.append(element.capitalize())
    lines.append("%s · %s%s" % [HunterIdentity.display(id),affinity.capitalize()," · Vulnerable to "+", ".join(counters) if not counters.is_empty() else ""])
   copy.text+="\n\n"+ "\n".join(lines)+"\n\nStrong elements deal +15%; resisted elements deal −10%."
+
+func leave() -> void:
+ if exit_action.is_valid():exit_action.call()
 
 func close() -> void:
  if is_instance_valid(root):

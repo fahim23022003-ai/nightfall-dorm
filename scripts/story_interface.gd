@@ -77,6 +77,9 @@ func show_prepare():
  launch.disabled=p.read_only and not track.finished
 
 func _show_preparation(profile: PlayerProfile, mode: String, track: Dictionary, mission: Dictionary):
+ if ui.use_tactical_ui():
+  _show_tactical_preparation(profile,mode,track,mission)
+  return
  ui.theme_backdrop()
  ui.theme_panel(Rect2(72,46,1136,628),"story" if ui.use_living_dorm() else "frame")
  _line("STORY PREPARATION   ·   CHAPTER %02d  /  %s" % [mission.chapter,mission.chapter_title.to_upper()],Vector2(110,78),15,986,GOLD)
@@ -130,6 +133,50 @@ func _show_preparation(profile: PlayerProfile, mode: String, track: Dictionary, 
  var launch: Button=ui.button("STORY ARCHIVE" if track.finished else "START MATCH",Vector2(832,600),func():_launch(mode,track.finished),338,49)
  launch.name="StartStoryMission"
  launch.disabled=profile.read_only and not track.finished
+ ui.theme_button(launch,"primary","play")
+ launch.grab_focus()
+
+func _show_tactical_preparation(profile: PlayerProfile,mode: String,track: Dictionary,mission: Dictionary) -> void:
+ ui.tactical_back=game.return_menu
+ ui.theme_backdrop()
+ ui.theme_panel(Rect2(78,47,1124,626),"frame")
+ _line("Chapter %02d · %s" % [mission.chapter,mission.chapter_title],Vector2(112,73),19,925,GOLD)
+ _line("Level %02d · %s" % [mission.level,mission.title],Vector2(109,106),47,1034,"F7F2E9",true)
+ _line("%d / 50 cleared · Checkpoint %02d" % [track.highest,track.checkpoint],Vector2(113,169),18,937,BODY)
+ _progress(track.highest,Vector2(113,203),1051)
+ for i in range(MODES.size()):
+  var id: String=MODES[i]
+  var progress: Dictionary=StoryProgress.summary(profile.story,id)
+  var status: String="Cleared" if progress.finished else "Level %02d" % progress.position
+  var key: Button=ui.button("%s · %s" % [RankCatalog.DIFFICULTIES[id].name,status],Vector2(113+i*354,227),func():_select(id),340,49)
+  key.name="StoryDifficulty_"+id
+  key.toggle_mode=true
+  key.button_pressed=id==mode
+  key.disabled=profile.read_only
+  ui.theme_button(key,"selected" if id==mode else "secondary",id)
+ ui.theme_panel(Rect2(113,298,611,258),"card")
+ _line("Mission",Vector2(136,312),22,560,GOLD)
+ _paragraph(StoryCatalog.ENDING if track.finished else mission.briefing,Rect2(136,352,564,88),19,"F7F2E9").name="StoryBriefing"
+ if not track.finished:
+  var route: String=MapCatalog.map(mission.theme).title
+  if game.model.procedural_v2_requested:route+=" · "+mission.topology.replace("_"," ").capitalize()
+  _line(route,Vector2(136,451),17,560,BODY).name="StoryRoutePreview"
+  _line(_encounter_summary(mission,mode),Vector2(136,488),17,560,GOLD).name="StoryEncounterTiming"
+ ui.theme_panel(Rect2(743,298,421,258),"card")
+ _line("Loadout",Vector2(768,312),22,369,GOLD)
+ var items:=PackedStringArray()
+ for id in profile.item_loadout:items.append(ItemCatalog.ITEMS[id].name)
+ _paragraph(", ".join(items) if not items.is_empty() else "No consumables equipped",Rect2(768,356,367,60),19,"F7F2E9")
+ _line("%s · %d/%d perks" % [profile.rank_name(),profile.equipped.size(),profile.perk_slots()],Vector2(768,423),18,367,BODY)
+ ui.theme_button(ui.button("Edit items",Vector2(768,488),ui.items_ui.inventory,176,43),"inventory","inventory")
+ ui.theme_button(ui.button("Rank perks",Vector2(960,488),ui.progression.show_perk_loadout,177,43),"secondary","rank")
+ var feedback: String=notice if notice!="" else profile.warning
+ if feedback!="":_line(feedback,Vector2(113,557),16,1030,GOLD).clip_text=true
+ ui.theme_button(ui.button("Back [Esc]",Vector2(113,605),game.return_menu,186,43),"quiet")
+ var launch: Button=ui.button("Story Archive" if track.finished else "Start Match",Vector2(833,594),func():_launch(mode,track.finished),331,55)
+ launch.name="StartStoryMission"
+ launch.disabled=profile.read_only and not track.finished
+ launch.add_theme_font_size_override("font_size",22)
  ui.theme_button(launch,"primary","play")
  launch.grab_focus()
 
@@ -295,7 +342,8 @@ func _show_chapter_result(mission: Dictionary, result: Dictionary, mode: String,
 
 func _show_player_first_result(mission: Dictionary, result: Dictionary, won: bool) -> void:
  ui.theme_backdrop()
- ui.theme_panel(Rect2(128,46,1024,630),"story" if won else "danger")
+ var tactical: bool=ui.use_tactical_ui()
+ ui.theme_panel(Rect2(128,46,1024,630),"frame" if tactical else "story" if won else "danger")
  ui.premium_icon("rank" if won else "hell",Vector2(174,88),Vector2(82,82))
  _line("VICTORY" if won else "NIGHT LOST",Vector2(276,81),42,814,"FFF1BE" if won else "FFD3D9",true)
  _line("Level %02d · %s · %s" % [mission.level,mission.title,mission.chapter_title],Vector2(280,145),18,800,"F7F1E7")
@@ -306,7 +354,7 @@ func _show_player_first_result(mission: Dictionary, result: Dictionary, won: boo
  for index in range(values.size()):
   var origin:=Vector2(176+index*314,202)
   ui.theme_panel(Rect2(origin,Vector2(302,103)),"card")
-  _line(values[index],origin+Vector2(18,13),24,270,GOLD,true)
+  _line(values[index],origin+Vector2(18,13),29 if tactical else 24,270,GOLD,not tactical)
   _line(subtitles[index],origin+Vector2(18,53),16,270,BODY)
  _line("Story complete at Level 50" if result.finished else "Story level %02d → %02d · %s" % [mission.level,result.position,result.next_title],Vector2(176,333),23,930,"F7F1E7",true)
  var milestone: bool=won and mission.level%StoryCatalog.CHAPTER_LENGTH==0 and result.checkpoint>=mission.level
@@ -331,6 +379,7 @@ func _show_player_first_result(mission: Dictionary, result: Dictionary, won: boo
 
 func show_timeline() -> void:
  _begin_screen("match_timeline")
+ if ui.use_tactical_ui():ui.tactical_back=show_result
  ui.theme_backdrop()
  ui.theme_panel(Rect2(178,61,924,600),"settings")
  _line("MATCH TIMELINE",Vector2(222,88),36,840,"F7F1E7",true)

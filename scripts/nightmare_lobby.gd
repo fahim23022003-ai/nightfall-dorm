@@ -249,6 +249,12 @@ func _button(caption: String, rect: Rect2, primary: bool) -> Button:
  focus.set_border_width_all(2)
  focus.set_expand_margin_all(3.0)
  button.add_theme_stylebox_override("focus",focus)
+ if GothicTheme.tactical_enabled():
+  var role: String="primary" if primary else "quiet"
+  for state in ["normal","hover","pressed","disabled","focus"]:
+   button.add_theme_stylebox_override(state,GothicTheme.living_surface(role,state))
+  for state in ["font_color","font_focus_color","font_hover_color","font_pressed_color"]:
+   button.add_theme_color_override(state,GothicTheme.TACTICAL_COLORS.text)
  add_child(button)
  return button
 
@@ -276,7 +282,7 @@ func _draw():
 
 func _draw_hunter():
  var panel:=Rect2(39,29,352,238)
- draw_rect(panel,Color("1A262B"))
+ draw_rect(panel,GothicTheme.TACTICAL_COLORS.panel if GothicTheme.tactical_enabled() else Color("1A262B"))
  draw_rect(panel.grow(-13),Color("303838"),false,1.0)
  var center:=Vector2(218,149)
  draw_circle(center,88.0,Color(.57,.36,.20,.15))
@@ -303,7 +309,9 @@ func _draw_card(index: int):
  var phase:=int(_phases[index-1]) if not human and _phases.size()==5 else 0
  var ready:=human_ready if human else phase==2
  var edge:=GOLD if human else Color("677E70") if ready else Color("415357")
- draw_rect(rect,Color("1D2A32") if human else Color("18242B"))
+ var surface: Color=Color("1D2A32") if human else Color("18242B")
+ if GothicTheme.tactical_enabled():surface=GothicTheme.TACTICAL_COLORS.card if human else GothicTheme.TACTICAL_COLORS.panel
+ draw_rect(rect,surface)
  draw_rect(rect,edge,false,1.0)
  draw_rect(Rect2(rect.position,Vector2(rect.size.x,3)),edge)
  var center:=rect.position+Vector2(95,73)
@@ -322,7 +330,8 @@ func _draw_countdown():
  _center_text(label,Vector2(0,577),1280,19,IVORY)
  var ready_count:=ready_ai_count()+int(human_ready)
  _text("%d / 6 READY"%ready_count,Vector2(1081,631),16,READY_COLOR if ready_count==6 else MUTED)
- _text("%d / 5 AI ready"%ready_ai_count(),Vector2(1084,650),12,MUTED)
+ if not GothicTheme.tactical_enabled():
+  _text("%d / 5 AI ready"%ready_ai_count(),Vector2(1084,650),12,MUTED)
 
 func _fit_texture(texture: Texture2D, bounds: Rect2, tint: Color):
  if texture==null:

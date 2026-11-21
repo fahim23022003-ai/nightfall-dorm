@@ -225,7 +225,14 @@ func handle(event) -> bool:
   if event.keycode==KEY_F and not room().spatial.grid and (active() or planning):toggle_snap();return true
  if event is InputEventMouseMotion:
   var at:=from_screen(event.position)
-  if active():cursor_world=at;point=aligned(at,event.shift_pressed)
+  if active():
+   cursor_world=at
+   var next:=aligned(at,event.shift_pressed)
+   if next!=point:
+    point=next
+    if game.ui.tactical_hud!=null:
+     refresh()
+     game.ui.tactical_hud.refresh(room())
   else: hover=room().spatial.hit_test(at)
   game.queue_redraw()
  if event is InputEventMouseButton and event.pressed and event.button_index==MOUSE_BUTTON_LEFT:
@@ -249,7 +256,7 @@ func update(delta: float):
   refresh();return
  if moving>=0 and room().spatial.moving_id!=moving:cancel()
  if active() and not room().spatial.grid:point=aligned(from_screen(game.get_viewport().get_mouse_position()),Input.is_physical_key_pressed(KEY_SHIFT))
- refresh()
+ if game.ui.tactical_hud==null:refresh()
 func refresh():
  if not is_instance_valid(status):return
  var r=room();var visible=applicable() and game.ui.current_screen=="match"
@@ -269,6 +276,10 @@ func refresh():
  status.visible=display;plan_button.visible=display;snap_button.visible=display and not grid
  rotate_button.visible=visible and grid and active()
  hint.visible=visible and active()
+ if game.ui.tactical_hud!=null:
+  hint.hide()
+  status.hide()
+  if active():plan_button.hide();snap_button.hide()
  move_button.visible=visible and game.ui.context_open and game.ui.context_mode=="upgrade" and r.buildings.has(game.selected_tile)
  undo_button.visible=visible and game.ui.context_open and game.ui.context_mode=="upgrade"
  undo_button.disabled=not undo_button.visible or r.spatial.undo_reason(game.model)!=""
@@ -279,7 +290,7 @@ func refresh():
  if not visible:return
  status.position=Vector2(20,572) if grid else Vector2(357,143)
  plan_button.position=Vector2(20,605) if grid else Vector2(665,140)
- rotate_button.position=Vector2(143,605) if grid else Vector2(782,140)
+ if game.ui.tactical_hud==null:rotate_button.position=Vector2(143,605) if grid else Vector2(782,140)
  status.text="Floor plan" if grid else "BUILDINGS %d / %d · %s" % [r.buildings.size(),r.tile_count(),RoomExpansion.NAMES[r.expansion_tier]]
  plan_button.text="Close plan [P]" if planning else "Plan [P]";snap_button.text="Snap 8: %s [F]" % ("ON" if snap else "OFF")
  if move_button.visible:
@@ -304,10 +315,11 @@ func refresh():
   var controls=("Click to place · " if current_preview_error=="" else "")+"Q / Shift+Q rotate\nEsc / right-click cancels" if grid else "Click place · Esc / right cancel · Shift fine · F snap · O range"
   if grid and game.tutorial_active and game.survivor_preview_enabled:
    controls=("Click to place · " if current_preview_error=="" else "")+"Q rotates · Cancel / Esc closes"
-  hint.position=Vector2(20,349) if grid else Vector2(355,600)
-  hint.size=Vector2(320,108) if grid else Vector2(550,42)
-  hint.text=title+"\n"+("Valid floor" if error=="" else error)+"\n"+controls
-  hint.modulate=Color("B9E0D3") if current_preview_error=="" else Color("F0B1B7")
+  if game.ui.tactical_hud==null:
+   hint.position=Vector2(20,349) if grid else Vector2(355,600)
+   hint.size=Vector2(320,108) if grid else Vector2(550,42)
+   hint.text=title+"\n"+("Valid floor" if error=="" else error)+"\n"+controls
+   hint.modulate=Color("B9E0D3") if current_preview_error=="" else Color("F0B1B7")
 func rendered_position(r,id: int) -> Vector2:
  if not last_visual.is_empty() and r==room() and last_visual.id==id and r.buildings.has(id) and int(r.buildings[id].instance_id)==last_visual.instance and not CinematicQuality.reduced_motion(game):return last_visual.from.lerp(last_visual.to,1-pow(last_visual.life/.22,3))
  return r.tile_position(id)

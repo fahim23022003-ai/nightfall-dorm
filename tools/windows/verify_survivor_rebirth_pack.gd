@@ -23,6 +23,11 @@ func run():
  if is_instance_valid(game.onboarding):
   game.onboarding.skip()
   game.onboarding.close_welcome()
+ if OS.get_environment("NIGHTFALL_TACTICAL_UI")=="1":
+  check(game.ui.use_tactical_ui(),"desktop tactical UI activates from exported launcher flags")
+  game.ui.show_settings()
+  check(game.ui.panel.find_child("TacticalSettings",true,false)!=null,"export instantiates the six-category settings view")
+  check(game.ui.close_tactical_page(),"actual Back restores the embedded main menu")
  game.enter_game()
  check(game.ui.current_screen=="story_prepare","Open current Story preparation")
  check(game.open_story_lobby("standard"),"Load the bundled Story lobby")
@@ -74,6 +79,8 @@ func run():
   if OS.get_environment("NIGHTFALL_PLAYER_FIRST")=="1":
    check(game.model.uses_player_door_survival(),"Phase 20 door rules are active in Story")
    check(game.profile.settings.adaptive_performance,"Adaptive performance starts enabled")
+  if OS.get_environment("NIGHTFALL_TACTICAL_UI")=="1":
+   check(game.ui.tactical_hud!=null and is_instance_valid(game.ui.tactical_hud.more),"live Story uses the tactical HUD")
  game.return_menu()
  game.audio_system.shutdown()
  await create_timer(.5).timeout

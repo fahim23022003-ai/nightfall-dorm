@@ -26,6 +26,7 @@ func create():
  home=ui.button("My Room · Home",Vector2(188,658),game.return_to_my_room,180,38)
  update()
 func toggle_panel():
+ if not expanded and ui.tactical_hud!=null:ui.tactical_hud.dismiss("team")
  expanded=not expanded
  if expanded:game.cancel_placement();ui.close_context();ui.items_ui.expanded=false
  update()
