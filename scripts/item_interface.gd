@@ -186,9 +186,13 @@ func create_hotbar():
   if game.model.player_first_requested and not game.mobile_mode:
    item_toggle.position=Vector2(929,658)
    item_toggle.size=Vector2(116,38)
+   item_toggle.expand_icon=true
+   item_toggle.add_theme_constant_override("icon_max_width",16)
+   item_toggle.add_theme_constant_override("h_separation",5)
    item_toggle.add_theme_font_size_override("font_size",14)
+   item_toggle.tooltip_text="Inspect equipped items [I]"
  var equipped=game.item_wallet().active_match.get("items",[])
- if game.model.player_first_requested:item_toggle.text="Items · %d [I]" % equipped.size()
+ if game.model.player_first_requested:item_toggle.text="Items ×%d" % equipped.size()
  for i in range(equipped.size()):
   var slot=i
   var b=ui.button("",Vector2(20+i*82,88),func(): select_slot(slot) if ui.use_living_dorm() else game.activate_item(slot),78,44)
@@ -320,7 +324,7 @@ func toggle_expanded():
  expanded=not expanded
  if is_instance_valid(drawer):
   drawer.visible=expanded
-  item_toggle.text=("Close [I]" if game.model.player_first_requested else "Close items [I]") if expanded else "Items · %d [I]" % hotbar.size() if game.model.player_first_requested else "Items [I]"
+  item_toggle.text=("Close [I]" if game.model.player_first_requested else "Close items [I]") if expanded else "Items ×%d" % hotbar.size() if game.model.player_first_requested else "Items [I]"
   if expanded and hotbar.is_empty():drawer_description.text="No consumables equipped for this match."
 
  if expanded:

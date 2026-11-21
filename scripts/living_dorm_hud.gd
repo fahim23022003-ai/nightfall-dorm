@@ -24,6 +24,7 @@ func install() -> void:
  ui.theme_button(ui.room_door_summary,"protection")
  if ui.game.model.player_first_requested:
   ui.room_door_summary.icon=null
+  ui.room_door_summary.clip_text=true
   ui.room_door_summary.add_theme_font_size_override("font_size",13)
  meter=ProgressBar.new()
  meter.name="player_door_integrity"
@@ -102,8 +103,10 @@ func refresh(room, repair_reason: String) -> void:
  ui.quick_repair.tooltip_text=repair_reason if repair_reason!="" else "Repair your door [R]"
  if ui.game.model.uses_player_door_survival():
   var recovery: PlayerDoorSurvival=ui.game.model.door_survival
-  ui.room_door_summary.text+=" · Armor %d%%" % roundi(PlayerDoorSurvival.armor(room.door_level)*100)
-  ui.room_door_summary.tooltip_text+=" · Physical armor"
+  var armor:=roundi(PlayerDoorSurvival.armor(room.door_level)*100)
+  if hp01>0.0:
+   ui.room_door_summary.text="%d/%d HP · Armor %d%%" % [roundi(room.door_hp),roundi(room.max_hp()),armor]
+  ui.room_door_summary.tooltip_text+=" · %d%% HP · %d%% physical armor" % [roundi(hp01*100),armor]
   if room.fear_bed_multiplier>1.0:
    ui.room_bed_summary.text="Fear ×1.5 · %.1f G/s" % (room.income_rate()*room.fear_bed_multiplier)
    ui.room_bed_summary.tooltip_text="Main Hunter siege grants +50% Bed Gold. Electricity is unchanged."
