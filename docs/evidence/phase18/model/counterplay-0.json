@@ -1,0 +1,5157 @@
+{
+  "arm": "v23",
+  "cases": [
+    {
+      "all_npcs_slept": true,
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_2",
+        "hell",
+        10358,
+        1,
+        "walk_early_bed"
+      ],
+      "control_hits": 18,
+      "decision_timeline": [
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1.72749999999998,
+          "power_after_tick": 0.0,
+          "spent_gold": 30.0,
+          "spent_power": 0.0,
+          "time": 6.75,
+          "type": "bed_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1.07999999999976,
+          "power_after_tick": 0.0,
+          "spent_gold": 85.0,
+          "spent_power": 0.0,
+          "time": 31.05,
+          "type": "bed_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 3.33999999999974,
+          "power_after_tick": 0.0,
+          "spent_gold": 35.0,
+          "spent_power": 0.0,
+          "time": 36.45,
+          "type": "door_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1.96999999999975,
+          "kind": "turret",
+          "power_after_tick": 0.0,
+          "spent_gold": 20.0,
+          "spent_power": 0.0,
+          "time": 39.15,
+          "type": "build"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 6.80999999999975,
+          "kind": "turret",
+          "power_after_tick": 0.0,
+          "spent_gold": 20.0,
+          "spent_power": 0.0,
+          "time": 42.75,
+          "type": "build"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 5.43999999999975,
+          "kind": "turret",
+          "power_after_tick": 0.0,
+          "spent_gold": 20.0,
+          "spent_power": 0.0,
+          "time": 45.45,
+          "type": "build"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 33.0568128,
+          "gold_after_tick": 23.0349999999998,
+          "hp": 266.9431872,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 48.0,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 33.12467136,
+          "gold_after_tick": 37.5249999999997,
+          "hp": 233.81851584,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 50.1,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 28.6999999999997,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 50.85,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 52.60088592,
+          "gold_after_tick": 44.2249999999997,
+          "hp": 247.39911408,
+          "power_after_tick": 0.0,
+          "source": "charged heavy strike",
+          "time": 53.1,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 27.7614216,
+          "gold_after_tick": 63.8899999999996,
+          "hp": 219.63769248,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 55.95,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 51.9599999999996,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 56.25,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 27.8058528,
+          "gold_after_tick": 61.2749999999996,
+          "hp": 261.83183968,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 57.6,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 52.96158648,
+          "gold_after_tick": 78.8699999999995,
+          "hp": 208.8702532,
+          "power_after_tick": 0.0,
+          "source": "charged heavy strike",
+          "time": 60.15,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 69.0099999999995,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 60.75,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 27.951264,
+          "gold_after_tick": 84.5349999999995,
+          "hp": 250.9189892,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 63.0,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 6.26999999999939,
+          "power_after_tick": 0.0,
+          "spent_gold": 100.0,
+          "spent_power": 0.0,
+          "time": 66.15,
+          "type": "door_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 4.2599999999991,
+          "kind": "generator",
+          "power_after_tick": 0.081,
+          "spent_gold": 120.0,
+          "spent_power": 0.0,
+          "time": 83.25,
+          "type": "build"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 69.8299999999988,
+          "kind": "turret",
+          "level": 2,
+          "power_after_tick": 0.343000000000016,
+          "spent_gold": 40.0,
+          "spent_power": 8.0,
+          "time": 98.55,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 160.079999999998,
+          "kind": "repair",
+          "power_after_tick": 0.493000000000008,
+          "spent_gold": 65.0,
+          "spent_power": 12.0,
+          "time": 121.05,
+          "type": "build"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 75.3299999999994,
+          "power_after_tick": 0.175499999999989,
+          "spent_gold": 240.0,
+          "spent_power": 10.0,
+          "time": 143.55,
+          "type": "door_upgrade"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 123.356106259551,
+          "gold_after_tick": 104.309999999999,
+          "hp": 976.643893740449,
+          "power_after_tick": 2.44349999999999,
+          "source": "door strike",
+          "time": 147.75,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 88.3799999999993,
+          "power_after_tick": 2.60549999999999,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 148.05,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 76.5899999999993,
+          "power_after_tick": 3.09149999999999,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 148.95,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 127.072362836461,
+          "gold_after_tick": 81.7649999999993,
+          "hp": 972.771530903988,
+          "power_after_tick": 3.49649999999999,
+          "source": "door strike",
+          "time": 149.7,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 64.7999999999993,
+          "power_after_tick": 3.57749999999999,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 149.85,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 53.0099999999993,
+          "power_after_tick": 4.06349999999999,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 150.75,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 202.887201224161,
+          "gold_after_tick": 65.4299999999992,
+          "hp": 880.484329679828,
+          "power_after_tick": 5.03549999999999,
+          "source": "charged heavy strike",
+          "time": 152.55,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 53.6399999999992,
+          "power_after_tick": 5.5215,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 153.45,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 41.8499999999992,
+          "power_after_tick": 6.0075,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 154.35,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 30.0599999999992,
+          "power_after_tick": 6.4935,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 155.25,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 107.038436472,
+          "gold_after_tick": 30.0599999999992,
+          "hp": 909.945893207827,
+          "power_after_tick": 6.4935,
+          "source": "door strike",
+          "time": 155.25,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 18.2699999999992,
+          "power_after_tick": 6.9795,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 156.15,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 107.1946969632,
+          "gold_after_tick": 23.4449999999992,
+          "hp": 848.251196244627,
+          "power_after_tick": 7.3845,
+          "source": "door strike",
+          "time": 156.9,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 6.47999999999917,
+          "power_after_tick": 7.4655,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 157.05,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 12.6899999999992,
+          "power_after_tick": 1.95150000000001,
+          "time": 157.95,
+          "type": "emergency_ward"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 144.128761854241,
+          "gold_after_tick": 23.0399999999992,
+          "hp": 749.622434390386,
+          "power_after_tick": 2.76150000000001,
+          "source": "charged heavy strike",
+          "time": 159.45,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 7.10999999999917,
+          "power_after_tick": 2.92350000000001,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 159.75,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1.52999999999917,
+          "power_after_tick": 3.89550000000001,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 161.55,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 107.6918894352,
+          "gold_after_tick": 5.66999999999917,
+          "hp": 732.930544955186,
+          "power_after_tick": 4.21950000000001,
+          "source": "door strike",
+          "time": 162.15,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 223.399999999999,
+          "kind": "turret",
+          "level": 3,
+          "power_after_tick": 0.242499999999874,
+          "spent_gold": 70.0,
+          "spent_power": 14.0,
+          "time": 203.85,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 288.970000000001,
+          "kind": "turret",
+          "level": 2,
+          "power_after_tick": 0.241999999999889,
+          "spent_gold": 40.0,
+          "spent_power": 8.0,
+          "time": 219.15,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 473.580000000005,
+          "kind": "turret",
+          "level": 3,
+          "power_after_tick": 0.550499999999813,
+          "spent_gold": 70.0,
+          "spent_power": 14.0,
+          "time": 256.05,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 532.940000000004,
+          "kind": "turret",
+          "level": 2,
+          "power_after_tick": 0.326499999999829,
+          "spent_gold": 40.0,
+          "spent_power": 8.0,
+          "time": 270.45,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 643.029999999999,
+          "kind": "turret",
+          "level": 3,
+          "power_after_tick": 0.420499999999809,
+          "spent_gold": 70.0,
+          "spent_power": 14.0,
+          "time": 296.55,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 636.229999999993,
+          "power_after_tick": 0.486499999999783,
+          "spent_gold": 200.0,
+          "spent_power": 15.0,
+          "time": 324.45,
+          "type": "bed_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 923.179999999998,
+          "kind": "frost",
+          "power_after_tick": 0.46849999999974,
+          "spent_gold": 96.0,
+          "spent_power": 18.0,
+          "time": 357.75,
+          "type": "build"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 106.263238399999,
+          "gold_after_tick": 1211.25499999999,
+          "hp": 993.736761600001,
+          "power_after_tick": 13.9429999999997,
+          "source": "Phantom Scream",
+          "time": 382.8,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1194.97999999999,
+          "power_after_tick": 13.9714999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 382.95,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1187.32999999999,
+          "power_after_tick": 14.1424999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 383.85,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 411.777091252796,
+          "gold_after_tick": 1197.67999999999,
+          "hp": 683.982920347204,
+          "power_after_tick": 14.3134999999997,
+          "source": "siege",
+          "time": 384.75,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1190.02999999999,
+          "power_after_tick": 14.4844999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 385.65,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1182.37999999999,
+          "power_after_tick": 14.6554999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 386.55,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 296.421872807967,
+          "gold_after_tick": 1185.82999999999,
+          "hp": 488.116047539237,
+          "power_after_tick": 14.7124999999997,
+          "source": "scythe",
+          "time": 386.85,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1174.72999999999,
+          "power_after_tick": 14.8264999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 387.45,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1167.07999999999,
+          "power_after_tick": 14.9974999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 388.35,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1159.42999999999,
+          "power_after_tick": 15.1684999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 389.25,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1151.77999999999,
+          "power_after_tick": 15.3394999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 390.15,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1140.67999999998,
+          "power_after_tick": 15.3484999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 391.05,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1122.67999999998,
+          "power_after_tick": 15.0334999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 391.95,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 297.531944806587,
+          "gold_after_tick": 1122.67999999998,
+          "hp": 486.78910273265,
+          "power_after_tick": 15.0334999999997,
+          "source": "scythe",
+          "time": 391.95,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1104.67999999998,
+          "power_after_tick": 14.7184999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 392.85,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1086.67999999998,
+          "power_after_tick": 14.4034999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 393.75,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1068.67999999998,
+          "power_after_tick": 14.0884999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 394.65,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1050.67999999998,
+          "power_after_tick": 13.7734999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 395.55,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1024.67999999998,
+          "power_after_tick": 11.4584999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 396.45,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1013.57999999998,
+          "power_after_tick": 11.4674999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 397.35,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1005.92999999998,
+          "power_after_tick": 11.6384999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 398.25,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1285.22999999997,
+          "kind": "heavy",
+          "power_after_tick": 0.188999999999649,
+          "spent_gold": 114.0,
+          "spent_power": 18.0,
+          "time": 432.45,
+          "type": "build"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 110.313262399998,
+          "gold_after_tick": 1309.37999999996,
+          "hp": 961.990840332641,
+          "power_after_tick": 1.32299999999965,
+          "source": "Phantom Scream",
+          "time": 434.55,
+          "type": "door_damage"
+        }
+      ],
+      "eliminations": 4,
+      "event_counts": {
+        "approach": 10,
+        "arcane_impact": 4,
+        "archetype_warning": 43,
+        "bed_upgrade": 17,
+        "boss_ability_activate": 16,
+        "boss_ability_end": 4,
+        "boss_ability_warning": 19,
+        "boss_awakened": 1,
+        "boss_death": 1,
+        "boss_impact": 15,
+        "boss_phase": 2,
+        "boss_resource_drain": 1,
+        "boss_surge": 4,
+        "boss_transform": 1,
+        "boss_warning": 22,
+        "build": 24,
+        "building_destroyed": 1,
+        "building_upgrade": 26,
+        "charged_attack": 12,
+        "door_break": 5,
+        "door_damage": 152,
+        "door_upgrade": 16,
+        "elimination": 4,
+        "emergency_ward": 1,
+        "emergency_ward_hit": 1,
+        "encounter": 11,
+        "hunter_ability": 15,
+        "hunter_ability_warning": 17,
+        "hunter_commit": 1,
+        "hunter_evolved": 4,
+        "hunter_reassess": 2,
+        "hunter_recovering": 1,
+        "hunter_recovery": 12,
+        "hunter_recovery_ended": 1,
+        "hunter_retreat": 1,
+        "nightmare_impact": 12,
+        "nightmare_level": 6,
+        "nightmare_release": 3,
+        "nightmare_warning": 3,
+        "repair": 99,
+        "scythe_embed": 1,
+        "scythe_end": 1,
+        "scythe_throw": 1,
+        "scythe_tick": 9,
+        "soul_drain": 3,
+        "survivor_attack": 4,
+        "survivor_fear": 5,
+        "undead_attack": 61,
+        "undead_death": 18,
+        "undead_spawn": 26
+      },
+      "events": [
+        {
+          "room": 2,
+          "time": 40.05,
+          "type": "approach"
+        },
+        {
+          "room": 2,
+          "time": 46.2,
+          "type": "encounter"
+        },
+        {
+          "next_room": 5,
+          "reason": "defense_delays_breach",
+          "room": 2,
+          "time": 63.0,
+          "type": "hunter_reassess"
+        },
+        {
+          "room": 6,
+          "time": 63.0,
+          "type": "approach"
+        },
+        {
+          "room": 6,
+          "time": 73.65,
+          "type": "encounter"
+        },
+        {
+          "reason": "breach_progress",
+          "room": 6,
+          "time": 90.45,
+          "type": "hunter_commit"
+        },
+        {
+          "level": 4,
+          "room": 6,
+          "time": 115.05,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 4,
+          "room": 6,
+          "time": 115.05,
+          "type": "nightmare_level"
+        },
+        {
+          "room": 6,
+          "time": 127.95,
+          "type": "door_break"
+        },
+        {
+          "room": 6,
+          "time": 131.7,
+          "type": "elimination"
+        },
+        {
+          "room": 6,
+          "source": "Hunter",
+          "time": 131.7,
+          "type": "hunter_evolved"
+        },
+        {
+          "room": 2,
+          "time": 136.65,
+          "type": "approach"
+        },
+        {
+          "room": 2,
+          "time": 145.95,
+          "type": "encounter"
+        },
+        {
+          "next_room": 0,
+          "reason": "defense_delays_breach",
+          "room": 2,
+          "time": 162.75,
+          "type": "hunter_reassess"
+        },
+        {
+          "room": 1,
+          "time": 162.75,
+          "type": "approach"
+        },
+        {
+          "room": 1,
+          "time": 180.3,
+          "type": "encounter"
+        },
+        {
+          "budget": 0.0,
+          "hall": "south",
+          "healed": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 187.5,
+          "type": "hunter_retreat"
+        },
+        {
+          "budget": 1387.81608979821,
+          "hall": "south",
+          "healed": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 193.2,
+          "type": "hunter_recovering"
+        },
+        {
+          "budget": 1387.81608979821,
+          "hall": "south",
+          "healed": 1387.81608979821,
+          "reason": "completed",
+          "room": 1,
+          "time": 201.3,
+          "type": "hunter_recovery_ended"
+        },
+        {
+          "room": 4,
+          "time": 201.45,
+          "type": "approach"
+        },
+        {
+          "level": 5,
+          "room": 4,
+          "time": 203.7,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 5,
+          "room": 4,
+          "time": 203.7,
+          "type": "nightmare_level"
+        },
+        {
+          "room": 4,
+          "time": 208.35,
+          "type": "encounter"
+        },
+        {
+          "room": 4,
+          "time": 225.9,
+          "type": "door_break"
+        },
+        {
+          "room": 4,
+          "time": 229.65,
+          "type": "elimination"
+        },
+        {
+          "room": 4,
+          "source": "Hunter",
+          "time": 229.65,
+          "type": "hunter_evolved"
+        },
+        {
+          "room": 3,
+          "time": 235.2,
+          "type": "approach"
+        },
+        {
+          "room": 3,
+          "time": 239.4,
+          "type": "encounter"
+        },
+        {
+          "room": 3,
+          "time": 250.05,
+          "type": "boss_transform"
+        },
+        {
+          "room": 3,
+          "time": 252.75,
+          "type": "boss_phase"
+        },
+        {
+          "room": 3,
+          "time": 255.45,
+          "type": "approach"
+        },
+        {
+          "room": 3,
+          "time": 255.45,
+          "type": "encounter"
+        },
+        {
+          "level": 6,
+          "room": 3,
+          "time": 278.7,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 6,
+          "room": 3,
+          "time": 278.7,
+          "type": "nightmare_level"
+        },
+        {
+          "room": 3,
+          "time": 281.1,
+          "type": "door_break"
+        },
+        {
+          "room": 3,
+          "time": 283.8,
+          "type": "elimination"
+        },
+        {
+          "room": 3,
+          "source": "Hunter",
+          "time": 283.8,
+          "type": "hunter_evolved"
+        },
+        {
+          "level": 7,
+          "room": 3,
+          "time": 283.95,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 7,
+          "room": 3,
+          "time": 283.95,
+          "type": "nightmare_level"
+        },
+        {
+          "room": 5,
+          "time": 290.25,
+          "type": "approach"
+        },
+        {
+          "room": 5,
+          "time": 297.45,
+          "type": "encounter"
+        },
+        {
+          "room": 1,
+          "time": 325.35,
+          "type": "approach"
+        },
+        {
+          "room": 1,
+          "time": 339.3,
+          "type": "encounter"
+        },
+        {
+          "room": 1,
+          "time": 351.75,
+          "type": "door_break"
+        },
+        {
+          "level": 8,
+          "room": 1,
+          "time": 353.85,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 8,
+          "room": 1,
+          "time": 353.85,
+          "type": "nightmare_level"
+        },
+        {
+          "room": 1,
+          "time": 354.75,
+          "type": "elimination"
+        },
+        {
+          "room": 1,
+          "source": "Hunter",
+          "time": 354.75,
+          "type": "hunter_evolved"
+        },
+        {
+          "room": 2,
+          "time": 360.3,
+          "type": "approach"
+        },
+        {
+          "room": 2,
+          "time": 376.2,
+          "type": "encounter"
+        },
+        {
+          "room": 2,
+          "time": 378.45,
+          "type": "boss_phase"
+        },
+        {
+          "room": 5,
+          "time": 424.65,
+          "type": "encounter"
+        },
+        {
+          "level": 9,
+          "room": 5,
+          "time": 428.85,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 9,
+          "room": 5,
+          "time": 428.85,
+          "type": "nightmare_level"
+        },
+        {
+          "room": 5,
+          "time": 434.85,
+          "type": "door_break"
+        },
+        {
+          "room": 5,
+          "time": 435.6,
+          "type": "boss_death"
+        }
+      ],
+      "evolution_buffs": [
+        "door_crusher",
+        "ruthless_pursuit",
+        "soul_drain",
+        "blood_frenzy"
+      ],
+      "evolution_level": 9,
+      "family": "labyrinth",
+      "first_encounter": 46.2,
+      "first_player_encounter": 46.2,
+      "first_player_strike": 48.0,
+      "hunter_archetype": "crusher",
+      "hunter_attacks": 58,
+      "hunter_max_hp": 7184.16925966798,
+      "hunter_remaining_hp": 0.0,
+      "hunter_retargets": 3,
+      "hunter_transformed": true,
+      "invalid": [],
+      "item_uses": [],
+      "map_sha256": "67c4a141538070644037b75eb32defac7a132bcd75f74e25818a43df97f407c3",
+      "max_ledger_error": 0.0001220703125,
+      "npc_damage": 7456.2606246168,
+      "npc_hunter_damage": 5585.7606246168,
+      "opening_wallet": [
+        25.0,
+        0.0
+      ],
+      "outcome": "victory",
+      "peak_player_buildings": 7,
+      "peak_player_exposure": 55.65,
+      "peak_sleeping_npcs": 5,
+      "player_damage": 4244.83734386057,
+      "player_door_damage": 2396.93935967216,
+      "player_hunter_damage": 3871.83734386057,
+      "prior_passive_win": false,
+      "recovery_attempts": 1,
+      "recovery_visits": 1,
+      "repetition": -1,
+      "rooms": [
+        {
+          "alive": false,
+          "attack_seconds": 22.65,
+          "door_damage": 1563.59380054,
+          "door_strikes": 33,
+          "enemy_damage": 2071.5,
+          "hunter_damage": 1115.5,
+          "owner": 5,
+          "room": 1,
+          "shape": "rectangle",
+          "shots": 84,
+          "target_seconds": 73.65,
+          "trait": "power"
+        },
+        {
+          "alive": true,
+          "attack_seconds": 55.65,
+          "door_damage": 2396.93935967216,
+          "door_strikes": 19,
+          "enemy_damage": 4244.83734386057,
+          "hunter_damage": 3871.83734386057,
+          "owner": 0,
+          "room": 2,
+          "shape": "zigzag",
+          "shots": 293,
+          "target_seconds": 87.0,
+          "trait": "economy"
+        },
+        {
+          "alive": false,
+          "attack_seconds": 39.0,
+          "door_damage": 2137.682125,
+          "door_strikes": 37,
+          "enemy_damage": 1624.9,
+          "hunter_damage": 1477.9,
+          "owner": 4,
+          "room": 3,
+          "shape": "l",
+          "shots": 87,
+          "target_seconds": 55.05,
+          "trait": "fortified"
+        },
+        {
+          "alive": false,
+          "attack_seconds": 21.3,
+          "door_damage": 1468.324,
+          "door_strikes": 8,
+          "enemy_damage": 108.0,
+          "hunter_damage": 108.0,
+          "owner": 3,
+          "room": 4,
+          "shape": "u",
+          "shots": 4,
+          "target_seconds": 33.75,
+          "trait": "power"
+        },
+        {
+          "alive": true,
+          "attack_seconds": 38.7,
+          "door_damage": 3209.3413624773,
+          "door_strikes": 32,
+          "enemy_damage": 3021.8606246168,
+          "hunter_damage": 2254.3606246168,
+          "owner": 2,
+          "room": 5,
+          "shape": "long",
+          "shots": 122,
+          "target_seconds": 72.6,
+          "trait": "economy"
+        },
+        {
+          "alive": false,
+          "attack_seconds": 58.05,
+          "door_damage": 1249.05,
+          "door_strikes": 23,
+          "enemy_damage": 630.0,
+          "hunter_damage": 630.0,
+          "owner": 1,
+          "room": 6,
+          "shape": "l",
+          "shots": 70,
+          "target_seconds": 73.65,
+          "trait": "fortified"
+        }
+      ],
+      "simulated_seconds": 435.6,
+      "speed_budget_violations": 0,
+      "steps": 2884,
+      "strategy_actions": [
+        {
+          "route_samples": 22,
+          "route_samples_in_range": 20,
+          "time": 38.9999999999998,
+          "type": "approach_coverage"
+        },
+        {
+          "route_samples": 22,
+          "route_samples_in_range": 19,
+          "time": 42.5999999999998,
+          "type": "approach_coverage"
+        },
+        {
+          "route_samples": 22,
+          "route_samples_in_range": 18,
+          "time": 45.2999999999997,
+          "type": "approach_coverage"
+        }
+      ],
+      "tactical_breaks": [
+        {
+          "alternative_cost": 19.2226443489012,
+          "current_cost": 55.0,
+          "damage": 0.0,
+          "next_room": 5,
+          "reason": "defense_delays_breach",
+          "room": 2,
+          "time": 62.9999999999996,
+          "type": "hunter_reassess"
+        },
+        {
+          "alternative_cost": 22.6958905456566,
+          "current_cost": 33.5446956591468,
+          "damage": 0.0,
+          "next_room": 0,
+          "reason": "defense_delays_breach",
+          "room": 2,
+          "time": 162.750000000003,
+          "type": "hunter_reassess"
+        }
+      ],
+      "walk_seconds": 3.0
+    },
+    {
+      "all_npcs_slept": true,
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_2",
+        "hell",
+        10358,
+        1,
+        "walk_early_crossfire"
+      ],
+      "control_hits": 0,
+      "decision_timeline": [
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1.72749999999998,
+          "power_after_tick": 0.0,
+          "spent_gold": 30.0,
+          "spent_power": 0.0,
+          "time": 6.75,
+          "type": "bed_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 3.46249999999996,
+          "kind": "turret",
+          "power_after_tick": 0.0,
+          "spent_gold": 20.0,
+          "spent_power": 0.0,
+          "time": 13.05,
+          "type": "build"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 2.09249999999994,
+          "kind": "turret",
+          "power_after_tick": 0.0,
+          "spent_gold": 20.0,
+          "spent_power": 0.0,
+          "time": 18.45,
+          "type": "build"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 0.722499999999931,
+          "kind": "turret",
+          "power_after_tick": 0.0,
+          "spent_gold": 20.0,
+          "spent_power": 0.0,
+          "time": 23.85,
+          "type": "build"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 2.45749999999991,
+          "kind": "turret",
+          "power_after_tick": 0.0,
+          "spent_gold": 20.0,
+          "spent_power": 0.0,
+          "time": 30.15,
+          "type": "build"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1.61249999999985,
+          "power_after_tick": 0.0,
+          "spent_gold": 35.0,
+          "spent_power": 0.0,
+          "time": 40.05,
+          "type": "door_upgrade"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 33.0568128,
+          "gold_after_tick": 29.0399999999998,
+          "hp": 266.9431872,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 48.0,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 33.12467136,
+          "gold_after_tick": 36.2849999999998,
+          "hp": 233.81851584,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 50.1,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 24.8724999999998,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 50.85,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 52.60088592,
+          "gold_after_tick": 32.6349999999997,
+          "hp": 247.39911408,
+          "power_after_tick": 0.0,
+          "source": "charged heavy strike",
+          "time": 53.1,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 27.7614216,
+          "gold_after_tick": 42.4674999999997,
+          "hp": 219.63769248,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 55.95,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 29.5024999999997,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 56.25,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 27.8058528,
+          "gold_after_tick": 34.1599999999997,
+          "hp": 261.83183968,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 57.6,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 52.96158648,
+          "gold_after_tick": 42.9574999999997,
+          "hp": 208.8702532,
+          "power_after_tick": 0.0,
+          "source": "charged heavy strike",
+          "time": 60.15,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 31.0274999999997,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 60.75,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 27.951264,
+          "gold_after_tick": 38.7899999999996,
+          "hp": 250.9189892,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 63.0,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 2.43499999999948,
+          "power_after_tick": 0.0,
+          "spent_gold": 85.0,
+          "spent_power": 0.0,
+          "time": 76.95,
+          "type": "bed_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1.79499999999927,
+          "power_after_tick": 0.0,
+          "spent_gold": 100.0,
+          "spent_power": 0.0,
+          "time": 91.35,
+          "type": "door_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 5.99499999999897,
+          "kind": "generator",
+          "power_after_tick": 0.081,
+          "spent_gold": 120.0,
+          "spent_power": 0.0,
+          "time": 109.35,
+          "type": "build"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 71.5649999999987,
+          "kind": "turret",
+          "level": 2,
+          "power_after_tick": 0.343000000000016,
+          "spent_gold": 40.0,
+          "spent_power": 8.0,
+          "time": 124.65,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 161.814999999998,
+          "kind": "repair",
+          "power_after_tick": 0.493000000000008,
+          "spent_gold": 65.0,
+          "spent_power": 12.0,
+          "time": 147.15,
+          "type": "build"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 123.356106259551,
+          "gold_after_tick": 165.954999999998,
+          "hp": 427.562882940449,
+          "power_after_tick": 0.817000000000008,
+          "source": "door strike",
+          "time": 147.75,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 152.024999999998,
+          "power_after_tick": 0.979000000000008,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 148.05,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 142.234999999998,
+          "power_after_tick": 1.46500000000001,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 148.95,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 127.072362836461,
+          "gold_after_tick": 147.409999999998,
+          "hp": 423.690520103988,
+          "power_after_tick": 1.87000000000001,
+          "source": "door strike",
+          "time": 149.7,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 132.444999999998,
+          "power_after_tick": 1.95100000000001,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 149.85,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 122.654999999998,
+          "power_after_tick": 2.43700000000001,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 150.75,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 112.864999999998,
+          "power_after_tick": 2.92300000000001,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 151.65,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 202.887201224161,
+          "gold_after_tick": 119.074999999998,
+          "hp": 381.978318879828,
+          "power_after_tick": 3.40900000000001,
+          "source": "charged heavy strike",
+          "time": 152.55,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 109.284999999998,
+          "power_after_tick": 3.89500000000001,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 153.45,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 99.494999999998,
+          "power_after_tick": 4.38100000000001,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 154.35,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 89.704999999998,
+          "power_after_tick": 4.86700000000001,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 155.25,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 107.038436472,
+          "gold_after_tick": 89.704999999998,
+          "hp": 411.439882407827,
+          "power_after_tick": 4.86700000000001,
+          "source": "door strike",
+          "time": 155.25,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 79.914999999998,
+          "power_after_tick": 5.35300000000001,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 156.15,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 107.1946969632,
+          "gold_after_tick": 85.089999999998,
+          "hp": 349.745185444627,
+          "power_after_tick": 5.75800000000002,
+          "source": "door strike",
+          "time": 156.9,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 70.124999999998,
+          "power_after_tick": 5.83900000000002,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 157.05,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 60.334999999998,
+          "power_after_tick": 6.32500000000002,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 157.95,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 50.5449999999979,
+          "power_after_tick": 6.81100000000002,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 158.85,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 204.128761854241,
+          "gold_after_tick": 54.6849999999979,
+          "hp": 282.116423590387,
+          "power_after_tick": 7.13500000000002,
+          "source": "charged heavy strike",
+          "time": 159.45,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 40.7549999999979,
+          "power_after_tick": 7.19200000000002,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 159.75,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 30.9649999999979,
+          "power_after_tick": 7.36300000000002,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 160.65,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 21.1749999999979,
+          "power_after_tick": 7.58650000000002,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 161.55,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 107.6918894352,
+          "gold_after_tick": 25.3149999999979,
+          "hp": 319.797034155186,
+          "power_after_tick": 7.91050000000003,
+          "source": "door strike",
+          "time": 162.15,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 11.3849999999979,
+          "power_after_tick": 7.96750000000003,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 162.45,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 158.734999999997,
+          "kind": "turret",
+          "level": 3,
+          "power_after_tick": 0.529999999999883,
+          "spent_gold": 70.0,
+          "spent_power": 14.0,
+          "time": 193.95,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 218.094999999997,
+          "kind": "turret",
+          "level": 2,
+          "power_after_tick": 0.3059999999999,
+          "spent_gold": 40.0,
+          "spent_power": 8.0,
+          "time": 208.35,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 108.504999999999,
+          "power_after_tick": 0.511999999999903,
+          "spent_gold": 240.0,
+          "spent_power": 10.0,
+          "time": 227.25,
+          "type": "door_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 212.384999999999,
+          "kind": "turret",
+          "level": 3,
+          "power_after_tick": 0.119999999999886,
+          "spent_gold": 70.0,
+          "spent_power": 14.0,
+          "time": 252.45,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 277.955,
+          "kind": "turret",
+          "level": 2,
+          "power_after_tick": 0.381999999999902,
+          "spent_gold": 40.0,
+          "spent_power": 8.0,
+          "time": 267.75,
+          "type": "building_upgrade"
+        },
+        {
+          "attacker_id": 8,
+          "damage": 11.0,
+          "gold_after_tick": 445.220000000005,
+          "hp": 1089.0,
+          "power_after_tick": 13.203,
+          "source": "undead strike",
+          "time": 294.6,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 2,
+          "damage": 11.0,
+          "gold_after_tick": 449.360000000005,
+          "hp": 1082.2,
+          "power_after_tick": 13.317,
+          "source": "undead strike",
+          "time": 295.2,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 401.095000000006,
+          "kind": "turret",
+          "level": 3,
+          "power_after_tick": 0.125499999999971,
+          "spent_gold": 70.0,
+          "spent_power": 14.0,
+          "time": 298.35,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 510.765000000008,
+          "kind": "turret",
+          "level": 2,
+          "power_after_tick": 0.247499999999999,
+          "spent_gold": 40.0,
+          "spent_power": 8.0,
+          "time": 322.65,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 620.855000000002,
+          "kind": "turret",
+          "level": 3,
+          "power_after_tick": 0.341499999999981,
+          "spent_gold": 70.0,
+          "spent_power": 14.0,
+          "time": 348.75,
+          "type": "building_upgrade"
+        },
+        {
+          "attacker_id": 17,
+          "damage": 13.75,
+          "gold_after_tick": 678.815,
+          "hp": 1086.25,
+          "power_after_tick": 4.87749999999998,
+          "source": "undead strike",
+          "time": 358.35,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 105.300623999999,
+          "gold_after_tick": 729.529999999999,
+          "hp": 990.399376,
+          "power_after_tick": 8.32149999999999,
+          "source": "Phantom Scream",
+          "time": 370.5,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 342.957499999999,
+          "power_after_tick": 0.322249999999924,
+          "spent_gold": 200.0,
+          "spent_power": 15.0,
+          "time": 404.55,
+          "type": "bed_upgrade"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 108.094553599999,
+          "gold_after_tick": 361.932499999999,
+          "hp": 991.905446400001,
+          "power_after_tick": 1.21324999999992,
+          "source": "Phantom Scream",
+          "time": 406.2,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 28,
+          "damage": 17.0,
+          "gold_after_tick": 391.257499999999,
+          "hp": 974.905446400001,
+          "power_after_tick": 2.59024999999992,
+          "source": "undead strike",
+          "time": 408.75,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 556.107500000002,
+          "power_after_tick": 8.55124999999991,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 430.65,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 48.3904497999993,
+          "gold_after_tick": 644.082500000003,
+          "hp": 1051.6095502,
+          "power_after_tick": 12.3672499999999,
+          "source": "Embedded Scythe",
+          "time": 438.3,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 487.616476411001,
+          "gold_after_tick": 656.157500000003,
+          "hp": 570.597573789,
+          "power_after_tick": 12.5667499999999,
+          "source": "siege",
+          "time": 439.35,
+          "type": "door_damage"
+        }
+      ],
+      "eliminations": 5,
+      "event_counts": {
+        "approach": 10,
+        "arcane_impact": 3,
+        "archetype_warning": 46,
+        "bed_upgrade": 17,
+        "boss_ability_activate": 19,
+        "boss_ability_end": 2,
+        "boss_ability_warning": 20,
+        "boss_awakened": 1,
+        "boss_death": 1,
+        "boss_impact": 15,
+        "boss_phase": 2,
+        "boss_resource_drain": 3,
+        "boss_surge": 5,
+        "boss_transform": 1,
+        "boss_warning": 23,
+        "build": 23,
+        "building_upgrade": 27,
+        "charged_attack": 13,
+        "door_break": 5,
+        "door_damage": 113,
+        "door_upgrade": 16,
+        "elimination": 5,
+        "encounter": 11,
+        "hunter_ability": 13,
+        "hunter_ability_warning": 15,
+        "hunter_commit": 1,
+        "hunter_evolved": 5,
+        "hunter_reassess": 2,
+        "hunter_recovering": 1,
+        "hunter_recovery": 13,
+        "hunter_recovery_ended": 1,
+        "hunter_retreat": 1,
+        "nightmare_impact": 8,
+        "nightmare_level": 6,
+        "nightmare_release": 2,
+        "nightmare_warning": 2,
+        "repair": 93,
+        "scythe_embed": 1,
+        "scythe_end": 1,
+        "scythe_throw": 1,
+        "scythe_tick": 1,
+        "survivor_attack": 5,
+        "survivor_fear": 5,
+        "undead_attack": 34,
+        "undead_death": 27,
+        "undead_spawn": 31
+      },
+      "events": [
+        {
+          "room": 2,
+          "time": 40.05,
+          "type": "approach"
+        },
+        {
+          "room": 2,
+          "time": 46.2,
+          "type": "encounter"
+        },
+        {
+          "next_room": 5,
+          "reason": "defense_delays_breach",
+          "room": 2,
+          "time": 63.0,
+          "type": "hunter_reassess"
+        },
+        {
+          "room": 6,
+          "time": 63.0,
+          "type": "approach"
+        },
+        {
+          "room": 6,
+          "time": 73.65,
+          "type": "encounter"
+        },
+        {
+          "reason": "breach_progress",
+          "room": 6,
+          "time": 90.45,
+          "type": "hunter_commit"
+        },
+        {
+          "level": 4,
+          "room": 6,
+          "time": 115.05,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 4,
+          "room": 6,
+          "time": 115.05,
+          "type": "nightmare_level"
+        },
+        {
+          "room": 6,
+          "time": 127.95,
+          "type": "door_break"
+        },
+        {
+          "room": 6,
+          "time": 131.7,
+          "type": "elimination"
+        },
+        {
+          "room": 6,
+          "source": "Hunter",
+          "time": 131.7,
+          "type": "hunter_evolved"
+        },
+        {
+          "room": 2,
+          "time": 136.65,
+          "type": "approach"
+        },
+        {
+          "room": 2,
+          "time": 145.95,
+          "type": "encounter"
+        },
+        {
+          "budget": 0.0,
+          "hall": "east",
+          "healed": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 162.3,
+          "type": "hunter_retreat"
+        },
+        {
+          "budget": 1385.865,
+          "hall": "east",
+          "healed": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 170.55,
+          "type": "hunter_recovering"
+        },
+        {
+          "budget": 1385.865,
+          "hall": "east",
+          "healed": 1385.865,
+          "reason": "completed",
+          "room": 2,
+          "time": 178.65,
+          "type": "hunter_recovery_ended"
+        },
+        {
+          "room": 1,
+          "time": 178.8,
+          "type": "approach"
+        },
+        {
+          "room": 1,
+          "time": 202.65,
+          "type": "encounter"
+        },
+        {
+          "level": 5,
+          "room": 1,
+          "time": 206.25,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 5,
+          "room": 1,
+          "time": 206.25,
+          "type": "nightmare_level"
+        },
+        {
+          "next_room": 3,
+          "reason": "defense_delays_breach",
+          "room": 1,
+          "time": 220.35,
+          "type": "hunter_reassess"
+        },
+        {
+          "room": 4,
+          "time": 220.35,
+          "type": "approach"
+        },
+        {
+          "room": 4,
+          "time": 228.9,
+          "type": "encounter"
+        },
+        {
+          "room": 4,
+          "time": 246.75,
+          "type": "door_break"
+        },
+        {
+          "room": 4,
+          "time": 250.65,
+          "type": "elimination"
+        },
+        {
+          "room": 4,
+          "source": "Hunter",
+          "time": 250.65,
+          "type": "hunter_evolved"
+        },
+        {
+          "room": 4,
+          "time": 256.2,
+          "type": "boss_transform"
+        },
+        {
+          "room": 4,
+          "time": 258.9,
+          "type": "boss_phase"
+        },
+        {
+          "room": 1,
+          "time": 261.6,
+          "type": "approach"
+        },
+        {
+          "room": 1,
+          "time": 270.75,
+          "type": "encounter"
+        },
+        {
+          "room": 1,
+          "time": 278.85,
+          "type": "door_break"
+        },
+        {
+          "level": 6,
+          "room": 1,
+          "time": 281.25,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 6,
+          "room": 1,
+          "time": 281.25,
+          "type": "nightmare_level"
+        },
+        {
+          "room": 1,
+          "time": 281.85,
+          "type": "elimination"
+        },
+        {
+          "room": 1,
+          "source": "Hunter",
+          "time": 281.85,
+          "type": "hunter_evolved"
+        },
+        {
+          "level": 7,
+          "room": 1,
+          "time": 282.0,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 7,
+          "room": 1,
+          "time": 282.0,
+          "type": "nightmare_level"
+        },
+        {
+          "room": 3,
+          "time": 287.1,
+          "type": "approach"
+        },
+        {
+          "room": 3,
+          "time": 297.6,
+          "type": "encounter"
+        },
+        {
+          "room": 5,
+          "time": 323.7,
+          "type": "approach"
+        },
+        {
+          "room": 5,
+          "time": 337.65,
+          "type": "encounter"
+        },
+        {
+          "room": 5,
+          "time": 352.65,
+          "type": "boss_phase"
+        },
+        {
+          "level": 8,
+          "room": 5,
+          "time": 356.4,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 8,
+          "room": 5,
+          "time": 356.4,
+          "type": "nightmare_level"
+        },
+        {
+          "room": 5,
+          "time": 362.25,
+          "type": "door_break"
+        },
+        {
+          "room": 5,
+          "time": 365.25,
+          "type": "elimination"
+        },
+        {
+          "room": 5,
+          "source": "Hunter",
+          "time": 365.25,
+          "type": "hunter_evolved"
+        },
+        {
+          "room": 3,
+          "time": 370.5,
+          "type": "approach"
+        },
+        {
+          "room": 3,
+          "time": 380.7,
+          "type": "encounter"
+        },
+        {
+          "room": 3,
+          "time": 396.45,
+          "type": "door_break"
+        },
+        {
+          "room": 3,
+          "time": 399.15,
+          "type": "elimination"
+        },
+        {
+          "room": 3,
+          "source": "Hunter",
+          "time": 399.15,
+          "type": "hunter_evolved"
+        },
+        {
+          "room": 2,
+          "time": 403.35,
+          "type": "approach"
+        },
+        {
+          "room": 2,
+          "time": 430.05,
+          "type": "encounter"
+        },
+        {
+          "level": 9,
+          "room": 2,
+          "time": 431.4,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 9,
+          "room": 2,
+          "time": 431.4,
+          "type": "nightmare_level"
+        },
+        {
+          "room": 2,
+          "time": 434.4,
+          "type": "encounter"
+        },
+        {
+          "room": 2,
+          "time": 439.35,
+          "type": "boss_death"
+        }
+      ],
+      "evolution_buffs": [
+        "door_crusher",
+        "ruthless_pursuit",
+        "deaths_momentum",
+        "blood_frenzy",
+        "rapid_recovery"
+      ],
+      "evolution_level": 9,
+      "family": "labyrinth",
+      "first_encounter": 46.2,
+      "first_player_encounter": 46.2,
+      "first_player_strike": 48.0,
+      "hunter_archetype": "crusher",
+      "hunter_attacks": 61,
+      "hunter_max_hp": 7211.26690000007,
+      "hunter_remaining_hp": 0.0,
+      "hunter_retargets": 3,
+      "hunter_transformed": true,
+      "invalid": [],
+      "item_uses": [],
+      "map_sha256": "67c4a141538070644037b75eb32defac7a132bcd75f74e25818a43df97f407c3",
+      "max_ledger_error": 0.00006103515625,
+      "npc_damage": 7985.13389429173,
+      "npc_hunter_damage": 5815.38389429173,
+      "opening_wallet": [
+        25.0,
+        0.0
+      ],
+      "outcome": "victory",
+      "peak_player_buildings": 6,
+      "peak_player_exposure": 42.45,
+      "peak_sleeping_npcs": 5,
+      "player_damage": 4972.54665237268,
+      "player_door_damage": 2036.78405381581,
+      "player_hunter_damage": 3622.29665237268,
+      "prior_passive_win": false,
+      "recovery_attempts": 1,
+      "recovery_visits": 1,
+      "repetition": -1,
+      "rooms": [
+        {
+          "alive": false,
+          "attack_seconds": 28.8,
+          "door_damage": 1724.923875,
+          "door_strikes": 12,
+          "enemy_damage": 1461.15,
+          "hunter_damage": 1405.4,
+          "owner": 5,
+          "room": 1,
+          "shape": "rectangle",
+          "shots": 61,
+          "target_seconds": 67.05,
+          "trait": "power"
+        },
+        {
+          "alive": true,
+          "attack_seconds": 42.3,
+          "door_damage": 2036.78405381581,
+          "door_strikes": 22,
+          "enemy_damage": 4972.54665237268,
+          "hunter_damage": 3622.29665237268,
+          "owner": 0,
+          "room": 2,
+          "shape": "zigzag",
+          "shots": 384,
+          "target_seconds": 101.25,
+          "trait": "economy"
+        },
+        {
+          "alive": false,
+          "attack_seconds": 44.4,
+          "door_damage": 3186.5405,
+          "door_strikes": 34,
+          "enemy_damage": 3352.8,
+          "hunter_damage": 1970.8,
+          "owner": 4,
+          "room": 3,
+          "shape": "l",
+          "shots": 152,
+          "target_seconds": 69.45,
+          "trait": "fortified"
+        },
+        {
+          "alive": false,
+          "attack_seconds": 21.75,
+          "door_damage": 1450.726875,
+          "door_strikes": 8,
+          "enemy_damage": 119.5,
+          "hunter_damage": 119.5,
+          "owner": 3,
+          "room": 4,
+          "shape": "u",
+          "shots": 6,
+          "target_seconds": 41.25,
+          "trait": "power"
+        },
+        {
+          "alive": false,
+          "attack_seconds": 27.6,
+          "door_damage": 2062.85225,
+          "door_strikes": 14,
+          "enemy_damage": 2421.68389429173,
+          "hunter_damage": 1689.68389429173,
+          "owner": 2,
+          "room": 5,
+          "shape": "long",
+          "shots": 101,
+          "target_seconds": 46.8,
+          "trait": "economy"
+        },
+        {
+          "alive": false,
+          "attack_seconds": 58.05,
+          "door_damage": 1249.05,
+          "door_strikes": 23,
+          "enemy_damage": 630.0,
+          "hunter_damage": 630.0,
+          "owner": 1,
+          "room": 6,
+          "shape": "l",
+          "shots": 70,
+          "target_seconds": 73.65,
+          "trait": "fortified"
+        }
+      ],
+      "simulated_seconds": 439.35,
+      "speed_budget_violations": 0,
+      "steps": 2909,
+      "strategy_actions": [
+        {
+          "route_samples": 22,
+          "route_samples_in_range": 20,
+          "time": 12.9,
+          "type": "approach_coverage"
+        },
+        {
+          "route_samples": 22,
+          "route_samples_in_range": 19,
+          "time": 18.3,
+          "type": "approach_coverage"
+        },
+        {
+          "route_samples": 22,
+          "route_samples_in_range": 18,
+          "time": 23.7,
+          "type": "approach_coverage"
+        },
+        {
+          "route_samples": 22,
+          "route_samples_in_range": 17,
+          "time": 29.9999999999999,
+          "type": "approach_coverage"
+        }
+      ],
+      "tactical_breaks": [
+        {
+          "alternative_cost": 19.2393355974301,
+          "current_cost": 55.0,
+          "damage": 0.0,
+          "next_room": 5,
+          "reason": "defense_delays_breach",
+          "room": 2,
+          "time": 62.9999999999996,
+          "type": "hunter_reassess"
+        },
+        {
+          "alternative_cost": 14.6922020111765,
+          "current_cost": 26.1175015404143,
+          "damage": 0.0,
+          "next_room": 3,
+          "reason": "defense_delays_breach",
+          "room": 1,
+          "time": 220.350000000005,
+          "type": "hunter_reassess"
+        }
+      ],
+      "walk_seconds": 3.0
+    },
+    {
+      "all_npcs_slept": true,
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_2",
+        "standard",
+        10358,
+        1,
+        "walk_early_bed"
+      ],
+      "control_hits": 6,
+      "decision_timeline": [
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1.72749999999998,
+          "power_after_tick": 0.0,
+          "spent_gold": 30.0,
+          "spent_power": 0.0,
+          "time": 6.75,
+          "type": "bed_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1.07999999999976,
+          "power_after_tick": 0.0,
+          "spent_gold": 85.0,
+          "spent_power": 0.0,
+          "time": 31.05,
+          "type": "bed_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 3.33999999999974,
+          "power_after_tick": 0.0,
+          "spent_gold": 35.0,
+          "spent_power": 0.0,
+          "time": 36.45,
+          "type": "door_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1.96999999999975,
+          "kind": "turret",
+          "power_after_tick": 0.0,
+          "spent_gold": 20.0,
+          "spent_power": 0.0,
+          "time": 39.15,
+          "type": "build"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 6.80999999999975,
+          "kind": "turret",
+          "power_after_tick": 0.0,
+          "spent_gold": 20.0,
+          "spent_power": 0.0,
+          "time": 42.75,
+          "type": "build"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 5.43999999999975,
+          "kind": "turret",
+          "power_after_tick": 0.0,
+          "spent_gold": 20.0,
+          "spent_power": 0.0,
+          "time": 45.45,
+          "type": "build"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 12.0688567296,
+          "gold_after_tick": 16.8249999999998,
+          "hp": 287.9311432704,
+          "power_after_tick": 0.0,
+          "source": "interference",
+          "time": 47.1,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 15.091600128,
+          "gold_after_tick": 18.8949999999998,
+          "hp": 272.8395431424,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 47.4,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 15.113716992,
+          "gold_after_tick": 27.1749999999998,
+          "hp": 257.7258261504,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 48.6,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 15.133069248,
+          "gold_after_tick": 34.4199999999997,
+          "hp": 242.5927569024,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 49.65,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 15.152421504,
+          "gold_after_tick": 41.6649999999997,
+          "hp": 227.4403353984,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 50.7,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 28.6999999999997,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 50.85,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 15.174538368,
+          "gold_after_tick": 35.9449999999997,
+          "hp": 282.2657970304,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 51.9,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 15.193890624,
+          "gold_after_tick": 43.1899999999997,
+          "hp": 267.0719064064,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 52.95,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 15.21324288,
+          "gold_after_tick": 50.4349999999997,
+          "hp": 251.8586635264,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 54.0,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 15.235359744,
+          "gold_after_tick": 58.7149999999996,
+          "hp": 236.6233037824,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 55.2,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 45.7499999999996,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 55.35,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 15.254712,
+          "gold_after_tick": 51.9599999999996,
+          "hp": 284.745288,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 56.25,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 15.274064256,
+          "gold_after_tick": 59.2049999999996,
+          "hp": 269.471223744,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 57.3,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 15.29618112,
+          "gold_after_tick": 67.4849999999996,
+          "hp": 254.175042624,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 58.5,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 15.315533376,
+          "gold_after_tick": 74.7299999999995,
+          "hp": 238.859509248,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 59.55,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 15.334885632,
+          "gold_after_tick": 81.9749999999995,
+          "hp": 223.524623616,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 60.6,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 69.0099999999995,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 60.75,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 15.357002496,
+          "gold_after_tick": 76.2549999999995,
+          "hp": 278.16762112,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 61.8,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 12.3055071744,
+          "gold_after_tick": 85.5699999999995,
+          "hp": 265.8621139456,
+          "power_after_tick": 0.0,
+          "source": "interference",
+          "time": 63.15,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 15.398471616,
+          "gold_after_tick": 91.7799999999994,
+          "hp": 250.4636423296,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 64.05,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 15.417823872,
+          "gold_after_tick": 99.0249999999994,
+          "hp": 235.0458184576,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 65.1,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 86.0599999999994,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 65.25,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 15.439940736,
+          "gold_after_tick": 93.3049999999994,
+          "hp": 284.560059264,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 66.3,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 15.459292992,
+          "gold_after_tick": 100.549999999999,
+          "hp": 269.100766272,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 67.35,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 4.68999999999935,
+          "power_after_tick": 0.0,
+          "spent_gold": 100.0,
+          "spent_power": 0.0,
+          "time": 67.95,
+          "type": "door_upgrade"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 16.71693686784,
+          "gold_after_tick": 7.79499999999935,
+          "hp": 552.38382940416,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 68.4,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 16.74082308096,
+          "gold_after_tick": 16.0749999999993,
+          "hp": 535.6430063232,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 69.6,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 2.67999999999906,
+          "kind": "generator",
+          "power_after_tick": 0.081,
+          "spent_gold": 120.0,
+          "spent_power": 0.0,
+          "time": 85.05,
+          "type": "build"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 68.2499999999988,
+          "kind": "turret",
+          "level": 2,
+          "power_after_tick": 0.343000000000016,
+          "spent_gold": 40.0,
+          "spent_power": 8.0,
+          "time": 100.35,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 158.499999999998,
+          "kind": "repair",
+          "power_after_tick": 0.493000000000008,
+          "spent_gold": 65.0,
+          "spent_power": 12.0,
+          "time": 122.85,
+          "type": "build"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 86.1699999999996,
+          "power_after_tick": 0.35999999999998,
+          "spent_gold": 240.0,
+          "spent_power": 10.0,
+          "time": 147.15,
+          "type": "door_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 196.259999999999,
+          "kind": "turret",
+          "level": 3,
+          "power_after_tick": 0.453999999999962,
+          "spent_gold": 70.0,
+          "spent_power": 14.0,
+          "time": 173.25,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 255.62,
+          "kind": "turret",
+          "level": 2,
+          "power_after_tick": 0.22999999999998,
+          "spent_gold": 40.0,
+          "spent_power": 8.0,
+          "time": 187.65,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 365.710000000004,
+          "kind": "turret",
+          "level": 3,
+          "power_after_tick": 0.323999999999961,
+          "spent_gold": 70.0,
+          "spent_power": 14.0,
+          "time": 213.75,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 425.070000000007,
+          "kind": "turret",
+          "level": 2,
+          "power_after_tick": 0.0999999999999788,
+          "spent_gold": 40.0,
+          "spent_power": 8.0,
+          "time": 228.15,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 535.160000000006,
+          "kind": "turret",
+          "level": 3,
+          "power_after_tick": 0.19399999999996,
+          "spent_gold": 70.0,
+          "spent_power": 14.0,
+          "time": 254.25,
+          "type": "building_upgrade"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 57.73632847657,
+          "gold_after_tick": 644.870000000003,
+          "hp": 1042.26367152343,
+          "power_after_tick": 8.77999999999997,
+          "source": "Static Cage",
+          "time": 270.15,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 72.2223776862722,
+          "gold_after_tick": 650.045000000002,
+          "hp": 975.291293837158,
+          "power_after_tick": 8.92249999999997,
+          "source": "door strike",
+          "time": 270.9,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 635.150000000002,
+          "power_after_tick": 9.00799999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 271.35,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 72.2951316130564,
+          "gold_after_tick": 639.290000000002,
+          "hp": 980.346162224101,
+          "power_after_tick": 9.12199999999997,
+          "source": "door strike",
+          "time": 271.95,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 623.360000000002,
+          "power_after_tick": 9.17899999999996,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 272.25,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 72.3574921217283,
+          "gold_after_tick": 627.500000000002,
+          "hp": 984.288670102372,
+          "power_after_tick": 9.29299999999996,
+          "source": "door strike",
+          "time": 272.85,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 611.570000000002,
+          "power_after_tick": 9.34999999999996,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 273.15,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 72.4198526304003,
+          "gold_after_tick": 607.710000000002,
+          "hp": 985.018817471972,
+          "power_after_tick": 7.62149999999996,
+          "source": "door strike",
+          "time": 273.75,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 591.780000000002,
+          "power_after_tick": 7.78349999999996,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 274.05,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 58.0273441837058,
+          "gold_after_tick": 601.095000000002,
+          "hp": 1003.29147328827,
+          "power_after_tick": 8.19749999999996,
+          "source": "interference",
+          "time": 275.4,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 586.200000000001,
+          "power_after_tick": 8.28299999999996,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 275.85,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 72.5757539020802,
+          "gold_after_tick": 587.235000000001,
+          "hp": 1004.91571938619,
+          "power_after_tick": 8.31149999999996,
+          "source": "door strike",
+          "time": 276.0,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 574.410000000001,
+          "power_after_tick": 8.45399999999995,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 276.75,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 72.6381144107522,
+          "gold_after_tick": 575.445000000001,
+          "hp": 1008.57760497543,
+          "power_after_tick": 8.48249999999995,
+          "source": "door strike",
+          "time": 276.9,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 562.620000000001,
+          "power_after_tick": 8.62499999999995,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 277.65,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 72.7126874724272,
+          "gold_after_tick": 563.655000000001,
+          "hp": 1012.16491750301,
+          "power_after_tick": 8.65349999999995,
+          "source": "door strike",
+          "time": 277.8,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 550.830000000001,
+          "power_after_tick": 8.79599999999994,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 278.55,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 73.3162755965417,
+          "gold_after_tick": 551.865000000001,
+          "hp": 1015.14864190646,
+          "power_after_tick": 8.82449999999994,
+          "source": "door strike",
+          "time": 278.7,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 539.040000000001,
+          "power_after_tick": 8.96699999999994,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 279.45,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 74.8390728450853,
+          "gold_after_tick": 541.110000000001,
+          "hp": 1017.65956906138,
+          "power_after_tick": 9.02399999999994,
+          "source": "door strike",
+          "time": 279.75,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 527.25,
+          "power_after_tick": 9.13799999999994,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 280.35,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 76.6181703392061,
+          "gold_after_tick": 529.32,
+          "hp": 1017.34139872217,
+          "power_after_tick": 9.19499999999993,
+          "source": "door strike",
+          "time": 280.65,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 515.46,
+          "power_after_tick": 9.30899999999993,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 281.25,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 78.6236062380123,
+          "gold_after_tick": 517.53,
+          "hp": 1015.01779248416,
+          "power_after_tick": 9.36599999999993,
+          "source": "door strike",
+          "time": 281.55,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 503.67,
+          "power_after_tick": 9.47999999999993,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 282.15,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 80.65471777297,
+          "gold_after_tick": 505.74,
+          "hp": 1010.66307471119,
+          "power_after_tick": 9.53699999999993,
+          "source": "door strike",
+          "time": 282.45,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 491.88,
+          "power_after_tick": 9.65099999999992,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 283.05,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 82.510154764092,
+          "gold_after_tick": 493.95,
+          "hp": 1004.4529199471,
+          "power_after_tick": 9.70799999999992,
+          "source": "door strike",
+          "time": 283.35,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 480.09,
+          "power_after_tick": 9.82199999999992,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 283.95,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 83.9878796199367,
+          "gold_after_tick": 482.16,
+          "hp": 996.765040327159,
+          "power_after_tick": 9.87899999999992,
+          "source": "door strike",
+          "time": 284.25,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 468.300000000001,
+          "power_after_tick": 9.99299999999992,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 284.85,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 84.8851673376088,
+          "gold_after_tick": 470.370000000001,
+          "hp": 988.17987298955,
+          "power_after_tick": 10.0499999999999,
+          "source": "door strike",
+          "time": 285.15,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 456.510000000001,
+          "power_after_tick": 10.1639999999999,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 285.75,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 85.0901956439042,
+          "gold_after_tick": 458.580000000001,
+          "hp": 979.389677345646,
+          "power_after_tick": 10.2209999999999,
+          "source": "door strike",
+          "time": 286.05,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 444.720000000001,
+          "power_after_tick": 10.3349999999999,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 286.65,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 85.1626142991362,
+          "gold_after_tick": 446.790000000001,
+          "hp": 970.527063046509,
+          "power_after_tick": 10.3919999999999,
+          "source": "door strike",
+          "time": 286.95,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 432.930000000001,
+          "power_after_tick": 10.5059999999999,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 287.55,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 85.2350329543682,
+          "gold_after_tick": 435.000000000001,
+          "hp": 961.592030092141,
+          "power_after_tick": 10.5629999999999,
+          "source": "door strike",
+          "time": 287.85,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 421.140000000001,
+          "power_after_tick": 10.6769999999999,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 288.45,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 85.3074516096001,
+          "gold_after_tick": 423.210000000001,
+          "hp": 952.58457848254,
+          "power_after_tick": 10.7339999999999,
+          "source": "door strike",
+          "time": 288.75,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 409.350000000001,
+          "power_after_tick": 10.8479999999999,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 289.35,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 85.3798702648321,
+          "gold_after_tick": 411.420000000001,
+          "hp": 943.504708217708,
+          "power_after_tick": 10.9049999999999,
+          "source": "door strike",
+          "time": 289.65,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 397.560000000001,
+          "power_after_tick": 11.0189999999999,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 290.25,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 385.770000000002,
+          "power_after_tick": 11.1899999999999,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 291.15,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 68.419766060237,
+          "gold_after_tick": 387.840000000002,
+          "hp": 1027.68494215747,
+          "power_after_tick": 11.2469999999999,
+          "source": "interference",
+          "time": 291.45,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 85.5488471270401,
+          "gold_after_tick": 389.910000000002,
+          "hp": 944.23609503043,
+          "power_after_tick": 11.3039999999999,
+          "source": "door strike",
+          "time": 291.75,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 373.980000000002,
+          "power_after_tick": 11.3609999999999,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 292.05,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 280.240000000004,
+          "power_after_tick": 0.422999999999816,
+          "spent_gold": 200.0,
+          "spent_power": 15.0,
+          "time": 307.35,
+          "type": "bed_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 567.190000000009,
+          "kind": "frost",
+          "power_after_tick": 0.404999999999774,
+          "spent_gold": 96.0,
+          "spent_power": 18.0,
+          "time": 340.65,
+          "type": "build"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 78.54933504,
+          "gold_after_tick": 817.940000000013,
+          "hp": 1021.45066496,
+          "power_after_tick": 10.5549999999998,
+          "source": "Static Cage",
+          "time": 363.15,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 98.1866688,
+          "gold_after_tick": 826.565000000013,
+          "hp": 928.51399616,
+          "power_after_tick": 10.6974999999998,
+          "source": "door strike",
+          "time": 363.9,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 810.290000000013,
+          "power_after_tick": 10.7259999999998,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 364.05,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 802.640000000013,
+          "power_after_tick": 10.8969999999998,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 364.95,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 98.1866688,
+          "gold_after_tick": 802.640000000013,
+          "hp": 977.677327359999,
+          "power_after_tick": 10.8969999999998,
+          "source": "door strike",
+          "time": 364.95,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 794.990000000013,
+          "power_after_tick": 11.0679999999998,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 365.85,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 98.1866688,
+          "gold_after_tick": 796.715000000013,
+          "hp": 956.840658559999,
+          "power_after_tick": 11.0964999999998,
+          "source": "door strike",
+          "time": 366.0,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 787.340000000013,
+          "power_after_tick": 11.2389999999997,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 366.75,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 98.1866688,
+          "gold_after_tick": 789.065000000013,
+          "hp": 934.953989759999,
+          "power_after_tick": 11.2674999999997,
+          "source": "door strike",
+          "time": 366.9,
+          "type": "door_damage"
+        }
+      ],
+      "eliminations": 4,
+      "event_counts": {
+        "approach": 9,
+        "arcane_impact": 10,
+        "archetype_warning": 8,
+        "bed_upgrade": 10,
+        "build": 22,
+        "building_upgrade": 13,
+        "door_break": 4,
+        "door_damage": 129,
+        "door_upgrade": 10,
+        "elimination": 4,
+        "encounter": 8,
+        "hunter_ability": 20,
+        "hunter_ability_warning": 13,
+        "hunter_evolved": 4,
+        "hunter_reassess": 2,
+        "hunter_recovering": 2,
+        "hunter_recovery_ended": 2,
+        "hunter_retreat": 2,
+        "magic_shield": 1,
+        "nightmare_impact": 3,
+        "nightmare_level": 4,
+        "nightmare_release": 3,
+        "nightmare_warning": 3,
+        "repair": 43,
+        "soul_drain": 2,
+        "survivor_attack": 4,
+        "survivor_fear": 4
+      },
+      "events": [
+        {
+          "room": 2,
+          "time": 40.05,
+          "type": "approach"
+        },
+        {
+          "room": 2,
+          "time": 45.45,
+          "type": "encounter"
+        },
+        {
+          "next_room": 5,
+          "room": 2,
+          "time": 69.6,
+          "type": "hunter_reassess"
+        },
+        {
+          "room": 6,
+          "time": 69.75,
+          "type": "approach"
+        },
+        {
+          "room": 6,
+          "time": 78.9,
+          "type": "encounter"
+        },
+        {
+          "room": 6,
+          "time": 103.65,
+          "type": "door_break"
+        },
+        {
+          "room": 6,
+          "time": 106.95,
+          "type": "elimination"
+        },
+        {
+          "room": 6,
+          "source": "Hunter",
+          "time": 106.95,
+          "type": "hunter_evolved"
+        },
+        {
+          "room": 1,
+          "time": 111.15,
+          "type": "approach"
+        },
+        {
+          "level": 3,
+          "room": 1,
+          "time": 115.05,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 3,
+          "room": 1,
+          "time": 115.05,
+          "type": "nightmare_level"
+        },
+        {
+          "room": 1,
+          "time": 127.35,
+          "type": "encounter"
+        },
+        {
+          "room": 1,
+          "time": 140.85,
+          "type": "door_break"
+        },
+        {
+          "room": 1,
+          "time": 143.85,
+          "type": "elimination"
+        },
+        {
+          "room": 1,
+          "source": "Hunter",
+          "time": 143.85,
+          "type": "hunter_evolved"
+        },
+        {
+          "room": 4,
+          "time": 147.45,
+          "type": "approach"
+        },
+        {
+          "room": 4,
+          "time": 154.65,
+          "type": "encounter"
+        },
+        {
+          "room": 4,
+          "time": 168.9,
+          "type": "door_break"
+        },
+        {
+          "room": 4,
+          "time": 172.35,
+          "type": "elimination"
+        },
+        {
+          "room": 4,
+          "source": "Hunter",
+          "time": 172.35,
+          "type": "hunter_evolved"
+        },
+        {
+          "level": 4,
+          "room": 4,
+          "time": 172.5,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 4,
+          "room": 4,
+          "time": 172.5,
+          "type": "nightmare_level"
+        },
+        {
+          "room": 3,
+          "time": 177.45,
+          "type": "approach"
+        },
+        {
+          "room": 3,
+          "time": 180.9,
+          "type": "encounter"
+        },
+        {
+          "level": 5,
+          "room": 3,
+          "time": 190.05,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 5,
+          "room": 3,
+          "time": 190.05,
+          "type": "nightmare_level"
+        },
+        {
+          "room": 3,
+          "time": 195.9,
+          "type": "door_break"
+        },
+        {
+          "room": 3,
+          "time": 198.6,
+          "type": "elimination"
+        },
+        {
+          "room": 3,
+          "source": "Hunter",
+          "time": 198.6,
+          "type": "hunter_evolved"
+        },
+        {
+          "room": 5,
+          "time": 203.7,
+          "type": "approach"
+        },
+        {
+          "room": 5,
+          "time": 210.45,
+          "type": "encounter"
+        },
+        {
+          "budget": 0.0,
+          "hall": "west",
+          "healed": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 225.0,
+          "type": "hunter_retreat"
+        },
+        {
+          "budget": 955.946441165643,
+          "hall": "west",
+          "healed": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 229.65,
+          "type": "hunter_recovering"
+        },
+        {
+          "budget": 955.946441165643,
+          "hall": "west",
+          "healed": 955.946441165643,
+          "reason": "completed",
+          "room": 5,
+          "time": 237.75,
+          "type": "hunter_recovery_ended"
+        },
+        {
+          "room": 2,
+          "time": 237.9,
+          "type": "approach"
+        },
+        {
+          "room": 2,
+          "time": 267.9,
+          "type": "encounter"
+        },
+        {
+          "level": 6,
+          "room": 2,
+          "time": 277.65,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 6,
+          "room": 2,
+          "time": 277.65,
+          "type": "nightmare_level"
+        },
+        {
+          "next_room": 4,
+          "room": 2,
+          "time": 292.05,
+          "type": "hunter_reassess"
+        },
+        {
+          "room": 5,
+          "time": 292.2,
+          "type": "approach"
+        },
+        {
+          "budget": 0.0,
+          "hall": "west",
+          "healed": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 312.9,
+          "type": "hunter_retreat"
+        },
+        {
+          "budget": 978.912000000002,
+          "hall": "west",
+          "healed": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 323.1,
+          "type": "hunter_recovering"
+        },
+        {
+          "budget": 978.912000000002,
+          "hall": "west",
+          "healed": 978.912,
+          "reason": "completed",
+          "room": 5,
+          "time": 331.2,
+          "type": "hunter_recovery_ended"
+        },
+        {
+          "room": 2,
+          "time": 331.35,
+          "type": "approach"
+        },
+        {
+          "room": 2,
+          "time": 360.9,
+          "type": "encounter"
+        }
+      ],
+      "evolution_buffs": [
+        "door_crusher",
+        "ruthless_pursuit",
+        "shadow_step",
+        "soul_drain"
+      ],
+      "evolution_level": 6,
+      "family": "labyrinth",
+      "first_encounter": 45.45,
+      "first_player_encounter": 45.45,
+      "first_player_strike": 47.1,
+      "hunter_archetype": "electric",
+      "hunter_attacks": 116,
+      "hunter_max_hp": 5537.28000000001,
+      "hunter_remaining_hp": 0.0,
+      "hunter_retargets": 2,
+      "hunter_transformed": false,
+      "invalid": [],
+      "item_uses": [],
+      "map_sha256": "67c4a141538070644037b75eb32defac7a132bcd75f74e25818a43df97f407c3",
+      "max_ledger_error": 0.00006103515625,
+      "npc_damage": 3086.0,
+      "npc_hunter_damage": 3086.0,
+      "opening_wallet": [
+        25.0,
+        0.0
+      ],
+      "outcome": "victory",
+      "peak_player_buildings": 6,
+      "peak_player_exposure": 54.9,
+      "peak_sleeping_npcs": 5,
+      "player_damage": 4386.13844116565,
+      "player_door_damage": 2642.54778664636,
+      "player_hunter_damage": 4386.13844116565,
+      "prior_passive_win": false,
+      "recovery_attempts": 2,
+      "recovery_visits": 2,
+      "repetition": -1,
+      "rooms": [
+        {
+          "alive": false,
+          "attack_seconds": 16.5,
+          "door_damage": 482.45,
+          "door_strikes": 13,
+          "enemy_damage": 360.0,
+          "hunter_damage": 360.0,
+          "owner": 5,
+          "room": 1,
+          "shape": "rectangle",
+          "shots": 20,
+          "target_seconds": 36.3,
+          "trait": "power"
+        },
+        {
+          "alive": true,
+          "attack_seconds": 54.75,
+          "door_damage": 2642.54778664636,
+          "door_strikes": 51,
+          "enemy_damage": 4386.13844116565,
+          "hunter_damage": 4386.13844116565,
+          "owner": 0,
+          "room": 2,
+          "shape": "zigzag",
+          "shots": 227,
+          "target_seconds": 120.15,
+          "trait": "economy"
+        },
+        {
+          "alive": false,
+          "attack_seconds": 17.7,
+          "door_damage": 714.25,
+          "door_strikes": 14,
+          "enemy_damage": 621.0,
+          "hunter_damage": 621.0,
+          "owner": 4,
+          "room": 3,
+          "shape": "l",
+          "shots": 23,
+          "target_seconds": 26.25,
+          "trait": "fortified"
+        },
+        {
+          "alive": false,
+          "attack_seconds": 17.7,
+          "door_damage": 570.3,
+          "door_strikes": 14,
+          "enemy_damage": 108.0,
+          "hunter_damage": 108.0,
+          "owner": 3,
+          "room": 4,
+          "shape": "u",
+          "shots": 4,
+          "target_seconds": 30.0,
+          "trait": "power"
+        },
+        {
+          "alive": true,
+          "attack_seconds": 14.55,
+          "door_damage": 806.483739430667,
+          "door_strikes": 14,
+          "enemy_damage": 1700.0,
+          "hunter_damage": 1700.0,
+          "owner": 2,
+          "room": 5,
+          "shape": "long",
+          "shots": 62,
+          "target_seconds": 73.35,
+          "trait": "economy"
+        },
+        {
+          "alive": false,
+          "attack_seconds": 28.05,
+          "door_damage": 485.0,
+          "door_strikes": 23,
+          "enemy_damage": 297.0,
+          "hunter_damage": 297.0,
+          "owner": 1,
+          "room": 6,
+          "shape": "l",
+          "shots": 33,
+          "target_seconds": 41.4,
+          "trait": "fortified"
+        }
+      ],
+      "simulated_seconds": 367.35,
+      "speed_budget_violations": 0,
+      "steps": 2429,
+      "strategy_actions": [
+        {
+          "route_samples": 22,
+          "route_samples_in_range": 20,
+          "time": 38.9999999999998,
+          "type": "approach_coverage"
+        },
+        {
+          "route_samples": 22,
+          "route_samples_in_range": 19,
+          "time": 42.5999999999998,
+          "type": "approach_coverage"
+        },
+        {
+          "route_samples": 22,
+          "route_samples_in_range": 18,
+          "time": 45.2999999999997,
+          "type": "approach_coverage"
+        }
+      ],
+      "tactical_breaks": [],
+      "walk_seconds": 3.0
+    },
+    {
+      "all_npcs_slept": true,
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_2",
+        "hard",
+        10358,
+        1,
+        "walk_early_bed"
+      ],
+      "control_hits": 0,
+      "decision_timeline": [
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1.72749999999998,
+          "power_after_tick": 0.0,
+          "spent_gold": 30.0,
+          "spent_power": 0.0,
+          "time": 6.75,
+          "type": "bed_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1.07999999999976,
+          "power_after_tick": 0.0,
+          "spent_gold": 85.0,
+          "spent_power": 0.0,
+          "time": 31.05,
+          "type": "bed_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 3.33999999999974,
+          "power_after_tick": 0.0,
+          "spent_gold": 35.0,
+          "spent_power": 0.0,
+          "time": 36.45,
+          "type": "door_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1.96999999999975,
+          "kind": "turret",
+          "power_after_tick": 0.0,
+          "spent_gold": 20.0,
+          "spent_power": 0.0,
+          "time": 39.15,
+          "type": "build"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 6.80999999999975,
+          "kind": "turret",
+          "power_after_tick": 0.0,
+          "spent_gold": 20.0,
+          "spent_power": 0.0,
+          "time": 42.75,
+          "type": "build"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 5.43999999999975,
+          "kind": "turret",
+          "power_after_tick": 0.0,
+          "spent_gold": 20.0,
+          "spent_power": 0.0,
+          "time": 45.45,
+          "type": "build"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 20.829741504,
+          "gold_after_tick": 16.8249999999998,
+          "hp": 279.170258496,
+          "power_after_tick": 0.0,
+          "source": "chain_lightning",
+          "time": 47.1,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 20.834875776,
+          "gold_after_tick": 18.8949999999998,
+          "hp": 258.33538272,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 47.4,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 20.852845728,
+          "gold_after_tick": 26.1399999999998,
+          "hp": 237.482536992,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 48.45,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 20.87081568,
+          "gold_after_tick": 33.3849999999997,
+          "hp": 216.611721312,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 49.5,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 22.4899999999997,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 49.95,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 20.888785632,
+          "gold_after_tick": 26.6299999999997,
+          "hp": 265.72293568,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 50.55,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 20.904188448,
+          "gold_after_tick": 32.8399999999997,
+          "hp": 244.818747232,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 51.45,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 20.9221584,
+          "gold_after_tick": 40.0849999999997,
+          "hp": 223.896588832,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 52.5,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 27.1199999999997,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 52.65,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 20.940128352,
+          "gold_after_tick": 33.3299999999997,
+          "hp": 272.95646048,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 53.55,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 20.958098304,
+          "gold_after_tick": 40.5749999999997,
+          "hp": 251.998362176,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 54.6,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 20.976068256,
+          "gold_after_tick": 47.8199999999997,
+          "hp": 231.02229392,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 55.65,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 37.9599999999997,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 56.25,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 20.994038208,
+          "gold_after_tick": 41.0649999999996,
+          "hp": 279.005961792,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 56.7,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 21.01200816,
+          "gold_after_tick": 48.3099999999996,
+          "hp": 257.993953632,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 57.75,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 21.029978112,
+          "gold_after_tick": 55.5549999999996,
+          "hp": 236.96397552,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 58.8,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 42.5899999999996,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 58.95,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 21.047948064,
+          "gold_after_tick": 48.7999999999996,
+          "hp": 278.952051936,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 59.85,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 21.06335088,
+          "gold_after_tick": 55.0099999999996,
+          "hp": 257.888701056,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 60.75,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 21.081320832,
+          "gold_after_tick": 62.2549999999995,
+          "hp": 236.807380224,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 61.8,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 53.4299999999995,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 62.55,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 21.104425056,
+          "gold_after_tick": 57.5699999999995,
+          "hp": 278.895574944,
+          "power_after_tick": 0.0,
+          "source": "chain_lightning",
+          "time": 63.15,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 21.119827872,
+          "gold_after_tick": 63.7799999999995,
+          "hp": 257.775747072,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 64.05,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 21.137797824,
+          "gold_after_tick": 71.0249999999995,
+          "hp": 236.637949248,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 65.1,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 58.0599999999994,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 65.25,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 21.155767776,
+          "gold_after_tick": 64.2699999999994,
+          "hp": 278.844232224,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 66.15,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 21.173737728,
+          "gold_after_tick": 71.5149999999994,
+          "hp": 257.670494496,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 67.2,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 22.8870442944,
+          "gold_after_tick": 78.7599999999994,
+          "hp": 234.7834502016,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 68.25,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 68.8999999999994,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 68.85,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 22.90645184256,
+          "gold_after_tick": 72.0049999999994,
+          "hp": 277.09354815744,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 69.3,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 22.92585939072,
+          "gold_after_tick": 79.2499999999993,
+          "hp": 254.16768876672,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 70.35,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 22.942494432,
+          "gold_after_tick": 85.4599999999993,
+          "hp": 231.22519433472,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 71.25,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 73.5299999999993,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 71.55,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 22.96190198016,
+          "gold_after_tick": 78.7049999999993,
+          "hp": 277.03809801984,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 72.3,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 22.98130952832,
+          "gold_after_tick": 85.9499999999993,
+          "hp": 254.05678849152,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 73.35,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 23.00071707648,
+          "gold_after_tick": 93.1949999999992,
+          "hp": 231.05607141504,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 74.4,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 84.3699999999992,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 75.15,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 23.02012462464,
+          "gold_after_tick": 86.4399999999992,
+          "hp": 276.97987537536,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 75.45,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 23.0395321728,
+          "gold_after_tick": 93.6849999999992,
+          "hp": 253.94034320256,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 76.5,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 23.05893972096,
+          "gold_after_tick": 100.929999999999,
+          "hp": 230.8814034816,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 77.55,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 88.9999999999992,
+          "power_after_tick": 0.0,
+          "spent_gold": 14.0,
+          "spent_power": 0,
+          "time": 77.85,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 23.08943729664,
+          "gold_after_tick": 98.3149999999991,
+          "hp": 276.91056270336,
+          "power_after_tick": 0.0,
+          "source": "chain_lightning",
+          "time": 79.2,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 1.41999999999912,
+          "power_after_tick": 0.0,
+          "spent_gold": 100.0,
+          "spent_power": 0.0,
+          "time": 79.65,
+          "type": "door_upgrade"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 23.10052732416,
+          "gold_after_tick": 2.45499999999912,
+          "hp": 553.8100353792,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 79.8,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 23.11993487232,
+          "gold_after_tick": 9.69999999999912,
+          "hp": 530.69010050688,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 80.85,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 23.13934242048,
+          "gold_after_tick": 16.9449999999991,
+          "hp": 507.5507580864,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 81.9,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 4.04999999999912,
+          "power_after_tick": 0.0,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 82.35,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 23.15597746176,
+          "gold_after_tick": 7.15499999999912,
+          "hp": 554.39478062464,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 82.8,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 23.17538500992,
+          "gold_after_tick": 14.3999999999991,
+          "hp": 531.21939561472,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 83.85,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 23.19479255808,
+          "gold_after_tick": 21.6449999999991,
+          "hp": 508.02460305664,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 84.9,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 6.67999999999913,
+          "power_after_tick": 0.0,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 85.05,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 39.0937974491713,
+          "gold_after_tick": 18.0649999999991,
+          "hp": 538.930805607469,
+          "power_after_tick": 0.0,
+          "source": "charged heavy strike",
+          "time": 86.7,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 3.09999999999913,
+          "power_after_tick": 0.0,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 86.85,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 27.2553402545258,
+          "gold_after_tick": 16.5549999999991,
+          "hp": 572.744659745474,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 88.8,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 28.5119534323628,
+          "gold_after_tick": 23.7999999999991,
+          "hp": 544.232706313111,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 89.85,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 11.9399999999991,
+          "power_after_tick": 0.0,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 90.45,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 29.9326968367577,
+          "gold_after_tick": 15.0449999999991,
+          "hp": 570.067303163242,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 90.9,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 53.7824748670486,
+          "gold_after_tick": 27.4649999999991,
+          "hp": 516.284828296194,
+          "power_after_tick": 0.0,
+          "source": "charged heavy strike",
+          "time": 92.7,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 14.5699999999991,
+          "power_after_tick": 0.0,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 93.15,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 35.5692203570416,
+          "gold_after_tick": 34.2349999999991,
+          "hp": 538.465607939151,
+          "power_after_tick": 0.0,
+          "source": "chain_lightning",
+          "time": 96.0,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 37.417673832826,
+          "gold_after_tick": 34.2349999999991,
+          "hp": 501.047934106325,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 96.0,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 23.4099999999991,
+          "power_after_tick": 0.0,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 96.75,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 38.7162278111543,
+          "gold_after_tick": 25.4799999999991,
+          "hp": 514.56920629517,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 97.05,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 13.6199999999991,
+          "power_after_tick": 0.0,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 97.65,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 39.6662241660515,
+          "gold_after_tick": 15.6899999999991,
+          "hp": 525.762357129117,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 97.95,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 3.82999999999911,
+          "power_after_tick": 0.0,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 98.55,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 67.6014813232558,
+          "gold_after_tick": 12.1099999999991,
+          "hp": 507.64212580586,
+          "power_after_tick": 0.0,
+          "source": "charged heavy strike",
+          "time": 99.75,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 6.45999999999912,
+          "power_after_tick": 0.0,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 101.25,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 41.3172417715201,
+          "gold_after_tick": 10.5999999999991,
+          "hp": 511.82488403434,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 101.85,
+          "type": "door_damage"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 41.3464791168,
+          "gold_after_tick": 16.8099999999991,
+          "hp": 470.47840491754,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 102.75,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 2.87999999999912,
+          "power_after_tick": 0.0,
+          "spent_gold": 16.0,
+          "spent_power": 0,
+          "time": 103.05,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 41.38058935296,
+          "gold_after_tick": 8.05499999999912,
+          "hp": 474.59781556458,
+          "power_after_tick": 0.0,
+          "source": "door strike",
+          "time": 103.8,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 7.07999999999882,
+          "kind": "generator",
+          "power_after_tick": 0.081,
+          "spent_gold": 120.0,
+          "spent_power": 0.0,
+          "time": 121.05,
+          "type": "build"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 72.6499999999986,
+          "kind": "turret",
+          "level": 2,
+          "power_after_tick": 0.343000000000016,
+          "spent_gold": 40.0,
+          "spent_power": 8.0,
+          "time": 136.35,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 162.899999999998,
+          "kind": "repair",
+          "power_after_tick": 0.493000000000008,
+          "spent_gold": 65.0,
+          "spent_power": 12.0,
+          "time": 158.85,
+          "type": "build"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 96.7799999999997,
+          "power_after_tick": 0.215999999999975,
+          "spent_gold": 240.0,
+          "spent_power": 10.0,
+          "time": 184.05,
+          "type": "door_upgrade"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 70.6548873888003,
+          "gold_after_tick": 149.565,
+          "hp": 981.642928175778,
+          "power_after_tick": 4.34699999999998,
+          "source": "chain_lightning",
+          "time": 191.7,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 134.67,
+          "power_after_tick": 4.58999999999998,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 192.15,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 70.6938028368003,
+          "gold_after_tick": 136.74,
+          "hp": 978.422562838978,
+          "power_after_tick": 4.75199999999998,
+          "source": "door strike",
+          "time": 192.45,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 122.88,
+          "power_after_tick": 5.07599999999998,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 193.05,
+          "type": "repair"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 70.7405013744002,
+          "gold_after_tick": 124.95,
+          "hp": 973.777373964578,
+          "power_after_tick": 5.23799999999998,
+          "source": "door strike",
+          "time": 193.35,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 111.089999999999,
+          "power_after_tick": 5.56199999999998,
+          "spent_gold": 18.0,
+          "spent_power": 0,
+          "time": 193.95,
+          "type": "repair"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 190.129999999999,
+          "kind": "turret",
+          "level": 3,
+          "power_after_tick": 0.128499999999927,
+          "spent_gold": 70.0,
+          "spent_power": 14.0,
+          "time": 215.55,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 255.7,
+          "kind": "turret",
+          "level": 2,
+          "power_after_tick": 0.390499999999943,
+          "spent_gold": 40.0,
+          "spent_power": 8.0,
+          "time": 230.85,
+          "type": "building_upgrade"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 365.790000000004,
+          "kind": "turret",
+          "level": 3,
+          "power_after_tick": 0.484499999999923,
+          "spent_gold": 70.0,
+          "spent_power": 14.0,
+          "time": 256.95,
+          "type": "building_upgrade"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 112.6024064,
+          "gold_after_tick": 406.155000000005,
+          "hp": 987.3975936,
+          "power_after_tick": 3.64349999999992,
+          "source": "Phantom Scream",
+          "time": 268.8,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 427.220000000007,
+          "kind": "turret",
+          "level": 2,
+          "power_after_tick": 0.212499999999939,
+          "spent_gold": 40.0,
+          "spent_power": 8.0,
+          "time": 277.65,
+          "type": "building_upgrade"
+        },
+        {
+          "attacker_id": 1,
+          "damage": 115.4432928,
+          "gold_after_tick": 616.625000000005,
+          "hp": 966.454300799996,
+          "power_after_tick": 10.4679999999999,
+          "source": "Phantom Scream",
+          "time": 305.1,
+          "type": "door_damage"
+        },
+        {
+          "damage": 0.0,
+          "gold_after_tick": 680.140000000001,
+          "kind": "turret",
+          "level": 3,
+          "power_after_tick": 0.249499999999808,
+          "spent_gold": 70.0,
+          "spent_power": 14.0,
+          "time": 324.45,
+          "type": "building_upgrade"
+        }
+      ],
+      "eliminations": 1,
+      "event_counts": {
+        "approach": 6,
+        "arcane_impact": 11,
+        "archetype_warning": 3,
+        "bed_upgrade": 16,
+        "boss_ability_activate": 12,
+        "boss_ability_end": 3,
+        "boss_ability_warning": 14,
+        "boss_awakened": 1,
+        "boss_death": 1,
+        "boss_impact": 18,
+        "boss_phase": 2,
+        "boss_resource_drain": 1,
+        "boss_surge": 3,
+        "boss_transform": 1,
+        "boss_warning": 25,
+        "build": 28,
+        "building_destroyed": 1,
+        "building_upgrade": 27,
+        "charged_attack": 9,
+        "door_break": 1,
+        "door_damage": 205,
+        "door_upgrade": 17,
+        "elimination": 1,
+        "encounter": 7,
+        "hunter_ability": 13,
+        "hunter_ability_warning": 15,
+        "hunter_commit": 1,
+        "hunter_evolved": 1,
+        "hunter_recovering": 1,
+        "hunter_recovery": 9,
+        "hunter_recovery_ended": 2,
+        "hunter_retreat": 2,
+        "magic_absorb": 5,
+        "magic_shield": 9,
+        "nightmare_level": 3,
+        "repair": 80,
+        "scythe_embed": 1,
+        "scythe_end": 1,
+        "scythe_throw": 1,
+        "scythe_tick": 8,
+        "survivor_attack": 1,
+        "survivor_fear": 1,
+        "undead_attack": 80,
+        "undead_death": 18,
+        "undead_spawn": 18
+      },
+      "events": [
+        {
+          "room": 2,
+          "time": 40.05,
+          "type": "approach"
+        },
+        {
+          "room": 2,
+          "time": 45.3,
+          "type": "encounter"
+        },
+        {
+          "budget": 0.0,
+          "hall": "east",
+          "healed": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 103.95,
+          "type": "hunter_retreat"
+        },
+        {
+          "budget": 1000.38132,
+          "hall": "east",
+          "healed": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 111.15,
+          "type": "hunter_recovering"
+        },
+        {
+          "budget": 1000.38132,
+          "hall": "east",
+          "healed": 1000.38132,
+          "reason": "completed",
+          "room": 2,
+          "time": 119.25,
+          "type": "hunter_recovery_ended"
+        },
+        {
+          "room": 6,
+          "time": 119.4,
+          "type": "approach"
+        },
+        {
+          "level": 3,
+          "room": 6,
+          "time": 130.2,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 3,
+          "room": 6,
+          "time": 130.2,
+          "type": "nightmare_level"
+        },
+        {
+          "room": 6,
+          "time": 133.65,
+          "type": "encounter"
+        },
+        {
+          "reason": "breach_progress",
+          "room": 6,
+          "time": 151.35,
+          "type": "hunter_commit"
+        },
+        {
+          "room": 6,
+          "time": 175.2,
+          "type": "door_break"
+        },
+        {
+          "room": 6,
+          "time": 178.35,
+          "type": "elimination"
+        },
+        {
+          "room": 6,
+          "source": "Hunter",
+          "time": 178.35,
+          "type": "hunter_evolved"
+        },
+        {
+          "room": 2,
+          "time": 182.55,
+          "type": "approach"
+        },
+        {
+          "room": 2,
+          "time": 190.35,
+          "type": "encounter"
+        },
+        {
+          "budget": 0.0,
+          "hall": "east",
+          "healed": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 194.25,
+          "type": "hunter_retreat"
+        },
+        {
+          "budget": 0.0,
+          "hall": "east",
+          "healed": 0.0,
+          "reason": "boss transformation",
+          "room": 2,
+          "time": 196.5,
+          "type": "hunter_recovery_ended"
+        },
+        {
+          "room": 2,
+          "time": 196.5,
+          "type": "boss_transform"
+        },
+        {
+          "room": 2,
+          "time": 199.2,
+          "type": "boss_phase"
+        },
+        {
+          "room": 1,
+          "time": 202.05,
+          "type": "approach"
+        },
+        {
+          "level": 4,
+          "room": 1,
+          "time": 207.45,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 4,
+          "room": 1,
+          "time": 207.45,
+          "type": "nightmare_level"
+        },
+        {
+          "room": 1,
+          "time": 224.25,
+          "type": "encounter"
+        },
+        {
+          "room": 1,
+          "time": 239.55,
+          "type": "boss_phase"
+        },
+        {
+          "room": 4,
+          "time": 240.75,
+          "type": "approach"
+        },
+        {
+          "room": 4,
+          "time": 254.25,
+          "type": "encounter"
+        },
+        {
+          "level": 5,
+          "room": 4,
+          "time": 282.45,
+          "type": "observed_evolution_level"
+        },
+        {
+          "level": 5,
+          "room": 4,
+          "time": 282.45,
+          "type": "nightmare_level"
+        },
+        {
+          "room": 3,
+          "time": 287.25,
+          "type": "approach"
+        },
+        {
+          "room": 3,
+          "time": 292.2,
+          "type": "encounter"
+        },
+        {
+          "room": 5,
+          "time": 323.1,
+          "type": "encounter"
+        },
+        {
+          "room": 5,
+          "time": 340.8,
+          "type": "boss_death"
+        }
+      ],
+      "evolution_buffs": [
+        "door_crusher"
+      ],
+      "evolution_level": 5,
+      "family": "labyrinth",
+      "first_encounter": 45.3,
+      "first_player_encounter": 45.3,
+      "first_player_strike": 47.1,
+      "hunter_archetype": "storm",
+      "hunter_attacks": 94,
+      "hunter_max_hp": 5986.93679999999,
+      "hunter_remaining_hp": 0.0,
+      "hunter_retargets": 2,
+      "hunter_transformed": true,
+      "invalid": [],
+      "item_uses": [],
+      "map_sha256": "67c4a141538070644037b75eb32defac7a132bcd75f74e25818a43df97f407c3",
+      "max_ledger_error": 0.00006103515625,
+      "npc_damage": 6686.65536022105,
+      "npc_hunter_damage": 3989.25536022105,
+      "opening_wallet": [
+        25.0,
+        0.0
+      ],
+      "outcome": "victory",
+      "peak_player_buildings": 5,
+      "peak_player_exposure": 62.55,
+      "peak_sleeping_npcs": 5,
+      "player_damage": 2780.97292000001,
+      "player_door_damage": 1794.32396996988,
+      "player_hunter_damage": 2758.37292000001,
+      "prior_passive_win": false,
+      "recovery_attempts": 2,
+      "recovery_visits": 1,
+      "repetition": -1,
+      "rooms": [
+        {
+          "alive": true,
+          "attack_seconds": 16.35,
+          "door_damage": 1647.59833120429,
+          "door_strikes": 68,
+          "enemy_damage": 2539.82852,
+          "hunter_damage": 788.228519999999,
+          "owner": 5,
+          "room": 1,
+          "shape": "rectangle",
+          "shots": 110,
+          "target_seconds": 38.7,
+          "trait": "power"
+        },
+        {
+          "alive": true,
+          "attack_seconds": 62.55,
+          "door_damage": 1794.32396996988,
+          "door_strikes": 56,
+          "enemy_damage": 2780.97292000001,
+          "hunter_damage": 2758.37292000001,
+          "owner": 0,
+          "room": 2,
+          "shape": "zigzag",
+          "shots": 298,
+          "target_seconds": 98.85,
+          "trait": "economy"
+        },
+        {
+          "alive": true,
+          "attack_seconds": 21.6,
+          "door_damage": 951.469591462293,
+          "door_strikes": 14,
+          "enemy_damage": 1511.67298239003,
+          "hunter_damage": 771.67298239004,
+          "owner": 4,
+          "room": 3,
+          "shape": "l",
+          "shots": 71,
+          "target_seconds": 26.55,
+          "trait": "fortified"
+        },
+        {
+          "alive": true,
+          "attack_seconds": 32.85,
+          "door_damage": 1410.29964264542,
+          "door_strikes": 21,
+          "enemy_damage": 933.8,
+          "hunter_damage": 728.0,
+          "owner": 3,
+          "room": 4,
+          "shape": "u",
+          "shots": 35,
+          "target_seconds": 46.5,
+          "trait": "power"
+        },
+        {
+          "alive": true,
+          "attack_seconds": 17.7,
+          "door_damage": 1680.12443835179,
+          "door_strikes": 16,
+          "enemy_damage": 621.353857831013,
+          "hunter_damage": 621.353857831013,
+          "owner": 2,
+          "room": 5,
+          "shape": "long",
+          "shots": 41,
+          "target_seconds": 27.15,
+          "trait": "economy"
+        },
+        {
+          "alive": false,
+          "attack_seconds": 44.7,
+          "door_damage": 1493.20625,
+          "door_strikes": 30,
+          "enemy_damage": 1080.0,
+          "hunter_damage": 1080.0,
+          "owner": 1,
+          "room": 6,
+          "shape": "l",
+          "shots": 61,
+          "target_seconds": 63.15,
+          "trait": "fortified"
+        }
+      ],
+      "simulated_seconds": 340.8,
+      "speed_budget_violations": 0,
+      "steps": 2252,
+      "strategy_actions": [
+        {
+          "route_samples": 22,
+          "route_samples_in_range": 20,
+          "time": 38.9999999999998,
+          "type": "approach_coverage"
+        },
+        {
+          "route_samples": 22,
+          "route_samples_in_range": 19,
+          "time": 42.5999999999998,
+          "type": "approach_coverage"
+        },
+        {
+          "route_samples": 22,
+          "route_samples_in_range": 18,
+          "time": 45.2999999999997,
+          "type": "approach_coverage"
+        }
+      ],
+      "tactical_breaks": [],
+      "walk_seconds": 3.0
+    }
+  ],
+  "earned_inventory": {
+    "loadout": [
+      "gold",
+      "battery"
+    ],
+    "rank_cash_earned": 33,
+    "rank_cash_remaining": 17,
+    "result": "victory",
+    "seconds": 344.849999999993,
+    "seed": 2800,
+    "source": "first_blood achievement plus RM battery purchase"
+  },
+  "failures": 0
+}

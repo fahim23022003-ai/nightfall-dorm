@@ -1,3 +1,13 @@
+# Close Quarters Preview
+
+Phase 18 adds version 3 wall-adjacent corridors on an opt-in launcher.
+The V2 street plans, saved layouts, irregular room interiors, room race
+staging and all four Haunted Halls are preserved. The corridor geometry
+and first-arrival checks passed. Native Windows performance remains
+pending. [Preview instructions and evidence](CLOSE_QUARTERS.md)
+
+---
+
 # Weapon Impact & Damage Feedback
 
 The latest preview connects rendered weapon fire to the actual launch,

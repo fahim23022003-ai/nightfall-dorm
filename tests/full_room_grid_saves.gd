@@ -62,6 +62,9 @@ func dense_profile_roundtrip() -> void:
  var model: MatchModel=a.m
  var profile: PlayerProfile=a.p
  var room: RoomState=model.player()
+ if "--procedural-only" in OS.get_cmdline_user_args():
+  var version:=NightmareMap.CLOSE_QUARTERS_VERSION if OS.get_environment("NIGHTFALL_CLOSE_QUARTERS")=="1" else NightmareMap.MACRO_VERSION
+  check(model.map_data.get("version")==version,"test runs on the selected procedural geometry")
  check(room.spatial.grid,"new opted-in profile session starts in grid mode")
  if not room.spatial.grid:return
  var candidates := ground_points(room)
@@ -85,9 +88,13 @@ func dense_profile_roundtrip() -> void:
  var primary: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(profile.path))
  var expected: Dictionary=primary.replay.checkpoint.duplicate(true)
  OS.set_environment(GRID_ENV,"0")
+ var close_quarters:=OS.get_environment("NIGHTFALL_CLOSE_QUARTERS")
+ if "--procedural-only" in OS.get_cmdline_user_args():
+  OS.set_environment("NIGHTFALL_CLOSE_QUARTERS","0" if close_quarters=="1" else "1")
  var loader := PlayerProfile.new(profile.path)
  check(loader.load_profile() and not loader.read_only,"disk profile accepts grid data with opt-in switched off")
  var restored: MatchModel=loader.resume_endless()
+ OS.set_environment("NIGHTFALL_CLOSE_QUARTERS",close_quarters)
  check(restored!=null and restored.player().spatial.grid and restored.player().spatial.actor_points_provider.is_valid(),"normal profile Resume rebinds the saved grid and live collision guard")
  if restored!=null:
   check(restored.player().buildings[rotated].rotation==1,"JSON roundtrip keeps the exact nonzero rotation")
@@ -134,9 +141,10 @@ func failed_fit_rollback() -> void:
 
 func run():
  var setting := OS.get_environment(GRID_ENV)
- earned_migration()
+ var procedural_only: bool="--procedural-only" in OS.get_cmdline_user_args()
+ if not procedural_only:earned_migration()
  dense_profile_roundtrip()
- failed_fit_rollback()
+ if not procedural_only:failed_fit_rollback()
  OS.set_environment(GRID_ENV,setting)
  Support.cleanup(prefix)
  print("FULL_GRID_SAVE_CHECKS=",checks," FAILURES=",failures)

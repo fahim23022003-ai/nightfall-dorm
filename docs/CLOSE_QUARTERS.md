@@ -19,3 +19,29 @@ The original camera scale and bounds policy remain in use. Compare with
 the same room, zoom and seed. The new floors and lights follow saved
 navigation surfaces. No changes were made to damage, health or movement
 speed. Native Windows and Intel UHD tests require the target device.
+
+## Matched results
+
+- Across 200 layouts and 20,805 exterior wall samples, median floor gap
+  fell from 156 to 8 units. The p95 fell from at least 400 to 8 units.
+  The ray metric starts at sampled occupied exterior walls and caps at
+  400. It excludes interior recesses. All 25,351 structural assertions
+  passed, including both actor clearances on encoded lanes, approach and
+  Hall reachability, seed determinism and versioned JSON round trips.
+- All 35 Room Rush pairs started at identical attempt spawns and reached
+  all five physical claims. Median fifth claim was 40.25 → 38.75 seconds,
+  p95 remained 60.25 seconds, and the original Spine seed 8649 remained
+  at 50.00 seconds. Player and NPC speed budgets are unchanged.
+- All 70 Story runs settled and reopened. Wins went 23/35 → 22/35.
+  Hard and Hell counts were unchanged. In the Standard Branching case,
+  the same spawn and Room 4 remained in use, but the room fell at 210.60
+  seconds whereas the baseline killed the Hunter at 234.15 seconds.
+  The preview Hunter had 528.92 HP left. Hall visits totaled 16 per arm.
+- In Hell Hospital Labyrinth seed 10358 Room 2, the first door strike
+  moved from 48.00 to 47.10 seconds. Both previous item-free strategies,
+  saving for Bed 3 and building early crossfire, won again. The player
+  reached bed in 3.00 seconds in both arms. The ordinary approach-fire
+  and Frost plans still lost. Standard and Hard Bed 3 also won in both
+  arms. These scripted policies cannot establish human difficulty.
+
+[Model receipts and regressions](evidence/phase18/model/) · [Windows package receipt](evidence/phase18/windows/)

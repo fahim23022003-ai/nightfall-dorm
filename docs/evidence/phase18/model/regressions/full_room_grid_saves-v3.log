@@ -1,0 +1,15 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+ERROR: REPLAY ENDLESS: rollback fixture starts with one paid building
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] failed_fit_rollback (res://tests/full_room_grid_saves.gd:124)
+       [2] run (res://tests/full_room_grid_saves.gd:139)
+ERROR: REPLAY ENDLESS: unfit grid candidate is rejected
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/replay_endless.gd:12)
+       [1] failed_fit_rollback (res://tests/full_room_grid_saves.gd:132)
+       [2] run (res://tests/full_room_grid_saves.gd:139)
+FULL_GRID_SAVE_CHECKS=61 FAILURES=2
