@@ -63,7 +63,7 @@ func run():
  game.profile.inventory.radar=1
  game.profile.equip_item("radar")
  game.ui.show_menu()
- var tactical: bool=game.ui.use_tactical_ui()
+ var tactical: bool=game.ui.has_method("use_tactical_ui") and game.ui.use_tactical_ui()
  await still("01-main-menu")
  if bench:await collect_frames("main_menu")
  await press("menu_settings",game.ui.panel)
@@ -163,6 +163,11 @@ func run():
   check(game.ui.tactical_settings!=null and model.time==paused_at,"match Settings pauses model")
   await key(KEY_ESCAPE)
   check(game.ui.tactical_settings==null and model.running,"active match settings resumes same match")
+  await key(KEY_ESCAPE)
+  check(not model.running and not game.ui.pause_items.is_empty(),"Escape reaches the pause menu from an idle HUD")
+  await still("14-pause")
+  await click(game.ui.pause_items[3])
+  check(model.running and game.ui.pause_items.is_empty(),"actual Resume unlocks the game")
  await key(KEY_G)
  var frozen: float=model.time
  game._process(.4)

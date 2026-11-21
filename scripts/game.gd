@@ -475,6 +475,7 @@ func close_pausing_help() -> void:
  phase20_help=null
  phase20_help_open=false
  model.running=phase20_was_running and model.result.is_empty()
+ if ui.tactical_hud!=null and not tutorial_active:ui.tactical_hud.more.grab_focus()
  queue_redraw()
 
 func _phase20_camera_input(event: InputEvent) -> bool:

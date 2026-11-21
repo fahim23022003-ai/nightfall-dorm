@@ -840,15 +840,25 @@ func show_pause(open: bool):
  veil.size=Vector2(1280,720)
  veil.color=Color(0.05,0.1,0.16,0.75)
  panel.add_child(veil)
+ if tactical_hud!=null:
+  var frame:=theme_panel(Rect2(428,153,424,414),"frame")
+  var caption:=theme_label("Paused",Vector2(461,180),36,358,"text",true)
+  var resume_button:=button("Resume [Esc]",Vector2(461,249),game.toggle_pause,358,49)
+  theme_button(resume_button,"primary","play")
+  var options:=button("Settings",Vector2(461,311),open_match_settings,358,46)
+  theme_button(options,"settings","settings")
+  var leave:=button("Return to main menu",Vector2(461,372),game.return_menu,358,46)
+  pause_items=[veil,frame,caption,resume_button,options,leave]
+  if game.model.run_kind=="practice":
+   pause_items.append(button("Reset practice",Vector2(461,433),game.reset_practice,358,46))
+  resume_button.grab_focus()
+  return
  var bg=box(Rect2(420,180,440,350))
  var title=label_at("NIGHTWATCH PAUSED",Vector2(450,218),24,390,true)
  var subtitle=label_at("Your room can wait a moment.",Vector2(450,266),18,390)
  var resume=button("Resume",Vector2(450,329),game.toggle_pause,380,48)
  var menu=button("Return to main menu",Vector2(450,397),game.return_menu,380,48)
  pause_items=[veil,bg,title,subtitle,resume,menu]
- if tactical_hud!=null:
-  var settings:=button("Settings",Vector2(450,461),open_match_settings,380,44)
-  pause_items.append(settings)
  if game.model.run_kind=="practice":
   var reset=button("Reset Practice",Vector2(450,465),game.reset_practice,380,44)
   pause_items.append(reset)
