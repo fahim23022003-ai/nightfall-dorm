@@ -293,6 +293,8 @@ func refresh():
  if not visible:return
  status.position=Vector2(20,572) if grid else Vector2(357,143)
  plan_button.position=Vector2(20,605) if grid else Vector2(665,140)
+ if tactical and grid and game.ui.bottom_context.catalogue_layout and game.ui.context_box.position.x<100:
+  plan_button.position.x=430
  if game.ui.tactical_hud==null:rotate_button.position=Vector2(143,605) if grid else Vector2(782,140)
  status.text="Floor plan" if grid else "BUILDINGS %d / %d · %s" % [r.buildings.size(),r.tile_count(),RoomExpansion.NAMES[r.expansion_tier]]
  plan_button.text="Close plan [P]" if planning else "Plan [P]";snap_button.text="Snap 8: %s [F]" % ("ON" if snap else "OFF")

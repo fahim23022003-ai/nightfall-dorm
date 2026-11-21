@@ -234,6 +234,8 @@ func verify_siege_build() -> void:
   await key(KEY_B)
   check(game.ui.context_box.position.x<100,"right-side room anchors Build on the left")
   check(game.camera.position==manual,"Build keeps the manually panned camera")
+  check(not game.ui.context_box.get_global_rect().intersects(game.construction.plan_button.get_global_rect()),"Plan never overlaps left-anchored Build")
+  presets["siege_build"]={"room_overlap":room_overlap,"left_anchor":true}
   await key(KEY_ESCAPE)
   await key(KEY_HOME)
 

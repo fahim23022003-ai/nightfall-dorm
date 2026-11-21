@@ -38,6 +38,7 @@ func begin():
   heading_label.add_theme_font_size_override("font_size",24)
   message_label.add_theme_font_size_override("font_size",20)
   message_label.add_theme_constant_override("line_spacing",2)
+  help.position.y=193
   help.add_theme_font_size_override("font_size",17)
   for control in [proceed,repeat,recover_button,exit_button,help]:
    game.ui.theme_button(control,"primary" if control==proceed else "quiet")
