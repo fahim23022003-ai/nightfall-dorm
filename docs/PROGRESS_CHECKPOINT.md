@@ -1,3 +1,9 @@
+## Phase 22 · Desktop interface refinement
+
+The Windows preview adds categorized construction, a machine inspector with quoted refunds, compact single-choice tutorial lessons, session-aware menus and a critical-door defense shortcut. Native Linux input tests and packed Windows-resource checks passed. The larger catalogue still costs more than Phase 21 in software rendering. Owner Windows performance and usability review remain open.
+
+[Playtest build and evidence](evidence/phase22/README.md)
+
 # Phase 21 · Tactical Interface preview
 
 The opt-in Windows preview starts on Low at 960×540 with a separate profile.
