@@ -1,3 +1,9 @@
+## Phase 22.1 · Targeted UI polish
+
+The preview narrows the Build drawer, increases decision-text sizes and uses the same opening Hunter name from Story preparation through gameplay. Linux Godot measured faster Build draws at both presets. Low tutorial p95 improved in the staged replay, while long frames and cold entry still need investigation. Native Windows timing awaits a playtest.
+
+[Release, walkthrough and measured results](evidence/phase221/README.md)
+
 ## Phase 22 · Desktop interface refinement
 
 The Windows preview adds categorized construction, a machine inspector with quoted refunds, compact single-choice tutorial lessons, session-aware menus and a critical-door defense shortcut. Native Linux input tests and packed Windows-resource checks passed. The larger catalogue still costs more than Phase 21 in software rendering. Owner Windows performance and usability review remain open.

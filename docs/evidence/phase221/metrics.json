@@ -1,0 +1,2372 @@
+{
+  "engine": "Godot 4.6.3 / Linux X11 / Compatibility / Mesa llvmpipe / isolated profiles / Dummy audio. Native Windows not tested.",
+  "phase22_reference": {
+    "ui-low-a": {
+      "checks": 194,
+      "failures": 0,
+      "frames": {
+        "active_combat": {
+          "draw_calls": 148,
+          "game_process_median_ms": 1.31,
+          "median_ms": 20.492,
+          "p95_ms": 24.676,
+          "p99_ms": 29.737
+        },
+        "audio_settings_render_only": {
+          "frames": 45,
+          "median_ms": 16.828,
+          "p95_ms": 24.126,
+          "p99_ms": 24.352
+        },
+        "build": {
+          "draw_calls": 196,
+          "game_process_median_ms": 1.285,
+          "median_ms": 23.711,
+          "p95_ms": 30.97,
+          "p99_ms": 48.594
+        },
+        "crisis_render_only": {
+          "frames": 45,
+          "median_ms": 17.735,
+          "p95_ms": 19.656,
+          "p99_ms": 28.837
+        },
+        "economy_tab_render_only": {
+          "frames": 45,
+          "median_ms": 18.354,
+          "p95_ms": 25.103,
+          "p99_ms": 29.028
+        },
+        "fixture": {
+          "quality": "low",
+          "room": 3,
+          "seed": 1527566656,
+          "shots": 1
+        },
+        "help": {
+          "draw_calls": 68,
+          "game_process_median_ms": 0.006,
+          "median_ms": 10.921,
+          "p95_ms": 11.597,
+          "p99_ms": 11.915
+        },
+        "hud_calm": {
+          "draw_calls": 134,
+          "game_process_median_ms": 1.268,
+          "median_ms": 18.151,
+          "p95_ms": 22.576,
+          "p99_ms": 24.579
+        },
+        "inventory_render_only": {
+          "frames": 45,
+          "median_ms": 23.001,
+          "p95_ms": 28.424,
+          "p99_ms": 29.759
+        },
+        "items": {
+          "draw_calls": 149,
+          "game_process_median_ms": 1.229,
+          "median_ms": 17.087,
+          "p95_ms": 23.297,
+          "p99_ms": 23.813
+        },
+        "machine_inspector_render_only": {
+          "frames": 45,
+          "median_ms": 21.062,
+          "p95_ms": 25.673,
+          "p99_ms": 28.028
+        },
+        "main_menu": {
+          "draw_calls": 49,
+          "game_process_median_ms": 0.585,
+          "median_ms": 18.628,
+          "p95_ms": 22.133,
+          "p99_ms": 22.408
+        },
+        "placement": {
+          "draw_calls": 170,
+          "game_process_median_ms": 1.166,
+          "median_ms": 20.239,
+          "p95_ms": 26.612,
+          "p99_ms": 36.081
+        },
+        "settings_graphics": {
+          "draw_calls": 45,
+          "game_process_median_ms": 0.576,
+          "median_ms": 19.651,
+          "p95_ms": 24.395,
+          "p99_ms": 86.452
+        },
+        "story_lobby": {
+          "draw_calls": 77,
+          "game_process_median_ms": 0.25,
+          "median_ms": 14.721,
+          "p95_ms": 17.375,
+          "p99_ms": 17.684
+        },
+        "story_prepare": {
+          "draw_calls": 51,
+          "game_process_median_ms": 0.519,
+          "median_ms": 18.328,
+          "p95_ms": 24.936,
+          "p99_ms": 25.709
+        }
+      }
+    },
+    "ui-low-b": {
+      "checks": 197,
+      "failures": 0,
+      "frames": {
+        "active_combat": {
+          "draw_calls": 148,
+          "game_process_median_ms": 1.32,
+          "median_ms": 17.296,
+          "p95_ms": 19.218,
+          "p99_ms": 24.984
+        },
+        "audio_settings_render_only": {
+          "frames": 45,
+          "median_ms": 20.495,
+          "p95_ms": 24.199,
+          "p99_ms": 33.575
+        },
+        "build": {
+          "draw_calls": 196,
+          "game_process_median_ms": 1.604,
+          "median_ms": 27.125,
+          "p95_ms": 36.296,
+          "p99_ms": 39.067
+        },
+        "crisis_render_only": {
+          "frames": 45,
+          "median_ms": 17.411,
+          "p95_ms": 21.423,
+          "p99_ms": 23.926
+        },
+        "economy_tab_render_only": {
+          "frames": 45,
+          "median_ms": 18.097,
+          "p95_ms": 21.596,
+          "p99_ms": 22.541
+        },
+        "fixture": {
+          "quality": "low",
+          "room": 3,
+          "seed": 1527566656,
+          "shots": 1
+        },
+        "help": {
+          "draw_calls": 68,
+          "game_process_median_ms": 0.008,
+          "median_ms": 11.415,
+          "p95_ms": 15.631,
+          "p99_ms": 19.827
+        },
+        "hud_calm": {
+          "draw_calls": 134,
+          "game_process_median_ms": 1.111,
+          "median_ms": 18.381,
+          "p95_ms": 22.347,
+          "p99_ms": 23.487
+        },
+        "inventory_render_only": {
+          "frames": 45,
+          "median_ms": 19.927,
+          "p95_ms": 23.443,
+          "p99_ms": 24.781
+        },
+        "items": {
+          "draw_calls": 149,
+          "game_process_median_ms": 1.466,
+          "median_ms": 21.029,
+          "p95_ms": 25.869,
+          "p99_ms": 26.8
+        },
+        "machine_inspector_render_only": {
+          "frames": 45,
+          "median_ms": 23.627,
+          "p95_ms": 24.919,
+          "p99_ms": 30.799
+        },
+        "main_menu": {
+          "draw_calls": 49,
+          "game_process_median_ms": 0.582,
+          "median_ms": 16.33,
+          "p95_ms": 22.731,
+          "p99_ms": 28.995
+        },
+        "placement": {
+          "draw_calls": 170,
+          "game_process_median_ms": 1.482,
+          "median_ms": 24.879,
+          "p95_ms": 28.119,
+          "p99_ms": 36.37
+        },
+        "settings_graphics": {
+          "draw_calls": 45,
+          "game_process_median_ms": 0.546,
+          "median_ms": 17.374,
+          "p95_ms": 25.325,
+          "p99_ms": 28.131
+        },
+        "story_lobby": {
+          "draw_calls": 77,
+          "game_process_median_ms": 0.259,
+          "median_ms": 18.076,
+          "p95_ms": 22.204,
+          "p99_ms": 25.553
+        },
+        "story_prepare": {
+          "draw_calls": 51,
+          "game_process_median_ms": 0.548,
+          "median_ms": 20.225,
+          "p95_ms": 24.961,
+          "p99_ms": 27.067
+        }
+      }
+    },
+    "ui-low-release": {
+      "checks": 197,
+      "failures": 0,
+      "frames": {
+        "active_combat": {
+          "draw_calls": 148,
+          "game_process_median_ms": 1.432,
+          "median_ms": 18.322,
+          "p95_ms": 24.1,
+          "p99_ms": 25.82
+        },
+        "audio_settings_render_only": {
+          "frames": 45,
+          "median_ms": 16.773,
+          "p95_ms": 20.905,
+          "p99_ms": 45.277
+        },
+        "build": {
+          "draw_calls": 196,
+          "game_process_median_ms": 1.358,
+          "median_ms": 26.943,
+          "p95_ms": 32.008,
+          "p99_ms": 34.464
+        },
+        "crisis_render_only": {
+          "frames": 45,
+          "median_ms": 15.648,
+          "p95_ms": 22.12,
+          "p99_ms": 25.149
+        },
+        "economy_tab_render_only": {
+          "frames": 45,
+          "median_ms": 20.181,
+          "p95_ms": 22.733,
+          "p99_ms": 91.126
+        },
+        "fixture": {
+          "quality": "low",
+          "room": 3,
+          "seed": 1527566656,
+          "shots": 1
+        },
+        "help": {
+          "draw_calls": 68,
+          "game_process_median_ms": 0.008,
+          "median_ms": 14.796,
+          "p95_ms": 24.847,
+          "p99_ms": 27.479
+        },
+        "hud_calm": {
+          "draw_calls": 134,
+          "game_process_median_ms": 1.144,
+          "median_ms": 16.811,
+          "p95_ms": 23.513,
+          "p99_ms": 25.37
+        },
+        "inventory_render_only": {
+          "frames": 45,
+          "median_ms": 19.117,
+          "p95_ms": 20.965,
+          "p99_ms": 22.855
+        },
+        "items": {
+          "draw_calls": 149,
+          "game_process_median_ms": 1.37,
+          "median_ms": 17.694,
+          "p95_ms": 21.891,
+          "p99_ms": 25.231
+        },
+        "machine_inspector_render_only": {
+          "frames": 45,
+          "median_ms": 23.926,
+          "p95_ms": 28.697,
+          "p99_ms": 29.981
+        },
+        "main_menu": {
+          "draw_calls": 49,
+          "game_process_median_ms": 0.635,
+          "median_ms": 15.367,
+          "p95_ms": 21.668,
+          "p99_ms": 22.066
+        },
+        "placement": {
+          "draw_calls": 170,
+          "game_process_median_ms": 1.0,
+          "median_ms": 22.754,
+          "p95_ms": 25.824,
+          "p99_ms": 26.727
+        },
+        "settings_graphics": {
+          "draw_calls": 45,
+          "game_process_median_ms": 0.565,
+          "median_ms": 17.193,
+          "p95_ms": 25.545,
+          "p99_ms": 25.663
+        },
+        "story_lobby": {
+          "draw_calls": 77,
+          "game_process_median_ms": 0.255,
+          "median_ms": 18.223,
+          "p95_ms": 22.233,
+          "p99_ms": 22.937
+        },
+        "story_prepare": {
+          "draw_calls": 51,
+          "game_process_median_ms": 0.56,
+          "median_ms": 22.819,
+          "p95_ms": 34.603,
+          "p99_ms": 38.923
+        }
+      }
+    },
+    "ui-medium-a": {
+      "checks": 194,
+      "failures": 0,
+      "frames": {
+        "active_combat": {
+          "draw_calls": 180,
+          "game_process_median_ms": 1.61,
+          "median_ms": 33.612,
+          "p95_ms": 50.948,
+          "p99_ms": 54.486
+        },
+        "audio_settings_render_only": {
+          "frames": 45,
+          "median_ms": 29.698,
+          "p95_ms": 39.47,
+          "p99_ms": 43.521
+        },
+        "build": {
+          "draw_calls": 249,
+          "game_process_median_ms": 1.532,
+          "median_ms": 42.647,
+          "p95_ms": 55.726,
+          "p99_ms": 60.149
+        },
+        "crisis_render_only": {
+          "frames": 45,
+          "median_ms": 35.502,
+          "p95_ms": 53.251,
+          "p99_ms": 62.77
+        },
+        "economy_tab_render_only": {
+          "frames": 45,
+          "median_ms": 40.742,
+          "p95_ms": 45.415,
+          "p99_ms": 45.754
+        },
+        "fixture": {
+          "quality": "medium",
+          "room": 3,
+          "seed": 1527566656,
+          "shots": 1
+        },
+        "help": {
+          "draw_calls": 93,
+          "game_process_median_ms": 0.011,
+          "median_ms": 19.287,
+          "p95_ms": 35.173,
+          "p99_ms": 63.798
+        },
+        "hud_calm": {
+          "draw_calls": 163,
+          "game_process_median_ms": 1.161,
+          "median_ms": 32.962,
+          "p95_ms": 36.753,
+          "p99_ms": 37.955
+        },
+        "inventory_render_only": {
+          "frames": 45,
+          "median_ms": 34.57,
+          "p95_ms": 41.206,
+          "p99_ms": 48.36
+        },
+        "items": {
+          "draw_calls": 185,
+          "game_process_median_ms": 1.487,
+          "median_ms": 32.887,
+          "p95_ms": 43.38,
+          "p99_ms": 75.127
+        },
+        "machine_inspector_render_only": {
+          "frames": 45,
+          "median_ms": 42.68,
+          "p95_ms": 63.11,
+          "p99_ms": 67.911
+        },
+        "main_menu": {
+          "draw_calls": 113,
+          "game_process_median_ms": 0.596,
+          "median_ms": 30.579,
+          "p95_ms": 34.442,
+          "p99_ms": 36.142
+        },
+        "placement": {
+          "draw_calls": 203,
+          "game_process_median_ms": 1.334,
+          "median_ms": 37.268,
+          "p95_ms": 44.628,
+          "p99_ms": 50.76
+        },
+        "settings_graphics": {
+          "draw_calls": 106,
+          "game_process_median_ms": 0.61,
+          "median_ms": 35.638,
+          "p95_ms": 44.333,
+          "p99_ms": 50.399
+        },
+        "story_lobby": {
+          "draw_calls": 77,
+          "game_process_median_ms": 0.292,
+          "median_ms": 30.121,
+          "p95_ms": 36.256,
+          "p99_ms": 41.217
+        },
+        "story_prepare": {
+          "draw_calls": 122,
+          "game_process_median_ms": 0.562,
+          "median_ms": 32.041,
+          "p95_ms": 44.481,
+          "p99_ms": 46.391
+        }
+      }
+    },
+    "ui-medium-b": {
+      "checks": 194,
+      "failures": 0,
+      "frames": {
+        "active_combat": {
+          "draw_calls": 180,
+          "game_process_median_ms": 1.699,
+          "median_ms": 33.35,
+          "p95_ms": 47.076,
+          "p99_ms": 58.906
+        },
+        "audio_settings_render_only": {
+          "frames": 45,
+          "median_ms": 33.499,
+          "p95_ms": 38.209,
+          "p99_ms": 42.578
+        },
+        "build": {
+          "draw_calls": 249,
+          "game_process_median_ms": 1.589,
+          "median_ms": 48.188,
+          "p95_ms": 56.481,
+          "p99_ms": 58.5
+        },
+        "crisis_render_only": {
+          "frames": 45,
+          "median_ms": 30.65,
+          "p95_ms": 43.751,
+          "p99_ms": 50.773
+        },
+        "economy_tab_render_only": {
+          "frames": 45,
+          "median_ms": 41.85,
+          "p95_ms": 46.838,
+          "p99_ms": 68.853
+        },
+        "fixture": {
+          "quality": "medium",
+          "room": 3,
+          "seed": 1527566656,
+          "shots": 1
+        },
+        "help": {
+          "draw_calls": 93,
+          "game_process_median_ms": 0.012,
+          "median_ms": 19.488,
+          "p95_ms": 27.405,
+          "p99_ms": 29.165
+        },
+        "hud_calm": {
+          "draw_calls": 163,
+          "game_process_median_ms": 1.24,
+          "median_ms": 28.777,
+          "p95_ms": 35.374,
+          "p99_ms": 40.822
+        },
+        "inventory_render_only": {
+          "frames": 45,
+          "median_ms": 36.902,
+          "p95_ms": 52.209,
+          "p99_ms": 65.284
+        },
+        "items": {
+          "draw_calls": 185,
+          "game_process_median_ms": 1.747,
+          "median_ms": 38.833,
+          "p95_ms": 44.379,
+          "p99_ms": 46.387
+        },
+        "machine_inspector_render_only": {
+          "frames": 45,
+          "median_ms": 42.974,
+          "p95_ms": 53.158,
+          "p99_ms": 56.072
+        },
+        "main_menu": {
+          "draw_calls": 113,
+          "game_process_median_ms": 0.521,
+          "median_ms": 26.431,
+          "p95_ms": 38.17,
+          "p99_ms": 38.632
+        },
+        "placement": {
+          "draw_calls": 203,
+          "game_process_median_ms": 1.379,
+          "median_ms": 36.918,
+          "p95_ms": 47.375,
+          "p99_ms": 49.963
+        },
+        "settings_graphics": {
+          "draw_calls": 106,
+          "game_process_median_ms": 0.562,
+          "median_ms": 29.887,
+          "p95_ms": 37.434,
+          "p99_ms": 46.017
+        },
+        "story_lobby": {
+          "draw_calls": 77,
+          "game_process_median_ms": 0.284,
+          "median_ms": 24.769,
+          "p95_ms": 33.185,
+          "p99_ms": 35.391
+        },
+        "story_prepare": {
+          "draw_calls": 122,
+          "game_process_median_ms": 0.575,
+          "median_ms": 35.84,
+          "p95_ms": 43.866,
+          "p99_ms": 62.56
+        }
+      }
+    },
+    "ui-medium-release": {
+      "checks": 197,
+      "failures": 0,
+      "frames": {
+        "active_combat": {
+          "draw_calls": 180,
+          "game_process_median_ms": 1.618,
+          "median_ms": 38.531,
+          "p95_ms": 46.655,
+          "p99_ms": 49.748
+        },
+        "audio_settings_render_only": {
+          "frames": 45,
+          "median_ms": 35.397,
+          "p95_ms": 44.722,
+          "p99_ms": 46.831
+        },
+        "build": {
+          "draw_calls": 249,
+          "game_process_median_ms": 1.492,
+          "median_ms": 46.815,
+          "p95_ms": 89.707,
+          "p99_ms": 111.687
+        },
+        "crisis_render_only": {
+          "frames": 45,
+          "median_ms": 31.088,
+          "p95_ms": 34.21,
+          "p99_ms": 36.461
+        },
+        "economy_tab_render_only": {
+          "frames": 45,
+          "median_ms": 42.515,
+          "p95_ms": 53.819,
+          "p99_ms": 103.192
+        },
+        "fixture": {
+          "quality": "medium",
+          "room": 3,
+          "seed": 1527566656,
+          "shots": 1
+        },
+        "help": {
+          "draw_calls": 93,
+          "game_process_median_ms": 0.013,
+          "median_ms": 23.142,
+          "p95_ms": 26.485,
+          "p99_ms": 30.337
+        },
+        "hud_calm": {
+          "draw_calls": 163,
+          "game_process_median_ms": 1.349,
+          "median_ms": 34.28,
+          "p95_ms": 43.085,
+          "p99_ms": 88.317
+        },
+        "inventory_render_only": {
+          "frames": 45,
+          "median_ms": 35.313,
+          "p95_ms": 46.03,
+          "p99_ms": 53.777
+        },
+        "items": {
+          "draw_calls": 185,
+          "game_process_median_ms": 1.613,
+          "median_ms": 36.522,
+          "p95_ms": 48.605,
+          "p99_ms": 53.076
+        },
+        "machine_inspector_render_only": {
+          "frames": 45,
+          "median_ms": 48.009,
+          "p95_ms": 60.301,
+          "p99_ms": 88.223
+        },
+        "main_menu": {
+          "draw_calls": 113,
+          "game_process_median_ms": 0.568,
+          "median_ms": 30.996,
+          "p95_ms": 34.683,
+          "p99_ms": 44.714
+        },
+        "placement": {
+          "draw_calls": 203,
+          "game_process_median_ms": 1.355,
+          "median_ms": 44.059,
+          "p95_ms": 63.968,
+          "p99_ms": 99.242
+        },
+        "settings_graphics": {
+          "draw_calls": 106,
+          "game_process_median_ms": 0.583,
+          "median_ms": 30.791,
+          "p95_ms": 40.899,
+          "p99_ms": 46.523
+        },
+        "story_lobby": {
+          "draw_calls": 77,
+          "game_process_median_ms": 0.285,
+          "median_ms": 24.937,
+          "p95_ms": 37.565,
+          "p99_ms": 46.479
+        },
+        "story_prepare": {
+          "draw_calls": 122,
+          "game_process_median_ms": 0.602,
+          "median_ms": 32.224,
+          "p95_ms": 44.138,
+          "p99_ms": 56.372
+        }
+      }
+    }
+  },
+  "phase221_desktop": {
+    "low-release-a": {
+      "checks": 352,
+      "failures": 0,
+      "frames": {
+        "active_combat": {
+          "draw_calls": 148,
+          "game_process_median_ms": 1.591,
+          "median_ms": 20.025,
+          "p95_ms": 28.535,
+          "p99_ms": 35.487
+        },
+        "audio_settings_render_only": {
+          "frames": 45,
+          "median_ms": 18.934,
+          "p95_ms": 27.691,
+          "p99_ms": 33.625
+        },
+        "build": {
+          "draw_calls": 177,
+          "game_process_median_ms": 1.432,
+          "median_ms": 21.877,
+          "p95_ms": 27.423,
+          "p99_ms": 28.445
+        },
+        "crisis_render_only": {
+          "frames": 45,
+          "median_ms": 14.477,
+          "p95_ms": 17.666,
+          "p99_ms": 20.214
+        },
+        "economy_tab_render_only": {
+          "frames": 45,
+          "median_ms": 17.018,
+          "p95_ms": 21.657,
+          "p99_ms": 23.179
+        },
+        "fixture": {
+          "quality": "low",
+          "room": 3,
+          "seed": 1527566656,
+          "shots": 1
+        },
+        "help": {
+          "draw_calls": 68,
+          "game_process_median_ms": 0.012,
+          "median_ms": 12.852,
+          "p95_ms": 17.567,
+          "p99_ms": 18.875
+        },
+        "hud_calm": {
+          "draw_calls": 134,
+          "game_process_median_ms": 1.256,
+          "median_ms": 15.959,
+          "p95_ms": 19.913,
+          "p99_ms": 21.489
+        },
+        "inventory_render_only": {
+          "frames": 45,
+          "median_ms": 19.334,
+          "p95_ms": 22.318,
+          "p99_ms": 23.089
+        },
+        "items": {
+          "draw_calls": 149,
+          "game_process_median_ms": 1.653,
+          "median_ms": 21.834,
+          "p95_ms": 25.91,
+          "p99_ms": 100.566
+        },
+        "machine_inspector_render_only": {
+          "frames": 45,
+          "median_ms": 26.257,
+          "p95_ms": 46.109,
+          "p99_ms": 76.766
+        },
+        "main_menu": {
+          "draw_calls": 49,
+          "game_process_median_ms": 0.46,
+          "median_ms": 17.617,
+          "p95_ms": 20.435,
+          "p99_ms": 22.74
+        },
+        "placement": {
+          "draw_calls": 170,
+          "game_process_median_ms": 1.452,
+          "median_ms": 22.375,
+          "p95_ms": 27.526,
+          "p99_ms": 78.408
+        },
+        "settings_graphics": {
+          "draw_calls": 45,
+          "game_process_median_ms": 0.495,
+          "median_ms": 21.698,
+          "p95_ms": 25.62,
+          "p99_ms": 33.071
+        },
+        "story_lobby": {
+          "draw_calls": 77,
+          "game_process_median_ms": 0.21,
+          "median_ms": 14.462,
+          "p95_ms": 15.15,
+          "p99_ms": 15.637
+        },
+        "story_prepare": {
+          "draw_calls": 51,
+          "game_process_median_ms": 0.505,
+          "median_ms": 17.015,
+          "p95_ms": 18.213,
+          "p99_ms": 18.695
+        }
+      }
+    },
+    "low-release-b": {
+      "checks": 213,
+      "failures": 0,
+      "frames": {
+        "active_combat": {
+          "draw_calls": 148,
+          "game_process_median_ms": 1.384,
+          "median_ms": 17.73,
+          "p95_ms": 23.443,
+          "p99_ms": 24.876
+        },
+        "audio_settings_render_only": {
+          "frames": 45,
+          "median_ms": 17.314,
+          "p95_ms": 23.588,
+          "p99_ms": 26.719
+        },
+        "build": {
+          "draw_calls": 177,
+          "game_process_median_ms": 1.312,
+          "median_ms": 20.873,
+          "p95_ms": 26.55,
+          "p99_ms": 27.038
+        },
+        "crisis_render_only": {
+          "frames": 45,
+          "median_ms": 14.565,
+          "p95_ms": 16.417,
+          "p99_ms": 16.529
+        },
+        "economy_tab_render_only": {
+          "frames": 45,
+          "median_ms": 16.146,
+          "p95_ms": 24.38,
+          "p99_ms": 26.472
+        },
+        "fixture": {
+          "quality": "low",
+          "room": 3,
+          "seed": 1527566656,
+          "shots": 1
+        },
+        "help": {
+          "draw_calls": 68,
+          "game_process_median_ms": 0.01,
+          "median_ms": 11.774,
+          "p95_ms": 13.666,
+          "p99_ms": 14.956
+        },
+        "hud_calm": {
+          "draw_calls": 134,
+          "game_process_median_ms": 1.532,
+          "median_ms": 19.13,
+          "p95_ms": 24.944,
+          "p99_ms": 35.545
+        },
+        "inventory_render_only": {
+          "frames": 45,
+          "median_ms": 16.0,
+          "p95_ms": 19.063,
+          "p99_ms": 21.95
+        },
+        "items": {
+          "draw_calls": 149,
+          "game_process_median_ms": 1.515,
+          "median_ms": 18.916,
+          "p95_ms": 21.812,
+          "p99_ms": 23.323
+        },
+        "machine_inspector_render_only": {
+          "frames": 45,
+          "median_ms": 22.164,
+          "p95_ms": 29.028,
+          "p99_ms": 39.739
+        },
+        "main_menu": {
+          "draw_calls": 49,
+          "game_process_median_ms": 0.55,
+          "median_ms": 14.594,
+          "p95_ms": 18.085,
+          "p99_ms": 20.407
+        },
+        "placement": {
+          "draw_calls": 170,
+          "game_process_median_ms": 1.548,
+          "median_ms": 24.162,
+          "p95_ms": 37.427,
+          "p99_ms": 42.429
+        },
+        "settings_graphics": {
+          "draw_calls": 45,
+          "game_process_median_ms": 0.529,
+          "median_ms": 20.231,
+          "p95_ms": 22.921,
+          "p99_ms": 23.769
+        },
+        "siege_build": {
+          "left_anchor": true,
+          "room_overlap": 0.0
+        },
+        "story_lobby": {
+          "draw_calls": 77,
+          "game_process_median_ms": 0.29,
+          "median_ms": 15.998,
+          "p95_ms": 22.365,
+          "p99_ms": 25.971
+        },
+        "story_prepare": {
+          "draw_calls": 51,
+          "game_process_median_ms": 0.548,
+          "median_ms": 17.87,
+          "p95_ms": 20.554,
+          "p99_ms": 21.254
+        }
+      }
+    },
+    "standard-release-a": {
+      "checks": 352,
+      "failures": 0,
+      "frames": {
+        "active_combat": {
+          "draw_calls": 180,
+          "game_process_median_ms": 1.921,
+          "median_ms": 39.056,
+          "p95_ms": 61.179,
+          "p99_ms": 63.978
+        },
+        "audio_settings_render_only": {
+          "frames": 45,
+          "median_ms": 34.996,
+          "p95_ms": 41.079,
+          "p99_ms": 41.092
+        },
+        "build": {
+          "draw_calls": 225,
+          "game_process_median_ms": 1.392,
+          "median_ms": 38.775,
+          "p95_ms": 48.217,
+          "p99_ms": 56.287
+        },
+        "crisis_render_only": {
+          "frames": 45,
+          "median_ms": 28.759,
+          "p95_ms": 40.365,
+          "p99_ms": 43.376
+        },
+        "economy_tab_render_only": {
+          "frames": 45,
+          "median_ms": 31.374,
+          "p95_ms": 43.642,
+          "p99_ms": 43.843
+        },
+        "fixture": {
+          "quality": "medium",
+          "room": 3,
+          "seed": 1527566656,
+          "shots": 1
+        },
+        "help": {
+          "draw_calls": 93,
+          "game_process_median_ms": 0.012,
+          "median_ms": 20.765,
+          "p95_ms": 26.581,
+          "p99_ms": 27.17
+        },
+        "hud_calm": {
+          "draw_calls": 163,
+          "game_process_median_ms": 1.417,
+          "median_ms": 30.395,
+          "p95_ms": 38.89,
+          "p99_ms": 41.467
+        },
+        "inventory_render_only": {
+          "frames": 45,
+          "median_ms": 35.674,
+          "p95_ms": 43.06,
+          "p99_ms": 44.311
+        },
+        "items": {
+          "draw_calls": 185,
+          "game_process_median_ms": 1.753,
+          "median_ms": 39.517,
+          "p95_ms": 48.774,
+          "p99_ms": 54.508
+        },
+        "machine_inspector_render_only": {
+          "frames": 45,
+          "median_ms": 43.796,
+          "p95_ms": 46.981,
+          "p99_ms": 48.897
+        },
+        "main_menu": {
+          "draw_calls": 113,
+          "game_process_median_ms": 0.546,
+          "median_ms": 31.442,
+          "p95_ms": 40.004,
+          "p99_ms": 107.137
+        },
+        "placement": {
+          "draw_calls": 203,
+          "game_process_median_ms": 1.605,
+          "median_ms": 38.622,
+          "p95_ms": 44.721,
+          "p99_ms": 49.499
+        },
+        "settings_graphics": {
+          "draw_calls": 106,
+          "game_process_median_ms": 0.581,
+          "median_ms": 36.085,
+          "p95_ms": 45.761,
+          "p99_ms": 60.347
+        },
+        "story_lobby": {
+          "draw_calls": 77,
+          "game_process_median_ms": 0.323,
+          "median_ms": 31.408,
+          "p95_ms": 37.227,
+          "p99_ms": 37.971
+        },
+        "story_prepare": {
+          "draw_calls": 124,
+          "game_process_median_ms": 0.623,
+          "median_ms": 34.364,
+          "p95_ms": 45.161,
+          "p99_ms": 49.681
+        }
+      }
+    },
+    "standard-release-b": {
+      "checks": 213,
+      "failures": 0,
+      "frames": {
+        "active_combat": {
+          "draw_calls": 180,
+          "game_process_median_ms": 1.635,
+          "median_ms": 38.646,
+          "p95_ms": 46.473,
+          "p99_ms": 47.732
+        },
+        "audio_settings_render_only": {
+          "frames": 45,
+          "median_ms": 35.064,
+          "p95_ms": 44.976,
+          "p99_ms": 48.076
+        },
+        "build": {
+          "draw_calls": 225,
+          "game_process_median_ms": 1.37,
+          "median_ms": 39.676,
+          "p95_ms": 43.569,
+          "p99_ms": 55.248
+        },
+        "crisis_render_only": {
+          "frames": 45,
+          "median_ms": 36.202,
+          "p95_ms": 43.206,
+          "p99_ms": 44.443
+        },
+        "economy_tab_render_only": {
+          "frames": 45,
+          "median_ms": 34.904,
+          "p95_ms": 39.736,
+          "p99_ms": 44.379
+        },
+        "fixture": {
+          "quality": "medium",
+          "room": 3,
+          "seed": 1527566656,
+          "shots": 1
+        },
+        "help": {
+          "draw_calls": 93,
+          "game_process_median_ms": 0.012,
+          "median_ms": 24.605,
+          "p95_ms": 27.605,
+          "p99_ms": 54.455
+        },
+        "hud_calm": {
+          "draw_calls": 163,
+          "game_process_median_ms": 1.307,
+          "median_ms": 30.155,
+          "p95_ms": 35.437,
+          "p99_ms": 38.957
+        },
+        "inventory_render_only": {
+          "frames": 45,
+          "median_ms": 32.541,
+          "p95_ms": 39.521,
+          "p99_ms": 44.921
+        },
+        "items": {
+          "draw_calls": 185,
+          "game_process_median_ms": 1.582,
+          "median_ms": 35.213,
+          "p95_ms": 44.999,
+          "p99_ms": 46.111
+        },
+        "machine_inspector_render_only": {
+          "frames": 45,
+          "median_ms": 42.208,
+          "p95_ms": 45.144,
+          "p99_ms": 45.596
+        },
+        "main_menu": {
+          "draw_calls": 113,
+          "game_process_median_ms": 0.572,
+          "median_ms": 26.287,
+          "p95_ms": 37.044,
+          "p99_ms": 60.449
+        },
+        "placement": {
+          "draw_calls": 203,
+          "game_process_median_ms": 1.345,
+          "median_ms": 51.65,
+          "p95_ms": 63.982,
+          "p99_ms": 65.084
+        },
+        "settings_graphics": {
+          "draw_calls": 106,
+          "game_process_median_ms": 0.605,
+          "median_ms": 31.738,
+          "p95_ms": 40.286,
+          "p99_ms": 46.217
+        },
+        "siege_build": {
+          "left_anchor": true,
+          "room_overlap": 0.0
+        },
+        "story_lobby": {
+          "draw_calls": 77,
+          "game_process_median_ms": 0.315,
+          "median_ms": 27.003,
+          "p95_ms": 35.071,
+          "p99_ms": 39.745
+        },
+        "story_prepare": {
+          "draw_calls": 124,
+          "game_process_median_ms": 0.588,
+          "median_ms": 33.469,
+          "p95_ms": 45.482,
+          "p99_ms": 49.889
+        }
+      }
+    }
+  },
+  "tutorial": {
+    "conditions": {
+      "engine": "Godot 4.6.3 Compatibility on Linux X11 with Mesa llvmpipe",
+      "load": "Same real-input tutorial, pinned to cores 0\u20133 with two llvmpipe worker threads. Isolated new profile per run, dummy audio, screenshot writing and framebuffer readbacks disabled.",
+      "statistics": "Milliseconds between process_frame signals including startup, stage transitions, actions, layout, rendering and scheduling. p95/p99 use nearest rank. Startup contributes a large single frame and is also reported separately.",
+      "order": [
+        "ref-low-a",
+        "final-low-a",
+        "ref-standard-a",
+        "final-standard-a",
+        "final-standard-b",
+        "ref-standard-b",
+        "final-low-b",
+        "ref-low-b"
+      ]
+    },
+    "startup_diagnostic": {
+      "method": "Independent single-core instrumentation. Godot wall clock sampled around tutorial setup and fixed-map navigation. These single-core costs are not directly comparable to the four-core input replay.",
+      "fixed_navigation_ms": 453.523,
+      "pre_ui_setup_ms": 455.194,
+      "create_hud_ms": 104.3,
+      "changes_to_navigation": false,
+      "baseline_live_hud_refresh_median_ms": {
+        "low": 0.636,
+        "standard": 0.599
+      },
+      "baseline_cue_calculation_median_ms": {
+        "low": 0.02,
+        "standard": 0.02
+      },
+      "baseline_world_draw_cpu_median_ms": {
+        "low": 1.884,
+        "standard": 1.756
+      },
+      "baseline_map_draw_cpu_median_ms": {
+        "low": 1.312,
+        "standard": 1.301
+      }
+    },
+    "runs": {
+      "ref-low-a": {
+        "checks": 38,
+        "failures": 0,
+        "frame_ms": {
+          "samples": 138,
+          "median": 22.489,
+          "p95": 34.588,
+          "p99": 76.363,
+          "max": 559.514
+        },
+        "median_draw_calls": 307.0,
+        "per_lesson_ms": {
+          "0": {
+            "samples": 4,
+            "median": 23.537,
+            "p95": 559.514,
+            "p99": 559.514,
+            "max": 559.514
+          },
+          "1": {
+            "samples": 11,
+            "median": 21.425,
+            "p95": 22.565,
+            "p99": 22.565,
+            "max": 22.565
+          },
+          "10": {
+            "samples": 4,
+            "median": 32.893,
+            "p95": 34.588,
+            "p99": 34.588,
+            "max": 34.588
+          },
+          "11": {
+            "samples": 4,
+            "median": 25.465,
+            "p95": 42.726,
+            "p99": 42.726,
+            "max": 42.726
+          },
+          "12": {
+            "samples": 4,
+            "median": 25.953,
+            "p95": 38.177,
+            "p99": 38.177,
+            "max": 38.177
+          },
+          "13": {
+            "samples": 5,
+            "median": 26.003,
+            "p95": 29.586,
+            "p99": 29.586,
+            "max": 29.586
+          },
+          "17": {
+            "samples": 13,
+            "median": 25.649,
+            "p95": 31.493,
+            "p99": 31.493,
+            "max": 31.493
+          },
+          "18": {
+            "samples": 4,
+            "median": 28.532,
+            "p95": 30.803,
+            "p99": 30.803,
+            "max": 30.803
+          },
+          "3": {
+            "samples": 15,
+            "median": 21.272,
+            "p95": 23.884,
+            "p99": 23.884,
+            "max": 23.884
+          },
+          "4": {
+            "samples": 10,
+            "median": 22.266,
+            "p95": 26.076,
+            "p99": 26.076,
+            "max": 26.076
+          },
+          "5": {
+            "samples": 48,
+            "median": 21.407,
+            "p95": 23.912,
+            "p99": 28.176,
+            "max": 28.176
+          },
+          "6": {
+            "samples": 2,
+            "median": 34.184,
+            "p95": 36.218,
+            "p99": 36.218,
+            "max": 36.218
+          },
+          "7": {
+            "samples": 4,
+            "median": 26.257,
+            "p95": 34.349,
+            "p99": 34.349,
+            "max": 34.349
+          },
+          "8": {
+            "samples": 5,
+            "median": 30.107,
+            "p95": 76.363,
+            "p99": 76.363,
+            "max": 76.363
+          },
+          "9": {
+            "samples": 5,
+            "median": 27.468,
+            "p95": 30.101,
+            "p99": 30.101,
+            "max": 30.101
+          }
+        }
+      },
+      "final-low-a": {
+        "checks": 38,
+        "failures": 0,
+        "frame_ms": {
+          "samples": 133,
+          "median": 23.926,
+          "p95": 35.018,
+          "p99": 66.754,
+          "max": 603.208
+        },
+        "median_draw_calls": 271.0,
+        "per_lesson_ms": {
+          "0": {
+            "samples": 4,
+            "median": 24.785,
+            "p95": 603.208,
+            "p99": 603.208,
+            "max": 603.208
+          },
+          "1": {
+            "samples": 10,
+            "median": 21.776,
+            "p95": 36.201,
+            "p99": 36.201,
+            "max": 36.201
+          },
+          "10": {
+            "samples": 4,
+            "median": 29.602,
+            "p95": 33.31,
+            "p99": 33.31,
+            "max": 33.31
+          },
+          "11": {
+            "samples": 4,
+            "median": 23.459,
+            "p95": 31.629,
+            "p99": 31.629,
+            "max": 31.629
+          },
+          "12": {
+            "samples": 4,
+            "median": 24.428,
+            "p95": 33.319,
+            "p99": 33.319,
+            "max": 33.319
+          },
+          "13": {
+            "samples": 5,
+            "median": 27.7,
+            "p95": 35.018,
+            "p99": 35.018,
+            "max": 35.018
+          },
+          "17": {
+            "samples": 14,
+            "median": 23.324,
+            "p95": 30.178,
+            "p99": 30.178,
+            "max": 30.178
+          },
+          "18": {
+            "samples": 4,
+            "median": 26.493,
+            "p95": 27.085,
+            "p99": 27.085,
+            "max": 27.085
+          },
+          "3": {
+            "samples": 13,
+            "median": 22.835,
+            "p95": 29.614,
+            "p99": 29.614,
+            "max": 29.614
+          },
+          "4": {
+            "samples": 10,
+            "median": 25.679,
+            "p95": 46.163,
+            "p99": 46.163,
+            "max": 46.163
+          },
+          "5": {
+            "samples": 45,
+            "median": 22.762,
+            "p95": 26.779,
+            "p99": 40.536,
+            "max": 40.536
+          },
+          "6": {
+            "samples": 2,
+            "median": 23.026,
+            "p95": 23.936,
+            "p99": 23.936,
+            "max": 23.936
+          },
+          "7": {
+            "samples": 4,
+            "median": 23.884,
+            "p95": 24.928,
+            "p99": 24.928,
+            "max": 24.928
+          },
+          "8": {
+            "samples": 5,
+            "median": 26.757,
+            "p95": 66.754,
+            "p99": 66.754,
+            "max": 66.754
+          },
+          "9": {
+            "samples": 5,
+            "median": 23.773,
+            "p95": 26.266,
+            "p99": 26.266,
+            "max": 26.266
+          }
+        }
+      },
+      "ref-standard-a": {
+        "checks": 38,
+        "failures": 0,
+        "frame_ms": {
+          "samples": 104,
+          "median": 37.537,
+          "p95": 50.075,
+          "p99": 87.149,
+          "max": 570.748
+        },
+        "median_draw_calls": 316.0,
+        "per_lesson_ms": {
+          "0": {
+            "samples": 4,
+            "median": 35.487,
+            "p95": 570.748,
+            "p99": 570.748,
+            "max": 570.748
+          },
+          "1": {
+            "samples": 7,
+            "median": 33.775,
+            "p95": 36.418,
+            "p99": 36.418,
+            "max": 36.418
+          },
+          "10": {
+            "samples": 4,
+            "median": 39.676,
+            "p95": 40.286,
+            "p99": 40.286,
+            "max": 40.286
+          },
+          "11": {
+            "samples": 4,
+            "median": 39.598,
+            "p95": 53.423,
+            "p99": 53.423,
+            "max": 53.423
+          },
+          "12": {
+            "samples": 4,
+            "median": 42.702,
+            "p95": 87.149,
+            "p99": 87.149,
+            "max": 87.149
+          },
+          "13": {
+            "samples": 5,
+            "median": 36.724,
+            "p95": 46.046,
+            "p99": 46.046,
+            "max": 46.046
+          },
+          "17": {
+            "samples": 9,
+            "median": 38.232,
+            "p95": 50.229,
+            "p99": 50.229,
+            "max": 50.229
+          },
+          "18": {
+            "samples": 4,
+            "median": 40.914,
+            "p95": 43.934,
+            "p99": 43.934,
+            "max": 43.934
+          },
+          "3": {
+            "samples": 9,
+            "median": 39.208,
+            "p95": 44.741,
+            "p99": 44.741,
+            "max": 44.741
+          },
+          "4": {
+            "samples": 7,
+            "median": 43.352,
+            "p95": 50.075,
+            "p99": 50.075,
+            "max": 50.075
+          },
+          "5": {
+            "samples": 31,
+            "median": 36.549,
+            "p95": 46.331,
+            "p99": 50.773,
+            "max": 50.773
+          },
+          "6": {
+            "samples": 2,
+            "median": 36.812,
+            "p95": 38.628,
+            "p99": 38.628,
+            "max": 38.628
+          },
+          "7": {
+            "samples": 4,
+            "median": 38.38,
+            "p95": 44.609,
+            "p99": 44.609,
+            "max": 44.609
+          },
+          "8": {
+            "samples": 5,
+            "median": 36.186,
+            "p95": 37.631,
+            "p99": 37.631,
+            "max": 37.631
+          },
+          "9": {
+            "samples": 5,
+            "median": 39.516,
+            "p95": 42.495,
+            "p99": 42.495,
+            "max": 42.495
+          }
+        }
+      },
+      "final-standard-a": {
+        "checks": 38,
+        "failures": 0,
+        "frame_ms": {
+          "samples": 103,
+          "median": 37.447,
+          "p95": 55.351,
+          "p99": 85.955,
+          "max": 587.59
+        },
+        "median_draw_calls": 280.0,
+        "per_lesson_ms": {
+          "0": {
+            "samples": 4,
+            "median": 39.172,
+            "p95": 587.59,
+            "p99": 587.59,
+            "max": 587.59
+          },
+          "1": {
+            "samples": 6,
+            "median": 46.337,
+            "p95": 60.022,
+            "p99": 60.022,
+            "max": 60.022
+          },
+          "10": {
+            "samples": 4,
+            "median": 41.909,
+            "p95": 51.072,
+            "p99": 51.072,
+            "max": 51.072
+          },
+          "11": {
+            "samples": 4,
+            "median": 31.401,
+            "p95": 43.414,
+            "p99": 43.414,
+            "max": 43.414
+          },
+          "12": {
+            "samples": 4,
+            "median": 45.656,
+            "p95": 85.955,
+            "p99": 85.955,
+            "max": 85.955
+          },
+          "13": {
+            "samples": 5,
+            "median": 35.269,
+            "p95": 38.407,
+            "p99": 38.407,
+            "max": 38.407
+          },
+          "17": {
+            "samples": 9,
+            "median": 41.528,
+            "p95": 49.062,
+            "p99": 49.062,
+            "max": 49.062
+          },
+          "18": {
+            "samples": 4,
+            "median": 47.175,
+            "p95": 52.568,
+            "p99": 52.568,
+            "max": 52.568
+          },
+          "3": {
+            "samples": 8,
+            "median": 38.008,
+            "p95": 38.561,
+            "p99": 38.561,
+            "max": 38.561
+          },
+          "4": {
+            "samples": 7,
+            "median": 41.314,
+            "p95": 51.369,
+            "p99": 51.369,
+            "max": 51.369
+          },
+          "5": {
+            "samples": 32,
+            "median": 31.958,
+            "p95": 45.178,
+            "p99": 47.947,
+            "max": 47.947
+          },
+          "6": {
+            "samples": 2,
+            "median": 34.066,
+            "p95": 35.061,
+            "p99": 35.061,
+            "max": 35.061
+          },
+          "7": {
+            "samples": 4,
+            "median": 30.223,
+            "p95": 33.894,
+            "p99": 33.894,
+            "max": 33.894
+          },
+          "8": {
+            "samples": 5,
+            "median": 37.447,
+            "p95": 59.54,
+            "p99": 59.54,
+            "max": 59.54
+          },
+          "9": {
+            "samples": 5,
+            "median": 44.805,
+            "p95": 45.884,
+            "p99": 45.884,
+            "max": 45.884
+          }
+        }
+      },
+      "final-standard-b": {
+        "checks": 38,
+        "failures": 0,
+        "frame_ms": {
+          "samples": 107,
+          "median": 35.502,
+          "p95": 46.736,
+          "p99": 133.673,
+          "max": 626.182
+        },
+        "median_draw_calls": 280.0,
+        "per_lesson_ms": {
+          "0": {
+            "samples": 4,
+            "median": 36.684,
+            "p95": 626.182,
+            "p99": 626.182,
+            "max": 626.182
+          },
+          "1": {
+            "samples": 7,
+            "median": 32.605,
+            "p95": 35.181,
+            "p99": 35.181,
+            "max": 35.181
+          },
+          "10": {
+            "samples": 4,
+            "median": 40.945,
+            "p95": 43.589,
+            "p99": 43.589,
+            "max": 43.589
+          },
+          "11": {
+            "samples": 4,
+            "median": 33.979,
+            "p95": 43.058,
+            "p99": 43.058,
+            "max": 43.058
+          },
+          "12": {
+            "samples": 4,
+            "median": 38.864,
+            "p95": 133.673,
+            "p99": 133.673,
+            "max": 133.673
+          },
+          "13": {
+            "samples": 5,
+            "median": 42.696,
+            "p95": 46.903,
+            "p99": 46.903,
+            "max": 46.903
+          },
+          "17": {
+            "samples": 10,
+            "median": 35.943,
+            "p95": 44.434,
+            "p99": 44.434,
+            "max": 44.434
+          },
+          "18": {
+            "samples": 4,
+            "median": 42.673,
+            "p95": 44.574,
+            "p99": 44.574,
+            "max": 44.574
+          },
+          "3": {
+            "samples": 10,
+            "median": 33.343,
+            "p95": 36.181,
+            "p99": 36.181,
+            "max": 36.181
+          },
+          "4": {
+            "samples": 8,
+            "median": 45.026,
+            "p95": 48.373,
+            "p99": 48.373,
+            "max": 48.373
+          },
+          "5": {
+            "samples": 31,
+            "median": 35.232,
+            "p95": 40.811,
+            "p99": 41.733,
+            "max": 41.733
+          },
+          "6": {
+            "samples": 2,
+            "median": 35.697,
+            "p95": 36.25,
+            "p99": 36.25,
+            "max": 36.25
+          },
+          "7": {
+            "samples": 4,
+            "median": 34.022,
+            "p95": 36.861,
+            "p99": 36.861,
+            "max": 36.861
+          },
+          "8": {
+            "samples": 5,
+            "median": 33.081,
+            "p95": 37.995,
+            "p99": 37.995,
+            "max": 37.995
+          },
+          "9": {
+            "samples": 5,
+            "median": 36.977,
+            "p95": 42.397,
+            "p99": 42.397,
+            "max": 42.397
+          }
+        }
+      },
+      "ref-standard-b": {
+        "checks": 38,
+        "failures": 0,
+        "frame_ms": {
+          "samples": 101,
+          "median": 37.823,
+          "p95": 49.846,
+          "p99": 105.75,
+          "max": 583.044
+        },
+        "median_draw_calls": 316.0,
+        "per_lesson_ms": {
+          "0": {
+            "samples": 4,
+            "median": 46.84,
+            "p95": 583.044,
+            "p99": 583.044,
+            "max": 583.044
+          },
+          "1": {
+            "samples": 5,
+            "median": 40.934,
+            "p95": 105.75,
+            "p99": 105.75,
+            "max": 105.75
+          },
+          "10": {
+            "samples": 4,
+            "median": 43.947,
+            "p95": 50.814,
+            "p99": 50.814,
+            "max": 50.814
+          },
+          "11": {
+            "samples": 4,
+            "median": 35.553,
+            "p95": 41.975,
+            "p99": 41.975,
+            "max": 41.975
+          },
+          "12": {
+            "samples": 4,
+            "median": 45.361,
+            "p95": 88.249,
+            "p99": 88.249,
+            "max": 88.249
+          },
+          "13": {
+            "samples": 5,
+            "median": 37.551,
+            "p95": 39.068,
+            "p99": 39.068,
+            "max": 39.068
+          },
+          "17": {
+            "samples": 9,
+            "median": 40.677,
+            "p95": 48.993,
+            "p99": 48.993,
+            "max": 48.993
+          },
+          "18": {
+            "samples": 4,
+            "median": 36.551,
+            "p95": 38.704,
+            "p99": 38.704,
+            "max": 38.704
+          },
+          "3": {
+            "samples": 7,
+            "median": 40.366,
+            "p95": 52.594,
+            "p99": 52.594,
+            "max": 52.594
+          },
+          "4": {
+            "samples": 8,
+            "median": 39.194,
+            "p95": 42.543,
+            "p99": 42.543,
+            "max": 42.543
+          },
+          "5": {
+            "samples": 31,
+            "median": 36.359,
+            "p95": 44.632,
+            "p99": 46.843,
+            "max": 46.843
+          },
+          "6": {
+            "samples": 2,
+            "median": 33.038,
+            "p95": 34.772,
+            "p99": 34.772,
+            "max": 34.772
+          },
+          "7": {
+            "samples": 4,
+            "median": 32.436,
+            "p95": 45.275,
+            "p99": 45.275,
+            "max": 45.275
+          },
+          "8": {
+            "samples": 5,
+            "median": 36.749,
+            "p95": 41.82,
+            "p99": 41.82,
+            "max": 41.82
+          },
+          "9": {
+            "samples": 5,
+            "median": 40.352,
+            "p95": 40.577,
+            "p99": 40.577,
+            "max": 40.577
+          }
+        }
+      },
+      "final-low-b": {
+        "checks": 38,
+        "failures": 0,
+        "frame_ms": {
+          "samples": 136,
+          "median": 21.895,
+          "p95": 32.034,
+          "p99": 85.12,
+          "max": 544.297
+        },
+        "median_draw_calls": 271.0,
+        "per_lesson_ms": {
+          "0": {
+            "samples": 4,
+            "median": 23.801,
+            "p95": 544.297,
+            "p99": 544.297,
+            "max": 544.297
+          },
+          "1": {
+            "samples": 11,
+            "median": 20.384,
+            "p95": 23.916,
+            "p99": 23.916,
+            "max": 23.916
+          },
+          "10": {
+            "samples": 4,
+            "median": 25.123,
+            "p95": 28.66,
+            "p99": 28.66,
+            "max": 28.66
+          },
+          "11": {
+            "samples": 4,
+            "median": 28.087,
+            "p95": 36.128,
+            "p99": 36.128,
+            "max": 36.128
+          },
+          "12": {
+            "samples": 4,
+            "median": 22.575,
+            "p95": 32.736,
+            "p99": 32.736,
+            "max": 32.736
+          },
+          "13": {
+            "samples": 5,
+            "median": 22.236,
+            "p95": 25.742,
+            "p99": 25.742,
+            "max": 25.742
+          },
+          "17": {
+            "samples": 13,
+            "median": 26.186,
+            "p95": 32.034,
+            "p99": 32.034,
+            "max": 32.034
+          },
+          "18": {
+            "samples": 4,
+            "median": 26.755,
+            "p95": 29.597,
+            "p99": 29.597,
+            "max": 29.597
+          },
+          "3": {
+            "samples": 10,
+            "median": 24.579,
+            "p95": 85.12,
+            "p99": 85.12,
+            "max": 85.12
+          },
+          "4": {
+            "samples": 11,
+            "median": 25.996,
+            "p95": 29.722,
+            "p99": 29.722,
+            "max": 29.722
+          },
+          "5": {
+            "samples": 50,
+            "median": 19.633,
+            "p95": 25.678,
+            "p99": 26.845,
+            "max": 26.845
+          },
+          "6": {
+            "samples": 2,
+            "median": 20.113,
+            "p95": 20.125,
+            "p99": 20.125,
+            "max": 20.125
+          },
+          "7": {
+            "samples": 4,
+            "median": 20.634,
+            "p95": 24.49,
+            "p99": 24.49,
+            "max": 24.49
+          },
+          "8": {
+            "samples": 5,
+            "median": 23.647,
+            "p95": 67.388,
+            "p99": 67.388,
+            "max": 67.388
+          },
+          "9": {
+            "samples": 5,
+            "median": 24.723,
+            "p95": 27.706,
+            "p99": 27.706,
+            "max": 27.706
+          }
+        }
+      },
+      "ref-low-b": {
+        "checks": 38,
+        "failures": 0,
+        "frame_ms": {
+          "samples": 129,
+          "median": 25.852,
+          "p95": 36.195,
+          "p99": 67.749,
+          "max": 560.008
+        },
+        "median_draw_calls": 307.0,
+        "per_lesson_ms": {
+          "0": {
+            "samples": 4,
+            "median": 34.54,
+            "p95": 560.008,
+            "p99": 560.008,
+            "max": 560.008
+          },
+          "1": {
+            "samples": 10,
+            "median": 22.072,
+            "p95": 29.909,
+            "p99": 29.909,
+            "max": 29.909
+          },
+          "10": {
+            "samples": 4,
+            "median": 27.739,
+            "p95": 32.718,
+            "p99": 32.718,
+            "max": 32.718
+          },
+          "11": {
+            "samples": 4,
+            "median": 25.471,
+            "p95": 30.935,
+            "p99": 30.935,
+            "max": 30.935
+          },
+          "12": {
+            "samples": 4,
+            "median": 26.813,
+            "p95": 36.276,
+            "p99": 36.276,
+            "max": 36.276
+          },
+          "13": {
+            "samples": 5,
+            "median": 26.079,
+            "p95": 29.685,
+            "p99": 29.685,
+            "max": 29.685
+          },
+          "17": {
+            "samples": 12,
+            "median": 26.452,
+            "p95": 33.533,
+            "p99": 33.533,
+            "max": 33.533
+          },
+          "18": {
+            "samples": 4,
+            "median": 25.041,
+            "p95": 30.656,
+            "p99": 30.656,
+            "max": 30.656
+          },
+          "3": {
+            "samples": 14,
+            "median": 22.671,
+            "p95": 29.049,
+            "p99": 29.049,
+            "max": 29.049
+          },
+          "4": {
+            "samples": 10,
+            "median": 23.79,
+            "p95": 37.123,
+            "p99": 37.123,
+            "max": 37.123
+          },
+          "5": {
+            "samples": 42,
+            "median": 24.662,
+            "p95": 31.469,
+            "p99": 36.195,
+            "max": 36.195
+          },
+          "6": {
+            "samples": 2,
+            "median": 27.57,
+            "p95": 27.903,
+            "p99": 27.903,
+            "max": 27.903
+          },
+          "7": {
+            "samples": 4,
+            "median": 25.474,
+            "p95": 26.533,
+            "p99": 26.533,
+            "max": 26.533
+          },
+          "8": {
+            "samples": 5,
+            "median": 31.254,
+            "p95": 67.749,
+            "p99": 67.749,
+            "max": 67.749
+          },
+          "9": {
+            "samples": 5,
+            "median": 28.229,
+            "p95": 29.404,
+            "p99": 29.404,
+            "max": 29.404
+          }
+        }
+      }
+    }
+  },
+  "story_identity": {
+    "low": {
+      "checks": 92,
+      "failures": 0,
+      "frames": {
+        "hell-02": {
+          "hunter_id": "stalker",
+          "lobby": "The Veiled Stalker",
+          "match": "The Veiled Stalker",
+          "mission_seed": 1527958907,
+          "preparation": "Survive and defeat The Veiled Stalker.",
+          "reaper_enabled": true
+        },
+        "hell-50": {
+          "hunter_id": "crusher",
+          "lobby": "The Bonebreaker",
+          "match": "The Bonebreaker",
+          "mission_seed": 1583516829,
+          "preparation": "Survive and defeat The Bonebreaker.",
+          "reaper_enabled": true
+        },
+        "standard-01": {
+          "hunter_id": "crusher",
+          "lobby": "The Bonebreaker",
+          "match": "The Bonebreaker",
+          "mission_seed": 1527566656,
+          "preparation": "Survive and defeat The Bonebreaker.",
+          "reaper_enabled": false
+        }
+      }
+    },
+    "medium": {
+      "checks": 92,
+      "failures": 0,
+      "frames": {
+        "hell-02": {
+          "hunter_id": "stalker",
+          "lobby": "The Veiled Stalker",
+          "match": "The Veiled Stalker",
+          "mission_seed": 1527958907,
+          "preparation": "Survive and defeat The Veiled Stalker.",
+          "reaper_enabled": true
+        },
+        "hell-50": {
+          "hunter_id": "crusher",
+          "lobby": "The Bonebreaker",
+          "match": "The Bonebreaker",
+          "mission_seed": 1583516829,
+          "preparation": "Survive and defeat The Bonebreaker.",
+          "reaper_enabled": true
+        },
+        "standard-01": {
+          "hunter_id": "crusher",
+          "lobby": "The Bonebreaker",
+          "match": "The Bonebreaker",
+          "mission_seed": 1527566656,
+          "preparation": "Survive and defeat The Bonebreaker.",
+          "reaper_enabled": false
+        }
+      }
+    }
+  },
+  "regression_status": [
+    "scene_smoke 0",
+    "run_tests 0",
+    "player_first 0",
+    "full_room_grid_saves 0",
+    "living_story_progress 0",
+    "survivor_lobby_integration 0",
+    "weapon_feedback 0",
+    "nightmare_maps_v2_persistence 0",
+    "campaign_profile 0"
+  ],
+  "input_to_present_ms": {
+    "low-release-a": {
+      "category_attack": [
+        46.499,
+        47.087,
+        51.68,
+        49.584,
+        41.454,
+        38.51,
+        38.136,
+        37.786
+      ],
+      "category_economy": [
+        48.983,
+        39.082,
+        42.055,
+        44.485,
+        40.031,
+        39.003,
+        40.583,
+        35.508
+      ],
+      "settings_page_0": [
+        37.575,
+        46.346,
+        44.5,
+        49.565,
+        44.367,
+        43.432,
+        43.69
+      ],
+      "settings_page_1": [
+        52.318,
+        48.993,
+        50.725,
+        46.231,
+        47.067,
+        45.859,
+        46.484,
+        45.872
+      ]
+    },
+    "low-release-b": {},
+    "standard-release-a": {
+      "category_attack": [
+        100.817,
+        68.566,
+        78.282,
+        83.399,
+        81.079,
+        78.705,
+        78.936,
+        82.173
+      ],
+      "category_economy": [
+        69.613,
+        68.561,
+        75.838,
+        76.419,
+        77.726,
+        68.434,
+        82.469,
+        74.432
+      ],
+      "settings_page_0": [
+        78.015,
+        76.398,
+        77.161,
+        79.918,
+        76.698,
+        75.404,
+        78.757
+      ],
+      "settings_page_1": [
+        88.514,
+        83.552,
+        85.034,
+        79.012,
+        83.745,
+        88.281,
+        78.288,
+        81.964
+      ]
+    },
+    "standard-release-b": {}
+  },
+  "extra_rendered_checks": {
+    "fixed": {
+      "checks": 258,
+      "failures": 0,
+      "frames": {
+        "fixture": {
+          "quality": "low",
+          "room": 3,
+          "seed": 1527566656,
+          "shots": 0
+        }
+      }
+    },
+    "ui-low-record": {
+      "checks": 213,
+      "failures": 0,
+      "frames": {
+        "fixture": {
+          "quality": "low",
+          "room": 3,
+          "seed": 1527566656,
+          "shots": 1
+        },
+        "siege_build": {
+          "left_anchor": true,
+          "room_overlap": 0.0
+        }
+      }
+    },
+    "final-standard": {
+      "checks": 213,
+      "failures": 0,
+      "frames": {
+        "fixture": {
+          "quality": "medium",
+          "room": 3,
+          "seed": 1527566656,
+          "shots": 1
+        },
+        "siege_build": {
+          "left_anchor": true,
+          "room_overlap": 0.0
+        }
+      }
+    }
+  },
+  "regressions": {
+    "run_tests": {
+      "checks": 136,
+      "failures": 0
+    },
+    "nightmare_maps_v2_persistence": {
+      "checks": 62,
+      "failures": 0
+    },
+    "living_story_progress": {
+      "checks": 620,
+      "failures": 0
+    },
+    "weapon_feedback": {
+      "checks": 148,
+      "failures": 0
+    },
+    "player_first": {
+      "checks": 27,
+      "failures": 0
+    },
+    "scene_smoke": {
+      "checks": 33,
+      "failures": 0
+    },
+    "full_room_grid_saves": {
+      "checks": 64,
+      "failures": 0
+    },
+    "campaign_profile": {
+      "checks": 89,
+      "failures": 0
+    },
+    "survivor_lobby_integration": {
+      "checks": 89,
+      "failures": 0
+    }
+  }
+}

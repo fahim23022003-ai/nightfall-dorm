@@ -222,22 +222,20 @@ func verify_siege_build() -> void:
  await key(KEY_ESCAPE)
  check(not game.ui.context_open and before_count==room.buildings.size(),"Escape closes Build without buying")
  check(game.camera.position==before_position and game.camera.zoom==before_zoom,"Build closes without a camera shift")
- # Pan through the normal middle-mouse input path, then confirm side selection.
- var pan:=InputEventMouseMotion.new()
- pan.position=Vector2(640,360)
- pan.relative=Vector2(260,0)
- pan.button_mask=MOUSE_BUTTON_MASK_MIDDLE
- Input.parse_input_event(pan)
- await process_frame
- if game.phase20_free_camera and game.world_to_screen(room.center()).x>780:
-  var manual: Vector2=game.camera.position
-  await key(KEY_B)
-  check(game.ui.context_box.position.x<100,"right-side room anchors Build on the left")
-  check(game.camera.position==manual,"Build keeps the manually panned camera")
-  check(not game.ui.context_box.get_global_rect().intersects(game.construction.plan_button.get_global_rect()),"Plan never overlaps left-anchored Build")
-  presets["siege_build"]={"room_overlap":room_overlap,"left_anchor":true}
-  await key(KEY_ESCAPE)
-  await key(KEY_HOME)
+ # Reproduce a manually panned consultation without moving the Hunter.
+ # This fixture freezes the camera and model between real keyboard events.
+ game.phase20_free_camera=true
+ game.camera.position.x-=(900.0-game.world_to_screen(room.center()).x)/game.camera.zoom.x
+ game.phase20_camera_anchor=game.camera.position
+ game.camera.force_update_scroll()
+ var manual: Vector2=game.camera.position
+ await key(KEY_B)
+ check(game.ui.context_box.position.x<100,"right-side room anchors Build on the left")
+ check(game.camera.position==manual,"Build keeps the manually panned camera")
+ check(not game.ui.context_box.get_global_rect().intersects(game.construction.plan_button.get_global_rect()),"Plan never overlaps left-anchored Build")
+ presets["siege_build"]={"room_overlap":room_overlap,"left_anchor":game.ui.context_box.position.x<100}
+ await key(KEY_ESCAPE)
+ await key(KEY_HOME)
 
 func dock_hint_probe() -> void:
  var button: Button = game.ui.quick_repair
