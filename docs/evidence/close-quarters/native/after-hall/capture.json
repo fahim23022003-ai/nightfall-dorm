@@ -1,0 +1,27 @@
+{
+  "checks": 14,
+  "difficulty": "hell",
+  "failures": 0,
+  "family": "labyrinth",
+  "geometry_sha256": "2234f9c75e2e5d5ae7b61884593f8b2fc8159d4cff812be4c390cd23c403e1fe",
+  "phase18_enabled": true,
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "room_requested": 1,
+  "scenario": "hall",
+  "seed": 10358,
+  "theme": "haunted_hospital",
+  "version": 3,
+  "viewport": [
+    1280,
+    720
+  ],
+  "visibility_and_motion": {
+    "geometry_errors": 0,
+    "hall": "east",
+    "hp_after": 3198.150000000014,
+    "hp_before": 2132.1,
+    "recovery_ended": 14.500000000001648,
+    "recovery_start": 6.500000000000739,
+    "returned_to_hallway": 15.958333333335148
+  }
+}

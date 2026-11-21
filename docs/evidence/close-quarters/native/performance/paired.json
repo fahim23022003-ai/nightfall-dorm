@@ -1,0 +1,212 @@
+[
+  {
+    "buildings": 24,
+    "quality": "medium",
+    "same_gameplay_sha256": true,
+    "before": {
+      "max": 77.008,
+      "median": 53.213,
+      "p95": 70.939
+    },
+    "after": {
+      "max": 93.984,
+      "median": 60.12949999999999,
+      "p95": 70.444
+    },
+    "before_query_ms": {
+      "max": 0.549,
+      "median": 0.33,
+      "p95": 0.505
+    },
+    "after_query_ms": {
+      "max": 2.412,
+      "median": 0.5825,
+      "p95": 0.868
+    },
+    "before_draw_calls": {
+      "max": 588,
+      "median": 546.5,
+      "p95": 581
+    },
+    "after_draw_calls": {
+      "max": 609,
+      "median": 567.5,
+      "p95": 602
+    }
+  },
+  {
+    "buildings": 24,
+    "quality": "low",
+    "same_gameplay_sha256": true,
+    "before": {
+      "max": 68.384,
+      "median": 40.6875,
+      "p95": 54.34
+    },
+    "after": {
+      "max": 62.83,
+      "median": 41.766999999999996,
+      "p95": 56.295
+    },
+    "before_query_ms": {
+      "max": 0.521,
+      "median": 0.3105,
+      "p95": 0.434
+    },
+    "after_query_ms": {
+      "max": 0.809,
+      "median": 0.5745,
+      "p95": 0.804
+    },
+    "before_draw_calls": {
+      "max": 545,
+      "median": 517.0,
+      "p95": 538
+    },
+    "after_draw_calls": {
+      "max": 437,
+      "median": 409.0,
+      "p95": 430
+    }
+  },
+  {
+    "buildings": 40,
+    "quality": "medium",
+    "same_gameplay_sha256": true,
+    "before": {
+      "max": 90.562,
+      "median": 61.2055,
+      "p95": 76.019
+    },
+    "after": {
+      "max": 120.611,
+      "median": 72.9225,
+      "p95": 95.336
+    },
+    "before_query_ms": {
+      "max": 0.476,
+      "median": 0.311,
+      "p95": 0.424
+    },
+    "after_query_ms": {
+      "max": 0.821,
+      "median": 0.5734999999999999,
+      "p95": 0.779
+    },
+    "before_draw_calls": {
+      "max": 620,
+      "median": 578.5,
+      "p95": 613
+    },
+    "after_draw_calls": {
+      "max": 640,
+      "median": 598.5,
+      "p95": 633
+    }
+  },
+  {
+    "buildings": 40,
+    "quality": "low",
+    "same_gameplay_sha256": true,
+    "before": {
+      "max": 55.13,
+      "median": 37.99,
+      "p95": 50.296
+    },
+    "after": {
+      "max": 57.131,
+      "median": 40.8125,
+      "p95": 53.473
+    },
+    "before_query_ms": {
+      "max": 0.409,
+      "median": 0.339,
+      "p95": 0.394
+    },
+    "after_query_ms": {
+      "max": 0.82,
+      "median": 0.58,
+      "p95": 0.791
+    },
+    "before_draw_calls": {
+      "max": 546,
+      "median": 518.0,
+      "p95": 539
+    },
+    "after_draw_calls": {
+      "max": 438,
+      "median": 410.0,
+      "p95": 431
+    }
+  },
+  {
+    "buildings": 60,
+    "quality": "medium",
+    "same_gameplay_sha256": true,
+    "before": {
+      "max": 119.329,
+      "median": 79.40549999999999,
+      "p95": 98.44
+    },
+    "after": {
+      "max": 127.507,
+      "median": 83.195,
+      "p95": 117.197
+    },
+    "before_query_ms": {
+      "max": 0.502,
+      "median": 0.331,
+      "p95": 0.475
+    },
+    "after_query_ms": {
+      "max": 0.843,
+      "median": 0.559,
+      "p95": 0.787
+    },
+    "before_draw_calls": {
+      "max": 659,
+      "median": 617.5,
+      "p95": 652
+    },
+    "after_draw_calls": {
+      "max": 680,
+      "median": 639.0,
+      "p95": 673
+    }
+  },
+  {
+    "buildings": 60,
+    "quality": "low",
+    "same_gameplay_sha256": true,
+    "before": {
+      "max": 82.399,
+      "median": 41.911,
+      "p95": 52.837
+    },
+    "after": {
+      "max": 101.06,
+      "median": 44.066,
+      "p95": 61.621
+    },
+    "before_query_ms": {
+      "max": 0.588,
+      "median": 0.333,
+      "p95": 0.44
+    },
+    "after_query_ms": {
+      "max": 0.838,
+      "median": 0.608,
+      "p95": 0.764
+    },
+    "before_draw_calls": {
+      "max": 546,
+      "median": 518.0,
+      "p95": 539
+    },
+    "after_draw_calls": {
+      "max": 438,
+      "median": 410.0,
+      "p95": 431
+    }
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "checks": 16,
+  "difficulty": "hell",
+  "failures": 0,
+  "family": "labyrinth",
+  "geometry_sha256": "2234f9c75e2e5d5ae7b61884593f8b2fc8159d4cff812be4c390cd23c403e1fe",
+  "phase18_enabled": true,
+  "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "room_requested": 1,
+  "scenario": "approach",
+  "seed": 10358,
+  "theme": "haunted_hospital",
+  "version": 3,
+  "viewport": [
+    1280,
+    720
+  ],
+  "visibility_and_motion": {
+    "closest_wall_world_units": 43.899375915527344,
+    "door_hp_after": 131.1422468,
+    "door_hp_before": 150.0,
+    "expected_graph_route": "[(1876.0, 692.0), (1876.0, 904.0), (1896.0, 904.0)]",
+    "expected_graph_route_length": 476.0,
+    "first_attack_state_seconds": 6.20833333333298,
+    "first_door_contact_seconds": 6.833333333332945,
+    "geometry_errors": 0,
+    "model_travel_length": 576.9872305393219,
+    "near_wall_visible_frames": 36,
+    "sample_frames": 181,
+    "speed_bound_errors": 0,
+    "start": "(2120.0, 692.0)"
+  }
+}
