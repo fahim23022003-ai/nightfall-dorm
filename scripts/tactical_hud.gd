@@ -191,6 +191,9 @@ func refresh(room: RoomState) -> void:
  ui.room_dock.visible=not tutorial
  ui.quick_repair.visible=not tutorial
  ui.room_door_summary.visible=room!=null and not tutorial
+ if ui.room_door_summary.visible and room.door_hp>0.0:
+  var armor: int=roundi(PlayerDoorSurvival.armor(room.door_level)*100) if game.model.uses_player_door_survival() else 0
+  ui.room_door_summary.text="Door %s/%s · Armor %d%%" % [ui.resource_text(room.door_hp),ui.resource_text(room.max_hp()),armor]
  if tutorial:ui.room_selected_summary.position.x=573
  objective.visible=auxiliary and not menu.visible and not ui.teammates.expanded and game.profile.settings.guidance_mode=="show"
  if objective.visible:
@@ -242,7 +245,7 @@ func refresh(room: RoomState) -> void:
   ui.grid_placement_cancel_button.text="Cancel"
   tool_icon.texture=game.presentation.textures[kind]
   var error: String=control.current_preview_error
-  tool_summary.text="%s · %d×%d cells\n%s" % [fee,int(extent.x),int(extent.y),"Ready · click the floor or Place" if error=="" else error]
+  tool_summary.text="%s · %d×%d cells · %d°\n%s" % [fee,int(extent.x),int(extent.y),control.rotation*90,"Ready · click the floor or Place" if error=="" else error]
   tool_summary.modulate=GothicTheme.palette().muted if error=="" else Color("FFADB6")
   place_tool.disabled=error!=""
   place_tool.text="Move" if moving else "Place"
