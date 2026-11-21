@@ -31,7 +31,8 @@ speed. Native Windows and Intel UHD tests require the target device.
 - All 35 Room Rush pairs started at identical attempt spawns and reached
   all five physical claims. Median fifth claim was 40.25 → 38.75 seconds,
   p95 remained 60.25 seconds, and the original Spine seed 8649 remained
-  at 50.00 seconds. Player and NPC speed budgets are unchanged.
+  at 50.00 seconds. Median NPC travel fell from 2,315 to 2,275 units.
+  Player and NPC speed budgets are unchanged.
 - All 70 Story runs settled and reopened. Wins went 23/35 → 22/35.
   Hard and Hell counts were unchanged. In the Standard Branching case,
   the same spawn and Room 4 remained in use, but the room fell at 210.60
@@ -45,3 +46,18 @@ speed. Native Windows and Intel UHD tests require the target device.
   arms. These scripted policies cannot establish human difficulty.
 
 [Model receipts and regressions](evidence/phase18/model/) · [Windows package receipt](evidence/phase18/windows/)
+
+## Gameplay and performance
+
+The same Hospital Labyrinth viewport at the same zoom changed from
+62.4% to 42.1% uncovered in the sampled area. The approach footage shows
+the Hunter walking alongside the wall, turning and striking the door.
+The recordings also show Room Rush and a full Haunted Hall recovery and
+return. [Native footage, matched views and measurements](evidence/close-quarters/native/)
+
+Six native Linux llvmpipe pairs used 24, 40 and 60 legal machines in
+Standard and Low. Their combat digests matched. At 60 machines, the
+Standard median/p95 went from 79.41/98.44 to 83.20/117.20 ms. Low went
+from 41.91/52.84 to 44.07/61.62 ms. The preview therefore remains opt-in.
+Some recesses and the larger gaps between macro neighborhoods remain
+intentional. [Raw results](evidence/close-quarters/native/performance/paired.json)
