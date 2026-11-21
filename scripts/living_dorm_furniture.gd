@@ -16,16 +16,21 @@ static func _tuck(layout: Dictionary, kind: String) -> void:
   var finish: Vector2=wall[1]
   if start.distance_to(finish)<72.0:
    continue
-  var nearest:=Geometry2D.get_closest_point_to_segment(original,start+start.direction_to(finish)*30.0,finish+finish.direction_to(start)*30.0)
-  var normal:=start.direction_to(finish).orthogonal()
-  for side in [-1,1]:
-   var candidate:=nearest+normal*float(side)*(31.0 if kind=="cabinet" else 24.0)
-   candidate=candidate.snapped(Vector2(2,2))
-   var d:=candidate.distance_squared_to(original)
-   if d>=distance or d>112.0*112.0 or not _fits(layout,strips,kind,candidate):
-    continue
-   best=candidate
-   distance=d
+  var tangent:=start.direction_to(finish)
+  var inset_start:=start+tangent*30.0
+  var inset_finish:=finish-tangent*30.0
+  var nearest:=Geometry2D.get_closest_point_to_segment(original,inset_start,inset_finish)
+  var normal:=tangent.orthogonal()
+  for step in [0,-24,24,-48,48,-72,72]:
+   var along:=Geometry2D.get_closest_point_to_segment(nearest+tangent*float(step),inset_start,inset_finish)
+   for side in [-1,1]:
+    var candidate:=along+normal*float(side)*(44.0 if kind=="cabinet" else 34.0)
+    candidate=candidate.snapped(Vector2(2,2))
+    var d:=candidate.distance_squared_to(original)
+    if d>=distance or d>112.0*112.0 or not _fits(layout,strips,kind,candidate):
+     continue
+    best=candidate
+    distance=d
  layout[kind]=best
 
 static func _fits(layout: Dictionary, strips: Array, kind: String, point: Vector2) -> bool:
@@ -42,7 +47,8 @@ static func _fits(layout: Dictionary, strips: Array, kind: String, point: Vector
  for point_on_route: Vector2 in layout.interior_nodes:
   if envelope.grow(12.0).has_point(point_on_route):
    return false
+ var footprint:=Rect2(point+Vector2(-22,1),Vector2(44,28)) if kind=="cabinet" else Rect2(point+Vector2(-14,3),Vector2(28,22))
  for pad: Vector2 in layout.tiles:
-  if envelope.intersects(SpatialConstruction.footprint(pad)):
+  if footprint.intersects(SpatialConstruction.footprint(pad)):
    return false
  return true

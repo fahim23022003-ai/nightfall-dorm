@@ -100,6 +100,41 @@ func run() -> void:
   check(model.target_by_id(mini.id)==null,"dead Shadowling can no longer be targeted")
   model._tick_mini_hunters(.05)
   check(model.mini_hunters.is_empty(),"only killed pilot actor was removed")
+ var player:=model.player()
+ player.gold=1000.0
+ var needle_placed:=false
+ var grid:=player.spatial.grid_bounds()
+ for y in range(0,int(grid.size.y),16):
+  for x in range(0,int(grid.size.x),16):
+   var point:=player.spatial.aligned(grid.position+Vector2(x,y),"turret")
+   if point.distance_to(player.door_approach())>Catalog.BUILDINGS.turret.range:continue
+   if model.place_building("turret",point):
+    needle_placed=true
+    break
+  if needle_placed:break
+ check(needle_placed,"ordinary paid Needle can cover this doorway")
+ var shot_target:=MiniHunter.new()
+ shot_target.configure(model,model.next_entity_id,0,false)
+ model.next_entity_id+=1
+ shot_target.hp=1.0
+ shot_target.target=0
+ shot_target.position=player.door_approach()
+ model.mini_hunters.append(shot_target)
+ hunter.target=1
+ hunter.position=model.rooms[1].door_approach()
+ model.weapon_feedback.enabled=true
+ model._turrets(.05)
+ for step in range(50):model._advance_projectiles(.05)
+ check(shot_target.hp==0.0 and model.combat_events.any(func(event):return event.type=="impact" and event.target_id==shot_target.id and is_equal_approx(event.damage,1.0)),"real Needle projectile kills and records exact effective damage")
+ model._tick_mini_hunters(.05)
+ for index in range(MatchModel.MINI_HUNTER_CAP):
+  var extra:=MiniHunter.new()
+  extra.configure(model,model.next_entity_id,index,false)
+  model.next_entity_id+=1
+  model.mini_hunters.append(extra)
+ model.mini_hunter_ready=0.0
+ model._tick_mini_hunters(.05)
+ check(model.mini_hunters.size()==MatchModel.MINI_HUNTER_CAP and not model.mini_hunter_telegraph,"cap blocks more calls without removing living minis")
  var original:=NightmareMap.pack(model.map_data)
  var restored:=MatchModel.new()
  restored.reset(model.map_seed)
