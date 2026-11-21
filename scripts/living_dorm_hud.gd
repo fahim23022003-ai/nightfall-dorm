@@ -79,10 +79,13 @@ func refresh(room, repair_reason: String) -> void:
   benefit.text=room_effect.benefit
   drawback.text=room_effect.drawback
  if not ui.game.tutorial_active:
-  ui.guide_box.visible=secondary
-  ui.guide_label.visible=secondary
-  objective.visible=secondary
-  if secondary:
+  var show_objective:=secondary
+  if ui.game.model.player_first_requested:
+   show_objective=secondary and not ui.context_open and (ui.game.profile.settings.guidance_mode=="show" or ui.game.presentation.clock<ui.feedback_until)
+  ui.guide_box.visible=show_objective
+  ui.guide_label.visible=show_objective
+  objective.visible=show_objective
+  if show_objective:
    if ui.game.presentation.clock<repair_until:
     ui.guide_label.text=repair_message
    elif ui.game.presentation.clock>=ui.feedback_until and not ui.help_open:

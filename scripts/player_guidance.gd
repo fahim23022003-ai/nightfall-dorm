@@ -45,6 +45,9 @@ func refresh(game):
  if is_instance_valid(ui.items_ui.item_toggle):ui.items_ui.item_toggle.modulate=Color(.72,.76,.79) if game.tutorial_active else Color.WHITE
  if game.tutorial_active:
   mark(tutorial_target(game));ui.guide_box.visible=false;ui.guide_label.visible=false;return
+ if game.model.player_first_requested and ui.living_dorm_hud!=null:
+  mark(null)
+  return
  ui.guide_box.position=Vector2(20,145);ui.guide_box.size=Vector2(330,280 if ui.help_open else 102);ui.guide_label.position=Vector2(34,158);ui.guide_label.size=Vector2(300,250 if ui.help_open else 80)
  var next=objective(game);var control=null
  if not next.is_empty():
