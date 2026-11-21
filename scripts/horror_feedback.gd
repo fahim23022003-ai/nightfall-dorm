@@ -358,7 +358,7 @@ func visible_hud(ui) -> Array[Rect2]:
  if ui.context_open and ui.bottom_context!=null:
   # Reserve the drawer's eventual resting place while its tween is in flight.
   var drawer: Rect2=ui.bottom_context.body
-  if ui.bottom_context.catalogue_layout:drawer=ui.build_catalogue.BOUNDS
+  if ui.bottom_context.catalogue_layout:drawer=ui.build_catalogue.drawer_bounds()
   elif ui.bottom_context.machine_view!=null and ui.bottom_context.machine_view.plate.is_visible_in_tree():
    drawer=drawer.merge(ui.bottom_context.machine_view.plate.get_global_rect())
   reserved.append(drawer.grow(3))

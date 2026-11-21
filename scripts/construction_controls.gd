@@ -272,7 +272,9 @@ func refresh():
   var trait_details: String="" if trait_data.is_empty() else "%s\n%s\n" % [trait_data.benefit,trait_data.drawback]
   var interaction: String="E · Sleep near your bed" if r.alive and not r.sleeping else "Door breached" if r.door_hp<=0 else "Ward %.0f HP" % r.magic_state.shield if r.magic_state.shield>0 else "Build [B]  ·  Plan [P]"
   room_info.text="%s\n%s%s" % [room_title,trait_details,interaction]
+ var tactical: bool=game.ui.tactical_hud!=null
  refresh_machines(r,focused and not active() and not supplies_open and not (game.ui.living_dorm_hud!=null and game.ui.items_ui.expanded))
+ if tactical:machine_button.hide()
  var display=visible and (planning or active() or game.ui.context_open and (game.ui.context_mode=="expansion" or grid and game.ui.context_mode=="build"))
  status.visible=display;plan_button.visible=display;snap_button.visible=display and not grid
  rotate_button.visible=visible and grid and active()
@@ -280,7 +282,7 @@ func refresh():
  if game.ui.tactical_hud!=null:
   hint.hide()
   status.hide()
-  if active():plan_button.hide();snap_button.hide()
+  if active() or game.tutorial_active:plan_button.hide();snap_button.hide()
  move_button.visible=visible and game.ui.context_open and game.ui.context_mode=="upgrade" and r.buildings.has(game.selected_tile)
  undo_button.visible=visible and game.ui.context_open and game.ui.context_mode=="upgrade"
  undo_button.disabled=not undo_button.visible or r.spatial.undo_reason(game.model)!=""

@@ -454,7 +454,9 @@ func open_match_settings() -> void:
   tactical_settings=null
   game.model.running=resume and game.model.result.is_empty()
   tactical_hud.more.grab_focus()
+  game.queue_redraw()
   update_match())
+ game.queue_redraw()
 
 func close_tactical_page() -> bool:
  if tactical_settings!=null:

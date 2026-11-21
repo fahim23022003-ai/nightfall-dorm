@@ -6,6 +6,7 @@ var game
 var more: Button
 var menu: Panel
 var objective: Label
+var dock_hint: Label
 var tool_summary: Label
 var place_tool: Button
 var tool_icon: TextureRect
@@ -75,6 +76,12 @@ func install(top: Panel,brand: Label,help: Button,gold_icon: Control,gold_captio
  ui.warning_label.clip_text=true
  objective=ui.theme_label("",Vector2(30,91),17,328,"muted")
  objective.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+ dock_hint=ui.theme_label("",Vector2(25,573),17,294,"text")
+ dock_hint.name="dock_hint"
+ dock_hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+ dock_hint.size.y=73
+ dock_hint.vertical_alignment=VERTICAL_ALIGNMENT_BOTTOM
+ dock_hint.hide()
  install_menu()
  install_tool()
 
@@ -286,3 +293,25 @@ func refresh(room: RoomState) -> void:
   tool_summary.modulate=GothicTheme.palette().muted if error=="" else Color("FFADB6")
   place_tool.disabled=error!=""
   place_tool.text="Move" if moving else "Place"
+ update_dock_hint(room,not tutorial and not placing and not menu.visible and not ui.context_open and ui.pause_items.is_empty() and not game.full_map)
+
+
+func update_dock_hint(room: RoomState, enabled: bool) -> void:
+ # The dock sits below the door and Hunter. Keep explanations on the left
+ # edge so moving the pointer between actions cannot cover either target.
+ for button in [ui.room_selected_summary,ui.quick_repair,ui.items_ui.item_toggle]:
+  button.tooltip_text=""
+ if critical_ward!=null:critical_ward.tooltip_text=""
+ var target=ui.panel.get_viewport().gui_get_hovered_control() if enabled else null
+ var hint: String=""
+ if target==ui.room_selected_summary:
+  hint="Choose a machine for your room." if room!=null else "Claim a room first [E]."
+ elif target==ui.quick_repair:
+  var why: String=ui.action_reason("continuous_repair") if game.model.uses_player_door_survival() else ui.action_reason("repair")
+  hint=why if not why.is_empty() else "Spend %s Gold to repair the door." % ui._price_amount(game.model.door_survival.price(room) if game.model.uses_player_door_survival() else room.manual_repair_cost())
+ elif target==ui.items_ui.item_toggle:hint="Inspect equipped items before using them."
+ elif critical_ward!=null and target==critical_ward:
+  hint=game.model.ward_reason()
+  if hint.is_empty():hint="Spend 6 Electricity to activate the Ward."
+ dock_hint.text=hint
+ dock_hint.visible=not hint.is_empty()

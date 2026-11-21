@@ -151,7 +151,7 @@ func refresh():
    inspection.position=Vector2(103,32)
    inspection.size=Vector2(158,110)
  var show_catalogue: bool=ui.build_catalogue!=null and ui.context_open and ui.context_mode=="build"
- var drawer: Rect2=ui.build_catalogue.BOUNDS if show_catalogue else body
+ var drawer: Rect2=ui.build_catalogue.drawer_bounds() if show_catalogue else body
  ui.context_box.size=drawer.size
  if show_catalogue!=catalogue_layout:
   catalogue_layout=show_catalogue
@@ -160,6 +160,8 @@ func refresh():
   expanded=ui.context_open
   ui.context_box.visible=expanded
   ui.context_box.position=drawer.position if expanded else closed_position
+  var frame:=GothicTheme.living_surface("frame")
+  ui.context_box.add_theme_stylebox_override("panel",ui.build_catalogue.flat_style(frame) if show_catalogue else frame)
   var side: bool=body==SIDE_BODY
   place(ui.context_title,Vector2(18,8) if show_catalogue else Vector2(14,8 if side else 4),Vector2(320 if show_catalogue else 250 if side else 1130,30))
   place(ui.build_cancel_button,Vector2(drawer.size.x-108,8) if show_catalogue else Vector2(269,6) if side else Vector2(1128,2),Vector2(90,34) if show_catalogue else Vector2(83,28) if side else Vector2(94,26))

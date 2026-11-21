@@ -468,6 +468,7 @@ func open_pausing_help() -> void:
  phase20_help_open=true
  phase20_help=preload("res://scripts/pausing_help.gd").new(self)
  phase20_help.open()
+ if ui.tactical_hud!=null:queue_redraw()
 
 func close_pausing_help() -> void:
  if not phase20_help_open:return
@@ -909,6 +910,9 @@ func room_ownership_label(room: RoomState) -> String:
   _: return "VACANT"
 
 func _draw():
+ # Both desktop sheets cover the viewport and suspend the match. Invalidate
+ # retained world draw commands once on entry and restore them on dismissal.
+ if mode=="match" and ui!=null and ui.tactical_hud!=null and (phase20_help_open or ui.tactical_settings!=null):return
  if mode!="story_lobby":
   presentation.render(self)
 

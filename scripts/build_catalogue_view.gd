@@ -2,6 +2,8 @@ extends RefCounted
 ## Retained desktop catalogue. Card and detail actions use the same purchase entry
 ## point as the floor tool; browsing an unavailable machine never spends resources.
 const BOUNDS := Rect2(430,150,830,488)
+const LESSON_BOUNDS := Rect2(838,450,422,170)
+const ROW_SIZE := Vector2i(265,65)
 const Tutorial := preload("res://scripts/living_tutorial.gd")
 const QuickTutorial := preload("res://scripts/quick_tutorial.gd")
 const GROUPS := {
@@ -40,6 +42,13 @@ class Artwork extends Control:
 
 var ui
 var root := Control.new()
+var detail: Panel
+# One small render target for the displayed category. Its static names and
+# original layered illustrations redraw only when the visible roster changes.
+var row_atlas := SubViewport.new()
+var atlas_rows := {}
+var row_images := {}
+var flat_styles := {}
 var tabs := {}
 var cards := {}
 var prices := {}
@@ -64,6 +73,12 @@ func _init(interface):
  root.mouse_filter=Control.MOUSE_FILTER_IGNORE
  ui.context_box.add_child(root)
  root.hide()
+ row_atlas.disable_3d=true
+ row_atlas.transparent_bg=true
+ row_atlas.gui_disable_input=true
+ row_atlas.size=Vector2i(ROW_SIZE.x,ROW_SIZE.y*5)
+ row_atlas.render_target_update_mode=SubViewport.UPDATE_DISABLED
+ root.add_child(row_atlas)
  var widths: Array[int]=[142,219,153,151]
  var x:=0
  for group: String in GROUPS:
@@ -80,11 +95,27 @@ func _init(interface):
   card.mouse_entered.connect(preview.bind(kind))
   card.focus_entered.connect(preview.bind(kind))
   ui.actions["build:"+kind]=card
-  var art:=artwork(card,73,62,.86)
+  var static_row:=Control.new()
+  static_row.size=Vector2(ROW_SIZE)
+  static_row.theme=ui.panel.theme
+  row_atlas.add_child(static_row)
+  static_row.hide()
+  atlas_rows[kind]=static_row
+  var region:=AtlasTexture.new()
+  region.atlas=row_atlas.get_texture()
+  region.filter_clip=true
+  var image:=TextureRect.new()
+  image.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
+  image.mouse_filter=Control.MOUSE_FILTER_IGNORE
+  image.size=Vector2(ROW_SIZE)
+  image.texture=region
+  card.add_child(image)
+  row_images[kind]=region
+  var art:=artwork(static_row,73,62,.86)
   art.kind=kind
-  var name_label: Label=ui.label_at(Catalog.BUILDINGS[kind].name.capitalize(),Vector2(71,4),18,194,false,card)
+  var name_label: Label=ui.label_at(Catalog.BUILDINGS[kind].name.capitalize(),Vector2(71,4),18,194,false,static_row)
   name_label.size.y=27
-  var role: Label=ui.label_at(CARD_ROLES[kind],Vector2(71,32),16,194,false,card)
+  var role: Label=ui.label_at(CARD_ROLES[kind],Vector2(71,32),16,194,false,static_row)
   role.size.y=25
   role.modulate=GothicTheme.palette().muted
   var cost: Label=ui.label_at("",Vector2(266,5),16,107,false,card)
@@ -94,10 +125,11 @@ func _init(interface):
   state.size.y=24
   state.horizontal_alignment=HORIZONTAL_ALIGNMENT_RIGHT
   availability[kind]=state
+  style_button(card,"card")
   cards[kind]=card
   prices[kind]=cost
- var detail: Panel=ui.box(Rect2(395,52,406,375),"","",root)
- detail.add_theme_stylebox_override("panel",GothicTheme.living_surface("inset"))
+ detail=ui.box(Rect2(395,52,406,375),"","",root)
+ detail.add_theme_stylebox_override("panel",flat_style(GothicTheme.living_surface("inset")))
  detail_art=artwork(detail,150,142,1.92)
  detail_art.position=Vector2(10,4)
  detail_name=ui.label_at("",Vector2(172,19),23,219,true,detail)
@@ -116,7 +148,26 @@ func _init(interface):
  detail_status.size.y=53
  place=ui.button("Place",Vector2(14,315),func():choose(selected),378,46,detail)
  place.name="place_selected"
- ui.theme_button(place,"primary")
+ style_button(place,"primary")
+
+func drawer_bounds() -> Rect2:
+ return LESSON_BOUNDS if not current_lesson.is_empty() else BOUNDS
+
+func flat_style(original: StyleBoxFlat) -> StyleBoxFlat:
+ if not flat_styles.has(original):
+  var flat: StyleBoxFlat=original.duplicate()
+  flat.set_corner_radius_all(0)
+  flat.anti_aliasing=false
+  flat_styles[original]=flat
+ return flat_styles[original]
+
+func style_button(button: Button,role: String):
+ if button.get_meta("catalogue_style","")==role:return
+ ui.theme_button(button,role)
+ for state in ["normal","hover","pressed","disabled","focus"]:
+  button.add_theme_stylebox_override(state,flat_style(GothicTheme.living_surface(role,state)))
+ button.set_meta("catalogue_style",role)
+
 
 func artwork(parent: Control,width: int,height: int,scale_factor: float) -> Artwork:
  var thumb:=Artwork.new()
@@ -150,12 +201,15 @@ func refresh(room):
  if current_group!=group or current_lesson!=lesson:
   current_group=group
   current_lesson=lesson
+  root.size=drawer_bounds().size-Vector2(28,60)
   var kinds: Array=GROUPS[group] if lesson.is_empty() else [lesson]
   card_heading.text=("%s  ·  %d machines" % [GROUP_NAMES[group],kinds.size()]) if lesson.is_empty() else "Practice  ·  "+GROUP_NAMES[group]
+  detail.visible=lesson.is_empty()
+  card_heading.position.y=44 if lesson.is_empty() else 0
   for key in tabs:
    var tab: Button=tabs[key]
-   tab.visible=lesson.is_empty() or key==group
-   ui.theme_button(tab,"selected" if key==group else "quiet")
+   tab.visible=lesson.is_empty()
+   style_button(tab,"selected" if key==group else "quiet")
    tab.text=("✓  " if key==group else "")+GROUP_NAMES[key]
    if not lesson.is_empty():tab.position.x=0
    else:tab.position.x={"attack":0,"economy":150,"defense":377,"support":538}[key]
@@ -163,7 +217,13 @@ func refresh(room):
    var card: Button=cards[key]
    var index:=kinds.find(key)
    card.visible=index>=0
-   if index>=0:card.position=Vector2(0,76+index*70)
+   atlas_rows[key].visible=index>=0
+   if index>=0:
+    card.position=Vector2(0,76+index*70 if lesson.is_empty() else 32)
+    var at:=Vector2(0,index*ROW_SIZE.y)
+    atlas_rows[key].position=at
+    row_images[key].region=Rect2(at,Vector2(ROW_SIZE))
+  row_atlas.render_target_update_mode=SubViewport.UPDATE_ONCE
   var next: String=ui.recent_build_choices.get(group,kinds.front()) if lesson.is_empty() else lesson
   preview(next)
  for kind: String in GROUPS[group]:
@@ -181,20 +241,20 @@ func refresh(room):
 func preview(kind: String):
  if not cards.has(kind) or not cards[kind].visible:return
  if selected!=kind:
-  if cards.has(selected):ui.theme_button(cards[selected],"card")
+  if cards.has(selected):style_button(cards[selected],"card")
   selected=kind
   detail_art.kind=kind
   detail_art.queue_redraw()
   detail_name.text=Catalog.BUILDINGS[kind].name.capitalize()
   detail_purpose.text=PURPOSE[kind]
- ui.theme_button(cards[kind],"selected")
+ style_button(cards[kind],"selected")
  update_detail(ui.game.model.player())
 
 func format_cost(quote: Vector2) -> String:
  return "%s Gold  ·  %s Electricity" % [ui._price_amount(quote.x),ui._price_amount(quote.y)]
 
 func update_detail(room):
- if selected.is_empty() or room==null:return
+ if selected.is_empty() or room==null or not detail.visible:return
  var quote: Vector2=room.quote_build(selected)
  var reason: String=ui.action_reason("build:"+selected)
  var footprint: String="1 pad"

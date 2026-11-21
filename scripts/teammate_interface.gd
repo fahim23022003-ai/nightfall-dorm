@@ -33,11 +33,25 @@ func toggle_panel():
 func update():
  if not is_instance_valid(toggle):return
  var m=game.model
+ toggle.visible=not game.tutorial_active and ui.tactical_hud==null
+ body.visible=expanded and not game.tutorial_active
+ if toggle.visible or body.visible:update_roster(m)
+ var active=game.watched_room>=0 and game.watched_room<m.rooms.size()
+ watching.visible=active and not expanded;home.visible=active
+ ui.room_selected_summary.visible=not active
+ for b in [ui.room_bed_summary,ui.room_door_summary,ui.room_selected_summary]:b.disabled=m.player()==null or active
+ if active:
+  var r=m.rooms[game.watched_room];var own=m.player()
+  var danger=own!=null and (m.hunter.target==own.index and m.hunter.state in [HunterState.State.ATTACK,HunterState.State.BREACH] or m.minions.any(func(u):return u.hp>0 and u.target==own.index and u.position.distance_to(own.door_approach())<=3))
+  watching.text="OBSERVE ONLY · %s · Room %02d%s" % [r.survivor_name(),r.index+1," · ELIMINATED" if not r.alive else ""]
+  if danger:watching.text="YOUR DOOR IS UNDER ATTACK! · HOME TO RETURN"
+  watching.modulate=Color("FFB1A4") if danger else Color("D9CBE9")
+  for b in [ui.room_bed_summary,ui.room_door_summary,ui.room_selected_summary]:b.disabled=true;b.tooltip_text="Return to your own room to edit its defenses."
+
+func update_roster(m):
  var roster=m.rooms.filter(func(r):return r.owner>0)
  var runners: Array=m.room_rush_runners() if m.room_rush_active() else []
  var alive=roster.filter(func(r):return r.alive).size()+runners.size()
- toggle.visible=not game.tutorial_active
- body.visible=expanded and toggle.visible
  toggle.text="TEAM %d/%d ALIVE · %s [T]" % [alive,roster.size()+runners.size(),"Close" if expanded else "View"]
  indices.clear()
  for r in roster:indices.append(r.index)
@@ -63,14 +77,3 @@ func update():
   rows[i].text="%s · Room %02d · %s\nDoor %d/%d · Click to spectate" % [r.survivor_name(),r.index+1,state,roundi(r.door_hp),roundi(r.max_hp())]
   rows[i].tooltip_text="Observe only; your character and ownership stay in your room."
   rows[i].modulate=Color("F4B5B5") if threat or not r.alive else Color.WHITE
- var active=game.watched_room>=0 and game.watched_room<m.rooms.size()
- watching.visible=active and not expanded;home.visible=active
- ui.room_selected_summary.visible=not active
- for b in [ui.room_bed_summary,ui.room_door_summary,ui.room_selected_summary]:b.disabled=m.player()==null or active
- if active:
-  var r=m.rooms[game.watched_room];var own=m.player()
-  var danger=own!=null and (m.hunter.target==own.index and m.hunter.state in [HunterState.State.ATTACK,HunterState.State.BREACH] or m.minions.any(func(u):return u.hp>0 and u.target==own.index and u.position.distance_to(own.door_approach())<=3))
-  watching.text="OBSERVE ONLY · %s · Room %02d%s" % [r.survivor_name(),r.index+1," · ELIMINATED" if not r.alive else ""]
-  if danger:watching.text="YOUR DOOR IS UNDER ATTACK! · HOME TO RETURN"
-  watching.modulate=Color("FFB1A4") if danger else Color("D9CBE9")
-  for b in [ui.room_bed_summary,ui.room_door_summary,ui.room_selected_summary]:b.disabled=true;b.tooltip_text="Return to your own room to edit its defenses."
