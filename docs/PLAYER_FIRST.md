@@ -9,7 +9,8 @@ The earlier standalone Performance release remains available.
    the placement tool and buy a Needle. Watch the Needle land a shot.
 2. Continue to Story. In a real siege check Door HP, physical Armor and the
    ×1.5 Bed Gold display. Use **R** to pay for up to 25 seconds of repair,
-   with a 60-second cooldown from purchase.
+   with a 60-second cooldown from purchase. Open the Door inspector for the
+   paid instant repair when the continuous repair is idle or on cooldown.
 3. Open **G** for Help. Check that the match, including income and repair,
    stops until you resume. **I** opens Items without spending anything.
 4. Drag with the middle mouse button to look around. Scroll to zoom and

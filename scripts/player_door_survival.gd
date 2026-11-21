@@ -38,6 +38,7 @@ func activate(model, room: RoomState) -> bool:
   return false
  var cost:=price(room)
  if not room.pay(cost,0.0,"continuous door repair"):return false
+ room.ledger.totals.repair_g+=cost
  remaining=ACTIVE_SECONDS
  ready_at=model.time+COOLDOWN_SECONDS
  restored=0.0

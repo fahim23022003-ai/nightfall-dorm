@@ -323,7 +323,9 @@ func _show_player_first_result(mission: Dictionary, result: Dictionary, won: boo
  if not won:
   ui.theme_button(ui.button("Why did I lose?",Vector2(826,493),ui.replay_ui.show_defeat_analysis,270,46),"danger")
  ui.theme_button(ui.button("Items",Vector2(176,575),ui.items_ui.inventory,200,42),"inventory")
- ui.theme_button(ui.button("Shop",Vector2(394,575),ui.shop.show_shop,179,42),"shop")
+ var shop: Button=ui.button("Shop",Vector2(394,575),ui.shop.show_shop,179,42)
+ shop.name="StoryResultShop"
+ ui.theme_button(shop,"shop")
  ui.theme_button(ui.button("Main menu",Vector2(591,575),game.return_menu,245,42),"quiet")
  main.grab_focus()
 

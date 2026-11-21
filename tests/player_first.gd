@@ -49,18 +49,25 @@ func run() -> void:
  check(is_equal_approx(room.income_total-earned,ordinary*1.5),"exact Bed Gold multiplier")
  var prior:=float(room.gold)
  var price:=model.door_survival.price(room)
- check(model.repair_door() and is_equal_approx(room.gold,prior-price),"pay once to activate")
+ check(model.repair_door(true) and is_equal_approx(room.gold,prior-price),"pay once to activate")
+ check(is_equal_approx(room.ledger.totals.repair_g,price),"actual repair spend appears in ledger")
+ var facts:=model.defeat_facts.observe(model)
+ check(not facts.repair_affordable and not facts.continuous_repair and is_equal_approx(facts.continuous_cost,price),"defeat analysis reflects active continuous repair and its price")
  var activation:=float(model.time)
- check(not model.repair_door() and is_equal_approx(room.gold,prior-price),"no stacking or repeat debit")
+ check(not model.repair_door(true) and not model.repair_door() and is_equal_approx(room.gold,prior-price),"no stacking or repeat debit")
  check(is_equal_approx(model.door_survival.ready_at,activation+60.0),"activation starts 60s cooldown")
  var hp: float=room.door_hp
  model.door_survival.tick(10.0,model,room)
  check(is_equal_approx(model.door_survival.remaining,15.0) and is_equal_approx(room.door_hp-hp,56.0),"gradual delivery")
  model.door_survival.tick(15.0,model,room)
  check(model.door_survival.remaining==0.0 and is_equal_approx(room.door_hp-hp,140.0),"25s bounded healing")
- check(not model.repair_door(),"cooldown holds after healing")
+ check(not model.repair_door(true),"cooldown holds after healing")
+ room.door_hp-=80.0
+ var instant_price:=room.manual_repair_cost()
+ check(model.repair_door() and is_equal_approx(room.gold,prior-price-instant_price),"paid instant repair remains available during cooldown")
  model.time=activation+60.0
- check(model.repair_door(),"reactivates at cooldown boundary")
+ room.door_hp-=80.0
+ check(model.repair_door(true),"reactivates at cooldown boundary")
  room.door_hp=0.0
  model.door_survival.tick(1.0,model,room)
  check(room.door_hp==0.0 and model.door_survival.remaining==0.0,"broken door is not revived")

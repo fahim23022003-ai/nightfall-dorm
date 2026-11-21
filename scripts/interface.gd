@@ -555,7 +555,7 @@ func show_match():
  door_details.size.y=138
  door_button=button("Upgrade door",Vector2(14,198),func(): upgrade_structure("door"),336,40,context_box)
  actions.door=door_button
- actions.repair=button("Repair",Vector2(14,246),repair_player_door,336,40,context_box)
+ actions.repair=button("Repair",Vector2(14,246),func():repair_player_door(false),336,40,context_box)
  door_items=[door_art,door_details,door_button,actions.repair]
  confirmation_icon=icon("turret",Vector2(14,54),Vector2(80,86),context_box)
  confirmation_details=label_at("",Vector2(104,52),18,244,false,context_box)
@@ -738,6 +738,7 @@ func refresh_context():
   door_details.text=BuildingStats.structure_preview(game.model,room,"door")+"\n"+action_reason("door")
   if game.model.uses_player_door_survival():
    door_details.text+="\nPhysical armor %d%% → %d%%" % [roundi(PlayerDoorSurvival.armor(room.door_level)*100),roundi(PlayerDoorSurvival.armor(room.door_level+1)*100)]
+   actions.repair.text="Instant repair · %.1f G" % room.manual_repair_cost()
  elif context_mode=="confirm" and game.pending_build!="":
   var data=Catalog.BUILDINGS[game.pending_build].duplicate(true);var actual=BalanceRules.price(game.pending_build,game.model.balance_version);data.gold=actual.x;data.power=actual.y
   context_title.text="PLACE "+data.name.to_upper()
@@ -804,14 +805,14 @@ func sell_selected():
  purchase(success)
  if success: feedback_text="Building sold · 50% gold and electricity refunded."
 
-func repair_player_door() -> void:
+func repair_player_door(continuous: bool=true) -> void:
  var room=game.model.player()
  var before: float=room.door_hp if room!=null else 0.0
- var success: bool=game.model.repair_door()
+ var success: bool=game.model.repair_door(continuous)
  purchase(success)
- if success and room!=null and living_dorm_hud!=null and not game.model.uses_player_door_survival():
+ if success and room!=null and living_dorm_hud!=null and room.door_hp>before:
   living_dorm_hud.repaired(room.door_hp-before)
-  living_dorm_hud.refresh(room,action_reason("repair"))
+  living_dorm_hud.refresh(room,action_reason("continuous_repair"))
 
 func purchase(success: bool):
  var reason=game.model.purchase_error() if not success else ""
@@ -996,7 +997,7 @@ func update_match():
   room_door_summary.set_meta("danger_skin",immediate)
  room_door_summary.modulate=Color(1,.91+.09*sin(game.presentation.clock*3),.91+.09*sin(game.presentation.clock*3)) if immediate and not game.profile.settings.reduced_effects else Color.WHITE
  quick_repair.text="Repair %.1f G [R]" % (room.manual_repair_cost() if room!=null else Catalog.REPAIR_COST)
- var repair_reason:=action_reason("repair")
+ var repair_reason:=action_reason("continuous_repair") if m.uses_player_door_survival() else action_reason("repair")
  quick_repair.disabled=repair_reason!=""
  if living_dorm_hud!=null:
   living_dorm_hud.refresh(room,repair_reason)
@@ -1124,7 +1125,9 @@ func action_reason(action: String) -> String:
  if m.result != "":
   return "The match has ended."
  var room = m.player()
- if action=="repair" and m.uses_player_door_survival():return m.door_survival.reason(m,room)
+ if action=="continuous_repair":
+  if m.uses_player_door_survival():return m.door_survival.reason(m,room)
+  action="repair"
  if room == null:
   return "Claim a room first."
  if not room.alive:
@@ -1143,6 +1146,7 @@ func action_reason(action: String) -> String:
   gold = BalanceRules.structure("door",room.door_level,game.model.balance_version).x
   power = BalanceRules.structure("door",room.door_level,game.model.balance_version).y
  elif action == "repair":
+  if m.uses_player_door_survival() and m.door_survival.remaining>0.0:return "Continuous repair is active."
   if room.door_hp <= 0: return "Destroyed doors cannot be repaired."
   if room.door_hp >= room.max_hp(): return "Door already at full health."
   gold = room.manual_repair_cost()

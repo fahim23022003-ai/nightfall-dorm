@@ -573,9 +573,12 @@ func upgrade_door() -> bool:
 func uses_player_door_survival() -> bool:
  return player_first_requested and run_kind=="campaign" and not tutorial_mode
 
-func repair_door() -> bool:
- if uses_player_door_survival():return door_survival.activate(self,player())
- return player().repair_door() if _can_purchase() else false
+func repair_door(continuous: bool=false) -> bool:
+ if not _can_purchase():return false
+ if uses_player_door_survival():
+  if continuous:return door_survival.activate(self,player())
+  if door_survival.remaining>0.0:return player().reject("Continuous repair is active.")
+ return player().repair_door()
 
 func upgrade_building(tile: int) -> bool:
  return player().upgrade_building(tile) if _can_purchase() else false

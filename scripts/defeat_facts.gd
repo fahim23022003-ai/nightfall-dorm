@@ -12,7 +12,7 @@ func event(type: String,room_index: int,model,data: Dictionary):
    decision_windows.append(observe(model))
    if decision_windows.size()>24:decision_windows.pop_front()
   if type=="door_break" and breach_at<0:breach_at=model.time
- if room_index==model.player_room and type in ["door_upgrade","repair"]:
+ if room_index==model.player_room and type in ["door_upgrade","repair","repair_started"]:
   door_history.append({"type":type,"time":snappedf(model.time,.01),"level":model.player().door_level+1})
   if door_history.size()>12:door_history.pop_front()
  if room_index!=model.player_room or type not in ["door_damage","door_break","elimination"]:return
@@ -45,9 +45,10 @@ func capture(model):
   tips=[]
   if not window.is_empty():
    var text="At %.1fs (%.1fs before breach), held %.2fG / %.2fE." % [window.time,breach_at-window.time,window.gold,window.power]
-   if window.repair_affordable:text+=" Manual repair +%.1f HP for %.2fG was affordable." % [window.repair_heal,window.repair_cost]
+   if window.continuous_repair:text+=" Continuous repair was available for %.2fG." % window.continuous_cost
+   elif window.repair_affordable:text+=" Manual repair +%.1f HP for %.2fG was affordable." % [window.repair_heal,window.repair_cost]
    elif window.door_affordable:text+=" The next door upgrade was legal and affordable."
-   else:text+=" No manual repair or next door upgrade was affordable in that recorded window."
+   else:text+=" Neither manual repair nor the next door upgrade was available in that recorded window."
    tips.append(text)
    tips.append("This records available choices, not proof that one action would prevent defeat.")
   elif room.door_hp<=0:tips.append("No earlier actionable hit window was recorded since start/resume; no missed counter is inferred.")
@@ -61,4 +62,7 @@ func capture(model):
 func observe(m) -> Dictionary:
  var r=m.player();var price=BalanceRules.structure("door",r.door_level,r.balance_version)
  var legal=r.door_level<9 and r.bed_level>=maxi(0,r.door_level-1) and (not r.strategy_enabled or r.door_level!=4 or r.door_branch!="")
- return {"time":m.time,"gold":r.gold,"power":r.electricity,"door_hp":r.door_hp,"repair_factor":r.repair_factor,"repair_cost":r.manual_repair_cost(),"repair_heal":minf(r.max_hp()-r.door_hp,Catalog.REPAIR_HEAL*r.repair_factor*StrategyCatalog.BRANCHES.get(r.door_branch,{}).get("repair",1.0)),"repair_affordable":r.door_hp>0 and r.gold>=r.manual_repair_cost(),"door_affordable":legal and r.gold>=price.x and r.electricity>=price.y,"reserve":r.repair_reserve(),"pressure":m.pressure.factor(m),"hunter_interval":m.hunter.interval}
+ var continuous: bool=m.uses_player_door_survival()
+ var repair_price: float=r.manual_repair_cost()
+ var repair_available: bool=r.door_hp>0 and r.gold>=repair_price and (not continuous or m.door_survival.remaining<=0.0)
+ return {"time":m.time,"gold":r.gold,"power":r.electricity,"door_hp":r.door_hp,"repair_factor":r.repair_factor,"repair_cost":repair_price,"repair_heal":minf(r.max_hp()-r.door_hp,Catalog.REPAIR_HEAL*r.repair_factor*StrategyCatalog.BRANCHES.get(r.door_branch,{}).get("repair",1.0)),"repair_affordable":repair_available,"continuous_repair":continuous and m.door_survival.reason(m,r)=="","continuous_cost":m.door_survival.price(r) if continuous else 0.0,"door_affordable":legal and r.gold>=price.x and r.electricity>=price.y,"reserve":r.repair_reserve(),"pressure":m.pressure.factor(m),"hunter_interval":m.hunter.interval}

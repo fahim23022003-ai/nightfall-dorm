@@ -353,6 +353,8 @@ func start_match(difficulty: String="",story_level: int=0) -> bool:
  if survivor_preview_enabled and not model.begin_room_rush(match_id):
   ui.campaign.story_ui.notice="This layout could not provide a shared route to all rooms."
   return false
+ phase20_free_camera=false
+ reset_phase20_adaptation()
  audio_system.reset_match(model)
  audio_event("match_start")
  last_progression={}
