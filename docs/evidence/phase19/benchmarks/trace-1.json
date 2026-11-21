@@ -1,0 +1,2132 @@
+{
+  "cases": [
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_1",
+        "standard",
+        37,
+        0,
+        "needle_defense"
+      ],
+      "door_damage": 0.0,
+      "hunter_attacks": 160,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 0,
+      "hunter_travel_world_units": 11110.2358980179,
+      "invalid": [],
+      "map": "abandoned_dorm",
+      "max_ledger_error": 0.0000152587890625,
+      "npc_peak": 5,
+      "outcome": "victory",
+      "peak_buildings": 7,
+      "player_damage": 1044.0,
+      "procedural": true,
+      "recovery_attempts": 1,
+      "recovery_events": [
+        {
+          "amount": 0.0,
+          "event": "hunter_retreat",
+          "hall": "north",
+          "reason": "",
+          "time": 259.050000000006
+        },
+        {
+          "amount": 0.0,
+          "event": "hunter_recovering",
+          "hall": "north",
+          "reason": "",
+          "time": 263.400000000006
+        },
+        {
+          "amount": 894.239999999997,
+          "event": "hunter_recovery_ended",
+          "hall": "north",
+          "reason": "completed",
+          "time": 271.500000000004
+        }
+      ],
+      "recovery_visits": 1,
+      "room_eliminations": 3,
+      "seconds": 324.75,
+      "seconds_by_siege_room": {
+        "1": 77.7000000000001,
+        "3": 20.25,
+        "4": 38.8499999999998,
+        "5": 28.0499999999999
+      },
+      "shape": "l",
+      "shots": 309,
+      "speed_budget_violations": 0,
+      "steps": 2165,
+      "targeting_trace": [
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 1,
+          "time": 40.0499999999998,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 40.0499999999998,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 45.2999999999997,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 125.400000000002,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 3,
+          "time": 128.100000000002,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 128.100000000002,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 139.650000000002,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 162.750000000003,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 4,
+          "time": 166.950000000003,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 166.950000000003,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 191.550000000004,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 82.2667957120033,
+          "reason": "breach_progress",
+          "room": 4,
+          "time": 213.300000000005,
+          "type": "hunter_commit"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 232.200000000006,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 0,
+          "time": 235.350000000006,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 0,
+          "time": 235.350000000006,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 5,
+          "time": 271.650000000004,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 271.650000000004,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 296.700000000001,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 807.980650470401,
+          "reason": "breach_progress",
+          "room": 5,
+          "time": 318.449999999997,
+          "type": "hunter_commit"
+        }
+      ]
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_1",
+        "hard",
+        44,
+        2,
+        "needle_defense"
+      ],
+      "door_damage": 396.01511642,
+      "hunter_attacks": 19,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 0,
+      "hunter_travel_world_units": 1473.11261463165,
+      "invalid": [],
+      "map": "abandoned_dorm",
+      "max_ledger_error": 0.0000019073486328125,
+      "npc_peak": 5,
+      "outcome": "defeat",
+      "peak_buildings": 5,
+      "player_damage": 981.0,
+      "procedural": true,
+      "recovery_attempts": 0,
+      "recovery_events": [],
+      "recovery_visits": 0,
+      "room_eliminations": 1,
+      "seconds": 80.25,
+      "seconds_by_siege_room": {
+        "2": 20.85
+      },
+      "shape": "u",
+      "shots": 110,
+      "speed_budget_violations": 0,
+      "steps": 535,
+      "targeting_trace": [
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 2,
+          "time": 40.0499999999998,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 40.0499999999998,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 56.5499999999996,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 77.65801472,
+          "reason": "breach_progress",
+          "room": 2,
+          "time": 70.9499999999998,
+          "type": "hunter_commit"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 80.2500000000002,
+          "type": "elimination"
+        }
+      ]
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_1",
+        "hell",
+        51,
+        4,
+        "needle_defense"
+      ],
+      "door_damage": 194.166096,
+      "hunter_attacks": 9,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 0,
+      "hunter_travel_world_units": 428.055791854858,
+      "invalid": [],
+      "map": "abandoned_dorm",
+      "max_ledger_error": 0.00000095367431640625,
+      "npc_peak": 5,
+      "outcome": "defeat",
+      "peak_buildings": 4,
+      "player_damage": 558.0,
+      "procedural": true,
+      "recovery_attempts": 0,
+      "recovery_events": [],
+      "recovery_visits": 0,
+      "room_eliminations": 1,
+      "seconds": 54.6,
+      "seconds_by_siege_room": {
+        "4": 9.90000000000001
+      },
+      "shape": "u",
+      "shots": 64,
+      "speed_budget_violations": 0,
+      "steps": 364,
+      "targeting_trace": [
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 4,
+          "time": 40.0499999999998,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 40.0499999999998,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 41.8499999999998,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 54.5999999999997,
+          "type": "elimination"
+        }
+      ]
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_2",
+        "standard",
+        48,
+        1,
+        "needle_defense"
+      ],
+      "door_damage": 1050.69699370156,
+      "hunter_attacks": 117,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 0,
+      "hunter_travel_world_units": 4093.1523900032,
+      "invalid": [],
+      "map": "haunted_hospital",
+      "max_ledger_error": 0.000030517578125,
+      "npc_peak": 5,
+      "outcome": "victory",
+      "peak_buildings": 7,
+      "player_damage": 2870.2656,
+      "procedural": true,
+      "recovery_attempts": 1,
+      "recovery_events": [
+        {
+          "amount": 0.0,
+          "event": "hunter_retreat",
+          "hall": "north",
+          "reason": "",
+          "time": 215.850000000005
+        },
+        {
+          "amount": 0.0,
+          "event": "hunter_recovering",
+          "hall": "north",
+          "reason": "",
+          "time": 222.300000000006
+        },
+        {
+          "amount": 864.705600000001,
+          "event": "hunter_recovery_ended",
+          "hall": "north",
+          "reason": "completed",
+          "time": 230.400000000006
+        }
+      ],
+      "recovery_visits": 1,
+      "room_eliminations": 1,
+      "seconds": 259.95,
+      "seconds_by_siege_room": {
+        "1": 24.5999999999999,
+        "3": 44.9999999999998,
+        "5": 99.1500000000009
+      },
+      "shape": "l",
+      "shots": 347,
+      "speed_budget_violations": 0,
+      "steps": 1733,
+      "targeting_trace": [
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 5,
+          "time": 40.0499999999998,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 40.0499999999998,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 44.6999999999998,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 31.4258460622545,
+          "reason": "breach_progress",
+          "room": 5,
+          "time": 95.1000000000007,
+          "type": "hunter_commit"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 146.100000000003,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 3,
+          "time": 149.700000000003,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 149.700000000003,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 170.850000000004,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 151.109438320077,
+          "reason": "breach_progress",
+          "room": 3,
+          "time": 187.950000000004,
+          "type": "hunter_commit"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 1,
+          "time": 230.550000000006,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 230.550000000006,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 235.350000000006,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 471.529407723959,
+          "reason": "breach_progress",
+          "room": 1,
+          "time": 252.150000000007,
+          "type": "hunter_commit"
+        }
+      ]
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_2",
+        "hard",
+        55,
+        3,
+        "needle_defense"
+      ],
+      "door_damage": 263.2899034432,
+      "hunter_attacks": 12,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 0,
+      "hunter_travel_world_units": 666.374458312988,
+      "invalid": [],
+      "map": "haunted_hospital",
+      "max_ledger_error": 0.00000095367431640625,
+      "npc_peak": 5,
+      "outcome": "defeat",
+      "peak_buildings": 4,
+      "player_damage": 666.0,
+      "procedural": true,
+      "recovery_attempts": 0,
+      "recovery_events": [],
+      "recovery_visits": 0,
+      "room_eliminations": 1,
+      "seconds": 60.75,
+      "seconds_by_siege_room": {
+        "3": 13.5
+      },
+      "shape": "u",
+      "shots": 76,
+      "speed_budget_violations": 0,
+      "steps": 405,
+      "targeting_trace": [
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 3,
+          "time": 40.0499999999998,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 40.0499999999998,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 44.2499999999998,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 60.7499999999996,
+          "type": "elimination"
+        }
+      ]
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_2",
+        "hell",
+        62,
+        5,
+        "needle_defense"
+      ],
+      "door_damage": 1054.0,
+      "hunter_attacks": 30,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 0,
+      "hunter_travel_world_units": 3739.74039745331,
+      "invalid": [],
+      "map": "haunted_hospital",
+      "max_ledger_error": 0.00000762939453125,
+      "npc_peak": 5,
+      "outcome": "defeat",
+      "peak_buildings": 5,
+      "player_damage": 792.0,
+      "procedural": true,
+      "recovery_attempts": 0,
+      "recovery_events": [],
+      "recovery_visits": 0,
+      "room_eliminations": 2,
+      "seconds": 170.85,
+      "seconds_by_siege_room": {
+        "2": 53.5499999999997,
+        "5": 27.5999999999999
+      },
+      "shape": "zigzag",
+      "shots": 157,
+      "speed_budget_violations": 0,
+      "steps": 1139,
+      "targeting_trace": [
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 2,
+          "time": 40.0499999999998,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 40.0499999999998,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 46.9499999999997,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 115.44829816,
+          "reason": "breach_progress",
+          "room": 2,
+          "time": 63.7499999999996,
+          "type": "hunter_commit"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 103.200000000001,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 5,
+          "time": 108.900000000001,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 108.900000000001,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 140.400000000002,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 170.850000000004,
+          "type": "elimination"
+        }
+      ]
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_3",
+        "standard",
+        59,
+        2,
+        "needle_defense"
+      ],
+      "door_damage": 1260.43669792626,
+      "hunter_attacks": 96,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 1,
+      "hunter_travel_world_units": 7404.54166793823,
+      "invalid": [],
+      "map": "forgotten_hotel",
+      "max_ledger_error": 0.00000095367431640625,
+      "npc_peak": 5,
+      "outcome": "victory",
+      "peak_buildings": 7,
+      "player_damage": 743.993199488,
+      "procedural": true,
+      "recovery_attempts": 0,
+      "recovery_events": [],
+      "recovery_visits": 0,
+      "room_eliminations": 2,
+      "seconds": 315.45,
+      "seconds_by_siege_room": {
+        "0": 29.9999999999999,
+        "1": 49.1999999999997,
+        "2": 14.7,
+        "3": 24.5999999999999,
+        "5": 52.9499999999997
+      },
+      "shape": "u",
+      "shots": 322,
+      "speed_budget_violations": 0,
+      "steps": 2103,
+      "targeting_trace": [
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 5,
+          "time": 40.0499999999998,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 40.0499999999998,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 45.5999999999997,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 69.8397142111999,
+          "reason": "breach_progress",
+          "room": 5,
+          "time": 67.3499999999997,
+          "type": "hunter_commit"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 100.500000000001,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 0,
+          "time": 104.100000000001,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 0,
+          "time": 104.100000000001,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 0,
+          "time": 105.900000000001,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 217.510894739457,
+          "reason": "breach_progress",
+          "room": 0,
+          "time": 127.650000000002,
+          "type": "hunter_commit"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 0,
+          "time": 138.600000000002,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 1,
+          "time": 142.500000000003,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 142.500000000003,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 170.250000000004,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 193.200000000004,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 193.200000000004,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 225.000000000006,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 234.900000000006,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 300.75,
+          "type": "encounter"
+        }
+      ]
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_3",
+        "hard",
+        66,
+        4,
+        "needle_defense"
+      ],
+      "door_damage": 873.099288513944,
+      "hunter_attacks": 90,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 1,
+      "hunter_travel_world_units": 11655.7571897507,
+      "invalid": [],
+      "map": "forgotten_hotel",
+      "max_ledger_error": 0.0000152587890625,
+      "npc_peak": 5,
+      "outcome": "victory",
+      "peak_buildings": 7,
+      "player_damage": 3740.20599629226,
+      "procedural": true,
+      "recovery_attempts": 0,
+      "recovery_events": [],
+      "recovery_visits": 0,
+      "room_eliminations": 3,
+      "seconds": 341.1,
+      "seconds_by_siege_room": {
+        "0": 48.7499999999997,
+        "1": 30.2999999999999,
+        "2": 36.8999999999998,
+        "3": 32.5499999999999,
+        "4": 24.1499999999999
+      },
+      "shape": "l",
+      "shots": 398,
+      "speed_budget_violations": 0,
+      "steps": 2274,
+      "targeting_trace": [
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 2,
+          "time": 40.0499999999998,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 40.0499999999998,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 42.2999999999998,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 82.391615872,
+          "reason": "breach_progress",
+          "room": 2,
+          "time": 59.9999999999996,
+          "type": "hunter_commit"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 82.5000000000003,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 0,
+          "time": 87.0000000000004,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 0,
+          "time": 87.0000000000004,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 0,
+          "time": 93.3000000000007,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 163.368118644225,
+          "reason": "breach_progress",
+          "room": 0,
+          "time": 131.850000000002,
+          "type": "hunter_commit"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 0,
+          "time": 145.050000000003,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 1,
+          "time": 148.800000000003,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 148.800000000003,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 170.550000000004,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 421.313170989603,
+          "reason": "breach_progress",
+          "room": 1,
+          "time": 188.250000000004,
+          "type": "hunter_commit"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 203.250000000005,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 3,
+          "time": 208.800000000005,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 208.800000000005,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 255.900000000007,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 258.150000000007,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 290.850000000002,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 316.799999999998,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 337.199999999995,
+          "type": "encounter"
+        }
+      ]
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_3",
+        "hell",
+        73,
+        0,
+        "needle_defense"
+      ],
+      "door_damage": 1103.475,
+      "hunter_attacks": 54,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 0,
+      "hunter_travel_world_units": 4688.52293682098,
+      "invalid": [],
+      "map": "forgotten_hotel",
+      "max_ledger_error": 0.00000762939453125,
+      "npc_peak": 5,
+      "outcome": "defeat",
+      "peak_buildings": 6,
+      "player_damage": 1215.0,
+      "procedural": true,
+      "recovery_attempts": 0,
+      "recovery_events": [],
+      "recovery_visits": 0,
+      "room_eliminations": 3,
+      "seconds": 159.0,
+      "seconds_by_siege_room": {
+        "0": 19.8,
+        "1": 24.4499999999999,
+        "4": 28.0499999999999
+      },
+      "shape": "rectangle",
+      "shots": 178,
+      "speed_budget_violations": 0,
+      "steps": 1060,
+      "targeting_trace": [
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 1,
+          "time": 40.0499999999998,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 40.0499999999998,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 43.9499999999998,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 112.61432624,
+          "reason": "breach_progress",
+          "room": 1,
+          "time": 54.7499999999997,
+          "type": "hunter_commit"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 71.0999999999998,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 4,
+          "time": 74.7,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 74.7,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 80.7000000000002,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 131.428536488257,
+          "reason": "breach_progress",
+          "room": 4,
+          "time": 94.0500000000007,
+          "type": "hunter_commit"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 111.000000000001,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 0,
+          "time": 113.850000000001,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 0,
+          "time": 113.850000000001,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 0,
+          "time": 136.950000000002,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 261.846597213146,
+          "reason": "breach_progress",
+          "room": 0,
+          "time": 147.750000000003,
+          "type": "hunter_commit"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 0,
+          "time": 159.000000000003,
+          "type": "elimination"
+        }
+      ]
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_4",
+        "standard",
+        70,
+        3,
+        "needle_defense"
+      ],
+      "door_damage": 1027.45027517752,
+      "hunter_attacks": 139,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 0,
+      "hunter_travel_world_units": 6435.97589683533,
+      "invalid": [],
+      "map": "underground_lab",
+      "max_ledger_error": 0.0000152587890625,
+      "npc_peak": 5,
+      "outcome": "victory",
+      "peak_buildings": 7,
+      "player_damage": 4633.9403316986,
+      "procedural": true,
+      "recovery_attempts": 1,
+      "recovery_events": [
+        {
+          "amount": 0.0,
+          "event": "hunter_retreat",
+          "hall": "north",
+          "reason": "",
+          "time": 191.550000000004
+        },
+        {
+          "amount": 0.0,
+          "event": "hunter_recovering",
+          "hall": "north",
+          "reason": "",
+          "time": 197.400000000005
+        },
+        {
+          "amount": 998.265599999999,
+          "event": "hunter_recovery_ended",
+          "hall": "north",
+          "reason": "completed",
+          "time": 205.500000000005
+        }
+      ],
+      "recovery_visits": 1,
+      "room_eliminations": 2,
+      "seconds": 361.65,
+      "seconds_by_siege_room": {
+        "0": 62.3999999999996,
+        "1": 22.2,
+        "2": 67.6499999999997,
+        "3": 41.2499999999998,
+        "5": 38.5499999999998
+      },
+      "shape": "rectangle",
+      "shots": 488,
+      "speed_budget_violations": 0,
+      "steps": 2411,
+      "targeting_trace": [
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 0,
+          "time": 40.0499999999998,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 0,
+          "time": 40.0499999999998,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 0,
+          "time": 47.0999999999997,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 115.296224499456,
+          "reason": "breach_progress",
+          "room": 0,
+          "time": 71.2499999999998,
+          "type": "hunter_commit"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 0,
+          "time": 112.500000000001,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 2,
+          "time": 117.300000000002,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 117.300000000002,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 123.900000000002,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 218.94362777644,
+          "reason": "breach_progress",
+          "room": 2,
+          "time": 148.050000000003,
+          "type": "hunter_commit"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 1,
+          "time": 205.650000000005,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 205.650000000005,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 220.500000000005,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 245.850000000006,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 3,
+          "time": 249.600000000007,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 249.600000000007,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 255.900000000007,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 266.850000000005,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 323.099999999997,
+          "type": "encounter"
+        }
+      ]
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_4",
+        "hard",
+        77,
+        5,
+        "needle_defense"
+      ],
+      "door_damage": 1139.65082016752,
+      "hunter_attacks": 52,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 1,
+      "hunter_travel_world_units": 8121.67177677155,
+      "invalid": [],
+      "map": "underground_lab",
+      "max_ledger_error": 0.000030517578125,
+      "npc_peak": 5,
+      "outcome": "victory",
+      "peak_buildings": 7,
+      "player_damage": 4016.448819532,
+      "procedural": true,
+      "recovery_attempts": 0,
+      "recovery_events": [],
+      "recovery_visits": 0,
+      "room_eliminations": 3,
+      "seconds": 350.1,
+      "seconds_by_siege_room": {
+        "1": 34.9499999999998,
+        "2": 74.85,
+        "3": 39.1499999999998,
+        "5": 37.0499999999998
+      },
+      "shape": "zigzag",
+      "shots": 507,
+      "speed_budget_violations": 0,
+      "steps": 2334,
+      "targeting_trace": [
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 2,
+          "time": 40.0499999999998,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 40.0499999999998,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 43.6499999999998,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 121.050000000002,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 1,
+          "time": 124.500000000002,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 124.500000000002,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 138.900000000002,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 177.450000000004,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 5,
+          "time": 182.400000000004,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 182.400000000004,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 188.700000000004,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 208.050000000005,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 5,
+          "time": 208.050000000005,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 230.550000000006,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 293.700000000001,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 317.249999999998,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 335.399999999995,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 341.699999999994,
+          "type": "approach"
+        }
+      ]
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_4",
+        "hell",
+        84,
+        1,
+        "needle_defense"
+      ],
+      "door_damage": 205.0,
+      "hunter_attacks": 10,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 0,
+      "hunter_travel_world_units": 1350.66125488281,
+      "invalid": [],
+      "map": "underground_lab",
+      "max_ledger_error": 0.00000095367431640625,
+      "npc_peak": 5,
+      "outcome": "defeat",
+      "peak_buildings": 5,
+      "player_damage": 990.0,
+      "procedural": true,
+      "recovery_attempts": 0,
+      "recovery_events": [],
+      "recovery_visits": 0,
+      "room_eliminations": 1,
+      "seconds": 67.8,
+      "seconds_by_siege_room": {
+        "1": 15.0
+      },
+      "shape": "rectangle",
+      "shots": 113,
+      "speed_budget_violations": 0,
+      "steps": 452,
+      "targeting_trace": [
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 1,
+          "time": 40.0499999999998,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 40.0499999999998,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 50.2499999999997,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 52.5239243,
+          "reason": "breach_progress",
+          "room": 1,
+          "time": 58.6499999999996,
+          "type": "hunter_commit"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 67.7999999999997,
+          "type": "elimination"
+        }
+      ]
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_5",
+        "standard",
+        81,
+        4,
+        "needle_defense"
+      ],
+      "door_damage": 722.491986051542,
+      "hunter_attacks": 60,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 1,
+      "hunter_travel_world_units": 13026.5438785553,
+      "invalid": [],
+      "map": "cursed_mansion",
+      "max_ledger_error": 0.000030517578125,
+      "npc_peak": 5,
+      "outcome": "victory",
+      "peak_buildings": 7,
+      "player_damage": 5092.10257935476,
+      "procedural": true,
+      "recovery_attempts": 1,
+      "recovery_events": [
+        {
+          "amount": 0.0,
+          "event": "hunter_retreat",
+          "hall": "east",
+          "reason": "",
+          "time": 86.4000000000004
+        },
+        {
+          "amount": 0.0,
+          "event": "hunter_recovering",
+          "hall": "east",
+          "reason": "",
+          "time": 94.9500000000007
+        },
+        {
+          "amount": 929.17893875625,
+          "event": "hunter_recovery_ended",
+          "hall": "east",
+          "reason": "completed",
+          "time": 103.050000000001
+        }
+      ],
+      "recovery_visits": 1,
+      "room_eliminations": 2,
+      "seconds": 308.55,
+      "seconds_by_siege_room": {
+        "0": 1.8,
+        "2": 22.05,
+        "3": 20.25,
+        "4": 60.2999999999996
+      },
+      "shape": "l",
+      "shots": 480,
+      "speed_budget_violations": 0,
+      "steps": 2057,
+      "targeting_trace": [
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 4,
+          "time": 40.0499999999998,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 40.0499999999998,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 54.2999999999997,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 3,
+          "time": 103.200000000001,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 103.200000000001,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 133.800000000002,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 156.750000000003,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 2,
+          "time": 160.350000000003,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 160.350000000003,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 168.750000000004,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 194.100000000004,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 4,
+          "time": 197.550000000005,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 197.550000000005,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 234.900000000006,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 242.550000000006,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 4,
+          "time": 242.550000000006,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 1,
+          "time": 268.050000000005,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 0,
+          "time": 306.749999999999,
+          "type": "encounter"
+        }
+      ]
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_5",
+        "hard",
+        88,
+        0,
+        "needle_defense"
+      ],
+      "door_damage": 275.0,
+      "hunter_attacks": 13,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 0,
+      "hunter_travel_world_units": 403.780132293701,
+      "invalid": [],
+      "map": "cursed_mansion",
+      "max_ledger_error": 0.00000095367431640625,
+      "npc_peak": 5,
+      "outcome": "defeat",
+      "peak_buildings": 4,
+      "player_damage": 774.0,
+      "procedural": true,
+      "recovery_attempts": 0,
+      "recovery_events": [],
+      "recovery_visits": 0,
+      "room_eliminations": 1,
+      "seconds": 59.7,
+      "seconds_by_siege_room": {
+        "0": 15.6
+      },
+      "shape": "l",
+      "shots": 87,
+      "speed_budget_violations": 0,
+      "steps": 398,
+      "targeting_trace": [
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 0,
+          "time": 40.0499999999998,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 0,
+          "time": 40.0499999999998,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 0,
+          "time": 41.3999999999998,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 0,
+          "time": 59.6999999999996,
+          "type": "elimination"
+        }
+      ]
+    },
+    {
+      "blocked_motion_steps": 0,
+      "case": [
+        "stage_5",
+        "hell",
+        95,
+        2,
+        "needle_defense"
+      ],
+      "door_damage": 718.1,
+      "hunter_attacks": 48,
+      "hunter_navigation_recoveries": 0,
+      "hunter_retargets": 0,
+      "hunter_travel_world_units": 2912.38139820099,
+      "invalid": [],
+      "map": "cursed_mansion",
+      "max_ledger_error": 0.00000762939453125,
+      "npc_peak": 5,
+      "outcome": "defeat",
+      "peak_buildings": 5,
+      "player_damage": 243.0,
+      "procedural": true,
+      "recovery_attempts": 0,
+      "recovery_events": [],
+      "recovery_visits": 0,
+      "room_eliminations": 2,
+      "seconds": 139.5,
+      "seconds_by_siege_room": {
+        "2": 19.95,
+        "3": 44.3999999999998
+      },
+      "shape": "l",
+      "shots": 85,
+      "speed_budget_violations": 0,
+      "steps": 930,
+      "targeting_trace": [
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 3,
+          "time": 40.0499999999998,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 40.0499999999998,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 50.8499999999997,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 3,
+          "time": 97.9500000000009,
+          "type": "elimination"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "approach",
+          "room": 2,
+          "time": 102.000000000001,
+          "type": "hunter_target_choice"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 102.000000000001,
+          "type": "approach"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 116.700000000002,
+          "type": "encounter"
+        },
+        {
+          "next": -1,
+          "progress": 93.3448724352008,
+          "reason": "breach_progress",
+          "room": 2,
+          "time": 129.450000000002,
+          "type": "hunter_commit"
+        },
+        {
+          "next": -1,
+          "progress": 0.0,
+          "reason": "",
+          "room": 2,
+          "time": 139.500000000002,
+          "type": "elimination"
+        }
+      ]
+    }
+  ],
+  "failures": 0,
+  "fixture": "All themes and difficulty modes, deterministic seed and repeated room/difficulty pair for passive and earned defensive policies. Starts with normal opening wages; survivor is initially staged at the bed before normal sleep interaction.",
+  "limit_seconds": 600.0,
+  "outcomes": {
+    "hard/needle_defense/defeat": 3,
+    "hard/needle_defense/victory": 2,
+    "hell/needle_defense/defeat": 5,
+    "standard/needle_defense/victory": 5
+  },
+  "step": 0.15
+}

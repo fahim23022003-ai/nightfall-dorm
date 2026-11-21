@@ -1,5 +1,12 @@
 # Nightfall Dorm master roadmap
 
+## Phase 19 — The Living Dorm
+
+The opt-in preview is ready for the next owner frame-pacing and fairness
+playtest. Keep the Stalker Shadowling pilot disabled until actual Windows
+measurements support its load. Other Mini Hunter families remain pending.
+[Verified coverage and limits](evidence/phase19/README.md)
+
 ## Phase 18.1 — Building Scale and Close Quarters performance
 
 The opt-in preview uses larger physical footprints and scaled artwork for

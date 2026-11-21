@@ -58,6 +58,25 @@ func run() -> void:
  hunter.reassess_seconds=18.0
  hunter._reassess_tactical_siege(model.rooms[0],model)
  check(hunter.target==0 and hunter.state==HunterState.State.ATTACK,"productive siege stays")
+ var closed_door: RoomState=model.rooms[0]
+ var open_target: RoomState=model.rooms[1]
+ var original_hp: float=closed_door.door_hp
+ var alternate_hp: float=open_target.door_hp
+ closed_door.door_hp=closed_door.max_hp()*4.0
+ open_target.door_hp=1.0
+ hunter.damage=5.0
+ hunter.speed=90.0
+ hunter.siege_start_hp=closed_door.door_hp
+ hunter.siege_landed_damage=0.0
+ hunter.reassess_seconds=24.0
+ hunter._reassess_tactical_siege(closed_door,model)
+ check(hunter.target!=0 and hunter.state==HunterState.State.MOVE,"a stalled siege chooses a meaningfully cheaper reachable alternative")
+ check(model.presentation_events.any(func(event):return event.type=="hunter_target_choice" and event.get("reason")=="stalled"),"stalled siege samples and records its decision")
+ closed_door.door_hp=original_hp
+ open_target.door_hp=alternate_hp
+ hunter.target=0
+ hunter.state=HunterState.State.ATTACK
+ hunter.position=closed_door.door_approach()
  model.time=model.preparation+58.5
  model._tick_mini_hunters(.05)
  check(model.mini_hunter_telegraph and model.mini_hunters.is_empty(),"telegraph precedes spawn")

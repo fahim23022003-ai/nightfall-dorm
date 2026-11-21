@@ -1,3 +1,15 @@
+# Phase 19 · Living Dorm preview
+
+The opt-in preview adds a persistent door meter, readable room effects,
+a separate item drawer, gothic doors, wall-side furniture, Hunter names,
+seeded targeting and map-specific score routing. The Stalker Shadowling
+pilot remains off in the Windows preview. The owner-tested Performance
+launcher and its separate profile remain available. Phase 19 native
+Windows frame pacing and owner review are pending.
+[Evidence and known limitations](evidence/phase19/README.md)
+
+---
+
 # Emergency performance recovery
 
 The owner reported severe Windows lag in Phase 18.1. The current `work`

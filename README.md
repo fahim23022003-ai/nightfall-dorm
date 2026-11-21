@@ -4,11 +4,11 @@ An original single-player Godot 4 dormitory survival defense game. Choose a room
 
 **Current source and performance fixes are on [`work`](https://github.com/fahim23022003-ai/nightfall-dorm/tree/work).**
 
-## Current Windows performance preview
+## Current Windows playtest
 
-Download the [Windows x64 performance preview](https://github.com/fahim23022003-ai/nightfall-dorm/releases/tag/performance-recovery-preview), extract it, and open **Play Performance Preview.cmd**. It starts in Low at 960×540 and keeps a separate test save. Low reduces decorative drawing while keeping Hunter articulation, weapon fire and the full room grid.
+Download [**Phase 19 · The Living Dorm**](https://github.com/fahim23022003-ai/nightfall-dorm/releases/download/phase19-living-dorm-preview/NightfallDorm-Phase19-Windows-x64.zip), extract it, and open **Play Phase 19 Preview.cmd**. It starts in Low at 960×540 with a separate test save. The same ZIP contains **Play Performance Preview.cmd** for the owner-tested fallback. The experimental Shadowling pilot stays off.
 
-The Low changes and F10 diagnostics are part of the Godot source. In a source build, choose **Low** in Settings and press **F10** to start or save a diagnostic. Use the [performance report](docs/evidence/performance-recovery/README.md) for measurements and the [playtest guide](docs/BUILDING_SCALE.md) for launcher and profile details. Native Windows performance remains under investigation.
+[Phase 19 instructions](docs/LIVING_DORM.md) · [Screenshots, audio, benchmarks and SHA-256](docs/evidence/phase19/README.md)
 
 The phase reports below are historical.
 
