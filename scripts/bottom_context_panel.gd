@@ -14,6 +14,7 @@ var expanded=false
 var transitioning=false
 var upgrade_shortcut: Button
 var inspection
+var stats_scroll: ScrollContainer
 var drawn_signature: Array=[]
 var body := BODY
 var closed_position := CLOSED
@@ -110,6 +111,17 @@ func install_side():
   place(ui.specialization_items[index+1],Vector2(14,55+index*144),Vector2(336,135))
  place(ui.specialization_items[3],Vector2(14,353),Vector2(336,46))
  place(ui.branch_confirm,Vector2(14,418),Vector2(336,47))
+ if ui.use_tactical_ui():
+  inspection.position=Vector2(103,32)
+  inspection.size=Vector2(158,110)
+  stats_scroll=ScrollContainer.new()
+  place(stats_scroll,Vector2(15,178),Vector2(334,170))
+  stats_scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
+  stats_scroll.hide()
+  ui.context_box.add_child(stats_scroll)
+  ui.selected_details.reparent(stats_scroll,false)
+  ui.selected_details.custom_minimum_size=Vector2(314,0)
+  ui.selected_details.size_flags_horizontal=Control.SIZE_EXPAND_FILL
 
 func is_transitioning() -> bool:return transitioning
 func fit_action(button: Button):
@@ -125,6 +137,7 @@ func fit_action(button: Button):
  button.add_theme_font_size_override("font_size",selected)
 func refresh():
  if not is_instance_valid(ui.context_box):return
+ if is_instance_valid(stats_scroll):stats_scroll.visible=ui.context_open and ui.context_mode=="upgrade"
  ui.context_box.size=body.size
  if is_instance_valid(inspection) and ui.context_open and ui.context_mode in ["upgrade","bed","door"]:
   var room=ui.game.model.player()

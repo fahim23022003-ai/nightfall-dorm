@@ -782,6 +782,8 @@ func refresh_context():
    if game.model.player_first_requested and b.level<Catalog.building_max_level(b.kind) and (not room.strategy_enabled or b.level!=4):
     selected_details.text+="\n"+BuildingStats.next_machine(game.model,room,game.selected_tile)
   if room.strategy_enabled and b.level==4:actions.upgrade.text="Specialize → Level 5"
+  if use_tactical_ui():
+   actions.upgrade.text=actions.upgrade.text.replace(" Gold"," G").replace(" Electricity"," E")
  elif context_mode=="bed":
   context_title.text="BED LEVEL %d / 10" % (room.bed_level+1)
   bed_details.text=BuildingStats.structure_preview(game.model,room,"bed")+"\n"+action_reason("bed")

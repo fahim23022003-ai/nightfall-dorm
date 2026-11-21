@@ -71,7 +71,7 @@ func create():
   for index in range(3):
    var control: Button=[range_button,move_button,undo_button][index]
    control.add_theme_font_size_override("font_size",13)
-   control.position=Vector2(14+index*114,193);control.size=Vector2(108,28)
+   control.position=Vector2(14+index*114,144 if ui.use_tactical_ui() else 193);control.size=Vector2(108,28)
  room_card=ui.box(Rect2(20,218,320,111),"18252D","6B8B8B")
  room_info=ui.label_at("",Vector2(12,5),14,296,false,room_card)
  room_info.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
