@@ -331,7 +331,10 @@ func rendered_position(r,id: int) -> Vector2:
 func draw_floor(c,r,grid_layout: Dictionary={}):
  if not applicable() or r!=room():return
  var grid: bool=r.spatial.grid
- var showing=planning or active() or game.ui.context_open and (game.ui.context_mode=="expansion" or grid and game.ui.context_mode=="build")
+ # Browsing leaves the live floor clear. Plan and placement still draw the
+ # complete grid, including access and fixture reservations.
+ var browsing: bool=game.ui.build_catalogue!=null and game.ui.context_mode=="build"
+ var showing=planning or active() or game.ui.context_open and (game.ui.context_mode=="expansion" or grid and game.ui.context_mode=="build" and not browsing)
  if not showing:return
  var offset=game.MAP_OFFSET
  var floor: Rect2=r.spatial.grid_bounds() if grid else r.bounds().grow(-8)

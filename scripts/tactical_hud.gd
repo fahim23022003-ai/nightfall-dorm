@@ -70,13 +70,14 @@ func install(top: Panel,brand: Label,help: Button,gold_icon: Control,gold_captio
  ui.bottom_context.upgrade_shortcut.hide()
  ui.guide_box.hide()
  ui.guide_label.hide()
- arrange(ui.warning_box,Vector2(390,85),Vector2(500,40))
+ arrange(ui.warning_box,Vector2(310,85),Vector2(660,40))
  ui.warning_box.add_theme_stylebox_override("panel",GothicTheme.living_surface("danger"))
- arrange(ui.warning_label,Vector2(406,90),Vector2(468,30))
+ arrange(ui.warning_label,Vector2(326,90),Vector2(628,30))
  ui.warning_label.clip_text=true
+ ui.warning_label.add_theme_font_size_override("font_size",19)
  objective=ui.theme_label("",Vector2(30,91),17,328,"muted")
  objective.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
- dock_hint=ui.theme_label("",Vector2(25,573),17,294,"text")
+ dock_hint=ui.theme_label("",Vector2(25,573),18,294,"text")
  dock_hint.name="dock_hint"
  dock_hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  dock_hint.size.y=73
@@ -121,25 +122,27 @@ func install_menu() -> void:
 
 func install_tool() -> void:
  var frame: Panel=ui.grid_placement_banner
- arrange(frame,Vector2(878,457),Vector2(370,176))
+ arrange(frame,Vector2(878,443),Vector2(370,190))
  frame.mouse_filter=Control.MOUSE_FILTER_STOP
  arrange(ui.grid_placement_label,Vector2(58,10),Vector2(303,30))
  ui.grid_placement_label.horizontal_alignment=HORIZONTAL_ALIGNMENT_LEFT
  ui.grid_placement_label.clip_text=true
+ ui.grid_placement_label.add_theme_font_size_override("font_size",20)
  tool_icon=ui.premium_icon("build",Vector2(14,14),Vector2(32,32),frame)
- tool_summary=ui.theme_label("",Vector2(18,48),15,334,"muted",false,frame)
+ tool_summary=ui.theme_label("",Vector2(18,47),18,334,"muted",false,frame)
  tool_summary.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
- tool_summary.size.y=67
+ tool_summary.size.y=80
  var rotate: Button=game.construction.rotate_button
  rotate.reparent(frame,false)
- arrange(rotate,Vector2(14,122),Vector2(102,40))
+ arrange(rotate,Vector2(14,137),Vector2(111,40))
  ui.theme_button(rotate,"settings")
- place_tool=ui.button("Place",Vector2(125,122),confirm,102,40,frame)
+ rotate.add_theme_font_size_override("font_size",18)
+ place_tool=ui.button("Place",Vector2(131,137),confirm,72,40,frame)
  ui.theme_button(place_tool,"primary")
- arrange(ui.grid_placement_cancel_button,Vector2(236,122),Vector2(120,40))
- ui.grid_placement_cancel_button.add_theme_font_size_override("font_size",15)
+ arrange(ui.grid_placement_cancel_button,Vector2(209,137),Vector2(147,40))
+ ui.grid_placement_cancel_button.add_theme_font_size_override("font_size",18)
  ui.grid_placement_cancel_button.clip_text=true
- ui.grid_placement_cancel_button.set_deferred("size",Vector2(120,40))
+ ui.grid_placement_cancel_button.set_deferred("size",Vector2(147,40))
 
 func confirm() -> void:
  if not place_tool.disabled:
@@ -288,7 +291,7 @@ func refresh(room: RoomState) -> void:
   ui.grid_placement_cancel_button.text="Cancel [Esc]"
   tool_icon.texture=game.presentation.textures[kind]
   var error: String=control.current_preview_error
-  if error=="Outside unlocked room":error="Footprint crosses the room boundary"
+  if error=="Outside unlocked room":error="Outside room floor"
   tool_summary.text="%s · %d×%d cells · %d°\n%s" % [fee,int(extent.x),int(extent.y),control.rotation*90,"Valid · click the floor or Place" if error=="" else "Blocked · "+error]
   tool_summary.modulate=GothicTheme.palette().muted if error=="" else Color("FFADB6")
   place_tool.disabled=error!=""

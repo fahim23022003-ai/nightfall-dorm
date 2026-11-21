@@ -1,6 +1,9 @@
 extends "res://scripts/living_tutorial.gd"
 ## Three teaching goals on the existing disposable, fixed-map practice model.
 
+const CARD_LEFT:=Vector2(22,89)
+const CARD_RIGHT:=Vector2(909,89)
+const CARD_WIDTH:=349.0
 const NEXT := {
  Lesson.OBJECTIVE:Lesson.MOVE, Lesson.MOVE:Lesson.FIND_ROOM,
  Lesson.FIND_ROOM:Lesson.CLAIM_ROOM, Lesson.CLAIM_ROOM:Lesson.REACH_BED,
@@ -19,10 +22,23 @@ func begin():
  card.size.y=231
  if game.ui.use_tactical_ui():
   card.size.y=201
-  card.position=Vector2(22,89)
+  card.position=CARD_LEFT
+  card.size.x=CARD_WIDTH
+  for label in [position_label,heading_label,message_label,response_label]:
+   label.size.x=CARD_WIDTH-32
+  position_label.add_theme_font_size_override("font_size",17)
+  response_label.add_theme_font_size_override("font_size",17)
+  position_label.modulate=Color("FFE3A5")
+  for control in [proceed,repeat,recover_button,exit_button]:
+   control.custom_minimum_size=Vector2(151,35)
+   control.add_theme_font_size_override("font_size",17)
+  repeat.position.x=177
+  exit_button.position.x=177
   card.add_theme_stylebox_override("panel",GothicTheme.living_surface("frame"))
   heading_label.add_theme_font_size_override("font_size",24)
-  message_label.add_theme_font_size_override("font_size",18)
+  message_label.add_theme_font_size_override("font_size",20)
+  message_label.add_theme_constant_override("line_spacing",2)
+  help.add_theme_font_size_override("font_size",17)
   for control in [proceed,repeat,recover_button,exit_button,help]:
    game.ui.theme_button(control,"primary" if control==proceed else "quiet")
  help.hide()
@@ -35,14 +51,14 @@ func refresh():
  position_label.text="LESSON %d / 3" % chapter
  heading_label.text=["Find a room","Build electricity","Build a turret"][chapter-1]
  match stage:
-  Lesson.OBJECTIVE:message_label.text="Move into a vacant room, claim it, then reach its bed."
+  Lesson.OBJECTIVE:message_label.text="Find a vacant room, claim it, then sleep to earn Gold."
   Lesson.OPEN_BUILD,Lesson.REOPEN_BUILD:message_label.text="Open Build [B]."
-  Lesson.SELECT_DYNAMO:message_label.text="Select Dynamo to prepare an electricity generator."
-  Lesson.PLACE_DYNAMO:message_label.text="Click a clear floor cell to buy and place your Dynamo."
-  Lesson.SELECT_NEEDLE:message_label.text="Select Needle Turret to prepare your first defense."
-  Lesson.PLACE_NEEDLE:message_label.text="Click a clear cell near the door to place your Needle."
-  Lesson.CANCEL_PREVIEW:message_label.text="The Dynamo makes Electricity. Choose Cancel or press Esc."
-  Lesson.HUNTER_DANGER:message_label.text="The Needle fires when a Hunter reaches its range. Watch the shot travel."
+  Lesson.SELECT_DYNAMO:message_label.text="Select Dynamo to generate Electricity."
+  Lesson.PLACE_DYNAMO:message_label.text="Click a clear floor cell to place the Dynamo."
+  Lesson.SELECT_NEEDLE:message_label.text="Select Needle Turret to defend the door."
+  Lesson.PLACE_NEEDLE:message_label.text="Click a clear cell near the door to place the turret."
+  Lesson.CANCEL_PREVIEW:message_label.text="Cancel placement [Esc]. Your Dynamo is already built."
+  Lesson.HUNTER_DANGER:message_label.text="Watch the Needle fire when the Hunter enters range."
   Lesson.COMPLETE:
    heading_label.text="You are ready to survive."
    message_label.text="Your practice is complete. Continue to Story or replay."
@@ -72,11 +88,9 @@ func update_cue():
  var target:=focus_target()
  if target.is_equal_approx(shown_target):return
  shown_target=target
- var left:=Vector2(22,89)
- var right:=Vector2(930,89)
- if Rect2(left,card.size).intersects(target) and not Rect2(right,card.size).intersects(target):
-  card.position=right
- else:card.position=left
+ if Rect2(CARD_LEFT,card.size).intersects(target) and not Rect2(CARD_RIGHT,card.size).intersects(target):
+  card.position=CARD_RIGHT
+ else:card.position=CARD_LEFT
  overlay.queue_redraw()
 
 func draw():

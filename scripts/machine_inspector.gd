@@ -23,30 +23,30 @@ func _init(owner):
  plate.mouse_filter=Control.MOUSE_FILTER_STOP
  ui.context_box.move_child(plate,0)
  plate.hide()
- ui.theme_label("MACHINE",Vector2(17,7),15,118,"gold",false,plate)
+ ui.theme_label("MACHINE",Vector2(17,7),17,118,"gold",false,plate)
  ui.theme_panel(Rect2(15,48,478,158),"card",plate)
- grade=ui.theme_label("",Vector2(202,62),18,277,"gold",false,plate)
+ grade=ui.theme_label("",Vector2(183,61),19,296,"gold",false,plate)
  grade.clip_text=true
- operation=ui.theme_label("",Vector2(202,97),17,278,"text",false,plate)
+ operation=ui.theme_label("",Vector2(183,94),18,297,"text",false,plate)
  operation.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  operation.size.y=55
- contribution=ui.theme_label("",Vector2(202,154),15,278,"secondary",false,plate)
+ contribution=ui.theme_label("",Vector2(183,151),18,297,"secondary",false,plate)
  contribution.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
- contribution.size.y=46
+ contribution.size.y=53
  details_button=ui.button("Details",Vector2(389,215),toggle_details,103,36,plate)
  details_button.name="MachineDetails"
- details_button.add_theme_font_size_override("font_size",16)
- upgrade_value=ui.theme_label("",Vector2(18,216),18,360,"text",false,plate)
+ details_button.add_theme_font_size_override("font_size",18)
+ upgrade_value=ui.theme_label("",Vector2(18,216),19,360,"text",false,plate)
  upgrade_value.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  upgrade_value.size.y=63
- requirement=ui.theme_label("",Vector2(18,278),16,470,"secondary",false,plate)
+ requirement=ui.theme_label("",Vector2(18,278),18,470,"secondary",false,plate)
  requirement.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  requirement.size.y=40
  confirm_card=ui.theme_panel(Rect2(0,208,508,280),"frame",plate)
  confirm_card.mouse_filter=Control.MOUSE_FILTER_STOP
  var prompt=ui.theme_label("Sell this machine?",Vector2(20,16),22,463,"text",false,confirm_card)
  prompt.name="SaleQuestion"
- refund_text=ui.theme_label("",Vector2(20,59),18,466,"secondary",false,confirm_card)
+ refund_text=ui.theme_label("",Vector2(20,59),20,466,"secondary",false,confirm_card)
  refund_text.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  refund_text.size.y=105
  keep=ui.button("Keep machine",Vector2(18,195),cancel_sale,214,52,confirm_card)
@@ -199,6 +199,6 @@ func arrange_tools(controls,room):
  for control: Button in [controls.move_button,controls.range_button,controls.undo_button]:
   if not control.visible:continue
   control.position=Vector2(left,415)
-  control.size=Vector2(114,47)
-  if control.get_theme_font_size("font_size")!=15:control.add_theme_font_size_override("font_size",15)
-  left+=120
+  control.size=Vector2(119,47)
+  if control.get_theme_font_size("font_size")!=18:control.add_theme_font_size_override("font_size",18)
+  left+=123

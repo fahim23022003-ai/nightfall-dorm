@@ -114,6 +114,7 @@ func install_side():
  place(ui.specialization_items[3],Vector2(14,353),Vector2(336,46))
  place(ui.branch_confirm,Vector2(14,418),Vector2(336,47))
  if ui.use_tactical_ui():
+  ui.selected_details.add_theme_font_size_override("font_size",18)
   inspection.position=Vector2(103,32)
   inspection.size=Vector2(158,110)
   stats_scroll=ScrollContainer.new()
@@ -135,7 +136,8 @@ func fit_action(button: Button):
  var available=button.size.x-button.get_theme_stylebox("normal").get_minimum_size().x-4
  if button.icon!=null:available-=button.get_theme_constant("icon_max_width")+button.get_theme_constant("h_separation")
  var font=button.get_theme_font("font");var selected=14
- for size in [16,15,14]:
+ var sizes: Array=[20,19,18,17,16,15,14] if ui.use_tactical_ui() else [16,15,14]
+ for size in sizes:
   if font.get_string_size(button.text,HORIZONTAL_ALIGNMENT_LEFT,-1,size).x<=available:selected=size;break
  button.add_theme_font_size_override("font_size",selected)
 func refresh():
@@ -151,6 +153,7 @@ func refresh():
    inspection.position=Vector2(103,32)
    inspection.size=Vector2(158,110)
  var show_catalogue: bool=ui.build_catalogue!=null and ui.context_open and ui.context_mode=="build"
+ if show_catalogue and not catalogue_layout:ui.build_catalogue.anchor(ui.game.model.player())
  var drawer: Rect2=ui.build_catalogue.drawer_bounds() if show_catalogue else body
  ui.context_box.size=drawer.size
  if show_catalogue!=catalogue_layout:
@@ -164,7 +167,10 @@ func refresh():
   ui.context_box.add_theme_stylebox_override("panel",ui.build_catalogue.flat_style(frame) if show_catalogue else frame)
   var side: bool=body==SIDE_BODY
   place(ui.context_title,Vector2(18,8) if show_catalogue else Vector2(14,8 if side else 4),Vector2(320 if show_catalogue else 250 if side else 1130,30))
-  place(ui.build_cancel_button,Vector2(drawer.size.x-108,8) if show_catalogue else Vector2(269,6) if side else Vector2(1128,2),Vector2(90,34) if show_catalogue else Vector2(83,28) if side else Vector2(94,26))
+  place(ui.build_cancel_button,Vector2(drawer.size.x-104,8) if show_catalogue else Vector2(269,6) if side else Vector2(1128,2),Vector2(91,34) if show_catalogue else Vector2(83,28) if side else Vector2(94,26))
+  if ui.use_tactical_ui():
+   ui.context_title.add_theme_font_size_override("font_size",20)
+   ui.build_cancel_button.add_theme_font_size_override("font_size",18)
   if ui.expansion_ui!=null:
    ui.expansion_ui.shortcut.position=Vector2(drawer.size.x-273,8) if show_catalogue else Vector2(168,6) if side else Vector2(1005,2)
  if is_instance_valid(inspection) and ui.context_open and ui.context_mode in ["upgrade","bed","door"]:

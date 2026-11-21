@@ -110,7 +110,13 @@ REFINED_UI_MODES = {
     ),
     **PLAYER_FIRST_MODES,
 }
-PLAYER_FIRST_PREVIEWS = ("phase20", "phase21", "phase22")
+FOCUSED_UI_MODES = {
+    "phase22.1": (
+        "Play Phase 22.1 Preview.cmd", "user://nightfall-phase22.1-preview.json", (1, 1, 0, 1),
+    ),
+    **PLAYER_FIRST_MODES,
+}
+PLAYER_FIRST_PREVIEWS = ("phase20", "phase21", "phase22", "phase22.1")
 
 
 def mode_environment(profile: str, switches: tuple[int, ...], living: bool = False,
@@ -159,7 +165,7 @@ def verify_modes(
             environment.update(NIGHTFALL_LIVING_DORM="1", NIGHTFALL_PERFORMANCE_PREVIEW="1")
         if label in PLAYER_FIRST_PREVIEWS:
             environment["NIGHTFALL_PLAYER_FIRST"] = "1"
-        if label in ("phase21", "phase22"):
+        if label in ("phase21", "phase22", "phase22.1"):
             environment["NIGHTFALL_TACTICAL_UI"] = "1"
         environments[label] = environment
         env = os.environ | environment | {"XDG_DATA_HOME": str(working / ("data-" + label))}
@@ -243,11 +249,12 @@ def add_playtest_files(
     preview = next((label for label in reversed(PLAYER_FIRST_PREVIEWS) if label in environments), None)
     with ZipFile(base) as source, ZipFile(output, "w", ZIP_DEFLATED) as target:
         for entry in source.infolist():
-            if preview == "phase22":
+            if preview in ("phase22", "phase22.1"):
                 if entry.filename.endswith(("PLAYTEST_GUIDE.md", "PLAYTEST_CHECKLIST.md")):
                     continue
                 if entry.filename == "VERSION.txt":
-                    version = source.read(entry).decode().replace("Private playtest; no public release", "Phase 22 Windows x64 playtest")
+                    version = source.read(entry).decode().replace("Private playtest; no public release",
+                                                                  f"Phase {preview.removeprefix('phase')} Windows x64 playtest")
                     target.writestr(entry, version)
                     continue
             with source.open(entry) as body, target.open(entry, "w") as copy:
@@ -298,6 +305,7 @@ def main() -> None:
     preview.add_argument("--player-first", action="store_true", help="Add the Phase 20 Low preview and diagnostics.")
     preview.add_argument("--tactical-ui", action="store_true", help="Add the Phase 21 desktop UI in an isolated Low preview.")
     preview.add_argument("--refined-ui", action="store_true", help="Package the Phase 22 interface and Performance fallback.")
+    preview.add_argument("--focused-ui", action="store_true", help="Package the Phase 22.1 desktop refinement and Performance fallback.")
     parser.add_argument("--source-commit", required=True)
     parser.add_argument("--zip", required=True, type=Path)
     parser.add_argument("--evidence-dir", required=True, type=Path)
@@ -344,6 +352,9 @@ def main() -> None:
     elif args.refined_ui:
         modes = REFINED_UI_MODES
         guide_name = "PHASE22_PLAYTEST.md"
+    elif args.focused_ui:
+        modes = FOCUSED_UI_MODES
+        guide_name = "PHASE221_PLAYTEST.md"
     guide = ROOT / "docs" / guide_name
     archive = args.zip.resolve()
     evidence = args.evidence_dir.resolve()

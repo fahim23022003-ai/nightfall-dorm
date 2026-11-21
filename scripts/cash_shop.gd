@@ -80,20 +80,22 @@ func _tactical_shop() -> void:
   var at:=Vector2(123+(index%2)*525,166+floori(index/2.0)*193)
   ui.theme_panel(Rect2(at,Vector2(507,178)),"card")
   ui.items_ui.art(id,at+Vector2(15,23),90)
-  ui.theme_label(item.name,at+Vector2(118,12),23,376,"text")
-  var desc: Label=ui.theme_label(item.description,at+Vector2(118,54),17,375,"muted")
+  ui.theme_label(item.name,at+Vector2(118,12),23,232,"text")
+  var desc: Label=ui.theme_label(item.description,at+Vector2(118,50),19,375,"muted")
   desc.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
-  ui.theme_label("Owned ×%d" % int(game.profile.inventory.get(id,0)),at+Vector2(13,120),16,105,"muted")
+  var stock: Label=ui.theme_label("Owned ×%d" % int(game.profile.inventory.get(id,0)),at+Vector2(351,15),18,134,"muted")
+  stock.horizontal_alignment=HORIZONTAL_ALIGNMENT_RIGHT
   var token: int=game.profile.purchase_serial+1
-  var button: Button=ui.button("",at+Vector2(118,118),func():purchase(id,token),367,45)
+  var button: Button=ui.button("",at+Vector2(118,119),func():purchase(id,token),367,46)
   button.name="shop_buy_"+id
+  button.add_theme_font_size_override("font_size",19)
   ui.theme_button(button,"shop","cash")
   buttons.append({"button":button,"id":id})
   index+=1
  var message: String=feedback
  if message.is_empty() and game.profile.rm_cash<OnboardingCatalog.PRICES.values().min():
   message="Earn RM Cash by completing matches. Your balance carries over."
- ui.theme_label(message,Vector2(126,547),18,1015,"danger" if message.begins_with("Purchase failed") else "muted" if feedback.is_empty() else "success")
+ ui.theme_label(message,Vector2(126,546),19,1015,"warning" if message.begins_with("Purchase failed") else "muted" if feedback.is_empty() else "success")
  var back: Button=ui.button("Back [Esc]",Vector2(124,603),tactical_back,193,44)
  back.name="shop_back"
  ui.theme_button(back,"quiet")

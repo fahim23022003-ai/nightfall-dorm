@@ -144,7 +144,7 @@ func _show_tactical_preparation(profile: PlayerProfile,mode: String,track: Dicti
  _line("Level %02d · %s" % [mission.level,mission.title],Vector2(109,106),47,1034,"F7F2E9",true)
  var next_clear: int=(floori(float(track.highest)/StoryCatalog.CHAPTER_LENGTH)+1)*StoryCatalog.CHAPTER_LENGTH
  var milestone: String="Track complete" if track.finished else "Final mission at 50" if next_clear==StoryCatalog.FINAL_LEVEL else "Next checkpoint at %02d" % next_clear
- _line("%s  ·  %d / 50 cleared  ·  Checkpoint %02d  ·  %s" % [RankCatalog.DIFFICULTIES[mode].name,track.highest,track.checkpoint,milestone],Vector2(113,169),18,1035,BODY)
+ _line("%s  ·  %d / 50 cleared  ·  Checkpoint %02d  ·  %s" % [RankCatalog.DIFFICULTIES[mode].name,track.highest,track.checkpoint,milestone],Vector2(113,169),19,1035,BODY)
  _progress(track.highest,Vector2(113,203),1051)
  for i in range(MODES.size()):
   var id: String=MODES[i]
@@ -155,18 +155,20 @@ func _show_tactical_preparation(profile: PlayerProfile,mode: String,track: Dicti
   key.toggle_mode=true
   key.button_pressed=id==mode
   key.disabled=profile.read_only
+  key.add_theme_font_size_override("font_size",19)
   ui.theme_button(key,"selected" if id==mode else "secondary",id)
  ui.theme_panel(Rect2(113,298,611,258),"card")
  _line("Mission objective" if not track.finished else "Story complete",Vector2(136,312),22,560,GOLD)
- _paragraph(StoryCatalog.ENDING if track.finished else mission.objective,Rect2(136,347,564,63),22,"F7F2E9").name="StoryObjective"
+ var objective := StoryCatalog.ENDING if track.finished else "Survive and defeat %s." % HunterIdentity.display(mission.archetype)
+ _paragraph(objective,Rect2(136,344,564,52),22,"F7F2E9").name="StoryObjective"
  if not track.finished:
-  var briefing:=_paragraph(mission.briefing,Rect2(136,407,564,57),16,BODY)
+  var briefing:=_paragraph(mission.briefing,Rect2(136,400,564,60),19,BODY)
   briefing.name="StoryBriefing"
  if not track.finished:
   var route: String=MapCatalog.map(mission.theme).title
   if game.model.procedural_v2_requested:route+=" · "+mission.topology.replace("_"," ").capitalize()
-  _line(route,Vector2(136,468),17,560,BODY).name="StoryRoutePreview"
-  _paragraph(_encounter_summary(mission,mode),Rect2(136,500,564,49),16,GOLD).name="StoryEncounterTiming"
+  _line(route,Vector2(136,464),18,560,BODY).name="StoryRoutePreview"
+  _paragraph(_encounter_summary(mission,mode),Rect2(136,495,564,55),18,GOLD).name="StoryEncounterTiming"
  ui.theme_panel(Rect2(743,298,421,258),"card")
  _line("Loadout",Vector2(768,312),22,369,GOLD)
  var items:=PackedStringArray()
@@ -175,12 +177,12 @@ func _show_tactical_preparation(profile: PlayerProfile,mode: String,track: Dicti
  var equipped:=PackedStringArray()
  for perk in RankCatalog.PERKS:
   if perk.id in profile.equipped:equipped.append(perk.name)
- _line("%s · %d/%d perks" % [profile.rank_name(),profile.equipped.size(),profile.perk_slots()],Vector2(768,405),18,367,BODY)
- _paragraph(", ".join(equipped) if not equipped.is_empty() else "No perks equipped",Rect2(768,441,367,44),16,BODY)
+ _line("%s · %d/%d perks" % [profile.rank_name(),profile.equipped.size(),profile.perk_slots()],Vector2(768,405),19,367,BODY)
+ _paragraph(", ".join(equipped) if not equipped.is_empty() else "No perks equipped",Rect2(768,439,367,47),18,BODY)
  ui.theme_button(ui.button("Edit items",Vector2(768,488),ui.items_ui.inventory,176,43),"inventory","inventory")
  ui.theme_button(ui.button("Rank perks",Vector2(960,488),ui.progression.show_perk_loadout,177,43),"secondary","rank")
  var feedback: String=notice if notice!="" else profile.warning
- if feedback!="":_line(feedback,Vector2(113,557),16,1030,GOLD).clip_text=true
+ if feedback!="":_line(feedback,Vector2(113,561),18,1030,GOLD).clip_text=true
  ui.theme_button(ui.button("Back [Esc]",Vector2(113,605),game.return_menu,186,43),"quiet")
  var launch: Button=ui.button("Story Archive" if track.finished else "Start Match",Vector2(833,594),func():_launch(mode,track.finished),331,55)
  launch.name="StartStoryMission"
@@ -194,8 +196,10 @@ func _encounter_summary(mission: Dictionary, mode: String) -> String:
  var parts: PackedStringArray=["%ds to prepare" % encounter.preparation]
  if game.model.procedural_v2_requested:
   parts.append("Hall recovery %ds after arrival" % encounter.hall)
- parts.append("Reaper can awaken" if StoryCatalog.reaper_policy(mission,mode).enabled else "First form only")
- return " · ".join(parts)
+ var tactical: bool=ui.use_tactical_ui()
+ var reaper_name := HunterIdentity.display(mission.archetype,true) if tactical else "Reaper"
+ var forms := "%s can awaken" % reaper_name if StoryCatalog.reaper_policy(mission,mode).enabled else "First form only"
+ return " · ".join(parts)+("\n" if tactical else " · ")+forms
 
 func _launch(mode: String, finished: bool):
  if finished:

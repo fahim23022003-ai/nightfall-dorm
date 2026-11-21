@@ -186,6 +186,7 @@ func still(label: String):
     await wheel_down(scroller)
     check(scroller.scroll_vertical > 0 or scroller.get_v_scroll_bar().max_value <= scroller.size.y, "long Hunter guide scrolls or fits without overflow")
   "18-critical-door":
+   if "siege-build" in OS.get_cmdline_user_args():await verify_siege_build()
    await extra_frames("crisis")
    check(game.ui.quick_repair.is_visible_in_tree() and game.ui.room_door_summary.is_visible_in_tree(), "crisis keeps Repair and Door on HUD")
 
@@ -198,6 +199,43 @@ func still(label: String):
     check(game.model.ward_reason().is_empty() and not ward.disabled, "funded crisis room can use Ward")
     await click(ward)
     check(room.electricity == 6 and game.model.ward_until > game.model.time, "Ward click pays exactly 6 Electricity and activates protection")
+
+func verify_siege_build() -> void:
+ var model: MatchModel=game.model
+ var room: RoomState=model.player()
+ var before_position: Vector2=game.camera.position
+ var before_zoom: Vector2=game.camera.zoom
+ var before_count:=room.buildings.size()
+ await key(KEY_B)
+ check(game.ui.context_open and game.ui.context_mode=="build","Build opens during active siege")
+ var rect: Rect2=game.ui.context_box.get_global_rect()
+ var start: Vector2=game.world_to_screen(room.bounds().position)
+ var projected:=Rect2(start,game.world_to_screen(room.bounds().end)-start)
+ var room_overlap:=rect.intersection(projected).get_area()/projected.get_area()
+ check(room_overlap<=.15,"Build covers at most 15% of the visible room in the fixed siege")
+ check(not rect.has_point(game.world_to_screen(room.door_position())),"Build leaves the real door visible")
+ check(not rect.has_point(game.world_to_screen(model.hunter.position)),"Build leaves the active Hunter visible")
+ check(game.ui.warning_box.visible and not rect.intersects(game.ui.warning_box.get_global_rect()),"Build leaves active combat warning visible")
+ check(game.ui.room_door_summary.is_visible_in_tree(),"Door HP stays visible while browsing")
+ check(game.camera.position==before_position and game.camera.zoom==before_zoom,"Build opens without moving or zooming the camera")
+ await image("19-build-during-siege",viewport_size)
+ await key(KEY_ESCAPE)
+ check(not game.ui.context_open and before_count==room.buildings.size(),"Escape closes Build without buying")
+ check(game.camera.position==before_position and game.camera.zoom==before_zoom,"Build closes without a camera shift")
+ # Pan through the normal middle-mouse input path, then confirm side selection.
+ var pan:=InputEventMouseMotion.new()
+ pan.position=Vector2(640,360)
+ pan.relative=Vector2(260,0)
+ pan.button_mask=MOUSE_BUTTON_MASK_MIDDLE
+ Input.parse_input_event(pan)
+ await process_frame
+ if game.phase20_free_camera and game.world_to_screen(room.center()).x>780:
+  var manual: Vector2=game.camera.position
+  await key(KEY_B)
+  check(game.ui.context_box.position.x<100,"right-side room anchors Build on the left")
+  check(game.camera.position==manual,"Build keeps the manually panned camera")
+  await key(KEY_ESCAPE)
+  await key(KEY_HOME)
 
 func dock_hint_probe() -> void:
  var button: Button = game.ui.quick_repair

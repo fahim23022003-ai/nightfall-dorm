@@ -11,6 +11,7 @@ var halls_visual=preload("res://scripts/haunted_hall_presentation.gd").new()
 var floors={}
 var grid_layouts: Dictionary={}
 var wall_layouts: Dictionary={}
+var practice_corridor_seams: Dictionary={}
 var close_passages=preload("res://scripts/close_quarters_draw_cache.gd").new()
 var batched_walls:=OS.get_environment("NIGHTFALL_LIVING_NIGHTMARE")=="1"
 func _init():
@@ -26,7 +27,11 @@ func render_architecture(c,p):
  var data=c.model.map_data
  var theme=str(data.get("theme","dorm"))
  var colors=PALETTES.get(theme,PALETTES.dorm)
- var visible=p.visible_world_rect(c)
+ # Practice uses this fixed rectangular map. A tighter architecture bound
+ # includes the full 73-unit wall-light overhang without retaining the extra
+ # margin needed by characters and effects on the main world canvas.
+ var quick_practice: bool=c.tutorial_active and c.ui.tactical_hud!=null and c.model.map_id=="abandoned_dorm"
+ var visible: Rect2=p.visible_world_rect(c,0.0) if quick_practice else p.visible_world_rect(c)
  var generated: bool=c.model.is_procedural()
  if c.macro_overview():
   render_macro_overview(c,p,data,theme,colors,visible)
@@ -35,7 +40,7 @@ func render_architecture(c,p):
  if close_quarters:render_close_passages(c,p,data,theme,colors,visible)
  for corridor in data.corridors if not close_quarters else []:
   var rect=Rect2(OFFSET+corridor.position,corridor.size)
-  if not visible.intersects(rect):continue
+  if not visible.intersects(rect.grow(25) if quick_practice else rect):continue
   if not generated:c.draw_style_box(p.frame(colors[2],colors[3],3),rect.grow(4))
   c.draw_texture_rect(floors[theme],rect,true,Color("737B7B"))
   # Metal service rails, rivets and warm wall lights anchor corridor depth.
@@ -59,12 +64,25 @@ func render_architecture(c,p):
    for x in range(0,int(rect.size.x),32):
     for y in range(0,int(rect.size.y),32):
      c.draw_rect(Rect2(rect.position+Vector2(x,y),Vector2(minf(31,rect.size.x-x),minf(31,rect.size.y-y))),Color("738D91") if (x/32+y/32)%2==0 else Color("617B81"))
+  elif quick_practice:
+   # Corridor seams do not move on the fixed lesson map. Keep one batch per
+   # corridor and let the canvas clip its ends when the camera follows the player.
+   if not practice_corridor_seams.has(rect):
+    var lines:=PackedVector2Array()
+    for y in range(0,int(rect.size.y),22):
+     var height: float=rect.position.y+y
+     lines.append(Vector2(rect.position.x,height))
+     lines.append(Vector2(rect.end.x,height))
+    practice_corridor_seams[rect]=lines
+   c.draw_multiline(practice_corridor_seams[rect],colors[3].darkened(0.5),1.0)
   else:
    for y in range(0,int(rect.size.y),22): c.draw_line(rect.position+Vector2(0,y),rect.position+Vector2(rect.size.x,y),colors[3].darkened(0.5),1)
  var halls: Dictionary=data.get("halls",{})
  if not halls.is_empty():halls_visual.render(c,p,halls,floors[theme],visible)
+ var room_margin:=74.0 if quick_practice else 0.0
  for room in c.model.rooms:
-  if visible.intersects(Rect2(OFFSET+room.bounds().position,room.bounds().size)):render_room(c,p,room,theme,colors)
+  var bounds:=Rect2(OFFSET+room.bounds().position,room.bounds().size)
+  if visible.intersects(bounds.grow(room_margin)):render_room(c,p,room,theme,colors)
  var title=OFFSET+data.bounds.position+Vector2(10,-20)
  if c.full_map:
   var label := str(data.title).to_upper()

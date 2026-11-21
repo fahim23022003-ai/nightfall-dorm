@@ -315,6 +315,7 @@ func create_drawer() -> void:
   drawer_description.position=Vector2(15,106);drawer_description.size=Vector2(376,75)
   drawer_description.add_theme_font_size_override("font_size",18)
   drawer_status.position=Vector2(15,179);drawer_status.size.x=376
+  drawer_status.add_theme_font_size_override("font_size",18)
   drawer_use.position=Vector2(15,215);drawer_use.size=Vector2(376,38)
 
 func select_slot(slot: int) -> void:
