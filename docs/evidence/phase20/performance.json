@@ -1,0 +1,529 @@
+{
+  "low-volley-baseline": {
+    "checks": 55,
+    "failures": 0,
+    "quality_fixed": true,
+    "scenes": {
+      "0": {
+        "draw_calls_median": 281,
+        "game_process_median_ms": 1.635,
+        "game_process_p95_ms": 2.388,
+        "hunter_hp_lost": 0.0,
+        "median_ms": 24.614,
+        "p95_ms": 30.239,
+        "p99_ms": 33.921,
+        "placed": 0,
+        "preset": "low",
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "samples": 120,
+        "shot_frame_median_ms": -1.0,
+        "shot_frame_p95_ms": -1.0,
+        "shot_frames": 0,
+        "shots": 0,
+        "static_bytes": 152142516.0,
+        "video_bytes": 102318733.0
+      },
+      "1": {
+        "draw_calls_median": 288,
+        "game_process_median_ms": 1.719,
+        "game_process_p95_ms": 2.312,
+        "hunter_hp_lost": 63.0,
+        "median_ms": 25.84,
+        "p95_ms": 31.656,
+        "p99_ms": 38.233,
+        "placed": 1,
+        "preset": "low",
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "samples": 120,
+        "shot_frame_median_ms": 24.18,
+        "shot_frame_p95_ms": 29.188,
+        "shot_frames": 6,
+        "shots": 7,
+        "static_bytes": 152509356.0,
+        "video_bytes": 107311319.0
+      },
+      "10": {
+        "draw_calls_median": 311,
+        "game_process_median_ms": 2.112,
+        "game_process_p95_ms": 3.061,
+        "hunter_hp_lost": 297.0,
+        "median_ms": 34.223,
+        "p95_ms": 43.81,
+        "p99_ms": 47.352,
+        "placed": 10,
+        "preset": "low",
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "samples": 120,
+        "shot_frame_median_ms": 33.197,
+        "shot_frame_p95_ms": 43.601,
+        "shot_frames": 6,
+        "shots": 35,
+        "static_bytes": 153395544.0,
+        "video_bytes": 107267629.0
+      },
+      "24": {
+        "draw_calls_median": 325,
+        "game_process_median_ms": 2.59,
+        "game_process_p95_ms": 3.399,
+        "hunter_hp_lost": 297.0,
+        "median_ms": 40.009,
+        "p95_ms": 50.073,
+        "p99_ms": 53.723,
+        "placed": 17,
+        "preset": "low",
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "samples": 120,
+        "shot_frame_median_ms": 39.989,
+        "shot_frame_p95_ms": 46.066,
+        "shot_frames": 6,
+        "shots": 35,
+        "static_bytes": 154043476.0,
+        "video_bytes": 107267629.0
+      },
+      "5": {
+        "draw_calls_median": 301,
+        "game_process_median_ms": 1.882,
+        "game_process_p95_ms": 2.567,
+        "hunter_hp_lost": 297.0,
+        "median_ms": 29.459,
+        "p95_ms": 34.726,
+        "p99_ms": 38.436,
+        "placed": 5,
+        "preset": "low",
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "samples": 120,
+        "shot_frame_median_ms": 30.744,
+        "shot_frame_p95_ms": 37.392,
+        "shot_frames": 6,
+        "shots": 35,
+        "static_bytes": 152921528.0,
+        "video_bytes": 107267629.0
+      }
+    }
+  },
+  "low-mixed-baseline": {
+    "checks": 17,
+    "failures": 0,
+    "quality_fixed": true,
+    "scenes": {
+      "benchmark": {
+        "count": 7,
+        "draw_calls_median": 306,
+        "hunter_hp_lost": 140.0,
+        "median_ms": 29.391,
+        "p95_ms": 41.338,
+        "preset": "low",
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "samples": 120,
+        "shots": 5,
+        "static_bytes": 153010778.0,
+        "video_bytes": 119950185.0
+      },
+      "practical-defense": {
+        "area": 147456.0,
+        "camera_zoom": 0.88,
+        "count": 7,
+        "mounts": [
+          {
+            "kind": "turret",
+            "rect": "[P: (1384.0, 744.0), S: (64.0, 64.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "generator",
+            "rect": "[P: (1576.0, 968.0), S: (64.0, 48.0)]",
+            "rotation": 1
+          },
+          {
+            "kind": "repair",
+            "rect": "[P: (1560.0, 760.0), S: (64.0, 48.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "heavy",
+            "rect": "[P: (1400.0, 952.0), S: (80.0, 64.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "frost",
+            "rect": "[P: (1480.0, 760.0), S: (48.0, 48.0)]",
+            "rotation": 1
+          },
+          {
+            "kind": "antenna",
+            "rect": "[P: (1544.0, 856.0), S: (48.0, 64.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "economy",
+            "rect": "[P: (1416.0, 840.0), S: (48.0, 48.0)]",
+            "rotation": 0
+          }
+        ],
+        "room": 1,
+        "shape": "rectangle"
+      }
+    }
+  },
+  "low-volley-candidate": {
+    "checks": 55,
+    "failures": 0,
+    "quality_fixed": true,
+    "scenes": {
+      "0": {
+        "draw_calls_median": 281,
+        "game_process_median_ms": 1.853,
+        "game_process_p95_ms": 3.125,
+        "hunter_hp_lost": 0.0,
+        "median_ms": 23.998,
+        "p95_ms": 33.374,
+        "p99_ms": 43.238,
+        "placed": 0,
+        "preset": "low",
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "samples": 120,
+        "shot_frame_median_ms": -1.0,
+        "shot_frame_p95_ms": -1.0,
+        "shot_frames": 0,
+        "shots": 0,
+        "static_bytes": 152574437.0,
+        "video_bytes": 102318733.0
+      },
+      "1": {
+        "draw_calls_median": 288,
+        "game_process_median_ms": 1.664,
+        "game_process_p95_ms": 2.167,
+        "hunter_hp_lost": 63.0,
+        "median_ms": 22.793,
+        "p95_ms": 26.512,
+        "p99_ms": 29.3,
+        "placed": 1,
+        "preset": "low",
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "samples": 120,
+        "shot_frame_median_ms": 23.558,
+        "shot_frame_p95_ms": 25.946,
+        "shot_frames": 6,
+        "shots": 7,
+        "static_bytes": 152967713.0,
+        "video_bytes": 107311319.0
+      },
+      "10": {
+        "draw_calls_median": 311,
+        "game_process_median_ms": 2.06,
+        "game_process_p95_ms": 2.642,
+        "hunter_hp_lost": 297.0,
+        "median_ms": 31.98,
+        "p95_ms": 39.157,
+        "p99_ms": 42.135,
+        "placed": 10,
+        "preset": "low",
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "samples": 120,
+        "shot_frame_median_ms": 31.023,
+        "shot_frame_p95_ms": 36.765,
+        "shot_frames": 6,
+        "shots": 35,
+        "static_bytes": 153842193.0,
+        "video_bytes": 107267629.0
+      },
+      "24": {
+        "draw_calls_median": 325,
+        "game_process_median_ms": 2.453,
+        "game_process_p95_ms": 2.994,
+        "hunter_hp_lost": 297.0,
+        "median_ms": 39.256,
+        "p95_ms": 44.251,
+        "p99_ms": 53.415,
+        "placed": 17,
+        "preset": "low",
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "samples": 120,
+        "shot_frame_median_ms": 39.291,
+        "shot_frame_p95_ms": 42.662,
+        "shot_frames": 6,
+        "shots": 35,
+        "static_bytes": 154501473.0,
+        "video_bytes": 107267629.0
+      },
+      "5": {
+        "draw_calls_median": 301,
+        "game_process_median_ms": 1.691,
+        "game_process_p95_ms": 2.247,
+        "hunter_hp_lost": 297.0,
+        "median_ms": 28.48,
+        "p95_ms": 33.227,
+        "p99_ms": 34.99,
+        "placed": 5,
+        "preset": "low",
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "samples": 120,
+        "shot_frame_median_ms": 29.02,
+        "shot_frame_p95_ms": 32.255,
+        "shot_frames": 6,
+        "shots": 35,
+        "static_bytes": 153368069.0,
+        "video_bytes": 107267629.0
+      }
+    }
+  },
+  "medium-mixed-candidate": {
+    "checks": 17,
+    "failures": 0,
+    "quality_fixed": true,
+    "scenes": {
+      "benchmark": {
+        "count": 7,
+        "draw_calls_median": 556,
+        "hunter_hp_lost": 140.0,
+        "median_ms": 58.438,
+        "p95_ms": 68.163,
+        "preset": "medium",
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "samples": 120,
+        "shots": 5,
+        "static_bytes": 153843739.0,
+        "video_bytes": 126605647.0
+      },
+      "practical-defense": {
+        "area": 147456.0,
+        "camera_zoom": 0.88,
+        "count": 7,
+        "mounts": [
+          {
+            "kind": "turret",
+            "rect": "[P: (1384.0, 744.0), S: (64.0, 64.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "generator",
+            "rect": "[P: (1576.0, 968.0), S: (64.0, 48.0)]",
+            "rotation": 1
+          },
+          {
+            "kind": "repair",
+            "rect": "[P: (1560.0, 760.0), S: (64.0, 48.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "heavy",
+            "rect": "[P: (1400.0, 952.0), S: (80.0, 64.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "frost",
+            "rect": "[P: (1480.0, 760.0), S: (48.0, 48.0)]",
+            "rotation": 1
+          },
+          {
+            "kind": "antenna",
+            "rect": "[P: (1544.0, 856.0), S: (48.0, 64.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "economy",
+            "rect": "[P: (1416.0, 840.0), S: (48.0, 48.0)]",
+            "rotation": 0
+          }
+        ],
+        "room": 1,
+        "shape": "rectangle"
+      }
+    }
+  },
+  "low-mixed-candidate": {
+    "checks": 17,
+    "failures": 0,
+    "quality_fixed": true,
+    "scenes": {
+      "benchmark": {
+        "count": 7,
+        "draw_calls_median": 306,
+        "hunter_hp_lost": 140.0,
+        "median_ms": 28.923,
+        "p95_ms": 38.907,
+        "preset": "low",
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "samples": 120,
+        "shots": 5,
+        "static_bytes": 153455903.0,
+        "video_bytes": 119950185.0
+      },
+      "practical-defense": {
+        "area": 147456.0,
+        "camera_zoom": 0.88,
+        "count": 7,
+        "mounts": [
+          {
+            "kind": "turret",
+            "rect": "[P: (1384.0, 744.0), S: (64.0, 64.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "generator",
+            "rect": "[P: (1576.0, 968.0), S: (64.0, 48.0)]",
+            "rotation": 1
+          },
+          {
+            "kind": "repair",
+            "rect": "[P: (1560.0, 760.0), S: (64.0, 48.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "heavy",
+            "rect": "[P: (1400.0, 952.0), S: (80.0, 64.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "frost",
+            "rect": "[P: (1480.0, 760.0), S: (48.0, 48.0)]",
+            "rotation": 1
+          },
+          {
+            "kind": "antenna",
+            "rect": "[P: (1544.0, 856.0), S: (48.0, 64.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "economy",
+            "rect": "[P: (1416.0, 840.0), S: (48.0, 48.0)]",
+            "rotation": 0
+          }
+        ],
+        "room": 1,
+        "shape": "rectangle"
+      }
+    }
+  },
+  "medium-mixed-baseline": {
+    "checks": 17,
+    "failures": 0,
+    "quality_fixed": true,
+    "scenes": {
+      "benchmark": {
+        "count": 7,
+        "draw_calls_median": 557,
+        "hunter_hp_lost": 140.0,
+        "median_ms": 58.405,
+        "p95_ms": 75.533,
+        "preset": "medium",
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "samples": 120,
+        "shots": 5,
+        "static_bytes": 153401090.0,
+        "video_bytes": 126606263.0
+      },
+      "practical-defense": {
+        "area": 147456.0,
+        "camera_zoom": 0.88,
+        "count": 7,
+        "mounts": [
+          {
+            "kind": "turret",
+            "rect": "[P: (1384.0, 744.0), S: (64.0, 64.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "generator",
+            "rect": "[P: (1576.0, 968.0), S: (64.0, 48.0)]",
+            "rotation": 1
+          },
+          {
+            "kind": "repair",
+            "rect": "[P: (1560.0, 760.0), S: (64.0, 48.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "heavy",
+            "rect": "[P: (1400.0, 952.0), S: (80.0, 64.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "frost",
+            "rect": "[P: (1480.0, 760.0), S: (48.0, 48.0)]",
+            "rotation": 1
+          },
+          {
+            "kind": "antenna",
+            "rect": "[P: (1544.0, 856.0), S: (48.0, 64.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "economy",
+            "rect": "[P: (1416.0, 840.0), S: (48.0, 48.0)]",
+            "rotation": 0
+          }
+        ],
+        "room": 1,
+        "shape": "rectangle"
+      }
+    }
+  },
+  "owner-fallback-low-mixed": {
+    "checks": 17,
+    "failures": 0,
+    "rules": "1",
+    "scenes": {
+      "benchmark": {
+        "count": 7,
+        "draw_calls_median": 301,
+        "hunter_hp_lost": 140.0,
+        "median_ms": 30.34,
+        "p95_ms": 39.992,
+        "p99_ms": 48.769,
+        "preset": "low",
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "samples": 120,
+        "shots": 5,
+        "static_bytes": 152481513.0,
+        "video_bytes": 118984941.0
+      },
+      "practical-defense": {
+        "area": 147456.0,
+        "camera_zoom": 0.88,
+        "count": 7,
+        "mounts": [
+          {
+            "kind": "turret",
+            "rect": "[P: (1384.0, 744.0), S: (64.0, 64.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "generator",
+            "rect": "[P: (1576.0, 968.0), S: (64.0, 48.0)]",
+            "rotation": 1
+          },
+          {
+            "kind": "repair",
+            "rect": "[P: (1560.0, 760.0), S: (64.0, 48.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "heavy",
+            "rect": "[P: (1400.0, 952.0), S: (80.0, 64.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "frost",
+            "rect": "[P: (1480.0, 760.0), S: (48.0, 48.0)]",
+            "rotation": 1
+          },
+          {
+            "kind": "antenna",
+            "rect": "[P: (1544.0, 856.0), S: (48.0, 64.0)]",
+            "rotation": 0
+          },
+          {
+            "kind": "economy",
+            "rect": "[P: (1416.0, 840.0), S: (48.0, 48.0)]",
+            "rotation": 0
+          }
+        ],
+        "room": 1,
+        "shape": "rectangle"
+      }
+    },
+    "seed": 10358,
+    "theme": "haunted_hospital"
+  }
+}

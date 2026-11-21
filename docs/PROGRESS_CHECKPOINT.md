@@ -4,7 +4,7 @@ The opt-in preview adds three-lesson Practice, pausing Help, physical door armor
 siege Bed Gold, paid continuous repair, free camera and match reports. The
 Performance Preview remains available with a separate profile. Protected
 construction paths remain in use while collision and demolition gates are open.
-[Playtest instructions and scope](PLAYER_FIRST.md)
+[Playtest instructions and scope](PLAYER_FIRST.md) · [Godot evidence and matched tests](evidence/phase20/README.md)
 
 ---
 

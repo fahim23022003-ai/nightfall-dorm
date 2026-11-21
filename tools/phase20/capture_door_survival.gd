@@ -91,6 +91,13 @@ func run():
  await image("05-free-camera",VIEWPORT)
  await send_key(KEY_HOME)
  check(not game.phase20_free_camera,"Home locks the camera")
+ await send_key(KEY_M)
+ var heatmap: bool=game.phase20_heatmap
+ await send_key(KEY_H)
+ check(game.full_map and game.phase20_heatmap!=heatmap,"H toggles danger shading on the strategic map")
+ if not game.phase20_heatmap:await send_key(KEY_H)
+ await image("06-danger-map",VIEWPORT)
+ await send_key(KEY_M)
  await capture_victory(model,room)
  await finish_capture()
 
@@ -114,9 +121,9 @@ func capture_victory(model: MatchModel,room: RoomState) -> void:
  await create_timer(.75).timeout
  check(model.result=="victory" and game.ui.current_screen=="story_result" and not game.last_progression.get("story",{}).is_empty(),"real projectile and settlement produce victory")
  if model.result!="victory":return
- await image("06-victory",VIEWPORT)
+ await image("07-victory",VIEWPORT)
  game.ui.campaign.story_ui.show_timeline()
- await image("07-match-timeline",VIEWPORT)
+ await image("08-match-timeline",VIEWPORT)
 
 func finish_capture() -> void:
  game.audio_system.shutdown()
