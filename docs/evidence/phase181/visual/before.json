@@ -1,0 +1,627 @@
+{
+  "checks": 263,
+  "failures": 0,
+  "rules": "0",
+  "scenes": {
+    "antenna-l01": {
+      "branch": "",
+      "camera_zoom": 1.65,
+      "center": [
+        2152.0,
+        912.0
+      ],
+      "footprint": [
+        32.0,
+        48.0
+      ],
+      "level": 1,
+      "scale": 0.7272727272727273
+    },
+    "auto_repair-l01": {
+      "branch": "",
+      "camera_zoom": 1.65,
+      "center": [
+        2160.0,
+        920.0
+      ],
+      "footprint": [
+        48.0,
+        32.0
+      ],
+      "level": 1,
+      "scale": 0.7272727272727273
+    },
+    "barrier-l01": {
+      "branch": "",
+      "camera_zoom": 1.65,
+      "center": [
+        2160.0,
+        912.0
+      ],
+      "footprint": [
+        48.0,
+        16.0
+      ],
+      "level": 1,
+      "scale": 0.65
+    },
+    "crowded-comparison": {
+      "area": 117504.0,
+      "camera_zoom": 0.88,
+      "count": 54,
+      "mounts": [
+        {
+          "kind": "generator",
+          "rect": "[P: (248.0, 840.0), S: (32.0, 48.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "repair",
+          "rect": "[P: (376.0, 1080.0), S: (32.0, 48.0)]",
+          "rotation": 1
+        },
+        {
+          "kind": "heavy",
+          "rect": "[P: (360.0, 856.0), S: (48.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "frost",
+          "rect": "[P: (248.0, 1080.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "antenna",
+          "rect": "[P: (296.0, 856.0), S: (48.0, 32.0)]",
+          "rotation": 1
+        },
+        {
+          "kind": "economy",
+          "rect": "[P: (360.0, 984.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (200.0, 808.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (232.0, 808.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (264.0, 808.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (296.0, 808.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (328.0, 808.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (360.0, 808.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (392.0, 808.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (408.0, 840.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (424.0, 808.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (408.0, 872.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (376.0, 888.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (424.0, 904.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (200.0, 888.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (200.0, 920.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (232.0, 888.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (264.0, 888.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (264.0, 920.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (296.0, 888.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (328.0, 888.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (328.0, 920.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (360.0, 920.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (392.0, 920.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (424.0, 936.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (392.0, 952.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (200.0, 968.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (232.0, 968.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (248.0, 1032.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (264.0, 968.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (232.0, 936.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (360.0, 1016.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (360.0, 952.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (360.0, 1048.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (392.0, 1000.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (392.0, 1032.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (424.0, 1000.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (424.0, 968.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (248.0, 1112.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (264.0, 1144.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (280.0, 1112.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (280.0, 1080.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (312.0, 1112.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (312.0, 1080.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (344.0, 1112.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (344.0, 1080.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (376.0, 1128.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (408.0, 1096.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (408.0, 1064.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "turret",
+          "rect": "[P: (424.0, 1160.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        }
+      ],
+      "room": 5,
+      "shape": "long"
+    },
+    "decoy-l01": {
+      "branch": "",
+      "camera_zoom": 1.65,
+      "center": [
+        2152.0,
+        904.0
+      ],
+      "footprint": [
+        32.0,
+        32.0
+      ],
+      "level": 1,
+      "scale": 0.7272727272727273
+    },
+    "economy-l01": {
+      "branch": "",
+      "camera_zoom": 1.65,
+      "center": [
+        2152.0,
+        904.0
+      ],
+      "footprint": [
+        32.0,
+        32.0
+      ],
+      "level": 1,
+      "scale": 0.7272727272727273
+    },
+    "enhancer-l01": {
+      "branch": "",
+      "camera_zoom": 1.65,
+      "center": [
+        2152.0,
+        904.0
+      ],
+      "footprint": [
+        32.0,
+        32.0
+      ],
+      "level": 1,
+      "scale": 0.7272727272727273
+    },
+    "flame-l01": {
+      "branch": "",
+      "camera_zoom": 1.65,
+      "center": [
+        2160.0,
+        920.0
+      ],
+      "footprint": [
+        48.0,
+        32.0
+      ],
+      "level": 1,
+      "scale": 0.7272727272727273
+    },
+    "frost-l01": {
+      "branch": "",
+      "camera_zoom": 1.65,
+      "center": [
+        2152.0,
+        904.0
+      ],
+      "footprint": [
+        32.0,
+        32.0
+      ],
+      "level": 1,
+      "scale": 0.7272727272727273
+    },
+    "generator-l01": {
+      "branch": "",
+      "camera_zoom": 1.65,
+      "center": [
+        2152.0,
+        912.0
+      ],
+      "footprint": [
+        32.0,
+        48.0
+      ],
+      "level": 1,
+      "scale": 0.7272727272727273
+    },
+    "generator-l10": {
+      "branch": "overcharge",
+      "camera_zoom": 1.65,
+      "center": [
+        2152.0,
+        912.0
+      ],
+      "footprint": [
+        32.0,
+        48.0
+      ],
+      "level": 10,
+      "scale": 0.7272727272727273
+    },
+    "heavy-l01": {
+      "branch": "",
+      "camera_zoom": 1.65,
+      "center": [
+        2160.0,
+        920.0
+      ],
+      "footprint": [
+        48.0,
+        32.0
+      ],
+      "level": 1,
+      "scale": 0.7272727272727273
+    },
+    "heavy-l10": {
+      "branch": "storm",
+      "camera_zoom": 1.65,
+      "center": [
+        2160.0,
+        920.0
+      ],
+      "footprint": [
+        48.0,
+        32.0
+      ],
+      "level": 10,
+      "scale": 0.7272727272727273
+    },
+    "large-defense": {
+      "area": 147456.0,
+      "camera_zoom": 0.88,
+      "count": 7,
+      "mounts": [
+        {
+          "kind": "turret",
+          "rect": "[P: (1384.0, 760.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "generator",
+          "rect": "[P: (1576.0, 984.0), S: (48.0, 32.0)]",
+          "rotation": 1
+        },
+        {
+          "kind": "repair",
+          "rect": "[P: (1560.0, 760.0), S: (48.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "heavy",
+          "rect": "[P: (1400.0, 968.0), S: (48.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "frost",
+          "rect": "[P: (1480.0, 776.0), S: (32.0, 32.0)]",
+          "rotation": 1
+        },
+        {
+          "kind": "antenna",
+          "rect": "[P: (1544.0, 872.0), S: (32.0, 48.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "economy",
+          "rect": "[P: (1432.0, 856.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        }
+      ],
+      "room": 1,
+      "shape": "rectangle"
+    },
+    "placement": {
+      "green_footprint": "[P: (2136.0, 888.0), S: (16.0, 48.0)]",
+      "red_reason": "Outside unlocked room",
+      "rotation": 1
+    },
+    "plasma-l01": {
+      "branch": "",
+      "camera_zoom": 1.65,
+      "center": [
+        2152.0,
+        904.0
+      ],
+      "footprint": [
+        32.0,
+        32.0
+      ],
+      "level": 1,
+      "scale": 0.7272727272727273
+    },
+    "repair-l01": {
+      "branch": "",
+      "camera_zoom": 1.65,
+      "center": [
+        2160.0,
+        920.0
+      ],
+      "footprint": [
+        48.0,
+        32.0
+      ],
+      "level": 1,
+      "scale": 0.7272727272727273
+    },
+    "repair-l10": {
+      "branch": "sustain",
+      "camera_zoom": 1.65,
+      "center": [
+        2160.0,
+        920.0
+      ],
+      "footprint": [
+        48.0,
+        32.0
+      ],
+      "level": 10,
+      "scale": 0.7272727272727273
+    },
+    "shield-l01": {
+      "branch": "",
+      "camera_zoom": 1.65,
+      "center": [
+        2160.0,
+        920.0
+      ],
+      "footprint": [
+        48.0,
+        32.0
+      ],
+      "level": 1,
+      "scale": 0.7272727272727273
+    },
+    "shock-l01": {
+      "branch": "",
+      "camera_zoom": 1.65,
+      "center": [
+        2160.0,
+        912.0
+      ],
+      "footprint": [
+        48.0,
+        48.0
+      ],
+      "level": 1,
+      "scale": 1.0
+    },
+    "small-defense": {
+      "area": 102656.0,
+      "camera_zoom": 0.88,
+      "count": 3,
+      "mounts": [
+        {
+          "kind": "turret",
+          "rect": "[P: (872.0, 776.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "generator",
+          "rect": "[P: (1032.0, 984.0), S: (48.0, 32.0)]",
+          "rotation": 1
+        },
+        {
+          "kind": "repair",
+          "rect": "[P: (984.0, 776.0), S: (48.0, 32.0)]",
+          "rotation": 0
+        }
+      ],
+      "room": 3,
+      "shape": "l"
+    },
+    "turret-l01": {
+      "branch": "",
+      "camera_zoom": 1.65,
+      "center": [
+        2152.0,
+        904.0
+      ],
+      "footprint": [
+        32.0,
+        32.0
+      ],
+      "level": 1,
+      "scale": 0.7272727272727273
+    },
+    "turret-l10": {
+      "branch": "precision",
+      "camera_zoom": 1.65,
+      "center": [
+        2152.0,
+        904.0
+      ],
+      "footprint": [
+        32.0,
+        32.0
+      ],
+      "level": 10,
+      "scale": 0.7272727272727273
+    }
+  },
+  "seed": 10358,
+  "theme": "haunted_hospital"
+}
