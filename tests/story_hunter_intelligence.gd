@@ -122,5 +122,78 @@ func _initialize():
  m.tutorial_mode=false
  m.hunter_intelligence_requested=false
  expect(not m.uses_story_intelligence(),"fallback launcher keeps its original decisions")
+ compare_archetypes()
  print("STORY_HUNTER_DECISIONS=",checks," FAILURES=",failures)
  quit(int(failures>0))
+
+func compare_archetypes() -> void:
+ var unique_costs:={}
+ for archetype: String in StrategyCatalog.ARCHETYPE_IDS:
+  var m:=MatchModel.new()
+  m.hunter_intelligence_requested=true
+  m.living_dorm_requested=true
+  m.player_first_requested=true
+  m.procedural_v2_requested=true
+  m.close_quarters_requested=true
+  m.reset(452733)
+  m.configure_match("hard")
+  m.configure_stage("stage_1")
+  m.configure_balance()
+  m.story_level=1
+  m.configure_strategy(m.map_seed,archetype)
+  # Same geometry, wallets and gear in every controlled comparison.
+  # Owner swap below uses equal door tiers and an inactive inventory.
+  for r: RoomState in m.rooms:
+   r.owner=r.index
+   r.sleeping=true
+   r.closed=true
+   r.gold=200
+  m.player_room=0
+  m.time=m.preparation+1
+  var h:=m.hunter
+  h._model_ref=weakref(m)
+  var with_paths:={}
+  m.hunter_route_costs(h.position,with_paths)
+  var before:=HunterSiegeStrategy.assess(m,h)
+  var crossed:=-1
+  var supplier:=-1
+  var reached:=-1
+  var radius:float=Catalog.BUILDINGS.turret.range
+  for destination: int in with_paths:
+   for room: RoomState in m.rooms:
+    for tile in range(room.tile_count()):
+     var at:=room.tile_position(tile)
+     if at.distance_to(m.rooms[destination].door_approach())>radius and HunterSiegeStrategy.covered_distance(with_paths[destination],at,radius*radius)>50:
+      if room.build("turret",tile):
+       crossed=destination
+       supplier=room.index
+       reached=tile
+       break
+    if crossed>=0:break
+   if crossed>=0:break
+  expect(crossed>=0,"paid Needle covers an actual route outside the destination door range")
+  if crossed<0:continue
+  var after:=HunterSiegeStrategy.assess(m,h)
+  expect(after[crossed]>before[crossed],"transit-only crossfire increases forecast for "+archetype)
+  var first_choice:=h.choose_target(m.rooms)
+  m.player_room=1
+  m.rooms[0].owner=1
+  m.rooms[1].owner=0
+  expect(after==HunterSiegeStrategy.assess(m,h) and h.choose_target(m.rooms)==first_choice,"swapping human/NPC identity preserves identical risks and seeded choice")
+  var comparable:={0:25.0,1:25.0}
+  var neutral_visits:=0
+  var repeat_visits:=0
+  var initial_rng: int=m.random.state
+  for sequence in range(96):
+   h.living_choices=sequence
+   h.recent_living_rooms.clear()
+   neutral_visits+=int(h._living_choice(m,comparable)==0)
+   h.recent_living_rooms.assign([0,0,0])
+   repeat_visits+=int(h._living_choice(m,comparable)==0)
+  expect(repeat_visits<neutral_visits and neutral_visits>0,"recent history discourages repeating a comparable door")
+  expect(h._living_choice(m,{0:2.0,1:50.0})==0,"obvious weak door stays eligible despite three recent selections")
+  expect(m.random.state==initial_rng,"seeded memory comparison never advances the shared RNG")
+  var profile:=Array(after.values())
+  unique_costs[str(profile)]=true
+  print("MATCHED_ARCHETYPE ",JSON.stringify({"archetype":archetype,"map_seed":m.map_seed,"first_choice":first_choice+1,"compared_room":crossed+1,"gun_room":supplier+1,"tile":reached,"recent_visits_same_cost":repeat_visits,"neutral_visits_same_cost":neutral_visits,"before_cost":before[crossed],"covered_cost":after[crossed],"commit_seconds":RankCatalog.pressure("hard").commit*StrategyCatalog.ARCHETYPES[archetype].commit,"affinity":DamageRules.affinity(archetype)}))
+ expect(unique_costs.size()==6,"six different tactical cost profiles on identical terrain")

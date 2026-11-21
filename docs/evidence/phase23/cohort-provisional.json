@@ -1,0 +1,647 @@
+{
+ "candidate": "first development candidate fad60bf",
+ "use": "diagnostic only \u2014 stopped after capacity/recovery defects were identified",
+ "paired_cases": 167,
+ "baseline_wins": 60,
+ "candidate_wins": 67,
+ "baseline_reassessments": 21,
+ "baseline_untouched_zero_damage_wins": 1,
+ "provisional_reassessments": 213,
+ "provisional_untouched_zero_damage_wins": 13,
+ "observations": {
+  "development-2": {
+   "baseline": {
+    "seed": 444177,
+    "seconds": 360.449999999991,
+    "outcome": "defeat",
+    "player_damage": 1417.1208510638364,
+    "player_door_damage": 934.999999999999,
+    "hunter_retargets": 0,
+    "trace": {
+     "choices": [
+      [
+       48.15,
+       3,
+       "approach"
+      ],
+      [
+       196.05,
+       1,
+       "approach"
+      ],
+      [
+       245.25,
+       2,
+       "approach"
+      ],
+      [
+       319.2,
+       4,
+       "approach"
+      ]
+     ],
+     "target_changes": [
+      [
+       48.15,
+       0,
+       3,
+       "MOVE"
+      ],
+      [
+       196.05,
+       3,
+       1,
+       "MOVE"
+      ],
+      [
+       245.25,
+       1,
+       2,
+       "MOVE"
+      ],
+      [
+       319.2,
+       2,
+       4,
+       "MOVE"
+      ]
+     ]
+    }
+   },
+   "provisional": {
+    "seed": 444177,
+    "seconds": 324.44999999999646,
+    "outcome": "victory",
+    "player_damage": 0.0,
+    "player_door_damage": 0.0,
+    "hunter_retargets": 1,
+    "trace": {
+     "choices": [
+      [
+       48.15,
+       3,
+       "approach"
+      ],
+      [
+       89.25,
+       1,
+       "stalled"
+      ],
+      [
+       151.65,
+       3,
+       "approach"
+      ],
+      [
+       252.75,
+       6,
+       "approach"
+      ]
+     ],
+     "target_changes": [
+      [
+       48.15,
+       0,
+       3,
+       "MOVE"
+      ],
+      [
+       89.25,
+       3,
+       1,
+       "MOVE"
+      ],
+      [
+       151.65,
+       1,
+       3,
+       "MOVE"
+      ],
+      [
+       252.75,
+       3,
+       6,
+       "MOVE"
+      ]
+     ]
+    }
+   }
+  },
+  "development-31": {
+   "baseline": {
+    "seed": 16289491,
+    "seconds": 186.00000000000418,
+    "outcome": "defeat",
+    "player_damage": 873.0,
+    "player_door_damage": 1020.0093749999997,
+    "hunter_retargets": 0,
+    "trace": {
+     "choices": [
+      [
+       45.15,
+       6,
+       "approach"
+      ],
+      [
+       136.8,
+       2,
+       "approach"
+      ]
+     ],
+     "target_changes": [
+      [
+       45.15,
+       0,
+       6,
+       "MOVE"
+      ],
+      [
+       136.8,
+       6,
+       2,
+       "MOVE"
+      ]
+     ]
+    }
+   },
+   "provisional": {
+    "seed": 16289491,
+    "seconds": 377.6999999999884,
+    "outcome": "victory",
+    "player_damage": 3369.2413771003244,
+    "player_door_damage": 2763.601382144232,
+    "hunter_retargets": 5,
+    "trace": {
+     "choices": [
+      [
+       45.15,
+       6,
+       "approach"
+      ],
+      [
+       91.2,
+       2,
+       "stalled"
+      ],
+      [
+       131.55,
+       3,
+       "stalled"
+      ],
+      [
+       186.45000000000002,
+       2,
+       "approach"
+      ]
+     ],
+     "target_changes": [
+      [
+       45.15,
+       0,
+       6,
+       "MOVE"
+      ],
+      [
+       91.2,
+       6,
+       2,
+       "MOVE"
+      ],
+      [
+       131.55,
+       2,
+       3,
+       "MOVE"
+      ],
+      [
+       186.45000000000002,
+       3,
+       2,
+       "MOVE"
+      ],
+      [
+       237.6,
+       2,
+       1,
+       "MOVE"
+      ],
+      [
+       264.75,
+       1,
+       2,
+       "MOVE"
+      ],
+      [
+       292.95,
+       2,
+       1,
+       "MOVE"
+      ],
+      [
+       305.40000000000003,
+       1,
+       5,
+       "MOVE"
+      ],
+      [
+       354.15000000000003,
+       5,
+       2,
+       "MOVE"
+      ]
+     ]
+    }
+   }
+  },
+  "development-38": {
+   "baseline": {
+    "seed": 20794696,
+    "seconds": 162.15000000000327,
+    "outcome": "defeat",
+    "player_damage": 1251.0,
+    "player_door_damage": 1134.0000000000002,
+    "hunter_retargets": 0,
+    "trace": {
+     "choices": [
+      [
+       48.15,
+       3,
+       "approach"
+      ],
+      [
+       112.35000000000001,
+       2,
+       "approach"
+      ]
+     ],
+     "target_changes": [
+      [
+       48.15,
+       0,
+       3,
+       "MOVE"
+      ],
+      [
+       112.35000000000001,
+       3,
+       2,
+       "MOVE"
+      ]
+     ]
+    }
+   },
+   "provisional": {
+    "seed": 20794696,
+    "seconds": 310.1999999999986,
+    "outcome": "victory",
+    "player_damage": 693.0,
+    "player_door_damage": 472.40299525078933,
+    "hunter_retargets": 6,
+    "trace": {
+     "choices": [
+      [
+       48.15,
+       3,
+       "approach"
+      ],
+      [
+       64.5,
+       2,
+       "stalled"
+      ],
+      [
+       95.10000000000001,
+       4,
+       "stalled"
+      ],
+      [
+       132.6,
+       1,
+       "stalled"
+      ],
+      [
+       182.70000000000002,
+       4,
+       "approach"
+      ],
+      [
+       213.6,
+       1,
+       "stalled"
+      ]
+     ],
+     "target_changes": [
+      [
+       48.15,
+       0,
+       3,
+       "MOVE"
+      ],
+      [
+       64.5,
+       3,
+       2,
+       "MOVE"
+      ],
+      [
+       95.10000000000001,
+       2,
+       4,
+       "MOVE"
+      ],
+      [
+       132.6,
+       4,
+       1,
+       "MOVE"
+      ],
+      [
+       182.70000000000002,
+       1,
+       4,
+       "MOVE"
+      ],
+      [
+       213.6,
+       4,
+       1,
+       "MOVE"
+      ],
+      [
+       240.3,
+       1,
+       4,
+       "MOVE"
+      ],
+      [
+       269.7,
+       4,
+       1,
+       "MOVE"
+      ],
+      [
+       274.65000000000003,
+       1,
+       3,
+       "MOVE"
+      ]
+     ]
+    }
+   }
+  },
+  "development-46": {
+   "baseline": {
+    "seed": 27128905,
+    "seconds": 380.69999999998794,
+    "outcome": "victory",
+    "player_damage": 1098.0,
+    "player_door_damage": 2019.682051409301,
+    "hunter_retargets": 1,
+    "trace": {
+     "choices": [
+      [
+       42.15,
+       6,
+       "approach"
+      ],
+      [
+       139.35,
+       2,
+       "approach"
+      ],
+      [
+       192.0,
+       3,
+       "approach"
+      ],
+      [
+       227.25,
+       1,
+       "approach"
+      ]
+     ],
+     "target_changes": [
+      [
+       42.15,
+       0,
+       6,
+       "MOVE"
+      ],
+      [
+       139.35,
+       6,
+       2,
+       "MOVE"
+      ],
+      [
+       192.0,
+       2,
+       3,
+       "MOVE"
+      ],
+      [
+       227.25,
+       3,
+       1,
+       "MOVE"
+      ],
+      [
+       289.8,
+       1,
+       3,
+       "MOVE"
+      ],
+      [
+       340.05,
+       3,
+       5,
+       "MOVE"
+      ]
+     ]
+    }
+   },
+   "provisional": {
+    "seed": 27128905,
+    "seconds": 250.0500000000066,
+    "outcome": "defeat",
+    "player_damage": 752.3999999999951,
+    "player_door_damage": 1260.0,
+    "hunter_retargets": 2,
+    "trace": {
+     "choices": [
+      [
+       42.15,
+       6,
+       "approach"
+      ],
+      [
+       75.15,
+       1,
+       "stalled"
+      ],
+      [
+       110.7,
+       3,
+       "stalled"
+      ],
+      [
+       162.15,
+       6,
+       "approach"
+      ]
+     ],
+     "target_changes": [
+      [
+       42.15,
+       0,
+       6,
+       "MOVE"
+      ],
+      [
+       75.15,
+       6,
+       1,
+       "MOVE"
+      ],
+      [
+       110.7,
+       1,
+       3,
+       "MOVE"
+      ],
+      [
+       162.15,
+       3,
+       6,
+       "MOVE"
+      ],
+      [
+       215.25,
+       6,
+       1,
+       "MOVE"
+      ]
+     ]
+    }
+   }
+  },
+  "development-147": {
+   "baseline": {
+    "seed": 2717961,
+    "seconds": 294.450000000001,
+    "outcome": "victory",
+    "player_damage": 0.0,
+    "player_door_damage": 0.0,
+    "hunter_retargets": 0,
+    "trace": {
+     "choices": [
+      [
+       44.1,
+       2,
+       "approach"
+      ],
+      [
+       135.75,
+       3,
+       "approach"
+      ],
+      [
+       236.70000000000002,
+       6,
+       "approach"
+      ],
+      [
+       265.35,
+       1,
+       "approach"
+      ]
+     ],
+     "target_changes": [
+      [
+       44.1,
+       0,
+       2,
+       "MOVE"
+      ],
+      [
+       135.75,
+       2,
+       3,
+       "MOVE"
+      ],
+      [
+       236.70000000000002,
+       3,
+       6,
+       "MOVE"
+      ],
+      [
+       265.35,
+       6,
+       1,
+       "MOVE"
+      ]
+     ]
+    }
+   },
+   "provisional": {
+    "seed": 2717961,
+    "seconds": 200.55000000000473,
+    "outcome": "defeat",
+    "player_damage": 0.0,
+    "player_door_damage": 150.0,
+    "hunter_retargets": 2,
+    "trace": {
+     "choices": [
+      [
+       44.1,
+       2,
+       "approach"
+      ],
+      [
+       100.95,
+       3,
+       "stalled"
+      ],
+      [
+       134.25,
+       1,
+       "stalled"
+      ],
+      [
+       173.1,
+       6,
+       "approach"
+      ]
+     ],
+     "target_changes": [
+      [
+       44.1,
+       0,
+       2,
+       "MOVE"
+      ],
+      [
+       100.95,
+       2,
+       3,
+       "MOVE"
+      ],
+      [
+       134.25,
+       3,
+       1,
+       "MOVE"
+      ],
+      [
+       173.1,
+       1,
+       6,
+       "MOVE"
+      ]
+     ]
+    }
+   }
+  }
+ }
+}

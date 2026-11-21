@@ -1,0 +1,90 @@
+{
+  "fixture": "Controlled Long Night, Ring seed 452733. Same geometry, weapon, wallet, Stage 1 and six occupied doors; one archetype at a time. Each real L1 Needle covers a lane outside the door firing radius. Story intelligence enabled.",
+  "archetypes": [
+    {
+      "affinity": "earth",
+      "archetype": "crusher",
+      "before_cost": 57.887125497798,
+      "commit_seconds": 22.4,
+      "compared_room": 1,
+      "covered_cost": 58.2267343277229,
+      "first_choice": 4,
+      "gun_room": 1,
+      "map_seed": 452733,
+      "neutral_visits_same_cost": 48,
+      "recent_visits_same_cost": 23,
+      "tile": 2
+    },
+    {
+      "affinity": "neutral",
+      "archetype": "stalker",
+      "before_cost": 48.7735904474369,
+      "commit_seconds": 14.4,
+      "compared_room": 1,
+      "covered_cost": 49.0959043832452,
+      "first_choice": 4,
+      "gun_room": 1,
+      "map_seed": 452733,
+      "neutral_visits_same_cost": 48,
+      "recent_visits_same_cost": 9,
+      "tile": 2
+    },
+    {
+      "affinity": "fire",
+      "archetype": "ravager",
+      "before_cost": 45.1358335682243,
+      "commit_seconds": 11.2,
+      "compared_room": 1,
+      "covered_cost": 45.4442418180501,
+      "first_choice": 4,
+      "gun_room": 1,
+      "map_seed": 452733,
+      "neutral_visits_same_cost": 48,
+      "recent_visits_same_cost": 17,
+      "tile": 2
+    },
+    {
+      "affinity": "ice",
+      "archetype": "witch",
+      "before_cost": 54.5451224207025,
+      "commit_seconds": 14.4,
+      "compared_room": 1,
+      "covered_cost": 54.9322732023987,
+      "first_choice": 4,
+      "gun_room": 1,
+      "map_seed": 452733,
+      "neutral_visits_same_cost": 48,
+      "recent_visits_same_cost": 13,
+      "tile": 2
+    },
+    {
+      "affinity": "electric",
+      "archetype": "electric",
+      "before_cost": 49.5807313003845,
+      "commit_seconds": 16.0,
+      "compared_room": 1,
+      "covered_cost": 49.9014956499629,
+      "first_choice": 4,
+      "gun_room": 1,
+      "map_seed": 452733,
+      "neutral_visits_same_cost": 48,
+      "recent_visits_same_cost": 10,
+      "tile": 2
+    },
+    {
+      "affinity": "electric",
+      "archetype": "storm",
+      "before_cost": 51.1904179100711,
+      "commit_seconds": 17.6,
+      "compared_room": 1,
+      "covered_cost": 51.5385169607441,
+      "first_choice": 4,
+      "gun_room": 1,
+      "map_seed": 452733,
+      "neutral_visits_same_cost": 48,
+      "recent_visits_same_cost": 18,
+      "tile": 2
+    }
+  ],
+  "checks": "STORY_HUNTER_DECISIONS=61 FAILURES=0"
+}

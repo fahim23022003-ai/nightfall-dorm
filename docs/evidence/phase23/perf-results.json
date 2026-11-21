@@ -1,0 +1,1061 @@
+{
+  "commits": {
+    "baseline": "3f9ec286d6f7006b85a9c0b4ee64b602b410738c",
+    "provisional": "fad60bf",
+    "final_rules": "7bbb2ea"
+  },
+  "engine": "Godot 4.6.3 Linux X11 / Mesa llvmpipe / Dummy audio",
+  "preset_names": {
+    "low": "Low 960x540",
+    "medium": "Standard 1280x720"
+  },
+  "counts": {
+    "first_candidate": {
+      "processes": 8,
+      "assertions": 200,
+      "failures": 0
+    },
+    "shared_host_toggle": {
+      "processes": 6,
+      "assertions": 156,
+      "failures": 0
+    },
+    "isolated_final": {
+      "processes": 8,
+      "assertions": 208,
+      "failures": 0
+    }
+  },
+  "pooled": {
+    "first_candidate": {
+      "low-baseline-opening": {
+        "frame_ms": {
+          "median": 23.745,
+          "p95": 29.579,
+          "p99": 31.374
+        },
+        "model_ms": {
+          "median": 0.822,
+          "p95": 1.114,
+          "p99": 1.334
+        },
+        "update_ms": {
+          "median": 2.33,
+          "p95": 3.047,
+          "p99": 4.011
+        },
+        "decision_tick_ms": [
+          2.353,
+          2.24
+        ],
+        "draw_medians": [
+          148.0,
+          148.0
+        ]
+      },
+      "low-baseline-combat": {
+        "frame_ms": {
+          "median": 20.684,
+          "p95": 30.679,
+          "p99": 39.117
+        },
+        "model_ms": {
+          "median": 0.758,
+          "p95": 1.038,
+          "p99": 1.235
+        },
+        "update_ms": {
+          "median": 2.218,
+          "p95": 2.992,
+          "p99": 3.59
+        },
+        "decision_tick_ms": [],
+        "draw_medians": [
+          114.0,
+          114.0
+        ]
+      },
+      "low-candidate-opening": {
+        "frame_ms": {
+          "median": 23.023,
+          "p95": 29.923,
+          "p99": 33.605
+        },
+        "model_ms": {
+          "median": 0.784,
+          "p95": 1.077,
+          "p99": 1.321
+        },
+        "update_ms": {
+          "median": 2.184,
+          "p95": 2.977,
+          "p99": 3.961
+        },
+        "decision_tick_ms": [
+          2.197,
+          2.019
+        ],
+        "draw_medians": [
+          148.0,
+          148.0
+        ]
+      },
+      "low-candidate-combat": {
+        "frame_ms": {
+          "median": 20.026,
+          "p95": 29.895,
+          "p99": 34.965
+        },
+        "model_ms": {
+          "median": 0.76,
+          "p95": 1.019,
+          "p99": 1.23
+        },
+        "update_ms": {
+          "median": 2.2,
+          "p95": 2.905,
+          "p99": 3.312
+        },
+        "decision_tick_ms": [],
+        "draw_medians": [
+          114.0,
+          114.0
+        ]
+      },
+      "medium-baseline-opening": {
+        "frame_ms": {
+          "median": 43.325,
+          "p95": 55.998,
+          "p99": 61.267
+        },
+        "model_ms": {
+          "median": 0.867,
+          "p95": 1.145,
+          "p99": 2.988
+        },
+        "update_ms": {
+          "median": 2.439,
+          "p95": 3.314,
+          "p99": 6.32
+        },
+        "decision_tick_ms": [
+          2.988,
+          2.432
+        ],
+        "draw_medians": [
+          177.0,
+          177.0
+        ]
+      },
+      "medium-baseline-combat": {
+        "frame_ms": {
+          "median": 38.827,
+          "p95": 58.16,
+          "p99": 63.911
+        },
+        "model_ms": {
+          "median": 0.859,
+          "p95": 1.082,
+          "p99": 1.244
+        },
+        "update_ms": {
+          "median": 2.467,
+          "p95": 3.182,
+          "p99": 3.68
+        },
+        "decision_tick_ms": [],
+        "draw_medians": [
+          207.0,
+          207.0
+        ]
+      },
+      "medium-candidate-opening": {
+        "frame_ms": {
+          "median": 59.266,
+          "p95": 73.295,
+          "p99": 78.271
+        },
+        "model_ms": {
+          "median": 1.032,
+          "p95": 1.354,
+          "p99": 3.178
+        },
+        "update_ms": {
+          "median": 2.866,
+          "p95": 4.661,
+          "p99": 20.634
+        },
+        "decision_tick_ms": [
+          2.317,
+          2.244
+        ],
+        "draw_medians": [
+          177.0,
+          177.0
+        ]
+      },
+      "medium-candidate-combat": {
+        "frame_ms": {
+          "median": 40.553,
+          "p95": 60.76,
+          "p99": 65.207
+        },
+        "model_ms": {
+          "median": 0.877,
+          "p95": 1.241,
+          "p99": 1.479
+        },
+        "update_ms": {
+          "median": 2.556,
+          "p95": 3.266,
+          "p99": 3.929
+        },
+        "decision_tick_ms": [],
+        "draw_medians": [
+          207.0,
+          207.0
+        ]
+      }
+    },
+    "shared_host_toggle": {
+      "low-baseline-opening": {
+        "frame_ms": {
+          "median": 63.27,
+          "p95": 88.015,
+          "p99": 90.392
+        },
+        "model_ms": {
+          "median": 0.917,
+          "p95": 1.297,
+          "p99": 2.421
+        },
+        "update_ms": {
+          "median": 2.711,
+          "p95": 3.314,
+          "p99": 5.59
+        },
+        "decision_tick_ms": [
+          2.421
+        ],
+        "draw_medians": [
+          148.0
+        ],
+        "shared_quota_periods": 62,
+        "shared_throttled_periods": 62,
+        "cpu_ms_per_frame": [
+          48.3
+        ],
+        "main_wait_ms_per_frame": [
+          14.544
+        ]
+      },
+      "low-baseline-combat": {
+        "frame_ms": {
+          "median": 47.284,
+          "p95": 67.985,
+          "p99": 69.993
+        },
+        "model_ms": {
+          "median": 0.887,
+          "p95": 1.399,
+          "p99": 20.626
+        },
+        "update_ms": {
+          "median": 2.597,
+          "p95": 3.747,
+          "p99": 24.196
+        },
+        "decision_tick_ms": [],
+        "draw_medians": [
+          114.0
+        ],
+        "shared_quota_periods": 47,
+        "shared_throttled_periods": 47,
+        "cpu_ms_per_frame": [
+          37.2
+        ],
+        "main_wait_ms_per_frame": [
+          15.385
+        ]
+      },
+      "low-candidate-opening": {
+        "frame_ms": {
+          "median": 55.755,
+          "p95": 75.97,
+          "p99": 80.004
+        },
+        "model_ms": {
+          "median": 0.84,
+          "p95": 1.144,
+          "p99": 1.326
+        },
+        "update_ms": {
+          "median": 2.357,
+          "p95": 3.072,
+          "p99": 4.261
+        },
+        "decision_tick_ms": [
+          2.315
+        ],
+        "draw_medians": [
+          148.0
+        ],
+        "shared_quota_periods": 54,
+        "shared_throttled_periods": 54,
+        "cpu_ms_per_frame": [
+          42.0
+        ],
+        "main_wait_ms_per_frame": [
+          12.621
+        ]
+      },
+      "low-candidate-combat": {
+        "frame_ms": {
+          "median": 41.508,
+          "p95": 62.39,
+          "p99": 66.219
+        },
+        "model_ms": {
+          "median": 0.813,
+          "p95": 1.133,
+          "p99": 1.241
+        },
+        "update_ms": {
+          "median": 2.396,
+          "p95": 3.176,
+          "p99": 4.674
+        },
+        "decision_tick_ms": [],
+        "draw_medians": [
+          114.0
+        ],
+        "shared_quota_periods": 44,
+        "shared_throttled_periods": 44,
+        "cpu_ms_per_frame": [
+          34.2
+        ],
+        "main_wait_ms_per_frame": [
+          12.305
+        ]
+      },
+      "medium-baseline-opening": {
+        "frame_ms": {
+          "median": 97.794,
+          "p95": 137.72,
+          "p99": 151.949
+        },
+        "model_ms": {
+          "median": 0.906,
+          "p95": 1.242,
+          "p99": 2.198
+        },
+        "update_ms": {
+          "median": 2.531,
+          "p95": 4.301,
+          "p99": 7.134
+        },
+        "decision_tick_ms": [
+          2.198,
+          2.302
+        ],
+        "draw_medians": [
+          177.0,
+          177.0
+        ],
+        "shared_quota_periods": 197,
+        "shared_throttled_periods": 197,
+        "cpu_ms_per_frame": [
+          81.3,
+          75.2
+        ],
+        "main_wait_ms_per_frame": [
+          10.916,
+          13.193
+        ]
+      },
+      "medium-baseline-combat": {
+        "frame_ms": {
+          "median": 100.162,
+          "p95": 136.746,
+          "p99": 150.196
+        },
+        "model_ms": {
+          "median": 0.897,
+          "p95": 1.269,
+          "p99": 1.759
+        },
+        "update_ms": {
+          "median": 2.579,
+          "p95": 3.759,
+          "p99": 7.465
+        },
+        "decision_tick_ms": [],
+        "draw_medians": [
+          207.0,
+          207.0
+        ],
+        "shared_quota_periods": 201,
+        "shared_throttled_periods": 201,
+        "cpu_ms_per_frame": [
+          75.8,
+          73.4
+        ],
+        "main_wait_ms_per_frame": [
+          23.177,
+          17.319
+        ]
+      },
+      "medium-candidate-opening": {
+        "frame_ms": {
+          "median": 95.24,
+          "p95": 117.552,
+          "p99": 146.206
+        },
+        "model_ms": {
+          "median": 0.877,
+          "p95": 1.19,
+          "p99": 2.214
+        },
+        "update_ms": {
+          "median": 2.442,
+          "p95": 3.367,
+          "p99": 23.209
+        },
+        "decision_tick_ms": [
+          2.214,
+          2.303
+        ],
+        "draw_medians": [
+          177.0,
+          177.0
+        ],
+        "shared_quota_periods": 191,
+        "shared_throttled_periods": 191,
+        "cpu_ms_per_frame": [
+          76.3,
+          73.6
+        ],
+        "main_wait_ms_per_frame": [
+          14.323,
+          13.812
+        ]
+      },
+      "medium-candidate-combat": {
+        "frame_ms": {
+          "median": 84.04,
+          "p95": 110.809,
+          "p99": 143.77
+        },
+        "model_ms": {
+          "median": 0.909,
+          "p95": 1.217,
+          "p99": 1.886
+        },
+        "update_ms": {
+          "median": 2.531,
+          "p95": 6.774,
+          "p99": 26.19
+        },
+        "decision_tick_ms": [],
+        "draw_medians": [
+          207.0,
+          207.0
+        ],
+        "shared_quota_periods": 161,
+        "shared_throttled_periods": 161,
+        "cpu_ms_per_frame": [
+          66.7,
+          69.8
+        ],
+        "main_wait_ms_per_frame": [
+          13.38,
+          16.472
+        ]
+      }
+    },
+    "isolated_final": {
+      "low-baseline-opening": {
+        "frame_ms": {
+          "median": 22.435,
+          "p95": 29.689,
+          "p99": 33.392
+        },
+        "model_ms": {
+          "median": 0.759,
+          "p95": 1.069,
+          "p99": 2.012
+        },
+        "update_ms": {
+          "median": 2.135,
+          "p95": 2.768,
+          "p99": 4.184
+        },
+        "decision_tick_ms": [
+          2.012,
+          2.041
+        ],
+        "draw_medians": [
+          148.0,
+          148.0
+        ],
+        "shared_quota_periods": 46,
+        "shared_throttled_periods": 0,
+        "cpu_ms_per_frame": [
+          37.1,
+          41.0
+        ],
+        "main_wait_ms_per_frame": [
+          1.67,
+          1.582
+        ]
+      },
+      "low-baseline-combat": {
+        "frame_ms": {
+          "median": 20.199,
+          "p95": 24.46,
+          "p99": 27.987
+        },
+        "model_ms": {
+          "median": 0.748,
+          "p95": 1.07,
+          "p99": 1.226
+        },
+        "update_ms": {
+          "median": 2.13,
+          "p95": 2.892,
+          "p99": 3.405
+        },
+        "decision_tick_ms": [],
+        "draw_medians": [
+          114.0,
+          114.0
+        ],
+        "shared_quota_periods": 41,
+        "shared_throttled_periods": 0,
+        "cpu_ms_per_frame": [
+          32.9,
+          34.6
+        ],
+        "main_wait_ms_per_frame": [
+          1.309,
+          2.125
+        ]
+      },
+      "low-candidate-opening": {
+        "frame_ms": {
+          "median": 21.805,
+          "p95": 29.681,
+          "p99": 34.632
+        },
+        "model_ms": {
+          "median": 0.819,
+          "p95": 1.036,
+          "p99": 1.192
+        },
+        "update_ms": {
+          "median": 2.295,
+          "p95": 3.09,
+          "p99": 4.506
+        },
+        "decision_tick_ms": [
+          2.155,
+          2.095
+        ],
+        "draw_medians": [
+          148.0,
+          148.0
+        ],
+        "shared_quota_periods": 46,
+        "shared_throttled_periods": 0,
+        "cpu_ms_per_frame": [
+          38.1,
+          38.7
+        ],
+        "main_wait_ms_per_frame": [
+          1.235,
+          1.355
+        ]
+      },
+      "low-candidate-combat": {
+        "frame_ms": {
+          "median": 18.66,
+          "p95": 25.019,
+          "p99": 35.988
+        },
+        "model_ms": {
+          "median": 0.775,
+          "p95": 1.014,
+          "p99": 1.324
+        },
+        "update_ms": {
+          "median": 2.232,
+          "p95": 2.986,
+          "p99": 4.098
+        },
+        "decision_tick_ms": [],
+        "draw_medians": [
+          114.0,
+          114.0
+        ],
+        "shared_quota_periods": 40,
+        "shared_throttled_periods": 0,
+        "cpu_ms_per_frame": [
+          30.5,
+          32.2
+        ],
+        "main_wait_ms_per_frame": [
+          1.464,
+          2.078
+        ]
+      },
+      "medium-baseline-opening": {
+        "frame_ms": {
+          "median": 41.325,
+          "p95": 54.146,
+          "p99": 56.442
+        },
+        "model_ms": {
+          "median": 0.871,
+          "p95": 1.243,
+          "p99": 2.086
+        },
+        "update_ms": {
+          "median": 2.417,
+          "p95": 3.492,
+          "p99": 4.73
+        },
+        "decision_tick_ms": [
+          2.258,
+          2.024
+        ],
+        "draw_medians": [
+          177.0,
+          177.0
+        ],
+        "shared_quota_periods": 84,
+        "shared_throttled_periods": 0,
+        "cpu_ms_per_frame": [
+          75.9,
+          74.5
+        ],
+        "main_wait_ms_per_frame": [
+          1.64,
+          1.275
+        ]
+      },
+      "medium-baseline-combat": {
+        "frame_ms": {
+          "median": 36.597,
+          "p95": 45.176,
+          "p99": 47.033
+        },
+        "model_ms": {
+          "median": 0.842,
+          "p95": 1.151,
+          "p99": 2.099
+        },
+        "update_ms": {
+          "median": 2.426,
+          "p95": 3.013,
+          "p99": 5.072
+        },
+        "decision_tick_ms": [],
+        "draw_medians": [
+          207.0,
+          207.0
+        ],
+        "shared_quota_periods": 73,
+        "shared_throttled_periods": 0,
+        "cpu_ms_per_frame": [
+          63.6,
+          63.2
+        ],
+        "main_wait_ms_per_frame": [
+          1.204,
+          1.702
+        ]
+      },
+      "medium-candidate-opening": {
+        "frame_ms": {
+          "median": 39.675,
+          "p95": 52.146,
+          "p99": 56.398
+        },
+        "model_ms": {
+          "median": 0.868,
+          "p95": 1.13,
+          "p99": 2.641
+        },
+        "update_ms": {
+          "median": 2.409,
+          "p95": 3.485,
+          "p99": 5.652
+        },
+        "decision_tick_ms": [
+          2.306,
+          2.316
+        ],
+        "draw_medians": [
+          177.0,
+          177.0
+        ],
+        "shared_quota_periods": 81,
+        "shared_throttled_periods": 0,
+        "cpu_ms_per_frame": [
+          72.1,
+          73.3
+        ],
+        "main_wait_ms_per_frame": [
+          1.149,
+          1.101
+        ]
+      },
+      "medium-candidate-combat": {
+        "frame_ms": {
+          "median": 36.458,
+          "p95": 44.683,
+          "p99": 47.051
+        },
+        "model_ms": {
+          "median": 0.871,
+          "p95": 1.118,
+          "p99": 1.206
+        },
+        "update_ms": {
+          "median": 2.463,
+          "p95": 3.128,
+          "p99": 3.362
+        },
+        "decision_tick_ms": [],
+        "draw_medians": [
+          207.0,
+          207.0
+        ],
+        "shared_quota_periods": 73,
+        "shared_throttled_periods": 0,
+        "cpu_ms_per_frame": [
+          65.4,
+          61.2
+        ],
+        "main_wait_ms_per_frame": [
+          1.288,
+          2.089
+        ]
+      }
+    }
+  },
+  "dense_decision_us": {
+    "initial": {
+      "baseline": [
+        {
+          "median_us": 379.0,
+          "p95_us": 543,
+          "p99_us": 749,
+          "placed": 0,
+          "placed_by_room": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "requested": 0
+        },
+        {
+          "median_us": 527.5,
+          "p95_us": 745,
+          "p99_us": 1074,
+          "placed": 12,
+          "placed_by_room": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "requested": 12
+        },
+        {
+          "median_us": 1190.0,
+          "p95_us": 1262,
+          "p99_us": 1521,
+          "placed": 24,
+          "placed_by_room": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "requested": 24
+        },
+        {
+          "median_us": 1191.0,
+          "p95_us": 1823,
+          "p99_us": 1837,
+          "placed": 40,
+          "placed_by_room": [
+            7,
+            7,
+            7,
+            7,
+            6,
+            6
+          ],
+          "requested": 40
+        },
+        {
+          "median_us": 1636.0,
+          "p95_us": 1893,
+          "p99_us": 2127,
+          "placed": 60,
+          "placed_by_room": [
+            11,
+            11,
+            10,
+            10,
+            9,
+            9
+          ],
+          "requested": 60
+        }
+      ],
+      "candidate": [
+        {
+          "median_us": 408.5,
+          "p95_us": 678,
+          "p99_us": 827,
+          "placed": 0,
+          "placed_by_room": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "requested": 0
+        },
+        {
+          "median_us": 723.0,
+          "p95_us": 980,
+          "p99_us": 1051,
+          "placed": 12,
+          "placed_by_room": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "requested": 12
+        },
+        {
+          "median_us": 1134.0,
+          "p95_us": 1850,
+          "p99_us": 3383,
+          "placed": 24,
+          "placed_by_room": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "requested": 24
+        },
+        {
+          "median_us": 1672.0,
+          "p95_us": 2552,
+          "p99_us": 2687,
+          "placed": 40,
+          "placed_by_room": [
+            7,
+            7,
+            7,
+            7,
+            6,
+            6
+          ],
+          "requested": 40
+        },
+        {
+          "median_us": 2644.0,
+          "p95_us": 5062,
+          "p99_us": 5409,
+          "placed": 60,
+          "placed_by_room": [
+            11,
+            11,
+            10,
+            10,
+            9,
+            9
+          ],
+          "requested": 60
+        }
+      ]
+    },
+    "isolated": {
+      "baseline": [
+        {
+          "median_us": 358.5,
+          "p95_us": 460,
+          "p99_us": 654,
+          "placed": 0,
+          "placed_by_room": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "requested": 0
+        },
+        {
+          "median_us": 517.0,
+          "p95_us": 640,
+          "p99_us": 721,
+          "placed": 12,
+          "placed_by_room": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "requested": 12
+        },
+        {
+          "median_us": 739.5,
+          "p95_us": 3584,
+          "p99_us": 15819,
+          "placed": 24,
+          "placed_by_room": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "requested": 24
+        },
+        {
+          "median_us": 1083.5,
+          "p95_us": 1303,
+          "p99_us": 2543,
+          "placed": 40,
+          "placed_by_room": [
+            7,
+            7,
+            7,
+            7,
+            6,
+            6
+          ],
+          "requested": 40
+        },
+        {
+          "median_us": 1670.0,
+          "p95_us": 1914,
+          "p99_us": 1971,
+          "placed": 60,
+          "placed_by_room": [
+            11,
+            11,
+            10,
+            10,
+            9,
+            9
+          ],
+          "requested": 60
+        }
+      ],
+      "candidate": [
+        {
+          "median_us": 367.5,
+          "p95_us": 443,
+          "p99_us": 517,
+          "placed": 0,
+          "placed_by_room": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "requested": 0
+        },
+        {
+          "median_us": 688.0,
+          "p95_us": 793,
+          "p99_us": 869,
+          "placed": 12,
+          "placed_by_room": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "requested": 12
+        },
+        {
+          "median_us": 1055.5,
+          "p95_us": 1208,
+          "p99_us": 1281,
+          "placed": 24,
+          "placed_by_room": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "requested": 24
+        },
+        {
+          "median_us": 1650.0,
+          "p95_us": 2018,
+          "p99_us": 2179,
+          "placed": 40,
+          "placed_by_room": [
+            7,
+            7,
+            7,
+            7,
+            6,
+            6
+          ],
+          "requested": 40
+        },
+        {
+          "median_us": 2488.5,
+          "p95_us": 3158,
+          "p99_us": 4225,
+          "placed": 60,
+          "placed_by_room": [
+            11,
+            11,
+            10,
+            10,
+            9,
+            9
+          ],
+          "requested": 60
+        }
+      ]
+    }
+  }
+}

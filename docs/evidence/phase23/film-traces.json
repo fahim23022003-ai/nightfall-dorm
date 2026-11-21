@@ -1,0 +1,2205 @@
+{
+  "failures": 0,
+  "frames": 984,
+  "matches": [
+    {
+      "archetype": "crusher",
+      "attempt": 1,
+      "bought_repair": false,
+      "difficulty": "hell",
+      "events": [
+        {
+          "best_cost": 11.5178593779242,
+          "comparable_doors": 1,
+          "damage": 0.0,
+          "estimated_cost": 11.5178593779242,
+          "event": "hunter_target_choice",
+          "reachable_options": 5,
+          "reason": "approach",
+          "recent_selections": 0,
+          "room": 4,
+          "time": 48.05
+        },
+        {
+          "damage": 0.0,
+          "event": "approach",
+          "room": 4,
+          "time": 48.05
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 5,
+          "time": 50.5
+        },
+        {
+          "damage": 0.0,
+          "event": "encounter",
+          "room": 4,
+          "time": 52.45
+        },
+        {
+          "damage": 27.14448,
+          "event": "door_damage",
+          "hp": 145.35552,
+          "room": 4,
+          "time": 53.2
+        },
+        {
+          "damage": 27.18804,
+          "event": "door_damage",
+          "hp": 118.16748,
+          "room": 4,
+          "time": 54.85
+        },
+        {
+          "damage": 62.1963935999999,
+          "event": "door_damage",
+          "hp": 55.9710864000001,
+          "room": 4,
+          "time": 58.3
+        },
+        {
+          "damage": 27.35964,
+          "event": "door_damage",
+          "hp": 28.6114464000002,
+          "room": 4,
+          "time": 61.35
+        },
+        {
+          "damage": 27.4032,
+          "event": "door_damage",
+          "hp": 1.20824640000022,
+          "room": 4,
+          "time": 63.0
+        },
+        {
+          "damage": 1.20824640000022,
+          "event": "door_damage",
+          "hp": 0.0,
+          "room": 4,
+          "time": 65.55
+        }
+      ],
+      "family": "ring",
+      "hunter_hp": 7187.5,
+      "item": [],
+      "level": 1,
+      "loadout": [],
+      "player_damage": 0.0,
+      "policy": "passive",
+      "result": "defeat",
+      "room": 4,
+      "seed": 452733,
+      "settled_rm": 7,
+      "terminal_time": 68.5999999999982
+    },
+    {
+      "archetype": "crusher",
+      "attempt": 2,
+      "bought_repair": false,
+      "difficulty": "standard",
+      "events": [
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 4,
+          "time": 48.0
+        },
+        {
+          "best_cost": 26.7907421144396,
+          "comparable_doors": 1,
+          "damage": 0.0,
+          "estimated_cost": 26.7907421144396,
+          "event": "hunter_target_choice",
+          "reachable_options": 3,
+          "reason": "approach",
+          "recent_selections": 0,
+          "room": 4,
+          "time": 48.05
+        },
+        {
+          "damage": 0.0,
+          "event": "approach",
+          "room": 4,
+          "time": 48.05
+        },
+        {
+          "damage": 0.0,
+          "event": "encounter",
+          "room": 4,
+          "time": 53.0
+        },
+        {
+          "damage": 19.8353857777777,
+          "event": "door_damage",
+          "hp": 325.164614222222,
+          "room": 4,
+          "time": 53.75
+        },
+        {
+          "damage": 19.8774517333333,
+          "event": "door_damage",
+          "hp": 305.287162488889,
+          "room": 4,
+          "time": 55.5
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 5,
+          "time": 57.85
+        },
+        {
+          "damage": 23.9293819306666,
+          "event": "door_damage",
+          "hp": 281.357780558222,
+          "room": 4,
+          "time": 58.15
+        },
+        {
+          "damage": 27.0179073119999,
+          "event": "door_damage",
+          "hp": 254.339873246222,
+          "room": 4,
+          "time": 61.15
+        },
+        {
+          "damage": 20.0565325155555,
+          "event": "door_damage",
+          "hp": 234.283340730667,
+          "room": 4,
+          "time": 62.95
+        },
+        {
+          "damage": 20.0985984711111,
+          "event": "door_damage",
+          "hp": 214.184742259556,
+          "room": 4,
+          "time": 64.7
+        },
+        {
+          "damage": 20.1406644266666,
+          "event": "door_damage",
+          "hp": 194.044077832889,
+          "room": 4,
+          "time": 66.45
+        },
+        {
+          "damage": 27.275891808,
+          "event": "door_damage",
+          "hp": 236.768186024889,
+          "room": 4,
+          "time": 69.1
+        },
+        {
+          "damage": 20.2476321422222,
+          "event": "door_damage",
+          "hp": 216.520553882667,
+          "room": 4,
+          "time": 70.9
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 1,
+          "time": 72.4
+        },
+        {
+          "damage": 20.2896980977777,
+          "event": "door_damage",
+          "hp": 196.230855784889,
+          "room": 4,
+          "time": 72.65
+        },
+        {
+          "damage": 20.3317640533333,
+          "event": "door_damage",
+          "hp": 245.899091731556,
+          "room": 4,
+          "time": 74.4
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 3,
+          "time": 76.05
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 6,
+          "time": 76.8
+        },
+        {
+          "damage": 35.7217543964159,
+          "event": "door_damage",
+          "hp": 210.17733733514,
+          "room": 4,
+          "time": 77.95
+        },
+        {
+          "damage": 26.5275374284799,
+          "event": "door_damage",
+          "hp": 183.64979990666,
+          "room": 4,
+          "time": 80.1
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 2,
+          "time": 81.1
+        },
+        {
+          "damage": 22.1854613375999,
+          "event": "door_damage",
+          "hp": 231.46433856906,
+          "room": 4,
+          "time": 83.15
+        },
+        {
+          "damage": 22.2308925695999,
+          "event": "door_damage",
+          "hp": 209.23344599946,
+          "room": 4,
+          "time": 84.9
+        },
+        {
+          "damage": 30.1045793875199,
+          "event": "door_damage",
+          "hp": 179.12886661194,
+          "room": 4,
+          "time": 87.55
+        },
+        {
+          "damage": 0.0,
+          "event": "hunter_commit",
+          "progress": 165.87113338806,
+          "reason": "breach_progress",
+          "room": 4,
+          "time": 87.55
+        },
+        {
+          "damage": 22.3464177023999,
+          "event": "door_damage",
+          "hp": 226.782448909541,
+          "room": 4,
+          "time": 89.35
+        },
+        {
+          "damage": 22.3918489343999,
+          "event": "door_damage",
+          "hp": 204.390599975141,
+          "room": 4,
+          "time": 91.1
+        },
+        {
+          "damage": 22.4372801663999,
+          "event": "door_damage",
+          "hp": 251.953319808741,
+          "room": 4,
+          "time": 92.85
+        },
+        {
+          "damage": 33.5863323607707,
+          "event": "door_damage",
+          "hp": 218.36698744797,
+          "room": 4,
+          "time": 95.5
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 4,
+          "time": 96.0
+        },
+        {
+          "damage": 37.6309175092147,
+          "event": "door_damage",
+          "hp": 525.736069938755,
+          "room": 4,
+          "time": 98.2
+        },
+        {
+          "damage": 41.0841584936155,
+          "event": "door_damage",
+          "hp": 484.65191144514,
+          "room": 4,
+          "time": 100.3
+        },
+        {
+          "damage": 34.5903838549332,
+          "event": "door_damage",
+          "hp": 450.061527590207,
+          "room": 4,
+          "time": 103.35
+        },
+        {
+          "damage": 46.8384792575998,
+          "event": "door_damage",
+          "hp": 403.223048332607,
+          "room": 4,
+          "time": 106.0
+        },
+        {
+          "damage": 34.7663451932443,
+          "event": "door_damage",
+          "hp": 438.456703139363,
+          "room": 4,
+          "time": 107.8
+        },
+        {
+          "damage": 34.8355434723554,
+          "event": "door_damage",
+          "hp": 403.621159667007,
+          "room": 4,
+          "time": 109.55
+        },
+        {
+          "damage": 34.9047417514665,
+          "event": "door_damage",
+          "hp": 438.716417915541,
+          "room": 4,
+          "time": 111.3
+        },
+        {
+          "damage": 47.2628624179198,
+          "event": "door_damage",
+          "hp": 391.453555497621,
+          "room": 4,
+          "time": 113.95
+        },
+        {
+          "damage": 35.0807030897776,
+          "event": "door_damage",
+          "hp": 426.372852407843,
+          "room": 4,
+          "time": 115.75
+        },
+        {
+          "damage": 42.2225868663464,
+          "event": "door_damage",
+          "hp": 384.150265541497,
+          "room": 4,
+          "time": 118.4
+        },
+        {
+          "damage": 42.3222323882665,
+          "event": "door_damage",
+          "hp": 411.828033153231,
+          "room": 4,
+          "time": 120.5
+        },
+        {
+          "damage": 47.8233684787197,
+          "event": "door_damage",
+          "hp": 434.004664674511,
+          "room": 4,
+          "time": 124.45
+        },
+        {
+          "damage": 35.4958927644442,
+          "event": "door_damage",
+          "hp": 398.508771910067,
+          "room": 4,
+          "time": 126.25
+        },
+        {
+          "damage": 35.5650910435554,
+          "event": "door_damage",
+          "hp": 432.943680866511,
+          "room": 4,
+          "time": 128.0
+        },
+        {
+          "damage": 35.6342893226665,
+          "event": "door_damage",
+          "hp": 397.309391543845,
+          "room": 4,
+          "time": 129.75
+        },
+        {
+          "damage": 48.2477516390398,
+          "event": "door_damage",
+          "hp": 419.061639904805,
+          "room": 4,
+          "time": 132.4
+        },
+        {
+          "damage": 35.8102506609776,
+          "event": "door_damage",
+          "hp": 383.251389243827,
+          "room": 4,
+          "time": 134.2
+        },
+        {
+          "damage": 35.8794489400888,
+          "event": "door_damage",
+          "hp": 417.371940303739,
+          "room": 4,
+          "time": 135.95
+        },
+        {
+          "damage": 43.3974089864043,
+          "event": "door_damage",
+          "hp": 373.974531317334,
+          "room": 4,
+          "time": 138.6
+        },
+        {
+          "damage": 55.2157995059653,
+          "event": "door_damage",
+          "hp": 388.758731811369,
+          "room": 4,
+          "time": 141.6
+        },
+        {
+          "damage": 44.5765706573845,
+          "event": "door_damage",
+          "hp": 414.182161153984,
+          "room": 4,
+          "time": 143.35
+        },
+        {
+          "damage": 47.1228919643543,
+          "event": "door_damage",
+          "hp": 367.05926918963,
+          "room": 4,
+          "time": 145.05
+        },
+        {
+          "damage": 47.6522827946666,
+          "event": "door_damage",
+          "hp": 389.406986394963,
+          "room": 4,
+          "time": 146.75
+        },
+        {
+          "damage": 64.51274624256,
+          "event": "door_damage",
+          "hp": 394.894240152404,
+          "room": 4,
+          "time": 149.35
+        },
+        {
+          "damage": 47.8780421802667,
+          "event": "door_damage",
+          "hp": 417.016197972137,
+          "room": 4,
+          "time": 151.1
+        },
+        {
+          "damage": 47.9662699861333,
+          "event": "door_damage",
+          "hp": 369.049927986004,
+          "room": 4,
+          "time": 152.8
+        },
+        {
+          "damage": 48.0544977920001,
+          "event": "door_damage",
+          "hp": 390.995430194003,
+          "room": 4,
+          "time": 154.5
+        },
+        {
+          "damage": 78.1425521049601,
+          "event": "door_damage",
+          "hp": 382.852878089043,
+          "room": 4,
+          "time": 158.0
+        },
+        {
+          "damage": 58.0141566771201,
+          "event": "door_damage",
+          "hp": 395.888721411923,
+          "room": 4,
+          "time": 160.1
+        },
+        {
+          "damage": 48.5008266922668,
+          "event": "door_damage",
+          "hp": 420.187894719657,
+          "room": 4,
+          "time": 163.1
+        },
+        {
+          "damage": 48.5890544981335,
+          "event": "door_damage",
+          "hp": 383.498840221524,
+          "room": 4,
+          "time": 164.8
+        },
+        {
+          "damage": 65.7773880422403,
+          "event": "door_damage",
+          "hp": 405.921452179285,
+          "room": 4,
+          "time": 167.4
+        },
+        {
+          "damage": 48.8148138837336,
+          "event": "door_damage",
+          "hp": 439.356638295552,
+          "room": 4,
+          "time": 169.15
+        },
+        {
+          "damage": 48.9030416896002,
+          "event": "door_damage",
+          "hp": 402.353596605953,
+          "room": 4,
+          "time": 170.85
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 3,
+          "time": 172.05
+        },
+        {
+          "damage": 48.9912694954669,
+          "event": "door_damage",
+          "hp": 435.262327110486,
+          "room": 4,
+          "time": 172.55
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 6,
+          "time": 172.8
+        },
+        {
+          "damage": 66.3203782886404,
+          "event": "door_damage",
+          "hp": 387.141948821847,
+          "room": 4,
+          "time": 175.15
+        },
+        {
+          "damage": 59.1164852633603,
+          "event": "door_damage",
+          "hp": 416.575463558488,
+          "room": 4,
+          "time": 177.8
+        },
+        {
+          "damage": 59.2441560883204,
+          "event": "door_damage",
+          "hp": 371.681307470169,
+          "room": 4,
+          "time": 179.85
+        },
+        {
+          "damage": 49.4765224277337,
+          "event": "door_damage",
+          "hp": 406.554785042436,
+          "room": 4,
+          "time": 181.9
+        },
+        {
+          "damage": 68.4470987211521,
+          "event": "door_damage",
+          "hp": 356.307686321285,
+          "room": 4,
+          "time": 184.5
+        },
+        {
+          "damage": 53.9745828521966,
+          "event": "door_damage",
+          "hp": 384.583103469089,
+          "room": 4,
+          "time": 186.25
+        },
+        {
+          "damage": 57.7898988786197,
+          "event": "door_damage",
+          "hp": 408.69320459047,
+          "room": 4,
+          "time": 187.95
+        },
+        {
+          "damage": 60.7876619659639,
+          "event": "door_damage",
+          "hp": 359.455542624507,
+          "room": 4,
+          "time": 189.6
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 5,
+          "time": 201.85
+        },
+        {
+          "best_cost": 46.1490499133408,
+          "comparable_doors": 2,
+          "damage": 0.0,
+          "estimated_cost": 46.1490499133408,
+          "event": "hunter_target_choice",
+          "reachable_options": 5,
+          "reason": "approach",
+          "recent_selections": 0,
+          "room": 5,
+          "time": 205.25
+        },
+        {
+          "damage": 0.0,
+          "event": "approach",
+          "room": 5,
+          "time": 205.25
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 2,
+          "time": 225.1
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 1,
+          "time": 232.0
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 3,
+          "time": 233.25
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 6,
+          "time": 234.0
+        },
+        {
+          "damage": 0.0,
+          "event": "encounter",
+          "room": 5,
+          "time": 236.55
+        },
+        {
+          "damage": 81.8506690560016,
+          "event": "door_damage",
+          "hp": 458.149330943998,
+          "room": 5,
+          "time": 238.2
+        },
+        {
+          "damage": 82.0128092160016,
+          "event": "door_damage",
+          "hp": 390.136521727998,
+          "room": 5,
+          "time": 240.2
+        },
+        {
+          "damage": 68.4791244800014,
+          "event": "door_damage",
+          "hp": 335.657397247997,
+          "room": 5,
+          "time": 242.2
+        },
+        {
+          "damage": 95.0979059662218,
+          "event": "door_damage",
+          "hp": 258.409491281777,
+          "room": 5,
+          "time": 244.75
+        },
+        {
+          "damage": 74.2672956649344,
+          "event": "door_damage",
+          "hp": 196.042195616843,
+          "room": 5,
+          "time": 246.45
+        },
+        {
+          "damage": 78.3914539824516,
+          "event": "door_damage",
+          "hp": 129.200741634391,
+          "room": 5,
+          "time": 248.1
+        },
+        {
+          "damage": 81.5127016873652,
+          "event": "door_damage",
+          "hp": 129.238039947026,
+          "room": 5,
+          "time": 249.75
+        },
+        {
+          "damage": 111.317919840002,
+          "event": "door_damage",
+          "hp": 105.420120107023,
+          "room": 5,
+          "time": 252.25
+        },
+        {
+          "damage": 82.5906265600019,
+          "event": "door_damage",
+          "hp": 104.379493547021,
+          "room": 5,
+          "time": 253.9
+        },
+        {
+          "damage": 82.7195072000019,
+          "event": "door_damage",
+          "hp": 102.859986347019,
+          "room": 5,
+          "time": 255.5
+        },
+        {
+          "damage": 99.5050598400023,
+          "event": "door_damage",
+          "hp": 160.854926507017,
+          "room": 5,
+          "time": 258.0
+        },
+        {
+          "damage": 134.703731980803,
+          "event": "door_damage",
+          "hp": 116.101194526213,
+          "room": 5,
+          "time": 260.85
+        },
+        {
+          "damage": 83.3880755200021,
+          "event": "door_damage",
+          "hp": 123.363119006211,
+          "room": 5,
+          "time": 263.8
+        },
+        {
+          "damage": 83.5169561600021,
+          "event": "door_damage",
+          "hp": 121.046162846208,
+          "room": 5,
+          "time": 265.4
+        },
+        {
+          "damage": 83.6458368000021,
+          "event": "door_damage",
+          "hp": 118.600326046206,
+          "room": 5,
+          "time": 267.0
+        },
+        {
+          "damage": 113.193737280003,
+          "event": "door_damage",
+          "hp": 92.9065887662029,
+          "room": 5,
+          "time": 269.5
+        },
+        {
+          "damage": 0.0,
+          "event": "hunter_commit",
+          "progress": 371.843411233797,
+          "reason": "breach_progress",
+          "room": 5,
+          "time": 270.25
+        },
+        {
+          "damage": 83.9801209600022,
+          "event": "door_damage",
+          "hp": 90.4764678062005,
+          "room": 5,
+          "time": 271.15
+        },
+        {
+          "damage": 84.1090016000022,
+          "event": "door_damage",
+          "hp": 87.5674662061981,
+          "room": 5,
+          "time": 272.75
+        },
+        {
+          "damage": 84.2378822400022,
+          "event": "door_damage",
+          "hp": 14.5295839661957,
+          "room": 5,
+          "time": 274.35
+        },
+        {
+          "damage": 136.909040832004,
+          "event": "door_damage",
+          "hp": 41.4205431341917,
+          "room": 5,
+          "time": 277.75
+        },
+        {
+          "damage": 55.4205431341917,
+          "event": "door_damage",
+          "hp": 0.0,
+          "room": 5,
+          "time": 279.75
+        }
+      ],
+      "family": "ring",
+      "hunter_hp": 0.0,
+      "item": [],
+      "level": 1,
+      "loadout": [],
+      "player_damage": 3780.0,
+      "policy": "earned balanced defense",
+      "result": "victory",
+      "room": 4,
+      "seed": 452733,
+      "settled_rm": 41,
+      "terminal_time": 280.65000000003
+    },
+    {
+      "archetype": "stalker",
+      "attempt": 3,
+      "bought_repair": true,
+      "difficulty": "standard",
+      "events": [
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 1,
+          "time": 41.5
+        },
+        {
+          "best_cost": 26.11822087721,
+          "comparable_doors": 3,
+          "damage": 0.0,
+          "estimated_cost": 27.3386968249879,
+          "event": "hunter_target_choice",
+          "reachable_options": 5,
+          "reason": "approach",
+          "recent_selections": 0,
+          "room": 3,
+          "time": 48.05
+        },
+        {
+          "damage": 0.0,
+          "event": "approach",
+          "room": 3,
+          "time": 48.05
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 6,
+          "time": 51.0
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 2,
+          "time": 60.2
+        },
+        {
+          "damage": 0.0,
+          "event": "encounter",
+          "room": 3,
+          "time": 61.25
+        },
+        {
+          "damage": 14.311651552,
+          "event": "door_damage",
+          "hp": 158.188348448,
+          "room": 3,
+          "time": 61.9
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 3,
+          "time": 62.6
+        },
+        {
+          "damage": 14.329684336,
+          "event": "door_damage",
+          "hp": 316.358664112,
+          "room": 3,
+          "time": 62.95
+        },
+        {
+          "damage": 14.348575824,
+          "event": "door_damage",
+          "hp": 302.010088288,
+          "room": 3,
+          "time": 64.05
+        },
+        {
+          "damage": 14.367467312,
+          "event": "door_damage",
+          "hp": 287.642620976,
+          "room": 3,
+          "time": 65.15
+        },
+        {
+          "damage": 14.3863588,
+          "event": "door_damage",
+          "hp": 273.256262176,
+          "room": 3,
+          "time": 66.25
+        },
+        {
+          "damage": 14.405250288,
+          "event": "door_damage",
+          "hp": 258.851011888,
+          "room": 3,
+          "time": 67.35
+        },
+        {
+          "damage": 14.424141776,
+          "event": "door_damage",
+          "hp": 244.426870112,
+          "room": 3,
+          "time": 68.45
+        },
+        {
+          "damage": 14.443033264,
+          "event": "door_damage",
+          "hp": 229.983836848,
+          "room": 3,
+          "time": 69.55
+        },
+        {
+          "damage": 14.461924752,
+          "event": "door_damage",
+          "hp": 215.521912096,
+          "room": 3,
+          "time": 70.65
+        },
+        {
+          "damage": 14.48081624,
+          "event": "door_damage",
+          "hp": 201.041095856,
+          "room": 3,
+          "time": 71.75
+        },
+        {
+          "damage": 14.499707728,
+          "event": "door_damage",
+          "hp": 186.541388128,
+          "room": 3,
+          "time": 72.85
+        },
+        {
+          "damage": 14.518599216,
+          "event": "door_damage",
+          "hp": 172.022788912,
+          "room": 3,
+          "time": 73.95
+        },
+        {
+          "damage": 14.537490704,
+          "event": "door_damage",
+          "hp": 157.485298208,
+          "room": 3,
+          "time": 75.05
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 4,
+          "time": 75.75
+        },
+        {
+          "damage": 14.556382192,
+          "event": "door_damage",
+          "hp": 142.928916016,
+          "room": 3,
+          "time": 76.15
+        },
+        {
+          "damage": 14.57527368,
+          "event": "door_damage",
+          "hp": 128.353642336,
+          "room": 3,
+          "time": 77.25
+        },
+        {
+          "damage": 14.594165168,
+          "event": "door_damage",
+          "hp": 113.759477168001,
+          "room": 3,
+          "time": 78.35
+        },
+        {
+          "damage": 14.6130566559999,
+          "event": "door_damage",
+          "hp": 169.146420512001,
+          "room": 3,
+          "time": 79.45
+        },
+        {
+          "damage": 14.6319481439999,
+          "event": "door_damage",
+          "hp": 154.514472368001,
+          "room": 3,
+          "time": 80.55
+        },
+        {
+          "damage": 14.650839632,
+          "event": "door_damage",
+          "hp": 139.863632736001,
+          "room": 3,
+          "time": 81.65
+        },
+        {
+          "damage": 14.66973112,
+          "event": "door_damage",
+          "hp": 125.193901616001,
+          "room": 3,
+          "time": 82.75
+        },
+        {
+          "damage": 0.0,
+          "event": "hunter_commit",
+          "progress": 219.806098383999,
+          "reason": "breach_progress",
+          "room": 3,
+          "time": 82.85
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 5,
+          "time": 83.8
+        },
+        {
+          "damage": 15.86371241664,
+          "event": "door_damage",
+          "hp": 109.330189199361,
+          "room": 3,
+          "time": 83.85
+        },
+        {
+          "damage": 15.8841152236799,
+          "event": "door_damage",
+          "hp": 163.446073975681,
+          "room": 3,
+          "time": 84.95
+        },
+        {
+          "damage": 15.9045180307199,
+          "event": "door_damage",
+          "hp": 147.541555944961,
+          "room": 3,
+          "time": 86.05
+        },
+        {
+          "damage": 15.9249208377599,
+          "event": "door_damage",
+          "hp": 131.616635107201,
+          "room": 3,
+          "time": 87.15
+        },
+        {
+          "damage": 15.9453236447999,
+          "event": "door_damage",
+          "hp": 115.671311462401,
+          "room": 3,
+          "time": 88.25
+        },
+        {
+          "damage": 15.9657264518399,
+          "event": "door_damage",
+          "hp": 169.705585010561,
+          "room": 3,
+          "time": 89.35
+        },
+        {
+          "damage": 15.9861292588799,
+          "event": "door_damage",
+          "hp": 153.719455751681,
+          "room": 3,
+          "time": 90.45
+        },
+        {
+          "damage": 16.0065320659199,
+          "event": "door_damage",
+          "hp": 137.712923685761,
+          "room": 3,
+          "time": 91.55
+        },
+        {
+          "damage": 16.0269348729599,
+          "event": "door_damage",
+          "hp": 121.685988812801,
+          "room": 3,
+          "time": 92.65
+        },
+        {
+          "damage": 16.2276458454037,
+          "event": "door_damage",
+          "hp": 105.458342967398,
+          "room": 3,
+          "time": 93.75
+        },
+        {
+          "damage": 17.0588043976218,
+          "event": "door_damage",
+          "hp": 158.399538569776,
+          "room": 3,
+          "time": 94.85
+        },
+        {
+          "damage": 18.3379017395683,
+          "event": "door_damage",
+          "hp": 140.061636830207,
+          "room": 3,
+          "time": 95.95
+        },
+        {
+          "damage": 19.8382201032776,
+          "event": "door_damage",
+          "hp": 120.22341672693,
+          "room": 3,
+          "time": 97.05
+        },
+        {
+          "damage": 21.3318844990722,
+          "event": "door_damage",
+          "hp": 168.891532227858,
+          "room": 3,
+          "time": 98.15
+        },
+        {
+          "damage": 22.5410441619134,
+          "event": "door_damage",
+          "hp": 146.350488065944,
+          "room": 3,
+          "time": 99.2
+        },
+        {
+          "damage": 23.3352822469957,
+          "event": "door_damage",
+          "hp": 123.015205818949,
+          "room": 3,
+          "time": 100.25
+        },
+        {
+          "damage": 23.5466218598399,
+          "event": "door_damage",
+          "hp": 99.4685839591088,
+          "room": 3,
+          "time": 101.35
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 6,
+          "time": 102.0
+        },
+        {
+          "damage": 23.5749497241599,
+          "event": "door_damage",
+          "hp": 145.893634234949,
+          "room": 3,
+          "time": 102.4
+        },
+        {
+          "damage": 23.6032775884799,
+          "event": "door_damage",
+          "hp": 122.290356646469,
+          "room": 3,
+          "time": 103.45
+        },
+        {
+          "alternative_cost": 32.3895141337835,
+          "current_cost": 55.0,
+          "damage": 0.0,
+          "event": "hunter_reassess",
+          "next_room": 1,
+          "reason": "defense_delays_breach",
+          "room": 3,
+          "stalled": true,
+          "time": 104.45
+        },
+        {
+          "best_cost": 30.2535602018468,
+          "comparable_doors": 2,
+          "damage": 0.0,
+          "estimated_cost": 32.3895141337835,
+          "event": "hunter_target_choice",
+          "reachable_options": 2,
+          "reason": "stalled",
+          "recent_selections": 0,
+          "room": 1,
+          "time": 104.45
+        },
+        {
+          "damage": 0.0,
+          "event": "approach",
+          "room": 1,
+          "time": 104.45
+        },
+        {
+          "damage": 0.0,
+          "event": "encounter",
+          "room": 1,
+          "time": 124.0
+        },
+        {
+          "damage": 25.9659884851199,
+          "event": "door_damage",
+          "hp": 244.03401151488,
+          "room": 1,
+          "time": 124.65
+        },
+        {
+          "damage": 25.9964147097598,
+          "event": "door_damage",
+          "hp": 225.38759680512,
+          "room": 1,
+          "time": 125.7
+        },
+        {
+          "damage": 26.0268409343998,
+          "event": "door_damage",
+          "hp": 206.71075587072,
+          "room": 1,
+          "time": 126.75
+        },
+        {
+          "damage": 26.0572671590398,
+          "event": "door_damage",
+          "hp": 188.00348871168,
+          "room": 1,
+          "time": 127.8
+        },
+        {
+          "damage": 26.0876933836799,
+          "event": "door_damage",
+          "hp": 169.265795328,
+          "room": 1,
+          "time": 128.85
+        },
+        {
+          "damage": 26.1181196083199,
+          "event": "door_damage",
+          "hp": 150.49767571968,
+          "room": 1,
+          "time": 129.9
+        },
+        {
+          "damage": 26.1499947007999,
+          "event": "door_damage",
+          "hp": 132.04768101888,
+          "room": 1,
+          "time": 131.0
+        },
+        {
+          "damage": 26.1804209254399,
+          "event": "door_damage",
+          "hp": 113.21726009344,
+          "room": 1,
+          "time": 132.05
+        },
+        {
+          "damage": 26.2108471500799,
+          "event": "door_damage",
+          "hp": 94.3564129433603,
+          "room": 1,
+          "time": 133.1
+        },
+        {
+          "damage": 26.2412733747199,
+          "event": "door_damage",
+          "hp": 75.4651395686403,
+          "room": 1,
+          "time": 134.15
+        },
+        {
+          "damage": 26.2716995993599,
+          "event": "door_damage",
+          "hp": 126.54343996928,
+          "room": 1,
+          "time": 135.2
+        },
+        {
+          "damage": 26.3035746918399,
+          "event": "door_damage",
+          "hp": 107.93986527744,
+          "room": 1,
+          "time": 136.3
+        },
+        {
+          "damage": 26.3340009164799,
+          "event": "door_damage",
+          "hp": 88.9558643609603,
+          "room": 1,
+          "time": 137.35
+        },
+        {
+          "damage": 26.4241590463607,
+          "event": "door_damage",
+          "hp": 139.881705314599,
+          "room": 1,
+          "time": 138.4
+        },
+        {
+          "damage": 27.1095434787653,
+          "event": "door_damage",
+          "hp": 120.122161835834,
+          "room": 1,
+          "time": 139.45
+        },
+        {
+          "damage": 28.3405639845375,
+          "event": "door_damage",
+          "hp": 99.1315978512964,
+          "room": 1,
+          "time": 140.5
+        },
+        {
+          "damage": 29.8947901349985,
+          "event": "door_damage",
+          "hp": 76.5868077162978,
+          "room": 1,
+          "time": 141.55
+        },
+        {
+          "damage": 31.5487596023008,
+          "event": "door_damage",
+          "hp": 122.388048113997,
+          "room": 1,
+          "time": 142.6
+        },
+        {
+          "damage": 33.0779781594277,
+          "event": "door_damage",
+          "hp": 96.6600699545691,
+          "room": 1,
+          "time": 143.65
+        },
+        {
+          "damage": 34.256919680194,
+          "event": "door_damage",
+          "hp": 69.753150274375,
+          "room": 1,
+          "time": 144.7
+        },
+        {
+          "damage": 0.0,
+          "event": "hunter_commit",
+          "progress": 193.946849725625,
+          "reason": "breach_progress",
+          "room": 1,
+          "time": 145.6
+        },
+        {
+          "damage": 34.8467891708219,
+          "event": "door_damage",
+          "hp": 41.9063611035529,
+          "room": 1,
+          "time": 145.7
+        },
+        {
+          "damage": 34.91898270336,
+          "event": "door_damage",
+          "hp": 83.9873784001929,
+          "room": 1,
+          "time": 146.7
+        },
+        {
+          "damage": 34.9589171232,
+          "event": "door_damage",
+          "hp": 126.378461276993,
+          "room": 1,
+          "time": 147.75
+        },
+        {
+          "damage": 34.996949904,
+          "event": "door_damage",
+          "hp": 98.3815113729927,
+          "room": 1,
+          "time": 148.75
+        },
+        {
+          "damage": 35.03688432384,
+          "event": "door_damage",
+          "hp": 70.6946270491526,
+          "room": 1,
+          "time": 149.8
+        },
+        {
+          "damage": 35.07491710464,
+          "event": "door_damage",
+          "hp": 112.619709944512,
+          "room": 1,
+          "time": 150.8
+        },
+        {
+          "damage": 35.11294988544,
+          "event": "door_damage",
+          "hp": 84.5067600590723,
+          "room": 1,
+          "time": 151.8
+        },
+        {
+          "damage": 35.15288430528,
+          "event": "door_damage",
+          "hp": 126.703875753792,
+          "room": 1,
+          "time": 152.85
+        },
+        {
+          "damage": 35.19091708608,
+          "event": "door_damage",
+          "hp": 98.5129586677121,
+          "room": 1,
+          "time": 153.85
+        },
+        {
+          "damage": 35.23085150592,
+          "event": "door_damage",
+          "hp": 70.6321071617919,
+          "room": 1,
+          "time": 154.9
+        },
+        {
+          "damage": 35.26888428672,
+          "event": "door_damage",
+          "hp": 112.363222875072,
+          "room": 1,
+          "time": 155.9
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 2,
+          "time": 156.2
+        },
+        {
+          "damage": 35.30691706752,
+          "event": "door_damage",
+          "hp": 84.0563058075516,
+          "room": 1,
+          "time": 156.9
+        },
+        {
+          "damage": 35.3468514873601,
+          "event": "door_damage",
+          "hp": 56.0594543201914,
+          "room": 1,
+          "time": 157.95
+        },
+        {
+          "damage": 35.3848842681601,
+          "event": "door_damage",
+          "hp": 27.6745700520314,
+          "room": 1,
+          "time": 158.95
+        },
+        {
+          "damage": 35.4248186880001,
+          "event": "door_damage",
+          "hp": 69.5997513640312,
+          "room": 1,
+          "time": 160.0
+        },
+        {
+          "damage": 35.4628514688001,
+          "event": "door_damage",
+          "hp": 41.136899895231,
+          "room": 1,
+          "time": 161.0
+        },
+        {
+          "damage": 35.5008842496001,
+          "event": "door_damage",
+          "hp": 12.636015645631,
+          "room": 1,
+          "time": 162.0
+        },
+        {
+          "damage": 19.986015645631,
+          "event": "door_damage",
+          "hp": 0.0,
+          "room": 1,
+          "time": 163.05
+        },
+        {
+          "best_cost": 22.809202869648,
+          "comparable_doors": 2,
+          "damage": 0.0,
+          "estimated_cost": 22.809202869648,
+          "event": "hunter_target_choice",
+          "reachable_options": 5,
+          "reason": "approach",
+          "recent_selections": 1,
+          "room": 3,
+          "time": 169.75
+        },
+        {
+          "damage": 0.0,
+          "event": "approach",
+          "room": 3,
+          "time": 169.75
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 5,
+          "time": 179.8
+        },
+        {
+          "damage": 0.0,
+          "event": "encounter",
+          "room": 3,
+          "time": 188.8
+        },
+        {
+          "damage": 44.3927169483135,
+          "event": "door_damage",
+          "hp": 167.497639698154,
+          "room": 3,
+          "time": 189.45
+        },
+        {
+          "damage": 45.1511523252781,
+          "event": "door_damage",
+          "hp": 128.996487372876,
+          "room": 3,
+          "time": 190.4
+        },
+        {
+          "damage": 45.3378689587204,
+          "event": "door_damage",
+          "hp": 90.6586184141552,
+          "room": 3,
+          "time": 191.4
+        },
+        {
+          "damage": 45.3826027532804,
+          "event": "door_damage",
+          "hp": 121.926015660875,
+          "room": 3,
+          "time": 192.35
+        },
+        {
+          "damage": 45.4296909580804,
+          "event": "door_damage",
+          "hp": 83.4963247027941,
+          "room": 3,
+          "time": 193.35
+        },
+        {
+          "damage": 45.4767791628805,
+          "event": "door_damage",
+          "hp": 115.019545539914,
+          "room": 3,
+          "time": 194.35
+        },
+        {
+          "damage": 45.5215129574405,
+          "event": "door_damage",
+          "hp": 146.148032582473,
+          "room": 3,
+          "time": 195.3
+        },
+        {
+          "damage": 45.5686011622405,
+          "event": "door_damage",
+          "hp": 107.579431420232,
+          "room": 3,
+          "time": 196.3
+        },
+        {
+          "damage": 45.6133349568005,
+          "event": "door_damage",
+          "hp": 68.6160964634318,
+          "room": 3,
+          "time": 197.25
+        },
+        {
+          "damage": 29.0278400000003,
+          "event": "door_damage",
+          "hp": 128.838256463431,
+          "room": 3,
+          "time": 200.0
+        },
+        {
+          "damage": 45.7569539814405,
+          "event": "door_damage",
+          "hp": 85.1813024819906,
+          "room": 3,
+          "time": 200.3
+        },
+        {
+          "damage": 45.8040421862405,
+          "event": "door_damage",
+          "hp": 46.3772602957499,
+          "room": 3,
+          "time": 201.3
+        },
+        {
+          "damage": 45.8487759808005,
+          "event": "door_damage",
+          "hp": 7.1784843149494,
+          "room": 3,
+          "time": 202.25
+        },
+        {
+          "damage": 45.8958641856006,
+          "event": "door_damage",
+          "hp": 38.2826201293488,
+          "room": 3,
+          "time": 203.25
+        },
+        {
+          "damage": 44.9326201293488,
+          "event": "door_damage",
+          "hp": 0.0,
+          "room": 3,
+          "time": 204.2
+        },
+        {
+          "best_cost": 27.2962981708381,
+          "comparable_doors": 1,
+          "damage": 0.0,
+          "estimated_cost": 27.2962981708381,
+          "event": "hunter_target_choice",
+          "reachable_options": 4,
+          "reason": "approach",
+          "recent_selections": 0,
+          "room": 4,
+          "time": 210.1
+        },
+        {
+          "damage": 0.0,
+          "event": "approach",
+          "room": 4,
+          "time": 210.1
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 2,
+          "time": 217.4
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 4,
+          "time": 219.75
+        },
+        {
+          "damage": 0.0,
+          "event": "encounter",
+          "room": 4,
+          "time": 228.15
+        },
+        {
+          "damage": 47.3525776449653,
+          "event": "door_damage",
+          "hp": 492.647422355035,
+          "room": 4,
+          "time": 228.8
+        },
+        {
+          "damage": 48.2553829968657,
+          "event": "door_damage",
+          "hp": 451.042039358169,
+          "room": 4,
+          "time": 229.75
+        },
+        {
+          "damage": 49.6706149520634,
+          "event": "door_damage",
+          "hp": 408.371424406106,
+          "room": 4,
+          "time": 230.75
+        },
+        {
+          "damage": 51.2673977419089,
+          "event": "door_damage",
+          "hp": 363.754026664198,
+          "room": 4,
+          "time": 231.7
+        },
+        {
+          "damage": 52.9248131748255,
+          "event": "door_damage",
+          "hp": 317.479213489373,
+          "room": 4,
+          "time": 232.65
+        },
+        {
+          "damage": 54.4601437208857,
+          "event": "door_damage",
+          "hp": 269.669069768488,
+          "room": 4,
+          "time": 233.6
+        },
+        {
+          "damage": 55.6899803783389,
+          "event": "door_damage",
+          "hp": 220.629089390149,
+          "room": 4,
+          "time": 234.55
+        },
+        {
+          "damage": 56.4302226736119,
+          "event": "door_damage",
+          "hp": 170.848866716537,
+          "room": 4,
+          "time": 235.5
+        },
+        {
+          "damage": 56.5859603897611,
+          "event": "door_damage",
+          "hp": 120.912906326776,
+          "room": 4,
+          "time": 236.45
+        },
+        {
+          "damage": 56.6392968371211,
+          "event": "door_damage",
+          "hp": 140.923609489655,
+          "room": 4,
+          "time": 237.4
+        },
+        {
+          "damage": 56.6926332844811,
+          "event": "door_damage",
+          "hp": 160.880976205174,
+          "room": 4,
+          "time": 238.35
+        },
+        {
+          "damage": 56.7431625504011,
+          "event": "door_damage",
+          "hp": 180.437813654772,
+          "room": 4,
+          "time": 239.25
+        },
+        {
+          "damage": 56.7964989977611,
+          "event": "door_damage",
+          "hp": 200.291314657011,
+          "room": 4,
+          "time": 240.2
+        },
+        {
+          "damage": 0.0,
+          "event": "door_upgrade",
+          "room": 5,
+          "time": 241.0
+        },
+        {
+          "damage": 56.8498354451211,
+          "event": "door_damage",
+          "hp": 150.09147921189,
+          "room": 4,
+          "time": 241.15
+        },
+        {
+          "damage": 56.9031718924812,
+          "event": "door_damage",
+          "hp": 169.838307319409,
+          "room": 4,
+          "time": 242.1
+        },
+        {
+          "damage": 56.9565083398412,
+          "event": "door_damage",
+          "hp": 189.531798979567,
+          "room": 4,
+          "time": 243.05
+        },
+        {
+          "damage": 57.0070376057612,
+          "event": "door_damage",
+          "hp": 138.824761373806,
+          "room": 4,
+          "time": 243.95
+        },
+        {
+          "damage": 45.699951380993,
+          "event": "door_damage",
+          "hp": 177.824809992813,
+          "room": 4,
+          "time": 246.05
+        },
+        {
+          "damage": 57.1754684921612,
+          "event": "door_damage",
+          "hp": 196.949341500652,
+          "room": 4,
+          "time": 246.95
+        },
+        {
+          "damage": 57.2288049395212,
+          "event": "door_damage",
+          "hp": 146.37053656113,
+          "room": 4,
+          "time": 247.9
+        },
+        {
+          "damage": 57.2821413868812,
+          "event": "door_damage",
+          "hp": 165.738395174249,
+          "room": 4,
+          "time": 248.85
+        },
+        {
+          "damage": 0.0,
+          "event": "hunter_commit",
+          "progress": 297.961604825751,
+          "reason": "breach_progress",
+          "room": 4,
+          "time": 249.75
+        },
+        {
+          "damage": 57.3354778342413,
+          "event": "door_damage",
+          "hp": 185.052917340007,
+          "room": 4,
+          "time": 249.8
+        },
+        {
+          "damage": 57.3860071001613,
+          "event": "door_damage",
+          "hp": 133.966910239846,
+          "room": 4,
+          "time": 250.7
+        },
+        {
+          "damage": 57.4393435475213,
+          "event": "door_damage",
+          "hp": 153.177566692325,
+          "room": 4,
+          "time": 251.65
+        },
+        {
+          "damage": 57.4926799948813,
+          "event": "door_damage",
+          "hp": 172.334886697443,
+          "room": 4,
+          "time": 252.6
+        },
+        {
+          "damage": 57.5460164422413,
+          "event": "door_damage",
+          "hp": 121.438870255202,
+          "room": 4,
+          "time": 253.55
+        },
+        {
+          "damage": 57.5993528896013,
+          "event": "door_damage",
+          "hp": 70.4895173656005,
+          "room": 4,
+          "time": 254.5
+        },
+        {
+          "damage": 57.6498821555213,
+          "event": "door_damage",
+          "hp": 89.1396352100791,
+          "room": 4,
+          "time": 255.4
+        },
+        {
+          "damage": 57.7032186028813,
+          "event": "door_damage",
+          "hp": 38.0864166071977,
+          "room": 4,
+          "time": 256.35
+        },
+        {
+          "damage": 57.7565550502413,
+          "event": "door_damage",
+          "hp": 56.9798615569563,
+          "room": 4,
+          "time": 257.3
+        },
+        {
+          "damage": 57.8098914976014,
+          "event": "door_damage",
+          "hp": 5.81997005935496,
+          "room": 4,
+          "time": 258.25
+        },
+        {
+          "damage": 12.469970059355,
+          "event": "door_damage",
+          "hp": 0.0,
+          "room": 4,
+          "time": 259.2
+        },
+        {
+          "best_cost": 71.5451825668842,
+          "comparable_doors": 1,
+          "damage": 0.0,
+          "estimated_cost": 71.5451825668842,
+          "event": "hunter_target_choice",
+          "reachable_options": 3,
+          "reason": "approach",
+          "recent_selections": 0,
+          "room": 6,
+          "time": 264.85
+        },
+        {
+          "damage": 0.0,
+          "event": "approach",
+          "room": 6,
+          "time": 264.85
+        },
+        {
+          "best_cost": 47.7718535020212,
+          "comparable_doors": 1,
+          "damage": 0.0,
+          "estimated_cost": 47.7718535020212,
+          "event": "hunter_target_choice",
+          "reachable_options": 3,
+          "reason": "approach",
+          "recent_selections": 1,
+          "room": 6,
+          "time": 291.95
+        },
+        {
+          "damage": 0.0,
+          "event": "approach",
+          "room": 6,
+          "time": 291.95
+        },
+        {
+          "damage": 0.0,
+          "event": "encounter",
+          "room": 6,
+          "time": 310.1
+        },
+        {
+          "damage": 66.44093952,
+          "event": "door_damage",
+          "hp": 623.55906048,
+          "room": 6,
+          "time": 312.35
+        },
+        {
+          "damage": 66.44093952,
+          "event": "door_damage",
+          "hp": 557.11812096,
+          "room": 6,
+          "time": 313.25
+        },
+        {
+          "damage": 66.44093952,
+          "event": "door_damage",
+          "hp": 490.67718144,
+          "room": 6,
+          "time": 314.1
+        },
+        {
+          "damage": 66.44093952,
+          "event": "door_damage",
+          "hp": 424.23624192,
+          "room": 6,
+          "time": 315.0
+        },
+        {
+          "damage": 66.44093952,
+          "event": "door_damage",
+          "hp": 530.2953024,
+          "room": 6,
+          "time": 315.9
+        },
+        {
+          "damage": 66.44093952,
+          "event": "door_damage",
+          "hp": 463.85436288,
+          "room": 6,
+          "time": 316.8
+        },
+        {
+          "damage": 66.44093952,
+          "event": "door_damage",
+          "hp": 403.71342336,
+          "room": 6,
+          "time": 317.7
+        },
+        {
+          "damage": 66.44093952,
+          "event": "door_damage",
+          "hp": 413.572483840001,
+          "room": 6,
+          "time": 318.6
+        },
+        {
+          "damage": 66.44093952,
+          "event": "door_damage",
+          "hp": 353.431544320001,
+          "room": 6,
+          "time": 319.5
+        },
+        {
+          "damage": 66.44093952,
+          "event": "door_damage",
+          "hp": 363.290604800001,
+          "room": 6,
+          "time": 320.4
+        },
+        {
+          "damage": 66.44093952,
+          "event": "door_damage",
+          "hp": 373.149665280002,
+          "room": 6,
+          "time": 321.3
+        },
+        {
+          "damage": 66.44093952,
+          "event": "door_damage",
+          "hp": 313.008725760002,
+          "room": 6,
+          "time": 322.2
+        },
+        {
+          "damage": 66.44093952,
+          "event": "door_damage",
+          "hp": 322.867786240002,
+          "room": 6,
+          "time": 323.1
+        },
+        {
+          "damage": 66.44093952,
+          "event": "door_damage",
+          "hp": 262.726846720003,
+          "room": 6,
+          "time": 324.0
+        },
+        {
+          "damage": 66.44093952,
+          "event": "door_damage",
+          "hp": 272.585907200003,
+          "room": 6,
+          "time": 324.9
+        },
+        {
+          "damage": 66.44093952,
+          "event": "door_damage",
+          "hp": 282.444967680004,
+          "room": 6,
+          "time": 325.8
+        }
+      ],
+      "family": "spine",
+      "hunter_hp": 0.0,
+      "item": [
+        {
+          "hp_after": 596.73624192,
+          "hp_before": 424.23624192,
+          "time": 315.000000000037
+        }
+      ],
+      "level": 2,
+      "loadout": [
+        "repair"
+      ],
+      "player_damage": 3061.86830684492,
+      "policy": "earned balanced defense",
+      "result": "victory",
+      "room": 6,
+      "seed": 844960,
+      "settled_rm": 41,
+      "terminal_time": 326.60000000004
+    }
+  ],
+  "rendered": [
+    {
+      "engine_frame": 55,
+      "label": "Hell \u00b7 Ring \u00b7 Room 04",
+      "shot": {
+        "attempt": 1.0,
+        "caption": "The Bonebreaker chooses the occupied room and reaches its door.",
+        "end": 55.5,
+        "label": "Hell \u00b7 Ring \u00b7 Room 04",
+        "start": 47.5
+      },
+      "start_frame": 0
+    },
+    {
+      "engine_frame": 257,
+      "label": "Hell \u00b7 Passive opening",
+      "shot": {
+        "attempt": 1.0,
+        "caption": "Without a defensive purchase, this door falls at 1:08.",
+        "end": 68.6,
+        "label": "Hell \u00b7 Passive opening",
+        "start": 64.0
+      },
+      "start_frame": 160
+    },
+    {
+      "engine_frame": 367,
+      "label": "Hell \u00b7 Defeat",
+      "shot": {
+        "attempt": 1.0,
+        "caption": "Story settlement records the loss and awards 7 RM.",
+        "ending": 2.5,
+        "label": "Hell \u00b7 Defeat"
+      },
+      "start_frame": 252
+    },
+    {
+      "engine_frame": 484,
+      "label": "Normal \u00b7 Same Ring map",
+      "shot": {
+        "attempt": 2.0,
+        "caption": "At 1:27 the Hunter commits again as the player's upgraded door loses HP.",
+        "end": 90.5,
+        "label": "Normal \u00b7 Same Ring map",
+        "start": 84.5
+      },
+      "start_frame": 302
+    },
+    {
+      "engine_frame": 739,
+      "label": "Normal \u00b7 Spine \u00b7 Room 03",
+      "shot": {
+        "attempt": 3.0,
+        "caption": "At 1:44 defense has stalled this siege. The Stalker turns toward Room 01.",
+        "end": 112.0,
+        "label": "Normal \u00b7 Spine \u00b7 Room 03",
+        "start": 100.5
+      },
+      "start_frame": 422
+    },
+    {
+      "engine_frame": 1074,
+      "label": "Normal \u00b7 Player Room 06",
+      "shot": {
+        "attempt": 3.0,
+        "camera": "player",
+        "caption": "At 5:15 a purchased Instant Repair Kit restores 172.5 HP during a real attack.",
+        "end": 319.0,
+        "label": "Normal \u00b7 Player Room 06",
+        "start": 309.5
+      },
+      "start_frame": 652
+    },
+    {
+      "engine_frame": 1304,
+      "label": "Normal \u00b7 Final defense",
+      "shot": {
+        "attempt": 3.0,
+        "caption": "Player and teammate weapons finish the Stalker in combat.",
+        "end": 326.6,
+        "label": "Normal \u00b7 Final defense",
+        "start": 322.5
+      },
+      "start_frame": 842
+    },
+    {
+      "engine_frame": 1404,
+      "label": "Normal \u00b7 Victory",
+      "shot": {
+        "attempt": 3.0,
+        "caption": "The next Story mission unlocks and the completed match awards 41 RM.",
+        "ending": 3.0,
+        "label": "Normal \u00b7 Victory"
+      },
+      "start_frame": 924
+    }
+  ],
+  "seed_base": 91737
+}

@@ -1,0 +1,6800 @@
+{
+ "development": {
+  "baseline": {
+   "overall": {
+    "n": 210,
+    "wins": 74,
+    "human_door_struck": 208,
+    "human_room_physically_encountered": 199,
+    "human_zero_damage_no_door_damage_wins": 1,
+    "wins_without_hunter_damage": 4,
+    "first_arrival_after_prep_median_s": 10.28,
+    "room_arrivals": 866,
+    "repeat_room_arrivals": 121,
+    "reassessments": 29,
+    "successful_hall_visits": 88,
+    "boss_transformations": 56,
+    "median_seconds": 274.35,
+    "mean_main_hunter_damage_player": 1513.97,
+    "mean_main_hunter_damage_allies": 2349.54,
+    "median_seconds_in_transit": 96.3,
+    "median_player_attack_contact_s": 17.85,
+    "npc_eliminations": 431
+   },
+   "difficulty": {
+    "hard": {
+     "n": 70,
+     "wins": 22,
+     "human_door_struck": 69,
+     "human_room_physically_encountered": 67,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 10.15,
+     "room_arrivals": 280,
+     "repeat_room_arrivals": 32,
+     "reassessments": 18,
+     "successful_hall_visits": 31,
+     "boss_transformations": 16,
+     "median_seconds": 274.35,
+     "mean_main_hunter_damage_player": 1582.15,
+     "mean_main_hunter_damage_allies": 1990.49,
+     "median_seconds_in_transit": 90.9,
+     "median_player_attack_contact_s": 20.92,
+     "npc_eliminations": 137
+    },
+    "hell": {
+     "n": 70,
+     "wins": 13,
+     "human_door_struck": 70,
+     "human_room_physically_encountered": 70,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 9.78,
+     "room_arrivals": 294,
+     "repeat_room_arrivals": 46,
+     "reassessments": 11,
+     "successful_hall_visits": 18,
+     "boss_transformations": 15,
+     "median_seconds": 225.6,
+     "mean_main_hunter_damage_player": 1423.31,
+     "mean_main_hunter_damage_allies": 1707.74,
+     "median_seconds_in_transit": 87.6,
+     "median_player_attack_contact_s": 17.85,
+     "npc_eliminations": 156
+    },
+    "standard": {
+     "n": 70,
+     "wins": 39,
+     "human_door_struck": 69,
+     "human_room_physically_encountered": 62,
+     "human_zero_damage_no_door_damage_wins": 1,
+     "wins_without_hunter_damage": 4,
+     "first_arrival_after_prep_median_s": 10.9,
+     "room_arrivals": 292,
+     "repeat_room_arrivals": 43,
+     "reassessments": 0,
+     "successful_hall_visits": 39,
+     "boss_transformations": 25,
+     "median_seconds": 309.07,
+     "mean_main_hunter_damage_player": 1536.44,
+     "mean_main_hunter_damage_allies": 3350.38,
+     "median_seconds_in_transit": 102.0,
+     "median_player_attack_contact_s": 13.8,
+     "npc_eliminations": 138
+    }
+   },
+   "policy": {
+    "average": {
+     "n": 30,
+     "wins": 10,
+     "human_door_struck": 30,
+     "human_room_physically_encountered": 30,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 10.28,
+     "room_arrivals": 118,
+     "repeat_room_arrivals": 10,
+     "reassessments": 3,
+     "successful_hall_visits": 11,
+     "boss_transformations": 6,
+     "median_seconds": 263.78,
+     "mean_main_hunter_damage_player": 1785.72,
+     "mean_main_hunter_damage_allies": 1951.95,
+     "median_seconds_in_transit": 96.83,
+     "median_player_attack_contact_s": 21.45,
+     "npc_eliminations": 63
+    },
+    "beginner": {
+     "n": 30,
+     "wins": 0,
+     "human_door_struck": 30,
+     "human_room_physically_encountered": 30,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 10.28,
+     "room_arrivals": 94,
+     "repeat_room_arrivals": 3,
+     "reassessments": 3,
+     "successful_hall_visits": 3,
+     "boss_transformations": 3,
+     "median_seconds": 218.7,
+     "mean_main_hunter_damage_player": 315.42,
+     "mean_main_hunter_damage_allies": 1485.64,
+     "median_seconds_in_transit": 80.18,
+     "median_player_attack_contact_s": 11.85,
+     "npc_eliminations": 54
+    },
+    "defensive": {
+     "n": 30,
+     "wins": 9,
+     "human_door_struck": 30,
+     "human_room_physically_encountered": 29,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 1,
+     "first_arrival_after_prep_median_s": 10.28,
+     "room_arrivals": 121,
+     "repeat_room_arrivals": 16,
+     "reassessments": 4,
+     "successful_hall_visits": 15,
+     "boss_transformations": 6,
+     "median_seconds": 287.25,
+     "mean_main_hunter_damage_player": 1699.26,
+     "mean_main_hunter_damage_allies": 2208.0,
+     "median_seconds_in_transit": 98.33,
+     "median_player_attack_contact_s": 29.85,
+     "npc_eliminations": 63
+    },
+    "item_assisted": {
+     "n": 30,
+     "wins": 22,
+     "human_door_struck": 30,
+     "human_room_physically_encountered": 26,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 1,
+     "first_arrival_after_prep_median_s": 10.28,
+     "room_arrivals": 164,
+     "repeat_room_arrivals": 37,
+     "reassessments": 5,
+     "successful_hall_visits": 21,
+     "boss_transformations": 15,
+     "median_seconds": 332.32,
+     "mean_main_hunter_damage_player": 2646.94,
+     "mean_main_hunter_damage_allies": 3549.16,
+     "median_seconds_in_transit": 110.33,
+     "median_player_attack_contact_s": 22.65,
+     "npc_eliminations": 73
+    },
+    "offensive": {
+     "n": 30,
+     "wins": 12,
+     "human_door_struck": 29,
+     "human_room_physically_encountered": 28,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 10.28,
+     "room_arrivals": 126,
+     "repeat_room_arrivals": 19,
+     "reassessments": 4,
+     "successful_hall_visits": 15,
+     "boss_transformations": 8,
+     "median_seconds": 294.9,
+     "mean_main_hunter_damage_player": 1611.44,
+     "mean_main_hunter_damage_allies": 2505.81,
+     "median_seconds_in_transit": 98.33,
+     "median_player_attack_contact_s": 21.75,
+     "npc_eliminations": 63
+    },
+    "passive": {
+     "n": 30,
+     "wins": 1,
+     "human_door_struck": 29,
+     "human_room_physically_encountered": 28,
+     "human_zero_damage_no_door_damage_wins": 1,
+     "wins_without_hunter_damage": 1,
+     "first_arrival_after_prep_median_s": 10.28,
+     "room_arrivals": 81,
+     "repeat_room_arrivals": 3,
+     "reassessments": 5,
+     "successful_hall_visits": 3,
+     "boss_transformations": 3,
+     "median_seconds": 160.35,
+     "mean_main_hunter_damage_player": 0.0,
+     "mean_main_hunter_damage_allies": 1336.16,
+     "median_seconds_in_transit": 56.85,
+     "median_player_attack_contact_s": 7.95,
+     "npc_eliminations": 40
+    },
+    "skilled": {
+     "n": 30,
+     "wins": 20,
+     "human_door_struck": 30,
+     "human_room_physically_encountered": 28,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 1,
+     "first_arrival_after_prep_median_s": 10.28,
+     "room_arrivals": 162,
+     "repeat_room_arrivals": 33,
+     "reassessments": 5,
+     "successful_hall_visits": 20,
+     "boss_transformations": 15,
+     "median_seconds": 325.35,
+     "mean_main_hunter_damage_player": 2539.0,
+     "mean_main_hunter_damage_allies": 3410.05,
+     "median_seconds_in_transit": 103.13,
+     "median_player_attack_contact_s": 26.1,
+     "npc_eliminations": 75
+    }
+   },
+   "level": {
+    "1": {
+     "n": 21,
+     "wins": 0,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 6.9,
+     "room_arrivals": 78,
+     "repeat_room_arrivals": 0,
+     "reassessments": 0,
+     "successful_hall_visits": 0,
+     "boss_transformations": 0,
+     "median_seconds": 288.0,
+     "mean_main_hunter_damage_player": 598.92,
+     "mean_main_hunter_damage_allies": 1752.72,
+     "median_seconds_in_transit": 94.5,
+     "median_player_attack_contact_s": 21.75,
+     "npc_eliminations": 57
+    },
+    "6": {
+     "n": 21,
+     "wins": 12,
+     "human_door_struck": 19,
+     "human_room_physically_encountered": 19,
+     "human_zero_damage_no_door_damage_wins": 1,
+     "wins_without_hunter_damage": 1,
+     "first_arrival_after_prep_median_s": 32.65,
+     "room_arrivals": 116,
+     "repeat_room_arrivals": 18,
+     "reassessments": 7,
+     "successful_hall_visits": 29,
+     "boss_transformations": 0,
+     "median_seconds": 355.8,
+     "mean_main_hunter_damage_player": 2015.73,
+     "mean_main_hunter_damage_allies": 4370.08,
+     "median_seconds_in_transit": 169.5,
+     "median_player_attack_contact_s": 10.65,
+     "npc_eliminations": 71
+    },
+    "11": {
+     "n": 21,
+     "wins": 5,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 14.3,
+     "room_arrivals": 64,
+     "repeat_room_arrivals": 0,
+     "reassessments": 0,
+     "successful_hall_visits": 2,
+     "boss_transformations": 0,
+     "median_seconds": 246.9,
+     "mean_main_hunter_damage_player": 1555.63,
+     "mean_main_hunter_damage_allies": 1375.78,
+     "median_seconds_in_transit": 96.6,
+     "median_player_attack_contact_s": 19.05,
+     "npc_eliminations": 41
+    },
+    "17": {
+     "n": 21,
+     "wins": 4,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 9.65,
+     "room_arrivals": 115,
+     "repeat_room_arrivals": 9,
+     "reassessments": 0,
+     "successful_hall_visits": 13,
+     "boss_transformations": 0,
+     "median_seconds": 304.35,
+     "mean_main_hunter_damage_player": 2140.69,
+     "mean_main_hunter_damage_allies": 2039.78,
+     "median_seconds_in_transit": 146.85,
+     "median_player_attack_contact_s": 17.85,
+     "npc_eliminations": 82
+    },
+    "23": {
+     "n": 21,
+     "wins": 6,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 10.8,
+     "room_arrivals": 63,
+     "repeat_room_arrivals": 12,
+     "reassessments": 1,
+     "successful_hall_visits": 0,
+     "boss_transformations": 7,
+     "median_seconds": 182.7,
+     "mean_main_hunter_damage_player": 1538.98,
+     "mean_main_hunter_damage_allies": 1095.06,
+     "median_seconds_in_transit": 41.85,
+     "median_player_attack_contact_s": 23.1,
+     "npc_eliminations": 23
+    },
+    "27": {
+     "n": 21,
+     "wins": 10,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 18,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 9.0,
+     "room_arrivals": 85,
+     "repeat_room_arrivals": 25,
+     "reassessments": 10,
+     "successful_hall_visits": 10,
+     "boss_transformations": 10,
+     "median_seconds": 234.15,
+     "mean_main_hunter_damage_player": 1004.14,
+     "mean_main_hunter_damage_allies": 2752.06,
+     "median_seconds_in_transit": 43.95,
+     "median_player_attack_contact_s": 17.55,
+     "npc_eliminations": 18
+    },
+    "32": {
+     "n": 21,
+     "wins": 9,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 18,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 3,
+     "first_arrival_after_prep_median_s": 10.65,
+     "room_arrivals": 85,
+     "repeat_room_arrivals": 17,
+     "reassessments": 11,
+     "successful_hall_visits": 9,
+     "boss_transformations": 9,
+     "median_seconds": 163.8,
+     "mean_main_hunter_damage_player": 577.4,
+     "mean_main_hunter_damage_allies": 2803.43,
+     "median_seconds_in_transit": 30.3,
+     "median_player_attack_contact_s": 31.2,
+     "npc_eliminations": 26
+    },
+    "36": {
+     "n": 21,
+     "wins": 15,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 18,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 5.3,
+     "room_arrivals": 119,
+     "repeat_room_arrivals": 21,
+     "reassessments": 0,
+     "successful_hall_visits": 12,
+     "boss_transformations": 21,
+     "median_seconds": 328.65,
+     "mean_main_hunter_damage_player": 1966.86,
+     "mean_main_hunter_damage_allies": 3316.33,
+     "median_seconds_in_transit": 128.7,
+     "median_player_attack_contact_s": 9.9,
+     "npc_eliminations": 43
+    },
+    "44": {
+     "n": 21,
+     "wins": 4,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 2.35,
+     "room_arrivals": 75,
+     "repeat_room_arrivals": 4,
+     "reassessments": 0,
+     "successful_hall_visits": 9,
+     "boss_transformations": 0,
+     "median_seconds": 170.55,
+     "mean_main_hunter_damage_player": 1592.15,
+     "mean_main_hunter_damage_allies": 2037.38,
+     "median_seconds_in_transit": 25.5,
+     "median_player_attack_contact_s": 20.55,
+     "npc_eliminations": 50
+    },
+    "50": {
+     "n": 21,
+     "wins": 9,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 53.2,
+     "room_arrivals": 66,
+     "repeat_room_arrivals": 15,
+     "reassessments": 0,
+     "successful_hall_visits": 4,
+     "boss_transformations": 9,
+     "median_seconds": 201.3,
+     "mean_main_hunter_damage_player": 2149.18,
+     "mean_main_hunter_damage_allies": 1952.76,
+     "median_seconds_in_transit": 84.3,
+     "median_player_attack_contact_s": 24.6,
+     "npc_eliminations": 20
+    }
+   },
+   "archetype": {
+    "crusher": {
+     "n": 42,
+     "wins": 9,
+     "human_door_struck": 42,
+     "human_room_physically_encountered": 42,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 27.73,
+     "room_arrivals": 144,
+     "repeat_room_arrivals": 15,
+     "reassessments": 0,
+     "successful_hall_visits": 4,
+     "boss_transformations": 9,
+     "median_seconds": 280.2,
+     "mean_main_hunter_damage_player": 1374.05,
+     "mean_main_hunter_damage_allies": 1852.74,
+     "median_seconds_in_transit": 93.9,
+     "median_player_attack_contact_s": 23.17,
+     "npc_eliminations": 77
+    },
+    "electric": {
+     "n": 42,
+     "wins": 8,
+     "human_door_struck": 42,
+     "human_room_physically_encountered": 42,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 5.93,
+     "room_arrivals": 190,
+     "repeat_room_arrivals": 13,
+     "reassessments": 0,
+     "successful_hall_visits": 22,
+     "boss_transformations": 0,
+     "median_seconds": 273.53,
+     "mean_main_hunter_damage_player": 1866.42,
+     "mean_main_hunter_damage_allies": 2038.58,
+     "median_seconds_in_transit": 139.88,
+     "median_player_attack_contact_s": 17.85,
+     "npc_eliminations": 132
+    },
+    "ravager": {
+     "n": 42,
+     "wins": 15,
+     "human_door_struck": 42,
+     "human_room_physically_encountered": 39,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 11.73,
+     "room_arrivals": 149,
+     "repeat_room_arrivals": 25,
+     "reassessments": 10,
+     "successful_hall_visits": 12,
+     "boss_transformations": 10,
+     "median_seconds": 243.6,
+     "mean_main_hunter_damage_player": 1279.88,
+     "mean_main_hunter_damage_allies": 2063.92,
+     "median_seconds_in_transit": 90.45,
+     "median_player_attack_contact_s": 17.78,
+     "npc_eliminations": 59
+    },
+    "stalker": {
+     "n": 42,
+     "wins": 21,
+     "human_door_struck": 40,
+     "human_room_physically_encountered": 37,
+     "human_zero_damage_no_door_damage_wins": 1,
+     "wins_without_hunter_damage": 4,
+     "first_arrival_after_prep_median_s": 21.43,
+     "room_arrivals": 201,
+     "repeat_room_arrivals": 35,
+     "reassessments": 18,
+     "successful_hall_visits": 38,
+     "boss_transformations": 9,
+     "median_seconds": 317.92,
+     "mean_main_hunter_damage_player": 1296.56,
+     "mean_main_hunter_damage_allies": 3586.75,
+     "median_seconds_in_transit": 100.05,
+     "median_player_attack_contact_s": 13.13,
+     "npc_eliminations": 97
+    },
+    "storm": {
+     "n": 21,
+     "wins": 6,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 10.8,
+     "room_arrivals": 63,
+     "repeat_room_arrivals": 12,
+     "reassessments": 1,
+     "successful_hall_visits": 0,
+     "boss_transformations": 7,
+     "median_seconds": 182.7,
+     "mean_main_hunter_damage_player": 1538.98,
+     "mean_main_hunter_damage_allies": 1095.06,
+     "median_seconds_in_transit": 41.85,
+     "median_player_attack_contact_s": 23.1,
+     "npc_eliminations": 23
+    },
+    "witch": {
+     "n": 21,
+     "wins": 15,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 18,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 5.3,
+     "room_arrivals": 119,
+     "repeat_room_arrivals": 21,
+     "reassessments": 0,
+     "successful_hall_visits": 12,
+     "boss_transformations": 21,
+     "median_seconds": 328.65,
+     "mean_main_hunter_damage_player": 1966.86,
+     "mean_main_hunter_damage_allies": 3316.33,
+     "median_seconds_in_transit": 128.7,
+     "median_player_attack_contact_s": 9.9,
+     "npc_eliminations": 43
+    }
+   },
+   "family": {
+    "branching": {
+     "n": 21,
+     "wins": 4,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 9.65,
+     "room_arrivals": 115,
+     "repeat_room_arrivals": 9,
+     "reassessments": 0,
+     "successful_hall_visits": 13,
+     "boss_transformations": 0,
+     "median_seconds": 304.35,
+     "mean_main_hunter_damage_player": 2140.69,
+     "mean_main_hunter_damage_allies": 2039.78,
+     "median_seconds_in_transit": 146.85,
+     "median_player_attack_contact_s": 17.85,
+     "npc_eliminations": 82
+    },
+    "hybrid": {
+     "n": 42,
+     "wins": 13,
+     "human_door_struck": 42,
+     "human_room_physically_encountered": 42,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 25.23,
+     "room_arrivals": 141,
+     "repeat_room_arrivals": 19,
+     "reassessments": 0,
+     "successful_hall_visits": 13,
+     "boss_transformations": 9,
+     "median_seconds": 188.78,
+     "mean_main_hunter_damage_player": 1870.66,
+     "mean_main_hunter_damage_allies": 1995.07,
+     "median_seconds_in_transit": 57.9,
+     "median_player_attack_contact_s": 22.95,
+     "npc_eliminations": 70
+    },
+    "labyrinth": {
+     "n": 21,
+     "wins": 9,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 18,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 3,
+     "first_arrival_after_prep_median_s": 10.65,
+     "room_arrivals": 85,
+     "repeat_room_arrivals": 17,
+     "reassessments": 11,
+     "successful_hall_visits": 9,
+     "boss_transformations": 9,
+     "median_seconds": 163.8,
+     "mean_main_hunter_damage_player": 577.4,
+     "mean_main_hunter_damage_allies": 2803.43,
+     "median_seconds_in_transit": 30.3,
+     "median_player_attack_contact_s": 31.2,
+     "npc_eliminations": 26
+    },
+    "radial": {
+     "n": 42,
+     "wins": 21,
+     "human_door_struck": 42,
+     "human_room_physically_encountered": 39,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 8.05,
+     "room_arrivals": 182,
+     "repeat_room_arrivals": 33,
+     "reassessments": 1,
+     "successful_hall_visits": 12,
+     "boss_transformations": 28,
+     "median_seconds": 284.48,
+     "mean_main_hunter_damage_player": 1752.92,
+     "mean_main_hunter_damage_allies": 2205.69,
+     "median_seconds_in_transit": 91.88,
+     "median_player_attack_contact_s": 13.28,
+     "npc_eliminations": 66
+    },
+    "ring": {
+     "n": 21,
+     "wins": 0,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 6.9,
+     "room_arrivals": 78,
+     "repeat_room_arrivals": 0,
+     "reassessments": 0,
+     "successful_hall_visits": 0,
+     "boss_transformations": 0,
+     "median_seconds": 288.0,
+     "mean_main_hunter_damage_player": 598.92,
+     "mean_main_hunter_damage_allies": 1752.72,
+     "median_seconds_in_transit": 94.5,
+     "median_player_attack_contact_s": 21.75,
+     "npc_eliminations": 57
+    },
+    "scattered": {
+     "n": 21,
+     "wins": 5,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 14.3,
+     "room_arrivals": 64,
+     "repeat_room_arrivals": 0,
+     "reassessments": 0,
+     "successful_hall_visits": 2,
+     "boss_transformations": 0,
+     "median_seconds": 246.9,
+     "mean_main_hunter_damage_player": 1555.63,
+     "mean_main_hunter_damage_allies": 1375.78,
+     "median_seconds_in_transit": 96.6,
+     "median_player_attack_contact_s": 19.05,
+     "npc_eliminations": 41
+    },
+    "zigzag": {
+     "n": 42,
+     "wins": 22,
+     "human_door_struck": 40,
+     "human_room_physically_encountered": 37,
+     "human_zero_damage_no_door_damage_wins": 1,
+     "wins_without_hunter_damage": 1,
+     "first_arrival_after_prep_median_s": 20.53,
+     "room_arrivals": 201,
+     "repeat_room_arrivals": 43,
+     "reassessments": 17,
+     "successful_hall_visits": 39,
+     "boss_transformations": 10,
+     "median_seconds": 300.98,
+     "mean_main_hunter_damage_player": 1509.93,
+     "mean_main_hunter_damage_allies": 3561.07,
+     "median_seconds_in_transit": 95.4,
+     "median_player_attack_contact_s": 12.45,
+     "npc_eliminations": 89
+    }
+   },
+   "room": {
+    "1": {
+     "n": 21,
+     "wins": 9,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 18,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 3,
+     "first_arrival_after_prep_median_s": 10.65,
+     "room_arrivals": 85,
+     "repeat_room_arrivals": 17,
+     "reassessments": 11,
+     "successful_hall_visits": 9,
+     "boss_transformations": 9,
+     "median_seconds": 163.8,
+     "mean_main_hunter_damage_player": 577.4,
+     "mean_main_hunter_damage_allies": 2803.43,
+     "median_seconds_in_transit": 30.3,
+     "median_player_attack_contact_s": 31.2,
+     "npc_eliminations": 26
+    },
+    "2": {
+     "n": 84,
+     "wins": 36,
+     "human_door_struck": 84,
+     "human_room_physically_encountered": 78,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 9.98,
+     "room_arrivals": 331,
+     "repeat_room_arrivals": 58,
+     "reassessments": 11,
+     "successful_hall_visits": 24,
+     "boss_transformations": 38,
+     "median_seconds": 251.85,
+     "mean_main_hunter_damage_player": 1516.4,
+     "mean_main_hunter_damage_allies": 2134.81,
+     "median_seconds_in_transit": 90.45,
+     "median_player_attack_contact_s": 17.03,
+     "npc_eliminations": 125
+    },
+    "4": {
+     "n": 63,
+     "wins": 13,
+     "human_door_struck": 63,
+     "human_room_physically_encountered": 63,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 6.9,
+     "room_arrivals": 219,
+     "repeat_room_arrivals": 19,
+     "reassessments": 0,
+     "successful_hall_visits": 13,
+     "boss_transformations": 9,
+     "median_seconds": 238.35,
+     "mean_main_hunter_damage_player": 1446.75,
+     "mean_main_hunter_damage_allies": 1914.29,
+     "median_seconds_in_transit": 84.3,
+     "median_player_attack_contact_s": 22.95,
+     "npc_eliminations": 127
+    },
+    "6": {
+     "n": 42,
+     "wins": 16,
+     "human_door_struck": 40,
+     "human_room_physically_encountered": 40,
+     "human_zero_damage_no_door_damage_wins": 1,
+     "wins_without_hunter_damage": 1,
+     "first_arrival_after_prep_median_s": 20.93,
+     "room_arrivals": 231,
+     "repeat_room_arrivals": 27,
+     "reassessments": 7,
+     "successful_hall_visits": 42,
+     "boss_transformations": 0,
+     "median_seconds": 304.35,
+     "mean_main_hunter_damage_player": 2078.21,
+     "mean_main_hunter_damage_allies": 3204.93,
+     "median_seconds_in_transit": 146.85,
+     "median_player_attack_contact_s": 11.85,
+     "npc_eliminations": 153
+    }
+   },
+   "chapter_band_by_difficulty": {
+    "early_1_15": {
+     "hard": {
+      "n": 21,
+      "wins": 7,
+      "human_door_struck": 20,
+      "human_room_physically_encountered": 20,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 14.3,
+      "room_arrivals": 86,
+      "repeat_room_arrivals": 1,
+      "reassessments": 0,
+      "successful_hall_visits": 12,
+      "boss_transformations": 0,
+      "median_seconds": 288.0,
+      "mean_main_hunter_damage_player": 1252.04,
+      "mean_main_hunter_damage_allies": 2526.83,
+      "median_seconds_in_transit": 99.45,
+      "median_player_attack_contact_s": 12.6,
+      "npc_eliminations": 58
+     },
+     "hell": {
+      "n": 21,
+      "wins": 1,
+      "human_door_struck": 21,
+      "human_room_physically_encountered": 21,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 13.85,
+      "room_arrivals": 103,
+      "repeat_room_arrivals": 17,
+      "reassessments": 7,
+      "successful_hall_visits": 11,
+      "boss_transformations": 0,
+      "median_seconds": 254.85,
+      "mean_main_hunter_damage_player": 1487.02,
+      "mean_main_hunter_damage_allies": 1891.5,
+      "median_seconds_in_transit": 96.3,
+      "median_player_attack_contact_s": 14.55,
+      "npc_eliminations": 64
+     },
+     "standard": {
+      "n": 21,
+      "wins": 9,
+      "human_door_struck": 20,
+      "human_room_physically_encountered": 20,
+      "human_zero_damage_no_door_damage_wins": 1,
+      "wins_without_hunter_damage": 1,
+      "first_arrival_after_prep_median_s": 15.35,
+      "room_arrivals": 69,
+      "repeat_room_arrivals": 0,
+      "reassessments": 0,
+      "successful_hall_visits": 8,
+      "boss_transformations": 0,
+      "median_seconds": 300.15,
+      "mean_main_hunter_damage_player": 1431.22,
+      "mean_main_hunter_damage_allies": 3080.24,
+      "median_seconds_in_transit": 95.4,
+      "median_player_attack_contact_s": 16.8,
+      "npc_eliminations": 47
+     }
+    },
+    "middle_16_34": {
+     "hard": {
+      "n": 28,
+      "wins": 7,
+      "human_door_struck": 28,
+      "human_room_physically_encountered": 27,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 10.15,
+      "room_arrivals": 117,
+      "repeat_room_arrivals": 26,
+      "reassessments": 18,
+      "successful_hall_visits": 10,
+      "boss_transformations": 7,
+      "median_seconds": 204.75,
+      "mean_main_hunter_damage_player": 1468.8,
+      "mean_main_hunter_damage_allies": 1793.2,
+      "median_seconds_in_transit": 49.42,
+      "median_player_attack_contact_s": 22.5,
+      "npc_eliminations": 41
+     },
+     "hell": {
+      "n": 28,
+      "wins": 5,
+      "human_door_struck": 28,
+      "human_room_physically_encountered": 28,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 9.78,
+      "room_arrivals": 103,
+      "repeat_room_arrivals": 14,
+      "reassessments": 4,
+      "successful_hall_visits": 4,
+      "boss_transformations": 6,
+      "median_seconds": 165.08,
+      "mean_main_hunter_damage_player": 1088.13,
+      "mean_main_hunter_damage_allies": 1496.97,
+      "median_seconds_in_transit": 39.15,
+      "median_player_attack_contact_s": 18.08,
+      "npc_eliminations": 50
+     },
+     "standard": {
+      "n": 28,
+      "wins": 17,
+      "human_door_struck": 28,
+      "human_room_physically_encountered": 23,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 3,
+      "first_arrival_after_prep_median_s": 10.9,
+      "room_arrivals": 128,
+      "repeat_room_arrivals": 23,
+      "reassessments": 0,
+      "successful_hall_visits": 18,
+      "boss_transformations": 13,
+      "median_seconds": 333.37,
+      "mean_main_hunter_damage_player": 1388.97,
+      "mean_main_hunter_damage_allies": 3227.57,
+      "median_seconds_in_transit": 102.0,
+      "median_player_attack_contact_s": 10.8,
+      "npc_eliminations": 58
+     }
+    },
+    "late_35_50": {
+     "hard": {
+      "n": 21,
+      "wins": 8,
+      "human_door_struck": 21,
+      "human_room_physically_encountered": 20,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 5.3,
+      "room_arrivals": 77,
+      "repeat_room_arrivals": 5,
+      "reassessments": 0,
+      "successful_hall_visits": 9,
+      "boss_transformations": 9,
+      "median_seconds": 221.25,
+      "mean_main_hunter_damage_player": 2063.38,
+      "mean_main_hunter_damage_allies": 1717.21,
+      "median_seconds_in_transit": 84.3,
+      "median_player_attack_contact_s": 26.25,
+      "npc_eliminations": 38
+     },
+     "hell": {
+      "n": 21,
+      "wins": 7,
+      "human_door_struck": 21,
+      "human_room_physically_encountered": 21,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 5.15,
+      "room_arrivals": 88,
+      "repeat_room_arrivals": 15,
+      "reassessments": 0,
+      "successful_hall_visits": 3,
+      "boss_transformations": 9,
+      "median_seconds": 187.2,
+      "mean_main_hunter_damage_player": 1806.51,
+      "mean_main_hunter_damage_allies": 1804.99,
+      "median_seconds_in_transit": 76.2,
+      "median_player_attack_contact_s": 15.45,
+      "npc_eliminations": 42
+     },
+     "standard": {
+      "n": 21,
+      "wins": 13,
+      "human_door_struck": 21,
+      "human_room_physically_encountered": 19,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 5.75,
+      "room_arrivals": 95,
+      "repeat_room_arrivals": 20,
+      "reassessments": 0,
+      "successful_hall_visits": 13,
+      "boss_transformations": 12,
+      "median_seconds": 325.35,
+      "mean_main_hunter_damage_player": 1838.3,
+      "mean_main_hunter_damage_allies": 3784.27,
+      "median_seconds_in_transit": 109.5,
+      "median_player_attack_contact_s": 17.85,
+      "npc_eliminations": 33
+     }
+    }
+   },
+   "difficulty_policy_wins": {
+    "hard": {
+     "average": 2,
+     "beginner": 0,
+     "defensive": 2,
+     "item_assisted": 8,
+     "offensive": 3,
+     "passive": 0,
+     "skilled": 7
+    },
+    "hell": {
+     "average": 2,
+     "beginner": 0,
+     "defensive": 1,
+     "item_assisted": 5,
+     "offensive": 1,
+     "passive": 0,
+     "skilled": 4
+    },
+    "standard": {
+     "average": 6,
+     "beginner": 0,
+     "defensive": 6,
+     "item_assisted": 9,
+     "offensive": 8,
+     "passive": 1,
+     "skilled": 9
+    }
+   },
+   "unassisted_carries": [
+    {
+     "id": "development-147",
+     "seed": 2717961,
+     "room": 6,
+     "seconds": 294.45,
+     "arrivals": [
+      2,
+      3,
+      1
+     ],
+     "choices": [
+      [
+       44.1,
+       2,
+       "approach"
+      ],
+      [
+       135.75,
+       3,
+       "approach"
+      ],
+      [
+       236.70000000000002,
+       6,
+       "approach"
+      ],
+      [
+       265.35,
+       1,
+       "approach"
+      ]
+     ],
+     "ally_damage_by_room": [
+      2146.4,
+      567.0,
+      3240.0,
+      0.0,
+      0.0
+     ]
+    }
+   ],
+   "matched_gold_crate": [
+    {
+     "id": "development-6",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 48.6,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "development-13",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 101.12,
+     "delta_elapsed_seconds": -5.25
+    },
+    {
+     "id": "development-20",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 1071.0,
+     "delta_elapsed_seconds": 17.1
+    },
+    {
+     "id": "development-27",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -57.6,
+     "delta_elapsed_seconds": 2.85
+    },
+    {
+     "id": "development-34",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 125.98,
+     "delta_elapsed_seconds": -91.2
+    },
+    {
+     "id": "development-41",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 47.09,
+     "delta_elapsed_seconds": 42.75
+    },
+    {
+     "id": "development-48",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": 1.95
+    },
+    {
+     "id": "development-55",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -1254.13,
+     "delta_elapsed_seconds": 16.2
+    },
+    {
+     "id": "development-62",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 576.0,
+     "delta_elapsed_seconds": 5.55
+    },
+    {
+     "id": "development-69",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.01,
+     "delta_elapsed_seconds": -1.65
+    },
+    {
+     "id": "development-76",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 204.12,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "development-83",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 10.0,
+     "delta_elapsed_seconds": -3.45
+    },
+    {
+     "id": "development-90",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -1004.15,
+     "delta_elapsed_seconds": 10.2
+    },
+    {
+     "id": "development-97",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": -2246.4,
+     "delta_elapsed_seconds": -89.7
+    },
+    {
+     "id": "development-104",
+     "no_item": "defeat",
+     "crate": "victory",
+     "delta_player_damage": 1637.63,
+     "delta_elapsed_seconds": 82.35
+    },
+    {
+     "id": "development-111",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 54.0,
+     "delta_elapsed_seconds": -68.85
+    },
+    {
+     "id": "development-118",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 126.15,
+     "delta_elapsed_seconds": 16.65
+    },
+    {
+     "id": "development-125",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 3392.76,
+     "delta_elapsed_seconds": -70.05
+    },
+    {
+     "id": "development-132",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -938.82,
+     "delta_elapsed_seconds": -18.6
+    },
+    {
+     "id": "development-139",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -0.04,
+     "delta_elapsed_seconds": -7.35
+    },
+    {
+     "id": "development-146",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 168.26,
+     "delta_elapsed_seconds": 2.4
+    },
+    {
+     "id": "development-153",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": -4.05
+    },
+    {
+     "id": "development-160",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 2159.8,
+     "delta_elapsed_seconds": -59.4
+    },
+    {
+     "id": "development-167",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 327.6,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "development-174",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -2816.86,
+     "delta_elapsed_seconds": 142.65
+    },
+    {
+     "id": "development-181",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -1584.0,
+     "delta_elapsed_seconds": -17.1
+    },
+    {
+     "id": "development-188",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": -0.15
+    },
+    {
+     "id": "development-195",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 27.0,
+     "delta_elapsed_seconds": -3.0
+    },
+    {
+     "id": "development-202",
+     "no_item": "defeat",
+     "crate": "victory",
+     "delta_player_damage": 2629.05,
+     "delta_elapsed_seconds": 203.1
+    },
+    {
+     "id": "development-209",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 434.0,
+     "delta_elapsed_seconds": -7.8
+    }
+   ],
+   "untouched_zero_damage_victories": [
+    {
+     "id": "development-147",
+     "policy": "passive",
+     "own_gold_spent": 0.0,
+     "passive_twin_result": "victory",
+     "passive_twin_contact": 0.0,
+     "own_room_chosen": true
+    }
+   ]
+  },
+  "candidate": {
+   "overall": {
+    "n": 210,
+    "wins": 73,
+    "human_door_struck": 202,
+    "human_room_physically_encountered": 194,
+    "human_zero_damage_no_door_damage_wins": 8,
+    "wins_without_hunter_damage": 10,
+    "first_arrival_after_prep_median_s": 10.28,
+    "room_arrivals": 940,
+    "repeat_room_arrivals": 194,
+    "reassessments": 208,
+    "successful_hall_visits": 76,
+    "boss_transformations": 54,
+    "median_seconds": 282.53,
+    "mean_main_hunter_damage_player": 1419.83,
+    "mean_main_hunter_damage_allies": 2374.11,
+    "median_seconds_in_transit": 101.1,
+    "median_player_attack_contact_s": 19.12,
+    "npc_eliminations": 365
+   },
+   "difficulty": {
+    "hard": {
+     "n": 70,
+     "wins": 21,
+     "human_door_struck": 67,
+     "human_room_physically_encountered": 65,
+     "human_zero_damage_no_door_damage_wins": 3,
+     "wins_without_hunter_damage": 3,
+     "first_arrival_after_prep_median_s": 10.15,
+     "room_arrivals": 294,
+     "repeat_room_arrivals": 49,
+     "reassessments": 53,
+     "successful_hall_visits": 22,
+     "boss_transformations": 15,
+     "median_seconds": 281.18,
+     "mean_main_hunter_damage_player": 1399.83,
+     "mean_main_hunter_damage_allies": 2173.23,
+     "median_seconds_in_transit": 103.95,
+     "median_player_attack_contact_s": 20.7,
+     "npc_eliminations": 128
+    },
+    "hell": {
+     "n": 70,
+     "wins": 10,
+     "human_door_struck": 70,
+     "human_room_physically_encountered": 70,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 9.78,
+     "room_arrivals": 314,
+     "repeat_room_arrivals": 67,
+     "reassessments": 79,
+     "successful_hall_visits": 15,
+     "boss_transformations": 15,
+     "median_seconds": 237.45,
+     "mean_main_hunter_damage_player": 1335.02,
+     "mean_main_hunter_damage_allies": 1672.73,
+     "median_seconds_in_transit": 101.1,
+     "median_player_attack_contact_s": 17.85,
+     "npc_eliminations": 126
+    },
+    "standard": {
+     "n": 70,
+     "wins": 42,
+     "human_door_struck": 65,
+     "human_room_physically_encountered": 59,
+     "human_zero_damage_no_door_damage_wins": 5,
+     "wins_without_hunter_damage": 7,
+     "first_arrival_after_prep_median_s": 10.9,
+     "room_arrivals": 332,
+     "repeat_room_arrivals": 78,
+     "reassessments": 76,
+     "successful_hall_visits": 39,
+     "boss_transformations": 24,
+     "median_seconds": 306.97,
+     "mean_main_hunter_damage_player": 1524.62,
+     "mean_main_hunter_damage_allies": 3276.38,
+     "median_seconds_in_transit": 99.53,
+     "median_player_attack_contact_s": 17.85,
+     "npc_eliminations": 111
+    }
+   },
+   "policy": {
+    "average": {
+     "n": 30,
+     "wins": 11,
+     "human_door_struck": 29,
+     "human_room_physically_encountered": 29,
+     "human_zero_damage_no_door_damage_wins": 1,
+     "wins_without_hunter_damage": 1,
+     "first_arrival_after_prep_median_s": 10.28,
+     "room_arrivals": 128,
+     "repeat_room_arrivals": 26,
+     "reassessments": 29,
+     "successful_hall_visits": 9,
+     "boss_transformations": 7,
+     "median_seconds": 274.8,
+     "mean_main_hunter_damage_player": 1679.25,
+     "mean_main_hunter_damage_allies": 2061.6,
+     "median_seconds_in_transit": 99.68,
+     "median_player_attack_contact_s": 28.87,
+     "npc_eliminations": 48
+    },
+    "beginner": {
+     "n": 30,
+     "wins": 0,
+     "human_door_struck": 30,
+     "human_room_physically_encountered": 30,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 10.28,
+     "room_arrivals": 102,
+     "repeat_room_arrivals": 9,
+     "reassessments": 25,
+     "successful_hall_visits": 3,
+     "boss_transformations": 2,
+     "median_seconds": 198.53,
+     "mean_main_hunter_damage_player": 285.72,
+     "mean_main_hunter_damage_allies": 1386.51,
+     "median_seconds_in_transit": 81.83,
+     "median_player_attack_contact_s": 13.73,
+     "npc_eliminations": 43
+    },
+    "defensive": {
+     "n": 30,
+     "wins": 12,
+     "human_door_struck": 28,
+     "human_room_physically_encountered": 27,
+     "human_zero_damage_no_door_damage_wins": 2,
+     "wins_without_hunter_damage": 3,
+     "first_arrival_after_prep_median_s": 10.28,
+     "room_arrivals": 138,
+     "repeat_room_arrivals": 29,
+     "reassessments": 29,
+     "successful_hall_visits": 14,
+     "boss_transformations": 7,
+     "median_seconds": 302.02,
+     "mean_main_hunter_damage_player": 1523.96,
+     "mean_main_hunter_damage_allies": 2593.25,
+     "median_seconds_in_transit": 107.4,
+     "median_player_attack_contact_s": 28.8,
+     "npc_eliminations": 54
+    },
+    "item_assisted": {
+     "n": 30,
+     "wins": 22,
+     "human_door_struck": 28,
+     "human_room_physically_encountered": 23,
+     "human_zero_damage_no_door_damage_wins": 2,
+     "wins_without_hunter_damage": 3,
+     "first_arrival_after_prep_median_s": 10.28,
+     "room_arrivals": 181,
+     "repeat_room_arrivals": 48,
+     "reassessments": 30,
+     "successful_hall_visits": 21,
+     "boss_transformations": 15,
+     "median_seconds": 341.1,
+     "mean_main_hunter_damage_player": 2613.93,
+     "mean_main_hunter_damage_allies": 3774.57,
+     "median_seconds_in_transit": 134.48,
+     "median_player_attack_contact_s": 22.12,
+     "npc_eliminations": 77
+    },
+    "offensive": {
+     "n": 30,
+     "wins": 9,
+     "human_door_struck": 29,
+     "human_room_physically_encountered": 28,
+     "human_zero_damage_no_door_damage_wins": 1,
+     "wins_without_hunter_damage": 1,
+     "first_arrival_after_prep_median_s": 10.28,
+     "room_arrivals": 123,
+     "repeat_room_arrivals": 25,
+     "reassessments": 32,
+     "successful_hall_visits": 10,
+     "boss_transformations": 7,
+     "median_seconds": 267.08,
+     "mean_main_hunter_damage_player": 1439.48,
+     "mean_main_hunter_damage_allies": 2166.79,
+     "median_seconds_in_transit": 97.8,
+     "median_player_attack_contact_s": 22.05,
+     "npc_eliminations": 44
+    },
+    "passive": {
+     "n": 30,
+     "wins": 0,
+     "human_door_struck": 30,
+     "human_room_physically_encountered": 29,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 10.28,
+     "room_arrivals": 92,
+     "repeat_room_arrivals": 9,
+     "reassessments": 26,
+     "successful_hall_visits": 2,
+     "boss_transformations": 2,
+     "median_seconds": 156.83,
+     "mean_main_hunter_damage_player": 0.0,
+     "mean_main_hunter_damage_allies": 1226.43,
+     "median_seconds_in_transit": 60.15,
+     "median_player_attack_contact_s": 9.53,
+     "npc_eliminations": 33
+    },
+    "skilled": {
+     "n": 30,
+     "wins": 19,
+     "human_door_struck": 28,
+     "human_room_physically_encountered": 28,
+     "human_zero_damage_no_door_damage_wins": 2,
+     "wins_without_hunter_damage": 2,
+     "first_arrival_after_prep_median_s": 10.28,
+     "room_arrivals": 176,
+     "repeat_room_arrivals": 48,
+     "reassessments": 37,
+     "successful_hall_visits": 17,
+     "boss_transformations": 14,
+     "median_seconds": 316.8,
+     "mean_main_hunter_damage_player": 2396.45,
+     "mean_main_hunter_damage_allies": 3409.64,
+     "median_seconds_in_transit": 116.48,
+     "median_player_attack_contact_s": 27.15,
+     "npc_eliminations": 66
+    }
+   },
+   "level": {
+    "1": {
+     "n": 21,
+     "wins": 5,
+     "human_door_struck": 16,
+     "human_room_physically_encountered": 16,
+     "human_zero_damage_no_door_damage_wins": 5,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 6.9,
+     "room_arrivals": 98,
+     "repeat_room_arrivals": 21,
+     "reassessments": 21,
+     "successful_hall_visits": 0,
+     "boss_transformations": 0,
+     "median_seconds": 325.35,
+     "mean_main_hunter_damage_player": 222.26,
+     "mean_main_hunter_damage_allies": 3622.19,
+     "median_seconds_in_transit": 130.05,
+     "median_player_attack_contact_s": 15.9,
+     "npc_eliminations": 56
+    },
+    "6": {
+     "n": 21,
+     "wins": 10,
+     "human_door_struck": 18,
+     "human_room_physically_encountered": 18,
+     "human_zero_damage_no_door_damage_wins": 3,
+     "wins_without_hunter_damage": 3,
+     "first_arrival_after_prep_median_s": 32.65,
+     "room_arrivals": 103,
+     "repeat_room_arrivals": 10,
+     "reassessments": 25,
+     "successful_hall_visits": 15,
+     "boss_transformations": 0,
+     "median_seconds": 301.95,
+     "mean_main_hunter_damage_player": 1064.96,
+     "mean_main_hunter_damage_allies": 3891.25,
+     "median_seconds_in_transit": 98.4,
+     "median_player_attack_contact_s": 8.4,
+     "npc_eliminations": 52
+    },
+    "11": {
+     "n": 21,
+     "wins": 6,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 14.3,
+     "room_arrivals": 84,
+     "repeat_room_arrivals": 19,
+     "reassessments": 32,
+     "successful_hall_visits": 3,
+     "boss_transformations": 0,
+     "median_seconds": 241.35,
+     "mean_main_hunter_damage_player": 1494.07,
+     "mean_main_hunter_damage_allies": 1633.28,
+     "median_seconds_in_transit": 101.1,
+     "median_player_attack_contact_s": 19.65,
+     "npc_eliminations": 30
+    },
+    "17": {
+     "n": 21,
+     "wins": 4,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 9.65,
+     "room_arrivals": 122,
+     "repeat_room_arrivals": 13,
+     "reassessments": 7,
+     "successful_hall_visits": 12,
+     "boss_transformations": 0,
+     "median_seconds": 304.35,
+     "mean_main_hunter_damage_player": 2199.44,
+     "mean_main_hunter_damage_allies": 1874.61,
+     "median_seconds_in_transit": 146.85,
+     "median_player_attack_contact_s": 17.85,
+     "npc_eliminations": 88
+    },
+    "23": {
+     "n": 21,
+     "wins": 5,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 19,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 10.8,
+     "room_arrivals": 57,
+     "repeat_room_arrivals": 5,
+     "reassessments": 21,
+     "successful_hall_visits": 0,
+     "boss_transformations": 5,
+     "median_seconds": 147.75,
+     "mean_main_hunter_damage_player": 1424.09,
+     "mean_main_hunter_damage_allies": 883.49,
+     "median_seconds_in_transit": 36.3,
+     "median_player_attack_contact_s": 26.1,
+     "npc_eliminations": 5
+    },
+    "27": {
+     "n": 21,
+     "wins": 12,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 20,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 9.0,
+     "room_arrivals": 108,
+     "repeat_room_arrivals": 41,
+     "reassessments": 43,
+     "successful_hall_visits": 13,
+     "boss_transformations": 12,
+     "median_seconds": 304.95,
+     "mean_main_hunter_damage_player": 1237.79,
+     "mean_main_hunter_damage_allies": 2923.19,
+     "median_seconds_in_transit": 91.5,
+     "median_player_attack_contact_s": 21.6,
+     "npc_eliminations": 6
+    },
+    "32": {
+     "n": 21,
+     "wins": 6,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 19,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 2,
+     "first_arrival_after_prep_median_s": 10.65,
+     "room_arrivals": 93,
+     "repeat_room_arrivals": 29,
+     "reassessments": 27,
+     "successful_hall_visits": 9,
+     "boss_transformations": 9,
+     "median_seconds": 128.25,
+     "mean_main_hunter_damage_player": 714.38,
+     "mean_main_hunter_damage_allies": 2189.23,
+     "median_seconds_in_transit": 26.4,
+     "median_player_attack_contact_s": 30.6,
+     "npc_eliminations": 20
+    },
+    "36": {
+     "n": 21,
+     "wins": 12,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 18,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 5.3,
+     "room_arrivals": 112,
+     "repeat_room_arrivals": 22,
+     "reassessments": 6,
+     "successful_hall_visits": 11,
+     "boss_transformations": 19,
+     "median_seconds": 319.65,
+     "mean_main_hunter_damage_player": 1928.37,
+     "mean_main_hunter_damage_allies": 2940.07,
+     "median_seconds_in_transit": 121.95,
+     "median_player_attack_contact_s": 13.95,
+     "npc_eliminations": 44
+    },
+    "44": {
+     "n": 21,
+     "wins": 4,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 2.35,
+     "room_arrivals": 94,
+     "repeat_room_arrivals": 18,
+     "reassessments": 24,
+     "successful_hall_visits": 9,
+     "boss_transformations": 0,
+     "median_seconds": 179.25,
+     "mean_main_hunter_damage_player": 1657.39,
+     "mean_main_hunter_damage_allies": 1940.24,
+     "median_seconds_in_transit": 25.65,
+     "median_player_attack_contact_s": 24.0,
+     "npc_eliminations": 44
+    },
+    "50": {
+     "n": 21,
+     "wins": 9,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 53.2,
+     "room_arrivals": 69,
+     "repeat_room_arrivals": 16,
+     "reassessments": 2,
+     "successful_hall_visits": 4,
+     "boss_transformations": 9,
+     "median_seconds": 201.3,
+     "mean_main_hunter_damage_player": 2255.53,
+     "mean_main_hunter_damage_allies": 1843.59,
+     "median_seconds_in_transit": 84.3,
+     "median_player_attack_contact_s": 24.6,
+     "npc_eliminations": 20
+    }
+   },
+   "archetype": {
+    "crusher": {
+     "n": 42,
+     "wins": 14,
+     "human_door_struck": 37,
+     "human_room_physically_encountered": 37,
+     "human_zero_damage_no_door_damage_wins": 5,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 27.73,
+     "room_arrivals": 167,
+     "repeat_room_arrivals": 37,
+     "reassessments": 23,
+     "successful_hall_visits": 4,
+     "boss_transformations": 9,
+     "median_seconds": 306.37,
+     "mean_main_hunter_damage_player": 1238.89,
+     "mean_main_hunter_damage_allies": 2732.89,
+     "median_seconds_in_transit": 127.35,
+     "median_player_attack_contact_s": 20.17,
+     "npc_eliminations": 76
+    },
+    "electric": {
+     "n": 42,
+     "wins": 8,
+     "human_door_struck": 42,
+     "human_room_physically_encountered": 42,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 5.93,
+     "room_arrivals": 216,
+     "repeat_room_arrivals": 31,
+     "reassessments": 31,
+     "successful_hall_visits": 21,
+     "boss_transformations": 0,
+     "median_seconds": 274.35,
+     "mean_main_hunter_damage_player": 1928.42,
+     "mean_main_hunter_damage_allies": 1907.43,
+     "median_seconds_in_transit": 141.75,
+     "median_player_attack_contact_s": 20.55,
+     "npc_eliminations": 132
+    },
+    "ravager": {
+     "n": 42,
+     "wins": 18,
+     "human_door_struck": 42,
+     "human_room_physically_encountered": 41,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 11.73,
+     "room_arrivals": 192,
+     "repeat_room_arrivals": 60,
+     "reassessments": 75,
+     "successful_hall_visits": 16,
+     "boss_transformations": 12,
+     "median_seconds": 249.0,
+     "mean_main_hunter_damage_player": 1365.93,
+     "mean_main_hunter_damage_allies": 2278.24,
+     "median_seconds_in_transit": 101.03,
+     "median_player_attack_contact_s": 20.32,
+     "npc_eliminations": 36
+    },
+    "stalker": {
+     "n": 42,
+     "wins": 16,
+     "human_door_struck": 39,
+     "human_room_physically_encountered": 37,
+     "human_zero_damage_no_door_damage_wins": 3,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 21.43,
+     "room_arrivals": 196,
+     "repeat_room_arrivals": 39,
+     "reassessments": 52,
+     "successful_hall_visits": 24,
+     "boss_transformations": 9,
+     "median_seconds": 293.63,
+     "mean_main_hunter_damage_player": 889.67,
+     "mean_main_hunter_damage_allies": 3040.24,
+     "median_seconds_in_transit": 98.4,
+     "median_player_attack_contact_s": 14.1,
+     "npc_eliminations": 72
+    },
+    "storm": {
+     "n": 21,
+     "wins": 5,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 19,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 10.8,
+     "room_arrivals": 57,
+     "repeat_room_arrivals": 5,
+     "reassessments": 21,
+     "successful_hall_visits": 0,
+     "boss_transformations": 5,
+     "median_seconds": 147.75,
+     "mean_main_hunter_damage_player": 1424.09,
+     "mean_main_hunter_damage_allies": 883.49,
+     "median_seconds_in_transit": 36.3,
+     "median_player_attack_contact_s": 26.1,
+     "npc_eliminations": 5
+    },
+    "witch": {
+     "n": 21,
+     "wins": 12,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 18,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 5.3,
+     "room_arrivals": 112,
+     "repeat_room_arrivals": 22,
+     "reassessments": 6,
+     "successful_hall_visits": 11,
+     "boss_transformations": 19,
+     "median_seconds": 319.65,
+     "mean_main_hunter_damage_player": 1928.37,
+     "mean_main_hunter_damage_allies": 2940.07,
+     "median_seconds_in_transit": 121.95,
+     "median_player_attack_contact_s": 13.95,
+     "npc_eliminations": 44
+    }
+   },
+   "family": {
+    "branching": {
+     "n": 21,
+     "wins": 4,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 9.65,
+     "room_arrivals": 122,
+     "repeat_room_arrivals": 13,
+     "reassessments": 7,
+     "successful_hall_visits": 12,
+     "boss_transformations": 0,
+     "median_seconds": 304.35,
+     "mean_main_hunter_damage_player": 2199.44,
+     "mean_main_hunter_damage_allies": 1874.61,
+     "median_seconds_in_transit": 146.85,
+     "median_player_attack_contact_s": 17.85,
+     "npc_eliminations": 88
+    },
+    "hybrid": {
+     "n": 42,
+     "wins": 13,
+     "human_door_struck": 42,
+     "human_room_physically_encountered": 42,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 25.23,
+     "room_arrivals": 163,
+     "repeat_room_arrivals": 34,
+     "reassessments": 26,
+     "successful_hall_visits": 13,
+     "boss_transformations": 9,
+     "median_seconds": 189.3,
+     "mean_main_hunter_damage_player": 1956.46,
+     "mean_main_hunter_damage_allies": 1891.91,
+     "median_seconds_in_transit": 57.9,
+     "median_player_attack_contact_s": 24.3,
+     "npc_eliminations": 64
+    },
+    "labyrinth": {
+     "n": 21,
+     "wins": 6,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 19,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 2,
+     "first_arrival_after_prep_median_s": 10.65,
+     "room_arrivals": 93,
+     "repeat_room_arrivals": 29,
+     "reassessments": 27,
+     "successful_hall_visits": 9,
+     "boss_transformations": 9,
+     "median_seconds": 128.25,
+     "mean_main_hunter_damage_player": 714.38,
+     "mean_main_hunter_damage_allies": 2189.23,
+     "median_seconds_in_transit": 26.4,
+     "median_player_attack_contact_s": 30.6,
+     "npc_eliminations": 20
+    },
+    "radial": {
+     "n": 42,
+     "wins": 17,
+     "human_door_struck": 42,
+     "human_room_physically_encountered": 37,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 8.05,
+     "room_arrivals": 169,
+     "repeat_room_arrivals": 27,
+     "reassessments": 27,
+     "successful_hall_visits": 11,
+     "boss_transformations": 24,
+     "median_seconds": 269.25,
+     "mean_main_hunter_damage_player": 1676.23,
+     "mean_main_hunter_damage_allies": 1911.78,
+     "median_seconds_in_transit": 104.25,
+     "median_player_attack_contact_s": 20.85,
+     "npc_eliminations": 49
+    },
+    "ring": {
+     "n": 21,
+     "wins": 5,
+     "human_door_struck": 16,
+     "human_room_physically_encountered": 16,
+     "human_zero_damage_no_door_damage_wins": 5,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 6.9,
+     "room_arrivals": 98,
+     "repeat_room_arrivals": 21,
+     "reassessments": 21,
+     "successful_hall_visits": 0,
+     "boss_transformations": 0,
+     "median_seconds": 325.35,
+     "mean_main_hunter_damage_player": 222.26,
+     "mean_main_hunter_damage_allies": 3622.19,
+     "median_seconds_in_transit": 130.05,
+     "median_player_attack_contact_s": 15.9,
+     "npc_eliminations": 56
+    },
+    "scattered": {
+     "n": 21,
+     "wins": 6,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 14.3,
+     "room_arrivals": 84,
+     "repeat_room_arrivals": 19,
+     "reassessments": 32,
+     "successful_hall_visits": 3,
+     "boss_transformations": 0,
+     "median_seconds": 241.35,
+     "mean_main_hunter_damage_player": 1494.07,
+     "mean_main_hunter_damage_allies": 1633.28,
+     "median_seconds_in_transit": 101.1,
+     "median_player_attack_contact_s": 19.65,
+     "npc_eliminations": 30
+    },
+    "zigzag": {
+     "n": 42,
+     "wins": 22,
+     "human_door_struck": 39,
+     "human_room_physically_encountered": 38,
+     "human_zero_damage_no_door_damage_wins": 3,
+     "wins_without_hunter_damage": 3,
+     "first_arrival_after_prep_median_s": 20.53,
+     "room_arrivals": 211,
+     "repeat_room_arrivals": 51,
+     "reassessments": 68,
+     "successful_hall_visits": 28,
+     "boss_transformations": 12,
+     "median_seconds": 302.62,
+     "mean_main_hunter_damage_player": 1151.38,
+     "mean_main_hunter_damage_allies": 3407.22,
+     "median_seconds_in_transit": 98.4,
+     "median_player_attack_contact_s": 15.9,
+     "npc_eliminations": 58
+    }
+   },
+   "room": {
+    "1": {
+     "n": 21,
+     "wins": 6,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 19,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 2,
+     "first_arrival_after_prep_median_s": 10.65,
+     "room_arrivals": 93,
+     "repeat_room_arrivals": 29,
+     "reassessments": 27,
+     "successful_hall_visits": 9,
+     "boss_transformations": 9,
+     "median_seconds": 128.25,
+     "mean_main_hunter_damage_player": 714.38,
+     "mean_main_hunter_damage_allies": 2189.23,
+     "median_seconds_in_transit": 26.4,
+     "median_player_attack_contact_s": 30.6,
+     "npc_eliminations": 20
+    },
+    "2": {
+     "n": 84,
+     "wins": 35,
+     "human_door_struck": 84,
+     "human_room_physically_encountered": 78,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 9.98,
+     "room_arrivals": 361,
+     "repeat_room_arrivals": 87,
+     "reassessments": 102,
+     "successful_hall_visits": 27,
+     "boss_transformations": 36,
+     "median_seconds": 256.88,
+     "mean_main_hunter_damage_player": 1521.08,
+     "mean_main_hunter_damage_allies": 2095.01,
+     "median_seconds_in_transit": 101.1,
+     "median_player_attack_contact_s": 20.32,
+     "npc_eliminations": 85
+    },
+    "4": {
+     "n": 63,
+     "wins": 18,
+     "human_door_struck": 58,
+     "human_room_physically_encountered": 58,
+     "human_zero_damage_no_door_damage_wins": 5,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 6.9,
+     "room_arrivals": 261,
+     "repeat_room_arrivals": 55,
+     "reassessments": 47,
+     "successful_hall_visits": 13,
+     "boss_transformations": 9,
+     "median_seconds": 276.9,
+     "mean_main_hunter_damage_player": 1378.39,
+     "mean_main_hunter_damage_allies": 2468.67,
+     "median_seconds_in_transit": 97.2,
+     "median_player_attack_contact_s": 22.05,
+     "npc_eliminations": 120
+    },
+    "6": {
+     "n": 42,
+     "wins": 14,
+     "human_door_struck": 39,
+     "human_room_physically_encountered": 39,
+     "human_zero_damage_no_door_damage_wins": 3,
+     "wins_without_hunter_damage": 3,
+     "first_arrival_after_prep_median_s": 20.93,
+     "room_arrivals": 225,
+     "repeat_room_arrivals": 23,
+     "reassessments": 32,
+     "successful_hall_visits": 27,
+     "boss_transformations": 0,
+     "median_seconds": 303.82,
+     "mean_main_hunter_damage_player": 1632.2,
+     "mean_main_hunter_damage_allies": 2882.93,
+     "median_seconds_in_transit": 141.75,
+     "median_player_attack_contact_s": 12.15,
+     "npc_eliminations": 140
+    }
+   },
+   "chapter_band_by_difficulty": {
+    "early_1_15": {
+     "hard": {
+      "n": 21,
+      "wins": 7,
+      "human_door_struck": 18,
+      "human_room_physically_encountered": 18,
+      "human_zero_damage_no_door_damage_wins": 3,
+      "wins_without_hunter_damage": 3,
+      "first_arrival_after_prep_median_s": 14.3,
+      "room_arrivals": 103,
+      "repeat_room_arrivals": 21,
+      "reassessments": 26,
+      "successful_hall_visits": 6,
+      "boss_transformations": 0,
+      "median_seconds": 325.35,
+      "mean_main_hunter_damage_player": 814.43,
+      "mean_main_hunter_damage_allies": 3488.88,
+      "median_seconds_in_transit": 133.65,
+      "median_player_attack_contact_s": 13.8,
+      "npc_eliminations": 53
+     },
+     "hell": {
+      "n": 21,
+      "wins": 0,
+      "human_door_struck": 21,
+      "human_room_physically_encountered": 21,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 13.85,
+      "room_arrivals": 100,
+      "repeat_room_arrivals": 17,
+      "reassessments": 21,
+      "successful_hall_visits": 3,
+      "boss_transformations": 0,
+      "median_seconds": 251.25,
+      "mean_main_hunter_damage_player": 864.14,
+      "mean_main_hunter_damage_allies": 1856.71,
+      "median_seconds_in_transit": 101.4,
+      "median_player_attack_contact_s": 13.5,
+      "npc_eliminations": 55
+     },
+     "standard": {
+      "n": 21,
+      "wins": 14,
+      "human_door_struck": 16,
+      "human_room_physically_encountered": 16,
+      "human_zero_damage_no_door_damage_wins": 5,
+      "wins_without_hunter_damage": 5,
+      "first_arrival_after_prep_median_s": 15.35,
+      "room_arrivals": 82,
+      "repeat_room_arrivals": 12,
+      "reassessments": 31,
+      "successful_hall_visits": 9,
+      "boss_transformations": 0,
+      "median_seconds": 301.95,
+      "mean_main_hunter_damage_player": 1102.72,
+      "mean_main_hunter_damage_allies": 3801.13,
+      "median_seconds_in_transit": 97.2,
+      "median_player_attack_contact_s": 15.9,
+      "npc_eliminations": 30
+     }
+    },
+    "middle_16_34": {
+     "hard": {
+      "n": 28,
+      "wins": 6,
+      "human_door_struck": 28,
+      "human_room_physically_encountered": 27,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 10.15,
+      "room_arrivals": 113,
+      "repeat_room_arrivals": 23,
+      "reassessments": 27,
+      "successful_hall_visits": 7,
+      "boss_transformations": 6,
+      "median_seconds": 152.33,
+      "mean_main_hunter_damage_player": 1401.71,
+      "mean_main_hunter_damage_allies": 1455.93,
+      "median_seconds_in_transit": 36.3,
+      "median_player_attack_contact_s": 22.2,
+      "npc_eliminations": 36
+     },
+     "hell": {
+      "n": 28,
+      "wins": 6,
+      "human_door_struck": 28,
+      "human_room_physically_encountered": 28,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 9.78,
+      "room_arrivals": 121,
+      "repeat_room_arrivals": 26,
+      "reassessments": 35,
+      "successful_hall_visits": 7,
+      "boss_transformations": 8,
+      "median_seconds": 186.68,
+      "mean_main_hunter_damage_player": 1174.72,
+      "mean_main_hunter_damage_allies": 1656.26,
+      "median_seconds_in_transit": 63.22,
+      "median_player_attack_contact_s": 19.72,
+      "npc_eliminations": 35
+     },
+     "standard": {
+      "n": 28,
+      "wins": 15,
+      "human_door_struck": 28,
+      "human_room_physically_encountered": 24,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 2,
+      "first_arrival_after_prep_median_s": 10.9,
+      "room_arrivals": 146,
+      "repeat_room_arrivals": 39,
+      "reassessments": 36,
+      "successful_hall_visits": 20,
+      "boss_transformations": 12,
+      "median_seconds": 318.3,
+      "mean_main_hunter_damage_player": 1605.35,
+      "mean_main_hunter_damage_allies": 2790.7,
+      "median_seconds_in_transit": 112.43,
+      "median_player_attack_contact_s": 19.35,
+      "npc_eliminations": 48
+     }
+    },
+    "late_35_50": {
+     "hard": {
+      "n": 21,
+      "wins": 8,
+      "human_door_struck": 21,
+      "human_room_physically_encountered": 20,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 5.3,
+      "room_arrivals": 78,
+      "repeat_room_arrivals": 5,
+      "reassessments": 0,
+      "successful_hall_visits": 9,
+      "boss_transformations": 9,
+      "median_seconds": 221.25,
+      "mean_main_hunter_damage_player": 1982.74,
+      "mean_main_hunter_damage_allies": 1813.97,
+      "median_seconds_in_transit": 84.3,
+      "median_player_attack_contact_s": 26.25,
+      "npc_eliminations": 39
+     },
+     "hell": {
+      "n": 21,
+      "wins": 4,
+      "human_door_struck": 21,
+      "human_room_physically_encountered": 21,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 5.15,
+      "room_arrivals": 93,
+      "repeat_room_arrivals": 24,
+      "reassessments": 23,
+      "successful_hall_visits": 5,
+      "boss_transformations": 7,
+      "median_seconds": 203.7,
+      "mean_main_hunter_damage_player": 2019.64,
+      "mean_main_hunter_damage_allies": 1510.71,
+      "median_seconds_in_transit": 81.3,
+      "median_player_attack_contact_s": 24.0,
+      "npc_eliminations": 36
+     },
+     "standard": {
+      "n": 21,
+      "wins": 13,
+      "human_door_struck": 21,
+      "human_room_physically_encountered": 19,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 5.75,
+      "room_arrivals": 104,
+      "repeat_room_arrivals": 27,
+      "reassessments": 9,
+      "successful_hall_visits": 10,
+      "boss_transformations": 12,
+      "median_seconds": 307.2,
+      "mean_main_hunter_damage_player": 1838.9,
+      "mean_main_hunter_damage_allies": 3399.21,
+      "median_seconds_in_transit": 105.15,
+      "median_player_attack_contact_s": 17.85,
+      "npc_eliminations": 33
+     }
+    }
+   },
+   "difficulty_policy_wins": {
+    "hard": {
+     "average": 2,
+     "beginner": 0,
+     "defensive": 3,
+     "item_assisted": 8,
+     "offensive": 2,
+     "passive": 0,
+     "skilled": 6
+    },
+    "hell": {
+     "average": 1,
+     "beginner": 0,
+     "defensive": 1,
+     "item_assisted": 4,
+     "offensive": 1,
+     "passive": 0,
+     "skilled": 3
+    },
+    "standard": {
+     "average": 8,
+     "beginner": 0,
+     "defensive": 8,
+     "item_assisted": 10,
+     "offensive": 6,
+     "passive": 0,
+     "skilled": 10
+    }
+   },
+   "unassisted_carries": [],
+   "matched_gold_crate": [
+    {
+     "id": "development-6",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "development-13",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "development-20",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 1102.5,
+     "delta_elapsed_seconds": 17.7
+    },
+    {
+     "id": "development-27",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -1.37,
+     "delta_elapsed_seconds": -1.5
+    },
+    {
+     "id": "development-34",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -2741.84,
+     "delta_elapsed_seconds": 100.8
+    },
+    {
+     "id": "development-41",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 963.0,
+     "delta_elapsed_seconds": 17.1
+    },
+    {
+     "id": "development-48",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -522.0,
+     "delta_elapsed_seconds": 30.0
+    },
+    {
+     "id": "development-55",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -1254.13,
+     "delta_elapsed_seconds": 16.2
+    },
+    {
+     "id": "development-62",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 3415.0,
+     "delta_elapsed_seconds": 200.85
+    },
+    {
+     "id": "development-69",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.01,
+     "delta_elapsed_seconds": -1.65
+    },
+    {
+     "id": "development-76",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 81.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "development-83",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 297.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "development-90",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 2142.0,
+     "delta_elapsed_seconds": -65.1
+    },
+    {
+     "id": "development-97",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": -270.9,
+     "delta_elapsed_seconds": -5.55
+    },
+    {
+     "id": "development-104",
+     "no_item": "defeat",
+     "crate": "victory",
+     "delta_player_damage": 2685.0,
+     "delta_elapsed_seconds": 80.4
+    },
+    {
+     "id": "development-111",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -1716.6,
+     "delta_elapsed_seconds": -10.05
+    },
+    {
+     "id": "development-118",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 1314.87,
+     "delta_elapsed_seconds": 14.55
+    },
+    {
+     "id": "development-125",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 294.91,
+     "delta_elapsed_seconds": 2.85
+    },
+    {
+     "id": "development-132",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 334.49,
+     "delta_elapsed_seconds": -46.05
+    },
+    {
+     "id": "development-139",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -0.04,
+     "delta_elapsed_seconds": -7.35
+    },
+    {
+     "id": "development-146",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 88.74,
+     "delta_elapsed_seconds": 0.15
+    },
+    {
+     "id": "development-153",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": -4.8
+    },
+    {
+     "id": "development-160",
+     "no_item": "defeat",
+     "crate": "victory",
+     "delta_player_damage": 407.36,
+     "delta_elapsed_seconds": -5.25
+    },
+    {
+     "id": "development-167",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 327.6,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "development-174",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -2375.77,
+     "delta_elapsed_seconds": 61.95
+    },
+    {
+     "id": "development-181",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 2005.85,
+     "delta_elapsed_seconds": 189.45
+    },
+    {
+     "id": "development-188",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": -38.8,
+     "delta_elapsed_seconds": -92.4
+    },
+    {
+     "id": "development-195",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -1383.12,
+     "delta_elapsed_seconds": -31.35
+    },
+    {
+     "id": "development-202",
+     "no_item": "defeat",
+     "crate": "victory",
+     "delta_player_damage": 935.5,
+     "delta_elapsed_seconds": 229.65
+    },
+    {
+     "id": "development-209",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 434.0,
+     "delta_elapsed_seconds": -7.8
+    }
+   ],
+   "untouched_zero_damage_victories": [
+    {
+     "id": "development-2",
+     "policy": "average",
+     "own_gold_spent": 1389.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 172.5,
+     "own_room_chosen": false
+    },
+    {
+     "id": "development-3",
+     "policy": "defensive",
+     "own_gold_spent": 1265.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 172.5,
+     "own_room_chosen": false
+    },
+    {
+     "id": "development-4",
+     "policy": "offensive",
+     "own_gold_spent": 1255.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 172.5,
+     "own_room_chosen": false
+    },
+    {
+     "id": "development-5",
+     "policy": "skilled",
+     "own_gold_spent": 1455.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 172.5,
+     "own_room_chosen": false
+    },
+    {
+     "id": "development-6",
+     "policy": "item_assisted",
+     "own_gold_spent": 1645.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 172.5,
+     "own_room_chosen": false
+    },
+    {
+     "id": "development-10",
+     "policy": "defensive",
+     "own_gold_spent": 1379.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 150.0,
+     "own_room_chosen": false
+    },
+    {
+     "id": "development-12",
+     "policy": "skilled",
+     "own_gold_spent": 1549.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 150.0,
+     "own_room_chosen": false
+    },
+    {
+     "id": "development-13",
+     "policy": "item_assisted",
+     "own_gold_spent": 1669.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 150.0,
+     "own_room_chosen": false
+    }
+   ]
+  },
+  "flips": [
+   {
+    "id": "development-2",
+    "seed": 444177,
+    "room": 4,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      186.45000000000002,
+      "door_break",
+      3,
+      ""
+     ],
+     [
+      123.15,
+      "hunter_reassess",
+      3,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     360.45,
+     329.55
+    ],
+    "player_damage": [
+     1417.12,
+     0.0
+    ],
+    "retargets": [
+     0,
+     1
+    ]
+   },
+   {
+    "id": "development-3",
+    "seed": 444177,
+    "room": 4,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      186.45000000000002,
+      "door_break",
+      3,
+      ""
+     ],
+     [
+      123.15,
+      "hunter_reassess",
+      3,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     376.2,
+     329.55
+    ],
+    "player_damage": [
+     654.48,
+     0.0
+    ],
+    "retargets": [
+     0,
+     1
+    ]
+   },
+   {
+    "id": "development-4",
+    "seed": 444177,
+    "room": 4,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      186.45000000000002,
+      "door_break",
+      3,
+      ""
+     ],
+     [
+      123.15,
+      "hunter_reassess",
+      3,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     362.1,
+     329.55
+    ],
+    "player_damage": [
+     988.2,
+     0.0
+    ],
+    "retargets": [
+     0,
+     1
+    ]
+   },
+   {
+    "id": "development-5",
+    "seed": 444177,
+    "room": 4,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      186.45000000000002,
+      "door_break",
+      3,
+      ""
+     ],
+     [
+      123.15,
+      "hunter_reassess",
+      3,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     387.6,
+     329.55
+    ],
+    "player_damage": [
+     1239.62,
+     0.0
+    ],
+    "retargets": [
+     0,
+     1
+    ]
+   },
+   {
+    "id": "development-6",
+    "seed": 444177,
+    "room": 4,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      186.45000000000002,
+      "door_break",
+      3,
+      ""
+     ],
+     [
+      123.15,
+      "hunter_reassess",
+      3,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     387.6,
+     329.55
+    ],
+    "player_damage": [
+     1288.22,
+     0.0
+    ],
+    "retargets": [
+     0,
+     1
+    ]
+   },
+   {
+    "id": "development-37",
+    "seed": 20794696,
+    "room": 2,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      106.65,
+      "door_break",
+      3,
+      ""
+     ],
+     [
+      72.9,
+      "hunter_reassess",
+      3,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     160.35,
+     333.0
+    ],
+    "player_damage": [
+     828.0,
+     3537.5
+    ],
+    "retargets": [
+     0,
+     4
+    ]
+   },
+   {
+    "id": "development-38",
+    "seed": 20794696,
+    "room": 2,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      106.65,
+      "door_break",
+      3,
+      ""
+     ],
+     [
+      72.9,
+      "hunter_reassess",
+      3,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     162.15,
+     309.45
+    ],
+    "player_damage": [
+     1251.0,
+     1779.01
+    ],
+    "retargets": [
+     0,
+     6
+    ]
+   },
+   {
+    "id": "development-39",
+    "seed": 20794696,
+    "room": 2,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      98.10000000000001,
+      "hunter_reassess",
+      3,
+      "defense_delays_breach"
+     ],
+     [
+      72.9,
+      "hunter_reassess",
+      3,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     137.4,
+     304.95
+    ],
+    "player_damage": [
+     1494.0,
+     1414.06
+    ],
+    "retargets": [
+     1,
+     6
+    ]
+   },
+   {
+    "id": "development-46",
+    "seed": 27128905,
+    "room": 1,
+    "before": "victory",
+    "after": "defeat",
+    "first_tactical_trace_difference": [
+     [
+      134.1,
+      "door_break",
+      6,
+      ""
+     ],
+     [
+      96.9,
+      "hunter_reassess",
+      6,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     380.7,
+     288.9
+    ],
+    "player_damage": [
+     1098.0,
+     1179.0
+    ],
+    "retargets": [
+     1,
+     2
+    ]
+   },
+   {
+    "id": "development-79",
+    "seed": 2717961,
+    "room": 6,
+    "before": "victory",
+    "after": "defeat",
+    "first_tactical_trace_difference": [
+     [
+      97.65,
+      "hunter_reassess",
+      2,
+      "defense_delays_breach"
+     ],
+     [
+      111.9,
+      "door_break",
+      2,
+      ""
+     ]
+    ],
+    "terminal_seconds": [
+     457.65,
+     230.85
+    ],
+    "player_damage": [
+     5029.89,
+     866.0
+    ],
+    "retargets": [
+     1,
+     1
+    ]
+   },
+   {
+    "id": "development-86",
+    "seed": 5772604,
+    "room": 2,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      138.3,
+      "door_break",
+      1,
+      ""
+     ],
+     [
+      108.75,
+      "hunter_reassess",
+      1,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     285.15,
+     294.0
+    ],
+    "player_damage": [
+     3223.91,
+     2583.0
+    ],
+    "retargets": [
+     0,
+     3
+    ]
+   },
+   {
+    "id": "development-121",
+    "seed": 32758552,
+    "room": 2,
+    "before": "victory",
+    "after": "defeat",
+    "first_tactical_trace_difference": [
+     [
+      152.25,
+      "door_break",
+      5,
+      ""
+     ],
+     [
+      135.75,
+      "hunter_reassess",
+      5,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     334.2,
+     286.2
+    ],
+    "player_damage": [
+     2453.66,
+     3058.64
+    ],
+    "retargets": [
+     1,
+     1
+    ]
+   },
+   {
+    "id": "development-122",
+    "seed": 32758552,
+    "room": 2,
+    "before": "victory",
+    "after": "defeat",
+    "first_tactical_trace_difference": [
+     [
+      152.25,
+      "door_break",
+      5,
+      ""
+     ],
+     [
+      135.75,
+      "hunter_reassess",
+      5,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     342.75,
+     286.95
+    ],
+    "player_damage": [
+     2342.36,
+     2341.8
+    ],
+    "retargets": [
+     1,
+     1
+    ]
+   },
+   {
+    "id": "development-123",
+    "seed": 32758552,
+    "room": 2,
+    "before": "victory",
+    "after": "defeat",
+    "first_tactical_trace_difference": [
+     [
+      152.25,
+      "door_break",
+      5,
+      ""
+     ],
+     [
+      135.75,
+      "hunter_reassess",
+      5,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     342.3,
+     286.05
+    ],
+    "player_damage": [
+     2366.15,
+     3188.64
+    ],
+    "retargets": [
+     0,
+     1
+    ]
+   },
+   {
+    "id": "development-129",
+    "seed": 45516755,
+    "room": 4,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      113.25,
+      "door_break",
+      2,
+      ""
+     ],
+     [
+      94.95,
+      "hunter_reassess",
+      2,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     416.4,
+     441.0
+    ],
+    "player_damage": [
+     3357.0,
+     2498.82
+    ],
+    "retargets": [
+     0,
+     1
+    ]
+   },
+   {
+    "id": "development-130",
+    "seed": 45516755,
+    "room": 4,
+    "before": "victory",
+    "after": "defeat",
+    "first_tactical_trace_difference": [
+     [
+      113.25,
+      "door_break",
+      2,
+      ""
+     ],
+     [
+      94.95,
+      "hunter_reassess",
+      2,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     414.45,
+     209.25
+    ],
+    "player_damage": [
+     3297.73,
+     1611.0
+    ],
+    "retargets": [
+     0,
+     1
+    ]
+   },
+   {
+    "id": "development-147",
+    "seed": 2717961,
+    "room": 6,
+    "before": "victory",
+    "after": "defeat",
+    "first_tactical_trace_difference": [
+     [
+      231.15,
+      "door_break",
+      3,
+      ""
+     ],
+     [
+      189.3,
+      "hunter_reassess",
+      3,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     294.45,
+     286.35
+    ],
+    "player_damage": [
+     0.0,
+     0.0
+    ],
+    "retargets": [
+     0,
+     1
+    ]
+   },
+   {
+    "id": "development-157",
+    "seed": 5772604,
+    "room": 2,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      106.2,
+      "door_break",
+      1,
+      ""
+     ],
+     [
+      79.8,
+      "hunter_reassess",
+      1,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     267.15,
+     346.8
+    ],
+    "player_damage": [
+     2160.0,
+     1809.0
+    ],
+    "retargets": [
+     0,
+     1
+    ]
+   },
+   {
+    "id": "development-159",
+    "seed": 5772604,
+    "room": 2,
+    "before": "victory",
+    "after": "defeat",
+    "first_tactical_trace_difference": [
+     [
+      106.2,
+      "door_break",
+      1,
+      ""
+     ],
+     [
+      79.8,
+      "hunter_reassess",
+      1,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     346.35,
+     292.95
+    ],
+    "player_damage": [
+     2308.5,
+     3564.0
+    ],
+    "retargets": [
+     0,
+     1
+    ]
+   },
+   {
+    "id": "development-172",
+    "seed": 16289491,
+    "room": 2,
+    "before": "victory",
+    "after": "defeat",
+    "first_tactical_trace_difference": [
+     [
+      123.0,
+      "door_break",
+      6,
+      ""
+     ],
+     [
+      109.65,
+      "hunter_reassess",
+      6,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     355.5,
+     164.1
+    ],
+    "player_damage": [
+     4215.39,
+     1566.0
+    ],
+    "retargets": [
+     2,
+     1
+    ]
+   },
+   {
+    "id": "development-179",
+    "seed": 20794696,
+    "room": 2,
+    "before": "victory",
+    "after": "defeat",
+    "first_tactical_trace_difference": [
+     [
+      102.0,
+      "hunter_reassess",
+      3,
+      "defense_delays_breach"
+     ],
+     [
+      79.5,
+      "hunter_reassess",
+      3,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     336.0,
+     115.5
+    ],
+    "player_damage": [
+     2610.0,
+     1305.0
+    ],
+    "retargets": [
+     2,
+     1
+    ]
+   },
+   {
+    "id": "development-187",
+    "seed": 27128905,
+    "room": 1,
+    "before": "victory",
+    "after": "defeat",
+    "first_tactical_trace_difference": [
+     [
+      99.60000000000001,
+      "door_break",
+      6,
+      ""
+     ],
+     [
+      73.8,
+      "hunter_reassess",
+      6,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     423.6,
+     419.25
+    ],
+    "player_damage": [
+     836.77,
+     1450.0
+    ],
+    "retargets": [
+     2,
+     4
+    ]
+   },
+   {
+    "id": "development-188",
+    "seed": 27128905,
+    "room": 1,
+    "before": "victory",
+    "after": "defeat",
+    "first_tactical_trace_difference": [
+     [
+      99.60000000000001,
+      "door_break",
+      6,
+      ""
+     ],
+     [
+      73.8,
+      "hunter_reassess",
+      6,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     423.45,
+     326.85
+    ],
+    "player_damage": [
+     836.77,
+     1411.2
+    ],
+    "retargets": [
+     2,
+     1
+    ]
+   }
+  ]
+ },
+ "held-out": {
+  "baseline": {
+   "overall": {
+    "n": 210,
+    "wins": 79,
+    "human_door_struck": 195,
+    "human_room_physically_encountered": 186,
+    "human_zero_damage_no_door_damage_wins": 15,
+    "wins_without_hunter_damage": 23,
+    "first_arrival_after_prep_median_s": 5.82,
+    "room_arrivals": 742,
+    "repeat_room_arrivals": 116,
+    "reassessments": 32,
+    "successful_hall_visits": 78,
+    "boss_transformations": 61,
+    "median_seconds": 248.93,
+    "mean_main_hunter_damage_player": 1656.47,
+    "mean_main_hunter_damage_allies": 2248.49,
+    "median_seconds_in_transit": 70.2,
+    "median_player_attack_contact_s": 18.45,
+    "npc_eliminations": 318
+   },
+   "difficulty": {
+    "hard": {
+     "n": 70,
+     "wins": 28,
+     "human_door_struck": 69,
+     "human_room_physically_encountered": 69,
+     "human_zero_damage_no_door_damage_wins": 1,
+     "wins_without_hunter_damage": 1,
+     "first_arrival_after_prep_median_s": 5.82,
+     "room_arrivals": 265,
+     "repeat_room_arrivals": 46,
+     "reassessments": 23,
+     "successful_hall_visits": 20,
+     "boss_transformations": 21,
+     "median_seconds": 243.38,
+     "mean_main_hunter_damage_player": 1831.01,
+     "mean_main_hunter_damage_allies": 2175.87,
+     "median_seconds_in_transit": 68.4,
+     "median_player_attack_contact_s": 20.4,
+     "npc_eliminations": 106
+    },
+    "hell": {
+     "n": 70,
+     "wins": 12,
+     "human_door_struck": 70,
+     "human_room_physically_encountered": 67,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 3,
+     "first_arrival_after_prep_median_s": 5.3,
+     "room_arrivals": 246,
+     "repeat_room_arrivals": 36,
+     "reassessments": 9,
+     "successful_hall_visits": 17,
+     "boss_transformations": 15,
+     "median_seconds": 203.25,
+     "mean_main_hunter_damage_player": 1804.97,
+     "mean_main_hunter_damage_allies": 1431.33,
+     "median_seconds_in_transit": 64.42,
+     "median_player_attack_contact_s": 21.22,
+     "npc_eliminations": 123
+    },
+    "standard": {
+     "n": 70,
+     "wins": 39,
+     "human_door_struck": 56,
+     "human_room_physically_encountered": 50,
+     "human_zero_damage_no_door_damage_wins": 14,
+     "wins_without_hunter_damage": 19,
+     "first_arrival_after_prep_median_s": 6.2,
+     "room_arrivals": 231,
+     "repeat_room_arrivals": 34,
+     "reassessments": 0,
+     "successful_hall_visits": 41,
+     "boss_transformations": 25,
+     "median_seconds": 300.0,
+     "mean_main_hunter_damage_player": 1333.44,
+     "mean_main_hunter_damage_allies": 3138.28,
+     "median_seconds_in_transit": 70.2,
+     "median_player_attack_contact_s": 12.68,
+     "npc_eliminations": 89
+    }
+   },
+   "policy": {
+    "average": {
+     "n": 30,
+     "wins": 10,
+     "human_door_struck": 27,
+     "human_room_physically_encountered": 26,
+     "human_zero_damage_no_door_damage_wins": 3,
+     "wins_without_hunter_damage": 4,
+     "first_arrival_after_prep_median_s": 5.82,
+     "room_arrivals": 92,
+     "repeat_room_arrivals": 13,
+     "reassessments": 3,
+     "successful_hall_visits": 7,
+     "boss_transformations": 8,
+     "median_seconds": 193.88,
+     "mean_main_hunter_damage_player": 1402.64,
+     "mean_main_hunter_damage_allies": 2036.81,
+     "median_seconds_in_transit": 46.57,
+     "median_player_attack_contact_s": 33.9,
+     "npc_eliminations": 37
+    },
+    "beginner": {
+     "n": 30,
+     "wins": 0,
+     "human_door_struck": 30,
+     "human_room_physically_encountered": 30,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 5.82,
+     "room_arrivals": 75,
+     "repeat_room_arrivals": 6,
+     "reassessments": 2,
+     "successful_hall_visits": 4,
+     "boss_transformations": 4,
+     "median_seconds": 139.95,
+     "mean_main_hunter_damage_player": 301.2,
+     "mean_main_hunter_damage_allies": 1281.79,
+     "median_seconds_in_transit": 37.72,
+     "median_player_attack_contact_s": 14.7,
+     "npc_eliminations": 32
+    },
+    "defensive": {
+     "n": 30,
+     "wins": 13,
+     "human_door_struck": 27,
+     "human_room_physically_encountered": 25,
+     "human_zero_damage_no_door_damage_wins": 3,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 5.82,
+     "room_arrivals": 106,
+     "repeat_room_arrivals": 16,
+     "reassessments": 3,
+     "successful_hall_visits": 12,
+     "boss_transformations": 9,
+     "median_seconds": 283.5,
+     "mean_main_hunter_damage_player": 1690.07,
+     "mean_main_hunter_damage_allies": 2622.14,
+     "median_seconds_in_transit": 71.4,
+     "median_player_attack_contact_s": 29.02,
+     "npc_eliminations": 49
+    },
+    "item_assisted": {
+     "n": 30,
+     "wins": 25,
+     "human_door_struck": 27,
+     "human_room_physically_encountered": 24,
+     "human_zero_damage_no_door_damage_wins": 3,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 5.82,
+     "room_arrivals": 156,
+     "repeat_room_arrivals": 32,
+     "reassessments": 8,
+     "successful_hall_visits": 21,
+     "boss_transformations": 15,
+     "median_seconds": 325.87,
+     "mean_main_hunter_damage_player": 3455.96,
+     "mean_main_hunter_damage_allies": 3317.48,
+     "median_seconds_in_transit": 102.53,
+     "median_player_attack_contact_s": 26.77,
+     "npc_eliminations": 67
+    },
+    "offensive": {
+     "n": 30,
+     "wins": 10,
+     "human_door_struck": 27,
+     "human_room_physically_encountered": 26,
+     "human_zero_damage_no_door_damage_wins": 3,
+     "wins_without_hunter_damage": 4,
+     "first_arrival_after_prep_median_s": 5.82,
+     "room_arrivals": 94,
+     "repeat_room_arrivals": 14,
+     "reassessments": 3,
+     "successful_hall_visits": 8,
+     "boss_transformations": 9,
+     "median_seconds": 231.0,
+     "mean_main_hunter_damage_player": 1673.73,
+     "mean_main_hunter_damage_allies": 2104.34,
+     "median_seconds_in_transit": 52.57,
+     "median_player_attack_contact_s": 19.42,
+     "npc_eliminations": 38
+    },
+    "passive": {
+     "n": 30,
+     "wins": 0,
+     "human_door_struck": 30,
+     "human_room_physically_encountered": 30,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 5.82,
+     "room_arrivals": 68,
+     "repeat_room_arrivals": 2,
+     "reassessments": 4,
+     "successful_hall_visits": 3,
+     "boss_transformations": 2,
+     "median_seconds": 128.48,
+     "mean_main_hunter_damage_player": 0.0,
+     "mean_main_hunter_damage_allies": 1019.32,
+     "median_seconds_in_transit": 37.27,
+     "median_player_attack_contact_s": 10.58,
+     "npc_eliminations": 29
+    },
+    "skilled": {
+     "n": 30,
+     "wins": 21,
+     "human_door_struck": 27,
+     "human_room_physically_encountered": 25,
+     "human_zero_damage_no_door_damage_wins": 3,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 5.82,
+     "room_arrivals": 151,
+     "repeat_room_arrivals": 33,
+     "reassessments": 9,
+     "successful_hall_visits": 23,
+     "boss_transformations": 14,
+     "median_seconds": 332.1,
+     "mean_main_hunter_damage_player": 3071.69,
+     "mean_main_hunter_damage_allies": 3357.56,
+     "median_seconds_in_transit": 106.73,
+     "median_player_attack_contact_s": 27.3,
+     "npc_eliminations": 66
+    }
+   },
+   "level": {
+    "1": {
+     "n": 21,
+     "wins": 10,
+     "human_door_struck": 16,
+     "human_room_physically_encountered": 16,
+     "human_zero_damage_no_door_damage_wins": 5,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 24.0,
+     "room_arrivals": 98,
+     "repeat_room_arrivals": 2,
+     "reassessments": 0,
+     "successful_hall_visits": 14,
+     "boss_transformations": 0,
+     "median_seconds": 375.6,
+     "mean_main_hunter_damage_player": 1902.36,
+     "mean_main_hunter_damage_allies": 4343.6,
+     "median_seconds_in_transit": 141.3,
+     "median_player_attack_contact_s": 11.1,
+     "npc_eliminations": 68
+    },
+    "6": {
+     "n": 21,
+     "wins": 2,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 3.25,
+     "room_arrivals": 75,
+     "repeat_room_arrivals": 6,
+     "reassessments": 7,
+     "successful_hall_visits": 3,
+     "boss_transformations": 0,
+     "median_seconds": 231.6,
+     "mean_main_hunter_damage_player": 1688.74,
+     "mean_main_hunter_damage_allies": 1578.65,
+     "median_seconds_in_transit": 83.1,
+     "median_player_attack_contact_s": 14.4,
+     "npc_eliminations": 47
+    },
+    "11": {
+     "n": 21,
+     "wins": 10,
+     "human_door_struck": 15,
+     "human_room_physically_encountered": 15,
+     "human_zero_damage_no_door_damage_wins": 6,
+     "wins_without_hunter_damage": 6,
+     "first_arrival_after_prep_median_s": 5.75,
+     "room_arrivals": 63,
+     "repeat_room_arrivals": 3,
+     "reassessments": 4,
+     "successful_hall_visits": 15,
+     "boss_transformations": 0,
+     "median_seconds": 230.4,
+     "mean_main_hunter_damage_player": 1050.86,
+     "mean_main_hunter_damage_allies": 3076.03,
+     "median_seconds_in_transit": 34.05,
+     "median_player_attack_contact_s": 13.35,
+     "npc_eliminations": 29
+    },
+    "17": {
+     "n": 21,
+     "wins": 3,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 34.55,
+     "room_arrivals": 35,
+     "repeat_room_arrivals": 3,
+     "reassessments": 3,
+     "successful_hall_visits": 4,
+     "boss_transformations": 0,
+     "median_seconds": 126.15,
+     "mean_main_hunter_damage_player": 2137.86,
+     "mean_main_hunter_damage_allies": 409.24,
+     "median_seconds_in_transit": 37.35,
+     "median_player_attack_contact_s": 45.0,
+     "npc_eliminations": 8
+    },
+    "23": {
+     "n": 21,
+     "wins": 5,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 13.35,
+     "room_arrivals": 40,
+     "repeat_room_arrivals": 7,
+     "reassessments": 2,
+     "successful_hall_visits": 4,
+     "boss_transformations": 5,
+     "median_seconds": 98.55,
+     "mean_main_hunter_damage_player": 1672.45,
+     "mean_main_hunter_damage_allies": 434.82,
+     "median_seconds_in_transit": 15.9,
+     "median_player_attack_contact_s": 33.15,
+     "npc_eliminations": 6
+    },
+    "27": {
+     "n": 21,
+     "wins": 14,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 13,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 8,
+     "first_arrival_after_prep_median_s": 10.05,
+     "room_arrivals": 120,
+     "repeat_room_arrivals": 27,
+     "reassessments": 7,
+     "successful_hall_visits": 7,
+     "boss_transformations": 19,
+     "median_seconds": 355.05,
+     "mean_main_hunter_damage_player": 445.38,
+     "mean_main_hunter_damage_allies": 4668.18,
+     "median_seconds_in_transit": 102.45,
+     "median_player_attack_contact_s": 2.85,
+     "npc_eliminations": 52
+    },
+    "32": {
+     "n": 21,
+     "wins": 12,
+     "human_door_struck": 17,
+     "human_room_physically_encountered": 16,
+     "human_zero_damage_no_door_damage_wins": 4,
+     "wins_without_hunter_damage": 4,
+     "first_arrival_after_prep_median_s": 2.25,
+     "room_arrivals": 112,
+     "repeat_room_arrivals": 25,
+     "reassessments": 0,
+     "successful_hall_visits": 13,
+     "boss_transformations": 16,
+     "median_seconds": 292.5,
+     "mean_main_hunter_damage_player": 1005.99,
+     "mean_main_hunter_damage_allies": 3986.56,
+     "median_seconds_in_transit": 70.2,
+     "median_player_attack_contact_s": 7.8,
+     "npc_eliminations": 48
+    },
+    "36": {
+     "n": 21,
+     "wins": 11,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 5.9,
+     "room_arrivals": 82,
+     "repeat_room_arrivals": 12,
+     "reassessments": 1,
+     "successful_hall_visits": 1,
+     "boss_transformations": 12,
+     "median_seconds": 310.05,
+     "mean_main_hunter_damage_player": 1360.46,
+     "mean_main_hunter_damage_allies": 2093.52,
+     "median_seconds_in_transit": 112.8,
+     "median_player_attack_contact_s": 15.45,
+     "npc_eliminations": 31
+    },
+    "44": {
+     "n": 21,
+     "wins": 4,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 3.7,
+     "room_arrivals": 58,
+     "repeat_room_arrivals": 9,
+     "reassessments": 6,
+     "successful_hall_visits": 11,
+     "boss_transformations": 0,
+     "median_seconds": 120.75,
+     "mean_main_hunter_damage_player": 2185.65,
+     "mean_main_hunter_damage_allies": 1076.14,
+     "median_seconds_in_transit": 6.6,
+     "median_player_attack_contact_s": 48.6,
+     "npc_eliminations": 25
+    },
+    "50": {
+     "n": 21,
+     "wins": 8,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 2.95,
+     "room_arrivals": 59,
+     "repeat_room_arrivals": 22,
+     "reassessments": 2,
+     "successful_hall_visits": 6,
+     "boss_transformations": 9,
+     "median_seconds": 126.15,
+     "mean_main_hunter_damage_player": 3114.97,
+     "mean_main_hunter_damage_allies": 818.2,
+     "median_seconds_in_transit": 7.05,
+     "median_player_attack_contact_s": 72.45,
+     "npc_eliminations": 4
+    }
+   },
+   "archetype": {
+    "crusher": {
+     "n": 42,
+     "wins": 18,
+     "human_door_struck": 37,
+     "human_room_physically_encountered": 37,
+     "human_zero_damage_no_door_damage_wins": 5,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 13.18,
+     "room_arrivals": 157,
+     "repeat_room_arrivals": 24,
+     "reassessments": 2,
+     "successful_hall_visits": 20,
+     "boss_transformations": 9,
+     "median_seconds": 290.78,
+     "mean_main_hunter_damage_player": 2508.66,
+     "mean_main_hunter_damage_allies": 2580.9,
+     "median_seconds_in_transit": 114.08,
+     "median_player_attack_contact_s": 20.85,
+     "npc_eliminations": 72
+    },
+    "electric": {
+     "n": 42,
+     "wins": 7,
+     "human_door_struck": 42,
+     "human_room_physically_encountered": 42,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 18.68,
+     "room_arrivals": 93,
+     "repeat_room_arrivals": 12,
+     "reassessments": 9,
+     "successful_hall_visits": 15,
+     "boss_transformations": 0,
+     "median_seconds": 125.85,
+     "mean_main_hunter_damage_player": 2161.76,
+     "mean_main_hunter_damage_allies": 742.69,
+     "median_seconds_in_transit": 37.2,
+     "median_player_attack_contact_s": 46.35,
+     "npc_eliminations": 33
+    },
+    "ravager": {
+     "n": 42,
+     "wins": 24,
+     "human_door_struck": 36,
+     "human_room_physically_encountered": 28,
+     "human_zero_damage_no_door_damage_wins": 6,
+     "wins_without_hunter_damage": 14,
+     "first_arrival_after_prep_median_s": 7.9,
+     "room_arrivals": 183,
+     "repeat_room_arrivals": 30,
+     "reassessments": 11,
+     "successful_hall_visits": 22,
+     "boss_transformations": 19,
+     "median_seconds": 301.5,
+     "mean_main_hunter_damage_player": 748.12,
+     "mean_main_hunter_damage_allies": 3872.1,
+     "median_seconds_in_transit": 81.98,
+     "median_player_attack_contact_s": 5.93,
+     "npc_eliminations": 81
+    },
+    "stalker": {
+     "n": 42,
+     "wins": 14,
+     "human_door_struck": 38,
+     "human_room_physically_encountered": 37,
+     "human_zero_damage_no_door_damage_wins": 4,
+     "wins_without_hunter_damage": 4,
+     "first_arrival_after_prep_median_s": 2.75,
+     "room_arrivals": 187,
+     "repeat_room_arrivals": 31,
+     "reassessments": 7,
+     "successful_hall_visits": 16,
+     "boss_transformations": 16,
+     "median_seconds": 248.93,
+     "mean_main_hunter_damage_player": 1347.37,
+     "mean_main_hunter_damage_allies": 2782.61,
+     "median_seconds_in_transit": 75.6,
+     "median_player_attack_contact_s": 12.45,
+     "npc_eliminations": 95
+    },
+    "storm": {
+     "n": 21,
+     "wins": 5,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 13.35,
+     "room_arrivals": 40,
+     "repeat_room_arrivals": 7,
+     "reassessments": 2,
+     "successful_hall_visits": 4,
+     "boss_transformations": 5,
+     "median_seconds": 98.55,
+     "mean_main_hunter_damage_player": 1672.45,
+     "mean_main_hunter_damage_allies": 434.82,
+     "median_seconds_in_transit": 15.9,
+     "median_player_attack_contact_s": 33.15,
+     "npc_eliminations": 6
+    },
+    "witch": {
+     "n": 21,
+     "wins": 11,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 5.9,
+     "room_arrivals": 82,
+     "repeat_room_arrivals": 12,
+     "reassessments": 1,
+     "successful_hall_visits": 1,
+     "boss_transformations": 12,
+     "median_seconds": 310.05,
+     "mean_main_hunter_damage_player": 1360.46,
+     "mean_main_hunter_damage_allies": 2093.52,
+     "median_seconds_in_transit": 112.8,
+     "median_player_attack_contact_s": 15.45,
+     "npc_eliminations": 31
+    }
+   },
+   "family": {
+    "branching": {
+     "n": 21,
+     "wins": 3,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 34.55,
+     "room_arrivals": 35,
+     "repeat_room_arrivals": 3,
+     "reassessments": 3,
+     "successful_hall_visits": 4,
+     "boss_transformations": 0,
+     "median_seconds": 126.15,
+     "mean_main_hunter_damage_player": 2137.86,
+     "mean_main_hunter_damage_allies": 409.24,
+     "median_seconds_in_transit": 37.35,
+     "median_player_attack_contact_s": 45.0,
+     "npc_eliminations": 8
+    },
+    "hybrid": {
+     "n": 42,
+     "wins": 12,
+     "human_door_struck": 42,
+     "human_room_physically_encountered": 42,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 3.4,
+     "room_arrivals": 117,
+     "repeat_room_arrivals": 31,
+     "reassessments": 8,
+     "successful_hall_visits": 17,
+     "boss_transformations": 9,
+     "median_seconds": 126.0,
+     "mean_main_hunter_damage_player": 2650.31,
+     "mean_main_hunter_damage_allies": 947.17,
+     "median_seconds_in_transit": 6.6,
+     "median_player_attack_contact_s": 62.25,
+     "npc_eliminations": 29
+    },
+    "labyrinth": {
+     "n": 21,
+     "wins": 12,
+     "human_door_struck": 17,
+     "human_room_physically_encountered": 16,
+     "human_zero_damage_no_door_damage_wins": 4,
+     "wins_without_hunter_damage": 4,
+     "first_arrival_after_prep_median_s": 2.25,
+     "room_arrivals": 112,
+     "repeat_room_arrivals": 25,
+     "reassessments": 0,
+     "successful_hall_visits": 13,
+     "boss_transformations": 16,
+     "median_seconds": 292.5,
+     "mean_main_hunter_damage_player": 1005.99,
+     "mean_main_hunter_damage_allies": 3986.56,
+     "median_seconds_in_transit": 70.2,
+     "median_player_attack_contact_s": 7.8,
+     "npc_eliminations": 48
+    },
+    "radial": {
+     "n": 42,
+     "wins": 16,
+     "human_door_struck": 42,
+     "human_room_physically_encountered": 42,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 9.55,
+     "room_arrivals": 122,
+     "repeat_room_arrivals": 19,
+     "reassessments": 3,
+     "successful_hall_visits": 5,
+     "boss_transformations": 17,
+     "median_seconds": 143.78,
+     "mean_main_hunter_damage_player": 1516.45,
+     "mean_main_hunter_damage_allies": 1264.17,
+     "median_seconds_in_transit": 37.2,
+     "median_player_attack_contact_s": 22.5,
+     "npc_eliminations": 37
+    },
+    "ring": {
+     "n": 21,
+     "wins": 10,
+     "human_door_struck": 16,
+     "human_room_physically_encountered": 16,
+     "human_zero_damage_no_door_damage_wins": 5,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 24.0,
+     "room_arrivals": 98,
+     "repeat_room_arrivals": 2,
+     "reassessments": 0,
+     "successful_hall_visits": 14,
+     "boss_transformations": 0,
+     "median_seconds": 375.6,
+     "mean_main_hunter_damage_player": 1902.36,
+     "mean_main_hunter_damage_allies": 4343.6,
+     "median_seconds_in_transit": 141.3,
+     "median_player_attack_contact_s": 11.1,
+     "npc_eliminations": 68
+    },
+    "scattered": {
+     "n": 21,
+     "wins": 10,
+     "human_door_struck": 15,
+     "human_room_physically_encountered": 15,
+     "human_zero_damage_no_door_damage_wins": 6,
+     "wins_without_hunter_damage": 6,
+     "first_arrival_after_prep_median_s": 5.75,
+     "room_arrivals": 63,
+     "repeat_room_arrivals": 3,
+     "reassessments": 4,
+     "successful_hall_visits": 15,
+     "boss_transformations": 0,
+     "median_seconds": 230.4,
+     "mean_main_hunter_damage_player": 1050.86,
+     "mean_main_hunter_damage_allies": 3076.03,
+     "median_seconds_in_transit": 34.05,
+     "median_player_attack_contact_s": 13.35,
+     "npc_eliminations": 29
+    },
+    "zigzag": {
+     "n": 42,
+     "wins": 16,
+     "human_door_struck": 42,
+     "human_room_physically_encountered": 34,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 8,
+     "first_arrival_after_prep_median_s": 6.65,
+     "room_arrivals": 195,
+     "repeat_room_arrivals": 33,
+     "reassessments": 14,
+     "successful_hall_visits": 10,
+     "boss_transformations": 19,
+     "median_seconds": 288.23,
+     "mean_main_hunter_damage_player": 1067.06,
+     "mean_main_hunter_damage_allies": 3123.42,
+     "median_seconds_in_transit": 97.8,
+     "median_player_attack_contact_s": 7.43,
+     "npc_eliminations": 99
+    }
+   },
+   "room": {
+    "1": {
+     "n": 21,
+     "wins": 12,
+     "human_door_struck": 17,
+     "human_room_physically_encountered": 16,
+     "human_zero_damage_no_door_damage_wins": 4,
+     "wins_without_hunter_damage": 4,
+     "first_arrival_after_prep_median_s": 2.25,
+     "room_arrivals": 112,
+     "repeat_room_arrivals": 25,
+     "reassessments": 0,
+     "successful_hall_visits": 13,
+     "boss_transformations": 16,
+     "median_seconds": 292.5,
+     "mean_main_hunter_damage_player": 1005.99,
+     "mean_main_hunter_damage_allies": 3986.56,
+     "median_seconds_in_transit": 70.2,
+     "median_player_attack_contact_s": 7.8,
+     "npc_eliminations": 48
+    },
+    "2": {
+     "n": 21,
+     "wins": 10,
+     "human_door_struck": 16,
+     "human_room_physically_encountered": 16,
+     "human_zero_damage_no_door_damage_wins": 5,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 24.0,
+     "room_arrivals": 98,
+     "repeat_room_arrivals": 2,
+     "reassessments": 0,
+     "successful_hall_visits": 14,
+     "boss_transformations": 0,
+     "median_seconds": 375.6,
+     "mean_main_hunter_damage_player": 1902.36,
+     "mean_main_hunter_damage_allies": 4343.6,
+     "median_seconds_in_transit": 141.3,
+     "median_player_attack_contact_s": 11.1,
+     "npc_eliminations": 68
+    },
+    "3": {
+     "n": 63,
+     "wins": 22,
+     "human_door_struck": 63,
+     "human_room_physically_encountered": 55,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 8,
+     "first_arrival_after_prep_median_s": 13.35,
+     "room_arrivals": 195,
+     "repeat_room_arrivals": 37,
+     "reassessments": 12,
+     "successful_hall_visits": 15,
+     "boss_transformations": 24,
+     "median_seconds": 158.7,
+     "mean_main_hunter_damage_player": 1418.56,
+     "mean_main_hunter_damage_allies": 1837.41,
+     "median_seconds_in_transit": 40.2,
+     "median_player_attack_contact_s": 21.0,
+     "npc_eliminations": 66
+    },
+    "5": {
+     "n": 21,
+     "wins": 11,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 5.9,
+     "room_arrivals": 82,
+     "repeat_room_arrivals": 12,
+     "reassessments": 1,
+     "successful_hall_visits": 1,
+     "boss_transformations": 12,
+     "median_seconds": 310.05,
+     "mean_main_hunter_damage_player": 1360.46,
+     "mean_main_hunter_damage_allies": 2093.52,
+     "median_seconds_in_transit": 112.8,
+     "median_player_attack_contact_s": 15.45,
+     "npc_eliminations": 31
+    },
+    "6": {
+     "n": 84,
+     "wins": 24,
+     "human_door_struck": 78,
+     "human_room_physically_encountered": 78,
+     "human_zero_damage_no_door_damage_wins": 6,
+     "wins_without_hunter_damage": 6,
+     "first_arrival_after_prep_median_s": 3.55,
+     "room_arrivals": 255,
+     "repeat_room_arrivals": 40,
+     "reassessments": 19,
+     "successful_hall_visits": 35,
+     "boss_transformations": 9,
+     "median_seconds": 213.15,
+     "mean_main_hunter_damage_player": 2010.05,
+     "mean_main_hunter_damage_allies": 1637.25,
+     "median_seconds_in_transit": 51.6,
+     "median_player_attack_contact_s": 26.4,
+     "npc_eliminations": 105
+    }
+   },
+   "chapter_band_by_difficulty": {
+    "early_1_15": {
+     "hard": {
+      "n": 21,
+      "wins": 8,
+      "human_door_struck": 20,
+      "human_room_physically_encountered": 20,
+      "human_zero_damage_no_door_damage_wins": 1,
+      "wins_without_hunter_damage": 1,
+      "first_arrival_after_prep_median_s": 5.75,
+      "room_arrivals": 85,
+      "repeat_room_arrivals": 7,
+      "reassessments": 8,
+      "successful_hall_visits": 11,
+      "boss_transformations": 0,
+      "median_seconds": 246.15,
+      "mean_main_hunter_damage_player": 2057.46,
+      "mean_main_hunter_damage_allies": 2804.83,
+      "median_seconds_in_transit": 89.85,
+      "median_player_attack_contact_s": 13.05,
+      "npc_eliminations": 51
+     },
+     "hell": {
+      "n": 21,
+      "wins": 2,
+      "human_door_struck": 21,
+      "human_room_physically_encountered": 21,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 4.85,
+      "room_arrivals": 77,
+      "repeat_room_arrivals": 4,
+      "reassessments": 3,
+      "successful_hall_visits": 6,
+      "boss_transformations": 0,
+      "median_seconds": 219.6,
+      "mean_main_hunter_damage_player": 1957.95,
+      "mean_main_hunter_damage_allies": 1614.5,
+      "median_seconds_in_transit": 75.6,
+      "median_player_attack_contact_s": 15.9,
+      "npc_eliminations": 47
+     },
+     "standard": {
+      "n": 21,
+      "wins": 12,
+      "human_door_struck": 11,
+      "human_room_physically_encountered": 11,
+      "human_zero_damage_no_door_damage_wins": 10,
+      "wins_without_hunter_damage": 10,
+      "first_arrival_after_prep_median_s": 6.05,
+      "room_arrivals": 74,
+      "repeat_room_arrivals": 0,
+      "reassessments": 0,
+      "successful_hall_visits": 15,
+      "boss_transformations": 0,
+      "median_seconds": 300.9,
+      "mean_main_hunter_damage_player": 626.55,
+      "mean_main_hunter_damage_allies": 4578.95,
+      "median_seconds_in_transit": 83.1,
+      "median_player_attack_contact_s": 5.1,
+      "npc_eliminations": 46
+     }
+    },
+    "middle_16_34": {
+     "hard": {
+      "n": 28,
+      "wins": 13,
+      "human_door_struck": 28,
+      "human_room_physically_encountered": 28,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 11.7,
+      "room_arrivals": 122,
+      "repeat_room_arrivals": 29,
+      "reassessments": 10,
+      "successful_hall_visits": 5,
+      "boss_transformations": 15,
+      "median_seconds": 289.05,
+      "mean_main_hunter_damage_player": 1241.21,
+      "mean_main_hunter_damage_allies": 2706.83,
+      "median_seconds_in_transit": 74.25,
+      "median_player_attack_contact_s": 13.88,
+      "npc_eliminations": 37
+     },
+     "hell": {
+      "n": 28,
+      "wins": 7,
+      "human_door_struck": 28,
+      "human_room_physically_encountered": 25,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 3,
+      "first_arrival_after_prep_median_s": 11.25,
+      "room_arrivals": 105,
+      "repeat_room_arrivals": 17,
+      "reassessments": 2,
+      "successful_hall_visits": 7,
+      "boss_transformations": 11,
+      "median_seconds": 218.78,
+      "mean_main_hunter_damage_player": 1463.55,
+      "mean_main_hunter_damage_allies": 1846.11,
+      "median_seconds_in_transit": 57.52,
+      "median_player_attack_contact_s": 19.42,
+      "npc_eliminations": 50
+     },
+     "standard": {
+      "n": 28,
+      "wins": 14,
+      "human_door_struck": 24,
+      "human_room_physically_encountered": 18,
+      "human_zero_damage_no_door_damage_wins": 4,
+      "wins_without_hunter_damage": 9,
+      "first_arrival_after_prep_median_s": 12.68,
+      "room_arrivals": 80,
+      "repeat_room_arrivals": 16,
+      "reassessments": 0,
+      "successful_hall_visits": 16,
+      "boss_transformations": 14,
+      "median_seconds": 226.8,
+      "mean_main_hunter_damage_player": 1241.5,
+      "mean_main_hunter_damage_allies": 2571.16,
+      "median_seconds_in_transit": 62.4,
+      "median_player_attack_contact_s": 14.33,
+      "npc_eliminations": 27
+     }
+    },
+    "late_35_50": {
+     "hard": {
+      "n": 21,
+      "wins": 7,
+      "human_door_struck": 21,
+      "human_room_physically_encountered": 21,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 3.7,
+      "room_arrivals": 58,
+      "repeat_room_arrivals": 10,
+      "reassessments": 5,
+      "successful_hall_visits": 4,
+      "boss_transformations": 6,
+      "median_seconds": 130.65,
+      "mean_main_hunter_damage_player": 2390.95,
+      "mean_main_hunter_damage_allies": 838.95,
+      "median_seconds_in_transit": 31.95,
+      "median_player_attack_contact_s": 38.25,
+      "npc_eliminations": 18
+     },
+     "hell": {
+      "n": 21,
+      "wins": 3,
+      "human_door_struck": 21,
+      "human_room_physically_encountered": 21,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 3.55,
+      "room_arrivals": 64,
+      "repeat_room_arrivals": 15,
+      "reassessments": 4,
+      "successful_hall_visits": 4,
+      "boss_transformations": 4,
+      "median_seconds": 126.6,
+      "mean_main_hunter_damage_player": 2107.22,
+      "mean_main_hunter_damage_allies": 695.13,
+      "median_seconds_in_transit": 37.2,
+      "median_player_attack_contact_s": 31.2,
+      "npc_eliminations": 26
+     },
+     "standard": {
+      "n": 21,
+      "wins": 13,
+      "human_door_struck": 21,
+      "human_room_physically_encountered": 21,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 4.0,
+      "room_arrivals": 77,
+      "repeat_room_arrivals": 18,
+      "reassessments": 0,
+      "successful_hall_visits": 10,
+      "boss_transformations": 11,
+      "median_seconds": 311.1,
+      "mean_main_hunter_damage_player": 2162.9,
+      "mean_main_hunter_damage_allies": 2453.77,
+      "median_seconds_in_transit": 53.1,
+      "median_player_attack_contact_s": 44.7,
+      "npc_eliminations": 16
+     }
+    }
+   },
+   "difficulty_policy_wins": {
+    "hard": {
+     "average": 3,
+     "beginner": 0,
+     "defensive": 5,
+     "item_assisted": 9,
+     "offensive": 4,
+     "passive": 0,
+     "skilled": 7
+    },
+    "hell": {
+     "average": 1,
+     "beginner": 0,
+     "defensive": 1,
+     "item_assisted": 6,
+     "offensive": 0,
+     "passive": 0,
+     "skilled": 4
+    },
+    "standard": {
+     "average": 6,
+     "beginner": 0,
+     "defensive": 7,
+     "item_assisted": 10,
+     "offensive": 6,
+     "passive": 0,
+     "skilled": 10
+    }
+   },
+   "unassisted_carries": [],
+   "matched_gold_crate": [
+    {
+     "id": "held-out-6",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "held-out-13",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 81.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "held-out-20",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "held-out-27",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": -16.65
+    },
+    {
+     "id": "held-out-34",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -200.05,
+     "delta_elapsed_seconds": -155.7
+    },
+    {
+     "id": "held-out-41",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "held-out-48",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 63.29,
+     "delta_elapsed_seconds": 36.45
+    },
+    {
+     "id": "held-out-55",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 2094.52,
+     "delta_elapsed_seconds": -11.7
+    },
+    {
+     "id": "held-out-62",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 2074.5,
+     "delta_elapsed_seconds": 42.75
+    },
+    {
+     "id": "held-out-69",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 218.25,
+     "delta_elapsed_seconds": -24.75
+    },
+    {
+     "id": "held-out-76",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 17.25,
+     "delta_elapsed_seconds": -2.85
+    },
+    {
+     "id": "held-out-83",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 486.0,
+     "delta_elapsed_seconds": 0.9
+    },
+    {
+     "id": "held-out-90",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "held-out-97",
+     "no_item": "defeat",
+     "crate": "victory",
+     "delta_player_damage": 673.49,
+     "delta_elapsed_seconds": 21.3
+    },
+    {
+     "id": "held-out-104",
+     "no_item": "defeat",
+     "crate": "victory",
+     "delta_player_damage": 3512.64,
+     "delta_elapsed_seconds": 325.65
+    },
+    {
+     "id": "held-out-111",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "held-out-118",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": -0.6
+    },
+    {
+     "id": "held-out-125",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -63.0,
+     "delta_elapsed_seconds": 4.5
+    },
+    {
+     "id": "held-out-132",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 81.0,
+     "delta_elapsed_seconds": -19.65
+    },
+    {
+     "id": "held-out-139",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -153.71,
+     "delta_elapsed_seconds": -128.7
+    },
+    {
+     "id": "held-out-146",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 333.4,
+     "delta_elapsed_seconds": 18.45
+    },
+    {
+     "id": "held-out-153",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": -1.5
+    },
+    {
+     "id": "held-out-160",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -2448.0,
+     "delta_elapsed_seconds": 16.35
+    },
+    {
+     "id": "held-out-167",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 882.0,
+     "delta_elapsed_seconds": 206.4
+    },
+    {
+     "id": "held-out-174",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -1337.28,
+     "delta_elapsed_seconds": -101.7
+    },
+    {
+     "id": "held-out-181",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": -0.3
+    },
+    {
+     "id": "held-out-188",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 309.21,
+     "delta_elapsed_seconds": -7.95
+    },
+    {
+     "id": "held-out-195",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "held-out-202",
+     "no_item": "defeat",
+     "crate": "victory",
+     "delta_player_damage": 4152.18,
+     "delta_elapsed_seconds": -234.3
+    },
+    {
+     "id": "held-out-209",
+     "no_item": "defeat",
+     "crate": "victory",
+     "delta_player_damage": 751.62,
+     "delta_elapsed_seconds": -44.1
+    }
+   ],
+   "untouched_zero_damage_victories": [
+    {
+     "id": "held-out-2",
+     "policy": "average",
+     "own_gold_spent": 2177.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 135.0,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-3",
+     "policy": "defensive",
+     "own_gold_spent": 1619.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 135.0,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-4",
+     "policy": "offensive",
+     "own_gold_spent": 1685.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 135.0,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-5",
+     "policy": "skilled",
+     "own_gold_spent": 1835.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 135.0,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-6",
+     "policy": "item_assisted",
+     "own_gold_spent": 2025.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 135.0,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-44",
+     "policy": "average",
+     "own_gold_spent": 1729.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 157.5,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-45",
+     "policy": "defensive",
+     "own_gold_spent": 1065.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 157.5,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-46",
+     "policy": "offensive",
+     "own_gold_spent": 1355.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 157.5,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-47",
+     "policy": "skilled",
+     "own_gold_spent": 1359.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 157.5,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-86",
+     "policy": "average",
+     "own_gold_spent": 1729.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 157.5,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-87",
+     "policy": "defensive",
+     "own_gold_spent": 1265.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 157.5,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-88",
+     "policy": "offensive",
+     "own_gold_spent": 1425.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 157.5,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-89",
+     "policy": "skilled",
+     "own_gold_spent": 1455.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 157.5,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-90",
+     "policy": "item_assisted",
+     "own_gold_spent": 1455.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 157.5,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-160",
+     "policy": "item_assisted",
+     "own_gold_spent": 1575.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 157.5,
+     "own_room_chosen": false
+    }
+   ]
+  },
+  "candidate": {
+   "overall": {
+    "n": 210,
+    "wins": 90,
+    "human_door_struck": 199,
+    "human_room_physically_encountered": 179,
+    "human_zero_damage_no_door_damage_wins": 9,
+    "wins_without_hunter_damage": 28,
+    "first_arrival_after_prep_median_s": 5.9,
+    "room_arrivals": 953,
+    "repeat_room_arrivals": 268,
+    "reassessments": 217,
+    "successful_hall_visits": 105,
+    "boss_transformations": 62,
+    "median_seconds": 278.55,
+    "mean_main_hunter_damage_player": 1611.85,
+    "mean_main_hunter_damage_allies": 2718.28,
+    "median_seconds_in_transit": 89.93,
+    "median_player_attack_contact_s": 20.25,
+    "npc_eliminations": 310
+   },
+   "difficulty": {
+    "hard": {
+     "n": 70,
+     "wins": 31,
+     "human_door_struck": 70,
+     "human_room_physically_encountered": 67,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 2,
+     "first_arrival_after_prep_median_s": 5.82,
+     "room_arrivals": 316,
+     "repeat_room_arrivals": 82,
+     "reassessments": 72,
+     "successful_hall_visits": 30,
+     "boss_transformations": 23,
+     "median_seconds": 282.45,
+     "mean_main_hunter_damage_player": 1854.4,
+     "mean_main_hunter_damage_allies": 2506.91,
+     "median_seconds_in_transit": 90.0,
+     "median_player_attack_contact_s": 20.7,
+     "npc_eliminations": 105
+    },
+    "hell": {
+     "n": 70,
+     "wins": 15,
+     "human_door_struck": 70,
+     "human_room_physically_encountered": 65,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 5.3,
+     "room_arrivals": 325,
+     "repeat_room_arrivals": 98,
+     "reassessments": 87,
+     "successful_hall_visits": 21,
+     "boss_transformations": 16,
+     "median_seconds": 219.45,
+     "mean_main_hunter_damage_player": 1802.11,
+     "mean_main_hunter_damage_allies": 1914.96,
+     "median_seconds_in_transit": 86.7,
+     "median_player_attack_contact_s": 21.07,
+     "npc_eliminations": 114
+    },
+    "standard": {
+     "n": 70,
+     "wins": 44,
+     "human_door_struck": 59,
+     "human_room_physically_encountered": 47,
+     "human_zero_damage_no_door_damage_wins": 9,
+     "wins_without_hunter_damage": 21,
+     "first_arrival_after_prep_median_s": 6.35,
+     "room_arrivals": 312,
+     "repeat_room_arrivals": 88,
+     "reassessments": 58,
+     "successful_hall_visits": 54,
+     "boss_transformations": 23,
+     "median_seconds": 323.55,
+     "mean_main_hunter_damage_player": 1179.04,
+     "mean_main_hunter_damage_allies": 3732.96,
+     "median_seconds_in_transit": 95.25,
+     "median_player_attack_contact_s": 12.98,
+     "npc_eliminations": 91
+    }
+   },
+   "policy": {
+    "average": {
+     "n": 30,
+     "wins": 11,
+     "human_door_struck": 28,
+     "human_room_physically_encountered": 25,
+     "human_zero_damage_no_door_damage_wins": 2,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 5.82,
+     "room_arrivals": 138,
+     "repeat_room_arrivals": 39,
+     "reassessments": 33,
+     "successful_hall_visits": 14,
+     "boss_transformations": 9,
+     "median_seconds": 272.55,
+     "mean_main_hunter_damage_player": 1684.49,
+     "mean_main_hunter_damage_allies": 2637.88,
+     "median_seconds_in_transit": 93.68,
+     "median_player_attack_contact_s": 33.6,
+     "npc_eliminations": 48
+    },
+    "beginner": {
+     "n": 30,
+     "wins": 3,
+     "human_door_struck": 29,
+     "human_room_physically_encountered": 27,
+     "human_zero_damage_no_door_damage_wins": 1,
+     "wins_without_hunter_damage": 3,
+     "first_arrival_after_prep_median_s": 5.82,
+     "room_arrivals": 79,
+     "repeat_room_arrivals": 14,
+     "reassessments": 20,
+     "successful_hall_visits": 4,
+     "boss_transformations": 2,
+     "median_seconds": 119.85,
+     "mean_main_hunter_damage_player": 295.5,
+     "mean_main_hunter_damage_allies": 1290.11,
+     "median_seconds_in_transit": 36.6,
+     "median_player_attack_contact_s": 18.23,
+     "npc_eliminations": 22
+    },
+    "defensive": {
+     "n": 30,
+     "wins": 14,
+     "human_door_struck": 29,
+     "human_room_physically_encountered": 26,
+     "human_zero_damage_no_door_damage_wins": 1,
+     "wins_without_hunter_damage": 4,
+     "first_arrival_after_prep_median_s": 5.82,
+     "room_arrivals": 152,
+     "repeat_room_arrivals": 48,
+     "reassessments": 40,
+     "successful_hall_visits": 20,
+     "boss_transformations": 10,
+     "median_seconds": 300.75,
+     "mean_main_hunter_damage_player": 1882.69,
+     "mean_main_hunter_damage_allies": 3117.78,
+     "median_seconds_in_transit": 88.28,
+     "median_player_attack_contact_s": 32.02,
+     "npc_eliminations": 48
+    },
+    "item_assisted": {
+     "n": 30,
+     "wins": 24,
+     "human_door_struck": 27,
+     "human_room_physically_encountered": 24,
+     "human_zero_damage_no_door_damage_wins": 2,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 5.98,
+     "room_arrivals": 187,
+     "repeat_room_arrivals": 54,
+     "reassessments": 32,
+     "successful_hall_visits": 24,
+     "boss_transformations": 15,
+     "median_seconds": 348.67,
+     "mean_main_hunter_damage_player": 3067.79,
+     "mean_main_hunter_damage_allies": 3845.22,
+     "median_seconds_in_transit": 129.9,
+     "median_player_attack_contact_s": 21.75,
+     "npc_eliminations": 67
+    },
+    "offensive": {
+     "n": 30,
+     "wins": 14,
+     "human_door_struck": 29,
+     "human_room_physically_encountered": 26,
+     "human_zero_damage_no_door_damage_wins": 1,
+     "wins_without_hunter_damage": 4,
+     "first_arrival_after_prep_median_s": 5.82,
+     "room_arrivals": 137,
+     "repeat_room_arrivals": 40,
+     "reassessments": 32,
+     "successful_hall_visits": 16,
+     "boss_transformations": 9,
+     "median_seconds": 288.98,
+     "mean_main_hunter_damage_player": 1643.21,
+     "mean_main_hunter_damage_allies": 2974.25,
+     "median_seconds_in_transit": 89.18,
+     "median_player_attack_contact_s": 19.42,
+     "npc_eliminations": 42
+    },
+    "passive": {
+     "n": 30,
+     "wins": 2,
+     "human_door_struck": 30,
+     "human_room_physically_encountered": 28,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 2,
+     "first_arrival_after_prep_median_s": 5.82,
+     "room_arrivals": 75,
+     "repeat_room_arrivals": 11,
+     "reassessments": 20,
+     "successful_hall_visits": 3,
+     "boss_transformations": 2,
+     "median_seconds": 104.63,
+     "mean_main_hunter_damage_player": 0.0,
+     "mean_main_hunter_damage_allies": 1146.84,
+     "median_seconds_in_transit": 34.05,
+     "median_player_attack_contact_s": 11.25,
+     "npc_eliminations": 18
+    },
+    "skilled": {
+     "n": 30,
+     "wins": 22,
+     "human_door_struck": 27,
+     "human_room_physically_encountered": 23,
+     "human_zero_damage_no_door_damage_wins": 2,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 5.82,
+     "room_arrivals": 185,
+     "repeat_room_arrivals": 62,
+     "reassessments": 40,
+     "successful_hall_visits": 24,
+     "boss_transformations": 15,
+     "median_seconds": 348.9,
+     "mean_main_hunter_damage_player": 2709.28,
+     "mean_main_hunter_damage_allies": 4015.87,
+     "median_seconds_in_transit": 122.93,
+     "median_player_attack_contact_s": 24.9,
+     "npc_eliminations": 65
+    }
+   },
+   "level": {
+    "1": {
+     "n": 21,
+     "wins": 9,
+     "human_door_struck": 15,
+     "human_room_physically_encountered": 15,
+     "human_zero_damage_no_door_damage_wins": 6,
+     "wins_without_hunter_damage": 6,
+     "first_arrival_after_prep_median_s": 24.0,
+     "room_arrivals": 111,
+     "repeat_room_arrivals": 22,
+     "reassessments": 14,
+     "successful_hall_visits": 20,
+     "boss_transformations": 0,
+     "median_seconds": 366.75,
+     "mean_main_hunter_damage_player": 1690.37,
+     "mean_main_hunter_damage_allies": 5194.47,
+     "median_seconds_in_transit": 185.85,
+     "median_player_attack_contact_s": 9.9,
+     "npc_eliminations": 67
+    },
+    "6": {
+     "n": 21,
+     "wins": 2,
+     "human_door_struck": 19,
+     "human_room_physically_encountered": 19,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 3.25,
+     "room_arrivals": 86,
+     "repeat_room_arrivals": 21,
+     "reassessments": 21,
+     "successful_hall_visits": 4,
+     "boss_transformations": 0,
+     "median_seconds": 231.6,
+     "mean_main_hunter_damage_player": 1467.38,
+     "mean_main_hunter_damage_allies": 1872.41,
+     "median_seconds_in_transit": 89.85,
+     "median_player_attack_contact_s": 16.35,
+     "npc_eliminations": 40
+    },
+    "11": {
+     "n": 21,
+     "wins": 12,
+     "human_door_struck": 18,
+     "human_room_physically_encountered": 18,
+     "human_zero_damage_no_door_damage_wins": 3,
+     "wins_without_hunter_damage": 3,
+     "first_arrival_after_prep_median_s": 5.75,
+     "room_arrivals": 112,
+     "repeat_room_arrivals": 32,
+     "reassessments": 54,
+     "successful_hall_visits": 22,
+     "boss_transformations": 0,
+     "median_seconds": 299.4,
+     "mean_main_hunter_damage_player": 1306.28,
+     "mean_main_hunter_damage_allies": 3586.79,
+     "median_seconds_in_transit": 76.2,
+     "median_player_attack_contact_s": 22.5,
+     "npc_eliminations": 20
+    },
+    "17": {
+     "n": 21,
+     "wins": 6,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 34.55,
+     "room_arrivals": 54,
+     "repeat_room_arrivals": 8,
+     "reassessments": 7,
+     "successful_hall_visits": 10,
+     "boss_transformations": 0,
+     "median_seconds": 126.15,
+     "mean_main_hunter_damage_player": 1652.53,
+     "mean_main_hunter_damage_allies": 1495.75,
+     "median_seconds_in_transit": 37.35,
+     "median_player_attack_contact_s": 38.1,
+     "npc_eliminations": 18
+    },
+    "23": {
+     "n": 21,
+     "wins": 5,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 13.35,
+     "room_arrivals": 52,
+     "repeat_room_arrivals": 11,
+     "reassessments": 6,
+     "successful_hall_visits": 5,
+     "boss_transformations": 6,
+     "median_seconds": 98.55,
+     "mean_main_hunter_damage_player": 1758.63,
+     "mean_main_hunter_damage_allies": 745.47,
+     "median_seconds_in_transit": 17.1,
+     "median_player_attack_contact_s": 33.15,
+     "npc_eliminations": 12
+    },
+    "27": {
+     "n": 21,
+     "wins": 19,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 7,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 14,
+     "first_arrival_after_prep_median_s": 10.05,
+     "room_arrivals": 160,
+     "repeat_room_arrivals": 71,
+     "reassessments": 42,
+     "successful_hall_visits": 7,
+     "boss_transformations": 19,
+     "median_seconds": 349.8,
+     "mean_main_hunter_damage_player": 157.65,
+     "mean_main_hunter_damage_allies": 5717.26,
+     "median_seconds_in_transit": 123.15,
+     "median_player_attack_contact_s": 0.0,
+     "npc_eliminations": 35
+    },
+    "32": {
+     "n": 21,
+     "wins": 12,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 16,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 2.25,
+     "room_arrivals": 122,
+     "repeat_room_arrivals": 34,
+     "reassessments": 28,
+     "successful_hall_visits": 11,
+     "boss_transformations": 15,
+     "median_seconds": 278.55,
+     "mean_main_hunter_damage_player": 1064.54,
+     "mean_main_hunter_damage_allies": 3717.17,
+     "median_seconds_in_transit": 66.9,
+     "median_player_attack_contact_s": 6.45,
+     "npc_eliminations": 34
+    },
+    "36": {
+     "n": 21,
+     "wins": 11,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 20,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 5.9,
+     "room_arrivals": 80,
+     "repeat_room_arrivals": 16,
+     "reassessments": 11,
+     "successful_hall_visits": 1,
+     "boss_transformations": 11,
+     "median_seconds": 280.35,
+     "mean_main_hunter_damage_player": 1531.63,
+     "mean_main_hunter_damage_allies": 1791.21,
+     "median_seconds_in_transit": 74.55,
+     "median_player_attack_contact_s": 18.0,
+     "npc_eliminations": 22
+    },
+    "44": {
+     "n": 21,
+     "wins": 5,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 3.7,
+     "room_arrivals": 98,
+     "repeat_room_arrivals": 22,
+     "reassessments": 18,
+     "successful_hall_visits": 16,
+     "boss_transformations": 0,
+     "median_seconds": 215.25,
+     "mean_main_hunter_damage_player": 2039.68,
+     "mean_main_hunter_damage_allies": 2004.39,
+     "median_seconds_in_transit": 60.15,
+     "median_player_attack_contact_s": 35.55,
+     "npc_eliminations": 52
+    },
+    "50": {
+     "n": 21,
+     "wins": 9,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 2.95,
+     "room_arrivals": 78,
+     "repeat_room_arrivals": 31,
+     "reassessments": 16,
+     "successful_hall_visits": 9,
+     "boss_transformations": 11,
+     "median_seconds": 224.1,
+     "mean_main_hunter_damage_player": 3449.8,
+     "mean_main_hunter_damage_allies": 1057.88,
+     "median_seconds_in_transit": 50.1,
+     "median_player_attack_contact_s": 61.65,
+     "npc_eliminations": 10
+    }
+   },
+   "archetype": {
+    "crusher": {
+     "n": 42,
+     "wins": 18,
+     "human_door_struck": 36,
+     "human_room_physically_encountered": 36,
+     "human_zero_damage_no_door_damage_wins": 6,
+     "wins_without_hunter_damage": 6,
+     "first_arrival_after_prep_median_s": 13.18,
+     "room_arrivals": 189,
+     "repeat_room_arrivals": 53,
+     "reassessments": 30,
+     "successful_hall_visits": 29,
+     "boss_transformations": 11,
+     "median_seconds": 343.05,
+     "mean_main_hunter_damage_player": 2570.09,
+     "mean_main_hunter_damage_allies": 3126.17,
+     "median_seconds_in_transit": 141.3,
+     "median_player_attack_contact_s": 20.85,
+     "npc_eliminations": 77
+    },
+    "electric": {
+     "n": 42,
+     "wins": 11,
+     "human_door_struck": 42,
+     "human_room_physically_encountered": 42,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 21.75,
+     "room_arrivals": 152,
+     "repeat_room_arrivals": 30,
+     "reassessments": 25,
+     "successful_hall_visits": 26,
+     "boss_transformations": 0,
+     "median_seconds": 152.18,
+     "mean_main_hunter_damage_player": 1846.11,
+     "mean_main_hunter_damage_allies": 1750.07,
+     "median_seconds_in_transit": 40.27,
+     "median_player_attack_contact_s": 36.3,
+     "npc_eliminations": 70
+    },
+    "ravager": {
+     "n": 42,
+     "wins": 31,
+     "human_door_struck": 39,
+     "human_room_physically_encountered": 25,
+     "human_zero_damage_no_door_damage_wins": 3,
+     "wins_without_hunter_damage": 17,
+     "first_arrival_after_prep_median_s": 7.9,
+     "room_arrivals": 272,
+     "repeat_room_arrivals": 103,
+     "reassessments": 96,
+     "successful_hall_visits": 29,
+     "boss_transformations": 19,
+     "median_seconds": 344.4,
+     "mean_main_hunter_damage_player": 731.96,
+     "mean_main_hunter_damage_allies": 4652.02,
+     "median_seconds_in_transit": 106.35,
+     "median_player_attack_contact_s": 3.45,
+     "npc_eliminations": 55
+    },
+    "stalker": {
+     "n": 42,
+     "wins": 14,
+     "human_door_struck": 40,
+     "human_room_physically_encountered": 35,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 2.75,
+     "room_arrivals": 208,
+     "repeat_room_arrivals": 55,
+     "reassessments": 49,
+     "successful_hall_visits": 15,
+     "boss_transformations": 15,
+     "median_seconds": 247.95,
+     "mean_main_hunter_damage_player": 1265.96,
+     "mean_main_hunter_damage_allies": 2794.79,
+     "median_seconds_in_transit": 89.85,
+     "median_player_attack_contact_s": 9.75,
+     "npc_eliminations": 74
+    },
+    "storm": {
+     "n": 21,
+     "wins": 5,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 13.35,
+     "room_arrivals": 52,
+     "repeat_room_arrivals": 11,
+     "reassessments": 6,
+     "successful_hall_visits": 5,
+     "boss_transformations": 6,
+     "median_seconds": 98.55,
+     "mean_main_hunter_damage_player": 1758.63,
+     "mean_main_hunter_damage_allies": 745.47,
+     "median_seconds_in_transit": 17.1,
+     "median_player_attack_contact_s": 33.15,
+     "npc_eliminations": 12
+    },
+    "witch": {
+     "n": 21,
+     "wins": 11,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 20,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 5.9,
+     "room_arrivals": 80,
+     "repeat_room_arrivals": 16,
+     "reassessments": 11,
+     "successful_hall_visits": 1,
+     "boss_transformations": 11,
+     "median_seconds": 280.35,
+     "mean_main_hunter_damage_player": 1531.63,
+     "mean_main_hunter_damage_allies": 1791.21,
+     "median_seconds_in_transit": 74.55,
+     "median_player_attack_contact_s": 18.0,
+     "npc_eliminations": 22
+    }
+   },
+   "family": {
+    "branching": {
+     "n": 21,
+     "wins": 6,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 21,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 34.55,
+     "room_arrivals": 54,
+     "repeat_room_arrivals": 8,
+     "reassessments": 7,
+     "successful_hall_visits": 10,
+     "boss_transformations": 0,
+     "median_seconds": 126.15,
+     "mean_main_hunter_damage_player": 1652.53,
+     "mean_main_hunter_damage_allies": 1495.75,
+     "median_seconds_in_transit": 37.35,
+     "median_player_attack_contact_s": 38.1,
+     "npc_eliminations": 18
+    },
+    "hybrid": {
+     "n": 42,
+     "wins": 14,
+     "human_door_struck": 42,
+     "human_room_physically_encountered": 42,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 3.4,
+     "room_arrivals": 176,
+     "repeat_room_arrivals": 53,
+     "reassessments": 34,
+     "successful_hall_visits": 25,
+     "boss_transformations": 11,
+     "median_seconds": 219.68,
+     "mean_main_hunter_damage_player": 2744.74,
+     "mean_main_hunter_damage_allies": 1531.14,
+     "median_seconds_in_transit": 53.7,
+     "median_player_attack_contact_s": 43.8,
+     "npc_eliminations": 62
+    },
+    "labyrinth": {
+     "n": 21,
+     "wins": 12,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 16,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 2.25,
+     "room_arrivals": 122,
+     "repeat_room_arrivals": 34,
+     "reassessments": 28,
+     "successful_hall_visits": 11,
+     "boss_transformations": 15,
+     "median_seconds": 278.55,
+     "mean_main_hunter_damage_player": 1064.54,
+     "mean_main_hunter_damage_allies": 3717.17,
+     "median_seconds_in_transit": 66.9,
+     "median_player_attack_contact_s": 6.45,
+     "npc_eliminations": 34
+    },
+    "radial": {
+     "n": 42,
+     "wins": 16,
+     "human_door_struck": 42,
+     "human_room_physically_encountered": 41,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 9.55,
+     "room_arrivals": 132,
+     "repeat_room_arrivals": 27,
+     "reassessments": 17,
+     "successful_hall_visits": 6,
+     "boss_transformations": 17,
+     "median_seconds": 137.48,
+     "mean_main_hunter_damage_player": 1645.13,
+     "mean_main_hunter_damage_allies": 1268.34,
+     "median_seconds_in_transit": 36.07,
+     "median_player_attack_contact_s": 25.87,
+     "npc_eliminations": 34
+    },
+    "ring": {
+     "n": 21,
+     "wins": 9,
+     "human_door_struck": 15,
+     "human_room_physically_encountered": 15,
+     "human_zero_damage_no_door_damage_wins": 6,
+     "wins_without_hunter_damage": 6,
+     "first_arrival_after_prep_median_s": 24.0,
+     "room_arrivals": 111,
+     "repeat_room_arrivals": 22,
+     "reassessments": 14,
+     "successful_hall_visits": 20,
+     "boss_transformations": 0,
+     "median_seconds": 366.75,
+     "mean_main_hunter_damage_player": 1690.37,
+     "mean_main_hunter_damage_allies": 5194.47,
+     "median_seconds_in_transit": 185.85,
+     "median_player_attack_contact_s": 9.9,
+     "npc_eliminations": 67
+    },
+    "scattered": {
+     "n": 21,
+     "wins": 12,
+     "human_door_struck": 18,
+     "human_room_physically_encountered": 18,
+     "human_zero_damage_no_door_damage_wins": 3,
+     "wins_without_hunter_damage": 3,
+     "first_arrival_after_prep_median_s": 5.75,
+     "room_arrivals": 112,
+     "repeat_room_arrivals": 32,
+     "reassessments": 54,
+     "successful_hall_visits": 22,
+     "boss_transformations": 0,
+     "median_seconds": 299.4,
+     "mean_main_hunter_damage_player": 1306.28,
+     "mean_main_hunter_damage_allies": 3586.79,
+     "median_seconds_in_transit": 76.2,
+     "median_player_attack_contact_s": 22.5,
+     "npc_eliminations": 20
+    },
+    "zigzag": {
+     "n": 42,
+     "wins": 21,
+     "human_door_struck": 40,
+     "human_room_physically_encountered": 26,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 14,
+     "first_arrival_after_prep_median_s": 6.65,
+     "room_arrivals": 246,
+     "repeat_room_arrivals": 92,
+     "reassessments": 63,
+     "successful_hall_visits": 11,
+     "boss_transformations": 19,
+     "median_seconds": 311.62,
+     "mean_main_hunter_damage_player": 812.52,
+     "mean_main_hunter_damage_allies": 3794.83,
+     "median_seconds_in_transit": 106.35,
+     "median_player_attack_contact_s": 4.35,
+     "npc_eliminations": 75
+    }
+   },
+   "room": {
+    "1": {
+     "n": 21,
+     "wins": 12,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 16,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 5,
+     "first_arrival_after_prep_median_s": 2.25,
+     "room_arrivals": 122,
+     "repeat_room_arrivals": 34,
+     "reassessments": 28,
+     "successful_hall_visits": 11,
+     "boss_transformations": 15,
+     "median_seconds": 278.55,
+     "mean_main_hunter_damage_player": 1064.54,
+     "mean_main_hunter_damage_allies": 3717.17,
+     "median_seconds_in_transit": 66.9,
+     "median_player_attack_contact_s": 6.45,
+     "npc_eliminations": 34
+    },
+    "2": {
+     "n": 21,
+     "wins": 9,
+     "human_door_struck": 15,
+     "human_room_physically_encountered": 15,
+     "human_zero_damage_no_door_damage_wins": 6,
+     "wins_without_hunter_damage": 6,
+     "first_arrival_after_prep_median_s": 24.0,
+     "room_arrivals": 111,
+     "repeat_room_arrivals": 22,
+     "reassessments": 14,
+     "successful_hall_visits": 20,
+     "boss_transformations": 0,
+     "median_seconds": 366.75,
+     "mean_main_hunter_damage_player": 1690.37,
+     "mean_main_hunter_damage_allies": 5194.47,
+     "median_seconds_in_transit": 185.85,
+     "median_player_attack_contact_s": 9.9,
+     "npc_eliminations": 67
+    },
+    "3": {
+     "n": 63,
+     "wins": 30,
+     "human_door_struck": 63,
+     "human_room_physically_encountered": 49,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 14,
+     "first_arrival_after_prep_median_s": 13.35,
+     "room_arrivals": 266,
+     "repeat_room_arrivals": 90,
+     "reassessments": 55,
+     "successful_hall_visits": 22,
+     "boss_transformations": 25,
+     "median_seconds": 266.55,
+     "mean_main_hunter_damage_player": 1189.61,
+     "mean_main_hunter_damage_allies": 2652.82,
+     "median_seconds_in_transit": 106.35,
+     "median_player_attack_contact_s": 20.4,
+     "npc_eliminations": 65
+    },
+    "5": {
+     "n": 21,
+     "wins": 11,
+     "human_door_struck": 21,
+     "human_room_physically_encountered": 20,
+     "human_zero_damage_no_door_damage_wins": 0,
+     "wins_without_hunter_damage": 0,
+     "first_arrival_after_prep_median_s": 5.9,
+     "room_arrivals": 80,
+     "repeat_room_arrivals": 16,
+     "reassessments": 11,
+     "successful_hall_visits": 1,
+     "boss_transformations": 11,
+     "median_seconds": 280.35,
+     "mean_main_hunter_damage_player": 1531.63,
+     "mean_main_hunter_damage_allies": 1791.21,
+     "median_seconds_in_transit": 74.55,
+     "median_player_attack_contact_s": 18.0,
+     "npc_eliminations": 22
+    },
+    "6": {
+     "n": 84,
+     "wins": 28,
+     "human_door_struck": 79,
+     "human_room_physically_encountered": 79,
+     "human_zero_damage_no_door_damage_wins": 3,
+     "wins_without_hunter_damage": 3,
+     "first_arrival_after_prep_median_s": 3.55,
+     "room_arrivals": 374,
+     "repeat_room_arrivals": 106,
+     "reassessments": 109,
+     "successful_hall_visits": 51,
+     "boss_transformations": 11,
+     "median_seconds": 236.1,
+     "mean_main_hunter_damage_player": 2065.78,
+     "mean_main_hunter_damage_allies": 2130.37,
+     "median_seconds_in_transit": 86.25,
+     "median_player_attack_contact_s": 25.87,
+     "npc_eliminations": 122
+    }
+   },
+   "chapter_band_by_difficulty": {
+    "early_1_15": {
+     "hard": {
+      "n": 21,
+      "wins": 7,
+      "human_door_struck": 21,
+      "human_room_physically_encountered": 21,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 5.75,
+      "room_arrivals": 98,
+      "repeat_room_arrivals": 18,
+      "reassessments": 30,
+      "successful_hall_visits": 12,
+      "boss_transformations": 0,
+      "median_seconds": 261.15,
+      "mean_main_hunter_damage_player": 2080.98,
+      "mean_main_hunter_damage_allies": 2827.49,
+      "median_seconds_in_transit": 90.0,
+      "median_player_attack_contact_s": 18.6,
+      "npc_eliminations": 40
+     },
+     "hell": {
+      "n": 21,
+      "wins": 3,
+      "human_door_struck": 21,
+      "human_room_physically_encountered": 21,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 4.85,
+      "room_arrivals": 114,
+      "repeat_room_arrivals": 31,
+      "reassessments": 35,
+      "successful_hall_visits": 9,
+      "boss_transformations": 0,
+      "median_seconds": 299.4,
+      "mean_main_hunter_damage_player": 1896.43,
+      "mean_main_hunter_damage_allies": 2482.2,
+      "median_seconds_in_transit": 86.7,
+      "median_player_attack_contact_s": 12.45,
+      "npc_eliminations": 52
+     },
+     "standard": {
+      "n": 21,
+      "wins": 13,
+      "human_door_struck": 10,
+      "human_room_physically_encountered": 10,
+      "human_zero_damage_no_door_damage_wins": 9,
+      "wins_without_hunter_damage": 9,
+      "first_arrival_after_prep_median_s": 6.05,
+      "room_arrivals": 97,
+      "repeat_room_arrivals": 26,
+      "reassessments": 24,
+      "successful_hall_visits": 25,
+      "boss_transformations": 0,
+      "median_seconds": 336.6,
+      "mean_main_hunter_damage_player": 486.62,
+      "mean_main_hunter_damage_allies": 5343.97,
+      "median_seconds_in_transit": 117.3,
+      "median_player_attack_contact_s": 0.0,
+      "npc_eliminations": 35
+     }
+    },
+    "middle_16_34": {
+     "hard": {
+      "n": 28,
+      "wins": 16,
+      "human_door_struck": 28,
+      "human_room_physically_encountered": 26,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 2,
+      "first_arrival_after_prep_median_s": 11.7,
+      "room_arrivals": 134,
+      "repeat_room_arrivals": 45,
+      "reassessments": 32,
+      "successful_hall_visits": 9,
+      "boss_transformations": 14,
+      "median_seconds": 292.05,
+      "mean_main_hunter_damage_player": 1220.5,
+      "mean_main_hunter_damage_allies": 2908.35,
+      "median_seconds_in_transit": 106.35,
+      "median_player_attack_contact_s": 11.1,
+      "npc_eliminations": 30
+     },
+     "hell": {
+      "n": 28,
+      "wins": 8,
+      "human_door_struck": 28,
+      "human_room_physically_encountered": 23,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 5,
+      "first_arrival_after_prep_median_s": 11.25,
+      "room_arrivals": 133,
+      "repeat_room_arrivals": 42,
+      "reassessments": 32,
+      "successful_hall_visits": 8,
+      "boss_transformations": 12,
+      "median_seconds": 274.8,
+      "mean_main_hunter_damage_player": 1530.88,
+      "mean_main_hunter_damage_allies": 2282.52,
+      "median_seconds_in_transit": 107.4,
+      "median_player_attack_contact_s": 20.55,
+      "npc_eliminations": 41
+     },
+     "standard": {
+      "n": 28,
+      "wins": 18,
+      "human_door_struck": 28,
+      "human_room_physically_encountered": 16,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 12,
+      "first_arrival_after_prep_median_s": 12.68,
+      "room_arrivals": 121,
+      "repeat_room_arrivals": 37,
+      "reassessments": 19,
+      "successful_hall_visits": 16,
+      "boss_transformations": 14,
+      "median_seconds": 278.55,
+      "mean_main_hunter_damage_player": 723.64,
+      "mean_main_hunter_damage_allies": 3565.86,
+      "median_seconds_in_transit": 66.9,
+      "median_player_attack_contact_s": 10.2,
+      "npc_eliminations": 28
+     }
+    },
+    "late_35_50": {
+     "hard": {
+      "n": 21,
+      "wins": 8,
+      "human_door_struck": 21,
+      "human_room_physically_encountered": 20,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 3.7,
+      "room_arrivals": 84,
+      "repeat_room_arrivals": 19,
+      "reassessments": 10,
+      "successful_hall_visits": 9,
+      "boss_transformations": 9,
+      "median_seconds": 298.35,
+      "mean_main_hunter_damage_player": 2473.02,
+      "mean_main_hunter_damage_allies": 1651.08,
+      "median_seconds_in_transit": 82.95,
+      "median_player_attack_contact_s": 34.8,
+      "npc_eliminations": 35
+     },
+     "hell": {
+      "n": 21,
+      "wins": 4,
+      "human_door_struck": 21,
+      "human_room_physically_encountered": 21,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 3.55,
+      "room_arrivals": 78,
+      "repeat_room_arrivals": 25,
+      "reassessments": 20,
+      "successful_hall_visits": 4,
+      "boss_transformations": 4,
+      "median_seconds": 135.45,
+      "mean_main_hunter_damage_player": 2069.43,
+      "mean_main_hunter_damage_allies": 857.64,
+      "median_seconds_in_transit": 30.75,
+      "median_player_attack_contact_s": 35.55,
+      "npc_eliminations": 21
+     },
+     "standard": {
+      "n": 21,
+      "wins": 13,
+      "human_door_struck": 21,
+      "human_room_physically_encountered": 21,
+      "human_zero_damage_no_door_damage_wins": 0,
+      "wins_without_hunter_damage": 0,
+      "first_arrival_after_prep_median_s": 4.0,
+      "room_arrivals": 94,
+      "repeat_room_arrivals": 25,
+      "reassessments": 15,
+      "successful_hall_visits": 13,
+      "boss_transformations": 9,
+      "median_seconds": 330.0,
+      "mean_main_hunter_damage_player": 2478.67,
+      "mean_main_hunter_damage_allies": 2344.77,
+      "median_seconds_in_transit": 74.55,
+      "median_player_attack_contact_s": 47.4,
+      "npc_eliminations": 28
+     }
+    }
+   },
+   "difficulty_policy_wins": {
+    "hard": {
+     "average": 3,
+     "beginner": 1,
+     "defensive": 4,
+     "item_assisted": 9,
+     "offensive": 5,
+     "passive": 1,
+     "skilled": 8
+    },
+    "hell": {
+     "average": 2,
+     "beginner": 0,
+     "defensive": 2,
+     "item_assisted": 5,
+     "offensive": 1,
+     "passive": 0,
+     "skilled": 5
+    },
+    "standard": {
+     "average": 6,
+     "beginner": 2,
+     "defensive": 8,
+     "item_assisted": 10,
+     "offensive": 8,
+     "passive": 1,
+     "skilled": 9
+    }
+   },
+   "unassisted_carries": [
+    {
+     "id": "held-out-105",
+     "seed": 21529445,
+     "room": 3,
+     "seconds": 384.9,
+     "arrivals": [
+      5,
+      6,
+      4,
+      5,
+      5,
+      4
+     ],
+     "choices": [
+      [
+       48.15,
+       5,
+       "approach",
+       {
+        "best_cost": 24.26900562936281,
+        "comparable": 1,
+        "reachable": 4,
+        "recent": 0,
+        "selected_cost": 24.26900562936281
+       }
+      ],
+      [
+       92.55,
+       6,
+       "defended",
+       {
+        "best_cost": 33.961322836488236,
+        "comparable": 3,
+        "reachable": 3,
+        "recent": 0,
+        "selected_cost": 38.99310916401434
+       }
+      ],
+      [
+       155.4,
+       4,
+       "approach",
+       {
+        "best_cost": 24.525239173574356,
+        "comparable": 2,
+        "reachable": 5,
+        "recent": 0,
+        "selected_cost": 27.033336452117886
+       }
+      ],
+      [
+       218.55,
+       5,
+       "approach",
+       {
+        "best_cost": 56.22795663006231,
+        "comparable": 2,
+        "reachable": 4,
+        "recent": 1,
+        "selected_cost": 56.22795663006231
+       }
+      ]
+     ],
+     "ally_damage_by_room": [
+      8.13,
+      0.0,
+      1484.36,
+      4055.93,
+      396.0
+     ]
+    },
+    {
+     "id": "held-out-175",
+     "seed": 21529445,
+     "room": 3,
+     "seconds": 367.65,
+     "arrivals": [
+      5,
+      6,
+      4,
+      6,
+      1,
+      1,
+      2,
+      5
+     ],
+     "choices": [
+      [
+       48.15,
+       5,
+       "approach",
+       {
+        "best_cost": 19.18799517620159,
+        "comparable": 1,
+        "reachable": 4,
+        "recent": 0,
+        "selected_cost": 19.18799517620159
+       }
+      ],
+      [
+       80.55,
+       6,
+       "stalled",
+       {
+        "best_cost": 26.646081466910168,
+        "comparable": 3,
+        "reachable": 5,
+        "recent": 0,
+        "selected_cost": 32.773757337664364
+       }
+      ],
+      [
+       122.4,
+       4,
+       "defended",
+       {
+        "best_cost": 23.097609534107157,
+        "comparable": 1,
+        "reachable": 1,
+        "recent": 0,
+        "selected_cost": 23.097609534107157
+       }
+      ],
+      [
+       186.45000000000002,
+       6,
+       "approach",
+       {
+        "best_cost": 20.38180773406645,
+        "comparable": 1,
+        "reachable": 5,
+        "recent": 1,
+        "selected_cost": 20.38180773406645
+       }
+      ],
+      [
+       235.20000000000002,
+       3,
+       "approach",
+       {
+        "best_cost": 35.67064542536228,
+        "comparable": 3,
+        "reachable": 4,
+        "recent": 0,
+        "selected_cost": 41.52566071410834
+       }
+      ],
+      [
+       267.75,
+       1,
+       "approach",
+       {
+        "best_cost": 24.369999584655684,
+        "comparable": 2,
+        "reachable": 3,
+        "recent": 0,
+        "selected_cost": 24.369999584655684
+       }
+      ]
+     ],
+     "ally_damage_by_room": [
+      2846.92,
+      986.9,
+      486.0,
+      1194.94,
+      990.0
+     ]
+    }
+   ],
+   "matched_gold_crate": [
+    {
+     "id": "held-out-6",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "held-out-13",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 81.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "held-out-20",
+     "no_item": "victory",
+     "crate": "defeat",
+     "delta_player_damage": 737.5,
+     "delta_elapsed_seconds": -85.65
+    },
+    {
+     "id": "held-out-27",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 417.47,
+     "delta_elapsed_seconds": 16.65
+    },
+    {
+     "id": "held-out-34",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -1249.15,
+     "delta_elapsed_seconds": -51.0
+    },
+    {
+     "id": "held-out-41",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "held-out-48",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "held-out-55",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 4472.01,
+     "delta_elapsed_seconds": -64.35
+    },
+    {
+     "id": "held-out-62",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 96.3,
+     "delta_elapsed_seconds": -26.4
+    },
+    {
+     "id": "held-out-69",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 2720.12,
+     "delta_elapsed_seconds": -110.1
+    },
+    {
+     "id": "held-out-76",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -1.21,
+     "delta_elapsed_seconds": -3.6
+    },
+    {
+     "id": "held-out-83",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 378.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "held-out-90",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "held-out-97",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -1116.89,
+     "delta_elapsed_seconds": 163.95
+    },
+    {
+     "id": "held-out-104",
+     "no_item": "defeat",
+     "crate": "victory",
+     "delta_player_damage": -1161.47,
+     "delta_elapsed_seconds": 141.9
+    },
+    {
+     "id": "held-out-111",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "held-out-118",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": -10.65
+    },
+    {
+     "id": "held-out-125",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -1929.76,
+     "delta_elapsed_seconds": 89.4
+    },
+    {
+     "id": "held-out-132",
+     "no_item": "defeat",
+     "crate": "victory",
+     "delta_player_damage": -868.6,
+     "delta_elapsed_seconds": 56.85
+    },
+    {
+     "id": "held-out-139",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -27.19,
+     "delta_elapsed_seconds": -231.75
+    },
+    {
+     "id": "held-out-146",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 2667.9,
+     "delta_elapsed_seconds": 66.15
+    },
+    {
+     "id": "held-out-153",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "held-out-160",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 931.5,
+     "delta_elapsed_seconds": -52.65
+    },
+    {
+     "id": "held-out-167",
+     "no_item": "defeat",
+     "crate": "defeat",
+     "delta_player_damage": 731.0,
+     "delta_elapsed_seconds": 169.5
+    },
+    {
+     "id": "held-out-174",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 3661.41,
+     "delta_elapsed_seconds": -213.15
+    },
+    {
+     "id": "held-out-181",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": -0.45
+    },
+    {
+     "id": "held-out-188",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 547.78,
+     "delta_elapsed_seconds": -1.65
+    },
+    {
+     "id": "held-out-195",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": 0.0,
+     "delta_elapsed_seconds": 0.0
+    },
+    {
+     "id": "held-out-202",
+     "no_item": "defeat",
+     "crate": "victory",
+     "delta_player_damage": 753.1,
+     "delta_elapsed_seconds": 56.55
+    },
+    {
+     "id": "held-out-209",
+     "no_item": "victory",
+     "crate": "victory",
+     "delta_player_damage": -1085.43,
+     "delta_elapsed_seconds": 36.0
+    }
+   ],
+   "untouched_zero_damage_victories": [
+    {
+     "id": "held-out-1",
+     "policy": "beginner",
+     "own_gold_spent": 245.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 135.0,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-2",
+     "policy": "average",
+     "own_gold_spent": 2576.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 135.0,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-3",
+     "policy": "defensive",
+     "own_gold_spent": 1739.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 135.0,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-4",
+     "policy": "offensive",
+     "own_gold_spent": 2125.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 135.0,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-5",
+     "policy": "skilled",
+     "own_gold_spent": 2025.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 135.0,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-6",
+     "policy": "item_assisted",
+     "own_gold_spent": 2215.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 135.0,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-86",
+     "policy": "average",
+     "own_gold_spent": 2057.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 157.5,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-89",
+     "policy": "skilled",
+     "own_gold_spent": 1455.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 157.5,
+     "own_room_chosen": false
+    },
+    {
+     "id": "held-out-90",
+     "policy": "item_assisted",
+     "own_gold_spent": 1645.0,
+     "passive_twin_result": "defeat",
+     "passive_twin_contact": 157.5,
+     "own_room_chosen": false
+    }
+   ]
+  },
+  "flips": [
+   {
+    "id": "held-out-1",
+    "seed": 1178900,
+    "room": 2,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      170.25,
+      "door_break",
+      1,
+      ""
+     ],
+     [
+      143.4,
+      "hunter_reassess",
+      1,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     372.6,
+     436.8
+    ],
+    "player_damage": [
+     360.0,
+     0.0
+    ],
+    "retargets": [
+     0,
+     1
+    ]
+   },
+   {
+    "id": "held-out-16",
+    "seed": 6507338,
+    "room": 6,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      103.65,
+      "door_break",
+      1,
+      ""
+     ],
+     [
+      64.8,
+      "hunter_reassess",
+      1,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     169.05,
+     341.25
+    ],
+    "player_damage": [
+     1593.0,
+     2590.24
+    ],
+    "retargets": [
+     0,
+     4
+    ]
+   },
+   {
+    "id": "held-out-17",
+    "seed": 6507338,
+    "room": 6,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      103.65,
+      "door_break",
+      1,
+      ""
+     ],
+     [
+      64.8,
+      "hunter_reassess",
+      1,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     174.75,
+     336.9
+    ],
+    "player_damage": [
+     2277.0,
+     3335.6
+    ],
+    "retargets": [
+     0,
+     5
+    ]
+   },
+   {
+    "id": "held-out-20",
+    "seed": 6507338,
+    "room": 6,
+    "before": "victory",
+    "after": "defeat",
+    "first_tactical_trace_difference": [
+     [
+      103.65,
+      "door_break",
+      1,
+      ""
+     ],
+     [
+      64.8,
+      "hunter_reassess",
+      1,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     302.55,
+     282.9
+    ],
+    "player_damage": [
+     3006.0,
+     3487.5
+    ],
+    "retargets": [
+     1,
+     2
+    ]
+   },
+   {
+    "id": "held-out-24",
+    "seed": 11203575,
+    "room": 3,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      201.75,
+      "door_break",
+      3,
+      ""
+     ],
+     [
+      131.85,
+      "hunter_reassess",
+      3,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     204.6,
+     391.05
+    ],
+    "player_damage": [
+     3240.0,
+     2584.04
+    ],
+    "retargets": [
+     0,
+     1
+    ]
+   },
+   {
+    "id": "held-out-25",
+    "seed": 11203575,
+    "room": 3,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      155.85,
+      "door_break",
+      3,
+      ""
+     ],
+     [
+      131.85,
+      "hunter_reassess",
+      3,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     158.7,
+     406.5
+    ],
+    "player_damage": [
+     3231.0,
+     2304.0
+    ],
+    "retargets": [
+     0,
+     1
+    ]
+   },
+   {
+    "id": "held-out-39",
+    "seed": 21529445,
+    "room": 3,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      110.85000000000001,
+      "door_break",
+      5,
+      ""
+     ],
+     [
+      74.55,
+      "hunter_reassess",
+      5,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     281.1,
+     349.8
+    ],
+    "player_damage": [
+     1768.58,
+     0.0
+    ],
+    "retargets": [
+     0,
+     4
+    ]
+   },
+   {
+    "id": "held-out-51",
+    "seed": 33493299,
+    "room": 5,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      93.75,
+      "approach",
+      5,
+      ""
+     ],
+     [
+      93.75,
+      "approach",
+      4,
+      ""
+     ]
+    ],
+    "terminal_seconds": [
+     172.8,
+     344.85
+    ],
+    "player_damage": [
+     1224.0,
+     3076.96
+    ],
+    "retargets": [
+     0,
+     1
+    ]
+   },
+   {
+    "id": "held-out-72",
+    "seed": 1178900,
+    "room": 2,
+    "before": "victory",
+    "after": "defeat",
+    "first_tactical_trace_difference": [
+     [
+      247.5,
+      "approach",
+      2,
+      ""
+     ],
+     [
+      247.5,
+      "approach",
+      4,
+      ""
+     ]
+    ],
+    "terminal_seconds": [
+     391.95,
+     363.9
+    ],
+    "player_damage": [
+     3173.97,
+     4265.85
+    ],
+    "retargets": [
+     0,
+     0
+    ]
+   },
+   {
+    "id": "held-out-73",
+    "seed": 1178900,
+    "room": 2,
+    "before": "victory",
+    "after": "defeat",
+    "first_tactical_trace_difference": [
+     [
+      340.8,
+      "approach",
+      6,
+      ""
+     ],
+     [
+      340.8,
+      "approach",
+      2,
+      ""
+     ]
+    ],
+    "terminal_seconds": [
+     416.25,
+     370.2
+    ],
+    "player_damage": [
+     4354.72,
+     4505.4
+    ],
+    "retargets": [
+     0,
+     0
+    ]
+   },
+   {
+    "id": "held-out-96",
+    "seed": 11203575,
+    "room": 3,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      113.85000000000001,
+      "approach",
+      1,
+      ""
+     ],
+     [
+      113.85000000000001,
+      "approach",
+      2,
+      ""
+     ]
+    ],
+    "terminal_seconds": [
+     379.8,
+     236.85
+    ],
+    "player_damage": [
+     4677.0,
+     5081.81
+    ],
+    "retargets": [
+     1,
+     1
+    ]
+   },
+   {
+    "id": "held-out-105",
+    "seed": 21529445,
+    "room": 3,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      156.0,
+      "door_break",
+      5,
+      ""
+     ],
+     [
+      92.55,
+      "hunter_reassess",
+      5,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     295.35,
+     384.9
+    ],
+    "player_damage": [
+     0.0,
+     0.0
+    ],
+    "retargets": [
+     0,
+     2
+    ]
+   },
+   {
+    "id": "held-out-106",
+    "seed": 21529445,
+    "room": 3,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      156.0,
+      "door_break",
+      5,
+      ""
+     ],
+     [
+      92.55,
+      "hunter_reassess",
+      5,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     302.1,
+     384.9
+    ],
+    "player_damage": [
+     414.0,
+     0.0
+    ],
+    "retargets": [
+     0,
+     2
+    ]
+   },
+   {
+    "id": "held-out-128",
+    "seed": 46251482,
+    "room": 6,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      176.55,
+      "door_break",
+      6,
+      ""
+     ],
+     [
+      96.45,
+      "hunter_reassess",
+      6,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     179.1,
+     422.85
+    ],
+    "player_damage": [
+     2376.0,
+     3655.48
+    ],
+    "retargets": [
+     0,
+     1
+    ]
+   },
+   {
+    "id": "held-out-130",
+    "seed": 46251482,
+    "room": 6,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      110.4,
+      "door_break",
+      6,
+      ""
+     ],
+     [
+      72.15,
+      "hunter_reassess",
+      6,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     113.1,
+     387.0
+    ],
+    "player_damage": [
+     2907.0,
+     4185.07
+    ],
+    "retargets": [
+     0,
+     1
+    ]
+   },
+   {
+    "id": "held-out-131",
+    "seed": 46251482,
+    "room": 6,
+    "before": "victory",
+    "after": "defeat",
+    "first_tactical_trace_difference": [
+     [
+      118.05,
+      "hunter_retreat",
+      6,
+      ""
+     ],
+     [
+      72.15,
+      "hunter_reassess",
+      6,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     330.75,
+     345.3
+    ],
+    "player_damage": [
+     3762.0,
+     4145.4
+    ],
+    "retargets": [
+     0,
+     1
+    ]
+   },
+   {
+    "id": "held-out-158",
+    "seed": 6507338,
+    "room": 6,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      111.9,
+      "door_break",
+      1,
+      ""
+     ],
+     [
+      71.55,
+      "hunter_reassess",
+      1,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     230.4,
+     340.95
+    ],
+    "player_damage": [
+     3429.0,
+     1053.0
+    ],
+    "retargets": [
+     1,
+     6
+    ]
+   },
+   {
+    "id": "held-out-175",
+    "seed": 21529445,
+    "room": 3,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      103.05,
+      "hunter_reassess",
+      5,
+      "defense_delays_breach"
+     ],
+     [
+      80.55,
+      "hunter_reassess",
+      5,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     358.05,
+     367.65
+    ],
+    "player_damage": [
+     0.0,
+     0.0
+    ],
+    "retargets": [
+     2,
+     3
+    ]
+   },
+   {
+    "id": "held-out-176",
+    "seed": 21529445,
+    "room": 3,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      103.05,
+      "hunter_reassess",
+      5,
+      "defense_delays_breach"
+     ],
+     [
+      80.55,
+      "hunter_reassess",
+      5,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     358.05,
+     367.65
+    ],
+    "player_damage": [
+     117.0,
+     0.0
+    ],
+    "retargets": [
+     2,
+     3
+    ]
+   },
+   {
+    "id": "held-out-191",
+    "seed": 33493299,
+    "room": 5,
+    "before": "victory",
+    "after": "defeat",
+    "first_tactical_trace_difference": [
+     [
+      108.3,
+      "door_break",
+      3,
+      ""
+     ],
+     [
+      95.85000000000001,
+      "hunter_reassess",
+      3,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     355.2,
+     195.9
+    ],
+    "player_damage": [
+     522.97,
+     1611.0
+    ],
+    "retargets": [
+     1,
+     1
+    ]
+   },
+   {
+    "id": "held-out-208",
+    "seed": 57132054,
+    "room": 6,
+    "before": "defeat",
+    "after": "victory",
+    "first_tactical_trace_difference": [
+     [
+      127.65,
+      "hunter_reassess",
+      6,
+      "defense_delays_breach"
+     ],
+     [
+      69.9,
+      "hunter_reassess",
+      6,
+      "defense_delays_breach"
+     ]
+    ],
+    "terminal_seconds": [
+     306.75,
+     333.45
+    ],
+    "player_damage": [
+     6568.18,
+     8802.92
+    ],
+    "retargets": [
+     1,
+     2
+    ]
+   }
+  ]
+ }
+}

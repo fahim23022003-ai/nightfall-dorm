@@ -1,0 +1,976 @@
+{
+  "checks": 161,
+  "controlled_pairs": [
+    {
+      "item": "radar",
+      "with": {
+        "activated": true,
+        "attacks": 0,
+        "boss_cast_completions": 0,
+        "boss_recovery_reason": "",
+        "door_damage_taken": 0.0,
+        "door_hp_change": 172.5,
+        "door_hp_end": 345.0,
+        "door_hp_max": 345.0,
+        "door_hp_start": 172.5,
+        "duration": 1.5,
+        "guardian_shield_hp": 0.0,
+        "hunter_displacement": 106.270751953125,
+        "hunter_target_room": 4,
+        "player_damage": 0.0,
+        "player_room": 4,
+        "player_shots": 0,
+        "radar_informed_paid_door_upgrade": true,
+        "stock_spent": 1
+      },
+      "without": {
+        "activated": false,
+        "attacks": 0,
+        "boss_cast_completions": 0,
+        "boss_recovery_reason": "",
+        "door_damage_taken": 0.0,
+        "door_hp_change": 0.0,
+        "door_hp_end": 172.5,
+        "door_hp_max": 172.5,
+        "door_hp_start": 172.5,
+        "duration": 1.5,
+        "guardian_shield_hp": 0.0,
+        "hunter_displacement": 106.270751953125,
+        "hunter_target_room": 4,
+        "player_damage": 0.0,
+        "player_room": 4,
+        "player_shots": 0,
+        "radar_informed_paid_door_upgrade": false,
+        "stock_spent": 0
+      }
+    },
+    {
+      "item": "shield",
+      "with": {
+        "activated": true,
+        "attacks": 1,
+        "boss_cast_completions": 0,
+        "boss_recovery_reason": "",
+        "door_damage_taken": 0.0,
+        "door_hp_change": 0.0,
+        "door_hp_end": 172.5,
+        "door_hp_max": 172.5,
+        "door_hp_start": 172.5,
+        "duration": 2.0,
+        "guardian_shield_hp": 0.0,
+        "hunter_displacement": 0.0,
+        "hunter_target_room": 4,
+        "player_damage": 0.0,
+        "player_room": 4,
+        "player_shots": 0,
+        "radar_informed_paid_door_upgrade": false,
+        "stock_spent": 1
+      },
+      "without": {
+        "activated": false,
+        "attacks": 1,
+        "boss_cast_completions": 0,
+        "boss_recovery_reason": "",
+        "door_damage_taken": 27.914744,
+        "door_hp_change": -27.914744,
+        "door_hp_end": 144.585256,
+        "door_hp_max": 172.5,
+        "door_hp_start": 172.5,
+        "duration": 2.0,
+        "guardian_shield_hp": 0.0,
+        "hunter_displacement": 0.0,
+        "hunter_target_room": 4,
+        "player_damage": 0.0,
+        "player_room": 4,
+        "player_shots": 0,
+        "radar_informed_paid_door_upgrade": false,
+        "stock_spent": 0
+      }
+    },
+    {
+      "item": "frost",
+      "with": {
+        "activated": true,
+        "attacks": 0,
+        "boss_cast_completions": 0,
+        "boss_recovery_reason": "",
+        "door_damage_taken": 0.0,
+        "door_hp_change": 0.0,
+        "door_hp_end": 172.5,
+        "door_hp_max": 172.5,
+        "door_hp_start": 172.5,
+        "duration": 1.5,
+        "guardian_shield_hp": 0.0,
+        "hunter_displacement": 63.7646484375,
+        "hunter_target_room": 4,
+        "player_damage": 0.0,
+        "player_room": 4,
+        "player_shots": 0,
+        "radar_informed_paid_door_upgrade": false,
+        "stock_spent": 1
+      },
+      "without": {
+        "activated": false,
+        "attacks": 0,
+        "boss_cast_completions": 0,
+        "boss_recovery_reason": "",
+        "door_damage_taken": 0.0,
+        "door_hp_change": 0.0,
+        "door_hp_end": 172.5,
+        "door_hp_max": 172.5,
+        "door_hp_start": 172.5,
+        "duration": 1.5,
+        "guardian_shield_hp": 0.0,
+        "hunter_displacement": 106.270751953125,
+        "hunter_target_room": 4,
+        "player_damage": 0.0,
+        "player_room": 4,
+        "player_shots": 0,
+        "radar_informed_paid_door_upgrade": false,
+        "stock_spent": 0
+      }
+    },
+    {
+      "item": "decoy",
+      "with": {
+        "activated": true,
+        "attacks": 0,
+        "boss_cast_completions": 0,
+        "boss_recovery_reason": "",
+        "door_damage_taken": 0.0,
+        "door_hp_change": 0.0,
+        "door_hp_end": 172.5,
+        "door_hp_max": 172.5,
+        "door_hp_start": 172.5,
+        "duration": 2.0,
+        "guardian_shield_hp": 0.0,
+        "hunter_displacement": 0.0,
+        "hunter_target_room": 4,
+        "player_damage": 0.0,
+        "player_room": 4,
+        "player_shots": 0,
+        "radar_informed_paid_door_upgrade": false,
+        "stock_spent": 1
+      },
+      "without": {
+        "activated": false,
+        "attacks": 1,
+        "boss_cast_completions": 0,
+        "boss_recovery_reason": "",
+        "door_damage_taken": 27.914744,
+        "door_hp_change": -27.914744,
+        "door_hp_end": 144.585256,
+        "door_hp_max": 172.5,
+        "door_hp_start": 172.5,
+        "duration": 2.0,
+        "guardian_shield_hp": 0.0,
+        "hunter_displacement": 0.0,
+        "hunter_target_room": 4,
+        "player_damage": 0.0,
+        "player_room": 4,
+        "player_shots": 0,
+        "radar_informed_paid_door_upgrade": false,
+        "stock_spent": 0
+      }
+    },
+    {
+      "item": "smoke",
+      "with": {
+        "activated": true,
+        "attacks": 0,
+        "boss_cast_completions": 0,
+        "boss_recovery_reason": "",
+        "door_damage_taken": 0.0,
+        "door_hp_change": 0.0,
+        "door_hp_end": 172.5,
+        "door_hp_max": 172.5,
+        "door_hp_start": 172.5,
+        "duration": 2.0,
+        "guardian_shield_hp": 0.0,
+        "hunter_displacement": 109.279876708984,
+        "hunter_target_room": 2,
+        "player_damage": 0.0,
+        "player_room": 4,
+        "player_shots": 0,
+        "radar_informed_paid_door_upgrade": false,
+        "stock_spent": 1
+      },
+      "without": {
+        "activated": false,
+        "attacks": 1,
+        "boss_cast_completions": 0,
+        "boss_recovery_reason": "",
+        "door_damage_taken": 27.914744,
+        "door_hp_change": -27.914744,
+        "door_hp_end": 144.585256,
+        "door_hp_max": 172.5,
+        "door_hp_start": 172.5,
+        "duration": 2.0,
+        "guardian_shield_hp": 0.0,
+        "hunter_displacement": 0.0,
+        "hunter_target_room": 4,
+        "player_damage": 0.0,
+        "player_room": 4,
+        "player_shots": 0,
+        "radar_informed_paid_door_upgrade": false,
+        "stock_spent": 0
+      }
+    },
+    {
+      "item": "time_freeze",
+      "with": {
+        "activated": true,
+        "attacks": 0,
+        "boss_cast_completions": 0,
+        "boss_recovery_reason": "",
+        "door_damage_taken": 0.0,
+        "door_hp_change": 0.0,
+        "door_hp_end": 172.5,
+        "door_hp_max": 172.5,
+        "door_hp_start": 172.5,
+        "duration": 2.0,
+        "guardian_shield_hp": 0.0,
+        "hunter_displacement": 0.0,
+        "hunter_target_room": 4,
+        "player_damage": 0.0,
+        "player_room": 4,
+        "player_shots": 0,
+        "radar_informed_paid_door_upgrade": false,
+        "stock_spent": 1
+      },
+      "without": {
+        "activated": false,
+        "attacks": 1,
+        "boss_cast_completions": 0,
+        "boss_recovery_reason": "",
+        "door_damage_taken": 27.914744,
+        "door_hp_change": -27.914744,
+        "door_hp_end": 144.585256,
+        "door_hp_max": 172.5,
+        "door_hp_start": 172.5,
+        "duration": 2.0,
+        "guardian_shield_hp": 0.0,
+        "hunter_displacement": 0.0,
+        "hunter_target_room": 4,
+        "player_damage": 0.0,
+        "player_room": 4,
+        "player_shots": 0,
+        "radar_informed_paid_door_upgrade": false,
+        "stock_spent": 0
+      }
+    },
+    {
+      "item": "overdrive",
+      "with": {
+        "activated": true,
+        "attacks": 0,
+        "boss_cast_completions": 0,
+        "boss_recovery_reason": "",
+        "door_damage_taken": 0.0,
+        "door_hp_change": 0.0,
+        "door_hp_end": 172.5,
+        "door_hp_max": 172.5,
+        "door_hp_start": 172.5,
+        "duration": 10.0,
+        "guardian_shield_hp": 0.0,
+        "hunter_displacement": 0.0,
+        "hunter_target_room": 4,
+        "player_damage": 135.0,
+        "player_room": 4,
+        "player_shots": 16,
+        "radar_informed_paid_door_upgrade": false,
+        "stock_spent": 1
+      },
+      "without": {
+        "activated": false,
+        "attacks": 0,
+        "boss_cast_completions": 0,
+        "boss_recovery_reason": "",
+        "door_damage_taken": 0.0,
+        "door_hp_change": 0.0,
+        "door_hp_end": 172.5,
+        "door_hp_max": 172.5,
+        "door_hp_start": 172.5,
+        "duration": 10.0,
+        "guardian_shield_hp": 0.0,
+        "hunter_displacement": 0.0,
+        "hunter_target_room": 4,
+        "player_damage": 99.0,
+        "player_room": 4,
+        "player_shots": 12,
+        "radar_informed_paid_door_upgrade": false,
+        "stock_spent": 0
+      }
+    },
+    {
+      "item": "guardian_heart",
+      "with": {
+        "activated": true,
+        "attacks": 0,
+        "boss_cast_completions": 0,
+        "boss_recovery_reason": "",
+        "door_damage_taken": 0.0,
+        "door_hp_change": 15.875,
+        "door_hp_end": 25.875,
+        "door_hp_max": 172.5,
+        "door_hp_start": 10.0,
+        "duration": 0.0,
+        "guardian_shield_hp": 34.5,
+        "hunter_displacement": 0.0,
+        "hunter_target_room": 4,
+        "player_damage": 0.0,
+        "player_room": 4,
+        "player_shots": 0,
+        "radar_informed_paid_door_upgrade": false,
+        "stock_spent": 1
+      },
+      "without": {
+        "activated": false,
+        "attacks": 0,
+        "boss_cast_completions": 0,
+        "boss_recovery_reason": "",
+        "door_damage_taken": 10.0,
+        "door_hp_change": -10.0,
+        "door_hp_end": 0.0,
+        "door_hp_max": 172.5,
+        "door_hp_start": 10.0,
+        "duration": 0.0,
+        "guardian_shield_hp": 0.0,
+        "hunter_displacement": 0.0,
+        "hunter_target_room": 4,
+        "player_damage": 0.0,
+        "player_room": 4,
+        "player_shots": 0,
+        "radar_informed_paid_door_upgrade": false,
+        "stock_spent": 0
+      }
+    },
+    {
+      "item": "reaper_seal",
+      "with": {
+        "activated": true,
+        "attacks": 0,
+        "boss_cast_completions": 0,
+        "boss_recovery_reason": "Reaper Seal",
+        "door_damage_taken": 0.0,
+        "door_hp_change": 0.0,
+        "door_hp_end": 172.5,
+        "door_hp_max": 172.5,
+        "door_hp_start": 172.5,
+        "duration": 1.85,
+        "guardian_shield_hp": 0.0,
+        "hunter_displacement": 0.0,
+        "hunter_target_room": 4,
+        "player_damage": 0.0,
+        "player_room": 4,
+        "player_shots": 0,
+        "radar_informed_paid_door_upgrade": false,
+        "stock_spent": 1
+      },
+      "without": {
+        "activated": false,
+        "attacks": 0,
+        "boss_cast_completions": 1,
+        "boss_recovery_reason": "",
+        "door_damage_taken": 35.098,
+        "door_hp_change": -35.098,
+        "door_hp_end": 137.402,
+        "door_hp_max": 172.5,
+        "door_hp_start": 172.5,
+        "duration": 1.85,
+        "guardian_shield_hp": 0.0,
+        "hunter_displacement": 0.0,
+        "hunter_target_room": 4,
+        "player_damage": 0.0,
+        "player_room": 4,
+        "player_shots": 0,
+        "radar_informed_paid_door_upgrade": false,
+        "stock_spent": 0
+      }
+    }
+  ],
+  "failures": [],
+  "funding_matches": [
+    {
+      "activation_at": -1.0,
+      "activation_value": 0.0,
+      "bots": [
+        {
+          "damage": 2862.0,
+          "gold_spent": 843.0,
+          "power_spent": 57.1699999999977,
+          "profile": "gunner",
+          "room": 1
+        },
+        {
+          "damage": 0.0,
+          "gold_spent": 1339.0,
+          "power_spent": 126.0,
+          "profile": "engineer",
+          "room": 2
+        },
+        {
+          "damage": 0.0,
+          "gold_spent": 1339.0,
+          "power_spent": 126.0,
+          "profile": "economist",
+          "room": 3
+        },
+        {
+          "damage": 0.0,
+          "gold_spent": 899.0,
+          "power_spent": 101.0,
+          "profile": "guard",
+          "room": 4
+        },
+        {
+          "damage": 3425.88396917224,
+          "gold_spent": 1437.0,
+          "power_spent": 149.974999999998,
+          "profile": "balanced",
+          "room": 5
+        }
+      ],
+      "cash_at_entry": 0,
+      "cash_award": 39,
+      "difficulty": "standard",
+      "door_damage": 909.145763310245,
+      "door_hp_end": 390.854236689755,
+      "first_door_damage_at": 53.8,
+      "first_dynamo_at": -1.0,
+      "first_needle_at": 2.0,
+      "level": 1,
+      "match_id": 1,
+      "player_damage": 2232.0,
+      "radar_policy_door_upgrade_at": -1.0,
+      "result": "victory",
+      "room": 6,
+      "seconds": 336.1,
+      "seed": 434184,
+      "spent_gold": 480.0,
+      "spent_power": 0.0,
+      "stock_decrement": 0
+    }
+  ],
+  "hall_counters": [
+    {
+      "hall": "north",
+      "hp_after": 2446.625,
+      "hp_before": 2446.625,
+      "item": "decoy",
+      "phase_after": "idle",
+      "stock_after": 0
+    },
+    {
+      "hall": "north",
+      "hp_after": 2454.21284375,
+      "hp_before": 2446.625,
+      "item": "smoke",
+      "phase_after": "recover",
+      "stock_after": 0
+    }
+  ],
+  "matched_story": [
+    {
+      "item": "repair",
+      "with": {
+        "activation_at": 346.8,
+        "activation_value": 172.5,
+        "bots": [
+          {
+            "damage": 1620.0,
+            "gold_spent": 1093.0,
+            "power_spent": 56.1099999999988,
+            "profile": "balanced",
+            "room": 1
+          },
+          {
+            "damage": 1108.5,
+            "gold_spent": 2655.5,
+            "power_spent": 263.189999999999,
+            "profile": "economist",
+            "room": 2
+          },
+          {
+            "damage": 0.0,
+            "gold_spent": 2655.5,
+            "power_spent": 248.0,
+            "profile": "engineer",
+            "room": 3
+          },
+          {
+            "damage": 1062.0,
+            "gold_spent": 745.0,
+            "power_spent": 26.86,
+            "profile": "guard",
+            "room": 5
+          },
+          {
+            "damage": 621.0,
+            "gold_spent": 492.0,
+            "power_spent": 0.0,
+            "profile": "gunner",
+            "room": 6
+          }
+        ],
+        "cash_at_entry": 21,
+        "cash_award": 14,
+        "difficulty": "hard",
+        "door_damage": 1300.328125,
+        "door_hp_end": 0.0,
+        "first_door_damage_at": 343.8,
+        "first_dynamo_at": 139.9,
+        "first_needle_at": 4.8,
+        "level": 1,
+        "match_id": 2,
+        "player_damage": 2538.0,
+        "radar_policy_door_upgrade_at": -1.0,
+        "result": "defeat",
+        "room": 4,
+        "seconds": 367.2,
+        "seed": 434184,
+        "shop_spent": 18,
+        "spent_gold": 904.0,
+        "spent_power": 66.0,
+        "stock_decrement": 1
+      },
+      "without": {
+        "activation_at": -1.0,
+        "activation_value": 0.0,
+        "bots": [
+          {
+            "damage": 1620.0,
+            "gold_spent": 1093.0,
+            "power_spent": 56.1099999999988,
+            "profile": "balanced",
+            "room": 1
+          },
+          {
+            "damage": 1108.5,
+            "gold_spent": 2655.5,
+            "power_spent": 263.189999999999,
+            "profile": "economist",
+            "room": 2
+          },
+          {
+            "damage": 0.0,
+            "gold_spent": 2655.5,
+            "power_spent": 248.0,
+            "profile": "engineer",
+            "room": 3
+          },
+          {
+            "damage": 1062.0,
+            "gold_spent": 745.0,
+            "power_spent": 26.86,
+            "profile": "guard",
+            "room": 5
+          },
+          {
+            "damage": 621.0,
+            "gold_spent": 492.0,
+            "power_spent": 0.0,
+            "profile": "gunner",
+            "room": 6
+          }
+        ],
+        "cash_at_entry": 39,
+        "cash_award": 14,
+        "difficulty": "hard",
+        "door_damage": 1308.8875,
+        "door_hp_end": 0.0,
+        "first_door_damage_at": 343.8,
+        "first_dynamo_at": 139.9,
+        "first_needle_at": 4.8,
+        "level": 1,
+        "match_id": 2,
+        "player_damage": 2538.0,
+        "radar_policy_door_upgrade_at": -1.0,
+        "result": "defeat",
+        "room": 4,
+        "seconds": 367.2,
+        "seed": 434184,
+        "shop_spent": 0,
+        "spent_gold": 952.0,
+        "spent_power": 66.0,
+        "stock_decrement": 0
+      }
+    },
+    {
+      "item": "gold",
+      "with": {
+        "activation_at": 4.8,
+        "activation_value": 150.0,
+        "bots": [
+          {
+            "damage": 1620.0,
+            "gold_spent": 1093.0,
+            "power_spent": 56.1099999999988,
+            "profile": "balanced",
+            "room": 1
+          },
+          {
+            "damage": 1108.5,
+            "gold_spent": 2655.5,
+            "power_spent": 263.189999999999,
+            "profile": "economist",
+            "room": 2
+          },
+          {
+            "damage": 0.0,
+            "gold_spent": 2655.5,
+            "power_spent": 248.0,
+            "profile": "engineer",
+            "room": 3
+          },
+          {
+            "damage": 1062.0,
+            "gold_spent": 745.0,
+            "power_spent": 26.86,
+            "profile": "guard",
+            "room": 5
+          },
+          {
+            "damage": 621.0,
+            "gold_spent": 492.0,
+            "power_spent": 0.0,
+            "profile": "gunner",
+            "room": 6
+          }
+        ],
+        "cash_at_entry": 23,
+        "cash_award": 14,
+        "difficulty": "hard",
+        "door_damage": 1308.8875,
+        "door_hp_end": 0.0,
+        "first_door_damage_at": 343.8,
+        "first_dynamo_at": 55.8,
+        "first_needle_at": 6.4,
+        "level": 1,
+        "match_id": 2,
+        "player_damage": 2538.0,
+        "radar_policy_door_upgrade_at": -1.0,
+        "result": "defeat",
+        "room": 4,
+        "seconds": 367.2,
+        "seed": 434184,
+        "shop_spent": 16,
+        "spent_gold": 952.0,
+        "spent_power": 66.0,
+        "stock_decrement": 1
+      },
+      "without": {
+        "activation_at": -1.0,
+        "activation_value": 0.0,
+        "bots": [
+          {
+            "damage": 1620.0,
+            "gold_spent": 1093.0,
+            "power_spent": 56.1099999999988,
+            "profile": "balanced",
+            "room": 1
+          },
+          {
+            "damage": 1108.5,
+            "gold_spent": 2655.5,
+            "power_spent": 263.189999999999,
+            "profile": "economist",
+            "room": 2
+          },
+          {
+            "damage": 0.0,
+            "gold_spent": 2655.5,
+            "power_spent": 248.0,
+            "profile": "engineer",
+            "room": 3
+          },
+          {
+            "damage": 1062.0,
+            "gold_spent": 745.0,
+            "power_spent": 26.86,
+            "profile": "guard",
+            "room": 5
+          },
+          {
+            "damage": 621.0,
+            "gold_spent": 492.0,
+            "power_spent": 0.0,
+            "profile": "gunner",
+            "room": 6
+          }
+        ],
+        "cash_at_entry": 39,
+        "cash_award": 14,
+        "difficulty": "hard",
+        "door_damage": 1308.8875,
+        "door_hp_end": 0.0,
+        "first_door_damage_at": 343.8,
+        "first_dynamo_at": 139.9,
+        "first_needle_at": 4.8,
+        "level": 1,
+        "match_id": 2,
+        "player_damage": 2538.0,
+        "radar_policy_door_upgrade_at": -1.0,
+        "result": "defeat",
+        "room": 4,
+        "seconds": 367.2,
+        "seed": 434184,
+        "shop_spent": 0,
+        "spent_gold": 952.0,
+        "spent_power": 66.0,
+        "stock_decrement": 0
+      }
+    },
+    {
+      "item": "battery",
+      "with": {
+        "activation_at": 4.8,
+        "activation_value": 80.0,
+        "bots": [
+          {
+            "damage": 1620.0,
+            "gold_spent": 1093.0,
+            "power_spent": 56.1099999999988,
+            "profile": "balanced",
+            "room": 1
+          },
+          {
+            "damage": 1108.5,
+            "gold_spent": 2655.5,
+            "power_spent": 263.189999999999,
+            "profile": "economist",
+            "room": 2
+          },
+          {
+            "damage": 0.0,
+            "gold_spent": 2655.5,
+            "power_spent": 248.0,
+            "profile": "engineer",
+            "room": 3
+          },
+          {
+            "damage": 1062.0,
+            "gold_spent": 745.0,
+            "power_spent": 26.86,
+            "profile": "guard",
+            "room": 5
+          },
+          {
+            "damage": 621.0,
+            "gold_spent": 492.0,
+            "power_spent": 0.0,
+            "profile": "gunner",
+            "room": 6
+          }
+        ],
+        "cash_at_entry": 23,
+        "cash_award": 14,
+        "difficulty": "hard",
+        "door_damage": 1308.8875,
+        "door_hp_end": 0.0,
+        "first_door_damage_at": 343.8,
+        "first_dynamo_at": 139.9,
+        "first_needle_at": 4.8,
+        "level": 1,
+        "match_id": 2,
+        "player_damage": 2538.0,
+        "radar_policy_door_upgrade_at": -1.0,
+        "result": "defeat",
+        "room": 4,
+        "seconds": 367.2,
+        "seed": 434184,
+        "shop_spent": 16,
+        "spent_gold": 952.0,
+        "spent_power": 66.0,
+        "stock_decrement": 1
+      },
+      "without": {
+        "activation_at": -1.0,
+        "activation_value": 0.0,
+        "bots": [
+          {
+            "damage": 1620.0,
+            "gold_spent": 1093.0,
+            "power_spent": 56.1099999999988,
+            "profile": "balanced",
+            "room": 1
+          },
+          {
+            "damage": 1108.5,
+            "gold_spent": 2655.5,
+            "power_spent": 263.189999999999,
+            "profile": "economist",
+            "room": 2
+          },
+          {
+            "damage": 0.0,
+            "gold_spent": 2655.5,
+            "power_spent": 248.0,
+            "profile": "engineer",
+            "room": 3
+          },
+          {
+            "damage": 1062.0,
+            "gold_spent": 745.0,
+            "power_spent": 26.86,
+            "profile": "guard",
+            "room": 5
+          },
+          {
+            "damage": 621.0,
+            "gold_spent": 492.0,
+            "power_spent": 0.0,
+            "profile": "gunner",
+            "room": 6
+          }
+        ],
+        "cash_at_entry": 39,
+        "cash_award": 14,
+        "difficulty": "hard",
+        "door_damage": 1308.8875,
+        "door_hp_end": 0.0,
+        "first_door_damage_at": 343.8,
+        "first_dynamo_at": 139.9,
+        "first_needle_at": 4.8,
+        "level": 1,
+        "match_id": 2,
+        "player_damage": 2538.0,
+        "radar_policy_door_upgrade_at": -1.0,
+        "result": "defeat",
+        "room": 4,
+        "seconds": 367.2,
+        "seed": 434184,
+        "shop_spent": 0,
+        "spent_gold": 952.0,
+        "spent_power": 66.0,
+        "stock_decrement": 0
+      }
+    },
+    {
+      "item": "radar",
+      "with": {
+        "activation_at": 48.3,
+        "activation_value": 0.0,
+        "bots": [
+          {
+            "damage": 1620.0,
+            "gold_spent": 1093.0,
+            "power_spent": 56.1099999999988,
+            "profile": "balanced",
+            "room": 1
+          },
+          {
+            "damage": 1108.5,
+            "gold_spent": 2428.0,
+            "power_spent": 228.189999999999,
+            "profile": "economist",
+            "room": 2
+          },
+          {
+            "damage": 0.0,
+            "gold_spent": 2430.5,
+            "power_spent": 204.0,
+            "profile": "engineer",
+            "room": 3
+          },
+          {
+            "damage": 1062.0,
+            "gold_spent": 745.0,
+            "power_spent": 26.86,
+            "profile": "guard",
+            "room": 5
+          },
+          {
+            "damage": 621.0,
+            "gold_spent": 492.0,
+            "power_spent": 0.0,
+            "profile": "gunner",
+            "room": 6
+          }
+        ],
+        "cash_at_entry": 27,
+        "cash_award": 14,
+        "difficulty": "hard",
+        "door_damage": 472.596875,
+        "door_hp_end": 0.0,
+        "first_door_damage_at": 343.8,
+        "first_dynamo_at": 108.4,
+        "first_needle_at": 4.8,
+        "level": 1,
+        "match_id": 2,
+        "player_damage": 819.0,
+        "radar_policy_door_upgrade_at": 343.8,
+        "result": "defeat",
+        "room": 4,
+        "seconds": 350.8,
+        "seed": 434184,
+        "shop_spent": 12,
+        "spent_gold": 618.0,
+        "spent_power": 52.0,
+        "stock_decrement": 1
+      },
+      "without": {
+        "activation_at": -1.0,
+        "activation_value": 0.0,
+        "bots": [
+          {
+            "damage": 1620.0,
+            "gold_spent": 1093.0,
+            "power_spent": 56.1099999999988,
+            "profile": "balanced",
+            "room": 1
+          },
+          {
+            "damage": 1108.5,
+            "gold_spent": 2428.0,
+            "power_spent": 228.189999999999,
+            "profile": "economist",
+            "room": 2
+          },
+          {
+            "damage": 0.0,
+            "gold_spent": 2430.5,
+            "power_spent": 204.0,
+            "profile": "engineer",
+            "room": 3
+          },
+          {
+            "damage": 1062.0,
+            "gold_spent": 745.0,
+            "power_spent": 26.86,
+            "profile": "guard",
+            "room": 5
+          },
+          {
+            "damage": 621.0,
+            "gold_spent": 492.0,
+            "power_spent": 0.0,
+            "profile": "gunner",
+            "room": 6
+          }
+        ],
+        "cash_at_entry": 39,
+        "cash_award": 14,
+        "difficulty": "hard",
+        "door_damage": 472.596875,
+        "door_hp_end": 0.0,
+        "first_door_damage_at": 343.8,
+        "first_dynamo_at": 108.4,
+        "first_needle_at": 4.8,
+        "level": 1,
+        "match_id": 2,
+        "player_damage": 819.0,
+        "radar_policy_door_upgrade_at": 343.8,
+        "result": "defeat",
+        "room": 4,
+        "seconds": 350.8,
+        "seed": 434184,
+        "shop_spent": 0,
+        "spent_gold": 618.0,
+        "spent_power": 52.0,
+        "stock_decrement": 0
+      }
+    }
+  ],
+  "opening_cash": 39
+}

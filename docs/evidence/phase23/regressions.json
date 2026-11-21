@@ -1,0 +1,32 @@
+{
+  "engine": "4.6.3 Linux headless",
+  "suites": {
+    "story_hunter_intelligence": "STORY_HUNTER_DECISIONS=61 FAILURES=0",
+    "hunter_siege_strategy": "TACTICAL_SIEGE_CHECKS=38 FAILURES=0",
+    "living_hunter_contact": "LIVING_HUNTER_CONTACT_CHECKS=62 FAILURES=0",
+    "boss_architecture": "BOSS_ARCHITECTURE_CHECKS=43 FAILURES=0",
+    "boss_qa": "BOSS_QA_CHECKS=6880 FAILURES=0",
+    "living_dorm": "LIVING_DORM_CHECKS=197 FAILURES=0 seeded_choices=[1, 1, 1, 1, 1, 1, 1, 1, 1]",
+    "earned_power_combinations": "EARNED_COMBINATION_CHECKS=86 FAILURES=0",
+    "fair_difficulty": "FAIR_DIFFICULTY_CHECKS=94 FAILURES=0",
+    "items_balance": "ITEM_BALANCE_MATCHES=60 SUMMARY={\"hard_baseline\":{\"activations\":0,\"losses\":3,\"matches\":10,\"wins\":7},\"hard_items\":{\"activations\":40,\"losses\":0,\"matches\":10,\"wins\":10},\"hell_baseline\":{\"activations\":0,\"losses\":9,\"matches\":10,\"wins\":1},\"hell_items\":{\"activations\":65,\"losses\":3,\"matches\":10,\"wins\":7},\"standard_baseline\":{\"activations\":0,\"losses\":0,\"matches\":10,\"wins\":10},\"standard_items\":{\"activations\":40,\"losses\":0,\"matches\":10,\"wins\":10}} FAILURES=0",
+    "advanced_items_balance": "ADVANCED_BALANCE_MATCHES=60 SUMMARY={\"hard_baseline\":{\"activations\":0,\"losses\":3,\"matches\":10,\"wins\":7},\"hard_items\":{\"activations\":45,\"losses\":1,\"matches\":10,\"wins\":9},\"hell_baseline\":{\"activations\":0,\"losses\":9,\"matches\":10,\"wins\":1},\"hell_items\":{\"activations\":39,\"losses\":8,\"matches\":10,\"wins\":2},\"standard_baseline\":{\"activations\":0,\"losses\":0,\"matches\":10,\"wins\":10},\"standard_items\":{\"activations\":28,\"losses\":0,\"matches\":10,\"wins\":10}} FAILURES=0",
+    "scene_smoke": "SCENE_CHECKS=33 FAILURES=0",
+    "run_tests": "ASSERTIONS=136 FAILURES=0",
+    "player_first": "PLAYER_FIRST_CHECKS=27 FAILURES=0",
+    "full_room_grid_saves": "FULL_GRID_SAVE_CHECKS=64 FAILURES=0",
+    "living_story_progress": "LIVING_STORY_PROGRESS_CHECKS=620 FAILURES=0",
+    "survivor_lobby_integration": "SURVIVOR_LOBBY_INTEGRATION_CHECKS=89 FAILURES=0",
+    "weapon_feedback": "WEAPON_FEEDBACK_CHECKS=148 FAILURES=0",
+    "nightmare_maps_v2_persistence": "NIGHTMARE_V2_PERSISTENCE checks=62 failures=0",
+    "campaign_profile": "CAMPAIGN_PROFILE_CHECKS=89 FAILURES=0",
+    "items_qa": "ITEM_QA_CHECKS=11203 FAILURES=0",
+    "advanced_items_qa": "ADVANCED_QA_CHECKS=7988 FAILURES=0",
+    "advanced_item_combos": "ADVANCED_COMBO_CHECKS=27 FAILURES=0 SHOTS=[9, 12]",
+    "phase16_story_encounters": "PHASE16_STORY_CHECKS=221 FAILURES=0"
+  },
+  "assertions_in_counted_suites": 28107,
+  "additional_item_balance_matches": 120,
+  "baseline_failure": "The existing fair_difficulty text assertion expected \"No manual repair\". Both 3f9ec28 and candidate said \"Neither manual repair nor the next door upgrade was available\". The updated assertion verifies both recorded affordability flags and the displayed sentence. Baseline 93/94; revised fixture 94/94.",
+  "isolated_profiles": true
+}

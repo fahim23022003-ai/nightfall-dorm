@@ -1,3 +1,7 @@
+## Phase 23 · Hunter intelligence and fair balance
+
+The Story preview recognizes fire along a route, distinguishes door upgrades from recurring repair, and can resume an approach interrupted by a Haunted Hall visit. Matched Godot trials include all ten chapters. A skilled item-free policy won eight of twenty Hell starts. Two passive wins on one held-out map and more repeat visits remain playtest concerns. [Release, gameplay footage and balance evidence](evidence/phase23/README.md)
+
 ## Phase 22.1 · Targeted UI polish
 
 The preview narrows the Build drawer, increases decision-text sizes and uses the same opening Hunter name from Story preparation through gameplay. Linux Godot measured faster Build draws at both presets. Low tutorial p95 improved in the staged replay, while long frames and cold entry still need investigation. Native Windows timing awaits a playtest.

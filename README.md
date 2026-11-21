@@ -6,9 +6,11 @@ An original single-player Godot 4 dormitory survival defense game. Choose a room
 
 ## Current Windows playtest
 
-Download [**Phase 19 · The Living Dorm**](https://github.com/fahim23022003-ai/nightfall-dorm/releases/download/phase19-living-dorm-preview/NightfallDorm-Phase19-Windows-x64.zip), extract it, and open **Play Phase 19 Preview.cmd**. It starts in Low at 960×540 with a separate test save. The same ZIP contains **Play Performance Preview.cmd** for the owner-tested fallback. The experimental Shadowling pilot stays off.
+[**Download Nightfall Dorm · Phase 23 for Windows x64**](https://github.com/fahim23022003-ai/nightfall-dorm/releases/download/phase23-hunter-intelligence-preview/NightfallDorm-Phase23-Windows-x64.zip)
 
-[Phase 19 instructions](docs/LIVING_DORM.md) · [Screenshots, audio, benchmarks and SHA-256](docs/evidence/phase19/README.md)
+Extract the ZIP and double-click **Play Phase 23 Preview.cmd**. It starts on Low at 960×540 and uses the existing Phase 22.1 preview save. The ZIP also contains the previous targeting launcher and the separate Performance fallback.
+
+[Watch 49 seconds of gameplay](docs/evidence/phase23/walkthrough.mp4) · [Balance results and performance](docs/evidence/phase23/README.md) · [Playtest instructions](docs/PHASE23_PLAYTEST.md)
 
 The phase reports below are historical.
 

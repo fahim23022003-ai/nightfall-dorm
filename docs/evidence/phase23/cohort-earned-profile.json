@@ -1,0 +1,182 @@
+{
+ "active_match": {
+
+ },
+ "campaign": {
+  "difficulty": "standard",
+  "records": {
+   "stage_1": {
+    "best_damage": 1701.33276595745,
+    "best_time": 344.849999999993,
+    "best_xp": 294,
+    "clears": 1,
+    "difficulty": "standard",
+    "first_match_id": 1
+   }
+  },
+  "selected_stage": "stage_1"
+ },
+ "consumables": {
+  "inventory": {
+   "battery": 1,
+   "gold": 1,
+   "smoke": 4
+  },
+  "loadout": [
+   "gold",
+   "battery"
+  ],
+  "pending": [
+   {
+    "item": "smoke",
+    "match_id": 1,
+    "odds": "Common 40% · Rare 40% · Epic 16% · Legendary 4%",
+    "pity_before": {
+     "epic_dry": 0,
+     "legendary_dry": 0
+    },
+    "quantity": 4,
+    "result": "victory"
+   }
+  ],
+  "version": 1
+ },
+ "equipped": [],
+ "last_award": {
+  "achievements": [
+   "first_victory",
+   "first_blood"
+  ],
+  "breakdown": {
+   "ceiling_adjustment": 0,
+   "damage": 34,
+   "defense": 0,
+   "difficulty": "standard",
+   "difficulty_bonus": 0,
+   "eligible": true,
+   "loss_adjustment": 0,
+   "reaper_bonus": 0,
+   "stage_bonus": 10,
+   "stage_reward": 40,
+   "survival": 90,
+   "total": 294,
+   "victory": 120
+  },
+  "campaign": {
+   "cleared": true,
+   "first_clear": true,
+   "next_stage": "stage_2",
+   "reward_xp": 40,
+   "stage_id": "stage_1"
+  },
+  "match_id": 1,
+  "new_rank": 1,
+  "new_xp": 294,
+  "old_rank": 0,
+  "old_xp": 0,
+  "promoted": true,
+  "result": "victory",
+  "rm_balance": 33,
+  "rm_cash": 33
+ },
+ "next_match_id": 2,
+ "onboarding": {
+  "purchase_serial": 1,
+  "rm_cash": 17,
+  "tutorial_completed": false,
+  "version": 1
+ },
+ "progression": {
+  "highest_rank": 1,
+  "statistics": {
+   "defeats": 0,
+   "hard": 0,
+   "hell": 0,
+   "matches": 1,
+   "reaper_defeats": 0,
+   "standard": 1,
+   "victories": 1
+  },
+  "version": 1
+ },
+ "replay": {
+  "best_wave": 0,
+  "challenge_best": {
+
+  },
+  "checkpoint": {
+
+  },
+  "cosmetics": {
+   "badge": "",
+   "bed": "",
+   "door": "",
+   "turret": ""
+  },
+  "last_award": {
+
+  },
+  "milestone_wave": 0,
+  "pity": {
+   "epic_dry": 0,
+   "legendary_dry": 1
+  },
+  "run_serial": 0,
+  "version": 1
+ },
+ "rewards": {
+  "achievements": {
+   "first_blood": {
+    "claimed": true
+   },
+   "first_victory": {
+    "claimed": false
+   }
+  },
+  "counters": {
+   "construction": 13,
+   "door_damage": 963.0,
+   "income": 1631.06999999993,
+   "legendary": 0,
+   "perfect_team": 0
+  },
+  "seen_items": [
+   "smoke",
+   "gold",
+   "battery"
+  ],
+  "stage_bonus": {
+   "choice": "",
+   "match_id": 1,
+   "source": "stage_1",
+   "target": "stage_2"
+  },
+  "stage_queue": [],
+  "version": 1
+ },
+ "settings": {
+  "ambient": 0.5,
+  "battery_saver": false,
+  "effects": 0.65,
+  "fullscreen": false,
+  "graphics_quality": "medium",
+  "guidance_mode": "show",
+  "manual_track": "music_calm",
+  "music": 0.5,
+  "music_mode": "shuffle",
+  "muted": false,
+  "reduced_effects": false,
+  "reduced_flashes": false,
+  "reduced_motion": false,
+  "tutorial": true
+ },
+ "strategy": {
+  "claims": {
+
+  },
+  "selected": "",
+  "version": 1
+ },
+ "version": 1,
+ "xp": 304
+}
