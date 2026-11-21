@@ -25,6 +25,8 @@ var applied_growth=0.0
 var stalled_seconds=0.0
 var navigation_recoveries=0
 var retargets=0
+var recent_living_rooms: Array[int]=[]
+var living_choices:=0
 var siege_start_hp=0.0
 var siege_seconds=0.0
 var reassess_seconds=0.0
@@ -454,6 +456,8 @@ func tick(delta: float, match_state):
   if target < 0:
    return
   state = State.MOVE
+  if match_state.living_dorm_tactics() and not transformed:
+   _remember_living_target(match_state,target,"approach")
   if delta>0: match_state.record_event("approach",target)
  var room = match_state.rooms[target]
  var approach = room.door_position()+Vector2(0,22 if target < 3 else -22) if match_state.map_id=="legacy" else room.door_approach()
@@ -525,7 +529,7 @@ func tick(delta: float, match_state):
     if pressure_remaining>0 and pressure_remaining<interval: tactical_recovery=1.0
   var commitment=StrategyCatalog.ARCHETYPES[archetype].commit if archetype!="" and not transformed else 1.0
   if not match_state.wrath.domain_active() and boss_attack=="" and not archetype_primed and (match_state.balance_version!=2 or (not charged_ready and recovery_remaining<=0 and arcane.action=="" and nightmare.action=="")) and reassess_seconds>maxf(profile.commit*commitment,Catalog.HUNTER_ESCALATION.minimum_commitment) and room.door_hp>damage*2:
-   if match_state.uses_tactical_sieges():
+   if match_state.uses_tactical_sieges() or (match_state.living_dorm_tactics() and not transformed):
     _reassess_tactical_siege(room,match_state)
     return
    var alternative=choose_target(match_state.rooms,target)
@@ -586,6 +590,13 @@ func _reassess_tactical_siege(room: RoomState, model):
  var alternative:=HunterSiegeStrategy.best_room(scores,room.index)
  var current_cost:=maxf(scores.get(room.index,INF),defended_estimate) if productive else float(scores.get(room.index,INF))
  var alternative_cost: float=scores.get(alternative,INF)
+ if model.living_dorm_tactics() and not transformed:
+  var eligible: Dictionary={}
+  for index in scores:
+   if index!=room.index and HunterSiegeStrategy.worth_switching(current_cost,scores[index]):
+    eligible[index]=scores[index]
+  alternative=_living_choice(model,eligible)
+  alternative_cost=scores.get(alternative,INF)
  if not HunterSiegeStrategy.worth_switching(current_cost,alternative_cost):
   if productive:_announce_commit(model,room,net_loss)
   return
@@ -609,6 +620,8 @@ func _reassess_tactical_siege(room: RoomState, model):
  target=alternative
  target_time=0
  state=State.MOVE
+ if model.living_dorm_tactics() and not transformed:
+  _remember_living_target(model,target,"defended" if productive else "stalled")
  model.record_event("approach",target)
 
 func _announce_commit(model, room: RoomState, progress: float):
@@ -627,7 +640,15 @@ func choose_target(rooms: Array, excluded: int = -1) -> int:
  if _model_ref!=null and _model_ref.get_ref()!=null and _model_ref.get_ref().wrath.domain_active():return _model_ref.get_ref().wrath.domain_room
  decision_count+=1
  _route_costs.clear()
- if _model_ref!=null and _model_ref.get_ref()!=null and _model_ref.get_ref().uses_tactical_sieges():
+ var owner=_model_ref.get_ref() if _model_ref!=null else null
+ if owner!=null and owner.living_dorm_tactics() and not transformed:
+  if not rooms.any(func(room):return room.owner>=0 and room.alive and room.sleeping):return -1
+  var scores:=HunterSiegeStrategy.assess(owner,self)
+  var saved_cost: float=scores.get(excluded,INF)
+  scores.erase(excluded)
+  if scores.is_empty() and is_finite(saved_cost):return excluded
+  return _living_choice(owner,scores)
+ if owner!=null and owner.uses_tactical_sieges():
   var candidates:=HunterSiegeStrategy.assess(_model_ref.get_ref(),self)
   var choice:=HunterSiegeStrategy.best_room(candidates,excluded)
   return HunterSiegeStrategy.best_room(candidates) if choice<0 and excluded>=0 else choice
@@ -655,6 +676,37 @@ func choose_target(rooms: Array, excluded: int = -1) -> int:
  if best < 0 and excluded >= 0:
   return choose_target(rooms)
  return best
+
+func _living_choice(model, scores: Dictionary) -> int:
+ var best:=HunterSiegeStrategy.best_room(scores)
+ if best<0:return -1
+ var shortest: float=scores[best]
+ var window:=clampf(shortest*.32,6.0,14.0)
+ var candidates:=scores.keys()
+ candidates.sort()
+ var weights: Dictionary={}
+ var total:=0.0
+ for index in candidates:
+  var extra: float=scores[index]-shortest
+  if extra>window:continue
+  var penalty:=1.0
+  for recent: int in recent_living_rooms:
+   if recent==index:penalty*=.54
+  var weight:=lerpf(1.0,.24,extra/window)*penalty
+  weights[index]=weight
+  total+=weight
+ # Separate from the shared combat and economy RNG. Empty seeks consume nothing.
+ var ticket:=float(posmod(hash([model.random.seed,model.map_seed,living_choices]),1000003))/1000003.0*total
+ for index in weights:
+  ticket-=weights[index]
+  if ticket<0.0:return index
+ return best
+
+func _remember_living_target(model, selected: int, reason: String) -> void:
+ living_choices+=1
+ recent_living_rooms.append(selected)
+ if recent_living_rooms.size()>3:recent_living_rooms.pop_front()
+ model.record_event("hunter_target_choice",selected,{"reason":reason,"choice":living_choices})
 
 func hurt(amount: float, show_hit: bool=true):
  if not is_finite(amount) or amount<=0 or state == State.DORMANT or state == State.DEAD:

@@ -10,6 +10,13 @@ var lobby_active := false
 var lobby_cue_counts: Dictionary = {}
 const URGENT_SCORES = ["music_menu","music_intro","music_danger","music_siege","music_hall","music_reaper","music_crimson","music_victory","music_defeat"]
 const OUTCOME_SCORES = ["music_victory","music_defeat"]
+const DORM_SCORE_PALETTES := {
+ "dorm": ["music_calm","music_approach","music_siege","music_danger","music_hall"],
+ "hospital": ["music_hall","music_portrait","music_danger","music_hell","music_calm"],
+ "hotel": ["music_dust","music_lantern","music_approach","music_siege","music_portrait"],
+ "lab": ["music_hell","music_hall","music_siege","music_approach","music_dust"],
+ "mansion": ["music_procession","music_portrait","music_hell","music_siege","music_lantern"],
+}
 const STORY_CALM_SCORES = ["music_lantern","music_portrait","music_dust","music_portrait","music_dust",
  "music_lantern","music_procession","music_portrait","music_dust","music_procession"]
 const LOOP_NAMES = ["music_crimson","music_intro","music_approach","music_endless","music_menu","music_calm","music_danger","ambient_dorm","proximity_loop","generator_loop","music_reaper","reaper_ambience","music_lantern","music_portrait","music_dust","music_siege","music_procession","music_opening_alt"]
@@ -110,10 +117,14 @@ func setup():
  if living_nightmare_audio:
   score_names=LOOP_NAMES+Soundtrack.ADAPTIVE_TRACKS
   cue_names=EFFECT_NAMES+[HEARTBEAT_CUE]
-  if story_chapter_audio:
+  if story_chapter_audio or OS.get_environment("NIGHTFALL_LIVING_DORM")=="1":
    soundtrack.families=soundtrack.families.duplicate()
    for score in STORY_CALM_SCORES:
     soundtrack.families[score]=[score]
+   if OS.get_environment("NIGHTFALL_LIVING_DORM")=="1":
+    for palette in DORM_SCORE_PALETTES.values():
+     for score in palette:
+      if not soundtrack.families.has(score):soundtrack.families[score]=[score]
  for name in score_names+cue_names:
   var path = ROOT+name+".wav"
   if not ResourceLoader.exists(path) and not FileAccess.file_exists(path):
@@ -531,6 +542,14 @@ func _living_music_state(model, mode: String, active: bool, boss: bool, domain: 
   return "music_victory" if model.result=="victory" else "music_defeat"
  if domain:return "music_crimson"
  if boss:return "music_reaper"
+ if mode=="match" and active and model!=null and model.living_dorm_requested and not model.tutorial_mode and soundtrack.mode!="manual":
+  var palette: Array=DORM_SCORE_PALETTES.get(model.map_data.get("theme",""),[])
+  if not palette.is_empty():
+   if model.time<model.preparation:return palette[0]
+   if model.hunter.state in [HunterState.State.RETREAT,HunterState.State.RECOVER]:return palette[4]
+   if heartbeat.live and heartbeat.desperate:return palette[3]
+   if heartbeat.live or model.hunter.state in [HunterState.State.ATTACK,HunterState.State.BREACH]:return palette[2]
+   return palette[1]
  if not active or model==null or model.tutorial_mode or model.time<model.preparation:
   if mode!="match":return ""
   if active and model!=null and not model.tutorial_mode and story_chapter_audio and model.story_level>0 and soundtrack.mode!="manual":

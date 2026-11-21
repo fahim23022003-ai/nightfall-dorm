@@ -47,7 +47,7 @@ static func blocked_for(layout: Dictionary) -> Array:
   {"rect":Rect2(layout.cabinet+Vector2(-22,1),Vector2(44,28)),"reason":"Building overlaps cabinet"},
   {"rect":Rect2(layout.plant+Vector2(-14,3),Vector2(28,22)),"reason":"Building overlaps plant"},
   {"rect":segment_box(door-normal*10,door-normal*48,26),"reason":"Door access must remain clear"},
-  {"rect":segment_box(door-normal*48,bed+normal*48,14),"reason":"Door-to-bed route must remain clear"}]
+  {"rect":segment_box(door-normal*48,bed+normal*48,14),"reason":"Blocks the route from door to bed"}]
 func effective_layout(layout: Dictionary={}) -> Dictionary:
  if not layout.is_empty():return layout
  var r=room()
@@ -102,7 +102,7 @@ static func grid_blocks_for(layout: Dictionary) -> Array:
  obstacles.pop_back()
  if layout.has("access_route"):
   for rect in layout.access_route:
-   obstacles.append({"rect":rect,"reason":"Door-to-bed route must remain clear"})
+   obstacles.append({"rect":rect,"reason":"Blocks the route from door to bed"})
   # Grow only the missing floor strips. Adjacent occupied strips share usable
   # cells and do not introduce a false seam in the placement mask.
   for hole: Rect2 in layout.voids:
@@ -130,7 +130,7 @@ static func grid_blocks_for(layout: Dictionary) -> Array:
   # Keep additional structures out of the historical approach if fixtures
   # supplied by an unknown layout admit no wider orthogonal corridor.
   route=[segment_box(begin,finishes[0],14)]
- for rect in route:obstacles.append({"rect":rect,"reason":"Door-to-bed route must remain clear"})
+ for rect in route:obstacles.append({"rect":rect,"reason":"Blocks the route from door to bed"})
  return obstacles
 
 static func route_to_bed(begin: Vector2,finish: Vector2,vertical: bool,bounds: Rect2,obstacles: Array) -> Array:

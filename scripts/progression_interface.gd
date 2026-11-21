@@ -48,12 +48,16 @@ func show_ranks():
   return
  ui.clear()
  game.audio_event("menu")
- ui.box(Rect2(60,40,1160,638))
+ if ui.use_living_dorm():
+  ui.theme_backdrop()
+  ui.theme_panel(Rect2(60,40,1160,638),"story")
+ else:ui.box(Rect2(60,40,1160,638))
  var p=game.profile
  var art=badge(p.rank_index(),Vector2(86,62),100)
- var pulse=art.create_tween().set_loops()
- pulse.tween_property(art,"modulate",Color(1.15,1.05,1.25),1.2)
- pulse.tween_property(art,"modulate",Color.WHITE,1.2)
+ if CinematicQuality.detail(game)>0:
+  var pulse=art.create_tween().set_loops()
+  pulse.tween_property(art,"modulate",Color(1.15,1.05,1.25),1.2)
+  pulse.tween_property(art,"modulate",Color.WHITE,1.2)
  ui.label_at("%s · %d lifetime XP" % [p.rank_name().to_upper(),p.xp],Vector2(205,65),28,940,true)
  ui.label_at("Highest: %s · %s" % [RankCatalog.NAMES[p.highest_rank],p.promotion_requirement()]+(" · Title: Hell Survivor" if p.achievements.get("hell_survivor",{}).get("claimed",false) else ""),Vector2(205,108),15,940)
  var rank=p.rank_index()
@@ -109,7 +113,7 @@ func show_loadout():
  ui.label_at("Perks %d/%d · Gold +%.0f · Door +%.0f%% · Income +%.0f%% · Turrets +%.0f%% · Items %d/2" % [game.profile.equipped.size(),game.profile.perk_slots(),boosts.gold,(boosts.door-1)*100,(boosts.income-1)*100,(boosts.damage-1)*100,game.profile.item_loadout.size()],Vector2(125,107),16,1000)
  var archetype=game.profile.next_archetype(game.profile.selected_stage if game.campaign_mode else "",difficulty)
  ui.premium_icon(archetype,Vector2(125,143),Vector2(54,54))
- ui.label_at("TONIGHT · "+StrategyCatalog.ARCHETYPES[archetype].name,Vector2(191,140),24,930,true)
+ ui.label_at("TONIGHT · "+(HunterIdentity.display(archetype) if ui.use_living_dorm() else StrategyCatalog.ARCHETYPES[archetype].name),Vector2(191,140),24,930,true)
  var hint=ui.label_at(StrategyCatalog.ARCHETYPES[archetype].hint,Vector2(191,171),15,930)
  hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;hint.set_deferred("size",Vector2(930,40))
  var eligible=BossCatalog.encounter(game.profile.selected_stage if game.campaign_mode else "",difficulty).enabled

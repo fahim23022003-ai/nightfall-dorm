@@ -224,6 +224,8 @@ func _select_hunter(archetype: String):
   path="res://assets/visual_rebirth/grim_reaper/approach_front.png"
  else:
   path="res://assets/visual_rebirth/%s/level_01_front.png"%("stalker" if _unknown_hunter else archetype)
+ if not _unknown_hunter and OS.get_environment("NIGHTFALL_LIVING_DORM")=="1":
+  _hunter_title=HunterIdentity.display(archetype,archetype=="reaper")
  _hunter=load(path) as Texture2D if ResourceLoader.exists(path,"Texture2D") else null
 
 func _button(caption: String, rect: Rect2, primary: bool) -> Button:

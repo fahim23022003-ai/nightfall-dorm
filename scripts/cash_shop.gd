@@ -12,7 +12,7 @@ func show_shop():
  var living: bool=ui.use_living_ui()
  if living:
   ui.theme_backdrop()
-  ui.theme_panel(Rect2(100,50,1080,620))
+  ui.theme_panel(Rect2(100,50,1080,620),"shop" if ui.use_living_dorm() else "frame")
   ui.theme_label("DORM SUPPLIES",Vector2(140,75),33,860,"text",true)
  else:
   ui.box(Rect2(100,50,1080,610),"172839","8F687A")

@@ -16,6 +16,7 @@ var door_button: Button
 var pause_button: Button
 var map_button: Button
 var context_open=false
+var living_dorm_hud
 var phase16_hud := OS.get_environment("NIGHTFALL_PHASE16")=="1"
 var context_mode="build"
 var context_box: Panel
@@ -97,6 +98,7 @@ func _ready():
  show_menu()
 
 func clear():
+ living_dorm_hud=null
  haunted_hud=null
  for child in panel.get_children():
   panel.remove_child(child)
@@ -210,6 +212,9 @@ func button(text: String,pos: Vector2,callback: Callable,width: float=240,height
  PremiumButton.decorate(b,game.profile.settings.get("reduced_effects",false))
  return b
 
+func use_living_dorm() -> bool:
+ return use_living_ui() and game.model.living_dorm_requested
+
 func use_living_ui() -> bool:
  return game.survivor_preview_enabled and not game.mobile_mode
 
@@ -219,8 +224,8 @@ func theme_button(control: Button, role: String = "secondary", icon_id: String =
  for state in ["normal","hover","pressed","hover_pressed","disabled","focus"]:
   control.add_theme_stylebox_override(state,GothicTheme.living_surface(role,"pressed" if state == "hover_pressed" else state))
  for state in ["font_color","font_hover_color","font_pressed_color","font_focus_color","font_hover_pressed_color"]:
-  control.add_theme_color_override(state,GothicTheme.LIVING_COLORS.text)
- control.add_theme_color_override("font_disabled_color",GothicTheme.LIVING_COLORS.muted)
+  control.add_theme_color_override(state,GothicTheme.palette().text)
+ control.add_theme_color_override("font_disabled_color",GothicTheme.palette().muted)
  control.set_meta("living_role",role)
  if not icon_id.is_empty():
   control.icon = PremiumButton.texture(icon_id)
@@ -237,7 +242,7 @@ func theme_panel(rect: Rect2, role: String = "frame", parent: Control = null) ->
 
 func theme_label(text: String, at: Vector2, size: int, width: float, tone: String = "text", heading: bool = false, parent: Control = null) -> Label:
  var label := label_at(text,at,size,width,heading,parent)
- label.add_theme_color_override("font_color",GothicTheme.LIVING_COLORS.get(tone,GothicTheme.LIVING_COLORS.text))
+ label.add_theme_color_override("font_color",GothicTheme.palette().get(tone,GothicTheme.palette().text))
  return label
 
 func _price_amount(value: float) -> String:
@@ -245,7 +250,7 @@ func _price_amount(value: float) -> String:
 
 func theme_backdrop() -> void:
  var scrim := ColorRect.new()
- scrim.color = GothicTheme.LIVING_COLORS.overlay
+ scrim.color = GothicTheme.palette().overlay
  scrim.color.a = 0.78
  scrim.size = Vector2(1280,720)
  scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -282,7 +287,7 @@ func show_settings():
  var living := use_living_ui()
  if living:
   theme_backdrop()
-  theme_panel(Rect2(110,35,1060,650))
+  theme_panel(Rect2(110,35,1060,650),"settings" if use_living_dorm() else "frame")
   theme_label("SETTINGS",Vector2(145,61),34,990,"text",true)
   theme_panel(Rect2(140,126,452,411),"card")
   theme_panel(Rect2(612,126,525,411),"card")
@@ -446,7 +451,7 @@ func show_match():
  room_door_summary=button("Door",Vector2(490,649),func(): open_room_panel("door"),266,44)
  room_selected_summary=button("Build",Vector2(770,649),open_build_menu,263,44)
  room_selected_summary.name="build_menu"
- quick_repair=button("Repair",Vector2(1047,649),func(): purchase(game.model.repair_door()),196,44)
+ quick_repair=button("Repair",Vector2(1047,649),repair_player_door,196,44)
  quick_repair.name="repair_door"
  quick_repair.tooltip_text="Repair your door quickly [R]"
  # Side inspector lies beyond the focused bedroom's playable bounds.
@@ -529,7 +534,7 @@ func show_match():
  door_details.size.y=138
  door_button=button("Upgrade door",Vector2(14,198),func(): upgrade_structure("door"),336,40,context_box)
  actions.door=door_button
- actions.repair=button("Repair",Vector2(14,246),func(): purchase(game.model.repair_door()),336,40,context_box)
+ actions.repair=button("Repair",Vector2(14,246),repair_player_door,336,40,context_box)
  door_items=[door_art,door_details,door_button,actions.repair]
  confirmation_icon=icon("turret",Vector2(14,54),Vector2(80,86),context_box)
  confirmation_details=label_at("",Vector2(104,52),18,244,false,context_box)
@@ -577,6 +582,10 @@ func show_match():
   bottom_context=BottomContextPanel.new(self);bottom_context.install()
   expansion_ui=preload("res://scripts/expansion_interface.gd").new(self);expansion_ui.create()
   game.construction.create()
+  if use_living_dorm():
+   living_dorm_hud=preload("res://scripts/living_dorm_hud.gd").new(self)
+   living_dorm_hud.install()
+   living_dorm_hud.refresh(game.model.player(),action_reason("repair"))
  if game.model.map_data.has("halls"):
   haunted_hud=preload("res://scripts/haunted_hall_hud.gd").new(self)
 
@@ -770,6 +779,15 @@ func sell_selected():
  purchase(success)
  if success: feedback_text="Building sold · 50% gold and electricity refunded."
 
+func repair_player_door() -> void:
+ var room=game.model.player()
+ var before: float=room.door_hp if room!=null else 0.0
+ var success: bool=game.model.repair_door()
+ purchase(success)
+ if success and room!=null and living_dorm_hud!=null:
+  living_dorm_hud.repaired(room.door_hp-before)
+  living_dorm_hud.refresh(room,action_reason("repair"))
+
 func purchase(success: bool):
  var reason=game.model.purchase_error() if not success else ""
  var cue="purchase" if success else "insufficient_gold" if reason.contains("more gold") else "insufficient_power" if reason.contains("more electricity") else "failure"
@@ -874,7 +892,7 @@ func update_match():
   warning_label.text="DOOR %d/%d · UNDER ATTACK" % [roundi(room.door_hp),roundi(room.max_hp())]
   if m.hunter.tactical_action!="":warning_label.text="%s %.1fs · PREPARE DEFENSES" % [m.hunter.tactical_action.to_upper(),m.hunter.tactical_windup]
   elif m.hunter.charged_ready: warning_label.text="HEAVY STRIKE %.1fs · REPAIR / UPGRADE" % m.hunter.windup_remaining
-  elif m.hunter.archetype_primed:warning_label.text="%s · STRIKE WARNING · REPAIR NOW" % StrategyCatalog.ARCHETYPES[m.hunter.archetype].name.to_upper()
+  elif m.hunter.archetype_primed:warning_label.text="%s · STRIKE WARNING · REPAIR NOW" % (HunterIdentity.display(m.hunter.archetype) if living_dorm_hud!=null else StrategyCatalog.ARCHETYPES[m.hunter.archetype].name).to_upper()
   elif m.time<m.ward_until and m.ward_capacity>0:warning_label.text="DOOR %d/%d · WARD %.0f HP" % [roundi(room.door_hp),roundi(room.max_hp()),m.ward_capacity]
   elif m.hunter.recovery_remaining>0:warning_label.text="DOOR %d/%d · RECOVERY %.1fs" % [roundi(room.door_hp),roundi(room.max_hp()),m.hunter.recovery_remaining]
   elif siege_notice and m.hunter.siege_notice=="commit":warning_label.text="HUNTER COMMITS · HOLD THE DOOR"
@@ -896,6 +914,10 @@ func update_match():
    hunter_label.text=("REAPER" if m.hunter.transformed else "HUNTER")+" EVO %d · %s/%s" % [m.evolution.evolution_level,WeaponFeedback.format_damage(m.hunter.hp),WeaponFeedback.format_damage(m.hunter.max_hp)]
   hunter_label.tooltip_text+="\nEvolution %d/10: forms at4/7/10. Combat level %d is separate; no extra HP multiplier. Endless +1 per5 waves. Campaign: stage,75s survival steps,+1 Hell,one step per3 kill buffs. Skills at4; signature at10." % [m.evolution.evolution_level,m.hunter.level]
  if m.wrath.active():warning_label.text="%s · %.1fs · ROOM %d" % [ReaperWrath.ABILITIES[m.wrath.ability].name.to_upper(),m.wrath.warning,m.wrath.cast_target+1]
+ if living_dorm_hud!=null and not game.tutorial_active:
+  hunter_label.text=HunterIdentity.display(m.hunter.archetype,m.hunter.transformed)
+  hunter_detail.tooltip_text="Evolution %d/10 · %.0f / %.0f HP
+%s" % [m.evolution.evolution_level,m.hunter.hp,m.hunter.max_hp,hunter_detail.tooltip_text]
  if not phase16_hud or hunter_label.get_meta("fit_text","")!=hunter_label.text:
   var hp_font:=hunter_label.get_theme_font("font")
   var hp_size:=18
@@ -905,9 +927,16 @@ func update_match():
  hunter_label.tooltip_text=hunter_label.text+"\n"+hunter_label.tooltip_text
  if warning_label.visible and m.hunter.recovery_remaining<=0 and (threat or m.hunter.nightmare.action!=""):
   hunter_detail.tooltip_text+="\n"+hunter_detail.text
-  hunter_detail.text="[Hover for Hunter details]"
+  hunter_detail.text="Evolution %d · Hover for details" % m.evolution.evolution_level if living_dorm_hud!=null else "[Hover for Hunter details]"
   hunter_detail.modulate=Color(.72,.77,.82)
- else:hunter_detail.modulate=Color.WHITE
+ else:
+  hunter_detail.modulate=Color.WHITE
+  if living_dorm_hud!=null and not game.tutorial_active:
+   hunter_detail.text="Evolution %d · %s" % [m.evolution.evolution_level,hunter_detail.text] if m.hunter.tactical_action!="" or m.hunter.nightmare.action!="" or m.wrath.active() or m.hunter.recovery_remaining>0 or m.hunter.boss_attack!="" or m.hunter.state==HunterState.State.TRANSFORM else "Evolution %d · %.0f / %.0f HP" % [m.evolution.evolution_level,m.hunter.hp,m.hunter.max_hp]
+ if m.mini_hunter_telegraph:
+  hunter_detail.text="SHADOWLINGS GATHERING"
+ elif m.mini_hunters_requested and not m.mini_hunters.is_empty():
+  hunter_detail.text+=" · %d shadowlings" % m.mini_hunters.size()
  details.text="Choose a room" if room==null else "%s · %s" % [game.presentation.ROOM_NAMES[room.index].capitalize(),"sleeping" if room.sleeping else "awake"]
  for control in [room_bed_summary,room_door_summary,room_selected_summary]: control.disabled=room==null
  if room!=null:
@@ -940,7 +969,10 @@ func update_match():
   room_door_summary.set_meta("danger_skin",immediate)
  room_door_summary.modulate=Color(1,.91+.09*sin(game.presentation.clock*3),.91+.09*sin(game.presentation.clock*3)) if immediate and not game.profile.settings.reduced_effects else Color.WHITE
  quick_repair.text="Repair %.1f G [R]" % (room.manual_repair_cost() if room!=null else Catalog.REPAIR_COST)
- quick_repair.disabled=action_reason("repair")!=""
+ var repair_reason:=action_reason("repair")
+ quick_repair.disabled=repair_reason!=""
+ if living_dorm_hud!=null:
+  living_dorm_hud.refresh(room,repair_reason)
  for action in actions:
   if not phase16_hud or not action.begins_with("build:"):
    _refresh_match_action(action,room)

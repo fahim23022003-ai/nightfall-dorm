@@ -455,11 +455,18 @@ func render_door(c,p,room):
  c.draw_style_box(p.frame(Color("526D75"),Color("243B45"),4),Rect2(-Vector2(32,10),Vector2(64,36)))
  if room.door_hp>0:
   var color=Color(1.65,0.65,0.65) if room.damage_flash>0 else Color.WHITE
+  var redesigned: bool=c.model.living_dorm_requested
+  if redesigned and room.damage_flash<=0.0:
+   color={"hospital":Color("BDD7D7"),"hotel":Color("E2BCC1"),"lab":Color("AFD3C2"),"mansion":Color("DFC7B5")}.get(c.model.map_data.get("theme"),Color.WHITE)
   if room.closed:
-   p.building_visual.draw(c,p,"door",room.door_level+1,point,room.door_branch,room.damage_flash,Vector2.ZERO,p.clock,angle)
+   p.building_visual.draw(c,p,"door",room.door_level+1,point,room.door_branch,room.damage_flash,Vector2.ZERO,p.clock,angle,1.0,color if redesigned else Color.WHITE)
    c.draw_set_transform(point,angle)
   else: c.draw_texture_rect(p.cartoon.door_1,Rect2(Vector2(-47,-20),Vector2(36,50)),false,Color("94AAB2"))
   if room.owner==0 and room.closed:CosmeticPresentation.door(c)
+  if redesigned and room.closed:
+   var condition: float=room.door_hp/maxf(1.0,room.max_hp())
+   if condition<.80:c.draw_line(Vector2(-12,-25),Vector2(-7,-29),Color("AB9A83"),1.0)
+   if condition<.30:c.draw_polyline(PackedVector2Array([Vector2(8,-40),Vector2(2,-32),Vector2(8,-25),Vector2(1,-17),Vector2(12,-11)]),Color("1F1319"),2.0)
   if room.door_hp<room.max_hp()*0.55:
    c.draw_polyline(PackedVector2Array([Vector2(-8,-29),Vector2(1,-16),Vector2(-4,-5),Vector2(10,5)]),Color("382432"),2)
  else:

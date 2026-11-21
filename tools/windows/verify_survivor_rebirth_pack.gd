@@ -65,6 +65,10 @@ func run():
     game.model.move_player(delta.normalized(),minf(.02,delta.length()/MatchModel.SURVIVOR_SPEED))
   game.model.interact()
   check(game.model.player_room==0 and game.model.player()!=null and game.model.player().spatial.grid,"Physical claim preserves Full Room Grid")
+  if OS.get_environment("NIGHTFALL_LIVING_DORM")=="1":
+   check(game.ui.living_dorm_hud!=null and game.model.living_dorm_tactics(),"Phase 19 enables HUD and reachable-room variation")
+   check(game.profile.settings.graphics_quality=="low" and not game.model.mini_hunters_requested,"starts Low and leaves the experimental pilot off")
+   check(ResourceLoader.exists("res://assets/visual_rebirth/buildings/door/living_dorm.png"),"gothic door atlas included")
   if OS.get_environment("NIGHTFALL_BUILDING_SCALE")=="1":
    check(game.model.player().spatial.rules_version==SpatialConstruction.SUBSTANTIAL_VERSION,"Physical Story claim enables revised footprints")
  game.return_menu()

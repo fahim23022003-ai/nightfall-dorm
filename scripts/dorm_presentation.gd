@@ -333,6 +333,8 @@ func render(c):
  render_hunter_combat(c,m,visible,hunter_in_view)
  render_resident_labels(c)
  wrath_presentation.draw(c,clock)
+ for mini: MiniHunter in m.mini_hunters:
+  if mini.hp>0.0 and visible.has_point(OFFSET+mini.position):mini.draw_pose(c,clock)
  if m.weapon_feedback.enabled:weapons.draw_combat(c,building_visual,m,visible,OFFSET)
  for shot in m.projectiles if not m.weapon_feedback.enabled else []:
   var p=OFFSET+shot.position

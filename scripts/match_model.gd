@@ -21,6 +21,13 @@ var expansion=RoomExpansion.new()
 var wrath=ReaperWrath.new()
 var defenses=DefenseEffects.new()
 var minions: Array=[]
+const MINI_HUNTER_CAP:=6
+const MINI_HUNTER_PERIOD:=60.0
+const MINI_HUNTER_WINDUP:=1.5
+var mini_hunters: Array[MiniHunter]=[]
+var mini_hunters_requested := OS.get_environment("NIGHTFALL_MINI_HUNTERS")=="1"
+var mini_hunter_ready:=MINI_HUNTER_PERIOD
+var mini_hunter_telegraph:=false
 var next_entity_id=2
 var _kill_credit_room=-1
 var rooms: Array = []
@@ -68,6 +75,7 @@ var stage_bonus: Dictionary={}
 var strategy=MatchStrategy.new()
 var wave_metrics=WaveMetrics.new()
 var run_kind="campaign"
+var living_dorm_requested := OS.get_environment("NIGHTFALL_LIVING_DORM") == "1"
 var substantial_grid_requested := OS.get_environment("NIGHTFALL_BUILDING_SCALE") == "1"
 var full_grid_requested := OS.get_environment("NIGHTFALL_FULL_ROOM_GRID") == "1"
 var endless
@@ -129,6 +137,7 @@ func reset(seed_value: int = 1):
  balance_version=1;choices=RunChoices.new();pressure=HunterPressure.new()
  items=ItemEffects.new()
  evolution=HunterEvolution.new();expansion=RoomExpansion.new();wrath=ReaperWrath.new();defenses=DefenseEffects.new();minions=[];next_entity_id=2
+ mini_hunters.clear();mini_hunter_ready=MINI_HUNTER_PERIOD;mini_hunter_telegraph=false
  strategy=MatchStrategy.new()
  run_kind="campaign";endless=null;challenge_code="";challenge_config={};challenge_accumulator=0;challenge_recorded=false;terminal_recorded=false;defeat_facts=DefeatFacts.new()
  random.seed = seed_value
@@ -178,6 +187,9 @@ func map_bounds() -> Rect2:
 func is_procedural() -> bool:
  return map_data.has("halls")
 
+func living_dorm_tactics() -> bool:
+ return living_dorm_requested and not tutorial_mode and run_kind=="campaign" and is_procedural()
+
 func uses_tactical_sieges() -> bool:
  return hard_tactics_enabled and run_kind=="campaign" and map_data.get("version") in [NightmareMap.MACRO_VERSION,NightmareMap.CLOSE_QUARTERS_VERSION] and difficulty in ["hard","hell"] and not hunter.transformed
 
@@ -192,6 +204,8 @@ func configure_map(id: String, stored_layout: Dictionary={}) -> bool:
  else:
   data=MapCatalog.map(id)
  if data.is_empty(): return false
+ if living_dorm_requested and stored_layout.is_empty() and data.has("halls"):
+  for layout: Dictionary in data.rooms:LivingDormFurniture.arrange(layout)
  map_id=id
  map_data=data
  _navigation_routes.clear()
@@ -724,6 +738,7 @@ func _tick_sim(delta: float):
   contribution.exposure+=delta
  for undead in minions:undead.tick(maxf(0,delta-items.frozen_delta),self)
  minions=minions.filter(func(u):return u.hp>0)
+ if mini_hunters_requested:_tick_mini_hunters(maxf(0.0,delta-items.frozen_delta))
  defenses.tick(delta,self)
  MagicDefense.tick(self,delta)
  # A breach resolves before pending teammate shots can revive a lost match.
@@ -762,13 +777,52 @@ func target_by_id(id: int):
  if id==1:return hunter if hunter.hp>0 and hunter.state not in [HunterState.State.DORMANT,HunterState.State.DEAD] else null
  for undead in minions:
   if undead.id==id and undead.hp>0:return undead
+ for mini in mini_hunters:
+  if mini.id==id and mini.hp>0:return mini
  return null
 func attackable_targets() -> Array:
  var result=[]
  if target_by_id(1)!=null:result.append({"id":1,"actor":hunter})
  for undead in minions:
   if undead.hp>0:result.append({"id":undead.id,"actor":undead})
+ for mini in mini_hunters:
+  if mini.hp>0:result.append({"id":mini.id,"actor":mini})
  return result
+func mini_hunter_excluded_room() -> int:
+ # Leave the main Hunter its chosen corridor and attack approach.
+ return hunter.target if hunter.state in [HunterState.State.MOVE,HunterState.State.ATTACK,HunterState.State.BREACH,HunterState.State.EXIT] else -1
+
+func _tick_mini_hunters(delta: float) -> void:
+ for mini in mini_hunters:mini.tick(delta,self)
+ for index in range(mini_hunters.size()-1,-1,-1):
+  if mini_hunters[index].hp<=0.0:mini_hunters.remove_at(index)
+ if delta<=0.0 or not living_dorm_tactics() or hunter.archetype!="stalker" or hunter.transformed or hunter.hp<=0.0:
+  mini_hunter_telegraph=false
+  return
+ if hunter_active_seconds()<mini_hunter_ready-MINI_HUNTER_WINDUP or mini_hunters.size()>=MINI_HUNTER_CAP:return
+ if hunter.state not in [HunterState.State.MOVE,HunterState.State.ATTACK] or hunter.nightmare.action!="" or hunter.charged_ready:return
+ if not mini_hunter_telegraph:
+  if not rooms.any(func(room):return room.owner>=0 and room.alive and room.sleeping and room.closed and room.door_hp>0.0 and room.index!=mini_hunter_excluded_room()):return
+  mini_hunter_ready=maxf(mini_hunter_ready,hunter_active_seconds()+MINI_HUNTER_WINDUP)
+  mini_hunter_telegraph=true
+  record_event("mini_hunter_warning",-1,{"duration":MINI_HUNTER_WINDUP})
+  return
+ if hunter_active_seconds()<mini_hunter_ready:return
+ var spawn: Vector2=map_data.hunter_spawn
+ if not NightmareNavigation.walkable(self,spawn) or rooms.any(func(room):return NightmareMap.contains_point(room.layout,spawn)):
+  mini_hunter_ready=hunter_active_seconds()+MINI_HUNTER_PERIOD
+  mini_hunter_telegraph=false
+  return
+ var count:=1 if evolution.evolution_level<4 else mini(2,MINI_HUNTER_CAP-mini_hunters.size())
+ for index in range(count):
+  var mini:=MiniHunter.new()
+  mini.configure(self,next_entity_id,index,false)
+  next_entity_id+=1
+  mini_hunters.append(mini)
+  record_event("mini_hunter_spawn",-1,{"entity_id":mini.id,"entity_position":mini.position})
+ mini_hunter_ready=hunter_active_seconds()+MINI_HUNTER_PERIOD
+ mini_hunter_telegraph=false
+
 func spawn_undead(count: int,enhanced: bool=false):
  if wrath.domain_active() or hunter.hp<=0:return
  minions=minions.filter(func(u):return u.hp>0)
@@ -788,6 +842,7 @@ func apply_room_damage(index: int,amount: float,source: String="door strike",att
  var room=rooms[index]
  var attacker=target_by_id(attacker_id)
  if attacker==null:return 0.0
+ if attacker is MiniHunter and not attacker.valid_room(self,index):return 0.0
  if attacker_id!=1 and (attacker.target!=index or attacker.position.distance_to(room.door_approach())>3):return 0.0
  if attacker_id==1 and not special and (hunter.target!=index or hunter.position.distance_to(room.door_approach())>3):return 0.0
  if not room.alive or not room.closed or room.door_hp<=0:return 0.0
@@ -870,6 +925,8 @@ func credit_damage(room_index: int,amount: float,id: int):
  else:rooms[room_index].minion_damage_dealt+=amount
 func _turrets(delta: float):
  if not running or result!="" or wrath.rules_remaining>0:return
+ var available_targets: Array=[]
+ var acquired:=false
  for room in rooms:
   if not room.alive or room.magic_state.disrupt>0:continue
   for tile in room.buildings:
@@ -879,7 +936,10 @@ func _turrets(delta: float):
    if b.cooldown>0 or projectiles.size()>=Catalog.PROJECTILES.max_active:continue
    var resolved=BuildingStats.weapon_stats(self,room,b)
    var candidates=[]
-   for entry in attackable_targets():
+   if not acquired:
+    available_targets=attackable_targets()
+    acquired=true
+   for entry in available_targets:
     if entry.id==1 and (hunter.shadow_active(room.index) or wrath.domain_active() and room.index!=wrath.domain_room):continue
     if room.tile_position(tile).distance_to(entry.actor.position)<=resolved.range*hunter.nightmare.range_factor(room.index):candidates.append(entry)
    if candidates.is_empty():continue

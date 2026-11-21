@@ -53,6 +53,7 @@ const WEAPON_BRANCHES = {
  "flame":["searing","wildfire"],
  "frost":["deep_chill","rime_field"],
 }
+var living_dorm_doors := OS.get_environment("NIGHTFALL_LIVING_DORM")=="1"
 var rebirth_enabled := OS.get_environment("NIGHTFALL_VISUAL_REBIRTH") == "1"
 var phase16_enabled := OS.get_environment("NIGHTFALL_PHASE16") == "1"
 var rebirth_atlases: Dictionary = {}
@@ -123,7 +124,7 @@ func load_rebirth_atlas(kind: String, moving_layer: String) -> bool:
  if not rebirth_enabled:
   return false
  if not rebirth_atlases.has(kind):
-  var base_path := WEAPON_ART_DIR + kind + "/base.png"
+  var base_path := WEAPON_ART_DIR + kind + ("/living_dorm.png" if kind=="door" and living_dorm_doors else "/base.png")
   var moving_path := WEAPON_ART_DIR + kind + "/" + moving_layer + ".png"
   var textures := []
   if ResourceLoader.exists(base_path) and (moving_layer.is_empty() or ResourceLoader.exists(moving_path)):

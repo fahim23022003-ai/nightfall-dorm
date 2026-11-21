@@ -118,6 +118,18 @@ const LIVING_COLORS := {
  "success": Color("#50C7A8"),
  "disabled": Color("#596473"),
 }
+const DORM_COLORS := {
+ "background": Color("#111722"), "overlay": Color("#080D16"),
+ "panel": Color("#273749"), "card": Color("#34495A"),
+ "text": Color("#F7F1E7"), "muted": Color("#C6D4DF"), "gold": Color("#D2B47B"),
+ "story": Color("#22947A"), "shop": Color("#D39A45"), "settings": Color("#568FC7"),
+ "inventory": Color("#9673CC"), "protection": Color("#52A9A2"),
+ "warning": Color("#E0A64B"), "danger": Color("#CF5B69"),
+ "success": Color("#64C98F"), "disabled": Color("#596473"),
+}
+static func palette() -> Dictionary:
+ return DORM_COLORS if OS.get_environment("NIGHTFALL_LIVING_DORM")=="1" else LIVING_COLORS
+
 static var living_styles: Dictionary = {}
 
 
@@ -126,9 +138,9 @@ static func living_surface(role: String, state: String = "normal") -> StyleBoxFl
  if living_styles.has(key):
   return living_styles[key]
  var style := StyleBoxFlat.new()
- var colors := LIVING_COLORS
+ var colors := palette()
  var accents := {"primary":"story", "selected":"success", "danger":"danger", "shop":"shop",
-  "settings":"settings", "inventory":"inventory", "accent":"gold"}
+  "settings":"settings", "inventory":"inventory", "accent":"gold", "protection":"protection", "story":"story"}
  var accent: Color = colors[accents.get(role,"disabled")]
  style.bg_color = colors.card if role == "card" or role in accents else colors.panel
  if role == "inset" or role == "quiet":
@@ -137,6 +149,8 @@ static func living_surface(role: String, state: String = "normal") -> StyleBoxFl
   style.bg_color = colors.overlay
  if role == "primary" or role == "danger" or role == "selected":
   style.bg_color = style.bg_color.lerp(accent,0.34)
+ if colors==DORM_COLORS and role in accents and role not in ["primary","danger","selected"]:
+  style.bg_color=style.bg_color.lerp(accent,.21)
  if state == "hover":
   style.bg_color = style.bg_color.lightened(0.11)
  elif state == "pressed":

@@ -540,7 +540,10 @@ func _unhandled_input(event):
   if event.keycode==KEY_HOME:return_to_my_room()
   elif event.keycode==KEY_T and not tutorial_active:ui.teammates.toggle_panel()
   elif event.keycode in [KEY_PAGEUP,KEY_PAGEDOWN] and not tutorial_active:cycle_spectator(-1 if event.keycode==KEY_PAGEUP else 1)
-  elif event.keycode in [KEY_1,KEY_2] and model.running: activate_item(0 if event.keycode==KEY_1 else 1)
+  elif event.keycode in [KEY_1,KEY_2] and model.running:
+   var slot:=0 if event.keycode==KEY_1 else 1
+   if ui.use_living_dorm():ui.items_ui.select_slot(slot)
+   else:activate_item(slot)
   elif event.keycode==KEY_K and model.balance_version==2 and model.run_kind=="endless":RunChoiceInterface.show(ui)
   elif event.keycode==KEY_F and not tutorial_active:command_ward()
   elif event.keycode==KEY_B and model.running and watched_room<0:
@@ -551,10 +554,11 @@ func _unhandled_input(event):
   elif event.keycode==KEY_M: toggle_map()
   elif event.keycode==KEY_G: toggle_guide()
   elif event.keycode==KEY_I and not tutorial_active:ui.items_ui.toggle_expanded()
-  elif event.keycode==KEY_R and model.running: ui.purchase(model.repair_door())
+  elif event.keycode==KEY_R and model.running: ui.repair_player_door()
   elif event.keycode==KEY_ESCAPE:
    if pending_build!="": cancel_placement(true)
    elif watched_room>=0:return_to_my_room()
+   elif ui.use_living_dorm() and ui.items_ui.expanded:ui.items_ui.toggle_expanded()
    elif ui.context_open: ui.close_context(true)
    elif ui.replay_ui.preparing:ui.replay_ui.show_intermission()
    else: toggle_pause()

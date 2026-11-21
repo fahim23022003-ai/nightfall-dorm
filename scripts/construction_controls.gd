@@ -253,7 +253,7 @@ func refresh():
  var grid: bool=r!=null and r.spatial.grid
  var focused: bool=focused_grid(r) and visible and game.ui.pause_items.is_empty()
  var supplies_open: bool=is_instance_valid(game.ui.run_panel) and game.ui.run_panel.visible
- room_card.visible=focused and not supplies_open
+ room_card.visible=focused and not supplies_open and game.ui.living_dorm_hud==null
  if room_card.visible:
   var trait_data: Dictionary=StrategyCatalog.TRAITS.get(r.trait_id,{})
   var room_title: String="YOUR ROOM · %02d" % [r.index+1]
@@ -261,7 +261,7 @@ func refresh():
   var trait_details: String="" if trait_data.is_empty() else "%s\n%s\n" % [trait_data.benefit,trait_data.drawback]
   var interaction: String="E · Sleep near your bed" if r.alive and not r.sleeping else "Door breached" if r.door_hp<=0 else "Ward %.0f HP" % r.magic_state.shield if r.magic_state.shield>0 else "Build [B]  ·  Plan [P]"
   room_info.text="%s\n%s%s" % [room_title,trait_details,interaction]
- refresh_machines(r,focused and not active() and not supplies_open)
+ refresh_machines(r,focused and not active() and not supplies_open and not (game.ui.living_dorm_hud!=null and game.ui.items_ui.expanded))
  var display=visible and (planning or active() or game.ui.context_open and (game.ui.context_mode=="expansion" or grid and game.ui.context_mode=="build"))
  status.visible=display;plan_button.visible=display;snap_button.visible=display and not grid
  rotate_button.visible=visible and grid and active()
@@ -323,7 +323,10 @@ func draw_floor(c,r,grid_layout: Dictionary={}):
   c.draw_rect(floor,Color(.40,.75,.66,.65),false,2)
   if grid:draw_grid_lines(c,floor)
  for blocked in r.spatial.blocks():
-  c.draw_rect(Rect2(offset+blocked.rect.position,blocked.rect.size),Color(.65,.28,.30,.13));c.draw_rect(Rect2(offset+blocked.rect.position,blocked.rect.size),Color(.70,.40,.38,.55),false,1)
+  var access: bool=game.model.living_dorm_requested and ("route" in blocked.reason or "access" in blocked.reason)
+  var area:=Rect2(offset+blocked.rect.position,blocked.rect.size)
+  c.draw_rect(area,Color(.58,.42,.18,.16) if access else Color(.65,.28,.30,.13))
+  c.draw_rect(area,Color(.86,.65,.32,.70) if access else Color(.70,.40,.38,.55),false,1)
  var preview: Rect2=r.spatial.footprint_for(point,active_kind(),rotation) if active() else Rect2()
  preview.position+=offset
  if grid:

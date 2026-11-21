@@ -12,6 +12,11 @@ var observed_model
 var inventory_page=0
 var expanded=false
 var item_toggle: Button
+var drawer: Panel
+var drawer_description: Label
+var drawer_status: Label
+var drawer_use: Button
+var inspected_slot:=-1
 var legendary_banner
 var legendary_name
 var observed_effects
@@ -30,7 +35,7 @@ func inventory():
  var living: bool=ui.use_living_ui()
  if living:
   ui.theme_backdrop()
-  ui.theme_panel(Rect2(60,35,1160,650))
+  ui.theme_panel(Rect2(60,35,1160,650),"inventory" if ui.use_living_dorm() else "frame")
   ui.theme_label("CONSUMABLE INVENTORY",Vector2(90,55),30,790,"text",true)
  else:
   ui.box(Rect2(60,35,1160,650))
@@ -171,17 +176,27 @@ func create_hotbar():
  legendary_banner.visible=false
  legendary_name.visible=false
  hotbar.clear();expanded=false
+ inspected_slot=-1
+ drawer=null
  item_toggle=ui.button("Items [I]",Vector2(188,88),toggle_expanded,154,44)
+ if ui.use_living_dorm():
+  item_toggle.position=Vector2(20,88)
+  ui.theme_button(item_toggle,"inventory")
+  create_drawer()
  var equipped=game.item_wallet().active_match.get("items",[])
  for i in range(equipped.size()):
   var slot=i
-  var b=ui.button("",Vector2(20+i*82,88),func(): game.activate_item(slot),78,44)
+  var b=ui.button("",Vector2(20+i*82,88),func(): select_slot(slot) if ui.use_living_dorm() else game.activate_item(slot),78,44)
   b.add_theme_font_size_override("font_size",14)
   b.add_theme_stylebox_override("normal",GothicTheme.surface("172839",{"Common":"92B39A","Rare":"8FAFB9","Epic":"A28EB2","Legendary":"C5A56A"}[ItemCatalog.ITEMS[equipped[i]].rarity]))
   b.alignment=HORIZONTAL_ALIGNMENT_LEFT
   b.icon=load("res://assets/items/"+str(equipped[i])+".svg")
   b.expand_icon=true
   b.add_theme_constant_override("icon_max_width",25)
+  if drawer!=null:
+   ui.panel.remove_child(b)
+   drawer.add_child(b)
+   ui.theme_button(b,"inventory")
   hotbar.append(b)
  feedback_label=ui.label_at("",Vector2(20,454),15,360)
  radar_label=ui.label_at("",Vector2(20,384),14,365)
@@ -211,7 +226,7 @@ func update(delta):
     legendary_name.pivot_offset=Vector2(157,12)
     legendary_name.scale=Vector2(pulse,pulse)
  var selected=game.item_wallet().active_match.get("items",[])
- for i in range(hotbar.size()):
+ for i in range(hotbar.size() if drawer==null or expanded else 0):
   if not is_instance_valid(hotbar[i]) or i>=selected.size(): continue
   var id=str(selected[i]); var quantity=int(game.item_wallet().inventory.get(id,0)); var seconds=float(fx.timers.get(id,0))
   if id=="trap" and not fx.trap.is_empty(): seconds=fx.trap.remaining
@@ -232,12 +247,23 @@ func update(delta):
    elif id=="coupon" and game.model.player()!=null and game.model.player().coupon_armed:state="ARMED";special=" · 40% discount"
    elif game.item_wallet().read_only:state="UNAVAILABLE"
    elif reason!="" and fx.cooldown<=0:state="UNAVAILABLE"
-  hotbar[i].text=("[%d] %s\n×%d · %s%s" % [i+1,ItemCatalog.ITEMS[id].name,quantity,state,special]) if expanded else ("[%d] ×%d\n%s" % [i+1,quantity,"%.0fs" % seconds if seconds>0 else state])
-  hotbar[i].position=Vector2(20,142+i*62) if expanded else Vector2(20+i*82,88)
-  hotbar[i].size=Vector2(334,58) if expanded else Vector2(78,44)
-  hotbar[i].add_theme_font_size_override("font_size",14 if expanded else 11)
-  hotbar[i].disabled=quantity<=0 or reason!="" or game.item_wallet().read_only
-  hotbar[i].tooltip_text=ItemCatalog.ITEMS[id].name+" · "+state+special+"\n"+ItemCatalog.ITEMS[id].description+"\n"+(reason if reason!="" else "Ready")
+  if drawer!=null:
+   hotbar[i].text="%s  ×%d" % [ItemCatalog.ITEMS[id].name,quantity]
+   hotbar[i].position=Vector2(12+i*148,39)
+   hotbar[i].size=Vector2(144,42)
+   hotbar[i].clip_text=true
+   if i==inspected_slot:
+    drawer_description.text=ItemCatalog.ITEMS[id].name+"\n"+ItemCatalog.ITEMS[id].description
+    drawer_status.text="×%d · %s" % [quantity,reason if reason!="" else state+special]
+    drawer_use.disabled=quantity<=0 or reason!="" or game.item_wallet().read_only or not game.model.running
+   ui.theme_button(hotbar[i],"selected" if i==inspected_slot else "inventory")
+  else:
+   hotbar[i].text=("[%d] %s\n×%d · %s%s" % [i+1,ItemCatalog.ITEMS[id].name,quantity,state,special]) if expanded else ("[%d] ×%d\n%s" % [i+1,quantity,"%.0fs" % seconds if seconds>0 else state])
+   hotbar[i].position=Vector2(20,142+i*62) if expanded else Vector2(20+i*82,88)
+   hotbar[i].size=Vector2(334,58) if expanded else Vector2(78,44)
+   hotbar[i].add_theme_font_size_override("font_size",14 if expanded else 11)
+   hotbar[i].disabled=quantity<=0 or reason!="" or game.item_wallet().read_only
+   hotbar[i].tooltip_text=ItemCatalog.ITEMS[id].name+" · "+state+special+"\n"+ItemCatalog.ITEMS[id].description+"\n"+(reason if reason!="" else "Ready")
  if is_instance_valid(feedback_label):
   feedback_label.text=""
   if not fx.events.is_empty():
@@ -254,9 +280,46 @@ func update(delta):
   radar_label.text="RADAR %.0fs · Hunter L%d at %.0f,%.0f
 Target %s · Map / M to locate" % [fx.timers.radar,game.model.hunter.level,game.model.hunter.position.x,game.model.hunter.position.y,"Room %d" % (game.model.hunter.target+1) if game.model.hunter.target>=0 else "seeking"] if float(fx.timers.get("radar",0))>0 else ""
 
+func create_drawer() -> void:
+ drawer=ui.theme_panel(Rect2(20,145,320,211),"inventory")
+ drawer.visible=false
+ drawer.mouse_filter=Control.MOUSE_FILTER_STOP
+ ui.theme_label("EQUIPPED ITEMS",Vector2(12,8),15,238,"text",true,drawer)
+ var close: Button=ui.button("Close",Vector2(241,6),toggle_expanded,67,27,drawer)
+ ui.theme_button(close,"danger")
+ drawer_description=ui.theme_label("Select an item to inspect it.",Vector2(12,90),14,295,"text",false,drawer)
+ drawer_description.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+ drawer_status=ui.theme_label("",Vector2(12,147),13,295,"muted",false,drawer)
+ drawer_status.clip_text=true
+ drawer_use=ui.button("Use selected item",Vector2(12,170),activate_selected,296,34,drawer)
+ drawer_use.name="use_selected_item"
+ drawer_use.disabled=true
+ ui.theme_button(drawer_use,"primary")
+
+func select_slot(slot: int) -> void:
+ if not is_instance_valid(drawer) or slot<0 or slot>=hotbar.size():return
+ if not expanded:toggle_expanded()
+ inspected_slot=slot
+ update(0)
+
+func activate_selected() -> void:
+ if inspected_slot<0 or drawer_use.disabled:return
+ var selected: Array=game.item_wallet().active_match.get("items",[])
+ if inspected_slot>=selected.size():return
+ var targeting: bool=selected[inspected_slot]=="rescue"
+ if targeting:toggle_expanded()
+ game.activate_item(inspected_slot)
+ if not targeting:update(0)
+
 func toggle_expanded():
  expanded=not expanded
+ if is_instance_valid(drawer):
+  drawer.visible=expanded
+  item_toggle.text="Close items [I]" if expanded else "Items [I]"
+  if expanded and hotbar.is_empty():drawer_description.text="No consumables equipped for this match."
+
  if expanded:
   game.ui.help_open=false
   if game.ui.teammates!=null:game.ui.teammates.expanded=false;game.ui.teammates.update()
+ if is_instance_valid(drawer):ui.update_match()
  update(0)
