@@ -1,0 +1,423 @@
+{
+  "source_markers": [
+    "af1a113431931c12b49c2dbfb4be0aaca57a5896",
+    "af1a113 + scoped corridor render cache only"
+  ],
+  "affinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "llvmpipe_workers": 2,
+  "cases": [
+    {
+      "buildings": 24.0,
+      "quality": "medium",
+      "matching": {
+        "layout": true,
+        "initial_gameplay": true,
+        "final_gameplay": true,
+        "camera": true,
+        "visible_buildings": true,
+        "combat_work": true
+      },
+      "before": {
+        "frame_ms": {
+          "max": 120.461,
+          "median": 61.3665,
+          "p95": 75.752
+        },
+        "draw_calls": {
+          "max": 608.0,
+          "median": 566.5,
+          "p95": 601.0
+        },
+        "corridor_cpu_ms": {
+          "max": 0.643,
+          "median": 0.416,
+          "p95": 0.558
+        },
+        "first_view_frame_ms": 407.095,
+        "memory": {
+          "corridor_texture_payload_bytes": 0,
+          "godot_static_bytes": 163644848,
+          "godot_video_monitor_bytes": 138424687
+        },
+        "route_query_ms": {
+          "max": 0.894,
+          "median": 0.642,
+          "p95": 0.84
+        }
+      },
+      "after": {
+        "frame_ms": {
+          "max": 91.13,
+          "median": 56.164,
+          "p95": 75.279
+        },
+        "draw_calls": {
+          "max": 406.0,
+          "median": 364.5,
+          "p95": 399.0
+        },
+        "corridor_cpu_ms": {
+          "max": 0.517,
+          "median": 0.06,
+          "p95": 0.11
+        },
+        "first_view_frame_ms": 384.388,
+        "memory": {
+          "corridor_texture_payload_bytes": 8112000,
+          "godot_static_bytes": 164091419,
+          "godot_video_monitor_bytes": 149151247
+        },
+        "route_query_ms": {
+          "max": 0.848,
+          "median": 0.574,
+          "p95": 0.804
+        }
+      }
+    },
+    {
+      "buildings": 24.0,
+      "quality": "low",
+      "matching": {
+        "layout": true,
+        "initial_gameplay": true,
+        "final_gameplay": true,
+        "camera": true,
+        "visible_buildings": true,
+        "combat_work": true
+      },
+      "before": {
+        "frame_ms": {
+          "max": 60.83,
+          "median": 43.9825,
+          "p95": 54.151
+        },
+        "draw_calls": {
+          "max": 437.0,
+          "median": 409.0,
+          "p95": 430.0
+        },
+        "corridor_cpu_ms": {
+          "max": 0.345,
+          "median": 0.1715,
+          "p95": 0.274
+        },
+        "first_view_frame_ms": 437.545,
+        "memory": {
+          "corridor_texture_payload_bytes": 0,
+          "godot_static_bytes": 163608716,
+          "godot_video_monitor_bytes": 146578659
+        },
+        "route_query_ms": {
+          "max": 0.949,
+          "median": 0.575,
+          "p95": 0.717
+        }
+      },
+      "after": {
+        "frame_ms": {
+          "max": 54.041,
+          "median": 38.034,
+          "p95": 48.763
+        },
+        "draw_calls": {
+          "max": 364.0,
+          "median": 336.0,
+          "p95": 357.0
+        },
+        "corridor_cpu_ms": {
+          "max": 0.125,
+          "median": 0.06,
+          "p95": 0.099
+        },
+        "first_view_frame_ms": 415.065,
+        "memory": {
+          "corridor_texture_payload_bytes": 8112000,
+          "godot_static_bytes": 164062175,
+          "godot_video_monitor_bytes": 157389459
+        },
+        "route_query_ms": {
+          "max": 0.883,
+          "median": 0.58,
+          "p95": 0.792
+        }
+      }
+    },
+    {
+      "buildings": 40.0,
+      "quality": "medium",
+      "matching": {
+        "layout": true,
+        "initial_gameplay": true,
+        "final_gameplay": true,
+        "camera": true,
+        "visible_buildings": true,
+        "combat_work": true
+      },
+      "before": {
+        "frame_ms": {
+          "max": 147.014,
+          "median": 72.4805,
+          "p95": 89.045
+        },
+        "draw_calls": {
+          "max": 640.0,
+          "median": 598.5,
+          "p95": 633.0
+        },
+        "corridor_cpu_ms": {
+          "max": 0.841,
+          "median": 0.4045,
+          "p95": 0.561
+        },
+        "first_view_frame_ms": 448.789,
+        "memory": {
+          "corridor_texture_payload_bytes": 0,
+          "godot_static_bytes": 165232204,
+          "godot_video_monitor_bytes": 138424687
+        },
+        "route_query_ms": {
+          "max": 1.135,
+          "median": 0.5885,
+          "p95": 0.959
+        }
+      },
+      "after": {
+        "frame_ms": {
+          "max": 132.351,
+          "median": 71.848,
+          "p95": 96.834
+        },
+        "draw_calls": {
+          "max": 438.0,
+          "median": 396.5,
+          "p95": 431.0
+        },
+        "corridor_cpu_ms": {
+          "max": 1.22,
+          "median": 0.061,
+          "p95": 0.193
+        },
+        "first_view_frame_ms": 479.263,
+        "memory": {
+          "corridor_texture_payload_bytes": 8112000,
+          "godot_static_bytes": 165666743,
+          "godot_video_monitor_bytes": 149151247
+        },
+        "route_query_ms": {
+          "max": 1.009,
+          "median": 0.661,
+          "p95": 0.954
+        }
+      }
+    },
+    {
+      "buildings": 40.0,
+      "quality": "low",
+      "matching": {
+        "layout": true,
+        "initial_gameplay": true,
+        "final_gameplay": true,
+        "camera": true,
+        "visible_buildings": true,
+        "combat_work": true
+      },
+      "before": {
+        "frame_ms": {
+          "max": 62.279,
+          "median": 46.8155,
+          "p95": 59.05
+        },
+        "draw_calls": {
+          "max": 438.0,
+          "median": 410.0,
+          "p95": 431.0
+        },
+        "corridor_cpu_ms": {
+          "max": 0.577,
+          "median": 0.181,
+          "p95": 0.293
+        },
+        "first_view_frame_ms": 503.493,
+        "memory": {
+          "corridor_texture_payload_bytes": 0,
+          "godot_static_bytes": 165192200,
+          "godot_video_monitor_bytes": 146578659
+        },
+        "route_query_ms": {
+          "max": 1.08,
+          "median": 0.571,
+          "p95": 0.895
+        }
+      },
+      "after": {
+        "frame_ms": {
+          "max": 58.766,
+          "median": 38.55,
+          "p95": 47.584
+        },
+        "draw_calls": {
+          "max": 365.0,
+          "median": 337.0,
+          "p95": 358.0
+        },
+        "corridor_cpu_ms": {
+          "max": 0.16,
+          "median": 0.059,
+          "p95": 0.094
+        },
+        "first_view_frame_ms": 531.259,
+        "memory": {
+          "corridor_texture_payload_bytes": 8112000,
+          "godot_static_bytes": 165649047,
+          "godot_video_monitor_bytes": 157389459
+        },
+        "route_query_ms": {
+          "max": 0.825,
+          "median": 0.5595000000000001,
+          "p95": 0.79
+        }
+      }
+    },
+    {
+      "buildings": 60.0,
+      "quality": "medium",
+      "matching": {
+        "layout": true,
+        "initial_gameplay": true,
+        "final_gameplay": true,
+        "camera": true,
+        "visible_buildings": true,
+        "combat_work": true
+      },
+      "before": {
+        "frame_ms": {
+          "max": 155.96,
+          "median": 84.179,
+          "p95": 119.404
+        },
+        "draw_calls": {
+          "max": 680.0,
+          "median": 638.5,
+          "p95": 673.0
+        },
+        "corridor_cpu_ms": {
+          "max": 0.665,
+          "median": 0.411,
+          "p95": 0.576
+        },
+        "first_view_frame_ms": 590.432,
+        "memory": {
+          "corridor_texture_payload_bytes": 0,
+          "godot_static_bytes": 167101464,
+          "godot_video_monitor_bytes": 138424687
+        },
+        "route_query_ms": {
+          "max": 0.871,
+          "median": 0.5825,
+          "p95": 0.734
+        }
+      },
+      "after": {
+        "frame_ms": {
+          "max": 142.327,
+          "median": 78.5215,
+          "p95": 95.787
+        },
+        "draw_calls": {
+          "max": 478.0,
+          "median": 436.5,
+          "p95": 471.0
+        },
+        "corridor_cpu_ms": {
+          "max": 0.141,
+          "median": 0.06,
+          "p95": 0.098
+        },
+        "first_view_frame_ms": 483.188,
+        "memory": {
+          "corridor_texture_payload_bytes": 8112000,
+          "godot_static_bytes": 167532263,
+          "godot_video_monitor_bytes": 149151247
+        },
+        "route_query_ms": {
+          "max": 0.751,
+          "median": 0.5654999999999999,
+          "p95": 0.707
+        }
+      }
+    },
+    {
+      "buildings": 60.0,
+      "quality": "low",
+      "matching": {
+        "layout": true,
+        "initial_gameplay": true,
+        "final_gameplay": true,
+        "camera": true,
+        "visible_buildings": true,
+        "combat_work": true
+      },
+      "before": {
+        "frame_ms": {
+          "max": 97.421,
+          "median": 49.639,
+          "p95": 58.56
+        },
+        "draw_calls": {
+          "max": 438.0,
+          "median": 410.0,
+          "p95": 431.0
+        },
+        "corridor_cpu_ms": {
+          "max": 2.228,
+          "median": 0.1755,
+          "p95": 0.262
+        },
+        "first_view_frame_ms": 460.918,
+        "memory": {
+          "corridor_texture_payload_bytes": 0,
+          "godot_static_bytes": 167058160,
+          "godot_video_monitor_bytes": 146578659
+        },
+        "route_query_ms": {
+          "max": 0.777,
+          "median": 0.5734999999999999,
+          "p95": 0.695
+        }
+      },
+      "after": {
+        "frame_ms": {
+          "max": 100.838,
+          "median": 43.994,
+          "p95": 50.72
+        },
+        "draw_calls": {
+          "max": 365.0,
+          "median": 337.0,
+          "p95": 358.0
+        },
+        "corridor_cpu_ms": {
+          "max": 0.185,
+          "median": 0.059,
+          "p95": 0.093
+        },
+        "first_view_frame_ms": 404.419,
+        "memory": {
+          "corridor_texture_payload_bytes": 8112000,
+          "godot_static_bytes": 167514447,
+          "godot_video_monitor_bytes": 157389459
+        },
+        "route_query_ms": {
+          "max": 0.965,
+          "median": 0.5814999999999999,
+          "p95": 0.837
+        }
+      }
+    }
+  ]
+}

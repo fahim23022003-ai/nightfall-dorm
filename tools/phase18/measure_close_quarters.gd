@@ -85,4 +85,5 @@ func run():
    "gameplay_initial_sha256":initial,"visual_initial_sha256":visual_initial,"visual_final_sha256":_image_hash(final),
    "combat":close_sample,"navigation":route_sample,"checks":checks,"failures":failures,
   },"  ",true,true)+"\n")
+  receipt.close()
  await _finish()
