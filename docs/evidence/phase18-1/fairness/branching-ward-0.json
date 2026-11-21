@@ -1,0 +1,5569 @@
+{
+ "cases": [
+  {
+   "chapter": 7,
+   "contribution": {
+    "control_hits": 0,
+    "defense_gold": 958.0,
+    "defense_power": 90.0,
+    "door_blocked": 120.0,
+    "exposure": 33.5999999999999,
+    "infrastructure_gold": 235.0,
+    "infrastructure_power": 0.0,
+    "repair_hp": 1610.0,
+    "ward_blocked": 120.0
+   },
+   "directional_observations": {
+    "approaches": [
+     {
+      "decision_count": 1,
+      "hunter_hp": 4532.0,
+      "hunter_position": [
+       1275.39282226562,
+       0.0
+      ],
+      "room": 2,
+      "roster": [
+       {
+        "alive": true,
+        "bed_level": 1,
+        "buildings": [],
+        "door_hp": 135.0,
+        "door_level": 1,
+        "gold": 25.0,
+        "hunter_open_score": 1114.07421875,
+        "max_hp": 135.0,
+        "owner": -1,
+        "power": 0.0,
+        "profile": "player",
+        "room": 1,
+        "sleeping": false,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 300.0,
+        "door_level": 2,
+        "gold": 2.35874999999986,
+        "hunter_open_score": 1419.8671875,
+        "max_hp": 300.0,
+        "owner": 2,
+        "power": 0.0,
+        "profile": "engineer",
+        "room": 2,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 1,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 172.5,
+        "door_level": 1,
+        "gold": 18.1625,
+        "hunter_open_score": 3482.10205078125,
+        "max_hp": 172.5,
+        "owner": 4,
+        "power": 0.0,
+        "profile": "gunner",
+        "room": 3,
+        "sleeping": true,
+        "trait": "fortified"
+       },
+       {
+        "alive": true,
+        "bed_level": 1,
+        "buildings": [
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 135.0,
+        "door_level": 1,
+        "gold": 20.8,
+        "hunter_open_score": 2196.82836914062,
+        "max_hp": 135.0,
+        "owner": 0,
+        "power": 0.0,
+        "profile": "player",
+        "room": 4,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 150.0,
+        "door_level": 1,
+        "gold": 17.6937499999999,
+        "hunter_open_score": 3293.23461914062,
+        "max_hp": 150.0,
+        "owner": 1,
+        "power": 0.0,
+        "profile": "guard",
+        "room": 5,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 345.0,
+        "door_level": 2,
+        "gold": 17.9625000000001,
+        "hunter_open_score": 2403.84985351562,
+        "max_hp": 345.0,
+        "owner": 5,
+        "power": 0.0,
+        "profile": "balanced",
+        "room": 6,
+        "sleeping": true,
+        "trait": "fortified"
+       }
+      ],
+      "route_costs": {
+       "0": 912.0,
+       "1": 1600.0,
+       "2": 4296.0,
+       "3": 2816.0,
+       "4": 4112.0,
+       "5": 2408.0
+      },
+      "target_history": {
+
+      },
+      "time": 42.1499999999998
+     },
+     {
+      "decision_count": 4,
+      "hunter_hp": 4118.64,
+      "hunter_position": [
+       1720.0,
+       700.3935546875
+      ],
+      "room": 6,
+      "roster": [
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 270.0,
+        "door_level": 2,
+        "gold": 110.775000000001,
+        "hunter_open_score": 1958.37666302342,
+        "max_hp": 270.0,
+        "owner": 3,
+        "power": 0.0,
+        "profile": "economist",
+        "room": 1,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ],
+         [
+          "generator",
+          1
+         ]
+        ],
+        "door_hp": 48.6264761012632,
+        "door_level": 2,
+        "gold": 6.85624999999951,
+        "hunter_open_score": 144.224388365071,
+        "max_hp": 300.0,
+        "owner": 2,
+        "power": 18.225,
+        "profile": "engineer",
+        "room": 2,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ],
+         [
+          "generator",
+          1
+         ]
+        ],
+        "door_hp": 345.0,
+        "door_level": 2,
+        "gold": 5.2875000000004,
+        "hunter_open_score": 3198.6537626328,
+        "max_hp": 345.0,
+        "owner": 4,
+        "power": 0.81,
+        "profile": "gunner",
+        "room": 3,
+        "sleeping": true,
+        "trait": "fortified"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 540.0,
+        "door_level": 3,
+        "gold": 29.5500000000006,
+        "hunter_open_score": 2112.81040899214,
+        "max_hp": 540.0,
+        "owner": 0,
+        "power": 0.0,
+        "profile": "player",
+        "room": 4,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ]
+        ],
+        "door_hp": 300.0,
+        "door_level": 2,
+        "gold": 59.1912499999993,
+        "hunter_open_score": 2773.22100056309,
+        "max_hp": 300.0,
+        "owner": 1,
+        "power": 7.14700000000003,
+        "profile": "guard",
+        "room": 5,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ]
+        ],
+        "door_hp": 345.0,
+        "door_level": 2,
+        "gold": 43.0475000000005,
+        "hunter_open_score": 1753.08013142247,
+        "max_hp": 345.0,
+        "owner": 5,
+        "power": 10.09,
+        "profile": "balanced",
+        "room": 6,
+        "sleeping": true,
+        "trait": "fortified"
+       }
+      ],
+      "route_costs": {
+       "0": 2512.0,
+       "1": 0.0,
+       "2": 3368.0,
+       "3": 1888.0,
+       "4": 3184.0,
+       "5": 1480.0
+      },
+      "target_history": {
+       "1": 180.0
+      },
+      "time": 110.700000000001
+     },
+     {
+      "decision_count": 6,
+      "hunter_hp": 3255.28,
+      "hunter_position": [
+       2574.77172851562,
+       923.756042480469
+      ],
+      "room": 4,
+      "roster": [
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 270.0,
+        "door_level": 2,
+        "gold": 2.07500000000104,
+        "hunter_open_score": 2904.16521286662,
+        "max_hp": 270.0,
+        "owner": 3,
+        "power": 8.44400000000011,
+        "profile": "economist",
+        "room": 1,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 295.026476101265,
+        "door_level": 2,
+        "gold": 32.101249999999,
+        "hunter_open_score": 1499.10477658718,
+        "max_hp": 300.0,
+        "owner": 2,
+        "power": 8.93899999999998,
+        "profile": "engineer",
+        "room": 2,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 345.0,
+        "door_level": 2,
+        "gold": 67.9575000000007,
+        "hunter_open_score": 2363.94329864566,
+        "max_hp": 345.0,
+        "owner": 4,
+        "power": 18.07,
+        "profile": "gunner",
+        "room": 3,
+        "sleeping": true,
+        "trait": "fortified"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 540.0,
+        "door_level": 3,
+        "gold": 177.150000000002,
+        "hunter_open_score": 1599.12896728516,
+        "max_hp": 540.0,
+        "owner": 0,
+        "power": 13.372,
+        "profile": "player",
+        "room": 4,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 600.0,
+        "door_level": 3,
+        "gold": 140.253749999998,
+        "hunter_open_score": 2994.85491013225,
+        "max_hp": 600.0,
+        "owner": 1,
+        "power": 14.6809999999999,
+        "profile": "guard",
+        "room": 5,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": false,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 0.0,
+        "door_level": 2,
+        "gold": 19.9475000000008,
+        "hunter_open_score": 268.287460632967,
+        "max_hp": 345.0,
+        "owner": 5,
+        "power": 20.005,
+        "profile": "balanced",
+        "room": 6,
+        "sleeping": false,
+        "trait": "fortified"
+       }
+      ],
+      "route_costs": {
+       "0": 3136.0,
+       "1": 1296.0,
+       "2": 2712.0,
+       "3": 592.0,
+       "4": 1888.0,
+       "5": 184.0
+      },
+      "target_history": {
+       "1": 180.0,
+       "5": 90.0
+      },
+      "time": 172.800000000004
+     },
+     {
+      "decision_count": 8,
+      "hunter_hp": 1761.92,
+      "hunter_position": [
+       2532.03369140625,
+       1448.0
+      ],
+      "room": 5,
+      "roster": [
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 270.0,
+        "door_level": 2,
+        "gold": 10.2250000000014,
+        "hunter_open_score": 3109.44873046875,
+        "max_hp": 270.0,
+        "owner": 3,
+        "power": 29.9360000000002,
+        "profile": "economist",
+        "room": 1,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 300.0,
+        "door_level": 2,
+        "gold": 98.7287499999986,
+        "hunter_open_score": 1716.97351074219,
+        "max_hp": 300.0,
+        "owner": 2,
+        "power": 24.7954999999999,
+        "profile": "engineer",
+        "room": 2,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 345.0,
+        "door_level": 2,
+        "gold": 78.5525000000009,
+        "hunter_open_score": 2493.34106445312,
+        "max_hp": 345.0,
+        "owner": 4,
+        "power": 21.9799999999999,
+        "profile": "gunner",
+        "room": 3,
+        "sleeping": true,
+        "trait": "fortified"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "turret",
+          2
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 501.559985831336,
+        "door_level": 3,
+        "gold": 17.5700000000027,
+        "hunter_open_score": 1035.84166590265,
+        "max_hp": 540.0,
+        "owner": 0,
+        "power": 6.549,
+        "profile": "player",
+        "room": 4,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "heavy",
+          1
+         ]
+        ],
+        "door_hp": 600.0,
+        "door_level": 3,
+        "gold": 232.218749999998,
+        "hunter_open_score": 2473.50085449219,
+        "max_hp": 600.0,
+        "owner": 1,
+        "power": 12.7999999999999,
+        "profile": "guard",
+        "room": 5,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": false,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 0.0,
+        "door_level": 2,
+        "gold": 19.9475000000008,
+        "hunter_open_score": 658.253825239905,
+        "max_hp": 345.0,
+        "owner": 5,
+        "power": 20.005,
+        "profile": "balanced",
+        "room": 6,
+        "sleeping": false,
+        "trait": "fortified"
+       }
+      ],
+      "route_costs": {
+       "0": 3728.0,
+       "1": 1888.0,
+       "2": 3304.0,
+       "3": 0.0,
+       "4": 1408.0,
+       "5": 776.0
+      },
+      "target_history": {
+       "1": 180.0,
+       "3": 260.0,
+       "5": 90.0
+      },
+      "time": 202.650000000005
+     },
+     {
+      "decision_count": 9,
+      "hunter_hp": 2036.6256,
+      "hunter_position": [
+       2576.0,
+       3211.96630859375
+      ],
+      "room": 4,
+      "roster": [
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "antenna",
+          1
+         ]
+        ],
+        "door_hp": 270.0,
+        "door_level": 2,
+        "gold": 95.4250000000017,
+        "hunter_open_score": 4392.12548828125,
+        "max_hp": 270.0,
+        "owner": 3,
+        "power": 28.9,
+        "profile": "economist",
+        "room": 1,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "enhancer",
+          1
+         ]
+        ],
+        "door_hp": 600.0,
+        "door_level": 3,
+        "gold": 114.008749999998,
+        "hunter_open_score": 3796.76049804688,
+        "max_hp": 600.0,
+        "owner": 2,
+        "power": 16.6434999999998,
+        "profile": "engineer",
+        "room": 2,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "antenna",
+          1
+         ]
+        ],
+        "door_hp": 345.0,
+        "door_level": 2,
+        "gold": 52.7425000000011,
+        "hunter_open_score": 3476.5498046875,
+        "max_hp": 345.0,
+        "owner": 4,
+        "power": 17.2,
+        "profile": "gunner",
+        "room": 3,
+        "sleeping": true,
+        "trait": "fortified"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "turret",
+          3
+         ],
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 540.0,
+        "door_level": 3,
+        "gold": 94.7700000000032,
+        "hunter_open_score": 2834.77954101562,
+        "max_hp": 540.0,
+        "owner": 0,
+        "power": 5.07050000000002,
+        "profile": "player",
+        "room": 4,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 4,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "heavy",
+          1
+         ]
+        ],
+        "door_hp": 1100.0,
+        "door_level": 4,
+        "gold": 7.49874999999707,
+        "hunter_open_score": 2551.7551574707,
+        "max_hp": 1100.0,
+        "owner": 1,
+        "power": 4.64799999999984,
+        "profile": "guard",
+        "room": 5,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": false,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 0.0,
+        "door_level": 2,
+        "gold": 19.9475000000008,
+        "hunter_open_score": 2374.05604173532,
+        "max_hp": 345.0,
+        "owner": 5,
+        "power": 20.005,
+        "profile": "balanced",
+        "room": 6,
+        "sleeping": false,
+        "trait": "fortified"
+       }
+      ],
+      "route_costs": {
+       "0": 5448.0,
+       "1": 3608.0,
+       "2": 4272.0,
+       "3": 1832.0,
+       "4": 536.0,
+       "5": 2496.0
+      },
+      "target_history": {
+       "1": 180.0,
+       "3": 260.0,
+       "5": 90.0
+      },
+      "time": 233.850000000006
+     }
+    ],
+    "breaches_or_eliminations": [
+     {
+      "hunter_hp": 3327.28,
+      "kind": "door_break",
+      "room": 6,
+      "time": 165.000000000003
+     },
+     {
+      "hunter_hp": 3273.28,
+      "kind": "elimination",
+      "room": 6,
+      "time": 167.700000000003
+     }
+    ],
+    "contacts": [
+     {
+      "battle_roster": [
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 135.0,
+        "door_level": 1,
+        "gold": 6.72500000000008,
+        "hunter_open_score": 1719.38493844122,
+        "max_hp": 135.0,
+        "owner": 3,
+        "power": 0.0,
+        "profile": "economist",
+        "room": 1,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 283.519875504,
+        "door_level": 2,
+        "gold": 78.9487499999997,
+        "hunter_open_score": 554.435069817174,
+        "max_hp": 300.0,
+        "owner": 2,
+        "power": 0.0,
+        "profile": "engineer",
+        "room": 2,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 172.5,
+        "door_level": 1,
+        "gold": 35.1425000000001,
+        "hunter_open_score": 2885.7196552381,
+        "max_hp": 172.5,
+        "owner": 4,
+        "power": 0.0,
+        "profile": "gunner",
+        "room": 3,
+        "sleeping": true,
+        "trait": "fortified"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 270.0,
+        "door_level": 2,
+        "gold": 12.0500000000001,
+        "hunter_open_score": 1615.81741297992,
+        "max_hp": 270.0,
+        "owner": 0,
+        "power": 0.0,
+        "profile": "player",
+        "room": 4,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 300.0,
+        "door_level": 2,
+        "gold": 59.2837499999997,
+        "hunter_open_score": 2735.2313739881,
+        "max_hp": 300.0,
+        "owner": 1,
+        "power": 0.0,
+        "profile": "guard",
+        "room": 5,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 345.0,
+        "door_level": 2,
+        "gold": 77.9025000000003,
+        "hunter_open_score": 1723.73308297247,
+        "max_hp": 345.0,
+        "owner": 5,
+        "power": 0.0,
+        "profile": "balanced",
+        "room": 6,
+        "sleeping": true,
+        "trait": "fortified"
+       }
+      ],
+      "door_hp": 283.519875504,
+      "hunter_hp": 4487.0,
+      "room": 2,
+      "time": 64.3499999999996
+     },
+     {
+      "battle_roster": [
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ]
+        ],
+        "door_hp": 270.0,
+        "door_level": 2,
+        "gold": 11.5250000000006,
+        "hunter_open_score": 3028.67311349683,
+        "max_hp": 270.0,
+        "owner": 3,
+        "power": 4.312,
+        "profile": "economist",
+        "room": 1,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ]
+        ],
+        "door_hp": 118.626476101263,
+        "door_level": 2,
+        "gold": 22.7187499999994,
+        "hunter_open_score": 1316.16768942442,
+        "max_hp": 300.0,
+        "owner": 2,
+        "power": 21.1599999999999,
+        "profile": "engineer",
+        "room": 2,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ]
+        ],
+        "door_hp": 345.0,
+        "door_level": 2,
+        "gold": 19.9625000000005,
+        "hunter_open_score": 2169.03944650465,
+        "max_hp": 345.0,
+        "owner": 4,
+        "power": 4.95999999999999,
+        "profile": "gunner",
+        "room": 3,
+        "sleeping": true,
+        "trait": "fortified"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "generator",
+          1
+         ]
+        ],
+        "door_hp": 540.0,
+        "door_level": 3,
+        "gold": 31.0500000000009,
+        "hunter_open_score": 1633.57667090815,
+        "max_hp": 540.0,
+        "owner": 0,
+        "power": 3.24,
+        "profile": "player",
+        "room": 4,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 300.0,
+        "door_level": 2,
+        "gold": 21.4887499999991,
+        "hunter_open_score": 2445.77687326246,
+        "max_hp": 300.0,
+        "owner": 1,
+        "power": 6.08199999999999,
+        "profile": "guard",
+        "room": 5,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 322.314162450432,
+        "door_level": 2,
+        "gold": 32.7225000000006,
+        "hunter_open_score": 659.018293407611,
+        "max_hp": 345.0,
+        "owner": 5,
+        "power": 9.87249999999996,
+        "profile": "balanced",
+        "room": 6,
+        "sleeping": true,
+        "trait": "fortified"
+       }
+      ],
+      "door_hp": 322.314162450432,
+      "hunter_hp": 3992.64,
+      "room": 6,
+      "time": 130.950000000002
+     },
+     {
+      "battle_roster": [
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 270.0,
+        "door_level": 2,
+        "gold": 25.925000000001,
+        "hunter_open_score": 3096.97897653173,
+        "max_hp": 270.0,
+        "owner": 3,
+        "power": 14.1680000000001,
+        "profile": "economist",
+        "room": 1,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 300.0,
+        "door_level": 2,
+        "gold": 59.5287499999989,
+        "hunter_open_score": 1705.59360055517,
+        "max_hp": 300.0,
+        "owner": 2,
+        "power": 12.9695,
+        "profile": "engineer",
+        "room": 2,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 345.0,
+        "door_level": 2,
+        "gold": 19.4225000000007,
+        "hunter_open_score": 2502.66769723486,
+        "max_hp": 345.0,
+        "owner": 4,
+        "power": 8.83999999999994,
+        "profile": "gunner",
+        "room": 3,
+        "sleeping": true,
+        "trait": "fortified"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 489.135203675646,
+        "door_level": 3,
+        "gold": 154.850000000002,
+        "hunter_open_score": 1001.44336661616,
+        "max_hp": 540.0,
+        "owner": 0,
+        "power": 5.09600000000002,
+        "profile": "player",
+        "room": 4,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "heavy",
+          1
+         ]
+        ],
+        "door_hp": 600.0,
+        "door_level": 3,
+        "gold": 81.1087499999982,
+        "hunter_open_score": 2473.22216796875,
+        "max_hp": 600.0,
+        "owner": 1,
+        "power": 0.9739999999999,
+        "profile": "guard",
+        "room": 5,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": false,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 0.0,
+        "door_level": 2,
+        "gold": 19.9475000000008,
+        "hunter_open_score": 657.259902057457,
+        "max_hp": 345.0,
+        "owner": 5,
+        "power": 20.005,
+        "profile": "balanced",
+        "room": 6,
+        "sleeping": false,
+        "trait": "fortified"
+       }
+      ],
+      "door_hp": 489.135203675646,
+      "hunter_hp": 3062.35678222663,
+      "room": 4,
+      "time": 180.750000000004
+     },
+     {
+      "battle_roster": [
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "antenna",
+          1
+         ],
+         [
+          "enhancer",
+          1
+         ]
+        ],
+        "door_hp": 540.0,
+        "door_level": 3,
+        "gold": 37.6250000000019,
+        "hunter_open_score": 3585.34008789062,
+        "max_hp": 540.0,
+        "owner": 3,
+        "power": 20.9639999999998,
+        "profile": "economist",
+        "room": 1,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "enhancer",
+          1
+         ],
+         [
+          "heavy",
+          1
+         ]
+        ],
+        "door_hp": 600.0,
+        "door_level": 3,
+        "gold": 163.538749999998,
+        "hunter_open_score": 2247.95471191406,
+        "max_hp": 600.0,
+        "owner": 2,
+        "power": 11.4414999999998,
+        "profile": "engineer",
+        "room": 2,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "antenna",
+          1
+         ]
+        ],
+        "door_hp": 690.0,
+        "door_level": 3,
+        "gold": 80.7225000000014,
+        "hunter_open_score": 3126.02880859375,
+        "max_hp": 690.0,
+        "owner": 4,
+        "power": 31.42,
+        "profile": "gunner",
+        "room": 3,
+        "sleeping": true,
+        "trait": "fortified"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "turret",
+          3
+         ],
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 464.726355905328,
+        "door_level": 3,
+        "gold": 166.970000000004,
+        "hunter_open_score": 957.50744062959,
+        "max_hp": 540.0,
+        "owner": 0,
+        "power": 8.08200000000004,
+        "profile": "player",
+        "room": 4,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 4,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "heavy",
+          1
+         ]
+        ],
+        "door_hp": 1100.0,
+        "door_level": 4,
+        "gold": 280.048749999997,
+        "hunter_open_score": 3373.22216796875,
+        "max_hp": 1100.0,
+        "owner": 1,
+        "power": 17.4459999999998,
+        "profile": "guard",
+        "room": 5,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": false,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 0.0,
+        "door_level": 2,
+        "gold": 19.9475000000008,
+        "hunter_open_score": 665.806068004948,
+        "max_hp": 345.0,
+        "owner": 5,
+        "power": 20.005,
+        "profile": "balanced",
+        "room": 6,
+        "sleeping": false,
+        "trait": "fortified"
+       }
+      ],
+      "door_hp": 464.726355905328,
+      "hunter_hp": 1285.26560000001,
+      "room": 4,
+      "time": 257.550000000007
+     }
+    ],
+    "first_strike_by_room": [
+     -1.0,
+     62.9999999999996,
+     -1.0,
+     179.850000000004,
+     -1.0,
+     129.900000000002
+    ],
+    "opening_roster": [
+     {
+      "alive": true,
+      "bed_level": 1,
+      "buildings": [],
+      "door_hp": 135.0,
+      "door_level": 1,
+      "gold": 25.0,
+      "hunter_open_score": 1102.73016357422,
+      "max_hp": 135.0,
+      "owner": -1,
+      "power": 0.0,
+      "profile": "player",
+      "room": 1,
+      "sleeping": false,
+      "trait": "power"
+     },
+     {
+      "alive": true,
+      "bed_level": 2,
+      "buildings": [
+       [
+        "turret",
+        1
+       ]
+      ],
+      "door_hp": 150.0,
+      "door_level": 1,
+      "gold": 36.8412499999999,
+      "hunter_open_score": 1155.81292724609,
+      "max_hp": 150.0,
+      "owner": 2,
+      "power": 0.0,
+      "profile": "engineer",
+      "room": 2,
+      "sleeping": true,
+      "trait": "economy"
+     },
+     {
+      "alive": true,
+      "bed_level": 1,
+      "buildings": [
+       [
+        "turret",
+        1
+       ]
+      ],
+      "door_hp": 172.5,
+      "door_level": 1,
+      "gold": 17.96,
+      "hunter_open_score": 3492.87890625,
+      "max_hp": 172.5,
+      "owner": 4,
+      "power": 0.0,
+      "profile": "gunner",
+      "room": 3,
+      "sleeping": true,
+      "trait": "fortified"
+     },
+     {
+      "alive": true,
+      "bed_level": 1,
+      "buildings": [
+       [
+        "turret",
+        1
+       ],
+       [
+        "turret",
+        1
+       ],
+       [
+        "turret",
+        1
+       ]
+      ],
+      "door_hp": 135.0,
+      "door_level": 1,
+      "gold": 20.575,
+      "hunter_open_score": 2204.19116210938,
+      "max_hp": 135.0,
+      "owner": 0,
+      "power": 0.0,
+      "profile": "player",
+      "room": 4,
+      "sleeping": true,
+      "trait": "power"
+     },
+     {
+      "alive": true,
+      "bed_level": 2,
+      "buildings": [
+       [
+        "turret",
+        1
+       ]
+      ],
+      "door_hp": 150.0,
+      "door_level": 1,
+      "gold": 17.1762499999999,
+      "hunter_open_score": 3297.88305664062,
+      "max_hp": 150.0,
+      "owner": 1,
+      "power": 0.0,
+      "profile": "guard",
+      "room": 5,
+      "sleeping": true,
+      "trait": "economy"
+     },
+     {
+      "alive": true,
+      "bed_level": 2,
+      "buildings": [
+       [
+        "turret",
+        1
+       ]
+      ],
+      "door_hp": 345.0,
+      "door_level": 2,
+      "gold": 17.5575000000001,
+      "hunter_open_score": 2413.609375,
+      "max_hp": 345.0,
+      "owner": 5,
+      "power": 0.0,
+      "profile": "balanced",
+      "room": 6,
+      "sleeping": true,
+      "trait": "fortified"
+     }
+    ],
+    "paid_player_actions": [
+     {
+      "damage": 0.0,
+      "frame_gold": 5.225,
+      "frame_power": 0.0,
+      "id": 2,
+      "kind": "turret",
+      "position": "(2472.0, 1496.0)",
+      "room": 3,
+      "spent_gold": 20.0,
+      "spent_power": 0.0,
+      "tile": 16,
+      "time": 4.95,
+      "transformed": false,
+      "type": "build"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 1.42500000000002,
+      "frame_power": 0.0,
+      "id": 3,
+      "kind": "turret",
+      "position": "(2472.0, 1400.0)",
+      "room": 3,
+      "spent_gold": 20.0,
+      "spent_power": 0.0,
+      "tile": 17,
+      "time": 15.75,
+      "transformed": false,
+      "type": "build"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 0.325000000000026,
+      "frame_power": 0.0,
+      "id": 7,
+      "kind": "turret",
+      "position": "(2440.0, 1400.0)",
+      "room": 3,
+      "spent_gold": 20.0,
+      "spent_power": 0.0,
+      "tile": 18,
+      "time": 28.3499999999999,
+      "transformed": false,
+      "type": "build"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 1.60000000000011,
+      "frame_power": 0.0,
+      "id": 16,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 30.0,
+      "spent_power": 0.0,
+      "time": 49.0499999999997,
+      "transformed": false,
+      "type": "bed_upgrade"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 1.7000000000001,
+      "frame_power": 0.0,
+      "id": 18,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 35.0,
+      "spent_power": 0.0,
+      "time": 60.7499999999996,
+      "transformed": false,
+      "type": "door_upgrade"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 3.55000000000042,
+      "frame_power": 0.0,
+      "id": 61,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 85.0,
+      "spent_power": 0.0,
+      "time": 89.5500000000005,
+      "transformed": false,
+      "type": "bed_upgrade"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 6.15000000000061,
+      "frame_power": 0.0,
+      "id": 87,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 100.0,
+      "spent_power": 0.0,
+      "time": 106.650000000001,
+      "transformed": false,
+      "type": "door_upgrade"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 4.95000000000092,
+      "frame_power": 0.108,
+      "id": 106,
+      "kind": "generator",
+      "position": "(2120.0, 1632.0)",
+      "room": 3,
+      "spent_gold": 120.0,
+      "spent_power": 0.0,
+      "tile": 19,
+      "time": 126.450000000002,
+      "transformed": false,
+      "type": "build"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 35.1500000000009,
+      "frame_power": 0.531999999999992,
+      "id": 122,
+      "kind": "turret",
+      "level": 2,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "specialization": "",
+      "spent_gold": 40.0,
+      "spent_power": 8.0,
+      "tile": 16,
+      "time": 138.150000000002,
+      "transformed": false,
+      "type": "building_upgrade"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 67.3500000000013,
+      "frame_power": 0.196000000000003,
+      "id": 152,
+      "kind": "repair",
+      "position": "(2160.0, 1640.0)",
+      "room": 3,
+      "spent_gold": 65.0,
+      "spent_power": 12.0,
+      "tile": 20,
+      "time": 154.350000000003,
+      "transformed": false,
+      "type": "build"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 116.150000000002,
+      "frame_power": 0.452000000000024,
+      "id": 178,
+      "kind": "turret",
+      "level": 3,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "specialization": "",
+      "spent_gold": 70.0,
+      "spent_power": 14.0,
+      "tile": 16,
+      "time": 174.150000000004,
+      "transformed": false,
+      "type": "building_upgrade"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 164.750000000002,
+      "frame_power": 0.28400000000002,
+      "id": 187,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "time": 182.250000000004,
+      "transformed": false,
+      "type": "emergency_ward"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 154.150000000002,
+      "frame_power": 0.93200000000002,
+      "id": 190,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 183.150000000004,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0000000000001,
+      "damage": 0.0,
+      "frame_gold": 143.550000000002,
+      "frame_power": 1.58000000000002,
+      "id": 193,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 184.050000000004,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 138.350000000002,
+      "frame_power": 2.87600000000002,
+      "id": 197,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 185.850000000004,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 127.750000000003,
+      "frame_power": 3.52400000000002,
+      "id": 199,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 186.750000000004,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 122.550000000003,
+      "frame_power": 4.82000000000002,
+      "id": 203,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 188.550000000004,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 117.350000000003,
+      "frame_power": 6.11600000000002,
+      "id": 205,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 190.350000000004,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 106.750000000003,
+      "frame_power": 6.76400000000001,
+      "id": 207,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 191.250000000004,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 82.9500000000028,
+      "frame_power": 0.393000000000011,
+      "id": 211,
+      "kind": "turret",
+      "level": 2,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "specialization": "",
+      "spent_gold": 40.0,
+      "spent_power": 8.0,
+      "tile": 17,
+      "time": 193.950000000004,
+      "transformed": false,
+      "type": "building_upgrade"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 71.2700000000028,
+      "frame_power": 1.04100000000001,
+      "id": 216,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 194.850000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 59.5900000000028,
+      "frame_power": 1.68900000000001,
+      "id": 218,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 195.750000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 47.9100000000028,
+      "frame_power": 2.33700000000001,
+      "id": 220,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 196.650000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 41.2700000000028,
+      "frame_power": 3.63300000000001,
+      "id": 223,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 198.450000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 36.0700000000028,
+      "frame_power": 4.92900000000001,
+      "id": 228,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 200.250000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 25.4700000000027,
+      "frame_power": 5.57700000000001,
+      "id": 230,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 201.150000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 14.8700000000027,
+      "frame_power": 6.22500000000001,
+      "id": 233,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 202.050000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 31.2700000000029,
+      "frame_power": 0.650500000000034,
+      "id": 240,
+      "kind": "turret",
+      "level": 3,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "specialization": "",
+      "spent_gold": 70.0,
+      "spent_power": 14.0,
+      "tile": 17,
+      "time": 216.450000000005,
+      "transformed": false,
+      "type": "building_upgrade"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 56.070000000003,
+      "frame_power": 0.426500000000025,
+      "id": 247,
+      "kind": "turret",
+      "level": 2,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "specialization": "",
+      "spent_gold": 40.0,
+      "spent_power": 8.0,
+      "tile": 18,
+      "time": 227.250000000006,
+      "transformed": false,
+      "type": "building_upgrade"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 104.870000000004,
+      "frame_power": 0.682500000000047,
+      "id": 254,
+      "kind": "turret",
+      "level": 3,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "specialization": "",
+      "spent_gold": 70.0,
+      "spent_power": 14.0,
+      "tile": 18,
+      "time": 247.050000000006,
+      "transformed": false,
+      "type": "building_upgrade"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 169.670000000004,
+      "frame_power": 2.30100000000004,
+      "id": 262,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "time": 257.850000000007,
+      "transformed": false,
+      "type": "emergency_ward"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 159.070000000004,
+      "frame_power": 2.94900000000004,
+      "id": 263,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 258.750000000006,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 161.430000000004,
+      "frame_power": 5.54100000000003,
+      "id": 274,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 262.350000000006,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 149.750000000004,
+      "frame_power": 6.18900000000003,
+      "id": 276,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 263.250000000006,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 138.790000000004,
+      "frame_power": 6.83700000000003,
+      "id": 279,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 264.150000000006,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 128.190000000004,
+      "frame_power": 7.48500000000003,
+      "id": 282,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 265.050000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 117.590000000004,
+      "frame_power": 8.08050000000003,
+      "id": 284,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 265.950000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 106.990000000004,
+      "frame_power": 8.41350000000003,
+      "id": 286,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 266.850000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 96.3900000000043,
+      "frame_power": 8.74650000000003,
+      "id": 288,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 267.750000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 85.7900000000043,
+      "frame_power": 9.07950000000003,
+      "id": 290,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 268.650000000005,
+      "transformed": false,
+      "type": "repair"
+     }
+    ],
+    "pre_contact_distances": [
+     0.0,
+     1589.05198478699,
+     0.0,
+     2352.17433738708,
+     1038.59659194946,
+     1467.0491104126
+    ],
+    "room_footprints": {
+     "generator": [
+      32.0,
+      48.0
+     ],
+     "heavy": [
+      48.0,
+      32.0
+     ],
+     "repair": [
+      48.0,
+      32.0
+     ],
+     "turret": [
+      32.0,
+      32.0
+     ],
+     "version": 1
+    },
+    "travel_per_target": [
+     0.0,
+     1594.0579662323,
+     0.0,
+     2367.8134894371,
+     1823.66543960571,
+     2058.91287994385
+    ]
+   },
+   "doors": [
+    {
+     "alive": true,
+     "door_damage": 0.0,
+     "hunter_damage": 0.0,
+     "index": 1,
+     "owner": 3,
+     "seconds_targeted": 0.0,
+     "seconds_under_attack": 0.0,
+     "shots": 0,
+     "strikes": 0
+    },
+    {
+     "alive": true,
+     "door_damage": 811.373523898737,
+     "hunter_damage": 540.0,
+     "index": 2,
+     "owner": 2,
+     "seconds_targeted": 68.5499999999997,
+     "seconds_under_attack": 46.1999999999997,
+     "shots": 60,
+     "strikes": 43
+    },
+    {
+     "alive": true,
+     "door_damage": 0.0,
+     "hunter_damage": 0.0,
+     "index": 3,
+     "owner": 4,
+     "seconds_targeted": 0.0,
+     "seconds_under_attack": 0.0,
+     "shots": 0,
+     "strikes": 0
+    },
+    {
+     "alive": true,
+     "door_damage": 1763.46520981859,
+     "hunter_damage": 3589.26560000001,
+     "index": 4,
+     "owner": 0,
+     "seconds_targeted": 65.3999999999996,
+     "seconds_under_attack": 33.4499999999999,
+     "shots": 174,
+     "strikes": 33
+    },
+    {
+     "alive": true,
+     "door_damage": 0.0,
+     "hunter_damage": 712.0,
+     "index": 5,
+     "owner": 1,
+     "seconds_targeted": 31.1999999999999,
+     "seconds_under_attack": 0.0,
+     "shots": 26,
+     "strikes": 0
+    },
+    {
+     "alive": false,
+     "door_damage": 1150.7,
+     "hunter_damage": 918.0,
+     "index": 6,
+     "owner": 5,
+     "seconds_targeted": 62.0999999999996,
+     "seconds_under_attack": 36.7499999999998,
+     "shots": 51,
+     "strikes": 34
+    }
+   ],
+   "event_counts": {
+    "approach": 5,
+    "arcane_impact": 10,
+    "archetype_warning": 4,
+    "bed_upgrade": 13,
+    "build": 28,
+    "building_upgrade": 15,
+    "door_break": 1,
+    "door_damage": 110,
+    "door_upgrade": 12,
+    "elimination": 1,
+    "emergency_ward": 2,
+    "emergency_ward_hit": 6,
+    "encounter": 4,
+    "hunter_ability": 10,
+    "hunter_ability_warning": 12,
+    "hunter_evolved": 1,
+    "hunter_reassess": 2,
+    "hunter_recovering": 1,
+    "hunter_recovery_ended": 1,
+    "hunter_retreat": 1,
+    "magic_shield": 3,
+    "nightmare_impact": 2,
+    "nightmare_level": 2,
+    "nightmare_release": 2,
+    "nightmare_warning": 2,
+    "repair": 40,
+    "survivor_attack": 1,
+    "survivor_fear": 1
+   },
+   "events": [
+    {
+     "room": 2,
+     "time": 42.15,
+     "type": "approach"
+    },
+    {
+     "room": 2,
+     "time": 64.35,
+     "type": "encounter"
+    },
+    {
+     "next_room": 5,
+     "room": 2,
+     "time": 110.55,
+     "type": "hunter_reassess"
+    },
+    {
+     "room": 6,
+     "time": 110.7,
+     "type": "approach"
+    },
+    {
+     "level": 3,
+     "room": 6,
+     "time": 117.0,
+     "type": "observed_evolution_level"
+    },
+    {
+     "level": 3,
+     "room": 6,
+     "time": 117.0,
+     "type": "nightmare_level"
+    },
+    {
+     "room": 6,
+     "time": 130.95,
+     "type": "encounter"
+    },
+    {
+     "room": 6,
+     "time": 165.0,
+     "type": "door_break"
+    },
+    {
+     "room": 6,
+     "time": 167.7,
+     "type": "elimination"
+    },
+    {
+     "room": 6,
+     "source": "Hunter",
+     "time": 167.7,
+     "type": "hunter_evolved"
+    },
+    {
+     "room": 4,
+     "time": 172.8,
+     "type": "approach"
+    },
+    {
+     "room": 4,
+     "time": 180.75,
+     "type": "encounter"
+    },
+    {
+     "level": 4,
+     "room": 4,
+     "time": 192.0,
+     "type": "observed_evolution_level"
+    },
+    {
+     "level": 4,
+     "room": 4,
+     "time": 192.0,
+     "type": "nightmare_level"
+    },
+    {
+     "next_room": 4,
+     "room": 4,
+     "time": 202.5,
+     "type": "hunter_reassess"
+    },
+    {
+     "room": 5,
+     "time": 202.65,
+     "type": "approach"
+    },
+    {
+     "budget": 0.0,
+     "hall": "south",
+     "healed": 0.0,
+     "reason": "",
+     "room": 5,
+     "time": 215.7,
+     "type": "hunter_retreat"
+    },
+    {
+     "budget": 864.705600000001,
+     "hall": "south",
+     "healed": 0.0,
+     "reason": "",
+     "room": 5,
+     "time": 225.6,
+     "type": "hunter_recovering"
+    },
+    {
+     "budget": 864.705600000001,
+     "hall": "south",
+     "healed": 864.705600000001,
+     "reason": "completed",
+     "room": 5,
+     "time": 233.7,
+     "type": "hunter_recovery_ended"
+    },
+    {
+     "room": 4,
+     "time": 233.85,
+     "type": "approach"
+    },
+    {
+     "room": 4,
+     "time": 257.55,
+     "type": "encounter"
+    }
+   ],
+   "fixture": {
+    "archetype": "witch",
+    "difficulty": "standard",
+    "family": "branching",
+    "id": "standard-branching-timed_ward",
+    "level": 33.0,
+    "policy": "timed_ward",
+    "room_preference": 1.0,
+    "seed_base": 116431.0
+   },
+   "hall_attempts": 1,
+   "hall_heal_observed": 864.705600000001,
+   "hall_visits": 1,
+   "hunter_attacks": 98,
+   "hunter_hp": 0.0,
+   "hunter_peak_max_hp": 4894.56,
+   "hunter_retargets": 2,
+   "initial_boss_policy": {
+    "deadline": 218.0,
+    "enabled": false,
+    "first_stage": 3,
+    "hp_fraction": 0.55,
+    "opening": 8.0,
+    "recovery": 1.05
+   },
+   "invalid": [],
+   "items_used": [],
+   "ledger": {
+    "loss_e": 0.0,
+    "loss_g": 0.0,
+    "other_e": 0.0,
+    "other_g": 0.0,
+    "production_e": 102.816000000001,
+    "production_g": 1256.49,
+    "refund_e": 0.0,
+    "refund_g": 0.0,
+    "repair_g": 368.0,
+    "spent_e": 93.57,
+    "spent_g": 1193.0
+   },
+   "map": "haunted_hospital",
+   "map_hash": "dddab728b0a79108ea6bbfe67cdb929ef0bc78ddb98c53ea2076549df09df52e",
+   "max_evolution": 4,
+   "max_ledger_error": 0.0000152587890625,
+   "movement_diagnostics": {
+    "blocked_steps": 0,
+    "over_speed_steps": 0
+   },
+   "navigation_recoveries": 0,
+   "opening_door_hp": 135.0,
+   "opening_gold": 25.0,
+   "opening_hunter_max_hp": 4532.0,
+   "opening_power": 0.0,
+   "opening_race_npcs": 5,
+   "outcome": "victory",
+   "peak_buildings": 5,
+   "player_damage": 3589.26560000001,
+   "player_door_damage": 1763.46520981859,
+   "player_repairs": 23,
+   "player_shots": 174,
+   "preparation": 42.0,
+   "reaper": false,
+   "room": 4,
+   "seconds": 269.250000000005,
+   "seconds_to_bed": 4.95,
+   "seed": 28520660,
+   "settlement": {
+    "checkpoint": 30,
+    "highest": 33,
+    "position": 34,
+    "rm_cash": 57,
+    "rm_cash_award": 40,
+    "saved": true
+   },
+   "spawn": [
+    2576.0,
+    912.0
+   ],
+   "steps": 1762,
+   "terminal_recorded": true,
+   "title": "The Hollow Oath",
+   "wallet": [
+    88.4900000000044,
+    9.24600000000003
+   ]
+  },
+  {
+   "chapter": 7,
+   "contribution": {
+    "control_hits": 0,
+    "defense_gold": 958.0,
+    "defense_power": 90.0,
+    "door_blocked": 120.0,
+    "exposure": 34.3499999999999,
+    "infrastructure_gold": 235.0,
+    "infrastructure_power": 0.0,
+    "repair_hp": 1610.0,
+    "ward_blocked": 120.0
+   },
+   "directional_observations": {
+    "approaches": [
+     {
+      "decision_count": 1,
+      "hunter_hp": 4532.0,
+      "hunter_position": [
+       1275.39282226562,
+       0.0
+      ],
+      "room": 2,
+      "roster": [
+       {
+        "alive": true,
+        "bed_level": 1,
+        "buildings": [],
+        "door_hp": 135.0,
+        "door_level": 1,
+        "gold": 25.0,
+        "hunter_open_score": 1114.07421875,
+        "max_hp": 135.0,
+        "owner": -1,
+        "power": 0.0,
+        "profile": "player",
+        "room": 1,
+        "sleeping": false,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 300.0,
+        "door_level": 2,
+        "gold": 2.35874999999986,
+        "hunter_open_score": 1419.8671875,
+        "max_hp": 300.0,
+        "owner": 2,
+        "power": 0.0,
+        "profile": "engineer",
+        "room": 2,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 1,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 172.5,
+        "door_level": 1,
+        "gold": 18.1625,
+        "hunter_open_score": 3482.10205078125,
+        "max_hp": 172.5,
+        "owner": 4,
+        "power": 0.0,
+        "profile": "gunner",
+        "room": 3,
+        "sleeping": true,
+        "trait": "fortified"
+       },
+       {
+        "alive": true,
+        "bed_level": 1,
+        "buildings": [
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 135.0,
+        "door_level": 1,
+        "gold": 20.8,
+        "hunter_open_score": 2196.82836914062,
+        "max_hp": 135.0,
+        "owner": 0,
+        "power": 0.0,
+        "profile": "player",
+        "room": 4,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 150.0,
+        "door_level": 1,
+        "gold": 17.6937499999999,
+        "hunter_open_score": 3293.23461914062,
+        "max_hp": 150.0,
+        "owner": 1,
+        "power": 0.0,
+        "profile": "guard",
+        "room": 5,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 345.0,
+        "door_level": 2,
+        "gold": 17.9625000000001,
+        "hunter_open_score": 2403.84985351562,
+        "max_hp": 345.0,
+        "owner": 5,
+        "power": 0.0,
+        "profile": "balanced",
+        "room": 6,
+        "sleeping": true,
+        "trait": "fortified"
+       }
+      ],
+      "route_costs": {
+       "0": 912.0,
+       "1": 1600.0,
+       "2": 4296.0,
+       "3": 2816.0,
+       "4": 4112.0,
+       "5": 2408.0
+      },
+      "target_history": {
+
+      },
+      "time": 42.1499999999998
+     },
+     {
+      "decision_count": 4,
+      "hunter_hp": 4118.64,
+      "hunter_position": [
+       1720.0,
+       700.3935546875
+      ],
+      "room": 6,
+      "roster": [
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 270.0,
+        "door_level": 2,
+        "gold": 110.775000000001,
+        "hunter_open_score": 1958.37666302342,
+        "max_hp": 270.0,
+        "owner": 3,
+        "power": 0.0,
+        "profile": "economist",
+        "room": 1,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ],
+         [
+          "generator",
+          1
+         ]
+        ],
+        "door_hp": 48.6264761012632,
+        "door_level": 2,
+        "gold": 6.85624999999951,
+        "hunter_open_score": 144.224388365071,
+        "max_hp": 300.0,
+        "owner": 2,
+        "power": 18.225,
+        "profile": "engineer",
+        "room": 2,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ],
+         [
+          "generator",
+          1
+         ]
+        ],
+        "door_hp": 345.0,
+        "door_level": 2,
+        "gold": 5.2875000000004,
+        "hunter_open_score": 3198.6537626328,
+        "max_hp": 345.0,
+        "owner": 4,
+        "power": 0.81,
+        "profile": "gunner",
+        "room": 3,
+        "sleeping": true,
+        "trait": "fortified"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 540.0,
+        "door_level": 3,
+        "gold": 29.5500000000006,
+        "hunter_open_score": 2112.81040899214,
+        "max_hp": 540.0,
+        "owner": 0,
+        "power": 0.0,
+        "profile": "player",
+        "room": 4,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ]
+        ],
+        "door_hp": 300.0,
+        "door_level": 2,
+        "gold": 59.1912499999993,
+        "hunter_open_score": 2773.22100056309,
+        "max_hp": 300.0,
+        "owner": 1,
+        "power": 7.14700000000003,
+        "profile": "guard",
+        "room": 5,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ]
+        ],
+        "door_hp": 345.0,
+        "door_level": 2,
+        "gold": 43.0475000000005,
+        "hunter_open_score": 1753.08013142247,
+        "max_hp": 345.0,
+        "owner": 5,
+        "power": 10.09,
+        "profile": "balanced",
+        "room": 6,
+        "sleeping": true,
+        "trait": "fortified"
+       }
+      ],
+      "route_costs": {
+       "0": 2512.0,
+       "1": 0.0,
+       "2": 3368.0,
+       "3": 1888.0,
+       "4": 3184.0,
+       "5": 1480.0
+      },
+      "target_history": {
+       "1": 180.0
+      },
+      "time": 110.700000000001
+     },
+     {
+      "decision_count": 6,
+      "hunter_hp": 3255.28,
+      "hunter_position": [
+       2574.77172851562,
+       923.756042480469
+      ],
+      "room": 4,
+      "roster": [
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 270.0,
+        "door_level": 2,
+        "gold": 2.07500000000104,
+        "hunter_open_score": 2904.16521286662,
+        "max_hp": 270.0,
+        "owner": 3,
+        "power": 8.44400000000011,
+        "profile": "economist",
+        "room": 1,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 295.026476101265,
+        "door_level": 2,
+        "gold": 32.101249999999,
+        "hunter_open_score": 1499.10477658718,
+        "max_hp": 300.0,
+        "owner": 2,
+        "power": 8.93899999999998,
+        "profile": "engineer",
+        "room": 2,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 345.0,
+        "door_level": 2,
+        "gold": 67.9575000000007,
+        "hunter_open_score": 2363.94329864566,
+        "max_hp": 345.0,
+        "owner": 4,
+        "power": 18.07,
+        "profile": "gunner",
+        "room": 3,
+        "sleeping": true,
+        "trait": "fortified"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 540.0,
+        "door_level": 3,
+        "gold": 177.150000000002,
+        "hunter_open_score": 1599.12896728516,
+        "max_hp": 540.0,
+        "owner": 0,
+        "power": 13.372,
+        "profile": "player",
+        "room": 4,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 600.0,
+        "door_level": 3,
+        "gold": 140.253749999998,
+        "hunter_open_score": 2994.85491013225,
+        "max_hp": 600.0,
+        "owner": 1,
+        "power": 14.6809999999999,
+        "profile": "guard",
+        "room": 5,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": false,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 0.0,
+        "door_level": 2,
+        "gold": 19.9475000000008,
+        "hunter_open_score": 268.287460632967,
+        "max_hp": 345.0,
+        "owner": 5,
+        "power": 20.005,
+        "profile": "balanced",
+        "room": 6,
+        "sleeping": false,
+        "trait": "fortified"
+       }
+      ],
+      "route_costs": {
+       "0": 3136.0,
+       "1": 1296.0,
+       "2": 2712.0,
+       "3": 592.0,
+       "4": 1888.0,
+       "5": 184.0
+      },
+      "target_history": {
+       "1": 180.0,
+       "5": 90.0
+      },
+      "time": 172.800000000004
+     },
+     {
+      "decision_count": 8,
+      "hunter_hp": 1860.92,
+      "hunter_position": [
+       2532.03369140625,
+       1448.0
+      ],
+      "room": 5,
+      "roster": [
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 270.0,
+        "door_level": 2,
+        "gold": 10.2250000000014,
+        "hunter_open_score": 3109.44873046875,
+        "max_hp": 270.0,
+        "owner": 3,
+        "power": 29.9360000000002,
+        "profile": "economist",
+        "room": 1,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 300.0,
+        "door_level": 2,
+        "gold": 98.7287499999986,
+        "hunter_open_score": 1716.97351074219,
+        "max_hp": 300.0,
+        "owner": 2,
+        "power": 24.7954999999999,
+        "profile": "engineer",
+        "room": 2,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 345.0,
+        "door_level": 2,
+        "gold": 78.5525000000009,
+        "hunter_open_score": 2493.34106445312,
+        "max_hp": 345.0,
+        "owner": 4,
+        "power": 21.9799999999999,
+        "profile": "gunner",
+        "room": 3,
+        "sleeping": true,
+        "trait": "fortified"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 492.459985831336,
+        "door_level": 3,
+        "gold": 73.5700000000029,
+        "hunter_open_score": 1019.46166590265,
+        "max_hp": 540.0,
+        "owner": 0,
+        "power": 11.504,
+        "profile": "player",
+        "room": 4,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "heavy",
+          1
+         ]
+        ],
+        "door_hp": 600.0,
+        "door_level": 3,
+        "gold": 232.218749999998,
+        "hunter_open_score": 2473.50085449219,
+        "max_hp": 600.0,
+        "owner": 1,
+        "power": 12.7999999999999,
+        "profile": "guard",
+        "room": 5,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": false,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 0.0,
+        "door_level": 2,
+        "gold": 19.9475000000008,
+        "hunter_open_score": 657.792202232028,
+        "max_hp": 345.0,
+        "owner": 5,
+        "power": 20.005,
+        "profile": "balanced",
+        "room": 6,
+        "sleeping": false,
+        "trait": "fortified"
+       }
+      ],
+      "route_costs": {
+       "0": 3728.0,
+       "1": 1888.0,
+       "2": 3304.0,
+       "3": 0.0,
+       "4": 1408.0,
+       "5": 776.0
+      },
+      "target_history": {
+       "1": 180.0,
+       "3": 260.0,
+       "5": 90.0
+      },
+      "time": 202.650000000005
+     },
+     {
+      "decision_count": 9,
+      "hunter_hp": 2144.6256,
+      "hunter_position": [
+       2576.0,
+       3211.96630859375
+      ],
+      "room": 4,
+      "roster": [
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "antenna",
+          1
+         ]
+        ],
+        "door_hp": 270.0,
+        "door_level": 2,
+        "gold": 95.4250000000017,
+        "hunter_open_score": 4392.12548828125,
+        "max_hp": 270.0,
+        "owner": 3,
+        "power": 28.9,
+        "profile": "economist",
+        "room": 1,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "enhancer",
+          1
+         ]
+        ],
+        "door_hp": 600.0,
+        "door_level": 3,
+        "gold": 114.008749999998,
+        "hunter_open_score": 3796.76049804688,
+        "max_hp": 600.0,
+        "owner": 2,
+        "power": 16.6434999999998,
+        "profile": "engineer",
+        "room": 2,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "antenna",
+          1
+         ]
+        ],
+        "door_hp": 345.0,
+        "door_level": 2,
+        "gold": 52.7425000000011,
+        "hunter_open_score": 3476.5498046875,
+        "max_hp": 345.0,
+        "owner": 4,
+        "power": 17.2,
+        "profile": "gunner",
+        "room": 3,
+        "sleeping": true,
+        "trait": "fortified"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "turret",
+          3
+         ],
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 540.0,
+        "door_level": 3,
+        "gold": 110.770000000004,
+        "hunter_open_score": 2834.77954101562,
+        "max_hp": 540.0,
+        "owner": 0,
+        "power": 1.55300000000004,
+        "profile": "player",
+        "room": 4,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 4,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "heavy",
+          1
+         ]
+        ],
+        "door_hp": 1100.0,
+        "door_level": 4,
+        "gold": 7.49874999999707,
+        "hunter_open_score": 2551.7551574707,
+        "max_hp": 1100.0,
+        "owner": 1,
+        "power": 4.64799999999984,
+        "profile": "guard",
+        "room": 5,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": false,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 0.0,
+        "door_level": 2,
+        "gold": 19.9475000000008,
+        "hunter_open_score": 2373.55245299945,
+        "max_hp": 345.0,
+        "owner": 5,
+        "power": 20.005,
+        "profile": "balanced",
+        "room": 6,
+        "sleeping": false,
+        "trait": "fortified"
+       }
+      ],
+      "route_costs": {
+       "0": 5448.0,
+       "1": 3608.0,
+       "2": 4272.0,
+       "3": 1832.0,
+       "4": 536.0,
+       "5": 2496.0
+      },
+      "target_history": {
+       "1": 180.0,
+       "3": 260.0,
+       "5": 90.0
+      },
+      "time": 233.850000000006
+     }
+    ],
+    "breaches_or_eliminations": [
+     {
+      "hunter_hp": 3327.28,
+      "kind": "door_break",
+      "room": 6,
+      "time": 165.000000000003
+     },
+     {
+      "hunter_hp": 3273.28,
+      "kind": "elimination",
+      "room": 6,
+      "time": 167.700000000003
+     }
+    ],
+    "contacts": [
+     {
+      "battle_roster": [
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 135.0,
+        "door_level": 1,
+        "gold": 6.72500000000008,
+        "hunter_open_score": 1719.38493844122,
+        "max_hp": 135.0,
+        "owner": 3,
+        "power": 0.0,
+        "profile": "economist",
+        "room": 1,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 283.519875504,
+        "door_level": 2,
+        "gold": 78.9487499999997,
+        "hunter_open_score": 554.435069817174,
+        "max_hp": 300.0,
+        "owner": 2,
+        "power": 0.0,
+        "profile": "engineer",
+        "room": 2,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 172.5,
+        "door_level": 1,
+        "gold": 35.1425000000001,
+        "hunter_open_score": 2885.7196552381,
+        "max_hp": 172.5,
+        "owner": 4,
+        "power": 0.0,
+        "profile": "gunner",
+        "room": 3,
+        "sleeping": true,
+        "trait": "fortified"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 270.0,
+        "door_level": 2,
+        "gold": 12.0500000000001,
+        "hunter_open_score": 1615.81741297992,
+        "max_hp": 270.0,
+        "owner": 0,
+        "power": 0.0,
+        "profile": "player",
+        "room": 4,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 300.0,
+        "door_level": 2,
+        "gold": 59.2837499999997,
+        "hunter_open_score": 2735.2313739881,
+        "max_hp": 300.0,
+        "owner": 1,
+        "power": 0.0,
+        "profile": "guard",
+        "room": 5,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          1
+         ]
+        ],
+        "door_hp": 345.0,
+        "door_level": 2,
+        "gold": 77.9025000000003,
+        "hunter_open_score": 1723.73308297247,
+        "max_hp": 345.0,
+        "owner": 5,
+        "power": 0.0,
+        "profile": "balanced",
+        "room": 6,
+        "sleeping": true,
+        "trait": "fortified"
+       }
+      ],
+      "door_hp": 283.519875504,
+      "hunter_hp": 4487.0,
+      "room": 2,
+      "time": 64.3499999999996
+     },
+     {
+      "battle_roster": [
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ]
+        ],
+        "door_hp": 270.0,
+        "door_level": 2,
+        "gold": 11.5250000000006,
+        "hunter_open_score": 3028.67311349683,
+        "max_hp": 270.0,
+        "owner": 3,
+        "power": 4.312,
+        "profile": "economist",
+        "room": 1,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ]
+        ],
+        "door_hp": 118.626476101263,
+        "door_level": 2,
+        "gold": 22.7187499999994,
+        "hunter_open_score": 1316.16768942442,
+        "max_hp": 300.0,
+        "owner": 2,
+        "power": 21.1599999999999,
+        "profile": "engineer",
+        "room": 2,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ]
+        ],
+        "door_hp": 345.0,
+        "door_level": 2,
+        "gold": 19.9625000000005,
+        "hunter_open_score": 2169.03944650465,
+        "max_hp": 345.0,
+        "owner": 4,
+        "power": 4.95999999999999,
+        "profile": "gunner",
+        "room": 3,
+        "sleeping": true,
+        "trait": "fortified"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "generator",
+          1
+         ]
+        ],
+        "door_hp": 540.0,
+        "door_level": 3,
+        "gold": 31.0500000000009,
+        "hunter_open_score": 1633.57667090815,
+        "max_hp": 540.0,
+        "owner": 0,
+        "power": 3.24,
+        "profile": "player",
+        "room": 4,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 300.0,
+        "door_level": 2,
+        "gold": 21.4887499999991,
+        "hunter_open_score": 2445.77687326246,
+        "max_hp": 300.0,
+        "owner": 1,
+        "power": 6.08199999999999,
+        "profile": "guard",
+        "room": 5,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 322.314162450432,
+        "door_level": 2,
+        "gold": 32.7225000000006,
+        "hunter_open_score": 659.018293407611,
+        "max_hp": 345.0,
+        "owner": 5,
+        "power": 9.87249999999996,
+        "profile": "balanced",
+        "room": 6,
+        "sleeping": true,
+        "trait": "fortified"
+       }
+      ],
+      "door_hp": 322.314162450432,
+      "hunter_hp": 3992.64,
+      "room": 6,
+      "time": 130.950000000002
+     },
+     {
+      "battle_roster": [
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 270.0,
+        "door_level": 2,
+        "gold": 25.925000000001,
+        "hunter_open_score": 3096.97897653173,
+        "max_hp": 270.0,
+        "owner": 3,
+        "power": 14.1680000000001,
+        "profile": "economist",
+        "room": 1,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 300.0,
+        "door_level": 2,
+        "gold": 59.5287499999989,
+        "hunter_open_score": 1705.59360055517,
+        "max_hp": 300.0,
+        "owner": 2,
+        "power": 12.9695,
+        "profile": "engineer",
+        "room": 2,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 345.0,
+        "door_level": 2,
+        "gold": 19.4225000000007,
+        "hunter_open_score": 2502.66769723486,
+        "max_hp": 345.0,
+        "owner": 4,
+        "power": 8.83999999999994,
+        "profile": "gunner",
+        "room": 3,
+        "sleeping": true,
+        "trait": "fortified"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "turret",
+          1
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 489.135203675646,
+        "door_level": 3,
+        "gold": 154.850000000002,
+        "hunter_open_score": 1001.44336661616,
+        "max_hp": 540.0,
+        "owner": 0,
+        "power": 5.09600000000002,
+        "profile": "player",
+        "room": 4,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "heavy",
+          1
+         ]
+        ],
+        "door_hp": 600.0,
+        "door_level": 3,
+        "gold": 81.1087499999982,
+        "hunter_open_score": 2473.22216796875,
+        "max_hp": 600.0,
+        "owner": 1,
+        "power": 0.9739999999999,
+        "profile": "guard",
+        "room": 5,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": false,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 0.0,
+        "door_level": 2,
+        "gold": 19.9475000000008,
+        "hunter_open_score": 657.259902057457,
+        "max_hp": 345.0,
+        "owner": 5,
+        "power": 20.005,
+        "profile": "balanced",
+        "room": 6,
+        "sleeping": false,
+        "trait": "fortified"
+       }
+      ],
+      "door_hp": 489.135203675646,
+      "hunter_hp": 3062.35678222663,
+      "room": 4,
+      "time": 180.750000000004
+     },
+     {
+      "battle_roster": [
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "antenna",
+          1
+         ],
+         [
+          "enhancer",
+          1
+         ]
+        ],
+        "door_hp": 540.0,
+        "door_level": 3,
+        "gold": 37.6250000000019,
+        "hunter_open_score": 3585.34008789062,
+        "max_hp": 540.0,
+        "owner": 3,
+        "power": 20.9639999999998,
+        "profile": "economist",
+        "room": 1,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "enhancer",
+          1
+         ],
+         [
+          "heavy",
+          1
+         ]
+        ],
+        "door_hp": 600.0,
+        "door_level": 3,
+        "gold": 163.538749999998,
+        "hunter_open_score": 2247.95471191406,
+        "max_hp": 600.0,
+        "owner": 2,
+        "power": 11.4414999999998,
+        "profile": "engineer",
+        "room": 2,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "antenna",
+          1
+         ]
+        ],
+        "door_hp": 690.0,
+        "door_level": 3,
+        "gold": 80.7225000000014,
+        "hunter_open_score": 3126.02880859375,
+        "max_hp": 690.0,
+        "owner": 4,
+        "power": 31.42,
+        "profile": "gunner",
+        "room": 3,
+        "sleeping": true,
+        "trait": "fortified"
+       },
+       {
+        "alive": true,
+        "bed_level": 3,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "turret",
+          3
+         ],
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 463.676355905328,
+        "door_level": 3,
+        "gold": 182.970000000005,
+        "hunter_open_score": 955.61744062959,
+        "max_hp": 540.0,
+        "owner": 0,
+        "power": 4.61700000000006,
+        "profile": "player",
+        "room": 4,
+        "sleeping": true,
+        "trait": "power"
+       },
+       {
+        "alive": true,
+        "bed_level": 4,
+        "buildings": [
+         [
+          "turret",
+          3
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ],
+         [
+          "heavy",
+          1
+         ]
+        ],
+        "door_hp": 1100.0,
+        "door_level": 4,
+        "gold": 280.048749999997,
+        "hunter_open_score": 3373.22216796875,
+        "max_hp": 1100.0,
+        "owner": 1,
+        "power": 17.4459999999998,
+        "profile": "guard",
+        "room": 5,
+        "sleeping": true,
+        "trait": "economy"
+       },
+       {
+        "alive": false,
+        "bed_level": 2,
+        "buildings": [
+         [
+          "turret",
+          2
+         ],
+         [
+          "generator",
+          1
+         ],
+         [
+          "repair",
+          1
+         ]
+        ],
+        "door_hp": 0.0,
+        "door_level": 2,
+        "gold": 19.9475000000008,
+        "hunter_open_score": 665.311804986413,
+        "max_hp": 345.0,
+        "owner": 5,
+        "power": 20.005,
+        "profile": "balanced",
+        "room": 6,
+        "sleeping": false,
+        "trait": "fortified"
+       }
+      ],
+      "door_hp": 463.676355905328,
+      "hunter_hp": 1393.2656,
+      "room": 4,
+      "time": 257.550000000007
+     }
+    ],
+    "first_strike_by_room": [
+     -1.0,
+     62.9999999999996,
+     -1.0,
+     179.850000000004,
+     -1.0,
+     129.900000000002
+    ],
+    "opening_roster": [
+     {
+      "alive": true,
+      "bed_level": 1,
+      "buildings": [],
+      "door_hp": 135.0,
+      "door_level": 1,
+      "gold": 25.0,
+      "hunter_open_score": 1102.73016357422,
+      "max_hp": 135.0,
+      "owner": -1,
+      "power": 0.0,
+      "profile": "player",
+      "room": 1,
+      "sleeping": false,
+      "trait": "power"
+     },
+     {
+      "alive": true,
+      "bed_level": 2,
+      "buildings": [
+       [
+        "turret",
+        1
+       ]
+      ],
+      "door_hp": 150.0,
+      "door_level": 1,
+      "gold": 36.8412499999999,
+      "hunter_open_score": 1155.81292724609,
+      "max_hp": 150.0,
+      "owner": 2,
+      "power": 0.0,
+      "profile": "engineer",
+      "room": 2,
+      "sleeping": true,
+      "trait": "economy"
+     },
+     {
+      "alive": true,
+      "bed_level": 1,
+      "buildings": [
+       [
+        "turret",
+        1
+       ]
+      ],
+      "door_hp": 172.5,
+      "door_level": 1,
+      "gold": 17.96,
+      "hunter_open_score": 3492.87890625,
+      "max_hp": 172.5,
+      "owner": 4,
+      "power": 0.0,
+      "profile": "gunner",
+      "room": 3,
+      "sleeping": true,
+      "trait": "fortified"
+     },
+     {
+      "alive": true,
+      "bed_level": 1,
+      "buildings": [
+       [
+        "turret",
+        1
+       ],
+       [
+        "turret",
+        1
+       ],
+       [
+        "turret",
+        1
+       ]
+      ],
+      "door_hp": 135.0,
+      "door_level": 1,
+      "gold": 20.575,
+      "hunter_open_score": 2204.19116210938,
+      "max_hp": 135.0,
+      "owner": 0,
+      "power": 0.0,
+      "profile": "player",
+      "room": 4,
+      "sleeping": true,
+      "trait": "power"
+     },
+     {
+      "alive": true,
+      "bed_level": 2,
+      "buildings": [
+       [
+        "turret",
+        1
+       ]
+      ],
+      "door_hp": 150.0,
+      "door_level": 1,
+      "gold": 17.1762499999999,
+      "hunter_open_score": 3297.88305664062,
+      "max_hp": 150.0,
+      "owner": 1,
+      "power": 0.0,
+      "profile": "guard",
+      "room": 5,
+      "sleeping": true,
+      "trait": "economy"
+     },
+     {
+      "alive": true,
+      "bed_level": 2,
+      "buildings": [
+       [
+        "turret",
+        1
+       ]
+      ],
+      "door_hp": 345.0,
+      "door_level": 2,
+      "gold": 17.5575000000001,
+      "hunter_open_score": 2413.609375,
+      "max_hp": 345.0,
+      "owner": 5,
+      "power": 0.0,
+      "profile": "balanced",
+      "room": 6,
+      "sleeping": true,
+      "trait": "fortified"
+     }
+    ],
+    "paid_player_actions": [
+     {
+      "damage": 0.0,
+      "frame_gold": 5.225,
+      "frame_power": 0.0,
+      "id": 2,
+      "kind": "turret",
+      "position": "(2472.0, 1496.0)",
+      "room": 3,
+      "spent_gold": 20.0,
+      "spent_power": 0.0,
+      "tile": 16,
+      "time": 4.95,
+      "transformed": false,
+      "type": "build"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 1.42500000000002,
+      "frame_power": 0.0,
+      "id": 3,
+      "kind": "turret",
+      "position": "(2472.0, 1400.0)",
+      "room": 3,
+      "spent_gold": 20.0,
+      "spent_power": 0.0,
+      "tile": 17,
+      "time": 15.75,
+      "transformed": false,
+      "type": "build"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 0.325000000000026,
+      "frame_power": 0.0,
+      "id": 7,
+      "kind": "turret",
+      "position": "(2440.0, 1400.0)",
+      "room": 3,
+      "spent_gold": 20.0,
+      "spent_power": 0.0,
+      "tile": 18,
+      "time": 28.3499999999999,
+      "transformed": false,
+      "type": "build"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 1.60000000000011,
+      "frame_power": 0.0,
+      "id": 16,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 30.0,
+      "spent_power": 0.0,
+      "time": 49.0499999999997,
+      "transformed": false,
+      "type": "bed_upgrade"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 1.7000000000001,
+      "frame_power": 0.0,
+      "id": 18,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 35.0,
+      "spent_power": 0.0,
+      "time": 60.7499999999996,
+      "transformed": false,
+      "type": "door_upgrade"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 3.55000000000042,
+      "frame_power": 0.0,
+      "id": 61,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 85.0,
+      "spent_power": 0.0,
+      "time": 89.5500000000005,
+      "transformed": false,
+      "type": "bed_upgrade"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 6.15000000000061,
+      "frame_power": 0.0,
+      "id": 87,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 100.0,
+      "spent_power": 0.0,
+      "time": 106.650000000001,
+      "transformed": false,
+      "type": "door_upgrade"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 4.95000000000092,
+      "frame_power": 0.108,
+      "id": 106,
+      "kind": "generator",
+      "position": "(2120.0, 1632.0)",
+      "room": 3,
+      "spent_gold": 120.0,
+      "spent_power": 0.0,
+      "tile": 19,
+      "time": 126.450000000002,
+      "transformed": false,
+      "type": "build"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 35.1500000000009,
+      "frame_power": 0.531999999999992,
+      "id": 122,
+      "kind": "turret",
+      "level": 2,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "specialization": "",
+      "spent_gold": 40.0,
+      "spent_power": 8.0,
+      "tile": 16,
+      "time": 138.150000000002,
+      "transformed": false,
+      "type": "building_upgrade"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 67.3500000000013,
+      "frame_power": 0.196000000000003,
+      "id": 152,
+      "kind": "repair",
+      "position": "(2160.0, 1640.0)",
+      "room": 3,
+      "spent_gold": 65.0,
+      "spent_power": 12.0,
+      "tile": 20,
+      "time": 154.350000000003,
+      "transformed": false,
+      "type": "build"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 116.150000000002,
+      "frame_power": 0.452000000000024,
+      "id": 178,
+      "kind": "turret",
+      "level": 3,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "specialization": "",
+      "spent_gold": 70.0,
+      "spent_power": 14.0,
+      "tile": 16,
+      "time": 174.150000000004,
+      "transformed": false,
+      "type": "building_upgrade"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 164.750000000002,
+      "frame_power": 0.28400000000002,
+      "id": 187,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "time": 182.250000000004,
+      "transformed": false,
+      "type": "emergency_ward"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 154.150000000002,
+      "frame_power": 0.93200000000002,
+      "id": 190,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 183.150000000004,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0000000000001,
+      "damage": 0.0,
+      "frame_gold": 143.550000000002,
+      "frame_power": 1.58000000000002,
+      "id": 193,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 184.050000000004,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 138.350000000002,
+      "frame_power": 2.87600000000002,
+      "id": 197,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 185.850000000004,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 127.750000000003,
+      "frame_power": 3.52400000000002,
+      "id": 199,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 186.750000000004,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 122.550000000003,
+      "frame_power": 4.82000000000002,
+      "id": 203,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 188.550000000004,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 117.350000000003,
+      "frame_power": 6.11600000000002,
+      "id": 205,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 190.350000000004,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 106.750000000003,
+      "frame_power": 6.76400000000001,
+      "id": 207,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 191.250000000004,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 111.270000000003,
+      "frame_power": 8.67350000000001,
+      "id": 215,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 194.850000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 99.5900000000028,
+      "frame_power": 9.00650000000002,
+      "id": 217,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 195.750000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 87.9100000000028,
+      "frame_power": 9.33950000000002,
+      "id": 219,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 196.650000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 92.0700000000029,
+      "frame_power": 10.6715,
+      "id": 226,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 200.250000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 81.4700000000029,
+      "frame_power": 11.0045,
+      "id": 228,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 201.150000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 70.8700000000029,
+      "frame_power": 11.3375,
+      "id": 231,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 202.050000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 36.270000000003,
+      "frame_power": 3.72300000000003,
+      "id": 235,
+      "kind": "turret",
+      "level": 2,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "specialization": "",
+      "spent_gold": 40.0,
+      "spent_power": 8.0,
+      "tile": 17,
+      "time": 202.950000000005,
+      "transformed": false,
+      "type": "building_upgrade"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 74.2700000000034,
+      "frame_power": 0.373000000000052,
+      "id": 242,
+      "kind": "turret",
+      "level": 3,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "specialization": "",
+      "spent_gold": 70.0,
+      "spent_power": 14.0,
+      "tile": 17,
+      "time": 220.950000000006,
+      "transformed": false,
+      "type": "building_upgrade"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 99.0700000000038,
+      "frame_power": 0.149000000000041,
+      "id": 246,
+      "kind": "turret",
+      "level": 2,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "specialization": "",
+      "spent_gold": 40.0,
+      "spent_power": 8.0,
+      "tile": 18,
+      "time": 231.750000000006,
+      "transformed": false,
+      "type": "building_upgrade"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 147.870000000005,
+      "frame_power": 0.405000000000063,
+      "id": 253,
+      "kind": "turret",
+      "level": 3,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "specialization": "",
+      "spent_gold": 70.0,
+      "spent_power": 14.0,
+      "tile": 18,
+      "time": 251.550000000007,
+      "transformed": false,
+      "type": "building_upgrade"
+     },
+     {
+      "amount": 69.9999999999999,
+      "damage": 0.0,
+      "frame_gold": 169.670000000005,
+      "frame_power": 4.94100000000006,
+      "id": 261,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 257.850000000007,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "damage": 0.0,
+      "frame_gold": 184.790000000005,
+      "frame_power": 0.885000000000056,
+      "id": 266,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "time": 260.550000000006,
+      "transformed": false,
+      "type": "emergency_ward"
+     },
+     {
+      "amount": 70.0000000000001,
+      "damage": 0.0,
+      "frame_gold": 173.110000000005,
+      "frame_power": 1.53300000000006,
+      "id": 269,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 261.450000000006,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 165.750000000005,
+      "frame_power": 2.82900000000006,
+      "id": 274,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 263.250000000006,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 154.790000000005,
+      "frame_power": 3.47700000000006,
+      "id": 277,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 264.150000000006,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 144.190000000005,
+      "frame_power": 4.12500000000006,
+      "id": 280,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 265.050000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 133.590000000005,
+      "frame_power": 4.77300000000006,
+      "id": 282,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 265.950000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 122.990000000005,
+      "frame_power": 5.42100000000005,
+      "id": 284,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 266.850000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 112.390000000005,
+      "frame_power": 6.06900000000005,
+      "id": 286,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 267.750000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 101.790000000005,
+      "frame_power": 6.71700000000005,
+      "id": 288,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 268.650000000005,
+      "transformed": false,
+      "type": "repair"
+     },
+     {
+      "amount": 70.0,
+      "damage": 0.0,
+      "frame_gold": 91.1900000000051,
+      "frame_power": 7.36500000000005,
+      "id": 291,
+      "position": "(2496.0, 1448.0)",
+      "room": 3,
+      "spent_gold": 16.0,
+      "spent_power": 0,
+      "time": 269.550000000005,
+      "transformed": false,
+      "type": "repair"
+     }
+    ],
+    "pre_contact_distances": [
+     0.0,
+     1589.05198478699,
+     0.0,
+     2352.29755115509,
+     1086.73135757446,
+     1467.0491104126
+    ],
+    "room_footprints": {
+     "generator": [
+      32.0,
+      48.0
+     ],
+     "heavy": [
+      48.0,
+      32.0
+     ],
+     "repair": [
+      48.0,
+      32.0
+     ],
+     "turret": [
+      32.0,
+      32.0
+     ],
+     "version": 1
+    },
+    "travel_per_target": [
+     0.0,
+     1594.0579662323,
+     0.0,
+     2367.08221101761,
+     1823.66543960571,
+     2058.91287994385
+    ]
+   },
+   "doors": [
+    {
+     "alive": true,
+     "door_damage": 0.0,
+     "hunter_damage": 0.0,
+     "index": 1,
+     "owner": 3,
+     "seconds_targeted": 0.0,
+     "seconds_under_attack": 0.0,
+     "shots": 0,
+     "strikes": 0
+    },
+    {
+     "alive": true,
+     "door_damage": 811.373523898737,
+     "hunter_damage": 540.0,
+     "index": 2,
+     "owner": 2,
+     "seconds_targeted": 68.5499999999997,
+     "seconds_under_attack": 46.1999999999997,
+     "shots": 60,
+     "strikes": 43
+    },
+    {
+     "alive": true,
+     "door_damage": 0.0,
+     "hunter_damage": 0.0,
+     "index": 3,
+     "owner": 4,
+     "seconds_targeted": 0.0,
+     "seconds_under_attack": 0.0,
+     "shots": 0,
+     "strikes": 0
+    },
+    {
+     "alive": true,
+     "door_damage": 1763.46520981859,
+     "hunter_damage": 3589.2656,
+     "index": 4,
+     "owner": 0,
+     "seconds_targeted": 66.1499999999997,
+     "seconds_under_attack": 34.1999999999999,
+     "shots": 176,
+     "strikes": 33
+    },
+    {
+     "alive": true,
+     "door_damage": 0.0,
+     "hunter_damage": 712.0,
+     "index": 5,
+     "owner": 1,
+     "seconds_targeted": 31.1999999999999,
+     "seconds_under_attack": 0.0,
+     "shots": 26,
+     "strikes": 0
+    },
+    {
+     "alive": false,
+     "door_damage": 1150.7,
+     "hunter_damage": 918.0,
+     "index": 6,
+     "owner": 5,
+     "seconds_targeted": 62.0999999999996,
+     "seconds_under_attack": 36.7499999999998,
+     "shots": 51,
+     "strikes": 34
+    }
+   ],
+   "event_counts": {
+    "approach": 5,
+    "arcane_impact": 10,
+    "archetype_warning": 4,
+    "bed_upgrade": 13,
+    "build": 28,
+    "building_upgrade": 15,
+    "door_break": 1,
+    "door_damage": 110,
+    "door_upgrade": 12,
+    "elimination": 1,
+    "emergency_ward": 2,
+    "emergency_ward_hit": 5,
+    "encounter": 4,
+    "hunter_ability": 10,
+    "hunter_ability_warning": 12,
+    "hunter_evolved": 1,
+    "hunter_reassess": 2,
+    "hunter_recovering": 1,
+    "hunter_recovery_ended": 1,
+    "hunter_retreat": 1,
+    "magic_shield": 3,
+    "nightmare_impact": 2,
+    "nightmare_level": 2,
+    "nightmare_release": 2,
+    "nightmare_warning": 2,
+    "repair": 40,
+    "survivor_attack": 1,
+    "survivor_fear": 1
+   },
+   "events": [
+    {
+     "room": 2,
+     "time": 42.15,
+     "type": "approach"
+    },
+    {
+     "room": 2,
+     "time": 64.35,
+     "type": "encounter"
+    },
+    {
+     "next_room": 5,
+     "room": 2,
+     "time": 110.55,
+     "type": "hunter_reassess"
+    },
+    {
+     "room": 6,
+     "time": 110.7,
+     "type": "approach"
+    },
+    {
+     "level": 3,
+     "room": 6,
+     "time": 117.0,
+     "type": "observed_evolution_level"
+    },
+    {
+     "level": 3,
+     "room": 6,
+     "time": 117.0,
+     "type": "nightmare_level"
+    },
+    {
+     "room": 6,
+     "time": 130.95,
+     "type": "encounter"
+    },
+    {
+     "room": 6,
+     "time": 165.0,
+     "type": "door_break"
+    },
+    {
+     "room": 6,
+     "time": 167.7,
+     "type": "elimination"
+    },
+    {
+     "room": 6,
+     "source": "Hunter",
+     "time": 167.7,
+     "type": "hunter_evolved"
+    },
+    {
+     "room": 4,
+     "time": 172.8,
+     "type": "approach"
+    },
+    {
+     "room": 4,
+     "time": 180.75,
+     "type": "encounter"
+    },
+    {
+     "level": 4,
+     "room": 4,
+     "time": 192.0,
+     "type": "observed_evolution_level"
+    },
+    {
+     "level": 4,
+     "room": 4,
+     "time": 192.0,
+     "type": "nightmare_level"
+    },
+    {
+     "next_room": 4,
+     "room": 4,
+     "time": 202.5,
+     "type": "hunter_reassess"
+    },
+    {
+     "room": 5,
+     "time": 202.65,
+     "type": "approach"
+    },
+    {
+     "budget": 0.0,
+     "hall": "south",
+     "healed": 0.0,
+     "reason": "",
+     "room": 5,
+     "time": 216.3,
+     "type": "hunter_retreat"
+    },
+    {
+     "budget": 864.705600000001,
+     "hall": "south",
+     "healed": 0.0,
+     "reason": "",
+     "room": 5,
+     "time": 225.6,
+     "type": "hunter_recovering"
+    },
+    {
+     "budget": 864.705600000001,
+     "hall": "south",
+     "healed": 864.705600000001,
+     "reason": "completed",
+     "room": 5,
+     "time": 233.7,
+     "type": "hunter_recovery_ended"
+    },
+    {
+     "room": 4,
+     "time": 233.85,
+     "type": "approach"
+    },
+    {
+     "room": 4,
+     "time": 257.55,
+     "type": "encounter"
+    }
+   ],
+   "fixture": {
+    "archetype": "witch",
+    "difficulty": "standard",
+    "family": "branching",
+    "id": "standard-branching-reserve_repair",
+    "level": 33.0,
+    "policy": "reserve_repair",
+    "room_preference": 1.0,
+    "seed_base": 116431.0
+   },
+   "hall_attempts": 1,
+   "hall_heal_observed": 864.705600000001,
+   "hall_visits": 1,
+   "hunter_attacks": 98,
+   "hunter_hp": 0.0,
+   "hunter_peak_max_hp": 4894.56,
+   "hunter_retargets": 2,
+   "initial_boss_policy": {
+    "deadline": 218.0,
+    "enabled": false,
+    "first_stage": 3,
+    "hp_fraction": 0.55,
+    "opening": 8.0,
+    "recovery": 1.05
+   },
+   "invalid": [],
+   "items_used": [],
+   "ledger": {
+    "loss_e": 0.0,
+    "loss_g": 0.0,
+    "other_e": 0.0,
+    "other_g": 0.0,
+    "production_e": 103.356000000001,
+    "production_g": 1260.99,
+    "refund_e": 0.0,
+    "refund_g": 0.0,
+    "repair_g": 368.0,
+    "spent_e": 95.7750000000002,
+    "spent_g": 1193.0
+   },
+   "map": "haunted_hospital",
+   "map_hash": "dddab728b0a79108ea6bbfe67cdb929ef0bc78ddb98c53ea2076549df09df52e",
+   "max_evolution": 4,
+   "max_ledger_error": 0.0000152587890625,
+   "movement_diagnostics": {
+    "blocked_steps": 0,
+    "over_speed_steps": 0
+   },
+   "navigation_recoveries": 0,
+   "opening_door_hp": 135.0,
+   "opening_gold": 25.0,
+   "opening_hunter_max_hp": 4532.0,
+   "opening_power": 0.0,
+   "opening_race_npcs": 5,
+   "outcome": "victory",
+   "peak_buildings": 5,
+   "player_damage": 3589.2656,
+   "player_door_damage": 1763.46520981859,
+   "player_repairs": 23,
+   "player_shots": 176,
+   "preparation": 42.0,
+   "reaper": false,
+   "room": 4,
+   "seconds": 270.000000000005,
+   "seconds_to_bed": 4.95,
+   "seed": 28520660,
+   "settlement": {
+    "checkpoint": 30,
+    "highest": 33,
+    "position": 34,
+    "rm_cash": 57,
+    "rm_cash_award": 40,
+    "saved": true
+   },
+   "spawn": [
+    2576.0,
+    912.0
+   ],
+   "steps": 1767,
+   "terminal_recorded": true,
+   "title": "The Hollow Oath",
+   "wallet": [
+    92.9900000000051,
+    7.58100000000005
+   ]
+  }
+ ],
+ "failures": 0,
+ "limit_seconds": 900.0,
+ "step_seconds": 0.15
+}
