@@ -1,0 +1,24 @@
+name: Publish Nightfall Dorm Phase 20
+on:
+  push:
+    branches: [release/phase20-player-first]
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          persist-credentials: false
+      - name: Verify exact standalone build and publish prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          exe=release/NightfallDorm-Phase20-Windows-x64.zip
+          echo "ac1b91338a9afcef227628bfa9a65baa1f637ad17cd1d0646860fc6f481cf3b0  $exe" | sha256sum -c -
+          gh release create phase20-player-first-preview "$exe" --target b93117cbce16f1a5f07c44af21e4f3030db0e3d6 \
+            --title 'Nightfall Dorm — Phase 20 Player-First Preview' --prerelease \
+            --notes 'Extract the ZIP and run Play Phase 20 Preview.cmd. It starts in Low at 960×540 with a separate test profile. Use Play Performance Preview.cmd for the earlier rules with its own save profile. Linux Godot verified the embedded resources and Story launch. Native Windows and Intel UHD frame timing remain untested.'
