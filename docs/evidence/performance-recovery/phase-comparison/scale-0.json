@@ -1,0 +1,66 @@
+{
+  "checks": 17,
+  "failures": 0,
+  "rules": "0",
+  "scenes": {
+    "benchmark": {
+      "count": 7,
+      "draw_calls_median": 609,
+      "hunter_hp_lost": 140.0,
+      "median_ms": 49.428,
+      "p95_ms": 59.525,
+      "preset": "low",
+      "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+      "samples": 120,
+      "shots": 5,
+      "static_bytes": 152681922.0,
+      "video_bytes": 124724991.0
+    },
+    "practical-defense": {
+      "area": 147456.0,
+      "camera_zoom": 0.88,
+      "count": 7,
+      "mounts": [
+        {
+          "kind": "turret",
+          "rect": "[P: (1384.0, 760.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "generator",
+          "rect": "[P: (1576.0, 984.0), S: (48.0, 32.0)]",
+          "rotation": 1
+        },
+        {
+          "kind": "repair",
+          "rect": "[P: (1560.0, 760.0), S: (48.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "heavy",
+          "rect": "[P: (1400.0, 968.0), S: (48.0, 32.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "frost",
+          "rect": "[P: (1480.0, 776.0), S: (32.0, 32.0)]",
+          "rotation": 1
+        },
+        {
+          "kind": "antenna",
+          "rect": "[P: (1544.0, 872.0), S: (32.0, 48.0)]",
+          "rotation": 0
+        },
+        {
+          "kind": "economy",
+          "rect": "[P: (1432.0, 856.0), S: (32.0, 32.0)]",
+          "rotation": 0
+        }
+      ],
+      "room": 1,
+      "shape": "rectangle"
+    }
+  },
+  "seed": 10358,
+  "theme": "haunted_hospital"
+}

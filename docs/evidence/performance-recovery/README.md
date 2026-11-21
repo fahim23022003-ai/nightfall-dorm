@@ -36,3 +36,31 @@ samples. A 16-bit art conversion has not been applied. The practical Low
 launcher, the diagnostic launcher and the prior preview launchers are
 included in the ZIP. The package contains the source revision recorded in
 the [Windows export receipt](windows-artifact.json).
+
+## Phase comparison
+
+The Phase 18.1 checkpoint was run with each feature bundle on the same
+Linux host at 1280×720 Low. Phase 16 and Weapon Feedback share the same
+V2 geometry and gameplay hashes. Close Quarters switches to V3. The
+24-machine cases had identical shot, strike and health-loss totals.
+
+| Bundle | Machines | Median / p95 (ms) | Median draw calls |
+| --- | ---: | ---: | ---: |
+| Phase 16 | 24 | 37.93 / 43.23 | 524 |
+| + Weapon Feedback | 24 | 37.39 / 46.52 | 517 |
+| + Close Quarters (cached) | 24 | 36.04 / 47.95 | 336 |
+| Original footprints (V3 with cache) | 7 | 49.43 / 59.53 | 609 |
+| Enlarged footprints (V3 with cache) | 7 | 51.06 / 67.11 | 609 |
+
+The last two runs use a separate seven-machine fixture so both builds
+can place the same machine mix legally. Each fired five shots and did
+140 HP damage. Building Scale produced the largest measured p95 increase
+in its pair, despite unchanged draw submissions. Weapon Feedback also
+increased p95 in the equal-geometry pair while median improved slightly.
+The earlier Phase 18 before/after comparison captured a dense Standard
+p95 regression at corridor introduction. Its Phase 18.1 cache improved
+that 60-machine Standard p95 substantially. These results establish
+individual costs in these Linux workloads, and leave the cause of the
+owner's much larger Windows lag open.
+
+[Phase receipts](phase-comparison/) · [Original corridor report](../close-quarters/phase181/README.md)

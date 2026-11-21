@@ -2,7 +2,15 @@
 
 An original single-player Godot 4 dormitory survival defense game. Choose a room, sleep to earn gold, upgrade your bed and door, build defenses and electricity production, and defeat the hunter. Five autonomous survivors defend the other rooms. Artwork and characters are original; the score combines original arrangements with credited CC0 recorded instruments and voices; exact Haunted Dorm fidelity remains unverified.
 
-**For home testing, download branch [`work`](https://github.com/fahim23022003-ai/nightfall-dorm/tree/work), not `main`.**
+**Current source and performance fixes are on [`work`](https://github.com/fahim23022003-ai/nightfall-dorm/tree/work).**
+
+## Current Windows performance preview
+
+Download the [Windows x64 performance preview](https://github.com/fahim23022003-ai/nightfall-dorm/releases/tag/performance-recovery-preview), extract it, and open **Play Performance Preview.cmd**. It starts in Low at 960×540 and keeps a separate test save. Low reduces decorative drawing while keeping Hunter articulation, weapon fire and the full room grid.
+
+The Low changes and F10 diagnostics are part of the Godot source. In a source build, choose **Low** in Settings and press **F10** to start or save a diagnostic. Use the [performance report](docs/evidence/performance-recovery/README.md) for measurements and the [playtest guide](docs/BUILDING_SCALE.md) for launcher and profile details. Native Windows performance remains under investigation.
+
+The phase reports below are historical.
 
 ## Phase 5D-3 — music, tactical Hunters and teammate rooms
 
@@ -34,7 +42,7 @@ below describe their own earlier checkpoints, not current Windows certification.
 
 ## Play in Godot on Windows
 
-1. Sign in to the private [GitHub repository](https://github.com/fahim23022003-ai/nightfall-dorm), select **work**, and choose **Code → Download ZIP**.
+1. Open the [GitHub repository](https://github.com/fahim23022003-ai/nightfall-dorm), select **work**, and choose **Code → Download ZIP**.
 2. Extract the complete ZIP. Install/open **Godot 4.6.3 stable, standard build**; no .NET or export templates needed.
 3. Choose **Import**, select the extracted `project.godot`, then **Import & Edit**. Wait for asset import.
 4. Press **F5 / Run Project**. Watch or skip the opening; a fresh save completes the guided practice first. Then choose **Start Game** and select an unlocked stage with **Prepare**, choose an optional unlocked boost and difficulty, then **Start Match**.

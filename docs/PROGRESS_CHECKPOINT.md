@@ -1,3 +1,14 @@
+# Emergency performance recovery
+
+The owner reported severe Windows lag in Phase 18.1. The current `work`
+source reduces Low rendering work, throttles Low HUD updates and adds
+opt-in F10 diagnostics. The performance launcher starts in Low at 960×540
+with an isolated profile. Keep the older build as the baseline until native
+Windows timing and playability are confirmed.
+[Measured results and package](evidence/performance-recovery/README.md)
+
+---
+
 # Building Scale Preview
 
 Phase 18.1 gives all 15 placeable families larger physical footprints and
