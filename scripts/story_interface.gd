@@ -174,6 +174,9 @@ func show_result():
  var mode: String=game.model.difficulty
  var won: bool=game.model.result=="victory"
  var completed: bool=result.get("finished",false)
+ if game.model.player_first_requested and not result.is_empty() and not game.mobile_mode:
+  _show_player_first_result(mission,result,won)
+  return
  if StoryCatalog.phase16_enabled() and not result.is_empty():
   _show_chapter_result(mission,result,mode,won)
   return
@@ -289,6 +292,53 @@ func _show_chapter_result(mission: Dictionary, result: Dictionary, mode: String,
  ui.theme_button(ui.button("Main menu",Vector2(829,583),game.return_menu,205,46),"quiet")
  if bool(award.get("promoted",false)):
   game.audio_event("perk_unlocked")
+
+func _show_player_first_result(mission: Dictionary, result: Dictionary, won: bool) -> void:
+ ui.theme_backdrop()
+ ui.theme_panel(Rect2(128,46,1024,630),"story" if won else "danger")
+ ui.premium_icon("rank" if won else "hell",Vector2(174,88),Vector2(82,82))
+ _line("VICTORY" if won else "NIGHT LOST",Vector2(276,81),42,814,"FFF1BE" if won else "FFD3D9",true)
+ _line("Level %02d · %s · %s" % [mission.level,mission.title,mission.chapter_title],Vector2(280,145),18,800,"F7F1E7")
+ var award: Dictionary=game.last_progression
+ var xp:=int(award.get("new_xp",0))-int(award.get("old_xp",0))
+ var values: Array[String]=["%+d XP" % xp,"%+d RM Cash" % int(award.get("rm_cash",0)),game.profile.rank_name()]
+ var subtitles: Array[String]=["Settled experience","Wallet %d RM" % int(award.get("rm_balance",game.profile.rm_cash)),"%d lifetime XP" % game.profile.xp]
+ for index in range(values.size()):
+  var origin:=Vector2(176+index*314,202)
+  ui.theme_panel(Rect2(origin,Vector2(302,103)),"card")
+  _line(values[index],origin+Vector2(18,13),24,270,GOLD,true)
+  _line(subtitles[index],origin+Vector2(18,53),16,270,BODY)
+ _line("Story complete at Level 50" if result.finished else "Story level %02d → %02d · %s" % [mission.level,result.position,result.next_title],Vector2(176,333),23,930,"F7F1E7",true)
+ var milestone: bool=won and mission.level%StoryCatalog.CHAPTER_LENGTH==0 and result.checkpoint>=mission.level
+ _line("Chapter trophy · "+mission.chapter_title if milestone else "Checkpoint %02d · Highest clear %02d" % [result.checkpoint,result.highest],Vector2(177,373),18,923,GOLD)
+ var reveal: bool=not game.profile.pending_spins.is_empty()
+ _line("A saved item reward is ready to reveal." if reveal else "Continue when you are ready.",Vector2(177,413),17,923,BODY)
+ var main: Button=ui.button("Story Archive" if result.finished else "Continue to next level" if won else "Try again",Vector2(176,490),func():
+  if reveal:ui.items_ui.spin()
+  elif result.finished:show_archive()
+  else:show_prepare(),389,51)
+ main.name="ContinueStoryResult"
+ ui.theme_button(main,"primary","play")
+ ui.theme_button(ui.button("Match timeline",Vector2(583,493),show_timeline,224,46),"settings")
+ if not won:
+  ui.theme_button(ui.button("Why did I lose?",Vector2(826,493),ui.replay_ui.show_defeat_analysis,270,46),"danger")
+ ui.theme_button(ui.button("Items",Vector2(176,575),ui.items_ui.inventory,200,42),"inventory")
+ ui.theme_button(ui.button("Shop",Vector2(394,575),ui.shop.show_shop,179,42),"shop")
+ ui.theme_button(ui.button("Main menu",Vector2(591,575),game.return_menu,245,42),"quiet")
+ main.grab_focus()
+
+func show_timeline() -> void:
+ _begin_screen("match_timeline")
+ ui.theme_backdrop()
+ ui.theme_panel(Rect2(178,61,924,600),"settings")
+ _line("MATCH TIMELINE",Vector2(222,88),36,840,"F7F1E7",true)
+ var entries: Array=game.model.chronicle.entries.slice(-12)
+ var y:=159.0
+ for event in entries:
+  var room: String=" · Room %d" % (event.room+1) if event.room>=0 else ""
+  _line("%05.1fs   %s%s" % [event.at,event.name,room],Vector2(229,y),19,810,"F7F1E7")
+  y+=32.0
+ ui.theme_button(ui.button("Back to results",Vector2(225,590),show_result,273,40),"quiet")
 
 func _position_text(label: Label, report: Dictionary, current: int):
  label.text="STORY COMPLETE   ·   LEVEL 50" if report.finished else "STORY %s   ·   %02d → %02d" % ["LEVEL" if report.cleared else "POSITION",report.level,current]

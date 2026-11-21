@@ -75,6 +75,9 @@ var stage_bonus: Dictionary={}
 var strategy=MatchStrategy.new()
 var wave_metrics=WaveMetrics.new()
 var run_kind="campaign"
+var player_first_requested := OS.get_environment("NIGHTFALL_PLAYER_FIRST")=="1"
+var door_survival:=PlayerDoorSurvival.new()
+var chronicle:=MatchChronicle.new()
 var living_dorm_requested := OS.get_environment("NIGHTFALL_LIVING_DORM") == "1"
 var substantial_grid_requested := OS.get_environment("NIGHTFALL_BUILDING_SCALE") == "1"
 var full_grid_requested := OS.get_environment("NIGHTFALL_FULL_ROOM_GRID") == "1"
@@ -128,6 +131,8 @@ func _init():
 func reset(seed_value: int = 1):
  map_seed=seed_value
  story_level=0
+ door_survival=PlayerDoorSurvival.new()
+ chronicle=MatchChronicle.new()
  haunt_recovery=HauntedRecovery.new()
  ward_until=0.0
  ward_ready_at=0.0
@@ -277,7 +282,7 @@ func player_navigation_path(from: Vector2,to: Vector2) -> Array:
  return navigation_path(from,to,true)
 
 func opening_room_forecast(index: int) -> Dictionary:
- if not uses_tactical_sieges() or player_room>=0 or time>=preparation or index<0 or index>=rooms.size():
+ if not (uses_tactical_sieges() or player_first_requested and is_procedural()) or player_room>=0 or time>=preparation or index<0 or index>=rooms.size():
   return {}
  var room: RoomState=rooms[index]
  if room.owner>=0:
@@ -370,13 +375,14 @@ func step_navigation(from: Vector2,to: Vector2,distance: float,key: String="") -
  return point
 
 func record_event(type: String, room_index: int, data: Dictionary={}):
+ if player_first_requested:chronicle.record(type,room_index,player_room,time,data)
  choices.event(self,type,room_index,data)
  if room_index==player_room:
   if type=="repair":contribution.repair_hp+=data.get("amount",0)
   if type in ["defense_heal","item_rescue"]:contribution.repair_hp+=data.get("damage",0)
   if type=="plasma_release":contribution.repair_hp+=data.get("amount",0)
-  if type in ["build","building_upgrade","bed_upgrade","door_upgrade","repair"] and data.has("spent_gold"):
-   var group="defense" if type in ["door_upgrade","repair"] or data.get("kind","") in DefenseEffects.WEAPONS or data.get("kind","") in ["repair","auto_repair","shield","barrier","plasma","antenna"] else "infrastructure"
+  if type in ["build","building_upgrade","bed_upgrade","door_upgrade","repair","repair_started"] and data.has("spent_gold"):
+   var group="defense" if type in ["door_upgrade","repair","repair_started"] or data.get("kind","") in DefenseEffects.WEAPONS or data.get("kind","") in ["repair","auto_repair","shield","barrier","plasma","antenna"] else "infrastructure"
    contribution[group+"_gold"]+=data.spent_gold
    contribution[group+"_power"]+=data.spent_power
 
@@ -450,6 +456,7 @@ func try_claim_survivor(index: int, owner: int, position: Vector2) -> bool:
   rooms[index].door_multiplier*=stage_bonus.get("door",1.0)
   rooms[index].door_hp+=rooms[index].max_hp()-old_max
  player_room = index
+ if player_first_requested:chronicle.record("claim",index,index,time)
  if run_kind=="endless":rooms[index].spatial=SpatialConstruction.new(rooms[index])
  if (full_grid_requested or is_procedural()) and not tutorial_mode and run_kind in ["campaign","endless"]:
   enable_player_grid()
@@ -563,7 +570,11 @@ func upgrade_bed() -> bool:
 func upgrade_door() -> bool:
  return player().upgrade_door() if _can_purchase() else false
 
+func uses_player_door_survival() -> bool:
+ return player_first_requested and run_kind=="campaign" and not tutorial_mode
+
 func repair_door() -> bool:
+ if uses_player_door_survival():return door_survival.activate(self,player())
  return player().repair_door() if _can_purchase() else false
 
 func upgrade_building(tile: int) -> bool:
@@ -713,7 +724,10 @@ func _tick_sim(delta: float):
   var measuring=run_kind=="endless" and room.index==player_room
   var metrics_before=[room.income_total,room.generated_power,room.economy_repaired] if measuring else []
   room.ledger.reconcile(room,time)
+  room.fear_bed_multiplier=1.5 if uses_player_door_survival() and room.owner==0 and PlayerDoorSurvival.under_siege(self,room) else 1.0
+  var first_bed_payment: bool=player_first_requested and room.owner==0 and room.income_total<=0.0
   room.tick_economy(delta,endless.omen.factor("blackout",difficulty) if run_kind=="endless" and endless!=null and room.index==player_room else 1.0,hunter.nightmare.income_factor(room.index))
+  if first_bed_payment and room.income_total>0.0:chronicle.record("bed_income",room.index,player_room,time)
   if measuring:
    wave_metrics.data.gold+=room.income_total-metrics_before[0];wave_metrics.data.power+=room.generated_power-metrics_before[1];wave_metrics.data.repair+=room.economy_repaired-metrics_before[2]
   if run_kind=="endless":
@@ -734,6 +748,7 @@ func _tick_sim(delta: float):
    items.trigger_segment(previous,hunter.position,self)
  else:
   hunter.tick(delta,self)
+ if uses_player_door_survival():door_survival.tick(delta,self,player())
  if player_room>=0 and hunter.target==player_room and hunter.state==HunterState.State.ATTACK:
   contribution.exposure+=delta
  for undead in minions:undead.tick(maxf(0,delta-items.frozen_delta),self)
@@ -854,6 +869,8 @@ func apply_room_damage(index: int,amount: float,source: String="door strike",att
  var attack_boss: bool=attacker_id==1 and hunter.transformed
  if run_kind=="endless" and endless!=null and index==player_room:amount*=endless.omen.factor("walls",difficulty)
  if attacker_id==1:amount*=evolution.damage_factor(special)*pressure.factor(self)
+ if uses_player_door_survival() and index==player_room and packet.type==DamageRules.PHYSICAL:
+  amount*=1.0-PlayerDoorSurvival.armor(room.door_level)
  amount*=StrategyCatalog.BRANCHES.get(room.door_branch,{}).get("mitigation",1.0)
  var before_magic=amount
  amount=MagicDefense.absorb(self,room,amount,attacker_id,packet)
@@ -879,7 +896,7 @@ func apply_room_damage(index: int,amount: float,source: String="door strike",att
  var actual=maxf(0,old-room.door_hp);room.door_damage_taken+=actual;room.damage_flash=.25
  if actual>0 and attacker_id==1:pressure.hits+=1
  if index==player_room and attacker_id==1:choices.retaliate(self,actual)
- record_event("door_damage",index,{"damage":actual,"hp":room.door_hp,"max_hp":room.max_hp(),"repair_affordable":room.door_hp>0 and room.gold>=room.manual_repair_cost(),"source":source,"attacker_id":attacker_id,"damage_type":packet.type,"element":packet.element,"attack_origin":attack_origin,"attack_boss":attack_boss,"attack_archetype":hunter.archetype if attacker_id==1 else "undead","door_level":room.door_level+1})
+ record_event("door_damage",index,{"damage":actual,"hp":room.door_hp,"max_hp":room.max_hp(),"repair_affordable":room.door_hp>0 and room.gold>=(door_survival.price(room) if uses_player_door_survival() and index==player_room else room.manual_repair_cost()) and (not uses_player_door_survival() or index!=player_room or time>=door_survival.ready_at),"source":source,"attacker_id":attacker_id,"damage_type":packet.type,"element":packet.element,"attack_origin":attack_origin,"attack_boss":attack_boss,"attack_archetype":hunter.archetype if attacker_id==1 else "undead","door_level":room.door_level+1})
  if old>0 and room.door_hp<=0:record_event("door_break",index)
  if index==player_room and not rescued:items.feather_cross(old,self)
  if not rescued:
@@ -1048,6 +1065,8 @@ func _pursue_exposed_player(delta: float):
  hunter.position = hunter.position.move_toward(waypoint,hunter.speed*delta)
 
 func _finish_terminal():
+ if player_first_requested:chronicle.record(result,player_room,player_room,time)
+ door_survival.remaining=0.0
  wrath.clear(self);defenses.clear(self)
  for room in rooms:room.production_paused=false;room.threat_income_factor=1.0;room.threat_power_factor=1.0
  terminal_recorded=true

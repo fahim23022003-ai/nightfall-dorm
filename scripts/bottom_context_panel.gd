@@ -14,6 +14,7 @@ var expanded=false
 var transitioning=false
 var upgrade_shortcut: Button
 var inspection
+var drawn_signature: Array=[]
 var body := BODY
 var closed_position := CLOSED
 func _init(owner):ui=owner
@@ -29,6 +30,9 @@ func install():
  place(ui.room_door_summary,Vector2(572,658),Vector2(238,38))
  place(ui.quick_repair,Vector2(1058,658),Vector2(184,38))
  upgrade_shortcut=ui.button("Upgrade selected",Vector2(824,658),func():ui.open_context(),220,38)
+ if ui.game.model.player_first_requested:
+  upgrade_shortcut.text="Inspect"
+  upgrade_shortcut.size.x=95
  upgrade_shortcut.add_theme_font_size_override("font_size",14)
  upgrade_shortcut.tooltip_text="Select a machine to inspect its current level and upgrades."
  place(ui.context_box,CLOSED,BODY.size);ui.context_box.visible=false
@@ -58,7 +62,9 @@ func install():
  if is_instance_valid(ui.branch_confirm):place(ui.branch_confirm,Vector2(840,151),Vector2(370,44))
  # Keep the complete toolbar above the travelling drawer for both drawing and
  # GUI hit testing; z_index alone would not fix Control input ordering.
- for control in [ui.room_dock,ui.details,ui.room_selected_summary,ui.room_bed_summary,ui.room_door_summary,ui.quick_repair,upgrade_shortcut,ui.teammates.home]:
+ var toolbar: Array=[ui.room_dock,ui.details,ui.room_selected_summary,ui.room_bed_summary,ui.room_door_summary,ui.quick_repair,upgrade_shortcut,ui.teammates.home]
+ if ui.game.model.player_first_requested:toolbar.append(ui.items_ui.item_toggle)
+ for control in toolbar:
   if is_instance_valid(control) and control.get_parent()==ui.panel:ui.panel.move_child(control,-1)
  inspection=preload("res://scripts/building_inspection_preview.gd").new();inspection.ui=ui;inspection.mouse_filter=Control.MOUSE_FILTER_IGNORE;inspection.position=Vector2(14,31);inspection.size=Vector2(178,154);ui.context_box.add_child(inspection)
  for control in [ui.selected_details,ui.bed_details,ui.door_details]:place(control,Vector2(212,33),Vector2(602,143))
@@ -120,7 +126,15 @@ func fit_action(button: Button):
 func refresh():
  if not is_instance_valid(ui.context_box):return
  ui.context_box.size=body.size
- if is_instance_valid(inspection):inspection.queue_redraw()
+ if is_instance_valid(inspection) and ui.context_open and ui.context_mode in ["upgrade","bed","door"]:
+  var room=ui.game.model.player()
+  if room!=null:
+   var upgrade: Dictionary=room.buildings.get(ui.game.selected_tile,{})
+   var signature: Array=[ui.context_mode,ui.game.selected_tile,upgrade.get("kind"),upgrade.get("level"),
+    upgrade.get("specialization"),room.bed_level,room.door_level,room.bed_branch,room.door_branch]
+   if signature!=drawn_signature:
+    drawn_signature=signature
+    inspection.queue_redraw()
  if ui.context_mode in ["upgrade","bed","door"]:
   ui.selected_icon.visible=false;ui.bed_items[0].visible=false;ui.door_items[0].visible=false
  for button in [ui.actions.upgrade,ui.bed_button,ui.door_button]:fit_action(button)

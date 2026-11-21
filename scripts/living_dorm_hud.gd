@@ -22,6 +22,9 @@ func _init(owner) -> void:
 func install() -> void:
  ui.theme_button(ui.quick_repair,"protection")
  ui.theme_button(ui.room_door_summary,"protection")
+ if ui.game.model.player_first_requested:
+  ui.room_door_summary.icon=null
+  ui.room_door_summary.add_theme_font_size_override("font_size",13)
  meter=ProgressBar.new()
  meter.name="player_door_integrity"
  meter.mouse_filter=Control.MOUSE_FILTER_IGNORE
@@ -97,6 +100,19 @@ func refresh(room, repair_reason: String) -> void:
  ui.room_door_summary.text="Destroyed · 0 HP" if hp01==0.0 else "Door %s/%s HP · %d%%" % [roundi(room.door_hp),roundi(room.max_hp()),roundi(hp01*100)]
  ui.room_door_summary.tooltip_text="Room %02d · Door level %d" % [room.index+1,room.door_level+1]
  ui.quick_repair.tooltip_text=repair_reason if repair_reason!="" else "Repair your door [R]"
+ if ui.game.model.uses_player_door_survival():
+  var recovery: PlayerDoorSurvival=ui.game.model.door_survival
+  ui.room_door_summary.text+=" · Armor %d%%" % roundi(PlayerDoorSurvival.armor(room.door_level)*100)
+  ui.room_door_summary.tooltip_text+=" · Physical armor"
+  if room.fear_bed_multiplier>1.0:
+   ui.room_bed_summary.text="Fear ×1.5 · %.1f G/s" % (room.income_rate()*room.fear_bed_multiplier)
+   ui.room_bed_summary.tooltip_text="Main Hunter siege grants +50% Bed Gold. Electricity is unchanged."
+  if recovery.remaining>0.0:
+   ui.quick_repair.text="Repair %ds · +%d HP" % [ceili(recovery.remaining),roundi(recovery.restored)]
+   ui.quick_repair.tooltip_text="Cooldown %ds. %d real HP restored." % [ceili(maxf(0.0,recovery.ready_at-ui.game.model.time)),roundi(recovery.restored)]
+  elif repair_reason!="":ui.quick_repair.text=repair_reason
+  else:ui.quick_repair.text="Repair %.0f G [R]" % recovery.price(room)
+  return
  if repair_reason.begins_with("Need"):
   ui.quick_repair.text=repair_reason
  elif hp01==0.0:

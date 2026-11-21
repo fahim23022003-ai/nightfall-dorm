@@ -92,6 +92,13 @@ LIVING_DORM_MODES = {
     **BUILDING_SCALE_MODES,
 }
 
+PLAYER_FIRST_MODES = {
+    "phase20": (
+        "Play Phase 20 Preview.cmd", "user://nightfall-phase20-preview.json", (1, 1, 0, 1),
+    ),
+    **LIVING_DORM_MODES,
+}
+
 
 def mode_environment(profile: str, switches: tuple[int, ...], living: bool = False,
                      survivor: bool = False, phase16: bool = False, weapons: bool = False,
@@ -102,7 +109,8 @@ def mode_environment(profile: str, switches: tuple[int, ...], living: bool = Fal
             "NIGHTFALL_WEAPON_FEEDBACK": str(int(weapons)),
             "NIGHTFALL_CLOSE_QUARTERS": str(int(close_quarters)),
             "NIGHTFALL_BUILDING_SCALE": str(int(building_scale)),
-            "NIGHTFALL_LIVING_DORM": "0", "NIGHTFALL_MINI_HUNTERS": "0", **settings}
+            "NIGHTFALL_LIVING_DORM": "0", "NIGHTFALL_MINI_HUNTERS": "0",
+            "NIGHTFALL_PLAYER_FIRST": "0", **settings}
 
 
 def launcher(environment: dict[str, str], arguments: str = "") -> bytes:
@@ -128,13 +136,16 @@ def verify_modes(
     empty.mkdir()
     environments = {}
     for label, (_, profile, switches) in modes.items():
-        close = label in ("close-quarters", "building-scale", "living-dorm")
+        close = label in ("close-quarters", "building-scale", "living-dorm", "phase20")
         phase16 = close or label in ("phase16", "weapon-feedback")
         environment = mode_environment(profile, switches, phase16 or label in ("living-nightmare", "survivor-rebirth"),
                                        phase16 or label == "survivor-rebirth", phase16,
-                                       close or label == "weapon-feedback", close, label in ("building-scale", "living-dorm"))
-        if label == "living-dorm":
+                                       close or label == "weapon-feedback", close,
+                                       label in ("building-scale", "living-dorm", "phase20"))
+        if label in ("living-dorm", "phase20"):
             environment.update(NIGHTFALL_LIVING_DORM="1", NIGHTFALL_PERFORMANCE_PREVIEW="1")
+        if label == "phase20":
+            environment["NIGHTFALL_PLAYER_FIRST"] = "1"
         environments[label] = environment
         env = os.environ | environment | {"XDG_DATA_HOME": str(working / ("data-" + label))}
         log = evidence / f"windows-pack-{label}.log"
@@ -168,7 +179,8 @@ def verify_modes(
         if "LIVING_NIGHTMARE_PACK_CHECKS=" not in log.read_text() or "FAILURES=0" not in log.read_text():
             raise RuntimeError(f"Living Nightmare pack verification did not complete. Inspect {log}.")
     if "survivor-rebirth" in modes:
-        for label in (name for name in ("survivor-rebirth", "phase16", "close-quarters", "building-scale", "living-dorm") if name in modes):
+        for label in (name for name in ("survivor-rebirth", "phase16", "close-quarters",
+                                       "building-scale", "living-dorm", "phase20") if name in modes):
             env = os.environ | environments[label] | {"XDG_DATA_HOME": str(working / ("lobby-data-" + label))}
             log = evidence / f"windows-pack-{label}-lobby.log"
             run([
@@ -218,7 +230,9 @@ def add_playtest_files(
             with source.open(entry) as body, target.open(entry, "w") as copy:
                 shutil.copyfileobj(body, copy)
         for label, (name, _, _) in modes.items():
-            args = " --windowed --resolution 960x540" if label == "living-dorm" else ""
+            if "phase20" in modes and label != "phase20":
+                continue
+            args = " --windowed --resolution 960x540" if label in ("living-dorm", "phase20") else ""
             target.writestr(name, launcher(environments[label], args))
         if "building-scale" in environments:
             performance = environments["building-scale"] | {
@@ -229,12 +243,19 @@ def add_playtest_files(
                 "NIGHTFALL_PROFILE_PATH": "user://nightfall-performance-diagnostic.json",
             }
             target.writestr("Play Performance Preview.cmd", launcher(performance, " --windowed --resolution 960x540"))
-            target.writestr("Record Performance Diagnostic.cmd", launcher(diagnostic, " --windowed --resolution 1280x720 -- --performance-diagnostic"))
-        if "living-dorm" in environments:
+            if "phase20" not in modes:
+                target.writestr("Record Performance Diagnostic.cmd", launcher(diagnostic, " --windowed --resolution 1280x720 -- --performance-diagnostic"))
+        if "living-dorm" in environments and "phase20" not in modes:
             diagnostic = environments["living-dorm"] | {
                 "NIGHTFALL_PROFILE_PATH": "user://nightfall-phase19-diagnostic.json",
             }
             target.writestr("Record Phase 19 Diagnostic.cmd",
+                            launcher(diagnostic, " --windowed --resolution 960x540 -- --performance-diagnostic"))
+        if "phase20" in environments:
+            diagnostic = environments["phase20"] | {
+                "NIGHTFALL_PROFILE_PATH": "user://nightfall-phase20-diagnostic.json",
+            }
+            target.writestr("Record Phase 20 Diagnostic.cmd",
                             launcher(diagnostic, " --windowed --resolution 960x540 -- --performance-diagnostic"))
         target.write(guide, guide.name)
 
@@ -251,6 +272,7 @@ def main() -> None:
     preview.add_argument("--close-quarters", action="store_true", help="Add Close Quarters with prior launchers.")
     preview.add_argument("--building-scale", action="store_true", help="Add Building Scale with a separate profile and prior launchers.")
     preview.add_argument("--living-dorm", action="store_true", help="Add Phase 19 with the known Low fallback.")
+    preview.add_argument("--player-first", action="store_true", help="Add the Phase 20 Low preview and diagnostics.")
     parser.add_argument("--source-commit", required=True)
     parser.add_argument("--zip", required=True, type=Path)
     parser.add_argument("--evidence-dir", required=True, type=Path)
@@ -288,6 +310,9 @@ def main() -> None:
     elif args.living_dorm:
         modes = LIVING_DORM_MODES
         guide_name = "LIVING_DORM.md"
+    elif args.player_first:
+        modes = PLAYER_FIRST_MODES
+        guide_name = "PLAYER_FIRST.md"
     guide = ROOT / "docs" / guide_name
     archive = args.zip.resolve()
     evidence = args.evidence_dir.resolve()

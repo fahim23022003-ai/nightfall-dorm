@@ -112,6 +112,10 @@ func render_overview_room(c,p,room: RoomState,theme: String,colors: Array):
  var floor_tint: Color=colors[0].lightened(.13)
  if owned:floor_tint=floor_tint.lerp(Color("375952"),.64)
  if not room.alive:floor_tint=floor_tint.darkened(.24)
+ if c.model.player_first_requested and c.phase20_heatmap and room.owner>=0 and room.alive:
+  if PlayerDoorSurvival.under_siege(c.model,room):floor_tint=floor_tint.lerp(Color("A03A50"),.78)
+  elif room.door_hp<=room.max_hp()*.30:floor_tint=floor_tint.lerp(Color("A35443"),.68)
+  elif c.model.time-c.model.chronicle.last_attack(room.index)<35.0:floor_tint=floor_tint.lerp(Color("8E6835"),.50)
  for part: Rect2 in room.layout.floor:
   var surface:=Rect2(OFFSET+part.position,part.size)
   c.draw_rect(surface,floor_tint)
@@ -153,6 +157,8 @@ func draw_overview_footer(c,p,data: Dictionary,tint: Color):
  if c.overview_room>=0:
   var room: RoomState=c.model.rooms[c.overview_room]
   var resident: String=c.room_ownership_label(room) if c.model.room_rush_active() else room.survivor_name() if room.owner>=0 else "Vacant"
+  if c.model.player_first_requested and room.owner>0 and PlayerDoorSurvival.under_siege(c.model,room) and room.door_hp<=room.max_hp()*.30:
+   resident+=" · SOS"
   if c.model.room_rush_status(room.index)=="approaching":
    resident+=" · Still vacant"
   var trait_name: String=StrategyCatalog.TRAITS.get(room.trait_id,{}).get("name","")
@@ -160,12 +166,17 @@ func draw_overview_footer(c,p,data: Dictionary,tint: Color):
   if not trait_name.is_empty():detail+="  ·  "+trait_name
   if c.model.player_room<0 and c.model.time<c.model.preparation and room.owner<0 and not c.overview_opening.is_empty():
    detail+="  ·  Walk ~%ds  ·  Hunter ~%ds if targeted first" % [c.overview_opening.entry_seconds,c.overview_opening.hunter_seconds]
-   if c.overview_opening.get("early_siege_risk",false):
+   if c.model.player_first_requested:
+    var gap: float=c.overview_opening.hunter_seconds-c.overview_opening.entry_seconds
+    detail+=" · %s approach risk" % ("High" if gap<10.0 else "Moderate" if gap<20.0 else "Low")
+   if c.overview_opening.get("early_siege_risk",false) and not c.model.player_first_requested:
     detail+="  ·  FAST HUNTER ROUTE"
     detail_tint=Color("EDBA78")
+  elif c.model.player_first_requested and is_finite(c.model.chronicle.last_attack(room.index)):
+   detail+=" · Last hit %.0fs ago" % maxf(0.0,c.model.time-c.model.chronicle.last_attack(room.index))
  p.text(c,detail,Vector2(left+12,top+31),11,detail_tint)
  if not c.mobile_mode:
-  var controls: String="Wheel zoom  ·  Middle drag  ·  0 reset  ·  M focus"
+  var controls: String="Wheel · middle-drag · H danger · 0 reset · M focus" if c.model.player_first_requested else "Wheel zoom  ·  Middle drag  ·  0 reset  ·  M focus"
   var width: float=p.font.get_string_size(controls,HORIZONTAL_ALIGNMENT_LEFT,-1,11).x
   p.text(c,controls,Vector2(view.x-left-width-12,top+31),11,Color("BBC8C7"))
  c.draw_set_transform(Vector2.ZERO)

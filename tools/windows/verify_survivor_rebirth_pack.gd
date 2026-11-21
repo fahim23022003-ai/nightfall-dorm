@@ -71,6 +71,9 @@ func run():
    check(ResourceLoader.exists("res://assets/visual_rebirth/buildings/door/living_dorm.png"),"gothic door atlas included")
   if OS.get_environment("NIGHTFALL_BUILDING_SCALE")=="1":
    check(game.model.player().spatial.rules_version==SpatialConstruction.SUBSTANTIAL_VERSION,"Physical Story claim enables revised footprints")
+  if OS.get_environment("NIGHTFALL_PLAYER_FIRST")=="1":
+   check(game.model.uses_player_door_survival(),"Phase 20 door rules are active in Story")
+   check(game.profile.settings.adaptive_performance,"Adaptive performance starts enabled")
  game.return_menu()
  game.audio_system.shutdown()
  await create_timer(.5).timeout

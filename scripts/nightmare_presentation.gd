@@ -517,6 +517,7 @@ func skill_shape(c,id: String,p: Vector2,clock: float,charging: bool,color: Colo
    var v=Vector2.from_angle(i*TAU/(4+detail*2)+t*.1)
    c.draw_line(p+v*(radius+3),p+v*(radius+9),Color(color,color.a*.45),2)
 func atmosphere(c,clock: float):
+ if CinematicQuality.optional_trim(c):return
  var detail=CinematicQuality.detail(c)
  if detail==0:return
  var rect=c.presentation.visible_world_rect(c,0)

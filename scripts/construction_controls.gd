@@ -192,7 +192,10 @@ func confirm(at: Vector2,fine=false) -> bool:
   if id<0:id=r.spatial.next_id-1
   else:last_visual={"id":id,"instance":int(r.buildings[id].instance_id),"from":before,"to":point,"life":.22}
   game.selected_tile=id
-  if not lesson or kind!="turret":kind=""
+  var keep_selected:=false
+  if lesson:
+   keep_selected=kind==("generator" if game.model.player_first_requested else "turret")
+  if not keep_selected:kind=""
   moving=-1;rotation=0
  game.ui.purchase(ok);refresh();game.queue_redraw();return ok
 func handle_cancel(event) -> bool:

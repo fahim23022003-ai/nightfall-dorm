@@ -29,6 +29,9 @@ static func _make_hunter_backlight() -> GradientTexture2D:
 
 static func reduced_motion(c) -> bool:return c.profile.settings.get("reduced_effects",false) or c.profile.settings.get("reduced_motion",false)
 static func reduced_flash(c) -> bool:return c.profile.settings.get("reduced_effects",false) or c.profile.settings.get("reduced_flashes",false)
+static func optional_trim(c) -> bool:
+ return c.phase20_trim if c.get("phase20_trim")!=null else false
+
 static func detail(c) -> int:
  if c.profile.settings.get("reduced_effects",false):return 0
  return {"low":0,"medium":1,"high":2}.get(c.profile.settings.get("graphics_quality","medium"),1)

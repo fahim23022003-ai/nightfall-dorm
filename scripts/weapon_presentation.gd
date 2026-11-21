@@ -11,6 +11,8 @@ const MAX_NUMBERS := 32
 const CONTACT_LIFE := .30
 const NUMBER_LIFE := .95
 
+var sockets: Dictionary={}
+var sockets_reduced:=false
 var feed: WeakRef
 var clock := 0.0
 var player_room := -1
@@ -22,7 +24,7 @@ var muzzles: Dictionary = {}
 var flight_seen: Dictionary = {}
 
 func reset() -> void:
- contacts.clear();numbers.clear();muzzles.clear();flight_seen.clear()
+ contacts.clear();numbers.clear();muzzles.clear();flight_seen.clear();sockets.clear()
  clock=0.0
 
 func begin_frame(c, model, delta: float) -> void:
@@ -37,12 +39,18 @@ func begin_frame(c, model, delta: float) -> void:
  clock+=delta
  player_room=model.player_room
  low=CinematicQuality.detail(c)==0
+ var motion:=CinematicQuality.reduced_motion(c)
+ if sockets_reduced!=motion:
+  sockets_reduced=motion
+  sockets.clear()
  var current_mode: String=c.profile.settings.get("damage_numbers","all")
  if current_mode!=number_mode:
   numbers.clear()
   number_mode=current_mode
- if not contacts.is_empty():contacts=contacts.filter(func(entry):return clock-entry.born<CONTACT_LIFE)
- if not numbers.is_empty():numbers=numbers.filter(func(entry):return clock-entry.last<NUMBER_LIFE)
+ while not contacts.is_empty() and clock-contacts[0].born>=CONTACT_LIFE:
+  contacts.pop_front()
+ for index in range(numbers.size()-1,-1,-1):
+  if clock-numbers[index].last>=NUMBER_LIFE:numbers.remove_at(index)
  for key in muzzles.keys():
   if clock-muzzles[key].born>.15:muzzles.erase(key)
 
@@ -54,7 +62,9 @@ func _receive(event: Dictionary) -> void:
   return
  var projectile: int=event.projectile_id
  var had_flight:=flight_seen.has(projectile)
- if type in ["impact","cancel"]:flight_seen.erase(projectile)
+ if type in ["impact","cancel"]:
+  flight_seen.erase(projectile)
+  sockets.erase(projectile)
  if type=="cancel":return
  if type!="burn":
   var existing := false
@@ -127,9 +137,15 @@ func muzzle(c, visuals, event: Dictionary) -> Vector2:
 func projectile_point(c, visuals, shot: Dictionary, target: Vector2) -> Vector2:
  var point: Vector2=shot.position
  if shot.age<.12:
-  var given={"origin":shot.from,"target_position":shot.get("launch_target",target),"aim_position":shot.get("launch_aim",target),"rotation":shot.get("rotation",0),"grid":shot.get("grid",false),"kind":shot.kind,"level":shot.level}
-  if shot.has("art_scale"):given.art_scale=shot.art_scale
-  var offset:=muzzle(c,visuals,given)-Vector2(shot.from)
+  var id: int=shot.id
+  var offset: Vector2
+  if sockets.has(id):
+   offset=sockets[id]
+  else:
+   var given={"origin":shot.from,"target_position":shot.get("launch_target",target),"aim_position":shot.get("launch_aim",target),"rotation":shot.get("rotation",0),"grid":shot.get("grid",false),"kind":shot.kind,"level":shot.level}
+   if shot.has("art_scale"):given.art_scale=shot.art_scale
+   offset=muzzle(c,visuals,given)-Vector2(shot.from)
+   sockets[id]=offset
   var muzzle_weight:=1.0-smoothstep(0.0,.12,shot.age)
   point+=offset*muzzle_weight+CONTACT_HEIGHT*(1.0-muzzle_weight)
  else:
@@ -138,7 +154,7 @@ func projectile_point(c, visuals, shot: Dictionary, target: Vector2) -> Vector2:
 
 func draw_combat(c, visuals, model, visible: Rect2, world_offset: Vector2) -> void:
  var scale := 1.0/maxf(.24,c.get_canvas_transform().get_scale().x)
- var reduced_flash := CinematicQuality.reduced_flash(c)
+ var reduced_flash := CinematicQuality.reduced_flash(c) or CinematicQuality.optional_trim(c)
  for value: Dictionary in muzzles.values():
   var event: Dictionary=value.event
   if not visible.has_point(world_offset+Vector2(event.origin)):continue
@@ -200,10 +216,13 @@ func draw_contact(c, event: Dictionary, point: Vector2, fade: float, scale: floa
   c.draw_arc(point,radius,0,TAU,16,Color(tint,fade*.9),2.0*scale)
  if not blocked:
   var count:=3 if low or reduced_flash else 5
+  var rays:=PackedVector2Array()
   for ray in range(count):
    var radial:=Vector2.from_angle(float(ray)*TAU/count+.27)
    if event.kind=="flame":radial=(radial+Vector2.UP*.65).normalized()
-   c.draw_line(point+radial*radius*.45,point+radial*radius,Color(tint,fade*.90),1.65*scale)
+   rays.append(point+radial*radius*.45)
+   rays.append(point+radial*radius)
+  c.draw_multiline(rays,Color(tint,fade*.90),1.65*scale)
  if event.slow and event.kind=="frost":
   c.draw_arc(point,13*scale,0,PI,12,Color("ACF3FF",fade*.72),1.5*scale)
 

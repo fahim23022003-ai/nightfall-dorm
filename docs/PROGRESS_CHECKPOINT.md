@@ -1,3 +1,13 @@
+# Phase 20 · Player-First preview
+
+The opt-in preview adds three-lesson Practice, pausing Help, physical door armor,
+siege Bed Gold, paid continuous repair, free camera and match reports. The
+Performance Preview remains available with a separate profile. Protected
+construction paths remain in use while collision and demolition gates are open.
+[Playtest instructions and scope](PLAYER_FIRST.md)
+
+---
+
 # Phase 19 · Living Dorm preview
 
 The opt-in preview adds a persistent door meter, readable room effects,

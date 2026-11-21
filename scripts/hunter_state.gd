@@ -690,8 +690,9 @@ func _living_choice(model, scores: Dictionary) -> int:
   var extra: float=scores[index]-shortest
   if extra>window:continue
   var penalty:=1.0
+  var revisit: float={"crusher":.72,"stalker":.42,"ravager":.61,"witch":.51,"electric":.45,"storm":.64}.get(archetype,.54) if model.player_first_requested else .54
   for recent: int in recent_living_rooms:
-   if recent==index:penalty*=.54
+   if recent==index:penalty*=revisit
   var weight:=lerpf(1.0,.24,extra/window)*penalty
   weights[index]=weight
   total+=weight

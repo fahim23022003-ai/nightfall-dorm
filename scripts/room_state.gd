@@ -31,6 +31,7 @@ var barrier_remaining=0.0
 var threat_income_factor=1.0
 var threat_power_factor=1.0
 var production_paused=false
+var fear_bed_multiplier:=1.0
 var shots = 0
 var damage_dealt = 0.0
 var spent = 0.0
@@ -349,7 +350,7 @@ func sell_building(tile: int) -> bool:
 
 func tick_economy(delta: float,dynamo_factor: float=1.0,bed_factor: float=1.0):
  if sleeping and alive: occupied_seconds+=delta
- var income = 0.0 if production_paused else income_rate()/temporary_income*delta+item_bonus_income
+ var income = 0.0 if production_paused else income_rate()/temporary_income*delta*fear_bed_multiplier+item_bonus_income
  item_bonus_income=0
  income*=clampf(bed_factor,.8,1.0)
  gold += income

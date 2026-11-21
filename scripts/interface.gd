@@ -334,13 +334,17 @@ func show_settings():
  var options=["reduced_motion","reduced_flashes","reduced_effects","muted","fullscreen","tutorial"]
  var names=["Reduce motion / camera impulse","Reduce flashes / light response","Reduced effects (overrides quality)","Mute all audio","Fullscreen","First-night tutorial"]
  var premium_positions: Array[Vector2]=[Vector2(632,282),Vector2(632,322),Vector2(632,362),Vector2(158,388),Vector2(632,215),Vector2(632,402)]
+ if use_living_ui() and game.model.player_first_requested:
+  options.append("adaptive_performance")
+  names.append("Adaptive performance · cosmetic only")
+  premium_positions.append(Vector2(158,432))
  for i in range(options.size()):
   var toggle:=CheckButton.new()
   var id: String=options[i]
   toggle.name=id
   toggle.text=names[i]
   toggle.position=premium_positions[i] if living else Vector2(640,190+i*50)
-  toggle.size=Vector2(410 if id=="muted" else 485,34) if living else Vector2(470,0)
+  toggle.size=Vector2(410 if id in ["muted","adaptive_performance"] else 485,34) if living else Vector2(470,0)
   toggle.button_pressed=game.profile.settings.get(id,false)
   toggle.toggled.connect(func(value):game.change_setting(id,value))
   panel.add_child(toggle)
@@ -352,6 +356,23 @@ func show_settings():
   var controls:=button("Keyboard controls",Vector2(795,544),func():show_help(true),322,39)
   controls.name="settings_controls"
   theme_button(controls,"settings")
+  if game.model.player_first_requested:
+   var identity:=OptionButton.new()
+   identity.position=Vector2(158,466)
+   identity.size=Vector2(410,31)
+   identity.tooltip_text="Room name is cosmetic and follows your profile."
+   for preset: String in PlayerProfile.ROOM_IDENTITIES:identity.add_item("Room identity · "+preset)
+   identity.select(PlayerProfile.ROOM_IDENTITIES.find(game.profile.settings.room_identity))
+   identity.item_selected.connect(func(index):game.change_setting("room_identity",PlayerProfile.ROOM_IDENTITIES[index]))
+   panel.add_child(identity)
+   theme_button(identity,"settings")
+   var alerts:=CheckButton.new()
+   alerts.position=Vector2(158,501);alerts.size=Vector2(410,30)
+   alerts.text="Show teammate SOS alerts"
+   alerts.button_pressed=game.profile.settings.tactical_alerts
+   alerts.toggled.connect(func(value):game.change_setting("tactical_alerts",value))
+   panel.add_child(alerts)
+   theme_button(alerts,"quiet")
  else:
   label_at("All quality levels preserve danger warnings and timing.\nPreferences affect presentation only.",Vector2(150,449),16,450)
  var guide:=OptionButton.new()
@@ -706,6 +727,8 @@ func refresh_context():
   if game.model.weapon_feedback.enabled and (b.kind in DefenseEffects.WEAPONS or b.kind=="barrier"):
    selected_details.tooltip_text=selected_details.text+"\n"+selected_details.tooltip_text
    selected_details.text=BuildingStats.combat_readout(game.model,room,game.selected_tile)
+   if game.model.player_first_requested and b.level<Catalog.building_max_level(b.kind) and (not room.strategy_enabled or b.level!=4):
+    selected_details.text+="\n"+BuildingStats.next_machine(game.model,room,game.selected_tile)
   if room.strategy_enabled and b.level==4:actions.upgrade.text="Specialize → Level 5"
  elif context_mode=="bed":
   context_title.text="BED LEVEL %d / 10" % (room.bed_level+1)
@@ -713,6 +736,8 @@ func refresh_context():
  elif context_mode=="door":
   context_title.text="DOOR LEVEL %d / 10" % (room.door_level+1)
   door_details.text=BuildingStats.structure_preview(game.model,room,"door")+"\n"+action_reason("door")
+  if game.model.uses_player_door_survival():
+   door_details.text+="\nPhysical armor %d%% → %d%%" % [roundi(PlayerDoorSurvival.armor(room.door_level)*100),roundi(PlayerDoorSurvival.armor(room.door_level+1)*100)]
  elif context_mode=="confirm" and game.pending_build!="":
   var data=Catalog.BUILDINGS[game.pending_build].duplicate(true);var actual=BalanceRules.price(game.pending_build,game.model.balance_version);data.gold=actual.x;data.power=actual.y
   context_title.text="PLACE "+data.name.to_upper()
@@ -784,7 +809,7 @@ func repair_player_door() -> void:
  var before: float=room.door_hp if room!=null else 0.0
  var success: bool=game.model.repair_door()
  purchase(success)
- if success and room!=null and living_dorm_hud!=null:
+ if success and room!=null and living_dorm_hud!=null and not game.model.uses_player_door_survival():
   living_dorm_hud.repaired(room.door_hp-before)
   living_dorm_hud.refresh(room,action_reason("repair"))
 
@@ -863,7 +888,7 @@ func update_match():
  elif m.hunter.phase_guard_remaining>0:hunter_detail.text="PHASE TRANSITION GUARD · %.1fs" % m.hunter.phase_guard_remaining
  elif m.hunter.transformed and m.hunter.state!=HunterState.State.TRANSFORM and m.hunter.boss_attack=="" and m.hunter.surge_remaining<=0:hunter_detail.text="PHASE %s · %d UNDEAD · POWER %d" % ["II" if m.wrath.phase==2 else "I",m.minions.size(),m.evolution.acquired.size()]
  if game.tutorial_active:
-  phase_label.text="PRACTICE\nSTEP %d / %d" % [game.onboarding.step+1,game.onboarding.tutorial_step_count()]
+  phase_label.text="PRACTICE" if game.model.player_first_requested else "PRACTICE\nSTEP %d / %d" % [game.onboarding.step+1,game.onboarding.tutorial_step_count()]
   if not game.onboarding.tutorial_danger_active():
    hunter_label.text="SAFE PRACTICE · NO ENEMY YET"
    hunter_detail.text="Learn at your own pace"
@@ -938,6 +963,8 @@ func update_match():
  elif m.mini_hunters_requested and not m.mini_hunters.is_empty():
   hunter_detail.text+=" · %d shadowlings" % m.mini_hunters.size()
  details.text="Choose a room" if room==null else "%s · %s" % [game.presentation.ROOM_NAMES[room.index].capitalize(),"sleeping" if room.sleeping else "awake"]
+ if room!=null and m.player_first_requested and game.profile.settings.room_identity!="Default":
+  details.text=game.profile.settings.room_identity
  for control in [room_bed_summary,room_door_summary,room_selected_summary]: control.disabled=room==null
  if room!=null:
   room_bed_summary.text="Bed L%d  ·  %.1f G/s" % [room.bed_level+1,room.income_rate()]
@@ -997,6 +1024,18 @@ func update_match():
   else:
    room_selected_summary.text="Build B · %d/%d" % [room.buildings.size(),room.tile_count()]
    room_selected_summary.tooltip_text="B opens buildings; click valid floor to buy. P shows room planning. V moves a selected machine during preparation/intermission. F toggles 8-unit snap; Shift positions finely. Right-click / Esc cancels."
+ if game.model.player_first_requested and not warning_box.visible:
+  if room!=null and room.door_hp>0.0 and room.door_hp<=room.max_hp()*.30:
+   warning_box.visible=true;warning_label.visible=true;warning_label.text="CRITICAL DOOR · REPAIR WHEN AFFORDABLE"
+  elif game.profile.settings.tactical_alerts and m.hunter.target>=0 and m.hunter.target<m.rooms.size():
+   var threatened: RoomState=m.rooms[m.hunter.target]
+   if threatened.owner>0 and threatened.door_hp<=threatened.max_hp()*.30 and PlayerDoorSurvival.under_siege(m,threatened):
+    warning_box.visible=true;warning_label.visible=true;warning_label.text="TEAM SOS · ROOM %d DOOR CRITICAL" % (threatened.index+1)
+  if not warning_box.visible and game.profile.settings.tactical_alerts:
+   var until: float=m.evolution.seconds_to_timed_evolution(m)
+   if until<=5.0:
+    warning_box.visible=true;warning_label.visible=true
+    warning_label.text="HUNTER EVOLUTION APPROACHING · %ds" % ceili(until)
  if is_instance_valid(upgrade_notice):
   var q=game.presentation.notices;upgrade_notice.text=q.text();upgrade_notice.tooltip_text=q.details();upgrade_notice.visible=upgrade_notice.text!="" and not warning_box.visible and not game.construction.active() and not game.construction.planning
  RunChoiceInterface.refresh(self)
@@ -1085,6 +1124,7 @@ func action_reason(action: String) -> String:
  if m.result != "":
   return "The match has ended."
  var room = m.player()
+ if action=="repair" and m.uses_player_door_survival():return m.door_survival.reason(m,room)
  if room == null:
   return "Claim a room first."
  if not room.alive:

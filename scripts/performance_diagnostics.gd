@@ -68,6 +68,8 @@ func metrics() -> Dictionary:
     if area.has_point(game.MAP_OFFSET + room.tile_position(id)):
      visible += 1
  return {
+  "adaptive_trim":game.phase20_trim,
+  "adaptive_changes":game.phase20_trim_transitions,
   "fps": Engine.get_frames_per_second(),
   "draw_calls": int(Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME)),
   "process_ms": Performance.get_monitor(Performance.TIME_PROCESS)*1000.0,

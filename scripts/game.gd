@@ -146,6 +146,8 @@ func reset_practice():
  if model.run_kind!="practice":return
  start_practice(ui.replay_ui.practice_archetype,ui.replay_ui.practice_boss,ui.replay_ui.practice_items,ui.replay_ui.practice_map)
 func _adopt_session(next,wallet=null):
+ phase20_free_camera=false
+ reset_phase20_adaptation()
  if construction!=null:construction.reset()
  hunter_spectating=false
  watched_room=-1
@@ -208,6 +210,8 @@ func _ready():
   onboarding=preload("res://scripts/onboarding.gd").new(self);onboarding_layer.add_child(onboarding)
 
 func start_tutorial(replay=false):
+ phase20_free_camera=false
+ reset_phase20_adaptation()
  hunter_spectating=false
  watched_room=-1
  if mobile_mode:return false
@@ -392,6 +396,8 @@ func activate_item(slot: int,target: int=-1) -> bool:
  return ok
 
 func return_menu():
+ if phase20_help_open:close_pausing_help()
+ phase20_free_camera=false
  _close_story_lobby()
  if construction!=null:construction.reset()
  hunter_spectating=false
@@ -417,8 +423,77 @@ func toggle_pause():
  if not model.running: pending_build=""
  ui.show_pause(not model.running)
 
+var phase20_help_open:=false
+var phase20_help
+var phase20_was_running:=false
+var phase20_free_camera:=false
+var phase20_heatmap:=true
+var phase20_camera_anchor:=Vector2.ZERO
+var phase20_trim:=false
+var phase20_trim_transitions:=0
+var phase20_samples:=0
+var phase20_slow_samples:=0
+var phase20_window:=0.0
+var phase20_bad_windows:=0
+
+func reset_phase20_adaptation() -> void:
+ phase20_trim=false
+ phase20_samples=0;phase20_slow_samples=0;phase20_window=0.0;phase20_bad_windows=0
+
+func phase20_adapt(delta: float) -> void:
+ if not model.player_first_requested or not profile.settings.get("adaptive_performance",true):
+  if phase20_samples>0 or phase20_trim:reset_phase20_adaptation()
+  return
+ if not model.running or phase20_trim:return
+ phase20_samples+=1
+ phase20_slow_samples+=int(delta>.037)
+ phase20_window+=minf(delta,.10)
+ if phase20_window<2.0:return
+ if phase20_samples>=12 and float(phase20_slow_samples)/phase20_samples>.45:phase20_bad_windows+=1
+ else:phase20_bad_windows=0
+ phase20_samples=0;phase20_slow_samples=0;phase20_window=0.0
+ if phase20_bad_windows>=2:
+  phase20_trim=true
+  phase20_trim_transitions+=1
+
+func open_pausing_help() -> void:
+ if phase20_help_open:return
+ if is_instance_valid(touch):touch.reset()
+ phase20_was_running=model.running
+ model.running=false
+ phase20_help_open=true
+ phase20_help=preload("res://scripts/pausing_help.gd").new(self)
+ phase20_help.open()
+
+func close_pausing_help() -> void:
+ if not phase20_help_open:return
+ phase20_help.close()
+ phase20_help=null
+ phase20_help_open=false
+ model.running=phase20_was_running and model.result.is_empty()
+ queue_redraw()
+
+func _phase20_camera_input(event: InputEvent) -> bool:
+ if tutorial_active or watched_room>=0 or hunter_spectating or full_map:return false
+ if event is InputEventMouseMotion and event.button_mask & MOUSE_BUTTON_MASK_MIDDLE:
+  if not phase20_free_camera:
+   if event.relative.length_squared()<.5:return true
+   phase20_free_camera=true
+   phase20_camera_anchor=camera.position
+   zoom_factor=camera.zoom.x
+  phase20_camera_anchor-=event.relative/maxf(.1,camera.zoom.x)
+  focus_camera(true)
+  queue_redraw()
+  return true
+ if phase20_free_camera and event is InputEventMouseButton and event.pressed and event.button_index in [MOUSE_BUTTON_WHEEL_UP,MOUSE_BUTTON_WHEEL_DOWN]:
+  zoom_factor=clampf(zoom_factor*(1.12 if event.button_index==MOUSE_BUTTON_WHEEL_UP else .89),.30,2.1)
+  focus_camera(true)
+  queue_redraw()
+  return true
+ return false
+
 func _process(delta: float):
- if in_background: return
+ if in_background or phase20_help_open:return
  if mode=="story_lobby":
   audio_system.update_state(delta,model,"lobby")
   return
@@ -426,6 +501,7 @@ func _process(delta: float):
  level_warning_time=maxf(0,level_warning_time-delta)
  danger_time=maxf(0,danger_time-delta)
  if mode == "match":
+  phase20_adapt(delta)
   presentation.weapons.begin_frame(self,model,delta)
   var direction = Vector2(float(Input.is_physical_key_pressed(KEY_D) or Input.is_physical_key_pressed(KEY_RIGHT))-float(Input.is_physical_key_pressed(KEY_A) or Input.is_physical_key_pressed(KEY_LEFT)),float(Input.is_physical_key_pressed(KEY_S) or Input.is_physical_key_pressed(KEY_DOWN))-float(Input.is_physical_key_pressed(KEY_W) or Input.is_physical_key_pressed(KEY_UP)))
   if mobile_mode: direction=touch.movement(delta)
@@ -459,7 +535,8 @@ func _process(delta: float):
    level_warning_time=3.0
   focus_camera(false,delta)
   ui_clock+=delta
-  if (not mobile_mode and CinematicQuality.detail(self)>0) or ui_clock>=0.05:
+  var quick_practice: bool=model.player_first_requested and tutorial_active
+  if (not quick_practice and not mobile_mode and CinematicQuality.detail(self)>0) or ui_clock>=(.10 if quick_practice else .05):
    ui_clock=0
    ui.update_match()
   horror.update(delta,model)
@@ -481,7 +558,12 @@ func _process(delta: float):
     audio_event("mythic_promotion" if last_progression.new_rank==6 else "rank")
     if last_progression.new_rank==6:audio_event("mythic_perk")
     audio_event("reward")
-   if model.run_kind=="campaign":ui.show_result()
+   if model.run_kind=="campaign":
+    if model.player_first_requested and model.result=="victory" and not CinematicQuality.reduced_motion(self):
+     var finished_model: MatchModel=model
+     get_tree().create_timer(.65).timeout.connect(func():
+      if mode=="result" and model==finished_model:ui.show_result())
+    else:ui.show_result()
    else:ui.replay_ui.show_session_result()
  if mode not in ["match","result"] or tutorial_active:audio_system.set_tension("quiet",0)
  if construction!=null:construction.update(delta)
@@ -503,6 +585,11 @@ var suppress_double_click_release=false
 var cancelled_pointer=false
 
 func _input(event):
+ if phase20_help_open:
+  if event is InputEventKey and event.pressed and not event.echo and event.keycode in [KEY_ESCAPE,KEY_G]:
+   close_pausing_help()
+   get_viewport().set_input_as_handled()
+  return
  if mode=="story_lobby":
   return
  if hunter_spectating:
@@ -529,11 +616,12 @@ func _input(event):
   get_viewport().set_input_as_handled()
 
 func _unhandled_input(event):
- if mode!="match" or in_background or hunter_spectating: return
+ if mode!="match" or in_background or hunter_spectating or phase20_help_open:return
  if model.run_kind=="endless" and model.endless!=null and model.endless.phase=="intermission" and not ui.replay_ui.preparing:return
  if macro_overview() and not mobile_mode and _handle_macro_overview(event):
   get_viewport().set_input_as_handled()
   return
+ if model.player_first_requested and _phase20_camera_input(event):get_viewport().set_input_as_handled();return
  if construction!=null and construction.handle(event):get_viewport().set_input_as_handled();return
  if mobile_mode and event is InputEventMouse: return
  if event is InputEventKey and event.pressed and not event.echo:
@@ -633,6 +721,7 @@ func interact_survivor():
   ui.update_match()
 
 func toggle_map():
+ if phase20_free_camera:phase20_free_camera=false;zoom_factor=1.0
  cancel_placement()
  full_map=not full_map
  if macro_overview():
@@ -689,6 +778,10 @@ func _handle_macro_overview(event: InputEvent) -> bool:
   focus_camera(true)
   queue_redraw()
   return true
+ if model.player_first_requested and event is InputEventKey and event.pressed and not event.echo and event.keycode==KEY_H:
+  phase20_heatmap=not phase20_heatmap
+  queue_redraw()
+  return true
  if event is InputEventKey and event.pressed and not event.echo and event.keycode==KEY_0:
   reset_overview()
   focus_camera(true)
@@ -698,6 +791,13 @@ func _handle_macro_overview(event: InputEvent) -> bool:
 
 func focus_camera(snap: bool=false,delta: float=0.016):
  if mode!="match": return
+ if phase20_free_camera and not full_map and not hunter_spectating and watched_room<0:
+  var bounds: Rect2=model.map_bounds()
+  phase20_camera_anchor=phase20_camera_anchor.clamp(bounds.position+MAP_OFFSET,bounds.end+MAP_OFFSET)
+  camera.position=phase20_camera_anchor
+  camera.zoom=Vector2.ONE*zoom_factor
+  camera.force_update_scroll()
+  return
  var goal=model.player_position+MAP_OFFSET
  var zoom=1.45
  if full_map:
@@ -807,6 +907,9 @@ func change_setting(key: String,value):
  if key=="tutorial": tutorial_enabled=value
 
 func toggle_guide():
+ if mode=="match" and model.player_first_requested and not mobile_mode:
+  open_pausing_help()
+  return
  ui.help_open=not ui.help_open
  if ui.help_open:ui.items_ui.expanded=false
 
@@ -919,6 +1022,7 @@ func spectate_room(index: int) -> bool:
  focus_camera();ui.teammates.update()
  return true
 func return_to_my_room():
+ phase20_free_camera=false
  hunter_spectating=false
  watched_room=-1;full_map=false;zoom_factor=1
  if mode=="match":focus_camera(true)

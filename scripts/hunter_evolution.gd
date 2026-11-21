@@ -27,6 +27,16 @@ var shield_remaining=0.0
 var momentum=0.0
 var shadow_cooldown=0.0
 var drain_clock=0.0
+
+func campaign_base_level(model) -> int:
+ return 1+maxi(0,StageCatalog.index_of(model.stage_id))+int(acquired.size()/3)+(1 if model.difficulty=="hell" else 0)
+
+func seconds_to_timed_evolution(model) -> float:
+ if model.run_kind!="campaign" or model.tutorial_mode or model.hunter.hp<=0.0 or model.hunter.transformed or evolution_level>=10:
+  return INF
+ var remaining: float=(evolution_level+1-campaign_base_level(model))*75.0-model.haunt_recovery.active_seconds(model)
+ return remaining if remaining>0.0 else INF
+
 func has(id: String) -> bool:return id in acquired
 func award(model,room_index: int,source: String) -> String:
  if room_index<0 or room_index>=model.rooms.size() or model._kill_credit_room!=room_index or source not in ["Hunter","Undead"]:return ""
@@ -49,7 +59,7 @@ func award(model,room_index: int,source: String) -> String:
 func tick(delta: float,model):
  rebirth_remaining=maxf(0,rebirth_remaining-delta)
  if not model.tutorial_mode and model.run_kind in ["campaign","endless"]:
-  var wanted=1+int((model.endless.wave-1)/5) if model.run_kind=="endless" else 1+maxi(0,StageCatalog.index_of(model.stage_id))+int(model.haunt_recovery.active_seconds(model)/75)+int(acquired.size()/3)+(1 if model.difficulty=="hell" else 0)
+  var wanted=1+int((model.endless.wave-1)/5) if model.run_kind=="endless" else campaign_base_level(model)+int(model.haunt_recovery.active_seconds(model)/75)
   wanted=clampi(wanted,1,10)
   if wanted>evolution_level:
    evolution_level=wanted;model.record_event("nightmare_level",model.hunter.target if model.hunter.target>=0 else model.player_room,{"level":evolution_level})

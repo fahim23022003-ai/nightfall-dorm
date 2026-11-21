@@ -6,6 +6,7 @@ var phase="cinematic"
 var step=0
 var active=true
 var course
+const QuickTutorial=preload("res://scripts/quick_tutorial.gd")
 const LivingTutorial=preload("res://scripts/living_tutorial.gd")
 var start_position=Vector2.ZERO
 var repair_baseline=0
@@ -72,7 +73,7 @@ func begin_tutorial(replay: bool=false):
   clean_controls()
   phase="tutorial";active=true;step=0;continue_button=null;tutorial_finished=false
   mouse_filter=Control.MOUSE_FILTER_IGNORE
-  course=LivingTutorial.new(self,game,replay)
+  course=QuickTutorial.new(self,game,replay) if game.model.player_first_requested else LivingTutorial.new(self,game,replay)
   course.begin()
   return
  clean_controls();phase="tutorial";active=true;step=0;continue_button=null;repair_baseline=0;upgraded=false;damage_observed=false;threat_started=false;tutorial_finished=false
@@ -222,8 +223,10 @@ func tutorial_tick(delta):
     m.result="";m.running=false;game.pending_build="";game.ui.close_context();next_step()
     var b=Button.new();b.text="Save completion & enter menu";b.position=Vector2(420,565);b.size=Vector2(440,48);b.pressed.connect(save_completion);add_child(b)
     continue_button=b;primary_button(b)
+var quick_redraw_wait:=0.0
+
 func _process(delta):
- if not active:return
+ if not active or game.phase20_help_open:return
  if phase in ["cinematic","title"]:
   elapsed+=minf(delta,.25)
   if phase=="cinematic":
@@ -235,6 +238,10 @@ func _process(delta):
  elif phase=="tutorial":
   tutorial_tick(delta)
   if is_instance_valid(action_feedback):action_feedback.text=game.ui.feedback_text if game.presentation.clock<game.ui.feedback_until and game.ui.feedback_text not in ["Defense improved!",""] else ""
+ if phase=="tutorial" and game.model.player_first_requested:
+  quick_redraw_wait-=delta
+  if quick_redraw_wait>0.0:return
+  quick_redraw_wait=.05
  queue_redraw()
 func _input(event):
  if is_welcome_open():

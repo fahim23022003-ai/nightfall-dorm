@@ -248,7 +248,7 @@ func render(c):
  c.draw_rect(background,Color("11171E"))
  # Architectural surround, soft night haze and deliberate negative space.
  var haze_bounds := Rect2(630,-250,840,840)
- var low_detail := CinematicQuality.detail(c)==0
+ var low_detail: bool = CinematicQuality.detail(c)==0 or CinematicQuality.optional_trim(c) or (c.model.player_first_requested and c.tutorial_active)
  if not low_detail and visible.intersects(haze_bounds):
   c.draw_texture_rect(hall_haze,haze_bounds,false)
  for i in range(0 if low_detail else 60):
