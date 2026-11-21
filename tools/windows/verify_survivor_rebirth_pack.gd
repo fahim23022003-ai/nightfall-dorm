@@ -81,6 +81,10 @@ func run():
    check(game.profile.settings.adaptive_performance,"Adaptive performance starts enabled")
   if OS.get_environment("NIGHTFALL_TACTICAL_UI")=="1":
    check(game.ui.tactical_hud!=null and is_instance_valid(game.ui.tactical_hud.more),"live Story uses the tactical HUD")
+   if "phase22" in OS.get_environment("NIGHTFALL_PROFILE_PATH"):
+    check(game.ui.build_catalogue.cards.size()==Catalog.BUILDINGS.size(),"embedded catalogue covers every machine")
+    check(game.ui.build_catalogue.tabs.size()==4,"embedded catalogue has four functional categories")
+    check(game.ui.bottom_context.machine_view!=null,"embedded match instantiates the detailed machine inspector")
  game.return_menu()
  game.audio_system.shutdown()
  await create_timer(.5).timeout

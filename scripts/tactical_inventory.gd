@@ -13,6 +13,8 @@ var equip: Button
 var equipped_line: Label
 var selected: String
 var back: Callable
+var show_unowned:=false
+var group: Button
 
 func _init(interface) -> void:
  ui=interface
@@ -32,16 +34,17 @@ func open() -> void:
  ui.theme_button(back_button,"quiet")
  list=ItemList.new()
  list.name="inventory_stock"
- list.position=Vector2(111,178)
- list.size=Vector2(418,451)
+ list.position=Vector2(111,232)
+ list.size=Vector2(418,397)
  list.add_theme_stylebox_override("panel",GothicTheme.living_surface("card"))
  list.add_theme_stylebox_override("selected",GothicTheme.living_surface("inventory"))
  list.add_theme_font_size_override("font_size",20)
  list.add_theme_constant_override("v_separation",12)
  ui.attach(list)
  list.item_selected.connect(select)
- for id in ItemCatalog.IDS:entries.append(id)
- entries.sort_custom(func(a,b):return int(game.profile.inventory.get(a,0))>int(game.profile.inventory.get(b,0)))
+ group=ui.button("",Vector2(111,178),toggle_group,418,45)
+ group.name="inventory_group"
+ ui.theme_button(group,"inventory","inventory")
  var detail: Panel=ui.theme_panel(Rect2(553,178,614,451),"card")
  badge=TextureRect.new()
  badge.position=Vector2(24,23)
@@ -55,24 +58,50 @@ func open() -> void:
  details=ui.theme_label("",Vector2(26,178),20,561,"muted",false,detail)
  details.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  details.size.y=152
+ if ui.large_reading_text:details.add_theme_font_size_override("font_size",24)
  equip=ui.button("Equip",Vector2(26,348),toggle_equip,331,56,detail)
  ui.theme_button(equip,"inventory","loadout")
  if not game.profile.pending_spins.is_empty():
   ui.theme_button(ui.button("Saved reward",Vector2(374,348),ui.items_ui.spin,207,56,detail),"accent")
  refresh_stock()
- list.select(0)
- select(0)
+
+func toggle_group() -> void:
+ show_unowned=not show_unowned
+ refresh_stock()
 
 func refresh_stock() -> void:
  list.clear()
+ entries.clear()
+ for id in ItemCatalog.IDS:
+  var owned: bool=game.profile.inventory.get(id,0)>0 or id in game.profile.item_loadout
+  if owned!=show_unowned:entries.append(id)
+ entries.sort_custom(func(a,b):
+  var a_equipped: bool=a in game.profile.item_loadout
+  var b_equipped: bool=b in game.profile.item_loadout
+  if a_equipped!=b_equipped:return a_equipped
+  return ItemCatalog.ITEMS[a].name.naturalnocasecmp_to(ItemCatalog.ITEMS[b].name)<0)
  for id: String in entries:
   var qty: int=game.profile.inventory.get(id,0)
   var equipped: bool=id in game.profile.item_loadout
   list.add_item("%s · ×%d%s" % [ItemCatalog.ITEMS[id].name,qty," · Equipped" if equipped else ""])
- equipped_line.text="Equipped %d / %d item types" % [game.profile.item_loadout.size(),ItemCatalog.SLOTS]
+ group.text="Show owned equipment" if show_unowned else "Browse unowned items"
+ equipped_line.text="%s   ·   %d / %d slots equipped" % ["Unowned items" if show_unowned else "Owned equipment",game.profile.item_loadout.size(),ItemCatalog.SLOTS]
+ if entries.is_empty():
+  badge.texture=PremiumButton.texture("inventory")
+  title.text="Collection complete" if show_unowned else "Your inventory is empty"
+  quantity.text=""
+  details.text="All item types are in your inventory." if show_unowned else "Buy supplies with RM Cash in the Shop. Owned items appear here, ready to equip."
+  equip.hide()
+  return
+ var index:=maxi(0,entries.find(ui.last_inventory_item))
+ list.select(index)
+ list.ensure_current_is_visible()
+ select(index)
 
 func select(index: int) -> void:
  selected=entries[index]
+ if not show_unowned:ui.last_inventory_item=selected
+ equip.show()
  var data: Dictionary=ItemCatalog.ITEMS[selected]
  var qty: int=game.profile.inventory.get(selected,0)
  var equipped: bool=selected in game.profile.item_loadout
@@ -86,8 +115,6 @@ func select(index: int) -> void:
  equip.tooltip_text="No copies in stock" if qty==0 else "Two item types are already equipped" if equip.disabled and not game.profile.read_only else "Equipment changes are saved immediately"
 
 func toggle_equip() -> void:
- var index:=entries.find(selected)
  if not game.profile.equip_item(selected):game.audio_event("failure")
+ else:game.audio_event("ui_confirm")
  refresh_stock()
- list.select(index)
- select(index)

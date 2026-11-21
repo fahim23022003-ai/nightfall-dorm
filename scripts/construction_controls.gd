@@ -186,6 +186,7 @@ func confirm(at: Vector2,fine=false) -> bool:
  if lesson and game.onboarding.has_method("permits_place") and not game.onboarding.permits_place(kind,point):
   refresh();game.queue_redraw();return false
  if error!="":r.reject(error);game.ui.purchase(false);refresh();return false
+ var confirmation: String=Catalog.BUILDINGS[active_kind()].name+(" moved" if moving>=0 else " placed") if game.ui.tactical_hud!=null else "Defense improved!"
  var id=moving;var before=r.tile_position(id) if id>=0 else Vector2.ZERO
  var ok=game.model.move_building(point,rotation if r.spatial.grid else -1) if moving>=0 else game.model.place_building(kind,point,rotation)
  if ok:
@@ -197,7 +198,7 @@ func confirm(at: Vector2,fine=false) -> bool:
    keep_selected=kind==("generator" if game.model.player_first_requested else "turret")
   if not keep_selected:kind=""
   moving=-1;rotation=0
- game.ui.purchase(ok);refresh();game.queue_redraw();return ok
+ game.ui.purchase(ok,confirmation);refresh();game.queue_redraw();return ok
 func handle_cancel(event) -> bool:
  if not applicable():return false
  var escape=event is InputEventKey and event.pressed and not event.echo and event.keycode==KEY_ESCAPE
@@ -296,6 +297,8 @@ func refresh():
  if move_button.visible:
   var why=r.spatial.move_reason(game.model,game.selected_tile)
   move_button.disabled=why!="";move_button.tooltip_text=why if why!="" else "Reposition this same building; investments and cooldown remain."
+ if game.ui.bottom_context!=null and game.ui.bottom_context.machine_view!=null:
+  game.ui.bottom_context.machine_view.arrange_tools(self,r)
  if active():
   current_preview_error=reason();var error=current_preview_error;var title="Move" if moving>=0 else "Build "+Catalog.BUILDINGS[kind].name
   if grid:

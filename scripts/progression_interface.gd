@@ -7,6 +7,10 @@ var difficulty="standard"
 var story_context:=false
 var achievement_page=0
 var last_claimed=""
+var rank_page:="progress"
+var selected_perk:=0
+var rank_return:=Callable()
+var perk_notice:=""
 
 func _init(owner_ui):
  ui=owner_ui
@@ -45,6 +49,10 @@ func show_ranks():
  if game.mode=="result": game.return_menu()
  if game.mobile_mode:
   game.mobile_ui.show_rewards(ui,false)
+  return
+ if ui.use_tactical_ui():
+  rank_return=ui.campaign.show_stages if ui.current_screen=="stages" else show_loadout if ui.current_screen=="loadout" else game.return_menu
+  _rank_view("progress")
   return
  ui.clear()
  game.audio_event("menu")
@@ -98,6 +106,113 @@ func show_ranks():
  ui.button("Back",Vector2(92,622),ui.show_menu,180,40)
  ui.button("Choose loadout",Vector2(900,622),ui.campaign.show_story if game.story_preview_enabled else func(): ui.campaign.prepare(game.profile.selected_stage),270,40)
 
+func _rank_view(page: String) -> void:
+ rank_page=page
+ ui.clear()
+ ui.current_screen="ranks"
+ ui.tactical_back=rank_return
+ ui.theme_backdrop()
+ ui.theme_panel(Rect2(74,52,1132,616),"frame")
+ ui.theme_label("Rank & rewards",Vector2(111,83),40,780,"text",true)
+ var profile: PlayerProfile=game.profile
+ ui.theme_label("%s  ·  %d lifetime XP" % [profile.rank_name(),profile.xp],Vector2(115,149),21,1045,"gold")
+ for i in 3:
+  var key: String=["progress","perks","records"][i]
+  var tab: Button=ui.button(key.capitalize(),Vector2(114,215+i*72),func():_rank_view(key),214,56)
+  tab.name="rank_"+key
+  tab.toggle_mode=true
+  tab.button_pressed=page==key
+  ui.theme_button(tab,"selected" if page==key else "quiet",["rank","loadout","achievement"][i])
+  if page==key:tab.grab_focus()
+ ui.theme_panel(Rect2(353,203,808,376),"card")
+ match page:
+  "progress":_rank_progress(profile)
+  "perks":_rank_perks(profile)
+  "records":_rank_records(profile)
+ var back: Button=ui.button("Back [Esc]",Vector2(113,600),rank_return,214,47)
+ back.name="rank_back"
+ ui.theme_button(back,"quiet")
+
+func _rank_progress(profile: PlayerProfile) -> void:
+ var rank:=profile.rank_index()
+ badge(rank,Vector2(384,228),92)
+ ui.theme_label(profile.rank_name(),Vector2(497,224),34,621,"text",true)
+ var next: Label=ui.theme_label(profile.promotion_requirement(),Vector2(499,281),18,626,"muted")
+ next.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+ var bar:=ProgressBar.new()
+ bar.name="RankProgress"
+ bar.position=Vector2(387,348)
+ bar.show_percentage=false
+ bar.mouse_filter=Control.MOUSE_FILTER_IGNORE
+ bar.max_value=1 if rank==6 else RankCatalog.THRESHOLDS[rank+1]-RankCatalog.THRESHOLDS[rank]
+ bar.value=bar.max_value if rank==6 else profile.xp-RankCatalog.THRESHOLDS[rank]
+ bar.size=Vector2(739,14)
+ ui.panel.add_child(bar)
+ for i in RankCatalog.NAMES.size():
+  var x:=386.0+106*i
+  var emblem: TextureRect=badge(i,Vector2(x+14,399),68)
+  emblem.modulate.a=1.0 if i<=rank else .57
+  var tier: Label=ui.theme_label(RankCatalog.NAMES[i],Vector2(x,482),16,97,"text" if i<=rank else "muted")
+  tier.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+  var xp: Label=ui.theme_label("%d XP" % RankCatalog.THRESHOLDS[i],Vector2(x,507),15,97,"muted")
+  xp.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+
+func _rank_perks(profile: PlayerProfile) -> void:
+ var perk: Dictionary=RankCatalog.PERKS[selected_perk]
+ for i in RankCatalog.PERKS.size():
+  var entry: Dictionary=RankCatalog.PERKS[i]
+  var pick: Button=ui.button(entry.name+("  ✓" if entry.id in profile.equipped else ""),Vector2(374,220+i*48),func():
+   selected_perk=i
+   perk_notice=""
+   _rank_view("perks")
+   ui.panel.get_node("perk_"+entry.id).grab_focus(),273,43)
+  pick.name="perk_"+entry.id
+  ui.theme_button(pick,"selected" if i==selected_perk else "quiet")
+  pick.toggle_mode=true
+  pick.button_pressed=i==selected_perk
+ perk_icon(perk.id,Vector2(679,234),73)
+ ui.theme_label(perk.name,Vector2(773,235),25,367,"text",true)
+ ui.theme_label("%d / %d slots equipped" % [profile.equipped.size(),profile.perk_slots()],Vector2(774,279),17,358,"muted")
+ var desc: Label=ui.theme_label(perk.description,Vector2(684,325),21,442,"text")
+ desc.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+ var owned: bool=perk.id in profile.unlocked()
+ var equipped: bool=perk.id in profile.equipped
+ var full: bool=not equipped and profile.perk_slots()>1 and profile.equipped.size()>=profile.perk_slots()
+ var state: String="Requires "+RankCatalog.NAMES[perk.rank] if not owned else "Equipped" if equipped else "Unequip another perk first" if full else "Available"
+ ui.theme_label(perk_notice if perk_notice!="" else state,Vector2(684,421),18,439,"gold")
+ var equip: Button=ui.button("Unequip" if equipped else "Equip perk",Vector2(684,482),func():
+  var success:=profile.equip(perk.id)
+  perk_notice=("Perk removed" if equipped else "Perk equipped") if success else "Could not save this selection."
+  game.audio_event("reward" if success else "failure")
+  _rank_view("perks")
+  var selected: Button=ui.panel.get_node("perk_"+perk.id)
+  selected.grab_focus(),403,50)
+ equip.name="rank_equip"
+ equip.disabled=profile.read_only or not owned or full
+ ui.theme_button(equip,"primary","loadout")
+
+func _rank_records(profile: PlayerProfile) -> void:
+ var st: Dictionary=profile.statistics
+ ui.theme_label("Match record",Vector2(383,222),28,739,"text",true)
+ ui.theme_label("%d matches    ·    %d wins    ·    %d defeats" % [st.matches,st.victories,st.defeats],Vector2(385,271),22,730,"gold")
+ ui.theme_label("Wins by difficulty     Normal %d    /    Long Night %d    /    Hell %d" % [st.standard,st.hard,st.hell],Vector2(385,311),17,730,"muted")
+ ui.theme_label("%d Reapers defeated   ·   Classic Campaign %d / 5" % [st.reaper_defeats,profile.highest_completed_stage()],Vector2(385,351),18,730,"text")
+ var best:=PackedStringArray()
+ for stage in StageCatalog.STAGES:
+  var record: Dictionary=profile.stage_record(stage.id)
+  if not record.is_empty():best.append("Stage %d · %.1fs / %d XP" % [stage.number,record.best_time,record.best_xp])
+ var records: Label=ui.theme_label("No Classic stage records yet." if best.is_empty() else "     ".join(best),Vector2(385,393),17,737,"muted")
+ records.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+ var achievements: Button=ui.button("Achievements  ·  %d / %d earned" % [profile.achievements.size(),RewardCatalog.ACHIEVEMENTS.size()],Vector2(385,489),show_achievements,480,49)
+ achievements.name="rank_achievements"
+ ui.theme_button(achievements,"accent","achievement")
+
+func _back_from_achievements() -> void:
+ if ui.use_tactical_ui():
+  _rank_view("records")
+ else:
+  show_ranks()
+
 func show_loadout():
  if story_context:
   ui.campaign.show_story()
@@ -105,6 +220,7 @@ func show_loadout():
  if game.mode=="result":game.return_menu()
  if game.mobile_mode:game.mobile_ui.show_rewards(ui,true);return
  ui.clear();ui.current_screen="loadout";game.audio_event("menu")
+ if ui.use_tactical_ui():ui.tactical_back=ui.campaign.show_stages if game.campaign_mode else ui.show_menu
  ui.box(Rect2(90,35,1100,650))
  var stage=StageCatalog.stage(game.profile.selected_stage) if game.campaign_mode else {}
  ui.label_at("STAGE %d · %s" % [stage.number,stage.title] if not stage.is_empty() else "PREPARE FOR THE NIGHT",Vector2(125,55),31,950,true)
@@ -153,7 +269,13 @@ func show_loadout():
   else:game.start_match(difficulty),290,44)
 
 func show_perk_loadout():
+ if ui.use_tactical_ui() and ui.current_screen=="story_prepare":
+  rank_return=ui.campaign.show_story
+  perk_notice=""
+  _rank_view("perks")
+  return
  ui.clear();ui.current_screen="perk_loadout"
+ if ui.use_tactical_ui():ui.tactical_back=show_loadout
  ui.box(Rect2(90,40,1100,640))
  ui.label_at("PERMANENT PERK LOADOUT",Vector2(125,68),32,1000,true)
  ui.label_at("Choose %d permanent perks. Consumables use their own two slots; selections save immediately." % game.profile.perk_slots(),Vector2(125,118),17,1000)
@@ -173,6 +295,7 @@ func show_perk_loadout():
 
 func show_contracts():
  ui.clear();ui.current_screen="contracts"
+ if ui.use_tactical_ui():ui.tactical_back=show_loadout
  ui.box(Rect2(90,45,1100,630))
  ui.label_at("OPTIONAL CHALLENGE CONTRACTS",Vector2(125,70),32,1020,true)
  ui.label_at("Win a genuine match to qualify. Each stage + difficulty + contract pays once. Aborts and defeats pay no contract bonus.",Vector2(125,121),16,1010)
@@ -293,6 +416,7 @@ func flourish(node):
  node.create_tween().tween_property(node,"scale",Vector2.ONE,.3).set_trans(Tween.TRANS_BACK)
 func show_achievements():
  ui.clear();ui.current_screen="achievements"
+ if ui.use_tactical_ui():ui.tactical_back=_back_from_achievements
  ui.box(Rect2(60,35,1160,650))
  ui.label_at("ACHIEVEMENTS · EARNED REWARDS",Vector2(90,55),28,1080,true)
  ui.label_at("%d / 12 earned · %d XP · Rewards save once; stock-full claims wait safely." % [game.profile.achievements.size(),game.profile.xp],Vector2(92,100),17,1060)
@@ -322,7 +446,7 @@ func show_achievements():
   if (earned and not claimed) or last_claimed==id:flourish(icon)
  ui.button("Next achievements" if achievement_page==0 else "First achievements",Vector2(870,58),func():achievement_page=1-achievement_page;show_achievements(),290,36)
  ui.label_at(game.profile.warning,Vector2(92,578),14,1060)
- ui.button("Back to ranks",Vector2(92,620),show_ranks,240,42)
+ ui.button("Back to ranks",Vector2(92,620),_back_from_achievements,240,42)
  ui.button("Stage rewards",Vector2(365,620),show_stage_bonus,240,42).disabled=game.profile.pending_stage_bonus.is_empty()
 func show_stage_bonus():
  var offer=game.profile.pending_stage_bonus

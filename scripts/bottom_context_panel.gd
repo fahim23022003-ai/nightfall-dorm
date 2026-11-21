@@ -14,8 +14,10 @@ var expanded=false
 var transitioning=false
 var upgrade_shortcut: Button
 var inspection
+var machine_view
 var stats_scroll: ScrollContainer
 var drawn_signature: Array=[]
+var catalogue_layout := false
 var body := BODY
 var closed_position := CLOSED
 func _init(owner):ui=owner
@@ -115,13 +117,14 @@ func install_side():
   inspection.position=Vector2(103,32)
   inspection.size=Vector2(158,110)
   stats_scroll=ScrollContainer.new()
-  place(stats_scroll,Vector2(15,178),Vector2(334,170))
+  place(stats_scroll,Vector2(-126,211),Vector2(362,109))
   stats_scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
   stats_scroll.hide()
   ui.context_box.add_child(stats_scroll)
   ui.selected_details.reparent(stats_scroll,false)
-  ui.selected_details.custom_minimum_size=Vector2(314,0)
+  ui.selected_details.custom_minimum_size=Vector2(336,0)
   ui.selected_details.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+  machine_view=preload("res://scripts/machine_inspector.gd").new(ui)
 
 func is_transitioning() -> bool:return transitioning
 func fit_action(button: Button):
@@ -137,8 +140,31 @@ func fit_action(button: Button):
  button.add_theme_font_size_override("font_size",selected)
 func refresh():
  if not is_instance_valid(ui.context_box):return
- if is_instance_valid(stats_scroll):stats_scroll.visible=ui.context_open and ui.context_mode=="upgrade"
- ui.context_box.size=body.size
+ if machine_view!=null:
+  inspection.visible=ui.context_open and ui.context_mode in ["upgrade","door","bed"]
+  if ui.context_open and ui.context_mode=="upgrade":
+   inspection.position=Vector2(-120,55)
+   inspection.size=Vector2(167,144)
+  else:
+   machine_view.clear()
+   stats_scroll.hide()
+   inspection.position=Vector2(103,32)
+   inspection.size=Vector2(158,110)
+ var show_catalogue: bool=ui.build_catalogue!=null and ui.context_open and ui.context_mode=="build"
+ var drawer: Rect2=ui.build_catalogue.BOUNDS if show_catalogue else body
+ ui.context_box.size=drawer.size
+ if show_catalogue!=catalogue_layout:
+  catalogue_layout=show_catalogue
+  if tween!=null and tween.is_valid():tween.kill()
+  transitioning=false
+  expanded=ui.context_open
+  ui.context_box.visible=expanded
+  ui.context_box.position=drawer.position if expanded else closed_position
+  var side: bool=body==SIDE_BODY
+  place(ui.context_title,Vector2(18,8) if show_catalogue else Vector2(14,8 if side else 4),Vector2(320 if show_catalogue else 250 if side else 1130,30))
+  place(ui.build_cancel_button,Vector2(drawer.size.x-108,8) if show_catalogue else Vector2(269,6) if side else Vector2(1128,2),Vector2(90,34) if show_catalogue else Vector2(83,28) if side else Vector2(94,26))
+  if ui.expansion_ui!=null:
+   ui.expansion_ui.shortcut.position=Vector2(drawer.size.x-273,8) if show_catalogue else Vector2(168,6) if side else Vector2(1005,2)
  if is_instance_valid(inspection) and ui.context_open and ui.context_mode in ["upgrade","bed","door"]:
   var room=ui.game.model.player()
   if room!=null:

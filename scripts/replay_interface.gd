@@ -26,6 +26,9 @@ func _init(owner):
  if not stage.is_empty():selected_map=stage.map
 func page(title: String,subtitle: String,screen: String):
  ui.clear();ui.current_screen=screen
+ if ui.use_tactical_ui():
+  if screen in ["practice_setup","challenge_codes","cosmetics"]:ui.tactical_back=show_hub
+  elif screen=="endless_setup":ui.tactical_back=game.return_menu
  ui.box(Rect2(70,35,1140,650))
  ui.label_at(title,Vector2(105,58),32,1060,true)
  var info=ui.label_at(subtitle,Vector2(107,111),16,1060)
@@ -65,6 +68,9 @@ func remember_macro_layout(model: MatchModel):
  recent_macro_families.push_back(family)
  if recent_macro_families.size()>3:recent_macro_families.pop_front()
 func show_hub():
+ if ui.use_tactical_ui():
+  MainMenu.new(ui).other_modes()
+  return
  page("THE REPLAY CHAMBER","Independent challenges, advanced training and earned appearances. Campaign progress and the original tutorial remain available.","replay_hub")
  var cards=[{"icon":"challenge","name":"Challenge Codes","text":"Share a fixed map, seed, Hunter and normalized gear. No rank or permanent item advantage.","call":show_codes},{"icon":"practice","name":"Practice Room","text":"Real combat, temporary funds and items. Train repair, branches and Reaper warnings safely.","call":show_practice},{"icon":"cosmetic","name":"Earned Cosmetics","text":"Four original appearances unlocked through real accomplishments. No stat advantage.","call":show_cosmetics}]
  for i in range(cards.size()):

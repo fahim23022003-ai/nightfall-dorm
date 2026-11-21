@@ -357,7 +357,11 @@ func visible_hud(ui) -> Array[Rect2]:
    reserved.append(control.get_global_rect().grow(3))
  if ui.context_open and ui.bottom_context!=null:
   # Reserve the drawer's eventual resting place while its tween is in flight.
-  reserved.append(ui.bottom_context.body.grow(3))
+  var drawer: Rect2=ui.bottom_context.body
+  if ui.bottom_context.catalogue_layout:drawer=ui.build_catalogue.BOUNDS
+  elif ui.bottom_context.machine_view!=null and ui.bottom_context.machine_view.plate.is_visible_in_tree():
+   drawer=drawer.merge(ui.bottom_context.machine_view.plate.get_global_rect())
+  reserved.append(drawer.grow(3))
  return reserved
 
 func _summary_duplicates(entry: Dictionary,ui) -> bool:

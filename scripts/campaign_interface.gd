@@ -17,6 +17,7 @@ func show_stages():
  game.campaign_mode=true
  ui.clear()
  ui.current_screen="stages"
+ if ui.use_tactical_ui():ui.tactical_back=ui.replay_ui.show_hub
  game.audio_event("menu")
  ui.box(Rect2(70,35,1140,650))
  ui.label_at("THE NIGHTFALL CAMPAIGN",Vector2(104,55),30,1060,true)
@@ -41,7 +42,7 @@ func show_stages():
   button.disabled=not unlocked or game.profile.read_only
  var difficulty=game.profile.selected_difficulty
  ui.label_at("Selected difficulty: "+RankCatalog.DIFFICULTIES[difficulty].name+" · set independently in preparation",Vector2(106,585),17,1030)
- ui.button("Main menu",Vector2(106,628),game.return_menu,220,42)
+ ui.button("Back [Esc]" if ui.use_tactical_ui() else "Main menu",Vector2(106,628),ui.replay_ui.show_hub if ui.use_tactical_ui() else game.return_menu,220,42)
  ui.button("Ranks & rewards",Vector2(360,628),ui.progression.show_ranks,260,42)
 
 func prepare(id: String):

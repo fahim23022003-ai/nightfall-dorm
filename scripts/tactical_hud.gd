@@ -9,6 +9,8 @@ var objective: Label
 var tool_summary: Label
 var place_tool: Button
 var tool_icon: TextureRect
+var last_cursor:=Input.CURSOR_ARROW
+var critical_ward: Button
 var toast_key:=""
 var toast_until:=0.0
 
@@ -44,16 +46,18 @@ func install(top: Panel,brand: Label,help: Button,gold_icon: Control,gold_captio
  arrange(ui.pause_button,Vector2(1121,23),Vector2(122,42))
  ui.theme_button(ui.pause_button,"quiet","pause")
  ui.room_dock.add_theme_stylebox_override("panel",GothicTheme.living_surface("frame"))
- arrange(ui.room_dock,Vector2(342,653),Vector2(596,56))
+ arrange(ui.room_dock,Vector2(342,653),Vector2(618,56))
  arrange(ui.room_selected_summary,Vector2(350,659),Vector2(134,44))
- arrange(ui.quick_repair,Vector2(494,659),Vector2(142,44))
- arrange(ui.items_ui.item_toggle,Vector2(646,659),Vector2(136,44))
+ arrange(ui.quick_repair,Vector2(494,659),Vector2(156,44))
+ arrange(ui.items_ui.item_toggle,Vector2(660,659),Vector2(136,44))
  ui.theme_button(ui.quick_repair,"protection","repair")
- more=ui.button("More",Vector2(792,659),toggle_more,138,44)
+ more=ui.button("More",Vector2(805,659),toggle_more,138,44)
  more.name="tactical_more"
  ui.theme_button(more,"settings","settings")
  for action: Button in [ui.room_selected_summary,ui.quick_repair,ui.items_ui.item_toggle,more]:
-  action.add_theme_font_size_override("font_size",19)
+  action.add_theme_font_size_override("font_size",18)
+  action.add_theme_constant_override("icon_max_width",20)
+  action.add_theme_constant_override("h_separation",5)
   action.clip_text=true
  arrange(ui.room_door_summary,Vector2(20,653),Vector2(310,56))
  ui.room_door_summary.add_theme_font_size_override("font_size",19)
@@ -102,6 +106,10 @@ func install_menu() -> void:
   ui.ward_button.reparent(menu,false)
   arrange(ui.ward_button,Vector2(215,278),Vector2(193,46))
   ui.theme_button(ui.ward_button,"protection","ward")
+  critical_ward=ui.button("Ward [F]",Vector2(971,659),game.command_ward,230,44)
+  critical_ward.name="critical_ward"
+  ui.theme_button(critical_ward,"protection","ward")
+  critical_ward.hide()
  menu.hide()
 
 func install_tool() -> void:
@@ -122,6 +130,7 @@ func install_tool() -> void:
  place_tool=ui.button("Place",Vector2(125,122),confirm,102,40,frame)
  ui.theme_button(place_tool,"primary")
  arrange(ui.grid_placement_cancel_button,Vector2(236,122),Vector2(120,40))
+ ui.grid_placement_cancel_button.add_theme_font_size_override("font_size",15)
  ui.grid_placement_cancel_button.clip_text=true
  ui.grid_placement_cancel_button.set_deferred("size",Vector2(120,40))
 
@@ -197,8 +206,25 @@ func refresh(room: RoomState) -> void:
  if ui.room_door_summary.visible and room.door_hp>0.0:
   var armor: int=roundi(PlayerDoorSurvival.armor(room.door_level)*100) if game.model.uses_player_door_survival() else 0
   ui.room_door_summary.text="Door %s/%s · Armor %d%%" % [ui.resource_text(room.door_hp),ui.resource_text(room.max_hp()),armor]
+ var critical: bool=room!=null and room.alive and room.door_hp>0 and room.door_hp<=room.max_hp()*.30 and not tutorial and game.watched_room<0
+ if is_instance_valid(critical_ward):
+  critical_ward.visible=critical and auxiliary and not menu.visible
+  if critical_ward.visible:
+   critical_ward.disabled=ui.ward_button.disabled
+   critical_ward.text=ui.ward_button.text
+   critical_ward.tooltip_text=ui.ward_button.tooltip_text
+ var cursor:=Input.CURSOR_ARROW
+ if placing:
+  cursor=Input.CURSOR_CROSS if game.construction.current_preview_error.is_empty() else Input.CURSOR_FORBIDDEN
+ elif game.phase20_free_camera and Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
+  cursor=Input.CURSOR_DRAG
+ elif game.construction.hover>=0 and not ui.context_open and auxiliary:
+  cursor=Input.CURSOR_POINTING_HAND
+ if last_cursor!=cursor:
+  last_cursor=cursor
+  Input.set_default_cursor_shape(cursor)
  if tutorial:ui.room_selected_summary.position.x=573
- objective.visible=auxiliary and not menu.visible and not ui.teammates.expanded and game.profile.settings.guidance_mode=="show"
+ objective.visible=auxiliary and not critical and not menu.visible and not ui.teammates.expanded and game.profile.settings.guidance_mode=="show"
  if objective.visible:
   var task: String="Claim a vacant room [E]" if room==null else "Reach your bed and sleep [E]" if not room.sleeping else ""
   if room!=null and room.fear_bed_multiplier>1.0:task="Siege income · Bed Gold ×1.5"
@@ -206,21 +232,25 @@ func refresh(room: RoomState) -> void:
   objective.text=task
   objective.visible=not task.is_empty()
  if not tutorial:
-  ui.items_ui.item_toggle.text="Items ×%d" % ui.items_ui.hotbar.size()
-  ui.quick_repair.text="Repair"
+  ui.items_ui.item_toggle.text="Items [I]"
+  ui.quick_repair.text="Repair [R]"
+  ui.quick_repair.tooltip_text="Repair your door [R]"
   var repair: PlayerDoorSurvival=game.model.door_survival
   if game.model.uses_player_door_survival():
    if repair.remaining>0.0:ui.quick_repair.text="Repair · %ds" % ceili(repair.remaining)
    elif game.model.time<repair.ready_at:ui.quick_repair.text="Repair · %ds" % ceili(repair.ready_at-game.model.time)
-  ui.room_selected_summary.text="Build"
+  ui.room_selected_summary.text="Build [B]"
   ui.hunter_label.text+="  ·  %s / %s" % [ui.resource_text(game.model.hunter.hp),ui.resource_text(game.model.hunter.max_hp)] if not "/" in ui.hunter_label.text else ""
   if ui.hunter_detail.text.begins_with("Evolution ") and " HP" in ui.hunter_detail.text:
    ui.hunter_detail.text=ui.hunter_detail.text.get_slice(" · ",0)
  var note: String=ui.warning_label.text if ui.warning_box.visible else ""
  if note.begins_with("DOOR ") and "UNDER ATTACK" in note:note="Hunter at your door"
  if note.begins_with("CRITICAL DOOR"):note="Critical door · Repair when available"
- if room!=null and room.door_hp>0.0 and room.door_hp<=room.max_hp()*.30 and not tutorial:
-  note="Critical door · Repair when available"
+ if critical:
+  var reason: String=game.model.door_survival.reason(game.model,room) if game.model.uses_player_door_survival() else ui.quick_repair.tooltip_text if ui.quick_repair.disabled else ""
+  ui.quick_repair.tooltip_text=reason if not reason.is_empty() else "Start door repair [R]"
+  if note.is_empty() or note.begins_with("Critical door") or note=="Hunter at your door":
+   note="Critical door  ·  "+(reason if not reason.is_empty() else "Repair ready [R]")
   ui.warning_box.show()
   ui.warning_label.show()
  if game.model.run_kind=="endless":
@@ -241,14 +271,18 @@ func refresh(room: RoomState) -> void:
   var control=game.construction
   var kind: String=control.active_kind()
   var moving: bool=control.moving>=0
+  # Anchor to the edge opposite the room, leaving the placement cursor stable.
+  var room_center: Vector2=game.world_to_screen(room.center())
+  ui.grid_placement_banner.position.x=24 if room_center.x>800 else 878
   var extent: Vector2=room.spatial.footprint_for(control.point,kind,control.rotation).size/SpatialConstruction.CELL_SIZE
   var price: Vector2=Vector2.ZERO if moving else room.quote_build(kind)
   var fee: String="Move existing machine" if moving else "%s G · %s E" % [ui._price_amount(price.x),ui._price_amount(price.y)]
-  ui.grid_placement_label.text=Catalog.BUILDINGS[kind].name
-  ui.grid_placement_cancel_button.text="Cancel"
+  ui.grid_placement_label.text=Catalog.BUILDINGS[kind].name.capitalize()
+  ui.grid_placement_cancel_button.text="Cancel [Esc]"
   tool_icon.texture=game.presentation.textures[kind]
   var error: String=control.current_preview_error
-  tool_summary.text="%s · %d×%d cells · %d°\n%s" % [fee,int(extent.x),int(extent.y),control.rotation*90,"Ready · click the floor or Place" if error=="" else error]
+  if error=="Outside unlocked room":error="Footprint crosses the room boundary"
+  tool_summary.text="%s · %d×%d cells · %d°\n%s" % [fee,int(extent.x),int(extent.y),control.rotation*90,"Valid · click the floor or Place" if error=="" else "Blocked · "+error]
   tool_summary.modulate=GothicTheme.palette().muted if error=="" else Color("FFADB6")
   place_tool.disabled=error!=""
   place_tool.text="Move" if moving else "Place"

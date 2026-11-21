@@ -7,12 +7,19 @@ var buttons: Array=[]
 var purchased_id=""
 var paid=0
 var tactical_back:=Callable()
+var rendered_lock:=false
+var rendered_cash:=-1
+var rendered_read_only:=false
 func _init(owner):ui=owner;game=ui.game
 func show_shop():
  if ui.use_tactical_ui() and ui.current_screen!="shop":
   tactical_back=ui.show_result if game.mode=="result" else game.return_menu
+  feedback=""
  ui.clear();ui.current_screen="shop";buttons.clear()
- if ui.use_tactical_ui():ui.tactical_back=tactical_back
+ if ui.use_tactical_ui():
+  ui.tactical_back=tactical_back
+  _tactical_shop()
+  return
  var living: bool=ui.use_living_ui()
  if living:
   ui.theme_backdrop()
@@ -61,6 +68,45 @@ func show_shop():
   ui.theme_button(back,"quiet")
  update()
  purchased_id="" # A success flourish belongs to this transaction, never a later visit.
+func _tactical_shop() -> void:
+ ui.theme_backdrop()
+ ui.theme_panel(Rect2(83,49,1114,622),"frame")
+ ui.theme_label("Dorm supplies",Vector2(123,79),40,701,"text",true)
+ ui.premium_icon("cash",Vector2(891,87),Vector2(38,38))
+ ui.theme_label("%d RM Cash" % game.profile.rm_cash,Vector2(941,88),23,218,"gold")
+ var index:=0
+ for id: String in OnboardingCatalog.PRICES:
+  var item: Dictionary=ItemCatalog.ITEMS[id]
+  var at:=Vector2(123+(index%2)*525,166+floori(index/2.0)*193)
+  ui.theme_panel(Rect2(at,Vector2(507,178)),"card")
+  ui.items_ui.art(id,at+Vector2(15,23),90)
+  ui.theme_label(item.name,at+Vector2(118,12),23,376,"text")
+  var desc: Label=ui.theme_label(item.description,at+Vector2(118,54),17,375,"muted")
+  desc.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+  ui.theme_label("Owned ×%d" % int(game.profile.inventory.get(id,0)),at+Vector2(13,120),16,105,"muted")
+  var token: int=game.profile.purchase_serial+1
+  var button: Button=ui.button("",at+Vector2(118,118),func():purchase(id,token),367,45)
+  button.name="shop_buy_"+id
+  ui.theme_button(button,"shop","cash")
+  buttons.append({"button":button,"id":id})
+  index+=1
+ var message: String=feedback
+ if message.is_empty() and game.profile.rm_cash<OnboardingCatalog.PRICES.values().min():
+  message="Earn RM Cash by completing matches. Your balance carries over."
+ ui.theme_label(message,Vector2(126,547),18,1015,"danger" if message.begins_with("Purchase failed") else "muted" if feedback.is_empty() else "success")
+ var back: Button=ui.button("Back [Esc]",Vector2(124,603),tactical_back,193,44)
+ back.name="shop_back"
+ ui.theme_button(back,"quiet")
+ rendered_cash=-1
+ update()
+ var focus: Button=back
+ for entry in buttons:
+  if not entry.button.disabled:
+   focus=entry.button
+   break
+ focus.grab_focus()
+ purchased_id=""
+
 func purchase(id,token):
  if Time.get_ticks_msec()<lock_until:return
  lock_until=Time.get_ticks_msec()+450
@@ -74,12 +120,22 @@ func purchase(id,token):
  show_shop()
 func update():
  if ui.current_screen!="shop":return
+ var tactical: bool=ui.use_tactical_ui()
+ var locked: bool=Time.get_ticks_msec()<lock_until
+ if tactical:
+  if rendered_cash==game.profile.rm_cash and rendered_lock==locked and rendered_read_only==game.profile.read_only:return
+  rendered_cash=game.profile.rm_cash
+  rendered_lock=locked
+  rendered_read_only=game.profile.read_only
  for entry in buttons:
   if not is_instance_valid(entry.button):
    continue
   var cost: int=OnboardingCatalog.PRICES[entry.id]
   var stock_full: bool=int(game.profile.inventory.get(entry.id,0))>=ItemCatalog.MAX_STOCK
-  entry.button.disabled=game.profile.read_only or Time.get_ticks_msec()<lock_until or game.profile.rm_cash<cost or stock_full
-  if ui.use_living_ui():
+  entry.button.disabled=game.profile.read_only or locked or game.profile.rm_cash<cost or stock_full
+  if tactical:
+   var reason: String="Read-only profile" if game.profile.read_only else "Inventory full" if stock_full else "Need %d more RM" % (cost-game.profile.rm_cash) if game.profile.rm_cash<cost else ""
+   entry.button.text="Buy · %d RM" % cost if reason.is_empty() else "%d RM · %s" % [cost,reason]
+  elif ui.use_living_ui():
    var needed: int=maxi(0,cost-game.profile.rm_cash)
    entry.button.tooltip_text="Inventory full" if stock_full else "Need %d more RM Cash" % needed if needed>0 else "Buy one for %d RM Cash" % cost

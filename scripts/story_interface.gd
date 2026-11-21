@@ -142,7 +142,9 @@ func _show_tactical_preparation(profile: PlayerProfile,mode: String,track: Dicti
  ui.theme_panel(Rect2(78,47,1124,626),"frame")
  _line("Chapter %02d · %s" % [mission.chapter,mission.chapter_title],Vector2(112,73),19,925,GOLD)
  _line("Level %02d · %s" % [mission.level,mission.title],Vector2(109,106),47,1034,"F7F2E9",true)
- _line("%d / 50 cleared · Checkpoint %02d" % [track.highest,track.checkpoint],Vector2(113,169),18,937,BODY)
+ var next_clear: int=(floori(float(track.highest)/StoryCatalog.CHAPTER_LENGTH)+1)*StoryCatalog.CHAPTER_LENGTH
+ var milestone: String="Track complete" if track.finished else "Final mission at 50" if next_clear==StoryCatalog.FINAL_LEVEL else "Next checkpoint at %02d" % next_clear
+ _line("%s  ·  %d / 50 cleared  ·  Checkpoint %02d  ·  %s" % [RankCatalog.DIFFICULTIES[mode].name,track.highest,track.checkpoint,milestone],Vector2(113,169),18,1035,BODY)
  _progress(track.highest,Vector2(113,203),1051)
  for i in range(MODES.size()):
   var id: String=MODES[i]
@@ -155,19 +157,26 @@ func _show_tactical_preparation(profile: PlayerProfile,mode: String,track: Dicti
   key.disabled=profile.read_only
   ui.theme_button(key,"selected" if id==mode else "secondary",id)
  ui.theme_panel(Rect2(113,298,611,258),"card")
- _line("Mission",Vector2(136,312),22,560,GOLD)
- _paragraph(StoryCatalog.ENDING if track.finished else mission.briefing,Rect2(136,352,564,88),19,"F7F2E9").name="StoryBriefing"
+ _line("Mission objective" if not track.finished else "Story complete",Vector2(136,312),22,560,GOLD)
+ _paragraph(StoryCatalog.ENDING if track.finished else mission.objective,Rect2(136,347,564,63),22,"F7F2E9").name="StoryObjective"
+ if not track.finished:
+  var briefing:=_paragraph(mission.briefing,Rect2(136,407,564,57),16,BODY)
+  briefing.name="StoryBriefing"
  if not track.finished:
   var route: String=MapCatalog.map(mission.theme).title
   if game.model.procedural_v2_requested:route+=" · "+mission.topology.replace("_"," ").capitalize()
-  _line(route,Vector2(136,451),17,560,BODY).name="StoryRoutePreview"
-  _line(_encounter_summary(mission,mode),Vector2(136,488),17,560,GOLD).name="StoryEncounterTiming"
+  _line(route,Vector2(136,468),17,560,BODY).name="StoryRoutePreview"
+  _paragraph(_encounter_summary(mission,mode),Rect2(136,500,564,49),16,GOLD).name="StoryEncounterTiming"
  ui.theme_panel(Rect2(743,298,421,258),"card")
  _line("Loadout",Vector2(768,312),22,369,GOLD)
  var items:=PackedStringArray()
  for id in profile.item_loadout:items.append(ItemCatalog.ITEMS[id].name)
  _paragraph(", ".join(items) if not items.is_empty() else "No consumables equipped",Rect2(768,356,367,60),19,"F7F2E9")
- _line("%s · %d/%d perks" % [profile.rank_name(),profile.equipped.size(),profile.perk_slots()],Vector2(768,423),18,367,BODY)
+ var equipped:=PackedStringArray()
+ for perk in RankCatalog.PERKS:
+  if perk.id in profile.equipped:equipped.append(perk.name)
+ _line("%s · %d/%d perks" % [profile.rank_name(),profile.equipped.size(),profile.perk_slots()],Vector2(768,405),18,367,BODY)
+ _paragraph(", ".join(equipped) if not equipped.is_empty() else "No perks equipped",Rect2(768,441,367,44),16,BODY)
  ui.theme_button(ui.button("Edit items",Vector2(768,488),ui.items_ui.inventory,176,43),"inventory","inventory")
  ui.theme_button(ui.button("Rank perks",Vector2(960,488),ui.progression.show_perk_loadout,177,43),"secondary","rank")
  var feedback: String=notice if notice!="" else profile.warning
@@ -351,17 +360,23 @@ func _show_player_first_result(mission: Dictionary, result: Dictionary, won: boo
  var xp:=int(award.get("new_xp",0))-int(award.get("old_xp",0))
  var values: Array[String]=["%+d XP" % xp,"%+d RM Cash" % int(award.get("rm_cash",0)),game.profile.rank_name()]
  var subtitles: Array[String]=["Settled experience","Wallet %d RM" % int(award.get("rm_balance",game.profile.rm_cash)),"%d lifetime XP" % game.profile.xp]
- for index in range(values.size()):
-  var origin:=Vector2(176+index*314,202)
-  ui.theme_panel(Rect2(origin,Vector2(302,103)),"card")
-  _line(values[index],origin+Vector2(18,13),29 if tactical else 24,270,GOLD,not tactical)
-  _line(subtitles[index],origin+Vector2(18,53),16,270,BODY)
+ if tactical:
+  _settled_rewards(xp,int(award.get("rm_cash",0)),int(award.get("rm_balance",game.profile.rm_cash)))
+ else:
+  for index in range(values.size()):
+   var origin:=Vector2(176+index*314,202)
+   ui.theme_panel(Rect2(origin,Vector2(302,103)),"card")
+   _line(values[index],origin+Vector2(18,13),29 if tactical else 24,270,GOLD,not tactical)
+   _line(subtitles[index],origin+Vector2(18,53),16,270,BODY)
  _line("Story complete at Level 50" if result.finished else "Story level %02d → %02d · %s" % [mission.level,result.position,result.next_title],Vector2(176,333),23,930,"F7F1E7",true)
  var milestone: bool=won and mission.level%StoryCatalog.CHAPTER_LENGTH==0 and result.checkpoint>=mission.level
  _line("Chapter trophy · "+mission.chapter_title if milestone else "Checkpoint %02d · Highest clear %02d" % [result.checkpoint,result.highest],Vector2(177,373),18,923,GOLD)
  var reveal: bool=not game.profile.pending_spins.is_empty()
- _line("A saved item reward is ready to reveal." if reveal else "Continue when you are ready.",Vector2(177,413),17,923,BODY)
- var main: Button=ui.button("Story Archive" if result.finished else "Continue to next level" if won else "Try again",Vector2(176,490),func():
+ if reveal:
+  _line("A saved item reward is ready to reveal.",Vector2(177,413),17,923,BODY)
+ elif won and tactical:
+  _paragraph(StoryCatalog.ENDING if result.finished else mission.discovery,Rect2(177,410,925,65),17,BODY).name="StoryResultDiscovery"
+ var main: Button=ui.button("Reveal item reward" if reveal and tactical else "Story Archive" if result.finished else "Continue to next level" if won else "Try again",Vector2(176,490),func():
   if reveal:ui.items_ui.spin()
   elif result.finished:show_archive()
   else:show_prepare(),389,51)
@@ -377,12 +392,71 @@ func _show_player_first_result(mission: Dictionary, result: Dictionary, won: boo
  ui.theme_button(ui.button("Main menu",Vector2(591,575),game.return_menu,245,42),"quiet")
  main.grab_focus()
 
+func _settled_rewards(xp: int,cash: int,wallet: int) -> void:
+ var awards: Array=[]
+ if cash>0:awards.append(["cash","+%d RM Cash" % cash,"Wallet %d RM" % wallet])
+ if xp>0:awards.append(["rank","+%d XP" % xp,"%s · %d lifetime XP" % [game.profile.rank_name(),game.profile.xp]])
+ if awards.is_empty():
+  _line("No XP or RM Cash earned",Vector2(178,211),21,914,BODY)
+  _line("%s · %d lifetime XP   /   Wallet %d RM" % [game.profile.rank_name(),game.profile.xp,wallet],Vector2(178,256),17,914,BODY)
+  return
+ var card_width: float=(920.0-16.0*(awards.size()-1))/awards.size()
+ for i in awards.size():
+  var entry: Array=awards[i]
+  var at:=Vector2(176+i*(card_width+16),202)
+  ui.theme_panel(Rect2(at,Vector2(card_width,107)),"card")
+  ui.premium_icon(entry[0],at+Vector2(17,27),Vector2(54,54))
+  _line(entry[1],at+Vector2(88,13),30,card_width-100,GOLD)
+  var summary: String=entry[2]
+  if awards.size()==1:
+   summary+="   ·   No XP this match · %s rank" % game.profile.rank_name() if xp==0 else "   ·   No RM Cash this match · Wallet %d RM" % wallet
+  _line(summary,at+Vector2(89,65),17,card_width-101,BODY)
+
+const EVENT_ICONS := {
+ "Room claimed":"iron_gate","First Bed Gold":"gold","Defense placed":"build",
+ "Hunter arrived":"stalker","First player-door hit":"bulwark","Manual repair":"repair",
+ "Continuous repair started":"repair","Continuous repair ended":"repair","Resident fallen":"hell",
+ "Hunter evolved":"upgrade","Reaper awakens":"reaper_crest","Victory":"achievement","Defeat":"hell",
+}
+
 func show_timeline() -> void:
  _begin_screen("match_timeline")
  if ui.use_tactical_ui():ui.tactical_back=show_result
  ui.theme_backdrop()
  ui.theme_panel(Rect2(178,61,924,600),"settings")
  _line("MATCH TIMELINE",Vector2(222,88),36,840,"F7F1E7",true)
+ if ui.use_tactical_ui():
+  var scroll:=ScrollContainer.new()
+  scroll.position=Vector2(221,154)
+  scroll.size=Vector2(832,402)
+  scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
+  scroll.focus_mode=Control.FOCUS_ALL
+  ui.panel.add_child(scroll)
+  var rows:=VBoxContainer.new()
+  rows.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+  rows.add_theme_constant_override("separation",5)
+  scroll.add_child(rows)
+  if game.model.chronicle.entries.is_empty():
+   var empty:=Label.new()
+   empty.text="No events were recorded in this match."
+   rows.add_child(empty)
+  for event in game.model.chronicle.entries:
+   var row:=Panel.new()
+   row.custom_minimum_size=Vector2(0,46)
+   row.mouse_filter=Control.MOUSE_FILTER_IGNORE
+   row.add_theme_stylebox_override("panel",GothicTheme.living_surface("card"))
+   rows.add_child(row)
+   var seconds:=int(event.at)
+   ui.theme_label("%02d:%02d" % [floori(seconds/60.0),seconds%60],Vector2(17,7),19,87,"gold",false,row)
+   ui.premium_icon(EVENT_ICONS.get(event.name,"analysis"),Vector2(109,8),Vector2(29,29),row)
+   ui.theme_label(event.name,Vector2(158,7),19,440,"text",false,row)
+   if event.room>=0:
+    ui.theme_label("Room %d" % (event.room+1),Vector2(676,8),17,113,"muted",false,row)
+  var back: Button=ui.button("Back to results [Esc]",Vector2(224,589),show_result,298,45)
+  back.name="MatchTimelineBack"
+  ui.theme_button(back,"quiet")
+  back.grab_focus()
+  return
  var entries: Array=game.model.chronicle.entries.slice(-12)
  var y:=159.0
  for event in entries:
@@ -398,6 +472,7 @@ func show_archive():
  if game.mode=="result":game.return_menu()
  ui.progression.story_context=false
  _begin_screen("story_archive")
+ if ui.use_tactical_ui():ui.tactical_back=ui.replay_ui.show_hub
  game.audio_event("menu")
  ui.box(Rect2(94,48,1092,620),"1B2934","778690")
  _line("STORY ARCHIVE",Vector2(135,75),40,978,"E6DBBF",true)
@@ -413,12 +488,13 @@ func show_archive():
   var button: Button=ui.button("%02d   ·   %s%s" % [chapter,title,"   ·   Locked" if not visited else ""],at,func():_archive_page(selected),477,47)
   button.name="StoryArchiveChapter_%02d" % chapter
   button.disabled=not visited
- ui.button("Extras",Vector2(139,588),ui.replay_ui.show_hub,175,44)
+ ui.button("Back [Esc]" if ui.use_tactical_ui() else "Extras",Vector2(139,588),ui.replay_ui.show_hub,175,44)
  ui.button("Classic Campaign",Vector2(337,588),ui.campaign.show_stages,270,44)
  ui.button("Read final ending",Vector2(807,588),func():_archive_page(0),315,44).disabled=highest<StoryCatalog.FINAL_LEVEL
 
 func _archive_page(chapter: int):
  _begin_screen("story_archive_chapter")
+ if ui.use_tactical_ui():ui.tactical_back=show_archive
  ui.box(Rect2(169,100,942,520),"192733","778690")
  var title: String=StoryCatalog.CHAPTERS[chapter-1][0] if chapter>0 else "Dawn or Oblivion"
  var clue: String=StoryCatalog.CHAPTERS[chapter-1][1] if chapter>0 else StoryCatalog.ENDING

@@ -117,9 +117,8 @@ func _create_tactical() -> void:
  ui.theme_label("Level %02d / 50 · %s" % [mission.level,mission.title],Vector2(121,264),24,610,"text")
  ui.menu_start=_destination("mode_story","Story Archive" if track.finished else "Continue Story","Open the current mission and loadout.",Vector2(118,323),546,game.enter_game,"primary","play")
  ui.menu_start.add_theme_font_size_override("font_size",24)
- _destination("mode_endless","Endless","Play escalating waves.",Vector2(118,412),263,ui.replay_ui.show_endless,"secondary","endless")
- _destination("mode_campaign","Classic Campaign","Choose a stage and difficulty.",Vector2(391,412),273,ui.campaign.show_stages,"secondary","next")
- _destination("menu_extras","Extra modes","Challenge, Practice and cosmetics.",Vector2(118,495),546,ui.replay_ui.show_hub,"quiet","practice")
+ _destination("mode_endless","Endless Siege","Play escalating waves.",Vector2(118,412),546,ui.replay_ui.show_endless,"secondary","endless")
+ _destination("menu_extras","Other modes & archives","Classic Campaign, practice, challenge codes and the Story archive.",Vector2(118,495),546,ui.replay_ui.show_hub,"quiet","practice")
  ui.theme_panel(Rect2(695,146,473,419),"frame")
  ui.theme_label("%d RM Cash" % profile.rm_cash,Vector2(719,165),20,216,"gold")
  ui.theme_label("%s · %d XP" % [profile.rank_name(),profile.xp],Vector2(943,165),18,207,"muted")
@@ -141,6 +140,29 @@ func _create_tactical() -> void:
   ui.theme_label(profile.warning,Vector2(119,581),14,575,"danger").clip_text=true
  ui.menu_start.grab_focus()
 
+
+func other_modes() -> void:
+ ui.clear()
+ ui.current_screen="replay_hub"
+ ui.tactical_back=ui.game.return_menu
+ ui.theme_backdrop()
+ ui.theme_panel(Rect2(156,85,968,550),"frame")
+ ui.theme_label("Other modes & archives",Vector2(198,115),38,870,"text",true)
+ var choices: Array=[
+  ["mode_campaign","Classic Campaign","Choose a stage and difficulty.",ui.campaign.show_stages,"next"],
+  ["mode_challenge","Challenge Codes","Play a fixed seed with normalized gear.",ui.replay_ui.show_codes,"challenge"],
+  ["mode_practice","Practice Room","Rehearse against a Hunter with training supplies.",ui.replay_ui.show_practice,"practice"],
+  ["mode_archive","Story Archive","Revisit the chapters you have reached.",ui.campaign.story_ui.show_archive,"contract"],
+  ["mode_cosmetics","Earned Cosmetics","Choose an appearance you have unlocked.",ui.replay_ui.show_cosmetics,"cosmetic"],
+ ]
+ for i in choices.size():
+  var choice: Array=choices[i]
+  var button:=_destination(choice[0],choice[1],choice[2],Vector2(199+(i%2)*447,201+floori(i/2.0)*95),422,choice[3],"secondary",choice[4])
+  if i==0:button.grab_focus()
+ var pity: Dictionary=ui.game.profile.replay.pity
+ var odds: Label=ui.theme_label("Next victory spin · "+SpinPity.summary("victory",pity),Vector2(648,397),16,417,"muted")
+ odds.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+ ui.theme_button(ui.button("Back [Esc]",Vector2(199,548),ui.game.return_menu,189,48),"quiet")
 
 func _destination(id: String, title: String, subtitle: String, at: Vector2, width: float, callback: Callable, role: String, icon: String) -> Button:
  var control: Button = ui.button(title,at,callback,width,68)

@@ -10,6 +10,17 @@ const PAGES := [
  ["Controls and camera","Middle-button drag moves the camera. Scroll zooms. Home returns and locks to your room. M toggles the full map. T opens teammates. G opens this guide and Esc closes it."],
 ]
 
+# The key and action diagram uses the same icon assets as the HUD.
+const EXAMPLES: Array=[
+ [["practice","WASD","Move"],["next","E","Claim"],["gold","E at bed","Sleep"]],
+ [["build","B","Open Build"],["expansion","Q","Rotate"],["next","Esc","Cancel"]],
+ [["iron_gate","Door HP","Inspect"],["repair","R","Repair"],["ward","F","Ward"]],
+ [["inventory","I","Open items"],["loadout","1 / 2","Inspect"],["play","Use item","Confirm"]],
+ [["ballistic","Needle","Physical"],["electric","Arc","Magical"]],
+ [["play","Story","50 levels"],["rank","Rank","Lifetime XP"]],
+ [["focus","Middle drag","Pan"],["next","Home","My room"],["expansion","M","Map"]],
+]
+var examples: Array=[]
 var game
 var root: Control
 var title: Label
@@ -41,7 +52,20 @@ func open(pausing: bool=true,on_exit: Callable=Callable()) -> void:
  copy=ui.theme_label("",Vector2(462,243),19,640,"text",false,root)
  copy.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  if ui.use_tactical_ui():
-  copy.add_theme_font_size_override("font_size",20)
+  var scroller:=ScrollContainer.new()
+  scroller.position=Vector2(462,240)
+  scroller.size=Vector2(643,169)
+  scroller.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
+  root.add_child(scroller)
+  copy.reparent(scroller,false)
+  copy.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+  copy.add_theme_font_size_override("font_size",24 if ui.large_reading_text else 21)
+  for i in range(3):
+   var tile: Panel=ui.theme_panel(Rect2(462+i*215,428,204,98),"card",root)
+   var icon: TextureRect=ui.premium_icon("build",Vector2(14,14),Vector2(33,33),tile)
+   var keycap: Label=ui.theme_label("",Vector2(56,10),20,139,"gold",false,tile)
+   var caption: Label=ui.theme_label("",Vector2(15,51),20,177,"text",false,tile)
+   examples.append([tile,icon,keycap,caption])
   for tab in navigation:tab.alignment=HORIZONTAL_ALIGNMENT_LEFT
  var resume: Button=ui.button("Resume game [Esc]" if pausing else "Back [Esc]",Vector2(849,562),leave,273,48,root)
  ui.theme_button(resume,"primary")
@@ -51,6 +75,15 @@ func open(pausing: bool=true,on_exit: Callable=Callable()) -> void:
 func select(index: int) -> void:
  if game.ui.use_tactical_ui():
   for i in range(navigation.size()):game.ui.theme_button(navigation[i],"settings" if i==index else "secondary")
+ for i in range(examples.size()):
+  var visible_example: bool=i<EXAMPLES[index].size()
+  examples[i][0].visible=visible_example
+  if visible_example:
+   var data: Array=EXAMPLES[index][i]
+   examples[i][1].texture=PremiumButton.texture(data[0])
+   examples[i][2].text=data[1]
+   examples[i][3].text=data[2]
+ if copy.get_parent() is ScrollContainer:copy.get_parent().scroll_vertical=0
  title.text=PAGES[index][0]
  copy.text=PAGES[index][1]
  if index==4:

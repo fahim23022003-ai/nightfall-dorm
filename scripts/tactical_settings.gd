@@ -48,8 +48,8 @@ func open(on_close: Callable) -> void:
  body.size_flags_horizontal=Control.SIZE_EXPAND_FILL
  body.add_theme_constant_override("separation",13)
  scroll.add_child(body)
- select_page(0)
- tabs[0].grab_focus()
+ select_page(ui.settings_page_index)
+ tabs[ui.settings_page_index].grab_focus()
 
 func close() -> void:
  if not is_instance_valid(root):return
@@ -60,6 +60,7 @@ func close() -> void:
  back.call()
 
 func select_page(index: int) -> void:
+ ui.settings_page_index=index
  for child in body.get_children():
   body.remove_child(child)
   child.queue_free()
@@ -89,6 +90,17 @@ func select_page(index: int) -> void:
    for pair in [["Move / claim or sleep","WASD or arrows / E"],["Build / rotate / cancel","B / Q / Esc"],["Plan / range / move / undo","P / O / V / Z"],["Repair / Ward","R / F"],["Items / inspect slot","I / 1 or 2"],["Map / danger shading","M / H on the map"],["Free camera / lock room","Middle-drag or scroll / Home"],["Teammates / cycle","T / Page Up or Page Down"],["Help / pause","G / Esc"]]:
     label("%s     %s" % [pair[0],pair[1]],19)
   4:
+   var reading:=CheckButton.new()
+   reading.name="reading_text"
+   reading.text="Larger reading text"
+   reading.button_pressed=ui.large_reading_text
+   reading.custom_minimum_size.y=46
+   reading.toggled.connect(func(value):
+    ui.large_reading_text=value
+    refresh_reading_text.call_deferred())
+   body.add_child(reading)
+   ui.theme_button(reading,"secondary")
+   label("Applies to Settings, Help and item descriptions for this session.",17)
    toggle("reduced_motion","Reduce camera and interface motion")
    toggle("reduced_flashes","Reduce flashes")
    toggle("reduced_effects","Reduce decorative effects")
@@ -98,11 +110,16 @@ func select_page(index: int) -> void:
    toggle("tactical_alerts","Teammate and evolution alerts")
    label("Urgent combat cues remain visible.",17)
 
+func refresh_reading_text() -> void:
+ if not is_instance_valid(root):return
+ select_page(4)
+ body.get_node("reading_text").grab_focus()
+
 func label(text: String,pixels: int) -> Label:
  var node:=Label.new()
  node.text=text
  node.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
- node.add_theme_font_size_override("font_size",pixels)
+ node.add_theme_font_size_override("font_size",pixels+4 if ui.large_reading_text else pixels)
  node.add_theme_color_override("font_color",GothicTheme.palette().text)
  body.add_child(node)
  return node

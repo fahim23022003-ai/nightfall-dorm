@@ -9,6 +9,10 @@ var ward_button: Button
 var tactical_hud
 var tactical_settings
 var tactical_help
+# Navigation and reading preferences last for this game session.
+var settings_page_index:=0
+var last_inventory_item:=""
+var large_reading_text:=false
 var tactical_back:=Callable()
 var upgrade_notice: Label
 var message: Label
@@ -26,6 +30,9 @@ var context_mode="build"
 var context_box: Panel
 var context_title: Label
 var build_items: Array=[]
+var build_catalogue
+var last_build_category := "attack"
+var recent_build_choices: Dictionary = {}
 var upgrade_items: Array=[]
 var bed_items: Array=[]
 var door_items: Array=[]
@@ -102,6 +109,7 @@ func _ready():
  show_menu()
 
 func clear():
+ if tactical_hud!=null:Input.set_default_cursor_shape(Input.CURSOR_ARROW)
  tactical_hud=null
  tactical_settings=null
  tactical_help=null
@@ -113,6 +121,7 @@ func clear():
   child.queue_free()
  actions.clear()
  build_items.clear()
+ build_catalogue=null
  upgrade_items.clear()
  bed_items.clear()
  door_items.clear()
@@ -186,7 +195,10 @@ func button(text: String,pos: Vector2,callback: Callable,width: float=240,height
  b.text=text
  b.position=pos
  b.size=Vector2(width,height)
- b.pressed.connect(func(): game.audio_event("button"))
+ var is_back:=text.begins_with("Back") or text.begins_with("Cancel") or text.begins_with("Close") or text.begins_with("Resume")
+ var cue: String="menu" if is_back and use_tactical_ui() else "button"
+ b.pressed.connect(func(): game.audio_event(cue))
+ if use_tactical_ui():b.mouse_default_cursor_shape=Control.CURSOR_POINTING_HAND
  b.pressed.connect(func():
   if game.onboarding!=null and game.onboarding.is_welcome_open():return
   if game.cancelled_pointer:return
@@ -529,36 +541,39 @@ func show_match():
   context_box.add_theme_stylebox_override("panel",GothicTheme.living_surface("frame"))
   theme_button(build_cancel_button,"danger")
   build_cancel_button.add_theme_font_size_override("font_size",14)
- var descs={"barrier":"Reflects magic","plasma":"Stores magic","antenna":"Magic shield","turret":"Auto fire","heavy":"Arc damage","generator":"Makes power","repair":"Mends door","economy":"More income","enhancer":"Boost guns","flame":"Burn / DoT","frost":"Slow enemies","shock":"Charged strike","auto_repair":"Paid repairs","shield":"Paid barrier","decoy":"Timed legal lure"}
- var n=0
- var build_order: Array = Catalog.BUILDINGS.keys()
- if use_living_ui():
-  build_order.erase("generator")
-  build_order.insert(1,"generator")
- for kind in build_order:
-  var id=kind
-  var data=Catalog.BUILDINGS[kind].duplicate(true);var actual=BalanceRules.price(kind,game.model.balance_version);data.gold=actual.x;data.power=actual.y
-  var at=Vector2(12+(n%3)*114,42+(n/3)*152)
-  var b=button("",at,func(): game.begin_placement(id) if game.mobile_mode else game.build_selected(id),108,142,context_box)
-  b.name="build_"+id
-  if use_living_ui():theme_button(b,"card")
-  var art=icon(kind,at+Vector2(29,5),Vector2(50,48),context_box)
-  var display_names={"turret":"Needle\nturret","heavy":"Arc\nturret","generator":"Dynamo","repair":"Repair\nstation","economy":"Dream\namplifier","enhancer":"Target\nrelay"}
+ if use_tactical_ui():
+  build_catalogue=preload("res://scripts/build_catalogue_view.gd").new(self)
+ else:
+  var descs={"barrier":"Reflects magic","plasma":"Stores magic","antenna":"Magic shield","turret":"Auto fire","heavy":"Arc damage","generator":"Makes power","repair":"Mends door","economy":"More income","enhancer":"Boost guns","flame":"Burn / DoT","frost":"Slow enemies","shock":"Charged strike","auto_repair":"Paid repairs","shield":"Paid barrier","decoy":"Timed legal lure"}
+  var n=0
+  var build_order: Array = Catalog.BUILDINGS.keys()
   if use_living_ui():
-   display_names["auto_repair"]="Auto repair"
-  var name=label_at(display_names.get(kind,data.name),at+Vector2(3,53),16,102,false,context_box)
-  name.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
-  name.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
-  name.size=Vector2(102,38)
-  var cost=label_at("%d G" % data.gold+("+%d E" % data.power if data.power>0 else ""),at+Vector2(3,94),16,102,false,context_box)
-  cost.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
-  cost.modulate=Color("FFD27A")
-  var effect=label_at(descs.get(kind,data.get("role","Defense")),at+Vector2(3,118),16,102,false,context_box)
-  effect.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
-  actions["build:"+kind]=b
-  build_items.append_array([b,art,name,cost,effect])
-  card_visuals["build:"+kind]=[art,name,cost,effect]
-  n+=1
+   build_order.erase("generator")
+   build_order.insert(1,"generator")
+  for kind in build_order:
+   var id=kind
+   var data=Catalog.BUILDINGS[kind].duplicate(true);var actual=BalanceRules.price(kind,game.model.balance_version);data.gold=actual.x;data.power=actual.y
+   var at=Vector2(12+(n%3)*114,42+(n/3)*152)
+   var b=button("",at,func(): game.begin_placement(id) if game.mobile_mode else game.build_selected(id),108,142,context_box)
+   b.name="build_"+id
+   if use_living_ui():theme_button(b,"card")
+   var art=icon(kind,at+Vector2(29,5),Vector2(50,48),context_box)
+   var display_names={"turret":"Needle\nturret","heavy":"Arc\nturret","generator":"Dynamo","repair":"Repair\nstation","economy":"Dream\namplifier","enhancer":"Target\nrelay"}
+   if use_living_ui():
+    display_names["auto_repair"]="Auto repair"
+   var name=label_at(display_names.get(kind,data.name),at+Vector2(3,53),16,102,false,context_box)
+   name.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+   name.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+   name.size=Vector2(102,38)
+   var cost=label_at("%d G" % data.gold+("+%d E" % data.power if data.power>0 else ""),at+Vector2(3,94),16,102,false,context_box)
+   cost.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+   cost.modulate=Color("FFD27A")
+   var effect=label_at(descs.get(kind,data.get("role","Defense")),at+Vector2(3,118),16,102,false,context_box)
+   effect.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+   actions["build:"+kind]=b
+   build_items.append_array([b,art,name,cost,effect])
+   card_visuals["build:"+kind]=[art,name,cost,effect]
+   n+=1
  selected_icon=icon("turret",Vector2(14,52),Vector2(80,86),context_box)
  selected_details=label_at("",Vector2(104,50),16,244,false,context_box)
  selected_details.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
@@ -677,6 +692,7 @@ func open_build_menu():
 func _note_build_open() -> void:
  if use_living_ui() and game.tutorial_active and is_instance_valid(game.onboarding) and game.onboarding.has_method("note_build_open"):
   game.onboarding.note_build_open()
+  if build_catalogue!=null:build_catalogue.refresh(game.model.player())
 
 func open_context():
  if game.watched_room>=0:return
@@ -737,9 +753,12 @@ func refresh_context():
  for group in {"build":build_items,"upgrade":upgrade_items,"bed":bed_items,"door":door_items,"confirm":confirmation_items,"specialize":specialization_items}:
   var list={"build":build_items,"upgrade":upgrade_items,"bed":bed_items,"door":door_items,"confirm":confirmation_items,"specialize":specialization_items}[group]
   for node in list: node.visible=group==context_mode
+ if build_catalogue!=null:build_catalogue.root.visible=context_mode=="build"
  if context_mode=="build":
-  context_title.text="BUILD A DEFENSE"
-  if phase16_hud:
+  context_title.text="Build catalogue" if build_catalogue!=null else "BUILD A DEFENSE"
+  if build_catalogue!=null:
+   build_catalogue.refresh(room)
+  elif phase16_hud:
    for action in actions:
     if action.begins_with("build:"):_refresh_match_action(action,room)
  elif context_mode=="specialize" and (specialization_structure!="" or room.buildings.has(game.selected_tile)):
@@ -768,22 +787,25 @@ func refresh_context():
   var b=room.buildings[game.selected_tile]
   selected_icon.texture=game.presentation.cartoon[game.presentation.building_key(b.kind,b.level)]
   context_title.text=Catalog.BUILDINGS[b.kind].name.to_upper()
-  var list_price=BalanceRules.upgrade(b.kind,b.level,game.model.balance_version)
-  var quote=room.building_price(list_price.x,list_price.y)
-  selected_details.tooltip_text=StrategyCatalog.BRANCHES.get(b.get("specialization",""),{}).get("description","")
-  if b.kind=="economy" and room.balance_version==2 and b.level<10:
-   var clone=BuildingStats.room_copy(room);clone.buildings[game.selected_tile].level+=1
-   var gain=clone.income_rate()-room.income_rate()
-   selected_details.tooltip_text+="\n"+("Marginal +%.3f Gold/s. Gold-only payback ~%.0fs; additional%.1fE is NOT converted to Gold. Concurrent boosts/spending alter this." % [gain,quote.x/maxf(.0001,gain),quote.y] if gain>0 else "Production currently inactive; future benefit depends on resuming it.")
-  selected_details.text=BuildingStats.next_machine(game.model,room,game.selected_tile)+"\n"+action_reason("upgrade")+(" · COUPON %.1fG/%.1fE" % [quote.x,quote.y] if room.coupon_armed else "")
-  if game.model.weapon_feedback.enabled and (b.kind in DefenseEffects.WEAPONS or b.kind=="barrier"):
-   selected_details.tooltip_text=selected_details.text+"\n"+selected_details.tooltip_text
-   selected_details.text=BuildingStats.combat_readout(game.model,room,game.selected_tile)
-   if game.model.player_first_requested and b.level<Catalog.building_max_level(b.kind) and (not room.strategy_enabled or b.level!=4):
-    selected_details.text+="\n"+BuildingStats.next_machine(game.model,room,game.selected_tile)
-  if room.strategy_enabled and b.level==4:actions.upgrade.text="Specialize → Level 5"
-  if use_tactical_ui():
-   actions.upgrade.text=actions.upgrade.text.replace(" Gold"," G").replace(" Electricity"," E")
+  if bottom_context!=null and bottom_context.machine_view!=null:
+   bottom_context.machine_view.refresh(room,b)
+  else:
+   var list_price=BalanceRules.upgrade(b.kind,b.level,game.model.balance_version)
+   var quote=room.building_price(list_price.x,list_price.y)
+   selected_details.tooltip_text=StrategyCatalog.BRANCHES.get(b.get("specialization",""),{}).get("description","")
+   if b.kind=="economy" and room.balance_version==2 and b.level<10:
+    var clone=BuildingStats.room_copy(room);clone.buildings[game.selected_tile].level+=1
+    var gain=clone.income_rate()-room.income_rate()
+    selected_details.tooltip_text+="\n"+("Marginal +%.3f Gold/s. Gold-only payback ~%.0fs; additional%.1fE is NOT converted to Gold. Concurrent boosts/spending alter this." % [gain,quote.x/maxf(.0001,gain),quote.y] if gain>0 else "Production currently inactive; future benefit depends on resuming it.")
+   selected_details.text=BuildingStats.next_machine(game.model,room,game.selected_tile)+"\n"+action_reason("upgrade")+(" · COUPON %.1fG/%.1fE" % [quote.x,quote.y] if room.coupon_armed else "")
+   if game.model.weapon_feedback.enabled and (b.kind in DefenseEffects.WEAPONS or b.kind=="barrier"):
+    selected_details.tooltip_text=selected_details.text+"\n"+selected_details.tooltip_text
+    selected_details.text=BuildingStats.combat_readout(game.model,room,game.selected_tile)
+    if game.model.player_first_requested and b.level<Catalog.building_max_level(b.kind) and (not room.strategy_enabled or b.level!=4):
+     selected_details.text+="\n"+BuildingStats.next_machine(game.model,room,game.selected_tile)
+   if room.strategy_enabled and b.level==4:actions.upgrade.text="Specialize → Level 5"
+   if use_tactical_ui():
+    actions.upgrade.text=actions.upgrade.text.replace(" Gold"," G").replace(" Electricity"," E")
  elif context_mode=="bed":
   context_title.text="BED LEVEL %d / 10" % (room.bed_level+1)
   bed_details.text=BuildingStats.structure_preview(game.model,room,"bed")+"\n"+action_reason("bed")
@@ -867,6 +889,13 @@ func show_pause(open: bool):
 
 func sell_selected():
  if game.tutorial_active and game.survivor_preview_enabled:return
+ if bottom_context!=null and bottom_context.machine_view!=null:
+  bottom_context.machine_view.ask_sale()
+  return
+ complete_selected_sale()
+
+func complete_selected_sale():
+ if game.tutorial_active and game.survivor_preview_enabled:return
  var success=game.model.sell_building(game.selected_tile)
  if success: close_context()
  purchase(success)
@@ -876,16 +905,16 @@ func repair_player_door(continuous: bool=true) -> void:
  var room=game.model.player()
  var before: float=room.door_hp if room!=null else 0.0
  var success: bool=game.model.repair_door(continuous)
- purchase(success)
+ purchase(success,"Repair started" if continuous and game.model.uses_player_door_survival() else "Door repaired")
  if success and room!=null and living_dorm_hud!=null and room.door_hp>before:
   living_dorm_hud.repaired(room.door_hp-before)
   living_dorm_hud.refresh(room,action_reason("continuous_repair"))
 
-func purchase(success: bool):
+func purchase(success: bool,confirmation: String="Defense improved!"):
  var reason=game.model.purchase_error() if not success else ""
  var cue="purchase" if success else "insufficient_gold" if reason.contains("more gold") else "insufficient_power" if reason.contains("more electricity") else "failure"
  game.audio_event(cue)
- feedback_text="Defense improved!" if success else game.model.purchase_error()
+ feedback_text=confirmation if success else game.model.purchase_error()
  feedback_until=game.presentation.clock+2
  update_match()
 
@@ -1069,7 +1098,7 @@ func update_match():
  if living_dorm_hud!=null:
   living_dorm_hud.refresh(room,repair_reason)
  for action in actions:
-  if not phase16_hud or not action.begins_with("build:"):
+  if not action.begins_with("build:") or (not phase16_hud and build_catalogue==null):
    _refresh_match_action(action,room)
  refresh_context()
  if game.mobile_mode: game.mobile_ui.update_match(self)

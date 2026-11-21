@@ -13,5 +13,8 @@ func _draw():
  elif ui.context_mode=="bed":kind="bed";level=room.bed_level+1;branch=room.bed_branch
  elif ui.context_mode=="door":kind="door";level=room.door_level+1;branch=room.door_branch
  if kind=="":return
+ if ui.context_mode=="upgrade" and ui.bottom_context!=null and ui.bottom_context.machine_view!=null:
+  ui.game.presentation.building_visual.draw(self,ui.game.presentation,kind,level,Vector2(size.x*.5,size.y*.79),branch,0,Vector2.UP,0,0,2.12)
+  return
  draw_style_box(GothicTheme.surface("16232D","647D87","button_normal"),Rect2(0,0,178,154))
  ui.game.presentation.building_visual.draw(self,ui.game.presentation,kind,level,Vector2(89,122),branch,0,Vector2.UP,0,0,1.85 if kind not in ["bed","door"] else 1.25)

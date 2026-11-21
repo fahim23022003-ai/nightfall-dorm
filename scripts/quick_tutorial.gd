@@ -18,6 +18,7 @@ func begin():
  help.name="quick_tutorial_help"
  card.size.y=231
  if game.ui.use_tactical_ui():
+  card.size.y=201
   card.position=Vector2(22,89)
   card.add_theme_stylebox_override("panel",GothicTheme.living_surface("frame"))
   heading_label.add_theme_font_size_override("font_size",24)
@@ -29,11 +30,17 @@ func begin():
 
 func refresh():
  super.refresh()
- var chapter:=1 if stage in [Lesson.OBJECTIVE,Lesson.MOVE,Lesson.FIND_ROOM,Lesson.CLAIM_ROOM,Lesson.REACH_BED,Lesson.SLEEP] else 2 if stage in [Lesson.OPEN_BUILD,Lesson.SELECT_DYNAMO,Lesson.PLACE_DYNAMO] else 3
+ var chapter:=1 if stage in [Lesson.OBJECTIVE,Lesson.MOVE,Lesson.FIND_ROOM,Lesson.CLAIM_ROOM,Lesson.REACH_BED,Lesson.SLEEP] else 2 if stage in [Lesson.OPEN_BUILD,Lesson.SELECT_DYNAMO,Lesson.PLACE_DYNAMO,Lesson.CANCEL_PREVIEW] else 3
+ if game.ui.use_tactical_ui():card.size.y=231 if stage==Lesson.COMPLETE else 201
  position_label.text="LESSON %d / 3" % chapter
  heading_label.text=["Find a room","Build electricity","Build a turret"][chapter-1]
  match stage:
   Lesson.OBJECTIVE:message_label.text="Move into a vacant room, claim it, then reach its bed."
+  Lesson.OPEN_BUILD,Lesson.REOPEN_BUILD:message_label.text="Open Build [B]."
+  Lesson.SELECT_DYNAMO:message_label.text="Select Dynamo to prepare an electricity generator."
+  Lesson.PLACE_DYNAMO:message_label.text="Click a clear floor cell to buy and place your Dynamo."
+  Lesson.SELECT_NEEDLE:message_label.text="Select Needle Turret to prepare your first defense."
+  Lesson.PLACE_NEEDLE:message_label.text="Click a clear cell near the door to place your Needle."
   Lesson.CANCEL_PREVIEW:message_label.text="The Dynamo makes Electricity. Choose Cancel or press Esc."
   Lesson.HUNTER_DANGER:message_label.text="The Needle fires when a Hunter reaches its range. Watch the shot travel."
   Lesson.COMPLETE:
