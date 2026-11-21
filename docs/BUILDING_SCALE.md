@@ -94,3 +94,19 @@ completed all 19 steps under the enlarged rules.
 - [Before/after visual gallery and combat recording](evidence/phase181/visual/README.md)
 - [Regression logs](evidence/phase181/regressions)
 - [Windows archive receipt and SHA-256](evidence/phase181/windows/README.md)
+
+## Emergency performance preview
+
+Run **Play Performance Preview.cmd** for the isolated profile that starts in
+Low at 960×540. Low simplifies decorative room floors, hides empty allied
+pads in procedural matches, and refreshes the HUD at up to 20 Hz. Standard
+retains the detailed floor and full-speed HUD. The original Building Scale
+preview launch command is also included.
+
+Run **Record Performance Diagnostic.cmd** for a separate isolated profile
+at 1280×720. Play through the menu, Story lobby and the conditions that feel
+slow. Press **F10** to finish and open the folder containing the local
+`nightfall-performance-*.json` report. F10 also starts a recording in
+the normal preview. Capture stops after 36,000 frames. Data remains local.
+The report records frame percentiles by game stage and machine count,
+renderer and hardware names, and a snapshot of engine counters.

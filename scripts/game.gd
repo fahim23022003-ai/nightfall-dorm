@@ -165,6 +165,9 @@ func _adopt_session(next,wallet=null):
 
 func _ready():
  construction=ConstructionControls.new(self)
+ var performance := preload("res://scripts/performance_diagnostics.gd").new()
+ performance.game = self
+ add_child(performance)
  var window = get_window()
  window.content_scale_size = Vector2i(1280,720)
  window.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
@@ -173,7 +176,9 @@ func _ready():
  get_tree().auto_accept_quit=false
  var save_path=OS.get_environment("NIGHTFALL_PROFILE_PATH")
  profile=PlayerProfile.new(save_path if save_path!="" else "user://profile.json")
+ var fresh_performance_profile := OS.get_environment("NIGHTFALL_PERFORMANCE_PREVIEW")=="1" and not FileAccess.file_exists(profile.path) and not FileAccess.file_exists(profile.path+".bak")
  profile.load_profile(story_preview_enabled)
+ if fresh_performance_profile: profile.update_setting("graphics_quality","low")
  tutorial_enabled=profile.settings.tutorial
  if not mobile_mode and profile.settings.fullscreen: window.mode=Window.MODE_FULLSCREEN
  if mobile_mode:
@@ -454,7 +459,7 @@ func _process(delta: float):
    level_warning_time=3.0
   focus_camera(false,delta)
   ui_clock+=delta
-  if not mobile_mode or ui_clock>=0.05:
+  if (not mobile_mode and CinematicQuality.detail(self)>0) or ui_clock>=0.05:
    ui_clock=0
    ui.update_match()
   horror.update(delta,model)

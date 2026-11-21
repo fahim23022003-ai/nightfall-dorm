@@ -234,10 +234,14 @@ func render_room(c,p,room,theme,colors):
  render_tiles(c,p,room,owned)
 
 func render_generated_room_floor(c,p,room,theme,colors):
+ var simplified := CinematicQuality.detail(c)==0
  for part in room.layout.floor:
   var surface := Rect2(OFFSET+part.position,part.size)
-  c.draw_rect(surface,colors[0])
-  c.draw_texture_rect(floors[theme],surface,true,Color.WHITE if room.alive else Color("85818C"))
+  if simplified:
+   c.draw_rect(surface,colors[0] if room.alive else colors[0].darkened(.22))
+  else:
+   c.draw_rect(surface,colors[0])
+   c.draw_texture_rect(floors[theme],surface,true,Color.WHITE if room.alive else Color("85818C"))
  var player_owned: bool=room.index==c.model.player_room
  var trim: Color=Color("739B87") if player_owned else colors[3]
  if batched_walls:
@@ -382,14 +386,18 @@ func render_tiles(c,p,room,owned):
  var layout:=grid_layout(room) if grid else {}
  if room.spatial!=null and c.construction!=null:c.construction.draw_floor(c,room,layout)
  var ids=layout.ids if grid else room.buildings.keys() if room.spatial!=null else range(room.tile_count())
- var visible: Rect2=p.visible_world_rect(c,70) if grid else Rect2()
+ var low_detail := CinematicQuality.detail(c)==0
+ var hide_empty_pads: bool = low_detail and not owned and c.model.is_procedural() and c.model.full_grid_requested
+ var visible: Rect2=p.visible_world_rect(c,110)
+ var decoration_view := visible.grow(-40)
  for tile in ids:
   var center: Vector2=layout.entries[tile].center if grid else room.tile_position(tile)
   if room.spatial!=null and c.construction!=null and c.construction.last_visual.get("id",-1)==tile:
    center=c.construction.rendered_position(room,tile)
   var point:=OFFSET+center
-  if grid and not visible.has_point(point):continue
+  if not visible.has_point(point):continue
   if not room.buildings.has(tile):
+   if hide_empty_pads or not decoration_view.has_point(point):continue
    c.draw_style_box(p.frame(Color("333E3E") if owned else Color("303839"),Color("7C8270") if owned else Color("414D4B"),4),Rect2(point-Vector2(22,21),Vector2(44,42)))
    c.draw_line(point+Vector2(-18,-17),point+Vector2(18,-17),Color("89917C") if owned else Color("4C5854"),1)
    for side in [-1,1]:c.draw_circle(point+Vector2(side*17,16),1.2,Color("9B947B"))

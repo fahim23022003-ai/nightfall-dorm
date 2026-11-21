@@ -97,13 +97,13 @@ def mode_environment(profile: str, switches: tuple[int, ...], living: bool = Fal
             "NIGHTFALL_BUILDING_SCALE": str(int(building_scale)), **settings}
 
 
-def launcher(environment: dict[str, str]) -> bytes:
+def launcher(environment: dict[str, str], arguments: str = "") -> bytes:
     return "\r\n".join([
         "@echo off",
         "setlocal",
         'cd /d "%~dp0"',
         *(f'set "{key}={value}"' for key, value in environment.items()),
-        '"%~dp0NightfallDorm.exe"',
+        f'"%~dp0NightfallDorm.exe"{arguments}',
         "exit /b %errorlevel%",
         "",
     ]).encode("ascii")
@@ -209,6 +209,16 @@ def add_playtest_files(
                 shutil.copyfileobj(body, copy)
         for label, (name, _, _) in modes.items():
             target.writestr(name, launcher(environments[label]))
+        if "building-scale" in environments:
+            performance = environments["building-scale"] | {
+                "NIGHTFALL_PROFILE_PATH": "user://nightfall-performance-preview.json",
+                "NIGHTFALL_PERFORMANCE_PREVIEW": "1",
+            }
+            diagnostic = performance | {
+                "NIGHTFALL_PROFILE_PATH": "user://nightfall-performance-diagnostic.json",
+            }
+            target.writestr("Play Performance Preview.cmd", launcher(performance, " --windowed --resolution 960x540"))
+            target.writestr("Record Performance Diagnostic.cmd", launcher(diagnostic, " --windowed --resolution 1280x720 -- --performance-diagnostic"))
         target.write(guide, guide.name)
 
 

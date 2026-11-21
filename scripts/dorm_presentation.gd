@@ -248,9 +248,10 @@ func render(c):
  c.draw_rect(background,Color("11171E"))
  # Architectural surround, soft night haze and deliberate negative space.
  var haze_bounds := Rect2(630,-250,840,840)
- if visible.intersects(haze_bounds):
+ var low_detail := CinematicQuality.detail(c)==0
+ if not low_detail and visible.intersects(haze_bounds):
   c.draw_texture_rect(hall_haze,haze_bounds,false)
- for i in range(60):
+ for i in range(0 if low_detail else 60):
   var x = fmod(i*173.71,1260)+10
   var y = fmod(i*83.13,880)+10
   var point := Vector2(x,y)
