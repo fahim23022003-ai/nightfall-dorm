@@ -78,16 +78,23 @@ CLOSE_QUARTERS_MODES = {
     ),
     **WEAPON_FEEDBACK_MODES,
 }
+BUILDING_SCALE_MODES = {
+    "building-scale": (
+        "Play Building Scale Preview.cmd", "user://nightfall-building-scale-preview.json", (1, 1, 0, 1),
+    ),
+    **CLOSE_QUARTERS_MODES,
+}
 
 
 def mode_environment(profile: str, switches: tuple[int, ...], living: bool = False,
                      survivor: bool = False, phase16: bool = False, weapons: bool = False,
-                     close_quarters: bool = False) -> dict[str, str]:
+                     close_quarters: bool = False, building_scale: bool = False) -> dict[str, str]:
     settings = {key: str(value) for key, value in zip(MODE_SWITCHES, switches, strict=True)}
     return {"NIGHTFALL_PROFILE_PATH": profile, "NIGHTFALL_LIVING_NIGHTMARE": str(int(living)),
             "NIGHTFALL_SURVIVOR_REBIRTH": str(int(survivor)), "NIGHTFALL_PHASE16": str(int(phase16)),
             "NIGHTFALL_WEAPON_FEEDBACK": str(int(weapons)),
-            "NIGHTFALL_CLOSE_QUARTERS": str(int(close_quarters)), **settings}
+            "NIGHTFALL_CLOSE_QUARTERS": str(int(close_quarters)),
+            "NIGHTFALL_BUILDING_SCALE": str(int(building_scale)), **settings}
 
 
 def launcher(environment: dict[str, str]) -> bytes:
@@ -113,10 +120,11 @@ def verify_modes(
     empty.mkdir()
     environments = {}
     for label, (_, profile, switches) in modes.items():
-        phase16 = label in ("phase16", "weapon-feedback", "close-quarters")
+        close = label in ("close-quarters", "building-scale")
+        phase16 = close or label in ("phase16", "weapon-feedback")
         environment = mode_environment(profile, switches, phase16 or label in ("living-nightmare", "survivor-rebirth"),
                                        phase16 or label == "survivor-rebirth", phase16,
-                                       label in ("weapon-feedback", "close-quarters"), label == "close-quarters")
+                                       close or label == "weapon-feedback", close, label == "building-scale")
         environments[label] = environment
         env = os.environ | environment | {"XDG_DATA_HOME": str(working / ("data-" + label))}
         log = evidence / f"windows-pack-{label}.log"
@@ -150,7 +158,7 @@ def verify_modes(
         if "LIVING_NIGHTMARE_PACK_CHECKS=" not in log.read_text() or "FAILURES=0" not in log.read_text():
             raise RuntimeError(f"Living Nightmare pack verification did not complete. Inspect {log}.")
     if "survivor-rebirth" in modes:
-        for label in (name for name in ("survivor-rebirth", "phase16", "close-quarters") if name in modes):
+        for label in (name for name in ("survivor-rebirth", "phase16", "close-quarters", "building-scale") if name in modes):
             env = os.environ | environments[label] | {"XDG_DATA_HOME": str(working / ("lobby-data-" + label))}
             log = evidence / f"windows-pack-{label}-lobby.log"
             run([
@@ -214,6 +222,7 @@ def main() -> None:
     preview.add_argument("--phase16", action="store_true", help="Include the Phase 16 preview and prior launchers.")
     preview.add_argument("--weapon-feedback", action="store_true", help="Enable weapon feedback with the Phase 16 preview and prior launchers.")
     preview.add_argument("--close-quarters", action="store_true", help="Add Close Quarters with prior launchers.")
+    preview.add_argument("--building-scale", action="store_true", help="Add Building Scale with a separate profile and prior launchers.")
     parser.add_argument("--source-commit", required=True)
     parser.add_argument("--zip", required=True, type=Path)
     parser.add_argument("--evidence-dir", required=True, type=Path)
@@ -245,6 +254,9 @@ def main() -> None:
     elif args.close_quarters:
         modes = CLOSE_QUARTERS_MODES
         guide_name = "CLOSE_QUARTERS.md"
+    elif args.building_scale:
+        modes = BUILDING_SCALE_MODES
+        guide_name = "BUILDING_SCALE.md"
     guide = ROOT / "docs" / guide_name
     archive = args.zip.resolve()
     evidence = args.evidence_dir.resolve()

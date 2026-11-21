@@ -117,7 +117,9 @@ func _accumulate(entry: Dictionary, damage: float) -> void:
 func muzzle(c, visuals, event: Dictionary) -> Vector2:
  var origin: Vector2=event.origin
  var scale := 1.0
- if event.grid:
+ if event.has("art_scale"):
+  scale=event.art_scale
+ elif event.grid:
   var footprint := SpatialConstruction.grid_footprint(origin,event.kind,event.rotation)
   scale=clampf(minf(footprint.size.x,footprint.size.y)/44.0,.65,1.0)
  return origin+visuals.discharge_socket(c,event.kind,event.level,event.get("aim_position",event.target_position)-origin,scale,1.0)
@@ -126,6 +128,7 @@ func projectile_point(c, visuals, shot: Dictionary, target: Vector2) -> Vector2:
  var point: Vector2=shot.position
  if shot.age<.12:
   var given={"origin":shot.from,"target_position":shot.get("launch_target",target),"aim_position":shot.get("launch_aim",target),"rotation":shot.get("rotation",0),"grid":shot.get("grid",false),"kind":shot.kind,"level":shot.level}
+  if shot.has("art_scale"):given.art_scale=shot.art_scale
   var offset:=muzzle(c,visuals,given)-Vector2(shot.from)
   var muzzle_weight:=1.0-smoothstep(0.0,.12,shot.age)
   point+=offset*muzzle_weight+CONTACT_HEIGHT*(1.0-muzzle_weight)

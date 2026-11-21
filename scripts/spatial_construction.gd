@@ -2,6 +2,7 @@ class_name SpatialConstruction
 extends RefCounted
 # Opaque building IDs are independent of both legacy pads and physical grid cells.
 const VERSION=1
+const SUBSTANTIAL_VERSION=2
 const FOOT_SIZE=Vector2(44,40)
 const CELL_SIZE=16
 const WALL_MARGIN=8.0
@@ -13,6 +14,13 @@ const GRID_FOOTPRINTS={
  "flame":Vector2i(3,2), "frost":Vector2i(2,2), "shock":Vector2i(3,3),
  "auto_repair":Vector2i(3,2), "shield":Vector2i(3,2), "decoy":Vector2i(2,2),
  "barrier":Vector2i(3,1), "plasma":Vector2i(2,2), "antenna":Vector2i(2,3)}
+const SUBSTANTIAL_FOOTPRINTS={
+ "turret":Vector2i(4,4), "heavy":Vector2i(5,4), "generator":Vector2i(3,4),
+ "repair":Vector2i(4,3), "economy":Vector2i(3,3), "enhancer":Vector2i(3,3),
+ "flame":Vector2i(4,3), "frost":Vector2i(3,3), "shock":Vector2i(4,4),
+ "auto_repair":Vector2i(4,3), "shield":Vector2i(4,4), "decoy":Vector2i(3,3),
+ "barrier":Vector2i(5,2), "plasma":Vector2i(4,3), "antenna":Vector2i(3,4)}
+var rules_version:=VERSION
 var grid=false
 var actor_points_provider: Callable
 const MAX_ID=1000000000
@@ -58,29 +66,36 @@ func grid_cell_walkable(rect: Rect2) -> bool:
  var layout:=effective_layout()
  return grid_area(layout.bounds).encloses(rect) and (not layout.has("voids") or NightmareMap.contains_rect(layout,rect,WALL_MARGIN))
 
-static func max_grid_buildings(bounds: Rect2) -> int:
+static func max_grid_buildings(bounds: Rect2,version: int=VERSION) -> int:
  # The smallest typed footprint covers three cells. Real fixtures further reduce room.
  var cells:=Vector2i(grid_area(bounds).size/CELL_SIZE)
- return floori(float(cells.x*cells.y)/3.0)
+ return floori(float(cells.x*cells.y)/(9.0 if version==SUBSTANTIAL_VERSION else 3.0))
 
-static func grid_cells(kind: String,rotation: int) -> Vector2i:
- var size: Vector2i=GRID_FOOTPRINTS.get(kind,Vector2i(2,2))
+static func grid_cells(kind: String,rotation: int,version: int=VERSION) -> Vector2i:
+ var sizes:=SUBSTANTIAL_FOOTPRINTS if version==SUBSTANTIAL_VERSION else GRID_FOOTPRINTS
+ var size: Vector2i=sizes.get(kind,Vector2i(2,2))
  return Vector2i(size.y,size.x) if posmod(rotation,2)==1 else size
 
 func aligned(point: Vector2,kind: String="",rotation: int=0) -> Vector2:
  if not grid or not bounded(point):return point
- return aligned_in(point,grid_origin(),kind,rotation)
+ return aligned_in(point,grid_origin(),kind,rotation,rules_version)
 
-static func aligned_in(point: Vector2,origin: Vector2,kind: String,rotation: int) -> Vector2:
- var center_origin:=origin+Vector2(grid_cells(kind,rotation))*CELL_SIZE*0.5
+static func aligned_in(point: Vector2,origin: Vector2,kind: String,rotation: int,version: int=VERSION) -> Vector2:
+ var center_origin:=origin+Vector2(grid_cells(kind,rotation,version))*CELL_SIZE*0.5
  return center_origin+((point-center_origin)/CELL_SIZE).round()*CELL_SIZE
 
 func footprint_for(point: Vector2,kind: String="",rotation: int=0) -> Rect2:
- return grid_footprint(point,kind,rotation) if grid else footprint(point)
+ return grid_footprint(point,kind,rotation,rules_version) if grid else footprint(point)
 
-static func grid_footprint(point: Vector2,kind: String,rotation: int) -> Rect2:
- var size:=Vector2(grid_cells(kind,rotation))*CELL_SIZE
+static func grid_footprint(point: Vector2,kind: String,rotation: int,version: int=VERSION) -> Rect2:
+ var size:=Vector2(grid_cells(kind,rotation,version))*CELL_SIZE
  return Rect2(point-size*0.5,size)
+
+static func art_scale(kind: String,rect: Rect2,version: int=VERSION) -> float:
+ if version==SUBSTANTIAL_VERSION:
+  if kind=="barrier":return 1.08
+  return clampf(1.12+(rect.get_area()/256.0-9.0)*.026,1.12,1.40)
+ return clampf(minf(rect.size.x,rect.size.y)/44.0,.65,1.0)
 
 static func grid_blocks_for(layout: Dictionary) -> Array:
  var obstacles:=blocked_for(layout)
@@ -171,16 +186,15 @@ func geometry_reason(point: Vector2,ignore_id: int=-1,layout: Dictionary={},kind
  var bounds: Rect2=room_layout.bounds
  if grid:
   bounds=grid_area(bounds)
-  if point.distance_squared_to(aligned_in(point,bounds.position,kind,rotation))>0.000001:return "Align the footprint to the grid"
+  if point.distance_squared_to(aligned_in(point,bounds.position,kind,rotation,rules_version))>0.000001:return "Align the footprint to the grid"
  else:bounds=bounds.grow(-WALL_MARGIN)
  var rect:=footprint_for(point,kind,rotation)
  var obstacles:=blocks() if layout.is_empty() else (grid_blocks_for(room_layout) if grid else blocked_for(room_layout))
  var error:=blocked_reason(rect,bounds,obstacles)
  if not error.is_empty():return error
  var clearance:=rect if grid else rect.grow(2)
- # All grid footprints fit in three cells on either axis. Exclude distant
- # centers before resolving the neighbor's exact shape and orientation.
- var nearby:=rect.grow(1.5*CELL_SIZE)
+ # Broad phase must include the maximum half-width of a neighboring machine.
+ var nearby:=rect.grow((2.5 if rules_version==SUBSTANTIAL_VERSION else 1.5)*CELL_SIZE)
  for id in r.buildings:
   if id==ignore_id:continue
   var building: Dictionary=r.buildings[id]
@@ -302,11 +316,12 @@ func hit_test(point: Vector2) -> int:
  var footprint_candidate: int=-1
  for id in r.buildings:
   var at: Vector2=r.tile_position(id)
-  if grid and absf(at.x-point.x)<=1.5*CELL_SIZE and absf(at.y-point.y)<=1.5*CELL_SIZE:
+  if grid:
    var b: Dictionary=r.buildings[id]
-   if grid_footprint(at,b.kind,int(b.get("rotation",0))).has_point(point):
+   if footprint_for(at,b.kind,int(b.get("rotation",0))).has_point(point):
     if footprint_candidate<0 or id<footprint_candidate:footprint_candidate=id
-  if Rect2(at-Vector2(22,38),Vector2(44,52)).has_point(point):
+  var silhouette_scale:=art_scale(r.buildings[id].kind,footprint_for(at,r.buildings[id].kind,int(r.buildings[id].get("rotation",0))),rules_version) if grid and rules_version==SUBSTANTIAL_VERSION else 1.0
+  if Rect2(at-Vector2(22,38)*silhouette_scale,Vector2(44,52)*silhouette_scale).has_point(point):
    var next_distance: float=(at-Vector2(0,12)).distance_squared_to(point)
    if next_distance<distance or next_distance==distance and id<selected:
     selected=id
@@ -314,12 +329,13 @@ func hit_test(point: Vector2) -> int:
  return footprint_candidate if footprint_candidate>=0 else selected
 
 func snapshot() -> Dictionary:
- var data={"version":VERSION,"next_id":next_id,"used_legacy":used_legacy.duplicate()}
+ var data={"version":rules_version,"next_id":next_id,"used_legacy":used_legacy.duplicate()}
  if grid:data.grid=true
  return data
 
 func restore_metadata(data: Dictionary):
  grid=data.get("grid",false)
+ rules_version=int(data.version)
  next_id=int(data.next_id)
  used_legacy=data.used_legacy.map(func(id):return int(id))
 
@@ -328,7 +344,7 @@ func enable_grid() -> bool:
  var r=room()
  var layout:=effective_layout()
  var bounds: Rect2=layout.bounds
- if r.buildings.size()>max_grid_buildings(bounds):return false
+ if r.buildings.size()>max_grid_buildings(bounds,rules_version):return false
  var area:=grid_area(bounds)
  var cells:=Vector2i(area.size/CELL_SIZE)
  var obstacles:=grid_blocks_for(layout)
@@ -337,7 +353,7 @@ func enable_grid() -> bool:
   if id<0 or id>=MAX_ID:return false
   var building: Dictionary=r.buildings[id]
   var before: Vector2=r.tile_position(id)
-  var options:=migration_options(before,building.kind,int(building.get("rotation",0)),area,cells,obstacles)
+  var options:=migration_options(before,building.kind,int(building.get("rotation",0)),area,cells,obstacles,rules_version)
   if options.is_empty():return false
   structures.append({"id":id,"before":before,"options":options})
  structures.sort_custom(func(a,b):return int(a.id)<int(b.id) if a.options.size()==b.options.size() else a.options.size()<b.options.size())
@@ -363,19 +379,19 @@ func enable_grid() -> bool:
  undo_entry.clear()
  return true
 
-static func migration_options(before: Vector2,kind: String,old_rotation: int,area: Rect2,cells: Vector2i,obstacles: Array) -> Array:
+static func migration_options(before: Vector2,kind: String,old_rotation: int,area: Rect2,cells: Vector2i,obstacles: Array,version: int=VERSION) -> Array:
  var first:=posmod(old_rotation,4)
  var rotations: Array[int]=[first]
- var original_size:=grid_cells(kind,first)
+ var original_size:=grid_cells(kind,first,version)
  if original_size.x!=original_size.y:rotations.append(posmod(first+1,4))
  var options: Array=[]
  for turn in rotations:
-  var size:=grid_cells(kind,turn)
+  var size:=grid_cells(kind,turn,version)
   for y in range(cells.y-size.y+1):
    for x in range(cells.x-size.x+1):
     var top_left:=Vector2i(x,y)
     var point:=area.position+(Vector2(top_left)+Vector2(size)*0.5)*CELL_SIZE
-    if blocked_reason(grid_footprint(point,kind,turn),area,obstacles)!="":continue
+    if blocked_reason(grid_footprint(point,kind,turn,version),area,obstacles)!="":continue
     options.append({"point":point,"rotation":turn,"cells":Rect2i(top_left,size),"distance":point.distance_squared_to(before)})
  options.sort_custom(func(a,b):
   if a.distance!=b.distance:return a.distance<b.distance
@@ -431,7 +447,8 @@ func migrate() -> bool:
   if not found:return false
  return true
 static func valid_metadata(data) -> bool:
- if not data is Dictionary or data.get("version")!=VERSION or not data.get("grid",false) is bool or not ReplaySnapshot.whole(data.get("next_id"),16,MAX_ID) or not data.get("used_legacy") is Array or data.used_legacy.size()>16:return false
+ if not data is Dictionary or not ReplaySnapshot.whole(data.get("version"),VERSION,SUBSTANTIAL_VERSION) or not data.get("grid",false) is bool or not ReplaySnapshot.whole(data.get("next_id"),16,MAX_ID) or not data.get("used_legacy") is Array or data.used_legacy.size()>16:return false
+ if data.version==SUBSTANTIAL_VERSION and not data.get("grid",false):return false
  var seen=[]
  for id in data.used_legacy:
   if not ReplaySnapshot.whole(id,0,15) or int(id) in seen:return false
@@ -443,7 +460,7 @@ static func valid_room(saved: Dictionary,layout: Dictionary,index: int=0) -> boo
  if not valid_metadata(meta) or not saved.get("buildings") is Array:return false
  var r=RoomState.new(index);r.layout=layout;r.owner=0;r.spatial=SpatialConstruction.new(r)
  r.spatial.restore_metadata(meta)
- if r.spatial.grid and saved.buildings.size()>max_grid_buildings(r.bounds()):return false
+ if r.spatial.grid and saved.buildings.size()>max_grid_buildings(r.bounds(),r.spatial.rules_version):return false
  var instances={}
  for b in saved.buildings:
   if not b is Dictionary or not ReplaySnapshot.whole(b.get("tile"),0,MAX_ID-1):return false

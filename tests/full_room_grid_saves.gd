@@ -62,10 +62,14 @@ func dense_profile_roundtrip() -> void:
  var model: MatchModel=a.m
  var profile: PlayerProfile=a.p
  var room: RoomState=model.player()
+ var scale_flag:=OS.get_environment("NIGHTFALL_BUILDING_SCALE")
+ var expected_rules:=SpatialConstruction.SUBSTANTIAL_VERSION if scale_flag=="1" else SpatialConstruction.VERSION
+ var count:=7 if scale_flag=="1" else 17
  if "--procedural-only" in OS.get_cmdline_user_args():
   var version:=NightmareMap.CLOSE_QUARTERS_VERSION if OS.get_environment("NIGHTFALL_CLOSE_QUARTERS")=="1" else NightmareMap.MACRO_VERSION
   check(model.map_data.get("version")==version,"test runs on the selected procedural geometry")
  check(room.spatial.grid,"new opted-in profile session starts in grid mode")
+ check(room.spatial.rules_version==expected_rules,"new room uses the requested construction rules")
  if not room.spatial.grid:return
  var candidates := ground_points(room)
  var approach := room.door_approach()
@@ -76,9 +80,9 @@ func dense_profile_roundtrip() -> void:
   if room.spatial.purchase_reason("turret",point,rotation)!="":continue
   check(model.place_building("turret",point,rotation),"legal dense grid purchase spends in the normal model")
   if rotated<0:rotated=room.spatial.next_id-1
-  if room.buildings.size()==17:break
- check(rotated>=0 and room.buildings.size()==17,"a real 17-building room passes the physical grid limit")
- if room.buildings.size()!=17:return
+  if room.buildings.size()==count:break
+ check(rotated>=0 and room.buildings.size()==count,"paid structures fit the selected grid rules")
+ if room.buildings.size()!=count:return
  check(room.buildings[rotated].rotation==1,"a nonzero quarter turn exists in the live room")
  clear_wave(a)
  if model.endless.phase!="intermission":return
@@ -88,6 +92,7 @@ func dense_profile_roundtrip() -> void:
  var primary: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(profile.path))
  var expected: Dictionary=primary.replay.checkpoint.duplicate(true)
  OS.set_environment(GRID_ENV,"0")
+ OS.set_environment("NIGHTFALL_BUILDING_SCALE","0" if scale_flag=="1" else "1")
  var close_quarters:=OS.get_environment("NIGHTFALL_CLOSE_QUARTERS")
  if "--procedural-only" in OS.get_cmdline_user_args():
   OS.set_environment("NIGHTFALL_CLOSE_QUARTERS","0" if close_quarters=="1" else "1")
@@ -95,13 +100,15 @@ func dense_profile_roundtrip() -> void:
  check(loader.load_profile() and not loader.read_only,"disk profile accepts grid data with opt-in switched off")
  var restored: MatchModel=loader.resume_endless()
  OS.set_environment("NIGHTFALL_CLOSE_QUARTERS",close_quarters)
+ OS.set_environment("NIGHTFALL_BUILDING_SCALE",scale_flag)
  check(restored!=null and restored.player().spatial.grid and restored.player().spatial.actor_points_provider.is_valid(),"normal profile Resume rebinds the saved grid and live collision guard")
  if restored!=null:
+  check(restored.player().spatial.rules_version==expected_rules,"checkpoint overrides the launcher's construction rules")
   check(restored.player().buildings[rotated].rotation==1,"JSON roundtrip keeps the exact nonzero rotation")
   check(Support.numeric_same(Snapshot.encode(restored,profile.active_match.get("use_counts",{})),expected),"disk grid roundtrip retains every encoded field")
 
  var index: int=model.player_room
- for mutation in ["missing_rotation","invalid_rotation","overlap","wrong_tier","no_marker","legacy_header"]:
+ for mutation in ["missing_rotation","invalid_rotation","overlap","wrong_tier","no_marker","legacy_header","future_construction"]:
   var corrupt := expected.duplicate(true)
   match mutation:
    "missing_rotation":corrupt.rooms[index].buildings[0].erase("rotation")
@@ -109,6 +116,7 @@ func dense_profile_roundtrip() -> void:
    "overlap":corrupt.rooms[index].buildings[0].position=corrupt.rooms[index].buildings[1].position
    "wrong_tier":corrupt.expansion.levels[index]-=1
    "no_marker":corrupt.rooms[index].construction.erase("grid")
+   "future_construction":corrupt.rooms[index].construction.version=97
    "legacy_header":
     corrupt.version=Snapshot.SCHEMA
     corrupt.ruleset=Snapshot.RULESET

@@ -65,6 +65,8 @@ func run():
     game.model.move_player(delta.normalized(),minf(.02,delta.length()/MatchModel.SURVIVOR_SPEED))
   game.model.interact()
   check(game.model.player_room==0 and game.model.player()!=null and game.model.player().spatial.grid,"Physical claim preserves Full Room Grid")
+  if OS.get_environment("NIGHTFALL_BUILDING_SCALE")=="1":
+   check(game.model.player().spatial.rules_version==SpatialConstruction.SUBSTANTIAL_VERSION,"Physical Story claim enables revised footprints")
  game.return_menu()
  game.audio_system.shutdown()
  await create_timer(.5).timeout

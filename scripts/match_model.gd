@@ -68,6 +68,7 @@ var stage_bonus: Dictionary={}
 var strategy=MatchStrategy.new()
 var wave_metrics=WaveMetrics.new()
 var run_kind="campaign"
+var substantial_grid_requested := OS.get_environment("NIGHTFALL_BUILDING_SCALE") == "1"
 var full_grid_requested := OS.get_environment("NIGHTFALL_FULL_ROOM_GRID") == "1"
 var endless
 var challenge_code=""
@@ -446,7 +447,7 @@ func try_claim_survivor(index: int, owner: int, position: Vector2) -> bool:
  feedback.emit("Room claimed. Approach the bed and press E to sleep.")
  return true
 
-func enable_player_grid(educational: bool=false) -> bool:
+func enable_player_grid(educational: bool=false,keep_existing_rules: bool=false) -> bool:
  var room := player()
  if room == null or room.owner != 0 or (tutorial_mode and not (educational and ROOM_RUSH.preview_requested())) or run_kind not in ["campaign","endless"]:
   return false
@@ -456,6 +457,9 @@ func enable_player_grid(educational: bool=false) -> bool:
  var created := room.spatial == null
  if created:
   room.spatial = SpatialConstruction.new(room)
+ var old_rules: int=room.spatial.rules_version
+ if substantial_grid_requested and not keep_existing_rules and room.buildings.is_empty():
+  room.spatial.rules_version=SpatialConstruction.SUBSTANTIAL_VERSION
  var old_layout := room.layout
  var old_tier: int = room.expansion_tier
  var expands: bool = not is_procedural() and run_kind == "endless" and expansion.initialized and old_tier < RoomExpansion.SLOTS.size() - 1
@@ -469,6 +473,7 @@ func enable_player_grid(educational: bool=false) -> bool:
   room.layout = layout
   room.expansion_tier = full_tier
  if not room.spatial.enable_grid():
+  room.spatial.rules_version=old_rules
   room.layout = old_layout
   room.expansion_tier = old_tier
   if created:
@@ -889,6 +894,8 @@ func _turrets(delta: float):
      shot.launch_aim=candidates[0].actor.position
      shot.grid=room.spatial!=null and room.spatial.grid
      shot.rotation=int(b.get("rotation",0))
+     if shot.grid and room.spatial.rules_version==SpatialConstruction.SUBSTANTIAL_VERSION:
+      shot.art_scale=SpatialConstruction.art_scale(b.kind,room.spatial.footprint_for(origin,b.kind,shot.rotation),room.spatial.rules_version)
     next_projectile_id+=1;projectiles.append(shot);_combat_event("launch",shot,origin,0);shots+=1;room.shots+=1
    b.flash=.15;b.cooldown+=resolved.interval
 func _advance_projectiles(delta: float):
@@ -931,6 +938,7 @@ func _combat_event(type: String, shot: Dictionary, position: Vector2, damage: fl
  var event := {"id":next_combat_event_id,"type":type,"projectile_id":shot.id,"target_id":shot.get("target_id",1),"position":position,"room":shot.room,"kind":shot.kind,"level":shot.level,"specialization":shot.get("specialization",""),"damage":damage,"time":time,"remaining":Catalog.PROJECTILES.event_lifetime,"reason":reason,"damage_type":packet.type,"element":packet.element}
  if weapon_feedback.enabled:
   event.merge({"building_id":shot.get("building_id",-1),"building_instance_id":shot.get("building_instance_id",0),"origin":shot.from,"target_position":shot.get("launch_target",position),"aim_position":shot.get("launch_aim",position),"rotation":shot.get("rotation",0),"grid":shot.get("grid",false),"flight_age":shot.age,"hp_before":hp_before,"hp_after":hp_after,"slow":type=="impact" and shot.get("slow",0)>0,"reaper":shot.get("target_id",1)==1 and hunter.transformed})
+  if shot.has("art_scale"):event.art_scale=shot.art_scale
   weapon_feedback.send(event)
  combat_events.append(event)
  next_combat_event_id += 1

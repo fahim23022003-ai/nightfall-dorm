@@ -11,6 +11,7 @@ var halls_visual=preload("res://scripts/haunted_hall_presentation.gd").new()
 var floors={}
 var grid_layouts: Dictionary={}
 var wall_layouts: Dictionary={}
+var close_passages=preload("res://scripts/close_quarters_draw_cache.gd").new()
 var batched_walls:=OS.get_environment("NIGHTFALL_LIVING_NIGHTMARE")=="1"
 func _init():
  for theme in ["dorm","hospital","hotel","lab","mansion"]:floors[theme]=load("res://assets/visual_identity/"+theme+"_floor.svg")
@@ -75,30 +76,8 @@ func render_architecture(c,p):
    title=OFFSET+Vector2(data.bounds.get_center().x-width*.5,data.bounds.end.y+85)
   p.text(c,label,title,title_size,colors[4])
 
-func render_close_passages(c,p,data: Dictionary,theme: String,colors: Array,visible: Rect2) -> void:
- var surfaces: Array[Rect2]=[]
- for corridor: Rect2 in data.corridors:
-  var rect:=Rect2(corridor.position+OFFSET,corridor.size)
-  if visible.intersects(rect):surfaces.append(rect)
- # Lay masonry borders before the continuous floors to keep junctions open.
- for rect in surfaces:c.draw_rect(rect.grow(3),colors[2].darkened(.18))
- for rect in surfaces:
-  c.draw_rect(rect,colors[0])
-  c.draw_texture_rect(floors[theme],rect,true,Color(colors[1].lightened(.3),.48))
- var detail: int=CinematicQuality.detail(c)
- for i in range(data.lane_links.size()):
-  var edge: Array=data.lane_links[i]
-  var a: Vector2=OFFSET+data.nodes[edge[0]]
-  var b: Vector2=OFFSET+data.nodes[edge[1]]
-  var direction:=a.direction_to(b)
-  var length:=a.distance_to(b)
-  var half_width: float=data.lane_widths[i]*.5
-  if length<85 or not visible.intersects(Rect2(a.min(b),(a-b).abs()).grow(half_width)):continue
-  for distance in range(52,int(length)-25,136 if detail>0 else 216):
-   var lamp:=a+direction*distance+direction.orthogonal()*(half_width-9.0)
-   if not visible.has_point(lamp):continue
-   if detail>0:c.draw_circle(lamp,15,Color(colors[4],.07))
-   c.draw_line(lamp-direction*4,lamp+direction*4,Color(colors[4],.65),2)
+func render_close_passages(c,_p,data: Dictionary,theme: String,colors: Array,visible: Rect2) -> void:
+ close_passages.render(c,data,floors[theme],colors,OFFSET,visible,CinematicQuality.detail(c))
 
 func render_macro_overview(c,p,data: Dictionary,theme: String,colors: Array,visible: Rect2):
  # Use the physical lane surfaces. Painting borders first keeps overlaps
@@ -367,7 +346,7 @@ static func draw_grid_facing(c,rect: Rect2,rotation: int,color: Color):
 # machine state can mutate in place, so compare the actual geometry.
 func grid_layout(room) -> Dictionary:
  var cached: Dictionary=grid_layouts.get(room.index,{})
- if not cached.is_empty() and cached.room.get_ref()==room and cached.entries.size()==room.buildings.size():
+ if not cached.is_empty() and cached.room.get_ref()==room and cached.rules_version==room.spatial.rules_version and cached.entries.size()==room.buildings.size():
   var matches:=true
   for id in room.buildings:
    var building: Dictionary=room.buildings[id]
@@ -383,8 +362,8 @@ func grid_layout(room) -> Dictionary:
   var building: Dictionary=room.buildings[id]
   var center: Vector2=room.tile_position(id)
   var rotation:=int(building.get("rotation",0))
-  var rect:=SpatialConstruction.grid_footprint(center,building.kind,rotation)
-  entries[id]={"center":center,"kind":building.kind,"rotation":rotation,"rect":rect,"scale":grid_scale(rect)}
+  var rect: Rect2=room.spatial.footprint_for(center,building.kind,rotation)
+  entries[id]={"center":center,"kind":building.kind,"rotation":rotation,"rect":rect,"scale":SpatialConstruction.art_scale(building.kind,rect,room.spatial.rules_version)}
   var a:=OFFSET+rect.position
   var b:=a+Vector2(rect.size.x,0)
   var d:=a+Vector2(0,rect.size.y)
@@ -394,7 +373,7 @@ func grid_layout(room) -> Dictionary:
   var first: Vector2=entries[a].center
   var second: Vector2=entries[b].center
   return a<b if first.y==second.y else first.y<second.y)
- cached={"room":weakref(room),"entries":entries,"ids":ids,"outlines":outlines}
+ cached={"room":weakref(room),"rules_version":room.spatial.rules_version,"entries":entries,"ids":ids,"outlines":outlines}
  grid_layouts[room.index]=cached
  return cached
 

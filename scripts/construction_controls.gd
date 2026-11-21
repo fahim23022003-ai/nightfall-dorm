@@ -124,7 +124,7 @@ func refresh_machines(r,show: bool):
   for id in r.buildings:
    var b: Dictionary=r.buildings[id]
    var facing:=int(b.get("rotation",0))
-   var footprint:=SpatialConstruction.grid_footprint(b.position,b.kind,facing)
+   var footprint: Rect2=r.spatial.footprint_for(b.position,b.kind,facing)
    var cell:=Vector2i((footprint.position-origin)/SpatialConstruction.CELL_SIZE)+Vector2i.ONE
    machine_rows.append([id,b.instance_id,b.kind,b.level,b.position,facing])
    machine_list.add_item("%s L%d · %d, %d" % [Catalog.BUILDINGS[b.kind].name,b.level,cell.x,cell.y])
@@ -410,7 +410,7 @@ func draw_preview(c):
  rect.position+=game.MAP_OFFSET
  c.draw_style_box(game.presentation.frame(Color(color,.10),color,5),rect)
  c.draw_rect(rect.grow(2),Color(color,.95),false,2.5)
- var scale: float=MapView.grid_scale(rect) if r.spatial.grid else 1.0
+ var scale: float=SpatialConstruction.art_scale(id,rect,r.spatial.rules_version) if r.spatial.grid else 1.0
  game.presentation.building_visual.draw(c,game.presentation,id,level,p,branch,0,game.model.hunter.position-point,0,0,scale,Color(1,1,1,.58))
  if r.spatial.grid:MapView.draw_grid_facing(c,rect,rotation,color)
  if moving>=0:

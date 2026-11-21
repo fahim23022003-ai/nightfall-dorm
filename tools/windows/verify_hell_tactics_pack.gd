@@ -42,6 +42,8 @@ func run():
    var expected_grid := OS.get_environment("NIGHTFALL_FULL_ROOM_GRID") == "1" or expected_map > 0
    check((room.spatial != null and room.spatial.grid) == expected_grid, "construction follows launcher")
    if expected_grid:
+    var footprint_version:=SpatialConstruction.SUBSTANTIAL_VERSION if OS.get_environment("NIGHTFALL_BUILDING_SCALE")=="1" else SpatialConstruction.VERSION
+    check(room.spatial.rules_version==footprint_version,"launcher selects the expected footprint rules")
     check(place_machine(model, room), "a paid machine fits in the packaged grid")
   var endless := MatchModel.new()
   check(endless.configure_endless("cursed_mansion", difficulty, 73, 1), "launch packed Endless")

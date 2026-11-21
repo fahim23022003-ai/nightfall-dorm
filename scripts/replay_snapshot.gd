@@ -131,7 +131,10 @@ static func valid(data) -> bool:
   if not room is Dictionary or not whole(room.get("owner"),-1,5) or room.get("profile","") not in ["player"]+Catalog.BOT_PROFILES or room.get("trait","")!=StrategyCatalog.trait_for(i,data.map) or not point(room.get("position")) or not room.get("buildings") is Array:return false
   var spatial=data.version>=SCHEMA and i==int(data.player_room)
   var grid_room=data.version>=GRID_SCHEMA and spatial
-  var building_limit=SpatialConstruction.max_grid_buildings(map.rooms[i].bounds) if grid_room else map.rooms[i].tiles.size()
+  var building_limit=map.rooms[i].tiles.size()
+  if grid_room:
+   if not SpatialConstruction.valid_metadata(room.get("construction")):return false
+   building_limit=SpatialConstruction.max_grid_buildings(map.rooms[i].bounds,int(room.construction.version))
   if room.buildings.size()>building_limit:return false
   if room.has("construction")!=spatial:return false
   if spatial:
@@ -298,5 +301,5 @@ static func restore(data) -> MatchModel:
  model.hunter.hp=0;model.hunter.state=HunterState.State.DEAD
  if data.version==NIGHTMARE_SCHEMA and not model.haunt_recovery.restore(data.haunted_recovery):return null
  if player.spatial.grid:model.bind_player_grid()
- elif model.full_grid_requested:model.enable_player_grid()
+ elif model.full_grid_requested:model.enable_player_grid(false,true)
  return model
