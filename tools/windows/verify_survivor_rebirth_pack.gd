@@ -47,6 +47,7 @@ func run():
   await process_frame
   await process_frame
   check(game.mode=="match" and game.model.story_level==1,"Story launches from the ready state")
+  check(game.model.uses_story_intelligence()==(OS.get_environment("NIGHTFALL_HUNTER_INTELLIGENCE")=="1"),"packed Story and fallback respect their Hunter decision settings")
   if OS.get_environment("NIGHTFALL_CLOSE_QUARTERS")=="1":
    check(game.model.map_data.get("version")==NightmareMap.CLOSE_QUARTERS_VERSION,"Fresh Story launches the packed close-quarters geometry")
   check(game.model.room_rush_active() and game.model.room_rush_runners().size()==5,"Pack initializes five physical runners")

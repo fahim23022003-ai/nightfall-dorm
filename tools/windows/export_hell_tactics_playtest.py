@@ -116,7 +116,13 @@ FOCUSED_UI_MODES = {
     ),
     **PLAYER_FIRST_MODES,
 }
-PLAYER_FIRST_PREVIEWS = ("phase20", "phase21", "phase22", "phase22.1")
+HUNTER_INTELLIGENCE_MODES = {
+    "phase23": (
+        "Play Phase 23 Preview.cmd", FOCUSED_UI_MODES["phase22.1"][1], (1, 1, 0, 1),
+    ),
+    **FOCUSED_UI_MODES,
+}
+PLAYER_FIRST_PREVIEWS = ("phase20", "phase21", "phase22", "phase22.1", "phase23")
 
 
 def mode_environment(profile: str, switches: tuple[int, ...], living: bool = False,
@@ -129,7 +135,7 @@ def mode_environment(profile: str, switches: tuple[int, ...], living: bool = Fal
             "NIGHTFALL_CLOSE_QUARTERS": str(int(close_quarters)),
             "NIGHTFALL_BUILDING_SCALE": str(int(building_scale)),
             "NIGHTFALL_LIVING_DORM": "0", "NIGHTFALL_MINI_HUNTERS": "0",
-            "NIGHTFALL_PLAYER_FIRST": "0", "NIGHTFALL_TACTICAL_UI": "0", **settings}
+            "NIGHTFALL_PLAYER_FIRST": "0", "NIGHTFALL_TACTICAL_UI": "0", "NIGHTFALL_HUNTER_INTELLIGENCE": "0", **settings}
 
 
 def launcher(environment: dict[str, str], arguments: str = "") -> bytes:
@@ -165,8 +171,10 @@ def verify_modes(
             environment.update(NIGHTFALL_LIVING_DORM="1", NIGHTFALL_PERFORMANCE_PREVIEW="1")
         if label in PLAYER_FIRST_PREVIEWS:
             environment["NIGHTFALL_PLAYER_FIRST"] = "1"
-        if label in ("phase21", "phase22", "phase22.1"):
+        if label in ("phase21", "phase22", "phase22.1", "phase23"):
             environment["NIGHTFALL_TACTICAL_UI"] = "1"
+        if label == "phase23":
+            environment["NIGHTFALL_HUNTER_INTELLIGENCE"] = "1"
         environments[label] = environment
         env = os.environ | environment | {"XDG_DATA_HOME": str(working / ("data-" + label))}
         log = evidence / f"windows-pack-{label}.log"
@@ -249,7 +257,7 @@ def add_playtest_files(
     preview = next((label for label in reversed(PLAYER_FIRST_PREVIEWS) if label in environments), None)
     with ZipFile(base) as source, ZipFile(output, "w", ZIP_DEFLATED) as target:
         for entry in source.infolist():
-            if preview in ("phase22", "phase22.1"):
+            if preview in ("phase22", "phase22.1", "phase23"):
                 if entry.filename.endswith(("PLAYTEST_GUIDE.md", "PLAYTEST_CHECKLIST.md")):
                     continue
                 if entry.filename == "VERSION.txt":
@@ -260,7 +268,7 @@ def add_playtest_files(
             with source.open(entry) as body, target.open(entry, "w") as copy:
                 shutil.copyfileobj(body, copy)
         for label, (name, _, _) in modes.items():
-            if preview and label != preview:
+            if preview and label != preview and (preview, label) != ("phase23", "phase22.1"):
                 continue
             args = " --windowed --resolution 960x540" if label in ("living-dorm", *PLAYER_FIRST_PREVIEWS) else ""
             target.writestr(name, launcher(environments[label], args))
@@ -281,6 +289,10 @@ def add_playtest_files(
             }
             target.writestr("Record Phase 19 Diagnostic.cmd",
                             launcher(diagnostic, " --windowed --resolution 960x540 -- --performance-diagnostic"))
+        if preview == "phase23":
+            prior = environments["phase22.1"] | {"NIGHTFALL_PROFILE_PATH": "user://nightfall-phase22.1-diagnostic.json"}
+            target.writestr("Record Phase 22.1 Diagnostic.cmd",
+                            launcher(prior, " --windowed --resolution 960x540 -- --performance-diagnostic"))
         if preview:
             diagnostic = environments[preview] | {
                 "NIGHTFALL_PROFILE_PATH": f"user://nightfall-{preview}-diagnostic.json",
@@ -306,6 +318,7 @@ def main() -> None:
     preview.add_argument("--tactical-ui", action="store_true", help="Add the Phase 21 desktop UI in an isolated Low preview.")
     preview.add_argument("--refined-ui", action="store_true", help="Package the Phase 22 interface and Performance fallback.")
     preview.add_argument("--focused-ui", action="store_true", help="Package the Phase 22.1 desktop refinement and Performance fallback.")
+    preview.add_argument("--hunter-intelligence", action="store_true", help="Package Story tactical decisions and the two playable fallbacks.")
     parser.add_argument("--source-commit", required=True)
     parser.add_argument("--zip", required=True, type=Path)
     parser.add_argument("--evidence-dir", required=True, type=Path)
@@ -355,6 +368,9 @@ def main() -> None:
     elif args.focused_ui:
         modes = FOCUSED_UI_MODES
         guide_name = "PHASE221_PLAYTEST.md"
+    elif args.hunter_intelligence:
+        modes = HUNTER_INTELLIGENCE_MODES
+        guide_name = "PHASE23_PLAYTEST.md"
     guide = ROOT / "docs" / guide_name
     archive = args.zip.resolve()
     evidence = args.evidence_dir.resolve()
